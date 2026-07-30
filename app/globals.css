@@ -1,0 +1,444 @@
+/*
+ * Design system — provisional (CLAUDE.md: locked properly in a later session).
+ * Instrument register: restrained, archival, dense-but-legible. Light canvas.
+ * Red is reserved for deaths, alerts and break-seams. No decorative gradients.
+ */
+
+:root {
+  --paper: #fbfaf7;
+  --paper-sunk: #f3f1ec;
+  --ink: #1a1a18;
+  --ink-soft: #45433d;
+  --ink-dim: #6f6b62;
+  --rule: #ddd9d0;
+  --rule-strong: #c3bdb1;
+  --alert: #a4161a;
+  --alert-soft: #f6ebea;
+
+  --font-sans: ui-sans-serif, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+
+  --measure: 68ch;
+  --gutter: 1.5rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  font-feature-settings: 'kern' 1;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--rule-strong);
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-color: var(--ink);
+}
+
+/* --- system labels and figures: mono, tabular ---------------------------- */
+
+.mono,
+.label,
+.figure,
+th,
+code {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+.label {
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+.figure {
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- shell --------------------------------------------------------------- */
+
+.shell {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 0 var(--gutter) 5rem;
+}
+
+.masthead {
+  border-bottom: 1px solid var(--rule-strong);
+  margin-bottom: 2rem;
+  padding: 1.25rem 0 0.75rem;
+}
+
+.masthead-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0 0 0.6rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.masthead-title a {
+  text-decoration: none;
+}
+
+.masthead-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  font-weight: 400;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  padding-bottom: 0.15rem;
+  border-bottom: 2px solid transparent;
+}
+
+.nav a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--rule-strong);
+}
+
+.foot {
+  border-top: 1px solid var(--rule);
+  margin-top: 3.5rem;
+  padding-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--ink-dim);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+
+/* --- typography ---------------------------------------------------------- */
+
+h1 {
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5rem;
+  max-width: var(--measure);
+}
+
+h2 {
+  font-size: 1.0625rem;
+  margin: 2.25rem 0 0.75rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--rule);
+  max-width: var(--measure);
+}
+
+h3 {
+  font-size: 0.9375rem;
+  margin: 1.5rem 0 0.4rem;
+}
+
+p {
+  max-width: var(--measure);
+  margin: 0 0 0.9rem;
+}
+
+.lede {
+  color: var(--ink-soft);
+  font-size: 1.0625rem;
+}
+
+.prose-note {
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+}
+
+.stub {
+  border: 1px dashed var(--rule-strong);
+  background: var(--paper-sunk);
+  padding: 0.75rem 0.9rem;
+  margin: 1rem 0 1.5rem;
+  max-width: var(--measure);
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+.stub .label {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* --- tables -------------------------------------------------------------- */
+
+.table-wrap {
+  overflow-x: auto;
+  margin: 0.5rem 0 1.25rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+th {
+  text-align: left;
+  font-size: 0.6875rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  font-weight: 500;
+  border-bottom: 1px solid var(--rule-strong);
+  padding: 0.35rem 0.75rem 0.35rem 0;
+  white-space: nowrap;
+}
+
+td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.4rem 0.75rem 0.4rem 0;
+  vertical-align: baseline;
+}
+
+td.num,
+th.num {
+  text-align: right;
+  padding-right: 1.25rem;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+tr td:last-child,
+tr th:last-child {
+  padding-right: 0;
+}
+
+.t-note {
+  color: var(--ink-dim);
+  font-size: 0.8125rem;
+}
+
+/* --- break seam: the one place a red rule crosses a table --------------- */
+
+.seam td {
+  border-bottom: 2px solid var(--alert);
+  border-top: 2px solid var(--alert);
+  background: var(--alert-soft);
+  padding: 0.4rem 0.5rem;
+  color: var(--alert);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.seam a {
+  color: var(--alert);
+}
+
+/* --- status marks (rule 3: approx and pending are visually distinct) ----- */
+
+.status-approx {
+  border-bottom: 1px dotted var(--ink-dim);
+  color: var(--ink-soft);
+}
+
+.flag-pending {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0 0.3rem;
+  border: 1px solid var(--alert);
+  color: var(--alert);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  vertical-align: 0.08em;
+}
+
+.status-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--ink-dim);
+  margin: 0.25rem 0 1rem;
+}
+
+/* --- tags ---------------------------------------------------------------- */
+
+.tag {
+  display: inline-block;
+  padding: 0 0.35rem;
+  border: 1px solid var(--rule-strong);
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.tag-t5 {
+  border-color: var(--alert);
+  color: var(--alert);
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.5rem 0 1rem;
+  align-items: center;
+}
+
+/* --- cards / index lists ------------------------------------------------- */
+
+.grid {
+  display: grid;
+  gap: 1px;
+  /* Paper, not rule: an unfilled cell in the last row must read as blank canvas,
+     not as a shaded box that looks like a record. */
+  background: var(--paper);
+  margin: 0.75rem 0 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+}
+
+.grid > * {
+  background: var(--paper);
+  /* Outline rather than border: it draws into the 1px gap, so adjacent cells
+     share a single hairline and nothing shifts. */
+  outline: 1px solid var(--rule);
+  padding: 0.75rem 0.9rem;
+  text-decoration: none;
+  display: block;
+}
+
+.grid > a:hover {
+  background: var(--paper-sunk);
+}
+
+.grid > * > .label {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.grid-title {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  margin: 0.1rem 0 0.25rem;
+  line-height: 1.35;
+}
+
+.grid-meta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.45;
+  color: var(--ink-dim);
+}
+
+.counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 2rem;
+  margin: 0.5rem 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.counts li {
+  min-width: 7rem;
+}
+
+.counts .figure {
+  display: block;
+  font-size: 1.375rem;
+  line-height: 1.2;
+}
+
+.source-line {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-dim);
+  margin: 0.35rem 0;
+  max-width: var(--measure);
+}
+
+.source-line a {
+  color: var(--ink-soft);
+}
+
+.dl {
+  margin: 0.5rem 0 1.5rem;
+  max-width: var(--measure);
+}
+
+.dl dt {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-top: 0.9rem;
+}
+
+.dl dd {
+  margin: 0.2rem 0 0;
+}
+
+.crumb {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 0.5rem;
+}
+
+.crumb a {
+  color: var(--ink-dim);
+}
+
+@media (max-width: 34rem) {
+  :root {
+    --gutter: 1rem;
+  }
+  h1 {
+    font-size: 1.25rem;
+  }
+  .counts {
+    gap: 0 1.25rem;
+  }
+}

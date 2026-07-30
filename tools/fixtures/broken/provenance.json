@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P-91",
+    "title": "Dispute naming a series that does not link back",
+    "whatChanged": "Names no-backlink-series in affectsSeries, but that series carries no provenanceRefs entry pointing back, so the dispute would not travel with the rendered number.",
+    "when": "2020",
+    "affectsDomains": ["macro"],
+    "affectsSeries": ["no-backlink-series"],
+    "directionOfBias": "disputed",
+    "bridgeExists": false,
+    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }]
+  }
+]
