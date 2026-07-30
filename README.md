@@ -30,7 +30,8 @@ data/
   provenance.json      measurement-dispute records (P-xx), first-class citizens
   incoming/            drops from research sessions — validated, then merged
 schemas/               the contract; research sessions author against these
-tools/                 validator CLI + fixtures proving it fails correctly
+tools/                 validator CLI
+tests/fixtures/        deliberately invalid records proving the gate rejects them
 lib/                   build-time data access and formatting
 app/                   routes (static export)
 components/            status marks, tier tags, series tables with break seams

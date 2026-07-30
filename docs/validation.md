@@ -28,6 +28,35 @@ schemas are closed (`additionalProperties: false`), so an unrecognised property 
 error, not a silent pass — new fields are agreed in chat and added to the schema first,
 because research sessions author against it.
 
+Two of the ledger rules are conditionals rather than flat constraints, and they are the
+ones most worth distrusting:
+
+| Conditional | Effect |
+|---|---|
+| `if term = baseline` | `then assessment` must be `baseline-context` — a pre-2014 record can never carry a score |
+| `if assessment ∈ {worked, partly, failed, reversed, contested}` | `then caseFor` and `caseAgainst` are both required — nothing is scored one-sidedly |
+
+### Ajv configuration
+
+Set in `tools/lib/schema.mjs` as `AJV_OPTIONS`, and it matters:
+
+```js
+{ allErrors: true, strict: true, strictRequired: false, allowUnionTypes: true }
+```
+
+`strict: true` is **not** what makes the conditionals work — `if`/`then` are applicator
+keywords and Ajv2020 evaluates them regardless. What it buys is that a *misspelled* keyword
+fails compilation instead of being dropped in silence. Under `strict: false`, an
+`allOf[].than` typo'd for `then` compiles happily and every record the conditional was
+meant to catch passes. That is the failure mode to guard against, and the selftest asserts
+the typo now throws.
+
+`strictRequired` has to stay off. It requires every name in a `required` list to be
+declared in `properties` at the same subschema level, which a conditional cannot satisfy:
+`allOf[1].then.required` names `caseFor`/`caseAgainst`, declared at the root where they
+belong. Turning it on makes the schemas fail to compile at all, and the schemas are the
+contract — the validator config bends, not them.
+
 ## Pass 3 — cross-reference and instrument rules
 
 Errors:
@@ -62,14 +91,48 @@ in step: one enforces the rule, the other renders it.
 
 ## Proving the gate is closed
 
-`npm run validate:selftest` runs the validator twice: once over `/data`, which must pass,
-and once over `tools/fixtures/broken/`, which seeds one violation per error rule and must
-fail with every rule firing. If a rule is ever weakened, the selftest fails rather than the
-weakening going unnoticed.
+`npm run validate:selftest` is the regression test for the gate itself. It asserts:
+
+1. `/data` validates.
+2. `tests/fixtures/invalid/` — three records, each rejected **for its own stated reason**,
+   matched on the error text. Named rather than counted, so a rule that stops
+   discriminating is caught by name instead of hiding behind a smaller total:
+   - `ledger/failed-without-case-against.json` — `failed` with no `caseAgainst`
+   - `ledger/baseline-scored-as-worked.json` — `baseline` term assessed `worked`
+   - `series/point-missing-status.json` — an observation with no `status`
+3. `tests/fixtures/broken/` — one violation per error rule; every rule must fire.
+4. A misspelled schema keyword must fail compilation (see the Ajv notes above).
+5. `--strict` promotes the real repository's warnings.
 
 ```
-selftest OK — /data valid (6 warning(s)); 12/12 rules fire on broken fixtures (19 errors caught)
+selftest OK — /data valid (6 warning(s))
+  rejected ledger/failed-without-case-against.json — scored assessment with caseAgainst missing
+  rejected ledger/baseline-scored-as-worked.json — baseline term carrying a scored assessment
+  rejected series/point-missing-status.json — observation with no measurement status
+  12/12 rules fire on tests/fixtures/broken (19 errors caught)
+  misspelled schema keyword fails compilation
 ```
+
+Fixtures live under `tests/`, never under `/data`, so the site never renders them and the
+default `npm run validate` never sees them. To reject one by hand:
+
+```bash
+node tools/validate.mjs --data tests/fixtures/invalid
+```
+
+### The gate stops the build, not just the validator
+
+With any one of those records copied into `/data`, from a clean tree:
+
+```
+npm run build exit code: 1
+occurrences of 'Compiled successfully': 0
+out/ exists?   NO
+.next/ exists? NO
+```
+
+`next build` is never reached, so no artifact exists to deploy. Vercel runs the same
+`npm run validate && next build`, so a bad record fails the deploy the same way.
 
 ## Current warnings on `/data`
 

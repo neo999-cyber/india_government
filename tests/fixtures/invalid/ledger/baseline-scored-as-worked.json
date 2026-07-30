@@ -1,0 +1,15 @@
+{
+  "id": "L-9102",
+  "title": "Pre-2014 record carrying a scored assessment",
+  "date": "2013-06",
+  "term": "baseline",
+  "domains": ["macro"],
+  "type": "reform",
+  "summary": "Sits in the baseline term but is assessed as worked. Baseline records are carried as context and are never scored, so the schema pins assessment to baseline-context whenever term is baseline.",
+  "assessment": "worked",
+  "caseFor": "Present deliberately, so the record satisfies the both-cases conditional and fails only on the baseline conditional.",
+  "caseAgainst": "Also present deliberately, for the same reason.",
+  "sources": [{ "name": "Fixture, not a real source", "url": "https://example.org/", "tier": "T1" }],
+  "confidence": "low",
+  "asOf": "2026-07-30"
+}
