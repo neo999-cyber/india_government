@@ -10,13 +10,37 @@ const SCHEMA_FILES = {
 };
 
 /**
+ * Ajv configuration, in draft 2020-12 (Ajv2020 is that dialect by construction, and the
+ * schemas declare it in `$schema`).
+ *
+ * `strict: true` is load-bearing, and not for the reason it looks like. The if/then
+ * conditionals in ledger.schema.json evaluate fine either way — applicator keywords are
+ * not gated on strict mode. What strict mode buys is that a *misspelled* keyword is a
+ * compile error instead of silence: under `strict: false`, an `allOf[].than` typo'd for
+ * `then` is dropped without a word, and every record the conditional was meant to catch
+ * passes. tools/selftest.mjs asserts that this now throws.
+ *
+ * `strictRequired` is the one check that has to stay off. It wants every name in a
+ * `required` list declared in `properties` *at the same subschema level*, which a
+ * conditional cannot satisfy: `allOf[1].then.required` names caseFor/caseAgainst, and they
+ * are declared at the root where they belong. Leaving it on would force the schema to be
+ * contorted to please the linter, and the schemas are the contract.
+ */
+export const AJV_OPTIONS = Object.freeze({
+  allErrors: true,
+  strict: true,
+  strictRequired: false,
+  allowUnionTypes: true,
+});
+
+/**
  * Compile the three layer schemas. The schemas are the contract (CLAUDE.md, Roles):
  * code may propose changes to them but never works around them.
  * @param {string} schemasDir
  * @returns {{ validators: Record<string, import('ajv').ValidateFunction> }}
  */
 export function compileSchemas(schemasDir) {
-  const ajv = new Ajv2020({ allErrors: true, strict: false, allowUnionTypes: true });
+  const ajv = new Ajv2020({ ...AJV_OPTIONS });
   addFormats(ajv);
 
   /** @type {Record<string, import('ajv').ValidateFunction>} */

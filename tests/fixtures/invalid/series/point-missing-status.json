@@ -1,0 +1,13 @@
+{
+  "id": "point-missing-status",
+  "title": "Series carrying an observation with no measurement status",
+  "unit": "% y/y",
+  "domain": "macro",
+  "tier": "T1",
+  "source": { "name": "Fixture, not a real source", "url": "https://example.org/" },
+  "calendar": "FY",
+  "points": [
+    { "country": "IND", "period": "FY2013-14", "value": 4.7, "status": "verified" },
+    { "country": "IND", "period": "FY2014-15", "value": 7.4 }
+  ]
+}

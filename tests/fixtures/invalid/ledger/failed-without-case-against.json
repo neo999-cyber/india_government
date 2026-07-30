@@ -1,0 +1,14 @@
+{
+  "id": "L-9101",
+  "title": "Scored as failed while stating only one side",
+  "date": "2016-11",
+  "term": "T1",
+  "domains": ["macro"],
+  "type": "reform",
+  "summary": "Assessed as failed and carries caseFor, but caseAgainst is absent. The ledger schema requires both cases for any scored assessment, via an if/then conditional rather than a flat required list.",
+  "assessment": "failed",
+  "caseFor": "Stated so that the record fails only on the missing counter-case, and not on a plain required-property check.",
+  "sources": [{ "name": "Fixture, not a real source", "url": "https://example.org/", "tier": "T1" }],
+  "confidence": "low",
+  "asOf": "2026-07-30"
+}
