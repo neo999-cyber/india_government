@@ -1,0 +1,161 @@
+[
+  {
+    "id": "L-0001",
+    "title": "July 2012 grid collapse",
+    "date": "2012-07-30",
+    "dateEnd": "2012-07-31",
+    "term": "baseline",
+    "domains": ["infrastructure"],
+    "type": "event",
+    "summary": "The world's largest blackout: Northern, Eastern and North-Eastern grids failed on consecutive days, cutting supply to over 620 million people across 22 states, with roughly 32 GW of capacity offline. Emblem of the SEB-finances/coal-shortage crisis at baseline.",
+    "assessment": "baseline-context",
+    "seriesRefs": [],
+    "sources": [
+      { "name": "CERC enquiry report coverage", "url": "https://cercind.gov.in/", "tier": "T1" }
+    ],
+    "confidence": "high",
+    "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-0002",
+    "title": "Taper tantrum and rupee crisis",
+    "date": "2013-05",
+    "dateEnd": "2013-09",
+    "term": "baseline",
+    "domains": ["macro"],
+    "type": "shock",
+    "summary": "Bernanke's May 2013 taper signal triggered EM capital flight; the rupee fell ~19.4% from 55.4/USD (22 May) to a record 68.85 (28 Aug 2013). Rajan's FCNR(B) swap window from September stabilised it. India branded one of the 'Fragile Five'. CAD compressed from 4.8% (FY13) to 1.7% (FY14) — recovery was underway before the 2014 handover.",
+    "assessment": "baseline-context",
+    "seriesRefs": ["cad-gdp", "forex-reserves"],
+    "sources": [
+      { "name": "MoSPI Statistical Year Book, exchange chapter", "url": "https://mospi.gov.in/sites/default/files/Statistical_year_book_india_chapters/Exchange.pdf", "tier": "T1" }
+    ],
+    "confidence": "high",
+    "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-0003",
+    "title": "2010 Kashmir summer unrest",
+    "date": "2010-06",
+    "dateEnd": "2010-09",
+    "term": "baseline",
+    "domains": ["kashmir"],
+    "type": "episode",
+    "summary": "~112 civilian deaths June-September, triggered by the Machil fake encounter (April) and the killing of Tufail Ahmad Mattoo (11 June). Pellet guns introduced as crowd control in 2010 — a baseline fact for the post-2016 pellet debate.",
+    "assessment": "baseline-context",
+    "sources": [
+      { "name": "Contemporary reporting / SATP", "url": "https://www.satp.org/", "tier": "T4" }
+    ],
+    "confidence": "high",
+    "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-0004",
+    "title": "SHRC unmarked graves report",
+    "date": "2011-07-02",
+    "term": "baseline",
+    "domains": ["kashmir", "governance"],
+    "type": "episode",
+    "summary": "J&K State Human Rights Commission confirmed at least 2,730 unidentified bodies across 38 sites in four north Kashmir districts; 574 later identified as locals, contradicting official claims they were foreign militants. Core human-rights baseline record.",
+    "assessment": "baseline-context",
+    "sources": [
+      { "name": "SHRC report coverage", "url": "https://www.satp.org/", "tier": "T4" }
+    ],
+    "confidence": "high",
+    "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-0005",
+    "title": "Afzal Guru execution and aftermath",
+    "date": "2013-02-09",
+    "term": "baseline",
+    "domains": ["kashmir"],
+    "type": "event",
+    "summary": "Executed at Tihar for the 2001 Parliament attack; Valley-wide curfew and communications blackout followed, at least three protester deaths. Tourism dipped the following seasons. Baseline instance of collective punishment-adjacent curbs predating 2014.",
+    "assessment": "baseline-context",
+    "sources": [
+      { "name": "Contemporary reporting", "url": "https://www.satp.org/", "tier": "T4" }
+    ],
+    "confidence": "high",
+    "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-0006",
+    "title": "Muzaffarnagar riots",
+    "date": "2013-08",
+    "dateEnd": "2013-09",
+    "term": "baseline",
+    "domains": ["governance"],
+    "type": "episode",
+    "summary": "Communal violence in western UP killed ~60 and displaced tens of thousands months before the 2014 election. Baseline datum for communal-violence trend analysis, which P-07 complicates.",
+    "assessment": "baseline-context",
+    "provenanceRefs": ["P-07"],
+    "sources": [
+      { "name": "NCRB / MHA data and contemporary reporting", "url": "https://ncrb.gov.in/", "tier": "T1" }
+    ],
+    "confidence": "high",
+    "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-0007",
+    "title": "National Food Security Act",
+    "date": "2013-09",
+    "term": "baseline",
+    "domains": ["welfare"],
+    "type": "reform",
+    "summary": "Statutory entitlement to subsidised foodgrain for ~two-thirds of the population — the capstone of the UPA rights-based welfare architecture (RTI 2005, NREGA 2005, FRA 2006, RTE 2009). The successor government retained and later leaned on it (PMGKAY free-grain top-ups ran on NFSA rails).",
+    "assessment": "baseline-context",
+    "sources": [
+      { "name": "Gazette of India / NFSA text", "url": "https://dfpd.gov.in/", "tier": "T1" }
+    ],
+    "confidence": "high",
+    "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-0008",
+    "title": "Devyani Khobragade episode",
+    "date": "2013-12",
+    "term": "baseline",
+    "domains": ["foreign"],
+    "type": "event",
+    "summary": "Arrest and strip-search of India's deputy consul-general in New York over visa-fraud charges triggered retaliatory downgrades of US diplomatic privileges in Delhi — the nadir of a drifting relationship whose 2008 nuclear-deal high was UPA's landmark. Baseline for measuring the post-2014 US arc.",
+    "assessment": "baseline-context",
+    "sources": [
+      { "name": "MEA statements / contemporary reporting", "url": "https://www.mea.gov.in/", "tier": "T1" }
+    ],
+    "confidence": "high",
+    "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-0009",
+    "title": "Depsang incursion",
+    "date": "2013-04",
+    "dateEnd": "2013-05",
+    "term": "baseline",
+    "domains": ["foreign", "defence"],
+    "type": "event",
+    "summary": "Three-week platoon-scale PLA presence near Daulat Beg Oldi, resolved 5 May 2013 with mutual withdrawal; Border Defence Cooperation Agreement signed October 2013. Baseline for the post-2014 China arc (Doklam 2017, Galwan 2020) and the border-infrastructure gap.",
+    "assessment": "baseline-context",
+    "sources": [
+      { "name": "MEA / contemporary reporting", "url": "https://www.mea.gov.in/", "tier": "T1" }
+    ],
+    "confidence": "high",
+    "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-0010",
+    "title": "J&K floods and assembly election",
+    "date": "2014-09",
+    "dateEnd": "2014-12",
+    "term": "baseline",
+    "domains": ["kashmir"],
+    "type": "event",
+    "summary": "September floods killed ~277 and submerged much of Srinagar; the December assembly election recorded 65.91% turnout, the highest in ~25 years, producing the PDP-BJP coalition (formed March 2015). The hinge between the baseline and Term 1 Kashmir arcs. Dated to the baseline ledger as state-level events predating the coalition's formation.",
+    "assessment": "baseline-context",
+    "sources": [
+      { "name": "ECI results / J&K Economic Survey 2014-15", "url": "https://www.eci.gov.in/", "tier": "T1" }
+    ],
+    "confidence": "high",
+    "asOf": "2026-07-30"
+  }
+]

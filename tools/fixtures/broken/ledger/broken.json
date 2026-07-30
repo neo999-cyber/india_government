@@ -1,0 +1,57 @@
+[
+  {
+    "id": "L-9001",
+    "title": "Dangling references in both directions",
+    "date": "2016-11",
+    "term": "T1",
+    "domains": ["macro"],
+    "type": "reform",
+    "summary": "A ledger record whose seriesRefs and provenanceRefs point at records that do not exist anywhere in the repository.",
+    "assessment": "too-early",
+    "seriesRefs": ["no-such-series"],
+    "provenanceRefs": ["P-97"],
+    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }],
+    "confidence": "low",
+    "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-9002",
+    "title": "Baseline context tag on a post-2014 term",
+    "date": "2016-11",
+    "term": "T1",
+    "domains": ["macro"],
+    "type": "reform",
+    "summary": "Carries assessment baseline-context while sitting in term T1, which would smuggle an unscored record into a scored term.",
+    "assessment": "baseline-context",
+    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }],
+    "confidence": "low",
+    "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-9003",
+    "title": "End date precedes start date",
+    "date": "2019-09",
+    "dateEnd": "2019-04",
+    "term": "T2",
+    "domains": ["macro"],
+    "type": "episode",
+    "summary": "An episode whose dateEnd falls before its date, which would render as a negative-length episode on any timeline.",
+    "assessment": "too-early",
+    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }],
+    "confidence": "low",
+    "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-9004",
+    "title": "Scored without both cases stated",
+    "date": "2016-11",
+    "term": "T1",
+    "domains": ["macro"],
+    "type": "reform",
+    "summary": "Assessed as worked but carries neither caseFor nor caseAgainst, which the schema requires for any scored assessment.",
+    "assessment": "worked",
+    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }],
+    "confidence": "low",
+    "asOf": "2026-07-30"
+  }
+]

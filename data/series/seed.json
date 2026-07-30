@@ -1,0 +1,178 @@
+[
+  {
+    "id": "gdp-growth-old-base",
+    "title": "Real GDP growth, 2004-05 base series (as contemporaneously reported)",
+    "unit": "% y/y",
+    "domain": "macro",
+    "tier": "T1",
+    "source": { "name": "CSO/MoSPI (old series)", "url": "https://mospi.gov.in/" },
+    "calendar": "FY",
+    "breaks": [{ "period": "FY2013-14", "note": "Series discontinued at base revision; do not splice with new base", "provenanceRef": "P-01" }],
+    "points": [
+      { "country": "IND", "period": "FY2007-08", "value": 9.3, "status": "approx", "note": "Boom peak, old series" },
+      { "country": "IND", "period": "FY2013-14", "value": 4.7, "status": "verified", "note": "Provisional; advance estimate was 4.9" }
+    ],
+    "provenanceRefs": ["P-01"]
+  },
+  {
+    "id": "gdp-growth-new-base",
+    "title": "Real GDP growth, 2011-12 base series",
+    "unit": "% y/y",
+    "domain": "macro",
+    "tier": "T1",
+    "source": { "name": "CSO/MoSPI (2011-12 base)", "url": "https://mospi.gov.in/" },
+    "calendar": "FY",
+    "points": [
+      { "country": "IND", "period": "FY2013-14", "value": 6.9, "status": "verified", "note": "Same year reads 4.7 on old base — the seam" }
+    ],
+    "provenanceRefs": ["P-01"]
+  },
+  {
+    "id": "forex-reserves",
+    "title": "Foreign exchange reserves, end of fiscal year",
+    "unit": "US$ billion",
+    "domain": "macro",
+    "tier": "T1",
+    "source": { "name": "Economic Survey 2013-14 / RBI", "url": "https://www.business-standard.com/article/news-ani/economic-survey-says-india-s-foreign-exchange-reserves-have-increased-114070900466_1.html", "vintage": "2026-07-30" },
+    "calendar": "FY",
+    "points": [
+      { "country": "IND", "period": "FY2012-13", "value": 292.0, "status": "verified" },
+      { "country": "IND", "period": "FY2013-14", "value": 304.2, "status": "verified", "note": "Verified against Economic Survey 2013-14 this cycle" }
+    ]
+  },
+  {
+    "id": "cad-gdp",
+    "title": "Current account deficit",
+    "unit": "% of GDP",
+    "domain": "macro",
+    "tier": "T1",
+    "source": { "name": "RBI", "url": "https://www.rbi.org.in/" },
+    "calendar": "FY",
+    "points": [
+      { "country": "IND", "period": "FY2012-13", "value": 4.8, "status": "approx", "note": "Peak; US$87.8bn" },
+      { "country": "IND", "period": "FY2013-14", "value": 1.7, "status": "approx", "note": "Post taper-tantrum compression" }
+    ]
+  },
+  {
+    "id": "psb-gross-npa",
+    "title": "Public sector banks gross NPA ratio",
+    "unit": "% of advances",
+    "domain": "banking",
+    "tier": "T1",
+    "source": { "name": "RBI", "url": "https://www.rbi.org.in/" },
+    "calendar": "FY",
+    "breaks": [{ "period": "FY2015-16", "note": "Asset Quality Review forces recognition; pre-AQR figures understate true stress via CDR masking", "provenanceRef": "P-06" }],
+    "points": [
+      { "country": "IND", "period": "FY2013-14", "value": 4.4, "status": "approx", "note": "Reported; true stress hidden pre-AQR" },
+      { "country": "IND", "period": "FY2017-18", "value": 14.58, "status": "approx", "note": "Post-AQR peak, March 2018" }
+    ]
+  },
+  {
+    "id": "poverty-tendulkar",
+    "title": "Poverty headcount, Tendulkar methodology",
+    "unit": "% of population",
+    "domain": "poverty",
+    "tier": "T1",
+    "source": { "name": "Planning Commission press note, 22 Jul 2013", "url": "https://pib.gov.in/" },
+    "calendar": "FY",
+    "breaks": [{ "period": "FY2011-12", "note": "Last official consumption-based estimate; 2017-18 survey withheld", "provenanceRef": "P-03" }],
+    "points": [
+      { "country": "IND", "period": "FY2004-05", "value": 37.2, "status": "verified" },
+      { "country": "IND", "period": "FY2009-10", "value": 29.8, "status": "verified" },
+      { "country": "IND", "period": "FY2011-12", "value": 21.9, "status": "verified" }
+    ],
+    "provenanceRefs": ["P-03"]
+  },
+  {
+    "id": "lfpr-overall",
+    "title": "Labour force participation rate, usual status (UPSS)",
+    "unit": "%",
+    "domain": "employment",
+    "tier": "T1",
+    "source": { "name": "NSSO EUS 68th round", "url": "https://mospi.gov.in/" },
+    "calendar": "FY",
+    "breaks": [{ "period": "FY2017-18", "note": "EUS ends; PLFS begins with changed design", "provenanceRef": "P-02" }],
+    "points": [
+      { "country": "IND", "period": "FY2004-05", "value": 42.85, "status": "approx" },
+      { "country": "IND", "period": "FY2011-12", "value": 39.5, "status": "approx" }
+    ],
+    "provenanceRefs": ["P-02"]
+  },
+  {
+    "id": "nh-network",
+    "title": "National highway network length",
+    "unit": "km",
+    "domain": "infrastructure",
+    "tier": "T1",
+    "source": { "name": "MoRTH", "url": "https://morth.nic.in/" },
+    "calendar": "FY",
+    "points": [
+      { "country": "IND", "period": "FY2013-14", "value": 91287, "status": "approx", "note": "April 2014; construction pace 11.6 km/day" }
+    ]
+  },
+  {
+    "id": "exports-gdp",
+    "title": "Exports of goods and services",
+    "unit": "% of GDP",
+    "domain": "foreign",
+    "tier": "T2",
+    "source": { "name": "World Bank WDI / RBI", "url": "https://data.worldbank.org/indicator/NE.EXP.GNFS.ZS" },
+    "calendar": "FY",
+    "points": [
+      { "country": "IND", "period": "FY2013-14", "value": 25.4, "status": "approx", "note": "The peak; key later comparison as it declined post-2014" }
+    ]
+  },
+  {
+    "id": "solar-capacity",
+    "title": "Grid-connected solar installed capacity",
+    "unit": "GW",
+    "domain": "environment",
+    "tier": "T1",
+    "source": { "name": "MNRE via PIB (7 Feb 2024 release)", "url": "https://pib.gov.in/PressReleasePage.aspx?PRID=2003561", "vintage": "2026-07-30" },
+    "calendar": "FY",
+    "points": [
+      { "country": "IND", "period": "FY2013-14", "value": 2.82, "status": "verified", "note": "March 2014. Corrects the ~2.6 GW figure in the phase-1 report" }
+    ]
+  },
+  {
+    "id": "delhi-pm25",
+    "title": "Delhi annual mean PM2.5 (WHO ambient air database)",
+    "unit": "µg/m³",
+    "domain": "environment",
+    "tier": "T2",
+    "source": { "name": "WHO Ambient Air Pollution database 2014", "url": "https://www.who.int/data/gho/data/themes/air-pollution/who-air-quality-database", "vintage": "2026-07-30" },
+    "calendar": "CY",
+    "points": [
+      { "country": "IND", "period": "2014", "value": 153, "status": "verified", "note": "2014 database release; underlying data 2008-2013, so genuinely a UPA-era reading. 13 of the 20 most polluted cities were Indian" }
+    ]
+  },
+  {
+    "id": "remittances",
+    "title": "Inward remittances",
+    "unit": "US$ billion",
+    "domain": "foreign",
+    "tier": "T2",
+    "source": { "name": "World Bank Migration and Development Brief", "url": "https://www.businesstoday.in/latest/economy-politics/story/world-bank-study-india-gets-usd-70-billion-remittance-in-2014-50666-2015-04-14", "vintage": "2026-07-30" },
+    "calendar": "CY",
+    "points": [
+      { "country": "IND", "period": "2014", "value": 70, "status": "verified", "note": "World's largest recipient; China 64, Philippines 28" }
+    ]
+  },
+  {
+    "id": "gdp-per-capita-usd",
+    "title": "GDP per capita, current US$ (peer panel)",
+    "unit": "US$",
+    "domain": "macro",
+    "tier": "T2",
+    "source": { "name": "World Bank WDI — vintage to be pinned at panel pull", "url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD" },
+    "calendar": "CY",
+    "points": [
+      { "country": "IND", "period": "2014", "value": 1560, "status": "approx", "note": "All panel values pending single-vintage WDI pull; see P-09" },
+      { "country": "CHN", "period": "2014", "value": 7600, "status": "approx" },
+      { "country": "IDN", "period": "2014", "value": 3500, "status": "approx" },
+      { "country": "VNM", "period": "2014", "value": 2050, "status": "approx", "note": "Pre-rebasing vintage figure; post-2021 rebasing WDI shows higher — vintage matters, see P-09" },
+      { "country": "BGD", "period": "2014", "value": 1100, "status": "approx" }
+    ],
+    "provenanceRefs": ["P-09"]
+  }
+]

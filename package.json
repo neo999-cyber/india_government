@@ -1,0 +1,32 @@
+{
+  "name": "india-roadmap-instrument",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "validate": "node tools/validate.mjs",
+    "validate:incoming": "node tools/validate.mjs --incoming",
+    "validate:strict": "node tools/validate.mjs --strict",
+    "validate:selftest": "node tools/selftest.mjs",
+    "dev": "next dev",
+    "build": "npm run validate && next build",
+    "start": "npx serve out",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "16.2.12",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "typescript": "^5.9.3"
+  }
+}

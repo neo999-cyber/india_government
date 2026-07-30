@@ -1,0 +1,114 @@
+[
+  {
+    "id": "schema-violation",
+    "title": "Closed schema, unknown property, bad tier",
+    "unit": "%",
+    "domain": "macro",
+    "tier": "T9",
+    "source": { "name": "Nowhere", "url": "https://example.org/" },
+    "calendar": "FY",
+    "points": [{ "country": "IND", "period": "FY2013-14", "value": 1, "status": "verified" }],
+    "editorialSpin": "unknown properties must be rejected"
+  },
+  {
+    "id": "dangling-refs",
+    "title": "References that do not resolve",
+    "unit": "%",
+    "domain": "macro",
+    "tier": "T1",
+    "source": { "name": "Nowhere", "url": "https://example.org/" },
+    "calendar": "FY",
+    "breaks": [{ "period": "FY2015-16", "note": "Break pointing at a missing dispute record", "provenanceRef": "P-99" }],
+    "points": [{ "country": "IND", "period": "FY2013-14", "value": 1, "status": "verified" }],
+    "provenanceRefs": ["P-98"]
+  },
+  {
+    "id": "calendar-mixed",
+    "title": "Fiscal-year series carrying calendar-year periods",
+    "unit": "%",
+    "domain": "macro",
+    "tier": "T1",
+    "source": { "name": "Nowhere", "url": "https://example.org/" },
+    "calendar": "FY",
+    "points": [
+      { "country": "IND", "period": "2014", "value": 1, "status": "verified" },
+      { "country": "IND", "period": "FY2013-15", "value": 2, "status": "verified" }
+    ]
+  },
+  {
+    "id": "duplicate-points",
+    "title": "Two values for one country-period",
+    "unit": "%",
+    "domain": "macro",
+    "tier": "T1",
+    "source": { "name": "Nowhere", "url": "https://example.org/" },
+    "calendar": "FY",
+    "points": [
+      { "country": "IND", "period": "FY2013-14", "value": 1, "status": "verified" },
+      { "country": "IND", "period": "FY2013-14", "value": 2, "status": "verified" }
+    ]
+  },
+  {
+    "id": "duplicate-id",
+    "title": "First record with this id",
+    "unit": "%",
+    "domain": "macro",
+    "tier": "T1",
+    "source": { "name": "Nowhere", "url": "https://example.org/" },
+    "calendar": "FY",
+    "points": [{ "country": "IND", "period": "FY2013-14", "value": 1, "status": "verified" }]
+  },
+  {
+    "id": "duplicate-id",
+    "title": "Second record with this id",
+    "unit": "%",
+    "domain": "macro",
+    "tier": "T1",
+    "source": { "name": "Nowhere", "url": "https://example.org/" },
+    "calendar": "FY",
+    "points": [{ "country": "IND", "period": "FY2013-14", "value": 1, "status": "verified" }]
+  },
+  {
+    "id": "contested-index-no-dispute",
+    "title": "T5 index with no dispute link",
+    "unit": "rank",
+    "domain": "governance",
+    "tier": "T5",
+    "source": { "name": "Some index", "url": "https://example.org/" },
+    "calendar": "CY",
+    "points": [{ "country": "IND", "period": "2014", "value": 140, "status": "approx" }]
+  },
+  {
+    "id": "panel-no-vintage",
+    "title": "Verified peer panel with no recorded vintage",
+    "unit": "US$",
+    "domain": "macro",
+    "tier": "T2",
+    "source": { "name": "WDI", "url": "https://data.worldbank.org/" },
+    "calendar": "CY",
+    "points": [
+      { "country": "IND", "period": "2014", "value": 1560, "status": "verified" },
+      { "country": "BGD", "period": "2014", "value": 1100, "status": "verified" }
+    ]
+  },
+  {
+    "id": "gdp-growth-old-base",
+    "title": "Old-base GDP standing alone, without its pair",
+    "unit": "% y/y",
+    "domain": "macro",
+    "tier": "T1",
+    "source": { "name": "CSO/MoSPI (old series)", "url": "https://mospi.gov.in/" },
+    "calendar": "FY",
+    "points": [{ "country": "IND", "period": "FY2013-14", "value": 4.7, "status": "verified" }]
+  },
+  {
+    "id": "no-backlink-series",
+    "title": "Series named by a dispute record but not linking back",
+    "unit": "%",
+    "domain": "macro",
+    "tier": "T1",
+    "source": { "name": "Nowhere", "url": "https://example.org/" },
+    "calendar": "FY",
+    "points": [{ "country": "IND", "period": "FY2013-14", "value": 1, "status": "verified" }]
+  }
+]
