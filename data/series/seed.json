@@ -1587,7 +1587,7 @@
   "provenanceRefs": [
    "P-29"
   ],
-  "notes": "WORSENED SHARPLY — the single most important regressive outcome in this domain. Anaemia in women also rose. CAVEAT REQUIRING VERIFICATION: haemoglobin testing method may have differed between NFHS rounds, which would affect comparability; this must be checked against NFHS-5 methodology documentation before the reversal is cited as settled. NFHS-6 fieldwork delayed; publication status uncertain as of mid-2026.",
+  "notes": "Anaemia in women also rose over the same period. NFHS-6 fieldwork has been delayed and its publication status is uncertain as of mid-2026, so this remains the last authoritative national reading.",
   "caveat": "Cross-round comparability unverified — haemoglobin testing method may have differed between NFHS-4 and NFHS-5. Do not cite the increase as settled until checked against NFHS-5 methodology."
  },
  {
@@ -1613,7 +1613,7 @@
   "provenanceRefs": [
    "P-29"
   ],
-  "notes": "T5 contested index. The Government of India formally rejects the methodology; its Poshan Tracker shows child wasting below 7.2%. Both readings recorded, neither endorsed.",
+  "notes": "Recorded as a reading, not a finding. See P-29 for the methodology dispute.",
   "caveat": "Contested index. The Government of India formally rejects the methodology and its Poshan Tracker reports child wasting below 7.2% against the GHI's 18.7%. Neither reading is endorsed here."
  },
  {

@@ -3,7 +3,7 @@ import type { ProvenanceRecord, Series } from '@/lib/types';
 import type { CoverageUsagePair } from '@/lib/rules';
 import { periodLabel } from '@/lib/format';
 import { SeriesTable } from './SeriesTable';
-import { Value } from './marks';
+import { Absence, Value } from './marks';
 
 /**
  * A coverage figure beside the usage figure that qualifies it (P-22).
@@ -24,9 +24,12 @@ import { Value } from './marks';
  * Only when they carry the identical unit string. That string is where the data authors put
  * the denominator — "% of rural households" against "% of certified households", "crore
  * cards" against "crore admissions" — so comparing unit strings is comparing populations,
- * not formatting. As of phase 4 no pair passes this test, and that is the finding rather
- * than a gap in the data: a connection is not a refill, a tap is not safe water, and a card
- * is not an admission. Subtracting them would manufacture a number no source supports,
+ * not formatting.
+ *
+ * PMAY-G passes: sanctioned and completed are both "crore houses", counting the same objects
+ * at two stages, so the wedge is a real quantity. The other four fail, and that is the finding
+ * rather than a gap in the data — a connection is not a refill, a tap is not safe water, and
+ * a card is not an admission. Subtracting those would manufacture a number no source supports,
  * which is the error P-22 exists to name, committed in the opposite direction.
  */
 function comparable(coverage: Series, usage: Series): boolean {
@@ -151,18 +154,16 @@ export function CoverageUsageView({
         ) : null}
       </div>
 
-      {/* A stage with no measurement is rendered, not omitted. Sanctioned beside completed
-          reads as the whole chain unless the missing third link is on the page. */}
+      {/* A stage with no measurement is rendered, not omitted (CLAUDE.md rule 4a).
+          Sanctioned beside completed reads as the whole chain unless the missing third
+          link is on the page. */}
       {pair.unmeasuredStage ? (
-        <div className="cu-unmeasured">
-          <span className="label">Next stage: not measured</span>
-          <p>
-            No public measurement exists for <strong>{pair.unmeasuredStage}</strong>. The cascade
-            therefore stops one stage short of the outcome. Nothing is estimated in its place and
-            no series stands here — an empty stage stated is a finding, where the same stage left
-            off the page would read as though the stage before it were the end of the chain.
-          </p>
-        </div>
+        <Absence heading="Next stage: not measured" what={pair.unmeasuredStage}>
+          The cascade therefore stops one stage short of the outcome. Nothing is estimated in
+          its place and no series stands here — an empty stage stated is a finding, where the
+          same stage left off the page would read as though the stage before it were the end of
+          the chain.
+        </Absence>
       ) : null}
 
       <p className="cu-gap">
