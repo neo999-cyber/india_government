@@ -438,3 +438,33 @@ the sides are the right way up. All nine pass.
 card neutral on the corrective and P-31's still biased, the P-30 page split correctly, the
 `nh-network-length` caveat still byte-exact inside a grid card at 390px, no nested anchors, no
 console errors.
+
+---
+
+# Verification log — cycle 2026-07-31k (log integrity: what happened to this file)
+
+## Read this before trusting the cycle letters
+
+The entries above are not in letter order and two of them say the same thing. Both are artefacts of the incident described below, and nothing has been deleted to tidy them.
+
+- **31h and 31j are the same entry.** Both record the pairing decision. 31h arrived via `2e0ffbc`, the commit that destroyed 31i; 31j is the corrected re-append. **31j supersedes 31h.** 31h is retained because this log is append-only.
+- **31i sits after 31j** because it was restored later, as an append. Its content predates both.
+- **Letters are assigned once and never reused or renumbered.** Entries cite each other by letter, so renumbering to fix cosmetics would break real references. Order in this file is arrival order, not chronological order.
+
+## Process correction (accurate account, superseding the version inside 31j)
+
+Three incidents of wholesale replacement destroying correct work, all originating from chat sending a complete file built on a stale copy:
+
+1. **Phase 4** — a `seed.json` drop silently reverted the `exports-gdp` provenance backlink added on the code side. Caught only because the bidirectional backlink check already existed.
+2. **`bb36272`** — a full-file replacement of this log deleted 71 lines of cycle 31i. Caught by reading the commit diff; reverted by `9fed5ed`.
+3. **`2e0ffbc`** — the same replacement was committed again after the revert, deleting 31i a second time: the `mirror-contradiction` rule and both-lists backlink with their fixture proofs, the per-(series, record) scoping finding evidenced by `nh-construction-pace` being P-30's corrective while genuinely affected by P-31, the nine-pair derivation table, and the verification record for an already-deployed phase.
+
+For a period this file carried 31j's conclusion — a restatement of 31i's section 4 — without 31i's working or verification record. **The failure mode is that a summary reads complete enough that nobody notices the evidence is gone.** It was found by the code side checking rather than by anything in the file signalling absence.
+
+Compounding it: chat then asserted "restored from `060f82e`" and "31h is intentionally unused", both false, both claims about repository state chat could not observe.
+
+## Rules, standing
+
+- **Never replace a file you did not write in its entirety this cycle.** Append, or dictate the delta. This log has two authors and must only ever be appended to.
+- **Cycle letters are assigned once.** Never reused, never renumbered. Gaps and out-of-order arrival are acceptable and are explained here.
+- **Do not assert repository state you cannot observe.** Ask for `git status`, a diff, or a grep count instead. All three incidents above were either caused or prolonged by asserting a state rather than checking it.
