@@ -1,0 +1,12 @@
+[
+  {
+    "id": "PR-94",
+    "kind": "coverage-usage",
+    "domain": "infrastructure",
+    "a": { "series": "headline-figure", "label": "Placed as the headline" },
+    "b": { "series": "the-corrective", "label": "Placed as the correction" },
+    "framing": "The pair places these one way round and P-94 places them the other, so the view would present the honest metric as the figure needing qualification.",
+    "gapComputable": false,
+    "gapReason": "Not applicable — the fixture exists to fail on the inversion."
+  }
+]

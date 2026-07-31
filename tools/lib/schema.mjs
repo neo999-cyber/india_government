@@ -7,6 +7,7 @@ const SCHEMA_FILES = {
   series: 'series.schema.json',
   ledger: 'ledger.schema.json',
   provenance: 'provenance.schema.json',
+  pairs: 'pairs.schema.json',
 };
 
 /**
@@ -34,7 +35,7 @@ export const AJV_OPTIONS = Object.freeze({
 });
 
 /**
- * Compile the three layer schemas. The schemas are the contract (CLAUDE.md, Roles):
+ * Compile the layer schemas. The schemas are the contract (CLAUDE.md, Roles):
  * code may propose changes to them but never works around them.
  * @param {string} schemasDir
  * @returns {{ validators: Record<string, import('ajv').ValidateFunction> }}

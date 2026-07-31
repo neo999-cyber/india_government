@@ -81,16 +81,16 @@ const MUST_FIRE = [
  */
 const ISOLATED = [
   { dir: 'regime-gap', rule: 'regime-handoff' },
-  { dir: 'pair-half', rule: 'pair-incomplete', expect: 'usage counterpart' },
   { dir: 'caveat-orphan', rule: 'caveat-target' },
-  // Same rule, different branch: a pair standing its usage side on a declared absence, where
-  // the coverage series declares none. `expect` is what tells the two apart — without it a
-  // fixture passes on any pair-incomplete error, including one from the branch it is not
-  // testing, and the new branch could stop firing unnoticed.
-  { dir: 'pair-absent-counterpart', rule: 'pair-incomplete', expect: 'carries no "unmeasured" entry' },
   { dir: 'mirror-contradiction', rule: 'mirror-contradiction' },
-  { dir: 'pair-inverted', rule: 'pair-inverted' },
-  { dir: 'contested-half', rule: 'contested-incomplete', expect: 'states a direction the evidence does not establish' },
+  // One fixture root, four branches of pair-side, told apart by `expect`. Without it a
+  // fixture passes on any pair-side error — including one from a branch it is not testing —
+  // and a branch could stop firing unnoticed.
+  { dir: 'pairs-malformed', rule: 'pair-side', expect: 'is not in /data' },
+  { dir: 'pairs-malformed', rule: 'pair-side', expect: 'Exactly one must be set' },
+  { dir: 'pairs-malformed', rule: 'pair-side', expect: 'which declares 1 (valid 0-0)' },
+  { dir: 'pairs-malformed', rule: 'pair-side', expect: 'carries no competingAccounts' },
+  { dir: 'pair-inverted', rule: 'pair-inverted', expect: 'the wrong way round' },
   { dir: 'reason-kind-missing', rule: 'reason-kind' },
   { dir: 'absence-dispute-bare', rule: 'absence-dispute', expect: 'must not be asserted bare' },
 ];

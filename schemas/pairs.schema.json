@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pairs.schema.json",
+  "title": "Paired series — coverage-usage and contested",
+  "description": "The fourth data layer. Which series pair with which, which side is which, and what each side should be called are research judgements, not display choices — the same class of knowledge as caveat and unmeasured, both of which were moved out of code for this reason. Built when the trigger set in log cycle 31j fired: a second domain (employment) required absence-pairs.",
+  "type": "object",
+  "required": ["id", "kind", "domain", "a", "b", "framing"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^PR-\\d{2}$" },
+    "kind": {
+      "enum": ["coverage-usage", "contested"],
+      "description": "coverage-usage is ASYMMETRIC — a records what was delivered, b what it converted into, and the order is the argument. contested is SYMMETRIC — two instruments measuring the same thing that disagree, where neither answers the other and neither may be shown alone."
+    },
+    "domain": { "enum": ["macro", "banking", "employment", "poverty", "human-development", "infrastructure", "welfare", "governance", "kashmir", "federalism", "foreign", "defence", "environment", "demography"] },
+    "a": { "$ref": "#/$defs/side" },
+    "b": { "$ref": "#/$defs/side" },
+    "framing": { "type": "string", "minLength": 30, "description": "One sentence, specific to this pair. A standing sentence about connections and taps would misdescribe a road network." },
+    "gapComputable": { "type": "boolean", "default": false },
+    "gapReason": { "type": "string", "description": "Required when gapComputable is false. Why subtraction is not available — different quantities, different denominators, different populations, or a disagreement rather than a gap." },
+    "provenanceRefs": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" }
+  },
+  "$defs": {
+    "side": {
+      "type": "object",
+      "required": ["label"],
+      "additionalProperties": false,
+      "description": "Exactly one of series, absenceFrom or competingAccountsFrom must be set.",
+      "properties": {
+        "series": { "type": "string" },
+        "absenceFrom": { "type": "string", "description": "Series or ledger id whose unmeasured declaration occupies this position — the counterpart does not exist and that is the finding." },
+        "absenceIndex": { "type": "integer", "minimum": 0, "default": 0 },
+        "competingAccountsFrom": { "type": "string", "description": "Provenance id whose competingAccounts occupy this position — the counterpart is a dispute between sources, not a series." },
+        "label": { "type": "string", "minLength": 4, "description": "What this side IS. Hand-written per pair and never generic: 'The build record' is not 'sustained use'." }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "gapComputable": { "const": false } } },
+      "then": { "required": ["gapReason"] }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "contested" } } },
+      "then": { "properties": { "gapComputable": { "const": false } } }
+    }
+  ]
+}

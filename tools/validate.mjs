@@ -97,7 +97,7 @@ const print = (list, level) => {
 if (!quiet) {
   console.log(
     `${C.bold}validate${C.off} ${C.dim}·${C.off} ${files.length} file(s) ${C.dim}·${C.off} ` +
-      `${counts.series} series (${counts.points} points), ${counts.ledger} ledger, ${counts.provenance} provenance` +
+      `${counts.series} series (${counts.points} points), ${counts.ledger} ledger, ${counts.provenance} provenance, ${counts.pairs} pairs` +
       `${includeIncoming ? ` ${C.dim}· incoming included${C.off}` : ''}`,
   );
 }

@@ -1,0 +1,258 @@
+[
+ {
+  "id": "PR-01",
+  "kind": "coverage-usage",
+  "domain": "welfare",
+  "a": {
+   "series": "ujjwala-connections",
+   "label": "Connections issued"
+  },
+  "b": {
+   "series": "ujjwala-refills",
+   "label": "Refills actually taken"
+  },
+  "framing": "A gas connection is a precondition for clean cooking; a refill is the cooking. The scheme was justified on the second and is reported on the first.",
+  "gapComputable": false,
+  "gapReason": "Different quantities — cumulative connections against refills per beneficiary per year. No subtraction is meaningful.",
+  "provenanceRefs": [
+   "P-22"
+  ]
+ },
+ {
+  "id": "PR-02",
+  "kind": "coverage-usage",
+  "domain": "infrastructure",
+  "a": {
+   "series": "jjm-tap-coverage",
+   "label": "Households with a tap"
+  },
+  "b": {
+   "series": "jjm-functionality",
+   "label": "Households receiving water to standard"
+  },
+  "framing": "Certification records a tap installed, not water delivered — a distinction the Ministry's own functionality assessment made.",
+  "gapComputable": false,
+  "gapReason": "Different denominators. 82% is of ALL rural households; 76% is of CERTIFIED households, a subset of connected ones. Neither bounds the other, so no national functional-coverage figure is derivable and '6 points' would be invented.",
+  "provenanceRefs": [
+   "P-25",
+   "P-22"
+  ]
+ },
+ {
+  "id": "PR-03",
+  "kind": "coverage-usage",
+  "domain": "welfare",
+  "a": {
+   "series": "pmjay-cards",
+   "label": "Cards created"
+  },
+  "b": {
+   "series": "pmjay-admissions",
+   "label": "Hospital admissions authorised"
+  },
+  "framing": "A card confers eligibility. An admission is care received. The two are cited interchangeably and differ by an order of magnitude.",
+  "gapComputable": false,
+  "gapReason": "An eligibility stock against a flow of cumulative events. Subtracting them would compare a population to a count of episodes.",
+  "provenanceRefs": [
+   "P-27",
+   "P-22"
+  ]
+ },
+ {
+  "id": "PR-04",
+  "kind": "coverage-usage",
+  "domain": "welfare",
+  "a": {
+   "series": "pmay-g-houses",
+   "label": "Houses sanctioned"
+  },
+  "b": {
+   "series": "pmay-g-completed",
+   "label": "Houses completed"
+  },
+  "framing": "The only pair in the dataset where both sides share a unit, so the wedge is real — and the chain does not end here.",
+  "gapComputable": true,
+  "provenanceRefs": [
+   "P-22"
+  ],
+  "notes": "0.92 crore. Occupancy, the third stage, has no measurement — see the absence declared on pmay-g-completed."
+ },
+ {
+  "id": "PR-05",
+  "kind": "coverage-usage",
+  "domain": "infrastructure",
+  "a": {
+   "series": "nh-network-length",
+   "label": "Headline network figure"
+  },
+  "b": {
+   "series": "nh-construction-pace",
+   "label": "The build record"
+  },
+  "framing": "Not a usage pair. The second is the honest measure of the same activity the first overstates: roughly 54,004 km of the network increase is reclassified state roads.",
+  "gapComputable": false,
+  "gapReason": "Different quantities — network length in kilometres against build rate in kilometres per day. The relation is correction, not conversion.",
+  "provenanceRefs": [
+   "P-30"
+  ]
+ },
+ {
+  "id": "PR-06",
+  "kind": "coverage-usage",
+  "domain": "infrastructure",
+  "a": {
+   "series": "airports-operational",
+   "label": "Facility count"
+  },
+  "b": {
+   "series": "udan-routes",
+   "label": "Routes actually operating"
+  },
+  "framing": "Airports were counted on a broadened basis including heliports and waterdromes; roughly half the routes launched to serve them have since stopped.",
+  "gapComputable": false,
+  "gapReason": "Facilities against routes — different objects entirely.",
+  "provenanceRefs": [
+   "P-38"
+  ]
+ },
+ {
+  "id": "PR-07",
+  "kind": "coverage-usage",
+  "domain": "infrastructure",
+  "a": {
+   "series": "metro-network",
+   "label": "Track commissioned"
+  },
+  "b": {
+   "absenceFrom": "metro-network",
+   "absenceIndex": 0,
+   "label": "Ridership against projection — no published series"
+  },
+  "framing": "Metro projects were approved on ridership forecasts and a 14% return threshold; whether they meet those forecasts is not published as a series.",
+  "gapComputable": false,
+  "gapReason": "The counterpart does not exist. Evidence comes from one-off CAG audits and academic studies, so the track figure cannot be qualified by anything and must not be read as though it had been.",
+  "provenanceRefs": [
+   "P-22"
+  ]
+ },
+ {
+  "id": "PR-08",
+  "kind": "coverage-usage",
+  "domain": "infrastructure",
+  "a": {
+   "series": "household-electrification",
+   "label": "Households connected"
+  },
+  "b": {
+   "absenceFrom": "household-electrification",
+   "absenceIndex": 0,
+   "label": "Hours of supply received — no national series"
+  },
+  "framing": "Saubhagya connected 2.86 crore households in eighteen months. How many hours a day they receive power is not measured nationally.",
+  "gapComputable": false,
+  "gapReason": "The counterpart does not exist. Survey evidence indicates around 53% of villages received under twelve hours a day, but there is no continuous series.",
+  "provenanceRefs": [
+   "P-32",
+   "P-22"
+  ]
+ },
+ {
+  "id": "PR-09",
+  "kind": "coverage-usage",
+  "domain": "employment",
+  "a": {
+   "series": "epfo-net-additions",
+   "label": "Net payroll additions"
+  },
+  "b": {
+   "absenceFrom": "epfo-net-additions",
+   "absenceIndex": 0,
+   "label": "First-time entrants — no measurement exists"
+  },
+  "framing": "Net additions include re-joiners and job-switchers, so the same worker can be counted repeatedly; India maintains no register that would separate them.",
+  "gapComputable": false,
+  "gapReason": "The counterpart does not exist. No establishment-level longitudinal payroll register exists, so first-time entry cannot be extracted from the net figure.",
+  "provenanceRefs": [
+   "P-42",
+   "P-22"
+  ]
+ },
+ {
+  "id": "PR-10",
+  "kind": "coverage-usage",
+  "domain": "employment",
+  "a": {
+   "series": "eshram-registrations",
+   "label": "Workers registered"
+  },
+  "b": {
+   "absenceFrom": "eshram-registrations",
+   "absenceIndex": 0,
+   "label": "Benefits delivered — not published"
+  },
+  "framing": "e-Shram exists because the 2020 exodus showed the state could not identify its informal workforce. Whether registration converts into delivered social security is not reported.",
+  "gapComputable": false,
+  "gapReason": "The counterpart does not exist as a series. Registration is published; downstream disbursement keyed to those identifiers is not.",
+  "provenanceRefs": [
+   "P-22"
+  ]
+ },
+ {
+  "id": "PR-11",
+  "kind": "coverage-usage",
+  "domain": "human-development",
+  "a": {
+   "series": "sanitation-basic",
+   "label": "Population with basic sanitation"
+  },
+  "b": {
+   "competingAccountsFrom": "P-24",
+   "label": "What independent survey found"
+  },
+  "framing": "Rural India was declared open-defecation free in October 2019; independent panel evidence from the four states that mattered most found 44% still defecating in the open.",
+  "gapComputable": false,
+  "gapReason": "Different populations and different instruments — a national WDI series against a four-state panel survey. The counterpart is a dispute between sources, not a series.",
+  "provenanceRefs": [
+   "P-24",
+   "P-22"
+  ]
+ },
+ {
+  "id": "PR-12",
+  "kind": "contested",
+  "domain": "employment",
+  "a": {
+   "series": "unemployment-rate",
+   "label": "PLFS, official"
+  },
+  "b": {
+   "series": "unemployment-rate-cmie",
+   "label": "CMIE, private"
+  },
+  "framing": "The two instruments disagree about the direction of employment change, not merely its level — over 2017-18 to 2021-22 they record growth of opposite sign.",
+  "gapComputable": false,
+  "gapReason": "Two figures that disagree about the sign of a change have a disagreement, not a gap. Neither is the corrective; neither may be shown alone.",
+  "provenanceRefs": [
+   "P-41"
+  ]
+ },
+ {
+  "id": "PR-13",
+  "kind": "contested",
+  "domain": "employment",
+  "a": {
+   "series": "lfpr-overall",
+   "label": "PLFS, official"
+  },
+  "b": {
+   "series": "lfpr-overall-cmie",
+   "label": "CMIE, private"
+  },
+  "framing": "Roughly twenty percentage points apart, with the divergence concentrated almost entirely among women and showing no convergence across reference periods.",
+  "gapComputable": false,
+  "gapReason": "A disagreement between instruments, not a measurable wedge.",
+  "provenanceRefs": [
+   "P-41"
+  ]
+ }
+]

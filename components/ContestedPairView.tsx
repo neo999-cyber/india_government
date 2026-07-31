@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import type { ProvenanceRecord, Series } from '@/lib/types';
-import type { ContestedPair } from '@/lib/rules';
+import type { Pair, Series } from '@/lib/types';
 import { periodLabel } from '@/lib/format';
 import { SeriesTable } from './SeriesTable';
 import { Absences, CaveatFlag, SourceLine, TierTag, Value } from './marks';
@@ -25,10 +24,11 @@ const latest = (s: Series) => {
   return india[india.length - 1];
 };
 
-function Instrument({ series }: { series: Series }) {
+function Instrument({ series, label }: { series: Series; label: string }) {
   const point = latest(series);
   return (
     <div className="cp-side">
+      <span className="label">{label}</span>
       <h3>
         <Link href={`/series/${series.id}/`}>{series.title}</Link>
       </h3>
@@ -56,12 +56,16 @@ function Instrument({ series }: { series: Series }) {
 export function ContestedPairView({
   pair,
   instruments,
-  governing,
+  labels,
+  reconciliation,
 }: {
-  pair: ContestedPair;
+  pair: Pair;
   /** Both series, in the pair's declared order — which is not precedence. */
   instruments: Series[];
-  governing?: ProvenanceRecord;
+  /** Hand-written per side in data/pairs.json, never derived from the titles. */
+  labels: [string, string];
+  /** The governing record's bridgeNote, where one exists. */
+  reconciliation?: string;
 }) {
   if (instruments.length < 2) return null;
 
@@ -70,33 +74,34 @@ export function ContestedPairView({
       <div className="cp-head">
         <span className="label">Contested measurement</span>
         <p>
-          {pair.subject}. {pair.framing} Both instruments are carried in full and neither is
-          presented as the answer (
-          <Link href={`/provenance/${pair.governing}/`}>{pair.governing}</Link>
-          {governing ? <>, {governing.title}</> : null}). They are shown in a fixed order for
-          layout; the order is not precedence.
+          {pair.framing} Both instruments are carried in full and neither is presented as the
+          answer
+          {(pair.provenanceRefs ?? []).length > 0 ? (
+            <>
+              {' ('}
+              {(pair.provenanceRefs ?? []).map((ref, i) => (
+                <span key={ref}>
+                  {i > 0 ? ', ' : ''}
+                  <Link href={`/provenance/${ref}/`}>{ref}</Link>
+                </span>
+              ))}
+              {')'}
+            </>
+          ) : null}
+          . They are shown in a fixed order for layout; the order is not precedence.
         </p>
       </div>
 
       <div className="cp-pair">
-        {instruments.map((s) => (
-          <Instrument key={s.id} series={s} />
+        {instruments.map((s, i) => (
+          <Instrument key={s.id} series={s} label={labels[i] ?? ''} />
         ))}
       </div>
 
       <p className="cp-note">
         <span className="label">What can be said</span>
-        {governing?.bridgeNote ? (
-          governing.bridgeNote
-        ) : (
-          <>
-            No reconciliation exists between these two instruments and none should be
-            manufactured.
-          </>
-        )}{' '}
-        No difference is computed between them: two figures that disagree about the sign of the
-        change do not have a gap, they have a disagreement, and subtracting them would produce
-        a number describing neither survey.
+        {reconciliation ?? 'No reconciliation exists between these two instruments and none should be manufactured.'}{' '}
+        {pair.gapReason}
       </p>
     </section>
   );
