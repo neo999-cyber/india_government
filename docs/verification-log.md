@@ -328,3 +328,42 @@ The labels belong there too. "Headline network figure" against "The build record
 - **Backlink extended over both lists.** A corrective carries the ref for navigation rather than distortion, but must still carry it — otherwise a reader landing on the honest metric cannot reach the record explaining why it is the honest one.
 - **Provenance page split into "Series this record distorts" and "Series that correct for it."** On P-30 that distinction IS the finding; listed together it is invisible.
 - **`pair-inverted` as an error.** Derivation is impossible but verification is not — a record calling a pair's coverage side corrective means the pair is upside down. The right use of a signal that is informative but incomplete, and a pattern to reach for again.
+
+---
+
+# Verification log — cycle 2026-07-31j (pairing: decision recorded, not built)
+
+## DECISION: pairs stay hand-written. Recorded so it is not relitigated.
+
+Derivation from `affectsSeries` / `correctiveSeries` was tested across all nine pairs and cannot work:
+
+- **P-22** maps 4 affected against 5 correctives with nothing saying which goes with which. Recovering `ujjwala-connections` to `ujjwala-refills` needs id-prefix string matching — the fragile-heuristic trap this validator has hit twice already.
+- **P-30** maps 1 against 2: `nh-four-lane` is equally a corrective but is not the pair's usage side.
+- **Four of nine cannot be derived at all**: airports (P-38 has no corrective), metro (in no list), electrification (counterpart is an absence), sanitation.
+
+**The structural finding, which changes the model's semantics:** `sanitation-basic` is corrective in P-22 and affected in P-24. **Role is a property of the (series, record) RELATION, not of a series.** A derived list would have to choose which record to ask — the hand-written decision the refactor was meant to remove. This does not change when more domains land. The same fact justifies scoping `directionOfBias` per (series, record), as cycle 31i implemented.
+
+## Where pairing eventually belongs, and the trigger
+
+NOT `pairs` on the provenance record: four of nine pairs are not (affected, corrective) relations at all. Metro and electrification pair a coverage series against **its own declared absence**, mediated by no provenance record.
+
+The eventual home is a fourth data layer, `data/pairs.json`:
+
+```
+{ id, domain,
+  coverage: { series, label },
+  usage: { series, label } | { absenceFrom, index, label },
+  framing: "one sentence, per pair",
+  gapComputable: bool, gapReason: "...",
+  provenanceRefs: [...] }
+```
+
+The labels belong there too — "Headline network figure" against "The build record" is a judgement about what each series IS, the same class of knowledge as `caveat` and `unmeasured`, both moved out of code for this reason.
+
+**Trigger to build it:** pairs exceeding roughly 15, OR a second domain needing absence-pairs. Not before — the absence-pair shape has been exercised twice, and an abstraction built on a shape still moving is the wrong abstraction.
+
+## Process correction
+
+Full-file replacement of this log clobbered integration notes and was reverted (`bb36272`, reverted by `9fed5ed`), then nearly repeated twice more. Third incident of wholesale replacement eating correct work; the first was the `exports-gdp` provenance link in phase 4.
+
+The rule is **never replace a file you did not write in its entirety this cycle** — append, or dictate the delta. This log has two authors and must only ever be appended to.
