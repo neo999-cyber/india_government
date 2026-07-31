@@ -20,16 +20,26 @@ export const BASIS_DISPUTE = 'P-18';
 export const WRITE_OFFS_SERIES = 'bank-writeoffs-annual';
 
 /**
- * The shared denominator the adjustment divides by: total advances, ₹ lakh crore, same
- * calendar and periods as the ratio series.
+ * The adjustment's numerator: gross NPAs in absolute rupees, ₹ lakh crore.
  *
- * NOT PRESENT IN /data. P-17 quotes domestic credit rising ₹66.91 → ₹181.34 lakh crore
- * between 2015 and 2025, but two endpoints in prose are not an annual series, and deriving
- * the intervening years would be fabricating the very denominator the adjustment exists to
- * expose. The id below is provisional: research sessions own it, and the adjusted view
- * stays blocked until it lands. `npm run validate` warns while it is absent.
+ * P-17's contract names it as a required input, and the ratio series cannot stand in for
+ * it. `scb-gross-npa` begins at FY2014-15, while the amount and the denominator are both
+ * sourced at FY2013-14 — so keying the adjustment off the published ratio silently drops
+ * the pre-cleanup baseline year, which is the one year the comparison most needs.
  */
-export const ADVANCES_SERIES = 'scb-advances';
+export const NPA_AMOUNT_SERIES = 'scb-gross-npa-amount';
+
+/**
+ * The shared denominator: gross advances, ₹ lakh crore, on the same bank population and
+ * the same reporting basis as the numerator.
+ *
+ * Sourced at three periods only — FY2013-14, FY2017-18, FY2024-25 — which is why the
+ * adjusted view is defined at those points and is NOT a continuous annual line. P-17 is
+ * explicit that 'domestic credit' must not be substituted for it: that is a different and
+ * much larger aggregate (~₹181 lakh crore against ~₹98 lakh crore of advances at Mar
+ * 2025), and using it would understate the adjustment by roughly half.
+ */
+export const ADVANCES_SERIES = 'scb-gross-advances';
 
 export type Basis = 'domestic' | 'global';
 
@@ -91,14 +101,29 @@ function weakest(...statuses: Status[]): Status {
  */
 export type Blocker = { kind: 'missing-input' | 'population-mismatch'; detail: string };
 
-export type Adjustment = { points: AdjustedPoint[]; blockers: Blocker[] };
+export type Adjustment = {
+  points: AdjustedPoint[];
+  blockers: Blocker[];
+  /**
+   * Limits on what the rendered points mean. Unlike a blocker these do not suppress the
+   * view — they travel with it, because three sourced points are worth showing and a
+   * reader must not read them as an annual line.
+   */
+  caveats: string[];
+};
 
 /**
- * Population match between the ratio series and the write-off series.
+ * Population match between the ratio series and the adjustment's inputs.
  *
- * Write-offs are reported for all scheduled commercial banks. Subtracting them against a
- * public-sector-only ratio mixes populations, which is P-18's error wearing different
- * clothes — the resulting line would be neither PSB nor SCB. Flagged rather than computed.
+ * Both the write-off series and the advances denominator cover all scheduled commercial
+ * banks. Applying either to a public-sector-only ratio mixes populations, which is P-18's
+ * error wearing different clothes — the resulting line would describe neither PSBs nor
+ * SCBs. Flagged rather than computed.
+ *
+ * Note both inputs, not just write-offs: per-group cumulative write-off series do exist in
+ * /data, so naming only write-offs would invite someone to "resolve" this by swapping them
+ * in while the denominator is still all-SCB — which would leave the mismatch in place and
+ * hide it. P-17 requires the whole calculation on one population.
  */
 function populationBlocker(series: Series, writeOffs: Series): Blocker | null {
   const ratioIsSectoral = /public sector|private sector/i.test(series.title);
@@ -106,7 +131,7 @@ function populationBlocker(series: Series, writeOffs: Series): Blocker | null {
   if (ratioIsSectoral && writeOffsAreSystemWide) {
     return {
       kind: 'population-mismatch',
-      detail: `"${series.title}" covers one bank group, while ${WRITE_OFFS_SERIES} covers all scheduled commercial banks. Adjusting one by the other produces a line describing neither population. A write-off series for the same group is needed.`,
+      detail: `"${series.title}" covers one bank group, while both ${WRITE_OFFS_SERIES} and the ${ADVANCES_SERIES} denominator cover all scheduled commercial banks. Adjusting one by the other produces a line describing neither population. P-17 requires the numerator, the write-offs and the denominator to be on one population: a same-group write-off series alone is not enough while the denominator is still all-SCB.`,
     };
   }
   return null;
@@ -121,8 +146,10 @@ export function writeOffAdjustment(
   series: Series,
   writeOffs: Series | undefined,
   advances: Series | undefined,
+  amount: Series | undefined,
 ): Adjustment {
   const blockers: Blocker[] = [];
+  const caveats: string[] = [];
 
   if (!writeOffs) {
     blockers.push({
@@ -133,37 +160,50 @@ export function writeOffAdjustment(
   if (!advances) {
     blockers.push({
       kind: 'missing-input',
-      detail: `${ADVANCES_SERIES} (total advances, ₹ lakh crore, one value per fiscal year) is not in /data. It is the shared denominator, and without it the adjustment cannot be expressed as a ratio.`,
+      detail: `${ADVANCES_SERIES} (gross advances, ₹ lakh crore) is not in /data. It is the shared denominator, and without it the adjustment cannot be expressed as a ratio.`,
+    });
+  }
+  if (!amount) {
+    blockers.push({
+      kind: 'missing-input',
+      detail: `${NPA_AMOUNT_SERIES} (gross NPAs, ₹ lakh crore) is not in /data. P-17 defines the adjustment on absolute amounts, and the published ratio cannot stand in for it.`,
     });
   }
   if (writeOffs) {
     const mismatch = populationBlocker(series, writeOffs);
     if (mismatch) blockers.push(mismatch);
   }
-  if (!writeOffs || !advances || blockers.length > 0) return { points: [], blockers };
+  if (!writeOffs || !advances || !amount || blockers.length > 0) {
+    return { points: [], blockers, caveats };
+  }
 
   const india = (s: Series) => s.points.filter((p) => p.country === 'IND');
   const writeOffByPeriod = new Map(india(writeOffs).map((p) => [p.period, p.value]));
   const advancesByPeriod = new Map(india(advances).map((p) => [p.period, p.value]));
   const ordered = [...writeOffByPeriod.keys()].sort((a, b) => periodKey(a) - periodKey(b));
+  const earliestWriteOff = ordered[0];
 
   const statusByPeriod = (s: Series) => new Map(india(s).map((p) => [p.period, p.status]));
   const writeOffStatus = statusByPeriod(writeOffs);
   const advancesStatus = statusByPeriod(advances);
 
+  // Keyed off the absolute amount, not the published ratio: P-17 defines the adjustment as
+  // (gross NPAs + cumulative write-offs) / gross advances, and the amount is sourced for one
+  // period (FY2013-14) that the ratio series does not carry.
   const points: AdjustedPoint[] = [];
-  for (const point of india(series).sort((a, b) => periodKey(a.period) - periodKey(b.period))) {
+  for (const point of india(amount).sort((a, b) => periodKey(a.period) - periodKey(b.period))) {
     const denominator = advancesByPeriod.get(point.period);
     if (denominator === undefined || denominator === 0) continue;
     const contributing = ordered.filter((p) => periodKey(p) <= periodKey(point.period));
     const cumulative = contributing.reduce((sum, p) => sum + (writeOffByPeriod.get(p) ?? 0), 0);
-    const adjusted = point.value + (100 * cumulative) / denominator;
+    const reported = (100 * point.value) / denominator;
+    const adjusted = (100 * (point.value + cumulative)) / denominator;
     points.push({
       period: point.period,
-      reported: point.value,
+      reported,
       adjusted,
       cumulativeWriteOffs: cumulative,
-      gap: adjusted - point.value,
+      gap: adjusted - reported,
       status: weakest(
         point.status,
         advancesStatus.get(point.period) ?? 'pending',
@@ -172,7 +212,24 @@ export function writeOffAdjustment(
     });
   }
 
-  return { points, blockers };
+  // P-17: the denominator is sourced at discrete periods, so these are points, not a line.
+  // Said out loud rather than left to be inferred from the gaps in the table.
+  if (points.length > 0) {
+    caveats.push(
+      `Defined at ${points.length} sourced period${points.length === 1 ? '' : 's'} (${points
+        .map((p) => p.period)
+        .join(', ')}), not as a continuous annual line: ${ADVANCES_SERIES} is sourced at those periods only. The intervening years are not computed, because deriving the denominator would fabricate the very quantity the adjustment exists to expose. An annual advances series from RBI Trend & Progress would lift this.`,
+    );
+    // A zero here is the window opening, not an absence of write-offs before it.
+    const zeroPoint = points.find((p) => p.cumulativeWriteOffs === 0);
+    if (zeroPoint && earliestWriteOff) {
+      caveats.push(
+        `At ${zeroPoint.period} the cumulative write-off total is zero because ${WRITE_OFFS_SERIES} begins at ${earliestWriteOff}, so the adjusted and reported figures coincide. That is the window opening, not a claim that nothing was written off earlier — it makes ${zeroPoint.period} the pre-cleanup baseline the later points are read against.`,
+      );
+    }
+  }
+
+  return { points, blockers, caveats };
 }
 
 /**

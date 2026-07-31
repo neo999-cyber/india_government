@@ -9,7 +9,12 @@ import {
 } from '@/lib/data';
 import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
 import { denominatorBreaksFor, regimeFor, regimeNeighbours } from '@/lib/rules';
-import { ADVANCES_SERIES, WRITE_OFFS_SERIES, hasWriteOffAdjustment } from '@/lib/npa';
+import {
+  ADVANCES_SERIES,
+  NPA_AMOUNT_SERIES,
+  WRITE_OFFS_SERIES,
+  hasWriteOffAdjustment,
+} from '@/lib/npa';
 import { SeriesTable } from '@/components/SeriesTable';
 import { NpaView } from '@/components/NpaView';
 import { RegimeOverlap } from '@/components/RegimeOverlap';
@@ -81,6 +86,7 @@ export default async function SeriesDetail({ params }: Props) {
           series={s}
           writeOffs={getSeries(WRITE_OFFS_SERIES)}
           advances={getSeries(ADVANCES_SERIES)}
+          amount={getSeries(NPA_AMOUNT_SERIES)}
           reported={<SeriesTable series={s} handoff={handoffFor(s.id)} />}
         />
       ) : (

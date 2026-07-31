@@ -418,6 +418,22 @@ tr th:last-child {
   margin-bottom: 0.3rem;
 }
 
+/* Limits that travel with a rendered adjustment: shown, not suppressing. Quieter than
+   .npa-blocked because the numbers beside them are valid — they bound what they mean. */
+.npa-caveats {
+  margin: 0.5rem 0 0;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--rule-strong);
+}
+
+.npa-caveats li {
+  max-width: var(--measure);
+  margin-bottom: 0.35rem;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  list-style: none;
+}
+
 .denominator-callout p {
   margin: 0;
   max-width: var(--measure);

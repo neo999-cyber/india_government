@@ -220,7 +220,7 @@
  {
   "id": "P-10",
   "title": "Third GDP base-year revision to 2022-23 (released 27 February 2026)",
-  "whatChanged": "MoSPI released a new national accounts series rebased from 2011-12 to 2022-23, adopting double deflation, a Supply-Use Table framework, and new source data (GST returns, PLFS, ASUSE). It revised recent real growth UP (FY24 8.2%→7.2%, FY25 6.5%→7.1%, FY26 estimated 7.6%) while lowering the LEVEL of nominal GDP by roughly 3-4%. The level cut mechanically RAISES every ratio-to-GDP in the project — deficit, debt, exports, GFCF, tax — without any change in underlying activity. Advisory body: ACNAS, chaired by Prof. Biswanath Goldar. 'Sources and Methods' documentation due August 2026.",
+  "whatChanged": "MoSPI released a new national accounts series rebased from 2011-12 to 2022-23, adopting double deflation, a Supply-Use Table framework, and new source data (GST returns, PLFS, ASUSE). It revised recent real growth UP (FY24 8.2% to 7.2%, FY25 6.5% to 7.1%, FY26 estimated 7.6%) while lowering the LEVEL of nominal GDP by roughly 3-4%. The level cut mechanically RAISES every ratio-to-GDP in the project — deficit, debt, exports, GFCF, tax — without any change in underlying activity. Advisory body: ACNAS, chaired by Prof. Biswanath Goldar. 'Sources and Methods' documentation due August 2026.",
   "when": "2026-02-27",
   "affectsDomains": [
    "macro",
