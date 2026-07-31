@@ -61,6 +61,7 @@ const MUST_FIRE = [
   'baseline-context',
   'date-order',
   'back-link',
+  'ref-relevant',
   // Character sweep: schema validation cannot see any of these.
   'charset-script',
   'charset-invisible',

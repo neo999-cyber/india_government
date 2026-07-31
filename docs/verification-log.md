@@ -47,32 +47,6 @@ Phase 1 recorded exports at **25.4% of GDP (FY2013-14, T1)**; Phase 2's WDI pull
 ## Status discipline applied
 Only three points marked `verified` this cycle (the two 2022-23 base growth figures and the FY14 new-base figure, all from the MoSPI press note). Everything else in the FY15-FY26 macro table is `approx` — the Phase 2 report itself flags that several inflation, reserves and rupee cells are T2-derived. They must be replaced with exact T1 RBI/CGA annual series before any published view.
 
-## Corrections applied by the code session (2026-07-30)
-
-Both were blocking the build; neither changes a claim.
-
-| Record | Change | Why |
-|---|---|---|
-| `exports-gdp` | added `P-10` to `provenanceRefs` | P-10 already named it in `affectsSeries`, so the link was one-directional and the `back-link` rule failed. **Left for chat:** exports-gdp is a WDI pull, so its denominator is WDI's and picks up the MoSPI rebasing on WDI's vintage schedule, not on 27 Feb 2026. Noted in the series `notes`; if that makes the P-10 link wrong, the fix belongs in `P-10.affectsSeries`, not here |
-| `P-10.whatChanged` | `8.2%→7.2%` rendered as `8.2% to 7.2%` (two occurrences) | the new character sweep rejects `→` (U+2192); wording and figures unchanged |
-
-## Open question for the next research session
-
-`cad-gdp` is `% of GDP`, spans 27 Feb 2026, and carries no `P-10`, so it now raises a
-`denominator-break` warning. The other four ratio series (`fiscal-deficit`,
-`genl-govt-debt`, `exports-gdp`, `gfcf-gdp`) all declare it. Either the current-account
-ratio rests on the restated denominator — in which case it needs the link, so the step
-renders — or it is computed on a different denominator (RBI BoP tables use their own), in
-which case that belongs in `notes`. Not resolved here: it is a research call.
-
-## Character sweep introduced
-
-`npm run validate` now reads every string in every record and rejects non-Latin script,
-invisible characters, non-ASCII URLs, and symbols outside the allowlist. **No Cyrillic was
-found in the phase-2 drop** — the sweep was clean on `/data` apart from the `→` above. The
-Cyrillic case is covered by a fixture (`tests/fixtures/broken/ledger/broken.json`, L-9005)
-so the rule cannot silently regress.
-
 ## Open queue additions
 | Figure | Pin against | Priority |
 |---|---|---|
@@ -83,3 +57,39 @@ so the rule cannot silently regress.
 | GFCF % GDP FY15-FY26 | MoSPI national accounts | High |
 | WDI India FY-labelling convention | WDI metadata documentation | High — P-14 depends on it |
 | Oil windfall: exchequer vs consumer split | CGA petroleum excise series FY15-FY22 | High — flagged as the period's most under-reported fiscal story |
+
+---
+
+# Verification log — cycle 2026-07-31 (Phase 3, banking)
+
+## Correction to phase-1 data
+`psb-gross-npa` carried an AQR break pointing at **P-06 (off-budget borrowing and fiscal accounting)** — the wrong provenance record entirely. It passed validation because the reference *resolved*; nothing checked that it resolved to something relevant. Repointed to the new **P-15 (AQR recognition break)** and the series extended to FY2013-14 through FY2025-26.
+
+**Validator gap this exposes:** a break's `provenanceRef` should be checked against the referenced record's `affectsDomains`. P-06 covers `macro`; `psb-gross-npa` is `banking` — a domain cross-check would have caught it. Implemented as a semantic check in this cycle's validation run; Code should add it to `npm run validate`.
+
+## The decisive finding
+Banks wrote off **₹16,61,310 crore** (April 2014-September 2024) and recovered **₹2,69,795 crore — about 16%**. This is what makes the banking verdict "worked with an asterisk" rather than "worked". The headline fall from 14.58% to 1.8% has three drivers that the ratio does not separate: genuine recoveries and upgrades (~42.8% of the FY2024-25 reduction, per RBI), write-offs, and credit growth expanding the denominator (₹66.91 → ₹181.34 lakh crore, 2015-2025).
+
+**Instrument requirement (P-17):** every longitudinal NPA chart must offer an adjusted series — gross NPAs plus cumulative write-offs over the same denominator — alongside the reported one.
+
+## New provenance records
+P-15 AQR recognition break · P-16 COVID forbearance · P-17 write-offs and denominator growth · P-18 domestic vs global operations basis · P-19 risk-weight changes and partial rollback · P-20 RBI fraud reporting basis change · P-21 ECL transition (1 April 2027).
+
+## P-18 is a live trap
+The commonly cited PSB peak of **14.58% is global-operations basis**; the SCB figure for the same period on **domestic operations is 11.46%**. Official sources mix the two without labelling. Every NPA point in the dataset is now tagged with its basis, and P-18 forbids cross-basis comparison.
+
+## P-20 is provisional and must not ship
+The RBI's reported change of fraud reporting from date-of-detection to date-of-occurrence is asserted across secondary sources but **the primary circular and effective date have not been located**. No fraud time series may be published until this is pinned. Highest-priority verification item this cycle.
+
+## Status discipline
+Three points marked `verified` (PSB GNPA FY2017-18, FY2020-21, FY2024-25 — all direct from PIB releases) plus PSB profit FY2024-25. Everything else `approx`. The consolidated annual table in the phase-3 report is explicitly indicative, interpolated from RBI FSR and Trend & Progress narrative, and must be replaced with exact RBI series before any published view.
+
+## Open queue additions
+| Figure | Pin against | Priority |
+|---|---|---|
+| RBI fraud-reporting basis change, circular + date | RBI notification archive | **Blocking** for any fraud series |
+| SCB/PSB/private GNPA exact annual series, both bases | RBI Trend & Progress, all editions | High |
+| Annual write-off figures FY15-FY26 | RBI RTI + Parliament answers, primary | High |
+| IBC year-by-year admitted/resolved/liquidated | IBBI quarterly newsletters | High |
+| Govt capital infusion, exact annual | Union Budget documents | Medium |
+| Peer NPL and credit/GDP, single WDI vintage | WDI + IMF FSI | Medium |

@@ -38,6 +38,29 @@ const DENOMINATOR_REVISIONS = [{ provenance: 'P-10', date: '2026-02-27' }];
 const RATIO_TO_GDP_UNITS = new Set(['% of GDP']);
 
 /**
+ * Banking rules, mirroring lib/npa.ts for the site. The two must stay in step.
+ * P-18: every NPA series states its reporting basis, because the unlabelled case is the
+ * trap. P-17: an NPA ratio carrying the write-off dispute needs a denominator series
+ * before the adjusted view can be drawn at all.
+ */
+const BASIS_DISPUTE = 'P-18';
+const WRITE_OFF_DISPUTE = 'P-17';
+const ADVANCES_SERIES = 'scb-advances';
+
+/** Earliest mention wins, as in lib/npa.ts. */
+function basisOf(series) {
+  const find = (text) => {
+    const g = text.search(/global operations/i);
+    const d = text.search(/domestic operations/i);
+    if (g === -1 && d === -1) return null;
+    if (g === -1) return 'domestic';
+    if (d === -1) return 'global';
+    return g < d ? 'global' : 'domestic';
+  };
+  return find(series.title ?? '') ?? find(series.notes ?? '');
+}
+
+/**
  * Sortable numeric key for a period on either calendar. FY2013-14 -> 2013, "2014" -> 2014.
  * @param {string} period
  * @returns {number|null}
@@ -134,6 +157,40 @@ export function checkIntegrity(records, { today }) {
   const provenanceIds = index.provenance;
 
   /**
+   * A reference must be relevant, not merely resolvable.
+   *
+   * `psb-gross-npa` — a banking series — carried its AQR break pointing at P-06, which
+   * covers off-budget fiscal accounting. It validated for two phases because the id
+   * resolved and nothing asked whether it resolved to anything related. A dispute record
+   * that does not cover the series' own domain cannot be explaining that series' break.
+   *
+   * @param {LoadedRecord} r the referring record
+   * @param {unknown} refs
+   * @param {string[]} domains domains of the referring record
+   * @param {string} field for the message, e.g. `provenanceRefs` or `breaks[0].provenanceRef`
+   * @param {number|null} atIndex index within `refs`, or null when `refs` is a single ref
+   */
+  const checkRelevance = (r, refs, domains, field, atIndex = undefined) => {
+    const list = Array.isArray(refs) ? refs : [refs];
+    list.forEach((ref, i) => {
+      if (typeof ref !== 'string') return;
+      const target = provenanceIds.get(ref);
+      if (!target) return; // ref-resolves already reported it
+      const covers = Array.isArray(target.record.affectsDomains) ? target.record.affectsDomains : [];
+      if (covers.includes('all')) return;
+      if (domains.some((d) => covers.includes(d))) return;
+      const at = atIndex === undefined && Array.isArray(refs) ? `${field}[${i}]` : field;
+      add(
+        'error',
+        'ref-relevant',
+        r.file,
+        label(r),
+        `${at} = "${ref}" resolves, but ${ref} covers [${covers.join(', ')}] and this record is [${domains.join(', ')}]. A dispute record that does not cover the domain cannot be the provenance for it`,
+      );
+    });
+  };
+
+  /**
    * @param {LoadedRecord} r
    * @param {unknown} refs
    * @param {Map<string, LoadedRecord>} target
@@ -157,6 +214,7 @@ export function checkIntegrity(records, { today }) {
     const where = label(r);
 
     resolveRefs(r, s.provenanceRefs, provenanceIds, 'provenanceRefs', 'provenance');
+    if (typeof s.domain === 'string') checkRelevance(r, s.provenanceRefs, [s.domain], 'provenanceRefs');
 
     const calendar = s.calendar === 'CY' ? 'CY' : 'FY';
 
@@ -191,6 +249,9 @@ export function checkIntegrity(records, { today }) {
         if (!b || typeof b !== 'object') return;
         if (typeof b.provenanceRef === 'string' && !provenanceIds.has(b.provenanceRef)) {
           add('error', 'ref-resolves', r.file, where, `breaks[${i}].provenanceRef = "${b.provenanceRef}" does not resolve to any provenance record`);
+        }
+        if (typeof s.domain === 'string') {
+          checkRelevance(r, b.provenanceRef, [s.domain], `breaks[${i}].provenanceRef`, i);
         }
         if (typeof b.period === 'string') {
           const problem = checkPeriodForm(b.period, calendar);
@@ -228,6 +289,21 @@ export function checkIntegrity(records, { today }) {
 
     if (s.source?.vintage && s.source.vintage > today) {
       add('warn', 'future-date', r.file, where, `source.vintage ${s.source.vintage} is in the future (today ${today})`);
+    }
+
+    // P-18: a series carrying the basis dispute must state which basis it is on. An
+    // unlabelled NPA figure is the trap, not a minor omission.
+    const seriesRefs = Array.isArray(s.provenanceRefs) ? s.provenanceRefs : [];
+    if (seriesRefs.includes(BASIS_DISPUTE) && !basisOf(s)) {
+      add('warn', 'npa-basis', r.file, where, `carries ${BASIS_DISPUTE} but states no reporting basis in its title or notes, so it renders as "basis not stated" and cannot share an axis with any other NPA series. Say "domestic operations" or "global operations" in the title or notes`);
+    }
+
+    // P-17: the write-off adjustment needs a denominator. Without it the adjusted view is
+    // blocked in the UI rather than estimated, and this says why.
+    if (seriesRefs.includes(WRITE_OFF_DISPUTE) && (s.unit ?? '').trim() === '% of advances') {
+      if (!seriesIds.has(ADVANCES_SERIES)) {
+        add('warn', 'npa-adjustment', r.file, where, `carries ${WRITE_OFF_DISPUTE}, which requires an adjusted view of gross NPAs plus cumulative write-offs over the same denominator, but "${ADVANCES_SERIES}" (total advances, ₹ lakh crore) is not in /data. The adjusted view renders as unavailable until it lands — nothing is estimated in its place`);
+      }
     }
 
     // A ratio-to-GDP series whose span crosses a denominator revision either declares that
@@ -285,6 +361,7 @@ export function checkIntegrity(records, { today }) {
 
     resolveRefs(r, l.seriesRefs, seriesIds, 'seriesRefs', 'series');
     resolveRefs(r, l.provenanceRefs, provenanceIds, 'provenanceRefs', 'provenance');
+    if (Array.isArray(l.domains)) checkRelevance(r, l.provenanceRefs, l.domains, 'provenanceRefs');
 
     if (l.assessment === 'baseline-context' && l.term !== 'baseline') {
       add('error', 'baseline-context', r.file, where, `assessment "baseline-context" is for pre-May-2014 records only, but term is "${l.term}"`);

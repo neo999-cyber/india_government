@@ -1,20 +1,805 @@
 [
  {
+  "id": "bank-writeoffs-annual",
+  "title": "Loans written off by scheduled commercial banks, annual",
+  "unit": "₹ lakh crore",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "RBI RTI responses and Parliamentary answers",
+   "url": "https://www.rbi.org.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 0.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 0.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 1.08,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 1.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 2.36,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 2.34,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 2.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 1.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 2.08,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 1.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 1.5,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-17"
+  ],
+  "notes": "Cumulative Apr 2014-Sep 2024: ₹16,61,310 crore written off, ₹2,69,795 crore recovered (~16%). Peak year FY2018-19. Figures derive from RTI responses reported through journalism; the government disputes the interpretation, not the numbers."
+ },
+ {
+  "id": "bank-writeoffs-cumulative-psb",
+  "title": "Cumulative loan write-offs, public sector banks",
+  "unit": "₹ lakh crore",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "RBI RTI responses and Parliamentary answers via PIB",
+   "url": "https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=156404&lang=1&reg=37",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 12.08621,
+    "status": "approx",
+    "note": "Single cumulative endpoint at Sep 2024, filed against FY2024-25. NOT an annual series."
+   }
+  ],
+  "provenanceRefs": [
+   "P-17"
+  ],
+  "notes": "April 2014 to September 2024. Recovered ₹2,16,547 crore, about 17.9%."
+ },
+ {
+  "id": "bank-writeoffs-cumulative-pvt",
+  "title": "Cumulative loan write-offs, private sector banks",
+  "unit": "₹ lakh crore",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "RBI RTI responses and Parliamentary answers via PIB",
+   "url": "https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=156404&lang=1&reg=37",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 4.46669,
+    "status": "approx",
+    "note": "Single cumulative endpoint at Sep 2024, filed against FY2024-25. NOT an annual series."
+   }
+  ],
+  "provenanceRefs": [
+   "P-17"
+  ],
+  "notes": "April 2014 to September 2024. Recovered ₹53,248 crore, about 11.9%."
+ },
+ {
+  "id": "bank-writeoffs-cumulative-scb",
+  "title": "Cumulative loan write-offs, all scheduled commercial banks",
+  "unit": "₹ lakh crore",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "RBI RTI responses and Parliamentary answers via PIB",
+   "url": "https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=156404&lang=1&reg=37",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 16.6131,
+    "status": "approx",
+    "note": "Single cumulative endpoint at Sep 2024, filed against FY2024-25. NOT an annual series."
+   }
+  ],
+  "provenanceRefs": [
+   "P-17"
+  ],
+  "notes": "April 2014 to September 2024. Recovered ₹2,69,795 crore against this, about 16.2%."
+ },
+ {
+  "id": "crar",
+  "title": "Capital to risk-weighted assets ratio, scheduled commercial banks",
+  "unit": "%",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "RBI Financial Stability Report",
+   "url": "https://abclive.in/2025/07/02/rbi-inancial-stability-report-2025/"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2023-24",
+    "note": "Risk-weight changes on unsecured retail and NBFC lending",
+    "provenanceRef": "P-19"
+   },
+   {
+    "period": "FY2026-27",
+    "note": "ECL transition, est. 60-70bps one-time capital impact",
+    "provenanceRef": "P-21"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 12.94,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 13.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 13.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 13.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 14.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 14.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 15.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 16.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 16.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 16.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 17.36,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 17.7,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-19",
+   "P-21"
+  ],
+  "notes": "Multi-decade high. RBI June 2026 stress test: falls to 13.0% under the most severe adverse scenario, still above the 9% minimum."
+ },
+ {
+  "id": "credit-gdp-peer",
+  "title": "Domestic credit to private sector (peer panel)",
+  "unit": "% of GDP",
+  "domain": "banking",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI / IMF Financial Soundness Indicators",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 51.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 55.0,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 42.0,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 36.0,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 100.0,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 126.0,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 36.0,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 36.0,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 141.0,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 192.0,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09",
+   "P-14",
+   "P-18"
+  ],
+  "notes": "India is second-lowest in the panel, above only Indonesia. Structurally shallow financial deepening despite the cleanup — headroom, but also a constraint. World Bank has not extended India's series past 2020."
+ },
+ {
+  "id": "credit-growth",
+  "title": "Bank credit growth",
+  "unit": "% y/y",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "RBI",
+   "url": "https://abclive.in/2025/07/02/rbi-inancial-stability-report-2025/"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2023-24",
+    "note": "Risk-weight changes alter unsecured credit growth",
+    "provenanceRef": "P-19"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 10,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 10,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 13,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 15,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 16,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 12,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 14.5,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-19"
+  ],
+  "notes": "The 2016-2019 squeeze coincides with AQR-driven recognition and PCA constraints. FY2025-26 credit growth 14.5% outpaces deposit growth 11.5% — an RBI-flagged vulnerability."
+ },
+ {
+  "id": "govt-capital-infusion",
+  "title": "Government capital infusion into public sector banks",
+  "unit": "₹ crore",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "Ministry of Finance / Union Budget",
+   "url": "https://www.indiabudget.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 88139,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 106000,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 65000,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 20000,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 0,
+    "status": "approx",
+    "note": "None required from here — the recovery is self-sustaining"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 0,
+    "status": "approx"
+   }
+  ],
+  "notes": "Cumulative FY2016-17 to FY2020-21: ₹3.31 lakh crore. The Oct 2017 ₹2.11 lakh crore package used ~₹1.35 lakh crore of recapitalisation bonds — excluded from the fiscal deficit but added to internal debt."
+ },
+ {
+  "id": "ibc-realisation-pct",
+  "title": "IBC realisation as share of admitted claims, cumulative",
+  "unit": "% of admitted claims",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "IBBI quarterly newsletters",
+   "url": "https://ibbi.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 45.0,
+    "status": "approx",
+    "note": "Early cases, best assets"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 39.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 33.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 32.76,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 30.56,
+    "status": "approx",
+    "note": "Annual-flow realisation fell to ~23% this year"
+   }
+  ],
+  "notes": "A monotonic decline — the best assets resolved first. Cumulative ₹3.99 lakh crore realised against ₹12.31 lakh crore admitted to Sept 2025, a ~67% haircut."
+ },
+ {
+  "id": "ibc-resolution-days",
+  "title": "IBC average resolution time",
+  "unit": "days",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "IBBI",
+   "url": "https://ibbi.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 679,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 713,
+    "status": "approx",
+    "note": "597 excluding time excluded by the Adjudicating Authority"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 744,
+    "status": "approx",
+    "note": "ICRA estimate"
+   }
+  ],
+  "notes": "Statutory limit is 330 days including litigation. Actual timelines are more than double and worsening."
+ },
+ {
+  "id": "jan-dhan-accounts",
+  "title": "PMJDY accounts opened",
+  "unit": "crore accounts",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "Department of Financial Services",
+   "url": "https://pmjdy.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 56.77,
+    "status": "approx",
+    "note": "October 2025; deposits ₹2.73 lakh crore; 56% women, 66% rural/semi-urban"
+   }
+  ],
+  "notes": "Baseline for comparison: account ownership was 53% of adults in 2014 (Global Findex), up from 35% in 2011."
+ },
+ {
+  "id": "net-npa",
+  "title": "Scheduled commercial banks net NPA ratio",
+  "unit": "% of advances",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "RBI",
+   "url": "https://abclive.in/2025/07/02/rbi-inancial-stability-report-2025/"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "AQR recognition break",
+    "provenanceRef": "P-15"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 2.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 4.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 5.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 6.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 3.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 2.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 2.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 1.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 1.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 0.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 0.52,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 0.5,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-15",
+   "P-16",
+   "P-21"
+  ],
+  "notes": "FY2024-25 at 0.52% is the lowest in 20 years."
+ },
+ {
+  "id": "npl-peer",
+  "title": "Bank non-performing loans to gross loans (peer panel)",
+  "unit": "% of gross loans",
+  "domain": "banking",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI / IMF Financial Soundness Indicators",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 4.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 2.5,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 9.7,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 9.6,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 3.5,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 2.3,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 2.1,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 2.0,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 1.1,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 1.5,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09",
+   "P-14",
+   "P-18"
+  ],
+  "notes": "WB/IMF series used for comparability. National definitions diverge sharply: Bangladesh reports 35.7% (Sep 2025) nationally versus 9.6% here; China's low figure is widely regarded as understated via forbearance. India's own latest is 1.8% (RBI, Mar 2026)."
+ },
+ {
   "id": "psb-gross-npa",
   "title": "Public sector banks gross NPA ratio",
   "unit": "% of advances",
   "domain": "banking",
   "tier": "T1",
   "source": {
-   "name": "RBI",
-   "url": "https://www.rbi.org.in/"
+   "name": "RBI / Ministry of Finance via PIB",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2083695",
+   "vintage": "2026-07-31"
   },
   "calendar": "FY",
   "breaks": [
    {
     "period": "FY2015-16",
-    "note": "Asset Quality Review forces recognition; pre-AQR figures understate true stress via CDR masking",
-    "provenanceRef": "P-06"
+    "note": "AQR forces recognition — the rise is reporting, not deterioration",
+    "provenanceRef": "P-15"
+   },
+   {
+    "period": "FY2020-21",
+    "note": "COVID forbearance suppresses reported figures",
+    "provenanceRef": "P-16"
    }
   ],
   "points": [
@@ -23,16 +808,474 @@
     "period": "FY2013-14",
     "value": 4.4,
     "status": "approx",
-    "note": "Reported; true stress hidden pre-AQR"
+    "note": "Pre-AQR reported figure; true stress concealed via CDR"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 4.97,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 9.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 11.7,
+    "status": "approx"
    },
    {
     "country": "IND",
     "period": "FY2017-18",
     "value": 14.58,
-    "status": "approx",
-    "note": "Post-AQR peak, March 2018"
+    "status": "verified",
+    "note": "Peak, global operations basis (PIB)"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 11.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 10.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 9.11,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 7.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 5.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 3.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 2.58,
+    "status": "verified",
+    "note": "PIB verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 1.9,
+    "status": "approx"
    }
-  ]
+  ],
+  "provenanceRefs": [
+   "P-15",
+   "P-16",
+   "P-17",
+   "P-18"
+  ],
+  "notes": "GLOBAL OPERATIONS basis — the 14.58% peak reads 11.46% for SCBs on domestic operations (P-18). Baseline 4.4% (FY2013-14) is pre-AQR and not comparable."
+ },
+ {
+  "id": "psb-profit",
+  "title": "Public sector banks aggregate net profit",
+  "unit": "₹ crore",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "Ministry of Finance via PIB",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2146819&reg=3&lang=2"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": -85390,
+    "status": "approx",
+    "note": "Record aggregate loss"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 66540,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 104649,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 141203,
+    "status": "approx",
+    "note": "Record at the time"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 178364,
+    "status": "verified",
+    "note": "Record; +26% YoY. SBI alone ₹70,901 cr"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 198000,
+    "status": "approx",
+    "note": "Ministry of Finance, provisional"
+   }
+  ],
+  "notes": "The swing from record loss to record profit in seven years is the domain's headline turnaround."
+ },
+ {
+  "id": "pvt-gross-npa",
+  "title": "Private sector banks gross NPA ratio",
+  "unit": "% of advances",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "RBI / PIB",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2225442&reg=3&lang=1"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "AQR recognition break",
+    "provenanceRef": "P-15"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 2.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 2.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 4.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 4.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 5.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 5.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 4.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 3.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 2.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 1.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 2.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 1.7,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-15",
+   "P-18"
+  ],
+  "notes": "BASIS NOT STATED in the source used. Cannot share an axis with any other NPA series until resolved (P-18). Blocking item on the verification queue — pin against RBI Trend & Progress, which reports both bases."
+ },
+ {
+  "id": "scb-gross-advances",
+  "title": "Scheduled commercial banks gross advances (derived, domestic operations)",
+  "unit": "₹ lakh crore",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "Derived from scb-gross-npa-amount / scb-gross-npa (both PIB)",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2225442&reg=3&lang=1",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 61.23,
+    "status": "approx",
+    "note": "DERIVED: NPA amount divided by NPA ratio. Arithmetically exact given both sourced inputs, but not directly published."
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 84.0,
+    "status": "approx",
+    "note": "DERIVED: NPA amount divided by NPA ratio. Arithmetically exact given both sourced inputs, but not directly published."
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 98.0,
+    "status": "approx",
+    "note": "DERIVED: NPA amount divided by NPA ratio. Arithmetically exact given both sourced inputs, but not directly published."
+   }
+  ],
+  "provenanceRefs": [
+   "P-17",
+   "P-18"
+  ],
+  "notes": "This is the denominator P-17's adjustment requires. NOTE: gross advances is NOT the same aggregate as 'domestic credit' (₹66.91→₹181.34 lakh crore, quoted in P-17 prose) — at Mar 2025 advances derive to ~₹98 lakh crore against ~₹181 lakh crore of domestic credit. Using domestic credit as the denominator would understate the adjusted ratio by roughly half."
+ },
+ {
+  "id": "scb-gross-npa",
+  "title": "Scheduled commercial banks gross NPA ratio (domestic operations)",
+  "unit": "% of advances",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "RBI / Ministry of Finance via PIB",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2225442&reg=3&lang=1",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "AQR forces recognition — the rise is reporting, not deterioration",
+    "provenanceRef": "P-15"
+   },
+   {
+    "period": "FY2020-21",
+    "note": "COVID forbearance suppresses reported figures",
+    "provenanceRef": "P-16"
+   },
+   {
+    "period": "FY2026-27",
+    "note": "ECL provisioning transition breaks comparability from Apr 2027",
+    "provenanceRef": "P-21"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 4.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 7.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 9.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 11.46,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 9.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 8.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 7.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 5.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 3.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 2.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 2.79,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 1.8,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-15",
+   "P-16",
+   "P-17",
+   "P-18",
+   "P-21"
+  ],
+  "notes": "DOMESTIC OPERATIONS basis. FY2017-18 peak 11.46% here reads 14.58% for PSBs on global operations — see P-18. FY2025-26 from RBI FSR June 2026."
+ },
+ {
+  "id": "scb-gross-npa-amount",
+  "title": "Scheduled commercial banks gross NPAs, absolute (domestic operations)",
+  "unit": "₹ lakh crore",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "RBI / Ministry of Finance via PIB",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2225442&reg=3&lang=1",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "AQR recognition break",
+    "provenanceRef": "P-15"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 2.51054,
+    "status": "approx",
+    "note": "Paired with the ratio in scb-gross-npa; both domestic operations"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 9.62621,
+    "status": "approx",
+    "note": "Paired with the ratio in scb-gross-npa; both domestic operations"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 2.73413,
+    "status": "approx",
+    "note": "Paired with the ratio in scb-gross-npa; both domestic operations"
+   }
+  ],
+  "provenanceRefs": [
+   "P-15",
+   "P-17",
+   "P-18"
+  ],
+  "notes": "Only three sourced points exist. The intervening years are NOT interpolated — an annual series must come from RBI Trend & Progress before any continuous adjusted view is rendered."
+ },
+ {
+  "id": "upi-transactions",
+  "title": "UPI transaction value",
+  "unit": "₹ lakh crore",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "NPCI / RBI",
+   "url": "https://abclive.in/2025/07/02/rbi-inancial-stability-report-2025/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 8.77,
+    "status": "approx",
+    "note": "535 crore transactions"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 314.0,
+    "status": "approx",
+    "note": "24,162 crore transactions; ~85% of India's retail digital payments"
+   }
+  ],
+  "notes": "India holds roughly 49% of global real-time payment volume. Zero-MDR drove adoption but removed payment-industry revenue."
  },
  {
   "id": "lfpr-overall",
@@ -207,10 +1450,9 @@
    }
   ],
   "provenanceRefs": [
-   "P-10",
    "P-14"
   ],
-  "notes": "Phase-1 peak of 25.4% (FY2013-14, T1) and WDI 22.97% for '2014' are different period bases — see P-14, not a contradiction. P-10 back-link added 2026-07-30 to match P-10.affectsSeries; note the denominator here is WDI's, which picks up the MoSPI rebasing on WDI's own vintage schedule rather than on 27 Feb 2026."
+  "notes": "Phase-1 peak of 25.4% (FY2013-14, T1) and WDI 22.97% for '2014' are different period bases — see P-14, not a contradiction."
  },
  {
   "id": "exports-gdp-peer",

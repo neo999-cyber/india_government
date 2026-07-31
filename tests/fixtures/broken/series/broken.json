@@ -102,6 +102,23 @@
     "points": [{ "country": "IND", "period": "FY2013-14", "value": 4.7, "status": "verified" }]
   },
   {
+    "id": "wrong-domain-provenance",
+    "title": "Banking series whose break cites a macro-only dispute",
+    "unit": "% of advances",
+    "domain": "banking",
+    "tier": "T1",
+    "source": { "name": "Fixture, not a real source", "url": "https://example.org/" },
+    "calendar": "FY",
+    "breaks": [
+      { "period": "FY2015-16", "note": "Cites a record that covers macro, not banking", "provenanceRef": "P-92" }
+    ],
+    "points": [
+      { "country": "IND", "period": "FY2014-15", "value": 4.97, "status": "approx" },
+      { "country": "IND", "period": "FY2015-16", "value": 9.3, "status": "approx" }
+    ],
+    "provenanceRefs": ["P-92"]
+  },
+  {
     "id": "homoglyph-unit",
     "title": "Unit written with Greek mu instead of the micro sign",
     "unit": "μg/m³",

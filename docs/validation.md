@@ -66,6 +66,7 @@ Errors:
 | `id-unique` | no duplicate id within a layer, across all files |
 | `ref-resolves` | `ledger.seriesRefs`, `ledger.provenanceRefs`, `series.provenanceRefs` and `series.breaks[].provenanceRef` all resolve to a loaded record |
 | `back-link` | a series named in `provenance.affectsSeries` carries that `P-xx` in its own `provenanceRefs`, so the dispute travels with every rendered number (rule 6) |
+| `ref-relevant` | a provenance reference names a record whose `affectsDomains` covers the referring record's domain, or `all`. Resolving is not enough: `psb-gross-npa`, a banking series, carried its AQR break against P-06 (off-budget fiscal accounting) for two phases because the id resolved and nothing asked whether it resolved to anything related. Applies to `series.provenanceRefs`, `series.breaks[].provenanceRef` and `ledger.provenanceRefs` |
 | `point-unique` | one value per country-period within a series |
 | `calendar-discipline` | periods match the series calendar — `FYyyyy-yy` for FY (with consecutive years), `yyyy` for CY. Never mixed within one series |
 | `regime-group` | no GDP base exists without the rest of its group, so none can be presented alone as "GDP growth" (rule 5). Three regimes since P-10: 2004-05, 2011-12, 2022-23 |
@@ -93,6 +94,8 @@ Warnings:
 | `future-date` | `asOf` or `source.vintage` after today |
 | `denominator-break` | a ratio-to-GDP series crossing a denominator revision that it does not declare — either it rests on the restated denominator and should link it, or it uses a different one and should say so. A research call, so not a blocker |
 | `charset-diacritic` | a Latin letter outside ASCII (é, ñ, ā) — legitimate in a proper name, so flagged rather than blocked |
+| `npa-basis` | a series carrying P-18 that states no reporting basis in its title or notes. It renders as "basis not stated" and is barred from sharing an axis, which is the safe outcome, but the basis is a research fact and should be recorded |
+| `npa-adjustment` | a series carrying P-17 whose adjusted view cannot be computed because the advances denominator is not in `/data` |
 
 ## Pass 4 — character sweep
 
