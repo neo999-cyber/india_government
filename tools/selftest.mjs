@@ -88,6 +88,8 @@ const ISOLATED = [
   // fixture passes on any pair-incomplete error, including one from the branch it is not
   // testing, and the new branch could stop firing unnoticed.
   { dir: 'pair-absent-counterpart', rule: 'pair-incomplete', expect: 'carries no "unmeasured" entry' },
+  { dir: 'mirror-contradiction', rule: 'mirror-contradiction' },
+  { dir: 'pair-inverted', rule: 'pair-inverted' },
 ];
 
 /**

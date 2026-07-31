@@ -8,6 +8,7 @@ import {
   seriesCitingProvenance,
 } from '@/lib/data';
 import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
+import { roleInProvenance } from '@/lib/rules';
 import { CaveatFlag, SourceList } from '@/components/marks';
 
 type Props = { params: Promise<{ id: string }> };
@@ -27,9 +28,11 @@ export default async function ProvenanceDetail({ params }: Props) {
   const p = getProvenance(id);
   if (!p) notFound();
 
-  const affected = seriesCitingProvenance(p.id);
-  const namedButAbsent = (p.affectsSeries ?? []).filter(
-    (sid) => !affected.some((s) => s.id === sid),
+  const carrying = seriesCitingProvenance(p.id);
+  const corrective = carrying.filter((s) => roleInProvenance(s.id, p) === 'corrective');
+  const distorted = carrying.filter((s) => roleInProvenance(s.id, p) !== 'corrective');
+  const namedButAbsent = [...(p.affectsSeries ?? []), ...(p.correctiveSeries ?? [])].filter(
+    (sid) => !carrying.some((s) => s.id === sid),
   );
   const citedBy = ledgerCitingProvenance(p.id);
 
@@ -94,12 +97,19 @@ export default async function ProvenanceDetail({ params }: Props) {
         </>
       ) : null}
 
-      <h2>Series carrying this dispute</h2>
-      {affected.length === 0 ? (
-        <p className="prose-note">No loaded series carries this record yet.</p>
+      {/* Split, because the two groups mean opposite things. Listed together, a reader has
+          no way to tell which series this record distorts from which one exists to correct
+          for it — and on P-30 that is the entire finding. */}
+      <h2>Series this record distorts</h2>
+      {distorted.length === 0 ? (
+        <p className="prose-note">
+          {corrective.length > 0
+            ? 'No loaded series is named as distorted by this record.'
+            : 'No loaded series carries this record yet.'}
+        </p>
       ) : (
         <div className="grid">
-          {affected.map((s) => (
+          {distorted.map((s) => (
             <Link key={s.id} href={`/series/${s.id}/`}>
               <span className="label">
                 {s.id} · tier {s.tier}
@@ -115,10 +125,37 @@ export default async function ProvenanceDetail({ params }: Props) {
         </div>
       )}
 
+      {corrective.length > 0 ? (
+        <>
+          <h2>Series that correct for it</h2>
+          <p className="prose-note">
+            These carry this record for navigation, not because it distorts them.{' '}
+            <span className="mono">{p.directionOfBias}</span> describes what the record does to
+            the series above; it does not apply here. A reader who arrives at one of these has
+            reached the honest measure, and this record says why it is the honest one.
+          </p>
+          <div className="grid">
+            {corrective.map((s) => (
+            <Link key={s.id} href={`/series/${s.id}/`}>
+              <span className="label">
+                {s.id} · tier {s.tier}
+              </span>
+              <span className="grid-title">{s.title}</span>
+              <span className="grid-meta">
+                {s.unit}
+                {s.breaks?.some((b) => b.provenanceRef === p.id) ? ' · seam here' : ''}
+              </span>
+              {s.caveat ? <CaveatFlag caveat={s.caveat} variant="inline" linkify={false} /> : null}
+            </Link>
+            ))}
+          </div>
+        </>
+      ) : null}
+
       {namedButAbsent.length > 0 ? (
         <p className="source-line">
-          Also named in <code>affectsSeries</code> but not yet ingested:{' '}
-          {namedButAbsent.join(', ')}. Research queue, not an error.
+          Also named in <code>affectsSeries</code> or <code>correctiveSeries</code> but not yet
+          ingested: {namedButAbsent.join(', ')}. Research queue, not an error.
         </p>
       ) : null}
 

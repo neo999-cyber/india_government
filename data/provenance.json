@@ -418,10 +418,7 @@
   ],
   "affectsSeries": [
    "scb-gross-npa",
-   "psb-gross-npa",
-   "bank-writeoffs-annual",
-   "scb-gross-npa-amount",
-   "scb-gross-advances"
+   "psb-gross-npa"
   ],
   "directionOfBias": "overstates-post-2014",
   "bridgeExists": true,
@@ -443,7 +440,12 @@
     "tier": "T1"
    }
   ],
-  "notes": "The single most consequential interpretive issue in the banking domain. Write-off totals derive from RBI RTI responses reported through journalism; the government disputes the interpretation, not the figures."
+  "notes": "The single most consequential interpretive issue in the banking domain. Write-off totals derive from RBI RTI responses reported through journalism; the government disputes the interpretation, not the figures.",
+  "correctiveSeries": [
+   "bank-writeoffs-annual",
+   "scb-gross-npa-amount",
+   "scb-gross-advances"
+  ]
  },
  {
   "id": "P-18",
@@ -547,14 +549,9 @@
   ],
   "affectsSeries": [
    "ujjwala-connections",
-   "ujjwala-refills",
    "jjm-tap-coverage",
-   "jjm-functionality",
    "pmay-g-houses",
-   "pmay-g-completed",
-   "pmjay-cards",
-   "pmjay-admissions",
-   "sanitation-basic"
+   "pmjay-cards"
   ],
   "directionOfBias": "overstates-post-2014",
   "bridgeExists": true,
@@ -566,7 +563,14 @@
     "tier": "T1"
    }
   ],
-  "notes": "The organising measurement problem of the welfare domain. Every scheme record in this phase references it. Scope includes infrastructure: Jal Jeevan is filed there and is one of the clearest MIS-versus-survey cases in the dataset."
+  "notes": "The organising measurement problem of the welfare domain. Every scheme record in this phase references it. Scope includes infrastructure: Jal Jeevan is filed there and is one of the clearest MIS-versus-survey cases in the dataset.",
+  "correctiveSeries": [
+   "ujjwala-refills",
+   "jjm-functionality",
+   "pmay-g-completed",
+   "pmjay-admissions",
+   "sanitation-basic"
+  ]
  },
  {
   "id": "P-23",
@@ -644,8 +648,7 @@
    "infrastructure"
   ],
   "affectsSeries": [
-   "jjm-tap-coverage",
-   "jjm-functionality"
+   "jjm-tap-coverage"
   ],
   "directionOfBias": "overstates-post-2014",
   "bridgeExists": true,
@@ -656,6 +659,9 @@
     "url": "https://www.business-standard.com/",
     "tier": "T4"
    }
+  ],
+  "correctiveSeries": [
+   "jjm-functionality"
   ]
  },
  {
@@ -698,8 +704,7 @@
    "human-development"
   ],
   "affectsSeries": [
-   "pmjay-cards",
-   "pmjay-admissions"
+   "pmjay-cards"
   ],
   "directionOfBias": "overstates-post-2014",
   "bridgeExists": true,
@@ -720,6 +725,9 @@
     "url": "https://cag.gov.in/",
     "tier": "T1"
    }
+  ],
+  "correctiveSeries": [
+   "pmjay-admissions"
   ]
  },
  {
@@ -784,9 +792,7 @@
    "infrastructure"
   ],
   "affectsSeries": [
-   "nh-network-length",
-   "nh-construction-pace",
-   "nh-four-lane"
+   "nh-network-length"
   ],
   "directionOfBias": "overstates-post-2014",
   "bridgeExists": true,
@@ -798,7 +804,11 @@
     "tier": "T1"
    }
   ],
-  "notes": "The single most consequential measurement finding in the infrastructure domain."
+  "notes": "The single most consequential measurement finding in the infrastructure domain.",
+  "correctiveSeries": [
+   "nh-construction-pace",
+   "nh-four-lane"
+  ]
  },
  {
   "id": "P-31",

@@ -272,80 +272,93 @@ Average train speed after 2019 (CAG series stops) · household supply-hours as a
 
 ---
 
-# Verification log — cycle 2026-07-31h (Phase 5 code run: infrastructure pairs)
+# Verification log — cycle 2026-07-31g (`correctiveSeries`)
 
-Counts as expected: 81 series (455 points), 57 ledger, 38 provenance. Gate clean on arrival.
-No `/data` edits. Nine series and two ledger caveats, ten `unmeasured` declarations across
-nine records — all confirmed against the data.
+## SCHEMA CHANGE — `correctiveSeries` on provenance
+Optional array, the structural mirror of `affectsSeries`. A series listed there references the record as the CORRECTIVE — the honest measure the record points readers toward, or the instrument that measures the wedge it describes — not as a distorted party. `directionOfBias` does not apply to it. **A series must not appear in both**, and the validator should enforce that.
 
-## 1. `nh-network-length` — the hardest test of rule 3a, passed
-The caveat is 246 characters and contradicts the figure directly above it. Verified byte-exact
-against the source string, unclipped, in three places:
+**Why.** The integration session raised that P-30's card shows `overstates-post-2014` on `nh-construction-pace`, which is the corrective, not the overstated series. Leaving it was the right call — the card is the record and suppressing would have meant inventing a per-series bias the data did not carry. But the fact that the question arose means the data was missing something real. The distinction lived only in P-30's `bridgeNote` prose, and it recurs across the dataset: every usage-side series in every coverage-usage pair is a corrective.
 
-| Where | Width | Result |
-|---|---|---|
-| Series detail, above the table | 1440px | exact, 246/246 chars |
-| Infrastructure domain table | 1440px | exact, unclipped |
-| Infrastructure domain table | **390px** | exact, wraps to 312px of height, no ellipsis, no clamp, no max-height, no body overflow |
+Populated on five records: **P-30** (nh-construction-pace, nh-four-lane), **P-22** (ujjwala-refills, jjm-functionality, pmay-g-completed, pmjay-admissions, sanitation-basic), **P-17** (bank-writeoffs-annual, scb-gross-npa-amount, scb-gross-advances), **P-25** (jjm-functionality), **P-27** (pmjay-admissions). Each record's `affectsSeries` was pruned so nothing appears in both.
 
-The 390px case is the one that matters: in the narrowest table on the site the caveat grows the
-row rather than being cut, which is rule 3a behaving as written.
+**Side benefit worth noting:** the pairing view can now derive which side of a pair is coverage and which is corrective from the data rather than from a hardcoded pair list.
 
-## 2. Four pairs added, two of them a new shape
-| Pair | Coverage | Counterpart | Governing |
-|---|---|---|---|
-| National highways | `nh-network-length` | `nh-construction-pace` | P-30 |
-| Airports | `airports-operational` | `udan-routes` | P-38 |
-| Metro rail | `metro-network` | **declared absence** | P-22 |
-| Household electrification | `household-electrification` | **declared absence** | P-32 |
+## Endorsements from the integration session
+- **Per-pair labels.** `nh-construction-pace` is not the utilisation of `nh-network-length` — it is the honest measure of the same activity the headline overstates. A generic "sustained use" label would have been a factual error in the interface. Catching that is the difference between a template and an instrument.
+- **`usageUnmeasured` with its own gap branch.** A counterpart that does not exist is categorically different from one not yet pulled: the coverage figure cannot be qualified by anything, so it must not be read as though it had been.
+- **Rule 3a's hardest test passed.** The 246-character `nh-network-length` caveat renders byte-exact and unclipped at 390px in the narrowest table on the site, growing the row rather than being cut. That caveat directly contradicts the number above it, so truncation would have been worse than omission.
+- **`expect` substrings on ISOLATED fixtures.** The two branches of `pair-incomplete` were indistinguishable to the selftest, so either could have stopped firing unnoticed. Second over-firing guard in two cycles.
 
-**The absence-as-counterpart shape works cleanly, so it was built rather than raised.**
-`usageUnmeasured: true` puts the coverage series' own `unmeasured` declaration in the usage
-position — same two columns, the second occupied by the dashed absence block under a label
-reading "Sustained use — no measurement exists". The reader sees a counterpart was expected
-there and why there isn't one, which is the first-class outcome asked for rather than a pair
-quietly missing a side. The gap statement gets its own branch: the counterpart is not late or
-unpulled, nothing measures it, so the coverage figure cannot be qualified by anything and must
-not be read as though it had been.
+---
 
-Two supporting changes fell out:
-- **Per-pair labels.** `nh-construction-pace` is not the *utilisation* of `nh-network-length`;
-  it is the honest measure of the same activity the headline overstates. Labelling it "sustained
-  use" would have been a plain factual error in the interface, so the highways pair reads
-  "Headline network figure" / "The build record" and the airports pair "Facility count" /
-  "Routes actually operating". Same shape, same discipline, different relation.
-- **Per-pair framing**, since the standing sentence about connections and taps describes welfare
-  delivery and would misdescribe a road network.
+# Verification log — cycle 2026-07-31i (Phase 5b code run: the affects/corrective mirror)
 
-New validator branch: a pair standing its usage side on a declared absence where the coverage
-series declares none would render an empty frame — a pair silent exactly where it promised to
-say why nothing is measured. Fixture at `tests/fixtures/pair-absent-counterpart`.
+Totals unchanged: 81 series (455 points), 57 ledger, 38 provenance. Gate clean on arrival.
+No `/data` edits.
 
-`ISOLATED` fixtures now take an optional `expect` substring, because both branches of
-`pair-incomplete` were otherwise indistinguishable to the selftest: the older fixture would
-have passed on an error from the new branch and vice versa, so either could have stopped firing
-unnoticed.
+## 1 and 2. Mirror enforced, backlink extended
+`mirror-contradiction` (error): a series in both `affectsSeries` and `correctiveSeries` of one
+record says `directionOfBias` simultaneously does and does not apply to it.
 
-## 3. Nothing reads a provenance ref as implying distortion
-Checked rather than assumed. `directionOfBias` appears in five places and is rendered as a
-property **of the provenance record** every time — on the record's own page, and inside record
-cards elsewhere. It is never applied to a series. The two code paths keyed on `provenanceRefs`
-are both gated on a specific record plus a unit condition: `denominatorBreaksFor` needs P-10
-*and* "% of GDP", `hasWriteOffAdjustment` needs P-17. Neither can fire on a highways series.
+The backlink now runs over both lists. A corrective carries the ref for navigation rather than
+because it is distorted, but it must still carry it — a reader landing on the honest metric has
+to be able to reach the record saying why it is the honest one, which is the point of the
+mirror. Clean on arrival: every corrective already links back.
 
-Confirmed live on `nh-construction-pace`: no caveat, P-30 and P-31 reachable as tags, and
-"What this number rests on" leads to P-30, whose bridgeNote says to use it and `nh-four-lane`
-as the build metrics. In the pair it is labelled "The build record". **No assumption needed
-relaxing.**
+Both proven by fixture (`tests/fixtures/mirror-contradiction`, `tests/fixtures/pair-inverted`).
 
-One nuance, left alone deliberately: P-30's card on that page shows `overstates-post-2014`,
-which is the *record's* bias and not the series'. It reads correctly in context — the card is
-the record, and the record's title says what overstates ("network growth is mostly
-reclassification") — and the alternative would be to assert a per-series bias the data does not
-carry.
+## 3. `directionOfBias` scoped
+Withheld from a corrective on the series page: P-30's card on `nh-construction-pace` now reads
+"this series is the corrective, not the affected party · bridge exists".
+
+**It is scoped per (series, record), not per series** — which the highways case demonstrates by
+itself. `nh-construction-pace` is the corrective for P-30's reclassification problem *and is
+genuinely affected by P-31*, whose conflation of widening with new alignment distorts the
+construction figure. So its P-30 card is neutral and its P-31 card still reads
+"overstates-post-2014". Both are correct, and a per-series flag would have got one of them
+wrong.
+
+The provenance page is now split into **"Series this record distorts"** and **"Series that
+correct for it"**, because listed together a reader has no way to tell which is which — and on
+P-30 that distinction is the entire finding. The corrective section says in prose that the bias
+does not apply to it.
+
+## 4. Not deriving the pairs — the split does not carry the information
+Tested rather than judged. For each of the nine pairs, whether one record holds the coverage
+side in `affectsSeries` and the usage side in `correctiveSeries`:
+
+| Pair | Result |
+|---|---|
+| Ujjwala, JJM, PM-JAY, PMAY-G | P-22 maps **4 affected × 5 correctives** — a 20-way cross product with nothing saying which goes with which |
+| Highways | P-30 maps **1 × 2**; `nh-four-lane` is equally a corrective but is not the pair's usage side |
+| Airports | P-38 declares no `correctiveSeries`; `udan-routes` carries no refs at all |
+| Metro | `metro-network` appears in no record's affects or corrective list |
+| Electrification | P-32 has no corrective — the counterpart is a declared absence |
+| Sanitation | `sanitation-basic` is **corrective in P-22 and affected in P-24** |
+
+Four of nine cannot be derived at all, and two more are ambiguous. Recovering
+`ujjwala-connections ↔ ujjwala-refills` from P-22 would take id-prefix string matching, which
+is the fragile-heuristic trap this validator has already fallen into twice (the T5 rule naming
+P-08; the sparsity rule that would have rejected a third of the true positives).
+
+The sanitation row is the structural objection rather than a counting one: **role is not a
+property of a series, it is a property of a (series, record) relation.** A derived pair list
+would have to choose which record to ask — exactly the hand-written decision the refactor was
+meant to remove. That does not change when another domain lands; it changes only if the data
+starts carrying the pairing itself, e.g. `pairs: [{affected, corrective}]` on the record.
+
+The labels were never the blocker, but they confirm it: "The build record" against "Sustained
+use" is a claim about what a series *is*, and nothing in the mirror encodes it.
+
+**What the split is good for instead: cross-checking the hand-written list.** New
+`pair-inverted` (error) fires where a record calls a pair's coverage side a corrective and its
+usage side affected — the pair is then the wrong way round, and the view would present the
+honest metric as the headline needing qualification. It cannot derive the pairs, but it can say
+the sides are the right way up. All nine pass.
 
 ## Result
-`validate` 0 errors / 17 warnings · `selftest` 18/18 plus four isolated and one stays-clean ·
-`typecheck` clean · `build` 206 static pages · verified in-browser at 1440px and 390px: all four
-new pairs from the coverage side, the caveat byte-exact in three renderings, `/unmeasured` at 10
-declarations across 9 records, no console errors.
+`validate` 0 errors / 17 warnings · `selftest` 18/18 plus six isolated and one stays-clean ·
+`typecheck` clean · `build` 206 static pages · verified in-browser at 1440px and 390px: P-30's
+card neutral on the corrective and P-31's still biased, the P-30 page split correctly, the
+`nh-network-length` caveat still byte-exact inside a grid card at 390px, no nested anchors, no
+console errors.

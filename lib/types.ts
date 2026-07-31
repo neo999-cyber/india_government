@@ -150,6 +150,12 @@ export interface ProvenanceRecord {
   when: string;
   affectsDomains: (Domain | 'all')[];
   affectsSeries?: string[];
+  /**
+   * Series that reference this record as the CORRECTIVE rather than the affected party.
+   * Mirror of `affectsSeries`; a series must not appear in both, and `directionOfBias`
+   * does not apply to anything listed here.
+   */
+  correctiveSeries?: string[];
   directionOfBias: BiasDirection;
   bridgeExists: boolean;
   bridgeNote?: string;
