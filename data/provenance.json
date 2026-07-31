@@ -774,5 +774,214 @@
     "tier": "T5"
    }
   ]
+ },
+ {
+  "id": "P-30",
+  "title": "National highway network growth is mostly reclassification, not construction",
+  "whatChanged": "The NH network grew from 91,287 km (March 2014) to about 146,342 km (mid-2025), routinely cited as a 60% expansion. But MoRTH's own factsheet states roughly 54,004 km of state roads were NOTIFIED as national highways since April 2014. Since the network grew about 55,000 km, the overwhelming majority of the headline expansion is administrative reclassification of existing roads, not new building. The honest output metrics are kilometres built per day (11.6 in FY2013-14, peaking at 37 in FY2020-21) and four-lane-plus length (18,278 to 45,947 km), both of which represent real construction.",
+  "when": "2014-04 onward, continuous",
+  "affectsDomains": [
+   "infrastructure"
+  ],
+  "affectsSeries": [
+   "nh-network-length",
+   "nh-construction-pace",
+   "nh-four-lane"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": true,
+  "bridgeNote": "Use nh-construction-pace and nh-four-lane as the build metrics. Never present nh-network-length growth as construction. If MoRTH begins publishing greenfield-only kilometres, substitute that series.",
+  "sources": [
+   {
+    "name": "MoRTH factsheet on NH notification",
+    "url": "https://morth.nic.in/",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The single most consequential measurement finding in the infrastructure domain."
+ },
+ {
+  "id": "P-31",
+  "title": "Four-laning of existing highways counts as construction kilometres",
+  "whatChanged": "MoRTH's construction figures count the widening of existing carriageways alongside genuinely new alignment, so 'kilometres constructed' conflates capacity upgrade with network extension. Both are real work, but they are different things and the series does not separate them.",
+  "when": "Structural",
+  "affectsDomains": [
+   "infrastructure"
+  ],
+  "affectsSeries": [
+   "nh-construction-pace",
+   "nh-four-lane"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": false,
+  "bridgeNote": "Greenfield corridor length is reported separately for expressways but not for the general NH programme.",
+  "sources": [
+   {
+    "name": "MoRTH annual reports",
+    "url": "https://morth.nic.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-32",
+  "title": "Village electrification and household electrification are different thresholds",
+  "whatChanged": "Under DDUGJY a village counted as electrified if 10% of its households plus public buildings had a connection — a very low bar, and the basis on which village electrification was declared complete in April 2018. Saubhagya (2017-2019) then connected about 2.86 crore households to claim near-universal HOUSEHOLD access. The shift is a genuine tightening of the standard, but neither threshold measures electricity SUPPLIED: 'electrified' means connected, and around 53% of villages received under 12 hours a day of domestic supply as of 2019.",
+  "when": "DDUGJY to 2018-04; Saubhagya 2017-2019",
+  "affectsDomains": [
+   "infrastructure",
+   "welfare"
+  ],
+  "affectsSeries": [
+   "household-electrification"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": false,
+  "bridgeNote": "No continuous national series of household supply-hours exists — see the declared absence on household-electrification.",
+  "sources": [
+   {
+    "name": "Ministry of Power / Saubhagya",
+    "url": "https://powermin.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-33",
+  "title": "Railway Budget merged into the Union Budget (2017)",
+  "whatChanged": "The separate Railway Budget, presented annually since 1924, was merged into the Union Budget from 2017-18, concurrent with the Plan/Non-Plan to capital/revenue reclassification. The railway finance series breaks at that point and pre- and post-merger figures are not directly comparable.",
+  "when": "2017-18",
+  "affectsDomains": [
+   "infrastructure",
+   "macro"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "sources": [
+   {
+    "name": "Union Budget 2017-18",
+    "url": "https://www.indiabudget.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-34",
+  "title": "Railway punctuality suspended during COVID; accident classification is selective",
+  "whatChanged": "Punctuality reporting was suspended during the COVID period, leaving a gap in the series. Separately, the headline safety metric counts CONSEQUENTIAL accidents only — a category that excludes many incidents — so the improvement from 135 (FY2014-15) to 31 (FY2024-25) is real on its own terms but narrower than 'accidents' implies.",
+  "when": "2020-2022 (punctuality); classification structural",
+  "affectsDomains": [
+   "infrastructure"
+  ],
+  "affectsSeries": [
+   "rail-accidents"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": false,
+  "sources": [
+   {
+    "name": "Indian Railways / data.gov.in",
+    "url": "https://data.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-35",
+  "title": "Logistics Performance Index 2023 methodology change",
+  "whatChanged": "The World Bank's 2023 LPI edition changed methodology and rounds scores to one decimal, and the country set differs between editions. India's rank trajectory (54 in 2014, 44 in 2018, 38 in 2023) is more robust than the score comparison.",
+  "when": "2023 edition",
+  "affectsDomains": [
+   "infrastructure",
+   "foreign"
+  ],
+  "affectsSeries": [
+   "lpi-rank"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "sources": [
+   {
+    "name": "World Bank Logistics Performance Index",
+    "url": "https://lpi.worldbank.org/",
+    "tier": "T2"
+   }
+  ]
+ },
+ {
+  "id": "P-36",
+  "title": "Logistics cost rebased from 13-14% to about 8% of GDP by a new methodology",
+  "whatChanged": "The long-cited figure of 13-14% of GDP for India's logistics cost was replaced by a DPIIT/NCAER study (2023) estimating 7.8-8.9% for FY2021-22 and 7.97% for FY2023-24. This is a NEW METHODOLOGY producing a lower estimate, not a measured fall from the old figure. Presenting the two as a time series would show a halving of logistics costs that did not occur.",
+  "when": "2023",
+  "affectsDomains": [
+   "infrastructure",
+   "macro"
+  ],
+  "affectsSeries": [
+   "logistics-cost-gdp"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": false,
+  "bridgeNote": "No bridge to the old 13-14% figure exists. Never plot the two on one line. The 13-14% number was itself poorly sourced, so this is a case where the new estimate is probably better AND the apparent improvement is an artefact — both can be true.",
+  "competingAccounts": [
+   {
+    "holder": "DPIIT / NCAER",
+    "position": "7.97% of GDP for FY2023-24 on a documented methodology; the World Bank endorsed the baseline approach"
+   },
+   {
+    "holder": "Cautionary reading",
+    "position": "The old 13-14% figure was never rigorously derived, so the gap between the two measures the change in method, not in cost"
+   }
+  ],
+  "sources": [
+   {
+    "name": "NCAER report on logistics cost in India",
+    "url": "https://ncaer.org/wp-content/uploads/2023/12/NCAER_Report_LogisticsCost2023.pdf",
+    "tier": "T4"
+   }
+  ]
+ },
+ {
+  "id": "P-37",
+  "title": "BharatNet 'service-ready' means middle-mile fibre, not delivered service",
+  "whatChanged": "A gram panchayat counts as service-ready when middle-mile fibre reaches it — not when any household or institution receives service. 2,14,904 of 2,22,341 Phase I and II GPs were service-ready by December 2025, but functional last-mile delivery lags substantially. Cost rose from ₹20,000 crore to about ₹1.39 lakh crore and the deadline has been revised more than six times.",
+  "when": "2011 onward, continuous",
+  "affectsDomains": [
+   "infrastructure"
+  ],
+  "affectsSeries": [
+   "bharatnet-gps"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": false,
+  "sources": [
+   {
+    "name": "Department of Telecommunications / BharatNet",
+    "url": "https://bbnl.nic.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-38",
+  "title": "Airport count includes heliports, waterdromes and reclassified airstrips",
+  "whatChanged": "The frequently cited rise from 74 operational airports in 2014 to about 160 includes 9 heliports and 2 waterdromes, and counts reactivated or reclassified airstrips as new. A July 2023 Rajya Sabha reply confirmed only about 11 genuinely greenfield airports were built since May 2014.",
+  "when": "2014 onward",
+  "affectsDomains": [
+   "infrastructure"
+  ],
+  "affectsSeries": [
+   "airports-operational"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": true,
+  "bridgeNote": "Greenfield airport count (~11) is the construction metric; the ~160 figure is an operational-facility count on a broadened definition.",
+  "sources": [
+   {
+    "name": "Rajya Sabha reply, July 2023",
+    "url": "https://sansad.in/",
+    "tier": "T1"
+   }
+  ]
  }
 ]

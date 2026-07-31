@@ -1,0 +1,466 @@
+[
+ {
+  "id": "L-0044",
+  "title": "National highway construction programme",
+  "date": "2014-05",
+  "dateEnd": "2026-03",
+  "term": "T1",
+  "domains": [
+   "infrastructure"
+  ],
+  "type": "reform",
+  "summary": "Sustained expansion of the national highway network, with construction pace rising from 11.6 km/day at handover to a peak of 37 km/day in FY2020-21, and four-lane-plus length rising from 18,278 to 45,947 km.",
+  "claimAtLaunch": "Break the policy paralysis that had stalled highway building, and expand the national highway network substantially.",
+  "whatHappened": "Building genuinely accelerated: pace roughly tripled and four-laning went up two and a half times. But the headline network figure — 91,287 km to 146,342 km, cited as a 60% expansion — is mostly reclassification. MoRTH's own factsheet records about 54,004 km of state roads notified as national highways since April 2014, against a network increase of roughly 55,000 km.",
+  "assessment": "partly",
+  "caseFor": "Tripling construction pace from a standing start is a genuine execution achievement, and the shift from a collapsed PPP model to EPC and the Hybrid Annuity Model kept building going when private capital would not come. Four-laning 27,000 km of existing highway is real capacity that carries real traffic, and India's Logistics Performance Index rank improved from 54 to 38 across the same period. Reclassification is not fraud — bringing state roads onto the national network changes who maintains and funds them, which has real consequences.",
+  "caseAgainst": "The number the government leads with is an accounting artefact. A 60% network expansion invites the reading that 55,000 km of road was built; roughly 1,000 km was. Presenting reclassification as expansion is the single most misleading figure in the infrastructure record, and it obscures a build story that was impressive enough on its own terms.",
+  "shockExposure": "COVID interrupted FY2020-21 construction, though that year still recorded the peak pace. Land acquisition costs rose sharply through the period.",
+  "seriesRefs": [
+   "nh-network-length",
+   "nh-construction-pace",
+   "nh-four-lane"
+  ],
+  "provenanceRefs": [
+   "P-30",
+   "P-31"
+  ],
+  "sources": [
+   {
+    "name": "MoRTH factsheet and annual reports",
+    "url": "https://morth.nic.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0045",
+  "title": "Bharatmala Pariyojana",
+  "date": "2017-10",
+  "dateEnd": "2028-03",
+  "term": "T1",
+  "domains": [
+   "infrastructure"
+  ],
+  "type": "reform",
+  "summary": "Umbrella highway programme approved for 34,800 km at ₹5.35 lakh crore with a September 2022 deadline.",
+  "claimAtLaunch": "34,800 km of highway including economic corridors, border and coastal roads, at ₹5.35 lakh crore, complete by September 2022.",
+  "whatHappened": "About 26,425 km was awarded at ₹8.53 lakh crore and roughly 19,200 to 19,800 km built — around 55% of target — with completion now slipping to 2027-28. MoRTH's 2024-25 annual report states no further projects are being taken up under the scheme, and Phase 2 was never approved. The CAG found in August 2023 that sanctioned cost reached ₹32.17 crore per km against an approved ₹15.37 crore, that 49% of the target length had already been developed or awarded before the scheme began, and that only 1.8% was built under BOT-Toll against an approved 10%.",
+  "assessment": "partly",
+  "caseFor": "Real corridors were delivered — the Delhi-Mumbai, Purvanchal and Bundelkhand expressways exist and carry traffic — and cost escalation partly reflects land prices and a deliberate shift to higher-specification access-controlled design rather than pure overrun. Quietly not launching Phase 2 while completing Phase 1 is more disciplined than announcing a successor programme over an unfinished one.",
+  "caseAgainst": "Cost per kilometre more than doubled against approval, the deadline slipped five years, and nearly half the target length was work already in the pipeline before the scheme was announced — which means the programme's headline scope was inflated at launch. Phase 2's quiet abandonment, disclosed in an annual report rather than announced, is the pattern this project records as announced-but-not-delivered.",
+  "shockExposure": "COVID disrupted FY2020-21 and FY2021-22 construction and raised material costs; land acquisition costs rose independently.",
+  "seriesRefs": [
+   "nh-construction-pace"
+  ],
+  "provenanceRefs": [
+   "P-30"
+  ],
+  "sources": [
+   {
+    "name": "CAG performance audit, August 2023",
+    "url": "https://cag.gov.in/",
+    "tier": "T1"
+   },
+   {
+    "name": "MoRTH Annual Report 2024-25",
+    "url": "https://morth.nic.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0046",
+  "title": "Road safety deterioration",
+  "date": "2014-01",
+  "dateEnd": "2024-12",
+  "term": "T1",
+  "domains": [
+   "infrastructure",
+   "human-development"
+  ],
+  "type": "episode",
+  "summary": "Road accident fatalities rose from about 1.41 lakh in 2014 to a record 1,77,175 in 2024, while accident severity climbed from 21.6 deaths per 100 accidents in 2005 to 36.3 in 2024.",
+  "whatHappened": "National highways carry about 2% of road length but accounted for 31% of accidents and 36.6% of fatalities in 2024. The rise coincided with, rather than despite, the highway expansion — higher design speeds on new corridors without matching enforcement, trauma care or access control.",
+  "assessment": "failed",
+  "caseFor": "Fatalities rose alongside rapid growth in vehicle ownership and vehicle-kilometres travelled, so the rate per vehicle or per kilometre travelled may have improved even as the absolute count rose. Better roads are not the cause of crashes; enforcement, licensing and trauma response are separate systems that no highway programme controls. The Motor Vehicles (Amendment) Act 2019 substantially raised penalties, and effects on behaviour lag.",
+  "caseAgainst": "Whatever the denominator, more people die on Indian roads each year than before, and the severity per accident is rising, which points to speed. Building high-speed corridors without commensurate investment in enforcement and trauma care is a policy choice, and this is the outcome. A programme judged on kilometres delivered while its most direct human outcome deteriorates for a decade is being judged on the wrong metric.",
+  "shockExposure": "The 2020 dip is a COVID artefact and the subsequent rise partly a return to trend; the 2024 record is above pre-pandemic levels on any reading.",
+  "seriesRefs": [
+   "road-fatalities",
+   "nh-construction-pace"
+  ],
+  "sources": [
+   {
+    "name": "MoRTH, Road Accidents in India 2024",
+    "url": "https://morth.nic.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0047",
+  "title": "Railway electrification",
+  "date": "2014-05",
+  "dateEnd": "2026-03",
+  "term": "T1",
+  "domains": [
+   "infrastructure",
+   "environment"
+  ],
+  "type": "reform",
+  "summary": "Broad gauge electrification rose from about 20% (21,801 route km) in 2014 to 99.6% (69,873 route km) by March 2026.",
+  "claimAtLaunch": "Complete electrification of the broad gauge network to cut fuel costs and emissions and reduce diesel dependence.",
+  "whatHappened": "Delivered close to fully. Indian Railways reports fuel savings of nearly ₹6,000 crore and about 180 crore litres of diesel displaced in 2024-25. India now ranks second globally on electrified share behind Switzerland, ahead of China at 82%, Japan at 64% and Russia at 52%.",
+  "assessment": "worked",
+  "caseFor": "This is the clearest case in the infrastructure domain where physical output converted directly into use, because the asset IS the service — an electrified line carries electric traction from the day it energises, with no behavioural change required and no demand forecast to miss. The cost and emissions savings are measurable and attributable, and the achievement is verifiable against an international benchmark.",
+  "caseAgainst": "Electrification was already a long-running programme rather than a new initiative, and the pace reflects sustained funding more than novel policy. Its benefits are also partly contingent on the grid: electric traction on a coal-heavy grid displaces diesel with coal, so the emissions gain is smaller than the diesel figure alone implies. And a fully electrified network that still moves a falling share of national freight raises the question of what the investment bought strategically.",
+  "shockExposure": "None material — the programme continued through COVID.",
+  "seriesRefs": [
+   "rail-electrification"
+  ],
+  "sources": [
+   {
+    "name": "Indian Railways / PIB",
+    "url": "https://pib.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0048",
+  "title": "Dedicated Freight Corridors and the freight modal share",
+  "date": "2014-05",
+  "dateEnd": "2026-04",
+  "term": "T1",
+  "domains": [
+   "infrastructure"
+  ],
+  "type": "reform",
+  "summary": "The Eastern and Western Dedicated Freight Corridors, totalling 2,843 km, were largely completed by April 2026 at about ₹94,091 crore, against a programme conceived in 2005 and approved in 2008.",
+  "claimAtLaunch": "Segregate freight from passenger traffic to raise speed and capacity, and arrest the long decline in railways' share of national freight.",
+  "whatHappened": "Operational gains on the corridors are real — coal transit on the Eastern DFC fell from 35 to 20 hours, and haulage costs from 95 to 45 paise per tonne-kilometre, with 325 to 371 trains a day. Railways carried a record 1,670 MT in FY2025-26. But the modal share continued falling, from around 30% at handover to about 26% by 2024. Railways told Parliament that the full envisaged benefits would accrue only on further proliferation.",
+  "assessment": "partly",
+  "caseFor": "Where the corridors operate they transformed economics — halving haulage cost per tonne-kilometre is the kind of structural gain that compounds, and record absolute tonnage shows the network is carrying more than ever. Modal share is the wrong test for two corridors covering a fraction of the network; the honest measure is performance on the sections built, which is strong. The decline has also plateaued rather than continued at its earlier rate.",
+  "caseAgainst": "The corridors were justified explicitly on arresting the modal-share decline and it did not arrest. Eighteen years from conception to substantial completion, with a ₹2,690 crore avoidable overrun, is slow enough that road freight capacity grew faster than rail could respond. Record tonnage on a falling share means rail grew more slowly than the freight market — which is the definition of losing.",
+  "shockExposure": "COVID disrupted construction and distorted freight patterns across FY2020-21 and FY2021-22.",
+  "seriesRefs": [
+   "rail-freight-share"
+  ],
+  "sources": [
+   {
+    "name": "Parliamentary Standing Committee on Railways, December 2024",
+    "url": "https://pib.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0049",
+  "title": "Railway safety",
+  "date": "2014-05",
+  "dateEnd": "2026-03",
+  "term": "T1",
+  "domains": [
+   "infrastructure"
+  ],
+  "type": "episode",
+  "summary": "Consequential train accidents fell from 135 in FY2014-15 to 31 in FY2024-25, with accidents per million train kilometres falling from 0.11 to 0.03 — against an average of 171 a year in the preceding decade.",
+  "whatHappened": "The improvement is sustained and substantial. But the June 2023 Balasore triple collision killed about 296 people and exposed signalling and asset-failure risk; the Kavach anti-collision system covers only about 2,490 route km with 21,937 km under progress after ₹3,875 crore spent to June 2026; and roughly 1.6 lakh non-gazetted vacancies, including safety-critical posts, remain under recruitment.",
+  "assessment": "partly",
+  "caseFor": "Cutting accidents by three quarters and the rate per train kilometre by two thirds, sustained over a decade, is a large and verifiable safety improvement that saved lives. Elimination of unmanned level crossings and track renewal account for much of it. Balasore was a signalling failure of a specific type that Kavach is designed to prevent, and its deployment, while slow, is proceeding.",
+  "caseAgainst": "The headline counts consequential accidents only, a narrow category. Kavach was announced in 2020 and covers under 4% of the network six years later, which is not a pace consistent with the urgency claimed after Balasore. Persistent six-figure vacancies in a safety-critical workforce are a standing risk that the accident count does not capture, and the CAG has repeatedly flagged under-utilisation of the dedicated safety fund.",
+  "shockExposure": "COVID suppressed traffic and therefore exposure across FY2020-21 and FY2021-22, flattering those years.",
+  "seriesRefs": [
+   "rail-accidents"
+  ],
+  "provenanceRefs": [
+   "P-34"
+  ],
+  "sources": [
+   {
+    "name": "Indian Railways / data.gov.in",
+    "url": "https://data.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0050",
+  "title": "Household electrification and the supply-hours gap",
+  "date": "2017-10",
+  "dateEnd": "2019-03",
+  "term": "T1",
+  "domains": [
+   "infrastructure",
+   "welfare"
+  ],
+  "type": "reform",
+  "summary": "Saubhagya connected about 2.86 crore households in roughly 18 months to claim near-universal household electrification, following the April 2018 declaration that all villages were electrified.",
+  "claimAtLaunch": "Universal household electricity access, replacing a village-level standard that required only 10% of households plus public buildings to be connected.",
+  "whatHappened": "Connections were delivered at extraordinary speed and the household standard is a genuine tightening on the village one. But connection is not supply: around 53% of villages received under 12 hours a day of domestic supply as of 2019, and there is no continuous national series measuring household supply-hours.",
+  "assessment": "partly",
+  "caseFor": "Connecting 28 million households in eighteen months is among the fastest electrification pushes in history, and moving the standard from village to household was a deliberate tightening that made the target harder, not easier. A connection is a precondition for supply and cannot be skipped; supply-hours are constrained by discom finances, which is a separate and older failure.",
+  "caseAgainst": "The scheme was presented as delivering electricity and delivered wiring. With half of villages getting under twelve hours a day, the achievement claimed and the service received diverge sharply — and the absence of any published supply-hours series means the gap cannot be tracked, which is itself a choice. Discom finances were the binding constraint throughout and were not addressed alongside.",
+  "shockExposure": "None material to the connection drive itself; COVID later disrupted revenue collection and worsened discom finances.",
+  "seriesRefs": [
+   "household-electrification",
+   "atc-losses"
+  ],
+  "provenanceRefs": [
+   "P-32"
+  ],
+  "sources": [
+   {
+    "name": "Ministry of Power / Saubhagya",
+    "url": "https://powermin.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0051",
+  "title": "Discom reform: UDAY and its successors",
+  "date": "2015-11",
+  "dateEnd": "2026-03",
+  "term": "T1",
+  "domains": [
+   "infrastructure",
+   "macro",
+   "federalism"
+  ],
+  "type": "reform",
+  "summary": "UDAY (2015) restructured distribution company debt with states absorbing 75%, followed by the Revamped Distribution Sector Scheme (2021) — the latest in a cycle of bailouts running back through IPDS and R-APDRP.",
+  "claimAtLaunch": "Make distribution companies financially viable by cutting losses, restructuring debt and aligning tariffs with cost.",
+  "whatHappened": "AT&C losses fell from 23.7% in FY2015-16 to 15.4% in FY2022-23, then rose to 16.12% in FY2023-24 — the first reversal in five years. The ACS-ARR gap narrowed to ₹0.45 per kWh before widening again to around ₹0.60. Accumulated discom losses stood at ₹7.08 lakh crore and outstanding debt at ₹7.42 lakh crore as of 31 March 2024. In October 2025 a package of about ₹1 lakh crore — the fifth bailout in two decades — was conveyed to six states, conditional on privatisation or listing.",
+  "assessment": "failed",
+  "caseFor": "AT&C losses fell by eight percentage points over the period, which is real operational improvement, and UDAY brought transparency to state-level discom finances that had previously been opaque. Distribution is a state subject, so the Centre's leverage is limited to conditional funding, and the October 2025 package attaches privatisation conditions that previous rounds did not.",
+  "caseAgainst": "Five bailouts in two decades is the definition of a structural problem not being solved. The underlying cause — tariffs held below cost for political reasons, with cross-subsidy borne by industrial consumers — was untouched by every round including this one. Losses have started rising again, the cost-revenue gap is widening, and accumulated losses of ₹7.08 lakh crore exceed the entire annual central capital expenditure budget.",
+  "shockExposure": "COVID disrupted collections and deferred tariff revisions; the 2021-22 coal price shock raised power purchase costs sharply.",
+  "seriesRefs": [
+   "atc-losses",
+   "thermal-plf"
+  ],
+  "sources": [
+   {
+    "name": "Power Finance Corporation / Ministry of Power",
+    "url": "https://pfcindia.com/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0052",
+  "title": "Renewable energy capacity expansion",
+  "date": "2014-05",
+  "dateEnd": "2026-03",
+  "term": "T1",
+  "domains": [
+   "environment",
+   "infrastructure"
+  ],
+  "type": "reform",
+  "summary": "Renewable capacity rose from 76.38 GW in March 2014 to 274.68 GW by March 2026, with solar going from 2.82 GW to 150.26 GW — a fifty-three-fold increase.",
+  "claimAtLaunch": "Reach 175 GW of renewable capacity by 2022, later superseded by a target of 500 GW non-fossil capacity by 2030.",
+  "whatHappened": "Non-fossil capacity reached 283.46 GW and renewables met 51.5% of demand in July 2025. Progress toward the 2030 target is broadly on track. The 2022 target of 175 GW was met on capacity though not on the original sectoral mix.",
+  "assessment": "worked",
+  "caseFor": "A fifty-three-fold increase in solar capacity in twelve years, achieved largely through competitive auctions that drove tariffs to among the world's lowest, is a structural transformation of the generation mix. Unlike most infrastructure outputs here, generation capacity converts into use automatically wherever the grid can absorb it, and renewables meeting over half of demand in a peak month demonstrates that absorption.",
+  "caseAgainst": "Capacity is not generation: renewables' share of energy generated remains well below their share of capacity because of load factors, and grid absorption and storage remain binding constraints. The expansion coexists with continued coal capacity addition, so it has supplemented rather than displaced fossil generation. Discom financial weakness also creates payment risk that has slowed developer investment in some states.",
+  "shockExposure": "Global solar module prices fell sharply over the period, which is an external tailwind not attributable to policy; the 2022 commodity shock temporarily reversed some of it.",
+  "seriesRefs": [
+   "re-capacity"
+  ],
+  "sources": [
+   {
+    "name": "MNRE / CEA",
+    "url": "https://mnre.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0053",
+  "title": "Port efficiency",
+  "date": "2014-05",
+  "dateEnd": "2026-03",
+  "term": "T1",
+  "domains": [
+   "infrastructure",
+   "foreign"
+  ],
+  "type": "reform",
+  "summary": "Average turnaround time at major ports fell from 96 hours in 2014 to about 49.5 hours in FY2024-25, while cargo throughput rose from 581 to 915 million tonnes.",
+  "claimAtLaunch": "Modernise port infrastructure and cut turnaround time under the Sagarmala programme.",
+  "whatHappened": "Both output and utilisation improved together — one of only two sub-domains in this phase where that is true. Sagarmala completed 315 projects worth ₹1.57 lakh crore, with 120 modernisation projects adding about 400 MTPA of capacity. Inland waterways cargo rose from 18.1 to 145.5 MTPA, though declared and actually navigable waterways remain far apart.",
+  "assessment": "worked",
+  "caseFor": "Halving turnaround time while nearly doubling throughput is unambiguous efficiency gain, verifiable and sustained, and it feeds directly into the logistics cost that trade competitiveness depends on. It is one of the few places where a physical output metric and its utilisation counterpart moved together and in the same direction.",
+  "caseAgainst": "India still trails comparators substantially — Japan turns ships around in about eight hours against India's forty-nine — so the improvement is from a very low base and the gap remains large. Inland waterways is the weaker half of the programme, where declared national waterways far exceed those actually navigable, and the headline cargo growth there rests on a small number of stretches.",
+  "shockExposure": "COVID depressed FY2020-21 throughput; global shipping disruption in 2021-22 affected turnaround measurement.",
+  "seriesRefs": [
+   "port-turnaround",
+   "port-cargo"
+  ],
+  "sources": [
+   {
+    "name": "Ministry of Ports, Shipping and Waterways",
+    "url": "https://shipmin.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0054",
+  "title": "UDAN regional connectivity scheme",
+  "date": "2016-10",
+  "dateEnd": "2026-07",
+  "term": "T1",
+  "domains": [
+   "infrastructure"
+  ],
+  "type": "reform",
+  "summary": "Regional air connectivity scheme subsidising routes to underserved airports. 679 routes were operationalised, of which roughly 342 remain operational — about half have been discontinued.",
+  "claimAtLaunch": "Make flying affordable and accessible from smaller cities by subsidising regional routes through viability gap funding.",
+  "whatHappened": "Operational airports rose from 74 to about 160, though only around 11 are genuinely greenfield and the count includes 9 heliports and 2 waterdromes. Viability gap funding of about ₹4,700 crore was spent plus ₹4,800 crore on airport infrastructure. UDAN 2.0 launched in July 2026 with a ₹28,840 crore outlay.",
+  "assessment": "partly",
+  "caseFor": "Half of a large number of new routes surviving without permanent subsidy is a reasonable outcome for a scheme explicitly designed to seed markets and withdraw — attrition is the mechanism working, not failing. Genuine air access reached cities that had none, and India became the third-largest domestic aviation market over the period.",
+  "caseAgainst": "A 50% route failure rate suggests demand was systematically over-estimated at award, and the airports built to serve failed routes are stranded assets. The headline airport count is inflated by a broadened definition — presenting reactivated airstrips, heliports and waterdromes alongside 11 genuine new builds as a doubling of airports is the same reclassification pattern seen in highways.",
+  "shockExposure": "COVID destroyed regional aviation demand in FY2020-21 and FY2021-22 and accounts for a substantial share of route discontinuation.",
+  "seriesRefs": [
+   "airports-operational",
+   "udan-routes"
+  ],
+  "provenanceRefs": [
+   "P-38"
+  ],
+  "sources": [
+   {
+    "name": "Ministry of Civil Aviation",
+    "url": "https://www.civilaviation.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0055",
+  "title": "Metro rail expansion",
+  "date": "2014-05",
+  "dateEnd": "2026-03",
+  "term": "T1",
+  "domains": [
+   "infrastructure"
+  ],
+  "type": "reform",
+  "summary": "Metro network grew from 248 km in 2014 to 1,013 km across 23 cities by May 2025, with daily ridership rising from 28 lakh to 1.12 crore.",
+  "claimAtLaunch": "Extend mass rapid transit to India's growing cities, with each project justified by a Detailed Project Report forecasting ridership and a 14% economic return under Metro Rail Policy 2017.",
+  "whatHappened": "The assets were built. The ridership was not. An IIT-Delhi and Infravision study found most Indian metro systems carry 25 to 30% of their DPR projections, with Delhi the best performer at 47.45% and Bengaluru as low as 6%. Nagpur carries about 1 lakh daily against a 4 lakh forecast; Mumbai under 7 lakh against roughly 19 lakh on about ₹90,000 crore of spending. A 2022 Standing Committee found almost no metro system had met its initial projections.",
+  "assessment": "partly",
+  "caseFor": "Quadrupling metro network length and quadrupling ridership in a decade is real mass transit that millions use daily, and ridership builds over years as networks reach critical density — Chennai went from 13% to about 60% once its Phase 1 loop closed. Comparing against DPR forecasts partly measures forecast quality rather than asset performance, and the assets have fifty-year lives against forecasts made for a single opening year.",
+  "caseAgainst": "The forecasts were not incidental — they were the justification. Metro Rail Policy 2017's 14% return threshold created a direct incentive to inflate DPR ridership, and systems approved on inflated forecasts have been built at ₹300 to 600 crore per kilometre in cities where a bus rapid transit system at a tenth the cost would have carried the actual load. Bengaluru at 6% of projection is not a network maturing slowly; it is a project that should not have passed appraisal.",
+  "shockExposure": "COVID collapsed ridership across FY2020-21 and FY2021-22 and recovery has been uneven, though the underperformance against DPR predates the pandemic in most systems.",
+  "seriesRefs": [
+   "metro-network"
+  ],
+  "provenanceRefs": [
+   "P-22"
+  ],
+  "sources": [
+   {
+    "name": "IIT-Delhi and Infravision Foundation, December 2023",
+    "url": "https://infravision.in/",
+    "tier": "T3"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0056",
+  "title": "Mobile internet expansion and the attribution question",
+  "date": "2016-09",
+  "dateEnd": "2026-03",
+  "term": "T1",
+  "domains": [
+   "infrastructure"
+  ],
+  "type": "episode",
+  "summary": "Internet subscribers rose from about 30 crore in FY2014-15 to roughly 109 crore by FY2025-26, with data consumption per user rising from 0.27 GB a month to 20.27 GB.",
+  "whatHappened": "The dominant cause was the launch of Reliance Jio in September 2016, which cut 4G data prices by roughly 98% and forced the market to follow. This is the largest usage gain in the infrastructure domain and it was produced by private competition rather than public programme. The public counterpart, BharatNet, connected 2.14 lakh gram panchayats as service-ready but with functional last-mile delivery lagging, at a cost that rose from ₹20,000 crore to about ₹1.39 lakh crore across more than six deadline revisions.",
+  "assessment": "contested",
+  "caseFor": "Spectrum policy, the licensing framework and the decision not to protect incumbents from Jio's entry were government choices that made the disruption possible, and the digital public infrastructure built on top of cheap data — UPI, Aadhaar authentication, DBT — is genuinely policy-driven. A government that permits a competitor to destroy incumbent margins in the public interest deserves credit for restraint.",
+  "caseAgainst": "The price collapse that drove adoption was a private commercial strategy funded by a single conglomerate, and attributing it to policy inverts cause and effect. Where the state built directly — BharatNet — the result was a sevenfold cost overrun, six deadline revisions, and a connectivity metric that measures fibre reaching a village rather than anyone receiving service. The contrast between the two is the finding.",
+  "shockExposure": "COVID accelerated data adoption worldwide, so part of the FY2020-21 onward growth reflects a global shift.",
+  "seriesRefs": [
+   "internet-subscribers",
+   "bharatnet-gps"
+  ],
+  "provenanceRefs": [
+   "P-37"
+  ],
+  "sources": [
+   {
+    "name": "TRAI performance indicator reports",
+    "url": "https://trai.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0057",
+  "title": "Capital expenditure push and execution efficiency",
+  "date": "2021-04",
+  "dateEnd": "2026-03",
+  "term": "T2",
+  "domains": [
+   "infrastructure",
+   "macro"
+  ],
+  "type": "reform",
+  "summary": "Central capital expenditure rose from ₹2 lakh crore in FY2014-15 to ₹11.21 lakh crore in FY2025-26, supported by the National Infrastructure Pipeline, PM Gati Shakti and the National Monetisation Pipeline.",
+  "claimAtLaunch": "Crowd in private investment and accelerate infrastructure delivery through coordinated planning and asset monetisation.",
+  "whatHappened": "Spending scaled dramatically. Execution efficiency did not improve alongside it: MoSPI's flash reports show delayed central sector projects rising from 27.1% of those monitored in March 2019 to 41.6% in March 2024, with cost overruns of about ₹5 trillion, 18.7% of original sanctioned cost. NMP 1.0 achieved roughly 90% of its ₹6 lakh crore target. Private investment remained weak throughout, as Phase 2 established.",
+  "assessment": "contested",
+  "caseFor": "Sustaining a fivefold real increase in public capital expenditure through a pandemic, when private investment had withdrawn, prevented an infrastructure investment collapse and built assets that will yield for decades. Gati Shakti's coordination layer addressed a real problem of ministries planning in isolation, and monetisation recycled capital without new borrowing. Delay percentages rise mechanically when the portfolio of monitored projects expands rapidly.",
+  "caseAgainst": "Delays rose by half and cost overruns reached ₹5 trillion during precisely the period when coordination was supposed to have improved, which is weak evidence for Gati Shakti's effect. The crowding-in premise failed on its own terms — private investment stayed weak throughout, as the corporate tax cut record separately shows. Overruns are likely understated because agencies do not consistently report revised estimates.",
+  "shockExposure": "COVID disrupted execution across FY2020-21 and FY2021-22, and the 2022 commodity shock raised input costs, both of which inflate delay and overrun statistics independent of management.",
+  "seriesRefs": [
+   "project-delays",
+   "logistics-cost-gdp"
+  ],
+  "provenanceRefs": [
+   "P-36"
+  ],
+  "sources": [
+   {
+    "name": "MoSPI flash reports on central sector projects",
+    "url": "https://mospi.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-31"
+ }
+]

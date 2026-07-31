@@ -36,16 +36,21 @@ function comparable(coverage: Series, usage: Series): boolean {
   return coverage.unit.trim() === usage.unit.trim();
 }
 
+const DEFAULT_LABELS = { coverage: 'Administrative output', usage: 'Sustained use' };
+
+const DEFAULT_FRAMING =
+  'Administrative systems record an output — a connection issued, a tap installed, a card created. Sustained use is a different measurement, and where both exist the second is lower.';
+
 const latest = (s: Series) => {
   const india = s.points.filter((p) => p.country === 'IND');
   return india[india.length - 1];
 };
 
-function Reading({ series, role }: { series: Series; role: 'coverage' | 'usage' }) {
+function Reading({ series, role, label }: { series: Series; role: 'coverage' | 'usage'; label: string }) {
   const point = latest(series);
   return (
     <div className={`cu-side cu-side-${role}`}>
-      <span className="label">{role === 'coverage' ? 'Administrative output' : 'Sustained use'}</span>
+      <span className="label">{label}</span>
       <h3>
         <Link href={`/series/${series.id}/`}>{series.title}</Link>
       </h3>
@@ -77,7 +82,13 @@ export function CoverageUsageView({
   counterpart?: ProvenanceRecord;
   governing?: ProvenanceRecord;
 }) {
-  const absences = [...(coverage.unmeasured ?? []), ...(usage?.unmeasured ?? [])];
+  const labels = pair.labels ?? DEFAULT_LABELS;
+  // Coverage-side declarations already render in the usage slot when they ARE the
+  // counterpart, so pooling them again below would print the same absence twice.
+  const absences = [
+    ...(pair.usageUnmeasured ? [] : (coverage.unmeasured ?? [])),
+    ...(usage?.unmeasured ?? []),
+  ];
 
   const gapStatement = (() => {
     if (usage && comparable(coverage, usage)) {
@@ -92,11 +103,23 @@ export function CoverageUsageView({
         );
       }
     }
+    if (pair.usageUnmeasured) {
+      return (
+        <>
+          There is no second figure to place beside this one, and that is the finding rather
+          than a hole in the dataset. The counterpart is not late or unpulled — nothing measures
+          it, so the coverage figure cannot be qualified by anything and must not be read as
+          though it had been. It stands as an upper bound on an outcome no one has established
+          (<Link href={`/provenance/${pair.governing}/`}>{pair.governing}</Link>).
+        </>
+      );
+    }
     if (usage) {
       return (
         <>
-          These two do not subtract. Coverage is measured in{' '}
-          <strong>{coverage.unit}</strong> and use in <strong>{usage.unit}</strong>
+          These two do not subtract. {labels.coverage} is measured in{' '}
+          <strong>{coverage.unit}</strong> and {labels.usage.toLowerCase()} in{' '}
+          <strong>{usage.unit}</strong>
           {' — '}different quantities on different denominators, so no single gap figure is
           computed and none is estimated. The gap is the direction, and it is stated in each
           side&rsquo;s own terms above. A subtraction here would invent a number no source
@@ -119,20 +142,33 @@ export function CoverageUsageView({
       <div className="cu-head">
         <span className="label">Coverage versus usage</span>
         <p>
-          {pair.scheme}. Administrative systems record an output — a connection issued, a tap
-          installed, a card created. Sustained use is a different measurement, and where both
-          exist the second is lower. Neither figure is presented without the other (
+          {pair.scheme}. {pair.framing ?? DEFAULT_FRAMING} Neither figure is presented without
+          the other (
           <Link href={`/provenance/${pair.governing}/`}>{pair.governing}</Link>
           {governing ? <>, {governing.title}</> : null}).
         </p>
       </div>
 
-      {/* Two columns whenever a second reading renders at all, whether it is a series or
-          the competing accounts held in a provenance record. */}
-      <div className={usage || counterpart ? 'cu-pair' : 'cu-pair cu-pair-single'}>
-        <Reading series={coverage} role="coverage" />
+      {/* Two columns whenever anything renders in the second position — a usage series, the
+          competing accounts held in a provenance record, or the declared absence standing in
+          for a counterpart that does not exist. The absence occupies the slot precisely so
+          the reader sees a counterpart was expected there. */}
+      <div
+        className={
+          usage || counterpart || pair.usageUnmeasured ? 'cu-pair' : 'cu-pair cu-pair-single'
+        }
+      >
+        <Reading series={coverage} role="coverage" label={labels.coverage} />
         {usage ? (
-          <Reading series={usage} role="usage" />
+          <Reading series={usage} role="usage" label={labels.usage} />
+        ) : pair.usageUnmeasured ? (
+          <div className="cu-side cu-side-usage">
+            <span className="label">{labels.usage} — no measurement exists</span>
+            <Absences
+              items={coverage.unmeasured}
+              heading="The counterpart that would go here"
+            />
+          </div>
         ) : counterpart ? (
           <div className="cu-side cu-side-usage">
             <span className="label">Independent reading</span>

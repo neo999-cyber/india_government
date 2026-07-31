@@ -39,6 +39,10 @@ const COVERAGE_USAGE_PAIRS = [
   { scheme: 'Jal Jeevan Mission', coverage: 'jjm-tap-coverage', usage: 'jjm-functionality', governing: 'P-22' },
   { scheme: 'PM-JAY', coverage: 'pmjay-cards', usage: 'pmjay-admissions', governing: 'P-22' },
   { scheme: 'PMAY-G (rural housing)', coverage: 'pmay-g-houses', usage: 'pmay-g-completed', governing: 'P-22' },
+  { scheme: 'National highways', coverage: 'nh-network-length', usage: 'nh-construction-pace', governing: 'P-30' },
+  { scheme: 'Airports', coverage: 'airports-operational', usage: 'udan-routes', governing: 'P-38' },
+  { scheme: 'Metro rail', coverage: 'metro-network', usage: null, usageUnmeasured: true, governing: 'P-22' },
+  { scheme: 'Household electrification', coverage: 'household-electrification', usage: null, usageUnmeasured: true, governing: 'P-32' },
   {
     scheme: 'Swachh Bharat (sanitation)',
     coverage: 'sanitation-basic',
@@ -398,8 +402,14 @@ export function checkIntegrity(records, { today }) {
     if (pair.usage && !usage) {
       add('error', 'pair-incomplete', coverage.file, pair.coverage, `carries the coverage side of "${pair.scheme}", but its usage counterpart "${pair.usage}" is not in /data. P-22 forbids rendering the administrative figure alone: without the counterpart it reads as the outcome rather than as an upper bound on it`);
     }
-    if (!pair.usage && !pair.usageFromProvenance) {
-      add('error', 'pair-incomplete', coverage.file, pair.coverage, `coverage/usage pair "${pair.scheme}" declares neither a usage series nor a provenance counterpart, so the coverage figure would render alone`);
+    if (!pair.usage && !pair.usageFromProvenance && !pair.usageUnmeasured) {
+      add('error', 'pair-incomplete', coverage.file, pair.coverage, `coverage/usage pair "${pair.scheme}" declares no usage series, no provenance counterpart and no declared absence, so the coverage figure would render alone`);
+    }
+    // The absence-as-counterpart shape: the usage panel is rendered from the coverage
+    // series' own `unmeasured` declarations, so if it carries none the panel is an empty
+    // frame — a pair that says nothing where it promised to say why nothing is measured.
+    if (pair.usageUnmeasured && !(Array.isArray(coverage.record.unmeasured) && coverage.record.unmeasured.length > 0)) {
+      add('error', 'pair-incomplete', coverage.file, pair.coverage, `coverage/usage pair "${pair.scheme}" stands its usage side on a declared absence, but the series carries no "unmeasured" entry. The usage panel would render empty, stating neither a counterpart nor why there is none`);
     }
     if (pair.usageFromProvenance && !provenanceIds.has(pair.usageFromProvenance.record)) {
       add('error', 'pair-incomplete', coverage.file, pair.coverage, `usage counterpart is held in "${pair.usageFromProvenance.record}", which is not in /data`);
