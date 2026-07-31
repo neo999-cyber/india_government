@@ -223,9 +223,7 @@
   "whatChanged": "MoSPI released a new national accounts series rebased from 2011-12 to 2022-23, adopting double deflation, a Supply-Use Table framework, and new source data (GST returns, PLFS, ASUSE). The revision to recent growth is MIXED, not uniformly upward: FY24 was revised DOWN from 8.2% to 7.2%, while FY25 was revised UP from 6.5% to 7.1%; FY26 is estimated at 7.6%. This changes the SHAPE of the recent trajectory, not just its level — on the 2011-12 base the FY24-to-FY25 move was a 1.7-point deceleration, on the 2022-23 base it is a 0.1-point one. Separately, the revision lowered the LEVEL of nominal GDP by roughly 3-4%, which mechanically raises every ratio-to-GDP in the project without any change in underlying activity.",
   "when": "2026-02-27",
   "affectsDomains": [
-   "macro",
-   "banking",
-   "foreign"
+   "all"
   ],
   "affectsSeries": [
    "gdp-growth-new-base",
@@ -260,7 +258,7 @@
     "tier": "T1"
    }
   ],
-  "notes": "Supersedes the project's original two-regime assumption. CLAUDE.md rule 5 must be amended from 'both GDP series' to 'all three regimes'. CORRECTION 2026-07-31: earlier wording of this record generalised the revision as upward, which contradicts its own FY24 figures. Direction is mixed and is now stated per year. The flattening of the FY24-FY25 deceleration is a substantive narrative effect and should be surfaced wherever growth trajectory is discussed."
+  "notes": "Supersedes the project's original two-regime assumption. CLAUDE.md rule 5 must be amended from 'both GDP series' to 'all three regimes'. CORRECTION 2026-07-31: earlier wording of this record generalised the revision as upward, which contradicts its own FY24 figures. Direction is mixed and is now stated per year. The flattening of the FY24-FY25 deceleration is a substantive narrative effect and should be surfaced wherever growth trajectory is discussed. Scoped to 'all': the GDP denominator is inherited by any ratio-to-GDP series in any domain — health and education spending shares trip this as surely as fiscal or trade ratios do."
  },
  {
   "id": "P-11",
@@ -534,6 +532,241 @@
     "name": "RBI Financial Stability Report coverage",
     "url": "https://abclive.in/2025/07/02/rbi-inancial-stability-report-2025/",
     "tier": "T4"
+   }
+  ]
+ },
+ {
+  "id": "P-22",
+  "title": "Evidence base shifts from independent survey to scheme MIS",
+  "whatChanged": "From 2014 onward the primary evidence for welfare performance shifted from independent statistical surveys (NSSO/NSS rounds) toward scheme management information systems and dashboards. MIS records an OUTPUT — a connection issued, a toilet built, a card created, a house sanctioned — not sustained use. Every coverage figure sourced from MIS is therefore an upper bound on the outcome it is cited to demonstrate, and the wedge is largest exactly where the welfare payoff depends on behaviour change.",
+  "when": "2014 onward, progressive",
+  "affectsDomains": [
+   "welfare",
+   "human-development",
+   "infrastructure"
+  ],
+  "affectsSeries": [
+   "ujjwala-connections",
+   "jjm-tap-coverage",
+   "pmay-g-houses",
+   "pmjay-cards"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": true,
+  "bridgeNote": "Pair every MIS figure with the best independent estimate where one exists: CAG refill data for Ujjwala, r.i.c.e. SQUAT for sanitation, the 2024 Functionality Assessment for JJM, claims-paid for PM-JAY. Where no independent estimate exists, label the figure as administrative and unverified.",
+  "sources": [
+   {
+    "name": "PIB, India's DBT: Boosting Welfare Efficiency",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192&reg=3&lang=2",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The organising measurement problem of the welfare domain. Every scheme record in this phase references it. Scope includes infrastructure: Jal Jeevan is filed there and is one of the clearest MIS-versus-survey cases in the dataset."
+ },
+ {
+  "id": "P-23",
+  "title": "HCES 2022-23 methodology change breaks consumption comparability",
+  "whatChanged": "The Household Consumption Expenditure Survey 2022-23 and 2023-24 adopted a Modified Mixed Recall Period, a three-visit design, and imputation of items received free under government schemes. Imputing scheme transfers raises measured consumption by construction, and none of it is comparable with the 2011-12 round. Combined with the withheld 2017-18 survey (P-03), there is no comparable consumption series across the entire period under study.",
+  "when": "2022-23, repeated 2023-24",
+  "affectsDomains": [
+   "poverty",
+   "welfare"
+  ],
+  "affectsSeries": [
+   "poverty-tendulkar"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": false,
+  "bridgeNote": "No official bridge. Derived poverty estimates diverge widely — NITI suggesting 5% or less, SBI Research 4-7%, Rangarajan-line reconstruction ~8.6%. Report the RANGE, never a point estimate. The India Forum notes the 2022-23 design under-samples poor households and recommends a dedicated bridge survey.",
+  "competingAccounts": [
+   {
+    "holder": "NITI Aayog",
+    "position": "Poverty has fallen to around 5% or less on the new data"
+   },
+   {
+    "holder": "Himanshu / The India Forum",
+    "position": "Rangarajan-line reconstruction gives ~8.6% for 2022-23; the survey under-samples the poor and imputation inflates consumption"
+   }
+  ],
+  "sources": [
+   {
+    "name": "MoSPI HCES documentation",
+    "url": "https://mospi.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-24",
+  "title": "ODF, ODF-Plus and ODF-Plus Model are successive non-identical definitions",
+  "whatChanged": "Rural India was declared Open Defecation Free in October 2019, after which ODF-Plus and ODF-Plus Model were introduced as further tiers. Each redefines the threshold, so apparent progress across the sequence partly reflects definitional change rather than behavioural change. The underlying ODF declaration is itself contested: the r.i.c.e. SQUAT panel found open defecation among people over two in Bihar, MP, Rajasthan and UP fell from 70% (2014) to 44% (2018), and that 23% of latrine-owners still defecated in the open — unchanged from 2014.",
+  "when": "2019-10 onward",
+  "affectsDomains": [
+   "welfare",
+   "human-development"
+  ],
+  "affectsSeries": [
+   "sanitation-basic"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": false,
+  "competingAccounts": [
+   {
+    "holder": "NARSS 2018-19 (government)",
+    "position": "93.1% of rural households had toilets and 96.5% of those with access used them"
+   },
+   {
+    "holder": "r.i.c.e. SQUAT panel 2018",
+    "position": "44% of people over two still defecating in the open in four large north-Indian states; 23% of latrine-owners unchanged since 2014"
+   }
+  ],
+  "sources": [
+   {
+    "name": "Swachh Bharat Mission dashboard",
+    "url": "https://swachhbharatmission.ddws.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Questionnaire design accounts for part of the divergence: grouped household questions structurally understate open defecation relative to person-by-person questions."
+ },
+ {
+  "id": "P-25",
+  "title": "JJM certification measures infrastructure, not water delivered",
+  "whatChanged": "A 'certified Har Ghar Jal village' under Jal Jeevan Mission records tap connections installed, not water delivered. The Ministry's own 2024 Functionality Assessment across 19,812 certified villages found 98% of households had a tap but only about 76% received water meeting Mission standards and about 83% the minimum quantity norm.",
+  "when": "2019-08 onward",
+  "affectsDomains": [
+   "welfare",
+   "infrastructure"
+  ],
+  "affectsSeries": [
+   "jjm-tap-coverage",
+   "jjm-functionality"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": true,
+  "bridgeNote": "The 2024 Functionality Assessment quantifies the wedge directly — carry both series and show the gap.",
+  "sources": [
+   {
+    "name": "JJM Functionality Assessment 2024, reported",
+    "url": "https://www.business-standard.com/",
+    "tier": "T4"
+   }
+  ]
+ },
+ {
+  "id": "P-26",
+  "title": "MPI circularity: the poverty measure is built from the scheme outputs it is used to validate",
+  "whatChanged": "In the absence of consumption-based poverty estimates, the Multidimensional Poverty Index became the headline poverty measure. Its indicators include cooking fuel, sanitation, housing, drinking water and bank accounts — which are precisely the outputs of Ujjwala, Swachh Bharat, PMAY, Jal Jeevan and Jan Dhan. Scheme delivery therefore improves the poverty measure mechanically, regardless of whether the output converted into sustained use. NITI Aayog's claim that 24.82 crore people exited multidimensional poverty between 2013-14 and 2022-23 cannot be cited as independent confirmation that those schemes worked.",
+  "when": "2021 onward, NITI national MPI 2024-01",
+  "affectsDomains": [
+   "poverty",
+   "welfare"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": false,
+  "bridgeNote": "State the circularity explicitly wherever the 24.82 crore figure appears. A NITI member has acknowledged that a scheme targets each of the 12 MPI indicators.",
+  "competingAccounts": [
+   {
+    "holder": "NITI Aayog",
+    "position": "24.82 crore exited multidimensional poverty; headcount fell 29.17% to 11.28%"
+   },
+   {
+    "holder": "Methodological critique",
+    "position": "Improvement is partly definitional; MPI indicators are scheme outputs whose usage is separately contested"
+   }
+  ],
+  "sources": [
+   {
+    "name": "NITI Aayog national MPI",
+    "url": "https://www.niti.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-27",
+  "title": "PM-JAY card creation is an eligibility token, not utilisation",
+  "whatChanged": "Ayushman Bharat reports three numbers that diverge by an order of magnitude: cards created (24-30+ crore), hospital admissions authorised (12.69 crore by June 2026), and claims paid (over ₹1.92 lakh crore). A card confers eligibility and does not evidence use. The 2023 CAG performance audit additionally found large-scale database integrity failures, including roughly 7.5 lakh beneficiaries linked to a single mobile number.",
+  "when": "2018-09 onward",
+  "affectsDomains": [
+   "welfare",
+   "human-development"
+  ],
+  "affectsSeries": [
+   "pmjay-cards",
+   "pmjay-admissions"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": true,
+  "bridgeNote": "Use admissions authorised and claims paid as the utilisation measures; never cite cards as coverage achieved.",
+  "competingAccounts": [
+   {
+    "holder": "CAG 2023",
+    "position": "Database integrity failures including duplicate mobile numbers, payments for deceased patients, and simultaneous multi-hospital admissions"
+   },
+   {
+    "holder": "Health Ministry",
+    "position": "PM-JAY is entitlement-based not enrolment-based, so mobile numbers do not determine eligibility"
+   }
+  ],
+  "sources": [
+   {
+    "name": "CAG performance audit of PM-JAY, 2023",
+    "url": "https://cag.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-28",
+  "title": "ABPS and NMMS in MGNREGA suppress recorded demand",
+  "whatChanged": "The Aadhaar-Based Payment System was made compulsory for MGNREGA from January 2024 after repeated extensions, and the National Mobile Monitoring System app changed attendance recording. Approximately 1.46 crore workers were net-deleted from job cards in FY2023-24. Because MGNREGA is demand-driven, administrative exclusion registers in the data as reduced demand rather than as rationing — the series cannot distinguish the two.",
+  "when": "NMMS from 2021; ABPS compulsory 2024-01",
+  "affectsDomains": [
+   "welfare",
+   "employment"
+  ],
+  "affectsSeries": [
+   "mgnrega-persondays"
+  ],
+  "directionOfBias": "understates-post-2014",
+  "bridgeExists": false,
+  "bridgeNote": "LibTech India tracks payment delays and deletions independently. In FY2024-25 registrations rose 8.6% while employment delivery fell 7.1% — the divergence is the signature of rationing rather than falling need.",
+  "sources": [
+   {
+    "name": "LibTech India MGNREGA tracking",
+    "url": "https://libtech.in/",
+    "tier": "T4"
+   }
+  ]
+ },
+ {
+  "id": "P-29",
+  "title": "Global Hunger Index methodology dispute",
+  "whatChanged": "India ranked 105 of 127 in the 2024 Global Hunger Index with a score of 27.3 ('serious'), and its child wasting rate of 18.7% is the highest of any country in the index. The Government of India has formally rejected the methodology since 2021, arguing three of four indicators are child-specific and the undernourishment indicator rests on a small opinion poll, and citing its own Poshan Tracker showing child wasting consistently below 7.2%.",
+  "when": "Annual; government rejections from 2021",
+  "affectsDomains": [
+   "human-development",
+   "welfare"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "bridgeNote": "Child wasting is the crux: GHI 18.7% versus Poshan Tracker under 7.2%. The two cannot currently be reconciled and neither should be presented as settled.",
+  "competingAccounts": [
+   {
+    "holder": "GHI (Concern Worldwide / Welthungerhilfe)",
+    "position": "Rank 105/127, score 27.3, child wasting 18.7% — the highest in the index"
+   },
+   {
+    "holder": "Government of India",
+    "position": "Methodology is flawed: three of four indicators are child-specific, undernourishment rests on a ~3,000-person poll, and Poshan Tracker shows wasting below 7.2%"
+   }
+  ],
+  "sources": [
+   {
+    "name": "Global Hunger Index 2024",
+    "url": "https://www.globalhungerindex.org/",
+    "tier": "T5"
    }
   ]
  }

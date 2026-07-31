@@ -1085,7 +1085,7 @@
    "P-17",
    "P-18"
   ],
-  "notes": "This is the denominator P-17's adjustment requires. NOTE: gross advances is NOT the same aggregate as 'domestic credit' (₹66.91→₹181.34 lakh crore, quoted in P-17 prose) — at Mar 2025 advances derive to ~₹98 lakh crore against ~₹181 lakh crore of domestic credit. Using domestic credit as the denominator would understate the adjusted ratio by roughly half."
+  "notes": "This is the denominator P-17's adjustment requires. NOTE: gross advances is NOT the same aggregate as 'domestic credit' (₹66.91 to ₹181.34 lakh crore, quoted in P-17 prose) — at Mar 2025 advances derive to ~₹98 lakh crore against ~₹181 lakh crore of domestic credit. Using domestic credit as the denominator would understate the adjusted ratio by roughly half."
  },
  {
   "id": "scb-gross-npa",
@@ -1450,6 +1450,7 @@
    }
   ],
   "provenanceRefs": [
+   "P-10",
    "P-14"
   ],
   "notes": "Phase-1 peak of 25.4% (FY2013-14, T1) and WDI 22.97% for '2014' are different period bases — see P-14, not a contradiction."
@@ -1555,6 +1556,320 @@
     "note": "World's largest recipient; China 64, Philippines 28"
    }
   ]
+ },
+ {
+  "id": "anaemia-children",
+  "title": "Anaemia in children aged 6-59 months",
+  "unit": "% of children",
+  "domain": "human-development",
+  "tier": "T1",
+  "source": {
+   "name": "National Family Health Survey rounds 4 and 5",
+   "url": "https://rchiips.org/nfhs/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 58.6,
+    "status": "approx",
+    "note": "NFHS-4"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 67.1,
+    "status": "approx",
+    "note": "NFHS-5"
+   }
+  ],
+  "provenanceRefs": [
+   "P-29"
+  ],
+  "notes": "WORSENED SHARPLY — the single most important regressive outcome in this domain. Anaemia in women also rose. CAVEAT REQUIRING VERIFICATION: haemoglobin testing method may have differed between NFHS rounds, which would affect comparability; this must be checked against NFHS-5 methodology documentation before the reversal is cited as settled. NFHS-6 fieldwork delayed; publication status uncertain as of mid-2026."
+ },
+ {
+  "id": "ghi-score",
+  "title": "Global Hunger Index score",
+  "unit": "GHI score",
+  "domain": "human-development",
+  "tier": "T5",
+  "source": {
+   "name": "Global Hunger Index",
+   "url": "https://www.globalhungerindex.org/"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 27.3,
+    "status": "approx",
+    "note": "Rank 105 of 127; 'serious'. Child wasting 18.7%, the highest in the index"
+   }
+  ],
+  "provenanceRefs": [
+   "P-29"
+  ],
+  "notes": "T5 contested index. The Government of India formally rejects the methodology; its Poshan Tracker shows child wasting below 7.2%. Both readings recorded, neither endorsed."
+ },
+ {
+  "id": "health-exp-union",
+  "title": "Union government health expenditure",
+  "unit": "% of GDP",
+  "domain": "human-development",
+  "tier": "T1",
+  "source": {
+   "name": "Union Budget / Economic Survey",
+   "url": "https://www.indiabudget.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 0.37,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 0.29,
+    "status": "approx",
+    "note": "Budget estimate"
+   }
+  ],
+  "provenanceRefs": [
+   "P-10"
+  ],
+  "notes": "Total public health spending including states is ~1.7-1.9% of GDP against the National Health Policy 2017 target of 2.5% by 2025 — a clear stated-target-versus-outcome miss. The Union share FELL over the period."
+ },
+ {
+  "id": "sanitation-basic",
+  "title": "Population using at least basic sanitation services",
+  "unit": "% of population",
+  "domain": "human-development",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank data360 API (SH.STA.BASS.ZS)",
+   "url": "https://data.worldbank.org/indicator/SH.STA.BASS.ZS",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 54.19,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "2015",
+    "value": 57.15,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "2016",
+    "value": 60.12,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "2017",
+    "value": 63.11,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "2018",
+    "value": 66.11,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "2019",
+    "value": 69.13,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "2020",
+    "value": 72.05,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "2021",
+    "value": 74.93,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "2022",
+    "value": 77.82,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "2023",
+    "value": 80.7,
+    "status": "verified"
+   },
+   {
+    "country": "BGD",
+    "period": "2022",
+    "value": 59.3,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2022",
+    "value": 92.17,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2022",
+    "value": 88.16,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2022",
+    "value": 95.89,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-14",
+   "P-24"
+  ],
+  "notes": "Full India series pulled from the World Bank API this cycle — the only fully verified series in phase 4. India added ~26 points from 2014, the fastest gain in the panel, but remains its laggard (77.82% in 2022 versus 88-96% for Vietnam, Indonesia and China). Peer 2014 values not retrieved; peer row is latest-year only."
+ },
+ {
+  "id": "stunting-under5",
+  "title": "Child stunting under age five",
+  "unit": "% of children",
+  "domain": "human-development",
+  "tier": "T1",
+  "source": {
+   "name": "National Family Health Survey rounds 4 and 5",
+   "url": "https://rchiips.org/nfhs/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 38.4,
+    "status": "approx",
+    "note": "NFHS-4"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 35.5,
+    "status": "approx",
+    "note": "NFHS-5"
+   }
+  ],
+  "provenanceRefs": [
+   "P-29"
+  ],
+  "notes": "NFHS-4 to NFHS-5. Marginal improvement. NFHS-6 fieldwork delayed; publication status uncertain as of mid-2026."
+ },
+ {
+  "id": "wasting-under5",
+  "title": "Child wasting under age five",
+  "unit": "% of children",
+  "domain": "human-development",
+  "tier": "T1",
+  "source": {
+   "name": "National Family Health Survey rounds 4 and 5",
+   "url": "https://rchiips.org/nfhs/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 21.0,
+    "status": "approx",
+    "note": "NFHS-4"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 19.3,
+    "status": "approx",
+    "note": "NFHS-5"
+   }
+  ],
+  "provenanceRefs": [
+   "P-29"
+  ],
+  "notes": "Severe wasting ROSE from 7.5% to 7.7% over the same period. NFHS-6 fieldwork delayed; publication status uncertain as of mid-2026."
+ },
+ {
+  "id": "jjm-functionality",
+  "title": "JJM certified households receiving water meeting Mission standards",
+  "unit": "% of certified households",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "JJM Functionality Assessment 2024",
+   "url": "https://jaljeevanmission.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 76.0,
+    "status": "approx",
+    "note": "Against 98% having a tap. ~83% received the minimum quantity norm."
+   }
+  ],
+  "provenanceRefs": [
+   "P-25"
+  ],
+  "notes": "19,812 certified villages, 2,37,608 households, 761 districts. The 98%-tap vs 76%-safe-water wedge is the coverage-usage gap made explicit by the government's own assessment."
+ },
+ {
+  "id": "jjm-tap-coverage",
+  "title": "Rural households with tap water connection",
+  "unit": "% of rural households",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "Jal Jeevan Mission dashboard",
+   "url": "https://jaljeevanmission.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 16.71,
+    "status": "approx",
+    "note": "3.23 crore of ~19.4 crore rural households at launch"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 82.0,
+    "status": "approx",
+    "note": "15.5+ crore households"
+   }
+  ],
+  "provenanceRefs": [
+   "P-25",
+   "P-22"
+  ],
+  "notes": "Original 2024 deadline slipped to 2028 under JJM 2.0 (outlay raised to ~₹8.69 lakh crore, approved March 2026)."
  },
  {
   "id": "nh-network",
@@ -2813,7 +3128,231 @@
    }
   ],
   "provenanceRefs": [
-   "P-03"
+   "P-03",
+   "P-23"
   ]
+ },
+ {
+  "id": "mgnrega-persondays",
+  "title": "MGNREGA person-days generated",
+  "unit": "crore person-days",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "NREGA MIS / PIB",
+   "url": "https://nrega.nic.in/"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2023-24",
+    "note": "ABPS made compulsory and NMMS attendance recording; ~1.46 crore workers net-deleted from job cards",
+    "provenanceRef": "P-28"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 389.0,
+    "status": "approx",
+    "note": "COVID record; ~7.8 crore households completed 100 days"
+   }
+  ],
+  "provenanceRefs": [
+   "P-28"
+  ],
+  "notes": "Cumulative FY2014-15 to FY2024-25 was ~2,923 crore person-days against ~1,660 crore for FY2006-07 to FY2013-14. Chronic under-budgeting: allocations routinely revised upward mid-year and wage liabilities carried forward. Only ~7% of households receive the full 100 days. Annual series must be pulled from NREGA MIS — only the COVID peak is recorded here."
+ },
+ {
+  "id": "nfsa-covered",
+  "title": "Persons receiving free foodgrain under NFSA/PMGKAY",
+  "unit": "crore persons",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "Department of Food and Public Distribution / PIB",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192&reg=3&lang=2"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 80.67,
+    "status": "approx",
+    "note": "Against an intended 81.35 crore"
+   }
+  ],
+  "provenanceRefs": [
+   "P-04"
+  ],
+  "notes": "THE EXCLUSION PROBLEM: coverage ratios (75% rural / 50% urban) are fixed on Census 2011. Drèze, Khera and Mungikar estimated over 100 million excluded; Drèze put it above 120 million in 2025, since population projections imply ~920 million should be covered against ~806 million actual. A failure of omission on a statutory entitlement, and directly caused by the missing census (P-04)."
+ },
+ {
+  "id": "pmay-g-houses",
+  "title": "PMAY-G houses sanctioned and completed",
+  "unit": "crore houses",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "Ministry of Rural Development / PIB",
+   "url": "https://pmayg.nic.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 3.87,
+    "status": "approx",
+    "note": "Sanctioned, of ~4.14 crore cumulative allotment (Feb 2026)"
+   }
+  ],
+  "provenanceRefs": [
+   "P-22"
+  ],
+  "notes": "Completed stands at ~2.95 crore — a sanctioned-to-completed gap of roughly 0.9 crore, with a further completed-to-occupied gap. Beneficiary selection rests on SECC 2011, now fifteen years old. Target revised: 2.95 crore by March 2024, then +2 crore (Aug 2024), overall 4.95 crore by 2029."
+ },
+ {
+  "id": "pmjay-admissions",
+  "title": "PM-JAY hospital admissions authorised, cumulative",
+  "unit": "crore admissions",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "National Health Authority",
+   "url": "https://nha.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 12.69,
+    "status": "approx",
+    "note": "As of 30 June 2026; claims approved over ₹1.92 lakh crore"
+   }
+  ],
+  "provenanceRefs": [
+   "P-27"
+  ],
+  "notes": "The utilisation measure. Cards >> admissions >> claims paid; the gaps are the finding."
+ },
+ {
+  "id": "pmjay-cards",
+  "title": "Ayushman Bharat cards created",
+  "unit": "crore cards",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "National Health Authority",
+   "url": "https://nha.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 30.0,
+    "status": "approx",
+    "note": "Reported 24-30+ crore; NHA reported 24.42 crore registered in the CAG-audited period"
+   }
+  ],
+  "provenanceRefs": [
+   "P-22",
+   "P-27"
+  ],
+  "notes": "A card is an eligibility token, not utilisation. Never cite as coverage achieved."
+ },
+ {
+  "id": "pmkisan-beneficiaries",
+  "title": "PM-KISAN beneficiaries per instalment",
+  "unit": "crore farmers",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "PM-KISAN portal / PIB",
+   "url": "https://pmkisan.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 9.44,
+    "status": "approx",
+    "note": "23rd instalment, June 2026, ₹18,880 crore"
+   }
+  ],
+  "provenanceRefs": [
+   "P-22"
+  ],
+  "notes": "Down from a peak above 10 crore — roughly 2.3 crore (about 22.5%) deleted after mandatory Aadhaar e-KYC and land-record verification. Cumulative disbursement over ₹4.09 lakh crore across 21 instalments. ₹6,000/year is un-indexed, and the land-title basis excludes tenant farmers and landless labourers."
+ },
+ {
+  "id": "ujjwala-connections",
+  "title": "PMUY LPG connections released, cumulative",
+  "unit": "crore connections",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "MoPNG / PIB",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192&reg=3&lang=2"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 3.18,
+    "status": "approx",
+    "note": "3.18 cr with a year-plus tenure at 31 Dec 2018, per CAG"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 10.3,
+    "status": "approx",
+    "note": "National LPG coverage rose from ~62% (May 2016) to ~94-99%"
+   }
+  ],
+  "provenanceRefs": [
+   "P-22"
+  ],
+  "notes": "Target evolution: 5 crore by 2019, raised to 8 crore (Feb 2018), then Ujjwala 2.0 and further extensions."
+ },
+ {
+  "id": "ujjwala-refills",
+  "title": "PMUY average annual LPG refills per beneficiary",
+  "unit": "refills per year",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "CAG Report No. 14 of 2019",
+   "url": "https://cag.gov.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 3.66,
+    "status": "approx",
+    "note": "Year-one cohort of 1.93 crore connections"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 3.21,
+    "status": "approx",
+    "note": "3.18 crore with a year-plus tenure at 31 Dec 2018; declining"
+   }
+  ],
+  "provenanceRefs": [
+   "P-22"
+  ],
+  "notes": "THE metric for this scheme, not connections. Against a general-consumer benchmark of roughly 6+ per year. Of the 3.18 crore cohort, 17.61% never returned for a second refill and 33.02% took only one to three. CAG: 'the overall average refill consumption of PMUY beneficiaries is declining.' Subsidised refills were cut from 12 to 9 in 2025 and 9 to 4 in 2026."
  }
 ]

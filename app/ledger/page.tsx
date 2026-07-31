@@ -2,6 +2,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { assessmentCounts, ledger } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
+import { caveatFor } from '@/lib/rules';
+import { CaveatFlag } from '@/components/marks';
 
 export const metadata: Metadata = { title: 'Ledger' };
 
@@ -51,6 +53,7 @@ export default function LedgerIndex() {
                 <td className="mono">{TERM_SHORT[l.term]}</td>
                 <td>
                   <Link href={`/ledger/${l.id}/`}>{l.title}</Link>
+                  {caveatFor(l.id) ? <CaveatFlag caveat={caveatFor(l.id)!} variant="inline" /> : null}
                 </td>
                 <td className="t-note">{l.type}</td>
                 <td className="t-note">{l.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}</td>

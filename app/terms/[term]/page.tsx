@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { assessmentCounts, ledgerInTerm } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_LABELS, formatDateRange } from '@/lib/format';
+import { CaveatFlag } from '@/components/marks';
+import { caveatFor } from '@/lib/rules';
 import { TERMS, type Term } from '@/lib/types';
 
 type Props = { params: Promise<{ term: string }> };
@@ -109,6 +111,7 @@ export default async function TermPage({ params }: Props) {
                     <td className="mono t-note">{formatDateRange(r.date, r.dateEnd)}</td>
                     <td>
                       <Link href={`/ledger/${r.id}/`}>{r.title}</Link>
+                      {caveatFor(r.id) ? <CaveatFlag caveat={caveatFor(r.id)!} variant="inline" /> : null}
                     </td>
                     <td className="t-note">{r.type}</td>
                     <td className="t-note">{r.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}</td>

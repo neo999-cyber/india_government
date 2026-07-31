@@ -125,3 +125,140 @@ Any series expressed as a percentage of GDP inherits the GDP denominator; the cu
 | Whether RBI restated BoP ratios onto the 2022-23 base | RBI BoP statistics release notes | High — affects all non-MoSPI ratios |
 | `pvt-gross-npa` reporting basis | RBI Trend & Progress (reports both bases) | High — series barred from shared axis until known |
 | Annual write-offs FY15-FY26, primary | RBI RTI / Parliament, primary documents | Medium — replaces the ~2%-high reconstruction |
+
+---
+
+# Verification log — cycle 2026-07-31c (Phase 4, welfare delivery)
+
+## The organising finding
+Almost every scheme in this domain reports an OUTPUT — a connection, a toilet, a card, a house, a tap — and the honest question is what share converted into sustained use. The gap is systematic and always runs the same way. It is now P-22, and every scheme record in this phase references it.
+
+The clearest instances, each carried as a paired series:
+- **Ujjwala**: ~10.3 crore connections, but CAG Report No. 14 of 2019 found 3.21-3.66 refills/year against a general-consumer benchmark above 6, with 17.61% never taking a second refill and 33.02% taking one to three.
+- **Swachh Bharat**: NARSS reports 96.5% usage; the r.i.c.e. SQUAT panel found 44% still defecating in the open in four large north-Indian states, and 23% of latrine-owners unchanged since 2014.
+- **Jal Jeevan**: the government's own 2024 Functionality Assessment found 98% of certified households had a tap and ~76% received water meeting Mission standards.
+- **PM-JAY**: 24-30 crore cards against 12.69 crore cumulative admissions.
+
+## The regression that must not be buried
+Child anaemia (6-59 months) rose from **58.6% (NFHS-4) to 67.1% (NFHS-5)** while every input indicator improved. Filed as L-0042 with assessment `contested`, and carrying an explicit caveat: **haemoglobin testing method may have differed between rounds**, which would affect comparability. That must be checked against NFHS-5 methodology documentation before the reversal is cited as settled. NFHS-6 is delayed, so this remains the last authoritative reading.
+
+## The circularity
+NITI Aayog's claim that 24.82 crore people exited multidimensional poverty rests on an index whose indicators — cooking fuel, sanitation, housing, water, bank accounts — are the outputs of Ujjwala, Swachh Bharat, PMAY, Jal Jeevan and Jan Dhan. Scheme delivery improves the poverty measure mechanically, so it cannot serve as independent confirmation that those schemes worked. P-26; the circularity must be stated wherever the figure appears.
+
+## New provenance records
+P-22 MIS displaces survey as the evidence base · P-23 HCES 2022-23 methodology change · P-24 ODF definitional sequence · P-25 JJM certification vs delivery · P-26 MPI circularity · P-27 PM-JAY card vs utilisation · P-28 ABPS/NMMS suppressing MGNREGA demand · P-29 Global Hunger Index dispute.
+
+## Two more under-scoped provenance records
+The relevance check fired twice. Both were the now-familiar pattern, not mis-pointed refs: **P-10** widened to `all` (the GDP denominator is inherited by any ratio-to-GDP series in any domain — health spending share trips it as surely as fiscal ratios do), and **P-22** widened to include `infrastructure` (Jal Jeevan is filed there).
+
+## A note on the charset rule
+My local sweep flagged `è` in "Drèze" as an error. **Code's implementation is right and mine was wrong** — it warns on Latin diacritics rather than erroring, precisely so research prose is not forced to misspell proper names to get a build through. Local sweep corrected to match. One genuine error found and fixed: a `→` in `scb-gross-advances` notes.
+
+## Status discipline
+Only the `sanitation-basic` India series (ten points, 2014-2023, pulled from the World Bank data360 API) is `verified` this cycle. Everything else is `approx`. The phase-4 report's annual table is largely empty and its peer table incomplete — those gaps are real and are reflected in the sparse series here rather than filled by estimation.
+
+## Open queue additions
+| Figure | Pin against | Priority |
+|---|---|---|
+| NFHS-4 vs NFHS-5 haemoglobin testing method | NFHS-5 methodology documentation | **Blocking** for citing the anaemia reversal |
+| MGNREGA annual person-days FY15-FY26 | NREGA MIS | High |
+| MGNREGA budget BE vs actual, annual | Union Budget / CGA | High |
+| Peer clean-fuel and stunting values, single vintage | World Bank WDI / WHO-UNICEF JMP | High — peer row currently latest-year only |
+| Union health and education spend % GDP, annual | Budget Expenditure documents | High |
+| Ujjwala refill rates post-2019 | MoPNG, if published | High — CAG data stops at Dec 2018 |
+| PMAY-G completed and occupied, annual | PMAY-G dashboard | Medium |
+
+---
+
+# Verification log — cycle 2026-07-31d (Phase 4 code run: coverage/usage pairs)
+
+Counts as expected: 58 series (351 points), 43 ledger, 29 provenance. Relevance check clean.
+
+## Four errors at the gate
+| Record | Change | Why |
+|---|---|---|
+| `pmjay-cards` | added **P-22** | P-22 lists it in `affectsSeries`; the series did not link back. |
+| `poverty-tendulkar` | added **P-23** | Same, and HCES comparability bears directly on a poverty headcount. |
+| `exports-gdp` | added **P-10** | Same — **and this is the third cycle running**. See below. |
+| `ghi-score` | *no data change* | The rule was wrong, not the record. See below. |
+
+## `exports-gdp` has now lost its P-10 back-link three cycles in a row
+Fixed in phase 2 (33d7e13), again in phase 3 (1c61bc3), and again here. Each wholesale
+replacement of `seed.json` drops it. Widening P-10's `affectsDomains` to `all` this cycle does
+**not** prevent it: that satisfies `ref-relevant`, which asks whether a cited record covers the
+domain, while the failure is `back-link`, which asks whether a series cited by
+`P-10.affectsSeries` cites P-10 in return. Different rules, different directions. Until the
+drop process carries `provenanceRefs` forward, this will recur every cycle — it is the single
+most reliable prediction in this log.
+
+## The T5 rule was demanding a reference the relevance rule forbids
+`ghi-score` is the first contested index outside governance. Rule 6 was implemented as "a T5
+series must carry **P-08**", and P-08 is `Contested governance indices (RSF, Freedom House,
+V-Dem)`, scoped to `governance`. `ghi-score` is `human-development` and carries **P-29**, a
+dedicated GHI methodology dispute covering its domain.
+
+So the two error-level rules contradicted each other: `t5-dispute-link` demanded P-08 and
+`ref-relevant` forbade it. **No data could satisfy both**, and satisfying the T5 rule literally
+would have pointed readers of a hunger index at a record about press-freedom rankings.
+
+Generalised the rule to what it was actually protecting: a T5 series must carry a dispute
+record **covering its own domain** — the same test `checkRelevance` applies. P-08 remains the
+governance instance. CLAUDE.md rule 6 amended to match, since it hardcoded P-08 and would
+otherwise contradict the validator. The broken fixture still fires the rule (its T5 series
+carries no dispute at all), so the gate did not loosen.
+
+## The feature: coverage versus usage (P-22)
+Four pairs, rendered together from either side, in a fixed order — output first, then what it
+converted into. Landing on `ujjwala-refills` shows the same pair as landing on
+`ujjwala-connections`; a coverage series can no longer render alone, the same way no GDP base
+can. P-22 is linked from every pair, including sanitation, whose series does not carry P-22.
+
+**No pair prints a single gap number, and that is the finding rather than a shortfall.**
+Subtraction is offered only where both sides carry the identical unit string, because that
+string is where the denominator lives. None of the four passes:
+
+| Pair | Coverage | Usage | Why it does not subtract |
+|---|---|---|---|
+| Ujjwala | crore connections | refills per year | different quantities entirely |
+| Jal Jeevan | % of **rural** households | % of **certified** households | different denominators |
+| PM-JAY | crore cards | crore admissions | a stock of eligibility against cumulative events |
+| Swachh Bharat | % of population (WDI, national) | r.i.c.e. SQUAT, four states | different populations; not a series at all |
+
+Jal Jeevan is the trap the rule exists for: 82% and 76% are both percentages and look
+subtractable, but "6 points" would be a number no source supports. The view names both
+denominators instead. Sanitation renders P-24's two competing accounts side by side and
+endorses neither — the counterpart stays in provenance, because two survey figures that
+disagree are a disagreement, not a time series.
+
+## Blocking caveats
+L-0042 and L-0043 now carry their caveat on the detail page (above the summary, not below it)
+and as an inline flag in every compact rendering — ledger index, domain pages, term pages —
+because that is where a record could previously appear as a title plus the word "contested"
+with the qualification dropped. L-0043's flag leads to P-26; L-0042's points at its own
+`caseFor`, there being no provenance record for NFHS haemoglobin comparability.
+
+Held as a rendering rule in `lib/rules.ts`, not a schema field — schemas are agreed in chat.
+If this should be first-class data, a `caveat` field on the ledger schema is the way, and the
+rendering rule would then read from it.
+
+## New validator rules, both proven by fixture
+`pair-incomplete` (tests/fixtures/pair-half) and `caveat-target` (tests/fixtures/caveat-orphan).
+Both fire only where part of the guarded thing is present, mirroring `regime-group`: a dataset
+carrying neither side simply lacks that pair, and erroring there is noise. `caveat-target`
+catches a caveat whose provenance target is dropped or unclaimed — a caveat that silently
+vanishes is worse than one never written.
+
+## For research
+- `jjm-functionality`, `pmjay-admissions` and `sanitation-basic` do not carry P-22 in
+  `provenanceRefs`, and P-22 does not list them. The view links P-22 structurally so every pair
+  reaches it, but the "what this number rests on" block on those three pages does not show it.
+  Whether the usage side of a pair should also carry P-22 is a research call, not a code one.
+- P-22's `affectsSeries` includes `pmay-g-houses`, which has no usage counterpart and is
+  therefore **not** paired. It is a coverage figure carrying P-22 that renders alone — exactly
+  the shape the pairing exists to prevent. Either a counterpart lands, or it is worth saying in
+  the record that none exists.
+
+## Result
+`validate` 0 errors / 16 warnings · `selftest` 18/18 plus three isolated rules · `typecheck`
+clean · `build` 159 static pages · verified in-browser at 1440px and 390px: all four pairs from
+both sides, both caveats on four surfaces each, no console errors.

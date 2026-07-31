@@ -1,0 +1,17 @@
+[
+  {
+    "id": "L-0043",
+    "title": "Record carrying a blocking caveat that no longer points at anything",
+    "date": "2024-01",
+    "term": "T3",
+    "domains": ["poverty"],
+    "type": "episode",
+    "summary": "Declared in BLOCKING_CAVEATS as citing P-26 for the full statement, but the record does not carry P-26 in provenanceRefs here. The flag would render pointing at a dispute this record does not claim.",
+    "assessment": "contested",
+    "caseFor": "Present so the record fails on the caveat target alone, not on a missing case.",
+    "caseAgainst": "Present for the same reason.",
+    "sources": [{ "name": "Fixture, not a real source", "url": "https://example.org/", "tier": "T1" }],
+    "confidence": "low",
+    "asOf": "2026-07-31"
+  }
+]
