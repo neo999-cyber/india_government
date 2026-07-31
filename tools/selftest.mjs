@@ -90,6 +90,7 @@ const ISOLATED = [
   { dir: 'pair-absent-counterpart', rule: 'pair-incomplete', expect: 'carries no "unmeasured" entry' },
   { dir: 'mirror-contradiction', rule: 'mirror-contradiction' },
   { dir: 'pair-inverted', rule: 'pair-inverted' },
+  { dir: 'contested-half', rule: 'contested-incomplete', expect: 'states a direction the evidence does not establish' },
 ];
 
 /**

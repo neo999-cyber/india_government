@@ -468,3 +468,51 @@ Compounding it: chat then asserted "restored from `060f82e`" and "31h is intenti
 - **Never replace a file you did not write in its entirety this cycle.** Append, or dictate the delta. This log has two authors and must only ever be appended to.
 - **Cycle letters are assigned once.** Never reused, never renumbered. Gaps and out-of-order arrival are acceptable and are explained here.
 - **Do not assert repository state you cannot observe.** Ask for `git status`, a diff, or a grep count instead. All three incidents above were either caused or prolonged by asserting a state rather than checking it.
+---
+
+# Verification log — cycle 2026-08-01a (Phase 6, employment and labour)
+
+## This domain is structurally different: the measurement dispute IS the finding
+
+In macro, banking, welfare and infrastructure, measurement problems qualified findings. Here the two instruments disagree about the **direction** of change. Over 2017-18 to 2021-22 PLFS records employment growth of +4.55% (+88.86 million); CMIE records minus 0.30% (5.62 million fewer). Opposite signs, not different magnitudes.
+
+Both series are carried in full — `unemployment-rate` and `unemployment-rate-cmie`, `lfpr-overall` and `lfpr-overall-cmie` — and **P-41 forbids resolving the disagreement**. The instruments answer different questions: PLFS supports statements about participation and status composition, CMIE about open joblessness among urban, educated and female workers. The divergence is concentrated almost entirely among women, whose measured participation in official data runs roughly double CMIE's with no convergence across reference periods.
+
+## Three regimes in twelve years
+This domain's series break twice. **P-02** (EUS to PLFS, 2017-18) and now **P-39** (PLFS sample redesign, January 2025 — first-stage units 12,800 to 22,692, households per unit 8 to 12, monthly rotational panel in both sectors, July-June to calendar year). MoSPI states explicitly that post-January-2025 results may not be strictly comparable with earlier rounds. Re-baseline at 2025; do not splice.
+
+## The decomposition that changes what the headline means
+PLFS unemployment fell 6.0% to 3.2% while participation rose 49.8% to 60.1%. Decomposed:
+- Self-employed share rose to **58.4%**; unpaid family helpers from 13.3% to **17.3%**
+- Regular wage and salaried employment **flat at 21-23%** — the only category reliably carrying contracts and social security
+- Agriculture's employment share **rose** from 42.5% (2018-19) to **46.1%** (2023-24), reversing decades of structural transformation; in 2019-20 alone agriculture absorbed ~32 million, about three-quarters of that year's employment increase
+- Real rural monthly earnings **fell** from ₹9,107 to ₹8,842
+
+**P-40** records the mechanism: PLFS counts unpaid helpers as employed, so the rate falls when people are absorbed into unpaid family work. `unemployment-rate` carries a caveat saying the series cannot be read as a jobs indicator.
+
+## New provenance records
+P-39 PLFS 2025 redesign · P-40 unpaid family helpers counted as employed · P-41 PLFS versus CMIE directional disagreement · P-42 EPFO net additions are not new jobs · P-43 RBI KLEMS estimates rather than measures employment.
+
+P-42 and P-43 quantify the registration-versus-formalisation distinction phase 3 flagged: of 4.86 crore EPFO net additions across FY2020-FY2023, roughly 2.27 crore were genuinely new payroll and about 42 lakh net formalisation, the rest re-joiners and switchers. Citing KLEMS as corroboration cites the survey back to itself.
+
+## Six declared absences — the most of any phase
+- Whether rising female participation is paid entry, reclassified unpaid work, or distress entry (no instrument separates them; ILO modelled 32% against PLFS 41.7%)
+- Jobs created, as distinct from payroll registrations (India has no establishment-level new-hire register)
+- Whether the labour codes increased formal employment (in force only since 21 November 2025)
+- Independently verified placement outcomes for skill trainees (CAG found 87% of batches lacked verifiable attendance)
+- The number of workers who returned home in the 2020 exodus (government ~1.04 crore, independent ~3 crore, no reconciliation)
+- **Deaths during the 2020 migrant exodus** — the Labour Ministry told Parliament no such data is maintained, and therefore that the question of compensation did not arise. The Railways separately confirmed 97 deaths aboard Shramik trains. An RTI indicated the government held data it declined to give Parliament.
+
+That last one is the starkest absence the project has recorded: not a gap in what was measured, but a stated refusal to have measured it, with a compensation consequence attached.
+
+## Scope widening
+**P-22** (registration standing in for outcome) extended to `employment`. EPFO net additions and e-Shram registrations are the same shape the record describes.
+
+## Open queue additions
+| Figure | Pin against | Priority |
+|---|---|---|
+| CMIE annual series, clean | CMIE CPHS direct, subscription | High — currently monthly points from secondary reporting |
+| PLFS status composition, full annual | PLFS Annual Reports, all rounds | High |
+| Real earnings by worker category | PLFS earnings tables | High |
+| EPFO net additions with re-joiner split | EPFO payroll releases | Medium |
+| Peer LFPR and employment shares, single vintage | ILOSTAT | Medium |

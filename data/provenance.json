@@ -545,7 +545,8 @@
   "affectsDomains": [
    "welfare",
    "human-development",
-   "infrastructure"
+   "infrastructure",
+   "employment"
   ],
   "affectsSeries": [
    "ujjwala-connections",
@@ -563,7 +564,7 @@
     "tier": "T1"
    }
   ],
-  "notes": "The organising measurement problem of the welfare domain. Every scheme record in this phase references it. Scope includes infrastructure: Jal Jeevan is filed there and is one of the clearest MIS-versus-survey cases in the dataset.",
+  "notes": "The organising measurement problem of the welfare domain. Every scheme record in this phase references it. Scope includes infrastructure: Jal Jeevan is filed there and is one of the clearest MIS-versus-survey cases in the dataset. Scope extended to employment: EPFO net payroll additions and e-Shram registrations are registration counts standing in for outcomes, the same shape this record describes.",
   "correctiveSeries": [
    "ujjwala-refills",
    "jjm-functionality",
@@ -993,5 +994,150 @@
     "tier": "T1"
    }
   ]
+ },
+ {
+  "id": "P-39",
+  "title": "PLFS sample redesign of January 2025 breaks the series against itself",
+  "whatChanged": "From January 2025 the Periodic Labour Force Survey was substantially redesigned: first-stage units rose from 12,800 to 22,692, households per unit from 8 to 12, total sample to about 2.72 lakh households — roughly 2.65 times the previous 1.02 lakh — with a monthly rotational panel introduced in both rural and urban areas, changed stratification using districts as strata where possible, and the annual reference year shifted from July-June to January-December. MoSPI states explicitly that results from January 2025 onward may not be strictly comparable with earlier PLFS rounds.",
+  "when": "2025-01",
+  "affectsDomains": [
+   "employment"
+  ],
+  "affectsSeries": [
+   "unemployment-rate",
+   "lfpr-overall",
+   "lfpr-female",
+   "self-employed-share",
+   "agri-employment-share"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "A calendar-year back-series to 2022 was reconstructed but is flagged as not strictly comparable. This is the SECOND instrument change inside this domain: EUS to PLFS in 2017-18 (P-02), then PLFS to redesigned PLFS in 2025. The employment series therefore has three regimes, none officially bridged, across a period of twelve years.",
+  "sources": [
+   {
+    "name": "MoSPI PLFS methodology notes",
+    "url": "https://mospi.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Re-baseline the longitudinal dataset at 2025. Do not splice across January 2025."
+ },
+ {
+  "id": "P-40",
+  "title": "Unpaid family helpers are counted as employed",
+  "whatChanged": "PLFS classifies unpaid helpers in household enterprises as employed, and counts subsidiary activity of 30 days or more over a 365-day recall. An unemployment rate computed on this definition falls when people are absorbed into unpaid family work, which is the opposite of what a falling unemployment rate is normally taken to mean. The unpaid-helper share rose from about 13.3% of workers in 2018-19 to 17.3% in 2020-21, and the self-employed share to 58.4% by 2023-24, while regular wage employment stayed flat at 21-23%.",
+  "when": "Structural to the instrument",
+  "affectsDomains": [
+   "employment"
+  ],
+  "affectsSeries": [
+   "unemployment-rate",
+   "lfpr-female",
+   "self-employed-share",
+   "unpaid-helper-share"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": true,
+  "bridgeNote": "Read the unemployment rate only alongside the status composition — self-employed, unpaid helper, regular wage and casual shares — and alongside agriculture's employment share. Current weekly status unemployment, which uses a seven-day recall, runs materially higher throughout (8.7% in 2017-18 against 6.0% usual status) and is the better measure of open joblessness.",
+  "competingAccounts": [
+   {
+    "holder": "MoSPI / ILO convention",
+    "position": "Counting contributing family workers as employed follows international standards and is not an Indian idiosyncrasy"
+   },
+   {
+    "holder": "Critical reading",
+    "position": "Whatever the convention, a headline rate that falls as unpaid work rises cannot be cited as evidence that jobs were created"
+   }
+  ],
+  "sources": [
+   {
+    "name": "MoSPI PLFS Annual Reports",
+    "url": "https://mospi.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-41",
+  "title": "PLFS and CMIE disagree on the direction of employment change",
+  "whatChanged": "The official PLFS and the private CMIE Consumer Pyramids Household Survey do not merely differ in level; over 2017-18 to 2021-22 PLFS records employment growth of +4.55% (+88.86 million) while CMIE records minus 0.30% (5.62 million fewer) — opposite signs. PLFS puts unemployment at 3.2% and LFPR at about 60% for 2023-24; CMIE puts unemployment at 7-9% and LFPR near 40% across the same period. The divergence is concentrated almost entirely among women, whose measured work participation in official data is roughly double CMIE's, with no convergence across reference periods.",
+  "when": "2017-18 onward, continuous",
+  "affectsDomains": [
+   "employment"
+  ],
+  "affectsSeries": [
+   "unemployment-rate",
+   "unemployment-rate-cmie",
+   "lfpr-overall",
+   "lfpr-overall-cmie"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "bridgeNote": "No reconciliation exists and none should be manufactured. The instruments answer different questions: PLFS supports statements about participation and status composition; CMIE supports statements about open joblessness among urban, educated and female workers. Carry both series and never present one as the employment picture.",
+  "competingAccounts": [
+   {
+    "holder": "PLFS / MoSPI and defenders",
+    "position": "Statutory national survey, large sample, Census-consistent demographics, ILO-standard definitions, public unit-level microdata"
+   },
+   {
+    "holder": "CMIE / Mahesh Vyas",
+    "position": "High-frequency panel design captures discouraged workers exiting the labour force and intermittent joblessness that an annual recall smooths away"
+   },
+   {
+    "holder": "Critics of CMIE",
+    "position": "Private and subscription-gated, with a contested sampling frame and implausibly low female participation figures"
+   },
+   {
+    "holder": "Critics of PLFS",
+    "position": "Its employment definition converts distress and unpaid work into employment, mechanically deflating the unemployment rate"
+   }
+  ],
+  "sources": [
+   {
+    "name": "Abraham and Shrivastava, Indian Journal of Labour Economics",
+    "url": "https://link.springer.com/journal/41027",
+    "tier": "T3"
+   }
+  ],
+  "notes": "THE defining measurement dispute of this domain. In every earlier phase measurement problems qualified a finding; here the disagreement IS the finding."
+ },
+ {
+  "id": "P-42",
+  "title": "EPFO net payroll additions are not a count of new jobs",
+  "whatChanged": "Net subscriber additions to the Employees' Provident Fund Organisation include members re-joining after a gap and members switching employers, not only first-time entrants, and the series is periodically revised. One analysis of 4.86 crore net additions across FY2020 to FY2023 found roughly 2.27 crore genuinely new payroll entries and about 42 lakh of net formalisation, the remainder being re-joiners and switchers.",
+  "when": "2017-09 onward",
+  "affectsDomains": [
+   "employment"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": false,
+  "bridgeNote": "No establishment-level new-hire register exists in India that would allow a true jobs-created series to be constructed.",
+  "sources": [
+   {
+    "name": "EPFO payroll data",
+    "url": "https://www.epfindia.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-43",
+  "title": "RBI KLEMS estimates employment rather than measuring it",
+  "whatChanged": "The RBI's India KLEMS database is a total factor productivity framework that takes employment as an INPUT from PLFS and the national accounts. Citing its output — for instance 17.19 crore additional jobs over 2014-24 against 2.9 crore over 2004-14 — as independent evidence of job creation is circular, since the employment figures it reports are derived from the same surveys whose interpretation is in dispute.",
+  "when": "Continuous",
+  "affectsDomains": [
+   "employment",
+   "macro"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "sources": [
+   {
+    "name": "RBI India KLEMS database",
+    "url": "https://www.rbi.org.in/",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Not a fault in KLEMS, which is doing what it was designed to do. The error is in the citation."
  }
 ]
