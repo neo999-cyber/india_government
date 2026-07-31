@@ -220,7 +220,7 @@
  {
   "id": "P-10",
   "title": "Third GDP base-year revision to 2022-23 (released 27 February 2026)",
-  "whatChanged": "MoSPI released a new national accounts series rebased from 2011-12 to 2022-23, adopting double deflation, a Supply-Use Table framework, and new source data (GST returns, PLFS, ASUSE). It revised recent real growth UP (FY24 8.2% to 7.2%, FY25 6.5% to 7.1%, FY26 estimated 7.6%) while lowering the LEVEL of nominal GDP by roughly 3-4%. The level cut mechanically RAISES every ratio-to-GDP in the project — deficit, debt, exports, GFCF, tax — without any change in underlying activity. Advisory body: ACNAS, chaired by Prof. Biswanath Goldar. 'Sources and Methods' documentation due August 2026.",
+  "whatChanged": "MoSPI released a new national accounts series rebased from 2011-12 to 2022-23, adopting double deflation, a Supply-Use Table framework, and new source data (GST returns, PLFS, ASUSE). The revision to recent growth is MIXED, not uniformly upward: FY24 was revised DOWN from 8.2% to 7.2%, while FY25 was revised UP from 6.5% to 7.1%; FY26 is estimated at 7.6%. This changes the SHAPE of the recent trajectory, not just its level — on the 2011-12 base the FY24-to-FY25 move was a 1.7-point deceleration, on the 2022-23 base it is a 0.1-point one. Separately, the revision lowered the LEVEL of nominal GDP by roughly 3-4%, which mechanically raises every ratio-to-GDP in the project without any change in underlying activity.",
   "when": "2026-02-27",
   "affectsDomains": [
    "macro",
@@ -260,7 +260,7 @@
     "tier": "T1"
    }
   ],
-  "notes": "Supersedes the project's original two-regime assumption. CLAUDE.md rule 5 must be amended from 'both GDP series' to 'all three regimes'."
+  "notes": "Supersedes the project's original two-regime assumption. CLAUDE.md rule 5 must be amended from 'both GDP series' to 'all three regimes'. CORRECTION 2026-07-31: earlier wording of this record generalised the revision as upward, which contradicts its own FY24 figures. Direction is mixed and is now stated per year. The flattening of the FY24-FY25 deceleration is a substantive narrative effect and should be surfaced wherever growth trajectory is discussed."
  },
  {
   "id": "P-11",
