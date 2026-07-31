@@ -552,7 +552,9 @@
    "ujjwala-connections",
    "jjm-tap-coverage",
    "pmay-g-houses",
-   "pmjay-cards"
+   "pmjay-cards",
+   "epfo-net-additions",
+   "eshram-registrations"
   ],
   "directionOfBias": "overstates-post-2014",
   "bridgeExists": true,
@@ -1118,6 +1120,9 @@
     "url": "https://www.epfindia.gov.in/",
     "tier": "T1"
    }
+  ],
+  "affectsSeries": [
+   "epfo-net-additions"
   ]
  },
  {
@@ -1138,6 +1143,9 @@
     "tier": "T1"
    }
   ],
-  "notes": "Not a fault in KLEMS, which is doing what it was designed to do. The error is in the citation."
+  "notes": "Not a fault in KLEMS, which is doing what it was designed to do. The error is in the citation.",
+  "affectsSeries": [
+   "klems-employment-claim"
+  ]
  }
 ]

@@ -851,3 +851,38 @@ tr th:last-child {
   display: block;
   margin-bottom: 0.2rem;
 }
+
+/* The kind of absence, on every entry. Quiet — it classifies, it does not alarm. */
+.absence-kind {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+
+/* An absence whose STATED reason is contradicted by the same government's own evidence.
+   The one case in the dataset, and it carries a consequence: no data, therefore no
+   compensation. Red because CLAUDE.md reserves red for deaths, alerts and break-seams, and
+   this is all three in substance — but dashed, not solid, because it is still an absence.
+   The grammar: dashed neutral = nothing measures this; dashed red = the stated reason for
+   that is contested; solid red = a caveat or a seam. */
+.absence-list > li.absence-disputed {
+  border-left: 3px solid var(--alert);
+  background: var(--alert-soft);
+  margin-left: -0.9rem;
+  margin-right: -0.9rem;
+  padding: 0.5rem 0.9rem;
+}
+
+.absence-list > li.absence-disputed .absence-kind {
+  color: var(--alert);
+}
+
+/* Kept from colliding with the dotted separator between plain entries. */
+.absence-list > li.absence-disputed + li,
+.absence-list > li + li.absence-disputed {
+  border-top: none;
+}

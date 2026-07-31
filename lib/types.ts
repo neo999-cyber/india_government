@@ -40,6 +40,14 @@ export type Calendar = 'FY' | 'CY';
  * an intended outcome no study ever tested, or a series that stops short of what it is cited
  * to demonstrate. An absence of this kind is a research finding (CLAUDE.md rule 4a).
  */
+export const REASON_KINDS = [
+  'not-collected',
+  'not-published',
+  'withheld',
+  'never-defined',
+] as const;
+export type ReasonKind = (typeof REASON_KINDS)[number];
+
 export interface Unmeasured {
   /** The thing that is not measured, stated positively. */
   what: string;
@@ -47,6 +55,24 @@ export interface Unmeasured {
   why: string;
   /** The source that would close it. Doubles as a verification-queue seed. */
   wouldFill?: string;
+  /**
+   * The STATED reason no figure exists — what the responsible body says, not what is true.
+   * Where the two differ, `reasonDisputed` records that they differ.
+   */
+  reasonKind?: ReasonKind;
+  /**
+   * True where the stated reason is contradicted by evidence, and the contradiction is set
+   * out in `why`.
+   *
+   * Deliberately a flag rather than a fifth `reasonKind` value. Collapsing it into the enum
+   * would lose the structure of the only case: the Labour Ministry told Parliament no data
+   * on migrant deaths was maintained — and therefore that compensation did not arise — while
+   * the Railways confirmed 97 deaths and an RTI indicated data was held and declined. The
+   * stated reason is `not-collected`; the evidence indicates withholding. The enum records
+   * the claim, the flag records that the claim is contested, `why` carries both. Same
+   * separation as `competingAccounts` on a provenance record.
+   */
+  reasonDisputed?: boolean;
 }
 
 export interface SourceRef {

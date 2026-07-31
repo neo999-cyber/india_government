@@ -1,0 +1,24 @@
+[
+  {
+    "id": "L-9401",
+    "title": "Record filing an absence without saying what kind it is",
+    "date": "2021-03",
+    "term": "T2",
+    "domains": ["welfare"],
+    "type": "episode",
+    "summary": "Declares an unmeasured dimension but states no reasonKind, so the absence reads the same whether nobody got round to measuring it or a body declined to keep the record.",
+    "assessment": "contested",
+    "caseFor": "Present so the record fails on the missing reasonKind alone, not on a missing case.",
+    "caseAgainst": "Present for the same reason.",
+    "unmeasured": [
+      {
+        "what": "A dimension with no reason kind attached",
+        "why": "States why in prose but does not classify it, which is what the rule requires.",
+        "wouldFill": "A source that would close it"
+      }
+    ],
+    "sources": [{ "name": "Fixture, not a real source", "url": "https://example.org/", "tier": "T1" }],
+    "confidence": "low",
+    "asOf": "2026-08-01"
+  }
+]

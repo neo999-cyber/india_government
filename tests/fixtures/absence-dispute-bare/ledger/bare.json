@@ -1,0 +1,26 @@
+[
+  {
+    "id": "L-9402",
+    "title": "Record asserting a disputed reason without carrying the contradiction",
+    "date": "2020-05",
+    "term": "T2",
+    "domains": ["welfare"],
+    "type": "episode",
+    "summary": "Sets reasonDisputed but gives a why short enough to hold only the stated reason, so the flag renders with nothing behind it and a reader cannot see what contradicts what.",
+    "assessment": "contested",
+    "caseFor": "Present so the record fails on the bare dispute alone.",
+    "caseAgainst": "Present for the same reason.",
+    "unmeasured": [
+      {
+        "what": "Deaths nobody will confirm",
+        "why": "The ministry said no data is maintained.",
+        "wouldFill": "Records held by another arm of the same government",
+        "reasonKind": "not-collected",
+        "reasonDisputed": true
+      }
+    ],
+    "sources": [{ "name": "Fixture, not a real source", "url": "https://example.org/", "tier": "T1" }],
+    "confidence": "low",
+    "asOf": "2026-08-01"
+  }
+]

@@ -516,3 +516,41 @@ That last one is the starkest absence the project has recorded: not a gap in wha
 | Real earnings by worker category | PLFS earnings tables | High |
 | EPFO net additions with re-joiner split | EPFO payroll releases | Medium |
 | Peer LFPR and employment shares, single vintage | ILOSTAT | Medium |
+---
+
+# Verification log — cycle 2026-08-01b (absence reason kinds; claims made reachable)
+
+## SCHEMA CHANGE — `reasonKind` and `reasonDisputed` on unmeasured entries
+
+`reasonKind` is an enum of four values — `not-collected`, `not-published`, `withheld`, `never-defined` — formalising the taxonomy the `why` field's own description already asserted in prose. The same move as `caveat` and `unmeasured` themselves: a claim the schema was making informally becomes checkable.
+
+All 17 existing entries classified: 7 not-collected, 6 not-published, 6 never-defined. None currently `withheld`.
+
+**`reasonDisputed` is a separate boolean, not a fifth enum value.** The integration session raised L-0064's second absence as possibly two kinds at once. It is not: it is a dispute about which kind applies. The Labour Ministry told Parliament no data on migrant deaths was maintained, and therefore that compensation did not arise — while the Railways Minister confirmed 97 deaths aboard Shramik trains and an RTI indicated the government held data it declined to give Parliament. So the STATED reason is not-collected and the evidence indicates at least partial withholding.
+
+Collapsing that into a `disputed` enum value would lose what makes it interesting. The enum records what the responsible body says; the flag records that the saying is contradicted; `why` carries the contradiction. This mirrors `competingAccounts` on provenance — claim and challenge recorded separately rather than merged. **It is the only such case in the dataset.**
+
+## Three series added so the criticism attaches to a claim
+
+The integration session found P-42 (EPFO net additions are not new jobs) and P-43 (KLEMS estimates rather than measures) had empty `affectsSeries` and were reachable only from the provenance index, and that P-22's employment scope had no series carrying it. Correct, and a real gap: the records criticising the government's employment figures existed while the figures themselves did not.
+
+Added: **`epfo-net-additions`** (6.2 crore, Sept 2017 to March 2024), **`eshram-registrations`** (30.98 crore, August 2025), **`klems-employment-claim`** (17.19 crore over 2014-24 against 2.9 crore over 2004-14). Each carries a caveat stating what it does not establish, and each is wired to the record explaining why.
+
+The principle: **the instrument should carry the government's own figures alongside the records explaining what they do not support.** A criticism with no claim attached is an assertion; a claim with no criticism attached is propaganda. Both must be reachable from each other.
+
+## `affectsSeries` asymmetry — documented, NOT a defect
+
+Checking the reverse direction found 52 series declaring a provenance ref the record does not name back. This is correct and must not be "fixed":
+
+- **P-09** (WDI vintage) and **P-14** (WDI fiscal-year labelling) are declared by nine series each — they are general methodology, not findings about particular series.
+- **P-02** (EUS to PLFS) is declared by seven employment series.
+
+The fields mean different things. `affectsSeries` names the series a record is SPECIFICALLY ABOUT; `provenanceRefs` lets a series point at every record bearing on it. Requiring symmetry would turn `affectsSeries` into an unmaintainable enumeration that rots on every drop. **The backlink check running record-to-series only is correct**, and the schema description now says so.
+
+Eight provenance records have no series on either side (P-04, P-07, P-08, P-12, P-20, P-26, P-29, P-33). These are domain-level or blocked records — P-20 in particular must not ship until its primary circular is located — and their emptiness is not an error.
+
+## Endorsements
+
+- **Contested pairs as a separate shape, not an extension.** `CoverageUsagePair` is asymmetric by construction — "the order is the argument" — and here there is no first. Folding them in would have meant field names that lie. Symmetric rendering with no accent rule on either column is right: a left rule marks one side as answering the other, which is the relation that does not hold.
+- **Nothing subtracts.** Two figures disagreeing about the sign of a change have a disagreement, not a gap. Correct, and a stronger statement of the same rule that governs the Jal Jeevan pair.
+- **`contested-incomplete` as an error.** A reader landing on one instrument must reach the record saying the other disagrees.

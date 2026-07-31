@@ -194,6 +194,19 @@
           "wouldFill": {
             "type": "string",
             "description": "The source that would close it, if one is identifiable. Doubles as a verification-queue seed."
+          },
+          "reasonKind": {
+            "enum": [
+              "not-collected",
+              "not-published",
+              "withheld",
+              "never-defined"
+            ],
+            "description": "The STATED reason no figure exists. Formalises the taxonomy the `why` description already asserts. Records what the responsible body says, not what is true — where the stated reason is contradicted by evidence, set reasonDisputed and carry the contradiction in `why`."
+          },
+          "reasonDisputed": {
+            "type": "boolean",
+            "description": "True where the stated reason is contradicted by evidence — for example a body saying data was never maintained while another arm of the same government publishes some of it. The contradiction must be stated in `why`. This is not a fifth reasonKind: it is a dispute about which kind applies."
           }
         }
       }
