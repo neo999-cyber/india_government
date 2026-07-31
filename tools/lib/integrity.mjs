@@ -53,6 +53,16 @@ const COVERAGE_USAGE_PAIRS = [
 ];
 
 /**
+ * Contested pairs (P-41), mirroring lib/rules.ts. A third relation: two instruments that
+ * disagree about the same quantity, neither correcting the other. Both must be present and
+ * both must carry the governing record, or the site would show one survey as the answer.
+ */
+const CONTESTED_PAIRS = [
+  { subject: 'Unemployment rate', instruments: ['unemployment-rate', 'unemployment-rate-cmie'], governing: 'P-41' },
+  { subject: 'Labour force participation', instruments: ['lfpr-overall', 'lfpr-overall-cmie'], governing: 'P-41' },
+];
+
+/**
  * The contested-index dispute for *governance* indices (RSF, Freedom House, V-Dem).
  *
  * Kept for reference, but rule 6 is no longer checked by naming it. See the T5 rule below:
@@ -433,6 +443,34 @@ export function checkIntegrity(records, { today }) {
         if (cor.includes(pair.coverage) && aff.includes(pair.usage)) {
           add('error', 'pair-inverted', coverage.file, pair.coverage, `pair "${pair.scheme}" puts "${pair.coverage}" on the coverage side and "${pair.usage}" on the usage side, but ${pid} calls "${pair.coverage}" a corrective and "${pair.usage}" affected. One of the two is the wrong way round`);
         }
+      }
+    }
+  }
+
+  // P-41: a contested pair renders both instruments or neither. Fires only where one side
+  // is present, as the coverage/usage rule does — a dataset carrying neither simply does not
+  // have this pair, and erroring there would be noise on every fixture root.
+  for (const cp of CONTESTED_PAIRS) {
+    const present = cp.instruments.filter((id) => seriesIds.has(id));
+    if (present.length === 0) continue;
+    const host = seriesIds.get(present[0]);
+
+    if (present.length < cp.instruments.length) {
+      const missing = cp.instruments.filter((id) => !seriesIds.has(id));
+      add('error', 'contested-incomplete', host.file, present[0], `contested pair "${cp.subject}" is missing "${missing.join('", "')}". The instruments disagree about the direction of change, so rendering one alone states a direction the evidence does not establish`);
+      continue;
+    }
+    if (!provenanceIds.has(cp.governing)) {
+      add('error', 'contested-incomplete', host.file, present[0], `contested pair "${cp.subject}" names governing record "${cp.governing}", which is not in /data. Without it the view cannot say why the disagreement is not resolved`);
+      continue;
+    }
+    // Both sides must carry the record: it is what forbids resolving the disagreement, and a
+    // reader landing on either instrument has to reach it.
+    for (const sid of cp.instruments) {
+      const series = seriesIds.get(sid);
+      const refs = Array.isArray(series.record.provenanceRefs) ? series.record.provenanceRefs : [];
+      if (!refs.includes(cp.governing)) {
+        add('error', 'contested-incomplete', series.file, sid, `is one instrument of contested pair "${cp.subject}" but does not carry "${cp.governing}" in provenanceRefs. A reader landing here would not reach the record saying the other instrument disagrees`);
       }
     }
   }

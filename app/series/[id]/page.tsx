@@ -10,6 +10,7 @@ import {
 } from '@/lib/data';
 import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
 import {
+  contestedPairFor,
   denominatorBreaksFor,
   pairFor,
   regimeFor,
@@ -17,6 +18,7 @@ import {
   roleInProvenance,
 } from '@/lib/rules';
 import { CoverageUsageView } from '@/components/CoverageUsageView';
+import { ContestedPairView } from '@/components/ContestedPairView';
 import {
   ADVANCES_SERIES,
   NPA_AMOUNT_SERIES,
@@ -72,6 +74,13 @@ export default async function SeriesDetail({ params }: Props) {
     ? getProvenance(pair.usageFromProvenance.record)
     : undefined;
 
+  // P-41: two instruments that disagree about the direction of change never render alone.
+  // A third relation, symmetric — neither side qualifies or corrects the other.
+  const contested = contestedPairFor(s.id);
+  const contestedSeries = (contested?.instruments ?? [])
+    .map((cid) => getSeries(cid))
+    .filter((x): x is NonNullable<typeof x> => !!x);
+
   const denominatorBreaks = denominatorBreaksFor(s);
   const disputes = provenanceForSeries(s);
   const citedBy = ledgerCitingSeries(s.id);
@@ -98,7 +107,7 @@ export default async function SeriesDetail({ params }: Props) {
       <StatusKey />
 
       {/* Above every rendering of the numbers, not below: it qualifies what they mean. */}
-      {s.caveat ? <CaveatFlag caveat={s.caveat} /> : null}
+      {s.caveat && !contested ? <CaveatFlag caveat={s.caveat} /> : null}
 
       {/* P-17: an NPA ratio never renders without the adjusted view offered beside it.
           P-22: neither side of a coverage/usage pair renders without the other — a coverage
@@ -110,6 +119,12 @@ export default async function SeriesDetail({ params }: Props) {
           advances={getSeries(ADVANCES_SERIES)}
           amount={getSeries(NPA_AMOUNT_SERIES)}
           reported={<SeriesTable series={s} handoff={handoffFor(s.id)} />}
+        />
+      ) : contested && contestedSeries.length === 2 ? (
+        <ContestedPairView
+          pair={contested}
+          instruments={contestedSeries}
+          governing={getProvenance(contested.governing)}
         />
       ) : pair && pairCoverage ? (
         <CoverageUsageView
@@ -123,11 +138,13 @@ export default async function SeriesDetail({ params }: Props) {
         <SeriesTable series={s} handoff={handoffFor(s.id)} />
       )}
       {/* The pair view renders each side's notes beside its own table. */}
-      {s.notes && !(pair && pairCoverage) ? <p className="prose-note">{s.notes}</p> : null}
+      {s.notes && !(pair && pairCoverage) && !contested ? (
+        <p className="prose-note">{s.notes}</p>
+      ) : null}
 
       {/* Rule 4a. Suppressed only when the pair view already pooled them, which it does at
           the pair's width so a chain-level absence is not squeezed into one column. */}
-      {pair && pairCoverage ? null : <Absences items={s.unmeasured} />}
+      {(pair && pairCoverage) || contested ? null : <Absences items={s.unmeasured} />}
 
       {denominatorBreaks.length > 0 ? (
         <div className="denominator-callout">

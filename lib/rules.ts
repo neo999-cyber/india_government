@@ -258,3 +258,53 @@ export function roleInProvenance(
   if (record.affectsSeries?.includes(seriesId)) return 'affected';
   return 'unspecified';
 }
+
+/**
+ * Contested pairs: two instruments measuring the same quantity that disagree about it.
+ *
+ * A THIRD relation, deliberately not folded into CoverageUsagePair. That type is asymmetric
+ * by construction — coverage first, then what it converted into, and "the order is the
+ * argument". Here there is no first. Neither instrument qualifies the other, neither is the
+ * corrective, and P-41 records that PLFS and CMIE disagree on the DIRECTION of employment
+ * change over 2017-18 to 2021-22: +4.55% against -0.30%, opposite signs. Reusing the
+ * coverage/usage fields would have required the labels to paper over field names that lie,
+ * and inherited a gap statement ("the wedge is X, output over use") that means nothing when
+ * the two do not stand in that relation at all.
+ *
+ * It is equally not an affects/corrective relation: P-41 lists all four series in
+ * `affectsSeries` and names no corrective, because neither instrument corrects the other.
+ *
+ * `instruments` is ordered for rendering only. Order is not precedence, and the view says so.
+ */
+export interface ContestedPair {
+  /** What both instruments claim to measure. */
+  subject: string;
+  /** The two series, neither primary. */
+  instruments: readonly [string, string];
+  /** The record forbidding resolution, and stating what each instrument supports. */
+  governing: string;
+  /** One sentence on what the disagreement is, where the record's own title is too terse. */
+  framing?: string;
+}
+
+export const CONTESTED_PAIRS: readonly ContestedPair[] = [
+  {
+    subject: 'Unemployment rate',
+    instruments: ['unemployment-rate', 'unemployment-rate-cmie'],
+    governing: 'P-41',
+    framing:
+      'The official survey and the private one do not merely differ in level. Over 2017-18 to 2021-22 they record employment change with opposite signs, so a reader shown either alone has been told the direction of travel, and it is not established.',
+  },
+  {
+    subject: 'Labour force participation',
+    instruments: ['lfpr-overall', 'lfpr-overall-cmie'],
+    governing: 'P-41',
+    framing:
+      'Participation is where the two instruments diverge most, and the divergence is concentrated almost entirely among women, whose measured participation in official data runs roughly double the private survey with no convergence across reference periods.',
+  },
+];
+
+/** The contested pair a series belongs to, from either side, or null. */
+export function contestedPairFor(id: string): ContestedPair | null {
+  return CONTESTED_PAIRS.find((p) => p.instruments.includes(id)) ?? null;
+}

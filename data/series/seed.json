@@ -1278,40 +1278,1086 @@
   "notes": "India holds roughly 49% of global real-time payment volume. Zero-MDR drove adoption but removed payment-industry revenue."
  },
  {
-  "id": "lfpr-overall",
-  "title": "Labour force participation rate, usual status (UPSS)",
-  "unit": "%",
+  "id": "agri-employment-peer",
+  "title": "Agriculture's share of employment (peer panel)",
+  "unit": "% of employment",
+  "domain": "employment",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI / ILOSTAT modelled estimates",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 45.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 42.4,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 44.4,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 44.7,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 46.3,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 25.9,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 34.0,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 28.0,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 29.5,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 22.2,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09",
+   "P-14"
+  ],
+  "notes": "The decisive comparison: Vietnam moved 20 points out of agriculture in a decade while India moved 3 — and India's own PLFS shows the share rising again after 2018-19."
+ },
+ {
+  "id": "agri-employment-share",
+  "title": "Agriculture's share of employment",
+  "unit": "% of workers",
   "domain": "employment",
   "tier": "T1",
   "source": {
-   "name": "NSSO EUS 68th round",
-   "url": "https://mospi.gov.in/"
+   "name": "MoSPI PLFS",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2057970&reg=48&lang=2",
+   "vintage": "2026-07-31"
   },
   "calendar": "FY",
   "breaks": [
    {
     "period": "FY2017-18",
-    "note": "EUS ends; PLFS begins with changed design",
+    "note": "EUS ends, PLFS begins — changed sampling, stratification and definitions",
     "provenanceRef": "P-02"
+   },
+   {
+    "period": "FY2025-26",
+    "note": "PLFS sample redesign of January 2025; MoSPI states results are not strictly comparable with earlier rounds",
+    "provenanceRef": "P-39"
    }
   ],
   "points": [
    {
     "country": "IND",
-    "period": "FY2004-05",
-    "value": 42.85,
+    "period": "FY2011-12",
+    "value": 52.9,
+    "status": "approx",
+    "note": "EUS baseline, primary sector — not comparable (P-02)"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 42.5,
     "status": "approx"
    },
    {
     "country": "IND",
-    "period": "FY2011-12",
-    "value": 39.5,
+    "period": "FY2020-21",
+    "value": 45.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 46.1,
     "status": "approx"
    }
   ],
   "provenanceRefs": [
-   "P-02"
-  ]
+   "P-02",
+   "P-39"
+  ],
+  "caveat": "This series RISING is a development reversal, not an improvement. Agriculture's employment share had fallen for decades; it turned around after 2018-19. In 2019-20 alone employment in agriculture rose by about 32 million, absorbing roughly three-quarters of that year's total employment increase."
+ },
+ {
+  "id": "graduate-unemployment",
+  "title": "Unemployment rate among graduates",
+  "unit": "%",
+  "domain": "employment",
+  "tier": "T2",
+  "source": {
+   "name": "ILO and Institute for Human Development, India Employment Report 2024",
+   "url": "https://www.ilo.org/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 29.1,
+    "status": "approx",
+    "note": "Against 3.4% for those who cannot read or write"
+   }
+  ],
+  "notes": "Unemployment rises with education — the signature of an economy not generating jobs for the educated. Female graduates 34.5% against male graduates 26.4%. The secondary-plus-educated share of unemployed youth rose from 35.2% in 2000 to 65.7% in 2022."
+ },
+ {
+  "id": "industry-employment-peer",
+  "title": "Industry's share of employment (peer panel)",
+  "unit": "% of employment",
+  "domain": "employment",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI / ILOSTAT modelled estimates",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 24.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 25.4,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 20.5,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 17.9,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 21.4,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 34.3,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 21.5,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 22.3,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 29.9,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 31.6,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09",
+   "P-14"
+  ],
+  "notes": "Vietnam's industrial employment share rose 13 points; India's was flat. This is the employment face of phase 2's finding on manufacturing's falling GDP share."
+ },
+ {
+  "id": "lfpr-female",
+  "title": "Female labour force participation rate, usual status, age 15+",
+  "unit": "%",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI PLFS",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2057970&reg=48&lang=2",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2017-18",
+    "note": "EUS ends, PLFS begins — changed sampling, stratification and definitions",
+    "provenanceRef": "P-02"
+   },
+   {
+    "period": "FY2025-26",
+    "note": "PLFS sample redesign of January 2025; MoSPI states results are not strictly comparable with earlier rounds",
+    "provenanceRef": "P-39"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 23.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 24.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 30.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 32.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 32.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 37.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 41.7,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-02",
+   "P-39",
+   "P-40",
+   "P-41"
+  ],
+  "caveat": "A near-doubling that no instrument can currently interpret. Over the same period the self-employed share of employed women rose from 51.9% to 67.4%, and their regular-salaried share FELL to a seven-year low of 15.9%. Female self-employed monthly earnings fell even in nominal terms. PLFS cannot distinguish genuine paid market entry from reclassified unpaid household-enterprise work or from distress-driven entry.",
+  "unmeasured": [
+   {
+    "what": "Whether rising female participation is paid market entry, reclassified unpaid work, or distress entry",
+    "why": "PLFS counts unpaid helpers as employed and has no instrument to separate the three. The ILO modelled estimate for India is about 32% against PLFS's 41.7%, which is itself a signal of definitional divergence.",
+    "wouldFill": "A time-use-linked labour module, or a PLFS supplement distinguishing paid from unpaid activity within household enterprises"
+   }
+  ],
+  "notes": "Baseline: rural female participation fell 49.4% (2004-05) to 35.8% (2011-12) on the phase-1 figures. India's rate remains the lowest in the peer panel on ILO-modelled estimates."
+ },
+ {
+  "id": "lfpr-female-peer",
+  "title": "Female labour force participation rate (peer panel)",
+  "unit": "%",
+  "domain": "employment",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI / ILOSTAT modelled estimates",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 26.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 32.4,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 33.6,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 38.7,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 73.1,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 68.9,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 50.6,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 53.6,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 62.8,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 59.4,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09",
+   "P-14"
+  ],
+  "notes": "ILO modelled estimates, which differ from national PLFS (India 32.4% modelled against 41.7% PLFS for 2023-24) because of definition and reference-period differences. India remains lowest in the panel on either measure."
+ },
+ {
+  "id": "lfpr-overall",
+  "title": "Labour force participation rate, usual status, age 15+",
+  "unit": "%",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI PLFS",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2057970&reg=48&lang=2"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2017-18",
+    "note": "EUS ends, PLFS begins — changed sampling, stratification and definitions",
+    "provenanceRef": "P-02"
+   },
+   {
+    "period": "FY2025-26",
+    "note": "PLFS sample redesign of January 2025; MoSPI states results are not strictly comparable with earlier rounds",
+    "provenanceRef": "P-39"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 49.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 50.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 53.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 54.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 55.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 57.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 60.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 59.3,
+    "status": "approx",
+    "note": "Calendar 2025, redesigned"
+   }
+  ],
+  "provenanceRefs": [
+   "P-02",
+   "P-39",
+   "P-40",
+   "P-41"
+  ],
+  "notes": "Baseline for comparison: 39.5% in 2011-12 on the EUS all-ages usual-status basis — NOT comparable, different instrument and age base (P-02)."
+ },
+ {
+  "id": "lfpr-overall-cmie",
+  "title": "Labour force participation rate (CMIE)",
+  "unit": "%",
+  "domain": "employment",
+  "tier": "T4",
+  "source": {
+   "name": "CMIE",
+   "url": "https://www.cmie.com/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 43,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 40,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 40,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-41"
+  ],
+  "notes": "Roughly 20 percentage points below PLFS, with the gap concentrated almost entirely among women."
+ },
+ {
+  "id": "manufacturing-employment-share",
+  "title": "Manufacturing's share of employment",
+  "unit": "% of workers",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI PLFS",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2057970&reg=48&lang=2"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 12.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 11.4,
+    "status": "approx"
+   }
+  ],
+  "notes": "Falls alongside manufacturing's GDP share (15.07% to 13.14%, phase 2). A sector not growing as a share of output cannot absorb labour at scale."
+ },
+ {
+  "id": "regular-wage-share",
+  "title": "Regular wage or salaried share of workers",
+  "unit": "% of workers",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI PLFS",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2057970&reg=48&lang=2"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2017-18",
+    "note": "EUS ends, PLFS begins — changed sampling, stratification and definitions",
+    "provenanceRef": "P-02"
+   },
+   {
+    "period": "FY2025-26",
+    "note": "PLFS sample redesign of January 2025; MoSPI states results are not strictly comparable with earlier rounds",
+    "provenanceRef": "P-39"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 22.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 20.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 21.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 23.6,
+    "status": "approx",
+    "note": "Calendar 2025, redesigned"
+   }
+  ],
+  "provenanceRefs": [
+   "P-40",
+   "P-39"
+  ],
+  "notes": "The quality indicator that matters. Essentially flat across the period while total employment rose sharply — the clearest evidence that the employment gain was not firm-led hiring. For women it fell to 15.9%."
+ },
+ {
+  "id": "rural-real-earnings",
+  "title": "Average real monthly earnings, rural workers",
+  "unit": "₹ per month, constant prices",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI PLFS via secondary analysis",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2057970&reg=48&lang=2"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 9107,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 8842,
+    "status": "approx",
+    "note": "A fall in real terms over six years"
+   }
+  ],
+  "notes": "Rural male ₹9,748 to ₹9,589; rural female ₹6,439 to ₹6,335. Drèze and Das find near-zero real wage growth across the decade at the all-India level. Labour productivity rose about 12% over the same period — wages and productivity diverged."
+ },
+ {
+  "id": "self-employed-share",
+  "title": "Self-employed share of workers",
+  "unit": "% of workers",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI PLFS",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2057970&reg=48&lang=2"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2017-18",
+    "note": "EUS ends, PLFS begins — changed sampling, stratification and definitions",
+    "provenanceRef": "P-02"
+   },
+   {
+    "period": "FY2025-26",
+    "note": "PLFS sample redesign of January 2025; MoSPI states results are not strictly comparable with earlier rounds",
+    "provenanceRef": "P-39"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 52,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 57.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 58.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 56.2,
+    "status": "approx",
+    "note": "Calendar 2025, redesigned"
+   }
+  ],
+  "provenanceRefs": [
+   "P-40",
+   "P-39"
+  ],
+  "notes": "Rose as regular wage employment stayed flat. For women the share reached 67.4% by 2023-24."
+ },
+ {
+  "id": "unemployment-rate",
+  "title": "Unemployment rate, usual status (ps+ss), age 15+",
+  "unit": "% of labour force",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI PLFS Annual Reports",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2057970&reg=48&lang=2",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2017-18",
+    "note": "EUS ends, PLFS begins — changed sampling, stratification and definitions",
+    "provenanceRef": "P-02"
+   },
+   {
+    "period": "FY2025-26",
+    "note": "PLFS sample redesign of January 2025; MoSPI states results are not strictly comparable with earlier rounds",
+    "provenanceRef": "P-39"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 6.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 5.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 4.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 4.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 4.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 3.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 3.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 3.1,
+    "status": "approx",
+    "note": "Calendar 2025, redesigned instrument"
+   }
+  ],
+  "provenanceRefs": [
+   "P-02",
+   "P-39",
+   "P-40",
+   "P-41"
+  ],
+  "caveat": "This series cannot be read as a jobs indicator. PLFS counts unpaid helpers in household enterprises as employed, so the rate falls when people are absorbed into unpaid family work. Over the same period the self-employed share rose to 58.4%, agriculture's employment share ROSE to 46.1%, and regular wage employment stayed flat at 21-23%. CMIE's survey shows unemployment at 7-9% throughout and employment growth of the opposite sign.",
+  "notes": "Current weekly status unemployment, on a seven-day recall, runs far higher: 8.7% in 2017-18 falling to 4.9% in 2023-24."
+ },
+ {
+  "id": "unemployment-rate-cmie",
+  "title": "Unemployment rate (CMIE Consumer Pyramids Household Survey)",
+  "unit": "% of labour force",
+  "domain": "employment",
+  "tier": "T4",
+  "source": {
+   "name": "Centre for Monitoring Indian Economy",
+   "url": "https://www.cmie.com/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 7.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 7.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 8.3,
+    "status": "approx",
+    "note": "December 2022"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 9.05,
+    "status": "approx",
+    "note": "December 2023 quarter"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 7.7,
+    "status": "approx",
+    "note": "Early 2025"
+   }
+  ],
+  "provenanceRefs": [
+   "P-41"
+  ],
+  "caveat": "A private, subscription-gated survey with a contested sampling frame — but the disagreement with PLFS is not a matter of one being right. Over 2017-18 to 2021-22 the two record employment growth of OPPOSITE SIGN. Carry both; neither alone is the employment picture.",
+  "notes": "April 2020 peaked at 23.5% during the lockdown. CMIE has NOT discontinued the series — still publishing as of May 2026."
+ },
+ {
+  "id": "unemployment-rate-cws",
+  "title": "Unemployment rate, current weekly status, age 15+",
+  "unit": "% of labour force",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI PLFS Annual Reports",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2057970&reg=48&lang=2"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2017-18",
+    "note": "EUS ends, PLFS begins — changed sampling, stratification and definitions",
+    "provenanceRef": "P-02"
+   },
+   {
+    "period": "FY2025-26",
+    "note": "PLFS sample redesign of January 2025; MoSPI states results are not strictly comparable with earlier rounds",
+    "provenanceRef": "P-39"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 8.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 4.9,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-02",
+   "P-39"
+  ],
+  "notes": "The seven-day recall measure of open joblessness. Consistently well above usual status, and the better indicator where short-run distress matters."
+ },
+ {
+  "id": "unincorporated-workers",
+  "title": "Workers in unincorporated non-agricultural enterprises",
+  "unit": "crore workers",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI Annual Survey of Unincorporated Sector Enterprises",
+   "url": "https://mospi.gov.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 11.13,
+    "status": "approx",
+    "note": "NSS 73rd round baseline"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 9.79,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 10.96,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 12.06,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 12.81,
+    "status": "approx"
+   }
+  ],
+  "notes": "The sector SHRANK by about 1.3 crore workers against its 2015-16 baseline and only surpassed that level in 2023-24. Average workers per enterprise stayed at about 1.6 throughout — these are one-person and family micro-units, not firms."
+ },
+ {
+  "id": "unpaid-helper-share",
+  "title": "Unpaid family helpers as share of workers",
+  "unit": "% of workers",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI PLFS",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2057970&reg=48&lang=2"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 13.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 15.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 17.3,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-40"
+  ],
+  "notes": "The category whose growth mechanically lowers the unemployment rate. Rose fastest among women."
+ },
+ {
+  "id": "vulnerable-employment-peer",
+  "title": "Vulnerable employment (peer panel)",
+  "unit": "% of total employment",
+  "domain": "employment",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI / ILOSTAT modelled estimates",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 78.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 72.1,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 58.7,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 57.7,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 62.2,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 51.9,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 50.4,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 50.3,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 37.9,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 33.8,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09",
+   "P-14"
+  ],
+  "notes": "India's share is the highest in the panel by a wide margin — own-account and contributing family workers, the categories PLFS counts as employed."
+ },
+ {
+  "id": "youth-unemployment",
+  "title": "Youth unemployment rate, age 15-29, usual status",
+  "unit": "%",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI PLFS",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2057970&reg=48&lang=2"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2017-18",
+    "note": "EUS ends, PLFS begins — changed sampling, stratification and definitions",
+    "provenanceRef": "P-02"
+   },
+   {
+    "period": "FY2025-26",
+    "note": "PLFS sample redesign of January 2025; MoSPI states results are not strictly comparable with earlier rounds",
+    "provenanceRef": "P-39"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 17.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 10.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 9.9,
+    "status": "approx",
+    "note": "Calendar 2025, redesigned"
+   }
+  ],
+  "provenanceRefs": [
+   "P-40",
+   "P-39"
+  ],
+  "notes": "Carries the same caveat as the headline rate. The ILO-IHD India Employment Report 2024 found youth were 82.9% of all unemployed."
  },
  {
   "id": "delhi-pm25",
