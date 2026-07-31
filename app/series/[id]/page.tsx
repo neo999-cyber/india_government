@@ -5,18 +5,13 @@ import {
   getProvenance,
   getSeries,
   ledgerCitingSeries,
+  pairsForSeries,
   provenanceForSeries,
+  resolvePairSide,
   series as allSeries,
 } from '@/lib/data';
 import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
-import {
-  contestedPairFor,
-  denominatorBreaksFor,
-  pairFor,
-  regimeFor,
-  regimeNeighbours,
-  roleInProvenance,
-} from '@/lib/rules';
+import { denominatorBreaksFor, regimeFor, regimeNeighbours, roleInProvenance } from '@/lib/rules';
 import { CoverageUsageView } from '@/components/CoverageUsageView';
 import { ContestedPairView } from '@/components/ContestedPairView';
 import {
@@ -65,21 +60,18 @@ export default async function SeriesDetail({ params }: Props) {
     return { previous: lookup(previous), next: lookup(next) };
   };
 
-  // P-22: a coverage figure and the usage figure that qualifies it always arrive together,
-  // whichever side the reader landed on.
-  const pair = pairFor(s.id);
-  const pairCoverage = pair ? getSeries(pair.coverage) : undefined;
-  const pairUsage = pair?.usage ? getSeries(pair.usage) : undefined;
-  const pairCounterpart = pair?.usageFromProvenance
-    ? getProvenance(pair.usageFromProvenance.record)
-    : undefined;
-
-  // P-41: two instruments that disagree about the direction of change never render alone.
-  // A third relation, symmetric — neither side qualifies or corrects the other.
-  const contested = contestedPairFor(s.id);
-  const contestedSeries = (contested?.instruments ?? [])
-    .map((cid) => getSeries(cid))
-    .filter((x): x is NonNullable<typeof x> => !!x);
+  // Pairs come from data/pairs.json. A series never renders alone where a pair declares it:
+  // for coverage-usage the coverage figure alone says the opposite of what the pair shows,
+  // and for contested a single instrument states a direction the evidence does not establish.
+  const pair = pairsForSeries(s.id)[0];
+  const sideA = pair ? resolvePairSide(pair.a) : null;
+  const sideB = pair ? resolvePairSide(pair.b) : null;
+  const paired = Boolean(pair && sideA && sideB);
+  const contested = paired && pair.kind === 'contested';
+  const contestedSeries =
+    contested && sideA?.kind === 'series' && sideB?.kind === 'series'
+      ? [sideA.series, sideB.series]
+      : [];
 
   const denominatorBreaks = denominatorBreaksFor(s);
   const disputes = provenanceForSeries(s);
@@ -122,29 +114,28 @@ export default async function SeriesDetail({ params }: Props) {
         />
       ) : contested && contestedSeries.length === 2 ? (
         <ContestedPairView
-          pair={contested}
-          instruments={contestedSeries}
-          governing={getProvenance(contested.governing)}
-        />
-      ) : pair && pairCoverage ? (
-        <CoverageUsageView
           pair={pair}
-          coverage={pairCoverage}
-          usage={pairUsage}
-          counterpart={pairCounterpart}
-          governing={getProvenance(pair.governing)}
+          instruments={contestedSeries}
+          labels={[pair.a.label, pair.b.label]}
+          reconciliation={
+            (pair.provenanceRefs ?? [])
+              .map((ref) => getProvenance(ref)?.bridgeNote)
+              .find((note): note is string => !!note) ?? undefined
+          }
         />
+      ) : paired && sideA && sideB ? (
+        <CoverageUsageView pair={pair} a={sideA} b={sideB} />
       ) : (
         <SeriesTable series={s} handoff={handoffFor(s.id)} />
       )}
       {/* The pair view renders each side's notes beside its own table. */}
-      {s.notes && !(pair && pairCoverage) && !contested ? (
+      {s.notes && !paired ? (
         <p className="prose-note">{s.notes}</p>
       ) : null}
 
       {/* Rule 4a. Suppressed only when the pair view already pooled them, which it does at
           the pair's width so a chain-level absence is not squeezed into one column. */}
-      {(pair && pairCoverage) || contested ? null : <Absences items={s.unmeasured} />}
+      {paired ? null : <Absences items={s.unmeasured} />}
 
       {denominatorBreaks.length > 0 ? (
         <div className="denominator-callout">

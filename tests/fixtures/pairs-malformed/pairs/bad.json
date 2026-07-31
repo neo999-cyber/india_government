@@ -1,0 +1,42 @@
+[
+  {
+    "id": "PR-90",
+    "kind": "coverage-usage",
+    "domain": "welfare",
+    "a": { "series": "present-coverage", "label": "Side that resolves" },
+    "b": { "series": "no-such-series", "label": "Side naming a series that is absent" },
+    "framing": "Side b names a series that is not in /data, so the pair would render one side against nothing.",
+    "gapComputable": false,
+    "gapReason": "Not applicable — the fixture exists to fail on the unresolved side."
+  },
+  {
+    "id": "PR-91",
+    "kind": "coverage-usage",
+    "domain": "welfare",
+    "a": { "series": "present-coverage", "label": "Side that resolves" },
+    "b": { "series": "present-coverage", "absenceFrom": "declares-one-absence", "label": "Side setting two sources at once" },
+    "framing": "Side b sets both series and absenceFrom, which makes the rendered side ambiguous.",
+    "gapComputable": false,
+    "gapReason": "Not applicable — the fixture exists to fail on the ambiguous side."
+  },
+  {
+    "id": "PR-92",
+    "kind": "coverage-usage",
+    "domain": "welfare",
+    "a": { "series": "present-coverage", "label": "Side that resolves" },
+    "b": { "absenceFrom": "declares-one-absence", "absenceIndex": 3, "label": "Side pointing past the end of the array" },
+    "framing": "Side b points at absenceIndex 3 of a record declaring one absence, so nothing renders where the counterpart belongs.",
+    "gapComputable": false,
+    "gapReason": "Not applicable — the fixture exists to fail on the out-of-range index."
+  },
+  {
+    "id": "PR-93",
+    "kind": "coverage-usage",
+    "domain": "welfare",
+    "a": { "series": "present-coverage", "label": "Side that resolves" },
+    "b": { "competingAccountsFrom": "P-93", "label": "Side expecting competing accounts that are not there" },
+    "framing": "Side b takes competing accounts from a record that carries none, so the column is a heading over nothing.",
+    "gapComputable": false,
+    "gapReason": "Not applicable — the fixture exists to fail on the empty competingAccounts."
+  }
+]

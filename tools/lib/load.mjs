@@ -2,7 +2,7 @@ import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
 /**
- * @typedef {'series' | 'ledger' | 'provenance'} Layer
+ * @typedef {'series' | 'ledger' | 'provenance' | 'pairs'} Layer
  * @typedef {{ layer: Layer, file: string, index: number|null, record: any, incoming: boolean }} LoadedRecord
  * @typedef {{ file: string, message: string }} LoadError
  */
@@ -12,6 +12,7 @@ const LAYER_ROOTS = [
   { layer: /** @type {Layer} */ ('series'), match: (p) => p === 'series' || p.startsWith(`series${sep}`) },
   { layer: /** @type {Layer} */ ('ledger'), match: (p) => p === 'ledger' || p.startsWith(`ledger${sep}`) },
   { layer: /** @type {Layer} */ ('provenance'), match: (p) => p === 'provenance' || p.startsWith(`provenance${sep}`) },
+  { layer: /** @type {Layer} */ ('pairs'), match: (p) => p === 'pairs' || p.startsWith(`pairs${sep}`) },
 ];
 
 /** @returns {string[]} absolute paths of every .json file under dir */

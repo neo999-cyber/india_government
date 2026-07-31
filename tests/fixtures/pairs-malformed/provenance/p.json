@@ -1,0 +1,12 @@
+[
+  {
+    "id": "P-93",
+    "title": "Record with no competingAccounts, named by a side that expects them",
+    "whatChanged": "Carries no competingAccounts, so a pair side pointing here would render a heading over nothing.",
+    "when": "2020-01",
+    "affectsDomains": ["welfare"],
+    "directionOfBias": "disputed",
+    "bridgeExists": false,
+    "sources": [{ "name": "Fixture, not a real source", "url": "https://example.org/", "tier": "T1" }]
+  }
+]

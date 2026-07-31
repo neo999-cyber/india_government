@@ -10,6 +10,7 @@ import { join } from 'node:path';
 import type {
   Domain,
   LedgerRecord,
+  Pair,
   ProvenanceRecord,
   Series,
   Term,
@@ -57,13 +58,39 @@ function loadProvenance(): ProvenanceRecord[] {
   return readRecords<ProvenanceRecord>(paths).sort((a, b) => a.id.localeCompare(b.id));
 }
 
+function loadPairs(): Pair[] {
+  const single = join(DATA_DIR, 'pairs.json');
+  const paths = [...(existsSync(single) ? [single] : []), ...jsonFiles(join(DATA_DIR, 'pairs'))];
+  return readRecords<Pair>(paths).sort((a, b) => a.id.localeCompare(b.id));
+}
+
 export const series: Series[] = loadSeries();
 export const ledger: LedgerRecord[] = loadLedger();
 export const provenance: ProvenanceRecord[] = loadProvenance();
+export const pairs: Pair[] = loadPairs();
 
 const seriesById = new Map(series.map((s) => [s.id, s]));
 const ledgerById = new Map(ledger.map((l) => [l.id, l]));
 const provenanceById = new Map(provenance.map((p) => [p.id, p]));
+const pairById = new Map(pairs.map((p) => [p.id, p]));
+
+export const getPair = (id: string): Pair | undefined => pairById.get(id);
+
+/**
+ * Pairs a series belongs to, from either side.
+ *
+ * A series can sit in more than one — nothing forbids it, and a coverage figure criticised
+ * on two different grounds would legitimately appear in two. Rendering takes the first.
+ */
+export function pairsForSeries(id: string): Pair[] {
+  return pairs.filter(
+    (p) =>
+      p.a.series === id ||
+      p.b.series === id ||
+      p.a.absenceFrom === id ||
+      p.b.absenceFrom === id,
+  );
+}
 
 export const getSeries = (id: string): Series | undefined => seriesById.get(id);
 export const getLedger = (id: string): LedgerRecord | undefined => ledgerById.get(id);
@@ -154,4 +181,41 @@ export function allUnmeasured(): DeclaredAbsence[] {
     })),
   );
   return [...fromSeries, ...fromLedger];
+}
+
+/**
+ * A pair side resolved to the thing it renders.
+ *
+ * Three shapes, because a counterpart is not always a series: it may be a declared absence
+ * (the counterpart does not exist, and that is the finding) or a dispute between sources
+ * held in a provenance record's competingAccounts.
+ */
+export type ResolvedSide =
+  | { kind: 'series'; label: string; series: Series }
+  | { kind: 'absence'; label: string; entry: Unmeasured; hostId: string; hostTitle: string }
+  | { kind: 'accounts'; label: string; record: ProvenanceRecord };
+
+export function resolvePairSide(side: {
+  series?: string;
+  absenceFrom?: string;
+  absenceIndex?: number;
+  competingAccountsFrom?: string;
+  label: string;
+}): ResolvedSide | null {
+  if (side.series) {
+    const s = getSeries(side.series);
+    return s ? { kind: 'series', label: side.label, series: s } : null;
+  }
+  if (side.absenceFrom) {
+    const host = getSeries(side.absenceFrom) ?? getLedger(side.absenceFrom);
+    const entry = host?.unmeasured?.[side.absenceIndex ?? 0];
+    return host && entry
+      ? { kind: 'absence', label: side.label, entry, hostId: host.id, hostTitle: host.title }
+      : null;
+  }
+  if (side.competingAccountsFrom) {
+    const p = getProvenance(side.competingAccountsFrom);
+    return p?.competingAccounts?.length ? { kind: 'accounts', label: side.label, record: p } : null;
+  }
+  return null;
 }

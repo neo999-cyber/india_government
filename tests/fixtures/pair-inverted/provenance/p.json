@@ -1,0 +1,14 @@
+[
+  {
+    "id": "P-94",
+    "title": "Record whose affects and corrective lists run opposite to the pair's sides",
+    "whatChanged": "Names headline-figure as the corrective and the-corrective as affected, which is the reverse of how the pair below places them. One of the two is the wrong way round.",
+    "when": "2024-01",
+    "affectsDomains": ["infrastructure"],
+    "affectsSeries": ["the-corrective"],
+    "correctiveSeries": ["headline-figure"],
+    "directionOfBias": "overstates-post-2014",
+    "bridgeExists": false,
+    "sources": [{ "name": "Fixture, not a real source", "url": "https://example.org/", "tier": "T1" }]
+  }
+]

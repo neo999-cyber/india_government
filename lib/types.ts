@@ -123,6 +123,38 @@ export interface Series {
   unmeasured?: Unmeasured[];
 }
 
+/**
+ * The fourth data layer: which series pair with which, and what each side is called.
+ *
+ * Sides are `a` and `b`, not coverage and usage, because a contested pair has no first.
+ * For `coverage-usage` the order IS the argument — a records what was delivered, b what it
+ * converted into. For `contested` the order is layout only.
+ */
+export interface PairSide {
+  /** Exactly one of these three is set. */
+  series?: string;
+  /** Series or ledger id whose declared absence occupies this position. */
+  absenceFrom?: string;
+  absenceIndex?: number;
+  /** Provenance id whose competingAccounts occupy this position. */
+  competingAccountsFrom?: string;
+  /** What this side IS. Hand-written per pair, never generic. */
+  label: string;
+}
+
+export interface Pair {
+  id: string;
+  kind: 'coverage-usage' | 'contested';
+  domain: Domain;
+  a: PairSide;
+  b: PairSide;
+  framing: string;
+  gapComputable?: boolean;
+  gapReason?: string;
+  provenanceRefs?: string[];
+  notes?: string;
+}
+
 export type Assessment =
   | 'worked'
   | 'partly'

@@ -554,3 +554,41 @@ Eight provenance records have no series on either side (P-04, P-07, P-08, P-12, 
 - **Contested pairs as a separate shape, not an extension.** `CoverageUsagePair` is asymmetric by construction — "the order is the argument" — and here there is no first. Folding them in would have meant field names that lie. Symmetric rendering with no accent rule on either column is right: a left rule marks one side as answering the other, which is the relation that does not hold.
 - **Nothing subtracts.** Two figures disagreeing about the sign of a change have a disagreement, not a gap. Correct, and a stronger statement of the same rule that governs the Jal Jeevan pair.
 - **`contested-incomplete` as an error.** A reader landing on one instrument must reach the record saying the other disagrees.
+---
+
+# Verification log — cycle 2026-08-01c (the pairs layer; correction to 08-01b)
+
+## Correction to cycle 2026-08-01b
+That entry reads "All 17 existing entries classified: 7 not-collected, 6 not-published, 6 never-defined." Those sum to 19. **The correct statement is 19 declarations across 17 records.** The site computes it correctly; the log text was wrong. Recorded here rather than edited, since this file is append-only.
+
+## THE TRIGGER FIRED — the pairs layer is built
+
+Cycle 31j set the condition: build `data/pairs.json` when pairs exceed roughly 15, OR when a second domain needs absence-pairs. Infrastructure had two (metro, electrification). `epfo-net-additions` and `eshram-registrations` make employment the second. The trigger was written precisely so this would not be relitigated, so it has been honoured.
+
+**13 pairs: 11 coverage-usage, 2 contested.** Usage sides break down as 8 series, 4 declared absences, 1 competing-accounts.
+
+### What moved out of code
+The judgements that were hand-written in the component and are now data:
+- **Which series pair with which**, and which side is which.
+- **The labels.** These were never generic and must not become so — "The build record" against "Headline network figure" is a judgement about what a series IS. `nh-construction-pace` is not the utilisation of `nh-network-length`; it is the honest measure of the same activity the headline overstates, and a generic label would have been a factual error in the interface.
+- **The framing sentence**, per pair. A standing sentence about connections and taps would misdescribe a road network.
+- **`gapComputable` and `gapReason`.** Only PR-04 (PMAY sanctioned against completed) subtracts, because only it shares a unit on both sides. Every other pair carries a written reason why not.
+
+### Three usage shapes, one schema
+- **series** — both sides measured (8 pairs)
+- **absenceFrom** — the counterpart does not exist and that IS the finding (4 pairs: metro ridership, supply-hours, first-time payroll entrants, e-Shram benefits delivered)
+- **competingAccountsFrom** — the counterpart is a dispute between sources rather than a series (1 pair: sanitation, where the national WDI series faces the r.i.c.e. four-state panel held in P-24)
+
+### Contested is a separate `kind`, not a variant of coverage-usage
+Coverage-usage is asymmetric by construction — a records what was delivered, b what it converted into, and the order is the argument. Contested is symmetric: two instruments measuring the same thing, neither answering the other, neither showable alone. Folding them together would have meant field names that lie. The schema enforces that a contested pair can never set `gapComputable` — two figures disagreeing about the sign of a change have a disagreement, not a gap.
+
+Sides are named `a` and `b` rather than `coverage` and `usage` for the same reason: on a contested pair there is no first.
+
+### Checks the layer supports
+Validated this cycle and worth implementing in the gate: exactly one of `series` / `absenceFrom` / `competingAccountsFrom` per side; absence indices in range against the named record's `unmeasured` array; `competingAccountsFrom` naming a record that actually has `competingAccounts`; `gapReason` required whenever `gapComputable` is false; and an inversion check — for a coverage-usage pair, side a must not be a corrective of a named provenance record while side b is affected by it, which would mean the pair is upside down.
+
+## Endorsements from the 08-01b integration
+- **`reasonKind` optional in schema, mandatory at the gate.** The right split — a drop is not rejected mid-authoring, but nothing ships unclassified.
+- **`absence-dispute` splitting the principled check from the proxy.** Requiring `wouldFill` is structural: if the stated reason is contested because evidence indicates the data exists, a route to that evidence exists by definition. The length floor on `why` is acknowledged as the one arbitrary parameter, and deliberately not prose-matching — the heuristic trap this validator has hit twice.
+- **The absence grammar is now complete**: dashed neutral means nothing measures this, dashed red means the stated reason for that is contested, solid red means a caveat or a seam. Red is warranted on the disputed case under the CLAUDE.md reservation — it is the only place a government's stated reason is contradicted by its own evidence, and it carries a consequence.
+- **Grouping by kind on `/unmeasured` but not within a record.** Correct: one to three entries do not need hierarchy, and the taxonomy pays where the whole set is visible.

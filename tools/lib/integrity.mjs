@@ -27,32 +27,6 @@ const REGIME_GROUPS = [
 ];
 
 /**
- * Coverage/usage pairs (P-22), mirroring lib/rules.ts for the site. The two must stay in
- * step — this is the list the rendering rule is built on, and a pair that silently stops
- * resolving fails open, showing the unqualified coverage figure alone.
- *
- * The blocking-caveat list that used to sit beside this is gone: `caveat` became a schema
- * field in phase 4b, so which records carry one is data, not code.
- */
-const COVERAGE_USAGE_PAIRS = [
-  { scheme: 'Ujjwala (LPG)', coverage: 'ujjwala-connections', usage: 'ujjwala-refills', governing: 'P-22' },
-  { scheme: 'Jal Jeevan Mission', coverage: 'jjm-tap-coverage', usage: 'jjm-functionality', governing: 'P-22' },
-  { scheme: 'PM-JAY', coverage: 'pmjay-cards', usage: 'pmjay-admissions', governing: 'P-22' },
-  { scheme: 'PMAY-G (rural housing)', coverage: 'pmay-g-houses', usage: 'pmay-g-completed', governing: 'P-22' },
-  { scheme: 'National highways', coverage: 'nh-network-length', usage: 'nh-construction-pace', governing: 'P-30' },
-  { scheme: 'Airports', coverage: 'airports-operational', usage: 'udan-routes', governing: 'P-38' },
-  { scheme: 'Metro rail', coverage: 'metro-network', usage: null, usageUnmeasured: true, governing: 'P-22' },
-  { scheme: 'Household electrification', coverage: 'household-electrification', usage: null, usageUnmeasured: true, governing: 'P-32' },
-  {
-    scheme: 'Swachh Bharat (sanitation)',
-    coverage: 'sanitation-basic',
-    usage: null,
-    usageFromProvenance: { record: 'P-24', holder: 'r.i.c.e. SQUAT panel 2018' },
-    governing: 'P-22',
-  },
-];
-
-/**
  * Minimum length of `why` on an absence whose stated reason is disputed.
  *
  * A proxy for substance, not a reading of it. The bare stated reason in the only real case
@@ -62,16 +36,6 @@ const COVERAGE_USAGE_PAIRS = [
  * the flag being set with nothing behind it, not to grade prose.
  */
 const DISPUTE_WHY_FLOOR = 160;
-
-/**
- * Contested pairs (P-41), mirroring lib/rules.ts. A third relation: two instruments that
- * disagree about the same quantity, neither correcting the other. Both must be present and
- * both must carry the governing record, or the site would show one survey as the answer.
- */
-const CONTESTED_PAIRS = [
-  { subject: 'Unemployment rate', instruments: ['unemployment-rate', 'unemployment-rate-cmie'], governing: 'P-41' },
-  { subject: 'Labour force participation', instruments: ['lfpr-overall', 'lfpr-overall-cmie'], governing: 'P-41' },
-];
 
 /**
  * The contested-index dispute for *governance* indices (RSF, Freedom House, V-Dem).
@@ -174,7 +138,7 @@ export function checkIntegrity(records, { today }) {
   const findings = [];
   const add = (level, rule, file, where, message) => findings.push({ level, rule, file, where, message });
 
-  const byLayer = { series: [], ledger: [], provenance: [] };
+  const byLayer = { series: [], ledger: [], provenance: [], pairs: [] };
   for (const r of records) byLayer[r.layer]?.push(r);
 
   // Character sweep: every string in every record, whatever the layer.
@@ -193,8 +157,8 @@ export function checkIntegrity(records, { today }) {
 
   // --- id uniqueness within each layer -------------------------------------
   /** @type {Record<string, Map<string, LoadedRecord>>} */
-  const index = { series: new Map(), ledger: new Map(), provenance: new Map() };
-  for (const layer of ['series', 'ledger', 'provenance']) {
+  const index = { series: new Map(), ledger: new Map(), provenance: new Map(), pairs: new Map() };
+  for (const layer of ['series', 'ledger', 'provenance', 'pairs']) {
     for (const r of byLayer[layer]) {
       const id = r.record?.id;
       if (typeof id !== 'string') continue; // schema already reported it
@@ -401,87 +365,80 @@ export function checkIntegrity(records, { today }) {
     }
   }
 
-  // Rule 5b/P-22: a coverage figure never renders without the usage figure qualifying it.
+  // --- pairs (data/pairs.json, the fourth layer) ----------------------------
   //
-  // Mirrors COVERAGE_USAGE_PAIRS in lib/rules.ts; the two must stay in step. A half-present
-  // pair is an error rather than a warning because the failure mode is silent and one-sided:
-  // the site would render the coverage series alone, which reads as the scheme succeeding,
-  // and that is the exact claim the pairing exists to qualify.
-  // Fires only when part of a pair is present, exactly as the regime-group rule does: a
-  // dataset that carries neither side simply does not have this pair (every fixture
-  // directory is such a dataset), and erroring there would be noise, not a finding.
-  for (const pair of COVERAGE_USAGE_PAIRS) {
-    const coverage = seriesIds.get(pair.coverage);
-    const usage = pair.usage ? seriesIds.get(pair.usage) : null;
-    const host = coverage ?? usage;
-    if (!host) continue;
+  // Which series pair with which, which side is which, and what each side is called are
+  // research judgements and live in the data now. What the gate still owns is that the
+  // declarations resolve: a pair naming something absent renders half a finding, and half
+  // of this finding is the wrong half — the coverage figure alone says the opposite of what
+  // the pair was assembled to show.
+  for (const r of byLayer.pairs) {
+    const pair = r.record;
+    if (!pair || typeof pair !== 'object') continue;
+    const where = label(r);
 
-    if (!coverage) {
-      add('error', 'pair-incomplete', host.file, pair.usage, `carries the usage side of "${pair.scheme}", but its coverage counterpart "${pair.coverage}" is not in /data. Half a pair cannot state a gap`);
-      continue;
-    }
-    if (pair.usage && !usage) {
-      add('error', 'pair-incomplete', coverage.file, pair.coverage, `carries the coverage side of "${pair.scheme}", but its usage counterpart "${pair.usage}" is not in /data. P-22 forbids rendering the administrative figure alone: without the counterpart it reads as the outcome rather than as an upper bound on it`);
-    }
-    if (!pair.usage && !pair.usageFromProvenance && !pair.usageUnmeasured) {
-      add('error', 'pair-incomplete', coverage.file, pair.coverage, `coverage/usage pair "${pair.scheme}" declares no usage series, no provenance counterpart and no declared absence, so the coverage figure would render alone`);
-    }
-    // The absence-as-counterpart shape: the usage panel is rendered from the coverage
-    // series' own `unmeasured` declarations, so if it carries none the panel is an empty
-    // frame — a pair that says nothing where it promised to say why nothing is measured.
-    if (pair.usageUnmeasured && !(Array.isArray(coverage.record.unmeasured) && coverage.record.unmeasured.length > 0)) {
-      add('error', 'pair-incomplete', coverage.file, pair.coverage, `coverage/usage pair "${pair.scheme}" stands its usage side on a declared absence, but the series carries no "unmeasured" entry. The usage panel would render empty, stating neither a counterpart nor why there is none`);
-    }
-    if (pair.usageFromProvenance && !provenanceIds.has(pair.usageFromProvenance.record)) {
-      add('error', 'pair-incomplete', coverage.file, pair.coverage, `usage counterpart is held in "${pair.usageFromProvenance.record}", which is not in /data`);
-    }
-    if (!provenanceIds.has(pair.governing)) {
-      add('error', 'pair-incomplete', coverage.file, pair.coverage, `governing record "${pair.governing}" is not in /data, so the pair cannot state why the gap runs one way`);
-    }
+    for (const name of ['a', 'b']) {
+      const side = pair[name];
+      if (!side || typeof side !== 'object') continue;
 
-    // Cross-check the hand-written pair against the affects/corrective split.
-    //
-    // The split cannot DERIVE the pairs — P-22 alone maps four affected series against five
-    // correctives, with nothing saying which goes with which — but where a record does name
-    // both sides of a pair it can say the sides are the right way round. A pair whose
-    // coverage a record calls the correction, and whose usage it calls distorted, is
-    // inverted: the view would present the honest metric as the headline needing
-    // qualification, and the qualification as the headline.
-    if (pair.usage) {
-      for (const [pid, host] of provenanceIds) {
-        const aff = Array.isArray(host.record.affectsSeries) ? host.record.affectsSeries : [];
-        const cor = Array.isArray(host.record.correctiveSeries) ? host.record.correctiveSeries : [];
-        if (cor.includes(pair.coverage) && aff.includes(pair.usage)) {
-          add('error', 'pair-inverted', coverage.file, pair.coverage, `pair "${pair.scheme}" puts "${pair.coverage}" on the coverage side and "${pair.usage}" on the usage side, but ${pid} calls "${pair.coverage}" a corrective and "${pair.usage}" affected. One of the two is the wrong way round`);
+      // Exactly one source. Two would make the rendered side ambiguous; none leaves the
+      // column empty with a label promising something in it.
+      const sources = ['series', 'absenceFrom', 'competingAccountsFrom'].filter(
+        (k) => typeof side[k] === 'string' && side[k].trim(),
+      );
+      if (sources.length !== 1) {
+        add('error', 'pair-side', r.file, where, `side ${name} sets ${sources.length === 0 ? 'none' : sources.length} of series / absenceFrom / competingAccountsFrom (${sources.join(', ') || 'none'}). Exactly one must be set: two make the side ambiguous, none leaves a labelled column with nothing in it`);
+        continue;
+      }
+
+      if (side.series && !seriesIds.has(side.series)) {
+        add('error', 'pair-side', r.file, where, `side ${name} names series "${side.series}", which is not in /data. The pair would render one side against nothing`);
+      }
+
+      if (side.absenceFrom) {
+        const host = seriesIds.get(side.absenceFrom) ?? index.ledger.get(side.absenceFrom);
+        if (!host) {
+          add('error', 'pair-side', r.file, where, `side ${name} takes its absence from "${side.absenceFrom}", which is in neither the series nor the ledger layer`);
+        } else {
+          const declared = Array.isArray(host.record.unmeasured) ? host.record.unmeasured : [];
+          const i = Number.isInteger(side.absenceIndex) ? side.absenceIndex : 0;
+          if (declared.length === 0) {
+            add('error', 'pair-side', r.file, where, `side ${name} stands on an absence declared by "${side.absenceFrom}", but that record declares no "unmeasured" entry. The column would render empty, stating neither a counterpart nor why there is none`);
+          } else if (i >= declared.length) {
+            add('error', 'pair-side', r.file, where, `side ${name} points at absenceIndex ${i} of "${side.absenceFrom}", which declares ${declared.length} (valid 0-${declared.length - 1}). An index out of range renders nothing where the counterpart belongs`);
+          }
+        }
+      }
+
+      if (side.competingAccountsFrom) {
+        const host = provenanceIds.get(side.competingAccountsFrom);
+        if (!host) {
+          add('error', 'pair-side', r.file, where, `side ${name} takes competing accounts from "${side.competingAccountsFrom}", which is not in /data`);
+        } else if (!Array.isArray(host.record.competingAccounts) || host.record.competingAccounts.length === 0) {
+          add('error', 'pair-side', r.file, where, `side ${name} takes competing accounts from "${side.competingAccountsFrom}", but that record carries no competingAccounts. The column would render a heading over nothing`);
         }
       }
     }
-  }
 
-  // P-41: a contested pair renders both instruments or neither. Fires only where one side
-  // is present, as the coverage/usage rule does — a dataset carrying neither simply does not
-  // have this pair, and erroring there would be noise on every fixture root.
-  for (const cp of CONTESTED_PAIRS) {
-    const present = cp.instruments.filter((id) => seriesIds.has(id));
-    if (present.length === 0) continue;
-    const host = seriesIds.get(present[0]);
+    for (const ref of Array.isArray(pair.provenanceRefs) ? pair.provenanceRefs : []) {
+      if (typeof ref === 'string' && !provenanceIds.has(ref)) {
+        add('error', 'pair-side', r.file, where, `provenanceRefs names "${ref}", which is not in /data`);
+      }
+    }
 
-    if (present.length < cp.instruments.length) {
-      const missing = cp.instruments.filter((id) => !seriesIds.has(id));
-      add('error', 'contested-incomplete', host.file, present[0], `contested pair "${cp.subject}" is missing "${missing.join('", "')}". The instruments disagree about the direction of change, so rendering one alone states a direction the evidence does not establish`);
-      continue;
-    }
-    if (!provenanceIds.has(cp.governing)) {
-      add('error', 'contested-incomplete', host.file, present[0], `contested pair "${cp.subject}" names governing record "${cp.governing}", which is not in /data. Without it the view cannot say why the disagreement is not resolved`);
-      continue;
-    }
-    // Both sides must carry the record: it is what forbids resolving the disagreement, and a
-    // reader landing on either instrument has to reach it.
-    for (const sid of cp.instruments) {
-      const series = seriesIds.get(sid);
-      const refs = Array.isArray(series.record.provenanceRefs) ? series.record.provenanceRefs : [];
-      if (!refs.includes(cp.governing)) {
-        add('error', 'contested-incomplete', series.file, sid, `is one instrument of contested pair "${cp.subject}" but does not carry "${cp.governing}" in provenanceRefs. A reader landing here would not reach the record saying the other instrument disagrees`);
+    // Inversion, ported from the hardcoded list. The affects/corrective split cannot DERIVE
+    // a pair — P-22 alone maps four affected series against five correctives with nothing
+    // saying which goes with which — but where a record names both sides it can say they are
+    // the right way up. A pair whose a-side a record calls the correction, and whose b-side
+    // it calls distorted, is backwards: the view would present the honest metric as the
+    // headline needing qualification, and the qualification as the headline.
+    if (pair.kind === 'coverage-usage' && pair.a?.series && pair.b?.series) {
+      for (const [pid, host] of provenanceIds) {
+        const aff = Array.isArray(host.record.affectsSeries) ? host.record.affectsSeries : [];
+        const cor = Array.isArray(host.record.correctiveSeries) ? host.record.correctiveSeries : [];
+        if (cor.includes(pair.a.series) && aff.includes(pair.b.series)) {
+          add('error', 'pair-inverted', r.file, where, `puts "${pair.a.series}" on side a and "${pair.b.series}" on side b, but ${pid} calls "${pair.a.series}" a corrective and "${pair.b.series}" affected. One of the two is the wrong way round`);
+        }
       }
     }
   }
@@ -681,6 +638,7 @@ export function checkIntegrity(records, { today }) {
     series: index.series.size,
     ledger: index.ledger.size,
     provenance: index.provenance.size,
+    pairs: index.pairs.size,
     points: byLayer.series.reduce((n, r) => n + (Array.isArray(r.record?.points) ? r.record.points.length : 0), 0),
   };
 
