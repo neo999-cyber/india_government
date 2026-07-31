@@ -9,7 +9,9 @@ import {
 } from '@/lib/data';
 import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
 import { denominatorBreaksFor, regimeFor, regimeNeighbours } from '@/lib/rules';
+import { ADVANCES_SERIES, WRITE_OFFS_SERIES, hasWriteOffAdjustment } from '@/lib/npa';
 import { SeriesTable } from '@/components/SeriesTable';
+import { NpaView } from '@/components/NpaView';
 import { RegimeOverlap } from '@/components/RegimeOverlap';
 import { SourceLine, StatusKey, TierTag } from '@/components/marks';
 
@@ -73,7 +75,17 @@ export default async function SeriesDetail({ params }: Props) {
       <SourceLine source={s.source} tier={s.tier} />
       <StatusKey />
 
-      <SeriesTable series={s} handoff={handoffFor(s.id)} />
+      {/* P-17: an NPA ratio never renders without the adjusted view offered beside it. */}
+      {hasWriteOffAdjustment(s) ? (
+        <NpaView
+          series={s}
+          writeOffs={getSeries(WRITE_OFFS_SERIES)}
+          advances={getSeries(ADVANCES_SERIES)}
+          reported={<SeriesTable series={s} handoff={handoffFor(s.id)} />}
+        />
+      ) : (
+        <SeriesTable series={s} handoff={handoffFor(s.id)} />
+      )}
       {s.notes ? <p className="prose-note">{s.notes}</p> : null}
 
       {denominatorBreaks.length > 0 ? (

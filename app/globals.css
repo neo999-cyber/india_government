@@ -313,6 +313,111 @@ tr th:last-child {
   margin-bottom: 0.3rem;
 }
 
+/* --- NPA views: reported vs write-off adjusted (P-17), basis stated (P-18) ---
+ * CSS-only toggle. Both panels are server-rendered and swapped on :checked, so the
+ * control costs no JavaScript and keeps native radio keyboard behaviour.
+ */
+
+.npa-controls {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.npa-controls .label {
+  margin: 0;
+}
+
+.npa-view .toggle {
+  display: inline-flex;
+  border: 1px solid var(--rule-strong);
+}
+
+.npa-radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.npa-view .toggle label {
+  padding: 0.2rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-dim);
+  cursor: pointer;
+}
+
+.npa-view .toggle label + input + label {
+  border-left: 1px solid var(--rule-strong);
+}
+
+.npa-radio:checked + label {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.npa-radio:focus-visible + label {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+.npa-basis {
+  max-width: var(--measure);
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+}
+
+.npa-basis-missing {
+  border-top: 1px dashed var(--alert);
+  border-bottom: 1px dashed var(--alert);
+  padding: 0.4rem 0;
+  color: var(--alert);
+}
+
+.npa-panel-adjusted {
+  display: none;
+}
+
+.npa-view:has(.npa-radio-adjusted:checked) .npa-panel-reported {
+  display: none;
+}
+
+.npa-view:has(.npa-radio-adjusted:checked) .npa-panel-adjusted {
+  display: block;
+}
+
+.npa-blocked {
+  border: 1px dashed var(--rule-strong);
+  background: var(--paper-sunk);
+  padding: 0.75rem 0.9rem;
+}
+
+.npa-blocked p,
+.npa-blocked li {
+  max-width: var(--measure);
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+}
+
+.npa-blocked p {
+  margin: 0 0 0.5rem;
+}
+
+.npa-blocked ul {
+  margin: 0 0 0.5rem;
+  padding-left: 1.1rem;
+}
+
+.npa-blocked li {
+  margin-bottom: 0.3rem;
+}
+
 .denominator-callout p {
   margin: 0;
   max-width: var(--measure);

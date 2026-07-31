@@ -9,5 +9,15 @@
     "directionOfBias": "disputed",
     "bridgeExists": false,
     "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }]
+  },
+  {
+    "id": "P-92",
+    "title": "A macro-only dispute, cited from the banking domain",
+    "whatChanged": "Covers macro alone. Records in other domains that cite it resolve their reference successfully and are nonetheless pointing at something that cannot explain them, which is how psb-gross-npa carried an AQR break against a fiscal-accounting record for two phases.",
+    "when": "2020",
+    "affectsDomains": ["macro"],
+    "directionOfBias": "disputed",
+    "bridgeExists": false,
+    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }]
   }
 ]

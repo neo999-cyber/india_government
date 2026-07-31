@@ -42,6 +42,20 @@
     "asOf": "2026-07-30"
   },
   {
+    "id": "L-9007",
+    "title": "Banking record citing a macro-only dispute",
+    "date": "2016-11",
+    "term": "T1",
+    "domains": ["banking"],
+    "type": "reform",
+    "summary": "Cites P-92 in provenanceRefs. The reference resolves, and P-92 covers macro alone, so it cannot be the provenance for a banking record.",
+    "assessment": "too-early",
+    "provenanceRefs": ["P-92"],
+    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }],
+    "confidence": "low",
+    "asOf": "2026-07-30"
+  },
+  {
     "id": "L-9005",
     "title": "Stray non-Latin script in English prose",
     "date": "2016-11",

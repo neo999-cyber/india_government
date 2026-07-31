@@ -1,0 +1,351 @@
+[
+ {
+  "id": "L-0023",
+  "title": "Asset Quality Review",
+  "date": "2015-07",
+  "dateEnd": "2016-03",
+  "term": "T1",
+  "domains": [
+   "banking"
+  ],
+  "type": "reform",
+  "summary": "RBI review under Governor Raghuram Rajan forcing uniform recognition of stressed assets across banks, ending the Corporate Debt Restructuring practices that had concealed the twin balance sheet problem inherited from the 2004-2011 lending boom.",
+  "claimAtLaunch": "Force honest recognition of bad loans so that resolution could begin, on the premise that a concealed problem cannot be fixed.",
+  "whatHappened": "Reported PSB gross NPAs rose from 4.97% (March 2015) to a peak of 14.58% (March 2018) on the global-operations basis — a rise driven by recognition, not deterioration. Special dispensations for restructured loans were withdrawn and expected losses provided for. The combined loan book of banks under Prompt Corrective Action shrank around 11% between FY15 and FY18.",
+  "assessment": "worked",
+  "caseFor": "This was the precondition for everything that followed — IBC referrals, recapitalisation, and the eventual cleanup all required knowing the true scale. Every year of delay would have compounded the cost, as the 2004-2011 concealment had already demonstrated. The IMF and most academic assessment regard recognition as correct and overdue, and the subsequent trajectory to a 1.8% ratio by 2026 vindicates the sequencing.",
+  "caseAgainst": "The execution was arguably too abrupt. Forcing recognition across the system simultaneously, while PCA constraints bound the affected banks, precipitated a credit squeeze at a moment when private investment was already weak — a meaningful contributor to the pre-COVID growth deceleration from 8% to 3.9%. A more graduated recognition schedule might have achieved the same honesty while preserving credit flow.",
+  "shockExposure": "The 2018 IL&FS collapse hit as recognition peaked, compounding the credit squeeze and making the AQR's independent contribution to the slowdown hard to isolate. Demonetisation and GST also landed inside this window.",
+  "seriesRefs": [
+   "psb-gross-npa",
+   "scb-gross-npa",
+   "credit-growth"
+  ],
+  "provenanceRefs": [
+   "P-15",
+   "P-18"
+  ],
+  "sources": [
+   {
+    "name": "PIB, GNPA of PSBs declined from the peak of 14.58%",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2083695",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0024",
+  "title": "Insolvency and Bankruptcy Code",
+  "date": "2016-05",
+  "term": "T1",
+  "domains": [
+   "banking",
+   "governance"
+  ],
+  "type": "reform",
+  "summary": "A unified insolvency framework drafted by the Bankruptcy Law Reforms Committee, creating the NCLT and NCLAT adjudicatory architecture and the Insolvency and Bankruptcy Board of India, and shifting control of a defaulting firm from promoter to creditor.",
+  "claimAtLaunch": "Time-bound resolution within 180 days, extendable to 270 and later capped at 330 days including litigation, replacing a fragmented recovery regime that recovered little and took years.",
+  "whatHappened": "8,987 corporate debtors admitted since inception. Cumulative realisation stands at 30.56% of admitted claims (March 2026), down from 32.76% a year earlier and around 45% in the early years — ₹3.99 lakh crore realised against ₹12.31 lakh crore admitted, a roughly 67% haircut. Average resolution time worsened to 713 days (March 2025) and around 744 days on ICRA's 2025-26 estimate, versus the 330-day statutory limit. FY2025-26 annual-flow realisation fell to about 23%. Landmark resolutions included Essar Steel, Bhushan Steel, Electrosteel, DHFL and Ruchi Soya; Videocon and Jaypee Infratech were the notable controversies. The 2025 Amendment Bill, passed by the Lok Sabha on 31 March 2026, introduced a creditor-initiated process, mandatory 14-day admission, and group and cross-border frameworks.",
+  "assessment": "partly",
+  "caseFor": "The behavioural effect is the real achievement and it is large: 30,310 cases settled before admission, covering underlying defaults worth ₹13.78 lakh crore to December 2024. The credible threat of losing control transformed promoter behaviour in a way no previous recovery mechanism managed, and Section 29A permanently ended the practice of defaulting promoters buying back their own assets at a discount. Realisation percentages also understate performance, since the IBC inherited assets already stripped by years of delay under the old regime — realisation runs at 167% of liquidation value, which is the fairer benchmark.",
+  "caseAgainst": "On its own stated terms it underdelivers. Timelines are more than double the statutory limit and worsening, realisation is low and declining monotonically as the best assets resolve first, and NCLT capacity has never matched caseload. A 67% average haircut means creditors recover a third of what they are owed, and the FY2026 collapse to 23% annual realisation suggests the trend is deteriorating rather than maturing. Pre-packaged insolvency for MSMEs, introduced in 2021, had admitted only 18 applications by March 2026.",
+  "shockExposure": "Section 10A suspended fresh insolvency proceedings from March 2020 for the COVID period, creating a caseload gap and a subsequent backlog surge that distorts year-on-year comparisons across FY2021 and FY2022.",
+  "seriesRefs": [
+   "ibc-realisation-pct",
+   "ibc-resolution-days"
+  ],
+  "sources": [
+   {
+    "name": "IBBI quarterly newsletters and statistics",
+    "url": "https://ibbi.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0025",
+  "title": "Loan write-offs and the recovery question",
+  "date": "2014-04",
+  "dateEnd": "2026-03",
+  "term": "T1",
+  "domains": [
+   "banking"
+  ],
+  "type": "episode",
+  "summary": "Scheduled commercial banks wrote off ₹16,61,310 crore between April 2014 and September 2024 and recovered ₹2,69,795 crore against those write-offs — approximately 16%. Public sector banks accounted for ₹12,08,621 crore of the write-offs and recovered ₹2,16,547 crore.",
+  "whatHappened": "Write-offs peaked in FY2018-19 at ₹2.36 lakh crore and have since declined to around ₹1.5-1.7 lakh crore annually. A substantial share of the headline decline in the gross NPA ratio from its 2018 peak is attributable to these write-offs and to credit growth expanding the denominator, alongside genuine recoveries which the RBI puts at around 42.8% of the FY2024-25 reduction.",
+  "assessment": "contested",
+  "caseFor": "Write-offs are standard prudential practice once provisioning is complete; leaving fully provisioned bad loans on the books misrepresents a bank's position as much as concealing them does. Borrower liability is not extinguished and recovery proceedings continue, so the accounting entry and the legal claim are genuinely different things. Recoveries and upgrades now account for a rising share of NPA reduction, indicating the mechanism is shifting from write-off toward genuine resolution as the cycle matures.",
+  "caseAgainst": "Recovery on written-off accounts runs at roughly 13-18% in practice, so for the overwhelming bulk of the amount the distinction between write-off and waiver is notional. The headline ratio improvement is therefore substantially cosmetic: ₹13.91 lakh crore remains unrecovered, absorbed by depositors and, through recapitalisation, by taxpayers. Presenting the fall from 14.58% to 1.8% as a cleanup without this context materially overstates what was achieved.",
+  "shockExposure": "COVID forbearance suppressed reported NPAs across FY2021-FY2022, further complicating attribution of the decline between write-offs, recoveries, and forbearance unwinding.",
+  "seriesRefs": [
+   "bank-writeoffs-annual",
+   "scb-gross-npa"
+  ],
+  "provenanceRefs": [
+   "P-17",
+   "P-16"
+  ],
+  "sources": [
+   {
+    "name": "PIB, Building Trust: Strengthening India's banking sector",
+    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=156404&lang=1&reg=37",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0026",
+  "title": "PSB recapitalisation and consolidation",
+  "date": "2015-08",
+  "dateEnd": "2020-04",
+  "term": "T1",
+  "domains": [
+   "banking"
+  ],
+  "type": "reform",
+  "summary": "Capital infusion of ₹3.31 lakh crore into public sector banks between FY2016-17 and FY2020-21, alongside consolidation reducing the number of PSBs from 27 to 12 through the SBI associate merger (2017), Bank of Baroda-Vijaya-Dena (2019), and the August 2019 mega-merger of 10 banks into 4 effective April 2020.",
+  "claimAtLaunch": "Recapitalise banks to absorb recognised losses and resume lending; consolidate to create fewer, stronger, more efficient banks with national scale.",
+  "whatHappened": "The October 2017 package of ₹2.11 lakh crore was the centrepiece, roughly ₹1.35 lakh crore of it through recapitalisation bonds. PSBs swung from a record aggregate loss of about ₹85,390 crore in FY2017-18 to record net profit of ₹1,78,364 crore in FY2024-25, up 26% year on year, with SBI contributing over 40%. No government infusion has been required since FY2020-21. PSB capital adequacy reached 16.4% by June 2025.",
+  "assessment": "worked",
+  "caseFor": "The fiscal and operational objective was met decisively. Banks absorbed recognised losses without a systemic failure, resumed lending, and reached self-sustaining profitability within seven years of a record loss — a turnaround few banking systems achieve after a crisis of that scale. That no further infusion has been needed for five years is the strongest evidence the capital was adequate and correctly deployed.",
+  "caseAgainst": "Recapitalisation bonds were fiscally opaque: money raised was excluded from the headline fiscal deficit while adding to internal government debt, with a recurring interest cost, and in substance the government funded banks by borrowing from those same banks. Evidence that consolidation delivered its promised efficiency gains is thin — the profitability recovery tracks the credit cycle and rate environment more closely than merger synergies, and PSBs continued losing market share to private banks throughout.",
+  "shockExposure": "The mega-merger took effect in April 2020, the same month as the COVID lockdown, making integration effects and pandemic effects impossible to separate cleanly.",
+  "seriesRefs": [
+   "psb-profit",
+   "govt-capital-infusion",
+   "crar"
+  ],
+  "provenanceRefs": [
+   "P-06"
+  ],
+  "sources": [
+   {
+    "name": "PIB, Gross NPAs reduce from 9.11% to 2.58%",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2146819&reg=3&lang=2",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0027",
+  "title": "IL&FS collapse",
+  "date": "2018-09",
+  "term": "T1",
+  "domains": [
+   "banking",
+   "macro"
+  ],
+  "type": "shock",
+  "summary": "Default by Infrastructure Leasing & Financial Services, carrying ₹99,355 crore of total debt, triggering a liquidity freeze across the NBFC sector. The government superseded the board under a Uday Kotak-led team.",
+  "whatHappened": "By June 2026, ₹50,387 crore had been discharged, about 82.6% of the ₹61,000 crore resolution target and roughly 61% of total external debt. Around 88.4% of the amount owed to public sector banks and financial institutions has been recovered — substantially above the average IBC recovery rate. The collapse was a major driver of the pre-COVID growth slowdown established in Phase 2.",
+  "assessment": "contested",
+  "caseFor": "Board supersession rather than liquidation preserved going-concern value and produced recovery rates far above what the IBC route delivers, at 88.4% for bank creditors. The intervention was fast and prevented a disorderly cascade through the NBFC sector at a moment of acute fragility.",
+  "caseAgainst": "The collapse itself represents a supervisory failure — a systemically important entity accumulated ₹99,355 crore of debt with an asset-liability mismatch that regulators did not act on until default. Resolution has taken eight years and remains incomplete. The credit freeze that followed contributed materially to the growth deceleration that preceded COVID.",
+  "shockExposure": "This record is itself a shock, and it lands inside the AQR credit squeeze, making the two effects on 2018-2020 credit conditions difficult to separate.",
+  "seriesRefs": [
+   "credit-growth"
+  ],
+  "sources": [
+   {
+    "name": "IL&FS resolution progress",
+    "url": "https://www.freepressjournal.in/business/debt-ridden-ilfs-group-repays-48463-crore-to-creditors-out-of-the-total-61000-crore-debt-resolution-target",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0028",
+  "title": "Yes Bank reconstruction and SMBC stake sale",
+  "date": "2020-03",
+  "dateEnd": "2025-09",
+  "term": "T2",
+  "domains": [
+   "banking",
+   "foreign"
+  ],
+  "type": "episode",
+  "summary": "RBI-imposed moratorium and reconstruction scheme in March 2020, with an SBI-led consortium recapitalising the bank, culminating in the September 2025 sale of a 20% stake to Sumitomo Mitsui Banking Corporation.",
+  "whatHappened": "The reconstruction included writing off approximately ₹8,415 crore of Additional Tier 1 bonds, which triggered litigation — the Bombay High Court quashed the write-off and the matter proceeded to the Supreme Court. In September 2025 SMBC acquired 20% for ₹13,482 crore, buying 13.19% from SBI and 6.81% from seven private banks at ₹21.50 per share, valuing Yes Bank at around US$7.9 billion. The CCI cleared the transaction on 2 September 2025 and SMBC later raised its holding to 24.22%. It is the largest cross-border M&A transaction in India's financial sector.",
+  "assessment": "worked",
+  "caseFor": "A private bank of systemic size was resolved without depositor loss and without permanent public ownership, and the state-led consortium exited at a profit into a credible foreign strategic investor five years later. That is close to the textbook outcome for a bank rescue, and compares favourably with resolutions in far wealthier jurisdictions.",
+  "caseAgainst": "The AT-1 bond write-off damaged trust in a funding instrument the entire banking system relies on, and the courts have not vindicated the regulator's approach — the Bombay High Court quashed it. The bank reached that condition under RBI supervision, so the rescue's success does not offset the supervisory failure that made it necessary.",
+  "shockExposure": "The moratorium landed weeks before the COVID lockdown, so the recovery period coincides entirely with pandemic-era monetary support, which flatters the outcome.",
+  "seriesRefs": [],
+  "sources": [
+   {
+    "name": "SMBC raises stake in Yes Bank",
+    "url": "https://www.newsbytesapp.com/news/business/japan-s-smbc-increases-stake-in-yes-bank-becomes-largest-shareholder/story",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0029",
+  "title": "Digital public infrastructure: Jan Dhan, Aadhaar, UPI",
+  "date": "2014-08-28",
+  "dateEnd": "2026-03",
+  "term": "T1",
+  "domains": [
+   "banking",
+   "welfare",
+   "governance"
+  ],
+  "type": "reform",
+  "summary": "The JAM stack — Pradhan Mantri Jan Dhan Yojana bank accounts, Aadhaar identity, and mobile connectivity — underpinning Direct Benefit Transfer and the Unified Payments Interface.",
+  "claimAtLaunch": "Universal bank account access, elimination of ghost and duplicate welfare beneficiaries through biometric authentication, and a public payments rail owned by no private intermediary.",
+  "whatHappened": "56.77 crore Jan Dhan accounts by October 2025, holding ₹2.73 lakh crore, 56% held by women and 66% rural or semi-urban. UPI grew from 535 crore transactions worth ₹8.77 lakh crore in FY2018-19 to 24,162 crore transactions worth ₹314 lakh crore in FY2025-26, around 85% of India's retail digital payments, with India accounting for roughly 49% of global real-time payment volume. ₹6.9 lakh crore was transferred via Jan Dhan accounts in FY2024-25 alone.",
+  "assessment": "worked",
+  "caseFor": "This is the clearest and most internationally consequential achievement of the period. India built payments and identity infrastructure as a public good rather than a private oligopoly, at a scale and cost no comparable country has matched, and it is now actively emulated abroad. Account ownership rose from 53% of adults in 2014 to near-universal, and the COVID transfer response would have been impossible without the rails already in place.",
+  "caseAgainst": "Exclusion is the cost the headline figures hide: biometric authentication failures have produced documented denials of rations and entitlements, falling hardest on the elderly, manual labourers and the disabled — precisely those the system was meant to reach. The Aadhaar Act was passed as a money bill, bypassing the Rajya Sabha, and the Supreme Court struck down Section 57 in 2018. The Digital Personal Data Protection Act 2023 grants broad government exemptions, so the surveillance capacity this infrastructure creates remains largely unconstrained. Zero-MDR drove UPI adoption but eliminated the payment industry's revenue base, leaving the rails dependent on state support.",
+  "shockExposure": "COVID accelerated digital adoption globally, so part of the UPI growth curve reflects a worldwide shift rather than India-specific policy — though India's starting infrastructure is what allowed it to capitalise.",
+  "seriesRefs": [
+   "upi-transactions",
+   "jan-dhan-accounts"
+  ],
+  "sources": [
+   {
+    "name": "PIB, Building Trust: Strengthening India's banking sector",
+    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=156404&lang=1&reg=37",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0030",
+  "title": "Public sector bank privatisation programme",
+  "date": "2021-02-01",
+  "dateEnd": "2026-07",
+  "term": "T2",
+  "domains": [
+   "banking"
+  ],
+  "type": "reform",
+  "summary": "Budget 2021-22 announced the intent to privatise two public sector banks alongside the strategic sale of IDBI Bank.",
+  "claimAtLaunch": "Reduce the state's footprint in banking and improve efficiency by transferring two PSBs to private ownership.",
+  "whatHappened": "Five years on, no public sector bank has been privatised. The IDBI Bank strategic sale — the government's 30.48% plus LIC's 30.24%, totalling 60.72% — advanced through FY2025-26 with revised bids from Fairfax Financial Holdings and Emirates NBD under evaluation by mid-2026, valued at around US$5.7 billion and targeted for FY27. No legislation enabling broader PSB privatisation has been introduced.",
+  "assessment": "failed",
+  "caseFor": "The rationale weakened on its own merits: PSBs returned to record profitability and full capital adequacy without privatisation, so the urgency that motivated the announcement dissolved. Selling recovering assets into a weak market would have destroyed value, and the IDBI process advancing to final bids shows the capability exists where the case is strong. Restraint here may reflect judgment rather than failure of will.",
+  "caseAgainst": "A specific commitment announced in a Budget speech has gone unfulfilled for five years, with no enabling legislation even attempted. The political cost of bank-union opposition, not the economics, is the widely understood reason. If the intent was abandoned it should have been stated; leaving it formally alive while doing nothing is the pattern this project should record as announced-but-not-delivered.",
+  "shockExposure": "None material — the announcement postdates COVID's acute phase and the delay spans a period of banking-sector strength.",
+  "seriesRefs": [
+   "psb-profit"
+  ],
+  "sources": [
+   {
+    "name": "PIB, Gross NPAs reduce from 9.11% to 2.58%",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2146819&reg=3&lang=2",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0031",
+  "title": "Credit composition shift toward unsecured retail",
+  "date": "2021-04",
+  "dateEnd": "2026-03",
+  "term": "T2",
+  "domains": [
+   "banking"
+  ],
+  "type": "episode",
+  "summary": "Bank credit shifted structurally away from industry and infrastructure toward retail and personal lending, with unsecured retail rising from 22.9% to 25.2% of the retail book and retail loans growing at roughly 24.8% CAGR between FY21 and FY23, about double overall credit growth.",
+  "whatHappened": "The RBI raised risk weights on unsecured consumer credit from 100% to 125% in November 2023 and added 25 percentage points to bank lending to NBFCs, partially rolling this back in February 2025 while retaining the 125% on unsecured retail. By FY2025-26 credit growth of 14.5% outpaced deposit growth of 11.5%, and the RBI flagged unsecured retail, microfinance stress and the credit-deposit gap as the system's principal vulnerabilities.",
+  "assessment": "contested",
+  "caseFor": "This is healthy diversification away from the concentrated corporate and infrastructure exposures that caused the last crisis. Granular retail risk is more predictable than lumpy project finance, and the expansion reflects genuine financial deepening in an under-banked economy where credit to the private sector is only around 55% of GDP, far below peers.",
+  "caseAgainst": "It may be risk migration rather than risk reduction — the next crisis would be a household one, and the RBI has noted roughly 10% of retail borrowers missing payments. Deposit growth persistently lagging credit growth is the classic precondition for funding stress, and the fact that the regulator needed to raise risk weights and has only partially reversed them indicates supervisory discomfort rather than confidence.",
+  "shockExposure": "Post-COVID consumption recovery inflated retail credit demand, so part of the growth reflects a normalising base rather than a structural shift.",
+  "seriesRefs": [
+   "credit-growth",
+   "credit-gdp-peer"
+  ],
+  "provenanceRefs": [
+   "P-19"
+  ],
+  "sources": [
+   {
+    "name": "RBI Financial Stability Report coverage",
+    "url": "https://abclive.in/2025/07/02/rbi-inancial-stability-report-2025/",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0032",
+  "title": "Bank frauds and supervisory detection",
+  "date": "2018-01",
+  "dateEnd": "2022-12",
+  "term": "T1",
+  "domains": [
+   "banking",
+   "governance"
+  ],
+  "type": "episode",
+  "summary": "A sequence of very large frauds detected during the period: Punjab National Bank / Nirav Modi and Mehul Choksi (₹14,357 crore, detected 2018), ABG Shipyard (₹22,842 crore, 2022, the largest in Indian banking history, across 28 banks), DHFL (₹34,615 crore, 2022), and Vijay Mallya / Kingfisher (around ₹9,000 crore across 17 banks).",
+  "whatHappened": "Aggregate fraud value doubled to ₹1.85 trillion in FY2020, then frauds above ₹100 crore declined sharply to ₹41,000 crore in FY2022 from ₹1.05 trillion in FY2021. The Fugitive Economic Offenders Act 2018 created a framework to attach absconders' assets. The Banking Regulation (Amendment) Act 2020 brought co-operative banks under RBI supervision following the PMC Bank collapse.",
+  "assessment": "partly",
+  "caseFor": "The enforcement architecture was genuinely strengthened — the Fugitive Economic Offenders Act, co-operative bank supervision, and improved reporting all postdate 2014 and address real gaps. That the frauds surfaced at all reflects the same recognition discipline the AQR imposed; under the previous regime several would likely have remained buried in restructured accounts.",
+  "caseAgainst": "Every one of these frauds was detected years after it began, which is a supervisory failure rather than a detection success — the PNB fraud ran through SWIFT for years undetected. Governance reform through the Banks Board Bureau and its successor has thin evidence of improving board quality or appointment processes. Both principal fugitives remain outside Indian jurisdiction years after the framework designed to reach them was enacted.",
+  "shockExposure": "None material.",
+  "provenanceRefs": [
+   "P-20"
+  ],
+  "sources": [
+   {
+    "name": "PIB, Building Trust: Strengthening India's banking sector",
+    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=156404&lang=1&reg=37",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "low",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0033",
+  "title": "Expected Credit Loss provisioning transition",
+  "date": "2026-04-27",
+  "dateEnd": "2031-03",
+  "term": "T3",
+  "domains": [
+   "banking"
+  ],
+  "type": "institutional",
+  "summary": "RBI final directions issued 27 April 2026 mandate a shift from incurred-loss to expected-credit-loss provisioning effective 1 April 2027, with a glide path to March 2031. Estimated one-time capital impact is around 60-70 basis points system-wide, larger for banks with heavy unsecured or microfinance exposure.",
+  "assessment": "too-early",
+  "shockExposure": "None yet — but this is a forward-dated comparability break for every asset-quality series in the project, which is why it also exists as provenance record P-21.",
+  "seriesRefs": [
+   "crar",
+   "net-npa"
+  ],
+  "provenanceRefs": [
+   "P-21"
+  ],
+  "sources": [
+   {
+    "name": "RBI Financial Stability Report coverage",
+    "url": "https://abclive.in/2025/07/02/rbi-inancial-stability-report-2025/",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-31"
+ }
+]
