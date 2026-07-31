@@ -57,11 +57,23 @@ const MUST_FIRE = [
   'id-unique',
   't5-dispute-link',
   'panel-vintage',
-  'paired-series',
+  'regime-group',
   'baseline-context',
   'date-order',
   'back-link',
+  // Character sweep: schema validation cannot see any of these.
+  'charset-script',
+  'charset-invisible',
+  'charset-url',
+  'charset-symbol',
+  'charset-homoglyph',
 ];
+
+/**
+ * Rules needing their own fixture root because they contradict one in `broken`:
+ * a regime group cannot be both incomplete and gapped at the same time.
+ */
+const ISOLATED = [{ dir: 'regime-gap', rule: 'regime-handoff' }];
 
 /** @returns {{ code: number, report: any }} */
 function run(args) {
@@ -124,6 +136,14 @@ const firedRules = new Set(
 );
 for (const rule of MUST_FIRE) {
   if (!firedRules.has(rule)) failures.push(`rule "${rule}" did not fire as an error on the broken fixtures`);
+}
+
+// 3b. Rules that need a fixture root to themselves.
+for (const { dir, rule } of ISOLATED) {
+  const result = run(['--data', join(ROOT, 'tests', 'fixtures', dir)]);
+  const fired = result.report.findings.some((f) => f.level === 'error' && f.rule === rule);
+  if (!fired) failures.push(`rule "${rule}" did not fire as an error on tests/fixtures/${dir}`);
+  else notes.push(`  ${rule} fires on tests/fixtures/${dir}`);
 }
 
 // 4. Strictness must be live: a misspelled keyword cannot be silently ignored.

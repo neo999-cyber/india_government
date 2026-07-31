@@ -1,178 +1,1567 @@
 [
-  {
-    "id": "gdp-growth-old-base",
-    "title": "Real GDP growth, 2004-05 base series (as contemporaneously reported)",
-    "unit": "% y/y",
-    "domain": "macro",
-    "tier": "T1",
-    "source": { "name": "CSO/MoSPI (old series)", "url": "https://mospi.gov.in/" },
-    "calendar": "FY",
-    "breaks": [{ "period": "FY2013-14", "note": "Series discontinued at base revision; do not splice with new base", "provenanceRef": "P-01" }],
-    "points": [
-      { "country": "IND", "period": "FY2007-08", "value": 9.3, "status": "approx", "note": "Boom peak, old series" },
-      { "country": "IND", "period": "FY2013-14", "value": 4.7, "status": "verified", "note": "Provisional; advance estimate was 4.9" }
-    ],
-    "provenanceRefs": ["P-01"]
+ {
+  "id": "psb-gross-npa",
+  "title": "Public sector banks gross NPA ratio",
+  "unit": "% of advances",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "RBI",
+   "url": "https://www.rbi.org.in/"
   },
-  {
-    "id": "gdp-growth-new-base",
-    "title": "Real GDP growth, 2011-12 base series",
-    "unit": "% y/y",
-    "domain": "macro",
-    "tier": "T1",
-    "source": { "name": "CSO/MoSPI (2011-12 base)", "url": "https://mospi.gov.in/" },
-    "calendar": "FY",
-    "points": [
-      { "country": "IND", "period": "FY2013-14", "value": 6.9, "status": "verified", "note": "Same year reads 4.7 on old base — the seam" }
-    ],
-    "provenanceRefs": ["P-01"]
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "Asset Quality Review forces recognition; pre-AQR figures understate true stress via CDR masking",
+    "provenanceRef": "P-06"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 4.4,
+    "status": "approx",
+    "note": "Reported; true stress hidden pre-AQR"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 14.58,
+    "status": "approx",
+    "note": "Post-AQR peak, March 2018"
+   }
+  ]
+ },
+ {
+  "id": "lfpr-overall",
+  "title": "Labour force participation rate, usual status (UPSS)",
+  "unit": "%",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "NSSO EUS 68th round",
+   "url": "https://mospi.gov.in/"
   },
-  {
-    "id": "forex-reserves",
-    "title": "Foreign exchange reserves, end of fiscal year",
-    "unit": "US$ billion",
-    "domain": "macro",
-    "tier": "T1",
-    "source": { "name": "Economic Survey 2013-14 / RBI", "url": "https://www.business-standard.com/article/news-ani/economic-survey-says-india-s-foreign-exchange-reserves-have-increased-114070900466_1.html", "vintage": "2026-07-30" },
-    "calendar": "FY",
-    "points": [
-      { "country": "IND", "period": "FY2012-13", "value": 292.0, "status": "verified" },
-      { "country": "IND", "period": "FY2013-14", "value": 304.2, "status": "verified", "note": "Verified against Economic Survey 2013-14 this cycle" }
-    ]
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2017-18",
+    "note": "EUS ends; PLFS begins with changed design",
+    "provenanceRef": "P-02"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2004-05",
+    "value": 42.85,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 39.5,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-02"
+  ]
+ },
+ {
+  "id": "delhi-pm25",
+  "title": "Delhi annual mean PM2.5 (WHO ambient air database)",
+  "unit": "µg/m³",
+  "domain": "environment",
+  "tier": "T2",
+  "source": {
+   "name": "WHO Ambient Air Pollution database 2014",
+   "url": "https://www.who.int/data/gho/data/themes/air-pollution/who-air-quality-database",
+   "vintage": "2026-07-30"
   },
-  {
-    "id": "cad-gdp",
-    "title": "Current account deficit",
-    "unit": "% of GDP",
-    "domain": "macro",
-    "tier": "T1",
-    "source": { "name": "RBI", "url": "https://www.rbi.org.in/" },
-    "calendar": "FY",
-    "points": [
-      { "country": "IND", "period": "FY2012-13", "value": 4.8, "status": "approx", "note": "Peak; US$87.8bn" },
-      { "country": "IND", "period": "FY2013-14", "value": 1.7, "status": "approx", "note": "Post taper-tantrum compression" }
-    ]
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 153,
+    "status": "verified",
+    "note": "2014 database release; underlying data 2008-2013, so genuinely a UPA-era reading. 13 of the 20 most polluted cities were Indian"
+   }
+  ]
+ },
+ {
+  "id": "solar-capacity",
+  "title": "Grid-connected solar installed capacity",
+  "unit": "GW",
+  "domain": "environment",
+  "tier": "T1",
+  "source": {
+   "name": "MNRE via PIB (7 Feb 2024 release)",
+   "url": "https://pib.gov.in/PressReleasePage.aspx?PRID=2003561",
+   "vintage": "2026-07-30"
   },
-  {
-    "id": "psb-gross-npa",
-    "title": "Public sector banks gross NPA ratio",
-    "unit": "% of advances",
-    "domain": "banking",
-    "tier": "T1",
-    "source": { "name": "RBI", "url": "https://www.rbi.org.in/" },
-    "calendar": "FY",
-    "breaks": [{ "period": "FY2015-16", "note": "Asset Quality Review forces recognition; pre-AQR figures understate true stress via CDR masking", "provenanceRef": "P-06" }],
-    "points": [
-      { "country": "IND", "period": "FY2013-14", "value": 4.4, "status": "approx", "note": "Reported; true stress hidden pre-AQR" },
-      { "country": "IND", "period": "FY2017-18", "value": 14.58, "status": "approx", "note": "Post-AQR peak, March 2018" }
-    ]
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 2.82,
+    "status": "verified",
+    "note": "March 2014. Corrects the ~2.6 GW figure in the phase-1 report"
+   }
+  ]
+ },
+ {
+  "id": "exports-gdp",
+  "title": "Exports of goods and services",
+  "unit": "% of GDP",
+  "domain": "foreign",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI",
+   "url": "https://data.worldbank.org/indicator/NE.EXP.GNFS.ZS"
   },
-  {
-    "id": "poverty-tendulkar",
-    "title": "Poverty headcount, Tendulkar methodology",
-    "unit": "% of population",
-    "domain": "poverty",
-    "tier": "T1",
-    "source": { "name": "Planning Commission press note, 22 Jul 2013", "url": "https://pib.gov.in/" },
-    "calendar": "FY",
-    "breaks": [{ "period": "FY2011-12", "note": "Last official consumption-based estimate; 2017-18 survey withheld", "provenanceRef": "P-03" }],
-    "points": [
-      { "country": "IND", "period": "FY2004-05", "value": 37.2, "status": "verified" },
-      { "country": "IND", "period": "FY2009-10", "value": 29.8, "status": "verified" },
-      { "country": "IND", "period": "FY2011-12", "value": 21.9, "status": "verified" }
-    ],
-    "provenanceRefs": ["P-03"]
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 25.4,
+    "status": "approx",
+    "note": "The peak; key later comparison as it declined post-2014"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 23.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 19.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 19.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 18.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 19.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 18.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 18.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 21.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 22.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 21.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 22.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 21.0,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-10",
+   "P-14"
+  ],
+  "notes": "Phase-1 peak of 25.4% (FY2013-14, T1) and WDI 22.97% for '2014' are different period bases — see P-14, not a contradiction. P-10 back-link added 2026-07-30 to match P-10.affectsSeries; note the denominator here is WDI's, which picks up the MoSPI rebasing on WDI's own vintage schedule rather than on 27 Feb 2026."
+ },
+ {
+  "id": "exports-gdp-peer",
+  "title": "Exports of goods and services (peer panel)",
+  "unit": "% of GDP",
+  "domain": "foreign",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-07-30"
   },
-  {
-    "id": "lfpr-overall",
-    "title": "Labour force participation rate, usual status (UPSS)",
-    "unit": "%",
-    "domain": "employment",
-    "tier": "T1",
-    "source": { "name": "NSSO EUS 68th round", "url": "https://mospi.gov.in/" },
-    "calendar": "FY",
-    "breaks": [{ "period": "FY2017-18", "note": "EUS ends; PLFS begins with changed design", "provenanceRef": "P-02" }],
-    "points": [
-      { "country": "IND", "period": "FY2004-05", "value": 42.85, "status": "approx" },
-      { "country": "IND", "period": "FY2011-12", "value": 39.5, "status": "approx" }
-    ],
-    "provenanceRefs": ["P-02"]
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 22.97,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 22.06,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 18.99,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 10.46,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 69.6,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 90.17,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 23.67,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 22.31,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 23.07,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 20.44,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09",
+   "P-14"
+  ],
+  "notes": "Single-vintage pull. India's WDI years are fiscal-year labelled — see P-14."
+ },
+ {
+  "id": "remittances",
+  "title": "Inward remittances",
+  "unit": "US$ billion",
+  "domain": "foreign",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank Migration and Development Brief",
+   "url": "https://www.businesstoday.in/latest/economy-politics/story/world-bank-study-india-gets-usd-70-billion-remittance-in-2014-50666-2015-04-14",
+   "vintage": "2026-07-30"
   },
-  {
-    "id": "nh-network",
-    "title": "National highway network length",
-    "unit": "km",
-    "domain": "infrastructure",
-    "tier": "T1",
-    "source": { "name": "MoRTH", "url": "https://morth.nic.in/" },
-    "calendar": "FY",
-    "points": [
-      { "country": "IND", "period": "FY2013-14", "value": 91287, "status": "approx", "note": "April 2014; construction pace 11.6 km/day" }
-    ]
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 70,
+    "status": "verified",
+    "note": "World's largest recipient; China 64, Philippines 28"
+   }
+  ]
+ },
+ {
+  "id": "nh-network",
+  "title": "National highway network length",
+  "unit": "km",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "MoRTH",
+   "url": "https://morth.nic.in/"
   },
-  {
-    "id": "exports-gdp",
-    "title": "Exports of goods and services",
-    "unit": "% of GDP",
-    "domain": "foreign",
-    "tier": "T2",
-    "source": { "name": "World Bank WDI / RBI", "url": "https://data.worldbank.org/indicator/NE.EXP.GNFS.ZS" },
-    "calendar": "FY",
-    "points": [
-      { "country": "IND", "period": "FY2013-14", "value": 25.4, "status": "approx", "note": "The peak; key later comparison as it declined post-2014" }
-    ]
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 91287,
+    "status": "approx",
+    "note": "April 2014; construction pace 11.6 km/day"
+   }
+  ]
+ },
+ {
+  "id": "cad-gdp",
+  "title": "Current account balance",
+  "unit": "% of GDP",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "RBI",
+   "url": "https://rbi.org.in/"
   },
-  {
-    "id": "solar-capacity",
-    "title": "Grid-connected solar installed capacity",
-    "unit": "GW",
-    "domain": "environment",
-    "tier": "T1",
-    "source": { "name": "MNRE via PIB (7 Feb 2024 release)", "url": "https://pib.gov.in/PressReleasePage.aspx?PRID=2003561", "vintage": "2026-07-30" },
-    "calendar": "FY",
-    "points": [
-      { "country": "IND", "period": "FY2013-14", "value": 2.82, "status": "verified", "note": "March 2014. Corrects the ~2.6 GW figure in the phase-1 report" }
-    ]
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 4.8,
+    "status": "approx",
+    "note": "Peak; US$87.8bn"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 1.7,
+    "status": "approx",
+    "note": "Post taper-tantrum compression"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 1.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 1.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 0.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 1.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 2.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 0.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": -0.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 1.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 2.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 0.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 0.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 1.0,
+    "status": "approx"
+   }
+  ],
+  "notes": "Positive = deficit. FY2020-21 was a surplus (-0.9 here = +0.9% surplus)."
+ },
+ {
+  "id": "cpi-inflation",
+  "title": "CPI inflation, annual average",
+  "unit": "%",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI / RBI",
+   "url": "https://rbi.org.in/"
   },
-  {
-    "id": "delhi-pm25",
-    "title": "Delhi annual mean PM2.5 (WHO ambient air database)",
-    "unit": "µg/m³",
-    "domain": "environment",
-    "tier": "T2",
-    "source": { "name": "WHO Ambient Air Pollution database 2014", "url": "https://www.who.int/data/gho/data/themes/air-pollution/who-air-quality-database", "vintage": "2026-07-30" },
-    "calendar": "CY",
-    "points": [
-      { "country": "IND", "period": "2014", "value": 153, "status": "verified", "note": "2014 database release; underlying data 2008-2013, so genuinely a UPA-era reading. 13 of the 20 most polluted cities were Indian" }
-    ]
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 5.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 4.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 4.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 3.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 3.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 4.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 6.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 5.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 6.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 5.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 4.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 4.0,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-05",
+   "P-11"
+  ],
+  "breaks": [
+   {
+    "period": "FY2025-26",
+    "note": "New CPI base 2024 from Feb 2026; lower food weight dampens headline volatility",
+    "provenanceRef": "P-11"
+   }
+  ],
+  "notes": "Baseline for comparison: 9-11% during 2010-2013. Annual averages are T2-derived approximations pending exact RBI annual series."
+ },
+ {
+  "id": "fiscal-deficit",
+  "title": "Central government fiscal deficit",
+  "unit": "% of GDP",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "CGA / Union Budget",
+   "url": "https://www.indiabudget.gov.in/"
   },
-  {
-    "id": "remittances",
-    "title": "Inward remittances",
-    "unit": "US$ billion",
-    "domain": "foreign",
-    "tier": "T2",
-    "source": { "name": "World Bank Migration and Development Brief", "url": "https://www.businesstoday.in/latest/economy-politics/story/world-bank-study-india-gets-usd-70-billion-remittance-in-2014-50666-2015-04-14", "vintage": "2026-07-30" },
-    "calendar": "CY",
-    "points": [
-      { "country": "IND", "period": "2014", "value": 70, "status": "verified", "note": "World's largest recipient; China 64, Philippines 28" }
-    ]
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 4.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 3.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 3.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 3.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 3.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 4.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 9.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 6.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 6.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 5.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 4.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 4.4,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-06",
+   "P-10",
+   "P-13"
+  ],
+  "breaks": [
+   {
+    "period": "FY2020-21",
+    "note": "FCI dues brought on-budget Feb 2021 — part of the 9.2% spike is an accounting artefact, not spending",
+    "provenanceRef": "P-06"
+   },
+   {
+    "period": "FY2026-27",
+    "note": "Anchor shifts from deficit to debt/GDP",
+    "provenanceRef": "P-13"
+   }
+  ],
+  "notes": "FY25 is Revised Estimate; FY26 is target."
+ },
+ {
+  "id": "forex-reserves",
+  "title": "Foreign exchange reserves, end of fiscal year",
+  "unit": "US$ billion",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "RBI weekly statistical supplement",
+   "url": "https://rbi.org.in/"
   },
-  {
-    "id": "gdp-per-capita-usd",
-    "title": "GDP per capita, current US$ (peer panel)",
-    "unit": "US$",
-    "domain": "macro",
-    "tier": "T2",
-    "source": { "name": "World Bank WDI — vintage to be pinned at panel pull", "url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD" },
-    "calendar": "CY",
-    "points": [
-      { "country": "IND", "period": "2014", "value": 1560, "status": "approx", "note": "All panel values pending single-vintage WDI pull; see P-09" },
-      { "country": "CHN", "period": "2014", "value": 7600, "status": "approx" },
-      { "country": "IDN", "period": "2014", "value": 3500, "status": "approx" },
-      { "country": "VNM", "period": "2014", "value": 2050, "status": "approx", "note": "Pre-rebasing vintage figure; post-2021 rebasing WDI shows higher — vintage matters, see P-09" },
-      { "country": "BGD", "period": "2014", "value": 1100, "status": "approx" }
-    ],
-    "provenanceRefs": ["P-09"]
-  }
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 292.0,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 304.2,
+    "status": "verified",
+    "note": "Verified against Economic Survey 2013-14 this cycle"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 342,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 360,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 370,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 424,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 413,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 478,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 577,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 607,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 578,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 646,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 668,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 695,
+    "status": "approx"
+   }
+  ],
+  "notes": "All-time high US$704.885bn in the week ending 27 Sept 2024 — a weekly peak, not a fiscal-year-end value."
+ },
+ {
+  "id": "gdp-growth-2022-base",
+  "title": "Real GDP growth, 2022-23 base series (third regime)",
+  "unit": "% y/y",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI Press Note, 27 Feb 2026",
+   "url": "https://www.mospi.gov.in/uploads/latestReleases/latest_release_1772189865181_f040336d-bc57-4aed-b80f-586d9ccb279e_Press_Note_on_New_Series_of_GDP_Estimates_with_Base_Year_2022-23_27022026.pdf",
+   "vintage": "2026-07-30"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2023-24",
+    "note": "New series begins; FY24 and FY25 have two valid growth figures until the spliced back-series is published",
+    "provenanceRef": "P-10"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 7.2,
+    "status": "verified",
+    "note": "Was 8.2 on 2011-12 base"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 7.1,
+    "status": "verified",
+    "note": "Was 6.5 on 2011-12 base"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 7.6,
+    "status": "approx",
+    "note": "Second Advance Estimate"
+   }
+  ],
+  "provenanceRefs": [
+   "P-10"
+  ]
+ },
+ {
+  "id": "gdp-growth-new-base",
+  "title": "Real GDP growth, 2011-12 base series",
+  "unit": "% y/y",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI/NSO",
+   "url": "https://mospi.gov.in/"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2013-14",
+    "note": "Series begins; FY14 reads 4.7 on the old 2004-05 base",
+    "provenanceRef": "P-01"
+   },
+   {
+    "period": "FY2023-24",
+    "note": "Superseded by 2022-23 base from Feb 2026",
+    "provenanceRef": "P-10"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 6.9,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 7.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 8.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 8.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 6.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 6.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 3.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": -5.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 9.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 7.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 8.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 6.5,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-01",
+   "P-10"
+  ],
+  "notes": "FY2020-21 contraction reported between -5.8 and -6.6 across revisions."
+ },
+ {
+  "id": "gdp-growth-old-base",
+  "title": "Real GDP growth, 2004-05 base series (as contemporaneously reported)",
+  "unit": "% y/y",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "CSO/MoSPI (old series)",
+   "url": "https://mospi.gov.in/"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2013-14",
+    "note": "Series discontinued at base revision; do not splice with new base",
+    "provenanceRef": "P-01"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2007-08",
+    "value": 9.3,
+    "status": "approx",
+    "note": "Boom peak, old series"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 4.7,
+    "status": "verified",
+    "note": "Provisional; advance estimate was 4.9"
+   }
+  ],
+  "provenanceRefs": [
+   "P-01"
+  ]
+ },
+ {
+  "id": "gdp-per-capita-usd",
+  "title": "GDP per capita, current US$",
+  "unit": "US$",
+  "domain": "macro",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-07-30"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 1094.5,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 2593.4,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 7781.1,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 13293.1,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 3441.1,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 4925.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 1553.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 2592.0,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 2546.4,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 4716.7,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09",
+   "P-14"
+  ],
+  "notes": "Single-vintage pull. India's WDI years are fiscal-year labelled — see P-14."
+ },
+ {
+  "id": "genl-govt-debt",
+  "title": "General government debt (Centre + states)",
+  "unit": "% of GDP",
+  "domain": "macro",
+  "tier": "T2",
+  "source": {
+   "name": "IMF WEO",
+   "url": "https://www.imf.org/en/Publications/WEO"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 67,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 69,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 68,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 70,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 70,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 75,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 89,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 85,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 81,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 82,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 84.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 82,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-10",
+   "P-13"
+  ],
+  "notes": "IMF 84.8% for 2024. P-10's lower GDP denominator raises this ratio without new borrowing."
+ },
+ {
+  "id": "genl-govt-debt-peer",
+  "title": "General government gross debt (peer panel)",
+  "unit": "% of GDP",
+  "domain": "macro",
+  "tier": "T2",
+  "source": {
+   "name": "IMF WEO",
+   "url": "https://www.imf.org/en/Publications/WEO",
+   "vintage": "2026-07-30"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 67.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 84.8,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 28.7,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 41.0,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 43.6,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 33.8,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 24.6,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 40.2,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 39.3,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 90.4,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09"
+  ],
+  "notes": "Vietnam's IMF figure (33.8%) differs from its national definition (~31.8%) — definitional, not an error."
+ },
+ {
+  "id": "gfcf-gdp",
+  "title": "Gross fixed capital formation",
+  "unit": "% of GDP",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI/NSO",
+   "url": "https://mospi.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 33,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 32,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 31,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 31,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 32,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 31,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 28,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 29,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 30,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 30,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 30,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 30,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-10"
+  ],
+  "notes": "Late-2000s peak was ~36-38%. Recovery has not restored the pre-2011 investment rate."
+ },
+ {
+  "id": "inr-usd",
+  "title": "Rupee per US dollar, annual average",
+  "unit": "₹/US$",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "RBI",
+   "url": "https://rbi.org.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 61,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 65,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 67,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 64,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 70,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 71,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 74,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 75,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 80,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 83,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 84.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 87,
+    "status": "approx"
+   }
+  ],
+  "notes": "Baseline: record 68.85 on 28 Aug 2013 during the taper tantrum was an intraday low; by 2025-26 the average sits well past it."
+ },
+ {
+  "id": "manufacturing-gdp",
+  "title": "Manufacturing value added",
+  "unit": "% of GDP",
+  "domain": "macro",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-07-30"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 15.07,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 13.14,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 16.61,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 21.89,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 20.37,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 24.33,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 21.08,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 18.98,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 29.83,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 24.84,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09",
+   "P-14"
+  ],
+  "notes": "Single-vintage pull. India's WDI years are fiscal-year labelled — see P-14."
+ },
+ {
+  "id": "nominal-gdp",
+  "title": "Nominal GDP",
+  "unit": "₹ lakh crore",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI/NSO",
+   "url": "https://mospi.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 124.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 137.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 153.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 170.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 189.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 201.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 198.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 234.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 269.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 295.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 331.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 356.0,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-10"
+  ],
+  "notes": "2022-23 rebasing lowers the level ~3-4%; all ratios-to-GDP inherit this."
+ },
+ {
+  "id": "poverty-tendulkar",
+  "title": "Poverty headcount, Tendulkar methodology",
+  "unit": "% of population",
+  "domain": "poverty",
+  "tier": "T1",
+  "source": {
+   "name": "Planning Commission press note, 22 Jul 2013",
+   "url": "https://pib.gov.in/"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2011-12",
+    "note": "Last official consumption-based estimate; 2017-18 survey withheld",
+    "provenanceRef": "P-03"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2004-05",
+    "value": 37.2,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2009-10",
+    "value": 29.8,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 21.9,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-03"
+  ]
+ }
 ]

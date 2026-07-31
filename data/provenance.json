@@ -1,129 +1,352 @@
 [
-  {
-    "id": "P-01",
-    "title": "GDP base-year revision (2015) and the contested back-series",
-    "whatChanged": "CSO moved the GDP base year from 2004-05 to 2011-12 in January 2015, adopting GVA and SNA 2008 methodology with MCA-21 corporate data. FY2013-14 growth reads 4.7% on the old base but 6.9% on the new. Two conflicting back-series followed in 2018: the NSC Mundle committee version (higher UPA growth, double-digit peaks) and the CSO/NITI Aayog version (lower UPA growth). Arvind Subramanian (2019) argued 2011-17 growth was overstated by ~2.5pp.",
-    "when": "2015-01, back-series disputes 2018-2019",
-    "affectsDomains": ["macro"],
-    "affectsSeries": ["gdp-growth-old-base", "gdp-growth-new-base"],
-    "directionOfBias": "disputed",
-    "bridgeExists": false,
-    "bridgeNote": "No accepted reconciliation. Instrument policy: carry both series with a visible seam; never splice.",
-    "competingAccounts": [
-      { "holder": "CSO/NITI Aayog (Nov 2018)", "position": "Back-series lowers UPA-era growth; official position" },
-      { "holder": "NSC Mundle committee (Jul 2018)", "position": "Back-series shows higher UPA growth incl. double-digit years; shelved as 'experimental'" },
-      { "holder": "Arvind Subramanian (Jun 2019, Harvard CID)", "position": "Post-2011 growth overstated ~2.5pp; actual ~4.5% vs official ~7% for 2011-17" },
-      { "holder": "PM Economic Advisory Council (Jun 2019)", "position": "Subramanian critique cherry-picked, not statistically robust" }
-    ],
-    "sources": [
-      { "name": "MoSPI base-year revision documentation", "url": "https://mospi.gov.in/", "tier": "T1" },
-      { "name": "Subramanian, 'India's GDP Mis-estimation' (CID WP 354)", "url": "https://www.hks.harvard.edu/centers/cid/publications", "tier": "T3" }
-    ]
-  },
-  {
-    "id": "P-02",
-    "title": "EUS to PLFS employment survey transition",
-    "whatChanged": "NSSO Employment-Unemployment Survey (quinquennial, last round 2011-12) replaced by Periodic Labour Force Survey from 2017-18, with changed sampling design and stratification. Pre/post employment comparisons are methodologically contested; no official bridge estimates exist.",
-    "when": "2017-18",
-    "affectsDomains": ["employment"],
-    "affectsSeries": ["lfpr-overall", "lfpr-female-urban"],
-    "directionOfBias": "disputed",
-    "bridgeExists": false,
-    "sources": [
-      { "name": "MoSPI PLFS documentation", "url": "https://mospi.gov.in/", "tier": "T1" }
-    ]
-  },
-  {
-    "id": "P-03",
-    "title": "Withheld 2017-18 Consumer Expenditure Survey",
-    "whatChanged": "The NSS 2017-18 Household Consumer Expenditure Survey was not released after leaked results indicated declining rural consumption; the government cited data-quality issues. Result: no official consumption-based poverty estimate after 2011-12 until the 2022-23 HCES (itself on a changed methodology).",
-    "when": "2019-11 (withholding)",
-    "affectsDomains": ["poverty"],
-    "affectsSeries": ["poverty-tendulkar"],
-    "directionOfBias": "obscures",
-    "bridgeExists": false,
-    "bridgeNote": "2022-23 HCES uses a modified questionnaire and imputation approach; not comparable with 2011-12 without contested adjustments.",
-    "sources": [
-      { "name": "MoSPI statement on CES 2017-18", "url": "https://mospi.gov.in/", "tier": "T1" }
-    ]
-  },
-  {
-    "id": "P-04",
-    "title": "Census 2021 not conducted",
-    "whatChanged": "The decennial census due 2021 was postponed (COVID cited) and has not been conducted as of the project's last update. Every per-capita and rate-based indicator after 2011 rests on population projections, with error compounding over time.",
-    "when": "2021 onward",
-    "affectsDomains": ["all"],
-    "directionOfBias": "degrades-precision",
-    "bridgeExists": false,
-    "sources": [
-      { "name": "ORGI census notifications", "url": "https://censusindia.gov.in/", "tier": "T1" }
-    ]
-  },
-  {
-    "id": "P-05",
-    "title": "WPI-to-CPI inflation regime change",
-    "whatChanged": "Headline inflation reference shifted from WPI to CPI (combined) around 2013-14; formal CPI inflation targeting (4% +/-2%) adopted 2016 via amended RBI Act. Long-run inflation narratives spanning the change must state which index they use.",
-    "when": "2013-2016",
-    "affectsDomains": ["macro"],
-    "affectsSeries": ["cpi-inflation"],
-    "directionOfBias": "degrades-precision",
-    "bridgeExists": true,
-    "bridgeNote": "Both indices continue to be published; the break is interpretive, not a data gap.",
-    "sources": [
-      { "name": "RBI monetary policy framework agreement", "url": "https://www.rbi.org.in/", "tier": "T1" }
-    ]
-  },
-  {
-    "id": "P-06",
-    "title": "Off-budget borrowing and fiscal accounting",
-    "whatChanged": "Off-budget devices (FCI food-subsidy bonds, NSSF loans to public entities) understate the headline fiscal deficit in both eras. CAG flagged the practice; a partial clean-up brought FCI dues on-budget in FY2020-21, creating a one-year spike that is an accounting artefact, not a spending surge.",
-    "when": "Both eras; clean-up 2021-02",
-    "affectsDomains": ["macro"],
-    "affectsSeries": ["fiscal-deficit"],
-    "directionOfBias": "disputed",
-    "bridgeExists": true,
-    "bridgeNote": "CAG and budget documents allow partial reconstruction of extended deficit measures.",
-    "sources": [
-      { "name": "Union Budget 2021-22 documents", "url": "https://www.indiabudget.gov.in/", "tier": "T1" }
-    ]
-  },
-  {
-    "id": "P-07",
-    "title": "NCRB reporting changes and communal-violence data gaps",
-    "whatChanged": "NCRB definitional and tabulation changes across editions, plus discontinuation/re-housing of communal-violence reporting between MHA and NCRB, complicate crime and communal-incident trend analysis across 2014.",
-    "when": "Various, 2014 onward",
-    "affectsDomains": ["governance"],
-    "directionOfBias": "degrades-precision",
-    "bridgeExists": false,
-    "sources": [
-      { "name": "NCRB Crime in India editions", "url": "https://ncrb.gov.in/", "tier": "T1" }
-    ]
-  },
-  {
-    "id": "P-08",
-    "title": "Contested governance indices (RSF, Freedom House, V-Dem)",
-    "whatChanged": "Third-party democracy/press indices carry their own methodology disputes and periodic recalibrations. Baseline readings circa 2014: RSF rank ~140 (score ~40.3); Freedom House 'Free' (downgrade to 'Partly Free' came 2021); V-Dem liberal-democracy scores higher pre-2014. Recorded as readings, not settled facts; the government contests their methods.",
-    "when": "Continuous",
-    "affectsDomains": ["governance"],
-    "directionOfBias": "disputed",
-    "bridgeExists": false,
-    "sources": [
-      { "name": "RSF World Press Freedom Index archive", "url": "https://rsf.org/en/index", "tier": "T5" },
-      { "name": "V-Dem dataset", "url": "https://v-dem.net/", "tier": "T5" }
-    ]
-  },
-  {
-    "id": "P-09",
-    "title": "Peer-country GDP rebasings and WDI vintage drift",
-    "whatChanged": "Comparator countries revised their own national accounts inside the study window: Vietnam's 2021 rebasing lifted GDP levels ~25%; Bangladesh rebased to 2015-16 with a similar upward level shift. World Bank WDI back-propagates these, so the same query on different dates returns different histories. The peer panel must be pinned to a single WDI vintage, recorded in every series' source.vintage field.",
-    "when": "Bangladesh 2021, Vietnam 2021 (rebasing releases)",
-    "affectsDomains": ["macro"],
-    "affectsSeries": ["gdp-per-capita-usd"],
-    "directionOfBias": "degrades-precision",
-    "bridgeExists": true,
-    "bridgeNote": "Pin one WDI vintage for the whole panel; re-pull the entire panel, never one country, when refreshing.",
-    "sources": [
-      { "name": "World Bank WDI", "url": "https://data.worldbank.org/", "tier": "T2" }
-    ]
-  }
+ {
+  "id": "P-01",
+  "title": "GDP base-year revision (2015) and the contested back-series",
+  "whatChanged": "CSO moved the GDP base year from 2004-05 to 2011-12 in January 2015, adopting GVA and SNA 2008 methodology with MCA-21 corporate data. FY2013-14 growth reads 4.7% on the old base but 6.9% on the new. Two conflicting back-series followed in 2018: the NSC Mundle committee version (higher UPA growth, double-digit peaks) and the CSO/NITI Aayog version (lower UPA growth). Arvind Subramanian (2019) argued 2011-17 growth was overstated by ~2.5pp.",
+  "when": "2015-01, back-series disputes 2018-2019",
+  "affectsDomains": [
+   "macro"
+  ],
+  "affectsSeries": [
+   "gdp-growth-old-base",
+   "gdp-growth-new-base"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "bridgeNote": "No accepted reconciliation. Instrument policy: carry both series with a visible seam; never splice.",
+  "competingAccounts": [
+   {
+    "holder": "CSO/NITI Aayog (Nov 2018)",
+    "position": "Back-series lowers UPA-era growth; official position"
+   },
+   {
+    "holder": "NSC Mundle committee (Jul 2018)",
+    "position": "Back-series shows higher UPA growth incl. double-digit years; shelved as 'experimental'"
+   },
+   {
+    "holder": "Arvind Subramanian (Jun 2019, Harvard CID)",
+    "position": "Post-2011 growth overstated ~2.5pp; actual ~4.5% vs official ~7% for 2011-17"
+   },
+   {
+    "holder": "PM Economic Advisory Council (Jun 2019)",
+    "position": "Subramanian critique cherry-picked, not statistically robust"
+   }
+  ],
+  "sources": [
+   {
+    "name": "MoSPI base-year revision documentation",
+    "url": "https://mospi.gov.in/",
+    "tier": "T1"
+   },
+   {
+    "name": "Subramanian, 'India's GDP Mis-estimation' (CID WP 354)",
+    "url": "https://www.hks.harvard.edu/centers/cid/publications",
+    "tier": "T3"
+   }
+  ]
+ },
+ {
+  "id": "P-02",
+  "title": "EUS to PLFS employment survey transition",
+  "whatChanged": "NSSO Employment-Unemployment Survey (quinquennial, last round 2011-12) replaced by Periodic Labour Force Survey from 2017-18, with changed sampling design and stratification. Pre/post employment comparisons are methodologically contested; no official bridge estimates exist.",
+  "when": "2017-18",
+  "affectsDomains": [
+   "employment"
+  ],
+  "affectsSeries": [
+   "lfpr-overall",
+   "lfpr-female-urban"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "sources": [
+   {
+    "name": "MoSPI PLFS documentation",
+    "url": "https://mospi.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-03",
+  "title": "Withheld 2017-18 Consumer Expenditure Survey",
+  "whatChanged": "The NSS 2017-18 Household Consumer Expenditure Survey was not released after leaked results indicated declining rural consumption; the government cited data-quality issues. Result: no official consumption-based poverty estimate after 2011-12 until the 2022-23 HCES (itself on a changed methodology).",
+  "when": "2019-11 (withholding)",
+  "affectsDomains": [
+   "poverty"
+  ],
+  "affectsSeries": [
+   "poverty-tendulkar"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "2022-23 HCES uses a modified questionnaire and imputation approach; not comparable with 2011-12 without contested adjustments.",
+  "sources": [
+   {
+    "name": "MoSPI statement on CES 2017-18",
+    "url": "https://mospi.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-04",
+  "title": "Census 2021 not conducted",
+  "whatChanged": "The decennial census due 2021 was postponed (COVID cited) and has not been conducted as of the project's last update. Every per-capita and rate-based indicator after 2011 rests on population projections, with error compounding over time.",
+  "when": "2021 onward",
+  "affectsDomains": [
+   "all"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "sources": [
+   {
+    "name": "ORGI census notifications",
+    "url": "https://censusindia.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-05",
+  "title": "WPI-to-CPI inflation regime change",
+  "whatChanged": "Headline inflation reference shifted from WPI to CPI (combined) around 2013-14; formal CPI inflation targeting (4% +/-2%) adopted 2016 via amended RBI Act. Long-run inflation narratives spanning the change must state which index they use.",
+  "when": "2013-2016",
+  "affectsDomains": [
+   "macro"
+  ],
+  "affectsSeries": [
+   "cpi-inflation"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": true,
+  "bridgeNote": "Both indices continue to be published; the break is interpretive, not a data gap.",
+  "sources": [
+   {
+    "name": "RBI monetary policy framework agreement",
+    "url": "https://www.rbi.org.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-06",
+  "title": "Off-budget borrowing and fiscal accounting",
+  "whatChanged": "Off-budget devices (FCI food-subsidy bonds, NSSF loans to public entities) understate the headline fiscal deficit in both eras. CAG flagged the practice; a partial clean-up brought FCI dues on-budget in FY2020-21, creating a one-year spike that is an accounting artefact, not a spending surge.",
+  "when": "Both eras; clean-up 2021-02",
+  "affectsDomains": [
+   "macro"
+  ],
+  "affectsSeries": [
+   "fiscal-deficit"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": true,
+  "bridgeNote": "CAG and budget documents allow partial reconstruction of extended deficit measures.",
+  "sources": [
+   {
+    "name": "Union Budget 2021-22 documents",
+    "url": "https://www.indiabudget.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-07",
+  "title": "NCRB reporting changes and communal-violence data gaps",
+  "whatChanged": "NCRB definitional and tabulation changes across editions, plus discontinuation/re-housing of communal-violence reporting between MHA and NCRB, complicate crime and communal-incident trend analysis across 2014.",
+  "when": "Various, 2014 onward",
+  "affectsDomains": [
+   "governance"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "sources": [
+   {
+    "name": "NCRB Crime in India editions",
+    "url": "https://ncrb.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-08",
+  "title": "Contested governance indices (RSF, Freedom House, V-Dem)",
+  "whatChanged": "Third-party democracy/press indices carry their own methodology disputes and periodic recalibrations. Baseline readings circa 2014: RSF rank ~140 (score ~40.3); Freedom House 'Free' (downgrade to 'Partly Free' came 2021); V-Dem liberal-democracy scores higher pre-2014. Recorded as readings, not settled facts; the government contests their methods.",
+  "when": "Continuous",
+  "affectsDomains": [
+   "governance"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "sources": [
+   {
+    "name": "RSF World Press Freedom Index archive",
+    "url": "https://rsf.org/en/index",
+    "tier": "T5"
+   },
+   {
+    "name": "V-Dem dataset",
+    "url": "https://v-dem.net/",
+    "tier": "T5"
+   }
+  ]
+ },
+ {
+  "id": "P-09",
+  "title": "Peer-country GDP rebasings and WDI vintage drift",
+  "whatChanged": "Comparator countries revised their own national accounts inside the study window: Vietnam's 2021 rebasing lifted GDP levels ~25%; Bangladesh rebased to 2015-16 with a similar upward level shift. World Bank WDI back-propagates these, so the same query on different dates returns different histories. The peer panel must be pinned to a single WDI vintage, recorded in every series' source.vintage field.",
+  "when": "Bangladesh 2021, Vietnam 2021 (rebasing releases)",
+  "affectsDomains": [
+   "macro"
+  ],
+  "affectsSeries": [
+   "gdp-per-capita-usd"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": true,
+  "bridgeNote": "Pin one WDI vintage for the whole panel; re-pull the entire panel, never one country, when refreshing.",
+  "sources": [
+   {
+    "name": "World Bank WDI",
+    "url": "https://data.worldbank.org/",
+    "tier": "T2"
+   }
+  ]
+ },
+ {
+  "id": "P-10",
+  "title": "Third GDP base-year revision to 2022-23 (released 27 February 2026)",
+  "whatChanged": "MoSPI released a new national accounts series rebased from 2011-12 to 2022-23, adopting double deflation, a Supply-Use Table framework, and new source data (GST returns, PLFS, ASUSE). It revised recent real growth UP (FY24 8.2% to 7.2%, FY25 6.5% to 7.1%, FY26 estimated 7.6%) while lowering the LEVEL of nominal GDP by roughly 3-4%. The level cut mechanically RAISES every ratio-to-GDP in the project — deficit, debt, exports, GFCF, tax — without any change in underlying activity. Advisory body: ACNAS, chaired by Prof. Biswanath Goldar. 'Sources and Methods' documentation due August 2026.",
+  "when": "2026-02-27",
+  "affectsDomains": [
+   "macro",
+   "banking",
+   "foreign"
+  ],
+  "affectsSeries": [
+   "gdp-growth-new-base",
+   "gdp-growth-2022-base",
+   "fiscal-deficit",
+   "genl-govt-debt",
+   "exports-gdp",
+   "gfcf-gdp"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "bridgeNote": "Back-series to be spliced at disaggregated level; not yet published. Until it is, FY24 and FY25 have two valid growth figures and every ratio-to-GDP has two valid denominators. Instrument policy: THREE regimes, never one line.",
+  "competingAccounts": [
+   {
+    "holder": "MoSPI",
+    "position": "Routine decadal rebasing to a recent normal post-COVID year; methodologically superior (double deflation, SUT, GST-based data)"
+   },
+   {
+    "holder": "Sceptical reading",
+    "position": "A rebasing that simultaneously raises growth and lowers the level arrives conveniently; the absence of published Sources and Methods until Aug 2026 makes independent verification impossible in the interim"
+   }
+  ],
+  "sources": [
+   {
+    "name": "MoSPI Press Note on New Series of GDP Estimates, base 2022-23",
+    "url": "https://www.mospi.gov.in/uploads/latestReleases/latest_release_1772189865181_f040336d-bc57-4aed-b80f-586d9ccb279e_Press_Note_on_New_Series_of_GDP_Estimates_with_Base_Year_2022-23_27022026.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "PIB release on the 2022-23 series",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2233518&reg=48&lang=2",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Supersedes the project's original two-regime assumption. CLAUDE.md rule 5 must be amended from 'both GDP series' to 'all three regimes'."
+ },
+ {
+  "id": "P-11",
+  "title": "CPI base revision to 2024 (new series from February 2026)",
+  "whatChanged": "A new CPI series with base year 2024 was introduced, with weights redrawn from the Household Consumption Expenditure Survey and a higher non-food weight. Since food inflation drove most headline breaches in 2020 and 2022-23, a lower food weight mechanically dampens future headline volatility relative to the old basket — meaning post-2026 inflation performance is not directly comparable with the 2014-2025 record on which the inflation-targeting verdict rests.",
+  "when": "2026-02",
+  "affectsDomains": [
+   "macro"
+  ],
+  "affectsSeries": [
+   "cpi-inflation"
+  ],
+  "directionOfBias": "understates-post-2014",
+  "bridgeExists": false,
+  "bridgeNote": "Weight-effect decomposition would be needed to compare like with like across the break.",
+  "sources": [
+   {
+    "name": "MoSPI base revision announcements",
+    "url": "https://utkarsh.com/current-affairs/national/economy-update/mospi-revises-base-year-for-gdp-cpi-and-iip-series",
+    "tier": "T4"
+   }
+  ],
+  "notes": "Tier-4 sourcing pending a T1 MoSPI press note pull. Flagged in the open verification queue."
+ },
+ {
+  "id": "P-12",
+  "title": "IIP and WPI base revisions; new Producer Price Index",
+  "whatChanged": "IIP rebasing to 2022-23 (due around May 2026), a WPI revision in progress, and a planned Producer Price Index. Industrial-production and wholesale-price series will break at these points.",
+  "when": "2026 (in progress)",
+  "affectsDomains": [
+   "macro"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "sources": [
+   {
+    "name": "MoSPI base revision announcements",
+    "url": "https://utkarsh.com/current-affairs/national/economy-update/mospi-revises-base-year-for-gdp-cpi-and-iip-series",
+    "tier": "T4"
+   }
+  ]
+ },
+ {
+  "id": "P-13",
+  "title": "Fiscal anchor changes from deficit to debt (from FY2026-27)",
+  "whatChanged": "From FY27 the Centre shifts its operational fiscal anchor from the annual fiscal-deficit ratio to a debt-to-GDP target (central debt ~56.1% in FY26, glide to 50%±1% by FY31). Fiscal performance before and after FY27 is therefore benchmarked against different objectives. Compounding: P-10 lowered the GDP denominator by 3-4%, which raises measured debt/GDP without any change in borrowing.",
+  "when": "2026-04 (FY27 onward)",
+  "affectsDomains": [
+   "macro"
+  ],
+  "affectsSeries": [
+   "fiscal-deficit",
+   "genl-govt-debt"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": true,
+  "bridgeNote": "Both measures remain computable; the break is in what counts as success, not in the data.",
+  "sources": [
+   {
+    "name": "Union Budget documents",
+    "url": "https://www.indiabudget.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-14",
+  "title": "World Bank WDI fiscal-year labelling for India versus calendar years for peers",
+  "whatChanged": "WDI labels India's fiscal-year observations by the starting calendar year, so WDI '2014' for India corresponds to FY2014-15 (Apr 2014-Mar 2015), while '2014' for Bangladesh, Vietnam, Indonesia and China is a different period basis. Peer comparisons drawn straight from WDI therefore compare India's FY with peers' CY, offset by up to nine months — material when a shock (2020 COVID, 2022 commodity spike) lands mid-year. This also explains the apparent conflict between the Phase 1 exports figure (25.4% of GDP, FY2013-14, T1) and WDI's 22.97% for '2014': they are different periods, not contradictory sources.",
+  "when": "Structural, all WDI pulls",
+  "affectsDomains": [
+   "macro",
+   "foreign"
+  ],
+  "affectsSeries": [
+   "exports-gdp",
+   "gdp-per-capita-usd",
+   "manufacturing-gdp"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": true,
+  "bridgeNote": "State the period basis on every peer chart; never present an India WDI year and a peer WDI year as the same period without the offset noted. VERIFY the WDI India labelling convention against WDI documentation before relying on this record.",
+  "sources": [
+   {
+    "name": "World Bank WDI",
+    "url": "https://data.worldbank.org/indicator/NE.EXP.GNFS.ZS",
+    "tier": "T2"
+   }
+  ],
+  "notes": "Discovered while reconciling Phase 1 and Phase 2 export figures. Convention stated from general knowledge — flagged for primary verification."
+ }
 ]

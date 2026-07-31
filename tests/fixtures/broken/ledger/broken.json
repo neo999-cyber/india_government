@@ -42,6 +42,32 @@
     "asOf": "2026-07-30"
   },
   {
+    "id": "L-9005",
+    "title": "Stray non-Latin script in English prose",
+    "date": "2016-11",
+    "term": "T1",
+    "domains": ["macro"],
+    "type": "reform",
+    "summary": "Schema validation is perfectly happy with this record: every field is a string of the right shape. The word прогресс sits in the middle of it, and only a character sweep will say so.",
+    "assessment": "too-early",
+    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }],
+    "confidence": "low",
+    "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-9006",
+    "title": "Invisible character and a lookalike domain",
+    "date": "2016-11",
+    "term": "T1",
+    "domains": ["macro"],
+    "type": "reform",
+    "summary": "This summary carries a zero-width space between these two​words, which no review by eye will ever catch. The source URL below uses a Cyrillic character in the hostname.",
+    "assessment": "too-early",
+    "sources": [{ "name": "Lookalike of a real ministry domain", "url": "https://mospi.gov.іn/", "tier": "T1" }],
+    "confidence": "low",
+    "asOf": "2026-07-30"
+  },
+  {
     "id": "L-9004",
     "title": "Scored without both cases stated",
     "date": "2016-11",

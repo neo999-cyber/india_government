@@ -102,6 +102,16 @@
     "points": [{ "country": "IND", "period": "FY2013-14", "value": 4.7, "status": "verified" }]
   },
   {
+    "id": "homoglyph-unit",
+    "title": "Unit written with Greek mu instead of the micro sign",
+    "unit": "μg/m³",
+    "domain": "environment",
+    "tier": "T2",
+    "source": { "name": "Nowhere", "url": "https://example.org/" },
+    "calendar": "CY",
+    "points": [{ "country": "IND", "period": "2014", "value": 153, "status": "approx", "note": "Level rose 40→60 over the decade" }]
+  },
+  {
     "id": "no-backlink-series",
     "title": "Series named by a dispute record but not linking back",
     "unit": "%",
