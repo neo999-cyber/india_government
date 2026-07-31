@@ -14,6 +14,10 @@
   --rule-strong: #c3bdb1;
   --alert: #a4161a;
   --alert-soft: #f6ebea;
+  /* Denominator shifts are not alerts. Umber, so a restated denominator can never be
+     mistaken for a break-seam at a glance. */
+  --shift: #7a5c1e;
+  --shift-soft: #f7f1e2;
 
   --font-sans: ui-sans-serif, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
@@ -262,6 +266,58 @@ tr th:last-child {
 
 .seam a {
   color: var(--alert);
+}
+
+/* --- denominator break: the series did not change, its denominator did ----
+ * Deliberately unlike the seam. A seam is a solid red stop: do not splice.
+ * This is a dashed umber band: the line may continue, but the values either
+ * side are divided by different things. Red stays reserved for the seam.
+ */
+
+.denominator-break td {
+  border-top: 1px dashed var(--shift);
+  border-bottom: 1px dashed var(--shift);
+  background: var(--shift-soft);
+  padding: 0.4rem 0.5rem;
+  color: var(--shift);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.denominator-break a {
+  color: var(--shift);
+}
+
+.denominator-gloss {
+  display: block;
+  margin-top: 0.25rem;
+  max-width: var(--measure);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+}
+
+/* Same dashed umber band as the in-table mark, so the callout and the row that
+   triggered it read as one language rather than two. */
+.denominator-callout {
+  border-top: 1px dashed var(--shift);
+  border-bottom: 1px dashed var(--shift);
+  background: var(--shift-soft);
+  padding: 0.6rem 0.85rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.denominator-callout .label {
+  color: var(--shift);
+  margin-bottom: 0.3rem;
+}
+
+.denominator-callout p {
+  margin: 0;
+  max-width: var(--measure);
+  font-size: 0.875rem;
+  color: var(--ink-soft);
 }
 
 /* --- status marks (rule 3: approx and pending are visually distinct) ----- */

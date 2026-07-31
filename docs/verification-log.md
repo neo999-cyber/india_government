@@ -28,3 +28,58 @@
 1. `status: verified` only when pinned to a named primary/institutional source **in a logged cycle** with URL. Report-derived figures stay `approx`.
 2. WDI panel pulls: whole panel at once, one vintage, date recorded in `source.vintage`. Never refresh one country alone (P-09).
 3. Corrections propagate: when a verified value contradicts phase-1 report prose (as solar 2.82 did), the series file wins and the discrepancy is noted here.
+
+---
+
+# Verification log — cycle 2026-07-30 (Phase 2, macro/fiscal)
+
+## Contract change required
+**The project assumed two GDP regimes. There are now three.** MoSPI released a 2022-23 base series on 27 Feb 2026 (P-10). CLAUDE.md rule 5 currently reads "Both GDP series always" — it must become "all three regimes". FY24 and FY25 now have two valid growth figures each (FY24: 8.2 / 7.2; FY25: 6.5 / 7.1) and no spliced back-series exists yet. Sources and Methods documentation is due August 2026 — a re-baselining trigger.
+
+The rebasing also lowered the *level* of nominal GDP by 3-4%, which mechanically raises every ratio-to-GDP in the project (deficit, debt, exports, GFCF, tax) with no change in underlying activity. Any chart of those ratios spanning Feb 2026 must carry the denominator break.
+
+## New provenance records
+P-10 third GDP rebasing · P-11 CPI base revision to 2024 · P-12 IIP/WPI revisions and new PPI · P-13 fiscal anchor shifts from deficit to debt (FY27) · P-14 WDI fiscal-year labelling for India vs calendar years for peers.
+
+## Reconciliation resolved
+Phase 1 recorded exports at **25.4% of GDP (FY2013-14, T1)**; Phase 2's WDI pull gives **22.97% for "2014"**. Not a contradiction — different period bases (P-14). WDI labels India's fiscal years by starting year. **This convention is stated from general knowledge and must be verified against WDI documentation before the peer views ship.**
+
+## Status discipline applied
+Only three points marked `verified` this cycle (the two 2022-23 base growth figures and the FY14 new-base figure, all from the MoSPI press note). Everything else in the FY15-FY26 macro table is `approx` — the Phase 2 report itself flags that several inflation, reserves and rupee cells are T2-derived. They must be replaced with exact T1 RBI/CGA annual series before any published view.
+
+## Corrections applied by the code session (2026-07-30)
+
+Both were blocking the build; neither changes a claim.
+
+| Record | Change | Why |
+|---|---|---|
+| `exports-gdp` | added `P-10` to `provenanceRefs` | P-10 already named it in `affectsSeries`, so the link was one-directional and the `back-link` rule failed. **Left for chat:** exports-gdp is a WDI pull, so its denominator is WDI's and picks up the MoSPI rebasing on WDI's vintage schedule, not on 27 Feb 2026. Noted in the series `notes`; if that makes the P-10 link wrong, the fix belongs in `P-10.affectsSeries`, not here |
+| `P-10.whatChanged` | `8.2%→7.2%` rendered as `8.2% to 7.2%` (two occurrences) | the new character sweep rejects `→` (U+2192); wording and figures unchanged |
+
+## Open question for the next research session
+
+`cad-gdp` is `% of GDP`, spans 27 Feb 2026, and carries no `P-10`, so it now raises a
+`denominator-break` warning. The other four ratio series (`fiscal-deficit`,
+`genl-govt-debt`, `exports-gdp`, `gfcf-gdp`) all declare it. Either the current-account
+ratio rests on the restated denominator — in which case it needs the link, so the step
+renders — or it is computed on a different denominator (RBI BoP tables use their own), in
+which case that belongs in `notes`. Not resolved here: it is a research call.
+
+## Character sweep introduced
+
+`npm run validate` now reads every string in every record and rejects non-Latin script,
+invisible characters, non-ASCII URLs, and symbols outside the allowlist. **No Cyrillic was
+found in the phase-2 drop** — the sweep was clean on `/data` apart from the `→` above. The
+Cyrillic case is covered by a fixture (`tests/fixtures/broken/ledger/broken.json`, L-9005)
+so the rule cannot silently regress.
+
+## Open queue additions
+| Figure | Pin against | Priority |
+|---|---|---|
+| CPI annual averages FY15-FY26 | RBI Handbook of Statistics | High |
+| Fiscal deficit FY15-FY26 actuals | CGA monthly accounts / Budget at a Glance | High |
+| Forex reserves FY-end series | RBI Weekly Statistical Supplement | Medium |
+| ₹/US$ annual averages | RBI reference rate archive | Medium |
+| GFCF % GDP FY15-FY26 | MoSPI national accounts | High |
+| WDI India FY-labelling convention | WDI metadata documentation | High — P-14 depends on it |
+| Oil windfall: exchequer vs consumer split | CGA petroleum excise series FY15-FY22 | High — flagged as the period's most under-reported fiscal story |

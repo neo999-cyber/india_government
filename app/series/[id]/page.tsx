@@ -8,8 +8,9 @@ import {
   series as allSeries,
 } from '@/lib/data';
 import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
-import { pairFor } from '@/lib/rules';
+import { denominatorBreaksFor, regimeFor, regimeNeighbours } from '@/lib/rules';
 import { SeriesTable } from '@/components/SeriesTable';
+import { RegimeOverlap } from '@/components/RegimeOverlap';
 import { SourceLine, StatusKey, TierTag } from '@/components/marks';
 
 type Props = { params: Promise<{ id: string }> };
@@ -29,13 +30,25 @@ export default async function SeriesDetail({ params }: Props) {
   const s = getSeries(id);
   if (!s) notFound();
 
-  // Rule 5: neither GDP base renders alone. A paired series always shows its counterpart.
-  const pair = pairFor(s.id);
-  const companions = (pair ?? [])
-    .filter((pid) => pid !== s.id)
-    .map((pid) => getSeries(pid))
+  // Rule 5: no GDP base renders alone. Every regime in the group renders, in base order.
+  const group = regimeFor(s.id);
+  const regimes = (group ?? [])
+    .map((rid) => getSeries(rid))
     .filter((x): x is NonNullable<typeof x> => !!x);
+  const companions = regimes.filter((c) => c.id !== s.id);
 
+  /** Titles either side, so a seam at a handoff names what it hands off to. */
+  const handoffFor = (id: string) => {
+    const { previous, next } = regimeNeighbours(id);
+    const lookup = (pid: string | null) => {
+      if (!pid) return undefined;
+      const found = getSeries(pid);
+      return found ? { id: found.id, title: found.title } : undefined;
+    };
+    return { previous: lookup(previous), next: lookup(next) };
+  };
+
+  const denominatorBreaks = denominatorBreaksFor(s);
   const disputes = provenanceForSeries(s);
   const citedBy = ledgerCitingSeries(s.id);
 
@@ -60,24 +73,41 @@ export default async function SeriesDetail({ params }: Props) {
       <SourceLine source={s.source} tier={s.tier} />
       <StatusKey />
 
-      <SeriesTable series={s} />
+      <SeriesTable series={s} handoff={handoffFor(s.id)} />
       {s.notes ? <p className="prose-note">{s.notes}</p> : null}
+
+      {denominatorBreaks.length > 0 ? (
+        <div className="denominator-callout">
+          <span className="label">Denominator break</span>
+          <p>
+            This is a ratio to GDP, and the level of GDP was restated beneath it. The step at{' '}
+            {denominatorBreaks.map((d) => d.date).join(', ')} is arithmetic, not activity: the
+            numerator did not move. It is marked differently from a series break because the
+            series itself did not change basis — what it is divided by did.
+          </p>
+        </div>
+      ) : null}
 
       {companions.length > 0 ? (
         <>
-          <h2>Both series, always</h2>
+          <h2>All {regimes.length} regimes, always</h2>
           <p className="prose-note">
-            This indicator exists on two incompatible bases. Neither is presented alone as
-            &ldquo;GDP growth&rdquo;: the counterpart is rendered here with the seam between them
-            left intact.
+            This indicator exists on {regimes.length}{' '}
+            incompatible bases and none is presented alone as &ldquo;GDP growth&rdquo;. The others
+            are rendered here with every seam left intact. Where one base ends and the next
+            begins, both sides carry the handoff.
           </p>
+
+          <h3>Years reported on more than one base</h3>
+          <RegimeOverlap regimes={regimes} />
+
           {companions.map((c) => (
             <section key={c.id}>
               <h3>
                 <Link href={`/series/${c.id}/`}>{c.title}</Link>
               </h3>
               <SourceLine source={c.source} tier={c.tier} />
-              <SeriesTable series={c} />
+              <SeriesTable series={c} handoff={handoffFor(c.id)} />
             </section>
           ))}
         </>
@@ -122,9 +152,10 @@ export default async function SeriesDetail({ params }: Props) {
 
       <div className="stub">
         <span className="label">Scaffold</span>
-        Phase 0 renders series as tables only. Charting comes later and must carry the seam
-        rendering with it: no line may be drawn across a break, and no trend may be fitted
-        through one.
+        Phase 0 renders series as tables only. Charting comes later and must carry both marks
+        with it: no line may be drawn across a seam and no trend fitted through one, and any
+        chart of a ratio to GDP spanning 27 Feb 2026 must show the denominator break — the
+        step is arithmetic, and a chart that hides it asserts activity that did not happen.
       </div>
     </>
   );

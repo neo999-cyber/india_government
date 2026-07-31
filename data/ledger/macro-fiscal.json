@@ -1,0 +1,417 @@
+[
+ {
+  "id": "L-0011",
+  "title": "Demonetisation",
+  "date": "2016-11-08",
+  "term": "T1",
+  "domains": [
+   "macro",
+   "banking"
+  ],
+  "type": "reform",
+  "summary": "Overnight withdrawal of ₹500 and ₹1,000 notes, ~86% of currency in circulation by value, with a limited window to deposit or exchange.",
+  "claimAtLaunch": "Elimination of black money held as cash, destruction of counterfeit currency, and cutting off terror financing. As returns approached 100%, the official justification shifted toward digitisation and formalisation.",
+  "whatHappened": "The RBI's Annual Report 2017-18 confirmed 99.3% of demonetised notes returned to the banking system — ₹15.31 lakh crore of ₹15.41 lakh crore, with only ~₹10,720 crore unreturned. Counterfeit detection was minuscule. Currency in circulation collapsed, then recovered past pre-demonetisation levels (₹18.03 lakh crore by end-March 2018). The Supreme Court upheld the process 4-1 in January 2023, with a dissent questioning it.",
+  "assessment": "failed",
+  "caseFor": "Digital payments adoption accelerated sharply and durably, seeding the UPI infrastructure that is now genuine world-leading public infrastructure. Income-tax filings rose, and deposit data gave authorities analytics leads on suspicious accounts that conventional enforcement would not have produced. A one-time shock was arguably the only way to force behaviour change in a cash-preferring economy.",
+  "caseAgainst": "It failed against every objective stated at announcement. Near-total note return means either little black money was held as cash or it was successfully laundered; either way the premise was wrong. Counterfeit seizures were trivial. The informal economy and small business absorbed severe disruption with no offsetting gain, and cash returned to above prior levels within eighteen months. Digital adoption was already on a rising trend, so the incremental gain is unquantified. Deaths occurred in queues.",
+  "shockExposure": "None external — this is a rare clean case where the policy is not confounded by a global shock. The confound is internal: GST followed eight months later, making the two reforms' effects hard to separate through 2017-18.",
+  "seriesRefs": [
+   "gdp-growth-new-base"
+  ],
+  "sources": [
+   {
+    "name": "RBI Annual Report 2017-18",
+    "url": "https://www.business-standard.com/article/news-ani/99-3-demonetised-notes-returned-to-banks-rbi-118082901029_1.html",
+    "tier": "T1"
+   },
+   {
+    "name": "RBI note-return confirmation reporting",
+    "url": "https://www.thequint.com/news/india/demonetisation-money-returns-rbi-report",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-30"
+ },
+ {
+  "id": "L-0012",
+  "title": "Goods and Services Tax",
+  "date": "2017-07-01",
+  "term": "T1",
+  "domains": [
+   "macro",
+   "federalism"
+  ],
+  "type": "reform",
+  "summary": "Replacement of a fragmented web of central and state indirect taxes with a single destination-based GST, governed by a GST Council with the Centre holding one-third of voting weight and states two-thirds, decisions requiring a 75% majority.",
+  "claimAtLaunch": "One nation, one tax — a unified national market, simpler compliance, higher revenue buoyancy, and formalisation. States were guaranteed compensation for 14% annual revenue growth for five years.",
+  "whatHappened": "Launched with four slabs plus cess rather than the single-rate ideal. GSTN technical failures, compliance burden and delayed exporter refunds marked the first years. Collections grew steadily to a record ₹22.08 lakh crore in FY2024-25 (+9.4% YoY), with a record single month of ₹2,36,716 crore in April 2025. Compensation ended June 2022 amid continuing state demands. GST 2.0, effective 22 September 2025, collapsed the structure to 5% and 18% plus a 40% demerit rate, with ~₹48,000 crore estimated revenue foregone.",
+  "assessment": "partly",
+  "caseFor": "A genuine unified market replaced checkpost-ridden interstate trade; e-way bills cut logistics friction measurably. Collections proved resilient and buoyant enough to absorb the 2025 rate cuts. The taxpayer base expanded past 1.51 crore active registrants. Achieving a constitutional amendment and a functioning federal tax council at all is a real institutional accomplishment that eluded two decades of prior attempts.",
+  "caseAgainst": "Eight years of four-slab complexity, classification litigation and compliance cost fell hardest on MSMEs — the rationalisation to two slabs in 2025 is an admission the original design was wrong. The 14% buoyancy promise was never clearly met. States surrendered fiscal autonomy permanently in exchange for a guarantee that expired, and the COVID-era compensation dispute showed the Centre would restructure the bargain unilaterally under stress.",
+  "shockExposure": "COVID (2020-22) severely distorts the revenue trajectory and precipitated the compensation dispute; separating GST design effects from pandemic effects in FY21-FY22 is not cleanly possible.",
+  "seriesRefs": [
+   "nominal-gdp"
+  ],
+  "provenanceRefs": [
+   "P-10"
+  ],
+  "sources": [
+   {
+    "name": "PIB, record gross GST collection FY2024-25",
+    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?id=154789&NoteId=154789&ModuleId=3",
+    "tier": "T1"
+   },
+   {
+    "name": "GST 2.0 slab restructuring",
+    "url": "https://busy.in/gst/gst-2-0-transition-new-slab-rates/",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-30"
+ },
+ {
+  "id": "L-0013",
+  "title": "Corporate tax rate cut",
+  "date": "2019-09-20",
+  "term": "T2",
+  "domains": [
+   "macro"
+  ],
+  "type": "reform",
+  "summary": "Base corporate tax cut from 30% to 22% (effective ~25.17% with surcharge and cess), and to 15% for new manufacturing companies.",
+  "claimAtLaunch": "Improved after-tax returns would trigger a private investment revival and support Make in India by making Indian rates internationally competitive.",
+  "whatHappened": "Revenue foregone of approximately ₹1.45 lakh crore per year, which PRS Legislative Research puts at about 5.2% of the FY20 revenue estimate. Private capital expenditure did not revive. Corporate profitability reached multi-year highs — Nifty-500 profit-to-GDP around 4.6% in FY24, the highest since FY08 — while private investment stayed weak. Firms directed the windfall largely toward deleveraging and share buybacks.",
+  "assessment": "failed",
+  "caseFor": "It aligned Indian rates with regional competitors and repaired corporate balance sheets weakened by the twin-balance-sheet years, arguably a precondition for the later capex cycle. Investment responses to tax changes operate with long lags, and COVID arrived six months later — the counterfactual where the cut works absent a pandemic cannot be dismissed outright.",
+  "caseAgainst": "The stated objective was investment revival and it did not occur; profits rose while capex did not, which is the signature of a windfall being pocketed rather than deployed. NIPFP research indicates corporate investment responds to capacity utilisation, competitiveness and credit availability — i.e. demand — not the tax rate, meaning the instrument was mismatched to the diagnosis. The cost is permanent and annual, and ~99.1% of firms were already near 25%, so benefits concentrated among roughly 4,700 large companies.",
+  "shockExposure": "COVID arrived six months after the cut, permanently confounding clean attribution. However, the pre-COVID slowdown was already underway (FY20 growth 3.9%) and capex was already weak, so the pandemic cannot carry the whole explanation.",
+  "seriesRefs": [
+   "gfcf-gdp",
+   "fiscal-deficit"
+  ],
+  "sources": [
+   {
+    "name": "Corporate tax cut announcement",
+    "url": "https://www.businesstoday.in/amp/latest/economy-politics/story/nirmala-sitharaman-finance-minister-slash-corporate-tax-rate-domestic-firms-227683-2019-09-20",
+    "tier": "T4"
+   },
+   {
+    "name": "Analysis of tax cuts versus private investment response",
+    "url": "https://www.business-standard.com/amp/opinion/columns/budget-bets-on-tax-cuts-over-capex-will-it-boost-private-investment-125020501748_1.html",
+    "tier": "T4"
+   },
+   {
+    "name": "NIPFP on corporate investment drivers",
+    "url": "https://www.nipfp.org.in/publication-index-page/blog-index-page/record-rbi-dividend-a-windfall-not-a-fiscal-panacea/",
+    "tier": "T3"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-30"
+ },
+ {
+  "id": "L-0014",
+  "title": "Flexible inflation targeting adopted",
+  "date": "2015-02",
+  "dateEnd": "2016-06",
+  "term": "T1",
+  "domains": [
+   "macro"
+  ],
+  "type": "institutional",
+  "summary": "Monetary Policy Framework Agreement (2015) and amended RBI Act (2016) established a 4% CPI target with a ±2% band and a six-member Monetary Policy Committee.",
+  "claimAtLaunch": "A rules-based framework would anchor inflation expectations after the 9-11% inflation of 2010-2013.",
+  "whatHappened": "CPI fell decisively into a 4%-centred range, with breaches during 2020 (COVID supply disruption) and 2022-23 (food and fuel following the Ukraine invasion). By mid-2026 CPI ran around 3.5-4.4%. The framework was renewed with the same 4%±2% target for April 2026 to March 2031.",
+  "assessment": "worked",
+  "caseFor": "The clearest institutional success of the period. Inflation expectations anchored, the framework survived two major shocks and three governors without abandonment, and its renewal for a further five years reflects cross-party and market acceptance. Real interest rates turned positive, supporting financial savings.",
+  "caseAgainst": "The disinflation was substantially handed to the framework by the 2014-16 oil price collapse, a windfall no policy earned; the framework's independent contribution is therefore overstated by the raw before-and-after comparison. The 2024 CPI rebasing lowers the food weight, which will dampen measured volatility going forward and makes future performance flattering by construction. Institutional autonomy in the surrounding period was contested — see the RBI autonomy record.",
+  "shockExposure": "The 2014-16 oil collapse is a large positive confound at the start; COVID and the 2022 commodity shock are negative confounds mid-period. Peers faced the same commodity shocks, so peer-relative inflation performance is the fairer test.",
+  "seriesRefs": [
+   "cpi-inflation"
+  ],
+  "provenanceRefs": [
+   "P-05",
+   "P-11"
+  ],
+  "sources": [
+   {
+    "name": "RBI inflation target renewal through 2031",
+    "url": "https://tradingeconomics.com/india/inflation-cpi/news/536474",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-30"
+ },
+ {
+  "id": "L-0015",
+  "title": "Oil windfall capture through excise increases",
+  "date": "2014-11",
+  "dateEnd": "2016-01",
+  "term": "T1",
+  "domains": [
+   "macro"
+  ],
+  "type": "reform",
+  "summary": "During the global oil price collapse the government raised excise duty on petrol and diesel nine times, capturing most of the terms-of-trade windfall for the exchequer rather than passing it to consumers.",
+  "claimAtLaunch": "Framed as fiscal prudence — using a temporary windfall to consolidate rather than fund consumption.",
+  "whatHappened": "Total excise on unbranded petrol rose from ₹9.48/litre (May 2014) to ₹19.48, and diesel from ₹3.56 to ₹15.33. Central petroleum-sector taxes rose from ₹1.72 lakh crore (FY15) to ₹4.92 lakh crore (FY22), a 186% increase over seven years.",
+  "assessment": "contested",
+  "caseFor": "It funded fiscal consolidation and the capex push without new borrowing, converting a windfall that would otherwise have been consumed into public assets. Retaining high fuel taxes also served climate and current-account objectives by suppressing import demand. Passing the windfall to pump prices would have been reversed painfully when oil recovered.",
+  "caseAgainst": "It transferred a consumer windfall to the exchequer during a period of weak household demand, and fuel taxes are regressive, falling hardest on transport-dependent low-income households. It contributed to the shift in the tax mix toward indirect taxation. When oil later rose, the duties were only partly unwound, so the burden persisted.",
+  "shockExposure": "Entirely shock-driven — the policy exists only because of the 2014-16 global oil collapse, which was external and unearned. Peers who are net oil importers received the same windfall and made different choices.",
+  "seriesRefs": [
+   "fiscal-deficit",
+   "cpi-inflation"
+  ],
+  "sources": [
+   {
+    "name": "Excise duty levels, minister's statement",
+    "url": "https://www.business-standard.com/article/economy-policy/excise-duty-on-petrol-was-rs-9-48-ltr-diesel-rs-3-56-in-2014-minister-122080100962_1.html",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-30"
+ },
+ {
+  "id": "L-0016",
+  "title": "Make in India and the 25% manufacturing target",
+  "date": "2014-09-25",
+  "term": "T1",
+  "domains": [
+   "macro",
+   "foreign"
+  ],
+  "type": "reform",
+  "summary": "Flagship programme to raise manufacturing's share of GDP to 25%, originally by 2022, later extended to 2025 and then reset to 2035 under the National Manufacturing Mission.",
+  "claimAtLaunch": "Manufacturing would rise to 25% of GDP and create 100 million jobs, positioning India as a global manufacturing hub.",
+  "whatHappened": "Manufacturing's share did not rise. World Bank data show it falling from 15.07% of GDP (2014) to 13.14% (2024). Over the same decade Bangladesh rose from 16.61% to 21.89% and Vietnam from 20.37% to 24.33%. The target was reset to 2035 in Budget 2025-26.",
+  "assessment": "failed",
+  "caseFor": "It durably shifted policy attention and state-level competition toward manufacturing, and specific segments — notably electronics and mobile assembly — grew substantially from a low base. Global conditions were hostile: trade growth slowed worldwide after 2014 and supply chains fragmented, so holding share might itself count as an achievement.",
+  "caseAgainst": "The peer panel dismantles the external-conditions defence: Bangladesh and Vietnam raised manufacturing share substantially over exactly the same decade under the same global conditions. India's share fell. The target was missed, extended, missed again, and reset by thirteen years, which is the clearest stated-goal-versus-outcome failure of the period.",
+  "shockExposure": "COVID disrupted 2020-22, but the trajectory was already flat before 2020 and peers recovered faster. The 2025-26 US tariffs are a genuine late headwind but postdate the failure.",
+  "seriesRefs": [
+   "manufacturing-gdp"
+  ],
+  "provenanceRefs": [
+   "P-14"
+  ],
+  "sources": [
+   {
+    "name": "Analysis of India's manufacturing stagnation",
+    "url": "https://www.cnbc.com/2025/03/27/what-ails-indias-manufacturing-.html",
+    "tier": "T4"
+   },
+   {
+    "name": "Hudson Institute on manufacturing and PLI",
+    "url": "https://www.hudson.org/domestic-policy/indias-manufacturing-sector-stagnant-relying-pli-not-enough-policies-need-relook-aparna-pande",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-30"
+ },
+ {
+  "id": "L-0017",
+  "title": "Production Linked Incentive schemes",
+  "date": "2020-03",
+  "term": "T2",
+  "domains": [
+   "macro"
+  ],
+  "type": "reform",
+  "summary": "Outlay-based production incentives across 14 sectors totalling ₹1.97 lakh crore, intended to build scale in domestic manufacturing.",
+  "claimAtLaunch": "Incentivise scale manufacturing, substitute imports, and integrate India into global supply chains.",
+  "whatHappened": "Only ₹23,946 crore — about 12% of envisaged disbursement — was paid out by September 2025 (FY23 ₹2,968 crore, FY24 ₹6,753 crore, FY25 ₹10,112 crore). Electronics and mobile manufacturing was the clear success, with production up 146% between FY21 and FY25 to ₹5.45 lakh crore. Roughly 70% of recent disbursements went to electronics and pharmaceuticals; most other sectors underperformed, and reports suggest the scheme may not be extended.",
+  "assessment": "partly",
+  "caseFor": "Electronics and mobile manufacturing is a genuine, large, verifiable success — India moved from assembly of last resort to a significant handset exporter within five years, which no prior industrial policy achieved. Low disbursement partly reflects the schemes' design working as intended: payment only on verified output, so unpaid money means unmet milestones rather than wasted money.",
+  "caseAgainst": "Twelve percent disbursement across five years indicates most sectors could not meet thresholds, meaning the diagnosis of what constrained them was wrong. Concentration of benefit in two sectors suggests the successes were driven by specific global supply-chain shifts rather than the incentive design. Manufacturing's overall GDP share fell during the scheme's operation, which is the outcome that matters.",
+  "shockExposure": "Launched into COVID, which disrupted early years but also drove the China+1 supply-chain shift that plausibly explains most of the electronics success — i.e. the shock may have caused the win rather than obscured it.",
+  "seriesRefs": [
+   "manufacturing-gdp"
+  ],
+  "sources": [
+   {
+    "name": "Hudson Institute on PLI performance",
+    "url": "https://www.hudson.org/domestic-policy/indias-manufacturing-sector-stagnant-relying-pli-not-enough-policies-need-relook-aparna-pande",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-30"
+ },
+ {
+  "id": "L-0018",
+  "title": "RCEP withdrawal",
+  "date": "2019-11-04",
+  "term": "T2",
+  "domains": [
+   "foreign"
+  ],
+  "type": "event",
+  "summary": "India withdrew from the Regional Comprehensive Economic Partnership at the final stage, the only one of sixteen negotiating countries to opt out.",
+  "claimAtLaunch": "Cited unresolved concerns over trade deficits with eleven member states, a feared surge of Chinese imports, and inadequate safeguards for domestic producers.",
+  "whatHappened": "RCEP proceeded without India. India subsequently pursued bilateral agreements instead: UAE CEPA (in force May 2022), Australia ECTA (December 2022), EFTA TEPA (October 2025, with a binding US$100bn fifteen-year investment commitment), and the UK CETA (in force July 2026). The trade deficit with China nonetheless widened to a record US$99.2bn in FY25 and about US$112bn in FY26.",
+  "assessment": "contested",
+  "caseFor": "The stated fear was a Chinese import surge, and the China deficit widened to records even outside RCEP — inside it, with tariff elimination, the damage would plausibly have been worse. India retained policy space to pursue bilateral deals on better terms, and the EFTA agreement's binding investment commitment is a structure RCEP would not have delivered.",
+  "caseAgainst": "India excluded itself from the world's largest trade bloc precisely as supply chains were being redrawn, and the exports-to-GDP ratio continued falling. The China deficit widened anyway, so the protection purchased little. Bilateral deals have been slower and smaller in aggregate coverage than RCEP membership would have provided, and absence from the bloc weakens India's position in regional rule-setting.",
+  "shockExposure": "Predates COVID by months; the pandemic then reshaped supply chains in ways neither side of the argument anticipated, making the counterfactual genuinely unknowable.",
+  "seriesRefs": [
+   "exports-gdp"
+  ],
+  "sources": [
+   {
+    "name": "India-EFTA TEPA",
+    "url": "https://en.wikipedia.org/wiki/India%E2%80%93EFTA_Trade_and_Economic_Partnership_Agreement",
+    "tier": "T4"
+   },
+   {
+    "name": "China trade deficit FY26",
+    "url": "https://www.business-standard.com/economy/news/china-becomes-india-s-top-trade-partner-in-fy26-deficit-widens-to-usd-112-bn-126041501317_1.html",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-30"
+ },
+ {
+  "id": "L-0019",
+  "title": "RBI autonomy episodes and surplus transfers",
+  "date": "2016-06",
+  "dateEnd": "2025-05",
+  "term": "T1",
+  "domains": [
+   "macro",
+   "governance"
+  ],
+  "type": "institutional",
+  "summary": "A sequence of central-bank governance episodes: Raghuram Rajan not given a second term (2016), Urjit Patel's resignation (December 2018) amid Section 7 tensions, the Jalan committee's revised Economic Capital Framework, and escalating surplus transfers to the government.",
+  "whatHappened": "The Jalan framework enabled a ₹1,76,051 crore transfer in 2019 — nearly triple the previous ₹65,896 crore record — followed by ₹2.11 lakh crore (FY24) and ₹2,68,590 crore (FY25, approved 23 May 2025, with the Contingent Risk Buffer raised to 7.50%). The FY25 transfer was aided by large foreign-exchange operations.",
+  "assessment": "contested",
+  "caseFor": "Two governors departing over a decade is not itself evidence of capture, and both left for stated reasons that included personal choice. The surplus transfers followed a transparent, expert-committee framework rather than ad hoc demands, and the Contingent Risk Buffer was raised, not depleted — the RBI's balance sheet strengthened while transferring. Inflation targeting was preserved and renewed throughout, which is the substantive test of independence.",
+  "caseAgainst": "The pattern matters more than any single episode: a non-renewal, a mid-term resignation over reserve and PCA disputes, an invocation of Section 7 powers never previously used, and a framework revision that unlocked record transfers. Growing fiscal reliance on RBI dividends blurs the monetary-fiscal boundary and creates an incentive for exchange-rate operations that generate transferable surpluses.",
+  "seriesRefs": [
+   "fiscal-deficit"
+  ],
+  "sources": [
+   {
+    "name": "RBI surplus transfer 2019",
+    "url": "https://www.business-standard.com/article/news-cm/rbi-approves-surplus-transfer-of-rs-1-76-lakh-crore-to-government-119082601199_1.html",
+    "tier": "T1"
+   },
+   {
+    "name": "NIPFP on RBI dividends as fiscal resource",
+    "url": "https://www.nipfp.org.in/publication-index-page/blog-index-page/record-rbi-dividend-a-windfall-not-a-fiscal-panacea/",
+    "tier": "T3"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-30"
+ },
+ {
+  "id": "L-0020",
+  "title": "COVID-19 contraction and fiscal response",
+  "date": "2020-03",
+  "dateEnd": "2022-03",
+  "term": "T2",
+  "domains": [
+   "macro",
+   "welfare"
+  ],
+  "type": "shock",
+  "summary": "National lockdown from March 2020 produced a FY2020-21 contraction of about 5.8% (reported between -5.8% and -6.6% across revisions), followed by a 9.7% rebound in FY2021-22. The fiscal deficit spiked to 9.2% of GDP and general government debt peaked near 89%.",
+  "whatHappened": "The contraction was among the deeper ones globally. China grew in 2020; Vietnam and Bangladesh stayed positive; Indonesia contracted mildly — indicating India's depth was substantially policy and lockdown-driven rather than purely pandemic-driven. Part of the FY21 deficit spike is an accounting artefact from bringing FCI food-subsidy dues on-budget in February 2021.",
+  "assessment": "contested",
+  "caseFor": "The lockdown bought time for health-system preparation in a country with very low per-capita health infrastructure, and free-grain distribution through PMGKAY reached hundreds of millions using existing NFSA rails — a delivery achievement few states of comparable income managed. The rebound was sharp, and consolidation from 9.2% to 4.4% within five years was faster than most peers.",
+  "caseAgainst": "The contraction's depth relative to peers facing the same virus points to lockdown design, not the pandemic, and the four-hour notice period produced a migrant-worker crisis with severe human cost. Fiscal support was weighted toward credit guarantees over direct transfers, which supported balance sheets more than household demand and plausibly deepened the K-shaped recovery.",
+  "shockExposure": "This record IS the shock. Peer comparison is the only clean lens: the shared exposure means India's relative depth isolates the domestic policy contribution.",
+  "seriesRefs": [
+   "gdp-growth-new-base",
+   "fiscal-deficit",
+   "genl-govt-debt"
+  ],
+  "provenanceRefs": [
+   "P-06"
+  ],
+  "sources": [
+   {
+    "name": "Fiscal deficit trajectory",
+    "url": "https://www.whalesbook.com/news/English/economy/Indias-Fiscal-Deficit-Path-to-Target-Fraught-with-Spending-Risks/69a17dc8fa7d0695d1aba975",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-30"
+ },
+ {
+  "id": "L-0021",
+  "title": "US tariffs on Indian goods",
+  "date": "2025-08",
+  "dateEnd": "2026-02",
+  "term": "T3",
+  "domains": [
+   "foreign",
+   "macro"
+  ],
+  "type": "shock",
+  "summary": "The United States imposed 25% tariffs on most Indian goods, then an additional 25% effective 27 August 2025 over India's Russian crude purchases, reaching 50% — the highest rate applied to any US trading partner.",
+  "whatHappened": "Indian government estimates put roughly US$48bn of exports at risk; GTRI estimated around two-thirds of approximately US$87bn in US-bound exports were affected. The rate was later cut to 18% under an interim arrangement, and in February 2026 the US Supreme Court constrained IEEPA-based tariff authority.",
+  "assessment": "too-early",
+  "shockExposure": "India-specific in severity, which makes it unusual — most shocks in this project are shared with peers. That specificity means it cannot be netted out via peer comparison and must be carried as a standalone confound for any FY26 and FY27 external-sector assessment.",
+  "seriesRefs": [
+   "exports-gdp"
+  ],
+  "sources": [
+   {
+    "name": "EY tax alert on additional US tariffs",
+    "url": "https://www.ey.com/en_gl/technical/tax-alerts/us-imposes-additional-tariffs-on-india-for-buying-oil-from-russia",
+    "tier": "T4"
+   },
+   {
+    "name": "US Supreme Court tariff ruling and Russian oil",
+    "url": "https://www.cnbc.com/2026/02/25/us-tariff-ruling-india-russian-oil-purchases.html",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "low",
+  "asOf": "2026-07-30"
+ },
+ {
+  "id": "L-0022",
+  "title": "Third GDP base-year revision to 2022-23",
+  "date": "2026-02-27",
+  "term": "T3",
+  "domains": [
+   "macro"
+  ],
+  "type": "institutional",
+  "summary": "MoSPI released a national accounts series rebased to 2022-23, using double deflation, a Supply-Use Table framework and new source data. It revised recent real growth up while lowering the level of nominal GDP by 3-4%.",
+  "assessment": "too-early",
+  "shockExposure": "None — but this record is itself a confound for every other macro assessment in the project, which is why it also exists as provenance record P-10.",
+  "seriesRefs": [
+   "gdp-growth-2022-base",
+   "nominal-gdp"
+  ],
+  "provenanceRefs": [
+   "P-10"
+  ],
+  "sources": [
+   {
+    "name": "MoSPI press note, 27 February 2026",
+    "url": "https://www.mospi.gov.in/uploads/latestReleases/latest_release_1772189865181_f040336d-bc57-4aed-b80f-586d9ccb279e_Press_Note_on_New_Series_of_GDP_Estimates_with_Base_Year_2022-23_27022026.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "New series details",
+    "url": "https://www.drishtiias.com/daily-updates/daily-news-analysis/indias-new-gdp-series-with-base-year-2022-23",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-30"
+ }
+]

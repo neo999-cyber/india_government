@@ -68,7 +68,13 @@ Errors:
 | `back-link` | a series named in `provenance.affectsSeries` carries that `P-xx` in its own `provenanceRefs`, so the dispute travels with every rendered number (rule 6) |
 | `point-unique` | one value per country-period within a series |
 | `calendar-discipline` | periods match the series calendar — `FYyyyy-yy` for FY (with consecutive years), `yyyy` for CY. Never mixed within one series |
-| `paired-series` | neither GDP base exists without its counterpart, so neither can be presented alone as "GDP growth" (rule 5) |
+| `regime-group` | no GDP base exists without the rest of its group, so none can be presented alone as "GDP growth" (rule 5). Three regimes since P-10: 2004-05, 2011-12, 2022-23 |
+| `regime-handoff` | consecutive regimes overlap or meet; a gap would leave years on no basis at all (rule 5) |
+| `charset-script` | non-Latin text in prose — the case JSON Schema cannot see, since a Cyrillic word is a perfectly valid string (rule 9, English only) |
+| `charset-invisible` | zero-width spaces, bidi overrides, non-breaking spaces — invisible by definition, so review by eye will never catch them |
+| `charset-url` | non-ASCII anywhere in a URL: a lookalike domain is indistinguishable from the real ministry's |
+| `charset-homoglyph` | U+03BC Greek mu where U+00B5 micro sign belongs, so identical-looking units cannot drift apart |
+| `charset-symbol` | any other character outside the allowlist |
 | `t5-dispute-link` | a T5 contested index carries `P-08` (rule 6) |
 | `panel-vintage` | a peer-panel series with any `verified` point records `source.vintage` (rule 7 / P-09) |
 | `baseline-context` | the `baseline-context` assessment appears only on `term: baseline` |
@@ -85,6 +91,44 @@ Warnings:
 | `pending-note` | a placeholder without a note is untidy, not invalid |
 | `bridge-note` | `bridgeExists: true` with no note describing the reconciliation |
 | `future-date` | `asOf` or `source.vintage` after today |
+| `denominator-break` | a ratio-to-GDP series crossing a denominator revision that it does not declare — either it rests on the restated denominator and should link it, or it uses a different one and should say so. A research call, so not a blocker |
+| `charset-diacritic` | a Latin letter outside ASCII (é, ñ, ā) — legitimate in a proper name, so flagged rather than blocked |
+
+## Pass 4 — character sweep
+
+Every string in every record, whatever the layer, checked character by character. Schema
+validation is structurally blind here: `"type": "string"` is satisfied by a Cyrillic word in
+an English summary, a zero-width space inside a figure, or a homoglyph domain in a source
+URL.
+
+Allowed in prose and units:
+
+| | |
+|---|---|
+| Typography | `₹ — – ' ' " " ± × °` |
+| SI notation | `µ ² ³` |
+
+The SI set extends the specified allowlist. `°` already admits this class, and the PM2.5
+series carries the correct unit `µg/m³` — mangling it to `ug/m3` to satisfy a linter would
+be the wrong trade. The `µ` allowed is U+00B5 MICRO SIGN; U+03BC GREEK SMALL LETTER MU is
+visually identical and rejected, so the two cannot drift apart across the data.
+
+URLs allow nothing outside ASCII, with no exceptions.
+
+Severity splits on what the character actually risks. Non-Latin scripts, invisibles,
+non-ASCII URLs and stray symbols are **errors** — they are either rule 9 violations or
+things no reviewer can catch by eye. Latin letters with diacritics are **warnings**, since
+research prose will legitimately need them for proper names, and erroring would force a
+researcher to misspell a name to get a build through.
+
+Non-Latin text is reported as whole runs rather than per character, so a stray word reads
+as one finding:
+
+```
+error [charset-script] L-9005 summary Cyrillic text in English prose (CLAUDE.md rule 9):
+  "прогресс" (U+043F U+0440 U+043E U+0433 U+0440 U+0435 U+0441 U+0441)
+  — in "…f the right shape. The word прогресс sits in the middle …"
+```
 
 The two lists of paired series — `tools/lib/integrity.mjs` and `lib/rules.ts` — must stay
 in step: one enforces the rule, the other renders it.
@@ -136,11 +180,11 @@ out/ exists?   NO
 
 ## Current warnings on `/data`
 
-As of the 2026-07-30 cycle, six — all tracked in `verification-log.md`:
+After the phase-2 drop, five — all tracked in `verification-log.md`:
 
-- `gdp-per-capita-usd` has no `source.vintage`; the whole panel is to be pulled at one
-  vintage (open queue, high priority).
+- `cad-gdp` is `% of GDP` and spans 27 Feb 2026 but carries no `P-10`. Open question for
+  chat: the BoP ratio may rest on a different denominator from the budget ratios.
 - `lfpr-overall` carries the PLFS break at FY2017-18, ahead of its observed span.
+- `fiscal-deficit` carries the P-13 anchor change at FY2026-27, ahead of its observed span.
 - `L-0010` (J&K floods, Sept 2014) sits in `baseline` by research judgment.
-- `P-02`, `P-05`, `P-06` name `lfpr-female-urban`, `cpi-inflation` and `fiscal-deficit`,
-  none of which are ingested yet.
+- `P-02` names `lfpr-female-urban`, not ingested yet.

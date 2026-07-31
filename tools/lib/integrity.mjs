@@ -5,6 +5,7 @@
  * @typedef {{ layer: string, file: string, index: number|null, record: any, incoming: boolean }} LoadedRecord
  * @typedef {{ level: 'error'|'warn', rule: string, file: string, where: string, message: string }} Finding
  */
+import { sweepRecord } from './charset.mjs';
 
 const FY_RE = /^FY(\d{4})-(\d{2})$/;
 const CY_RE = /^\d{4}$/;
@@ -16,11 +17,25 @@ const TERM_WINDOWS = {
   T3: { start: '2024-06', end: null },
 };
 
-/** Series that must never be presented alone (CLAUDE.md rule 5: both GDP series always). */
-const PAIRED_SERIES = [['gdp-growth-old-base', 'gdp-growth-new-base']];
+/**
+ * Regime groups: an indicator carried on incompatible bases, where no member may be
+ * presented alone (CLAUDE.md rule 5). Listed oldest base first — the order is the
+ * rendering order, and lib/rules.ts carries the same list for the site.
+ */
+const REGIME_GROUPS = [
+  ['gdp-growth-old-base', 'gdp-growth-new-base', 'gdp-growth-2022-base'],
+];
 
 /** Provenance record carrying the contested-index dispute (CLAUDE.md rule 6). */
 const CONTESTED_INDEX_DISPUTE = 'P-08';
+
+/**
+ * A rebasing that restates the LEVEL of nominal GDP moves every ratio-to-GDP without any
+ * change in underlying activity. Series on these units that are exposed to the revision
+ * must say so; ones that look exposed but carry no such record get queried.
+ */
+const DENOMINATOR_REVISIONS = [{ provenance: 'P-10', date: '2026-02-27' }];
+const RATIO_TO_GDP_UNITS = new Set(['% of GDP']);
 
 /**
  * Sortable numeric key for a period on either calendar. FY2013-14 -> 2013, "2014" -> 2014.
@@ -58,6 +73,21 @@ function checkPeriodForm(period, calendar) {
 const yearMonth = (date) => date.slice(0, 7);
 
 /**
+ * The period containing a wall-clock date on a given calendar. Indian fiscal years run
+ * April to March, so 2026-02-27 falls in FY2025-26.
+ * @param {string} date YYYY-MM-DD
+ * @param {'FY'|'CY'} calendar
+ * @returns {string}
+ */
+export function periodContaining(date, calendar) {
+  const year = Number(date.slice(0, 4));
+  const month = Number(date.slice(5, 7));
+  if (calendar === 'CY') return String(year);
+  const startYear = month >= 4 ? year : year - 1;
+  return `FY${startYear}-${String((startYear + 1) % 100).padStart(2, '0')}`;
+}
+
+/**
  * @param {LoadedRecord[]} records
  * @param {{ today: string }} opts
  * @returns {{ findings: Finding[], counts: Record<string, number> }}
@@ -69,6 +99,14 @@ export function checkIntegrity(records, { today }) {
 
   const byLayer = { series: [], ledger: [], provenance: [] };
   for (const r of records) byLayer[r.layer]?.push(r);
+
+  // Character sweep: every string in every record, whatever the layer.
+  for (const r of records) {
+    const where = r.record?.id ? String(r.record.id) : `record${r.index === null ? '' : ` [${r.index}]`}`;
+    for (const f of sweepRecord(r.record)) {
+      add(f.level, f.rule, r.file, `${where} ${f.where}`, f.message);
+    }
+  }
 
   const label = (r) => {
     const id = r.record?.id;
@@ -191,15 +229,51 @@ export function checkIntegrity(records, { today }) {
     if (s.source?.vintage && s.source.vintage > today) {
       add('warn', 'future-date', r.file, where, `source.vintage ${s.source.vintage} is in the future (today ${today})`);
     }
+
+    // A ratio-to-GDP series whose span crosses a denominator revision either declares that
+    // revision or gets queried. Silence here renders a step change as if it were activity.
+    if (RATIO_TO_GDP_UNITS.has((s.unit ?? '').trim()) && keys.length > 0) {
+      const refs = Array.isArray(s.provenanceRefs) ? s.provenanceRefs : [];
+      for (const rev of DENOMINATOR_REVISIONS) {
+        const revKey = periodKey(periodContaining(rev.date, calendar));
+        const crosses = revKey !== null && revKey >= Math.min(...keys) && revKey <= Math.max(...keys);
+        if (crosses && !refs.includes(rev.provenance)) {
+          add('warn', 'denominator-break', r.file, where, `unit is "${s.unit}" and the span crosses the ${rev.date} denominator revision (${rev.provenance}), but the series does not carry ${rev.provenance}. Either the ratio rests on the restated denominator — in which case link it, so the step change renders — or it is computed on a different denominator, which is worth stating in notes`);
+        }
+      }
+    }
   }
 
-  // Rule 5: both GDP series always — neither half of a paired series may stand alone.
-  for (const pair of PAIRED_SERIES) {
-    const present = pair.filter((id) => seriesIds.has(id));
-    if (present.length > 0 && present.length < pair.length) {
-      const missing = pair.filter((id) => !seriesIds.has(id));
+  // Rule 5: all regimes always — no base may stand alone.
+  for (const group of REGIME_GROUPS) {
+    const present = group.filter((id) => seriesIds.has(id));
+    if (present.length > 0 && present.length < group.length) {
+      const missing = group.filter((id) => !seriesIds.has(id));
       const host = seriesIds.get(present[0]);
-      add('error', 'paired-series', host.file, present[0], `paired series incomplete: "${missing.join('", "')}" absent. Neither base may be presented alone as "GDP growth"`);
+      add('error', 'regime-group', host.file, present[0], `regime group incomplete: "${missing.join('", "')}" absent. No base may be presented alone as "GDP growth" — the group carries ${group.length} regimes`);
+    }
+  }
+
+  // Rule 5, second half: where one regime ends and the next begins, both sides of the
+  // handoff must be reachable. A regime that overlaps its successor is the normal case
+  // while no spliced back-series exists; a gap between them is not.
+  for (const group of REGIME_GROUPS) {
+    const spans = group
+      .map((id) => {
+        const r = seriesIds.get(id);
+        if (!r) return null;
+        const ks = (Array.isArray(r.record.points) ? r.record.points : [])
+          .map((p) => periodKey(p?.period ?? ''))
+          .filter((k) => k !== null);
+        return ks.length ? { id, file: r.file, first: Math.min(...ks), last: Math.max(...ks) } : null;
+      })
+      .filter(Boolean);
+
+    for (let i = 0; i < spans.length - 1; i += 1) {
+      const [a, b] = [spans[i], spans[i + 1]];
+      if (b.first > a.last + 1) {
+        add('error', 'regime-handoff', b.file, b.id, `regime gap: "${a.id}" ends at ${a.last} and "${b.id}" begins at ${b.first}, leaving ${a.last + 1}–${b.first - 1} on no regime at all`);
+      }
     }
   }
 
