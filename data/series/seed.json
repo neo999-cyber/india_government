@@ -81,7 +81,7 @@
   "provenanceRefs": [
    "P-17"
   ],
-  "notes": "Cumulative Apr 2014-Sep 2024: ₹16,61,310 crore written off, ₹2,69,795 crore recovered (~16%). Peak year FY2018-19. Figures derive from RTI responses reported through journalism; the government disputes the interpretation, not the numbers."
+  "notes": "Cumulative Apr 2014-Sep 2024: ₹16,61,310 crore written off, ₹2,69,795 crore recovered (~16%). Peak year FY2018-19. Figures derive from RTI responses reported through journalism; the government disputes the interpretation, not the numbers. CONSISTENCY NOTE: summing these annual values through FY2024-25 gives ~₹17.66 lakh crore, against the sourced cumulative of ₹16.61 lakh crore to September 2024. Allowing ~6 months of the FY25 figure, the annual series runs roughly ₹0.3 lakh crore high — about 2%. These annual values are approximations reconstructed from narrative reporting and should be replaced with the primary RBI/Parliament series."
  },
  {
   "id": "bank-writeoffs-cumulative-psb",
@@ -159,7 +159,7 @@
   "provenanceRefs": [
    "P-17"
   ],
-  "notes": "April 2014 to September 2024. Recovered ₹2,69,795 crore against this, about 16.2%."
+  "notes": "April 2014 to September 2024. Recovered ₹2,69,795 crore against this, about 16.2%. RULING for the P-17 adjustment: USE THIS FIGURE, not the sum of bank-writeoffs-annual. It is the sourced number; the annual series is reconstructed and runs ~2% high. Because it stops at September 2024 — six months short of FY2024-25 — the resulting adjusted ratio is a FLOOR, not a point estimate. Label it as such. The true FY2024-25 adjusted figure is higher than what this produces, so the error runs in the direction that understates the argument, which is the correct direction to be wrong in."
  },
  {
   "id": "crar",
@@ -1085,7 +1085,7 @@
    "P-17",
    "P-18"
   ],
-  "notes": "This is the denominator P-17's adjustment requires. NOTE: gross advances is NOT the same aggregate as 'domestic credit' (₹66.91 to ₹181.34 lakh crore, quoted in P-17 prose) — at Mar 2025 advances derive to ~₹98 lakh crore against ~₹181 lakh crore of domestic credit. Using domestic credit as the denominator would understate the adjusted ratio by roughly half."
+  "notes": "This is the denominator P-17's adjustment requires. NOTE: gross advances is NOT the same aggregate as 'domestic credit' (₹66.91→₹181.34 lakh crore, quoted in P-17 prose) — at Mar 2025 advances derive to ~₹98 lakh crore against ~₹181 lakh crore of domestic credit. Using domestic credit as the denominator would understate the adjusted ratio by roughly half."
  },
  {
   "id": "scb-gross-npa",
@@ -1450,7 +1450,6 @@
    }
   ],
   "provenanceRefs": [
-   "P-10",
    "P-14"
   ],
   "notes": "Phase-1 peak of 25.4% (FY2013-14, T1) and WDI 22.97% for '2014' are different period bases — see P-14, not a contradiction."
@@ -1677,7 +1676,17 @@
     "status": "approx"
    }
   ],
-  "notes": "Positive = deficit. FY2020-21 was a surplus (-0.9 here = +0.9% surplus)."
+  "notes": "Positive = deficit. FY2020-21 was a surplus (-0.9 here = +0.9% surplus). RULING: any series expressed as a percentage of GDP inherits the GDP denominator, and the current account ratio is no exception — RBI computes it against MoSPI national accounts, so a restated GDP level restates the ratio. CAVEAT: published RBI ratios for FY24-FY25 were computed on the 2011-12 denominator at time of publication; whether RBI has restated its historical BoP ratios onto the 2022-23 base is UNVERIFIED. Until confirmed, treat FY24-FY26 values as old-denominator. This vintage question affects every ratio sourced from a publisher other than MoSPI.",
+  "provenanceRefs": [
+   "P-10"
+  ],
+  "breaks": [
+   {
+    "period": "FY2025-26",
+    "note": "GDP denominator restated by the 2022-23 rebasing",
+    "provenanceRef": "P-10"
+   }
+  ]
  },
  {
   "id": "cpi-inflation",

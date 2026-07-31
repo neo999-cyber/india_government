@@ -96,62 +96,32 @@ Three points marked `verified` (PSB GNPA FY2017-18, FY2020-21, FY2024-25 — all
 
 ---
 
-# Verification log — cycle 2026-07-31 (Phase 3 code run: first execution of the banking pipeline)
+# Verification log — cycle 2026-07-31b (corrections from phase-3 integration)
 
-The Phase 3 validator, NPA view and fixtures were written in a prior session with no shell
-available and had never been executed. This entry records what running them surfaced.
+Three research-side items raised by the integration session, all resolved here.
 
-## Corrections to `/data` (all meaning-preserving)
-| Record | Change | Why |
+## 1. P-10 prose contradicted its own figures — CORRECTED
+The record read "revised recent real growth UP (FY24 8.2%→7.2%, FY25 6.5%→7.1%)". 8.2 to 7.2 is a downward revision. The direction is **mixed**: FY24 down, FY25 up. Now stated per year.
+
+The correction surfaces something substantive that the wrong generalisation was hiding: the rebasing changed the **shape** of the recent trajectory, not just its level. On the 2011-12 base, FY24 to FY25 was a 1.7-point deceleration; on the 2022-23 base it is 0.1 points. The rebasing flattened the recent slowdown almost entirely. This belongs anywhere growth trajectory is discussed, not buried in a provenance note.
+
+## 2. Which cumulative write-off total — RULED
+Use **`bank-writeoffs-cumulative-scb` (₹16.6131 lakh crore)**, not the sum of `bank-writeoffs-annual`.
+
+Reasoning: the cumulative figure is sourced (RBI RTI, well corroborated); the annual series is reconstructed from narrative reporting. Summing the annual series through FY2024-25 gives ~₹17.66 lakh crore against ₹16.61 to September 2024 — allowing six months of FY25, the annual series runs roughly ₹0.3 lakh crore high, about 2%.
+
+Because the sourced figure stops six months short of FY2024-25, the resulting adjusted ratio is a **floor, not a point estimate** — label it so. FY2024-25 adjusted becomes **19.74%** against 2.79% reported. The error runs in the direction that understates the argument, which is the correct direction to be wrong in.
+
+## 3. `cad-gdp` denominator break — RULED, and my omission
+Ruled in an earlier cycle but never written into the data. Applied now: `cad-gdp` declares P-10 with a denominator break at FY2025-26.
+
+Any series expressed as a percentage of GDP inherits the GDP denominator; the current account ratio is no exception, since RBI computes it against MoSPI national accounts. **Caveat carried in the series note:** published RBI ratios for FY24-FY25 were computed on the 2011-12 denominator at time of publication, and whether RBI has restated its historical BoP ratios onto the 2022-23 base is unverified. Treat FY24-FY26 as old-denominator until confirmed. This vintage question affects every ratio sourced from a publisher other than MoSPI — a general problem, not a `cad-gdp` one.
+
+## Open queue additions
+| Figure | Pin against | Priority |
 |---|---|---|
-| P-10 `whatChanged` | `→` replaced with "to" (×2) | Charset allowlist. Prose only; figures untouched. |
-| `scb-gross-advances` `notes` | `→` replaced with "to" | Same. |
-| `exports-gdp` `provenanceRefs` | added **P-10** | P-10 already listed `exports-gdp` in `affectsSeries`; the series did not link back, so the gate failed on `back-link`. CLAUDE.md rule 5a names `exports-gdp` as one of the four ratio-to-GDP series that step on 27 Feb 2026, and `fiscal-deficit`, `genl-govt-debt` and `gfcf-gdp` all already carried it — `exports-gdp` was the outlier. Adding the ref is what makes the denominator band render; verified in the browser. |
-
-## Code corrected to match P-17's contract
-- **Stale series id.** `lib/npa.ts` and `tools/lib/integrity.mjs` both hardcoded `scb-advances`;
-  the denominator landed as **`scb-gross-advances`**. Both updated. Two `npa-adjustment`
-  warnings were false — they named a series that exists.
-- **The adjustment was keyed off the wrong series.** It iterated the *published ratio*
-  (`scb-gross-npa`, which begins FY2014-15) and so could only ever yield two points. P-17
-  requires `scb-gross-npa-amount`, which carries FY2013-14. Recomputed as
-  `(gross NPAs + cumulative write-offs) / gross advances` keyed off the amount, giving the
-  three contracted points. Derived `reported` reproduces the published ratio exactly at both
-  overlapping periods (11.46, 2.79), which is a useful consistency check on the derivation.
-- **PSB blocker widened.** It named only the write-off series as the population mismatch.
-  Per-group cumulative write-off series now exist in `/data`, so that wording invited a false
-  "fix" — swapping them in while the denominator is still all-SCB. It now names the
-  denominator too. PSB remains blocked; verified.
-- **Breaks were being dropped from sparse series** (`components/SeriesTable.tsx`). Seam
-  placement required an *exact* period match, so a break falling between two rendered rows
-  rendered nowhere. The adjusted NPA view spans the AQR (FY2015-16) and COVID (FY2020-21)
-  breaks while carrying a row for neither: it printed 4.10 → 16.20 → 20.81 across two
-  "do not splice" seams, showing neither — a rule-2 splice in the one view most likely to be
-  read as a verdict on the cleanup. A mark now renders above the first row at or after it.
-  Dense series are unaffected (byte-identical reported tables; GDP handoffs re-verified).
-
-## Open question for research — which cumulative write-off total
-The adjusted view sums `bank-writeoffs-annual`, because it is the only write-off source with
-values at all three contracted periods. Through FY2024-25 that sums to **₹17.66 lakh crore**,
-against **₹16.6131 lakh crore** in `bank-writeoffs-cumulative-scb`. The gap is a window
-difference — the sourced cumulative runs April 2014 to **September 2024**, so it stops
-mid-year and would understate a FY2024-25 column. Summing was chosen for consistency across
-the three periods, and it moves the FY2024-25 adjusted figure from ~19.74% to 20.81%.
-Worth a reconciliation: a cumulative-to-March-2025 figure would settle it.
-`bank-writeoffs-cumulative-{scb,psb,pvt}` are otherwise unused by this view.
-
-## Second open question — P-10 prose
-P-10 `whatChanged` says the revision moved "recent real growth **UP**" and then gives
-FY24 as 8.2% to 7.2%, which is a downward revision (FY25 6.5% to 7.1% is upward). Left
-exactly as written — the figures are research's, not code's — but the generalisation does not
-hold for FY24.
-
-## Left alone deliberately
-`cad-gdp` still warns `denominator-break`: it is a `% of GDP` series spanning 27 Feb 2026 that
-does not carry P-10, and P-10 does not list it. Whether RBI's BoP ratio rests on the restated
-denominator is a research question, not a code one. Warn only; does not block.
-
-## Result
-`validate` 0 errors / 11 warnings · `selftest` 18/18 rules fire, 3 invalid fixtures rejected ·
-`typecheck` clean · `build` 125 static pages · NPA toggle verified in-browser at 1440px and
-390px: renders at FY2013-14, FY2017-18, FY2024-25 for SCB domestic; blocked for PSB.
+| Cumulative SCB write-offs to 31 March 2025 | RBI / Parliament answer for full FY2024-25 | High — converts the adjusted floor into a point estimate |
+| Annual SCB gross advances FY15-FY26 | RBI Trend & Progress | High — unblocks continuous adjusted rendering |
+| Whether RBI restated BoP ratios onto the 2022-23 base | RBI BoP statistics release notes | High — affects all non-MoSPI ratios |
+| `pvt-gross-npa` reporting basis | RBI Trend & Progress (reports both bases) | High — series barred from shared axis until known |
+| Annual write-offs FY15-FY26, primary | RBI RTI / Parliament, primary documents | Medium — replaces the ~2%-high reconstruction |
