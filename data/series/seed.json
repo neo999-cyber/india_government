@@ -1085,7 +1085,7 @@
    "P-17",
    "P-18"
   ],
-  "notes": "This is the denominator P-17's adjustment requires. NOTE: gross advances is NOT the same aggregate as 'domestic credit' (₹66.91→₹181.34 lakh crore, quoted in P-17 prose) — at Mar 2025 advances derive to ~₹98 lakh crore against ~₹181 lakh crore of domestic credit. Using domestic credit as the denominator would understate the adjusted ratio by roughly half."
+  "notes": "This is the denominator P-17's adjustment requires. NOTE: gross advances is NOT the same aggregate as 'domestic credit' (₹66.91 to ₹181.34 lakh crore, quoted in P-17 prose) — at Mar 2025 advances derive to ~₹98 lakh crore against ~₹181 lakh crore of domestic credit. Using domestic credit as the denominator would understate the adjusted ratio by roughly half."
  },
  {
   "id": "scb-gross-npa",
@@ -1450,6 +1450,7 @@
    }
   ],
   "provenanceRefs": [
+   "P-10",
    "P-14"
   ],
   "notes": "Phase-1 peak of 25.4% (FY2013-14, T1) and WDI 22.97% for '2014' are different period bases — see P-14, not a contradiction."

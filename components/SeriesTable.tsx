@@ -61,13 +61,23 @@ export function SeriesTable({
   const markerPeriodKey = (m: Marker) =>
     m.kind === 'break' ? periodKey(m.brk.period) : periodKey(m.denom.period);
 
-  /** Marks that render above the row for `periods[index]`. */
+  /**
+   * Marks that render above the row for `periods[index]`.
+   *
+   * A mark takes effect above the first row at or after it, rather than only above a row
+   * whose period matches it exactly. The distinction matters whenever a series is sparse:
+   * the write-off-adjusted NPA view is defined at three sourced periods (FY2013-14,
+   * FY2017-18, FY2024-25) and spans both the AQR and COVID recognition breaks without
+   * carrying a row for either. Matching exactly would drop those seams entirely and print
+   * three figures that read as a trajectory across two breaks the instrument exists to
+   * mark — rule 2, in the one view most likely to be read as a verdict on the cleanup.
+   */
   const marksBefore = (index: number) =>
     markers.filter((m) => {
       if (m.kind === 'break' && m.placement === 'terminus') return false;
       const key = markerPeriodKey(m);
       if (key > last) return false;
-      return index === 0 ? key <= first : key === periodKey(periods[index]);
+      return index === 0 ? key <= first : key > periodKey(periods[index - 1]) && key <= periodKey(periods[index]);
     });
 
   /** Terminal marks: the series stops here, or the mark post-dates every observation. */

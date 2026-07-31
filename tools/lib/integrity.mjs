@@ -45,7 +45,8 @@ const RATIO_TO_GDP_UNITS = new Set(['% of GDP']);
  */
 const BASIS_DISPUTE = 'P-18';
 const WRITE_OFF_DISPUTE = 'P-17';
-const ADVANCES_SERIES = 'scb-advances';
+const ADVANCES_SERIES = 'scb-gross-advances';
+const NPA_AMOUNT_SERIES = 'scb-gross-npa-amount';
 
 /** Earliest mention wins, as in lib/npa.ts. */
 function basisOf(series) {
@@ -301,8 +302,9 @@ export function checkIntegrity(records, { today }) {
     // P-17: the write-off adjustment needs a denominator. Without it the adjusted view is
     // blocked in the UI rather than estimated, and this says why.
     if (seriesRefs.includes(WRITE_OFF_DISPUTE) && (s.unit ?? '').trim() === '% of advances') {
-      if (!seriesIds.has(ADVANCES_SERIES)) {
-        add('warn', 'npa-adjustment', r.file, where, `carries ${WRITE_OFF_DISPUTE}, which requires an adjusted view of gross NPAs plus cumulative write-offs over the same denominator, but "${ADVANCES_SERIES}" (total advances, ₹ lakh crore) is not in /data. The adjusted view renders as unavailable until it lands — nothing is estimated in its place`);
+      const missing = [ADVANCES_SERIES, NPA_AMOUNT_SERIES].filter((id) => !seriesIds.has(id));
+      if (missing.length > 0) {
+        add('warn', 'npa-adjustment', r.file, where, `carries ${WRITE_OFF_DISPUTE}, which defines the adjusted view as (gross NPAs + cumulative write-offs) / gross advances, but ${missing.map((id) => `"${id}"`).join(' and ')} ${missing.length === 1 ? 'is' : 'are'} not in /data. The adjusted view renders as unavailable until ${missing.length === 1 ? 'it lands' : 'they land'} — nothing is estimated in its place`);
       }
     }
 

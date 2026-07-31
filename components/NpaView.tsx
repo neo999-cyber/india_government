@@ -32,15 +32,17 @@ export function NpaView({
   series,
   writeOffs,
   advances,
+  amount,
   reported,
 }: {
   series: Series;
   writeOffs?: Series;
   advances?: Series;
+  amount?: Series;
   /** The reported view, built by the page so it keeps its handoff context. */
   reported: ReactNode;
 }) {
-  const adjustment = writeOffAdjustment(series, writeOffs, advances);
+  const adjustment = writeOffAdjustment(series, writeOffs, advances, amount);
   const derived = adjustedSeries(series, adjustment);
   const basis = basisOf(series);
   const name = `npa-view-${series.id}`;
@@ -101,11 +103,19 @@ export function NpaView({
           <>
             <SeriesTable series={derived} />
             <p className="source-line">
-              Adjusted = reported + cumulative write-offs ÷ advances (
-              <Link href={`/provenance/${WRITE_OFF_DISPUTE}/`}>{WRITE_OFF_DISPUTE}</Link>), both
-              on the {basis ? BASIS_LABEL[basis] : 'unstated'} basis. Derived for display: it is
-              not a record in /data, and each point carries the weakest status of its inputs.
+              Adjusted = (gross NPAs + cumulative write-offs) ÷ gross advances (
+              <Link href={`/provenance/${WRITE_OFF_DISPUTE}/`}>{WRITE_OFF_DISPUTE}</Link>), all
+              three on the {basis ? BASIS_LABEL[basis] : 'unstated'} basis and one bank
+              population. Derived for display: it is not a record in /data, and each point
+              carries the weakest status of its inputs.
             </p>
+            {adjustment.caveats.length > 0 ? (
+              <ul className="npa-caveats">
+                {adjustment.caveats.map((c) => (
+                  <li key={c}>{c}</li>
+                ))}
+              </ul>
+            ) : null}
           </>
         ) : (
           <div className="npa-blocked">
