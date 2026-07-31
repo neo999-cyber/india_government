@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getLedger, getProvenance, getSeries, ledger as allLedger } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
-import { CaveatFlag, SourceList } from '@/components/marks';
+import { Absences, CaveatFlag, SourceList } from '@/components/marks';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -88,6 +88,9 @@ export default async function LedgerDetail({ params }: Props) {
           </>
         ) : null}
       </dl>
+
+      {/* Rule 4a: what this record should be able to show and cannot. */}
+      <Absences items={l.unmeasured} />
 
       {l.assessment === 'baseline-context' ? (
         <p className="prose-note">

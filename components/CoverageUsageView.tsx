@@ -3,7 +3,7 @@ import type { ProvenanceRecord, Series } from '@/lib/types';
 import type { CoverageUsagePair } from '@/lib/rules';
 import { periodLabel } from '@/lib/format';
 import { SeriesTable } from './SeriesTable';
-import { Absence, Value } from './marks';
+import { Absences, Value } from './marks';
 
 /**
  * A coverage figure beside the usage figure that qualifies it (P-22).
@@ -77,6 +77,8 @@ export function CoverageUsageView({
   counterpart?: ProvenanceRecord;
   governing?: ProvenanceRecord;
 }) {
+  const absences = [...(coverage.unmeasured ?? []), ...(usage?.unmeasured ?? [])];
+
   const gapStatement = (() => {
     if (usage && comparable(coverage, usage)) {
       const c = latest(coverage);
@@ -154,17 +156,11 @@ export function CoverageUsageView({
         ) : null}
       </div>
 
-      {/* A stage with no measurement is rendered, not omitted (CLAUDE.md rule 4a).
-          Sanctioned beside completed reads as the whole chain unless the missing third
-          link is on the page. */}
-      {pair.unmeasuredStage ? (
-        <Absence heading="Next stage: not measured" what={pair.unmeasuredStage}>
-          The cascade therefore stops one stage short of the outcome. Nothing is estimated in
-          its place and no series stands here — an empty stage stated is a finding, where the
-          same stage left off the page would read as though the stage before it were the end of
-          the chain.
-        </Absence>
-      ) : null}
+      {/* Absences declared by either side, pooled into one block below the pair rather than
+          squeezed into a column (CLAUDE.md rule 4a). They are facts about the chain the pair
+          describes — sanctioned beside completed reads as the whole chain unless what comes
+          after completion is on the page — so they belong at the pair's own width. */}
+      <Absences items={absences} heading="Not measured in this chain" />
 
       <p className="cu-gap">
         <span className="label">The gap</span> {gapStatement}

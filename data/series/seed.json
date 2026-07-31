@@ -1840,7 +1840,14 @@
    "P-25",
    "P-22"
   ],
-  "notes": "19,812 certified villages, 2,37,608 households, 761 districts. The 98%-tap vs 76%-safe-water wedge is the coverage-usage gap made explicit by the government's own assessment."
+  "notes": "19,812 certified villages, 2,37,608 households, 761 districts. The 98%-tap vs 76%-safe-water wedge is the coverage-usage gap made explicit by the government's own assessment.",
+  "unmeasured": [
+   {
+    "what": "National functional coverage — the share of ALL rural households receiving water to Mission standards",
+    "why": "The 76% figure is a share of CERTIFIED households, a subset of connected ones, so it cannot be combined with the 82% connection rate to yield a national figure.",
+    "wouldFill": "A functionality assessment sampling all rural households rather than certified villages"
+   }
+  ]
  },
  {
   "id": "jjm-tap-coverage",
@@ -3216,7 +3223,14 @@
   "provenanceRefs": [
    "P-22"
   ],
-  "notes": "The usage-side counterpart to pmay-g-houses. NOTE the cascade does not end here: OCCUPANCY IS UNMEASURED. No series exists for houses completed and actually occupied, and none should be fabricated — the honest statement is that the third stage of the cascade has no public measurement."
+  "notes": "The usage-side counterpart to pmay-g-houses. Sanctioned 3.87 crore, completed 2.95 crore.",
+  "unmeasured": [
+   {
+    "what": "Houses completed and actually occupied",
+    "why": "The third stage of the cascade has no public measurement; completion is reported, occupancy is not.",
+    "wouldFill": "PMAY-G dashboard, if an occupancy field is ever published"
+   }
+  ]
  },
  {
   "id": "pmay-g-houses",
@@ -3383,6 +3397,18 @@
   "provenanceRefs": [
    "P-22"
   ],
-  "notes": "THE metric for this scheme, not connections. Against a general-consumer benchmark of roughly 6+ per year. Of the 3.18 crore cohort, 17.61% never returned for a second refill and 33.02% took only one to three. CAG: 'the overall average refill consumption of PMUY beneficiaries is declining.' Subsidised refills were cut from 12 to 9 in 2025 and 9 to 4 in 2026."
+  "notes": "THE metric for this scheme, not connections. Against a general-consumer benchmark of roughly 6+ per year. Of the 3.18 crore cohort, 17.61% never returned for a second refill and 33.02% took only one to three. CAG: 'the overall average refill consumption of PMUY beneficiaries is declining.' Subsidised refills were cut from 12 to 9 in 2025 and 9 to 4 in 2026.",
+  "unmeasured": [
+   {
+    "what": "Population-scale health outcomes from reduced solid-fuel exposure",
+    "why": "The scheme's stated rationale was health, but no population-level outcome study links Ujjwala to respiratory or maternal health change.",
+    "wouldFill": "A cohort or difference-in-differences study on household air pollution exposure"
+   },
+   {
+    "what": "Refill rates after December 2018",
+    "why": "The CAG audit series stops there and no comparable published series continues it.",
+    "wouldFill": "MoPNG refill data, if published"
+   }
+  ]
  }
 ]

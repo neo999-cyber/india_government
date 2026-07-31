@@ -495,6 +495,34 @@ export function checkIntegrity(records, { today }) {
     }
   }
 
+  // Declared absences (`unmeasured`, schema field on series and ledger as of phase 4d).
+  //
+  // There is deliberately NO rule here separating a real absence from ordinary sparsity.
+  // The distinction is dimension-versus-period and the data model has nothing tying an
+  // `unmeasured` entry to periods, so any check would have to read the prose — and the
+  // obvious heuristic fails on the data that exists: two of the six declarations are
+  // period-shaped ("Refill rates after December 2018", "Farmer household income after
+  // 2018-19") and both are correct, because in each case no series continues at all rather
+  // than merely lagging. A rule rejecting those would reject a third of the true positives.
+  // Left to review, where the judgement actually lives.
+  //
+  // What IS clean: an absence with no identified route to closing. `wouldFill` doubles as
+  // the verification queue, so an entry missing it drops out of that queue silently. Warn,
+  // not error — some things are unmeasured precisely because no instrument for them exists.
+  for (const layer of ['series', 'ledger']) {
+    for (const r of byLayer[layer]) {
+      const rec = r.record;
+      if (!rec || typeof rec !== 'object' || !Array.isArray(rec.unmeasured)) continue;
+      const where = label(r);
+      rec.unmeasured.forEach((u, i) => {
+        if (!u || typeof u !== 'object') return;
+        if (typeof u.wouldFill !== 'string' || !u.wouldFill.trim()) {
+          add('warn', 'unmeasured-route', r.file, where, `unmeasured[${i}] ("${String(u.what).slice(0, 60)}") names no wouldFill, so it states an absence without a route to closing it and does not reach the verification queue. Fine when no instrument for it exists — worth saying so if that is the case`);
+        }
+      });
+    }
+  }
+
   // --- provenance ----------------------------------------------------------
   for (const r of byLayer.provenance) {
     const p = r.record;

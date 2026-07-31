@@ -769,3 +769,27 @@ tr th:last-child {
   font-size: 0.875rem;
   color: var(--ink-soft);
 }
+
+/* Several absences on one record are one block with several entries, not several blocks —
+   two facts about one series should not arrive as two framed warnings. */
+.absence-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.absence-list > li + li {
+  margin-top: 0.6rem;
+  border-top: 1px dotted var(--rule-strong);
+  padding-top: 0.6rem;
+}
+
+.absence-fill {
+  margin: 0.25rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--ink-dim);
+}
+
+.absence-fill .label {
+  margin-right: 0.35rem;
+}

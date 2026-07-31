@@ -20,6 +20,7 @@ const NAV = [
   { href: '/terms/', label: 'terms' },
   { href: '/peers/', label: 'peers' },
   { href: '/counterfactual/', label: 'counterfactual' },
+  { href: '/unmeasured/', label: 'unmeasured' },
   { href: '/method/', label: 'method' },
 ];
 
