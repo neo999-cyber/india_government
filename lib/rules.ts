@@ -115,6 +115,28 @@ export interface CoverageUsagePair {
   usage: string | null;
   /** Independent counterpart held in a provenance record rather than as a series. */
   usageFromProvenance?: { record: string; holder: string };
+  /**
+   * The counterpart does not exist, and its absence IS the counterpart.
+   *
+   * Metro kilometres and household connections both have a utilisation measure that nothing
+   * publishes — ridership against DPR projection, and household supply-hours. Leaving those
+   * pairs out because the second series is missing would hide the finding twice over: the
+   * coverage figure would render alone, which is what pairing exists to prevent, and the
+   * fact that nobody measures the outcome would go unsaid. So the absence takes the usage
+   * position, rendered from the coverage series' own `unmeasured` declarations.
+   */
+  usageUnmeasured?: boolean;
+  /**
+   * Panel labels, where "administrative output / sustained use" would misdescribe the pair.
+   *
+   * The highways pair is not coverage against usage at all: nh-construction-pace is not the
+   * utilisation of nh-network-length, it is the honest measure of the same activity the
+   * headline overstates. Calling it "sustained use" would be a plain factual error in the
+   * interface. Same shape, same discipline, different relation.
+   */
+  labels?: { coverage: string; usage: string };
+  /** Replaces the standing framing sentence where the welfare wording does not fit. */
+  framing?: string;
   /** The record that states what the gap is and why it runs one way. */
   governing: string;
 }
@@ -146,6 +168,41 @@ export const COVERAGE_USAGE_PAIRS: readonly CoverageUsagePair[] = [
     coverage: 'pmay-g-houses',
     usage: 'pmay-g-completed',
     governing: COVERAGE_USAGE_GOVERNING,
+  },
+  {
+    scheme: 'National highways',
+    coverage: 'nh-network-length',
+    usage: 'nh-construction-pace',
+    labels: { coverage: 'Headline network figure', usage: 'The build record' },
+    framing:
+      'The network figure grew by about 55,000 km, of which roughly 54,004 km is state roads renotified as national highways. The construction series measures the same activity without the reclassification in it, so the two are not a headline and a detail — they are a figure and its correction.',
+    governing: 'P-30',
+  },
+  {
+    scheme: 'Airports',
+    coverage: 'airports-operational',
+    usage: 'udan-routes',
+    labels: { coverage: 'Facility count', usage: 'Routes actually operating' },
+    framing:
+      'The facility count rose on a broadened definition that includes heliports, waterdromes and reactivated airstrips. Routes operating is what any of it delivered — a facility with no route serves nobody.',
+    governing: 'P-38',
+  },
+  {
+    scheme: 'Metro rail',
+    coverage: 'metro-network',
+    usage: null,
+    usageUnmeasured: true,
+    governing: COVERAGE_USAGE_GOVERNING,
+  },
+  {
+    scheme: 'Household electrification',
+    coverage: 'household-electrification',
+    usage: null,
+    usageUnmeasured: true,
+    labels: { coverage: 'Connections reported', usage: 'Supply actually received' },
+    framing:
+      'A connection is an installation. Whether current flows through it for a usable number of hours a day is a different measurement, and it is the one that determines whether the connection changed anything.',
+    governing: 'P-32',
   },
   {
     scheme: 'Swachh Bharat (sanitation)',

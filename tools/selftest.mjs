@@ -81,8 +81,13 @@ const MUST_FIRE = [
  */
 const ISOLATED = [
   { dir: 'regime-gap', rule: 'regime-handoff' },
-  { dir: 'pair-half', rule: 'pair-incomplete' },
+  { dir: 'pair-half', rule: 'pair-incomplete', expect: 'usage counterpart' },
   { dir: 'caveat-orphan', rule: 'caveat-target' },
+  // Same rule, different branch: a pair standing its usage side on a declared absence, where
+  // the coverage series declares none. `expect` is what tells the two apart — without it a
+  // fixture passes on any pair-incomplete error, including one from the branch it is not
+  // testing, and the new branch could stop firing unnoticed.
+  { dir: 'pair-absent-counterpart', rule: 'pair-incomplete', expect: 'carries no "unmeasured" entry' },
 ];
 
 /**
@@ -162,11 +167,19 @@ for (const rule of MUST_FIRE) {
 }
 
 // 3b. Rules that need a fixture root to themselves.
-for (const { dir, rule } of ISOLATED) {
+for (const { dir, rule, expect } of ISOLATED) {
   const result = run(['--data', join(ROOT, 'tests', 'fixtures', dir)]);
-  const fired = result.report.findings.some((f) => f.level === 'error' && f.rule === rule);
-  if (!fired) failures.push(`rule "${rule}" did not fire as an error on tests/fixtures/${dir}`);
-  else notes.push(`  ${rule} fires on tests/fixtures/${dir}`);
+  const hits = result.report.findings.filter((f) => f.level === 'error' && f.rule === rule);
+  if (hits.length === 0) {
+    failures.push(`rule "${rule}" did not fire as an error on tests/fixtures/${dir}`);
+  } else if (expect && !hits.some((f) => f.message.includes(expect))) {
+    failures.push(
+      `rule "${rule}" fired on tests/fixtures/${dir} but not for "${expect}" — got: ` +
+        hits.map((f) => f.message).join(' | '),
+    );
+  } else {
+    notes.push(`  ${rule} fires on tests/fixtures/${dir}${expect ? ` (${expect})` : ''}`);
+  }
 }
 
 // 3c. Rules that must stay silent on a legitimate shape.

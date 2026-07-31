@@ -1336,6 +1336,54 @@
   ]
  },
  {
+  "id": "re-capacity",
+  "title": "Renewable energy installed capacity",
+  "unit": "GW",
+  "domain": "environment",
+  "tier": "T1",
+  "source": {
+   "name": "MNRE / CEA",
+   "url": "https://mnre.gov.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 76.38,
+    "status": "approx",
+    "note": "Phase-1 baseline context"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 87,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 125,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 220,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 274.68,
+    "status": "approx",
+    "note": "3.59x since 2014"
+   }
+  ],
+  "notes": "Non-fossil capacity reached 283.46 GW; renewables met 51.5% of demand in July 2025. Progress toward the 500 GW non-fossil by 2030 target is broadly on track."
+ },
+ {
   "id": "solar-capacity",
   "title": "Grid-connected solar installed capacity",
   "unit": "GW",
@@ -1817,6 +1865,216 @@
   "notes": "Severe wasting ROSE from 7.5% to 7.7% over the same period. NFHS-6 fieldwork delayed; publication status uncertain as of mid-2026."
  },
  {
+  "id": "airports-operational",
+  "title": "Operational airports",
+  "unit": "airports",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "AAI / Ministry of Civil Aviation",
+   "url": "https://www.aai.aero/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 74,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 159,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 165,
+    "status": "approx",
+    "note": "July 2026"
+   }
+  ],
+  "provenanceRefs": [
+   "P-38"
+  ],
+  "caveat": "Counting basis broadened. The figure includes 9 heliports and 2 waterdromes and counts reactivated airstrips as new; only about 11 genuinely greenfield airports were built since May 2014."
+ },
+ {
+  "id": "atc-losses",
+  "title": "Aggregate technical and commercial losses",
+  "unit": "% of energy input",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "Power Finance Corporation",
+   "url": "https://pfcindia.com/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 23.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 19,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 17,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 15.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 16.12,
+    "status": "approx",
+    "note": "First reversal in five years"
+   }
+  ],
+  "notes": "Distribution efficiency improved then stalled. The ACS-ARR gap narrowed to ₹0.45/kWh (FY23) before widening again to ~₹0.60. Accumulated discom losses stood at ₹7.08 lakh crore and debt at ₹7.42 lakh crore at 31 March 2024."
+ },
+ {
+  "id": "bharatnet-gps",
+  "title": "BharatNet gram panchayats service-ready",
+  "unit": "lakh gram panchayats",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "Department of Telecommunications",
+   "url": "https://bbnl.nic.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 2.149,
+    "status": "approx",
+    "note": "Of 2,22,341 Phase I and II GPs, December 2025"
+   }
+  ],
+  "provenanceRefs": [
+   "P-37"
+  ],
+  "caveat": "'Service-ready' means middle-mile fibre has reached the gram panchayat, not that any household or institution receives service. Functional last-mile delivery lags substantially.",
+  "unmeasured": [
+   {
+    "what": "BharatNet functional service delivery — actual throughput and uptime per gram panchayat",
+    "why": "Only service-readiness is published; delivered service is not systematically reported.",
+    "wouldFill": "UNMS dashboard uptime data plus per-GP throughput measurement"
+   }
+  ]
+ },
+ {
+  "id": "household-electrification",
+  "title": "Households with an electricity connection",
+  "unit": "% of households",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "Ministry of Power / Saubhagya",
+   "url": "https://powermin.gov.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 70,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 82,
+    "status": "approx",
+    "note": "Saubhagya launched Oct 2017"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 99,
+    "status": "approx",
+    "note": "~2.86 crore households connected in ~18 months"
+   }
+  ],
+  "provenanceRefs": [
+   "P-32"
+  ],
+  "caveat": "Connection is not supply. Around 53% of villages received under 12 hours a day of domestic supply as of 2019, and no continuous national series of household supply-hours exists.",
+  "unmeasured": [
+   {
+    "what": "Actual hours of electricity supply received by households, as a continuous national series",
+    "why": "Connections are reported; supply-hours are not published as a national time series. Survey evidence (ISEP, IRES) is periodic and partial.",
+    "wouldFill": "CEA or discom feeder-level metering aggregated nationally, or a recurring national residential energy survey"
+   }
+  ]
+ },
+ {
+  "id": "internet-subscribers",
+  "title": "Internet subscribers",
+  "unit": "crore subscribers",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "TRAI performance indicator reports",
+   "url": "https://trai.gov.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 30,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 42,
+    "status": "approx",
+    "note": "Jio launch Sept 2016"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 74,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 95,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 109,
+    "status": "approx"
+   }
+  ],
+  "notes": "ATTRIBUTION: this is overwhelmingly the Jio effect — a roughly 98% cut in 4G data prices from 2016 — not policy. Data consumption rose from 0.27 GB per user per month (FY2014-15) to 20.27 GB (March 2024). Rural penetration remains 48.31 per 100 against urban 126.80."
+ },
+ {
   "id": "jjm-functionality",
   "title": "JJM certified households receiving water meeting Mission standards",
   "unit": "% of certified households",
@@ -1883,6 +2141,311 @@
   "notes": "Original 2024 deadline slipped to 2028 under JJM 2.0 (outlay raised to ~₹8.69 lakh crore, approved March 2026)."
  },
  {
+  "id": "logistics-cost-gdp",
+  "title": "Logistics cost as share of GDP",
+  "unit": "% of GDP",
+  "domain": "infrastructure",
+  "tier": "T4",
+  "source": {
+   "name": "DPIIT / NCAER",
+   "url": "https://ncaer.org/wp-content/uploads/2023/12/NCAER_Report_LogisticsCost2023.pdf",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2021-22",
+    "note": "New DPIIT/NCAER methodology replaces the long-cited 13-14% figure — a change of method, not a measured fall",
+    "provenanceRef": "P-36"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 8.35,
+    "status": "approx",
+    "note": "Range 7.8-8.9%"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 7.97,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-36"
+  ],
+  "caveat": "Do not compare with the older 13-14% figure. That number was never rigorously derived and the gap between the two measures the change in methodology, not a halving of logistics costs."
+ },
+ {
+  "id": "lpi-rank",
+  "title": "World Bank Logistics Performance Index rank",
+  "unit": "rank",
+  "domain": "infrastructure",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank LPI",
+   "url": "https://lpi.worldbank.org/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "CY",
+  "breaks": [
+   {
+    "period": "2023",
+    "note": "Methodology change and one-decimal score rounding; rank trajectory is more robust than score",
+    "provenanceRef": "P-35"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 54,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2018",
+    "value": 44,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2023",
+    "value": 38,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2018",
+    "value": 100,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2018",
+    "value": 39,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2018",
+    "value": 46,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2018",
+    "value": 26,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2023",
+    "value": 43,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2023",
+    "value": 61,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2023",
+    "value": 19,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-35",
+   "P-14"
+  ],
+  "notes": "India improved 54 to 38 across three editions — one of the more robust cross-country readings in this domain."
+ },
+ {
+  "id": "metro-network",
+  "title": "Metro rail network operational",
+  "unit": "km",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "MoHUA / PIB",
+   "url": "https://pib.gov.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 248,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 660,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 860,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 1013,
+    "status": "approx",
+    "note": "23 cities; daily ridership 28 lakh to 1.12 crore"
+   }
+  ],
+  "provenanceRefs": [
+   "P-22"
+  ],
+  "caveat": "Ridership runs at 25-30% of the projections used to justify these projects, with Delhi the best performer at 47.45% and Bengaluru as low as 6%. Metro Rail Policy 2017's 14% return threshold created an incentive to inflate DPR forecasts.",
+  "unmeasured": [
+   {
+    "what": "Metro ridership against DPR projection, as a published annual series",
+    "why": "No official series exists; the evidence comes from one-off CAG audits and academic studies.",
+    "wouldFill": "MoHUA mandating annual actual-versus-DPR ridership publication for every operational metro"
+   }
+  ]
+ },
+ {
+  "id": "nh-construction-pace",
+  "title": "National highway construction pace",
+  "unit": "km per day",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "MoRTH",
+   "url": "https://morth.nic.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 11.6,
+    "status": "approx",
+    "note": "Phase-1 baseline"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 12,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 16.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 22.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 28.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 30,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 28,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 37,
+    "status": "approx",
+    "note": "Peak; 13,327 km"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 28.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 28.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 33.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 29,
+    "status": "approx",
+    "note": "10,660 km"
+   }
+  ],
+  "provenanceRefs": [
+   "P-30",
+   "P-31"
+  ],
+  "notes": "The honest output metric for highway building. Roughly tripled from the 2014 baseline before easing back."
+ },
+ {
+  "id": "nh-four-lane",
+  "title": "National highways four-lane and above",
+  "unit": "km",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "MoRTH",
+   "url": "https://morth.nic.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 18278,
+    "status": "approx",
+    "note": "Phase-1 baseline"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 45947,
+    "status": "approx",
+    "note": "2.5x"
+   }
+  ],
+  "provenanceRefs": [
+   "P-30",
+   "P-31"
+  ],
+  "notes": "Capacity upgrade rather than network extension, but genuine construction."
+ },
+ {
   "id": "nh-network",
   "title": "National highway network length",
   "unit": "km",
@@ -1902,6 +2465,511 @@
     "note": "April 2014; construction pace 11.6 km/day"
    }
   ]
+ },
+ {
+  "id": "nh-network-length",
+  "title": "National highway network length",
+  "unit": "km",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "MoRTH / Lok Sabha replies",
+   "url": "https://morth.nic.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 91287,
+    "status": "approx",
+    "note": "Phase-1 baseline"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 114158,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 132995,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 145240,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 146342,
+    "status": "approx",
+    "note": "mid-2025"
+   }
+  ],
+  "provenanceRefs": [
+   "P-30",
+   "P-31"
+  ],
+  "caveat": "This series overstates construction. Roughly 54,004 km of the ~55,000 km increase since April 2014 is reclassification of existing state roads as national highways, not new building. Use nh-construction-pace and nh-four-lane for the build record."
+ },
+ {
+  "id": "port-cargo",
+  "title": "Major port cargo throughput",
+  "unit": "million tonnes",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "Ministry of Ports, Shipping and Waterways",
+   "url": "https://shipmin.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 581.34,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 699.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 720.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 819.23,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 915.17,
+    "status": "approx"
+   }
+  ]
+ },
+ {
+  "id": "port-turnaround",
+  "title": "Major port average turnaround time",
+  "unit": "hours",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "Ministry of Ports, Shipping and Waterways",
+   "url": "https://shipmin.gov.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 96,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 82.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 62.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 52.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 49.5,
+    "status": "approx"
+   }
+  ],
+  "notes": "A genuine efficiency gain and one of two sub-domains where output and utilisation both improved. India still trails Japan (~8 hrs) and Singapore."
+ },
+ {
+  "id": "project-delays",
+  "title": "Central sector projects delayed",
+  "unit": "% of monitored projects",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI flash reports on central sector projects",
+   "url": "https://mospi.gov.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 27.1,
+    "status": "approx",
+    "note": "March 2019"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 41.6,
+    "status": "approx",
+    "note": "March 2024: 779 of 1,873 projects delayed"
+   }
+  ],
+  "notes": "Cost overrun of about ₹5 trillion, 18.7% of original sanctioned cost, with railways carrying the largest single-sector share. Execution efficiency did not improve despite the capex push. Overruns are likely understated because agencies do not consistently report revised estimates."
+ },
+ {
+  "id": "rail-accidents",
+  "title": "Consequential train accidents",
+  "unit": "accidents per year",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "Indian Railways / data.gov.in",
+   "url": "https://data.gov.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 135,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 107,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 104,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 73,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 59,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 55,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 34,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 48,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 40,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 31,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 16,
+    "status": "pending",
+    "note": "Provisional"
+   }
+  ],
+  "provenanceRefs": [
+   "P-34"
+  ],
+  "notes": "A genuine improvement: average 171/year (2004-14) against 68/year (2014-24); accidents per million train km fell 0.11 to 0.03. But 'consequential' is a narrow category, and the June 2023 Balasore collision killed ~296."
+ },
+ {
+  "id": "rail-avg-speed",
+  "title": "Mail and express train average speed",
+  "unit": "km per hour",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "CAG audit of Indian Railways",
+   "url": "https://cag.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 50,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 51,
+    "status": "approx",
+    "note": "CAG found no increase 2014-2019"
+   }
+  ],
+  "notes": "The utilisation counterpart to new trains. Vande Bharat runs at ~74 km/h average against a 160 km/h design speed, because track geometry was largely unchanged.",
+  "unmeasured": [
+   {
+    "what": "Average speed after 2019",
+    "why": "The CAG series stops and no comparable published series continues it.",
+    "wouldFill": "Indian Railways annual statistical statements, if speed is reported on a consistent basis"
+   }
+  ]
+ },
+ {
+  "id": "rail-electrification",
+  "title": "Broad gauge route electrified",
+  "unit": "% of broad gauge",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "Indian Railways / PIB",
+   "url": "https://pib.gov.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 20,
+    "status": "approx",
+    "note": "21,801 rkm"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 33,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 45,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 99,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 99.6,
+    "status": "approx",
+    "note": "69,873 of ~70,142 rkm, March 2026"
+   }
+  ],
+  "notes": "The domain's clearest converted output: ~₹6,000 crore annual fuel saving and ~180 crore litres of diesel displaced in 2024-25. India ranks second globally behind Switzerland, ahead of China (82%), Japan (64%), Russia (52%)."
+ },
+ {
+  "id": "rail-freight-share",
+  "title": "Railway share of national freight",
+  "unit": "% of freight movement",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "Parliamentary Standing Committee / Indian Railways",
+   "url": "https://pib.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 30,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 28,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 27,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 26,
+    "status": "approx",
+    "note": "Standing Committee, Dec 2024"
+   }
+  ],
+  "notes": "The decline the Dedicated Freight Corridors were built to reverse. Down from ~86-89% in the 1950s. Record absolute tonnage (1,670 MT in FY2025-26) coexists with a falling share — volume grew slower than road freight."
+ },
+ {
+  "id": "road-fatalities",
+  "title": "Road accident fatalities",
+  "unit": "deaths per year",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "MoRTH, Road Accidents in India",
+   "url": "https://morth.nic.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 141526,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2016",
+    "value": 150785,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2019",
+    "value": 151113,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2020",
+    "value": 131714,
+    "status": "approx",
+    "note": "COVID"
+   },
+   {
+    "country": "IND",
+    "period": "2022",
+    "value": 168491,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2023",
+    "value": 172890,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 177175,
+    "status": "approx",
+    "note": "Record; 4,87,707 accidents, +2.5% YoY"
+   }
+  ],
+  "caveat": "Police-reported figures. SRS verbal-autopsy estimates put the true 2022 toll near 2.7 lakh, roughly double, so this series understates fatalities and the trend may be steeper than shown.",
+  "notes": "THE counter-indicator for the highway programme: fatalities rose as roads improved. Severity climbed from 21.6 deaths per 100 accidents (2005) to 36.3 (2024). National highways carry ~2% of road length but 36.6% of fatalities."
+ },
+ {
+  "id": "thermal-plf",
+  "title": "Thermal plant load factor",
+  "unit": "%",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "CEA",
+   "url": "https://cea.nic.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2009-10",
+    "value": 77.5,
+    "status": "approx",
+    "note": "Pre-baseline peak"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 55.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 53.37,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 70,
+    "status": "approx",
+    "note": "Recovered as demand surged"
+   }
+  ],
+  "notes": "Fell as capacity outran demand — an under-utilisation indicator — then recovered. Coal shortages caused power crises in October 2021 and April 2022."
+ },
+ {
+  "id": "udan-routes",
+  "title": "UDAN routes operational",
+  "unit": "routes",
+  "domain": "infrastructure",
+  "tier": "T1",
+  "source": {
+   "name": "Ministry of Civil Aviation",
+   "url": "https://www.civilaviation.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 342,
+    "status": "approx",
+    "note": "Of 679 launched — roughly half discontinued"
+   }
+  ],
+  "notes": "Route attrition is the utilisation counterpart to routes awarded. VGF spend ~₹4,700 crore plus ~₹4,800 crore on airport infrastructure."
  },
  {
   "id": "cad-gdp",

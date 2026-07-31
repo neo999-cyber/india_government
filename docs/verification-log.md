@@ -228,67 +228,124 @@ Note that three of these were previously buried in prose. `jjm-functionality`'s 
 
 ---
 
-# Verification log — cycle 2026-07-31g (Phase 4d code run: unmeasured as a field)
+# Verification log — cycle 2026-07-31f (Phase 5, infrastructure)
 
-Counts as expected: 59 series (352 points), 43 ledger, 29 provenance. Gate clean on arrival.
-No `/data` edits.
+## The central question answered: the pattern SPLITS
+Phase 4 established that administrative output overstates sustained use. Phase 5 tested whether that holds when outputs are physical. It does not hold uniformly, and the split is the finding.
 
-## Absence now reads from the record
-`Absence` became `Absences`, taking `record.unmeasured` rather than caller-supplied props.
-`unmeasuredStage` is gone from `CoverageUsagePair` — the PMAY occupancy declaration lives on
-`pmay-g-completed` now, which is where it belongs.
+**The gap closes** where the asset IS the service and demand pre-existed: railway electrification (20% to 99.6%, converting directly into ~₹6,000 crore annual fuel saving), port turnaround (96 to 49.5 hours alongside throughput rising 581 to 915 MT), and mobile data (0.27 to 20.27 GB per user per month).
 
-Rendering sites: the pair view (pooled across both sides, at the pair's own width), series
-detail (suppressed when the pair view already pooled them, so nothing renders twice), and
-ledger detail. Six declarations across five records all render.
+**The gap stays wide** where usage depends on complementary behaviour or on demand that was over-forecast: metros (25-30% of DPR ridership, Bengaluru at 6%), UDAN (about half of 679 routes discontinued), BharatNet (service-ready is fibre reaching a village, not service delivered), and rural power (connections near-universal, ~53% of villages under 12 hours a day).
 
-**Multiple declarations on one record are one block, not several.** `ujjwala-refills` carries
-two — no population-scale health-outcome study, and no refill data after Dec 2018 — and they
-render inside a single dashed frame headed "2 declared", separated by a dotted rule that
-appears only *between* entries. Two facts about one series arriving as two framed warnings
-would double the furniture around the same prose and read as unrelated. Verified in the
-browser: one `.absence` element, two `<li>`, dashed 1px outer border, transparent background,
-no separator above the first entry.
+**And in one case the output itself is an artefact**: see P-30.
 
-## No validator rule for the sparsity distinction — and the evidence for that
-The obvious heuristic is to reject `what` values that name periods rather than dimensions.
-It fails on the data that exists. **Two of the six declarations are period-shaped and both are
-correct:**
+## P-30 is the phase's most consequential finding
+The national highway network grew 91,287 to 146,342 km, cited as a 60% expansion. MoRTH's own factsheet records **~54,004 km of state roads NOTIFIED as national highways since April 2014** against a network increase of ~55,000 km. The expansion is overwhelmingly reclassification. The honest build metrics — pace (11.6 to a peak of 37 km/day) and four-laning (18,278 to 45,947 km) — are real and impressive, which makes the inflated headline unnecessary as well as misleading.
 
-- `ujjwala-refills` — "Refill rates after December 2018". Legitimate because the CAG series
-  *stops* and nothing published continues it, not because a pull is outstanding.
-- `L-0041` — "Farmer household income after 2018-19". Legitimate because no Situation
-  Assessment Survey has been conducted since 2019.
+`nh-network-length` carries a caveat saying so, and `nh-construction-pace` and `nh-four-lane` both declare P-30 — not because they are distorted by it, but because they are the corrective, and a reader arriving at them should reach the record explaining why they are the ones to use.
 
-A rule keying on period-shaped prose would reject a third of the true positives. The other
-candidate — flag `unmeasured` on a record carrying `pending` points — has no evidence base
-either: none of the five records has a single pending point, and the combination it targets
-(recent years pending, plus an outcome never measured at all) is legitimate on its face.
+## Numbering collision resolved
+The phase-5 report proposed P-23 to P-31; those numbers are held by phase 4. Infrastructure breaks are renumbered **P-30 to P-38**.
 
-The distinction is dimension-versus-period and the model has nothing tying an `unmeasured`
-entry to periods, so any check has to read prose. Prose heuristics in this validator have
-already aged badly once — the T5 rule that named P-08. **Left to review, as offered**, with
-the reasoning recorded in `integrity.mjs` so the next person does not re-derive it.
+## New provenance records
+P-30 NH reclassification · P-31 four-laning counted as construction · P-32 village versus household electrification thresholds · P-33 Railway Budget merger · P-34 punctuality suspension and consequential-accident classification · P-35 LPI 2023 methodology · P-36 logistics cost rebasing · P-37 BharatNet service-ready definition · P-38 airport count basis.
 
-## One rule that is clean, added at warn level
-`unmeasured-route`: an entry with no `wouldFill` states an absence with no route to closing it
-and drops out of the verification queue silently. Warn rather than error — some things are
-unmeasured precisely because no instrument for them exists, and that is a legitimate record.
-Fires zero times today; all six declarations carry `wouldFill`. **Not requested — remove it if
-it is unwanted.**
+**P-36 deserves attention**: the logistics cost figure fell from a long-cited 13-14% of GDP to 7.97%, which reads as a halving. It is a NEW METHODOLOGY, not a measured fall. The old figure was never rigorously derived, so the new estimate is probably better AND the apparent improvement is an artefact — both are true, and the series carries a caveat forbidding the comparison.
 
-## The queue is now a page: `/unmeasured/`
-Every declaration in one table, then the `wouldFill` values as a verification queue in their
-own right, then any absence with no identified route (currently none, so that section does not
-render). Added to the nav.
+## Three counter-indicators recorded against the construction story
+- **Road fatalities rose** to a record 1,77,175 (2024), with severity climbing from 21.6 to 36.3 deaths per 100 accidents. Filed as `failed` (L-0046). Police figures likely understate: SRS estimates are roughly double.
+- **Rail freight modal share kept falling** to ~26% despite the Dedicated Freight Corridors, which were justified explicitly on arresting it (L-0048, `partly`).
+- **Discom finances remain unsolved** — accumulated losses ₹7.08 lakh crore, debt ₹7.42 lakh crore at 31 March 2024, and a fifth bailout in October 2025. Filed as `failed` (L-0051).
 
-It states and does not score. No completeness percentage, no "gaps closed" count, nothing
-that reads as progress against a target: a share of dimensions measured would be a composite
-score of exactly the kind rule 9 forbids everywhere else. The scaffold note says so on the
-page, so the next person to look at it does not add one.
+## Declared absences added
+Average train speed after 2019 (CAG series stops) · household supply-hours as a continuous national series · metro ridership against DPR as a published series · BharatNet functional delivery. All four have identified `wouldFill` routes.
+
+## Open queue additions
+| Figure | Pin against | Priority |
+|---|---|---|
+| NH annual network length and greenfield-only construction km | MoRTH Basic Road Statistics, all editions | High |
+| Household supply-hours | CEA feeder metering / IRES | High — closes a declared absence |
+| Metro ridership vs DPR, per system | CAG audits and MoHUA | High — closes a declared absence |
+| AT&C losses and ACS-ARR gap, annual | PFC annual integrated ratings | High |
+| Rail freight modal share, annual consistent series | Indian Railways year books | Medium |
+| Peer LPI 2014 and 2023 full panel | World Bank LPI, single vintage | Medium |
+
+---
+
+# Verification log — cycle 2026-07-31h (Phase 5 code run: infrastructure pairs)
+
+Counts as expected: 81 series (455 points), 57 ledger, 38 provenance. Gate clean on arrival.
+No `/data` edits. Nine series and two ledger caveats, ten `unmeasured` declarations across
+nine records — all confirmed against the data.
+
+## 1. `nh-network-length` — the hardest test of rule 3a, passed
+The caveat is 246 characters and contradicts the figure directly above it. Verified byte-exact
+against the source string, unclipped, in three places:
+
+| Where | Width | Result |
+|---|---|---|
+| Series detail, above the table | 1440px | exact, 246/246 chars |
+| Infrastructure domain table | 1440px | exact, unclipped |
+| Infrastructure domain table | **390px** | exact, wraps to 312px of height, no ellipsis, no clamp, no max-height, no body overflow |
+
+The 390px case is the one that matters: in the narrowest table on the site the caveat grows the
+row rather than being cut, which is rule 3a behaving as written.
+
+## 2. Four pairs added, two of them a new shape
+| Pair | Coverage | Counterpart | Governing |
+|---|---|---|---|
+| National highways | `nh-network-length` | `nh-construction-pace` | P-30 |
+| Airports | `airports-operational` | `udan-routes` | P-38 |
+| Metro rail | `metro-network` | **declared absence** | P-22 |
+| Household electrification | `household-electrification` | **declared absence** | P-32 |
+
+**The absence-as-counterpart shape works cleanly, so it was built rather than raised.**
+`usageUnmeasured: true` puts the coverage series' own `unmeasured` declaration in the usage
+position — same two columns, the second occupied by the dashed absence block under a label
+reading "Sustained use — no measurement exists". The reader sees a counterpart was expected
+there and why there isn't one, which is the first-class outcome asked for rather than a pair
+quietly missing a side. The gap statement gets its own branch: the counterpart is not late or
+unpulled, nothing measures it, so the coverage figure cannot be qualified by anything and must
+not be read as though it had been.
+
+Two supporting changes fell out:
+- **Per-pair labels.** `nh-construction-pace` is not the *utilisation* of `nh-network-length`;
+  it is the honest measure of the same activity the headline overstates. Labelling it "sustained
+  use" would have been a plain factual error in the interface, so the highways pair reads
+  "Headline network figure" / "The build record" and the airports pair "Facility count" /
+  "Routes actually operating". Same shape, same discipline, different relation.
+- **Per-pair framing**, since the standing sentence about connections and taps describes welfare
+  delivery and would misdescribe a road network.
+
+New validator branch: a pair standing its usage side on a declared absence where the coverage
+series declares none would render an empty frame — a pair silent exactly where it promised to
+say why nothing is measured. Fixture at `tests/fixtures/pair-absent-counterpart`.
+
+`ISOLATED` fixtures now take an optional `expect` substring, because both branches of
+`pair-incomplete` were otherwise indistinguishable to the selftest: the older fixture would
+have passed on an error from the new branch and vice versa, so either could have stopped firing
+unnoticed.
+
+## 3. Nothing reads a provenance ref as implying distortion
+Checked rather than assumed. `directionOfBias` appears in five places and is rendered as a
+property **of the provenance record** every time — on the record's own page, and inside record
+cards elsewhere. It is never applied to a series. The two code paths keyed on `provenanceRefs`
+are both gated on a specific record plus a unit condition: `denominatorBreaksFor` needs P-10
+*and* "% of GDP", `hasWriteOffAdjustment` needs P-17. Neither can fire on a highways series.
+
+Confirmed live on `nh-construction-pace`: no caveat, P-30 and P-31 reachable as tags, and
+"What this number rests on" leads to P-30, whose bridgeNote says to use it and `nh-four-lane`
+as the build metrics. In the pair it is labelled "The build record". **No assumption needed
+relaxing.**
+
+One nuance, left alone deliberately: P-30's card on that page shows `overstates-post-2014`,
+which is the *record's* bias and not the series'. It reads correctly in context — the card is
+the record, and the record's title says what overstates ("network growth is mostly
+reclassification") — and the alternative would be to assert a per-series bias the data does not
+carry.
 
 ## Result
-`validate` 0 errors / 16 warnings · `selftest` 18/18 plus three isolated and one stays-clean ·
-`typecheck` clean · `build` 161 static pages · verified in-browser at 1440px and 390px: the
-two-declaration case as a single block, both ledger declarations, the new page with its wide
-queue table scrolling inside its own container rather than the body, no console errors.
+`validate` 0 errors / 17 warnings · `selftest` 18/18 plus four isolated and one stays-clean ·
+`typecheck` clean · `build` 206 static pages · verified in-browser at 1440px and 390px: all four
+new pairs from the coverage side, the caveat byte-exact in three renderings, `/unmeasured` at 10
+declarations across 9 records, no console errors.
