@@ -167,3 +167,41 @@ export function CaveatFlag({
     </div>
   );
 }
+
+/**
+ * A measurement that does not exist, rendered as a fact rather than an empty space.
+ *
+ * The distinction this draws is between a gap in the data and a gap in the world. A blank
+ * cell says "not reported this period"; this says "nothing measures this at all", which is
+ * a finding about the record and often the most important thing on the page. PMAY-G is the
+ * first case — sanctioned and completed are published, occupancy is not, and a reader shown
+ * only the first two would reasonably take completion for the end of the chain.
+ *
+ * Deliberately unlike every panel that carries findings: dashed and unfilled, no figure, no
+ * table. An absence that looks like a result is worse than one left out, because it invites
+ * a reader to treat the frame as the content.
+ *
+ * Generalised out of the coverage/usage view ahead of the infrastructure domain, which is
+ * expected to carry several. Presentational only — what is missing is stated by the caller
+ * from the record's own prose, and no schema field is invented here.
+ */
+export function Absence({
+  heading = 'Not measured',
+  what,
+  children,
+}: {
+  heading?: string;
+  /** The thing that has no measurement, named as specifically as the record allows. */
+  what: string;
+  /** Why it matters that this is absent, and what is not being estimated in its place. */
+  children: ReactNode;
+}) {
+  return (
+    <div className="absence">
+      <span className="label">{heading}</span>
+      <p>
+        No public measurement exists for <strong>{what}</strong>. {children}
+      </p>
+    </div>
+  );
+}

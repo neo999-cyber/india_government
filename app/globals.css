@@ -737,6 +737,10 @@ tr th:last-child {
   color: var(--ink-soft);
 }
 
+/* CLAUDE.md rule 3a: a caveat never truncates, at any density. The properties below are
+   load-bearing, not cosmetic — normal white-space and visible overflow are what stop a
+   table cell from clipping it, and there is deliberately no ellipsis, no line-clamp and no
+   max-height here. If a caveat will not fit a layout, the layout changes. */
 .caveat-inline {
   display: block;
   margin-top: 0.15rem;
@@ -744,17 +748,22 @@ tr th:last-child {
   font-size: 0.6875rem;
   line-height: 1.35;
   color: var(--alert);
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  max-width: var(--measure);
 }
 
-/* An unmeasured stage of a cascade. Dashed and unfilled on purpose: it marks an absence,
-   and it must not read as another panel of findings. */
-.cu-unmeasured {
+/* An absence: something with no public measurement at all (CLAUDE.md rule 4a).
+   Dashed and unfilled on purpose — it must never read as another panel of findings.
+   No background fill, no figure, no table; the frame is not the content. */
+.absence {
   margin: 1rem 0 0;
   border: 1px dashed var(--rule-strong);
   padding: 0.6rem 0.9rem;
 }
 
-.cu-unmeasured p {
+.absence p {
   margin: 0.2rem 0 0;
   max-width: var(--measure);
   font-size: 0.875rem;

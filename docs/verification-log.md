@@ -284,3 +284,66 @@ stays-clean rule · `typecheck` clean · `build` 160 static pages · verified in
 and 390px: PMAY from both sides with the wedge and the unmeasured stage, both series caveats and
 both ledger caveats across detail, index, domain and grid surfaces, no nested anchors, no
 console errors.
+
+---
+
+# Verification log — cycle 2026-07-31f (Phase 4c code run: two standing rules)
+
+Counts unchanged as expected: 59 series (352 points), 43 ledger, 29 provenance. Gate clean.
+No `/data` edits.
+
+## The trim landed
+Confirmed independently: no shared eight-word run between `caveat` and `notes` on either
+series, and the rendered detail pages no longer print the qualification twice.
+`anaemia-children` notes now carry the two facts the caveat does not (anaemia rising in women,
+the NFHS-6 delay); `ghi-score` reduces to a pointer at P-29, which it carries.
+
+## Both standing rules went into CLAUDE.md
+They belong there rather than in code comments, for the reason the request implies: someone
+building a new dense table view will read CLAUDE.md and will not read a comment in
+`components/marks.tsx`. They are also the same *kind* of rule as those already in that
+section — cross-cutting rendering discipline that has to survive future work by anyone.
+
+Numbered **3a** and **4a**, deliberately, so no existing rule is renumbered — the log, the
+commits and several code comments reference "rule 5a", "rule 6" and so on by number, and
+renumbering would silently invalidate all of them.
+
+- **3a** sits after "Status renders visibly": both are about a qualification travelling with
+  a number, and 3a is the stronger case.
+- **4a** sits after "Blanks are unreported, not zero", which it extends. Rule 4 says a blank
+  cell is not a zero; 4a says a thing nothing measures is not a blank cell. The distinction is
+  a gap in the data against a gap in the world.
+
+### Rule 3a is now enforced in CSS, not only stated
+`.caveat-inline` carries explicit `white-space: normal`, `overflow: visible`,
+`text-overflow: clip` and no `max-height` or line clamp, with a comment saying those
+properties are load-bearing. Normal white-space and visible overflow are specifically what
+stop a table cell from clipping the text.
+
+Verified rather than assumed: at **390px**, in the densest listing on the site, both caveats
+render byte-identical to their source strings (188 characters each), with `scrollHeight` equal
+to `clientHeight` and no ellipsis, clamp or max-height in the computed style.
+
+## Absence generalised ahead of infrastructure
+The occupancy block is no longer bespoke to the pairing view. `Absence` is now a shared mark
+in `components/marks.tsx`, taking the thing that is unmeasured and a caller-supplied reason,
+and the `.cu-unmeasured` class is gone in favour of `.absence`. `CoverageUsageView` is its
+first caller; the rendered output is unchanged (dashed, transparent background, verified in
+the browser).
+
+It stays presentational on purpose. What is missing is stated by the caller from the record's
+own prose — no schema field is invented here, since that is a chat decision. If infrastructure
+turns out to want absences declared in data rather than by a view, that is the conversation to
+have, and the component will read from the field without changing shape.
+
+## One stale comment corrected
+`comparable()` in `CoverageUsageView` still said "as of phase 4 no pair passes this test".
+PMAY-G passes — sanctioned and completed are both "crore houses", the same objects counted at
+two stages. Comment updated to say which pair passes and why, so the next reader does not
+conclude the subtraction branch is dead code.
+
+## Result
+`validate` 0 errors / 16 warnings · `selftest` 18/18 plus three isolated and one stays-clean ·
+`typecheck` clean · `build` 160 static pages · verified in-browser at 1440px and 390px: PMAY
+wedge and the shared Absence block, caveats unclipped in the densest table, no duplication on
+the trimmed detail pages, no console errors.
