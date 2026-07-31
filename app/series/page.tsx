@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { series } from '@/lib/data';
 import { DOMAIN_LABELS, periodKey, periodLabel } from '@/lib/format';
-import { StatusKey, TierTag } from '@/components/marks';
+import { CaveatFlag, StatusKey, TierTag } from '@/components/marks';
 
 export const metadata: Metadata = { title: 'Series' };
 
@@ -48,6 +48,7 @@ export default function SeriesIndex() {
                     <Link href={`/series/${s.id}/`}>{s.title}</Link>
                     <br />
                     <span className="t-note mono">{s.id}</span>
+                    {s.caveat ? <CaveatFlag caveat={s.caveat} variant="inline" /> : null}
                   </td>
                   <td className="t-note">{DOMAIN_LABELS[s.domain]}</td>
                   <td className="t-note">{s.unit}</td>

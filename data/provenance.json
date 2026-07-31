@@ -547,13 +547,18 @@
   ],
   "affectsSeries": [
    "ujjwala-connections",
+   "ujjwala-refills",
    "jjm-tap-coverage",
+   "jjm-functionality",
    "pmay-g-houses",
-   "pmjay-cards"
+   "pmay-g-completed",
+   "pmjay-cards",
+   "pmjay-admissions",
+   "sanitation-basic"
   ],
   "directionOfBias": "overstates-post-2014",
   "bridgeExists": true,
-  "bridgeNote": "Pair every MIS figure with the best independent estimate where one exists: CAG refill data for Ujjwala, r.i.c.e. SQUAT for sanitation, the 2024 Functionality Assessment for JJM, claims-paid for PM-JAY. Where no independent estimate exists, label the figure as administrative and unverified.",
+  "bridgeNote": "Pair every MIS figure with the best independent estimate where one exists: CAG refill data for Ujjwala, r.i.c.e. SQUAT for sanitation, the 2024 Functionality Assessment for JJM, claims-paid for PM-JAY. Where no independent estimate exists, label the figure as administrative and unverified. BOTH SIDES of every pair carry this record: the usage-side series exists precisely to measure the wedge, so a reader asking what a functionality or admissions figure rests on must reach it. Where a coverage series has no usage counterpart, the record must state that none exists rather than rendering alone — pmay-g-completed pairs the housing cascade, but occupancy remains unmeasured.",
   "sources": [
    {
     "name": "PIB, India's DBT: Boosting Welfare Efficiency",

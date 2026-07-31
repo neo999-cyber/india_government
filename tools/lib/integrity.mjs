@@ -27,14 +27,18 @@ const REGIME_GROUPS = [
 ];
 
 /**
- * Coverage/usage pairs (P-22) and blocking caveats, mirroring lib/rules.ts for the site.
- * The two must stay in step — these are the lists the rendering rules are built on, and a
- * pair or a caveat that silently stops resolving fails open, showing the unqualified figure.
+ * Coverage/usage pairs (P-22), mirroring lib/rules.ts for the site. The two must stay in
+ * step — this is the list the rendering rule is built on, and a pair that silently stops
+ * resolving fails open, showing the unqualified coverage figure alone.
+ *
+ * The blocking-caveat list that used to sit beside this is gone: `caveat` became a schema
+ * field in phase 4b, so which records carry one is data, not code.
  */
 const COVERAGE_USAGE_PAIRS = [
   { scheme: 'Ujjwala (LPG)', coverage: 'ujjwala-connections', usage: 'ujjwala-refills', governing: 'P-22' },
   { scheme: 'Jal Jeevan Mission', coverage: 'jjm-tap-coverage', usage: 'jjm-functionality', governing: 'P-22' },
   { scheme: 'PM-JAY', coverage: 'pmjay-cards', usage: 'pmjay-admissions', governing: 'P-22' },
+  { scheme: 'PMAY-G (rural housing)', coverage: 'pmay-g-houses', usage: 'pmay-g-completed', governing: 'P-22' },
   {
     scheme: 'Swachh Bharat (sanitation)',
     coverage: 'sanitation-basic',
@@ -42,11 +46,6 @@ const COVERAGE_USAGE_PAIRS = [
     usageFromProvenance: { record: 'P-24', holder: 'r.i.c.e. SQUAT panel 2018' },
     governing: 'P-22',
   },
-];
-
-const BLOCKING_CAVEATS = [
-  { record: 'L-0042', source: { kind: 'field', field: 'caseFor' } },
-  { record: 'L-0043', source: { kind: 'provenance', id: 'P-26' } },
 ];
 
 /**
@@ -470,29 +469,29 @@ export function checkIntegrity(records, { today }) {
     }
   }
 
-  // Blocking caveats: two ledger records may not render anywhere without the caveat that
-  // qualifies them. Mirrors BLOCKING_CAVEATS in lib/rules.ts; the two must stay in step.
+  // Blocking caveats (schema field as of phase 4b, on both series and ledger).
   //
-  // The caveat text is a rendering rule rather than a schema field, so nothing in /data
-  // guarantees it still points at something real. This is what checks that: if the record is
-  // renamed or the provenance record it cites is dropped, the flag would quietly render a
-  // dead link or vanish, and a caveat that vanishes is worse than one that was never there.
-  // As with pairs: only checked where the record is actually present, so fixture datasets
-  // that do not carry it are not reported against.
-  for (const c of BLOCKING_CAVEATS) {
-    const host = index.ledger.get(c.record);
-    if (!host) continue;
-    if (c.source.kind === 'provenance') {
-      if (!provenanceIds.has(c.source.id)) {
-        add('error', 'caveat-target', host.file, c.record, `blocking caveat cites "${c.source.id}" for the full statement, but that provenance record is not in /data`);
-      } else {
-        const refs = Array.isArray(host.record.provenanceRefs) ? host.record.provenanceRefs : [];
-        if (!refs.includes(c.source.id)) {
-          add('error', 'caveat-target', host.file, c.record, `blocking caveat cites "${c.source.id}", but the record does not carry it in provenanceRefs. The flag would point at a dispute the record itself does not claim`);
+  // Which records carry one is now the data's business, not a list in code — the schema
+  // enforces the type and a minimum length. What the schema cannot see is the prose: a
+  // caveat that says "See P-26" is making a reference, and the site renders those as links.
+  // So every P-xx named inside a caveat must resolve, and must be one the record actually
+  // claims — otherwise the caveat sends a reader to a dispute the record does not carry,
+  // or to nothing at all. A dead pointer inside the one field that must never be misread.
+  for (const layer of ['series', 'ledger']) {
+    for (const r of byLayer[layer]) {
+      const rec = r.record;
+      if (!rec || typeof rec !== 'object' || typeof rec.caveat !== 'string') continue;
+      const where = label(r);
+      const cited = [...new Set(rec.caveat.match(/P-\d{2}/g) ?? [])];
+      const refs = Array.isArray(rec.provenanceRefs) ? rec.provenanceRefs : [];
+      const breakRefs = (Array.isArray(rec.breaks) ? rec.breaks : []).map((b) => b?.provenanceRef);
+      for (const pid of cited) {
+        if (!provenanceIds.has(pid)) {
+          add('error', 'caveat-target', r.file, where, `caveat names "${pid}", which is not in /data. The caveat renders that reference as a link, and it would lead nowhere`);
+        } else if (!refs.includes(pid) && !breakRefs.includes(pid)) {
+          add('error', 'caveat-target', r.file, where, `caveat names "${pid}", but the record does not carry it in provenanceRefs or a break. The caveat would point a reader at a dispute the record itself does not claim`);
         }
       }
-    } else if (typeof host.record[c.source.field] !== 'string' || !host.record[c.source.field].trim()) {
-      add('error', 'caveat-target', host.file, c.record, `blocking caveat says the full statement lives in "${c.source.field}", but that field is empty or absent`);
     }
   }
 
@@ -513,9 +512,17 @@ export function checkIntegrity(records, { today }) {
         }
         // Bidirectional: a series named by a dispute must link back, so the dispute
         // travels with every rendered number (rule 6).
+        //
+        // A break's provenanceRef counts. A series whose only connection to a dispute is
+        // the seam it caused is genuinely linked — the seam row renders the P-xx inline,
+        // and provenanceForSeries surfaces it in the disputes list either way. Requiring a
+        // duplicate top-level ref would push research toward recording the same link twice.
         const back = Array.isArray(series.record.provenanceRefs) ? series.record.provenanceRefs : [];
-        if (!back.includes(p.id)) {
-          add('error', 'back-link', series.file, sid, `${p.id} lists this series in affectsSeries, but the series does not carry "${p.id}" in provenanceRefs`);
+        const viaBreak = (Array.isArray(series.record.breaks) ? series.record.breaks : []).some(
+          (b) => b && b.provenanceRef === p.id,
+        );
+        if (!back.includes(p.id) && !viaBreak) {
+          add('error', 'back-link', series.file, sid, `${p.id} lists this series in affectsSeries, but the series carries "${p.id}" neither in provenanceRefs nor on a break. The link has to run both ways, or the dispute stops travelling with the number`);
         }
       });
     }

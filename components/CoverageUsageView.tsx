@@ -151,6 +151,20 @@ export function CoverageUsageView({
         ) : null}
       </div>
 
+      {/* A stage with no measurement is rendered, not omitted. Sanctioned beside completed
+          reads as the whole chain unless the missing third link is on the page. */}
+      {pair.unmeasuredStage ? (
+        <div className="cu-unmeasured">
+          <span className="label">Next stage: not measured</span>
+          <p>
+            No public measurement exists for <strong>{pair.unmeasuredStage}</strong>. The cascade
+            therefore stops one stage short of the outcome. Nothing is estimated in its place and
+            no series stands here — an empty stage stated is a finding, where the same stage left
+            off the page would read as though the stage before it were the end of the chain.
+          </p>
+        </div>
+      ) : null}
+
       <p className="cu-gap">
         <span className="label">The gap</span> {gapStatement}
       </p>

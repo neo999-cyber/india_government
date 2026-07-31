@@ -303,7 +303,8 @@
    }
   ],
   "confidence": "medium",
-  "asOf": "2026-07-31"
+  "asOf": "2026-07-31",
+  "caveat": "The anaemia comparison across NFHS rounds is NOT confirmed methodologically sound: haemoglobin testing method may have differed between NFHS-4 and NFHS-5, which would make part of the 58.6% to 67.1% reversal artefactual. Verify against NFHS-5 methodology documentation before citing the reversal as settled."
  },
  {
   "id": "L-0043",
@@ -334,6 +335,7 @@
    }
   ],
   "confidence": "high",
-  "asOf": "2026-07-31"
+  "asOf": "2026-07-31",
+  "caveat": "This figure cannot serve as independent evidence that welfare schemes worked. The MPI's indicators are the outputs of the schemes being assessed, so delivery improves the measure mechanically whether or not the output converted into sustained use. See P-26."
  }
 ]

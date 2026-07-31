@@ -1450,8 +1450,8 @@
    }
   ],
   "provenanceRefs": [
-   "P-10",
-   "P-14"
+   "P-14",
+   "P-10"
   ],
   "notes": "Phase-1 peak of 25.4% (FY2013-14, T1) and WDI 22.97% for '2014' are different period bases — see P-14, not a contradiction."
  },
@@ -1587,7 +1587,8 @@
   "provenanceRefs": [
    "P-29"
   ],
-  "notes": "WORSENED SHARPLY — the single most important regressive outcome in this domain. Anaemia in women also rose. CAVEAT REQUIRING VERIFICATION: haemoglobin testing method may have differed between NFHS rounds, which would affect comparability; this must be checked against NFHS-5 methodology documentation before the reversal is cited as settled. NFHS-6 fieldwork delayed; publication status uncertain as of mid-2026."
+  "notes": "WORSENED SHARPLY — the single most important regressive outcome in this domain. Anaemia in women also rose. CAVEAT REQUIRING VERIFICATION: haemoglobin testing method may have differed between NFHS rounds, which would affect comparability; this must be checked against NFHS-5 methodology documentation before the reversal is cited as settled. NFHS-6 fieldwork delayed; publication status uncertain as of mid-2026.",
+  "caveat": "Cross-round comparability unverified — haemoglobin testing method may have differed between NFHS-4 and NFHS-5. Do not cite the increase as settled until checked against NFHS-5 methodology."
  },
  {
   "id": "ghi-score",
@@ -1612,7 +1613,8 @@
   "provenanceRefs": [
    "P-29"
   ],
-  "notes": "T5 contested index. The Government of India formally rejects the methodology; its Poshan Tracker shows child wasting below 7.2%. Both readings recorded, neither endorsed."
+  "notes": "T5 contested index. The Government of India formally rejects the methodology; its Poshan Tracker shows child wasting below 7.2%. Both readings recorded, neither endorsed.",
+  "caveat": "Contested index. The Government of India formally rejects the methodology and its Poshan Tracker reports child wasting below 7.2% against the GHI's 18.7%. Neither reading is endorsed here."
  },
  {
   "id": "health-exp-union",
@@ -1745,7 +1747,8 @@
   ],
   "provenanceRefs": [
    "P-14",
-   "P-24"
+   "P-24",
+   "P-22"
   ],
   "notes": "Full India series pulled from the World Bank API this cycle — the only fully verified series in phase 4. India added ~26 points from 2014, the fastest gain in the panel, but remains its laggard (77.82% in 2022 versus 88-96% for Vietnam, Indonesia and China). Peer 2014 values not retrieved; peer row is latest-year only."
  },
@@ -1834,7 +1837,8 @@
    }
   ],
   "provenanceRefs": [
-   "P-25"
+   "P-25",
+   "P-22"
   ],
   "notes": "19,812 certified villages, 2,37,608 households, 761 districts. The 98%-tap vs 76%-safe-water wedge is the coverage-usage gap made explicit by the government's own assessment."
  },
@@ -3190,8 +3194,33 @@
   "notes": "THE EXCLUSION PROBLEM: coverage ratios (75% rural / 50% urban) are fixed on Census 2011. Drèze, Khera and Mungikar estimated over 100 million excluded; Drèze put it above 120 million in 2025, since population projections imply ~920 million should be covered against ~806 million actual. A failure of omission on a statutory entitlement, and directly caused by the missing census (P-04)."
  },
  {
+  "id": "pmay-g-completed",
+  "title": "PMAY-G houses completed",
+  "unit": "crore houses",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "Ministry of Rural Development / PIB",
+   "url": "https://pmayg.nic.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 2.95,
+    "status": "approx",
+    "note": "Against 3.87 crore sanctioned — a gap of roughly 0.9 crore"
+   }
+  ],
+  "provenanceRefs": [
+   "P-22"
+  ],
+  "notes": "The usage-side counterpart to pmay-g-houses. NOTE the cascade does not end here: OCCUPANCY IS UNMEASURED. No series exists for houses completed and actually occupied, and none should be fabricated — the honest statement is that the third stage of the cascade has no public measurement."
+ },
+ {
   "id": "pmay-g-houses",
-  "title": "PMAY-G houses sanctioned and completed",
+  "title": "PMAY-G houses sanctioned",
   "unit": "crore houses",
   "domain": "welfare",
   "tier": "T1",
@@ -3212,7 +3241,7 @@
   "provenanceRefs": [
    "P-22"
   ],
-  "notes": "Completed stands at ~2.95 crore — a sanctioned-to-completed gap of roughly 0.9 crore, with a further completed-to-occupied gap. Beneficiary selection rests on SECC 2011, now fifteen years old. Target revised: 2.95 crore by March 2024, then +2 crore (Aug 2024), overall 4.95 crore by 2029."
+  "notes": "Of a cumulative allotment of ~4.14 crore (Feb 2026). Beneficiary selection rests on SECC 2011, now fifteen years old, with known exclusion errors. Pairs with pmay-g-completed."
  },
  {
   "id": "pmjay-admissions",
@@ -3235,7 +3264,8 @@
    }
   ],
   "provenanceRefs": [
-   "P-27"
+   "P-27",
+   "P-22"
   ],
   "notes": "The utilisation measure. Cards >> admissions >> claims paid; the gaps are the finding."
  },
@@ -3260,8 +3290,8 @@
    }
   ],
   "provenanceRefs": [
-   "P-22",
-   "P-27"
+   "P-27",
+   "P-22"
   ],
   "notes": "A card is an eligibility token, not utilisation. Never cite as coverage achieved."
  },

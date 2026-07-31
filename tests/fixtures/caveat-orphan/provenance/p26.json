@@ -1,0 +1,12 @@
+[
+  {
+    "id": "P-26",
+    "title": "Present so the caveat reference resolves and the subtler branch is what fires",
+    "whatChanged": "Exists only so that the caveat's P-26 reference is not merely dangling. The error under test is the record failing to claim it, not the record being absent.",
+    "when": "2024-01",
+    "affectsDomains": ["poverty"],
+    "directionOfBias": "overstates-post-2014",
+    "bridgeExists": false,
+    "sources": [{ "name": "Fixture, not a real source", "url": "https://example.org/", "tier": "T1" }]
+  }
+]
