@@ -170,95 +170,117 @@ Only the `sanitation-basic` India series (ten points, 2014-2023, pulled from the
 
 ---
 
-# Verification log — cycle 2026-07-31d (Phase 4 code run: coverage/usage pairs)
+# Verification log — cycle 2026-07-31d (schema change + workflow finding)
 
-Counts as expected: 58 series (351 points), 43 ledger, 29 provenance. Relevance check clean.
+## PROCESS PROBLEM — my wholesale replacement reverted a Code fix
+The bidirectional backlink check found `exports-gdp` missing its P-10 reference. Code added that link in the phase-3 integration session, correctly, and logged it. **My phase-4 drop overwrote `seed.json` wholesale from the container copy and silently reverted it.**
 
-## Four errors at the gate
-| Record | Change | Why |
-|---|---|---|
-| `pmjay-cards` | added **P-22** | P-22 lists it in `affectsSeries`; the series did not link back. |
-| `poverty-tendulkar` | added **P-23** | Same, and HCES comparability bears directly on a poverty headcount. |
-| `exports-gdp` | added **P-10** | Same — **and this is the third cycle running**. See below. |
-| `ghi-score` | *no data change* | The rule was wrong, not the record. See below. |
+This is structural, not a one-off. Every phase I regenerate `data/series/seed.json` and `data/provenance.json` in full, so any edit made on the code side between drops is lost without warning.
 
-## `exports-gdp` has now lost its P-10 back-link three cycles in a row
-Fixed in phase 2 (33d7e13), again in phase 3 (1c61bc3), and again here. Each wholesale
-replacement of `seed.json` drops it. Widening P-10's `affectsDomains` to `all` this cycle does
-**not** prevent it: that satisfies `ref-relevant`, which asks whether a cited record covers the
-domain, while the failure is `back-link`, which asks whether a series cited by
-`P-10.affectsSeries` cites P-10 in return. Different rules, different directions. Until the
-drop process carries `provenanceRefs` forward, this will recur every cycle — it is the single
-most reliable prediction in this log.
+Two changes follow:
+1. **Code must not edit `/data`** — raise the inconsistency instead, per the contract. The exports-gdp fix was correct, but a correct edit that gets silently reverted two phases later is worse than a raised flag.
+2. **The bidirectional check is now mandatory in the validator.** It is the only thing that caught this. `provenance.affectsSeries` and `series.provenanceRefs` are two independent assertions of one relationship, and nothing else verifies they agree.
 
-## The T5 rule was demanding a reference the relevance rule forbids
-`ghi-score` is the first contested index outside governance. Rule 6 was implemented as "a T5
-series must carry **P-08**", and P-08 is `Contested governance indices (RSF, Freedom House,
-V-Dem)`, scoped to `governance`. `ghi-score` is `human-development` and carries **P-29**, a
-dedicated GHI methodology dispute covering its domain.
+Three backlinks restored: P-10 to `exports-gdp`, P-22 to `pmjay-cards`, P-23 to `poverty-tendulkar`.
 
-So the two error-level rules contradicted each other: `t5-dispute-link` demanded P-08 and
-`ref-relevant` forbade it. **No data could satisfy both**, and satisfying the T5 rule literally
-would have pointed readers of a hunger index at a record about press-freedom rankings.
+## SCHEMA CHANGE — `caveat` is now first-class
+Added as an optional string (min 20 chars) to BOTH `ledger.schema.json` and `series.schema.json`.
 
-Generalised the rule to what it was actually protecting: a T5 series must carry a dispute
-record **covering its own domain** — the same test `checkRelevance` applies. P-08 remains the
-governance instance. CLAUDE.md rule 6 amended to match, since it hardcoded P-08 and would
-otherwise contradict the validator. The broken fixture still fires the rule (its T5 series
-carries no dispute at all), so the gate did not loosen.
+Rationale: holding blocking qualifications in a rendering rule keyed to record IDs would rot as the ledger grows past forty records, and a future domain run could file a blocking caveat that no view knows to show. The caveat must travel with the record.
 
-## The feature: coverage versus usage (P-22)
-Four pairs, rendered together from either side, in a fixed order — output first, then what it
-converted into. Landing on `ujjwala-refills` shows the same pair as landing on
-`ujjwala-connections`; a coverage series can no longer render alone, the same way no GDP base
-can. P-22 is linked from every pair, including sanitation, whose series does not carry P-22.
+Semantics: `caveat` is for qualifications that MUST render wherever the record appears, including compact listings — an unverified comparability assumption, a circular measure, a disputed instrument. Ordinary uncertainty stays in `notes`. Four records carry one so far: L-0042, L-0043, `anaemia-children`, `ghi-score`.
 
-**No pair prints a single gap number, and that is the finding rather than a shortfall.**
-Subtraction is offered only where both sides carry the identical unit string, because that
-string is where the denominator lives. None of the four passes:
+## RULING — usage-side series carry P-22
+`jjm-functionality`, `pmjay-admissions` and `sanitation-basic` now declare P-22, and P-22's `affectsSeries` lists both sides of all four pairs. The usage-side series exists precisely to measure the wedge, so a reader asking what a functionality or admissions figure rests on must reach the record that explains why it differs from the coverage figure.
 
-| Pair | Coverage | Usage | Why it does not subtract |
-|---|---|---|---|
-| Ujjwala | crore connections | refills per year | different quantities entirely |
-| Jal Jeevan | % of **rural** households | % of **certified** households | different denominators |
-| PM-JAY | crore cards | crore admissions | a stock of eligibility against cumulative events |
-| Swachh Bharat | % of population (WDI, national) | r.i.c.e. SQUAT, four states | different populations; not a series at all |
+## RULING — PMAY cascade paired, occupancy declared unmeasured
+`pmay-g-houses` renamed to "PMAY-G houses sanctioned" and paired with a new `pmay-g-completed` (2.95 crore against 3.87 sanctioned). The third stage — houses completed and actually occupied — has NO public measurement, and the series notes say so rather than leaving the absence implicit or fabricating a figure.
 
-Jal Jeevan is the trap the rule exists for: 82% and 76% are both percentages and look
-subtractable, but "6 points" would be a number no source supports. The view names both
-denominators instead. Sanitation renders P-24's two competing accounts side by side and
-endorses neither — the counterpart stays in provenance, because two survey figures that
-disagree are a disagreement, not a time series.
+## Endorsements
+- **No single gap number.** Gating subtraction on identical unit strings is correct and I should have specified it. Jal Jeevan is the case the rule exists for: 82% of rural households and 76% of certified households are different denominators, certified is a subset of connected, so neither bounds the other and no national functional-coverage figure is derivable. "6 points" would have been invented.
+- **Left accent borders retained.** A convention applied systematically — red for alerts and seams, umber for comparability limits — is a design system, not a template tell. No suppression.
 
-## Blocking caveats
-L-0042 and L-0043 now carry their caveat on the detail page (above the summary, not below it)
-and as an inline flag in every compact rendering — ledger index, domain pages, term pages —
-because that is where a record could previously appear as a title plus the word "contested"
-with the qualification dropped. L-0043's flag leads to P-26; L-0042's points at its own
-`caseFor`, there being no provenance record for NFHS haemoglobin comparability.
+---
 
-Held as a rendering rule in `lib/rules.ts`, not a schema field — schemas are agreed in chat.
-If this should be first-class data, a `caveat` field on the ledger schema is the way, and the
-rendering rule would then read from it.
+# Verification log — cycle 2026-07-31e (Phase 4b code run: caveat field, PMAY pair)
 
-## New validator rules, both proven by fixture
-`pair-incomplete` (tests/fixtures/pair-half) and `caveat-target` (tests/fixtures/caveat-orphan).
-Both fire only where part of the guarded thing is present, mirroring `regime-group`: a dataset
-carrying neither side simply lacks that pair, and erroring there is noise. `caveat-target`
-catches a caveat whose provenance target is dropped or unclaimed — a caveat that silently
-vanishes is worse than one never written.
+Counts as expected: 59 series (352 points), 43 ledger, 29 provenance. **Gate clean on arrival
+— no `/data` edits made this cycle**, per the contract. Inconsistencies are raised below.
 
-## For research
-- `jjm-functionality`, `pmjay-admissions` and `sanitation-basic` do not carry P-22 in
-  `provenanceRefs`, and P-22 does not list them. The view links P-22 structurally so every pair
-  reaches it, but the "what this number rests on" block on those three pages does not show it.
-  Whether the usage side of a pair should also carry P-22 is a research call, not a code one.
-- P-22's `affectsSeries` includes `pmay-g-houses`, which has no usage counterpart and is
-  therefore **not** paired. It is a coverage figure carrying P-22 that renders alone — exactly
-  the shape the pairing exists to prevent. Either a counterpart lands, or it is worth saying in
-  the record that none exists.
+## 1. Caveats now read from the schema field
+`lib/rules.ts` no longer holds record ids. `BLOCKING_CAVEATS`, `BlockingCaveat` and
+`caveatFor()` are gone, replaced by `caveatOf(record)` reading `record.caveat`. `caveat?: string`
+added to both `Series` and `LedgerRecord` in `lib/types.ts`.
+
+Because series can now carry one, the flag was added to surfaces that previously had no reason
+to show it. It renders on: series detail (above the numbers), ledger detail (above the summary),
+the series index, the ledger index, domain pages (both tables), term pages, and the three
+cited-by / affected-by grids. Nine surfaces; `anaemia-children` and `ghi-score` are the first
+series to exercise them.
+
+Two details worth knowing:
+- **Nothing truncates.** A caveat abbreviated to fit a table cell is a caveat that can be
+  misread, which is the failure it exists to prevent, so the inline variant wraps instead.
+- **P-xx inside caveat prose renders as a link** (L-0043 ends "See P-26"), except inside the
+  grid cards, which are themselves anchors — `linkify={false}` there, because an anchor inside
+  an anchor is invalid markup. Verified zero nested anchors across the affected pages.
+
+## 2. The bidirectional backlink check already existed
+It has been in the validator as an **error** since phase 0 (`back-link`, integrity.mjs), which
+is why the three links you found were already fixed at source before this run — the gate was
+clean on arrival and `exports-gdp` held its P-10 ref this time.
+
+What was missing is the part your spec adds: **a break now satisfies it**. A series whose only
+connection to a dispute is the seam that dispute caused is genuinely linked — the seam row
+renders the reference inline, and `provenanceForSeries` surfaces it either way. Requiring a
+duplicate top-level ref would have pushed research toward recording the same link twice.
+
+Nothing in `/data` currently relies on this: every `affectsSeries` entry backlinks through
+`provenanceRefs`, and no series has a break citing a record absent from its refs. The loosening
+changes no current output.
+
+Fixtures: `back-link` already fired on `tests/fixtures/broken`. The new one is the opposite
+test — `tests/fixtures/backlink-via-break`, asserting the rule **stays silent** on a legitimate
+shape. That is a new category in the selftest (`MUST_STAY_CLEAN`): every fixture until now
+proved a rule fires, and none could catch a rule that fires too much. An over-firing gate is
+the kind that gets loosened in a hurry by whoever it blocks.
+
+## 3. PMAY is a real pair — and the first one that subtracts
+`pmay-g-houses` (sanctioned, 3.87 crore) and `pmay-g-completed` (2.95 crore) carry the
+**identical unit string**, so the comparability test written in phase 4a passes for the first
+time and the view computes the wedge: **0.92 crore houses**, matching the record's own note of
+"roughly 0.9 crore". The other four pairs still refuse to subtract, for the reasons logged last
+cycle.
+
+**Occupancy renders as an absence, not an omission.** `unmeasuredStage` on the pair declares the
+third stage of the cascade, and the view gives it its own block — dashed and unfilled, so it
+cannot be mistaken for another panel of findings. Sanctioned beside completed, with nothing
+after it, would read as though completion were the end of the chain.
+
+## 4. Raised, not edited
+
+**Both caveat-carrying series duplicate their caveat inside `notes`, so the page prints it
+twice.** Now that `caveat` is a field, the prose in `notes` is redundant:
+- `anaemia-children` — notes carry "CAVEAT REQUIRING VERIFICATION: haemoglobin testing method
+  may have differed between NFHS rounds..." which restates the caveat almost word for word.
+- `ghi-score` — notes carry "T5 contested index. The Government of India formally rejects the
+  methodology; its Poshan Tracker shows child wasting below 7.2%. Both readings recorded,
+  neither endorsed." against a caveat saying the same thing.
+
+Suggested: trim the caveat sentence out of both `notes`, leaving notes for what the caveat does
+not cover (`anaemia-children`'s "Anaemia in women also rose" and the NFHS-6 delay are worth
+keeping; `ghi-score`'s notes would reduce to roughly nothing, which is fine). The two ledger
+caveats do not have this problem.
+
+Nothing else is inconsistent: the 16 warnings are the same open research items as last cycle.
+
+## Note on the handoff
+The push was expected to carry an unpushed phase-3c commit. It did not need to — `ee69afb`
+went up with last cycle's push, and `origin/main` was level with `main` when this cycle began.
 
 ## Result
-`validate` 0 errors / 16 warnings · `selftest` 18/18 plus three isolated rules · `typecheck`
-clean · `build` 159 static pages · verified in-browser at 1440px and 390px: all four pairs from
-both sides, both caveats on four surfaces each, no console errors.
+`validate` 0 errors / 16 warnings · `selftest` 18/18 plus three isolated rules and one
+stays-clean rule · `typecheck` clean · `build` 160 static pages · verified in-browser at 1440px
+and 390px: PMAY from both sides with the wedge and the unmeasured stage, both series caveats and
+both ledger caveats across detail, index, domain and grid surfaces, no nested anchors, no
+console errors.

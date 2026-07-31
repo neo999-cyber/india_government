@@ -20,7 +20,7 @@ import {
 import { SeriesTable } from '@/components/SeriesTable';
 import { NpaView } from '@/components/NpaView';
 import { RegimeOverlap } from '@/components/RegimeOverlap';
-import { SourceLine, StatusKey, TierTag } from '@/components/marks';
+import { CaveatFlag, SourceLine, StatusKey, TierTag } from '@/components/marks';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -90,6 +90,9 @@ export default async function SeriesDetail({ params }: Props) {
       </p>
       <SourceLine source={s.source} tier={s.tier} />
       <StatusKey />
+
+      {/* Above every rendering of the numbers, not below: it qualifies what they mean. */}
+      {s.caveat ? <CaveatFlag caveat={s.caveat} /> : null}
 
       {/* P-17: an NPA ratio never renders without the adjusted view offered beside it.
           P-22: neither side of a coverage/usage pair renders without the other — a coverage
@@ -185,6 +188,7 @@ export default async function SeriesDetail({ params }: Props) {
               </span>
               <span className="grid-title">{l.title}</span>
               <span className="grid-meta">{l.date}</span>
+              {l.caveat ? <CaveatFlag caveat={l.caveat} variant="inline" linkify={false} /> : null}
             </Link>
           ))}
         </div>

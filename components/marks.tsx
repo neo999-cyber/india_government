@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { ReactNode } from 'react';
 import type { Point, Status, Tier, TieredSource, SourceRef } from '@/lib/types';
 import { TIER_LABELS, formatValue } from '@/lib/format';
 
@@ -112,44 +113,57 @@ export function ProvenanceTags({ ids }: { ids: string[] }) {
 }
 
 /**
- * The caveat a ledger record may not render without.
+ * Provenance ids named inside prose, made reachable.
  *
- * Two records carry a reason their headline reading may not mean what it appears to, and a
- * list row showing the title and the word "contested" transmits the claim while dropping the
- * thing that qualifies it. So the flag travels into every compact rendering — index tables,
- * domain and term pages, "cited by" blocks — not only the detail page where the full case is
- * already set out. `variant="inline"` is the terse form for a table cell; the block form
- * carries the pointer back to where the full statement lives.
+ * A caveat that ends "See P-26" should get the reader there in one click, the same as the
+ * tag row does. Split rather than replace, so the text is never parsed as markup.
+ */
+function withProvenanceLinks(text: string): ReactNode[] {
+  return text.split(/(P-\d{2})/g).map((part, i) =>
+    /^P-\d{2}$/.test(part) ? (
+      <Link key={`${part}-${i}`} href={`/provenance/${part}/`}>
+        {part}
+      </Link>
+    ) : (
+      <span key={`t-${i}`}>{part}</span>
+    ),
+  );
+}
+
+/**
+ * The caveat a record may not render without — read from the record's own `caveat` field.
+ *
+ * A record carrying one would mislead without it, so a list row showing the title and the
+ * word "contested" transmits the claim while dropping the thing that qualifies it. The flag
+ * therefore travels into every rendering, compact ones included: index tables, domain and
+ * term pages, cited-by grids, not only the detail page.
+ *
+ * Both variants show the full text. `inline` is the compact form, and it does not truncate
+ * — a caveat abbreviated to fit a table cell is a caveat that can be misread, which is the
+ * failure it exists to prevent.
  */
 export function CaveatFlag({
   caveat,
   variant = 'block',
+  /**
+   * False inside a link — the grid cards are anchors, and an anchor inside an anchor is
+   * invalid markup. The caveat still renders in full; only the P-xx shortcuts drop out,
+   * and the card already leads to the record where they are live.
+   */
+  linkify = true,
 }: {
-  caveat: { label: string; source: { kind: 'provenance'; id: string } | { kind: 'field'; field: string } };
+  caveat: string;
   variant?: 'inline' | 'block';
+  linkify?: boolean;
 }) {
+  const body = linkify ? withProvenanceLinks(caveat) : caveat;
   if (variant === 'inline') {
-    return (
-      <span className="caveat-inline" title={caveat.label}>
-        caveat: {caveat.label}
-      </span>
-    );
+    return <span className="caveat-inline">Caveat: {body}</span>;
   }
   return (
     <div className="caveat-block">
       <span className="label">Blocking caveat</span>
-      <p>
-        {caveat.label}.{' '}
-        {caveat.source.kind === 'provenance' ? (
-          <>
-            Stated in full at{' '}
-            <Link href={`/provenance/${caveat.source.id}/`}>{caveat.source.id}</Link>.
-          </>
-        ) : (
-          <>Stated in full in this record&rsquo;s {caveat.source.field === 'caseFor' ? 'case for' : 'case against'}.</>
-        )}{' '}
-        This record does not render anywhere without it.
-      </p>
+      <p>{body}</p>
     </div>
   );
 }

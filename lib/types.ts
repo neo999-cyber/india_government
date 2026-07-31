@@ -70,6 +70,12 @@ export interface Series {
   points: Point[];
   provenanceRefs?: string[];
   notes?: string;
+  /**
+   * A blocking qualification that must render wherever this record appears, including
+   * compact listings. Distinct from `notes`: notes carry ordinary context and uncertainty,
+   * a caveat marks a record that would mislead without it.
+   */
+  caveat?: string;
 }
 
 export type Assessment =
@@ -103,6 +109,8 @@ export interface LedgerRecord {
   sources: TieredSource[];
   confidence: 'high' | 'medium' | 'low';
   asOf: string;
+  /** See `Series.caveat` — same contract, same rendering obligation. */
+  caveat?: string;
 }
 
 export type BiasDirection =

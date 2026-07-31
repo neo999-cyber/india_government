@@ -8,7 +8,7 @@ import {
   seriesCitingProvenance,
 } from '@/lib/data';
 import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
-import { SourceList } from '@/components/marks';
+import { CaveatFlag, SourceList } from '@/components/marks';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -109,6 +109,7 @@ export default async function ProvenanceDetail({ params }: Props) {
                 {s.unit}
                 {s.breaks?.some((b) => b.provenanceRef === p.id) ? ' · seam here' : ''}
               </span>
+              {s.caveat ? <CaveatFlag caveat={s.caveat} variant="inline" linkify={false} /> : null}
             </Link>
           ))}
         </div>

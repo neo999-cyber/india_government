@@ -9,7 +9,6 @@ import {
   statusCounts,
 } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
-import { caveatFor } from '@/lib/rules';
 import { DOMAINS, type Domain } from '@/lib/types';
 import { CaveatFlag, StatusKey, StatusTally, TierTag } from '@/components/marks';
 
@@ -89,6 +88,7 @@ export default async function DomainPage({ params }: Props) {
                   <tr key={x.id}>
                     <td>
                       <Link href={`/series/${x.id}/`}>{x.title}</Link>
+                      {x.caveat ? <CaveatFlag caveat={x.caveat} variant="inline" /> : null}
                     </td>
                     <td className="t-note">{x.unit}</td>
                     <td className="mono">{x.calendar}</td>
@@ -146,7 +146,7 @@ export default async function DomainPage({ params }: Props) {
                       <td className="mono">{TERM_SHORT[x.term]}</td>
                       <td>
                         <Link href={`/ledger/${x.id}/`}>{x.title}</Link>
-                        {caveatFor(x.id) ? <CaveatFlag caveat={caveatFor(x.id)!} variant="inline" /> : null}
+                        {x.caveat ? <CaveatFlag caveat={x.caveat} variant="inline" /> : null}
                       </td>
                       <td className="t-note">{ASSESSMENT_LABELS[x.assessment]}</td>
                     </tr>

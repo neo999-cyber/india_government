@@ -85,6 +85,19 @@ const ISOLATED = [
   { dir: 'caveat-orphan', rule: 'caveat-target' },
 ];
 
+/**
+ * The other half of a rule: what it must NOT reject.
+ *
+ * Every fixture above proves a rule fires. None of them can catch a rule that fires too
+ * much, and an over-firing gate is the kind that gets loosened in a hurry by whoever is
+ * blocked by it. `back-link` accepts a series linked to a dispute only through the break
+ * that dispute caused; this pins that, so tightening it later fails loudly here instead of
+ * quietly forcing research to record the same link twice.
+ */
+const MUST_STAY_CLEAN = [
+  { dir: 'backlink-via-break', rule: 'back-link', why: 'a break satisfies the backlink' },
+];
+
 /** @returns {{ code: number, report: any }} */
 function run(args) {
   try {
@@ -154,6 +167,20 @@ for (const { dir, rule } of ISOLATED) {
   const fired = result.report.findings.some((f) => f.level === 'error' && f.rule === rule);
   if (!fired) failures.push(`rule "${rule}" did not fire as an error on tests/fixtures/${dir}`);
   else notes.push(`  ${rule} fires on tests/fixtures/${dir}`);
+}
+
+// 3c. Rules that must stay silent on a legitimate shape.
+for (const { dir, rule, why } of MUST_STAY_CLEAN) {
+  const result = run(['--data', join(ROOT, 'tests', 'fixtures', dir)]);
+  const fired = result.report.findings.filter((f) => f.level === 'error' && f.rule === rule);
+  if (fired.length > 0) {
+    failures.push(
+      `rule "${rule}" fired on tests/fixtures/${dir}, which is a legitimate shape (${why}): ` +
+        fired.map((f) => f.message).join(' | '),
+    );
+  } else {
+    notes.push(`  ${rule} stays silent on tests/fixtures/${dir} — ${why}`);
+  }
 }
 
 // 4. Strictness must be live: a misspelled keyword cannot be silently ignored.

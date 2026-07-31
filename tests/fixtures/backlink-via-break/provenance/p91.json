@@ -1,0 +1,13 @@
+[
+  {
+    "id": "P-91",
+    "title": "Dispute naming the series above in affectsSeries",
+    "whatChanged": "Names the series in affectsSeries. The series links back only through its break, which is a real link: the seam row renders the reference inline and provenanceForSeries surfaces it either way. back-link must accept this and stay silent.",
+    "when": "2016-04",
+    "affectsDomains": ["macro"],
+    "affectsSeries": ["linked-only-by-its-seam"],
+    "directionOfBias": "understates-pre-2014",
+    "bridgeExists": false,
+    "sources": [{ "name": "Fixture, not a real source", "url": "https://example.org/", "tier": "T1" }]
+  }
+]

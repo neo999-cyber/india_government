@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { panelSeries } from '@/lib/data';
 import { SeriesTable } from '@/components/SeriesTable';
-import { SourceLine, StatusKey, TierTag } from '@/components/marks';
+import { CaveatFlag, SourceLine, StatusKey, TierTag } from '@/components/marks';
 
 export const metadata: Metadata = { title: 'Peer panel' };
 
@@ -44,6 +44,7 @@ export default function PeersPage() {
                 <span className="tag tag-t5">vintage not recorded</span>
               )}
             </p>
+            {s.caveat ? <CaveatFlag caveat={s.caveat} /> : null}
             <SourceLine source={s.source} tier={s.tier} />
             {!s.source.vintage ? (
               <p className="source-line" style={{ color: 'var(--alert)' }}>

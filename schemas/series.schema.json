@@ -3,35 +3,105 @@
   "$id": "series.schema.json",
   "title": "Indicator time series",
   "type": "object",
-  "required": ["id", "title", "unit", "domain", "tier", "source", "calendar", "points"],
+  "required": [
+    "id",
+    "title",
+    "unit",
+    "domain",
+    "tier",
+    "source",
+    "calendar",
+    "points"
+  ],
   "additionalProperties": false,
   "properties": {
-    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
-    "title": { "type": "string", "minLength": 4 },
-    "unit": { "type": "string" },
-    "domain": { "enum": ["macro", "banking", "employment", "poverty", "human-development", "infrastructure", "welfare", "governance", "kashmir", "federalism", "foreign", "defence", "environment", "demography"] },
-    "tier": { "enum": ["T1", "T2", "T3", "T4", "T5"] },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 4
+    },
+    "unit": {
+      "type": "string"
+    },
+    "domain": {
+      "enum": [
+        "macro",
+        "banking",
+        "employment",
+        "poverty",
+        "human-development",
+        "infrastructure",
+        "welfare",
+        "governance",
+        "kashmir",
+        "federalism",
+        "foreign",
+        "defence",
+        "environment",
+        "demography"
+      ]
+    },
+    "tier": {
+      "enum": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5"
+      ]
+    },
     "source": {
       "type": "object",
-      "required": ["name", "url"],
+      "required": [
+        "name",
+        "url"
+      ],
       "additionalProperties": false,
       "properties": {
-        "name": { "type": "string" },
-        "url": { "type": "string", "format": "uri" },
-        "vintage": { "type": "string", "description": "Download/access date. Required for WDI and any source that revises history.", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" }
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "vintage": {
+          "type": "string",
+          "description": "Download/access date. Required for WDI and any source that revises history.",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        }
       }
     },
-    "calendar": { "enum": ["FY", "CY"], "description": "Indian fiscal year (Apr-Mar) or calendar year. Never mix within one series." },
+    "calendar": {
+      "enum": [
+        "FY",
+        "CY"
+      ],
+      "description": "Indian fiscal year (Apr-Mar) or calendar year. Never mix within one series."
+    },
     "breaks": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["period", "note", "provenanceRef"],
+        "required": [
+          "period",
+          "note",
+          "provenanceRef"
+        ],
         "additionalProperties": false,
         "properties": {
-          "period": { "type": "string" },
-          "note": { "type": "string" },
-          "provenanceRef": { "type": "string" }
+          "period": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          },
+          "provenanceRef": {
+            "type": "string"
+          }
         }
       }
     },
@@ -40,18 +110,57 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["country", "period", "value", "status"],
+        "required": [
+          "country",
+          "period",
+          "value",
+          "status"
+        ],
         "additionalProperties": false,
         "properties": {
-          "country": { "enum": ["IND", "BGD", "VNM", "IDN", "CHN"] },
-          "period": { "type": "string", "pattern": "^(\\d{4}|FY\\d{4}-\\d{2})$" },
-          "value": { "type": "number" },
-          "status": { "enum": ["verified", "approx", "pending"], "description": "verified = pinned to the named source this project cycle; approx = from a credible report, exact primary pull outstanding; pending = placeholder, must not render without a flag" },
-          "note": { "type": "string" }
+          "country": {
+            "enum": [
+              "IND",
+              "BGD",
+              "VNM",
+              "IDN",
+              "CHN"
+            ]
+          },
+          "period": {
+            "type": "string",
+            "pattern": "^(\\d{4}|FY\\d{4}-\\d{2})$"
+          },
+          "value": {
+            "type": "number"
+          },
+          "status": {
+            "enum": [
+              "verified",
+              "approx",
+              "pending"
+            ],
+            "description": "verified = pinned to the named source this project cycle; approx = from a credible report, exact primary pull outstanding; pending = placeholder, must not render without a flag"
+          },
+          "note": {
+            "type": "string"
+          }
         }
       }
     },
-    "provenanceRefs": { "type": "array", "items": { "type": "string" } },
-    "notes": { "type": "string" }
+    "provenanceRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "caveat": {
+      "type": "string",
+      "minLength": 20,
+      "description": "A blocking qualification that MUST render wherever this record appears, including compact listings. Use only when the record would mislead without it — an unverified comparability assumption, a circular measure, a disputed instrument. Not for ordinary uncertainty, which belongs in notes."
+    }
   }
 }

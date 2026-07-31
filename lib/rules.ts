@@ -115,6 +115,16 @@ export interface CoverageUsagePair {
   usage: string | null;
   /** Independent counterpart held in a provenance record rather than as a series. */
   usageFromProvenance?: { record: string; holder: string };
+  /**
+   * A further stage of the cascade that has no public measurement at all.
+   *
+   * PMAY runs sanctioned → completed → occupied, and only the first two are measured. An
+   * absent third stage is a finding, not a blank: a reader who sees sanctioned beside
+   * completed will reasonably assume completion is the end of the chain. Naming the stage
+   * and saying nothing measures it is the difference between an admission and an omission.
+   * The claim itself lives in the series record; this only says which stage is missing.
+   */
+  unmeasuredStage?: string;
   /** The record that states what the gap is and why it runs one way. */
   governing: string;
 }
@@ -141,6 +151,14 @@ export const COVERAGE_USAGE_PAIRS: readonly CoverageUsagePair[] = [
     governing: COVERAGE_USAGE_GOVERNING,
   },
   {
+    // The first pair whose two sides share a unit, so the wedge genuinely subtracts.
+    scheme: 'PMAY-G (rural housing)',
+    coverage: 'pmay-g-houses',
+    usage: 'pmay-g-completed',
+    unmeasuredStage: 'occupancy — houses completed and actually lived in',
+    governing: COVERAGE_USAGE_GOVERNING,
+  },
+  {
     scheme: 'Swachh Bharat (sanitation)',
     coverage: 'sanitation-basic',
     usage: null,
@@ -155,39 +173,19 @@ export function pairFor(id: string): CoverageUsagePair | null {
 }
 
 /**
- * Ledger records that must never render without their caveat (not even in a list).
+ * A record's blocking caveat, read from the record itself.
  *
- * These two are not merely contested — each carries a specific reason the headline reading
- * may not mean what it appears to. L-0042's anaemia reversal turns on whether haemoglobin
- * testing was comparable across NFHS rounds, which is unverified; L-0043's MPI is built from
- * the outputs of the schemes it is cited to vindicate, so it moves whether or not those
- * outputs were used. A row carrying the title and the word "contested" and nothing else
- * transmits the claim without the thing that qualifies it.
+ * `caveat` became a schema field on both the ledger and series schemas in phase 4b, so this
+ * no longer holds a list of record ids. That list was the weak point: it lived in code, it
+ * could only ever name records someone had thought to add, and it went stale silently the
+ * moment a drop renamed or replaced one. Research sessions now author the caveat with the
+ * record, which is the only place that can stay correct.
  *
- * `label` is a compact restatement for list contexts; the full statement stays in the record
- * and, where one exists, in the provenance record named here. No schema field is invented —
- * this is a rendering rule, and the validator checks the ids and the provenance link resolve.
+ * The contract the schema states, and which the rendering obeys: a caveat must appear
+ * wherever the record appears, compact listings included. Ordinary uncertainty is not a
+ * caveat and belongs in `notes` — a caveat marks a record that would mislead without it.
  */
-export interface BlockingCaveat {
-  record: string;
-  label: string;
-  /** Where the full statement lives, so the flag always leads back to the source. */
-  source: { kind: 'provenance'; id: string } | { kind: 'field'; field: 'caseFor' | 'caseAgainst' };
-}
-
-export const BLOCKING_CAVEATS: readonly BlockingCaveat[] = [
-  {
-    record: 'L-0042',
-    label: 'testing-method comparability across NFHS rounds unverified',
-    source: { kind: 'field', field: 'caseFor' },
-  },
-  {
-    record: 'L-0043',
-    label: 'the measure is built from the outputs of the schemes it is cited to vindicate',
-    source: { kind: 'provenance', id: 'P-26' },
-  },
-];
-
-export function caveatFor(id: string): BlockingCaveat | null {
-  return BLOCKING_CAVEATS.find((c) => c.record === id) ?? null;
+export function caveatOf(record: { caveat?: string } | undefined | null): string | null {
+  const text = record?.caveat?.trim();
+  return text ? text : null;
 }

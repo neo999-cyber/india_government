@@ -1,0 +1,22 @@
+[
+  {
+    "id": "linked-only-by-its-seam",
+    "title": "Series whose only link to the dispute is the seam that dispute caused",
+    "unit": "% y/y",
+    "domain": "macro",
+    "tier": "T1",
+    "source": { "name": "Fixture, not a real source", "url": "https://example.org/" },
+    "calendar": "FY",
+    "breaks": [
+      {
+        "period": "FY2016-17",
+        "note": "The recognition change this dispute records",
+        "provenanceRef": "P-91"
+      }
+    ],
+    "points": [
+      { "country": "IND", "period": "FY2015-16", "value": 7.5, "status": "approx" },
+      { "country": "IND", "period": "FY2016-17", "value": 9.3, "status": "approx" }
+    ]
+  }
+]
