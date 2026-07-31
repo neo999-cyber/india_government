@@ -417,6 +417,24 @@ export function checkIntegrity(records, { today }) {
     if (!provenanceIds.has(pair.governing)) {
       add('error', 'pair-incomplete', coverage.file, pair.coverage, `governing record "${pair.governing}" is not in /data, so the pair cannot state why the gap runs one way`);
     }
+
+    // Cross-check the hand-written pair against the affects/corrective split.
+    //
+    // The split cannot DERIVE the pairs — P-22 alone maps four affected series against five
+    // correctives, with nothing saying which goes with which — but where a record does name
+    // both sides of a pair it can say the sides are the right way round. A pair whose
+    // coverage a record calls the correction, and whose usage it calls distorted, is
+    // inverted: the view would present the honest metric as the headline needing
+    // qualification, and the qualification as the headline.
+    if (pair.usage) {
+      for (const [pid, host] of provenanceIds) {
+        const aff = Array.isArray(host.record.affectsSeries) ? host.record.affectsSeries : [];
+        const cor = Array.isArray(host.record.correctiveSeries) ? host.record.correctiveSeries : [];
+        if (cor.includes(pair.coverage) && aff.includes(pair.usage)) {
+          add('error', 'pair-inverted', coverage.file, pair.coverage, `pair "${pair.scheme}" puts "${pair.coverage}" on the coverage side and "${pair.usage}" on the usage side, but ${pid} calls "${pair.coverage}" a corrective and "${pair.usage}" affected. One of the two is the wrong way round`);
+        }
+      }
+    }
   }
 
   // Rule 5, second half: where one regime ends and the next begins, both sides of the
@@ -539,18 +557,30 @@ export function checkIntegrity(records, { today }) {
     if (!p || typeof p !== 'object') continue;
     const where = label(r);
 
-    if (Array.isArray(p.affectsSeries)) {
-      p.affectsSeries.forEach((sid, i) => {
+    // `correctiveSeries` is the mirror of `affectsSeries`: the honest measure the record
+    // points readers toward, or the instrument that measures the wedge it describes. A
+    // series cannot be both distorted by a record and the correction for it.
+    const affects = Array.isArray(p.affectsSeries) ? p.affectsSeries : [];
+    const corrective = Array.isArray(p.correctiveSeries) ? p.correctiveSeries : [];
+    for (const sid of affects) {
+      if (typeof sid === 'string' && corrective.includes(sid)) {
+        add('error', 'mirror-contradiction', r.file, where, `"${sid}" is in both affectsSeries and correctiveSeries. A series is either distorted by this record or the correction for it; being both says directionOfBias simultaneously does and does not apply to it`);
+      }
+    }
+
+    // The backlink runs both ways for both lists. A corrective carries the ref for
+    // navigation rather than because it is distorted, but it must still carry it: a reader
+    // landing on the honest metric has to be able to reach the record saying why it is the
+    // honest one, which is the whole reason the mirror exists.
+    for (const [field, list] of [['affectsSeries', affects], ['correctiveSeries', corrective]]) {
+      list.forEach((sid, i) => {
         if (typeof sid !== 'string') return;
         const series = seriesIds.get(sid);
         if (!series) {
-          // Forward reference: research sessions name the affected series before it is ingested.
-          add('warn', 'affects-series-pending', r.file, where, `affectsSeries[${i}] = "${sid}" is not in /data yet — expected if the series has not been ingested`);
+          // Forward reference: research sessions name the series before it is ingested.
+          add('warn', 'affects-series-pending', r.file, where, `${field}[${i}] = "${sid}" is not in /data yet — expected if the series has not been ingested`);
           return;
         }
-        // Bidirectional: a series named by a dispute must link back, so the dispute
-        // travels with every rendered number (rule 6).
-        //
         // A break's provenanceRef counts. A series whose only connection to a dispute is
         // the seam it caused is genuinely linked — the seam row renders the P-xx inline,
         // and provenanceForSeries surfaces it in the disputes list either way. Requiring a
@@ -560,7 +590,7 @@ export function checkIntegrity(records, { today }) {
           (b) => b && b.provenanceRef === p.id,
         );
         if (!back.includes(p.id) && !viaBreak) {
-          add('error', 'back-link', series.file, sid, `${p.id} lists this series in affectsSeries, but the series carries "${p.id}" neither in provenanceRefs nor on a break. The link has to run both ways, or the dispute stops travelling with the number`);
+          add('error', 'back-link', series.file, sid, `${p.id} lists this series in ${field}, but the series carries "${p.id}" neither in provenanceRefs nor on a break. The link has to run both ways, or the record stops travelling with the number`);
         }
       });
     }

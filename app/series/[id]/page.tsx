@@ -9,7 +9,13 @@ import {
   series as allSeries,
 } from '@/lib/data';
 import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
-import { denominatorBreaksFor, pairFor, regimeFor, regimeNeighbours } from '@/lib/rules';
+import {
+  denominatorBreaksFor,
+  pairFor,
+  regimeFor,
+  regimeNeighbours,
+  roleInProvenance,
+} from '@/lib/rules';
 import { CoverageUsageView } from '@/components/CoverageUsageView';
 import {
   ADVANCES_SERIES,
@@ -172,8 +178,15 @@ export default async function SeriesDetail({ params }: Props) {
             <Link key={p.id} href={`/provenance/${p.id}/`}>
               <span className="label">{p.id}</span>
               <span className="grid-title">{p.title}</span>
+              {/* directionOfBias describes what the record does to the series it distorts,
+                  so it is withheld from a corrective. Printing "overstates-post-2014" beside
+                  nh-construction-pace would tell a reader the one series that does not
+                  overstate that it does. */}
               <span className="grid-meta">
-                {p.directionOfBias} · bridge {p.bridgeExists ? 'exists' : 'none'}
+                {roleInProvenance(s.id, p) === 'corrective'
+                  ? 'this series is the corrective, not the affected party'
+                  : p.directionOfBias}{' '}
+                · bridge {p.bridgeExists ? 'exists' : 'none'}
               </span>
             </Link>
           ))}

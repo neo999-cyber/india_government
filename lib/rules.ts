@@ -235,3 +235,26 @@ export function caveatOf(record: { caveat?: string } | undefined | null): string
   const text = record?.caveat?.trim();
   return text ? text : null;
 }
+
+/**
+ * How a series stands to a provenance record.
+ *
+ * `directionOfBias` is a property of the record and describes what it does to the series it
+ * distorts. Applying it to a corrective states the opposite of the truth: nh-construction-pace
+ * carries P-30 because P-30 names it as the honest build metric, and rendering
+ * "overstates-post-2014" beside it would tell a reader the one series that does not overstate
+ * that it does.
+ *
+ * `unspecified` is the common case and stays neutral. Most series carry a record without the
+ * record enumerating them either way, and silence is not a claim of correctness.
+ */
+export type ProvenanceRole = 'affected' | 'corrective' | 'unspecified';
+
+export function roleInProvenance(
+  seriesId: string,
+  record: { affectsSeries?: string[]; correctiveSeries?: string[] },
+): ProvenanceRole {
+  if (record.correctiveSeries?.includes(seriesId)) return 'corrective';
+  if (record.affectsSeries?.includes(seriesId)) return 'affected';
+  return 'unspecified';
+}

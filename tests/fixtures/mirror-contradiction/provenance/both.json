@@ -1,0 +1,14 @@
+[
+  {
+    "id": "P-90",
+    "title": "Record naming one series as both distorted and the correction for it",
+    "whatChanged": "Lists the same series in affectsSeries and correctiveSeries, which says directionOfBias simultaneously does and does not apply to it. The mirror only means anything if the two lists are disjoint.",
+    "when": "2020-01",
+    "affectsDomains": ["macro"],
+    "affectsSeries": ["cannot-be-both"],
+    "correctiveSeries": ["cannot-be-both"],
+    "directionOfBias": "overstates-post-2014",
+    "bridgeExists": false,
+    "sources": [{ "name": "Fixture, not a real source", "url": "https://example.org/", "tier": "T1" }]
+  }
+]
