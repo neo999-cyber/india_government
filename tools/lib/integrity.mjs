@@ -53,6 +53,17 @@ const COVERAGE_USAGE_PAIRS = [
 ];
 
 /**
+ * Minimum length of `why` on an absence whose stated reason is disputed.
+ *
+ * A proxy for substance, not a reading of it. The bare stated reason in the only real case
+ * ("The Labour Ministry told Parliament that no such data is maintained.") is about 70
+ * characters; a claim plus the evidence contradicting it cannot be materially shorter than
+ * roughly double that. Tune it if a legitimate case lands under the floor — it exists to stop
+ * the flag being set with nothing behind it, not to grade prose.
+ */
+const DISPUTE_WHY_FLOOR = 160;
+
+/**
  * Contested pairs (P-41), mirroring lib/rules.ts. A third relation: two instruments that
  * disagree about the same quantity, neither correcting the other. Both must be present and
  * both must carry the governing record, or the site would show one survey as the answer.
@@ -582,8 +593,36 @@ export function checkIntegrity(records, { today }) {
       const where = label(r);
       rec.unmeasured.forEach((u, i) => {
         if (!u || typeof u !== 'object') return;
+        const what = String(u.what).slice(0, 60);
+
         if (typeof u.wouldFill !== 'string' || !u.wouldFill.trim()) {
-          add('warn', 'unmeasured-route', r.file, where, `unmeasured[${i}] ("${String(u.what).slice(0, 60)}") names no wouldFill, so it states an absence without a route to closing it and does not reach the verification queue. Fine when no instrument for it exists — worth saying so if that is the case`);
+          add('warn', 'unmeasured-route', r.file, where, `unmeasured[${i}] ("${what}") names no wouldFill, so it states an absence without a route to closing it and does not reach the verification queue. Fine when no instrument for it exists — worth saying so if that is the case`);
+        }
+
+        // Every absence says what KIND it is. The schema leaves reasonKind optional so a
+        // drop is not rejected mid-authoring; this makes it mandatory at the gate, so a
+        // future domain cannot file an absence without classifying it. "Not measured" alone
+        // flattens a body declining to collect into a quantity nobody has got round to.
+        if (!u.reasonKind) {
+          add('error', 'reason-kind', r.file, where, `unmeasured[${i}] ("${what}") states no reasonKind. Every absence must say which kind it is — not-collected, not-published, withheld or never-defined — because "not measured" alone reads the same for a quantity nobody has got round to and one a body has declined to keep`);
+        }
+
+        // A disputed stated reason has to carry its contradiction, not assert it.
+        //
+        // Two checks, and only the first is structural: if the stated reason is contradicted
+        // because evidence indicates the data exists, then a route to that evidence exists by
+        // definition, so wouldFill must name it. The second is a substance floor on `why` —
+        // a claim AND its contradiction cannot be stated in the length of a bare claim. That
+        // is a proxy for length, not a reading of meaning: it cannot confirm the contradiction
+        // is really there, only that there is room for it. A reviewer still has to look.
+        if (u.reasonDisputed === true) {
+          if (typeof u.wouldFill !== 'string' || !u.wouldFill.trim()) {
+            add('error', 'absence-dispute', r.file, where, `unmeasured[${i}] ("${what}") sets reasonDisputed but names no wouldFill. The stated reason is contested because evidence indicates the data exists, so the route to that evidence is exactly what has to be named`);
+          }
+          const why = typeof u.why === 'string' ? u.why.trim() : '';
+          if (why.length < DISPUTE_WHY_FLOOR) {
+            add('error', 'absence-dispute', r.file, where, `unmeasured[${i}] ("${what}") sets reasonDisputed but "why" is ${why.length} characters, under the ${DISPUTE_WHY_FLOOR} needed to carry both a stated reason and the evidence contradicting it. The flag must not be asserted bare — state what was said, and what contradicts it`);
+          }
         }
       });
     }

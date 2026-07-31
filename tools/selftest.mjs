@@ -91,6 +91,8 @@ const ISOLATED = [
   { dir: 'mirror-contradiction', rule: 'mirror-contradiction' },
   { dir: 'pair-inverted', rule: 'pair-inverted' },
   { dir: 'contested-half', rule: 'contested-incomplete', expect: 'states a direction the evidence does not establish' },
+  { dir: 'reason-kind-missing', rule: 'reason-kind' },
+  { dir: 'absence-dispute-bare', rule: 'absence-dispute', expect: 'must not be asserted bare' },
 ];
 
 /**

@@ -56,7 +56,8 @@
       "type": "array",
       "items": {
         "type": "string"
-      }
+      },
+      "description": "Series this record is SPECIFICALLY ABOUT — where the finding concerns that series directly. NOT a list of every series the record bears on. The relationship is deliberately asymmetric: a series may declare many provenanceRefs (P-09 and P-14 are declared by nine series each as general WDI methodology), while a record names only the series its finding concerns. Requiring symmetry would make this field an unmaintainable enumeration. The backlink check therefore runs record-to-series only, and that is correct."
     },
     "directionOfBias": {
       "enum": [

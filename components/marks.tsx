@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import type { Point, Status, Tier, TieredSource, SourceRef, Unmeasured } from '@/lib/types';
+import type { Point, ReasonKind, Status, Tier, TieredSource, SourceRef, Unmeasured } from '@/lib/types';
 import { TIER_LABELS, formatValue } from '@/lib/format';
 
 /**
@@ -169,6 +169,19 @@ export function CaveatFlag({
 }
 
 /**
+ * What each reason kind says, in the terms a reader needs.
+ *
+ * These are claims about the responsible body's position, not about the world — "the holder
+ * says no record is kept" is what `not-collected` records, and it may be contested.
+ */
+export const REASON_KIND_LABELS: Record<ReasonKind, string> = {
+  'not-collected': 'never collected',
+  'not-published': 'collected, not published',
+  withheld: 'withheld',
+  'never-defined': 'never defined',
+};
+
+/**
  * Measurements that do not exist, rendered as findings rather than empty space.
  *
  * The distinction drawn is between a gap in the data and a gap in the world. A blank cell
@@ -205,7 +218,17 @@ export function Absences({
       </span>
       <ul className="absence-list">
         {items.map((u) => (
-          <li key={u.what}>
+          <li key={u.what} className={u.reasonDisputed ? 'absence-disputed' : undefined}>
+            {/* The kind is shown on every entry rather than grouping the list by it. With one
+                to three absences on a record, grouping adds a level of hierarchy to sort two
+                items; the label carries the same information without it. The /unmeasured page
+                groups by kind, which is where the taxonomy actually pays. */}
+            {u.reasonKind ? (
+              <span className="absence-kind">
+                {REASON_KIND_LABELS[u.reasonKind]}
+                {u.reasonDisputed ? ' — stated reason disputed' : ''}
+              </span>
+            ) : null}
             <p>
               No public measurement exists for <strong>{u.what}</strong>. {u.why}
             </p>

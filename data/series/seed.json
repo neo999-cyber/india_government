@@ -1415,6 +1415,77 @@
   "caveat": "This series RISING is a development reversal, not an improvement. Agriculture's employment share had fallen for decades; it turned around after 2018-19. In 2019-20 alone employment in agriculture rose by about 32 million, absorbing roughly three-quarters of that year's total employment increase."
  },
  {
+  "id": "epfo-net-additions",
+  "title": "EPFO net subscriber additions, cumulative",
+  "unit": "crore subscribers",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "EPFO payroll data via PIB",
+   "url": "https://www.pib.gov.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 6.2,
+    "status": "approx",
+    "note": "September 2017 to March 2024, as cited by government"
+   }
+  ],
+  "provenanceRefs": [
+   "P-42",
+   "P-22"
+  ],
+  "caveat": "Not a count of new jobs. Net additions include members re-joining after a gap and members switching employers, and the series is periodically revised. One analysis of 4.86 crore net additions across FY2020-FY2023 found roughly 2.27 crore genuinely new payroll entries and about 42 lakh of net formalisation.",
+  "unmeasured": [
+   {
+    "what": "First-time entrants to formal payroll, separated from re-joiners and job-switchers",
+    "why": "EPFO publishes net additions, not a new-hire count, and India maintains no establishment-level longitudinal payroll register that would allow the separation.",
+    "reasonKind": "not-collected",
+    "wouldFill": "A payroll-linked new-hire register of the kind most comparable economies maintain"
+   }
+  ],
+  "notes": "Carried because the criticism in P-42 needs the claim it criticises to be reachable from the data."
+ },
+ {
+  "id": "eshram-registrations",
+  "title": "e-Shram unorganised worker registrations",
+  "unit": "crore workers",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "Ministry of Labour and Employment",
+   "url": "https://eshram.gov.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 30.98,
+    "status": "approx",
+    "note": "3 August 2025"
+   }
+  ],
+  "provenanceRefs": [
+   "P-22"
+  ],
+  "caveat": "Registration on a database, not receipt of any benefit. e-Shram was created after the 2020 exodus exposed that the state could not identify its own informal workforce; whether registration converts into delivered social security is a separate and largely unmeasured question.",
+  "unmeasured": [
+   {
+    "what": "Benefits actually delivered to e-Shram registrants",
+    "why": "Registration counts are published; downstream benefit delivery against those registrations is not reported as a series.",
+    "reasonKind": "not-published",
+    "wouldFill": "Scheme-linked disbursement data keyed to e-Shram identifiers"
+   }
+  ],
+  "notes": "The registration-standing-in-for-outcome shape that P-22 describes, in its employment form."
+ },
+ {
   "id": "graduate-unemployment",
   "title": "Unemployment rate among graduates",
   "unit": "%",
@@ -1518,6 +1589,40 @@
   "notes": "Vietnam's industrial employment share rose 13 points; India's was flat. This is the employment face of phase 2's finding on manufacturing's falling GDP share."
  },
  {
+  "id": "klems-employment-claim",
+  "title": "Additional employment, RBI KLEMS estimate",
+  "unit": "crore jobs",
+  "domain": "employment",
+  "tier": "T1",
+  "source": {
+   "name": "RBI India KLEMS database, as cited by government",
+   "url": "https://www.rbi.org.in/",
+   "vintage": "2026-07-31"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 2.9,
+    "status": "approx",
+    "note": "2004-2014, on the same framework"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 17.19,
+    "status": "approx",
+    "note": "2014-2024, the figure cited as evidence of job creation"
+   }
+  ],
+  "provenanceRefs": [
+   "P-43"
+  ],
+  "caveat": "This is an estimate, not a measurement, and citing it as independent evidence of job creation is circular. KLEMS is a total factor productivity framework that takes employment as an INPUT from PLFS and the national accounts — the same surveys whose interpretation is in dispute. The figure is carried here as a claim, with the record explaining what it does not establish.",
+  "notes": "Not a fault in KLEMS, which does what it was designed to do. The error is in the citation."
+ },
+ {
   "id": "lfpr-female",
   "title": "Female labour force participation rate, usual status, age 15+",
   "unit": "%",
@@ -1596,7 +1701,8 @@
    {
     "what": "Whether rising female participation is paid market entry, reclassified unpaid work, or distress entry",
     "why": "PLFS counts unpaid helpers as employed and has no instrument to separate the three. The ILO modelled estimate for India is about 32% against PLFS's 41.7%, which is itself a signal of definitional divergence.",
-    "wouldFill": "A time-use-linked labour module, or a PLFS supplement distinguishing paid from unpaid activity within household enterprises"
+    "wouldFill": "A time-use-linked labour module, or a PLFS supplement distinguishing paid from unpaid activity within household enterprises",
+    "reasonKind": "never-defined"
    }
   ],
   "notes": "Baseline: rural female participation fell 49.4% (2004-05) to 35.8% (2011-12) on the phase-1 figures. India's rate remains the lowest in the peer panel on ILO-modelled estimates."
@@ -3023,7 +3129,8 @@
    {
     "what": "BharatNet functional service delivery — actual throughput and uptime per gram panchayat",
     "why": "Only service-readiness is published; delivered service is not systematically reported.",
-    "wouldFill": "UNMS dashboard uptime data plus per-GP throughput measurement"
+    "wouldFill": "UNMS dashboard uptime data plus per-GP throughput measurement",
+    "reasonKind": "not-published"
    }
   ]
  },
@@ -3069,7 +3176,8 @@
    {
     "what": "Actual hours of electricity supply received by households, as a continuous national series",
     "why": "Connections are reported; supply-hours are not published as a national time series. Survey evidence (ISEP, IRES) is periodic and partial.",
-    "wouldFill": "CEA or discom feeder-level metering aggregated nationally, or a recurring national residential energy survey"
+    "wouldFill": "CEA or discom feeder-level metering aggregated nationally, or a recurring national residential energy survey",
+    "reasonKind": "not-collected"
    }
   ]
  },
@@ -3149,7 +3257,8 @@
    {
     "what": "National functional coverage — the share of ALL rural households receiving water to Mission standards",
     "why": "The 76% figure is a share of CERTIFIED households, a subset of connected ones, so it cannot be combined with the 82% connection rate to yield a national figure.",
-    "wouldFill": "A functionality assessment sampling all rural households rather than certified villages"
+    "wouldFill": "A functionality assessment sampling all rural households rather than certified villages",
+    "reasonKind": "never-defined"
    }
   ]
  },
@@ -3359,7 +3468,8 @@
    {
     "what": "Metro ridership against DPR projection, as a published annual series",
     "why": "No official series exists; the evidence comes from one-off CAG audits and academic studies.",
-    "wouldFill": "MoHUA mandating annual actual-versus-DPR ridership publication for every operational metro"
+    "wouldFill": "MoHUA mandating annual actual-versus-DPR ridership publication for every operational metro",
+    "reasonKind": "not-published"
    }
   ]
  },
@@ -3801,7 +3911,8 @@
    {
     "what": "Average speed after 2019",
     "why": "The CAG series stops and no comparable published series continues it.",
-    "wouldFill": "Indian Railways annual statistical statements, if speed is reported on a consistent basis"
+    "wouldFill": "Indian Railways annual statistical statements, if speed is reported on a consistent basis",
+    "reasonKind": "not-published"
    }
   ]
  },
@@ -5342,7 +5453,8 @@
    {
     "what": "Houses completed and actually occupied",
     "why": "The third stage of the cascade has no public measurement; completion is reported, occupancy is not.",
-    "wouldFill": "PMAY-G dashboard, if an occupancy field is ever published"
+    "wouldFill": "PMAY-G dashboard, if an occupancy field is ever published",
+    "reasonKind": "not-collected"
    }
   ]
  },
@@ -5516,12 +5628,14 @@
    {
     "what": "Population-scale health outcomes from reduced solid-fuel exposure",
     "why": "The scheme's stated rationale was health, but no population-level outcome study links Ujjwala to respiratory or maternal health change.",
-    "wouldFill": "A cohort or difference-in-differences study on household air pollution exposure"
+    "wouldFill": "A cohort or difference-in-differences study on household air pollution exposure",
+    "reasonKind": "never-defined"
    },
    {
     "what": "Refill rates after December 2018",
     "why": "The CAG audit series stops there and no comparable published series continues it.",
-    "wouldFill": "MoPNG refill data, if published"
+    "wouldFill": "MoPNG refill data, if published",
+    "reasonKind": "not-published"
    }
   ]
  }

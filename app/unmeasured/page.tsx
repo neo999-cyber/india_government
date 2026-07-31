@@ -2,6 +2,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { allUnmeasured } from '@/lib/data';
 import { DOMAIN_LABELS } from '@/lib/format';
+import { REASON_KINDS } from '@/lib/types';
+import { REASON_KIND_LABELS } from '@/components/marks';
 
 export const metadata: Metadata = { title: 'Unmeasured' };
 
@@ -23,6 +25,10 @@ export default function UnmeasuredIndex() {
   const records = new Set(all.map((a) => a.recordId));
   const withRoute = all.filter((a) => a.entry.wouldFill);
   const withoutRoute = all.filter((a) => !a.entry.wouldFill);
+  const disputed = all.filter((a) => a.entry.reasonDisputed);
+  const byKind = Object.fromEntries(
+    REASON_KINDS.map((k) => [k, all.filter((a) => a.entry.reasonKind === k)]),
+  ) as Record<(typeof REASON_KINDS)[number], typeof all>;
 
   return (
     <>
@@ -47,12 +53,56 @@ export default function UnmeasuredIndex() {
         burned down.
       </p>
 
+      {/* Grouping pays here rather than on a record, where there are one to three entries.
+          Across the dataset the taxonomy is the point: a body declining to keep a record is
+          a different finding from a quantity nobody has got round to. */}
+      <p className="prose-note">
+        By kind:{' '}
+        {REASON_KINDS.filter((k) => byKind[k]?.length).map((k, i) => (
+          <span key={k}>
+            {i > 0 ? ' · ' : ''}
+            <strong>{byKind[k].length}</strong> {REASON_KIND_LABELS[k]}
+          </span>
+        ))}
+        .
+        {disputed.length > 0 ? (
+          <>
+            {' '}
+            Of those, <strong>{disputed.length}</strong>{' '}
+            {disputed.length === 1 ? 'has' : 'have'} a stated reason that is contradicted — an
+            overlay on the kinds above, not a further kind.
+          </>
+        ) : null}
+      </p>
+
+      {disputed.length > 0 ? (
+        <div className="caveat-block">
+          <span className="label">Stated reason contradicted</span>
+          <p>
+            {disputed.length === 1
+              ? 'One absence records a reason'
+              : `${disputed.length} absences record reasons`}{' '}
+            that the same government&rsquo;s own evidence contradicts. The kind shown is what
+            the responsible body stated; it is not a finding that the statement is true. Where an absence carries a consequence — a denial of compensation resting on
+            a claim that no record exists — the contradiction is the finding.
+          </p>
+          <ul>
+            {disputed.map((a) => (
+              <li key={`${a.recordId}-${a.entry.what}`}>
+                {a.entry.what} — <Link href={a.href}>{a.recordId}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
       <h2>Declared absences</h2>
       <div className="table-wrap">
         <table>
           <thead>
             <tr>
               <th>Record</th>
+              <th>Kind</th>
               <th>Not measured</th>
               <th>Why</th>
             </tr>
@@ -66,6 +116,14 @@ export default function UnmeasuredIndex() {
                   <span className="t-note mono">
                     {a.recordId} · {a.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}
                   </span>
+                </td>
+                <td className="t-note mono">
+                  {a.entry.reasonKind ? REASON_KIND_LABELS[a.entry.reasonKind] : '—'}
+                  {a.entry.reasonDisputed ? (
+                    <span className="absence-kind" style={{ color: 'var(--alert)' }}>
+                      stated reason disputed
+                    </span>
+                  ) : null}
                 </td>
                 <td>{a.entry.what}</td>
                 <td className="t-note">{a.entry.why}</td>
