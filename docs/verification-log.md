@@ -367,3 +367,74 @@ The labels belong there too — "Headline network figure" against "The build rec
 Full-file replacement of this log clobbered integration notes and was reverted (`bb36272`, reverted by `9fed5ed`), then nearly repeated twice more. Third incident of wholesale replacement eating correct work; the first was the `exports-gdp` provenance link in phase 4.
 
 The rule is **never replace a file you did not write in its entirety this cycle** — append, or dictate the delta. This log has two authors and must only ever be appended to.
+# Verification log — cycle 2026-07-31i (Phase 5b code run: the affects/corrective mirror)
+
+Totals unchanged: 81 series (455 points), 57 ledger, 38 provenance. Gate clean on arrival.
+No `/data` edits.
+
+## 1 and 2. Mirror enforced, backlink extended
+`mirror-contradiction` (error): a series in both `affectsSeries` and `correctiveSeries` of one
+record says `directionOfBias` simultaneously does and does not apply to it.
+
+The backlink now runs over both lists. A corrective carries the ref for navigation rather than
+because it is distorted, but it must still carry it — a reader landing on the honest metric has
+to be able to reach the record saying why it is the honest one, which is the point of the
+mirror. Clean on arrival: every corrective already links back.
+
+Both proven by fixture (`tests/fixtures/mirror-contradiction`, `tests/fixtures/pair-inverted`).
+
+## 3. `directionOfBias` scoped
+Withheld from a corrective on the series page: P-30's card on `nh-construction-pace` now reads
+"this series is the corrective, not the affected party · bridge exists".
+
+**It is scoped per (series, record), not per series** — which the highways case demonstrates by
+itself. `nh-construction-pace` is the corrective for P-30's reclassification problem *and is
+genuinely affected by P-31*, whose conflation of widening with new alignment distorts the
+construction figure. So its P-30 card is neutral and its P-31 card still reads
+"overstates-post-2014". Both are correct, and a per-series flag would have got one of them
+wrong.
+
+The provenance page is now split into **"Series this record distorts"** and **"Series that
+correct for it"**, because listed together a reader has no way to tell which is which — and on
+P-30 that distinction is the entire finding. The corrective section says in prose that the bias
+does not apply to it.
+
+## 4. Not deriving the pairs — the split does not carry the information
+Tested rather than judged. For each of the nine pairs, whether one record holds the coverage
+side in `affectsSeries` and the usage side in `correctiveSeries`:
+
+| Pair | Result |
+|---|---|
+| Ujjwala, JJM, PM-JAY, PMAY-G | P-22 maps **4 affected × 5 correctives** — a 20-way cross product with nothing saying which goes with which |
+| Highways | P-30 maps **1 × 2**; `nh-four-lane` is equally a corrective but is not the pair's usage side |
+| Airports | P-38 declares no `correctiveSeries`; `udan-routes` carries no refs at all |
+| Metro | `metro-network` appears in no record's affects or corrective list |
+| Electrification | P-32 has no corrective — the counterpart is a declared absence |
+| Sanitation | `sanitation-basic` is **corrective in P-22 and affected in P-24** |
+
+Four of nine cannot be derived at all, and two more are ambiguous. Recovering
+`ujjwala-connections ↔ ujjwala-refills` from P-22 would take id-prefix string matching, which
+is the fragile-heuristic trap this validator has already fallen into twice (the T5 rule naming
+P-08; the sparsity rule that would have rejected a third of the true positives).
+
+The sanitation row is the structural objection rather than a counting one: **role is not a
+property of a series, it is a property of a (series, record) relation.** A derived pair list
+would have to choose which record to ask — exactly the hand-written decision the refactor was
+meant to remove. That does not change when another domain lands; it changes only if the data
+starts carrying the pairing itself, e.g. `pairs: [{affected, corrective}]` on the record.
+
+The labels were never the blocker, but they confirm it: "The build record" against "Sustained
+use" is a claim about what a series *is*, and nothing in the mirror encodes it.
+
+**What the split is good for instead: cross-checking the hand-written list.** New
+`pair-inverted` (error) fires where a record calls a pair's coverage side a corrective and its
+usage side affected — the pair is then the wrong way round, and the view would present the
+honest metric as the headline needing qualification. It cannot derive the pairs, but it can say
+the sides are the right way up. All nine pass.
+
+## Result
+`validate` 0 errors / 17 warnings · `selftest` 18/18 plus six isolated and one stays-clean ·
+`typecheck` clean · `build` 206 static pages · verified in-browser at 1440px and 390px: P-30's
+card neutral on the corrective and P-31's still biased, the P-30 page split correctly, the
+`nh-network-length` caveat still byte-exact inside a grid card at 390px, no nested anchors, no
+console errors.
