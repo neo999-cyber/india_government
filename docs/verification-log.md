@@ -291,74 +291,40 @@ Populated on five records: **P-30** (nh-construction-pace, nh-four-lane), **P-22
 
 ---
 
-# Verification log — cycle 2026-07-31i (Phase 5b code run: the affects/corrective mirror)
+# Verification log — cycle 2026-07-31h (pairing: decision recorded, not built)
 
-Totals unchanged: 81 series (455 points), 57 ledger, 38 provenance. Gate clean on arrival.
-No `/data` edits.
+## DECISION: pairs stay hand-written for now. Recorded so it is not relitigated.
 
-## 1 and 2. Mirror enforced, backlink extended
-`mirror-contradiction` (error): a series in both `affectsSeries` and `correctiveSeries` of one
-record says `directionOfBias` simultaneously does and does not apply to it.
+The integration session tested derivation across all nine pairs rather than judging it, and found it cannot work from `affectsSeries` / `correctiveSeries`:
 
-The backlink now runs over both lists. A corrective carries the ref for navigation rather than
-because it is distorted, but it must still carry it — a reader landing on the honest metric has
-to be able to reach the record saying why it is the honest one, which is the point of the
-mirror. Clean on arrival: every corrective already links back.
+- **P-22** maps 4 affected against 5 correctives with nothing saying which goes with which. Recovering `ujjwala-connections` to `ujjwala-refills` would need id-prefix string matching — the fragile-heuristic trap this validator has already hit twice.
+- **P-30** maps 1 against 2: `nh-four-lane` is equally a corrective but is not the pair's usage side.
+- **Four of nine cannot be derived at all**: airports (P-38 has no corrective), metro (in no list), electrification (counterpart is an absence), sanitation.
 
-Both proven by fixture (`tests/fixtures/mirror-contradiction`, `tests/fixtures/pair-inverted`).
+**The structural finding — and it changes the data model's semantics:** `sanitation-basic` is corrective in P-22 and affected in P-24. **Role is a property of the (series, record) RELATION, not of a series.** A derived pair list would have to choose which record to ask, which is the hand-written decision the refactor was meant to remove. This does not change when more domains land.
 
-## 3. `directionOfBias` scoped
-Withheld from a corrective on the series page: P-30's card on `nh-construction-pace` now reads
-"this series is the corrective, not the affected party · bridge exists".
+The same fact justifies scoping `directionOfBias` per (series, record) rather than per series. `nh-construction-pace` is P-30's corrective AND genuinely distorted by P-31, whose conflation of widening with new alignment inflates the construction figure. Its P-30 card is neutral, its P-31 card reads `overstates-post-2014`. A per-series flag would have got one of them wrong.
 
-**It is scoped per (series, record), not per series** — which the highways case demonstrates by
-itself. `nh-construction-pace` is the corrective for P-30's reclassification problem *and is
-genuinely affected by P-31*, whose conflation of widening with new alignment distorts the
-construction figure. So its P-30 card is neutral and its P-31 card still reads
-"overstates-post-2014". Both are correct, and a per-series flag would have got one of them
-wrong.
+## Where pairing eventually belongs — and the trigger
+NOT `pairs` on the provenance record, which was the suggested shape: four of nine pairs are not (affected, corrective) relations at all. Metro and electrification pair a coverage series against **its own declared absence**, mediated by no provenance record.
 
-The provenance page is now split into **"Series this record distorts"** and **"Series that
-correct for it"**, because listed together a reader has no way to tell which is which — and on
-P-30 that distinction is the entire finding. The corrective section says in prose that the bias
-does not apply to it.
+The eventual home is a **fourth data layer**, `data/pairs.json`, carrying what is currently hand-written in the component:
 
-## 4. Not deriving the pairs — the split does not carry the information
-Tested rather than judged. For each of the nine pairs, whether one record holds the coverage
-side in `affectsSeries` and the usage side in `correctiveSeries`:
+```
+{ id, domain,
+  coverage: { series, label },
+  usage:    { series, label } | { absenceFrom, index, label },
+  framing:  "one sentence, per pair",
+  gapComputable: bool, gapReason: "...",
+  provenanceRefs: [...] }
+```
 
-| Pair | Result |
-|---|---|
-| Ujjwala, JJM, PM-JAY, PMAY-G | P-22 maps **4 affected × 5 correctives** — a 20-way cross product with nothing saying which goes with which |
-| Highways | P-30 maps **1 × 2**; `nh-four-lane` is equally a corrective but is not the pair's usage side |
-| Airports | P-38 declares no `correctiveSeries`; `udan-routes` carries no refs at all |
-| Metro | `metro-network` appears in no record's affects or corrective list |
-| Electrification | P-32 has no corrective — the counterpart is a declared absence |
-| Sanitation | `sanitation-basic` is **corrective in P-22 and affected in P-24** |
+The labels belong there too. "Headline network figure" against "The build record" is a judgement about what each series IS — the same class of knowledge as `caveat` and `unmeasured`, both of which were moved out of code for this reason.
 
-Four of nine cannot be derived at all, and two more are ambiguous. Recovering
-`ujjwala-connections ↔ ujjwala-refills` from P-22 would take id-prefix string matching, which
-is the fragile-heuristic trap this validator has already fallen into twice (the T5 rule naming
-P-08; the sparsity rule that would have rejected a third of the true positives).
+**Trigger to build it:** when pairs exceed roughly 15, OR when a second domain needs absence-pairs. Not now — nine pairs are manageable hand-written, and the absence-pair shape is still only exercised twice, so the abstraction would be built on a shape that is not yet known. Build the layer when the shape has stopped moving, not before.
 
-The sanitation row is the structural objection rather than a counting one: **role is not a
-property of a series, it is a property of a (series, record) relation.** A derived pair list
-would have to choose which record to ask — exactly the hand-written decision the refactor was
-meant to remove. That does not change when another domain lands; it changes only if the data
-starts carrying the pairing itself, e.g. `pairs: [{affected, corrective}]` on the record.
-
-The labels were never the blocker, but they confirm it: "The build record" against "Sustained
-use" is a claim about what a series *is*, and nothing in the mirror encodes it.
-
-**What the split is good for instead: cross-checking the hand-written list.** New
-`pair-inverted` (error) fires where a record calls a pair's coverage side a corrective and its
-usage side affected — the pair is then the wrong way round, and the view would present the
-honest metric as the headline needing qualification. It cannot derive the pairs, but it can say
-the sides are the right way up. All nine pass.
-
-## Result
-`validate` 0 errors / 17 warnings · `selftest` 18/18 plus six isolated and one stays-clean ·
-`typecheck` clean · `build` 206 static pages · verified in-browser at 1440px and 390px: P-30's
-card neutral on the corrective and P-31's still biased, the P-30 page split correctly, the
-`nh-network-length` caveat still byte-exact inside a grid card at 390px, no nested anchors, no
-console errors.
+## Endorsements
+- **`mirror-contradiction` as an error.** A series in both lists says `directionOfBias` simultaneously does and does not apply. Correct as an error rather than a warning.
+- **Backlink extended over both lists.** A corrective carries the ref for navigation rather than distortion, but must still carry it — otherwise a reader landing on the honest metric cannot reach the record explaining why it is the honest one.
+- **Provenance page split into "Series this record distorts" and "Series that correct for it."** On P-30 that distinction IS the finding; listed together it is invisible.
+- **`pair-inverted` as an error.** Derivation is impossible but verification is not — a record calling a pair's coverage side corrective means the pair is upside down. The right use of a signal that is informative but incomplete, and a pattern to reach for again.
