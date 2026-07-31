@@ -110,3 +110,46 @@ export function ProvenanceTags({ ids }: { ids: string[] }) {
     </span>
   );
 }
+
+/**
+ * The caveat a ledger record may not render without.
+ *
+ * Two records carry a reason their headline reading may not mean what it appears to, and a
+ * list row showing the title and the word "contested" transmits the claim while dropping the
+ * thing that qualifies it. So the flag travels into every compact rendering — index tables,
+ * domain and term pages, "cited by" blocks — not only the detail page where the full case is
+ * already set out. `variant="inline"` is the terse form for a table cell; the block form
+ * carries the pointer back to where the full statement lives.
+ */
+export function CaveatFlag({
+  caveat,
+  variant = 'block',
+}: {
+  caveat: { label: string; source: { kind: 'provenance'; id: string } | { kind: 'field'; field: string } };
+  variant?: 'inline' | 'block';
+}) {
+  if (variant === 'inline') {
+    return (
+      <span className="caveat-inline" title={caveat.label}>
+        caveat: {caveat.label}
+      </span>
+    );
+  }
+  return (
+    <div className="caveat-block">
+      <span className="label">Blocking caveat</span>
+      <p>
+        {caveat.label}.{' '}
+        {caveat.source.kind === 'provenance' ? (
+          <>
+            Stated in full at{' '}
+            <Link href={`/provenance/${caveat.source.id}/`}>{caveat.source.id}</Link>.
+          </>
+        ) : (
+          <>Stated in full in this record&rsquo;s {caveat.source.field === 'caseFor' ? 'case for' : 'case against'}.</>
+        )}{' '}
+        This record does not render anywhere without it.
+      </p>
+    </div>
+  );
+}

@@ -26,7 +26,36 @@ const REGIME_GROUPS = [
   ['gdp-growth-old-base', 'gdp-growth-new-base', 'gdp-growth-2022-base'],
 ];
 
-/** Provenance record carrying the contested-index dispute (CLAUDE.md rule 6). */
+/**
+ * Coverage/usage pairs (P-22) and blocking caveats, mirroring lib/rules.ts for the site.
+ * The two must stay in step — these are the lists the rendering rules are built on, and a
+ * pair or a caveat that silently stops resolving fails open, showing the unqualified figure.
+ */
+const COVERAGE_USAGE_PAIRS = [
+  { scheme: 'Ujjwala (LPG)', coverage: 'ujjwala-connections', usage: 'ujjwala-refills', governing: 'P-22' },
+  { scheme: 'Jal Jeevan Mission', coverage: 'jjm-tap-coverage', usage: 'jjm-functionality', governing: 'P-22' },
+  { scheme: 'PM-JAY', coverage: 'pmjay-cards', usage: 'pmjay-admissions', governing: 'P-22' },
+  {
+    scheme: 'Swachh Bharat (sanitation)',
+    coverage: 'sanitation-basic',
+    usage: null,
+    usageFromProvenance: { record: 'P-24', holder: 'r.i.c.e. SQUAT panel 2018' },
+    governing: 'P-22',
+  },
+];
+
+const BLOCKING_CAVEATS = [
+  { record: 'L-0042', source: { kind: 'field', field: 'caseFor' } },
+  { record: 'L-0043', source: { kind: 'provenance', id: 'P-26' } },
+];
+
+/**
+ * The contested-index dispute for *governance* indices (RSF, Freedom House, V-Dem).
+ *
+ * Kept for reference, but rule 6 is no longer checked by naming it. See the T5 rule below:
+ * a contested index must carry a dispute record covering its own domain, and which record
+ * that is depends on the index.
+ */
 const CONTESTED_INDEX_DISPUTE = 'P-08';
 
 /**
@@ -266,10 +295,26 @@ export function checkIntegrity(records, { today }) {
     }
 
     // Rule 6: contested indices always carry their dispute link.
+    //
+    // The dispute must cover the series' own domain — the same test checkRelevance applies.
+    // This rule used to name P-08 specifically, which was right while every T5 series was a
+    // governance index. It stopped being right the moment a contested index arrived from
+    // another domain: ghi-score is human-development and carries P-29 (the GHI methodology
+    // dispute), and P-08 is governance-only, so demanding P-08 demanded a reference that
+    // ref-relevant forbids in the same run. No data could satisfy both rules at once, and
+    // satisfying this one literally would have pointed readers of a hunger index at a record
+    // about press-freedom rankings. What rule 6 protects is that a contested number never
+    // renders without its dispute, not that one particular record is cited.
     if (s.tier === 'T5') {
       const refs = Array.isArray(s.provenanceRefs) ? s.provenanceRefs : [];
-      if (!refs.includes(CONTESTED_INDEX_DISPUTE)) {
-        add('error', 't5-dispute-link', r.file, where, `tier T5 (contested index) must carry its dispute link ${CONTESTED_INDEX_DISPUTE} in provenanceRefs`);
+      const covering = refs.filter((ref) => {
+        const target = provenanceIds.get(ref);
+        if (!target) return false; // ref-resolves reports the dangling ref separately
+        const covers = Array.isArray(target.record.affectsDomains) ? target.record.affectsDomains : [];
+        return covers.includes('all') || covers.includes(s.domain);
+      });
+      if (covering.length === 0) {
+        add('error', 't5-dispute-link', r.file, where, `tier T5 (contested index) must carry a dispute record covering its own domain "${s.domain}" in provenanceRefs, so the contested number cannot render without the dispute. Carries [${refs.join(', ') || 'none'}]`);
       }
     }
 
@@ -332,6 +377,39 @@ export function checkIntegrity(records, { today }) {
     }
   }
 
+  // Rule 5b/P-22: a coverage figure never renders without the usage figure qualifying it.
+  //
+  // Mirrors COVERAGE_USAGE_PAIRS in lib/rules.ts; the two must stay in step. A half-present
+  // pair is an error rather than a warning because the failure mode is silent and one-sided:
+  // the site would render the coverage series alone, which reads as the scheme succeeding,
+  // and that is the exact claim the pairing exists to qualify.
+  // Fires only when part of a pair is present, exactly as the regime-group rule does: a
+  // dataset that carries neither side simply does not have this pair (every fixture
+  // directory is such a dataset), and erroring there would be noise, not a finding.
+  for (const pair of COVERAGE_USAGE_PAIRS) {
+    const coverage = seriesIds.get(pair.coverage);
+    const usage = pair.usage ? seriesIds.get(pair.usage) : null;
+    const host = coverage ?? usage;
+    if (!host) continue;
+
+    if (!coverage) {
+      add('error', 'pair-incomplete', host.file, pair.usage, `carries the usage side of "${pair.scheme}", but its coverage counterpart "${pair.coverage}" is not in /data. Half a pair cannot state a gap`);
+      continue;
+    }
+    if (pair.usage && !usage) {
+      add('error', 'pair-incomplete', coverage.file, pair.coverage, `carries the coverage side of "${pair.scheme}", but its usage counterpart "${pair.usage}" is not in /data. P-22 forbids rendering the administrative figure alone: without the counterpart it reads as the outcome rather than as an upper bound on it`);
+    }
+    if (!pair.usage && !pair.usageFromProvenance) {
+      add('error', 'pair-incomplete', coverage.file, pair.coverage, `coverage/usage pair "${pair.scheme}" declares neither a usage series nor a provenance counterpart, so the coverage figure would render alone`);
+    }
+    if (pair.usageFromProvenance && !provenanceIds.has(pair.usageFromProvenance.record)) {
+      add('error', 'pair-incomplete', coverage.file, pair.coverage, `usage counterpart is held in "${pair.usageFromProvenance.record}", which is not in /data`);
+    }
+    if (!provenanceIds.has(pair.governing)) {
+      add('error', 'pair-incomplete', coverage.file, pair.coverage, `governing record "${pair.governing}" is not in /data, so the pair cannot state why the gap runs one way`);
+    }
+  }
+
   // Rule 5, second half: where one regime ends and the next begins, both sides of the
   // handoff must be reachable. A regime that overlaps its successor is the normal case
   // while no spliced back-series exists; a gap between them is not.
@@ -389,6 +467,32 @@ export function checkIntegrity(records, { today }) {
 
     if (typeof l.asOf === 'string' && l.asOf > today) {
       add('warn', 'future-date', r.file, where, `asOf ${l.asOf} is in the future (today ${today})`);
+    }
+  }
+
+  // Blocking caveats: two ledger records may not render anywhere without the caveat that
+  // qualifies them. Mirrors BLOCKING_CAVEATS in lib/rules.ts; the two must stay in step.
+  //
+  // The caveat text is a rendering rule rather than a schema field, so nothing in /data
+  // guarantees it still points at something real. This is what checks that: if the record is
+  // renamed or the provenance record it cites is dropped, the flag would quietly render a
+  // dead link or vanish, and a caveat that vanishes is worse than one that was never there.
+  // As with pairs: only checked where the record is actually present, so fixture datasets
+  // that do not carry it are not reported against.
+  for (const c of BLOCKING_CAVEATS) {
+    const host = index.ledger.get(c.record);
+    if (!host) continue;
+    if (c.source.kind === 'provenance') {
+      if (!provenanceIds.has(c.source.id)) {
+        add('error', 'caveat-target', host.file, c.record, `blocking caveat cites "${c.source.id}" for the full statement, but that provenance record is not in /data`);
+      } else {
+        const refs = Array.isArray(host.record.provenanceRefs) ? host.record.provenanceRefs : [];
+        if (!refs.includes(c.source.id)) {
+          add('error', 'caveat-target', host.file, c.record, `blocking caveat cites "${c.source.id}", but the record does not carry it in provenanceRefs. The flag would point at a dispute the record itself does not claim`);
+        }
+      }
+    } else if (typeof host.record[c.source.field] !== 'string' || !host.record[c.source.field].trim()) {
+      add('error', 'caveat-target', host.file, c.record, `blocking caveat says the full statement lives in "${c.source.field}", but that field is empty or absent`);
     }
   }
 

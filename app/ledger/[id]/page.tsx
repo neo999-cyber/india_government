@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getLedger, getProvenance, getSeries, ledger as allLedger } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
-import { SourceList } from '@/components/marks';
+import { CaveatFlag, SourceList } from '@/components/marks';
+import { caveatFor } from '@/lib/rules';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -21,6 +22,9 @@ export default async function LedgerDetail({ params }: Props) {
   const { id } = await params;
   const l = getLedger(id);
   if (!l) notFound();
+
+  // P-22 domain rule: two records may not render without the caveat that qualifies them.
+  const caveat = caveatFor(l.id);
 
   const refSeries = (l.seriesRefs ?? []).map(getSeries).filter((s): s is NonNullable<typeof s> => !!s);
   const refDisputes = (l.provenanceRefs ?? [])
@@ -49,6 +53,10 @@ export default async function LedgerDetail({ params }: Props) {
       <p className="source-line">
         {TERM_LABELS[l.term]} · researched as of {l.asOf}
       </p>
+
+      {/* The caveat sits above the summary, not below it: it qualifies the claim the
+          summary makes, and a reader who stops after one paragraph must still have it. */}
+      {caveat ? <CaveatFlag caveat={caveat} /> : null}
 
       <p>{l.summary}</p>
 

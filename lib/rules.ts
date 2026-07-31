@@ -90,3 +90,104 @@ export function denominatorBreaksFor(series: Series): DenominatorBreak[] {
     return { ...rev, period, withinSpan: key >= first && key <= last };
   });
 }
+
+/**
+ * Coverage-versus-usage pairs (P-22).
+ *
+ * The welfare domain's central finding is that administrative output overstates sustained
+ * use, and the gap runs the same direction every time. A single-series chart of a coverage
+ * figure states the opposite: `ujjwala-connections` alone reads as ten crore households
+ * moved to clean fuel, and the refill rate is what says otherwise. So a coverage series is
+ * never presented alone — the same discipline REGIME_GROUPS applies to GDP bases, for the
+ * same reason.
+ *
+ * `usage` is null where the counterpart is not a series at all. Sanitation's independent
+ * reading is the r.i.c.e. SQUAT panel, held in P-24's competingAccounts, and it stays there:
+ * inventing a series to hold two survey figures would fabricate a time series out of a
+ * disagreement.
+ */
+export interface CoverageUsagePair {
+  /** Scheme, used as the heading and the key. */
+  scheme: string;
+  /** The administrative / MIS figure: an output, an upper bound on the outcome. */
+  coverage: string;
+  /** The utilisation figure, where one exists as a series. */
+  usage: string | null;
+  /** Independent counterpart held in a provenance record rather than as a series. */
+  usageFromProvenance?: { record: string; holder: string };
+  /** The record that states what the gap is and why it runs one way. */
+  governing: string;
+}
+
+export const COVERAGE_USAGE_GOVERNING = 'P-22';
+
+export const COVERAGE_USAGE_PAIRS: readonly CoverageUsagePair[] = [
+  {
+    scheme: 'Ujjwala (LPG)',
+    coverage: 'ujjwala-connections',
+    usage: 'ujjwala-refills',
+    governing: COVERAGE_USAGE_GOVERNING,
+  },
+  {
+    scheme: 'Jal Jeevan Mission',
+    coverage: 'jjm-tap-coverage',
+    usage: 'jjm-functionality',
+    governing: COVERAGE_USAGE_GOVERNING,
+  },
+  {
+    scheme: 'PM-JAY',
+    coverage: 'pmjay-cards',
+    usage: 'pmjay-admissions',
+    governing: COVERAGE_USAGE_GOVERNING,
+  },
+  {
+    scheme: 'Swachh Bharat (sanitation)',
+    coverage: 'sanitation-basic',
+    usage: null,
+    usageFromProvenance: { record: 'P-24', holder: 'r.i.c.e. SQUAT panel 2018' },
+    governing: COVERAGE_USAGE_GOVERNING,
+  },
+];
+
+/** The pair a series belongs to, from either side, or null if it stands alone. */
+export function pairFor(id: string): CoverageUsagePair | null {
+  return COVERAGE_USAGE_PAIRS.find((p) => p.coverage === id || p.usage === id) ?? null;
+}
+
+/**
+ * Ledger records that must never render without their caveat (not even in a list).
+ *
+ * These two are not merely contested — each carries a specific reason the headline reading
+ * may not mean what it appears to. L-0042's anaemia reversal turns on whether haemoglobin
+ * testing was comparable across NFHS rounds, which is unverified; L-0043's MPI is built from
+ * the outputs of the schemes it is cited to vindicate, so it moves whether or not those
+ * outputs were used. A row carrying the title and the word "contested" and nothing else
+ * transmits the claim without the thing that qualifies it.
+ *
+ * `label` is a compact restatement for list contexts; the full statement stays in the record
+ * and, where one exists, in the provenance record named here. No schema field is invented —
+ * this is a rendering rule, and the validator checks the ids and the provenance link resolve.
+ */
+export interface BlockingCaveat {
+  record: string;
+  label: string;
+  /** Where the full statement lives, so the flag always leads back to the source. */
+  source: { kind: 'provenance'; id: string } | { kind: 'field'; field: 'caseFor' | 'caseAgainst' };
+}
+
+export const BLOCKING_CAVEATS: readonly BlockingCaveat[] = [
+  {
+    record: 'L-0042',
+    label: 'testing-method comparability across NFHS rounds unverified',
+    source: { kind: 'field', field: 'caseFor' },
+  },
+  {
+    record: 'L-0043',
+    label: 'the measure is built from the outputs of the schemes it is cited to vindicate',
+    source: { kind: 'provenance', id: 'P-26' },
+  },
+];
+
+export function caveatFor(id: string): BlockingCaveat | null {
+  return BLOCKING_CAVEATS.find((c) => c.record === id) ?? null;
+}

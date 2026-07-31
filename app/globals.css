@@ -619,3 +619,129 @@ tr th:last-child {
     gap: 0 1.25rem;
   }
 }
+
+/* --- Coverage versus usage (P-22) ------------------------------------------
+   Two readings of the same scheme, side by side, output first. The order is the
+   argument, so the columns do not reflow into an arbitrary order on narrow screens:
+   they stack, coverage above usage, which is the same claim in one column. */
+
+.cu-view {
+  margin: 1.25rem 0 1.5rem;
+  border-top: 2px solid var(--rule-strong);
+  padding-top: 0.9rem;
+}
+
+.cu-head p {
+  margin: 0.35rem 0 1rem;
+  max-width: var(--measure);
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+.cu-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.cu-pair-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (max-width: 900px) {
+  .cu-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.cu-side {
+  min-width: 0;
+}
+
+/* The usage side is the qualifying reading; a left rule marks it as answering the
+   other column rather than standing as an independent finding. */
+.cu-side-usage {
+  border-left: 2px solid var(--shift);
+  padding-left: 0.9rem;
+}
+
+.cu-side h3 {
+  margin: 0.2rem 0 0.4rem;
+  font-size: 0.9375rem;
+  line-height: 1.35;
+}
+
+.cu-headline {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 1.375rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.cu-unit {
+  font-size: 0.75rem;
+  color: var(--ink-dim);
+}
+
+.cu-accounts {
+  margin: 0 0 0.5rem;
+}
+
+/* Not uppercased: the holder is an organisation's name, and "r.i.c.e." is lowercase by
+   its own styling. Mono and dim mark it as a label without rewriting what it says. */
+.cu-accounts dt {
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-dim);
+  letter-spacing: 0.04em;
+}
+
+.cu-accounts dd {
+  margin: 0.15rem 0 0;
+  max-width: var(--measure);
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+/* Umber, like the denominator break: this is a comparability limit, not an alert. */
+.cu-gap {
+  margin: 1rem 0 0;
+  border-left: 3px solid var(--shift);
+  background: var(--shift-soft);
+  padding: 0.6rem 0.9rem;
+  max-width: var(--measure);
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+.cu-gap .label {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+/* --- Blocking caveats ------------------------------------------------------ */
+
+.caveat-block {
+  margin: 0.75rem 0;
+  border-left: 3px solid var(--alert);
+  background: var(--alert-soft);
+  padding: 0.6rem 0.9rem;
+}
+
+.caveat-block p {
+  margin: 0.2rem 0 0;
+  max-width: var(--measure);
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+.caveat-inline {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.35;
+  color: var(--alert);
+}

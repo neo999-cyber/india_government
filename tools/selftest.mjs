@@ -73,8 +73,17 @@ const MUST_FIRE = [
 /**
  * Rules needing their own fixture root because they contradict one in `broken`:
  * a regime group cannot be both incomplete and gapped at the same time.
+ *
+ * The two P-22 rules are here for a different reason. Both fire only where part of the
+ * thing they guard is present — a half pair, a caveated record — so they cannot be seeded
+ * into `broken` without also firing on every other fixture root that happens to omit the
+ * welfare data. Each gets a root carrying exactly the half it needs.
  */
-const ISOLATED = [{ dir: 'regime-gap', rule: 'regime-handoff' }];
+const ISOLATED = [
+  { dir: 'regime-gap', rule: 'regime-handoff' },
+  { dir: 'pair-half', rule: 'pair-incomplete' },
+  { dir: 'caveat-orphan', rule: 'caveat-target' },
+];
 
 /** @returns {{ code: number, report: any }} */
 function run(args) {

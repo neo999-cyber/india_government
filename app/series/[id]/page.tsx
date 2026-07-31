@@ -2,13 +2,15 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
+  getProvenance,
   getSeries,
   ledgerCitingSeries,
   provenanceForSeries,
   series as allSeries,
 } from '@/lib/data';
 import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
-import { denominatorBreaksFor, regimeFor, regimeNeighbours } from '@/lib/rules';
+import { denominatorBreaksFor, pairFor, regimeFor, regimeNeighbours } from '@/lib/rules';
+import { CoverageUsageView } from '@/components/CoverageUsageView';
 import {
   ADVANCES_SERIES,
   NPA_AMOUNT_SERIES,
@@ -55,6 +57,15 @@ export default async function SeriesDetail({ params }: Props) {
     return { previous: lookup(previous), next: lookup(next) };
   };
 
+  // P-22: a coverage figure and the usage figure that qualifies it always arrive together,
+  // whichever side the reader landed on.
+  const pair = pairFor(s.id);
+  const pairCoverage = pair ? getSeries(pair.coverage) : undefined;
+  const pairUsage = pair?.usage ? getSeries(pair.usage) : undefined;
+  const pairCounterpart = pair?.usageFromProvenance
+    ? getProvenance(pair.usageFromProvenance.record)
+    : undefined;
+
   const denominatorBreaks = denominatorBreaksFor(s);
   const disputes = provenanceForSeries(s);
   const citedBy = ledgerCitingSeries(s.id);
@@ -80,7 +91,9 @@ export default async function SeriesDetail({ params }: Props) {
       <SourceLine source={s.source} tier={s.tier} />
       <StatusKey />
 
-      {/* P-17: an NPA ratio never renders without the adjusted view offered beside it. */}
+      {/* P-17: an NPA ratio never renders without the adjusted view offered beside it.
+          P-22: neither side of a coverage/usage pair renders without the other — a coverage
+          figure alone states the opposite of what the pair was assembled to show. */}
       {hasWriteOffAdjustment(s) ? (
         <NpaView
           series={s}
@@ -89,10 +102,19 @@ export default async function SeriesDetail({ params }: Props) {
           amount={getSeries(NPA_AMOUNT_SERIES)}
           reported={<SeriesTable series={s} handoff={handoffFor(s.id)} />}
         />
+      ) : pair && pairCoverage ? (
+        <CoverageUsageView
+          pair={pair}
+          coverage={pairCoverage}
+          usage={pairUsage}
+          counterpart={pairCounterpart}
+          governing={getProvenance(pair.governing)}
+        />
       ) : (
         <SeriesTable series={s} handoff={handoffFor(s.id)} />
       )}
-      {s.notes ? <p className="prose-note">{s.notes}</p> : null}
+      {/* The pair view renders each side's notes beside its own table. */}
+      {s.notes && !(pair && pairCoverage) ? <p className="prose-note">{s.notes}</p> : null}
 
       {denominatorBreaks.length > 0 ? (
         <div className="denominator-callout">
