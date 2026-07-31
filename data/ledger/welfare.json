@@ -238,7 +238,14 @@
    }
   ],
   "confidence": "high",
-  "asOf": "2026-07-31"
+  "asOf": "2026-07-31",
+  "unmeasured": [
+   {
+    "what": "MGNREGA work demanded but not recorded",
+    "why": "The scheme is demand-driven but only work PROVIDED is counted; suppressed demand leaves no trace in the series, so rationing and falling need are indistinguishable in the data.",
+    "wouldFill": "Independent demand surveys; LibTech's registration-versus-delivery divergence is the closest available proxy"
+   }
+  ]
  },
  {
   "id": "L-0041",
@@ -268,7 +275,14 @@
    }
   ],
   "confidence": "medium",
-  "asOf": "2026-07-31"
+  "asOf": "2026-07-31",
+  "unmeasured": [
+   {
+    "what": "Farmer household income after 2018-19",
+    "why": "No Situation Assessment Survey has been conducted since 2019, so the 2022 doubling target cannot be evaluated against the only authoritative instrument.",
+    "wouldFill": "A post-2019 NSSO Situation Assessment Survey of Agricultural Households"
+   }
+  ]
  },
  {
   "id": "L-0042",

@@ -13,6 +13,7 @@ import type {
   ProvenanceRecord,
   Series,
   Term,
+  Unmeasured,
 } from './types';
 
 const DATA_DIR = join(process.cwd(), 'data');
@@ -111,4 +112,46 @@ export function statusCounts(items: Series[]): Record<string, number> {
   const counts: Record<string, number> = { verified: 0, approx: 0, pending: 0 };
   for (const s of items) for (const p of s.points) counts[p.status] = (counts[p.status] ?? 0) + 1;
   return counts;
+}
+
+/**
+ * Every declared absence across both layers, with the record that declares it.
+ *
+ * `unmeasured` entries are scattered one or two to a record, which is the right place to
+ * author them and the wrong place to read them as a set. Collected, they are a map of what
+ * the instrument cannot show and why — and the `wouldFill` values are a verification queue
+ * that nobody wrote deliberately, assembled from the individual research judgements that
+ * produced each record.
+ */
+export type DeclaredAbsence = {
+  entry: Unmeasured;
+  recordId: string;
+  recordTitle: string;
+  layer: 'series' | 'ledger';
+  href: string;
+  domains: Domain[];
+};
+
+export function allUnmeasured(): DeclaredAbsence[] {
+  const fromSeries = series.flatMap((s) =>
+    (s.unmeasured ?? []).map((entry) => ({
+      entry,
+      recordId: s.id,
+      recordTitle: s.title,
+      layer: 'series' as const,
+      href: `/series/${s.id}/`,
+      domains: [s.domain],
+    })),
+  );
+  const fromLedger = ledger.flatMap((l) =>
+    (l.unmeasured ?? []).map((entry) => ({
+      entry,
+      recordId: l.id,
+      recordTitle: l.title,
+      layer: 'ledger' as const,
+      href: `/ledger/${l.id}/`,
+      domains: l.domains,
+    })),
+  );
+  return [...fromSeries, ...fromLedger];
 }

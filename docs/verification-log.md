@@ -202,148 +202,93 @@ Semantics: `caveat` is for qualifications that MUST render wherever the record a
 
 ---
 
-# Verification log — cycle 2026-07-31e (Phase 4b code run: caveat field, PMAY pair)
+# Verification log — cycle 2026-07-31e (`unmeasured` becomes first-class)
 
-Counts as expected: 59 series (352 points), 43 ledger, 29 provenance. **Gate clean on arrival
-— no `/data` edits made this cycle**, per the contract. Inconsistencies are raised below.
+## SCHEMA CHANGE
+Added `unmeasured` as an optional array to BOTH `series.schema.json` and `ledger.schema.json`. Shape: `[{what, why, wouldFill?}]`.
 
-## 1. Caveats now read from the schema field
-`lib/rules.ts` no longer holds record ids. `BLOCKING_CAVEATS`, `BlockingCaveat` and
-`caveatFor()` are gone, replaced by `caveatOf(record)` reading `record.caveat`. `caveat?: string`
-added to both `Series` and `LedgerRecord` in `lib/types.ts`.
+Rationale, identical to the one that moved `caveat` out of a rendering rule: an absence is a research finding, not a display choice. If "occupancy has no public measurement" lives in a component's props, any other view of that record silently drops it. Declaring it in data keeps it visible everywhere and survives view changes.
 
-Because series can now carry one, the flag was added to surfaces that previously had no reason
-to show it. It renders on: series detail (above the numbers), ledger detail (above the summary),
-the series index, the ledger index, domain pages (both tables), term pages, and the three
-cited-by / affected-by grids. Nine surfaces; `anaemia-children` and `ghi-score` are the first
-series to exercise them.
+`wouldFill` doubles as a verification-queue seed — it names the source that would close the gap, where one is identifiable.
 
-Two details worth knowing:
-- **Nothing truncates.** A caveat abbreviated to fit a table cell is a caveat that can be
-  misread, which is the failure it exists to prevent, so the inline variant wraps instead.
-- **P-xx inside caveat prose renders as a link** (L-0043 ends "See P-26"), except inside the
-  grid cards, which are themselves anchors — `linkify={false}` there, because an anchor inside
-  an anchor is invalid markup. Verified zero nested anchors across the affected pages.
+Semantics: use when a chain has a missing link, an intended outcome was never measured, or a series stops short of the thing it is cited to demonstrate. Not for ordinary data sparsity, which is what `status: pending` and blank periods already express.
 
-## 2. The bidirectional backlink check already existed
-It has been in the validator as an **error** since phase 0 (`back-link`, integrity.mjs), which
-is why the three links you found were already fixed at source before this run — the gate was
-clean on arrival and `exports-gdp` held its P-10 ref this time.
+## Populated this cycle
+- `pmay-g-completed` — occupancy, the cascade's third stage
+- `ujjwala-refills` — population-scale health outcomes (the scheme's stated rationale, never measured), and refill rates after December 2018 (the CAG series simply stops)
+- `jjm-functionality` — national functional coverage, which is NOT derivable from 82% connected and 76% of certified, because certified is a subset
+- `L-0040` MGNREGA — work demanded but not recorded, the absence that makes rationing and falling need indistinguishable in the series
+- `L-0041` PM-KISAN — farmer income after 2018-19, which makes the doubling target formally unevaluable
 
-What was missing is the part your spec adds: **a break now satisfies it**. A series whose only
-connection to a dispute is the seam that dispute caused is genuinely linked — the seam row
-renders the reference inline, and `provenanceForSeries` surfaces it either way. Requiring a
-duplicate top-level ref would have pushed research toward recording the same link twice.
+Note that three of these were previously buried in prose. `jjm-functionality`'s in particular was carried only as a reason for refusing subtraction; it is now a declared absence in its own right.
 
-Nothing in `/data` currently relies on this: every `affectsSeries` entry backlinks through
-`provenanceRefs`, and no series has a break citing a record absent from its refs. The loosening
-changes no current output.
-
-Fixtures: `back-link` already fired on `tests/fixtures/broken`. The new one is the opposite
-test — `tests/fixtures/backlink-via-break`, asserting the rule **stays silent** on a legitimate
-shape. That is a new category in the selftest (`MUST_STAY_CLEAN`): every fixture until now
-proved a rule fires, and none could catch a rule that fires too much. An over-firing gate is
-the kind that gets loosened in a hurry by whoever it blocks.
-
-## 3. PMAY is a real pair — and the first one that subtracts
-`pmay-g-houses` (sanctioned, 3.87 crore) and `pmay-g-completed` (2.95 crore) carry the
-**identical unit string**, so the comparability test written in phase 4a passes for the first
-time and the view computes the wedge: **0.92 crore houses**, matching the record's own note of
-"roughly 0.9 crore". The other four pairs still refuse to subtract, for the reasons logged last
-cycle.
-
-**Occupancy renders as an absence, not an omission.** `unmeasuredStage` on the pair declares the
-third stage of the cascade, and the view gives it its own block — dashed and unfilled, so it
-cannot be mistaken for another panel of findings. Sanctioned beside completed, with nothing
-after it, would read as though completion were the end of the chain.
-
-## 4. Raised, not edited
-
-**Both caveat-carrying series duplicate their caveat inside `notes`, so the page prints it
-twice.** Now that `caveat` is a field, the prose in `notes` is redundant:
-- `anaemia-children` — notes carry "CAVEAT REQUIRING VERIFICATION: haemoglobin testing method
-  may have differed between NFHS rounds..." which restates the caveat almost word for word.
-- `ghi-score` — notes carry "T5 contested index. The Government of India formally rejects the
-  methodology; its Poshan Tracker shows child wasting below 7.2%. Both readings recorded,
-  neither endorsed." against a caveat saying the same thing.
-
-Suggested: trim the caveat sentence out of both `notes`, leaving notes for what the caveat does
-not cover (`anaemia-children`'s "Anaemia in women also rose" and the NFHS-6 delay are worth
-keeping; `ghi-score`'s notes would reduce to roughly nothing, which is fine). The two ledger
-caveats do not have this problem.
-
-Nothing else is inconsistent: the 16 warnings are the same open research items as last cycle.
-
-## Note on the handoff
-The push was expected to carry an unpushed phase-3c commit. It did not need to — `ee69afb`
-went up with last cycle's push, and `origin/main` was level with `main` when this cycle began.
-
-## Result
-`validate` 0 errors / 16 warnings · `selftest` 18/18 plus three isolated rules and one
-stays-clean rule · `typecheck` clean · `build` 160 static pages · verified in-browser at 1440px
-and 390px: PMAY from both sides with the wedge and the unmeasured stage, both series caveats and
-both ledger caveats across detail, index, domain and grid surfaces, no nested anchors, no
-console errors.
+## Endorsements from the integration session
+- **Caveat non-truncation is enforced, not just stated** — explicit `white-space: normal`, `overflow: visible`, no clamp, no max-height, verified byte-identical at 390px in the densest listing with `scrollHeight === clientHeight`. Correct: a rule that lives only in a comment is a rule that survives until the next density pass.
+- **Stale comment on `comparable()`** — flagged and corrected. PMAY-G is the first pair to pass the unit-string test (0.92 crore wedge), so a comment claiming no pair passes would have led the next reader to treat the subtraction branch as dead code.
 
 ---
 
-# Verification log — cycle 2026-07-31f (Phase 4c code run: two standing rules)
+# Verification log — cycle 2026-07-31g (Phase 4d code run: unmeasured as a field)
 
-Counts unchanged as expected: 59 series (352 points), 43 ledger, 29 provenance. Gate clean.
+Counts as expected: 59 series (352 points), 43 ledger, 29 provenance. Gate clean on arrival.
 No `/data` edits.
 
-## The trim landed
-Confirmed independently: no shared eight-word run between `caveat` and `notes` on either
-series, and the rendered detail pages no longer print the qualification twice.
-`anaemia-children` notes now carry the two facts the caveat does not (anaemia rising in women,
-the NFHS-6 delay); `ghi-score` reduces to a pointer at P-29, which it carries.
+## Absence now reads from the record
+`Absence` became `Absences`, taking `record.unmeasured` rather than caller-supplied props.
+`unmeasuredStage` is gone from `CoverageUsagePair` — the PMAY occupancy declaration lives on
+`pmay-g-completed` now, which is where it belongs.
 
-## Both standing rules went into CLAUDE.md
-They belong there rather than in code comments, for the reason the request implies: someone
-building a new dense table view will read CLAUDE.md and will not read a comment in
-`components/marks.tsx`. They are also the same *kind* of rule as those already in that
-section — cross-cutting rendering discipline that has to survive future work by anyone.
+Rendering sites: the pair view (pooled across both sides, at the pair's own width), series
+detail (suppressed when the pair view already pooled them, so nothing renders twice), and
+ledger detail. Six declarations across five records all render.
 
-Numbered **3a** and **4a**, deliberately, so no existing rule is renumbered — the log, the
-commits and several code comments reference "rule 5a", "rule 6" and so on by number, and
-renumbering would silently invalidate all of them.
+**Multiple declarations on one record are one block, not several.** `ujjwala-refills` carries
+two — no population-scale health-outcome study, and no refill data after Dec 2018 — and they
+render inside a single dashed frame headed "2 declared", separated by a dotted rule that
+appears only *between* entries. Two facts about one series arriving as two framed warnings
+would double the furniture around the same prose and read as unrelated. Verified in the
+browser: one `.absence` element, two `<li>`, dashed 1px outer border, transparent background,
+no separator above the first entry.
 
-- **3a** sits after "Status renders visibly": both are about a qualification travelling with
-  a number, and 3a is the stronger case.
-- **4a** sits after "Blanks are unreported, not zero", which it extends. Rule 4 says a blank
-  cell is not a zero; 4a says a thing nothing measures is not a blank cell. The distinction is
-  a gap in the data against a gap in the world.
+## No validator rule for the sparsity distinction — and the evidence for that
+The obvious heuristic is to reject `what` values that name periods rather than dimensions.
+It fails on the data that exists. **Two of the six declarations are period-shaped and both are
+correct:**
 
-### Rule 3a is now enforced in CSS, not only stated
-`.caveat-inline` carries explicit `white-space: normal`, `overflow: visible`,
-`text-overflow: clip` and no `max-height` or line clamp, with a comment saying those
-properties are load-bearing. Normal white-space and visible overflow are specifically what
-stop a table cell from clipping the text.
+- `ujjwala-refills` — "Refill rates after December 2018". Legitimate because the CAG series
+  *stops* and nothing published continues it, not because a pull is outstanding.
+- `L-0041` — "Farmer household income after 2018-19". Legitimate because no Situation
+  Assessment Survey has been conducted since 2019.
 
-Verified rather than assumed: at **390px**, in the densest listing on the site, both caveats
-render byte-identical to their source strings (188 characters each), with `scrollHeight` equal
-to `clientHeight` and no ellipsis, clamp or max-height in the computed style.
+A rule keying on period-shaped prose would reject a third of the true positives. The other
+candidate — flag `unmeasured` on a record carrying `pending` points — has no evidence base
+either: none of the five records has a single pending point, and the combination it targets
+(recent years pending, plus an outcome never measured at all) is legitimate on its face.
 
-## Absence generalised ahead of infrastructure
-The occupancy block is no longer bespoke to the pairing view. `Absence` is now a shared mark
-in `components/marks.tsx`, taking the thing that is unmeasured and a caller-supplied reason,
-and the `.cu-unmeasured` class is gone in favour of `.absence`. `CoverageUsageView` is its
-first caller; the rendered output is unchanged (dashed, transparent background, verified in
-the browser).
+The distinction is dimension-versus-period and the model has nothing tying an `unmeasured`
+entry to periods, so any check has to read prose. Prose heuristics in this validator have
+already aged badly once — the T5 rule that named P-08. **Left to review, as offered**, with
+the reasoning recorded in `integrity.mjs` so the next person does not re-derive it.
 
-It stays presentational on purpose. What is missing is stated by the caller from the record's
-own prose — no schema field is invented here, since that is a chat decision. If infrastructure
-turns out to want absences declared in data rather than by a view, that is the conversation to
-have, and the component will read from the field without changing shape.
+## One rule that is clean, added at warn level
+`unmeasured-route`: an entry with no `wouldFill` states an absence with no route to closing it
+and drops out of the verification queue silently. Warn rather than error — some things are
+unmeasured precisely because no instrument for them exists, and that is a legitimate record.
+Fires zero times today; all six declarations carry `wouldFill`. **Not requested — remove it if
+it is unwanted.**
 
-## One stale comment corrected
-`comparable()` in `CoverageUsageView` still said "as of phase 4 no pair passes this test".
-PMAY-G passes — sanctioned and completed are both "crore houses", the same objects counted at
-two stages. Comment updated to say which pair passes and why, so the next reader does not
-conclude the subtraction branch is dead code.
+## The queue is now a page: `/unmeasured/`
+Every declaration in one table, then the `wouldFill` values as a verification queue in their
+own right, then any absence with no identified route (currently none, so that section does not
+render). Added to the nav.
+
+It states and does not score. No completeness percentage, no "gaps closed" count, nothing
+that reads as progress against a target: a share of dimensions measured would be a composite
+score of exactly the kind rule 9 forbids everywhere else. The scaffold note says so on the
+page, so the next person to look at it does not add one.
 
 ## Result
 `validate` 0 errors / 16 warnings · `selftest` 18/18 plus three isolated and one stays-clean ·
-`typecheck` clean · `build` 160 static pages · verified in-browser at 1440px and 390px: PMAY
-wedge and the shared Absence block, caveats unclipped in the densest table, no duplication on
-the trimmed detail pages, no console errors.
+`typecheck` clean · `build` 161 static pages · verified in-browser at 1440px and 390px: the
+two-declaration case as a single block, both ledger declarations, the new page with its wide
+queue table scrolling inside its own container rather than the body, no console errors.

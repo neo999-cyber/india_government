@@ -115,16 +115,6 @@ export interface CoverageUsagePair {
   usage: string | null;
   /** Independent counterpart held in a provenance record rather than as a series. */
   usageFromProvenance?: { record: string; holder: string };
-  /**
-   * A further stage of the cascade that has no public measurement at all.
-   *
-   * PMAY runs sanctioned → completed → occupied, and only the first two are measured. An
-   * absent third stage is a finding, not a blank: a reader who sees sanctioned beside
-   * completed will reasonably assume completion is the end of the chain. Naming the stage
-   * and saying nothing measures it is the difference between an admission and an omission.
-   * The claim itself lives in the series record; this only says which stage is missing.
-   */
-  unmeasuredStage?: string;
   /** The record that states what the gap is and why it runs one way. */
   governing: string;
 }
@@ -155,7 +145,6 @@ export const COVERAGE_USAGE_PAIRS: readonly CoverageUsagePair[] = [
     scheme: 'PMAY-G (rural housing)',
     coverage: 'pmay-g-houses',
     usage: 'pmay-g-completed',
-    unmeasuredStage: 'occupancy — houses completed and actually lived in',
     governing: COVERAGE_USAGE_GOVERNING,
   },
   {

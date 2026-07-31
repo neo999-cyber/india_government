@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import type { Point, Status, Tier, TieredSource, SourceRef } from '@/lib/types';
+import type { Point, Status, Tier, TieredSource, SourceRef, Unmeasured } from '@/lib/types';
 import { TIER_LABELS, formatValue } from '@/lib/format';
 
 /**
@@ -169,39 +169,54 @@ export function CaveatFlag({
 }
 
 /**
- * A measurement that does not exist, rendered as a fact rather than an empty space.
+ * Measurements that do not exist, rendered as findings rather than empty space.
  *
- * The distinction this draws is between a gap in the data and a gap in the world. A blank
- * cell says "not reported this period"; this says "nothing measures this at all", which is
- * a finding about the record and often the most important thing on the page. PMAY-G is the
- * first case — sanctioned and completed are published, occupancy is not, and a reader shown
- * only the first two would reasonably take completion for the end of the chain.
+ * The distinction drawn is between a gap in the data and a gap in the world. A blank cell
+ * says "not reported this period"; this says nothing measures the thing at all, which is a
+ * finding about the record and often the most important thing on the page. PMAY-G is the
+ * plainest case — sanctioned and completed are published, occupancy is not, and a reader
+ * shown only the first two would reasonably take completion for the end of the chain.
  *
  * Deliberately unlike every panel that carries findings: dashed and unfilled, no figure, no
- * table. An absence that looks like a result is worse than one left out, because it invites
- * a reader to treat the frame as the content.
+ * table (CLAUDE.md rule 4a). An absence that looks like a result is worse than one left out,
+ * because it invites a reader to treat the frame as the content.
  *
- * Generalised out of the coverage/usage view ahead of the infrastructure domain, which is
- * expected to carry several. Presentational only — what is missing is stated by the caller
- * from the record's own prose, and no schema field is invented here.
+ * Reads from the record's own `unmeasured` field as of phase 4d, so a declaration travels
+ * with the record into every view instead of depending on a component to supply it.
+ *
+ * One block regardless of how many declarations a record carries. Two absences on
+ * ujjwala-refills — no health-outcome study, and no refill data after Dec 2018 — are two
+ * facts about one series, and framing each separately would read as two unrelated warnings
+ * and double the furniture around the same amount of prose.
  */
-export function Absence({
+export function Absences({
+  items,
   heading = 'Not measured',
-  what,
-  children,
 }: {
+  items: Unmeasured[] | undefined;
   heading?: string;
-  /** The thing that has no measurement, named as specifically as the record allows. */
-  what: string;
-  /** Why it matters that this is absent, and what is not being estimated in its place. */
-  children: ReactNode;
 }) {
+  if (!items || items.length === 0) return null;
   return (
     <div className="absence">
-      <span className="label">{heading}</span>
-      <p>
-        No public measurement exists for <strong>{what}</strong>. {children}
-      </p>
+      <span className="label">
+        {heading}
+        {items.length > 1 ? ` · ${items.length} declared` : ''}
+      </span>
+      <ul className="absence-list">
+        {items.map((u) => (
+          <li key={u.what}>
+            <p>
+              No public measurement exists for <strong>{u.what}</strong>. {u.why}
+            </p>
+            {u.wouldFill ? (
+              <p className="absence-fill">
+                <span className="label">Would close it</span> {u.wouldFill}
+              </p>
+            ) : null}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

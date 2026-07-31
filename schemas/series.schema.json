@@ -161,6 +161,34 @@
       "type": "string",
       "minLength": 20,
       "description": "A blocking qualification that MUST render wherever this record appears, including compact listings. Use only when the record would mislead without it — an unverified comparability assumption, a circular measure, a disputed instrument. Not for ordinary uncertainty, which belongs in notes."
+    },
+    "unmeasured": {
+      "type": "array",
+      "description": "Dimensions this record SHOULD have but which have no measurement. An absence is a research finding, not an empty cell — declaring it here keeps it visible in every view rather than only where a component happens to supply it. Use when a chain has a missing link, an intended outcome was never measured, or a series stops short of the thing it is cited to demonstrate.",
+      "items": {
+        "type": "object",
+        "required": [
+          "what",
+          "why"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "what": {
+            "type": "string",
+            "minLength": 8,
+            "description": "The thing that is not measured, stated positively"
+          },
+          "why": {
+            "type": "string",
+            "minLength": 12,
+            "description": "Why no figure exists — not collected, not published, withheld, or never defined"
+          },
+          "wouldFill": {
+            "type": "string",
+            "description": "The source that would close it, if one is identifiable. Doubles as a verification-queue seed."
+          }
+        }
+      }
     }
   }
 }

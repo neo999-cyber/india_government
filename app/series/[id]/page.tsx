@@ -20,7 +20,7 @@ import {
 import { SeriesTable } from '@/components/SeriesTable';
 import { NpaView } from '@/components/NpaView';
 import { RegimeOverlap } from '@/components/RegimeOverlap';
-import { CaveatFlag, SourceLine, StatusKey, TierTag } from '@/components/marks';
+import { Absences, CaveatFlag, SourceLine, StatusKey, TierTag } from '@/components/marks';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -118,6 +118,10 @@ export default async function SeriesDetail({ params }: Props) {
       )}
       {/* The pair view renders each side's notes beside its own table. */}
       {s.notes && !(pair && pairCoverage) ? <p className="prose-note">{s.notes}</p> : null}
+
+      {/* Rule 4a. Suppressed only when the pair view already pooled them, which it does at
+          the pair's width so a chain-level absence is not squeezed into one column. */}
+      {pair && pairCoverage ? null : <Absences items={s.unmeasured} />}
 
       {denominatorBreaks.length > 0 ? (
         <div className="denominator-callout">
