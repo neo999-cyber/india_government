@@ -857,3 +857,29 @@ The series page suppresses its own absence block when a pair view takes over, on
 Pooling restored, excluding any entry already standing in a counterpart slot — `metro-network` and `household-electrification` are each both the coverage series and the source of the absence occupying their own usage side, so pooling them again rendered the same declaration twice. Verified across all ten paired series carrying absences: each renders exactly once, from either side of the pair.
 
 The lesson is narrower than the earlier enum findings and worth stating separately: **a suppression that depends on another component rendering the thing instead is a silent-failure design.** Nothing failed loudly when the other side stopped rendering it, and nothing in the gate could see it, because the data was correct throughout.
+
+Correction 08-01i.2: rendered-reachability added as a gate rule, in `tools/reachability.mjs`, wired into `npm run build` and into `vercel.json`'s build command so a deploy runs it.
+
+**It could not be a validator rule.** The validator sees `/data` only, so any check it makes about rendering must MODEL the render paths — and the failure this guards is exactly a divergence between the model and the components. A rule encoding "the pair view pools them" would have agreed with the assumption that broke and stayed silent for three phases. So it reads the built HTML.
+
+**The specification as given would not have caught the bug it was written for.** Asked for corpus-wide equality between declarations in data and marks reachable in output, that is what was built first — and against a deliberately regressed build, with pooling disabled and the site rebuilt, it reported **185/185 reachable and passed**. `/unmeasured` lists every declaration in the instrument whatever the record pages do, so corpus-wide presence is satisfied by the index alone and can never see a per-record suppression.
+
+Strengthened to **per-record**: a mark must render on the page of the record that declares it. Against the same regressed build it then failed with 4 of 185, naming `jjm-functionality`, `pmay-g-completed` and both declarations on `ujjwala-refills` — the exact four. Restored, rebuilt, silent again. Both runs were against real builds, not a model of one.
+
+Two details that decide whether the check works at all. Script blocks are stripped before searching, because Next embeds the whole rendered payload as escaped JSON in a hydration script and a mark rendering nowhere is still present in the file. And the needle is normalised on both sides, so entity escaping cannot produce a false failure.
+
+Fixtures, both directions per the standing rule. `tests/fixtures/reachability-hidden` carries a paired series whose own page omits its declared absence while an `/unmeasured`-shaped page still lists it — so the fixture *demonstrates* why the check is per-record rather than asserting it, and reports 1 of 2 because `notes` on the same record still passes. The live corpus is the quiet case: 185 of 185, skipped with a note when no build exists.
+
+## Every mark suppressed by a competing view
+
+Three sites, all on `app/series/[id]/page.tsx`, all delegating to a pair view. Each now guarded.
+
+| mark | suppressed when | delegate | state |
+|---|---|---|---|
+| `caveat` | series is in a **contested** pair | `ContestedPairView` renders it | live. Not suppressed for coverage-usage pairs, and `CoverageUsageView` does not render a caveat — so those render from the series page. No gap, no double. |
+| `notes` | series is in **any** pair | `CoverageUsageView` for a series-kind side; `ContestedPairView` | live on both paths |
+| `unmeasured` | series is in **any** pair | `CoverageUsageView` pooled block and absence slot; `ContestedPairView` | live — this is the one that was broken |
+
+`differentFactsNote` is not suppressed anywhere but is guarded too, since it is the same class of mark.
+
+**One latent instance of the same shape, with no live instance today.** `pairsForSeries` matches a series that appears only as an `absenceFrom` target, so such a series would count as paired, lose its `notes` and `unmeasured` to suppression, and have no delegate — `CoverageUsageView` renders notes only for a side resolved to `series`. No series is currently absenceFrom-only; `metro-network` and `household-electrification` are each also their pair's coverage side, and PR-15's absence target is a ledger record, whose pages carry no pair view and suppress nothing. The reachability rule would catch it the moment one appears, which is the point of guarding a pattern rather than a case.
