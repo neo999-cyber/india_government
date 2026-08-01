@@ -68,12 +68,18 @@ function Side({ side, position }: { side: ResolvedSide; position: 'a' | 'b' }) {
         <Link href={`/provenance/${side.record.id}/`}>{side.record.title}</Link>
       </h3>
       <dl className="cu-accounts">
-        {(side.record.competingAccounts ?? []).map((account) => (
-          <div key={account.holder}>
-            <dt>{account.holder}</dt>
-            <dd>{account.position}</dd>
-          </div>
-        ))}
+        {(side.record.competingAccounts ?? []).map((account, i) =>
+          typeof account === 'string' ? (
+            <div key={`acc-${i}`}>
+              <dd>{account}</dd>
+            </div>
+          ) : (
+            <div key={account.holder}>
+              <dt>{account.holder}</dt>
+              <dd>{account.position}</dd>
+            </div>
+          ),
+        )}
       </dl>
       <p className="prose-note">
         Both accounts are recorded and neither is endorsed. The instrument does not pick between
@@ -97,7 +103,9 @@ export function CoverageUsageView({ pair, a, b }: { pair: Pair; a: ResolvedSide;
     if (!pair.gapComputable || a.kind !== 'series' || b.kind !== 'series') return null;
     const av = latest(a.series);
     const bv = latest(b.series);
-    if (!av || !bv || a.series.unit.trim() !== b.series.unit.trim()) return null;
+    // A pending point with no figure cannot enter a subtraction.
+    if (!av || !bv || av.value === null || bv.value === null) return null;
+    if (a.series.unit.trim() !== b.series.unit.trim()) return null;
     return { value: av.value - bv.value, unit: a.series.unit };
   })();
 

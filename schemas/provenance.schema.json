@@ -80,20 +80,29 @@
     "competingAccounts": {
       "type": "array",
       "items": {
-        "type": "object",
-        "required": [
-          "holder",
-          "position"
-        ],
-        "additionalProperties": false,
-        "properties": {
-          "holder": {
-            "type": "string"
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "holder",
+              "position"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "holder": {
+                "type": "string"
+              },
+              "position": {
+                "type": "string"
+              }
+            }
           },
-          "position": {
-            "type": "string"
+          {
+            "type": "string",
+            "minLength": 40
           }
-        }
+        ],
+        "description": "Either {holder, position} where the holder separates cleanly, or a plain string where the account names its own holder inside the prose. Both are authored forms; splitting the second by pattern-matching the sentence would be guesswork, and this project does not parse prose to fill fields."
       }
     },
     "sources": {

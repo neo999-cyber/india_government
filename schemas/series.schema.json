@@ -70,8 +70,8 @@
         },
         "vintage": {
           "type": "string",
-          "description": "Download/access date. Required for WDI and any source that revises history.",
-          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+          "description": "Download/access date, to whatever precision the source states. Required for WDI and any source that revises history.",
+          "pattern": "^\\d{4}(-\\d{2}(-\\d{2})?)?$"
         }
       }
     },
@@ -132,7 +132,11 @@
             "pattern": "^(\\d{4}|FY\\d{4}-\\d{2})$"
           },
           "value": {
-            "type": "number"
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "Null only with status \"pending\": the period is known to exist and no figure is yet held. A blank is unreported, never zero (CLAUDE.md rule 4)."
           },
           "status": {
             "enum": [
@@ -202,6 +206,54 @@
           }
         }
       }
+    },
+    "higherIsBetter": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "description": "Direction of merit. true = higher is better, false = lower is better, NULL = the series has no agreed direction and must render with no directional colour at all. Null is a real value, not a missing one: a conviction rate and an enforcement count are read differently by different readers, and asserting a direction would take a side."
+    },
+    "xAxis": {
+      "enum": [
+        "calendar-year",
+        "lok-sabha-term"
+      ],
+      "description": "What the period axis counts. Defaults to calendar-year. lok-sabha-term means each point is a Lok Sabha term identified by its first year, so the spacing is electoral rather than annual and the points must not be read as a yearly series."
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "points": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "const": "pending"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }
