@@ -592,3 +592,46 @@ Validated this cycle and worth implementing in the gate: exactly one of `series`
 - **`absence-dispute` splitting the principled check from the proxy.** Requiring `wouldFill` is structural: if the stated reason is contested because evidence indicates the data exists, a route to that evidence exists by definition. The length floor on `why` is acknowledged as the one arbitrary parameter, and deliberately not prose-matching — the heuristic trap this validator has hit twice.
 - **The absence grammar is now complete**: dashed neutral means nothing measures this, dashed red means the stated reason for that is contested, solid red means a caveat or a seam. Red is warranted on the disputed case under the CLAUDE.md reservation — it is the only place a government's stated reason is contradicted by its own evidence, and it carries a consequence.
 - **Grouping by kind on `/unmeasured` but not within a record.** Correct: one to three entries do not need hierarchy, and the taxonomy pays where the whole set is visible.
+---
+
+# Verification log — cycle 2026-08-01d (agriculture)
+
+## The project's first REVERSED record
+L-0066, the three farm laws, is the only complete propose-resist-repeal arc in the record and the first use of the `reversed` assessment. Ordinance 5 June 2020, enacted September 2020 by a contested voice vote with the division refused, repealed 29 November 2021 after roughly fifteen months of protest.
+
+Its caveat forbids collapsing it into either available reading. Both "good reform defeated by vested interests" and "bad law defeated by farmers" have serious proponents and the evidence does not adjudicate. What the evidence does support: **the failure was as much of PROCESS and consent as of substance** — ordinance route during a pandemic, no pre-legislative consultation, refusal of a recorded vote, a State subject overridden. A reform that might have survived negotiation was lost to the manner of its imposition.
+
+The record carries a **disputed absence**: SKM counted roughly 700 protest deaths; the government told Parliament it held no record and that compensation therefore did not arise. This is the second `reasonDisputed` entry in the dataset, and it is the same shape as the 2020 migrant deaths (L-0064) — a stated absence with a compensation consequence attached.
+
+## The finding that reframes the whole domain
+**P-48 / L-0068: the OECD Producer Support Estimate for India is NEGATIVE** — minus 14.5% of gross farm receipts over 2022-24, the most negative in a 54-country panel, with the implicit producer tax estimated near US$169bn (2022) and US$120bn (2023) against a consumer support estimate of positive 31.8%.
+
+Indian farmers are on net implicitly TAXED. Fertiliser, credit and PM-KISAN subsidies are real, and they are more than cancelled by export bans, stock limits and marketing controls holding domestic prices below international reference levels. **This disciplines both partisan framings** and should be stated before either: neither "farmers are pampered" nor "the government abandoned farmers" survives it. `oecd-pse` carries the caveat.
+
+## The instrument stopped, again
+**P-46: no Situation Assessment Survey since 2018-19.** This is the third domain where the measuring instrument was discontinued or changed mid-period — after the withheld consumption survey (P-03) and the twice-broken employment series (P-02, P-39). The doubling-farmers'-income promise was set in SAS household-income terms and can only be judged in them; GVA is sectoral output and NAFIS uses a different definition, so neither substitutes. L-0067 is `failed` on the evidence to 2018-19 (about 16% real growth against a target requiring roughly 100%) and carries the absence for everything after.
+
+Note P-46 also freezes `farmer-indebtedness` at 2018-19, since the same survey is its only source.
+
+## New provenance records
+P-44 NCRB split farmers from agricultural labourers (2014) · P-45 states reporting zero farm suicides · P-46 SAS discontinued · P-47 the 1.5x MSP claim uses A2+FL not C2 · P-48 agriculture's GDP share rose during COVID as a compositional artefact · P-49 PMFBY made voluntary in 2020.
+
+**P-45 is the strongest lower-bound warning in the dataset.** States reporting zero farm suicides are not reporting; women farmers are recorded as housewives because land titles are not in their names; agricultural labourers were historically excluded. `farmer-suicides` carries a caveat stating every level is a floor, and that the robust signals are the post-2019 rise, the 2022 peak of 11,290, and the state concentration — not the national level.
+
+**P-47 is the crux of the MSP dispute.** The 2018-19 claim of MSP at 1.5 times cost uses A2+FL, not the C2 basis the Swaminathan recommendation specified. CACP publishes both, so the ratio can be recomputed — the bridge exists and should be used.
+
+## Six declared absences
+Farm household income after 2018-19 · deaths during the farm law protest (disputed) · the current share of farmers selling at MSP, where the authoritative figure is an eleven-year-old committee estimate of 6% · whether Soil Health Card recommendations changed practice · PMFBY claim settlement timeliness · **the report of the post-repeal MSP committee**, constituted July 2022, chaired by the official who drafted the repealed laws, refused participation by the unions, and producing nothing in four years while spending about ₹53 lakh. Filed `withheld`.
+
+## Scope widening
+P-22 extended to `banking` and `macro`; P-46 to `banking`.
+
+## Open queue additions
+| Figure | Pin against | Priority |
+|---|---|---|
+| Wheat and rice procurement, annual by state | FCI monthly bulletins | High — concentration is a core finding |
+| MSP against C2 cost, annual | CACP price policy reports | High — P-47 bridge |
+| Agricultural credit, smallholder share | NABARD | High — the disbursement figure measures supply only |
+| Fertiliser subsidy, actuals against BE | Department of Fertilisers | Medium |
+| NCRB ADSI 2023 and 2024 full tables | NCRB | Medium — 2023-24 figures currently secondary |
+| PMFBY loanee vs non-loanee split | PMFBY portal | Medium — P-49 bridge |

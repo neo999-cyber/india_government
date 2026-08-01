@@ -1,5 +1,90 @@
 [
  {
+  "id": "agri-credit",
+  "title": "Agricultural credit disbursed",
+  "unit": "₹ lakh crore",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "NABARD / RBI / Ministry of Agriculture",
+   "url": "https://agricoop.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 8.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 8.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 10.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 11.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 12.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 13.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 15.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 16.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 21.55,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 25.48,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 27.5,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-22"
+  ],
+  "caveat": "Disbursement measures supply, not smallholder access. A substantial share of headline agricultural credit is large-ticket lending, so the target-versus-achievement record does not establish that smallholders were reached.",
+  "notes": "Roughly 13% annual growth over the decade; disbursement has exceeded target most years."
+ },
+ {
   "id": "bank-writeoffs-annual",
   "title": "Loans written off by scheduled commercial banks, annual",
   "unit": "₹ lakh crore",
@@ -441,6 +526,31 @@
    "P-19"
   ],
   "notes": "The 2016-2019 squeeze coincides with AQR-driven recognition and PCA constraints. FY2025-26 credit growth 14.5% outpaces deposit growth 11.5% — an RBI-flagged vulnerability."
+ },
+ {
+  "id": "farmer-indebtedness",
+  "title": "Agricultural households in debt",
+  "unit": "% of agricultural households",
+  "domain": "banking",
+  "tier": "T1",
+  "source": {
+   "name": "NSS Situation Assessment Survey",
+   "url": "https://mospi.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 50.2,
+    "status": "approx",
+    "note": "About 69.6% of outstanding loans from institutional sources, so roughly 30% still from moneylenders"
+   }
+  ],
+  "provenanceRefs": [
+   "P-46"
+  ],
+  "notes": "State loan waivers 2017-2023 cost roughly ₹2.4-2.5 lakh crore in aggregate; the RBI's scenario band ran ₹2.2-4.2 lakh crore."
  },
  {
   "id": "govt-capital-infusion",
@@ -2466,6 +2576,86 @@
   "notes": "Carries the same caveat as the headline rate. The ILO-IHD India Employment Report 2024 found youth were 82.9% of all unemployed."
  },
  {
+  "id": "cereal-yield-peer",
+  "title": "Cereal yield (peer panel)",
+  "unit": "kg per hectare",
+  "domain": "environment",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI / FAO",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-08-01"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 2990.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 3602.0,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 4558.8,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 5320.9,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 5577.8,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 5995.3,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 5099.1,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 5828.8,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 5896.3,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 6418.1,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09",
+   "P-14"
+  ],
+  "notes": "India's cereal yield is roughly 56% of China's and the lowest in the panel. The gap is productivity, not inputs — India also has the panel's lowest fertiliser use per hectare."
+ },
+ {
   "id": "delhi-pm25",
   "title": "Delhi annual mean PM2.5 (WHO ambient air database)",
   "unit": "µg/m³",
@@ -2486,6 +2676,219 @@
     "note": "2014 database release; underlying data 2008-2013, so genuinely a UPA-era reading. 13 of the 20 most polluted cities were Indian"
    }
   ]
+ },
+ {
+  "id": "fertiliser-use-peer",
+  "title": "Fertiliser consumption (peer panel)",
+  "unit": "kg per hectare of arable land",
+  "domain": "environment",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI / FAO",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-08-01"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 163.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 193.75,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 278.13,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 388.94,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 436.85,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 418.42,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 334.12,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 311.09,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 477.58,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 395.14,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09",
+   "P-14"
+  ],
+  "notes": "India uses the least fertiliser per hectare in the panel, which rules out over-application as the explanation for low yields. Latest year is 2022, not 2023."
+ },
+ {
+  "id": "foodgrain-production",
+  "title": "Foodgrain production",
+  "unit": "million tonnes",
+  "domain": "environment",
+  "tier": "T1",
+  "source": {
+   "name": "Ministry of Agriculture, advance estimates",
+   "url": "https://agricoop.gov.in/",
+   "vintage": "2026-08-01"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 252.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 251.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 275.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 285.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 285.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 297.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 310.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 315.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 329.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 332.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 357.73,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 376.56,
+    "status": "approx"
+   }
+  ],
+  "notes": "Crop year, July-June. FY2025-26 is a third advance estimate (27 May 2026): rice a record 154.02 MT, wheat 120.66 MT, maize a record 55.09 MT. Growth is driven substantially by monsoon and area response to MSP rather than yield breakthroughs — the FY2023-24 dip to 1.4% agri-GVA growth on an El Nino monsoon shows the dependence."
+ },
+ {
+  "id": "groundwater-overexploited-punjab",
+  "title": "Punjab assessment blocks classified over-exploited",
+  "unit": "% of assessed blocks",
+  "domain": "environment",
+  "tier": "T1",
+  "source": {
+   "name": "Central Ground Water Board",
+   "url": "http://cgwb.gov.in/",
+   "vintage": "2026-08-01"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 76,
+    "status": "approx",
+    "note": "114 of 150 blocks; annual draft ~35 bcm against sustainable ~20 bcm"
+   }
+  ],
+  "notes": "A policy-created crisis: MSP-backed paddy procurement plus free farm power plus no price guarantee for alternative crops locks farmers into water-mining. The water table falls about a metre a year in central Punjab, and Sangrur extracts around 164% of recharge. Punjab's farm power subsidy is roughly ₹10,000 crore a year."
+ },
+ {
+  "id": "npk-ratio",
+  "title": "Nitrogen to phosphate to potash consumption ratio",
+  "unit": "N:P:K, K normalised to 1",
+  "domain": "environment",
+  "tier": "T1",
+  "source": {
+   "name": "Fertiliser Association of India",
+   "url": "https://www.faidelhi.org/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 11.8,
+    "status": "approx",
+    "note": "N component against K=1; agronomic ideal is 4. Northern zone reaches 34"
+   }
+  ],
+  "notes": "Urea's controlled price against decontrolled phosphatic and potassic fertilisers drives chronic nitrogen over-use. Neem coating curbed industrial diversion but did not address the price-driven imbalance."
  },
  {
   "id": "re-capacity",
@@ -2789,6 +3192,102 @@
   ],
   "notes": "Anaemia in women also rose over the same period. NFHS-6 fieldwork has been delayed and its publication status is uncertain as of mid-2026, so this remains the last authoritative national reading.",
   "caveat": "Cross-round comparability unverified — haemoglobin testing method may have differed between NFHS-4 and NFHS-5. Do not cite the increase as settled until checked against NFHS-5 methodology."
+ },
+ {
+  "id": "farmer-suicides",
+  "title": "Suicides in the farming sector",
+  "unit": "deaths per year",
+  "domain": "human-development",
+  "tier": "T1",
+  "source": {
+   "name": "NCRB Accidental Deaths and Suicides in India",
+   "url": "https://ncrb.gov.in/",
+   "vintage": "2026-08-01"
+  },
+  "calendar": "CY",
+  "breaks": [
+   {
+    "period": "2014",
+    "note": "NCRB separated farmers/cultivators from agricultural labourers; pre-2014 totals not comparable",
+    "provenanceRef": "P-44"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 12360,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2015",
+    "value": 12602,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2016",
+    "value": 11379,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2017",
+    "value": 10655,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2018",
+    "value": 10349,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2019",
+    "value": 10281,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2020",
+    "value": 10677,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2021",
+    "value": 10881,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2022",
+    "value": 11290,
+    "status": "approx",
+    "note": "Peak; 5,207 cultivators + 6,083 agricultural labourers"
+   },
+   {
+    "country": "IND",
+    "period": "2023",
+    "value": 10786,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 10546,
+    "status": "approx",
+    "note": "ADSI released 7 May 2026"
+   }
+  ],
+  "provenanceRefs": [
+   "P-44",
+   "P-45"
+  ],
+  "caveat": "Treat every level here as a LOWER BOUND. Several states report zero farm suicides in some years, which reflects non-submission rather than absence of deaths; women farmers are systematically undercounted because land titles are rarely in their names, so their deaths are recorded as 'housewife'. The robust signals are the post-2019 rise, the 2022 peak, and the state concentration — Maharashtra alone was about 38% of the 2022 total.",
+  "notes": "In 2022 agricultural labourers outnumbered cultivators for the first time in the split series — the wage-dependence shift the SAS also shows."
  },
  {
   "id": "ghi-score",
@@ -4129,6 +4628,344 @@
   "notes": "Route attrition is the utilisation counterpart to routes awarded. VGF spend ~₹4,700 crore plus ~₹4,800 crore on airport infrastructure."
  },
  {
+  "id": "agri-gdp-share",
+  "title": "Agriculture's share of gross value added",
+  "unit": "% of GVA",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI / World Bank WDI",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-08-01"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2020-21",
+    "note": "Share rose because other sectors contracted, not because farm output surged",
+    "provenanceRef": "P-48"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 18.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 17.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 17.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 17.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 17.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 17.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 20.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 18.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 18.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 17.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 16.0,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-48",
+   "P-10"
+  ],
+  "caveat": "The FY2020-21 rise is a compositional artefact of the lockdown, not agricultural dynamism. India is also the only country in the peer panel whose agriculture GDP share ROSE across the decade — 16.79% (2014) to 17.66% (2023) on World Bank figures — while Vietnam's fell from 14.88% to 11.87%."
+ },
+ {
+  "id": "agri-gdp-share-peer",
+  "title": "Agriculture's share of GDP (peer panel)",
+  "unit": "% of GDP",
+  "domain": "macro",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI / FAO",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-08-01"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 16.79,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 17.66,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 15.35,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 11.0,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 14.88,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 11.87,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 13.34,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 12.53,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 8.48,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 6.89,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09",
+   "P-14"
+  ],
+  "notes": "India is the ONLY country in the panel whose agriculture GDP share rose. Every peer's fell."
+ },
+ {
+  "id": "agri-gva-growth",
+  "title": "Agricultural gross value added growth",
+  "unit": "% y/y",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "MoSPI national accounts",
+   "url": "https://mospi.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": -0.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 0.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 6.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 6.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 2.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 6.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 4.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 3.5,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 4.7,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 1.4,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 3.8,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-48",
+   "P-10"
+  ],
+  "notes": "The only sector to grow through the COVID lockdown, which is why its GDP share rose in FY2020-21."
+ },
+ {
+  "id": "agri-value-per-worker-peer",
+  "title": "Agriculture value added per worker (peer panel)",
+  "unit": "constant 2015 US$",
+  "domain": "macro",
+  "tier": "T2",
+  "source": {
+   "name": "World Bank WDI / FAO",
+   "url": "https://data.worldbank.org/",
+   "vintage": "2026-08-01"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2014",
+    "value": 1641.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": 2027.12,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2014",
+    "value": 1074.75,
+    "status": "approx"
+   },
+   {
+    "country": "BGD",
+    "period": "2024",
+    "value": 1134.11,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2014",
+    "value": 1370.33,
+    "status": "approx"
+   },
+   {
+    "country": "VNM",
+    "period": "2024",
+    "value": 2988.84,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2014",
+    "value": 2730.73,
+    "status": "approx"
+   },
+   {
+    "country": "IDN",
+    "period": "2024",
+    "value": 3616.39,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2014",
+    "value": 4067.01,
+    "status": "approx"
+   },
+   {
+    "country": "CHN",
+    "period": "2024",
+    "value": 7555.69,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-09",
+   "P-14"
+  ],
+  "notes": "Vietnam overtook India over the decade, more than doubling while India rose about 23%. India is now roughly a quarter of China's level."
+ },
+ {
   "id": "cad-gdp",
   "title": "Current account balance",
   "unit": "% of GDP",
@@ -4336,6 +5173,93 @@
    }
   ],
   "notes": "Baseline for comparison: 9-11% during 2010-2013. Annual averages are T2-derived approximations pending exact RBI annual series."
+ },
+ {
+  "id": "fertiliser-subsidy",
+  "title": "Fertiliser subsidy",
+  "unit": "₹ crore",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "Department of Fertilisers, Union Budget",
+   "url": "https://www.indiabudget.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 71000,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 72400,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 66300,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 66500,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 70600,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 83500,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 79530,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 153758,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 225000,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 188000,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 171000,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 168000,
+    "status": "approx"
+   }
+  ],
+  "notes": "The FY2022-23 spike to about ₹2.25 lakh crore absorbed the global energy and fertiliser shock rather than passing it to farmers. Urea alone is about ₹1.19 lakh crore in FY2025-26."
  },
  {
   "id": "fiscal-deficit",
@@ -5326,6 +6250,86 @@
   "notes": "2022-23 rebasing lowers the level ~3-4%; all ratios-to-GDP inherit this."
  },
  {
+  "id": "oecd-pse",
+  "title": "OECD Producer Support Estimate for India",
+  "unit": "% of gross farm receipts",
+  "domain": "macro",
+  "tier": "T2",
+  "source": {
+   "name": "OECD Agricultural Policy Monitoring and Evaluation",
+   "url": "https://www.oecd.org/en/publications/agricultural-policy-monitoring-and-evaluation-2023_b14de474-en/full-report/india_59f4672a.html",
+   "vintage": "2026-08-01"
+  },
+  "calendar": "CY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "2022",
+    "value": -21.0,
+    "status": "approx",
+    "note": "Implicit producer tax estimated near US$169bn"
+   },
+   {
+    "country": "IND",
+    "period": "2023",
+    "value": -15.0,
+    "status": "approx",
+    "note": "Implicit producer tax estimated near US$120bn"
+   },
+   {
+    "country": "IND",
+    "period": "2024",
+    "value": -14.5,
+    "status": "approx",
+    "note": "2022-24 average; most negative in the OECD's 54-country panel"
+   }
+  ],
+  "caveat": "A NEGATIVE producer support estimate means Indian farmers are on net implicitly TAXED, not subsidised. Fertiliser, credit and income-transfer subsidies are real, but they are more than offset by export bans, stock limits and marketing controls that hold domestic prices below international reference levels. The net transfer runs from farmers to consumers — the consumer support estimate is positive at about 31.8%.",
+  "notes": "The single most under-discussed fact in the domain, and it disciplines both partisan framings: neither 'farmers are pampered by subsidies' nor 'the government abandoned farmers' survives it."
+ },
+ {
+  "id": "farm-household-income",
+  "title": "Average monthly income of agricultural households",
+  "unit": "₹ per month, nominal",
+  "domain": "poverty",
+  "tier": "T1",
+  "source": {
+   "name": "NSS Situation Assessment Survey of Agricultural Households",
+   "url": "https://mospi.gov.in/",
+   "vintage": "2026-08-01"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 6426,
+    "status": "approx",
+    "note": "SAS 70th round"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 10218,
+    "status": "approx",
+    "note": "SAS 77th round; ~59% nominal but only ~16% real"
+   }
+  ],
+  "provenanceRefs": [
+   "P-46"
+  ],
+  "caveat": "The series stops here. No Situation Assessment Survey has been fielded since 2018-19, so the promise to double real farm income by 2022-23 cannot be evaluated against the only instrument that measures it. Agricultural GVA and NABARD's NAFIS are not substitutes: GVA is sectoral output, not household income net of costs.",
+  "unmeasured": [
+   {
+    "what": "Farm household income after 2018-19",
+    "why": "The Situation Assessment Survey has not been repeated. The target was set in SAS terms and can only be judged in them.",
+    "reasonKind": "not-collected",
+    "wouldFill": "A new NSS Situation Assessment Survey of Agricultural Households"
+   }
+  ],
+  "notes": "Crop income's share fell to about 37% by 2018-19, and WAGE income exceeded crop income for the average agricultural household — the average farmer is now more a wage-worker than a cultivator. Average operational holding shrank from 0.725 ha (2003) to 0.512 ha (2019)."
+ },
+ {
   "id": "poverty-tendulkar",
   "title": "Poverty headcount, Tendulkar methodology",
   "unit": "% of population",
@@ -5399,6 +6403,219 @@
    "P-28"
   ],
   "notes": "Cumulative FY2014-15 to FY2024-25 was ~2,923 crore person-days against ~1,660 crore for FY2006-07 to FY2013-14. Chronic under-budgeting: allocations routinely revised upward mid-year and wage liabilities carried forward. Only ~7% of households receive the full 100 days. Annual series must be pulled from NREGA MIS — only the COVID peak is recorded here."
+ },
+ {
+  "id": "msp-farmers-share",
+  "title": "Share of farmers benefiting from MSP procurement",
+  "unit": "% of farmers",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "Shanta Kumar Committee, 2015",
+   "url": "https://agricoop.gov.in/",
+   "vintage": "2026-08-01"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 6,
+    "status": "approx",
+    "note": "Shanta Kumar Committee estimate, derived from SAS 2012-13"
+   }
+  ],
+  "unmeasured": [
+   {
+    "what": "The current share of farmers selling at MSP",
+    "why": "No recurring series exists. The 6% figure is a 2015 committee estimate from 2012-13 survey data; SAS 2019 gives output shares (paddy 23.7%, wheat 20.8%) but not a farmer-count share, and nothing has been published since.",
+    "reasonKind": "not-collected",
+    "wouldFill": "An MSP-realisation module in a future Situation Assessment Survey, or farmer-level procurement data from FCI"
+   }
+  ],
+  "notes": "The central empirical fact in the MSP debate, and it is eleven years old. Awareness of MSP among agricultural households was only about 40.7% for kharif paddy and 37.1% for rabi wheat in 2019."
+ },
+ {
+  "id": "msp-paddy",
+  "title": "Minimum support price, paddy (common)",
+  "unit": "₹ per quintal",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "CACP / Ministry of Agriculture",
+   "url": "https://agricoop.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 1360,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 1410,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 1470,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 1550,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 1750,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 1815,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 1868,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 1940,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 2040,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 2183,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 2300,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 2369,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-47"
+  ],
+  "notes": "Kharif marketing season."
+ },
+ {
+  "id": "msp-wheat",
+  "title": "Minimum support price, wheat",
+  "unit": "₹ per quintal",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "CACP / Ministry of Agriculture",
+   "url": "https://agricoop.gov.in/",
+   "vintage": "2026-08-01"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 1400,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 1450,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 1525,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 1625,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 1735,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 1840,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 1925,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 1975,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 2015,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 2125,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 2275,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 2425,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-47"
+  ],
+  "caveat": "The claim that MSP is set at 1.5 times cost uses A2+FL, not the C2 basis the Swaminathan recommendation specified. On C2 the margin is substantially smaller or absent. State the cost basis whenever the ratio is cited.",
+  "notes": "Rabi marketing season. Nominal increases broadly track cost escalation; real gains are far smaller."
  },
  {
   "id": "nfsa-covered",
@@ -5484,6 +6701,93 @@
   "notes": "Of a cumulative allotment of ~4.14 crore (Feb 2026). Beneficiary selection rests on SECC 2011, now fifteen years old, with known exclusion errors. Pairs with pmay-g-completed."
  },
  {
+  "id": "pmfby-farmers",
+  "title": "PMFBY farmers covered",
+  "unit": "crore farmers",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "Ministry of Agriculture, PMFBY",
+   "url": "https://pmfby.gov.in/"
+  },
+  "calendar": "FY",
+  "breaks": [
+   {
+    "period": "FY2020-21",
+    "note": "Scheme made voluntary for loanee farmers; a fall reflects opt-out, not loss of access",
+    "provenanceRef": "P-49"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 4.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 5.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 5.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 6.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 6.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 4.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 3.17,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 4.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 4.19,
+    "status": "approx"
+   }
+  ],
+  "provenanceRefs": [
+   "P-49"
+  ],
+  "unmeasured": [
+   {
+    "what": "Share of PMFBY claims settled within the two-month norm",
+    "why": "No national series on settlement timeliness is published, though a 12% penalty on insurers for delay exists in the scheme rules.",
+    "reasonKind": "not-published",
+    "wouldFill": "Routine publication of settlement-lag statistics on the National Crop Insurance Portal"
+   }
+  ],
+  "notes": "Cumulative 2016-17 to 2024-25: ₹1,92,477 crore claims paid against ₹36,055 crore farmer premium. Bihar, West Bengal, Jharkhand, Andhra Pradesh, Telangana and Gujarat exited the scheme, so national figures understate withdrawal."
+ },
+ {
   "id": "pmjay-admissions",
   "title": "PM-JAY hospital admissions authorised, cumulative",
   "unit": "crore admissions",
@@ -5559,6 +6863,39 @@
    "P-22"
   ],
   "notes": "Down from a peak above 10 crore — roughly 2.3 crore (about 22.5%) deleted after mandatory Aadhaar e-KYC and land-record verification. Cumulative disbursement over ₹4.09 lakh crore across 21 instalments. ₹6,000/year is un-indexed, and the land-title basis excludes tenant farmers and landless labourers."
+ },
+ {
+  "id": "soil-health-cards",
+  "title": "Soil Health Cards generated",
+  "unit": "crore cards",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "Ministry of Agriculture",
+   "url": "https://agricoop.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 25.3,
+    "status": "approx",
+    "note": "From about 8.03 crore soil samples, 2015-2025"
+   }
+  ],
+  "provenanceRefs": [
+   "P-22"
+  ],
+  "caveat": "Distribution worked; behaviour change largely did not. A redesigned card lifted comprehension of fertiliser recommendations to only about 33%, cards often arrived after sowing, and grid sampling did not reflect individual plots. Where adopted, studies found urea reductions of 8-12% with negligible yield change.",
+  "unmeasured": [
+   {
+    "what": "Whether Soil Health Card recommendations changed farmer practice",
+    "why": "Cards distributed are counted; adoption is not measured as a routine metric. Only ad-hoc academic evaluations exist.",
+    "reasonKind": "never-defined",
+    "wouldFill": "A national adoption and impact survey with a defined practice-change indicator"
+   }
+  ]
  },
  {
   "id": "ujjwala-connections",
@@ -5638,5 +6975,92 @@
     "reasonKind": "not-published"
    }
   ]
+ },
+ {
+  "id": "wheat-procurement",
+  "title": "Wheat procurement",
+  "unit": "million tonnes",
+  "domain": "welfare",
+  "tier": "T1",
+  "source": {
+   "name": "Food Corporation of India",
+   "url": "https://fci.gov.in/"
+  },
+  "calendar": "FY",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 28.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 28.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 22.9,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 30.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 35.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 34.1,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 39.0,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 43.3,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 18.8,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 26.2,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 26.6,
+    "status": "approx"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 30.0,
+    "status": "approx"
+   }
+  ],
+  "notes": "FY2021-22 was a record 43.3 MT; the collapse to 18.8 MT the following year followed the March 2022 heat shock and the export ban. In FY2024-25 the top five states accounted for about 99.9% of procurement, with Punjab and Haryana alone at roughly 75%."
  }
 ]
