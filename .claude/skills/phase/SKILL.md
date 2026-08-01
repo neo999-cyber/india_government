@@ -66,7 +66,7 @@ Dispatch a read-only subagent. It must:
 
 - Read the **live** domain enum, and the written definitions for `assessment`, `tier`, `reasonKind`, `disputeKind`, and every other enum in `/schemas`. Read them from the schemas, not from memory.
 - Report which existing records already touch the subject, which domain values the phase would write into, whether a **new enum value** would be needed, and what must not be duplicated.
-- **Enum precondition (§6).** Any enum value lacking a written definition is **trigger D before authoring begins** — not after. This has been four for four: `assessment`, `differentFacts`, `tier`, `reasonKind`. Assume the fifth exists until the audit says otherwise.
+- **Enum precondition (§6).** Any enum value lacking a written definition is **trigger D before authoring begins** — not after. Nine for nine so far: `assessment`, `differentFacts`, `tier`, `reasonKind`, then `domain`, `type`, `confidence`, `directionOfBias`, `country`. Assume the tenth exists until the audit says otherwise.
 
 Produces a scope note. **Does not author.**
 
@@ -139,7 +139,7 @@ A stop **halts, reports, and waits. It does not guess.** Report the trigger lett
 
 **C — A new gate rule without both fixtures.** Fires-correctly and stays-quiet. Where the rule reads output, fires-correctly derives from a real regressed build (Rule 2). Verify fixtures survive a clean clone — a fixture under a gitignored path is silently dropped and passes because it is absent.
 
-**D — A definitional term applied outside its existing usage.** Covers every enum, including a subject with no matching enum value.
+**D — A definitional term applied outside its existing usage, or created without one.** Covers every enum. Two limbs: **application** — a term used outside its existing usage, including a subject with no matching enum value; and **creation** — a term or value introduced without a written definition. The second is preventive and fires at authoring time, before the value has any usage to be audited against.
 
 **E — Scope collision.** The subject overlaps records authored in another phase. Report the collision and the proposed boundary; **do not author across it unilaterally.**
 
@@ -155,9 +155,13 @@ A stop **halts, reports, and waits. It does not guess.** Report the trigger lett
 
 **An enum without written per-value meanings will be misapplied, and it will not surface until someone audits the values against their own text.**
 
-Four for four so far: `assessment` (`reversed` covering two mechanisms), `differentFacts` (seventeen records under a criterion that meant nothing), `tier` (grading the subject rather than the evidence), `reasonKind` (`never-defined` with one legitimate member in eight).
+Nine for nine. Four found by audit: `assessment` (`reversed` covering two mechanisms), `differentFacts` (seventeen records under a criterion that meant nothing), `tier` (grading the subject rather than the evidence), `reasonKind` (`never-defined` with one legitimate member in eight). Five more found by the first dry run, all previously undefined: `domain`, `type`, `confidence`, `directionOfBias`, `country`.
 
-**Stage 1 reads every enum's written definitions.** A value with none is trigger D **before** authoring begins.
+**Stage 1 reads every enum's written definitions.** A value with none is trigger D **before** authoring begins. That half is diagnostic — it only runs once the value has users.
+
+**Preventive half — this is the one that can close the loop.** A new enum, or a new value added to an existing enum, ships with per-value definitions **in the same commit**. An enum value without a definition is not mergeable. Stage 3 is bound by this: a value it introduces carries its definition, or it does not land.
+
+**Three are known-inconsistent and deferred, not resolved** — `directionOfBias` (a direction axis conflated with a defect-kind axis), `type` (`shock` covering external and domestic alike), `confidence` (finding versus retrieval). Read them as written, inconsistency included. **Do not resolve one mid-phase**; `differentFacts` reached seventeen records because a taxonomy was resolved in the pass that discovered it.
 
 ---
 
