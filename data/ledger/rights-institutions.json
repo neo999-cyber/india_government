@@ -19,7 +19,8 @@
     "what": "Party affiliation and state of politicians facing ED cases",
     "why": "The Ministry of Finance told Parliament that state-wise and party-affiliation data on politicians under investigation is not maintained. The government has separately cited a specific figure - that roughly 3 per cent of ED cases involve politicians - which implies some form of political-status tagging exists. Independent reconstructions from public records have produced party-wise counts, so the data is derivable even if not maintained in the form asked about.",
     "reasonKind": "not-collected",
-    "reasonDisputed": true
+    "reasonDisputed": true,
+    "disputeKind": "evidentiary"
    }
   ],
   "seriesRefs": [
@@ -279,7 +280,8 @@
     "what": "Published shutdown orders and review committee decisions",
     "why": "Orders are treated as internal security instruments; no general publication mechanism has been established. The Supreme Court directed publication in Anuradha Bhasin in January 2020 and reiterated it in January 2024. Non-publication is therefore in tension with a binding direction, not merely an administrative choice.",
     "reasonKind": "not-published",
-    "reasonDisputed": true
+    "reasonDisputed": true,
+    "disputeKind": "normative"
    },
    {
     "what": "Official count of internet shutdowns",

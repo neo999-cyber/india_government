@@ -133,19 +133,12 @@
   "assessment": "too-early",
   "caseFor": "The regime being replaced protected a small formal minority while pushing everyone else into informality — a firm crossing 100 workers faced permission requirements that gave it strong reason never to cross it. Raising the threshold to 300 removes a barrier to firms growing past the size where formal jobs appear. The codes also give gig and platform workers statutory standing for the first time, and mandate appointment letters and gratuity for fixed-term workers after one year.",
   "caseAgainst": "The 300-worker threshold means most Indian firms can now retrench or close without prior permission, which is a substantial transfer of power to employers presented as a growth measure. The 60-day strike notice constrains the only leverage workers hold. Fixed-term employment is legitimised rather than limited. And the codes passed during an opposition walkout, then sat unimplemented for five years — a reform whose urgency was asserted but not demonstrated by the pace of its own enactment.",
+  "revisitTrigger": "The codes came into force in November 2025 and the formal-work share is measured annually with a lag, so this is not yet due rather than not gathered. Re-test on the PLFS written-contract and social-security shares for 2027 and 2028; if no post-implementation reading has appeared by then, it becomes an absence.",
   "shockExposure": "COVID intervened between passage and implementation and is the stated reason for much of the delay.",
   "provenanceRefs": [
    "P-22"
   ],
   "caveat": "In force only since 21 November 2025 with central rules notified 8 May 2026. No outcome data exists. Any assessment before roughly 2028 is a judgement about the design, not about what it did.",
-  "unmeasured": [
-   {
-    "what": "Whether the codes increased formal employment",
-    "why": "They came into force in November 2025 and the formal-work share is measured annually with a lag. No post-implementation reading exists.",
-    "wouldFill": "PLFS written-contract and social-security shares for 2027 and 2028",
-    "reasonKind": "not-collected"
-   }
-  ],
   "sources": [
    {
     "name": "Ministry of Labour and Employment, PIB, 21 November 2025",
@@ -227,9 +220,9 @@
   "unmeasured": [
    {
     "what": "Independently verified placement outcomes for skill-programme trainees",
-    "why": "PMKVY placement figures are self-reported and administrative; the CAG found 87% of batches lacked verifiable biometric attendance and 94% of records lacked valid bank details.",
+    "why": "PMKVY placement figures are self-reported and administrative; the CAG found 87% of batches lacked verifiable biometric attendance and 94% of records lacked valid bank details. Reclassified not-published to not-collected on 2026-08-01: the placement figures are published; what is absent is independent verification, which was never performed. Nothing exists that could be produced under compulsion.",
     "wouldFill": "An EPFO-linked tracer study following trainees into payroll records, which the CAG recommended",
-    "reasonKind": "not-published"
+    "reasonKind": "not-collected"
    }
   ],
   "sources": [
@@ -278,7 +271,8 @@
     "why": "The Labour Ministry told Parliament that no such data is maintained, and therefore that the question of compensation did not arise. That stated reason is contradicted: the Railways Minister told the Rajya Sabha that 97 people died aboard Shramik Special trains, and an RTI response indicated the government held data it had declined to give Parliament. So the absence is asserted as not-collected while evidence indicates at least partial withholding. Independent tallies reached about 971 lockdown-related non-COVID deaths.",
     "wouldFill": "A compiled audit of Railways, state and health ministry mortality records, some of which demonstrably exist",
     "reasonKind": "not-collected",
-    "reasonDisputed": true
+    "reasonDisputed": true,
+    "disputeKind": "evidentiary"
    }
   ],
   "sources": [
