@@ -207,6 +207,38 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
   }
 }
 
+// 3d. Rendered-reachability: the mark must render on the page of the record declaring it.
+//
+// Both directions, per the standing rule. The fixture captures a paired series whose own page
+// omits its declared absence while /unmeasured still lists it — which is why the check is
+// per-record and not corpus-wide, and the fixture proves that distinction rather than
+// asserting it. The live corpus is checked only when a build exists; exit 2 means no output.
+{
+  const reach = (args) => {
+    try {
+      execFileSync(process.execPath, [join(ROOT, 'tools', 'reachability.mjs'), ...args], {
+        // stderr piped: the fixture is EXPECTED to fail, and letting its report through
+        // would make a passing selftest read as a broken one.
+        encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, NO_COLOR: '1' },
+      });
+      return 0;
+    } catch (err) {
+      return err.status ?? 1;
+    }
+  };
+  const fixture = join(ROOT, 'tests', 'fixtures', 'reachability-hidden');
+  const fired = reach(['--data', join(fixture, 'data'), '--out', join(fixture, 'out')]);
+  if (fired !== 1) {
+    failures.push(`reachability did not fire on tests/fixtures/reachability-hidden (exit ${fired}) — a declaration suppressed on its own record page must fail`);
+  } else {
+    notes.push('  reachability fires on tests/fixtures/reachability-hidden (declared, not on its own record page)');
+  }
+  const live = reach([]);
+  if (live === 2) notes.push('  reachability on the live corpus skipped — no built output yet');
+  else if (live !== 0) failures.push('reachability failed on the live corpus; run `npm run reachability` for the list');
+  else notes.push('  reachability stays silent on the live corpus — every declared mark renders on its own record page');
+}
+
 // 4. Strictness must be live: a misspelled keyword cannot be silently ignored.
 // Under a lax config this schema compiles and lets the invalid record through.
 const typoSchema = {

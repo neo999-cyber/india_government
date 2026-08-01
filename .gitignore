@@ -1,6 +1,10 @@
 node_modules/
 .next/
 out/
+# ...but the reachability fixture ships a hand-built out/ tree on purpose: it captures a
+# regressed render so the rule can be proven without rebuilding the site.
+!tests/fixtures/**/out/
+!tests/fixtures/**/out/**
 .vercel/
 next-env.d.ts
 *.tsbuildinfo
