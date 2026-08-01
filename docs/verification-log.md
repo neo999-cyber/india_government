@@ -839,3 +839,21 @@ The four disputed absences were not applying one criterion. Three assert that a 
 ## Validator no longer restates the enum
 
 The `reason-kind` error message hardcoded the four value names, which is how a message drifts from the contract it enforces: the schema gains a value and the gate keeps offering the old menu. It now reads the enum from `schemas/ledger.schema.json` and quotes it.
+
+Correction 08-01i.1: seven `never-defined` entries reclassified to `not-collected` — `jjm-functionality` #0, `lfpr-female` #0, `L-0060` #0, `soil-health-cards` #0, `ujjwala-refills` #0, `L-0062` #0 and `L-0040` #0. Each records the reclassification and its test in `why`: the quantity is defined and the denominator is defined; what is missing is collection on that base, not an agreed definition.
+
+**`never-defined` had one legitimate member in eight.** It was functioning as a general structural-gap tag — the value an author reached for when something was missing in a way that felt deeper than an unpulled figure. Seven of the eight were ordinary collection gaps. `L-0084` survives and now says on its own record why it does: the absent thing IS the definition, since no agreed Memorandum of Procedure exists, rather than a defined quantity nobody has measured. It is the only member of its kind and the reason is now legible on the record rather than inferable from an audit.
+
+Counts. `not-collected` 15 to 22, `never-defined` 8 to 1, `not-published` 8 unchanged, `withheld` 0 unchanged, total 31 unchanged. Worth recording that `not-collected` read 15 both before AND after cycle 08-01i: its four movements that cycle cancelled exactly, so the two reclassifications into it were already reflected in the figure the previous entry reported.
+
+A single-member kind renders correctly — the by-kind line filters on `.length`, so zero drops out and one reads "1 never defined". No grouping anywhere assumes a minimum member count; the only grouping in the codebase is that filter.
+
+## A regression found while verifying, and fixed
+
+Checking that the reclassified entries rendered turned up four declarations that **rendered nowhere at all**: `jjm-functionality` #0, `pmay-g-completed` #0 and both of `ujjwala-refills`. All four sit on series that are members of a coverage/usage pair.
+
+The series page suppresses its own absence block when a pair view takes over, on the assumption that the pair pools them — which the pair did until phase 6c, when `CoverageUsageView` was rewired to the data layer and the pooling was lost. Between then and now, a declared absence on a paired series was silently invisible. That includes the PMAY-G occupancy absence, which is the case the `Absence` mark was generalised for in phase 4d.
+
+Pooling restored, excluding any entry already standing in a counterpart slot — `metro-network` and `household-electrification` are each both the coverage series and the source of the absence occupying their own usage side, so pooling them again rendered the same declaration twice. Verified across all ten paired series carrying absences: each renders exactly once, from either side of the pair.
+
+The lesson is narrower than the earlier enum findings and worth stating separately: **a suppression that depends on another component rendering the thing instead is a silent-failure design.** Nothing failed loudly when the other side stopped rendering it, and nothing in the gate could see it, because the data was correct throughout.

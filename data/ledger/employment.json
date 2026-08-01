@@ -101,9 +101,9 @@
   "unmeasured": [
    {
     "what": "Whether the increase is paid market entry, reclassified unpaid work, or distress entry",
-    "why": "No instrument separates the three. PLFS counts unpaid helpers as employed and asks no question that would distinguish them.",
+    "why": "No instrument separates the three. PLFS counts unpaid helpers as employed and asks no question that would distinguish them. Reclassified never-defined to not-collected on 2026-08-01: the quantity is defined and the denominator is defined; what is missing is collection on that base, not an agreed definition.",
     "wouldFill": "A time-use-linked labour module, or a PLFS supplement on paid versus unpaid activity within household enterprises",
-    "reasonKind": "never-defined"
+    "reasonKind": "not-collected"
    }
   ],
   "sources": [
@@ -181,9 +181,9 @@
   "unmeasured": [
    {
     "what": "Jobs created, as distinct from payroll registrations",
-    "why": "India has no establishment-level new-hire register. EPFO counts subscribers, not first-time entrants; KLEMS estimates rather than measures.",
+    "why": "India has no establishment-level new-hire register. EPFO counts subscribers, not first-time entrants; KLEMS estimates rather than measures. Reclassified never-defined to not-collected on 2026-08-01: the quantity is defined and the denominator is defined; what is missing is collection on that base, not an agreed definition.",
     "wouldFill": "A payroll-linked longitudinal new-hire register of the kind most comparable economies maintain",
-    "reasonKind": "never-defined"
+    "reasonKind": "not-collected"
    }
   ],
   "sources": [
