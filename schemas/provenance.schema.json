@@ -131,7 +131,8 @@
               "T3",
               "T4",
               "T5"
-            ]
+            ],
+            "description": "Evidence grade of the DOCUMENT ACTUALLY RETRIEVED, not of the institution the subject belongs to. This is the operative rule and the one that goes wrong: a CAG finding known only through a newspaper's account of an RTI reply is T4, because the subject is official but the evidence is relayed. Grade what you hold, not what it is about.\n- T1: official Indian statistical or institutional source, retrieved directly - a ministry release, an RBI, MoSPI or NCRB publication, a CAG report, a Parliamentary reply.\n- T2: multilateral or international statistical source, retrieved directly - World Bank, IMF, ILO, WHO.\n- T3: peer-reviewed research or a working paper.\n- T4: reported or documentary journalism, NGO datasets, and anything RELAYED rather than retrieved - including an official figure known only through a press account, and an RTI reply cited but not obtained.\n- T5: contested composite index. Always carries a dispute record covering its own domain (CLAUDE.md rule 6).\nNote that tier is asserted in exactly one place per layer: on the series itself, or on each entry of a ledger or provenance `sources[]`. A series `source` is a SourceRef and carries NO tier - the object is closed, so a tier inside it is rejected rather than silently ignored."
           }
         }
       }
