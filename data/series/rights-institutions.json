@@ -221,22 +221,22 @@
    {
     "country": "IND",
     "period": "2019",
-    "value": 2.2,
-    "status": "approx",
+    "value": null,
+    "status": "pending",
     "note": "MHA reply covering 2016-2019 aggregate, not a single-year value."
    },
    {
     "country": "IND",
     "period": "2023",
-    "value": 3.0,
-    "status": "approx",
+    "value": null,
+    "status": "pending",
     "note": "Range of 1.5-4 per cent cited across NCRB volumes and the Supreme Court's May 2025 observations; midpoint recorded as approximate."
    }
   ],
   "provenanceRefs": [
    "P-52"
   ],
-  "notes": "Conviction rate is not a welfare measure and carries no directional reading in this instrument: a low rate is read by the government as due process functioning and by critics as evidence of misuse. Direction is deliberately unset.",
+  "notes": "Conviction rate is not a welfare measure and carries no directional reading in this instrument: a low rate is read by the government as due process functioning and by critics as evidence of misuse. Direction is deliberately unset. Conviction rate withheld pending retrieval of the primary MHA reply establishing the denominator. The 2.2 per cent figure covers 2016-2019 in aggregate and its base is not stated in the sources reviewed; NCRB's standard rate uses cases in which trials were completed. An unlabelled rate is not interpretable and is not rendered.",
   "denominator": null
  },
  {

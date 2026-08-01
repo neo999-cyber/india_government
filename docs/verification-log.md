@@ -680,3 +680,9 @@ Records that should be re-scored on specific future events rather than on a sche
 - L-0088 — pending challenges to the CEC Act 2023.
 - L-0084 — finalisation of the Memorandum of Procedure, outstanding since December 2015.
 - L-0087 — committee referral rate for the 18th Lok Sabha once the term produces a full figure.
+
+Correction 08-01e.2: `uapa-conviction-rate` demoted to pending. Both points (2019, 2023) keep their periods and notes but carry `value: null` and `status: pending`, so the series still exists and the gap stays visible as owed. `denominator` remains null, which is still the accurate statement — the base is not known.
+
+The denominator gate did its job. The correct response to catching an undefendable number is to stop rendering it, not to render it bare. The 2.2 per cent figure covers 2016-2019 in aggregate and its base is not stated in the sources reviewed; NCRB's standard rate uses cases in which trials were completed. Establishing which base applies means pulling the primary MHA reply, which is research rather than build.
+
+The rule was sharpened in the same pass, not weakened. `denominator-stated` now fires only where a P-52 rate series actually renders a figure. A series whose every point is pending renders no rate, so there is nothing to mislabel — and firing there would have pushed toward inventing a base for a number that is not shown, which is the opposite of what the rule exists to prevent. Both halves are pinned by fixture: `denominator-unstated` proves it fires on a rendered rate with no base, `denominator-withheld` proves it stays silent on a withheld one.

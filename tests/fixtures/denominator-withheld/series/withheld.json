@@ -1,0 +1,18 @@
+[
+  {
+    "id": "rate-withheld-pending-its-base",
+    "title": "A rate carrying the dispute, withheld until its base is established",
+    "unit": "percent",
+    "domain": "governance",
+    "tier": "T1",
+    "source": { "name": "Fixture, not a real source", "url": "https://example.org/" },
+    "calendar": "CY",
+    "provenanceRefs": ["P-52"],
+    "denominator": null,
+    "notes": "Every point is pending with no figure, so no rate renders and there is nothing to mislabel. Withholding an undefendable number is the correct response to the rule; rendering it bare is not. denominator stays null because the base is genuinely not known.",
+    "points": [
+      { "country": "IND", "period": "2019", "value": null, "status": "pending", "note": "Withheld pending the primary reply." },
+      { "country": "IND", "period": "2023", "value": null, "status": "pending", "note": "Withheld pending the primary reply." }
+    ]
+  }
+]

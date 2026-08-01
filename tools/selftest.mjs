@@ -93,7 +93,7 @@ const ISOLATED = [
   { dir: 'pair-inverted', rule: 'pair-inverted', expect: 'the wrong way round' },
   { dir: 'reason-kind-missing', rule: 'reason-kind' },
   { dir: 'absence-dispute-bare', rule: 'absence-dispute', expect: 'must not be asserted bare' },
-  { dir: 'denominator-unstated', rule: 'denominator-stated', expect: 'expresses a rate' },
+  { dir: 'denominator-unstated', rule: 'denominator-stated', expect: 'renders 1 rate value(s)' },
 ];
 
 /**
@@ -107,6 +107,11 @@ const ISOLATED = [
  */
 const MUST_STAY_CLEAN = [
   { dir: 'backlink-via-break', rule: 'back-link', why: 'a break satisfies the backlink' },
+  // The other half of denominator-stated. A rate whose every point is pending renders no
+  // figure, so there is nothing to mislabel — and firing there would push toward inventing a
+  // base for a number that is not shown. Withholding is the correct response to being caught
+  // by the rule, and this pins that so a later tightening fails loudly here.
+  { dir: 'denominator-withheld', rule: 'denominator-stated', why: 'a withheld rate renders no figure to mislabel' },
 ];
 
 /** @returns {{ code: number, report: any }} */
