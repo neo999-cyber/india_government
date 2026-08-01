@@ -48,6 +48,9 @@ export const REASON_KINDS = [
 ] as const;
 export type ReasonKind = (typeof REASON_KINDS)[number];
 
+export const DISPUTE_KINDS = ['evidentiary', 'normative'] as const;
+export type DisputeKind = (typeof DISPUTE_KINDS)[number];
+
 export interface Unmeasured {
   /** The thing that is not measured, stated positively. */
   what: string;
@@ -58,6 +61,18 @@ export interface Unmeasured {
   /**
    * The STATED reason no figure exists — what the responsible body says, not what is true.
    * Where the two differ, `reasonDisputed` records that they differ.
+   *
+   * THE TEST IS WHETHER THE DATA EXISTS, asked in this order:
+   * - `not-collected` — never gathered. No record exists to release. If the holder were
+   *   compelled tomorrow they would have nothing to produce.
+   * - `not-published` — exists in a holder's hands, not released. The test is producibility
+   *   under compulsion, not whether anyone has asked.
+   * - `withheld` — exists, release was specifically requested or legally required, and was
+   *   refused. Narrower than not-published: requires an identifiable refusal, not merely
+   *   absence of release.
+   * - `never-defined` — no agreed definition exists for the quantity, so it could not be
+   *   collected even in principle. NOT "nobody has studied it": an unstudied but definable
+   *   quantity is not-collected.
    */
   reasonKind?: ReasonKind;
   /**
@@ -73,6 +88,15 @@ export interface Unmeasured {
    * separation as `competingAccounts` on a provenance record.
    */
   reasonDisputed?: boolean;
+  /**
+   * What kind of contradiction `reasonDisputed` records. Required when it is true.
+   *
+   * - `evidentiary` — the stated reason is contradicted by evidence that the data exists or
+   *   was held.
+   * - `normative` — the factual claim is not contested; what is contested is the
+   *   characterisation of the non-release, typically against a legal or judicial obligation.
+   */
+  disputeKind?: DisputeKind;
 }
 
 export interface SourceRef {

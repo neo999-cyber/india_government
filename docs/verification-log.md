@@ -795,3 +795,47 @@ What actually swallowed the contradiction was the merge step, not the schema: th
 The durable fix is the same one applied to the assessment values in 08-01g: `tier` was a bare enum in all three schemas with no written meaning, the labels living only in `lib/format.ts` and describing kinds of source without ever saying what tier grades. All three now carry the definition, with the operative rule first — **tier grades the document actually retrieved, not the institution the subject belongs to.**
 
 Checked for other disagreements, since one was unlikely to be alone. **No source name is cited at two different tiers anywhere.** Two bare-domain URLs carry more than one tier, and both are correct rather than contradictory: `cag.gov.in` is T1 for retrieved CAG performance audits and T4 for the relayed RTI material, and `rbi.org.in` is T1 for the RBI's own framework agreement and KLEMS database and T4 for P-20, which is explicitly secondary reporting pending an unlocated primary circular. In both the tier grades the document and the URL is only the host, which is the rule working.
+
+---
+
+# Verification log — cycle 2026-08-01i (reasonKind defined; three reclassified, one removed)
+
+## The fourth bare enum
+
+`reasonKind` had four values and no written meaning anywhere. The schema description described the FIELD; the `why` description pointed at "the taxonomy already asserted", which turned out to be a bare list of the same four names; `lib/types.ts` repeated the field-level note; CLAUDE.md did not mention it. **The only per-value text in the entire codebase was `REASON_KIND_LABELS` in `components/marks.tsx` — display strings.**
+
+So the boundary between not-collected and not-published, which decides whether a government is recorded as never having gathered something or as sitting on it, **was carried entirely by three words in a display label**: `collected, not published`. Not visible to whoever authors a record, and not stated anywhere an author would look.
+
+This is the **fourth** enum found in this state. `assessment` was defined in 08-01g after `reversed` had silently covered two mechanisms. `tier` was defined in 08-01h.1 after a series was graded on its subject rather than its evidence. `reasonKind` is the same failure again, and the pattern is now established well enough to state as a rule: **an enum without written per-value meanings will be misapplied, and the misapplication will not surface until someone audits the values against their own text.**
+
+All four now carry the definition, operative test first — the test is whether the data exists, asked in order.
+
+## Three reclassified, on the new test
+
+- **L-0069 #0, `withheld` to `not-collected`.** The only `withheld` in the dataset, and its own text said no report had been produced. Withheld requires an identifiable refusal of something that exists; there was nothing to refuse. **`withheld` now has zero users.**
+- **L-0063 #0, `not-published` to `not-collected`.** PMKVY placement figures are published. What is absent is independent verification, which was never performed — nothing exists that could be produced under compulsion.
+- **`household-electrification` #0, `not-collected` to `not-published`.** Periodic survey evidence exists in holders' hands (ISEP, IRES), so producibility under compulsion is met; what is absent is a released national series.
+
+Each carries a line in `why` recording the reclassification and the test it turns on.
+
+## One removed: a measure not yet due is not an absence
+
+**L-0061 #0 deleted.** The labour codes came into force in November 2025 and the formal-work share is measured annually with a lag, so nobody has declined to gather anything — the instrument exists and runs. Filing it as `not-collected` asserted the opposite.
+
+The gap moves to a `revisitTrigger` on the record, which is this instrument's mechanism for owed-but-not-yet-due, carrying the same route the absence named: PLFS written-contract and social-security shares for 2027 and 2028, and if no reading has appeared by then it becomes a genuine absence. A pending point was considered and rejected: it would have required inventing a future period and attaching it to `regular-wage-share`, which measures a different quantity.
+
+## `never-defined` re-tested — 7 of 8 fail
+
+Against the new definition, an unstudied but definable quantity is `not-collected`. **Only L-0084 survives**, and it survives strongly: no agreed Memorandum of Procedure exists, so the definition itself is the thing that is absent.
+
+The other seven are collection gaps wearing a definitional label. **This includes `jjm-functionality`, which the earlier audit called unambiguously definitional — that reading was too generous.** The quantity is fully defined: the Mission standard is defined, and so is the denominator of all rural households. What is missing is a survey on that base, which is not-collected. Listed for decision, not reclassified in this pass.
+
+## `disputeKind` added
+
+The four disputed absences were not applying one criterion. Three assert that a factual claim of non-existence is contradicted by evidence — the same government elsewhere, or an independent count. The fourth contests a characterisation against a binding judicial direction, with the factual claim uncontested. Both are defensible readings of "the stated reason is contradicted", and nothing distinguished them.
+
+`disputeKind` is now required when `reasonDisputed` is true, gated by an if/then in both schemas and proven to fire. L-0064 #1, L-0074 #0 and L-0066 #0 are `evidentiary`; L-0081 #0 is `normative`.
+
+## Validator no longer restates the enum
+
+The `reason-kind` error message hardcoded the four value names, which is how a message drifts from the contract it enforces: the schema gains a value and the gate keeps offering the old menu. It now reads the enum from `schemas/ledger.schema.json` and quotes it.

@@ -5,7 +5,22 @@
  * @typedef {{ layer: string, file: string, index: number|null, record: any, incoming: boolean }} LoadedRecord
  * @typedef {{ level: 'error'|'warn', rule: string, file: string, where: string, message: string }} Finding
  */
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 import { sweepRecord } from './charset.mjs';
+
+/**
+ * The reasonKind values, read from the schema rather than restated here.
+ *
+ * They were hardcoded in the rule's own error message, which is how a list drifts: the
+ * schema gains or loses a value and the message keeps naming the old set, so the gate tells
+ * an author to pick from a menu that no longer exists. The schema is the contract; the
+ * message quotes it.
+ */
+const SCHEMAS_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'schemas');
+const REASON_KINDS = JSON.parse(readFileSync(join(SCHEMAS_DIR, 'ledger.schema.json'), 'utf8'))
+  .properties.unmeasured.items.properties.reasonKind.enum;
 
 const FY_RE = /^FY(\d{4})-(\d{2})$/;
 const CY_RE = /^\d{4}$/;
@@ -605,7 +620,7 @@ export function checkIntegrity(records, { today }) {
         // future domain cannot file an absence without classifying it. "Not measured" alone
         // flattens a body declining to collect into a quantity nobody has got round to.
         if (!u.reasonKind) {
-          add('error', 'reason-kind', r.file, where, `unmeasured[${i}] ("${what}") states no reasonKind. Every absence must say which kind it is — not-collected, not-published, withheld or never-defined — because "not measured" alone reads the same for a quantity nobody has got round to and one a body has declined to keep`);
+          add('error', 'reason-kind', r.file, where, `unmeasured[${i}] ("${what}") states no reasonKind. Every absence must say which kind it is — ${REASON_KINDS.slice(0, -1).join(', ')} or ${REASON_KINDS[REASON_KINDS.length - 1]} — because "not measured" alone reads the same for a quantity nobody has got round to and one a body has declined to keep`);
         }
 
         // A disputed stated reason has to carry its contradiction, not assert it.

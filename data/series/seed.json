@@ -3674,9 +3674,9 @@
   "unmeasured": [
    {
     "what": "Actual hours of electricity supply received by households, as a continuous national series",
-    "why": "Connections are reported; supply-hours are not published as a national time series. Survey evidence (ISEP, IRES) is periodic and partial.",
+    "why": "Connections are reported; supply-hours are not published as a national time series. Survey evidence (ISEP, IRES) is periodic and partial. Reclassified not-collected to not-published on 2026-08-01: periodic survey evidence exists in holders hands (ISEP, IRES), so the test of producibility under compulsion is met; what is absent is a released national series.",
     "wouldFill": "CEA or discom feeder-level metering aggregated nationally, or a recurring national residential energy survey",
-    "reasonKind": "not-collected"
+    "reasonKind": "not-published"
    }
   ]
  },

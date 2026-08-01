@@ -32,6 +32,7 @@
     "why": "The Samyukta Kisan Morcha counted roughly 700. The government told Parliament it held no record of farmer deaths during the protest and that compensation therefore did not arise. No official count was attempted.",
     "reasonKind": "not-collected",
     "reasonDisputed": true,
+    "disputeKind": "evidentiary",
     "wouldFill": "A state-level death registry compiled from Punjab and Haryana civil records, or an official inquiry"
    }
   ],
@@ -157,8 +158,8 @@
   "unmeasured": [
    {
     "what": "The report of the post-repeal MSP committee",
-    "why": "Constituted July 2022 under Sanjay Agrawal with 26 members; farm unions declined to participate. No report or interim recommendation has been produced as of mid-2026.",
-    "reasonKind": "withheld",
+    "why": "Constituted July 2022 under Sanjay Agrawal with 26 members; farm unions declined to participate. No report or interim recommendation has been produced as of mid-2026. Reclassified withheld to not-collected on 2026-08-01: the test is whether the data exists, and no report has been produced, so there is nothing to refuse. Withheld requires an identifiable refusal of something that exists.",
+    "reasonKind": "not-collected",
     "wouldFill": "Publication of the committee's report"
    }
   ],

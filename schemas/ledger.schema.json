@@ -203,13 +203,39 @@
               "withheld",
               "never-defined"
             ],
-            "description": "The STATED reason no figure exists. Formalises the taxonomy the `why` description already asserts. Records what the responsible body says, not what is true — where the stated reason is contradicted by evidence, set reasonDisputed and carry the contradiction in `why`."
+            "description": "The STATED reason no figure exists — what the responsible body says, not what is true. Where the stated reason is contradicted, set reasonDisputed and carry the contradiction in `why`.\n\nTHE TEST IS WHETHER THE DATA EXISTS, asked in this order:\n- not-collected: never gathered. No record exists to release. If the holder were compelled tomorrow they would have nothing to produce.\n- not-published: exists in a holder's hands, not released. The test is producibility under compulsion, not whether anyone has asked.\n- withheld: exists, release was specifically requested or legally required, and was refused. Narrower than not-published — requires an identifiable refusal, not merely absence of release.\n- never-defined: no agreed definition exists for the quantity, so it could not be collected even in principle. NOT \"nobody has studied it\" — an unstudied but definable quantity is not-collected."
           },
           "reasonDisputed": {
             "type": "boolean",
             "description": "True where the stated reason is contradicted by evidence — for example a body saying data was never maintained while another arm of the same government publishes some of it. The contradiction must be stated in `why`. This is not a fifth reasonKind: it is a dispute about which kind applies."
+          },
+          "disputeKind": {
+            "enum": [
+              "evidentiary",
+              "normative"
+            ],
+            "description": "What kind of contradiction reasonDisputed records. Required when reasonDisputed is true.\n- evidentiary: the stated reason is contradicted by evidence that the data exists or was held.\n- normative: the factual claim is not contested; what is contested is the characterisation of the non-release, typically against a legal or judicial obligation."
           }
-        }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "reasonDisputed": {
+                  "const": true
+                }
+              },
+              "required": [
+                "reasonDisputed"
+              ]
+            },
+            "then": {
+              "required": [
+                "disputeKind"
+              ]
+            }
+          }
+        ]
       }
     },
     "differentFacts": {
