@@ -96,7 +96,11 @@ export interface SeriesBreak {
 export interface Point {
   country: Country;
   period: string;
-  value: number;
+  /**
+   * Null only with status "pending": the period is known to exist and no figure is held.
+   * A blank is unreported, never zero (CLAUDE.md rule 4).
+   */
+  value: number | null;
   status: Status;
   note?: string;
 }
@@ -113,6 +117,22 @@ export interface Series {
   points: Point[];
   provenanceRefs?: string[];
   notes?: string;
+  /**
+   * Direction of merit. `null` is a real value, not a missing one: a conviction rate has no
+   * agreed direction, and asserting one would take a side. Anything that ever renders a
+   * directional cue must treat null as "no cue at all" — not a neutral shade of one.
+   *
+   * Nothing renders directional colour today; the instrument has never had any (CLAUDE.md:
+   * red is reserved for deaths, alerts and break-seams). The field is carried so that when
+   * something does, the null case is already stated in the data rather than defaulted.
+   */
+  higherIsBetter?: boolean | null;
+  /**
+   * What the period axis counts. Absent means calendar years. `lok-sabha-term` means each
+   * point is a Lok Sabha term keyed by its first year, so the spacing is electoral and the
+   * points must not be read as an annual series.
+   */
+  xAxis?: 'calendar-year' | 'lok-sabha-term';
   /**
    * A blocking qualification that must render wherever this record appears, including
    * compact listings. Distinct from `notes`: notes carry ordinary context and uncertainty,
@@ -201,6 +221,11 @@ export type BiasDirection =
   | 'obscures'
   | 'degrades-precision';
 
+export interface CompetingAccount {
+  holder: string;
+  position: string;
+}
+
 export interface ProvenanceRecord {
   id: string;
   title: string;
@@ -217,7 +242,15 @@ export interface ProvenanceRecord {
   directionOfBias: BiasDirection;
   bridgeExists: boolean;
   bridgeNote?: string;
-  competingAccounts?: { holder: string; position: string }[];
+  /**
+   * Rival readings of the same measurement.
+   *
+   * Two authored forms. `{holder, position}` where the holder separates cleanly; a plain
+   * string where the account names its own holder inside the prose. The second is not a
+   * lesser form — splitting those sentences by pattern would be guesswork, and only 12 of
+   * the 21 authored in phase 9 have a clause that could be split at all.
+   */
+  competingAccounts?: (CompetingAccount | string)[];
   sources: TieredSource[];
   notes?: string;
 }

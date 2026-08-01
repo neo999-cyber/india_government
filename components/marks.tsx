@@ -9,6 +9,18 @@ import { TIER_LABELS, formatValue } from '@/lib/format';
  * pending never renders without its flag.
  */
 export function Value({ point, unit }: { point: Point; unit?: string }) {
+  // A pending point may hold no figure at all: the period is known to exist and nothing is
+  // yet pinned to it. Rendered as an em-dash carrying the pending flag, never as a zero and
+  // never as a bare blank that could be mistaken for "not applicable" (rules 3 and 4).
+  if (point.value === null) {
+    return (
+      <span className="figure">
+        <span className="t-note">—</span>
+        {unit ? <span className="t-note"> {unit}</span> : null}
+        <span className="flag-pending">pending</span>
+      </span>
+    );
+  }
   const figure = formatValue(point.value);
   if (point.status === 'verified') {
     return (

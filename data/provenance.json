@@ -1307,5 +1307,221 @@
     "tier": "T1"
    }
   ]
+ },
+ {
+  "id": "P-50",
+  "title": "RSF World Press Freedom Index methodology change, 2022",
+  "whatChanged": "Reporters Without Borders replaced its previous seven-category questionnaire framework with a five-indicator structure (political, legal, economic and sociocultural context, plus safety), rebuilt the underlying question set, and revised its scoring bands. Ranks before and after 2022 therefore measure different constructs, and a movement across the seam cannot be attributed to a change in conditions on the ground.",
+  "when": "2022",
+  "affectsDomains": [
+   "governance"
+  ],
+  "affectsSeries": [
+   "rsf-press-freedom-rank"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "competingAccounts": [
+   "RSF's position is that the new framework is more granular and better separates safety of journalists from legal and economic pressure, and that India's decline reflects measured deterioration on several indicators rather than a scoring artefact.",
+   "The Government of India's position, stated in Parliament in July 2022, is that the index rests on a very low sample size, gives little or no weight to the fundamentals of democracy, and uses a methodology that is questionable and non-transparent.",
+   "A third reading, independent of both, is that the 2022 change makes the year-on-year comparison unusable regardless of which side is right about the level."
+  ],
+  "sources": [
+   {
+    "name": "RSF Index methodology",
+    "url": "https://rsf.org/en/index-methodologie",
+    "tier": "T5"
+   },
+   {
+    "name": "Minister of Information and Broadcasting, reply in Rajya Sabha, 21 July 2022",
+    "url": "https://sansad.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-51",
+  "title": "Sedition series break: IPC 124A replaced by BNS Section 152",
+  "whatChanged": "With the commencement of the Bharatiya Nyaya Sanhita 2023, the offence of sedition under Section 124A of the Indian Penal Code ceased to exist as a chargeable provision and Section 152 BNS, covering acts endangering the sovereignty, unity and integrity of India, took its place. NCRB reports 124A up to the 2023 volume and Section 152 from 2024. The two provisions are differently worded, carry different ingredients, and Section 152 does not inherit the judicial narrowing that 124A had accumulated since Kedar Nath Singh.",
+  "when": "2024",
+  "affectsDomains": [
+   "governance"
+  ],
+  "affectsSeries": [
+   "sedition-cases-registered"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "competingAccounts": [
+   "The government's account is that sedition has been repealed outright and that Section 152 is a narrower, sovereignty-focused offence, so a continuing count would misrepresent the reform.",
+   "Critics' account is that Section 152 is broader in scope than 124A and carries a higher minimum sentence, so a discontinued series conceals continuity rather than reflecting abolition.",
+   "Both accounts agree the series cannot be spliced; they disagree on which side of the seam is the larger number in substance."
+  ],
+  "sources": [
+   {
+    "name": "Bharatiya Nyaya Sanhita 2023, Section 152",
+    "url": "https://www.indiacode.nic.in/",
+    "tier": "T1"
+   },
+   {
+    "name": "NCRB Crime in India",
+    "url": "https://www.ncrb.gov.in/crime-in-india.html",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-52",
+  "title": "PMLA conviction rate: the denominator dispute",
+  "whatChanged": "Two conviction rates for PMLA enforcement circulate, both drawn from Ministry of Finance replies in Parliament, and they differ by roughly two orders of magnitude because they use different denominators. Computed against all cases initiated, the rate is about 0.25 per cent (15 persons convicted against 5,892 cases initiated between January 2015 and June 2025). Computed against trials that have actually concluded, the Directorate reports about 93 to 96 per cent. Neither figure is fabricated and neither is a correction of the other.",
+  "when": "2022-2025",
+  "affectsDomains": [
+   "governance"
+  ],
+  "affectsSeries": [
+   "ed-pmla-cases-registered",
+   "ed-pmla-convictions",
+   "uapa-conviction-rate"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": true,
+  "bridgeNote": "The two figures reconcile exactly once the denominator is stated. Any rendering of a conviction rate in this instrument must carry its denominator on the face of the number.",
+  "competingAccounts": [
+   "The government's account is that a conviction rate is properly measured against completed trials, since pending cases have no outcome yet and counting them as non-convictions presumes the outcome.",
+   "Critics' account is that the completed-trial denominator is itself the finding: if a tiny fraction of cases ever reach conclusion while attachment and pre-trial custody bite immediately, the process is the consequence and the trial outcome is close to irrelevant.",
+   "This is a different-facts dispute rather than a different-weightings dispute: each side is describing a real quantity the other does not contest."
+  ],
+  "sources": [
+   {
+    "name": "Minister of State for Finance, reply in Rajya Sabha (case and conviction totals to 30 June 2025)",
+    "url": "https://sansad.in/",
+    "tier": "T1"
+   },
+   {
+    "name": "Enforcement Directorate conviction-rate statement, reply in Parliament, August 2024",
+    "url": "https://sansad.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-53",
+  "title": "CAG report counts: Union-only versus Union-plus-states",
+  "whatChanged": "Published counts of CAG audit reports mix two different populations. Some figures count only reports tabled in Parliament on Union government accounts; others aggregate reports tabled in Parliament and in all state legislatures, producing totals in the low hundreds for a single year. Comparing a combined figure from an earlier year against a Union-only figure from a later year manufactures a decline that the underlying data may not support, independent of whether a real decline exists.",
+  "when": "2010-2023",
+  "affectsDomains": [
+   "governance"
+  ],
+  "affectsSeries": [
+   "cag-union-audit-reports-tabled"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": true,
+  "bridgeNote": "Reconcilable by restricting every point to Union-only reports, which is the basis used for this series.",
+  "competingAccounts": [
+   "Critics point to Union-only counts falling from the mid-fifties in the mid-2010s to the mid-teens by 2020, and to a 2019-2023 average of about 22 against a 2014-2018 average of about 40.",
+   "The institution's position, and the government's, is that report volume is not an audit-quality measure, that consolidation of reports reduces count without reducing coverage, and that pandemic years suppressed tabling.",
+   "The underlying RTI reply and the report-by-report review that produced these numbers have not been pulled as primary documents; both figures are relayed through secondary reporting and are marked approximate."
+  ],
+  "sources": [
+   {
+    "name": "RTI reply reported by The New Indian Express, March 2021",
+    "url": "https://cag.gov.in/",
+    "tier": "T4"
+   },
+   {
+    "name": "Analysis of tabled CAG reports, The Hindu, December 2023",
+    "url": "https://cag.gov.in/",
+    "tier": "T4"
+   }
+  ]
+ },
+ {
+  "id": "P-54",
+  "title": "Internet shutdown counts: no official series, three unofficial ones",
+  "whatChanged": "India publishes no official count of internet shutdowns. The figures in circulation come from SFLC.in and from Access Now's KeepItOn coalition, which differ for the same years because they count different units - SFLC.in tracks recorded shutdown events, Access Now applies its own inclusion criteria and geographic aggregation, and duration measures differ again. Third-party economic-cost estimates use hours of blackout, a fourth unit.",
+  "when": "2012-2026",
+  "affectsDomains": [
+   "governance",
+   "kashmir"
+  ],
+  "affectsSeries": [
+   "internet-shutdowns-count"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "competingAccounts": [
+   "The trackers' position is that a count assembled from public orders, press reports and user submissions is necessarily a floor, since unpublished orders cannot be counted at all.",
+   "The government has not published a competing series and has not, in the sources reviewed, disputed specific tracker figures - which leaves the trackers unchallenged but also unaudited.",
+   "The absence of an official series is itself a finding and is recorded as a declared absence against L-0081."
+  ],
+  "sources": [
+   {
+    "name": "SFLC.in Internet Shutdown Tracker",
+    "url": "https://internetshutdowns.in/",
+    "tier": "T3"
+   },
+   {
+    "name": "Access Now, KeepItOn reports",
+    "url": "https://www.accessnow.org/keepiton/",
+    "tier": "T3"
+   }
+  ]
+ },
+ {
+  "id": "P-55",
+  "title": "ED case totals vary by cut-off date and by unit",
+  "whatChanged": "Parliamentary replies give ED case totals that do not reconcile against each other because the replies use different cut-off dates and, more importantly, different units. Some count ECIRs recorded, others count cases initiated, others count persons or legislators. A July 2024 reply cites 7,083 ECIRs; a 2025 reply cites 5,892 PMLA cases initiated over a partly overlapping window. Politician-specific figures appear as both 193 cases against serving and former legislators and 176 of 5,906 cases, from replies with different dates.",
+  "when": "2022-2025",
+  "affectsDomains": [
+   "governance"
+  ],
+  "affectsSeries": [
+   "ed-pmla-cases-registered"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "No reply reviewed defines ECIR against case, so the two units cannot be reconciled from the published record.",
+  "competingAccounts": [
+   "The straightforward reading is administrative: different questions asked on different dates produce different slices, and no single figure is wrong.",
+   "The critical reading is that the absence of a stable published unit makes the enforcement record resistant to time-series scrutiny, whatever the intent.",
+   "This instrument records the totals as cumulative anchors with their units attached rather than as an annual series."
+  ],
+  "sources": [
+   {
+    "name": "Ministry of Finance replies, Rajya Sabha and Lok Sabha, 2022-2025",
+    "url": "https://sansad.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-56",
+  "title": "Information Commissioner service conditions: pre and post 2019 regimes",
+  "whatChanged": "The RTI (Amendment) Act 2019 removed the statutorily fixed five-year tenure of Information Commissioners and their salary parity with the Chief Election Commissioner and Election Commissioners, and transferred the power to prescribe tenure, salary and service conditions to the central government by rule. Rules made in 2019 set tenure at three years. Any measure of commission capacity, pendency or turnover therefore spans two different appointment regimes and is not comparable across 2019 without stating which regime applies.",
+  "when": "2019",
+  "affectsDomains": [
+   "governance"
+  ],
+  "affectsSeries": [],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "competingAccounts": [
+   "The government's account is that the amendment rationalised service conditions that had been anomalously pegged to a constitutional body, and that independence is unaffected because the statutory functions and removal protections were untouched.",
+   "Critics' account is that tenure and salary set by executive rule, and shortened, gives the executive continuing leverage over commissioners who adjudicate appeals against the executive.",
+   "Both accept the factual content of the change; they differ on whether service conditions are a channel of influence."
+  ],
+  "sources": [
+   {
+    "name": "Right to Information (Amendment) Act 2019",
+    "url": "https://www.indiacode.nic.in/",
+    "tier": "T1"
+   },
+   {
+    "name": "RTI Rules 2019",
+    "url": "https://rti.gov.in/",
+    "tier": "T1"
+   }
+  ]
  }
 ]

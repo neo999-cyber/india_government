@@ -254,5 +254,74 @@
   "provenanceRefs": [
    "P-41"
   ]
+ },
+ {
+  "id": "PR-14",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "title": "PMLA cases initiated versus persons convicted",
+  "a": {
+   "series": "ed-pmla-cases-registered",
+   "label": "Cases initiated"
+  },
+  "b": {
+   "series": "ed-pmla-convictions",
+   "label": "Persons convicted"
+  },
+  "framing": "The canonical coverage-versus-outcome pair for this domain. Reporting cases initiated without convictions, or the completed-trial conviction rate without the count of cases still pending, produces a materially different picture in either direction. Neither series may be rendered alone.",
+  "gapComputable": false,
+  "gapReason": "Cases initiated and persons convicted are different quantities on different denominators (P-52); the two do not subtract.",
+  "ledgerRefs": [
+   "L-0074"
+  ],
+  "provenanceRefs": [
+   "P-52"
+  ]
+ },
+ {
+  "id": "PR-15",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "title": "Shutdown orders issued versus shutdown orders published",
+  "a": {
+   "series": "internet-shutdowns-count",
+   "label": "Shutdown orders issued"
+  },
+  "b": {
+   "absenceFrom": "L-0081",
+   "absenceIndex": 0,
+   "label": "Shutdown orders published"
+  },
+  "framing": "An absence-pair: the coverage side is a third-party reconstruction and the usage side does not exist because the orders were not published, despite a binding direction to publish. The pair exists so the missing half renders as a finding rather than as an empty chart.",
+  "gapComputable": false,
+  "gapReason": "The usage side does not exist: the orders were not published despite a binding direction to publish, so there is nothing to place beside the reconstructed count.",
+  "ledgerRefs": [
+   "L-0081"
+  ],
+  "provenanceRefs": [
+   "P-54"
+  ]
+ },
+ {
+  "id": "PR-16",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "title": "RTI applications filed versus information actually received",
+  "a": {
+   "label": "RTI applications filed"
+  },
+  "b": {
+   "label": "Information actually received"
+  },
+  "framing": "Application volume is the coverage measure routinely cited; the usage measure is the share of applicants who obtained the information sought. Assessment work has found well under half succeeding, with under a tenth of the unsuccessful filing appeals, but the underlying assessment has not been pulled as a primary document and neither series is yet authored. Declared here so the pair is visible as owed rather than silently absent.",
+  "gapComputable": false,
+  "gapReason": "The counterpart is not authored yet, so nothing is placed beside the coverage figure and no difference is stated.",
+  "status": "declared-pending",
+  "ledgerRefs": [
+   "L-0085"
+  ],
+  "provenanceRefs": [
+   "P-56"
+  ]
  }
 ]

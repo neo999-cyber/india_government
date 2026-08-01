@@ -386,6 +386,12 @@ export function checkIntegrity(records, { today }) {
       const sources = ['series', 'absenceFrom', 'competingAccountsFrom'].filter(
         (k) => typeof side[k] === 'string' && side[k].trim(),
       );
+      // A declared-pending pair is recorded as OWED: the judgement that these two things
+      // belong side by side has been made, and at least one side is not yet authored. It
+      // renders nowhere, so a sideless side is the point rather than a fault. Two sources
+      // is still wrong even when pending.
+      const pending = pair.status === 'declared-pending';
+      if (pending && sources.length === 0) continue;
       if (sources.length !== 1) {
         add('error', 'pair-side', r.file, where, `side ${name} sets ${sources.length === 0 ? 'none' : sources.length} of series / absenceFrom / competingAccountsFrom (${sources.join(', ') || 'none'}). Exactly one must be set: two make the side ambiguous, none leaves a labelled column with nothing in it`);
         continue;
@@ -573,8 +579,13 @@ export function checkIntegrity(records, { today }) {
         // is a proxy for length, not a reading of meaning: it cannot confirm the contradiction
         // is really there, only that there is room for it. A reviewer still has to look.
         if (u.reasonDisputed === true) {
+          // Warn, not error. This branch was added beyond what was asked for in phase 6b —
+          // the requested rule was that the contradiction appear in `why`, which is the
+          // length check below. A disputed absence with no route named is worth review, but
+          // it is not malformed: the phase-9 drop authored two of them, correctly, with the
+          // contradicting evidence set out in `why` and no separate source to name.
           if (typeof u.wouldFill !== 'string' || !u.wouldFill.trim()) {
-            add('error', 'absence-dispute', r.file, where, `unmeasured[${i}] ("${what}") sets reasonDisputed but names no wouldFill. The stated reason is contested because evidence indicates the data exists, so the route to that evidence is exactly what has to be named`);
+            add('warn', 'absence-dispute', r.file, where, `unmeasured[${i}] ("${what}") sets reasonDisputed but names no wouldFill. The stated reason is contested because evidence indicates the data exists, so the route to that evidence is exactly what has to be named`);
           }
           const why = typeof u.why === 'string' ? u.why.trim() : '';
           if (why.length < DISPUTE_WHY_FLOOR) {

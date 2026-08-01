@@ -193,7 +193,10 @@ export function writeOffAdjustment(
   const points: AdjustedPoint[] = [];
   for (const point of india(amount).sort((a, b) => periodKey(a.period) - periodKey(b.period))) {
     const denominator = advancesByPeriod.get(point.period);
-    if (denominator === undefined || denominator === 0) continue;
+    // A pending point holding no figure cannot enter the adjustment arithmetic, on either
+    // side of the ratio. Skipping is right: nothing is estimated in its place.
+    if (denominator === undefined || denominator === null || denominator === 0) continue;
+    if (point.value === null) continue;
     const contributing = ordered.filter((p) => periodKey(p) <= periodKey(point.period));
     const cumulative = contributing.reduce((sum, p) => sum + (writeOffByPeriod.get(p) ?? 0), 0);
     const reported = (100 * point.value) / denominator;

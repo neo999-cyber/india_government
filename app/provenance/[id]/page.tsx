@@ -85,12 +85,22 @@ export default async function ProvenanceDetail({ params }: Props) {
                 </tr>
               </thead>
               <tbody>
-                {p.competingAccounts.map((a) => (
-                  <tr key={a.holder}>
-                    <td>{a.holder}</td>
-                    <td className="t-note">{a.position}</td>
-                  </tr>
-                ))}
+                {p.competingAccounts.map((a, i) =>
+                  typeof a === 'string' ? (
+                    // The account names its own holder inside the sentence. Rendered across
+                    // both columns rather than split by guesswork.
+                    <tr key={`acc-${i}`}>
+                      <td className="t-note" colSpan={2}>
+                        {a}
+                      </td>
+                    </tr>
+                  ) : (
+                    <tr key={a.holder}>
+                      <td>{a.holder}</td>
+                      <td className="t-note">{a.position}</td>
+                    </tr>
+                  ),
+                )}
               </tbody>
             </table>
           </div>

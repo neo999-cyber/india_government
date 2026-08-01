@@ -635,3 +635,48 @@ P-22 extended to `banking` and `macro`; P-46 to `banking`.
 | Fertiliser subsidy, actuals against BE | Department of Fertilisers | Medium |
 | NCRB ADSI 2023 and 2024 full tables | NCRB | Medium — 2023-24 figures currently secondary |
 | PMFBY loanee vs non-loanee split | PMFBY portal | Medium — P-49 bridge |
+# APPEND TO docs/verification-log.md — DO NOT REPLACE THE FILE
+
+## Phase 9 — Rights and institutions (research + data authoring)
+Authored: 2026-08-01. Author: conversation side.
+
+### Drop contents
+- `data/incoming/series-phase9.json` — 10 series, 33 points
+- `data/incoming/provenance-phase9.json` — P-50 to P-56
+- `data/incoming/ledger-phase9.json` — L-0074 to L-0089
+- `data/incoming/pairs-phase9.json` — PR-14 to PR-16
+
+Self-check before drop: cross-references resolve within the phase, IDs unique, even-handedness rule holds on all 15 scored records, `whatChanged` meets minimum length on all 7 provenance records, no stray non-Latin script.
+
+### ID assumption — verify before merge
+Next-ID values were assumed as L-0074, P-50, PR-14 from the running totals (73 ledger, 49 provenance, 13 pairs). Repository state was not observed. Confirm with a grep for the maximum existing ID in each file and renumber sequentially if the assumption is wrong. Series use semantic slugs, so they carry no numbering risk.
+
+### Decision owed — meaning of `reversed`
+`reversed` was introduced for the farm laws, where a government withdrew its own legislation. Two records in this phase were scored `reversed` on a different mechanism: electoral bonds (L-0077) and the IT Rules fact-check unit (L-0080) were both struck down by courts, not withdrawn.
+
+Three options, in ascending cost:
+1. `reversed` means the measure ceased to have effect, by any route. No code change; the two records stand as authored.
+2. `reversed` means self-reversal only. L-0077 and L-0080 become `failed`. Two field edits, no code change.
+3. Add `struck-down` as a distinct value. Breaks the exhaustive `Record` type until the UI is updated — which is the type doing its job, but it is a UI change.
+
+L-0088 (the CEC Act) was deliberately **not** scored `reversed` under any reading: Parliament legislated within an invitation the Court expressly extended, rather than against a final holding. That line is the one to keep stable whichever option is chosen.
+
+### Standing notes carried into the domain
+- No external measure disciplines both readings here. There is no analogue to the OECD producer support estimate used in agriculture. Where the two sides rest on different facts rather than different weightings, records carry `differentFacts: true` and a note naming which facts each side relies on. Twelve of sixteen records are `contested`, and that concentration is a property of the domain, not of the authoring.
+- Conviction rates are recorded with `higherIsBetter: null`. A low conviction rate is read by the government as due process functioning and by critics as evidence of misuse; the instrument does not adjudicate, so the series carries no directional colour.
+- P-52 is the denominator record: any conviction rate rendered anywhere must show its denominator on the face of the number. 0.25 per cent and 93 per cent are the same enforcement record measured two ways, both from Parliamentary replies.
+
+### Series breaks introduced
+- `sedition-cases-registered` breaks at 2024 (IPC 124A to BNS 152, P-51). Not comparable across the seam.
+- `rsf-press-freedom-rank` breaks at 2022 (RSF methodology change, P-50). Not comparable across the seam.
+
+### Confidence and known weakness
+`L-0089` (CAG report volume) is the weakest record in the drop and is marked `confidence: low` with a rendered caveat. Its numbers come from secondary relays of an RTI reply and of a review of tabled reports; neither primary document was pulled. The same weakness attaches to the `cag-union-audit-reports-tabled` series, all three points marked `approx`. Do not let this record carry weight until the primaries are retrieved.
+
+### Revisit triggers
+Records that should be re-scored on specific future events rather than on a schedule:
+- L-0075 — a larger-bench outcome on the Vijay Madanlal review (ECIR supply, reverse burden).
+- L-0086 — the Constitution Bench ruling on the DPDP amendment to RTI Section 8(1)(j). Currently `too-early`.
+- L-0088 — pending challenges to the CEC Act 2023.
+- L-0084 — finalisation of the Memorandum of Procedure, outstanding since December 2015.
+- L-0087 — committee referral rate for the 18th Lok Sabha once the term produces a full figure.
