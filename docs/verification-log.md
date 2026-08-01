@@ -755,3 +755,33 @@ A distinct `struck-down` value was not added. Both members are rights-and-instit
 ## What this exposes about the vocabulary
 
 `failed` is now doing two jobs — the measure that did not work, and the measure a court removed. That is tolerable while it is stated on the record rather than inferred, which is what the `assessmentNote` is for. It is not tolerable silently, which is the state the enum was in until this cycle.
+
+---
+
+## 08-01h — Phase 9 correction — research debts closed
+
+Both debts carried since the phase 9 authoring are closed. One of them was not the gap it was recorded as.
+
+### UAPA — the series was mislabelled, not merely unlabelled
+
+The primary is Rajya Sabha Unstarred Question 1045, answered 4 December 2024, with a state-wise and year-wise annexure compiled from NCRB.
+
+NCRB's own published conviction-rate column runs 27.2 (2018), 29.2 (2019), 21.1 (2020), 39.7 (2021) and 18.2 (2022), on a completed-trial basis. The 2.2 per cent figure authored into `uapa-conviction-rate` at phase 9 is a different quantity: 132 persons convicted against 5,922 arrested, 2016 to 2019. The series was therefore carrying an arrests-basis ratio under a label reading conviction rate, an order of magnitude away from the official series of the same name.
+
+The denominator gate caught this. It was landed to force a missing label onto a rendered rate, and holding the series at `pending` while the label was sought is what prevented a wrong figure rendering. Had the rule not existed, the number would have shipped and would have been wrong in the critics' direction — worth recording, since the instrument's failure modes are not symmetric only if it is watched for both.
+
+`uapa-conviction-rate` is retired. In its place, raw counts are authored — cases registered, persons arrested, persons convicted — so that any ratio is derivable with its base visible, plus a single rate series carrying NCRB's basis explicitly in `denominator`.
+
+P-57 records four bases in circulation for the same offence, all sourced to government replies, differing by up to a factor of fifty. A July 2022 reply giving 24,134 persons under trial does not reconcile against the annexure's arrest counts and is deliberately not authored as a series.
+
+Two further findings from the same document. The Ministry confirmed that data on UAPA cases booked against journalists is not maintained by NCRB — a fourth declared absence, recorded at L-0083, which forecloses the government's defence as much as the critics' charge. And there is no provision for support or compensation to individuals acquitted under the Act, which sharpens both sides of L-0083 rather than one.
+
+### CAG — confirmed to medium, with a new discrepancy
+
+The RTI reply reported in March 2021 gives 14 Union reports in 2020 against 55 in 2015, with defence audits from eight in 2017 to zero in 2020. Pre-2014 context from the same reply: 39, 26, 34 and 37 for 2011 to 2014. The 400-report review gives five-year averages of about 40 for 2014-2018 against about 22 for 2019-2023.
+
+Two things this changes. The peak falls in 2015, the first full year after the change of government, which is inconsistent with reading the series as a decline beginning at that change — that now sits in `caseFor`. And IA&AD staff strength fell from 48,253 in 2013-14 to 41,675 in 2021-22, with IA&AS officers from 789 to 553, which is a documented capacity mechanism rather than an inference. The critics' answer to it is also authored: capacity raises rather than settles why an audit body's staffing was allowed to fall.
+
+P-58 records that the 2015 peak is given as 55 by one source and 53 by the other. Small in absolute terms, but it is the anchor of the decline claim.
+
+`L-0089` moves `confidence` low to medium, not high. Both figures still reach the instrument through secondary reporting; neither primary has been retrieved. A `revisitTrigger` records what retrieval would resolve.
