@@ -290,9 +290,13 @@ export function Absences({
  * an alarm. The umber says the same thing here as it does on a restated denominator: the two
  * figures either side are divided by different things.
  *
- * The label avoids "counting" on purpose. It fits the conviction-rate and shutdown cases and
- * not electoral bonds, where nobody is counting — one side's strongest fact is cash
- * displacement, the other's are the RBI and ECI objections on record before notification.
+ * The label says "common measure" rather than "different facts" because the operative test is
+ * condition (c): whether any single ledger could carry both sides. Different facts is too
+ * weak — two economic cases cite different facts constantly and still share a ledger in
+ * principle, and calling that a basis mismatch mistakes a gap in the instrument for a
+ * property of the argument. What the mark now records is that the two cases cannot be put
+ * in the same currency at all: a quantity against a court's ruling, a constitutional
+ * process, or a stated absence.
  */
 export function DifferentFactsMark({
   note,
@@ -302,11 +306,11 @@ export function DifferentFactsMark({
   variant?: 'inline' | 'block';
 }) {
   if (variant === 'inline') {
-    return <span className="different-facts-inline">Each side rests on different facts</span>;
+    return <span className="different-facts-inline">These cases don&rsquo;t share a common measure</span>;
   }
   return (
     <div className="different-facts">
-      <span className="label">Each side rests on different facts</span>
+      <span className="label">These cases don&rsquo;t share a common measure</span>
       {note ? <p>{note}</p> : null}
     </div>
   );

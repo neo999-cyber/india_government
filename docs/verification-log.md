@@ -686,3 +686,39 @@ Correction 08-01e.2: `uapa-conviction-rate` demoted to pending. Both points (201
 The denominator gate did its job. The correct response to catching an undefendable number is to stop rendering it, not to render it bare. The 2.2 per cent figure covers 2016-2019 in aggregate and its base is not stated in the sources reviewed; NCRB's standard rate uses cases in which trials were completed. Establishing which base applies means pulling the primary MHA reply, which is research rather than build.
 
 The rule was sharpened in the same pass, not weakened. `denominator-stated` now fires only where a P-52 rate series actually renders a figure. A series whose every point is pending renders no rate, so there is nothing to mislabel — and firing there would have pushed toward inventing a base for a number that is not shown, which is the opposite of what the rule exists to prevent. Both halves are pinned by fixture: `denominator-unstated` proves it fires on a rendered rate with no base, `denominator-withheld` proves it stays silent on a withheld one.
+
+---
+
+# Verification log — cycle 2026-08-01f (differentFacts: criterion tightened, mark retrofitted)
+
+## The criterion changed underneath the estimate, and the estimate was not good
+
+The prior was four to eight records. The first pass, applying only (a) different quantities and (b) neither case contradicts the other, returned **17** — and put `L-0068`, the implicit taxation of farmers, on the shortlist. The OECD Producer Support Estimate disqualifies that record by construction: its Market Price Support component nets implicit price transfers against budgetary payments, which is exactly why India's PSE runs negative. Both sides' facts already shared a ledger, and the pass had not asked whether one existed.
+
+Condition (c) was then added: no single measure exists, or could be constructed from available data, that places both sides' facts on one ledger. An unbuilt comparison fails; a declared-unmeasurable counterpart passes. Re-testing the 17 against (a)+(b)+(c) returned **5**.
+
+**The four-to-eight prior was met only because the criterion changed underneath it.** Five is within the range, but the first estimate was 17 and it was wrong; the second is not a better estimate of the same quantity, it is an estimate of a different one. Recorded so the range is not later cited as having been predictive.
+
+## What (c) draws that (a) and (b) did not
+
+Different quantities are still commensurable. Facts of different **kinds** are not. Two economic cases almost always admit a ledger in principle — a fiscal incidence analysis, a case-disposition table, a water-productivity account, recovery per rupee of default — and the absence of that ledger is a gap in the instrument rather than a property of the argument. What survives (c) is a quantity against a court's ruling, against a constitutional process, or against a stated absence.
+
+Six of the twelve that failed (c) failed on a ledger the record **itself declares unmeasured** — Jal Jeevan, MGNREGA, household electrification most sharply. Those are already modelled correctly as coverage/usage pairs with a declared absence, and that is the right treatment.
+
+## Retirements, and why the flagship case was the wrong shape
+
+- **L-0074 (PMLA)** — the record the mark was built for. It fails on the evidence in its own note: *"Both quantities come from the same Parliamentary replies."* A shared source and a shared disposition table is a common ledger. What it documents is a denominator dispute, which P-52 and the `denominator` field already carry — and carry better, because they render the base on the face of the number rather than only flagging that a mismatch exists.
+- **L-0078 (press indices)** — caseAgainst records that the government does not dispute the underlying incidents and objects only to scoring design. One factual base, contested weighting. Carried by the T5 caveat.
+- **L-0079 (agency action against media)** — per-action legality and the timing pattern are positions in one buildable table: agency actions against media outlets, coded by stance, date of preceding coverage and judicial outcome. Unbuilt, not incommensurable.
+- **L-0076 (CBI consent)** — filed as HOLD rather than RETIRE, but the stated final state of six excludes it, so it was removed. Only its statutory-entitlement half resists (c); the case-record and party-distribution threads are commensurable. A mixed argument is not a basis mismatch.
+- **L-0082 (sedition)** — mark removed and replaced with a revisit trigger. Effective scope of BNS 152 in operation is a single dimension both sides claim about; it cannot be built until a prosecution record accumulates, which makes the pass time-limited rather than structural. `revisitTrigger` added to the ledger schema for this.
+
+## Cross-report finding, contrary to expectation
+
+Records citing a provenance record with `directionOfBias: "disputed"` were reported separately on the expectation that a disputed measurement basis often coincides with a basis mismatch in the argument. It runs the other way. Of the seven in-scope records citing a disputed record, one reached the shortlist, four were second tier and two were excluded **precisely because** the disputed basis produces a head-to-head over one measure rather than a mismatch between two.
+
+On this evidence a disputed measurement basis predicts argument-over-the-same-number more often than argument-from-different-numbers. That is the opposite of the stated expectation, and it follows from what a measurement dispute is: two parties contesting one instrument are, by construction, on one ledger.
+
+## Final state
+
+Six records carry the mark: L-0023, L-0028, L-0029, L-0064, L-0066, L-0077. Only L-0077 survives from the original six. Label is now "These cases don't share a common measure"; styling unchanged, still dashed umber and never red.

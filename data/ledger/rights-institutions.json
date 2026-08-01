@@ -14,8 +14,6 @@
   "assessment": "contested",
   "caseFor": "The ED cannot register a money-laundering case on its own motion: a scheduled predicate offence recorded by another agency must exist first, so the caseload reflects prosecutions initiated elsewhere. Every attachment, search and arrest is subject to adjudication and to judicial review, and the Supreme Court upheld the core architecture of the Act in 2022. On the measure the Directorate regards as meaningful - trials that have concluded - the conviction rate is between 93 and 96 per cent, which is far above the rate for ordinary criminal prosecutions in India.",
   "caseAgainst": "Fifteen convictions against 5,892 cases initiated over a decade is a rate of roughly a quarter of one per cent, and the completed-trial denominator excludes the overwhelming majority of cases precisely because they have not moved. Attachment of property, arrest, and the near-impossible bail bar in Section 45 operate from the moment a case is registered, so the consequence is delivered years before any court tests the allegation. The Supreme Court itself criticised the Directorate's conviction record in August 2024.",
-  "differentFacts": true,
-  "differentFactsNote": "The two sides are not weighting the same numbers differently. The government's case rests on outcomes within concluded trials; the critics' case rests on the ratio of concluded trials to cases opened. Both quantities come from the same Parliamentary replies and neither side disputes the other's arithmetic.",
   "unmeasured": [
    {
     "what": "Party affiliation and state of politicians facing ED cases",
@@ -88,8 +86,6 @@
   "assessment": "contested",
   "caseFor": "General consent is a statutory choice that states are entitled to make and withdraw, and the CBI retains jurisdiction over central government employees, over cases referred by courts, and over cases where consent is granted individually. The federal design of the DSPE Act contemplates exactly this negotiation. The agency's investigative record in the cases it does take up is not affected by the consent question.",
   "caseAgainst": "The Supreme Court described 150 pending consent requests as not a desirable position, which is a functional obstruction of investigations irrespective of who is at fault. The states withdrawing consent are overwhelmingly those governed by opposition parties, and they cite a pattern of politically timed federal investigation as their reason - so the federal-comity argument and the agency-independence argument are two halves of the same dispute rather than separate ones. The phrase caged parrot originated with the Court itself in 2013 and was reinvoked by the Court in 2024.",
-  "differentFacts": true,
-  "differentFactsNote": "The government's case rests on statutory jurisdiction and case outcomes; the states' case rests on the timing distribution of cases across parties. Neither side engages the other's evidence directly.",
   "seriesRefs": [],
   "provenanceRefs": [],
   "sources": [
@@ -161,8 +157,6 @@
   "assessment": "contested",
   "caseFor": "The government's objection has specific content rather than being a blanket dismissal: it cites small sample sizes, weighting choices that give little room to the fundamentals of electoral democracy, and a methodology it describes as non-transparent. The 2022 RSF methodology change is real and does break the series, which supports the argument that year-on-year movement is not a clean signal. India retains a very large, commercially independent and frequently adversarial press, and no journalist has been convicted for the act of journalism as such.",
   "caseAgainst": "Three organisations with different methodologies moved in the same direction within the same window, which is harder to attribute to any single methodological flaw. The government's objections are addressed to scoring design rather than to the underlying incidents the indices cite, none of which it disputes. The Index Monitoring Cell set up to examine the ranking has not produced a competing published measure, so the rejection stands without an alternative.",
-  "differentFacts": true,
-  "differentFactsNote": "The government contests the instrument; the indices report incidents. The two sides are arguing about different objects, which is why the dispute does not resolve.",
   "unmeasured": [
    {
     "what": "Attacks on journalists",
@@ -210,8 +204,6 @@
   "assessment": "contested",
   "caseFor": "Tax and foreign-funding law applies to media companies as it does to any other company, and exempting them would create a protected class. The CBDT stated specific allegations in the BBC matter concerning transfer pricing and diversion of profits, and in the Dainik Bhaskar matter alleged evasion of a defined magnitude. The NewsClick investigation followed published reporting on foreign funding, not on editorial content. In each instance the outlets continued publishing.",
   "caseAgainst": "The timing in each case is close enough to critical coverage to require explanation: the BBC survey came weeks after a documentary on the Prime Minister, the Dainik Bhaskar raids followed its reporting on the second COVID wave. The Supreme Court found the NewsClick arrest unlawful, which establishes at least one instance where the process itself failed the legal standard. The Committee to Protect Journalists recorded seven journalists jailed in India on its 1 December census in each of 2020 through 2023, most held under the UAPA.",
-  "differentFacts": true,
-  "differentFactsNote": "The government's case rests on the statutory basis of each action; the critics' case rests on the timing distribution across actions. A defence of any single action does not address the pattern, and the pattern does not establish any single action was unlawful - except NewsClick, where a court so held.",
   "seriesRefs": [],
   "provenanceRefs": [],
   "sources": [
@@ -328,8 +320,6 @@
   "assessment": "contested",
   "caseFor": "A colonial-era offence that had been used against 548 people between 2015 and 2020 with 12 convictions is off the statute book, and the government did what critics had demanded for decades. Section 152 is framed around sovereignty and territorial integrity rather than around disaffection towards the government, which is the narrowing critics had specifically asked for. Registrations fell sharply and immediately after the abeyance order.",
   "caseAgainst": "Section 152 covers a wider range of conduct than 124A on its face, including by subversive activities and encouraging separatist feelings, and carries a higher minimum sentence. More importantly, 124A had accumulated six decades of judicial narrowing since Kedar Nath Singh, all of which attaches to the repealed text and none of which automatically attaches to the new one, so the effective scope may be broader even if the words are narrower. Calling this a repeal is a description of the statute book rather than of the law in operation.",
-  "differentFacts": true,
-  "differentFactsNote": "The government's fact is that 124A no longer exists. The critics' fact is that Section 152's text is wider and its judicial gloss is absent. Both are correct; they are about different things.",
   "seriesRefs": [
    "sedition-cases-registered"
   ],
@@ -354,7 +344,8 @@
    }
   ],
   "confidence": "high",
-  "asOf": "2026-08-01"
+  "asOf": "2026-08-01",
+  "revisitTrigger": "Effective scope of BNS 152 in operation becomes a buildable common measure once a prosecution record accumulates. Re-test against (c) then."
  },
  {
   "id": "L-0083",
