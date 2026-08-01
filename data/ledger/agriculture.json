@@ -1,0 +1,302 @@
+[
+ {
+  "id": "L-0066",
+  "title": "The three farm laws: passage, protest and repeal",
+  "date": "2020-06-05",
+  "dateEnd": "2021-11-29",
+  "term": "T2",
+  "domains": [
+   "macro",
+   "federalism",
+   "governance"
+  ],
+  "type": "reform",
+  "summary": "Three agricultural marketing laws promulgated by ordinance during the COVID lockdown, enacted in September 2020, and repealed in November 2021 after roughly fifteen months of protest. The only complete propose-resist-repeal arc in this record.",
+  "claimAtLaunch": "Free farmers to sell outside APMC mandis without state taxes, provide a national contract-farming framework, and remove stock limits to attract private investment in storage and processing — raising farm-gate prices.",
+  "whatHappened": "The bills passed the Rajya Sabha by a contested voice vote on 20 September 2020, the deputy chairman declining the division the opposition demanded; eight MPs were suspended. The Shiromani Akali Dal left the NDA. Protests beginning in Punjab and Haryana became sustained encampments at the Singhu, Tikri and Ghazipur borders from 26 November 2020. The Supreme Court stayed implementation in January 2021 and appointed a committee that farm unions refused to appear before. Eleven rounds of talks failed. The Lakhimpur Kheri incident of 3 October 2021 killed eight including four farmers. The Prime Minister announced repeal on 19 November 2021 and the Repeal Act passed on 29 November. The MSP committee promised at repeal was constituted in July 2022 under Sanjay Agrawal, who had drafted the laws; farm unions declined to nominate members and no report has been produced four years on.",
+  "assessment": "reversed",
+  "caseFor": "APMC mandis in several states are dominated by licensed commission agents who extract rents, and only about 6% of farmers sell at MSP, so the system the laws attacked already bypassed the large majority. Restricting legal trade to notified mandis suppresses prices where mandi density is low, and stock limits deterred private investment in cold chains and processing. Reform economists including Ashok Gulati supported the direction. On this reading a genuinely extractive and regionally captured marketing monopoly was challenged and the challenge was defeated by those who benefit from it.",
+  "caseAgainst": "The laws were promulgated by ordinance during a pandemic with no pre-legislative consultation and pushed through the upper house without a recorded vote. Agriculture and agricultural markets are State subjects and the central laws overrode that jurisdiction. Dispute resolution was vested in the bureaucracy with civil courts excluded. Removing the mandi tax base threatened the procurement infrastructure underpinning MSP in the grain belt, and contract farming favours large integrators over unorganised smallholders. Without a statutory price floor, dismantling the mandi system would have exposed farmers to buyer power with no fallback.",
+  "shockExposure": "COVID is inseparable from this record. The ordinance route was available because Parliament was not sitting normally, the protest was conducted under pandemic restrictions, and the economic distress of 2020 shaped both the government's urgency and the farmers' risk aversion.",
+  "seriesRefs": [
+   "msp-farmers-share",
+   "msp-wheat",
+   "wheat-procurement"
+  ],
+  "caveat": "This is the project's only REVERSED record and it must not be collapsed into either available reading. Both 'good reform defeated by vested interests' and 'bad law defeated by farmers' have serious proponents and the evidence does not adjudicate between them. What the evidence does support is that the failure was as much of PROCESS and consent — ordinance route, pandemic timing, no consultation, refusal of a division vote — as of substance: a reform that might have survived negotiation was lost to the manner of its imposition.",
+  "unmeasured": [
+   {
+    "what": "Deaths during the farm law protest",
+    "why": "The Samyukta Kisan Morcha counted roughly 700. The government told Parliament it held no record of farmer deaths during the protest and that compensation therefore did not arise. No official count was attempted.",
+    "reasonKind": "not-collected",
+    "reasonDisputed": true,
+    "wouldFill": "A state-level death registry compiled from Punjab and Haryana civil records, or an official inquiry"
+   }
+  ],
+  "provenanceRefs": [
+   "P-22"
+  ],
+  "sources": [
+   {
+    "name": "Farm Laws Repeal Act 2021 and parliamentary record",
+    "url": "https://sansad.in/",
+    "tier": "T1"
+   },
+   {
+    "name": "MSP committee status reporting",
+    "url": "https://www.deccanherald.com/amp/story/india%2Fgovt-says-report-of-msp-panel-to-be-made-public-soon-agriculture-minister-3197731",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-08-01"
+ },
+ {
+  "id": "L-0067",
+  "title": "Doubling farmers' income by 2022",
+  "date": "2016-04",
+  "dateEnd": "2023-03",
+  "term": "T1",
+  "domains": [
+   "poverty",
+   "welfare"
+  ],
+  "type": "reform",
+  "summary": "The Dalwai committee, constituted April 2016, set the target of doubling real farm household income from a 2015-16 base by 2022-23, requiring about 10.4% annual real income growth and 12.5% annual real growth in farm investment.",
+  "claimAtLaunch": "Farm household incomes would double in real terms within seven years.",
+  "whatHappened": "The two Situation Assessment Surveys show average monthly agricultural household income rising from ₹6,426 (2012-13) to ₹10,218 (2018-19) — about 59% nominal but only around 16% real. Net crop receipts rose just 22.6% nominal, and by 2018-19 wage income exceeded crop income for the average agricultural household. The Economic Survey 2023-24 noted farm gross capital formation grew about 9.7% annually against the 12.5% required. No Situation Assessment Survey has been conducted since 2018-19, so the target cannot be evaluated against the instrument in whose terms it was set.",
+  "assessment": "failed",
+  "caseFor": "The target was always ambitious and its framework was serious — the Dalwai committee identified real levers in irrigation, post-harvest infrastructure and market reform, several of which were pursued. Agricultural GVA grew respectably across the period, horticulture overtook foodgrains, and NABARD's survey reports substantial income gains on its own definition. COVID consumed two of the seven target years entirely.",
+  "caseAgainst": "On the only instrument that measures what was promised, real income grew about 16% over six years against a target requiring roughly 100% over seven. The government then stopped fielding that instrument, so the flagship agricultural commitment of the period cannot be assessed at all — and the substitutes offered are not the same measure. A target set in household-income terms cannot be marked against sectoral output.",
+  "shockExposure": "COVID covered 2020 and 2021, two of the seven target years, and the 2022 fertiliser price shock raised input costs. Neither explains the shortfall in the pre-2020 years the survey data cover.",
+  "seriesRefs": [
+   "farm-household-income",
+   "agri-gva-growth"
+  ],
+  "provenanceRefs": [
+   "P-46"
+  ],
+  "unmeasured": [
+   {
+    "what": "Whether farm household income doubled by 2022-23",
+    "why": "The Situation Assessment Survey has not been fielded since 2018-19. GVA and NAFIS are different measures on different definitions and cannot substitute.",
+    "reasonKind": "not-collected",
+    "wouldFill": "A new NSS Situation Assessment Survey of Agricultural Households"
+   }
+  ],
+  "sources": [
+   {
+    "name": "NSS Situation Assessment Surveys and the Dalwai committee framework",
+    "url": "https://mospi.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-08-01"
+ },
+ {
+  "id": "L-0068",
+  "title": "Indian farmers are net implicitly taxed",
+  "date": "2014-05",
+  "dateEnd": "2026-07",
+  "term": "T1",
+  "domains": [
+   "macro",
+   "foreign"
+  ],
+  "type": "episode",
+  "summary": "The OECD's Producer Support Estimate for India averaged minus 14.5% of gross farm receipts over 2022-24 — the most negative in its 54-country panel — meaning price and trade policy depress farm-gate revenue by more than all budgetary subsidies add.",
+  "whatHappened": "Net producer support has been negative throughout the last two decades, driven by strongly negative market price support: export bans, stock limits and marketing regulations hold domestic prices below international reference levels. The OECD estimated the implicit producer tax at roughly US$169 billion in 2022 and US$120 billion in 2023, against a consumer support estimate of positive 31.8%. India imposed export bans on wheat in May 2022, non-basmati white rice in July 2023, and onion — each stabilising consumer prices while depressing farm-gate prices and damaging India's standing as a reliable supplier.",
+  "assessment": "contested",
+  "caseFor": "Food price stability is a legitimate and central objective in a country where a large share of household spending goes on food and where inflation is politically and materially consequential. Export bans during a global commodity shock protected domestic consumers, including the rural poor who buy more food than they sell. The subsidies farmers do receive — fertiliser, credit, PM-KISAN — are real and large in absolute terms.",
+  "caseAgainst": "The policy amounts to a transfer from farmers to consumers of an order of magnitude larger than every farm subsidy combined, and it is invisible because it operates through prices rather than budgets. It is also self-defeating: suppressing farm-gate prices while urging farmers to diversify and invest asks them to respond to signals policy is actively muting. And the episodic bans cost India market share and reliability abroad without addressing the underlying reason food prices are politically explosive.",
+  "shockExposure": "The 2022 global commodity and energy shock drove both the fertiliser subsidy spike and the export bans, so the most negative PSE years are also the years of maximum external pressure.",
+  "seriesRefs": [
+   "oecd-pse",
+   "fertiliser-subsidy"
+  ],
+  "caveat": "This finding disciplines both partisan framings and should be stated before either. Neither 'farmers are pampered by subsidies' nor 'the government abandoned farmers' survives a negative producer support estimate: subsidies are real, and they are more than cancelled by price-depressing intervention.",
+  "sources": [
+   {
+    "name": "OECD Agricultural Policy Monitoring and Evaluation",
+    "url": "https://www.oecd.org/en/publications/agricultural-policy-monitoring-and-evaluation-2023_b14de474-en/full-report/india_59f4672a.html",
+    "tier": "T2"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-08-01"
+ },
+ {
+  "id": "L-0069",
+  "title": "MSP, procurement and the legal guarantee demand",
+  "date": "2014-05",
+  "dateEnd": "2026-07",
+  "term": "T1",
+  "domains": [
+   "welfare",
+   "federalism"
+  ],
+  "type": "episode",
+  "summary": "Minimum support prices are announced for 23 crops but procurement reaches roughly 6% of farmers and is concentrated in a handful of states. Farm unions have demanded a statutory MSP guarantee since the repeal; the committee promised to examine it has not reported in four years.",
+  "whatHappened": "Wheat MSP rose from ₹1,400 to ₹2,425 per quintal and paddy from ₹1,360 to ₹2,369 over the period, with nominal increases broadly tracking cost escalation. The 2018-19 claim of setting MSP at 1.5 times cost used A2+FL rather than the C2 basis the Swaminathan recommendation specified. Procurement volumes rose substantially — paddy procurement over 2014-15 to 2025-26 was 8,418 lakh MT against 4,590 lakh MT in the preceding decade — but remained concentrated, with the top five states accounting for about 99.9% of wheat procurement in 2024-25 and Punjab and Haryana alone at roughly 75%.",
+  "assessment": "partly",
+  "caseFor": "Procurement volumes and MSP payments roughly doubled against the preceding decade, and MSP provides a genuine and reliable price floor for the farmers it reaches. Extending it to more states — Madhya Pradesh, Chhattisgarh and Telangana all became significant procurement centres over the period — broadened a system that had been almost entirely Punjab and Haryana. A universal legal guarantee is genuinely difficult: cost estimates range from under ₹2 lakh crore to over ₹10 lakh crore depending on scope, and it would deepen the distortion toward water-intensive paddy and wheat.",
+  "caseAgainst": "A price support system reaching 6% of farmers is not a farm price policy, it is a regional procurement programme. The 1.5-times-cost claim does not hold on the cost basis the recommendation intended. And the committee constituted to examine the legal guarantee was chaired by the official who drafted the repealed laws, included their advocates, was refused participation by the unions, and has produced nothing in four years while spending about ₹53 lakh — which is a way of not answering the question rather than answering it in the negative.",
+  "shockExposure": "The 2022 heat shock collapsed wheat procurement from 43.3 MT to 18.8 MT in a single year, showing how weather-exposed the procurement system is.",
+  "seriesRefs": [
+   "msp-wheat",
+   "msp-paddy",
+   "msp-farmers-share",
+   "wheat-procurement"
+  ],
+  "provenanceRefs": [
+   "P-47"
+  ],
+  "unmeasured": [
+   {
+    "what": "The report of the post-repeal MSP committee",
+    "why": "Constituted July 2022 under Sanjay Agrawal with 26 members; farm unions declined to participate. No report or interim recommendation has been produced as of mid-2026.",
+    "reasonKind": "withheld",
+    "wouldFill": "Publication of the committee's report"
+   }
+  ],
+  "sources": [
+   {
+    "name": "CACP price policy reports and FCI procurement data",
+    "url": "https://agricoop.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-08-01"
+ },
+ {
+  "id": "L-0070",
+  "title": "Farmer suicides",
+  "date": "2014-01",
+  "dateEnd": "2024-12",
+  "term": "T1",
+  "domains": [
+   "human-development"
+  ],
+  "type": "episode",
+  "summary": "Suicides in the farming sector totalled roughly 112,000 over the decade, peaking at 11,290 in 2022 before easing to 10,786 (2023) and 10,546 (2024). The data are structurally compromised and every level is a lower bound.",
+  "whatHappened": "NCRB separated cultivators from agricultural labourers in 2014, breaking comparability with earlier totals. By 2022 agricultural labourers (6,083) outnumbered cultivators (5,207) — the same wage-dependence shift the Situation Assessment Survey shows. Maharashtra accounted for about 38% of the 2022 total, followed by Karnataka, Andhra Pradesh, Tamil Nadu and Madhya Pradesh. Several states have reported zero farm suicides in some years, and women farmers are systematically undercounted because land titles are rarely in their names.",
+  "assessment": "contested",
+  "caseFor": "The absolute number has been broadly flat to declining across the decade despite a growing agricultural workforce, and fell in 2023 and 2024 from the 2022 peak. Suicide is multi-causal and attributing it to agricultural policy specifically is not straightforward, particularly given the labourer-cultivator composition shift. Several state-level interventions in Maharashtra and Karnataka target farm distress directly.",
+  "caseAgainst": "The data cannot support a claim of improvement because they cannot support a claim about levels at all: states reporting zero are not reporting, women farmers are recorded as housewives, and the labourer category was historically excluded. A series with these defects showing roughly flat numbers is consistent with a worsening reality. And 112,000 deaths over a decade in a sector the government describes as transformed is the fact, whatever the trend.",
+  "shockExposure": "COVID and the 2020-21 rural distress period sit inside the series, as does the 2022 heat shock.",
+  "seriesRefs": [
+   "farmer-suicides"
+  ],
+  "provenanceRefs": [
+   "P-44",
+   "P-45"
+  ],
+  "sources": [
+   {
+    "name": "NCRB Accidental Deaths and Suicides in India",
+    "url": "https://ncrb.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-08-01"
+ },
+ {
+  "id": "L-0071",
+  "title": "Groundwater depletion in the grain belt",
+  "date": "2014-05",
+  "dateEnd": "2026-07",
+  "term": "T1",
+  "domains": [
+   "environment",
+   "federalism"
+  ],
+  "type": "episode",
+  "summary": "About 76% of Punjab's assessed groundwater blocks are classified over-exploited, with annual draft near 35 billion cubic metres against a sustainable 20, and the water table falling roughly a metre a year in central districts.",
+  "whatHappened": "The driver is paddy-wheat monoculture sustained by free or heavily subsidised farm power — Punjab's power subsidy runs about ₹20,500 crore, roughly ₹10,000 crore of it for farm tubewells. Sangrur extracts around 164% of recharge. Crop diversification programmes have repeatedly failed because MSP-assured paddy and wheat are the only crops with a guaranteed buyer, so farmers rationally decline to switch without an equivalent guarantee.",
+  "assessment": "failed",
+  "caseFor": "The procurement system that drives this was built to secure national food self-sufficiency and did so; Punjab's contribution to the central pool is what makes the public distribution system possible. Free farm power is a state subject and successive state governments of every party have maintained it because withdrawing it is electorally fatal. Micro-irrigation coverage under Per Drop More Crop reached about 95.58 lakh hectares.",
+  "caseAgainst": "Three central policies — assured procurement of paddy, no equivalent guarantee for alternatives, and tolerance of free farm power — together make water-mining the rational choice for individual farmers, and no element has been altered. The aquifer is finite and the timeline is measurable. Diversification has been urged for two decades without changing the incentive that prevents it, which is a policy failure rather than a farmer failure.",
+  "shockExposure": "None material; this is a slow structural process.",
+  "seriesRefs": [
+   "groundwater-overexploited-punjab",
+   "wheat-procurement"
+  ],
+  "sources": [
+   {
+    "name": "Central Ground Water Board assessment",
+    "url": "http://cgwb.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-08-01"
+ },
+ {
+  "id": "L-0072",
+  "title": "Pradhan Mantri Fasal Bima Yojana",
+  "date": "2016-02",
+  "dateEnd": "2026-07",
+  "term": "T1",
+  "domains": [
+   "welfare"
+  ],
+  "type": "reform",
+  "summary": "Crop insurance launched February 2016 with farmer premiums capped at 2% for kharif, 1.5% for rabi and 5% for commercial crops, governments subsidising the balance. Cumulatively ₹1,92,477 crore in claims against ₹36,055 crore in farmer premium.",
+  "claimAtLaunch": "Comprehensive risk cover at nominal farmer cost, replacing schemes with poor coverage and slow settlement.",
+  "whatHappened": "Coverage grew to about 6.2 crore farmers by 2019-20, fell to 3.17 crore after the 2020 restructuring made the scheme voluntary for loanee farmers, and recovered to 4.19 crore by 2024-25. Bihar, West Bengal, Jharkhand, Andhra Pradesh, Telangana and Gujarat exited, running their own schemes and citing the premium-subsidy burden. Claim settlement is chronically delayed against the two-month norm, with a 12% penalty on insurers weakly enforced. CAG audits flagged weak grievance redress.",
+  "assessment": "partly",
+  "caseFor": "A claims-to-premium ratio of more than five to one in farmers' favour is a large real transfer of risk away from cultivators, and coverage of four crore farmers is a scale no predecessor scheme approached. Making the scheme voluntary respected farmer choice — the coverage fall reflects farmers declining a product they had been enrolled in automatically, which is information rather than failure.",
+  "caseAgainst": "Six states exiting is a substantial verdict on the scheme's design and cost-sharing, and it means national figures understate withdrawal. Chronic settlement delay blunts the risk-protection function precisely when it matters — an insurance payout arriving late is a loan, not insurance. Whether the scheme protected farmers or transferred public money to insurers remains genuinely unresolved, since low-risk farmers cross-subsidise high-risk ones and insurer profitability in some state-years was high.",
+  "shockExposure": "COVID and the 2020 restructuring coincide, making the coverage fall hard to attribute cleanly between opt-out and disruption.",
+  "seriesRefs": [
+   "pmfby-farmers"
+  ],
+  "provenanceRefs": [
+   "P-49"
+  ],
+  "sources": [
+   {
+    "name": "Ministry of Agriculture, PMFBY",
+    "url": "https://pmfby.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-08-01"
+ },
+ {
+  "id": "L-0073",
+  "title": "Foodgrain production record",
+  "date": "2014-05",
+  "dateEnd": "2026-05",
+  "term": "T1",
+  "domains": [
+   "environment",
+   "macro"
+  ],
+  "type": "episode",
+  "summary": "Foodgrain production rose from 252 million tonnes in 2014-15 to a third-advance-estimate 376.56 million tonnes in 2025-26, with record rice and maize harvests.",
+  "whatHappened": "Growth was driven substantially by favourable monsoons and by area response to assured MSP procurement rather than by yield breakthroughs. The 2023-24 dip to 1.4% agricultural GVA growth on an El Nino monsoon shows the continued weather dependence. India's cereal yield of about 3,602 kg per hectare remains roughly 56% of China's and the lowest in the peer panel, despite India also using the least fertiliser per hectare.",
+  "assessment": "worked",
+  "caseFor": "A roughly 50% increase in foodgrain output across a decade is a genuine achievement that underwrote the free-grain programme covering 80 crore people through COVID and after. Horticulture output overtook foodgrains in tonnage. Buffer stocks stayed comfortably above norms throughout, which is what food security means operationally.",
+  "caseAgainst": "Output growth without yield growth means the gains came from area and weather, neither of which is a policy achievement or repeatable. The yield gap against every peer is the binding constraint and it did not close. And the composition — more paddy and wheat, grown where water is scarcest — means the production record and the groundwater crisis are the same fact viewed from different ends.",
+  "shockExposure": "Monsoon variability dominates the series; the 2022 heat shock cut wheat output and triggered the export ban.",
+  "seriesRefs": [
+   "foodgrain-production",
+   "cereal-yield-peer",
+   "agri-gva-growth"
+  ],
+  "sources": [
+   {
+    "name": "Ministry of Agriculture advance estimates",
+    "url": "https://agricoop.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-08-01"
+ }
+]

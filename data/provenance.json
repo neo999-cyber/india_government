@@ -546,7 +546,9 @@
    "welfare",
    "human-development",
    "infrastructure",
-   "employment"
+   "employment",
+   "banking",
+   "macro"
   ],
   "affectsSeries": [
    "ujjwala-connections",
@@ -566,7 +568,7 @@
     "tier": "T1"
    }
   ],
-  "notes": "The organising measurement problem of the welfare domain. Every scheme record in this phase references it. Scope includes infrastructure: Jal Jeevan is filed there and is one of the clearest MIS-versus-survey cases in the dataset. Scope extended to employment: EPFO net payroll additions and e-Shram registrations are registration counts standing in for outcomes, the same shape this record describes.",
+  "notes": "The organising measurement problem of the welfare domain. Every scheme record in this phase references it. Scope includes infrastructure: Jal Jeevan is filed there and is one of the clearest MIS-versus-survey cases in the dataset. Scope extended to employment: EPFO net payroll additions and e-Shram registrations are registration counts standing in for outcomes, the same shape this record describes. Scope extended to banking and macro: agricultural credit DISBURSED measures supply not smallholder access, and the farm-law record turns on the same registration-standing-in-for-outcome shape.",
   "correctiveSeries": [
    "ujjwala-refills",
    "jjm-functionality",
@@ -1146,6 +1148,164 @@
   "notes": "Not a fault in KLEMS, which is doing what it was designed to do. The error is in the citation.",
   "affectsSeries": [
    "klems-employment-claim"
+  ]
+ },
+ {
+  "id": "P-44",
+  "title": "NCRB separated farmers from agricultural labourers in 2014",
+  "whatChanged": "From the 2014 edition of Accidental Deaths and Suicides in India, NCRB began reporting 'farmers/cultivators' and 'agricultural labourers' as separate categories. Pre-2014 totals are not comparable with either post-2014 category alone. The split also revealed a crossover: by 2022 agricultural labourers (6,083) outnumbered cultivators (5,207), which the older combined series would have concealed.",
+  "when": "2014",
+  "affectsDomains": [
+   "human-development",
+   "governance"
+  ],
+  "affectsSeries": [
+   "farmer-suicides"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": true,
+  "bridgeNote": "The combined farm-sector series can be reconstructed from 2014 onward by summing both categories, but cannot be spliced cleanly to pre-2014 figures.",
+  "sources": [
+   {
+    "name": "NCRB Accidental Deaths and Suicides in India",
+    "url": "https://ncrb.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-45",
+  "title": "States reporting zero farmer suicides",
+  "whatChanged": "Several states — West Bengal and Bihar among them — have reported zero farm-sector suicides in some years. This is not credible and reflects non-submission rather than an absence of deaths. Two further undercounts compound it: landless agricultural labourers were historically excluded from the farmer category, and women farmers are systematically missed because land titles are rarely in their names, so their deaths are typically recorded under 'housewife'.",
+  "when": "Various years, continuous",
+  "affectsDomains": [
+   "human-development",
+   "governance"
+  ],
+  "affectsSeries": [
+   "farmer-suicides"
+  ],
+  "directionOfBias": "understates-post-2014",
+  "bridgeExists": false,
+  "bridgeNote": "Non-submission cannot be corrected after the fact. Treat every level in this series as a LOWER BOUND. The robust signals are the post-2019 rise, the 2022 peak, and the state concentration — not the national level.",
+  "sources": [
+   {
+    "name": "NCRB ADSI, state tables",
+    "url": "https://ncrb.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-46",
+  "title": "The Situation Assessment Survey has not been repeated since 2018-19",
+  "whatChanged": "The NSS Situation Assessment Survey of Agricultural Households — fielded in 2002-03, 2012-13 and 2018-19 — has not been repeated. It is the only instrument that measures farm household income net of paid-out and imputed costs, so the promise to double farmers' income by 2022-23 cannot be evaluated against any authoritative measure. Government counter-claims cite agricultural GVA or NABARD's NAFIS, but GVA is sectoral output rather than household income, and NAFIS uses a different definition and sampling frame.",
+  "when": "2018-19 onward",
+  "affectsDomains": [
+   "poverty",
+   "employment",
+   "welfare",
+   "banking"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "No bridge exists and none should be manufactured. GVA and NAFIS are not substitutes for SAS household income.",
+  "competingAccounts": [
+   {
+    "holder": "Government",
+    "position": "Agricultural GVA growth and NAFIS survey figures show substantial income gains"
+   },
+   {
+    "holder": "Critical reading",
+    "position": "Neither measures net household income on the SAS definition; the target was set in SAS terms and can only be judged in them"
+   }
+  ],
+  "sources": [
+   {
+    "name": "MoSPI NSS Situation Assessment Surveys",
+    "url": "https://mospi.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Directly underlies ledger record L-0041, which assessed the doubling promise as failed and formally unverifiable. Scope includes banking: farmer indebtedness is measured only by the same discontinued survey, so the 50.2% figure is frozen at 2018-19 alongside farm income."
+ },
+ {
+  "id": "P-47",
+  "title": "The 1.5x MSP claim uses A2+FL costs, not C2",
+  "whatChanged": "The 2018-19 Budget claimed minimum support prices set at at least 1.5 times the cost of production. That calculation uses A2+FL — paid-out costs plus imputed family labour — not C2, the comprehensive cost including imputed rent on owned land and interest on owned capital. The Swaminathan Commission's C2+50% recommendation, which the claim is widely understood to fulfil, refers to the latter. The gap between the two bases is the substance of the dispute over whether the 50% margin exists.",
+  "when": "2018-19 onward",
+  "affectsDomains": [
+   "macro",
+   "welfare"
+  ],
+  "affectsSeries": [
+   "msp-wheat",
+   "msp-paddy"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": true,
+  "bridgeNote": "CACP publishes both A2+FL and C2, so any MSP-to-cost ratio can be recomputed on the C2 basis. State which basis is in use whenever the ratio is cited.",
+  "competingAccounts": [
+   {
+    "holder": "Government / CACP",
+    "position": "A2+FL is the established basis for the margin calculation and includes the family labour that is the smallholder's principal input"
+   },
+   {
+    "holder": "Swaminathan-basis reading",
+    "position": "C2 is what the recommendation specified; excluding imputed land rent and capital interest omits the largest costs a landowning farmer bears"
+   }
+  ],
+  "sources": [
+   {
+    "name": "Commission for Agricultural Costs and Prices reports",
+    "url": "https://cacp.dacnet.nic.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-48",
+  "title": "Agriculture's GDP share rose during COVID as a compositional artefact",
+  "whatChanged": "Agriculture's share of gross value added rose in 2020-21 because every other sector contracted, not because farm output surged. Agriculture was the only sector to grow through the lockdown. Reading the share rise as agricultural dynamism inverts what happened.",
+  "when": "2020-21",
+  "affectsDomains": [
+   "macro",
+   "employment"
+  ],
+  "affectsSeries": [
+   "agri-gdp-share"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": true,
+  "bridgeNote": "Use constant-price sectoral GVA growth rather than shares. Compounds with P-10, which restated the GDP denominator itself.",
+  "sources": [
+   {
+    "name": "MoSPI national accounts",
+    "url": "https://mospi.gov.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-49",
+  "title": "PMFBY became voluntary for loanee farmers in 2020",
+  "whatChanged": "From Kharif 2020 the Pradhan Mantri Fasal Bima Yojana ceased to auto-enrol farmers holding crop loans. Coverage figures before and after are therefore not comparable: a fall reflects farmers opting out of a scheme they were previously enrolled in by default, not a loss of access. Coverage fell from about 6.2 crore (2019-20) to 3.17 crore (2022-23) before recovering to 4.19 crore (2024-25).",
+  "when": "2020, Kharif season",
+  "affectsDomains": [
+   "welfare"
+  ],
+  "affectsSeries": [
+   "pmfby-farmers"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": true,
+  "bridgeNote": "Report loanee and non-loanee enrolment separately where the split is published.",
+  "sources": [
+   {
+    "name": "Ministry of Agriculture and Farmers Welfare, PMFBY",
+    "url": "https://pmfby.gov.in/",
+    "tier": "T1"
+   }
   ]
  }
 ]
