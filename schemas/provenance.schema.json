@@ -49,7 +49,8 @@
           "environment",
           "demography",
           "all"
-        ]
+        ],
+        "description": "The subject area a record belongs to. A TAG SET, not a partition: a ledger record carries `domains[]` and may carry several, a series carries exactly one, and a phase is not a domain — phase 7 produced eight records filed across seven values.\n\nTHE DISTINCTION THAT GETS CONFUSED IS welfare AGAINST human-development: welfare is the DELIVERY of a scheme, human-development is the OUTCOME it was meant to produce. Records carrying both (Swachh Bharat, PM-JAY, the anaemia reversal) are the normal case, not an error — the scheme is one domain and what it did to people is another.\n- macro: aggregate economic conditions and fiscal or monetary policy.\n- banking: banks, credit, financial supervision and resolution.\n- employment: work, labour force, earnings and formality.\n- poverty: measured deprivation and consumption-based poverty.\n- human-development: outcomes in health, nutrition and survival — what delivery produced.\n- infrastructure: physical networks and their capacity or service.\n- welfare: scheme delivery and entitlements — what was provided.\n- governance: institutions of state, enforcement, transparency and rights.\n- kashmir: a cross-cutting lens, applied to records whose primary subject sits elsewhere.\n- federalism: Centre-state relations. Also a lens: GST and groundwater carry it alongside their own subject.\n- foreign: trade, external balances and relations with other states.\n- defence: military and security. One record; sparsely attested.\n- environment: land, water, air and the resource base.\n- demography: population structure. NEVER USED — no record or series carries it, so its intended boundary is unattested and this line describes the word, not observed practice.\n- all: the record bears on every domain. Provenance only."
       }
     },
     "affectsSeries": {
@@ -68,7 +69,8 @@
         "disputed",
         "obscures",
         "degrades-precision"
-      ]
+      ],
+      "description": "What the measurement problem does to the record it bears on.\n\nSTRUCTURAL NOTE, unresolved, and the reason this field is hard to apply: the name asserts a DIRECTION, but only four of the seven values state one. `disputed`, `obscures` and `degrades-precision` state a KIND of problem with no direction attached, and they carry 35 of the 58 records. The field conflates two axes — which way a figure is pushed, and what sort of defect it has. `overstates-pre-2014` has NO users at all. Nothing has been reclassified; the definitions below describe observed use of each value as it stands.\n- understates-pre-2014: the pre-2014 figure was too low, so the earlier period looks better than it was.\n- overstates-pre-2014: the pre-2014 figure was too high. UNATTESTED — no record uses this value.\n- understates-post-2014: the post-2014 figure is too low, suppressing a count that would otherwise show.\n- overstates-post-2014: the post-2014 figure is too high, or flatters by construction.\n- disputed: two parties disagree about the figure or the instrument. No direction is asserted, and the record does not pick.\n- obscures: the figure is missing, withheld or discontinued, so the question cannot be answered either way.\n- degrades-precision: a basis, definition or coverage change breaks comparability across the series, without any claim about direction."
     },
     "bridgeExists": {
       "type": "boolean",
