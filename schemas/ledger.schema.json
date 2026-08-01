@@ -96,7 +96,7 @@
         "too-early",
         "baseline-context"
       ],
-      "description": "baseline-context = pre-2014 record carried for context, not scored"
+      "description": "What the record concludes. These values had no written definitions until 2026-08-01, which is how `reversed` came to cover two different mechanisms without the type objecting. Definitions:\n- worked: the measure achieved the objective stated at announcement, on the evidence available.\n- partly: the measure achieved part of its stated objective, or achieved it for part of the intended population.\n- failed: the measure did not achieve the objective stated at announcement. Includes a measure struck down by a court, because the outcome is the same and only the mechanism differs — record the mechanism in assessmentNote.\n- reversed: the ENACTING AUTHORITY withdrew or repealed its own measure. Judicial invalidation is NOT reversed: a court striking a measure down is not the enacting authority changing its mind, and collapsing the two loses the thing that distinguishes a government retreating under pressure from a government overruled.\n- contested: the evidence supports more than one defensible reading and the record does not choose between them.\n- too-early: the measure is in force but has not run long enough for its stated objective to be testable.\n- baseline-context: pre-2014 context, carried so that post-2014 records are read against a stated starting condition. Never scored; the schema ties it to term \"baseline\"."
     },
     "caseFor": {
       "type": "string",
