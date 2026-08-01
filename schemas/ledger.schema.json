@@ -213,7 +213,7 @@
     },
     "differentFacts": {
       "type": "boolean",
-      "description": "True where the two sides of the record are not weighting the same numbers differently but working from different quantities entirely. Distinct from an ordinary contested assessment, where both sides accept the same figures and disagree about what they mean."
+      "description": "True where the two sides of the record do not share a common measure. Three conditions, of which the third is operative: (a) PRECONDITION — caseFor and caseAgainst cite different underlying quantities, measures or events, not the same one weighted differently. (b) PRECONDITION — neither case contradicts the other's factual claim, so granting one side's strongest fact in full leaves the other's case intact. (c) OPERATIVE — no single measure exists, or could be constructed from available data, that places both sides' facts on one ledger. An UNBUILT comparison FAILS (c): if a common denominator exists in principle and merely has not been built, that is a gap in the instrument, not a property of the argument. A counterpart that is DECLARED UNMEASURABLE passes (c). In practice (c) admits only arguments that cross a category boundary — a quantity against a legal ruling, a constitutional process, or a stated absence. Two economic cases almost always share a ledger in principle: an incidence analysis, a disposition table, a water-productivity account. The worked negative is the implicit taxation of farmers, where the OECD Producer Support Estimate nets budgetary support against implicit price transfers by construction."
     },
     "differentFactsNote": {
       "type": "string",
@@ -224,6 +224,11 @@
       "type": "string",
       "minLength": 20,
       "description": "A note on the assessment VALUE itself — typically that the existing vocabulary does not cleanly fit and the value may change on review. Not a note on the finding, which belongs in caseFor/caseAgainst."
+    },
+    "revisitTrigger": {
+      "type": "string",
+      "minLength": 20,
+      "description": "A stated condition under which this record should be re-tested. Used where a judgement is correct now but rests on something that will change — most often a common measure that cannot yet be built but will become buildable. Distinct from assessmentNote, which is about the assessment VALUE rather than about when to look again."
     }
   },
   "allOf": [

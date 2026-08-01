@@ -15,6 +15,8 @@
   "assessment": "worked",
   "caseFor": "This was the precondition for everything that followed — IBC referrals, recapitalisation, and the eventual cleanup all required knowing the true scale. Every year of delay would have compounded the cost, as the 2004-2011 concealment had already demonstrated. The IMF and most academic assessment regard recognition as correct and overdue, and the subsequent trajectory to a 1.8% ratio by 2026 vindicates the sequencing.",
   "caseAgainst": "The execution was arguably too abrupt. Forcing recognition across the system simultaneously, while PCA constraints bound the affected banks, precipitated a credit squeeze at a moment when private investment was already weak — a meaningful contributor to the pre-COVID growth deceleration from 8% to 3.9%. A more graduated recognition schedule might have achieved the same honesty while preserving credit flow.",
+  "differentFacts": true,
+  "differentFactsNote": "The government's case rests on recognition being the precondition for every step that followed, and on the compounding cost of continued concealment. The critics' case rests on the credit contraction that followed and its contribution to the pre-COVID deceleration. Netting the two would require the cost of the concealment that did not happen, which is a counterfactual rather than a measure - unobservable in principle, not merely unbuilt.",
   "shockExposure": "The 2018 IL&FS collapse hit as recognition peaked, compounding the credit squeeze and making the AQR's independent contribution to the slowdown hard to isolate. Demonetisation and GST also landed inside this window.",
   "seriesRefs": [
    "psb-gross-npa",
@@ -180,6 +182,8 @@
   "assessment": "worked",
   "caseFor": "A private bank of systemic size was resolved without depositor loss and without permanent public ownership, and the state-led consortium exited at a profit into a credible foreign strategic investor five years later. That is close to the textbook outcome for a bank rescue, and compares favourably with resolutions in far wealthier jurisdictions.",
   "caseAgainst": "The AT-1 bond write-off damaged trust in a funding instrument the entire banking system relies on, and the courts have not vindicated the regulator's approach — the Bombay High Court quashed it. The bank reached that condition under RBI supervision, so the rescue's success does not offset the supervisory failure that made it necessary.",
+  "differentFacts": true,
+  "differentFactsNote": "The government's case rests on the financial outcome: no depositor loss, no permanent public ownership, and a profitable exit into a strategic investor. The critics' case rests on a judicial determination that the AT-1 write-off was unlawful, and on the supervision that made the rescue necessary. No measure places a court's ruling on legality and a return on capital on one ledger.",
   "shockExposure": "The moratorium landed weeks before the COVID lockdown, so the recovery period coincides entirely with pandemic-era monetary support, which flatters the outcome.",
   "seriesRefs": [],
   "sources": [
@@ -210,6 +214,8 @@
   "assessment": "worked",
   "caseFor": "This is the clearest and most internationally consequential achievement of the period. India built payments and identity infrastructure as a public good rather than a private oligopoly, at a scale and cost no comparable country has matched, and it is now actively emulated abroad. Account ownership rose from 53% of adults in 2014 to near-universal, and the COVID transfer response would have been impossible without the rails already in place.",
   "caseAgainst": "Exclusion is the cost the headline figures hide: biometric authentication failures have produced documented denials of rations and entitlements, falling hardest on the elderly, manual labourers and the disabled — precisely those the system was meant to reach. The Aadhaar Act was passed as a money bill, bypassing the Rajya Sabha, and the Supreme Court struck down Section 57 in 2018. The Digital Personal Data Protection Act 2023 grants broad government exemptions, so the surveillance capacity this infrastructure creates remains largely unconstrained. Zero-MDR drove UPI adoption but eliminated the payment industry's revenue base, leaving the rails dependent on state support.",
+  "differentFacts": true,
+  "differentFactsNote": "The government's case rests on coverage: account ownership from 53 per cent of adults to near-universal, and a transfer capability the COVID response depended on. The critics' case rests on authentication failures denying entitlements, and on the constitutional route - passage as a money bill, Section 57 struck down, and the exemptions the 2023 Act grants. Exclusion counts could in principle net against coverage; the constitutional facts cannot share a ledger with account ownership.",
   "shockExposure": "COVID accelerated digital adoption globally, so part of the UPI growth curve reflects a worldwide shift rather than India-specific policy — though India's starting infrastructure is what allowed it to capitalise.",
   "seriesRefs": [
    "upi-transactions",
