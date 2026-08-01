@@ -63,7 +63,8 @@
           "defence",
           "environment",
           "demography"
-        ]
+        ],
+        "description": "The subject area a record belongs to. A TAG SET, not a partition: a ledger record carries `domains[]` and may carry several, a series carries exactly one, and a phase is not a domain — phase 7 produced eight records filed across seven values.\n\nTHE DISTINCTION THAT GETS CONFUSED IS welfare AGAINST human-development: welfare is the DELIVERY of a scheme, human-development is the OUTCOME it was meant to produce. Records carrying both (Swachh Bharat, PM-JAY, the anaemia reversal) are the normal case, not an error — the scheme is one domain and what it did to people is another.\n- macro: aggregate economic conditions and fiscal or monetary policy.\n- banking: banks, credit, financial supervision and resolution.\n- employment: work, labour force, earnings and formality.\n- poverty: measured deprivation and consumption-based poverty.\n- human-development: outcomes in health, nutrition and survival — what delivery produced.\n- infrastructure: physical networks and their capacity or service.\n- welfare: scheme delivery and entitlements — what was provided.\n- governance: institutions of state, enforcement, transparency and rights.\n- kashmir: a cross-cutting lens, applied to records whose primary subject sits elsewhere.\n- federalism: Centre-state relations. Also a lens: GST and groundwater carry it alongside their own subject.\n- foreign: trade, external balances and relations with other states.\n- defence: military and security. One record; sparsely attested.\n- environment: land, water, air and the resource base.\n- demography: population structure. NEVER USED — no record or series carries it, so its intended boundary is unattested and this line describes the word, not observed practice."
       }
     },
     "type": {
@@ -73,7 +74,8 @@
         "episode",
         "shock",
         "institutional"
-      ]
+      ],
+      "description": "What KIND of thing the record is — not what domain it concerns and not how it turned out.\nThe distinction that gets confused is a measure the state chose against a disruption it did not: see the note on `shock`.\n- reform: a measure the state deliberately introduced — a law, scheme, programme or rate change.\n- event: a discrete dated occurrence, over in days or weeks.\n- episode: a pattern or contested question observed over a span, with no single act at its centre.\n- shock: a disruption arriving from outside the government's control.\n- institutional: a change to the rules of the game or to a standing body, rather than a programme run through one.\nUSAGE NOTE, unresolved: `shock` is currently applied both to external disruptions (the taper tantrum, COVID, US tariffs) and to domestically caused failures (the IL&FS collapse; the 2020 migrant exodus, whose own caseAgainst records that the four hours' notice \"was a choice\"). The definition above states the external reading, which fits three of the five. The other two have not been reclassified."
     },
     "summary": {
       "type": "string",
@@ -159,7 +161,8 @@
         "high",
         "medium",
         "low"
-      ]
+      ],
+      "description": "How firmly the record's FINDING is established. Distinct from `tier`, which grades the evidence retrieved: a record can rest on a single relayed source and still be high-confidence if what it asserts is not in doubt, and can rest on a primary source and be medium if the reading is contested.\n- high: the finding is well established and would survive a hostile reading.\n- medium: the finding holds but rests on incomplete retrieval or a contested reading.\n- low: the finding is provisional and should not be leaned on.\nUSAGE NOTE, unresolved: the field is ambiguous in practice between confidence in the FINDING and how well RETRIEVED the record is. L-0014 is high on a single T4 source while L-0015 is medium on a T1, which fits the finding reading; L-0089's revisitTrigger ties confidence to retrieving two primary documents, which fits the retrieval reading. The distribution is also heavily skewed — 63 high, 24 medium, 2 low across 89 records — so `low` is close to unattested. Nothing has been reclassified."
     },
     "asOf": {
       "type": "string",

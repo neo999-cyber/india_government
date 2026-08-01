@@ -4,6 +4,19 @@
  * which the build runs before Next ever compiles.
  */
 
+/**
+ * The subject area a record belongs to. A TAG SET, not a partition: a ledger record carries
+ * `domains[]` and may carry several, a series carries exactly one, and a phase is not a domain
+ * — phase 7 produced eight records filed across seven values.
+ *
+ * THE DISTINCTION THAT GETS CONFUSED is `welfare` against `human-development`: welfare is the
+ * DELIVERY of a scheme, human-development is the OUTCOME it was meant to produce. Records
+ * carrying both are the normal case, not an error.
+ *
+ * `kashmir`, `federalism` and `defence` are used as cross-cutting lenses on records whose
+ * primary subject sits elsewhere, and carry no series at all. `demography` is NEVER USED, so
+ * its boundary is unattested.
+ */
 export const DOMAINS = [
   'macro',
   'banking',
@@ -28,6 +41,10 @@ export type Term = (typeof TERMS)[number];
 export const TIERS = ['T1', 'T2', 'T3', 'T4', 'T5'] as const;
 export type Tier = (typeof TIERS)[number];
 
+/**
+ * Which country the OBSERVATION measures — not where the source sits. India plus a fixed
+ * four-country peer panel, held constant so comparisons stay like-for-like (P-09).
+ */
 export type Country = 'IND' | 'BGD' | 'VNM' | 'IDN' | 'CHN';
 export type Status = 'verified' | 'approx' | 'pending';
 export type Calendar = 'FY' | 'CY';
@@ -216,6 +233,19 @@ export type Assessment =
   | 'too-early'
   | 'baseline-context';
 
+/**
+ * What KIND of thing a record is — not its domain and not how it turned out.
+ *
+ * - `reform` — a measure the state deliberately introduced.
+ * - `event` — a discrete dated occurrence, over in days or weeks.
+ * - `episode` — a pattern or contested question over a span, with no single act at its centre.
+ * - `shock` — a disruption arriving from outside the government's control.
+ * - `institutional` — a change to the rules of the game or a standing body.
+ *
+ * UNRESOLVED: `shock` is applied both to external disruptions and to domestically caused
+ * failures — the 2020 migrant exodus carries it while its own caseAgainst records that the
+ * four hours' notice "was a choice". The external reading above fits three of five users.
+ */
 export type LedgerType = 'reform' | 'event' | 'episode' | 'shock' | 'institutional';
 
 export interface LedgerRecord {
@@ -236,6 +266,12 @@ export interface LedgerRecord {
   seriesRefs?: string[];
   provenanceRefs?: string[];
   sources: TieredSource[];
+  /**
+   * How firmly the record's FINDING is established — distinct from `tier`, which grades the
+   * evidence retrieved. UNRESOLVED: usage is ambiguous between confidence in the finding and
+   * how well retrieved the record is, and the distribution is skewed (63 high, 24 medium,
+   * 2 low), leaving `low` close to unattested.
+   */
   confidence: 'high' | 'medium' | 'low';
   asOf: string;
   /** See `Series.caveat` — same contract, same rendering obligation. */
@@ -257,6 +293,13 @@ export interface LedgerRecord {
   assessmentNote?: string;
 }
 
+/**
+ * What a measurement problem does to the record it bears on.
+ *
+ * STRUCTURAL, UNRESOLVED: the name asserts a DIRECTION but only four of seven values state one.
+ * `disputed`, `obscures` and `degrades-precision` state a KIND of defect with no direction, and
+ * carry 35 of 58 records. `overstates-pre-2014` has no users at all.
+ */
 export type BiasDirection =
   | 'understates-pre-2014'
   | 'overstates-pre-2014'
