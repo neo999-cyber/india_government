@@ -1380,8 +1380,7 @@
   ],
   "affectsSeries": [
    "ed-pmla-cases-registered",
-   "ed-pmla-convictions",
-   "uapa-conviction-rate"
+   "ed-pmla-convictions"
   ],
   "directionOfBias": "disputed",
   "bridgeExists": true,
@@ -1521,6 +1520,73 @@
     "name": "RTI Rules 2019",
     "url": "https://rti.gov.in/",
     "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-57",
+  "title": "UAPA conviction rate: four bases in circulation",
+  "whatChanged": "Four different conviction rates for the same offence circulate, all sourced to government replies, and they differ by up to a factor of fifty because each uses a different base. NCRB's own published column, tabled as an annexure to a December 2024 Rajya Sabha reply, gives all-India rates of 27.2 for 2018, 29.2 for 2019, 21.1 for 2020, 39.7 for 2021 and 18.2 for 2022, computed on cases in which trials were completed. A widely cited figure of 2.2 per cent for 2016 to 2019 divides 132 persons convicted by 5,922 persons arrested. A July 2022 reply gives 212 convicted and 386 acquitted out of 24,134 persons stated to have undergone trial across 2016 to 2020, which yields under one per cent on the persons base and about 35 per cent on a disposal base, and whose person totals do not reconcile against the annexure's arrest counts. A separate August 2022 statement reports 94.17 per cent for the subset of cases where the FIR was registered by the Centre, while acknowledging that state-registered cases ran low over the same period.",
+  "when": "2021-2024",
+  "affectsDomains": [
+   "governance"
+  ],
+  "affectsSeries": [
+   "uapa-conviction-rate-ncrb",
+   "uapa-cases-registered",
+   "uapa-persons-arrested",
+   "uapa-persons-convicted"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": true,
+  "bridgeNote": "The bases reconcile once stated. The instrument authors raw counts as its primary record and renders only the NCRB basis as a rate, with its denominator on the face of the number. The persons-under-trial figure in the July 2022 reply does not reconcile against the annexure and is not authored as a series.",
+  "competingAccounts": [
+   "The government's usual citation is the completed-trial basis or the Centre-registered subset, on the reasoning that a case without a verdict has no outcome to count and that state-registered cases are outside its control.",
+   "Critics' usual citation is the arrests basis, on the reasoning that arrest and the Section 43D(5) bail bar are the operative consequence and are imposed irrespective of whether a trial ever concludes.",
+   "A separate reading, independent of both, is that a single number labelled UAPA conviction rate is uninterpretable without its base, and that publishing one without the other is the error regardless of which is chosen."
+  ],
+  "sources": [
+   {
+    "name": "Rajya Sabha Unstarred Question 1045, answered 4 December 2024, with state-wise annexure",
+    "url": "https://www.mha.gov.in/MHA1/Par2017/pdfs/par2024-pdfs/RS04122024/1045.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Ministry of Home Affairs replies in Rajya Sabha, 2021 and 2022",
+    "url": "https://sansad.in/",
+    "tier": "T1"
+   }
+  ]
+ },
+ {
+  "id": "P-58",
+  "title": "CAG 2015 peak reported as both 55 and 53",
+  "whatChanged": "The peak year for Union audit reports is given as 55 by an RTI reply obtained by The New Indian Express and as 53 by a review of over 400 reports published on the CAG website between 2010 and 2023. Both refer to 2015 and to Union-level reports. The gap is small in absolute terms but it is the anchor of the decline claim, so the base year of the comparison is itself uncertain. Neither primary document has been retrieved; both figures reach this instrument through secondary reporting.",
+  "when": "2021-2023",
+  "affectsDomains": [
+   "governance"
+  ],
+  "affectsSeries": [
+   "cag-union-audit-reports-tabled"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "Cannot be reconciled without the two underlying documents. Likely candidates are a differing treatment of reports tabled late in the calendar year, or of standalone financial-accounts volumes, but that is inference and is not authored as fact.",
+  "competingAccounts": [
+   "The RTI figure is closer to the primary source in principle, being a direct departmental answer, but it is relayed rather than retrieved.",
+   "The 400-report review is reproducible in principle, since the underlying reports are published, but its inclusion rule is not stated in the reporting reviewed.",
+   "Both agree on the direction and rough magnitude of the change; they disagree on the base year value by two reports."
+  ],
+  "sources": [
+   {
+    "name": "RTI reply obtained by The New Indian Express, reported March 2021",
+    "url": "https://cag.gov.in/",
+    "tier": "T4"
+   },
+   {
+    "name": "Review of over 400 CAG reports published 2010-2023, reported December 2023",
+    "url": "https://cag.gov.in/",
+    "tier": "T4"
    }
   ]
  }

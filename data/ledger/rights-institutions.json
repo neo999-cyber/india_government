@@ -359,29 +359,41 @@
    "governance"
   ],
   "type": "episode",
-  "summary": "UAPA conviction rates run between roughly 1.5 and 4 per cent nationally, and below one per cent in Jammu and Kashmir. Section 43D(5) bars bail where the accusation is prima facie true on the case diary, and undertrial detention in notable cases has run to several years before acquittal or bail.",
+  "summary": "NCRB's published UAPA conviction rate, tabled in Parliament in December 2024, runs between 18.2 and 39.7 per cent across 2018 to 2022 on a completed-trial basis. Over the same years 8,947 persons were arrested and 252 convicted. Section 43D(5) bars bail where the accusation is prima facie true on the case diary, and the government has confirmed that no provision exists for support or compensation to those later acquitted.",
+  "caveat": "CONVICTION RATE CARRIES ITS DENOMINATOR",
   "assessment": "contested",
-  "caseFor": "Terrorism and organised insurgency cases require investigation across jurisdictions and long evidentiary chains, and a low conviction rate in a small, difficult category is not by itself evidence of misuse - it can equally show courts applying a high standard. The statute has been repeatedly tested and upheld, and bail is available where the court is not satisfied the accusation is prima facie true. India has faced sustained terrorism over the period covered.",
-  "caseAgainst": "A conviction rate near two per cent alongside a bail provision that effectively presumes detention means the sentence is served before the trial concludes, whatever the eventual verdict. The Supreme Court granted bail in 2025 to a man who had been held for close to six years, and the Bhima Koregaon proceedings have run since 2018 without trial concluding. Where acquittal follows years of custody, the acquittal is not a vindication of the process.",
+  "caseFor": "On NCRB's own basis the conviction rate is not the near-zero figure usually quoted: it ran 27.2 per cent in 2018 and 39.7 per cent in 2021, which is in line with or above the rate for ordinary criminal prosecutions in India. For the subset of cases where the FIR was registered by the Centre, the government reports 94.17 per cent. Terrorism and organised insurgency cases require investigation across jurisdictions and long evidentiary chains, so a gap between arrest and verdict is expected rather than anomalous. The statute has been repeatedly tested and upheld, and bail is available where a court is not satisfied the accusation is prima facie true.",
+  "caseAgainst": "The completed-trial basis measures only the small fraction of cases that reach a verdict. Against arrests the ratio is 2.8 per cent over 2018 to 2022, and arrest with the Section 43D(5) bail bar is the operative consequence whether or not a trial ever concludes. The government's own answer confirms there is no provision for support or compensation to anyone acquitted after detention, so the cost of a wrongly brought case falls entirely on the accused. Arrests rose over the period even as convictions did not: 1,421 in 2018 against 2,636 in 2022, with 35 and 41 convictions respectively. The Supreme Court granted bail in 2025 to a man held close to six years, and the Bhima Koregaon proceedings have run since 2018 without trial concluding.",
+  "unmeasured": [
+   {
+    "what": "UAPA cases booked against journalists",
+    "why": "The Ministry of Home Affairs told Parliament in December 2024 that data on cases booked under the UAPA against journalists is not maintained by the NCRB. Recorded as a straightforward absence. Its effect is that the question of whether the Act is applied to journalists cannot be answered from official data in either direction, which forecloses the government's defence as much as the critics' charge. Pairs with the NCRB absence on attacks on journalists recorded at L-0078.",
+    "reasonKind": "not-collected"
+   }
+  ],
   "seriesRefs": [
-   "uapa-conviction-rate"
+   "uapa-cases-registered",
+   "uapa-persons-arrested",
+   "uapa-persons-convicted",
+   "uapa-conviction-rate-ncrb"
   ],
   "provenanceRefs": [
+   "P-57",
    "P-52"
   ],
   "sources": [
    {
-    "name": "NCRB Crime in India",
-    "url": "https://www.ncrb.gov.in/crime-in-india.html",
+    "name": "Rajya Sabha Unstarred Question 1045, answered 4 December 2024, with state-wise annexure",
+    "url": "https://www.mha.gov.in/MHA1/Par2017/pdfs/par2024-pdfs/RS04122024/1045.pdf",
     "tier": "T1"
    },
    {
-    "name": "Ministry of Home Affairs replies in Parliament on UAPA cases and convictions",
+    "name": "Ministry of Home Affairs reply in Rajya Sabha, August 2022, on Centre-registered UAPA cases",
     "url": "https://sansad.in/",
     "tier": "T1"
    }
   ],
-  "confidence": "medium",
+  "confidence": "high",
   "asOf": "2026-08-01"
  },
  {
@@ -555,37 +567,39 @@
  {
   "id": "L-0089",
   "title": "CAG audit report volume",
-  "date": "2014",
+  "date": "2011",
   "dateEnd": "2024",
   "term": "T1",
   "domains": [
    "governance"
   ],
   "type": "institutional",
-  "summary": "Union audit reports tabled in Parliament fell from the mid-fifties in the mid-2010s to the mid-teens by 2020 on one RTI-based count, with a 2019-2023 average of about 22 against a 2014-2018 average of about 40 on a separate review. Eighty-six former civil servants wrote to the President on the subject in November 2023.",
+  "summary": "Union audit reports fell from a 2015 peak to 14 in 2020 and 18 in 2023, with five-year averages of about 40 for 2014-2018 against about 22 for 2019-2023. Defence audit reports went from eight in 2017 to zero in 2020, and railway audits from 27 to 14 across the same five-year blocks. Over the period IA&AD staff strength fell from 48,253 in 2013-14 to 41,675 in 2021-22.",
   "caveat": "FIGURES RELAYED, PRIMARY DOCUMENTS NOT PULLED",
   "assessment": "contested",
-  "caseFor": "Report count is not an audit-quality measure. Consolidating multiple subject reports into fewer, larger volumes reduces the count without reducing coverage, and two pandemic years suppressed tabling across all parliamentary business. The institution has continued to publish findings adverse to the government, including on flagship infrastructure and health schemes, which is inconsistent with a captured auditor.",
-  "caseAgainst": "A decline of roughly half in the annual average across two five-year windows is large enough to require an explanation, and consolidation has not been demonstrated as its cause. Reports adverse to the government on a major expressway and on a flagship health scheme were followed by the transfer of officers who worked on them, explained as administrative convenience. A letter from eighty-six former officials is not an ordinary event.",
+  "caseFor": "Report count is not an audit-quality measure, and consolidating multiple subject reports into fewer larger volumes reduces count without reducing coverage. Two pandemic years suppressed tabling across all parliamentary business. There is a documented capacity mechanism rather than only an inference: departmental staff strength fell by roughly 14 per cent over the period and IA&AS officer numbers from 789 in 2014-15 to 553 in 2021-22, which constrains output independently of any intent. The peak year of the series falls in 2015, the first full year after the change of government, which is inconsistent with reading the decline as beginning at that change. The institution has continued to publish findings adverse to the government, including on flagship infrastructure and health schemes.",
+  "caseAgainst": "A halving of the annual average across two five-year windows is large enough to require explanation, and consolidation has not been demonstrated as its cause. The capacity argument raises rather than settles the question of why an audit body's staffing was allowed to fall by nearly seven thousand posts. Defence audit reaching zero in 2020, with the most recent defence report dating to 2017, is not explicable by consolidation. Reports adverse to the government on a major expressway and a flagship health scheme were followed by the transfer of officers who worked on them, explained as administrative convenience. Eighty-six former civil servants wrote to the President on the subject in November 2023.",
+  "revisitTrigger": "Confidence moves to high only on retrieval of the two primary documents: the New Indian Express RTI reply and the underlying list behind the 400-report review. Retrieval should also resolve whether the 2015 peak is 55 or 53, per P-58.",
   "seriesRefs": [
    "cag-union-audit-reports-tabled"
   ],
   "provenanceRefs": [
-   "P-53"
+   "P-53",
+   "P-58"
   ],
   "sources": [
    {
-    "name": "RTI reply reported by The New Indian Express, March 2021",
+    "name": "RTI reply obtained by The New Indian Express, reported March 2021",
     "url": "https://cag.gov.in/",
     "tier": "T4"
    },
    {
-    "name": "Review of tabled CAG reports, The Hindu, December 2023",
+    "name": "Review of over 400 CAG reports published 2010-2023, reported December 2023",
     "url": "https://cag.gov.in/",
     "tier": "T4"
    }
   ],
-  "confidence": "low",
+  "confidence": "medium",
   "asOf": "2026-08-01"
  }
 ]
