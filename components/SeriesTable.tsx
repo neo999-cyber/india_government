@@ -168,7 +168,7 @@ export function SeriesTable({
                     const point = series.points.find((p) => p.country === c && p.period === period);
                     return (
                       <td key={c} className="num">
-                        {point ? <Value point={point} /> : <span className="t-note">—</span>}
+                        {point ? <Value point={point} denominator={series.denominator} /> : <span className="t-note">—</span>}
                       </td>
                     );
                   })
@@ -178,7 +178,7 @@ export function SeriesTable({
                     return (
                       <>
                         <td className="num">
-                          {point ? <Value point={point} /> : <span className="t-note">—</span>}
+                          {point ? <Value point={point} denominator={series.denominator} /> : <span className="t-note">—</span>}
                         </td>
                         <td className="t-note">{point?.note ?? ''}</td>
                       </>

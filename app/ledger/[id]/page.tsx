@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getLedger, getProvenance, getSeries, ledger as allLedger } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
-import { Absences, CaveatFlag, SourceList } from '@/components/marks';
+import { Absences, CaveatFlag, DifferentFactsMark, SourceList } from '@/components/marks';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -49,6 +49,9 @@ export default async function LedgerDetail({ params }: Props) {
       <p className="source-line">
         {TERM_LABELS[l.term]} · researched as of {l.asOf}
       </p>
+
+      {/* Below the assessment tag: it qualifies what "contested" means for this record. */}
+      {l.differentFacts ? <DifferentFactsMark note={l.differentFactsNote} /> : null}
 
       {/* The caveat sits above the summary, not below it: it qualifies the claim the
           summary makes, and a reader who stops after one paragraph must still have it. */}

@@ -220,6 +220,13 @@
         "lok-sabha-term"
       ],
       "description": "What the period axis counts. Defaults to calendar-year. lok-sabha-term means each point is a Lok Sabha term identified by its first year, so the spacing is electoral rather than annual and the points must not be read as a yearly series."
+    },
+    "denominator": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "What the number is measured against, stated so it can render on the face of the value. A conviction rate of 0.25% and one of 93% can be the same enforcement record measured two ways (P-52), so a rate without its denominator is not a figure a reader can use. Null is a real value meaning the denominator is not yet established — it does not mean \"not applicable\", and the gate rejects it on a series that expresses a rate and carries P-52."
     }
   },
   "allOf": [

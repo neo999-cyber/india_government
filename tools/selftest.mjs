@@ -93,6 +93,7 @@ const ISOLATED = [
   { dir: 'pair-inverted', rule: 'pair-inverted', expect: 'the wrong way round' },
   { dir: 'reason-kind-missing', rule: 'reason-kind' },
   { dir: 'absence-dispute-bare', rule: 'absence-dispute', expect: 'must not be asserted bare' },
+  { dir: 'denominator-unstated', rule: 'denominator-stated', expect: 'expresses a rate' },
 ];
 
 /**

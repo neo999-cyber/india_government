@@ -10,7 +10,7 @@ import {
 } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
 import { DOMAINS, type Domain } from '@/lib/types';
-import { CaveatFlag, StatusKey, StatusTally, TierTag } from '@/components/marks';
+import { CaveatFlag, DifferentFactsMark, StatusKey, StatusTally, TierTag } from '@/components/marks';
 
 type Props = { params: Promise<{ domain: string }> };
 
@@ -147,6 +147,7 @@ export default async function DomainPage({ params }: Props) {
                       <td>
                         <Link href={`/ledger/${x.id}/`}>{x.title}</Link>
                         {x.caveat ? <CaveatFlag caveat={x.caveat} variant="inline" /> : null}
+                        {x.differentFacts ? <DifferentFactsMark variant="inline" /> : null}
                       </td>
                       <td className="t-note">{ASSESSMENT_LABELS[x.assessment]}</td>
                     </tr>

@@ -886,3 +886,52 @@ tr th:last-child {
 .absence-list > li + li.absence-disputed {
   border-top: none;
 }
+
+/* Each side rests on different facts. Dashed umber, the denominator-break family: the two
+   sides are divided by different things. Deliberately not red — a basis mismatch is not an
+   alert, and red stays reserved for deaths, alerts and break-seams. */
+.different-facts {
+  border-top: 1px dashed var(--shift);
+  border-bottom: 1px dashed var(--shift);
+  background: var(--shift-soft);
+  padding: 0.6rem 0.85rem;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.different-facts .label {
+  color: var(--shift);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.different-facts p {
+  margin: 0;
+  max-width: var(--measure);
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+}
+
+/* Compact form, for listings. Same umber, no frame — it sits under a title in a table cell. */
+.different-facts-inline {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  color: var(--shift);
+  white-space: normal;
+  overflow: visible;
+}
+
+/* The base a rate is measured against, on the face of the number (P-52). Quiet and inline —
+   it belongs to the figure, not to a tag row or a panel below it, because a rate whose base
+   is a click away gets quoted without its base. Wraps rather than truncating. */
+.denominator-inline {
+  margin-left: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--ink-dim);
+  white-space: normal;
+  overflow: visible;
+}
