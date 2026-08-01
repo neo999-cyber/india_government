@@ -236,7 +236,8 @@
   "provenanceRefs": [
    "P-52"
   ],
-  "notes": "Conviction rate is not a welfare measure and carries no directional reading in this instrument: a low rate is read by the government as due process functioning and by critics as evidence of misuse. Direction is deliberately unset."
+  "notes": "Conviction rate is not a welfare measure and carries no directional reading in this instrument: a low rate is read by the government as due process functioning and by critics as evidence of misuse. Direction is deliberately unset.",
+  "denominator": null
  },
  {
   "id": "sedition-cases-registered",
@@ -380,7 +381,8 @@
   ],
   "provenanceRefs": [
    "P-52"
-  ]
+  ],
+  "denominator": "persons convicted, against 5,892 cases initiated Jan 2015-Jun 2025"
  },
  {
   "id": "cag-union-audit-reports-tabled",

@@ -126,6 +126,14 @@ export interface Series {
    * red is reserved for deaths, alerts and break-seams). The field is carried so that when
    * something does, the null case is already stated in the data rather than defaulted.
    */
+  /**
+   * What the number is measured against, rendered on the face of the value.
+   *
+   * Null means the denominator is not yet established — never "not applicable". P-52 is the
+   * case: 0.25% and 93% are the same enforcement record on two bases, so a rate without its
+   * base is not a usable figure, and the gate rejects a null one on any rate carrying P-52.
+   */
+  denominator?: string | null;
   higherIsBetter?: boolean | null;
   /**
    * What the period axis counts. Absent means calendar years. `lok-sabha-term` means each
@@ -210,6 +218,19 @@ export interface LedgerRecord {
   caveat?: string;
   /** See `Series.unmeasured`. */
   unmeasured?: Unmeasured[];
+  /**
+   * True where the two sides are not weighting the same numbers differently but working from
+   * different quantities entirely, so both can be arithmetically correct at once. Distinct
+   * from an ordinary contested assessment, where both sides accept the same figures.
+   */
+  differentFacts?: boolean;
+  /** What each side is counting or resting on, and why both hold. */
+  differentFactsNote?: string;
+  /**
+   * A note on the assessment VALUE itself — typically that the existing vocabulary does not
+   * cleanly fit and the value may change on review.
+   */
+  assessmentNote?: string;
 }
 
 export type BiasDirection =

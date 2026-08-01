@@ -635,9 +635,9 @@ P-22 extended to `banking` and `macro`; P-46 to `banking`.
 | Fertiliser subsidy, actuals against BE | Department of Fertilisers | Medium |
 | NCRB ADSI 2023 and 2024 full tables | NCRB | Medium — 2023-24 figures currently secondary |
 | PMFBY loanee vs non-loanee split | PMFBY portal | Medium — P-49 bridge |
-# APPEND TO docs/verification-log.md — DO NOT REPLACE THE FILE
+## 08-01e — Phase 9 — Rights and institutions
+Correction 08-01e.1: courier instruction line removed from this entry after append; cycle letter added. No content change.
 
-## Phase 9 — Rights and institutions (research + data authoring)
 Authored: 2026-08-01. Author: conversation side.
 
 ### Drop contents

@@ -8,7 +8,24 @@ import { TIER_LABELS, formatValue } from '@/lib/format';
  * verified renders plain, approx carries "≈" and a dotted rule,
  * pending never renders without its flag.
  */
-export function Value({ point, unit }: { point: Point; unit?: string }) {
+export function Value({
+  point,
+  unit,
+  denominator,
+}: {
+  point: Point;
+  unit?: string;
+  /**
+   * Rendered inline, immediately after the figure — on the face of the number, not in a tag
+   * row and not in a panel below. A rate whose base is a click away is a rate that gets
+   * quoted without its base (P-52).
+   */
+  denominator?: string | null;
+}) {
+  // Separator only, no connective. The value is authored as a self-describing phrase
+  // ("persons convicted, against 5,892 cases initiated…"); prepending "against" here would
+  // both double the preposition and put the component's words into a research statement.
+  const base = denominator ? <span className="denominator-inline">· {denominator}</span> : null;
   // A pending point may hold no figure at all: the period is known to exist and nothing is
   // yet pinned to it. Rendered as an em-dash carrying the pending flag, never as a zero and
   // never as a bare blank that could be mistaken for "not applicable" (rules 3 and 4).
@@ -18,6 +35,7 @@ export function Value({ point, unit }: { point: Point; unit?: string }) {
         <span className="t-note">—</span>
         {unit ? <span className="t-note"> {unit}</span> : null}
         <span className="flag-pending">pending</span>
+        {base}
       </span>
     );
   }
@@ -27,6 +45,7 @@ export function Value({ point, unit }: { point: Point; unit?: string }) {
       <span className="figure">
         {figure}
         {unit ? <span className="t-note"> {unit}</span> : null}
+        {base}
       </span>
     );
   }
@@ -35,6 +54,7 @@ export function Value({ point, unit }: { point: Point; unit?: string }) {
       <span className="figure status-approx" title="Approximate — from a credible report; primary pull outstanding">
         ≈{figure}
         {unit ? <span className="t-note"> {unit}</span> : null}
+        {base}
       </span>
     );
   }
@@ -43,6 +63,7 @@ export function Value({ point, unit }: { point: Point; unit?: string }) {
       {figure}
       {unit ? <span className="t-note"> {unit}</span> : null}
       <span className="flag-pending">pending</span>
+      {base}
     </span>
   );
 }
@@ -252,6 +273,41 @@ export function Absences({
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+/**
+ * A record whose two sides are not weighing the same numbers.
+ *
+ * Distinct from an ordinary contested assessment, where both sides accept the same figures
+ * and disagree about what they mean. Here each side's case rests on a different quantity, and
+ * both can be arithmetically correct at once: the PMLA record is 15 convictions against 5,892
+ * cases initiated, or 93% of trials concluded, from the same Parliamentary replies.
+ *
+ * Styled in the dashed-umber family used for denominator breaks, NOT in red. Red is reserved
+ * for deaths, alerts and break-seams; a basis mismatch is none of those and must not read as
+ * an alarm. The umber says the same thing here as it does on a restated denominator: the two
+ * figures either side are divided by different things.
+ *
+ * The label avoids "counting" on purpose. It fits the conviction-rate and shutdown cases and
+ * not electoral bonds, where nobody is counting — one side's strongest fact is cash
+ * displacement, the other's are the RBI and ECI objections on record before notification.
+ */
+export function DifferentFactsMark({
+  note,
+  variant = 'block',
+}: {
+  note?: string;
+  variant?: 'inline' | 'block';
+}) {
+  if (variant === 'inline') {
+    return <span className="different-facts-inline">Each side rests on different facts</span>;
+  }
+  return (
+    <div className="different-facts">
+      <span className="label">Each side rests on different facts</span>
+      {note ? <p>{note}</p> : null}
     </div>
   );
 }

@@ -37,7 +37,7 @@ function Side({ side, position }: { side: ResolvedSide; position: 'a' | 'b' }) {
         </h3>
         {point ? (
           <p className="cu-headline">
-            <Value point={point} />{' '}
+            <Value point={point} denominator={side.series.denominator} />{' '}
             <span className="cu-unit">
               {side.series.unit} · {periodLabel(point.period, side.series.calendar)}
             </span>

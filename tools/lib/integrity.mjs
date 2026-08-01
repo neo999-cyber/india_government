@@ -55,6 +55,20 @@ const DENOMINATOR_REVISIONS = [{ provenance: 'P-10', date: '2026-02-27' }];
 const RATIO_TO_GDP_UNITS = new Set(['% of GDP']);
 
 /**
+ * The denominator dispute, and what counts as a rate for it.
+ *
+ * `expressesRate` is deliberately unit-based rather than clever: a unit that is a percentage
+ * or names a rate is a rate. Counts are not, which is why ed-pmla-cases-registered and
+ * ed-pmla-convictions do not trip the rule even though both carry P-52 — a count carries its
+ * own meaning, and the denominator on those is context rather than a base.
+ */
+const DENOMINATOR_DISPUTE = 'P-52';
+const RATE_UNIT_RE = /^(%|per ?cent|percent|percentage)\b|\brate\b|\bper ?cent\b/i;
+function expressesRate(series) {
+  return typeof series.unit === 'string' && RATE_UNIT_RE.test(series.unit.trim());
+}
+
+/**
  * Banking rules, mirroring lib/npa.ts for the site. The two must stay in step.
  * P-18: every NPA series states its reporting basis, because the unlabelled case is the
  * trap. P-17: an NPA ratio carrying the write-off dispute needs a denominator series
@@ -507,6 +521,23 @@ export function checkIntegrity(records, { today }) {
     if (typeof l.asOf === 'string' && l.asOf > today) {
       add('warn', 'future-date', r.file, where, `asOf ${l.asOf} is in the future (today ${today})`);
     }
+  }
+
+  // A rate carrying the denominator dispute must state its denominator (P-52).
+  //
+  // 0.25% and 93% are the same enforcement record measured two ways: cases initiated as the
+  // base, or trials concluded. A rate rendered without its base is not a figure a reader can
+  // use, and the two are quoted against each other in public argument precisely because the
+  // base is left off. Null is not an exemption — it means the denominator is not established,
+  // which is exactly the state this rule exists to surface.
+  for (const r of byLayer.series) {
+    const sr = r.record;
+    if (!sr || typeof sr !== 'object') continue;
+    const refs = Array.isArray(sr.provenanceRefs) ? sr.provenanceRefs : [];
+    if (!refs.includes(DENOMINATOR_DISPUTE)) continue;
+    if (!expressesRate(sr)) continue;
+    if (typeof sr.denominator === 'string' && sr.denominator.trim()) continue;
+    add('error', 'denominator-stated', r.file, label(r), `carries ${DENOMINATOR_DISPUTE} and expresses a rate (unit "${sr.unit}"), but states no denominator. A rate without its base is not usable: the same enforcement record reads 0.25% against cases initiated and 93% against trials concluded. Set "denominator" to the base this series actually uses, or establish which base the source used`);
   }
 
   // Blocking caveats (schema field as of phase 4b, on both series and ledger).
