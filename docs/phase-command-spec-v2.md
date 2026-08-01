@@ -1,0 +1,169 @@
+# `/phase` — specification v2
+
+**Status:** draft for review. Nothing built until approved.
+**Supersedes:** v1. Changes are listed in §9.
+**Scope:** runs one domain phase of the India Roadmap end to end, stopping only where judgement is genuinely needed.
+**Evidence base:** phase 9 and its seven follow-on cycles (08-01e through 08-01i.2). One phase. See §8.
+
+---
+
+## 1. What this is for
+
+A phase currently costs roughly a dozen human turns, of which about four carry judgement. The rest is relay.
+
+`/phase` runs the mechanical work hands-off and stops at named conditions. The design goal is not fewer stops. It is that **every stop is a real decision and no real decision passes silently**.
+
+The failure mode to avoid is automation that buries judgement rather than surfacing it.
+
+---
+
+## 2. Two standing design rules
+
+These govern every stage and every rule the command adds. Both were paid for.
+
+### Rule 1 — Observe the output, do not restate the belief
+A check that encodes the assumption which produced the data cannot detect that assumption failing. The absence-suppression bug survived three phases because the data was correct throughout: validation passed, typecheck was clean, the gate had nothing to catch. A validator rule encoding "the pair pools them" would have agreed with the belief that broke.
+
+**Consequence:** any rule about what the instrument *shows* reads built output. Only rules about what the instrument *holds* belong in the validator. Two details decide whether an output-reading rule works at all rather than always passing — strip script blocks first, since the framework embeds the whole payload as escaped JSON and a mark rendering nowhere is still present in the file; and normalise the needle on both sides so entity escaping cannot cause a false failure.
+
+### Rule 2 — Test the assertion against a real regression, not a model of one
+A rule must be proven to fail on an actually-broken build before it is trusted to pass on a working one. The first version of the reachability rule reported 185/185 on a genuinely regressed site, because it measured the one surface that could not fail. That result is only obtainable by building the broken thing.
+
+**Consequence:** trigger C's fixture requirement is not satisfied by a hand-written negative case alone. The fires-correctly fixture must derive from a real regressed build wherever the rule reads output.
+
+---
+
+## 3. Invocation
+
+```
+/phase <subject>
+```
+
+The argument names a **research subject**, not a domain enum value. Phase 7 produced eight records filed across seven domain values. A phase and a domain are not the same object.
+
+- `--dry` — run to the drop and stop before merge. Default for an unfamiliar subject.
+- `--from-research <path>` — author from an existing report.
+
+---
+
+## 4. Stages
+
+| # | Stage | Model | Stops? |
+|---|-------|-------|--------|
+| 1 | Scope | mechanical | trigger E |
+| 2 | Research | strongest available | — |
+| 3 | Author | strongest available | triggers A, B, D |
+| 4 | Self-check | mechanical | — |
+| 5 | Reconcile | mechanical | ID or schema drift, trigger F |
+| 6 | Merge and gate | mechanical | trigger C, any gate failure |
+| 7 | Reachability sweep | mechanical | any unreachable mark |
+| 8 | Log and PR | mechanical | — |
+
+### 1 — Scope
+Read the live domain enum, assessment definitions, tier definition, `reasonKind` definitions, and the existing ledger. Report which records already touch the subject, which domain values the phase will write into, whether a new enum value would be needed, and what must not be duplicated. Produces a scope note; does not author.
+
+### 2 — Research
+Gather evidence, prioritising primary sources. For every contested item, gather the strongest case on each side in its own terms using its own preferred data, and identify where the two rest on different facts rather than different weightings.
+
+Flag as first-class findings: data not collected, not published, withheld, never defined; definitional breaks; reporting-base shifts; and any quantity where two sources disagree.
+
+### 3 — Author
+Write series, ledger, provenance and pairs against the live schemas — read them, do not assume them.
+
+### 4 — Self-check
+Cross-references resolve. IDs unique. Every scored record carries both cases. Provenance `whatChanged` meets minimum length. No stray non-Latin script. **Arithmetic in every summary matches the authored points** — this caught a wrong ratio in the phase-9 debt patch before it shipped.
+
+### 5 — Reconcile
+Grep the true maximum ID per file; renumber and fix cross-references in one pass. Compare authored field names against live schemas. Rename where the concept exists under another name; extend additively where genuinely new.
+
+**Never drop a field to make validation pass. Never pre-filter a field the schema would reject.** See trigger F.
+
+### 6 — Merge and gate
+Merge to `/data`. Run validate, selftest, typecheck, build.
+
+### 7 — Reachability sweep
+**Per-record, corpus-wide, reading built output.**
+
+Every mark that can be suppressed by a competing view must render **on the page of the record that declares it**. Corpus-wide equality is insufficient: an index page listing every declaration satisfies a total-count assertion while individual record pages stay silent. That is precisely how the absence bug survived.
+
+Scope: every record in the instrument, not the phase's own. The regression that motivated this stage was invisible for three phases because nobody re-checked shipped records.
+
+Currently guarded classes: absence declarations, notes, caveats, `differentFactsNote`. Any new mark subject to view-delegation joins this list at the point it is built, not afterwards.
+
+Verify on production in an authenticated browser. If production is unreachable, say plainly what was checked instead.
+
+### 8 — Log and PR
+Draft the verification-log entry as an **append-only delta** with a cycle letter in the heading. Open a PR. Never append to the log directly.
+
+---
+
+## 5. Stop triggers
+
+A stop halts, reports, and waits. It does not guess.
+
+**A — Assessment value used outside its written definition.** Not "a new value is needed" — nothing complained when `reversed` covered both self-withdrawal and judicial strike-down. The check is whether the record's *mechanism* matches the definition's mechanism.
+
+**B — A figure whose basis cannot be established from the sources retrieved.** Never infer a base from convention. Retrieve the primary, or hold the points `pending` with the reason recorded. An uninterpretable number must not render.
+
+**C — A new gate rule without both fixtures.** Fires-correctly and stays-quiet. Where the rule reads output, the fires-correctly fixture derives from a real regressed build (Rule 2).
+
+**D — A definitional term applied outside its existing usage.** Covers every enum.
+
+**E — Scope collision.** The subject overlaps records authored in another phase. Report the collision and the proposed boundary; do not author across it unilaterally.
+
+**F — A migration would remove or pre-filter a field the schema rejects.** This converts a gate failure into prose somebody has to notice. Disarming the guard is worse than the original error.
+
+**Not triggers:** sharp disagreement in sources; a high proportion of `contested` records; a low-confidence record honestly marked. Properties of the material, not faults in the run.
+
+---
+
+## 6. The enum rule
+
+**An enum without written per-value meanings will be misapplied, and it will not surface until someone audits the values against their own text.**
+
+Four for four: `assessment` (`reversed` covering two mechanisms), `differentFacts` (seventeen records under a criterion that meant nothing), `tier` (grading the subject rather than the evidence), `reasonKind` (`never-defined` with one legitimate member in eight).
+
+**Consequence for this command:** stage 1 reads every enum's written definitions. If a value has none, that is trigger D before authoring begins — not after.
+
+---
+
+## 7. Model routing
+
+A recommendation with its reason, not a hard pin, so a run whose model is unavailable or routed away by safeguards degrades to a known-good model rather than the session default.
+
+| Stage | Recommended | Reason |
+|-------|-------------|--------|
+| 2 Research | strongest available | Cross-checking contested claims and spotting different-facts splits is reasoning work. |
+| 3 Author | **strongest available — the one that matters** | Argument pairs a hostile reader would concede is the hardest thing in the project, and it runs unsupervised between stops. No trigger catches a weak pair. |
+| 1, 4–8 | cheapest adequate | Mechanical. |
+
+Mechanism: per-subagent `model:`, or `model:` in command frontmatter; subagents accept `inherit`.
+
+**Caveat to carry in the command file.** Contested political material can trigger safeguards routing to a different model. In conversation a differently-shaped response is noticeable; unsupervised it is not. If a run's authoring reads differently than expected, routing is a plausible cause before quality is.
+
+---
+
+## 8. Known weaknesses
+
+**One phase of evidence.** Every trigger derives from phase 9. Expect 10–12 to add more. Ship thin, let it miss things, widen it.
+
+**Trigger C is a proxy.** Predicate ambiguity is not mechanically detectable; missing fixtures is a stand-in.
+
+**D and E depend on the run noticing the stretch** — the same judgement they exist to escalate.
+
+**Nothing catches a weak argument pair.** The largest remaining exposure. Mitigated only by model routing at stage 3 and human review of the PR diff. Read this line closely before approving.
+
+**Stage 7 proves reachability, not usefulness.** A mark can render on the right page and still be buried.
+
+**Gitignored fixture trees.** A fixture whose artefacts sit under an ignored path is silently dropped from the commit and passes because it is absent. Verify fixtures survive a clean clone.
+
+---
+
+## 9. Changes from v1
+
+1. Stage 7 rewritten: per-record, reading built output, corpus-wide in scope. v1's corpus-wide equality would have passed on the regressed build.
+2. §2 added — the two design rules, previously implicit in a single check.
+3. §6 added — the enum rule promoted from an observation to a stage-1 precondition.
+4. Trigger C strengthened: real regressed build required for output-reading rules.
+5. Stage 4 gains explicit arithmetic verification.
+6. Gitignored-fixture weakness added to §8.
