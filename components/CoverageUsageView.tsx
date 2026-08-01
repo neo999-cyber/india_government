@@ -109,6 +109,16 @@ export function CoverageUsageView({ pair, a, b }: { pair: Pair; a: ResolvedSide;
     return { value: av.value - bv.value, unit: a.series.unit };
   })();
 
+  // Entries already standing in a counterpart slot. A series can be both the coverage side
+  // and the source of the absence occupying the usage side — metro-network and
+  // household-electrification both are — and pooling those again renders the same
+  // declaration twice on one page. Identity comparison is exact here: the resolver returns
+  // the very entry object off the loaded record.
+  const consumed = new Set([a, b].flatMap((side) => (side.kind === 'absence' ? [side.entry] : [])));
+  const pooled = [a, b].flatMap((side) =>
+    side.kind === 'series' ? (side.series.unmeasured ?? []).filter((u) => !consumed.has(u)) : [],
+  );
+
   const refs = pair.provenanceRefs ?? [];
 
   return (
@@ -137,6 +147,14 @@ export function CoverageUsageView({ pair, a, b }: { pair: Pair; a: ResolvedSide;
         <Side side={a} position="a" />
         <Side side={b} position="b" />
       </div>
+
+      {/* Absences declared by either SERIES side, pooled at the pair's own width.
+          Without this they render nowhere: the series page suppresses its own block when a
+          pair view takes over, on the assumption the pair pools them, and between phase 4d
+          and this fix the pair did not. Four declarations were invisible, including the
+          PMAY-G occupancy absence the Absence mark was generalised for. A side resolved to
+          `absence` already renders its entry in the slot above, so it is not pooled twice. */}
+      <Absences items={pooled} heading="Not measured in this chain" />
 
       <p className="cu-gap">
         <span className="label">The gap</span>{' '}

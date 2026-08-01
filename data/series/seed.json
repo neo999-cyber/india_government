@@ -1810,9 +1810,9 @@
   "unmeasured": [
    {
     "what": "Whether rising female participation is paid market entry, reclassified unpaid work, or distress entry",
-    "why": "PLFS counts unpaid helpers as employed and has no instrument to separate the three. The ILO modelled estimate for India is about 32% against PLFS's 41.7%, which is itself a signal of definitional divergence.",
+    "why": "PLFS counts unpaid helpers as employed and has no instrument to separate the three. The ILO modelled estimate for India is about 32% against PLFS's 41.7%, which is itself a signal of definitional divergence. Reclassified never-defined to not-collected on 2026-08-01: the quantity is defined and the denominator is defined; what is missing is collection on that base, not an agreed definition.",
     "wouldFill": "A time-use-linked labour module, or a PLFS supplement distinguishing paid from unpaid activity within household enterprises",
-    "reasonKind": "never-defined"
+    "reasonKind": "not-collected"
    }
   ],
   "notes": "Baseline: rural female participation fell 49.4% (2004-05) to 35.8% (2011-12) on the phase-1 figures. India's rate remains the lowest in the peer panel on ILO-modelled estimates."
@@ -3755,9 +3755,9 @@
   "unmeasured": [
    {
     "what": "National functional coverage — the share of ALL rural households receiving water to Mission standards",
-    "why": "The 76% figure is a share of CERTIFIED households, a subset of connected ones, so it cannot be combined with the 82% connection rate to yield a national figure.",
+    "why": "The 76% figure is a share of CERTIFIED households, a subset of connected ones, so it cannot be combined with the 82% connection rate to yield a national figure. Reclassified never-defined to not-collected on 2026-08-01: the quantity is defined and the denominator is defined; what is missing is collection on that base, not an agreed definition.",
     "wouldFill": "A functionality assessment sampling all rural households rather than certified villages",
-    "reasonKind": "never-defined"
+    "reasonKind": "not-collected"
    }
   ]
  },
@@ -6891,8 +6891,8 @@
   "unmeasured": [
    {
     "what": "Whether Soil Health Card recommendations changed farmer practice",
-    "why": "Cards distributed are counted; adoption is not measured as a routine metric. Only ad-hoc academic evaluations exist.",
-    "reasonKind": "never-defined",
+    "why": "Cards distributed are counted; adoption is not measured as a routine metric. Only ad-hoc academic evaluations exist. Reclassified never-defined to not-collected on 2026-08-01: the quantity is defined and the denominator is defined; what is missing is collection on that base, not an agreed definition.",
+    "reasonKind": "not-collected",
     "wouldFill": "A national adoption and impact survey with a defined practice-change indicator"
    }
   ]
@@ -6964,9 +6964,9 @@
   "unmeasured": [
    {
     "what": "Population-scale health outcomes from reduced solid-fuel exposure",
-    "why": "The scheme's stated rationale was health, but no population-level outcome study links Ujjwala to respiratory or maternal health change.",
+    "why": "The scheme's stated rationale was health, but no population-level outcome study links Ujjwala to respiratory or maternal health change. Reclassified never-defined to not-collected on 2026-08-01: the quantity is defined and the denominator is defined; what is missing is collection on that base, not an agreed definition.",
     "wouldFill": "A cohort or difference-in-differences study on household air pollution exposure",
-    "reasonKind": "never-defined"
+    "reasonKind": "not-collected"
    },
    {
     "what": "Refill rates after December 2018",

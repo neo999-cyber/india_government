@@ -1,357 +1,357 @@
 [
-  {
-    "id": "L-0034",
-    "title": "Pradhan Mantri Ujjwala Yojana",
-    "date": "2016-05",
-    "term": "T1",
-    "domains": [
-      "welfare",
-      "environment"
-    ],
-    "type": "reform",
-    "summary": "Deposit-free LPG connections to women in poor households, identified from SECC 2011. Roughly 10.3 crore connections released, taking national LPG coverage from about 62% to 94-99%.",
-    "claimAtLaunch": "Free households from solid cooking fuel, reducing household air pollution and the health burden it imposes on women and children. Target 5 crore by 2019, raised to 8 crore in 2018, then extended further under Ujjwala 2.0.",
-    "whatHappened": "Connections were delivered at scale and ahead of target. Refills were not. CAG Report No. 14 of 2019 found the year-one cohort averaged 3.66 refills a year, falling to 3.21 for the 3.18 crore with a year or more of tenure by December 2018, against a general-consumer benchmark above six. Of that cohort, 17.61% never returned for a second refill and 33.02% took only one to three. The CAG recorded that average refill consumption was declining, and flagged commercial diversion and beneficiary-identification problems. Subsidised refills were cut from twelve to nine in 2025 and nine to four in 2026.",
-    "assessment": "partly",
-    "caseFor": "A connection is a precondition for any clean-fuel use, and near-universal LPG access was achieved in under a decade in a country where solid-fuel cooking was the norm — an infrastructure result no predecessor came close to. Refill rates understate progress because many households use LPG as a supplementary rather than sole fuel, which still displaces some biomass. The targeted ₹300 subsidy from 2023 and state top-ups such as Uttar Pradesh's two free refills show the affordability constraint being addressed rather than ignored.",
-    "caseAgainst": "The scheme's stated purpose was a clean-fuel transition and the health benefit that follows, not the distribution of cylinders. On its own regulator's evidence, a third of beneficiaries took three refills or fewer in a year and a sixth never returned at all, which means most households continued burning biomass for most cooking. Cutting subsidised refills from twelve to four while cylinder prices rose works directly against the usage problem the scheme exists to solve, and no population-scale health benefit has been demonstrated.",
-    "shockExposure": "The 2020-2022 cylinder price rise and the COVID free-refill scheme both distort the refill series — of 24 crore free refills offered in FY2020-21, only about 60% were taken up by September 2020, itself evidence of a demand rather than supply constraint.",
-    "seriesRefs": [
-      "ujjwala-connections",
-      "ujjwala-refills"
-    ],
-    "provenanceRefs": [
-      "P-22"
-    ],
-    "sources": [
-      {
-        "name": "CAG Report No. 14 of 2019 on PMUY",
-        "url": "https://cag.gov.in/",
-        "tier": "T1"
-      }
-    ],
-    "confidence": "high",
-    "asOf": "2026-07-31"
-  },
-  {
-    "id": "L-0035",
-    "title": "Swachh Bharat Mission",
-    "date": "2014-10-02",
-    "term": "T1",
-    "domains": [
-      "welfare",
-      "human-development"
-    ],
-    "type": "reform",
-    "summary": "National sanitation campaign. Over 10 crore individual household toilets built, with rural India declared Open Defecation Free on 2 October 2019, followed by ODF-Plus and ODF-Plus Model phases.",
-    "claimAtLaunch": "Eliminate open defecation in rural India by October 2019, the 150th anniversary of Gandhi's birth.",
-    "whatHappened": "Latrine ownership rose enormously. Behaviour changed less. The government's NARSS 2018-19 reported 93.1% of rural households with toilets and 96.5% usage among those with access. The r.i.c.e. SQUAT panel, revisiting the same households it surveyed in 2014 across Bihar, Madhya Pradesh, Rajasthan and Uttar Pradesh, found open defecation among people over two fell from 70% to 44%, and that 23% of latrine-owners were still defecating in the open — identical to 2014.",
-    "assessment": "partly",
-    "caseFor": "Reducing open defecation from 70% to 44% in the four hardest states in four years is a very large public-health achievement by any historical standard, and the r.i.c.e. figures — the most critical independent source — themselves document it. Construction was the binding constraint for the majority who did switch, and mass campaigns of this kind rarely move behaviour faster. Part of the survey divergence is instrument design rather than misreporting: grouped household questions structurally understate open defecation relative to person-by-person questions.",
-    "caseAgainst": "The ODF declaration was a coverage claim presented as a behavioural outcome, and the government's own 96.5% usage figure is irreconcilable with independent panel evidence from the states that mattered most. That latrine-owners' open defecation was unchanged at 23% since 2014 shows construction did not shift the practice among those who already had the option, which was the harder and more important half of the problem. Twin-pit design, pit-emptying taboos, water availability and caste attitudes to latrine use were under-addressed.",
-    "shockExposure": "None material to the 2014-2019 window; COVID disrupted the ODF-Plus phase that followed.",
-    "seriesRefs": [
-      "sanitation-basic"
-    ],
-    "provenanceRefs": [
-      "P-24",
-      "P-22"
-    ],
-    "sources": [
-      {
-        "name": "Swachh Bharat Mission dashboard",
-        "url": "https://swachhbharatmission.ddws.gov.in/",
-        "tier": "T1"
-      }
-    ],
-    "confidence": "high",
-    "asOf": "2026-07-31"
-  },
-  {
-    "id": "L-0036",
-    "title": "Jal Jeevan Mission",
-    "date": "2019-08-15",
-    "term": "T2",
-    "domains": [
-      "infrastructure",
-      "welfare"
-    ],
-    "type": "reform",
-    "summary": "Rural piped-water mission raising household tap connections from 3.23 crore (16.71% of rural households) at launch to roughly 82% by mid-2026.",
-    "claimAtLaunch": "A functional household tap connection for every rural household by 2024, with an outlay of ₹3.60 trillion.",
-    "whatHappened": "Coverage expanded very fast but the deadline slipped to 2028 under JJM 2.0, with the outlay raised to about ₹8.69 lakh crore in March 2026. The Ministry's own 2024 Functionality Assessment across 19,812 certified villages found 98% of households had a tap while only about 76% received water meeting Mission standards and 83% the minimum quantity. Ghost-tap reporting was documented in Manipur, and state functionality varied widely.",
-    "assessment": "partly",
-    "caseFor": "Taking rural piped-water coverage from one household in six to four in five within seven years is among the fastest infrastructure expansions of its kind anywhere, and the government published a functionality assessment that exposed its own shortfall rather than concealing it. JJM 2.0 explicitly shifts the success metric from connections to reliable service delivery through Gram Panchayats, which is the correct response to the finding.",
-    "caseAgainst": "A quarter of certified households do not receive water meeting the Mission's own standards, so the headline coverage figure overstates delivery by roughly that margin. Certification measures infrastructure installed rather than water delivered, which builds the overstatement into the reporting system. Groundwater depletion and arsenic, fluoride and salinity contamination threaten the durability of what has been built, and the original deadline was missed by four years.",
-    "shockExposure": "COVID disrupted the 2020-21 construction season, which accounts for part of the deadline slippage but not the functionality gap.",
-    "seriesRefs": [
-      "jjm-tap-coverage",
-      "jjm-functionality"
-    ],
-    "provenanceRefs": [
-      "P-25"
-    ],
-    "sources": [
-      {
-        "name": "JJM Functionality Assessment 2024, reported",
-        "url": "https://www.business-standard.com/",
-        "tier": "T4"
-      }
-    ],
-    "confidence": "medium",
-    "asOf": "2026-07-31"
-  },
-  {
-    "id": "L-0037",
-    "title": "Pradhan Mantri Awas Yojana",
-    "date": "2015-06",
-    "dateEnd": "2029-03",
-    "term": "T1",
-    "domains": [
-      "welfare",
-      "infrastructure"
-    ],
-    "type": "reform",
-    "summary": "Rural and urban housing programmes. PMAY-G reached about 3.87 crore houses sanctioned and 2.95 crore completed by February 2026, against an overall objective of 4.95 crore by 2029.",
-    "claimAtLaunch": "Housing for All by 2022 — pucca houses with basic amenities for every household lacking one.",
-    "whatHappened": "The 2022 deadline was missed. PMAY-U was extended to December 2025 and PMAY-U 2.0 announced for a further crore urban houses; PMAY-G was extended in August 2024 with two crore more rural houses to 2029. A sanctioned-to-completed gap of roughly 0.9 crore persists, with a further gap between completion and occupation. Beneficiary selection still rests on SECC 2011, supplemented by Awaas+ and revised exclusion criteria in 2024.",
-    "assessment": "partly",
-    "caseFor": "Nearly three crore completed rural houses is a larger delivery than any predecessor programme, with higher per-unit assistance and better specifications than the UPA's Indira Awaas Yojana, and with amenity convergence tying each house to a toilet, an LPG connection and a tap. Deadline extensions reflect the target being raised as capacity grew, not simply failure to deliver.",
-    "caseAgainst": "Housing for All by 2022 was the promise and it was not met; the target has been extended twice and now runs to 2029. The urban shortage rose from 1.88 crore in 2012 to about 2.9 crore in 2018 on ICRIER's estimate, far outpacing units delivered. Selection on a fifteen-year-old SECC embeds exclusion errors, and unit costs have not kept pace with construction inflation, pushing the beneficiary contribution beyond what the poorest can raise.",
-    "shockExposure": "COVID halted construction through 2020-21 and raised material costs thereafter, which explains part but not all of the slippage.",
-    "seriesRefs": [
-      "pmay-g-houses"
-    ],
-    "provenanceRefs": [
-      "P-22",
-      "P-04"
-    ],
-    "sources": [
-      {
-        "name": "Ministry of Rural Development / PIB",
-        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192&reg=3&lang=2",
-        "tier": "T1"
-      }
-    ],
-    "confidence": "medium",
-    "asOf": "2026-07-31"
-  },
-  {
-    "id": "L-0038",
-    "title": "PMGKAY free foodgrain and the NFSA exclusion",
-    "date": "2020-04",
-    "dateEnd": "2028-12",
-    "term": "T2",
-    "domains": [
-      "welfare",
-      "poverty"
-    ],
-    "type": "reform",
-    "summary": "Free 5 kg of grain per person per month from April 2020 as COVID relief, merged into the NFSA in December 2022 and extended to December 2028 at an approved ₹11.80 lakh crore. About 80.67 crore persons are covered.",
-    "claimAtLaunch": "Prevent hunger during the pandemic, then guarantee free rather than subsidised grain to NFSA beneficiaries.",
-    "whatHappened": "The COVID phases cost about ₹3.91 lakh crore over 28 months and reached hundreds of millions using the existing NFSA and One Nation One Ration Card rails, which handled roughly 30 crore portability transactions in eleven months of 2024. But NFSA coverage ratios remain fixed on Census 2011: Drèze, Khera and Mungikar estimated over 100 million people excluded, and Drèze put the figure above 120 million in 2025, since population projections imply about 920 million should be covered against 806 million actual.",
-    "assessment": "partly",
-    "caseFor": "This was one of the largest food-transfer operations ever mounted, executed quickly on rails that already existed, and it plausibly prevented mass hunger during the sharpest economic contraction in India's post-independence history. Portability genuinely served migrants, who had previously lost entitlements on moving. Extending free grain for five years past the emergency converted relief into durable support.",
-    "caseAgainst": "More than 100 million people are excluded from a statutory entitlement because the denominators are fifteen years stale — a discrete, known and correctable failure that has gone uncorrected for years. The provision is cereal-only, omitting pulses and oils, so it addresses calories rather than nutrition, which is where India's deficit actually lies. Drèze argues the scheme largely rebrands existing NFSA entitlements while adding a modest price subsidy.",
-    "shockExposure": "The scheme is a COVID artefact by origin; separating its effect from the pandemic's is impossible by construction. The 2022 food-price shock raised its value and its cost simultaneously.",
-    "seriesRefs": [
-      "nfsa-covered"
-    ],
-    "provenanceRefs": [
-      "P-04",
-      "P-23"
-    ],
-    "sources": [
-      {
-        "name": "PIB, food security and DBT",
-        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192&reg=3&lang=2",
-        "tier": "T1"
-      }
-    ],
-    "confidence": "high",
-    "asOf": "2026-07-31"
-  },
-  {
-    "id": "L-0039",
-    "title": "Ayushman Bharat PM-JAY",
-    "date": "2018-09-23",
-    "term": "T1",
-    "domains": [
-      "welfare",
-      "human-development"
-    ],
-    "type": "reform",
-    "summary": "Publicly funded health insurance offering ₹5 lakh of annual hospitalisation cover per family, extended in September 2024 to all citizens aged 70 and above. About 12.69 crore admissions authorised and over ₹1.92 lakh crore of claims approved by June 2026.",
-    "claimAtLaunch": "Protect the poorest 40% of households from catastrophic health expenditure.",
-    "whatHappened": "Cards created, admissions authorised and claims paid diverge by an order of magnitude, with 24-30 crore cards against 12.69 crore cumulative admissions. The 2023 CAG performance audit found roughly 7.5 lakh beneficiaries linked to a single mobile number, ₹6.97 crore paid for treating 3,446 patients recorded as dead, and 78,396 cases of the same patient admitted to multiple hospitals simultaneously. The Health Ministry responded that the scheme is entitlement-based rather than enrolment-based. Public health spending stands at about 1.7-1.9% of GDP against the National Health Policy 2017 target of 2.5% by 2025, with the Union share falling from 0.37% to 0.29% of GDP.",
-    "assessment": "partly",
-    "caseFor": "Twelve and a half crore hospitalisations financed for households that would otherwise have sold assets or gone without is a real and large transfer of risk away from the poor, and the public share of total health expenditure rose from 29% to 48% over the period. Extending cover to everyone over seventy addressed the group with the highest hospitalisation risk. Database errors, while serious, concern records rather than the treatments actually delivered and paid for.",
-    "caseAgainst": "The scheme covers hospitalisation only, while medicines and diagnostics — roughly two-thirds of out-of-pocket spending — remain uncovered, so it misses the dominant source of catastrophic health expenditure. Out-of-pocket spending remains around 47-48%. The CAG findings indicate the beneficiary database cannot support the coverage claims made from it. And the National Health Policy's own 2.5% target was missed while the Union's share of health spending fell, meaning insurance expanded as public provision contracted.",
-    "shockExposure": "COVID both suppressed routine hospitalisation in 2020-21 and demonstrated the value of the cover, pulling the utilisation series in both directions.",
-    "seriesRefs": [
-      "pmjay-cards",
-      "pmjay-admissions",
-      "health-exp-union"
-    ],
-    "provenanceRefs": [
-      "P-27"
-    ],
-    "sources": [
-      {
-        "name": "CAG performance audit of PM-JAY, 2023",
-        "url": "https://cag.gov.in/",
-        "tier": "T1"
-      }
-    ],
-    "confidence": "high",
-    "asOf": "2026-07-31"
-  },
-  {
-    "id": "L-0040",
-    "title": "MGNREGA under an inheriting government",
-    "date": "2014-05",
-    "dateEnd": "2026-03",
-    "term": "T1",
-    "domains": [
-      "welfare",
-      "employment",
-      "federalism"
-    ],
-    "type": "episode",
-    "summary": "A statutory employment guarantee enacted in 2005, publicly disparaged by the Prime Minister in February 2015 as a living monument to the previous government's failures, retained and heavily used throughout the period.",
-    "whatHappened": "Person-days totalled roughly 2,923 crore across FY2014-15 to FY2024-25, against about 1,660 crore over the preceding eight years, peaking at a record 389 crore in FY2020-21 when over ₹1.1 trillion was spent and 7.8 crore households completed 100 days. Allocations are chronically set below demand and revised upward mid-year, with wage liabilities carried into the following year. In FY2024-25 funds ran out with a reported ₹9,860 crore deficit by January 2025 and no revised allocation for the first time in five years. The Aadhaar-Based Payment System became compulsory in January 2024 after repeated extensions, and about 1.46 crore workers were net-deleted from job cards in FY2023-24. In FY2024-25 registrations rose 8.6% while employment delivery fell 7.1%. West Bengal's funds have been suspended since 2022.",
-    "assessment": "contested",
-    "caseFor": "The government retained, funded and scaled a scheme it inherited and had publicly criticised, and when the pandemic hit it absorbed the returning migrant workforce at a scale nothing else could have. Total person-days over the period substantially exceed the previous government's record. Aadhaar-based payment and digital attendance address real and long-documented problems of ghost workers and muster-roll fraud, and some deletions removed genuinely ineligible records.",
-    "caseAgainst": "A demand-driven legal guarantee cannot be budget-capped without being rationed, and the pattern here is systematic: allocations below demand, mid-year exhaustion, wages paid late in breach of the statutory fifteen-day rule, and liabilities pushed into the next year. Registrations rising while delivery falls is the signature of suppressed rather than absent demand. Deleting 1.46 crore workers in a single year through an authentication mandate is exclusion operating as administration, and suspending an entire state's funds for four years turns a statutory entitlement into a discretionary transfer.",
-    "shockExposure": "COVID drove the FY2020-21 record and makes the subsequent decline ambiguous between normalising demand and administrative suppression — which is precisely why the registrations-versus-delivery divergence matters as evidence.",
-    "seriesRefs": [
-      "mgnrega-persondays"
-    ],
-    "provenanceRefs": [
-      "P-28"
-    ],
-    "sources": [
-      {
-        "name": "LibTech India MGNREGA tracking",
-        "url": "https://libtech.in/",
-        "tier": "T4"
-      }
-    ],
-    "confidence": "high",
-    "asOf": "2026-07-31",
-    "unmeasured": [
-      {
-        "what": "MGNREGA work demanded but not recorded",
-        "why": "The scheme is demand-driven but only work PROVIDED is counted; suppressed demand leaves no trace in the series, so rationing and falling need are indistinguishable in the data.",
-        "wouldFill": "Independent demand surveys; LibTech's registration-versus-delivery divergence is the closest available proxy",
-        "reasonKind": "never-defined"
-      }
-    ]
-  },
-  {
-    "id": "L-0041",
-    "title": "PM-KISAN and the doubling of farmers' income",
-    "date": "2019-02",
-    "term": "T2",
-    "domains": [
-      "welfare",
-      "macro"
-    ],
-    "type": "reform",
-    "summary": "Unconditional income support of ₹6,000 a year in three instalments to landholding farmers, with over ₹4.09 lakh crore disbursed across 21 instalments, set against the separate 2016 commitment to double farmers' income by 2022.",
-    "claimAtLaunch": "Supplement farm household income and, alongside other measures, double farmers' income by 2022 on the Dalwai committee framework, which required about 10.4% annual real growth.",
-    "whatHappened": "Transfers reached 9.4-9.7 crore farmers per instalment, down about 2.3 crore from the peak after mandatory Aadhaar e-KYC and land-record verification removed ineligible recipients. The NSSO Situation Assessment Surveys show average monthly agricultural household income rising from ₹6,426 in 2012-13 to ₹10,218 in 2018-19, about 59% nominal but only around 15% real, with crop income up roughly 23% nominal. No Situation Assessment Survey has been conducted since 2019, so the 2022 target is formally unverifiable.",
-    "assessment": "failed",
-    "caseFor": "PM-KISAN itself works as designed: it is transparent, reaches nine and a half crore households directly, and the verification-driven deletions demonstrate a targeting system that functions. Income doubling was always contingent on factors beyond one transfer scheme, and COVID intervened in the final two years of the target window. NITI Aayog's GDP-based estimates suggest more progress than the survey data capture.",
-    "caseAgainst": "The doubling commitment was specific, dated and publicly repeated, and the only authoritative measurement instrument shows roughly 15% real income growth over six years against a target requiring 10.4% a year. The absence of any post-2019 survey means the flagship agricultural promise of the period cannot be verified at all, which is itself a finding. PM-KISAN's ₹6,000 is un-indexed and small against input-cost inflation, and its land-title basis excludes tenant farmers and landless labourers — the poorest in agriculture.",
-    "shockExposure": "COVID disrupted 2020 and 2021, the last two years of the target window, and the 2022 fertiliser price shock raised input costs sharply. Neither explains the shortfall in the pre-COVID years the survey data cover.",
-    "seriesRefs": [
-      "pmkisan-beneficiaries"
-    ],
-    "sources": [
-      {
-        "name": "PM-KISAN portal / PIB",
-        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192&reg=3&lang=2",
-        "tier": "T1"
-      }
-    ],
-    "confidence": "medium",
-    "asOf": "2026-07-31",
-    "unmeasured": [
-      {
-        "what": "Farmer household income after 2018-19",
-        "why": "No Situation Assessment Survey has been conducted since 2019, so the 2022 doubling target cannot be evaluated against the only authoritative instrument.",
-        "wouldFill": "A post-2019 NSSO Situation Assessment Survey of Agricultural Households",
-        "reasonKind": "not-collected"
-      }
-    ]
-  },
-  {
-    "id": "L-0042",
-    "title": "Nutrition outcomes and the anaemia reversal",
-    "date": "2015-16",
-    "dateEnd": "2021-03",
-    "term": "T1",
-    "domains": [
-      "human-development",
-      "welfare"
-    ],
-    "type": "episode",
-    "summary": "Between NFHS-4 (2015-16) and NFHS-5 (2019-21), child stunting fell 38.4% to 35.5% and wasting 21% to 19.3%, while severe wasting rose slightly and anaemia in children aged 6-59 months worsened sharply from 58.6% to 67.1%.",
-    "whatHappened": "Coverage-linked indicators — immunisation, institutional delivery, sanitation and clean-fuel access — improved substantially over the same period, while the nutritional outcomes those inputs are meant to produce improved only marginally or deteriorated. NFHS-6 fieldwork has been delayed and its publication status is uncertain as of mid-2026, so the anaemia reversal remains the last authoritative national reading.",
-    "assessment": "contested",
-    "caseFor": "Stunting, wasting and underweight all improved, and the improvement continued a long-run trend under a government that expanded the delivery infrastructure for nutrition. Anaemia measurement may not be comparable across rounds if haemoglobin testing methods differed, which would make the apparent reversal partly artefactual. Much of the NFHS-5 fieldwork overlapped the pandemic, when service delivery and household diets were both disrupted.",
-    "caseAgainst": "Anaemia rising by more than eight percentage points in children, and rising in women too, is a large deterioration in the outcome that welfare delivery is ultimately meant to produce, and it occurred while every input indicator improved. That divergence is the strongest available evidence that coverage gains did not translate into nutritional outcomes, and it sits directly against the claim that scheme delivery reduced deprivation.",
-    "shockExposure": "NFHS-5 fieldwork spanned 2019-21 and overlapped COVID, which confounds attribution — but the anaemia increase is too large to be attributed to the pandemic alone, and the pre-pandemic phase of fieldwork already showed the trend.",
-    "seriesRefs": [
-      "stunting-under5",
-      "wasting-under5",
-      "anaemia-children"
-    ],
-    "provenanceRefs": [
-      "P-29"
-    ],
-    "sources": [
-      {
-        "name": "National Family Health Survey rounds 4 and 5",
-        "url": "https://rchiips.org/nfhs/",
-        "tier": "T1"
-      }
-    ],
-    "confidence": "medium",
-    "asOf": "2026-07-31",
-    "caveat": "The anaemia comparison across NFHS rounds is NOT confirmed methodologically sound: haemoglobin testing method may have differed between NFHS-4 and NFHS-5, which would make part of the 58.6% to 67.1% reversal artefactual. Verify against NFHS-5 methodology documentation before citing the reversal as settled."
-  },
-  {
-    "id": "L-0043",
-    "title": "Multidimensional poverty exit claim",
-    "date": "2024-01",
-    "term": "T3",
-    "domains": [
-      "poverty",
-      "welfare"
-    ],
-    "type": "episode",
-    "summary": "NITI Aayog's discussion paper claimed 24.82 crore people exited multidimensional poverty between 2013-14 and 2022-23, with the headcount falling from 29.17% to 11.28%.",
-    "whatHappened": "The claim became the government's principal poverty statistic in the absence of comparable consumption-based estimates between 2011-12 and 2022-23. UNDP-OPHI's global MPI separately reported about 415 million exiting between 2005-06 and 2019-21.",
-    "assessment": "contested",
-    "caseFor": "The MPI measures deprivation directly rather than inferring it from consumption, which is defensible and internationally established, and the underlying NFHS data are independent of the schemes being assessed. On any of the available measures — MPI, the 2022-23 HCES reconstructions, or UNDP-OPHI — deprivation fell substantially over the decade, and the direction is not seriously disputed by anyone.",
-    "caseAgainst": "The MPI's indicators are cooking fuel, sanitation, housing, drinking water and bank accounts — precisely the outputs of Ujjwala, Swachh Bharat, PMAY, Jal Jeevan and Jan Dhan. Scheme delivery therefore improves the poverty measure mechanically, whether or not the output converted into use, so the statistic cannot serve as independent confirmation that those schemes worked. A NITI member has acknowledged that a scheme targets each of the twelve indicators. Consumption-based estimates for the same period range from under 5% to about 8.6% depending on method, which is a range too wide to support a precise headline.",
-    "shockExposure": "The measurement window spans COVID, and the absence of any comparable consumption survey across the period is the deeper problem — the MPI filled a vacuum rather than winning an argument.",
-    "provenanceRefs": [
-      "P-26",
-      "P-23",
-      "P-03"
-    ],
-    "sources": [
-      {
-        "name": "NITI Aayog national MPI discussion paper",
-        "url": "https://www.niti.gov.in/",
-        "tier": "T1"
-      }
-    ],
-    "confidence": "high",
-    "asOf": "2026-07-31",
-    "caveat": "This figure cannot serve as independent evidence that welfare schemes worked. The MPI's indicators are the outputs of the schemes being assessed, so delivery improves the measure mechanically whether or not the output converted into sustained use. See P-26."
-  }
+ {
+  "id": "L-0034",
+  "title": "Pradhan Mantri Ujjwala Yojana",
+  "date": "2016-05",
+  "term": "T1",
+  "domains": [
+   "welfare",
+   "environment"
+  ],
+  "type": "reform",
+  "summary": "Deposit-free LPG connections to women in poor households, identified from SECC 2011. Roughly 10.3 crore connections released, taking national LPG coverage from about 62% to 94-99%.",
+  "claimAtLaunch": "Free households from solid cooking fuel, reducing household air pollution and the health burden it imposes on women and children. Target 5 crore by 2019, raised to 8 crore in 2018, then extended further under Ujjwala 2.0.",
+  "whatHappened": "Connections were delivered at scale and ahead of target. Refills were not. CAG Report No. 14 of 2019 found the year-one cohort averaged 3.66 refills a year, falling to 3.21 for the 3.18 crore with a year or more of tenure by December 2018, against a general-consumer benchmark above six. Of that cohort, 17.61% never returned for a second refill and 33.02% took only one to three. The CAG recorded that average refill consumption was declining, and flagged commercial diversion and beneficiary-identification problems. Subsidised refills were cut from twelve to nine in 2025 and nine to four in 2026.",
+  "assessment": "partly",
+  "caseFor": "A connection is a precondition for any clean-fuel use, and near-universal LPG access was achieved in under a decade in a country where solid-fuel cooking was the norm — an infrastructure result no predecessor came close to. Refill rates understate progress because many households use LPG as a supplementary rather than sole fuel, which still displaces some biomass. The targeted ₹300 subsidy from 2023 and state top-ups such as Uttar Pradesh's two free refills show the affordability constraint being addressed rather than ignored.",
+  "caseAgainst": "The scheme's stated purpose was a clean-fuel transition and the health benefit that follows, not the distribution of cylinders. On its own regulator's evidence, a third of beneficiaries took three refills or fewer in a year and a sixth never returned at all, which means most households continued burning biomass for most cooking. Cutting subsidised refills from twelve to four while cylinder prices rose works directly against the usage problem the scheme exists to solve, and no population-scale health benefit has been demonstrated.",
+  "shockExposure": "The 2020-2022 cylinder price rise and the COVID free-refill scheme both distort the refill series — of 24 crore free refills offered in FY2020-21, only about 60% were taken up by September 2020, itself evidence of a demand rather than supply constraint.",
+  "seriesRefs": [
+   "ujjwala-connections",
+   "ujjwala-refills"
+  ],
+  "provenanceRefs": [
+   "P-22"
+  ],
+  "sources": [
+   {
+    "name": "CAG Report No. 14 of 2019 on PMUY",
+    "url": "https://cag.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0035",
+  "title": "Swachh Bharat Mission",
+  "date": "2014-10-02",
+  "term": "T1",
+  "domains": [
+   "welfare",
+   "human-development"
+  ],
+  "type": "reform",
+  "summary": "National sanitation campaign. Over 10 crore individual household toilets built, with rural India declared Open Defecation Free on 2 October 2019, followed by ODF-Plus and ODF-Plus Model phases.",
+  "claimAtLaunch": "Eliminate open defecation in rural India by October 2019, the 150th anniversary of Gandhi's birth.",
+  "whatHappened": "Latrine ownership rose enormously. Behaviour changed less. The government's NARSS 2018-19 reported 93.1% of rural households with toilets and 96.5% usage among those with access. The r.i.c.e. SQUAT panel, revisiting the same households it surveyed in 2014 across Bihar, Madhya Pradesh, Rajasthan and Uttar Pradesh, found open defecation among people over two fell from 70% to 44%, and that 23% of latrine-owners were still defecating in the open — identical to 2014.",
+  "assessment": "partly",
+  "caseFor": "Reducing open defecation from 70% to 44% in the four hardest states in four years is a very large public-health achievement by any historical standard, and the r.i.c.e. figures — the most critical independent source — themselves document it. Construction was the binding constraint for the majority who did switch, and mass campaigns of this kind rarely move behaviour faster. Part of the survey divergence is instrument design rather than misreporting: grouped household questions structurally understate open defecation relative to person-by-person questions.",
+  "caseAgainst": "The ODF declaration was a coverage claim presented as a behavioural outcome, and the government's own 96.5% usage figure is irreconcilable with independent panel evidence from the states that mattered most. That latrine-owners' open defecation was unchanged at 23% since 2014 shows construction did not shift the practice among those who already had the option, which was the harder and more important half of the problem. Twin-pit design, pit-emptying taboos, water availability and caste attitudes to latrine use were under-addressed.",
+  "shockExposure": "None material to the 2014-2019 window; COVID disrupted the ODF-Plus phase that followed.",
+  "seriesRefs": [
+   "sanitation-basic"
+  ],
+  "provenanceRefs": [
+   "P-24",
+   "P-22"
+  ],
+  "sources": [
+   {
+    "name": "Swachh Bharat Mission dashboard",
+    "url": "https://swachhbharatmission.ddws.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0036",
+  "title": "Jal Jeevan Mission",
+  "date": "2019-08-15",
+  "term": "T2",
+  "domains": [
+   "infrastructure",
+   "welfare"
+  ],
+  "type": "reform",
+  "summary": "Rural piped-water mission raising household tap connections from 3.23 crore (16.71% of rural households) at launch to roughly 82% by mid-2026.",
+  "claimAtLaunch": "A functional household tap connection for every rural household by 2024, with an outlay of ₹3.60 trillion.",
+  "whatHappened": "Coverage expanded very fast but the deadline slipped to 2028 under JJM 2.0, with the outlay raised to about ₹8.69 lakh crore in March 2026. The Ministry's own 2024 Functionality Assessment across 19,812 certified villages found 98% of households had a tap while only about 76% received water meeting Mission standards and 83% the minimum quantity. Ghost-tap reporting was documented in Manipur, and state functionality varied widely.",
+  "assessment": "partly",
+  "caseFor": "Taking rural piped-water coverage from one household in six to four in five within seven years is among the fastest infrastructure expansions of its kind anywhere, and the government published a functionality assessment that exposed its own shortfall rather than concealing it. JJM 2.0 explicitly shifts the success metric from connections to reliable service delivery through Gram Panchayats, which is the correct response to the finding.",
+  "caseAgainst": "A quarter of certified households do not receive water meeting the Mission's own standards, so the headline coverage figure overstates delivery by roughly that margin. Certification measures infrastructure installed rather than water delivered, which builds the overstatement into the reporting system. Groundwater depletion and arsenic, fluoride and salinity contamination threaten the durability of what has been built, and the original deadline was missed by four years.",
+  "shockExposure": "COVID disrupted the 2020-21 construction season, which accounts for part of the deadline slippage but not the functionality gap.",
+  "seriesRefs": [
+   "jjm-tap-coverage",
+   "jjm-functionality"
+  ],
+  "provenanceRefs": [
+   "P-25"
+  ],
+  "sources": [
+   {
+    "name": "JJM Functionality Assessment 2024, reported",
+    "url": "https://www.business-standard.com/",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0037",
+  "title": "Pradhan Mantri Awas Yojana",
+  "date": "2015-06",
+  "dateEnd": "2029-03",
+  "term": "T1",
+  "domains": [
+   "welfare",
+   "infrastructure"
+  ],
+  "type": "reform",
+  "summary": "Rural and urban housing programmes. PMAY-G reached about 3.87 crore houses sanctioned and 2.95 crore completed by February 2026, against an overall objective of 4.95 crore by 2029.",
+  "claimAtLaunch": "Housing for All by 2022 — pucca houses with basic amenities for every household lacking one.",
+  "whatHappened": "The 2022 deadline was missed. PMAY-U was extended to December 2025 and PMAY-U 2.0 announced for a further crore urban houses; PMAY-G was extended in August 2024 with two crore more rural houses to 2029. A sanctioned-to-completed gap of roughly 0.9 crore persists, with a further gap between completion and occupation. Beneficiary selection still rests on SECC 2011, supplemented by Awaas+ and revised exclusion criteria in 2024.",
+  "assessment": "partly",
+  "caseFor": "Nearly three crore completed rural houses is a larger delivery than any predecessor programme, with higher per-unit assistance and better specifications than the UPA's Indira Awaas Yojana, and with amenity convergence tying each house to a toilet, an LPG connection and a tap. Deadline extensions reflect the target being raised as capacity grew, not simply failure to deliver.",
+  "caseAgainst": "Housing for All by 2022 was the promise and it was not met; the target has been extended twice and now runs to 2029. The urban shortage rose from 1.88 crore in 2012 to about 2.9 crore in 2018 on ICRIER's estimate, far outpacing units delivered. Selection on a fifteen-year-old SECC embeds exclusion errors, and unit costs have not kept pace with construction inflation, pushing the beneficiary contribution beyond what the poorest can raise.",
+  "shockExposure": "COVID halted construction through 2020-21 and raised material costs thereafter, which explains part but not all of the slippage.",
+  "seriesRefs": [
+   "pmay-g-houses"
+  ],
+  "provenanceRefs": [
+   "P-22",
+   "P-04"
+  ],
+  "sources": [
+   {
+    "name": "Ministry of Rural Development / PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192&reg=3&lang=2",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0038",
+  "title": "PMGKAY free foodgrain and the NFSA exclusion",
+  "date": "2020-04",
+  "dateEnd": "2028-12",
+  "term": "T2",
+  "domains": [
+   "welfare",
+   "poverty"
+  ],
+  "type": "reform",
+  "summary": "Free 5 kg of grain per person per month from April 2020 as COVID relief, merged into the NFSA in December 2022 and extended to December 2028 at an approved ₹11.80 lakh crore. About 80.67 crore persons are covered.",
+  "claimAtLaunch": "Prevent hunger during the pandemic, then guarantee free rather than subsidised grain to NFSA beneficiaries.",
+  "whatHappened": "The COVID phases cost about ₹3.91 lakh crore over 28 months and reached hundreds of millions using the existing NFSA and One Nation One Ration Card rails, which handled roughly 30 crore portability transactions in eleven months of 2024. But NFSA coverage ratios remain fixed on Census 2011: Drèze, Khera and Mungikar estimated over 100 million people excluded, and Drèze put the figure above 120 million in 2025, since population projections imply about 920 million should be covered against 806 million actual.",
+  "assessment": "partly",
+  "caseFor": "This was one of the largest food-transfer operations ever mounted, executed quickly on rails that already existed, and it plausibly prevented mass hunger during the sharpest economic contraction in India's post-independence history. Portability genuinely served migrants, who had previously lost entitlements on moving. Extending free grain for five years past the emergency converted relief into durable support.",
+  "caseAgainst": "More than 100 million people are excluded from a statutory entitlement because the denominators are fifteen years stale — a discrete, known and correctable failure that has gone uncorrected for years. The provision is cereal-only, omitting pulses and oils, so it addresses calories rather than nutrition, which is where India's deficit actually lies. Drèze argues the scheme largely rebrands existing NFSA entitlements while adding a modest price subsidy.",
+  "shockExposure": "The scheme is a COVID artefact by origin; separating its effect from the pandemic's is impossible by construction. The 2022 food-price shock raised its value and its cost simultaneously.",
+  "seriesRefs": [
+   "nfsa-covered"
+  ],
+  "provenanceRefs": [
+   "P-04",
+   "P-23"
+  ],
+  "sources": [
+   {
+    "name": "PIB, food security and DBT",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192&reg=3&lang=2",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0039",
+  "title": "Ayushman Bharat PM-JAY",
+  "date": "2018-09-23",
+  "term": "T1",
+  "domains": [
+   "welfare",
+   "human-development"
+  ],
+  "type": "reform",
+  "summary": "Publicly funded health insurance offering ₹5 lakh of annual hospitalisation cover per family, extended in September 2024 to all citizens aged 70 and above. About 12.69 crore admissions authorised and over ₹1.92 lakh crore of claims approved by June 2026.",
+  "claimAtLaunch": "Protect the poorest 40% of households from catastrophic health expenditure.",
+  "whatHappened": "Cards created, admissions authorised and claims paid diverge by an order of magnitude, with 24-30 crore cards against 12.69 crore cumulative admissions. The 2023 CAG performance audit found roughly 7.5 lakh beneficiaries linked to a single mobile number, ₹6.97 crore paid for treating 3,446 patients recorded as dead, and 78,396 cases of the same patient admitted to multiple hospitals simultaneously. The Health Ministry responded that the scheme is entitlement-based rather than enrolment-based. Public health spending stands at about 1.7-1.9% of GDP against the National Health Policy 2017 target of 2.5% by 2025, with the Union share falling from 0.37% to 0.29% of GDP.",
+  "assessment": "partly",
+  "caseFor": "Twelve and a half crore hospitalisations financed for households that would otherwise have sold assets or gone without is a real and large transfer of risk away from the poor, and the public share of total health expenditure rose from 29% to 48% over the period. Extending cover to everyone over seventy addressed the group with the highest hospitalisation risk. Database errors, while serious, concern records rather than the treatments actually delivered and paid for.",
+  "caseAgainst": "The scheme covers hospitalisation only, while medicines and diagnostics — roughly two-thirds of out-of-pocket spending — remain uncovered, so it misses the dominant source of catastrophic health expenditure. Out-of-pocket spending remains around 47-48%. The CAG findings indicate the beneficiary database cannot support the coverage claims made from it. And the National Health Policy's own 2.5% target was missed while the Union's share of health spending fell, meaning insurance expanded as public provision contracted.",
+  "shockExposure": "COVID both suppressed routine hospitalisation in 2020-21 and demonstrated the value of the cover, pulling the utilisation series in both directions.",
+  "seriesRefs": [
+   "pmjay-cards",
+   "pmjay-admissions",
+   "health-exp-union"
+  ],
+  "provenanceRefs": [
+   "P-27"
+  ],
+  "sources": [
+   {
+    "name": "CAG performance audit of PM-JAY, 2023",
+    "url": "https://cag.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31"
+ },
+ {
+  "id": "L-0040",
+  "title": "MGNREGA under an inheriting government",
+  "date": "2014-05",
+  "dateEnd": "2026-03",
+  "term": "T1",
+  "domains": [
+   "welfare",
+   "employment",
+   "federalism"
+  ],
+  "type": "episode",
+  "summary": "A statutory employment guarantee enacted in 2005, publicly disparaged by the Prime Minister in February 2015 as a living monument to the previous government's failures, retained and heavily used throughout the period.",
+  "whatHappened": "Person-days totalled roughly 2,923 crore across FY2014-15 to FY2024-25, against about 1,660 crore over the preceding eight years, peaking at a record 389 crore in FY2020-21 when over ₹1.1 trillion was spent and 7.8 crore households completed 100 days. Allocations are chronically set below demand and revised upward mid-year, with wage liabilities carried into the following year. In FY2024-25 funds ran out with a reported ₹9,860 crore deficit by January 2025 and no revised allocation for the first time in five years. The Aadhaar-Based Payment System became compulsory in January 2024 after repeated extensions, and about 1.46 crore workers were net-deleted from job cards in FY2023-24. In FY2024-25 registrations rose 8.6% while employment delivery fell 7.1%. West Bengal's funds have been suspended since 2022.",
+  "assessment": "contested",
+  "caseFor": "The government retained, funded and scaled a scheme it inherited and had publicly criticised, and when the pandemic hit it absorbed the returning migrant workforce at a scale nothing else could have. Total person-days over the period substantially exceed the previous government's record. Aadhaar-based payment and digital attendance address real and long-documented problems of ghost workers and muster-roll fraud, and some deletions removed genuinely ineligible records.",
+  "caseAgainst": "A demand-driven legal guarantee cannot be budget-capped without being rationed, and the pattern here is systematic: allocations below demand, mid-year exhaustion, wages paid late in breach of the statutory fifteen-day rule, and liabilities pushed into the next year. Registrations rising while delivery falls is the signature of suppressed rather than absent demand. Deleting 1.46 crore workers in a single year through an authentication mandate is exclusion operating as administration, and suspending an entire state's funds for four years turns a statutory entitlement into a discretionary transfer.",
+  "shockExposure": "COVID drove the FY2020-21 record and makes the subsequent decline ambiguous between normalising demand and administrative suppression — which is precisely why the registrations-versus-delivery divergence matters as evidence.",
+  "seriesRefs": [
+   "mgnrega-persondays"
+  ],
+  "provenanceRefs": [
+   "P-28"
+  ],
+  "sources": [
+   {
+    "name": "LibTech India MGNREGA tracking",
+    "url": "https://libtech.in/",
+    "tier": "T4"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31",
+  "unmeasured": [
+   {
+    "what": "MGNREGA work demanded but not recorded",
+    "why": "The scheme is demand-driven but only work PROVIDED is counted; suppressed demand leaves no trace in the series, so rationing and falling need are indistinguishable in the data. Reclassified never-defined to not-collected on 2026-08-01: the quantity is defined and the denominator is defined; what is missing is collection on that base, not an agreed definition.",
+    "wouldFill": "Independent demand surveys; LibTech's registration-versus-delivery divergence is the closest available proxy",
+    "reasonKind": "not-collected"
+   }
+  ]
+ },
+ {
+  "id": "L-0041",
+  "title": "PM-KISAN and the doubling of farmers' income",
+  "date": "2019-02",
+  "term": "T2",
+  "domains": [
+   "welfare",
+   "macro"
+  ],
+  "type": "reform",
+  "summary": "Unconditional income support of ₹6,000 a year in three instalments to landholding farmers, with over ₹4.09 lakh crore disbursed across 21 instalments, set against the separate 2016 commitment to double farmers' income by 2022.",
+  "claimAtLaunch": "Supplement farm household income and, alongside other measures, double farmers' income by 2022 on the Dalwai committee framework, which required about 10.4% annual real growth.",
+  "whatHappened": "Transfers reached 9.4-9.7 crore farmers per instalment, down about 2.3 crore from the peak after mandatory Aadhaar e-KYC and land-record verification removed ineligible recipients. The NSSO Situation Assessment Surveys show average monthly agricultural household income rising from ₹6,426 in 2012-13 to ₹10,218 in 2018-19, about 59% nominal but only around 15% real, with crop income up roughly 23% nominal. No Situation Assessment Survey has been conducted since 2019, so the 2022 target is formally unverifiable.",
+  "assessment": "failed",
+  "caseFor": "PM-KISAN itself works as designed: it is transparent, reaches nine and a half crore households directly, and the verification-driven deletions demonstrate a targeting system that functions. Income doubling was always contingent on factors beyond one transfer scheme, and COVID intervened in the final two years of the target window. NITI Aayog's GDP-based estimates suggest more progress than the survey data capture.",
+  "caseAgainst": "The doubling commitment was specific, dated and publicly repeated, and the only authoritative measurement instrument shows roughly 15% real income growth over six years against a target requiring 10.4% a year. The absence of any post-2019 survey means the flagship agricultural promise of the period cannot be verified at all, which is itself a finding. PM-KISAN's ₹6,000 is un-indexed and small against input-cost inflation, and its land-title basis excludes tenant farmers and landless labourers — the poorest in agriculture.",
+  "shockExposure": "COVID disrupted 2020 and 2021, the last two years of the target window, and the 2022 fertiliser price shock raised input costs sharply. Neither explains the shortfall in the pre-COVID years the survey data cover.",
+  "seriesRefs": [
+   "pmkisan-beneficiaries"
+  ],
+  "sources": [
+   {
+    "name": "PM-KISAN portal / PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192&reg=3&lang=2",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-31",
+  "unmeasured": [
+   {
+    "what": "Farmer household income after 2018-19",
+    "why": "No Situation Assessment Survey has been conducted since 2019, so the 2022 doubling target cannot be evaluated against the only authoritative instrument.",
+    "wouldFill": "A post-2019 NSSO Situation Assessment Survey of Agricultural Households",
+    "reasonKind": "not-collected"
+   }
+  ]
+ },
+ {
+  "id": "L-0042",
+  "title": "Nutrition outcomes and the anaemia reversal",
+  "date": "2015-16",
+  "dateEnd": "2021-03",
+  "term": "T1",
+  "domains": [
+   "human-development",
+   "welfare"
+  ],
+  "type": "episode",
+  "summary": "Between NFHS-4 (2015-16) and NFHS-5 (2019-21), child stunting fell 38.4% to 35.5% and wasting 21% to 19.3%, while severe wasting rose slightly and anaemia in children aged 6-59 months worsened sharply from 58.6% to 67.1%.",
+  "whatHappened": "Coverage-linked indicators — immunisation, institutional delivery, sanitation and clean-fuel access — improved substantially over the same period, while the nutritional outcomes those inputs are meant to produce improved only marginally or deteriorated. NFHS-6 fieldwork has been delayed and its publication status is uncertain as of mid-2026, so the anaemia reversal remains the last authoritative national reading.",
+  "assessment": "contested",
+  "caseFor": "Stunting, wasting and underweight all improved, and the improvement continued a long-run trend under a government that expanded the delivery infrastructure for nutrition. Anaemia measurement may not be comparable across rounds if haemoglobin testing methods differed, which would make the apparent reversal partly artefactual. Much of the NFHS-5 fieldwork overlapped the pandemic, when service delivery and household diets were both disrupted.",
+  "caseAgainst": "Anaemia rising by more than eight percentage points in children, and rising in women too, is a large deterioration in the outcome that welfare delivery is ultimately meant to produce, and it occurred while every input indicator improved. That divergence is the strongest available evidence that coverage gains did not translate into nutritional outcomes, and it sits directly against the claim that scheme delivery reduced deprivation.",
+  "shockExposure": "NFHS-5 fieldwork spanned 2019-21 and overlapped COVID, which confounds attribution — but the anaemia increase is too large to be attributed to the pandemic alone, and the pre-pandemic phase of fieldwork already showed the trend.",
+  "seriesRefs": [
+   "stunting-under5",
+   "wasting-under5",
+   "anaemia-children"
+  ],
+  "provenanceRefs": [
+   "P-29"
+  ],
+  "sources": [
+   {
+    "name": "National Family Health Survey rounds 4 and 5",
+    "url": "https://rchiips.org/nfhs/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "medium",
+  "asOf": "2026-07-31",
+  "caveat": "The anaemia comparison across NFHS rounds is NOT confirmed methodologically sound: haemoglobin testing method may have differed between NFHS-4 and NFHS-5, which would make part of the 58.6% to 67.1% reversal artefactual. Verify against NFHS-5 methodology documentation before citing the reversal as settled."
+ },
+ {
+  "id": "L-0043",
+  "title": "Multidimensional poverty exit claim",
+  "date": "2024-01",
+  "term": "T3",
+  "domains": [
+   "poverty",
+   "welfare"
+  ],
+  "type": "episode",
+  "summary": "NITI Aayog's discussion paper claimed 24.82 crore people exited multidimensional poverty between 2013-14 and 2022-23, with the headcount falling from 29.17% to 11.28%.",
+  "whatHappened": "The claim became the government's principal poverty statistic in the absence of comparable consumption-based estimates between 2011-12 and 2022-23. UNDP-OPHI's global MPI separately reported about 415 million exiting between 2005-06 and 2019-21.",
+  "assessment": "contested",
+  "caseFor": "The MPI measures deprivation directly rather than inferring it from consumption, which is defensible and internationally established, and the underlying NFHS data are independent of the schemes being assessed. On any of the available measures — MPI, the 2022-23 HCES reconstructions, or UNDP-OPHI — deprivation fell substantially over the decade, and the direction is not seriously disputed by anyone.",
+  "caseAgainst": "The MPI's indicators are cooking fuel, sanitation, housing, drinking water and bank accounts — precisely the outputs of Ujjwala, Swachh Bharat, PMAY, Jal Jeevan and Jan Dhan. Scheme delivery therefore improves the poverty measure mechanically, whether or not the output converted into use, so the statistic cannot serve as independent confirmation that those schemes worked. A NITI member has acknowledged that a scheme targets each of the twelve indicators. Consumption-based estimates for the same period range from under 5% to about 8.6% depending on method, which is a range too wide to support a precise headline.",
+  "shockExposure": "The measurement window spans COVID, and the absence of any comparable consumption survey across the period is the deeper problem — the MPI filled a vacuum rather than winning an argument.",
+  "provenanceRefs": [
+   "P-26",
+   "P-23",
+   "P-03"
+  ],
+  "sources": [
+   {
+    "name": "NITI Aayog national MPI discussion paper",
+    "url": "https://www.niti.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-07-31",
+  "caveat": "This figure cannot serve as independent evidence that welfare schemes worked. The MPI's indicators are the outputs of the schemes being assessed, so delivery improves the measure mechanically whether or not the output converted into sustained use. See P-26."
+ }
 ]
