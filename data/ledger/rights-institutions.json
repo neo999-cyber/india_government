@@ -114,10 +114,10 @@
   ],
   "type": "reform",
   "summary": "Introduced through the Finance Act 2017 as a Money Bill, notified January 2018, with consequential amendments to the RBI Act, the Representation of the People Act, the Income Tax Act, the Companies Act and FCRA. The 7.5 per cent of net profit ceiling on corporate donations and the requirement to disclose party-wise contributions were both removed. A five-judge bench struck the scheme down unanimously in February 2024.",
-  "assessment": "reversed",
+  "assessment": "failed",
   "caseFor": "Before the scheme, the bulk of political funding in India was cash of unverifiable origin. Bonds moved donations into the banking system with KYC at the point of purchase, giving the state a record where previously there was none. Donor anonymity was defended as protection against retribution by parties that did not receive the donation - a concern with a real basis in a system where governments change and contracts follow. The scheme was enacted by Parliament and operated for six years under judicial scrutiny before being struck down.",
   "caseAgainst": "The RBI objected twice in September 2017 that a bearer instrument issued by a non-sovereign entity would erode faith in banknotes and create money-laundering and shell-company risk, and the Election Commission called the scheme a retrograde step for transparency and asked for its withdrawal. Both objections were on record before notification. Anonymity was asymmetric: the government could obtain SBI records while voters could not. Removing the profit ceiling permitted unlimited donations including by loss-making and newly incorporated companies. The Money Bill route bypassed the Rajya Sabha, where the government lacked a majority. Post-judgment disclosure showed the party in office at the Centre received just over half of all bond value redeemed, and reporting identified a substantial overlap between large purchasers and firms facing agency action.",
-  "assessmentNote": "DECISION PENDING: 'reversed' has so far meant a government withdrawing its own measure (the farm laws). Here the reversal was judicial. If the vocabulary is to distinguish self-reversal from judicial invalidation, this record and L-0086 both change value.",
+  "assessmentNote": "Struck down by a five-judge bench of the Supreme Court in February 2024, not withdrawn by the enacting authority. Under the definition now written into the schema, `reversed` is reserved for a measure whose enacting authority withdrew or repealed it, so judicial invalidation scores `failed` - the closest available value, the measure having neither achieved the objective stated at announcement nor remained law.",
   "differentFacts": true,
   "differentFactsNote": "The government's strongest fact is the displacement of cash. The critics' strongest facts are the contemporaneous RBI and ECI objections and the post-disclosure distribution. Neither is a rebuttal of the other; both can be true simultaneously.",
   "seriesRefs": [],
@@ -140,7 +140,8 @@
    }
   ],
   "confidence": "high",
-  "asOf": "2026-08-01"
+  "asOf": "2026-08-01",
+  "revisitTrigger": "Judicial invalidation currently scores `failed` for want of a distinct value. Re-open adding `struck-down` when a third judicially invalidated record enters the ledger - at two members the distinction may be a rights-and-institutions artefact rather than a general category. Check whether they cluster by domain when re-testing."
  },
  {
   "id": "L-0078",
@@ -237,10 +238,10 @@
   ],
   "type": "reform",
   "summary": "An April 2023 amendment to the Information Technology Rules 2021 empowered a government fact-check unit to identify content about central government business as fake, false or misleading, with intermediary safe harbour at stake. The Bombay High Court struck the amendment down in September 2024 as violating Articles 14, 19(1)(a) and 19(1)(g), after a split verdict resolved by a tie-breaker judge.",
-  "assessment": "reversed",
+  "assessment": "failed",
   "caseFor": "Coordinated falsehood about government programmes has real consequences, and the state holds the authoritative record on its own business, so identifying misstatement about it is within competence. The unit's designation did not itself criminalise speech; it operated on intermediary safe harbour. The measure was made by rule under an enacted statute and was tested in court, where the government defended it through a full hearing.",
   "caseAgainst": "The government would have been sole judge of the truth of statements about itself, with no independent appeal, which the Court found could not survive Article 19(1)(a). The categories fake, false and misleading were undefined, and misleading in particular covers accurate statements framed unfavourably. The practical effect on intermediaries was to make removal the safe default. A first-instance split verdict and then a strike-down is not a marginal defeat.",
-  "assessmentNote": "DECISION PENDING: same judicial-reversal question as L-0077.",
+  "assessmentNote": "Struck down by the Bombay High Court in September 2024, not withdrawn by the enacting authority. Under the definition now written into the schema, `reversed` is reserved for a measure whose enacting authority withdrew or repealed it, so judicial invalidation scores `failed` as the closest available value.",
   "seriesRefs": [],
   "provenanceRefs": [],
   "sources": [
@@ -256,7 +257,8 @@
    }
   ],
   "confidence": "high",
-  "asOf": "2026-08-01"
+  "asOf": "2026-08-01",
+  "revisitTrigger": "Judicial invalidation currently scores `failed` for want of a distinct value. Re-open adding `struck-down` when a third judicially invalidated record enters the ledger - at two members the distinction may be a rights-and-institutions artefact rather than a general category. Check whether they cluster by domain when re-testing."
  },
  {
   "id": "L-0081",

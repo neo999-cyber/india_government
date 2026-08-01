@@ -722,3 +722,36 @@ On this evidence a disputed measurement basis predicts argument-over-the-same-nu
 ## Final state
 
 Six records carry the mark: L-0023, L-0028, L-0029, L-0064, L-0066, L-0077. Only L-0077 survives from the original six. Label is now "These cases don't share a common measure"; styling unchanged, still dashed umber and never red.
+
+---
+
+# Verification log — cycle 2026-08-01g (assessment values defined; two records rescored)
+
+## The enum had no written meanings
+
+Seven assessment values had been carried since phase 1 as bare enum entries. Nothing anywhere said what any of them meant. That is how `reversed` came to cover two different mechanisms — a government repealing its own law, and a court striking one down — without the type ever objecting, and it is why the phase-9 drop arrived with two records provisionally scored `reversed` and a DECISION PENDING note attached to each.
+
+All seven now carry a one-line definition in `schemas/ledger.schema.json`. Prerequisite for the `/phase` work, which cannot aggregate values whose meanings are unwritten.
+
+**`reversed` means the enacting authority withdrew or repealed its own measure.** Judicial invalidation is not reversed: a court striking a measure down is not the enacting authority changing its mind, and collapsing the two loses precisely what distinguishes a government retreating under pressure from a government overruled.
+
+## Two records rescored
+
+- **L-0077 electoral bonds** — `reversed` to `failed`. Struck down by a five-judge Supreme Court bench, February 2024.
+- **L-0080 IT Rules fact-check unit** — `reversed` to `failed`. Struck down by the Bombay High Court, September 2024.
+
+Both carry an `assessmentNote` recording the mechanism and stating that `failed` is the closest available value under the definition, not a positive claim that judicial invalidation and self-withdrawal are the same thing.
+
+Observed after the change: **`reversed` has exactly one user in the whole ledger — L-0066, the farm laws.** Verified rather than assumed; the count before the change was three.
+
+Noted in passing: L-0077's superseded `assessmentNote` said the question also affected "L-0086", which is scored `too-early` and is not a judicial-invalidation record. The reference appears to have meant L-0080. It is gone with the note it sat in, recorded here so the discrepancy is not rediscovered.
+
+## Deferral, with a threshold
+
+A distinct `struck-down` value was not added. Both members are rights-and-institutions records, and at two members the distinction may be an artefact of that domain rather than a general category — every domain would have to carry a value that only one uses.
+
+`revisitTrigger` on both records states the condition: re-open when a **third** judicially invalidated record enters the ledger, and check whether they cluster by domain when re-testing. A third record from a different domain settles it as a general category; a third from rights and institutions confirms the artefact reading.
+
+## What this exposes about the vocabulary
+
+`failed` is now doing two jobs — the measure that did not work, and the measure a court removed. That is tolerable while it is stated on the record rather than inferred, which is what the `assessmentNote` is for. It is not tolerable silently, which is the state the enum was in until this cycle.
