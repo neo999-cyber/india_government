@@ -537,7 +537,14 @@ export function checkIntegrity(records, { today }) {
     if (!refs.includes(DENOMINATOR_DISPUTE)) continue;
     if (!expressesRate(sr)) continue;
     if (typeof sr.denominator === 'string' && sr.denominator.trim()) continue;
-    add('error', 'denominator-stated', r.file, label(r), `carries ${DENOMINATOR_DISPUTE} and expresses a rate (unit "${sr.unit}"), but states no denominator. A rate without its base is not usable: the same enforcement record reads 0.25% against cases initiated and 93% against trials concluded. Set "denominator" to the base this series actually uses, or establish which base the source used`);
+    // The rule guards RENDERED rates. A series whose every point is pending with no figure
+    // renders no rate at all, so there is nothing to mislabel — and firing here would push
+    // toward inventing a base for a number that is not shown, which is the opposite of what
+    // this exists to prevent. Withholding an undefendable figure is the correct response to
+    // being caught by this rule; rendering it bare is not.
+    const rendered = (Array.isArray(sr.points) ? sr.points : []).filter((pt) => pt && pt.value !== null);
+    if (rendered.length === 0) continue;
+    add('error', 'denominator-stated', r.file, label(r), `carries ${DENOMINATOR_DISPUTE} and renders ${rendered.length} rate value(s) (unit "${sr.unit}"), but states no denominator. A rate without its base is not usable: the same enforcement record reads 0.25% against cases initiated and 93% against trials concluded. Set "denominator" to the base this series actually uses, or establish which base the source used`);
   }
 
   // Blocking caveats (schema field as of phase 4b, on both series and ledger).
