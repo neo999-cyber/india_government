@@ -1,7 +1,7 @@
-# `/phase` — specification v2.1
+# `/phase` — specification v2.2
 
 **Status:** built. Implemented at `.claude/skills/phase/SKILL.md`.
-**Supersedes:** v2, revised in place after the first dry run. Changes from v1 in §9, from v2 in §10.
+**Supersedes:** v2.1, revised in place. Changes from v1 in §9, from v2 in §10, from v2.1 in §11.
 **Scope:** runs one domain phase of the India Roadmap end to end, stopping only where judgement is genuinely needed.
 **Evidence base:** phase 9 and its seven follow-on cycles (08-01e through 08-01i.2). One phase. See §8.
 
@@ -113,7 +113,10 @@ A stop halts, reports, and waits. It does not guess.
 
 **C — A new gate rule without both fixtures.** Fires-correctly and stays-quiet. Where the rule reads output, the fires-correctly fixture derives from a real regressed build (Rule 2).
 
-**D — A definitional term applied outside its existing usage.** Covers every enum.
+**D — A definitional term applied outside its existing usage, or created without one.** Covers every enum. Two limbs:
+
+- **Application** — a term used outside its existing usage, including a subject with no matching enum value. Diagnostic; fires against usage.
+- **Creation** — a term or value introduced without a written definition. Preventive (§6); fires at authoring time, before the value has any usage to be audited against.
 
 **E — Scope collision. Record-level, not phase-level.** The subject overlaps one or more individual records authored in another phase — a single record is enough to fire it. Report the collision and the proposed boundary; do not author across it unilaterally.
 
@@ -133,7 +136,11 @@ Five more found by the first dry run, all previously undefined: **`domain`** (14
 
 **Threshold — what counts as written.** A `description` qualifies only if it explains **what the values mean**, not what the field is. `term` qualifies: its 73 characters say "baseline = pre-May-2014, T1 = 2014-19…". `confidence` did not: it had no description at all, and a description reading "how confident the record is" would not have qualified either. The test is whether a reader could assign a value correctly from the text alone.
 
-**Consequence for this command:** stage 1 reads every enum's written definitions. If a value has none, that is trigger D before authoring begins — not after.
+**The rule as stated is diagnostic.** All nine cases were found by audit *after* misapplication. Nothing yet prevents the tenth.
+
+**Preventive form.** A new enum, or a new value added to an existing enum, ships with per-value definitions **in the same commit**, meeting the threshold above. **An enum value without a definition is not mergeable.** This is the half that can close the loop: the diagnostic half only ever runs after the value has users to be misapplied to.
+
+**Consequence for this command:** stage 1 reads every enum's written definitions. If a value has none, that is trigger D before authoring begins — not after. Stage 3 is bound by the preventive form: a value it introduces carries its definition into the same commit, or it does not land.
 
 ---
 
@@ -180,6 +187,10 @@ Selectable values in the current environment are `sonnet`, `opus`, `haiku`, `fab
 
 **Gitignored fixture trees.** A fixture whose artefacts sit under an ignored path is silently dropped from the commit and passes because it is absent. Verify fixtures survive a clean clone.
 
+**The three known-inconsistent enums are recorded, not resolved.** `directionOfBias` conflates two axes — four of seven values state a direction, three state a defect kind and carry 35 of 58 records. A split into direction and defect-kind is the likely fix and is **deliberately deferred**: resolving a taxonomy in the same pass that discovers it is how `differentFacts` shipped at seventeen records. Revisit as its own cycle, with both fixtures.
+
+`type` (`shock` covering both external disruptions and domestic failures) and `confidence` (ambiguous between the finding and its retrieval) are deferred on the same grounds. Until then a run reads the definitions as written, including the recorded inconsistency, and does not resolve one mid-phase.
+
 ---
 
 ## 9. Changes from v1
@@ -206,3 +217,15 @@ Revised in place after the first dry run (`/phase education --dry`, which halted
 7. §6 — **four for four becomes nine for nine**, naming the five the first dry run found.
 8. §7 — **`inherit` forbidden** for stages 2–3, with an explicit degradation chain and the environment's selectable model values recorded. v2's mechanism line offered `inherit` while its own rationale forbade the session default.
 9. §8 — **single-file counts** added as a known weakness.
+
+---
+
+## 11. Changes from v2.1
+
+One addition, in three places. v2.1's enum rule was diagnostic only — every one of the nine was caught by audit after the value was already in use, so nothing in it could have prevented the tenth.
+
+1. §6 — **the preventive half.** A new enum, or a new value on an existing enum, ships with per-value definitions in the same commit. An undefined value is not mergeable.
+2. §5 trigger D — **extended to creation.** D was written against application alone, which cannot fire on a value that has no usage yet. It now has two limbs, application and creation.
+3. §8 — **the three known-inconsistent enums recorded as deferred**, with the reason for deferring: `differentFacts` reached seventeen records because a taxonomy was resolved in the pass that discovered it.
+
+This is the last revision. Later evidence goes to the verification log and, if it changes behaviour, to a v3.
