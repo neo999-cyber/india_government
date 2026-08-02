@@ -956,3 +956,70 @@ education drop. Its written definition now excludes two mechanisms and admits on
 candidate arrives, the question to ask is whether the value is doing enough work to keep.
 
 **Threshold for revisiting `reversed` itself.** One user in `/data` (`L-0066`), none in the drop, two mechanisms excluded and one admitted. Re-open whether it earns its place if either a fourth candidate mechanism is excluded, or its user count reaches zero. **This is a threshold, not a plan to remove it** — a value with one correct user is doing work, and the test is whether it keeps rejecting more than it admits.
+
+---
+
+# Verification log — cycle 2026-08-02b (deferred: external review plan)
+
+**DEFERRED. Nothing to action now.** This is a forward-looking note, not a record of work
+done. It is here so the plan exists in writing before it is needed, and so the reasoning
+behind the sequencing survives the gap between now and phase 15.
+
+## What is already in place, and what it is not
+
+Three of the four reviews below are partly implemented, as authoring-time discipline:
+
+| review | already implemented as | where |
+|---|---|---|
+| adversarial | the both-cases rule — every scored record carries `caseFor` and `caseAgainst` | authoring time |
+| methodological | the provenance layer | authoring time |
+| factual | the tier and denominator gates | the build |
+
+**What none of them provides is independence. The author marked their own work.** That is
+the gap the plan closes, and it is not closed by making any of the three stricter.
+
+## Model-based passes — a filter, not a clearance
+
+Run a second model with **no history of this project**, cold:
+
+- **Factual** — the manifest rows plus source URLs, asked to *verify independently* rather
+  than to confirm.
+- **Adversarial** — ledger records with **no context on how they were made**, asked for the
+  strongest attack from each political direction **separately**.
+
+**Frame every prompt as attack, never as confirmation.** A model asked "is this fair" says
+yes. A model asked "find the worst record" finds things.
+
+These are a filter. They do not clear anything.
+
+## Human review — the two a model cannot cover
+
+- **One domain economist per contested domain**, for methodology. This needs knowledge of
+  Indian statistical practice that is not written down anywhere a model has read.
+- **One Indian media lawyer**, for the enforcement, electoral bonds and press freedom records
+  specifically: criminal defamation, identifiable individuals, IT Rules takedown exposure.
+
+## Timing
+
+- **Factual passes — incrementally, every few phases, on priority bands 1 and 2.** Do not
+  accumulate unverified rows to check cold at the end.
+- **Adversarial pass — needs the whole corpus. After phase 15.**
+- **Methodological and legal — after 15, before the design lock at 17.** Corrections change
+  data, and data changes rendering; doing it after the lock inverts that order.
+- **Phase 16 is the exception.** The counterfactual engine produces model output that
+  *resembles measurement*. It needs its own statistical review of the method **as it is
+  built**, not a general pass afterwards. And its rendering must be visually distinguishable
+  from measured data — **decide that before building, not after.**
+
+## The one thing no per-record review catches
+
+**Reviewers correct errors, not framing.** Every record can pass individually while the corpus
+carries an implicit argument nobody chose.
+
+So: commission one reviewer to read the whole instrument and answer only one question —
+**what is this instrument's implicit argument, and is it the intended one.**
+
+## Publication position
+
+**"Machine-audited, not independently reviewed" is defensible published openly.** It stops
+being defensible only if left implied.
