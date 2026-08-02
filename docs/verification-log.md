@@ -1983,3 +1983,111 @@ release."*
 practice, which the definition explicitly distinguishes from withholding — *"not merely absence of
 release"*. On the written definition these are `not-published`, not `withheld`. Reported, not
 reclassified: it changes an authored judgement and belongs with the route-authoring pass.
+
+---
+
+# Verification log — cycle 2026-08-02j (26 routes authored; gate GREEN)
+
+**Letter note: this is the cycle instructed as `2026-08-02i`.** That letter was already assigned
+earlier today to the back-link cycle, and the standing rule from cycle 31k is that letters are
+assigned once. Recorded as `j` rather than reusing `i` or renaming a published entry.
+
+## The gate is green
+
+```
+npm run validate           VALID — 0 errors, 85 warnings
+npm run validate:selftest  20/20 · 18/18 rules fire on tests/fixtures/broken
+npm run typecheck          clean
+npm run build              396 pages
+npm run reachability       397/397 (unmeasured 128/128 · caveat 99/99 · notes 163/163 · differentFactsNote 7/7)
+```
+
+**`unmeasured-route`: 26 errors → 0.** No error of any rule remains in the corpus.
+
+The 35 `unmeasured-route` **warnings** are unchanged at 35 (30 education, 5 live) and are a disjoint
+set — `not-collected` and `never-defined` absences that never carried a route and are not required
+to. The 26 that were errors now carry one and produce no finding at all.
+
+`selftest` failed once before this and the failure was real but not a data defect: `out/` predated
+these `/data` edits, so reachability was reading a stale build. Rebuilt, then clean.
+
+## 19 routes across 26 entries
+
+Every route names a holder and an instrument. **All 7 duplicated absences carry byte-identical
+`wouldFill` and `reasonKind`**, verified per pair after writing:
+
+| ledger entry | series entry |
+|---|---|
+| `L-0091[2]` | `school-closure-weeks-covid[1]` |
+| `L-0104[2]` | `higher-ed-enrolment[1]` |
+| `L-0106[3]` | `single-teacher-schools-udise[2]` |
+| `L-0107[2]` | `contract-teachers-share-government[2]` |
+| `nas-parakh-grade3-language[2]` | `nas-parakh-grade3-maths[2]` |
+| `nas-parakh-grade3-language[3]` | `nas-parakh-grade3-maths[3]` |
+| `nas-parakh-grade3-language[5]` | `nas-parakh-grade3-maths[5]` |
+
+12 singles + 7 pairs = 19 distinct routes over 26 entries.
+
+## FIVE `reasonKind` CORRECTIONS
+
+### `not-published` → `not-collected` (3)
+
+These asserted producibility that does not exist. The test is whether a holder could produce the
+thing under compulsion, and in each case nothing has been compiled to produce.
+
+- **`L-0090[2]`** A NIPUN Bharat annual report — *"Nothing compels a report that was never compiled.
+  Closes only if DoSEL acts on the Standing Committee's recommendation."*
+- **`L-0101[0]`** Any ministry statement defending the Samagra Shiksha withholding on its merits —
+  *"No instrument produces an argument that was never made."* An argument is not a record.
+- **`L-0107[3]`** Any national para-teacher / Shiksha Mitra / Vidya Volunteer figure — *"No national
+  aggregate is held… The route runs to state education departments, not the Centre."*
+
+The third is the sharpest: the Centre cannot produce what it does not hold, and filing it
+`not-published` pointed the route at the wrong government.
+
+### `withheld` → `not-published` (2)
+
+`nas-parakh-grade3-language[3]` and `nas-parakh-grade3-maths[3]`, the NAS/PARAKH item banks.
+
+`withheld` requires *"an identifiable refusal, not merely absence of release."* **No request,
+requester or date was ever recorded** — what the entries describe is a standing non-publication
+practice, which the definition explicitly excludes. Demoted to `not-published`, which is what the
+evidence supports.
+
+The route states the condition under which the original value would become correct:
+
+> An RTI to NCERT for the NAS and PARAKH item banks. Item security is a defensible ground for
+> refusal, since released items cannot be reused for trend measurement, so this request may
+> correctly fail. **A refusal is what would make `withheld` the right value; it is not the right
+> value now, because no refusal has been sought.**
+
+That is the honest shape: `withheld` is downstream of an act nobody has performed.
+
+## TWO ABSENCE TEXTS NARROWED
+
+Both were asking for something no holder has, which is how an absence acquires an unfillable route.
+
+- **`L-0097[2]`** — "A consolidated national register of NCTE recognition withdrawals" →
+  **"The NCTE recognition-withdrawal orders."** No body maintains the register; the four NCTE
+  Regional Committees hold the constituent orders. `why` updated to say so. Aggregation is the
+  requester's work, and the route says that.
+- **`L-0104[3]`** — "Whether the 47 per cent single-year rise in doctoral enrolment is real" →
+  **"AISHE's definitional and coverage-change notes between the 2022-23 and 2023-24 rounds, and
+  institution-level PhD enrolment for both years."** The old text named a conclusion; an absence
+  names a document. `why` updated to carry the reasoning and the records that would settle it.
+
+## The one enforceable route in the corpus
+
+**`L-0081[0]`**, published shutdown orders and Review Committee decisions:
+
+> The stronger instrument is the Supreme Court's direction in Anuradha Bhasin (January 2020),
+> reiterated January 2024, which requires publication independently of any request. **This is the
+> only absence in the corpus whose route is enforceable rather than requestable.**
+
+Every other route is a request that may be refused. This one is a direction already given.
+
+## Open, carried
+
+`agri-credit` → P-22 remains held: the instructed rejection reason is contradicted by P-22's own
+`notes`, which name agricultural credit as an explicit extension of its scope into banking. Needs a
+ruling — either the back-link is warranted or the notes need amending.
