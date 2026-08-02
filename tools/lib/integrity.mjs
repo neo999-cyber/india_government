@@ -612,7 +612,26 @@ export function checkIntegrity(records, { today }) {
         const what = String(u.what).slice(0, 60);
 
         if (typeof u.wouldFill !== 'string' || !u.wouldFill.trim()) {
-          add('warn', 'unmeasured-route', r.file, where, `unmeasured[${i}] ("${what}") names no wouldFill, so it states an absence without a route to closing it and does not reach the verification queue. Fine when no instrument for it exists — worth saying so if that is the case`);
+          /**
+           * Severity is DERIVED from reasonKind, not chosen, because two of the four values
+           * entail a route in their own written definitions:
+           *   not-published — "exists in a holder's hands, not released. The test is
+           *                    producibility under compulsion." If it is producible, something
+           *                    produces it, and that something is what wouldFill names.
+           *   withheld      — "requires an identifiable refusal, not merely absence of release."
+           *                    A refusal has a holder and a request, both already known.
+           * An absence on either value with no route contradicts the value it declares. That is
+           * a defect in the record, not a property of the world, so it is an error.
+           *
+           * not-collected and never-defined stay warnings: for those, no route may exist, and
+           * demanding one invites a placeholder. A placeholder route is worse than none — it
+           * enters the verification queue and cannot be worked.
+           */
+          const ENTAILS_A_ROUTE = new Set(['not-published', 'withheld']);
+          const entailed = ENTAILS_A_ROUTE.has(u.reasonKind);
+          add(entailed ? 'error' : 'warn', 'unmeasured-route', r.file, where, entailed
+            ? `unmeasured[${i}] ("${what}") is reasonKind "${u.reasonKind}" and names no wouldFill. That value asserts the data exists and is producible — ${u.reasonKind === 'withheld' ? 'withheld requires an identifiable refusal, so a holder and a request are already established' : 'not-published means producible under compulsion'} — so a route exists by the value's own definition and the record must name it: a holder and an instrument, not a placeholder`
+            : `unmeasured[${i}] ("${what}") names no wouldFill, so it states an absence without a route to closing it and does not reach the verification queue. Fine when no instrument for it exists — worth saying so if that is the case`);
         }
 
         // Every absence says what KIND it is. The schema leaves reasonKind optional so a

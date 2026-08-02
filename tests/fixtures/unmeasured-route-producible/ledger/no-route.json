@@ -1,0 +1,29 @@
+[
+  {
+    "id": "L-9402",
+    "title": "Record asserting a figure is producible and naming nothing that would produce it",
+    "date": "2021-03",
+    "term": "T2",
+    "domains": ["welfare"],
+    "type": "episode",
+    "summary": "Declares one not-published absence and one withheld absence, neither carrying wouldFill. Both values assert the data exists, so both entail a route, and the record names neither.",
+    "assessment": "contested",
+    "caseFor": "Present so the record fails on the missing routes alone, not on a missing case.",
+    "caseAgainst": "Present for the same reason.",
+    "unmeasured": [
+      {
+        "what": "A quantity the holder could produce under compulsion",
+        "why": "The holder has stated it maintains the figure and has declined to release it, so it exists and is producible. No route to it is named here, which is the defect this fixture pins.",
+        "reasonKind": "not-published"
+      },
+      {
+        "what": "A quantity whose release was specifically refused",
+        "why": "A request was made and refused in terms, which is what withheld requires, so both a holder and a request are already on the record. No route is named here.",
+        "reasonKind": "withheld"
+      }
+    ],
+    "sources": [{ "name": "Fixture, not a real source", "url": "https://example.org/", "tier": "T1" }],
+    "confidence": "low",
+    "asOf": "2026-08-01"
+  }
+]

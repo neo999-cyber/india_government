@@ -1,0 +1,91 @@
+# Bidirectional back-link triage — 83 candidates, unified corpus
+
+No reverse link was added. `affectsSeries` asymmetry is by design where the dispute does not reach the series.
+
+| series | provenance | reading | evidence |
+|---|---|---|---|
+| `aser-std3-reading` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `aser-std3-arithmetic` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `aser-std5-reading` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `aser-std5-arithmetic` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `aser-std3-reading-govt` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `aser-std3-reading-private` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `aser-std8-arithmetic` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `aser-out-of-school-15-16` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `aser-girls-11-14-not-enrolled` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `aser-private-share-rural` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `school-enrolment-total-udise` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `ger-primary-udise` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `ger-higher-secondary-udise` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `higher-ed-ger` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `literacy-rate-7plus` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `uapa-conviction-rate-ncrb` | P-52 | **LIKELY OMISSION** | lists 2 sibling(s) incl. `ed-pmla-cases-registered`; domain `governance` is covered — nothing distinguishes this series |
+| `agri-credit` | P-22 | **LIKELY OMISSION** | lists 6 sibling(s) incl. `ujjwala-connections`; domain `banking` is covered — nothing distinguishes this series |
+| `bank-writeoffs-cumulative-psb` | P-17 | **BY DESIGN** | cited by 8 series, lists 2 — a broad-scope dispute used as a lens |
+| `bank-writeoffs-cumulative-pvt` | P-17 | **BY DESIGN** | cited by 8 series, lists 2 — a broad-scope dispute used as a lens |
+| `bank-writeoffs-cumulative-scb` | P-17 | **BY DESIGN** | cited by 8 series, lists 2 — a broad-scope dispute used as a lens |
+| `credit-gdp-peer` | P-09 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 1, cited by 14) |
+| `credit-gdp-peer` | P-14 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 3, cited by 16) |
+| `credit-gdp-peer` | P-18 | **LIKELY OMISSION** | lists 3 sibling(s) incl. `scb-gross-npa`; domain `banking` is covered — nothing distinguishes this series |
+| `farmer-indebtedness` | P-46 | **BY DESIGN** | `affectsSeries` empty — the record scopes by domain, not by series (cited by 2) |
+| `npl-peer` | P-09 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 1, cited by 14) |
+| `npl-peer` | P-14 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 3, cited by 16) |
+| `npl-peer` | P-18 | **LIKELY OMISSION** | lists 3 sibling(s) incl. `scb-gross-npa`; domain `banking` is covered — nothing distinguishes this series |
+| `scb-gross-advances` | P-18 | **LIKELY OMISSION** | lists 3 sibling(s) incl. `scb-gross-npa`; domain `banking` is covered — nothing distinguishes this series |
+| `scb-gross-npa` | P-21 | **LIKELY OMISSION** | lists 2 sibling(s) incl. `crar`; domain `banking` is covered — nothing distinguishes this series |
+| `scb-gross-npa-amount` | P-15 | **LIKELY OMISSION** | lists 4 sibling(s) incl. `psb-gross-npa`; domain `banking` is covered — nothing distinguishes this series |
+| `scb-gross-npa-amount` | P-18 | **LIKELY OMISSION** | lists 3 sibling(s) incl. `scb-gross-npa`; domain `banking` is covered — nothing distinguishes this series |
+| `agri-employment-peer` | P-09 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 1, cited by 14) |
+| `agri-employment-peer` | P-14 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 3, cited by 16) |
+| `agri-employment-share` | P-02 | **BY DESIGN** | cited by 8 series, lists 2 — a broad-scope dispute used as a lens |
+| `industry-employment-peer` | P-09 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 1, cited by 14) |
+| `industry-employment-peer` | P-14 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 3, cited by 16) |
+| `lfpr-female` | P-02 | **BY DESIGN** | cited by 8 series, lists 2 — a broad-scope dispute used as a lens |
+| `lfpr-female` | P-41 | **LIKELY OMISSION** | lists 4 sibling(s) incl. `unemployment-rate`; domain `employment` is covered — nothing distinguishes this series |
+| `lfpr-female-peer` | P-09 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 1, cited by 14) |
+| `lfpr-female-peer` | P-14 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 3, cited by 16) |
+| `lfpr-overall` | P-40 | **LIKELY OMISSION** | lists 4 sibling(s) incl. `unemployment-rate`; domain `employment` is covered — nothing distinguishes this series |
+| `regular-wage-share` | P-02 | **BY DESIGN** | cited by 8 series, lists 2 — a broad-scope dispute used as a lens |
+| `regular-wage-share` | P-39 | **LIKELY OMISSION** | lists 5 sibling(s) incl. `unemployment-rate`; domain `employment` is covered — nothing distinguishes this series |
+| `regular-wage-share` | P-40 | **LIKELY OMISSION** | lists 4 sibling(s) incl. `unemployment-rate`; domain `employment` is covered — nothing distinguishes this series |
+| `self-employed-share` | P-02 | **BY DESIGN** | cited by 8 series, lists 2 — a broad-scope dispute used as a lens |
+| `unemployment-rate` | P-02 | **BY DESIGN** | cited by 8 series, lists 2 — a broad-scope dispute used as a lens |
+| `unemployment-rate-cws` | P-02 | **BY DESIGN** | cited by 8 series, lists 2 — a broad-scope dispute used as a lens |
+| `unemployment-rate-cws` | P-39 | **LIKELY OMISSION** | lists 5 sibling(s) incl. `unemployment-rate`; domain `employment` is covered — nothing distinguishes this series |
+| `vulnerable-employment-peer` | P-09 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 1, cited by 14) |
+| `vulnerable-employment-peer` | P-14 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 3, cited by 16) |
+| `youth-unemployment` | P-02 | **BY DESIGN** | cited by 8 series, lists 2 — a broad-scope dispute used as a lens |
+| `youth-unemployment` | P-39 | **LIKELY OMISSION** | lists 5 sibling(s) incl. `unemployment-rate`; domain `employment` is covered — nothing distinguishes this series |
+| `youth-unemployment` | P-40 | **LIKELY OMISSION** | lists 4 sibling(s) incl. `unemployment-rate`; domain `employment` is covered — nothing distinguishes this series |
+| `cereal-yield-peer` | P-09 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 1, cited by 14) |
+| `cereal-yield-peer` | P-14 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 3, cited by 16) |
+| `fertiliser-use-peer` | P-09 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 1, cited by 14) |
+| `fertiliser-use-peer` | P-14 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 3, cited by 16) |
+| `exports-gdp-peer` | P-09 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 1, cited by 14) |
+| `exports-gdp-peer` | P-14 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 3, cited by 16) |
+| `anaemia-children` | P-29 | **BY DESIGN** | `affectsSeries` empty — the record scopes by domain, not by series (cited by 4) |
+| `ghi-score` | P-29 | **BY DESIGN** | `affectsSeries` empty — the record scopes by domain, not by series (cited by 4) |
+| `health-exp-union` | P-10 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 10, cited by 15) |
+| `sanitation-basic` | P-14 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 3, cited by 16) |
+| `stunting-under5` | P-29 | **BY DESIGN** | `affectsSeries` empty — the record scopes by domain, not by series (cited by 4) |
+| `wasting-under5` | P-29 | **BY DESIGN** | `affectsSeries` empty — the record scopes by domain, not by series (cited by 4) |
+| `lpi-rank` | P-14 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 3, cited by 16) |
+| `metro-network` | P-22 | **LIKELY OMISSION** | lists 6 sibling(s) incl. `ujjwala-connections`; domain `infrastructure` is covered — nothing distinguishes this series |
+| `nh-network-length` | P-31 | **LIKELY OMISSION** | lists 2 sibling(s) incl. `nh-construction-pace`; domain `infrastructure` is covered — nothing distinguishes this series |
+| `agri-gdp-share` | P-10 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 10, cited by 15) |
+| `agri-gdp-share-peer` | P-09 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 1, cited by 14) |
+| `agri-gdp-share-peer` | P-14 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 3, cited by 16) |
+| `agri-gva-growth` | P-10 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 10, cited by 15) |
+| `agri-gva-growth` | P-48 | **LIKELY OMISSION** | lists 1 sibling(s) incl. `agri-gdp-share`; domain `macro` is covered — nothing distinguishes this series |
+| `agri-value-per-worker-peer` | P-09 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 1, cited by 14) |
+| `agri-value-per-worker-peer` | P-14 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 3, cited by 16) |
+| `cad-gdp` | P-10 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 10, cited by 15) |
+| `genl-govt-debt-peer` | P-09 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 1, cited by 14) |
+| `manufacturing-gdp` | P-09 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 1, cited by 14) |
+| `nominal-gdp` | P-10 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 10, cited by 15) |
+| `farm-household-income` | P-46 | **BY DESIGN** | `affectsSeries` empty — the record scopes by domain, not by series (cited by 2) |
+| `nfsa-covered` | P-04 | **BY DESIGN** | `affectsDomains: [all]` — reaches every record; enumerating is unbounded (lists 0, cited by 16) |
+| `pmkisan-beneficiaries` | P-22 | **LIKELY OMISSION** | lists 6 sibling(s) incl. `ujjwala-connections`; domain `welfare` is covered — nothing distinguishes this series |
+| `soil-health-cards` | P-22 | **LIKELY OMISSION** | lists 6 sibling(s) incl. `ujjwala-connections`; domain `welfare` is covered — nothing distinguishes this series |
+
+**63 by design · 20 likely omission · 0 needs a human**

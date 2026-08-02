@@ -1,0 +1,29 @@
+[
+  {
+    "id": "L-9403",
+    "title": "Record declaring absences that genuinely have no route",
+    "date": "2021-03",
+    "term": "T2",
+    "domains": ["welfare"],
+    "type": "episode",
+    "summary": "Declares a not-collected and a never-defined absence, neither carrying wouldFill. Neither value asserts the data exists, so neither entails a route, and demanding one would invite a placeholder.",
+    "assessment": "contested",
+    "caseFor": "Present so the record is otherwise clean and only the severity of unmeasured-route is under test.",
+    "caseAgainst": "Present for the same reason.",
+    "unmeasured": [
+      {
+        "what": "A quantity nobody ever gathered",
+        "why": "No instrument was ever in the field for this, so nothing exists that compulsion could produce and there is no source that would close it.",
+        "reasonKind": "not-collected"
+      },
+      {
+        "what": "A quantity with no agreed definition",
+        "why": "No definition of the quantity exists, so it could not have been collected even in principle and naming a source would be naming one for something undefined.",
+        "reasonKind": "never-defined"
+      }
+    ],
+    "sources": [{ "name": "Fixture, not a real source", "url": "https://example.org/", "tier": "T1" }],
+    "confidence": "low",
+    "asOf": "2026-08-01"
+  }
+]
