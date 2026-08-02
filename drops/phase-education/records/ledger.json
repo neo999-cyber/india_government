@@ -460,6 +460,12 @@
     "assessmentNote": "STOP FLAGGED. No value in the assessment enum fits a measure that ran to completion and whose outcome was never measured. `worked`, `partly` and `failed` all require knowing what share of the objective was achieved, which is exactly what was not published; asserting `partly` would launder a registration count into a completion rate. `contested` is used because two defensible readings of the same documented facts exist - a scale achievement against a retrospective regularisation with an unreported result - but the value is provisional and the underlying question is whether the vocabulary needs a value for a measure whose outcome was never measured.",
     "unmeasured": [
       {
+        "what": "Whether the 31 March 2019 statutory deadline was met - the number of in-service teachers holding the prescribed qualification on that date, against the untrained stock the proviso applied to",
+        "why": "This is the compliance determination the second proviso to section 23(2) created, and it is the one number that would say whether the deadline was met. It is distinct from the training programme's own completion funnel and from any enforcement action taken afterwards. NIOS published semester results in May 2019 and holds the certification records; UDISE+ holds the professionally-qualified field for every teacher. Both holders could produce it if compelled. Neither has, and the Government answered the question instead with a registration count - 13,78,979 teachers 'registered and were trained' - which measures entry to a course, not acquisition of a qualification.",
+        "wouldFill": "A count of teachers certified on or before 31 March 2019, stated against the untrained stock the proviso applied to",
+        "reasonKind": "not-published"
+      },
+      {
         "what": "The completion, pass and certification outcome of the NIOS 2017-19 mass-training programme",
         "why": "Enrolment was published repeatedly - about 15 lakh, then 13,78,979 confirmed registrations - and no enrolled-to-appeared-to-passed-to-certified breakdown exists in any retrieved source, although NIOS published semester results in May 2019 and plainly holds the data. The Ministry's Annual Report substitutes 'registered and were trained' for a completion count.",
         "wouldFill": "NIOS examination records for the four D.El.Ed. sittings between May 2018 and March 2019",
