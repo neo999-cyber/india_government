@@ -2146,3 +2146,61 @@ Production remains on `b8027d7`, which is green and one cycle behind: it carries
 without the back-links or the routes. `origin/main` is at `97aecf8`, for which Vercel created no
 deployment. Everything from this cycle and the `agri-credit` reversal is committed locally and
 unpushed. **Reachability against production HTML is owed once a deploy lands**, and has not been run.
+
+## Addendum to 2026-08-02j — DEPLOYED and verified on production
+
+The Vercel git integration was fixed by Anoop; the held commit was then pushed.
+
+**Production is `65c2111`**, `dpl_8F41HhzvWmAQMe2eNgB76fGfU9TR`, target production, state READY,
+aliased to `india-government.vercel.app`. It carries every commit of cycles `g` through `j`: the
+derived reference forms, the renamed `ref-unexplained`, the derived `unmeasured-route` severity, the
+19 back-links, the 26 routes, the five `reasonKind` corrections and the two narrowed absence texts.
+
+The gap is explained rather than left implicit: the earlier push of `97aecf8` produced no deployment
+at all — GitHub's own deployment list skipped it — so production sat on `b8027d7` for about an hour.
+Nothing was retried or forced while it was held. The integration now picks up pushes normally, and
+`65c2111` includes `97aecf8`, so no work was stranded by the gap.
+
+### Vercel's own build log
+
+```
+> npm run reachability
+reachability OK — 397/397 declared marks reachable on their own record page (396 pages scanned)
+  unmeasured 128/128 · caveat 99/99 · notes 163/163 · differentFactsNote 7/7
+```
+
+### Production HTML, fetched over the wire
+
+Authenticated browser, since production 302s to Vercel SSO unauthenticated. 70 pages fetched
+same-origin, parsed, `<script>` removed, every declared mark counted on the page that declares it.
+**The spec was regenerated from `/data` as it now stands rather than reused**, because two absence
+texts changed this cycle and a stale needle would have passed against the old wording.
+
+| class | production |
+|---|---|
+| absences | **97 / 97** |
+| caveats | **66 / 66** |
+| break seams | **67 / 67** |
+| **total** | **230 / 230** |
+
+70 of 70 pages, zero HTTP failures, zero shortfalls.
+
+**Controls:** positive TRUE · **negative FALSE** · end-seam period TRUE · end-seam note TRUE.
+
+### This cycle's own edits, verified live rather than assumed
+
+Counts alone would have passed whether or not the rewrites landed, so each was asserted in both
+directions — the new text present AND the old text gone:
+
+| assertion | required | observed |
+|---|---|---|
+| `L-0097[2]` — "The NCTE recognition-withdrawal orders" present | TRUE | TRUE |
+| `L-0097[2]` — "A consolidated national register" gone | FALSE | FALSE |
+| `L-0104[3]` — "AISHE's definitional and coverage-change notes" present | TRUE | TRUE |
+| `L-0104[3]` — "Whether the 47 per cent single-year rise" gone | FALSE | FALSE |
+| `L-0081[0]` — the Anuradha Bhasin route renders | TRUE | TRUE |
+
+The two old-text assertions are the same discipline as the negative control: a check that only looks
+for the new string cannot tell a successful rewrite from a page that carries both.
+
+**Phase 10 and the validator-hardening cycles are now live and verified. Nothing is owed.**
