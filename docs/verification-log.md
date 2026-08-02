@@ -2091,3 +2091,58 @@ Every other route is a request that may be refused. This one is a direction alre
 `agri-credit` → P-22 remains held: the instructed rejection reason is contradicted by P-22's own
 `notes`, which name agricultural credit as an explicit extension of its scope into banking. Needs a
 ruling — either the back-link is warranted or the notes need amending.
+
+## Addendum to 2026-08-02j — P-22 reversal, metro-network re-confirmed, deploy held
+
+The five `reasonKind` corrections, the two narrowed absence texts, the 19-routes-across-26
+verification and the stale-`out/` selftest failure are recorded in the body of `2026-08-02j` above.
+This addendum carries what came after it. **Appended rather than rewritten: `2026-08-02j` is already
+pushed, and letters are assigned once.**
+
+### REVERSAL — `agri-credit` → P-22 APPLIED
+
+Previously held rather than rejected, because the instructed rejection reason — *"a NABARD/RBI
+financial statistic is not a scheme MIS, so P-22's dispute does not reach it"* — was contradicted by
+P-22's own `notes`:
+
+> Scope extended to banking and macro: **agricultural credit DISBURSED measures supply not smallholder
+> access**, and the farm-law record turns on the same registration-standing-in-for-outcome shape.
+
+**Reversed on the stated ground that the record governs over a reading of its title.** That is the
+right principle and worth recording as one: P-22's title names scheme MIS, and its `notes` extend the
+scope by enumerating cases that are not scheme MIS in the narrow sense — EPFO payroll additions,
+e-Shram registrations, agricultural credit. A record's scope is what the record says, not what its
+title implies, and where the two diverge the body wins. Reading the title alone would have excluded
+three of P-22's own declared extensions.
+
+`P-22.affectsSeries` now lists 9. **Back-link candidates 83 → 64** across this cycle and the last.
+
+### RE-CONFIRMED — `metro-network` → P-22 stays REJECTED
+
+Re-tested against P-22's scope as it now stands, not from memory. `whatChanged` reads *"toward scheme
+management information systems and dashboards"* — scheme MIS specifically, not self-reported
+administrative counts generally. The record widens only by naming cases: Jal Jeevan, EPFO, e-Shram,
+agricultural credit. A MoHUA route-kilometre count is named in none.
+
+**This was already decided and logged in cycle `2026-08-02i`, not left pending.** Recorded again only
+because it was re-put; the determination is unchanged.
+
+### The asymmetry between the two P-22 rows, stated plainly
+
+`agri-credit` and `metro-network` were the two rows I could not settle mechanically, and they resolve
+in opposite directions for the same reason: **P-22 extends by enumeration.** `agri-credit` is
+enumerated, `metro-network` is not. Neither could have been settled from the title, the domain list,
+or the shape of the citing series — only from the body of the record.
+
+### Gate
+
+`npm run validate` VALID — **0 errors**, 85 warnings. Unchanged by this edit.
+
+### DEPLOY — HELD, at Anoop's instruction
+
+Anoop is checking the Vercel git integration. **Not pushed, no empty commit, no retry.**
+
+Production remains on `b8027d7`, which is green and one cycle behind: it carries the phase-10 corpus
+without the back-links or the routes. `origin/main` is at `97aecf8`, for which Vercel created no
+deployment. Everything from this cycle and the `agri-credit` reversal is committed locally and
+unpushed. **Reachability against production HTML is owed once a deploy lands**, and has not been run.
