@@ -1,0 +1,1 @@
+Notifications will arrive automatically. Meanwhile I'll use the Wayback-via-curl trick (which the agents don't know works) to secure the 1968 and 1986 policy primary texts.
