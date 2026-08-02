@@ -1,0 +1,231 @@
+[
+ {
+  "id": "PR-17",
+  "kind": "contested",
+  "domain": "human-development",
+  "title": "What Grade 3 children can do: the household test against the official survey",
+  "a": {
+   "series": "aser-std3-reading",
+   "label": "Children who read a Standard II text, tested one-on-one at home"
+  },
+  "b": {
+   "series": "parakh-grade3-proficient-language",
+   "label": "Children rated proficient in language, on a written paper at school"
+  },
+  "framing": "The domain's central measurement question, side by side. Both are headcount ratios of Grade 3 children, which is why they can be shown together at all - and they answer 27.1 per cent against 57. Neither may be rendered alone.",
+  "gapComputable": false,
+  "gapReason": "Different populations and different instruments. The household test covers every child resident in a sampled rural household, enrolled or not, present or not, and is administered orally one-on-one; the official survey covers children enrolled in a sampled school and present on test day, replaces absentees, includes urban India, and is a four-option written paper with a 25 per cent guessing floor. Subtracting them would state a difference between two quantities that no linking study, equating design or anchor item connects - and the proficiency band's cut-scores are published nowhere, so the second number's definition is not available to check.",
+  "provenanceRefs": [
+   "P-59",
+   "P-60"
+  ],
+  "ledgerRefs": [
+   "L-0090"
+  ],
+  "notes": "The honest reconciliation is not subtraction but thresholding: applied to the official survey's own Grade 5 data, a Minimum Proficiency Level benchmark puts 54 per cent below it, against the household survey's 49.5 per cent of Standard V unable to read a Standard II text. Five points apart, same direction, same population. Most of the headline contradiction is a category error between a mean and a headcount; what survives it is that the official survey's state rankings correlate with nothing."
+ },
+ {
+  "id": "PR-18",
+  "kind": "contested",
+  "domain": "human-development",
+  "title": "How long India's schools were shut: two measures, opposite answers",
+  "a": {
+   "series": "school-closure-weeks-full-covid",
+   "label": "Weeks schools were fully closed"
+  },
+  "b": {
+   "series": "school-closure-weeks-covid",
+   "label": "Weeks schools were not fully open, UNESCO's own definition"
+  },
+  "framing": "On one measure India ranks 58th of 210 countries and looks unremarkable; on the other it is the unique global maximum. Both come from the same dataset and the same custodian, and a claim in either direction that does not name its measure is unusable.",
+  "gapComputable": false,
+  "gapReason": "The two are nested rather than opposed - full closure is a subset of the days the headline measure counts - so the arithmetic difference is simply the partially-open days, and stating it as a gap would imply the two are rival estimates of one quantity when they are two definitions of closure. The residual is also uninterpretable on its own: India spent 476 days in a single 'partially open' bucket covering everything from one grade in one state shut to all primary grades shut nationally, and no state-wise or grade-wise series exists.",
+  "provenanceRefs": [
+   "P-59"
+  ],
+  "ledgerRefs": [
+   "L-0091"
+  ],
+  "notes": "The reconciliation is grade-differentiation: for most of the partially-open days senior grades had reopened while primary had not, which is what makes India's national number look mild and its primary-grade reality severe. Primary is where the learning loss landed."
+ },
+ {
+  "id": "PR-19",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "title": "The national pupil-teacher ratio against the schools that meet the norm",
+  "a": {
+   "series": "ptr-primary-udise",
+   "label": "The national average, published every year"
+  },
+  "b": {
+   "absenceFrom": "L-0106",
+   "absenceIndex": 0,
+   "label": "Schools meeting the norm, school by school - not published since 2015-16"
+  },
+  "framing": "RTE section 25 imposes the staffing duty 'in each school'. The state publishes a national mean against it and discontinued the distributional measure that would answer it, although it holds school-level enrolment and teacher counts for every school in the country.",
+  "gapComputable": false,
+  "gapReason": "The counterpart does not exist for any year after 2015-16, so there is nothing to subtract. A mean and a compliance share are also different quantities: an average of 20:1 is consistent with any distribution, including one in which about a lakh schools have a single teacher and a quarter of schools sit above 35:1.",
+  "provenanceRefs": [
+   "P-63"
+  ],
+  "ledgerRefs": [
+   "L-0106",
+   "L-0095"
+  ],
+  "notes": "The discontinued series is authored separately and runs to its last published value: 25.93 per cent of primary schools above the norm in 2015-16, at which point the measurement stopped. The only computation since is a university centre's, from 2021-22 microdata, and it is not the government's."
+ },
+ {
+  "id": "PR-20",
+  "kind": "coverage-usage",
+  "domain": "welfare",
+  "title": "Quota children reimbursed against quota seats filled",
+  "a": {
+   "series": "rte-quota-children",
+   "label": "Children in schools for which reimbursement is claimed"
+  },
+  "b": {
+   "absenceFrom": "L-0098",
+   "absenceIndex": 0,
+   "label": "Seats notified against seats filled - no national measure exists"
+  },
+  "framing": "The entitlement in RTE section 12(1)(c) is a share of entry-class seats. The state reports a cumulative headcount of children being paid for and publishes no seats denominator, so the one quantity that would say whether the entitlement is being delivered has never existed as a national statistic.",
+  "gapComputable": false,
+  "gapReason": "There is no denominator to subtract from. Worse, where the Ministry uses the word 'seats' the figure is a lagged reimbursement headcount - for one state it equals exactly the previous year's approved reimbursement count for three consecutive years, producing a hundred per cent fill rate by construction - so a fill rate computed from Ministry data would be an artefact rather than a measurement.",
+  "provenanceRefs": [
+   "P-69"
+  ],
+  "ledgerRefs": [
+   "L-0098",
+   "L-0099"
+  ],
+  "notes": "The absence is not an impossibility. A DISE-based exercise measured seats against filled nationally for 2012-13 and 2013-14 - fill rates of 21.5 and 29.0 per cent on about 21.1 lakh seats - which establishes the quantity is constructible from data the school system already collects."
+ },
+ {
+  "id": "PR-21",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "title": "The vacancy rate that is reported against the vacancy statistic that is not maintained",
+  "a": {
+   "series": "teacher-vacancy-rate-ssa",
+   "label": "The rate tabled when Parliament asks"
+  },
+  "b": {
+   "absenceFrom": "L-0094",
+   "absenceIndex": 0,
+   "label": "A defined, maintained national vacancy statistic"
+  },
+  "framing": "Two ad-hoc aggregates assembled on request, differing by 1.12 lakh posts for the same year, stand in for a statistic the Department told a parliamentary committee it does not maintain and declined to start maintaining.",
+  "gapComputable": false,
+  "gapReason": "The counterpart does not exist, so nothing is placed beside the reported rate. The two aggregates that do circulate cannot be differenced either: neither defines its levels or its school universe, so the 1.12 lakh difference between them cannot be attributed and the total is carried as a range or not at all.",
+  "provenanceRefs": [
+   "P-64"
+  ],
+  "ledgerRefs": [
+   "L-0094",
+   "L-0095"
+  ],
+  "notes": "The rate's own denominator moves: sanctioned posts rose 10.4 per cent in one year, with secondary posts up 60.3 per cent, so the reported rate fell from 15.16 to 14.07 per cent while the absolute number of vacant posts rose by 23,514."
+ },
+ {
+  "id": "PR-22",
+  "kind": "contested",
+  "domain": "human-development",
+  "title": "What India spends on education: the two official numerators",
+  "a": {
+   "series": "edu-spend-gdp-edu-depts",
+   "label": "What education departments spend"
+  },
+  "b": {
+   "series": "edu-spend-gdp-all-depts",
+   "label": "What the government calls education spending"
+  },
+  "framing": "The Ministry publishes both, side by side, in one table, for the same year - and across FY2013-14 to FY2021-22 one rises while the other falls. Rendering either alone states a direction for the last decade that the other reverses.",
+  "gapComputable": false,
+  "gapReason": "A disagreement about what counts as education spending, not a gap between delivery and use. The difference is also not a constant that could be reported as one figure: it runs from 0.52 points of GDP in FY2004-05 to 1.46 in FY2016-17, roughly tripling, because the broad column additionally carries training and the education spending of about 44 other ministries whose share of the total rose from 15.9 to 33.3 per cent.",
+  "provenanceRefs": [
+   "P-65",
+   "P-66",
+   "P-10"
+  ],
+  "ledgerRefs": [
+   "L-0102"
+  ],
+  "notes": "Parliament is briefed on the broad number and the 6 per cent target is invoked against it, so the gap to target is 1.9 or 3.3 points depending on a choice that is never stated when the target is quoted. Both terminal points are Budget Estimates and the series stops at FY2021-22."
+ },
+ {
+  "id": "PR-23",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "title": "The school stock published against the school closures not published",
+  "a": {
+   "series": "govt-schools-count",
+   "label": "Government schools standing, counted each year"
+  },
+  "b": {
+   "absenceFrom": "L-0109",
+   "absenceIndex": 0,
+   "label": "Schools closed or merged each year"
+  },
+  "framing": "The state publishes how many schools exist and declines to publish how many were shut, so the circulated 'schools closed' figure is a stock difference netting closures against openings.",
+  "gapComputable": false,
+  "gapReason": "A stock difference is not a closure count: it nets openings against closures and says nothing about how many schools were merged rather than shut, or how many children were displaced. Subtracting two years of the stock would produce exactly the misleading number this pair exists to prevent.",
+  "provenanceRefs": [
+   "P-61"
+  ],
+  "ledgerRefs": [
+   "L-0109"
+  ],
+  "notes": "The absence is disputed rather than accepted: the Ministry's stated reason is that opening and closing are state functions, while it operates a school-level database with a unique code per school from which closures are directly derivable, and publishes flow-type counts for zero-enrolment and single-teacher schools over the same years."
+ },
+ {
+  "id": "PR-24",
+  "kind": "coverage-usage",
+  "domain": "human-development",
+  "title": "Literacy as recorded against reading as demonstrated",
+  "a": {
+   "series": "literacy-rate-7plus",
+   "label": "People recorded as literate, on someone's word"
+  },
+  "b": {
+   "series": "aser-std5-reading",
+   "label": "Children who can actually read a Standard II text, tested"
+  },
+  "framing": "Every official Indian literacy instrument asks and none tests: a literate person is a person someone said was literate. Placing the recorded figure beside an administered reading task is the only way the difference between the two is visible.",
+  "gapComputable": false,
+  "gapReason": "Different populations, different constructs and different denominators - all persons aged 7 and above nationally against children enrolled in Standard V in rural households - so no subtraction is meaningful and the two must never share an axis. The pair exists to show the two side by side with that warning, not to state a difference.",
+  "provenanceRefs": [
+   "P-68",
+   "P-59"
+  ],
+  "ledgerRefs": [
+   "L-0105"
+  ],
+  "notes": "More than half of Standard V children cannot read a text pitched three grades below them - and every one of them, on reaching 15 with 'primary' recorded as attainment, is counted literate by the labour survey's ladder, by the modular survey's Class I rule, by the international recoding of both, and by the Census too if an informant says so. Where both methods were run on the same respondents the gap was 5.6 points, and that is a floor: the card test is one sentence with partial credit."
+ },
+ {
+  "id": "PR-25",
+  "kind": "coverage-usage",
+  "domain": "human-development",
+  "title": "Higher education entered against higher education completed",
+  "a": {
+   "series": "higher-ed-enrolment",
+   "label": "Students enrolled"
+  },
+  "b": {
+   "absenceFrom": "L-0104",
+   "absenceIndex": 0,
+   "label": "Students who complete - no national measure exists"
+  },
+  "framing": "India added 1.08 crore higher-education students in a decade and has never published a dropout, retention or completion rate for any of them, so the entire expansion is measured only at entry.",
+  "gapComputable": false,
+  "gapReason": "The counterpart does not exist. The survey publishes a stock (enrolment) and an annual flow (out-turn) but never links a cohort from entry to exit, so subtracting them would compare an enrolled population to a year's graduating count across different cohorts and produce a number that means nothing.",
+  "provenanceRefs": [
+   "P-67"
+  ],
+  "ledgerRefs": [
+   "L-0104",
+   "L-0103"
+  ],
+  "notes": "Established by exhaustive search rather than inferred: every report from 2014-15 to 2023-24 was searched for dropout, retention, completion rate and transition rate, with zero occurrences in every one. The school system's own data covers school education only, so nothing fills the gap from the other side."
+ }
+]
