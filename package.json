@@ -15,7 +15,8 @@
     "dev": "next dev",
     "build": "npm run validate && next build && npm run reachability",
     "start": "npx serve out",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "audit": "node tools/audit-manifest.mjs"
   },
   "dependencies": {
     "next": "16.2.12",

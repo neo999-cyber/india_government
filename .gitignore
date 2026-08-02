@@ -10,3 +10,6 @@ next-env.d.ts
 *.tsbuildinfo
 .DS_Store
 screenshots/
+
+# Audit manifest — generated artefact, regenerate with `npm run audit`
+audit/
