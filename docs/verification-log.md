@@ -2636,3 +2636,230 @@ correct data and the tempting repair is to edit the record. Added as item 6 to t
 **Worth stating plainly: the failing control is the reason to run controls.** The reachability figure
 was 95/95 both before and after the control script was corrected — a clean pass on the headline
 number carried no information about whether the check could distinguish anything.
+
+---
+
+# Verification log — cycle 2026-08-03b (the lens axis: `lenses[]` on series and pairs)
+
+**Appended, not rewritten.** `2026-08-03a` and its addendum are closed and are not touched here.
+
+No new records. No argument text re-authored. Twenty-two records gained one field.
+
+## The defect
+
+`kashmir` and `federalism` are written in the `domain` enum as **lenses** — applied to records whose
+primary subject sits elsewhere. `series.domain` and `pairs.domain` are single-valued, so "substantive
+subject *plus* lens" was not expressible in them. The consequence was total rather than partial: all
+15 phase-11 series and all 7 phase-11 pairs are substantively about Jammu and Kashmir, and **not one
+could carry the tag.** A reader filtering the instrument by `kashmir` reached no measured spine.
+
+**A lens inside a single-valued subject enum is two axes in one field — the fourth instance**, after
+the fifth `reasonKind`, the "cannot conclude" assessment value, and `differentFactsNote` on false.
+
+## Step 1 — the enumeration, before any edit
+
+Read off each value's own written definition in the schemas, not off usage.
+
+| value | verdict | evidence |
+|---|---|---|
+| `kashmir` | **LENS, pure** | "a cross-cutting lens, applied to records whose primary subject sits elsewhere." Names no subject at all. |
+| `federalism` | **HYBRID — subject AND lens** | "Centre-state relations. Also a lens: GST and groundwater carry it alongside their own subject." |
+| the other 13 | subject | — |
+
+**Only those two, and they are not the same shape.** Three near-misses were checked and rejected with
+reasons rather than assumed away: `welfare`/`human-development` is a delivery-vs-outcome split of two
+*subjects* that legitimately co-occur; the `defence`→`governance` carve-out is a boundary between two
+subjects, not a lens declaration; `demography` is an unattested subject, not a lens.
+
+The asymmetry drove the schema and both rules: `domain: "kashmir"` is illegal on its face, while
+`domain: "federalism"` is legal and only *duplication across both axes* is not.
+
+### Ledger — 32 records carry a lens in `domains[]`
+
+19 carry `kashmir` (L-0003, L-0004, L-0005, L-0010, L-0110–L-0124); 13 carry `federalism` (L-0012,
+L-0040, L-0051, L-0066, L-0069, L-0071, L-0091, L-0094, L-0098–L-0101, L-0108). All 13 federalism
+records and 16 of the 19 kashmir records carry a substantive domain alongside, so `domains[]` being
+multi-valued does its job and **the field was deliberately NOT added to the ledger this cycle.**
+
+## The carried defect — three baseline records, NOT fixed
+
+**L-0003, L-0005 and L-0010 carry `kashmir` as their SOLE domain.**
+
+> A lens as sole domain asserts a lens over an unrecorded subject, and `domains[]` being an array
+> does not cure it.
+
+By the enum's own text `kashmir` is "applied to records whose primary subject sits elsewhere", so a
+record carrying it alone declares a lens and no subject — the lens is silently doing subject duty.
+These are phase-1 baseline records and predate the convention the later phases follow.
+
+Carried, not fixed, and deliberately: repairing them means deciding what each record's substantive
+subject *is* (L-0005 reads `governance`; L-0003 and L-0010 are arguable between `governance`,
+`defence` and `infrastructure`). That is authoring judgement on shipped records, not a migration.
+
+**This folds into phase 12 scoping, where the same question arises for every 370-mechanics record.**
+
+## `demography` — a decision now due, not a note
+
+Surfaced in three phases and still carrying zero records. Its own definition admits it describes
+nothing: "NEVER USED — no record or series carries it, so its intended boundary is unattested and this
+line describes the word, not observed practice." A value whose written definition disclaims itself
+fails the §6 threshold in substance while passing it in form. **Either attested or removed.** Deferred
+— not this cycle, and not as a note this time: as a decision that is owed.
+
+## Step 2 — schema
+
+`lenses[]` added to `series.schema.json` and `pairs.schema.json`. Optional array, `uniqueItems`, items
+constrained to `["kashmir", "federalism"]`, absent by default. **`domain` untouched** — type,
+cardinality and description all unchanged; `git diff --numstat` shows `11 0` on each schema, zero
+deletions.
+
+Per §6 preventive half, the new enum ships with per-value definitions **in the same commit**, meeting
+the threshold: each says what the value *means* and what is legal on which axis, so a reader can
+assign one from the text alone.
+
+## Step 3 — backfill, asserted per record
+
+**15 series.** Every record in `data/series/kashmir-security.json`. Each is titled to J&K explicitly
+and each has a substantive subject elsewhere — 13 `defence`, 2 `governance`. The lens applies to all
+15; **none had to be reported as unwarranted.**
+
+**7 pairs.** PR-26 … PR-32. Every side of every one resolves to a J&K series, a J&K series' absence,
+or a J&K ledger absence. All 7 warranted; none reported.
+
+### Pre-existing records — reported, NOT backfilled
+
+A keyword sweep was run first and **discarded as evidence**: "states" appears in ordinary prose in 30+
+education and employment series and would have produced a list with no judgement in it. Replaced with
+a reference-graph scan — a series cited by a ledger record that already carries the lens.
+
+- **`kashmir`: zero candidates among the 186 pre-existing series and 25 pre-existing pairs.** Grounded,
+  not assumed: the four pre-existing kashmir ledger records (L-0003, L-0004, L-0005, L-0010) carry no
+  `seriesRefs` at all, and the only three pre-existing series mentioning J&K in title or notes
+  (`aser-std3-reading-govt`, `literacy-rate-7plus`, `rte-quota-implementing-jurisdictions`) do so in
+  survey-coverage footnotes. **The kashmir lens had nothing measured under it before phase 11.**
+- **`federalism`: 23 pre-existing series and 5 pre-existing pairs surface.** Strongest are the RTE
+  12(1)(c) trio (`rte-quota-reimbursement-approval-rate` is literally "approved by the Centre as a
+  share of state claims"), the MSP/procurement group, `groundwater-overexploited-punjab`,
+  `mgnrega-persondays` and the teacher-vacancy group; weakest are `nominal-gdp`, `thermal-plf` and
+  `atc-losses`, cited as context by GST and UDAY rather than being federal themselves. **Not
+  backfilled.** A lens applied retrospectively across ten phases is an authoring judgement, and the
+  2026-08-02 backlink triage is the precedent: mass-mirroring 83 candidates would have written 63
+  false links.
+
+## Step 4 — two rules, two names
+
+Check 4 is **not one rule**, because it is not one mistake and the message has to say which was made.
+
+- **`lens-as-subject`** — a subject-forbidden lens in `domain`. Unconditional. kashmir's own definition
+  places the primary subject elsewhere, so a record filing it as its subject files no subject at all.
+- **`lens-duplicated`** — the same value on both axes of one record. Only `federalism` can reach it,
+  because it is the one value legitimately both; either axis alone is correct.
+
+`LENS_VALUES` derives from the schema, as `REASON_KINDS` and `ID_PATTERNS` do. `SUBJECT_FORBIDDEN`
+does **not**, and says so: the distinction lives in the domain enum's English prose and parsing a
+sentence for it would be a worse contract than restating it with the sentence quoted. Because it is
+restated, it carries a **load-time drift guard** — if a forbidden value ever leaves the enum,
+`lens-as-subject` would go quietly dead while still passing its fixture, so the module throws instead.
+
+`ref-relevant` was deliberately **not** widened to consider `lenses[]`. Judging dispute relevance on
+the lens would let any J&K dispute vouch for any J&K-lensed series regardless of what it measures —
+loosening an existing error rule as a side effect of adding a field.
+
+### Fixtures — four, and the two that matter are regression-proven
+
+| fixture | proves |
+|---|---|
+| `broken/series/lens-as-subject-series` | a lens value in `domain` where a subject belongs |
+| `broken/series/lens-duplicated-series` | `federalism` on both axes |
+| `broken/series/subject-in-lenses-series` | a subject value in `lenses[]` |
+| `invalid/series/subject-in-lenses.json` | the same, **pinned to its own reason** |
+| `lens-axis-pairs/` (2 records) | the **pairs call site**, both rules |
+
+Two of these need their reason stated. The subject-in-lenses case is caught by the enum, not by a
+rule, so in `broken` it lands under `schema:series` alongside a dozen unrelated violations and proves
+nothing about itself — `invalid` is the root that pins a rejection to its own reason, and this is the
+half of the lens axis with no rule of its own to go dead quietly. And `broken` carries no pairs at
+all, so the entries there prove only that the shared helper fires; they say nothing about whether the
+pairs loop ever calls it, which is exactly the omission that would pass.
+
+**Rule 2 — tested against real regressions, not models of them.** Both call sites were removed in turn
+and the selftest re-run:
+
+```
+pairs call site removed   → selftest FAILED: lens-as-subject / lens-duplicated
+                            did not fire on tests/fixtures/lens-axis-pairs
+series call site removed  → selftest FAILED: lens-as-subject / lens-duplicated
+                            did not fire on the broken fixtures
+```
+
+**selftest 20 → 22.**
+
+## Step 5 — the gate
+
+```
+validate      VALID — 0 errors, 96 warning(s)   (16 files · 201 series, 124 ledger, 87 provenance, 32 pairs)
+selftest      OK — 22/22 rules fire on tests/fixtures/broken (35 errors caught)
+typecheck     clean
+build         clean
+reachability  OK — 492/492 declared marks reachable on their own record page (444 pages scanned)
+              unmeasured 180/180 · caveat 123/123 · notes 178/178 · differentFactsNote 11/11
+```
+
+## A view change WAS required, and this is it
+
+**The data change alone moves nothing.** `seriesInDomain` filtered on `s.domain === domain`, and the
+domain page listed no pairs at all — so after the backfill a `kashmir` filter still reached 0 and 0.
+Reported rather than assumed, then built.
+
+**Read from built HTML with `<script>` blocks stripped** (Rule 1 — the framework embeds the whole
+payload as escaped JSON, so a mark rendering nowhere is still in the file):
+
+| `/domains/kashmir/` | before | after |
+|---|---|---|
+| series | **0** | **15** |
+| pairs | **0** | **7** |
+| ledger records | 19 | 19 |
+
+- `seriesUnderLens` / `pairsUnderLens` / `pairsInDomain` / `pairHref` added to `lib/data.ts`.
+- The lens list is rendered **apart from** the subject table, never pooled into it, and carries a
+  Subject column naming the domain each series is actually filed under. Pooling them would restate
+  the conflation the field was added to remove.
+- Both blocks render only where non-empty. Seven other domain pages gain a Pairs section
+  (education 9, defence 6, infrastructure 5, employment 4, governance 4, welfare 3,
+  human-development 1); the rest are byte-identical in structure.
+
+### PR-31 — a fully authored pair that rendered NOWHERE
+
+Found while building the pair listing. A pair has no page of its own: it renders inside
+`pairsForSeries(id)[0]` for one of its series. **PR-31 has no series on either side** — a provenance
+record's `competingAccounts` against a ledger absence — so no series page has ever hosted it.
+Confirmed against the built tree: its framing and both side labels appear in zero HTML files.
+
+PR-16 is also absent and is **correct** — `declared-pending`, no sides yet, meant to render nowhere.
+
+The domain listing renders PR-31 unlinked with the reason stated. Dropping it would hide the finding;
+linking it somewhere plausible would be worse.
+
+## Three drift findings in `lib/types.ts`, outside the requested scope
+
+Found because this cycle had to edit that file. Fixed here and flagged rather than filed away.
+
+1. **`education` was missing from `DOMAINS`.** Added to the schemas in phase 10, never to the code, so
+   `generateStaticParams` never emitted it: **`/domains/education/` did not exist** and 48 series and
+   20 ledger records — the whole phase-10 corpus — had no domain surface. `reachability` reported
+   492/492 throughout, because it guards *marks on record pages*, not domain coverage. Fixed in
+   `DOMAINS` and `DOMAIN_LABELS`; the page now builds with 48 series, 20 ledger, 9 pairs.
+2. **The `DOMAINS` doc comment called `defence` a lens** and said all three lenses "carry no series at
+   all". The schema has never described `defence` as anything but a subject, and phase 11 gave it 13
+   series. Corrected.
+3. **`Pair` was missing `title`, `ledgerRefs` and `status`** — all three in `pairs.schema.json` and in
+   the data, none reachable from TypeScript.
+
+**Recommended, not built:** a gate rule asserting every schema `domain` value has a `DOMAINS` entry.
+Not added this cycle because it needs both fixtures under trigger C and would have taken the selftest
+to 24 against an instructed 22.
+
+## Not deployed
+
+Stopped before deploy, as instructed. **Production was not checked and nothing here claims it was** —
+every figure above is from the local build.

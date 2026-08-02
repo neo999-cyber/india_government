@@ -36,6 +36,40 @@ const ID_PATTERNS = Object.fromEntries(
   ]),
 );
 
+/**
+ * The lens values, read from the schema, and the one of them that may never be a subject.
+ *
+ * `lenses[]` exists because `domain` is single-valued and "substantive subject plus lens" is two
+ * axes. It was the fourth instance of the same defect — after the fifth reasonKind, the
+ * "cannot conclude" assessment value and differentFactsNote on false — and it bit hardest here:
+ * all fifteen phase-11 series and all seven pairs are substantively about Jammu and Kashmir and
+ * not one could carry the tag, so a reader filtering on `kashmir` found no measured spine.
+ *
+ * LENS_VALUES derives, as REASON_KINDS and ID_PATTERNS above do. SUBJECT_FORBIDDEN does NOT, and
+ * that is deliberate: the distinction lives in the domain enum's own prose — kashmir is "a
+ * cross-cutting lens, applied to records whose primary subject sits elsewhere" while federalism is
+ * "Centre-state relations. Also a lens" — and parsing an English sentence for it would be a worse
+ * contract than restating it here with the sentence quoted. Same call as `absenceIndex` being
+ * declared rather than derived: it is a contract fact, not an observable one.
+ */
+const LENS_VALUES = JSON.parse(readFileSync(join(SCHEMAS_DIR, 'series.schema.json'), 'utf8'))
+  .properties.lenses.items.enum;
+const SUBJECT_FORBIDDEN = new Set(['kashmir']);
+
+// A restated list drifts; this one is restated for the reason above, so it says so out loud. If a
+// forbidden value leaves the enum, `lens-as-subject` stops firing and nothing else notices — the
+// rule would still be in MUST_FIRE and would still pass on a fixture that no longer validates as
+// a lens at all. Fail at load instead of going quietly dead.
+for (const v of SUBJECT_FORBIDDEN) {
+  if (!LENS_VALUES.includes(v)) {
+    throw new Error(
+      `SUBJECT_FORBIDDEN names "${v}", which is no longer in the lenses enum [${LENS_VALUES.join(', ')}]. ` +
+      `Either the enum changed and this list did not, or the value moved — resolve it deliberately: ` +
+      `lens-as-subject is unenforceable until this agrees with the schema`,
+    );
+  }
+}
+
 const FY_RE = /^FY(\d{4})-(\d{2})$/;
 const CY_RE = /^\d{4}$/;
 
@@ -298,6 +332,48 @@ export function checkIntegrity(records, { today }) {
     return true;
   };
 
+  /**
+   * The two ways an author can collapse the subject axis into the lens axis.
+   *
+   * Two rules and two names, not one, because they are two different mistakes and the message
+   * has to say which one was made. Folding them into a single "lens misuse" error is how a gate
+   * stops telling an author what to do about it.
+   *
+   *   lens-as-subject — a subject-forbidden lens in `domain`. Unconditional: kashmir's own
+   *                     definition places the primary subject elsewhere, so a record filing it as
+   *                     its subject files no subject at all. There is nothing to weigh.
+   *   lens-duplicated — the same value on both axes of one record. Only federalism can reach
+   *                     this, because it is the one value that is legitimately both, and either
+   *                     axis alone is correct. Asserting both says the subject is a lens over
+   *                     itself.
+   *
+   * Series and pairs only. `domains[]` on the ledger is already multi-valued, so subject and lens
+   * coexist there without either being displaced — see the verification log for the three baseline
+   * records that carry a lens as their SOLE domain, which is a different defect and not this one.
+   *
+   * @param {LoadedRecord} r
+   * @param {string} where
+   */
+  const checkLensAxis = (r, where) => {
+    const domain = r.record.domain;
+    const lenses = Array.isArray(r.record.lenses) ? r.record.lenses : [];
+    if (typeof domain !== 'string') return; // schema already reported it
+
+    if (SUBJECT_FORBIDDEN.has(domain)) {
+      add('error', 'lens-as-subject', r.file, where,
+        `domain = "${domain}" is a lens, not a subject. The domain enum defines it as a cross-cutting lens ` +
+        `"applied to records whose primary subject sits elsewhere", so a record filing it as its own subject ` +
+        `files no subject at all. Put the substantive subject in domain and "${domain}" in lenses[]`);
+    }
+
+    if (lenses.includes(domain) && !SUBJECT_FORBIDDEN.has(domain)) {
+      add('error', 'lens-duplicated', r.file, where,
+        `"${domain}" is in both domain and lenses[]. Either alone is legal — it is the one value that is both a ` +
+        `subject and a lens — but asserting it on both axes says the record's subject is a lens over itself. ` +
+        `Keep it as domain if it IS the subject, as lenses[] if the subject is elsewhere`);
+    }
+  };
+
   // --- series --------------------------------------------------------------
   for (const r of byLayer.series) {
     const s = r.record;
@@ -305,7 +381,12 @@ export function checkIntegrity(records, { today }) {
     const where = label(r);
 
     resolveRefs(r, s.provenanceRefs, provenanceIds, 'provenanceRefs', 'provenance');
+    // Relevance is judged on the SUBJECT alone. A lens is not a domain a dispute record can be
+    // said to cover, and widening this to lenses[] would let any J&K dispute vouch for any
+    // J&K-lensed series regardless of what it measures — loosening an error rule as a side
+    // effect of adding a field.
     if (typeof s.domain === 'string') checkRelevance(r, s.provenanceRefs, [s.domain], 'provenanceRefs');
+    checkLensAxis(r, where);
 
     const calendar = s.calendar === 'CY' ? 'CY' : 'FY';
 
@@ -451,6 +532,8 @@ export function checkIntegrity(records, { today }) {
     const pair = r.record;
     if (!pair || typeof pair !== 'object') continue;
     const where = label(r);
+
+    checkLensAxis(r, where);
 
     for (const name of ['a', 'b']) {
       const side = pair[name];

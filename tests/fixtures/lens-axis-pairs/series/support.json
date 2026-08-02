@@ -1,0 +1,22 @@
+[
+  {
+    "id": "support-a",
+    "title": "Support series so the pair sides resolve and only the lens rules fire",
+    "unit": "incidents",
+    "domain": "defence",
+    "tier": "T1",
+    "source": { "name": "Fixture, not a real source", "url": "https://example.org/" },
+    "calendar": "FY",
+    "points": [{ "country": "IND", "period": "FY2013-14", "value": 1, "status": "verified" }]
+  },
+  {
+    "id": "support-b",
+    "title": "Second support series, the other side of both pairs",
+    "unit": "incidents",
+    "domain": "defence",
+    "tier": "T1",
+    "source": { "name": "Fixture, not a real source", "url": "https://example.org/" },
+    "calendar": "FY",
+    "points": [{ "country": "IND", "period": "FY2013-14", "value": 2, "status": "verified" }]
+  }
+]

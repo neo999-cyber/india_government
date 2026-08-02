@@ -103,7 +103,44 @@ export function provenanceForSeries(s: Series): ProvenanceRecord[] {
   return [...ids].map((id) => provenanceById.get(id)).filter((p): p is ProvenanceRecord => !!p);
 }
 
+/** Series whose SUBJECT is this domain. The lens axis is a separate query — see below. */
 export const seriesInDomain = (domain: Domain): Series[] => series.filter((s) => s.domain === domain);
+
+/**
+ * Series read under this domain as a LENS — their subject is elsewhere.
+ *
+ * Kept as its own function rather than widened into `seriesInDomain`, because the whole point of
+ * `lenses[]` is that subject and lens are different claims: a J&K militancy count is a defence
+ * measurement read under the Kashmir lens, and pooling the two axes into one list would put back
+ * the conflation the field was added to remove. The domain page renders them as separate blocks
+ * for the same reason.
+ */
+export const seriesUnderLens = (lens: Domain): Series[] =>
+  series.filter((s) => (s.lenses as string[] | undefined)?.includes(lens) ?? false);
+
+export const pairsInDomain = (domain: Domain): Pair[] => pairs.filter((p) => p.domain === domain);
+
+export const pairsUnderLens = (lens: Domain): Pair[] =>
+  pairs.filter((p) => (p.lenses as string[] | undefined)?.includes(lens) ?? false);
+
+/**
+ * Where a pair actually renders, or undefined if it renders nowhere.
+ *
+ * A pair has no page of its own: it renders inside the FIRST pair listed for one of its series
+ * (`pairsForSeries(id)[0]`), so a pair is reachable only if some series it names lands it in that
+ * first slot. Two pairs currently fail that. PR-16 is `declared-pending` with no sides yet and is
+ * meant to render nowhere. PR-31 is fully authored and renders nowhere anyway, because both its
+ * sides are non-series — a provenance record's competingAccounts against a ledger absence — so no
+ * series page will ever host it. Returning undefined rather than a plausible link is the honest
+ * answer; the domain listing says so in the row.
+ */
+export function pairHref(p: Pair): string | undefined {
+  for (const side of [p.a, p.b]) {
+    const id = side.series;
+    if (id && pairsForSeries(id)[0]?.id === p.id) return `/series/${id}/`;
+  }
+  return undefined;
+}
 
 export const ledgerInDomain = (domain: Domain): LedgerRecord[] =>
   ledger.filter((l) => l.domains.includes(domain));

@@ -45,6 +45,17 @@ const INVALID_FIXTURES = [
     conditional: false,
     expect: ['/points/1 missing required property "status"'],
   },
+  // The subject-value-in-lenses case is caught by the enum, not by a rule, so in `broken` it
+  // lands under `schema:series` alongside a dozen unrelated violations and proves nothing about
+  // itself: that root asserts which RULES fired, and schema:series fires either way. It is here
+  // as well because `invalid` is the root that pins a rejection to its own reason, and this is
+  // the half of the lens axis that has no rule of its own to go dead quietly.
+  {
+    file: 'series/subject-in-lenses.json',
+    why: 'a subject value asserted in lenses[], which the lens enum does not admit',
+    conditional: false,
+    expect: ['/lenses/0', 'must be equal to one of the allowed values'],
+  },
 ];
 
 /** Rules the broken fixtures must trigger, each as an error. */
@@ -73,6 +84,11 @@ const MUST_FIRE = [
   'charset-url',
   'charset-symbol',
   'charset-homoglyph',
+  // The lens axis, added 2026-08-03. Two names for two mistakes: a lens value standing in for a
+  // subject, and a value asserted on both axes of one record. Folded into one rule the message
+  // could not tell an author which they had made — and only one of the two is unconditional.
+  'lens-as-subject',
+  'lens-duplicated',
 ];
 
 /**
@@ -105,6 +121,12 @@ const ISOLATED = [
   // severity back to a uniform warn fails loudly instead of quietly reopening the gap.
   { dir: 'unmeasured-route-producible', rule: 'unmeasured-route', expect: 'not-published means producible under compulsion' },
   { dir: 'unmeasured-route-producible', rule: 'unmeasured-route', expect: 'withheld requires an identifiable refusal' },
+  // The pairs half of the lens axis. `broken` carries no pairs, so the entries above prove only
+  // that the shared helper fires — they say nothing about whether the pairs loop ever calls it,
+  // and a call site that was never added is exactly the kind of omission that passes. This root
+  // is otherwise well formed so the two lens errors are the only ones the pair layer can raise.
+  { dir: 'lens-axis-pairs', rule: 'lens-as-subject', expect: 'files no subject at all' },
+  { dir: 'lens-axis-pairs', rule: 'lens-duplicated', expect: 'a lens over itself' },
 ];
 
 /**
