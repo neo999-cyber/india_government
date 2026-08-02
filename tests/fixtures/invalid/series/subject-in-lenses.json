@@ -1,0 +1,13 @@
+[
+  {
+    "id": "subject-in-lenses",
+    "title": "A subject value asserted as a lens",
+    "unit": "incidents",
+    "domain": "defence",
+    "lenses": ["governance"],
+    "tier": "T1",
+    "source": { "name": "Fixture, not a real source", "url": "https://example.org/" },
+    "calendar": "FY",
+    "points": [{ "country": "IND", "period": "FY2013-14", "value": 1, "status": "verified" }]
+  }
+]
