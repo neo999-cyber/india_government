@@ -1,0 +1,1171 @@
+[
+  {
+    "id": "jk-terrorist-incidents-legacy",
+    "title": "Terrorist incidents in J&K, MHA 'Incidents' column as contemporaneously published",
+    "unit": "incidents",
+    "domain": "defence",
+    "tier": "T1",
+    "source": {
+      "name": "MHA Annual Reports 2013-14 through 2020-21, J&K violence tables, retrieved as PDFs from the MHA annual-reports index",
+      "url": "https://www.mha.gov.in/en/documents/annual-reports",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "breaks": [
+      {
+        "period": "2020",
+        "note": "Terminus, and a seam that names its successor. The Annual Report 2021-22, posted 24 November 2022, restated 2017 from 342 to 279, 2018 from 614 to 417 and 2019 from 594 to 255 under the identical column heading with no note anywhere in either report, and dropped 2014 to 2016 from view rather than restating them. This series does not continue into jk-terrorist-incidents-merged: they are different quantities and must never share an axis. The 2020 value of 244 is identical on both bases, which is what makes the seam invisible at the joint.",
+        "provenanceRef": "P-72"
+      }
+    ],
+    "points": [
+      {
+        "country": "IND",
+        "period": "2011",
+        "value": 340,
+        "status": "verified",
+        "note": "Carried in AR 2013-14, 2014-15 and 2015-16, then dropped from view."
+      },
+      {
+        "country": "IND",
+        "period": "2012",
+        "value": 220,
+        "status": "verified",
+        "note": "Unchanged across the AR 2013-14 to AR 2014-15 restatement, in which the casualty columns for the same year did move: SFs killed 15 to 38, civilians killed 15 to 11, terrorists killed 72 to 50."
+      },
+      {
+        "country": "IND",
+        "period": "2013",
+        "value": 170,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2014",
+        "value": 222,
+        "status": "verified",
+        "note": "Never restated. Stands on the old basis while 2017 onward stands on the new one, with nothing on the page to warn a reader assembling a 2014-2024 series that the seam falls in the gap between 2016 and 2017."
+      },
+      {
+        "country": "IND",
+        "period": "2015",
+        "value": 208,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2016",
+        "value": 322,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2017",
+        "value": 342,
+        "status": "verified",
+        "note": "Restated to 279 in AR 2021-22."
+      },
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 614,
+        "status": "verified",
+        "note": "Restated to 417 in AR 2021-22, a fall of 197. What the removed events were is unestablished; organised stone-pelting is ruled out, since it alone was 1,328 in 2018."
+      },
+      {
+        "country": "IND",
+        "period": "2019",
+        "value": 594,
+        "status": "verified",
+        "note": "Restated to 255 in AR 2021-22, a fall of 339."
+      },
+      {
+        "country": "IND",
+        "period": "2020",
+        "value": 244,
+        "status": "verified",
+        "note": "Identical on both bases, which rules out a uniform rescaling and points to a category removed that was large in 2018-19 and negligible in 2020."
+      }
+    ],
+    "provenanceRefs": [
+      "P-71",
+      "P-72",
+      "P-75",
+      "P-78",
+      "P-86"
+    ],
+    "notes": "These figures are official, were published by MHA, and their basis cannot now be established from any document. They are carried rather than dropped because dropping them is the instrument adopting the state's later revision by default, which is the move the never-splice rule exists to prevent. The only definitional sentence for 'incidents' anywhere in the MHA corpus is in a parliamentary reply of 12 December 2018 and never migrated into the series: 'The number of incidents includes the violence committed by terrorists during anti militancy operations.'",
+    "caveat": "The basis of these figures is unestablished. MHA restated 2017, 2018 and 2019 downward in the Annual Report 2021-22 with no note in either report, and has never stated what the higher figures counted.",
+    "higherIsBetter": false,
+    "denominator": "Events booked and forwarded as terrorist incidents by police stations and the J&K administration and reproduced by MHA, on a basis MHA has never defined in any of seventeen report years. Not a fatality-gated count, and not comparable with any press-derived register.",
+    "unmeasured": [
+      {
+        "what": "What the pre-2021-22 'Incidents' figures counted",
+        "why": "MHA performed the restatement and published no note. The 2018 fall of 197 and the 2019 fall of 339 against no change at all in 2020 rule out a uniform rescaling, and the obvious candidate - law-and-order and stone-pelting events - is ruled out by MHA's own later reply.",
+        "wouldFill": "A parliamentary question to MHA for the definitional basis of the 'Incidents' figures published in the Annual Reports up to 2020-21 and the reason for their revision in the Annual Report 2021-22.",
+        "reasonKind": "not-published"
+      }
+    ]
+  },
+  {
+    "id": "jk-terrorist-incidents-merged",
+    "title": "Terrorist incidents in J&K, MHA restated composite basis",
+    "unit": "incidents",
+    "domain": "defence",
+    "tier": "T1",
+    "source": {
+      "name": "MHA Annual Report 2021-22 (AnnualReport202122_24112022) J&K violence table, and MHA Rajya Sabha Unstarred Question No. 371 answered 20 July 2022",
+      "url": "https://www.mha.gov.in/MHA1/Par2017/pdfs/par2022-pdfs/RS20072022/371.pdf",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "breaks": [
+      {
+        "period": "2017",
+        "note": "Origin seam. This basis supersedes jk-terrorist-incidents-legacy, which published 342, 614 and 594 for 2017, 2018 and 2019. The restatement was made in the Annual Report 2021-22 with no note, and the years before 2017 were dropped rather than restated, so no value on this basis exists for 2014, 2015 or 2016.",
+        "provenanceRef": "P-72"
+      },
+      {
+        "period": "2021",
+        "note": "Terminus. From the Annual Report 2022-23 MHA published the two components separately instead, and the identity is exact for every year where both are available - 228+189=417, 153+102=255, 126+118=244, 129+100=229. This series is therefore the sum of jk-terrorist-initiated-incidents and jk-encounters-ct-ops and must never be shown as a measure of militant activity: roughly 45 per cent of the 2018 value is operations the state itself launched.",
+        "provenanceRef": "P-71"
+      }
+    ],
+    "points": [
+      {
+        "country": "IND",
+        "period": "2017",
+        "value": 279,
+        "status": "verified",
+        "note": "No component decomposition is published for 2017 or any earlier year."
+      },
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 417,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2019",
+        "value": 255,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2020",
+        "value": 244,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2021",
+        "value": 229,
+        "status": "verified",
+        "note": "The reply of 20 July 2022 uses this series to state that there was a substantial decline in terrorist attacks from 417 in 2018 to 229 in 2021 - a claim about militant activity made on a figure that includes the state's own operations."
+      }
+    ],
+    "provenanceRefs": [
+      "P-71",
+      "P-72",
+      "P-78",
+      "P-86"
+    ],
+    "notes": "The revised aggregate reached Parliament before it reached the Annual Report: a PIB release of 1 December 2021 already carried 417/255/244 while the Annual Report still showed 614/594/244. The same reply of 20 July 2022 that carries the new merged incident totals still gives the old lower civilian figures of 39/39/37/41.",
+    "caveat": "This figure is the sum of militant-initiated incidents and security-force-initiated operations, published under a name that names only the first. It moves with the state's operational tempo as much as with militant activity.",
+    "higherIsBetter": false,
+    "denominator": "Militant-initiated incidents plus encounters and counter-terrorism operations, in the UT of Jammu and Kashmir, on a basis MHA has never defined.",
+    "unmeasured": [
+      {
+        "what": "The decomposition of this composite for any year before 2018",
+        "why": "MHA publishes the two components only from the Annual Report 2022-23 and only from 2018 onward. For every earlier year the composite cannot be separated, so the years the series is most often quoted across cannot be decomposed at all.",
+        "wouldFill": "A parliamentary question to MHA for the year-wise split of terrorist-initiated incidents and encounters or counter-terror operations for 2010 to 2017, on the basis used in the Annual Report 2022-23 onward.",
+        "reasonKind": "not-published"
+      }
+    ]
+  },
+  {
+    "id": "jk-terrorist-initiated-incidents",
+    "title": "Terrorist Initiated Incidents in J&K",
+    "unit": "incidents",
+    "domain": "defence",
+    "tier": "T1",
+    "source": {
+      "name": "MHA Annual Reports 2022-23, 2023-24 and 2024-25, J&K violence tables (AnnualReportEngLish_11102023, AnnualReport_27122024, AREnglish_24032026)",
+      "url": "https://www.mha.gov.in/en/documents/annual-reports",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "breaks": [
+      {
+        "period": "2018",
+        "note": "Origin seam. This column first appears in the Annual Report 2022-23, posted 11 October 2023, when the single 'Incidents' column was split in two. It does not continue jk-terrorist-incidents-legacy or jk-terrorist-incidents-merged: those counted militant-initiated events and security-force operations together, and this counts only the first. No decomposition is published for any year before 2018. The restructuring was applied to Jammu and Kashmir alone - the Left Wing Extremism violence table keeps an unchanged header across the same three report years and is never split by initiator.",
+        "provenanceRef": "P-71"
+      }
+    ],
+    "points": [
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 228,
+        "status": "verified",
+        "note": "Corroborated in Rajya Sabha Unstarred Q.228 of 24 July 2024, which attributes the table to the UT of J&K."
+      },
+      {
+        "country": "IND",
+        "period": "2019",
+        "value": 153,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2020",
+        "value": 126,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2021",
+        "value": 129,
+        "status": "verified",
+        "note": "Above 2020. The trend is not monotonic on MHA's own series."
+      },
+      {
+        "country": "IND",
+        "period": "2022",
+        "value": 125,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2023",
+        "value": 46,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2024",
+        "value": 28,
+        "status": "verified"
+      }
+    ],
+    "provenanceRefs": [
+      "P-71",
+      "P-75",
+      "P-78",
+      "P-85",
+      "P-86"
+    ],
+    "notes": "For calendar 2018 alone, five separately published and separately labelled incident counts exist: 614 and 417 from MHA on two earlier bases, 228 here, and 597 and 206 from the press-derived register on two of its own bases. The near-coincidence of 228 and 206 is arithmetic accident - one gates on who initiated, the other on whether anyone died. The 2025 figure is not held: MHA Annual Report 2025-26 was not located, so calendar 2025, including the government's own classification of the Pahalgam attack of 22 April 2025, is outside this series.",
+    "higherIsBetter": false,
+    "denominator": "Incidents in the UT of Jammu and Kashmir recorded as initiated by militants, on a basis MHA has never defined - no report states whether a fatality is required, or whether firing, grenade attacks, IED recoveries and non-fatal attacks are inside the count.",
+    "unmeasured": [
+      {
+        "what": "Any definition of a Terrorist Initiated Incident",
+        "why": "Neither this column nor its companion is defined anywhere in seventeen report years, so every comparison of MHA's incident count with another instrument's is a comparison in which one side's definition is unknown.",
+        "wouldFill": "An RTI to the Ministry of Home Affairs, Department of Jammu, Kashmir and Ladakh Affairs, for the instructions or proforma issued to the UT of J&K for compiling the terrorist-violence returns reproduced in the Annual Report.",
+        "reasonKind": "not-published"
+      }
+    ]
+  },
+  {
+    "id": "jk-encounters-ct-ops",
+    "title": "Encounters and counter-terrorism operations in J&K",
+    "unit": "operations",
+    "domain": "defence",
+    "tier": "T1",
+    "source": {
+      "name": "MHA Annual Reports 2022-23, 2023-24 and 2024-25, J&K violence tables; corroborated in PIB PRID 2003497 of 7 February 2024, which attributes the series to CID, J&K",
+      "url": "https://www.mha.gov.in/en/documents/annual-reports",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "breaks": [
+      {
+        "period": "2018",
+        "note": "Origin seam. This is the only column in MHA's entire J&K instrument that counts what the state did, and it first appears in the Annual Report 2022-23. It must not be spliced to the one earlier operation count that exists - Lok Sabha Unstarred Q.198 of 24 February 2015 gave 'No. of incidents of encounter between terrorists and Security Forces' as 57 for 2014. Neither quantity is defined; they are two undefined quantities sharing a word, and the capability to count operations preceded its publication in the flagship by seven years.",
+        "provenanceRef": "P-71"
+      }
+    ],
+    "points": [
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 189,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2019",
+        "value": 102,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2020",
+        "value": 118,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2021",
+        "value": 100,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2022",
+        "value": 117,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2023",
+        "value": 48,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2024",
+        "value": 57,
+        "status": "verified",
+        "note": "Above 2023 while terrorist-initiated incidents fell from 46 to 28 - operations and militant activity moving in opposite directions in the same year."
+      }
+    ],
+    "provenanceRefs": [
+      "P-71",
+      "P-78",
+      "P-86"
+    ],
+    "notes": "731 operations over 2018-2024, computed from these rows. Direction of merit is left unset deliberately: an operations count is read as effort by one reader and as intensity of contact with the population by another, and asserting a direction would take a side.",
+    "higherIsBetter": null,
+    "denominator": "Encounters and counter-terrorism operations recorded in the UT of Jammu and Kashmir. Undefined - no MHA document says what constitutes one operation, or how a multi-day cordon is counted.",
+    "unmeasured": [
+      {
+        "what": "The number of cordon-and-search operations conducted in J&K",
+        "why": "No published count was found from MHA, the J&K Police or the Army, in any document, for any year, by two independent searches; the string 'cordon' appears zero times in seven MHA Annual Reports and the J&K Police website publishes no statistical report of any kind. No body has been asked on the record and refused, and none has explained the omission. This is the most common form of contact between the security forces and the civilian population, and the instrument counts the outcomes of an activity it does not count. Recorded at the strength of a negative proved by absence of evidence: an operation requiring deployment orders and after-action returns is unlikely to be genuinely uncounted internally, which argues for not-published, but nothing was found either way.",
+        "wouldFill": "An RTI to the Director General of Police, Jammu and Kashmir, and separately to the Ministry of Defence in respect of Rashtriya Rifles and Army formations, for the year-wise number of cordon-and-search operations conducted. The correct addressee designation could not be verified because the J&K Police web presence was unreachable in this phase.",
+        "reasonKind": "not-collected"
+      },
+      {
+        "what": "What these operations produced - civilians killed in them separately from the composite column, magisterial inquiries ordered, completed or published, and AFSPA section 7 sanction requests arising",
+        "why": "The J&K chapter of the Annual Report 2024-25 contains zero occurrences of 'human right', 'NHRC', 'custody', 'custodial', 'compensation', 'ex-gratia', 'inquiry' or 'magisterial' across roughly 46,000 characters. MHA's annual accounting of the conflict contains no accountability vocabulary of any kind, so an instrument counting 731 operations has no term for their consequences.",
+        "wouldFill": "A parliamentary question to MHA for the year-wise number of magisterial inquiries ordered into deaths in security-force operations in J&K, the number completed, and the number whose reports were published.",
+        "reasonKind": "not-collected"
+      }
+    ]
+  },
+  {
+    "id": "jk-civilians-killed-terror-basis",
+    "title": "Civilians killed in J&K, MHA bounded basis",
+    "unit": "deaths",
+    "domain": "defence",
+    "tier": "T1",
+    "source": {
+      "name": "MHA Annual Reports 2018-19 through 2021-22 and PIB PRID 1575578 of 25 June 2019 (annexure to Lok Sabha Unstarred Question No. 466); bounding formula from MHA Rajya Sabha Unstarred Question No. 371 answered 20 July 2022",
+      "url": "https://www.mha.gov.in/MHA1/Par2017/pdfs/par2022-pdfs/RS20072022/371.pdf",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "breaks": [
+      {
+        "period": "2021",
+        "note": "Terminus. From the Annual Report 2022-23, posted 11 October 2023, MHA published a different quantity under the identical column name, raising 2018 from 39 to 55, 2019 from 39 to 44 and 2020 from 37 to 38 with no footnote. The footnote disclosing the change appeared only in the Annual Report 2023-24, posted 27 December 2024 - fourteen months later. Pre-break values count civilians killed by militants; post-break values count civilians killed by militants plus civilians killed during security-force operations, undifferentiated. The two series must never share an axis.",
+        "provenanceRef": "P-73"
+      }
+    ],
+    "points": [
+      {
+        "country": "IND",
+        "period": "2014",
+        "value": 28,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2015",
+        "value": 17,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2016",
+        "value": 15,
+        "status": "verified",
+        "note": "The deadliest year for civilians in the period on every non-official account. MHA told Parliament on 10 August 2016 that six civilians had been killed to 31 July, on a table bounded to deaths 'in these incidents', and the Annual Report 2016-17 recorded an 11.76 per cent decrease in civilian casualties against 2015. The figure is not wrong; the deaths it does not count are the ones the state caused."
+      },
+      {
+        "country": "IND",
+        "period": "2017",
+        "value": 40,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 39,
+        "status": "verified",
+        "note": "Restated to 55 in AR 2022-23."
+      },
+      {
+        "country": "IND",
+        "period": "2019",
+        "value": 39,
+        "status": "verified",
+        "note": "Restated to 44 in AR 2022-23."
+      },
+      {
+        "country": "IND",
+        "period": "2020",
+        "value": 37,
+        "status": "verified",
+        "note": "Restated to 38 in AR 2022-23."
+      },
+      {
+        "country": "IND",
+        "period": "2021",
+        "value": 41,
+        "status": "verified",
+        "note": "Unchanged across the restatement."
+      }
+    ],
+    "provenanceRefs": [
+      "P-73",
+      "P-74",
+      "P-85",
+      "P-86"
+    ],
+    "notes": "Three bounding formulas have been used for this column name and none of them appears in a table label: a bare heading with no bounding in every Annual Report to 2022-23; 'who died due to terrorist attacks' in the reply of 20 July 2022; and 'in these incidents' in the reply of 10 August 2016. The definition is systematically stored in the one part of the document that does not survive transcription, which is the mechanism by which a bounded figure enters circulation as an unbounded one.",
+    "caveat": "This series counts civilians killed by militants. It has never counted civilians killed by security forces, and MHA has never published a column for that quantity under any heading in any year.",
+    "higherIsBetter": false,
+    "denominator": "Civilians recorded as killed in terrorist incidents in Jammu and Kashmir. Excludes by construction civilians killed in security-force operations, protest firing, crowd control and checkpoint shootings - deaths MHA's own reports narrate in prose on the same pages as these tables.",
+    "unmeasured": [
+      {
+        "what": "Civilians killed by security forces in Jammu and Kashmir, on this basis or any other",
+        "why": "MHA has never published a column for it under any heading in any Annual Report from 2008-09 to 2024-25, and has stated no reason because it has never acknowledged the category - while its own reports describe individual such deaths in prose in the same section as the tables that exclude them.",
+        "wouldFill": "A parliamentary question to MHA for civilians killed by security-force action in J&K, disaggregated from the composite column its own footnote concedes contains two populations.",
+        "reasonKind": "not-collected",
+        "reasonDisputed": true,
+        "disputeKind": "evidentiary"
+      }
+    ]
+  },
+  {
+    "id": "jk-civilians-killed-composite",
+    "title": "Civilians killed in J&K, MHA composite basis (terrorist incidents and CT operations merged)",
+    "unit": "deaths",
+    "domain": "defence",
+    "tier": "T1",
+    "source": {
+      "name": "MHA Annual Reports 2022-23, 2023-24 and 2024-25, J&K violence tables; the definitional footnote appears from AR 2023-24: 'Civilians killed includes civilians killed in terrorist-initiated incidents and civilians killed in encounter/counter Terrorism operations'",
+      "url": "https://www.mha.gov.in/en/documents/annual-reports",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "breaks": [
+      {
+        "period": "2018",
+        "note": "Origin seam. This basis supersedes jk-civilians-killed-terror-basis, which published 39, 39 and 37 for 2018, 2019 and 2020. The change was made in the Annual Report 2022-23 with no footnote and disclosed in the Annual Report 2023-24 fourteen months later. Both series carry values for 2018-2021 and neither may be shown as the continuation of the other.",
+        "provenanceRef": "P-73"
+      }
+    ],
+    "points": [
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 55,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2019",
+        "value": 44,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2020",
+        "value": 38,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2021",
+        "value": 41,
+        "status": "verified",
+        "note": "Identical to the pre-restatement value, so the arithmetic residual between the two bases is zero for this year."
+      },
+      {
+        "country": "IND",
+        "period": "2022",
+        "value": 31,
+        "status": "verified",
+        "note": "A PIB release of 7 December 2022 gave this same 31 under the narrower wording 'civilians who lost their life in these terrorist incidents', which MHA later footnoted as encounter-inclusive."
+      },
+      {
+        "country": "IND",
+        "period": "2023",
+        "value": 14,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2024",
+        "value": 26,
+        "status": "verified"
+      }
+    ],
+    "provenanceRefs": [
+      "P-73",
+      "P-85",
+      "P-86",
+      "P-87"
+    ],
+    "notes": "The row label carried the definition ten months before the Annual Report did: PIB's release of 7 February 2024 heads the row 'Civilians killed in terrorist initiated incidents and in encounters'. The same release attributes the whole table to CID, J&K - the Criminal Investigation Department of the J&K Police, a party to the operations being counted - while the Annual Reports carrying the identical figures state no source at all. Calendar 2025 is outside this series: the Annual Report 2025-26 was not located, so the government's own classification of the Pahalgam attack of 22 April 2025, in which 26 civilians were killed in one incident, is not held.",
+    "caveat": "This column merges civilians killed by militants with civilians killed during security-force operations and attributes neither. The arithmetic residual against the earlier basis - 16 for 2018, 5 for 2019, 1 for 2020, 0 for 2021 - is NOT a count of civilians killed in security-force operations and must never be published as one: the 2021 residual is zero, and the security-force figure for 2020 also moved across the same restatement, so the restatement carries ordinary revisions too.",
+    "higherIsBetter": false,
+    "denominator": "Civilians recorded as killed in terrorist-initiated incidents and in encounters or counter-terrorism operations in the UT of Jammu and Kashmir, combined into one figure with no perpetrator attribution. Still excludes protest firing, crowd control, checkpoint shootings and crowd-control munitions.",
+    "unmeasured": [
+      {
+        "what": "The two components of this column, published separately",
+        "why": "MHA's own footnote states that the figure contains civilians killed in terrorist-initiated incidents and civilians killed in encounter or counter-terrorism operations. It has never published the split, so a reader cannot recover what share of the total the state caused.",
+        "wouldFill": "A parliamentary question to MHA asking for the two components of the 'Civilians killed' column disaggregated, using the AR 2023-24 footnote as the hook since it concedes the column is composite.",
+        "reasonKind": "not-published"
+      }
+    ]
+  },
+  {
+    "id": "jk-civilians-killed-satp",
+    "title": "Civilians killed in J&K, press-derived register",
+    "unit": "deaths",
+    "domain": "defence",
+    "tier": "T4",
+    "source": {
+      "name": "South Asia Terrorism Portal, Jammu and Kashmir yearly fatalities datasheet, columns 'Incidents of Killing | Civilians | Security Forces | Terrorists/Insurgents/Extremists'. Relayed through Internet Archive snapshots of SATP's own pages: satp.org gave no HTTP response of any kind in this phase",
+      "url": "https://www.satp.org/",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "points": [
+      {
+        "country": "IND",
+        "period": "2014",
+        "value": 28,
+        "status": "approx"
+      },
+      {
+        "country": "IND",
+        "period": "2016",
+        "value": 14,
+        "status": "approx",
+        "note": "BELOW MHA's 15 for the same year, in the year of the largest protest death toll of the period. This kills the natural hypothesis that the press-derived register simply catches the protest and encounter-site deaths MHA omits."
+      },
+      {
+        "country": "IND",
+        "period": "2017",
+        "value": 54,
+        "status": "approx"
+      },
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 86,
+        "status": "approx",
+        "note": "Against MHA's 39 on the bounded basis and 55 on the composite basis - a ratio of 2.21 to the bounded figure, and 31 above even the encounter-inclusive one."
+      },
+      {
+        "country": "IND",
+        "period": "2019",
+        "value": 42,
+        "status": "approx"
+      },
+      {
+        "country": "IND",
+        "period": "2020",
+        "value": 33,
+        "status": "approx"
+      },
+      {
+        "country": "IND",
+        "period": "2021",
+        "value": 36,
+        "status": "approx"
+      },
+      {
+        "country": "IND",
+        "period": "2022",
+        "value": 28,
+        "status": "approx"
+      }
+    ],
+    "provenanceRefs": [
+      "P-75",
+      "P-87"
+    ],
+    "notes": "Ratios to MHA's bounded series run 2.21 in 2018, 1.08 in 2019, 0.89 in 2020 and 0.88 in 2021 - above in one year, below in two. The two civilian series must not be treated as interchangeable in any year on the strength of their agreement in others. This register and MHA's fail in opposite directions and neither is a superset of the other: this one gates on press reportability and misses routine, undramatic, remote-sector and communications-blackout events, while MHA gates on administrative reportability and misses events the state has an interest in not booking. No reconciliation exists, and the publisher has never acknowledged, compared or explained the gap between its own count and MHA's on any reachable page.",
+    "caveat": "No methodology of any kind is published. The site's structure was enumerated and it has no methodology page, codebook, definitions page or inclusion criteria; the entire methodology statement is a datasheet footer reading 'Compiled from news reports and are provisional', while the publisher's own disclaimer concedes a component of 'internally developed data' that is nowhere specified. 'Civilian' is nowhere defined, and no perpetrator breakdown is published at all.",
+    "higherIsBetter": false,
+    "denominator": "Persons the publisher classifies as civilians killed in incidents it classifies as terrorism-related in Jammu and Kashmir, compiled from news reports. No definition of 'civilian' exists, and no statement is published on whether civilians killed in encounters or cordon-and-search operations are included."
+  },
+  {
+    "id": "jk-security-forces-killed",
+    "title": "Security-force personnel killed in J&K, MHA",
+    "unit": "deaths",
+    "domain": "defence",
+    "tier": "T1",
+    "source": {
+      "name": "MHA Annual Reports 2018-19 through 2024-25, J&K violence tables, and PIB PRID 1575578 of 25 June 2019 for 2014-2017",
+      "url": "https://www.mha.gov.in/en/documents/annual-reports",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "points": [
+      {
+        "country": "IND",
+        "period": "2014",
+        "value": 47,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2015",
+        "value": 39,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2016",
+        "value": 82,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2017",
+        "value": 80,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 91,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2019",
+        "value": 80,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2020",
+        "value": 63,
+        "status": "verified",
+        "note": "Published as 62 in the Annual Report 2021-22 and as 63 from the Annual Report 2022-23, with no note. The current published value is carried. This one-point movement is why the residual between the two civilian bases cannot be read as a definitional effect: the same restatement moved a figure that no civilian definition could touch."
+      },
+      {
+        "country": "IND",
+        "period": "2021",
+        "value": 42,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2022",
+        "value": 32,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2023",
+        "value": 30,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2024",
+        "value": 31,
+        "status": "verified"
+      }
+    ],
+    "provenanceRefs": [
+      "P-86"
+    ],
+    "notes": "This is the one quantity in this domain on which the two families of instrument agree, and a record treating every measure here as equally compromised would be wrong. Against the press-derived register the series runs 91/95 in 2018, 80/78 in 2019, 63/56 in 2020 and 42/45 in 2021 - within about ten per cent every year - because the dead are named, pensioned and publicly honoured. It is the government's strongest number and no critic located in this phase offers a competing count. Note also, outside this window, that the 2012 figure was silently revised from 15 to 38 between the Annual Reports 2013-14 and 2014-15 with the incident count unchanged at 220, which implies an unstated change in which forces are counted.",
+    "higherIsBetter": false,
+    "denominator": "Members of the security forces recorded as killed in Jammu and Kashmir. Composition never stated: no MHA document says whether the figure covers Army and Rashtriya Rifles, central armed police forces, J&K Police and Special Police Officers, or whether that composition has changed. One partial data point exists - a reply of 11 December 2019 counts a Special Police Officer inside the total.",
+    "unmeasured": [
+      {
+        "what": "Which forces are inside the 'Security Forces killed' column",
+        "why": "The composition has never been stated in any of seventeen report years, and the silent revision of the 2012 figure from 15 to 38 with incidents unchanged implies it has changed at least once without disclosure.",
+        "wouldFill": "A parliamentary question to MHA for the year-wise disaggregation of security-force fatalities in J&K by force - Army and Rashtriya Rifles, each central armed police force, J&K Police and Special Police Officers.",
+        "reasonKind": "not-published"
+      }
+    ]
+  },
+  {
+    "id": "jk-security-forces-killed-satp",
+    "title": "Security-force personnel killed in J&K, press-derived register",
+    "unit": "deaths",
+    "domain": "defence",
+    "tier": "T4",
+    "source": {
+      "name": "South Asia Terrorism Portal, Jammu and Kashmir yearly fatalities datasheet. Relayed through Internet Archive snapshots: satp.org gave no HTTP response of any kind in this phase",
+      "url": "https://www.satp.org/",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "points": [
+      {
+        "country": "IND",
+        "period": "2014",
+        "value": 47,
+        "status": "approx",
+        "note": "Identical to MHA's figure for the same year."
+      },
+      {
+        "country": "IND",
+        "period": "2016",
+        "value": 88,
+        "status": "approx"
+      },
+      {
+        "country": "IND",
+        "period": "2017",
+        "value": 83,
+        "status": "approx"
+      },
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 95,
+        "status": "approx"
+      },
+      {
+        "country": "IND",
+        "period": "2019",
+        "value": 78,
+        "status": "approx"
+      },
+      {
+        "country": "IND",
+        "period": "2020",
+        "value": 56,
+        "status": "approx"
+      },
+      {
+        "country": "IND",
+        "period": "2021",
+        "value": 45,
+        "status": "approx"
+      },
+      {
+        "country": "IND",
+        "period": "2022",
+        "value": 30,
+        "status": "approx"
+      }
+    ],
+    "provenanceRefs": [
+      "P-75"
+    ],
+    "notes": "Carried because the convergence with MHA's figures is itself the finding. A press-derived register and an administrative register capture the same quantity to within about ten per cent every year, which is what makes this the one measure in the domain that survives the objections damaging the others. The same publisher's civilian count for 2018 exceeds MHA's by a factor of more than two, on the same page, in the same table.",
+    "caveat": "No methodology of any kind is published by this source - no methodology page, codebook, definitions page or inclusion criteria exists, and the entire methodology statement is a datasheet footer reading 'Compiled from news reports and are provisional'.",
+    "higherIsBetter": false,
+    "denominator": "Persons the publisher classifies as security-force personnel killed in incidents it classifies as terrorism-related in Jammu and Kashmir, compiled from news reports. Force composition not stated."
+  },
+  {
+    "id": "jk-militants-killed",
+    "title": "Militants killed in J&K, MHA 'Terrorists killed'",
+    "unit": "deaths",
+    "domain": "defence",
+    "tier": "T1",
+    "source": {
+      "name": "MHA Annual Reports 2022-23, 2023-24 and 2024-25, J&K violence tables; corroborated in PIB PRID 2003497 of 7 February 2024",
+      "url": "https://www.mha.gov.in/en/documents/annual-reports",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "points": [
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 257,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2019",
+        "value": 157,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2020",
+        "value": 221,
+        "status": "verified",
+        "note": "Includes, for eleven weeks, three civilian labourers killed at Amshipora on 18 July 2020 and presented as unidentified hardcore terrorists. They were removed from the category only after three families 160 km away filed missing-person complaints and DNA was run."
+      },
+      {
+        "country": "IND",
+        "period": "2021",
+        "value": 180,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2022",
+        "value": 187,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2023",
+        "value": 73,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2024",
+        "value": 67,
+        "status": "verified"
+      }
+    ],
+    "provenanceRefs": [
+      "P-85",
+      "P-86"
+    ],
+    "notes": "1,142 over 2018-2024, computed from these rows. Direction of merit is left unset deliberately: a count of persons killed by the state is read as operational success by one reader and as a body count by another, and asserting a direction would take a side. Membership of this category is declared by the force that conducted the killing, at the encounter site, before independent identification, after which the body is buried away from the home district unphotographed - so the error in this column is structurally one-directional, from civilian into militant. A separate live divergence: for 2025 the Army Chief stated 29 militants eliminated while the press-derived register gives 46, and the likely cause is definitional - the Army counts eliminations in operations under its own operational control, the register counts all deaths of persons it classifies as militants from any cause and any agency.",
+    "higherIsBetter": null,
+    "denominator": "Persons recorded as terrorists killed in Jammu and Kashmir, as classified by the force conducting the operation. No local-and-foreign disaggregation is published in any of seventeen report years, and no accompanying record of identification, magisterial inquiry or prosecution sanction appears on the same page or in the same document.",
+    "unmeasured": [
+      {
+        "what": "The local and foreign composition of militants killed in J&K, for the entire post-2001 period",
+        "why": "MHA has never disaggregated this column in any Annual Report in any year, and the one instrument that published the split abandoned it on 15 November 2001, dropping with it the qualifier that its figures covered only identified militants killed. The state plainly holds something, since officials assert local and foreign shares at press conferences, but no return has ever been published and the widely-quoted split for 2024 has no retrievable basis.",
+        "wouldFill": "A parliamentary question to MHA for the year-wise disaggregation of the 'Terrorists killed' column into local residents and foreign nationals.",
+        "reasonKind": "not-published"
+      },
+      {
+        "what": "Whether the persons in this column were correctly identified, and in how many cases identity was later contested or established as wrong",
+        "why": "No instrument places the killing of militants beside any accounting of whether the killings were lawful, correctly identified or inquired into. The relevant counter-facts exist in different documents held by different ministries - sanction figures with the Ministry of Defence, magisterial inquiries with district administrations, the identification record with a commission now abolished - and none has ever appeared on the same page as this figure.",
+        "wouldFill": "A parliamentary question to MHA for the year-wise number of persons recorded as terrorists killed in J&K whose identity was subsequently contested by next of kin, the number exhumed, and the number reclassified.",
+        "reasonKind": "not-collected"
+      }
+    ]
+  },
+  {
+    "id": "jk-infiltration-attempts",
+    "title": "Infiltration attempts into J&K, MHA",
+    "unit": "attempts",
+    "domain": "defence",
+    "tier": "T1",
+    "source": {
+      "name": "MHA Annual Reports 2018-19 through 2022-23, J&K infiltration tables; the series is absent from the Annual Reports 2023-24 and 2024-25",
+      "url": "https://www.mha.gov.in/en/documents/annual-reports",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "points": [
+      {
+        "country": "IND",
+        "period": "2014",
+        "value": 222,
+        "status": "verified",
+        "note": "Dropped from view in the Annual Report 2021-22, which starts the table at 2017 rather than restating the earlier years."
+      },
+      {
+        "country": "IND",
+        "period": "2015",
+        "value": 121,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2016",
+        "value": 371,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2017",
+        "value": 419,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 328,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2019",
+        "value": 216,
+        "status": "verified",
+        "note": "First published in the Annual Report 2018-19 as 23 up to 30 March 2019, then as 216 for the full year."
+      },
+      {
+        "country": "IND",
+        "period": "2020",
+        "value": 99,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2021",
+        "value": 77,
+        "status": "verified",
+        "note": "First published as 73 up to 30 November 2021, then as 77 for the full year."
+      },
+      {
+        "country": "IND",
+        "period": "2022",
+        "value": 53,
+        "status": "verified",
+        "note": "Terminal value. No MHA infiltration figure exists for 2023 or later: the table was discontinued without announcement while the policy paragraph describing the multi-pronged approach to containing infiltration survives at para 15.7 of the Annual Report 2024-25."
+      }
+    ],
+    "provenanceRefs": [
+      "P-76",
+      "P-86"
+    ],
+    "notes": "The row label for this quantity changed four times - an unlabelled 'Total' to the Annual Report 2013-14, then 'Total Infiltration Attempts' in 2014-15, then 'Infiltration attempts' from 2016-17 - and MHA has never stated how an attempt is detected or counted. The only two years the series was attributed to anyone attributed it to the Multi Agency Centre, an Intelligence Bureau body; from the Annual Report 2016-17 the attribution was dropped and the series continued. This series and jk-net-estimated-infiltration are two different quantities in the same table and must never share a line, and neither may be filled from the Ministry of Defence's separate 'Infiltration Bid Eliminated', which is LoC-only and Army-only by construction. The three quantities move in opposite directions under one underlying reality: if interception improves, attempts may be unchanged, bids eliminated rise and net falls.",
+    "higherIsBetter": false,
+    "denominator": "Attempts at infiltration into Jammu and Kashmir recorded by MHA. Detection and counting rule never stated; the figure is not labelled an estimate, unlike its companion row.",
+    "unmeasured": [
+      {
+        "what": "Infiltration attempts into J&K for 2023 onward",
+        "why": "MHA published this table in every Annual Report from at least 2010-11 through 2022-23 and discontinued it with no announcement and no stated reason, while the border-management apparatus that generates the count continues to operate and is described at length in the same reports. This is a termination of the instrument, not a gap in the world.",
+        "wouldFill": "A parliamentary question to MHA for year-wise infiltration attempts and net estimated infiltration for 2023, 2024 and 2025 - a request to resume a series the Ministry itself published for over a decade. A parallel question to the Ministry of Defence would test whether the Army holds it independently.",
+        "reasonKind": "not-published"
+      }
+    ]
+  },
+  {
+    "id": "jk-net-estimated-infiltration",
+    "title": "Net estimated infiltration into J&K, MHA",
+    "unit": "persons",
+    "domain": "defence",
+    "tier": "T1",
+    "source": {
+      "name": "MHA Annual Reports 2019-20 through 2022-23, J&K infiltration tables; the series is absent from the Annual Reports 2023-24 and 2024-25",
+      "url": "https://www.mha.gov.in/en/documents/annual-reports",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "points": [
+      {
+        "country": "IND",
+        "period": "2014",
+        "value": 65,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2015",
+        "value": 33,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2016",
+        "value": 119,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2017",
+        "value": 136,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 143,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2019",
+        "value": 141,
+        "status": "verified",
+        "note": "Published as 138 in the Annual Reports 2019-20, 2020-21 and 2021-22 and as 141 in the Annual Report 2022-23, with no note. The current published value is carried."
+      },
+      {
+        "country": "IND",
+        "period": "2020",
+        "value": 51,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2021",
+        "value": 34,
+        "status": "verified",
+        "note": "A conflicting figure of 24 for this year circulates in relayed accounts; the conflicting primary could not be retrieved and is not carried."
+      },
+      {
+        "country": "IND",
+        "period": "2022",
+        "value": 14,
+        "status": "verified",
+        "note": "Terminal value. No MHA net-infiltration figure exists for 2023 or later."
+      }
+    ],
+    "provenanceRefs": [
+      "P-76",
+      "P-86"
+    ],
+    "notes": "The published label for this row changed twice inside three report years: 'Successful' in the Annual Report 2015-16, 'Net infiltration (Estimated)' in 2016-17, and 'Net Estimated infiltration' from 2017-18. 'Successful' and 'net estimated' are not obviously the same thing and no report says they are. No break is drawn at those renamings because the values carried here all come from reports using the final label, and drawing a seam would assert an arithmetic discontinuity that is not established - the label history is the finding, not a demonstrated basis change. MHA does not publish 'successful infiltration' under that name after 2015-16; a successful-infiltration figure appears once, in the prose of the Annual Report 2013-14. Into the vacuum left by the discontinuation the Army speaks about a quantity it does not publish: the GOC-in-C Northern Command declared 2023 the year of zero infiltration, which is an assertion about this net quantity made by a body that publishes only bids eliminated.",
+    "caveat": "This row is labelled an estimate; the companion 'Infiltration attempts' row is not. Any statement that infiltration fell from 419 to 53 and any statement that it fell from 136 to 14 are quoting different rows of the same table, and the two must never be shown as one line.",
+    "higherIsBetter": false,
+    "denominator": "MHA's estimate of persons who successfully infiltrated into Jammu and Kashmir, net of interception. No interception or attrition figure is published that would link this row to the attempts row, so the difference between them is not a computable quantity."
+  },
+  {
+    "id": "jk-organised-stone-pelting",
+    "title": "Organised stone-pelting incidents in J&K",
+    "unit": "incidents",
+    "domain": "governance",
+    "tier": "T1",
+    "source": {
+      "name": "MHA, Rajya Sabha Unstarred Question No. 228, answered 24 July 2024, 'LAW AND ORDER IN J&K', (Source: UT of J&K)",
+      "url": "https://www.mha.gov.in/MHA1/Par2017/pdfs/par2024-pdfs/RS24072024/228.pdf",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "points": [
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 1328,
+        "status": "verified",
+        "note": "Against a widest-basis MHA incident total of 614 for the same year, which establishes that stone-pelting was never inside the 'Incidents' count at any vintage and kills the natural explanation of the 614-to-417 restatement. MHA is separately reported as giving 759 and 1,458 for this same year - three official figures for one year, unreconciled, and none may be picked."
+      },
+      {
+        "country": "IND",
+        "period": "2023",
+        "value": 0,
+        "status": "verified",
+        "note": "Published as exactly 00. A whole-year zero in a category whose boundary is undefined is not a measurement of how much stone-pelting occurred."
+      }
+    ],
+    "provenanceRefs": [
+      "P-78"
+    ],
+    "notes": "Only three years were sampled in the reply and one of them is partial: 2024 is given as 00 up to 15 July and is not carried here, because a part-year value cannot enter a calendar-year series. Organised hartals are given on the same table as 52, 00 and 00. This series has never appeared in any MHA Annual Report in seventeen years, although the Annual Report 2024-25 asserts the conclusion drawn from it in prose at para 15.9 - the assertion is published and the count behind it is not. Direction of merit is left unset deliberately: the fall to zero is read as consent by one side and as the price of a penalty regime by the other, and asserting a direction would take a side.",
+    "caveat": "The counted category is 'Organized' stone-pelting and no body has ever defined 'organized'. Unorganised stone-pelting is outside the count by construction, so the published zero says nothing about how much stone-pelting occurred.",
+    "higherIsBetter": null,
+    "denominator": "Incidents in Jammu and Kashmir classified by the UT administration as organised stone-pelting. 'Organized' is undefined, and MHA is relaying the territorial administration's returns rather than publishing its own.",
+    "unmeasured": [
+      {
+        "what": "The full year-wise organised stone-pelting series",
+        "why": "MHA holds the data and produced three sampled years on request in July 2024, but has never published a full series and has never carried the quantity in the flagship instrument at all. The omission from the Annual Report is an editorial choice rather than a data gap.",
+        "wouldFill": "A parliamentary question to MHA for the full year-wise organised stone-pelting and hartal series - the identical route that produced the reply of 24 July 2024, which is the strongest route in this phase because it has already worked once.",
+        "reasonKind": "not-published"
+      },
+      {
+        "what": "A definition of 'organized' stone-pelting",
+        "why": "The qualifier is on the face of the published category and is nowhere defined by any body, so unorganised stone-pelting is outside the count by construction and the boundary of the counted quantity is unknown.",
+        "reasonKind": "never-defined"
+      }
+    ]
+  },
+  {
+    "id": "jk-pellet-deaths",
+    "title": "Protesters killed by pellets in J&K",
+    "unit": "deaths",
+    "domain": "governance",
+    "tier": "T1",
+    "source": {
+      "name": "MHA, Rajya Sabha Unstarred Question No. 511, answered 7 February 2018, 'PROTESTERS KILLED BY PELLET GUNS IN JAMMU AND KASHMIR', Annex-I, month-wise, calendar 2015 to 2017",
+      "url": "https://www.mha.gov.in/MHA1/Par2017/pdfs/par2018-pdfs/rs-07022018-ENG/511.pdf",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "points": [
+      {
+        "country": "IND",
+        "period": "2016",
+        "value": 13,
+        "status": "verified",
+        "note": "Annex-I gives July 3, August 5, September 4 and October 1; other months are dashes. Summed here from the published monthly grid."
+      },
+      {
+        "country": "IND",
+        "period": "2017",
+        "value": 4,
+        "status": "verified",
+        "note": "Annex-I gives April 1, June 1 and August 2; other months are dashes."
+      }
+    ],
+    "provenanceRefs": [
+      "P-79",
+      "P-80",
+      "P-81"
+    ],
+    "notes": "Calendar 2015 is deliberately not carried as a point. Every month of 2015 is a dash in Annex-I, and a dash is a blank rather than a published zero (CLAUDE.md rule 4). The three-year total of seventeen deaths that circulates is widely mis-described: the table's window is January 2015 to December 2017, but the deaths fall between July 2016 and August 2017, and secondary accounts render the window both ways and sometimes as '13 killed in 2016'. Any authored figure must cite the table's own window. The same table carries a second column, 'No. of Security Force personnel killed during Law & Order protests', with two deaths in July 2016 and nothing else - which makes this the only official Indian document located in this phase that places harm to civilians and harm to the state's own personnel on one page, on one basis. It exists precisely to the extent that both terms are small. The word 'pellet' occurs zero times in every MHA Annual Report from 2013-14 to 2024-25.",
+    "caveat": "This is the only pellet quantity any government has ever published, and it was published in the same answer that refused the injury count on national-security grounds. It is not a measure of the harm the weapon caused and must never render as one.",
+    "higherIsBetter": false,
+    "denominator": "Protesters and other persons recorded by MHA as killed by pellets in protest contexts in Jammu and Kashmir, month by month, over calendar 2015 to 2017 only. Not continued after this reply, and no comparable figure exists for any later year.",
+    "unmeasured": [
+      {
+        "what": "Persons injured by pellet-firing shotguns in J&K, year-wise",
+        "why": "The question that produced this table — Rajya Sabha Unstarred Question No. 511 of Prof. M. V. Rajeev Gowda, answered 7 February 2018 — asked for the number injured or killed. MHA supplied the killed and refused the rest in one sentence, verbatim: 'Further details in the matter cannot be disclosed in the interest of the national security.' The stated ground is contradicted by the same government's own conduct - the J&K Chief Minister gave the injury aggregate in the Legislative Assembly twenty-six days earlier, and the state's Director of Health Services filed a district-wise injury list on affidavit in the High Court four months later.",
+        "wouldFill": "An application to the High Court of Jammu and Kashmir at Srinagar for certified copies of the counter-affidavits in WP(C)(PIL) no. 14/2016, in particular the affidavit of the Director, Health Services, Kashmir filed in answer to the order of 11 May 2018 containing the district-wise list. Secondarily an RTI to the Director, Health Services, Kashmir, stating the definition and the unit of count.",
+        "reasonKind": "withheld",
+        "reasonDisputed": true,
+        "disputeKind": "evidentiary"
+      },
+      {
+        "what": "Pellet cartridges and rounds fired, by force and year",
+        "why": "The same sentence refused the munitions sub-question, part (c) of Prof. M. V. Rajeev Gowda’s Rajya Sabha Unstarred Question No. 511. The holder is established: the CRPF told the High Court it had fired 1.3 million pellets, 8,650 tear-smoke shells and 2,671 plastic pellets in the 32 days from 8 July 2016, so consumption returns demonstrably exist and were produced once, to a court, when disclosure served the force's own argument.",
+        "wouldFill": "An RTI to the CPIO, Directorate General, Central Reserve Police Force for year-wise consumption of 12-bore pump-action shotgun cartridges and of PAVA and tear-smoke munitions in the Kashmir Zone.",
+        "reasonKind": "withheld"
+      }
+    ]
+  },
+  {
+    "id": "jkccs-civilians-killed-by-armed-forces",
+    "title": "Civilians killed by armed forces in J&K, JKCCS/APDP perpetrator-attributed count",
+    "unit": "deaths",
+    "domain": "defence",
+    "tier": "T4",
+    "source": {
+      "name": "JKCCS and APDP, Annual Human Rights Review, 2018 and 2019 editions. The 2019 edition was retrieved via mirror; jkccs.net now redirects to an unrelated commercial page and every legacy deep path redirects with it, including the URL cited by OHCHR in June 2018 as the source for the 2016 Review",
+      "url": "https://jkccs.net/",
+      "vintage": "2026-08"
+    },
+    "calendar": "CY",
+    "points": [
+      {
+        "country": "IND",
+        "period": "2018",
+        "value": 71,
+        "status": "approx",
+        "note": "Relayed. The same year's split gives 25 civilians killed by unidentified gunmen and 18 by militants; the categories may not be exhaustive and the components must not be summed into a total."
+      },
+      {
+        "country": "IND",
+        "period": "2019",
+        "value": 19,
+        "status": "verified",
+        "note": "From the retrieved 2019 edition, which records at least 80 civilians killed in the year and splits them: 19 by armed forces, 17 in cross-LoC shelling, 28 by unidentified gunmen, 6 by militants, 7 in explosions, one after being hit by a stone, one non-local in cross-firing. The largest single bucket is left unattributed rather than forced."
+      }
+    ],
+    "provenanceRefs": [
+      "P-87"
+    ],
+    "notes": "This is the only instrument located in this phase, of any provenance, that ever published a perpetrator split for civilian deaths in Jammu and Kashmir, and it terminated. MHA has never published a column for civilians killed by security forces under any heading in any year; GTD covers non-state perpetrators only by construction; UCDP has recorded Government-of-India one-sided violence in three country-years ever, none after 2002. After 2019 no instrument of any provenance publishes this quantity. The stated method is media monitoring, field verification, records obtained through the J&K High Court registry and the organisation's own researchers' fact-finding; there is no formal methodology annex, no inclusion criteria and no stated counting unit. The 2018 and 2019 figures are not necessarily on a like basis and the fall between them should not be read as a trend.",
+    "caveat": "The 2019 figure is a floor stated as such by the body that produced it. Its own edition records that since 5 August 2019 no proper research or documentation could be undertaken because of a complete information collapse in Kashmir, and that allegations of destruction of civilian property during night raids were not reported at all.",
+    "higherIsBetter": false,
+    "denominator": "Civilians recorded by JKCCS and APDP as killed by armed forces in Jammu and Kashmir, as one of several perpetrator categories in a count whose total for 2019 is at least 80 civilians. Not a census, not an official return, and compiled by an advocacy body with a stated position on the conflict.",
+    "unmeasured": [
+      {
+        "what": "Perpetrator attribution for civilian deaths in J&K after 2019",
+        "why": "The only body that ever published it ceased to publish; its domain has been repurposed, its coordinator has been in custody since November 2021 and a named researcher was arrested in March 2023. No official instrument has ever carried the quantity, and no successor was identified in this phase.",
+        "wouldFill": "A dedicated assessment of Kashmir Law and Justice Project, which was publishing monthly human-rights briefings as recently as April 2026 and is the only identified live candidate successor; failing that, a registered ACLED export, which can in principle carry perpetrator attribution for India from 1 January 2016.",
+        "reasonKind": "not-collected"
+      }
+    ]
+  }
+]

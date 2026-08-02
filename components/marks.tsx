@@ -315,3 +315,35 @@ export function DifferentFactsMark({
     </div>
   );
 }
+
+/**
+ * The same test, recorded negative.
+ *
+ * A `differentFactsNote` on a record where `differentFacts` is FALSE has nowhere to render
+ * otherwise, because the mark above is gated on the boolean — which is how L-0118's note
+ * reached the reachability gate unreachable. Ungating that mark was not the fix: its label
+ * asserts the cases don't share a common measure, so rendering it here would state the
+ * opposite of what the record says.
+ *
+ * The label says the test was APPLIED AND CAME OUT NEGATIVE, and stops there. It deliberately
+ * does not say the two cases share a common measure — that asserts more than a false reading
+ * supports. L-0118's claim is narrower: no additional fact decides between the two readings,
+ * because both accounts predict the identical observation. A shared ledger might still not
+ * exist; what is established is only that the different-facts criterion was not met.
+ *
+ * Styled neutral, NOT in the umber family. Umber means the two sides are divided by different
+ * things, which is precisely what a false reading denies — carrying the mismatch colour onto
+ * a negative result would say at a glance the opposite of what the words say.
+ *
+ * No inline variant. The listing views mark a positive finding; a recorded negative is not a
+ * qualification a reader needs in a table cell, and adding one would put a mark on ten records
+ * that never ran the test.
+ */
+export function DifferentFactsNegativeMark({ note }: { note: string }) {
+  return (
+    <div className="different-facts-negative">
+      <span className="label">These cases were tested for different facts and recorded false</span>
+      <p>{note}</p>
+    </div>
+  );
+}

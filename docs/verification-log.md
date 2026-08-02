@@ -2357,3 +2357,214 @@ FALSE, both end-seam assertions TRUE.
 running it.** The schema now pattern-validates 948 references that were previously unchecked for
 well-formedness; if that had rejected or altered anything the corpus renders, these figures would
 have moved. They did not. The change is enforcement, not content.
+
+# Verification log — cycle 2026-08-03a (phase 11, kashmir-security)
+
+`/phase kashmir-security --dry`, run to the drop, then merged on instruction. Security arc only:
+incidents, casualties on all three populations, infiltration, local recruitment, encounters, pellet
+and crowd-control injuries, custodial deaths. Detentions/PSA, shutdowns, 370's legal mechanics,
+statehood, elections, delimitation, domicile and land law are phase 12 and no record was opened on
+them.
+
+## What merged
+
+| Layer | Added | Now |
+|---|---|---|
+| ledger | 15 (L-0110→L-0124), new file `data/ledger/kashmir-security.json` | 124 |
+| series | 15, new file `data/series/kashmir-security.json` | 201 |
+| provenance | 17 (P-71→P-87) | 87 |
+| pairs | 7 (PR-26→PR-32) | 32 |
+
+52 absence declarations: 16 `not-collected`, 25 `not-published`, 6 `withheld`, 5 `never-defined`.
+Points 85 verified / 17 approx / **0 pending**. Appends to `provenance.json` and `pairs.json` proven
+append-only — `git diff --numstat` 703/0 and 185/0, zero deletions.
+
+## The `kashmir` enum value — first substantive use, and the flag
+
+Its written definition is "a cross-cutting lens, applied to records whose primary subject sits
+elsewhere". Every record was filed **provisionally per that definition** — nothing this phase carries
+`kashmir` alone — and every record where `kashmir` is in truth the primary subject was FLAGGED rather
+than reclassified. **The definition was not amended and no wording was proposed.**
+
+**Flag count: 9** — 7 of 15 ledger, 2 of 15 series, 0 provenance, 0 pairs.
+
+For contrast, of the four pre-existing records carrying `kashmir`, **three carry it alone** (L-0003,
+L-0005, L-0010), which the definition says it is not. `federalism` is always paired; `defence` was
+paired once.
+
+**The structural finding the count cannot express.** `series.domain` and `pairs.domain` are
+**single-valued** enums. "Substantive primary plus `kashmir` as lens" is unexpressible there. So all
+15 series and all 7 pairs are substantively about J&K and **not one carries the tag** — a reader
+filtering by `kashmir` finds 32 records and no measured spine. That 186 pre-existing series carried
+no `kashmir` looked like evidence for the lens reading; it is equally consistent with the lens being
+unrepresentable in the layer where the numbers live. **A lens inside a single-valued subject enum is
+two axes in one field — the third instance of that defect.** Fix scoped next cycle, see Deferred.
+
+## Stops
+
+**TRIGGER B — fired twice.**
+
+- **B-1, held.** The MHA civilian restatement (2018 39→55, 2019 39→44, 2020 37→38, 2021 41→41) looks
+  like it isolates civilians killed in CT operations as a residual of 16/5/1/0. It does not: the 2021
+  residual is zero, and the security-force figure also moved (62→63) across the same restatement, so
+  it carries ordinary revisions too. Six places discuss it; the prohibition is stated in five, and
+  the sixth was publishing 16 and 5 as an argument in `L-0112.caseFor`. Removed. No point carries the
+  residual.
+- **B-2, cut on instruction.** `L-0117.caseFor` said "fewer than thirty locals killed" — 68 − 42,
+  derived from a "42 of 68 were foreign" claim the research says three times has no retrievable
+  basis, with a denominator of 68 where the authored point is 67. The record had dropped the 42 and
+  kept the figure derived from it, making the dependence invisible. Rewritten to drop the derivation
+  and point at its own absence (`L-0117.unmeasured[2]`, `not-published`, the local/foreign split MHA
+  has never published in seventeen years). **The argument stands; its anti-reclassification limb does
+  not, and that is the finding.** Also fixed in the rewrite: the infiltration figures were on a
+  different window (2017→2022) from the sentence around them (2018→2024), now stated.
+
+**TRIGGER D, application limb (`defence`) — ALLOWED, definition amended in the same commit.**
+By its words the value covered the use; by observed usage it did not — 1 ledger record to 10, 0 of
+186 series to 13, secondary to primary, external border incident to internal counter-insurgency.
+Amended in all four schemas:
+
+- out: `- defence: military and security. One record; sparsely attested.`
+- in: `- defence: armed conflict and counter-insurgency operations, external or internal. The state's treatment of civilians in those operations files governance, not defence.`
+
+The trailing attestation clause was false and was the `demography` shape — a line describing the word
+rather than observed practice. The governance boundary is the one the run already drew in its filings
+(crowd control, custodial deaths, AFSPA sanction and answerability all went to `governance`) and is
+now written rather than implicit. Byte-identity preserved: ledger, series and pairs share one string
+(sha256 `5eeb91f2ce5b225f`); provenance is that plus its `- all:` line.
+
+**TRIGGER A — merged as `contested`, no value added.**
+All 15 ledger records are `contested`. Eight have no stated objective, so `worked`/`partly`/`failed`
+are unavailable **by their own definitions** and `contested` is functioning as a sink. With L-0092 and
+L-0096 that is **ten instances**. Scoped as its own cycle **before phase 12**: whether a REQUIRED
+`assessment` is the right shape. Not resolved here — resolving a taxonomy in the pass that discovers
+it is how `differentFacts` reached seventeen records.
+
+**E and F — not fired.** No baseline re-authored; no field dropped or pre-filtered.
+
+## `withheld` verified before merge — 7 → 6
+
+Education demoted two for want of an identifiable refusal. Same test applied here: name the requester,
+the request and the date, or it is `not-published`.
+
+| Record | Requester | Request | Date | Verdict |
+|---|---|---|---|---|
+| L-0114[0], jk-pellet-deaths[0] | Prof. M. V. Rajeev Gowda | RS US Q.511(a), injured or killed by pellets | 7 Feb 2018 | holds |
+| L-0114[1], jk-pellet-deaths[1] | same | Q.511(c), munitions expended | 7 Feb 2018 | holds |
+| L-0122[1] | Venkatesh Nayak, RTI + second appeal | reasons for refusal, 47 AFSPA s.7 cases | CIC order 5 Jun 2020, s.8(1)(a) | holds |
+| L-0123[0] | Sheikh Khursheed, MLA Langate (AIP) | SRO-43 ex-gratia delay, deleted by Speaker Abdul Rahim Rather | 28–29 Oct 2025 | holds |
+| **L-0116[1]** | — | — | — | **DEMOTED to `not-published`** |
+
+L-0116[1] failed on all three: families met the LG, who *volunteered* publication and did not deliver.
+That is non-release, not refusal, and the written test turns on producibility under compulsion. The
+record already conceded "no specific request-and-refusal is documented" for its 506-inquiries limb and
+left `withheld` set anyway. **All three requesters were established in `parts/` and none had been
+written into the records** — now carried in the record, not only in the research.
+
+## The arithmetic hand-check — six errors no gate caught
+
+Read by hand against the authored points and against `parts/`. **Four originated in `parts/` and were
+corrected there too**, or they re-enter on the next run.
+
+1. Security-force deaths 2024 stated 30, value 31. Caught because the authored 2018-2024 total of 369
+   reconciles only with 31.
+2. 189/417 stated as "roughly 44 per cent" — 45.3.
+3. Hyderpora "an inquiry ordered in 48 hours" — the record's own two dates make it three days.
+4. `62/56 in 2020` quoted against an authored 63 — 62 is the superseded AR 2021-22 vintage.
+5. L-0124's JKCCS perpetrator split summed to 77 and was presented as the split of 80; two categories
+   omitted.
+6. B-1 above.
+
+The load-bearing identities were verified and hold: 228+189=417, 153+102=255, 126+118=244, 129+100=229,
+and all five 2018-2024 totals reproduce exactly from the authored points.
+
+## Stage 7 — a real unreachable mark, and a new mark class
+
+Reachability failed the merged corpus: **`[differentFactsNote] L-0118 — renders nowhere at all`**.
+`app/ledger/[id]/page.tsx` rendered the note only inside `DifferentFactsMark`, gated on the boolean.
+L-0118 records `differentFacts: false` and carries a note explaining why — the only such record in the
+corpus, of 11 carrying a note.
+
+**Ungating was not the fix.** That mark's label asserts the cases don't share a common measure, which
+is the opposite of what a false reading says. New mark class `DifferentFactsNegativeMark`, label:
+
+> These cases were tested for different facts and recorded false
+
+It says the test was applied and returned negative, and stops. It deliberately does **not** say a
+shared measure exists — that asserts more than a false reading supports. L-0118's claim is narrower:
+no additional fact decides between the readings, because both accounts predict the identical
+observation. Styled neutral, **not** in the umber family — umber says the two sides are divided by
+different things, and borrowing it for a negative result would contradict the words at a glance.
+
+**No new gate rule, so trigger C is not engaged.** The reachability `MARKS` entry for
+`differentFactsNote` keys on the note's presence, not on the boolean, so it already covered both
+variants — which is how this was caught at all.
+
+**Coverage confirmed by regression, not by assertion** (Rule 2): the negative render path was removed,
+the site rebuilt, and the gate fired naming L-0118; restored, and it went quiet at 492/492. Both
+halves derive from a real regressed build.
+
+**The other ten were NOT backfilled.** The pattern generalises only where an author actually ran the
+test and recorded false; writing notes onto records that were never tested manufactures the appearance
+of a test. If it is wanted everywhere that is an authoring pass, not a migration.
+
+## Gate
+
+```
+validate            VALID — 0 errors, 96 warning(s)
+validate:selftest   selftest OK — 20/20 rules fire (32 errors caught); controls kept
+typecheck           clean
+reachability        OK — 492/492 (443 pages)
+                    unmeasured 180/180 · caveat 123/123 · notes 178/178 · differentFactsNote 11/11
+```
+
+Controls verified live, including `reachability fires on tests/fixtures/reachability-hidden` and
+`stays silent on the live corpus`, and both `unmeasured-route` branches. The reachability fixture's
+hand-built `out/` tree is tracked in git (3 files) and survives a clean clone. `audit/` regenerated
+from `/data` — 124 records, 1235 points, 180 absences, 87 provenance — and remains gitignored by
+design as a generated artefact.
+
+## Stage 2 liveness failure — recorded, not a trigger
+
+The research orchestrator died on an API session limit after writing 13 of 15 parts. **Two missing
+parts were load-bearing**: `07-pellet-and-crowd-control.md`, which two other parts forward-referenced
+as covering pellet injuries, and `00-head.md`, carrying the per-quantity ledger answer that
+`00-sources.md` §4 forwarded to and contained nothing else. Had stage 3 run as the drop stood, both
+would have been absent while two parts asserted they were covered elsewhere. Closed before authoring.
+A fan-out child that returned after the orchestrator died is preserved as `parts/06b`.
+
+## The two standing findings of this phase
+
+**No disciplining measure exists.** This lands with rights-institutions, not agriculture — there is no
+analogue to the OECD Producer Support Estimate that defeated both partisan framings on farm support.
+Stronger than phase 9's version: **both sides argue from the state's own data.** SATP compiles from
+news reports, publishes no definition of "civilian", and states its purpose as countering distortions
+about terrorism; UCDP records Government-of-India one-sided violence in three country-years ever, none
+after 2002; JKCCS ceased publishing in 2020; ACLED is the only live candidate and was not retrieved.
+
+**Almost no instrument puts both sides' facts on one ledger.** Per quantity: pellet deaths — yes once,
+RS Q.511 Annex-I, deaths only, three years, never repeated, injuries refused in the same sentence.
+Civilians killed — yes, non-official, JKCCS/APDP, ceased 2020. Incidents — partially, activity only,
+from 2018, CASO omitted entirely ("cordon" appears zero times across seven MHA annual reports).
+Everything else, no. Three traps where an instrument looks two-sided and is not: MHA's merged
+"Civilians killed" column, SATP's three-population table, and the pre-2022-23 "Incidents" composite.
+And the series MHA presents as its own is attributed in PIB to `Source: CID, J&K` — a party to the
+operations being counted.
+
+## Deferred — not done this cycle, deliberately
+
+1. **`lenses[]` on series and pairs**, carrying `kashmir` and `federalism`. Additive; `domain`
+   unchanged. Backfill the 15 series and 7 pairs. **Must land before phase 12.**
+2. **`differentFactsNote` is now under-specified.** "Required in practice wherever differentFacts is
+   true" should say a note is permitted and meaningful on false. **Not amended here — a schema is not
+   amended on a red build.**
+3. **The `assessment` audit** — whether a REQUIRED `assessment` is the right shape, on ten instances.
+   Its own cycle, before phase 12.
+4. **Assert every forward reference between parts resolves before stage 3 runs.** `STATE.md`'s part
+   count was correct and still hid two load-bearing holes.
+5. **Write the arithmetic hand-check into `SKILL.md` as a required stage.** It found six errors no
+   gate caught, four of which would have re-entered from `parts/`.
+
+## Not deployed
+
+Gate is green; this cycle ends at a commit on `main`, not a push.

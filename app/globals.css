@@ -911,6 +911,33 @@ tr th:last-child {
   color: var(--ink-soft);
 }
 
+/* The same test, recorded negative. Deliberately NOT umber: umber says the two sides are
+   divided by different things, and a false reading denies exactly that, so borrowing the
+   mismatch colour would contradict the words at a glance. Neutral rule and sunk paper —
+   present and readable, quieter than a finding, because what it records is a test that
+   returned negative rather than a property of the argument. Solid border, not dashed:
+   dashed belongs to the absence and denominator-break families. */
+.different-facts-negative {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-sunk);
+  padding: 0.6rem 0.85rem;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.different-facts-negative .label {
+  color: var(--ink-dim);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.different-facts-negative p {
+  margin: 0;
+  max-width: var(--measure);
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+}
+
 /* Compact form, for listings. Same umber, no frame — it sits under a title in a table cell. */
 .different-facts-inline {
   display: block;
