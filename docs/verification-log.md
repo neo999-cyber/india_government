@@ -1654,3 +1654,52 @@ two kinds and stay a warning for `not-collected` and `never-defined`.** Scope ac
 not the drop — the pre-existing live warnings predate the rule being noticed and will contain the
 same shape. Routes must be real: a named holder and a named instrument, RTI or research-access
 request. **A placeholder route is worse than none, because it enters the queue and cannot be worked.**
+
+## Addendum to 2026-08-02f — PRODUCTION VERIFICATION
+
+Deployed. `dpl_GWjv2MYBEeecmehDEJ1jxtCHhia4`, target production, commit `bfab8ad`, state READY,
+aliased to `india-government.vercel.app`. PR #1 was merged to `main` to trigger it, which is how
+every prior production deploy in this project has happened.
+
+**The production build ran the gate itself.** From Vercel's own build log, not a local run:
+
+```
+> npm run reachability
+reachability OK — 397/397 declared marks reachable on their own record page (396 pages scanned)
+  unmeasured 128/128 · caveat 99/99 · notes 163/163 · differentFactsNote 7/7
+```
+
+**Production HTML was then fetched over the wire and checked**, at
+`https://india-government.vercel.app`. Production is behind Vercel SSO — an unauthenticated request
+302s to `vercel.com/sso-api` — so this was done in an authenticated browser, as §7 requires. No
+attempt was made to bypass the authentication.
+
+All 70 record pages the phase introduces were fetched same-origin with credentials, parsed with
+`DOMParser`, `<script>` elements removed, and every declared mark counted on the page that declares
+it:
+
+| class | production |
+|---|---|
+| absences (`.absence-kind`) | **97 / 97** |
+| caveats (`.caveat-block` \| `.caveat-inline`) | **66 / 66** |
+| break seams (`.seam`) | **67 / 67** |
+| **total** | **230 / 230** |
+
+70 of 70 pages fetched, zero HTTP failures, zero shortfalls.
+
+**Controls carried, because the seam check was twice wrong before it was right:**
+
+| control | required | observed |
+|---|---|---|
+| positive — "Gross enrolment ratio" on its own page | TRUE | TRUE |
+| negative — "Kendriya Vidyalaya Sangathan" on that page | FALSE | FALSE |
+| end-seam period `FY2025-26` renders | TRUE | TRUE |
+| end-seam note "Second structural break" renders | TRUE | TRUE |
+
+The negative control is the one that matters: without it, a reader that silently matched everything
+would have reported 230/230 just the same. **A check without controls reporting a clean pass is not
+evidence** — this phase produced two separate instances of exactly that, a page-path assumption
+reporting 0/10 and an ASCII hyphen against a rendered en-dash reporting 7/10.
+
+Note the seam total: **67, not 10.** The ten anchored to periods carrying no point are a subset;
+production renders every declared break on its own series page.
