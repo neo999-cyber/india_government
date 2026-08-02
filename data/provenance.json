@@ -365,7 +365,8 @@
    "psb-gross-npa",
    "scb-gross-npa",
    "pvt-gross-npa",
-   "net-npa"
+   "net-npa",
+   "scb-gross-npa-amount"
   ],
   "directionOfBias": "understates-pre-2014",
   "bridgeExists": false,
@@ -462,7 +463,11 @@
   "affectsSeries": [
    "scb-gross-npa",
    "psb-gross-npa",
-   "pvt-gross-npa"
+   "pvt-gross-npa",
+   "credit-gdp-peer",
+   "npl-peer",
+   "scb-gross-advances",
+   "scb-gross-npa-amount"
   ],
   "directionOfBias": "degrades-precision",
   "bridgeExists": true,
@@ -528,7 +533,8 @@
   ],
   "affectsSeries": [
    "crar",
-   "net-npa"
+   "net-npa",
+   "scb-gross-npa"
   ],
   "directionOfBias": "degrades-precision",
   "bridgeExists": false,
@@ -560,7 +566,9 @@
    "pmay-g-houses",
    "pmjay-cards",
    "epfo-net-additions",
-   "eshram-registrations"
+   "eshram-registrations",
+   "soil-health-cards",
+   "pmkisan-beneficiaries"
   ],
   "directionOfBias": "overstates-post-2014",
   "bridgeExists": true,
@@ -829,7 +837,8 @@
   ],
   "affectsSeries": [
    "nh-construction-pace",
-   "nh-four-lane"
+   "nh-four-lane",
+   "nh-network-length"
   ],
   "directionOfBias": "overstates-post-2014",
   "bridgeExists": false,
@@ -1016,7 +1025,10 @@
    "lfpr-overall",
    "lfpr-female",
    "self-employed-share",
-   "agri-employment-share"
+   "agri-employment-share",
+   "regular-wage-share",
+   "unemployment-rate-cws",
+   "youth-unemployment"
   ],
   "directionOfBias": "degrades-precision",
   "bridgeExists": false,
@@ -1042,7 +1054,10 @@
    "unemployment-rate",
    "lfpr-female",
    "self-employed-share",
-   "unpaid-helper-share"
+   "unpaid-helper-share",
+   "lfpr-overall",
+   "regular-wage-share",
+   "youth-unemployment"
   ],
   "directionOfBias": "overstates-post-2014",
   "bridgeExists": true,
@@ -1077,7 +1092,8 @@
    "unemployment-rate",
    "unemployment-rate-cmie",
    "lfpr-overall",
-   "lfpr-overall-cmie"
+   "lfpr-overall-cmie",
+   "lfpr-female"
   ],
   "directionOfBias": "disputed",
   "bridgeExists": false,
@@ -1277,7 +1293,8 @@
    "employment"
   ],
   "affectsSeries": [
-   "agri-gdp-share"
+   "agri-gdp-share",
+   "agri-gva-growth"
   ],
   "directionOfBias": "overstates-post-2014",
   "bridgeExists": true,
@@ -1384,7 +1401,8 @@
   ],
   "affectsSeries": [
    "ed-pmla-cases-registered",
-   "ed-pmla-convictions"
+   "ed-pmla-convictions",
+   "uapa-conviction-rate-ncrb"
   ],
   "directionOfBias": "disputed",
   "bridgeExists": true,
