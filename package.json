@@ -11,6 +11,7 @@
     "validate:incoming": "node tools/validate.mjs --incoming",
     "validate:strict": "node tools/validate.mjs --strict",
     "validate:selftest": "node tools/selftest.mjs",
+    "selfcheck": "node tools/stage4-selfcheck.mjs",
     "reachability": "node tools/reachability.mjs",
     "dev": "next dev",
     "build": "npm run validate && next build && npm run reachability",

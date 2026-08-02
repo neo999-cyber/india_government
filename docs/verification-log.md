@@ -1865,3 +1865,46 @@ directly with `--data`.
 
 `npm run validate` exits non-zero, so `npm run build` cannot run and nothing was pushed to production.
 Production remains on `bfab8ad`, cycle 2026-08-02f, which is green. Cycle 2 clears the 26.
+
+---
+
+# Verification log — cycle 2026-08-02h (ref-unexplained out of the gate; a deferred schema finding)
+
+Gate stays red at 26 `unmeasured-route` errors. Nothing deployed. Production remains on `bfab8ad`.
+
+## `ref-unexplained` is out of the gate, and always was
+
+Confirmed rather than assumed: it lives in `tools/stage4-selfcheck.mjs`, which `npm run validate`
+never loads — the gate imports only `lib/load`, `lib/schema` and `lib/integrity`. Neither
+`ref-unexplained` nor the bidirectional report appears in `validate.mjs` or anywhere under `tools/lib`.
+
+It is now runnable on demand as **`npm run selfcheck`** so that "not in the gate" does not become "not
+runnable". A report-only check with low specificity has no business failing a build; it has every
+business being available when someone is looking.
+
+## DEFERRED — the schemas do not mark reference fields as references
+
+**The finding.** Only `id` carries a `pattern` in any of the four schemas — `^L-\d{4}$`, `^P-\d{2}$`,
+`^PR-\d{2}$`, and a loose slug for series. Every actual reference field is a bare string:
+`seriesRefs`, `provenanceRefs`, `breaks[].provenanceRef`, `affectsSeries`, `correctiveSeries`,
+`ledgerRefs`, and the pair-side `series` / `absenceFrom` / `competingAccountsFrom`. Two carry a
+description naming their target in prose; the rest carry nothing. **Nothing in the contract says "this
+field holds an id, of this layer."**
+
+**Why it matters.** It is the reason derivation has to run off id contracts plus observed values
+rather than off the schema alone, and that indirection is what leaves the blind spot: a legal form
+with zero instances is invisible, because there is no value to recognise. Two forms sit there now
+(`pairs.a.absenceFrom`, `pairs.a.competingAccountsFrom`) and a third is one deletion away
+(`pairs.b.competingAccountsFrom`, exactly one instance corpus-wide).
+
+**What fixing it would look like.** A marker on each reference field — a `pattern` matching the
+target layer's id form, or a custom annotation naming the target layer. Then derivation reads the
+schema alone, is complete by construction, sees zero-instance forms like any other, and **the hand
+list retires.**
+
+**Until then both methods stay**, and neither is redundant: derivation catches forms nobody
+enumerated, the floor catches forms nobody has used. Dropping either reopens a gap that has already
+cost this project three missed reference forms and 111 unvalidated instances of one of them.
+
+Deferred, not opened. It is a schema change and the schemas are the contract — research sessions
+author against them, so it is agreed in chat before hardening (CLAUDE.md, Roles).
