@@ -2568,3 +2568,71 @@ operations being counted.
 ## Not deployed
 
 Gate is green; this cycle ends at a commit on `main`, not a push.
+
+## Addendum to 2026-08-03a — deployed and verified on production
+
+**Production is `08dd4cc`**, `dpl_Ci6ZV1o1EREfE4t9ETJ3QMGBRTDD`, target production, state READY,
+aliased to `india-government.vercel.app`. Pushed `9b887e6..08dd4cc` on `main`.
+
+**The deploy gap did NOT recur.** The previous push produced no deployment record at all; this one
+was picked up essentially immediately — `repoPushedAt` 1785701849000, deployment created
+1785701851412, **2.4 seconds later** — and built in **33 seconds** (buildingAt 1785701852476, ready
+1785701884176). Recorded because the failure mode was a *missing record*, so the evidence that
+matters is the record existing with a push-to-create interval, not merely that the site is up.
+
+Vercel's own build log:
+
+```
+> npm run reachability
+reachability OK — 492/492 declared marks reachable on their own record page (443 pages scanned)
+  unmeasured 180/180 · caveat 123/123 · notes 178/178 · differentFactsNote 11/11
+```
+
+Identical to local, including `differentFactsNote 11/11` — the count that was 10/11 before this
+cycle's new mark class.
+
+### Production HTML, fetched over the wire
+
+Authenticated (production 302s to Vercel SSO unauthenticated; a share link was used and the fetched
+pages confirmed to be real HTML carrying the instrument header, not an SSO interstitial). **30 pages
+— every page this phase introduces**, 15 ledger and 15 series. Zero HTTP failures.
+
+**The spec was regenerated from `/data`, not reused**, and by construction rather than by discipline:
+the check ran `tools/reachability.mjs --data <phase-11 records> --out <fetched production tree>`, so
+it is the *same checker* reading the *live merged data* against production output. A stale needle is
+impossible because no needle was written down.
+
+```
+reachability OK — 95/95 declared marks reachable on their own record page (30 pages scanned)
+  unmeasured 52/52 · caveat 24/24 · notes 15/15 · differentFactsNote 4/4
+```
+
+### Controls — 20/20, asserted in both directions
+
+Positive TRUE, negative FALSE. Every edit this cycle made was asserted **both ways — new text present
+AND old text gone** — because a check that only looks for the new string cannot tell a successful
+rewrite from a page carrying both. Confirmed on production: the B-2 rewrite present and "fewer than
+thirty locals" gone; the new negative label present on L-0118 and the positive label absent there,
+with the mirror on L-0110; the `withheld` demotion text present on L-0116 and "identifiable refusal
+by conduct" gone; all three requesters named and the "a named MLA" placeholder gone; the residual
+prohibition stated on L-0112 and "by 16 for 2018 and 5 for 2019" gone; "45 per cent" present on
+L-0111 and "roughly 44 per cent" gone; the "48 hours" claim gone from L-0116.
+
+### The control that failed first, and what it found
+
+The first run reported **19/20**, failing on *"positive label PRESENT on L-0110"* — a label verified
+by eye minutes earlier. The cause was in the control script, not production: the component writes
+`don&rsquo;t`, which Next renders as a literal U+2019, and the control normalised the **needle** but
+not the **page**.
+
+That asymmetry is also present in `tools/reachability.mjs` itself: `visibleText` folds the *entity*
+`&rsquo;` but not the *character* `’`, while `norm` folds curly quotes on the needle side only.
+**Checked rather than assumed — of the 492 mark needles in `/data`, zero contain a curly quote**, so
+the gate cannot currently return a wrong answer. And the asymmetry can only ever cause a spurious
+FAILURE, never a spurious pass, which is the safe direction. Logged as deferred, not fixed: the
+moment an author writes a curly apostrophe in a `caveat` or an `unmeasured.what`, the gate fires on
+correct data and the tempting repair is to edit the record. Added as item 6 to the deferred list.
+
+**Worth stating plainly: the failing control is the reason to run controls.** The reachability figure
+was 95/95 both before and after the control script was corrected — a clean pass on the headline
+number carried no information about whether the check could distinguish anything.
