@@ -202,3 +202,230 @@ scope; do not feed it to anything.
 Run stage 4 (self-check) and stage 5 (reconcile) against `records/`, then
 re-count domain fit, then decide the two open triggers. Merge is stage 6 and
 needs Anoop's call on the `education` domain value first.
+
+---
+
+# STAGE 4 RUN — 2026-08-02
+
+Run in the main loop, not as a subagent. `/data` read, not touched. **No record
+edited.** Full output: `records/SELF-CHECK.md`. Triggers worked up separately in
+`records/TRIGGERS.md`.
+
+**Mechanical half clean.** 90/90 valid against the live schemas; 0 duplicate IDs;
+0 collisions against 299 live records; 0 dangling cross-references in either
+direction; all 20 scored records carry both cases; all 12 `whatChanged` above the
+floor (shortest 612 chars); charset 0 errors / 2 warnings (`précis` ×2 in L-0092);
+no duplicate or out-of-order points; no calendar mismatches.
+
+**Nine arithmetic findings, four material.** Reported, not fixed:
+
+1. **L-0102 + P-65** — "the Ministry of Education is 39 per cent of what the 4.12
+   per cent headline calls education" is wrong by a factor of four. 39% is MoE
+   against the **Centre's** broad total (0.40/1.02 % of GDP); the 4.12% headline is
+   Centre + States, against which it is under 10%. The record contradicts itself two
+   sentences later ("States carry about three-quarters of the money"). Inherited
+   verbatim from `parts/08-RECONCILED.md:211` and `parts/11-spending-literacy.md:126`.
+2. **`ugc-provision-gross`** — the FY2024-25 point (3,678.47) is the CFI component,
+   not gross, in a series titled "gross". The series' own break note names this exact
+   trap. Plotted, the three points read as a 42% fall, which the caveat exists to
+   prevent.
+3. **UDISE+ 2025-26 graded two ways** — four points `verified` (`school-enrolment-total`,
+   `private-unaided-share`, `govt-schools-count`, `private-schools-count`) against
+   three `pending` with "Relayed at T3; UDISE+ 2025-26 not retrieved". P-70 says the
+   edition was never retrieved. **L-0109's headline arithmetic terminates on two of
+   the four.**
+4. **`teacher-vacancy-rate-elementary` → P-64 is one-way** — the new series refs P-64
+   from `provenanceRefs` and all three breaks; P-64's `affectsSeries` was never
+   updated. The re-author's residue.
+5. `teacher-vacancy-rate-ssa` caveat still says "between the two points"; there are
+   now three. Arithmetic right, pointer stale.
+6. L-0095 summary runs KVS 13.2 (Aug 2024) → 17.1 (Dec 2025) where the series plots
+   14.7 → 17.1, both year-end.
+7. P-59 names three instruments and calls them four.
+8. PR-17 `notes` drops the vintages — the 54% is NAS 2017, the 49.5% is ASER 2018.
+9. L-0091 merges the 707-day never-fully-open stretch with the 25-month window in one
+   sentence; 476/707 = 67%, 476/775 = 61%.
+
+Plus one traceability gap (L-0102's "0.64 to 0.40" has no series behind it), nine
+breaks anchored to periods with no point (**handed to stage 7** — a mark on a
+non-existent row is the absence-bug shape), and an internal contradiction in
+`DOMAIN-FIT.md` (governance heading says 6 bad, its own rows and summary say 8; the
+37 and the 56 are right).
+
+**Stage 4 raised no stop trigger.**
+
+## Domain fit re-counted
+
+Every premise re-derived from the JSON. The re-author added exactly one series,
+`teacher-vacancy-rate-elementary` (`governance`) — the same quantity at elementary
+level as the three vacancy-rate series `DOMAIN-FIT.md` already grades **good**, so it
+is a good fit. No other fit moved.
+
+**56 of 90 — 62%** (series 37/49, ledger 6/20, pairs 5/9, provenance 8/12). Was
+56 of 89. The bad-fit count did not move; only the denominator did.
+
+Also verified rather than assumed: **`demography` is carried by 0 records in live
+`/data` and 0 in the drop.**
+
+## The two triggers — recommended, not applied
+
+- **A on L-0096: no new `assessment` value.** `contested` fits on its written
+  definition once you see that both cases argue the documented *act* and neither needs
+  the unpublished completion rate; the outcome's absence is already carried by four
+  `unmeasured[]` entries under rule 4a. A value meaning "cannot conclude" is the same
+  two-axes defect that killed the fifth `reasonKind` this session. Fix the
+  `assessmentNote`, not the enum. **L-0092 carries the same complaint for a different
+  reason** — log both as evidence for a later audit of whether a *required*
+  `assessment` is the right shape. Not this phase.
+- **D on L-0105: do not open `demography`.** Literacy is not population structure, so
+  it does not fix the bad half — and first use defines the value, so opening it here
+  would set its boundary at "census output". The P-04 premise does not hold: P-04's
+  `affectsDomains` is already `["all"]`, so opening `demography` there would narrow it.
+  Decisive: **this is downstream of the education question** — if `education` is
+  created, L-0105's second value becomes `education` and the bad fit resolves without
+  `demography` being touched.
+
+## To resume
+
+Stage 5 (reconcile) has still not run. Before merge: apply whichever of the nine
+findings Anoop accepts, then stage 5, then stage 6 — which still needs his call on
+the `education` domain value.
+
+---
+
+# `education` CREATED + DROP RE-GRADED — 2026-08-02 (cycle 2026-08-02d)
+
+**SCHEMA CHANGE.** `education` added after `welfare` in all four declarations, definition in the
+same commit. Byte-identity of the three that must match **verified, not assumed** (sha256
+`e8685758dc889709`); provenance is base + `all`, asserted structurally. Provenance goes 15 → 16
+values, the other three 14 → 15.
+
+**All 90 records re-graded, not the 56. 85 changed value.** Filed by the QUANTITY a record measures,
+not by the finding attached to it — a series carries one domain, and the institutional readings ride
+on the ledger and provenance records, which carry several. Full table appended to
+`records/DOMAIN-FIT.md`; the original grading left standing above it.
+
+**Residual bad fit: 6 of 90 (7%), from 56 of 90 (62%).** Series 5/49, ledger 0/20, pairs 1/9,
+provenance 0/12. The residual is one shape — five spending series plus PR-22, all fiscal quantities
+correctly filed `education` while `macro` is the unavailable second domain.
+
+Calls worth knowing without opening the file:
+- **All four teacher-vacancy series → `education`.** A vacancy rate is teaching capacity. L-0094,
+  L-0095 and P-64 keep `governance`, so nothing institutional is lost.
+- **`aishe-publication-lag` retained in `governance`** and **`contract-teachers-share-government`
+  retained in `employment`** — the only two series where an existing value beats the new one.
+- **The three RTE-quota series left `welfare`** on the added no-split sentence.
+- **L-0105's second value is `education`**; the bad fit resolves.
+- **`human-development` and `welfare` are now carried by 0 records in this drop.**
+
+**`demography` untouched.** Confirmed 0 in live `/data` and 0 in the drop; logged as a deferred
+finding, value not removed.
+
+**Live `/data` scanned — no back-filing debt.** Of 299 merged records, four matched a schooling
+term: two false positives (L-0007 quotes "RTE 2009" in a list of UPA legislation; P-49 is crop
+insurance) and L-0063 with its series `graduate-unemployment`, both excluded by standing decision.
+
+**A gap in the stage-4 check, found and closed:** it never validated `b.absenceFrom` /
+`b.absenceIndex`, the form the five coverage-usage pairs use. All five resolve, 0 dangling.
+
+Gates: `npm run validate` VALID, 0 errors / 42 pre-existing warnings; `validate:selftest` 18/18;
+drop 90/90 against the amended schemas. **`/data` untouched. Not merged.**
+
+## To resume
+
+Stage 5 (reconcile) still has never run. Then stage 6 (merge and gate), which is now unblocked on
+the domain question. Outstanding rulings: the `ugc-provision-gross` FY2024-25 basis, and whether to
+author the ABE Centre education-departments column behind L-0102's "0.64 to 0.40".
+
+---
+
+# RULINGS 1-2 APPLIED; STAGES 4-7 RUN — 2026-08-02 (cycle 2026-08-02e)
+
+Drop is **91 records** (50 series, 20 ledger, 12 provenance, 9 pairs). `/data` untouched. **Not merged.**
+
+- **Ruling 1, branch taken: point DROPPED.** The UGC gross FY2024-25 figure is not retrievable —
+  `indiabudget.gov.in` does not resolve (P-70 reproducing itself). `ugc-provision-gross` keeps its
+  title and carries two points; the gap is an absence, `not-published`.
+- **Ruling 2: `edu-spend-gdp-centre-edu-depts` authored**, 22 points + 4 pending, carries P-10 by
+  span as required. Reconciles to the published narrow total exactly in 18 of 22 years, 0.01 apart in
+  four. **It exposed a new error:** L-0102's "0.40 … the lowest in the twenty-two-year table" is
+  wrong — FY2001-02 is 0.37. Corrected in the record; `parts/08.md` and `08-RECONCILED.md` state it
+  the same wrong way.
+- **Stage-4 checker replaced** by `tools/stage4-selfcheck.mjs`, which derives coverage from the
+  schemas and fails on any unenumerated reference form. It found **two more missed forms** beyond the
+  reported one: `series.breaks[].provenanceRef` (67 instances) and `pairs.{a,b}.competingAccountsFrom`.
+  11 forms, 367 references, 0 dangling. `SKILL.md` stage 4 rewritten.
+- **Stage 5 found 6 gate-failing errors** the drop had never been exposed to, because it had only
+  ever seen JSON Schema and not `integrity.mjs`. All resolved: `P-52` removed from three spending
+  series (it is the PMLA dispute and belongs to none of them — pre-existing, not caused by the
+  re-grade), `employment` added to P-64, P-68 back-linked to two ASER series. IDs need no
+  renumbering: live maxima are L-0089 / P-58 / PR-16 and the drop starts above each.
+- **Stage 6 gate passes**, merge not performed. **Stage 7 ran on the LIVE corpus only — 185/185 —
+  and proves nothing about the drop**, whose 91 records render no pages. Re-run after merge.
+- **Stage 8: log drafted, no PR.** The phase number is not settled.
+
+**Residual domain fit: 7 of 91.** Six sector-fiscal series plus PR-22, one shape, recorded in
+`DOMAIN-FIT.md` as standing evidence for a deferred series-cardinality question. Not to be re-filed.
+
+## To resume
+
+Settle the phase number, then merge, then re-run stage 7 against the merged corpus. Raised for
+`/data`: `P-10.affectsSeries` should gain the four education `% of GDP` series after merge.
+
+---
+
+# MERGED — 2026-08-02. NOT DEPLOYED, NO PR.
+
+**91 records merged into `/data`.** `data/series/education.json` (50), `data/ledger/education.json`
+(20), appended to `data/provenance.json` (58→70) and `data/pairs.json` (16→25). Unified corpus is
+**390 records**. `P-10.affectsSeries` gained the four education `% of GDP` series in the same change
+(6→10).
+
+Gate on the merged corpus: `validate` VALID 0 errors / 112 warnings; `build` 396 pages;
+**`reachability` 397/397**, up from 185/185 pre-merge.
+
+**Stage 7 verified per class, not by aggregate.** Absences 31 + 97 = 128, matching 128/128 exactly.
+Caveats 33 + 66 = 99, matching 99/99 exactly. The **ten** breaks anchored to periods carrying no
+point (nine were reported earlier; `ugc-provision-gross` FY2024-25 became the tenth when ruling 1
+dropped that point) were checked directly against built HTML with `<script>` stripped — **10/10
+render both the seam note and the period on their own record page**, as `series ends at break ·
+FY2025–26 · …`. Not one drop mark is unreachable.
+
+That check hit the Rule 1 trap twice before it was right: first a wrong page path (`<id>.html`
+rather than `<id>/index.html`) reporting 0/10, then an ASCII hyphen tested against a rendered
+en-dash reporting 7/10. Both were checker defects. It now carries a negative and a positive control.
+
+## Two new report-only checks added to `tools/stage4-selfcheck.mjs`
+
+- **Bidirectional references.** Drop **0**, live pre-merge **68**, unified **83**. Only
+  series↔provenance is genuinely two-way; the other forms have no reverse field to assert.
+- **Orphan provenanceRefs.** Drop **83**, live pre-merge **192**, unified **275**. Low specificity —
+  see the log; it flags correct references too.
+
+Neither gates. Nothing was auto-fixed.
+
+## STOPPED BEFORE
+
+- **Deploy** — held pending the `unmeasured-route` answer, as instructed.
+- **Log cycle 2026-08-02f and the PR** — the phase number was sent as the literal `[NUMBER]` and has
+  not been supplied. Not invented.
+
+---
+
+# PHASE 10 — CLOSED. Deployed, logged as cycle 2026-08-02f.
+
+Education is **phase 10**. Merged (390-record corpus), gated, deployed, PR opened.
+
+**The roadmap renumber was NOT performed: there is no roadmap document in this repository and git
+history shows there never has been one.** No phase list, no Kashmir part 1 / part 2 entry, nothing
+running to nineteen. Nothing was created to satisfy the instruction — a canonical phase list is an
+artefact other work would depend on, and inventing an ordering nobody stated would manufacture false
+authority. **Carried forward as open.** If the roadmap lives outside the repository it was not
+renumbered here.
+
+**§7 checked: no defect, and no such rule.** §7 of the spec is "Model routing", its text is unchanged,
+and it names no phase numbers. There is no "Fable rule" anywhere — `fable` occurs once in the whole
+repository, as one of four selectable model values at `docs/phase-command-spec-v2.md:168`. The three
+phase-number mentions in the spec are all historical provenance (evidence base phase 9, phase 7's
+eight records, "expect 10–12 to add more" — still correct) and must not be renumbered, because each
+is a dated claim about when something entered.

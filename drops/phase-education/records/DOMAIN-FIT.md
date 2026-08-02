@@ -77,7 +77,7 @@ concentrates.
 | `higher-ed-ger`, `higher-ed-enrolment` (2) | Higher-education participation | Participation in institutions, against a population projection. |
 | `literacy-rate-7plus` (1) | Self-declared literacy, ages 7 and above | The nearest thing in the drop to a classic human-development indicator — and it still measures a capability, not health, nutrition or survival. Bad, but the least bad of the 29. |
 
-### Filed `governance` — 15 series, of which **6 are bad fits**
+### Filed `governance` — 15 series, of which **8 are bad fits**
 
 | ids | fit | note |
 |---|---|---|
@@ -229,3 +229,185 @@ therefore establish its boundary by accident, in a phase whose subject is educat
 `demography`, or does `demography` stay unattested and this record stay in `governance`? If it opens, `P-04`
 (Census 2021 not conducted) is the record that should arguably have opened it first, and the two should be
 considered together.
+
+---
+---
+
+# RE-GRADE AFTER `education` WAS CREATED — 2026-08-02
+
+**Everything above is the pre-`education` grading and is left standing as the evidence that
+produced the value.** This section supersedes its counts. All 90 records were re-derived against
+the corrected enum, per record, by primary subject — not bulk-swapped.
+
+`education` is now declared in all four schemas, inserted after `welfare`:
+
+> - education: schooling and higher education — learning, participation, teaching capacity and the
+>   education system.
+
+and the description block gained one sentence, which decides several calls below:
+
+> Education holds both the delivery and the outcome of schooling; it is not split across welfare and
+> human-development the way a scheme is.
+
+## The rule applied
+
+**A series carries exactly one domain, so it is filed by the QUANTITY it measures, not by the
+finding attached to it.** This is the pre-existing grading's own criticism of the original filing —
+it called grading-by-finding "the tail wagging the dog" — applied consistently. The institutional
+reading is not lost, because a ledger record carries several values and every governance finding in
+this drop sits on a ledger or provenance record that retains `governance`.
+
+**Pairs inherit from the series they join**, as this file already states. Applied without exception.
+
+## Series — 49
+
+| filed | count | which |
+|---|---|---|
+| `education` | **47** | all learning, participation, enrolment, teacher, school-stock, spending and higher-education series |
+| `governance` | 1 | `aishe-publication-lag` |
+| `employment` | 1 | `contract-teachers-share-government` |
+
+### The four teacher-vacancy series — all to `education`
+
+`teacher-vacancy-rate-ssa`, `teacher-vacancy-rate-elementary`, `teacher-vacancy-rate-kvs`,
+`teacher-vacancy-rate-nvs`. Previously `governance`, graded good.
+
+A vacancy rate is **teaching capacity**, which the new definition names. The choice is between the
+quantity and the finding — a statutory ceiling unenforced, a statistic withdrawn — and the quantity
+wins under the rule above. `-kvs` and `-nvs` are the closest call, because they exist in this drop
+only to show an RTE section 26 breach in the Union's own schools; they still go to `education`,
+because what they measure is a vacancy rate.
+
+**Nothing is lost.** L-0094 (statistic withdrawn), L-0095 (section 26 breached) and P-64 (no
+maintained statistic) all retain `governance`. L-0095 now carries `governance` with no series in
+that domain, which is expected — series and ledger domains are not required to match.
+
+### Series previously good under `welfare` or `governance` with a schooling subject
+
+| series | was | now | why |
+|---|---|---|---|
+| `rte-quota-children` | welfare · good | **education** | The added sentence is decisive: education holds the delivery of schooling, so the quota is not split off into `welfare` |
+| `rte-quota-reimbursement-approval-rate` | welfare · good | **education** | Closest call of the three — the quantity is a claims-approval rate, which is scheme finance rather than schooling. The no-split rule decides it |
+| `rte-quota-implementing-jurisdictions` | welfare · good | **education** | Coverage of a schooling entitlement |
+| `schools-above-rte-ptr-primary-dise` | governance · good | **education** | A distribution of teaching capacity measured against a legal threshold. The threshold makes it interesting; the quantity is capacity |
+| `teachers-professionally-qualified-primary-udise` | governance · good | **education** | Teaching capacity |
+| `teachers-trained-pre-primary-udise` | governance · good | **education** | Teaching capacity |
+| `aishe-publication-lag` | governance · good | **governance — RETAINED** | The quantity is the publication lag of a statistical product: a measure of the state's own conduct, not of schooling. The one series here where `governance` beats `education` on the quantity |
+| `contract-teachers-share-government` | employment · good | **employment — RETAINED** | The quantity is a formality-of-appointment share. `employment` is "work, labour force, earnings and formality" in its own words. `education` names teaching capacity — how many teachers, not on what terms |
+
+The eight series previously graded **bad** under `governance` (`govt-schools-count`,
+`private-schools-count`, `teachers-total-udise`, `ptr-primary-udise`, `ptr-elementary-dise`,
+`single-teacher-schools-udise`, `single-teacher-schools-share-dise`, `ugc-provision-gross`) all move
+to `education`, and all but the last are now good fits.
+
+## Ledger — 20, residual bad **0**
+
+Every record re-derived. `human-development` and `welfare` are gone from the drop entirely.
+`education` is carried by all 20 — as primary where the subject is schooling, as a navigation tag
+where the subject is institutional and the series it cites are now in `education`, which is the
+practice this file already used for `human-development` on L-0092.
+
+`governance` is retained on 17, `federalism` on 7, `macro` on 1 (L-0102), `employment` on 1 (L-0107).
+
+Residual is 0 because a ledger record carries several values, so nothing is forced. **L-0102 is the
+one that would be bad if it were single-valued** — public education spending as a share of GDP is a
+fiscal quantity — and it carries `macro` second, which resolves it.
+
+## Pairs — 9, residual bad **1**
+
+All nine `education`, by the inheritance rule. PR-19, PR-21 and PR-23 were first held in
+`governance` on the ground that a coverage-usage pair's subject is the state's publication conduct;
+that was reversed for consistency, since PR-20 has the identical shape and every one of the three
+links to a ledger record that retains `governance`. A pair should not render in a domain where
+neither of its series lives.
+
+**PR-22** carries the residual, inherited from its two spending series.
+
+## Provenance — 12, residual bad **0**
+
+All 12 carry `education`; `governance` retained on 12, `macro` on P-65 and P-66, `federalism` on
+P-64 and P-69. The fiscal reading that made P-65 and P-66 bad fits is now carried by `macro`
+alongside `education`, so neither is forced.
+
+## L-0105 — confirmed
+
+Second value is now `education`, replacing `human-development`. The bad fit resolves: literacy is
+learning, which the definition names. **`demography` was not touched** — 0 records carry it in live
+`/data` and 0 in the drop, verified against the data rather than the schema comment, and the value
+remains in all four enums.
+
+## THE RESIDUAL COUNT
+
+| Layer | Records | Residual bad fit | Share | was |
+|---|---|---|---|---|
+| Series | 49 | **5** | 10% | 37 (76%) |
+| Ledger | 20 | **0** | 0% | 6 (30%) |
+| Pairs | 9 | **1** | 11% | 5 (56%) |
+| Provenance | 12 | **0** | 0% | 8 (67%) |
+| **Total** | **90** | **6** | **7%** | **56 (62%)** |
+
+### The residual is one shape, not six problems
+
+`edu-spend-gdp-edu-depts` · `edu-spend-gdp-all-depts` · `edu-union-moe-gdp` ·
+`edu-union-be-shortfall-pct` · `ugc-provision-gross` · **PR-22**
+
+All six are **fiscal quantities** — shares of GDP, a share of Budget Estimate, rupees crore — filed
+`education` because they are about education, while sharing no measurement base with the learning
+tests and headcounts that now populate the value. `macro` is defensible for every one of them and is
+unavailable because a series carries exactly one domain.
+
+This is not the old problem in a new place. The old residual was 29 series in a value whose members
+measure bodies; this one is 5 series and a pair in a value whose members measure schooling, filed
+there correctly, whose *unit* belongs to a second domain they cannot also carry. The ledger and
+provenance layers show what the fix would look like: L-0102, P-65 and P-66 carry `macro` alongside
+`education` and are not forced at all.
+
+**The precedent is settled and was not disturbed.** `health-exp-union` in live `/data` is filed
+`human-development`, not `macro` — sector spending files under its sector. The four education
+spending series now do the same thing, and for the first time the precedent is honest rather than
+forced, because the sector value exists.
+
+---
+
+## ADDENDUM — the ABE Centre column, and the residual as standing evidence (2026-08-02)
+
+### New series: `edu-spend-gdp-centre-edu-depts` — filed `education`, **residual bad fit**
+
+Authored under ruling 2 because L-0102's "0.64 to 0.40 per cent of GDP" was load-bearing with no
+series behind it. Domain fit re-derived for this record only; nothing else moved.
+
+`education` is right by subject and wrong by measurement base, exactly like the four spending series
+it joins: a share of GDP shares nothing with a learning test or a teacher headcount. It goes into the
+residual, which is what the count is for. **Series residual 5 → 6; drop total 6 → 7 of 91.**
+
+### The residual — RECORDED, NOT ACTED ON
+
+| | |
+|---|---|
+| `edu-spend-gdp-edu-depts` | % of GDP |
+| `edu-spend-gdp-all-depts` | % of GDP |
+| `edu-spend-gdp-centre-edu-depts` | % of GDP |
+| `edu-union-moe-gdp` | % of GDP |
+| `edu-union-be-shortfall-pct` | % of Budget Estimate |
+| `ugc-provision-gross` | rupees crore |
+| `PR-22` | inherits from the first two |
+
+**Seven records, one shape: sector-fiscal series where `macro` is equally right and unavailable
+because a series carries exactly one domain.** Not a filing error — each is filed correctly on
+subject, and each would be filed correctly on unit in a different value. There is no third answer
+available at the series layer.
+
+**The same shape already exists outside this drop.** `health-exp-union` sits in `human-development`
+under precisely this constraint, and has since long before `education` existed. That is what makes
+this standing evidence rather than a phase artefact: the constraint is structural, it predates this
+drop, and it will recur in every domain that has both outcomes and a budget line.
+
+**What it is evidence FOR — deferred, not opened here:** whether a series should be able to carry
+more than one domain, or carry a secondary. The ledger and provenance layers show the shape of the
+answer without needing one — L-0102, P-65 and P-66 carry `macro` alongside `education` and are not
+forced at all. **Do not resolve this inside a phase.** The precedent against doing so is
+`differentFacts`, which reached seventeen records because a taxonomy was resolved in the pass that
+discovered it.
+
+**None of the seven is to be re-filed.** They are correct as they stand, and moving any of them to
+`macro` would trade a good subject fit for a good unit fit and lose the count that makes the case.
