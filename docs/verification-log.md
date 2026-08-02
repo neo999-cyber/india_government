@@ -883,3 +883,74 @@ Three sites, all on `app/series/[id]/page.tsx`, all delegating to a pair view. E
 `differentFactsNote` is not suppressed anywhere but is guarded too, since it is the same class of mark.
 
 **One latent instance of the same shape, with no live instance today.** `pairsForSeries` matches a series that appears only as an `absenceFrom` target, so such a series would count as paired, lose its `notes` and `unmeasured` to suppression, and have no delegate — `CoverageUsageView` renders notes only for a side resolved to `series`. No series is currently absenceFrom-only; `metro-network` and `household-electrification` are each also their pair's coverage side, and PR-15's absence target is a ledger record, whose pages carry no pair view and suppress nothing. The reachability rule would catch it the moment one appears, which is the point of guarding a pattern rather than a case.
+
+---
+
+# Verification log — cycle 2026-08-02a (`reversed` corrected: a disclosure practice is not a measure)
+
+First entry for 2026-08-02. No letter had been assigned for this date — the `/phase education`
+run stopped at the drop, so stage 8 never ran and never opened one. Assigned here rather than
+extending 08-01i, which closed on a different subject.
+
+## The correction
+
+`L-0094` (education drop, not yet merged) was authored `reversed` and is now `contested`.
+
+The record is about the Ministry of Education tabling national teacher-vacancy totals routinely
+from 2014, stopping after 07.02.2024, and continuing to furnish the quantity to the Standing
+Committee — 368th Report, 08.08.2025 — while declining to give it in answer to a question. The
+authoring stage read that as the enacting authority withdrawing its own measure and scored it
+`reversed`, noting in `assessmentNote` that it was a new mechanism for the value.
+
+**Ruling: it is not reversed.** `measure` means an intervention that acts on the world. Every
+other `reversed` record withdraws something that was doing work. Here recruitment, funding and
+the PRABANDH returns all continue; what stopped is an answer. A disclosure practice is not a
+measure.
+
+**Nor is it `failed`.** Neither side of the argument pair describes a failure: `caseFor` defends
+the change as competent statistical practice, `caseAgainst` attacks it as evasion, and neither
+says the Ministry tried something and could not. `contested` is what the pair actually supports.
+
+## Why the definition changed rather than just the record
+
+`reversed` was given a written definition on 2026-08-01, in cycle 08-01g, after it was found
+covering two mechanisms — self-withdrawal and judicial strike-down. That definition named the
+second mechanism and excluded it.
+
+**Within two weeks it attracted a third: withdrawal of a disclosure practice.** That is the same
+failure a second time, and it is diagnostic of the value rather than of either record.
+`reversed` behaves as an attractor for anything that ends — the word describes an outcome shape,
+so any record whose subject stopped will fit it on a first reading. The 08-01g definition
+answered *who* withdrew, which does not discriminate between a policy and a publication, because
+in both cases the answer is "the authority itself".
+
+So the definition now states **what a measure is**, not only who withdrew it. One clause added,
+in both places that carry it:
+
+> `measure` means an intervention that acts on the world. Withdrawing a disclosure, a
+> publication or a reporting practice is not reversal, even where the authority withdrawing it
+> is the one that established it.
+
+## Applied
+
+| file | change |
+|---|---|
+| `schemas/ledger.schema.json` | clause added to the `reversed` line of the `assessment` description; the judicial-invalidation carve-out kept and re-worded to "not reversed either" |
+| `lib/types.ts` | **`Assessment` had no written definition at all** — the union was bare. All seven values written in, `reversed` carrying the new clause. This closes a parity gap: the schema had definitions since 08-01g and the type never did. |
+| `drops/.../records/ledger.json` | `L-0094` rescored `contested`; `assessmentNote` replaced with the ruling and its reason, removing an internal miscount ("a second mechanism", listing two) |
+
+Only `ledger.schema.json` declares `assessment` — checked, not assumed. There is no second
+schema to amend.
+
+## Note for whoever tests this next
+
+Two of nine enums have now needed their definitions widened after the first definition:
+`reversed` here, and `differentFacts` in 08-01f. Both were widened because a *new record*
+pulled at the boundary, not because an audit re-read the existing users. That is the preventive
+half of the enum rule (spec §6, v2.2) working as intended at stage 3 — but it also means a
+written definition is not a terminal state, and the ones written on 2026-08-01 should be
+expected to move again.
+
+`reversed` currently has one user in `/data` (`L-0066`) and, after this correction, none in the
+education drop. Its written definition now excludes two mechanisms and admits one. If a fourth
+candidate arrives, the question to ask is whether the value is doing enough work to keep.

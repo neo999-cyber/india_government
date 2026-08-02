@@ -224,6 +224,35 @@ export interface Pair {
   notes?: string;
 }
 
+/**
+ * What the record CONCLUDES — not what kind of thing it is (see `LedgerType`) and not how
+ * well evidenced it is (see `confidence`).
+ *
+ * These values had no written definitions until 2026-08-01, which is how `reversed` came to
+ * cover two different mechanisms without the type objecting.
+ *
+ * - `worked` — the measure achieved the objective stated at announcement, on the evidence
+ *   available.
+ * - `partly` — it achieved part of its stated objective, or achieved it for part of the
+ *   intended population.
+ * - `failed` — it did not achieve the objective stated at announcement. Includes a measure
+ *   struck down by a court: the outcome is the same and only the mechanism differs, so
+ *   record the mechanism in `assessmentNote`.
+ * - `reversed` — the ENACTING AUTHORITY withdrew or repealed its own measure. **`measure`
+ *   means an intervention that acts on the world.** Withdrawing a disclosure, a publication
+ *   or a reporting practice is not reversal, even where the authority withdrawing it is the
+ *   one that established it. Judicial invalidation is not reversed either — a court striking
+ *   a measure down is not the enacting authority changing its mind, and collapsing the two
+ *   loses what distinguishes a government retreating under pressure from one overruled.
+ *   The value attracts anything that ends, which is why the definition states what a measure
+ *   is and not only who withdrew it.
+ * - `contested` — the evidence supports more than one defensible reading and the record does
+ *   not choose between them.
+ * - `too-early` — the measure is in force but has not run long enough for its stated
+ *   objective to be testable.
+ * - `baseline-context` — pre-2014 context, carried so post-2014 records are read against a
+ *   stated starting condition. Never scored; the schema ties it to term `baseline`.
+ */
 export type Assessment =
   | 'worked'
   | 'partly'
