@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
-  "buildCommand": "npm run validate && next build && npm run reachability",
+  "buildCommand": "npm run validate && next build && npm run reachability && npm run domain-coverage",
   "outputDirectory": null,
   "headers": [
     {
