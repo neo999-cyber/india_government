@@ -184,6 +184,14 @@ haiku →  sonnet  →  stop and report
 
 **Never fall back to the session default and never pass `inherit` for stages 2 and 3.** `inherit` silently adopts whatever the session happens to be running, which is the outcome the routing exists to prevent. A stage-3 run on an unstated model is worse than a stage-3 run that stopped.
 
+### Fan-out within a stage is unrouted
+
+A stage subagent may spawn subagents of its own. **Nothing binds those descendants to the stage's model, and this file claims no enforcement.** Instruct inheritance in the brief, then **verify: each subagent transcript records the model that served it, so the run report states the observed model, not the requested one** (Rule 1).
+
+Observed once — stage 2 of the education run fanned out to five; the two surviving transcripts both record `claude-opus-5`, the stage's own model. Inheritance looks like the default. One observation is not a guarantee.
+
+**Stage 3 does not fan out.** No trigger catches a weak argument pair, and an unrouted descendant writing them is the exposure this section exists to close.
+
 ### Safeguards-routing caveat — carried here deliberately
 
 Contested political material can trigger safeguards routing to a different model than the one requested. In conversation a differently-shaped response is noticeable. **Unsupervised it is not.**
@@ -202,3 +210,15 @@ Read these before trusting a run.
 - **Nothing catches a weak argument pair.** The largest remaining exposure, mitigated only by model routing at stage 3 and human review of the PR diff.
 - **Stage 7 proves reachability, not usefulness.** A mark can render on the right page and still be buried.
 - **Gitignored fixture trees.** Verify fixtures survive a clean clone.
+- **A stage can die for infrastructure reasons** — session limit, API failure, agent death. **Liveness failure, not a trigger.** See resumability below.
+- **Any assembly is stale the moment its sources keep arriving.** Read the parts, not a prior assembly.
+
+### Resumability — required of every stage
+
+When a stage terminates without completing, **preserve its partial output to the drop directory** and write a `STATE.md` recording what completed, what is missing, and the resume order. **Preserving is not authoring and does not violate `--dry`** — no records are written, `/data` is not touched.
+
+The first occurrence lost three subagent reports that existed only in the orchestrator's context; they were recovered only because their transcripts happened to survive on disk.
+
+**A stage may NOT run against partial input from a prior stage. It halts and reports.** A drop built on truncated research is complete-looking and its gap is invisible in the output — no downstream check recovers a question the research never asked. Authoring launders the gap into finished records.
+
+**The stale-assembly trap, stated generally.** Any artefact assembled at a point in time, from sources that keep arriving, reads whole and is not. Two instances: stage 1 counting series from `seed.json` alone (123 against a true 136); stage 2's `research.md` assembled before six of its parts landed. **A consumer reads the parts, or re-assembles.**

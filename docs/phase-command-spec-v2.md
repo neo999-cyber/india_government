@@ -1,7 +1,7 @@
-# `/phase` — specification v2.2
+# `/phase` — specification v2.3
 
 **Status:** built. Implemented at `.claude/skills/phase/SKILL.md`.
-**Supersedes:** v2.1, revised in place. Changes from v1 in §9, from v2 in §10, from v2.1 in §11.
+**Supersedes:** v2.2, revised in place. Changes from v1 in §9, from v2 in §10, from v2.1 in §11, from v2.2 in §12.
 **Scope:** runs one domain phase of the India Roadmap end to end, stopping only where judgement is genuinely needed.
 **Evidence base:** phase 9 and its seven follow-on cycles (08-01e through 08-01i.2). One phase. See §8.
 
@@ -167,6 +167,12 @@ haiku →  sonnet  →  stop and report
 
 Selectable values in the current environment are `sonnet`, `opus`, `haiku`, `fable`. "Strongest available" maps to `opus`; "cheapest adequate" to `haiku`. There is no model literally named "strongest available" — the mapping is a decision, and it is stated here so it is not re-derived per run.
 
+**Fan-out within a stage is unrouted, and this section's recommendation does not reach it.** A stage subagent may spawn subagents of its own; nothing binds those descendants to the stage's model. There is no enforcement mechanism, so this section does not claim one.
+
+What is available is **verification after the fact**: each subagent transcript records the model that served it. The rule is therefore observational, per Rule 1 — the brief instructs descendants to carry the stage's model, and **the run report states the model read from the transcript, not the model requested.** First observation: stage 2 of the education run fanned out to five subagents; the two whose transcripts survived both record `claude-opus-5`, the stage's own model. Inheritance appears to be the default. One observation is not a guarantee.
+
+**Stage 3 does not fan out.** Its output is the argument pairs, no trigger catches a weak one, and an unrouted descendant writing them is the exact exposure §7 exists to close.
+
 **Caveat to carry in the command file.** Contested political material can trigger safeguards routing to a different model. In conversation a differently-shaped response is noticeable; unsupervised it is not. If a run's authoring reads differently than expected, routing is a plausible cause before quality is.
 
 ---
@@ -183,7 +189,18 @@ Selectable values in the current environment are `sonnet`, `opus`, `haiku`, `fab
 
 **Stage 7 proves reachability, not usefulness.** A mark can render on the right page and still be buried.
 
-**A count assembled from one data file under-reports silently as the corpus grows.** Stage 1's first dry run read `data/series/seed.json` alone and reported 123 series against a true 136 — `rights-institutions.json` had been added and the count did not know. The failure is silent because a plausible number is returned. Counts come from the gate's own summary line, or from every file in the layer.
+**A stage may terminate for infrastructure reasons** — a session limit, an API failure, an agent dying mid-write. This is a **liveness failure, not a judgement escalation**, and it does not belong in §5: the triggers are decisions a run must not take alone, and a dead agent has not reached a decision.
+
+The requirement is that **every stage is resumable**. Partial output is preserved to the drop directory alongside a `STATE.md` recording what completed, what is missing, and the resume order. **Preserving stage output is not authoring and does not violate `--dry`** — no records are written and `/data` is not touched. A run that dies without preserving loses work that was already paid for; the first occurrence lost three subagent reports that existed only in the orchestrator's context and were recovered only because their transcripts happened to survive on disk.
+
+**Any artefact assembled at a point in time, from sources that keep arriving, is a trap — and its staleness is invisible at the point of consumption.** The consumer reads a whole-looking document and has no signal that it is partial. Two instances so far:
+
+- Stage 1 counted series from `data/series/seed.json` alone and reported 123 against a true 136. `rights-institutions.json` had been added and the count did not know. The failure is silent because a plausible number is returned.
+- Stage 2's `research.md` was assembled before six of its parts landed — three that arrived after the write, three recovered later from subagent transcripts. The file reads complete and covers roughly half the scope.
+
+**A consumer reads the parts, or re-assembles. It does not trust a prior assembly.** Counts come from the gate's own summary line, or from every file in the layer.
+
+**A stage may not run against partial input from a prior stage. It halts and reports.** A drop built on truncated research is complete-looking, and its gap is invisible in the output — there is no downstream check that can recover a question the research never asked. This is the same failure shape as the stale assembly above, one stage further on, and it is worse because authoring launders the gap into finished records.
 
 **Gitignored fixture trees.** A fixture whose artefacts sit under an ignored path is silently dropped from the commit and passes because it is absent. Verify fixtures survive a clean clone.
 
@@ -228,4 +245,15 @@ One addition, in three places. v2.1's enum rule was diagnostic only — every on
 2. §5 trigger D — **extended to creation.** D was written against application alone, which cannot fire on a value that has no usage yet. It now has two limbs, application and creation.
 3. §8 — **the three known-inconsistent enums recorded as deferred**, with the reason for deferring: `differentFacts` reached seventeen records because a taxonomy was resolved in the pass that discovered it.
 
-This is the last revision. Later evidence goes to the verification log and, if it changes behaviour, to a v3.
+Later evidence goes to the verification log and, if it changes behaviour, to a further revision.
+
+---
+
+## 12. Changes from v2.2
+
+From the first real run — `/phase education --dry`, which cleared stage 1 and then **died inside stage 2 on a session limit**, holding five subagents' results. No new trigger: the halt was a liveness failure, and §5 is for judgement escalations.
+
+1. §8 — **infrastructure termination named**, with the resumability requirement: partial output is preserved to the drop directory with a `STATE.md`, and preserving is not authoring.
+2. §8 — **the stale-assembly rule, generalised** above the single-file line it grew out of. Any artefact assembled from sources that keep arriving is a trap; two instances recorded. Consumers read the parts.
+3. §8 — **a stage may not run against partial input.** Authoring launders a research gap into finished records, and nothing downstream recovers a question that was never asked.
+4. §7 — **the fan-out hole closed at the honest strength.** Descendant model is not enforceable, so no enforcement is claimed; it is instructed and then *verified from the transcript*, which does record the serving model. Stage 3 does not fan out at all.
