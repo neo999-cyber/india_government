@@ -1,0 +1,145 @@
+[
+  {
+    "id": "PR-26",
+    "kind": "contested",
+    "domain": "defence",
+    "title": "Civilians killed in Kashmir: the ministry's count against the press-derived one",
+    "a": {
+      "series": "jk-civilians-killed-composite",
+      "label": "Civilians killed, as the Home Ministry counts them"
+    },
+    "b": {
+      "series": "jk-civilians-killed-satp",
+      "label": "Civilians killed, as a press-compiled register counts them"
+    },
+    "framing": "For 2018 these read 55 against 86; for 2016 the press register reads 14 against the ministry's 15, and for 2020 and 2021 it reads below the ministry too. Two counts of one word that cross over, and neither may be shown alone.",
+    "gapComputable": false,
+    "gapReason": "The two are not one quantity measured with error. The ministry's figure counts civilians killed in terrorist-initiated incidents and in counter-terrorism operations, merged, on returns booked and forwarded by police stations and the territorial administration, on a basis never defined in seventeen report years. The press register counts persons it classifies as civilians killed in incidents it classifies as terrorism-related, compiled from news reports, with no published definition of 'civilian', no methodology page of any kind, and a conceded but unspecified component of internally developed data. They gate on different things and fail in opposite directions - press reportability misses routine, remote-sector and blackout-period events, administrative reportability misses events the state has an interest in not booking - so neither is a superset of the other and subtracting them would state a difference between two quantities nothing connects.",
+    "provenanceRefs": ["P-73", "P-75", "P-85"],
+    "ledgerRefs": ["L-0112", "L-0110"],
+    "notes": "The crossover is the point. Ratios to the ministry's bounded series run 2.21 in 2018, 1.08 in 2019, 0.89 in 2020 and 0.88 in 2021 - above in one year, below in two - so the obvious hypothesis, that the press register simply catches the protest and encounter-site deaths the ministry omits, is contradicted by 2016, the year of the largest protest death toll in the period, in which the press register reads below the ministry. The two civilian series must not be treated as interchangeable in any year on the strength of their agreement in others. Neither publisher has ever acknowledged, compared or explained the gap on any reachable page."
+  },
+  {
+    "id": "PR-27",
+    "kind": "contested",
+    "domain": "defence",
+    "title": "How many incidents there were in 2018: 614, 417 or 228",
+    "a": {
+      "series": "jk-terrorist-incidents-legacy",
+      "label": "Incidents, as the ministry published them at the time"
+    },
+    "b": {
+      "series": "jk-terrorist-initiated-incidents",
+      "label": "Incidents militants initiated, as the ministry publishes them now"
+    },
+    "framing": "One ministry has published three different numbers for the same object in the same year - 614, 417 and 228 for calendar 2018 - across two restatements neither of which carried a note, and every public comparison across that boundary compares unlike things.",
+    "gapComputable": false,
+    "gapReason": "The difference between the two is not a residual with a meaning. Part of it is the un-merging of security-force operations from the composite, which is exactly quantified from 2018 by the encounters column; part of it is whatever the 2021-22 restatement removed, which is 197 events for 2018 and 339 for 2019 against no change at all in 2020, and which MHA has never described. The pre-restatement basis is unestablished and the obvious candidate is ruled out by MHA's own later reply, so a subtraction would be a number built on a basis nobody can state.",
+    "provenanceRefs": ["P-71", "P-72", "P-75"],
+    "ledgerRefs": ["L-0111", "L-0110"],
+    "notes": "The intermediate basis is carried separately as jk-terrorist-incidents-merged, which reads 417 for 2018 and is the sum of the two published components exactly, four years out of four. Two further counts exist for the same year from the press-derived register - 597 on its widest basis and 206 on its fatality-gated one - so five separately published, separately labelled incident counts exist for calendar 2018 alone. The near-coincidence of 228 and 206 is arithmetic accident: one gates on who initiated, the other on whether anyone died, and they must not be read as corroborating."
+  },
+  {
+    "id": "PR-28",
+    "kind": "coverage-usage",
+    "domain": "defence",
+    "title": "Operations the state counts, consequences it does not",
+    "a": {
+      "series": "jk-encounters-ct-ops",
+      "label": "Encounters and counter-terror operations conducted"
+    },
+    "b": {
+      "absenceFrom": "jk-encounters-ct-ops",
+      "absenceIndex": 1,
+      "label": "What those operations produced - no term of any kind"
+    },
+    "framing": "This is the only column in the ministry's entire J&K instrument that counts what the state did, and 731 operations over seven years sit beside no count of what they produced.",
+    "gapComputable": false,
+    "gapReason": "The counterpart does not exist. There is no count of civilians killed in these operations separately from the merged column, no count of cordon-and-search operations, no count of magisterial inquiries ordered, completed or published, and no sanction figures in the same instrument. The J&K chapter of the Annual Report 2024-25 contains zero occurrences of 'human right', 'NHRC', 'custody', 'custodial', 'compensation', 'ex-gratia', 'inquiry' or 'magisterial' across roughly 46,000 characters, so there is nothing to subtract from and nothing to qualify the operations count with.",
+    "provenanceRefs": ["P-71", "P-78", "P-85"],
+    "ledgerRefs": ["L-0116", "L-0110"],
+    "notes": "The instrument also counts the outcomes of an activity it does not count. Cordon-and-search operations are the most common form of contact between the security forces and the civilian population and produce the detentions, the property damage and the encounters that are counted; the string 'cordon' appears zero times in seven Annual Reports, and two independent searches found no published CASO count from MHA, the J&K Police or the Army for any year. That absence is declared on the same series at index 0."
+  },
+  {
+    "id": "PR-29",
+    "kind": "coverage-usage",
+    "domain": "governance",
+    "title": "The pellet harm the state published against the pellet harm it refused",
+    "a": {
+      "series": "jk-pellet-deaths",
+      "label": "Deaths by pellets, published month by month"
+    },
+    "b": {
+      "absenceFrom": "jk-pellet-deaths",
+      "absenceIndex": 0,
+      "label": "Injuries by pellets - specifically asked for, specifically refused"
+    },
+    "framing": "One question asked for the injured and the killed. One answer supplied seventeen deaths across three calendar years and refused everything else in the interest of national security, and the order of those two facts is the argument.",
+    "gapComputable": false,
+    "gapReason": "Not a gap but a refusal, and the two are different quantities in any case - deaths against injuries, not a subset relation that subtraction could express. Nor is there an agreed injury figure to subtract towards: the figures in circulation are at least five different objects on five different windows, counting persons, patients, eyes, admissions, referrals and payments, and no source states its unit.",
+    "provenanceRefs": ["P-79", "P-80", "P-81"],
+    "ledgerRefs": ["L-0114"],
+    "notes": "This pairing carries the phase's sharpest asymmetry: the only pellet quantity in the public record is the one that is smallest and most favourable to the weapon's defenders, and the quantities on which the criticism rests are the ones withheld. The same table also carries a second column - security-force personnel killed during law-and-order protests, two in July 2016 and nothing else - which makes it the only official Indian document located in this phase that places harm to civilians and harm to the state's own personnel on one page. It exists precisely to the extent that both terms are small, and it was never repeated."
+  },
+  {
+    "id": "PR-30",
+    "kind": "coverage-usage",
+    "domain": "defence",
+    "title": "Infiltration attempted against infiltration estimated to have succeeded",
+    "a": {
+      "series": "jk-infiltration-attempts",
+      "label": "Attempts recorded"
+    },
+    "b": {
+      "series": "jk-net-estimated-infiltration",
+      "label": "Persons the ministry estimates got through"
+    },
+    "framing": "Two rows of one table, published side by side for a decade and quoted interchangeably: any claim that infiltration fell from 419 to 53 and any claim that it fell from 136 to 14 are quoting different rows.",
+    "gapComputable": false,
+    "gapReason": "MHA publishes no interception or attrition figure that would link the two rows, so the difference between them is not a published or derivable quantity. One row is labelled an estimate and the other is not, and MHA nowhere states how an attempt is detected or counted - so subtracting a defined-basis-unknown count from an estimate would produce a number whose basis is unestablished twice over. The Ministry of Defence's 'Infiltration Bid Eliminated' cannot supply the missing term either: it is scoped to the Line of Control under Army operational control and is neither the same geography nor the same agency.",
+    "provenanceRefs": ["P-76", "P-86"],
+    "ledgerRefs": ["L-0119"],
+    "notes": "Both series terminate at 2022 and the table was deleted from the Annual Reports 2023-24 and 2024-25 with no announcement, while the policy paragraph on containing infiltration survives. The three infiltration quantities move in opposite directions under one underlying reality - if interception improves, attempts may be unchanged, bids eliminated rise and net falls - so a gap in one must never be filled from another."
+  },
+  {
+    "id": "PR-31",
+    "kind": "contested",
+    "domain": "defence",
+    "title": "Local recruitment: three official answers for one year, and no return behind any of them",
+    "a": {
+      "competingAccountsFrom": "P-84",
+      "label": "What officials have said the recruitment figures are"
+    },
+    "b": {
+      "absenceFrom": "L-0117",
+      "absenceIndex": 0,
+      "label": "The published return that would settle them - none exists"
+    },
+    "framing": "The quantity most often quoted in the argument about whether militancy in Kashmir is indigenous is the one quantity in this domain with no instrument at all, and its published claims contradict each other by 30 to 120 per cent for the same year.",
+    "gapComputable": false,
+    "gapReason": "There is nothing to subtract on either side. One side is a set of press-conference claims which conflict with one another - 187, 218 and over 200 for 2018; 100, 110 and 130 for 2022; 10 and 22 for 2023 - and the other is the absence of any statistical return, in seventeen consecutive Annual Reports and in every parliamentary reply retrieved. No published definition of recruitment exists from any body, so even a single agreed figure would have no stated basis.",
+    "provenanceRefs": ["P-84"],
+    "ledgerRefs": ["L-0117"],
+    "notes": "An unusual application of the pair layer, recorded as such: neither side is a series, because no series exists. It is carried because the two sides genuinely may not be shown alone - a recruitment figure rendered without the absence beside it reads as a point on a series, and the absence rendered without the claims beside it loses the fact that the state asserts numbers it has never published. The pre-2018 figures of 66, 88 and 126 exist because an MLA asked and a Chief Minister answered in writing; that route terminated in 2018 and the restored assembly is barred from the subject matter, so the instrument changed from an answer to a claim."
+  },
+  {
+    "id": "PR-32",
+    "kind": "contested",
+    "domain": "defence",
+    "title": "Civilian deaths with a perpetrator named, against civilian deaths with none",
+    "a": {
+      "series": "jk-civilians-killed-composite",
+      "label": "All civilian deaths, no perpetrator named"
+    },
+    "b": {
+      "series": "jkccs-civilians-killed-by-armed-forces",
+      "label": "Civilian deaths attributed to the armed forces - the only instrument that ever named one"
+    },
+    "framing": "One instrument merges civilians killed by militants with civilians killed in the state's own operations and attributes neither; the other named the perpetrator for every death it could and left the largest bucket unattributed rather than forcing it. The second stopped publishing in 2020.",
+    "gapComputable": false,
+    "gapReason": "The two are not rival estimates of one quantity and no arithmetic connects them. The official figure is a merged count on returns compiled by a party to the events and published without attribution; the non-official one is a perpetrator-split of a differently-bounded civilian universe, compiled from media monitoring, field verification and court-registry records with no formal inclusion criteria, whose 2019 total of at least 80 exceeds the official 44 for the same year. Subtraction would imply a subset relation that neither publisher asserts and that no definition supports.",
+    "provenanceRefs": ["P-73", "P-87"],
+    "ledgerRefs": ["L-0124", "L-0112"],
+    "notes": "This pair is the answer to the ledger question for civilian deaths, and it is a negative one: two-sided accounting for this quantity existed, was non-official, and stopped. Its final figures are a floor stated as such by the body that produced them, which declared a complete information collapse in Kashmir after 5 August 2019. After 2019 no instrument of any provenance publishes the perpetrator split - not MHA, which has never had a column for it; not GTD, which covers non-state perpetrators only by construction; not UCDP, which records Government-of-India one-sided violence in three country-years ever and none after 2002. Kashmir Law and Justice Project is the only identified live candidate successor and was not investigated in this phase."
+  }
+]

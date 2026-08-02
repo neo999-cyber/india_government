@@ -3,7 +3,13 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getLedger, getProvenance, getSeries, ledger as allLedger } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
-import { Absences, CaveatFlag, DifferentFactsMark, SourceList } from '@/components/marks';
+import {
+  Absences,
+  CaveatFlag,
+  DifferentFactsMark,
+  DifferentFactsNegativeMark,
+  SourceList,
+} from '@/components/marks';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -50,8 +56,14 @@ export default async function LedgerDetail({ params }: Props) {
         {TERM_LABELS[l.term]} · researched as of {l.asOf}
       </p>
 
-      {/* Below the assessment tag: it qualifies what "contested" means for this record. */}
+      {/* Below the assessment tag: it qualifies what "contested" means for this record.
+          A note recorded against a FALSE reading renders too, in the negative mark — the
+          test having been run and returned negative is itself a finding, and gating the
+          note on the boolean left it rendering nowhere. */}
       {l.differentFacts ? <DifferentFactsMark note={l.differentFactsNote} /> : null}
+      {!l.differentFacts && l.differentFactsNote ? (
+        <DifferentFactsNegativeMark note={l.differentFactsNote} />
+      ) : null}
 
       {/* The caveat sits above the summary, not below it: it qualifies the claim the
           summary makes, and a reader who stops after one paragraph must still have it. */}
