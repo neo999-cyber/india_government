@@ -123,7 +123,9 @@ The ministry lists are **stable** between the 2022 and 2024 editions.
 | **Ministry of Education** | **93,169** |
 | **GRAND TOTAL** | **2,38,419** |
 
-The top four non-education ministries alone (₹83,670 cr) equal **90% of the entire Ministry of Education budget**. **The Ministry of Education is a minority (39%) of what the 4.12% headline calls "education".**
+The top four non-education ministries alone (₹83,670 cr) equal **90% of the entire Ministry of Education budget**. **The Ministry of Education is a minority (39%) of the CENTRE's own broad education spending** — of the ₹2,38,419 cr grand total above, which is 1.02% of GDP. Against the **4.12% all-India headline** it is **under a tenth**: that headline is Centre plus States, and States carry about three-quarters of the money.
+
+> **CORRECTED 2026-08-02 (stage 4).** This read "a minority (39%) of what the 4.12% headline calls education", wrong by a factor of four — the denominator is the Centre grand total in the table above, not the Centre-plus-States headline.
 
 **The Economic Survey itself documents this.** ES 2023-24, Ch. 7, Table VII.1, Note (ii) — the single most useful passage retrieved:
 
