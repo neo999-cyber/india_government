@@ -94,6 +94,12 @@ const ISOLATED = [
   { dir: 'reason-kind-missing', rule: 'reason-kind' },
   { dir: 'absence-dispute-bare', rule: 'absence-dispute', expect: 'must not be asserted bare' },
   { dir: 'denominator-unstated', rule: 'denominator-stated', expect: 'renders 1 rate value(s)' },
+  // unmeasured-route became severity-derived on 2026-08-02: an error where reasonKind
+  // entails a route, a warning where it does not. Both branches are pinned — the error
+  // half here, the warning half in MUST_STAY_CLEAN — so a later flattening of the
+  // severity back to a uniform warn fails loudly instead of quietly reopening the gap.
+  { dir: 'unmeasured-route-producible', rule: 'unmeasured-route', expect: 'not-published means producible under compulsion' },
+  { dir: 'unmeasured-route-producible', rule: 'unmeasured-route', expect: 'withheld requires an identifiable refusal' },
 ];
 
 /**
@@ -112,6 +118,10 @@ const MUST_STAY_CLEAN = [
   // base for a number that is not shown. Withholding is the correct response to being caught
   // by the rule, and this pins that so a later tightening fails loudly here.
   { dir: 'denominator-withheld', rule: 'denominator-stated', why: 'a withheld rate renders no figure to mislabel' },
+  // The warning half of unmeasured-route. not-collected and never-defined do not assert the
+  // data exists, so no route is entailed and demanding one invites a placeholder — which is
+  // worse than none, because it enters the verification queue and cannot be worked.
+  { dir: 'unmeasured-route-uncollectable', rule: 'unmeasured-route', why: 'neither value asserts the data exists, so no route is entailed' },
 ];
 
 /** @returns {{ code: number, report: any }} */

@@ -1703,3 +1703,165 @@ reporting 0/10 and an ASCII hyphen against a rendered en-dash reporting 7/10.
 
 Note the seam total: **67, not 10.** The ten anchored to periods carrying no point are a subset;
 production renders every declared break on its own series page.
+
+---
+
+# Verification log — cycle 2026-08-02g (validator hardening; GATE IS RED, not deployed)
+
+No `/data` authoring. Four validator changes, one of which turns the gate red on purpose.
+
+## CORRECTION to cycle 2026-08-02f
+
+That entry states the orphan check "did not find P-52" and calls it "recorded honestly: this check has
+low specificity and did not find the very reference it was built for."
+
+**The second half is wrong.** It was inferred, not tested — from output taken *after* P-52 had already
+been removed at stage 5, so there was nothing left for the check to find. Tested this cycle against the
+reconstructed pre-removal state, **the check fires on P-52.** The specificity finding stands; the
+sensitivity claim does not. See item 2.
+
+## 1. REFERENCE FORMS ARE NOW DERIVED, NOT ENUMERATED
+
+The hand list was short by three. A hand list will always be short by the forms nobody remembered, so
+the enumeration is gone. `deriveRefForms` reads each layer's id **contract** from its own schema
+(`^L-\d{4}$`, `^P-\d{2}$`, `^PR-\d{2}$`), then walks every string in every record and asks whether that
+string IS an id. Any field path whose values are ids is a reference form. It never names a field.
+
+**A finding worth stating on its own: the schemas do not mark reference fields as references.** Only
+`id` carries a `pattern`. `seriesRefs`, `provenanceRefs`, `affectsSeries`, `correctiveSeries`,
+`ledgerRefs`, `breaks[].provenanceRef` and the pair-side fields are bare strings with no pattern and,
+in most cases, no description. Nothing in the contract says "this holds an id" — which is why the
+obvious schema-only derivation cannot work and derivation has to run off the id contracts plus
+observed values. If the schemas ever mark reference fields explicitly, this gets simpler and stricter.
+
+**Derived: 12 forms, 1,088 references corpus-wide.**
+
+| layer | path | resolves to | n |
+|---|---|---|---|
+| series | `provenanceRefs[]` | provenance | 249 |
+| series | `breaks[].provenanceRef` | provenance | **111** |
+| ledger | `seriesRefs[]` | series | 204 |
+| ledger | `provenanceRefs[]` | provenance | 97 |
+| provenance | `affectsSeries[]` | series | 155 |
+| provenance | `correctiveSeries[]` | series | 14 |
+| pairs | `provenanceRefs[]` | provenance | 34 |
+| pairs | `ledgerRefs[]` | ledger | 16 |
+| pairs | `a.series` / `b.series` | series | 24 / 13 |
+| pairs | `b.absenceFrom` | series \| ledger | **10** |
+| pairs | `b.competingAccountsFrom` | provenance | **1** |
+
+**The three previously-missing forms are confirmed** (bold above) and now validated.
+**No fourth was found:** every derived form maps into the corrected hand list, and the hand list
+contributes nothing derivation missed except the two below. `derived ⊇ hand` holds.
+
+### THE FINDING THE ASSERTION ASKED FOR — two hand-listed forms are NOT derivable
+
+`pairs.a.absenceFrom` and `pairs.a.competingAccountsFrom` are legal per `pairs.schema.json`'s `side`
+definition and have **zero instances**, so there is no value for derivation to recognise. **They were
+retained, not dropped.** Derivation is blind to a legal form nobody has used yet; "no instances" is a
+fact about today's data, not about the contract.
+
+The fragility is quantified: **`pairs.b.competingAccountsFrom` has exactly ONE instance corpus-wide.**
+Delete that pair and a legal reference form becomes invisible to derivation. So the old list survives
+as a FLOOR, `assertDerivedCoversFloor` reports anything derivation could not reach, and the two methods
+cover each other's blind spots — derivation catches forms nobody enumerated, the floor catches forms
+nobody has used.
+
+## 2. ORPHAN CHECK — determination (b), RENAMED
+
+**Determined empirically, not by argument.** The pre-removal state was reconstructed —
+`edu-spend-gdp-edu-depts` with `provenanceRefs: [P-10, P-52, P-65, P-66]` — and the rule run against
+it. It flagged `P-52`. **It is not blind to its motivating case.**
+
+But on that same record it also flagged **P-65**, which is a correct reference. The rule cannot isolate
+P-52. So it does not find unconnected references; it finds references the record's own prose never
+names by id, which is a **documentation** property and not a correctness one.
+
+**Renamed `ref-unexplained`.** Five samples of what it actually finds — all five are correct
+references, which is the point:
+
+| record | cites | provenance | reading |
+|---|---|---|---|
+| `PR-01` | P-22 | Evidence base shifts from survey to scheme MIS | correct; not named by id in prose |
+| `PR-21` | P-64 | Teacher vacancies: two irreconcilable aggregates | correct; not named by id in prose |
+| `school-enrolment-total-udise` | P-04 | Census 2021 not conducted | correct; not named by id in prose |
+| `ed-pmla-cases-registered` | P-52 | PMLA conviction rate: the denominator dispute | correct — **P-52's own series** |
+| `credit-gdp-peer` | P-09 | Peer-country GDP rebasings and WDI vintage drift | correct; not named by id in prose |
+
+The fourth row is the argument in one line: the check flags P-52 against the two series P-52 exists to
+cover.
+
+**The P-52 shape is described separately and is already gated.** It is a *domain-coverage* failure:
+`P-52.affectsDomains` is `[governance]`, the series are `education`. `ref-relevant` in `integrity.mjs`
+fires on it as an **error**. That is the rule that caught it and the rule that will catch the next one.
+
+Counts unchanged by the rename: **drop 0 (merged), unified 275.**
+
+## 3. BIDIRECTIONAL BACK-LINKS — TRIAGE ONLY, NOTHING ADDED
+
+**No reverse link was added.** Table at `docs/backlink-triage-2026-08-02.md`, 83 candidates with the
+evidence for each reading.
+
+**63 by design · 20 likely omission · 0 needs a human.**
+
+The by-design readings rest on stated evidence, not on assertion:
+
+- **`affectsDomains: [all]`** — the record reaches everything and enumerating is unbounded. P-04
+  (Census 2021 not conducted) is cited by 11 series and lists a handful; that is the value working.
+- **Empty `affectsSeries`** — the record scopes by domain, not by series.
+- **Cited-count ≫ listed-count** — a broad-scope dispute used as a lens. P-22 is cited by 30.
+
+The 20 likely omissions share a shape: the provenance lists *siblings* of the citing series and covers
+its domain, so nothing distinguishes the one left out — e.g. `soil-health-cards` → P-22, which lists
+six siblings including `ujjwala-connections` and covers `welfare`.
+
+**Mass-mirroring would have written 63 false links.** That is why the output is a table.
+
+## 4. `unmeasured-route` — SEVERITY DERIVED FROM `reasonKind`
+
+Changed in `tools/lib/integrity.mjs`. **Error** for `not-published` and `withheld`, **warning** for
+`not-collected` and `never-defined`. The condition is derivable, not a policy choice: both erroring
+values assert in their own written definitions that the data exists — `not-published` is "producible
+under compulsion", `withheld` "requires an identifiable refusal", so a holder and a request are already
+established. An absence on either with no `wouldFill` contradicts the value it declares.
+
+The other two stay warnings because for them no route may exist, and demanding one invites a
+placeholder — **worse than none, because it enters the verification queue and cannot be worked.**
+
+**Both halves pinned by fixture** (trigger C):
+
+| fixture | asserts | result |
+|---|---|---|
+| `tests/fixtures/unmeasured-route-producible` | fires on `not-published` and on `withheld` | 2 errors, 0 warnings |
+| `tests/fixtures/unmeasured-route-uncollectable` | stays quiet on `not-collected` and `never-defined` | 0 errors, 2 warnings |
+
+Wired into `selftest.mjs` — the error half in `ISOLATED` with a distinct `expect` per branch, the
+warning half in `MUST_STAY_CLEAN`.
+
+### CORPUS-WIDE COUNT — THE GATE IS RED
+
+**26 errors, and every gate error in the corpus is this rule.**
+
+| | errors | warnings |
+|---|---|---|
+| drop (education, phase 10) | **25** | 30 |
+| live (pre-existing) | **1** | 5 |
+| **total** | **26** | 35 |
+
+By `reasonKind`: `not-published` 24, `withheld` 2.
+By file: `data/ledger/education.json` 14 · `data/series/education.json` 11 ·
+`data/ledger/rights-institutions.json` 1.
+
+**The expectation that live would carry the same shape at scale did not hold.** Live contributes
+exactly **one** error — L-0081, the internet-shutdowns record — because live absences are
+overwhelmingly `not-collected`, which is a warning. The 25 are the education drop's, as predicted.
+Total warnings rose 42 → 86, but that is the whole corpus after a 91-record merge, not new noise.
+
+**`validate:selftest` now fails at its first assertion**, which is "/data validates clean". That is the
+red gate reported from inside the selftest, not a fixture defect: both fixture halves were verified
+directly with `--data`.
+
+## NOT DEPLOYED
+
+`npm run validate` exits non-zero, so `npm run build` cannot run and nothing was pushed to production.
+Production remains on `bfab8ad`, cycle 2026-08-02f, which is green. Cycle 2 clears the 26.

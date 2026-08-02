@@ -100,21 +100,40 @@ Runs the mechanical half: IDs unique and non-colliding · **every cross-referenc
 every scored record carries both cases · provenance `whatChanged` meets minimum length · no stray
 non-Latin script · per-record schema validity.
 
-**"Cross-references resolve" is not one check, it is eleven.** Writing it as one line is how the
-education run got six of nine forms and reported clean: it enumerated them from memory and missed
-`series.breaks[].provenanceRef` — 67 live instances in that drop — plus `pairs.{a,b}.absenceFrom`
-and `pairs.{a,b}.competingAccountsFrom`. None is visible to JSON Schema, which type-checks a string
-and cannot know what it points at. Two of the three carry a companion that must also be checked:
-`absenceIndex` must be in range for the target's `unmeasured[]`, and `competingAccountsFrom` requires
-the target to actually have `competingAccounts` — a resolving id with a bad index is a dangling
-reference that looks fine.
+**`unmeasured-route` severity is derived from `reasonKind`, not chosen.** Two of the four values
+entail a route in their own written definitions — `not-published` is "producible under compulsion",
+`withheld` "requires an identifiable refusal", so a holder and often a request are already
+established. An absence on either value with no `wouldFill` contradicts the value it declares, so it
+is an **error**. `not-collected` and `never-defined` stay **warnings**: for those no route may exist,
+and demanding one invites a placeholder. **A placeholder route is worse than none — it enters the
+verification queue and cannot be worked.** Both branches are pinned by fixture
+(`unmeasured-route-producible` fires, `unmeasured-route-uncollectable` stays clean), so flattening
+the severity back to a uniform warn fails loudly instead of quietly reopening the gap.
 
-So the tool does not only enumerate. **`auditRefFormCoverage` reads the schemas and fails if it finds
-a reference-shaped field the enumeration does not mention**, which is what makes it survive a schema
-change: a new form breaks the check on the next run instead of going silently unvalidated. Both
-behaviours have negative fixtures — an invented `relatedPolicyRef` in a schema fires the coverage
-audit; a `provenanceRef` pointed at `P-999` fires the resolver — and both go quiet on the restored
-corpus (Rule 2).
+**"Cross-references resolve" is not one check, and it is not a list.** Writing it as one line is how
+the education run got six of nine forms and reported clean. The enumeration is now gone.
+
+**Forms are DERIVED, not listed.** `deriveRefForms` reads each layer's id *contract* from its own
+schema — `^L-\d{4}$`, `^P-\d{2}$`, `^PR-\d{2}$` — then walks every string in every record and asks
+whether that string IS an id. Any field path whose values are ids is a reference form. It cannot be
+short by a field nobody remembered, because it never names a field. Twelve forms, 12/12 matching the
+corrected hand list, no thirteenth.
+
+**The schemas do not mark reference fields as references, and that is why the obvious derivation
+fails.** Only `id` carries a pattern; `seriesRefs`, `provenanceRefs`, `affectsSeries` and the rest are
+bare strings with no pattern and mostly no description. Nothing in the contract says "this holds an
+id" — so derivation has to run off the id contracts and observed values instead.
+
+**Derivation has one blind spot, so the old list survives as a FLOOR.** A form that is legal per
+schema with *zero* instances presents no value to recognise. Two are in that state:
+`pairs.a.absenceFrom` and `pairs.a.competingAccountsFrom`. `pairs.b.competingAccountsFrom` has
+exactly one instance corpus-wide and is one deletion from joining them. `assertDerivedCoversFloor`
+reports any floor entry derivation missed and never drops it — "no instances" is a fact about today's
+data, not about the contract.
+
+Two forms carry a companion the id alone does not validate: `absenceIndex` must be in range for the
+target's `unmeasured[]`, and `competingAccountsFrom` requires the target to actually carry
+`competingAccounts`. Those are contract facts, so they stay declared rather than derived.
 
 **Two report-only passes run alongside, over the drop and the live corpus separately.** Neither
 gates and neither auto-fixes; both name candidates for a judgement.
@@ -124,13 +143,19 @@ gates and neither auto-fixes; both name candidates for a judgement.
   Only series ↔ provenance is genuinely two-way — nothing on a series points back at a ledger record
   and provenance has no `affectsLedger` — so the other forms are out of scope by construction, not by
   omission. **Asymmetry is often correct**: P-04 scopes to `all` and cannot list every series it
-  touches. Hence report, never mirror.
-- **Orphan `provenanceRefs`.** The P-52 shape: a reference carried by three series, explained
-  nowhere, pointing at an unrelated dispute. **This check has low specificity** — house style
-  discusses a dispute in words rather than by id, so it flags correct references at roughly the same
-  rate as wrong ones, and P-52 appears in its own output against the two series it legitimately
-  covers. Read the count as a prompt, not a defect list. What actually caught P-52 was the
-  `ref-relevant` domain rule in `integrity.mjs`.
+  touches. Hence report, never mirror. **Triage before fixing.** The 2026-08-02 sweep found 83
+  candidates and classified them 63 by-design / 20 likely-omission on evidence — scope breadth,
+  `affectsDomains: [all]`, and cited-count against listed-count. Mass-mirroring would have written 63
+  false links. Table: `docs/backlink-triage-2026-08-02.md`.
+- **`ref-unexplained`** (renamed from "orphan references", and the rename is the finding). It was
+  built for the P-52 shape — a reference with no substantive connection to the record. Tested against
+  the reconstructed pre-removal state it **does** fire on P-52; the earlier claim that it missed its
+  own motivating case was wrong, inferred from output taken after P-52 had been removed. What it
+  cannot do is separate P-52 from P-65 *on the same record*, and P-65 is correct. So it does not find
+  unconnected references — it finds references the record's prose never names by id, which is a
+  documentation property, not a correctness one. **The P-52 shape is caught by `ref-relevant` in
+  `integrity.mjs`**, on domain coverage, as an error. Do not leave a check in the tree that is named
+  for a case it cannot isolate.
 
 **Arithmetic in every summary must match the authored points, and no tool does this.** It is read by
 hand, against the points and against `parts/`. It caught a wrong ratio in the phase-9 debt patch, and
