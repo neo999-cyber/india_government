@@ -1,607 +1,608 @@
 [
- {
-  "id": "L-0074",
-  "title": "Expansion of PMLA enforcement by the Enforcement Directorate",
-  "date": "2014",
-  "dateEnd": "2026",
-  "term": "T1",
-  "domains": [
-   "governance"
-  ],
-  "type": "episode",
-  "summary": "ED activity under the Prevention of Money Laundering Act rose steeply after 2014, with 5,892 cases initiated between January 2015 and June 2025. Over the same period 15 persons were convicted across eight orders, and 49 closure reports were filed.",
-  "caveat": "CONVICTION RATE CARRIES ITS DENOMINATOR",
-  "assessment": "contested",
-  "caseFor": "The ED cannot register a money-laundering case on its own motion: a scheduled predicate offence recorded by another agency must exist first, so the caseload reflects prosecutions initiated elsewhere. Every attachment, search and arrest is subject to adjudication and to judicial review, and the Supreme Court upheld the core architecture of the Act in 2022. On the measure the Directorate regards as meaningful - trials that have concluded - the conviction rate is between 93 and 96 per cent, which is far above the rate for ordinary criminal prosecutions in India.",
-  "caseAgainst": "Fifteen convictions against 5,892 cases initiated over a decade is a rate of roughly a quarter of one per cent, and the completed-trial denominator excludes the overwhelming majority of cases precisely because they have not moved. Attachment of property, arrest, and the near-impossible bail bar in Section 45 operate from the moment a case is registered, so the consequence is delivered years before any court tests the allegation. The Supreme Court itself criticised the Directorate's conviction record in August 2024.",
-  "unmeasured": [
-   {
-    "what": "Party affiliation and state of politicians facing ED cases",
-    "why": "The Ministry of Finance told Parliament that state-wise and party-affiliation data on politicians under investigation is not maintained. The government has separately cited a specific figure - that roughly 3 per cent of ED cases involve politicians - which implies some form of political-status tagging exists. Independent reconstructions from public records have produced party-wise counts, so the data is derivable even if not maintained in the form asked about.",
-    "reasonKind": "not-collected",
-    "reasonDisputed": true,
-    "disputeKind": "evidentiary"
-   }
-  ],
-  "seriesRefs": [
-   "ed-pmla-cases-registered",
-   "ed-pmla-convictions"
-  ],
-  "provenanceRefs": [
-   "P-52",
-   "P-55"
-  ],
-  "sources": [
-   {
-    "name": "Minister of State for Finance, reply in Rajya Sabha on PMLA cases and convictions to 30 June 2025",
-    "url": "https://sansad.in/",
-    "tier": "T1"
-   },
-   {
-    "name": "Enforcement Directorate conviction-rate statement in Parliament, August 2024",
-    "url": "https://sansad.in/",
-    "tier": "T1"
-   }
-  ],
-  "confidence": "high",
-  "asOf": "2026-08-01"
- },
- {
-  "id": "L-0075",
-  "title": "Vijay Madanlal Choudhary and the PMLA procedural architecture",
-  "date": "2022-07",
-  "term": "T2",
-  "domains": [
-   "governance"
-  ],
-  "type": "event",
-  "summary": "A three-judge bench upheld the PMLA provisions on search, seizure, attachment, arrest, the reverse burden of proof in Section 24, the twin bail conditions in Section 45, and the admissibility of statements to ED officers under Section 50, and held that the ECIR need not be supplied to the accused. Review petitions were admitted in August 2022 on two of those holdings and remain pending.",
-  "assessment": "contested",
-  "caseFor": "The Court held that money laundering is a distinct offence with transnational reach, that the ECIR is an internal document rather than an FIR and so attracts different disclosure obligations, and that Parliament may calibrate procedure to the gravity of an offence. The twin bail conditions replicate a legislative approach the Court has upheld in other special statutes. The judgment was a considered constitutional ruling on a fully argued challenge, not an administrative accommodation.",
-  "caseAgainst": "The combination of a reverse burden, admissible statements recorded in custody by officers who are not police, and a bail bar requiring the court to be satisfied of innocence at the threshold, inverts ordinary criminal-procedure protections in a single statute. The Court admitted review petitions within a month on exactly two points - non-supply of the ECIR and the reversed presumption of innocence - which is an unusual acknowledgment that the reasoning may not hold. Four years on, the review has not been heard.",
-  "seriesRefs": [],
-  "provenanceRefs": [
-   "P-52"
-  ],
-  "sources": [
-   {
-    "name": "Vijay Madanlal Choudhary v. Union of India, Supreme Court of India, July 2022",
-    "url": "https://main.sci.gov.in/",
-    "tier": "T1"
-   }
-  ],
-  "confidence": "high",
-  "asOf": "2026-08-01"
- },
- {
-  "id": "L-0076",
-  "title": "Withdrawal of general consent for the CBI by states",
-  "date": "2018",
-  "dateEnd": "2026",
-  "term": "T1",
-  "domains": [
-   "governance"
-  ],
-  "type": "institutional",
-  "summary": "A growing group of states withdrew general consent under Section 6 of the Delhi Special Police Establishment Act, requiring the CBI to seek case-specific permission. A CBI affidavit noted by the Supreme Court in November 2021 recorded 150 specific-consent requests pending across eight states for 2018 to mid-2021.",
-  "assessment": "contested",
-  "caseFor": "General consent is a statutory choice that states are entitled to make and withdraw, and the CBI retains jurisdiction over central government employees, over cases referred by courts, and over cases where consent is granted individually. The federal design of the DSPE Act contemplates exactly this negotiation. The agency's investigative record in the cases it does take up is not affected by the consent question.",
-  "caseAgainst": "The Supreme Court described 150 pending consent requests as not a desirable position, which is a functional obstruction of investigations irrespective of who is at fault. The states withdrawing consent are overwhelmingly those governed by opposition parties, and they cite a pattern of politically timed federal investigation as their reason - so the federal-comity argument and the agency-independence argument are two halves of the same dispute rather than separate ones. The phrase caged parrot originated with the Court itself in 2013 and was reinvoked by the Court in 2024.",
-  "seriesRefs": [],
-  "provenanceRefs": [],
-  "sources": [
-   {
-    "name": "CBI affidavit noted by the Supreme Court, 8 November 2021",
-    "url": "https://main.sci.gov.in/",
-    "tier": "T1"
-   },
-   {
-    "name": "Delhi Special Police Establishment Act 1946, Section 6",
-    "url": "https://www.indiacode.nic.in/",
-    "tier": "T1"
-   }
-  ],
-  "confidence": "medium",
-  "asOf": "2026-08-01"
- },
- {
-  "id": "L-0077",
-  "title": "Electoral bonds: introduction to being struck down",
-  "date": "2017",
-  "dateEnd": "2024",
-  "term": "T1",
-  "domains": [
-   "governance"
-  ],
-  "type": "reform",
-  "summary": "Introduced through the Finance Act 2017 as a Money Bill, notified January 2018, with consequential amendments to the RBI Act, the Representation of the People Act, the Income Tax Act, the Companies Act and FCRA. The 7.5 per cent of net profit ceiling on corporate donations and the requirement to disclose party-wise contributions were both removed. A five-judge bench struck the scheme down unanimously in February 2024.",
-  "assessment": "failed",
-  "caseFor": "Before the scheme, the bulk of political funding in India was cash of unverifiable origin. Bonds moved donations into the banking system with KYC at the point of purchase, giving the state a record where previously there was none. Donor anonymity was defended as protection against retribution by parties that did not receive the donation - a concern with a real basis in a system where governments change and contracts follow. The scheme was enacted by Parliament and operated for six years under judicial scrutiny before being struck down.",
-  "caseAgainst": "The RBI objected twice in September 2017 that a bearer instrument issued by a non-sovereign entity would erode faith in banknotes and create money-laundering and shell-company risk, and the Election Commission called the scheme a retrograde step for transparency and asked for its withdrawal. Both objections were on record before notification. Anonymity was asymmetric: the government could obtain SBI records while voters could not. Removing the profit ceiling permitted unlimited donations including by loss-making and newly incorporated companies. The Money Bill route bypassed the Rajya Sabha, where the government lacked a majority. Post-judgment disclosure showed the party in office at the Centre received just over half of all bond value redeemed, and reporting identified a substantial overlap between large purchasers and firms facing agency action.",
-  "assessmentNote": "Struck down by a five-judge bench of the Supreme Court in February 2024, not withdrawn by the enacting authority. Under the definition now written into the schema, `reversed` is reserved for a measure whose enacting authority withdrew or repealed it, so judicial invalidation scores `failed` - the closest available value, the measure having neither achieved the objective stated at announcement nor remained law.",
-  "differentFacts": true,
-  "differentFactsNote": "The government's strongest fact is the displacement of cash. The critics' strongest facts are the contemporaneous RBI and ECI objections and the post-disclosure distribution. Neither is a rebuttal of the other; both can be true simultaneously.",
-  "seriesRefs": [],
-  "provenanceRefs": [],
-  "sources": [
-   {
-    "name": "Association for Democratic Reforms v. Union of India, Supreme Court of India, 15 February 2024",
-    "url": "https://main.sci.gov.in/",
-    "tier": "T1"
-   },
-   {
-    "name": "Reserve Bank of India objections, September 2017",
-    "url": "https://rbi.org.in/",
-    "tier": "T2"
-   },
-   {
-    "name": "Election Commission of India submission on the scheme",
-    "url": "https://eci.gov.in/",
-    "tier": "T2"
-   }
-  ],
-  "confidence": "high",
-  "asOf": "2026-08-01",
-  "revisitTrigger": "Judicial invalidation currently scores `failed` for want of a distinct value. Re-open adding `struck-down` when a third judicially invalidated record enters the ledger - at two members the distinction may be a rights-and-institutions artefact rather than a general category. Check whether they cluster by domain when re-testing."
- },
- {
-  "id": "L-0078",
-  "title": "Press freedom indices and the government's formal rejection",
-  "date": "2021",
-  "dateEnd": "2024",
-  "term": "T2",
-  "domains": [
-   "governance"
-  ],
-  "type": "episode",
-  "summary": "India's RSF ranking moved from 140 in 2013 to 161 in 2023 and 159 in 2024, across a methodology change in 2022. Freedom House reclassified India from Free to Partly Free in March 2021, and V-Dem classified India an electoral autocracy in the same month. The government formally rejected all three.",
-  "caveat": "T5 CONTESTED INDEX",
-  "assessment": "contested",
-  "caseFor": "The government's objection has specific content rather than being a blanket dismissal: it cites small sample sizes, weighting choices that give little room to the fundamentals of electoral democracy, and a methodology it describes as non-transparent. The 2022 RSF methodology change is real and does break the series, which supports the argument that year-on-year movement is not a clean signal. India retains a very large, commercially independent and frequently adversarial press, and no journalist has been convicted for the act of journalism as such.",
-  "caseAgainst": "Three organisations with different methodologies moved in the same direction within the same window, which is harder to attribute to any single methodological flaw. The government's objections are addressed to scoring design rather than to the underlying incidents the indices cite, none of which it disputes. The Index Monitoring Cell set up to examine the ranking has not produced a competing published measure, so the rejection stands without an alternative.",
-  "unmeasured": [
-   {
-    "what": "Attacks on journalists",
-    "why": "The Minister of Information and Broadcasting confirmed in Parliament that the NCRB does not maintain separate data on attacks on journalists. Recorded as a straightforward absence: no evidence reviewed contradicts the stated position. Its effect is that the government's rejection of external indices is not accompanied by an internal series that could be compared against them.",
-    "reasonKind": "not-collected"
-   }
-  ],
-  "seriesRefs": [
-   "rsf-press-freedom-rank"
-  ],
-  "provenanceRefs": [
-   "P-50"
-  ],
-  "sources": [
-   {
-    "name": "Minister of Information and Broadcasting, reply in Rajya Sabha, 21 July 2022",
-    "url": "https://sansad.in/",
-    "tier": "T1"
-   },
-   {
-    "name": "Freedom in the World 2021, Freedom House, March 2021",
-    "url": "https://freedomhouse.org/",
-    "tier": "T5"
-   },
-   {
-    "name": "V-Dem Democracy Report 2021",
-    "url": "https://www.v-dem.net/",
-    "tier": "T5"
-   }
-  ],
-  "confidence": "high",
-  "asOf": "2026-08-01"
- },
- {
-  "id": "L-0079",
-  "title": "Agency action against news organisations",
-  "date": "2021",
-  "dateEnd": "2024",
-  "term": "T2",
-  "domains": [
-   "governance"
-  ],
-  "type": "episode",
-  "summary": "Income tax surveys at BBC India offices in February 2023, income tax raids on Dainik Bhaskar and Bharat Samachar in July 2021, and the arrest of NewsClick's founder and HR head under the UAPA in October 2023. The Supreme Court declared the NewsClick arrest and remand invalid in May 2024 for failure to furnish written grounds of arrest.",
-  "assessment": "contested",
-  "caseFor": "Tax and foreign-funding law applies to media companies as it does to any other company, and exempting them would create a protected class. The CBDT stated specific allegations in the BBC matter concerning transfer pricing and diversion of profits, and in the Dainik Bhaskar matter alleged evasion of a defined magnitude. The NewsClick investigation followed published reporting on foreign funding, not on editorial content. In each instance the outlets continued publishing.",
-  "caseAgainst": "The timing in each case is close enough to critical coverage to require explanation: the BBC survey came weeks after a documentary on the Prime Minister, the Dainik Bhaskar raids followed its reporting on the second COVID wave. The Supreme Court found the NewsClick arrest unlawful, which establishes at least one instance where the process itself failed the legal standard. The Committee to Protect Journalists recorded seven journalists jailed in India on its 1 December census in each of 2020 through 2023, most held under the UAPA.",
-  "seriesRefs": [],
-  "provenanceRefs": [],
-  "sources": [
-   {
-    "name": "Supreme Court of India, NewsClick arrest and remand, 15 May 2024",
-    "url": "https://main.sci.gov.in/",
-    "tier": "T1"
-   },
-   {
-    "name": "CBDT statements on the BBC survey, February 2023",
-    "url": "https://www.incometaxindia.gov.in/",
-    "tier": "T1"
-   },
-   {
-    "name": "Committee to Protect Journalists prison census, 2020-2023",
-    "url": "https://cpj.org/",
-    "tier": "T3"
-   }
-  ],
-  "confidence": "medium",
-  "asOf": "2026-08-01"
- },
- {
-  "id": "L-0080",
-  "title": "IT Rules fact-check unit struck down",
-  "date": "2023",
-  "dateEnd": "2024",
-  "term": "T2",
-  "domains": [
-   "governance"
-  ],
-  "type": "reform",
-  "summary": "An April 2023 amendment to the Information Technology Rules 2021 empowered a government fact-check unit to identify content about central government business as fake, false or misleading, with intermediary safe harbour at stake. The Bombay High Court struck the amendment down in September 2024 as violating Articles 14, 19(1)(a) and 19(1)(g), after a split verdict resolved by a tie-breaker judge.",
-  "assessment": "failed",
-  "caseFor": "Coordinated falsehood about government programmes has real consequences, and the state holds the authoritative record on its own business, so identifying misstatement about it is within competence. The unit's designation did not itself criminalise speech; it operated on intermediary safe harbour. The measure was made by rule under an enacted statute and was tested in court, where the government defended it through a full hearing.",
-  "caseAgainst": "The government would have been sole judge of the truth of statements about itself, with no independent appeal, which the Court found could not survive Article 19(1)(a). The categories fake, false and misleading were undefined, and misleading in particular covers accurate statements framed unfavourably. The practical effect on intermediaries was to make removal the safe default. A first-instance split verdict and then a strike-down is not a marginal defeat.",
-  "assessmentNote": "Struck down by the Bombay High Court in September 2024, not withdrawn by the enacting authority. Under the definition now written into the schema, `reversed` is reserved for a measure whose enacting authority withdrew or repealed it, so judicial invalidation scores `failed` as the closest available value.",
-  "seriesRefs": [],
-  "provenanceRefs": [],
-  "sources": [
-   {
-    "name": "Kunal Kamra v. Union of India, Bombay High Court, 20 September 2024",
-    "url": "https://bombayhighcourt.nic.in/",
-    "tier": "T1"
-   },
-   {
-    "name": "Information Technology Rules 2021, Rule 3(1)(b)(v) as amended April 2023",
-    "url": "https://www.meity.gov.in/",
-    "tier": "T1"
-   }
-  ],
-  "confidence": "high",
-  "asOf": "2026-08-01",
-  "revisitTrigger": "Judicial invalidation currently scores `failed` for want of a distinct value. Re-open adding `struck-down` when a third judicially invalidated record enters the ledger - at two members the distinction may be a rights-and-institutions artefact rather than a general category. Check whether they cluster by domain when re-testing."
- },
- {
-  "id": "L-0081",
-  "title": "Internet shutdowns and Anuradha Bhasin compliance",
-  "date": "2019",
-  "dateEnd": "2026",
-  "term": "T2",
-  "domains": [
-   "governance"
-  ],
-  "type": "episode",
-  "summary": "The Supreme Court held in January 2020 that indefinite suspension is illegal, that orders must satisfy proportionality, be periodically reviewed, and be published. India has recorded more shutdowns than any other country across the period. The Jammu and Kashmir suspension from August 2019 was the longest in India's history; Manipur's 2023 suspension ran roughly seven months across 44 orders.",
-  "assessment": "partly",
-  "caseFor": "The judgment itself is a substantive constitutional gain: proportionality and periodic review are now binding requirements where previously there was executive discretion with no articulated standard, and the Court reiterated the publication requirement in January 2024. Recorded shutdown counts have fallen from their 2020 peak. Suspensions in specific instances have been defended as short-term measures against rumour-driven mob violence, a risk with a documented history in India.",
-  "caseAgainst": "The publication requirement is the operative one and it is largely unmet: for the great majority of shutdowns since 2020 the underlying orders were never published, which makes proportionality review impossible by design rather than by oversight. A Court reiterating a direction four years later is evidence the direction was not followed. Duration is the sharper measure than count, and on duration the record includes the longest shutdown imposed anywhere in 2023.",
-  "unmeasured": [
-   {
-    "what": "Published shutdown orders and review committee decisions",
-    "why": "Orders are treated as internal security instruments; no general publication mechanism has been established. The Supreme Court directed publication in Anuradha Bhasin in January 2020 and reiterated it in January 2024. Non-publication is therefore in tension with a binding direction, not merely an administrative choice.",
-    "reasonKind": "not-published",
-    "reasonDisputed": true,
-    "disputeKind": "normative"
-   },
-   {
-    "what": "Official count of internet shutdowns",
-    "why": "No central register of shutdown orders is published.",
-    "reasonKind": "not-collected"
-   }
-  ],
-  "seriesRefs": [
-   "internet-shutdowns-count"
-  ],
-  "provenanceRefs": [
-   "P-54"
-  ],
-  "sources": [
-   {
-    "name": "Anuradha Bhasin v. Union of India, Supreme Court of India, 10 January 2020",
-    "url": "https://main.sci.gov.in/",
-    "tier": "T1"
-   },
-   {
-    "name": "SFLC.in Internet Shutdown Tracker",
-    "url": "https://internetshutdowns.in/",
-    "tier": "T3"
-   }
-  ],
-  "confidence": "high",
-  "asOf": "2026-08-01"
- },
- {
-  "id": "L-0082",
-  "title": "Sedition kept in abeyance, then replaced",
-  "date": "2022",
-  "dateEnd": "2024",
-  "term": "T2",
-  "domains": [
-   "governance"
-  ],
-  "type": "reform",
-  "summary": "The Supreme Court kept IPC Section 124A in abeyance in May 2022, freezing pending trials and fresh registrations; recorded cases fell from 76 in 2021 to 20 in 2022. The Bharatiya Nyaya Sanhita 2023 removed 124A and introduced Section 152, covering acts endangering the sovereignty, unity and integrity of India.",
-  "assessment": "contested",
-  "caseFor": "A colonial-era offence that had been used against 548 people between 2015 and 2020 with 12 convictions is off the statute book, and the government did what critics had demanded for decades. Section 152 is framed around sovereignty and territorial integrity rather than around disaffection towards the government, which is the narrowing critics had specifically asked for. Registrations fell sharply and immediately after the abeyance order.",
-  "caseAgainst": "Section 152 covers a wider range of conduct than 124A on its face, including by subversive activities and encouraging separatist feelings, and carries a higher minimum sentence. More importantly, 124A had accumulated six decades of judicial narrowing since Kedar Nath Singh, all of which attaches to the repealed text and none of which automatically attaches to the new one, so the effective scope may be broader even if the words are narrower. Calling this a repeal is a description of the statute book rather than of the law in operation.",
-  "seriesRefs": [
-   "sedition-cases-registered"
-  ],
-  "provenanceRefs": [
-   "P-51"
-  ],
-  "sources": [
-   {
-    "name": "S.G. Vombatkere v. Union of India, Supreme Court of India, May 2022",
-    "url": "https://main.sci.gov.in/",
-    "tier": "T1"
-   },
-   {
-    "name": "Bharatiya Nyaya Sanhita 2023, Section 152",
-    "url": "https://www.indiacode.nic.in/",
-    "tier": "T1"
-   },
-   {
-    "name": "NCRB Crime in India",
-    "url": "https://www.ncrb.gov.in/crime-in-india.html",
-    "tier": "T1"
-   }
-  ],
-  "confidence": "high",
-  "asOf": "2026-08-01",
-  "revisitTrigger": "Effective scope of BNS 152 in operation becomes a buildable common measure once a prosecution record accumulates. Re-test against (c) then."
- },
- {
-  "id": "L-0083",
-  "title": "UAPA use, bail and conviction rates",
-  "date": "2014",
-  "dateEnd": "2026",
-  "term": "T1",
-  "domains": [
-   "governance"
-  ],
-  "type": "episode",
-  "summary": "NCRB's published UAPA conviction rate, tabled in Parliament in December 2024, runs between 18.2 and 39.7 per cent across 2018 to 2022 on a completed-trial basis. Over the same years 8,947 persons were arrested and 252 convicted. Section 43D(5) bars bail where the accusation is prima facie true on the case diary, and the government has confirmed that no provision exists for support or compensation to those later acquitted.",
-  "caveat": "CONVICTION RATE CARRIES ITS DENOMINATOR",
-  "assessment": "contested",
-  "caseFor": "On NCRB's own basis the conviction rate is not the near-zero figure usually quoted: it ran 27.2 per cent in 2018 and 39.7 per cent in 2021, which is in line with or above the rate for ordinary criminal prosecutions in India. For the subset of cases where the FIR was registered by the Centre, the government reports 94.17 per cent. Terrorism and organised insurgency cases require investigation across jurisdictions and long evidentiary chains, so a gap between arrest and verdict is expected rather than anomalous. The statute has been repeatedly tested and upheld, and bail is available where a court is not satisfied the accusation is prima facie true.",
-  "caseAgainst": "The completed-trial basis measures only the small fraction of cases that reach a verdict. Against arrests the ratio is 2.8 per cent over 2018 to 2022, and arrest with the Section 43D(5) bail bar is the operative consequence whether or not a trial ever concludes. The government's own answer confirms there is no provision for support or compensation to anyone acquitted after detention, so the cost of a wrongly brought case falls entirely on the accused. Arrests rose over the period even as convictions did not: 1,421 in 2018 against 2,636 in 2022, with 35 and 41 convictions respectively. The Supreme Court granted bail in 2025 to a man held close to six years, and the Bhima Koregaon proceedings have run since 2018 without trial concluding.",
-  "unmeasured": [
-   {
-    "what": "UAPA cases booked against journalists",
-    "why": "The Ministry of Home Affairs told Parliament in December 2024 that data on cases booked under the UAPA against journalists is not maintained by the NCRB. Recorded as a straightforward absence. Its effect is that the question of whether the Act is applied to journalists cannot be answered from official data in either direction, which forecloses the government's defence as much as the critics' charge. Pairs with the NCRB absence on attacks on journalists recorded at L-0078.",
-    "reasonKind": "not-collected"
-   }
-  ],
-  "seriesRefs": [
-   "uapa-cases-registered",
-   "uapa-persons-arrested",
-   "uapa-persons-convicted",
-   "uapa-conviction-rate-ncrb"
-  ],
-  "provenanceRefs": [
-   "P-57",
-   "P-52"
-  ],
-  "sources": [
-   {
-    "name": "Rajya Sabha Unstarred Question 1045, answered 4 December 2024, with state-wise annexure",
-    "url": "https://www.mha.gov.in/MHA1/Par2017/pdfs/par2024-pdfs/RS04122024/1045.pdf",
-    "tier": "T1"
-   },
-   {
-    "name": "Ministry of Home Affairs reply in Rajya Sabha, August 2022, on Centre-registered UAPA cases",
-    "url": "https://sansad.in/",
-    "tier": "T1"
-   }
-  ],
-  "confidence": "high",
-  "asOf": "2026-08-01"
- },
- {
-  "id": "L-0084",
-  "title": "NJAC struck down and the Memorandum of Procedure deadlock",
-  "date": "2014",
-  "dateEnd": "2026",
-  "term": "T1",
-  "domains": [
-   "governance"
-  ],
-  "type": "institutional",
-  "summary": "The 99th Constitutional Amendment and the NJAC Act were struck down four to one in October 2015. A supplementary order directed the government to finalise a revised Memorandum of Procedure for collegium appointments. It has not been finalised. High Court vacancies stood at about 330 against a sanctioned strength of 1,122 as on 1 July 2026.",
-  "assessment": "contested",
-  "caseFor": "The NJAC was passed by both Houses near-unanimously and ratified by state legislatures, and its striking down removed the only serious attempt in decades to open judicial appointments beyond the judiciary itself. The collegium has no published criteria, no record of deliberations and no appeal, which is an accountability gap the Court has not closed on its own. Delay in acting on recommendations is defended as due diligence, including on inputs the executive alone holds.",
-  "caseAgainst": "The Court found judicial primacy in appointments to be part of the basic structure, and a near-unanimous parliamentary majority does not settle a basic-structure question - that is what the doctrine is for. Selective delay on reiterated names functions as a veto the Constitution does not provide, since reiteration is meant to be binding. Eleven years without a finalised Memorandum of Procedure is not a negotiation, and one in three High Court seats vacant is the measurable consequence.",
-  "unmeasured": [
-   {
-    "what": "A finalised Memorandum of Procedure for judicial appointments",
-    "why": "Government and judiciary have not reached agreement, reportedly over a national-security exclusion the executive seeks and the judiciary resists. Directed by the Supreme Court in December 2015. The absence of an agreed procedure is the operative fact: appointments proceed without a settled rulebook on either side's terms. Retained as never-defined on 2026-08-01 where seven other entries were reclassified: the absent thing here IS the definition, since no agreed Memorandum of Procedure exists, rather than a defined quantity nobody has measured. It is now the only member of its kind.",
-    "reasonKind": "never-defined"
-   }
-  ],
-  "seriesRefs": [
-   "high-court-judge-vacancies"
-  ],
-  "provenanceRefs": [],
-  "sources": [
-   {
-    "name": "Supreme Court Advocates-on-Record Association v. Union of India, 16 October 2015",
-    "url": "https://main.sci.gov.in/",
-    "tier": "T1"
-   },
-   {
-    "name": "Minister of Law and Justice, reply in Rajya Sabha, 23 July 2026",
-    "url": "https://sansad.in/",
-    "tier": "T1"
-   }
-  ],
-  "confidence": "high",
-  "asOf": "2026-08-01"
- },
- {
-  "id": "L-0085",
-  "title": "RTI amended and the information commissions",
-  "date": "2019",
-  "dateEnd": "2026",
-  "term": "T2",
-  "domains": [
-   "governance"
-  ],
-  "type": "reform",
-  "summary": "The RTI (Amendment) Act 2019 moved tenure, salary and service conditions of Information Commissioners from statute to central government rules; tenure was set at three years. Commissions have run with sustained vacancies, with several non-functional for periods during 2024. The Supreme Court criticised appointment delays in January 2025.",
-  "assessment": "contested",
-  "caseFor": "The amendment changed service conditions, not powers: the commissions' jurisdiction, their penalty provisions and the removal protections were untouched, and pegging commissioner salaries to a constitutional body was an anomaly Parliament was entitled to correct. RTI remains in heavy use, with applications filed in the millions annually, and the Act's core disclosure obligations are unchanged.",
-  "caseAgainst": "Commissioners adjudicate appeals against the government; making their tenure and pay a matter of executive rule, and shortening tenure, places the adjudicator's terms in the hands of the largest litigant before it. Vacancy-driven pendency achieves functional weakening without amending any substantive provision - a right with a multi-year queue for appeal is a different right. The Supreme Court's January 2025 criticism of appointment delays is an external finding, not an advocacy claim.",
-  "seriesRefs": [],
-  "provenanceRefs": [
-   "P-56"
-  ],
-  "sources": [
-   {
-    "name": "Right to Information (Amendment) Act 2019 and RTI Rules 2019",
-    "url": "https://www.indiacode.nic.in/",
-    "tier": "T1"
-   },
-   {
-    "name": "Report Card of Information Commissions in India, Satark Nagrik Sangathan",
-    "url": "https://snsindia.org/",
-    "tier": "T3"
-   }
-  ],
-  "confidence": "high",
-  "asOf": "2026-08-01"
- },
- {
-  "id": "L-0086",
-  "title": "DPDP Act amendment to RTI Section 8(1)(j)",
-  "date": "2023",
-  "dateEnd": "2026",
-  "term": "T2",
-  "domains": [
-   "governance"
-  ],
-  "type": "reform",
-  "summary": "Section 44(3) of the Digital Personal Data Protection Act 2023 amended Section 8(1)(j) of the RTI Act, removing the public-interest override that had allowed disclosure of personal information where a larger public interest justified it. The provision is before a Constitution Bench.",
-  "assessment": "too-early",
-  "caseFor": "Data protection statutes worldwide require reconciliation with access-to-information regimes, and unqualified personal-information disclosure sits uneasily with a right to informational privacy the Supreme Court itself recognised in 2017. The amendment does not remove information about the discharge of public functions from the RTI Act's reach; it addresses the personal-information exemption specifically.",
-  "caseAgainst": "The public-interest override is the provision that made disclosure of asset declarations, beneficiary lists and appointment records possible, and removing it converts a balancing test into a bar. More than 130 opposition MPs and a large body of civil-society organisations objected, and the change was made inside a data-protection statute rather than by amending the RTI Act on its own terms.",
-  "assessmentNote": "Scored too-early because the operative effect depends on the pending constitutional challenge and on how commissions apply the amended clause. Revisit on judgment.",
-  "seriesRefs": [],
-  "provenanceRefs": [
-   "P-56"
-  ],
-  "sources": [
-   {
-    "name": "Digital Personal Data Protection Act 2023, Section 44(3)",
-    "url": "https://www.indiacode.nic.in/",
-    "tier": "T1"
-   }
-  ],
-  "confidence": "medium",
-  "asOf": "2026-08-01"
- },
- {
-  "id": "L-0087",
-  "title": "Committee scrutiny and parliamentary process",
-  "date": "2014",
-  "dateEnd": "2024",
-  "term": "T1",
-  "domains": [
-   "governance"
-  ],
-  "type": "institutional",
-  "summary": "Bills referred to Parliamentary Standing Committees fell from 71 per cent in the 15th Lok Sabha to 25 per cent in the 16th and about 16 per cent in the 17th. The 17th Lok Sabha held 274 sittings and never elected a Deputy Speaker. In December 2023, 146 opposition MPs were suspended across both Houses.",
-  "assessment": "contested",
-  "caseFor": "Committee referral is discretionary under the rules, not mandatory, and the executive is entitled to move urgent legislation. Sitting days have declined across parties and decades rather than in one term. Repeated disruption reduces usable hours, and suspensions followed a security breach in the chamber. Legislative output over the period was high, including major recodifications long identified as overdue.",
-  "caseAgainst": "The laws passed without committee examination include the criminal-law recodification, the data protection statute and the reorganisation of a state - the category of legislation for which pre-legislative scrutiny exists. Fifty-eight per cent of bills passed within a fortnight of introduction. The Deputy Speaker post sat vacant for a full term against Article 93's requirement that it be filled as soon as may be, and suspending nineteen per cent of each House is the largest such action on record. The Money Bill question referred to a larger bench in Rojer Mathew in 2019 remains undecided, leaving the route unresolved.",
-  "seriesRefs": [
-   "bills-referred-committee-pct",
-   "lok-sabha-sitting-days"
-  ],
-  "provenanceRefs": [],
-  "sources": [
-   {
-    "name": "PRS Legislative Research, Vital Stats on Lok Sabha terms",
-    "url": "https://prsindia.org/",
-    "tier": "T3"
-   },
-   {
-    "name": "Rojer Mathew v. South Indian Bank, Supreme Court of India, 2019",
-    "url": "https://main.sci.gov.in/",
-    "tier": "T1"
-   }
-  ],
-  "confidence": "high",
-  "asOf": "2026-08-01"
- },
- {
-  "id": "L-0088",
-  "title": "Election Commission appointments after Anoop Baranwal",
-  "date": "2023",
-  "dateEnd": "2026",
-  "term": "T2",
-  "domains": [
-   "governance"
-  ],
-  "type": "institutional",
-  "summary": "In March 2023 the Supreme Court directed that Election Commissioners be appointed by a panel of the Prime Minister, the Leader of the Opposition and the Chief Justice of India, until Parliament legislated. The Act passed later that year replaced the Chief Justice with a Union Cabinet Minister. The Court declined to stay the Act in March 2024 while calling the manner of expedited appointments unnecessary and avoidable. Challenges remain pending.",
-  "assessment": "contested",
-  "caseFor": "The Court's own order was expressly interim and invited Parliament to legislate, which Parliament did - filling a vacuum the Court had identified. Appointment to constitutional posts is ordinarily an executive function, and including the Chief Justice in an executive appointment panel raises its own separation-of-powers difficulty, since the same court may later hear challenges to the Commission's decisions. The Commission has continued to conduct elections at a scale no other body attempts.",
-  "caseAgainst": "The Act preserved the form of the Court's remedy while removing its substance: a panel of the Prime Minister, a minister of his choosing and the Leader of the Opposition gives the executive a standing two-to-one majority, which is the specific arrangement the Court's order was designed to prevent. The Court's remark that the manner of the 2024 appointments was unnecessary and avoidable is a criticism of the executing conduct, not only of the statute.",
-  "assessmentNote": "Not scored 'reversed' despite following a judicial direction, because the legislature acted within an invitation the Court extended rather than against a final holding. Contrast L-0077 and L-0080.",
-  "seriesRefs": [],
-  "provenanceRefs": [],
-  "sources": [
-   {
-    "name": "Anoop Baranwal v. Union of India, Supreme Court of India, March 2023",
-    "url": "https://main.sci.gov.in/",
-    "tier": "T1"
-   },
-   {
-    "name": "Chief Election Commissioner and Other Election Commissioners Act 2023",
-    "url": "https://www.indiacode.nic.in/",
-    "tier": "T1"
-   }
-  ],
-  "confidence": "high",
-  "asOf": "2026-08-01"
- },
- {
-  "id": "L-0089",
-  "title": "CAG audit report volume",
-  "date": "2011",
-  "dateEnd": "2024",
-  "term": "T1",
-  "domains": [
-   "governance"
-  ],
-  "type": "institutional",
-  "summary": "Union audit reports fell from a 2015 peak to 14 in 2020 and 18 in 2023, with five-year averages of about 40 for 2014-2018 against about 22 for 2019-2023. Defence audit reports went from eight in 2017 to zero in 2020, and railway audits from 27 to 14 across the same five-year blocks. Over the period IA&AD staff strength fell from 48,253 in 2013-14 to 41,675 in 2021-22.",
-  "caveat": "FIGURES RELAYED, PRIMARY DOCUMENTS NOT PULLED",
-  "assessment": "contested",
-  "caseFor": "Report count is not an audit-quality measure, and consolidating multiple subject reports into fewer larger volumes reduces count without reducing coverage. Two pandemic years suppressed tabling across all parliamentary business. There is a documented capacity mechanism rather than only an inference: departmental staff strength fell by roughly 14 per cent over the period and IA&AS officer numbers from 789 in 2014-15 to 553 in 2021-22, which constrains output independently of any intent. The peak year of the series falls in 2015, the first full year after the change of government, which is inconsistent with reading the decline as beginning at that change. The institution has continued to publish findings adverse to the government, including on flagship infrastructure and health schemes.",
-  "caseAgainst": "A halving of the annual average across two five-year windows is large enough to require explanation, and consolidation has not been demonstrated as its cause. The capacity argument raises rather than settles the question of why an audit body's staffing was allowed to fall by nearly seven thousand posts. Defence audit reaching zero in 2020, with the most recent defence report dating to 2017, is not explicable by consolidation. Reports adverse to the government on a major expressway and a flagship health scheme were followed by the transfer of officers who worked on them, explained as administrative convenience. Eighty-six former civil servants wrote to the President on the subject in November 2023.",
-  "revisitTrigger": "Confidence moves to high only on retrieval of the two primary documents: the New Indian Express RTI reply and the underlying list behind the 400-report review. Retrieval should also resolve whether the 2015 peak is 55 or 53, per P-58.",
-  "seriesRefs": [
-   "cag-union-audit-reports-tabled"
-  ],
-  "provenanceRefs": [
-   "P-53",
-   "P-58"
-  ],
-  "sources": [
-   {
-    "name": "RTI reply obtained by The New Indian Express, reported March 2021",
-    "url": "https://cag.gov.in/",
-    "tier": "T4"
-   },
-   {
-    "name": "Review of over 400 CAG reports published 2010-2023, reported December 2023",
-    "url": "https://cag.gov.in/",
-    "tier": "T4"
-   }
-  ],
-  "confidence": "medium",
-  "asOf": "2026-08-01"
- }
+  {
+    "id": "L-0074",
+    "title": "Expansion of PMLA enforcement by the Enforcement Directorate",
+    "date": "2014",
+    "dateEnd": "2026",
+    "term": "T1",
+    "domains": [
+      "governance"
+    ],
+    "type": "episode",
+    "summary": "ED activity under the Prevention of Money Laundering Act rose steeply after 2014, with 5,892 cases initiated between January 2015 and June 2025. Over the same period 15 persons were convicted across eight orders, and 49 closure reports were filed.",
+    "caveat": "CONVICTION RATE CARRIES ITS DENOMINATOR",
+    "assessment": "contested",
+    "caseFor": "The ED cannot register a money-laundering case on its own motion: a scheduled predicate offence recorded by another agency must exist first, so the caseload reflects prosecutions initiated elsewhere. Every attachment, search and arrest is subject to adjudication and to judicial review, and the Supreme Court upheld the core architecture of the Act in 2022. On the measure the Directorate regards as meaningful - trials that have concluded - the conviction rate is between 93 and 96 per cent, which is far above the rate for ordinary criminal prosecutions in India.",
+    "caseAgainst": "Fifteen convictions against 5,892 cases initiated over a decade is a rate of roughly a quarter of one per cent, and the completed-trial denominator excludes the overwhelming majority of cases precisely because they have not moved. Attachment of property, arrest, and the near-impossible bail bar in Section 45 operate from the moment a case is registered, so the consequence is delivered years before any court tests the allegation. The Supreme Court itself criticised the Directorate's conviction record in August 2024.",
+    "unmeasured": [
+      {
+        "what": "Party affiliation and state of politicians facing ED cases",
+        "why": "The Ministry of Finance told Parliament that state-wise and party-affiliation data on politicians under investigation is not maintained. The government has separately cited a specific figure - that roughly 3 per cent of ED cases involve politicians - which implies some form of political-status tagging exists. Independent reconstructions from public records have produced party-wise counts, so the data is derivable even if not maintained in the form asked about.",
+        "reasonKind": "not-collected",
+        "reasonDisputed": true,
+        "disputeKind": "evidentiary"
+      }
+    ],
+    "seriesRefs": [
+      "ed-pmla-cases-registered",
+      "ed-pmla-convictions"
+    ],
+    "provenanceRefs": [
+      "P-52",
+      "P-55"
+    ],
+    "sources": [
+      {
+        "name": "Minister of State for Finance, reply in Rajya Sabha on PMLA cases and convictions to 30 June 2025",
+        "url": "https://sansad.in/",
+        "tier": "T1"
+      },
+      {
+        "name": "Enforcement Directorate conviction-rate statement in Parliament, August 2024",
+        "url": "https://sansad.in/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-0075",
+    "title": "Vijay Madanlal Choudhary and the PMLA procedural architecture",
+    "date": "2022-07",
+    "term": "T2",
+    "domains": [
+      "governance"
+    ],
+    "type": "event",
+    "summary": "A three-judge bench upheld the PMLA provisions on search, seizure, attachment, arrest, the reverse burden of proof in Section 24, the twin bail conditions in Section 45, and the admissibility of statements to ED officers under Section 50, and held that the ECIR need not be supplied to the accused. Review petitions were admitted in August 2022 on two of those holdings and remain pending.",
+    "assessment": "contested",
+    "caseFor": "The Court held that money laundering is a distinct offence with transnational reach, that the ECIR is an internal document rather than an FIR and so attracts different disclosure obligations, and that Parliament may calibrate procedure to the gravity of an offence. The twin bail conditions replicate a legislative approach the Court has upheld in other special statutes. The judgment was a considered constitutional ruling on a fully argued challenge, not an administrative accommodation.",
+    "caseAgainst": "The combination of a reverse burden, admissible statements recorded in custody by officers who are not police, and a bail bar requiring the court to be satisfied of innocence at the threshold, inverts ordinary criminal-procedure protections in a single statute. The Court admitted review petitions within a month on exactly two points - non-supply of the ECIR and the reversed presumption of innocence - which is an unusual acknowledgment that the reasoning may not hold. Four years on, the review has not been heard.",
+    "seriesRefs": [],
+    "provenanceRefs": [
+      "P-52"
+    ],
+    "sources": [
+      {
+        "name": "Vijay Madanlal Choudhary v. Union of India, Supreme Court of India, July 2022",
+        "url": "https://main.sci.gov.in/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-0076",
+    "title": "Withdrawal of general consent for the CBI by states",
+    "date": "2018",
+    "dateEnd": "2026",
+    "term": "T1",
+    "domains": [
+      "governance"
+    ],
+    "type": "institutional",
+    "summary": "A growing group of states withdrew general consent under Section 6 of the Delhi Special Police Establishment Act, requiring the CBI to seek case-specific permission. A CBI affidavit noted by the Supreme Court in November 2021 recorded 150 specific-consent requests pending across eight states for 2018 to mid-2021.",
+    "assessment": "contested",
+    "caseFor": "General consent is a statutory choice that states are entitled to make and withdraw, and the CBI retains jurisdiction over central government employees, over cases referred by courts, and over cases where consent is granted individually. The federal design of the DSPE Act contemplates exactly this negotiation. The agency's investigative record in the cases it does take up is not affected by the consent question.",
+    "caseAgainst": "The Supreme Court described 150 pending consent requests as not a desirable position, which is a functional obstruction of investigations irrespective of who is at fault. The states withdrawing consent are overwhelmingly those governed by opposition parties, and they cite a pattern of politically timed federal investigation as their reason - so the federal-comity argument and the agency-independence argument are two halves of the same dispute rather than separate ones. The phrase caged parrot originated with the Court itself in 2013 and was reinvoked by the Court in 2024.",
+    "seriesRefs": [],
+    "provenanceRefs": [],
+    "sources": [
+      {
+        "name": "CBI affidavit noted by the Supreme Court, 8 November 2021",
+        "url": "https://main.sci.gov.in/",
+        "tier": "T1"
+      },
+      {
+        "name": "Delhi Special Police Establishment Act 1946, Section 6",
+        "url": "https://www.indiacode.nic.in/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "medium",
+    "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-0077",
+    "title": "Electoral bonds: introduction to being struck down",
+    "date": "2017",
+    "dateEnd": "2024",
+    "term": "T1",
+    "domains": [
+      "governance"
+    ],
+    "type": "reform",
+    "summary": "Introduced through the Finance Act 2017 as a Money Bill, notified January 2018, with consequential amendments to the RBI Act, the Representation of the People Act, the Income Tax Act, the Companies Act and FCRA. The 7.5 per cent of net profit ceiling on corporate donations and the requirement to disclose party-wise contributions were both removed. A five-judge bench struck the scheme down unanimously in February 2024.",
+    "assessment": "failed",
+    "caseFor": "Before the scheme, the bulk of political funding in India was cash of unverifiable origin. Bonds moved donations into the banking system with KYC at the point of purchase, giving the state a record where previously there was none. Donor anonymity was defended as protection against retribution by parties that did not receive the donation - a concern with a real basis in a system where governments change and contracts follow. The scheme was enacted by Parliament and operated for six years under judicial scrutiny before being struck down.",
+    "caseAgainst": "The RBI objected twice in September 2017 that a bearer instrument issued by a non-sovereign entity would erode faith in banknotes and create money-laundering and shell-company risk, and the Election Commission called the scheme a retrograde step for transparency and asked for its withdrawal. Both objections were on record before notification. Anonymity was asymmetric: the government could obtain SBI records while voters could not. Removing the profit ceiling permitted unlimited donations including by loss-making and newly incorporated companies. The Money Bill route bypassed the Rajya Sabha, where the government lacked a majority. Post-judgment disclosure showed the party in office at the Centre received just over half of all bond value redeemed, and reporting identified a substantial overlap between large purchasers and firms facing agency action.",
+    "assessmentNote": "Struck down by a five-judge bench of the Supreme Court in February 2024, not withdrawn by the enacting authority. Under the definition now written into the schema, `reversed` is reserved for a measure whose enacting authority withdrew or repealed it, so judicial invalidation scores `failed` - the closest available value, the measure having neither achieved the objective stated at announcement nor remained law.",
+    "differentFacts": true,
+    "differentFactsNote": "The government's strongest fact is the displacement of cash. The critics' strongest facts are the contemporaneous RBI and ECI objections and the post-disclosure distribution. Neither is a rebuttal of the other; both can be true simultaneously.",
+    "seriesRefs": [],
+    "provenanceRefs": [],
+    "sources": [
+      {
+        "name": "Association for Democratic Reforms v. Union of India, Supreme Court of India, 15 February 2024",
+        "url": "https://main.sci.gov.in/",
+        "tier": "T1"
+      },
+      {
+        "name": "Reserve Bank of India objections, September 2017",
+        "url": "https://rbi.org.in/",
+        "tier": "T2"
+      },
+      {
+        "name": "Election Commission of India submission on the scheme",
+        "url": "https://eci.gov.in/",
+        "tier": "T2"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-01",
+    "revisitTrigger": "Judicial invalidation currently scores `failed` for want of a distinct value. Re-open adding `struck-down` when a third judicially invalidated record enters the ledger - at two members the distinction may be a rights-and-institutions artefact rather than a general category. Check whether they cluster by domain when re-testing."
+  },
+  {
+    "id": "L-0078",
+    "title": "Press freedom indices and the government's formal rejection",
+    "date": "2021",
+    "dateEnd": "2024",
+    "term": "T2",
+    "domains": [
+      "governance"
+    ],
+    "type": "episode",
+    "summary": "India's RSF ranking moved from 140 in 2013 to 161 in 2023 and 159 in 2024, across a methodology change in 2022. Freedom House reclassified India from Free to Partly Free in March 2021, and V-Dem classified India an electoral autocracy in the same month. The government formally rejected all three.",
+    "caveat": "T5 CONTESTED INDEX",
+    "assessment": "contested",
+    "caseFor": "The government's objection has specific content rather than being a blanket dismissal: it cites small sample sizes, weighting choices that give little room to the fundamentals of electoral democracy, and a methodology it describes as non-transparent. The 2022 RSF methodology change is real and does break the series, which supports the argument that year-on-year movement is not a clean signal. India retains a very large, commercially independent and frequently adversarial press, and no journalist has been convicted for the act of journalism as such.",
+    "caseAgainst": "Three organisations with different methodologies moved in the same direction within the same window, which is harder to attribute to any single methodological flaw. The government's objections are addressed to scoring design rather than to the underlying incidents the indices cite, none of which it disputes. The Index Monitoring Cell set up to examine the ranking has not produced a competing published measure, so the rejection stands without an alternative.",
+    "unmeasured": [
+      {
+        "what": "Attacks on journalists",
+        "why": "The Minister of Information and Broadcasting confirmed in Parliament that the NCRB does not maintain separate data on attacks on journalists. Recorded as a straightforward absence: no evidence reviewed contradicts the stated position. Its effect is that the government's rejection of external indices is not accompanied by an internal series that could be compared against them.",
+        "reasonKind": "not-collected"
+      }
+    ],
+    "seriesRefs": [
+      "rsf-press-freedom-rank"
+    ],
+    "provenanceRefs": [
+      "P-50"
+    ],
+    "sources": [
+      {
+        "name": "Minister of Information and Broadcasting, reply in Rajya Sabha, 21 July 2022",
+        "url": "https://sansad.in/",
+        "tier": "T1"
+      },
+      {
+        "name": "Freedom in the World 2021, Freedom House, March 2021",
+        "url": "https://freedomhouse.org/",
+        "tier": "T5"
+      },
+      {
+        "name": "V-Dem Democracy Report 2021",
+        "url": "https://www.v-dem.net/",
+        "tier": "T5"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-0079",
+    "title": "Agency action against news organisations",
+    "date": "2021",
+    "dateEnd": "2024",
+    "term": "T2",
+    "domains": [
+      "governance"
+    ],
+    "type": "episode",
+    "summary": "Income tax surveys at BBC India offices in February 2023, income tax raids on Dainik Bhaskar and Bharat Samachar in July 2021, and the arrest of NewsClick's founder and HR head under the UAPA in October 2023. The Supreme Court declared the NewsClick arrest and remand invalid in May 2024 for failure to furnish written grounds of arrest.",
+    "assessment": "contested",
+    "caseFor": "Tax and foreign-funding law applies to media companies as it does to any other company, and exempting them would create a protected class. The CBDT stated specific allegations in the BBC matter concerning transfer pricing and diversion of profits, and in the Dainik Bhaskar matter alleged evasion of a defined magnitude. The NewsClick investigation followed published reporting on foreign funding, not on editorial content. In each instance the outlets continued publishing.",
+    "caseAgainst": "The timing in each case is close enough to critical coverage to require explanation: the BBC survey came weeks after a documentary on the Prime Minister, the Dainik Bhaskar raids followed its reporting on the second COVID wave. The Supreme Court found the NewsClick arrest unlawful, which establishes at least one instance where the process itself failed the legal standard. The Committee to Protect Journalists recorded seven journalists jailed in India on its 1 December census in each of 2020 through 2023, most held under the UAPA.",
+    "seriesRefs": [],
+    "provenanceRefs": [],
+    "sources": [
+      {
+        "name": "Supreme Court of India, NewsClick arrest and remand, 15 May 2024",
+        "url": "https://main.sci.gov.in/",
+        "tier": "T1"
+      },
+      {
+        "name": "CBDT statements on the BBC survey, February 2023",
+        "url": "https://www.incometaxindia.gov.in/",
+        "tier": "T1"
+      },
+      {
+        "name": "Committee to Protect Journalists prison census, 2020-2023",
+        "url": "https://cpj.org/",
+        "tier": "T3"
+      }
+    ],
+    "confidence": "medium",
+    "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-0080",
+    "title": "IT Rules fact-check unit struck down",
+    "date": "2023",
+    "dateEnd": "2024",
+    "term": "T2",
+    "domains": [
+      "governance"
+    ],
+    "type": "reform",
+    "summary": "An April 2023 amendment to the Information Technology Rules 2021 empowered a government fact-check unit to identify content about central government business as fake, false or misleading, with intermediary safe harbour at stake. The Bombay High Court struck the amendment down in September 2024 as violating Articles 14, 19(1)(a) and 19(1)(g), after a split verdict resolved by a tie-breaker judge.",
+    "assessment": "failed",
+    "caseFor": "Coordinated falsehood about government programmes has real consequences, and the state holds the authoritative record on its own business, so identifying misstatement about it is within competence. The unit's designation did not itself criminalise speech; it operated on intermediary safe harbour. The measure was made by rule under an enacted statute and was tested in court, where the government defended it through a full hearing.",
+    "caseAgainst": "The government would have been sole judge of the truth of statements about itself, with no independent appeal, which the Court found could not survive Article 19(1)(a). The categories fake, false and misleading were undefined, and misleading in particular covers accurate statements framed unfavourably. The practical effect on intermediaries was to make removal the safe default. A first-instance split verdict and then a strike-down is not a marginal defeat.",
+    "assessmentNote": "Struck down by the Bombay High Court in September 2024, not withdrawn by the enacting authority. Under the definition now written into the schema, `reversed` is reserved for a measure whose enacting authority withdrew or repealed it, so judicial invalidation scores `failed` as the closest available value.",
+    "seriesRefs": [],
+    "provenanceRefs": [],
+    "sources": [
+      {
+        "name": "Kunal Kamra v. Union of India, Bombay High Court, 20 September 2024",
+        "url": "https://bombayhighcourt.nic.in/",
+        "tier": "T1"
+      },
+      {
+        "name": "Information Technology Rules 2021, Rule 3(1)(b)(v) as amended April 2023",
+        "url": "https://www.meity.gov.in/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-01",
+    "revisitTrigger": "Judicial invalidation currently scores `failed` for want of a distinct value. Re-open adding `struck-down` when a third judicially invalidated record enters the ledger - at two members the distinction may be a rights-and-institutions artefact rather than a general category. Check whether they cluster by domain when re-testing."
+  },
+  {
+    "id": "L-0081",
+    "title": "Internet shutdowns and Anuradha Bhasin compliance",
+    "date": "2019",
+    "dateEnd": "2026",
+    "term": "T2",
+    "domains": [
+      "governance"
+    ],
+    "type": "episode",
+    "summary": "The Supreme Court held in January 2020 that indefinite suspension is illegal, that orders must satisfy proportionality, be periodically reviewed, and be published. India has recorded more shutdowns than any other country across the period. The Jammu and Kashmir suspension from August 2019 was the longest in India's history; Manipur's 2023 suspension ran roughly seven months across 44 orders.",
+    "assessment": "partly",
+    "caseFor": "The judgment itself is a substantive constitutional gain: proportionality and periodic review are now binding requirements where previously there was executive discretion with no articulated standard, and the Court reiterated the publication requirement in January 2024. Recorded shutdown counts have fallen from their 2020 peak. Suspensions in specific instances have been defended as short-term measures against rumour-driven mob violence, a risk with a documented history in India.",
+    "caseAgainst": "The publication requirement is the operative one and it is largely unmet: for the great majority of shutdowns since 2020 the underlying orders were never published, which makes proportionality review impossible by design rather than by oversight. A Court reiterating a direction four years later is evidence the direction was not followed. Duration is the sharper measure than count, and on duration the record includes the longest shutdown imposed anywhere in 2023.",
+    "unmeasured": [
+      {
+        "what": "Published shutdown orders and review committee decisions",
+        "why": "Orders are treated as internal security instruments; no general publication mechanism has been established. The Supreme Court directed publication in Anuradha Bhasin in January 2020 and reiterated it in January 2024. Non-publication is therefore in tension with a binding direction, not merely an administrative choice.",
+        "reasonKind": "not-published",
+        "reasonDisputed": true,
+        "disputeKind": "normative",
+        "wouldFill": "An RTI to state and UT home departments for shutdown orders and Review Committee decisions. The stronger instrument is the Supreme Court's direction in Anuradha Bhasin (January 2020), reiterated January 2024, which requires publication independently of any request. This is the only absence in the corpus whose route is enforceable rather than requestable."
+      },
+      {
+        "what": "Official count of internet shutdowns",
+        "why": "No central register of shutdown orders is published.",
+        "reasonKind": "not-collected"
+      }
+    ],
+    "seriesRefs": [
+      "internet-shutdowns-count"
+    ],
+    "provenanceRefs": [
+      "P-54"
+    ],
+    "sources": [
+      {
+        "name": "Anuradha Bhasin v. Union of India, Supreme Court of India, 10 January 2020",
+        "url": "https://main.sci.gov.in/",
+        "tier": "T1"
+      },
+      {
+        "name": "SFLC.in Internet Shutdown Tracker",
+        "url": "https://internetshutdowns.in/",
+        "tier": "T3"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-0082",
+    "title": "Sedition kept in abeyance, then replaced",
+    "date": "2022",
+    "dateEnd": "2024",
+    "term": "T2",
+    "domains": [
+      "governance"
+    ],
+    "type": "reform",
+    "summary": "The Supreme Court kept IPC Section 124A in abeyance in May 2022, freezing pending trials and fresh registrations; recorded cases fell from 76 in 2021 to 20 in 2022. The Bharatiya Nyaya Sanhita 2023 removed 124A and introduced Section 152, covering acts endangering the sovereignty, unity and integrity of India.",
+    "assessment": "contested",
+    "caseFor": "A colonial-era offence that had been used against 548 people between 2015 and 2020 with 12 convictions is off the statute book, and the government did what critics had demanded for decades. Section 152 is framed around sovereignty and territorial integrity rather than around disaffection towards the government, which is the narrowing critics had specifically asked for. Registrations fell sharply and immediately after the abeyance order.",
+    "caseAgainst": "Section 152 covers a wider range of conduct than 124A on its face, including by subversive activities and encouraging separatist feelings, and carries a higher minimum sentence. More importantly, 124A had accumulated six decades of judicial narrowing since Kedar Nath Singh, all of which attaches to the repealed text and none of which automatically attaches to the new one, so the effective scope may be broader even if the words are narrower. Calling this a repeal is a description of the statute book rather than of the law in operation.",
+    "seriesRefs": [
+      "sedition-cases-registered"
+    ],
+    "provenanceRefs": [
+      "P-51"
+    ],
+    "sources": [
+      {
+        "name": "S.G. Vombatkere v. Union of India, Supreme Court of India, May 2022",
+        "url": "https://main.sci.gov.in/",
+        "tier": "T1"
+      },
+      {
+        "name": "Bharatiya Nyaya Sanhita 2023, Section 152",
+        "url": "https://www.indiacode.nic.in/",
+        "tier": "T1"
+      },
+      {
+        "name": "NCRB Crime in India",
+        "url": "https://www.ncrb.gov.in/crime-in-india.html",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-01",
+    "revisitTrigger": "Effective scope of BNS 152 in operation becomes a buildable common measure once a prosecution record accumulates. Re-test against (c) then."
+  },
+  {
+    "id": "L-0083",
+    "title": "UAPA use, bail and conviction rates",
+    "date": "2014",
+    "dateEnd": "2026",
+    "term": "T1",
+    "domains": [
+      "governance"
+    ],
+    "type": "episode",
+    "summary": "NCRB's published UAPA conviction rate, tabled in Parliament in December 2024, runs between 18.2 and 39.7 per cent across 2018 to 2022 on a completed-trial basis. Over the same years 8,947 persons were arrested and 252 convicted. Section 43D(5) bars bail where the accusation is prima facie true on the case diary, and the government has confirmed that no provision exists for support or compensation to those later acquitted.",
+    "caveat": "CONVICTION RATE CARRIES ITS DENOMINATOR",
+    "assessment": "contested",
+    "caseFor": "On NCRB's own basis the conviction rate is not the near-zero figure usually quoted: it ran 27.2 per cent in 2018 and 39.7 per cent in 2021, which is in line with or above the rate for ordinary criminal prosecutions in India. For the subset of cases where the FIR was registered by the Centre, the government reports 94.17 per cent. Terrorism and organised insurgency cases require investigation across jurisdictions and long evidentiary chains, so a gap between arrest and verdict is expected rather than anomalous. The statute has been repeatedly tested and upheld, and bail is available where a court is not satisfied the accusation is prima facie true.",
+    "caseAgainst": "The completed-trial basis measures only the small fraction of cases that reach a verdict. Against arrests the ratio is 2.8 per cent over 2018 to 2022, and arrest with the Section 43D(5) bail bar is the operative consequence whether or not a trial ever concludes. The government's own answer confirms there is no provision for support or compensation to anyone acquitted after detention, so the cost of a wrongly brought case falls entirely on the accused. Arrests rose over the period even as convictions did not: 1,421 in 2018 against 2,636 in 2022, with 35 and 41 convictions respectively. The Supreme Court granted bail in 2025 to a man held close to six years, and the Bhima Koregaon proceedings have run since 2018 without trial concluding.",
+    "unmeasured": [
+      {
+        "what": "UAPA cases booked against journalists",
+        "why": "The Ministry of Home Affairs told Parliament in December 2024 that data on cases booked under the UAPA against journalists is not maintained by the NCRB. Recorded as a straightforward absence. Its effect is that the question of whether the Act is applied to journalists cannot be answered from official data in either direction, which forecloses the government's defence as much as the critics' charge. Pairs with the NCRB absence on attacks on journalists recorded at L-0078.",
+        "reasonKind": "not-collected"
+      }
+    ],
+    "seriesRefs": [
+      "uapa-cases-registered",
+      "uapa-persons-arrested",
+      "uapa-persons-convicted",
+      "uapa-conviction-rate-ncrb"
+    ],
+    "provenanceRefs": [
+      "P-57",
+      "P-52"
+    ],
+    "sources": [
+      {
+        "name": "Rajya Sabha Unstarred Question 1045, answered 4 December 2024, with state-wise annexure",
+        "url": "https://www.mha.gov.in/MHA1/Par2017/pdfs/par2024-pdfs/RS04122024/1045.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "Ministry of Home Affairs reply in Rajya Sabha, August 2022, on Centre-registered UAPA cases",
+        "url": "https://sansad.in/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-0084",
+    "title": "NJAC struck down and the Memorandum of Procedure deadlock",
+    "date": "2014",
+    "dateEnd": "2026",
+    "term": "T1",
+    "domains": [
+      "governance"
+    ],
+    "type": "institutional",
+    "summary": "The 99th Constitutional Amendment and the NJAC Act were struck down four to one in October 2015. A supplementary order directed the government to finalise a revised Memorandum of Procedure for collegium appointments. It has not been finalised. High Court vacancies stood at about 330 against a sanctioned strength of 1,122 as on 1 July 2026.",
+    "assessment": "contested",
+    "caseFor": "The NJAC was passed by both Houses near-unanimously and ratified by state legislatures, and its striking down removed the only serious attempt in decades to open judicial appointments beyond the judiciary itself. The collegium has no published criteria, no record of deliberations and no appeal, which is an accountability gap the Court has not closed on its own. Delay in acting on recommendations is defended as due diligence, including on inputs the executive alone holds.",
+    "caseAgainst": "The Court found judicial primacy in appointments to be part of the basic structure, and a near-unanimous parliamentary majority does not settle a basic-structure question - that is what the doctrine is for. Selective delay on reiterated names functions as a veto the Constitution does not provide, since reiteration is meant to be binding. Eleven years without a finalised Memorandum of Procedure is not a negotiation, and one in three High Court seats vacant is the measurable consequence.",
+    "unmeasured": [
+      {
+        "what": "A finalised Memorandum of Procedure for judicial appointments",
+        "why": "Government and judiciary have not reached agreement, reportedly over a national-security exclusion the executive seeks and the judiciary resists. Directed by the Supreme Court in December 2015. The absence of an agreed procedure is the operative fact: appointments proceed without a settled rulebook on either side's terms. Retained as never-defined on 2026-08-01 where seven other entries were reclassified: the absent thing here IS the definition, since no agreed Memorandum of Procedure exists, rather than a defined quantity nobody has measured. It is now the only member of its kind.",
+        "reasonKind": "never-defined"
+      }
+    ],
+    "seriesRefs": [
+      "high-court-judge-vacancies"
+    ],
+    "provenanceRefs": [],
+    "sources": [
+      {
+        "name": "Supreme Court Advocates-on-Record Association v. Union of India, 16 October 2015",
+        "url": "https://main.sci.gov.in/",
+        "tier": "T1"
+      },
+      {
+        "name": "Minister of Law and Justice, reply in Rajya Sabha, 23 July 2026",
+        "url": "https://sansad.in/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-0085",
+    "title": "RTI amended and the information commissions",
+    "date": "2019",
+    "dateEnd": "2026",
+    "term": "T2",
+    "domains": [
+      "governance"
+    ],
+    "type": "reform",
+    "summary": "The RTI (Amendment) Act 2019 moved tenure, salary and service conditions of Information Commissioners from statute to central government rules; tenure was set at three years. Commissions have run with sustained vacancies, with several non-functional for periods during 2024. The Supreme Court criticised appointment delays in January 2025.",
+    "assessment": "contested",
+    "caseFor": "The amendment changed service conditions, not powers: the commissions' jurisdiction, their penalty provisions and the removal protections were untouched, and pegging commissioner salaries to a constitutional body was an anomaly Parliament was entitled to correct. RTI remains in heavy use, with applications filed in the millions annually, and the Act's core disclosure obligations are unchanged.",
+    "caseAgainst": "Commissioners adjudicate appeals against the government; making their tenure and pay a matter of executive rule, and shortening tenure, places the adjudicator's terms in the hands of the largest litigant before it. Vacancy-driven pendency achieves functional weakening without amending any substantive provision - a right with a multi-year queue for appeal is a different right. The Supreme Court's January 2025 criticism of appointment delays is an external finding, not an advocacy claim.",
+    "seriesRefs": [],
+    "provenanceRefs": [
+      "P-56"
+    ],
+    "sources": [
+      {
+        "name": "Right to Information (Amendment) Act 2019 and RTI Rules 2019",
+        "url": "https://www.indiacode.nic.in/",
+        "tier": "T1"
+      },
+      {
+        "name": "Report Card of Information Commissions in India, Satark Nagrik Sangathan",
+        "url": "https://snsindia.org/",
+        "tier": "T3"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-0086",
+    "title": "DPDP Act amendment to RTI Section 8(1)(j)",
+    "date": "2023",
+    "dateEnd": "2026",
+    "term": "T2",
+    "domains": [
+      "governance"
+    ],
+    "type": "reform",
+    "summary": "Section 44(3) of the Digital Personal Data Protection Act 2023 amended Section 8(1)(j) of the RTI Act, removing the public-interest override that had allowed disclosure of personal information where a larger public interest justified it. The provision is before a Constitution Bench.",
+    "assessment": "too-early",
+    "caseFor": "Data protection statutes worldwide require reconciliation with access-to-information regimes, and unqualified personal-information disclosure sits uneasily with a right to informational privacy the Supreme Court itself recognised in 2017. The amendment does not remove information about the discharge of public functions from the RTI Act's reach; it addresses the personal-information exemption specifically.",
+    "caseAgainst": "The public-interest override is the provision that made disclosure of asset declarations, beneficiary lists and appointment records possible, and removing it converts a balancing test into a bar. More than 130 opposition MPs and a large body of civil-society organisations objected, and the change was made inside a data-protection statute rather than by amending the RTI Act on its own terms.",
+    "assessmentNote": "Scored too-early because the operative effect depends on the pending constitutional challenge and on how commissions apply the amended clause. Revisit on judgment.",
+    "seriesRefs": [],
+    "provenanceRefs": [
+      "P-56"
+    ],
+    "sources": [
+      {
+        "name": "Digital Personal Data Protection Act 2023, Section 44(3)",
+        "url": "https://www.indiacode.nic.in/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "medium",
+    "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-0087",
+    "title": "Committee scrutiny and parliamentary process",
+    "date": "2014",
+    "dateEnd": "2024",
+    "term": "T1",
+    "domains": [
+      "governance"
+    ],
+    "type": "institutional",
+    "summary": "Bills referred to Parliamentary Standing Committees fell from 71 per cent in the 15th Lok Sabha to 25 per cent in the 16th and about 16 per cent in the 17th. The 17th Lok Sabha held 274 sittings and never elected a Deputy Speaker. In December 2023, 146 opposition MPs were suspended across both Houses.",
+    "assessment": "contested",
+    "caseFor": "Committee referral is discretionary under the rules, not mandatory, and the executive is entitled to move urgent legislation. Sitting days have declined across parties and decades rather than in one term. Repeated disruption reduces usable hours, and suspensions followed a security breach in the chamber. Legislative output over the period was high, including major recodifications long identified as overdue.",
+    "caseAgainst": "The laws passed without committee examination include the criminal-law recodification, the data protection statute and the reorganisation of a state - the category of legislation for which pre-legislative scrutiny exists. Fifty-eight per cent of bills passed within a fortnight of introduction. The Deputy Speaker post sat vacant for a full term against Article 93's requirement that it be filled as soon as may be, and suspending nineteen per cent of each House is the largest such action on record. The Money Bill question referred to a larger bench in Rojer Mathew in 2019 remains undecided, leaving the route unresolved.",
+    "seriesRefs": [
+      "bills-referred-committee-pct",
+      "lok-sabha-sitting-days"
+    ],
+    "provenanceRefs": [],
+    "sources": [
+      {
+        "name": "PRS Legislative Research, Vital Stats on Lok Sabha terms",
+        "url": "https://prsindia.org/",
+        "tier": "T3"
+      },
+      {
+        "name": "Rojer Mathew v. South Indian Bank, Supreme Court of India, 2019",
+        "url": "https://main.sci.gov.in/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-0088",
+    "title": "Election Commission appointments after Anoop Baranwal",
+    "date": "2023",
+    "dateEnd": "2026",
+    "term": "T2",
+    "domains": [
+      "governance"
+    ],
+    "type": "institutional",
+    "summary": "In March 2023 the Supreme Court directed that Election Commissioners be appointed by a panel of the Prime Minister, the Leader of the Opposition and the Chief Justice of India, until Parliament legislated. The Act passed later that year replaced the Chief Justice with a Union Cabinet Minister. The Court declined to stay the Act in March 2024 while calling the manner of expedited appointments unnecessary and avoidable. Challenges remain pending.",
+    "assessment": "contested",
+    "caseFor": "The Court's own order was expressly interim and invited Parliament to legislate, which Parliament did - filling a vacuum the Court had identified. Appointment to constitutional posts is ordinarily an executive function, and including the Chief Justice in an executive appointment panel raises its own separation-of-powers difficulty, since the same court may later hear challenges to the Commission's decisions. The Commission has continued to conduct elections at a scale no other body attempts.",
+    "caseAgainst": "The Act preserved the form of the Court's remedy while removing its substance: a panel of the Prime Minister, a minister of his choosing and the Leader of the Opposition gives the executive a standing two-to-one majority, which is the specific arrangement the Court's order was designed to prevent. The Court's remark that the manner of the 2024 appointments was unnecessary and avoidable is a criticism of the executing conduct, not only of the statute.",
+    "assessmentNote": "Not scored 'reversed' despite following a judicial direction, because the legislature acted within an invitation the Court extended rather than against a final holding. Contrast L-0077 and L-0080.",
+    "seriesRefs": [],
+    "provenanceRefs": [],
+    "sources": [
+      {
+        "name": "Anoop Baranwal v. Union of India, Supreme Court of India, March 2023",
+        "url": "https://main.sci.gov.in/",
+        "tier": "T1"
+      },
+      {
+        "name": "Chief Election Commissioner and Other Election Commissioners Act 2023",
+        "url": "https://www.indiacode.nic.in/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-0089",
+    "title": "CAG audit report volume",
+    "date": "2011",
+    "dateEnd": "2024",
+    "term": "T1",
+    "domains": [
+      "governance"
+    ],
+    "type": "institutional",
+    "summary": "Union audit reports fell from a 2015 peak to 14 in 2020 and 18 in 2023, with five-year averages of about 40 for 2014-2018 against about 22 for 2019-2023. Defence audit reports went from eight in 2017 to zero in 2020, and railway audits from 27 to 14 across the same five-year blocks. Over the period IA&AD staff strength fell from 48,253 in 2013-14 to 41,675 in 2021-22.",
+    "caveat": "FIGURES RELAYED, PRIMARY DOCUMENTS NOT PULLED",
+    "assessment": "contested",
+    "caseFor": "Report count is not an audit-quality measure, and consolidating multiple subject reports into fewer larger volumes reduces count without reducing coverage. Two pandemic years suppressed tabling across all parliamentary business. There is a documented capacity mechanism rather than only an inference: departmental staff strength fell by roughly 14 per cent over the period and IA&AS officer numbers from 789 in 2014-15 to 553 in 2021-22, which constrains output independently of any intent. The peak year of the series falls in 2015, the first full year after the change of government, which is inconsistent with reading the decline as beginning at that change. The institution has continued to publish findings adverse to the government, including on flagship infrastructure and health schemes.",
+    "caseAgainst": "A halving of the annual average across two five-year windows is large enough to require explanation, and consolidation has not been demonstrated as its cause. The capacity argument raises rather than settles the question of why an audit body's staffing was allowed to fall by nearly seven thousand posts. Defence audit reaching zero in 2020, with the most recent defence report dating to 2017, is not explicable by consolidation. Reports adverse to the government on a major expressway and a flagship health scheme were followed by the transfer of officers who worked on them, explained as administrative convenience. Eighty-six former civil servants wrote to the President on the subject in November 2023.",
+    "revisitTrigger": "Confidence moves to high only on retrieval of the two primary documents: the New Indian Express RTI reply and the underlying list behind the 400-report review. Retrieval should also resolve whether the 2015 peak is 55 or 53, per P-58.",
+    "seriesRefs": [
+      "cag-union-audit-reports-tabled"
+    ],
+    "provenanceRefs": [
+      "P-53",
+      "P-58"
+    ],
+    "sources": [
+      {
+        "name": "RTI reply obtained by The New Indian Express, reported March 2021",
+        "url": "https://cag.gov.in/",
+        "tier": "T4"
+      },
+      {
+        "name": "Review of over 400 CAG reports published 2010-2023, reported December 2023",
+        "url": "https://cag.gov.in/",
+        "tier": "T4"
+      }
+    ],
+    "confidence": "medium",
+    "asOf": "2026-08-01"
+  }
 ]
