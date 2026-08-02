@@ -92,9 +92,51 @@ Stops at A, B, D.
 
 ### 4 — Self-check
 
-Cross-references resolve · IDs unique · every scored record carries both cases · provenance `whatChanged` meets minimum length · no stray non-Latin script · **arithmetic in every summary matches the authored points**.
+```
+node tools/stage4-selfcheck.mjs <drop-records-dir>
+```
 
-That last one caught a wrong ratio in the phase-9 debt patch before it shipped. Check it explicitly; it is not implied by validation.
+Runs the mechanical half: IDs unique and non-colliding · **every cross-reference form resolves** ·
+every scored record carries both cases · provenance `whatChanged` meets minimum length · no stray
+non-Latin script · per-record schema validity.
+
+**"Cross-references resolve" is not one check, it is eleven.** Writing it as one line is how the
+education run got six of nine forms and reported clean: it enumerated them from memory and missed
+`series.breaks[].provenanceRef` — 67 live instances in that drop — plus `pairs.{a,b}.absenceFrom`
+and `pairs.{a,b}.competingAccountsFrom`. None is visible to JSON Schema, which type-checks a string
+and cannot know what it points at. Two of the three carry a companion that must also be checked:
+`absenceIndex` must be in range for the target's `unmeasured[]`, and `competingAccountsFrom` requires
+the target to actually have `competingAccounts` — a resolving id with a bad index is a dangling
+reference that looks fine.
+
+So the tool does not only enumerate. **`auditRefFormCoverage` reads the schemas and fails if it finds
+a reference-shaped field the enumeration does not mention**, which is what makes it survive a schema
+change: a new form breaks the check on the next run instead of going silently unvalidated. Both
+behaviours have negative fixtures — an invented `relatedPolicyRef` in a schema fires the coverage
+audit; a `provenanceRef` pointed at `P-999` fires the resolver — and both go quiet on the restored
+corpus (Rule 2).
+
+**Two report-only passes run alongside, over the drop and the live corpus separately.** Neither
+gates and neither auto-fixes; both name candidates for a judgement.
+
+- **Bidirectional references.** Three one-way links were found by hand in two cycles. `integrity.mjs`
+  checks provenance → series and not the reverse, which is the direction all three misses were in.
+  Only series ↔ provenance is genuinely two-way — nothing on a series points back at a ledger record
+  and provenance has no `affectsLedger` — so the other forms are out of scope by construction, not by
+  omission. **Asymmetry is often correct**: P-04 scopes to `all` and cannot list every series it
+  touches. Hence report, never mirror.
+- **Orphan `provenanceRefs`.** The P-52 shape: a reference carried by three series, explained
+  nowhere, pointing at an unrelated dispute. **This check has low specificity** — house style
+  discusses a dispute in words rather than by id, so it flags correct references at roughly the same
+  rate as wrong ones, and P-52 appears in its own output against the two series it legitimately
+  covers. Read the count as a prompt, not a defect list. What actually caught P-52 was the
+  `ref-relevant` domain rule in `integrity.mjs`.
+
+**Arithmetic in every summary must match the authored points, and no tool does this.** It is read by
+hand, against the points and against `parts/`. It caught a wrong ratio in the phase-9 debt patch, and
+in the education run it caught a Ministry share stated against the wrong denominator and wrong by a
+factor of four — inherited verbatim from three places in `parts/`, so the fix had to go there too or
+it re-enters on the next run. **Correct the research, not only the record.**
 
 ### 5 — Reconcile
 

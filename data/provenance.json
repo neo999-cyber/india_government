@@ -231,7 +231,11 @@
    "fiscal-deficit",
    "genl-govt-debt",
    "exports-gdp",
-   "gfcf-gdp"
+   "gfcf-gdp",
+   "edu-spend-gdp-edu-depts",
+   "edu-spend-gdp-all-depts",
+   "edu-spend-gdp-centre-edu-depts",
+   "edu-union-moe-gdp"
   ],
   "directionOfBias": "disputed",
   "bridgeExists": false,
@@ -1589,5 +1593,602 @@
     "tier": "T4"
    }
   ]
+ },
+ {
+  "id": "P-59",
+  "title": "ASER versus NAS/PARAKH: the central learning-measurement dispute",
+  "whatChanged": "India has two national learning instruments that report incompatible pictures, and the official one has been reset three times in seven years. The pre-2017 NAS, NAS 2017, NAS 2021 and PARAKH Rashtriya Sarvekshan 2024 are four incompatible instruments wearing one name - different grades, frames, administrators and metrics - each of which its own custodians say breaks comparison with its predecessor, so there is no official national learning trend line at all. ASER, an NGO household survey, is the only continuous series. The headline contrast is stark: PARAKH 2024 reports Grade 3 language at 64 per cent and mathematics at 60, while ASER 2024 reports 27.1 per cent of Standard III children able to read a Standard II text and 33.7 per cent able to subtract.",
+  "when": "2017-11-13 onward; ASER series from 2005",
+  "affectsDomains": [
+   "education",
+   "governance"
+  ],
+  "affectsSeries": [
+   "aser-std3-reading",
+   "aser-std3-arithmetic",
+   "aser-std5-reading",
+   "aser-std5-arithmetic",
+   "aser-std3-reading-govt",
+   "aser-std3-reading-private",
+   "aser-std8-arithmetic",
+   "aser-out-of-school-15-16",
+   "aser-girls-11-14-not-enrolled",
+   "aser-private-share-rural",
+   "nas-parakh-grade3-language",
+   "nas-parakh-grade3-maths",
+   "parakh-grade9-maths",
+   "parakh-grade3-proficient-language",
+   "parakh-grade3-proficient-maths",
+   "school-closure-weeks-covid",
+   "school-closure-weeks-full-covid"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "bridgeNote": "No linking study, no equating design and no anchor items exist between the two scales. ASER Centre states plainly that 'their results are not comparable'; nobody disputes it and nobody has built a bridge. What DOES reconcile, and is the most under-appreciated fact in the dispute, is that thresholding NAS's own data reproduces ASER: the World Bank applied a Minimum Proficiency Level benchmark to NAS 2017 Grade 5 data and found 54 per cent below it, against ASER 2018's 49.5 per cent of Standard V unable to read a Standard II text. Five points apart, same direction, same population. Most of the headline contradiction is a category error: a mean item-success rate is not a headcount ratio, and the two instruments broadly agree that about half of Indian children finish primary school unable to read at a Standard II level.",
+  "competingAccounts": [
+   {
+    "holder": "NCERT / PARAKH, the official case",
+    "position": "Scale: 21.15 lakh students in 2024 and 34 lakh in 2021 against ASER's roughly 650,000, larger than almost any national assessment anywhere. It covers urban India, which ASER simply does not - and the gap is not trivial in PARAKH's own data, with urban leading rural by 7 points in Grade 9 language. It resolves school-management types ASER cannot, a limitation NAS's own critics concede. It covers grades ASER cannot: ASER applies the same floor tool to a 16-year-old as to a 6-year-old, and for secondary education NAS/PARAKH is the only national instrument that exists. It has diagnostic depth at item-cluster level and district actionability across 781 districts. And from 2021 the conflict-of-interest charge was answered structurally: CBSE as external administrator, external observers from unrelated schools, confidentiality agreements, tamper-evident OMR return bags, locked trunks and MoE-appointed validators - the very reform the academic critique asked for."
+   },
+   {
+    "holder": "ASER Centre / the independent case",
+    "position": "Independence from the body being graded: no budget, ranking, promotion or NIPUN Bharat target depends on ASER's number, whereas nothing in NAS/PARAKH's architecture makes the measurer independent of the measured - even the improved 2024 design has CBSE, a board under the Ministry, observing schools under the Ministry, on behalf of a ministry being evaluated, with execution running through the state education departments the survey grades. The household frame catches whom the school frame structurally cannot, and the exclusion is written into the sampling protocol. Oral one-on-one administration is the only format that yields information about a non-reader: PARAKH's Grade 3 items are four-option multiple choice and the Guidelines instruct that students read the passage silently by themselves, so a Grade 3 non-reader contributes a 25 per cent guess rather than a zero. And the method has not changed since 2006, against three official resets in seven years."
+   },
+   {
+    "holder": "Johnson and Parrado (2021), the decisive independent finding",
+    "position": "'NAS state averages are significantly higher than ASER state averages and averages from an independently conducted nationally representative survey. In addition, state rankings based on NAS data display almost no correlation with state rankings based on ASER, IHDS, or net state domestic product per capita. We conclude that NAS state averages are likely artificially high and contain little information about states' relative performance.' The correlations: ASER to IHDS +0.62, NAS to ASER +0.19, NAS to IHDS -0.03, NAS to state income +0.05, against a benchmark of +0.82 for ASER reading to ASER maths on the same children. This is the layer that survives every correction, because frame differences shift levels roughly in common across states and rankings are exactly where they wash out. They also foreclose the innocent explanations: the tested-level difference runs the wrong way, and voluntary absence has a very small effect. Their recommendation is to 'avoid use of NAS altogether' - and they warn that NITI Aayog's School Education Quality Index rests largely on NAS data, which makes SEQI a contaminated composite that must not be used as evidence of learning anywhere."
+   },
+   {
+    "holder": "The mechanism, demonstrated experimentally in India (Singh 2020/2024)",
+    "position": "In Madhya Pradesh's Pratibha Parv, comparing responses to the same questions by the same students in the administrative test versus an independent test shows a DOUBLING of reported achievement, worst among low-performing students. In an Andhra Pradesh randomised experiment across more than 2,400 schools, paper-based assessments proctored by teachers severely exaggerate achievement in both private and government schools - roughly 20 per cent - with no such distortion in tablet-based assessments. Singh did not test NAS. But NAS 2017 was a paper-based, group-administered, in-school assessment - exactly the modality shown to distort - and the distortion is worst for low performers, precisely the shape needed to produce 'high everywhere and uninformative about relative performance'. This layer stands unrebutted for 2017 and 2021 and is simply untested for 2024."
+   },
+   {
+    "holder": "The critique that runs the other way",
+    "position": "ASER is not clean either, and by the same authors. A Kane-Staiger variance decomposition finds 5-9 per cent of the variance in state score LEVELS is transitory - state levels are solid - but a third to a half of the variance in CHANGES in state scores and over 75 per cent of the variance in changes in district scores is transitory, and the noise is non-sampling, attributed to volunteer surveyors and the right-hand-rule household walk in place of a full listing. Separately, Joshi (2024) shows against an external benchmark that pre-2011 ASER estimates are systematically biased upwards, with the bias disappearing after robust survey procedures were introduced in 2011 - so a record attributing a learning collapse to the UPA on ASER evidence would be overclaiming, though Joshi's conclusion is that the real decline was smaller than previously thought, not zero."
+   }
+  ],
+  "sources": [
+   {
+    "name": "PARAKH Rashtriya Sarvekshan 2024 National Report, NCERT",
+    "url": "https://parakh.ncert.gov.in/sites/default/files/2025-07/REPORT_India_IND.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "PARAKH Operational Guidelines-cum-Training Manual 2024 (the absentee-replacement rule, verbatim)",
+    "url": "https://parakh.ncert.gov.in/themes/parakh/prs-files/OPERATIONAL_GUIDELINES2024.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Johnson, D. and Parrado, A., 'Assessing the assessments: Taking stock of learning outcomes data in India', International Journal of Educational Development 84 (2021)",
+    "url": "https://riseprogramme.org/sites/default/files/inline-files/Johnson_Assessing%20the%20assessments_RISE%20version_v2.pdf",
+    "tier": "T3"
+   },
+   {
+    "name": "Singh, A., 'Myths of Official Measurement', RISE Working Paper 20/042; Journal of Public Economics 239 (2024)",
+    "url": "https://riseprogramme.org/publications/myths-official-measurement-auditing-and-improving-administrative-data-developing.html",
+    "tier": "T3"
+   },
+   {
+    "name": "Joshi, S., 'Has India's learning crisis really worsened?', University of Warwick, 2 October 2024",
+    "url": "https://warwick.ac.uk/fac/soc/economics/staff/sjoshi/learning_trends.pdf",
+    "tier": "T3"
+   },
+   {
+    "name": "World Bank, India Learning Poverty Brief, April 2024 (54 per cent below Minimum Proficiency Level on NAS 2017 Grade 5 data)",
+    "url": "https://documents1.worldbank.org/curated/en/099090524113131044/pdf/P179209-8dbd998a-95f1-4709-9001-7c6f4b92d182.pdf",
+    "tier": "T2"
+   },
+   {
+    "name": "ASER 2018 full report, 'ASER and NAS: different metrics with a common goal', pp. 314-320",
+    "url": "https://img.asercentre.org/docs/ASER%202018/Release%20Material/aserreport2018.pdf",
+    "tier": "T4"
+   }
+  ],
+  "notes": "Operative rules for this instrument, in order. On TRENDS: build the spine on ASER, from 2011-12 onward - it is the only continuous series and NAS/PARAKH cannot carry a trend by its own custodians' admission. On LEVELS: carry both and never difference them, noting the World Bank convergence as the honest reconciliation. On INTER-STATE comparison: use ASER levels, not NAS; do not use SEQI at all. On SECONDARY education: there is no independent instrument, so Grade 9 mathematics at 37 per cent raw or 16 points above chance carries a wide band and an explicit note that no second source exists. On ASER DELTAS below the national level: caveat or omit.\n\nTHE VERDICT ON THE DISPUTE ITSELF is roughly two-thirds different facts and one-third different weightings, in four separable layers. Layer 1, the largest, is a category error - mean against headcount - and is manufactured. Layer 2 is genuinely different populations, each measurable and each with a documented direction; note that the single most obvious explanation, ASER testing a floor two to four grades below, predicts ASER should read HIGHER, and it does not, which is why frame differences cannot close the gap on their own. Layer 3 is instrument integrity and is where the dispute is real. Layer 4 is a values question about what a national learning number should mean, and both answers are defensible.\n\nA FINDING ABOUT THIS INSTRUMENT'S OWN TIER LADDER, recorded because it is not a data problem: by the letter of the tier definition ASER is T4, the same grade as a newspaper report, because it is an NGO dataset - while PARAKH 2024, whose National Report contains no methodology section and whose 274 MB 'Technical Report' is a rasterised image file with no extractable psychometrics, is T1 because it is official. Every ASER series in this drop is graded T4 as the schema requires and carries the anomaly in its caveat. This is the sort of thing the tier description's own rule - grade what you hold, not what it is about - was written to prevent in the opposite direction."
+ },
+ {
+  "id": "P-60",
+  "title": "PARAKH 2024 proficiency-band cut-scores are published nowhere",
+  "whatChanged": "PARAKH publishes a second metric alongside its mean item-success rates: a proficiency-band headcount, on which Grade 3 language rose from 39 per cent (2021) to 57 (2024) and mathematics from 42 to 65. This is the more ASER-comparable statistic, because it is also a headcount ratio, and it is the statistic the Government's headline evidence for NIPUN Bharat rests on - Economic Survey 2025-26's infographics carry it verbatim under 'Universal FLN under NIPUN Bharat'. The band cut-scores are published in no PARAKH document. Without them the 18-point and 23-point gains are uninterpretable: they could be learning, or a moved band boundary, and no external party can tell which.",
+  "when": "2024-12-04, published July 2025",
+  "affectsDomains": [
+   "education",
+   "governance"
+  ],
+  "affectsSeries": [
+   "parakh-grade3-proficient-language",
+   "parakh-grade3-proficient-maths",
+   "nas-parakh-grade3-language",
+   "nas-parakh-grade3-maths"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "None is possible from published material. The bands INVERT against the means - language has the higher mean (64) but the lower proficiency share (57), mathematics the lower mean (60) but the higher share (65) - which can only happen if the two subjects' cut-scores sit at different points of their distributions. That inversion is itself the proof that the missing information is load-bearing rather than technical.",
+  "competingAccounts": [
+   "The Government's position is not argued but asserted: PARAKH's own blog states that 'State Government schools led foundational outcomes - validating the impact of NIPUN Bharat', and the Economic Survey reproduces the band gains as the impact evidence. No NCERT or Ministry document responding to the auditability objection was found in the National Report, the Operational Guidelines or the FAQ.",
+   "The objection is that the central official claim that the foundational literacy mission worked rests on a statistic no external party can audit, drawn from the one grade where PARAKH says comparison is permitted, from an instrument whose predecessor's state rankings correlate with nothing. Note also that PARAKH's validating comparison rests on a 0-point gap in language and a 1-point gap in mathematics between state-government and private schools, unadjusted for household selection."
+  ],
+  "sources": [
+   {
+    "name": "PARAKH Rashtriya Sarvekshan 2024 landing page and blog, NCERT",
+    "url": "https://parakh.ncert.gov.in/blog/parakh-rashtriya-sarvekshan-2024",
+    "tier": "T1"
+   },
+   {
+    "name": "Economic Survey 2025-26, Highlights/Infographics, Chapter 11",
+    "url": "https://www.indiabudget.gov.in/economicsurvey/doc/Infographics%20English.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "PARAKH Rashtriya Sarvekshan 2024 National Report",
+    "url": "https://parakh.ncert.gov.in/sites/default/files/2025-07/REPORT_India_IND.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Separated from P-59 because it is narrower and sharper: P-59 is about whether two instruments can be compared at all, while this is about one specific published number whose definition is withheld. It sits alongside three related non-publications from the same corpus - no standard errors on any PARAKH figure, no retrievable IRT model or reliability coefficient, and no count of broken-seal or irregularity-flagged schools even though the Guidelines require Field Investigators to record a broken seal on a Control Sheet, continue administering anyway, and return the sheet to CBSE."
+ },
+ {
+  "id": "P-61",
+  "title": "UDISE+ moves to individual student records: the 2022-23 reporting-base shift",
+  "whatChanged": "From reference year 2022-23 UDISE+ collects individual student-level records with a portal-generated unique educational ID and voluntary Aadhaar, replacing school-wise consolidated returns, with the stated purpose of 'weeding out of duplicate or ghost entries'. Total enrolment fell from 26.52 crore (FY2021-22) to 25.18 crore (FY2022-23) to 24.80 crore (FY2023-24). The Ministry's own disclaimer states data from 2022-23 'is not strictly comparable with the previous reports on various educational indicators such as GER, NER, Dropout rate etc.' In the SAME breath the disclaimer discloses that the denominator moved too: population projections were 'moderated' by the Ministry using SRS birth-rate trends, UIDAI Aadhaar-saturation reports and the trends of adjoining states - so numerator and denominator were re-based in the same year.",
+  "when": "2022-23 reference year; reports released end-December 2024",
+  "affectsDomains": [
+   "education",
+   "governance"
+  ],
+  "affectsSeries": [
+   "school-enrolment-total-udise",
+   "ger-primary-udise",
+   "ger-higher-secondary-udise",
+   "dropout-secondary-udise",
+   "private-unaided-enrolment-share-udise",
+   "govt-schools-count",
+   "private-schools-count",
+   "teachers-total-udise",
+   "ptr-primary-udise",
+   "single-teacher-schools-udise",
+   "single-teacher-schools-share-dise"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "No back-cast, no dual-basis year and no reconciliation table appears in any UDISE+ report retrieved. The Ministry's position is purely declarative: pre-2021-22 and post-2022-23 are two series and may not be joined. There is no published estimate of how much of the fall is deduplication and how much is real decline - the one quantity that would let anyone close the ledger. The Ministry holds both bases and could produce a dual run for one year, so this is a non-publication rather than an impossibility.",
+  "competingAccounts": [
+   "The Ministry's account is that the reform is an improvement in data quality: individual records with unique IDs permit dropout tracking and prevent duplicate or ghost beneficiaries claiming Samagra Shiksha, PM POSHAN and scholarship entitlements. Deduplication can only remove records, never add them, so a fall in the count is what a successful clean-up looks like.",
+   "The sceptical account is threefold. First, the intensity of the correction maps administrative capacity rather than schooling: Aadhaar seeding reached only 79.4 per cent nationally in 2023-24, ranging from Meghalaya 24.2 and Bihar 38.8 to Andhra Pradesh 98.1, so the measured fall is larger where Aadhaar penetration is higher, which has nothing to do with children. Second, the fall is concentrated in primary - a 14.4 per cent fall in Classes I-V in two years against a roughly flat higher secondary - and a pure-deduplication story has to explain why ghosts were so concentrated there; it is plausible, since mid-day-meal and scholarship incentives attach most strongly to primary, but the Ministry has never evidenced it. Third, Aadhaar appears on BOTH sides of the GER ratio - the numerator deduplicated using it, the denominator moderated using UIDAI saturation reports - which is a genuine circularity.",
+   "On the disclosure itself: the break was disclosed, but the disclosure was constructed after the fact. The 2022-23 report carries the incomparability language in a weaker form, with no bridge sentence and no mention of the population-projection moderation; the explicit claim that '2022-23 and 2023-24 are comparable' appears only retrospectively, in the 2023-24 report. The two reports were released together, end-December 2024, so the break-year datum entered the public record already paired with a successor, which structurally discourages anyone from treating 2022-23 as the break year."
+  ],
+  "sources": [
+   {
+    "name": "UDISE+ 2023-24 Report, Ministry of Education, DISCLAIMER p. 7 and paragraphs 1.5, 1.7, 1.8; retrieved via Wayback capture of the ministry PDF",
+    "url": "https://web.archive.org/web/20250331172900id_/https://dsel.education.gov.in/sites/default/files/statistics/report_in_PDF/udise_report_existing_23_24.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "UDISE+ 2022-23 Report, Ministry of Education (weaker disclaimer, no bridge sentence)",
+    "url": "https://web.archive.org/web/20250330231302id_/https://dsel.education.gov.in/sites/default/files/statistics/report_in_PDF/udise_report_existing_22_23.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Economic Survey 2025-26, paragraph 11.10 (independent corroboration of the FY2024-25 total)",
+    "url": "https://www.indiabudget.gov.in/economicsurvey/",
+    "tier": "T1"
+   }
+  ],
+  "notes": "THE DROPOUT SERIES IS THE SHARPEST CASE and the Ministry's own bridge claim fails there. Dropout is defined by the Ministry as a year-on-year differencing operator - pupils enrolled at a level in one year who are no longer enrolled at any grade in the next - so the FY2022-23 rate differences individual student records against school-wise consolidated returns and mechanically absorbs the deduplication: the roughly 1.34 crore removed records were counted as children who stopped being enrolled. Primary dropout reads 1.45, then 7.8, then 1.9, then 0.3. A single-year spike that vanishes is not a behavioural event. FY2023-24 is the first clean year, so 'FY2022-23 and FY2023-24 are comparable' is wrong for dropout specifically, on the Ministry's own published definition. Note the circularity in the reform's own rationale: paragraph 1.5 says student-level data was introduced IN ORDER TO track dropouts, so the dropout series was always going to be re-based by its own instrument."
+ },
+ {
+  "id": "P-62",
+  "title": "The 2025-26 NEP structural reclassification and its contradicting back-cast",
+  "whatChanged": "From 2025-26 UDISE+ reclassifies the school ecosystem into the NEP 5+3+3+4 stages - Foundational, Preparatory, Middle, Secondary - from the 10+2 structure, and re-casts every education indicator with it. The release then back-casts 2022-23, 2023-24 and 2024-25 onto the new stages, and the restated values do not match the values originally published for the same years: for 2023-24, secondary dropout reads 10.9 against 14.1, primary/preparatory dropout 3.7 against 1.9, secondary GER 66.5 against 77.4, and secondary retention 45.6 against 63.8. Same year, same source system, two official values, differing by up to 11 GER points and 18 retention points. Even the already-corrupted 2022-23 break year now has two official values.",
+  "when": "2025-26 reference year; PIB release 7 July 2026",
+  "affectsDomains": [
+   "education",
+   "governance"
+  ],
+  "affectsSeries": [
+   "school-enrolment-total-udise",
+   "ger-primary-udise",
+   "ger-higher-secondary-udise",
+   "dropout-secondary-udise"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "The two structures are not alternative presentations of one quantity. Foundational spans pre-primary through Class II while Primary spans Classes I-V; Preparatory (III-V) reads 95.4 for FY2024-25 against 90.9 for Classes I-V. Any series built here must be tagged by STRUCTURE as well as by year, and the two must never be spliced. The same problem applies to PTR, which is published simultaneously on both structures - Foundational 10 and Primary 20 for adjacent years describe different populations.",
+  "sources": [
+   {
+    "name": "UDISE+ 2025-26, paragraph 1.9, relayed",
+    "url": "https://pib.gov.in/PressReleasePage.aspx?PRID=2282141",
+    "tier": "T3"
+   },
+   {
+    "name": "PIB, Ministry of Education, UDISE+ 2025-26 release (PRID 2282141), 7 July 2026",
+    "url": "https://pib.gov.in/PressReleasePage.aspx?PRID=2282141",
+    "tier": "T1"
+   },
+   {
+    "name": "Economic Survey 2025-26 Statistical Appendix Table 8.3 and Chapter 11 footnote 8 (both structures stated, and the exclusion of anganwadi enrolments from foundational GER)",
+    "url": "https://www.indiabudget.gov.in/economicsurvey/doc/Statistical-Appendix-in-English.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "A second reporting-base shift layered on the first, three years later, and separately disclosed from it. Note one consequence that reads as a finding rather than a technicality: foundational-stage GER of 41.4 for FY2024-25 is NOT a measure of pre-primary participation. The Economic Survey's own footnote 8 states it is calculated on pre-primary enrolments in recognised schools as reported by states, 'which excludes Anganwadi enrolments and enrolments in standalone Private Pre-Primary Schools' - and ASER shows anganwadis are the largest single provider at ages 3 and 4. Against ASER's 77.4 / 83.4 / 71.4 per cent for ages 3 / 4 / 5, UDISE+'s 41.4 is measuring something else entirely. The Survey does reconcile the two structures, which is good practice, but it does so in a footnote in a 48-page chapter while the infographic and the statistical appendix each carry one structure with no cross-reference."
+ },
+ {
+  "id": "P-63",
+  "title": "Pupil-teacher ratio: two breaks on opposite sides of the ratio, and PTR is not named in the disclaimer",
+  "whatChanged": "PTR's numerator is enrolment, the quantity re-based to individual student records in 2022-23; its denominator is teachers, into which guest and part-time teachers were admitted for the first time in 2023-24. Both re-basings push PTR down spuriously, in consecutive years, on opposite sides of the ratio. The formula, the denominator construction and the double-counting convention are identical either side of the break - which is precisely why the enrolment shock transmits at full strength: nothing was fixed to absorb it. And in all four editions retrieved the Ministry's incomparability disclaimer names exactly three indicators - GER, NER and dropout rate - and never names PTR, the one headline indicator whose numerator is the raw re-based enrolment count itself.",
+  "when": "FY2022-23 and FY2023-24",
+  "affectsDomains": [
+   "governance",
+   "education"
+  ],
+  "affectsSeries": [
+   "ptr-primary-udise",
+   "ptr-elementary-dise",
+   "teachers-total-udise",
+   "schools-above-rte-ptr-primary-dise"
+  ],
+  "directionOfBias": "overstates-post-2014",
+  "bridgeExists": false,
+  "bridgeNote": "There is no continuous national PTR series spanning FY2021-22 to FY2023-24; treat the series as two segments and never splice. The pre-break series is solid and reproducible - an independent researcher working from UDISE+ 2021-22 microdata reproduces the Ministry's published level-wise PTR exactly (26 / 19 / 18 / 27) - so it is only across the break that the series fails. The break-year fall itself decomposes: holding teachers fixed at FY2021-22 and applying the new enrolment gives 24.15 against a published 23.30, so 70 per cent of the movement is the enrolment re-basing alone. Roughly seven-tenths of the celebrated improvement in primary PTR in the break year is children being deleted from a database - a child removed as a duplicate was never in the classroom, and removing them improves the measured ratio without a teacher being appointed or a child being taught differently.",
+  "competingAccounts": [
+   "A third, smaller and entirely undocumented discontinuity sits inside the denominator. At the break the total teacher headcount barely moved (-0.25 per cent) while the sum of the four level-teacher counts rose 1.76 per cent: teacher deduplication did not shrink the headcount, what changed was how teachers were reported across levels, with proportionally more recorded as spanning multiple levels. Because a multi-level teacher is counted in full at every level they touch, this inflates every level denominator and depresses every level PTR independently of the enrolment effect. No UDISE+ report discusses it.",
+   "The guest-teacher coverage change is stated in exactly one place - a footnote in a research paper, not in any ministry document: 'UDISE 2021-22 does not include guest teachers, i.e. teachers who are on an ad-hoc appointment against a substantive post; this option is available along with part-time teachers from the 2023-24 cycle onwards. These numbers are not easily available but could be up to 10 to 15 per cent of the government and government-other workforce deployed in a state.' The published counts are consistent with it - 94,83,294 (2022-23) to 98,07,600 (2023-24), the largest single-year rise in the series, in exactly that year - but consistency is not proof, since genuine recruitment would look the same. The consequence either way is that pre-2023-24 teacher totals undercount people actually teaching by an unknown amount.",
+   "A THIRD break, in the UPA period, for anyone building back to the baseline. DISE restated its own level-wise PTR denominators at the 2012-13/2013-14 edition boundary, footnoting the exclusion of secondary and higher-secondary teachers in composite schools: the 2012-13 upper-primary PTR was restated from 25 to 18, a 28 per cent revision, by changing the denominator alone. Three official values therefore circulate for 2012-13 primary PTR - 34.0 from the UDISE+ back-chart, 28 from contemporaneous DISE and 27 from restated DISE - and the basis of the 34.0 could not be established, so it is carried nowhere in this instrument."
+  ],
+  "sources": [
+   {
+    "name": "UDISE+ reports 2019-20 to 2024-25, Table 4.12 and Concepts and Definitions item 14; retrieved via Wayback",
+    "url": "https://web.archive.org/web/20250331172900id_/https://dsel.education.gov.in/sites/default/files/statistics/report_in_PDF/udise_report_existing_23_24.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "CETE (TISS), 'Teachers in India in 2021-22: The picture from UDISE+', Background Paper 1 to SOTTTER 2023, footnote 2 (the guest-teacher coverage change)",
+    "url": "https://tiss.ac.in/uploads/files/SOTTTER-23_BP1_UDISE.pdf",
+    "tier": "T2"
+   },
+   {
+    "name": "DISE / U-DISE Flash Statistics, NUEPA/NIEPA, 2012-13 to 2015-16 editions, retrieved via Wayback captures of udise.in",
+    "url": "https://web.archive.org/web/2016/http://udise.in/",
+    "tier": "T1"
+   },
+   {
+    "name": "Rajya Sabha Standing Committee on Education, 363rd Report, Table-23 (independent T1 confirmation of the FY2021-22 column)",
+    "url": "https://bucketapi.rajyasabha.digital/public-bucket/committee_file/ReportFile/16/198/363_2025_6_12.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "On the choice of directionOfBias: the value's written definition covers a figure that is too high OR one that 'flatters by construction', and this is the second case. PTR is a lower-is-better measure whose post-2014 readings are too LOW, and the flattery is established rather than asserted - 70 per cent of the break-year fall is arithmetic. `degrades-precision` was considered and rejected because its definition explicitly disclaims any direction, and here the direction is known and uniform.\n\nThe related structural point, which belongs with the single-teacher-school finding rather than here: a national mean of 25:1 sitting comfortably inside every norm conceals about 3.6 lakh schools above 35:1 and about a lakh with a single teacher. The average is not wrong; it is answering a question nobody asked."
+ },
+ {
+  "id": "P-64",
+  "title": "Teacher vacancies: two irreconcilable official aggregates and an undefined sanctioned-post base",
+  "whatChanged": "The Ministry of Education has never established and does not maintain a national teacher-vacancy statistic. What exists are two ad-hoc aggregates assembled on request - one for a Lok Sabha question from Project Approval Board minutes, one furnished to a parliamentary committee - from unaudited state self-returns. For 2023-24 they differ by 1,12,501 posts: 8,46,647 against 9,59,148, with secondary sanctioned strength differing by 6,01,224. The Department told the Committee in writing that vacancy data 'are maintained by the respective State governments/Union Territory administrations', and the Committee had to recommend in 2025 that it 'seek data from the State/UT Governments and maintain it centrally'. The Department did not accept the recommendation.",
+  "when": "2021-22 onward; Committee exchanges March 2025 and March 2026",
+  "affectsDomains": [
+   "governance",
+   "federalism",
+   "education",
+   "employment"
+  ],
+  "affectsSeries": [
+   "teacher-vacancy-rate-ssa",
+   "teacher-vacancy-rate-elementary",
+   "teacher-vacancy-rate-kvs",
+   "teacher-vacancy-rate-nvs",
+   "teachers-professionally-qualified-primary-udise",
+   "teachers-trained-pre-primary-udise",
+   "contract-teachers-share-government"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "bridgeNote": "The most likely mechanism for the 2023-24 divergence is that 'Secondary' in the Committee-furnished aggregate absorbs higher secondary while the PAB aggregate's does not, plus Tamil Nadu's re-inclusion - but NEITHER DOCUMENT DEFINES ITS LEVELS, so that is inference, not established fact. Per the standing requirement that an uninterpretable number must not be carried forward, the 2023-24 national vacancy total is carried as a range of 8.5 to 9.6 lakh with both sources named, or not at all.",
+  "competingAccounts": [
+   {
+    "holder": "Department of School Education and Literacy",
+    "position": "Education is in the Concurrent List; an overwhelming majority of schools are under the administrative control of States and UTs; recruitment, service conditions and rational deployment come under state governments; and recruitment is a continuous process as vacancies keep arising through retirement, resignation and new schools. The Government of India directly administers about 3,000 of India's roughly 14.7 lakh schools. The data is uploaded to the PRABANDH portal for monitoring."
+   },
+   {
+    "holder": "Rajya Sabha Standing Committee on Education",
+    "position": "'Since the funds under SSA are granted to State/UT Governments by the Union Government, it is imperative for the Department of School Education and Literacy to seek data from the State/UT Governments and maintain it centrally.' A parliamentary committee asking a ministry to start maintaining a statistic in 2025 is direct evidence that it was not being maintained centrally."
+   },
+   "On the portal the Department points to: as at 2026-08-02 prabandh.education.gov.in does not resolve in DNS from two independent network paths. Wayback holds captures from January 2024 to June 2025 and the archived landing page renders only its title and a JavaScript notice. It is a Samagra Shiksha planning and appraisal MIS for state officials, not a public statistics product; no public dashboard, download or report of teacher vacancies was ever exposed on it on the evidence of the archive. So the position is that the Department declines to maintain the statistic, points to a portal as where the data goes, and the portal is a login-gated administrative system that is currently unreachable.",
+   "On the quality of what does circulate: in the PAB annexure 'Vacant' is not measured but derived, equal to sanctioned minus in-position in every state row; Uttar Pradesh's elementary row is byte-identical for two consecutive years; six states report exactly zero elementary vacancies in 2023-24; the 2023-24 total silently excludes Tamil Nadu with no footnote, so the printed Total row sums a different set of states in the third column than in the first two; and Karnataka's 2021-22 elementary row implies a 71.8 per cent vacancy rate followed by a tripling of the teaching force in one year, meaning the national 2021-22 figure contains roughly a lakh posts that are a reporting error."
+  ],
+  "sources": [
+   {
+    "name": "Rajya Sabha Standing Committee on Education, Women, Children, Youth and Sports, 363rd Report on Demands for Grants 2025-26 (DoSEL), paragraphs 3.4.29-3.4.30 and Table-24",
+    "url": "https://bucketapi.rajyasabha.digital/public-bucket/committee_file/ReportFile/16/198/363_2025_6_12.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "373rd Report (Action Taken on the 363rd Report), presented 16 March 2026, pp. 85-86 and 95",
+    "url": "https://bucketapi.rajyasabha.digital/public-bucket/committee_file/ReportFile/16/214/373_2026_3_12.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "376th Report, Demands for Grants 2026-27 (DoSEL), Tables 29-34 (KVS and NVS as on 31.12.2025)",
+    "url": "https://bucketapi.rajyasabha.digital/public-bucket/committee_file/ReportFile/16/214/376_2026_3_12.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Annexure to Lok Sabha Unstarred Question 133, answered 04.12.2023, 'PAB Minutes and AWP&Bs' - retrieved from a third-party mirror, not from sansad.in",
+    "url": "https://educationforallinindia.com/wp-content/uploads/2024/10/statewise-shortage-of-teachers-elementary-and-secondary-level-2021-22-to-2023-24-PAB-4-december-2023-India.pdf",
+    "tier": "T3"
+   },
+   {
+    "name": "The Right of Children to Free and Compulsory Education Act 2009, section 26 (the ten per cent vacancy ceiling)",
+    "url": "https://www.indiacode.nic.in/",
+    "tier": "T1"
+   }
+  ],
+  "notes": "THE SANCTIONED-POST BASE IS UNDEFINED AND IT MOVES, which is why the vacancy RATE is not a rate of anything stable. Between 2023-24 and 2024-25 elementary sanctioned posts fell by 2,58,513 while secondary sanctioned posts rose by 9,18,066 - 60.3 per cent in twelve months. No education system creates 9.2 lakh secondary teaching posts in a year; this is an undisclosed reclassification. Its direct consequence is that the headline rate improved from 15.16 to 14.07 per cent because the denominator grew 10.4 per cent while the absolute vacancy count also grew, by 23,514 posts. Anyone quoting the rate as improvement is quoting an artefact of the base.\n\nThe same non-answer covers contract status. The UDISE+ Data Capture Format records field 3.3.12 'Nature of Appointment: 1-Regular, 2-Contract, 3-Part-Time/Guest' for every individual teacher record in the country, identically worded in the 2022-23 and 2025-26 editions - so the regular-versus-non-regular share is collected exhaustively and published nowhere. The Committee asked for it and received the Concurrent-List reply. This record therefore covers a family of related absences with one shape: the data is collected and not published, or it was published and was discontinued, or the word used to publish it does not mean what the statute means by it."
+ },
+ {
+  "id": "P-65",
+  "title": "Education spending has two official numerators and they move in opposite directions",
+  "whatChanged": "The Ministry of Education publishes two totals for public education spending side by side, in one table, for the same year: education departments only, and education and other departments. For FY2021-22 they are 2.75 and 4.12 per cent of GDP - a gap of 1.37 percentage points, with the narrow figure two-thirds of the headline. The choice of numerator reverses the direction of the last decade. On the broad basis FY2013-14 to FY2021-22 runs 3.84 to 4.12 per cent, an improvement; on the narrow basis it runs 2.97 to 2.75, a decline. Same budgets, opposite direction, purely from numerator choice. 'India spends X per cent of GDP on education' has no single true answer.",
+  "when": "FY2000-01 to FY2021-22, published throughout",
+  "affectsDomains": [
+   "education",
+   "macro",
+   "governance"
+  ],
+  "affectsSeries": [
+   "edu-spend-gdp-edu-depts",
+   "edu-spend-gdp-all-depts",
+   "edu-spend-gdp-centre-edu-depts",
+   "edu-union-moe-gdp"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "bridgeNote": "The two are not convertible by a constant and must never be treated as one series with an offset: across the twenty-two-year table the gap runs from 0.52 points (FY2004-05) to 1.46 (FY2016-17), roughly tripling, and other departments' share of the total rose from 15.9 per cent (2004-05) to 33.3 (2021-22). The decomposition IS available, which is why this is a definitional dispute rather than an unmeasurable one: the broad column can be resolved to ministry level from the ABE's own Statement 1.",
+  "competingAccounts": [
+   "The broad total is the official headline and the one that carries authority. Parliament is briefed on it - the Standing Committee's 363rd Report reproduces the broad series verbatim, every value matching - and the 6 per cent commitment is invoked against it. Its rationale is that education spending booked by non-education ministries is real education spending: the government's own note lists medical and public health education, agriculture research and education, welfare of SC/ST/OBC and minority education, scientific research, education under social security, mid-day meal nutrition, police training and rural development training.",
+   "The narrow total is what most readers mean by education spending. The broad column includes TRAINING, which the narrow one excludes - 20,205 crore, 0.09 points of GDP, in FY2021-22 - so the two columns are not like-for-like. The Ministry of Education is 39 per cent of the Centre's own broad education spending of 1.02 per cent of GDP, and under a tenth of the 4.12 per cent all-India headline, which is Centre plus States; the top four non-education ministries alone come to 90 per cent of the entire Ministry of Education budget. And the ABE concedes the sector allocation is an assumption, not a measurement: the breakup of other departments' spending 'is not available in the budget documents' and is assigned on the stated ground that it mainly goes to elementary and secondary education.",
+   "The consequence for the 6 per cent target is that the gap to it is 1.9 points or 3.3 points depending on a definitional choice that is never stated when the target is invoked. Two further sharpeners: the ABE never mentions the 6 per cent target, NEP 2020 or Kothari in any edition, so the comparison is made outside the statistical document; and Kothari's '6 per cent of national income' was not verified against the original, which matters because national income is a smaller denominator than GDP at market prices, so the Kothari 6 per cent and the NEP 6 per cent may not be the same bar."
+  ],
+  "sources": [
+   {
+    "name": "Analysis of Budgeted Expenditure on Education 2019-20 to 2021-22, Ministry of Education, Table No. (4) p. 16 and sections 3.2, 4.2-4.4; retrieved via Internet Archive, the live ministry URL returns 404",
+    "url": "https://web.archive.org/web/20250212064309id_/https://www.education.gov.in/sites/upload_files/mhrd/files/statistics-new/budget_exp_2020_22.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Rajya Sabha Standing Committee on Education, 363rd Report, paragraph 2.10 (independent confirmation of the broad series FY2014-15 to FY2021-22)",
+    "url": "https://bucketapi.rajyasabha.digital/public-bucket/committee_file/ReportFile/16/198/363_2025_6_12.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Economic Survey 2023-24, Chapter VII, Table VII.1 Note (ii) - the government's own account of what MoE sweeps in beyond RBI's definition",
+    "url": "https://www.indiabudget.gov.in/economicsurvey/",
+    "tier": "T1"
+   },
+   {
+    "name": "PIB, Lok Sabha written reply of 6 December 2021 (the 6 per cent commitment)",
+    "url": "https://pib.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Analogous in structure to P-52, the PMLA denominator dispute: neither figure is fabricated and neither corrects the other. Two independent research extractions of ABE Table 4 agreed on all 132 published cells, so the series itself is solid; what is disputed is which column means 'education spending'.\n\nA THIRD and FOURTH definition exist and neither is carried in this drop. The World Bank/UNESCO WDI series for India is a distinct construction with a distinct denominator, and its period labelling could not be resolved: P-14's own bridge note requires the WDI India labelling convention to be verified before the record is relied on, and that verification has not been done. The one near-coincidence supporting a fiscal-year reading (WDI 2013 = 3.85 against ABE FY2013-14 = 3.84) fails immediately on either side, so the series is HELD rather than authored on an unverified mapping. RBI's State Finances reports education as a share of aggregate expenditure, a fourth denominator, and was not retrieved. And Economic Survey 2025-26 dropped the education-share-of-GDP table entirely - a widely relayed '2.9 per cent in FY20 to 2.7 in FY26' quote could not be located anywhere in its thirteen chapters or 233-page appendix and is not carried."
+ },
+ {
+  "id": "P-66",
+  "title": "The education budget analysis stopped being published, and its last two points are estimates",
+  "whatChanged": "The Analysis of Budgeted Expenditure on Education, an annual Ministry of Education publication running since at least 2000-01, has published no edition covering FY2022-23 or later. The series terminates at FY2021-22, a four-year gap in a twenty-five-year annual statistical series, and T3 has zero observations. Separately, the terminal points of both spending series are Budget Estimates, which are systematically revised down: on the only year where all three stages exist, the broad basis reads BE 4.39, RE 4.30, Actual 4.04 - a 0.35-point BE-to-Actual revision. The last Actual on either series is FY2019-20.",
+  "when": "FY2022-23 onward; the last edition is dated 2024 and covers to FY2021-22",
+  "affectsDomains": [
+   "education",
+   "macro",
+   "governance"
+  ],
+  "affectsSeries": [
+   "edu-spend-gdp-edu-depts",
+   "edu-spend-gdp-all-depts",
+   "edu-spend-gdp-centre-edu-depts",
+   "edu-union-be-shortfall-pct",
+   "ugc-provision-gross"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "Two things cannot be recovered. First, the estimate stage of rows FY2000-01 to FY2018-19 is INFERRED from publication convention - in every edition the last three rows are Actual, Revised Estimate and Budget Estimate and all earlier rows are Actuals - and is not annotated in the source for those years. Second, the schema has no field for estimate stage and cannot express it: `status` is an evidence grade (verified/approx/pending) and stage is orthogonal to it, since a Budget Estimate can be perfectly verified and still be wrong by 0.3 points. Until a field exists, stage is carried in each point's note and must render.",
+  "competingAccounts": [
+   "Whether the publication lapsed or merely became unreachable is not settled. Both research passes established that education.gov.in now serves a client-rendered application returning HTTP 200 with an empty shell for any path - verified with five fabricated ABE paths, all returning 200 with no content - and a Wayback CDX check establishes that nothing newer than the 2024 edition was ever archived. But neither queried the site's runtime API nor retrieved from an Indian IP, so the alternative - that an edition exists and is merely unlinked, making this link rot rather than a lapse in a twenty-five-year series - is not excluded. `not-published` is the right reasonKind on the evidence held, with that verification outstanding.",
+   "The corroborating evidence that Budget Estimates overstate comes from a completely different direction and agrees: the Union Ministry of Education underspent its own Budget Estimate in 13 of 16 completed years at a mean of 6.31 per cent, cumulatively 83,582 crore across FY2009-10 to FY2024-25. Economic Survey 2023-24 quoted 4.64 per cent - a Budget Estimate for a year whose Actual was never published - as 'latest available'."
+  ],
+  "sources": [
+   {
+    "name": "Analysis of Budgeted Expenditure on Education 2019-20 to 2021-22, Ministry of Education, New Delhi 2024 (PDF last modified 3 December 2024); the live ministry URL returns HTTP 404",
+    "url": "https://web.archive.org/web/20250212064309id_/https://www.education.gov.in/sites/upload_files/mhrd/files/statistics-new/budget_exp_2020_22.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Union Budget Statements of Budget Estimates, Department of School Education and Literacy and Department of Higher Education, FY2009-10 to FY2026-27",
+    "url": "https://www.indiabudget.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Every chart terminating at FY2021-22 must say on its face that its last two points are a Revised Estimate and a Budget Estimate.\n\nTwo further encoding problems this record surfaces, raised for resolution at source rather than worked around. First, FY2023-24 Union education spending has TWO simultaneously valid values - published 1,23,364.96 crore against MUSK-adjusted 99,864.96 crore, after 23,500 crore net was parked in a non-lapsable fund rather than spent on programmes - and points[] admits one value per period. The published figure turns an 11.54 per cent shortfall into a 9.27 per cent overspend. Second, the same one-period-two-values problem arrives again from P-10 when the 2022-23 GDP base propagates: nominal GDP is about 3.8 per cent lower on the new base, so every education share steps up about 3.9 per cent in relative terms - 4.12 becoming about 4.28, 2.75 becoming about 2.86 - with no change in a rupee spent or a child taught. That is not yet applicable and cannot be: the last ABE predates the rebasing and the MoSPI back series is unreleased."
+ },
+ {
+  "id": "P-67",
+  "title": "AISHE: the GER denominator was restated, and the survey ceased to be timely",
+  "whatChanged": "Two things happened to India's higher-education statistic. First, the denominator was restated: every GER published before the AISHE 2020-21 report rests on 2001-Census-based population projections and everything from 2020-21 onward rests on 2011-Census-based projections, which are about 6 per cent larger and mechanically cut GER by roughly 1.5 points. AISHE states it plainly - 25.6 for 2019-20 on the 2011 projection against 27.1 on the 2001 projection - so as-published and restated values for the same year differ by up to 1.5 points and cannot share a column. Second, the publication lag opened from under a year in the mid-2010s to 42 months for AISHE 2022-23, which appeared on 8 July 2026 alongside AISHE 2023-24, after a 29-month interval with no AISHE publication at all.",
+  "when": "Denominator restatement in the 2020-21 report (published 29 January 2023); lag from 2019-20 onward",
+  "affectsDomains": [
+   "education",
+   "governance"
+  ],
+  "affectsSeries": [
+   "higher-ed-ger",
+   "higher-ed-enrolment",
+   "aishe-publication-lag"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": true,
+  "bridgeNote": "The restatement bridges completely and AISHE published the bridge: a full 2011-basis series back to 2011-12 exists and reproduces the published GERs exactly against the published projections (4,46,32,261 divided by 151,161,000 gives 29.53). That restated series is what this instrument carries. The direction is uniform and known - every pre-2020-21 as-published figure is too high by roughly 1.5 points at 2019-20 levels - but the affected span runs from 2011-12 to 2019-20, straddling the political transition rather than sitting on one side of it, which is why the directional values of this field do not fit and `degrades-precision` is used with the direction stated here instead. One consequence worth naming: the year female GER crossed above male is itself basis-dependent, reading 2017-18 on the restated series and 2018-19 as published.",
+  "competingAccounts": [
+   "The lag is not a collection problem and the report says so: 'The Survey was held between 18th November, 2022 till March, 2024.' Collection closed in March 2024 and the report appeared 28 months later, so the binding constraint sits between scrutiny and publication, not in the field. And the lag is era-shaped: AISHE 2015-16, 2016-17 and 2017-18 each carried a cover year one year after the survey year; the lag opened in T2 and reached its maximum in T3.",
+   "The consequence is demonstrated rather than inferred, which makes this the strongest form of a not-published finding. Economic Survey 2025-26 quoted an AISHE 2022-23 higher-education GER of 29.5 while the AISHE 2022-23 report was still unpublished, and the same Survey's statistical appendix - unable to cite an unpublished report - fell back on AISHE 2021-22 and printed 28.4. The number was in government hands and used in the government's flagship economic document months before the report containing it was released. Producibility is not merely inferred here; it is shown.",
+   "A separate and compounding problem is that the numerator is a voluntary self-reported administrative return. The Ministry's own words: 'Participation in AISHE is voluntary, and the data is self-reported by the HEIs via AISHE web portal.' The headline participation rate of more than 90 per cent is post-pooling, not actual response - universities 96.9 per cent, colleges 92.0, standalone institutions 69.1 - with non-responders' totals filled by repeating their latest available data, so roughly 31 per cent of standalone institutions in the 2023-24 figures carry data one to two years old. This is P-22's shape in higher education."
+  ],
+  "sources": [
+   {
+    "name": "AISHE 2020-21 report, statement of the projection-basis restatement, Department of Higher Education",
+    "url": "https://aishe.gov.in/",
+    "tier": "T1"
+   },
+   {
+    "name": "Gross Enrolment Ratio from AISHE based on Population Projection of 2011 Census (the restated series)",
+    "url": "https://cdnbbsr.s3waas.gov.in/s392049debbe566ca5782a3045cf300a3c/uploads/2025/06/202506041164303308.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "PIB release on AISHE 2022-23 and 2023-24, PRID 2282525, 8 July 2026",
+    "url": "https://pib.gov.in/PressReleasePage.aspx?PRID=2282525",
+    "tier": "T1"
+   },
+   {
+    "name": "Economic Survey 2025-26 Statistical Appendix Table 8.3 (28.4, AISHE 2021-22) against the same Survey's Infographics Chapter 11 (29.5, AISHE 2022-23)",
+    "url": "https://www.indiabudget.gov.in/economicsurvey/doc/Statistical-Appendix-in-English.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The denominator is also FALLING and doing half the work on the recent trend: published 18-23 projections run 152,444,000 (2021), 151,161,000 (2022), 149,879,000 (2023), so holding it at its 2022 value the 2023-24 GER would be 29.77 rather than 30.0. As India's 18-23 cohort contracts, GER will keep rising on flat enrolment - and the whole denominator rests on a projection whose base is now fifteen years old, which is P-04 reaching into higher education.\n\nData-quality flags inside the flagship report, recorded so they are not rediscovered: AISHE 2023-24's highlights say ST GER 'was 23.5 in 2022-23' while its own body text says 22.6; its narrative names the states with highest GER while its own Table 19 shows two omitted jurisdictions above them all; the GPI time-series file does not reconcile with the GER time-series file published beside it; and Tables 21 and 52 are listed in the contents and do not appear in the published PDF. Two migrations also degraded the record: the entire AISHE report archive was re-uploaded to a new host in June 2025, so original publication metadata is no longer recoverable from file paths, and the July 2026 release directs readers to a Department of Higher Education portal that failed to resolve on repeated attempts."
+ },
+ {
+  "id": "P-68",
+  "title": "Literacy is asked, not tested - and four official instruments use four rules",
+  "whatChanged": "India's literacy rate is a self-declaration. In the Census, NSS and PLFS the enumerator poses the question to a household informant, frequently about other members, and no reading or writing task is administered at any point: a literate person is a person someone said was literate. Four official instruments apply four different rules to the same word. Census, NSS and PLFS form one definitional family - can both read and write a simple message with understanding, age 7 plus - differing in sampling and coverage rather than concept. CAMS is the outlier inside the official family: for anyone ever enrolled in formal education, completing pre-primary or Class I is definitionally literacy and 'no test of the ability was performed'. NFHS-5 is the only official instrument administering any reading task, and only below Standard 9, with partial credit, on a restricted 15-49/15-54 frame.",
+  "when": "Census 1951 onward; PLFS 2025 is the latest measurement",
+  "affectsDomains": [
+   "education",
+   "governance"
+  ],
+  "affectsSeries": [
+   "literacy-rate-7plus"
+  ],
+  "correctiveSeries": [
+   "aser-std5-reading",
+   "aser-std3-reading"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": true,
+  "bridgeNote": "The self-declaration gap has been measured twice, and both measurements point the same way. NFHS-3 (2004-05) ran both methods on the same respondents: 69 per cent self-reported against 63.4 per cent when required to read a test card, a 5.6-point gap. A 1991 Literacy Survey re-contact found over 10 per cent of below-primary-educated persons reported literate by informants were illiterate when individually contacted, and only 70 per cent of below-primary self-identified literates demonstrated both reading and writing with comprehension. 5.6 points is a floor, not a ceiling: NFHS's card test is one sentence with partial credit and is skipped entirely above Standard 9.",
+  "competingAccounts": [
+   "Two further definitional traps sit inside the official numbers. Census 2011's FINAL literacy rate is 72.98 per cent, computed from the Registrar General's own Primary Census Abstract; 74.04 is the PROVISIONAL figure released on 31 March 2011, and it is what appears in ministry documents, international compendia and the press. No official communication foregrounds the revision. Nothing is concealed - the final figure has been public since 2013 - but for an instrument tracking what the state knows against what the state says, this is a clean example of the two diverging. Any series splicing provisional-2011 to a later survey embeds a spurious 1.06-point step. Separately, the AGE FRAME costs about 4.7 points: Census 2011 reads 74.04 at 7 plus and 69.30 at 15 plus, so the frame belongs in the field name.",
+   "The UNESCO Institute for Statistics series for India, which the World Bank passes through, is neither a model projection nor a carry-forward from Census 2011: it is a spliced patchwork of three different Indian surveys switching instrument between adjacent years - 76.32 (2022, PLFS), 81.70 (2023, CAMS), 78.16 (2024, back to PLFS). A 5.4-point rise followed by a 3.5-point fall is demographically impossible for a stock variable, so any trend drawn through UIS India literacy for 2018-2024 measures instrument turnover rather than learning. UIS's own recoding rule is not even a literacy question: those reporting any level of formal schooling are coded literate, which is an attainment question with the 'not literate' bucket inverted.",
+   "The concrete point, and it is the reason ASER must never share an axis with a literacy rate. Under self-declaration 81.1 per cent of Indians aged 7 plus are literate (PLFS 2025). Under an administered task 48.8 per cent of children in Standard V can read a Standard II text (ASER 2024). Under CAMS, completing Class I is literacy by definition, unasked. More than half of Standard V children cannot read a text pitched three grades below them - and every one of them, on reaching 15 with 'primary' recorded as attainment, is counted literate by PLFS's ladder, by CAMS's Case II rule, by UIS's recoding, and by the Census too if an informant says so. The Standard II reading task is a harder test than the national literacy statistic."
+  ],
+  "sources": [
+   {
+    "name": "Census of India 2011 Primary Census Abstract (DDW_PCA0000_2011_Indiastatedist), Office of the Registrar General",
+    "url": "https://censusindia.gov.in/",
+    "tier": "T1"
+   },
+   {
+    "name": "Periodic Labour Force Survey Annual Report 2025, NSO/MoSPI, Table 7 and section 2.4",
+    "url": "https://www.mospi.gov.in/",
+    "tier": "T1"
+   },
+   {
+    "name": "NSS Report No. 590, Comprehensive Annual Modular Survey 2022-23, Appendix B section 1.2 ('no test of the ability was performed')",
+    "url": "https://www.mospi.gov.in/",
+    "tier": "T1"
+   },
+   {
+    "name": "NFHS-5 (2019-21) National Report, IIPS and ICF, section 3.2",
+    "url": "https://dhsprogram.com/pubs/pdf/FR375/FR375.pdf",
+    "tier": "T2"
+   },
+   {
+    "name": "ASER 2024 National Findings, ASER Centre",
+    "url": "https://asercentre.org/wp-content/uploads/2022/12/ASER-2024-National-findings.pdf",
+    "tier": "T4"
+   }
+  ],
+  "notes": "Filing note: this record's directionOfBias is `disputed` because four instruments disagree about the quantity and the record does not pick between them. The GAP against an administered task has a known direction and is stated in bridgeNote rather than in the field, since the field's directional values are anchored to 2014 and this defect is not.\n\nULLAS/NILP is recorded here as a fifth thing that is not a measurement at all. The Foundational Literacy and Numeracy Assessment Test is administered only to registered non-literate learners who were taught under the scheme and chose to sit - a self-selected, taught, pre-registered cohort with no population denominator - so its 89.6 per cent pass rate is what an end-of-course assessment yields and cannot be converted into a literacy rate. Its 'fully literate' declarations are softer still: Goa was declared fully literate on 30 May 2025 against a nationally prescribed 95 per cent benchmark while the same PIB release concedes PLFS puts Goa at 93.60 per cent, the declaration resting on Goa's own survey."
+ },
+ {
+  "id": "P-69",
+  "title": "RTE section 12(1)(c): the official 'seats' figure is a lagged reimbursement headcount",
+  "whatChanged": "There is no published national series of seats notified against seats filled under the 25 per cent private-school quota, and the Government of India does not maintain one. What the Ministry publishes is a cumulative count of children in schools for which reimbursement is claimed, with no seats denominator. Worse, where the Ministry does use the word 'seats' the figure is demonstrably something else: for Karnataka, the 'total number of seats' for year Y equals exactly the Project Approval Board approved reimbursement headcount for year Y minus 1, for three consecutive years - which is why seats equalled admissions perfectly for 2021-22, 2022-23 and 2023-24, a hundred per cent fill rate by construction rather than by achievement. The apparent 19.1 per cent fill in 2024-25 is the artefact breaking down, not a sudden collapse.",
+  "when": "2012-13 onward; the Karnataka reply is dated 27 July 2026",
+  "affectsDomains": [
+   "education",
+   "governance",
+   "federalism"
+  ],
+  "affectsSeries": [
+   "rte-quota-children",
+   "rte-quota-reimbursement-approval-rate",
+   "rte-quota-implementing-jurisdictions"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "bridgeNote": "The only genuine national seats-versus-filled measurement ever made was a DISE-based exercise for 2012-13 and 2013-14: fill rates of 21.5 and 29.0 per cent, on about 21.1 lakh seats available and 6.1 lakh filled, with Rajasthan and Madhya Pradesh alone accounting for 320,000 of the 610,000. That it was constructible then is the point: this is a not-published problem sitting on top of a never-defined one, not an impossibility. Operative rule: any figure the Government of India labels 'seats' under section 12(1)(c) should be treated as a reimbursement-claim headcount until proven otherwise, and no national fill-rate series may be built on Ministry data.",
+  "competingAccounts": [
+   "Two official-derived national series diverge by up to 1.95 million children in the same year, and both claim to come from the same PRABANDH/PAB pipeline. The Ministry's Lok Sabha replies give 4,372,723 / 4,523,080 / 4,896,953 for 2019-20 to 2021-22; a compilation from state PAB minutes gives 3,604,082 / 3,473,922 / 2,950,342 for the same years. This is a live data-integrity problem, not a rounding difference. The compilation's own limitations section concedes that PAB minutes 'capture only the reimbursement information, which may include information spread across years, and thus may not be unique to a given year', and that its school-participation figures exceed 100 per cent of all private schools in two states - which cuts against it and in favour of neither.",
+   "Even where fill rates are published by third parties, the denominator is not applied consistently: the same report computes fill against seats for one state and against applications received for another in the same table, so a figure quoted as a fill rate from that source must be recomputed against a stated base. On a seats base one state's 2020-21 reads 14.2 per cent against a printed 56.66.",
+   "On money as against children, the same structural blindness: the Ministry states that 'the Central share is released to State/UTs based on approved funding pattern and not intervention wise', so the Centre does not know and cannot report how much money actually reached schools under the provision. Approval is not release and release is not payment to schools. The cumulative approval shortfall of 2,451.39 crore across FY2020-21 to FY2024-25 is therefore a floor on the gap, not a measure of what schools are owed."
+  ],
+  "sources": [
+   {
+    "name": "Lok Sabha Unstarred Question 1260, answered 27.07.2026 (the Karnataka seats and admissions table that exposes the lag)",
+    "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/188/AU1260_aW0kcJ.pdf?source=lsapps",
+    "tier": "T1"
+   },
+   {
+    "name": "Lok Sabha Unstarred Question 2160, answered 05.08.2024 (claimed against approved, state-wise, source PRABANDH)",
+    "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/182/AU2160_Xw98u5.pdf?source=lsapps",
+    "tier": "T1"
+   },
+   {
+    "name": "Lok Sabha Unstarred Questions 2176 (02.08.2021) and 832 (12.12.2022) - the national headcounts",
+    "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/176/AU2176.pdf?source=lsapps",
+    "tier": "T1"
+   },
+   {
+    "name": "State of the Nation: RTE Section 12(1)(c), IIM-Ahmedabad / Central Square Foundation / Accountability Initiative / Vidhi, March 2015 - the only national seats-versus-filled measurement",
+    "url": "https://www.educationforallinindia.com/State-of-the-Nation-Section-12-1-c-CSF-March-2015_RTE_Act-2009.pdf",
+    "tier": "T3"
+   },
+   {
+    "name": "Indus Action, Bright Spots Report 2023, Table A-1 (the PAB-minutes national series)",
+    "url": "https://indusaction.org/wp-content/uploads/2026/02/BSR-Report_2023.pdf",
+    "tier": "T3"
+   }
+  ],
+  "notes": "A third measurement problem sits upstream of both: the per-child cost. Asked in September 2020 and again in July 2022 whether it would standardise the calculation, the Ministry gave a word-for-word identical answer both times - states have flexibility, and '12 States/UTs have revised their per child cost since 2014-15'. The count did not move in 22 months. Since a notified per-child cost is a precondition for claiming central reimbursement, an unrevised or unnotified norm is the mechanism by which arrears become structural. A CAG finding that 20 states and UTs had not notified per-child costs is consistent with this but is relayed, not retrieved, and is not carried."
+ },
+ {
+  "id": "P-70",
+  "title": "The government's education statistics are reachable only through third-party archives",
+  "whatChanged": "Over 2025-2026 the Ministry of Education's document corpus ceased to be retrievable from government hosts. education.gov.in migrated to a client-rendered application whose entire legacy /sites/upload_files/mhrd/files/ tree - annual reports, statistics, and the whole pre-2025 parliamentary-annexure corpus - now returns HTTP 404 on every path, while returning HTTP 200 with an empty shell for fabricated paths. Across three independent research passes the following did not resolve or did not serve: dsel.education.gov.in, udiseplus.gov.in, dashboard.udiseplus.gov.in, education.gov.in, indiacode.nic.in, pib.gov.in, prabandh.education.gov.in, mospi.gov.in, nas.gov.in, ncert.nic.in, eparlib.sansad.in, cag.gov.in and all its mirrors, cabsec.gov.in, and main.sci.gov.in. Every UDISE+ report, every DISE Flash Statistics edition, every edition of the education budget analysis, the National Education Policy text itself, and the 1968 and 1986 policies were reconstructed from Internet Archive captures or third-party mirrors.",
+  "when": "Observed 2026-08-01 and 2026-08-02; education.gov.in migration during 2025",
+  "affectsDomains": [
+   "governance",
+   "education"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "There is no substitute for the primary host and the archive is not one: Wayback returned HTTP 429 under sustained use, several captures are truncated at exactly 1,048,576 bytes, and at least one capture downloads as zero bytes from a corrupt record. Some of these failures are network-reachability artefacts of the retrieval environment rather than dead documents and are worth retrying from an Indian IP; the education.gov.in 404s are not, since they were verified against fabricated paths.",
+  "competingAccounts": [
+   "This is not a finding about education and it does not assert intent. It is recorded because it conditions the TIER of everything above it: under the rule that tier grades the document actually retrieved and not the institution the subject belongs to, a government statistic reachable only through a third-party archive is still T1 when the archive serves the ministry's own PDF byte-for-byte, but an official figure known only through a press account or a mirror is T4 or T3. Several figures in this drop are graded down for exactly that reason - the PAB teacher-vacancy annexure at T3 because it came from a mirror, the NAS 2017 and 2021 rows at T4 because the hosts do not resolve, the UDISE+ 2025-26 figures at T3 because the edition was never retrieved.",
+   "Two consequences are already visible in this phase and will worsen. First, the newest edition of the education budget analysis ever archived is the 2024 one, so the archive cannot distinguish 'never published' from 'published and unlinked'. Second, the government's own statistical estimate of its school system is, at the time of writing, reachable only through a third-party archive - and the archive is a volunteer-funded American non-profit under no obligation to keep it."
+  ],
+  "sources": [
+   {
+    "name": "Retrieval log, phase-education research passes, 2026-08-01 and 2026-08-02 (host-by-host results recorded in the drop)",
+    "url": "https://web.archive.org/",
+    "tier": "T4"
+   },
+   {
+    "name": "Internet Archive Wayback CDX API, used to establish that no newer edition of the education budget analysis was ever archived",
+    "url": "https://web.archive.org/cdx/search/cdx",
+    "tier": "T4"
+   }
+  ],
+  "notes": "Scoped to governance and human-development rather than to `all` because the observed failures are specific to the education and statistics estates; the finding may well generalise, but this phase did not test hosts outside them.\n\nOne workaround worth carrying forward for later phases, since it was the only route that worked reliably: the Rajya Sabha committee reports are served from bucketapi.rajyasabha.digital rather than from sansad.in/getFile, which is why they retrieved in full and directly while every parliamentary question PDF had to come through a mirror or a relay. sansad.in question PDFs require a source query string - pqars for Rajya Sabha, pqals for Lok Sabha - without which the server returns HTTP 500, and an undocumented list endpoint enumerates the question index for a whole session."
  }
 ]

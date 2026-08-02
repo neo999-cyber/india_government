@@ -208,7 +208,9 @@ The *substance* survives: **[derived here]** ABE Table 4's own FY2021-22 broad c
 | **Ministry of Education** | **93,169** |
 | **Grand total, Centre** | **2,38,419** |
 
-**The Ministry of Education is 39% of what the 4.12% headline calls "education."** The top four non-education ministries alone (₹83,669 cr) come to **90% of the entire Ministry of Education budget**.
+**The Ministry of Education is 39% of the CENTRE's own broad education spending** — ₹92,965 cr of the ₹2,38,419 cr grand total in the table above, which is 1.02% of GDP. The top four non-education ministries alone (₹83,669 cr) come to **90% of the entire Ministry of Education budget**. Against the **4.12% all-India headline** the Ministry is **under a tenth**, because that headline is Centre *plus States* and States carry about three-quarters of the money.
+
+> **CORRECTED 2026-08-02 (stage 4).** This line previously read "39% of what the 4.12% headline calls education", which is wrong by a factor of four: 39% is the Centre-only ratio and the denominator is the Centre grand total immediately above, not the Centre-plus-States headline. The error reached L-0102 and P-65 verbatim.
 
 **The government itself documents the sweep.** Pass B's most useful single retrieval, ES 2023-24 Ch. 7 Table VII.1 Note (ii), **T1**:
 
@@ -340,7 +342,7 @@ Identical in every structural respect to S-1 — same source, same table, same p
 
 **Second source (independent, T1):** Standing Committee on Education, Women, Children, Youth and Sports, **363rd Report**, Rajya Sabha, 26 March 2025, Para 2.10 — `https://sansad.in/getFile/rsnew/Committee_site/Committee_File/Press_ReleaseFile/16/198/776P_2025_3_16.pdf?source=rajyasabha`. Covers FY2014-15→FY2021-22 on the broad basis plus the broad Centre row; **every value matches.**
 
-**caveat:** ***THIS SERIES MUST NOT BE USED FOR UPA-VERSUS-MODI COMPARISON.*** *An unexplained near-doubling of "other departments" education spending straddles FY2013-14/FY2014-15 — exactly the political transition — and is the main driver of the apparent improvement. Its cause was not established by either research pass (R6.1). Separately, this numerator includes training and the education spending of Health, WCD, Atomic Energy, Space, Railways and Defence; the Ministry of Education is 39% of it; and its gap to the narrow series widened from 0.52pp to 1.46pp over the table, so it is not the narrow series plus a constant.*
+**caveat:** ***THIS SERIES MUST NOT BE USED FOR UPA-VERSUS-MODI COMPARISON.*** *An unexplained near-doubling of "other departments" education spending straddles FY2013-14/FY2014-15 — exactly the political transition — and is the main driver of the apparent improvement. Its cause was not established by either research pass (R6.1). Separately, this numerator includes training and the education spending of Health, WCD, Atomic Energy, Space, Railways and Defence; the Ministry of Education is 39% of the CENTRE's share of it and under a tenth of the all-India total (corrected 2026-08-02, stage 4 — this read "39% of it", the same factor-of-four error as line 211); and its gap to the narrow series widened from 0.52pp to 1.46pp over the table, so it is not the narrow series plus a constant.*
 
 ---
 

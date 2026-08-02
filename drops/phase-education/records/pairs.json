@@ -2,7 +2,7 @@
  {
   "id": "PR-17",
   "kind": "contested",
-  "domain": "human-development",
+  "domain": "education",
   "title": "What Grade 3 children can do: the household test against the official survey",
   "a": {
    "series": "aser-std3-reading",
@@ -22,12 +22,12 @@
   "ledgerRefs": [
    "L-0090"
   ],
-  "notes": "The honest reconciliation is not subtraction but thresholding: applied to the official survey's own Grade 5 data, a Minimum Proficiency Level benchmark puts 54 per cent below it, against the household survey's 49.5 per cent of Standard V unable to read a Standard II text. Five points apart, same direction, same population. Most of the headline contradiction is a category error between a mean and a headcount; what survives it is that the official survey's state rankings correlate with nothing."
+  "notes": "The honest reconciliation is not subtraction but thresholding, and it is a comparison of an earlier vintage than the two series shown above. Applied to NAS 2017's own Grade 5 data, a World Bank Minimum Proficiency Level benchmark puts 54 per cent below it, against ASER 2018's 49.5 per cent of Standard V unable to read a Standard II text. Five points apart, same direction, same population, same years - and neither figure may be carried forward to 2024, since NAS 2017 breaks comparison with everything after it and the 2024 Standard V reading is 48.8, that is 51.2 per cent unable. Most of the headline contradiction is a category error between a mean and a headcount; what survives it is that the official survey's state rankings correlate with nothing."
  },
  {
   "id": "PR-18",
   "kind": "contested",
-  "domain": "human-development",
+  "domain": "education",
   "title": "How long India's schools were shut: two measures, opposite answers",
   "a": {
    "series": "school-closure-weeks-full-covid",
@@ -51,7 +51,7 @@
  {
   "id": "PR-19",
   "kind": "coverage-usage",
-  "domain": "governance",
+  "domain": "education",
   "title": "The national pupil-teacher ratio against the schools that meet the norm",
   "a": {
    "series": "ptr-primary-udise",
@@ -77,7 +77,7 @@
  {
   "id": "PR-20",
   "kind": "coverage-usage",
-  "domain": "welfare",
+  "domain": "education",
   "title": "Quota children reimbursed against quota seats filled",
   "a": {
    "series": "rte-quota-children",
@@ -103,7 +103,7 @@
  {
   "id": "PR-21",
   "kind": "coverage-usage",
-  "domain": "governance",
+  "domain": "education",
   "title": "The vacancy rate that is reported against the vacancy statistic that is not maintained",
   "a": {
    "series": "teacher-vacancy-rate-ssa",
@@ -129,7 +129,7 @@
  {
   "id": "PR-22",
   "kind": "contested",
-  "domain": "human-development",
+  "domain": "education",
   "title": "What India spends on education: the two official numerators",
   "a": {
    "series": "edu-spend-gdp-edu-depts",
@@ -155,7 +155,7 @@
  {
   "id": "PR-23",
   "kind": "coverage-usage",
-  "domain": "governance",
+  "domain": "education",
   "title": "The school stock published against the school closures not published",
   "a": {
    "series": "govt-schools-count",
@@ -180,7 +180,7 @@
  {
   "id": "PR-24",
   "kind": "coverage-usage",
-  "domain": "human-development",
+  "domain": "education",
   "title": "Literacy as recorded against reading as demonstrated",
   "a": {
    "series": "literacy-rate-7plus",
@@ -205,7 +205,7 @@
  {
   "id": "PR-25",
   "kind": "coverage-usage",
-  "domain": "human-development",
+  "domain": "education",
   "title": "Higher education entered against higher education completed",
   "a": {
    "series": "higher-ed-enrolment",
