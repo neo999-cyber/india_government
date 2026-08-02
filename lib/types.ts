@@ -13,9 +13,10 @@
  * DELIVERY of a scheme, human-development is the OUTCOME it was meant to produce. Records
  * carrying both are the normal case, not an error.
  *
- * `kashmir`, `federalism` and `defence` are used as cross-cutting lenses on records whose
- * primary subject sits elsewhere, and carry no series at all. `demography` is NEVER USED, so
- * its boundary is unattested.
+ * `kashmir` and `federalism` are the LENS values — see LENSES below, and note that they are the
+ * lenses, `defence` is not. This comment called `defence` a lens and said all three carried no
+ * series; phase 11 gave `defence` thirteen, and the schema has never described it as anything but
+ * a subject. `demography` is NEVER USED, so its boundary is unattested.
  */
 export const DOMAINS = [
   'macro',
@@ -25,6 +26,7 @@ export const DOMAINS = [
   'human-development',
   'infrastructure',
   'welfare',
+  'education',
   'governance',
   'kashmir',
   'federalism',
@@ -34,6 +36,28 @@ export const DOMAINS = [
   'demography',
 ] as const;
 export type Domain = (typeof DOMAINS)[number];
+
+/**
+ * The subset of DOMAINS that are LENSES — read alongside a record's subject rather than as it.
+ *
+ * `domain` says what a record is about; `lenses[]` says what it also bears on. Two axes, and a
+ * single-valued `domain` could not hold both: every phase-11 series is substantively a defence or
+ * governance measurement AND is about Jammu and Kashmir, so until `lenses[]` existed a reader
+ * filtering on `kashmir` reached no measured spine at all.
+ *
+ * `kashmir` is a lens and NOTHING else — the schema rejects it in `domain`. `federalism` is both:
+ * "Centre-state relations" is a subject in its own right, so it is legal on either axis, and
+ * illegal only on both at once. Mirrors `lenses.items.enum` in the schemas; the validator derives
+ * its own copy from there rather than importing this.
+ */
+export const LENSES = ['kashmir', 'federalism'] as const;
+export type Lens = (typeof LENSES)[number];
+
+/**
+ * The lenses that may NEVER be a subject. Mirrors SUBJECT_FORBIDDEN in tools/lib/integrity.mjs,
+ * which is the enforcing copy — this one only decides what a domain page says about itself.
+ */
+export const LENS_ONLY: readonly Lens[] = ['kashmir'];
 
 export const TERMS = ['baseline', 'T1', 'T2', 'T3'] as const;
 export type Term = (typeof TERMS)[number];
@@ -151,6 +175,8 @@ export interface Series {
   title: string;
   unit: string;
   domain: Domain;
+  /** Cross-cutting lenses this series is also read under. See LENSES. */
+  lenses?: Lens[];
   tier: Tier;
   source: SourceRef;
   calendar: Calendar;
@@ -215,6 +241,8 @@ export interface Pair {
   id: string;
   kind: 'coverage-usage' | 'contested';
   domain: Domain;
+  /** Cross-cutting lenses this pair is also read under. See LENSES. */
+  lenses?: Lens[];
   a: PairSide;
   b: PairSide;
   framing: string;
@@ -222,6 +250,15 @@ export interface Pair {
   gapReason?: string;
   provenanceRefs?: string[];
   notes?: string;
+  // Three fields that have been in pairs.schema.json and in the data without ever reaching this
+  // interface, so nothing outside a pair's own render could read them. Added 2026-08-03 with the
+  // lens axis, which needed all three.
+  /** Short name for the pair. The framing is the sentence; this is the handle. */
+  title?: string;
+  /** Ledger records this pair bears on. */
+  ledgerRefs?: string[];
+  /** `declared-pending` means the pair is recorded as OWED and renders nowhere; `live` is default. */
+  status?: 'live' | 'declared-pending';
 }
 
 /**

@@ -557,6 +557,9 @@
   "id": "PR-26",
   "kind": "contested",
   "domain": "defence",
+  "lenses": [
+   "kashmir"
+  ],
   "title": "Civilians killed in Kashmir: the ministry's count against the press-derived one",
   "a": {
    "series": "jk-civilians-killed-composite",
@@ -584,6 +587,9 @@
   "id": "PR-27",
   "kind": "contested",
   "domain": "defence",
+  "lenses": [
+   "kashmir"
+  ],
   "title": "How many incidents there were in 2018: 614, 417 or 228",
   "a": {
    "series": "jk-terrorist-incidents-legacy",
@@ -611,6 +617,9 @@
   "id": "PR-28",
   "kind": "coverage-usage",
   "domain": "defence",
+  "lenses": [
+   "kashmir"
+  ],
   "title": "Operations the state counts, consequences it does not",
   "a": {
    "series": "jk-encounters-ct-ops",
@@ -639,6 +648,9 @@
   "id": "PR-29",
   "kind": "coverage-usage",
   "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
   "title": "The pellet harm the state published against the pellet harm it refused",
   "a": {
    "series": "jk-pellet-deaths",
@@ -666,6 +678,9 @@
   "id": "PR-30",
   "kind": "coverage-usage",
   "domain": "defence",
+  "lenses": [
+   "kashmir"
+  ],
   "title": "Infiltration attempted against infiltration estimated to have succeeded",
   "a": {
    "series": "jk-infiltration-attempts",
@@ -691,6 +706,9 @@
   "id": "PR-31",
   "kind": "contested",
   "domain": "defence",
+  "lenses": [
+   "kashmir"
+  ],
   "title": "Local recruitment: three official answers for one year, and no return behind any of them",
   "a": {
    "competingAccountsFrom": "P-84",
@@ -716,6 +734,9 @@
   "id": "PR-32",
   "kind": "contested",
   "domain": "defence",
+  "lenses": [
+   "kashmir"
+  ],
   "title": "Civilian deaths with a perpetrator named, against civilian deaths with none",
   "a": {
    "series": "jk-civilians-killed-composite",

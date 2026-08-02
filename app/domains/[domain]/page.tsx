@@ -4,12 +4,17 @@ import type { Metadata } from 'next';
 import {
   assessmentCounts,
   ledgerInDomain,
+  pairHref,
+  pairsInDomain,
+  pairsUnderLens,
   provenanceInDomain,
   seriesInDomain,
+  seriesUnderLens,
   statusCounts,
 } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
-import { DOMAINS, type Domain } from '@/lib/types';
+import { DOMAINS, LENSES, LENS_ONLY, type Domain } from '@/lib/types';
+import type { Pair, Series } from '@/lib/types';
 import { CaveatFlag, DifferentFactsMark, StatusKey, StatusTally, TierTag } from '@/components/marks';
 
 type Props = { params: Promise<{ domain: string }> };
@@ -34,6 +39,17 @@ export default async function DomainPage({ params }: Props) {
   const p = provenanceInDomain(d);
   const counts = assessmentCounts(l);
 
+  // The lens axis. `domain` is what a record is ABOUT, `lenses[]` what it also BEARS ON, and the
+  // two are never pooled: a J&K militancy count is a defence series read under the Kashmir lens,
+  // and merging it into the Kashmir subject list would restate the conflation `lenses[]` exists to
+  // remove. Both blocks render only where they are non-empty, so a domain that is nobody's lens
+  // and holds no pairs looks exactly as it did.
+  const isLens = (LENSES as readonly string[]).includes(d);
+  const lensOnly = (LENS_ONLY as readonly string[]).includes(d);
+  const lensed = seriesUnderLens(d);
+  const pairsHere = pairsInDomain(d);
+  const pairsLensed = pairsUnderLens(d);
+
   return (
     <>
       <p className="crumb">
@@ -41,11 +57,28 @@ export default async function DomainPage({ params }: Props) {
       </p>
       <h1>{DOMAIN_LABELS[d]}</h1>
 
+      {isLens ? (
+        <p className="lede">
+          A cross-cutting lens
+          {lensOnly
+            ? ', and only that — no record may file it as its own subject.'
+            : ', and a subject in its own right — a record may file it as either, never as both.'}{' '}
+          Records read UNDER it, whose subject is another domain, are listed apart from the subject
+          tables and carry the domain they are actually filed under.
+        </p>
+      ) : null}
+
       <ul className="counts">
         <li>
           <span className="figure">{s.length}</span>
           <span className="label">series</span>
         </li>
+        {lensed.length ? (
+          <li>
+            <span className="figure">{lensed.length}</span>
+            <span className="label">series under this lens</span>
+          </li>
+        ) : null}
         <li>
           <span className="figure">{l.length}</span>
           <span className="label">ledger records</span>
@@ -56,7 +89,7 @@ export default async function DomainPage({ params }: Props) {
         </li>
       </ul>
 
-      {s.length + l.length === 0 ? (
+      {s.length + lensed.length + l.length === 0 ? (
         <div className="stub">
           <span className="label">Unopened domain</span>
           No series and no ledger records have been researched into this domain yet. Nothing is
@@ -66,50 +99,29 @@ export default async function DomainPage({ params }: Props) {
 
       <h2>Series</h2>
       {s.length === 0 ? (
-        <p className="prose-note">No series loaded in this domain.</p>
+        <p className="prose-note">
+          No series has this domain as its subject.
+          {lensed.length
+            ? ' The series below are read under it as a lens — their subjects sit elsewhere.'
+            : ''}
+        </p>
       ) : (
-        <>
-          <StatusKey />
-          <StatusTally counts={statusCounts(s)} />
-          <div className="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Series</th>
-                  <th>Unit</th>
-                  <th>Cal.</th>
-                  <th>Tier</th>
-                  <th className="num">Points</th>
-                  <th>Breaks</th>
-                </tr>
-              </thead>
-              <tbody>
-                {s.map((x) => (
-                  <tr key={x.id}>
-                    <td>
-                      <Link href={`/series/${x.id}/`}>{x.title}</Link>
-                      {x.caveat ? <CaveatFlag caveat={x.caveat} variant="inline" /> : null}
-                    </td>
-                    <td className="t-note">{x.unit}</td>
-                    <td className="mono">{x.calendar}</td>
-                    <td>
-                      <TierTag tier={x.tier} />
-                    </td>
-                    <td className="num">{x.points.length}</td>
-                    <td className="mono">
-                      {x.breaks?.length ? (
-                        <span style={{ color: 'var(--alert)' }}>{x.breaks.length}</span>
-                      ) : (
-                        <span className="t-note">—</span>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
+        <SeriesBlock items={s} />
       )}
+
+      {lensed.length ? (
+        <>
+          <h2>Series under this lens</h2>
+          <p className="prose-note">
+            {lensed.length} series whose subject is another domain and which are also read under{' '}
+            <span className="mono">{d}</span>. Listed apart from the table above rather than pooled
+            into it: what a series measures and what it bears on are two different claims, and a
+            single-valued <span className="mono">domain</span> could carry only the first. The
+            Subject column names the domain each one is actually filed under.
+          </p>
+          <SeriesBlock items={lensed} showSubject />
+        </>
+      ) : null}
 
       <h2>Ledger</h2>
       {l.length === 0 ? (
@@ -158,6 +170,27 @@ export default async function DomainPage({ params }: Props) {
         </>
       )}
 
+      {pairsHere.length + pairsLensed.length ? (
+        <>
+          <h2>Pairs</h2>
+          <p className="prose-note">
+            Two things the instrument refuses to show apart — a coverage figure against what it
+            converted into, or two instruments measuring the same quantity and disagreeing. A pair
+            has no page of its own: it renders inside the first series that names it, which is
+            where the link goes.
+          </p>
+          <PairRows items={pairsHere} />
+          {pairsLensed.length ? (
+            <>
+              <p className="prose-note">
+                Under this lens — subject filed elsewhere:
+              </p>
+              <PairRows items={pairsLensed} showSubject />
+            </>
+          ) : null}
+        </>
+      ) : null}
+
       <h2>Measurement disputes</h2>
       {p.length === 0 ? (
         <p className="prose-note">No disputes recorded against this domain.</p>
@@ -178,5 +211,120 @@ export default async function DomainPage({ params }: Props) {
         </div>
       )}
     </>
+  );
+}
+
+/**
+ * The series table, used twice on this page: once for the domain's own subject series and once for
+ * the series read under it as a lens. One component, two call sites, because the two lists differ
+ * in exactly one column — the lens list names each series' actual subject, since "what is this
+ * doing here" is the first question a reader has about it.
+ */
+function SeriesBlock({ items, showSubject }: { items: Series[]; showSubject?: boolean }) {
+  return (
+    <>
+      <StatusKey />
+      <StatusTally counts={statusCounts(items)} />
+      <div className="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Series</th>
+              {showSubject ? <th>Subject</th> : null}
+              <th>Unit</th>
+              <th>Cal.</th>
+              <th>Tier</th>
+              <th className="num">Points</th>
+              <th>Breaks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((x) => (
+              <tr key={x.id}>
+                <td>
+                  <Link href={`/series/${x.id}/`}>{x.title}</Link>
+                  {x.caveat ? <CaveatFlag caveat={x.caveat} variant="inline" /> : null}
+                </td>
+                {showSubject ? (
+                  <td className="mono">
+                    <Link href={`/domains/${x.domain}/`}>{x.domain}</Link>
+                  </td>
+                ) : null}
+                <td className="t-note">{x.unit}</td>
+                <td className="mono">{x.calendar}</td>
+                <td>
+                  <TierTag tier={x.tier} />
+                </td>
+                <td className="num">{x.points.length}</td>
+                <td className="mono">
+                  {x.breaks?.length ? (
+                    <span style={{ color: 'var(--alert)' }}>{x.breaks.length}</span>
+                  ) : (
+                    <span className="t-note">—</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+}
+
+/**
+ * Pair rows. A pair with no href renders as text, not as a dead link, and says so.
+ *
+ * That is not defensive coding for a case that cannot arise — PR-31 is in that state today. Both
+ * its sides are non-series (a provenance record's competing accounts against a ledger absence), so
+ * no series page hosts it and this listing is the only surface it has ever had. Rendering it
+ * unlinked with the reason stated is the honest form; dropping it would hide the finding, and
+ * linking it somewhere plausible would be worse.
+ */
+function PairRows({ items, showSubject }: { items: Pair[]; showSubject?: boolean }) {
+  return (
+    <div className="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Pair</th>
+            {showSubject ? <th>Subject</th> : null}
+            <th>Kind</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((x) => {
+            const href = pairHref(x);
+            const name = x.title ?? x.framing;
+            return (
+              <tr key={x.id}>
+                <td className="mono">{x.id}</td>
+                <td>
+                  {href ? (
+                    <Link href={href}>{name}</Link>
+                  ) : (
+                    <>
+                      {name}{' '}
+                      <span className="t-note">
+                        {x.status === 'declared-pending'
+                          ? '— declared, not yet authored; renders nowhere by design'
+                          : '— neither side is a series, so no series page hosts it'}
+                      </span>
+                    </>
+                  )}
+                </td>
+                {showSubject ? (
+                  <td className="mono">
+                    <Link href={`/domains/${x.domain}/`}>{x.domain}</Link>
+                  </td>
+                ) : null}
+                <td className="t-note">{x.kind}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 }

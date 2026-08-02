@@ -8,6 +8,7 @@ export const DOMAIN_LABELS: Record<Domain, string> = {
   'human-development': 'Human development',
   infrastructure: 'Infrastructure',
   welfare: 'Welfare delivery',
+  education: 'Education',
   governance: 'Governance & institutions',
   kashmir: 'Kashmir',
   federalism: 'Federalism',
