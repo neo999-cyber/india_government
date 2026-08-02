@@ -1,0 +1,19 @@
+[
+  {
+    "id": "PR-01",
+    "kind": "contested",
+    "domain": "kashmir",
+    "a": { "series": "support-a", "label": "One side" },
+    "b": { "series": "support-b", "label": "The other side" },
+    "framing": "A pair filing a lens value as its own subject. Everything else about it is well formed, so the only errors this root may raise on the pair layer are the lens ones - which is the point: it pins the pairs call site, not the shared helper."
+  },
+  {
+    "id": "PR-02",
+    "kind": "contested",
+    "domain": "federalism",
+    "lenses": ["federalism"],
+    "a": { "series": "support-a", "label": "One side" },
+    "b": { "series": "support-b", "label": "The other side" },
+    "framing": "A pair asserting federalism as both its subject and a lens over itself. Either axis alone would be legal, which is why this needs its own name and its own fixture rather than sharing one with lens-as-subject."
+  }
+]

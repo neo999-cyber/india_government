@@ -4,6 +4,9 @@
     "title": "Terrorist incidents in J&K, MHA 'Incidents' column as contemporaneously published",
     "unit": "incidents",
     "domain": "defence",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T1",
     "source": {
       "name": "MHA Annual Reports 2013-14 through 2020-21, J&K violence tables, retrieved as PDFs from the MHA annual-reports index",
@@ -112,6 +115,9 @@
     "title": "Terrorist incidents in J&K, MHA restated composite basis",
     "unit": "incidents",
     "domain": "defence",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T1",
     "source": {
       "name": "MHA Annual Report 2021-22 (AnnualReport202122_24112022) J&K violence table, and MHA Rajya Sabha Unstarred Question No. 371 answered 20 July 2022",
@@ -189,6 +195,9 @@
     "title": "Terrorist Initiated Incidents in J&K",
     "unit": "incidents",
     "domain": "defence",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T1",
     "source": {
       "name": "MHA Annual Reports 2022-23, 2023-24 and 2024-25, J&K violence tables (AnnualReportEngLish_11102023, AnnualReport_27122024, AREnglish_24032026)",
@@ -273,6 +282,9 @@
     "title": "Encounters and counter-terrorism operations in J&K",
     "unit": "operations",
     "domain": "defence",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T1",
     "source": {
       "name": "MHA Annual Reports 2022-23, 2023-24 and 2024-25, J&K violence tables; corroborated in PIB PRID 2003497 of 7 February 2024, which attributes the series to CID, J&K",
@@ -360,6 +372,9 @@
     "title": "Civilians killed in J&K, MHA bounded basis",
     "unit": "deaths",
     "domain": "defence",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T1",
     "source": {
       "name": "MHA Annual Reports 2018-19 through 2021-22 and PIB PRID 1575578 of 25 June 2019 (annexure to Lok Sabha Unstarred Question No. 466); bounding formula from MHA Rajya Sabha Unstarred Question No. 371 answered 20 July 2022",
@@ -455,6 +470,9 @@
     "title": "Civilians killed in J&K, MHA composite basis (terrorist incidents and CT operations merged)",
     "unit": "deaths",
     "domain": "defence",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T1",
     "source": {
       "name": "MHA Annual Reports 2022-23, 2023-24 and 2024-25, J&K violence tables; the definitional footnote appears from AR 2023-24: 'Civilians killed includes civilians killed in terrorist-initiated incidents and civilians killed in encounter/counter Terrorism operations'",
@@ -539,6 +557,9 @@
     "title": "Civilians killed in J&K, press-derived register",
     "unit": "deaths",
     "domain": "defence",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T4",
     "source": {
       "name": "South Asia Terrorism Portal, Jammu and Kashmir yearly fatalities datasheet, columns 'Incidents of Killing | Civilians | Security Forces | Terrorists/Insurgents/Extremists'. Relayed through Internet Archive snapshots of SATP's own pages: satp.org gave no HTTP response of any kind in this phase",
@@ -612,6 +633,9 @@
     "title": "Security-force personnel killed in J&K, MHA",
     "unit": "deaths",
     "domain": "defence",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T1",
     "source": {
       "name": "MHA Annual Reports 2018-19 through 2024-25, J&K violence tables, and PIB PRID 1575578 of 25 June 2019 for 2014-2017",
@@ -708,6 +732,9 @@
     "title": "Security-force personnel killed in J&K, press-derived register",
     "unit": "deaths",
     "domain": "defence",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T4",
     "source": {
       "name": "South Asia Terrorism Portal, Jammu and Kashmir yearly fatalities datasheet. Relayed through Internet Archive snapshots: satp.org gave no HTTP response of any kind in this phase",
@@ -779,6 +806,9 @@
     "title": "Militants killed in J&K, MHA 'Terrorists killed'",
     "unit": "deaths",
     "domain": "defence",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T1",
     "source": {
       "name": "MHA Annual Reports 2022-23, 2023-24 and 2024-25, J&K violence tables; corroborated in PIB PRID 2003497 of 7 February 2024",
@@ -858,6 +888,9 @@
     "title": "Infiltration attempts into J&K, MHA",
     "unit": "attempts",
     "domain": "defence",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T1",
     "source": {
       "name": "MHA Annual Reports 2018-19 through 2022-23, J&K infiltration tables; the series is absent from the Annual Reports 2023-24 and 2024-25",
@@ -946,6 +979,9 @@
     "title": "Net estimated infiltration into J&K, MHA",
     "unit": "persons",
     "domain": "defence",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T1",
     "source": {
       "name": "MHA Annual Reports 2019-20 through 2022-23, J&K infiltration tables; the series is absent from the Annual Reports 2023-24 and 2024-25",
@@ -1026,6 +1062,9 @@
     "title": "Organised stone-pelting incidents in J&K",
     "unit": "incidents",
     "domain": "governance",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T1",
     "source": {
       "name": "MHA, Rajya Sabha Unstarred Question No. 228, answered 24 July 2024, 'LAW AND ORDER IN J&K', (Source: UT of J&K)",
@@ -1075,6 +1114,9 @@
     "title": "Protesters killed by pellets in J&K",
     "unit": "deaths",
     "domain": "governance",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T1",
     "source": {
       "name": "MHA, Rajya Sabha Unstarred Question No. 511, answered 7 February 2018, 'PROTESTERS KILLED BY PELLET GUNS IN JAMMU AND KASHMIR', Annex-I, month-wise, calendar 2015 to 2017",
@@ -1129,6 +1171,9 @@
     "title": "Civilians killed by armed forces in J&K, JKCCS/APDP perpetrator-attributed count",
     "unit": "deaths",
     "domain": "defence",
+    "lenses": [
+      "kashmir"
+    ],
     "tier": "T4",
     "source": {
       "name": "JKCCS and APDP, Annual Human Rights Review, 2018 and 2019 editions. The 2019 edition was retrieved via mirror; jkccs.net now redirects to an unrelated commercial page and every legacy deep path redirects with it, including the URL cited by OHCHR in June 2018 as the source for the 2016 Review",
