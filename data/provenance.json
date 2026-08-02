@@ -568,7 +568,8 @@
    "epfo-net-additions",
    "eshram-registrations",
    "soil-health-cards",
-   "pmkisan-beneficiaries"
+   "pmkisan-beneficiaries",
+   "agri-credit"
   ],
   "directionOfBias": "overstates-post-2014",
   "bridgeExists": true,
