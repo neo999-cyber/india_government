@@ -62,6 +62,11 @@ const MUST_FIRE = [
   'date-order',
   'back-link',
   'ref-relevant',
+  // From 2026-08-02 every reference field declares its target layer's id pattern, so ajv
+  // rejects both of these too — but a pattern-mismatch message does not tell an author
+  // whether they pointed at the wrong layer or fat-fingered an id. These name the difference.
+  'ref-layer',
+  'ref-malformed',
   // Character sweep: schema validation cannot see any of these.
   'charset-script',
   'charset-invisible',

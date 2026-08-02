@@ -2204,3 +2204,133 @@ The two old-text assertions are the same discipline as the negative control: a c
 for the new string cannot tell a successful rewrite from a page that carries both.
 
 **Phase 10 and the validator-hardening cycles are now live and verified. Nothing is owed.**
+
+---
+
+# Verification log — cycle 2026-08-02k (reference fields marked in the schemas; hand list retired)
+
+No `/data` authoring. Gate green throughout. Not deployed.
+
+## What changed
+
+Every field holding an id now declares its target layer's pattern, so `deriveRefForms` reads the
+contract instead of inferring from observed values. **The deferred finding from cycle `2026-08-02h`
+is closed.**
+
+## 1. The enumeration, taken before editing
+
+Twelve schema-level reference fields. Eleven take a pattern; `absenceIndex` takes a description only.
+
+| # | file | JSON path | target | instances |
+|---|---|---|---|---|
+| 1 | `series` | `properties.provenanceRefs.items` | provenance | 249 |
+| 2 | `series` | `properties.breaks.items.properties.provenanceRef` | provenance | 111 |
+| 3 | `ledger` | `properties.seriesRefs.items` | series | 204 |
+| 4 | `ledger` | `properties.provenanceRefs.items` | provenance | 97 |
+| 5 | `provenance` | `properties.affectsSeries.items` | series | 175 |
+| 6 | `provenance` | `properties.correctiveSeries.items` | series | 14 |
+| 7 | `pairs` | `properties.provenanceRefs.items` | provenance | 34 |
+| 8 | `pairs` | `properties.ledgerRefs.items` | ledger | 16 |
+| 9 | `pairs` | `$defs.side.properties.series` | series | 37 (a 24 / b 13) |
+| 10 | `pairs` | `$defs.side.properties.absenceFrom` | series \| ledger | 10 (a 0 / b 10) |
+| 11 | `pairs` | `$defs.side.properties.competingAccountsFrom` | provenance | 1 (a 0 / b 1) |
+| 12 | `pairs` | `$defs.side.properties.absenceIndex` | *integer index* | 10 (a 0 / b 10) |
+
+**Ten of the twelve carried no description at all**, and none carried a pattern.
+
+### The structural fact that makes this work
+
+**`pairs.a` and `pairs.b` both `$ref` `#/$defs/side`.** At schema level there is one definition, not
+two. So marking the schema covers `a.absenceFrom` and `a.competingAccountsFrom` — the two
+zero-instance forms that motivated this cycle — with no special handling at all. **The blind spot
+closes by construction rather than by special case.** That is the whole argument for doing it in the
+schema rather than in the checker.
+
+## 2. Applied
+
+Eleven patterns, drawn from each target layer's own id contract:
+`^[a-z0-9]+(-[a-z0-9]+)*$` (series) · `^L-\d{4}$` (ledger) · `^P-\d{2}$` (provenance) ·
+`^(L-\d{4}|[a-z0-9]+(-[a-z0-9]+)*)$` (absenceFrom, which targets either).
+
+The union pattern is safe because the series slug is lowercase-only and the other three are
+uppercase-prefixed, so no id can satisfy two contracts at once.
+
+Each field also gained a one-line description naming what it points at. **No type, cardinality or
+required status was changed** — asserted per field during the edit, and the four `required` arrays
+were printed before and after and are unchanged.
+
+`absenceIndex` deliberately gets **no pattern**, because an integer has no string shape. It gets the
+contract in prose instead:
+
+> Zero-based index into the unmeasured[] array of the record named by absenceFrom. A bare integer
+> declares no contract of its own, so the range it must fall in is stated here: out of range is a
+> dangling reference that resolves.
+
+That is the same undeclared-contract problem in a different type, and it is now declared.
+
+## 3. The assertion, then the retirement
+
+Run **before** switching, as required:
+
+| assertion | result |
+|---|---|
+| schema-derived ⊇ the 12 value-derived forms | **PASS** |
+| schema-derived ⊇ the 14-entry corrected hand list | **PASS** |
+| forms only the schema knows | none — exactly equal to the hand list |
+| `pairs.a.absenceFrom` and `pairs.a.competingAccountsFrom` now derived | **yes, from the contract** |
+
+Equality rather than strict excess is the expected result and confirms the hand list had been
+correct after its three additions — the schema now says the same thing, but says it where drift is
+impossible.
+
+**Only then was `REF_FORMS` deleted.** It is in git history at this cycle, not in the tree. What
+survives is a two-entry `FIELD_SEMANTICS` map for the two facts a pattern cannot express —
+`absenceIndex` range and `competingAccountsFrom` requiring `competingAccounts` on its target. Those
+are cross-record facts, not string shapes, and the file says so.
+
+## 4. Counts, and NO new failures
+
+| | before | after |
+|---|---|---|
+| reference forms known to the checker | 12 (value-derived) | **14 (schema-derived)** |
+| forms with zero instances, still validated | 0 | **2** |
+| references pattern-validated by the gate | **0** | **948** |
+
+The last row is the real rise. Before this cycle **no reference field carried a pattern**, so the
+gate checked only that references resolved, never that they were well-formed. All 948 are now
+checked on both counts.
+
+**The expected new failures did not appear. `npm run validate` is VALID, 0 errors.** Every one of the
+948 references was already well-formed and pointing at the right layer. Reported as the finding it
+is: the check was absent, but the defect it guards against was not present. That is worth knowing
+precisely because it could not have been known before.
+
+```
+npm run validate           VALID — 0 errors, 85 warnings
+npm run validate:selftest  PASS
+npm run typecheck          PASS
+npm run build              396 pages
+npm run reachability       397/397
+```
+
+## 5. Two new rules, two new fixtures — selftest 18 → 20
+
+The schema pattern rejects both cases, but ajv reports them identically as
+*"must match pattern ^[a-z0-9]+(-[a-z0-9]+)*$"*, which does not tell an author which mistake they
+made. Two named integrity rules do:
+
+- **`ref-layer`** — the id is well-formed, for the **wrong layer**. `P-59` in a `seriesRefs` field is
+  not a typo and not a dangling reference; it points at the wrong kind of thing. Left to
+  `ref-resolves` it would read as merely absent.
+- **`ref-malformed`** — the id matches no layer's contract at all.
+
+Both read `ID_PATTERNS` from the schemas rather than restating them, the same discipline as
+`REASON_KINDS`, so neither can drift from the contract it enforces.
+
+Fixtures `L-9501` (wrong layer) and `L-9502` (malformed) added to `tests/fixtures/broken`.
+**`20/20 rules fire on tests/fixtures/broken (32 errors caught)`**, from 18/18 and 28.
+
+## Not deployed
+
+Gate is green, but this cycle ends with a report rather than a push. Production remains on
+`65c2111`.

@@ -67,7 +67,9 @@
     "provenanceRefs": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "pattern": "^P-\\d{2}$",
+        "description": "Provenance record id (P-nn) bearing on the comparison this pair makes."
       }
     },
     "notes": {
@@ -81,7 +83,9 @@
     "ledgerRefs": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "pattern": "^L-\\d{4}$",
+        "description": "Ledger record id (L-nnnn) whose finding this pair carries."
       },
       "description": "Ledger records this pair bears on."
     },
@@ -103,20 +107,25 @@
       "description": "Exactly one of series, absenceFrom or competingAccountsFrom must be set, unless the pair is declared-pending, in which case a side may carry a label alone.",
       "properties": {
         "series": {
-          "type": "string"
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "description": "Series id occupying this side of the pair."
         },
         "absenceFrom": {
           "type": "string",
-          "description": "Series or ledger id whose unmeasured declaration occupies this position — the counterpart does not exist and that is the finding."
+          "description": "Series or ledger id whose unmeasured declaration occupies this position — the counterpart does not exist and that is the finding.",
+          "pattern": "^(L-\\d{4}|[a-z0-9]+(-[a-z0-9]+)*)$"
         },
         "absenceIndex": {
           "type": "integer",
           "minimum": 0,
-          "default": 0
+          "default": 0,
+          "description": "Zero-based index into the unmeasured[] array of the record named by absenceFrom. A bare integer declares no contract of its own, so the range it must fall in is stated here: out of range is a dangling reference that resolves."
         },
         "competingAccountsFrom": {
           "type": "string",
-          "description": "Provenance id whose competingAccounts occupy this position — the counterpart is a dispute between sources, not a series."
+          "description": "Provenance id whose competingAccounts occupy this position — the counterpart is a dispute between sources, not a series.",
+          "pattern": "^P-\\d{2}$"
         },
         "label": {
           "type": "string",
