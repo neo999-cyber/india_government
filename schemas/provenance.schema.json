@@ -57,7 +57,9 @@
     "affectsSeries": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+        "description": "Series id this dispute reaches. The series must carry this record back, in provenanceRefs or on a break."
       },
       "description": "Series this record is SPECIFICALLY ABOUT — where the finding concerns that series directly. NOT a list of every series the record bears on. The relationship is deliberately asymmetric: a series may declare many provenanceRefs (P-09 and P-14 are declared by nine series each as general WDI methodology), while a record names only the series its finding concerns. Requiring symmetry would make this field an unmaintainable enumeration. The backlink check therefore runs record-to-series only, and that is correct."
     },
@@ -146,7 +148,9 @@
     "correctiveSeries": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+        "description": "Series id that corrects for this dispute — the measure to read instead of, or beside, the affected one."
       },
       "description": "Series that reference this record as the CORRECTIVE rather than the affected party — the honest measure the record points readers toward, or the instrument that measures the wedge it describes. A series listed here carries the ref for navigation, not because it is distorted; directionOfBias does not apply to it. Mirror of affectsSeries: a series must not appear in both."
     }

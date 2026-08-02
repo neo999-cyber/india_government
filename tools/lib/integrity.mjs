@@ -22,6 +22,20 @@ const SCHEMAS_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 's
 const REASON_KINDS = JSON.parse(readFileSync(join(SCHEMAS_DIR, 'ledger.schema.json'), 'utf8'))
   .properties.unmeasured.items.properties.reasonKind.enum;
 
+/**
+ * Each layer's id contract, read from its own schema rather than restated.
+ *
+ * Same discipline as REASON_KINDS above and for the same reason: a list hardcoded here drifts
+ * from the schema silently, and these are the patterns `ref-layer` and `ref-malformed` judge
+ * references against.
+ */
+const ID_PATTERNS = Object.fromEntries(
+  ['series', 'ledger', 'provenance', 'pairs'].map((layer) => [
+    layer,
+    new RegExp(JSON.parse(readFileSync(join(SCHEMAS_DIR, `${layer}.schema.json`), 'utf8')).properties.id.pattern),
+  ]),
+);
+
 const FY_RE = /^FY(\d{4})-(\d{2})$/;
 const CY_RE = /^\d{4}$/;
 
@@ -248,10 +262,40 @@ export function checkIntegrity(records, { today }) {
     if (!Array.isArray(refs)) return;
     refs.forEach((ref, i) => {
       if (typeof ref !== 'string') return;
+      if (classifyRef(r, ref, kind, `${field}[${i}]`)) return; // wrong layer or malformed, already reported
       if (!target.has(ref)) {
         add('error', 'ref-resolves', r.file, label(r), `${field}[${i}] = "${ref}" does not resolve to any ${kind} record`);
       }
     });
+  };
+
+  /**
+   * Two failures `ref-resolves` cannot tell apart, and the schema reports only as a pattern
+   * mismatch. From 2026-08-02 every reference field declares its target layer's id pattern, so
+   * ajv rejects both — but "must match pattern ^[a-z0-9]+(-[a-z0-9]+)*$" does not tell an author
+   * what went wrong. These name it.
+   *
+   *   ref-layer     — the id is well-formed, for the WRONG layer. `P-59` in a seriesRefs field is
+   *                   not a typo; it is a reference to the wrong kind of thing, and it would read
+   *                   as merely "does not resolve" if left to ref-resolves.
+   *   ref-malformed — the id matches no layer's contract at all.
+   *
+   * Both derive their patterns from the schemas, so they cannot drift from the contract they
+   * enforce. Returns true when it has reported, so the caller stops rather than piling on.
+   */
+  const classifyRef = (r, ref, kind, field) => {
+    const layers = Object.keys(ID_PATTERNS);
+    const matches = layers.filter((l) => ID_PATTERNS[l].test(ref));
+    if (matches.includes(kind)) return false;
+    if (matches.length > 0) {
+      add('error', 'ref-layer', r.file, label(r),
+        `${field} = "${ref}" is a well-formed ${matches.join('/')} id in a field that must hold a ${kind} id. ` +
+        `A reference to the wrong layer is not a dangling reference — it points at the wrong kind of thing`);
+      return true;
+    }
+    add('error', 'ref-malformed', r.file, label(r),
+      `${field} = "${ref}" matches no layer's id contract (${layers.map((l) => `${l} ${ID_PATTERNS[l].source}`).join(', ')})`);
+    return true;
   };
 
   // --- series --------------------------------------------------------------
@@ -294,7 +338,9 @@ export function checkIntegrity(records, { today }) {
     if (Array.isArray(s.breaks)) {
       s.breaks.forEach((b, i) => {
         if (!b || typeof b !== 'object') return;
-        if (typeof b.provenanceRef === 'string' && !provenanceIds.has(b.provenanceRef)) {
+        if (typeof b.provenanceRef === 'string'
+            && !classifyRef(r, b.provenanceRef, 'provenance', `breaks[${i}].provenanceRef`)
+            && !provenanceIds.has(b.provenanceRef)) {
           add('error', 'ref-resolves', r.file, where, `breaks[${i}].provenanceRef = "${b.provenanceRef}" does not resolve to any provenance record`);
         }
         if (typeof s.domain === 'string') {

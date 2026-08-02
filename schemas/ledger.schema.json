@@ -116,13 +116,17 @@
     "seriesRefs": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+        "description": "Series id whose points this record is read against."
       }
     },
     "provenanceRefs": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "string",
+        "pattern": "^P-\\d{2}$",
+        "description": "Provenance record id (P-nn) whose measurement dispute bears on this record."
       }
     },
     "sources": {

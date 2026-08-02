@@ -4,13 +4,25 @@
     "title": "Dangling references in both directions",
     "date": "2016-11",
     "term": "T1",
-    "domains": ["macro"],
+    "domains": [
+      "macro"
+    ],
     "type": "reform",
     "summary": "A ledger record whose seriesRefs and provenanceRefs point at records that do not exist anywhere in the repository.",
     "assessment": "too-early",
-    "seriesRefs": ["no-such-series"],
-    "provenanceRefs": ["P-97"],
-    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }],
+    "seriesRefs": [
+      "no-such-series"
+    ],
+    "provenanceRefs": [
+      "P-97"
+    ],
+    "sources": [
+      {
+        "name": "Nowhere",
+        "url": "https://example.org/",
+        "tier": "T1"
+      }
+    ],
     "confidence": "low",
     "asOf": "2026-07-30"
   },
@@ -19,11 +31,19 @@
     "title": "Baseline context tag on a post-2014 term",
     "date": "2016-11",
     "term": "T1",
-    "domains": ["macro"],
+    "domains": [
+      "macro"
+    ],
     "type": "reform",
     "summary": "Carries assessment baseline-context while sitting in term T1, which would smuggle an unscored record into a scored term.",
     "assessment": "baseline-context",
-    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }],
+    "sources": [
+      {
+        "name": "Nowhere",
+        "url": "https://example.org/",
+        "tier": "T1"
+      }
+    ],
     "confidence": "low",
     "asOf": "2026-07-30"
   },
@@ -33,11 +53,19 @@
     "date": "2019-09",
     "dateEnd": "2019-04",
     "term": "T2",
-    "domains": ["macro"],
+    "domains": [
+      "macro"
+    ],
     "type": "episode",
     "summary": "An episode whose dateEnd falls before its date, which would render as a negative-length episode on any timeline.",
     "assessment": "too-early",
-    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }],
+    "sources": [
+      {
+        "name": "Nowhere",
+        "url": "https://example.org/",
+        "tier": "T1"
+      }
+    ],
     "confidence": "low",
     "asOf": "2026-07-30"
   },
@@ -46,12 +74,22 @@
     "title": "Banking record citing a macro-only dispute",
     "date": "2016-11",
     "term": "T1",
-    "domains": ["banking"],
+    "domains": [
+      "banking"
+    ],
     "type": "reform",
     "summary": "Cites P-92 in provenanceRefs. The reference resolves, and P-92 covers macro alone, so it cannot be the provenance for a banking record.",
     "assessment": "too-early",
-    "provenanceRefs": ["P-92"],
-    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }],
+    "provenanceRefs": [
+      "P-92"
+    ],
+    "sources": [
+      {
+        "name": "Nowhere",
+        "url": "https://example.org/",
+        "tier": "T1"
+      }
+    ],
     "confidence": "low",
     "asOf": "2026-07-30"
   },
@@ -60,11 +98,19 @@
     "title": "Stray non-Latin script in English prose",
     "date": "2016-11",
     "term": "T1",
-    "domains": ["macro"],
+    "domains": [
+      "macro"
+    ],
     "type": "reform",
     "summary": "Schema validation is perfectly happy with this record: every field is a string of the right shape. The word прогресс sits in the middle of it, and only a character sweep will say so.",
     "assessment": "too-early",
-    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }],
+    "sources": [
+      {
+        "name": "Nowhere",
+        "url": "https://example.org/",
+        "tier": "T1"
+      }
+    ],
     "confidence": "low",
     "asOf": "2026-07-30"
   },
@@ -73,11 +119,19 @@
     "title": "Invisible character and a lookalike domain",
     "date": "2016-11",
     "term": "T1",
-    "domains": ["macro"],
+    "domains": [
+      "macro"
+    ],
     "type": "reform",
     "summary": "This summary carries a zero-width space between these two​words, which no review by eye will ever catch. The source URL below uses a Cyrillic character in the hostname.",
     "assessment": "too-early",
-    "sources": [{ "name": "Lookalike of a real ministry domain", "url": "https://mospi.gov.іn/", "tier": "T1" }],
+    "sources": [
+      {
+        "name": "Lookalike of a real ministry domain",
+        "url": "https://mospi.gov.іn/",
+        "tier": "T1"
+      }
+    ],
     "confidence": "low",
     "asOf": "2026-07-30"
   },
@@ -86,12 +140,72 @@
     "title": "Scored without both cases stated",
     "date": "2016-11",
     "term": "T1",
-    "domains": ["macro"],
+    "domains": [
+      "macro"
+    ],
     "type": "reform",
     "summary": "Assessed as worked but carries neither caseFor nor caseAgainst, which the schema requires for any scored assessment.",
     "assessment": "worked",
-    "sources": [{ "name": "Nowhere", "url": "https://example.org/", "tier": "T1" }],
+    "sources": [
+      {
+        "name": "Nowhere",
+        "url": "https://example.org/",
+        "tier": "T1"
+      }
+    ],
     "confidence": "low",
     "asOf": "2026-07-30"
+  },
+  {
+    "id": "L-9501",
+    "title": "Record whose seriesRefs holds a well-formed id of the wrong layer",
+    "date": "2021-03",
+    "term": "T2",
+    "domains": [
+      "welfare"
+    ],
+    "type": "episode",
+    "summary": "seriesRefs must hold a series id. This one holds P-59, which is a perfectly well-formed provenance id. It is not a typo and not a dangling reference — it points at the wrong kind of thing, and ref-resolves alone would report it as merely absent.",
+    "assessment": "contested",
+    "caseFor": "Present so the record fails on the reference alone, not on a missing case.",
+    "caseAgainst": "Present for the same reason.",
+    "seriesRefs": [
+      "P-59"
+    ],
+    "sources": [
+      {
+        "name": "Fixture, not a real source",
+        "url": "https://example.org/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "low",
+    "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-9502",
+    "title": "Record whose seriesRefs holds an id matching no layer contract",
+    "date": "2021-03",
+    "term": "T2",
+    "domains": [
+      "welfare"
+    ],
+    "type": "episode",
+    "summary": "seriesRefs holds \"Not A Series Id\", which matches no id contract in any of the four schemas — not the series slug, not L-nnnn, not P-nn, not PR-nn. Malformed rather than misdirected.",
+    "assessment": "contested",
+    "caseFor": "Present so the record fails on the reference alone, not on a missing case.",
+    "caseAgainst": "Present for the same reason.",
+    "seriesRefs": [
+      "Not A Series Id"
+    ],
+    "sources": [
+      {
+        "name": "Fixture, not a real source",
+        "url": "https://example.org/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "low",
+    "asOf": "2026-08-01"
   }
 ]
