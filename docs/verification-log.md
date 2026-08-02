@@ -2863,3 +2863,173 @@ to 24 against an instructed 22.
 
 Stopped before deploy, as instructed. **Production was not checked and nothing here claims it was** —
 every figure above is from the local build.
+
+---
+
+# Verification log — cycle 2026-08-03c (domain-coverage gate)
+
+**Appended, not rewritten.** `2026-08-03b` is closed and is not touched here.
+
+**Branched from `lens-axis`, not from `main`.** This gate fails on `main` by construction — `main`
+lacks the `education` fix from `2026-08-03b`, which is the defect the gate exists to catch. The two
+land together or in order; landing this one alone would put a red gate on the default branch.
+
+## The finding, in its own right
+
+> **A check can be sound, complete and green while the question it asks is not the one that would
+> have caught the defect.**
+
+`education` had no domain page for a month behind a green gate. Every check was correct and every
+check passed:
+
+| check | on the regressed build | verdict |
+|---|---|---|
+| `validate` | VALID — 0 errors, 96 warnings | correct — the data was never wrong |
+| `typecheck` | clean | correct — `DOMAINS` was a well-typed 14-value tuple |
+| `reachability` | **492/492 declared marks reachable** | correct — every mark did render on its own record page |
+
+**None of them was broken. `reachability` in particular was not merely passing, it was passing at
+full marks** — 492 of 492, the maximum score available. It asks whether a declared mark renders on
+the page of the record that declares it, and it did, 492 times. It does not ask whether the record
+is reachable from anywhere a reader would start. 48 series and 20 ledger records — the whole
+phase-10 corpus — had no domain surface, and the number that would have told you was `443 pages
+scanned` against 444, which nothing reads.
+
+**This is the phase-6c shape one level up.** There, a component suppressed a mark because another
+component was expected to render it. Here, an entire axis of navigation was absent and no check
+enumerated the axis. Both are invisible to a data-side gate because the data is correct throughout.
+
+### Regenerating specs from /data does not address this
+
+Recorded because it is the obvious mitigation and it is the wrong one. That discipline — used in
+`2026-08-03a`'s production check, and followed by this gate too — guards against a **stale needle**:
+a check looking for what the data used to say. Every needle in the failing month was derived fresh
+from `/data` on every run, and every one was found. **The needle was never stale.** The gap was an
+unchecked dimension, and freshness is orthogonal to coverage. A perfectly fresh check of the wrong
+question returns a perfectly fresh wrong answer.
+
+## What was built
+
+`tools/domain-coverage.mjs`, wired into `npm run build` and `vercel.json` after `reachability`.
+
+Three assertions:
+
+1. **Every domain value the schemas admit emits a page** — `out/domains/<value>/index.html` exists.
+2. **The domain index links to every one of them** — a page nothing navigates to is not a surface.
+3. **Every record reaches every surface it declares** — series by `domain` and by each `lenses[]`
+   value, ledger by each `domains[]` value, pairs by `domain` and `lenses[]`, provenance by each
+   `affectsDomains` value, with `all` fanning out to every domain page.
+
+**The expected set is derived from the schemas, never from `lib/types.ts`.** `types.ts` is the layer
+that drifted; asking it what domains exist is asking the defect to report itself, and the gate would
+have been green through the entire month. The **union across all four schemas** is taken rather than
+any single one, so divergence *between* the schemas is also caught. `lenses[]` values are asserted
+to have surfaces rather than inferred to from the subset relation.
+
+It reads built output and runs after `next build`, for the same reason `reachability` does:
+`validate` runs *before* `out/` exists and can see none of this.
+
+```
+domain-coverage OK — 15/15 domain surfaces built, 15/15 linked from the index,
+                     689/689 record-to-surface references reachable
+  domains 15 (union of 4 schemas) · lenses kashmir, federalism
+```
+
+## Fixtures — both distilled from REAL regressed builds
+
+Trigger C, Rule 2. Neither is a hand-written negative.
+
+**A — `domain-coverage-no-page`.** The actual `education` defect, reproduced: `education` removed
+from `DOMAINS` and `DOMAIN_LABELS`, `next build` run, gate observed to fire.
+
+```
+domain-coverage FAILED — 1 coverage failure(s)
+  - [page] education: the schemas admit "education" (declared in series, ledger, pairs,
+    provenance) and no page was built for it...
+```
+
+**B — `domain-coverage-record-adrift`.** `seriesUnderLens` made to return empty, `next build` run,
+gate observed to fire on **9 of the 15** lens-carrying series.
+
+**On both regressed builds `validate` was VALID, `typecheck` was clean, and `reachability` reported
+492/492.** That is the finding above, demonstrated rather than asserted.
+
+Both fixture trees confirmed to survive a clean clone: `.gitignore:7` (`!tests/fixtures/**/out/**`)
+re-includes them, 34 files staged.
+
+### Two honest qualifications on the new gate
+
+**Nine of fifteen, not fifteen of fifteen.** Regression B emptied the lens block on
+`/domains/kashmir/` and six of the fifteen series still counted as reachable — they are linked from
+the same page's **Pairs** section via `pairHref`. The probe asks "is this record reachable from this
+surface", and through a pair link it genuinely is, so the count is sound as stated. But it means the
+gate under-reports a block that vanishes: it fires, and it fires at 9 rather than 15. Coupling the
+probe to a specific block would fix the count and make the gate brittle against markup. Recorded as
+a known limit rather than tuned away — **and it is an instance of this cycle's own finding**, which
+is the reason to write it down instead of rounding it off.
+
+**Script-stripping is defensive here, not load-bearing — checked, not assumed.** `reachability`
+strips `<script>` first because Next embeds the whole payload as escaped JSON. Tested against the
+real build: hrefs inside the hydration payload are escaped as `\"href\":\"…\"` and never match the
+`href="…"` probe, and across all 15 domain pages stripping changes the pair-id answer on **zero** of
+them. It is kept because it can only ever prevent a false PASS, never cause a false failure. The
+first version of fixture B buried an href in a script block and claimed to prove the strip was
+load-bearing; the fixture fired with stripping disabled, so the claim was false and the fixture was
+rewritten rather than the finding softened. **A fixture that proves a property the code does not
+have is worse than no fixture** — it retires the question.
+
+## selftest — 22 stays 22, and that is the correct answer
+
+**The instructed 22 → 24 is not achievable soundly, and the reason is the cycle's own finding.**
+
+The `N/N rules fire` line counts **validator rules firing on a data fixture root**. This gate cannot
+be one. `npm run build` is `validate && next build && reachability && domain-coverage`: at validator
+time there is no `out/` to read, and a validator rule about what *renders* would have to model the
+render path it exists to police, which is exactly the failure Rule 1 was written against. Forcing it
+into that number would have meant either a rule that cannot see the defect, or a number that no
+longer means what this log says it means.
+
+`reachability` has never been in the 22 either. **The figure has always undercounted what the
+selftest proves**, and nobody noticed because it was the number being tracked. So the summary now
+carries a second count of its own:
+
+```
+  22/22 validator rules fire on tests/fixtures/broken (35 errors caught)
+  2/2 output gates proven to fire on their own fixtures (reachability, domain-coverage)
+  misspelled schema keyword fails compilation
+```
+
+Three new assertions land in the selftest — fixture A fires, fixture B fires, live corpus stays
+silent — bringing the total proven cases to 22 validator rules plus 2 output gates. If the tracked
+number should instead be a single total across every assertion class, say so and it changes; it is
+recorded this way because redefining the headline figure mid-history would break comparability with
+`20 → 22` recorded one cycle ago.
+
+## `lib/types.ts` drift — already fixed, not re-done
+
+Both items were fixed in `2026-08-03b` (`d1e2027`) and are in PR #2, unmerged at the time of writing:
+
+- the `DOMAINS` comment calling `defence` a lens and claiming the lenses carry no series;
+- `Pair` missing `title`, `ledgerRefs` and `status`.
+
+Verified present on this branch rather than taken on trust. Nothing re-authored.
+
+## Gate
+
+```
+validate         VALID — 0 errors, 96 warning(s)
+selftest         OK — 22/22 validator rules · 2/2 output gates
+typecheck        clean
+build            clean
+reachability     OK — 492/492 declared marks (444 pages scanned)
+domain-coverage  OK — 15/15 surfaces · 15/15 indexed · 689/689 record references
+```
+
+## Still owed, unchanged
+
+`demography` — a decision, not a note. Zero records, and its own definition admits it describes
+nothing. Either attested or removed. Now surfaced in four phases.
+
+## Not deployed
+
+Stopped before deploy. Production was not checked and nothing here claims it was.
