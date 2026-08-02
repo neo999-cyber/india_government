@@ -954,3 +954,5 @@ expected to move again.
 `reversed` currently has one user in `/data` (`L-0066`) and, after this correction, none in the
 education drop. Its written definition now excludes two mechanisms and admits one. If a fourth
 candidate arrives, the question to ask is whether the value is doing enough work to keep.
+
+**Threshold for revisiting `reversed` itself.** One user in `/data` (`L-0066`), none in the drop, two mechanisms excluded and one admitted. Re-open whether it earns its place if either a fourth candidate mechanism is excluded, or its user count reaches zero. **This is a threshold, not a plan to remove it** — a value with one correct user is doing work, and the test is whether it keeps rejecting more than it admits.
