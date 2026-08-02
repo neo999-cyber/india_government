@@ -1908,3 +1908,78 @@ cost this project three missed reference forms and 111 unvalidated instances of 
 
 Deferred, not opened. It is a schema change and the schemas are the contract — research sessions
 author against them, so it is agreed in chat before hardening (CLAUDE.md, Roles).
+
+---
+
+# Verification log — cycle 2026-08-02i (18 back-links applied; 1 rejected, 1 held)
+
+Additive only. The 63 by-design rows untouched. Gate stays red at 26. Nothing pushed.
+
+## APPLIED — 18 back-links
+
+Candidates fell **83 → 65**, the remainder being the 63 by-design plus the two below.
+
+| provenance | gained | now lists |
+|---|---|---|
+| P-15 | `scb-gross-npa-amount` | 5 |
+| P-18 | `credit-gdp-peer`, `npl-peer`, `scb-gross-advances`, `scb-gross-npa-amount` | 7 |
+| P-21 | `scb-gross-npa` | 3 |
+| P-22 | `soil-health-cards`, `pmkisan-beneficiaries` | 8 |
+| P-31 | `nh-network-length` | 3 |
+| P-39 | `regular-wage-share`, `unemployment-rate-cws`, `youth-unemployment` | 8 |
+| P-40 | `lfpr-overall`, `regular-wage-share`, `youth-unemployment` | 7 |
+| P-41 | `lfpr-female` | 5 |
+| P-48 | `agri-gva-growth` | 2 |
+| P-52 | `uapa-conviction-rate-ncrb` | 3 |
+
+The P-52 row has documentary support beyond the shape: cycle 08-01e dropped the retired
+`uapa-conviction-rate` from `P-52.affectsSeries` and authored `uapa-conviction-rate-ncrb` carrying
+P-52. The removal happened; the re-add did not.
+
+## REJECTED — `metro-network` → P-22
+
+**P-22 names scheme MIS specifically.** Title: *"Evidence base shifts from independent survey to
+scheme MIS"*. `whatChanged`: *"toward scheme management information systems and dashboards. MIS
+records an OUTPUT — a connection issued, a toilet built, a card created, a house sanctioned"*.
+
+It does not name self-reported administrative counts generally. It widens by **enumerating** cases —
+`notes` extends scope to infrastructure for Jal Jeevan, to employment for EPFO and e-Shram, to banking
+and macro for agricultural credit. `metro-network` is a route-kilometre count from MoHUA and is named
+in none of them. Rejected on the record's own scope.
+
+## HELD, NOT REJECTED — `agri-credit` → P-22, because the given reason is refuted by P-22 itself
+
+The instruction was to reject with the reason *"a NABARD/RBI financial statistic is not a scheme MIS,
+so P-22's dispute does not reach it."* **P-22's own `notes` say the opposite**, verbatim:
+
+> Scope extended to banking and macro: **agricultural credit DISBURSED measures supply not smallholder
+> access**, and the farm-law record turns on the same registration-standing-in-for-outcome shape.
+
+That sentence names agricultural credit as an explicit extension of P-22's scope into banking, and
+`agri-credit` already carries P-22 in its own `provenanceRefs`. Writing the rejection would have put a
+statement in the log that the cited record contradicts on its face, so the row is **held pending a
+ruling** rather than rejected. Either the back-link is warranted, or P-22's notes need amending — but
+the two cannot both stand.
+
+## The 26 routes
+
+Worklist written to `docs/unmeasured-routes-todo.md`: each entry with record id, `unmeasured[i]`,
+`what` and `why` verbatim, `reasonKind`, and any holder its own text names. 24 `not-published`,
+2 `withheld`. Routes are authored by the operator; nothing was guessed.
+
+### A classification finding on the two `withheld` entries
+
+Both are `nas-parakh-grade3-language[3]` and `nas-parakh-grade3-maths[3]`, same text:
+
+> The test items used in any NAS or PARAKH round — *"NAS does not make public the test questions it
+> uses; PARAKH publishes sample items only. This is an identifiable standing refusal rather than mere
+> non-release."*
+
+`withheld` is defined as *"exists, release was specifically requested or legally required, and was
+refused. Narrower than not-published — requires an identifiable refusal, not merely absence of
+release."*
+
+**No request, requester or date is recorded.** What the text describes is a standing publication
+practice, which the definition explicitly distinguishes from withholding — *"not merely absence of
+release"*. On the written definition these are `not-published`, not `withheld`. Reported, not
+reclassified: it changes an authored judgement and belongs with the route-authoring pass.
