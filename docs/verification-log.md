@@ -2334,3 +2334,26 @@ Fixtures `L-9501` (wrong layer) and `L-9502` (malformed) added to `tests/fixture
 
 Gate is green, but this cycle ends with a report rather than a push. Production remains on
 `65c2111`.
+
+## Addendum to 2026-08-02k — deployed and verified
+
+**Production is `012ca77`**, `dpl_FrSUfLbXfQtdKxtFbjEBBxZyLfQg`, target production, state READY.
+The integration picked the push up in under two minutes, as it did for `65c2111` — the hour-long
+gap before `97aecf8` has not recurred.
+
+Vercel's own build log:
+
+```
+> npm run reachability
+reachability OK — 397/397 declared marks reachable on their own record page (396 pages scanned)
+  unmeasured 128/128 · caveat 99/99 · notes 163/163 · differentFactsNote 7/7
+```
+
+Production HTML re-checked over the wire, authenticated: **70/70 pages · absences 97/97 · caveats
+66/66 · seams 67/67 · 230/230**, no HTTP failures, no shortfalls. Controls: positive TRUE, negative
+FALSE, both end-seam assertions TRUE.
+
+**This cycle changed no `/data`, so identical numbers are the correct result and are the point of
+running it.** The schema now pattern-validates 948 references that were previously unchecked for
+well-formedness; if that had rejected or altered anything the corpus renders, these figures would
+have moved. They did not. The change is enforcement, not content.
