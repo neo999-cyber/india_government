@@ -135,3 +135,70 @@ cover the new series.
 
 Whether `reasonKind` needs a value for **discontinuation**. Filed
 `not-published` per the written definitions. See the run report.
+
+---
+
+# HANDOFF — read this first in a new session
+
+**Date:** 2026-08-02. Everything below is committed and pushed to `main`.
+**`/data` has not been touched at any point.** The drop is not merged.
+
+## Where things stand
+
+`/phase education --dry` ran to the drop and stopped there, as instructed.
+Stage 8 never ran, so no PR was opened and no cycle letter was assigned by the
+run — `2026-08-02a` in `docs/verification-log.md` was assigned by hand.
+
+**The drop:** `drops/phase-education/records/` — 90 records (49 series, 20 ledger
+L-0090→L-0109, 12 provenance P-59→P-70, 9 pairs PR-17→PR-25). Valid per record
+against the live schemas. No ID collisions with `/data`, no dangling seriesRefs.
+
+**The research:** `drops/phase-education/parts/` — 14 files. Read the PARTS.
+`research.md` in the parent directory is a STALE assembly covering about half the
+scope; do not feed it to anything.
+
+## Decided this session — do not re-litigate
+
+- No `education` domain value yet. Records filed provisionally; the bad-fit flag
+  is the output. Count: **56 of 89** at the original drop (series 37/48,
+  provenance 8/12, pairs 5/9, ledger 6/20) — see `records/DOMAIN-FIT.md`.
+- **No fifth `reasonKind` value.** "Discontinued" describes the history of the
+  publication where the other four describe the status of the quantity — that is
+  the `directionOfBias` two-axes defect and a fifth value would build it a second
+  home. `not-published` stands.
+- `reversed` amended: **a disclosure practice is not a measure.** L-0094 rescored
+  `reversed` → `contested`.
+- `graduate-unemployment` stays `employment`; L-0063 untouched; no parallel
+  record on graduate outcomes or skilling.
+- L-0105 stays `governance` + `human-development`. `demography` not opened, and
+  unused across the whole drop.
+
+## OPEN — carried, not decided
+
+1. **Trigger A on L-0096.** No `assessment` value fits a measure that ran to
+   completion and whose outcome was never published. Authored `contested` with a
+   loud `assessmentNote`. Question: does the enum need such a value?
+2. **Trigger D on L-0105.** Does it open `demography`? If so, `P-04` arguably
+   should have opened it first and the two go together. Not opened here.
+3. **Trigger B — 29 points held pending**, none guessed.
+4. **The domain-fit count is stale.** It predates the teacher re-author and the
+   L-0096 change, and does not cover `teacher-vacancy-rate-elementary`.
+5. **Self-check (stage 4) has never been run on this drop.**
+
+## Known defects in the drop, recorded not fixed
+
+- The FY2013-14/FY2014-15 doubling of "other departments" education spend is
+  unresolved. **The all-departments spending series must not be used for
+  UPA-versus-Modi comparison until it is.** Encoded as a caveat, not laundered.
+- `edu-spend-gdp-wdi` deliberately not authored — its calendar assignment rests
+  on P-14, whose own bridgeNote requires a verification never performed.
+- Two schema gaps raised for the operator to apply at source, not worked around:
+  `status` cannot express Actual / Revised Estimate / Budget Estimate, and
+  `points[]` admits one value per period where FY2023-24 (MUSK) and every
+  post-rebasing ratio have two.
+
+## To resume
+
+Run stage 4 (self-check) and stage 5 (reconcile) against `records/`, then
+re-count domain fit, then decide the two open triggers. Merge is stage 6 and
+needs the operator's call on the `education` domain value first.
