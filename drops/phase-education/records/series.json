@@ -3,7 +3,7 @@
     "id": "aser-std3-reading",
     "title": "Standard III children who can read a Standard II level text, rural",
     "unit": "% of children assessed",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "ASER Centre (Pratham), ASER 2024 National Findings and the ASER 2010-2022 full reports, trend tables",
@@ -77,7 +77,8 @@
     ],
     "provenanceRefs": [
       "P-59",
-      "P-04"
+      "P-04",
+      "P-68"
     ],
     "higherIsBetter": true,
     "denominator": "All children enrolled in the named standard in the rural sample, government and private schools combined, who were assessed - ASER's own 'Govt & Pvt' basis, which excludes children in 'Other' institutions (madrasa, EGS: 0.5-1.2 per cent of the sample). NOT all children of that age and NOT government-school children only.",
@@ -107,7 +108,7 @@
     "id": "aser-std3-arithmetic",
     "title": "Standard III children who can do at least subtraction, rural",
     "unit": "% of children assessed",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "ASER Centre (Pratham), ASER 2024 National Findings and the ASER 2010-2022 full reports, trend tables",
@@ -194,7 +195,7 @@
     "id": "aser-std5-reading",
     "title": "Standard V children who can read a Standard II level text, rural",
     "unit": "% of children assessed",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "ASER Centre (Pratham), ASER 2024 National Findings and the ASER 2010-2022 full reports, trend tables",
@@ -267,7 +268,8 @@
     ],
     "provenanceRefs": [
       "P-59",
-      "P-04"
+      "P-04",
+      "P-68"
     ],
     "higherIsBetter": true,
     "denominator": "All children enrolled in the named standard in the rural sample, government and private schools combined, who were assessed - ASER's own 'Govt & Pvt' basis, which excludes children in 'Other' institutions (madrasa, EGS: 0.5-1.2 per cent of the sample). NOT all children of that age and NOT government-school children only.",
@@ -278,7 +280,7 @@
     "id": "aser-std5-arithmetic",
     "title": "Standard V children who can do division, rural",
     "unit": "% of children assessed",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "ASER Centre (Pratham), ASER 2024 National Findings and the ASER 2010-2022 full reports, trend tables",
@@ -363,7 +365,7 @@
     "id": "aser-std3-reading-govt",
     "title": "Standard III children in government schools who can read a Standard II level text, rural",
     "unit": "% of children assessed",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "ASER Centre (Pratham), ASER 2024 National Findings and the ASER 2010-2022 full reports, trend tables",
@@ -446,7 +448,7 @@
     "id": "aser-std3-reading-private",
     "title": "Standard III children in private schools who can read a Standard II level text, rural",
     "unit": "% of children assessed",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "ASER Centre (Pratham), ASER 2024 National Findings and the ASER 2010-2022 full reports, trend tables",
@@ -517,7 +519,7 @@
     "id": "aser-std8-arithmetic",
     "title": "Standard VIII children who can do division, rural",
     "unit": "% of children assessed",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "ASER Centre (Pratham), ASER 2024 National Findings and the ASER 2010-2022 full reports, trend tables",
@@ -601,7 +603,7 @@
     "id": "aser-out-of-school-15-16",
     "title": "Children aged 15-16 not enrolled in school, rural",
     "unit": "% of children assessed",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "ASER Centre (Pratham), ASER 2024 National Findings and the ASER 2010-2022 full reports, trend tables",
@@ -665,7 +667,7 @@
     "id": "aser-girls-11-14-not-enrolled",
     "title": "Girls aged 11-14 not enrolled in school, rural",
     "unit": "% of children assessed",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "ASER Centre (Pratham), ASER 2024 National Findings and the ASER 2010-2022 full reports, trend tables",
@@ -719,7 +721,7 @@
     "id": "aser-private-share-rural",
     "title": "Rural children aged 6-14 enrolled in private school",
     "unit": "% of children assessed",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "ASER Centre (Pratham), ASER 2024 National Findings and the ASER 2010-2022 full reports, trend tables",
@@ -816,7 +818,7 @@
     "id": "nas-parakh-grade3-language",
     "title": "Grade 3 language, mean item-success rate - NAS and PARAKH",
     "unit": "% of test items answered correctly (mean)",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "PARAKH Rashtriya Sarvekshan 2024 National Report (NCERT); NAS 2017 and NAS 2021 figures relayed via ASER 2018 and PIB",
@@ -906,7 +908,7 @@
     "id": "nas-parakh-grade3-maths",
     "title": "Grade 3 mathematics, mean item-success rate - NAS and PARAKH",
     "unit": "% of test items answered correctly (mean)",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "PARAKH Rashtriya Sarvekshan 2024 National Report (NCERT); NAS 2017 and NAS 2021 figures relayed via ASER 2018 and PIB",
@@ -996,7 +998,7 @@
     "id": "parakh-grade9-maths",
     "title": "Grade 9 mathematics, mean item-success rate - PARAKH 2024",
     "unit": "% of test items answered correctly (mean)",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "PARAKH Rashtriya Sarvekshan 2024 National Report (NCERT); NAS 2017 and NAS 2021 figures relayed via ASER 2018 and PIB",
@@ -1033,7 +1035,7 @@
     "id": "parakh-grade3-proficient-language",
     "title": "Grade 3 students at or above the PARAKH proficiency band, language",
     "unit": "% of students assessed",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "PARAKH Rashtriya Sarvekshan 2024 proficiency-band figures, relayed",
@@ -1078,7 +1080,7 @@
     "id": "parakh-grade3-proficient-maths",
     "title": "Grade 3 students at or above the PARAKH proficiency band, mathematics",
     "unit": "% of students assessed",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T4",
     "source": {
       "name": "PARAKH Rashtriya Sarvekshan 2024 proficiency-band figures, relayed",
@@ -1123,7 +1125,7 @@
     "id": "school-closure-weeks-covid",
     "title": "Duration of COVID school closures, UNESCO definition (fully closed plus partially open)",
     "unit": "weeks",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T2",
     "source": {
       "name": "UNESCO school closures database, raw daily country panel (162,750 rows, 210 countries, 16 Feb 2020 to 31 Mar 2022), computed from the panel",
@@ -1173,7 +1175,7 @@
     ],
     "higherIsBetter": false,
     "denominator": "Weeks, computed as UNESCO defines the measure: days on which school status was either 'closed due to COVID-19' or 'partially open', divided by 7. The window is 16 February 2020 to 31 March 2022 and the dataset stops there.",
-    "caveat": "NEVER RENDER THIS ALONE. 'India was among the longest-closed' is TRUE on UNESCO's own definition (93 weeks, world number one) and FALSE if full closure is meant (25 weeks, rank 58 of 210). Any claim in either direction that does not name which measure it uses is unusable, and this is where most commentary goes wrong in both directions. A single national daily label for India is also a definitional fiction UNESCO's own methodology admits: closure was state-decided and grade-differentiated, and India spent 476 days - 61 per cent of the window - in the single undifferentiated 'partially open' bucket.",
+    "caveat": "NEVER RENDER THIS ALONE. 'India was among the longest-closed' is TRUE on UNESCO's own definition (93 weeks, world number one) and FALSE if full closure is meant (25 weeks, rank 58 of 210). Any claim in either direction that does not name which measure it uses is unusable, and this is where most commentary goes wrong in both directions. A single national daily label for India is also a definitional fiction UNESCO's own methodology admits: closure was state-decided and grade-differentiated, and India spent 476 days in the single undifferentiated 'partially open' bucket - 61 per cent of UNESCO's 775-day tracking window, which is not the same thing as the 707-day stretch during which Indian schools were never classified fully open.",
     "notes": "Global mean 40.6 weeks, median 37.0. India's affected population is the largest of any country: UNESCO records pre-primary-to-upper-secondary enrolment of 294,893,120 against China's 236,991,152. The reconciliation between UNESCO's mild national label and ASER's stronger claim that 'primary schools were closed for almost two years' is grade-differentiation: for most of the 476 partially open days, senior grades had reopened while primary had not - and primary is where the learning loss landed. Other comparators (fully closed / partially open / total): Nepal 40/47/87, Uganda 66/23/89, Mexico 53/28/81, Brazil 38/41/79, Korea 11/68/79, USA 0/77/77, Philippines 75/1/76, Sri Lanka 49/25/74, Pakistan 37/24/61, Germany 14/24/38, UK 16/11/27, France 7/5/12, Japan 3/8/11.",
     "unmeasured": [
       {
@@ -1193,7 +1195,7 @@
     "id": "school-closure-weeks-full-covid",
     "title": "Weeks of full COVID school closure, UNESCO panel",
     "unit": "weeks",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T2",
     "source": {
       "name": "UNESCO school closures database, raw daily country panel (162,750 rows, 210 countries, 16 Feb 2020 to 31 Mar 2022), computed from the panel",
@@ -1246,7 +1248,7 @@
     "id": "school-enrolment-total-udise",
     "title": "Total school enrolment, pre-primary to higher secondary",
     "unit": "students",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "UDISE+ reports, Department of School Education and Literacy, Ministry of Education (2019-20 through 2024-25 editions), retrieved via Internet Archive captures of the ministry PDFs",
@@ -1311,7 +1313,8 @@
         "country": "IND",
         "period": "FY2025-26",
         "value": 247219766,
-        "status": "verified"
+        "status": "pending",
+        "note": "Relayed at T3; UDISE+ 2025-26 was not retrieved."
       }
     ],
     "provenanceRefs": [
@@ -1335,7 +1338,7 @@
     "id": "ger-primary-udise",
     "title": "Gross enrolment ratio, primary (Classes I-V), existing 10+2 structure",
     "unit": "%",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "UDISE+ reports, Department of School Education and Literacy, Ministry of Education (2019-20 through 2024-25 editions), retrieved via Internet Archive captures of the ministry PDFs",
@@ -1438,7 +1441,7 @@
     "id": "ger-higher-secondary-udise",
     "title": "Gross enrolment ratio, higher secondary (Classes XI-XII), existing 10+2 structure",
     "unit": "%",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "UDISE+ reports, Department of School Education and Literacy, Ministry of Education (2019-20 through 2024-25 editions), retrieved via Internet Archive captures of the ministry PDFs",
@@ -1531,7 +1534,7 @@
     "id": "dropout-secondary-udise",
     "title": "Dropout rate, secondary stage (Classes IX-X)",
     "unit": "%",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "UDISE+ reports, Department of School Education and Literacy, Ministry of Education (2019-20 through 2024-25 editions), retrieved via Internet Archive captures of the ministry PDFs",
@@ -1598,7 +1601,7 @@
     "id": "private-unaided-enrolment-share-udise",
     "title": "Share of school enrolment in private unaided recognised schools, UDISE+",
     "unit": "% of total enrolment",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "UDISE+ reports, Department of School Education and Literacy, Ministry of Education (2019-20 through 2024-25 editions), retrieved via Internet Archive captures of the ministry PDFs",
@@ -1658,8 +1661,8 @@
         "country": "IND",
         "period": "FY2025-26",
         "value": 40,
-        "status": "verified",
-        "note": "Pre-primary to XII."
+        "status": "pending",
+        "note": "Pre-primary to XII. Relayed at T3; UDISE+ 2025-26 was not retrieved."
       }
     ],
     "provenanceRefs": [
@@ -1674,7 +1677,7 @@
     "id": "govt-schools-count",
     "title": "Government schools in India",
     "unit": "schools",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Lok Sabha Unstarred Question 112, 'Closure or Merger of Schools', answered 03.02.2025, Annexure I; extended from UDISE+ 2024-25 and 2025-26",
@@ -1754,7 +1757,8 @@
         "country": "IND",
         "period": "FY2025-26",
         "value": 1005245,
-        "status": "verified"
+        "status": "pending",
+        "note": "Relayed at T3; UDISE+ 2025-26 was not retrieved."
       }
     ],
     "provenanceRefs": [
@@ -1778,7 +1782,7 @@
     "id": "private-schools-count",
     "title": "Private schools in India",
     "unit": "schools",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Lok Sabha Unstarred Question 112, answered 03.02.2025, Annexure II; extended from UDISE+ 2024-25 and 2025-26",
@@ -1822,7 +1826,8 @@
         "country": "IND",
         "period": "FY2025-26",
         "value": 341605,
-        "status": "verified"
+        "status": "pending",
+        "note": "Relayed at T3; UDISE+ 2025-26 was not retrieved."
       }
     ],
     "provenanceRefs": [
@@ -1835,7 +1840,7 @@
     "id": "teachers-total-udise",
     "title": "Total school teachers, all managements",
     "unit": "teachers",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "UDISE+ reports, Department of School Education and Literacy, Ministry of Education, Tables 2.2, 4.7, 4.12, 4.18 and 4.19 (2019-20 through 2024-25 editions), retrieved via Internet Archive captures",
@@ -1916,7 +1921,7 @@
     "id": "ptr-primary-udise",
     "title": "Pupil-teacher ratio, primary (Classes I-V), existing 10+2 structure",
     "unit": "pupils per teacher",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "UDISE+ reports, Department of School Education and Literacy, Ministry of Education, Tables 2.2, 4.7, 4.12, 4.18 and 4.19 (2019-20 through 2024-25 editions), retrieved via Internet Archive captures",
@@ -1996,7 +2001,7 @@
     "id": "ptr-elementary-dise",
     "title": "Pupil-teacher ratio, elementary - DISE universe",
     "unit": "pupils per teacher",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "DISE / U-DISE Flash Statistics, NUEPA/NIEPA, editions 2012-13 through 2015-16, retrieved via Wayback captures of udise.in",
@@ -2061,7 +2066,7 @@
     "id": "single-teacher-schools-udise",
     "title": "Schools with a single teacher, UDISE+ universe",
     "unit": "% of all schools",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "UDISE+ reports, Department of School Education and Literacy, Ministry of Education, Tables 2.2, 4.7, 4.12, 4.18 and 4.19 (2019-20 through 2024-25 editions), retrieved via Internet Archive captures",
@@ -2129,7 +2134,7 @@
     "id": "single-teacher-schools-share-dise",
     "title": "Schools with a single teacher, DISE elementary universe",
     "unit": "% of schools imparting elementary education",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "DISE / U-DISE Flash Statistics, NUEPA/NIEPA, editions 2012-13 through 2015-16, retrieved via Wayback captures of udise.in",
@@ -2188,7 +2193,7 @@
     "id": "schools-above-rte-ptr-primary-dise",
     "title": "Schools breaching the RTE pupil-teacher norm at primary level - discontinued",
     "unit": "% of schools with primary PTR above 30",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "DISE / U-DISE Flash Statistics, NUEPA/NIEPA, editions 2012-13 through 2015-16, retrieved via Wayback captures of udise.in",
@@ -2242,7 +2247,7 @@
     "id": "teacher-vacancy-rate-ssa",
     "title": "Teacher vacancy rate, all levels, government and aided schools",
     "unit": "% of sanctioned posts vacant",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Standing Committee on Education Reports 349 (28.03.2023) and 368 (08.08.2025), from Department tables built by summing State and Samagra Shiksha establishment returns via PAB and PRABANDH",
@@ -2278,7 +2283,7 @@
     ],
     "higherIsBetter": false,
     "denominator": "Sanctioned teaching posts in Samagra Shiksha-funded government and government-aided schools, all-India. NOT all schools: private unaided schools are wholly outside it, and the Government of India directly administers only about 3,000 of India's roughly 14.7 lakh schools.",
-    "caveat": "THE RATE FELL BECAUSE THE BASE MOVED. Between the two points, total sanctioned posts rose 10.4 per cent - elementary sanctioned posts FELL by 258,513 while secondary sanctioned posts ROSE by 918,066, up 60.3 per cent in twelve months. No education system creates 9.2 lakh secondary teaching posts in a year; this is an undisclosed reclassification. The absolute vacancy count rose while the rate fell, so anyone quoting the rate as improvement is quoting an artefact of the sanctioned-post base. Both readings breach RTE section 26, which caps vacancies at ten per cent of sanctioned strength in any school substantially financed by government.",
+    "caveat": "THE RATE FELL BECAUSE THE BASE MOVED. Between FY2023-24 and FY2024-25, total sanctioned posts rose 10.4 per cent - elementary sanctioned posts FELL by 258,513 while secondary sanctioned posts ROSE by 918,066, up 60.3 per cent in twelve months. No education system creates 9.2 lakh secondary teaching posts in a year; this is an undisclosed reclassification. The absolute vacancy count rose while the rate fell, so anyone quoting the rate as improvement is quoting an artefact of the sanctioned-post base. Both readings breach RTE section 26, which caps vacancies at ten per cent of sanctioned strength in any school substantially financed by government.",
     "notes": "The Ministry has produced national totals since 2014; the long elementary run is carried on teacher-vacancy-rate-elementary. This series is the all-levels aggregate, which exists only from FY2022-23 because earlier answers separated elementary from secondary and rarely completed the secondary side. Report 368 prints a second, irreconcilable 2023-24 total one page from this one - 55,76,000 sanctioned and 8,31,000 vacant against 63,26,207 and 9,59,148 - the difference being mostly, but not wholly, that one includes higher secondary and the other does not.",
     "unmeasured": [
       {
@@ -2298,7 +2303,7 @@
     "id": "teacher-vacancy-rate-kvs",
     "title": "Teacher vacancy rate, Kendriya Vidyalaya Sangathan",
     "unit": "% of sanctioned teaching posts vacant",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Rajya Sabha Standing Committee on Education, Women, Children, Youth and Sports, 363rd Report Tables 47/48/51 and 376th Report Tables 29/32",
@@ -2334,7 +2339,7 @@
     "id": "teacher-vacancy-rate-nvs",
     "title": "Teacher vacancy rate, Navodaya Vidyalaya Samiti",
     "unit": "% of sanctioned teaching posts vacant",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Rajya Sabha Standing Committee on Education, Women, Children, Youth and Sports, 363rd Report Tables 47/48/51 and 376th Report Tables 29/32",
@@ -2370,7 +2375,7 @@
     "id": "teachers-professionally-qualified-primary-udise",
     "title": "Primary teachers recorded as professionally qualified",
     "unit": "% of teachers teaching Classes I-V",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "UDISE+ reports, Department of School Education and Literacy, Ministry of Education, Tables 2.2, 4.7, 4.12, 4.18 and 4.19 (2019-20 through 2024-25 editions), retrieved via Internet Archive captures",
@@ -2424,7 +2429,7 @@
     "id": "teachers-trained-pre-primary-udise",
     "title": "Pre-primary teachers recorded as trained",
     "unit": "% of teachers teaching pre-primary",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "UDISE+ reports, Department of School Education and Literacy, Ministry of Education, Tables 2.2, 4.7, 4.12, 4.18 and 4.19 (2019-20 through 2024-25 editions), retrieved via Internet Archive captures",
@@ -2532,7 +2537,7 @@
     "id": "edu-spend-gdp-edu-depts",
     "title": "Public expenditure on education by education departments, share of GDP",
     "unit": "% of GDP",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Analysis of Budgeted Expenditure on Education 2019-20 to 2021-22, Ministry of Education, Table No. (4), p. 16, New Delhi 2024; retrieved via Internet Archive capture 2025-02-12, the live ministry URL returns HTTP 404",
@@ -2748,7 +2753,6 @@
     ],
     "provenanceRefs": [
       "P-10",
-      "P-52",
       "P-65",
       "P-66"
     ],
@@ -2775,7 +2779,7 @@
     "id": "edu-spend-gdp-all-depts",
     "title": "Public expenditure on education by education and all other departments, share of GDP",
     "unit": "% of GDP",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Analysis of Budgeted Expenditure on Education 2019-20 to 2021-22, Ministry of Education, Table No. (4), p. 16, New Delhi 2024; retrieved via Internet Archive capture 2025-02-12, the live ministry URL returns HTTP 404",
@@ -2991,7 +2995,6 @@
     ],
     "provenanceRefs": [
       "P-10",
-      "P-52",
       "P-65",
       "P-66"
     ],
@@ -3009,10 +3012,234 @@
     ]
   },
   {
+    "id": "edu-spend-gdp-centre-edu-depts",
+    "title": "Public expenditure on education by the Centre's education departments, share of GDP",
+    "unit": "% of GDP",
+    "domain": "education",
+    "tier": "T1",
+    "source": {
+      "name": "Analysis of Budgeted Expenditure on Education 2019-20 to 2021-22, Ministry of Education, Table No. (4), p. 16, New Delhi 2024; retrieved via Internet Archive capture 2025-02-12, the live ministry URL returns HTTP 404",
+      "url": "https://web.archive.org/web/20250212064309id_/https://www.education.gov.in/sites/upload_files/mhrd/files/statistics-new/budget_exp_2020_22.pdf",
+      "vintage": "2024-12"
+    },
+    "calendar": "FY",
+    "points": [
+      {
+        "country": "IND",
+        "period": "FY2000-01",
+        "value": 0.4,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2001-02",
+        "value": 0.37,
+        "status": "verified",
+        "note": "The minimum of the twenty-two-year table."
+      },
+      {
+        "country": "IND",
+        "period": "FY2002-03",
+        "value": 0.39,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2003-04",
+        "value": 0.39,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2004-05",
+        "value": 0.44,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2005-06",
+        "value": 0.53,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2006-07",
+        "value": 0.6,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2007-08",
+        "value": 0.58,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2008-09",
+        "value": 0.65,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2009-10",
+        "value": 0.65,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2010-11",
+        "value": 0.72,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2011-12",
+        "value": 0.69,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2012-13",
+        "value": 0.66,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2013-14",
+        "value": 0.64,
+        "status": "verified",
+        "note": "Last full UPA year. Stage inferred as Actual from publication convention; not annotated in the source (P-66)."
+      },
+      {
+        "country": "IND",
+        "period": "FY2014-15",
+        "value": 0.55,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2015-16",
+        "value": 0.49,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2016-17",
+        "value": 0.47,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2017-18",
+        "value": 0.47,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2018-19",
+        "value": 0.41,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "FY2019-20",
+        "value": 0.43,
+        "status": "verified",
+        "note": "Actual, annotated in the source."
+      },
+      {
+        "country": "IND",
+        "period": "FY2020-21",
+        "value": 0.43,
+        "status": "verified",
+        "note": "Revised Estimate, annotated in the source."
+      },
+      {
+        "country": "IND",
+        "period": "FY2021-22",
+        "value": 0.4,
+        "status": "verified",
+        "note": "Budget Estimate, annotated in the source."
+      },
+      {
+        "country": "IND",
+        "period": "FY2022-23",
+        "value": null,
+        "status": "pending",
+        "note": "No ABE edition published covering this year. The data exists with the holder; the publication does not."
+      },
+      {
+        "country": "IND",
+        "period": "FY2023-24",
+        "value": null,
+        "status": "pending",
+        "note": "No ABE edition published covering this year. The data exists with the holder; the publication does not."
+      },
+      {
+        "country": "IND",
+        "period": "FY2024-25",
+        "value": null,
+        "status": "pending",
+        "note": "No ABE edition published covering this year. The data exists with the holder; the publication does not."
+      },
+      {
+        "country": "IND",
+        "period": "FY2025-26",
+        "value": null,
+        "status": "pending",
+        "note": "No ABE edition published covering this year. The data exists with the holder; the publication does not."
+      }
+    ],
+    "breaks": [
+      {
+        "period": "FY2004-05",
+        "note": "DISPUTED. One earlier ABE edition footnotes a switch to the 2004-05 GDP base from this year; another earlier edition footnotes only the 1999-2000 base and prints FY2004-05 all-departments as 3.36 against 3.26 in the 2024 edition, on a byte-identical numerator. Two independent research passes reached incompatible conclusions from different editions and neither can be preferred on the evidence held.",
+        "provenanceRef": "P-10"
+      },
+      {
+        "period": "FY2011-12",
+        "note": "Denominator base switches to 2011-12, GDP at current market prices - confirmed cell-exact against Economic Survey 2025-26 Statistical Appendix Table 1.6 from this year forward and non-matching before it. Values either side are not on one denominator. Recomputing the pre-FY2011-12 years onto the 2011-12 base lowers them by 0.16 to 0.29 percentage points, so the published UPA-era ratios are too high - which matters because the same splice sits inside the UPA-2 term average.",
+        "provenanceRef": "P-10"
+      },
+      {
+        "period": "FY2019-20",
+        "note": "Estimate-stage break. From this row the ABE annotates stage: FY2019-20 Actual, FY2020-21 Revised Estimate, FY2021-22 Budget Estimate. The stage of every earlier row is INFERRED from publication convention and is not annotated in the source.",
+        "provenanceRef": "P-66"
+      },
+      {
+        "period": "FY2022-23",
+        "note": "SERIES TERMINATES. No ABE edition covers FY2022-23 or later as of 2026-08-02 - a four-year gap in a twenty-five-year annual statistical series, and the document is no longer served by the ministry that wrote it. Separately, when the MoSPI 2022-23 GDP base propagates it will land here: nominal GDP is about 3.8 per cent lower on the new base, so every share steps up about 3.9 per cent in relative terms with no change in spending.",
+        "provenanceRef": "P-66"
+      }
+    ],
+    "provenanceRefs": [
+      "P-10",
+      "P-65",
+      "P-66"
+    ],
+    "higherIsBetter": true,
+    "denominator": "GDP at current market prices, spliced across the 1999-2000, 2004-05 and 2011-12 bases by the source itself and mislabelled 'factor cost' in it. Values either side of FY2011-12 are not on one denominator - see breaks. The numerator is the CENTRE's education departments only, revenue account, capital expenditure and loans excluded; States and UTs are excluded entirely and carry about three-quarters of the money.",
+    "caveat": "THIS IS THE CENTRE'S SHARE ONLY AND IS ONE QUARTER OF THE STORY. It is not a national education-spending figure and must never be rendered as one: States and UTs carry about three-quarters of the money throughout, so this series moving says nothing about what India spends. It exists because the Centre's own trajectory is the half of the narrow series that a national total conceals - the Centre's share fell from 0.64 per cent of GDP in FY2013-14 to 0.40 in FY2021-22, a fall of 38 per cent in share terms, while the national narrow total fell only from 2.97 to 2.75. 0.40 is NOT the minimum of the table: FY2001-02 reads 0.37 and FY2002-03 and FY2003-04 read 0.39. 0.40 is the lowest value since FY2004-05.",
+    "notes": "Authored from the Centre column of ABE Table No. (4), the same table and the same cells as edu-spend-gdp-edu-depts and edu-spend-gdp-all-depts - this is the Centre component of the NARROW numerator, not a separate collection. It is distinct from edu-union-moe-gdp, which is the Union Ministry of Education's own actual expenditure computed against GDP and reads 0.635 for FY2013-14 and 0.341 for FY2021-22: a different construction with a similar name, differing at the second decimal, and the two must never be joined or compared. Reconciliation against the published columns: Centre plus States equals the published narrow total exactly in 18 of 22 years and differs by 0.01 in four (FY2004-05, FY2007-08, FY2010-11, FY2012-13), which is independent rounding of three separately rounded columns and not a data disagreement.",
+    "unmeasured": [
+      {
+        "what": "Centre education-department spending as a share of GDP for FY2022-23 onward",
+        "why": "The Analysis of Budgeted Expenditure on Education has published no edition covering FY2022-23 or later, so the column terminates with the table it sits in. The Department holds the underlying budget figures and the series is a twenty-five-year annual publication, so this is a lapse in publication rather than an absence of data.",
+        "wouldFill": "An ABE edition covering FY2022-23 onward",
+        "reasonKind": "not-published"
+      },
+      {
+        "what": "A corrected pre-FY2011-12 Centre series on the 2011-12 GDP base",
+        "why": "The denominator is spliced across three GDP bases by the source itself, without a note, so the pre-FY2011-12 rows sit on a different denominator from the rows after them. No recomputed series on a single base has been published for this column any more than for the totals.",
+        "reasonKind": "not-collected"
+      }
+    ]
+  },
+  {
     "id": "edu-union-moe-gdp",
     "title": "Union Ministry of Education actual expenditure, share of GDP",
     "unit": "% of GDP",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Union Budget Statements of Budget Estimates (DoSEL and DoHE actuals, net of recoveries), with nominal GDP from Economic Survey 2025-26 Statistical Appendix Table 1.6",
@@ -3143,7 +3370,7 @@
     "id": "edu-union-be-shortfall-pct",
     "title": "Union Ministry of Education actual expenditure shortfall against its own Budget Estimate",
     "unit": "% of Budget Estimate",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Union Budget Statements of Budget Estimates, DoSEL and DoHE combined, net of recoveries; demand numbers verified per year",
@@ -3283,7 +3510,7 @@
     "id": "higher-ed-ger",
     "title": "Gross enrolment ratio in higher education, ages 18-23",
     "unit": "%",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "All India Survey on Higher Education (AISHE), Statistics Division, Department of Higher Education; restated GER series on the 2011-Census population projection basis, plus AISHE 2022-23 and 2023-24 released together 8 July 2026",
@@ -3399,7 +3626,7 @@
     "id": "higher-ed-enrolment",
     "title": "Total higher education enrolment",
     "unit": "students",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "All India Survey on Higher Education (AISHE), Statistics Division, Department of Higher Education; restated GER series on the 2011-Census population projection basis, plus AISHE 2022-23 and 2023-24 released together 8 July 2026",
@@ -3552,7 +3779,7 @@
     "id": "ugc-provision-gross",
     "title": "University Grants Commission gross budget provision, actuals",
     "unit": "rupees crore",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Notes on Demands for Grants, Department of Higher Education, Union Budget 2024-25, 2025-26 and 2026-27 editions",
@@ -3585,28 +3812,29 @@
         "period": "FY2023-24",
         "value": 6324.12,
         "status": "verified",
-        "note": "Actual. BE for this year was 5,360.00 and RE 6,409.00."
-      },
-      {
-        "country": "IND",
-        "period": "FY2024-25",
-        "value": 3678.47,
-        "status": "verified",
-        "note": "Actual, CFI component. Gross BE for the year was 4,500.00 crore - 2,500.00 from the Consolidated Fund plus 2,000.00 routed through MUSK - and RE was 5,048.59."
+        "note": "Actual. BE for this year was 5,360.00 and RE 6,409.00. Last year for which a gross figure is published: from FY2024-25 the demand shows the Consolidated Fund component only."
       }
     ],
     "provenanceRefs": [
       "P-66"
     ],
     "higherIsBetter": true,
-    "caveat": "THE CIRCULATING CLAIM IS ARITHMETICALLY TRUE AND MATERIALLY MISLEADING. 'UGC budget slashed from 5,360 crore to 2,500 crore' compares Budget Estimate to Budget Estimate and takes the FY2024-25 figure as the Consolidated Fund component alone; the gross provision that year was 4,500 crore. The correct statement is that UGC's gross provision fell from 6,324.12 crore (Actual FY2023-24) to 4,500 crore (BE FY2024-25), a cut of about 29 per cent rather than 53 per cent, and had recovered only to 5,783.23 crore by BE FY2025-26 - still below the FY2023-24 actual in nominal terms, before any inflation adjustment.",
-    "notes": "The substantive funding-model change is visible in the same accounts: HEFA appears first as an equity injection (Actual FY2017-18 250 crore, BE FY2018-19 2,750 crore) and then, from BE FY2019-20, as dedicated 'Interest under HEFA Loan' and 'Repayment of Principal of HEFA Loan' sub-lines under each institutional head - roughly 1,693 crore of HEFA debt service budgeted in BE FY2025-26 from a standing start six years earlier. Infrastructure capital that was formerly a grant is now a loan carried on the institution's books, with the debt service a claim on the same demand that funds the institutions."
+    "caveat": "THE CIRCULATING CLAIM IS ARITHMETICALLY TRUE AND MATERIALLY MISLEADING. 'UGC budget slashed from 5,360 crore to 2,500 crore' compares Budget Estimate to Budget Estimate and takes the FY2024-25 figure as the Consolidated Fund component alone; the gross provision that year was 4,500 crore. The correct statement is that UGC's gross provision fell from 6,324.12 crore (Actual FY2023-24) to 4,500 crore (BE FY2024-25), a cut of about 29 per cent rather than 53 per cent, and had recovered only to 5,783.23 crore by BE FY2025-26 - still below the FY2023-24 actual in nominal terms, before any inflation adjustment. THE SERIES STOPS AT FY2023-24 DELIBERATELY. The FY2024-25 Actual published in the demand, 3,678.47 crore, is the Consolidated Fund component and not a gross figure; carrying it here would put a net point under a gross title and manufacture a 42 per cent fall. It is declared as an absence instead, and the gross figures for that year exist only as estimates.",
+    "notes": "The substantive funding-model change is visible in the same accounts: HEFA appears first as an equity injection (Actual FY2017-18 250 crore, BE FY2018-19 2,750 crore) and then, from BE FY2019-20, as dedicated 'Interest under HEFA Loan' and 'Repayment of Principal of HEFA Loan' sub-lines under each institutional head - roughly 1,693 crore of HEFA debt service budgeted in BE FY2025-26 from a standing start six years earlier. Infrastructure capital that was formerly a grant is now a loan carried on the institution's books, with the debt service a claim on the same demand that funds the institutions. The FY2024-25 gross Actual is not carried: see the absence. A point on a different basis is not admissible under a title that names the basis, which is the same discipline the three GDP regimes are held to.",
+    "unmeasured": [
+      {
+        "what": "UGC's gross provision, Actual, for FY2024-25 onward",
+        "why": "From FY2024-25 UGC's provision is split between the Consolidated Fund of India and the Madhyamik and Uchchatar Shiksha Kosh, and the demand documents stopped showing the MUSK sub-lines. The Notes on Demands for Grants 2026-27 give Actual FY2024-25 as 3,678.47 crore, which is the Consolidated Fund component alone and is not a gross figure; the MUSK-routed component for that year was not retrieved from any primary source, and indiabudget.gov.in did not resolve on attempt (P-70). Gross for FY2024-25 exists only as BE 4,500.00 and RE 5,048.59. The money was spent, so the quantity exists in the accounts and is producible; what is absent is a published gross total.",
+        "wouldFill": "The MUSK-routed UGC component for FY2024-25, from the Expenditure Profile MUSK statement or a Detailed Demand showing both sub-lines",
+        "reasonKind": "not-published"
+      }
+    ]
   },
   {
     "id": "literacy-rate-7plus",
     "title": "Literacy rate, persons aged 7 and above",
     "unit": "%",
-    "domain": "human-development",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Census of India Primary Census Abstract 2011 (final); NSS 75th Round Report No. 585; Periodic Labour Force Survey Annual Report 2025, Table 7",
@@ -3677,7 +3905,7 @@
     "id": "rte-quota-children",
     "title": "Children in private schools under RTE section 12(1)(c) for whom reimbursement is claimed",
     "unit": "children",
-    "domain": "welfare",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Ministry of Education replies in Lok Sabha: Unstarred Question 2176 (02.08.2021), 832 (12.12.2022), 2160 (05.08.2024), 85 (14.09.2020), 5184 (03.04.2023), 1260 (27.07.2026)",
@@ -3730,7 +3958,7 @@
     "id": "rte-quota-reimbursement-approval-rate",
     "title": "RTE section 12(1)(c) reimbursement approved by the Centre as a share of state claims",
     "unit": "%",
-    "domain": "welfare",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Ministry of Education replies in Lok Sabha: Unstarred Question 2176 (02.08.2021), 832 (12.12.2022), 2160 (05.08.2024), 85 (14.09.2020), 5184 (03.04.2023), 1260 (27.07.2026)",
@@ -3787,7 +4015,7 @@
     "id": "rte-quota-implementing-jurisdictions",
     "title": "States and Union Territories admitting children under RTE section 12(1)(c)",
     "unit": "jurisdictions of 36",
-    "domain": "welfare",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Ministry of Education replies in Lok Sabha: Unstarred Question 2176 (02.08.2021), 832 (12.12.2022), 2160 (05.08.2024), 85 (14.09.2020), 5184 (03.04.2023), 1260 (27.07.2026)",
@@ -3823,7 +4051,7 @@
     "id": "teacher-vacancy-rate-elementary",
     "title": "Teacher vacancy rate, elementary, government and aided schools",
     "unit": "% of sanctioned posts vacant",
-    "domain": "governance",
+    "domain": "education",
     "tier": "T1",
     "source": {
       "name": "Lok Sabha and Rajya Sabha answers 2014-2024 (AWP&B, PAB Minutes, then PRABANDH); Standing Committee on Education Reports 349 and 368",

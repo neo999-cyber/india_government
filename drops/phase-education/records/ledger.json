@@ -6,8 +6,7 @@
     "dateEnd": "2026-08",
     "term": "T2",
     "domains": [
-      "human-development",
-      "welfare"
+      "education"
     ],
     "type": "reform",
     "summary": "The National Initiative for Proficiency in Reading with Understanding and Numeracy was launched under NEP 2020 on 5 July 2021, targeting foundational literacy and numeracy for every child by the end of Grade 2 by 2026-27. ASER 2024 recorded the largest foundational gains in the survey's twenty years: Standard III government-school reading rose from 16.3 per cent (2022) to 23.4, above its 2018 level of 20.9, and Standard III arithmetic reached 33.7 per cent nationally, the highest in over a decade. Reading did not recover to 2018 at any grade.",
@@ -89,12 +88,12 @@
     "dateEnd": "2022-03-01",
     "term": "T2",
     "domains": [
-      "human-development",
+      "education",
       "federalism"
     ],
     "type": "episode",
-    "summary": "Indian schools were never classified fully open for 707 consecutive days, from 25 March 2020 to 1 March 2022 - 47 days fully open in the entire 25-month window. On UNESCO's own definition of closure duration, which counts fully closed and partially open days together, India's 93 weeks is the unique global maximum across 210 countries, against a global mean of 40.6. On full closure alone India's 25 weeks ranks 58th. The affected population, 294,893,120 children, is the largest of any country in the world.",
-    "whatHappened": "Closure was state-decided and grade-differentiated. India spent 173 days fully closed and 476 days - 61 per cent of the window - in UNESCO's single undifferentiated 'partially open' bucket, which covers everything from one grade in one state shut to all primary grades shut across most of the country. That grade-differentiation is what reconciles the mild national label with ASER's stronger claim that 'primary schools were closed for almost two years': for most of the partially open days senior grades had reopened while primary had not - and primary is where the learning loss landed. Measured at the end, Standard III reading had fallen 6.8 points and Standard V reading 7.7, against arithmetic losses of 2.3 points; government-school enrolment among rural 6-14s rose 7.3 points and then fell 6.1 back out by 2024.",
+    "summary": "Indian schools were never classified fully open for 707 consecutive days - 23 months and 5 days, from 25 March 2020 to 1 March 2022. Across UNESCO's wider 25-month tracking window of 775 days, India had 47 days fully open. On UNESCO's own definition of closure duration, which counts fully closed and partially open days together, India's 93 weeks is the unique global maximum across 210 countries, against a global mean of 40.6. On full closure alone India's 25 weeks ranks 58th. The affected population, 294,893,120 children, is the largest of any country in the world.",
+    "whatHappened": "Closure was state-decided and grade-differentiated. Across the 775-day tracking window India spent 173 days fully closed, 476 days - 61 per cent of it - in UNESCO's single undifferentiated 'partially open' bucket, 79 days in academic breaks and 47 fully open. That 476 is 61 per cent of the tracking window, not of the 707-day never-fully-open stretch, and the two must not be divided into one another. The 'partially open' bucket covers everything from one grade in one state shut to all primary grades shut across most of the country. That grade-differentiation is what reconciles the mild national label with ASER's stronger claim that 'primary schools were closed for almost two years': for most of the partially open days senior grades had reopened while primary had not - and primary is where the learning loss landed. Measured at the end, Standard III reading had fallen 6.8 points and Standard V reading 7.7, against arithmetic losses of 2.3 points; government-school enrolment among rural 6-14s rose 7.3 points and then fell 6.1 back out by 2024.",
     "assessment": "contested",
     "caseFor": "Closure decisions were taken by state governments during a pandemic that killed an officially acknowledged number of Indians in the hundreds of thousands, in a country with the world's largest school-age population, extreme classroom density and a health system that came visibly close to collapse in April-May 2021. Comparators with far greater resources made similar or harder choices - the Philippines 75 weeks fully closed, Uganda 66, Bangladesh 63, against India's 25 - and India's ranking is 58th on full closure precisely because it reopened in stages rather than keeping everything shut. Grade-differentiated reopening, which is what drives the 93-week figure, is a more discriminating policy than a blanket rule, not a worse one: it kept senior grades running through examinations while the youngest and least vaccinated stayed home. The measured learning loss, when it was finally taken, was smaller in arithmetic than expected and was substantially recovered within two years.",
     "caseAgainst": "On the measure UNESCO itself uses, India kept its schools shut longer than any of the 210 countries it tracked, for the largest child population in the world, and 61 per cent of that duration sits in a bucket so coarse that the state of Indian schooling for 476 days cannot be reconstructed from any published source, Indian or international. The federal division that produced grade-differentiation also produced the measurement gap: neither UNESCO nor the Government of India published a state-by-state or grade-by-grade closure-duration series, and no Indian government document stating a national closure duration was retrieved at all. Most damningly, India did not measure learning during its own closures. There was no field ASER between November 2018 and November 2022 - the 2020 and 2021 rounds were telephone surveys with no learning assessment - and no government instrument filled the gap, so the depth of the trough is unrecoverable in principle. A country that closed its schools longer than any other chose not to find out what that did to children while it was doing it, and then measured only at the end, four years after the last pre-COVID reading.",
@@ -154,7 +153,7 @@
     "term": "T3",
     "domains": [
       "governance",
-      "human-development"
+      "education"
     ],
     "type": "event",
     "summary": "On 4 February 2025 the Ministry of Education issued a factsheet on ASER 2024 headlined 'Leap in Rural School Enrollment' which reproduced ASER's findings near-verbatim while deleting every 2022 data point. On 28 July 2025 the same Ministry published a backgrounder attributing the learning recovery to its own policies - and reinstated the same 2022 troughs, because the recovery cannot be shown without them.",
@@ -207,7 +206,7 @@
     "term": "T2",
     "domains": [
       "governance",
-      "human-development"
+      "education"
     ],
     "type": "institutional",
     "summary": "From reference year 2022-23 the school statistics system replaced school-wise consolidated returns with individual student records carrying a unique educational ID and voluntary Aadhaar, to weed out duplicate and ghost entries. Total enrolment fell from 26.52 crore (FY2021-22) to 24.80 crore (FY2023-24), a fall of 1.72 crore. No back-cast, no dual-basis year and no reconciliation exists, so how much of the fall is deduplication and how much is real decline has never been published.",
@@ -268,7 +267,8 @@
     "term": "T1",
     "domains": [
       "governance",
-      "federalism"
+      "federalism",
+      "education"
     ],
     "type": "episode",
     "summary": "From 2014 the Ministry routinely tabled all-India totals for sanctioned, in-position and vacant school teaching posts in both Houses, drawn from Annual Work Plan and Budget and Project Approval Board returns. The last full national figure was given on 02.08.2023 (Rajya Sabha Unstarred 1460); the last vacancy-only national figure on 07.02.2024 (Rajya Sabha Unstarred 525). Since then no answer in either House has carried a sanctioned or a vacancy number at any level. The Ministry continues to compute it: it furnished 63,26,207 sanctioned and 9,59,148 vacant for 2023-24, and 69,85,760 and 9,82,662 for 2024-25, to the Standing Committee on 7 January 2025, printed in the 368th Report of 08.08.2025.",
@@ -360,14 +360,15 @@
     "dateEnd": "2025-12-31",
     "term": "T3",
     "domains": [
-      "governance"
+      "governance",
+      "education"
     ],
     "type": "institutional",
-    "summary": "Section 26 of the Right of Children to Free and Compulsory Education Act 2009 requires the appointing authority for any school established, owned, controlled or substantially financed by the appropriate Government to ensure that teacher vacancies do not exceed ten per cent of sanctioned strength. Measured national rates are 14 to 15 per cent. In Kendriya Vidyalayas, where the appropriate Government is the Union itself, the rate rose from 13.2 per cent (August 2024) to 17.1 (December 2025); in Navodaya Vidyalayas it rose from 23.6 to 29.6 per cent over twelve months - the statutory ceiling breached by a factor of three.",
+    "summary": "Section 26 of the Right of Children to Free and Compulsory Education Act 2009 requires the appointing authority for any school established, owned, controlled or substantially financed by the appropriate Government to ensure that teacher vacancies do not exceed ten per cent of sanctioned strength. Measured national rates are 14 to 15 per cent. In Kendriya Vidyalayas, where the appropriate Government is the Union itself, the rate rose from 14.7 to 17.1 per cent over twelve months; in Navodaya Vidyalayas it rose from 23.6 to 29.6 per cent over the same twelve months - the statutory ceiling breached by a factor of three. Both readings are at 31 December. The same KVS reports give 13.2 per cent as on 1 August 2024, which is the lower base a seventeen-month comparison would use; it is not used here, because the year-end pair is like for like.",
     "whatHappened": "The provision was not invoked. None of the four Rajya Sabha Standing Committee reports retrieved - the 363rd, 368th, 373rd and 376th - cites section 26. The Committee argues from adequacy and from 'the spirit of RTE Act' and does not reach for the binding numeric provision its own subject-matter statute contains. The Department's own compliance answer invokes a different measure entirely: 'the overall pupil-teacher ratio of the country is 25:1 across all levels, that is within the norms laid down under the RTE Act' - a national mean offered against a school-by-school duty. Meanwhile the Union filled the gap with contract staff rather than posts: KVS contract engagements rose from 3,260 (2020-21) to 7,909 (2025-26), about 15.7 per cent of sanctioned teaching strength against 8,618 vacant posts, and NVS contract teaching appointments rose 43 per cent from 2021 to 2025 while its vacancy rate rose with them.",
     "assessment": "failed",
     "caseFor": "Vacancy is a flow, not a stock, and a ten per cent ceiling measured on a single date is close to unmeetable in a system of this size: retirements, resignations, promotions and new sanctions create posts continuously, and a recruitment cycle running through advertisement, examination, result, litigation and joining takes longer than the vacancies take to arise. The central institutions have not left classrooms empty - they engage contract teachers precisely so that, in NVS's own words, 'to protect the academic interest of students, teachers are being appointed on short term contract basis till the vacancies are filled on regular basis', so the teaching position on the ground is materially better than the vacancy rate implies. And KVS and NVS are the most transparent part of the system: their sanctioned, in-position and vacant figures are precise, dated and reported annually, which is exactly why the breach is visible here and invisible for the 99.8 per cent of schools the states run.",
-    "caseAgainst": "Section 26 is not a target, an aspiration or a norm to be balanced against operational reality. It is a statutory duty, expressed as a number, owed by the appointing authority - and for Kendriya and Navodaya Vidyalayas the appointing authority is the Union, which has undivided control, its own recruitment machinery, its own budget and no federal excuse of any kind. It is breached at 1.7 times the ceiling in one and 3.0 times in the other, and the trend is worsening in both, across seventeen and twelve months respectively. The contract-staff answer concedes the point rather than rebutting it: contract engagement is rising in step with vacancies rather than in place of a recruitment cycle, KVS itself calls it a stop-gap arrangement for which 'specifying a fixed contract period is not possible', and it has been the arrangement for at least five years. The Committee's directive to fill these posts with regular teachers 'not later than 31st March, 2026' was, on the Committee's own figures as at 31 December 2025, not going to be met. And in fifteen years no report, no reply and no committee has cited the section: a binding numeric provision has sat unenforced in the governing statute while everyone argued about ratios.",
+    "caseAgainst": "Section 26 is not a target, an aspiration or a norm to be balanced against operational reality. It is a statutory duty, expressed as a number, owed by the appointing authority - and for Kendriya and Navodaya Vidyalayas the appointing authority is the Union, which has undivided control, its own recruitment machinery, its own budget and no federal excuse of any kind. It is breached at 1.7 times the ceiling in one and 3.0 times in the other, and the trend is worsening in both, across the same twelve months. The contract-staff answer concedes the point rather than rebutting it: contract engagement is rising in step with vacancies rather than in place of a recruitment cycle, KVS itself calls it a stop-gap arrangement for which 'specifying a fixed contract period is not possible', and it has been the arrangement for at least five years. The Committee's directive to fill these posts with regular teachers 'not later than 31st March, 2026' was, on the Committee's own figures as at 31 December 2025, not going to be met. And in fifteen years no report, no reply and no committee has cited the section: a binding numeric provision has sat unenforced in the governing statute while everyone argued about ratios.",
     "seriesRefs": [
       "teacher-vacancy-rate-kvs",
       "teacher-vacancy-rate-nvs",
@@ -411,7 +412,8 @@
     "dateEnd": "2019-03-31",
     "term": "T1",
     "domains": [
-      "governance"
+      "governance",
+      "education"
     ],
     "type": "reform",
     "summary": "RTE section 23(2) gave in-service teachers without the prescribed minimum qualifications five years from commencement to acquire them, expiring 31 March 2015 unmet. The RTE (Amendment) Act 2017, passed more than two years after that deadline had lapsed and deemed to have come into force on 1 April 2015, inserted a second free-standing proviso giving a fresh four-year window to 31 March 2019. Around 14 lakh untrained teachers were registered on an 18-month distance diploma created for the purpose. No enrolled-to-appeared-to-passed-to-certified breakdown was ever published, and no count exists of teachers dismissed or still untrained on 1 April 2019.",
@@ -457,7 +459,7 @@
     "confidence": "medium",
     "asOf": "2026-08-02",
     "caveat": "The programme's outcome was never published, so this record cannot state how many of the roughly 14 lakh registered teachers qualified. Any figure treating registration as completion - including the Ministry's own - is an input reported as an output.",
-    "assessmentNote": "STOP FLAGGED. No value in the assessment enum fits a measure that ran to completion and whose outcome was never measured. `worked`, `partly` and `failed` all require knowing what share of the objective was achieved, which is exactly what was not published; asserting `partly` would launder a registration count into a completion rate. `contested` is used because two defensible readings of the same documented facts exist - a scale achievement against a retrospective regularisation with an unreported result - but the value is provisional and the underlying question is whether the vocabulary needs a value for a measure whose outcome was never measured.",
+    "assessmentNote": "Scored `contested` on its written definition, and the value is settled rather than provisional. What is scored is the documented ACT, not the outcome, and both cases argue the act without depending on the unpublished completion rate: caseFor rests on the scale of the programme, on there being no replacement supply for a dismissed workforce, on the deadline genuinely not being extended a third time, and on the Supreme Court holding the diploma valid at par; caseAgainst rests on a statutory duty missed and then retrospectively regularised, on a qualification whose duration the Court's own recital says was reverse-engineered to the residual window, on an input reported as an output, and on a credential later adjudicated conditional. Two defensible readings of the same documented facts is what `contested` means, and neither reading changes if the pass rate is published tomorrow. What is NOT scored is whether the 31 March 2019 deadline was met. That is carried where this instrument puts it - the first entry in `unmeasured`, rendering as an absence under CLAUDE.md rule 4a - and not as an assessment. `worked`, `partly` and `failed` remain unavailable because all three turn on what share of the objective was achieved, and asserting `partly` would launder a registration count into a completion rate. Trigger A was raised on this record and closed on 2026-08-02 with no new enum value: a value meaning 'cannot conclude' would describe the state of the evidence where the other six describe a conclusion about the measure, which is the two-axes defect that also refused a fifth `reasonKind` in this drop.",
     "unmeasured": [
       {
         "what": "Whether the 31 March 2019 statutory deadline was met - the number of in-service teachers holding the prescribed qualification on that date, against the untrained stock the proviso applied to",
@@ -490,7 +492,8 @@
     "dateEnd": "2026-08-30",
     "term": "T1",
     "domains": [
-      "governance"
+      "governance",
+      "education"
     ],
     "type": "institutional",
     "summary": "On 28 June 2018 the National Council for Teacher Education notified B.Ed. holders as eligible for primary (Classes I-V) teaching posts subject to a six-month bridge course. On 11 August 2023 the Supreme Court quashed and set aside that notification, holding from Article 21A that B.Ed. holders 'did not pass the basic professional threshold required for teaching students of the primary classes'. The published statistic 'professionally qualified teachers' consequently no longer corresponds to any legal status: as at 2026 at least four legally distinct populations are scored identically.",
@@ -556,7 +559,7 @@
     "dateEnd": "2026-07-27",
     "term": "T1",
     "domains": [
-      "welfare",
+      "education",
       "governance",
       "federalism"
     ],
@@ -639,7 +642,7 @@
     "dateEnd": "2020-03-31",
     "term": "T1",
     "domains": [
-      "welfare",
+      "education",
       "governance",
       "federalism"
     ],
@@ -687,7 +690,8 @@
     "term": "T2",
     "domains": [
       "federalism",
-      "governance"
+      "governance",
+      "education"
     ],
     "type": "episode",
     "summary": "NEP 2020 paragraph 4.13 retains the three-language formula while removing every named language from it: 'no language will be imposed on any State', the three being 'the choices of States, regions, and of course the students themselves, so long as at least two of the three languages are native to India'. Tamil Nadu, whose Assembly resolved on 23 January 1968 'that the Three-Language Formula shall be scrapped', has refused to implement it. The Union's own position, stated in Parliament in March 2026, is that 'Tamil Nadu is not implementing it in its entirety'.",
@@ -754,7 +758,8 @@
     "term": "T3",
     "domains": [
       "federalism",
-      "governance"
+      "governance",
+      "education"
     ],
     "type": "episode",
     "summary": "Tamil Nadu, Kerala and West Bengal received nil central Samagra Shiksha release in FY2024-25, against 1,876.16, 141.66 and 311.29 crore respectively the year before. All three are the three States that have not signed the PM-SHRI memorandum of understanding; 33 of 36 States and UTs have. The Union's stated position is that 'implementation of Samagra Shiksha is implementation of NEP, 2020' and that Tamil Nadu 'has not agreed to implement NEP, 2020 in its entirety'. Nothing in NEP 2020 authorises the conditionality; the linkage runs through the PM-SHRI memorandum and the 2021 realignment of Samagra Shiksha to the policy.",
@@ -807,20 +812,21 @@
     "dateEnd": "2022-03-31",
     "term": "T1",
     "domains": [
-      "human-development",
+      "education",
       "macro",
       "governance"
     ],
     "type": "episode",
     "summary": "The Ministry of Education publishes two totals for public education spending side by side, in one table, for the same year. For FY2021-22 they are 2.75 and 4.12 per cent of GDP. Across FY2013-14 to FY2021-22 the broad basis rises from 3.84 to 4.12 per cent and the narrow basis falls from 2.97 to 2.75. Same budgets, opposite direction, purely from numerator choice. The series stops at FY2021-22: no edition covering FY2022-23 or later has been published, and T3 has zero observations.",
     "claimAtLaunch": "A standing commitment, restated in NEP 2020 and in Parliament, to 'increase the public investment in Education sector to reach 6% of GDP at the earliest'.",
-    "whatHappened": "Parliament is briefed on the broad number - the Standing Committee's 363rd Report reproduces the broad series verbatim - and the 6 per cent target is invoked against it, so the gap to target is 1.9 points or 3.3 points depending on a definitional choice that is never stated when the target is invoked. The Ministry of Education is 39 per cent of what the 4.12 per cent headline calls education; the rest is training plus the education spending of roughly 44 other ministries. States carry about three-quarters of the money throughout. The Centre's own education-department spending fell from 0.64 to 0.40 per cent of GDP across the same window, the lowest in the twenty-two-year table, and real Union education spending in FY2024-25 was barely above FY2013-14 - eleven years of near-zero real growth. Economic Survey 2025-26 dropped the education-share-of-GDP table entirely.",
+    "whatHappened": "Parliament is briefed on the broad number - the Standing Committee's 363rd Report reproduces the broad series verbatim - and the 6 per cent target is invoked against it, so the gap to target is 1.9 points or 3.3 points depending on a definitional choice that is never stated when the target is invoked. The headline is not the education ministry: within the Centre's own broad total of 1.02 per cent of GDP the Ministry of Education is 39 per cent, the rest being training plus the education spending of roughly 44 other ministries, the top four of which alone come to 90 per cent of the entire Ministry of Education budget. Against the 4.12 per cent all-India figure the Ministry is under a tenth, because States carry about three-quarters of the money throughout. The Centre's own education-department spending fell from 0.64 to 0.40 per cent of GDP across the same window - a fall of 38 per cent in share terms, and the lowest value since FY2004-05, though not the minimum of the table, which is 0.37 in FY2001-02 - and real Union education spending in FY2024-25 was barely above FY2013-14 - eleven years of near-zero real growth. Economic Survey 2025-26 dropped the education-share-of-GDP table entirely.",
     "assessment": "contested",
     "caseFor": "On the headline measure the government reports and Parliament is briefed on, education spending rose across the transition: 3.84 per cent of GDP in FY2013-14 to a peak of 4.24 in FY2016-17 and 4.12 in FY2021-22, against a UPA-2 average of 3.87. The broad definition is not a trick - it is the government's own long-standing accounting convention, unchanged in construction across editions, and its rationale is defensible: mid-day-meal nutrition, anganwadi provision, medical and agricultural education, scientific research and training are education spending by any reasonable account, and the Economic Survey's own note documents exactly what is swept in. And the structure of the shortfall is not the Union's alone to fix: states carry three-quarters of the money, so a Union-budget-only story about Indian education spending is a story about a quarter of it.",
     "caseAgainst": "On the measure most readers mean by education spending - what education departments actually spend - the share fell every single year of T1, from 2.97 per cent in FY2013-14 to a twenty-two-year minimum of 2.61 in FY2018-19, and stood at 2.75 in the last published year, below the 3.22 per cent of FY2010-11. The gap between the two measures is not a constant that can be reasoned around: it roughly tripled across the table, from 0.52 points in FY2004-05 to 1.46 in FY2016-17, and other departments' share of the total rose from 15.9 to 33.3 per cent - so the headline is increasingly driven by non-education ministries. And the improvement itself is unexplained: other-departments education spending grew 41.7 then 49.0 per cent across FY2013-14 and FY2014-15, roughly doubling in two years, exactly at the political transition, against 11.4 and 8.4 per cent for education departments - and no retrieved document accounts for it. Both terminal points are Budget Estimates, which revise down by about 0.35 points to Actual on the only year where all three stages exist, and the Union underspent its own budget in 13 of 16 completed years. The pre-2011-12 rows sit on a spliced GDP denominator that inflates the UPA years by 0.16 to 0.29 points with no note in the source. And the series has simply stopped: a twenty-five-year annual statistical publication has produced nothing covering FY2022-23 onward, so the current term cannot be assessed on it at all.",
     "seriesRefs": [
       "edu-spend-gdp-edu-depts",
       "edu-spend-gdp-all-depts",
+      "edu-spend-gdp-centre-edu-depts",
       "edu-union-moe-gdp",
       "edu-union-be-shortfall-pct"
     ],
@@ -882,7 +888,8 @@
     "dateEnd": "2026-07-08",
     "term": "T2",
     "domains": [
-      "governance"
+      "governance",
+      "education"
     ],
     "type": "episode",
     "summary": "The All India Survey on Higher Education, which through the mid-2010s carried a cover year one year after its survey year, published AISHE 2019-20 eighteen months after its reference date, 2020-21 and 2021-22 at twenty-five months each, and then nothing for twenty-nine months. AISHE 2022-23 and 2023-24 were released together on 8 July 2026, the former three years and six months after its own reference date. AISHE 2024-25 remains unpublished.",
@@ -938,7 +945,7 @@
     "dateEnd": "2024-03-31",
     "term": "T1",
     "domains": [
-      "human-development"
+      "education"
     ],
     "type": "episode",
     "summary": "On the restated 2011-Census-projection basis, higher-education gross enrolment among 18-23 year olds rose from 21.2 per cent (2011-12) to 30.0 (2023-24), with female GER crossing above male in 2017-18 and staying above for seven consecutive years. Enrolment rose 31.5 per cent over the decade. But growth has decelerated sharply to 0.8 per cent in 2023-24, undergraduate enrolment fell in absolute terms that year, and roughly half of the most recent GER gain is the projected 18-23 population shrinking rather than additional students.",
@@ -1011,7 +1018,7 @@
     "term": "T2",
     "domains": [
       "governance",
-      "human-development"
+      "education"
     ],
     "type": "episode",
     "summary": "Census 2021 was never fielded. The intent notification of 16 June 2025 supersedes the 2019 notification and sets Census 2027 with a reference date of 1 March 2027. Literacy is a Population Enumeration question, and Population Enumeration is not yet notified; the gazette notification defining the Census 2027 literacy question does not yet exist. India's last complete enumeration of literacy is 2011, at 72.98 per cent - and the figure in general circulation is the provisional 74.04.",
@@ -1088,7 +1095,7 @@
     "term": "T1",
     "domains": [
       "governance",
-      "human-development"
+      "education"
     ],
     "type": "institutional",
     "summary": "RTE section 25 required the pupil-teacher ratio in the Act's Schedule to be maintained 'in each school' within three years of commencement, that is by 31 March 2013. Thirteen years later about one lakh schools have a single teacher - 104,125 in FY2024-25, 7.08 per cent of all schools, falling to about 100,843 in FY2025-26 - while the Department answers the school-level duty with a national mean of 25:1. Both are true at once because the norm is a ratio and not a coverage rule.",
@@ -1171,7 +1178,8 @@
     "term": "T2",
     "domains": [
       "employment",
-      "governance"
+      "governance",
+      "education"
     ],
     "type": "episode",
     "summary": "The school data capture format records, for every one of the roughly 1.01 crore individual teacher records in India, a field 'Nature of Appointment: 1-Regular, 2-Contract, 3-Part-Time/Guest', identically worded in the 2022-23 and 2025-26 editions. No UDISE+ report, press release, Economic Survey chapter or parliamentary reply publishes the national regular-versus-non-regular share. The only national estimate that exists was produced by a university centre for the UNESCO Teacher Task Force: 11.1 per cent of state-government-school teachers were contractual in 2021-22, and 16 per cent at primary level.",
@@ -1247,7 +1255,8 @@
     "term": "T1",
     "domains": [
       "governance",
-      "federalism"
+      "federalism",
+      "education"
     ],
     "type": "event",
     "summary": "On 3 April 2025 the Supreme Court upheld the Calcutta High Court's judgment of 22 April 2024 setting aside en bloc the entire 2016 selection process of the West Bengal Central School Service Commission for Assistant Teachers of Classes IX-X and XI-XII and for non-teaching Group C and Group D staff. Six weeks before the High Court ruled, Parliament had enacted the Public Examinations (Prevention of Unfair Means) Act 2024, whose Schedule does not cover any state school service commission, state public service commission, state teacher eligibility test or state teacher recruitment board.",
@@ -1302,11 +1311,11 @@
     "dateEnd": "2026-03-31",
     "term": "T1",
     "domains": [
-      "human-development",
+      "education",
       "governance"
     ],
     "type": "episode",
-    "summary": "The share of rural children aged 6-14 in private school rose steeply through the UPA years, from 18.7 per cent (2006) to 30.8 (2014), and then stopped: 30.6 in 2016, 30.9 in 2018, 25.1 in the COVID trough of 2022 and 30.6 in 2024. The privatisation of rural schooling stopped in 2014 and has never resumed. Over the same period the number of government schools fell from 1,107,101 (FY2014-15) to 1,005,245 (FY2025-26), a net decline of 101,856 or about 9.2 per cent, while private schools rose 18.5 per cent.",
+    "summary": "The share of rural children aged 6-14 in private school rose steeply through the UPA years, from 18.7 per cent (2006) to 30.8 (2014), and then stopped: 30.6 in 2016, 30.9 in 2018, 25.1 in the COVID trough of 2022 and 30.6 in 2024. The privatisation of rural schooling stopped in 2014 and has never resumed. Over the same period the number of government schools fell from 1,107,101 (FY2014-15) to 1,013,322 (FY2024-25), a net decline of 93,779 or about 8.5 per cent, while private schools rose 17.8 per cent. The FY2025-26 figures, which carry the decline to 101,856 and 18.5 per cent, are relayed and are held pending: the UDISE+ 2025-26 edition was not retrieved.",
     "whatHappened": "The COVID swing and its reversal are corroborated independently from both sides - the household survey and the administrative universe agree in direction on the one stretch where both are clean, with government enrolment up 8.1 million and private down 5.6 million across FY2020-21 to FY2021-22. ASER's reading of the reversal is that the shift into government schools was driven 'more by necessity rather than choice'. The largest single-year fall in the government school stock, 51,177 schools in FY2019-20, predates the enrolment re-basing and is therefore a separate phenomenon, largely one state. Asked twice, in February 2025 and February 2026, for the number of schools closed or merged year-wise and state-wise, the Ministry declined both times on the ground that 'the opening, closing and rationalisation of schools are within the purview of respective State Government and UT Administration', and answered instead with access and efficiency measures.",
     "assessment": "contested",
     "caseFor": "A plateau in private share after a decade of steep growth is a reasonable reading of a government system that stopped losing ground: government share among rural 6-14s was 64.9 per cent in 2014 and 66.8 in 2024, higher than at the start of the period, and government-school learning outcomes improved materially in 2024 while private ones did not recover to 2018. School consolidation has a real rationale, and the access data supports it: the gross access ratio for a primary school within norm stands at 97.8 per cent of habitations and for higher secondary rose from 65.1 to 95.0 per cent across the same window, so the network reached further while the stock shrank. Merging two schools of twenty children into one of forty is a defensible answer to a demographic reality rather than a withdrawal.",

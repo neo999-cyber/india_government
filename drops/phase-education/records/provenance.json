@@ -2,10 +2,10 @@
  {
   "id": "P-59",
   "title": "ASER versus NAS/PARAKH: the central learning-measurement dispute",
-  "whatChanged": "India has two national learning instruments that report incompatible pictures, and the official one has been reset three times in seven years. NAS 2017, NAS 2021 and PARAKH Rashtriya Sarvekshan 2024 are four incompatible instruments wearing one name - different grades, frames, administrators and metrics - each of which its own custodians say breaks comparison with its predecessor, so there is no official national learning trend line at all. ASER, an NGO household survey, is the only continuous series. The headline contrast is stark: PARAKH 2024 reports Grade 3 language at 64 per cent and mathematics at 60, while ASER 2024 reports 27.1 per cent of Standard III children able to read a Standard II text and 33.7 per cent able to subtract.",
+  "whatChanged": "India has two national learning instruments that report incompatible pictures, and the official one has been reset three times in seven years. The pre-2017 NAS, NAS 2017, NAS 2021 and PARAKH Rashtriya Sarvekshan 2024 are four incompatible instruments wearing one name - different grades, frames, administrators and metrics - each of which its own custodians say breaks comparison with its predecessor, so there is no official national learning trend line at all. ASER, an NGO household survey, is the only continuous series. The headline contrast is stark: PARAKH 2024 reports Grade 3 language at 64 per cent and mathematics at 60, while ASER 2024 reports 27.1 per cent of Standard III children able to read a Standard II text and 33.7 per cent able to subtract.",
   "when": "2017-11-13 onward; ASER series from 2005",
   "affectsDomains": [
-   "human-development",
+   "education",
    "governance"
   ],
   "affectsSeries": [
@@ -97,7 +97,7 @@
   "whatChanged": "PARAKH publishes a second metric alongside its mean item-success rates: a proficiency-band headcount, on which Grade 3 language rose from 39 per cent (2021) to 57 (2024) and mathematics from 42 to 65. This is the more ASER-comparable statistic, because it is also a headcount ratio, and it is the statistic the Government's headline evidence for NIPUN Bharat rests on - Economic Survey 2025-26's infographics carry it verbatim under 'Universal FLN under NIPUN Bharat'. The band cut-scores are published in no PARAKH document. Without them the 18-point and 23-point gains are uninterpretable: they could be learning, or a moved band boundary, and no external party can tell which.",
   "when": "2024-12-04, published July 2025",
   "affectsDomains": [
-   "human-development",
+   "education",
    "governance"
   ],
   "affectsSeries": [
@@ -138,7 +138,7 @@
   "whatChanged": "From reference year 2022-23 UDISE+ collects individual student-level records with a portal-generated unique educational ID and voluntary Aadhaar, replacing school-wise consolidated returns, with the stated purpose of 'weeding out of duplicate or ghost entries'. Total enrolment fell from 26.52 crore (FY2021-22) to 25.18 crore (FY2022-23) to 24.80 crore (FY2023-24). The Ministry's own disclaimer states data from 2022-23 'is not strictly comparable with the previous reports on various educational indicators such as GER, NER, Dropout rate etc.' In the SAME breath the disclaimer discloses that the denominator moved too: population projections were 'moderated' by the Ministry using SRS birth-rate trends, UIDAI Aadhaar-saturation reports and the trends of adjoining states - so numerator and denominator were re-based in the same year.",
   "when": "2022-23 reference year; reports released end-December 2024",
   "affectsDomains": [
-   "human-development",
+   "education",
    "governance"
   ],
   "affectsSeries": [
@@ -187,7 +187,7 @@
   "whatChanged": "From 2025-26 UDISE+ reclassifies the school ecosystem into the NEP 5+3+3+4 stages - Foundational, Preparatory, Middle, Secondary - from the 10+2 structure, and re-casts every education indicator with it. The release then back-casts 2022-23, 2023-24 and 2024-25 onto the new stages, and the restated values do not match the values originally published for the same years: for 2023-24, secondary dropout reads 10.9 against 14.1, primary/preparatory dropout 3.7 against 1.9, secondary GER 66.5 against 77.4, and secondary retention 45.6 against 63.8. Same year, same source system, two official values, differing by up to 11 GER points and 18 retention points. Even the already-corrupted 2022-23 break year now has two official values.",
   "when": "2025-26 reference year; PIB release 7 July 2026",
   "affectsDomains": [
-   "human-development",
+   "education",
    "governance"
   ],
   "affectsSeries": [
@@ -225,7 +225,7 @@
   "when": "FY2022-23 and FY2023-24",
   "affectsDomains": [
    "governance",
-   "human-development"
+   "education"
   ],
   "affectsSeries": [
    "ptr-primary-udise",
@@ -272,10 +272,13 @@
   "when": "2021-22 onward; Committee exchanges March 2025 and March 2026",
   "affectsDomains": [
    "governance",
-   "federalism"
+   "federalism",
+   "education",
+   "employment"
   ],
   "affectsSeries": [
    "teacher-vacancy-rate-ssa",
+   "teacher-vacancy-rate-elementary",
    "teacher-vacancy-rate-kvs",
    "teacher-vacancy-rate-nvs",
    "teachers-professionally-qualified-primary-udise",
@@ -332,13 +335,14 @@
   "whatChanged": "The Ministry of Education publishes two totals for public education spending side by side, in one table, for the same year: education departments only, and education and other departments. For FY2021-22 they are 2.75 and 4.12 per cent of GDP - a gap of 1.37 percentage points, with the narrow figure two-thirds of the headline. The choice of numerator reverses the direction of the last decade. On the broad basis FY2013-14 to FY2021-22 runs 3.84 to 4.12 per cent, an improvement; on the narrow basis it runs 2.97 to 2.75, a decline. Same budgets, opposite direction, purely from numerator choice. 'India spends X per cent of GDP on education' has no single true answer.",
   "when": "FY2000-01 to FY2021-22, published throughout",
   "affectsDomains": [
-   "human-development",
+   "education",
    "macro",
    "governance"
   ],
   "affectsSeries": [
    "edu-spend-gdp-edu-depts",
    "edu-spend-gdp-all-depts",
+   "edu-spend-gdp-centre-edu-depts",
    "edu-union-moe-gdp"
   ],
   "directionOfBias": "disputed",
@@ -346,7 +350,7 @@
   "bridgeNote": "The two are not convertible by a constant and must never be treated as one series with an offset: across the twenty-two-year table the gap runs from 0.52 points (FY2004-05) to 1.46 (FY2016-17), roughly tripling, and other departments' share of the total rose from 15.9 per cent (2004-05) to 33.3 (2021-22). The decomposition IS available, which is why this is a definitional dispute rather than an unmeasurable one: the broad column can be resolved to ministry level from the ABE's own Statement 1.",
   "competingAccounts": [
    "The broad total is the official headline and the one that carries authority. Parliament is briefed on it - the Standing Committee's 363rd Report reproduces the broad series verbatim, every value matching - and the 6 per cent commitment is invoked against it. Its rationale is that education spending booked by non-education ministries is real education spending: the government's own note lists medical and public health education, agriculture research and education, welfare of SC/ST/OBC and minority education, scientific research, education under social security, mid-day meal nutrition, police training and rural development training.",
-   "The narrow total is what most readers mean by education spending. The broad column includes TRAINING, which the narrow one excludes - 20,205 crore, 0.09 points of GDP, in FY2021-22 - so the two columns are not like-for-like. The Ministry of Education is 39 per cent of what the 4.12 per cent headline calls education; the top four non-education ministries alone come to 90 per cent of the entire Ministry of Education budget. And the ABE concedes the sector allocation is an assumption, not a measurement: the breakup of other departments' spending 'is not available in the budget documents' and is assigned on the stated ground that it mainly goes to elementary and secondary education.",
+   "The narrow total is what most readers mean by education spending. The broad column includes TRAINING, which the narrow one excludes - 20,205 crore, 0.09 points of GDP, in FY2021-22 - so the two columns are not like-for-like. The Ministry of Education is 39 per cent of the Centre's own broad education spending of 1.02 per cent of GDP, and under a tenth of the 4.12 per cent all-India headline, which is Centre plus States; the top four non-education ministries alone come to 90 per cent of the entire Ministry of Education budget. And the ABE concedes the sector allocation is an assumption, not a measurement: the breakup of other departments' spending 'is not available in the budget documents' and is assigned on the stated ground that it mainly goes to elementary and secondary education.",
    "The consequence for the 6 per cent target is that the gap to it is 1.9 points or 3.3 points depending on a definitional choice that is never stated when the target is invoked. Two further sharpeners: the ABE never mentions the 6 per cent target, NEP 2020 or Kothari in any edition, so the comparison is made outside the statistical document; and Kothari's '6 per cent of national income' was not verified against the original, which matters because national income is a smaller denominator than GDP at market prices, so the Kothari 6 per cent and the NEP 6 per cent may not be the same bar."
   ],
   "sources": [
@@ -379,13 +383,14 @@
   "whatChanged": "The Analysis of Budgeted Expenditure on Education, an annual Ministry of Education publication running since at least 2000-01, has published no edition covering FY2022-23 or later. The series terminates at FY2021-22, a four-year gap in a twenty-five-year annual statistical series, and T3 has zero observations. Separately, the terminal points of both spending series are Budget Estimates, which are systematically revised down: on the only year where all three stages exist, the broad basis reads BE 4.39, RE 4.30, Actual 4.04 - a 0.35-point BE-to-Actual revision. The last Actual on either series is FY2019-20.",
   "when": "FY2022-23 onward; the last edition is dated 2024 and covers to FY2021-22",
   "affectsDomains": [
-   "human-development",
+   "education",
    "macro",
    "governance"
   ],
   "affectsSeries": [
    "edu-spend-gdp-edu-depts",
    "edu-spend-gdp-all-depts",
+   "edu-spend-gdp-centre-edu-depts",
    "edu-union-be-shortfall-pct",
    "ugc-provision-gross"
   ],
@@ -416,7 +421,7 @@
   "whatChanged": "Two things happened to India's higher-education statistic. First, the denominator was restated: every GER published before the AISHE 2020-21 report rests on 2001-Census-based population projections and everything from 2020-21 onward rests on 2011-Census-based projections, which are about 6 per cent larger and mechanically cut GER by roughly 1.5 points. AISHE states it plainly - 25.6 for 2019-20 on the 2011 projection against 27.1 on the 2001 projection - so as-published and restated values for the same year differ by up to 1.5 points and cannot share a column. Second, the publication lag opened from under a year in the mid-2010s to 42 months for AISHE 2022-23, which appeared on 8 July 2026 alongside AISHE 2023-24, after a 29-month interval with no AISHE publication at all.",
   "when": "Denominator restatement in the 2020-21 report (published 29 January 2023); lag from 2019-20 onward",
   "affectsDomains": [
-   "human-development",
+   "education",
    "governance"
   ],
   "affectsSeries": [
@@ -462,7 +467,7 @@
   "whatChanged": "India's literacy rate is a self-declaration. In the Census, NSS and PLFS the enumerator poses the question to a household informant, frequently about other members, and no reading or writing task is administered at any point: a literate person is a person someone said was literate. Four official instruments apply four different rules to the same word. Census, NSS and PLFS form one definitional family - can both read and write a simple message with understanding, age 7 plus - differing in sampling and coverage rather than concept. CAMS is the outlier inside the official family: for anyone ever enrolled in formal education, completing pre-primary or Class I is definitionally literacy and 'no test of the ability was performed'. NFHS-5 is the only official instrument administering any reading task, and only below Standard 9, with partial credit, on a restricted 15-49/15-54 frame.",
   "when": "Census 1951 onward; PLFS 2025 is the latest measurement",
   "affectsDomains": [
-   "human-development",
+   "education",
    "governance"
   ],
   "affectsSeries": [
@@ -515,7 +520,7 @@
   "whatChanged": "There is no published national series of seats notified against seats filled under the 25 per cent private-school quota, and the Government of India does not maintain one. What the Ministry publishes is a cumulative count of children in schools for which reimbursement is claimed, with no seats denominator. Worse, where the Ministry does use the word 'seats' the figure is demonstrably something else: for Karnataka, the 'total number of seats' for year Y equals exactly the Project Approval Board approved reimbursement headcount for year Y minus 1, for three consecutive years - which is why seats equalled admissions perfectly for 2021-22, 2022-23 and 2023-24, a hundred per cent fill rate by construction rather than by achievement. The apparent 19.1 per cent fill in 2024-25 is the artefact breaking down, not a sudden collapse.",
   "when": "2012-13 onward; the Karnataka reply is dated 27 July 2026",
   "affectsDomains": [
-   "welfare",
+   "education",
    "governance",
    "federalism"
   ],
@@ -568,7 +573,7 @@
   "when": "Observed 2026-08-01 and 2026-08-02; education.gov.in migration during 2025",
   "affectsDomains": [
    "governance",
-   "human-development"
+   "education"
   ],
   "directionOfBias": "obscures",
   "bridgeExists": false,
