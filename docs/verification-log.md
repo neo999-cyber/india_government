@@ -3517,3 +3517,62 @@ sitting on a branch; merging red costs the deploy path and the rule.
 
 The two green branches carry the work that should not wait: `lenses[]` and the 15+7 backfill, and the
 domain-coverage gate with the `education` fix that restored a surface 48 series had been missing.
+
+## Addendum to 2026-08-03d — L-0033 closed; gate GREEN
+
+### Fourth attempt, and the last
+
+The ECL press release failed again on the same transport error. **Four attempts, four transport
+failures, no 404 at any point.** Stopped: this is an environment limit, not a research gap, and the
+distinction matters for what the record says about itself. A document that cannot be fetched from
+here is not a document that does not exist, and the record must not imply otherwise.
+
+### L-0033 rescored `too-early` → `no-objective`
+
+Same standard as L-0028, and the reason is on the record rather than only here. `too-early` reads
+"has not run long enough for **its stated objective** to be testable" — and that objective cannot be
+quoted from anything retrieved, so the value asserted something the record does not hold.
+
+**The 60-70 basis point figure is gone from the record entirely, not just from the cases.** It was in
+the `summary`, which renders as fact on the record page — leaving it there and keeping it out of the
+argument would have been the same defect wearing a different field. The summary now says what is
+true: the impact is not established here, the only figure in circulation is a T4 relay, and no primary
+for it has been retrieved. **A figure that cannot carry an argument cannot carry a summary either.**
+
+The pair was authored from what the record actually holds: the timetable (issued 27 April 2026,
+effective 1 April 2027, phased to March 2031), the shift from incurred-loss to expected-credit-loss
+recognition, and P-21's forward-dated comparability break on `crar` and `net-npa`. `caseAgainst` ends
+by stating its own limit — none of it can be sized, because the directions have never been retrieved.
+
+```
+validate  VALID — 0 errors, 96 warning(s)
+selftest  23/23 validator rules · 2/2 output gates
+```
+
+### Stacked merges — verify the artefact on `main`, never the PR status
+
+**Found by doing it wrong.** PR #3 was opened with base `lens-axis` and merged there at 21:18, ten
+minutes *after* `lens-axis` had already been merged to `main` at 21:08. Both PRs reported MERGED.
+`main` had the lens axis and **not** the domain-coverage gate: `tools/domain-coverage.mjs` absent, the
+build command still ending at `reachability`, and `validate` passing cleanly the whole time because
+nothing about the missing gate is visible to it.
+
+**A stacked PR that merges into its base after the base has landed is a silent no-op for `main`, and
+every status field says success.** Fixed by PR #4 re-targeted at `main`, then verified by checking out
+`origin/main` in a clean worktree and running the tools there — not by reading a green tick.
+
+Written into SKILL.md stage 8: after any stacked merge, verify the artefact exists on `main`.
+
+### Deferred, logged only — prose citations against `sources[]`
+
+A rule asserting that every document named in prose — `assessmentNote`, `caveat`, `caseFor`,
+`caseAgainst` — appears in that record's `sources[]`. It is a **partial** guard against the hard stop
+this cycle made explicit: entering a document as a source that has not been retrieved. It cannot
+catch a fabricated source, because a fabricated source is in `sources[]` by construction. What it
+catches is the adjacent and more common case — **a real document named in an argument and never
+retrieved onto the record**, which is exactly the shape of L-0028's Reconstruction Scheme and
+L-0033's ECL directions before this cycle.
+
+Not built: it needs a citation-extraction heuristic over free prose, and a heuristic that
+over-fires here would push authors to cite less rather than retrieve more, which is the wrong
+direction. Both fixtures and a tested heuristic under trigger C, as its own cycle.
