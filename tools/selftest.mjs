@@ -341,6 +341,70 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
   else notes.push('  domain-coverage stays silent on the live corpus — every domain value has a surface and every record reaches it');
 }
 
+// 3f. url-check: a URL added or amended in a cycle is fetched before it lands.
+//
+// A THIRD COUNTER, and separate from the output gates for a structural reason. `reachability` and
+// `domain-coverage` read BUILT OUTPUT; this one reads `/data` and the NETWORK. It cannot join the
+// validator count either — validate must stay deterministic and offline, and a rule that reaches
+// the network in the build path would make every build hostage to a remote host being up.
+//
+// BOTH FIXTURES RUN IN RECORDED MODE, so the selftest itself needs no network. The fires-correctly
+// root is DERIVED FROM A REAL REGRESSION (Rule 2), not written from a model of one: it carries the
+// two URLs actually written into a working tree during cycle 2026-08-03f — a plausible Amnesty
+// document path and a plausible Lok Sabha Secretariat path — together with the responses actually
+// observed from them, plus the soft-404 branch a status-only check would pass.
+//
+// The three branches are pinned separately on purpose. A 403, a no-response and a 200-serving-HTML
+// fail for different reasons, and the last is the one that reads as success.
+{
+  const check = (args) => {
+    try {
+      execFileSync(process.execPath, [join(ROOT, 'tools', 'url-check.mjs'), ...args], {
+        // stderr piped: the fixture is EXPECTED to fail, and letting its report through would make
+        // a passing selftest read as a broken one.
+        encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, NO_COLOR: '1' },
+      });
+      return { code: 0, out: '' };
+    } catch (err) {
+      return { code: err.status ?? 1, out: `${err.stdout ?? ''}${err.stderr ?? ''}` };
+    }
+  };
+  const root = (d) => join(ROOT, 'tests', 'fixtures', d);
+  const guessed = root('url-check-guessed');
+  const fired = check(['--all', '--data', guessed, '--responses', join(guessed, 'responses.json')]);
+  if (fired.code !== 1) {
+    failures.push(`url-check did not fire on tests/fixtures/url-check-guessed (exit ${fired.code}) — a guessed URL that does not serve its document must fail`);
+  } else {
+    // Assert each branch by its own message. Without this the fixture passes on any failure,
+    // including one from a branch it is not testing, and a branch could stop firing unnoticed.
+    // THE 403 BRANCH IS DELIBERATELY NOT HERE, AND ITS ABSENCE IS THE HONEST RESULT.
+    // One of the two URLs actually guessed in 2026-08-03f — the Amnesty document path — returns
+    // 403, and a 403 means the host answered and refused an automated client. The tool CANNOT
+    // distinguish a wrongly-guessed URL from a correct one behind a bot-block, so it classifies
+    // both as unverifiable and does not fail. That is the right call for the corpus (17 such URLs
+    // against 4 genuine 404s, one of them cited by live records) and it means this gate would have
+    // caught ONE of the two URLs that motivated it, not both. Asserted below as unverifiable so
+    // the limitation is pinned rather than forgotten.
+    const BRANCHES = [
+      ['HTTP no response', 'a plausible path that resolves to nothing'],
+      ['where the path states application/pdf', 'a soft-404: 200 serving HTML for a .pdf path'],
+    ];
+    for (const [needle, why] of BRANCHES) {
+      if (fired.out.includes(needle)) notes.push(`  url-check fires on ${why}`);
+      else failures.push(`url-check did not report the branch "${needle}" (${why}) — the fixture would pass on another branch's failure`);
+    }
+    // The other half of the same fixture: the 403 must be REPORTED and must NOT be a failure.
+    if (fired.out.includes('UNVERIFIABLE') && fired.out.includes('HTTP 403')) {
+      notes.push('  url-check classifies a 403 as unverifiable, not failed — a refusal is not evidence the document is absent');
+    } else {
+      failures.push('url-check did not classify the 403 as unverifiable — failing on a bot-block would push authors to delete good citations');
+    }
+  }
+  const clean = check(['--all', '--data', root('url-check-clean'), '--responses', join(root('url-check-clean'), 'responses.json')]);
+  if (clean.code !== 0) failures.push(`url-check fired on tests/fixtures/url-check-clean (exit ${clean.code}) — URLs that do serve their document must pass, including one with no path extension`);
+  else notes.push('  url-check stays silent on URLs that serve their document, and asserts no content-type where the path states no extension');
+}
+
 // 4. Strictness must be live: a misspelled keyword cannot be silently ignored.
 // Under a lax config this schema compiles and lets the invalid record through.
 const typoSchema = {

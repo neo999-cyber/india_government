@@ -1,0 +1,35 @@
+[
+  {
+    "id": "L-9001",
+    "title": "Fixture record carrying the two URLs actually guessed in cycle 2026-08-03f",
+    "date": "2026-08-03",
+    "term": "T3",
+    "domains": [
+      "governance"
+    ],
+    "type": "institutional",
+    "summary": "Not a real record. It exists so url-check can be proven to fire on a real regression rather than on a hand-written negative, per Rule 2.",
+    "assessment": "no-objective",
+    "caseFor": "The fires-correctly fixture must derive from a real regression. These two URLs are the ones actually written into a working tree during cycle 2026-08-03f, and the recorded responses are the ones actually observed from them.",
+    "caseAgainst": "A hand-written bad URL would prove only that the tool rejects nonsense. These were plausible enough to be written by an author who believed them, which is the case that matters.",
+    "sources": [
+      {
+        "name": "GUESSED - a plausible Amnesty document path that does not serve the document",
+        "url": "https://www.amnesty.org/en/documents/asa20/5959/2022/en/",
+        "tier": "T4"
+      },
+      {
+        "name": "GUESSED - a plausible Lok Sabha Secretariat path for a report actually retrieved from an Internet Archive capture",
+        "url": "https://loksabhadocs.nic.in/lsscommittee/Communications%20and%20Information%20Technology/17_Communications_And_Information_Technology_26.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "SOFT-404 - a path stating .pdf that answers 200 with an HTML error page. Status alone passes this; only the content-type assertion catches it",
+        "url": "https://example.gov.in/reports/annual-2019.pdf",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-03"
+  }
+]
