@@ -4355,3 +4355,33 @@ affected groups" gone, the Anglo-Indian sentence intact, the Constitution cited 
 needle, not the verdict. This adds: **assert every artefact a change claims to touch, not the one most
 recently on your mind.** A partial assert reads exactly like a complete one in a run report — which is
 the same shape as the stale-artefact family, one level up: a true statement about the wrong subset.
+
+## Addendum to 2026-08-03j — deployed and verified on production
+
+Production is **3812807**, `dpl_CjfSEMLAnC94rjicE6TubBLg5XXV`, **READY**, aliased to
+`india-government.vercel.app`. Built in 34 seconds. Artefact verified on `main` by asserting **all
+seven** things the cycle claims to touch — four on L-0143, two in `SKILL.md`, one in this log — which
+is the correction the previous addendum records.
+
+**491 pages fetched, list derived from `/data` by construction. The first pass returned 35 HTTP 000s
+and they were NOT recorded as failures.** They were alphabetically contiguous from one point to the
+end of the run, which is the signature of connection exhaustion rather than of missing pages. Retested
+with a retry and a delay: **38 retried, 0 still failing.** This is M1 applied to the project's own
+verification rather than to a research target — a transport failure recorded as a site failure would
+have been a false finding in a log entry, and the fix was to retest, not to reason about it.
+
+Both gates re-run against the completed tree with `--data data --out`, spec derived at run time:
+**reachability 599/599** (unmeasured 240 · caveat 146 · notes 191 · differentFactsNote 22),
+**domain-coverage 14/14 surfaces, 831/831 references**.
+
+**Controls 10/10, both directions**, from production HTML with `<script>` stripped.
+
+Present: the Anglo-Indian sentence the retrieval saved; **"One Hundred and Fourth"**; **article 331's
+"if he is of opinion that the Anglo-Indian community is not adequately represented"**, which is the
+drafting source for J&K section 15 and is now on the page a reader lands on; **"seventy years"** from
+article 334(b); the `Awaiting adjudication` label; the Lakshminarayanan citation; and L-0142's new
+`caseFor`.
+
+Absent: **"three generations"** and **"hearing the affected groups"** — the two unsourced clauses,
+proven gone from production rather than merely gone from the working tree, which is the assertion the
+previous merge could not have made. Plus the bogus needle.
