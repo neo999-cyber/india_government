@@ -3890,3 +3890,46 @@ Also open: `jklegislativeassembly.nic.in` and `jkhome.nic.in` are genuinely NXDO
 tried, so phase 11's findings on both stand and **no amendment was owed on either** — a subagent
 claimed otherwise and was overturned. A live Assembly presence exists at `jkla.neva.gov.in`; whether it
 carries the proceedings L-0123 depends on is **not established**, and L-0123's caveat says exactly that.
+
+## Addendum to 2026-08-03f — deployed and verified on production
+
+Production is **4e50ba0**, `dpl_Bo7J1emgji7ExKTs2wjGJoJsZQr5`, **READY**, aliased to
+`india-government.vercel.app`. Built in 36 seconds. The artefact was verified **on `main` by reading
+the files**, not from the PR status — 149 ledger / 216 series / 99 provenance / 47 pairs, the widened
+`^P-\d{2,3}$` in the schema, and both new layer files present.
+
+**491 pages fetched over the wire, zero non-200.** The fetch list was **built from `/data` by
+construction** — every series, ledger and provenance id enumerated from the JSON, every domain from
+the union of records — so the page set cannot drift from the corpus.
+
+**Both gates re-run against the fetched production tree**, `--data data --out /tmp/prodtree`, so the
+spec is derived from `/data` at run time and **no needle was written down**:
+
+- **reachability 599/599** over 491 pages — unmeasured 240/240 · caveat 146/146 · notes 191/191 ·
+  differentFactsNote 22/22.
+- **domain-coverage 14/14** surfaces, 14/14 linked from the index, **831/831** record-to-surface
+  references.
+
+**Controls 17/17, both directions.**
+
+Present, from production HTML with `<script>` stripped first (the framework embeds the whole payload
+as escaped JSON, so a mark rendering nowhere is still in the file): the Article 370 record; the word
+"pending" on L-0149; **546** on `jk-detenus-psi`, the disciplining measure's 2022 peak; **the caveat
+the reachability gate caught**; **395 on `jk-prison-detained-category`, its data table — the thing no
+gate watches and which was going with the two marks**; "Governance" on L-0003, the baseline domain
+applied at source; **65.91 on L-0010, deliberately NOT corrected**, with "postal-inclusive" beside it;
+"Centralized data" on L-0081; 334 on L-0123; P-99 rendering at the widened id ceiling; and L-0125
+reachable from `/domains/kashmir/`.
+
+Absent: **619**, the trigger-B figure authored nowhere; **149,750** and **0.9707**, the two halves of
+the delimitation defect; and "no savings provision", the phrase L-0121's amendment replaced.
+
+**The bogus needle is what makes the other sixteen mean anything.** `ZZZ-BOGUS-NEEDLE-ZZZ` was asserted
+absent from L-0125 and was absent — which proves the negative controls are reading real HTML rather
+than reporting absence because the file was empty, unfetched, or matched by a broken predicate.
+
+**A note on the four negative controls that are not the bogus one.** Each asserts a *correction reached
+production*, not merely that a record changed: 619 proves the figure never entered any layer; 149,750
+and 0.9707 prove the arithmetic fix shipped in both its halves — and 0.9707 in particular, because the
+off-by-one alone would have been a cosmetic pass while the inverted ratio was the substantive defect;
+"no savings provision" proves the L-0121 amendment replaced the phrase rather than appending to it.
