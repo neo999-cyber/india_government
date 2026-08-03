@@ -56,9 +56,9 @@ Irreversible, expensive or precedent-setting → ask.
 
 ---
 
-## Four method rules
+## Five method rules
 
-Added 2026-08-03 from phase 12. Each was paid for by a defect that reached a record or came within one
+Added 2026-08-03 from phases 12 and 13. Each was paid for by a defect that reached a record or came within one
 step of it, and each is about **how a finding is established**, not about what the instrument holds —
 so none of them belongs in the validator.
 
@@ -125,6 +125,24 @@ against a **correct** phase-11 absence.
 **The main loop verifies before it propagates.** This is Rule 1 applied to the orchestrator's own
 relaying: a subagent's finding is a claim, and passing it on unchecked converts it into a premise for
 three more agents at once.
+
+### M5 — A substring test is not a claim check
+
+A claim audit asserts **the claim**, not a token from it.
+
+Auditing a re-authored `caseFor` against its own record, the check for "Parliament has used nomination
+… for Anglo-Indians … **until 2020**" searched the record for `2020`. It matched — inside the file stem
+`11012/02/2020-SRA`, which has nothing to do with Anglo-Indians, nomination, or the year as a date.
+**A claim with no support on the record passed a check designed to catch exactly that**, and it
+survived only because the audit was read by eye afterwards.
+
+Bare years, section numbers and short figures are the worst offenders, because they recur everywhere
+in a corpus of statutes and file references. **Test the proposition — the entity, the predicate and the
+figure together, or the distinctive phrase that carries them.** Where a claim cannot be reduced to a
+searchable proposition, it does not get a mechanical check: read it, and say that you read it.
+
+**The corollary matters more than the rule.** A passing claim audit is evidence the claim is supported
+only to the strength of the needle used. **Report the needle, not just the verdict.**
 
 ---
 
@@ -271,10 +289,22 @@ it re-enters on the next run. **Correct the research, not only the record.**
 Merge to `/data`. Run, and report the actual output of:
 
 ```
-npm run validate && npm run validate:selftest && npm run typecheck && npm run build
+npm run validate && npm run typecheck && npm run build && npm run validate:selftest
 ```
 
 `npm run build` ends in the reachability check. Any failure stops.
+
+**BUILD BEFORE SELFTEST, and the order is not cosmetic.** `validate:selftest` has a live-corpus arm
+that reads `out/`, so run before a build it reports on **the previous build's artefact**. Observed
+2026-08-03: the selftest reported *"reachability failed on the live corpus"* and the build seconds
+later reported **599/599**. Both were correct — a `caveat` had been edited and `out/` did not yet carry
+it. The selftest was not wrong about anything except which tree it was describing.
+
+**Fourth instance of one shape**, and it is worth naming as such: a check that is sound, and reads a
+stale artefact. The others are the absence bug (three phases green on correct data), stage 1 counting
+series from `seed.json` alone, and stage 2's `research.md` assembled before six of its parts landed.
+**A check reads what is on disk at the moment it runs; where that is generated, generate it first.**
+The failure mode is not a wrong answer — it is a right answer to a question about yesterday.
 
 ### 7 — Reachability sweep
 

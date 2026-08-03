@@ -4248,3 +4248,85 @@ needle, which is what makes the other three negatives mean anything.
 cases where a *correction* had to reach production rather than merely a new field. A record can gain a
 new `caseFor` and still ship the old caveat contradicting it; asserting the removal is the only way to
 know it did not.
+
+---
+
+# Verification log — cycle 2026-08-03j (104th Amendment retrieved; two unsourced clauses cut)
+
+Append-only delta. Nothing above this line was edited.
+
+## The retrieval branch — SUCCEEDED, and the text is stronger than the sentence
+
+The Anglo-Indian precedent in L-0143's `caseFor` was flagged in the previous cycle as a claim not on
+its record. **The instrument is now retrieved**: the Constitution of India as on 1 May 2024,
+Legislative Department, 402 pages, MD5 `53b05ea1fbdbcb373278f02258b9f900`. Branch taken: **cite it T1
+and keep the sentence.**
+
+**Article 334(b)** time-limits "the representation of the Anglo-Indian community in the House of the
+People and in the Legislative Assemblies of the States **by nomination**" to "**seventy years** in
+respect of clause (b)", and **footnote 4** records the substitution by the Constitution (One Hundred
+and Fourth Amendment) Act, 2019, s. 2, **w.e.f. 25-1-2020**. So the sentence's two load-bearing facts —
+nomination for a dispersed community, and that it ran until 2020 — are both in the Constitution's own
+text and its own footnote.
+
+**The parallel is closer than the sentence claims, and it was not visible until the document was
+read.** Article 331: *"the President may, **if he is of opinion that the Anglo-Indian community is not
+adequately represented** in the House of the People, nominate **not more than two** members"*. Article
+333 is the Governor's equivalent for a State Assembly. **The J&K provision is drafted on that model
+almost word for word** — section 15's "if he is of opinion that women are not adequately represented",
+and section 15A's "not more than two", which this record's own `whatHappened` notes was an inversion
+of the Delimitation Commission's "at least two". The precedent is not merely analogous; it is the
+drafting source.
+
+## Two clauses cut, and nothing turned on either
+
+Both flagged in cycle 2026-08-03i as absent from the record and neither was sourced:
+
+- *"have been resident for three generations without a seat that answers to them"* → *"have no seat
+  that answers to them"*.
+- *"arrived at the same instrument **after hearing the affected groups**"* → *"arrived at the same
+  instrument"*.
+
+`caseFor` 1,414 → 1,337 characters. **All three claims flagged last cycle are now resolved: two cut,
+one sourced to the Constitution.** No claim in either re-authored case is now unsupported by its own
+record.
+
+## SKILL.md — stage 6 order corrected
+
+`npm run validate && npm run typecheck && npm run build && npm run validate:selftest`.
+
+**`validate:selftest` has a live-corpus arm that reads `out/`**, so run before a build it reports on
+the previous build's artefact. Observed in the previous cycle: the selftest reported "reachability
+failed on the live corpus" and the build seconds later reported 599/599, and **both were correct** —
+a caveat had been edited and `out/` did not yet carry it.
+
+**Recorded as the fourth instance of one shape**: a check that is sound and reads a stale artefact.
+The others are the absence bug (three phases green on correct data), stage 1 counting series from
+`seed.json` alone, and stage 2's `research.md` assembled before six of its parts landed. The failure
+mode is not a wrong answer — it is a right answer to a question about yesterday.
+
+## SKILL.md — M5, a substring test is not a claim check
+
+The claim audit for "Anglo-Indians … until 2020" searched the record for `2020` and matched — **inside
+the file stem `11012/02/2020-SRA`**, which has nothing to do with Anglo-Indians, nomination, or the
+year as a date. A claim with no support on the record passed a check built to catch exactly that, and
+survived only because the audit was read by eye afterwards.
+
+**Test the proposition, not a token from it.** And the corollary that matters more: a passing claim
+audit is evidence only to the strength of the needle used — **report the needle, not just the
+verdict.**
+
+## An operational note on this cycle
+
+**Both SKILL.md edits were reverted after being written and had to be re-applied**, which was caught
+by re-grepping the file rather than by trusting the edit's success report. A `## Four method rules`
+heading had by then been changed to `## Five` while only four rules were present — an inconsistency
+visible only because the count was asserted rather than assumed. **Assert the artefact after writing
+it; an edit that reports success is not a file that contains the edit.** Same shape as everything
+above.
+
+## Gates
+
+validate 0 errors · typecheck clean · build: reachability 599/599, domain-coverage 831/831 · selftest
+green, six url-check assertions · url-check 0 new URLs to check, correctly — the Constitution PDF was
+already cited by L-0125 and L-0129 from phase 12, and was re-fetched by hand at 200 `application/pdf`.
