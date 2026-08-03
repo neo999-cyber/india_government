@@ -3576,3 +3576,102 @@ L-0033's ECL directions before this cycle.
 Not built: it needs a citation-extraction heuristic over free prose, and a heuristic that
 over-fires here would push authors to cite less rather than retrieve more, which is the wrong
 direction. Both fixtures and a tested heuristic under trigger C, as its own cycle.
+
+---
+
+# Verification log — cycle 2026-08-03e (`demography` removed; standing change to SKILL.md)
+
+## `demography` removed from the domain enum
+
+Fifth phase of being flagged. Removed from all four schemas, from `DOMAINS` and `DOMAIN_LABELS`, and
+its definition line deleted.
+
+### Preconditions verified before touching anything
+
+```
+records carrying demography:  0   (0 ledger domains[], 0 series domain, 0 pairs domain,
+                                   0 provenance affectsDomains)
+```
+
+**Byte-identity across the shared string, before and after.** The `domain` description is one string
+shared by ledger, series and pairs; provenance is that string plus its `- all:` line. Both properties
+held before and hold after — the removal did not drift the four apart, which is the failure that
+constraint exists to catch:
+
+```
+BEFORE   series/ledger/pairs  5eeb91f2ce5b225f  (identical)   provenance  499a324658b6aad4
+AFTER    series/ledger/pairs  f1a0b96554fbc290  (identical)   provenance  865e421e6dfaf637
+         provenance == trio + "- all:" line   .................. true, before and after
+         enum 15 -> 14 in all three; 16 -> 15 in provenance
+```
+
+### The reasoning
+
+**Delimitation is an act of the state on representation and files `governance`, per the precedent the
+`defence` line already sets** — that line says the state's treatment of civilians in its operations
+files `governance`, not `defence`, and the same routing applies here: population is what delimitation
+acts on, not what the record is about. Phase 12 (delimitation, domicile, statehood) was the only phase
+that would plausibly have attested the value, and delimitation was its only candidate.
+
+**Population has been a denominator, a base or a component in eleven phases and a subject in none.**
+L-0104's 18-23 cohort is a denominator; literacy's census base is a base; the peer panel's populations
+are components.
+
+**The decisive evidence was already in the tree, and it is stronger than the argument above.**
+L-0105 — *"Literacy: the last complete enumeration is 2011"*, the single strongest `demography`
+candidate the corpus has ever held — was **deliberately routed to `governance`**, and says so in its
+own `assessmentNote`:
+
+> "The record is filed under governance rather than under the demography domain deliberately: see the
+> domain-fit note and the stop raised with it."
+
+A stop was raised on exactly this question in phase 10, and the answer taken then was `governance`.
+Removing the value applies that precedent rather than setting a new one.
+
+### The counter-argument, recorded so a later phase can reopen this with the reasoning visible
+
+**Delimitation's subject is arguably the distribution itself, not the act.** Seats redistributed by
+population is a claim *about* population structure, and J&K delimitation specifically is contested on
+precisely that ground — whether seats followed population or preceded it. On that reading phase 12
+attests the value and this removal was premature.
+
+If a later phase takes that reading: the value returns with a definition written from observed
+practice in the same commit, not the placeholder that was removed. **What is being deleted is a line
+that described a word rather than a practice** — it said so itself: "NEVER USED — no record or series
+carries it, so its intended boundary is unattested and this line describes the word, not observed
+practice." That line failed the §6 threshold in substance while passing it in form, which is why the
+value was flagged five times and never used.
+
+### One consequence to hand back
+
+**L-0105's `assessmentNote` still names "the demography domain".** It is left as authored: it records
+a routing decision that was correct and is now the evidence for this removal, so editing it would
+delete the reasoning this cycle rests on. But it now refers to a value that no longer exists, and no
+gate can see that. **Flagged for the research session** — the sentence wants a clause noting the value
+was removed on 2026-08-03, and that is a `/data` edit at source.
+
+### Gate
+
+```
+validate         VALID — 0 errors, 96 warning(s)
+selftest         23/23 validator rules · 2/2 output gates
+typecheck        clean
+reachability     OK — 492/492 (443 pages scanned, one fewer: /domains/demography/ is gone)
+domain-coverage  OK — 14/14 surfaces · 14/14 indexed · 685/685 record references
+```
+
+`domain-coverage` moving 15/15 → 14/14 by itself is the check working: the expected set is derived
+from the schemas, so removing a value removed the expectation with it, and the four record references
+that fell away were provenance records with `affectsDomains: [all]` fanning out to a page that no
+longer exists.
+
+## Standing change written into SKILL.md
+
+**Rule 3 — Decide and act; do not round-trip a decision whose evidence is in the tree.** Added
+alongside Rules 1 and 2 as a third standing design rule, with its own stop list, the hard stop on
+unretrieved sources, and the batching default. The heading and preamble were updated from "Two
+standing design rules" to three.
+
+**Stage 8 gains the artefact check**: after any merge, verify the artefact exists on `main`, never
+read the PR status. This is Rule 1 applied to git — a status field is a restatement of belief and the
+checked-out tree is the observation.
