@@ -3297,8 +3297,8 @@
     "tier": "T1"
    },
    {
-    "name": "Government of Jammu and Kashmir, Home Department, Government Orders Home-06 (TSTS) of 2020 dated 26 January 2020, Home-07 (TSTS) of 2020 dated 28 January 2020, Home-100 (TSTS) of 2020 dated 14 September 2020, Home-11 (TSTS) of 2024 dated 4 November 2024 and Home-01 (TSTS) of 2025 dated 14 January 2025 - all five retrieved from Internet Archive captures of the Department's own files, rendered and read, and all five confirmations of a police Authorized Officer's direction",
-    "url": "https://web.archive.org/web/*/jkhome.nic.in/*",
+    "name": "Government of Jammu and Kashmir, Home Department, Government Orders Home-06 (TSTS) of 2020 dated 26 January 2020, Home-07 (TSTS) of 2020 dated 28 January 2020, Home-100 (TSTS) of 2020 dated 14 September 2020, Home-11 (TSTS) of 2024 dated 4 November 2024 and Home-01 (TSTS) of 2025 dated 14 January 2025 - all five retrieved from Internet Archive captures of the Department's own files, rendered and read, and all five confirmations of a police Authorized Officer's direction. Cited as the reproducible archive INVENTORY from which these orders were enumerated, not as a wildcard listing: a /web/*/ URL is the archive's search interface and retrieves no document. Each order named here is recoverable from this inventory as a /web/<timestamp>id_/ snapshot",
+    "url": "https://web.archive.org/cdx/search/cdx?url=jkhome.nic.in&matchType=domain&output=text&fl=original,timestamp&collapse=urlkey&limit=20000",
     "tier": "T1"
    },
    {

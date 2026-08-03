@@ -1,5 +1,5 @@
 {
-  "_comment": "Responses ACTUALLY OBSERVED from these two URLs on 2026-08-03, recorded so the fixture is deterministic and needs no network. Rule 2: the fires-correctly case derives from a real regression, not a model of one. The third entry is the soft-404 branch: a 200 that serves HTML where the path states .pdf, which is how a removed document reads as a present one.",
+  "_comment": "Responses ACTUALLY OBSERVED from these two URLs on 2026-08-03, recorded so the fixture is deterministic and needs no network. Rule 2: the fires-correctly case derives from a real regression, not a model of one. The third entry is the soft-404 branch: a 200 that serves HTML where the path states .pdf, which is how a removed document reads as a present one. The last two are recorded as HTTP 200 deliberately: they ARE reachable, and the point is that reachability is not the test - a search interface is not the document a record cites, so the check must reject them on shape before it ever fetches.",
   "https://www.amnesty.org/en/documents/asa20/5959/2022/en/": {
     "status": 403,
     "contentType": "text/html"
@@ -11,5 +11,13 @@
   "https://example.gov.in/reports/annual-2019.pdf": {
     "status": 200,
     "contentType": "text/html"
+  },
+  "https://web.archive.org/web/*/jkhome.nic.in/*": {
+    "status": 200,
+    "contentType": "text/html"
+  },
+  "https://web.archive.org/cdx/search/cdx": {
+    "status": 200,
+    "contentType": "text/plain"
   }
 }
