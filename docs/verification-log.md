@@ -3933,3 +3933,105 @@ production*, not merely that a record changed: 619 proves the figure never enter
 and 0.9707 prove the arithmetic fix shipped in both its halves — and 0.9707 in particular, because the
 off-by-one alone would have been a cosmetic pass while the inverted ratio was the substantive defect;
 "no savings provision" proves the L-0121 amendment replaced the phrase rather than appending to it.
+
+---
+
+# Verification log — cycle 2026-08-03g (shape sweep, url-check gate, data hygiene)
+
+Append-only delta. Nothing above this line was edited.
+
+## The shape sweep — 149 records, no value added
+
+Phase 11 estimated ten records of the two undecided shapes; phase 12 identified six from its own
+records. **A full sweep of all 149 finds 17.** The two shapes moved in opposite directions:
+
+- **L-0086 shape (in force, awaiting external adjudication) — 5, and it did not grow at all.** 144
+  previously unswept records produced zero new members. All five are `too-early`, and there are only
+  six `too-early` records in the corpus — **so 83 per cent of that value is occupied by a state its
+  own definition does not describe.** Only L-0061 uses it as written.
+- **L-0092 shape (presentational findings) — 12, up fivefold**, ten of them outside phase 12's
+  records. Split 7 `no-objective` / 5 `contested`, and **the split is not a considered one**: commit
+  `e2faa70` moved four of them in a pass whose subject was draining the `contested` sink, and left
+  their siblings behind.
+- **Overlap: zero**, and not by the sweep's drawing — L-0143 rejects the second shape for itself in
+  its own note.
+
+**No value is proposed.** The decision is taken across both shapes together, after the set is known.
+
+## url-check — a new gate, and it was wrong twice before the corpus corrected it
+
+Built to close the narrow mechanical part of the fabricated-citation gap: every URL added or amended
+in a cycle is fetched and confirmed before commit. URL-bearing fields **derived** from `format: "uri"`
+in the schemas rather than listed. Trigger C satisfied, fires-correctly fixture derived from the real
+2026-08-03f regression.
+
+**It then reported ~50 live government hosts as dead.** Two defects, both found by running it on the
+corpus and neither visible to its fixtures:
+
+1. It discarded curl's stdout on a non-zero exit. curl exits 6 when it cannot resolve a host it meets
+   **while following a redirect**, having already printed the status. "Answered 307, could not resolve
+   the next hop" became "no response". **The tool written to prevent M1's false-dead findings was
+   manufacturing them.** The fallback now follows redirects hop by hop, resolving and pinning each new
+   host.
+2. Two outcomes were not enough. **401/403/429 means the host answered and refused an automated
+   client, which is not evidence a document is absent.** The corpus holds 18 such against 4 genuine
+   404s, and `eci.gov.in/statistical-reports` — one of the 18 — is cited by live phase-12 records. On
+   the rule as specified this gate would have blocked that commit over a document that is really
+   there. Now: confirmed / unverifiable / failed.
+
+**The honest cost, pinned in the selftest: one of the two URLs that motivated the gate returns 403,
+so it is now unverifiable rather than failed. The gate catches one of the two regressions it was
+built for.** A wrongly-guessed URL and a correct one behind a bot-block are indistinguishable to it.
+
+**Spec §8 gains the general form:** both fixtures present proves the rule does what was specified,
+never that the right rule was specified. Three instances in one cycle, all on this gate.
+
+## Corpus audit — and the finding is not link rot
+
+217 confirmed · 18 unverifiable · 28 failed, of 263. Of the 28, **19 are bare domain roots** —
+`mospi.gov.in/` carries nineteen records, `main.sci.gov.in/` ten. A root names an institution and
+retrieves nothing; those citations were never doing a citation's work, and the fetch only made it
+visible. **Deferred and scoped separately**, since it is mostly phases 1-9, authored before any of
+this discipline existed, and each needs either a specific document URL or an honest demotion — which
+needs a decision on what tier a bare root is.
+
+## Data hygiene applied this cycle
+
+**Ten notes reconciled with their values.** L-0094, L-0111, L-0112, L-0117, L-0119, L-0120, L-0121,
+L-0122, L-0123, L-0124 each carried `assessment: no-objective` with an `assessmentNote` opening
+"Contested…" — casualties of `e2faa70`, which rescored the records and did not rewrite the notes. **On
+exactly the shape under review, ten records' reasoning of record contradicted their value of record,
+and nothing in the validator can see it because both halves are individually valid.** The substantive
+reasoning stood up in all ten and is preserved verbatim; only the value each names was corrected, and
+three that asserted "two defensible readings" — which is the `contested` definition — were re-argued
+on `no-objective`'s.
+
+**The `struck-down` revisitTrigger has fired, and its own test is answered.** L-0077 and L-0080 asked
+for re-opening at a third judicially invalidated record and required a domain-clustering check,
+warning the distinction might be a rights-and-institutions artefact. The sweep found **four**: L-0077,
+L-0080, L-0097 and L-0108. **The clustering test resolves against the artefact hypothesis** — L-0097
+and L-0108 are education records, so the four span governance, education and federalism. Recorded on
+both triggers. **No value proposed**; queued with the other two open enum states, because deciding
+inside the cycle that discovered the firing is how `reversed` came to cover two mechanisms.
+
+**Three archive citations replaced with what they should always have been.** L-0137 and L-0139 cited
+`web.archive.org/web/*/…` — the archive's **search interface**, which retrieves no document — and are
+now the specific timestamped snapshots the research verified (`20250212111631id_`, `20250102084701id_`,
+both confirmed 200 `application/pdf`). L-0140, P-95 and `jk-published-suspension-orders` cited the bare
+CDX endpoint, which returns 400 without a query, and now cite the exact reproducible query —
+**which returns 7,261 rows, independently matching the count those records state.** P-70's query target
+was never recorded in its drop, so a scoped query was built and verified rather than invented; it
+**confirms** the record's claim that no edition later than 2019-2021 was archived.
+
+**All three were authored in phase 12, by this run, and url-check caught its own author in the cycle
+that built it.** All four changed URLs confirm 200.
+
+## Deferred, deliberately
+
+- **The 313 bare-domain source URLs**, scoped after phase 13 as above.
+- **The `caseFor`-is-weakest-where-the-position-is-procedural pattern.** Observed across L-0138,
+  L-0142 and L-0143 in phase 12: the case for is thinnest exactly where the government's position is
+  procedural rather than substantive, and in L-0138's case unavailable on the record's own facts.
+  **Not gateable** — no mechanical test distinguishes a weak case honestly reported from a weak case
+  lazily written, which is the same exposure §8 already records for argument pairs. Worth watching in
+  phase 13, and L-0138 now carries it on the record.
