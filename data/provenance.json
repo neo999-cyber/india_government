@@ -1461,8 +1461,8 @@
  {
   "id": "P-54",
   "title": "Internet shutdown counts: no official series, three unofficial ones",
-  "whatChanged": "India publishes no official count of internet shutdowns. The figures in circulation come from SFLC.in and from Access Now's KeepItOn coalition, which differ for the same years because they count different units - SFLC.in tracks recorded shutdown events, Access Now applies its own inclusion criteria and geographic aggregation, and duration measures differ again. Third-party economic-cost estimates use hours of blackout, a fourth unit.",
-  "when": "2012-2026",
+  "whatChanged": "India publishes no official count of internet shutdowns. The figures in circulation come from SFLC.in and from Access Now's KeepItOn coalition, which differ for the same years because they count different units - SFLC.in tracks recorded shutdown events, Access Now applies its own inclusion criteria and geographic aggregation, and duration measures differ again. Third-party economic-cost estimates use hours of blackout, a fourth unit. What their own methodology pages establish is stronger than 'unaudited': THEY ARE NOT MUTUALLY INDEPENDENT, so their agreement is not corroboration. SFLC.in states that almost all of its raw data is collected from reports published in national and regional newspapers and that it relies entirely on secondary sources; Access Now names SFLC as a data source and its 2025 India rows link to SFLC's media files; Top10VPN names SFLC in its own methodology. Only Internet Society Pulse measures independently of both press and government, and it is the least cited of the four.",
+  "when": "2012-2026, with a statutory basis change on 22 November 2024",
   "affectsDomains": [
    "governance",
    "kashmir"
@@ -1479,7 +1479,7 @@
   ],
   "sources": [
    {
-    "name": "SFLC.in Internet Shutdown Tracker",
+    "name": "SFLC.in Internet Shutdown Tracker - methodology page, stating reliance entirely on secondary sources",
     "url": "https://internetshutdowns.in/",
     "tier": "T3"
    },
@@ -1488,7 +1488,8 @@
     "url": "https://www.accessnow.org/keepiton/",
     "tier": "T3"
    }
-  ]
+  ],
+  "notes": "The statutory basis changed on 22 November 2024, when the Telecommunications (Temporary Suspension of Services) Rules 2024 commenced. Those Rules require publication of every suspension order, so the date is a counting-basis event for any future official series even though no official series exists yet."
  },
  {
   "id": "P-55",
@@ -2698,7 +2699,7 @@
  {
   "id": "P-83",
   "title": "Custodial deaths: the unit of account is the State police, and the J&K series breaks on 31 October 2019",
-  "whatChanged": "NCRB's custodial-death universe is police custody and lockup only. Chapter 16A of Crime in India is titled 'Custodial Crimes & Complaints Against Police Personnel', its 2022 Table 16A.6 is titled 'Cases Registered against State Police Personnel for Human Right Violation', and its bounding notes - identical across the 2019, 2020 and 2022 volumes - establish that the remand and non-remand split is a procedural split inside police custody rather than a police-versus-judicial one, and that the data are 'As per data provided by States/UTs' rather than NCRB's own observations. Table 16A.3 splits deaths across seven causes, of which the column corresponding to what most readers mean by a custodial death - 'Injuries sustained during the police custody due to physical assault by police' - registers two of 85 nationally in 2019 and one of 75 in 2022, against suicide and illness which dominate. And the J&K series breaks on 31 October 2019: J&K appears as a State in the Crime in India 2019 tables and as a UT thereafter with Ladakh split out, in both Chapter 16A and Prison Statistics India, so the post-2019 figure covers a smaller territory.",
+  "whatChanged": "NCRB's custodial-death universe is police custody and lockup only. Chapter 16A of Crime in India is titled 'Custodial Crimes & Complaints Against Police Personnel', its 2022 Table 16A.6 is titled 'Cases Registered against State Police Personnel for Human Right Violation', and its bounding notes - identical across the 2019, 2020 and 2022 volumes - establish that the remand and non-remand split is a procedural split inside police custody rather than a police-versus-judicial one, and that the data are 'As per data provided by States/UTs' rather than NCRB's own observations. Table 16A.3 splits deaths across seven causes, of which the column corresponding to what most readers mean by a custodial death - 'Injuries sustained during the police custody due to physical assault by police' - registers two of 85 nationally in 2019 and one of 75 in 2022, against suicide and illness which dominate. And the J&K series breaks on 31 October 2019: J&K appears as a State in the Crime in India 2019 tables and as a UT thereafter with Ladakh split out, in both Chapter 16A and Prison Statistics India, so the post-2019 figure covers a smaller territory. Confirmed on the documents in phase 12, with two refinements. Thirteen full Prison Statistics India volumes were retrieved: J&K appears at Sl. No. 10 in the STATES block with zero occurrences of 'Ladakh' anywhere in the volume through PSI 2019, and at Sl. No. 33 in the UNION TERRITORIES block with Ladakh at Sl. No. 34 from PSI 2020. FIRST, the break is a property of the volume's single State/UT list and therefore governs EVERY table in the volume, not Table 8.1 alone - it reaches every J&K quantity anyone draws from PSI. SECOND, the break in the instrument is fourteen months later than the break in the referent: PSI 2019's reference date of 31 December 2019 is sixty-one days after J&K ceased to be a State, and that volume still reports a State of Jammu and Kashmir with Ladakh folded in and no footnote at the row.",
   "when": "31 October 2019 for the territorial break; the structural bounding runs throughout",
   "affectsDomains": [
    "governance",
@@ -2852,6 +2853,11 @@
   ],
   "sources": [
    {
+    "name": "J&K Reorganisation Act 2019, s.32(1), verbatim from the Gazette of India Extraordinary No. 53 of 9 August 2019, MD5 0e16a53f5e362636f3d65294e562259f, independently re-verified - 'Public Order' and 'Police' are excluded from the Legislative Assembly's competence",
+    "url": "https://egazette.gov.in/WriteReadData/2019/210407.pdf",
+    "tier": "T1"
+   },
+   {
     "name": "MHA Annual Report 2019-20, paras 1.19 and 1.20 - the restructuring and renaming of the Department of Jammu, Kashmir and Ladakh Affairs and its remit including counter-terrorism; and Annual Reports 2008-09 through 2024-25 for the chapter relocation. Retrieved as PDFs from the MHA annual-reports index",
     "url": "https://www.mha.gov.in/en/documents/annual-reports",
     "tier": "T1"
@@ -2912,5 +2918,593 @@
    }
   ],
   "notes": "The structure of the OHCHR exchange should be recorded exactly, because it is circular: India's rejection rests in part on the information being unverified, and the information is unverified because the rejecting party denied access. Neither side is being dishonest; the point is that no procedure exists by which the dispute could be resolved. India's rejection also rested in part on the sufficiency of J&K's own human rights commission - the OHCHR update was published 8 July 2019 and that commission was abolished 115 days later. Kashmir Law and Justice Project, publishing monthly human-rights briefings as recently as April 2026, is the only identified live candidate successor and was not investigated at all in this phase; that check must be run before any claim that nobody publishes the perpetrator split after 2019 is treated as settled. And guessed URLs for editions other than 2017 and 2019 returned 404, which cannot be distinguished from a removed document, so no edition is recorded as non-existent."
+ },
+ {
+  "id": "P-88",
+  "title": "Prison Statistics India counts detenus in one undifferentiated cell, attributes them to the holding State, has no transfer table for them, and changes its territorial referent a volume late",
+  "whatChanged": "Nothing changed - this is a standing property of the only official instrument that carries a J&K detenu count, and it defeats three separate questions at once. First, the composition. NCRB's Glossary defines a detenu as 'Any person detained in prison on the orders of the competent authority under the relevant preventive laws', names no statute, and attributes the definition to the MHA Model Prison Manual 2016 rather than to NCRB, so the categories the statistical agency counts by are defined by the answering ministry. The J&K Public Safety Act is named exactly once in a 352-page volume, in a footnote to Tables 2.18 and 2.19 reading 'Detenues includes inmates detained under preventive laws such as COFEPSAA, NDPS, NSA, PSA, PIT, NDPS, PBMSECA etc.' - an illustrative list with no figures attached and no closed set stated. The one chapter that classifies inmates by the law they are held under, Chapter 5 'Prisoners - Offence wise' in the current format and Chapter 4 in the pre-2016 format, is titled and scoped to convicts and undertrials and has no detenu equivalent; the twenty-five web-only additional tables contain none either. Established by exhaustive grep across thirteen retrieved volumes. Second, the attribution - and the silence about it is part of the finding. PSI's front matter, Disclaimer and Methodology state no explicit attribution rule in words: there is no sentence anywhere of the form 'prisoners are attributed to the State or UT in which they are lodged'. The holding-State basis is established from the reporting architecture, in which data is furnished by the Prison Department of each of 36 States and UTs and captured at prison level, and decisively from the column headers of Table 2.12B; the nearest thing to a statement is a Chapter 2 narrative clause about convicts being non-domicile of the State 'where they are incarcerated'. Anyone relying on the rule must cite the Methodology and the headers, because there is no definition to cite. Table 2.12B publishes origin only as the three-way 'Belongs to State / Belongs to other State / Belongs to other Country', never naming which other State. Third, the movement. Chapter 7 carries an interstate transfer column for convicts (Table 7.1) and for undertrials (Table 7.3) and none for detenus (Table 7.5, four release columns), and the Chapter 7 detenu narrative has a Releases heading and no Transfers heading. FOURTH, THE REFERENT, and this is a distinct defect merged into this record because the provenance id space allows no separate one. The volume-wide State/UT list on which every table in Prison Statistics India is built moved Jammu and Kashmir from the STATES block at serial number 10 to the UNION TERRITORIES block at serial number 33, and added Ladakh at serial number 34, between the 2019 and the 2020 volume. The word 'Ladakh' returns zero occurrences in the full text of every volume up to and including PSI 2019 and 178 in PSI 2020 - a clean binary across eleven volumes. The legal event that caused it is the appointed day under the Jammu and Kashmir Reorganisation Act 2019, 31 October 2019. PSI 2019's own reference date is 31 December 2019, sixty-one days after the State of Jammu and Kashmir ceased to exist and Ladakh became a separate Union Territory, and the volume nevertheless reports a State of Jammu & Kashmir inside TOTAL (STATES), with Ladakh folded in and no footnote at the row, in a volume in which the word does not occur once. So the 2019 data point is reported against an entity that did not exist at its own reference date, and the break in the instrument is fourteen months later than the break in the referent. The same volume also merged Dadra & Nagar Haveli with Daman & Diu, a second simultaneous change to the UT list.",
+  "when": "Standing across every volume examined, 2009 to 2022; the practical consequence for J&K begins with the transfers out of the territory from 2018",
+  "affectsDomains": [
+   "governance",
+   "kashmir"
+  ],
+  "affectsSeries": [
+   "jk-detenus-psi",
+   "jk-psa-detenus-transferred-out"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "No bridge, and the reason is worth stating precisely because it is easy to overstate the damage. The transferred detenus are not lost from the national count: they are in the all-India total, in the wrong rows. The all-India detenu total of 3,223 for 2019 is complete. What is damaged is the J&K row and the attribution, not the aggregate - so an assertion that transferred detenus 'disappear from the statistics' is wrong and must not be written. The origin attribution also demonstrably exists in official hands twice over: a prison cannot lawfully hold a detenu whose detaining authority it cannot identify, and the J&K Home Department produced a year-wise out-of-territory transfer series on a single sheet in August 2023. It is a cross-tabulation of two columns NCRB already collects and does not publish. On the referent break specifically: No bridge is published and none is needed in level terms for this particular series, which is why the break is easy to miss and must be declared anyway. Ladakh reports zero detenus in every year since it was split out - 2020, 2021 and 2022 - so the numerical effect of the excision on the detenu count is nil. It is not nil on the denominator: Ladakh reports 26 total inmates in 2020, 20 in 2021 and 30 in 2022, so it is a real reporting unit and not a placeholder, and any J&K detenu share of prison population computed across the boundary is comparing different territories. The referent genuinely changes and the row identity changes from State to UT; 'likely nil' is an inference about magnitude, not a statement about what is being counted.",
+  "competingAccounts": [
+   {
+    "holder": "NCRB, Prison Statistics India",
+    "position": "J&K held 404 detenus at 31 December 2019 and 546 at 31 December 2022. The volume states no incompleteness at the J&K row and offers no note that anyone detained by J&K authorities is counted elsewhere."
+   },
+   {
+    "holder": "The same volumes, read across rows",
+    "position": "Uttar Pradesh's out-of-State detenu count runs 5, 8, 4, 4, 3 and 0 across 2009, 2010, 2011, 2014, 2015 and 2018 - and then 188 in 2019. Haryana reported zero detenus of any kind in five separate volumes (2009, 2010, 2011, 2014, 2015), then 27 in 2018 of whom all 27 were domiciled outside Haryana, then 235 in 2022 of whom 226 were. Those two States alone held 312 of the 398 out-of-State detenus in all of India at the end of 2022. J&K's own row is the reciprocal: it holds essentially only its own domiciles, with a 'belongs to other State' cell of 0 in 2018, 2019, 2020 and 2021 and 10 in 2022, so J&K is a net exporter of detenus and never an importer. PSI does not say where any of the 312 came from, and their origin cannot be inferred from PSI at all - the step change is stark, and it is still not an attribution."
+   },
+   {
+    "holder": "The Jammu and Kashmir Home Department, in a document of 31 August 2023 known through two press accounts",
+    "position": "1,122 PSA detenus were transferred out of the territory between 2018 and 2023, and 408 were held outside it at that date - a series the holder can produce on one sheet and has never published as a detention series."
+   }
+  ],
+  "sources": [
+   {
+    "name": "NCRB, Prison Statistics India 2021 - Glossary, the note to Tables 2.18 and 2.19, Table 2.12B, Table 7.5, Chapter 5 and Chapter 7. Retrieved as a PDF from an Internet Archive id_ snapshot of NCRB's own file and text-extracted",
+    "url": "https://web.archive.org/web/2022id_/https://ncrb.gov.in/sites/default/files/PSI-2021/PSI_2021_as_on_31-12-2021.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "NCRB, Prison Statistics India 2022 - Methodology section A.1, the Disclaimer, Table 2.12B and Table 7.5, retrieved directly from the live NCRB host as a 352-page PDF after the resolver was forced. Grep across the whole volume returns COFEPOSA, NSA, PSA and PITNDPS exactly once each, inside the single footnote",
+    "url": "https://www.ncrb.gov.in/uploads/nationalcrimerecordsbureau/custom/psiyearwise2022/1701613297PSI2022ason01122023.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "NCRB, Prison Statistics India 2019 - Table 2.12B rows for Jammu & Kashmir, Uttar Pradesh and Haryana, and the note to Tables 2.18 and 2.19. Retrieved as a PDF from an Internet Archive id_ snapshot",
+    "url": "https://web.archive.org/web/20200907005407id_/https://ncrb.gov.in/sites/default/files/PSI-2019-27-08-2020.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "This is NOT the shape of phase 11's absence B1, and the difference must be preserved. B1 is a quantity with no cell anywhere. Here there IS a cell, the person is counted, and only the attribution to origin is missing - the detenus are misfiled, not lost. That is why the classification is not-published and not not-collected, and why it must not be filed alongside B1. On the referent break: it confirms phase 11's P-83 on the documents rather than refuting it, and refines it in two ways phase 11 could not see without the volumes. First, the break is a property of the volume's single State/UT list and therefore governs every table in the volume, not the deaths table alone - so it applies to every J&K quantity anyone ever draws from Prison Statistics India. Second, it establishes the general form of a rule the instrument needs: the instrument can lag the referent, and the lag must be carried rather than smoothed."
+ },
+ {
+  "id": "P-89",
+  "title": "The Union relays J&K's domicile and land figures without producing them, the unit changes four times, and the reorganisation changed who counts as an outsider",
+  "whatChanged": "Three separate defects run through every published figure on domicile and land in Jammu and Kashmir. First, production. Every Union figure on both subjects is prefaced, verbatim and at eleven separate replies, 'As per the information provided by the Government of Jammu & Kashmir' - so the Ministry answering Parliament is a conduit and not a producer, and the body that produces the number is the administration whose conduct the number describes. This is the same relay chain phase 11 recorded on the security series under the formula '(Source: UT of J&K)', extended here from security to revenue subjects. Second, the unit. The count of purchases by persons from outside the territory appears in four different units across five answers: two properties in August 2021, seven plots in December 2021 with no period stated at all, 34 persons in March 2022, 185 persons in April 2023, and then 631 persons with 386 kanal of area and 129.97 crore rupees of value from the Assembly in October 2025. A count of plots, a count of persons and an area are three different objects, and the levels do not reconcile: two persons since August 2019 in one official answer against 57 persons in calendar 2021 alone in another, with no document stating whether the object narrowed or the base was revised. Third, the category. From 31 October 2019 a person from Kargil or Leh - a resident of the same State until that day, and if a permanent resident holding identical land rights - is by construction a person from outside the Union Territory of Jammu and Kashmir. On one relayed account roughly 350 of the 631 counted buyers are from Ladakh. The reclassification runs both ways: the same answers record no purchases by persons from outside the UT of Ladakh, where a Kashmiri buying in Leh would now also be an outsider.",
+  "when": "The relay formula runs throughout; the unit changes across answers of August 2021 to October 2025; the category change dates from 31 October 2019",
+  "affectsDomains": [
+   "governance",
+   "kashmir"
+  ],
+  "affectsSeries": [
+   "jk-land-purchases-by-non-residents",
+   "jk-domicile-certificates-issued"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "No bridge across the units, and the reason is that the Union never published the one that would serve as a common denominator. Land area is a measure both sides of the land argument accept, and it was published by no Indian instrument until a restored Assembly gave it in October 2025 - at which point the internal arithmetic reconciles exactly, persons summing to 631, value to 129.97 crore rupees and area to 386 kanal at twenty marla to the kanal. What still does not reconcile is the relayed year-by-year breakdown, which gives 512 against a stated 631, leaving 119 that must be the 2019 stub plus 2023; no outlet prints 2023 and it must not be reconstructed by subtraction. Both Union series also simply terminate - domicile at 31 December 2020 and non-resident land purchases at calendar 2022 - and a termination in the instrument will read on a naive chart as a termination in the world.",
+  "competingAccounts": [
+   {
+    "holder": "The Union, in five parliamentary answers 2021 to 2023",
+    "position": "Two persons and two properties since August 2019; seven plots with no period stated; 34 persons after the abrogation of Article 370; 185 persons across 2020, 2021 and 2022. Every figure relayed from the Government of Jammu and Kashmir, and nothing published since April 2023."
+   },
+   {
+    "holder": "The restored J&K Legislative Assembly, October 2025",
+    "position": "631 non-residents, 386 kanal, 129.97 crore rupees since October 2019, split by division - persons, area and value in one reply. The quantity the Union published in four incompatible units was produced in all three at once by the legislature the Union's own 2019 answer says holds the subject."
+   },
+   {
+    "holder": "The category itself, after 31 October 2019",
+    "position": "Roughly 350 of the 631 buyers are reported to be from Ladakh, chiefly Kargil - people who were residents of the same State until the appointed day and are outsiders now only because an administrative boundary moved. Single relayed outlet, and it must be carried at that strength."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Ministry of Home Affairs parliamentary answers on domicile certificates and on land purchases by persons from outside the UT, 2020 to 2023, each carrying the relay preface; and the exhaustive sweep of 3,674 answer PDFs from the Ministry's own day-pages establishing that both series terminate",
+    "url": "https://www.mha.gov.in/MHA1/Par2017/PArQueAnsPage-new.html",
+    "tier": "T1"
+   },
+   {
+    "name": "Ministry of Home Affairs, Rajya Sabha answer of 11 December 2019 stating that the powers to make laws under the State List and Concurrent List relating to land and property are vested with the Legislative Assembly of the Union Territory of Jammu and Kashmir - the Union's own statement of the competence boundary, six weeks after the appointed day. Retrieved as a PDF",
+    "url": "https://www.mha.gov.in/MHA1/Par2017/PArQueAnsPage-new.html",
+    "tier": "T1"
+   },
+   {
+    "name": "Press accounts of the J&K Legislative Assembly replies of April 2025 on domicile certificates and 31 October 2025 on land purchases. Neither assembly reply was retrieved; no J&K host was reachable",
+    "url": "https://www.greaterkashmir.com/",
+    "tier": "T4"
+   }
+  ],
+  "notes": "One arithmetic defect on the face of an official reply is recorded here rather than smoothed: the Ministry's answer of 20 July 2022 on State land acquired for public purposes states a total of 2,359.45 hectares, and its own twenty district rows across three years sum to 2,358.35 - short by 1.10 hectares. It was recomputed and is not a transcription error on this side. Note also the asymmetry the same reply exposes: the Union publishes land quantities for J&K in hectares, district by district, for government acquisition, and does not publish them for private transfers to non-residents."
+ },
+ {
+  "id": "P-90",
+  "title": "Two official J&K detenu instruments differ in every year, and the difference is exactly the foreign-national count in all three years that can be tested",
+  "whatChanged": "Two official instruments publish a year-end count of preventive-detention prisoners in Jammu and Kashmir, neither citing the other, and their headline figures differ in every overlapping year. NCRB's Prison Statistics India, from returns furnished by the J&K Prison Department, gives 35 for 2014, 90 for 2015, 432 for 2016, 212 for 2017, 283 for 2018 and 404 for 2019. The Ministry of Home Affairs, tabling a table from J&K prison records in the Rajya Sabha on 4 December 2019, gives a 'Detained' category of 7, 54, 395, 172, 253 and 356 for the same six years, the last stated to November rather than to 31 December. The reconciliation is exact wherever it can be tested. In all three years for which PSI's domicile decomposition was retrieved, the parliamentary figure equals PSI's count of J&K-domiciled detenus to the unit, with PSI's foreign nationals accounting for the whole of the difference: 2014, PSI 35 = 7 own + 0 other State + 28 other country, parliamentary 7; 2015, PSI 90 = 54 + 0 + 36, parliamentary 54; 2018, PSI 283 = 253 + 0 + 30, parliamentary 253. For 2016 and 2017 the decomposition was not retrieved, so the implied foreign counts of 37 and 40 are consistent with the pattern and are not evidence for it. For 2019 no residual could be computed even with the decomposition in hand, because the parliamentary figure is stated to November and PSI's is at 31 December.",
+  "when": "The two instruments overlap for 2014 to 2019; the identity is established exactly for 2014, 2015 and 2018",
+  "affectsDomains": [
+   "governance",
+   "kashmir"
+  ],
+  "affectsSeries": [
+   "jk-detenus-psi",
+   "jk-prison-detained-category"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": true,
+  "bridgeNote": "The bridge is: the parliamentary 'Detained' figure equals PSI's 'belongs to State' detenu count, and PSI's foreign-national detenus are the whole of the difference. It is verified exactly in the three years where both sides can be decomposed - 2014, 2015 and 2018 - on two independently retrieved primaries neither of which cites the other. It is NOT verified for 2016 and 2017, where the domicile table was not retrieved and the implied residuals of 37 and 40 are consistent with the pattern rather than evidence for it; and it cannot apply to 2019, where the two figures are on different dates. The bridge also implies something neither instrument states: the parliamentary series, which reads as a straightforward count of preventive detentions in J&K prisons, silently excludes foreign nationals, and in 2014 that exclusion is 80 per cent of the detenus actually held. Anyone extending the identity beyond the three tested years should retrieve the decompositions first.",
+  "competingAccounts": [
+   {
+    "holder": "NCRB, Prison Statistics India, Table 2.1",
+    "position": "283 detenus in J&K at 31 December 2018 and 404 at 31 December 2019, on returns furnished by the J&K Prison Department, under a category covering every preventive-detention statute."
+   },
+   {
+    "holder": "Ministry of Home Affairs, Rajya Sabha Unstarred Q.1818 of 4 December 2019",
+    "position": "253 prisoners in the 'Detained' category in 2018 and 356 in 2019 to November, from J&K prison records, with no statement of what legal instrument produces a 'Detained' prisoner and no note that the figures differ from any other published series."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Ministry of Home Affairs, Rajya Sabha Unstarred Question No. 1818, answered 4 December 2019, tabling the year-wise convicted, under-trial and 'Detained' figures for J&K prisons with out-of-territory lodging. Retrieved as a PDF",
+    "url": "https://www.mha.gov.in/MHA1/Par2017/pdfs/par2019-pdfs/rs-04122019/1818.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "NCRB, Prison Statistics India 2019, Table 2.1 (Concluded) and Table 2.12B - the J&K row for 2019 and the 2018 comparatives, and the domicile decomposition 253/0/30 for 2018. Retrieved as a PDF from an Internet Archive id_ snapshot",
+    "url": "https://web.archive.org/web/20200907005407id_/https://ncrb.gov.in/sites/default/files/PSI-2019-27-08-2020.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The out-of-territory rows of the two instruments corroborate each other exactly and independently: the Ministry states 27 J&K prisoners lodged in Haryana in 2019, and NCRB's Table 2.12B shows Haryana holding exactly 27 out-of-State detenus and no others in the same year. Neither document cites the other. That is corroboration between two official sources rather than between a source and its own echo, and it is the strongest single check anywhere in the detention subject. The Uttar Pradesh figures do NOT corroborate - 234 in the parliamentary answer against 188 in PSI - because the Ministry counted all J&K prisoners up to November while PSI counts detenus only at 31 December. They are different objects and must not be reconciled; the difference is roughly the J&K convicts and undertrials in UP jails, which is a real quantity nobody has stated."
+ },
+ {
+  "id": "P-91",
+  "title": "One running count of the August 2019 detentions, two silent scope changes, and ten figures on five undeclared objects",
+  "whatChanged": "Between 20 November 2019 and 9 March 2021 the Ministry of Home Affairs gave Parliament ten detention figures for Jammu and Kashmir on at least five different objects, and no answer states which object it is counting. The three largest are one running count whose denominator moved twice with no note: 5,161 on 20 November 2019, stated as 'in Kashmir Valley'; 6,605 on 5 February 2020, answering a question headed 'DETENTIONS IN JAMMU, KASHMIR AND LADAKH'; 7,357 on 11 March 2020, with no geography stated at all. The start date moved with it - 4 August in the November 2019 reply, 'August 2019' a week later, '1 August 2019' in the 2021 replies. On 5 February 2020 the same Minister gave two different 'still detained' figures on the same day, 389 and 437, because they count different populations. The five objects are: preventive custody by executive magistrates under section 107 CrPC (7,357, 6,605, 5,161); a preventive-detention stock (451, 437, 609); a PSA-identified stock (396, 389); PSA detention orders, expressed per person (444); and an undefined category given twice five weeks apart with a fourteen-case difference (613 on 3 February 2021, 627 on 9 March 2021, both described only as 'detained at various points of time'). The Ministry attributes every one of the figures to 'The Government of Jammu and Kashmir has reported', so it relays and does not own them.",
+  "when": "20 November 2019 to 9 March 2021",
+  "affectsDomains": [
+   "governance",
+   "kashmir"
+  ],
+  "affectsSeries": [
+   "jk-prison-detained-category"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": true,
+  "bridgeNote": "A bridge exists, was published once, and has been almost universally ignored - which is the reason this record is worth having. Rajya Sabha Unstarred Q.1958 of 11 March 2020 decomposes the running count in one sentence: 'cumulatively 7357 persons ... were taken into preventive custody since August, 2019. Out of these, 451 such persons are presently under preventive detention, which includes 396 persons under Jammu and Kashmir Public Safety Act (PSA). Detentions have been made u/s 107 Cr.PC, as also under J&K Public Safety Act, 1978.' That establishes from the Government's own pen that the large circulating figures are CrPC section 107 preventive custody and that PSA detentions are a subset of 396, with the residue of 55 between 451 and 396 being the CrPC component. The bridge holds for one date only. It does not reconcile the geographic scope changes, does not apply to the 613 and 627 figures, and does not tell anyone whether 444 counts orders or persons - the answer says 'detention orders were issued against 444 persons', which is the order count expressed per person, so the re-detention multiplier is invisible inside it.",
+  "competingAccounts": [
+   {
+    "holder": "Ministry of Home Affairs, in ten parliamentary answers",
+    "position": "Each figure is a correct answer to the question actually asked, on the population and period that question specified, and the Ministry has never refused to state a PSA number, never claimed the data is not maintained, and once stated the legal basis in terms."
+   },
+   {
+    "holder": "The same ten answers read as a series",
+    "position": "A denominator that moves from the Kashmir Valley to Jammu-Kashmir-and-Ladakh to unstated inside sixteen weeks, with a start date that moves from 4 August to 1 August, is not a series; and two different 'still detained' figures given by one Minister on one day cannot be reconciled by any reader who is not told which population each counts."
+   },
+   {
+    "holder": "Non-official counters",
+    "position": "JKCCS and APDP publish 662 for 2019 from the High Court registry and, separately, 635 from an RTI plus fieldwork, and call both 'PSA cases', while the first is a count of petitions under a table heading that says so. Leaked official documents reported in November 2019 give 4,844 arrested, 1,281 in custody, 177 politicians and 746 PSA arrestees still in jail at cut-off dates of 30 September and 31 October 2019 that match no tabled figure."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Ministry of Home Affairs, Rajya Sabha Unstarred Q.1958 of 11 March 2020 - the 7,357 / 451 / 396 decomposition and the statement of legal basis. Retrieved as a PDF",
+    "url": "https://www.mha.gov.in/MHA1/Par2017/pdfs/par2020-pdfs/rs-11032020/1958.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Ministry of Home Affairs, Rajya Sabha Unstarred Q.349 of 5 February 2020 - detention orders against 444 persons under the PSA and 389 then in PSA detention. Retrieved as a PDF",
+    "url": "https://www.mha.gov.in/MHA1/Par2017/pdfs/par2020-pdfs/rs-05022020/349.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Ministry of Home Affairs parliamentary Q&A archive - 1,301 replies from four sittings downloaded, text-extracted and grep-searched, establishing the ten figures, the scope changes and that 'Public Safety Act' appears in five replies of the 1,301",
+    "url": "https://www.mha.gov.in/MHA1/Par2017/PArQueAnsPage-new.html",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Do not reconcile these ten figures with each other beyond the bridge stated above, and do not reconcile any of them with the non-official counts. The two source families broke in opposite ways at the same moment: official production was uninterrupted across 5 August 2019 - the Ministry answered in November and December 2019, the Home Department went on numbering orders, the High Court registry went on receiving petitions - while the non-official counters lost the ability to observe, and said so in their own words, recording that the location of about 45 per cent of the detainees was unknown to them because of the post-August-5 restrictions on mobility and communications. Neither family was in a position to check the other, and for the first fifteen weeks after 5 August 2019 no official total of any kind existed."
+ },
+ {
+  "id": "P-92",
+  "title": "Habeas corpus filings in J&K for 2019: three answers from one docket, and a case-type relabelling declared in a footnote",
+  "whatChanged": "Four readers of the same court's records give three different counts of habeas corpus petitions filed in Jammu and Kashmir in 2019. Amnesty International, reviewing 1,346 cases on the website of the High Court of Jammu & Kashmir and Ladakh, gives 761. Rhythm Buaria, reading case-status entries on the same website as at 18 January 2021, gives 761, split 681 Srinagar and 80 Jammu. JKCCS and APDP, from data procured from the High Court registry, give 662. The Wire, from high court data it accessed, gives 507. The agreement at 761 is not corroboration: it is one measurement made twice, by two readers running the same query against the same web interface. A documented mechanism exists for at least part of the divergence and is declared nowhere except a footnote in an NGO briefing: 'Earlier the courts used the term HCP for habeas corpus petitions in the title of such petitions. In 2020, it was changed to Writ Petition (Criminal) Habeas Corpus Petition.' Anyone querying the docket for 'HCP' after that change reads a different universe. No aggregate is published by the Court itself, so every count in circulation is a private reading of a public docket.",
+  "when": "Concurrent for calendar 2019; the case-type relabelling falls in 2020",
+  "affectsDomains": [
+   "governance",
+   "kashmir"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "No bridge exists and none can be built by a private reader. The Court publishes no aggregate, so there is no authoritative figure against which the three readings can be tested, and the one mechanism known to produce divergence - the change of case-type label in 2020 - is a registry fact that only the Registrar General can settle. Two further collisions in the same material are recorded and not resolved: The Wire gives 841 filings for 2022 where Amnesty gives 585 for the first seven months of that year, which is compatible in principle and unverified; and a set of PSA quashing figures attributed to data accessed from an unnamed holder gives 749 PSA detentions in 2022 against 841 habeas corpus petitions filed in the same year, which is impossible unless the two count different objects and nobody says which.",
+  "competingAccounts": [
+   {
+    "holder": "Amnesty International, ASA 20/5959/2022, and Rhythm Buaria, LiveLaw, 13 February 2021",
+    "position": "761 habeas corpus petitions filed in 2019, from the High Court website. The two figures agree to the unit because both are readings of the same web interface, two years apart."
+   },
+   {
+    "holder": "JKCCS and APDP, Annual Human Rights Review 2019",
+    "position": "662, procured from the J&K High Court registry - and described in the report's own prose as '662 fresh PSA detentions', under a table whose heading reads 'Habeas Corpus Petitions filed in J&K High Court'."
+   },
+   {
+    "holder": "The Wire, Shakir Mir, 29 July 2023",
+    "position": "507, from high court data accessed by The Wire, in a run that also gives 203 for 2020, 327 for 2021, 841 for 2022 and 266 for 2023 to date."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Amnesty International, ASA 20/5959/2022, 2 September 2022 - the 1,346-case review, the 2019 and 2022 filing figures, and footnote 66 recording the 2020 change of case-type label from HCP to Writ Petition (Criminal) Habeas Corpus Petition. Retrieved as a PDF and read",
+    "url": "https://www.amnesty.org/",
+    "tier": "T4"
+   },
+   {
+    "name": "Rhythm Buaria, 'Law, Liberty And The Lack Of Urgency', LiveLaw, 13 February 2021 - filings, disposals, quashings, upholdings, infructuous disposals and mean days to a quashing for the 2019 cohort, wing by wing, from case-status entries as at 18 January 2021. Retrieved and read",
+    "url": "https://www.livelaw.in/",
+    "tier": "T4"
+   },
+   {
+    "name": "JKCCS and APDP, Annual Human Rights Review 2019 - Table 4 giving 662 habeas corpus petitions with the pre- and post-5-August split, and Table 1.1 giving a district-wise 635 PSA cases from a different provenance. Retrieved as a PDF via mirror and read",
+    "url": "https://jkccs.net/",
+    "tier": "T4"
+   }
+  ],
+  "notes": "The docket counts litigated detentions, not detentions, and the bias runs in a known direction. A detenu who never petitions - because the family cannot afford it, because the detenu is held in Uttar Pradesh while counsel is in Srinagar, because there is no lawyer - is invisible to every one of these instruments, and the class effect is documented rather than assumed. That is a property of the instrument and not a caveat on it. Arithmetic internal to the sources was checked and two small inconsistencies are recorded rather than smoothed: JKCCS's district column sums to 635 while its pre- and post-August split sums to 634, leaving one case unallocated, and its locations table sums to 636 against the same population; Buaria's prose says 227 infructuous where his own tables sum to 232. None of this impeaches the compilations, and JKCCS states its own floor in terms, anticipating more cases than it has captured."
+ },
+ {
+  "id": "P-93",
+  "title": "The J&K panchayat turnout denominator was disclosed on 3 December 2018, five releases in, with no change to the computation",
+  "whatChanged": "The disclosure changed and the computation did not, on a dated day, in an official series. The election authority's press releases for the 2018 panchayat election report the previous phase's turnout, and the wording is not constant across them. Through phase five - the releases of 19, 23, 26, 28 and 30 November 2018 - each says that the State has witnessed a polling percentage of 74.1, 71.1, 75.2, 71.3 and 71.1 per cent, with a divisional split and no qualifier of any kind. From the release of 3 December 2018 onward, and in every release thereafter, the same authority reports turnout 'in respect of the Sarpanch and Panch constituencies that have seen contests'. Two things change at that release and only one of them is about counting: the qualifier appears, and the reporting basis switches from per-phase to cumulative-to-date, then switches back to per-phase on 10 December while keeping the qualifier. There is no evidence that the computation ever changed - the contested-constituencies denominator is the only one the underlying data supports, since seats with no candidate have no poll and therefore no votes. What changed is what the reader was told. The first five releases state a percentage a reader will naturally take for a turnout across the State; the last releases state the same kind of percentage and tell the reader it is not. The magnitude of the difference is established from the authority's own phase tables: over the seven phases whose releases survive, covering 76 per cent of the pre-break State, 41.6 per cent of seats went to a poll, 25.1 per cent were filled unopposed and 33.3 per cent had no candidate at all, so the published figure describes two seats in five.",
+  "when": "3 December 2018, in the sixth of nine phase releases of the 2018 J&K panchayat election",
+  "affectsDomains": [
+   "governance",
+   "kashmir"
+  ],
+  "affectsSeries": [
+   "jk-panchayat-seats-vacant"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "A bridge is constructible and was never built by the holder. The components of the alternative denominator are all in the authority's own documents - elector counts per phase, seats going to poll, seats filled unopposed, seats with no candidate - so a turnout over the full panchayat electorate could be computed by anyone holding the phase tables. It has not been published. Note what this is not: it is tempting to treat two denominators as a never-defined problem, and that would be wrong. Both denominators are perfectly well defined; one was published and one was not. The directionOfBias value is also an imperfect fit and that is recorded rather than resolved - degrades-precision does not apply because nothing about comparability changed, and obscures fits the first five releases and stops fitting on 3 December, which is awkward for the vocabulary in a way worth carrying.",
+  "competingAccounts": [
+   {
+    "holder": "The election authority, releases of 19 to 30 November 2018",
+    "position": "The State has witnessed a polling percentage of 74.1, 71.1, 75.2, 71.3 and 71.1 per cent across phases one to five, with divisional splits and no qualifier."
+   },
+   {
+    "holder": "The same authority, releases of 3 and 10 December 2018",
+    "position": "In respect of the Sarpanch and Panch constituencies that have seen contests, the overall voter turnout has been 73.6 per cent cumulatively to phase six and 79.9 per cent in phase eight - the same kind of figure, with the denominator now stated."
+   },
+   {
+    "holder": "The authority's own phase tables",
+    "position": "Over the phases whose releases survive, 41.6 per cent of seats went to a poll, 25.1 per cent were filled unopposed and 33.3 per cent had no candidate at all; in the Kashmir valley 708 of 2,135 halqas had no candidate and 699 had exactly one."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Government of Jammu and Kashmir election-authority press releases for the 2018 panchayat election, phases 1 to 8 - seven of the nine retrieved and read, with the verbatim wording of each turnout sentence and the phase tables of seats going to poll, seats unopposed and seats with no candidate",
+    "url": "https://jkgad.nic.in/",
+    "tier": "T1"
+   }
+  ],
+  "notes": "A narrow claim is made here and a wider one refused. This is a reporting-basis change without a counting-basis change, dated to the day, on an official series - it is not a break in the numbers and must not be filed as one. Nothing establishes that the authority computed anything differently before 3 December, and nothing establishes why the wording changed."
+ },
+ {
+  "id": "P-94",
+  "title": "Six statements of the statehood undertaking, four formulations, and no date in any of them",
+  "whatChanged": "The commitment to restore statehood to Jammu and Kashmir has been made in three forums by five different actors and has never carried a date, and the form of words has changed four times without ever becoming testable. 6 August 2019, the Union Home Minister in the Lok Sabha: 'the status of State would be restored once the situation normalises'. 20 November 2019, the Minister of State for Home in the Rajya Sabha, asked whether Government is prepared to give back statehood as early as possible: an answer that restates the Reorganisation Act in two sentences and addresses nothing asked. 27 November 2019, the same Minister, asked 'by when; and if not, the reasons therefor': the same two sentences, neither limb answered. 15 December 2021, a different Minister of State, asked for a timeline: 'Statehood to Jammu and Kashmir would be granted at an appropriate time.' 11 December 2023, the Solicitor General to the Constitution Bench, recorded by the Court: 'the statehood of Jammu and Kashmir will be restored (except for the carving out of the Union Territory of Ladakh)'. 11 December 2023, the Court at conclusion 514(n): 'Restoration of statehood shall take place at the earliest and as soon as possible' - with no date, no addressee and no consequence, in the same sub-paragraph as an election direction that carries all three.",
+  "when": "6 August 2019 to 11 December 2023; the position has not moved since 15 December 2021 in the Ministry's own published record",
+  "affectsDomains": [
+   "governance",
+   "federalism",
+   "kashmir"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "No bridge exists and none can be built, because the two conditions stated - the situation 'normalising' and an 'appropriate time' - have never been defined by the body that must satisfy them or by anyone else. Whether the undertaking is due therefore cannot be answered in either direction. The two judicial formulations also differ and are not reconciled by any document retrieved: the majority states elections and restoration as two obligations with no stated dependence between them, while Kaul J's conclusion (l) treats restoration as conditional on elections being held, and elections have been held since October 2024. Any record on statehood must say which opinion it is reading.",
+  "competingAccounts": [
+   {
+    "holder": "Union Government, across four forums 2019 to 2023",
+    "position": "The undertaking stands and has never been withdrawn; restoration will follow when the situation normalises, at an appropriate time, and it is a matter for Parliament. In October 2025 the Solicitor General told the Supreme Court that the Centre and the territory were in consultation and that recent incidents including the Pahalgam attack warranted careful assessment."
+   },
+   {
+    "holder": "The Supreme Court, conclusions 514(m) and 514(n)",
+    "position": "Restoration shall take place at the earliest and as soon as possible - and the constitutional question whether a State may be converted into a Union Territory need not be determined 'in view of the statement' that statehood will be restored."
+   },
+   {
+    "holder": "The Ministry of Home Affairs' own published record",
+    "position": "In 2,839 of its own answers across 152 sitting dates from January 2019 to July 2026, four mention statehood in any spelling and one of those concerns Puducherry. The subject has not been addressed in relation to Jammu and Kashmir since 15 December 2021, and the Annual Report for 2024-25 contains zero occurrences of 'statehood' and zero of 'Article 370'."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Ministry of Home Affairs parliamentary Q&A archive - Rajya Sabha Unstarred Q.391 of 20 November 2019, Q.1041 of 27 November 2019 and Q.1959 of 15 December 2021, retrieved individually within a corpus of 2,839 answers across 152 sitting dates enumerated from the Ministry's own session index",
+    "url": "https://www.mha.gov.in/MHA1/Par2017/PArQueAnsPage-new.html",
+    "tier": "T1"
+   },
+   {
+    "name": "In Re: Article 370 of the Constitution, 2023 INSC 1058 - conclusions 514(m) and 514(n), Kaul J's conclusion (l), and Khanna J's paragraph 6 on the grave consequences of converting a State into a Union Territory. Retrieved in full",
+    "url": "https://api.sci.gov.in/supremecourt/2019/29796/29796_2019_1_1501_49019_Judgement_11-Dec-2023.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "PIB release, Ministry of Home Affairs, 6 August 2019, PRID 1581391, carrying the Home Minister's assurance to the Lok Sabha",
+    "url": "https://www.pib.gov.in/pressreleaseshare.aspx?prid=1581391",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The negative in the parliamentary sweep is bounded and must not be over-read. The corpus is the Ministry's own archive of its own answers, not Parliament's index, so it cannot show that the Ministry published every answer it gave; another ministry could in principle answer on the subject, though Home is the ministry that owns it; and a question tabled and disallowed would never appear in any answer archive. The correct statement is that in the Ministry's own published record of its own parliamentary answers, covering 152 sitting dates from January 2019 to July 2026, the restoration of statehood to Jammu and Kashmir has not been addressed since 15 December 2021. It is not that the question was never asked."
+ },
+ {
+  "id": "P-95",
+  "title": "Counting shutdowns in J&K: four trackers on incompatible units, four defensible durations, and three official order counts of which one is not a count at all",
+  "whatChanged": "Nothing changed - this is the standing structure of the only instruments that count Indian internet shutdowns, established from their own published methodologies rather than from criticism of them. The units are incommensurable. One counts the ORDER, and says so: a single order imposed in multiple districts is counted once. Another counts the DECISION, defining a shutdown instance as any disruption lasting more than an hour or a series of events attributable to the same circumstances and perpetrator, and states in its own reports that instances of all durations are grouped together in a country total. A third takes its hours from the second and the first. Only the fourth detects from traffic data and then corroborates against media reports or orders. Scope differs too: the first counts blanket disablement only and excludes content and platform blocks; the second includes throttling and platform blocking. Duration is a free-text field in the first, returning values such as '24', '24 hours', '0', 'None' and empty, and is not computed. And they are not mutually independent: the first compiles from newspapers by its own written admission - 'almost all of our raw data is collected from reports published in national and regional newspapers ... we currently rely entirely on secondary sources' - the second names the first as a source, and the third names the first in its methodology. Three of the four therefore trace to one press-derived compilation, so their agreement is not corroboration. The consequences are visible in the numbers: for J&K in 2019 the first gives 55 entries and the second 81, a 47 per cent divergence between two instruments one of which feeds the other. And the duration of the August 2019 blackout has at least four defensible values on retrieved primary orders - about 163 days to the first fixed-line restoration, about 173 to any mobile internet in the Valley, about 213 to an open non-whitelisted internet, and about 551 to unrestricted-speed mobile internet - while the two counters that publish the headline figure differ from each other by a day, 551 against 552, on whether the start is 4 or 5 August and whether endpoints are inclusive. AND THE OFFICIAL SIDE IS NO BETTER, which is merged into this record because the provenance id space allows no separate one. The J&K Home Department's numbered order series looks like a series of suspension orders and is not. On all five substantive orders retrieved and read in full, spanning January 2020 to January 2025 and both statutory regimes, the published document is the Home Department's confirmation of a direction issued by a police Authorized Officer - the Inspector General of Police, Kashmir Zone, or the Additional Director General of Police, Jammu Zone - and the originating direction is not published anywhere located. So the count derived from the published series is a count of confirmations. Three separate official numbers exist for the same subject and none is commensurable with the others. First, the derived count of the Home Department series: a floor of 287 distinct published orders across 2020 to 2025, with a high-water mark of 146 in 2020, 85 in 2021, 49 in 2022, 17 in 2023 and 11 in 2024. Second, the UT of Jammu and Kashmir's own written submission to a Lok Sabha standing committee, that since the Supreme Court's directions 'a total of 93 orders, including 76 orders issued by the competent authority to the effect of confirming the directions by the authorized officers, have been issued' - a figure the Committee did not verify, sample or reconcile, whose closing date is not stated in the printed report, and whose 17 non-confirmatory orders are not described. Third, the Authorized Officers' own numbering, which appears inside the confirmations as file references: 1395 by 13 September 2020 and 137 by 13 January 2025 from the Kashmir Zone, and 1382 by 3 November 2024 from the Jammu Zone. The third is not a count of anything: 137 in the first thirteen days of a year and 1,382 in a year cannot be counts of distinct telecom suspensions, the arithmetic refutes it, and the two zones number independently and reset annually.",
+  "when": "Standing; the tracker structure is as at 2026, and the four durations are computed from orders spanning August 2019 to February 2021",
+  "affectsDomains": [
+   "governance",
+   "kashmir"
+  ],
+  "affectsSeries": [
+   "jk-published-suspension-orders"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "No bridge between the units, and none is possible while one counts orders, one counts decisions and one derives hours from both. But the non-independence finding must not be over-read into a claim that the trackers are wrong. Their own position is unanswerable on its own terms: a count assembled from public orders, press reports and user submissions is necessarily a floor, because unpublished orders cannot be counted at all. Being derivative is not being wrong, and the criticism bites hardest on precisely the period the criticism is about. There is also a real inversion over time. For 2019 the trackers are media-derived from press coverage of an event the press could not cover, and are therefore not a check on the official account. By 2025 the largest of them is no longer deriving entries from press reports of orders: it is re-hosting the orders themselves on its own server, at an address that answers when the issuing government's does not. That does not retroactively make it an independent check - the 2019 entry is still one row citing a news website - and it does not make it an independent count, since it can only count orders it learns about. But the arc from press-derived compilation to primary public venue is the finding, and both halves of it must be stated. On the official counts: No bridge, and the three numbers must not be reconciled. The derived series count and the UT's 93 are on different windows - the first is calendar years 2020 to 2025 on archive coverage, the second runs from 10 January 2020 to an undated closing date - and on different definitions, since the UT's figure explicitly mixes at least two kinds of order and describes only one of them. No quantity whatever may be derived from the Authorized Officers' numbering. A separate warning applies to figures circulating from a police-sourced count of how often police orders were struck down: they fail an internal check, since 749 PSA detentions in 2022 against 841 habeas corpus petitions filed the same year is impossible unless the two count different objects and nobody says which, and a police-sourced count of the fate of police orders relayed by a newspaper is the detaining authority marking its own work.",
+  "competingAccounts": [
+   {
+    "holder": "SFLC.in Internet Shutdown Tracker",
+    "position": "449 J&K entries in all, of which 55 for 2019, 116 for 2020, 79 for 2021 and 43 for 2022. The August 2019 blackout is one of the 55: twenty districts, marked 'Preventive', duration field 'None', window '-' to 'Present', status 'Active' as at August 2026, and its cited authority is a news article rather than a government order."
+   },
+   {
+    "holder": "Access Now / #KeepItOn",
+    "position": "81 for J&K in 2019, and about 68 per cent of India's 121 shutdowns that year; 85 in J&K in 2021; and the Kashmir shutdown as '551 days, 8/5/2019 to 2/5/2021', 'the longest shutdown on record, according to our documentation'. Its own dataset tags the flagship row's information source as a news media article and its type as Throttle, and the source field has no value for a government order at all."
+   },
+   {
+    "holder": "The retrieved government orders",
+    "position": "Restoration was staged across four distinct thresholds with four different dates, each on a published order, so any single duration figure is a definitional choice between roughly 163, 173, 213 and 551 days and none of the four is wrong."
+   },
+   {
+    "holder": "Derived from the Home Department's own published series",
+    "position": "A conservative floor of 287 distinct published orders across 2020 to 2025, with year maxima of 146, 85, 49, 17 and 11. Archive coverage is partial and uneven and the later years are floors. No holder publishes this aggregation."
+   },
+   {
+    "holder": "The UT of Jammu and Kashmir, in written submission to the Standing Committee on Communications and Information Technology",
+    "position": "93 orders since the Supreme Court's directions, including 76 confirming directions of authorized officers, all in the public domain on the Home Department website. The Committee printed it without verification, and it will read to a downstream reader as a parliamentary finding. It is not: it is the scrutinised party's own arithmetic about itself, inside a scrutiny document."
+   },
+   {
+    "holder": "The Authorized Officers' file references, as they appear inside the confirmations",
+    "position": "Kashmir Zone 1395 by September 2020 and 137 by January 2025; Jammu Zone 1382 by November 2024. These are file or diary numbers within a suspension file, not a sequence of suspensions, and no quantity may be derived from them."
+   }
+  ],
+  "sources": [
+   {
+    "name": "SFLC.in Internet Shutdown Tracker - homepage disclaimer stating the counting unit, FAQ stating that almost all raw data is collected from newspaper reports and that the organisation relies entirely on secondary sources, the J&K entry list, and the raw record for the August 2019 blackout. Retrieved from the tracker's own pages",
+    "url": "https://internetshutdowns.in/",
+    "tier": "T4"
+   },
+   {
+    "name": "Access Now / #KeepItOn annual reports 2019, 2020 and 2021 and the underlying dataset - the definition of a shutdown instance, the statement that instances of all durations are grouped together in country totals, the J&K figures, and the source and type tagging of the Kashmir row. Retrieved and read",
+    "url": "https://www.accessnow.org/",
+    "tier": "T4"
+   },
+   {
+    "name": "Ministry of Home Affairs, Rajya Sabha Unstarred Question No. 1791, answered 10 March 2021 - 'Centralized data of internet shutdown is not maintained by the Ministry of Home affairs', the first retrieved primary source in this corpus for the non-existence of an official count. Retrieved as a PDF",
+    "url": "https://www.mha.gov.in/MHA1/Par2017/pdfs/par2021-pdfs/rs-10022021/1791.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Standing Committee on Communications and Information Technology, Twenty-Sixth Report, December 2021 - the Committee's finding that there is no mechanism to verify any shutdown count because neither the Department of Telecommunications nor the Ministry of Home Affairs maintains any record of State and UT shutdown orders. Retrieved in full and read",
+    "url": "http://web.archive.org/web/20211202141356if_/http://164.100.47.193/lsscommittee/Communications%20and%20Information%20Technology/17_Communications_and_Information_Technology_26.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Government of Jammu and Kashmir, Home Department, Government Orders Home-06 (TSTS) of 2020 dated 26 January 2020, Home-07 (TSTS) of 2020 dated 28 January 2020, Home-100 (TSTS) of 2020 dated 14 September 2020, Home-11 (TSTS) of 2024 dated 4 November 2024 and Home-01 (TSTS) of 2025 dated 14 January 2025 - all five retrieved from Internet Archive captures of the Department's own files, rendered and read, and all five confirmations of a police Authorized Officer's direction",
+    "url": "https://web.archive.org/web/*/jkhome.nic.in/*",
+    "tier": "T1"
+   },
+   {
+    "name": "Internet Archive CDX index of the J&K Home Department's domain, 7,261 capture rows, from which every filename carrying the (TSTS) tag was extracted and the year-wise inventory built",
+    "url": "https://web.archive.org/cdx/search/cdx",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Two cautions that must travel with any use of these instruments. The phrase 'longest shutdown ever imposed by a democracy' was searched for across the second tracker's reports for 2018 to 2025 and does not appear in any of them; it survives only inside a newspaper URL cited in the dataset. It must be attributed to the press and never put in the tracker's mouth. And the economic-loss figures in circulation for J&K rest, three derivations down, on the free-text duration field of the press-derived compilation, and must not be used at all; the trade-body loss estimates that circulate for the same period are a chamber's compilation of member-reported loss and are not measurements. The confirmation structure has a consequence the count does not capture. A Valley-wide suspension of voice calling and SMS was ordered for Republic Day 2020, sixteen days after the judgment, and is in the published series as a confirmation - and it appears in no tracker anywhere, because every tracker counts internet. It is also the case that the two orders numbered 06 and 07 of 2020 fall inside the window of the table of thirteen orders that the Supreme Court was given in May 2020 and are not in it. A fair reading is available and should be stated with the fact: those two are confirmations of short local emergency suspensions where the table tracks the progressive restoration, and the judgment does not claim the table is complete. The consequence stands regardless of intent - the picture of the orders passed since 10 January 2020 that the Court had before it when it declined to lift the restriction omitted a Valley-wide cut of voice calls and SMS - and no suppression is asserted."
+ },
+ {
+  "id": "P-96",
+  "title": "The TRAI Jammu and Kashmir service area includes Ladakh and does not break on 31 October 2019, and it measured the blackout without ever naming it",
+  "whatChanged": "This is the periodisation rule's exception, and it is silent on both sides. The corpus's fixed rule is that any series whose geographic denominator is 'Jammu and Kashmir' changes referent on 31 October 2019 and must break. The telecom regulator's J&K series does not break, because its denominator was never the administrative unit: it is a Licensed Service Area, a telecom-licensing boundary drawn in 2004, and it includes Ladakh throughout. Established three ways. The regulator says so once, in passing, in a 2023 recommendation referring to villages in 'Ladakh falling in the J&K Licensed Service Area'. The licence definition was never amended: the access-service and unified-licence annexures both define the service area as 'Entire area falling within the State of Jammu & Kashmir including the autonomous council of Ladakh' - a State that no longer exists and a body the 2019 Act superseded - and the same annexure expressly carries forward the Bihar, Madhya Pradesh and Uttar Pradesh Reorganisation Acts of 2000 in its own text while containing no reference anywhere to the Jammu and Kashmir Reorganisation Act 2019. The drafter knew how to record a reorganisation in that table and did not record this one. And the arithmetic identity holds inside single reports: service-area J&K access subscribers equal State/UT J&K plus Ladakh, in two separate quarters five years apart. The regulator has published no note, footnote, definition or erratum on the composition of the J&K service area before or after 2019, while publishing a standing composition note naming seven other multi-State service areas from which J&K and Ladakh are always absent. Ladakh first appears in a quarterly report only eight months after the reorganisation, as a label on a merged row with no separate value, and never at service-area level at all.",
+  "when": "The licensing boundary dates from 2004 and did not change on 31 October 2019; the divergence from every administrative J&K series begins on that date",
+  "affectsDomains": [
+   "infrastructure",
+   "governance",
+   "kashmir"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": true,
+  "bridgeNote": "A bridge exists and is arithmetically exact for the years in which the regulator publishes both levels: service-area J&K equals State/UT J&K plus Ladakh, verified in two separate quarterly reports. So a service-area figure can be reconciled to an administrative one wherever the State/UT split is published. What does not exist is any statement by the publisher that the two differ, in any report, before or after 2019 - so a reader who does not perform the subtraction has no warning. From 31 October 2019 a regulator 'Jammu & Kashmir' figure and a ministry 'Jammu and Kashmir' figure are figures about different territories, and nothing in either publication says so.",
+  "competingAccounts": [
+   "The regulator's own quarterly reports name the J&K service area as the national outlier twice in consecutive quarters - the maximum decline of 8.74 per cent in the quarter ending December 2019 and the maximum growth of 14.75 per cent in the quarter ending March 2020 - and never once state a cause. Total internet subscribers in the service area run 6.95 million at the last pre-blackout quarter, 4.88 million at September 2019 and 4.46 million at December 2019, a fall of 2.49 million or 35.8 per cent over two quarters spanning the blackout, then 7.68 million by March 2020, above the pre-blackout level. A search of fourteen retrieved regulator publications for shutdown, suspension of telecom or internet or mobile, Temporary Suspension of Telecom, Section 144, Article 370, Reorganisation Act, restoration and reorganisation returns not one hit relating to Jammu and Kashmir, and the annual report covering the entire blackout contains zero occurrences of Ladakh and zero of any of those terms.",
+   "The media-derived trackers, over the same period, produced a single row with no end date and a newspaper as its authority, because the event being counted disabled the reporting the count is built from. So the official instrument kept producing and produced a number with no cause, and the non-official instrument produced a subject with no measurement. Neither is a measurement of the shutdown, and this is the two-source-family break running in the direction opposite to the obvious one."
+  ],
+  "sources": [
+   {
+    "name": "Telecom Regulatory Authority of India, Recommendations on Improving Telecom Coverage and Backhaul Infrastructure in far-flung areas of Ladakh, 24 April 2023, paragraph 2.15; and the Quarterly Performance Indicator Reports for the quarters ending December 2019, March 2020, June 2020, March 2021 and March 2026, including the paragraph 1.7 outlier statements and the subscriber tables at both service-area and State/UT level. Retrieved directly from the regulator's own site and read",
+    "url": "https://www.trai.gov.in/",
+    "tier": "T1"
+   },
+   {
+    "name": "Department of Telecommunications, Unified Access Service Licence Annexure-VI (footer 'Final UASL circle (28.01.2004)') and Unified Licence Annexure-V, defining service area 08 as the entire area falling within the State of Jammu & Kashmir including the autonomous council of Ladakh, enumerating 22 service areas with no Ladakh entry, and carrying forward the Reorganisation Acts of 2000 while making no reference to the Act of 2019. Retrieved directly and read",
+    "url": "https://www.dot.gov.in/",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The subscriber movement must not be used as a measure of the shutdown, and this record exists partly to stop that. A subscriber count is not a connectivity count: a fall of 2.49 million over the blackout quarters mixes users disconnecting, operators de-registering inactive connections, and the regulator's own definitional treatment of a suspended service, and the publisher decomposes none of them. The rebound to a level above the pre-blackout peak within one quarter is itself enough to show that part of the movement is registration behaviour. One component moves implausibly - rural narrowband subscribers fall from 0.40 million to 0.01 million in a single quarter, hold, and return to 0.36 million - which is a reporting artefact as much as a physical one. Monthly resolution across the blackout could not be retrieved: only the release for August 2019 was obtained, and those for September 2019 to February 2020, covering the deepest phase and the January 2020 restoration, could not be. No series is authored from this material for a further reason of contract: the quarterly resolution that carries the entire finding cannot be expressed in this project's period format, and an annual rendering on fiscal-year ends would show a monotonic rise across the blackout and erase the trough completely."
+ },
+ {
+  "id": "P-97",
+  "title": "The National Human Rights Commission publishes the state dimension and the respondent dimension separately, never crosses them, and dropped the second after 2021-22",
+  "whatChanged": "The Commission publishes two dimensions of the same case population and has never published their intersection. In one annexure it gives cases registered state-wise, with a Jammu and Kashmir row every year. In another it gives an all-India breakdown by incident code, including dedicated code ranges for Defence Forces and for Para-Military Forces. It assigns an incident code to every case and records the state of origin of every case, and prints both facts separately in the same document - so the cross-tabulation exists in its case-management system and has never appeared in print. That intersection is the number that decides whether the extension of the national Commission to Jammu and Kashmir substituted for the abolished State Commission, because section 19 of the Commission's own Act bars it from investigating the armed forces and section 2(1)(a) defines those to include any other armed forces of the Union. Then the second dimension stopped: the all-India breakdown by respondent category was published for years and was discontinued after the 2021-22 report. Two further defects sit on the same instrument. The Defence and Para-Military custodial column in the state-wise annexure reads zero for J&K in every year retrieved and never exceeds 6 all-India - but it records intimations received about custodial deaths and rapes, and the twenty-four-hour intimation duty that generates it is addressed to District Magistrates and Superintendents of Police and does not run to the armed forces, so the zero is a property of the reporting duty rather than a measurement. And the volumes themselves are irregular: the report for 2020-21 arrived nearly four years late and out of sequence, and the year containing the first reported sitting of the Commission in Srinagar has no published report at all.",
+  "when": "The two dimensions run throughout; the respondent breakdown was discontinued after the Annual Report 2021-22",
+  "affectsDomains": [
+   "governance",
+   "kashmir"
+  ],
+  "affectsSeries": [
+   "jk-nhrc-complaints",
+   "jk-nhrc-cases-transferred-to-shrc"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "No bridge is published and one is constructible by the holder alone. The classification of the missing cross-tabulation is the judgement most at risk of being got wrong here: it would be easy to call it not-collected on the ground that the table has never been compiled, and that is the wrong test, because the schema asks whether the data exists rather than whether the table has been built. A body that can print two columns can produce their intersection. What cannot be bridged by anyone is the Defence and Para-Military column, because the duty that populates it does not reach the forces whose name it carries - that is a definitional gap in the instrument and not an unbuilt table.",
+  "competingAccounts": [
+   {
+    "holder": "The Commission's state-wise annexure",
+    "position": "Cases registered from Jammu and Kashmir rose from 194 in 2017-18 to 995 in 2023-24, with the Defence and Para-Military custodial column at zero in every year."
+   },
+   {
+    "holder": "The Commission's disposal annexure",
+    "position": "J&K cases transferred to a State Commission ran 38, then 51, then 10, then zero in every year since - the abolition of the State Commission visible inside the national body's own arithmetic, with no footnote at the row in any volume."
+   },
+   {
+    "holder": "The Commission's own Act",
+    "position": "Section 19 confines the Commission, in respect of the armed forces, to seeking a report from the Central Government and then dropping the matter or recommending. Section 2(1)(a) defines armed forces to include any other armed forces of the Union. Neither provision was touched by the reorganisation, so what fraction of the rising J&K caseload the Commission may actually investigate is unknown and unpublished."
+   }
+  ],
+  "sources": [
+   {
+    "name": "National Human Rights Commission Annual Reports 2016-17 through 2023-24 - Annexure-1 state-wise registrations with the Defence and Para-Military custodial column, Annexure-2 disposal with the Transferred to SHRCs column, and the all-India incident-code breakdown discontinued after 2021-22. Retrieved from the Commission's own server and, for 2016-17, from the Ministry of Home Affairs' server",
+    "url": "https://nhrc.nic.in/publications/annual-reports",
+    "tier": "T1"
+   },
+   {
+    "name": "Protection of Human Rights Act 1993, sections 2(1)(a) and 19; and the Commission's letter of 14 December 1993 establishing the twenty-four-hour custodial-death intimation regime, addressed to District Magistrates and Superintendents of Police",
+    "url": "https://nhrc.nic.in/",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Applied to this instrument, the rule that two-sidedness of format does not survive one-sidedness of production bites in an unusual direction. The Commission is genuinely independent of the forces it cannot investigate, so this is not a case of the measured party producing the measure. What is one-sided is the statute: the Commission may register a complaint against the Army and may not establish a fact about it, so its case counts record demand and not accountability, and a rising count in the J&K row is compatible with no investigation of central forces at all."
+ },
+ {
+  "id": "P-98",
+  "title": "The J&K electoral instrument: four turnout values for one quantity, and three denominators for one delimitation",
+  "whatChanged": "Turnout is published on at least two bases and the Commission does not hold either constant. For the 2024 General Election in Jammu and Kashmir four official values exist, all the Commission's own and all retrieved: 58.46 per cent as combined turnout at the polling stations for the five parliamentary seats, in a press release of 27 May 2024; 58.58 per cent quoted as the same election's turnout in a release of 3 October 2024; 58.07 per cent computed from the statistical report's own electors of 8,802,348 and EVM votes of 5,111,867, excluding 50,999 postal ballots; and 58.65 per cent, the statistical report's own printed State Total on the postal-inclusive basis. The divergence repeats constituency by constituency, and two of the five move down between press note and statistical report rather than up, so it is not simply provisional-plus-postal. The Commission states the basis break itself, in a footnote beneath its own comparison chart: the graph depicts gross turnout for 1996 to 2019 and, for 2024, turnout at polling stations - a chart of the highest turnout in thirty-five years whose final point is on a different basis from every earlier one, disclosed and not corrected. A further inconsistency inside the same report family has not been stated anywhere: in 2014 the assembly statistical report's headline polling percentage excludes postal ballots while the Lok Sabha statistical report's headline voter turnout includes them - one year, one territory, two definitions, neither cross-referenced. And the 2002 assembly report prints two electorates for one election, 6,165,285 in total and 6,078,570 for the 85 constituencies where polling took place, computing its headline over the second, so that year's denominator differs in kind from every other year's with no indication on the figure. AND THE SEAT FRAME THE TURNOUT IS COMPUTED OVER HAS ITS OWN THREE-WAY PROBLEM, merged into this record because the provenance id space allows no separate one. The delimitation dispute has three candidate denominators, all computable from published official data, and they disagree by an order of magnitude. On 2011 Census population, the Kashmir division's 6,888,475 over 47 seats gives 146,563 per seat against Jammu's 5,378,538 over 43 giving 125,082 - a difference of 21,481 and a ratio of 1.1717, so a Kashmir seat represents 17.17 per cent more people. On the pre-delimitation frame of 46 and 37 the same populations give 149,749 and 145,366, a ratio of 1.0302 - taken the same way round, Kashmir divided by Jammu, because the two ratios inverted relative to each other make a widening gap read as a change of direction. Both exceed one: a Kashmir seat represented more people before delimitation and represents more after, and the gap widened from 3 per cent to 17 per cent. On area the allocation inverts: Kashmir's 15,948 square kilometres over 47 seats is 339.3 per seat against Jammu's 26,293 over 43 giving 611.5, so a Jammu seat covers nearly twice the ground. On the 2024 electoral roll, derived by summing the Commission's own phase press notes, Kashmir has 98,653 electors per seat and Jammu 97,377 - a gap of 1.31 per cent, thirteen times smaller than the population gap. The whole of that difference is that electors are 67.31 per cent of the Kashmir division's 2011 population against 77.85 per cent of Jammu's, a ratio that mixes a 2024 roll with a 2011 population and therefore confounds age structure with thirteen years of differential growth. The seat chain the denominators are applied to also carries two separate breaks that are routinely conflated: 111 nominal and 87 fillable in the State including Ladakh, 107 nominal and 83 fillable in the Union Territory excluding it from 31 October 2019, and 114 nominal and 90 fillable from 20 May 2022.",
+  "when": "The two bases run throughout; the four-value divergence is concurrent for the 2024 General Election; the 2002 denominator problem is confined to that election",
+  "affectsDomains": [
+   "governance",
+   "kashmir"
+  ],
+  "affectsSeries": [
+   "jk-assembly-electors",
+   "jk-assembly-seats",
+   "jk-assembly-turnout",
+   "jk-lok-sabha-turnout"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": true,
+  "bridgeNote": "A bridge exists wherever the Commission publishes postal ballots separately, which it does in the assembly reports for 2008 and 2014 and in the parliamentary statistical reports: adding postal votes to votes at polling stations and dividing by the same electorate converts one basis into the other, and every such conversion recomputes exactly against the Commission's own printed figures. Where it fails is 2024. No statistical report exists for the J&K assembly election - or for any of the eight state assemblies polled that year - so the postal-inclusive turnout on which the 2014 figure of 65.91 per cent stands cannot be computed for 2024 from anything published, and the denominator behind the headline 63.88 per cent had to be reconstructed by summing ninety constituency rows across three press notes. The reconstruction validates itself to four significant figures, but a bridge that has to be rebuilt from press notes is not a published bridge. On the delimitation denominators: The common ledger exists, is official, and is the criticised body's own publication: Working Paper I of the Delimitation Commission's compendium prints district-wise population, area, density and seats in adjacent columns on one page, and its printed grand totals of 12,267,013 and 42,241 square kilometres are reproduced exactly by summing its own district rows. So both cases are computable from one table, which is unusual and is why the delimitation dispute is a weighting dispute and not a different-facts one. What the table cannot supply is the function applied to it: the district categorisation that converts population and area into a seat count is the Commission's own judgement, the tolerance band is stated as plus or minus 10 per cent in one place in the volume and plus or minus 20 per cent in another, and the additional constituency granted for remoteness rests on no published rule. The population and area columns come from the Registrar General; the seat column comes from the Commission. The two-sidedness is in the inputs and the one-sidedness is in the function.",
+  "competingAccounts": [
+   {
+    "holder": "Election Commission press notes",
+    "position": "58.46 per cent for the 2024 General Election in J&K in May 2024, and 58.58 per cent for the same election in October 2024; 63.88 per cent for the 2024 assembly election, on the at-polling-stations basis, with no denominator stated anywhere."
+   },
+   {
+    "holder": "Election Commission statistical reports",
+    "position": "58.65 per cent for the 2024 General Election in J&K, postal-inclusive, over 8,802,348 electors - and 58.07 per cent if the 50,999 postal ballots are excluded from the same table. For the 2024 assembly election, no report at all."
+   },
+   {
+    "holder": "The Commission's own chart footnote",
+    "position": "The comparison graph depicts gross turnout for 1996 to 2019 and turnout at polling stations for 2024 - the basis change disclosed on the page that carries the comparison."
+   },
+   {
+    "holder": "The population denominator",
+    "position": "A Kashmir seat represents 21,481 more people than a Jammu seat, 17.17 per cent more, and a strict-proportional allocation would give Kashmir 50.54 seats against the 47 it received. The disparity was 3 per cent the other way before delimitation."
+   },
+   {
+    "holder": "The area denominator",
+    "position": "A Jammu seat covers 611.5 square kilometres against a Kashmir seat's 339.3, and a strict-proportional allocation on area would give Jammu 56.02 seats against the 43 it received. The statute requires regard to physical features, means of communication and public convenience, and the Commission says it weighted terrain, remoteness and border conditions."
+   },
+   {
+    "holder": "The registered-elector denominator",
+    "position": "Kashmir has 98,653 electors per seat and Jammu 97,377, a gap of 1.31 per cent - as close to parity as any Indian delimitation achieves, and the measure that actually determines representation at a poll."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Election Commission of India statistical reports for the J&K Legislative Assembly elections of 1996, 2002, 2008 and 2014 and for the General Elections of 2014, 2019 and 2024, retrieved and read; and the statistical-reports index, whose 2024 assembly entry for J&K resolves to 'Error: No data found for year 2024' as it does for all seven other states polled that year",
+    "url": "https://www.eci.gov.in/statistical-reports",
+    "tier": "T1"
+   },
+   {
+    "name": "PIB releases carrying Election Commission press notes for the 2024 General Election and for the three phases of the 2024 J&K assembly poll, including the chart footnote disclosing the basis change and the constituency-wise elector columns covering assembly constituencies 1 to 90 exactly once. Retrieved in a browser and read",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2050506",
+    "tier": "T1"
+   },
+   {
+    "name": "Delimitation Commission for the Union Territory of Jammu and Kashmir, compendium including Working Paper I, with district-wise population, area, density and seats and printed grand totals that the district sums reproduce exactly. Retrieved from the Election Commission's document store and read",
+    "url": "https://www.eci.gov.in/1547-presidential-orders-delimitation-commission-orders",
+    "tier": "T1"
+   },
+   {
+    "name": "Jammu and Kashmir Reorganisation Act 2019, sections 14, 60 and 62 and the Third Schedule parsed entry by entry, giving exactly 83 constituencies with no gaps or duplicates. Retrieved from the Gazette's own file store",
+    "url": "https://egazette.gov.in/WriteReadData/2019/210407.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The Commission's own press note of 1 October 2024 states that constituencies increased from 83 in 2014 to 90 in 2024, where the Commission's own statistical report for the 2014 election prints 87 twice and records 87 elected. 83 is the post-Ladakh, pre-delimitation count on which no election was ever held. This is a case where the Commission's press note and its statistical report contradict each other about a countable fact, and the press note is the one the secondary literature quotes. On the seat frame: the commencement instrument for the delimitation is an order of the Ministry of Law and Justice, not of the Home Ministry, which is why the Home Ministry's annual reports do not carry the date and why searching that ministry's material for it fails; its file number is H.11019/03/2019-Leg.-II. Note also who drew the constituencies: the Commission's ex-officio membership was the Chief Election Commissioner and the State Election Commissioner of a Union Territory then under President's rule, its five associate members from the Lok Sabha could by statute neither vote nor sign, and the Assembly half of its associate membership could not be constituted because the Assembly had been dissolved. The order is by section 60(5)(c) not to be called in question in any court."
+ },
+ {
+  "id": "P-99",
+  "title": "Finance Commission grants to J&K's local tier: the recipient changed inside the final award year, the release was zero in that year, and the territory then leaves the table",
+  "whatChanged": "Two distinct things happen to this series in the same year, and the record's first duty is to keep them apart rather than let one explain the other. FIRST, THE RECIPIENT. The Fourteenth Finance Commission's award ran 2015-16 to 2019-20 and its grants to Gram Panchayats were made to the State of Jammu and Kashmir, which included Ladakh. The appointed day under the Reorganisation Act falls inside the final award year: on 31 October 2019, seven months into 2019-20, the State ceased to exist, Ladakh became a separate Union Territory, and the entity named in the award was no longer the entity the money was for. The referent therefore changes inside the last data point and not between points, which is a harder case than the ordinary break. SECOND, THE RELEASE. In that same year the entire allocation of 1,049.49 crore rupees was released at zero. Those are two separate facts and nothing retrieved connects them: no document states that the reorganisation caused the non-release, and no document states any other cause either. The per-year release rates that precede it are a monotonic decline rather than a cliff - 98.3 per cent in 2015-16, 81.0 in 2016-17, 69.8 in 2017-18, 69.9 in 2018-19 - so the zero terminates a falling series rather than interrupting a healthy one. THIRD, AND SEPARATELY, THE TERRITORY LEAVES THE TABLE. The Ministry of Panchayati Raj's own year-wise allocation and release table for Fifteenth Finance Commission grants to Rural Local Bodies, as at 2 December 2025, runs from Andhra Pradesh to West Bengal - 28 States and no Union Territories - and Jammu and Kashmir is absent, the sequence going straight from Himachal Pradesh to Jharkhand. The Ministry's own description of the mechanism, in a separate release, is that it recommends release of these grants 'to States'. So the series does not merely fall to zero; from the next award it stops appearing. The legal basis for the exclusion is NOT established: the Commission's main-report provisions for Union Territories could not be retrieved, and a widely repeated account that resources for the new Union Territories were adjusted from the Centre's own share is relayed from search summaries and was never retrieved. It is not used here to explain the gap.",
+  "when": "The referent changes on 31 October 2019, seven months into the final year of the XIV Finance Commission award; the absence from the XV Finance Commission table is as at 2 December 2025",
+  "affectsDomains": [
+   "federalism",
+   "governance",
+   "kashmir"
+  ],
+  "affectsSeries": [
+   "jk-xiv-fc-panchayat-grants-allocated",
+   "jk-xiv-fc-panchayat-grants-released"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "No bridge exists across the award boundary and none can be built from what is published. The two awards do not share a recipient definition - one names a State that included Ladakh, the other a list of States from which the territory is absent - and no restated back-series on the post-2019 geography exists for either. Within the XIV Finance Commission award the arithmetic is sound and closes exactly: allocation sums to 3,463.73 crore rupees and release to 1,857.93, both matching the printed totals, and both were re-added independently. Two figures in circulation from that table are DERIVED and not stated by the answer, and must be marked as such wherever they appear: unreleased 1,605.80 crore rupees, and an overall release rate of 53.64 per cent. What cannot be derived at all is whether anything replaced the grant after 2019-20, because the successor table has no row for the territory to be compared against.",
+  "competingAccounts": [
+   {
+    "holder": "The Ministry of Panchayati Raj, in a written answer to the Lok Sabha of 9 December 2025",
+    "position": "Annexure-I gives Fourteenth Finance Commission grants to Gram Panchayats in Jammu and Kashmir year by year, allocation against release: 373.96 and 367.72, 585.73 and 474.41, 675.15 and 470.97, 779.40 and 544.83, and 1,049.49 against 0.00, totalling 3,463.73 and 1,857.93 crore rupees. The answer states the figures and states no cause for any of them."
+   },
+   {
+    "holder": "The same answer's Annexure-II",
+    "position": "The year-wise allocation and release of Fifteenth Finance Commission grants to Rural Local Bodies, as at 2 December 2025, lists 28 States and no Union Territories, with a grand total of 297,555.00 crore rupees allocated and 245,541.40 released. Jammu and Kashmir has no row, and the Ministry's own account of the mechanism elsewhere is that it recommends release to States."
+   },
+   {
+    "holder": "The earlier record, from the J&K administration's own 2011 committee report",
+    "position": "The shortfall is not new and once had a stated cause. Under the Twelfth Finance Commission 281 crore rupees was earmarked for the territory's panchayati raj institutions and the State Government could not secure release of 228 crore of it - 81 per cent - due to non-fulfilment of prescribed conditions. Under the Thirteenth, 918 crore rupees was given for rural local bodies, split 600 crore basic and 318 crore performance."
+   }
+  ],
+  "sources": [
+   {
+    "name": "PIB, Ministry of Panchayati Raj, 'Fifteenth Finance Commission Grants', 9 December 2025, Release ID 2200805 - carrying Annexure-I with the XIV Finance Commission grants to Gram Panchayats for Jammu and Kashmir year by year and Annexure-II with the XV Finance Commission allocation and release to Rural Local Bodies for 28 States, and closing 'This information was given by Union Minister Shri Rajiv Ranjan Singh alias Lalan Singh in a written reply in Lok Sabha on 09th December 2025'. Retrieved and read. Note that PIB is the Government's own press organ reproducing the Ministry's own answer, so it is not an independent check on it",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200805&reg=3&lang=1",
+    "tier": "T1"
+   },
+   {
+    "name": "PIB, Ministry of Panchayati Raj, 25 March 2026, Release ID 2244985 - the Ministry's own statement of the mechanism, that it recommends release of XV Finance Commission grants to States for Rural Local Bodies, which is then released by the Ministry of Finance. Retrieved and read",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2244985&reg=3&lang=2",
+    "tier": "T1"
+   },
+   {
+    "name": "Fifteenth Finance Commission, Chapter 5 'Empowering Local Bodies' - the entry conditions for local-body grants including notified property-tax floor rates, online availability of accounts, accounting-system reform and a ten-working-day transfer rule with interest for delay. Grepped for 'jammu', 'union territor' and 'State Finance Commission': the only Jammu and Kashmir hit is an exclusion from a million-plus-cities count, and 'State Finance Commission' returns zero hits in the chapter. Retrieved and read",
+    "url": "https://cdnbbsr.s3waas.gov.in/s316026d60ff9b54410b3435b403afd226/uploads/2023/01/2023013159.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Report of the Committee on Devolution of Powers to the Panchayats, Government of Jammu and Kashmir, paragraphs 3.4 and 3.5 - the Twelfth Finance Commission earmark of 281 crore rupees of which 228 crore could not be secured due to non-fulfilment of prescribed conditions, and the Thirteenth Finance Commission's 918 crore rupees split between basic and performance grants. Retrieved from an Internet Archive capture of the department's own file",
+    "url": "https://web.archive.org/web/2024id_/https://jkgad.nic.in/Pdf/Report_PRIs.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The Commission's own entry conditions are the reason this record does not assert that the reorganisation caused the zero, and they cut both ways. Fifteenth Finance Commission grants are conditional on notified property-tax floor rates, on accounts being available online before and after audit at individual, State and all-India level, and on accounting-system reform, with transfer required within ten working days and interest payable on delay - and the territory has no published local-bodies audit at all and no State Finance Commission report anywhere. So a conditionality explanation for non-release is available on retrieved documents and has a precedent with a stated cause in the Twelfth Finance Commission period. What no retrieved document does is state which explanation applies to 2019-20, and none should be asserted."
  }
 ]

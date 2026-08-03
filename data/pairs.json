@@ -758,5 +758,432 @@
    "L-0112"
   ],
   "notes": "This pair is the answer to the ledger question for civilian deaths, and it is a negative one: two-sided accounting for this quantity existed, was non-official, and stopped. Its final figures are a floor stated as such by the body that produced them, which declared a complete information collapse in Kashmir after 5 August 2019. After 2019 no instrument of any provenance publishes the perpetrator split - not MHA, which has never had a column for it; not GTD, which covers non-state perpetrators only by construction; not UCDP, which records Government-of-India one-sided violence in three country-years ever and none after 2002. Kashmir Law and Justice Project is the only identified live candidate successor and was not investigated in this phase."
+ },
+ {
+  "id": "PR-33",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "Detenus counted in J&K's own prisons, against detenus moved out of them",
+  "a": {
+   "series": "jk-detenus-psi",
+   "label": "Detenus recorded in Jammu and Kashmir's prisons at 31 December"
+  },
+  "b": {
+   "series": "jk-psa-detenus-transferred-out",
+   "label": "PSA detenus moved out of the territory, who leave that row and enter another State's"
+  },
+  "framing": "The recorded stock falls from 404 in 2019 to 228 in 2020 across the largest detention wave in the territory's recent history, and in the same window 295 detenus were moved to prisons in other States, where the only instrument that counts them attributes them to the State that holds the body.",
+  "gapComputable": false,
+  "gapReason": "One is a 31 December stock of all preventive-detention detenus, the other a within-year flow of PSA detenus specifically, so they are neither the same population nor the same kind of quantity and subtraction would produce nothing. Nor could the transferred detenus be added back: Prison Statistics India publishes an aggregate 'Belongs to other State' column that never names the origin State, has no interstate transfer table for detenus at all where it has one for convicts and one for undertrials, and the transfer series is a relayed count from a document nobody in this phase retrieved. The two sides are placed together so that the fall in the first is not read as a fall in detention.",
+  "provenanceRefs": [
+   "P-88",
+   "P-88"
+  ],
+  "ledgerRefs": [
+   "L-0134",
+   "L-0135"
+  ],
+  "notes": "The direction of the order is the argument: a is what the state publishes about itself, b is the movement that removes people from it. The strongest evidence that b is real and not inferred comes from inside a - NCRB's own Table 2.12B records Uttar Pradesh holding zero out-of-State detenus at 31 December 2018 and 188 a year later, and Haryana holding 27 of whom none were Haryana-domiciled, matching to the unit a parliamentary answer that does not cite it. But PSI will not say those detenus came from J&K, and that attribution must be imported from outside PSI or not made at all."
+ },
+ {
+  "id": "PR-34",
+  "kind": "contested",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "Ten official detention figures for August 2019, and the year-wise series that would settle them",
+  "a": {
+   "competingAccountsFrom": "P-91",
+   "label": "What the Ministry has stated the detention numbers are"
+  },
+  "b": {
+   "absenceFrom": "jk-prison-detained-category",
+   "absenceIndex": 0,
+   "label": "The published year-wise PSA series that would settle them - none exists"
+  },
+  "framing": "Ten figures on five undeclared objects were given to Parliament over sixteen months, and the one instrument that would let a reader tell which of them counts what has never been published by the body that necessarily holds it.",
+  "gapComputable": false,
+  "gapReason": "There is nothing to subtract on either side. One side is a set of point figures on populations that are not the same population - preventive custody under section 107 CrPC, a preventive-detention stock, a PSA stock, PSA orders expressed per person, and an undefined category given twice with a fourteen-case discrepancy - and the other is the absence of any year-wise return at all. A gap between two of the figures is not a quantity: the difference between 451 and 396 is a real decomposition the Ministry itself stated on one date, and the difference between 7,357 and 396 is a difference of legal instrument, not a residual.",
+  "provenanceRefs": [
+   "P-91"
+  ],
+  "ledgerRefs": [
+   "L-0133"
+  ],
+  "notes": "Neither side is a series, because no series exists, and the pair is carried because the two sides may not be shown alone. A detention figure rendered without the absence beside it reads as a point on a series, and the absence rendered without the figures beside it loses the fact that the state has produced PSA-identified numbers on request more than once and never as a run. The producibility is not in doubt: every detention order carries a district-year serial number, so each District Magistrate necessarily knows how many were issued; the J&K Home Department produced a five-year year-wise series of the detenus it moved out of the territory on a single sheet; and the Ministry decomposed 451 into 396 PSA and 55 CrPC in a single sentence on 11 March 2020."
+ },
+ {
+  "id": "PR-35",
+  "kind": "contested",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "Two official J&K detenu counts whose difference is exactly the foreign-national count",
+  "a": {
+   "series": "jk-detenus-psi",
+   "label": "NCRB's detenu row, from returns furnished by the J&K Prison Department"
+  },
+  "b": {
+   "series": "jk-prison-detained-category",
+   "label": "The 'Detained' prison category, from J&K prison records tabled in the Rajya Sabha"
+  },
+  "framing": "Two official instruments count preventive-detention prisoners in Jammu and Kashmir, neither cites the other, and they differ in all six overlapping years - and in every year where both can be decomposed the difference is exactly the foreign-national count, which means the parliamentary series silently excludes foreigners and never says so.",
+  "gapComputable": false,
+  "gapReason": "The differences across the six years are 28, 36, 37, 40, 30 and 48, and three of them are explained exactly rather than approximately: in 2014, 2015 and 2018 the parliamentary figure equals NCRB's count of J&K-domiciled detenus to the unit, with NCRB's 28, 36 and 30 foreign detenus accounting for the whole of each gap. For 2016 and 2017 the domicile decomposition was not retrieved, so the implied residuals of 37 and 40 are consistent with the same explanation and are not evidence for it. For 2019 the two figures are on different dates - a November figure against a 31 December one - so no residual could be computed even with the decomposition in hand. Subtraction across the whole series would therefore present an inference as an arithmetic result, and the one place it can be done it produces zero rather than a gap.",
+  "provenanceRefs": [
+   "P-90"
+  ],
+  "ledgerRefs": [
+   "L-0135"
+  ],
+  "notes": "The out-of-territory rows of the same two documents corroborate each other exactly - 27 J&K prisoners lodged in Haryana in the parliamentary answer, 27 out-of-State detenus and no others in Haryana's NCRB row for the same year - which is corroboration between two official sources rather than between a source and its own echo, and is the strongest single check in the detention subject. The Uttar Pradesh rows do not corroborate, at 234 against 188, because one counts all J&K prisoners to November and the other counts detenus only at 31 December. Those must not be reconciled: the difference is roughly the J&K convicts and undertrials in UP jails, which is a real quantity nobody has stated."
+ },
+ {
+  "id": "PR-36",
+  "kind": "contested",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "The undertaking to restore statehood, against the condition that would test it",
+  "a": {
+   "competingAccountsFrom": "P-94",
+   "label": "What the Union and the Court have said about restoring statehood"
+  },
+  "b": {
+   "absenceFrom": "L-0127",
+   "absenceIndex": 0,
+   "label": "The stated trigger condition - never defined by anyone, including the body that must satisfy it"
+  },
+  "framing": "Six statements over seven years commit the Union to restoring statehood on conditions - the situation normalising, an appropriate time - that no document from any source has ever defined, so whether the commitment is due cannot be answered in either direction.",
+  "gapComputable": false,
+  "gapReason": "One side is a set of undated commitments in four different formulations, and the other is the absence of any definition of the condition on which they turn. There is no quantity on either side and no arithmetic that connects them: a stated condition that admits no test cannot be subtracted from a stated commitment. The two judicial formulations are also not reconciled by any retrieved document - the majority states elections and restoration as independent obligations, Kaul J treats restoration as conditional on elections having been held, and elections have been held since October 2024.",
+  "provenanceRefs": [
+   "P-94"
+  ],
+  "ledgerRefs": [
+   "L-0127",
+   "L-0125"
+  ],
+  "notes": "The pair is carried because the undertaking was load-bearing on something else: it is the statement 'in view of' which the Supreme Court declined to determine whether a State may lawfully be converted into a Union Territory at all. So the one question that would have tested the conversion was set aside on a commitment whose trigger has never been defined, and shown alone the commitment reads as a policy in progress rather than as the consideration for a declined adjudication."
+ },
+ {
+  "id": "PR-37",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "The detenus the state moved out, against the number the holding prison refused to give",
+  "a": {
+   "series": "jk-psa-detenus-transferred-out",
+   "label": "PSA detenus the J&K Home Department records moving out of the territory"
+  },
+  "b": {
+   "absenceFrom": "L-0134",
+   "absenceIndex": 0,
+   "label": "The number of them in the prison that held them - asked for, and refused"
+  },
+  "framing": "The territory that moved 1,122 detenus out can produce a year-wise count of them on one sheet, and the prison that received them refused under the Right to Information Act to disclose even how many it held.",
+  "gapComputable": false,
+  "gapReason": "Not a gap but a refusal, and the two are different quantities in any case - a within-year flow of transfers out against a stock held in one named prison on a date. Nor is there an agreed figure to subtract towards: the transfer series is relayed from a document nobody retrieved, and the refused figure was never produced at all. The Public Information Officer declined the aggregate along with the identities, relying on a 2008 Uttar Pradesh circular and a third-party-information ground, so the smaller and less sensitive number was withheld with the larger one.",
+  "provenanceRefs": [
+   "P-88"
+  ],
+  "ledgerRefs": [
+   "L-0134"
+  ],
+  "notes": "The order of the two sides is the argument. Moving a detenu across the territorial boundary moved the Right to Information addressee with him, from a department in Srinagar with a relationship to his family, community, courts and press, to a prison administration in another State with none. The transfer power and the information refusal are the same fact seen twice, and this is the cleanest withheld in the phase precisely because the refusal is dated, addressed and attributed, and covered the bare number."
+ },
+ {
+  "id": "PR-38",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "The suspension orders published after the judgment, against the ones refused before it",
+  "a": {
+   "series": "jk-published-suspension-orders",
+   "label": "Suspension orders published by the J&K Home Department, from January 2020"
+  },
+  "b": {
+   "absenceFrom": "L-0136",
+   "absenceIndex": 0,
+   "label": "The orders that imposed the August 2019 blackout - the Supreme Court asked for them and did not get them"
+  },
+  "framing": "The series that measures compliance with the publication direction begins in the month the direction was given, and the orders it does not contain are the ones the Union claimed privilege over when the Court ordered their production three months earlier.",
+  "gapComputable": false,
+  "gapReason": "There is nothing to subtract. One side is a count of orders in a numbered series that began in January 2020; the other is the complete absence of any 2019 order from that series or from any archive, and the reason it is absent is a refusal rather than a shortfall. Nor are the two sides the same object even in kind: the published series consists of confirmations of police directions, and what was asked for in October 2019 was the orders by which communication had been blocked. A difference between a count and a refusal is not a quantity.",
+  "provenanceRefs": [
+   "P-95",
+   "P-95"
+  ],
+  "ledgerRefs": [
+   "L-0136",
+   "L-0140"
+  ],
+  "notes": "The order of the two sides is the argument and it runs in the government's favour on one half. The publication is real: the Department began posting numbered orders within days of the judgment, publication is written into the order's own distribution list alongside the press and the Gazette, and the mechanism can be shown to have existed in 2019 because unrelated Departmental orders carry the same website line throughout that year. That is what makes the 2019 zero a finding rather than a coverage gap. This pair is deliberately NOT a restatement of the all-India orders-issued-against-orders-published pair: for J&K the second side is no longer empty after January 2020, which is a different situation from the national one, and the two must not be conflated."
+ },
+ {
+  "id": "PR-39",
+  "kind": "contested",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "Three official numbers for how many suspension orders J&K has issued, and no Union count at all",
+  "a": {
+   "competingAccountsFrom": "P-95",
+   "label": "What the published series, the UT and the police file numbers each say the order count is"
+  },
+  "b": {
+   "absenceFrom": "L-0138",
+   "absenceIndex": 0,
+   "label": "A Union count of J&K suspensions - declined rather than unavailable"
+  },
+  "framing": "Three incommensurable official numbers exist for orders in one territory, and the Union that holds the power in that territory keeps none of them, on the ground that police is a State subject in a place that is not a State.",
+  "gapComputable": false,
+  "gapReason": "The three numbers on one side are on different windows and different definitions and cannot be netted against each other, let alone against the other side. The derived series count covers calendar years on partial archive coverage; the UT's 93 runs from the judgment to an undated closing date and mixes at least two kinds of order; and the Authorized Officers' file references are not counts of anything at all. The other side is not a smaller number but the absence of any number: both Union bodies have said they hold no record, and the mechanism is a classification decision that put internet suspension outside the national crime-records apparatus with no proposal to bring it in. Subtraction across a set of incommensurable counts and a non-existent one is not available in any form.",
+  "provenanceRefs": [
+   "P-95",
+   "P-95",
+   "P-54"
+  ],
+  "ledgerRefs": [
+   "L-0138",
+   "L-0136"
+  ],
+  "notes": "Neither side is a series and the pair is carried because each is misread alone. The UT's 93 shown by itself reads as a parliamentary finding, which it is not - the Committee asked and the scrutinised party wrote back a number that nobody verified, sampled or reconciled, and the report's formatting makes that easy to miss. The absence shown by itself reads as a data gap, when the Union's own answer to the counting question was to point Parliament at the UT's website rather than to say whether it holds the number: it declined to occupy either position. The Committee's own conclusion is the connective tissue - that there is no mechanism to verify any count, because the only shutdown figures anywhere in its report are self-reported by the bodies doing the shutting down."
+ },
+ {
+  "id": "PR-40",
+  "kind": "contested",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "Four official turnout values for one election, and the report that would settle them",
+  "a": {
+   "competingAccountsFrom": "P-98",
+   "label": "What the Election Commission has published the turnout to be"
+  },
+  "b": {
+   "absenceFrom": "L-0142",
+   "absenceIndex": 0,
+   "label": "The statistical report that would fix the basis - not published, for J&K or for any state polled in 2024"
+  },
+  "framing": "The Commission published four values for one 2024 turnout quantity and disclosed in its own chart footnote that its comparison changes basis at the final point, and the document that would settle which value is which does not exist for any state polled that year.",
+  "gapComputable": false,
+  "gapReason": "The differences between the four values are not a gap but four different definitions of one quantity, and two of the five constituency figures move down rather than up between documents, so they cannot even be ordered as provisional and final. On the other side there is no figure at all to subtract towards: the statistical report is missing, so the postal-inclusive turnout on which the 2014 comparison stands cannot be computed for 2024 from anything published. A difference between a set of incompatible bases and a non-existent document is not a quantity.",
+  "provenanceRefs": [
+   "P-98"
+  ],
+  "ledgerRefs": [
+   "L-0142"
+  ],
+  "notes": "Shown alone, the four values look like ordinary revision and the absence looks like a delay. Together they are the finding: the basis is unstable and the instrument that would stabilise it is missing for a whole cohort of elections. The absence must not be presented as J&K-specific - it applies to all eight state assemblies polled in 2024 - and the four-value divergence must not be presented as error, since each value is correct on its own basis and the Commission discloses the change in a footnote to the chart that carries it."
+ },
+ {
+  "id": "PR-41",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "Turnout, against the thing it is used as a proxy for",
+  "a": {
+   "series": "jk-assembly-turnout",
+   "label": "Votes cast as a share of registered electors"
+  },
+  "b": {
+   "absenceFrom": "L-0142",
+   "absenceIndex": 1,
+   "label": "Acceptance of the constitutional arrangement - no agreed definition exists"
+  },
+  "framing": "Every argument about what the 2024 turnout means is an argument about a quantity with no definition, and turnout is pressed into service as its proxy precisely because the thing itself cannot be measured.",
+  "gapComputable": false,
+  "gapReason": "There is nothing on the second side to subtract. Turnout is a ratio of votes to electors and acceptance of a constitutional arrangement is not a quantity at all: no agreed definition of it exists, so it could not be collected even in principle, and no arithmetic connects a participation rate to a proposition about legitimacy. The two are placed together so that a turnout figure is not read as an answer to a question it does not address.",
+  "provenanceRefs": [
+   "P-98"
+  ],
+  "ledgerRefs": [
+   "L-0142",
+   "L-0141"
+  ],
+  "notes": "The pair is carried because the turnout figure is unusually easy to over-read in both directions. A 63.88 per cent assembly turnout is above the 2024 parliamentary figure in the same territory and below the 2014 assembly figure recomputed on the same territory, so it supports a rise and a fall depending on the comparator chosen; and its divisional split of 55.50 per cent in Kashmir against 73.15 per cent in Jammu, with Srinagar-city constituencies as low as 19.81 per cent, is not visible in the headline at all. None of that bears on the second side, which remains undefined."
+ },
+ {
+  "id": "PR-42",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "Domicile certificates issued, against the sub-count the Union would not publish",
+  "a": {
+   "series": "jk-domicile-certificates-issued",
+   "label": "Certificates issued, as the Union published them"
+  },
+  "b": {
+   "absenceFrom": "L-0144",
+   "absenceIndex": 0,
+   "label": "Certificates to persons who were not previously permanent residents - unpublished by the Union, and produced within months once an Assembly asked"
+  },
+  "framing": "The Union published 3.2 million certificates and, once, the 3.1 million of them that went to people who already held or depended on permanent-resident status, and never published the complement that the whole argument is about.",
+  "gapComputable": false,
+  "gapReason": "The residual is a real subtraction and is not the missing quantity. Taking 3,108,682 from 3,231,353 leaves 122,671, but that is a mixture the reply gives no way to decompose: it necessarily contains persons on the migrant limb, children of central-government officials, children of qualifying parents, and persons entitled to a permanent-resident certificate who never held one in their own name, because the published denominator is certificate-holding rather than entitlement. Presenting it as a count of newcomers would be exactly the laundering this instrument exists to prevent. The one figure that addresses the second side, 83,742, is on a different period under a different category name and cannot be netted against anything here.",
+  "provenanceRefs": [
+   "P-89"
+  ],
+  "ledgerRefs": [
+   "L-0144"
+  ],
+  "notes": "The order of the two sides is the argument, and it cuts for the government on one half: 3.1 million of 3.2 million certificates converted an existing status, which is a conversion rather than an influx and is the strongest single fact the case for has. What the pair adds is that the Union published that half and not the other, for five and a half years, while its own answers show the split was separable from the start - and that the complement appeared within months of a legislature existing to ask for it. That is what makes this a not-published rather than a not-collected."
+ },
+ {
+  "id": "PR-43",
+  "kind": "contested",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "Four units for one land count, and the year-wise series with a stated unit that nobody publishes",
+  "a": {
+   "competingAccountsFrom": "P-89",
+   "label": "What the Union and the Assembly have said the non-resident land count is"
+  },
+  "b": {
+   "absenceFrom": "L-0145",
+   "absenceIndex": 0,
+   "label": "Year-wise, district-wise transfers with the unit stated - not published by the Union, which stopped in 2023"
+  },
+  "framing": "Five official answers give the same quantity in four units and two irreconcilable levels, and the Union's own series ends in 2023 while the count itself continues in a legislature the Union says holds the subject.",
+  "gapComputable": false,
+  "gapReason": "There is nothing to subtract. Properties, plots, persons and area are four different objects, one answer states no period at all, and two official figures - two persons since August 2019 against 57 persons in calendar 2021 alone - cannot both describe the same object without an explanation no document gives. On the other side there is no published Union series at all after 2022. And the relayed year breakdown that would close the 2019 stub and 2023 does not reconcile, giving 512 against a stated 631 with no outlet printing 2023, so the residual must not be reconstructed by subtraction.",
+  "provenanceRefs": [
+   "P-89"
+  ],
+  "ledgerRefs": [
+   "L-0145"
+  ],
+  "notes": "Both sides are misread alone. The counts shown alone read as a trend, when the unit changes under them and the Union's own two answers disagree by an order of magnitude about the same window. The absence shown alone reads as concealment, when the more precise finding is a termination: the Union answered whenever asked until April 2023 and then published nothing, while the J&K Revenue Department went on holding district, area and value detail and produced all three when a restored Assembly asked. And the whole count sits under a definitional caution neither side can ignore, since after 31 October 2019 a buyer from Kargil is a person from outside the territory by construction."
+ },
+ {
+  "id": "PR-44",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "Seats counted empty, against the causes the statute requires and nobody publishes",
+  "a": {
+   "series": "jk-panchayat-seats-vacant",
+   "label": "Panchayat and sarpanch seats recorded vacant"
+  },
+  "b": {
+   "absenceFrom": "L-0146",
+   "absenceIndex": 0,
+   "label": "The cause recorded against each - statutorily required to exist before the seat can be filled, and published for one cause only"
+  },
+  "framing": "The administration counts the empty seats to the unit and publishes the cause of exactly one of them, leaving 725 seats emptied by death, resignation and 'etc' in its own words - in a system where the statute makes the cause a condition of filling the seat.",
+  "gapComputable": false,
+  "gapReason": "The residual is a real subtraction and is not a breakdown. Of the 1,032-seat increase between the two points, 307 are attributed to the election of Block Development Council chairpersons, leaving 725 unattributed - but that residual mixes death, resignation, disqualification and whatever the authority's 'etc' covers, and nothing in the published record decomposes it. A single number standing for four causes is not a cause series, and no arithmetic can separate them.",
+  "provenanceRefs": [
+   "P-93"
+  ],
+  "ledgerRefs": [
+   "L-0146"
+  ],
+  "notes": "The order of the sides is the argument, and the second side is unusually well grounded: section 8(1) of the Panchayati Raj Act makes the cause of a vacancy and its duration a statutory element, so the determination must be made before a by-election can be called, and the department annexed halqa-wise lists of vacant seats to its own orders. The only disaggregation that exists anywhere is a spoken remark at a 2019 press conference giving around five resignations and around 33 deaths, set against departmental accounts of hundreds of resignations announced in newspaper advertisements of which fifty were formally accepted. A vacancy series that cannot distinguish a seat nobody stood for from a seat whose holder was killed is not a vacancy series."
+ },
+ {
+  "id": "PR-45",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "Complaints the national Commission registers from J&K, against the share it may not investigate",
+  "a": {
+   "series": "jk-nhrc-complaints",
+   "label": "Cases from J&K registered with the National Human Rights Commission"
+  },
+  "b": {
+   "absenceFrom": "L-0148",
+   "absenceIndex": 0,
+   "label": "The share of them naming the Army or a central armed police force - the Commission may only seek a report, and has never published the number"
+  },
+  "framing": "Registrations from the territory have risen fivefold since the State Commission was abolished, and nobody publishes what fraction of them concern respondents the national Commission is barred by statute from investigating.",
+  "gapComputable": false,
+  "gapReason": "There is nothing to subtract. The first side is a count of cases and the second is a share of that same count which has never been published in any form, so no residual exists to compute. The one column in the instrument that looks as though it might supply it does not: the Defence and Para-Military custodial column reads zero for J&K in every year, but it records intimations received under a duty addressed to District Magistrates and Superintendents of Police that does not run to the armed forces at all - so its zero is a property of the reporting duty and must never be substituted for the missing share.",
+  "provenanceRefs": [
+   "P-97"
+  ],
+  "ledgerRefs": [
+   "L-0148"
+  ],
+  "notes": "The order of the sides is the argument, and it is the whole of the substitution question. The rise from 194 to 995 is the strongest single fact the case for has, and it is not disputed. What it cannot establish on its own is whether the body receiving those cases can do anything about the respondents they name, because section 19 confines the Commission in respect of the armed forces to seeking a report from the Central Government and then dropping the matter or recommending. The missing number is producible by the holder and by nobody else, since the Commission assigns an incident code to every case and records the state of origin of every case and prints both facts separately in the same document."
+ },
+ {
+  "id": "PR-46",
+  "kind": "coverage-usage",
+  "domain": "governance",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "Cases the national Commission used to hand to a state body, against the caseload nobody inherited",
+  "a": {
+   "series": "jk-nhrc-cases-transferred-to-shrc",
+   "label": "J&K cases transferred to a State Human Rights Commission"
+  },
+  "b": {
+   "absenceFrom": "L-0149",
+   "absenceIndex": 0,
+   "label": "What became of the cases pending before the abolished commissions - the winding-up orders do not use the word"
+  },
+  "framing": "The national Commission's own disposal table records the abolition as a column that runs 38, 51, 10 and then zero forever, and the orders that caused it dispose of vehicles and furniture by name and say nothing about a pending case.",
+  "gapComputable": false,
+  "gapReason": "The two sides are not the same population and neither is a residual of the other. The first counts cases the national Commission sent to a state body in a given year; the second is the stock of matters already before the state bodies when they were abolished, for which no figure has ever been published - and for the information commission the last published pendency figure is five years stale at abolition, so it cannot even be used as a proxy. Subtraction would imply a subset relation that no instrument asserts.",
+  "provenanceRefs": [
+   "P-97"
+  ],
+  "ledgerRefs": [
+   "L-0149",
+   "L-0148"
+  ],
+  "notes": "Each side is misread alone. The zero column looks like a fall in referrals and is a structural consequence of there being no counterparty, unfootnoted in every volume that prints it. The absence looks like a records-management problem and is measurable at both ends for at least one of the seven commissions: the Central Information Commission's own published index shows no decision against any J&K public authority until 15 May 2020, 197 days after the state forum ceased. That is a rare instance in this phase of an absence with hard edges on both sides, and both edges come from the successor body's own index."
+ },
+ {
+  "id": "PR-47",
+  "kind": "coverage-usage",
+  "domain": "federalism",
+  "lenses": [
+   "kashmir"
+  ],
+  "title": "Finance Commission grants allocated to J&K's panchayats, against grants released",
+  "a": {
+   "series": "jk-xiv-fc-panchayat-grants-allocated",
+   "label": "Allocated to Gram Panchayats under the XIV Finance Commission award"
+  },
+  "b": {
+   "series": "jk-xiv-fc-panchayat-grants-released",
+   "label": "Actually released"
+  },
+  "framing": "Both sides come from one table in one written answer, in one unit, on one recipient - so the gap is a real subtraction rather than a comparison, and it runs from 6 crore rupees in the first year to the whole 1,049.49 crore of the last.",
+  "gapComputable": true,
+  "provenanceRefs": [
+   "P-99"
+  ],
+  "ledgerRefs": [
+   "L-0147",
+   "L-0146"
+  ],
+  "notes": "THE ONLY PAIR IN THIS DROP WHOSE GAP IS COMPUTABLE, and it is worth saying why the other thirteen are not: everywhere else in this phase the two sides are on different units, different populations, different dates or different instruments, or one side does not exist at all. Here they are two columns of one annexure, printed side by side by the holder, in rupees crore, for the same recipient and the same years. The subtraction gives 6.24, 111.32, 204.18, 234.57 and 1,049.49 crore rupees year by year, and 1,605.80 over the award - and that total, together with the 53.64 per cent release rate, is DERIVED here and is stated nowhere in the answer. Read the gap with two cautions. It is not new: an earlier award records 81 per cent of an earmark unsecured for non-fulfilment of prescribed conditions, so shortfall against allocation has a precedent with a stated cause. And the final year carries two facts at once - the referent changed on 31 October 2019, seven months in, and the release was zero - which nothing retrieved connects, so the pair must not be read as showing that the reorganisation stopped the money."
  }
 ]
