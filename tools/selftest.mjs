@@ -388,6 +388,14 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
     const BRANCHES = [
       ['HTTP no response', 'a plausible path that resolves to nothing'],
       ['where the path states application/pdf', 'a soft-404: 200 serving HTML for a .pdf path'],
+      // Both recorded as HTTP 200 in the fixture, deliberately. They ARE reachable; reachability is
+      // not the test. This branch was added after two live records were found citing a wildcard
+      // listing while naming specific Government Orders — it had no path extension, so no
+      // content-type was asserted, so a 200 passed. The wildcard .pdf variants were caught only
+      // because their extension happened to trigger the content-type branch: an accident, not the
+      // rule working. Rejected on shape, before any fetch.
+      ["wildcard LISTING interface", 'an archive wildcard that answers 200 and is not a document'],
+      ['bare CDX endpoint with no query', 'a search API cited as though it were a source'],
     ];
     for (const [needle, why] of BRANCHES) {
       if (fired.out.includes(needle)) notes.push(`  url-check fires on ${why}`);

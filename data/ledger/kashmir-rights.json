@@ -657,8 +657,8 @@
         "tier": "T1"
       },
       {
-        "name": "Government of Jammu and Kashmir, Home Department, Government Order No. Home-07 (TSTS) of 2021 dated 5 February 2021, revoking the restrictions on mobile data and fixed line placed by Home-02 (TSTS) of 2021, and recording the Special Committee's sixth meeting of 4 February 2021. Retrieved from an Internet Archive capture of the Department's own file and read",
-        "url": "https://web.archive.org/web/*/jkhome.nic.in/*",
+        "name": "Government of Jammu and Kashmir, Home Department, Government Order No. Home-07 (TSTS) of 2021 dated 5 February 2021, revoking the restrictions on mobile data and fixed line placed by Home-02 (TSTS) of 2021, and recording the Special Committee's sixth meeting of 4 February 2021. Retrieved from an Internet Archive capture of the Department's own file and read. Cited as the reproducible archive INVENTORY from which these orders were enumerated, not as a wildcard listing: a /web/*/ URL is the archive's search interface and retrieves no document. Each order named here is recoverable from this inventory as a /web/<timestamp>id_/ snapshot",
+        "url": "https://web.archive.org/cdx/search/cdx?url=jkhome.nic.in&matchType=domain&output=text&fl=original,timestamp&collapse=urlkey&limit=20000",
         "tier": "T1"
       },
       {

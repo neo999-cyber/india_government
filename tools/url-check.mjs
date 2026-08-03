@@ -155,6 +155,24 @@ const expectationFor = (url) => {
   try { return EXPECTED[extname(new URL(url).pathname).toLowerCase()] ?? null; } catch { return null; }
 };
 
+/**
+ * A SEARCH INTERFACE IS NEVER A DOCUMENT, and status alone cannot tell you so — it answers 200.
+ *
+ * Found by hand, not by this tool, after the first pass of citation fixes: two records cited
+ * the archive wildcard form on jkhome.nic.in while naming specific Government Orders. That URL has no
+ * path extension, so no content-type was asserted, so a 200 passed. The wildcard `.pdf` variants
+ * were caught only because their extension happened to trigger the content-type branch — an
+ * accident, not the rule working.
+ *
+ * These forms are rejected on their shape rather than their response: the archive's wildcard listing,
+ * its timestamp-less `/web/` redirect-to-latest, and a bare CDX endpoint carrying no query.
+ */
+const INTERFACE_NOT_DOCUMENT = [
+  { re: /web\.archive\.org\/web\/\*/i, why: "the archive's wildcard LISTING interface — cite the /web/<timestamp>id_/ snapshot" },
+  { re: /web\.archive\.org\/cdx\/search\/cdx\/?(\?)?$/i, why: 'a bare CDX endpoint with no query — cite the exact query that was run' },
+];
+const interfaceFault = (url) => INTERFACE_NOT_DOCUMENT.find((f) => f.re.test(url))?.why ?? null;
+
 // ---------------------------------------------------------------- fetch
 /**
  * curl, not fetch, and with the resolver fallback M1 records: this environment's system resolver
@@ -258,8 +276,14 @@ const failures = [];
 const unverifiable = [];
 for (const url of targets) {
   const want = expectationFor(url);
-  const r = recorded ? (recorded[url] ?? { status: 0, contentType: '' }) : probe(url);
   const where = live.get(url).map((w) => `${w.layer}:${w.id}`).join(', ');
+
+  // Shape first, and it does not need the network: a search interface answers 200 and is still not
+  // the document the record cites. Checked before fetching so it cannot be masked by a good status.
+  const iface = interfaceFault(url);
+  if (iface) { failures.push({ url, where, status: -1, contentType: '', want: null, iface }); continue; }
+
+  const r = recorded ? (recorded[url] ?? { status: 0, contentType: '' }) : probe(url);
   const ctypeBad = want && r.status === 200 && !(r.contentType || '').includes(want.split('/')[1] ?? want);
   if (r.status === 200 && !ctypeBad) {
     console.log(`  ok  ${r.status} ${r.contentType || '-'}${r.viaResolver ? ' (via 1.1.1.1)' : ''}  ${url}`);
@@ -279,8 +303,8 @@ if (unverifiable.length > 0) {
 if (failures.length > 0) {
   console.error(`\nurl-check FAILED — ${failures.length} of ${targets.length} URL(s) did not confirm`);
   for (const f of failures) {
-    const why = f.status !== 200
-      ? `HTTP ${f.status || 'no response'}`
+    const why = f.iface ? `NOT A DOCUMENT — ${f.iface}`
+      : f.status !== 200 ? `HTTP ${f.status || 'no response'}`
       : `served ${f.contentType || 'no content-type'} where the path states ${f.want}`;
     console.error(`  - ${f.url}\n      ${why}  ·  cited by ${f.where}`);
   }
