@@ -27,6 +27,16 @@
         "name": "SOFT-404 - a path stating .pdf that answers 200 with an HTML error page. Status alone passes this; only the content-type assertion catches it",
         "url": "https://example.gov.in/reports/annual-2019.pdf",
         "tier": "T1"
+      },
+      {
+        "name": "INTERFACE, NOT A DOCUMENT - the archive's wildcard listing. Answers 200, states no path extension, and so passed on status alone until the shape check was added",
+        "url": "https://web.archive.org/web/*/jkhome.nic.in/*",
+        "tier": "T1"
+      },
+      {
+        "name": "INTERFACE, NOT A DOCUMENT - a bare CDX endpoint carrying no query",
+        "url": "https://web.archive.org/cdx/search/cdx",
+        "tier": "T4"
       }
     ],
     "confidence": "high",
