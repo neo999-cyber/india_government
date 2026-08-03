@@ -341,6 +341,57 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
   else notes.push('  domain-coverage stays silent on the live corpus — every domain value has a surface and every record reaches it');
 }
 
+// 3f. url-check: a URL added or amended in a cycle is fetched before it lands.
+//
+// A THIRD COUNTER, and separate from the output gates for a structural reason. `reachability` and
+// `domain-coverage` read BUILT OUTPUT; this one reads `/data` and the NETWORK. It cannot join the
+// validator count either — validate must stay deterministic and offline, and a rule that reaches
+// the network in the build path would make every build hostage to a remote host being up.
+//
+// BOTH FIXTURES RUN IN RECORDED MODE, so the selftest itself needs no network. The fires-correctly
+// root is DERIVED FROM A REAL REGRESSION (Rule 2), not written from a model of one: it carries the
+// two URLs actually written into a working tree during cycle 2026-08-03f — a plausible Amnesty
+// document path and a plausible Lok Sabha Secretariat path — together with the responses actually
+// observed from them, plus the soft-404 branch a status-only check would pass.
+//
+// The three branches are pinned separately on purpose. A 403, a no-response and a 200-serving-HTML
+// fail for different reasons, and the last is the one that reads as success.
+{
+  const check = (args) => {
+    try {
+      execFileSync(process.execPath, [join(ROOT, 'tools', 'url-check.mjs'), ...args], {
+        // stderr piped: the fixture is EXPECTED to fail, and letting its report through would make
+        // a passing selftest read as a broken one.
+        encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, NO_COLOR: '1' },
+      });
+      return { code: 0, out: '' };
+    } catch (err) {
+      return { code: err.status ?? 1, out: `${err.stdout ?? ''}${err.stderr ?? ''}` };
+    }
+  };
+  const root = (d) => join(ROOT, 'tests', 'fixtures', d);
+  const guessed = root('url-check-guessed');
+  const fired = check(['--all', '--data', guessed, '--responses', join(guessed, 'responses.json')]);
+  if (fired.code !== 1) {
+    failures.push(`url-check did not fire on tests/fixtures/url-check-guessed (exit ${fired.code}) — a guessed URL that does not serve its document must fail`);
+  } else {
+    // Assert each branch by its own message. Without this the fixture passes on any failure,
+    // including one from a branch it is not testing, and a branch could stop firing unnoticed.
+    const BRANCHES = [
+      ['HTTP 403', 'a plausible path the host refuses'],
+      ['HTTP no response', 'a plausible path that resolves to nothing'],
+      ['where the path states application/pdf', 'a soft-404: 200 serving HTML for a .pdf path'],
+    ];
+    for (const [needle, why] of BRANCHES) {
+      if (fired.out.includes(needle)) notes.push(`  url-check fires on ${why}`);
+      else failures.push(`url-check did not report the branch "${needle}" (${why}) — the fixture would pass on another branch's failure`);
+    }
+  }
+  const clean = check(['--all', '--data', root('url-check-clean'), '--responses', join(root('url-check-clean'), 'responses.json')]);
+  if (clean.code !== 0) failures.push(`url-check fired on tests/fixtures/url-check-clean (exit ${clean.code}) — URLs that do serve their document must pass, including one with no path extension`);
+  else notes.push('  url-check stays silent on URLs that serve their document, and asserts no content-type where the path states no extension');
+}
+
 // 4. Strictness must be live: a misspelled keyword cannot be silently ignored.
 // Under a lax config this schema compiles and lets the invalid record through.
 const typoSchema = {

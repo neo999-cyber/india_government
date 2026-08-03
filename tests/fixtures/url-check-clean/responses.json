@@ -1,0 +1,6 @@
+{
+  "_comment": "Responses ACTUALLY OBSERVED on 2026-08-03. The third entry has no path extension, so url-check asserts status only - guessing a content-type would invent a contract the source never offered.",
+  "https://www.amnesty.org/en/wp-content/uploads/2022/09/ASA2059592022ENGLISH.pdf": { "status": 200, "contentType": "application/pdf" },
+  "http://web.archive.org/web/20211202141356if_/http://164.100.47.193/lsscommittee/Communications%20and%20Information%20Technology/17_Communications_and_Information_Technology_26.pdf": { "status": 200, "contentType": "application/pdf" },
+  "https://www.eci.gov.in/": { "status": 200, "contentType": "text/html" }
+}

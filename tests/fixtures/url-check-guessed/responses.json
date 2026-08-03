@@ -1,0 +1,15 @@
+{
+  "_comment": "Responses ACTUALLY OBSERVED from these two URLs on 2026-08-03, recorded so the fixture is deterministic and needs no network. Rule 2: the fires-correctly case derives from a real regression, not a model of one. The third entry is the soft-404 branch: a 200 that serves HTML where the path states .pdf, which is how a removed document reads as a present one.",
+  "https://www.amnesty.org/en/documents/asa20/5959/2022/en/": {
+    "status": 403,
+    "contentType": "text/html"
+  },
+  "https://loksabhadocs.nic.in/lsscommittee/Communications%20and%20Information%20Technology/17_Communications_And_Information_Technology_26.pdf": {
+    "status": 0,
+    "contentType": ""
+  },
+  "https://example.gov.in/reports/annual-2019.pdf": {
+    "status": 200,
+    "contentType": "text/html"
+  }
+}

@@ -14,6 +14,7 @@
     "selfcheck": "node tools/stage4-selfcheck.mjs",
     "reachability": "node tools/reachability.mjs",
     "domain-coverage": "node tools/domain-coverage.mjs",
+    "url-check": "node tools/url-check.mjs",
     "dev": "next dev",
     "build": "npm run validate && next build && npm run reachability && npm run domain-coverage",
     "start": "npx serve out",
