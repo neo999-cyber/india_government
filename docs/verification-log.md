@@ -3033,3 +3033,190 @@ nothing. Either attested or removed. Now surfaced in four phases.
 ## Not deployed
 
 Stopped before deploy. Production was not checked and nothing here claims it was.
+
+---
+
+# Verification log — cycle 2026-08-03d (`no-objective` added; rescore PROPOSED, not applied)
+
+**Appended, not rewritten.** Branched from `domain-coverage`, which is branched from `lens-axis`.
+
+**The `/data` rescore in this entry has NOT been applied.** Code does not edit `/data` — raise, and
+the operator applies at source (division of labour hardened phase 4b, after a correct `exports-gdp` fix was
+silently reverted twice by wholesale drops). The instruction for this cycle was also to *report the
+rescore table before applying*. So: the schema value, its definition, the gate rule and both fixtures
+are built and proven; the 30 proposed rescores are a table and nothing more.
+
+**Consequence, stated plainly: `/data` is RED on this branch — 18 `objective-required` errors.** That
+is the rule working. It is not deployable and is not intended to be until the rescore lands.
+
+## The value
+
+Added to the `assessment` enum with its written definition in the same commit (§6 preventive half),
+verbatim as instructed, plus three sentences on what it does not mean:
+
+> **no-objective**: the record finds something real, and no objective was stated at announcement
+> against which the finding could be scored. Distinct from contested, which is about the evidence
+> supporting more than one reading. Use where nothing was claimed, not where a claim exists and its
+> outcome is unmeasured — that remains contested (see L-0096). The value asserts nothing about the
+> finding's quality: a no-objective record is as firmly established as any other, and the absence it
+> records is the absence of a claim to test, not of evidence. Roughly half the ledger is in this
+> state — conditions, trends, reporting instruments and structural absences — and before this value
+> existed all of it had to take a value that presupposes an objective, which is why contested became
+> a sink.
+
+`assessment` stays **required**. `baseline-context` unchanged and still term-gated. `no-objective` was
+added to the both-cases branch of the schema's `allOf`, so a no-objective record carries `caseFor`
+and `caseAgainst` like any other — the value records that nothing was claimed, not that nothing is
+arguable.
+
+## The gate rule — `objective-required`
+
+Fires where an assessment value that presupposes an objective sits on a record that states none.
+
+**The value set is DERIVED from the schema's own definitions, not restated**: it is the values whose
+written line contains "the objective stated at announcement" or "its stated objective". That derives
+to `worked, partly, failed, too-early` — and if the definitions are ever reworded so that none
+matches, the module throws at load rather than silently policing nothing.
+
+**Two ways to satisfy it, and the second is what makes the rule usable.** `claimAtLaunch` is the
+machine-readable objective — its own description already concedes the asymmetry that produced this
+defect: *"What the government said this would achieve, **where applicable**"*, one field optional
+because the objective may be absent, while `assessment` is required as though it never is. But eight
+live records take a real objective from a statute (RTE s26's ten per cent ceiling, s25's staffing
+norm), a court direction (Bhasin), or a process's own object (appointment on merit), and no field
+holds those. So `assessmentNote` is accepted as the alternative — which is what that field is for by
+its own description. The effect is that an objective which cannot be machine-read must be
+**declared** rather than inferred by whoever next reads the record.
+
+Deliberately **not** satisfied by a keyword in `summary` or `caseFor`. All fourteen wrong scores would
+have passed a keyword test — L-0071's `caseFor` names an objective in terms, and it is an objective
+that was **met**, by a policy the record is not about.
+
+### Fixtures, both directions
+
+| fixture | proves |
+|---|---|
+| `broken/ledger/L-9503` | a scored value on a record with no claimAtLaunch and no assessmentNote |
+| `objective-from-statute/` | a scored value whose objective is a statute named in assessmentNote **stays clean** |
+
+The second is the one that decides whether the rule is usable. A rule demanding `claimAtLaunch` alone
+would fire on all eight statutory records and force a rescore on records that are correct — an
+over-firing gate, which is the kind that gets loosened in a hurry by whoever it blocks.
+
+`MUST_FIRE` 22 → 23.
+
+## What the rule finds in the live corpus: 18 records, in two kinds
+
+**13 are rescores** (the fourteenth, L-0086, carries an assessmentNote and so does not fire — correct,
+it is report-only). **5 are documentation, not rescores**: L-0028, L-0033, L-0062, L-0081, L-0098 have
+a real objective that is neither a launch claim nor declared anywhere. Each needs one
+`assessmentNote` naming its source. **The rescore alone does not clear the gate.**
+
+## GROUP A — 13 scored records with no stated objective
+
+Each was wrong before the schema change, independent of it.
+
+| id | now | → | why |
+|---|---|---|---|
+| L-0073 | `worked` | `no-objective` | Foodgrain 252→376.56 mt. No measure, no target. Its own `caseAgainst`: the gains came from area and weather, "neither of which is a policy achievement or repeatable". `worked` means a measure achieved its stated objective; there is no measure and the record's own case denies policy attribution. |
+| L-0071 | `failed` | `no-objective` | Its own `caseFor` says the procurement system "was built to secure national food self-sufficiency and did so" — the only objective on the record was **achieved**, and the depletion is its consequence. `failed` inverts the record. |
+| L-0046 | `failed` | `no-objective` | Road deaths 1.41→1.77 lakh. A condition. No safety target or measure named anywhere on the record. |
+| L-0063 | `failed` | `no-objective` | Graduate unemployment 29.1% against 3.4%. A structural relationship; `caseFor` argues it partly reflects educational success. |
+| L-0064 | `failed` | `no-objective` | Typed `shock` — "a disruption arriving from outside the government's control" — so `failed`, which requires a measure, contradicts the record's own type. The finding is the missing death count. |
+| L-0065 | `failed` | `no-objective` | A comparative condition against Vietnam and Bangladesh. No Indian structural-transformation target is cited. |
+| L-0032 | `partly` | `no-objective` | A sequence of frauds and how late each was detected. No supervisory detection target exists. |
+| L-0049 | `partly` | `no-objective` | Railway safety record across the period. No stated safety objective on the record. |
+| L-0069 | `partly` | `no-objective` | MSP, procurement and the legal-guarantee **demand**. A demand is not a government objective; nothing was claimed to test. |
+| L-0103 | `partly` | `no-objective` | AISHE's lag grew 12→25+ months. No publication-timeliness commitment is cited. |
+| L-0104 | `partly` | `no-objective` | **Closest call in the group.** The denominator doing half the work is close to a measurement dispute, which would argue `contested`. Filed `no-objective` because the record's subject is the enrolment trajectory and no GER target is on the record; the denominator point already lives in the cases. Flagged for review. |
+| L-0021 | `too-early` | `no-objective` | A foreign government's tariff. `too-early` reads "has not run long enough for **its stated objective** to be testable" — India stated none, and the measure is not India's. **Both cases empty — see below.** |
+| L-0022 | `too-early` | `no-objective` | A statistical rebasing. An instrument, not a measure with an objective. **Both cases empty — see below.** |
+
+**Blocking dependency:** `no-objective` is in the both-cases branch, so rescoring **L-0021 and L-0022
+requires `caseFor` and `caseAgainst` to be authored first.** They cannot simply be relabelled.
+
+## The empty-pair defect — three records, one structural cause
+
+L-0021, L-0022 and **L-0033** (a third, not previously named) carry `caseFor` and `caseAgainst` both
+empty. They are not three coincidences. The schema's both-cases branch reads
+`worked, partly, failed, reversed, contested` — **`too-early` is omitted**, and it is the only
+non-baseline value that can carry an empty pair. All three records that do are `too-early`; the other
+two `too-early` records (L-0061, L-0086) happen to carry both cases and would be unaffected.
+
+**Reported, not fixed.** Adding `too-early` to the branch is a one-line schema change that would
+immediately red-gate three records pending authoring, and it was not in this cycle's instruction.
+
+## GROUP B — the 42 `contested` records with no objective: 17 move, 25 stay
+
+**This diverges from the expectation that most would move, so the test is stated rather than the
+conclusion.** Both facts are true of all 42 — no objective, and more than one reading available — so
+the question is which is the sharper fact. The test applied:
+
+> `contested` is retained where the record's central finding is a **rival account**: two instruments
+> or measures disagreeing, two incompatible factual claims no forum has resolved, or a live normative
+> question the record declines to resolve. `no-objective` where the facts are agreed and the only
+> reason a score is impossible is that nothing was claimed.
+
+Under a looser test — "the same evidence supports two readings" — nearly all 42 stay, which is how
+`contested` became a sink in the first place. Under a stricter one — "any record with no objective
+moves" — the two values stop being distinct axes and `contested` loses the cases it exists for.
+
+### MOVE to `no-objective` — 17
+
+| id | why |
+|---|---|
+| L-0111 | A reporting instrument restated and split. Its own note: "The assessment vocabulary is built for measures with stated objectives and this record is a change to a reporting instrument." |
+| L-0112 | A column's meaning changed under an unchanged heading. Reporting instrument. |
+| L-0119 | An infiltration table published for a decade, then stopped. Reporting instrument. |
+| L-0120 | A cumulative sentence carried for a decade, then dropped. Reporting practice. |
+| L-0121 | Custodial deaths have no cell in any instrument. Structural absence; its note records that NCRB has stated no reason because it has none. |
+| L-0122 | Fifty AFSPA sanction requests, none granted, no decision rule held by anyone. |
+| L-0123 | Two quantities lost their only legislative route. |
+| L-0124 | Its own note: "no measure of the enacting authority's was withdrawn and **no stated objective went unmet**." |
+| L-0094 | A national statistic tabled for a decade then withdrawn. Same shape as L-0119/L-0120: a disclosure ending. Its note already records that "neither side of the pair describes a failure". |
+| L-0107 | The field is mandatory and filled for every teacher; the Union declines to aggregate. The finding is the non-publication. |
+| L-0117 | "The quantity that is constantly quoted and has no instrument." `caseAgainst` is that it is not a series at all. Its note separates the one genuinely contested sub-question out as "an absence with a route, not a disagreement". |
+| L-0087 | Facts agreed — referrals 71%→25%→16%. `caseFor` (discretionary, sitting days fell) and `caseAgainst` (the laws that skipped scrutiny were the most consequential) weight agreed facts. No target existed. |
+| L-0089 | Same shape. `caseFor`'s consolidation explanation is, in the record's own words, "not been demonstrated as its cause". |
+| L-0109 | `caseAgainst` is a **measurement gap** — stock published, flow not, "so nobody can say" — not a rival reading. |
+| L-0027 | The two sides argue different objects: the resolution's 88.4% recovery against the supervisory failure that preceded it. Neither is a claim being tested. |
+| L-0074 | **Flagged.** 5,892 cases against 15 convictions; the numbers are agreed. `caseFor` disputes what the denominator means, which is near a rival measure. Recommended move, lowest confidence in the group. |
+| L-0114 | **Flagged.** Its own note affirms `contested`, but what the note describes is an **asymmetry** — the state holds both terms of its own trade-off, publishes the favourable one, refuses the unfavourable one — not two readings of one thing. |
+
+### STAY `contested` — 25, with the rival account named
+
+- **Rival instruments or denominators:** L-0058 (PLFS against CMIE, opposite directions) · L-0083 (27–39.7% on completed trials against 2.8% on arrests) · L-0091 (two published closure measures) · L-0105 (sample against enumeration) · L-0078 (three indices against a specific methodological objection) · L-0059, L-0060 (rival decompositions) · L-0068 (OECD PSE accounting)
+- **Incompatible factual claims unresolved:** L-0115 (Amshipora disposal and scope of responsibility) · L-0116 ("two sides assert incompatible facts that no forum has resolved") · L-0113 (two readings of one retrieved document, per its own note)
+- **Live normative or legal question the record declines to resolve:** L-0101 (whether the conditionality is legitimate — the Supreme Court also declined) · L-0076 (a statutory entitlement against a functional obstruction) · L-0075
+- **Rival causal or predictive account of agreed data:** L-0056 (policy against private strategy — "attributing it to policy inverts cause and effect") · L-0031 (diversification against risk migration) · L-0042 (stunting improving while anaemia rose 8pp) · L-0025 (write-off as prudential practice against write-off as waiver) · L-0079 (law applies to all against timing requires explanation) · L-0019 (two departures against a pattern) · L-0040 (a scheme retained and scaled against a guarantee budget-capped into rationing) · L-0070 · L-0118 ("consent or suppression", with divergent testable predictions) · L-0020 **flagged** (adequacy of the fiscal response; no claim on the record)
+- **L-0092 — flagged, recommended STAY, against expectation.** It is one of the ten. But its own note says a précis reading and a misrepresentation reading "are both available on the same documents", which is a rival account of one act. Its note also anticipates a *different* new value — "if a value for **presentational findings** is added" — which `no-objective` is not.
+
+## L-0096 — stays `contested`, confirmed
+
+Not a no-objective record and never was. It carries a `claimAtLaunch` (MHRD: "the last chance… would
+not be allowed to continue in-service beyond 1st April 2019"). Its note states the mechanism exactly:
+worked/partly/failed are unavailable "because all three turn on **what share of the objective was
+achieved**", and the completion rate was never published. **Stated objective, unmeasured outcome** —
+a different axis from *no objective*, and the value the new definition explicitly excludes.
+
+## L-0086 — reported, not rescored
+
+`too-early` reads "the measure is in force but has not run long enough for **its stated objective** to
+be testable". What is untestable on L-0086 is a **court outcome** — the provision is before a
+Constitution Bench — and, per its own note, "how commissions apply the amended clause". Neither is the
+run-time of an objective. The definition does not cover the record, and no value in the enum does:
+`no-objective` is wrong too, because the amendment has a purpose. **A third state — in force, testable
+in principle, awaiting an external adjudication — has no value.** Recorded as a finding, not resolved:
+resolving a taxonomy in the pass that discovers it is how `differentFacts` reached seventeen records.
+
+## Gate
+
+```
+validate    INVALID — 18 objective-required errors (the rule working; rescore not applied)
+selftest    FAILED at step 1 (/data must validate) — same cause, nothing else
+            fixtures verified directly: objective-required fires on broken/,
+            stays silent on objective-from-statute/
+typecheck   clean
+```
+
+**Not deployed, and not deployable.** Production not checked; nothing here claims it was.

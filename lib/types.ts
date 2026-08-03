@@ -297,6 +297,7 @@ export type Assessment =
   | 'reversed'
   | 'contested'
   | 'too-early'
+  | 'no-objective'
   | 'baseline-context';
 
 /**

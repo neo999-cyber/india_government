@@ -89,6 +89,10 @@ const MUST_FIRE = [
   // could not tell an author which they had made — and only one of the two is unconditional.
   'lens-as-subject',
   'lens-duplicated',
+  // The objective axis, added 2026-08-03. Four of the eight assessment values are defined against
+  // "the objective stated at announcement"; nothing checked that the record had one, and fourteen
+  // records took a scored value with nothing claimed to score against.
+  'objective-required',
 ];
 
 /**
@@ -140,6 +144,12 @@ const ISOLATED = [
  */
 const MUST_STAY_CLEAN = [
   { dir: 'backlink-via-break', rule: 'back-link', why: 'a break satisfies the backlink' },
+  // The other half of objective-required, and the half that decides whether the rule is usable.
+  // Eight live records take their objective from a statute, a court direction or a process's own
+  // object rather than from a launch claim. A rule demanding claimAtLaunch alone would fire on
+  // every one of them and force a rescore on records that are correct — an over-firing gate, which
+  // is the kind that gets loosened in a hurry by whoever it blocks.
+  { dir: 'objective-from-statute', rule: 'objective-required', why: 'an objective named in assessmentNote is a declaration, not an inference' },
   // The other half of denominator-stated. A rate whose every point is pending renders no
   // figure, so there is nothing to mislabel — and firing there would push toward inventing a
   // base for a number that is not shown. Withholding is the correct response to being caught
