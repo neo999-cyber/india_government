@@ -1,0 +1,26 @@
+[
+  {
+    "id": "L-9601",
+    "title": "A scored value whose objective is a statute, named in assessmentNote",
+    "date": "2013-03-31",
+    "term": "T1",
+    "domains": [
+      "education"
+    ],
+    "type": "institutional",
+    "summary": "The live corpus has eight records like this: the objective is real but is a number in a statute, a court direction or a process's own object, and no field holds it. If the rule demanded claimAtLaunch alone it would force a rescore on every one of them, which would be an over-firing gate correcting correct records.",
+    "assessment": "failed",
+    "caseFor": "The duty is stated in the statute and the direction of travel has been positive across the period.",
+    "caseAgainst": "The statutory norm was to be met by a fixed date and it was not met by that date or since.",
+    "assessmentNote": "Assessed failed against the objective stated in the statute rather than against any programme claim - the objective being a number in the enactment, not a policy announcement. This is the alternative the rule accepts, and it is a declaration rather than an inference.",
+    "sources": [
+      {
+        "name": "Fixture, not a real source",
+        "url": "https://example.org/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "medium",
+    "asOf": "2026-08-03"
+  }
+]
