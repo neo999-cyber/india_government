@@ -183,6 +183,30 @@ What is available is **verification after the fact**: each subagent transcript r
 
 **Trigger C is a proxy.** Predicate ambiguity is not mechanically detectable; missing fixtures is a stand-in.
 
+**Both fixtures present proves the rule does what was specified. It never proves the right rule was
+specified.** Three instances in one cycle, 2026-08-03, all on `url-check` — a gate that shipped with a
+fires-correctly fixture derived from a real regression and a stays-quiet fixture, and was wrong twice
+anyway:
+
+1. **Blind to the transport.** Both fixtures ran in recorded mode, which substitutes a response map
+   for the fetch entirely. The defect was in the code path recorded mode replaces: curl exits 6 when
+   it cannot resolve a host it meets *while following a redirect*, and the tool discarded the status
+   curl had already printed. It reported ~50 live government hosts as dead. The fixtures could not
+   see it, and passed.
+2. **A classification real data overturned.** The fixtures encoded "not 200 is a failure". The corpus
+   then produced 18 hosts answering 401/403/429 — a refusal is not evidence a document is absent —
+   against 4 genuine 404s, one of the 18 cited by live records. On the specified rule the gate would
+   have blocked a good commit. The rule needed a third outcome the fixtures had no notion of.
+3. **The fixture's own motivating case fell out of scope.** One of the two guessed URLs that
+   motivated the gate returns 403, so under the corrected rule it is unverifiable rather than failed.
+   The gate catches one of the two regressions it was built for, and the selftest now asserts that
+   limitation so it cannot quietly evaporate.
+
+**Consequence:** a fixture pair is evidence about the *implementation*, not about the *predicate*.
+Where a rule's predicate depends on how the world actually answers — status codes, content types,
+transport behaviour — run it against the real corpus before trusting the fixtures, and expect the
+first real run to change the rule rather than confirm it.
+
 **D and E depend on the run noticing the stretch** — the same judgement they exist to escalate.
 
 **Nothing catches a weak argument pair.** The largest remaining exposure. Mitigated only by model routing at stage 3 and human review of the PR diff. Read this line closely before approving.

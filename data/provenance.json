@@ -2204,8 +2204,8 @@
     "tier": "T4"
    },
    {
-    "name": "Internet Archive Wayback CDX API, used to establish that no newer edition of the education budget analysis was ever archived",
-    "url": "https://web.archive.org/cdx/search/cdx",
+    "name": "Internet Archive Wayback CDX API, used to establish that no newer edition of the education budget analysis was ever archived. Cited as the exact reproducible query rather than the bare API endpoint, which returns HTTP 400 without one",
+    "url": "https://web.archive.org/cdx/search/cdx?url=education.gov.in&matchType=domain&filter=original%3A.%2AAnalysis_of_Budgeted_Expenditure.%2A&output=text&fl=original%2Ctimestamp%2Cstatuscode&collapse=urlkey",
     "tier": "T4"
    }
   ],
@@ -3302,8 +3302,8 @@
     "tier": "T1"
    },
    {
-    "name": "Internet Archive CDX index of the J&K Home Department's domain, 7,261 capture rows, from which every filename carrying the (TSTS) tag was extracted and the year-wise inventory built",
-    "url": "https://web.archive.org/cdx/search/cdx",
+    "name": "Internet Archive CDX index of the J&K Home Department's domain, 7,261 capture rows, from which every filename carrying the (TSTS) tag was extracted and the year-wise inventory built. Cited as the exact reproducible query rather than the bare API endpoint, which returns HTTP 400 without one; the query returns 7,261 rows, matching the count this record states",
+    "url": "https://web.archive.org/cdx/search/cdx?url=jkhome.nic.in&matchType=domain&output=text&fl=original,timestamp&collapse=urlkey&limit=20000",
     "tier": "T1"
    }
   ],

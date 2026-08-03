@@ -323,8 +323,8 @@
     ],
     "tier": "T1",
     "source": {
-      "name": "Government of Jammu and Kashmir, Home Department, numbered Temporary Suspension of Telecom Services orders. Enumerated from a complete Internet Archive CDX index of the Department's domain, 7,261 capture rows, extracting every PDF filename carrying the '(TSTS)' tag; the tag's meaning confirmed by retrieving individual orders in full. Five substantive orders spanning January 2020 to January 2025 were retrieved, rendered and read. The aggregation is derived by this project, not published by any holder",
-      "url": "https://web.archive.org/cdx/search/cdx",
+      "name": "Government of Jammu and Kashmir, Home Department, numbered Temporary Suspension of Telecom Services orders. Enumerated from a complete Internet Archive CDX index of the Department's domain, 7,261 capture rows, extracting every PDF filename carrying the '(TSTS)' tag; the tag's meaning confirmed by retrieving individual orders in full. Five substantive orders spanning January 2020 to January 2025 were retrieved, rendered and read. The aggregation is derived by this project, not published by any holder. Cited as the exact reproducible query rather than the bare API endpoint, which returns HTTP 400 without one; the query returns 7,261 rows, matching the count this record states",
+      "url": "https://web.archive.org/cdx/search/cdx?url=jkhome.nic.in&matchType=domain&output=text&fl=original,timestamp&collapse=urlkey&limit=20000",
       "vintage": "2026-08-03"
     },
     "calendar": "CY",

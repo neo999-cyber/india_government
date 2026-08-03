@@ -333,7 +333,7 @@
       }
     ],
     "confidence": "high",
-    "asOf": "2026-08-02",
+    "asOf": "2026-08-03",
     "caveat": "The \"10 lakh vacancies\" figure in circulation is not a figure for Indian school teaching posts at large. It covers government and Samagra Shiksha-funded aided schools; private unaided schools are wholly outside it, and the denominator is almost never stated when the number is quoted.",
     "unmeasured": [
       {
@@ -354,7 +354,7 @@
         "wouldFill": "Direct retrieval from education.gov.in/parl_ques, retried; if still unreachable, an RTI to the DoSEL Parliament Section naming Lok Sabha Unstarred 4925 of 23.03.2026, Lok Sabha Starred 210 of 04.08.2025 and Rajya Sabha Starred 193 of 17.12.2025, requesting the annexures as tabled. Documents tabled in Parliament are public records."
       }
     ],
-    "assessmentNote": "Scored contested, not reversed. `measure` in the reversed definition means an intervention that acts on the world, and every other reversed record withdraws something that was doing work. Here recruitment, funding and the PRABANDH returns all continue; what stopped is an answer. A disclosure practice is not a measure. Not failed either - neither side of the pair describes a failure: caseFor defends the change as competent statistical practice, caseAgainst attacks it as evasion, and neither says the Ministry tried something and could not. The definition of reversed was amended on 2026-08-02 to state this, because this record was its third candidate mechanism in two weeks."
+    "assessmentNote": "Scored no-objective, and not reversed. No objective was stated at announcement for a disclosure practice, so there is nothing to score the withdrawal against. `measure` in the reversed definition means an intervention that acts on the world, and every other reversed record withdraws something that was doing work. Here recruitment, funding and the PRABANDH returns all continue; what stopped is an answer. A disclosure practice is not a measure. Not failed either - neither side of the pair describes a failure: caseFor defends the change as competent statistical practice, caseAgainst attacks it as evasion, and neither says the Ministry tried something and could not. The definition of reversed was amended on 2026-08-02 to state this, because this record was its third candidate mechanism in two weeks. VALUE-AND-NOTE RECONCILED 2026-08-03: this record was rescored contested -> no-objective in the pass that introduced no-objective to drain the contested sink, and the note was not rewritten with it, so the reasoning of record argued a value the field had abandoned. Nothing in the validator sees that - both halves are individually valid. The substantive reasoning below stood up and is preserved verbatim; only the value it names has been corrected."
   },
   {
     "id": "L-0095",
