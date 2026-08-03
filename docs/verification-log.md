@@ -3367,3 +3367,74 @@ This was the third of the three items queued before phase 12. The other two are 
 
 **`demography`** — a decision, not a note. Zero records; its own definition says it "describes the
 word, not observed practice". Either attested or removed.
+
+## Addendum to 2026-08-03d — L-0021 and L-0022 landed; retrieval FAILED on both documents
+
+### Landed
+
+**L-0021** — `caseFor` and `caseAgainst` as drafted, then `too-early` → `no-objective`. The pair is
+about the size and durability of the shock, not about India's handling of it, because the record
+carries no material on any Indian response. Both sides rest on T4 sources and the record's own
+`confidence: low`; nothing in the pair is pinned to a primary document, and that is a property of the
+record as it stands, not of the drafting.
+
+**L-0022** — `caseAgainst` as drafted; `caseFor` **shrunk before landing**, then `too-early` →
+`no-objective`.
+
+The drafted `caseFor` argued that the previous series "had been criticised for single deflation for a
+decade". **That criticism is not on the record and was not retrieved.** It was cut rather than
+sourced. What landed is only what MoSPI's own press note of 27 February 2026 — already a T1 source on
+the record — establishes: that the methodology moved to double deflation, a Supply-Use Table framework
+and new source data, and that the basis was published with the release. The case now ends by saying
+that is the whole of it on the sources retrieved.
+
+**A shorter honest case beats a fuller unsourced one**, and the general form is worth keeping: a case
+drafted from a record can only ever be as strong as that record's sources, and padding it with
+recalled context is how an unsourced claim enters through the side the gate does not watch.
+
+### Retrieval — one task, two documents, BOTH FAILED
+
+Reported as failure rather than worked around.
+
+**1. RBI ECL final directions, 27 April 2026 — NOT RETRIEVED.**
+The primary press release exists at a stable RBI URL
+(`rbidocs.rbi.org.in/rdocs/PressRelease/PDFs/PR150994739A099E843668A75A7F92C9E9BD1.PDF`) and **failed
+to fetch twice**, both times on a transport error rather than a 404 — the document is there and could
+not be pulled.
+
+Worse than a plain failure, and the reason not to fall back on the secondary hits: **the secondary
+sources disagree with RBI's own site about what the instrument is called.** Search results give
+"Reserve Bank of India (Commercial Banks – Asset Classification, Provisioning and Income Recognition)
+Directions, 2026", while RBI's Master Directions page at `id=13146` returns a differently-ordered and
+differently-dated instrument — "Reserve Bank of India (Commercial Banks – Income Recognition, Asset
+Classification and Provisioning) Directions, **2025**", issued 28 November 2025. Those are two
+documents, and which of them is the 27 April 2026 ECL instrument cannot be settled from the secondary
+material. **Citing either would be a guess wearing a T1 badge.**
+
+Also not established: **the 60-70 basis point capital impact appears in no primary source retrieved.**
+It is load-bearing on both sides of the drafted pair, which is why L-0033's pair stays held.
+
+**2. Yes Bank Limited Reconstruction Scheme, 2020 — NOT RETRIEVED.**
+Its identity is corroborated consistently across four independent secondary hosts: notified by the
+Central Government vide **G.S.R. 174(E), New Delhi, dated 13 March 2020**, under sub-sections (4) and
+(7) of section 45 of the Banking Regulation Act 1949, published in the Gazette of India Extraordinary
+Part II Section 3; the moratorium it lifted was S.O. 993(E) of 5 March 2020. **The document itself was
+not obtained.** IndianKanoon's copy returns HTTP 403. The two RBI press releases that were fetched are
+the moratorium of 5 March and the **draft** scheme of 6 March — the draft explicitly says the scheme
+"shall come into force on such date as the Central Government may, by notification in the Official
+Gazette, specify", so neither is the notified instrument.
+
+**Corroboration across four secondary hosts is not retrieval.** The gazette reference above is a
+research lead for the next pass — a named document, number, date and issuing power — and must not be
+entered as a source until someone has read it.
+
+### Gate
+
+```
+validate  INVALID — 5 errors
+          L-0028  objective-required           (blocked: scheme notification not retrieved)
+          L-0033  objective-required + 3 case  (blocked: ECL directions not retrieved)
+```
+
+Down from 13. **Both remaining records are blocked on the same retrieval failure, and neither is
+blocked on a judgement anyone still owes.**
