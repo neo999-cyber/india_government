@@ -15,7 +15,6 @@ export const DOMAIN_LABELS: Record<Domain, string> = {
   foreign: 'External sector & foreign policy',
   defence: 'Defence',
   environment: 'Environment & energy',
-  demography: 'Demography',
 };
 
 export const TERM_LABELS: Record<Term, string> = {
