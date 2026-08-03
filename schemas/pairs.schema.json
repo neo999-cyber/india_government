@@ -16,7 +16,7 @@
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^PR-\\d{2}$"
+      "pattern": "^PR-\\d{2,3}$"
     },
     "kind": {
       "enum": [
@@ -78,7 +78,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "pattern": "^P-\\d{2}$",
+        "pattern": "^P-\\d{2,3}$",
         "description": "Provenance record id (P-nn) bearing on the comparison this pair makes."
       }
     },
@@ -135,7 +135,7 @@
         "competingAccountsFrom": {
           "type": "string",
           "description": "Provenance id whose competingAccounts occupy this position — the counterpart is a dispute between sources, not a series.",
-          "pattern": "^P-\\d{2}$"
+          "pattern": "^P-\\d{2,3}$"
         },
         "label": {
           "type": "string",

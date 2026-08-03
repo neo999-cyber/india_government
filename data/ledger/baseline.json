@@ -39,7 +39,7 @@
     "date": "2010-06",
     "dateEnd": "2010-09",
     "term": "baseline",
-    "domains": ["kashmir"],
+    "domains": ["governance", "kashmir"],
     "type": "episode",
     "summary": "~112 civilian deaths June-September, triggered by the Machil fake encounter (April) and the killing of Tufail Ahmad Mattoo (11 June). Pellet guns introduced as crowd control in 2010 — a baseline fact for the post-2016 pellet debate.",
     "assessment": "baseline-context",
@@ -69,7 +69,7 @@
     "title": "Afzal Guru execution and aftermath",
     "date": "2013-02-09",
     "term": "baseline",
-    "domains": ["kashmir"],
+    "domains": ["governance", "kashmir"],
     "type": "event",
     "summary": "Executed at Tihar for the 2001 Parliament attack; Valley-wide curfew and communications blackout followed, at least three protester deaths. Tourism dipped the following seasons. Baseline instance of collective punishment-adjacent curbs predating 2014.",
     "assessment": "baseline-context",
@@ -148,14 +148,15 @@
     "date": "2014-09",
     "dateEnd": "2014-12",
     "term": "baseline",
-    "domains": ["kashmir"],
+    "domains": ["governance", "kashmir"],
     "type": "event",
-    "summary": "September floods killed ~277 and submerged much of Srinagar; the December assembly election recorded 65.91% turnout, the highest in ~25 years, producing the PDP-BJP coalition (formed March 2015). The hinge between the baseline and Term 1 Kashmir arcs. Dated to the baseline ledger as state-level events predating the coalition's formation.",
+    "summary": "September floods killed ~277 and submerged much of Srinagar; the December assembly election recorded 65.91% turnout on the postal-inclusive basis, the highest in ~25 years, producing the PDP-BJP coalition (formed March 2015). The hinge between the baseline and Term 1 Kashmir arcs. Dated to the baseline ledger as state-level events predating the coalition's formation.",
     "assessment": "baseline-context",
+    "caveat": "The turnout figure is stated on the postal-inclusive basis and is correct on it. The ECI's own headline for the same election is 65.52%, and both figures are printed in the same ECI statistical report seven pages apart: p.6 HIGHLIGHTS gives 4,794,374 electors who voted AT POLLING STATIONS for 65.52%, and p.13 ELECTORS DATA SUMMARY gives 2,499,904 + 2,294,469 + 1 + 28,402 postal = 4,822,776 for 65.91%. Neither is wrong and neither supersedes the other; a turnout figure for this election is uninterpretable without its basis. The equivalent cannot be computed for the 2024 assembly election, because the ECI has published no statistical report for it or for any of the eight state assemblies polled that year.",
     "sources": [
       { "name": "ECI results / J&K Economic Survey 2014-15", "url": "https://www.eci.gov.in/", "tier": "T1" }
     ],
     "confidence": "high",
-    "asOf": "2026-07-30"
+    "asOf": "2026-08-03"
   }
 ]

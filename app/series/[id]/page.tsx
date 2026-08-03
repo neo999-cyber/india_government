@@ -66,12 +66,24 @@ export default async function SeriesDetail({ params }: Props) {
   const pair = pairsForSeries(s.id)[0];
   const sideA = pair ? resolvePairSide(pair.a) : null;
   const sideB = pair ? resolvePairSide(pair.b) : null;
-  const paired = Boolean(pair && sideA && sideB);
+  // A pair displaces this page's own rendering ONLY where the series is itself a SIDE of it.
+  // `pairsForSeries` also matches a series named as the HOST of an absence (`absenceFrom`), and
+  // hosting an absence another pair cites does not make the series that pair's subject — PR-34
+  // cites jk-prison-detained-category's unmeasured[0] while its own numbers are the thing the
+  // reader came for. Treating the two cases alike cost that series its table, its caveat and its
+  // notes on its own page; reachability caught the two marks and the table was going with them.
+  const isPairSide = Boolean(pair && (pair.a.series === s.id || pair.b.series === s.id));
+  const paired = Boolean(pair && sideA && sideB) && isPairSide;
   const contested = paired && pair.kind === 'contested';
   const contestedSeries =
     contested && sideA?.kind === 'series' && sideB?.kind === 'series'
       ? [sideA.series, sideB.series]
       : [];
+  // Suppress the caveat only where ContestedPairView ACTUALLY renders it, not merely because the
+  // pair is contested. A contested pair with a non-series side falls through to CoverageUsageView,
+  // which renders no caveat — so `!contested` alone suppressed a mark nothing then rendered.
+  // CLAUDE.md rule 3a is absolute: a caveat renders wherever the record appears, every time.
+  const contestedPairRendersCaveat = contested && contestedSeries.length === 2;
 
   const denominatorBreaks = denominatorBreaksFor(s);
   const disputes = provenanceForSeries(s);
@@ -99,7 +111,7 @@ export default async function SeriesDetail({ params }: Props) {
       <StatusKey />
 
       {/* Above every rendering of the numbers, not below: it qualifies what they mean. */}
-      {s.caveat && !contested ? <CaveatFlag caveat={s.caveat} /> : null}
+      {s.caveat && !contestedPairRendersCaveat ? <CaveatFlag caveat={s.caveat} /> : null}
 
       {/* P-17: an NPA ratio never renders without the adjusted view offered beside it.
           P-22: neither side of a coverage/usage pair renders without the other — a coverage

@@ -125,7 +125,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "pattern": "^P-\\d{2}$",
+        "pattern": "^P-\\d{2,3}$",
         "description": "Provenance record id (P-nn) whose measurement dispute bears on this record."
       }
     },

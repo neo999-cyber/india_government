@@ -3732,3 +3732,161 @@ addendum). `demography` is removed. Two gates were added — `domain-coverage` a
 **Open, deliberately:** L-0086 and L-0092 as two enum states with no value, to be decided *together*
 after phase 12; the ECL and Yes Bank primaries, unretrievable from this environment and named on their
 records as leads; L-0105's `assessmentNote` naming a removed value; and the prose-citation guard.
+
+---
+
+# Verification log — cycle 2026-08-03f (phase 12, kashmir-rights: merged, gated, deployed)
+
+Append-only delta. Nothing above this line was edited.
+
+**Phase 12 ran `/phase kashmir-rights --dry` to the drop, then merged on instruction.**
+Base `main` at 08c1b1d. 25 ledger (L-0125–L-0149) · 15 series · 12 provenance (P-88–P-99) ·
+15 pairs (PR-33–PR-47). Corpus 444 → 511 records.
+
+## The gate found what the drop's own self-check did not, twice
+
+`stage4-selfcheck` was clean on the drop — 0 errors, 0 warnings, 171 references across all 14 derived
+forms. The live gate then caught two things it does not look for:
+
+1. **`validate` — L-0127's second absence stated no `reasonKind`.** Stage 3 omitted it *deliberately*
+   and said so: nothing retrieved distinguishes "the Union holds an internal target date" from "it
+   holds none". Honest, and the contract still requires a value. **Resolved on the enum's own text**,
+   which says `reasonKind` records *the STATED reason — what the responsible body says, not what is
+   true*. The Government has never said it holds a date; its stated position is "at an appropriate
+   time". Filed `not-collected`, with the unresolved alternative kept in `why` rather than hidden by
+   the value.
+
+2. **`reachability` — 2 of 599 marks unreachable, and the cause was worse than the symptom.**
+   `jk-prison-detained-category` lost its `caveat` and `notes` on its own page. Diagnosis: `PR-34`
+   names that series as `absenceFrom` — the **host of an absence the pair cites**, not a side of the
+   pair. `pairsForSeries` matched it anyway, `paired` went true, and the whole series body was
+   displaced. **Its own data table went with the two marks and no gate was watching the table.**
+   A second, latent fault sat behind it: the caveat was suppressed whenever a pair was `contested`,
+   on the assumption `ContestedPairView` would render it — but that component requires *both* sides to
+   be series, so a contested pair with a `competingAccountsFrom` side fell through to
+   `CoverageUsageView`, which renders no caveat. The mark was suppressed for a renderer that never ran.
+
+   **This is Rule 1's canonical shape and it is the third instance.** Fixed in
+   `app/series/[id]/page.tsx`: a pair displaces the page only where the series is itself a *side*
+   (`isPairSide`), and the caveat is suppressed only where `ContestedPairView` actually renders it.
+   Rebuilt: **reachability 599/599** (unmeasured 240 · caveat 146 · notes 191 · differentFactsNote 22),
+   **domain-coverage 831/831**, selftest 23/23 rules and both output gates firing on their fixtures.
+
+## Schema — the provenance id space was exhausted, and widening it needed two code sites
+
+`^P-\d{2}$` admits 99 records and this drop reached **P-99**. It compressed findings twice inside one
+phase — once merging 15 researched provenance records into 12, once when a required
+`breaks[].provenanceRef` had nowhere to go. Widened to `^P-\d{2,3}$` (and `^PR-\d{2,3}$`) across all
+four schemas, permissive only: no id changed, nothing renumbered.
+
+**`ID_PATTERNS` derives from the schemas and followed automatically. Two hardcoded sites did not, and
+both would have failed silently rather than loudly:**
+
+- `tools/lib/integrity.mjs` — `rec.caveat.match(/P-\d{2}/g)`
+- `components/marks.tsx` — `text.split(/(P-\d{2})/g)` and `/^P-\d{2}$/`
+
+On the string `"see P-100 and P-26"` the old pattern returns **`["P-10", "P-26"]`** — it does not miss
+the citation, it **matches a different live record**. A prose citation to P-100 would have linked P-10
+and left a stray "0" as text. Both widened, both commented with the failure mode.
+
+## The arithmetic hand-check, run as its own stage, found one defect — and its origin was in `parts/`
+
+Every queued figure recomputed clean except L-0141's delimitation ratios. The record gave the
+pre-delimitation Kashmir figure as 149,750 (it is 149,749.46 → **149,749**) and, worse, **stated the
+two ratios in opposite directions** — 1.1717 is Kashmir÷Jammu, 0.9707 is Jammu÷Kashmir — in one
+sentence presented as a comparison. A reader would conclude the disparity *reversed*. The like-for-like
+figure is **1.0302**; the conclusion survives and the numbers as written did not support it.
+
+**Corrected in the record AND at source in `parts/05-elections-delimitation.md`**, where lines 870, 872
+and 1487 carry the same defect. Four of phase 11's six arithmetic errors originated in `parts/`; a fix
+applied only to the record re-enters on the next run.
+
+**And the source's own verification table marked that line `✓`** — it re-derived the ratio by the
+method that produced it. A self-check that recomputes a figure the way it was computed cannot detect
+the method being wrong. Rule 1, at the scale of a single arithmetic line.
+
+## `withheld` — eight tested, three passed
+
+L-0134 (Agra Central Prison refused even the *number* of J&K detenus to Venkatesh Nayak/CHRI,
+29 August 2019), L-0136 (the *Bhasin* production record), L-0137 (the IFF RTI chain). **Five declined,
+every one for absence of a refusal** — including the poll gap, where MHA was asked exactly once across
+4,581 answers and gave a jurisdictionally correct non-answer. Phase 11 demoted one on this test and
+phase 10 demoted two; **phase 12 demoted five**, which is now the test doing most of its work here.
+
+## The disciplining measure — the first since phase 9
+
+**NCRB's J&K detenu row**: 182 · 409 · 239 · — · 72 · 35 · 90 · **432** · 212 · 283 · **404** · 228 ·
+252 · **546** (2009–2022). It contradicts the chronology *both* sides share and neither quotes it: the
+peak is **2022**, three years after the reorganisation, against the government's normalcy account; and
+**2016's 432 exceeds 2019's 404**, against the critics' 2019-as-rupture account. Weaker than the OECD
+PSE and recorded as such — the PSE *nets* two quantities, this *corrects a shared chronology*.
+
+Three limits ride on the series: it is all preventive-detention laws and can never yield a PSA figure;
+it is a 31 December stock (J&K released 339 detenus during 2021 while holding 252 at year end); and it
+excludes detenus moved out of the territory, whom PSI attributes to the holding State with **no
+transfer column for detenus at all** while convicts (7.1) and undertrials (7.3) have one.
+
+## Trigger B, carried rather than rounded
+
+A J&K detenu total of ~619 (404 + UP's 188 + Haryana's 27) adds correctly and rests on an attribution
+**no source makes**: PSI's "Belongs to other State" column never names the sending State, in any year.
+Haryana's 27 is corroborated to the unit by an MHA Rajya Sabha answer; UP's 188 is corroborated by
+nothing but a step change from 0 the previous year. **619 is authored nowhere.**
+
+## Amendments applied to live records — eight, on instruction
+
+L-0081 (adds `kashmir`; the `not-collected` gains two retrieved T1 primaries where it had none; the
+January 2024 reiteration re-graded T4 and identified as a J&K *compliance* proceeding), P-54, L-0121
+(Fifth Schedule source **T4 → T1**; "no savings provision" replaced by the precise and stronger finding
+that s.100's transfer machinery exists and cannot reach an authority the same Schedule abolished; a new
+absence for deaths of J&K detenus held outside the territory), L-0123 (Act text **T4 → T1**; a third
+lost quantity, PSA figures answered on the Assembly floor in March and October 2010, carrying the
+state's own 334-in-six-weeks against 322-in-nine-months contradiction; **scope qualified** — the
+termination is subject-matter-specific, and the restored Assembly worked the route twice in 2025 on
+revenue subjects), P-86, P-83, L-0083, L-0010 (turnout **not** corrected — the basis added: 65.91%
+postal-inclusive and the ECI's 65.52% at-polling-stations are both printed in the same report, seven
+pages apart).
+
+**Three baseline records applied at source:** L-0003, L-0005, L-0010 → `["governance", "kashmir"]`.
+The domain enum's own `defence` line decides it — *"The state's treatment of civilians in those
+operations files governance, not defence."*
+
+**L-0010's flood half carries no domain, logged as an unresolved fragment and not a defect.** No value
+fits without being stretched: `environment` is "the resource base", `infrastructure` needs content the
+record does not have, `human-development` ties to what delivery produced. The record is not split.
+
+## Source verification — three citations were wrong before they landed
+
+Applying the amendments, I wrote a plausible URL for the Standing Committee 26th Report and a plausible
+one for Amnesty ASA 20/5959/2022. **Both were guesses.** The Amnesty guess returned 403; the real PDF
+is at a different path. The 26th Report was retrieved from an Internet Archive capture, not from the
+live Secretariat path I invented. Every URL added in this cycle was then fetched and confirmed
+`200 application/pdf`, and **the Gazette source was verified by MD5 against the drop's claim —
+`0e16a53f5e362636f3d65294e562259f`, byte-identical.**
+
+The near-miss is the point: a fabricated citation is valid JSON, passes every schema, and resolves.
+Judgement is the only guard, and it failed twice in the same ten minutes until it was checked.
+
+## SKILL.md — four method rules added
+
+**M1** a reachability failure is not a fact until it survives a second resolver, a second process and a
+second client (three distinct modes were separated this phase, each with its own fix — the resolver
+artefact alone had produced roughly a dozen false "host is dead" findings across two phases).
+**M2** quiescence is not completion — checksum stability and parent completion notifications both
+failed; the consuming stage re-reads its inputs at the point of use.
+**M3** a negative result is worth exactly what the sweep behind it is worth — a single-quote/double-quote
+mismatch silently dropped 1,862 PDFs including all of Winter Session 2019, every page returning 200.
+**M4** a correction relayed from a subagent is verified before it is relayed onward.
+
+## Open, deliberately
+
+**L-0086 and L-0092 remain two enum states with no value**, and the next cycle sweeps all 149 ledger
+records before any value is proposed — phase 11's estimate of ten became 65 on a full read, so the
+widened set is the input to the decision, not an afterthought. Four `too-early` and two `contested`
+records in this drop are these shapes and are tabulated in the drop's `AMENDMENTS.md`. **L-0143 is the
+sharpest instance: five nominated seats in force since 26 December 2023 and never once exercised.**
+
+Also open: `jklegislativeassembly.nic.in` and `jkhome.nic.in` are genuinely NXDOMAIN on every resolver
+tried, so phase 11's findings on both stand and **no amendment was owed on either** — a subagent
+claimed otherwise and was overturned. A live Assembly presence exists at `jkla.neva.gov.in`; whether it
+carries the proceedings L-0123 depends on is **not established**, and L-0123's caveat says exactly that.

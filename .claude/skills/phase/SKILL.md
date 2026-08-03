@@ -56,6 +56,78 @@ Irreversible, expensive or precedent-setting → ask.
 
 ---
 
+## Four method rules
+
+Added 2026-08-03 from phase 12. Each was paid for by a defect that reached a record or came within one
+step of it, and each is about **how a finding is established**, not about what the instrument holds —
+so none of them belongs in the validator.
+
+### M1 — A reachability failure is not a fact until it survives a second resolver, a second process and a second client
+
+Phase 12 recorded a dozen Indian government hosts as dead. **The cause was a DNS resolver artefact.**
+The system resolver and 8.8.8.8 returned SERVFAIL where `dig @1.1.1.1` resolved and `curl --resolve`
+returned 200. Three distinct failure modes were eventually separated, each with its own fix:
+
+| Mode | Symptom | Fix |
+|---|---|---|
+| resolver | SERVFAIL on system/8.8.8.8, resolves on 1.1.1.1 | `dig @1.1.1.1` then `curl --resolve host:443:ip` |
+| process | one agent cannot reach a host another reaches on the same machine | delegate a retry |
+| client | 403 to `curl` and to the fetch tool, 200 to a headless browser | drive a browser |
+
+`ncrb.gov.in`, `indiacode.nic.in`, `sansad.in`, `egazette.gov.in` were all mode 1. `eci.gov.in` was
+mode 3 and yielded nine primary documents including a 32 MB delimitation compendium. **A "could not
+retrieve" is not established until all three are tried** — and a retrieval failure recorded against a
+live host is a false finding that hardens into a record.
+
+**The rule does not say every host is reachable.** `jkhome.nic.in` and `jklegislativeassembly.nic.in`
+failed on every resolver and are genuinely gone, which is why phase 11's findings on them stand. The
+point is that the claim has to be earned.
+
+### M2 — Quiescence is not completion
+
+A grandchild outlives its parent and keeps writing after the parent reports "completed", so files keep
+growing after the orchestrator believes the stage is finished. Phase 12 launched stage 3 against five
+files that were still being written; one was read at **181 lines of an eventual 751**, and nothing in
+the authored output would have shown it.
+
+Two mitigations were tried and **both failed**: checksum stability (twelve identical five-second polls
+— the author was between writes, and acting on it raced a live writer) and trusting the parent's
+completion notification (parents report completion while their children write).
+
+**What works: the consuming stage re-stats and re-reads its inputs at the point of use, and is given
+mtimes rather than assurances.** The spec's "a stage may not run against partial input" is right and
+had no mechanism behind it. This is the mechanism.
+
+### M3 — A negative result is worth exactly what the sweep behind it is worth
+
+Phase 12's parliamentary sweep matched only double-quoted `href="…"`. MHA's 2019 pages emit single
+quotes. The pass returned 1,711 URLs and **silently dropped 1,862 — the entirety of Winter Session
+2019**, with three of the strand's key T1 replies inside the missed batch. Every page returned HTTP
+200 and the corpus looked complete. It was caught only by asking why a session known to have sat
+produced zero files.
+
+Had it not been, the part would have reported "no Winter 2019 questions on the blackout" **while never
+having searched Winter 2019** — a false negative indistinguishable from a true one, which would have
+hardened into a `not-collected` absence.
+
+**A sweep is not verified by its status codes. Verify a corpus against a known-present item before
+reporting anything absent from it.** The CAG local-bodies query in the same phase is the standard to
+meet: the filter that should return nothing returns nothing, and a positive control proves the filter
+works.
+
+### M4 — A correction relayed from a subagent is verified before it is relayed onward
+
+The orchestrator received M1 from a child, propagated it to three siblings, and had to issue a
+narrowing correction minutes later: the child had reported that *every* host recorded as dead
+resolves, and two do not. The over-claim would have produced a false "route now verified" amendment
+against a **correct** phase-11 absence.
+
+**The main loop verifies before it propagates.** This is Rule 1 applied to the orchestrator's own
+relaying: a subagent's finding is a claim, and passing it on unchecked converts it into a premise for
+three more agents at once.
+
+---
+
 ## Invocation
 
 ```

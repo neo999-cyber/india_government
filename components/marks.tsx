@@ -152,8 +152,11 @@ export function ProvenanceTags({ ids }: { ids: string[] }) {
  * tag row does. Split rather than replace, so the text is never parsed as markup.
  */
 function withProvenanceLinks(text: string): ReactNode[] {
-  return text.split(/(P-\d{2})/g).map((part, i) =>
-    /^P-\d{2}$/.test(part) ? (
+  // {2,3} tracks the provenance id contract, widened 2026-08-03 when P-99 was reached.
+  // Greedy and in step with the schema: /P-\d{2}/ against "P-100" would link "P-10" — a live
+  // record that is not the one cited — and leave a stray "0" as text.
+  return text.split(/(P-\d{2,3})/g).map((part, i) =>
+    /^P-\d{2,3}$/.test(part) ? (
       <Link key={`${part}-${i}`} href={`/provenance/${part}/`}>
         {part}
       </Link>
