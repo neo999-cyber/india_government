@@ -377,14 +377,27 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
   } else {
     // Assert each branch by its own message. Without this the fixture passes on any failure,
     // including one from a branch it is not testing, and a branch could stop firing unnoticed.
+    // THE 403 BRANCH IS DELIBERATELY NOT HERE, AND ITS ABSENCE IS THE HONEST RESULT.
+    // One of the two URLs actually guessed in 2026-08-03f — the Amnesty document path — returns
+    // 403, and a 403 means the host answered and refused an automated client. The tool CANNOT
+    // distinguish a wrongly-guessed URL from a correct one behind a bot-block, so it classifies
+    // both as unverifiable and does not fail. That is the right call for the corpus (17 such URLs
+    // against 4 genuine 404s, one of them cited by live records) and it means this gate would have
+    // caught ONE of the two URLs that motivated it, not both. Asserted below as unverifiable so
+    // the limitation is pinned rather than forgotten.
     const BRANCHES = [
-      ['HTTP 403', 'a plausible path the host refuses'],
       ['HTTP no response', 'a plausible path that resolves to nothing'],
       ['where the path states application/pdf', 'a soft-404: 200 serving HTML for a .pdf path'],
     ];
     for (const [needle, why] of BRANCHES) {
       if (fired.out.includes(needle)) notes.push(`  url-check fires on ${why}`);
       else failures.push(`url-check did not report the branch "${needle}" (${why}) — the fixture would pass on another branch's failure`);
+    }
+    // The other half of the same fixture: the 403 must be REPORTED and must NOT be a failure.
+    if (fired.out.includes('UNVERIFIABLE') && fired.out.includes('HTTP 403')) {
+      notes.push('  url-check classifies a 403 as unverifiable, not failed — a refusal is not evidence the document is absent');
+    } else {
+      failures.push('url-check did not classify the 403 as unverifiable — failing on a bot-block would push authors to delete good citations');
     }
   }
   const clean = check(['--all', '--data', root('url-check-clean'), '--responses', join(root('url-check-clean'), 'responses.json')]);

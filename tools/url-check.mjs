@@ -70,11 +70,17 @@ function uriPaths(node, path = []) {
   return out;
 }
 
+// A missing layer is an absent layer, not a crash: a fixture root carrying only ledger records is a
+// legitimate corpus for this tool, and the first version died on scandir before checking a thing.
+const dirFiles = (sub) => {
+  const d = join(DATA_DIR, sub);
+  return existsSync(d) ? readdirSync(d).filter((f) => f.endsWith('.json')).map((f) => join(d, f)) : [];
+};
 const LAYER_FILES = {
-  series: () => readdirSync(join(DATA_DIR, 'series')).filter((f) => f.endsWith('.json')).map((f) => join(DATA_DIR, 'series', f)),
-  ledger: () => readdirSync(join(DATA_DIR, 'ledger')).filter((f) => f.endsWith('.json')).map((f) => join(DATA_DIR, 'ledger', f)),
-  provenance: () => [join(DATA_DIR, 'provenance.json')],
-  pairs: () => [join(DATA_DIR, 'pairs.json')],
+  series: () => dirFiles('series'),
+  ledger: () => dirFiles('ledger'),
+  provenance: () => [join(DATA_DIR, 'provenance.json')].filter(existsSync),
+  pairs: () => [join(DATA_DIR, 'pairs.json')].filter(existsSync),
 };
 
 const SCHEMA_PATHS = {};
@@ -156,28 +162,62 @@ const expectationFor = (url) => {
  * manufacture exactly the false finding M1 exists to prevent.
  */
 function probe(url) {
+  /**
+   * NEVER DISCARD STDOUT ON A NON-ZERO EXIT. curl exits 6 when it cannot resolve a host — including
+   * a host it only meets while FOLLOWING a redirect — and it still prints everything `-w` asked for
+   * before doing so. The first version of this function did `catch { return '' }` and threw that
+   * away, which turned "answered 307 and then could not resolve the next hop" into "no response".
+   * It reported roughly fifty live government hosts as dead: the exact false finding M1 exists to
+   * prevent, produced by the tool written to prevent it.
+   */
   const run = (args) => {
     try {
-      return execFileSync('curl', args, { encoding: 'utf8', timeout: 45000, stdio: ['ignore', 'pipe', 'ignore'] }).trim();
-    } catch { return ''; }
+      return { out: execFileSync('curl', args, { encoding: 'utf8', timeout: 50000, stdio: ['ignore', 'pipe', 'ignore'] }).trim(), code: 0 };
+    } catch (e) {
+      return { out: `${e.stdout ?? ''}`.trim(), code: e.status ?? -1 };
+    }
   };
-  const parse = (out) => {
-    const [status, ctype] = out.split('|');
-    return { status: Number(status) || 0, contentType: (ctype ?? '').split(';')[0].trim() };
+  const parse = ({ out }) => {
+    const [status, ctype, redirect] = out.split('|');
+    return { status: Number(status) || 0, contentType: (ctype ?? '').split(';')[0].trim(), redirect: (redirect ?? '').trim() };
   };
-  const base = ['-sL', '-o', '/dev/null', '-w', '%{http_code}|%{content_type}', '--max-time', '40', '-A', 'Mozilla/5.0', url];
-  let r = parse(run(base));
-  if (r.status !== 0) return r;
+  const W = '%{http_code}|%{content_type}|%{redirect_url}';
 
-  // Resolver fallback — M1. Only on a total failure, never to paper over a real non-200.
-  let host;
-  try { host = new URL(url).hostname; } catch { return r; }
-  const dig = run(['-s', '--max-time', '8', `https://1.1.1.1/dns-query?name=${host}&type=A`, '-H', 'accept: application/dns-json']);
-  let ip = null;
-  try { ip = (JSON.parse(dig).Answer ?? []).find((a) => a.type === 1)?.data ?? null; } catch { /* no answer */ }
-  if (!ip) return r;
-  const port = url.startsWith('http://') ? 80 : 443;
-  return { ...parse(run(['-sL', '-o', '/dev/null', '-w', '%{http_code}|%{content_type}', '--max-time', '40', '--resolve', `${host}:${port}:${ip}`, '-A', 'Mozilla/5.0', url])), viaResolver: true };
+  const direct = parse(run(['-sL', '-o', '/dev/null', '-w', W, '--max-time', '40', '-A', 'Mozilla/5.0', url]));
+  // A 3xx as the FINAL code means `-L` could not complete the follow — almost always because the
+  // next hop is a host this environment cannot resolve. That is the resolver problem wearing a
+  // different status, so it goes to the fallback rather than being reported as the answer.
+  if (direct.status !== 0 && !(direct.status >= 300 && direct.status < 400)) return direct;
+
+  /**
+   * Resolver fallback — M1, and it must follow redirects ACROSS hosts. `--resolve` pins one
+   * host:port:ip, so a 307 from `example.gov.in` to `www.example.gov.in` lands on a name curl still
+   * cannot resolve. Each hop's host is resolved through 1.1.1.1 and added to the pin list, up to a
+   * small bound. Without this the fallback fires and still reports the host dead.
+   */
+  const resolveHost = (host) => {
+    const { out } = run(['-s', '--max-time', '8', `https://1.1.1.1/dns-query?name=${host}&type=A`, '-H', 'accept: application/dns-json']);
+    try { return (JSON.parse(out).Answer ?? []).find((a) => a.type === 1)?.data ?? null; } catch { return null; }
+  };
+
+  const pins = [];
+  let target = url;
+  for (let hop = 0; hop < 5; hop++) {
+    let host, port;
+    try { const u = new URL(target); host = u.hostname; port = u.protocol === 'http:' ? 80 : 443; } catch { break; }
+    if (!pins.some((p) => p.startsWith(`${host}:${port}:`))) {
+      const ip = resolveHost(host);
+      if (!ip) break;
+      pins.push(`${host}:${port}:${ip}`);
+    }
+    // No -L: take one hop at a time so each new host can be pinned before it is reached.
+    const r = parse(run(['-s', '-o', '/dev/null', '-w', W, '--max-time', '40',
+      ...pins.flatMap((p) => ['--resolve', p]), '-A', 'Mozilla/5.0', target]));
+    if (r.status === 0) break;
+    if (r.status >= 300 && r.status < 400 && r.redirect && r.redirect !== target) { target = r.redirect; continue; }
+    return { ...r, viaResolver: true };
+  }
+  return direct;
 }
 
 // ---------------------------------------------------------------- run
@@ -199,17 +239,41 @@ console.log(`url-check · ${live.size} URL(s) in corpus · ${targets.length} to 
   (recorded ? ' · FIXTURE MODE, no network' : ''));
 console.log(`  URL fields derived from the schemas: ${Object.entries(SCHEMA_PATHS).map(([l, ps]) => `${l} ${ps.map((p) => p.join('.')).join(', ') || '(none)'}`).join(' · ')}`);
 
+/**
+ * THREE OUTCOMES, NOT TWO, AND THE MIDDLE ONE IS THE WHOLE POINT.
+ *
+ * A 401, 403 or 429 means the host answered and refused an automated client. That is NOT evidence
+ * the document is absent, and failing on it would make this tool push authors to delete good
+ * citations — the opposite of what it is for, and the surest way to get a gate switched off. The
+ * corpus audit of 2026-08-03 found 17 such URLs against 4 genuine 404s, and one of the 17
+ * (`eci.gov.in/statistical-reports`) is cited by live phase-12 records: on a fail-everything rule
+ * this gate would have blocked that commit over a document that is really there.
+ *
+ * 5xx is transient by definition and joins them. Everything else — a 404, a malformed 400, no
+ * response after the resolver fallback, or a content-type the path contradicts — is a failure.
+ */
+const UNVERIFIABLE = (s) => s === 401 || s === 403 || s === 429 || (s >= 500 && s < 600);
+
 const failures = [];
+const unverifiable = [];
 for (const url of targets) {
   const want = expectationFor(url);
   const r = recorded ? (recorded[url] ?? { status: 0, contentType: '' }) : probe(url);
   const where = live.get(url).map((w) => `${w.layer}:${w.id}`).join(', ');
   const ctypeBad = want && r.status === 200 && !(r.contentType || '').includes(want.split('/')[1] ?? want);
-  if (r.status !== 200 || ctypeBad) {
-    failures.push({ url, where, ...r, want });
-  } else {
+  if (r.status === 200 && !ctypeBad) {
     console.log(`  ok  ${r.status} ${r.contentType || '-'}${r.viaResolver ? ' (via 1.1.1.1)' : ''}  ${url}`);
+  } else if (UNVERIFIABLE(r.status)) {
+    unverifiable.push({ url, where, ...r });
+  } else {
+    failures.push({ url, where, ...r, want });
   }
+}
+
+if (unverifiable.length > 0) {
+  console.log(`\n  ${unverifiable.length} URL(s) UNVERIFIABLE — the host answered and refused an automated client.`);
+  console.log('  Not counted as failures: a refusal is not evidence the document is absent.');
+  for (const u of unverifiable) console.log(`    ? HTTP ${u.status}  ${u.url}\n        cited by ${u.where}`);
 }
 
 if (failures.length > 0) {
@@ -227,4 +291,5 @@ if (failures.length > 0) {
   process.exit(1);
 }
 
-console.log(`\nurl-check OK — ${targets.length}/${targets.length} URL(s) confirmed`);
+console.log(`\nurl-check OK — ${targets.length - unverifiable.length}/${targets.length} confirmed` +
+  (unverifiable.length ? `, ${unverifiable.length} unverifiable (host refused an automated client)` : ''));
