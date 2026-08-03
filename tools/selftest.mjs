@@ -165,6 +165,15 @@ function run(args) {
   }
 }
 
+/**
+ * The gates that read BUILT OUTPUT rather than /data, each proven to fire on its own fixtures.
+ *
+ * Named here so they have a count of their own. Neither can be a validator rule — `npm run build`
+ * runs validate before next build, so `out/` does not exist yet — and neither has ever been in the
+ * "N/N rules fire" figure, which has therefore always undercounted what the selftest proves.
+ */
+const OUTPUT_GATES = ['reachability', 'domain-coverage'];
+
 const failures = [];
 const notes = [];
 
@@ -276,6 +285,52 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
   else notes.push('  reachability stays silent on the live corpus — every declared mark renders on its own record page');
 }
 
+// 3e. Domain-surface coverage: every schema domain value has a page, every record reaches it.
+//
+// A SEPARATE COUNTER FROM THE 22, AND DELIBERATELY SO. The "N/N rules fire" line counts VALIDATOR
+// rules firing on a data fixture root, and this gate cannot be one: `npm run build` runs validate
+// BEFORE next build, so at validator time there is no `out/` to read, and a validator rule about
+// what renders would have to model the render path it exists to police (Rule 1). Folding it into
+// that number would have meant either a rule that cannot see the defect or a number that no longer
+// means what the log says it means. Counted here instead, in its own line.
+//
+// Both fires-correctly fixtures are DISTILLED FROM REAL REGRESSED BUILDS, not written from a model
+// of one (Rule 2). `domain-coverage-no-page` reproduces the actual `education` defect — removed
+// from DOMAINS and DOMAIN_LABELS, rebuilt, gate observed to fire. `domain-coverage-record-adrift`
+// reproduces `seriesUnderLens` returning empty — rebuilt, gate observed to fire on 9 of the 15
+// lens-carrying series. Both regressions left `validate`, `typecheck` and `reachability` green.
+{
+  const cover = (args) => {
+    try {
+      execFileSync(process.execPath, [join(ROOT, 'tools', 'domain-coverage.mjs'), ...args], {
+        // stderr piped: the fixtures are EXPECTED to fail, and letting their reports through would
+        // make a passing selftest read as a broken one.
+        encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, NO_COLOR: '1' },
+      });
+      return 0;
+    } catch (err) {
+      return err.status ?? 1;
+    }
+  };
+  const FIXTURES = [
+    { dir: 'domain-coverage-no-page', why: 'a schema domain value with no page built for it' },
+    { dir: 'domain-coverage-record-adrift', why: 'a surface that exists but omits a record declaring it' },
+  ];
+  for (const { dir, why } of FIXTURES) {
+    const root = join(ROOT, 'tests', 'fixtures', dir);
+    const fired = cover(['--data', join(root, 'data'), '--out', join(root, 'out')]);
+    if (fired !== 1) {
+      failures.push(`domain-coverage did not fire on tests/fixtures/${dir} (exit ${fired}) — ${why}`);
+    } else {
+      notes.push(`  domain-coverage fires on tests/fixtures/${dir} — ${why}`);
+    }
+  }
+  const live = cover([]);
+  if (live === 2) notes.push('  domain-coverage on the live corpus skipped — no built output yet');
+  else if (live !== 0) failures.push('domain-coverage failed on the live corpus; run `npm run domain-coverage` for the list');
+  else notes.push('  domain-coverage stays silent on the live corpus — every domain value has a surface and every record reaches it');
+}
+
 // 4. Strictness must be live: a misspelled keyword cannot be silently ignored.
 // Under a lax config this schema compiles and lets the invalid record through.
 const typoSchema = {
@@ -314,7 +369,13 @@ if (failures.length) {
 console.log(
   `selftest OK — /data valid (${realWarnings} warning(s))\n` +
     notes.join('\n') +
-    `\n  ${MUST_FIRE.length}/${MUST_FIRE.length} rules fire on tests/fixtures/broken ` +
+    `\n  ${MUST_FIRE.length}/${MUST_FIRE.length} validator rules fire on tests/fixtures/broken ` +
     `(${broken.report.findings.filter((f) => f.level === 'error').length} errors caught)` +
+    // Counted apart from the validator rules because they are a different kind of check, not a
+    // smaller one: these read built output, run after next build, and cannot appear in the line
+    // above. Kept visible so the output-reading half of the gate has a number of its own rather
+    // than living only in the notes.
+    `\n  ${OUTPUT_GATES.length}/${OUTPUT_GATES.length} output gates proven to fire on their own fixtures ` +
+    `(${OUTPUT_GATES.join(', ')})` +
     `\n  misspelled schema keyword fails compilation`,
 );
