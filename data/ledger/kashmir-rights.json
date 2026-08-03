@@ -728,8 +728,8 @@
         "tier": "T4"
       },
       {
-        "name": "Government of Jammu and Kashmir, General Administration Department, Government Order No. 2128-JK(GAD) of 2024 dated 23 December 2024 and No. 249-JK(GAD) of 2025 dated 18 February 2025 - published Review Committee confirmations of Home Department suspension orders, signed by the Commissioner/Secretary GAD and copied to the Principal Secretary Home, the Principal Secretary Finance, the Secretary Law and Justice and the Chief Secretary. Retrieved from Internet Archive captures of the department's own files, rendered and read",
-        "url": "https://web.archive.org/web/*/jkhome.nic.in/pdf/TSTS2128GADof2024.pdf",
+        "name": "Government of Jammu and Kashmir, General Administration Department, Government Order No. 2128-JK(GAD) of 2024 dated 23 December 2024 and No. 249-JK(GAD) of 2025 dated 18 February 2025 - published Review Committee confirmations of Home Department suspension orders, signed by the Commissioner/Secretary GAD and copied to the Principal Secretary Home, the Principal Secretary Finance, the Secretary Law and Justice and the Chief Secretary. Retrieved from Internet Archive captures of the department's own files, rendered and read. Cited as the specific timestamped snapshot rather than a wildcard listing: a /web/*/ URL is the archive's SEARCH interface and retrieves no document",
+        "url": "https://web.archive.org/web/20250212111631id_/https://jkhome.nic.in/pdf/TSTS2128GADof2024.pdf",
         "tier": "T1"
       },
       {
@@ -844,8 +844,8 @@
         "tier": "T1"
       },
       {
-        "name": "Government of Jammu and Kashmir, Home Department, Government Order No. Home-11 (TSTS) of 2024 dated 4 November 2024, citing the 2017 Rules and confirming Order No. 1382(TSTS) of 2024 of the ADGP Jammu Zone, restricting service in a four-corner polygon in District Kathua from 0930 to 1600 on one day. Retrieved from an Internet Archive capture of the Department's own file, rendered and read",
-        "url": "https://web.archive.org/web/*/jkhome.nic.in/pdf/11(TSTS)of2024.pdf",
+        "name": "Government of Jammu and Kashmir, Home Department, Government Order No. Home-11 (TSTS) of 2024 dated 4 November 2024, citing the 2017 Rules and confirming Order No. 1382(TSTS) of 2024 of the ADGP Jammu Zone, restricting service in a four-corner polygon in District Kathua from 0930 to 1600 on one day. Retrieved from an Internet Archive capture of the Department's own file, rendered and read. Cited as the specific timestamped snapshot rather than a wildcard listing: a /web/*/ URL is the archive's SEARCH interface and retrieves no document",
+        "url": "https://web.archive.org/web/20250102084701id_/https://jkhome.nic.in/pdf/11(TSTS)of2024.pdf",
         "tier": "T1"
       },
       {
@@ -897,8 +897,8 @@
         "tier": "T1"
       },
       {
-        "name": "Internet Archive CDX index of the J&K Home Department's domain - 7,261 capture rows, the complete inventory of published (TSTS) order filenames, and the last capture of the site root dated 3 April 2025 with none thereafter. Queried directly",
-        "url": "https://web.archive.org/cdx/search/cdx",
+        "name": "Internet Archive CDX index of the J&K Home Department's domain - 7,261 capture rows, the complete inventory of published (TSTS) order filenames, and the last capture of the site root dated 3 April 2025 with none thereafter. Queried directly. Cited as the exact reproducible query rather than the bare API endpoint, which returns HTTP 400 without one; the query returns 7,261 rows, matching the count this record states",
+        "url": "https://web.archive.org/cdx/search/cdx?url=jkhome.nic.in&matchType=domain&output=text&fl=original,timestamp&collapse=urlkey&limit=20000",
         "tier": "T1"
       },
       {
