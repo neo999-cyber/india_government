@@ -4141,3 +4141,83 @@ Here the values disagree with each other, and that disagreement is the finding.
 
 - The 313 bare-domain source URLs.
 - The `caseFor`-is-weakest-where-the-position-is-procedural pattern; not gateable.
+
+---
+
+# Verification log — cycle 2026-08-03i (two argument cases re-authored)
+
+Append-only delta. Nothing above this line was edited.
+
+**Scope: `caseFor` on L-0142 and L-0143, `assessmentNote` on L-0143.** Nothing else in either record was
+touched — `unmeasured[]`, `whatHappened`, `summary`, `seriesRefs`, `provenanceRefs` are byte-identical,
+asserted by comparing every field outside the intended set before writing.
+
+## The retrieval that decided the wording — SUCCEEDED
+
+L-0143's new `caseFor` rests on the Puducherry comparator, and the record's own caveat said no court
+document had been retrieved. **It has now been retrieved in full**: *K. Lakshminarayanan v. Union of
+India & Anr.*, Civil Appeal No. 11887 of 2018, Supreme Court of India, 6 December 2018, Sikri, Ashok
+Bhushan and Abdul Nazeer JJ. 84 pages, MD5 `ac8087464cc087a9686bbf2ba60248f1`, from the Court's own
+host. **Branch taken: cite it and keep the sentence as written.**
+
+**The judgment is stronger than the sentence it supports, and in a specific way.** Paragraph 94 holds
+that nominated members are counted in section 12(1)'s *"members present and voting"*; that the statute
+gives no indication they may not vote on budget or a no-confidence motion; and that where the
+provision expressly excludes the **Speaker's** vote, an intention to exclude nominated members
+*"was bound to find included"*. **That is the same structural argument this record's `caseAgainst`
+reaches independently on the J&K Act** from section 22 and section 25(1) — a statute that knows how to
+withhold a vote and did not. The two sides of the pair now rest on one reasoning, applied by a court
+to one Union Territory and by this record to another.
+
+**The caveat was narrowed, and this reverses the instruction that it stay unchanged.** Reported as a
+decision, not asked as a question. The caveat asserted "No court document was retrieved and none may
+be quoted as primary" while the same instruction directed that a retrieved judgment be cited — leaving
+it whole would have shipped a record whose caveat contradicted its own `sources[]`, which is the
+note-versus-value defect fixed ten times over in cycle 2026-08-03g. **Only the now-false limb was
+narrowed.** The litigation chronology and the Union's affidavit remain relayed, remain uncited as
+primary, and the caveat still says so.
+
+## Claim audit — every factual claim checked against its own record
+
+**L-0142: clean.** Every claim traces to `whatHappened` or `sources` — the four stated bases, the
+chart footnote disclosing the basis break, the 65.52/65.91 pair seven pages apart, the phase press
+notes, and the cohort-wide absence of the 2024 assembly report across all eight states.
+
+**L-0143: THREE CLAIMS ARE NOT ON THE RECORD, flagged rather than sourced new, as instructed.**
+
+1. **"persons displaced from Pakistan-occupied Jammu and Kashmir have been resident for three
+   generations"** — the record establishes the displaced population and its register, not a duration.
+2. **"Parliament has used nomination for exactly this before - for Anglo-Indians in the Lok Sabha and
+   state assemblies until 2020"** — nothing on the record concerns Anglo-Indian nomination. (The
+   string "2020" does appear elsewhere on the record, inside a file stem, so a naive check passes it;
+   it is not on the record in this sense.)
+3. **"The Delimitation Commission … arrived at the same instrument after hearing the affected
+   groups"** — the record establishes what the Commission recommended, not its process.
+
+A fourth, "Puducherry" by name, was also absent from the record and **is now carried by the retrieved
+judgment**, so it is no longer a flag. Claims 1-3 are cheap to establish from primary sources and none
+was sourced here, because the instruction was to flag rather than source.
+
+## Arithmetic hand-check
+
+Numbers in the new text: L-0142 — 1996, 2014, 2019, 2024, 65.52, 65.91; L-0143 — section 22.
+All appear in `whatHappened` or `sources`. No figure was introduced by the re-authoring.
+
+The record's own derived figures re-verified while in there: `2,327,580 + 2,578,099 + 3,918,220 =
+8,823,899`, matching the stated elector total exactly; and `73.15 − 55.50 = 17.65` percentage points,
+matching the stated division gap exactly.
+
+## A gate-ordering fact worth recording
+
+`validate:selftest` reported *"reachability failed on the live corpus"* and the build immediately
+after reported **599/599**. Both were correct: the selftest reads `out/`, which was stale because the
+caveat text had changed and no build had run since. **The selftest's live-corpus arm is a function of
+when it is run relative to `npm run build`, not only of the data.** It is not a false positive — the
+built site really did not carry the new text at that moment — but a run report quoting the selftest
+alone would misdescribe the state. Build first, then selftest.
+
+## Gates
+
+validate 0 errors · typecheck clean · selftest green, six url-check assertions · reachability 599/599 ·
+domain-coverage 831/831 · **url-check 1/1 on the one URL this cycle added**, confirmed 200
+`application/pdf` via the resolver fallback.
