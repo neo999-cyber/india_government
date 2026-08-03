@@ -285,7 +285,10 @@ export interface Pair {
  * - `contested` — the evidence supports more than one defensible reading and the record does
  *   not choose between them.
  * - `too-early` — the measure is in force but has not run long enough for its stated
- *   objective to be testable.
+ *   objective to be testable. The obstacle is elapsed time and the evidence it accumulates.
+ * - `awaiting-adjudication` — the measure is in force and its effect is testable in principle,
+ *   but the term that would settle the assessment is a pending decision by a body outside the
+ *   enacting authority. Distinct from `too-early`, where the obstacle is elapsed time.
  * - `baseline-context` — pre-2014 context, carried so post-2014 records are read against a
  *   stated starting condition. Never scored; the schema ties it to term `baseline`.
  */
@@ -296,6 +299,7 @@ export type Assessment =
   | 'reversed'
   | 'contested'
   | 'too-early'
+  | 'awaiting-adjudication'
   | 'no-objective'
   | 'baseline-context';
 
