@@ -3438,3 +3438,82 @@ validate  INVALID — 5 errors
 
 Down from 13. **Both remaining records are blocked on the same retrieval failure, and neither is
 blocked on a judgement anyone still owes.**
+
+## Addendum to 2026-08-03d — retries: one failed again, one returned a reproduction
+
+### RBI ECL directions — FAILED A THIRD TIME, and the naming question is a provenance finding
+
+The press release at `rbidocs.rbi.org.in/.../PR150994739A099E843668A75A7F92C9E9BD1.PDF` failed again
+on the same transport error. Three attempts, three transport failures, no 404: **the document is
+there and this environment cannot pull it.** That is a retrieval-channel finding, not an absence.
+
+**Logged as a provenance finding regardless of this cycle, because it is unresolved and being
+unresolved is the finding.** Two candidate titles are in circulation and they cannot be reconciled
+from secondary material:
+
+| source | title | date |
+|---|---|---|
+| search results / law-firm notes | RBI (Commercial Banks – **Asset Classification, Provisioning and Income Recognition**) Directions, **2026** | 27 Apr 2026 |
+| RBI's own Master Directions page, `id=13146` | RBI (Commercial Banks – **Income Recognition, Asset Classification and Provisioning**) Directions, **2025** | 28 Nov 2025, updated 1 Jul 2026 |
+
+Same five nouns, different order, different year. **Whether these are two instruments or one misnamed
+by the secondaries is not settled.** The secondary material leans toward two — it refers to a
+"Repeal Directions, 2026" repealing an earlier Income Recognition/Asset Classification/Provisioning
+instrument, which would make the 2025 Directions the thing repealed and the 2026 Directions the
+replacement. **That is an inference from search summaries and is explicitly unconfirmed.**
+
+This matters beyond L-0033: a near-identical title differing only in word order and year is exactly
+the shape that produces a wrong citation that validates. Any future record citing either instrument
+must state which, from the primary.
+
+Also still unestablished: **the 60-70 basis point capital impact appears in no primary source.**
+L-0033's pair stays held for that reason and no other.
+
+### Yes Bank scheme — a reproduction, not the gazette. L-0028 rescored.
+
+The retry returned what appears to be the complete text of the Scheme on TaxGuru, a private tax and
+corporate-law portal, including a corrigendum of 25 March 2020. It confirms preamble, G.S.R. number,
+date and statutory power exactly as the earlier corroboration had them.
+
+**A private portal's reproduction is not the gazette**, and by the standard set one addendum earlier
+it is not retrieval. The tier system grades the document retrieved, not the institution behind the
+text, so this would enter at T2 at best — and its fidelity to the gazette cannot be checked without
+the gazette.
+
+**L-0028 rescored `worked` → `no-objective`**, per instruction, with the reason recorded on the record
+itself rather than only here: the objective is named and has not been read, so no score against it is
+supportable. The gazette reference stays a **research lead, not a source**, and was not added to
+`sources`.
+
+**One substantive thing the reproduction shows, and it cuts deeper than the retrieval failure.** The
+Scheme's twelve paragraphs are: short title and commencement · definitions · share capital ·
+alteration of articles · constitution of the Board · rights and liabilities · continuation of
+employees · no change in offices or branch network · furnishing statements · manner of service of
+notice · cessation of moratorium · interpretation. **There is no objects clause anywhere in it.** It
+is an instrument of mechanics. If that holds against the gazette, then `worked` on L-0028 was never
+scoreable against the Scheme at all, and `no-objective` is not a fallback pending retrieval but the
+correct value on the merits. Recorded as a finding to confirm, not as a conclusion: it rests on a
+headings list from a secondary reproduction.
+
+### Gate
+
+```
+validate  INVALID — 4 errors, all L-0033 (3 missing-case + 1 objective-required)
+```
+
+Down from 13 → 5 → **4**. One record, blocked on one document, blocked on one transport failure.
+
+### Merge decision — merged the two green branches, HELD the red one
+
+`lens-axis` and `domain-coverage` merged to `main` in order. **`assessment-no-objective` was NOT
+merged.**
+
+The call was between merging red and waiting, and merging red is worse. `npm run build` is
+`validate && next build && reachability && domain-coverage`, and `vercel.json` runs the same chain, so
+a red `main` is a `main` that **cannot deploy at all** — every later cycle inherits a broken build and
+the instrument's founding rule (CLAUDE.md data rule 1: an invalid repo cannot deploy) would be
+violated on the default branch to accommodate one unread PDF. Waiting costs one record's rescore
+sitting on a branch; merging red costs the deploy path and the rule.
+
+The two green branches carry the work that should not wait: `lenses[]` and the 15+7 backfill, and the
+domain-coverage gate with the `education` fix that restored a surface 48 series had been missing.
