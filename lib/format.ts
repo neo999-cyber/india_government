@@ -47,6 +47,7 @@ export const ASSESSMENT_LABELS: Record<Assessment, string> = {
   reversed: 'Reversed',
   contested: 'Contested',
   'too-early': 'Too early',
+  'no-objective': 'No stated objective',
   'baseline-context': 'Baseline context (not scored)',
 };
 
