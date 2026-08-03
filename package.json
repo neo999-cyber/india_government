@@ -13,8 +13,9 @@
     "validate:selftest": "node tools/selftest.mjs",
     "selfcheck": "node tools/stage4-selfcheck.mjs",
     "reachability": "node tools/reachability.mjs",
+    "domain-coverage": "node tools/domain-coverage.mjs",
     "dev": "next dev",
-    "build": "npm run validate && next build && npm run reachability",
+    "build": "npm run validate && next build && npm run reachability && npm run domain-coverage",
     "start": "npx serve out",
     "typecheck": "tsc --noEmit",
     "audit": "node tools/audit-manifest.mjs"
