@@ -4221,3 +4221,30 @@ alone would misdescribe the state. Build first, then selftest.
 validate 0 errors · typecheck clean · selftest green, six url-check assertions · reachability 599/599 ·
 domain-coverage 831/831 · **url-check 1/1 on the one URL this cycle added**, confirmed 200
 `application/pdf` via the resolver fallback.
+
+## Addendum to 2026-08-03i — deployed and verified on production
+
+Production is **28dfffe**, `dpl_5ke6Hndz9Ztdsfmzsat7VSXq7UYp`, **READY**, aliased to
+`india-government.vercel.app`. Built in 32 seconds. Artefact verified on `main` by reading the
+records, not from PR status.
+
+**491 pages fetched, zero non-200**, the list built from `/data` by construction. Both gates re-run
+against the fetched tree with `--data data --out`, so the spec is derived at run time and no needle is
+written down: **reachability 599/599** (unmeasured 240 · caveat 146 · notes 191 · differentFactsNote 22),
+**domain-coverage 14/14 surfaces, 831/831 references**.
+
+**Controls 12/12, both directions**, read from production HTML with `<script>` stripped first.
+
+Present: L-0143's new `caseFor`; **the retrieved judgment cited by name on the page**; **"Awaiting
+adjudication" rendering with its label**, on L-0143 and on the anchor L-0086; the narrowed caveat;
+L-0142's new `caseFor`; the 65.91 figure still in place; and **"Too early" on L-0139**, which proves
+the member deliberately left behind did not drift with the other four.
+
+Absent: **"No court document was retrieved"** — the false caveat limb; **"Filed too-early on the
+written definition"** — the superseded note; and the old L-0142 `caseFor` clause. Plus the bogus
+needle, which is what makes the other three negatives mean anything.
+
+**The two negatives that matter most are the caveat limb and the superseded note**, because both are
+cases where a *correction* had to reach production rather than merely a new field. A record can gain a
+new `caseFor` and still ship the old caveat contradicting it; asserting the removal is the only way to
+know it did not.
