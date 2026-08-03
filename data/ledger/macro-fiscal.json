@@ -360,7 +360,9 @@
   "type": "shock",
   "summary": "The United States imposed 25% tariffs on most Indian goods, then an additional 25% effective 27 August 2025 over India's Russian crude purchases, reaching 50% — the highest rate applied to any US trading partner.",
   "whatHappened": "Indian government estimates put roughly US$48bn of exports at risk; GTRI estimated around two-thirds of approximately US$87bn in US-bound exports were affected. The rate was later cut to 18% under an interim arrangement, and in February 2026 the US Supreme Court constrained IEEPA-based tariff authority.",
-  "assessment": "too-early",
+  "assessment": "no-objective",
+  "caseFor": "The headline rate overstates the realised shock on the record's own figures. The 50 per cent peak held for months, not years: the rate was cut to 18 per cent under an interim arrangement, and in February 2026 the US Supreme Court constrained IEEPA-based tariff authority, removing the instrument the second tranche rested on. The exposure estimates are gross rather than net - roughly US$48bn of exports at risk on the Indian government's own count against GTRI's two-thirds of about US$87bn in US-bound exports - and neither nets out re-routing, exemptions or substitution.",
+  "caseAgainst": "For the period it ran, India faced the highest rate applied to any US trading partner, and the second tranche was imposed over India's Russian crude purchases rather than over any trade dispute, which makes the exposure political rather than merely commercial. India-specific severity is the part that does not wash out: every other shock in this instrument is shared with the peer panel and can be netted against it, and this one cannot, so it confounds every external-sector assessment for FY26 and FY27 whatever rate finally settles.",
   "shockExposure": "India-specific in severity, which makes it unusual — most shocks in this project are shared with peers. That specificity means it cannot be netted out via peer comparison and must be carried as a standalone confound for any FY26 and FY27 external-sector assessment.",
   "seriesRefs": [
    "exports-gdp"
@@ -390,7 +392,9 @@
   ],
   "type": "institutional",
   "summary": "MoSPI released a national accounts series rebased to 2022-23, using double deflation, a Supply-Use Table framework and new source data. It revised recent real growth up while lowering the level of nominal GDP by 3-4%.",
-  "assessment": "too-early",
+  "assessment": "no-objective",
+  "caseFor": "The methodology changed in a stated direction and the statement is primary: double deflation, a Supply-Use Table framework and new source data, set out in MoSPI's press note of 27 February 2026 and published with the release rather than reconstructed from it afterwards. That the basis is documented by the agency that made the change is the case for it, and on the sources retrieved it is the whole of the case.",
+  "caseAgainst": "The revision arrived without a back-series, so there is no way to read the new basis against the old for any year before FY2023-24, and none of the three GDP regimes can be spliced. The direction of the two movements is convenient and unverifiable in the absence of that back-series: recent real growth was revised up while the level of nominal GDP was lowered by 3-4 per cent. The lower level moves every ratio-to-GDP in the instrument - fiscal deficit, general government debt, exports and gross fixed capital formation all step at 27 February 2026 with no change in underlying activity, an arithmetic step that reads as improvement.",
   "shockExposure": "None — but this record is itself a confound for every other macro assessment in the project, which is why it also exists as provenance record P-10.",
   "seriesRefs": [
    "gdp-growth-2022-base",

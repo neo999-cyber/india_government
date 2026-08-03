@@ -70,6 +70,39 @@ for (const v of SUBJECT_FORBIDDEN) {
   }
 }
 
+/**
+ * The assessment values that presuppose an objective, read from the schema's own definitions.
+ *
+ * Four of the eight say "the objective stated at announcement" in their own text — worked,
+ * partly, failed — and too-early says "has not run long enough for its stated objective to be
+ * testable". On a record where nothing was ever claimed, all four assert an objective the record
+ * does not contain. That is the condition that produced fourteen wrong scores, and nothing checked
+ * it: `worked` on a foodgrain trend whose own caseAgainst says the gains were area and weather;
+ * `failed` on a groundwater record whose own caseFor says the only stated objective was ACHIEVED
+ * and the depletion is its consequence; `too-early` on a foreign government's tariff.
+ *
+ * `reversed` is not here — it presupposes an enacting authority and a measure, not an objective,
+ * and its own text already polices that. `contested`, `no-objective` and `baseline-context`
+ * presuppose nothing.
+ *
+ * DERIVED, not restated: the set is the values whose written definition contains the phrase. If a
+ * definition is reworded, the set follows it, and if the phrase disappears from all of them the
+ * guard below fails loudly rather than silently policing nothing.
+ */
+const ASSESSMENT_DEFS = JSON.parse(readFileSync(join(SCHEMAS_DIR, 'ledger.schema.json'), 'utf8'))
+  .properties.assessment;
+const OBJECTIVE_PRESUPPOSED = ASSESSMENT_DEFS.enum.filter((v) => {
+  const line = ASSESSMENT_DEFS.description.split('\n').find((l) => l.startsWith(`- ${v}:`)) ?? '';
+  return /stated (at announcement|objective)|its stated objective/.test(line) && !line.includes('no objective was stated');
+});
+if (OBJECTIVE_PRESUPPOSED.length === 0) {
+  throw new Error(
+    'No assessment value\'s written definition mentions a stated objective any more. Either the ' +
+    'definitions were reworded and this derivation no longer matches them, or the axis was removed ' +
+    'deliberately — resolve it: objective-required is unenforceable until this finds something',
+  );
+}
+
 const FY_RE = /^FY(\d{4})-(\d{2})$/;
 const CY_RE = /^\d{4}$/;
 
@@ -639,6 +672,35 @@ export function checkIntegrity(records, { today }) {
     resolveRefs(r, l.seriesRefs, seriesIds, 'seriesRefs', 'series');
     resolveRefs(r, l.provenanceRefs, provenanceIds, 'provenanceRefs', 'provenance');
     if (Array.isArray(l.domains)) checkRelevance(r, l.provenanceRefs, l.domains, 'provenanceRefs');
+
+    /**
+     * A value that presupposes an objective needs one on the record.
+     *
+     * `claimAtLaunch` is the machine-readable form — its own description is "What the government
+     * said this would achieve, WHERE APPLICABLE", and that "where applicable" is the concession
+     * that made this possible: one field is optional because the objective may be absent while
+     * `assessment` is required as though it never is.
+     *
+     * But an objective is not always a launch claim. Eight scored records take theirs from a
+     * statute (RTE s26's ten per cent ceiling, s25's staffing norm), a court order (the Bhasin
+     * directions), or a process's own object (appointment on merit). Those are real objectives and
+     * no field holds them, so the rule accepts `assessmentNote` as the alternative — which is what
+     * that field is FOR, per its own description: a note on the assessment VALUE itself. The effect
+     * is that an objective which cannot be machine-read must be DECLARED rather than inferred by
+     * whoever next reads the record.
+     *
+     * Deliberately not satisfied by `summary` or `caseFor` containing the word "target". Every one
+     * of the fourteen wrong scores would have passed a keyword test — L-0071's caseFor names an
+     * objective in terms, and it is an objective that was MET, by a policy the record is not about.
+     */
+    if (OBJECTIVE_PRESUPPOSED.includes(l.assessment) && !l.claimAtLaunch && !l.assessmentNote) {
+      add('error', 'objective-required', r.file, where,
+        `assessment "${l.assessment}" is defined against the objective stated at announcement, and this ` +
+        `record states none: no claimAtLaunch, and no assessmentNote naming where the objective comes from. ` +
+        `Either the record has an objective — put it in claimAtLaunch, or name its source (statute, court ` +
+        `order, a process's own object) in assessmentNote — or it has none, and the value is wrong: a record ` +
+        `that finds something real with nothing claimed to test it is "no-objective"`);
+    }
 
     if (l.assessment === 'baseline-context' && l.term !== 'baseline') {
       add('error', 'baseline-context', r.file, where, `assessment "baseline-context" is for pre-May-2014 records only, but term is "${l.term}"`);

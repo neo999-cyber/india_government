@@ -207,5 +207,20 @@
     ],
     "confidence": "low",
     "asOf": "2026-08-01"
+  },
+  {
+    "id": "L-9503",
+    "title": "A scored value on a record that states no objective",
+    "date": "2020",
+    "term": "T2",
+    "domains": ["macro"],
+    "type": "episode",
+    "summary": "A trend record with no claimAtLaunch and no assessmentNote, carrying a value whose own written definition is against the objective stated at announcement. This is the shape that produced fourteen wrong scores in the live corpus.",
+    "assessment": "failed",
+    "caseFor": "Both cases are present so the record is rejected for the objective, not for a missing case.",
+    "caseAgainst": "Both cases are present so the record is rejected for the objective, not for a missing case.",
+    "sources": [{ "name": "Fixture, not a real source", "url": "https://example.org/", "tier": "T1" }],
+    "confidence": "low",
+    "asOf": "2026-08-03"
   }
 ]

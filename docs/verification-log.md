@@ -3033,3 +3033,546 @@ nothing. Either attested or removed. Now surfaced in four phases.
 ## Not deployed
 
 Stopped before deploy. Production was not checked and nothing here claims it was.
+
+---
+
+# Verification log — cycle 2026-08-03d (`no-objective` added; rescore PROPOSED, not applied)
+
+**Appended, not rewritten.** Branched from `domain-coverage`, which is branched from `lens-axis`.
+
+**The `/data` rescore in this entry has NOT been applied.** Code does not edit `/data` — raise, and
+Anoop applies at source (division of labour hardened phase 4b, after a correct `exports-gdp` fix was
+silently reverted twice by wholesale drops). The instruction for this cycle was also to *report the
+rescore table before applying*. So: the schema value, its definition, the gate rule and both fixtures
+are built and proven; the 30 proposed rescores are a table and nothing more.
+
+**Consequence, stated plainly: `/data` is RED on this branch — 18 `objective-required` errors.** That
+is the rule working. It is not deployable and is not intended to be until the rescore lands.
+
+## The value
+
+Added to the `assessment` enum with its written definition in the same commit (§6 preventive half),
+verbatim as instructed, plus three sentences on what it does not mean:
+
+> **no-objective**: the record finds something real, and no objective was stated at announcement
+> against which the finding could be scored. Distinct from contested, which is about the evidence
+> supporting more than one reading. Use where nothing was claimed, not where a claim exists and its
+> outcome is unmeasured — that remains contested (see L-0096). The value asserts nothing about the
+> finding's quality: a no-objective record is as firmly established as any other, and the absence it
+> records is the absence of a claim to test, not of evidence. Roughly half the ledger is in this
+> state — conditions, trends, reporting instruments and structural absences — and before this value
+> existed all of it had to take a value that presupposes an objective, which is why contested became
+> a sink.
+
+`assessment` stays **required**. `baseline-context` unchanged and still term-gated. `no-objective` was
+added to the both-cases branch of the schema's `allOf`, so a no-objective record carries `caseFor`
+and `caseAgainst` like any other — the value records that nothing was claimed, not that nothing is
+arguable.
+
+## The gate rule — `objective-required`
+
+Fires where an assessment value that presupposes an objective sits on a record that states none.
+
+**The value set is DERIVED from the schema's own definitions, not restated**: it is the values whose
+written line contains "the objective stated at announcement" or "its stated objective". That derives
+to `worked, partly, failed, too-early` — and if the definitions are ever reworded so that none
+matches, the module throws at load rather than silently policing nothing.
+
+**Two ways to satisfy it, and the second is what makes the rule usable.** `claimAtLaunch` is the
+machine-readable objective — its own description already concedes the asymmetry that produced this
+defect: *"What the government said this would achieve, **where applicable**"*, one field optional
+because the objective may be absent, while `assessment` is required as though it never is. But eight
+live records take a real objective from a statute (RTE s26's ten per cent ceiling, s25's staffing
+norm), a court direction (Bhasin), or a process's own object (appointment on merit), and no field
+holds those. So `assessmentNote` is accepted as the alternative — which is what that field is for by
+its own description. The effect is that an objective which cannot be machine-read must be
+**declared** rather than inferred by whoever next reads the record.
+
+Deliberately **not** satisfied by a keyword in `summary` or `caseFor`. All fourteen wrong scores would
+have passed a keyword test — L-0071's `caseFor` names an objective in terms, and it is an objective
+that was **met**, by a policy the record is not about.
+
+### Fixtures, both directions
+
+| fixture | proves |
+|---|---|
+| `broken/ledger/L-9503` | a scored value on a record with no claimAtLaunch and no assessmentNote |
+| `objective-from-statute/` | a scored value whose objective is a statute named in assessmentNote **stays clean** |
+
+The second is the one that decides whether the rule is usable. A rule demanding `claimAtLaunch` alone
+would fire on all eight statutory records and force a rescore on records that are correct — an
+over-firing gate, which is the kind that gets loosened in a hurry by whoever it blocks.
+
+`MUST_FIRE` 22 → 23.
+
+## What the rule finds in the live corpus: 18 records, in two kinds
+
+**13 are rescores** (the fourteenth, L-0086, carries an assessmentNote and so does not fire — correct,
+it is report-only). **5 are documentation, not rescores**: L-0028, L-0033, L-0062, L-0081, L-0098 have
+a real objective that is neither a launch claim nor declared anywhere. Each needs one
+`assessmentNote` naming its source. **The rescore alone does not clear the gate.**
+
+## GROUP A — 13 scored records with no stated objective
+
+Each was wrong before the schema change, independent of it.
+
+| id | now | → | why |
+|---|---|---|---|
+| L-0073 | `worked` | `no-objective` | Foodgrain 252→376.56 mt. No measure, no target. Its own `caseAgainst`: the gains came from area and weather, "neither of which is a policy achievement or repeatable". `worked` means a measure achieved its stated objective; there is no measure and the record's own case denies policy attribution. |
+| L-0071 | `failed` | `no-objective` | Its own `caseFor` says the procurement system "was built to secure national food self-sufficiency and did so" — the only objective on the record was **achieved**, and the depletion is its consequence. `failed` inverts the record. |
+| L-0046 | `failed` | `no-objective` | Road deaths 1.41→1.77 lakh. A condition. No safety target or measure named anywhere on the record. |
+| L-0063 | `failed` | `no-objective` | Graduate unemployment 29.1% against 3.4%. A structural relationship; `caseFor` argues it partly reflects educational success. |
+| L-0064 | `failed` | `no-objective` | Typed `shock` — "a disruption arriving from outside the government's control" — so `failed`, which requires a measure, contradicts the record's own type. The finding is the missing death count. |
+| L-0065 | `failed` | `no-objective` | A comparative condition against Vietnam and Bangladesh. No Indian structural-transformation target is cited. |
+| L-0032 | `partly` | `no-objective` | A sequence of frauds and how late each was detected. No supervisory detection target exists. |
+| L-0049 | `partly` | `no-objective` | Railway safety record across the period. No stated safety objective on the record. |
+| L-0069 | `partly` | `no-objective` | MSP, procurement and the legal-guarantee **demand**. A demand is not a government objective; nothing was claimed to test. |
+| L-0103 | `partly` | `no-objective` | AISHE's lag grew 12→25+ months. No publication-timeliness commitment is cited. |
+| L-0104 | `partly` | `no-objective` | **Closest call in the group.** The denominator doing half the work is close to a measurement dispute, which would argue `contested`. Filed `no-objective` because the record's subject is the enrolment trajectory and no GER target is on the record; the denominator point already lives in the cases. Flagged for review. |
+| L-0021 | `too-early` | `no-objective` | A foreign government's tariff. `too-early` reads "has not run long enough for **its stated objective** to be testable" — India stated none, and the measure is not India's. **Both cases empty — see below.** |
+| L-0022 | `too-early` | `no-objective` | A statistical rebasing. An instrument, not a measure with an objective. **Both cases empty — see below.** |
+
+**Blocking dependency:** `no-objective` is in the both-cases branch, so rescoring **L-0021 and L-0022
+requires `caseFor` and `caseAgainst` to be authored first.** They cannot simply be relabelled.
+
+## The empty-pair defect — three records, one structural cause
+
+L-0021, L-0022 and **L-0033** (a third, not previously named) carry `caseFor` and `caseAgainst` both
+empty. They are not three coincidences. The schema's both-cases branch reads
+`worked, partly, failed, reversed, contested` — **`too-early` is omitted**, and it is the only
+non-baseline value that can carry an empty pair. All three records that do are `too-early`; the other
+two `too-early` records (L-0061, L-0086) happen to carry both cases and would be unaffected.
+
+**Reported, not fixed.** Adding `too-early` to the branch is a one-line schema change that would
+immediately red-gate three records pending authoring, and it was not in this cycle's instruction.
+
+## GROUP B — the 42 `contested` records with no objective: 17 move, 25 stay
+
+**This diverges from the expectation that most would move, so the test is stated rather than the
+conclusion.** Both facts are true of all 42 — no objective, and more than one reading available — so
+the question is which is the sharper fact. The test applied:
+
+> `contested` is retained where the record's central finding is a **rival account**: two instruments
+> or measures disagreeing, two incompatible factual claims no forum has resolved, or a live normative
+> question the record declines to resolve. `no-objective` where the facts are agreed and the only
+> reason a score is impossible is that nothing was claimed.
+
+Under a looser test — "the same evidence supports two readings" — nearly all 42 stay, which is how
+`contested` became a sink in the first place. Under a stricter one — "any record with no objective
+moves" — the two values stop being distinct axes and `contested` loses the cases it exists for.
+
+### MOVE to `no-objective` — 17
+
+| id | why |
+|---|---|
+| L-0111 | A reporting instrument restated and split. Its own note: "The assessment vocabulary is built for measures with stated objectives and this record is a change to a reporting instrument." |
+| L-0112 | A column's meaning changed under an unchanged heading. Reporting instrument. |
+| L-0119 | An infiltration table published for a decade, then stopped. Reporting instrument. |
+| L-0120 | A cumulative sentence carried for a decade, then dropped. Reporting practice. |
+| L-0121 | Custodial deaths have no cell in any instrument. Structural absence; its note records that NCRB has stated no reason because it has none. |
+| L-0122 | Fifty AFSPA sanction requests, none granted, no decision rule held by anyone. |
+| L-0123 | Two quantities lost their only legislative route. |
+| L-0124 | Its own note: "no measure of the enacting authority's was withdrawn and **no stated objective went unmet**." |
+| L-0094 | A national statistic tabled for a decade then withdrawn. Same shape as L-0119/L-0120: a disclosure ending. Its note already records that "neither side of the pair describes a failure". |
+| L-0107 | The field is mandatory and filled for every teacher; the Union declines to aggregate. The finding is the non-publication. |
+| L-0117 | "The quantity that is constantly quoted and has no instrument." `caseAgainst` is that it is not a series at all. Its note separates the one genuinely contested sub-question out as "an absence with a route, not a disagreement". |
+| L-0087 | Facts agreed — referrals 71%→25%→16%. `caseFor` (discretionary, sitting days fell) and `caseAgainst` (the laws that skipped scrutiny were the most consequential) weight agreed facts. No target existed. |
+| L-0089 | Same shape. `caseFor`'s consolidation explanation is, in the record's own words, "not been demonstrated as its cause". |
+| L-0109 | `caseAgainst` is a **measurement gap** — stock published, flow not, "so nobody can say" — not a rival reading. |
+| L-0027 | The two sides argue different objects: the resolution's 88.4% recovery against the supervisory failure that preceded it. Neither is a claim being tested. |
+| L-0074 | **Flagged.** 5,892 cases against 15 convictions; the numbers are agreed. `caseFor` disputes what the denominator means, which is near a rival measure. Recommended move, lowest confidence in the group. |
+| L-0114 | **Flagged.** Its own note affirms `contested`, but what the note describes is an **asymmetry** — the state holds both terms of its own trade-off, publishes the favourable one, refuses the unfavourable one — not two readings of one thing. |
+
+### STAY `contested` — 25, with the rival account named
+
+- **Rival instruments or denominators:** L-0058 (PLFS against CMIE, opposite directions) · L-0083 (27–39.7% on completed trials against 2.8% on arrests) · L-0091 (two published closure measures) · L-0105 (sample against enumeration) · L-0078 (three indices against a specific methodological objection) · L-0059, L-0060 (rival decompositions) · L-0068 (OECD PSE accounting)
+- **Incompatible factual claims unresolved:** L-0115 (Amshipora disposal and scope of responsibility) · L-0116 ("two sides assert incompatible facts that no forum has resolved") · L-0113 (two readings of one retrieved document, per its own note)
+- **Live normative or legal question the record declines to resolve:** L-0101 (whether the conditionality is legitimate — the Supreme Court also declined) · L-0076 (a statutory entitlement against a functional obstruction) · L-0075
+- **Rival causal or predictive account of agreed data:** L-0056 (policy against private strategy — "attributing it to policy inverts cause and effect") · L-0031 (diversification against risk migration) · L-0042 (stunting improving while anaemia rose 8pp) · L-0025 (write-off as prudential practice against write-off as waiver) · L-0079 (law applies to all against timing requires explanation) · L-0019 (two departures against a pattern) · L-0040 (a scheme retained and scaled against a guarantee budget-capped into rationing) · L-0070 · L-0118 ("consent or suppression", with divergent testable predictions) · L-0020 **flagged** (adequacy of the fiscal response; no claim on the record)
+- **L-0092 — flagged, recommended STAY, against expectation.** It is one of the ten. But its own note says a précis reading and a misrepresentation reading "are both available on the same documents", which is a rival account of one act. Its note also anticipates a *different* new value — "if a value for **presentational findings** is added" — which `no-objective` is not.
+
+## L-0096 — stays `contested`, confirmed
+
+Not a no-objective record and never was. It carries a `claimAtLaunch` (MHRD: "the last chance… would
+not be allowed to continue in-service beyond 1st April 2019"). Its note states the mechanism exactly:
+worked/partly/failed are unavailable "because all three turn on **what share of the objective was
+achieved**", and the completion rate was never published. **Stated objective, unmeasured outcome** —
+a different axis from *no objective*, and the value the new definition explicitly excludes.
+
+## L-0086 — reported, not rescored
+
+`too-early` reads "the measure is in force but has not run long enough for **its stated objective** to
+be testable". What is untestable on L-0086 is a **court outcome** — the provision is before a
+Constitution Bench — and, per its own note, "how commissions apply the amended clause". Neither is the
+run-time of an objective. The definition does not cover the record, and no value in the enum does:
+`no-objective` is wrong too, because the amendment has a purpose. **A third state — in force, testable
+in principle, awaiting an external adjudication — has no value.** Recorded as a finding, not resolved:
+resolving a taxonomy in the pass that discovers it is how `differentFacts` reached seventeen records.
+
+## Gate
+
+```
+validate    INVALID — 18 objective-required errors (the rule working; rescore not applied)
+selftest    FAILED at step 1 (/data must validate) — same cause, nothing else
+            fixtures verified directly: objective-required fires on broken/,
+            stays silent on objective-from-statute/
+typecheck   clean
+```
+
+**Not deployed, and not deployable.** Production not checked; nothing here claims it was.
+
+## Addendum to 2026-08-03d — the empty-pair hole closed; three findings deferred
+
+Code side only. **No `/data` record was edited in this cycle or the one above.** The rescore table in
+`2026-08-03d` stands as tabled and comes back to the research session.
+
+### `too-early` added to the both-cases branch
+
+One hole, not three defects. The schema's `allOf` both-cases branch read
+`worked, partly, failed, reversed, contested` (and, from this cycle, `no-objective`) — `too-early`
+was the only non-baseline value that could carry an empty pair, and all three records that do are
+`too-early`. The other two `too-early` records, L-0061 and L-0086, already carry both cases and are
+unaffected, which is what makes this a hole in the branch rather than three independent lapses.
+
+**Deliberately red-gates L-0021, L-0022 and L-0033 pending authoring.** Correct outcome; left red.
+Exactly 9 new errors — three records × (`caseFor` missing, `caseAgainst` missing, "must match then
+schema") — and no collateral anywhere else in the corpus.
+
+Gate now: **27 errors** — 18 `objective-required` + 9 missing-case. Both sets are the rules working.
+
+### Two enum states with no value — to be decided TOGETHER, after phase 12
+
+Recorded jointly and deliberately not resolved. **Adding a value as each one appears is how `reversed`
+came to cover two mechanisms**, and resolving a taxonomy in the pass that discovers it is how
+`differentFacts` reached seventeen records.
+
+1. **L-0086 — in force, testable in principle, awaiting external adjudication.** `too-early` reads
+   "has not run long enough for **its stated objective** to be testable". What is untestable here is a
+   **court outcome** — the provision is before a Constitution Bench — and how commissions apply the
+   amended clause. That is not the run-time of an objective. `no-objective` is also wrong: the
+   amendment has a purpose.
+2. **L-0092 — a presentational act.** Its own `assessmentNote` anticipates the value it wants and it
+   is not the one added this cycle: *"The value may change on review if a value for **presentational
+   findings** is added."* The record scores a framing, not a measure — two Ministry factsheets on the
+   same survey six months apart.
+
+**Why together.** Both are records whose *object* is not a measure: one an adjudication pending on a
+measure, one an act of presentation about a measure. A single value may cover both, or the right
+answer may be that `assessment` needs a companion axis rather than more values — which is the
+question the audit opened and this cycle deliberately did not close. Decide after phase 12, when
+detentions, shutdowns and 370 mechanics will have produced more instances of both shapes.
+
+### Three low-confidence calls in the tabled rescore
+
+Flagged so the research pass reads them first rather than treating the table as uniform.
+
+- **L-0104** (`partly` → `no-objective`) — the weakest of Group A. "The denominator does half the work"
+  is close to a measurement dispute, which would argue `contested`. Filed `no-objective` because the
+  record's subject is the enrolment trajectory and no GER target sits on the record — but its own
+  `caseAgainst` reasons *against* a target ("the 50-per-cent-by-2035 target becomes progressively
+  easier to hit without teaching anyone"), which cuts the other way.
+- **L-0074** (`contested` → `no-objective`) — lowest confidence in Group B. The numbers are agreed —
+  5,892 cases, 15 convictions — which argues no-objective. But `caseFor` disputes what the denominator
+  *means* (the ED cannot self-initiate; on completed trials the rate is 93-96 per cent), and a
+  disputed denominator is close to a rival measure, which argues contested.
+- **L-0114** (`contested` → `no-objective`) — its own `assessmentNote` affirms contested, and moving it
+  overrides an explicit authored judgement. The reason to consider moving is that what the note
+  describes is an **asymmetry** — "the state holds the measurements for both sides of its own
+  trade-off, publishes the term favourable to it and refuses the term unfavourable to it" — rather
+  than two readings of one thing. Its `differentFactsNote` cuts against the move: "one side's central
+  number is unmeasured and the other's was withheld", which is a rival-account structure.
+
+### Gate
+
+```
+validate    INVALID — 27 errors (18 objective-required, 9 missing-case). Both rules working.
+typecheck   clean
+```
+
+Not deployed and not deployable until the `/data` pass runs.
+
+## Addendum to 2026-08-03d — the rescore APPLIED (25 of 27), four records held red
+
+Authorised in chat and applied here. **25 records rescored, 4 notes written, nothing else touched.**
+
+### Applied
+
+**Group A — 10 of 12.** `no-objective` on L-0073 (`worked`), L-0071, L-0046, L-0063, L-0064, L-0065
+(`failed`), L-0032, L-0049, L-0069, L-0103 (`partly`). L-0021 and L-0022 are held: they cannot be
+relabelled until their cases exist, because `no-objective` sits in the both-cases branch.
+
+**Group B — 15 of 17.** `no-objective` on L-0111, L-0112, L-0119, L-0120, L-0121, L-0122, L-0123,
+L-0124, L-0094, L-0107, L-0117, L-0087, L-0089, L-0109, L-0027.
+
+**Two reversals of my own tabled call, both against me and both correct.**
+- **L-0114 stays `contested`.** Its own `differentFactsNote` meets the STAY criterion three times
+  over — one side's central number unmeasured and the other's withheld, plus three further factual
+  disputes "unresolved beneath that", including two bodies telling the same court incompatible things
+  with no forum deciding between them. I tabled a move against a note that argues the opposite.
+- **L-0074 stays `contested`.** Same two-denominator structure as L-0083 — 0.25 per cent on cases
+  initiated against 93-96 per cent on completed trials, exactly as L-0083 runs 2.8 per cent on arrests
+  against 27-39.7 per cent on completed trials. L-0083 was tabled STAY. **Consistency governs**: two
+  records with the same structure cannot take different values because they were read on different
+  days.
+
+**L-0104 removed from Group A entirely** — stays `partly`, and is one of the five documentation cases.
+
+### The four notes
+
+| id | field | what it names |
+|---|---|---|
+| L-0081 | `assessmentNote` | Anuradha Bhasin v. Union of India, 10 January 2020, and that **publication** is the direction being scored |
+| L-0098 | `assessmentNote` | RTE s.12(1)(c), and Dinesh Biwaji Ashtikar v. State of Maharashtra, 2026 INSC 56 |
+| L-0104 | `assessmentNote` | NEP 2020's 50-per-cent-by-2035 GER target, which `caseAgainst` already scores against |
+| L-0062 | **`claimAtLaunch`** | the EPFO and KLEMS figures — a government claim, so the claim field, not a note |
+
+L-0062 is the one that belonged in `claimAtLaunch` rather than `assessmentNote`, and the distinction
+is the whole point of the audit: `claimAtLaunch` holds what was claimed, `assessmentNote` holds where
+an objective comes from when no field can hold it.
+
+### Held RED, deliberately — four records, two reasons
+
+**Blocked on retrieval, and the note must not be written first:**
+- **L-0028** — `worked` on the Yes Bank reconstruction. The objective is the Reconstruction Scheme's
+  own object, and **the record has never cited the scheme**: its only source is a T4 news item on the
+  SMBC stake sale. Writing an `assessmentNote` naming an unretrieved instrument would clear the gate
+  on a reference nobody has read. Retrieve the March 2020 notification; if it cannot be retrieved,
+  `worked` is not supportable and the record is rescored instead.
+- **L-0033** — `too-early` on ECL provisioning. Only source is a T4 blog on the Financial Stability
+  Report; the RBI final directions of 27 April 2026 are not cited. Same rule.
+
+**Blocked on authoring** — L-0021, L-0022, L-0033 need `caseFor` and `caseAgainst`. Drafts were
+prepared and are NOT in `/data`; they are for the research session to accept, amend or reject.
+
+```
+validate  INVALID — 13 errors
+          4 objective-required (L-0021, L-0022, L-0028, L-0033)
+          9 missing-case       (L-0021, L-0022, L-0033)
+```
+
+Every one is a record deliberately held. **No error remains that a rescore would clear.**
+
+### Loose end closed: `differentFactsNote` on FALSE
+
+Its description read "Required in practice wherever differentFacts is true", which reads as true-only
+and made the one deliberate false-note in the corpus look like a stray. It now states that a note is
+**permitted and meaningful on false** — recording why a record is a weighting case rather than a
+different-facts one, which is the judgement most at risk of being made silently — and names L-0118 as
+the worked instance. Description only: no rule, no data, no gate change.
+
+This was the third of the three items queued before phase 12. The other two are done: `lenses[]`
+(2026-08-03b) and the assessment audit (2026-08-03d).
+
+### Still owed, and now surfaced in five phases
+
+**`demography`** — a decision, not a note. Zero records; its own definition says it "describes the
+word, not observed practice". Either attested or removed.
+
+## Addendum to 2026-08-03d — L-0021 and L-0022 landed; retrieval FAILED on both documents
+
+### Landed
+
+**L-0021** — `caseFor` and `caseAgainst` as drafted, then `too-early` → `no-objective`. The pair is
+about the size and durability of the shock, not about India's handling of it, because the record
+carries no material on any Indian response. Both sides rest on T4 sources and the record's own
+`confidence: low`; nothing in the pair is pinned to a primary document, and that is a property of the
+record as it stands, not of the drafting.
+
+**L-0022** — `caseAgainst` as drafted; `caseFor` **shrunk before landing**, then `too-early` →
+`no-objective`.
+
+The drafted `caseFor` argued that the previous series "had been criticised for single deflation for a
+decade". **That criticism is not on the record and was not retrieved.** It was cut rather than
+sourced. What landed is only what MoSPI's own press note of 27 February 2026 — already a T1 source on
+the record — establishes: that the methodology moved to double deflation, a Supply-Use Table framework
+and new source data, and that the basis was published with the release. The case now ends by saying
+that is the whole of it on the sources retrieved.
+
+**A shorter honest case beats a fuller unsourced one**, and the general form is worth keeping: a case
+drafted from a record can only ever be as strong as that record's sources, and padding it with
+recalled context is how an unsourced claim enters through the side the gate does not watch.
+
+### Retrieval — one task, two documents, BOTH FAILED
+
+Reported as failure rather than worked around.
+
+**1. RBI ECL final directions, 27 April 2026 — NOT RETRIEVED.**
+The primary press release exists at a stable RBI URL
+(`rbidocs.rbi.org.in/rdocs/PressRelease/PDFs/PR150994739A099E843668A75A7F92C9E9BD1.PDF`) and **failed
+to fetch twice**, both times on a transport error rather than a 404 — the document is there and could
+not be pulled.
+
+Worse than a plain failure, and the reason not to fall back on the secondary hits: **the secondary
+sources disagree with RBI's own site about what the instrument is called.** Search results give
+"Reserve Bank of India (Commercial Banks – Asset Classification, Provisioning and Income Recognition)
+Directions, 2026", while RBI's Master Directions page at `id=13146` returns a differently-ordered and
+differently-dated instrument — "Reserve Bank of India (Commercial Banks – Income Recognition, Asset
+Classification and Provisioning) Directions, **2025**", issued 28 November 2025. Those are two
+documents, and which of them is the 27 April 2026 ECL instrument cannot be settled from the secondary
+material. **Citing either would be a guess wearing a T1 badge.**
+
+Also not established: **the 60-70 basis point capital impact appears in no primary source retrieved.**
+It is load-bearing on both sides of the drafted pair, which is why L-0033's pair stays held.
+
+**2. Yes Bank Limited Reconstruction Scheme, 2020 — NOT RETRIEVED.**
+Its identity is corroborated consistently across four independent secondary hosts: notified by the
+Central Government vide **G.S.R. 174(E), New Delhi, dated 13 March 2020**, under sub-sections (4) and
+(7) of section 45 of the Banking Regulation Act 1949, published in the Gazette of India Extraordinary
+Part II Section 3; the moratorium it lifted was S.O. 993(E) of 5 March 2020. **The document itself was
+not obtained.** IndianKanoon's copy returns HTTP 403. The two RBI press releases that were fetched are
+the moratorium of 5 March and the **draft** scheme of 6 March — the draft explicitly says the scheme
+"shall come into force on such date as the Central Government may, by notification in the Official
+Gazette, specify", so neither is the notified instrument.
+
+**Corroboration across four secondary hosts is not retrieval.** The gazette reference above is a
+research lead for the next pass — a named document, number, date and issuing power — and must not be
+entered as a source until someone has read it.
+
+### Gate
+
+```
+validate  INVALID — 5 errors
+          L-0028  objective-required           (blocked: scheme notification not retrieved)
+          L-0033  objective-required + 3 case  (blocked: ECL directions not retrieved)
+```
+
+Down from 13. **Both remaining records are blocked on the same retrieval failure, and neither is
+blocked on a judgement anyone still owes.**
+
+## Addendum to 2026-08-03d — retries: one failed again, one returned a reproduction
+
+### RBI ECL directions — FAILED A THIRD TIME, and the naming question is a provenance finding
+
+The press release at `rbidocs.rbi.org.in/.../PR150994739A099E843668A75A7F92C9E9BD1.PDF` failed again
+on the same transport error. Three attempts, three transport failures, no 404: **the document is
+there and this environment cannot pull it.** That is a retrieval-channel finding, not an absence.
+
+**Logged as a provenance finding regardless of this cycle, because it is unresolved and being
+unresolved is the finding.** Two candidate titles are in circulation and they cannot be reconciled
+from secondary material:
+
+| source | title | date |
+|---|---|---|
+| search results / law-firm notes | RBI (Commercial Banks – **Asset Classification, Provisioning and Income Recognition**) Directions, **2026** | 27 Apr 2026 |
+| RBI's own Master Directions page, `id=13146` | RBI (Commercial Banks – **Income Recognition, Asset Classification and Provisioning**) Directions, **2025** | 28 Nov 2025, updated 1 Jul 2026 |
+
+Same five nouns, different order, different year. **Whether these are two instruments or one misnamed
+by the secondaries is not settled.** The secondary material leans toward two — it refers to a
+"Repeal Directions, 2026" repealing an earlier Income Recognition/Asset Classification/Provisioning
+instrument, which would make the 2025 Directions the thing repealed and the 2026 Directions the
+replacement. **That is an inference from search summaries and is explicitly unconfirmed.**
+
+This matters beyond L-0033: a near-identical title differing only in word order and year is exactly
+the shape that produces a wrong citation that validates. Any future record citing either instrument
+must state which, from the primary.
+
+Also still unestablished: **the 60-70 basis point capital impact appears in no primary source.**
+L-0033's pair stays held for that reason and no other.
+
+### Yes Bank scheme — a reproduction, not the gazette. L-0028 rescored.
+
+The retry returned what appears to be the complete text of the Scheme on TaxGuru, a private tax and
+corporate-law portal, including a corrigendum of 25 March 2020. It confirms preamble, G.S.R. number,
+date and statutory power exactly as the earlier corroboration had them.
+
+**A private portal's reproduction is not the gazette**, and by the standard set one addendum earlier
+it is not retrieval. The tier system grades the document retrieved, not the institution behind the
+text, so this would enter at T2 at best — and its fidelity to the gazette cannot be checked without
+the gazette.
+
+**L-0028 rescored `worked` → `no-objective`**, per instruction, with the reason recorded on the record
+itself rather than only here: the objective is named and has not been read, so no score against it is
+supportable. The gazette reference stays a **research lead, not a source**, and was not added to
+`sources`.
+
+**One substantive thing the reproduction shows, and it cuts deeper than the retrieval failure.** The
+Scheme's twelve paragraphs are: short title and commencement · definitions · share capital ·
+alteration of articles · constitution of the Board · rights and liabilities · continuation of
+employees · no change in offices or branch network · furnishing statements · manner of service of
+notice · cessation of moratorium · interpretation. **There is no objects clause anywhere in it.** It
+is an instrument of mechanics. If that holds against the gazette, then `worked` on L-0028 was never
+scoreable against the Scheme at all, and `no-objective` is not a fallback pending retrieval but the
+correct value on the merits. Recorded as a finding to confirm, not as a conclusion: it rests on a
+headings list from a secondary reproduction.
+
+### Gate
+
+```
+validate  INVALID — 4 errors, all L-0033 (3 missing-case + 1 objective-required)
+```
+
+Down from 13 → 5 → **4**. One record, blocked on one document, blocked on one transport failure.
+
+### Merge decision — merged the two green branches, HELD the red one
+
+`lens-axis` and `domain-coverage` merged to `main` in order. **`assessment-no-objective` was NOT
+merged.**
+
+The call was between merging red and waiting, and merging red is worse. `npm run build` is
+`validate && next build && reachability && domain-coverage`, and `vercel.json` runs the same chain, so
+a red `main` is a `main` that **cannot deploy at all** — every later cycle inherits a broken build and
+the instrument's founding rule (CLAUDE.md data rule 1: an invalid repo cannot deploy) would be
+violated on the default branch to accommodate one unread PDF. Waiting costs one record's rescore
+sitting on a branch; merging red costs the deploy path and the rule.
+
+The two green branches carry the work that should not wait: `lenses[]` and the 15+7 backfill, and the
+domain-coverage gate with the `education` fix that restored a surface 48 series had been missing.
+
+## Addendum to 2026-08-03d — L-0033 closed; gate GREEN
+
+### Fourth attempt, and the last
+
+The ECL press release failed again on the same transport error. **Four attempts, four transport
+failures, no 404 at any point.** Stopped: this is an environment limit, not a research gap, and the
+distinction matters for what the record says about itself. A document that cannot be fetched from
+here is not a document that does not exist, and the record must not imply otherwise.
+
+### L-0033 rescored `too-early` → `no-objective`
+
+Same standard as L-0028, and the reason is on the record rather than only here. `too-early` reads
+"has not run long enough for **its stated objective** to be testable" — and that objective cannot be
+quoted from anything retrieved, so the value asserted something the record does not hold.
+
+**The 60-70 basis point figure is gone from the record entirely, not just from the cases.** It was in
+the `summary`, which renders as fact on the record page — leaving it there and keeping it out of the
+argument would have been the same defect wearing a different field. The summary now says what is
+true: the impact is not established here, the only figure in circulation is a T4 relay, and no primary
+for it has been retrieved. **A figure that cannot carry an argument cannot carry a summary either.**
+
+The pair was authored from what the record actually holds: the timetable (issued 27 April 2026,
+effective 1 April 2027, phased to March 2031), the shift from incurred-loss to expected-credit-loss
+recognition, and P-21's forward-dated comparability break on `crar` and `net-npa`. `caseAgainst` ends
+by stating its own limit — none of it can be sized, because the directions have never been retrieved.
+
+```
+validate  VALID — 0 errors, 96 warning(s)
+selftest  23/23 validator rules · 2/2 output gates
+```
+
+### Stacked merges — verify the artefact on `main`, never the PR status
+
+**Found by doing it wrong.** PR #3 was opened with base `lens-axis` and merged there at 21:18, ten
+minutes *after* `lens-axis` had already been merged to `main` at 21:08. Both PRs reported MERGED.
+`main` had the lens axis and **not** the domain-coverage gate: `tools/domain-coverage.mjs` absent, the
+build command still ending at `reachability`, and `validate` passing cleanly the whole time because
+nothing about the missing gate is visible to it.
+
+**A stacked PR that merges into its base after the base has landed is a silent no-op for `main`, and
+every status field says success.** Fixed by PR #4 re-targeted at `main`, then verified by checking out
+`origin/main` in a clean worktree and running the tools there — not by reading a green tick.
+
+Written into SKILL.md stage 8: after any stacked merge, verify the artefact exists on `main`.
+
+### Deferred, logged only — prose citations against `sources[]`
+
+A rule asserting that every document named in prose — `assessmentNote`, `caveat`, `caseFor`,
+`caseAgainst` — appears in that record's `sources[]`. It is a **partial** guard against the hard stop
+this cycle made explicit: entering a document as a source that has not been retrieved. It cannot
+catch a fabricated source, because a fabricated source is in `sources[]` by construction. What it
+catches is the adjacent and more common case — **a real document named in an argument and never
+retrieved onto the record**, which is exactly the shape of L-0028's Reconstruction Scheme and
+L-0033's ECL directions before this cycle.
+
+Not built: it needs a citation-extraction heuristic over free prose, and a heuristic that
+over-fires here would push authors to cite less rather than retrieve more, which is the wrong
+direction. Both fixtures and a tested heuristic under trigger C, as its own cycle.
