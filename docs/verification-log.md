@@ -4035,3 +4035,109 @@ that built it.** All four changed URLs confirm 200.
   **Not gateable** — no mechanical test distinguishes a weak case honestly reported from a weak case
   lazily written, which is the same exposure §8 already records for argument pairs. Worth watching in
   phase 13, and L-0138 now carries it on the record.
+
+---
+
+# Verification log — cycle 2026-08-03h (`awaiting-adjudication` added; shape 2 logged, not solved)
+
+Append-only delta. Nothing above this line was edited.
+
+## Shape 1 — `awaiting-adjudication`, added with its definition in the same commit
+
+> **awaiting-adjudication:** the measure is in force and its effect is testable in principle, but the
+> term that would settle the assessment is a pending decision by a body outside the enacting
+> authority. Distinct from `too-early`, where the obstacle is elapsed time.
+
+**Four members, not five: L-0086, L-0127, L-0134, L-0143.**
+
+**The value lives in ONE schema, not four.** `assessment` is a ledger-only field — series, provenance
+and pairs have no assessment — so the instruction's "all four schemas" had nothing to act on beyond
+`ledger.schema.json`. Mirror sites updated with it: the `allOf` branch requiring both cases (a scored
+value carries both sides), `lib/types.ts`, `lib/format.ts`.
+
+**No change was needed to `objective-required`, and that is the derivation working rather than luck.**
+`OBJECTIVE_PRESUPPOSED` is derived from the definitions' own text — the values whose line contains
+"stated at announcement" or "its stated objective". The new definition contains neither, because what
+is pending is *a decision*, not the outcome of a claim, so the value correctly presupposes no
+objective without anyone editing the rule.
+
+**L-0139 does NOT take it, and the boundary is recorded on the record.** It is the fifth member of the
+shape as the sweep drew it and the one that contradicts the value's own text: what it awaits is **an
+act of publication by a holder** — a year of post-commencement orders at a live address, a review
+order carrying an actual finding — not a ruling by an adjudicator. Those accumulate with time, which
+is what `too-early` describes. **Stretching the value to absorb it would have repeated the exact
+defect the exercise exists to undo:** `reversed` came to cover two mechanisms because a value was
+widened to fit a member rather than a member filed on the value's text.
+
+**L-0086 now records its own strain.** Until this cycle the anchor record argued its value and said
+nothing about the value not fitting, while every record diagnosed from it — L-0127, L-0134, L-0139,
+L-0143 — said more about the problem than the record they were named after. The strain lived only in
+this log, which is not where a reader of the record looks.
+
+**`too-early` re-read against the two members it retains, and amended.** It now states that the
+obstacle is elapsed time *and the evidence time accumulates*, names `awaiting-adjudication` as the
+value where the obstacle is a pending external decision, and records that L-0139 is the boundary case
+and deliberately inside. The definition described both members before the amendment; it did not
+distinguish them from the state that had been living inside it, and now it does.
+
+**Before: 5 of 6 `too-early` records were in a state its definition did not describe. After:
+`too-early` holds L-0061 and L-0139, and both fit its text.**
+
+## Shape 2 — a CONFIRMED STATE WITH NO HOME. No value. Not designed.
+
+Twelve records: L-0092, L-0094, L-0111, L-0112, L-0113, L-0114, L-0119, L-0120, L-0129, L-0133,
+L-0141, L-0142. The finding is about **an act of presentation** — a body changing what it says about
+its own figures — rather than about a measure's outcome.
+
+**No value is proposed, and the reason is structural rather than caution.**
+
+**1. It is not record-scoped, and an `assessment` value is a whole-record field.** In at least eight
+records the presentational finding is a co-equal finding *inside* a record whose primary subject is a
+real measure. **L-0145 is the worked instance**: its title carries both halves — "Land law repealed by
+executive order five days before the power lapsed, **and a transfer count in four units**". The first
+half is a real change in the world; the second is five publications in five years in four
+incommensurable units, then silence. One `assessment` cannot express a finding that occupies half a
+record, and filing the record on either half misdescribes the other.
+
+**2. The likely fix is a COMPANION AXIS, not an enum value — the `lenses[]` shape.** `lenses[]` exists
+because `domain` is single-valued and "substantive subject plus cross-cutting lens" is two axes in one
+field. This is the same shape one layer over: a property of *part* of a record, in a *whole-record*
+field. **Not designed here.** Designing a taxonomy in the pass that discovers it is how
+`differentFacts` shipped at seventeen records.
+
+**3. The boundary is one line, and moving it takes the set from 12 to 16.** Recorded verbatim from the
+sweep, because the operator should check the boundary rather than the conclusion:
+
+> I separated *a body changed what it says about its own figures* (positive: restated, relabelled,
+> redefined, deleted, ceased, framed selectively) from *a quantity was never said at all* (rejected:
+> L-0107, L-0117, L-0121, L-0138 — structural absences already served by `no-objective` and by
+> `reasonKind`). That line is defensible and is where I drew it, but it is a line I chose; the
+> operator should check it first.
+>
+> L-0094 included and L-0107 excluded — the two are treated as one family by the 2026-08-03d table,
+> which moved both together for the same stated reason. I split them: L-0094's subject is a disclosure
+> practice that **changed**; L-0107's is a field collected and **never once** published. Change-of-account
+> versus never-an-account. This single line also decides L-0117, L-0121 and L-0138 (all excluded) and
+> L-0119/L-0120 (both included). **It is the highest-leverage boundary in this report: move it, and
+> shape 2 goes from 12 to 16.**
+
+**4. The 7/5 split across `no-objective` and `contested` is an ARTEFACT, and it is being preserved as
+evidence.** Commit `e2faa70` — *"Apply the rescore: 25 records to no-objective"* — moved L-0094,
+L-0111, L-0112, L-0119 and L-0120 in a pass whose subject was draining the `contested` sink, and left
+L-0113 and L-0114 behind in the same file and the same family. L-0114 was expressly tabled for the
+move in cycle 2026-08-03d and was not moved. L-0092, L-0129 and L-0141 were authored later and took
+`contested`. **So the distribution tracks one unrelated reform plus authoring date, not any judgement
+about the shape.**
+
+**The twelve are deliberately left as filed and the split is NOT reconciled.** Normalising it would
+destroy the artefact that demonstrates the vocabulary is not tracking the state — which is the single
+strongest piece of evidence that this state needs a home. The ten note-versus-value contradictions
+fixed in cycle 2026-08-03g were a different defect: there the *reasoning* contradicted the *value*.
+Here the values disagree with each other, and that disagreement is the finding.
+
+**Revisit after phase 14, with more members.**
+
+## Deferred, carried forward
+
+- The 313 bare-domain source URLs.
+- The `caseFor`-is-weakest-where-the-position-is-procedural pattern; not gateable.
