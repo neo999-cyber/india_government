@@ -254,7 +254,7 @@
     "differentFactsNote": {
       "type": "string",
       "minLength": 30,
-      "description": "What each side is counting, and why both can be arithmetically correct. Required in practice wherever differentFacts is true."
+      "description": "What each side is counting, and why both can be arithmetically correct. Required in practice wherever differentFacts is true, and PERMITTED AND MEANINGFUL ON FALSE \u2014 a note on a false flag records why the record is a weighting case rather than a different-facts one, which is the judgement most at risk of being made silently. L-0118 is the worked instance: both sides accept every underlying fact, the temptation is to mark it true, and the note says so. Reading this line as true-only was a real misreading: it made the one deliberate false-note in the corpus look like a stray."
     },
     "assessmentNote": {
       "type": "string",

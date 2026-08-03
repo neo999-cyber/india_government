@@ -3290,3 +3290,80 @@ typecheck   clean
 ```
 
 Not deployed and not deployable until the `/data` pass runs.
+
+## Addendum to 2026-08-03d — the rescore APPLIED (25 of 27), four records held red
+
+Authorised in chat and applied here. **25 records rescored, 4 notes written, nothing else touched.**
+
+### Applied
+
+**Group A — 10 of 12.** `no-objective` on L-0073 (`worked`), L-0071, L-0046, L-0063, L-0064, L-0065
+(`failed`), L-0032, L-0049, L-0069, L-0103 (`partly`). L-0021 and L-0022 are held: they cannot be
+relabelled until their cases exist, because `no-objective` sits in the both-cases branch.
+
+**Group B — 15 of 17.** `no-objective` on L-0111, L-0112, L-0119, L-0120, L-0121, L-0122, L-0123,
+L-0124, L-0094, L-0107, L-0117, L-0087, L-0089, L-0109, L-0027.
+
+**Two reversals of my own tabled call, both against me and both correct.**
+- **L-0114 stays `contested`.** Its own `differentFactsNote` meets the STAY criterion three times
+  over — one side's central number unmeasured and the other's withheld, plus three further factual
+  disputes "unresolved beneath that", including two bodies telling the same court incompatible things
+  with no forum deciding between them. I tabled a move against a note that argues the opposite.
+- **L-0074 stays `contested`.** Same two-denominator structure as L-0083 — 0.25 per cent on cases
+  initiated against 93-96 per cent on completed trials, exactly as L-0083 runs 2.8 per cent on arrests
+  against 27-39.7 per cent on completed trials. L-0083 was tabled STAY. **Consistency governs**: two
+  records with the same structure cannot take different values because they were read on different
+  days.
+
+**L-0104 removed from Group A entirely** — stays `partly`, and is one of the five documentation cases.
+
+### The four notes
+
+| id | field | what it names |
+|---|---|---|
+| L-0081 | `assessmentNote` | Anuradha Bhasin v. Union of India, 10 January 2020, and that **publication** is the direction being scored |
+| L-0098 | `assessmentNote` | RTE s.12(1)(c), and Dinesh Biwaji Ashtikar v. State of Maharashtra, 2026 INSC 56 |
+| L-0104 | `assessmentNote` | NEP 2020's 50-per-cent-by-2035 GER target, which `caseAgainst` already scores against |
+| L-0062 | **`claimAtLaunch`** | the EPFO and KLEMS figures — a government claim, so the claim field, not a note |
+
+L-0062 is the one that belonged in `claimAtLaunch` rather than `assessmentNote`, and the distinction
+is the whole point of the audit: `claimAtLaunch` holds what was claimed, `assessmentNote` holds where
+an objective comes from when no field can hold it.
+
+### Held RED, deliberately — four records, two reasons
+
+**Blocked on retrieval, and the note must not be written first:**
+- **L-0028** — `worked` on the Yes Bank reconstruction. The objective is the Reconstruction Scheme's
+  own object, and **the record has never cited the scheme**: its only source is a T4 news item on the
+  SMBC stake sale. Writing an `assessmentNote` naming an unretrieved instrument would clear the gate
+  on a reference nobody has read. Retrieve the March 2020 notification; if it cannot be retrieved,
+  `worked` is not supportable and the record is rescored instead.
+- **L-0033** — `too-early` on ECL provisioning. Only source is a T4 blog on the Financial Stability
+  Report; the RBI final directions of 27 April 2026 are not cited. Same rule.
+
+**Blocked on authoring** — L-0021, L-0022, L-0033 need `caseFor` and `caseAgainst`. Drafts were
+prepared and are NOT in `/data`; they are for the research session to accept, amend or reject.
+
+```
+validate  INVALID — 13 errors
+          4 objective-required (L-0021, L-0022, L-0028, L-0033)
+          9 missing-case       (L-0021, L-0022, L-0033)
+```
+
+Every one is a record deliberately held. **No error remains that a rescore would clear.**
+
+### Loose end closed: `differentFactsNote` on FALSE
+
+Its description read "Required in practice wherever differentFacts is true", which reads as true-only
+and made the one deliberate false-note in the corpus look like a stray. It now states that a note is
+**permitted and meaningful on false** — recording why a record is a weighting case rather than a
+different-facts one, which is the judgement most at risk of being made silently — and names L-0118 as
+the worked instance. Description only: no rule, no data, no gate change.
+
+This was the third of the three items queued before phase 12. The other two are done: `lenses[]`
+(2026-08-03b) and the assessment audit (2026-08-03d).
+
+### Still owed, and now surfaced in five phases
+
+**`demography`** — a decision, not a note. Zero records; its own definition says it "describes the
+word, not observed practice". Either attested or removed.
