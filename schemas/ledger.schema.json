@@ -294,7 +294,8 @@
               "failed",
               "reversed",
               "contested",
-              "no-objective"
+              "no-objective",
+              "too-early"
             ]
           }
         }

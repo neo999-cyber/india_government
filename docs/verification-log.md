@@ -3220,3 +3220,73 @@ typecheck   clean
 ```
 
 **Not deployed, and not deployable.** Production not checked; nothing here claims it was.
+
+## Addendum to 2026-08-03d — the empty-pair hole closed; three findings deferred
+
+Code side only. **No `/data` record was edited in this cycle or the one above.** The rescore table in
+`2026-08-03d` stands as tabled and comes back to the research session.
+
+### `too-early` added to the both-cases branch
+
+One hole, not three defects. The schema's `allOf` both-cases branch read
+`worked, partly, failed, reversed, contested` (and, from this cycle, `no-objective`) — `too-early`
+was the only non-baseline value that could carry an empty pair, and all three records that do are
+`too-early`. The other two `too-early` records, L-0061 and L-0086, already carry both cases and are
+unaffected, which is what makes this a hole in the branch rather than three independent lapses.
+
+**Deliberately red-gates L-0021, L-0022 and L-0033 pending authoring.** Correct outcome; left red.
+Exactly 9 new errors — three records × (`caseFor` missing, `caseAgainst` missing, "must match then
+schema") — and no collateral anywhere else in the corpus.
+
+Gate now: **27 errors** — 18 `objective-required` + 9 missing-case. Both sets are the rules working.
+
+### Two enum states with no value — to be decided TOGETHER, after phase 12
+
+Recorded jointly and deliberately not resolved. **Adding a value as each one appears is how `reversed`
+came to cover two mechanisms**, and resolving a taxonomy in the pass that discovers it is how
+`differentFacts` reached seventeen records.
+
+1. **L-0086 — in force, testable in principle, awaiting external adjudication.** `too-early` reads
+   "has not run long enough for **its stated objective** to be testable". What is untestable here is a
+   **court outcome** — the provision is before a Constitution Bench — and how commissions apply the
+   amended clause. That is not the run-time of an objective. `no-objective` is also wrong: the
+   amendment has a purpose.
+2. **L-0092 — a presentational act.** Its own `assessmentNote` anticipates the value it wants and it
+   is not the one added this cycle: *"The value may change on review if a value for **presentational
+   findings** is added."* The record scores a framing, not a measure — two Ministry factsheets on the
+   same survey six months apart.
+
+**Why together.** Both are records whose *object* is not a measure: one an adjudication pending on a
+measure, one an act of presentation about a measure. A single value may cover both, or the right
+answer may be that `assessment` needs a companion axis rather than more values — which is the
+question the audit opened and this cycle deliberately did not close. Decide after phase 12, when
+detentions, shutdowns and 370 mechanics will have produced more instances of both shapes.
+
+### Three low-confidence calls in the tabled rescore
+
+Flagged so the research pass reads them first rather than treating the table as uniform.
+
+- **L-0104** (`partly` → `no-objective`) — the weakest of Group A. "The denominator does half the work"
+  is close to a measurement dispute, which would argue `contested`. Filed `no-objective` because the
+  record's subject is the enrolment trajectory and no GER target sits on the record — but its own
+  `caseAgainst` reasons *against* a target ("the 50-per-cent-by-2035 target becomes progressively
+  easier to hit without teaching anyone"), which cuts the other way.
+- **L-0074** (`contested` → `no-objective`) — lowest confidence in Group B. The numbers are agreed —
+  5,892 cases, 15 convictions — which argues no-objective. But `caseFor` disputes what the denominator
+  *means* (the ED cannot self-initiate; on completed trials the rate is 93-96 per cent), and a
+  disputed denominator is close to a rival measure, which argues contested.
+- **L-0114** (`contested` → `no-objective`) — its own `assessmentNote` affirms contested, and moving it
+  overrides an explicit authored judgement. The reason to consider moving is that what the note
+  describes is an **asymmetry** — "the state holds the measurements for both sides of its own
+  trade-off, publishes the term favourable to it and refuses the term unfavourable to it" — rather
+  than two readings of one thing. Its `differentFactsNote` cuts against the move: "one side's central
+  number is unmeasured and the other's was withheld", which is a rival-account structure.
+
+### Gate
+
+```
+validate    INVALID — 27 errors (18 objective-required, 9 missing-case). Both rules working.
+typecheck   clean
+```
+
+Not deployed and not deployable until the `/data` pass runs.
