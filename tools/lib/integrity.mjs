@@ -766,7 +766,10 @@ export function checkIntegrity(records, { today }) {
       const rec = r.record;
       if (!rec || typeof rec !== 'object' || typeof rec.caveat !== 'string') continue;
       const where = label(r);
-      const cited = [...new Set(rec.caveat.match(/P-\d{2}/g) ?? [])];
+      // {2,3} tracks the provenance id contract, widened 2026-08-03 when P-99 was reached.
+      // It must stay greedy and stay in step with the schema: /P-\d{2}/ against "P-100" matches
+      // "P-10", which is a DIFFERENT EXISTING RECORD — a silent wrong-citation match, not a miss.
+      const cited = [...new Set(rec.caveat.match(/P-\d{2,3}/g) ?? [])];
       const refs = Array.isArray(rec.provenanceRefs) ? rec.provenanceRefs : [];
       const breakRefs = (Array.isArray(rec.breaks) ? rec.breaks : []).map((b) => b?.provenanceRef);
       for (const pid of cited) {

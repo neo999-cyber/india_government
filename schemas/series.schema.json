@@ -114,7 +114,7 @@
           },
           "provenanceRef": {
             "type": "string",
-            "pattern": "^P-\\d{2}$",
+            "pattern": "^P-\\d{2,3}$",
             "description": "Provenance record id (P-nn) documenting the change this break marks."
           }
         }
@@ -172,7 +172,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "pattern": "^P-\\d{2}$",
+        "pattern": "^P-\\d{2,3}$",
         "description": "Provenance record id (P-nn) whose measurement dispute bears on this series."
       }
     },
