@@ -3675,3 +3675,60 @@ standing design rules" to three.
 **Stage 8 gains the artefact check**: after any merge, verify the artefact exists on `main`, never
 read the PR status. This is Rule 1 applied to git — a status field is a restatement of belief and the
 checked-out tree is the observation.
+
+## Addendum to 2026-08-03e — deployed and verified on production
+
+Production is **f0e620a**, `dpl_GHikp3RNmcDuaDLMvS4R559xDpbr`, READY on
+`india-government.vercel.app`. Built in 33 seconds from a push 16 seconds earlier.
+
+### Production HTML, fetched over the wire, authenticated
+
+**340 pages** — 124 ledger, 201 series, 14 domain surfaces and the domain index. Zero HTTP failures,
+and every page confirmed to carry the instrument header rather than an SSO interstitial.
+
+**The spec was derived from `/data` by construction, not reused.** Both gates were run as
+`--data data --out <fetched production tree>` — the same checkers, reading the live merged data
+against production output. No needle was written down, so a stale one is impossible:
+
+```
+reachability     OK — 492/492 declared marks reachable on their own record page (340 pages)
+                 unmeasured 180/180 · caveat 123/123 · notes 178/178 · differentFactsNote 11/11
+domain-coverage  OK — 14/14 surfaces · 14/14 indexed · 685/685 record-to-surface references
+```
+
+### Controls — 18/18, asserted in both directions
+
+Every edit this cycle asserted **new text present AND old text gone**, because a check that only looks
+for the new string cannot tell a successful rewrite from a page carrying both.
+
+| control | result |
+|---|---|
+| `No stated objective` present on L-0073, L-0111, L-0028, L-0033, L-0021 | PASS ×5 |
+| `Worked` gone from L-0073 · `Contested` gone from L-0111 · `Too early` gone from L-0021 | PASS ×3 |
+| **`60-70 basis points` gone from L-0033 entirely** | PASS |
+| L-0021 `caseFor` renders · L-0022 shrunk `caseFor` renders | PASS ×2 |
+| L-0081 names Anuradha Bhasin · L-0098 names 2026 INSC 56 · L-0062 `claimAtLaunch` renders | PASS ×3 |
+| **`criticised for single deflation` absent** — the cut claim did not ship | PASS |
+| `/domains/demography/` returns **404** | PASS |
+| domain index lists **14**, not 15 | PASS |
+| control on the control: a bogus needle found on zero of 340 pages | PASS |
+
+**Two of these are the ones worth having.** `60-70 basis points` absent proves the T4 figure left the
+`summary` and not merely the cases — the field it was in renders as fact, and a check confined to the
+argument would have passed while it still shipped. `criticised for single deflation` absent proves a
+drafted-but-unsourced claim did not reach production; it was cut before landing and this confirms the
+cut, rather than trusting that it happened.
+
+The bogus-needle control is the one that makes the other seventeen mean anything: a positive-only
+suite passes on a checker that finds everything.
+
+### Cycle close
+
+Three items were queued before phase 12 and all three are now closed: `lenses[]` (2026-08-03b), the
+assessment audit and its rescore (2026-08-03d), and `differentFactsNote` on false (2026-08-03d
+addendum). `demography` is removed. Two gates were added — `domain-coverage` and `objective-required`
+— and SKILL.md gained a third standing design rule.
+
+**Open, deliberately:** L-0086 and L-0092 as two enum states with no value, to be decided *together*
+after phase 12; the ECL and Yes Bank primaries, unretrievable from this environment and named on their
+records as leads; L-0105's `assessmentNote` naming a removed value; and the prose-citation guard.
