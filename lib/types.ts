@@ -16,7 +16,7 @@
  * `kashmir` and `federalism` are the LENS values — see LENSES below, and note that they are the
  * lenses, `defence` is not. This comment called `defence` a lens and said all three carried no
  * series; phase 11 gave `defence` thirteen, and the schema has never described it as anything but
- * a subject. `demography` is NEVER USED, so its boundary is unattested.
+ * a subject. `demography` was REMOVED on 2026-08-03 after five phases with zero records; see the verification log for the reasoning and the counter-argument.
  */
 export const DOMAINS = [
   'macro',
@@ -33,7 +33,6 @@ export const DOMAINS = [
   'foreign',
   'defence',
   'environment',
-  'demography',
 ] as const;
 export type Domain = (typeof DOMAINS)[number];
 

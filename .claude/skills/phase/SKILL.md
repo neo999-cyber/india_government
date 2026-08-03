@@ -11,9 +11,9 @@ Runs one domain phase of the India Roadmap Instrument. Contract: `docs/phase-com
 
 ---
 
-## Two standing design rules
+## Three standing design rules
 
-These govern every stage and every rule this command adds. Both were paid for by real regressions.
+These govern every stage and every rule this command adds. All three were paid for by real regressions.
 
 ### Rule 1 — Observe the output, do not restate the belief
 
@@ -28,6 +28,31 @@ A check that encodes the assumption which produced the data cannot detect that a
 Prove a rule fails on an actually-broken build before trusting it to pass on a working one. The first reachability rule reported 185/185 on a genuinely regressed site because it measured the one surface that could not fail.
 
 Where a rule reads output, its fires-correctly fixture must **derive from a real regressed build** — break the thing, build it, capture the output, restore. A hand-written negative alone does not satisfy trigger C.
+
+### Rule 3 — Decide and act; do not round-trip a decision whose evidence is in the tree
+
+Added 2026-08-03, after a cycle in which every reversal proposed back to the operator was accepted
+and each round trip cost a turn that changed nothing.
+
+**Proceed yourself** when the answer follows from any of: a record's own text or sources; a schema's
+written contract; an enum's per-value definition; a precedent already logged; or consistency with a
+sibling record decided the same way. Apply, gate, log, and report what you did and why. **Report a
+reversal of an instruction as a decision taken, not as a question.**
+
+**Stop and ask** for: an enum add or removal, or a schema change that alters a contract rather than
+documenting one; a decision that sets precedent rather than applies one; a rescore the text genuinely
+underdetermines; a scope boundary between phases; deploy; and `/data` edits at source (phase 4b).
+
+**HARD STOP, never delegated and never inferred: entering a document as a source that has not been
+retrieved.** No downstream check catches a fabricated or unread citation — it is valid JSON, valid
+against the schema, and every reference resolves. Judgement is the only guard there is. **A
+reproduction on a private portal is not retrieval.** Two records reached a scored assessment resting
+on instruments nobody in the project had read (L-0028's Reconstruction Scheme, L-0033's ECL
+directions); both are now `no-objective` and both say so on the record.
+
+**Batch what must be asked** into one consolidated set at the end of a cycle, each item with a
+recommendation and its evidence. Default when unsure: reversible, cheap and gated → act and report.
+Irreversible, expensive or precedent-setting → ask.
 
 ---
 
@@ -193,6 +218,13 @@ Every mark that can be suppressed by a competing view must render **on the page 
 ### 8 — Log and PR
 
 Draft the verification-log entry as an **append-only delta with a cycle letter in the heading**. Open a PR. **Never append to the log directly** — it has two authors and wholesale replacement has destroyed correct work three times.
+
+**After any merge, verify the artefact exists on `main`. Never read the PR status.** A stacked PR
+whose base has already landed merges into a dead branch and is a silent no-op for `main`, and every
+status field reports success. Observed 2026-08-03: PR #3 merged into `lens-axis` ten minutes after
+`lens-axis` had gone to `main`; both PRs read MERGED and `main` had neither the new tool nor the new
+build step, while `validate` passed cleanly throughout because nothing about a missing gate is
+visible to it. Check out `origin/main` and run the tool — this is Rule 1 applied to git.
 
 ---
 
