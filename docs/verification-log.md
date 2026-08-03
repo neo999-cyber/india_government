@@ -4330,3 +4330,28 @@ above.
 validate 0 errors · typecheck clean · build: reachability 599/599, domain-coverage 831/831 · selftest
 green, six url-check assertions · url-check 0 new URLs to check, correctly — the Constitution PDF was
 already cited by L-0125 and L-0129 from phase 12, and was re-fetched by hand at 200 `application/pdf`.
+
+## Addendum to 2026-08-03j — the `/data` half of that cycle was lost and re-applied
+
+**The record change did not land in the merge it was logged in.** Cycle 2026-08-03j's commit reports
+"2 files changed" — `SKILL.md` and this log. `data/ledger/kashmir-rights.json` was written, verified by
+`git diff --numstat` at the time, and then **reverted before the commit**, by the same thing that
+reverted both SKILL.md edits twice in the same cycle.
+
+**It was caught by verifying on `main` after the merge, and by nothing else.** The log entry for
+2026-08-03j described two clauses cut and a Constitution source added; on `main` neither had happened
+and the log was, for one merge, wrong about the tree it described.
+
+**The specific failure is mine and it is narrow.** The same cycle recorded the lesson — *assert the
+artefact after writing it; an edit that reports success is not a file that contains the edit* — and
+then **applied that assert to `SKILL.md` only**. Two of three changed files were asserted. The third
+was not, and it was the one that mattered to a reader of the instrument.
+
+**Re-applied and asserted three times: after writing, after the gates, and immediately before the
+commit.** L-0143 `caseFor` 1,414 → 1,337 characters, "three generations" and "after hearing the
+affected groups" gone, the Anglo-Indian sentence intact, the Constitution cited T1, seven sources.
+
+**The rule that generalises, and it is not the one already written.** M5's corollary says report the
+needle, not the verdict. This adds: **assert every artefact a change claims to touch, not the one most
+recently on your mind.** A partial assert reads exactly like a complete one in a run report — which is
+the same shape as the stale-artefact family, one level up: a true statement about the wrong subset.
