@@ -6945,3 +6945,80 @@ vs source-content claim, for Table-1), the incommensurable category, "observe th
 match the spelling" (status inferred from two Ministry releases, not from the table's wording),
 M2, and author-then-gate.
 
+## Cycle 2026-08-05f — arc C policy: Myanmar (L-0209, L-0210)
+
+**Route.** PIB / Ministry of Home Affairs, pinned resolver. Four releases retrieved complete:
+PRID 2003199 (6 Feb 2024), PRID 2003884 (8 Feb 2024), PRID 2088945 (Year End Review 2024, 655,902
+bytes raw / 189,097 chars of text), PRID 2282625 (23rd National Level Meeting, 8 Jul 2026).
+Note a PIB routing quirk: `PressReleasePage.aspx?PRID=N` without `&reg=&lang=` 302s to a Hindi
+variant, which is why the first fetch of 2003884 returned 174 bytes. Appending `&reg=3&lang=1`
+or following with `-L` fixes it.
+
+**A substring false positive, caught, and the reason the rule exists.** An ad-hoc `grep`-style scan
+of the Year End Review for `fenc` returned a hit inside **"Fengal"** — the cyclone. That is the
+fourth instance of this class in the phase (after `duty`/"duty-bearing" and `USTR`/"infrastructure"
+twice), and the first where the false positive would have produced a POSITIVE finding rather than
+a nuisance. The scan was redone with word boundaries, which is what `tools/lib/corpus-search.mjs`
+does by default and what the ad-hoc scan did not.
+
+**The word-boundary recount is the evidence for both records.** In 189,097 chars of the Ministry's
+own comprehensive account of 2024: `\bfence\b` 0 · `\bfenced\b` 0 · `1643` 0 · `1,643` 0 ·
+`\bfencing\b` 3 · `\bFMR\b` 6. The three `fencing` hits are ONE sentence — an NEC recommendation
+that demographic data "should be mapped to help in fencing the border and stopping infiltration" —
+repeated because the page serves its body three times (rendered text twice, raw HTML fragment
+once). The six FMR hits are the SAME 8 February announcement in two distinct sections (the
+Northeast section and "Secured Border to Secure Bharat"), 3 renderings x 2 placements = 6, which
+is exactly the count observed. The arithmetic of the duplication was checked rather than assumed.
+
+**This is what converts "not retrieved" into "not published".** The earlier draft of L-0209 was
+going to classify the progress figure `not-published` on the strength of a failed search, which
+would have been the converse of the carried rule that a publication choice is not a retrieval
+failure — a retrieval failure is likewise not a publication choice. Checking the responsible
+ministry's own annual account IN FULL is what makes the classification an established absence
+rather than an inference from silence. The two reasonKinds are then split on the right test:
+the completion DATE is `never-defined` (a date never set does not exist to be published), the
+PROGRESS FIGURE is `not-published` (held by the executing agencies, absent from the account).
+
+**L-0209 — a total without a date cannot become due.** The 6 February 2024 announcement commits to
+fencing the entire 1,643 km with no completion date, no phasing and no annual target, and gives
+the starting position in the same breath: 10 km fenced, two 1 km HSS pilots under execution,
+approximately 20 km approved. Such a commitment falls OUTSIDE all three commitment states — not
+(a), since no trigger is named; unable to reach (b), since it can never fall due; not (c), since
+nothing evidences abandonment. Scored `no-objective` on exactly that ground: an objective is a
+target that can be failed, and a total with no date names a destination rather than a commitment.
+
+**No share computed, and the caveat says why.** The announcement's four quantities are in four
+different states — fenced, under execution, approved, intended — so dividing any into 1,643 would
+produce a figure describing nothing. Same discipline as L-0208's capacity column, applied to a
+single announcement rather than a table.
+
+**L-0210 — three acts compressed into one headline.** The 8 February 2024 release's quoted text
+contains a DECISION by MHA that the FMR "be scrapped", a statement that MEA "is currently in the
+process of scrapping it", and a RECOMMENDATION by MHA of "the immediate suspension". The
+instrument belongs to MEA; what MHA did on its own authority was decide a position and recommend.
+The headline reports the act of the ministry that cannot perform it. Scored `no-objective` on what
+the announcing ministry actually bound itself to — a recommendation carrying no completion test,
+no date and no instrument.
+
+**The retrieval limit is stated inside the record rather than worked around.** L-0210's unmeasured
+says in terms that it CANNOT distinguish MEA having published nothing from MEA having published
+something unreachable here, because the owning ministry's route is the JS shell. The absence
+recorded is MHA's, which was checked; no absence is asserted for MEA, which was not. The caveat
+repeats it. Silence on an unreadable channel is uninformative and is not treated as evidence.
+
+Both records note that the 8 July 2026 National Level Meeting readout does not mention fencing or
+the FMR, and both say explicitly that this is a fact about the readout, not evidence of
+abandonment — absence of news is not commitment state (c).
+
+**Gates.** build VALID (0 errors, 159 warnings); figure-consistency 7/7; manifest 652 records;
+reachability 839/839 across 632 pages; domain-coverage 14/14 surfaces, 1095/1095 references;
+enum-stamp 2 fixtures; url-check 4/4 confirmed; typecheck clean; validate:selftest exit 0;
+lens-controls 7 paired controls. M2: prefix equality AND length +2 asserted before writing;
+`git diff --numstat` 112 insertions, 0 deletions.
+
+**Carried rules invoked.** Word boundaries by default (the rule that caught "Fengal"), rule 1,
+rule 3, "a publication choice is not a retrieval failure" and its converse, "absence of news is not
+abandonment", the commitment-state framework (and the discovery that a dateless total sits outside
+it), share-shaped figures name numerator and denominator (here: none computed, and why), M2, and
+author-then-gate.
+

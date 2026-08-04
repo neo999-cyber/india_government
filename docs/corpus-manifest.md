@@ -5,7 +5,7 @@
 One line per record so orientation does not require scanning `/data`. Format:
 `id · domain(s) {lenses} · title`. For the authoritative text, read the record.
 
-650 records — 208 ledger, 262 series, 120 provenance, 60 pairs.
+652 records — 210 ledger, 262 series, 120 provenance, 60 pairs.
 
 ## series (262)
 
@@ -281,7 +281,7 @@ ujjwala-refills · welfare · PMUY average annual LPG refills per beneficiary
 wheat-procurement · welfare · Wheat procurement
 ```
 
-## ledger (208)
+## ledger (210)
 
 ```
 # data/ledger/agriculture.json
@@ -407,6 +407,8 @@ L-0205 · foreign+macro {europe} · The India-EU agreement is concluded but not 
 L-0206 · foreign+macro {neighbourhood} · The Maldives currency swap is an eligibility with a size and an expiry, and nothing published says how much of
 L-0207 · foreign+infrastructure {neighbourhood} · Punatsangchhu-II exported power to India for nearly seven months before the tariff protocol was signed, and no
 L-0208 · foreign+infrastructure {neighbourhood} · The Ministry of Power's account of neighbourhood cooperation lists capacity without commissioning status and a
+L-0209 · foreign+infrastructure {neighbourhood} · The decision to fence the entire 1,643 km Myanmar border was announced with a starting position of 10 km and n
+L-0210 · foreign+governance {neighbourhood} · The Ministry that announced the Free Movement Regime would be scrapped does not own the instrument, and its ow
 # data/ledger/infrastructure.json
 L-0044 · infrastructure · National highway construction programme
 L-0045 · infrastructure · Bharatmala Pariyojana

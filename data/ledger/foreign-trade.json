@@ -1184,5 +1184,117 @@
         "confidence": "high",
         "asOf": "2026-08-05",
         "revisitTrigger": "Re-test if a later Parliamentary answer on the same subject carries a commissioning-status column or dates for the Table-1 agreements. The India-Sri Lanka HVDC bipole is the single most informative row to watch, because it is the one link in the list for which no operating history exists at all."
+    },
+    {
+        "id": "L-0209",
+        "title": "The decision to fence the entire 1,643 km Myanmar border was announced with a starting position of 10 km and no completion date, and the Ministry's own year-end review for that year gives no progress figure at all",
+        "date": "2024-02-06",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "infrastructure"
+        ],
+        "lenses": [
+            "neighbourhood"
+        ],
+        "type": "reform",
+        "summary": "On 6 February 2024 the Union Home Minister announced, in a post on X reproduced as a PIB release, that the government had decided to construct a fence along the entire 1,643 kilometre Indo-Myanmar border, with a paved patrol track alongside. The same announcement gave the starting position: 10 km fenced in Moreh, Manipur; two Hybrid Surveillance System pilot projects under execution covering 1 km each in Arunachal Pradesh and Manipur; and fence works of approximately 20 km in Manipur approved, with work to start soon. No completion date was stated.",
+        "claimAtLaunch": "\"The Modi government is committed to building impenetrable borders. It has decided to construct a fence along the entire 1643-kilometer-long Indo-Myanmar border. To facilitate better surveillance, a patrol track along the border will also be paved.\" The commitment is to a total length. No date, no phasing, no annual target and no cost accompany it.",
+        "whatHappened": "A TOTAL WITHOUT A DATE CANNOT BECOME DUE. The commitment names a quantity — the entire 1,643 km — and no time by which it is to exist, so it falls outside all three commitment states this instrument uses: it is not (a) not-yet-due with a named trigger, because no trigger is named; it cannot reach (b) due-and-undelivered, because it can never fall due; and it cannot reach (c) abandoned without evidence of abandonment, which nothing supplies. WHAT CAN BE CHECKED IS WHETHER PROGRESS IS REPORTED, AND IT IS NOT. The Ministry of Home Affairs' own Year End Review 2024 — its comprehensive account of the year in which the decision was taken — contains the figure 1,643 nowhere, uses the words fence and fenced nowhere, and uses fencing once: in a recommendation that demographic data along the border \"should be mapped to help in fencing the border and stopping infiltration\". That is a proposal, not a progress report.",
+        "assessment": "no-objective",
+        "assessmentNote": "No-objective in the sense this instrument uses it: an objective is a target that can be failed. A total length with no date can never be due and therefore can never be undelivered, so it names a destination rather than a commitment. This is not a judgement that the fence is unbuilt or that the decision was insincere — it is that the announcement as made cannot be scored against itself at any future moment, and no later Ministry publication retrieved here supplies the date or the progress that would change that.",
+        "caseFor": "The decision itself is specific where it matters most: a named total length, a named border, and a stated intention to pave a patrol track, which is the element that makes a fence patrollable rather than ornamental. Announcing the starting position in the same breath — 10 km already fenced, two pilots under execution, 20 km approved — is more candid than the announcement required, and it means the base against which any later figure would be read was published on day one rather than reconstructed afterwards. Fencing a 1,643 km border across Arunachal Pradesh, Nagaland, Manipur and Mizoram is genuinely hard terrain, and refusing to name a date may be honesty about that rather than evasion.",
+        "caseAgainst": "The announcement's structure makes it permanently unfalsifiable, and that is a choice, not an accident. Every element that would let a reader test it later — a completion year, an annual target, a cost, a phasing plan — is absent, while the element that makes it quotable, the 1,643 km total, is present. The Ministry then published a year-end review of the very year the decision was taken which does not carry the total, does not carry a progress figure, and mentions fencing only in a recommendation about demographic mapping. A commitment that names no date and is not reported against in the responsible ministry's own annual account is one no reader can hold anyone to, however long it stands.",
+        "unmeasured": [
+            {
+                "what": "The date by which the 1,643 km is to be fenced",
+                "why": "Neither the announcement nor the Ministry's Year End Review 2024 states a completion date, a phasing schedule or an annual target. This is not a figure held and unreleased: a date that was never set does not exist to be published, which is what distinguishes it from the progress figure below.",
+                "wouldFill": "A Ministry of Home Affairs statement of a target year or phasing plan, or a Parliamentary answer giving one.",
+                "reasonKind": "never-defined"
+            },
+            {
+                "what": "How much of the 1,643 km has been fenced since 6 February 2024",
+                "why": "The Ministry of Home Affairs and its executing agencies necessarily hold current progress for works they commission, so the figure exists. It is absent from the place it would naturally appear: the Ministry's Year End Review 2024, checked in full, carries no fencing length, no reference to the 1,643 km total, and no progress statement of any kind. Absence from the responsible ministry's own annual account is what makes this not-published rather than merely not-retrieved.",
+                "wouldFill": "A Parliamentary answer stating kilometres fenced to date, or a Ministry of Home Affairs Annual Report figure for the Indo-Myanmar border.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "caveat": "No share is computed here. The announcement's four quantities are in four different states — 10 km fenced, 2 km under execution as pilots, approximately 20 km approved, 1,643 km intended — and only the first is completed work, so adding any of them or dividing them into the total would produce a figure that describes nothing. The record therefore states the 10 km and the 1,643 km side by side and derives no percentage from them. The 23rd India-Myanmar National Level Meeting readout of 8 July 2026 does not mention fencing; that is recorded as a fact about the readout and is not evidence of abandonment, since absence of news is not evidence that a commitment was dropped.",
+        "sources": [
+            {
+                "name": "Ministry of Home Affairs, \"Union Home Minister and Minister of Cooperation, Shri Amit Shah says Modi government is committed to building impenetrable borders\", PIB, 6 February 2024 — the decision to fence the entire 1,643 km Indo-Myanmar border, the paved patrol track, and the starting position of 10 km fenced at Moreh, two 1 km Hybrid Surveillance System pilots under execution, and approximately 20 km approved in Manipur",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2003199",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Home Affairs, \"Ministry of Home Affairs: Year End Review 2024\", PIB — checked in full for fencing progress: the total 1,643 does not appear, the words fence and fenced do not appear, and fencing appears only in the recommendation that demographic data along the India-Myanmar border be mapped \"to help in fencing the border and stopping infiltration\"",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2088945",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Home Affairs, \"23rd National Level Meeting between India and Myanmar concludes in New Delhi\", PIB, 8 July 2026 — the most recent bilateral home-ministry readout retrieved, covering border security, transnational crime, the Kaladan project and the trilateral highway, and not mentioning fencing",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2282625",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-05",
+        "revisitTrigger": "Re-test if any kilometres-fenced figure is published, or if a target year is named — the second is what would move this out of no-objective and make the commitment scoreable for the first time."
+    },
+    {
+        "id": "L-0210",
+        "title": "The Ministry that announced the Free Movement Regime would be scrapped does not own the instrument, and its own text says it recommended a suspension while another ministry was still in the process",
+        "date": "2024-02-08",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "governance"
+        ],
+        "lenses": [
+            "neighbourhood"
+        ],
+        "type": "reform",
+        "summary": "On 8 February 2024 the Ministry of Home Affairs announced that the Free Movement Regime between India and Myanmar — which permitted local residents on either side to cross the border without a visa — would be scrapped, to ensure internal security and to maintain the demographic structure of India's North Eastern States bordering Myanmar. The release reproduces a post on X by the Union Home Minister, whose text states that the Ministry of External Affairs \"is currently in the process of scrapping it\" and that MHA \"has recommended the immediate suspension of the FMR\".",
+        "claimAtLaunch": "That the FMR between India and Myanmar be scrapped, on two stated grounds: the internal security of the country, and the maintenance of the demographic structure of India's North Eastern States bordering Myanmar. No date of effect, no notification number, no replacement arrangement and no test of completion accompany it.",
+        "whatHappened": "THREE DIFFERENT ACTS ARE COMPRESSED INTO ONE ANNOUNCEMENT, AND THE HEADLINE REPORTS ONLY THE STRONGEST. The quoted text contains a decision by MHA that the regime \"be scrapped\", a statement that MEA \"is currently in the process of scrapping it\", and a recommendation by MHA of \"the immediate suspension\". The instrument belongs to the Ministry of External Affairs; what the Ministry of Home Affairs did on its own authority was decide a position and recommend. The headline — \"MHA decides to scrap\" — reports the act of the ministry that cannot perform it. WHETHER IT WAS PERFORMED IS NOT RECORDED WHERE IT WOULD BE. The Ministry's Year End Review 2024 restates this same announcement in two separate sections, word for word, more than ten months later, and adds nothing: no notification, no date of effect, no replacement regime, no statement that the scrapping was completed.",
+        "assessment": "no-objective",
+        "assessmentNote": "Scored on what the announcing ministry actually committed itself to, which is a recommendation and a stated position — neither of which carries a completion test, a date or an instrument. MHA set no objective against which MHA could be measured. This is expressly NOT a finding that the FMR survives or that it was scrapped; that question is unmeasured below, and the record names both where it would be recorded and why this run cannot settle it.",
+        "caseFor": "The grounds were stated plainly rather than left to be inferred, and both are legitimate subjects of the Ministry's responsibility: internal security, and the demographic composition of border districts during a period of acute instability across the frontier. Announcing that MEA was already in process is a disclosure of the actual division of authority rather than a concealment of it — the release could simply have said the regime was scrapped and did not. Recommending immediate suspension while the formal instrument was unwound is the mechanism that closes the gap between decision and notification, and for a border regime during an insurgency that gap is the whole risk.",
+        "caseAgainst": "The distinction the text preserves is the one the headline destroys, and it is the headline that circulates. A recommendation by one ministry to another is a lesser thing than a decision, and presenting it as \"MHA decides to scrap\" attributes to the announcing body an authority the same paragraph concedes it does not hold. The evidentiary basis is a social-media post: no notification, no order number, no date of effect appears in the release or anywhere retrieved. And the Ministry's own year-end review, published more than ten months later, reproduces the announcement twice without adding a single fact about its execution — so the most recent MHA account of the matter is the announcement itself, restated.",
+        "unmeasured": [
+            {
+                "what": "Whether the Free Movement Regime was in fact scrapped or suspended, by what instrument, and with effect from what date",
+                "why": "The instrument belongs to the Ministry of External Affairs, and the announcement states only that MEA was \"in the process\". Nothing retrieved from the Ministry of Home Affairs records completion: its Year End Review 2024 restates the February announcement in two sections and adds nothing. MEA's own publications could not be retrieved in this environment at all — its press-release path returns an HTTP 200 serving a JavaScript shell, confirmed on two separate paths this cycle — so this record CANNOT distinguish between MEA having published nothing and MEA having published something unreachable here. The classification records the absence from MHA's account, which was checked; it does not assert an absence from MEA's, which was not.",
+                "wouldFill": "The Ministry of External Affairs notification or gazette instrument, or a Parliamentary answer stating the FMR's current status and date of effect.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "What arrangement, if any, replaced the Free Movement Regime for border residents",
+                "why": "The announcement states what is to be removed and nothing about what governs local crossing afterwards. No replacement scheme, pass system or transitional arrangement appears in anything retrieved, including the Year End Review 2024.",
+                "wouldFill": "A Ministry of Home Affairs or Ministry of External Affairs statement of the arrangement now governing local border crossing, or the standard operating procedure issued to the Assam Rifles.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "caveat": "This record makes no claim about whether the Free Movement Regime is in force today. The retrieval limit is the reason and is stated rather than worked around: the ministry that owns the instrument publishes through a route that cannot be read in this environment, so silence on that side is uninformative here and is not treated as evidence. What is established is confined to what the Ministry of Home Affairs published and to what its own year-end review does and does not contain. The 23rd India-Myanmar National Level Meeting readout of 8 July 2026 does not mention the Free Movement Regime; as with the fencing record, that is a fact about the readout and not evidence that the commitment was dropped.",
+        "sources": [
+            {
+                "name": "Ministry of Home Affairs, \"MHA decides to scrap Free Movement Regime (FMR) between India and Myanmar to ensure the internal security of the country and maintain the demographic structure of India's North Eastern States bordering Myanmar\", PIB, 8 February 2024 — the decision, the two stated grounds, the statement that the Ministry of External Affairs \"is currently in the process of scrapping it\", and MHA's recommendation of \"the immediate suspension of the FMR\"",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2003884",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Home Affairs, \"Ministry of Home Affairs: Year End Review 2024\", PIB — restates the 8 February 2024 announcement verbatim in two separate sections, the Northeast section and \"Secured Border to Secure Bharat\", with no notification, date of effect, replacement arrangement or statement of completion",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2088945",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Home Affairs, \"23rd National Level Meeting between India and Myanmar concludes in New Delhi\", PIB, 8 July 2026 — the most recent bilateral home-ministry readout retrieved, not mentioning the Free Movement Regime",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2282625",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-05",
+        "revisitTrigger": "Re-test when the Ministry of External Affairs route becomes retrievable, or if any Parliamentary answer states the Free Movement Regime's current status. Either would settle the question this record deliberately leaves open."
     }
 ]

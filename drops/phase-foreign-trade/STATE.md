@@ -85,7 +85,25 @@ PIB carries the G20 and IMEC material; the WTO's own site was not tested and is 
 Expect the commitment-state discipline to carry most of the weight — this arc is dense with
 announced-but-undelivered material, which is what states (a)/(b)/(c) exist for.
 
-### 4. Arc C policy dimensions — Bangladesh attempted, no record; the rest not attempted
+### 4. Arc C policy dimensions — CHAINED 2026-08-05, four records; Bangladesh and Sri Lanka open
+
+**Done: Maldives (L-0206) · Nepal and Bhutan (L-0207, L-0208) · Myanmar (L-0209, L-0210).**
+
+**THE ROUTE FINDING THAT GOVERNS THIS ITEM.** MEA is the blocked channel, NOT policy primaries as
+a class. `mea.gov.in` returns HTTP 200 serving a JavaScript shell on both the media-briefings and
+press-releases paths (confirmed separately). Institution-specific primaries retrieve completely:
+RBI press releases (`www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=NNNNN`) and PIB line
+ministries via the pinned resolver (94.202.207.57) — Power and Home Affairs both worked first try.
+This was nearly written as the broader claim after Sri Lanka failed; the Maldives was taken next
+BECAUSE its route differed, and it worked. Do not generalise a source-class failure from one host.
+
+**Sri Lanka: attempted 2026-08-05, NO RECORD.** MEA press-releases path is the shell (200 / 82,799
+bytes, 4,690 chars of chrome, `Loading` present, no body); PIB carried only a 2011 NTPC Trincomalee
+JV reference and nothing current on debt restructuring, energy or ports.
+*Depends on:* an institution-specific route rather than MEA — try the Ministry of Finance or a
+Parliamentary answer. **Partial opening already exists:** the New Madurai–Mannar 1000 MW VSC HVDC
+bipole appears in the Ministry of Power's 2 April 2026 Lok Sabha reply (PRID 2248339, cited by
+L-0208), so the power dimension of Sri Lanka is reachable through Power even though MEA is not.
 
 **Bangladesh: attempted 2026-08-05, NO RECORD.** Three candidates, none groundable.
 - *Adani PPA dues* — stop condition 1: no primary, and the secondaries are incompatible (US$437m
@@ -102,16 +120,14 @@ announced-but-undelivered material, which is what states (a)/(b)/(c) exist for.
 post-transition MEA brief, which does not yet exist in retrievable form. **`cea.nic.in` resolves on
 1.1.1.1 (45.127.74.41) and needs an explicit resolver; the cross-border-electricity path 404s.**
 **`www.mea.gov.in/Portal/ForeignRelation/India_Bangladesh_bilateral_brief.pdf` is a soft-404** —
-200 serving HTML. The dated per-year briefs are the ones that work.
+200 serving HTML. The dated per-year briefs are the ones that work. **New route now available:**
+Maitree STPP (1320 MW) appears in PRID 2248339's generation table, so Bangladesh power is reachable
+through the Power ministry.
 
-**Not attempted:** Sri Lanka (debt restructuring role, energy and port) · Maldives (reversal arc,
-currency swap, infrastructure) · Nepal and Bhutan (hydropower, power trade) · Myanmar (border
-fencing, Free Movement Regime).
-
-**Source-class finding that applies to all of them:** batch 3's trade dimension ran on UN Comtrade,
-which answers every bilateral question on one query shape. Policy primaries have no equivalent —
-MEA's bilateral briefs are periodic snapshots rather than a series, and the most recent retrieved
-carries content over eighteen months old.
+**Other environment facts from this chain.** `rbidocs.rbi.org.in` is unreachable (HTTP 000) and the
+two resolvers disagree on its address — 1.1.1.1 → 14.140.169.71, 8.8.8.8 → 1.6.75.39; the RBI PAGE
+host works while the DOCUMENT host does not. PIB `PressReleasePage.aspx?PRID=N` without `&reg=&lang=`
+302s to a Hindi variant; append `&reg=3&lang=1` or follow with `-L`.
 
 ### 5. Pakistan — deferred on retrieval, and the blockage is specific
 
