@@ -5679,3 +5679,118 @@ domain-coverage     14/14 domains · 1069/1069 record-to-surface
 url-check           4/4 confirmed — both PIB releases and both Comtrade queries
 lens-controls       6 paired + exact membership
 ```
+
+---
+
+# Verification log — cycle 2026-08-04i (fixture soundness: 33 assertion sites, and the drift closed mechanically)
+
+**No `/data` change.** Test-harness work, own commit.
+
+## The audit, and the count that was asked for
+
+**Two assertion sites asserted an exit code alone**, with no branch and no message:
+
+| site | what it asserted |
+|---|---|
+| `reachability-hidden` | `fired !== 1` |
+| `figure-consistency-undeclared` | `fired !== 1` |
+
+Both were live defects rather than theoretical ones. `reachability-hidden` carries TWO declared
+marks and only one is suppressed — an exit of 1 would also be returned if the gate reported both, or
+the wrong one. `figure-consistency` has four failure kinds (`source`, `missing`, `absent`,
+`undeclared`) and all four exit 1, so a fixture pinned to the code would have passed if the claim
+went stale and failed as `[missing]` — the opposite of what it exists to prove.
+
+**A further 27 asserted a rule NAME without pinning a message:**
+
+- 4 of 16 `ISOLATED` roots — `regime-gap`, `caveat-orphan`, `mirror-contradiction`,
+  `reason-kind-missing`
+- all 23 `MUST_FIRE` rules, on the SHARED `broken` root
+
+The `MUST_FIRE` case is the weakest and was the least visible. `broken` raises 57 errors across 23
+rules; asserting that a rule fired *somewhere among them* passes whether it fired for the seeded
+violation or for an unrelated one that drifted in. Every needle now names the seeded defect —
+`editorialSpin`, `P-98`, `duplicate-id`, `U+200B`, `"federalism" is in both domain and lenses[]` —
+rather than a phrase any message of that rule would contain.
+
+**All 33 sites are now message-pinned. Zero assert a bare exit code.**
+
+Verified by a paired control on the pinning itself, not by inspection: one needle replaced with a
+string the rule never emits → selftest FAILED naming that rule; needle restored → exit 0.
+
+## The drift hazard, closed as a mechanism
+
+Branch assertions turn a wrong-branch fixture from a silent pass into a failure. **That is necessary
+and not sufficient**: it says the fixture is wrong, not what to do, and the remedy carried forward
+from batch 4 was a line in a state document asking the next author to remember. A discipline
+requirement is what M2 and build-freshness exist to replace.
+
+So each generated fixture now carries `GENERATED-FROM.json` stamping the domain and lens enums it
+was built against; the selftest compares the stamp to the live schemas and fails with the fix named.
+`tools/regen-lens-fixtures.mjs` is the one-command remedy, also on `npm run regen:lens-fixtures`.
+
+**The stamp is the claim, not the regeneration.** A fixture rebuilt by hand without the script
+carries a stale stamp and fails, which is correct.
+
+Paired controls on the mechanism, and the negative reproduces the ACTUAL historical hazard rather
+than a model of it — the stamp set to batch 1's five-lens enum:
+
+```
+stale stamp   → selftest FAILED: "generated from a stale lenses enum — stamped
+                [kashmir, federalism, defence-sector, united-states, russia] against live
+                [... china ... neighbourhood]. Run `node tools/regen-lens-fixtures.mjs`"
+regenerated   → exit 0, both stamps match
+```
+
+### A checker that repaired what it was checking
+
+The first version put `liveEnums` in the runner, so the selftest's `import` executed the
+regeneration: **the fixtures were rebuilt every time the selftest ran, silently healing the exact
+drift the stamp exists to detect, and reporting green.** Caught because the selftest printed
+"regenerated …" in its own output.
+
+Split into `tools/lib/lens-fixtures.mjs` (defines, no side effects) and a thin runner. Asking the
+defect to report itself, in a new form — the third variant of that shape this project has recorded,
+after `types.ts` being asked what domains exist and a validator rule modelling the render path.
+
+Regeneration reproduced the hand-built batch-4 fixtures byte-for-byte apart from one key-order
+change (`lenses` now sits after `domain`, matching schema order), which is itself evidence the
+generator and the hand-build agree.
+
+## Word boundaries by default
+
+`tools/lib/corpus-search.mjs`. The substring bug fired three times in one phase, twice on the same
+token: `duty` in "duty-bearing", and `USTR` in "infra**stru**cture" and then again, case-insensitively,
+in "industry" and "industrialised". Being caught every time is not being prevented, so the method
+gets a default instead of each author getting a reminder.
+
+Boundaries are the default; `substring: true` is the explicit opt-out and is visible in review.
+Paired control, same terms and same corpus with one option differing:
+
+```
+substring (old behaviour)   57 candidate records
+word-boundary (new default) 39 candidate records   — 18 dropped
+negative: ustr inside infrastructure/industry   0 matches
+positive: USTR where the token is genuinely present   L-0187, L-0188
+```
+
+The module says in its own header that search finds CANDIDATES, not records, because the count it
+returns reads like an answer and is not one.
+
+## Arc E is NOT started
+
+The audit was larger than it looked — 33 assertion sites, two new modules, a stamp mechanism and a
+self-healing bug inside the fix. Per the brief, it is closed properly and arc E starts the next
+batch. Nothing about arc E was attempted, so nothing about it failed.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 145 warnings
+typecheck           clean
+selftest            OK — 33/33 assertion sites message-pinned; stamp check live; freshness controls
+figure-consistency  6 declared claims, 6 checked, 3 artefacts declared
+reachability        791/791 (refuses on a stale build)
+domain-coverage     14/14 domains · 7/7 lenses · 218/218 lens refs
+lens-controls       6 paired + exact membership
+```
