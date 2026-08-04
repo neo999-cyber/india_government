@@ -23,6 +23,7 @@
     "figure-consistency": "node tools/figure-consistency.mjs",
     "regen:lens-fixtures": "node tools/regen-lens-fixtures.mjs",
     "enum-stamp": "node tools/enum-stamp.mjs",
+    "scan": "node tools/scan-text.mjs",
     "manifest": "node tools/gen-manifest.mjs"
   },
   "dependencies": {

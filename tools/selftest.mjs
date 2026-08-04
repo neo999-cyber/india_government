@@ -704,6 +704,32 @@ if (!typoThrew) {
   );
 }
 
+// 4b. The retrieved-text scanner must refuse its own historical false positive.
+//
+// Run as a SUBPROCESS rather than imported, for the same reason enum-stamp is: a control that
+// lives inside the process it validates can be satisfied by the process, and this one guards the
+// path every absence claim in the corpus now rests on. The specific message is asserted, not the
+// exit code alone — a scanner that crashed before scanning would also exit non-zero, and one that
+// matched nothing at all would pass a boundary-only assertion.
+{
+  const SCAN = join(ROOT, 'tools', 'scan-text.mjs');
+  let out = '';
+  let code = 0;
+  try {
+    out = execFileSync(process.execPath, [SCAN, '--selftest'], { encoding: 'utf8', cwd: ROOT });
+  } catch (e) {
+    code = e.status ?? 1;
+    out = `${e.stdout ?? ''}${e.stderr ?? ''}`;
+  }
+  if (code !== 0) {
+    failures.push(`scan-text --selftest exited ${code}: ${out.trim().split('\n').join(' | ')}`);
+  } else if (!out.includes('"Fengal" refused')) {
+    failures.push(`scan-text --selftest passed without asserting the Fengal control; got: ${out.trim()}`);
+  } else {
+    notes.push(`  scan-text control: ${out.trim()}`);
+  }
+}
+
 // 5. --strict must promote warnings on the real repository.
 const strict = run(['--strict']);
 const realWarnings = good.report.findings.filter((f) => f.level === 'warn').length;
