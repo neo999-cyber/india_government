@@ -5,7 +5,7 @@
 One line per record so orientation does not require scanning `/data`. Format:
 `id · domain(s) {lenses} · title`. For the authoritative text, read the record.
 
-646 records — 204 ledger, 262 series, 120 provenance, 60 pairs.
+647 records — 205 ledger, 262 series, 120 provenance, 60 pairs.
 
 ## series (262)
 
@@ -281,7 +281,7 @@ ujjwala-refills · welfare · PMUY average annual LPG refills per beneficiary
 wheat-procurement · welfare · Wheat procurement
 ```
 
-## ledger (204)
+## ledger (205)
 
 ```
 # data/ledger/agriculture.json
@@ -403,6 +403,7 @@ L-0201 · foreign {defence-sector} · Twenty-six Rafale for the Navy, signed gov
 L-0202 · foreign {defence-sector russia} · The S-400 delivery schedule exists, both governments know it, and neither publishes it — one of them says so o
 L-0203 · foreign+macro {defence-sector} · The 2016 Rafale agreement bought 36 aircraft off the shelf and dropped 108 that were to be built in India, and
 L-0204 · foreign+macro {europe} · The India-UK trade agreement is in force, and the two headline concessions are not the same measurement: 99 pe
+L-0205 · foreign+macro {europe} · The India-EU agreement is concluded but not in force, and this time both sides published the same two measurem
 # data/ledger/infrastructure.json
 L-0044 · infrastructure · National highway construction programme
 L-0045 · infrastructure · Bharatmala Pariyojana

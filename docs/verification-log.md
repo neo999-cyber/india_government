@@ -6663,3 +6663,97 @@ domain-coverage     14/14 domains · 8/8 lenses · 1083/1083
 url-check           2/2 confirmed
 lens-controls       7 paired + exact membership; europe = L-0194, L-0204
 ```
+
+---
+
+# Verification log — cycle 2026-08-05b (arc D closes: the EU agreement, and the RCEP test)
+
+**Appended.** `/data` diff: `53 0` on `ledger/foreign-trade.json` (L-0205), `15 5` on
+`ledger/macro-fiscal.json` (L-0018 corrected — three prose fields, the source array extended, and
+the trailer; only L-0018 changed, proved by parsed comparison). Zero `parts/` touched. Gated once.
+
+## L-0205 — concluded is not signed and signed is not in force
+
+Negotiations concluded **27 January 2026** at the 16th India-EU Summit, after a 2022 re-launch. The
+entry-into-force rule is stated as a CONDITION rather than a date: the agreement enters into force
+"on the first day of the second month following the date on which India and the EU exchange written
+notifications confirming completion of their respective internal legal procedures". **State (a) with
+a named trigger** — unlike L-0201, where no trigger existed at all.
+
+**Both sides published both bases, and that is the best disclosure in this arc.** It deserves saying
+as plainly as anything else:
+
+| | lines immediate | value immediate | phased | total lines | total value |
+|---|---|---|---|---|---|
+| **EU offers India** | 70.4% | **90.7%** | 20.3% | ~97% | >99% |
+| **India offers EU** | 49.6% | **30.6%** | 39.5% lines / 63.1% value, over 5/7/10 yrs | ~92.1% | 97.5% |
+
+At entry into force the value asymmetry is **60.1 percentage points in India's favour**. This is
+what the India-UK release did not give — L-0204 had to reconstruct the same asymmetry from a single
+24.5 per cent figure quoted once.
+
+**The components do not sum to the totals, on any of the three splits.** EU lines 70.4 + 20.3 = 90.7
+against ~97 (gap 6.3). India lines 49.6 + 39.5 = 89.1 against 92.1 (gap 3.0). India value 30.6 +
+63.1 = 93.7 against 97.5 (gap 3.8). Something is conceded that is neither immediate nor phased
+elimination — tariff-rate quotas and partial reductions are the ordinary candidates — and nothing
+retrieved names it. **Recorded as an `unmeasured`, not reconciled.**
+
+**Two arithmetic coincidences caveated so neither is taken for a relationship.** The EU's line shares
+sum to 90.7, which is *also* the figure for the share of India's export VALUE covered by the
+immediate tranche — the same number attached to a line count and a value share, related by no
+arithmetic. And 2024-25 bilateral goods trade is given as US$136.54bn against exports of 75.85 and
+imports of 60.68, which sum to 136.53: a rounding artefact, declared.
+
+## L-0018 corrected — the RCEP test, on retrieved data
+
+The record called TEPA's investment commitment **"binding"**. L-0194 established that the Ministry
+says "firm investment commitment" while the joint framing is an objective and an aim to "mobilise".
+**The characterisation is withdrawn** and the record now adopts neither word.
+
+It also gave the China deficit as US$99.2bn in FY25 and about US$112bn in FY26 on a T4 newspaper
+source. **Those figures are removed rather than restated**, and the reason is recorded: the
+instrument now holds India-China trade on a calendar-year basis from both countries' own submissions
+(L-0190, L-0191, P-119), and a financial-year figure from a newspaper cannot be set beside them —
+different period, different basis, and the two sides disagree in a way any single figure conceals.
+Restating it on the new basis would have been the easy move and the wrong one.
+
+**The test itself, on India's own submissions.** RCEP entered into force 1 January 2022 without
+India. The stated fear was a Chinese import surge.
+
+- India's imports from China, CY2025: **US$149.495bn**
+- China's share of India's total merchandise imports, CY2025: **19.86%** (numerator India-reported
+  imports from China, denominator India-reported imports from world — same reporter, same basis,
+  same year)
+- India's total imports CY2021 → CY2025: **+32.0%**; exports **+12.9%**
+
+Both cases were rewritten around it. **For:** the surge happened anyway, and inside RCEP it would
+have arrived against a lower tariff wall; India used the policy space it kept, with four agreements
+in force and a fifth concluded. **Against:** staying out did not slow the import growth it was meant
+to slow, and the replacements took until 2025 and 2026 to enter into force.
+
+**A China-specific CY2021 figure was NOT retrieved, so no China-specific growth rate is computed or
+stated** — only the share, which rests on figures that were.
+
+Sources 2 → 4, additive: the two T4 items are kept because they are what the original claim rested
+on. `confidence` medium → high; `asOf` 2026-07-30 → 2026-08-05.
+
+**One guard of mine was wrong and is worth recording.** The edit script asserted that the word
+"binding" no longer appeared anywhere in L-0018, and aborted. The word legitimately survives once —
+inside the sentence stating that the characterisation was withdrawn. The assertion was replaced with
+the precise one: exactly one occurrence, inside the withdrawal sentence. A guard that forbids a word
+outright cannot express "withdrawn and recorded as withdrawn", which is the form every correction in
+this instrument takes.
+
+## Arc D CLOSES
+
+UAE CEPA and Australia ECTA (L-0195) · EFTA TEPA (L-0194) · UK CETA (L-0204) · the EU agreement
+(L-0205) · RCEP non-entry against subsequent trade data (L-0018, corrected). `europe` holds three
+records.
+
+## Gates
+
+```
+validate 0 errors, 152 warnings · typecheck clean · selftest OK · enum-stamp OK (8 lenses)
+figure-consistency 7/7 · manifest 647 records · reachability 824/824 · domain-coverage 14/14, 1085/1085
+url-check 3/3 · lens-controls 7 paired + exact membership · parts/ zero touched
+```

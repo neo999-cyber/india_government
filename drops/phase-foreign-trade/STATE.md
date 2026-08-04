@@ -64,20 +64,17 @@ multiplier values and no thresholds**. The positive indigenisation lists are not
 The DAP chapter text is on `mod.gov.in`, which is unreachable. Try: PIB releases announcing each
 indigenisation list, and a Parliamentary answer on offsets discharged.
 
-### 2. Arc D remainder — two of three
+### 2. Arc D — CLOSED
 
-**Done:** the UK FTA (L-0204, in force 15 July 2026). **`europe` is now IN the lens enum**, admitted
-with L-0194 and L-0204 — two records, one arc, matching the `neighbourhood` precedent.
+UAE CEPA and Australia ECTA (L-0195) · EFTA TEPA (L-0194) · UK CETA (L-0204, in force 15 July 2026)
+· the EU agreement (L-0205, negotiations concluded 27 January 2026, NOT in force) · RCEP non-entry
+tested against subsequent trade data (L-0018, corrected 2026-08-05). `europe` holds three records.
 
-**Still open:**
-- **The EU negotiation.** *Why deferred:* not attempted; room. *Depends on:* nothing blocking — PIB
-  carries the Indian side. Expect the commitment-state discipline: a negotiation is state (a) until
-  it concludes, and the trigger is whatever round or date is named.
-- **RCEP non-entry against subsequent trade data.** *Why deferred:* not attempted. *Depends on:*
-  nothing blocking — UN Comtrade gives the trade data on the same query shape used in L-0192 and
-  L-0195, and **L-0018 already exists** describing RCEP withdrawal on T4 sources with claims about
-  the China deficit. It is arc D's to correct or leave, and the correction is the natural vehicle
-  for the trade-data test.
+**Live triggers to watch, both state (a):** the India-EU agreement enters into force on the first day
+of the second month after India and the EU exchange written notifications of completed internal
+procedures — no date exists yet, and neither a signature date nor a notification date has been
+published. TEPA's US$100bn investment objective runs to 1 October 2040 with the first US$50bn at ten
+years.
 
 ### 3. Arc G — multilateral
 

@@ -983,5 +983,58 @@
         "confidence": "high",
         "asOf": "2026-08-05",
         "revisitTrigger": "Re-test on the first full year of trade under CETA, and specifically on whether the phasing schedule is published — without it the 24.5 per cent figure is the only measurable statement about India's market opening, and it will stay that way."
+    },
+    {
+        "id": "L-0205",
+        "title": "The India-EU agreement is concluded but not in force, and this time both sides published the same two measurements — 90.7 per cent of India's export value duty-free at once against 30.6 per cent of the EU's",
+        "date": "2026-01-27",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "macro"
+        ],
+        "lenses": [
+            "europe"
+        ],
+        "type": "reform",
+        "summary": "The Prime Minister and the President of the European Commission announced the conclusion of India-EU Free Trade Agreement negotiations at the 16th India-EU Summit on 27 January 2026, after a re-launch of talks in 2022. The EU eliminates duties on about 70.4 per cent of its tariff lines at entry into force, covering 90.7 per cent of India's export value, with a further 20.3 per cent of products phased; its total offer is almost 97 per cent of lines and more than 99 per cent of trade value. India gives immediate duty-free access on about 49.6 per cent of its tariff lines covering 30.6 per cent of trade value, with 39.5 per cent of lines and 63.1 per cent of value phased over five, seven or ten years; India's total offer is around 92.1 per cent of lines and 97.5 per cent of value.",
+        "claimAtLaunch": "A balanced, modern and rules-based partnership delivering, on the Ministry's statement, preferential entry for over 99 per cent of Indian exports and zero duty at entry into force on almost US$33bn of exports in labour-intensive sectors — textiles, leather, marine products, gems and jewellery — that currently face duties of up to 10 per cent. On services, the EU opens 144 subsectors to India and India opens 102 to the EU.",
+        "whatHappened": "COMMITMENT STATE (a) — NOT YET DUE, AND THE TRIGGER IS A NAMED CONDITION RATHER THAN A DATE. The FAQ states the mechanism precisely: the agreement enters into force \"on the first day of the second month following the date on which India and the EU exchange written notifications confirming completion of their respective internal legal procedures, or on any other date mutually agreed\". So conclusion of negotiations is not signature and is not entry into force, and no date exists for either — but unlike the Rafale-M agreement in L-0201 there IS a stated trigger, and it can be observed when it occurs. Nothing in the schedule runs until it does.",
+        "assessment": "too-early",
+        "assessmentNote": "Too-early: negotiations are concluded, the obstacle is elapsed time and the procedural steps time carries. Not awaiting-adjudication — the exchange of notifications is an act of the parties themselves, not a decision by any body outside them.",
+        "caseFor": "The disclosure is the best in this arc and that deserves saying plainly. Both sides' offers are published on BOTH bases — lines and trade value — and split into immediate and phased, which is exactly what the India-UK release did not do and what makes an asymmetry visible instead of buried. On substance the asymmetry runs India's way at entry into force by 60.1 percentage points of value, the labour-intensive sectors that employ most are the ones getting immediate zero duty on around US$33bn of exports, and India's own opening is deliberately staged over five to ten years, which is the protection its sensitive sectors were promised. Concluding with the EU after a decade of stalled attempts is a substantive outcome whatever the schedule.",
+        "caseAgainst": "Concluded is not signed and signed is not in force, and the difference is not procedural detail — nothing in the schedule binds until notifications are exchanged, and no date exists for that. The headline that circulates is \"over 99 per cent of Indian exports\", which is the eventual figure; the day-one figure for India's exports is 90.7 per cent of value and for the EU's is 30.6 per cent, and only the second tells a reader what changes when the agreement starts. India's phasing runs to ten years, which is longer than most governments last. And the published components do not add up to the published totals on any of the three splits, so the schedules cannot be reconstructed from what has been released.",
+        "differentFacts": false,
+        "differentFactsNote": "No competing accounts: every figure is from Indian government publications and none is disputed in anything retrieved. The asymmetry between the two offers is a property of the agreement, not a disagreement about it.",
+        "unmeasured": [
+            {
+                "what": "The residual between the published immediate and phased shares and the published totals, on all three splits",
+                "why": "The components do not sum to the stated totals and no third category is described. EU lines: 70.4 immediate plus 20.3 phased is 90.7, against a stated total of almost 97 — a gap of about 6.3 points. India lines: 49.6 plus 39.5 is 89.1 against 92.1 — a gap of 3.0. India value: 30.6 plus 63.1 is 93.7 against 97.5 — a gap of 3.8. Something is conceded that is neither immediate elimination nor phased elimination — tariff-rate quotas and partial reductions are the ordinary candidates — and nothing retrieved names it. The gaps are recorded rather than reconciled.",
+                "wouldFill": "The agreement's tariff schedule annexes, or a Ministry statement of the concession categories and their shares.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "The date of signature and the date of exchange of notifications",
+                "why": "Conclusion of negotiations was announced on 27 January 2026. The entry-into-force rule is stated as a condition, not a date, and neither a signature date nor a notification-exchange date appears in anything retrieved.",
+                "wouldFill": "A Ministry announcement of signature, or of the exchange of written notifications, either of which starts the clock the FAQ describes.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "caveat": "Two coincidences of arithmetic in the published figures are noted so a reader does not take either for a relationship. First, the EU's immediate and phased line shares sum to 90.7, which is also the figure given for the share of India's export VALUE covered by the immediate tranche — the same number attached to two different quantities, a line count and a value share, related by no arithmetic. Second, India's 2024-25 bilateral goods trade is given as US$136.54bn against exports of US$75.85bn and imports of US$60.68bn, which sum to 136.53; the total is computed on unrounded values and the 0.01 is a rounding artefact, not a discrepancy.",
+        "sources": [
+            {
+                "name": "Ministry of Commerce and Industry, \"India-EU Free Trade Agreement Concluded: A Strategic Breakthrough in India's Global Trade Engagement\", PIB, 27 January 2026 — the conclusion announcement, the 2022 re-launch, over 99 per cent of Indian exports gaining preferential entry, US$33bn of labour-intensive exports to zero duty at entry into force, 144 EU subsectors against 102 Indian, the EU as India's 22nd FTA partner, and the 2024-25 bilateral trade figures",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2219065",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Commerce and Industry, \"Frequently Asked Questions: India and European Union Free Trade Agreement\", PIB — the EU offer (70.4 per cent of lines immediate covering 90.7 per cent of India's export value, 20.3 per cent phased, almost 97 per cent of lines and over 99 per cent of value in total), India's offer (49.6 per cent of lines immediate covering 30.6 per cent of value, 39.5 per cent of lines and 63.1 per cent of value phased over 5/7/10 years, 92.1 per cent of lines and 97.5 per cent of value in total), and the entry-into-force rule at question 58",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2220413",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-05",
+        "revisitTrigger": "Re-test on signature, and on the exchange of written notifications — the second starts the clock the FAQ describes and is what moves this out of state (a). If the tariff schedule annexes are published, the undescribed residual above becomes measurable at the same time."
     }
 ]
