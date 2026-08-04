@@ -85,15 +85,33 @@ PIB carries the G20 and IMEC material; the WTO's own site was not tested and is 
 Expect the commitment-state discipline to carry most of the weight — this arc is dense with
 announced-but-undelivered material, which is what states (a)/(b)/(c) exist for.
 
-### 4. Arc C policy dimensions
+### 4. Arc C policy dimensions — Bangladesh attempted, no record; the rest not attempted
 
-Bangladesh transit, energy and the Adani PPA · Sri Lankan debt restructuring, energy and ports · the
-Maldives reversal arc, currency swap and infrastructure · Nepal-Bhutan hydropower and power trade ·
-Myanmar border fencing and the Free Movement Regime. *Why deferred:* arc C's TRADE dimension was
-authored (L-0192, L-0193) and its policy dimensions were not — **they need policy primaries rather
-than trade returns, which is a different source class with a different failure profile.**
-*Depends on:* PIB (confirmed working) and RBI press releases (confirmed working, and the route for
-the Maldives currency swap). IMF country pages return 403. Comtrade will not help here.
+**Bangladesh: attempted 2026-08-05, NO RECORD.** Three candidates, none groundable.
+- *Adani PPA dues* — stop condition 1: no primary, and the secondaries are incompatible (US$437m
+  all-cleared against US$496m outstanding, July 2026).
+- *Post-transition trade/transit/energy* — MEA's two bilateral briefs are the only T1 sources
+  retrieved and both predate the August 2024 transition (content dated January 2023 and January
+  2024).
+- *The Godda omission* — both briefs contain zero mentions of "Adani" or "Godda" and both give
+  Bangladesh importing 1160 MW. A finding, but it needs a PRIMARY establishing the Godda
+  arrangement before the absence can be claimed, and none was retrieved.
+
+*Depends on:* a primary for the Godda PPA — try Adani Power's annual report or an exchange filing
+(BSE/NSE), which are company primaries; or a Bangladesh Power Development Board publication. And a
+post-transition MEA brief, which does not yet exist in retrievable form. **`cea.nic.in` resolves on
+1.1.1.1 (45.127.74.41) and needs an explicit resolver; the cross-border-electricity path 404s.**
+**`www.mea.gov.in/Portal/ForeignRelation/India_Bangladesh_bilateral_brief.pdf` is a soft-404** —
+200 serving HTML. The dated per-year briefs are the ones that work.
+
+**Not attempted:** Sri Lanka (debt restructuring role, energy and port) · Maldives (reversal arc,
+currency swap, infrastructure) · Nepal and Bhutan (hydropower, power trade) · Myanmar (border
+fencing, Free Movement Regime).
+
+**Source-class finding that applies to all of them:** batch 3's trade dimension ran on UN Comtrade,
+which answers every bilateral question on one query shape. Policy primaries have no equivalent —
+MEA's bilateral briefs are periodic snapshots rather than a series, and the most recent retrieved
+carries content over eighteen months old.
 
 ### 5. Pakistan — deferred on retrieval, and the blockage is specific
 
