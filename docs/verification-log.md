@@ -5579,3 +5579,103 @@ reachability        788/788 (refuses on a stale build — verified)
 domain-coverage     14/14 domains · 7/7 lenses · 218/218 lens refs (refuses on a stale build — verified)
 lens-controls       6 paired + exact membership
 ```
+
+---
+
+# Verification log — cycle 2026-08-04h (phase 14 batch 4, arc D: agreements — two records, `europe` NOT admitted)
+
+**Appended.** `/data` diff: `80 0` on `ledger/foreign-trade.json`. Pure append, zero deletions.
+
+## L-0194 — TEPA's investment commitment, resolved into state (a) with its trigger named
+
+TEPA entered into force **1 October 2025**, two years after signature, carrying an investment
+objective of **US$100bn over fifteen years** and one million direct jobs, which the Ministry
+describes as making it "the first trade agreement to incorporate a firm investment commitment".
+
+**Commitment state (a) — not yet due, trigger named: 1 October 2040 for the whole, and the
+retrieved description places the first US$50bn at ten years.** Nothing is testable at ten months and
+the record does not pretend otherwise. It exists now because a fifteen-year commitment is exactly
+the kind announced once and never revisited: the point of entering it early is to fix what was
+promised, by when, and how it is to be measured, before any of those become matters of recollection.
+
+**The two sides do not use the same word for it**, and the record says so rather than adopting
+either. The Ministry says "firm investment commitment"; the joint framing is an "objective" and an
+aim to "mobilise", which is an undertaking to try. Nothing retrieved establishes a consequence for
+missing it.
+
+The `unmeasured` item is the one that matters: **the measurement basis is not established**. Whether
+the target counts gross inflows, net inflows or announced intentions is the difference between a
+testable commitment and an untestable one, and the documents state the number without stating the
+basis.
+
+## L-0195 — a Prime Ministerial claim, tested, and it depends entirely on an unstated baseline
+
+On 10 March 2026 the Prime Minister said: *"Merchandise trade with both Australia and the UAE has
+doubled since the signing of FTAs with these countries."* Tested against India's own submissions:
+
+| base year | UAE ratio to CY2025 | Australia ratio to CY2025 |
+|---|---|---|
+| CY2020 | **×2.26 — doubles** | **×2.21 — doubles** |
+| CY2021 — last full year before either signature | ×1.38 | ×1.08 |
+| CY2022 — year of signature | ×1.11 | **×0.85** |
+
+The UAE CEPA was signed 18 February 2022 and the Australia ECTA 2 April 2022. **The claim is exactly
+right on a baseline two years before either signature — the deepest trade contraction in modern
+history — and wrong on both years the words actually indicate.** For Australia it fails badly:
+two-way trade in 2025 is *below* where it was when ECTA was signed.
+
+Scored `contested`, not `failed`, and the reason is stated: the claim does not name its baseline, so
+choosing one would mean asserting something the speaker did not say. **The finding is that a claim of
+this shape is unfalsifiable until the base year is named**, and the revisit trigger is any official
+statement that names it.
+
+`differentFacts` is **false**, and the note says why: both readings use the same series and disagree
+only about which year a phrase points at. That is a difference about meaning, not about the world —
+it looks like a differentFacts pair at a distance and is not one.
+
+The calendar-year basis is caveated rather than assumed away. A financial-year test would move each
+figure; none of these ratios is near the 2.00 boundary — the closest on a signature-adjacent base is
+1.38 — so the conclusion does not turn on the convention.
+
+**Internal consistency: 16 figures, zero artefacts.** Every two-way total reconstructs exactly from
+its printed exports and imports, so nothing needed declaring here. That is the `figure-consistency`
+discipline reporting a genuine negative, which is what makes its positives worth anything.
+
+## `europe` is NOT admitted, and that is the rule working
+
+Arc D produced one Europe record. **A lens over one record is a filter that returns what the reader
+already had** — the criterion set in batch 1 and applied to `pakistan` in batch 2. L-0195 is UAE and
+Australia, which are not Europe. So `europe` waits for the UK FTA and EU-negotiation records that
+would make it a file.
+
+Consistent with batch 3's `neighbourhood` reasoning and with the standing rule: **a lens is admitted
+when its records land, not when it is planned.** `lens-empty` would have failed the build had I
+admitted it, which is the mechanism doing its job rather than an obstacle.
+
+## Arc D is a CLEAN PARTIAL, and arc E is not started
+
+Authored: TEPA's investment commitment, and the doubling claim covering UAE and Australia.
+
+**Not authored:** the UK FTA (in force July 2026), the EU negotiation, and RCEP non-entry against
+subsequent trade data. L-0018 still describes four agreements' status with T4 sources and is
+untouched — it makes no US tariff claim, so it was correctly outside the 0a sweep, and it is arc D's
+business whenever arc D resumes.
+
+**Arc E — procurement — is not started at all.** Rafale tranches, S-400 and CAATSA, indigenisation
+and export figures against target, emergency-procurement powers. Nothing was attempted and nothing
+failed; there was not room after the two head-of-batch items and arc D. Per the brief, a clean
+partial beats thin records, and this is the partial being declared rather than disguised.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 145 warnings
+typecheck           clean
+selftest            OK — freshness controls + four branch-pinned coverage fixtures
+figure-consistency  6 declared claims, 6 checked, 3 artefacts declared; arc D added none
+reachability        791/791 declared marks on their own record page (616 pages)
+domain-coverage     14/14 domains · 1069/1069 record-to-surface
+                    7/7 lens surfaces · 218/218 record-to-lens
+url-check           4/4 confirmed — both PIB releases and both Comtrade queries
+lens-controls       6 paired + exact membership
+```
