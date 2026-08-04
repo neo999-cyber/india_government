@@ -1,42 +1,43 @@
 # Phase 14 — foreign policy and trade. State.
 
-**Batch 1 (`23caebe`) arcs A+F, the lens axis: merged, deployed.
-Batch 2 (`23cc1cf`) arc B, the India-China mirror: merged, deployed.
-Batch 3 head (`95950e3`) rounding basis + url-check spacing · arc C trade dimension (`4df4cc8`).
-Batch 4 head: L-0021 corrected (`7d6c4ec`) · build-freshness gate (`18728fa`).
-Batch 4 arc D PARTIAL (`588f978`) — TEPA commitment and the doubling claim.**
+**B1 (`23caebe`) arcs A+F, lens axis · B2 (`23cc1cf`) arc B China mirror · B3 (`95950e3`, `4df4cc8`)
+rounding basis, url-check spacing, arc C trade · B4 (`7d6c4ec`, `18728fa`, `588f978`) L-0021,
+build freshness, arc D partial · B5 (`6e30c2d`, `c071418`) fixture soundness, arc E opened.**
 
 ## NOT DONE — the live backlog
 
-1. **Arc E — procurement. NOT STARTED.** Nothing attempted, nothing failed, no room. Rafale
-   tranches, S-400 and CAATSA, indigenisation and export figures against target,
-   emergency-procurement powers. Filing rule settled: cost → macro; indigenisation, offsets,
-   exports, DAP domestic content → foreign; G2G-as-diplomacy → foreign; `defence-sector` on all.
-   Export and indigenisation targets are commitment records — same three states. Agnipath stays out.
-2. **Arc D remainder.** UK FTA (in force July 2026), the EU negotiation, RCEP non-entry against
-   subsequent trade data. **`europe` is NOT in the lens enum** and must enter with these — one
-   Europe record does not earn a lens. L-0018 still describes four agreements' status with T4
-   sources and is arc D's business.
-3. **Arc G — multilateral.** G20 deliverables against outcomes, IMEC announced against built, WTO
-   fisheries and public stockholding, UNSC advocacy. Nothing authored.
-4. **Arc C's POLICY dimensions.** Only the trade dimension exists. Owed: Bangladesh transit, energy
-   and the Adani PPA; Sri Lankan debt, energy and ports; the Maldives reversal, swap and
-   infrastructure; Nepal-Bhutan hydropower; Myanmar's border fencing and the Free Movement Regime.
-5. **Pakistan, deferred alone**, blocked on retrieval. Exclusion is stated in L-0192 and L-0193's
-   titles rather than left silent.
-6. **The retrieval-capability cycle.** One cycle. Class members: Cloudflare gates (`pca-cpa.org`),
-   JS shells answering 200 with no document (`mea.gov.in`), scans with no text layer (the Indus
-   Waters Treaty PDF), hosts needing an explicit resolver (`ppac.gov.in` 164.100.198.160,
-   `mea.gov.in` 13.224.236.14, `www.pib.gov.in` 94.202.207.57), CAPTCHA'd full-text endpoints
-   (`federalregister.gov`), and the Gazette task.
+1. **Arc E remainder.** Rafale tranches; S-400 delivery and CAATSA exposure; indigenisation share
+   against target; DAP domestic-content rules; emergency-procurement powers and their use.
+   **The SIPRI mirror is the notable one** — MoD's rupee export series against SIPRI's TIV. TIV is
+   NOT a currency value; the methodological reason must be stated rather than the divergence being
+   treated as a discrepancy. Filing rule settled; `defence-sector` on all.
+2. **Arc D remainder.** UK FTA, EU negotiation, RCEP non-entry against trade data. **`europe` is
+   NOT in the enum** and enters with them — one Europe record does not earn a lens. L-0018 still
+   describes four agreements with T4 sources.
+3. **Arc G — multilateral.** G20 deliverables, IMEC announced against built, WTO fisheries and
+   public stockholding, UNSC advocacy. Nothing authored.
+4. **Arc C policy dimensions.** Adani PPA, Sri Lankan debt, Maldives swap, hydropower, FMR.
+5. **Pakistan**, deferred on retrieval; exclusion stated in L-0192/L-0193 titles.
+6. **L-0195's baseline question** — check whether the 10 March 2026 release or the underlying speech
+   names a base year for the doubling claim. If one exists the claim becomes testable and the
+   `contested` score changes.
+7. **The retrieval-capability cycle**, one cycle. Class: Cloudflare gates (`pca-cpa.org`), JS shells
+   answering 200 with no document (`mea.gov.in`), scans with no text layer (the IWT PDF), hosts
+   needing an explicit resolver (`ppac.gov.in` 164.100.198.160, `mea.gov.in` 13.224.236.14,
+   `www.pib.gov.in` 94.202.207.57), CAPTCHA'd full-text endpoints (`federalregister.gov`), the
+   Gazette task.
 
-## Standing hazard: fixtures derived from a live enum
+## Harness state after B5 — what is now mechanical rather than remembered
 
-`lens-coverage-empty` and `lens-coverage-no-page` are generated FROM the schemas. When `europe` is
-admitted they will begin failing on the wrong branch, exactly as they did after `china` and
-`neighbourhood` were added — exit 1 either way, selftest green, branch unchecked. **Re-run the
-regeneration in the same commit as any enum change.** The branch assertions added in `18728fa` turn
-that from a silent pass into a failure, but they do not regenerate the fixture.
+- **Every fixture assertion names its own failure.** 33 sites; zero assert a bare exit code.
+- **Enum drift fails loudly.** Generated fixtures carry `GENERATED-FROM.json`; the selftest compares
+  it to the live schemas. When `europe` is admitted, run `npm run regen:lens-fixtures` in the same
+  commit — the selftest will say so if you forget.
+- **Gates reading `out/` refuse on a stale build** (exit 2, distinguished from no-build).
+- **Word boundaries by default** in `tools/lib/corpus-search.mjs`; `substring: true` is the visible
+  opt-out.
+- **figure-consistency** checks declared claims against source AND printed operands; separators are
+  normalised, and its own claims' source values are checked rather than typed.
 
 ## What is done
 
