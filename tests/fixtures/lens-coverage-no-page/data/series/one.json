@@ -1,7 +1,7 @@
 [
   {
-    "id": "all-lens-series",
-    "title": "Fixture series carrying every lens value, so lens-empty cannot fire and the missing page is the only branch left",
+    "id": "fixture-series",
+    "title": "Fixture series, not a real record",
     "unit": "count",
     "domain": "foreign",
     "tier": "T1",
@@ -23,7 +23,9 @@
       "federalism",
       "defence-sector",
       "united-states",
-      "russia"
+      "china",
+      "russia",
+      "neighbourhood"
     ]
   }
 ]

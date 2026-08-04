@@ -1,7 +1,7 @@
 [
   {
-    "id": "no-lens-series",
-    "title": "Fixture series carrying no lens, so every lens value in the enum is empty",
+    "id": "fixture-series",
+    "title": "Fixture series, not a real record",
     "unit": "count",
     "domain": "foreign",
     "tier": "T1",

@@ -5494,3 +5494,88 @@ validate            VALID — 0 errors, 145 warnings
 figure-consistency  6 declared claims, 6 checked, 3 artefacts declared
 url-check           0 new URLs; the four added were already corpus members, verified per URL
 ```
+
+---
+
+# Verification log — cycle 2026-08-04g (build freshness: a gate reading a stale artefact must refuse)
+
+**No `/data` change.** Gate work only, in its own commit.
+
+## The direction that matters is the one that does not announce itself
+
+Batch 3 saw `selftest` exit 1 once and not reproduce: its live-corpus output-gate check had read
+`out/` before the rebuild containing the new records. That was recorded as an ordering artefact and
+it was one — **a false FAILURE, which is loud, gets investigated, and costs an hour.**
+
+The same ordering produces a **false PASS**. Edit a record, forget to rebuild, run the gates:
+`reachability` reads the previous build, finds every mark it already knew about rendering, and
+reports 788/788. The new record's marks were never looked for. Nothing in the output distinguishes
+"checked and fine" from "checked something else" — and the instrument's whole premise is that a
+green gate means something.
+
+## Refuse, do not warn
+
+`tools/lib/freshness.mjs`, called by both output gates. If any input is newer than the newest built
+artefact the gate **exits 2 without running** — the same code both already use for "no built output
+at all", because the two have the same meaning and the same remedy: this gate cannot answer the
+question it was asked. Exit 1 stays reserved for a finding, and a refusal is not a finding.
+
+Inputs are `data/`, `app/`, `components/` and `lib/`. `lib/` is in the list because the phase-10
+`education` defect was a `lib/types.ts` omission with entirely correct data — limiting freshness to
+`data/` would miss the class of change that motivated `domain-coverage` in the first place.
+`schemas/`, `tools/` and `docs/` are excluded and the exclusion is reasoned, not incidental: the
+first two cannot change a rendered page without one of the four also changing, and the third never
+renders.
+
+**Fixture pairs are exempt**, because a fixture supplies its own `--data` and `--out` whose mtimes
+are whenever git wrote them; comparing those tests the checkout, not the build. A caller may pass
+`--check-freshness` to exercise the path deliberately, which is how the controls drive the real call
+site rather than testing the function in isolation.
+
+## Controls, both directions, and on both paths
+
+| control | result |
+|---|---|
+| fixture pair, `data/` touched after `out/` | **exit 2, REFUSING TO RUN** |
+| same fixture, same flags, `out/` touched after `data/` | runs (exit 1 — its own content result, not a refusal) |
+| live repo, freshly built | `domain-coverage` exit 0, 1065/1065 |
+| live repo, one real data file touched, no rebuild | `reachability` **exit 2**, `domain-coverage` **exit 2** |
+
+The two fixture members differ in exactly one thing — which side was touched last. Same fixture,
+same gate, same flags, only the mtimes move. And the live pair proves the assertion on the DEFAULT
+path, not only under the flag that exists for testing.
+
+## The selftest was silently skipping its own live check
+
+Exit 2 covered both "no output" and "output stale", and both landed in the same branch:
+`domain-coverage on the live corpus skipped`. **A selftest that quietly declines to run its live
+check and still prints OK is the false pass this assertion exists to prevent, one level up.** The
+two are now distinguished by message, and a stale build is a selftest FAILURE.
+
+## And the fixtures were passing on the wrong branch
+
+Regenerating exposed a second defect. `lens-coverage-empty` and `lens-coverage-no-page` were
+generated when the lens enum held five values. Two more were admitted in batches 2 and 3, so
+`lens-coverage-empty` had begun failing on `[lens]` — no page built for `china` and
+`neighbourhood` — **instead of on `[lens-empty]`, the branch it exists to pin.** Exit code 1 either
+way. Selftest green. The branch unchecked for two cycles.
+
+Both fixtures regenerated from the live enum, and every `domain-coverage` fixture now asserts its own
+message the way the `url-check` fixtures already did: `[page]`, `[record]`, `[lens] russia`,
+`[lens-empty]`. A fixture that fires for the wrong reason is now a failure rather than a pass.
+
+**This is a general defect in fixtures derived from a live enum**, and it will recur when `europe`
+is admitted. The regeneration is scripted against the schemas rather than hand-written, so the fix
+is to re-run it in the same commit as any enum change.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 145 warnings
+typecheck           clean
+selftest            OK — includes both freshness controls and four branch-pinned coverage fixtures
+figure-consistency  6 declared claims, 6 checked, 3 artefacts declared
+reachability        788/788 (refuses on a stale build — verified)
+domain-coverage     14/14 domains · 7/7 lenses · 218/218 lens refs (refuses on a stale build — verified)
+lens-controls       6 paired + exact membership
+```
