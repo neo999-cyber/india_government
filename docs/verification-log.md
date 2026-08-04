@@ -4625,3 +4625,49 @@ tokens that needs a client able to drive it.
 compensation arc now carried by L-0158→L-0161; Article 279A(11) by L-0162), L-0013 (P-100), **L-0040**
 (three, including the MGNREGA repeal), **L-0101** (generalise the statutory-versus-contractual
 distinction), L-0100 and L-0108 (cross-references only).
+
+## Addendum to 2026-08-04a — deployed and verified on production
+
+**Deployed.** Vercel `dpl_3W8cvqKs82e5gEUKx9zL4P8enENc`, target production, state **READY**, built from
+the `#15` merge commit on `main`.
+
+**Verified on `main` by reading the artefacts, never the PR status.** `git show origin/main:<path>` for
+each: `data/ledger/federalism.json` 34 records L-0150→L-0183 · `data/series/federalism.json` 42 ·
+`data/provenance.json` 118 · `data/pairs.json` 58 · `stage4-selfcheck.mjs` imports `checkIntegrity` ·
+`url-check.mjs` carries `--drop` and `'.xls': 'ms-excel'` · `selftest.mjs` returns output on the
+success path · the log carries this cycle. Then the gates re-run **on `main` itself**, not on the
+branch: **validate 0 errors / 142 warnings · typecheck 0 · reachability 768/768 · domain-coverage
+1035/1035.**
+
+**Controls 13/13, both directions**, from production HTML with `<script>` stripped and tags removed.
+
+Present, each on the page of the record that declares it: **"published to humans, not to machines"**
+(L-0183) · **76,950.68** (L-0176, AIDC collected in a year nil reached the fund) · **67,819.29**
+(L-0182) · **34.20** (L-0181, the sum the JS(TRU) table's own components make while it prints 34.10) ·
+**"one paisa"** (L-0180) · **"Any written derivation"** (L-0152, the re-graded absence) · **"Annexure
+4C"** (L-0155, the route written this cycle) · **"contribution to the Union exchequer"** (P-118) ·
+**"no official list"** (L-0166 — proving the record survived while its absence entry did not) ·
+**6,05,186** (`fc-devolution-rupees`, FY2017-18).
+
+Absent: **"Gazette notification for any of the four"** — the absence entry removed this cycle, proven
+gone from production and not merely from the working tree · **6,73,005** — the rejected correction ·
+plus a bogus needle, so the sweep is shown able to return a negative at all.
+
+### A vacuous control, caught by its own positive control
+
+**The first run of the numeric negative was worthless and passed anyway.** It searched for `673005`
+and found nothing — but the site renders Indian digit grouping, so **`673005` could never have
+appeared in any form**, and the control would have passed identically had the wrong value been sitting
+on the page. A negative that cannot fail is not evidence.
+
+It was caught only because the matching **positive** control, `605186`, was run in the same form and
+**failed**. That failure is what exposed the needle rather than the data as wrong; both were re-run as
+`6,05,186` and `6,73,005` and both then behaved. **This is the CAG-local-bodies standard applied to
+this log's own method: the filter that should return nothing returns nothing, AND a positive control
+proves the filter works.** A negative control without a same-form positive alongside it is an
+assertion about a regex, not about production.
+
+Third instance this cycle of one shape — a check that is sound and reads the wrong thing. The others
+were `url-check` diffing `/data` on a `--dry` run, and an artefact verification whose regex was
+over-escaped and reported the `.xls` fix missing from `main` when it was present. **All three were
+found by a control, not by the check.**
