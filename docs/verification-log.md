@@ -6506,3 +6506,84 @@ url-check           1/1 confirmed
 lens-controls       6 paired + exact membership; russia now L-0184, L-0189, L-0199, L-0202
 parts/              zero touched, zero forward references introduced
 ```
+
+---
+
+# Verification log — cycle 2026-08-04q (Rafale's earlier tranche; arc E closes at three of four files)
+
+**Appended.** `/data` diff: `53 0` on `ledger/foreign-trade.json`. Pure append, zero deletions, zero
+`parts/` files touched.
+
+## L-0203 — 126 became 36, and 108 became none
+
+The Inter-Governmental Agreement of 23 September 2016 bought 36 Rafale in direct fly-away condition.
+It replaced the Medium Multi Role Combat Aircraft proposal for 126 aircraft — **18 fly-away plus 108
+licence-manufactured in India**.
+
+| | MMRCA proposal | 2016 IGA |
+|---|---|---|
+| fly-away | 18 | **36** |
+| licence-manufactured in India | 108 | **0** |
+| total | 126 | 36 |
+
+The fly-away component doubled. **The domestic-manufacture component went to zero**, and that is the
+part the announcement does not lead with: the Ministry's stated comparison is "better pricing, better
+maintenance terms and better delivery schedule", and domestic manufacture is not among the axes it
+compares.
+
+Scored `contested`, and the note says why the score is not a hedge: **the two readings are arguing
+about different objectives, not the same one.** As a fighter acquisition it is testable on price,
+maintenance and delivery and the Ministry claims improvement on all three. As an industrial decision
+it removed the largest licence-manufacture commitment in the pipeline. Both use the same facts, and
+the announcement does not say which objective governed.
+
+The case-for is stated as plainly as the case-against, per the standing rule: MMRCA had already
+failed as a process on the Ministry's own account, a licence commitment that never produces an
+aircraft delivers neither capability nor industry, and the fly-away component actually doubled.
+
+## A precisely bounded withholding
+
+The Ministry refused item-wise cost to an identifiable demand on 7 February 2018 — *"The demand that
+the Government disclose the details and value of the contract [...] is unrealistic"* — on the stated
+ground that it "would also come under the ambit of the security agreement signed in 2008". A named
+refusal, to a specific demand, with a legal ground: `withheld`, not `not-published`.
+
+**Rule 5d applied.** The same statement says an approximate acquisition cost WAS given to Parliament.
+So a public figure exists. It was not retrieved here, and the caveat says so in terms: *"Nothing in
+this record asserts that the contract value is unknown to Parliament — only that it was not retrieved
+in this run and that item-wise cost is withheld."* No price is quoted, inferred or reconstructed
+anywhere in the record.
+
+The second `unmeasured` observes the same discipline from the other side: nothing retrieved states an
+offset or transfer-of-manufacture obligation replacing the 108 licence-built aircraft, and the record
+says **none was located**, not that none exists.
+
+## Arc E closes at three of four files
+
+**Closed:** Rafale tranches (L-0201 the 2025 Navy IGA, L-0203 the 2016 Air Force IGA) · the S-400
+delivery schedule (L-0202) · emergency-procurement powers and their use (L-0200). With L-0196,
+L-0197, L-0198 and L-0199 the arc holds eight records and `defence-sector` nineteen.
+
+**NOT closed: DAP domestic-content rules beyond the IC minimums.** The offsets fragment IS in the
+DAP 2020 release already retrieved — *"The Offset guidelines have been revised, wherein preference
+will be given to manufacture of complete defence products over components and various multipliers
+have been added"* — but it states no multiplier values and no thresholds, and the positive
+indigenisation lists are not in that document at all. **A record on that alone would be thin, and a
+clean partial beats thin records** — the rule written into CLAUDE.md this cycle. Recorded in STATE.md
+with the fragment noted as the starting point so the next run does not re-retrieve it.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 149 warnings
+typecheck           clean
+selftest            OK
+enum-stamp          OK
+figure-consistency  7 declared claims, 7 checked, 3 artefacts declared
+reachability        816/816 (624 pages)
+domain-coverage     14/14 domains · 7/7 lenses · 229/229 lens refs
+url-check           2/2 confirmed
+lens-controls       6 paired + exact membership; defence-sector at 19
+arithmetic          3 figures hand-checked, 0 mismatches; no price figure stated anywhere
+parts/              zero touched
+```

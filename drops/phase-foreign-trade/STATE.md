@@ -47,24 +47,22 @@ done here.
 Every item states WHAT it is, WHY it is deferred, and WHAT IT DEPENDS ON, so it can be started cold
 without this conversation. Carried rules are in CLAUDE.md, not here.
 
-### 1. Arc E remainder — two files
+### 1. Arc E — CLOSED at three of four files. One remains.
 
-- **Rafale's earlier tranche (the Air Force acquisition).** L-0201 covers the April 2025 Navy IGA
-  for 26 aircraft only and says so in its own caveat. *Why deferred:* no primary for the earlier
-  acquisition was retrieved, and it is not described on the strength of a 2025 document that
-  mentions the existing fleet without stating its terms. *Depends on:* a retrievable primary for the
-  original contract — try PIB releases from 2016 and the CAG audit of the acquisition, which was
-  tabled in Parliament. `mod.gov.in` is unreachable (see retrieval facts in CLAUDE.md), so PIB and
-  cag.gov.in are the routes.
-- **DAP domestic-content rules beyond the IC minimums** — offsets, positive indigenisation lists,
-  and what those lists actually bind. *Why deferred:* not attempted; room. *Depends on:* the DAP
-  chapter text, which is on `mod.gov.in` and therefore unreachable — the working substitute is the
-  PIB release announcing DAP 2020 (PRID 1659746), which carried the IC table and calculation basis
-  and may carry the offsets material too. Check that before concluding a primary is needed.
+**Closed:** Rafale tranches (L-0201 the April 2025 Navy IGA, L-0203 the September 2016 Air Force
+IGA) · the S-400 delivery schedule (L-0202) · emergency-procurement powers and their use (L-0200).
+With L-0196 exports-vs-target, L-0197 measurement categories, L-0198 indigenisation and L-0199
+CAATSA, the arc holds eight records. `defence-sector` is at nineteen.
 
-Arc E is otherwise complete: L-0196 exports vs target · L-0197 measurement categories · L-0198
-indigenisation · L-0199 CAATSA · L-0200 emergency procurement · L-0201 Rafale-M · L-0202 the S-400
-schedule. `defence-sector` is at nineteen records.
+**Still open — DAP domestic-content rules beyond the IC minimums.** *What:* offsets, positive
+indigenisation lists, and what those lists actually bind. *Why deferred:* a record on what is
+currently retrievable would be thin. *Depends on:* the offsets FRAGMENT is already retrieved and does
+not need re-fetching — the DAP 2020 PIB release (PRID 1659746) says "The Offset guidelines have been
+revised, wherein preference will be given to manufacture of complete defence products over components
+and various multipliers have been added to give incentivisation in discharge of Offsets", with **no
+multiplier values and no thresholds**. The positive indigenisation lists are not in that document.
+The DAP chapter text is on `mod.gov.in`, which is unreachable. Try: PIB releases announcing each
+indigenisation list, and a Parliamentary answer on offsets discharged.
 
 ### 2. Arc D remainder — UK FTA, the EU negotiation, RCEP non-entry against subsequent trade data
 
