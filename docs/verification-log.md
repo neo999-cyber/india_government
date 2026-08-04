@@ -4385,3 +4385,243 @@ article 334(b); the `Awaiting adjudication` label; the Lakshminarayanan citation
 Absent: **"three generations"** and **"hearing the affected groups"** — the two unsourced clauses,
 proven gone from production rather than merely gone from the working tree, which is the assertion the
 previous merge could not have made. Plus the bogus needle.
+
+---
+
+# Verification log — cycle 2026-08-04a (phase 13, federalism: merged, gated, deployed)
+
+**Merged.** 106 records: **34 ledger** (L-0150→L-0183, new file `data/ledger/federalism.json`),
+**42 series** (new file `data/series/federalism.json`), **19 provenance** (P-100→P-118, appended),
+**11 pairs** (PR-48→PR-58, appended).
+
+Corpus: 216→**258 series**, 149→**183 ledger**, 99→**118 provenance**, 47→**58 pairs**.
+
+`git diff --numstat` on the two appended files: **309/0 and 937/0 — zero deletions.** The live files
+use a one-space indent and it was preserved byte-for-byte; nothing was reformatted.
+
+## Gates, in the required order
+
+| gate | result |
+|---|---|
+| `validate` | **0 errors, 142 warnings** — 118 pre-existing plus exactly the 24 stage 4 predicted |
+| `typecheck` | exit 0 |
+| `build` → `reachability` | **768/768** declared marks reachable on their own record page, 590 pages (was 599/599, 495 pages) — unmeasured 278 · caveat 201 · notes 233 · differentFactsNote 56 |
+| `build` → `domain-coverage` | **1035/1035** record-to-surface references, 14/14 surfaces (was 831/831) |
+| `validate:selftest` | **OK** — 23/23 validator rules, 2/2 output gates, 7 url-check fixtures |
+| `url-check` on `/data` | 363 in corpus, **99 added against `origin/main`** — **98 confirmed, 0 failures**, 1 unverifiable (403) |
+
+**55 of those 99 needed the 1.1.1.1 resolver fallback** — 55.6 per cent, at the top of the range
+recorded below. The single unverifiable is the CBDT Time Series Data, cited by L-0183 and P-118, and
+its refusal is carried on L-0183's own caveat rather than being silently absorbed by the gate.
+
+**The 142 matching 118+24 is the useful number**, not the 0 errors. Stage 4's merge simulation
+predicted the post-merge warning count exactly, which is the first evidence that the simulation is
+faithful rather than merely green.
+
+## Scope, and what was deliberately not authored
+
+GST Council and the compensation arc · Finance Commission awards and vertical devolution · cesses and
+surcharges · centrally sponsored schemes and the untied share · Governors and the office of the LG ·
+three case states (Tamil Nadu, West Bengal, Bihar), chosen at stage 1 on stated criteria rather than
+assumed.
+
+**National delimitation was NOT authored** — absent from the phase's scope and would have run at
+trigger E against L-0141. It is the strongest phase-14 candidate. **The J&K LG was not re-authored** —
+owned by L-0125, L-0127, L-0138, L-0143, L-0146, L-0147.
+
+**The phase had no measured spine at stage 1.** No devolution, no divisible pool, no cess, no CSS, no
+state fiscal series existed. It has one now.
+
+## The finding the phase was run to get
+
+**The disciplining-measure question splits, and the split is the answer.**
+
+- **GST Council minutes** are the strongest one-ledger instrument in the project — the
+  Attorney-General's opinion, Punjab's rebuttal by page number, and each state's refusal in one signed
+  document — and their independence is **zero**. Every number originates with the Department of
+  Revenue; states contribute positions, not measurements. **A shared ledger of arguments, not of
+  facts.** It disciplines rhetoric, not arithmetic.
+- **The CAG's cess-to-reserve-fund audit PASSES**, and the reason is general: *an auditor who performs
+  a subtraction the payer will not perform produces a fact neither party supplied.* It obtained an
+  admission and a correction — ₹47,272 crore of compensation cess short-credited.
+- **The strongest form is in Tamil Nadu.** The direct-to-SIA quantum takes its input from the payer's
+  PFMS, its comparator from the recipient's Finance Accounts, and the operation is the auditor's —
+  **output in neither party's account of itself.** ₹30,085.53 crore in FY2023-24, money the state's
+  own books never see, rising from ₹3,914.73 crore in FY2015-16.
+- **On "what a state is owed", no instrument can exist.** The quantity is counterfactual; the dispute
+  is legal, not evidentiary.
+- **RBI *State Finances* is compiled from the states' own budget documents** — a common basis, not
+  independent evidence.
+
+## Definitional disagreements, which are the phase's recurring shape
+
+Both sides are usually right and measuring different things.
+
+- **Devolution has four live denominators, all correct** — 41 per cent of the divisible pool, 32.6 per
+  cent of gross tax revenue, "more than 49 per cent of gross revenue receipts" (the Union's own framing
+  to FC-XVI), and the CAG's certified net proceeds. **Against the certified pool there is no shortfall
+  at all; against gross tax revenue the gap is 7–9 points.** The bridge is the pool shrinking from 89.2
+  to 78.3 per cent of GTR.
+- **Cesses ± the compensation cess: 19.9 against 15.3 per cent of GTR.** Roughly half the apparent
+  doubling *is* the compensation cess, which was the states' money. In FY2017-18 the two series move in
+  **opposite directions**. Both carried, as two series.
+- **SAED adds a second axis of the same size** — four defensible readings of FY2024-25 spanning
+  **9.98 to 17.71 per cent**, wider than the rise the series demonstrates.
+- **Three instruments give three FY2018-19 devolution figures spanning ₹51,910 crore**, two of them in
+  the same report a hundred pages apart, unreconciled.
+- **"Released" against "dues outstanding" is not a factual disagreement** — it is a disagreement about
+  whether an unreleased allocation is a debt.
+
+## Five trigger-B stops, all closed but one
+
+- **B-1 — "for every rupee we contribute we get back X paise."** The most-quoted number in Indian
+  fiscal federalism, **produced by no retrievable instrument**. Authored as a declared absence
+  (L-0183), not rendered as a figure.
+- **B-2 — the AIDC per-litre migration.** Closed: all eight instruments re-retrieved with URLs.
+- **B-3 — fifteen parliamentary answers read without per-question URLs.** Closed: all seven
+  load-bearing documents re-retrieved, and four held-back series authored.
+- **B-4 — RBI *State Finances*.** **STILL OPEN.** Retrieved by no part; nothing rests on it.
+- **B-5 — two reconstructed PIB URLs.** Closed by url-check.
+
+**`no-objective` absorbed four constructs that exist in no enum. Without it this phase would have
+fired trigger D four times.** No enum value was added.
+
+## B-1's reason kind, adjudicated between two agents that disagreed
+
+One recommended `never-defined`, one `not-collected`. **Settled as `not-collected` +
+`reasonDisputed: true` + `disputeKind: evidentiary`, with the reasoning written onto L-0183 rather
+than only into a working file.**
+
+- *For `not-collected`:* the Government has stated it five times across both Houses, 2010→2026, the
+  last two word-for-word identical — **"State-wise data on collection of Indirect Taxes… is not
+  maintained."** `reasonKind` records the STATED reason, and that is one.
+- *Against `never-defined`:* it rested on a single sentence in a single answer — "There is no mechanism
+  for transfer of revenue by States to Centre with regard to Central Taxes." That denies a **transfer
+  mechanism**, not a definition: the Centre collects directly, so no transfer exists to describe, and
+  the same answer then annexes the state-wise devolution table. Named on the record as an argument
+  rejected, with nothing resting on it — no part fetched that document.
+- *Against `withheld`:* ten-plus dated specific requests and **zero refusals**. What the record shows
+  is **substitution** — a member asks for "tax devolution per one Rupee received, State-wise" and
+  receives the inter-se share table. **Substitution has no slot in the four-value enum.** Recorded as
+  an observation; no enum value proposed.
+- *The denominator's structure, now explicit:* state-wise **direct** tax is published (CBDT Time Series
+  §1.2, attributing tax to *the state code in the assessee's communication address* — which is what
+  produces a 40.3 per cent Maharashtra share, with no disclaimer anywhere); state-wise **GST** is
+  published monthly; state-wise **non-GST indirect** tax is not maintained. **It fails on one missing
+  input, not on incoherence.**
+- *Two limits on the record's face:* Lok Sabha question **body** text is not searchable at all, so every
+  Lok Sabha negative is subject-line-only and weaker than the Rajya Sabha negatives. And the CBDT source
+  carrying the published limb **answers 403 to every automated client — published to humans, not to
+  machines.**
+
+## A correction relayed and REJECTED
+
+A retrieval pass reported **four `fc-devolution-rupees` values wrong** and proposed replacing them with
+Union Receipt Budget figures. **Verified against the earlier research before propagating (M4), and
+refused.** Those divergences were already found and correctly characterised as the gap between three
+instruments counting three different events; the series is correctly sourced to FC-XVI Annexure 7.1,
+the RBI's compilation. Applying the "correction" would have overwritten a correctly-sourced series with
+a different instrument's figures and destroyed the internal consistency the arithmetic hand-check had
+verified.
+
+**What WAS new is authored (L-0182): FY2017-18 diverges by ₹67,819.29 crore, 11.2 per cent** — 4.6
+times the largest divergence previously examined, in the GST transition year, and outside the range the
+earlier comparison covered. Recorded as unexplained, with no component guessed.
+
+## Findings authored that were not in the brief
+
+- **AIDC: ₹76,950.68 crore collected in FY2021-22 and NIL transferred to the fund it was levied for;
+  ₹74,142.03 crore and nil again in FY2022-23** — the cess's first two full years. Authored as a
+  coverage-usage pair, `gapComputable: true`, because the Union strikes the balance itself.
+- **The Oil Industry Development Fund: four consecutive nil years**, with the Union's own footnote
+  conceding a cess levied since **1974** had no Reserve Fund until FY2024-25.
+- **Branded diesel became 1 paisa per litre dearer** under the AIDC restructuring, so "no additional
+  burden" holds for three grades of four — **and the JS(TRU) table contains a ₹0.10 arithmetic error on
+  exactly that row**, printing 34.10 where its own components sum to 34.20. Verified against a 150-dpi
+  render, not only text extraction. Authored as arithmetic, with no intent imputed.
+- **MGNREGA is repealed** w.e.f. 1 July 2026 by the VB-G RAM G Act 2025 (Act 36 of 2025), a statute.
+  Unskilled wage moves from **100 per cent Central to 60:40**. The s.27 fund-stopping power survives
+  near-verbatim as s.29. This bears on L-0040 and the amendment is proposed, not applied.
+- **Section 27 is singular** — used once, against one state, for 51 months. Established with a
+  positive-controlled sweep of 884/884 and 1,643/1,643 questions.
+
+## Gate and tooling changes in the same cycle
+
+**`stage4-selfcheck.mjs` now runs the merge gate.** It implemented ids, derived reference forms,
+both-cases, `whatChanged` length, charset and per-record schema — and **none of `integrity.mjs`'s
+thirty-four instrument rules**. A drop could report STAGE 4 CLEAN and hard-fail `validate` on merge,
+which this drop did twice. It now calls **`checkIntegrity`, the same function `validate` calls**, over
+**drop ∪ live** — reimplementing the rules would have been the same defect one level up, and that is
+the reasoning that killed the hand-written reference-form list in the same file. Findings naming only
+live records are reported and do not gate.
+
+**First run caught 18 drop-attributable errors: `unmeasured-route` 4, `ref-relevant` 14.** It also
+caught an error introduced by hand minutes after it was built — a `notes` field written onto a ledger
+record, which has no such property.
+
+**`url-check --drop <dir>`.** The default mode diffs `/data` against `origin/main`, so on a `--dry`
+run it reports "0 to check" — a right answer about the wrong tree, and the fifth instance of that
+shape. `--drop` reads the flat drop layout and implies `--all`. Verified: it discovered exactly the 63
+URLs a hand count had found, which is the positive control.
+
+**`.xls` → `'ms-excel'`.** `'spreadsheet'` matches OOXML and can **never** match
+`application/vnd.ms-excel`, so a correctly-served legacy workbook was reported as a soft-404 — the
+failure mode the content-type branch exists to catch, produced by the branch itself. A wrong lookup,
+not a loosened threshold. Both spreadsheet branches are now pinned by fixture and the selftest fails
+if either is dropped.
+
+**A second defect found while adding that fixture:** the selftest's `check()` helper returned an empty
+string on the success path, so **no assertion about a passing run's output could ever fire**. A
+stays-quiet fixture could only be tested on its exit code. The both-branches check was written, was
+correct, and silently could not run.
+
+## Two corrections to this log's own earlier claims
+
+**L-0166.** An instruction to delete the record was issued while reasoning only about its absence
+entry. The **absence entry was removed and the ledger record kept**: the record's finding — that no
+consolidated MHA list of the four Article 356 proclamations exists — is distinct from, and compatible
+with, each proclamation being individually gazetted. The durable part is that **an absence entry and
+its containing record can fail independently, and "delete the record" and "delete the absence" read
+alike when the absence is what prompted the review.** The removed entry claimed non-publication of a
+document published by definition, when the real fact was that `egazette.gov.in` could not be driven
+from this environment — a retrieval failure recorded as the Union's non-publication.
+
+**The M1 measurement was over-generalised, in this log, in the entry recording other people's
+over-generalisations.** It first recorded **28.7 per cent** of URLs needing the 1.1.1.1 resolver
+fallback and called it *"a standing property of this environment rather than a transient outage"*. The
+next run of the identical corpus, minutes later, returned **54.5 per cent**. A single measurement
+written up as a property. **What survives is the floor, not the rate:** the proportion is unstable and
+cannot be quoted as a constant, but it is never small, and even the conservative observation means a
+checker without M1 would have reported **29 to 55 live government sources as dead** — documents that
+were retrieved, read, and are serving 200 right now.
+
+## Deferred by decision, to be taken together in one sweep
+
+1. **The 24 back-link candidates these widenings create, alongside the 83 from 2026-08-02.** P-108
+   reciprocated in `affectsSeries` while `ref-relevant` failed on the same pair — **the two rules
+   disagreeing about the same records in opposite directions is the evidence that neither resolves by
+   mirroring.**
+2. **Whether a state's transfer dependence has Centre-state relations as its primary subject rather
+   than `macro`.** Scoped as a sweep across all comparable series, not a fix on the two a reference
+   check happened to name. The corpus is **already inconsistent on this axis** — the `*-css-releases`
+   family is filed `domain: federalism` while the own-tax-share series are `macro` — which is the
+   evidence the question is real. `federalism` being the enum's one hybrid, subject and lens both, is
+   what makes it a genuine question: `kashmir` has a forcing rule (`lens-as-subject`), `federalism` has
+   none.
+3. **`term-window` fires on a convention.** 16 of 34 new ledger records date at the origin of the arc
+   they measure and take the term where the evidence lands — L-0164 at 1950-01-26/T3, L-0167 at
+   2002-03-31/T3, L-0183 at 2010-11-16/T3. That is correct and it will warn forever. **A rule that
+   fires on good work gets ignored** — the same argument that produced the 403 reclassification. The
+   likely fix is a way for a record to declare that its date is an origin, which the rule can then
+   read. A schema question, not this cycle.
+
+## Open, blocking nothing
+
+**B-4** — RBI *State Finances* unretrieved. **The Gazette retrieval** that replaced L-0166's absence:
+four Article 356 proclamations, `egazette.gov.in`, an ASP.NET postback search with per-session path
+tokens that needs a client able to drive it.
+
+**Amendments proposed and NOT applied**, because the instruction was to merge the drop: L-0012 (the
+compensation arc now carried by L-0158→L-0161; Article 279A(11) by L-0162), L-0013 (P-100), **L-0040**
+(three, including the MGNREGA repeal), **L-0101** (generalise the statutory-versus-contractual
+distinction), L-0100 and L-0108 (cross-references only).

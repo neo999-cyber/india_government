@@ -1,0 +1,311 @@
+[
+  {
+    "id": "PR-48",
+    "title": "Forty-one per cent of what",
+    "kind": "coverage-usage",
+    "domain": "federalism",
+    "a": {
+      "series": "fc-vertical-devolution-share",
+      "label": "The share of the divisible pool the Finance Commission recommended and the Union accepted"
+    },
+    "b": {
+      "series": "fc-devolution-share-of-gtr",
+      "label": "The share of the Union's whole tax take that actually moved to the states"
+    },
+    "framing": "The 41 per cent and the 32 per cent are the same policy measured against two bases, and the distance between them is the divisible pool — which is why neither number answers the question the other is usually quoted for.",
+    "gapComputable": false,
+    "gapReason": "Different denominators. The two are reconciled not by subtraction but by a third series, divisible-pool-share-gtr: 41 per cent of a pool that is 79.9 per cent of gross tax revenue is 32.8 per cent of gross tax revenue. Subtracting one from the other produces a number that measures nothing.",
+    "provenanceRefs": [
+      "P-103",
+      "P-104"
+    ],
+    "ledgerRefs": [
+      "L-0150",
+      "L-0151"
+    ],
+    "status": "live",
+    "notes": "The commonest error in this whole subject is reading either of these as the other. A reader told the states' share rose from 32 to 42 per cent and a reader told the states receive about a third of central taxes are being given the same fact on two bases, and each will draw the opposite conclusion from the one the pair supports."
+  },
+  {
+    "id": "PR-49",
+    "title": "Did the money the Union does not share double",
+    "kind": "contested",
+    "domain": "macro",
+    "lenses": [
+      "federalism"
+    ],
+    "a": {
+      "series": "cess-surcharge-share-gtr",
+      "label": "Cesses and surcharges including the GST Compensation Cess: 10.4 to 19.9 per cent of gross tax revenue"
+    },
+    "b": {
+      "series": "cess-surcharge-share-gtr-excl-compcess",
+      "label": "The same levies excluding the GST Compensation Cess, which is earmarked to the states: 10.4 to 15.3 per cent"
+    },
+    "framing": "Whether the Union's non-shareable revenue doubled over the decade depends entirely on whether a cess collected by the Union and earmarked to the states counts as revenue the Union keeps.",
+    "gapComputable": false,
+    "gapReason": "These are not two measures of a quantity with a gap between them; they are the same collections summed on two definitions, and the choice of definition inverts the sign of the FY2017-18 movement. Subtracting them yields the compensation cess, which is a third thing again.",
+    "provenanceRefs": [
+      "P-100",
+      "P-113"
+    ],
+    "ledgerRefs": [
+      "L-0150"
+    ],
+    "status": "live",
+    "notes": "Neither side may be shown alone. On the inclusive convention the share rises 1.91-fold and rises in FY2017-18; on the exclusive convention it rises 1.47-fold and falls in FY2017-18. Both are honest sums of the same published line items, and the whole of the difference is definitional — there is no evidentiary disagreement anywhere in the spread."
+  },
+  {
+    "id": "PR-50",
+    "title": "The final number and the missing certificate",
+    "kind": "coverage-usage",
+    "domain": "federalism",
+    "a": {
+      "series": "cag-certified-net-proceeds",
+      "label": "The certified divisible pool as relayed by the paying party, six years"
+    },
+    "b": {
+      "absenceFrom": "L-0155",
+      "absenceIndex": 0,
+      "label": "The Article 279(1) certificate itself, which has never been published for any year"
+    },
+    "framing": "The number the Constitution declares final is in the public record for six years out of seventy-six, and the document that makes it final is in the public record for none.",
+    "gapComputable": false,
+    "gapReason": "One side is a figure and the other is the absence of the instrument behind it. There is no subtraction between a number and the document that would authenticate it.",
+    "provenanceRefs": [
+      "P-102"
+    ],
+    "ledgerRefs": [
+      "L-0155",
+      "L-0150"
+    ],
+    "status": "live",
+    "notes": "This is the pair that governs how every fiscal series in this drop should be read. The divisible pool is the denominator of the entire Centre-state fiscal argument, and for ten of the sixteen years carried here it has no certified basis at all."
+  },
+  {
+    "id": "PR-51",
+    "title": "The published zero and the unpublished order",
+    "kind": "coverage-usage",
+    "domain": "welfare",
+    "lenses": [
+      "federalism"
+    ],
+    "a": {
+      "series": "wb-mgnrega-funds-released",
+      "label": "MGNREGA money released to West Bengal, ending at a published 0.00"
+    },
+    "b": {
+      "absenceFrom": "L-0168",
+      "absenceIndex": 0,
+      "label": "The section 27 order that produced the zero, which has never been published"
+    },
+    "framing": "The Union publishes the consequence of exercising a statutory power against one state for fifty-one months and does not publish the exercise, so the only instrument that records the decision is a description of it in Parliament.",
+    "gapComputable": false,
+    "gapReason": "A rupee figure and an unpublished administrative order are not two measures of one quantity. What the pair records is that the effect is measurable and the decision is not.",
+    "provenanceRefs": [
+      "P-114"
+    ],
+    "ledgerRefs": [
+      "L-0168"
+    ],
+    "status": "live",
+    "notes": "Read with bihar-mgnrega-funds-released, which runs through the same three years on the same table with no stoppage. Without the Bihar row the zero looks like an outcome; with it, the zero is legible as an act."
+  },
+  {
+    "id": "PR-52",
+    "title": "The states' fifty per cent and the Union's forty-nine",
+    "kind": "contested",
+    "domain": "federalism",
+    "a": {
+      "series": "fc-devolution-share-of-gtr",
+      "label": "What the Union's own accounts show going out, against gross tax revenue"
+    },
+    "b": {
+      "competingAccountsFrom": "P-104",
+      "label": "The states' demand for 50 per cent of the divisible pool, and the Union's reply that they already receive more than 49 per cent of gross revenue receipts"
+    },
+    "framing": "Eighteen of twenty-eight states asked the Sixteenth Finance Commission for half the divisible pool and the Union replied that they already receive nearly half of everything it takes in, and both statements are true because the two denominators are different.",
+    "gapComputable": false,
+    "gapReason": "A demand is not a measurement, and the two figures are computed on different bases — one on the divisible pool, the other on gross revenue receipts including non-tax revenue and grants. The Union's components for its own figure are not published, so no bridge can be built between them here.",
+    "provenanceRefs": [
+      "P-104"
+    ],
+    "ledgerRefs": [
+      "L-0150",
+      "L-0153"
+    ],
+    "status": "live",
+    "notes": "The states' 50 per cent is a count of pleadings the Commission published, not a measurement, and must render labelled as advocacy. The Union's more-than-49 is a measurement on a denominator it chose and whose components it does not publish. Neither may be shown as the answer to the other."
+  },
+  {
+    "id": "PR-53",
+    "title": "Collected against credited",
+    "kind": "contested",
+    "domain": "macro",
+    "lenses": [
+      "federalism"
+    ],
+    "a": {
+      "series": "gst-compensation-cess-collected",
+      "label": "The compensation cess as the Union's receipt head records it"
+    },
+    "b": {
+      "competingAccountsFrom": "P-101",
+      "label": "What the auditor finds reached the funds the cesses were levied for"
+    },
+    "framing": "A cess sits outside the divisible pool because it is levied for a stated purpose, and the only instrument that reports whether the purpose received the money is an audit report neither government publishes.",
+    "gapComputable": false,
+    "gapReason": "Collections under a receipt head and credits to a reserve fund in the Public Account are different accounting events on different funds, so the difference between them is not a shortfall in any single ledger. The auditor computes it precisely because neither account computes it on itself.",
+    "provenanceRefs": [
+      "P-101"
+    ],
+    "ledgerRefs": [
+      "L-0156",
+      "L-0157",
+      "L-0160"
+    ],
+    "status": "live",
+    "notes": "This is the strongest disciplining instrument in the phase and the pair exists to show why: the input is one party's records, the comparator is another set of records, the operation is the auditor's, and the output appears in neither party's account of itself. On the GST Compensation Cess it produced an admission in February 2020 and a correction in FY2019-20."
+  },
+  {
+    "id": "PR-54",
+    "title": "Thirty thousand crore outside the budget, and no national table of it",
+    "kind": "coverage-usage",
+    "domain": "federalism",
+    "a": {
+      "series": "tn-direct-goi-transfers-to-sias",
+      "label": "Union money reaching Tamil Nadu's implementing agencies without entering the State Budget"
+    },
+    "b": {
+      "absenceFrom": "L-0170",
+      "absenceIndex": 0,
+      "label": "Whether the Union publishes this channel by state anywhere at all"
+    },
+    "framing": "The Union holds this quantity by state and by scheme in its own payment system, discloses it to a state's auditor and to whoever asks the right parliamentary question, and publishes no national table of it.",
+    "gapComputable": false,
+    "gapReason": "One side is one state's figure over nine years and the other is the question whether the corresponding national figure is published anywhere. There is no subtraction between a measurement and an unanswered question about its publication.",
+    "provenanceRefs": [
+      "P-106",
+      "P-108"
+    ],
+    "ledgerRefs": [
+      "L-0170"
+    ],
+    "status": "live",
+    "notes": "The finding this pair carries is that the only routine publication of the quantity is thirty-odd separate state audit reports, on different templates in different years — and that this drop did not sweep the Union side exhaustively, so the absence is declared narrowly and must not be read as closed."
+  },
+  {
+    "id": "PR-55",
+    "title": "Devolution as the Union accounts for it, against devolution as the states account for receiving it",
+    "kind": "contested",
+    "domain": "federalism",
+    "a": {
+      "series": "fc-devolution-rupees",
+      "label": "Devolution as the Union and its Commission account for paying it"
+    },
+    "b": {
+      "label": "Devolution as the twenty-eight states account for receiving it, compiled on one basis from audited state accounts"
+    },
+    "framing": "Every figure in this phase's fiscal spine is a Union-origin figure, and the counterpart the instrument would need — the states' own audited receipts on one common basis — is not built anywhere this drop could reach.",
+    "gapComputable": false,
+    "gapReason": "Side b is not authored: no compiled state-side series exists in this drop. The pair is recorded as owed rather than left silently absent, because the judgement that these two things belong side by side has been made and only one side can be filled.",
+    "provenanceRefs": [
+      "P-105",
+      "P-107",
+      "P-108"
+    ],
+    "ledgerRefs": [
+      "L-0150",
+      "L-0174"
+    ],
+    "status": "declared-pending",
+    "notes": "The trap this pair exists to mark: a source that looks independent but is produced by a party to the dispute is not a check. State figures on Centre-state transfers are not independent of the states and Union figures are not independent of the Centre. The Reserve Bank's State Finances: A Study of Budgets looks like the missing counterpart and is not one — it is compiled from the states' own budget documents, so it is a common BASIS rather than independent EVIDENCE, and it cannot audit what the Union actually released. That characterisation was established in this run from the publication's own explanatory note, but the exact publication URL was not carried into the research parts, so no finding in this drop rests on it and side b stays unauthored. What can be built from retrieved material is the audited state-accounts route: the Sixteenth Finance Commission sources its own state-finance chapter to States' Finance Accounts, which is the CAG-compiled base rather than budget documents, and the state audit reports carry the per-state figures. Filling side b means compiling that, state by state, on one edition and one definition."
+  },
+  {
+    "id": "PR-56",
+    "title": "Collected for the Fund, and what the Fund got",
+    "kind": "coverage-usage",
+    "domain": "macro",
+    "lenses": [
+      "federalism"
+    ],
+    "a": {
+      "series": "aidc-collected",
+      "label": "What the Agriculture Infrastructure and Development Cess raised, being revenue the states have no claim on"
+    },
+    "b": {
+      "series": "aidf-transferred",
+      "label": "What reached the Agriculture Infrastructure and Development Fund, being the purpose that justifies the exclusion"
+    },
+    "framing": "A cess sits outside the divisible pool because it is levied for a named purpose, and this is the one case in the drop where the Union publishes the levy and the purpose in adjacent columns of one row, so the two can be read against each other without an auditor in between.",
+    "gapComputable": true,
+    "provenanceRefs": [
+      "P-101",
+      "P-100",
+      "P-113"
+    ],
+    "ledgerRefs": [
+      "L-0176",
+      "L-0157",
+      "L-0177"
+    ],
+    "status": "live",
+    "notes": "Subtraction is available here, unusually, because the Union performs it itself: the answer prints a Balance column equal to (A) minus (B), and it is that column which fixes the first two years at zero rather than blank. Two cautions on what the gap means. Year by year it resets, so from FY2023-24 it reads as over-transfer; cumulatively across the five published years collections are 387,226.31 crore against transfers of 377,213.61, so the Fund is still 10,012.70 crore behind. And side b mixes transfer into the Fund with utilisation out of it in one column, so a large figure cannot be decomposed. Read against PR-53, which is the same question about the GST Compensation Cess and where the comparator is an auditor's rather than the publisher's own."
+  },
+  {
+    "id": "PR-57",
+    "title": "Allocated to West Bengal, and released to West Bengal",
+    "kind": "coverage-usage",
+    "domain": "education",
+    "lenses": [
+      "federalism"
+    ],
+    "a": {
+      "series": "wb-samagra-shiksha-allocation",
+      "label": "The central allocation the Union approved for West Bengal under Samagra Shiksha, which continued through both nil years and rose in the second"
+    },
+    "b": {
+      "series": "wb-samagra-shiksha-released",
+      "label": "The central share actually released, which went to nil and stayed there"
+    },
+    "framing": "An allocation and a release are two separate decisions by the same Ministry about the same money in the same year, and this is the state where they came apart completely while the allocation carried on rising.",
+    "gapComputable": true,
+    "provenanceRefs": [
+      "P-106",
+      "P-107"
+    ],
+    "ledgerRefs": [
+      "L-0179"
+    ],
+    "status": "live",
+    "notes": "The gap is 3,744.19 crore across the two nil years alone and is computable because both columns are the Union's own, in one table, for one state, in one unit. What makes it legible is the two controls beside it on the same table. Bihar was released between 70.8 and 93.8 per cent of allocation in every year including the years West Bengal received nothing, so a shortfall is the ordinary condition of this scheme and a zero is not the extreme of that continuum. And Tamil Nadu's zero carries the Union's own footnote recording 362.81 crore paid in arrears the following year, where West Bengal's carries none — which is the difference between a delay and a stoppage, visible only because the table runs five years."
+  },
+  {
+    "id": "PR-58",
+    "title": "The number that was asked for and the number that was given",
+    "kind": "coverage-usage",
+    "domain": "federalism",
+    "a": {
+      "series": "tn-fc-interse-share",
+      "label": "Tamil Nadu's inter-se share of the states' portion of the divisible pool — the figure the Government supplies when asked what a state gets back per rupee it contributes"
+    },
+    "b": {
+      "absenceFrom": "L-0183",
+      "absenceIndex": 0,
+      "label": "The ratio actually asked for, which no instrument in the country computes because one of its inputs is declared not to exist"
+    },
+    "framing": "Asked in the Rajya Sabha whether Tamil Nadu receives less than 29 paise in the rupee and for tax devolution per one rupee state-wise, the Government answered with 4.079 per cent — a share of a pool, not a return per rupee contributed — and did not say it was answering a different question.",
+    "gapComputable": false,
+    "gapReason": "One side is a published percentage of one base and the other is a quantity nobody computes; there is no subtraction between a number and a question. The two are not even in the same units — an inter-se share is a state's slice of what all states receive, and the ratio asked for is a state's receipt divided by its own contribution, whose denominator has three components of which one is stated by its holder not to be maintained.",
+    "provenanceRefs": [
+      "P-118",
+      "P-104",
+      "P-112"
+    ],
+    "ledgerRefs": [
+      "L-0183"
+    ],
+    "status": "live",
+    "notes": "This pair exists to name a move the four-value absence vocabulary cannot express. The Government has not refused this figure — there is no refusal anywhere in more than ten dated requests across twenty-five years — and it has not said the figure does not exist. It has, four separate times, supplied an adjacent published number in its place without saying it had substituted. Substitution is neither withholding nor non-collection, and it leaves a reader who was answered believing they were answered. Side a is a real, correct, carefully sourced series, and putting it here is not a criticism of it: the point is precisely that the substitute is a good number for a different question."
+  }
+]

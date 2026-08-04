@@ -359,12 +359,16 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
 {
   const check = (args) => {
     try {
-      execFileSync(process.execPath, [join(ROOT, 'tools', 'url-check.mjs'), ...args], {
+      const out = execFileSync(process.execPath, [join(ROOT, 'tools', 'url-check.mjs'), ...args], {
         // stderr piped: the fixture is EXPECTED to fail, and letting its report through would make
         // a passing selftest read as a broken one.
         encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, NO_COLOR: '1' },
       });
-      return { code: 0, out: '' };
+      // RETURN THE OUTPUT ON SUCCESS TOO. This previously returned `out: ''` whenever the command
+      // passed, so no assertion about a PASSING run's output could ever be true — a stays-quiet
+      // fixture could only ever be tested on its exit code, never on what it actually reported.
+      // Found 2026-08-04 when the both-spreadsheet-branches assertion silently could not fire.
+      return { code: 0, out: out ?? '' };
     } catch (err) {
       return { code: err.status ?? 1, out: `${err.stdout ?? ''}${err.stderr ?? ''}` };
     }
@@ -411,6 +415,20 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
   const clean = check(['--all', '--data', root('url-check-clean'), '--responses', join(root('url-check-clean'), 'responses.json')]);
   if (clean.code !== 0) failures.push(`url-check fired on tests/fixtures/url-check-clean (exit ${clean.code}) — URLs that do serve their document must pass, including one with no path extension`);
   else notes.push('  url-check stays silent on URLs that serve their document, and asserts no content-type where the path states no extension');
+
+  /**
+   * BOTH SPREADSHEET BRANCHES, PINNED SEPARATELY — the fourth surprise to this fixture set.
+   *
+   * `.xls` and `.xlsx` are different registered types and one sentinel cannot match both. The
+   * clean fixture now carries one of each, so a future edit that "simplifies" EXPECTED back to a
+   * single spreadsheet sentinel fails here instead of silently reporting a live legacy workbook
+   * as a soft-404 — which is what it did to three phase-13 records on 2026-08-04.
+   */
+  if (clean.code === 0 && clean.out.includes('vnd.ms-excel') && clean.out.includes('spreadsheetml')) {
+    notes.push('  url-check accepts BOTH spreadsheet types — legacy .xls as vnd.ms-excel and .xlsx as OOXML; one sentinel cannot match both');
+  } else if (clean.code === 0) {
+    failures.push('url-check clean fixture no longer exercises both spreadsheet branches — a legacy .xls and a modern .xlsx must each be present, or the .xls regression can recur unseen');
+  }
 }
 
 // 4. Strictness must be live: a misspelled keyword cannot be silently ignored.

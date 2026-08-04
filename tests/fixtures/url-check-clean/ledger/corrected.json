@@ -13,7 +13,9 @@
     "sources": [
       { "name": "The Amnesty PDF at the path that actually serves it", "url": "https://www.amnesty.org/en/wp-content/uploads/2022/09/ASA2059592022ENGLISH.pdf", "tier": "T4" },
       { "name": "The 26th Report at the Internet Archive capture it was actually retrieved from", "url": "http://web.archive.org/web/20211202141356if_/http://164.100.47.193/lsscommittee/Communications%20and%20Information%20Technology/17_Communications_and_Information_Technology_26.pdf", "tier": "T1" },
-      { "name": "A URL with no extension, so no content-type is asserted", "url": "https://www.eci.gov.in/", "tier": "T1" }
+      { "name": "A URL with no extension, so no content-type is asserted", "url": "https://www.eci.gov.in/", "tier": "T1" },
+      { "name": "A LEGACY .xls served as application/vnd.ms-excel — the registered type, and the one the sentinel 'spreadsheet' can never match. Before 2026-08-04 this was reported as a soft-404", "url": "https://web.archive.org/web/20210203162329id_/https://www.ppac.gov.in/WriteReadData/userfiles/file/PP_2_CustomsExciseTariff_6-6-2020.xls", "tier": "T1" },
+      { "name": "A modern .xlsx served as OOXML — pinned so the .xls correction cannot silently break the branch it did not touch", "url": "https://rbidocs.rbi.org.in/rdocs/Publications/DOCs/SFAB2025.xlsx", "tier": "T1" }
     ],
     "confidence": "high",
     "asOf": "2026-08-03"
