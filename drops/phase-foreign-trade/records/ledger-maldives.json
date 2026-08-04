@@ -1,0 +1,37 @@
+[
+  {
+    "id": "L-0206",
+    "title": "The Maldives currency swap is an eligibility with a size and an expiry, and nothing published says how much of it was drawn",
+    "date": "2024-10-07",
+    "term": "T3",
+    "domains": ["foreign", "macro"],
+    "lenses": ["neighbourhood"],
+    "type": "institutional",
+    "summary": "The Reserve Bank of India entered a Currency Swap Agreement with the Maldives Monetary Authority on 7 October 2024 in New Delhi, under the SAARC Currency Swap Framework 2024-27. The MMA is eligible for US$400 million under the US Dollar/Euro Swap Window and INR 30 billion under the INR Swap Window. The agreement is valid until 18 June 2027. The framework itself has operated since 15 November 2012 and is described by the RBI as a backstop for short-term foreign exchange liquidity or balance-of-payments stress \"till longer term arrangements are made\".",
+    "claimAtLaunch": "The framework's stated purpose, in the RBI's own words: a backstop line of funding for short-term foreign exchange liquidity requirements or short-term balance of payments stress, pending longer-term arrangements. No objective is stated for the Maldives agreement specifically beyond membership of that framework.",
+    "whatHappened": "WHAT IS PUBLISHED IS AN ELIGIBILITY, NOT A DRAWING. The agreement establishes what the MMA may access; nothing retrieved states how much, if any, was drawn, when, or whether it has been repaid. Those are different quantities and the record does not treat the first as evidence of the second. The agreement runs to 18 June 2027 — a date, not a condition — so it is testable on its own terms when it expires.",
+    "assessment": "no-objective",
+    "assessmentNote": "A facility, not a measure with an announced outcome. The framework states a purpose but the bilateral agreement announces no target against which it could have worked or failed, and a swap line that is never drawn is not thereby a failure — an unused backstop may be doing exactly what a backstop does. Scoring it would require an objective neither party stated.",
+    "caseFor": "This is the instrument doing what it was built for. The framework has existed since 2012 and is available to SAARC members on standing terms rather than being improvised per crisis, which is what makes it a backstop rather than a rescue. Two windows in different currencies give the counterparty a genuine choice, and the INR window is the concrete form of rupee internationalisation rather than a slogan about it. The terms are published in full — date, both window sizes, expiry — which is more than most bilateral financial arrangements disclose.",
+    "caseAgainst": "The published figure is a ceiling and is routinely read as a transfer. US$400 million is what the MMA MAY draw, and whether any of it moved is not published by either party; a reader meeting the number in isolation would reasonably take it for support extended rather than support available. The framework's own language concedes that it is provisional — funding \"till longer term arrangements are made\" — so the agreement describes a bridge without stating what it bridges to. And the expiry of 18 June 2027 is common to the framework rather than negotiated for the Maldives, so it carries no information about the specific relationship.",
+    "unmeasured": [
+      {
+        "what": "How much of the swap was drawn by the Maldives Monetary Authority, when, and whether it has been repaid",
+        "why": "The RBI publishes the agreement and its ceilings, not drawings under it. Nothing retrieved from either the RBI or the MMA states utilisation. Eligibility and utilisation are different quantities, and the published number is the first.",
+        "wouldFill": "RBI's Weekly Statistical Supplement or Annual Report if either discloses SAARC swap drawings, or a Maldives Monetary Authority statement of its own external liabilities.",
+        "reasonKind": "not-published"
+      }
+    ],
+    "caveat": "The two windows are stated in different currencies — US$400 million and INR 30 billion — and this record does not convert between them or add them. The RBI's announcement gives no exchange rate and no combined figure, and the SAARC framework's own design operates windows within an overall facility size that this announcement does not state.",
+    "sources": [
+      {
+        "name": "Reserve Bank of India, \"RBI enters into Currency Swap Agreement with Maldives Monetary Authority\", Press Release 2024-2025/1241, 7 October 2024 — the agreement date, both window sizes, the 18 June 2027 expiry, and the SAARC framework's operation since 15 November 2012 with its stated purpose",
+        "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=58839",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-05",
+    "revisitTrigger": "Re-test on 18 June 2027 when the agreement expires, and earlier if any drawing is published. Expiry without a published drawing would leave the facility's use unmeasured for its whole life, which is itself the finding."
+  }
+]
