@@ -16,6 +16,7 @@ export const LENS_LABELS: Record<Lens, string> = {
   'united-states': 'United States',
   china: 'China',
   russia: 'Russia',
+  neighbourhood: 'Neighbourhood',
 };
 
 export const LENS_BLURBS: Record<Lens, string> = {
@@ -31,6 +32,8 @@ export const LENS_BLURBS: Record<Lens, string> = {
     'The People’s Republic as counterparty — the merchandise deficit and its composition, import dependence and export controls, investment screening, and post-Galwan normalisation read as a diplomatic instrument. The conflict itself files defence.',
   russia:
     'The Russian Federation as counterparty — crude and refined-product flows, payment mechanisms, defence supply, and the linkage of any of them into a third country’s measures.',
+  neighbourhood:
+    'The immediate South Asian neighbourhood as one object, which is why it is one value and not seven: here the region is the stated policy object and the records are read as a set. A neighbour that accumulates a file of its own earns its own value then.',
 };
 
 export const DOMAIN_LABELS: Record<Domain, string> = {

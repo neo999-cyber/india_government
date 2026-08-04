@@ -1,0 +1,87 @@
+[
+  {
+    "id": "L-0192",
+    "title": "India runs a merchandise surplus with every immediate neighbour except Myanmar",
+    "date": "2024-01-01",
+    "dateEnd": "2024-12-31",
+    "term": "T3",
+    "domains": ["foreign", "macro"],
+    "lenses": ["neighbourhood"],
+    "type": "episode",
+    "summary": "On India's own reported figures for calendar 2024, India exported US$25.592bn to the six immediate neighbours other than Pakistan and imported US$5.745bn from them — a surplus of US$19.847bn, and exports 4.5 times imports. Five of the six are surpluses: Bangladesh +9.456, Nepal +6.084, Sri Lanka +3.747, Bhutan +0.738, Maldives +0.733. Myanmar is the single exception at -0.911, and is the only neighbour in this set from which India buys more than it sells.",
+    "assessment": "no-objective",
+    "assessmentNote": "A measured position, not a measure. No Indian policy was announced with the objective of producing a regional trade surplus, so there is nothing here to have worked or failed. The record exists because 'Neighbourhood First' is a stated doctrine and its trade dimension is routinely described without a figure attached, and because the Myanmar exception is invisible in any regional aggregate.",
+    "caseFor": "A surplus of this shape is what the size asymmetry predicts and is not in itself a policy outcome. India's economy is roughly an order of magnitude larger than the next-largest in the set, the neighbours are land-linked to it, and Nepal and Bhutan in particular trade with the world substantially through India. Read as delivery, the numbers are also real: US$25.592bn of Indian goods reaching neighbouring markets is the material content of a neighbourhood policy, and it is concentrated in the two largest partners rather than spread thin.",
+    "caseAgainst": "A surplus of 4.5 to 1 is the arithmetic of a market, not of an integration. The doctrine is stated as mutual benefit and the flow it produces is overwhelmingly one-directional, which is the standing complaint of every partner in the set and the reason each has pursued alternatives. The single deficit is with Myanmar, where the trade is dominated by primary commodities rather than by any market India opened. And the aggregate is the least informative way to read it: five surpluses and one deficit summed into one figure conceals that the exception exists at all.",
+    "seriesRefs": [],
+    "provenanceRefs": ["P-120"],
+    "caveat": "The component figures are US$ billion rounded to three decimals and the totals are computed on the unrounded submissions, so summing the printed components gives 25.591 and 5.746 against printed totals of 25.592 and 5.745, and a balance of 19.845 against 19.847. The totals are the ones computed from source and are correct; the reconstruction is what is lossy. Stated so a reader adding the column finds an explanation rather than a discrepancy — see P-119, where the same basis is set out for the China figures.",
+    "sources": [
+      {
+        "name": "UN Comtrade, India as reporter (699), flows X and M, HS TOTAL, annual 2024, partners Bangladesh (50), Sri Lanka (144), Maldives (462), Nepal (524), Bhutan (64) and Myanmar (104) — the query shown is the Bangladesh export leg",
+        "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2024&partnerCode=50&flowCode=X&cmdCode=TOTAL",
+        "tier": "T2"
+      },
+      {
+        "name": "UN Comtrade, India as reporter (699), partner Myanmar (104), flow M, HS TOTAL, annual 2024 — the single deficit leg",
+        "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2024&partnerCode=104&flowCode=M&cmdCode=TOTAL",
+        "tier": "T2"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-04",
+    "revisitTrigger": "Re-test on India's calendar-2025 returns for the same six partners. The Bangladesh leg is the one to watch: it is the largest in the set and the political relationship changed in 2024, and a shift there moves the regional aggregate on its own."
+  },
+  {
+    "id": "L-0193",
+    "title": "Half the neighbourhood does not report its trade, and every neighbour that does records less arriving than India records sending",
+    "date": "2024-01-01",
+    "dateEnd": "2024-12-31",
+    "term": "T3",
+    "domains": ["foreign", "governance"],
+    "lenses": ["neighbourhood"],
+    "type": "episode",
+    "summary": "Of the six immediate neighbours other than Pakistan, three had filed calendar-2024 annual returns with UN Comtrade as at 4 August 2026 and three had not. Bangladesh's last annual return naming India is 2018; Nepal's is 2022; Bhutan's is 2023. For the three that do report — Sri Lanka, Maldives and Myanmar — each records receiving substantially LESS from India than India records sending: 3.738 against 4.715, 0.502 against 0.825, and 0.359 against 0.609. That is the opposite direction from the India-China mirror, where the importer's figure is the higher one as the valuation convention predicts.",
+    "assessment": "no-objective",
+    "assessmentNote": "A state of the measurement across an arc, not a measure. Recorded separately from L-0192 because it is a different claim about the same figures: L-0192 says what the position is, this says how much of it can be checked. Half of it cannot be checked at all, and where it can, it does not agree.",
+    "caseFor": "Neither half of this is evidence of anything wrong with India's statistics. Non-reporting to Comtrade is a statistical-capacity and submission-schedule question for the partner, not a statement about the trade, and small economies file late or not at all across the whole system. On the divergence, the three partners are among the smallest reporters in the set, and a partner that under-records imports is describing its own customs coverage rather than contradicting India's export records. India's figures are internally consistent across all six partners and across years.",
+    "caseAgainst": "The direction is the problem, and it is consistent across all three testable partners. The valuation convention predicts the importer's figure is HIGHER, because it includes freight and insurance; here it is lower every time, by 26, 64 and 69 per cent of the partner's own figure. Whatever explains that, it is not freight, and it is not a rounding question at these magnitudes. Nothing in the record establishes a cause and none is asserted — but a regional trade position of which half is unverifiable and the verifiable half disagrees in a single direction is a weaker evidentiary base than a single figure suggests. The three non-reporters include the two largest partners in the set by value.",
+    "differentFacts": true,
+    "differentFactsNote": "Genuine and partial. For Sri Lanka, Maldives and Myanmar two governments publish figures for the same flow in the same year on the same commodity basis and they disagree; the instrument carries both and picks neither. For Bangladesh, Nepal and Bhutan there is no second account to disagree with, which is an absence rather than a dispute — the two states are kept apart here for the same reason L-0190 and L-0191 are kept apart.",
+    "seriesRefs": [],
+    "provenanceRefs": ["P-120"],
+    "unmeasured": [
+      {
+        "what": "Bangladesh's, Nepal's and Bhutan's own figures for their trade with India in calendar 2024",
+        "why": "None had filed a calendar-2024 annual return with UN Comtrade as at 4 August 2026, and each zero was localised before it was recorded rather than assumed. Relaxing the partner from India to the world left all three at zero, so none is an India-specific omission. Relaxing the period is what flips each, and it flips at a different year for each: Bhutan reports 2023, Nepal reports 2022, and Bangladesh's last return naming India is 2018 — confirmed by walking back year by year until the query went non-zero at US$9.409bn, which also serves as the positive control that the reporter code and query shape are right.",
+        "wouldFill": "The relevant year's annual submission to UN Comtrade from each, or the national customs authority's own published trade statistics — Bangladesh Bank and the National Board of Revenue, Nepal's Department of Customs, Bhutan's Department of Revenue and Customs.",
+        "reasonKind": "not-published"
+      }
+    ],
+    "sources": [
+      {
+        "name": "UN Comtrade, Sri Lanka as reporter (144), partner India (699), flow M, HS TOTAL, annual 2024",
+        "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=144&period=2024&partnerCode=699&flowCode=M&cmdCode=TOTAL",
+        "tier": "T2"
+      },
+      {
+        "name": "UN Comtrade, Maldives as reporter (462), partner India (699), flow M, HS TOTAL, annual 2024",
+        "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=462&period=2024&partnerCode=699&flowCode=M&cmdCode=TOTAL",
+        "tier": "T2"
+      },
+      {
+        "name": "UN Comtrade, Myanmar as reporter (104), partner India (699), flow M, HS TOTAL, annual 2024",
+        "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=104&period=2024&partnerCode=699&flowCode=M&cmdCode=TOTAL",
+        "tier": "T2"
+      },
+      {
+        "name": "UN Comtrade, Bangladesh as reporter (50), partner India (699), flow M, HS TOTAL, annual 2018 — the last return naming India, and the positive control for the zeros at 2019 to 2024",
+        "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=50&period=2018&partnerCode=699&flowCode=M&cmdCode=TOTAL",
+        "tier": "T2"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-04",
+    "revisitTrigger": "Re-test when any of the three non-reporters files a return covering 2024 or later. Bangladesh is the one that matters most and has been absent longest; a Bangladeshi return would make the largest leg of L-0192 testable for the first time since 2018."
+  }
+]

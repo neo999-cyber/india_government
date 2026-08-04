@@ -73,6 +73,7 @@ export const LENSES = [
   'united-states',
   'china',
   'russia',
+  'neighbourhood',
 ] as const;
 export type Lens = (typeof LENSES)[number];
 
