@@ -6159,3 +6159,112 @@ domain-coverage     14/14 domains · 7/7 lenses · 224/224 lens refs
 url-check           3/3 confirmed
 lens-controls       6 paired + exact membership on all five phase-14 lenses
 ```
+
+---
+
+# Verification log — cycle 2026-08-04n (arc E: emergency procurement, and the Ministry against itself)
+
+**Appended.** `/data` diff: `102 0` on `ledger/foreign-trade.json`. Pure append, zero deletions.
+
+## L-0200 — the sharpest differentFacts case in the corpus, and it is one publisher
+
+Two Ministry of Defence publications give different totals for what both describe as **thirteen**
+Emergency Procurement contracts for the Army's counter-insurgency and counter-terrorism grid:
+
+| source | total |
+|---|---|
+| PIB release, 24 June 2025 | **₹1,981.90 crore** |
+| Ministry's own Year End Review 2025 | **₹1,958.80 crore** |
+
+Difference **₹23.10 crore**. Both T1. **Both the same publisher** — which makes this a sharper case
+than a two-government mirror, not a softer one. P-119's India-China divergence has an explanation
+available in valuation convention and entrepot attribution; **there is no equivalent explanation for
+a ministry and itself.** The instrument carries both and picks neither, and states plainly that the
+figures may cover different subsets, different counting dates, or one may simply be wrong — nothing
+retrieved distinguishes those, so nothing is inferred.
+
+## The share-shaped check, applied, and the alignment it caught
+
+Every percentage named its numerator and denominator before it was written:
+
+- **₹1,981.90 / ₹2,000 crore** — numerator the value of thirteen contracts, denominator the
+  sanctioned outlay for the Indian Army's CT requirement. **Both stated.** So 99.1 per cent is
+  reportable and is reported.
+- **159 / 175 ammunition variants, "nearly 91%"** — both stated, and correct (90.86).
+
+**And the alignment the brief predicted:** the ₹300 crore delegation is a PER-CASE ceiling; the
+₹2,000 crore is a SANCTIONED OUTLAY for one service and one purpose. They are not the same quantity
+and this record does not put them in a ratio. Thirteen contracts totalling ₹1,981.90 crore says
+nothing about whether any individual case sat under ₹300 crore, and neither release gives per-case
+values. That is the incommensurability check finding its case in the very domain the brief said it
+would.
+
+## The power, and what is not reported about it
+
+The DAC's delegation of 15 July 2020 came with an explicit undertaking — it "will shrink the
+procurement timelines and ensure **placement of orders within six months and commencement of
+deliveries within one year**". **Nothing reports against either limb**, five years on. Contract
+values and counts are published; elapsed time from case to order, and order to first delivery, are
+not. That is the mechanism's own success criterion, unmeasured.
+
+Scored `partly`, and the split is stated: the delegation exists, is used, and is used to 99.1 per
+cent of its sanctioned outlay — that half is delivered and visible, and the record says so as
+plainly as it says the rest. The clock is the half that is not. **Not `too-early`**: five years is
+long enough for a six-month undertaking to be testable, and what is missing is reporting rather than
+elapsed time.
+
+Oversight is the larger gap and is recorded as such — neither release names a reviewing authority,
+an audit requirement, or whether the ceiling binds per case or per scheme.
+
+## L-0201 — Rafale-M, and a commitment with no trigger
+
+April 2025 Inter-Governmental Agreement, 26 aircraft for the Navy — 22 single-seat and four
+twin-seat — with training, simulator, weapons, performance-based logistics, equipment for the Air
+Force's existing fleet, and transfer of technology for integrating indigenous weapons.
+
+**State (a), and the trigger is not named — by the source, not by the record.** No delivery schedule
+appears in anything retrieved, so the record does not invent one and says so: *a commitment with no
+due date cannot move out of state (a) by the passage of time alone.* Recorded as an `unmeasured`
+naming the French government's own account as a legitimate second instrument, per the brief's
+instruction to check for a mirror before recording single-sided.
+
+The technology transfer is **described and not sized** — which weapons, on what timetable, with what
+independence from the manufacturer — and integration rights are worth exactly what their scope is.
+
+**Scoped honestly:** this record covers the 2025 Navy agreement only. No primary for the earlier Air
+Force Rafale acquisition was retrieved, and the caveat says the record does not describe it on the
+strength of a 2025 document that mentions the existing fleet without stating its terms.
+
+**`europe` was NOT applied**, though France is the counterparty. The value is defined as the EU, UK
+and EFTA as TRADE counterparties in one negotiating arc; a bilateral defence IGA is not that, and one
+record would not earn the lens in any case. `defence-sector` alone.
+
+## Arc E: six of eight, and NOT closed
+
+Authored across B5-B8: exports against target (L-0196), the measurement-category record (L-0197), the
+indigenisation metric (L-0198), CAATSA exposure (L-0199), emergency procurement (L-0200), Rafale-M
+(L-0201).
+
+**Not authored: the S-400 DELIVERY SCHEDULE, and DAP domestic-content rules beyond the IC minimums.**
+On the S-400 the Year End Review records a maintenance contract and a ministerial meeting at which
+"the supply of S-400 systems" was a takeaway, and states **no schedule and no delivered count** — so
+the record would be about an absence, and the brief requires checking for a partner-side mirror
+before recording single-sided. That check was not run. Not attempted rather than attempted and
+failed.
+
+`defence-sector` stands at eighteen ledger records.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 148 warnings
+typecheck           clean
+selftest            OK — run-twice controls, import-write guard, 33 pinned assertion sites
+enum-stamp          OK
+figure-consistency  7 declared claims, 7 checked, 3 artefacts declared
+reachability        808/808 (622 pages)
+domain-coverage     14/14 domains · 7/7 lenses · 226/226 lens refs
+url-check           3/3 confirmed
+lens-controls       6 paired + exact membership on all five phase-14 lenses
+arithmetic          5 figures hand-checked, 0 mismatches; the 23.10 difference reconstructs exactly
+```
