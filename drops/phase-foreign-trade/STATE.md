@@ -1,40 +1,42 @@
 # Phase 14 — foreign policy and trade. State.
 
-**Batch 1 (`23caebe`) arcs A+F and the lens axis: merged, deployed.
+**Batch 1 (`23caebe`) arcs A+F, the lens axis: merged, deployed.
 Batch 2 (`23cc1cf`) arc B, the India-China mirror: merged, deployed.
-Batch 3 head (`95950e3`) the rounding basis + url-check spacing: merged.
-Batch 3 arc C (`4df4cc8`) the neighbourhood TRADE dimension: merged.**
+Batch 3 head (`95950e3`) rounding basis + url-check spacing · arc C trade dimension (`4df4cc8`).
+Batch 4 head: L-0021 corrected (`7d6c4ec`) · build-freshness gate (`18728fa`).
+Batch 4 arc D PARTIAL (`588f978`) — TEPA commitment and the doubling claim.**
 
-## NOT DONE — the live backlog, in the order the brief put them
+## NOT DONE — the live backlog
 
-1. **Arc D — agreements.** UAE CEPA, Australia ECTA, EFTA TEPA, UK FTA, the EU negotiation, RCEP
-   non-entry against subsequent trade data. Nothing authored. **Not blocked** — the primaries are
-   retrievable and nothing about them was tried and failed. `europe` is correspondingly absent from
-   the lens enum. TEPA's investment commitment is dated, sized and testable and is the first-class
-   record here. Negotiating texts are UNPUBLISHED, not withheld — `withheld` needs a named
-   requester, a specific request and a date.
-2. **Arc E — procurement.** Rafale tranches, S-400 and CAATSA, indigenisation and export figures
-   against target, emergency-procurement powers. Nothing authored. Filing rule is settled: cost →
-   macro, indigenisation/offsets/exports/DAP → foreign, G2G-as-diplomacy → foreign, `defence-sector`
-   lens on all. Agnipath stays out.
+1. **Arc E — procurement. NOT STARTED.** Nothing attempted, nothing failed, no room. Rafale
+   tranches, S-400 and CAATSA, indigenisation and export figures against target,
+   emergency-procurement powers. Filing rule settled: cost → macro; indigenisation, offsets,
+   exports, DAP domestic content → foreign; G2G-as-diplomacy → foreign; `defence-sector` on all.
+   Export and indigenisation targets are commitment records — same three states. Agnipath stays out.
+2. **Arc D remainder.** UK FTA (in force July 2026), the EU negotiation, RCEP non-entry against
+   subsequent trade data. **`europe` is NOT in the lens enum** and must enter with these — one
+   Europe record does not earn a lens. L-0018 still describes four agreements' status with T4
+   sources and is arc D's business.
 3. **Arc G — multilateral.** G20 deliverables against outcomes, IMEC announced against built, WTO
    fisheries and public stockholding, UNSC advocacy. Nothing authored.
-4. **Arc C's POLICY dimensions.** Only the trade dimension is authored. Still owed: Bangladesh
-   transit, energy and the Adani PPA; Sri Lankan debt restructuring, energy and ports; the Maldives
-   reversal arc, currency swap and infrastructure; Nepal-Bhutan hydropower and power trade;
-   Myanmar's border fencing and the Free Movement Regime. These need policy primaries, not trade
-   returns.
-5. **Pakistan, deferred alone.** The Indus abeyance, the trade suspension and transit. Blocked on
-   retrieval, not on scope — see the blocker list below. Its exclusion is stated in the titles of
-   L-0192 and L-0193 rather than left as a silent gap.
-6. **L-0021 and the US-tariff-currency sweep.** Its own cycle, immediately after batch 3 and ahead
-   of the L-0086/L-0092/L-0183 bundle. The IEEPA holding invalidates a CLASS of claim: sweep every
-   record asserting a US tariff rate, a legal basis for one, or a negotiation state as current.
-7. **The retrieval-capability cycle.** One cycle, not four stops. Class members found so far:
-   Cloudflare gates (`pca-cpa.org`), JS shells that answer 200 with no document (`mea.gov.in`),
-   scans with no text layer (the Indus Waters Treaty PDF on MEA's portal), hosts needing an explicit
-   resolver (`ppac.gov.in`, `mea.gov.in`), CAPTCHA'd full-text endpoints (`federalregister.gov`),
-   and the carried Gazette task.
+4. **Arc C's POLICY dimensions.** Only the trade dimension exists. Owed: Bangladesh transit, energy
+   and the Adani PPA; Sri Lankan debt, energy and ports; the Maldives reversal, swap and
+   infrastructure; Nepal-Bhutan hydropower; Myanmar's border fencing and the Free Movement Regime.
+5. **Pakistan, deferred alone**, blocked on retrieval. Exclusion is stated in L-0192 and L-0193's
+   titles rather than left silent.
+6. **The retrieval-capability cycle.** One cycle. Class members: Cloudflare gates (`pca-cpa.org`),
+   JS shells answering 200 with no document (`mea.gov.in`), scans with no text layer (the Indus
+   Waters Treaty PDF), hosts needing an explicit resolver (`ppac.gov.in` 164.100.198.160,
+   `mea.gov.in` 13.224.236.14, `www.pib.gov.in` 94.202.207.57), CAPTCHA'd full-text endpoints
+   (`federalregister.gov`), and the Gazette task.
+
+## Standing hazard: fixtures derived from a live enum
+
+`lens-coverage-empty` and `lens-coverage-no-page` are generated FROM the schemas. When `europe` is
+admitted they will begin failing on the wrong branch, exactly as they did after `china` and
+`neighbourhood` were added — exit 1 either way, selftest green, branch unchecked. **Re-run the
+regeneration in the same commit as any enum change.** The branch assertions added in `18728fa` turn
+that from a silent pass into a failure, but they do not regenerate the fixture.
 
 ## What is done
 
