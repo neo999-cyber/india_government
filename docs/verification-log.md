@@ -4671,3 +4671,90 @@ Third instance this cycle of one shape — a check that is sound and reads the w
 were `url-check` diffing `/data` on a `--dry` run, and an artefact verification whose regex was
 over-escaped and reported the `.xls` fix missing from `main` when it was present. **All three were
 found by a control, not by the check.**
+
+## Addendum to 2026-08-04a — the six proposed amendments applied
+
+Worked one at a time, not as a batch. **All six landed; `validate` 0 errors throughout.**
+
+| record | change | diff |
+|---|---|---|
+| **L-0101** | `provenanceRefs: [P-107]` · one `caseFor` sentence replaced · two `caseAgainst` additions · `caveat` extended · one T4 source | +11 / −4 |
+| **L-0012** | `provenanceRefs +P-111` · `seriesRefs +gst-compensation-cess-collected` · pointer to L-0158→L-0161 in `whatHappened` · one `caseAgainst` clause | +6 / −4 |
+| **L-0040** | `confidence` high→medium · `caveat` created · `dateEnd` →2026-06-30 · two superseded sentences corrected · repeal added as terminus · refs · `revisitTrigger` | +12 / −7 |
+| **L-0013** | `provenanceRefs` **field created** = [P-100] | — |
+| **L-0100** | prose cross-reference to L-0163 | — |
+| **L-0108** | prose cross-reference to L-0168 | — |
+
+### L-0101 — the statutory/contractual distinction, argued from both sides
+
+The sentence *"Conditionality on scheme design is ordinary and is how every centrally sponsored
+scheme in India works"* was replaced by one that concedes the distinction and argues from it: the
+gate here is a memorandum, not a statute, and **that runs for the Union** — where the power is
+statutory a state cannot decline, where it is a memorandum the remedy is not to sign, which is what
+these three states did. `caseAgainst` gained the mirror: a statutory stoppage power **has a shape**
+— section 27 names a ground, requires a complaint and an investigation, and is reviewable, which is
+how West Bengal's stoppage reached a court — and a memorandum precondition has none of that, so the
+same result arrives with neither ground nor review.
+
+**The third figure was added on the L-0142 discipline**: ₹2,151.59 crore allocated, ₹362.81 crore
+released, ₹2,291 crore claimed under Article 131 — *"none of the three corrects another"*, with each
+one's basis named.
+
+**The diary number and filing date were deliberately NOT stated.** They rest only on
+search-result summaries that part 06 recorded as *"a converging T4 set, not as retrieved
+documents"*. The one account actually retrieved is a paywall-truncated LiveLaw report, cited as
+such. The caveat says the particulars could not be confirmed.
+
+### L-0040 — the source branch was taken before any prose was touched
+
+The record carried `confidence: high` on a single T4 citation that is **the root of `libtech.in`,
+not a document**, against a `whatHappened` dense with checkable figures. Retrieval was attempted
+first: `nrega.dord.gov.in`, `nrega.nic.in` and `libtech.in` all serve 200; the MIS host
+`nregarep2.nic.in` serves 200 but its national at-a-glance page carries no person-day series and its
+dashboard is a script shell; and **LibTech's own reports index lists state-level reports only —
+Andhra Pradesh, Telangana, Jharkhand, mostly 2020-21 — none national, none carrying the aggregates
+stated.** So the eleven-year person-day total, the FY2024-25 deficit, the job-card deletions and the
+registrations-against-delivery divergence cannot be checked against the record's own citation.
+
+**Branch taken: confidence lowered to `medium`, with the reason written onto a caveat the record did
+not previously have.** The findings are not contradicted by anything retrieved; they rest on a
+citation that cannot be opened to the page that would support them.
+
+Then, and only then, the amendments. **Two sentences were CORRECTED rather than pointed at**, because
+both had been overtaken: *"West Bengal's funds have been suspended since 2022"* asserted an ongoing
+state that ended, and `caseAgainst`'s *"for four years"* argued from it. Both are now past and
+bounded, pointing at L-0168 for the restoration detail. The argument survives; the tense did not.
+`whatHappened` gained the repeal as terminus — and the sharpest detail in it is that **the
+fund-stopping power used against West Bengal carries forward near-verbatim as section 29 of the
+successor Act.** `assessment` stays `contested`: a completed scheme makes the rationing question
+more answerable, not less. `term: T1` left alone, deferred with the term-window question.
+
+### The failure this cycle nearly shipped, and the SKILL rule it produced
+
+**A paste billed as "the live record in full" was in substance invented.** L-0012's `summary`,
+`claimAtLaunch`, `whatHappened`, `caseFor` and `caseAgainst` all differed from the record as it
+stood; a `shockExposure` field was omitted entirely; four T1 sources were reported where the record
+has two, one of them a commercial blog. **An amendment was approved — by both operator and run —
+against a sentence that does not exist.** It was stopped by an anchor guard in the edit script, not
+by either reader.
+
+The reconstruction read *better* than the record: tidier, fuller, more like what the record ought to
+say. **Rule 1 now carries it: a record's text is read from `/data` at the moment it is quoted, never
+reconstructed and never carried from an earlier read. The record governs over any summary of it,
+including a paste made minutes earlier in the same conversation.** Two mechanical consequences are
+recorded with it — every prose edit anchors on a string read in the same operation and aborts if the
+anchor is absent, and **a file's indent is detected from the file being written, not from a
+sibling**: `education.json` is two-space where five other data files are one, and writing L-0101 at
+the wrong indent produced a **1,397-line reformat of a six-field edit**, reverted before it went
+anywhere.
+
+### Logged, not scoped
+
+**L-0012's GST 2.0 material rests on `busy.in`**, a commercial GST-software blog at T4, carrying the
+22 September 2025 restructuring and the ~₹48,000 crore revenue-foregone figure that appear in
+`whatHappened`. This phase retrieved the GST Council's own 56th-meeting material. **Candidate
+upgrade**, not part of this cycle's scope.
+
+**`mgnrega-persondays` cites `https://nrega.nic.in/`** — another bare root, at T1, holding a single
+point. It is one of the deferred 313 and is noted here because it bears on L-0040 alongside the
+LibTech root.

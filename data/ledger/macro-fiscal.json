@@ -46,16 +46,18 @@
   "type": "reform",
   "summary": "Replacement of a fragmented web of central and state indirect taxes with a single destination-based GST, governed by a GST Council with the Centre holding one-third of voting weight and states two-thirds, decisions requiring a 75% majority.",
   "claimAtLaunch": "One nation, one tax — a unified national market, simpler compliance, higher revenue buoyancy, and formalisation. States were guaranteed compensation for 14% annual revenue growth for five years.",
-  "whatHappened": "Launched with four slabs plus cess rather than the single-rate ideal. GSTN technical failures, compliance burden and delayed exporter refunds marked the first years. Collections grew steadily to a record ₹22.08 lakh crore in FY2024-25 (+9.4% YoY), with a record single month of ₹2,36,716 crore in April 2025. Compensation ended June 2022 amid continuing state demands. GST 2.0, effective 22 September 2025, collapsed the structure to 5% and 18% plus a 40% demerit rate, with ~₹48,000 crore estimated revenue foregone.",
+  "whatHappened": "Launched with four slabs plus cess rather than the single-rate ideal. GSTN technical failures, compliance burden and delayed exporter refunds marked the first years. Collections grew steadily to a record ₹22.08 lakh crore in FY2024-25 (+9.4% YoY), with a record single month of ₹2,36,716 crore in April 2025. Compensation ended June 2022 amid continuing state demands. The arc of that guarantee - its terms, its rupture in 2020, the cess that outlived it, and the Council's disposal of the extension request - is carried at L-0158 to L-0161 and is not restated here. GST 2.0, effective 22 September 2025, collapsed the structure to 5% and 18% plus a 40% demerit rate, with ~₹48,000 crore estimated revenue foregone.",
   "assessment": "partly",
   "caseFor": "A genuine unified market replaced checkpost-ridden interstate trade; e-way bills cut logistics friction measurably. Collections proved resilient and buoyant enough to absorb the 2025 rate cuts. The taxpayer base expanded past 1.51 crore active registrants. Achieving a constitutional amendment and a functioning federal tax council at all is a real institutional accomplishment that eluded two decades of prior attempts.",
-  "caseAgainst": "Eight years of four-slab complexity, classification litigation and compliance cost fell hardest on MSMEs — the rationalisation to two slabs in 2025 is an admission the original design was wrong. The 14% buoyancy promise was never clearly met. States surrendered fiscal autonomy permanently in exchange for a guarantee that expired, and the COVID-era compensation dispute showed the Centre would restructure the bargain unilaterally under stress.",
+  "caseAgainst": "Eight years of four-slab complexity, classification litigation and compliance cost fell hardest on MSMEs — the rationalisation to two slabs in 2025 is an admission the original design was wrong. The 14% buoyancy promise was never clearly met. States surrendered fiscal autonomy permanently in exchange for a guarantee that expired, and the COVID-era compensation dispute showed the Centre would restructure the bargain unilaterally under stress. And there was no forum in which to contest it: sixteen members asked the Council to extend compensation and its minutes record no decision on the request, while the dispute-resolution mechanism Article 279A(11) obliges the Council to establish has never been established at all.",
   "shockExposure": "COVID (2020-22) severely distorts the revenue trajectory and precipitated the compensation dispute; separating GST design effects from pandemic effects in FY21-FY22 is not cleanly possible.",
   "seriesRefs": [
-   "nominal-gdp"
+   "nominal-gdp",
+   "gst-compensation-cess-collected"
   ],
   "provenanceRefs": [
-   "P-10"
+   "P-10",
+   "P-111"
   ],
   "sources": [
    {
@@ -110,7 +112,10 @@
    }
   ],
   "confidence": "high",
-  "asOf": "2026-07-30"
+  "asOf": "2026-07-30",
+  "provenanceRefs": [
+   "P-100"
+  ]
  },
  {
   "id": "L-0014",

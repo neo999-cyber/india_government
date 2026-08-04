@@ -21,6 +21,25 @@ A check that encodes the assumption which produced the data cannot detect that a
 
 - A rule about what the instrument **shows** reads built HTML.
 - A rule about what the instrument **holds** belongs in the validator.
+- **A record's text is read from `/data` at the moment it is quoted — never reconstructed, and never
+  carried from an earlier read.** Added 2026-08-04, after a paste billed as "the live record in full"
+  was in substance invented: `summary`, `claimAtLaunch`, `whatHappened`, `caseFor` and `caseAgainst`
+  all differed from L-0012 as it stood, a `shockExposure` field was omitted entirely, and four T1
+  sources were reported where the record has two, one of them a commercial blog. **An amendment was
+  then approved — by both operator and run — against a sentence that does not exist in the record.**
+  It was stopped only by an anchor guard in the edit script, not by either reader.
+
+  The failure mode is that a plausible reconstruction reads *better* than the real record: it is
+  tidier, more complete, and more like what the record ought to say. Nothing about it looks wrong.
+  **The record governs over any summary of it, including a paste, including one made minutes
+  earlier in the same conversation.**
+
+  Two mechanical consequences. **Every prose edit anchors on a string read from the file in the same
+  operation, and aborts if the anchor is absent** — that is what caught this one. And **detect a
+  file's indent from the file being written, not from a sibling**: `education.json` is two-space
+  where `macro-fiscal`, `welfare`, `provenance`, `pairs` and `federalism` are one, and writing
+  L-0101 at the wrong indent produced a 1,397-line reformat of a six-field edit. Prove every `/data`
+  write with `git diff --numstat` before trusting it.
 - Two details decide whether an output-reading rule works at all rather than always passing: **strip `<script>` blocks first** (the framework embeds the whole payload as escaped JSON, so a mark rendering nowhere is still in the file), and **normalise the needle on both sides** so entity escaping cannot cause a false failure.
 
 ### Rule 2 — Test the assertion against a real regression, not a model of one
@@ -135,6 +154,34 @@ hardened into a `not-collected` absence.
 reporting anything absent from it.** The CAG local-bodies query in the same phase is the standard to
 meet: the filter that should return nothing returns nothing, and a positive control proves the filter
 works.
+
+#### M3a — every negative control requires a same-form positive beside it
+
+Added 2026-08-04. **Not a positive somewhere in the suite: one in the SAME SHAPE**, so that a
+formatting mismatch fails visibly instead of passing silently.
+
+Phase 13's production verification asserted that a rejected figure was absent by searching for
+`673005`. It was absent. **The control was worthless**: the site renders Indian digit grouping, so
+`673005` could never have appeared in any form, and the check would have reported clean with the
+wrong value sitting on the page. **A negative that cannot fail is not evidence.**
+
+It was caught only because the matching positive — `605186`, the value that *should* be there — was
+run in the same form and **failed**. That failure is what identified the needle rather than the data
+as wrong. Both were re-run as `6,05,186` and `6,73,005`, and both then behaved.
+
+**The rule generalises past formatting.** A negative control shares every transformation with its
+positive: the same rendering, the same escaping, the same script-stripping, the same normalisation.
+Where they differ in any of those, the negative is an assertion about a regex and not about the
+artefact. And the failure mode is silent by construction — a vacuous negative reports exactly what a
+sound one reports.
+
+**Third instance in one cycle of a single shape: a check that is sound and reads the wrong thing.**
+The other two were `url-check` diffing `/data` against `origin/main` on a `--dry` run, where the drop
+never reaches `/data` — "0 to check", a right answer about the wrong tree; and an artefact
+verification whose over-escaped regex reported the `.xls` fix missing from `main` when it was
+present. **All three were found by a control, not by the check.** That is the argument for controls
+being mandatory rather than diligent: the checks were individually correct and collectively blind,
+and nothing inside any of them could have noticed.
 
 ### M4 — A correction relayed from a subagent is verified before it is relayed onward
 
@@ -365,6 +412,11 @@ Every mark that can be suppressed by a competing view must render **on the page 
 - Guarded classes today: absence declarations, `notes`, `caveat`, `differentFactsNote`. **Any new mark subject to view-delegation joins this list at the point it is built, not afterwards.**
 - `npm run reachability` performs this. Report its counts.
 - Verify on production in an authenticated browser. **If production is unreachable, say plainly what was checked instead** — never imply production verification that did not happen.
+- **Controls run in both directions, and every negative carries a same-form positive (M3a).** Derive
+  the needles from `/data`, not from memory — then confirm each renders in the form the page actually
+  uses. Phase 13's production HTML renders Indian digit grouping, so a needle taken from the JSON
+  (`605186`) matches nothing and its negative twin (`673005`) is vacuous. Strip `<script>` first, and
+  normalise entities on both sides.
 
 ### 8 — Log and PR
 
