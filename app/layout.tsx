@@ -14,6 +14,10 @@ export const metadata: Metadata = {
 
 const NAV = [
   { href: '/domains/', label: 'domains' },
+  // Next to domains rather than at the end, because the two are the same question asked twice —
+  // what a record is about, and what it also bears on. A lens reached only from a record page
+  // would be a filter a reader could use but not find.
+  { href: '/lenses/', label: 'lenses' },
   { href: '/series/', label: 'series' },
   { href: '/ledger/', label: 'ledger' },
   { href: '/provenance/', label: 'provenance' },

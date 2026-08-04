@@ -37,7 +37,7 @@ export const DOMAINS = [
 export type Domain = (typeof DOMAINS)[number];
 
 /**
- * The subset of DOMAINS that are LENSES — read alongside a record's subject rather than as it.
+ * The LENSES — read alongside a record's subject rather than as it.
  *
  * `domain` says what a record is about; `lenses[]` says what it also bears on. Two axes, and a
  * single-valued `domain` could not hold both: every phase-11 series is substantively a defence or
@@ -48,15 +48,54 @@ export type Domain = (typeof DOMAINS)[number];
  * "Centre-state relations" is a subject in its own right, so it is legal on either axis, and
  * illegal only on both at once. Mirrors `lenses.items.enum` in the schemas; the validator derives
  * its own copy from there rather than importing this.
+ *
+ * THIS WAS "the subset of DOMAINS that are LENSES" UNTIL PHASE 14, AND IT IS NOT ONE ANY MORE.
+ * The first two values were read off the domain enum, which had written both as lenses, so the
+ * subset relation held by construction and looked like a rule. The three added in phase 14 batch 1
+ * are not domain values: a counterparty answers WHO a record is about, not WHAT, and the subject of
+ * every one of them is `foreign`. The relation was an accident of the axis's first population.
+ *
+ * `china`, `neighbourhood` and `europe` are named in the phase-14 plan and are deliberately absent
+ * until the batch that populates them. A lens is admitted when its records land: a value with
+ * nothing behind it is a filter that returns nothing, and `lens-empty` in `domain-coverage` fails
+ * the build rather than leaving an author to notice.
+ *
+ * The consequence is structural and was the reason to notice: lens surfaces used to be domain
+ * pages, and `generateStaticParams` over DOMAINS emitted them for free. A lens that is not a
+ * domain has no page unless one is built — which is exactly the "declared filter returns nothing"
+ * failure — so the lens axis now has its own route at /lenses, and `domain-coverage` asserts a
+ * page per lens value and a reachable record on it.
  */
-export const LENSES = ['kashmir', 'federalism'] as const;
+export const LENSES = [
+  'kashmir',
+  'federalism',
+  'defence-sector',
+  'united-states',
+  'russia',
+] as const;
 export type Lens = (typeof LENSES)[number];
 
 /**
  * The lenses that may NEVER be a subject. Mirrors SUBJECT_FORBIDDEN in tools/lib/integrity.mjs,
  * which is the enforcing copy — this one only decides what a domain page says about itself.
+ *
+ * The phase-14 values are absent for a reason that is not the same as `federalism`'s. They are not
+ * "allowed as a subject"; they are not in the domain enum at all, so the subject axis rejects them
+ * without help and there is nothing here to forbid. This list only governs values that COULD be
+ * filed as a subject and must not be.
  */
 export const LENS_ONLY: readonly Lens[] = ['kashmir'];
+
+/**
+ * Lenses that are ALSO domain values, and therefore have a domain page as well as a lens page.
+ *
+ * Derived rather than restated: the domain page's "this is a cross-cutting lens" block and the
+ * lens page's back-link both key off it, and a hand-kept list would drift the moment a value
+ * moved. Empty of the phase-14 six by construction.
+ */
+export const LENSES_THAT_ARE_DOMAINS: readonly Lens[] = LENSES.filter((l): l is Lens =>
+  (DOMAINS as readonly string[]).includes(l),
+);
 
 export const TERMS = ['baseline', 'T1', 'T2', 'T3'] as const;
 export type Term = (typeof TERMS)[number];
@@ -325,6 +364,15 @@ export interface LedgerRecord {
   dateEnd?: string;
   term: Term;
   domains: Domain[];
+  /**
+   * Cross-cutting lenses this record is also read under. See LENSES.
+   *
+   * Added in phase 14, a phase after series and pairs got it. `domains[]` being multi-valued was
+   * why the ledger did not need it: `kashmir` and `federalism` are domain values, so a record
+   * could already carry a lens beside its subject. That stopped being true the moment a lens
+   * existed that the domain enum does not admit.
+   */
+  lenses?: Lens[];
   type: LedgerType;
   summary: string;
   claimAtLaunch?: string;

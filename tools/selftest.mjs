@@ -131,6 +131,14 @@ const ISOLATED = [
   // is otherwise well formed so the two lens errors are the only ones the pair layer can raise.
   { dir: 'lens-axis-pairs', rule: 'lens-as-subject', expect: 'files no subject at all' },
   { dir: 'lens-axis-pairs', rule: 'lens-duplicated', expect: 'a lens over itself' },
+  // The LEDGER call site of the same rule, and it needs its own root rather than sharing the one
+  // above. `lens-duplicated` reaches the ledger through a different function reading a different
+  // field — `domains[]` against `lenses[]`, not `domain` against `lenses[]` — and it fires on a
+  // WIDER set of values there, because `kashmir` in `domains[]` is legal on a ledger record and is
+  // already an error on a series. Sharing the pairs fixture would let the whole ledger branch be
+  // deleted with the selftest still green. Pinned on its own message so the two branches cannot be
+  // told apart by accident.
+  { dir: 'lens-axis-ledger', rule: 'lens-duplicated', expect: 'is in both domains[] and lenses[]' },
 ];
 
 /**
@@ -325,6 +333,21 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
   const FIXTURES = [
     { dir: 'domain-coverage-no-page', why: 'a schema domain value with no page built for it' },
     { dir: 'domain-coverage-record-adrift', why: 'a surface that exists but omits a record declaring it' },
+    // The lens axis, added in phase 14, and TWO fixtures because the two branches fail differently.
+    //
+    // `lens-coverage-no-page` is the domain case one axis over: a lens value the schemas admit with
+    // no page built for it. Derived from a real regression rather than a model of one (Rule 2) —
+    // the counterparty lenses were added to the enum before the /lenses route existed, the build
+    // was run, and the gate was observed to fire on every one of them.
+    //
+    // `lens-coverage-empty` is the branch a structural check CANNOT catch, and it is why it is
+    // separate. When the /lenses route was first built, every assertion in domain-coverage went
+    // green — 8/8 surfaces built, 8/8 linked, every record-to-lens reference reachable — while six
+    // of the eight lenses held no records at all. A reader selecting one would have reached a
+    // correctly built, correctly linked, entirely empty page. Structure passing is not content
+    // passing, and this fixture pins the difference.
+    { dir: 'lens-coverage-no-page', why: 'a schema lens value with no page built for it' },
+    { dir: 'lens-coverage-empty', why: 'a lens value with a page, linked, and no record behind it — a filter that returns nothing' },
   ];
   for (const { dir, why } of FIXTURES) {
     const root = join(ROOT, 'tests', 'fixtures', dir);

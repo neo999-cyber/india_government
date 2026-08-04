@@ -4758,3 +4758,275 @@ upgrade**, not part of this cycle's scope.
 **`mgnrega-persondays` cites `https://nrega.nic.in/`** — another bare root, at T1, holding a single
 point. It is one of the deferred 313 and is noted here because it bears on L-0040 alongside the
 LibTech root.
+
+---
+
+# Verification log — cycle 2026-08-04b (phase 14 batch 1: the lens axis grows past the domain enum; arcs A and F)
+
+**Appended, not rewritten.** Every earlier cycle is closed and untouched. `git diff --numstat` on
+`/data` for this cycle shows **zero deletions**: `1 0` on `ledger/baseline.json`, `33 0` on
+`ledger/kashmir-security.json`, `26 13` on `series/kashmir-security.json` (thirteen two-line lens
+arrays rewritten as three-line ones, no content removed), and a new `ledger/foreign-trade.json`.
+
+## Step 1 — the domain enum. No gap, so no amendment.
+
+`foreign` already reads "trade, external balances and relations with other states." Read against the
+seven arcs of the phase brief, it covers all of them: tariff actions and trade agreements are trade,
+crude and export exposure are external balances, and the US/China/neighbourhood files are relations
+with other states. **No new domain value, and therefore no amendment record is owed** — the brief
+conditioned one on a gap existing.
+
+The procurement filing rule resolves against the same enum without stretching it. Acquisition cost
+and capital-budget share are `macro`; indigenisation share, offset fulfilment, export targets and
+domestic-content rules are `foreign`, because import substitution and export promotion are trade;
+a G2G deal read as a diplomatic instrument is `foreign`. `defence` keeps the scope phase 11 gave it.
+
+**Agnipath is personnel policy, not procurement, and is out of phase 14.** Logged, not authored.
+
+## Step 2 — the lens axis, and the thing phase 13 could not have seen
+
+`defence` is **not** a lens value. Checked against the schemas rather than against usage:
+`lenses.items.enum` held exactly `["kashmir", "federalism"]`, and `lib/types.ts` says in terms that
+"they are the lenses, `defence` is not." So the brief's second branch applies and the value is
+created as **`defence-sector`**, named apart from the domain deliberately — the domain is narrower
+("armed conflict and counter-insurgency operations") and the lens has to reach an acquisition cost
+filed `macro` and an indigenisation share filed `foreign`, neither of which is armed conflict. Two
+extents, two names, so neither can be read as the other.
+
+### The structural finding: `lenses[] ⊆ domains` was an accident, and the surface depended on it
+
+Phase 13 derived both lens values FROM the domain enum, so the subset relation held by construction
+and looked like a rule. Two places had quietly built on it:
+
+1. **`domain-coverage` asserted it directly** — "a lens value with no matching domain value … has no
+   surface to reach." That assertion was RIGHT and it has now fired: a counterparty answers WHO a
+   record is about, not WHAT, so `united-states` will never be a subject area. Left as written it
+   would have failed every build for values behaving correctly.
+2. **Lens pages WERE domain pages.** `generateStaticParams` runs over `DOMAINS`, so `/domains/kashmir/`
+   was the Kashmir lens surface and came for free. A lens that is not a domain has no page at all —
+   which is the "declared filter returns nothing" failure, one axis over from the one `lenses[]` was
+   added to fix.
+
+Resolved by building the axis its own route at `/lenses`, and by restating the gate's claim as the
+one it was standing in for: **a lens must have a surface, not a domain value.** Both surfaces are
+asserted for the two values that are both, rather than one — dropping the domain-page assertion while
+adding a lens-page one would have left the older surface unguarded, which is the same shape as the
+regression the file exists to catch, introduced by the fix for it.
+
+### `lenses[]` on the ledger — the reason phase 13 gave expired
+
+Phase 13 deliberately did not add the field, and its reason was correct: `domains[]` is multi-valued,
+so a ledger record could already carry `kashmir` or `federalism` beside a substantive subject. That
+reason expired the moment a lens existed that the domain enum does not admit. Added additively
+(`17 0` on the schema), with the phase-13 reasoning quoted in the field's own description so the
+sequence is legible rather than looking like an oversight corrected.
+
+### Values admitted, and values deliberately NOT admitted
+
+Admitted in batch 1, each with its definition in the same commit per §6: `defence-sector`,
+`united-states`, `russia`.
+
+**`china`, `neighbourhood` and `europe` are named in the plan and are NOT in the enum.** They enter
+with the records that populate them, in batches 2 and 3. `neighbourhood` is one value rather than
+seven because there the region is the stated policy object and the records are read as a set; the
+other counterparties are each individually a policy object. A counterparty lens is declared only
+where the instrument holds a FILE — several records read together — which is why UAE CEPA and
+Australia ECTA will carry none: a lens over one record returns what the reader already had.
+
+## The gate that had to exist: `lens-empty`
+
+**Structure passing is not content passing, and this is the run's clearest instance.** With the
+route built and all eight values in the enum, every assertion in `domain-coverage` went green —
+8/8 lens surfaces built, 8/8 linked from the index, 175/175 record-to-lens references reachable —
+while **six of the eight lenses held no records at all.** A reader selecting `china` would have
+reached a correctly built, correctly linked, entirely empty page, and nothing in the build said so.
+
+`lens-empty` refuses that. It counts population from `/data` rather than from the rendered page,
+because a page listing zero rows is the symptom and asserting on the symptom would pass the moment
+the page gained a heading. Observed firing on the live corpus for `defence-sector`, `russia` and
+`united-states` before their records existed; observed going quiet as each was populated.
+
+## Trigger C — four fixtures, two new roots, all four branches pinned
+
+| fixture | branch |
+|---|---|
+| `lens-axis-ledger` | `lens-duplicated` at the LEDGER call site, plus two stays-quiet records in the same root |
+| `lens-coverage-no-page` | a schema lens value with no page built for it |
+| `lens-coverage-empty` | a lens with a page, linked, and nothing behind it |
+| live corpus | all of the above stay quiet |
+
+`lens-axis-ledger` needed its own root rather than sharing `lens-axis-pairs`: the ledger branch reads
+different fields through a different function, and **it fires on a wider set of values.** `kashmir`
+in `domains[]` is an error on a series (`lens-as-subject` catches it) and is the established
+convention on a ledger record, so ledger duplication with `lenses[]` is a claim nothing else catches.
+Same rule name, same mistake, different reachable set — stated in the code rather than inherited.
+
+Both coverage fixtures derive from real regressed builds (Rule 2), not from models of one: the
+missing-page branch was observed firing on the counterparty lenses before the `/lenses` route
+existed, and the empty branch on the live corpus as described above.
+
+## Step 3 — paired controls, one negative per lens with a same-form positive
+
+At `drops/phase-foreign-trade/scope/lens-controls.mjs`. Four pairs, both members asserted, run green.
+
+- **`defence-sector`** — L-0122 (AFSPA s.7, the force's own immunity) against L-0114 (pellet guns).
+  Same file, same phase, same domains, and the only difference is whether the subject is the force.
+  Series pair: `jk-security-forces-killed` against `jk-pellet-deaths`, same file, same phase.
+- **`russia`** — L-0184 against L-0186. The strongest pair here: same file, same phase, same term,
+  same type (`shock`), same two domains, and the only difference is whether Russia is a party.
+- **`united-states`** — L-0186 against L-0018 (RCEP withdrawal). **This pair is weaker and says so
+  rather than pretending otherwise.** Arc A is the United States file, so every record authored in
+  this batch legitimately carries the lens and none can serve as the negative; the negative is
+  therefore matched on the property that would tempt a careless sweep — a ledger record in the same
+  `foreign` domain about trade agreements and tariffs — and differs in phase and type.
+
+The control harness refused to pass on a stale reference during the run: it named L-0018 in
+`baseline.json`, where it is not, and reported the control stale rather than clean.
+
+## The backfill — asserted per record, twelve ledger and thirteen series
+
+Two criteria, both stated on the record: (a) the record carries `defence` as a domain — the lens must
+CONTAIN the domain of the narrower name or "wider than it" is false; (b) the subject is an
+armed-forces institution or its personnel but the record files `governance` because the domain enum
+carves the treatment of civilians out of `defence`. Limb (b) is the half the domain could never
+express and is why the lens is not a synonym: **L-0121** (deaths in Army and central-force custody)
+and **L-0122** (AFSPA s.7 sanction).
+
+**Rejected, per record, with reasons** — L-0114 (subject is an injury count and its refusal; the
+users were CRPF and J&K Police, and "armed forces" is not "anyone armed"), L-0118 (public order),
+L-0123 (two legislative routes and their loss), L-0124 (which instruments ever attributed a death,
+not the attributed party). Pulling these in would make the lens mean "anything in a conflict zone",
+which is the `kashmir` lens's job.
+
+**A silent no-op was caught by observation, not by the script's own report.** The first backfill pass
+reported thirteen series updated and changed nothing: it inserted `lenses` after `domain` and the
+record's existing `lenses` key, iterated later, overwrote it. `git diff` showed no series file
+changed at all. Re-done as an anchored text edit with the result asserted against the parsed file
+either side. **A script reporting success is not evidence the edit landed.**
+
+**A whole-file reformat was caught the same way.** `baseline.json` uses a compact array style; a
+`json.dumps(indent=2)` rewrite reformatted the entire file for a one-key addition — `95 22` on
+numstat. Reverted and redone as a single anchored insertion with the indent detected from the file
+being written: `1 0`.
+
+## Arcs A and F — six records, L-0184 to L-0189, every source retrieved in this run
+
+**The file had moved, substantially, and a source older than the most recent retrievable primary
+would have got it wrong.** The state as it now stands, all of it from primaries:
+
+| date | instrument | rate on India |
+|---|---|---|
+| 2 Apr 2025 | EO 14257, reciprocal | ≥10 per cent |
+| 27 Aug 2025 | EO 14329, Russian-oil tranche, India named alone | +25, reaching 50 |
+| 6 Feb 2026 | US–India joint statement, framework for an Interim Agreement | 18 promised, under EO 14257 |
+| 20 Feb 2026 | *Learning Resources v. Trump*; EO 14389 ends all IEEPA duties | the instrument ceases to exist |
+| 24 Feb – 24 Jul 2026 | Proclamation 11012, section 122 surcharge | 10 per cent, all partners |
+| 24 Jul 2026 → | section 301 forced-labour action | **10 per cent, and this is the rate today** |
+
+Findings worth naming:
+
+- **The Russian-oil tranche was made under the Ukraine emergency, not a trade one.** EO 14329 rests
+  on EO 14066 and finds only that "the Government of India is currently directly or indirectly
+  importing Russian Federation oil". India is the only country it names. EO 14389 ended the duties
+  and **expressly preserved the emergencies**, so the finding survives the instrument.
+- **Section 122 was taken to its statutory maximum and allowed to lapse.** 10 of a permitted 15 per
+  cent; 24 February to 24 July is 150 days, and 150 is the statutory ceiling. Hand-checked
+  month by month: 28 + 31 + 30 + 31 + 30 = 150. No Act extended it.
+- **Kavanaugh's dissent named the replacement and the replacement was used the same day.** He named
+  sections 122, 201 and 301 as surviving authorities; Proclamation 11012 issued that day under 122,
+  and section 301 took effect at the exact moment 122 expired.
+- **India's own forced-labour import prohibition bought it the lower tier.** USTR placed India at 10
+  rather than 12.5 per cent "including India's adoption of a forced labor import prohibition
+  subsequent to the publication of the June 5, 2026 FRN". The finding that India had failed both
+  limbs was not disturbed. **No Indian instrument establishing that prohibition was retrieved** —
+  recorded as an `unmeasured` with the DGFT/CBIC route named, because a foreign agency's citation of
+  an Indian rule is not the rule.
+- **The 6 February framework named its instrument by number and the number was void in fourteen
+  days.** Resolved into the brief's three commitment states explicitly rather than by implication:
+  (a) not yet due — the $500bn purchase intent, trigger February 2031; (b) due and undelivered — the
+  Interim Agreement itself; (c) the 18 per cent rate is neither, having been applied and then
+  extinguished by a ruling in an unrelated case.
+- **Non-delivery is evidenced, not inferred.** USTR's own 2026 press-release index, retrieved
+  4 August 2026, carries no announcement of a concluded agreement with India while carrying
+  concluded and early-harvest agreements with other partners over the same window. **Absence of news
+  is not evidence of abandonment; a source that reports the same class of event for others and not
+  for this one is.** Scored `too-early`, not `failed`, with a revisit trigger at 6 February 2027.
+- **A secondary source asserted a term the primary does not contain.** Search summaries described the
+  framework as committing India to halt Russian oil purchases. The White House text carries no such
+  term. The primary governs and the claim is not in any record.
+- **India was tariffed over a quantity India does not publish** (L-0189). PPAC's June 2026 snapshot
+  carries crude import volumes, values and processing, no country-of-origin table, and zero
+  occurrences of the word Russia. Two `unmeasured` items with routes named. **Arc F's measured spine
+  is therefore not authored**: no official Russian-share series exists in the corpus and none was
+  written, because writing one would have meant sourcing a number to a commercial estimate.
+
+**Arithmetic hand-check, thirteen derived figures, clean.** Section 122's 150 days and its five
+month legs; EO 14329's 6 August + 21 days = 27 August; framework to termination = 14 days; ruling to
+surcharge effect = 4 days; the $500bn five-year trigger; 2026 is not a leap year (the February leg
+depends on it); the 10 per cent tier holding 17 economies, 16 besides India; the both-limbs finding
+covering 54, 53 besides India. One prose error was caught by it and corrected: L-0185 read "within
+four days the first of those had been used", when the proclamation issued the same day and took
+effect four days later.
+
+**Sources: ten URLs, ten confirmed by `url-check`, zero new bare-domain roots.** Every one is a deep
+link — govinfo for the Federal Register and the US Code, supremecourt.gov for the opinion, the White
+House for the joint statement, USTR's dated index, PPAC's document path.
+
+## M1 — three reachability failures retested, two were client artefacts
+
+- `supremecourt.gov` returned 403 to one client and 200 to a second process with a different user
+  agent. **Not an environment fact.**
+- `ppac.gov.in` failed to resolve under the system resolver and resolved identically under three
+  public resolvers (164.100.198.160), with a positive control confirming the resolver path worked
+  for another host. **Not an environment fact.** `url-check` independently reached it via 1.1.1.1.
+- `uscode.house.gov` refused connection from two processes and two clients, resolving identically on
+  all three resolvers. **Recorded as an environment fact**; 19 U.S.C. 2132 was taken from govinfo,
+  which is the same text from the same publisher and is what the record cites.
+- `federalregister.gov`'s full-text endpoint serves a CAPTCHA to automated clients. Not bypassed;
+  the documented API was used for metadata and govinfo for text.
+- One negative control was caught being a query artefact: an FR search returning zero presidential
+  documents for June–August 2026 was contradicted by the same query without the term filter, which
+  returned 37 including several tariff actions. The positive control had passed on the February
+  window, so **the control passing did not make the negative sound** — the unfiltered query is what
+  established that nothing extended the surcharge.
+
+## Not touched, per the brief
+
+The 24 + 83 back-link candidates; the transfer-dependence domain question; term-window firing; the
+313 bare-domain roots; B-4; the Gazette task; L-0086, L-0092 and L-0183; busy.in and nrega.nic.in;
+delimitation, census and women's reservation; Agnipath; the Kashmir conflict arc.
+
+**Two observations logged, not acted on.** L-0021 ("US tariffs on Indian goods", seed phase, T4
+sources, `confidence: low`) states that the rate "was later cut to 18% under an interim arrangement"
+as the current position. On the primaries above that is superseded: the 18 per cent was promised
+under an order voided fourteen days later, and India has paid 10 per cent since 24 February 2026.
+**L-0184 to L-0188 do not amend it and do not duplicate it** — they hold the instruments and their
+dates, which L-0021 does not. Correcting L-0021 is a shipped-record edit owed in a following cycle.
+L-0018 similarly describes the EFTA and UK agreements in passing; arc D will hold them properly.
+
+**The "representation" slot — recorded here, because there is no roadmap file to record it in.**
+Delimitation is out of phase 14: it is federalism-shaped, not external. It takes a slot of its own
+alongside the census delay and the 106th Amendment's conditionality, under the working name
+`representation`. This repository has never contained a roadmap document — established at
+2026-08-03 and unchanged — so the slot is recorded in this log and nowhere else, and **no forward
+reference was written from any `parts/` file or any record.**
+
+## Batches 2 and 3 are NOT in this cycle
+
+Arcs B (China), C (neighbourhood), D (agreements), E (defence procurement) and G (multilateral) are
+not authored. `china`, `neighbourhood` and `europe` are correspondingly absent from the lens enum,
+which is the rule this cycle made mechanical rather than an omission: a lens is admitted when its
+records land.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 142 warnings
+typecheck           clean
+selftest            OK — 23/23 validator rules fire; 2/2 output gates fire on their own fixtures
+reachability        775/775 declared marks reachable on their own record page (602 pages)
+domain-coverage     14/14 domain surfaces · 1047/1047 record-to-surface
+                    5/5 lens surfaces built and linked · 208/208 record-to-lens
+url-check           10/10 confirmed
+lens-controls       4 paired controls, both members asserted
+```

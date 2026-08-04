@@ -13,7 +13,7 @@ import {
   statusCounts,
 } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
-import { DOMAINS, LENSES, LENS_ONLY, type Domain } from '@/lib/types';
+import { DOMAINS, LENSES, LENS_ONLY, type Domain, type Lens } from '@/lib/types';
 import type { Pair, Series } from '@/lib/types';
 import { CaveatFlag, DifferentFactsMark, StatusKey, StatusTally, TierTag } from '@/components/marks';
 
@@ -44,11 +44,17 @@ export default async function DomainPage({ params }: Props) {
   // and merging it into the Kashmir subject list would restate the conflation `lenses[]` exists to
   // remove. Both blocks render only where they are non-empty, so a domain that is nobody's lens
   // and holds no pairs looks exactly as it did.
-  const isLens = (LENSES as readonly string[]).includes(d);
+  //
+  // The narrowing below is load-bearing rather than ceremonial. Until phase 14 every lens was also
+  // a domain, so a Domain could be handed to a lens query and the compiler agreed. Six counterparty
+  // lenses that are not domains ended that, and `isLens` is now the guard that says which of the
+  // fourteen domain values may be asked a lens question at all.
+  const asLens = (LENSES as readonly string[]).includes(d) ? (d as unknown as Lens) : null;
+  const isLens = asLens !== null;
   const lensOnly = (LENS_ONLY as readonly string[]).includes(d);
-  const lensed = seriesUnderLens(d);
+  const lensed = asLens ? seriesUnderLens(asLens) : [];
   const pairsHere = pairsInDomain(d);
-  const pairsLensed = pairsUnderLens(d);
+  const pairsLensed = asLens ? pairsUnderLens(asLens) : [];
 
   return (
     <>

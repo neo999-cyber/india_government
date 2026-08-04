@@ -9,6 +9,9 @@
       "defence",
       "kashmir"
     ],
+    "lenses": [
+      "defence-sector"
+    ],
     "type": "episode",
     "summary": "The government's central claim about Jammu and Kashmir after August 2019 is that militancy has collapsed. MHA's own table shows terrorist-initiated incidents falling from 228 (2018) to 28 (2024), security-force deaths from 91 to 31, militants killed from 257 to 67, and civilians killed from 55 to 14 in 2023 before rising to 26 in 2024. The counting instrument that produces those figures was rewritten twice by the ministry publishing them, in 2022 and 2023, with no methodology note in either report, and the two independent registers that could have produced a competing count - a legislature that could question police and public order, and a functioning local press - were removed over the same period. The record does not choose between the readings.",
     "claimAtLaunch": "MHA Annual Report 2024-25 para 15.9, verbatim: 'The security situation of UT of J&K has improved significantly. Organized stone pelting and protests have become things of the past.' The stated approach, from RS Unstarred Q.384 of 6 December 2023: 'The Government has a policy of zero tolerance against terrorism. The approach of the Government is to dismantle the terror eco-system.'",
@@ -87,6 +90,9 @@
       "defence",
       "kashmir"
     ],
+    "lenses": [
+      "defence-sector"
+    ],
     "type": "institutional",
     "summary": "MHA's headline count of terrorist incidents in Jammu and Kashmir was restated downward for 2017, 2018 and 2019 in the Annual Report 2021-22, then split into two columns in the Annual Report 2022-23. Neither report carried a note. The split revealed what the headline number had been: terrorist-initiated incidents plus encounters and counter-terror operations equals the old total exactly, for four years out of four - 228+189=417, 153+102=255, 126+118=244, 129+100=229. The figure used to demonstrate that militant violence declined was a composite in which roughly 45 per cent of the 2018 value was operations the state itself launched, published under a name that names only the other component.",
     "whatHappened": "Values as first published, from the reports themselves: 2014 = 222, 2015 = 208, 2016 = 322, 2017 = 342, 2018 = 614, 2019 = 594, 2020 = 244. The Annual Report 2021-22, posted 24 November 2022, gave 279, 417, 255 and 244 for 2017 to 2020 under the identical column heading and the identical introductory sentence, and did not restate 2014, 2015 or 2016 - it dropped them, so the old basis stands unrevised for those years and the new basis begins at 2017 with nothing on the page to mark the seam. The Annual Report 2022-23, posted 11 October 2023, replaced the single column with 'Terrorist Initiated Incidents' and 'Encounters/Counter Terror operations'. The mechanism behind the old wider basis is stated once in the entire corpus, in Rajya Sabha Unstarred Question No. 210 of 12 December 2018, verbatim: 'The number of incidents includes the violence committed by terrorists during anti militancy operations.' It never migrated into the series it describes. The restructuring was applied to Jammu and Kashmir alone: the Left Wing Extremism violence table keeps an unchanged header across the Annual Reports 2020-21, 2021-22 and 2022-23 and is never split by initiator, which removes the house-style explanation. For calendar 2018 five separately published and separately labelled incident counts exist - 614, 597, 417, 228 and 206 - of which the near-coincidence of MHA's 228 and SATP's 206 is arithmetic accident, one gating on who initiated and the other on whether anyone died.",
@@ -157,6 +163,9 @@
       "defence",
       "kashmir"
     ],
+    "lenses": [
+      "defence-sector"
+    ],
     "type": "institutional",
     "summary": "The Annual Report 2022-23 raised MHA's published civilian death figures for Jammu and Kashmir - 2018 from 39 to 55, 2019 from 39 to 44, 2020 from 37 to 38 - under an unchanged column heading and with no footnote. The footnote explaining the change appeared one report later, in December 2024: 'Civilians killed includes civilians killed in terrorist-initiated incidents and civilians killed in encounter/counter Terrorism operations.' For roughly fourteen months a redefined series was published under its old name with no notice. MHA does not exclude civilians killed by security forces from this column; it absorbs them into a number that names no perpetrator, and it has never published a column for civilians killed by security forces under any heading in any year.",
     "whatHappened": "Three bounding formulas have been used for the same column name and none of them is in a table label. The Annual Reports to 2022-23 carried a bare heading with no bounding at all. Rajya Sabha Unstarred Question No. 371 of 20 July 2022 introduced its table as 'the number of security forces and civilians who died due to terrorist attacks since 2018' and gave 39 for 2018. Rajya Sabha Unstarred Question No. 2670 of 10 August 2016 used 'in these incidents'. The Annual Report 2023-24 footnote broadens rather than bounds. In every case the definition sits in surrounding prose rather than in the heading, which is the part of the document that does not survive transcription into any chart or aggregator. PIB's release of 7 February 2024 carried the definition inside the row label - 'Civilians killed in terrorist initiated incidents and in encounters' - ten months before the Annual Report footnote, while a PIB release of 7 December 2022 used the narrower 'in these terrorist incidents' for the same figure of 31 that MHA later footnoted as encounter-inclusive.",
@@ -221,6 +230,9 @@
       "governance",
       "defence",
       "kashmir"
+    ],
+    "lenses": [
+      "defence-sector"
     ],
     "type": "event",
     "summary": "Rajya Sabha Unstarred Question No. 2670, answered 10 August 2016, gave the number of civilians killed in Jammu and Kashmir to 31 July 2016 as six, and civilians injured as twelve. The answer was given five weeks into the unrest that followed the killing of Burhan Wani on 8 July 2016, during which large numbers of civilians were killed and thousands injured in security-force crowd control. The figures are not wrong: the annexure bounds itself, verbatim, to persons killed or injured 'in these incidents', the incidents being terrorist incidents. The Annual Report 2016-17 later put the full year at 15 civilians killed and wrote that there was an 11.76 per cent decrease in casualties of civilians compared with 2015.",
@@ -372,6 +384,9 @@
       "governance",
       "kashmir"
     ],
+    "lenses": [
+      "defence-sector"
+    ],
     "type": "event",
     "summary": "On 18 July 2020 three men were shot dead at Amshipora, Shopian district, and presented as unidentified hardcore terrorists after a cordon and search operation. They were Imtiyaz Ahmad (20), Abrar Ahmed (16) and Mohammed Ibrar (25), seasonal labourers from Rajouri district who had gone to Shopian for orchard work. The bodies were taken 125 km to Baramulla and buried there, with no photographs released and no identification. Three families 160 km away filed missing-person complaints on 9 August; DNA matched in late September; the bodies were exhumed in October 2020. That the encounter was staged is common ground between the Army's own Court of Inquiry, the police chargesheet, the court-martial verdict and the Armed Forces Tribunal.",
     "whatHappened": "On 18 September 2020 the Army stated its inquiry had found prima facie evidence that powers vested under the AFSPA (J&K) Act 1990 were exceeded and that the Chief of Army Staff's Do's and Don'ts, as approved by the Supreme Court, had been contravened; the Court of Inquiry itself has never been published. The police chargesheet of 28 December 2020 named Capt Bhoopendra Singh and two civilians, alleged a Rs 20 lakh prize-money motive - which the Army contradicted on the record on 11 January 2021, stating it has no system of cash awards - and left documented gaps: no financial trail, no source established for the planted weapons, the statements of two majors never recorded 'in view of their transfer to the frontiers', the four soldiers who admitted firing listed as witnesses rather than accused. Court-martial proceedings concluded 16 January 2023; conviction on six charges including murder and a life sentence followed on 17 January. On 9 November 2023 the Armed Forces Tribunal suspended the custodial sentence and granted bail, holding that the confession was taken in close arrest contrary to the Evidence Act, that a conviction cannot rest on a co-accused's statement, that the Commanding Officer's claim of ignorance 'seems to be totally untrustworthy' given 391 rounds of AK-47 and 125 of LMG expended, and that there was evidence of deleted battalion WhatsApp chats - while expressly limiting its findings to the bail question. Two days later, on 11 November 2023, the Army's confirming authority confirmed the conviction and the cashiering. Whether a section 7 sanction request in respect of Capt Singh was ever forwarded to the Ministry of Defence, and its outcome, could not be established and must be treated as unknown rather than as refusal. The civil trial had not framed charges as at the last established position in July 2021.",
@@ -414,6 +429,9 @@
       "governance",
       "defence",
       "kashmir"
+    ],
+    "lenses": [
+      "defence-sector"
     ],
     "type": "episode",
     "summary": "Since April 2020 those killed in encounters in Jammu and Kashmir have been buried in remote graveyards rather than released to their families. No written order, circular or SOP establishing the practice has ever been published, and on the police's own account none exists: officials point to generic Disaster Management Act lockdown orders, a senior officer said in the same month that 'it's not a policy now but it should become a policy', and a lawyer acting for a family was told 'no written order has been given to us'. The stated reason moved from public health to prevention of glamorisation without the practice changing, and the practice was still operative in 2026 under an elected J&K government.",
@@ -484,6 +502,9 @@
     "domains": [
       "defence",
       "kashmir"
+    ],
+    "lenses": [
+      "defence-sector"
     ],
     "type": "episode",
     "summary": "No MHA Annual Report has ever published a local-recruitment figure for Jammu and Kashmir. Established by exhaustive search across seventeen retrieved reports, 2008-09 to 2024-25: zero occurrences as a counted quantity, and none in any parliamentary reply retrieved. The subject appears only as a policy aspiration in near-identical prose for over a decade. What circulates instead are press-conference claims, principally by the Director General of Police, which conflict with each other: 2018 given as 187, as 218 and as over 200; 2022 as 100, 110 and 130; 2023 as 10 and 22. A quantity the Ministry describes itself as managing for fifteen consecutive years is not measured in the Ministry's own annual report.",
@@ -612,6 +633,9 @@
       "governance",
       "kashmir"
     ],
+    "lenses": [
+      "defence-sector"
+    ],
     "type": "institutional",
     "summary": "MHA published an infiltration table in every Annual Report from at least 2010-11 through 2022-23 and then stopped, with no announcement. The Annual Reports 2023-24 and 2024-25 contain no infiltration figures at all while retaining the policy paragraph describing the multi-pronged approach to containing cross-border infiltration - the sentence about managing infiltration outlived the measurement of it. Over the same period the row label changed four times: an unlabelled 'Total' to 2013-14, then 'Total Infiltration Attempts', then a 'Successful' row, then 'Net infiltration (Estimated)', then 'Net Estimated infiltration'. MHA has never stated whether these are the same quantity.",
     "whatHappened": "Three distinct quantities are in play across three bodies - attempts and net estimated infiltration from MHA, and 'Infiltration Bid Eliminated' from the Ministry of Defence, which is LoC-only and Army-only by construction. They move in opposite directions under one underlying reality: if interception improves, attempts may be unchanged, bids eliminated rise and net falls. A series built by taking whichever body published a figure in a given year will show a decline that is partly an artefact of switching between them. The only two years MHA attributed the series to anyone attributed it to the Multi Agency Centre, an Intelligence Bureau body; from 2016-17 the attribution was dropped and the series continued. Net estimated infiltration for 2019 was published as 138 in three successive reports and as 141 in the Annual Report 2022-23, with no note, and net infiltration for 2021 is separately reported at both 34 and 24. The table's window also shortens: the Annual Reports 2018-19 to 2020-21 run the series from 2014, while 2021-22 and 2022-23 start it at 2017 and drop the earlier years from view rather than restating them. Into the measurement vacuum the Army speaks about a quantity it does not publish: the then GOC-in-C Northern Command declared 2023 the year of zero infiltration, which is an assertion about the net quantity made by a body that publishes only bids eliminated.",
@@ -667,6 +691,9 @@
       "defence",
       "kashmir"
     ],
+    "lenses": [
+      "defence-sector"
+    ],
     "type": "institutional",
     "summary": "Every MHA Annual Report from at least 2008-09 through 2020-21 opened its J&K security section with a cumulative sentence, ending at 14,091 civilians and 5,356 security-force personnel who had lost their lives since the advent of militancy, up to 2020. From the Annual Report 2021-22 the sentence is gone from all four subsequent reports, with no announcement. Two separate findings sit here: a stock series was discontinued with no successor, and in none of the thirty years it was published did it ever carry a militants-killed term.",
     "whatHappened": "Earlier values in the same sentence form run 13,880 civilians and 4,879 security-force personnel up to 31 March 2014, 14,024 and 5,273 up to 31 March 2019, and 14,054 and 5,294 up to December 2019, so the sentence changed its own period basis between fiscal and calendar closing dates without ever saying so. When MHA compressed the conflict into one sentence it ran two categories and omitted the third that its own annual table counted in the same section, every year. The components are still published annually; only the running total stopped. There has therefore never been an official cumulative total of conflict deaths in Jammu and Kashmir, only of two of the three populations, and since 2020 not even that.",
@@ -710,6 +737,9 @@
     "domains": [
       "governance",
       "kashmir"
+    ],
+    "lenses": [
+      "defence-sector"
     ],
     "type": "institutional",
     "summary": "The national instrument for custodial deaths is Chapter 16A of NCRB's Crime in India, titled 'Custodial Crimes & Complaints Against Police Personnel'. Its unit of account is the State or UT police, and every row is a State or UT. There is no category, column, row or footnote anywhere in it for deaths in the custody of the Army, Rashtriya Rifles, CRPF, BSF or any other central armed police force. NCRB does not say it excludes them; it has no cell for them. In Jammu and Kashmir those are the forces most likely to be holding someone, so the quantity has no place to be recorded even in principle - and the J&K series in the same chapter breaks on 31 October 2019, when J&K appears as a State in the 2019 volume and as a UT thereafter with Ladakh split out.",
@@ -769,6 +799,9 @@
     "domains": [
       "governance",
       "kashmir"
+    ],
+    "lenses": [
+      "defence-sector"
     ],
     "type": "institutional",
     "summary": "Section 7 of the Armed Forces (Jammu and Kashmir) Special Powers Act 1990 requires prior Central Government sanction before a member of the armed forces can be prosecuted for anything done in the exercise of the Act's powers. Since 1990 the J&K government has sought sanction in 50 cases. Sanction was refused in 47 and three remained pending as at April 2018. None was granted. When an applicant asked under the Right to Information Act not for the case files but for the procedure, norms, criteria and standards used to decide, both the Ministry of Defence and Army Headquarters answered that they do not hold the information; the Central Information Commission then sealed the case files under the national-security exemption in June 2020.",

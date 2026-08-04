@@ -10,6 +10,7 @@ import { join } from 'node:path';
 import type {
   Domain,
   LedgerRecord,
+  Lens,
   Pair,
   ProvenanceRecord,
   Series,
@@ -115,13 +116,31 @@ export const seriesInDomain = (domain: Domain): Series[] => series.filter((s) =>
  * the conflation the field was added to remove. The domain page renders them as separate blocks
  * for the same reason.
  */
-export const seriesUnderLens = (lens: Domain): Series[] =>
+export const seriesUnderLens = (lens: Lens): Series[] =>
   series.filter((s) => (s.lenses as string[] | undefined)?.includes(lens) ?? false);
 
 export const pairsInDomain = (domain: Domain): Pair[] => pairs.filter((p) => p.domain === domain);
 
-export const pairsUnderLens = (lens: Domain): Pair[] =>
+export const pairsUnderLens = (lens: Lens): Pair[] =>
   pairs.filter((p) => (p.lenses as string[] | undefined)?.includes(lens) ?? false);
+
+/**
+ * Ledger records read under this lens.
+ *
+ * The ledger's lens axis arrived in phase 14 with `lenses[]` on the record; before that a ledger
+ * lens lived in `domains[]`, which worked only while every lens value was also a domain value.
+ * Both are read here, and the union is deliberate rather than sloppy: nineteen shipped records
+ * carry `kashmir` in `domains[]` and thirteen carry `federalism` there, and a lens page that
+ * showed only the new field would report those two lenses as nearly empty while the records sit
+ * on the domain page as before. Values that are not domain values can only ever match the first
+ * branch, so the second costs them nothing.
+ */
+export const ledgerUnderLens = (lens: Lens): LedgerRecord[] =>
+  ledger.filter(
+    (l) =>
+      ((l.lenses as string[] | undefined)?.includes(lens) ?? false) ||
+      (l.domains as string[]).includes(lens),
+  );
 
 /**
  * Where a pair actually renders, or undefined if it renders nowhere.
