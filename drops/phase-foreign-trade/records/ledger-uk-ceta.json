@@ -1,0 +1,50 @@
+[
+  {
+    "id": "L-0204",
+    "title": "The India-UK trade agreement is in force, and the two headline concessions are not the same measurement: 99 per cent of India's exports by value against 24.5 per cent of Britain's on day one",
+    "date": "2026-07-15",
+    "term": "T3",
+    "domains": ["foreign", "macro"],
+    "lenses": ["europe"],
+    "type": "reform",
+    "summary": "The India-UK Comprehensive Economic and Trade Agreement entered into force on 15 July 2026, alongside a Double Contribution Convention on social security whose exemption period was raised from three years to five. CETA was concluded on 6 May 2025 after fourteen negotiating rounds and signed in London on 24 July 2025. The UK gives zero-duty access to nearly 99 per cent of India's exports, covering almost 100 per cent of the trade value. India offers concessions on 89.5 per cent of its tariff lines, covering 91 per cent of UK exports — but only 24.5 per cent of UK export VALUE receives immediate duty-free access, the rest being phased.",
+    "claimAtLaunch": "The India-UK Roadmap 2030, adopted in May 2021 alongside the Enhanced Trade Partnership, set the goal of doubling bilateral trade to US$100bn by 2030. CETA is presented as the instrument, and as balancing liberalisation against the protection of sensitive sectors through exclusions and phased reductions.",
+    "whatHappened": "COMMITMENT STATE (a) — NOT YET DUE, TRIGGER NAMED: 2030, for the US$100bn doubling. The agreement is three weeks old at the date of this record and nothing about the trade outcome is testable. What is recorded is the structure, and one feature of it that the published framing does not draw out. THE TWO CONCESSIONS ARE MEASURED DIFFERENTLY AND ARE ROUTINELY QUOTED SIDE BY SIDE. Britain's is stated as a share of India's exports AND of trade value, at zero duty, with no phasing mentioned: 99 per cent of exports, almost 100 per cent of value. India's headline is a share of TARIFF LINES — 89.5 per cent — and the value figure attached to it is 24.5 per cent immediate. A line count and a value share are different quantities, and an immediate concession and a phased one are different commitments; 99 against 89.5 compares neither like with like.",
+    "assessment": "too-early",
+    "assessmentNote": "Too-early in its strict sense: the agreement is in force, the obstacle is elapsed time, and the evidence that would settle it — trade flows under the new schedule — accumulates. Three weeks is not a basis for any judgement about outcomes. The record exists now because the terms are fixed now and the phasing schedule is the thing most easily forgotten once headline percentages enter circulation.",
+    "caseFor": "The asymmetry runs in India's favour and that is the plain reading of the numbers. India's exports get near-total immediate zero-duty access to a high-income market; Britain's get a line-count concession most of whose value arrives later. For a country whose standing complaint about trade agreements is that they open its market faster than they open others', this one is drawn the other way, and the phasing is the mechanism that does it. The services and mobility side is substantive rather than decorative — the Double Contribution Convention's exemption period went from three years to five, which is a direct cost saving for Indian professionals posted to the UK, and the Ministry describes the UK's services commitments as among the most ambitious it has offered in any FTA. Fourteen rounds and a fourteen-month gap between signature and entry into force also indicate ratification was done properly rather than announced early.",
+    "caseAgainst": "The comparison the release invites is not one the figures support, and the mismatch is systematic rather than incidental: the favourable side is quoted by value and the concessionary side by line count, which is the arrangement that makes any agreement look most favourable. 89.5 per cent of lines is not 89.5 per cent of anything a reader cares about, and the number that answers the question a reader is actually asking — how much of Britain's exports get in duty-free now — is 24.5 per cent, which appears once and not in the headline. The doubling target is also inherited rather than set by this agreement: US$100bn by 2030 was adopted in 2021, and a target restated at entry into force with five years left and no interim milestone is not a commitment this instrument can test until the year it falls due.",
+    "differentFacts": false,
+    "differentFactsNote": "No competing accounts of any figure — every number here is India's own and none is disputed in anything retrieved. The finding is that two of them measure different things and are presented as comparable, which is a framing question rather than a factual dispute. Recorded here rather than as a dispute record for that reason.",
+    "unmeasured": [
+      {
+        "what": "The phasing schedule behind the 89.5 per cent of Indian tariff lines — how much of UK export value becomes duty-free in each year after the first",
+        "why": "The published material gives the day-one figure (24.5 per cent of UK export value) and the eventual line coverage (89.5 per cent of lines) and nothing between them. Without the schedule, the pace at which India's market opens is not measurable, and the two published figures cannot be reconciled into a single trajectory.",
+        "wouldFill": "The CETA tariff schedule annexes, or a Ministry of Commerce statement of staged reductions by year.",
+        "reasonKind": "not-published"
+      },
+      {
+        "what": "Any interim milestone between the 2021 adoption of the US$100bn-by-2030 target and 2030 itself",
+        "why": "The target was set in the India-UK Roadmap 2030 and is restated at entry into force. Nothing retrieved names a year-by-year path or a mid-point figure, so the commitment is untestable until the terminal year — the same shape recorded for TEPA's investment objective in L-0194.",
+        "wouldFill": "A Roadmap 2030 progress report, or a Ministry statement of interim trade targets.",
+        "reasonKind": "not-published"
+      }
+    ],
+    "caveat": "The record states 1,437 agricultural tariff lines at zero duty and that these are 14.8 per cent of all tariff lines under the agreement, both as published. It does not state the implied total number of tariff lines, because that figure is a division the sources do not perform and its precision would exceed theirs.",
+    "sources": [
+      {
+        "name": "Ministry of Commerce and Industry, \"India and the United Kingdom Unleash a Next Generation Economic Corridor: CETA and Agreement on Social Security Set to Enter into Force on 15th July 2026\", PIB, 17 June 2026 — entry-into-force date, the DCC exemption period raised from three to five years, fourteen negotiating rounds, conclusion 6 May 2025, signature 24 July 2025, and the Roadmap 2030 US$100bn-by-2030 goal",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2274280",
+        "tier": "T1"
+      },
+      {
+        "name": "Ministry of Commerce and Industry, \"India-UK CETA Comes into Effect\", PIB, 15 July 2026 — zero-duty on nearly 99 per cent of India's exports covering almost 100 per cent of trade value; concessions on 89.5 per cent of India's tariff lines covering 91 per cent of UK exports; 24.5 per cent of UK export value duty-free immediately with the remainder phased; 1,437 agricultural lines at zero duty, 14.8 per cent of all lines",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2284878",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-05",
+    "revisitTrigger": "Re-test on the first full year of trade under CETA, and specifically on whether the phasing schedule is published — without it the 24.5 per cent figure is the only measurable statement about India's market opening, and it will stay that way."
+  }
+]

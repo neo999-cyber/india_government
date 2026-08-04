@@ -113,6 +113,22 @@ const CONTROLS = [
       why: 'the India-China mirror: same file, same phase, same domains, same type, and a bilateral trade record — but China is not in the neighbourhood set, so the lens must not reach it',
     },
   },
+  {
+    // The restriction: "is a trade agreement with a European counterparty". Both members are ledger
+    // records in the same file and the same phase, both about in-force trade agreements concluded in
+    // the same period — and the negative is the UAE/Australia doubling claim, which is the same KIND
+    // of record about non-European counterparties. A negative with no trade-agreement content would
+    // not show whether the lens keys on Europe or merely on trade agreements.
+    lens: 'europe',
+    positive: {
+      file: 'data/ledger/foreign-trade.json', id: 'L-0204',
+      why: 'the India-UK CETA — a European counterparty, in force, and one leg of the arc the value names',
+    },
+    negative: {
+      file: 'data/ledger/foreign-trade.json', id: 'L-0195',
+      why: 'the doubling claim: same file, same phase, same domains, and also about in-force trade agreements — but the counterparties are the UAE and Australia, so the lens must not reach it',
+    },
+  },
 ];
 
 /**
@@ -135,6 +151,7 @@ const EXPECTED_MEMBERS = {
   russia: ['L-0184', 'L-0189', 'L-0199', 'L-0202'],
   china: ['L-0190', 'L-0191'],
   neighbourhood: ['L-0192', 'L-0193'],
+  europe: ['L-0194', 'L-0204'],
 };
 
 let failures = 0;
