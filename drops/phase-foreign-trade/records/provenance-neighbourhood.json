@@ -1,0 +1,37 @@
+[
+  {
+    "id": "P-120",
+    "title": "India's neighbourhood trade figures: three counterparties do not report at all, and the three that do all record less arriving than India records sending",
+    "whatChanged": "Nothing changed; the figures never agreed and half of them have no counterpart. For calendar 2024, of the six immediate neighbours other than Pakistan, Sri Lanka, Maldives and Myanmar had filed annual returns with UN Comtrade and Bangladesh, Nepal and Bhutan had not. Where both sides exist the divergence runs in ONE direction and it is the opposite of the direction a valuation convention produces. India reports exporting US$4.715bn to Sri Lanka against Sri Lanka's US$3.738bn of imports from India; US$0.825bn to Maldives against US$0.502bn; US$0.609bn to Myanmar against US$0.359bn. An importer records CIF and an exporter FOB, so the importer's figure should be the HIGHER one — as it is on every leg of the India-China mirror in P-119. Here it is lower in all three cases, by 26.15, 64.49 and 69.49 per cent of the partner's own figure. No cause is asserted. Candidate mechanisms are partner customs coverage, informal and unrecorded border trade, transit goods recorded as exports on departure and not as imports on arrival, and valuation for duty purposes — none is established by anything retrieved here, and the record says so rather than choosing.",
+    "when": "Calendar 2024, retrieved 4 August 2026. Non-reporting runs from 2019 for Bangladesh, 2023 for Nepal and 2024 for Bhutan.",
+    "affectsDomains": ["foreign", "macro"],
+    "directionOfBias": "disputed",
+    "bridgeExists": false,
+    "bridgeNote": "No reconciliation is published by any party and none is attempted. Both figures are carried where both exist; where only India's exists the record says so rather than presenting a single figure as agreed.\n\nTHE THREE ZEROS WERE LOCALISED BEFORE THEY WERE RECORDED, one restriction relaxed at a time. Relaxing the partner from India to the world left all three at zero, so none is an India-specific omission. Relaxing the period is what flips each, at a different year for each: Bhutan 2023, Nepal 2022, Bangladesh 2018. The Bangladesh case was walked back year by year to 2018, where the query returned US$9.409bn — which is both the finding and the positive control that the reporter code and query shape are correct, since a zero produced by a malformed query would have stayed zero at every year.",
+    "competingAccounts": [
+      { "holder": "India (DGCIS, as submitted to UN Comtrade)", "position": "Exports to Sri Lanka US$4.715bn, to Maldives US$0.825bn, to Myanmar US$0.609bn in CY2024" },
+      { "holder": "Sri Lanka Customs (as submitted to UN Comtrade)", "position": "Imports from India US$3.738bn in CY2024 — 26.15 per cent below India's export figure" },
+      { "holder": "Maldives Customs Service (as submitted to UN Comtrade)", "position": "Imports from India US$0.502bn in CY2024 — 64.49 per cent below India's export figure" },
+      { "holder": "Myanmar (as submitted to UN Comtrade)", "position": "Imports from India US$0.359bn in CY2024 — 69.49 per cent below India's export figure" },
+      { "holder": "Bangladesh, Nepal and Bhutan", "position": "No calendar-2024 return filed; last returns naming India are 2018, 2022 and 2023 respectively" }
+    ],
+    "sources": [
+      {
+        "name": "UN Comtrade, Sri Lanka as reporter (144), partner India (699), flow M, HS TOTAL, annual 2024",
+        "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=144&period=2024&partnerCode=699&flowCode=M&cmdCode=TOTAL",
+        "tier": "T2"
+      },
+      {
+        "name": "UN Comtrade, India as reporter (699), partner Sri Lanka (144), flow X, HS TOTAL, annual 2024",
+        "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2024&partnerCode=144&flowCode=X&cmdCode=TOTAL",
+        "tier": "T2"
+      },
+      {
+        "name": "UN Comtrade, Bangladesh as reporter (50), partner India (699), flow M, HS TOTAL, annual 2018 — last return naming India, and the positive control for the 2019-2024 zeros",
+        "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=50&period=2018&partnerCode=699&flowCode=M&cmdCode=TOTAL",
+        "tier": "T2"
+      }
+    ],
+    "notes": "Tiered T2 for the reason P-119 gives: these are national submissions retrieved from UN Comtrade rather than from the national customs authorities directly, and the tier grades the document retrieved rather than the institution behind it.\n\nThe divergence direction here is the REVERSE of P-119's and that contrast is the point of holding both records. Against China the importer reports more, as the convention predicts; against three neighbours the importer reports less, every time. A single explanation covering both would have to work in opposite directions, which is why none is offered."
+  }
+]

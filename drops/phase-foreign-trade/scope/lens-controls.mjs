@@ -97,6 +97,22 @@ const CONTROLS = [
       why: 'foodgrain production: mentions China, and mentions it as a YIELD COMPARATOR from the peer panel. The subject is Indian cereal yield; China is a benchmark, not a counterparty',
     },
   },
+  {
+    // THE RESTRICTION: "is about a country India trades with". Both members are ledger records in the
+    // same file, same phase, same domain and the same type — and the negative is the China mirror,
+    // which is a bilateral trade record about a country that is emphatically NOT in the neighbourhood
+    // set this lens names. A negative drawn from a record with no trade content at all would prove
+    // nothing about whether the lens keys on the region or merely on trade.
+    lens: 'neighbourhood',
+    positive: {
+      file: 'data/ledger/foreign-trade.json', id: 'L-0192',
+      why: 'the six-partner regional merchandise position — the neighbourhood as one object, which is what the value names',
+    },
+    negative: {
+      file: 'data/ledger/foreign-trade.json', id: 'L-0190',
+      why: 'the India-China mirror: same file, same phase, same domains, same type, and a bilateral trade record — but China is not in the neighbourhood set, so the lens must not reach it',
+    },
+  },
 ];
 
 /**
@@ -111,6 +127,7 @@ const EXPECTED_MEMBERS = {
   'united-states': ['L-0184', 'L-0185', 'L-0186', 'L-0187', 'L-0188', 'L-0189'],
   russia: ['L-0184', 'L-0189'],
   china: ['L-0190', 'L-0191'],
+  neighbourhood: ['L-0192', 'L-0193'],
 };
 
 let failures = 0;

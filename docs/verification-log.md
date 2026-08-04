@@ -5307,3 +5307,110 @@ domain-coverage     14/14 domains · 6/6 lenses · 216/216 lens refs
 url-check           8/8 confirmed against 23caebe
 lens-controls       5 paired + exact membership
 ```
+
+---
+
+# Verification log — cycle 2026-08-04e (phase 14 batch 3, arc C: the neighbourhood, six partners)
+
+**Appended, not rewritten.** `/data` diff: `99 0` on `ledger/foreign-trade.json`, `53 0` on
+`provenance.json` — pure appends, zero deletions, shape declared before the edit.
+
+## Two records, not one, and the split is the mirror discipline
+
+**L-0192 — the position.** On India's own CY2024 figures: exports US$25.592bn to the six immediate
+neighbours other than Pakistan, imports US$5.745bn, surplus US$19.847bn, exports 4.5 times imports.
+Five surpluses; **Myanmar is the single deficit at -0.911** and the only neighbour in the set from
+which India buys more than it sells — a fact no regional aggregate shows.
+
+**L-0193 — what can be checked.** Three of the six had filed CY2024 returns and three had not. And
+for all three that had, **the partner records less arriving than India records sending**:
+
+| partner | India reports sending | partner reports receiving | India higher by |
+|---|---|---|---|
+| Sri Lanka | 4.715 | 3.738 | 26.15% |
+| Maldives | 0.825 | 0.502 | 64.49% |
+| Myanmar | 0.609 | 0.359 | 69.49% |
+
+**That is the reverse of the China case and the contrast is why both records exist.** An importer
+records CIF and an exporter FOB, so the importer's figure should be the higher one — as it is on
+every leg of P-119, where China reports 20.80 per cent MORE arriving than India reports sending.
+Here the importer is lower every time. Any single explanation would have to work in both directions,
+so none is offered: candidate mechanisms are named in P-120 and none is asserted.
+
+Splitting position from verifiability is the same call as L-0190 against L-0191. `differentFacts` is
+**true** on L-0193 and the note says it is *partial* — genuine for the three that publish, an absence
+for the three that do not, and the two states are not merged.
+
+## The three zeros, localised one restriction at a time
+
+| relaxation | Bangladesh | Nepal | Bhutan |
+|---|---|---|---|
+| base: 2024, partner India | 0 | 0 | 0 |
+| period → 2023 | 0 | 0 | **1** |
+| partner → WORLD | 0 | 0 | 0 |
+| period → 2022 | 0 | **1** | 1 |
+
+Partner relaxation moves none of them, so **none is an India-specific omission**. Period is what
+flips each, at a different year for each: Bhutan 2023, Nepal 2022. Bangladesh stayed zero through
+2021, 2020 and 2019 and went non-zero at **2018, US$9.409bn** — six years of absence, and that walk
+back is simultaneously the finding and **the positive control that the reporter code and query shape
+are right**, since a malformed query would have stayed zero at every year.
+
+## The new gate earned its keep on the very next record
+
+`figure-consistency` was built this morning for the China figures. The first arithmetic check on the
+neighbourhood table hit the same artefact immediately: the six printed export components sum to
+25.591 against a printed total of 25.592, the imports to 5.746 against 5.745, and the balance
+reconstructs to 19.845 against 19.847. Declared in P-120 and in L-0192's caveat before either landed.
+
+**And the gate then rejected my own claim.** The first version of the P-120 entry carried
+*approximated* source totals — round numbers I typed rather than the sum of six unrounded values —
+and the source check reported that they give 19.846, not 19.847. Recomputed from the retrieved
+submissions: 25591814800.252 and 5744637687.868. **A claims file is only as good as the values in
+it, and the source half of the check is what enforces that** — without it the gate would have
+verified a reconstruction against numbers that were themselves invented.
+
+## Two other rules fired on this arc and both were right
+
+- **`caveat-target`** rejected L-0192 because its caveat named P-119 while the record cites only
+  P-120. Correct: a caveat pointing at a dispute the record does not claim sends the reader somewhere
+  the record has not gone. Rewritten to name P-120, and the China cross-reference moved into P-120's
+  own notes where it belongs.
+- **A selftest exit of 1** appeared once and did not reproduce. Two independent reruns — via npm and
+  directly — both exit 0. The cause is ordering: selftest's live-corpus output-gate check reads
+  `out/`, and it ran before the rebuild that contained the new records. Per M1 that is not a gate
+  failure, and it is recorded rather than fixed because the ordering is a property of running the
+  gates by hand, not of the gates.
+
+## `neighbourhood` admitted, and what it does not yet cover
+
+Admitted with L-0192 and L-0193, in the same commit, per the atomicity rule. **The arc is not
+complete and the lens is thinner than the brief intended.** These two records cover all six partners
+on the trade dimension and none of the policy dimensions the brief names — Bangladesh transit and the
+Adani PPA, Sri Lankan debt restructuring, the Maldives swap, Nepal-Bhutan hydropower, Myanmar's
+border fencing and the Free Movement Regime. Those need policy primaries rather than trade returns
+and are not authored.
+
+**Pakistan remains deferred alone**, as the brief directs, and was not authored around its missing
+centre. Its exclusion from L-0192 and L-0193 is stated in both titles rather than left as a silent
+gap in a set called "the neighbourhood".
+
+## Arcs D, E and G — NOT AUTHORED
+
+No agreements, no procurement, no multilateral records. `europe` is correspondingly absent from the
+lens enum. This is a scope shortfall, not a blocked one: the primaries for arc D in particular are
+retrievable, and nothing about them failed. They were not reached.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 145 warnings
+typecheck           clean
+selftest            OK (exit 0 on two independent reruns)
+figure-consistency  6 declared claims, 6 checked, 3 artefacts declared
+reachability        788/788 declared marks on their own record page (614 pages)
+domain-coverage     14/14 domains · 1065/1065 record-to-surface
+                    7/7 lens surfaces built and linked · 218/218 record-to-lens
+url-check           7/7 confirmed, no rate-limit artefacts under the new spacing
+lens-controls       6 paired controls + exact membership for all four phase-14 lenses
+```
