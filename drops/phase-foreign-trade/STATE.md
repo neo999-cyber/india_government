@@ -4,7 +4,8 @@
 rounding basis, url-check spacing, arc C trade · B4 `7d6c4ec`/`18728fa`/`588f978` L-0021, build
 freshness, arc D partial · B5 `6e30c2d`/`c071418` fixture soundness, arc E opened ·
 B6 `391b16d`/`e36f6b3` idempotence controls, the SIPRI category record ·
-B7 `60e4bde` the indigenisation metric and CAATSA's three states.**
+B7 `60e4bde` the indigenisation metric and CAATSA's three states ·
+B8 `2d384b6` emergency procurement and Rafale-M.**
 
 ## Measurement categories established by this phase — use these, do not re-derive
 
@@ -22,17 +23,26 @@ Three shapes, and a record must say which it is:
 
 ## NOT DONE — the live backlog
 
-1. **Arc E remainder — STILL OPEN.** Done: exports vs target (L-0196), the measurement-category
-   record (L-0197), the indigenisation metric (L-0198), CAATSA exposure (L-0199). **Not done:
-   Rafale tranches; the S-400 DELIVERY SCHEDULE (L-0199 covers the sanctions exposure only, not
-   what was delivered when); DAP domestic-content rules beyond the IC minimums; emergency-
-   procurement powers and their use.** Filing rule settled; `defence-sector` on all, now sixteen
-   records. The SIPRI question is CLOSED by L-0197.
+1. **Arc E remainder — STILL OPEN, two files.** Done: exports vs target (L-0196), the
+   measurement-category record (L-0197), the indigenisation metric (L-0198), CAATSA exposure
+   (L-0199), emergency procurement (L-0200), Rafale-M (L-0201). **Not done:**
+   - **The S-400 DELIVERY SCHEDULE.** Distinct from L-0199, which covers sanctions exposure only.
+     The Year End Review 2025 records a comprehensive annual maintenance contract and a ministerial
+     meeting at which "the supply of S-400 systems" was a takeaway, and states **no schedule and no
+     delivered count**. So the record is about an absence — and per the brief, a partner
+     government's statement about its own deliveries is a legitimate second instrument, so **check
+     for a Russian-side mirror BEFORE recording single-sided.** That check has not been run.
+   - **DAP domestic-content rules beyond the IC minimums** — offsets, positive indigenisation lists,
+     and what the lists actually bind.
 
-   **Retrieval note for whoever resumes:** `www.mod.gov.in` and `www.ddpmod.gov.in` RESOLVE
-   (164.100.252.190, 164.100.94.167) and REFUSE on port 443 — three clients tried, recorded as an
-   environment fact. PIB is the working route into Ministry of Defence material; pin
-   `www.pib.gov.in:443:94.202.207.57`.
+   `defence-sector` is at eighteen records. Filing rule settled.
+
+   **Retrieval note:** `www.mod.gov.in` and `www.ddpmod.gov.in` RESOLVE (164.100.252.190,
+   164.100.94.167) and REFUSE on port 443 — recorded as an environment fact, do not re-derive. PIB
+   is the working route; pin `www.pib.gov.in:443:94.202.207.57`. The MoD **Year End Review**
+   (PRID 2210154) is a single 654k-character document covering acquisitions, exports, diplomacy and
+   indigenisation — the highest-yield single retrieval found in this arc.
+
 2. **Arc D remainder.** UK FTA, EU negotiation, RCEP non-entry against trade data. **`europe` is
    NOT in the enum** and enters with them — one Europe record does not earn a lens. L-0018 still
    describes four agreements with T4 sources.
@@ -43,11 +53,22 @@ Three shapes, and a record must say which it is:
 6. **L-0195's baseline question** — check whether the 10 March 2026 release or the underlying speech
    names a base year for the doubling claim. If one exists the claim becomes testable and the
    `contested` score changes.
-7. **The retrieval-capability cycle**, one cycle. Class: Cloudflare gates (`pca-cpa.org`), JS shells
-   answering 200 with no document (`mea.gov.in`), scans with no text layer (the IWT PDF), hosts
-   needing an explicit resolver (`ppac.gov.in` 164.100.198.160, `mea.gov.in` 13.224.236.14,
-   `www.pib.gov.in` 94.202.207.57), CAPTCHA'd full-text endpoints (`federalregister.gov`), the
-   Gazette task.
+7. **The retrieval-capability cycle — WANTS ITS OWN SCOPING SESSION, not a slot at the end of a
+   batch.** Five distinct failure modes are now attested:
+   1. Cloudflare gating — `pca-cpa.org` (403 from two clients)
+   2. JS shells answering 200 with no document — `mea.gov.in`
+   3. Scans with no text layer — the Indus Waters Treaty PDF on MEA's portal
+   4. A resolving host refusing 443 — `www.mod.gov.in`, `www.ddpmod.gov.in`
+   5. The carried Gazette task
+
+   Hosts needing an explicit resolver are a sixth, milder mode and are already worked around:
+   `ppac.gov.in` 164.100.198.160, `mea.gov.in` 13.224.236.14, `www.pib.gov.in` 94.202.207.57.
+   `federalregister.gov` CAPTCHAs its full-text endpoints while its API works.
+
+   **Its output is TWO things, and the second is corpus material in its own right:** retrieval where
+   possible, and a documented account of what the Indian government publishes that cannot be
+   retrieved by ordinary means. The second is a finding about the publication regime, not a
+   housekeeping note, and it belongs in the instrument rather than in a tooling log.
 
 ## Harness state after B5 — what is now mechanical rather than remembered
 
