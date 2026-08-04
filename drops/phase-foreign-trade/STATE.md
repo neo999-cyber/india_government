@@ -85,49 +85,46 @@ PIB carries the G20 and IMEC material; the WTO's own site was not tested and is 
 Expect the commitment-state discipline to carry most of the weight — this arc is dense with
 announced-but-undelivered material, which is what states (a)/(b)/(c) exist for.
 
-### 4. Arc C policy dimensions — CHAINED 2026-08-05, four records; Bangladesh and Sri Lanka open
+### 4. Arc C policy dimensions — CLOSED 2026-08-05, seven records across five countries
 
-**Done: Maldives (L-0206) · Nepal and Bhutan (L-0207, L-0208) · Myanmar (L-0209, L-0210).**
+**L-0206** Maldives currency swap · **L-0207** Punatsangchhu-II tariff sequence · **L-0208** the
+neighbours power table · **L-0209** Myanmar border fencing · **L-0210** the Free Movement Regime ·
+**L-0211** Bangladesh electricity exports · **L-0212** Sri Lanka debt restructuring.
 
-**THE ROUTE FINDING THAT GOVERNS THIS ITEM.** MEA is the blocked channel, NOT policy primaries as
-a class. `mea.gov.in` returns HTTP 200 serving a JavaScript shell on both the media-briefings and
-press-releases paths (confirmed separately). Institution-specific primaries retrieve completely:
-RBI press releases (`www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=NNNNN`) and PIB line
-ministries via the pinned resolver (94.202.207.57) — Power and Home Affairs both worked first try.
-This was nearly written as the broader claim after Sri Lanka failed; the Maldives was taken next
-BECAUSE its route differed, and it worked. Do not generalise a source-class failure from one host.
+**THE ROUTE FINDING, now confirmed across three ministries.** MEA is the blocked channel, NOT
+policy primaries as a class. `mea.gov.in` returns HTTP 200 serving a JavaScript shell on both the
+media-briefings and press-releases paths. Everything else retrieved first try: RBI press releases
+(`www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=NNNNN`), and PIB with the pinned resolver
+(94.202.207.57) for Power, Home Affairs and the **Prime Minister's Office** — the PMO route is what
+finally opened Sri Lanka after both MEA and Power gave nothing. Three hosts tried before any claim
+about the class, per the rule this phase wrote.
 
-**Sri Lanka: attempted 2026-08-05, NO RECORD.** MEA press-releases path is the shell (200 / 82,799
-bytes, 4,690 chars of chrome, `Loading` present, no body); PIB carried only a 2011 NTPC Trincomalee
-JV reference and nothing current on debt restructuring, energy or ports.
-*Depends on:* an institution-specific route rather than MEA — try the Ministry of Finance or a
-Parliamentary answer. **Partial opening already exists:** the New Madurai–Mannar 1000 MW VSC HVDC
-bipole appears in the Ministry of Power's 2 April 2026 Lok Sabha reply (PRID 2248339, cited by
-L-0208), so the power dimension of Sri Lanka is reachable through Power even though MEA is not.
+**Sri Lanka took three routes to crack.** MEA: shell. Power: the ministry's public-facing documents
+carry NO neighbourhood content at all — Year End Review 2025, "India's Power Sector" (85,545 chars)
+and "Initiatives to achieve uninterrupted power supply" (97,051 chars) all return zero for Sri
+Lanka, Bangladesh, Nepal and Bhutan against passing positive controls. PMO joint statements and
+press remarks on PIB carried it. **Where a bilateral relationship is not in the line ministry's
+output, try the PMO before concluding it is unpublished.**
 
-**Bangladesh: attempted 2026-08-05, NO RECORD.** Three candidates, none groundable.
-- *Adani PPA dues* — stop condition 1: no primary, and the secondaries are incompatible (US$437m
-  all-cleared against US$496m outstanding, July 2026).
-- *Post-transition trade/transit/energy* — MEA's two bilateral briefs are the only T1 sources
-  retrieved and both predate the August 2024 transition (content dated January 2023 and January
-  2024).
-- *The Godda omission* — both briefs contain zero mentions of "Adani" or "Godda" and both give
-  Bangladesh importing 1160 MW. A finding, but it needs a PRIMARY establishing the Godda
-  arrangement before the absence can be claimed, and none was retrieved.
+**Godda: still open after two cycles, and deliberately.** `Godda` and `Adani` are zero across every
+document scanned in both cycles — but the measured export series ENDS at January 2023, before the
+period in which the arrangement could appear. A zero from a document that predates the question is
+not an absence. *Depends on:* any Million Units series covering 2023-24 or later, which would make
+the question answerable for the first time; or a company primary (Adani Power annual report, BSE/NSE
+filing) establishing the arrangement so that its absence elsewhere could be claimed.
 
-*Depends on:* a primary for the Godda PPA — try Adani Power's annual report or an exchange filing
-(BSE/NSE), which are company primaries; or a Bangladesh Power Development Board publication. And a
-post-transition MEA brief, which does not yet exist in retrievable form. **`cea.nic.in` resolves on
-1.1.1.1 (45.127.74.41) and needs an explicit resolver; the cross-border-electricity path 404s.**
-**`www.mea.gov.in/Portal/ForeignRelation/India_Bangladesh_bilateral_brief.pdf` is a soft-404** —
-200 serving HTML. The dated per-year briefs are the ones that work. **New route now available:**
-Maitree STPP (1320 MW) appears in PRID 2248339's generation table, so Bangladesh power is reachable
-through the Power ministry.
+**Environment facts from the two chains.** `rbidocs.rbi.org.in` unreachable (HTTP 000), resolvers
+disagree — 1.1.1.1 → 14.140.169.71, 8.8.8.8 → 1.6.75.39; the RBI PAGE host works, the DOCUMENT host
+does not. PIB `PressReleasePage.aspx?PRID=N` without `&reg=&lang=` 302s to a Hindi variant; append
+`&reg=3&lang=1` or follow with `-L`. `cea.nic.in` needs an explicit resolver (45.127.74.41) and its
+cross-border-electricity path 404s. `www.mea.gov.in/Portal/ForeignRelation/India_Bangladesh_bilateral_brief.pdf`
+is a soft-404 serving HTML.
 
-**Other environment facts from this chain.** `rbidocs.rbi.org.in` is unreachable (HTTP 000) and the
-two resolvers disagree on its address — 1.1.1.1 → 14.140.169.71, 8.8.8.8 → 1.6.75.39; the RBI PAGE
-host works while the DOCUMENT host does not. PIB `PressReleasePage.aspx?PRID=N` without `&reg=&lang=`
-302s to a Hindi variant; append `&reg=3&lang=1` or follow with `-L`.
+**Tooling this arc added.** `node tools/scan-text.mjs <file> <term>...` is now the only sanctioned
+way to scan retrieved text, with `htmlToText` normalising in one place. **Run a positive control
+before banking any zero** — the Power Year End Review returned zero for `export`, which is
+implausible enough to check, and it took 19/86/39/42 control hits to establish the document had
+actually loaded.
 
 ### 5. Pakistan — deferred on retrieval, and the blockage is specific
 

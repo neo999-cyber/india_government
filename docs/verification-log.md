@@ -7149,3 +7149,68 @@ record), scans through the corpus-search helper only, positive controls before a
 rule 5d, the incommensurable category (periods, not currencies, this time), share-shaped and
 derived-quantity discipline (no annualisation, no trend), M2, and author-then-gate.
 
+## Cycle 2026-08-05i — Sri Lanka, on the third route (L-0212)
+
+**Three hosts before a claim about the class, which is the rule working as intended.** MEA: shell.
+Power: the ministry's public-facing documents carry no neighbourhood content whatever — "India's
+Power Sector" (85,545 chars) and "Initiatives to achieve uninterrupted power supply" (97,051 chars)
+both return ZERO for Sri Lanka, Mannar, Madurai, HVDC and `neighbouring`, against positive controls
+of 102 and 18 `electricity`. The Power route yields exactly one table row, already carried by
+L-0208, and a second record on it would have been a thin duplicate. The PMO route on PIB carried
+it. **Generalisable: where a bilateral relationship is absent from the line ministry's output, try
+the PMO before concluding it is unpublished.**
+
+**A false negative from the boundary default, and why it is still the right default.** A scan for
+`Official Creditor` returned 0 on a document that says "Official Creditors' Committee" — `\b` after
+`Creditor` fails against the `s`. The zero was caught because the phrase was visible in another
+term's context window, not because anything flagged it. Recorded as the counterpart to the Fengal
+case: boundaries produce FALSE NEGATIVES on singular-versus-possessive-plural exactly as substring
+matching produces false positives, and the answer is the same one the helper's own header gives —
+**search finds candidates, it does not find records.** No rule change: a false negative costs a
+missed candidate, a false positive costs a fabricated finding, and the defaults are set for the
+asymmetry.
+
+**A search-engine summary asserted a fact no retrieved document supports.** The web search
+mentioned "the conclusion of Bilateral Amendatory Agreements on Debt Restructuring". `Amendatory`
+returns 0 in every document retrieved this cycle. It was NOT used. Rule 3 covers this — a search
+result summary is not a retrieval, and a plausible sentence from a summariser is exactly the kind
+of thing that enters a record unnoticed because it sounds like something a source would say.
+
+**L-0212 — the commitment resolved fast and the money will not add up.** On 16 December 2024 the
+leaders "instructed officials to finalize discussions on the bilateral MoU on Debt Restructuring";
+on 5 April 2025 the Prime Minister spoke of "our bilateral 'Debt Restructuring Agreement'" as
+existing. Delivery inside four months against a commitment carrying no deadline — state (a)
+resolved, and scored as such.
+
+**The measurement finding is a currency mix that inverts the scale.** Four figures across the two
+documents: US$4 billion of "emergency financing and forex support", US$20.66 million for payments
+due under existing Lines of Credit, "more than US$100 million" of loans converted to grants, and
+approximately 2.4 BILLION LANKAN RUPEES for the Eastern Provinces. Two currencies, no rate
+published, a facility aggregate mixed with specific transactions, and one figure that is a floor
+rather than a measurement. The effect worth naming: **the smallest headline commitment in the
+speech carries the largest digits** — 2.4 billion beside 20.66 million. No conversion is performed
+and the caveat says why; applying an external rate would attach a precision the publisher did not
+offer.
+
+**Attribution asymmetry, recorded in both directions.** In the December statement every figure for
+Indian assistance sits in the Sri Lankan President's mouth — thanked for, acknowledged — while the
+Prime Minister's own paragraph contains no number at all. By April the figures are in India's own
+voice. The record states the first as a caseAgainst point and the second as a caseFor point rather
+than using only whichever was sharper.
+
+**Scored `partly`, on a split rather than as a hedge**: the delivery half worked, the measurement
+half does not permit scoring. Same shape as L-0198. The two Line-of-Credit figures are explicitly
+NOT filed as a differentFacts pair — different acts, possibly overlapping, relationship unstated —
+because two dollar figures for debt relief four months apart is the shape of a contest and is not
+one.
+
+**Gates.** build VALID (0 errors, 161 warnings); figure-consistency 8/8; manifest 654 records;
+reachability 848/848 across 634 pages; domain-coverage 14/14, 1099/1099; enum-stamp 2; url-check
+2/2; typecheck clean; selftest exit 0; lens-controls 7 pairs. Charset checked for U+2026 (0). M2:
+prefix equality and length +1 asserted before writing; numstat 59/0.
+
+**Carried rules invoked.** The class-of-sources rule (three hosts), scans through the helper only,
+positive controls before banking a zero, rule 3 against the search summary, the incommensurable
+category (currencies this time), no derived conversions, differentFacts withheld where the shape
+but not the substance was present, M2, author-then-gate.
+
