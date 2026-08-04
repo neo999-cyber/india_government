@@ -7214,3 +7214,48 @@ positive controls before banking a zero, rule 3 against the search summary, the 
 category (currencies this time), no derived conversions, differentFacts withheld where the shape
 but not the substance was present, M2, author-then-gate.
 
+## Cycle 2026-08-05j — the batch-14 rules, and the retry that makes the safe default affordable
+
+**One of the three rules was again a rule about rules, and it is the one that governs the other
+two.** A rule naming a tool as the only sanctioned path requires that path to exist when the rule is
+written. Batch 13 wrote the scan-path rule against a helper that could only read `/data`; batch 14
+built the path. Written into CLAUDE.md immediately after the existing "a rule earned mid-batch is
+written in the same commit" sentence, because it is the same failure one level up — an unfollowable
+rule reads exactly like a control and will be cited by a later cycle as though it had held.
+
+**Applied to itself in the same breath.** The variants rule says a zero is *retried* before being
+banked. Left as prose it would mean "remember to think of plurals", which is the class of
+instruction this file exists to replace. So `variants()` went into the helper and `--variants` into
+the runner, and the rule now names a command.
+
+**`variants()` deliberately generates no possessive form**, and the reason is worth recording so a
+later cycle does not "fix" it: an apostrophe is a non-word character, so `\bOfficial Creditors\b`
+already matches inside both "Official Creditors'" and "Official Creditors\u2019". The PLURAL was the
+missing variant. A possessive form would be a term that can never match anything the plural does
+not. The function is otherwise crude on purpose — English plural rules applied to proper nouns
+produce nonsense that simply scores zero, and over-producing candidates is the cheap direction.
+
+**The runner says so loudly rather than leaving it to the reader.** When the base term scores zero
+and a variant does not, it prints `!! BASE TERM SCORED ZERO BUT A VARIANT DID NOT — do not record
+this as an absence`. A line that read the same either way would leave the author to notice, and the
+author not noticing is exactly what happened the first time.
+
+**Two more controls, and the second is the one that was missing.** The scan-text selftest now
+asserts six things. The Fengal pair proves boundaries refuse a spurious hit; the new pair proves the
+retry recovers the genuine hit boundaries also refuse — `Official Creditor` must score 0 against a
+possessive plural, and `--variants` must recover exactly 1. **A scanner with only the first control
+is safe and silently lossy**, and nothing in the harness would have said so.
+
+Verified against the real document rather than the fixture alone: pointed at the 16 December 2024
+India-Sri Lanka joint statement, `--variants` reports `Official Creditor: 0 (3 across 3 forms)` with
+the warning line and the three `Official Creditors` hits. The historical failure is now caught on the
+document that produced it.
+
+**Third rule: a zero from a document that predates the question is not an absence.** Written with
+the distinction that makes it operative — a CHECKED absence requires the document to be the natural
+place AND to cover the period AND not to carry the item, and only that supports `not-published`.
+Godda named as the standing instance: zero across every document scanned in two cycles, and no
+absence claimed, because the measured series stops before the question becomes answerable. The rule
+records that the two cases are indistinguishable in the count, which is why it has to be checked
+rather than noticed.
+
