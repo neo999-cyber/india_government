@@ -1,0 +1,50 @@
+[
+  {
+    "id": "L-0203",
+    "title": "The 2016 Rafale agreement bought 36 aircraft off the shelf and dropped 108 that were to be built in India, and the item-wise price is withheld under a 2008 bilateral agreement",
+    "date": "2016-09-23",
+    "term": "T1",
+    "domains": ["foreign", "macro"],
+    "lenses": ["defence-sector"],
+    "type": "reform",
+    "summary": "An Inter-Governmental Agreement was signed on 23 September 2016 with France for 36 Rafale aircraft in direct fly-away condition, including weapons, long-term maintenance support, simulators, ten years of annual maintenance and associated equipment. It replaced the Medium Multi Role Combat Aircraft proposal for 126 aircraft, of which 18 were to be direct fly-away and 108 licence-manufactured in India. The fly-away component doubled from 18 to 36; the licence-manufactured component went from 108 to none. The Ministry has declined to publish item-wise cost, citing the confidentiality provisions of a 2008 India-France security agreement, and states that an approximate acquisition cost was given to Parliament.",
+    "claimAtLaunch": "The Ministry's own comparison against the MMRCA proposal, in a Rajya Sabha written reply: \"In the IGA, better terms have been achieved in terms of better pricing, better maintenance terms and better delivery schedule.\" Restated in 2018 as a deal \"better in terms of capability, price, equipment, delivery, maintenance, training\".",
+    "whatHappened": "The structural change is the one the announcement does not lead with. MMRCA was 18 fly-away plus 108 built in India under licence; the IGA is 36 fly-away and nothing built in India. Measured on aircraft procured the programme shrank by 90; measured on aircraft to be manufactured domestically it went to zero. The Ministry's stated grounds for the change concern price, maintenance and delivery — the three axes on which it claims improvement — and the domestic-manufacture element is not among the terms it compares.",
+    "assessment": "contested",
+    "assessmentNote": "Contested, and the reason is that the two sides are arguing about different objectives rather than about the same one. Read as a fighter-acquisition decision the claim is testable in principle on price, maintenance and delivery, and the Ministry asserts improvement on all three. Read as an industrial decision it removed the largest single licence-manufacture commitment in the Indian defence pipeline. Both readings use the same facts, and the record does not choose because the announcement itself does not say which objective governed.",
+    "caseFor": "MMRCA had already failed as a process — the Ministry's account is that the 126-aircraft procurement \"ran aground\" and that a personal ministerial veto in 2012 stopped the institutional process while the Air Force's fighter strength was declining. A licence-manufacture commitment that never produces an aircraft delivers no capability and no industry, and 36 in fly-away condition delivered aircraft on a stated schedule where the alternative had delivered none in fourteen years. The fly-away component actually doubled. A government-to-government agreement also carries state-level obligations that a vendor contract does not, which matters over a ten-year maintenance term.",
+    "caseAgainst": "The industrial content was the part that could not be recovered later, and it was the part dropped. 108 aircraft built in India was the largest transfer-of-manufacture commitment in the pipeline, and nothing in the IGA replaces it — the record shows no licence production, no production line and no equivalent obligation. Against the Aatmanirbharta framing that governs every other record in this arc, the flagship fighter acquisition of the period moved procurement in the opposite direction. And the comparison the Ministry offers cannot be checked: it claims better pricing while declining to publish the price, so the central term of its own defence of the decision is the one term no reader can test.",
+    "differentFacts": false,
+    "differentFactsNote": "No competing accounts of any fact here — the aircraft counts, the dates and the structure are stated once by the Ministry and not disputed in anything retrieved. The disagreement is about which objective the decision should be judged against, which is a difference of frame rather than of fact.",
+    "unmeasured": [
+      {
+        "what": "The item-wise cost of the 2016 Rafale contract",
+        "why": "The Ministry refused it in terms, to an identifiable demand, on 7 February 2018: \"The demand that the Government disclose the details and value of the contract for the Rafale aircraft contracted in 2016 is unrealistic\", on the ground that item-wise cost would reveal customisations and weapons configurations and \"would also come under the ambit of the security agreement signed in 2008\". A named refusal to a specific demand, with a stated legal ground, is what distinguishes withheld from not-published. The same statement says an approximate acquisition cost was provided to Parliament; that figure was not retrieved in this run and no price is stated in this record.",
+        "wouldFill": "The Parliamentary answer carrying the approximate acquisition cost, or the Comptroller and Auditor General's report on the acquisition, which was tabled and would carry the audited comparison.",
+        "reasonKind": "withheld"
+      },
+      {
+        "what": "Whether any domestic-manufacture obligation replaced the 108 licence-built aircraft",
+        "why": "The IGA is described as covering weapons, maintenance, simulators and associated equipment, and nothing retrieved states an offset or transfer-of-manufacture obligation that substitutes for the licence production the MMRCA proposal carried. Absence of a statement is not a statement of absence, and the record says only that none was located.",
+        "wouldFill": "The offset schedule for the 2016 IGA, or a Ministry statement of offset obligations discharged against it.",
+        "reasonKind": "not-published"
+      }
+    ],
+    "caveat": "No price figure appears in this record. The Ministry states that an approximate acquisition cost was given to Parliament, so a public figure exists; it was not retrieved here and none is quoted, inferred or reconstructed. Nothing in this record asserts that the contract value is unknown to Parliament — only that it was not retrieved in this run and that item-wise cost is withheld.",
+    "sources": [
+      {
+        "name": "Ministry of Defence, \"Agreement with France for supply of Rafale Fighter Jets\", PIB, 18 December 2017 — Rajya Sabha written reply of Raksha Mantri Nirmala Sitharaman: the 23 September 2016 IGA for 36 aircraft, the MMRCA structure of 18 fly-away plus 108 licence-manufactured, and the better-pricing/maintenance/delivery claim",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1513011",
+        "tier": "T1"
+      },
+      {
+        "name": "Ministry of Defence, \"Information Relating to Inter-Governmental Agreement on Rafale\", PIB, 7 February 2018 — the refusal to disclose item-wise cost, the 2008 India-France security agreement as its ground, and the statement that an approximate acquisition cost was provided to Parliament",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1519514",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-04",
+    "revisitTrigger": "Re-test if the Parliamentary answer carrying the approximate acquisition cost is retrieved, or if the CAG report on the acquisition is. Either would make the Ministry's own better-pricing claim testable for the first time, which is the term the contested score turns on."
+  }
+]
