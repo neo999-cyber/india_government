@@ -1494,5 +1494,53 @@
   ],
   "status": "live",
   "notes": "This pair exists to name a move the four-value absence vocabulary cannot express. The Government has not refused this figure — there is no refusal anywhere in more than ten dated requests across twenty-five years — and it has not said the figure does not exist. It has, four separate times, supplied an adjacent published number in its place without saying it had substituted. Substitution is neither withholding nor non-collection, and it leaves a reader who was answered believing they were answered. Side a is a real, correct, carefully sourced series, and putting it here is not a criticism of it: the point is precisely that the substitute is a good number for a different question."
- }
+ },
+  {
+    "id": "PR-59",
+    "kind": "contested",
+    "domain": "foreign",
+    "lenses": [
+      "china"
+    ],
+    "title": "India's imports from China: the two countries' own figures, same year, same commodity basis",
+    "a": {
+      "series": "india-china-imports-indian-basis",
+      "label": "India reports (CIF)"
+    },
+    "b": {
+      "series": "india-china-imports-chinese-basis",
+      "label": "China reports (FOB)"
+    },
+    "framing": "Both governments publish this flow and they do not agree. India reports US$126.963bn for calendar 2024; China reports US$120.463bn. Neither is the corrective and neither may be shown alone, because a reader given one figure would take it for the figure.",
+    "gapComputable": false,
+    "gapReason": "The DIFFERENCE is arithmetic — US$6.500bn in 2024, 5.40 per cent of the Chinese figure — but it is not a gap, and the schema is right to refuse the word for a contested pair. A gap is a shortfall of one quantity against another that bounds it; this is the size of a disagreement between two authorities measuring the same flow, and neither bounds the other. The magnitude is stated because it is evidence about the CAUSE: an importer-minus-exporter excess of that order is consistent with the CIF/FOB valuation convention, which is what makes the 20.80 per cent excess on the opposite flow (PR-60) the anomaly rather than this one. Subtracting it would produce a third number no one publishes.",
+    "provenanceRefs": [
+      "P-119"
+    ],
+    "status": "live"
+  },
+  {
+    "id": "PR-60",
+    "kind": "contested",
+    "domain": "foreign",
+    "lenses": [
+      "china"
+    ],
+    "title": "India's exports to China: the direction where the divergence is too large to be freight",
+    "a": {
+      "series": "india-china-exports-indian-basis",
+      "label": "India reports (FOB)"
+    },
+    "b": {
+      "series": "india-china-exports-chinese-basis",
+      "label": "China reports (CIF)"
+    },
+    "framing": "China records more Indian goods arriving than India records leaving — US$17.999bn against US$14.899bn in calendar 2024. The importer's figure exceeding the exporter's is the expected direction, but the size is not: 20.80 per cent where the mirror flow shows 5.40. The pair exists because the anomaly is only visible when both sides are held together; either series alone reads as an ordinary export series.",
+    "gapComputable": false,
+    "gapReason": "The difference is US$3.099bn in 2024, 20.80 per cent of India's figure, and it is a disagreement rather than a gap for the same reason as PR-59: neither side bounds the other. The magnitude is the whole point of the pair — it is four times the excess on the mirror flow and beyond what freight and insurance explain. The leading candidate is entrepot attribution through Hong Kong, sized in P-119 as large enough to contain it and NOT established as its cause.",
+    "provenanceRefs": [
+      "P-119"
+    ],
+    "status": "live"
+  }
 ]

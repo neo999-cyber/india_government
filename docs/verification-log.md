@@ -5030,3 +5030,177 @@ domain-coverage     14/14 domain surfaces · 1047/1047 record-to-surface
 url-check           10/10 confirmed
 lens-controls       4 paired controls, both members asserted
 ```
+
+---
+
+# Verification log — cycle 2026-08-04c (phase 14 batch 2: the India-China mirror; arc C deferred)
+
+**Appended, not rewritten.** `/data` diff for this cycle: `115 1` on `ledger/foreign-trade.json`,
+`49 1` on `pairs.json`, `48 1` on `provenance.json`, and a new `series/foreign-trade.json`. The one
+deletion per appended file is the last record's closing brace gaining a comma. **That shape was
+declared before the edit and is the whole of M2's point** — see below, because the first attempt
+produced a very different one.
+
+## M2 in action: the record count said clean and the diff said otherwise
+
+The merge was written, then verified by comparing parsed record IDs before and after. It reported
+**CLEAN — every expected record added, none removed.** The diff, run immediately after, reported
+`1544 1496` on `pairs.json` and `4492 4445` on `provenance.json`: a whole-file reformat, because the
+merge re-serialised each file with a JSON writer whose formatting differs from the file's own.
+
+The record-level check is a writer's-count equivalent. It asked the question the writer would have
+answered and got the answer the writer intended. **A non-zero report with the wrong diff is a
+failure, and only the diff could see it.** Reverted and re-done as an anchored append that finds the
+array's closing bracket, detects the indent from the file being written, and inserts before it.
+Pre-existing records then verified byte-identical after parse, independently of the writer.
+
+This is the second cycle running in which a script reported success over an edit that had not
+landed as intended — phase 14 batch 1 had a silent no-op backfill. Same lesson, different shape.
+
+## The lens split, declared before writing
+
+The brief asked for the per-country decision before authoring, not after counting. A corpus scan was
+run first and **discarded as evidence**, exactly as phase 13 discarded its keyword sweep:
+
+| term | records mentioning it | what the mentions actually are |
+|---|---|---|
+| China | 15 | all but two are peer-panel comparators or supply-chain context — "China+1", "56% of China's yield" |
+| Pakistan | 6 | four are J&K governance records referring to Pakistan-administered TERRITORY; one is a COVID comparator |
+| Bangladesh | 7 | peer-panel comparator in almost every case — BGD is in the fixed peer panel |
+| Sri Lanka, Nepal | 1 each | the COVID school-closure comparator series |
+| Maldives, Bhutan, Myanmar | 0 | — |
+
+**Decision: `china` alone in this batch; no per-country neighbourhood lens.** Pakistan's four
+existing records refer to territory inside records whose subject is J&K governance, and using them
+to justify a `pakistan` lens would be authoring judgement on shipped records performed *in order to
+earn the value* — which inverts the criterion. Arc C's own Pakistan material is same-domain
+`foreign`. If it later forms a file it earns the value then, which is what the schema already says.
+
+## Arc B — the mirror, built deliberately
+
+Both sides retrieved, same period basis, same commodity basis (HS TOTAL, calendar year), each
+country's own submission.
+
+| CY2024, US$bn | India reports | China reports | difference |
+|---|---|---|---|
+| India's imports from China | 126.963 (CIF) | 120.463 (FOB) | 6.500 — **5.40%** |
+| India's exports to China | 14.899 (FOB) | 17.999 (CIF) | 3.099 — **20.80%** |
+| the bilateral balance | 112.064 deficit | 102.464 surplus | **9.600** |
+
+**The valuation convention is visible operating in both directions**, which is itself the evidence
+that it is operating: the importer's figure is the higher one on each flow, as CIF-against-FOB
+predicts. And that is precisely what makes the second row the finding. 5.40 per cent is what freight
+and insurance plausibly add. **20.80 per cent is not freight.**
+
+The entrepot candidate is **sized, not asserted**. India's reported exports to Hong Kong were
+US$6.498bn in 2024 — large enough to contain the US$3.099bn unexplained excess, which establishes
+the channel is big enough to be the explanation and not that it is one. Settling it needs
+origin-basis data neither side publishes. Recorded as a sized candidate in P-119's bridgeNote.
+
+## Mirror against single-sided — the distinction carried explicitly
+
+**CY2025 is not a mirror and L-0191 exists to stop it being read as one.** India reports imports of
+US$149.495bn, up 17.75 per cent. China has filed nothing for 2025.
+
+**The zero was localised before it was recorded**, per the amended control rule — relax one
+restriction at a time until it flips:
+
+| query | count |
+|---|---|
+| China, 2025, partner India, exports | **0** |
+| relax period to 2024 | 1 |
+| relax partner to WORLD | **0** |
+| relax partner to USA | **0** |
+| relax reporter to India | 124 |
+
+The restriction that flips it is the **period**. So the finding is that China has reported no
+calendar-2025 annual data at all, for any partner — not that the India pair is missing from a return
+that exists. A zero that stays zero under partner relaxation and flips only on period is a citable
+zero, and this one is cited.
+
+`differentFacts` is **true** on L-0190 and **false** on L-0191, and the note on L-0191 says why in
+terms: an absent counterparty figure is an absence, not a dispute, and marking it otherwise would
+file a single-sided number in the same category as a genuine mirror.
+
+## The schema won an argument, and applying it was the improvement
+
+PR-59 and PR-60 were authored with `gapComputable: true`, on the reasoning that the difference's
+size is evidence about its cause. The schema rejects that: `kind: contested` implies
+`gapComputable: false`. **The schema is right.** A gap is a shortfall of one quantity against
+another that bounds it; two authorities measuring the same flow do not bound each other, and calling
+their difference a gap implies one is the corrective. Rewritten to `false` with the magnitude stated
+in `gapReason` as the size of a disagreement. No figure was lost and the precision improved. Applied,
+not amended — no new principle was required, so no stop.
+
+## Arithmetic hand-check — sixteen figures, and the check caught its own method
+
+All balances, differences, percentages and growth rates recomputed independently. One line flagged:
+the export-side excess computed to 20.81 per cent against 20.80 as written.
+
+**The record was right and the check was wrong.** It re-derived the ratio from series values already
+rounded to three decimals, which inflates the numerator by 0.05 per cent. Recomputed from the
+unrounded source: 20.8027 per cent, so 20.80 to two places, and the written figure stands. Recorded
+because the failure mode is worth naming — a hand-check that recomputes from published rounded
+figures rather than from source will disagree with correct prose and look like a finding.
+
+## url-check reported five sources unverifiable, and the cause was url-check
+
+All five are UN Comtrade API queries returning **HTTP 429**. The tool classifies 429 with 403 as "the
+host answered and refused an automated client" and does not fail on it. But 429 is rate limiting, and
+the rate it was limiting was the gate's own: eight requests to one host in immediate succession.
+
+Re-fetched one at a time with eight seconds between: **8 of 8 returned HTTP 200.** Every one had
+already been retrieved in this run — the data in the records came from them.
+
+**Logged, not fixed.** A per-host delay or a single 429 retry would close it, but that is fetch-layer
+work in a gate whose fixtures run in recorded mode, and doing it hastily in a data cycle is how a
+gate loses its fixtures' meaning. Nothing is blocked: url-check does not fail on unverifiable. The
+exposure to note is that a genuinely dead URL could hide among self-inflicted 429s, which is a real
+degradation of the gate's signal and is why this is owed rather than merely noticed.
+
+## Arc C — NOT AUTHORED, and why
+
+Stop condition 1 fired on its central record and the rest was not worth doing piecemeal.
+
+- **Permanent Court of Arbitration** (`pca-cpa.org`) — the Indus Waters awards, including the
+  supplemental award on competence and the 2026 award on pondage. **403 with a Cloudflare
+  interstitial from two independent clients.** Not bypassed.
+- **MEA** (`mea.gov.in`) — the 23 April 2025 special briefing at which the abeyance was announced.
+  Host does not resolve under the system resolver; resolves identically on 1.1.1.1, 8.8.8.8 and
+  9.9.9.9 to 13.224.236.14. With an explicit resolver it returns **HTTP 200 and 82KB of page
+  chrome**: the transcript body loads by JavaScript and is not in the document. A 200 serving no
+  document is not a retrieval, and Rule 3 forbids citing it. A rendering client was tried and
+  navigation was denied.
+- **The Indus Waters Treaty text** on MEA's legal-treaties portal retrieves as a 5MB PDF — and it is
+  a **scan with no text layer**, 113 bytes of extractable text. Citable as the instrument, not
+  quotable, so Article XII cannot be read against the abeyance claim.
+
+What retrieves and would carry a properly-sourced arc C: PIB press releases (static HTML, full text,
+confirmed), RBI press releases (confirmed), UN Comtrade for every bilateral flow (confirmed). The
+IMF country pages return 403. Arc C is deferred whole rather than authored around its own centre.
+
+`neighbourhood` is correspondingly **not** in the lens enum, which is the rule working rather than an
+omission: a lens is admitted when its records land.
+
+## Not touched, per the brief
+
+L-0021 and the US-tariff-currency sweep (its own cycle after batch 3). Back-links,
+transfer-dependence, term-window, the 313 roots, B-4, Gazette, busy.in/nrega.nic.in, delimitation,
+Agnipath. The `defence-sector` backfill was already run in batch 1 and was re-confirmed present
+rather than re-run: 12 ledger records and 13 series carry it, and they appear in the lens reference
+total below.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 143 warnings
+typecheck           clean
+selftest            OK — 23/23 validator rules; 2/2 output gates fire on their own fixtures
+reachability        785/785 declared marks reachable on their own record page (610 pages)
+domain-coverage     14/14 domain surfaces · 1059/1059 record-to-surface
+                    6/6 lens surfaces built and linked · 216/216 record-to-lens
+lens-empty          quiet — all six lenses populated
+url-check           3/8 confirmed in-gate, 5 rate-limited; all 8 re-confirmed 200 when spaced
+lens-controls       5 paired controls + exact-membership assertions for all three phase-14 lenses
+arithmetic          16 figures hand-checked; one flag traced to the check's own method
+```

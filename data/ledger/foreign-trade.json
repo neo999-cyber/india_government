@@ -229,5 +229,119 @@
     "confidence": "high",
     "asOf": "2026-08-04",
     "revisitTrigger": "Re-test once PPAC's import-export tables or DGCIS country-wise crude imports have been retrieved. Both are named above as routes and neither was reached in this run; retrieving either converts the first unmeasured item into a series and makes the Russian share of the import bill measurable."
-  }
+  },
+    {
+        "id": "L-0190",
+        "title": "The India-China merchandise deficit has two values, and the gap between them is larger than most bilateral relationships",
+        "date": "2023-01-01",
+        "dateEnd": "2024-12-31",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "macro"
+        ],
+        "lenses": [
+            "china"
+        ],
+        "type": "episode",
+        "summary": "For calendar 2024 India's own submitted figures give a bilateral merchandise deficit with China of US$112.064bn. China's own submitted figures give a bilateral surplus with India of US$102.464bn. The two balances differ by US$9.600bn, up from US$6.584bn in 2023. Part is the ordinary CIF-against-FOB valuation convention, which is visible operating in both directions. The remainder is not: on the India-to-China flow China records 20.80 per cent more arriving than India records leaving, against 5.40 per cent on the flow the other way.",
+        "assessment": "no-objective",
+        "assessmentNote": "No measure and no objective — this is a state of the measurement, not a policy that was announced to do something. It is a ledger record rather than only a provenance record because the quantity it concerns is cited constantly in argument about the relationship, and a reader reaching for 'the' deficit needs to meet the fact that there are two before they meet either.",
+        "caseFor": "The divergence is ordinary in kind and mostly ordinary in size. Bilateral statistics diverge between every pair of countries for reasons that are documented and uncontroversial: the importer values CIF and the exporter FOB, so the importer's figure is systematically higher, and that is exactly the pattern here in both directions. The larger residual has a well-known and plausible mechanism in entrepot trade through Hong Kong, whose scale — India's reported exports to Hong Kong were US$6.498bn in 2024 — is comfortably sufficient to contain it. Nothing here suggests either statistical authority is misreporting.",
+        "caseAgainst": "Ordinary in kind is not the same as immaterial in size, and the size is the point. A US$9.600bn discrepancy is larger than India's entire reported merchandise trade with most of its partners, and it sits inside the single number that carries the most weight in argument about this relationship. The 20.80 per cent excess on Indian exports is not explained by valuation and the entrepot account remains a sized candidate rather than a demonstrated cause, because neither side publishes the origin-basis data that would settle it. And the direction matters politically: the deficit that India cites is the larger of the two available figures, and the surplus China cites is the smaller — each government's own statistics flatter its own account of the imbalance.",
+        "differentFacts": true,
+        "differentFactsNote": "This is the genuine article and not a difference of emphasis. The two sides publish different numbers for the same flow in the same year on the same commodity basis, and each is authoritative for its own jurisdiction. The instrument carries both, computes the gap because the gap's size is evidence about its cause, and picks neither.",
+        "seriesRefs": [
+            "india-china-imports-indian-basis",
+            "india-china-imports-chinese-basis",
+            "india-china-exports-indian-basis",
+            "india-china-exports-chinese-basis"
+        ],
+        "provenanceRefs": [
+            "P-119"
+        ],
+        "sources": [
+            {
+                "name": "UN Comtrade, India as reporter (699), partner China (156), flow M, HS TOTAL, annual 2024",
+                "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2024&partnerCode=156&flowCode=M&cmdCode=TOTAL",
+                "tier": "T2"
+            },
+            {
+                "name": "UN Comtrade, China as reporter (156), partner India (699), flow X, HS TOTAL, annual 2024",
+                "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=156&period=2024&partnerCode=699&flowCode=X&cmdCode=TOTAL",
+                "tier": "T2"
+            },
+            {
+                "name": "UN Comtrade, India as reporter (699), partner China (156), flow X, HS TOTAL, annual 2024",
+                "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2024&partnerCode=156&flowCode=X&cmdCode=TOTAL",
+                "tier": "T2"
+            },
+            {
+                "name": "UN Comtrade, China as reporter (156), partner India (699), flow M, HS TOTAL, annual 2024",
+                "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=156&period=2024&partnerCode=699&flowCode=M&cmdCode=TOTAL",
+                "tier": "T2"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-04",
+        "revisitTrigger": "Re-test when China files its calendar-2025 annual return with UN Comtrade. That return is what makes a 2025 mirror possible at all, and it will show whether the 20.80 per cent export-side excess is a level or a trend."
+    },
+    {
+        "id": "L-0191",
+        "title": "Calendar 2025 has an Indian figure and no Chinese one, so it is not a mirror and must not be read as one",
+        "date": "2025-01-01",
+        "dateEnd": "2025-12-31",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "macro"
+        ],
+        "lenses": [
+            "china"
+        ],
+        "type": "episode",
+        "summary": "India reports importing US$149.495bn from China in calendar 2025 and exporting US$18.086bn to it — an Indian-basis deficit of US$131.409bn, and a 17.75 per cent rise in imports over 2024. China had filed no calendar-2025 annual return with UN Comtrade as at 4 August 2026. The 2025 figure is therefore single-sided: there is nothing to disagree with it, which is not the same as agreement.",
+        "assessment": "no-objective",
+        "assessmentNote": "A state of the measurement, not a measure. Recorded separately from L-0190 rather than folded into it precisely because folding it in is the error: a table showing 2023, 2024 and 2025 with two columns for the first two years and one for the third invites the reader to treat the 2025 column as the settled figure, when it is the only figure.",
+        "caseFor": "The Indian series is not weakened by the absence of a Chinese one. It is India's own submission on the same basis it has used in every prior year, it is internally consistent with 2023 and 2024, and a 17.75 per cent rise is large but not anomalous against a 4.10 per cent rise the year before. Waiting for a counterparty's return before reading one's own statistics would make every recent year unusable.",
+        "caseAgainst": "Every previously testable year has been wrong by billions, in a consistent direction, and the untested year is being read as though that record did not exist. On 2024's evidence the Chinese-basis import figure would be roughly five per cent lower and the Chinese-basis balance roughly nine per cent narrower than the Indian one — so the single-sided 2025 deficit of US$131.409bn is, on the pattern, an upper bound presented without the qualification the two earlier years both carry. The rise itself is the figure most likely to be quoted and the least likely to be quoted with the caveat.",
+        "differentFacts": false,
+        "differentFactsNote": "There is no second account to differ with. That is the record's subject rather than a reason to mark it: an absent counterparty figure is an absence, not a dispute, and marking it differentFacts would put a single-sided number in the same category as the genuine mirror in L-0190 — which is the exact confusion this record exists to prevent.",
+        "seriesRefs": [
+            "india-china-imports-indian-basis",
+            "india-china-imports-chinese-basis",
+            "india-china-exports-indian-basis"
+        ],
+        "provenanceRefs": [
+            "P-119"
+        ],
+        "unmeasured": [
+            {
+                "what": "China's own figures for its calendar-2025 trade with India",
+                "why": "China had filed no calendar-2025 annual return with UN Comtrade as at 4 August 2026, and the zero was localised before it was recorded. Relaxing the partner from India to the world left it at zero; relaxing it to the United States left it at zero; relaxing the reporter from China to India returned a full 2025 return. The restriction that flips the result is the period, so the finding is that China has not yet reported 2025 at all — not that the India pair is missing from a return that exists.",
+                "wouldFill": "China's calendar-2025 annual submission to UN Comtrade, or the General Administration of Customs of China's own 2025 annual statistics.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "sources": [
+            {
+                "name": "UN Comtrade, India as reporter (699), partner China (156), flow M, HS TOTAL, annual 2025",
+                "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2025&partnerCode=156&flowCode=M&cmdCode=TOTAL",
+                "tier": "T2"
+            },
+            {
+                "name": "UN Comtrade, India as reporter (699), partner China (156), flow X, HS TOTAL, annual 2025",
+                "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2025&partnerCode=156&flowCode=X&cmdCode=TOTAL",
+                "tier": "T2"
+            },
+            {
+                "name": "UN Comtrade, China as reporter (156), partner India (699), flow X, HS TOTAL, annual 2025 — returns zero records; the query is cited because the empty result is the finding",
+                "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=156&period=2025&partnerCode=699&flowCode=X&cmdCode=TOTAL",
+                "tier": "T2"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-04",
+        "revisitTrigger": "Re-test when China's calendar-2025 return appears in UN Comtrade. At that point this record either becomes a second mirror year and merges into L-0190's argument, or the absence persists and becomes a finding about Chinese reporting rather than about one year."
+    }
 ]

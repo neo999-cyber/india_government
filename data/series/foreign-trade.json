@@ -1,0 +1,160 @@
+[
+  {
+    "id": "india-china-imports-indian-basis",
+    "title": "India's merchandise imports from China, as India reports them",
+    "unit": "US$ billion",
+    "domain": "foreign",
+    "lenses": [
+      "china"
+    ],
+    "tier": "T2",
+    "source": {
+      "name": "UN Comtrade, India as reporter (699), partner China (156), flow M, HS TOTAL, annual — the figure India itself submitted",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2024&partnerCode=156&flowCode=M&cmdCode=TOTAL"
+    },
+    "calendar": "CY",
+    "higherIsBetter": false,
+    "notes": "CIF — India values imports inclusive of cost, insurance and freight, which is the ordinary convention for an import series and is stated here because the mirror series it is paired with is FOB. Calendar year, not financial year: the Chinese side reports on calendar years only, and a mirror comparison that put an Indian April-March total beside a Chinese January-December total would manufacture a divergence out of the calendar. Indian financial-year figures for the same flow are published by DGCIS and are not these numbers.",
+    "provenanceRefs": [
+      "P-119"
+    ],
+    "points": [
+      {
+        "country": "IND",
+        "period": "2023",
+        "value": 121.967,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2024",
+        "value": 126.963,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2025",
+        "value": 149.495,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "id": "india-china-imports-chinese-basis",
+    "title": "India's merchandise imports from China, as China reports them",
+    "unit": "US$ billion",
+    "domain": "foreign",
+    "lenses": [
+      "china"
+    ],
+    "tier": "T2",
+    "source": {
+      "name": "UN Comtrade, China as reporter (156), partner India (699), flow X, HS TOTAL, annual — the figure China itself submitted",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=156&period=2024&partnerCode=699&flowCode=X&cmdCode=TOTAL"
+    },
+    "calendar": "CY",
+    "higherIsBetter": false,
+    "notes": "FOB — China values exports free on board, excluding freight and insurance, which is the ordinary convention for an export series. The FOB/CIF difference is the part of the divergence from the Indian-basis series that is expected and quantifiable, and it does not account for all of it.",
+    "provenanceRefs": [
+      "P-119"
+    ],
+    "caveat": "This series stops at 2024 and the stop is not a data gap in the ordinary sense. China had submitted no annual returns to UN Comtrade for calendar 2025 as at 4 August 2026 — for any partner, not only India — so the 2025 mirror does not exist rather than being unretrieved. The Indian-basis series runs a year longer for that reason alone, and the two must not be read as diverging in 2025: only one of them has a 2025.",
+    "unmeasured": [
+      {
+        "what": "China's reported exports to India for calendar 2025",
+        "why": "China had filed no calendar-2025 annual return with UN Comtrade as at 4 August 2026. Confirmed by relaxing the query one restriction at a time: relaxing the partner from India to the world, and to the United States, left the result at zero; relaxing the reporter from China to India returned a full 2025 return. The restriction that flips the zero is the period, and the finding is therefore China's non-reporting of 2025 in general, not an India-specific gap.",
+        "wouldFill": "China's calendar-2025 annual submission to UN Comtrade, or the General Administration of Customs of China's own annual statistics for 2025.",
+        "reasonKind": "not-published"
+      }
+    ],
+    "points": [
+      {
+        "country": "IND",
+        "period": "2023",
+        "value": 117.679,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2024",
+        "value": 120.463,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "id": "india-china-exports-indian-basis",
+    "title": "India's merchandise exports to China, as India reports them",
+    "unit": "US$ billion",
+    "domain": "foreign",
+    "lenses": [
+      "china"
+    ],
+    "tier": "T2",
+    "source": {
+      "name": "UN Comtrade, India as reporter (699), partner China (156), flow X, HS TOTAL, annual — the figure India itself submitted",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2024&partnerCode=156&flowCode=X&cmdCode=TOTAL"
+    },
+    "calendar": "CY",
+    "higherIsBetter": true,
+    "notes": "FOB. Paired with the Chinese-basis series below, this is the direction where the divergence is far larger than valuation explains — 20.8 per cent in 2024 against 5.4 per cent on the import side.",
+    "provenanceRefs": [
+      "P-119"
+    ],
+    "points": [
+      {
+        "country": "IND",
+        "period": "2023",
+        "value": 16.245,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2024",
+        "value": 14.899,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2025",
+        "value": 18.086,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "id": "india-china-exports-chinese-basis",
+    "title": "India's merchandise exports to China, as China reports them",
+    "unit": "US$ billion",
+    "domain": "foreign",
+    "lenses": [
+      "china"
+    ],
+    "tier": "T2",
+    "source": {
+      "name": "UN Comtrade, China as reporter (156), partner India (699), flow M, HS TOTAL, annual — the figure China itself submitted",
+      "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=156&period=2024&partnerCode=699&flowCode=M&cmdCode=TOTAL"
+    },
+    "calendar": "CY",
+    "higherIsBetter": true,
+    "notes": "CIF. China records more Indian goods arriving than India records leaving for China — 17.999 against 14.899 in 2024 — and the excess is far beyond what freight and insurance add.",
+    "provenanceRefs": [
+      "P-119"
+    ],
+    "caveat": "Stops at 2024 for the same reason as the import-side Chinese series: China had filed no calendar-2025 annual return with UN Comtrade as at 4 August 2026, for any partner.",
+    "points": [
+      {
+        "country": "IND",
+        "period": "2023",
+        "value": 18.541,
+        "status": "verified"
+      },
+      {
+        "country": "IND",
+        "period": "2024",
+        "value": 17.999,
+        "status": "verified"
+      }
+    ]
+  }
+]

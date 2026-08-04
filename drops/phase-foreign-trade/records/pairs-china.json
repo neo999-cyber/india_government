@@ -1,0 +1,30 @@
+[
+  {
+    "id": "PR-59",
+    "kind": "contested",
+    "domain": "foreign",
+    "lenses": ["china"],
+    "title": "India's imports from China: the two countries' own figures, same year, same commodity basis",
+    "a": { "series": "india-china-imports-indian-basis", "label": "India reports (CIF)" },
+    "b": { "series": "india-china-imports-chinese-basis", "label": "China reports (FOB)" },
+    "framing": "Both governments publish this flow and they do not agree. India reports US$126.963bn for calendar 2024; China reports US$120.463bn. Neither is the corrective and neither may be shown alone, because a reader given one figure would take it for the figure.",
+    "gapComputable": true,
+    "gapReason": "The gap is computable and worth computing — US$6.500bn in 2024, 5.40 per cent of the Chinese figure — because its SIZE is the evidence about its cause. An importer-minus-exporter excess of that order is consistent with the CIF/FOB valuation convention, which is what makes the 20.80 per cent excess on the opposite flow (PR-60) the anomaly rather than this one. A gap that is computable is not thereby a correction: subtracting it would produce a third number no one publishes.",
+    "provenanceRefs": ["P-119"],
+    "status": "live"
+  },
+  {
+    "id": "PR-60",
+    "kind": "contested",
+    "domain": "foreign",
+    "lenses": ["china"],
+    "title": "India's exports to China: the direction where the divergence is too large to be freight",
+    "a": { "series": "india-china-exports-indian-basis", "label": "India reports (FOB)" },
+    "b": { "series": "india-china-exports-chinese-basis", "label": "China reports (CIF)" },
+    "framing": "China records more Indian goods arriving than India records leaving — US$17.999bn against US$14.899bn in calendar 2024. The importer's figure exceeding the exporter's is the expected direction, but the size is not: 20.80 per cent where the mirror flow shows 5.40. The pair exists because the anomaly is only visible when both sides are held together; either series alone reads as an ordinary export series.",
+    "gapComputable": true,
+    "gapReason": "US$3.099bn in 2024, 20.80 per cent of India's figure. Computable, and NOT a correction to either side: the leading candidate for the excess is entrepot attribution through Hong Kong, sized in P-119 as large enough to contain it and not established as its cause.",
+    "provenanceRefs": ["P-119"],
+    "status": "live"
+  }
+]
