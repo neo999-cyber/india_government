@@ -70,6 +70,15 @@ report with an empty or wrong diff is a failure, not a success. **A JSON round-t
 way to edit a file whose formatting you did not choose**: four whole-file reformats were caught this
 way, each reported clean by the script that caused it.
 
+**A correction guard asserts a presence, never an absence.** When a record is corrected, the
+withdrawn wording survives in the sentence that records the withdrawal — that is the form every
+correction in this instrument takes, because stating the change inside the record is what
+distinguishes a correction from a silent edit. **A guard that forbids a token therefore fails on a
+correctly corrected record.** Assert the specific string in its specific context — "the withdrawn
+phrase appears exactly once, inside the sentence beginning CORRECTED" — not that it is gone. Caught
+in cycle 2026-08-05b, where a guard demanding the absence of "binding" aborted an edit that had
+correctly withdrawn the word and said so.
+
 **Assert per record, never sweep.** A keyword or pattern search generates CANDIDATES; the judgement
 is made per record and written down per record. Three substring sweeps in one phase produced 59, 197
 and 7 false candidates respectively. **Word boundaries are the default** in corpus search
