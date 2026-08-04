@@ -6877,3 +6877,71 @@ not a retrieval) and "clean partial beats thin records". Maldives: rule 1 (read 
 diffing /data against a declared shape), the incommensurable category (two currencies not summed),
 eligibility-is-not-utilisation as the derived-quantity discipline of rule 5c, and author-then-gate.
 
+## Cycle 2026-08-05e — arc C policy: Nepal and Bhutan (L-0207, L-0208)
+
+**Route.** PIB with the pinned resolver (94.202.207.57), Ministry of Power. Three releases
+retrieved complete, no shell, no `Loading`: PRID 2250426 (9 Apr 2026, 79,441 bytes), PRID 2222533
+(3 Feb 2026, 69,925 bytes), PRID 2248339 (2 Apr 2026, 263,569 bytes — a Lok Sabha written reply).
+This confirms the narrower finding from cycle 2026-08-05d: MEA is the blocked channel, the line
+ministries via PIB are not.
+
+**L-0207 — the price was settled after the power started flowing.** Punatsangchhu-II (1020 MW)
+commenced export to India on 19 September 2025 "at a mutually agreed starting tariff"; the Tariff
+Protocol was signed 9 April 2026, six months and three weeks later. The 3 February 2026 release
+places the two ministers still deliberating "the commercial optimization of power output" more
+than four months after export began — so the terms were not merely unpublished but UNFINISHED
+while the asset ran. No tariff figure exists in the public record for either period, and neither
+does the Protocol's effective date, so whether it reopens the interim sales is unknown. Two
+`unmeasured`, both `not-published`: the figures exist in both governments' hands, and no
+identifiable refusal was located, which is what keeps them short of `withheld`.
+
+Scored `worked` and the note fences the score explicitly: it is scored on DELIVERY ONLY. The plant
+was built, commissioned and exports. The commercial terms are not scored and cannot be — no tariff
+is published and no revenue or volume target was announced. The note tells the reader in terms:
+take this as saying the electricity flows, not that the deal is good.
+
+**L-0208 — a capacity column with no status column.** The 2 April 2026 written reply sets out
+thirteen generation projects with installed capacity and thirty cross-border transmission links,
+under one heading, with no commissioning status for any of them. Table-1 lists MoUs by their
+PARTIES ALONE — no title, no date, no term, no status — which is rule 5d exactly: an existence
+claim carrying none of the source content.
+
+**The omission was demonstrated, not asserted.** The temptation was to mark the unbuilt rows from
+background knowledge; that would have been an unretrieved source claim. Instead the defect is
+shown from the Ministry's own releases in the same period: Punatsangchhu-II (1020 MW) commenced
+export 19 September 2025, while Punatsangchhu-I (1200 MW) was the subject of a call for "early
+commissioning" on 3 February 2026. One row exports and one is not built, and they are adjacent in
+the same column under the same unit. Every other row's status is left unmeasured rather than
+guessed — including Arun-3 and Lower Arun, for which nothing was retrieved.
+
+**Same unit, different quantity — the incommensurable category inside one table.** Built and
+unbuilt plant are both stated in megawatts, and the shared unit CONCEALS the difference rather
+than exposing it. The record therefore states no total and performs no sum, and the caveat says
+so. This is the sharpest instance of category 3 so far: the earlier ones were incommensurable
+across two sources, this one is incommensurable within one column.
+
+**Source defect recorded.** The Nepal transmission list skips serial 13 and prints serial 14
+twice; the two errors cancel and the final serial reaches 30 correctly. The counts in the record
+(15 · 9 · 3 · 2 · 1 = 30 links, 13 generation projects) are counts of ROWS AS PRINTED, not of the
+source's serials, and the caveat states that this is why.
+
+**Gate caught a real error.** L-0208 was first authored `baseline-context`; validate refused it —
+"assessment `baseline-context` is for pre-May-2014 records only, but term is T3" — and the correct
+value was `no-objective`, since the reply announces no target, date or outcome for anything it
+lists. The assessmentNote was rewritten with the assessment rather than left describing the old
+one. Recorded because the gate did the work an author's self-review had not.
+
+**Gates (after the fix).** build VALID (0 errors, 155 warnings); figure-consistency 7/7;
+manifest 650 records; reachability 833/833 across 630 pages; domain-coverage 14/14 surfaces,
+1091/1091 references; enum-stamp 2 fixtures; url-check 3/3 confirmed; typecheck clean;
+validate:selftest exit 0; lens-controls 7 paired controls. M2: merge asserted the parsed prefix
+equal to the pre-merge array AND the length exactly +2 before writing; `git diff --numstat`
+showed 108 insertions, 0 deletions.
+
+**Carried rules invoked.** Rule 1 (read at quote — every figure and phrase taken from the
+retrieved text, not from summary), rule 3 (no unretrieved source — the 10,000 MW framing that
+surfaced in search was NOT used, since its release was never retrieved), rule 5d (existence claim
+vs source-content claim, for Table-1), the incommensurable category, "observe the effect, don't
+match the spelling" (status inferred from two Ministry releases, not from the table's wording),
+M2, and author-then-gate.
+
