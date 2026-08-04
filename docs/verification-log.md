@@ -6812,3 +6812,68 @@ dispute. This is a finding about the source class and it applies to every countr
 Rule 3 (a 200 serving HTML is not a PDF retrieval) · rule 5d (an absence not localised is not a
 finding) · stop condition 1 scoped to the record · M1 (cea.nic.in retried with an explicit resolver
 before any conclusion) · incommensurability (import flow against plant capacity, not compared).
+
+## Cycle 2026-08-05d — arc C policy: Sri Lanka (no record) and Maldives (L-0206)
+
+**Sri Lanka — attempted, no groundable record.** The route is MEA, and MEA is the blocked
+channel. `mea.gov.in/press-releases.htm` returned HTTP 200 / 82,799 bytes, of which 4,690 chars
+were chrome with `Loading` present and no body — the same JS-shell failure already recorded for
+the media-briefings path, now confirmed on a second path of the same host. Rule 3 governs: a 200
+serving a JS shell is not a retrieval. A PIB search returned one 2011 NTPC Trincomalee joint-venture
+reference and nothing current on debt restructuring, the energy arrangements or the ports. No
+record was authored. Clean partial beats thin records.
+
+**The generalisation that was NOT drawn.** Before writing a source-class finding — "policy
+primaries for the neighbourhood are unretrievable" — the next country was tested precisely
+because it has a DIFFERENT route. The Maldives currency swap is an RBI instrument, not an MEA
+one, and RBI retrieved completely on the first attempt. So the finding is narrower and more
+useful than the one nearly written: **MEA is the blocked channel; institution-specific primaries
+(RBI, and PIB for the line ministries) work.** The near-miss is recorded because a source-class
+claim generalised from one host would have been wrong in the direction that suppresses records.
+
+**Retrieval facts (this cycle).**
+- `www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx?prid=58839` — HTTP 200, complete body text,
+  no shell. Working route for RBI press releases.
+- `rbidocs.rbi.org.in` — HTTP 000 (timeout). M1 retry from a second process with an explicit
+  resolver also failed, and the two resolvers DISAGREE on its address: 1.1.1.1 → 14.140.169.71,
+  8.8.8.8 → 1.6.75.39. Recorded as an environment fact, not a source judgement — the document
+  host is unreachable here while the page host is not.
+- `mea.gov.in/press-releases.htm` — JS shell, second confirmed path.
+
+**L-0206 — the Maldives swap.** Authored from the RBI press release alone. The finding is the
+distinction the published number invites a reader to collapse: **US$400 million is an eligibility,
+not a drawing.** The agreement establishes what the Maldives Monetary Authority MAY access under
+the SAARC Currency Swap Framework 2024-27; nothing published by either side states how much was
+drawn, when, or whether it was repaid. That is the record's one `unmeasured`, reasonKind
+`not-published`, with the RBI Weekly Statistical Supplement and Annual Report named as the routes
+that would fill it.
+
+Scored `no-objective` rather than too-early or worked. The framework states a purpose — a backstop
+for short-term foreign-exchange liquidity or balance-of-payments stress — but the bilateral
+agreement announces no target, and **a backstop that is never drawn is not thereby a failure.** An
+unused facility may be doing exactly what a facility does. Scoring it would require an objective
+neither party stated.
+
+**The two windows are not added.** US$400 million and INR 30 billion are stated in different
+currencies with no exchange rate and no combined figure in the source, and the SAARC framework
+operates windows within an overall facility size the announcement does not give. The record
+converts nothing and sums nothing; the caveat says so explicitly. This is the incommensurable
+category applied inside a single source rather than across two.
+
+Expiry 18 June 2027 is a date, not a condition, so the record is testable on its own terms —
+`revisitTrigger` names it, and notes that expiry without a published drawing would leave the
+facility's use unmeasured for its entire life, which is itself the finding.
+
+**Gates.** Authored then gated once. build VALID (0 errors); figure-consistency 7/7 declared
+claims; manifest 648 records; reachability 826/826; domain-coverage 14/14 surfaces, 1087/1087
+references; enum-stamp 2 fixtures against 8 lenses / 14 domains; url-check 1/1 confirmed;
+typecheck clean; validate:selftest exit 0; lens-controls 7 paired controls with both members
+asserted. M2: the merge diffed /data with the expected shape declared before writing — parsed
+prefix asserted equal to the pre-merge array, never the writer's count.
+
+**Carried rules invoked.** Sri Lanka: rule 3 (no unretrieved source; a 200 serving a JS shell is
+not a retrieval) and "clean partial beats thin records". Maldives: rule 1 (read at quote), M1
+(reachability retested from a second process with the resolver varied), M2 (write verified by
+diffing /data against a declared shape), the incommensurable category (two currencies not summed),
+eligibility-is-not-utilisation as the derived-quantity discipline of rule 5c, and author-then-gate.
+
