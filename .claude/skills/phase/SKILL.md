@@ -98,6 +98,27 @@ completion notification (parents report completion while their children write).
 mtimes rather than assurances.** The spec's "a stage may not run against partial input" is right and
 had no mechanism behind it. This is the mechanism.
 
+**The producer-side half, added 2026-08-04 and paid for at roughly two million tokens.** Phase 13's
+stage 2 ran seven `opus` agents that fanned out freely and each held its report in context to write
+at the end. The session limit hit mid-stage and **five of seven parts had ZERO BYTES ON DISK** — all
+the retrieval was real, all of it was lost, and `STATE.md` could only record that it had happened.
+
+The fix is one instruction in every research brief: **create the output file in the first few tool
+calls and APPEND each section as it is finished; never hold the report in context to write at the
+end. Cap fan-out at 2.** It was tested the hard way — two more agents died under the new rule and
+**both survived, at 165 KB and 68 KB.** That is the difference between a liveness failure costing a
+retry and costing the whole stage. Consumer-side re-reading cannot recover a file that was never
+written; only the producer can.
+
+**Corollary, and it is the THIRD instance of this shape: a structural check passes on a stub.**
+Part 06's `## FORWARD REFERENCES` section existed, and its entire content was `_(pending)_`. A
+header-presence check pronounced the part complete, and the forward-reference assertion — the very
+gate that exists to stop stage 3 running on partial research — counted zero outbound references from
+that part and read it as "needs nothing" rather than "never written". **A completeness check asserts
+CONTENT, never the presence of a heading.** The cheap form is a floor on substantive characters
+after the heading and an explicit scan for placeholder tokens; the honest form is that a section
+claiming to enumerate something must enumerate it or say "none, because —".
+
 ### M3 — A negative result is worth exactly what the sweep behind it is worth
 
 Phase 12's parliamentary sweep matched only double-quoted `href="…"`. MHA's 2019 pages emit single
@@ -197,6 +218,16 @@ The brief must, however, always require:
 - For every contested item: the strongest case on **each** side, in its own terms, using its own preferred data. Then identify whether the two rest on **different facts** or on different weightings of the same facts.
 - First-class findings for: data not collected, not published, withheld, never defined; definitional breaks; reporting-base shifts; and any quantity where two sources disagree.
 
+**Two operational requirements on every stage-2 brief, both from M2's producer-side half:**
+
+1. **The agent creates its output file in its first few tool calls and appends each section as it is
+   completed.** Not at the end. A research agent that dies holding its report loses everything, and
+   phase 13 lost five parts of seven that way in a single run.
+2. **Fan-out is capped at 2 concurrent descendants.** Uncapped fan-out is what exhausted the session
+   in the first place, and a descendant's model is unenforceable anyway (see model routing).
+
+State both in the brief in those words. A brief that omits them is not a stage-2 brief.
+
 ### 3 — Author
 
 Dispatch an `opus` subagent. **This is the stage that matters** — see model routing.
@@ -272,6 +303,24 @@ gates and neither auto-fixes; both name candidates for a judgement.
   `integrity.mjs`**, on domain coverage, as an error. Do not leave a check in the tree that is named
   for a case it cannot isolate.
 
+**`url-check` runs on the drop, and needs `--drop` to see it.**
+
+```
+node tools/url-check.mjs --drop <drop-records-dir>
+```
+
+The default mode diffs `/data` against `origin/main`. On a `--dry` run the drop deliberately never
+reaches `/data`, so the default reports **"0 to check"** and exits clean — a right answer about the
+wrong tree, and the fifth instance of that shape in this project. It is also the mode in which the
+gate matters most: the drop is the moment before the citations become load-bearing, and after a
+merge it is too late to be cheap. Observed 2026-08-04 on phase 13, whose 63 new URLs the tool could
+not see at all and which had to be checked by hand outside it.
+
+`--drop` reads the flat drop layout (`ledger.json` beside `series.json`, not `ledger/*.json`) and
+implies `--all`, because every URL in a drop is new and there is no base to diff against. Same
+predicate, same three outcomes — **a 401/403/429 is a refusal, not evidence the document is absent**
+— and the same fixtures. Only the corpus reader changes.
+
 **Arithmetic in every summary must match the authored points, and no tool does this.** It is read by
 hand, against the points and against `parts/`. It caught a wrong ratio in the phase-9 debt patch, and
 in the education run it caught a Ministry share stated against the wrong denominator and wrong by a
@@ -320,6 +369,16 @@ Every mark that can be suppressed by a competing view must render **on the page 
 ### 8 — Log and PR
 
 Draft the verification-log entry as an **append-only delta with a cycle letter in the heading**. Open a PR. **Never append to the log directly** — it has two authors and wholesale replacement has destroyed correct work three times.
+
+**A gate's exit code does not survive a pipe. Read the summary line, not the shell status.**
+Observed 2026-08-04: `url-check` was invoked as `node tools/url-check.mjs … | tail -25`, so the
+shell reported the exit status of `tail` — **0** — while node had exited **1** on a real failure.
+The harness logged a clean run. Nothing in the output was wrong; the wrong thing was read.
+
+This is the same family as the PR-status rule below, and the two should be read together: in both,
+a status field is a *proxy* for the thing you care about, and the proxy is supplied by something
+other than the process that knows the answer. **Assert on the gate's own report — `url-check OK`,
+`STAGE 4 CLEAN`, `599/599` — not on `$?`, and not on a status field some intermediary produced.**
 
 **After any merge, verify the artefact exists on `main`. Never read the PR status.** A stacked PR
 whose base has already landed merges into a dead branch and is a silent no-op for `main`, and every

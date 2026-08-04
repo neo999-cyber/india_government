@@ -202,6 +202,30 @@ anyway:
    The gate catches one of the two regressions it was built for, and the selftest now asserts that
    limitation so it cannot quietly evaporate.
 
+4. **A fourth, 2026-08-04, and it is the one that names the pattern.** The `.xls` branch. `EXPECTED`
+   mapped both spreadsheet extensions to the sentinel `'spreadsheet'`, which matches OOXML's
+   `…spreadsheetml.sheet` and **can never match a legacy workbook's `application/vnd.ms-excel`**. A
+   correctly-served `.xls` was therefore reported as a soft-404 — the failure mode the content-type
+   branch exists to catch, produced by the branch itself. It surfaced only on the phase-13 drop,
+   because `/data` carries no `.xls` citation at all.
+
+**The pattern, now that there are four: this tool's fixture set is shaped by the INCIDENTS THAT
+MOTIVATED EACH FIXTURE, not by the space of inputs the predicate accepts.** Every fixture here was
+written after something broke — two guessed URLs, a soft-404 on a `.pdf`, an archive wildcard, a
+403. Nothing ever enumerated the content types the table claims to know about, so `.csv`, `.json`
+and both spreadsheet branches went unpinned for as long as no record happened to cite one. **A
+fixture set built incident-first is complete with respect to the past and says nothing about the
+present.** That is why the tool has now been surprised four times, and why the fourth surprise was
+in a lookup table small enough to read in one line.
+
+Two consequences worth acting on rather than noting: **where a rule consults a lookup table, pin
+every branch of the table, not the branches that have failed** — the phase-13 fix added both
+spreadsheet types and a selftest assertion that fails if either is dropped. And **a stays-quiet
+fixture must be able to assert on its own output, not merely its exit code.** The selftest helper
+here returned an empty string on the success path, so for as long as it existed no assertion about
+a passing run's report could fire at all; the both-branches check was written, was correct, and
+silently could not run.
+
 **Consequence:** a fixture pair is evidence about the *implementation*, not about the *predicate*.
 Where a rule's predicate depends on how the world actually answers — status codes, content types,
 transport behaviour — run it against the real corpus before trusting the fixtures, and expect the

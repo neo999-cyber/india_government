@@ -20,7 +20,21 @@
  *   node tools/url-check.mjs                      # URLs added or changed against origin/main
  *   node tools/url-check.mjs --base HEAD~1
  *   node tools/url-check.mjs --all                # every URL in the corpus
+ *   node tools/url-check.mjs --drop <dir>         # an unmerged drop, flat layout, all URLs
  *   node tools/url-check.mjs --responses <json>   # fixture mode, no network
+ *
+ * DROP MODE, AND WHY THE DEFAULT MODE CANNOT COVER IT. The default diffs `/data` against
+ * `origin/main`, so on a `--dry` run — where the drop deliberately never reaches `/data` — it finds
+ * nothing to check and reports "0 to check". That is a right answer about the wrong tree, and it is
+ * the mode in which a phase most needs this gate: the drop is the moment before the citations become
+ * load-bearing. Observed 2026-08-04 on phase 13, whose 63 new URLs the tool could not see at all and
+ * which had to be checked by hand outside it.
+ *
+ * Two things differ in a drop and both are structural, not cosmetic. The layout is FLAT —
+ * `ledger.json` beside `series.json`, not `ledger/*.json` — because a drop is one cycle's records,
+ * not the corpus's file partition. And every URL is by definition new, so there is no base to diff
+ * against: `--drop` implies `--all`. Same predicate, same three outcomes, same fixtures; only the
+ * corpus reader changes.
  *
  * FIXTURE MODE. `--responses` supplies a recorded url -> {status, contentType} map, so both
  * fixtures are deterministic and neither needs the network. The fires-correctly fixture is not
@@ -40,11 +54,15 @@ const arg = (flag, fallback) => {
 };
 const has = (flag) => process.argv.includes(flag);
 
-const DATA_DIR = arg('--data', join(ROOT, 'data'));
+const DROP = arg('--drop', null);
+const abs = (p) => (p.startsWith('/') ? p : join(ROOT, p));
+const DATA_DIR = DROP ? abs(DROP) : arg('--data', join(ROOT, 'data'));
 const SCHEMAS_DIR = join(ROOT, 'schemas');
 const BASE = arg('--base', 'origin/main');
 const RESPONSES = arg('--responses', null);
-const CHECK_ALL = has('--all');
+// A drop has no base to diff against — every URL in it is new. Asking for a diff would silently
+// check nothing, which is the exact failure this mode exists to close.
+const CHECK_ALL = has('--all') || Boolean(DROP);
 
 // ---------------------------------------------------------------- schema-derived URL paths
 /**
@@ -76,9 +94,21 @@ const dirFiles = (sub) => {
   const d = join(DATA_DIR, sub);
   return existsSync(d) ? readdirSync(d).filter((f) => f.endsWith('.json')).map((f) => join(d, f)) : [];
 };
+/**
+ * A layer lives in `<layer>/*.json` in `/data` and in a flat `<layer>.json` in a drop. Both are
+ * tried, in that order, so one reader serves both corpora and drop mode needs no second code path.
+ * The flat form is a fallback rather than an alternative: if the directory exists it wins, so a
+ * stray `ledger.json` beside `ledger/` in `/data` can never quietly shadow the real layer.
+ */
+const layerFiles = (sub) => {
+  const dir = dirFiles(sub);
+  if (dir.length > 0) return dir;
+  const flat = join(DATA_DIR, `${sub}.json`);
+  return existsSync(flat) ? [flat] : [];
+};
 const LAYER_FILES = {
-  series: () => dirFiles('series'),
-  ledger: () => dirFiles('ledger'),
+  series: () => layerFiles('series'),
+  ledger: () => layerFiles('ledger'),
   provenance: () => [join(DATA_DIR, 'provenance.json')].filter(existsSync),
   pairs: () => [join(DATA_DIR, 'pairs.json')].filter(existsSync),
 };
@@ -150,7 +180,21 @@ function readCorpusAt(ref) {
  * Where the URL states no extension, no content-type is asserted — guessing one would invent a
  * contract the source never offered.
  */
-const EXPECTED = { '.pdf': 'application/pdf', '.csv': 'text/csv', '.json': 'application/json', '.xlsx': 'spreadsheet', '.xls': 'spreadsheet' };
+/**
+ * `.xls` IS NOT `.xlsx`, AND THE SENTINEL THAT MATCHES ONE CANNOT MATCH THE OTHER.
+ *
+ * These values are substrings tested against the served content-type. `'spreadsheet'` matches
+ * `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`, which is the modern OOXML
+ * type — and it matches nothing a legacy `.xls` is ever served as. The registered type for `.xls`
+ * is `application/vnd.ms-excel`, which contains no such substring, so before 2026-08-04 a
+ * correctly-served legacy spreadsheet could NEVER pass: it was reported as a soft-404.
+ *
+ * Observed on the phase-13 drop, on the archived PPAC excise-tariff table cited by three records.
+ * It answered 200 with `application/vnd.ms-excel` — the right document, correctly served — and the
+ * gate called it a failure. This is a WRONG LOOKUP, not a loosened threshold: the fix makes the
+ * table state the fact about MIME types it was always trying to state.
+ */
+const EXPECTED = { '.pdf': 'application/pdf', '.csv': 'text/csv', '.json': 'application/json', '.xlsx': 'spreadsheet', '.xls': 'ms-excel' };
 const expectationFor = (url) => {
   try { return EXPECTED[extname(new URL(url).pathname).toLowerCase()] ?? null; } catch { return null; }
 };

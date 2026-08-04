@@ -3506,5 +3506,942 @@
    }
   ],
   "notes": "The Commission's own entry conditions are the reason this record does not assert that the reorganisation caused the zero, and they cut both ways. Fifteenth Finance Commission grants are conditional on notified property-tax floor rates, on accounts being available online before and after audit at individual, State and all-India level, and on accounting-system reform, with transfer required within ten working days and interest payable on delay - and the territory has no published local-bodies audit at all and no State Finance Commission report anywhere. So a conditionality explanation for non-release is available on retrieved documents and has a precedent with a stated cause in the Twelfth Finance Commission period. What no retrieved document does is state which explanation applies to 2019-20, and none should be asserted."
+ },
+ {
+  "id": "P-100",
+  "title": "\"Cesses and surcharges as a share of gross tax revenue\" has four defensible values for the same year, and no evidentiary disagreement anywhere in the spread",
+  "whatChanged": "No Indian statute, budget document or Finance Commission report defines \"cesses and surcharges\" as a set. Article 270(1) excludes them from the divisible pool and supplies no list and no test, and the Union's Receipt Budget carries no total line. The aggregate can only be built by a reader selecting line items, and four published sources have selected four different sets. For FY2024-25 the same underlying collections give 9.98, 13.94, 13.74 or 17.71 per cent of gross tax revenue depending on whether the GST Compensation Cess and the Special Additional Excise Duty are counted — a spread of 7.7 percentage points, larger than the entire rise the series is used to demonstrate.",
+  "when": "Continuous; the two decisive ambiguities enter in FY2017-18 (the GST Compensation Cess) and FY2018-19 (a reclassification under which the same money is counted as both a cess and a surcharge).",
+  "affectsDomains": [
+   "macro",
+   "federalism"
+  ],
+  "affectsSeries": [
+   "cess-surcharge-share-gtr",
+   "cess-surcharge-share-gtr-excl-compcess"
+  ],
+  "correctiveSeries": [
+   "divisible-pool-share-gtr"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "bridgeNote": "No bridge is possible without a definition, and no definition exists. What is available instead is the residual: rather than summing the levies, measure the pool. divisible-pool-share-gtr does that, is certified by the auditor for six years, and requires nobody's characterisation of what a cess is.",
+  "competingAccounts": [
+   {
+    "holder": "Fifteenth Finance Commission, Table 3.8",
+    "position": "19.9 per cent for FY2018-19 — cesses and surcharges, direct and indirect, INCLUDING the GST Compensation Cess, over gross tax revenue."
+   },
+   {
+    "holder": "The same table with its own compensation-cess row subtracted",
+    "position": "15.3 per cent for FY2018-19. The Commission publishes both rows precisely so the subtraction can be made, and the two series move in OPPOSITE directions in FY2017-18."
+   },
+   {
+    "holder": "Vidhi Centre for Legal Policy, study for the Fifteenth Finance Commission",
+    "position": "11.884 per cent for FY2018-19 (Budget Estimate) as cesses alone and 6.366 per cent as surcharges alone — figures that may not be added, because the study's own footnote 502 discloses that the Health and Education Cess on income tax sits in both tables."
+   },
+   {
+    "holder": "The Union, in its memorandum to the Sixteenth Finance Commission (para 7.45)",
+    "position": "6.7 per cent over the FC-XV period — cesses only, excluding the compensation cess, on a gross REVENUE receipts denominator rather than a gross tax revenue one."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Fifteenth Finance Commission, Volume I — Main Report, Table 3.8 (p. 67) and para 4.25",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/XVFC%20VOL%20I%20Main%20Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Vidhi Centre for Legal Policy, \"Cesses and Surcharges: Concept, Practice and Reform\", study for the Fifteenth Finance Commission, August 2018 — Annexures I-C and II-C and footnote 502",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/15th-FC/reports/studies/Cesses%20and%20Surcharges.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Sixteenth Finance Commission, Volume I — Main Report, paras 7.43-7.47 and 7.67",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Union Receipt Budget 2026-2027 — Tax Revenue statement line items and note 6.05 on the Special Additional Excise Duty",
+    "url": "https://www.indiabudget.gov.in/doc/rec/allrec.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "All four sources ultimately report the same Department of Revenue collection figures: the Vidhi cess table cites a CAG report which is itself reporting the Union's collections; the Commission's table states its source as \"Union Budget documents\"; and the 6.7 per cent is the Union's own. There is ONE measurement and four presentations of it. The apparent range from 6.7 to 19.9 contains no evidentiary disagreement whatsoever, and every point of it is a definitional choice made by a party or by a body that party appointed. This spread must never be presented as uncertainty about the world."
+ },
+ {
+  "id": "P-101",
+  "title": "\"Collected\" is not \"credited to the Fund\", and only the auditor publishes the difference",
+  "whatChanged": "Two accounting events are both called cess revenue. The Union's number is collections under the receipt head, published in every Receipt Budget, and it is the number on which every share in P-100 is built. The fund's number is credits to the reserve fund in the Public Account, published in the Union Government Finance Accounts. Neither party publishes the difference. The Comptroller and Auditor General's number IS the difference, and it exists only because the auditor performs a subtraction that neither account performs on itself.",
+  "when": "Every Union financial audit report from FY2015-16 to FY2024-25.",
+  "affectsDomains": [
+   "macro",
+   "federalism",
+   "governance"
+  ],
+  "affectsSeries": [
+   "gst-compensation-cess-collected"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": true,
+  "bridgeNote": "The bridge exists and is the audit report. It is not published by either party to the transfer, is produced annually and retrospectively, and is the only place the quantity appears. On the GST Compensation Cess the bridge produced a result: a short-crediting of ₹47,272 crore across FY2017-18 and FY2018-19, the Ministry's acceptance in February 2020, and a correction in FY2019-20.",
+  "competingAccounts": [
+   {
+    "holder": "The Union's Receipt Budget",
+    "position": "Collections under the receipt head. Not wrong, and not a statement about whether the designated fund received anything."
+   },
+   {
+    "holder": "The Union Government Finance Accounts",
+    "position": "Credits to the reserve fund. Also not wrong, and also not a statement about collections."
+   },
+   {
+    "holder": "The Comptroller and Auditor General",
+    "position": "The difference. FY2018-19: 35 cesses, ₹2,74,592 crore collected against ₹1,64,322 crore transferred. FY2022-23: four funds, ₹2,41,220.26 crore collected against ₹344.48 crore transferred, with \"Fund not created as yet\" against two of them. FY2024-25: ₹2,94,150 crore of crude-oil cess retained in the Consolidated Fund since FY1974-75."
+   },
+   {
+    "holder": "The Ministry of Finance, recorded by the auditor in FY2021-22",
+    "position": "That transfers are made \"over a period of years\" rather than in the year of collection. The auditor records the defence and rejects it in the same paragraph."
+   }
+  ],
+  "sources": [
+   {
+    "name": "CAG, Report No. 4 of 2020 — Accounts of the Union Government (Financial Audit), FY2018-19, paras 2.5 and 2.5.1 and Table 2.8",
+    "url": "https://cag.gov.in/uploads/download_audit_report/2020/Report%20No.%204%20of%202020_Eng-05f808ecd3a8165.55898472.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "CAG, Report No. 21 of 2023 — Union Government Finance Accounts, FY2021-22, para 3.6.1 A (the Ministry's defence and the rejoinder, both verbatim)",
+    "url": "https://cag.gov.in/uploads/download_audit_report/2023/Report-No.-21-of-2023-Finance-English-PDF-A-DSC-064d501d8224738.38514342.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "CAG, Report No. 4 of 2025 — Union Government Finance Accounts, FY2022-23, para 3.3.1 and Figure 3.3",
+    "url": "https://cag.gov.in/uploads/download_audit_report/2025/Report-No.-4-of-2025-UGFAR_2022-23_English-dt.12.08.25-0689cb35d71ba25.22138946.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "CAG, Report No. 16 of 2025 — Union Government, FY2023-24, para 3.3.1 (short transfer ₹3,69,307 crore) and the Ministry of Finance against Union Government Finance Accounts discrepancy of ₹1,01,520.24 crore, \"This needs to be reconciled by the Ministry\"",
+    "url": "https://cag.gov.in/uploads/download_audit_report/2025/Report-No.-16-of-2025-,-Union-Government(new)-06a2ba3e7b60ca0.79473602.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "CAG, Report No. 6 of 2026 — Union Government, FY2024-25, para 3.3.1 and Figure 3.8",
+    "url": "https://cag.gov.in/uploads/download_audit_report/2026/6of2026UGEng-069ce496f1158e0.22682438.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "This is one of only two instruments in this phase that pass the independence test in its strong form: the input comes from one party's records, the comparator from another set of records, the operation is the auditor's, and the output appears in neither party's account of itself. It produced an admission and a correction, which is what a disciplining measure is for. Note separately that two Union statements of one quantity — cumulative Health and Education Cess transfers to FY2023-24 — differ by ₹1,01,520.24 crore, disclosed by the auditor and unreconciled; whether that is a definitional difference or an error is stated by nobody, and its being unknown is itself the finding."
+ },
+ {
+  "id": "P-102",
+  "title": "The divisible pool has no independently published basis: the Article 279 certificate exists for seventy-six years and was disclosed once, by the paying party",
+  "whatChanged": "Article 279(1) has required the Comptroller and Auditor General to certify the net proceeds of Union taxes since 1950 and makes the certificate final. It has never been published as a document of the CAG. The Regulations on Audit and Accounts 2020 contain zero occurrences of \"net proceeds\", \"proceeds\" or \"279\", so no regulation governs its form, timing or content. Its first and only publication in any form is Annex 4C of the Union's own Receipt Budget 2026-2027, for FY2023-24, made on a Sixteenth Finance Commission recommendation the Union accepted in February 2026. Five earlier years reach the public record only as a row inside a Finance Commission table sourced to \"CAG certificate\".",
+  "when": "1950 to date; first disclosure February 2026 for FY2023-24.",
+  "affectsDomains": [
+   "federalism",
+   "macro",
+   "governance"
+  ],
+  "affectsSeries": [
+   "cag-certified-net-proceeds",
+   "divisible-pool-share-gtr"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "There is no published bridge between the Receipt Budget's gross tax revenue and the certified net proceeds. Union excise reconciles from published data to about ₹5 crore in 34 lakh and corporation tax to about ₹1,122 crore, but customs does not reconcile at all: ₹32,136.74 crore, 13.8 per cent of the head, is unexplained, and duty-credit-scrip debits, the obvious candidate, are recorded at nil for FY2023-24. At the whole-tax-revenue level the residual is 1.27 percentage points of gross tax revenue, about ₹44,000 crore. Recorded as an unresolved discrepancy between two Union publications, not as an error in either.",
+  "sources": [
+   {
+    "name": "The Constitution of India, Legislative Department, as on 1 May 2024 — Article 279(1)-(2)",
+    "url": "https://cdnbbsr.s3waas.gov.in/s380537a945c7aaa788ccfcdf1b99b5d8f/uploads/2024/07/20240716890312078.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Comptroller and Auditor General of India, Regulations on Audit and Accounts 2020 — searched in full for \"net proceeds\", \"279\" and \"proceeds\": zero occurrences; Regulation 43(1) read",
+    "url": "https://cag.gov.in/uploads/media/Approved-Regulation-english-063736a4209c9d0-79243461.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Union Receipt Budget 2026-2027, Annex 4C and Annex 1",
+    "url": "https://www.indiabudget.gov.in/doc/rec/allrec.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Sixteenth Finance Commission, Volume I — Main Report, Table 7.4 and paras 7.25-7.30",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "CAG audit-report index sweep with positive control, which returned seventeen Union reports for 2020 including the one then downloaded and read, and no document containing \"net proceeds\"",
+    "url": "https://cag.gov.in/en/audit-report?gt=50&yrf=2020&yrt=2020",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The consequence for every fiscal series in this drop: the divisible pool has an independently certified basis for six years out of sixteen, and even those six reach the public through the paying party or through a Commission the paying party appoints. The CAG's own Union Government Finance Accounts reports carry a footnote reserving the certificate — \"subject to final ascertainment and certification under Article 279(1)\" — so the auditor itself signals that the number in front of the reader is not the certified one."
+ },
+ {
+  "id": "P-103",
+  "title": "Finance Commission award boundaries are real breaks and no devolution series may be spliced across them",
+  "whatChanged": "Every quantity keyed to a Finance Commission award changes at an award boundary, and three of the four boundaries in this instrument's window change something other than the headline number. FY2014-15 to FY2015-16 is a real increase, 32 to 42 per cent. FY2019-20 to FY2020-21 is NOT a cut: it is a denominator change, Jammu and Kashmir leaving the set of states, with FC-XV stating it kept the balance \"broadly equivalent\" and FC-XVI estimating the erstwhile state's share at approximately 1 per cent of the pool. FY2020-21 to FY2021-22 is the boundary between FC-XV's one-year first report and its final report, which carry different inter-se shares. FY2025-26 to FY2026-27 is a new award whose vertical share does not move at all but whose horizontal formula, criteria and entire grant architecture do — so an inter-se series breaks there even though the vertical series does not.",
+  "when": "FY2015-16, FY2020-21, FY2021-22 and FY2026-27.",
+  "affectsDomains": [
+   "federalism",
+   "macro"
+  ],
+  "affectsSeries": [
+   "fc-vertical-devolution-share",
+   "fc-devolution-share-of-gtr",
+   "fc-grants-share-of-gtr",
+   "fc-devolution-rupees",
+   "divisible-pool-share-gtr"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "No Commission reconciles its award to its predecessor's. FC-XVI states the position for the horizontal formula in terms at para 8.62: \"even if we were to retain the exact same criteria and associated weights as the FC-15, the States' shares shift significantly due to the updation of underlying data\" — so formula effect and data effect are not separable across a boundary, and the Commission says so.",
+  "sources": [
+   {
+    "name": "Fourteenth Finance Commission, Report (2015-20), paras 8.10-8.14",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/14th-FC/14thFCReport.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Fifteenth Finance Commission, Volume I — Main Report, paras 6.9 and 6.29",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/XVFC%20VOL%20I%20Main%20Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Sixteenth Finance Commission, Volume I — Main Report, paras 7.16, 7.67-7.68 and 8.62",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Thirteenth Finance Commission, Report 2010-2015, Volume I, para 8.17",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/13th-FC/english/13fcreng.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The most consequential misreading this record exists to prevent is treating 42 to 41 as a cut. It is a denominator change and every published account of it, including the states' own umpire's, says so."
+ },
+ {
+  "id": "P-104",
+  "title": "\"The states' share of central taxes\" has four denominators, all in current use and all correct",
+  "whatChanged": "The same transfer is expressed against four different bases and the resulting numbers differ by more than the whole quantum of any dispute about them. Against the divisible pool it is 41 or 42 per cent — the Finance Commission's recommendation. Against gross tax revenue it is about 32 per cent — what the Union's own accounts show going out. Against gross revenue receipts, which adds non-tax revenue to the denominator, the Union's figure to the Sixteenth Finance Commission is more than 49 per cent once grants are included. Against certified net proceeds it is 41 per cent again, but on an audited base that exists for six years only.",
+  "when": "Continuous.",
+  "affectsDomains": [
+   "federalism",
+   "macro"
+  ],
+  "affectsSeries": [
+   "fc-vertical-devolution-share",
+   "fc-devolution-share-of-gtr",
+   "divisible-pool-share-gtr"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": true,
+  "bridgeNote": "The bridge between the first two is divisible-pool-share-gtr, and it is built in this drop: 41 per cent of a pool that is 79.9 per cent of gross tax revenue is 32.8 per cent of gross tax revenue, which is where the second figure comes from. The bridge to the gross-revenue-receipts figure is not built here, because the Union does not publish the components it used.",
+  "competingAccounts": [
+   {
+    "holder": "The states, in their memoranda to the Sixteenth Finance Commission",
+    "position": "Eighteen of twenty-eight states asked for 50 per cent of the divisible pool. Named exceptions: Sikkim; Madhya Pradesh (48 on a whole-gross-tax-revenue pool or 40.7 on a whole-gross-revenue-receipts pool); Nagaland 48; Assam 45; Himachal Pradesh 41."
+   },
+   {
+    "holder": "The Union, in its counter-memorandum to the same Commission",
+    "position": "That states already receive more than 49 per cent of Gross Revenue Receipts — a different denominator from the one the states argue on, and one that includes grants and non-tax revenue."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Sixteenth Finance Commission, Volume I — Main Report, paras 7.36-7.41 (the states' asks, counted by the Commission), 7.43-7.47 (the Union's counter-memorandum) and Table 7.5",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Union Receipt Budget 2026-2027 — Abstract of Receipts, Annex 1 and Annex 4C",
+    "url": "https://www.indiabudget.gov.in/doc/rec/allrec.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The states' 50 per cent demand is a count of pleadings, not a measurement, and must be labelled as such wherever it renders — though it is a genuine T1 quantity, because the Commission counted the pleadings and published the count. The state memoranda themselves are not published on the Commission's site: everything known here about state positions is the umpire's paraphrase of them, not the documents."
+ },
+ {
+  "id": "P-105",
+  "title": "Entitlement, release and cash in the accounts are three quantities, and two tables inside one Commission report differ by up to ₹46,640 crore",
+  "whatChanged": "Devolution appears in a Finance Commission report twice, computed two ways, a hundred pages apart, with no reconciliation between them. Table 7.4 row 7 gives the entitlement ATTRIBUTED TO a fiscal year after retrospective adjustment against the certified pool. Annexure 7.1 gives the cash MOVED IN a fiscal year, including adjustments belonging to earlier years. For FY2018-19 to FY2022-23 the two differ by plus 37,350, minus 31,988, minus 19,751, plus 46,640 and minus 22,023 crore. Both are correct on their own definition.",
+  "when": "FY2018-19 onward, being the years for which a certified pool exists.",
+  "affectsDomains": [
+   "federalism",
+   "macro"
+  ],
+  "affectsSeries": [
+   "fc-devolution-rupees",
+   "fc-devolution-share-of-gtr",
+   "fc-grants-share-of-gtr"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "The Commission publishes both tables and reconciles neither. The consequence is arithmetically exact: on a year-by-year cash basis devolution ranged 39.68 to 44.21 per cent of the certified pool while the recommended share was a flat 41 or 42 per cent. A state reading its own receipts in a single year will see a number that is not 41 per cent, and it will be right.",
+  "competingAccounts": [
+   "The same distinction runs through the grants side in a third form. On grants there are three quantities and not two: what the Commission recommended, what the Union accepted, and what was released. Aggregating them produces a figure of 77.7 per cent of FC-XV grants released, but ₹1,79,586 crore of the ₹10,33,062 crore recommended was never accepted, so that ratio conflates money withheld with money never promised. The two must be reported separately or not at all."
+  ],
+  "sources": [
+   {
+    "name": "Sixteenth Finance Commission, Volume I — Main Report, Tables 7.4 and 7.5",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Sixteenth Finance Commission, Volume II — Annexures, Annexure 7.1",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol2-Annexures.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Fifteenth Finance Commission, Volume I — Main Report, Table 10.12 — the recommendation baseline of ₹10,33,062 crore",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/XVFC%20VOL%20I%20Main%20Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Lok Sabha Unstarred Question No. 139, answered 22 July 2024, Ministry of Finance (Department of Expenditure) — the recommended-against-released tabulation by category",
+    "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/182/AU139_A79t7F.pdf?source=lsapps",
+    "tier": "T1"
+   }
+  ],
+  "notes": "\"Recommended versus actual\" is two different questions with opposite answers, and which one is being asked is almost never stated. Against the entitlement the Union has overpaid in some years and underpaid in others, netting close to zero; against the recommendation on grants it has released substantially less, and part of the difference is money it openly declined."
+ },
+ {
+  "id": "P-106",
+  "title": "Two reporting-base shifts move money between statements without moving it in the world: the FY2014-15 routing change and the FY2021-22 Single Nodal Agency model",
+  "whatChanged": "In FY2014-15 centrally sponsored scheme money that had been released direct to state and district implementing agencies began to be routed through State Consolidated Funds. In the Finance Commission's own series, non-Finance-Commission grants jump from ₹1,52,047 crore to ₹2,67,600 crore in that single year, a rise of 76 per cent, and FC-XIV's own footnote to para 8.11 attributes it to the routing change. From FY2021-22 a second shift ran the other way in accounting terms: the Single Nodal Agency model, extended by SNA SPARSH from August 2023, put central and state shares into designated accounts with balance-linked release conditions. The Union Budget's transfers statement changed its title three times over the same period and its number was reassigned to an unrelated table in one year.",
+  "when": "FY2014-15 and FY2021-22.",
+  "affectsDomains": [
+   "federalism",
+   "welfare",
+   "macro",
+   "education"
+  ],
+  "affectsSeries": [
+   "tn-direct-goi-transfers-to-sias"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "No published instrument bridges either shift. Any total-transfers series crossing FY2013-14 to FY2014-15 is spliced across a base change, and any series built by pulling \"Statement 18\" across budget years without reading each year's title is corrupted: the statement was headed \"DIRECT TRANSFER OF CENTRAL PLAN ASSISTANCE TO STATE/DISTRICT LEVEL\" in 2014-15 and 2015-16, was an unrelated reserve-funds table in 2016-17, and became a transfers statement from 2019-20, acquiring the word \"TOTAL\" in 2021-22.",
+  "sources": [
+   {
+    "name": "Fourteenth Finance Commission, Report (2015-20), para 8.11 and its footnote on the Interim Budget 2014-15 announcement of fund flow through the Consolidated Fund of the States",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/14th-FC/14thFCReport.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Sixteenth Finance Commission, Volume II — Annexures, Annexure 7.1 — the non-FC grants step at FY2014-15",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol2-Annexures.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Union Budget FY2026-27, Expenditure Profile, Statement 18",
+    "url": "https://www.indiabudget.gov.in/doc/eb/stat18.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "CAG, State Finances Audit Report No. 4 of 2021, Government of Tamil Nadu, year ended March 2020 — para 4.14, recording the Government of India decision of 8 July 2015 and the continued direct release of MGNREGS funds notwithstanding it",
+    "url": "https://cag.gov.in/webroot/uploads/download_audit_report/2021/SFAR%20-%202019-20-061dbff08d26f09.85133312.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The coincidence between the word \"TOTAL\" entering the statement's title in 2021-22 and the Single Nodal Agency regime beginning the same year is unconfirmed: no document was retrieved stating the second as the cause of the first, and it is recorded as a coincidence rather than a finding."
+ },
+ {
+  "id": "P-107",
+  "title": "Released, received, passed on: no instrument bridges the three, and only a state auditor computes any of the differences",
+  "whatChanged": "\"Released\" denotes at least three different events on a centrally sponsored scheme payment chain — money leaving the Union's payment system, money entering a state treasury, and money reaching an implementing agency — and no Union or state publication bridges them. For Bihar in FY2022-23 the three figures are ₹24,398.36 crore, ₹22,481.46 crore and ₹22,231.91 crore. For Tamil Nadu in the same year the Union's system reports ₹14,137.90 crore of central share received against ₹13,629.21 crore transferred on by the state, with ₹11,453.81 crore unspent in nodal accounts at year end and the accountant general recording that the expenditure vouchers are not held in its office.",
+  "when": "FY2021-22 onward, being the Single Nodal Agency period in which the three legs became separately visible.",
+  "affectsDomains": [
+   "federalism",
+   "welfare",
+   "governance",
+   "education"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "The only bridge is a state audit report, produced state by state on different templates in different years and never nationally. This is why the public Centre-state transfer argument is unresolvable: when a state says it did not receive what the Union says it released, both can be telling the truth, because they are counting different events and neither publishes the join.",
+  "competingAccounts": [
+   {
+    "holder": "The Union",
+    "position": "Funds released, taken from its own payment system. This is the figure quoted in parliamentary answers and press releases."
+   },
+   {
+    "holder": "The state",
+    "position": "Funds received in the Consolidated Fund, taken from the Finance Accounts."
+   },
+   {
+    "holder": "The Comptroller and Auditor General",
+    "position": "Both, side by side, plus the onward transfer to implementing agencies and the transfer lag — 181 days in Bihar in FY2022-23, and 1 to 106 days in Government of India releases to Tamil Nadu's nodal accounts across seven shared schemes."
+   }
+  ],
+  "sources": [
+   {
+    "name": "CAG, State Finances Audit Report No. 1 of 2024, Government of Bihar, year ended 31 March 2023 — para 4.21(i)-(vii)",
+    "url": "https://cag.gov.in/webroot/uploads/download_audit_report/2024/State-Finance-Report-2022-23-(ENGLISH)-066a229e6b84881.48517440.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "CAG, State Finances Audit Report, Government of Tamil Nadu, year ended March 2023 — the Single Nodal Account paragraphs at p. 26",
+    "url": "https://cag.gov.in/webroot/uploads/download_audit_report/2023/Report-No-2-of-2024-SFAR-English-0675955f21ba460.87039330.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "CAG, State Finances Audit Report No. 2 of 2025, Government of Tamil Nadu, year ended March 2024 — Appendix 2.2, the release delays",
+    "url": "https://cag.gov.in/webroot/uploads/download_audit_report/2025/English-SFAR-2023-24-068f705991fcd54.32361460.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "No claim in this record rests on the Union's Public Financial Management System as a retrieved source. That host resolves identically on four independent resolvers and accepts no TCP connection on port 443 or 80 from this environment, with cga.nic.in returning HTTP 200 as a positive control and linking to the exact URL that times out. What the system does or does not publish is not established here, and no absence in this drop may be read as resting on it."
+ },
+ {
+  "id": "P-108",
+  "title": "The subtraction is the auditor's; the inputs are frequently a party's — and the audit report says so each time",
+  "whatChanged": "Three source lines in one corpus of state audit reports grade differently and must not be flattened into \"the CAG says\". Table 2.7 of the Tamil Nadu report, the Finance Commission projection minus actual devolution column, carries the source line \"Details furnished by the Finance Department\": both input columns come from the state and only the subtraction is the auditor's. Table 2.6, the GST protected-revenue recomputation, carries \"(Figures excluding refunds, as worked out by GoTN)\" on the actuals, while the projection and the subtraction are the auditor's, computed from a statutory base year and a statutory rate. Exhibit 4.1 and Table 4.2, the direct Government-of-India-to-agency transfers, are sourced to the Union's own payment system and are set against the state's Finance Accounts.",
+  "when": "Every edition of the State Finances Audit Reports read, FY2018-19 to FY2023-24.",
+  "affectsDomains": [
+   "federalism",
+   "governance",
+   "macro"
+  ],
+  "affectsSeries": [
+   "tn-direct-goi-transfers-to-sias",
+   "tn-fc-projection-minus-actual-devolution",
+   "tn-gst-compensation-received",
+   "tn-gst-protected-revenue-shortfall",
+   "bihar-own-tax-share-revenue-receipts",
+   "wb-own-tax-share-revenue-receipts"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "There is no bridge and none is needed; what is needed is that the grade be assigned per table rather than per report. Only the third of the three has an input from one party and a comparator from the other, which is the form in which an instrument disciplines a dispute. The independence claim is strongest for the direct-transfer quantum, real but weaker for the projection-minus-actual column, and weakest for anything resting on figures the Finance Department furnished.",
+  "sources": [
+   {
+    "name": "CAG, State Finances Audit Report No. 2 of 2025, Government of Tamil Nadu, year ended March 2024 — Table 2.7 with its source line, Table 2.19(a), Chapter IV para 4.3 and Table 4.2",
+    "url": "https://cag.gov.in/webroot/uploads/download_audit_report/2025/English-SFAR-2023-24-068f705991fcd54.32361460.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "CAG, State Finances Audit Report No. 4 of 2021, Government of Tamil Nadu, year ended March 2020 — Table 2.6 with the \"as worked out by GoTN\" footnote",
+    "url": "https://cag.gov.in/webroot/uploads/download_audit_report/2021/SFAR%20-%202019-20-061dbff08d26f09.85133312.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "CAG, State Finances Audit Report No. 1 of 2024, Government of Bihar, year ended 31 March 2023 — Table 2.3, which does NOT print the state's share of Union taxes as a line where the West Bengal report's equivalent table does",
+    "url": "https://cag.gov.in/webroot/uploads/download_audit_report/2024/State-Finance-Report-2022-23-(ENGLISH)-066a229e6b84881.48517440.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "CAG, State Finances Audit Report No. 1 of 2022, Government of West Bengal, year ended 31 March 2021 — Table 2.3",
+    "url": "https://cag.gov.in/uploads/subsite_whats_new/Report-No-1-of-2022-State-Finances-Audit-Report-Government-of-West-Bengal-of-2020-21-0624434d4dc9868-21501088.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "This is the phase's operative rule for reading an auditor: grade per table, never per report. It also records a second warning about the same corpus — two State Finances Audit Reports on the same template print different rows, so cross-state series built from them are not automatically like-for-like. The party position of the auditor itself is worth stating: the CAG is a Union constitutional office auditing a state government and reporting to the state legislature, so it is a party to neither side of the Centre-state fiscal dispute and is the only instrument in this phase that reads both sides' books."
+ },
+ {
+  "id": "P-109",
+  "title": "No Finance Commission publishes the state-by-criterion decomposition of a devolution share",
+  "whatChanged": "Every Commission from the Thirteenth to the Sixteenth publishes the criteria, the weights, the method for each criterion and the final inter-se shares. None publishes the matrix that connects them — the share of each state in the portion of the pool distributed on each criterion. The Sixteenth Finance Commission's own Technical Note names the object, the share of state j in the part of the states' portion disbursed on criterion i, and does not print it.",
+  "when": "FC-XIII to FC-XVI; continuous.",
+  "affectsDomains": [
+   "federalism"
+  ],
+  "affectsSeries": [
+   "tn-devolution-population-ratio",
+   "wb-devolution-population-ratio",
+   "bihar-devolution-population-ratio"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "The Commission computes the matrix — it is the arithmetic of its own formula — and does not print it. The consequence is precise: the sentence \"Bihar gains X per cent from income distance\", or \"Tamil Nadu loses Y per cent from the 1971-to-2011 population switch\", cannot be sourced to any Finance Commission report, and any figure of that shape in circulation is somebody's reconstruction.",
+  "sources": [
+   {
+    "name": "Sixteenth Finance Commission, Volume I — Main Report, Chapter 8 and the Technical Note, with Tables 8.3, 8.4, 8.5, 8.8 and 8.9",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Fifteenth Finance Commission, Volume I — Main Report, Tables 6.4 and 6.5",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/XVFC%20VOL%20I%20Main%20Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Fourteenth Finance Commission, Report (2015-20), Tables 8.1 and 8.2",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/14th-FC/14thFCReport.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The absence is load-bearing in both directions. It prevents a state from demonstrating which criterion cost it what, and it equally prevents the Union or the Commission from demonstrating that a state's loss came from data updating rather than from a weight change — which is precisely the claim FC-XVI makes at para 8.62 and cannot evidence."
+ },
+ {
+  "id": "P-110",
+  "title": "The pendency of a bill becomes measurable only when it stops being pending, and in every retrieved case litigation caused it to stop",
+  "whatChanged": "Nothing in the world changed; the observation instrument did. There is no reporting obligation in Article 200 or 201, a Governor need not notify anyone that a bill is with him, and the Punjab judgment records that no public declaration of withholding was made. So the only dated records of gubernatorial delay in India are the factual tables of judgments, and those exist only for states that sued. Punjab: two Money Bills recommended \"after the institution of the Petition\". Kerala: all eight bills disposed of on 28 November 2023, eight days after notice, with the Court's own finding that \"It is only after the Court had issued notice... that the Governor has acted\". Tamil Nadu: all twelve bills acted on 13 November 2023, three days after the Punjab judgment.",
+  "when": "2023 to 2025, being the period in which the only such records exist.",
+  "affectsDomains": [
+   "federalism",
+   "governance"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "This is a selection effect on the entire evidence base and is not correctable from within the record: the value being measured causes the observation. No national or annual series is possible without a reporting duty that does not exist.",
+  "competingAccounts": [
+   "The only aggregate figure that exists anywhere in this material is a party's. Senior counsel for the Principal Secretary to the Governor of Punjab told the Supreme Court that \"The Governor has, as a matter of fact, assented to as many as 185 Bills\" — with no period, no denominator and no source. The Court held it irrelevant rather than verifying it. It is on the most authoritative record available in India and it is still the Union appointee's number."
+  ],
+  "sources": [
+   {
+    "name": "Supreme Court of India, State of Punjab v. Principal Secretary to the Governor of Punjab, 2023 INSC 1017, 10 November 2023 — paras 8, 10, 13(iii) and 27",
+    "url": "https://api.sci.gov.in/supremecourt/2023/44896/44896_2023_1_19_48220_Judgement_10-Nov-2023.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Supreme Court of India, State of Kerala v. Governor of Kerala, order of 29 November 2023 — paras 2 and 11",
+    "url": "https://api.sci.gov.in/supremecourt/2023/45758/45758_2023_1_3_48678_Order_29-Nov-2023.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Supreme Court of India, 2025 INSC 481, 8 April 2025 — paras 4 and 13 and the twelve-bill table",
+    "url": "https://api.sci.gov.in/supremecourt/2023/45314/45314_2023_11_1501_60770_Judgement_08-Apr-2025.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Supreme Court of India, State of West Bengal v. Dr. Sanat Kumar Ghosh, 2024 INSC 469, 8 July 2024 — paras 1-6 and 10",
+    "url": "https://api.sci.gov.in/supremecourt/2023/31181/31181_2023_4_46_53520_Judgement_08-Jul-2024.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Three further cautions any count must carry. \"Reserved for the President\" is at least three different acts under one word — a reservation the Constitution mandates, a first-round discretionary reservation, and a second-round reservation after a bill has been returned and re-passed — and Tamil Nadu's twelve-row table contains two of the three in one column. \"Lieutenant Governor\" is not one office: the Delhi and Puducherry officers hold under different provisions with different statutory powers, and both may by statute reserve a re-passed bill where a Governor may not. And the counts ten and twelve for the Tamil Nadu dispute are both correct for different questions, in the same judgment."
+ },
+ {
+  "id": "P-111",
+  "title": "The GST Council minute book is a shared ledger of arguments, not of facts: every number in it originates with the Department of Revenue",
+  "whatChanged": "The Council's minutes are the only instrument in Indian fiscal federalism in which both sides' positions are recorded verbatim, by name, in one signed document. That makes them uniquely valuable as evidence of what each party argued. It does not make them evidence of the world: the revenue figures, the shortfall estimates, the two-bucket causal split and the compensation ledger are all supplied to the Council by the Department of Revenue, an arm of one of the parties. The states have no independent instrument for any of it — they do not administer the cess, do not hold the transaction data, and were refused it when their auditor asked.",
+  "when": "2016 to date, across fifty-five meetings.",
+  "affectsDomains": [
+   "federalism",
+   "macro",
+   "governance"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "bridgeNote": "There is no adjudicating body: Article 279A(11) requires the Council to establish a mechanism to adjudicate disputes and it never has, so nothing inside the design converts a disagreement in the minute book into a finding. On the question the phase most wants answered — what a state was owed — no instrument can exist, because the quantity is counterfactual and the dispute is legal rather than evidentiary.",
+  "competingAccounts": [
+   {
+    "holder": "The Union, 41st and 42nd meetings",
+    "position": "That the Compensation Act creates a Fund and not a Union liability, that a pandemic is not \"implementation\", and that the FY2020-21 shortfall divides into an implementation bucket and a COVID bucket. Supported by the Attorney-General's opinion tabled at the 41st."
+   },
+   {
+    "holder": "The states that refused both borrowing options",
+    "position": "That the Act's operative machinery is protected revenue minus actual revenue with no causal test at all, that the 8th meeting had already decided shortfall would be met by borrowing repaid from extended cess, and that the Council never recommended the arrangement that was implemented. Kerala's formulation, minuted: \"the Constitution does not make such distinction... there is no distinction made in legal terms\"."
+   }
+  ],
+  "sources": [
+   {
+    "name": "GST Council, minutes of the 41st meeting, 27 August 2020",
+    "url": "https://gstcouncil.gov.in/sites/default/files/Minutes/minutes_41st-gstc_meeting.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "GST Council, minutes of the 42nd meeting, 12 October 2020",
+    "url": "https://gstcouncil.gov.in/sites/default/files/Minutes/42nd-gstc-minutes-signed_0.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "GST Council, minutes of the 47th meeting, 28-29 June 2022",
+    "url": "https://gstcouncil.gov.in/sites/default/files/Minutes/47_minutes_0_5.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "GST Council, minutes of the 54th meeting, 9 September 2024",
+    "url": "https://gstcouncil.gov.in/sites/default/files/Minutes/54th_meeting_minutes_conv.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "The Constitution (One Hundred and First Amendment) Act, 2016 — Article 279A(9) and (11)",
+    "url": "https://gstcouncil.gov.in/sites/default/files/2024-02/consti-amend-act.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Defects in the minute book itself, recorded so a reader does not mistake them for disagreement about the world: one meeting's minutes carry the same compensation figure as ₹1,65,718 crore and ₹1,65,178 crore in different places; \"transition period\" means two different things in different Council decisions; the 52nd meeting's minutes are published in a form that is not machine-readable; state-wise compensation is published in a form a reader cannot extract; and the 56th meeting's agenda and minutes are not published at all, so the 2025 rate rationalisation has no minute book in this drop."
+ },
+ {
+  "id": "P-112",
+  "title": "A state's inter-se share is not one definition across six Commissions: a service-tax carve-out, a denominator that loses a state, and an award that is not constant",
+  "whatChanged": "Three separate discontinuities sit inside what is usually drawn as one line. First, FC-XVI's own note under Table 8.4 states that \"Inter-se shares of FC-11 to FC-14 are exclusive of the States' shares of service taxes\", which were distributed under a separate table excluding Jammu and Kashmir — so a state's FC-XIV award is two shares, not one, and Tamil Nadu's are 4.023 and 4.104 per cent. Second, from FC-XV the denominator is twenty-eight states rather than twenty-nine, so a share can move because the denominator moved; J&K's own share runs 1.29, 1.30, 1.55, 1.85, 0.00 across the five columns. Third, and not previously carried anywhere in this instrument, FC-XV IS NOT CONSTANT: its one-year first report for FY2020-21 carries different inter-se shares from its final report, and for Tamil Nadu the FY2020-21 value is 4.189 per cent against 4.079 thereafter.",
+  "when": "FY2015-16 (the FC-XIV boundary), FY2020-21 (the single-year award) and FY2021-22 (the FC-XV final report).",
+  "affectsDomains": [
+   "federalism"
+  ],
+  "affectsSeries": [
+   "tn-fc-interse-share",
+   "tn-devolution-population-ratio",
+   "wb-devolution-population-ratio",
+   "bihar-devolution-population-ratio",
+   "tn-fc-projection-minus-actual-devolution"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "No Commission reconciles its inter-se table to its predecessor's, and FC-XVI states at para 8.62 that formula effect and data effect are not separable. FC-XVI's Table 8.4 also carries only two decimals for FC-XI to FC-XV, so a six-value series assembled from FC-XVI alone runs at two decimals for five points and three for one.",
+  "competingAccounts": [
+   {
+    "holder": "Sixteenth Finance Commission, Table 8.4",
+    "position": "Tamil Nadu 5.39 / 5.31 / 4.97 / 4.02 / 4.08 across FC-XI to FC-XV at two decimals, with FC-XVI's own 4.097 printed in a different table."
+   },
+   {
+    "holder": "The original Commission reports",
+    "position": "4.969 (FC-XIII Table 8.2), 4.023 (FC-XIV Table 8.2) and 4.079 (FC-XV Table 6.5) at three decimals — consistent with the compilation to the rounding, and from different instruments."
+   },
+   {
+    "holder": "The Comptroller and Auditor General, Tamil Nadu State Finances Audit Report FY2023-24, Table 2.7",
+    "position": "Prints the basis for each projection year and shows the FC-XV award is not constant: 4.023 per cent plus 4.104 per cent on service tax under FC-XIV, then 4.189 per cent for FY2020-21, then 4.079 per cent. This is the source of the phase-13 correction, and it is a state auditor correcting the reading of a Union Commission's award."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Sixteenth Finance Commission, Volume I — Main Report, Tables 8.4, 8.5 and 8.9 and the note under Table 8.4, and paras 8.61-8.68 and 8.85-8.94",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Fifteenth Finance Commission, Volume I — Main Report, Table 6.5",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/XVFC%20VOL%20I%20Main%20Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Fourteenth Finance Commission, Report (2015-20), Table 8.2 and para 8.31 (the separate service-tax table, because service tax was not levied in Jammu and Kashmir)",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/14th-FC/14thFCReport.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Thirteenth Finance Commission, Report 2010-2015, Volume I, Table 8.2 and para 8.39",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/13th-FC/english/13fcreng.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "CAG, State Finances Audit Report No. 2 of 2025, Government of Tamil Nadu, year ended March 2024, Table 2.7 and its basis strings",
+    "url": "https://cag.gov.in/webroot/uploads/download_audit_report/2025/English-SFAR-2023-24-068f705991fcd54.32361460.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Two figures that circulate about Tamil Nadu's devolution are corrected here. The FC-XI and FC-XII shares are 5.39 and 5.31 as printed at two decimals in the only retrieved source; three-decimal versions (5.385 and 5.305) were relayed in this run and are NOT adopted, because no retrieved document carries them. And the fall in Tamil Nadu's devolution-to-population ratio between FC-XIII and FC-XIV is 0.82 to 0.66, which is minus 19.5 per cent, not the 24 per cent that circulates; excluding Andhra Pradesh, whose larger fall is the 2014 bifurcation rather than a formula effect, minus 19.5 per cent is indeed the largest fall of any non-NEH state at that step, so the claim survives with the carve-out stated and the number corrected."
+ },
+ {
+  "id": "P-113",
+  "title": "Actuals, Revised Estimates and Budget Estimates are spliced inside published series, including by the bodies that publish them",
+  "whatChanged": "Several headline series in this subject mix three bases without flagging it. The Sixteenth Finance Commission's FC-XV award average for devolution as a share of gross tax revenue, 32.1 per cent, is the mean of four Actuals, one Revised Estimate and one Budget Estimate. The Fifteenth Finance Commission's cess-and-surcharge table ends with a Revised Estimate and a Budget Estimate row whose percentages do not reconcile against outturn gross tax revenue — the FY2019-20 row gives 20.2 per cent on the Commission's assumption and 21.7 on the outturn. The Commission's own divisible-pool figure shifts basis at FY2024-25 from a CAG certificate to Union Budget estimates, and says so on the face of the figure.",
+  "when": "Continuous; the specific splices are at FY2019-20, FY2024-25 and the FC-XV award average.",
+  "affectsDomains": [
+   "macro",
+   "federalism"
+  ],
+  "affectsSeries": [
+   "divisible-pool-share-gtr",
+   "cess-surcharge-share-gtr",
+   "cess-surcharge-share-gtr-excl-compcess",
+   "devolution-be-to-actual-gap",
+   "fc-devolution-share-of-gtr",
+   "fc-grants-share-of-gtr",
+   "gst-compensation-cess-collected",
+   "tn-fc-projection-minus-actual-devolution"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": true,
+  "bridgeNote": "The bridge is trivially available and nobody publishes it: state the basis per point. This drop does so, and stops the two Finance Commission share series at the last Actual year rather than carrying the estimate rows into a line.",
+  "sources": [
+   {
+    "name": "Sixteenth Finance Commission, Volume I — Main Report, Table 7.5 and Figure 7.4 with its own basis note",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Fifteenth Finance Commission, Volume I — Main Report, Table 3.8",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/XVFC%20VOL%20I%20Main%20Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Union Receipt Budget 2026-2027 — Abstract of Receipts, showing BE, RE and Actuals columns for the same quantity",
+    "url": "https://www.indiabudget.gov.in/doc/rec/allrec.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The most consequential instance is not a splice but a misreading it enables. FY2018-19 devolution appears as 36.60 per cent of gross tax revenue on the Union Budget basis and is routinely quoted as the high-water mark of devolution. It is an artefact: the cash went out against a Revised Estimate gross tax revenue of ₹22,48,175 crore and the Actual came in ₹1,67,710 crore short, after which the first retrospective adjustment for that year was minus ₹58,843 crore — a clawback. FY2018-19 must not be reported as the peak of devolution."
+ },
+ {
+  "id": "P-114",
+  "title": "A zero in the Union's by-state MGNREGA release table means a statutory power was exercised, and the table cannot say so",
+  "whatChanged": "Nothing in the construction of the table changed; the change is in the world it measures, and that is the difficulty. A zero in a scheme-release table normally means no demand or no claim. In West Bengal's FY2022-23 row it means release was stopped under section 27 of the MGNREG Act from 9 March 2022. The table carries no column for that, and a series built on it cannot distinguish an administrative act from an outcome. The same table is published in ₹ lakh, and its unit is funds released — not funds allocated, and not expenditure incurred.",
+  "when": "FY2022-23 onward for West Bengal; the power was exercised on 9 March 2022.",
+  "affectsDomains": [
+   "federalism",
+   "welfare",
+   "employment"
+  ],
+  "affectsSeries": [
+   "wb-mgnrega-funds-released",
+   "bihar-mgnrega-funds-released",
+   "wb-mgnrega-new-jobcards",
+   "bihar-mgnrega-new-jobcards"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "The section 27 fact must be carried externally, from the Union's own parliamentary statements, because the release table cannot carry it. The order itself has never been published, so even the external fact is a description rather than an instrument.",
+  "competingAccounts": [
+   {
+    "holder": "The Union, Ministry of Rural Development",
+    "position": "That release was stopped under section 27 on 9 March 2022 for non-compliance with Central Government directives, on central-team inspection reports across nineteen districts finding financial misappropriation, execution of non-permissible activities, splitting of works, and lack of transparency and accountability."
+   },
+   {
+    "holder": "The record itself",
+    "position": "Two dates circulate and are two different events: 26 December 2021, the last wage instalment, at T4; and 9 March 2022, the Union's own date for the stoppage of release under section 27, at T1. A stage-1 scope note carried \"December 2021\"; the correction is recorded here so the earlier date is not silently propagated."
+   }
+  ],
+  "sources": [
+   {
+    "name": "PIB / Ministry of Rural Development, 5 December 2023, carrying Lok Sabha Unstarred Question No. 254 of 5 December 2023 with Annexure-I (new job cards by state) and Annexure-II (funds released by state, ₹ lakh)",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1982799",
+    "tier": "T1"
+   },
+   {
+    "name": "PIB / Ministry of Rural Development, 4 August 2025 — the nineteen-district investigation, the section 27 sentence and the cumulative West Bengal figures",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2152391",
+    "tier": "T1"
+   },
+   {
+    "name": "The Mahatma Gandhi National Rural Employment Guarantee Act, 2005 (Act 42 of 2005), India Code — section 27(2)",
+    "url": "https://www.indiacode.nic.in/handle/123456789/4649",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The publisher of the release table is the Union, a party to the dispute, stating its own release figures — so the table is evidence of what the Union says it released and not of what any state received. See P-107 for why those are different quantities. The control that makes the West Bengal zero legible is Bihar's row in the same table: no stoppage, releases continuing, and new job cards nonetheless falling 57 per cent in FY2022-23, which is why the job-card series in this drop carries an explicit warning against a causal reading."
+ },
+ {
+  "id": "P-115",
+  "title": "The Union states its own cess-and-surcharge share to Parliament in two mutually irreconcilable ways, and defines neither",
+  "whatChanged": "Asked the same question twice, the Ministry of Finance answered with two aggregates that cannot both be describing the same set of levies. On 1 August 2023 it told the Rajya Sabha that surcharge was 1.50 per cent of gross tax revenue in FY2021-22 and cesses 13.05 per cent. On 21 July 2026 it told the Rajya Sabha that surcharge was 8.9 per cent in FY2022-23 and cesses 11.5 per cent. The surcharge figures differ by a factor of about six across one year's boundary, and the reason is visible in the second answer's own rows and stated in neither: the 2026 table counts the Special Additional Excise Duty on petrol and diesel (147,163.79 crore, 54 per cent of its surcharge total) and the Social Welfare Surcharge on customs, and the 2023 table does not. Neither answer states what it is summing or on what test a levy qualifies.",
+  "when": "The two answers are dated 1 August 2023 and 21 July 2026; the FY2016-17 to FY2021-22 span belongs to the first and FY2022-23 to BE2026-27 to the second.",
+  "affectsDomains": [
+   "macro",
+   "federalism"
+  ],
+  "affectsSeries": [
+   "cess-share-gtr-parliamentary",
+   "surcharge-share-gtr-parliamentary",
+   "cess-surcharge-share-gtr-parliamentary"
+  ],
+  "directionOfBias": "disputed",
+  "bridgeExists": false,
+  "bridgeNote": "The two answers cannot be spliced into one series and this drop does not splice them: the three parliamentary series carry the 2026 basis only, and the 2023 figures are held here as a competing account rather than as earlier points of the same line. A bridge would require the Union to state the membership test for each aggregate, which neither answer does. The 2026 answer is at least internally consistent — its cess and surcharge footings sum exactly to the combined figures given in the Lok Sabha the day before, 10.0 + 7.9 = 17.9 and 8.2 + 8.2 = 16.4.",
+  "competingAccounts": [
+   {
+    "holder": "Ministry of Finance, Department of Economic Affairs, RS Unstarred Q. 1324, 1 August 2023, Annexure A",
+    "position": "Surcharge 1.31 / 1.35 / 1.86 / 1.65 / 1.63 / 1.50 per cent of gross tax revenue and cesses 10.35 / 8.04 / 8.36 / 9.16 / 14.65 / 13.05 per cent, FY2016-17 to FY2021-22. Two rows, no enumeration of what either contains."
+   },
+   {
+    "holder": "Ministry of Finance, Department of Revenue, RS Starred Q. *18, 21 July 2026, Annexure-A",
+    "position": "Cesses 11.5 / 10.5 / 10.0 / 8.2 / 6.2 and surcharges 8.9 / 8.0 / 7.9 / 8.2 / 8.1 per cent, FY2022-23 to BE2026-27, with seventeen cess rows and five surcharge rows enumerated — including the Special Additional Excise Duty, which the 2023 answer's magnitude cannot accommodate."
+   },
+   {
+    "holder": "Ministry of Finance, Department of Economic Affairs, RS Unstarred Q. 1840, 4 August 2026",
+    "position": "A third form again, as five-year aggregates in rupees rather than shares: 32.05 lakh crore of cesses and surcharges collected, of which 18.88 lakh crore is cesses — leaving about 13.17 lakh crore of surcharge — with the statement that \"only cesses are collected for designated purposes\"."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Rajya Sabha Starred Question No. *18, answered 21 July 2026 by the Minister of Finance, Annexure-A and reply (b)",
+    "url": "https://sansad.in/getFile/annex/271/AS18_7lp2Vc.pdf?source=pqars",
+    "tier": "T1"
+   },
+   {
+    "name": "Lok Sabha Unstarred Question No. 137, answered 20 July 2026, Ministry of Finance (Department of Revenue) — the same Annexure-A, plus the reply to part (d) giving the combined share for four named years",
+    "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/188/AU137_1GENno.pdf?source=lsapps",
+    "tier": "T1"
+   },
+   {
+    "name": "Rajya Sabha Unstarred Question No. 1324, answered 1 August 2023, Ministry of Finance (Department of Economic Affairs), Annexure A",
+    "url": "https://sansad.in/getFile/annex/260/AU1324.pdf?source=pqars",
+    "tier": "T1"
+   },
+   {
+    "name": "Rajya Sabha Unstarred Question No. 1840, answered 4 August 2026, Ministry of Finance (Department of Economic Affairs), reply (a)",
+    "url": "https://sansad.in/getFile/annex/271/AU1840_LOhn2Q.pdf?source=pqars",
+    "tier": "T1"
+   },
+   {
+    "name": "Union Receipt Budget 2026-2027, Tax Revenue statement, note 6.05 — \"Special Additional Excise Duties (SAED)... This is commonly known as surcharge\"",
+    "url": "https://www.indiabudget.gov.in/doc/rec/tr.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "This record is the parliamentary extension of P-100, which established that the published sources give four defensible values for the same year because no statute or budget document defines the set. P-115 adds the fact that the DEFINING BODY ITSELF gives at least two, in answers five days short of three years apart, and defines neither. The consequence for a reader is narrow and important: the Union's own statement to Parliament is not an authority that settles the convention question — it is a fifth and sixth entry in the same spread. There is still no evidentiary disagreement anywhere in it. All of these figures ultimately restate the same Department of Revenue collections."
+ },
+ {
+  "id": "P-116",
+  "title": "Multiplying the pool by the recommended share does not give the devolution share in any year, and the reason is that two of the three are rules and one is cash",
+  "whatChanged": "Nothing changed; the divergence is structural and permanent, and it is recorded here because three series sit adjacent in this drop and invite a multiplication that fails. divisible-pool-share-gtr times fc-vertical-devolution-share does not equal fc-devolution-share-of-gtr in any of the fourteen years both are populated. The residual, taken as the PUBLISHED devolution share MINUS the product of the other two, runs from minus 1.70 percentage points in FY2015-16 to plus 1.80 in FY2018-19 and changes sign six times. A formula error would bias one way; this does not.",
+  "when": "FY2010-11 to FY2023-24, every year.",
+  "affectsDomains": [
+   "federalism",
+   "macro"
+  ],
+  "affectsSeries": [
+   "divisible-pool-share-gtr",
+   "fc-vertical-devolution-share",
+   "fc-devolution-share-of-gtr"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": true,
+  "bridgeNote": "The bridge is definitional and is available on the face of the records, but only if a reader reads three unit strings together. fc-vertical-devolution-share is a RULE — the share a Finance Commission recommended and the Union accepted, applying to each year's certified proceeds. divisible-pool-share-gtr is a RATIO OF TWO ANNUAL AGGREGATES. fc-devolution-share-of-gtr is CASH MOVED IN THE YEAR, derived by the Commission from Annexure 7.1, whose unit string already says so: \"cash transferred in the year\". Cash in a year includes settlements belonging to earlier years and excludes settlements of that year made later, so the product of the two rules and the cash outturn cannot coincide except by accident. The two-way sign is the proof: part 02 found the Centre net OVERPAID 15,756 crore before FY2018-19, and an overpayment shows here as a positive residual.",
+  "competingAccounts": [
+   "The residuals, stated so the reader can check rather than take this on trust. The PUBLISHED devolution share MINUS the product of the two adjacent series, in percentage points — the direction of subtraction is stated because reversing it reverses every sign: FY2010-11 minus 0.78, FY2011-12 plus 0.35, FY2012-13 minus 0.60, FY2013-14 minus 0.68, FY2014-15 minus 1.41, FY2015-16 minus 1.70, FY2016-17 minus 0.80, FY2017-18 minus 0.25, FY2018-19 plus 1.80, FY2019-20 minus 1.58, FY2020-21 minus 0.94, FY2021-22 plus 1.73, FY2022-23 minus 0.675, FY2023-24 minus 0.16. Sign changes at FY2011-12, FY2012-13, FY2018-19, FY2019-20, FY2021-22 and FY2022-23."
+  ],
+  "sources": [
+   {
+    "name": "Sixteenth Finance Commission, Volume I — Main Report, Figure 7.4 (the pool), para 7.68 and Table 8.1 (the recommended shares), and Table 7.5 (the devolution share)",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Sixteenth Finance Commission, Volume II — Annexures, Annexure 7.1 — the cash column from which Table 7.5 is derived",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol2-Annexures.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Union Receipt Budget 2026-2027, Annex 4C and Annex 1 — the certified pool and gross tax revenue against which FY2023-24 reproduces independently",
+    "url": "https://www.indiabudget.gov.in/doc/rec/allrec.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The reason this is recorded rather than left implicit: a reader who multiplies two series printed beside each other and gets a third number that is not the third series has found an apparent contradiction, and until now nothing on the page resolved it. Three consequences follow. The residual is NOT a measure of underpayment or overpayment in any year — for that, read P-105, which sets out the entitlement-against-cash gap the Commission itself publishes twice and reconciles never. The residual is NOT evidence that any of the three series is wrong; all three reproduce from their own sources. And the residual must not be smoothed by averaging: award-period means hide the sign changes that are the whole evidence for the timing explanation."
+ },
+ {
+  "id": "P-117",
+  "title": "\"Devolution actual\" is two instruments in this drop, measuring two events, and one year's disagreement between them is 67,819 crore",
+  "whatChanged": "Two series in this drop both answer to the name \"what the states actually got\", and they are not the same instrument. fc-devolution-rupees carries Sixteenth Finance Commission Annexure 7.1 — the Commission's compilation, sourced through the Reserve Bank, of cash transferred in the year. devolution-actual-receipt-budget carries the Union's own Receipt Budget Actuals under major head 0710, which is the Union's accounting of what left its books, and it is these figures, not the Commission's, from which devolution-be-to-actual-gap is computed. Six of the eleven overlapping years agree within 240 crore. Four do not: FY2017-18 by 67,819.29 crore, FY2018-19 by 14,560.15, FY2021-22 by 15,292 and FY2022-23 by 576.18. The drop held both without saying so; this record says so.",
+  "when": "FY2014-15 to FY2024-25, being the years in which both instruments are populated. The largest divergence, FY2017-18, is the GST transition year.",
+  "affectsDomains": [
+   "federalism",
+   "macro"
+  ],
+  "affectsSeries": [
+   "fc-devolution-rupees",
+   "devolution-be-to-actual-gap",
+   "devolution-budget-estimate",
+   "devolution-actual-receipt-budget"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "No published bridge exists and this drop does not build one. What it does instead is hold both instruments as separate series with their sources named, so that a figure quoted from either can be traced to the document it came from. The one thing that must NOT be done is replacing one with the other: substituting Receipt Budget actuals into fc-devolution-rupees would overwrite a correctly sourced Commission compilation with a different instrument's figures and destroy the internal consistency by which every row of the Commission's Table 7.5 reproduces from its own Annexure 7.1. Three of the four divergences are the same ones part 02 already characterised as the definitional gap between instruments — they are not errors and they are not to be corrected.",
+  "competingAccounts": [
+   {
+    "holder": "Sixteenth Finance Commission, Volume II, Annexure 7.1",
+    "position": "FY2017-18 605,186 crore; FY2018-19 746,894; FY2021-22 883,100; FY2022-23 948,982. A compilation of cash transferred, running to FY2023-24, on which every devolution share the Commission publishes is computed."
+   },
+   {
+    "holder": "Union Receipt Budget, major head 0710, Actuals column",
+    "position": "FY2017-18 673,005.29 crore; FY2018-19 761,454.15; FY2021-22 898,392; FY2022-23 948,405.82. The Union's own accounting, and the column from which the Budget-Estimate-to-Actual gap series reproduces to the stated decimal in all eleven years — which the Commission's figures do not."
+   },
+   {
+    "holder": "The Union, on the finality of its own Actuals",
+    "position": "Neither figure is final. Receipt Budget 2026-2027 note 13 distinguishes \"the amount devolved as per Actuals\" from the C&AG-certified actuals, puts the FY2023-24 difference at 623.47 crore recoverable, records a further 8,460.55 crore recoverable because FY2024-25 actuals came in below the Revised Estimate already released, and states that the figures \"are provisional and may change\"."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Sixteenth Finance Commission, Volume II — Annexures, Annexure 7.1",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol2-Annexures.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Union Receipt Budget 2019-2020, Tax Revenue statement, line 11 \"Less-States' Share\" head 0710, Actual 2017-2018 column, giving 673,005.29 crore",
+    "url": "https://www.indiabudget.gov.in/budget2019-20/doc/rec/tr.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Union Receipt Budget 2026-2027, Tax Revenue statement, lines 12 and 13 — the FY2024-25 Actual of 1,286,885.44 crore and note 13 on prior-period recovery and C&AG-certified actuals",
+    "url": "https://www.indiabudget.gov.in/doc/rec/tr.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Union Budget at a Glance 2023-2024, Receipts page — the FY2021-22 Actual of 898,392 crore, taken here because that budget's Receipt Budget tax-revenue file is an image-only scan",
+    "url": "https://www.indiabudget.gov.in/budget2023-24/doc/Budget_at_Glance/bag5.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Sixteenth Finance Commission, Volume I — Main Report, Table 7.5, whose every row reproduces from Annexure 7.1 and therefore inherits its instrument",
+    "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "Read with P-105, which is the general form of this problem: entitlement attributed to a year, release ordered in a year, and cash in the accounts of a year are three quantities, and one Commission report gives two of them a hundred pages apart without reconciling them. P-117 is narrower and concerns a specific consequence — that this drop holds two of the three side by side under one name. FY2017-18 is the outlier and is unexplained: the difference is 673,005.29 minus 605,186, which is 67,819.29 exactly, a whole-number-of-paise residual suggesting one identifiable component rather than a different vintage of the same aggregate. This drop does not guess which component. It is the GST transition year, and the year in which Integrated GST apportionment between the Union and the states first ran; that is a place to look, not a finding."
+ },
+ {
+  "id": "P-118",
+  "title": "A state's contribution to the Union exchequer has three components, published on two incompatible attribution keys and one declared absence",
+  "whatChanged": "The quantity the whole public argument about fiscal federalism rests on — what a state pays into the centre — is not one measurement with a gap in it. It is three, in three different states of existence. State-wise DIRECT tax is published annually by the Central Board of Direct Taxes and attributed by a postal artefact: the notes to its own table disclose that the key is the state code in the assessee's communication address, which is why Maharashtra alone is 40.3 per cent of the national total and Maharashtra, Delhi and Karnataka together about 62 per cent. State-wise GST is published monthly by the Goods and Services Tax Network on the destination principle, and excludes import IGST — about 30.7 per cent of gross GST — because it is collected at the port of entry and has no state line at all. State-wise indirect tax other than GST is stated by the Government, five times across sixteen years and in both Houses, to be \"not maintained\". No instrument anywhere adds the three.",
+  "when": "Continuous. The direct-tax table runs FY2018-19 to FY2024-25; the monthly GST sheet is current; the \"not maintained\" statements are dated 16 November 2010, 13 December 2022, 5 December 2023, 24 March 2025 and 10 March 2026.",
+  "affectsDomains": [
+   "federalism",
+   "macro",
+   "governance"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "No bridge exists and the two published halves could not be added even if the third existed, because they are attributed on opposite principles: direct tax to where the filer's address is, GST to where the consumption is. Summing an origin-keyed table and a destination-keyed table produces a figure that measures neither. The Central Board of Direct Taxes publishes its state-wise rupee totals with no disclaimer of any kind — a full-text search of the document for disclaim, caution, should not, not be construed, caveat, limitation, head office and registered office returns zero matches — so nothing in the publication warns a reader against the reading it invites.",
+  "competingAccounts": [
+   {
+    "holder": "Central Board of Direct Taxes, Time Series Data, section 1.2",
+    "position": "State-wise direct tax collection, published annually, seven years, by named state and union territory. Attribution key disclosed only incidentally, in notes explaining the residual buckets: the state code in the assessee's communication address. Central TDS, Foreign and Unapportioned sit outside the state partition entirely."
+   },
+   {
+    "holder": "Goods and Services Tax Network / Ministry of Finance, monthly collection sheet",
+    "position": "State-wise gross GST published every month, alongside pre-settlement and post-settlement SGST by state — the settlement column being the destination principle made arithmetic, moving Bihar 3.34 times and Maharashtra 1.66 times. Footnoted \"Does not include GST on import of goods\"."
+   },
+   {
+    "holder": "Ministry of Finance, in five parliamentary answers 2010-2026",
+    "position": "\"State-wise data on collection of Indirect Taxes (Customs/Central Excise/Service Tax) is not maintained.\" The last two instances, LS 24 March 2025 and RS 10 March 2026, are word for word identical."
+   },
+   {
+    "holder": "Central Board of Excise and Customs, FAQs on GST, place-of-supply chapter",
+    "position": "That the location of a transaction is assigned by rule rather than observed — place of supply is determined using \"proxies or assumptions\", five rival candidates are listed, and the one chosen is whichever \"gives more appropriate result than others\". Q2(iv) states that \"the same element may flow to more than one location\". This is the Union's own account of why an origin attribution is contestable in principle, and it is not offered as an answer to any parliamentary question about state contribution."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Central Board of Direct Taxes, Income Tax Department Time Series Data FY2000-01 to FY2024-25, section 1.2 \"State And U.T. Wise Break-Up of Collection\" and Notes 1-2 disclosing the communication-address attribution key",
+    "url": "https://www.incometaxindia.gov.in/documents/d/guest/final-time-series-data-pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Goods and Services Tax Network / Ministry of Finance, monthly GST collections sheet for May 2026 — Table 2 state-wise gross GST, pre- and post-settlement SGST by state, and the import-IGST footnote",
+    "url": "https://tutorial.gst.gov.in/downloads/news/final_monthly_gst_data_for_may_2026_for_publishing.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Central Board of Excise and Customs, Frequently Asked Questions on Goods and Services Tax, 2nd edition, 31 March 2017 — chapter 1 Q1-Q2, Q21 on imports, and the place-of-supply chapter Q2-Q3 and Q5",
+    "url": "https://cbic-gst.gov.in/aces/Documents/faq-on-gst.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Rajya Sabha Unstarred Question No. 1976, answered 10 March 2026, Ministry of Finance (Department of Revenue) — Tamil Nadu direct tax supplied and \"However, in case of Indirect Taxes State-Wise data is not maintained\"",
+    "url": "https://sansad.in/getFile/annex/270/AU1976_VmDCsG.pdf?source=pqars",
+    "tier": "T1"
+   },
+   {
+    "name": "Rajya Sabha Unstarred Question No. 231, answered 5 December 2023, Ministry of Finance (Department of Revenue) — every central tax head asked of Kerala; direct tax and GST supplied by annexure, the rest \"not maintained Centrally\", and the customs/excise/service-tax annexure supplied is all-India rather than Kerala",
+    "url": "https://sansad.in/getFile/annex/262/AU231.pdf?source=pqars",
+    "tier": "T1"
+   },
+   {
+    "name": "Rajya Sabha Unstarred Question No. 677, answered 13 December 2022, Ministry of Finance (Department of Revenue) — both halves of the ratio declined in one document, the tax side \"not maintained\" and the expenditure side \"not maintained and in many case is not possible\"",
+    "url": "https://sansad.in/getFile/annex/258/AU677.pdf?source=pqars",
+    "tier": "T1"
+   },
+   {
+    "name": "Union Receipt Budget 2026-2027 — negative result: no state-wise break-up of Union tax collection, and zero matches for destination-based, origin-based, place of supply, port of entry, head office or registered office across 6,053 extracted lines",
+    "url": "https://www.indiabudget.gov.in/doc/rec/allrec.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "The direct-tax attribution key is itself a finding and not merely a caveat. A table that assigns a rupee to the state in the filer's communication address measures where companies keep their registered offices, which is a real quantity and is not the one the table is universally read as reporting. The Union defends the integrity of that attribution when it is challenged — asked in 2018 whether Jharkhand's income tax was being clubbed with Bihar's, it replied \"No Sir. The collections of income-tax from the State of Jharkhand are compiled and reported independently\" — so the attribution is deliberate and maintained, not incidental. What no document does is warn the reader what it means. The same asymmetry runs through the expenditure side of the same answers: the Union publishes what flows TO states exhaustively and what flows FROM them not at all."
  }
 ]

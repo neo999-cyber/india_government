@@ -1,0 +1,442 @@
+================================================================================
+PHASE 13 (FEDERALISM) - EXISTING COVERAGE AUDIT
+================================================================================
+
+CONDUCTED: 2026-08-03 | Model: haiku 4.5 | Repo: /Users/anoop/India Government
+
+================================================================================
+REQUIREMENT A: THE 18 FEDERALISM-TAGGED LEDGER RECORDS
+================================================================================
+
+L-0012: Goods and Services Tax
+  Date: 2017-07-01 | Term: T1
+  Domains: macro, federalism
+  Assessment: partly
+  Summary: Replacement of a fragmented web of central and state indirect taxes with a single destination-based GST, governed by a GST Council with the Centre holding one-third of voting weight and states two-thirds, decisions requiring a 75% majority. Launched with four slabs plus cess rather than the single-rate ideal. GSTN technical failures, compliance burden and delayed exporter refunds marked the first years. Collections grew steadily to a record ₹22.08 lakh crore in FY2024-25 (+9.4% YoY), with a record single month of ₹2,36,716 crore in April 2025. Compensation ended June 2022 amid continuing state demands. GST 2.0, effective 22 September 2025, collapsed the structure to 5% and 18% plus a 40% demerit rate, with ~₹48,000 crore estimated revenue foregone.
+  Federal Question Settled: Whether GST with a 75%-majority GST Council rule, four (now two) slabs, and expiring compensation (to June 2022) achieves unified national market and higher revenue buoyancy.
+
+L-0040: MGNREGA under an inheriting government
+  Date: 2014-05 | Term: T1
+  Domains: welfare, employment, federalism
+  Assessment: contested
+  Summary: A statutory employment guarantee enacted in 2005, publicly disparaged by the Prime Minister in February 2015 as a living monument to the previous government's failures, retained and heavily used throughout the period.
+  Federal Question Settled: Whether a flagship state-of-origin welfare scheme survives political reversal and continues to be deployed by the inheriting government.
+
+L-0051: Discom reform: UDAY and its successors
+  Date: 2015-11 | Term: T1
+  Domains: infrastructure, macro, federalism
+  Assessment: failed
+  Summary: UDAY (2015) restructured distribution company debt with states absorbing 75%, followed by the Revamped Distribution Sector Scheme (2021) — the latest in a cycle of bailouts running back through IPDS and R-APDRP.
+  Federal Question Settled: Whether infrastructure cost-sharing between Centre and states through successive bailout schemes achieves fiscal sustainability.
+
+L-0066: The three farm laws: passage, protest and repeal
+  Date: 2020-06-05 | Term: T2
+  Domains: macro, federalism, governance
+  Assessment: reversed
+  Summary: Three agricultural marketing laws promulgated by ordinance during the COVID lockdown, enacted in September 2020, and repealed in November 2021 after roughly fifteen months of protest. The only complete propose-resist-repeal arc in this record.
+  Federal Question Settled: Whether Centre-promulgated agricultural reform survives state and farmer opposition.
+
+L-0069: MSP, procurement and the legal guarantee demand
+  Date: 2014-05 | Term: T1
+  Domains: welfare, federalism
+  Assessment: no-objective
+  Summary: Minimum support prices are announced for 23 crops but procurement reaches roughly 6% of farmers and is concentrated in a handful of states. Farm unions have demanded a statutory MSP guarantee since the repeal; the committee promised to examine it has not reported in four years.
+  Federal Question Settled: Whether MSP is a universal guarantee or a state-variable subsidy masked by national announcement.
+
+L-0071: Groundwater depletion in the grain belt
+  Date: 2014-05 | Term: T1
+  Domains: environment, federalism
+  Assessment: no-objective
+  Summary: About 76% of Punjab's assessed groundwater blocks are classified over-exploited, with annual draft near 35 billion cubic metres against a sustainable 20, and the water table falling roughly a metre a year in central districts.
+  Federal Question Settled: Whether Centre-state coordination on resource management addresses state-level depletion crises.
+
+L-0091: India's school closures, 2020-2022
+  Date: 2020-03-25 | Term: T2
+  Domains: education, federalism
+  Assessment: contested
+  Summary: Indian schools were never classified fully open for 707 consecutive days - 23 months and 5 days, from 25 March 2020 to 1 March 2022. Across UNESCO's wider 25-month tracking window of 775 days, India had 47 days fully open. On UNESCO's own definition of closure duration, which counts fully closed and partially open days together, India's 93 weeks is the unique global maximum across 210 countries, against a global mean of 40.6. On full closure alone India's 25 weeks ranks 58th. The affected population, 294,893,120 children, is the largest of any country in the world.
+  Federal Question Settled: Whether federalised education governance (states' competence) coordinates crisis response across states.
+
+L-0094: A national teacher-vacancy statistic, tabled for a decade and then withdrawn
+  Date: 2014-07-30 | Term: T1
+  Domains: governance, federalism, education
+  Assessment: no-objective
+  Summary: From 2014 the Ministry routinely tabled all-India totals for sanctioned, in-position and vacant school teaching posts in both Houses, drawn from Annual Work Plan and Budget and Project Approval Board returns. The last full national figure was given on 02.08.2023 (Rajya Sabha Unstarred 1460); the last vacancy-only national figure on 07.02.2024 (Rajya Sabha Unstarred 525). Since then no answer in either House has carried a sanctioned or a vacancy number at any level. The Ministry continues to compute it: it furnished 63,26,207 sanctioned and 9,59,148 vacant for 2023-24, and 69,85,760 and 9,82,662 for 2024-25, to the Standing Committee on 7 January 2025, printed in the 368th Report of 08.08.2025.
+  Federal Question Settled: Whether Centre has standing to count state-staffed positions and whether national aggregation is published.
+
+L-0098: RTE section 12(1)(c): the 25 per cent private-school quota
+  Date: 2014-04-01 | Term: T1
+  Domains: education, governance, federalism
+  Assessment: partly
+  Summary: Section 12(1)(c) of the RTE Act requires private unaided schools to reserve 25 per cent of entry-class seats for children from disadvantaged groups and weaker sections, with the state reimbursing a notified per-child cost. Central co-funding of that reimbursement began in 2014-15. By 2021-22 the Ministry reported 48.97 lakh children in schools for which reimbursement was claimed. On the Ministry's own count 19 of 36 States and UTs were admitting children under the provision as at April 2023 - roughly half the country has never operated it.
+  Federal Question Settled: Whether Centre-mandated private-school quota with federal reimbursement reaches half the states.
+
+L-0099: Karnataka's neighbourhood rule and the collapse of quota participation
+  Date: 2019-01-30 | Term: T1
+  Domains: education, governance, federalism
+  Assessment: contested
+  Summary: The Karnataka RTE (Amendment) Rules 2018, gazetted 30 January 2019, provided that admission under section 12(1)(c) would be available only where there is no government or aided school in the defined neighbourhood offering the relevant class. Private schools admitting children under the provision in Karnataka fell from 12,165 (2018-19) to 219 (2019-20) - a 98.2 per cent collapse in one year, against a national pattern of flat or rising participation. The Karnataka High Court upheld the rule on 31 May 2019.
+  Federal Question Settled: Whether state amendment of Centre-mandated RTE 12(1)(c) quota can be enforced through local definitions.
+
+L-0100: NEP 2020's three-language formula and Tamil Nadu's refusal
+  Date: 2020-07-29 | Term: T2
+  Domains: federalism, governance, education
+  Assessment: contested
+  Summary: NEP 2020 paragraph 4.13 retains the three-language formula while removing every named language from it: 'no language will be imposed on any State', the three being 'the choices of States, regions, and of course the students themselves, so long as at least two of the three languages are native to India'. Tamil Nadu, whose Assembly resolved on 23 January 1968 'that the Three-Language Formula shall be scrapped', has refused to implement it. The Union's own position, stated in Parliament in March 2026, is that 'Tamil Nadu is not implementing it in its entirety'.
+  Federal Question Settled: Whether NEP 2020's nominally-flexible three-language formula binds dissenting states.
+
+L-0101: Samagra Shiksha funds withheld from states that have not adopted NEP 2020
+  Date: 2024-04-01 | Term: T3
+  Domains: federalism, governance, education
+  Assessment: contested
+  Summary: Tamil Nadu, Kerala and West Bengal received nil central Samagra Shiksha release in FY2024-25, against 1,876.16, 141.66 and 311.29 crore respectively the year before. All three are the three States that have not signed the PM-SHRI memorandum of understanding; 33 of 36 States and UTs have. The Union's stated position is that 'implementation of Samagra Shiksha is implementation of NEP, 2020' and that Tamil Nadu 'has not agreed to implement NEP, 2020 in its entirety'. Nothing in NEP 2020 authorises the conditionality; the linkage runs through the PM-SHRI memorandum and the 2021 realignment of Samagra Shiksha to the policy.
+  Federal Question Settled: Whether untied transfers can be withheld to enforce policy alignment when no statutory authority exists.
+
+L-0108: The West Bengal teacher-recruitment panel annulled, and the anti-cheating law that does not reach it
+  Date: 2016 | Term: T1
+  Domains: governance, federalism, education
+  Assessment: failed
+  Summary: On 3 April 2025 the Supreme Court upheld the Calcutta High Court's judgment of 22 April 2024 setting aside en bloc the entire 2016 selection process of the West Bengal Central School Service Commission for Assistant Teachers of Classes IX-X and XI-XII and for non-teaching Group C and Group D staff. Six weeks before the High Court ruled, Parliament had enacted the Public Examinations (Prevention of Unfair Means) Act 2024, whose Schedule does not cover any state school service commission, state public service commission, state teacher eligibility test or state teacher recruitment board.
+  Federal Question Settled: Whether Centre can protect state recruitment integrity and what happens when national anti-cheating legislation excludes state instruments.
+
+L-0125: The mechanism of 5 and 6 August 2019: who supplied the concurrence, and who supplied the recommendation
+  Date: 2019-08-05 | Term: T2
+  Domains: governance, federalism, kashmir
+  Assessment: contested
+  Summary: Article 370 was rendered inoperative by two Presidential orders four days apart. C.O. 272 of 5 August 2019 superseded the Constitution (Application to Jammu and Kashmir) Order 1954, applied the whole Constitution to the State, and added a clause to Article 367 directing that the expression 'Constituent Assembly of the State referred to in clause (2)' in the proviso to Article 370(3) be read as 'Legislative Assembly of the State'. C.O. 273 of 6 August 2019 then declared, on the recommendation of Parliament, that all clauses of Article 370 cease to be operative. A five-judge Constitution Bench held on 11 December 2023 that the Article 367 route was ultra vires and that the identical result was independently available without it, and disposed of every petition.
+  Federal Question Settled: Whether Article 370's repeal was constitutionally valid and whether its process can be questioned after effect.
+
+L-0127: The undertaking to restore statehood: seven years, six statements, no date
+  Date: 2019-08-06 | Term: T2
+  Domains: governance, federalism, kashmir
+  Assessment: awaiting-adjudication
+  Summary: The commitment to restore statehood to Jammu and Kashmir has been stated six times, in three forums, by the Union Home Minister, by two Ministers of State, by the Solicitor General and by the Supreme Court itself. It has never been withdrawn and has never been dated. As at August 2026 statehood has not been restored, and applications to enforce the undertaking are pending before the Supreme Court.
+  Federal Question Settled: Whether an indefinite deferral of statehood after explicit commitment can be sustained.
+
+L-0138: The Union keeps no count of shutdowns because police is a State subject, and in Jammu and Kashmir it is not
+  Date: 2021-03-10 | Term: T2
+  Domains: governance, federalism, kashmir
+  Assessment: no-objective
+  Summary: Both Union bodies with responsibility for telecom suspension have stated on the record that they keep no record of shutdown orders issued by States and Union Territories, and the reason both give is that police and public order are State subjects. Jammu and Kashmir is not a State: the Reorganisation Act places Public Order and Police outside the Legislative Assembly's competence entirely, and everything outside that competence is the Lieutenant Governor's discretion, on which no court may inquire what advice was tendered. So for the territory where suspensions have been most frequent and most prolonged, the constitutional ground the Union gives for not counting does not apply to it.
+  Federal Question Settled: Whether constitutional absence of state police competence in a Union Territory creates accountability gap for telecom shutdowns.
+
+L-0146: The third tier in Jammu and Kashmir was elected once, and every elected term has since lapsed with no successor election
+  Date: 2018-11-17 | Term: T2
+  Domains: governance, federalism, kashmir
+  Assessment: partly
+  Summary: Jammu and Kashmir had no constitutionally grounded third tier until 2019, because Parts IX and IXA did not apply to it. Since then panchayats, Block Development Councils, municipal bodies and a new directly elected District Development Council in every district have all been elected. All of them have also expired: the municipal bodies in October and November 2023, the panchayats and BDCs on 9 January 2024, and the District Development Councils on 24 February 2026. Not one successor election has been held.
+  Federal Question Settled: Whether third-tier terms can lapse entirely without successor elections or whether the territory has abandoned elected local government.
+
+L-0147: The J&K local tier has no State Finance Commission report, no local-bodies audit, and its Finance Commission grants fell to zero and then stopped appearing
+  Date: 2011-06-24 | Term: T2
+  Domains: governance, federalism, kashmir
+  Assessment: no-objective
+  Summary: Jammu and Kashmir enacted a State Finance Commission Act in 2011 requiring a commission to be constituted as soon as may be and every fifth year thereafter. No document establishes that any such commission was ever constituted, reported or had its report acted on. The Comptroller and Auditor General's own database returns zero local-bodies audit reports for the territory as either State or Union Territory, while returning them for other states. And the Ministry of Panchayati Raj's own devolution index scores the territory at 27.85 against a national average of 43.89. And the Union's own Finance Commission grants to the territory's Gram Panchayats were released at 53.64 per cent of allocation across the 2015-20 award, with the whole of the final year's 1,049.49 crore rupees released at zero - after which the territory has no row at all in the successor award's allocation table.
+  Federal Question Settled: Whether Finance Commission grants exist for territories without a constituted Finance Commission and whether local-governance finance reaches gram panchayats.
+
+================================================================================
+REQUIREMENT B: DELIMITATION COVERAGE
+================================================================================
+
+FINDING: Phase 13 MUST author national delimitation. Existing coverage is J&K-only.
+
+L-0141 (Delimitation of Jammu and Kashmir: one Commission table, three denominators, 
+         three answers) covers ONLY Jammu and Kashmir Assembly delimitation, effective 
+20 May 2022, raising the Assembly from 83 to 90 fillable seats and allocating 47 to Kashmir 
+division and 43 to Jammu. The provenance record P-98 (The J&K electoral instrument: four 
+turnout values for one quantity, and three denominators for one delimitation) documents the 
+measurement problems in that specific delimitation but does NOT extend to national delimitation.
+
+Series in use:
+  - jk-assembly-seats (governance domain): J&K only
+  - jk-panchayat-seats-vacant (governance domain): J&K only
+
+NO SERIES AND NO LEDGER RECORD exist for:
+  - The 1976 Forty-Second Amendment freeze on Lok Sabha seats (Article 82)
+  - The expiry of that freeze after the first census taken after 2026 (i.e., 2031)
+  - Reallocation of Lok Sabha and state assembly seats between states
+  - Southern states' constitutional objections to delimitation (Tamil Nadu, Karnataka, etc.)
+  - Finance Commission seat-weight formulas (14th, 15th FC)
+  - The 2026-2031 delimitation window and expected seat shifts
+
+COLLISION IMPLICATION: Phase 13 does NOT amend L-0141. Phase 13 MUST author national 
+delimitation as a separate ledger record (distinct subject, national scope, no J&K recursion).
+
+================================================================================
+REQUIREMENT C: GST - RELATED SERIES AND QUANTITIES
+================================================================================
+
+L-0012 (Goods and Services Tax) references only ONE series: nominal-gdp (macro domain).
+
+False positives eliminated: keyword search for "gst", "tax", "cess", "revenue", "devolution", 
+"transfer", "divisible" found only jk-psa-detenus-transferred-out and jk-nhrc-cases-transferred-to-shrc, 
+which are unrelated (Kashmir governance transfers, not fiscal).
+
+QUANTITIES NOT YET MEASURED by any series:
+  ✗ GST revenue by slab (5%, 12%, 18%, 28%) or by destination state
+  ✗ GST collection by state (state-wise revenue, not aggregate)
+  ✗ Compensation cess collections (guarantee ran 1 Jul 2017 – 30 Jun 2022)
+  ✗ Compensation disbursed vs. due to states (the deficit dispute 2020-2022)
+  ✗ GST compliance burden (registrants, filings, disputes) by state
+  ✗ Input tax credit reversal (ITC chain effects)
+  ✗ E-way bill volumes (logistics-friction reduction proxy)
+  ✗ GST 2.0 revenue impact (effective 22 Sep 2025; 5%, 18%, demerit 40%)
+  ✗ Estimated revenue foregone by rate restructuring (~₹48,000 crore)
+  ✗ Tariff revenue before/after GST (inter-state tax displacement)
+
+SERIES NEEDED BY PHASE 13:
+  - gst-revenue-aggregate (India) | unit: rupees crore | period: 2017-07 onward
+  - gst-revenue-state (destination) | unit: rupees crore | period: 2017-07 onward
+  - gst-compensation-allocated | unit: rupees crore | period: 2017-07 to 2022-06
+  - gst-compensation-released | unit: rupees crore | period: 2017-07 to 2022-06
+  - compensation-cess-collected | unit: rupees crore | period: 2017-07 onward (loan repayment)
+
+================================================================================
+REQUIREMENT D: FISCAL TRANSFER SERIES
+================================================================================
+
+EXISTING SERIES FOUND (5 total):
+
+1. jk-xiv-fc-panchayat-grants-allocated (federalism domain, rupees crore)
+   - Period: N/A | Points: 5 | Breaks: Yes (1)
+   - Scope: J&K panchayat Finance Commission grants (14th FC period)
+
+2. jk-xiv-fc-panchayat-grants-released (federalism domain, rupees crore)
+   - Period: N/A | Points: 5 | Breaks: Yes (1)
+   - Scope: J&K panchayat Finance Commission grants actually disbursed
+   - NOTE: L-0147 reports final year's ₹1,049.49 crore released at zero; territory dropped from successor award
+
+3. fiscal-deficit (macro domain, % of GDP)
+   - Period: N/A | Points: 12 | Breaks: Yes (2)
+   - Scope: Union fiscal deficit (not state-level)
+
+4. jk-psa-detenus-transferred-out (governance domain, transferred during year)
+   - Points: 6 | Breaks: No
+   - UNRELATED - Kashmir security detentions, not fiscal
+
+5. jk-nhrc-cases-transferred-to-shrc (governance domain, cases transferred)
+   - Points: 7 | Breaks: Yes (1)
+   - UNRELATED - Kashmir human-rights cases, not fiscal
+
+QUANTITIES NOT YET MEASURED:
+  ✗ Tax devolution to states (Centre's share of central taxes → states)
+  ✗ States' constitutional entitlement under Finance Commission awards (13th, 14th, 15th FC)
+  ✗ Horizontal devolution formula (population, area, fiscal capacity, index adjustments)
+  ✗ Grants-in-aid (by type: special assistance, critical infrastructure, etc.)
+  ✗ Centrally sponsored scheme spending (flagged as shared burden between Centre and states)
+  ✗ Cess collections outside divisible pool (education cess, health cess, etc.) ← shrinks pool
+  ✗ Surcharges outside divisible pool (surcharge on income tax, other surcharges)
+  ✗ State own-tax revenue (revenue available to states from own sources)
+  ✗ State fiscal deficit / state GFCF
+  ✗ Finance Commission award periods (coverage gaps: 12th FC onward should be present)
+  ✗ Panchayat and municipal tier grants (beyond J&K)
+  ✗ 42% divisible pool share transition (was 42% → became 41% in 15th FC)
+
+AMENDMENT TARGET:
+  - L-0147 (J&K Finance Commission): Would be amended to include national FC context,
+    14th FC award data, and comparative state Finance Commission coverage.
+
+================================================================================
+REQUIREMENT E: GOVERNORS AND LIEUTENANT GOVERNORS
+================================================================================
+
+FINDING: ZERO ledger records and ZERO provenance records on Governor assent, 
+Article 200/201, bill delay, or Lieutenant Governor powers.
+
+False positives from keyword search (on "governor", "assent", "reserved", "president", 
+"article 356", etc.):
+  - L-0066 to L-0108: All triggered on education/agriculture policy transfer by state/Centre
+  - L-0125 to L-0147: All K&J-specific governance, not Governor assent
+  - P-78, P-86: Kashmir police data sourcing, not Governor powers
+
+COVERAGE GAPS (None of the following exist):
+  ✗ Governor assent under Article 200 (ordinary bills)
+  ✗ Governor recommendations under Article 201 (money bills)
+  ✗ Withholding of assent or reservation for President
+  ✗ Bill delay by Governor (the Punjab case, Tamil Nadu case, Kerala case, 2023)
+  ✗ Lieutenant Governor powers in Delhi (Article 239AA)
+  ✗ Lieutenant Governor powers in Puducherry (post-2021 constitutional amendments)
+  ✗ Lieutenant Governor powers in J&K (complete administrative discretion, no Cabinet constraint post-2019)
+  ✗ President's rule and Article 356 (Governor's recommendation, Centre's invocation)
+  ✗ 2023 Supreme Court decision on gubernatorial delay (Vidyasagar Rao / Speaker cases)
+  ✗ 2025 Supreme Court decisions (if any) on LG/Governor powers
+  ✗ Governor discretion vs. constitutional convention (Raj Bhawan acting as rival power centre)
+
+COLLISION IMPLICATION: Phase 13 MUST author Governor/LG coverage as entirely new ledger 
+records and series. No amendment opportunity because nothing exists. Distinct from J&K 
+(which is LG-only Union Territory, not Governor-state relationship).
+
+================================================================================
+REQUIREMENT F: COLLISION LIST (AMEND VS DUPLICATE)
+================================================================================
+
+RECORDS THAT PHASE 13 WOULD AMEND (add series, add lenses, extend context):
+
+  L-0012 (GST) — AMEND
+    Current state: Summary only, one series ref (nominal-gdp)
+    Amendments phase 13 would make:
+      • Add gst-revenue-aggregate, gst-revenue-state series
+      • Add gst-compensation-allocated, -released series
+      • Add compensation-cess-collected series
+      • Add lens: "GST as federal tax architecture: revenue buoyancy vs. state guarantee"
+      • Add lens: "2025 rate restructuring (GST 2.0): revenue loss and policy re-evaluation"
+    Duplicate risk: ZERO — GST is a single subject, no separate ledger record exists.
+
+  L-0147 (J&K Finance Commission) — AMEND
+    Current state: J&K-specific, no national Finance Commission reference
+    Amendments phase 13 would make:
+      • Add context: "Finance Commission is a constitutional mechanism serving all states"
+      • Add 14th and 15th FC award data for national context
+      • Add comparative panchayat grant coverage for other states (if any exists)
+      • Add series: comparison between J&K and state Finance Commission operations
+    Duplicate risk: LOW-MEDIUM — Phase 13 might author national Finance Commission as separate 
+      ledger (distinct from L-0147's focus on J&K Finance Commission *absence*), but should 
+      cross-reference rather than duplicate L-0147.
+
+RECORDS PHASE 13 WOULD DUPLICATE IF AUTHORED FREELY (without amendment):
+
+  National Finance Commission awards (13th, 14th, 15th FC; horizontal/vertical devolution)
+    Existing related: L-0147 (but J&K-only)
+    Phase 13 action: Author as separate ledger with amendment link to L-0147.
+
+  Tax devolution to states (states' share of central taxes)
+    Existing related: None specific; L-0051 (UDAY) touches state fiscal stress
+    Phase 13 action: Author as separate ledger; minimal amendment risk because L-0051 
+      is infrastructure-specific.
+
+  Centrally sponsored schemes and shared fiscal burden
+    Existing related: L-0040 (MGNREGA), L-0098/L-0101 (education funding), L-0069 (MSP)
+    Phase 13 action: These records cover specific programs, not CSS architecture. 
+      Phase 13's CSS ledger should reference but not duplicate them.
+
+  National delimitation (freeze, reallocation, Article 82)
+    Existing related: L-0141 (J&K-only, different subject)
+    Phase 13 action: Author as entirely separate ledger; no duplicate risk.
+
+  Governor/LG powers and assent
+    Existing related: NONE
+    Phase 13 action: Author as new ledger(s); no duplicate risk.
+
+  Cess and surcharge collections
+    Existing related: NONE
+    Phase 13 action: Author as new ledger or series set; no duplicate risk.
+
+RECOMMENDATION TO PHASE 13:
+  1. AMEND L-0012 by adding GST revenue series (state-wise, slab-wise)
+  2. AMEND L-0147 with national Finance Commission context (new lens)
+  3. AUTHOR (not amend):
+     - National Finance Commission awards and fiscal devolution mechanism (ledger + series)
+     - Governor assent and bill delay (ledger)
+     - Lieutenant Governor powers (ledger)
+     - National delimitation (ledger + electoral series)
+     - Cess/surcharge fiscal impact (ledger or series)
+     - Centrally sponsored scheme architecture (ledger, referencing L-0040/L-0098/L-0101)
+
+================================================================================
+REQUIREMENT G: HIGHEST IDS IN USE (ALL FILES)
+================================================================================
+
+  MAX LEDGER ID:     L-0149    (scanned all 11 ledger files)
+  MAX PROVENANCE ID: P-99     (scanned provenance.json)
+  MAX PAIRS ID:      PR-47    (scanned pairs.json)
+
+  Next available IDs for phase 13:
+    - L-0150 through L-∞
+    - P-100 through P-∞
+    - PR-48 through PR-∞
+
+================================================================================
+REQUIREMENT H: SERIES-ID NAMING CONVENTIONS (FISCAL/MACRO EXAMPLES)
+================================================================================
+
+Existing fiscal and macro series IDs (showing house style):
+
+  FISCAL/MACRO DOMAIN:
+    1. nominal-gdp (macro)
+    2. gdp-growth-new-base (macro)
+    3. gdp-growth-2022-base (macro)
+    4. fiscal-deficit (macro)
+    5. gfcf-gdp (macro)
+    6. cad-gdp (macro)
+    7. cpi-inflation (macro)
+    8. genl-govt-debt (macro)
+    9. exports-gdp (macro)
+    10. forex-reserves (macro)
+    11. fertiliser-subsidy (macro)
+    12. agri-gdp-share (macro)
+    13. agri-gdp-share-peer (macro)
+    14. agri-gva-growth (macro)
+    15. agri-value-per-worker-peer (macro)
+
+  FISCAL-FEDERALISM DOMAIN:
+    16. jk-xiv-fc-panchayat-grants-allocated (federalism)
+    17. jk-xiv-fc-panchayat-grants-released (federalism)
+
+  BANKING/CREDIT:
+    18. agri-credit (banking)
+    19. bank-writeoffs-annual (banking)
+    20. credit-gdp-peer (banking)
+
+  PATTERN OBSERVATIONS:
+    • Lowercase with hyphens: nominal-gdp, fiscal-deficit, gfcf-gdp
+    • Regional prefix where appropriate: jk-xiv-fc-panchayat-grants-allocated (Jammu & Kashmir, 14th FC)
+    • Suffix for comparator: agri-gdp-share-peer (vs. baseline), credit-gdp-peer
+    • Clear quantity-ratio: cad-gdp (current-account deficit / GDP), exports-gdp (exports / GDP)
+    • No underscores, no camelCase, no uppercase
+    • Fiscal series tend toward: [region-]item-denominator format
+    • State-specific series prefix with state abbreviation: jk-, kl- (Kerala if exists), etc.
+
+RECOMMENDATION FOR PHASE 13 SERIES IDS:
+    • gst-revenue-aggregate
+    • gst-revenue-by-state
+    • gst-compensation-allocated
+    • gst-compensation-released
+    • compensation-cess-collected
+    • tax-devolution-to-states
+    • finance-commission-devolution-vertical
+    • finance-commission-devolution-horizontal-formula
+    • css-spending-centre-share
+    • css-spending-state-share
+    • cess-collected-outside-pool
+    • surcharge-collected-outside-pool
+    • governor-bill-delay-instances
+    • lok-sabha-seat-freeze-status (2026-2031 window)
+    • delimitation-seat-reallocation-by-state
+
+================================================================================
+SUMMARY: COVERAGE GAPS FOR PHASE 13
+================================================================================
+
+TRIGGERS FOR NEW AUTHORING (cannot amend, must author from scratch):
+
+  1. GOVERNORS & LG: Article 200/201 assent, bill delay (Punjab/Tamil Nadu/Kerala cases)
+     → NEW ledger record L-0150
+     → NEW series: governor-bill-delay-instances, lg-powers-by-ut
+
+  2. NATIONAL DELIMITATION: 1976 freeze, Article 82 expiry post-2026, seat reallocation
+     → NEW ledger record (L-0151?)
+     → NEW series: lok-sabha-seat-allocation-by-state, delimitation-phase-timeline
+
+  3. CESS & SURCHARGES: Impact on divisible pool, collections outside pool
+     → NEW ledger record (L-0152?)
+     → NEW series: cess-collected-outside-pool, surcharge-collected-outside-pool
+
+  4. CENTRALLY SPONSORED SCHEMES: Architectural reform, Centre-state cost-sharing
+     → NEW ledger record (L-0153?)
+     → References: L-0040 (MGNREGA), L-0098/L-0101 (education), L-0069 (MSP), L-0051 (UDAY)
+
+AMENDMENT TARGETS (add series, add lenses):
+
+  1. L-0012 (GST): Add gst-revenue-state, gst-compensation-allocated, -released series
+
+  2. L-0147 (J&K Finance Commission): Add national Finance Commission context and 
+     comparative state FC coverage
+
+DATA LAYER INTEGRITY:
+  • Ledger: 149 records total (max L-0149)
+  • Provenance: 99 records total (max P-99)
+  • Pairs: 47 records total (max PR-47)
+  • Series: 185 total across 5 files (2 federalism-domain only)
+  • No conflicts detected; clean namespace for phase 13 additions
+
+================================================================================
