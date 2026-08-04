@@ -364,9 +364,9 @@
   ],
   "type": "shock",
   "summary": "The United States imposed 25% tariffs on most Indian goods, then an additional 25% effective 27 August 2025 over India's Russian crude purchases, reaching 50% — the highest rate applied to any US trading partner.",
-  "whatHappened": "Indian government estimates put roughly US$48bn of exports at risk; GTRI estimated around two-thirds of approximately US$87bn in US-bound exports were affected. The rate was later cut to 18% under an interim arrangement, and in February 2026 the US Supreme Court constrained IEEPA-based tariff authority.",
+  "whatHappened": "Indian government estimates put roughly US$48bn of exports at risk; GTRI estimated around two-thirds of approximately US$87bn in US-bound exports were affected. CORRECTED 2026-08-04 against primaries retrieved that day. This record previously said the rate \"was later cut to 18% under an interim arrangement\" and that the Supreme Court \"constrained\" IEEPA-based tariff authority, and stated both as the current position; neither is right as written. The 18 per cent was a rate the 6 February 2026 United States-India joint statement said would be applied UNDER EXECUTIVE ORDER 14257. On 20 February 2026 the Supreme Court held in Learning Resources v. Trump that IEEPA does not authorise the President to impose tariffs at all — not that the authority was narrowed — and Executive Order 14389 the same day ended the duties imposed under every IEEPA order, including 14257 and 14329. India then paid ten per cent under a section 122 balance-of-payments surcharge from 24 February to 24 July 2026, and has paid ten per cent under a section 301 forced-labour action since. The instruments and their dates are held in L-0184 to L-0188; this record is the shock and its exposure estimates.",
   "assessment": "no-objective",
-  "caseFor": "The headline rate overstates the realised shock on the record's own figures. The 50 per cent peak held for months, not years: the rate was cut to 18 per cent under an interim arrangement, and in February 2026 the US Supreme Court constrained IEEPA-based tariff authority, removing the instrument the second tranche rested on. The exposure estimates are gross rather than net - roughly US$48bn of exports at risk on the Indian government's own count against GTRI's two-thirds of about US$87bn in US-bound exports - and neither nets out re-routing, exemptions or substitution.",
+  "caseFor": "The headline rate overstates the realised shock on the record's own figures. The 50 per cent peak held for months, not years: it ended entirely on 20 February 2026, when the authority it rested on was held not to exist, and the rate India has actually paid since has been ten per cent under two successive non-IEEPA statutes. The exposure estimates are gross rather than net - roughly US$48bn of exports at risk on the Indian government's own count against GTRI's two-thirds of about US$87bn in US-bound exports - and neither nets out re-routing, exemptions or substitution.",
   "caseAgainst": "For the period it ran, India faced the highest rate applied to any US trading partner, and the second tranche was imposed over India's Russian crude purchases rather than over any trade dispute, which makes the exposure political rather than merely commercial. India-specific severity is the part that does not wash out: every other shock in this instrument is shared with the peer panel and can be netted against it, and this one cannot, so it confounds every external-sector assessment for FY26 and FY27 whatever rate finally settles.",
   "shockExposure": "India-specific in severity, which makes it unusual — most shocks in this project are shared with peers. That specificity means it cannot be netted out via peer comparison and must be carried as a standalone confound for any FY26 and FY27 external-sector assessment.",
   "seriesRefs": [
@@ -382,10 +382,30 @@
     "name": "US Supreme Court tariff ruling and Russian oil",
     "url": "https://www.cnbc.com/2026/02/25/us-tariff-ruling-india-russian-oil-purchases.html",
     "tier": "T4"
+   },
+   {
+    "name": "Learning Resources, Inc. v. Trump, 607 U.S. ___ (2026), No. 24-1287, decided 20 February 2026 — held: IEEPA does not authorise the President to impose tariffs",
+    "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "Executive Order 14389 of February 20, 2026, Ending Certain Tariff Actions, 91 FR 9437 — terminating the duties imposed under EO 14257 and EO 14329",
+    "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-25/html/2026-03832.htm",
+    "tier": "T1"
+   },
+   {
+    "name": "United States-India Joint Statement, The White House, 6 February 2026 — the 18 per cent rate, stated as applying under Executive Order 14257",
+    "url": "https://www.whitehouse.gov/briefings-statements/2026/02/united-states-india-joint-statement",
+    "tier": "T1"
+   },
+   {
+    "name": "Proclamation 11012 of February 20, 2026, 91 FR 9339 — the ten per cent section 122 surcharge, effective 24 February through 24 July 2026",
+    "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-25/html/2026-03824.htm",
+    "tier": "T1"
    }
   ],
-  "confidence": "low",
-  "asOf": "2026-07-30"
+  "confidence": "high",
+  "asOf": "2026-08-04"
  },
  {
   "id": "L-0022",

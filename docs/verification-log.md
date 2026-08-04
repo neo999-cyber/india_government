@@ -5414,3 +5414,83 @@ domain-coverage     14/14 domains · 1065/1065 record-to-surface
 url-check           7/7 confirmed, no rate-limit artefacts under the new spacing
 lens-controls       6 paired controls + exact membership for all four phase-14 lenses
 ```
+
+---
+
+# Verification log — cycle 2026-08-04f (the US-tariff-currency sweep: one record corrected, class closed)
+
+**Its own cycle and its own commit.** This is a correction to a shipped record, not phase work, and
+folding it into an arc commit would have buried a live wrong claim inside a feature.
+
+`/data` diff: `24 4` on `ledger/macro-fiscal.json`. Four deletions, each an intended field
+replacement; shape declared before the edit, and the parsed comparison proves no other record moved.
+
+## The class, and how it was closed
+
+The instruction was to sweep rather than spot-fix, because the IEEPA holding invalidates a CLASS of
+claim: any record asserting a US tariff rate, a legal basis for one, or a negotiation state as
+current.
+
+**The first enumeration returned 59 candidates and was worthless.** `duty` matched "duty-bearing";
+`USTR` matched the substring in "infra**stru**cture". Tightened to word-boundary instrument terms
+requiring a US context, it returned 6. A relaxation pass — inflections and bare rate claims — added
+7 more, and **every one of the 7 was `ustr` inside "industry" or "infrastructure" again**, because
+the US-context regex was case-insensitive. The one genuine addition was L-0189, missed by the tight
+filter because `tariffed` does not match `\btariff\b`.
+
+**Third substring false-positive of this phase**, after phase 13's discarded keyword sweep and the
+197-failure figure-consistency draft. The enumeration is a candidate generator; the judgement is per
+record, and it was made per record here.
+
+**The class has exactly seven members: L-0021 and L-0184 to L-0189.** Six were written in batch 1
+directly against primaries retrieved in that run and are the correct current state by construction.
+**Only L-0021 needed correcting.** The sweep's value was establishing that the class is closed, not
+finding new members — and that is a result, not a null one.
+
+## What L-0021 said, and what is true
+
+It stated, as the current position, that the rate "was later cut to 18% under an interim
+arrangement" and that in February 2026 the Supreme Court "constrained IEEPA-based tariff authority".
+
+- The 18 per cent was never a rate that was applied and then held. It is a rate the 6 February 2026
+  joint statement said would be applied **under Executive Order 14257** — an IEEPA order whose duties
+  were terminated fourteen days later.
+- The Court did not constrain the authority. It **held that IEEPA does not authorise the President
+  to impose tariffs at all**, which is a different holding with a different consequence: an authority
+  that is narrowed can be re-aimed and one that does not exist cannot.
+- India has paid **ten per cent** since 24 February 2026 — under section 122 to 24 July, under
+  section 301 since.
+
+Corrected in place with the change stated inside the record rather than silently, per CLAUDE.md.
+`confidence` low → high; `asOf` 2026-07-30 → 2026-08-04.
+
+**Sources were ADDED, not replaced.** The two T4 items (an EY tax alert, a CNBC report) are what the
+original claim rested on, and deleting them would erase the provenance of the thing being corrected.
+Four T1 primaries were appended beside them. All four were already corpus members cited by L-0184 to
+L-0188, which is why `url-check` reported nothing new to fetch — verified explicitly rather than
+assumed from the zero.
+
+## M2 caught a whole-file reformat for the third time
+
+The correction was first written with a JSON writer and produced `445 425` on a file that uses
+one-space indentation. Reverted; redone as anchored text edits preserving the file's own style, with
+the source array extended in place. `24 4`.
+
+**Three cycles, three reformats, all caught by the same check and none by the writer's own report.**
+The pattern is now well enough attested to state plainly: a JSON round-trip is not a safe way to
+edit a file whose formatting you did not choose, and the diff is the only thing that says so.
+
+## Not touched
+
+L-0018 asserts the state of four trade agreements as current and is arc D's material, not this
+class's — it makes no US tariff claim, and its appearance in the relaxed enumeration was the
+`ustr`-in-"infrastructure" artefact. The L-0086/L-0092/L-0183 bundle, back-links,
+transfer-dependence, term-window, the 313 roots, B-4, delimitation and Agnipath: observed, untouched.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 145 warnings
+figure-consistency  6 declared claims, 6 checked, 3 artefacts declared
+url-check           0 new URLs; the four added were already corpus members, verified per URL
+```
