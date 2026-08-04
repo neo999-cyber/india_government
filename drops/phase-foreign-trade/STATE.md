@@ -1,8 +1,40 @@
 # Phase 14 — foreign policy and trade. State.
 
-**Batch 1 merged and deployed (`23caebe`). Batch 2 is ARC B ONLY — the India-China mirror — merged and gated. Arc C (neighbourhood) is NOT authored: stop condition 1 fired on its central record. Batch 3 is not started.**
+**Batch 1 (`23caebe`) arcs A+F and the lens axis: merged, deployed.
+Batch 2 (`23cc1cf`) arc B, the India-China mirror: merged, deployed.
+Batch 3 head (`95950e3`) the rounding basis + url-check spacing: merged.
+Batch 3 arc C (`4df4cc8`) the neighbourhood TRADE dimension: merged.**
 
-Arc C's blockers, so the next run does not rediscover them: `pca-cpa.org` is Cloudflare-gated (403 from two clients); `mea.gov.in` needs an explicit resolver (13.224.236.14) and then serves a JavaScript shell with no transcript body; the Indus Waters Treaty PDF on MEA's portal is a scan with no text layer. What DOES retrieve: PIB press releases, RBI press releases, UN Comtrade for every bilateral flow. IMF country pages 403.
+## NOT DONE — the live backlog, in the order the brief put them
+
+1. **Arc D — agreements.** UAE CEPA, Australia ECTA, EFTA TEPA, UK FTA, the EU negotiation, RCEP
+   non-entry against subsequent trade data. Nothing authored. **Not blocked** — the primaries are
+   retrievable and nothing about them was tried and failed. `europe` is correspondingly absent from
+   the lens enum. TEPA's investment commitment is dated, sized and testable and is the first-class
+   record here. Negotiating texts are UNPUBLISHED, not withheld — `withheld` needs a named
+   requester, a specific request and a date.
+2. **Arc E — procurement.** Rafale tranches, S-400 and CAATSA, indigenisation and export figures
+   against target, emergency-procurement powers. Nothing authored. Filing rule is settled: cost →
+   macro, indigenisation/offsets/exports/DAP → foreign, G2G-as-diplomacy → foreign, `defence-sector`
+   lens on all. Agnipath stays out.
+3. **Arc G — multilateral.** G20 deliverables against outcomes, IMEC announced against built, WTO
+   fisheries and public stockholding, UNSC advocacy. Nothing authored.
+4. **Arc C's POLICY dimensions.** Only the trade dimension is authored. Still owed: Bangladesh
+   transit, energy and the Adani PPA; Sri Lankan debt restructuring, energy and ports; the Maldives
+   reversal arc, currency swap and infrastructure; Nepal-Bhutan hydropower and power trade;
+   Myanmar's border fencing and the Free Movement Regime. These need policy primaries, not trade
+   returns.
+5. **Pakistan, deferred alone.** The Indus abeyance, the trade suspension and transit. Blocked on
+   retrieval, not on scope — see the blocker list below. Its exclusion is stated in the titles of
+   L-0192 and L-0193 rather than left as a silent gap.
+6. **L-0021 and the US-tariff-currency sweep.** Its own cycle, immediately after batch 3 and ahead
+   of the L-0086/L-0092/L-0183 bundle. The IEEPA holding invalidates a CLASS of claim: sweep every
+   record asserting a US tariff rate, a legal basis for one, or a negotiation state as current.
+7. **The retrieval-capability cycle.** One cycle, not four stops. Class members found so far:
+   Cloudflare gates (`pca-cpa.org`), JS shells that answer 200 with no document (`mea.gov.in`),
+   scans with no text layer (the Indus Waters Treaty PDF on MEA's portal), hosts needing an explicit
+   resolver (`ppac.gov.in`, `mea.gov.in`), CAPTCHA'd full-text endpoints (`federalregister.gov`),
+   and the carried Gazette task.
 
 ## What is done
 
