@@ -7318,3 +7318,80 @@ denominator, rule 3 (including against a mitigating explanation), scans through 
 `--variants`, positive controls before banking a zero, the unchecked-versus-absent distinction, M2,
 author-then-gate.
 
+## Cycle 2026-08-05l — arc G closes: WTO fisheries (L-0214), Vaccine Maitri (L-0215), and two subjects closed with no record
+
+**L-0214 — a dated, ranked act, which is rare in this arc.** India deposited its Instrument of
+Acceptance of the WTO Agreement on Fisheries Subsidies on 20 July 2026 as the **123rd** Member to
+do so, four years and one month after adoption at MC12 and ten months after the Agreement entered
+into force without India. The WTO's deposit sequence makes the lateness measurable, and the
+government published the rank itself.
+
+**The finding is what the accession does not say.** In December 2024 the Department of Commerce
+stated three specific asks — longer transition periods, a permanent carve-out for small-scale and
+artisanal fishers without geographical limitations, and a carve-out of Exclusive Economic Zones.
+The July 2026 acceptance release mentions none of them.
+
+**A category error refused inside the score.** The obvious reading is that India accepted without
+its carve-outs. But the December statement describes "ongoing" negotiations, and it is NOT stated
+whether the asks attach to this Agreement or to the unconcluded further negotiation on overcapacity
+and overfishing. So the assessmentNote says in terms that this record does not treat acceptance as
+abandonment of the asks — the two statements cannot be joined from what either says. Scored
+`partly`: accession complete and dated, the stated objective unscoreable.
+
+**No ratio computed from 123.** Membership is given as 166 in a March 2024 context and the rank is
+from July 2026 — two documents, two dates, and membership is not asserted unchanged between them.
+A share of members would rest on an assumption neither source makes. Stated and declined.
+
+**L-0215 — the gift framing and the gift figure are not the same number.** The PIB explainer of 18
+June 2025 gives over 30.12 crore Vaccine Maitri doses to 99 countries and two UN bodies,
+"included 1.51 crore doses gifted to over 50 nations and 5.2 crore doses through the COVAX
+mechanism". The two named channels are 6.71 crore; **at least 23.41 crore doses — a little over
+three-quarters — are in no category at all**, under a heading reading "Humanity First, Always".
+The explicitly gifted share is 1.51 of 30.12 crore, just over five per cent, both terms named.
+
+**The residual was left unnamed on purpose.** There is an obvious candidate for what the other
+three-quarters were. No retrieved document says so, and the unmeasured entry states explicitly
+that the record does not name it — **an unsourced explanation is as much a fabrication as an
+unsourced accusation**, and here it would have run against the government rather than for it, which
+is the direction that feels like insight rather than charity. Same rule as the IMEC mitigation
+refused in the previous cycle, applied in the opposite direction.
+
+The residual is also stated as a MINIMUM, because the total is "over 30.12 crore" — a floor. A
+larger true total makes the unassigned share larger, not smaller, and the caveat says so rather
+than treating a floor as exact. The subtraction is declared to `figure-consistency` with operand B
+disclosed as itself a sum of two published figures, so the gate checks the residual instead of
+taking it on trust.
+
+**TWO SUBJECTS CLOSED WITH NO RECORD, and both refusals are the point of the batch.**
+
+*G20 presidency deliverables.* The retrieved explainer gives process counts in abundance — 200+
+meetings, 60 cities, one lakh delegates, 20 members plus 9 invitees plus 14 organisations — and
+names exactly ONE concrete outcome. The record that wanted to be written is "the presidency is
+measured by throughput, not by outcome", and it is a good line. It was not written, because a
+promotional summary's brevity is evidence about the summary and not about the presidency. Testing
+it needs the Leaders' Declaration commitments and a later report against them; neither exists in
+retrieved form.
+
+*UNSC advocacy.* `Security Council` returns 0 across 38,591 characters, and nothing retrieved
+states the advocacy as a commitment with a trigger. By inspection it is state (d) — but writing
+that from zero primaries would be **a record about the search rather than about the world**, which
+is the failure the class-of-sources rule exists to prevent one level down.
+
+**Corpus collision check ran first**, per the phase convention: `G20`, `UNSC`, `Security Council`,
+`Global South`, `vaccine`, `Vaccine Maitri`, `COVAX`, `International Solar Alliance` and
+`Biofuels` all returned zero records before any authoring. Nothing here duplicates or contradicts
+existing coverage.
+
+**Gates.** build VALID (0 errors, 164 warnings); figure-consistency 9/9 declared claims; manifest
+657 records; reachability 859/859 across 637 pages; domain-coverage 14/14, 1105/1105; enum-stamp 2;
+url-check 3/3; typecheck clean; selftest exit 0; lens-controls 7 pairs. M2 on both merges; numstat
+97/0 on the ledger, 12/0 on figure-claims.json. Note that L-0214 and L-0215 carry NO `lenses` key —
+neither belongs to a counterparty file — and validate accepts the omission rather than requiring an
+empty array.
+
+**Carried rules invoked.** Rule 3 in both directions (no unsourced mitigation, no unsourced
+accusation), share-shaped figures name numerator and denominator, floors are not treated as exact,
+no cross-document derived quantity (the 123-of-166 ratio declined), rule 5d, declared arithmetic
+over asserted arithmetic, scans through the helper with `--variants` and positive controls, corpus
+collision check before authoring, and "no records beats thin records".
+

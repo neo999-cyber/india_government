@@ -76,14 +76,45 @@ procedures — no date exists yet, and neither a signature date nor a notificati
 published. TEPA's US$100bn investment objective runs to 1 October 2040 with the first US$50bn at ten
 years.
 
-### 3. Arc G — multilateral
+### 3. Arc G — CLOSED 2026-08-05, three records of five subjects; two closed with NO record
 
-G20 presidency deliverables against outcomes · IMEC announced against built · WTO positions
-(fisheries subsidies, public stockholding) · UNSC seat advocacy · Global South framing against
-measurable programme delivery. *Why deferred:* room; never opened. *Depends on:* nothing blocking.
-PIB carries the G20 and IMEC material; the WTO's own site was not tested and is the one unknown.
-Expect the commitment-state discipline to carry most of the weight — this arc is dense with
-announced-but-undelivered material, which is what states (a)/(b)/(c) exist for.
+**Written: L-0213** IMEC · **L-0214** WTO fisheries accession · **L-0215** Vaccine Maitri
+composition.
+
+**NOT written, and why — these are outcomes, not omissions.**
+
+*G20 presidency deliverables against outcomes.* Testing this needs the New Delhi Leaders'
+Declaration's own commitments list AND a later document reporting against it. Neither was
+retrieved. What was retrieved is a PIB explainer of 18 June 2025 giving PROCESS counts — the
+presidency 1 Dec 2022 to 30 Nov 2023, the 18th Leaders' Summit 9-10 Sep 2023, 20 member states
+plus 9 invitees plus 14 international organisations, over 200 meetings in 60 cities, more than one
+lakh delegates — and naming exactly one concrete outcome, the Global Biofuels Alliance launch.
+The tempting record is "the presidency is measured by throughput, not outcome". **It was not
+written, because a promotional summary's brevity is evidence about the summary, not about the
+presidency.** *Depends on:* the Declaration text with its commitments, and any later report
+against them.
+
+*UNSC advocacy.* `Security Council` returns 0 in the Global Footprint explainer (38,591 chars),
+and nothing retrieved states an Indian commitment with a testable shape — no date, no named
+condition, no reporting obligation. By inspection it looks like commitment state (d), but writing
+that from zero retrieved primaries would be **a record about the search rather than about the
+world**. *Depends on:* any Indian primary stating the advocacy as a commitment with a trigger.
+
+*WTO public stockholding.* The only retrieved statement is the Department of Commerce's, that
+there was no agriculture outcome at MC13 and that India opposed attempts to divert focus from the
+Permanent Solution. Carried inside L-0214's caveat rather than given a record of its own; a
+standalone one needs India's own stated ask with a date and a later report against it.
+
+**Route note.** Commerce was the right host for WTO, PMO/PIB explainers for the framing material.
+MEA was not attempted — it remains the blocked channel.
+
+**Scanning failure mode found here.** A scan for `%` returns 0 on a document whose headline reads
+"30%": `\b` after a punctuation character can never match, so the boundary default is MEANINGLESS
+for punctuation-only terms rather than merely strict. Search the digits. Third distinct failure
+mode of that default, after "Fengal" (false positive) and "Official Creditors" (false negative).
+A fourth, which no scanner can catch: DPIIT's twelve `corridor` hits are the National Industrial
+Corridor Development Programme — **a term can match and mean something else**, and only reading
+the context finds it.
 
 ### 4. Arc C policy dimensions — CLOSED 2026-08-05, seven records across five countries
 
