@@ -1,0 +1,55 @@
+[
+  {
+    "id": "L-0211",
+    "title": "India's electricity exports to Bangladesh were published as a measured four-year series up to January 2023 and have not been published since, and the Ministry of Power's own account of 2025 does not mention Bangladesh at all",
+    "date": "2026-01-16",
+    "term": "T3",
+    "domains": ["foreign", "infrastructure"],
+    "lenses": ["neighbourhood"],
+    "type": "institutional",
+    "summary": "A Parliamentary reply of 28 March 2023 published net cross-border electricity flows sourced from the Central Electricity Authority, by counterparty and financial year, in Million Units. India's exports to Bangladesh were 6,987.94 in 2019-20, 7,551.99 in 2020-21, 7,301.74 in 2021-22 and 7,234.08 in 2022-23 up to January 2023. An earlier reply of 19 March 2020 gave 6,168.14 for 2019-20 as on January 2020. No later series was retrieved: the Ministry of Power's Year End Review 2025, published 16 January 2026, does not mention Bangladesh, Nepal, Bhutan, exports or cross-border trade anywhere in its 49,271 characters, and the comprehensive Lok Sabha reply of 2 April 2026 recorded at L-0208 lists infrastructure without flows.",
+    "claimAtLaunch": "None stated. Both replies are answers to questions rather than announcements, and neither sets a target for cross-border trade, a volume to be reached, or a schedule for reporting.",
+    "whatHappened": "THE QUANTITY IS COLLECTED, WAS PUBLISHED, AND HAS STOPPED APPEARING. The 2023 series is attributed to the Central Electricity Authority, which compiles it continuously; nothing suggests collection ceased. What changed is disclosure. The most recent comprehensive account of neighbourhood power cooperation lists thirteen generation projects and thirty transmission links and no volume over any of them; the Ministry's own year-end review of 2025 does not mention the neighbourhood at all. THE PUBLISHED SERIES ALSO SETS A PARTIAL YEAR BESIDE FULL ONES. The top row, 7,234.08, covers ten months to January 2023; the three rows beneath it cover twelve. Read down the column the figure appears flat against 7,301.74 for the full year before it, and that reading is unavailable — the periods differ.",
+    "assessment": "no-objective",
+    "assessmentNote": "No target, volume or reporting commitment is announced in either reply, so there is nothing that could have worked or failed. What the record establishes is what is measurable about this relationship and when it stopped being published, which is the precondition for scoring anything else about it later.",
+    "caseFor": "The series is better disclosure than most of this arc contains, and it deserves saying. It is attributed to a named compiler rather than floated unsourced, it gives four consecutive years on a consistent unit, it covers every land neighbour, and it marks direction per cell rather than assuming one — which is what lets a reader see that India moved from exporting 1,921.09 Million Units to Nepal in 2021-22 to importing 488.96 in the ten months following, a reversal that a one-directional table would have hidden. The two replies are also consistent with each other once their cut-offs are read: 6,987.94 for the full year 2019-20 against 6,168.14 as on January 2020 leaves 819.80 Million Units in the remainder, which is an ordinary two months. Parliamentary replies answer what is asked, and no reporting obligation was breached by not repeating a table nobody requested.",
+    "caseAgainst": "A quantity that is compiled continuously and published intermittently is one no reader can track, and the gap is now longer than the series. The last published figure covers a period ending January 2023; three years later the Ministry's comprehensive statement of neighbourhood power cooperation gives infrastructure with no flows, and its own year-end review of 2025 does not mention Bangladesh, Nepal, Bhutan, exports or cross-border trade in any form. Physical capacity is thereby fully described and its use is not described at all — a reader can learn how many links exist and nothing about whether power crosses them. And the one series that was published contains a comparison trap: a ten-month figure sits at the head of a column of twelve-month figures, distinguished only by a parenthesis, in a release whose headline speaks of the last four years.",
+    "differentFacts": false,
+    "differentFactsNote": "The two figures for 2019-20 — 6,168.14 and 6,987.94 — are NOT a disagreement and are not filed as one. They are the same quantity measured to different cut-offs, ten months and twelve, and the difference of 819.80 Million Units is the remainder of the year. Recorded explicitly because two official figures for one financial year is the shape of a differentFacts pair, and treating it as one would manufacture a contest out of a reporting convention.",
+    "unmeasured": [
+      {
+        "what": "India's electricity exports to Bangladesh after January 2023",
+        "why": "The Central Electricity Authority compiles these flows — the 2023 reply attributes the series to it — so the figures exist. They are absent from the places they would appear: the Ministry of Power's Year End Review 2025, scanned in full, contains no mention of Bangladesh, exports or cross-border trade, and the 2 April 2026 Lok Sabha reply on cooperation with neighbouring countries gives no volume over any of the thirty links it lists.",
+        "wouldFill": "A Central Electricity Authority cross-border exchange release, or a Parliamentary answer updating the Million Units series by counterparty and year.",
+        "reasonKind": "not-published"
+      },
+      {
+        "what": "Whether any officially published series accounts for the Godda arrangement",
+        "why": "The published series ends at January 2023, which is before the period in which such an arrangement would appear in it, so the series cannot speak to the question either way. No primary establishing the arrangement was retrieved in this run or the previous one, and this record therefore asserts no absence — the point recorded is only that the measured series stops before the question becomes answerable.",
+        "wouldFill": "A Ministry of Power or Central Electricity Authority statement covering financial years from 2023-24 onward, against which the question could be asked at all.",
+        "reasonKind": "not-published"
+      }
+    ],
+    "caveat": "The 2022-23 figure of 7,234.08 Million Units covers ten months, to January 2023, and is not comparable with the twelve-month figures above which it sits. NO ANNUALISATION IS PERFORMED HERE and none should be inferred: electricity flows are seasonal, so scaling ten months to twelve would produce a figure that describes no period and belongs to no source. For the same reason the record states no trend across the four years and no growth rate. The Year End Review 2025 counts are of a scan that saw the document — 19 occurrences of \"Ministry of Power\", 86 of \"2025\", 39 of \"electricity\" and 42 of \"transmission\" over 49,271 characters, with no `Loading` placeholder — because a zero from a page that failed to load is not an absence.",
+    "sources": [
+      {
+        "name": "Ministry of New and Renewable Energy and Ministry of Power, \"Western Region leads in electrical energy generation; India exported power to Bangladesh, Nepal and Myanmar during the last four years\", PIB, 28 March 2023 — net export/import of electricity by Indian entities in Million Units, attributed to the Central Electricity Authority: Bangladesh 6,987.94 (2019-20), 7,551.99 (2020-21), 7,301.74 (2021-22), 7,234.08 (2022-23 up to January 2023), all export; and Nepal 1,921.09 export in 2021-22 against 488.96 import in 2022-23 up to January 2023",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1911488",
+        "tier": "T1"
+      },
+      {
+        "name": "Ministry of Power, \"Trade in Electricity\", PIB, 19 March 2020 — import/export by counterparty for financial year 2019-20 as on January 2020: Bangladesh 6,168.14 Million Units export, Nepal 1,839.25 export, Bhutan 6,165.78 import, Myanmar 7.34 export; and the Guidelines on Cross Border Trade of Electricity of 5 December 2016, substituted by the Guidelines for Import/Export (Cross Border) of Electricity 2018 issued 18 December 2018",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1607177",
+        "tier": "T1"
+      },
+      {
+        "name": "Ministry of Power, \"Year End Review of Ministry of Power - 2025\", PIB, 16 January 2026 — scanned in full through the corpus-search helper: zero occurrences of Bangladesh, Nepal, Bhutan, \"Million Units\", export or cross-border across 49,271 characters, against positive controls of 19 \"Ministry of Power\", 86 \"2025\", 39 \"electricity\" and 42 \"transmission\"",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2215187",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-05",
+    "revisitTrigger": "Re-test if any Million Units series covering 2023-24 or later is published. That single table would close the first unmeasured, make the Godda question answerable for the first time, and turn L-0208's infrastructure inventory into something a reader can weigh."
+  }
+]

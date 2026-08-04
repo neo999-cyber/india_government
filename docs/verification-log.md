@@ -7090,3 +7090,62 @@ the records would have been the thing corrected, not the tool.
    a date is (a), and a condition rather than a date is still (a) where the condition is observable,
    as in L-0205. A fourth state that swallowed those would be a worse instrument, not a richer one.
 
+## Cycle 2026-08-05h — Bangladesh, reopened from the Power side (L-0211)
+
+**The class-of-sources rule paying out, one commit after being written.** STATE.md sent this
+country back through the Power ministry rather than MEA, and it worked: four PIB retrievals, all
+complete. The record that resulted is stronger than anything the MEA route would have produced,
+because it is a measured series rather than a bilateral brief.
+
+**The finding: the quantity was published, and stopped.** A Parliamentary reply of 28 March 2023
+gives net cross-border flows attributed to the Central Electricity Authority, by counterparty and
+financial year, in Million Units. India's exports to Bangladesh: 6,987.94 (2019-20) · 7,551.99
+(2020-21) · 7,301.74 (2021-22) · 7,234.08 (2022-23 to January). Nothing later was found. This
+**closes the third unmeasured of L-0208** in the direction that matters — the flows are not
+uncollected, they are compiled continuously and have simply stopped appearing.
+
+**A zero is only evidence if the scan saw the document, and this cycle nearly forgot it.** The
+Ministry of Power's Year End Review 2025 returned zero for Bangladesh, Nepal, Bhutan, `export`,
+`cross-border` and `Million Units`. Zero for `export` in a power ministry's annual review is
+implausible enough to check, and a positive control was run before anything was concluded: 19
+"Ministry of Power" · 86 "2025" · 39 "electricity" · 42 "transmission" · 0 `Loading`, over 49,271
+characters. The document had loaded; the zeros are real. **The control counts are carried into the
+record's caveat**, not just this log, because a reader has to be able to tell an absence from a
+failed fetch without re-running anything.
+
+**A non-dispute recorded as a non-dispute.** Financial year 2019-20 appears in both replies with
+different values — 6,168.14 and 6,987.94. That is the SHAPE of a differentFacts pair and is not
+one: the same quantity to different cut-offs, ten months and twelve, differing by 819.80 Million
+Units, an ordinary remainder. Filing it as a contest would have manufactured one out of a reporting
+convention. The reconciliation is DECLARED to `figure-consistency` rather than asserted in prose,
+so the gate checks that the two-cut-off explanation actually reconciles instead of taking the
+record's word for it. The gate then refused the claim — "the claim states no sourceScale, so the
+source and printed units cannot be compared" — and it was right to: the scale is 1 here and now
+says so explicitly rather than defaulting.
+
+**The trap inside the published series.** The top row, 7,234.08, covers TEN months; the three
+beneath it cover twelve, and the distinction is a parenthesis in a release headlined "during the
+last four years". Read down the column, exports look flat against the 7,301.74 above them. **No
+annualisation is performed and the caveat says why**: electricity flows are seasonal, so scaling
+ten months to twelve produces a figure describing no period and belonging to no source. For the
+same reason the record states no trend and no growth rate across the four years.
+
+**The Godda question was left open, deliberately, for the second cycle running.** `Godda` and
+`Adani` return zero across both replies and the Year End Review — but the series ENDS at January
+2023, before the period in which such an arrangement could appear in it. A zero from a document
+that predates the question is not an absence, and the record says so in terms rather than banking
+the count. This is rule 5d holding under pressure: the count was available, it looked like a
+finding, and it answers a different question than the one being asked.
+
+**Gates.** build VALID (0 errors, 160 warnings); figure-consistency 8/8 declared claims (up from
+7); manifest 653 records; reachability 843/843 across 633 pages; domain-coverage 14/14, 1097/1097;
+enum-stamp 2; url-check 3/3; typecheck clean; selftest exit 0; lens-controls 7 pairs. M2: prefix
+equality and length +1 asserted before writing; numstat 58/0 on the ledger and 12/0 on
+figure-claims.json — the latter checked specifically because appending to a JSON file via a parse
+and re-dump is how four whole-file reformats happened earlier in this phase.
+
+**Carried rules invoked.** The class-of-sources rule (varying the host is what produced this
+record), scans through the corpus-search helper only, positive controls before an absence claim,
+rule 5d, the incommensurable category (periods, not currencies, this time), share-shaped and
+derived-quantity discipline (no annualisation, no trend), M2, and author-then-gate.
+

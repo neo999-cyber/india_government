@@ -82,5 +82,17 @@
     "sourceB": 21071,
     "sourceScale": 1,
     "note": "Whole rupees crore, no rounding involved — declared so the gate holds a RECONSTRUCTING claim from arc E as well as the artefacts, which is what makes its silences meaningful."
+  },
+  {
+    "record": "L-0211",
+    "what": "Financial year 2019-20 exports to Bangladesh — the full-year figure minus the figure as on January 2020",
+    "printedA": "6987.94",
+    "printedB": "6168.14",
+    "printedDifference": "819.80",
+    "decimals": 2,
+    "sourceA": 6987.94,
+    "sourceB": 6168.14,
+    "sourceScale": 1,
+    "note": "Declared so the gate checks that the two-cut-off explanation actually reconciles. Source values are already in the printed unit (Million Units), so the scale is 1 and is stated rather than defaulted. Printed and source agree exactly; no rounding artefact."
   }
 ]
