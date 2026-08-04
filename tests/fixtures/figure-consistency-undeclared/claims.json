@@ -1,0 +1,14 @@
+[
+  {
+    "record": "P-119",
+    "what": "CY2024 export-side difference, as it stood before the basis was declared",
+    "printedA": "17.999",
+    "printedB": "14.899",
+    "printedDifference": "3.099",
+    "decimals": 3,
+    "sourceA": 17998906339,
+    "sourceB": 14899427449.817,
+    "sourceScale": 1000000000,
+    "note": "Printed operands give 3.100. The record is correct and silent about why, which is the defect."
+  }
+]

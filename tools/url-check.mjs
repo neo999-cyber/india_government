@@ -223,6 +223,45 @@ const interfaceFault = (url) => INTERFACE_NOT_DOCUMENT.find((f) => f.re.test(url
  * SERVFAILs on hosts that 1.1.1.1 resolves, and a tool that reported those as dead would
  * manufacture exactly the false finding M1 exists to prevent.
  */
+/**
+ * Per-host request spacing, and a single retry on 429.
+ *
+ * WHY THIS EXISTS, as the finding rather than the bug. Phase 14 batch 2 cited eight UN Comtrade
+ * queries. This gate fetched them back to back — the loop is serial, but serial is not spaced — and
+ * five came back HTTP 429. The tool classified them "the host answered and refused an automated
+ * client", which is what it says about a 403, and did not fail. Every one of the eight returns 200
+ * when fetched eight seconds apart, and every one had already been retrieved by hand in the same
+ * cycle: the data in the records came from them.
+ *
+ * So the gate manufactured its own negative result and then reported it in the category reserved
+ * for someone else's refusal. THE REAL COST IS NOT THE NOISE. `unverifiable` is the bucket a
+ * genuinely dead URL would have to be distinguished from, and filling it with self-inflicted 429s
+ * is how a dead citation hides in plain sight. Same shape as the resolver fault above: a tool
+ * written to detect unreachable sources producing unreachability of its own.
+ *
+ * Spacing is per HOST, not global, because the constraint is the host's and a global delay would
+ * make a 374-URL corpus take ten minutes to punish one rate-limiter. Fixture mode never sleeps:
+ * recorded responses touch no network, and a selftest that took a minute per run would stop
+ * being run.
+ */
+const HOST_MIN_INTERVAL_MS = 1200;
+const RETRY_429_MS = 8000;
+const lastRequestAt = new Map();
+
+/** Synchronous sleep. The probe loop is synchronous by design (execFileSync), so this must be too. */
+function sleepSync(ms) {
+  if (ms <= 0) return;
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+}
+
+function spaceHost(url) {
+  let host;
+  try { host = new URL(url).host; } catch { return; }
+  const last = lastRequestAt.get(host);
+  if (last !== undefined) sleepSync(HOST_MIN_INTERVAL_MS - (Date.now() - last));
+  lastRequestAt.set(host, Date.now());
+}
+
 function probe(url) {
   /**
    * NEVER DISCARD STDOUT ON A NON-ZERO EXIT. curl exits 6 when it cannot resolve a host — including
@@ -245,7 +284,19 @@ function probe(url) {
   };
   const W = '%{http_code}|%{content_type}|%{redirect_url}';
 
-  const direct = parse(run(['-sL', '-o', '/dev/null', '-w', W, '--max-time', '40', '-A', 'Mozilla/5.0', url]));
+  spaceHost(url);
+  let direct = parse(run(['-sL', '-o', '/dev/null', '-w', W, '--max-time', '40', '-A', 'Mozilla/5.0', url]));
+
+  // ONE retry on 429, and only on 429. A rate limit is a statement about request frequency, not
+  // about the document; retrying after a pause is the only way to tell "this host limits bursts"
+  // from "this host refuses automated clients", and those belong in different buckets. Not
+  // generalised to other statuses: a 403 does not become a 200 by asking again, and a retry loop
+  // over real failures would slow every run to hide none of them.
+  if (direct.status === 429) {
+    sleepSync(RETRY_429_MS);
+    lastRequestAt.set(new URL(url).host, Date.now());
+    direct = parse(run(['-sL', '-o', '/dev/null', '-w', W, '--max-time', '40', '-A', 'Mozilla/5.0', url]));
+  }
   // A 3xx as the FINAL code means `-L` could not complete the follow — almost always because the
   // next hop is a host this environment cannot resolve. That is the resolver problem wearing a
   // different status, so it goes to the fallback rather than being reported as the answer.

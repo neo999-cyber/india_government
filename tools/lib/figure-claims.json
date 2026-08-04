@@ -1,0 +1,62 @@
+[
+  {
+    "record": "P-119",
+    "what": "CY2024 export-side difference — China's reported imports from India minus India's reported exports to China",
+    "printedA": "17.999",
+    "printedB": "14.899",
+    "printedDifference": "3.099",
+    "decimals": 3,
+    "sourceA": 17998906339,
+    "sourceB": 14899427449.817,
+    "note": "The case this gate was built from. Printed operands give 3.100; source gives 3.099.",
+    "sourceScale": 1000000000
+  },
+  {
+    "record": "PR-60",
+    "what": "the same difference, restated in the pair's gapReason beside the same two series",
+    "printedA": "17.999",
+    "printedB": "14.899",
+    "printedDifference": "3.099",
+    "decimals": 3,
+    "sourceA": 17998906339,
+    "sourceB": 14899427449.817,
+    "note": "Carried on the pair as well as the provenance record, so both call sites are asserted.",
+    "sourceScale": 1000000000
+  },
+  {
+    "record": "P-119",
+    "what": "CY2023 export-side difference",
+    "printedA": "18.541",
+    "printedB": "16.245",
+    "printedDifference": "2.295",
+    "decimals": 3,
+    "sourceA": 18540707022,
+    "sourceB": 16245421866.688,
+    "note": "Printed operands give 2.296; source gives 2.295. Second artefact in the same record.",
+    "sourceScale": 1000000000
+  },
+  {
+    "record": "PR-59",
+    "what": "CY2024 import-side difference — India's reported imports from China minus China's reported exports to India",
+    "printedA": "126.963",
+    "printedB": "120.463",
+    "printedDifference": "6.500",
+    "decimals": 3,
+    "sourceA": 126963489319,
+    "sourceB": 120463271143,
+    "note": "RECONSTRUCTS. Declared anyway: a claims file holding only the artefacts would prove the gate fires and never that it stays quiet.",
+    "sourceScale": 1000000000
+  },
+  {
+    "record": "L-0190",
+    "what": "the gap between the two bilateral balances, CY2024",
+    "printedA": "112.064",
+    "printedB": "102.464",
+    "printedDifference": "9.600",
+    "decimals": 3,
+    "sourceA": 112064061869.183,
+    "sourceB": 102464364804,
+    "note": "RECONSTRUCTS, and both operands are themselves derived. The stays-quiet half of the live corpus.",
+    "sourceScale": 1000000000
+  }
+]

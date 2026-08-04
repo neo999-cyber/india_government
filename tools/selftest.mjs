@@ -364,6 +364,34 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
   else notes.push('  domain-coverage stays silent on the live corpus — every domain value has a surface and every record reaches it');
 }
 
+// 3e-bis. figure-consistency: a record's own arithmetic agrees with itself, or says why not.
+//
+// A FOURTH COUNTER, and separate for the reason the others are. This reads /data and a claims file
+// and no built output, so it is not an output gate; and it is not a validator rule because the
+// claim it checks is not a property of a record in isolation but a relation between a record's
+// prose and the source values behind it, which the validator has no access to.
+//
+// The fires-correctly fixture is DISTILLED FROM THE REAL STATE (Rule 2), not written from a model
+// of one: it is P-119 exactly as it stood at commit 23cc1cf, after the mirror shipped and before
+// the rounding basis was declared. The gate was observed to fire on it.
+{
+  const fig = (args) => {
+    try {
+      execFileSync(process.execPath, [join(ROOT, 'tools', 'figure-consistency.mjs'), ...args], {
+        encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, NO_COLOR: '1' },
+      });
+      return 0;
+    } catch (err) { return err.status ?? 1; }
+  };
+  const root = join(ROOT, 'tests', 'fixtures', 'figure-consistency-undeclared');
+  const fired = fig(['--data', join(root, 'data'), '--claims', join(root, 'claims.json')]);
+  if (fired !== 1) failures.push(`figure-consistency did not fire on tests/fixtures/figure-consistency-undeclared (exit ${fired}) — a non-reconstructing difference with no stated basis must fail`);
+  else notes.push('  figure-consistency fires on tests/fixtures/figure-consistency-undeclared — a difference the printed operands do not reproduce, with no basis stated');
+  const live = fig([]);
+  if (live !== 0) failures.push('figure-consistency failed on the live corpus; run `npm run figure-consistency` for the list');
+  else notes.push('  figure-consistency stays silent on the live corpus — every declared claim agrees with source, and every rounding artefact is declared');
+}
+
 // 3f. url-check: a URL added or amended in a cycle is fetched before it lands.
 //
 // A THIRD COUNTER, and separate from the output gates for a structural reason. `reachability` and
