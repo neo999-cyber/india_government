@@ -522,5 +522,55 @@
         "confidence": "high",
         "asOf": "2026-08-04",
         "revisitTrigger": "Re-test if any official statement names the base year for the doubling claim. Naming it resolves this record in one direction or the other and it stops being contested."
+    },
+    {
+        "id": "L-0196",
+        "title": "Defence exports reach ₹38,424 crore against a ₹50,000 crore target for 2029, and the private sector's share falls nineteen points in the year it is reported as rising",
+        "date": "2026-04-02",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "macro"
+        ],
+        "lenses": [
+            "defence-sector"
+        ],
+        "type": "reform",
+        "summary": "Defence exports in FY2025-26 were ₹38,424 crore, up ₹14,802 crore or 62.66 per cent on FY2024-25's ₹23,622 crore, exported to more than 80 countries by 145 firms. Defence public sector undertakings contributed ₹21,071 crore and the private sector ₹17,353 crore. The Ministry reports the private sector's contribution as \"up by 14 per cent\", which is true of its value: it rose from ₹15,233 crore, a gain of 13.92 per cent. Its SHARE of the total fell from 64.49 per cent to 45.16 per cent in the same year, because DPSU exports rose 151 per cent from ₹8,389 crore.",
+        "claimAtLaunch": "A target of ₹50,000 crore in defence exports by 2029, restated by the Ministry in June 2026 as current.",
+        "whatHappened": "COMMITMENT STATE (a) — NOT YET DUE, TRIGGER NAMED: 2029. At FY2025-26 the running total is 76.8 per cent of the target with three financial years to run, which requires compound growth of 9.17 per cent a year to FY2028-29 against 62.66 per cent delivered in the year just reported. On the trajectory reported, the target is not the binding constraint.",
+        "assessment": "too-early",
+        "assessmentNote": "Too-early on the target, which is the record's scored object: the measure is in force, the obstacle is elapsed time, and three years of export figures are exactly the evidence time accumulates. Not partly — a target with three years left is not partially achieved, it is unresolved. The composition finding below is not scored, because no objective was ever stated for the DPSU-private split.",
+        "caseFor": "The figures are internally consistent and the release does not overstate them. Every derived number in it was recomputed here and every one is right: the components sum to the totals in both years, 62.66 per cent is the exact year-on-year rise, the two shares are exact and sum to 100, and the 151 per cent and 13.3 per cent growth figures are correct. That is worth saying in an instrument that exists partly to catch the opposite. On substance, ₹38,424 crore against ₹686 crore a decade earlier is a real change in a sector that had almost no export base, the exporter count rose from 128 firms to 145, and reaching 76.8 per cent of a 2029 target in FY2025-26 is ahead of a straight line.",
+        "caseAgainst": "The composition moved in the direction the policy exists to move away from. Aatmanirbharta is argued as building a private defence industrial base, and in the year of the record total the private sector's share of exports fell 19.33 percentage points — from roughly two-thirds to under half — because state-owned undertakings grew 151 per cent against the private sector's 13.92. The release reports the private figure as \"up by 14 per cent\" and does not report the share at all, which is accurate and is the less informative of the two available framings. And the headline is a single year: a 62.66 per cent rise concentrated in DPSUs may be one or two large contracts rather than a trend, and nothing in the release distinguishes those.",
+        "unmeasured": [
+            {
+                "what": "What the ₹50,000 crore target counts — order value, delivered value, or export authorisations issued",
+                "why": "Neither the release announcing the FY2025-26 figure nor the June 2026 restatement of the target states the measurement basis, and the two are cited together as though commensurable. An export figure built on authorisations and a target built on realised value are different quantities, and the difference decides whether the target is close or already met.",
+                "wouldFill": "The Defence Production and Export Promotion Policy or the Department of Defence Production's own definition of the export series, stating what is counted and at what point in a contract.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "Which countries the exports go to, and in what value",
+                "why": "The release states exports reached \"more than 80 countries\" and gives no distribution. A count of destinations does not distinguish a broad export base from a small number of large buyers plus a long tail of minor sales.",
+                "wouldFill": "A country-wise breakdown from the Department of Defence Production, or India's own arms-export reporting to the UN Register of Conventional Arms.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "sources": [
+            {
+                "name": "Ministry of Defence, \"Defence exports skyrocket to record Rs 38,424 crore in Financial Year 2025-26, a massive 62.66% increase over previous fiscal\", PIB, 2 April 2026 — totals, DPSU and private split for both years, exporter count",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2248124",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Defence, \"The Defence Decade\", PIB, 17 June 2026 — \"The government has set a target of ₹50,000 crore in defence exports by 2029\"",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2273854",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-04",
+        "revisitTrigger": "Re-test on each annual export release to FY2028-29, and specifically on whether the DPSU-private split of FY2025-26 persists or reverses — one year is not a composition trend. If FY2028-29 closes below ₹50,000 crore the commitment state moves from (a) to (b), and the measurement-basis absence above becomes the first thing to settle, because it decides what \"below\" means."
     }
 ]

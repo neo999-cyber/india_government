@@ -5794,3 +5794,88 @@ reachability        791/791 (refuses on a stale build)
 domain-coverage     14/14 domains · 7/7 lenses · 218/218 lens refs
 lens-controls       6 paired + exact membership
 ```
+
+---
+
+# Verification log — cycle 2026-08-04j (phase 14 arc E opens: defence exports against the 2029 target)
+
+**Appended.** `/data` diff: `50 0` on `ledger/foreign-trade.json`. Pure append, zero deletions.
+
+## L-0196 — the target, and the composition the release does not report
+
+FY2025-26 defence exports were **₹38,424 crore**, up 62.66 per cent on ₹23,622 crore, from 145 firms
+to more than 80 countries. Against the Ministry's **₹50,000 crore target for 2029**: 76.8 per cent
+reached with three financial years to run, needing 9.17 per cent compound growth against 62.66 per
+cent just delivered. **Commitment state (a) — not yet due, trigger named.** On the reported
+trajectory the target is not the binding constraint.
+
+**Every derived figure in the release is correct, and that is worth stating** in an instrument that
+exists partly to catch the opposite. Recomputed here: components sum to totals in both years; the
+₹14,802 crore rise and its 62.66 per cent are exact; the 54.84/45.16 shares are exact and sum to
+100; the 151 per cent DPSU growth and 13.3 per cent exporter-count rise are right. Nine checks,
+zero mismatches.
+
+**The finding is what the release does not report.** It says the private sector's contribution is
+"up by 14 per cent", which is true of its value — ₹15,233 crore to ₹17,353 crore, 13.92 per cent.
+Its **share fell from 64.49 per cent to 45.16 per cent**, a drop of 19.33 points, because DPSU
+exports rose 151 per cent from ₹8,389 crore. Both framings are accurate; the release gives the less
+informative one and does not give the share at all. Aatmanirbharta is argued as building a private
+defence industrial base, and in the record year the private share of exports fell by nearly a fifth
+of the total.
+
+Scored `too-early` on the target, which is the record's scored object. **Not `partly`**: a target
+with three years left is unresolved, not partially achieved. The composition finding is deliberately
+not scored — no objective was ever stated for the DPSU-private split, so there is nothing to score
+it against.
+
+Two `unmeasured` items, and the first is the L-0195 shape recurring exactly as the brief predicted:
+**what the ₹50,000 crore counts is not stated** — order value, delivered value or authorisations —
+and neither the export release nor the target restatement says, while the two are cited together as
+though commensurable. An export figure built on authorisations and a target built on realised value
+are different quantities, and the difference decides whether the target is close or already met.
+
+## figure-consistency was relaxed, and the relaxation was controlled
+
+The claim for L-0196 failed `[absent]`: the record writes "₹38,424 crore" and the claim named
+`38424`. The gate was right to fail and the fix belonged in the gate — a record writes separators
+because that is how the figure is read, and requiring the claim to match the typography would be a
+rule about commas rather than about numbers.
+
+Presence now strips digit-comma-digit runs. **Indian grouping is irregular** — 1,78,000 as well as
+178,000 — so every such run is closed rather than assuming groups of three. Controlled rather than
+assumed safe: with the claim's operand changed to a figure genuinely not in the record, the gate
+still reports `[absent]`. The relaxation did not blunt it.
+
+L-0196's claim is one that RECONSTRUCTS — 21,071 + 17,353 = 38,424 exactly, whole rupees crore, no
+rounding. Declared anyway, because a claims file holding only artefacts would prove the gate fires
+and never that it stays quiet.
+
+## `defence-sector` membership pinned
+
+The backfilled lens had exact-membership assertions on the other four phase-14 lenses and none of
+its own — the one most likely to drift, since twelve records gained it by a per-record judgement in
+batch 1. Now pinned at thirteen with L-0196.
+
+## Arc E is OPEN, not closed
+
+Authored: defence exports against the 2029 target. **Not authored:** Rafale tranches, S-400 and
+CAATSA, indigenisation share against target, DAP domestic-content rules, emergency-procurement
+powers. The SIPRI mirror the brief names is not built — MoD's rupee series against SIPRI's TIV is a
+genuine mirror candidate and TIV is not a currency value, so it needs its own retrieval and its
+methodological reason stated rather than being treated as a discrepancy.
+
+No new lens. `defence-sector` already existed and L-0196 joins it; nothing here earned a new one.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 145 warnings
+typecheck           clean
+selftest            OK — 33/33 sites message-pinned, stamp check, freshness controls
+figure-consistency  7 declared claims, 7 checked, 3 artefacts declared
+reachability        793/793 (617 pages)
+domain-coverage     14/14 domains · 7/7 lenses · 219/219 lens refs
+url-check           2/2 confirmed
+lens-controls       6 paired + exact membership for all five phase-14 lenses
+arithmetic          9 released figures recomputed, 0 mismatches
+```

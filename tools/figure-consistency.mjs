@@ -108,8 +108,13 @@ for (const c of claims) {
   // 2. Every figure the claim names must actually appear in the record, at that precision.
   const entry = byId.get(c.record);
   if (!entry) { failures.push({ id: c.record, kind: 'missing', why: 'the claim names a record that is not in /data — the claim is stale, not passing' }); continue; }
-  const blob = JSON.stringify(entry.record);
-  const present = (s) => new RegExp(`(?<![\\d.])${s.replace('.', '\\.')}(?![\\d])`).test(blob);
+  // Thousands separators are stripped before the presence test. A record writes "38,424 crore"
+  // because that is how the figure is read; a claim naming 38424 is naming the same figure, and
+  // making the claim match the typography would be a rule about commas rather than about numbers.
+  // Indian grouping is irregular — 1,78,000 as well as 178,000 — so every digit-comma-digit run is
+  // closed rather than assuming groups of three.
+  const blob = JSON.stringify(entry.record).replace(/(\d),(?=\d)/g, '$1');
+  const present = (s) => new RegExp(`(?<![\\d.])${s.replace(/,/g, '').replace('.', '\\.')}(?![\\d])`).test(blob);
   for (const s of [c.printedA, c.printedB, c.printedDifference]) {
     if (!present(s)) {
       failures.push({ id: c.record, kind: 'absent', why: `the claim names ${s} and no such figure appears in the record — the claim is describing something else` });

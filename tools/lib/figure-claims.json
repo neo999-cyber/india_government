@@ -70,5 +70,17 @@
     "sourceB": 5744637687.868,
     "sourceScale": 1000000000,
     "note": "Summing the printed components gives 25.591 and 5.746 against printed totals of 25.592 and 5.745, and a balance of 19.845 against 19.847. Found by the reconstruction check on the very next record after the gate was built. The first version of this claim carried approximated source values and the gate rejected it — a claims file is only as good as the values in it, and the source check is what enforces that."
+  },
+  {
+    "record": "L-0196",
+    "what": "FY2025-26 defence exports: DPSU plus private equals the reported total",
+    "printedA": "38424",
+    "printedB": "21071",
+    "printedDifference": "17353",
+    "decimals": 0,
+    "sourceA": 38424,
+    "sourceB": 21071,
+    "sourceScale": 1,
+    "note": "Whole rupees crore, no rounding involved — declared so the gate holds a RECONSTRUCTING claim from arc E as well as the artefacts, which is what makes its silences meaningful."
   }
 ]
