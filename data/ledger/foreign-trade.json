@@ -1354,5 +1354,64 @@
         "confidence": "high",
         "asOf": "2026-08-05",
         "revisitTrigger": "Re-test if any Million Units series covering 2023-24 or later is published. That single table would close the first unmeasured, make the Godda question answerable for the first time, and turn L-0208's infrastructure inventory into something a reader can weigh."
+    },
+    {
+        "id": "L-0212",
+        "title": "The debt-restructuring instrument was named in December 2024 and existed by April 2025, and the assistance around it is stated in three currencies, two of them without a rate, and never totalled",
+        "date": "2025-04-05",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "macro"
+        ],
+        "lenses": [
+            "neighbourhood"
+        ],
+        "type": "reform",
+        "summary": "At the India-Sri Lanka summit of 16 December 2024 the two leaders \"instructed officials to finalize discussions on the bilateral MoU on Debt Restructuring\". By the joint press statement of 5 April 2025 in Colombo the Prime Minister referred to \"our bilateral 'Debt Restructuring Agreement'\" as an existing instrument, and announced that in the preceding six months India had converted loans worth more than US$100 million into grants, that interest rates had been reduced that day, and that a support package of approximately 2.4 billion Lankan Rupees would be provided for the Eastern Provinces. The December statement records India as co-chair of the Official Creditors' Committee, emergency financing and forex support worth US$4 billion, and US$20.66 million to settle payments due for projects completed under existing Lines of Credit.",
+        "claimAtLaunch": "Two things, and only the first is a commitment. The commitment: to finalise discussions on the bilateral MoU on Debt Restructuring, stated on 16 December 2024 with no date attached. The framing: a \"strategic shift from debt-driven models towards investment led partnerships\", which the two leaders agreed \"would ensure a more sustainable path to economic recovery\" — an assertion about a direction, carrying no target.",
+        "whatHappened": "COMMITMENT STATE (a) RESOLVED, AND QUICKLY. The instrument named on 16 December 2024 as something officials were instructed to finalise is spoken of on 5 April 2025 as existing — a bilateral Debt Restructuring Agreement, referred to in the Prime Minister's own voice — which is delivery inside four months against a commitment that carried no deadline at all. THE QUANTITIES AROUND IT DO NOT COMBINE. Four figures are given across the two documents: US$4 billion of \"emergency financing and forex support\", US$20.66 million to settle payments due under existing Lines of Credit, \"more than US$100 million\" of loans converted into grants, and approximately 2.4 billion Lankan Rupees for the Eastern Provinces. They are in two currencies with no rate published, they mix a facility aggregate with specific transactions, one of them is a floor rather than a figure, and no document retrieved states a total of relief extended or debt reduced.",
+        "assessment": "partly",
+        "assessmentNote": "The delivery half worked and the measurement half does not permit scoring. A named instrument moved from instruction to existence in four months, which is faster than most of this phase's commitments and is scored as such. What cannot be scored is the assistance: the figures are not commensurable, no aggregate is published, and the largest of them has no breakdown, so whether the relief was large or small against Sri Lanka's obligations is not answerable from anything retrieved. Partly, on that split — not as a hedge between the two.",
+        "caseFor": "This is a commitment kept faster than it was required to be, on a matter where slowness is the norm. The December statement set no date; four months later the instrument existed and interest rates had been cut on top of it. India co-chaired the Official Creditors' Committee — a role, not a cheque, and the harder of the two things to do — and the Sri Lankan President's own account credits that co-chairing as instrumental in finalising the wider restructuring in time. Converting Lines of Credit into grants is the form of relief that actually removes debt rather than deferring it, and India did it repeatedly: US$20.66 million to clear payments due on completed projects, then more than US$100 million of loans converted over six months. The April statement also puts these figures in India's own voice, which the December one did not.",
+        "caseAgainst": "Nothing here can be added up, and the presentation makes that harder rather than easier. US$4 billion covers \"emergency financing and forex support\" — a disbursement and a facility, which are different quantities — with no breakdown, no period and no statement of how much was drawn or repaid, so the headline figure describes neither a stock nor a flow. \"More than US$100 million\" is a floor and not a measurement. And the Eastern Provinces package is stated in Lankan Rupees while everything around it is in dollars, with no rate given, which leaves the smallest headline commitment in the speech carrying its largest digits — 2.4 billion beside 20.66 million. In the December statement every figure for Indian assistance sits in the Sri Lankan President's mouth, thanked for rather than asserted; the Prime Minister's own paragraph contains no number at all.",
+        "differentFacts": false,
+        "differentFactsNote": "No competing accounts. The US$20.66 million of December 2024 and the \"more than US$100 million\" of April 2025 are not two versions of one figure and are not filed as such: the first settles payments due on completed Line of Credit projects, the second converts loans to grants over a later six-month window. Different acts, possibly overlapping, and nothing retrieved states the relationship between them — which is recorded as unmeasured rather than resolved by assumption.",
+        "unmeasured": [
+            {
+                "what": "The composition of the US$4 billion — how much was emergency financing, how much forex support, over what period, and how much has been drawn or repaid",
+                "why": "The figure appears once, as a round aggregate, in the Sri Lankan President's expression of thanks. No Indian government document retrieved breaks it down, dates it, or distinguishes facility from disbursement. As with the Maldives swap in L-0206, a facility and a drawing are different quantities and the published number does not say which it is.",
+                "wouldFill": "A Ministry of Finance or Department of Economic Affairs statement of assistance to Sri Lanka by instrument and year, or a Parliamentary answer giving the breakdown.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "The total value of debt relief extended to Sri Lanka, and the exchange rate applied to the 2.4 billion Lankan Rupee package",
+                "why": "Four figures are published across the two statements in two currencies, and no document retrieved totals them or gives a rate at which the Rupee figure could be placed beside the dollar ones. The rate exists and is not stated; the total is a sum the publishers have not performed.",
+                "wouldFill": "An Indian government statement of cumulative assistance to Sri Lanka in one currency, or the Eastern Provinces package restated in dollars.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "The text, date of signature and terms of the bilateral Debt Restructuring Agreement",
+                "why": "It is referred to as existing on 5 April 2025 and was still being finalised on 16 December 2024, so it was concluded between those dates. Neither the date nor any term of it appears in anything retrieved, and the April reference is a sentence in a press statement rather than an announcement of the instrument.",
+                "wouldFill": "The text of the Agreement, or a Ministry of Finance announcement of its signature and principal terms.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "caveat": "NO CURRENCY CONVERSION IS PERFORMED HERE. The 2.4 billion Lankan Rupee figure is not restated in dollars and is not added to any dollar figure, because no rate appears in the source and applying an external one would attach a precision to the comparison that the publisher did not offer. For the same reason no total of assistance is stated. The 5 April 2025 document is the Prime Minister's remarks at a joint press statement — a speech, not an agreement text — and this record treats its figures as announced rather than as audited. The grid interconnection is noted here only as it was framed on that occasion, as creating opportunities for Sri Lanka to export electricity; the link itself is the single India-Sri Lanka row in the Ministry of Power table recorded at L-0208, where it is also the one entry for which no operating history can exist.",
+        "sources": [
+            {
+                "name": "Prime Minister's Office, \"India - Sri Lanka Joint Statement: Fostering Partnerships for a Shared Future\", PIB, 16 December 2024 — paragraph 10: emergency financing and forex support worth US$4 billion, India as co-chair of the Official Creditors' Committee, US$20.66 million to settle payments due for projects completed under existing Lines of Credit, and the instruction to officials to finalize discussions on the bilateral MoU on Debt Restructuring; paragraph 7 on converting Line of Credit projects to grant assistance; paragraph 11 on the shift from debt-driven models to investment-led partnerships; paragraph 9 on training 1,500 Sri Lankan civil servants over five years",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2084793",
+                "tier": "T1"
+            },
+            {
+                "name": "Prime Minister's Office, \"Prime Minister's remarks during Joint Press Statement with the President of Sri Lanka\", PIB, 5 April 2025 — \"in the last 6 months alone, we have converted loans worth more than USD 100 million into grants\", \"our bilateral 'Debt Restructuring Agreement'\" as an existing instrument, the decision to reduce interest rates, the approximately 2.4 billion Lankan Rupee support package for the Eastern Provinces, and the Grid Inter-Connectivity Agreement framed as creating opportunities for Sri Lanka to export electricity",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2119187",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-05",
+        "revisitTrigger": "Re-test if the Debt Restructuring Agreement's terms or signature date are published, or if any Indian statement gives cumulative assistance to Sri Lanka in a single currency. Either would make the scale of the relief measurable for the first time; the instrument's existence is already settled."
     }
 ]
