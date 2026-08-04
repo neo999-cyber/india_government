@@ -5879,3 +5879,103 @@ url-check           2/2 confirmed
 lens-controls       6 paired + exact membership for all five phase-14 lenses
 arithmetic          9 released figures recomputed, 0 mismatches
 ```
+
+---
+
+# Verification log — cycle 2026-08-04k (checks that repair what they measure: the audit, and two controls)
+
+**No `/data` change.** Harness work, own commit.
+
+## The audit, and the answer is "one"
+
+| tool | fs writes | shell mutation | import-time effect |
+|---|---|---|---|
+| `validate`, `figure-consistency`, `reachability`, `domain-coverage`, `url-check` | 0 | none | none |
+| `lib/*` except `lens-fixtures` | 0 | none | none |
+| **`selftest`** | 0 | **`touch`** (its own freshness controls) | none |
+| `lib/lens-fixtures` | 15 | none | **none** — the B5 split holds |
+| `audit-manifest` | 5 | none | **writes at import time** |
+
+**Only `selftest` is a GATE that can touch state**, and it does so on purpose: the freshness
+controls move mtimes and restore them. Every other gate is a pure reader. `audit-manifest` writes at
+import time, which is the same structural hazard, but it is a generator rather than a checker and
+**nothing imports it** — verified, not assumed. That is the result the brief asked for, and the
+controls still go in.
+
+**The audit's own first pass was wrong and that is worth recording.** A write-capability scan of
+`writeFileSync|mkdirSync|rmSync|…` reported `selftest` as writes=0, because it mutates through
+`find … -exec touch`. A static scan for one spelling of "write" missed the one gate that actually
+mutates. Widened to catch shell mutation and top-level call expressions, which is how the table
+above was produced.
+
+## The standing rule, enforced
+
+**A failing check, re-run with no fix applied, must still fail.** A second-run pass means the gate
+repaired its own subject.
+
+The stamp check was extracted to `tools/enum-stamp.mjs` to make that testable at all: a check living
+inside the selftest can only be run twice by running the selftest inside itself. Now it is a
+subprocess pair.
+
+```
+seed batch 1's five-lens enum into the stamp
+  run 1 → exit 1
+  run 2 → exit 1      (no fix applied)
+restore                → exit 0
+```
+
+**Proved against the real defect, not a model of one.** The B5 bug was reintroduced deliberately —
+`enum-stamp` importing `regen-lens-fixtures.mjs`, whose module body calls `build()` — and the
+selftest failed:
+
+```
+- enum-stamp did not fail on a seeded stale stamp (exit 0)
+```
+
+Note WHICH assertion caught it. The self-repair was immediate: the import regenerated the fixture
+before the check ran at all, so the FIRST-run assertion fired, not the second. **Both are needed** —
+a slower self-repair, one that only rebuilt on failure, would pass run 1 and be caught by run 2.
+
+The same run-twice assertion was added to the freshness control as the **same-form positive**:
+`domain-coverage` is a pure reader and cannot rebuild anything, so it refuses on both runs. A
+control that only ever fires is not evidence; this shows the assertion passes where the subject
+genuinely cannot be repaired.
+
+## The structural half, observed rather than modelled
+
+No checker may import from its own repair path. Asserted directly: each library a checker depends on
+is imported in a child process that does nothing else, and the fixture tree must be byte-identical
+afterwards — path, length and mtime.
+
+```
+importing tools/lib/lens-fixtures.mjs   leaves the fixture tree untouched
+importing tools/lib/freshness.mjs       leaves the fixture tree untouched
+importing tools/lib/corpus-search.mjs   leaves the fixture tree untouched
+importing tools/lib/integrity.mjs       leaves the fixture tree untouched
+```
+
+Controlled both ways: with a `build()` call appended to `lens-fixtures.mjs` the selftest reports
+*"importing tools/lib/lens-fixtures.mjs CHANGED tests/fixtures"*; with it removed, clean.
+
+**A rule that grepped for top-level `build(` calls would encode a belief about how a side effect
+looks.** This imports the module and looks at the disk — and the audit above is precisely why: the
+static scan is what missed `selftest`'s own mutation.
+
+## Logged, not built, as instructed
+
+**The 23 `MUST_FIRE` rules still share one `broken` root.** Message pinning stops a rule passing on
+a phrase it never emits; it does NOT isolate records, so a rule can still fire on a neighbour's
+seeded violation and read green — the needles are distinctive enough that this is unlikely rather
+than impossible. Per-rule isolated roots is the fix. Tedium, not hazard. Not built.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 145 warnings
+typecheck           clean
+selftest            OK — adds run-twice controls and the import-write guard
+enum-stamp          OK — 2 fixtures match the live enums
+figure-consistency  7 declared claims, 7 checked, 3 artefacts declared
+reachability        793/793
+domain-coverage     14/14 domains · 7/7 lenses · 219/219 lens refs
+```
