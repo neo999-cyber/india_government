@@ -21,7 +21,8 @@
     "typecheck": "tsc --noEmit",
     "audit": "node tools/audit-manifest.mjs",
     "figure-consistency": "node tools/figure-consistency.mjs",
-    "regen:lens-fixtures": "node tools/regen-lens-fixtures.mjs"
+    "regen:lens-fixtures": "node tools/regen-lens-fixtures.mjs",
+    "enum-stamp": "node tools/enum-stamp.mjs"
   },
   "dependencies": {
     "next": "16.2.12",

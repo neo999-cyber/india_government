@@ -12,7 +12,7 @@
  *
  * Run with `npm run validate:selftest`.
  */
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { liveEnums } from './lib/lens-fixtures.mjs';
@@ -375,34 +375,61 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
     { dir: 'lens-coverage-no-page', why: 'a schema lens value with no page built for it', expect: '[lens] russia' },
     { dir: 'lens-coverage-empty', why: 'a lens value with a page, linked, and no record behind it — a filter that returns nothing', expect: '[lens-empty]' },
   ];
-  // THE STAMP CHECK, and it is the point of this whole sub-section rather than a nicety.
+  // 3e-quater. The enum stamp, and the control that it does not repair its own subject.
   //
-  // Both lens fixtures are GENERATED from the domain and lens enums. When `china` and
-  // `neighbourhood` were admitted they began failing on `[lens]` instead of `[lens-empty]` — exit 1
-  // either way, selftest green, the branch unchecked for two cycles. The branch assertions below
-  // turn that into a failure, which says the fixture is wrong but not what to do; the remedy was a
-  // line in a state document asking the next author to remember. A discipline requirement is what
-  // M2 and build-freshness exist to replace, so the enum each fixture was built against is stamped
-  // into it and compared here.
-  for (const dir of ['lens-coverage-empty', 'lens-coverage-no-page']) {
-    const stampPath = join(ROOT, 'tests', 'fixtures', dir, 'GENERATED-FROM.json');
-    if (!existsSync(stampPath)) {
-      failures.push(`tests/fixtures/${dir} has no GENERATED-FROM.json — it cannot be shown to match the live enums. Run \`node tools/regen-lens-fixtures.mjs\``);
-      continue;
-    }
-    const stamp = JSON.parse(readFileSync(stampPath, 'utf8'));
-    const live = liveEnums();
-    const drift = ['domains', 'lenses'].filter((k) => JSON.stringify(stamp[k]) !== JSON.stringify(live[k]));
-    if (drift.length) {
-      failures.push(
-        `tests/fixtures/${dir} was generated from a stale ${drift.join(' and ')} enum — ` +
-          `stamped lenses [${(stamp.lenses ?? []).join(', ')}] against live [${live.lenses.join(', ')}]. ` +
-          `A fixture built from a stale enum tests the wrong branch and still exits 1. ` +
-          `Run \`node tools/regen-lens-fixtures.mjs\` in the same commit as the enum change`,
-      );
+  // The check itself lives in tools/enum-stamp.mjs so it can be run as a subprocess TWICE. That is
+  // not fastidiousness: the first version of this check imported `liveEnums` from the regenerator's
+  // runner, whose module body calls build(), so importing it REGENERATED the fixtures — healing the
+  // drift the stamp exists to detect and reporting green. It was caught because the runner printed
+  // a line, not because anything asserted on it.
+  //
+  // STANDING RULE, ENFORCED HERE: a failing check re-run WITHOUT a fix applied must still fail. A
+  // second-run pass means the gate repaired what it was measuring. The control seeds the real
+  // hazard — batch 1's five-lens enum — runs the check twice, and requires failure both times.
+  {
+    const stamp = (args = []) => {
+      try {
+        const out = execFileSync(process.execPath, [join(ROOT, 'tools', 'enum-stamp.mjs'), ...args], {
+          encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, NO_COLOR: '1' },
+        });
+        return { code: 0, out: out ?? '' };
+      } catch (err) {
+        return { code: err.status ?? 1, out: `${err.stdout ?? ''}${err.stderr ?? ''}` };
+      }
+    };
+
+    const live = stamp();
+    if (live.code !== 0) {
+      failures.push(`enum-stamp failed on the live fixtures: ${live.out.trim().split('\n')[0]}`);
     } else {
-      notes.push(`  ${dir} is generated from the live enums (${live.lenses.length} lenses) — stamp matches`);
+      notes.push('  enum-stamp passes on the live fixtures — both generated from the current enums');
     }
+
+    const stampPath = join(ROOT, 'tests', 'fixtures', 'lens-coverage-empty', 'GENERATED-FROM.json');
+    const original = readFileSync(stampPath, 'utf8');
+    try {
+      const seeded = JSON.parse(original);
+      // The real hazard, not a model of one: the enum as it stood at batch 1.
+      seeded.lenses = ['kashmir', 'federalism', 'defence-sector', 'united-states', 'russia'];
+      writeFileSync(stampPath, `${JSON.stringify(seeded, null, 2)}\n`);
+
+      const first = stamp();
+      const second = stamp();
+      if (first.code !== 1) {
+        failures.push(`enum-stamp did not fail on a seeded stale stamp (exit ${first.code})`);
+      } else if (second.code !== 1) {
+        failures.push(
+          `enum-stamp failed once and PASSED on the second run with no fix applied (exit ${second.code}) — ` +
+            `the check repaired its own subject, which is how the lens-fixture drift stayed green for two cycles`,
+        );
+      } else {
+        notes.push('  enum-stamp still fails on the second run with no fix applied — it does not repair its own subject');
+      }
+    } finally {
+      writeFileSync(stampPath, original);
+    }
+    const restored = stamp();
+    if (restored.code !== 0) failures.push('enum-stamp did not return to passing after the control restored the stamp — the control has left the corpus dirty');
   }
 
   for (const { dir, why, expect } of FIXTURES) {
@@ -449,8 +476,17 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
       touch(join(root, 'out'), '202601010000');
       touch(join(root, 'data'), '202606010000');
       const stale = cover(args);
+      // RUN TWICE, no fix applied. domain-coverage is a pure reader and cannot rebuild anything, so
+      // this is the same-form POSITIVE for the enum-stamp control above: it shows the run-twice
+      // assertion passes on a gate that genuinely cannot repair its subject, which is what makes it
+      // evidence when the same assertion fails somewhere else.
+      const staleAgain = cover(args);
       if (stale.code === 2 && stale.out.includes('REFUSING TO RUN')) {
-        notes.push('  freshness refuses a stale build — input newer than every built artefact');
+        if (staleAgain.code !== 2) {
+          failures.push(`freshness refused once and did NOT refuse on the second run with no fix applied (exit ${staleAgain.code}) — the gate repaired its own subject`);
+        } else {
+          notes.push('  freshness refuses a stale build, and still refuses on a second run with no fix applied');
+        }
       } else {
         failures.push(`freshness did not refuse a stale build (exit ${stale.code}) — a gate reading a stale artefact reports clean about a build nobody is shipping`);
       }
@@ -502,6 +538,53 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
   const live = fig([]);
   if (live.code !== 0) failures.push('figure-consistency failed on the live corpus; run `npm run figure-consistency` for the list');
   else notes.push('  figure-consistency stays silent on the live corpus — every declared claim agrees with source, and every rounding artefact is declared');
+}
+
+// 3e-quinquies. No checker's imports write to disk.
+//
+// The structural half of the same rule. `enum-stamp` importing the regenerator was not caught by
+// any assertion — it was caught because the runner happened to print a line. So the property is
+// asserted directly: import each module a checker depends on, in a child process that does nothing
+// else, and require the fixture tree to be byte-identical afterwards.
+//
+// OBSERVED, NOT MODELLED. A rule that grepped for top-level `build(` calls would encode a belief
+// about how a side effect looks; this imports the module and looks at the disk. The audit that
+// produced this list found `selftest` itself mutates state (it shells out to `touch` for the
+// freshness controls) and that a static write-count scan missed it — which is the same lesson.
+{
+  const FIXTURE_TREE = join(ROOT, 'tests', 'fixtures', 'lens-coverage-empty');
+  const snapshot = () => {
+    const out = [];
+    const walk = (d) => {
+      for (const e of readdirSync(d, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+        const p = join(d, e.name);
+        if (e.isDirectory()) walk(p);
+        else out.push(`${p}:${readFileSync(p, 'utf8').length}:${statSync(p).mtimeMs}`);
+      }
+    };
+    walk(FIXTURE_TREE);
+    return out.join('\n');
+  };
+  const IMPORTED_BY_CHECKERS = ['lib/lens-fixtures.mjs', 'lib/freshness.mjs', 'lib/corpus-search.mjs', 'lib/integrity.mjs'];
+  for (const mod of IMPORTED_BY_CHECKERS) {
+    const before = snapshot();
+    try {
+      execFileSync(process.execPath, ['--input-type=module', '-e', `import ${JSON.stringify(join(ROOT, 'tools', mod))};`], {
+        encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'],
+      });
+    } catch (err) {
+      failures.push(`importing tools/${mod} threw: ${(err.stderr ?? '').toString().split('\n')[0]}`);
+      continue;
+    }
+    if (snapshot() !== before) {
+      failures.push(
+        `importing tools/${mod} CHANGED tests/fixtures — a checker that imports it would repair its ` +
+          `own subject. Move the side effect into a runner and keep the library declarative`,
+      );
+    } else {
+      notes.push(`  importing tools/${mod} leaves the fixture tree untouched`);
+    }
+  }
 }
 
 // 3f. url-check: a URL added or amended in a cycle is fetched before it lands.
