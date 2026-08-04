@@ -1537,7 +1537,7 @@
     },
     "framing": "China records more Indian goods arriving than India records leaving — US$17.999bn against US$14.899bn in calendar 2024. The importer's figure exceeding the exporter's is the expected direction, but the size is not: 20.80 per cent where the mirror flow shows 5.40. The pair exists because the anomaly is only visible when both sides are held together; either series alone reads as an ordinary export series.",
     "gapComputable": false,
-    "gapReason": "The difference is US$3.099bn in 2024, 20.80 per cent of India's figure, and it is a disagreement rather than a gap for the same reason as PR-59: neither side bounds the other. The magnitude is the whole point of the pair — it is four times the excess on the mirror flow and beyond what freight and insurance explain. The leading candidate is entrepot attribution through Hong Kong, sized in P-119 as large enough to contain it and NOT established as its cause.",
+    "gapReason": "The difference is US$3.099bn in 2024, 20.80 per cent of India's figure, and it is a disagreement rather than a gap for the same reason as PR-59: neither side bounds the other. The magnitude is the whole point of the pair — it is four times the excess on the mirror flow and beyond what freight and insurance explain. The leading candidate is entrepot attribution through Hong Kong, sized in P-119 as large enough to contain it and NOT established as its cause. The figure is computed on the unrounded submissions: subtracting the printed series values gives 3.100, and the 0.001 is a rounding artefact, not a discrepancy — see P-119.",
     "provenanceRefs": [
       "P-119"
     ],

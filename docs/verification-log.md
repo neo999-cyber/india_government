@@ -5204,3 +5204,106 @@ url-check           3/8 confirmed in-gate, 5 rate-limited; all 8 re-confirmed 20
 lens-controls       5 paired controls + exact-membership assertions for all three phase-14 lenses
 arithmetic          16 figures hand-checked; one flag traced to the check's own method
 ```
+
+---
+
+# Verification log — cycle 2026-08-04d (phase 14 batch 3, head: the arithmetic basis, and url-check's own 429s)
+
+**Appended, not rewritten.** `/data` diff: `1 1` on `pairs.json`, `1 1` on `provenance.json` — two
+prose fields extended, no record added or removed. Shape declared before the edit, per M2.
+
+## 0a — the difference column derives from unrounded values. Not an error.
+
+Every printed difference in the phase-14 mirror records was tested against its printed operands:
+
+| quantity | from source | from printed operands | reconstructs |
+|---|---|---|---|
+| CY2024 import-side difference | 6.500 | 6.500 | yes |
+| CY2024 export-side difference | **3.099** | **3.100** | **no** |
+| CY2023 import-side difference | 4.289 | 4.288 | no — not published |
+| CY2023 export-side difference | **2.295** | **2.296** | **no** |
+| the four balances | — | — | yes, all |
+
+Two of the three non-reconstructing figures are published: 3.099 in P-119 and PR-60, 2.295 in P-119.
+Both are correct against source. **The differences are computed on the unrounded national submissions
+and rounded afterwards; the operands are rounded first. The two operations do not commute.**
+
+Declared, not corrected — there is nothing to correct. P-119 now carries the basis in full, with both
+artefacts named and their printed reconstructions given, and PR-60 carries a pointer at its own call
+site. The reasoning is stated in the record itself: a reader checking the subtraction on the page
+would otherwise find a discrepancy with no way to tell an artefact from an error, **and so would a
+later hand-check, which is exactly what happened to this one in batch 2.**
+
+### The new assertion, and why the old one could not have caught it
+
+Batch 2 hand-checked sixteen figures against source and was clean. It was clean. **Agreement with
+source and internal consistency are different claims, and passing the first says nothing about the
+second.** `tools/figure-consistency.mjs` asks the second and only the second.
+
+It does NOT demand that arithmetic reconstruct — rounding artefacts are unavoidable when operands are
+published to fewer places than the computation used. It demands that a non-reconstructing figure be
+DECLARED, so the artefact is stated rather than latent. A silent mismatch fails; a stated one passes.
+
+**The first version of the gate was thrown away and the reason is worth the space.** It mined every
+record for figure triples where `a - b` sat one unit in the last place from a third printed figure.
+On a corpus with two real cases it reported **197 failures** — "prints 22.9 and 11.5, difference 11.4,
+also prints 11.5" is a coincidence, not a claim. A gate with a hundred-to-one false-positive rate does
+not get read, and an author who silences it with boilerplate has made the corpus worse. Rewritten to
+check DECLARED claims: an author states the operands, the printed difference, the source values and
+the scale, and the gate checks the claim against source AND against the printed operands. Same call
+as phase 13 discarding its keyword sweep — an assertion someone made beats a pattern something
+matched.
+
+`sourceScale` is required and never defaulted. Source values are in dollars and printed values in
+billions; dividing silently would let a claim whose units disagree pass on a factor nobody stated.
+The first run of the claims file failed on exactly that, correctly.
+
+**Fixture distilled from the real state** (Rule 2): `tests/fixtures/figure-consistency-undeclared`
+holds P-119 exactly as it stood at commit `23cc1cf` — after the mirror shipped, before the basis was
+declared — extracted from git rather than hand-written. The gate was observed to fire on it. Five
+claims are declared on the live corpus, three of them artefacts and two that reconstruct; the two
+that reconstruct are declared deliberately, because a claims file holding only the artefacts would
+prove the gate fires and never that it stays quiet.
+
+Wired into `npm run build` before `next build`, since it reads `/data` and no built output.
+
+## 0b — url-check's five "unverifiable" were url-check's own burst
+
+The loop was serial, and serial is not spaced. Eight UN Comtrade queries fetched back to back
+returned five HTTP 429s, which the tool filed under "the host answered and refused an automated
+client" — the category it uses for a 403 — and did not fail on.
+
+**The noise was not the cost.** `unverifiable` is the bucket a genuinely dead URL must be
+distinguished from, and filling it with self-inflicted 429s is how a dead citation hides in plain
+sight. Same shape as the resolver fault this file already records: a tool written to detect
+unreachable sources producing unreachability of its own.
+
+Fixed with per-HOST spacing (1200 ms) and a single retry on 429 after 8 s. Per-host and not global,
+because the constraint is the host's and a global delay would make a 382-URL corpus pay for one
+rate-limiter. Retry only on 429: a 403 does not become a 200 by asking again, and a retry loop over
+real failures would slow every run to hide none of them. Fixture mode never sleeps — recorded
+responses touch no network, and a selftest that took a minute per run would stop being run
+(measured: 3.4 s, unchanged).
+
+**Acceptance test, run under the gate itself rather than by hand:**
+
+```
+npm run url-check -- --base 23caebe
+  8 to check ... url-check OK — 8/8 confirmed
+```
+
+All eight Comtrade URLs, 200 under the gate. The manual spacing that established the diagnosis is no
+longer what carries the result.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 143 warnings
+typecheck           clean
+selftest            OK — 23/23 validator rules; output gates + figure-consistency on their fixtures
+figure-consistency  5 declared claims, 5 checked, 3 artefacts found and declared
+reachability        785/785
+domain-coverage     14/14 domains · 6/6 lenses · 216/216 lens refs
+url-check           8/8 confirmed against 23caebe
+lens-controls       5 paired + exact membership
+```
