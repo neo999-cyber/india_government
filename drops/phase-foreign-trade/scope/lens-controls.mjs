@@ -151,7 +151,7 @@ const EXPECTED_MEMBERS = {
   russia: ['L-0184', 'L-0189', 'L-0199', 'L-0202'],
   china: ['L-0190', 'L-0191'],
   neighbourhood: ['L-0192', 'L-0193'],
-  europe: ['L-0194', 'L-0204'],
+  europe: ['L-0194', 'L-0204', 'L-0205'],
 };
 
 let failures = 0;

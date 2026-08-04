@@ -260,10 +260,10 @@
   "type": "event",
   "summary": "India withdrew from the Regional Comprehensive Economic Partnership at the final stage, the only one of sixteen negotiating countries to opt out.",
   "claimAtLaunch": "Cited unresolved concerns over trade deficits with eleven member states, a feared surge of Chinese imports, and inadequate safeguards for domestic producers.",
-  "whatHappened": "RCEP proceeded without India. India subsequently pursued bilateral agreements instead: UAE CEPA (in force May 2022), Australia ECTA (December 2022), EFTA TEPA (October 2025, with a binding US$100bn fifteen-year investment commitment), and the UK CETA (in force July 2026). The trade deficit with China nonetheless widened to a record US$99.2bn in FY25 and about US$112bn in FY26.",
+  "whatHappened": "RCEP proceeded without India. India subsequently pursued bilateral agreements instead: UAE CEPA (in force May 2022), Australia ECTA (December 2022), EFTA TEPA (in force 1 October 2025, carrying a US$100bn fifteen-year investment objective — L-0194 records that the Ministry calls it a \"firm investment commitment\" while the joint framing is an objective and an aim to \"mobilise\", and this record adopts neither word), the UK CETA (in force 15 July 2026, L-0204), and the EU agreement (negotiations concluded 27 January 2026, not in force, L-0205). CORRECTED 2026-08-05: this record previously described the TEPA commitment as binding and gave the China deficit as US$99.2bn in FY25 and about US$112bn in FY26 on a T4 source. That characterisation is withdrawn. The deficit figures are left out rather than restated, because the instrument now holds India-China trade on a calendar-year basis from both countries’ own submissions (L-0190, L-0191, P-119), and a financial-year figure from a newspaper cannot be set beside them — different period, different basis, and the two sides disagree in a way any single figure conceals.",
   "assessment": "contested",
-  "caseFor": "The stated fear was a Chinese import surge, and the China deficit widened to records even outside RCEP — inside it, with tariff elimination, the damage would plausibly have been worse. India retained policy space to pursue bilateral deals on better terms, and the EFTA agreement's binding investment commitment is a structure RCEP would not have delivered.",
-  "caseAgainst": "India excluded itself from the world's largest trade bloc precisely as supply chains were being redrawn, and the exports-to-GDP ratio continued falling. The China deficit widened anyway, so the protection purchased little. Bilateral deals have been slower and smaller in aggregate coverage than RCEP membership would have provided, and absence from the bloc weakens India's position in regional rule-setting.",
+  "caseFor": "The stated fear was a Chinese import surge, and it happened anyway: on India's own submissions to UN Comtrade, imports from China reached US$149.495bn in calendar 2025 and were 19.86 per cent of India's total merchandise imports that year. Inside RCEP, with tariff elimination, the same pressure would have arrived against a lower tariff wall. India also retained the policy space it used — four agreements have entered into force since and a fifth is concluded, on terms negotiated bilaterally rather than accepted as a bloc schedule.",
+  "caseAgainst": "India excluded itself from the world's largest trade bloc precisely as supply chains were being redrawn. The protection bought little on the measure that motivated the decision: RCEP entered into force on 1 January 2022 without India, and by calendar 2025 China supplied 19.86 per cent of India's merchandise imports, with India's total imports up 32.0 per cent on CY2021 against exports up 12.9 per cent. Staying out did not slow the import growth it was meant to slow, and the bilateral agreements that followed took until 2025 and 2026 to enter into force. Absence from the bloc also weakens India's position in regional rule-setting, which no bilateral agreement recovers.",
   "shockExposure": "Predates COVID by months; the pandemic then reshaped supply chains in ways neither side of the argument anticipated, making the counterfactual genuinely unknowable.",
   "seriesRefs": [
    "exports-gdp"
@@ -278,10 +278,20 @@
     "name": "China trade deficit FY26",
     "url": "https://www.business-standard.com/economy/news/china-becomes-india-s-top-trade-partner-in-fy26-deficit-widens-to-usd-112-bn-126041501317_1.html",
     "tier": "T4"
+   },
+   {
+    "name": "UN Comtrade, India as reporter (699), partner China (156), flow M, HS TOTAL, annual 2025 — India-reported imports from China, US$149.495bn",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2025&partnerCode=156&flowCode=M&cmdCode=TOTAL",
+    "tier": "T2"
+   },
+   {
+    "name": "UN Comtrade, India as reporter (699), partner World, flows X and M, HS TOTAL, annual 2021 and 2025 — the denominator for China's import share and the CY2021 baseline",
+    "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2025&partnerCode=0&flowCode=M&cmdCode=TOTAL",
+    "tier": "T2"
    }
   ],
-  "confidence": "medium",
-  "asOf": "2026-07-30"
+  "confidence": "high",
+  "asOf": "2026-08-05"
  },
  {
   "id": "L-0019",
