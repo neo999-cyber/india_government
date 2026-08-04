@@ -1,0 +1,28 @@
+{
+  "note": "Written by tools/regen-lens-fixtures.mjs. The selftest compares these enums against the live schemas and FAILS if they differ, because a fixture generated from a stale enum tests the wrong branch while still exiting 1. Do not hand-edit: re-run the script.",
+  "domains": [
+    "macro",
+    "banking",
+    "employment",
+    "poverty",
+    "human-development",
+    "infrastructure",
+    "welfare",
+    "education",
+    "governance",
+    "kashmir",
+    "federalism",
+    "foreign",
+    "defence",
+    "environment"
+  ],
+  "lenses": [
+    "kashmir",
+    "federalism",
+    "defence-sector",
+    "united-states",
+    "china",
+    "russia",
+    "neighbourhood"
+  ]
+}

@@ -12,8 +12,10 @@
  *
  * Run with `npm run validate:selftest`.
  */
+import { existsSync, readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { liveEnums } from './lib/lens-fixtures.mjs';
 import { dirname, join } from 'node:path';
 import Ajv2020 from 'ajv/dist/2020.js';
 import { AJV_OPTIONS } from './lib/schema.mjs';
@@ -60,39 +62,39 @@ const INVALID_FIXTURES = [
 
 /** Rules the broken fixtures must trigger, each as an error. */
 const MUST_FIRE = [
-  'schema:series',
-  'schema:ledger',
-  'ref-resolves',
-  'calendar-discipline',
-  'point-unique',
-  'id-unique',
-  't5-dispute-link',
-  'panel-vintage',
-  'regime-group',
-  'baseline-context',
-  'date-order',
-  'back-link',
-  'ref-relevant',
+  { rule: 'schema:series', expect: 'unknown property "editorialSpin"' },
+  { rule: 'schema:ledger', expect: 'missing required property "caseFor"' },
+  { rule: 'ref-resolves', expect: '"P-98" does not resolve to any provenance record' },
+  { rule: 'calendar-discipline', expect: 'is not fiscal-year form' },
+  { rule: 'point-unique', expect: 'duplicate observation for IND FY2013-14' },
+  { rule: 'id-unique', expect: 'duplicate series id "duplicate-id"' },
+  { rule: 't5-dispute-link', expect: 'must carry a dispute record covering its own domain "governance"' },
+  { rule: 'panel-vintage', expect: 'has no source.vintage' },
+  { rule: 'regime-group', expect: '"gdp-growth-new-base", "gdp-growth-2022-base" absent' },
+  { rule: 'baseline-context', expect: 'is for pre-May-2014 records only, but term is "T1"' },
+  { rule: 'date-order', expect: 'dateEnd 2019-04 precedes date 2019-09' },
+  { rule: 'back-link', expect: 'P-91 lists this series in affectsSeries' },
+  { rule: 'ref-relevant', expect: 'P-92 covers [macro] and this record is [banking]' },
   // From 2026-08-02 every reference field declares its target layer's id pattern, so ajv
   // rejects both of these too — but a pattern-mismatch message does not tell an author
   // whether they pointed at the wrong layer or fat-fingered an id. These name the difference.
-  'ref-layer',
-  'ref-malformed',
+  { rule: 'ref-layer', expect: '"P-59" is a well-formed provenance id in a field that must hold a series id' },
+  { rule: 'ref-malformed', expect: '"Not A Series Id" matches no layer' },
   // Character sweep: schema validation cannot see any of these.
-  'charset-script',
-  'charset-invisible',
-  'charset-url',
-  'charset-symbol',
-  'charset-homoglyph',
+  { rule: 'charset-script', expect: 'Cyrillic text in English prose' },
+  { rule: 'charset-invisible', expect: 'invisible character U+200B (zero-width space)' },
+  { rule: 'charset-url', expect: 'non-ASCII U+0456 in a URL' },
+  { rule: 'charset-symbol', expect: 'character U+2192' },
+  { rule: 'charset-homoglyph', expect: 'U+03BC GREEK SMALL LETTER MU' },
   // The lens axis, added 2026-08-03. Two names for two mistakes: a lens value standing in for a
   // subject, and a value asserted on both axes of one record. Folded into one rule the message
   // could not tell an author which they had made — and only one of the two is unconditional.
-  'lens-as-subject',
-  'lens-duplicated',
+  { rule: 'lens-as-subject', expect: 'domain = "kashmir" is a lens, not a subject' },
+  { rule: 'lens-duplicated', expect: '"federalism" is in both domain and lenses[]' },
   // The objective axis, added 2026-08-03. Four of the eight assessment values are defined against
   // "the objective stated at announcement"; nothing checked that the record had one, and fourteen
   // records took a scored value with nothing claimed to score against.
-  'objective-required',
+  { rule: 'objective-required', expect: 'assessment "too-early" is defined against the objective stated at announcement' },
 ];
 
 /**
@@ -105,9 +107,9 @@ const MUST_FIRE = [
  * welfare data. Each gets a root carrying exactly the half it needs.
  */
 const ISOLATED = [
-  { dir: 'regime-gap', rule: 'regime-handoff' },
-  { dir: 'caveat-orphan', rule: 'caveat-target' },
-  { dir: 'mirror-contradiction', rule: 'mirror-contradiction' },
+  { dir: 'regime-gap', rule: 'regime-handoff', expect: 'leaving 2014–2015 on no regime at all' },
+  { dir: 'caveat-orphan', rule: 'caveat-target', expect: 'caveat names "P-26"' },
+  { dir: 'mirror-contradiction', rule: 'mirror-contradiction', expect: '"cannot-be-both" is in both affectsSeries and correctiveSeries' },
   // One fixture root, four branches of pair-side, told apart by `expect`. Without it a
   // fixture passes on any pair-side error — including one from a branch it is not testing —
   // and a branch could stop firing unnoticed.
@@ -116,7 +118,7 @@ const ISOLATED = [
   { dir: 'pairs-malformed', rule: 'pair-side', expect: 'which declares 1 (valid 0-0)' },
   { dir: 'pairs-malformed', rule: 'pair-side', expect: 'carries no competingAccounts' },
   { dir: 'pair-inverted', rule: 'pair-inverted', expect: 'the wrong way round' },
-  { dir: 'reason-kind-missing', rule: 'reason-kind' },
+  { dir: 'reason-kind-missing', rule: 'reason-kind', expect: 'states no reasonKind' },
   { dir: 'absence-dispute-bare', rule: 'absence-dispute', expect: 'must not be asserted bare' },
   { dir: 'denominator-unstated', rule: 'denominator-stated', expect: 'renders 1 rate value(s)' },
   // unmeasured-route became severity-derived on 2026-08-02: an error where reasonKind
@@ -237,8 +239,16 @@ if (broken.code === 0 || broken.report.ok) {
 const firedRules = new Set(
   broken.report.findings.filter((f) => f.level === 'error').map((f) => f.rule),
 );
-for (const rule of MUST_FIRE) {
-  if (!firedRules.has(rule)) failures.push(`rule "${rule}" did not fire as an error on the broken fixtures`);
+for (const { rule, expect } of MUST_FIRE) {
+  const hits = broken.report.findings.filter((f) => f.level === 'error' && f.rule === rule);
+  if (hits.length === 0) {
+    failures.push(`rule "${rule}" did not fire as an error on the broken fixtures`);
+  } else if (!hits.some((f) => f.message.includes(expect))) {
+    failures.push(
+      `rule "${rule}" fired on the broken fixtures but not for "${expect}" — it is passing on a ` +
+        `different violation than the one the fixture seeds. Got: ${hits.map((f) => f.message).join(' | ').slice(0, 300)}`,
+    );
+  }
 }
 
 // 3b. Rules that need a fixture root to themselves.
@@ -280,27 +290,43 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
 {
   const reach = (args) => {
     try {
-      execFileSync(process.execPath, [join(ROOT, 'tools', 'reachability.mjs'), ...args], {
+      const out = execFileSync(process.execPath, [join(ROOT, 'tools', 'reachability.mjs'), ...args], {
         // stderr piped: the fixture is EXPECTED to fail, and letting its report through
         // would make a passing selftest read as a broken one.
         encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, NO_COLOR: '1' },
       });
-      return 0;
+      return { code: 0, out: out ?? '' };
     } catch (err) {
-      return err.status ?? 1;
+      return { code: err.status ?? 1, out: `${err.stdout ?? ''}${err.stderr ?? ''}` };
     }
   };
   const fixture = join(ROOT, 'tests', 'fixtures', 'reachability-hidden');
   const fired = reach(['--data', join(fixture, 'data'), '--out', join(fixture, 'out')]);
-  if (fired !== 1) {
-    failures.push(`reachability did not fire on tests/fixtures/reachability-hidden (exit ${fired}) — a declaration suppressed on its own record page must fail`);
+  // The message is asserted, not only the exit code. This fixture has TWO declared marks and only
+  // one is suppressed; an exit of 1 would also be returned if the gate broke and reported both, or
+  // reported the wrong one, and neither of those is what this root tests.
+  const REACH_NEEDLE = 'renders elsewhere but NOT on its own record page';
+  if (fired.code !== 1) {
+    failures.push(`reachability did not fire on tests/fixtures/reachability-hidden (exit ${fired.code}) — a declaration suppressed on its own record page must fail`);
+  } else if (!fired.out.includes(REACH_NEEDLE) || !fired.out.includes('paired-series-with-absence')) {
+    failures.push(`reachability fired on tests/fixtures/reachability-hidden but not for the suppressed mark on paired-series-with-absence — it is passing on a different failure`);
   } else {
     notes.push('  reachability fires on tests/fixtures/reachability-hidden (declared, not on its own record page)');
   }
   const live = reach([]);
-  if (live === 2) notes.push('  reachability on the live corpus skipped — no built output yet');
-  else if (live !== 0) failures.push('reachability failed on the live corpus; run `npm run reachability` for the list');
-  else notes.push('  reachability stays silent on the live corpus — every declared mark renders on its own record page');
+  if (live.code === 2 && live.out.includes('REFUSING TO RUN')) {
+    // Same distinction domain-coverage got: exit 2 covers "no output" and "stale output", and
+    // letting the second land in the silent-skip branch is the false pass this assertion exists to
+    // prevent. It was left on this gate when the other was fixed — the fix was applied to the site
+    // that had been observed failing, not to the class.
+    failures.push('reachability refused to run on the live corpus: the build is stale. Run `npm run build`, then the selftest');
+  } else if (live.code === 2) {
+    notes.push('  reachability on the live corpus skipped — no built output yet');
+  } else if (live.code !== 0) {
+    failures.push('reachability failed on the live corpus; run `npm run reachability` for the list');
+  } else {
+    notes.push('  reachability stays silent on the live corpus — every declared mark renders on its own record page');
+  }
 }
 
 // 3e. Domain-surface coverage: every schema domain value has a page, every record reaches it.
@@ -349,6 +375,36 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
     { dir: 'lens-coverage-no-page', why: 'a schema lens value with no page built for it', expect: '[lens] russia' },
     { dir: 'lens-coverage-empty', why: 'a lens value with a page, linked, and no record behind it — a filter that returns nothing', expect: '[lens-empty]' },
   ];
+  // THE STAMP CHECK, and it is the point of this whole sub-section rather than a nicety.
+  //
+  // Both lens fixtures are GENERATED from the domain and lens enums. When `china` and
+  // `neighbourhood` were admitted they began failing on `[lens]` instead of `[lens-empty]` — exit 1
+  // either way, selftest green, the branch unchecked for two cycles. The branch assertions below
+  // turn that into a failure, which says the fixture is wrong but not what to do; the remedy was a
+  // line in a state document asking the next author to remember. A discipline requirement is what
+  // M2 and build-freshness exist to replace, so the enum each fixture was built against is stamped
+  // into it and compared here.
+  for (const dir of ['lens-coverage-empty', 'lens-coverage-no-page']) {
+    const stampPath = join(ROOT, 'tests', 'fixtures', dir, 'GENERATED-FROM.json');
+    if (!existsSync(stampPath)) {
+      failures.push(`tests/fixtures/${dir} has no GENERATED-FROM.json — it cannot be shown to match the live enums. Run \`node tools/regen-lens-fixtures.mjs\``);
+      continue;
+    }
+    const stamp = JSON.parse(readFileSync(stampPath, 'utf8'));
+    const live = liveEnums();
+    const drift = ['domains', 'lenses'].filter((k) => JSON.stringify(stamp[k]) !== JSON.stringify(live[k]));
+    if (drift.length) {
+      failures.push(
+        `tests/fixtures/${dir} was generated from a stale ${drift.join(' and ')} enum — ` +
+          `stamped lenses [${(stamp.lenses ?? []).join(', ')}] against live [${live.lenses.join(', ')}]. ` +
+          `A fixture built from a stale enum tests the wrong branch and still exits 1. ` +
+          `Run \`node tools/regen-lens-fixtures.mjs\` in the same commit as the enum change`,
+      );
+    } else {
+      notes.push(`  ${dir} is generated from the live enums (${live.lenses.length} lenses) — stamp matches`);
+    }
+  }
+
   for (const { dir, why, expect } of FIXTURES) {
     const root = join(ROOT, 'tests', 'fixtures', dir);
     const fired = cover(['--data', join(root, 'data'), '--out', join(root, 'out')]);
@@ -425,18 +481,26 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
 {
   const fig = (args) => {
     try {
-      execFileSync(process.execPath, [join(ROOT, 'tools', 'figure-consistency.mjs'), ...args], {
+      const out = execFileSync(process.execPath, [join(ROOT, 'tools', 'figure-consistency.mjs'), ...args], {
         encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, NO_COLOR: '1' },
       });
-      return 0;
-    } catch (err) { return err.status ?? 1; }
+      return { code: 0, out: out ?? '' };
+    } catch (err) { return { code: err.status ?? 1, out: `${err.stdout ?? ''}${err.stderr ?? ''}` }; }
   };
   const root = join(ROOT, 'tests', 'fixtures', 'figure-consistency-undeclared');
   const fired = fig(['--data', join(root, 'data'), '--claims', join(root, 'claims.json')]);
-  if (fired !== 1) failures.push(`figure-consistency did not fire on tests/fixtures/figure-consistency-undeclared (exit ${fired}) — a non-reconstructing difference with no stated basis must fail`);
-  else notes.push('  figure-consistency fires on tests/fixtures/figure-consistency-undeclared — a difference the printed operands do not reproduce, with no basis stated');
+  // Message asserted: this gate has four failure kinds — source, missing, absent, undeclared — and
+  // all four exit 1. A fixture pinned to the exit code alone would pass if the claim went stale and
+  // failed as `[missing]`, which is the opposite of what it exists to prove.
+  if (fired.code !== 1) {
+    failures.push(`figure-consistency did not fire on tests/fixtures/figure-consistency-undeclared (exit ${fired.code}) — a non-reconstructing difference with no stated basis must fail`);
+  } else if (!fired.out.includes('[undeclared] P-119')) {
+    failures.push(`figure-consistency fired on tests/fixtures/figure-consistency-undeclared but not as [undeclared] — it is passing on a different branch. Got: ${fired.out.slice(0, 300)}`);
+  } else {
+    notes.push('  figure-consistency fires on tests/fixtures/figure-consistency-undeclared ([undeclared] P-119) — a difference the printed operands do not reproduce, with no basis stated');
+  }
   const live = fig([]);
-  if (live !== 0) failures.push('figure-consistency failed on the live corpus; run `npm run figure-consistency` for the list');
+  if (live.code !== 0) failures.push('figure-consistency failed on the live corpus; run `npm run figure-consistency` for the list');
   else notes.push('  figure-consistency stays silent on the live corpus — every declared claim agrees with source, and every rounding artefact is declared');
 }
 

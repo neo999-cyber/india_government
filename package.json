@@ -20,7 +20,8 @@
     "start": "npx serve out",
     "typecheck": "tsc --noEmit",
     "audit": "node tools/audit-manifest.mjs",
-    "figure-consistency": "node tools/figure-consistency.mjs"
+    "figure-consistency": "node tools/figure-consistency.mjs",
+    "regen:lens-fixtures": "node tools/regen-lens-fixtures.mjs"
   },
   "dependencies": {
     "next": "16.2.12",
