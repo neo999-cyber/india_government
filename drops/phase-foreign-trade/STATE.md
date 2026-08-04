@@ -1,16 +1,31 @@
 # Phase 14 — foreign policy and trade. State.
 
-**B1 (`23caebe`) arcs A+F, lens axis · B2 (`23cc1cf`) arc B China mirror · B3 (`95950e3`, `4df4cc8`)
-rounding basis, url-check spacing, arc C trade · B4 (`7d6c4ec`, `18728fa`, `588f978`) L-0021,
-build freshness, arc D partial · B5 (`6e30c2d`, `c071418`) fixture soundness, arc E opened.**
+**B1 `23caebe` arcs A+F, lens axis · B2 `23cc1cf` arc B China mirror · B3 `95950e3`/`4df4cc8`
+rounding basis, url-check spacing, arc C trade · B4 `7d6c4ec`/`18728fa`/`588f978` L-0021, build
+freshness, arc D partial · B5 `6e30c2d`/`c071418` fixture soundness, arc E opened ·
+B6 `391b16d`/`e36f6b3` idempotence controls, the SIPRI category record.**
+
+## Measurement categories established by this phase — use these, do not re-derive
+
+Three shapes, and a record must say which it is:
+
+1. **differentFacts pair** — two instruments measuring the SAME quantity and disagreeing. Both
+   sides retrieved, same period and basis, methodological reason stated where known, neither
+   averaged nor picked. P-119 (India/China trade), P-120 (neighbourhood).
+2. **Single-sided** — one side publishes and the other does not. NOT a pair; the absence is the
+   finding, localised by relaxing one restriction at a time before it is recorded. L-0191, L-0193.
+3. **Incommensurable** — two instruments measuring DIFFERENT quantities, where the divergence
+   carries no information about either. NOT a pair and NOT an absence. L-0197 (MoD rupees against
+   SIPRI TIV). Reading agreement as corroboration is the same error as reading divergence as
+   refutation.
 
 ## NOT DONE — the live backlog
 
 1. **Arc E remainder.** Rafale tranches; S-400 delivery and CAATSA exposure; indigenisation share
    against target; DAP domestic-content rules; emergency-procurement powers and their use.
-   **The SIPRI mirror is the notable one** — MoD's rupee export series against SIPRI's TIV. TIV is
-   NOT a currency value; the methodological reason must be stated rather than the divergence being
-   treated as a discrepancy. Filing rule settled; `defence-sector` on all.
+   **The SIPRI question is CLOSED** — L-0197 settles it as category 3 above, and establishes that no
+   currency-basis mirror exists because HS 93 classifies by commodity rather than end use. Filing
+   rule settled; `defence-sector` on all, now fourteen records.
 2. **Arc D remainder.** UK FTA, EU negotiation, RCEP non-entry against trade data. **`europe` is
    NOT in the enum** and enters with them — one Europe record does not earn a lens. L-0018 still
    describes four agreements with T4 sources.
@@ -38,6 +53,13 @@ build freshness, arc D partial · B5 (`6e30c2d`, `c071418`) fixture soundness, a
   opt-out.
 - **figure-consistency** checks declared claims against source AND printed operands; separators are
   normalised, and its own claims' source values are checked rather than typed.
+- **A failing check re-run without a fix must still fail** — enforced on `enum-stamp` and on
+  freshness, with the B5 self-repair bug reintroduced as the negative control. Only `selftest`
+  touches state at all; every other gate is a pure reader.
+- **No checker imports from its own repair path** — asserted by importing each library in a child
+  process and requiring the fixture tree to be byte-identical after.
+- **Logged, not built:** the 23 `MUST_FIRE` rules share one `broken` root, so message pinning does
+  not isolate records. Per-rule roots is the fix. Tedium, not hazard.
 
 ## What is done
 
