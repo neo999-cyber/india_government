@@ -64,17 +64,20 @@ multiplier values and no thresholds**. The positive indigenisation lists are not
 The DAP chapter text is on `mod.gov.in`, which is unreachable. Try: PIB releases announcing each
 indigenisation list, and a Parliamentary answer on offsets discharged.
 
-### 2. Arc D remainder — UK FTA, the EU negotiation, RCEP non-entry against subsequent trade data
+### 2. Arc D remainder — two of three
 
-*Why deferred:* room. Arc D was closed as a clean partial after TEPA's investment commitment
-(L-0194) and the doubling claim (L-0195). Nothing about these three was attempted, so nothing failed.
-*Depends on:* nothing blocking. PIB and UN Comtrade both retrieve and are sufficient — Comtrade
-gives the trade data RCEP non-entry is to be tested against, on the same query shape used in
-L-0192/L-0195. *Also:* **`europe` is NOT in the lens enum and enters with these records**, since one
-Europe record does not earn a lens. Admitting it means editing three schemas, `lib/types.ts` and
-`lib/format.ts`, and re-running `npm run regen:lens-fixtures` in the same commit — the selftest will
-fail on enum drift if that is forgotten. **L-0018 (RCEP withdrawal) is the collision:** it already
-describes four agreements' status on T4 sources and is arc D's to correct or leave.
+**Done:** the UK FTA (L-0204, in force 15 July 2026). **`europe` is now IN the lens enum**, admitted
+with L-0194 and L-0204 — two records, one arc, matching the `neighbourhood` precedent.
+
+**Still open:**
+- **The EU negotiation.** *Why deferred:* not attempted; room. *Depends on:* nothing blocking — PIB
+  carries the Indian side. Expect the commitment-state discipline: a negotiation is state (a) until
+  it concludes, and the trigger is whatever round or date is named.
+- **RCEP non-entry against subsequent trade data.** *Why deferred:* not attempted. *Depends on:*
+  nothing blocking — UN Comtrade gives the trade data on the same query shape used in L-0192 and
+  L-0195, and **L-0018 already exists** describing RCEP withdrawal on T4 sources with claims about
+  the China deficit. It is arc D's to correct or leave, and the correction is the natural vehicle
+  for the trade-data test.
 
 ### 3. Arc G — multilateral
 

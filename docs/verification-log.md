@@ -6587,3 +6587,79 @@ lens-controls       6 paired + exact membership; defence-sector at 19
 arithmetic          3 figures hand-checked, 0 mismatches; no price figure stated anywhere
 parts/              zero touched
 ```
+
+---
+
+# Verification log — cycle 2026-08-05a (arc D: the UK agreement in force, and `europe` earned)
+
+**Appended.** `/data` diff: `56 0` on `ledger/foreign-trade.json` — L-0204 appended and the `europe`
+lens backfilled onto L-0194. Zero deletions, zero `parts/` files touched. Gated once at the end of
+the batch, per the practice written in this cycle's 0a.
+
+## L-0204 — two headline concessions that are not the same measurement
+
+CETA entered into force **15 July 2026**, three weeks before this record, alongside a Double
+Contribution Convention whose exemption period rose from three years to five. Concluded 6 May 2025
+after fourteen rounds; signed in London 24 July 2025.
+
+**The share-shaped check found the case it exists for.** Every percentage was written out with its
+numerator and denominator before the record was drafted, and two of them do not compare:
+
+| | measured as | timing |
+|---|---|---|
+| **UK's concession** | 99% of India's exports, **almost 100% of trade VALUE** | zero duty, no phasing stated |
+| **India's concession** | **89.5% of TARIFF LINES**, 91% of UK exports | **24.5% of UK export value immediate**, rest phased |
+
+A line count and a value share are different quantities; an immediate concession and a phased one
+are different commitments. **99 against 89.5 compares neither like with like** — and the mismatch is
+systematic rather than incidental, because the favourable side is quoted by value and the
+concessionary side by line count, which is the arrangement that flatters any agreement.
+
+**The asymmetry runs in India's favour and the record says so as plainly as it says the rest.** For a
+country whose standing complaint is that agreements open its market faster than others', this one is
+drawn the other way, and the phasing is the mechanism. The number that answers what a reader is
+actually asking — how much of Britain's exports enter duty-free now — is 24.5 per cent, and it
+appears once, not in the headline.
+
+Scored `too-early`: three weeks in force, the obstacle is elapsed time. The US$100bn-by-2030 target
+is **inherited**, adopted in the 2021 Roadmap rather than set by this agreement, and has no interim
+milestone — the same untestable-until-terminal-year shape recorded for TEPA in L-0194, and recorded
+as an `unmeasured` rather than scored.
+
+The implied total number of tariff lines (1,437 at 14.8 per cent) is deliberately **not** stated: it
+is a division the sources do not perform, and its precision would exceed theirs.
+
+## `europe` admitted — the criterion, applied
+
+Two records now: L-0194 (EFTA TEPA, backfilled this cycle) and L-0204 (UK CETA). Both in-force
+European trade agreements concluded in the same period — one arc, which is what the value was
+defined for. **Two is the precedent**: `neighbourhood` was admitted with exactly two records in
+batch 3, and `pakistan` and `europe` were both refused at one.
+
+Admitted atomically as the rules require: three schemas with the per-value definition, `lib/types.ts`,
+`lib/format.ts` label and blurb, `npm run regen:lens-fixtures` **in the same commit** — and
+`enum-stamp` confirms 8 lenses against the live schemas rather than 7. A paired control was added
+whose negative is L-0195, the UAE/Australia doubling claim: the same KIND of record about in-force
+trade agreements with non-European counterparties, so the control passes through the restriction it
+depends on rather than around it.
+
+## Arc D: one of three, and a clean partial
+
+**Done:** the UK FTA. **Not done:** the EU negotiation, and RCEP non-entry against subsequent trade
+data. Neither was attempted in this batch. L-0018 still describes four agreements on T4 sources and
+remains arc D's to correct.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 150 warnings
+typecheck           clean
+selftest            OK
+enum-stamp          OK — 8 lenses
+figure-consistency  7 declared claims, 7 checked
+manifest            646 records, 66,527 bytes
+reachability        820/820 (626 pages)
+domain-coverage     14/14 domains · 8/8 lenses · 1083/1083
+url-check           2/2 confirmed
+lens-controls       7 paired + exact membership; europe = L-0194, L-0204
+```

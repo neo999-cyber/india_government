@@ -5,7 +5,7 @@
 One line per record so orientation does not require scanning `/data`. Format:
 `id · domain(s) {lenses} · title`. For the authoritative text, read the record.
 
-645 records — 203 ledger, 262 series, 120 provenance, 60 pairs.
+646 records — 204 ledger, 262 series, 120 provenance, 60 pairs.
 
 ## series (262)
 
@@ -281,7 +281,7 @@ ujjwala-refills · welfare · PMUY average annual LPG refills per beneficiary
 wheat-procurement · welfare · Wheat procurement
 ```
 
-## ledger (203)
+## ledger (204)
 
 ```
 # data/ledger/agriculture.json
@@ -392,7 +392,7 @@ L-0190 · foreign+macro {china} · The India-China merchandise deficit has two v
 L-0191 · foreign+macro {china} · Calendar 2025 has an Indian figure and no Chinese one, so it is not a mirror and must not be read as one
 L-0192 · foreign+macro {neighbourhood} · India runs a merchandise surplus with every immediate neighbour except Myanmar
 L-0193 · foreign+governance {neighbourhood} · Half the neighbourhood does not report its trade, and every neighbour that does records less arriving than Ind
-L-0194 · foreign+macro · TEPA carries the first investment commitment in an Indian trade agreement: US$100bn over fifteen years, and th
+L-0194 · foreign+macro {europe} · TEPA carries the first investment commitment in an Indian trade agreement: US$100bn over fifteen years, and th
 L-0195 · foreign+macro · "Merchandise trade with both Australia and the UAE has doubled since the signing" — true on a baseline two yea
 L-0196 · foreign+macro {defence-sector} · Defence exports reach ₹38,424 crore against a ₹50,000 crore target for 2029, and the private sector's share fa
 L-0197 · foreign {defence-sector} · India's defence exports are measured by three instruments that measure three different things, and SIPRI says 
@@ -402,6 +402,7 @@ L-0200 · foreign+governance {defence-sector} · Emergency procurement: a ₹300
 L-0201 · foreign {defence-sector} · Twenty-six Rafale for the Navy, signed government to government, with technology transfer for integrating Indi
 L-0202 · foreign {defence-sector russia} · The S-400 delivery schedule exists, both governments know it, and neither publishes it — one of them says so o
 L-0203 · foreign+macro {defence-sector} · The 2016 Rafale agreement bought 36 aircraft off the shelf and dropped 108 that were to be built in India, and
+L-0204 · foreign+macro {europe} · The India-UK trade agreement is in force, and the two headline concessions are not the same measurement: 99 pe
 # data/ledger/infrastructure.json
 L-0044 · infrastructure · National highway construction programme
 L-0045 · infrastructure · Bharatmala Pariyojana
