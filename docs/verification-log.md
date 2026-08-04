@@ -7259,3 +7259,62 @@ absence claimed, because the measured series stops before the question becomes a
 records that the two cases are indistinguishable in the count, which is why it has to be checked
 rather than noticed.
 
+## Cycle 2026-08-05k — arc G opens: IMEC (L-0213)
+
+**The second instance of commitment state (d), one commit after the state was written.** IMEC has
+no completion date, no phasing and no target quantity in any of five documents retrieved, so it has
+no trigger (not (a)), can never fall due (not (b)), and is not evidenced as abandoned (not (c)).
+Scored `no-objective`. Two instances from different arcs — a border fence and a transcontinental
+corridor — is what makes (d) a state rather than a description of one record.
+
+**The finding: scope grew, deliverables did not.** The September 2023 memorandum describes a
+railway and ship-rail network and road routes. By April 2025 the published account adds energy
+pipelines, clean energy infrastructure, undersea cables and a possible extension to Africa. Across
+the same nineteen months nothing retrieved records a kilometre, a contract, a cost or a completed
+segment. And what the Minister set out were five SUGGESTIONS, not five deliverables — that the
+private sector lead because government financing "would limit its efficiency and financial
+viability", that instruments including "IMEC Bonds" be created, and that think tanks be brought into
+"the visioning and design process", nineteen months after signature.
+
+**Both headline figures are share-shaped with neither term named.** "Up to 30%" on logistics costs
+and "40%" on transport time, with no comparator route, no current cost, no cargo type, no method and
+no source. "Up to" is a ceiling rather than an estimate, which is recorded as part of the finding
+rather than smoothed over.
+
+**A checked absence, and a term that matched something else.** The Ports ministry signed the
+bilateral framework and would build the maritime leg; its Year End Review 2024 mentions IMEC three
+times across 102,898 characters and ALL THREE are the signature of that agreement. DPIIT's Year End
+Review 2025 mentions it zero times across 64,541 characters against positive controls of 82/66/11.
+DPIIT's twelve `corridor` hits are the National Industrial Corridor Development Programme — a
+domestic scheme — so the word count is treated as evidence in neither direction. **A term can match
+and mean something else**, which is the failure mode neither boundaries nor variants can catch, and
+only reading the context does.
+
+**The evidence limit is stated in the record, not just here.** No Ports year-end review after 2024
+was located, so the Ports-side position after December 2024 is UNCHECKED, and the caveat says so
+rather than letting five sources read as exhaustive. This is the new rule applied in its second
+form: a zero from a document that predates the question establishes nothing, and so does the absence
+of a document that was never retrieved.
+
+**Also refused: an explanation I could not source.** The obvious thing to write into caseFor is that
+regional conditions since October 2023 disrupted the corridor's Northern leg. Nothing bearing on
+that was retrieved, so nothing was said — the caveat states in terms that the record makes no
+assertion about conditions in the regions the corridor would cross. An unsourced mitigating
+explanation is as much a rule-3 violation as an unsourced accusation, and it is the easier one to
+let through because it reads as fairness.
+
+**A scanning note.** A scan for `%` returned 0 on a document whose headline reads "30%", because
+`\b` after a punctuation character can never match. The boundary default is MEANINGLESS for
+punctuation-only terms rather than merely strict; the fix is to search the digits. Recorded beside
+the Fengal and Official Creditors cases as the third distinct failure mode of the same default.
+
+**Gates.** build VALID (0 errors, 162 warnings); figure-consistency 8/8; manifest 655 records;
+reachability 852/852 across 635 pages; domain-coverage 14/14, 1101/1101; enum-stamp 2; url-check
+5/5; typecheck clean; selftest exit 0; lens-controls 7 pairs. M2: prefix equality and length +1
+asserted before writing; numstat 72/0.
+
+**Carried rules invoked.** Commitment state (d), share-shaped figures name numerator and
+denominator, rule 3 (including against a mitigating explanation), scans through the helper with
+`--variants`, positive controls before banking a zero, the unchecked-versus-absent distinction, M2,
+author-then-gate.
+

@@ -1413,5 +1413,77 @@
         "confidence": "high",
         "asOf": "2026-08-05",
         "revisitTrigger": "Re-test if the Debt Restructuring Agreement's terms or signature date are published, or if any Indian statement gives cumulative assistance to Sri Lanka in a single currency. Either would make the scale of the relief measurable for the first time; the instrument's existence is already settled."
+    },
+    {
+        "id": "L-0213",
+        "title": "Nineteen months after the IMEC memorandum the corridor's published scope had grown and its deliverable list was still empty, and the two figures attached to it name neither a baseline nor a date",
+        "date": "2025-04-16",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "infrastructure"
+        ],
+        "lenses": [
+            "europe"
+        ],
+        "type": "reform",
+        "summary": "A Memorandum of Understanding on the India-Middle East-Europe Economic Corridor was signed on 9 September 2023 at the G20 Summit in New Delhi by India, the United States, Saudi Arabia, the United Arab Emirates, the European Union, Italy, France and Germany. It described an Eastern Corridor connecting India to the Gulf and a Northern Corridor connecting the Gulf to Europe, comprising a railway and ship-rail transit network and road transport routes. An Inter-Governmental Framework Agreement with the United Arab Emirates was signed on 13 February 2024 and given ex-post facto Cabinet approval on 13 March 2024. On 16 April 2025 the Minister of Commerce and Industry told a High-Level Roundtable that IMEC would \"bring down logistics costs by up to 30%, reduce transportation time by 40%\", and set out five suggestions for how the initiative should be taken forward.",
+        "claimAtLaunch": "At signature, a description rather than a target: two corridors, a set of transport modes, and economic integration between India and Europe. The only quantified claims appear nineteen months later and are benefit claims, not commitments — costs down by up to 30 per cent and transport time down by 40 per cent. No completion date, no phasing, no cost, no route length and no segment target appears in any document retrieved.",
+        "whatHappened": "THE SCOPE GREW WHILE THE DELIVERABLE LIST STAYED EMPTY. The 2023 memorandum described a railway and ship-rail network and road routes. By April 2025 the published account added energy pipelines, clean energy infrastructure and undersea cables, and raised the possibility of extending connectivity to Africa through the Middle East. Across the same nineteen months no kilometre built, no contract awarded, no cost, no financing arrangement and no completed segment appears in anything retrieved. WHAT THE MINISTER SET OUT WAS FIVE SUGGESTIONS, NOT FIVE DELIVERABLES: that the corridor be viewed through a public-private partnership lens because leaving it to government \"would limit its efficiency and financial viability\"; that regulatory connectivity be pursued; that financing instruments including \"IMEC Bonds\" be created; that industry bodies be engaged; and that think tanks and academia be brought into \"the visioning and design process\". Nineteen months after signature, the design was still being visioned and the money was still to be raised.",
+        "assessment": "no-objective",
+        "assessmentNote": "Commitment state (d) — unfalsifiable by construction, and the second instance the instrument holds after L-0209. No completion date, no phasing and no target quantity means there is no trigger, so it is not state (a); it can never fall due, so it cannot reach (b); and nothing evidences abandonment, so it is not (c). Scored no-objective on that ground: an objective is a target that can be failed. This is NOT a finding that IMEC is stalled or abandoned — it is that nothing published permits either conclusion, now or at any future date.",
+        "caseFor": "Eight parties including the United States, the European Union and Saudi Arabia put their names to a single connectivity instrument, which is itself the hard part and is not nothing. India converted the multilateral memorandum into a bilateral treaty instrument with the United Arab Emirates within five months and took it to Cabinet, which is faster than most of the agreements in this phase moved and is the concrete step available to a party that cannot build the other legs alone. The five suggestions are also more candid than announcements of this kind usually are: they name the real obstacles rather than asserting them solved — that government financing alone will not carry it, that regulatory and customs harmonisation matters as much as track, that new instruments will be needed to fund it. A transcontinental corridor across sovereign jurisdictions genuinely takes longer than nineteen months, and declining to name a date may be honesty about that rather than evasion.",
+        "caseAgainst": "The two figures that circulate are the two that cannot be checked. \"Up to 30%\" is a ceiling rather than an estimate, and neither figure names a baseline route, a current cost, a comparator corridor, a cargo type or a source; a reader is given the size of a saving without being told what it is a saving against. Meanwhile the corridor's described components multiplied — pipelines, clean energy infrastructure, undersea cables, a possible extension to Africa — while nothing retrieved records a metre of it being built, and an initiative whose scope grows faster than its output is the shape that most reliably outruns scrutiny. The Ministry that signed the bilateral framework recorded IMEC in its own year-end account of 2024 solely as the signing of that agreement. And a minister proposing, nineteen months in, that the private sector lead and that bonds be invented to fund the thing is describing an initiative whose financing was not settled when it was announced.",
+        "unmeasured": [
+            {
+                "what": "The baseline against which logistics costs fall by up to 30 per cent and transport time by 40 per cent",
+                "why": "Both are share-shaped figures with neither term named. No comparator route, current cost, cargo type, measurement method or source is given in the release or in anything else retrieved, so neither figure can be checked, and the direction of any error cannot even be bounded.",
+                "wouldFill": "The study or model the figures are drawn from, or a Ministry of Commerce statement of the comparator route and cost base.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "Any physical or financial progress on the corridor — kilometres, contracts, cost, or a completed segment",
+                "why": "The Ministry of Ports, Shipping and Waterways signed the bilateral framework and would build the maritime leg; its Year End Review 2024 mentions IMEC three times and all three are the signature of that agreement, with no progress attached. The Department for Promotion of Industry and Internal Trade's Year End Review 2025 does not mention IMEC at all. Its twelve occurrences of \"corridor\" are the National Industrial Corridor Development Programme, a domestic scheme, which is why the word count is not treated as evidence either way.",
+                "wouldFill": "A Ministry of Ports, Shipping and Waterways or Ministry of Commerce statement of IMEC works undertaken, or a Parliamentary answer on expenditure and physical progress.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "A completion date, phasing schedule or interim milestone of any kind",
+                "why": "None appears in the memorandum, the Inter-Governmental Framework Agreement announcement, or the April 2025 remarks. A date that was never set does not exist to be published, which is what separates this from the two items above.",
+                "wouldFill": "Any published schedule for either corridor, or a target year stated by any signatory.",
+                "reasonKind": "never-defined"
+            }
+        ],
+        "caveat": "The most recent Ministry of Ports, Shipping and Waterways year-end account retrieved is for 2024; a 2025 edition was not located, so the Ports-side position after December 2024 is UNCHECKED rather than established as empty, and this record does not claim otherwise. The nineteen-month and thirty-five-month intervals are elapsed periods between published dates and are not claims about how long any work took. The April 2025 document is a minister's remarks at a roundtable — a speech, not an agreement or a progress report — and its figures are recorded as announced, not as audited. This record makes no assertion about conditions in the regions the corridor would cross, because nothing bearing on them was retrieved.",
+        "sources": [
+            {
+                "name": "Prime Minister's Office, \"Partnership for Global Infrastructure and Investment (PGII) & India-Middle East-Europe Economic Corridor (IMEC)\", PIB, 9 September 2023 — the MoU signed by India, the USA, Saudi Arabia, the UAE, the European Union, Italy, France and Germany; the Eastern and Northern Corridors; and the railway, ship-rail transit network and road transport routes",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1955921",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Ports, Shipping and Waterways, \"Cabinet approves Inter-Governmental Framework Agreement India and United Arab Emirates ... India-Middle East Europe Economic Corridor\", PIB, 13 March 2024 — the IGFA signed 13 February 2024, its ex-post facto Cabinet approval, and its stated object of exploring further potential of future joint investment and collaboration",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2014134",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Commerce & Industry, \"India poised to become a trusted bridge of global connectivity through IMEC: Shri Piyush Goyal\", PIB, 16 April 2025 — \"It will bring down logistics costs by up to 30%, reduce transportation time by 40%\"; the added components of railways, roadways, energy pipelines, clean energy infrastructure and undersea cables and the possible extension to Africa; and the five suggestions on public-private partnership, regulatory connectivity, innovative financing including \"IMEC Bonds\", industry engagement, and think tanks in the visioning and design process",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2122299",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Ports, Shipping and Waterways, \"Year End Review of Ministry of Ports, Shipping and Waterways 2024\", PIB — scanned in full through the corpus-search helper with morphological variants: three occurrences of IMEC across 102,898 characters, all of them the signature of the Inter-Governmental Framework Agreement, none carrying progress",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2089049",
+                "tier": "T1"
+            },
+            {
+                "name": "Department for Promotion of Industry and Internal Trade, \"2025 Year End Review\", PIB — scanned in full with variants: zero occurrences of IMEC and of \"Middle East\" across 64,541 characters, against positive controls of 82 \"2025\", 66 \"India\" and 11 \"Ministry\"; the twelve occurrences of \"corridor\" are the National Industrial Corridor Development Programme",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2201280",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-05",
+        "revisitTrigger": "Re-test if any signatory publishes a route, a cost, a schedule or a completed segment, or if a Ministry of Ports, Shipping and Waterways year-end review after 2024 is retrieved. A named target year is the single thing that would move this out of state (d) and make the corridor scoreable at all."
     }
 ]
