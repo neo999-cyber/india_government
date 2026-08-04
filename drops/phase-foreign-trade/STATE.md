@@ -3,7 +3,8 @@
 **B1 `23caebe` arcs A+F, lens axis · B2 `23cc1cf` arc B China mirror · B3 `95950e3`/`4df4cc8`
 rounding basis, url-check spacing, arc C trade · B4 `7d6c4ec`/`18728fa`/`588f978` L-0021, build
 freshness, arc D partial · B5 `6e30c2d`/`c071418` fixture soundness, arc E opened ·
-B6 `391b16d`/`e36f6b3` idempotence controls, the SIPRI category record.**
+B6 `391b16d`/`e36f6b3` idempotence controls, the SIPRI category record ·
+B7 `60e4bde` the indigenisation metric and CAATSA's three states.**
 
 ## Measurement categories established by this phase — use these, do not re-derive
 
@@ -21,11 +22,17 @@ Three shapes, and a record must say which it is:
 
 ## NOT DONE — the live backlog
 
-1. **Arc E remainder.** Rafale tranches; S-400 delivery and CAATSA exposure; indigenisation share
-   against target; DAP domestic-content rules; emergency-procurement powers and their use.
-   **The SIPRI question is CLOSED** — L-0197 settles it as category 3 above, and establishes that no
-   currency-basis mirror exists because HS 93 classifies by commodity rather than end use. Filing
-   rule settled; `defence-sector` on all, now fourteen records.
+1. **Arc E remainder — STILL OPEN.** Done: exports vs target (L-0196), the measurement-category
+   record (L-0197), the indigenisation metric (L-0198), CAATSA exposure (L-0199). **Not done:
+   Rafale tranches; the S-400 DELIVERY SCHEDULE (L-0199 covers the sanctions exposure only, not
+   what was delivered when); DAP domestic-content rules beyond the IC minimums; emergency-
+   procurement powers and their use.** Filing rule settled; `defence-sector` on all, now sixteen
+   records. The SIPRI question is CLOSED by L-0197.
+
+   **Retrieval note for whoever resumes:** `www.mod.gov.in` and `www.ddpmod.gov.in` RESOLVE
+   (164.100.252.190, 164.100.94.167) and REFUSE on port 443 — three clients tried, recorded as an
+   environment fact. PIB is the working route into Ministry of Defence material; pin
+   `www.pib.gov.in:443:94.202.207.57`.
 2. **Arc D remainder.** UK FTA, EU negotiation, RCEP non-entry against trade data. **`europe` is
    NOT in the enum** and enters with them — one Europe record does not earn a lens. L-0018 still
    describes four agreements with T4 sources.
