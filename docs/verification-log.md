@@ -6056,3 +6056,106 @@ domain-coverage     14/14 domains · 7/7 lenses · 220/220 lens refs
 url-check           2/2 confirmed
 lens-controls       6 paired + exact membership, defence-sector at 14
 ```
+
+---
+
+# Verification log — cycle 2026-08-04m (arc E: the indigenisation metric, and CAATSA's three states)
+
+**Appended.** `/data` diff: `99 0` on `ledger/foreign-trade.json`. Pure append, zero deletions.
+
+## L-0198 — the basis IS stated, and the number that circulates is a different number
+
+The brief asked for the basis question answered either way, and the answer is **both**.
+
+**Stated, and worth recording as plainly as a missing one:** DAP 2020 fixed how indigenous content is
+measured — *"IC will now be calculated on 'Base Contract Price' i.e. Total Contract Price less taxes
+& duties"* — with category minimums published beside their DPP 2016 predecessors: Buy (Indian-IDDM)
+40 → 50, Buy (Indian) 40 → 50 with indigenous design or 60 without, Buy & Make (Indian) 50 of Make,
+Buy (Global – Manufacture in India) 50 of Buy plus Make, Buy (Global) 30 for Indian vendors. Excluding
+taxes and duties from the denominator means a tax change cannot move the number. That is the hard
+part of an indigenous-content rule and it was done explicitly.
+
+**Not stated:** *"nearly 65% of defence equipment is now produced domestically, compared to import
+dependence of 65–70% earlier"*. No denominator, no population, no baseline date. By value or by
+count; of annual procurement or of standing inventory; earlier than when. Each choice gives a
+different number and the figure circulates as though it were one quantity.
+
+**Three quantities, and the incommensurability check applied as a check rather than a note.** A
+per-contract contractual floor, a production aggregate (₹46,429 crore to ₹1.78 lakh crore) and an
+equipment share are different things. The record states explicitly that the production total rising
+while the minimums rose **is not evidence the minimums are being met** — that is
+agreement-as-corroboration, the half that reviews clean, and it is the same category error as reading
+a divergence as failure.
+
+Scored `partly`: the measurement half of the reform worked and is checkable; the reporting half
+reports against a different metric. Two `unmeasured` items — the 65 per cent basis, and any
+aggregate of *verified* IC, without which the minimums are known as contractual conditions and not
+as outcomes.
+
+Rounding caveated rather than hidden: ₹1.78 lakh crore is three significant figures against an exact
+₹46,429 crore, so the ratio is determined only to about 3.82–3.84 and is written "roughly 3.8 times".
+
+## L-0199 — a sanction not applied is not a sanction waived, and the statute is sharper than expected
+
+CAATSA §231(a): the President **"shall impose five or more of the sanctions described in section
+235"** on a person determined to have knowingly engaged in a significant transaction with the Russian
+defence sector. India contracted for the S-400. No sanction has been imposed.
+
+**Three statutory states produce that outcome and they are not interchangeable:**
+
+| state | instrument | visible from outside? |
+|---|---|---|
+| (a) no determination made | none — a decision not taken | not directly |
+| (b) waiver | written determination **plus a certification that Russia has reduced cyber intrusions**, submitted to committees | not necessarily |
+| (c) delay | certification every 180 days that the person is reducing transactions | not necessarily |
+
+**The waiver condition is the finding.** §231(b) requires certifying something about *the Government
+of the Russian Federation*, not about India — so a waiver for India turns on a judgement India cannot
+influence. That is not how "India got a CAATSA waiver" is usually understood.
+
+**What the public record can and cannot settle, localised with a positive control.** A determination
+under (a) followed by sanctions produces a published Federal Register notice: the Department of
+State's notice of 7 April 2021 imposing §231(a) sanctions on Turkey's Presidency of Defense
+Industries, effective 14 December 2020, retrieved and read. A Federal Register search for CAATSA
+documents naming India returns nothing of that kind. **So the absence is informative about sanctions
+and silent about waivers** — (b) and (c) are submissions to congressional committees, and their
+absence from the Federal Register establishes nothing. Recorded as `not-published` with that
+distinction stated rather than elided.
+
+The exposure does not lapse: the statute attaches to the transaction, and the whole of India's
+present position rests on a determination not having been made, which nothing published constrains.
+
+## M1 — mod.gov.in unreachable, and the record did not depend on it
+
+`www.mod.gov.in` and `www.ddpmod.gov.in` resolve on 1.1.1.1 and 9.9.9.9 (164.100.252.190,
+164.100.94.167) and **refuse on port 443**; the system resolver fails on both, and WebFetch fails
+too. Three clients, two hosts. **Recorded as an environment fact.** The DAP chapter PDF was
+therefore not retrieved — and was not needed: the calculation basis and the full category table are
+in the Ministry's own PIB release of 28 September 2020, which retrieved cleanly. No stop condition
+fired, because no record materially depended on the unreachable file.
+
+## Arc E: two of five, and the batch closes there
+
+Authored across batches 5, 6 and 7: exports against the 2029 target (L-0196), the measurement-category
+record (L-0197), the indigenisation metric (L-0198), CAATSA exposure (L-0199).
+
+**Not authored: Rafale tranches, S-400 delivery schedule, DAP domestic-content rules beyond the IC
+minimums, and emergency-procurement powers and their use.** Nothing about them was attempted in this
+batch and nothing failed. **Arc E is NOT closed.**
+
+No new lens. `defence-sector` stands at sixteen ledger records; L-0199 also carries `united-states`
+and `russia`, which is the G2G-as-diplomacy filing rule doing exactly what it was written for.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 147 warnings
+typecheck           clean
+selftest            OK — run-twice controls, import-write guard, 33 pinned assertion sites
+enum-stamp          OK
+figure-consistency  7 declared claims, 7 checked, 3 artefacts declared
+reachability        802/802 (620 pages)
+domain-coverage     14/14 domains · 7/7 lenses · 224/224 lens refs
+url-check           3/3 confirmed
+lens-controls       6 paired + exact membership on all five phase-14 lenses
+```
