@@ -6757,3 +6757,58 @@ validate 0 errors, 152 warnings · typecheck clean · selftest OK · enum-stamp 
 figure-consistency 7/7 · manifest 647 records · reachability 824/824 · domain-coverage 14/14, 1085/1085
 url-check 3/3 · lens-controls 7 paired + exact membership · parts/ zero touched
 ```
+
+---
+
+# Verification log — cycle 2026-08-05c (arc C policy, chained — Bangladesh: no record, and why)
+
+**No `/data` change.** Bangladesh produced no record. That is the outcome, not a failure to report one.
+
+## What was tried, and what each returned
+
+| source | result |
+|---|---|
+| MEA, `India-Bangladesh2024.pdf` | **retrieved, T1, text layer** — but its content is dated January 2024 |
+| MEA, `Bilateral-Brief-Bangladesh-February-2024.pdf` | **retrieved, T1** — content dated January 2023 |
+| MEA, `India_Bangladesh_bilateral_brief.pdf` | HTTP 200 serving **HTML, not a PDF** — a soft-404 |
+| PIB / commerce.gov.in | nothing current on the post-transition position |
+| Adani Power investor pages | "Godda" appears twice, both as navigation; no Bangladesh content |
+| `cea.nic.in` cross-border electricity | resolves on 1.1.1.1 (45.127.74.41), connects with an explicit resolver, and that path **404s** |
+
+## Three records were candidates and none is groundable
+
+**The Adani PPA dues.** No primary retrieved, and the secondary accounts are incompatible: one
+reports all dues cleared with US$437m paid, another from July 2026 reports US$496m outstanding.
+**Stop condition 1, scoped to the record.** Adopting either figure would mean picking a side of a
+disagreement between two sources neither of which is primary — worse than the differentFacts cases
+this instrument carries, because there the disagreeing parties are the authorities themselves.
+
+**The post-transition trade, transit and energy position.** Both MEA briefs predate the August 2024
+transition. Nothing retrieved describes the position after it. A record asserting that would be
+asserting an absence I have not localised — the sources tried are four, not an exhaustive search,
+and rule 5d cuts against me here as readily as it cuts against a government.
+
+**The Godda omission.** Both retrieved briefs contain zero mentions of "Adani" or "Godda", and both
+give the same figure — Bangladesh importing 1160 MW from India. That the largest single
+India-Bangladesh power arrangement is absent from MEA's own bilateral brief would be a finding of
+exactly the kind this instrument specialises in. **It is not written, because the absence cannot be
+grounded without a primary establishing the arrangement**, and none was retrieved. An absence is a
+claim about a document, and it needs the thing said to be missing to be established by something
+better than a search summary.
+
+Note also that 1160 MW (an import flow) and the Godda plant's capacity (a capacity figure reported
+only in secondaries) are **different quantities** and were not placed side by side.
+
+## The retrieval profile is different, as expected
+
+Batch 3's arc C trade dimension ran entirely on UN Comtrade, which answers every bilateral question
+on one query shape. Policy primaries have no equivalent: MEA's bilateral briefs are the nearest
+thing to a canonical source and they are **periodic snapshots, not a series** — the most recent
+retrieved carries content over eighteen months old, and neither names the arrangement most in
+dispute. This is a finding about the source class and it applies to every country in this arc.
+
+## Carried rules invoked
+
+Rule 3 (a 200 serving HTML is not a PDF retrieval) · rule 5d (an absence not localised is not a
+finding) · stop condition 1 scoped to the record · M1 (cea.nic.in retried with an explicit resolver
+before any conclusion) · incommensurability (import flow against plant capacity, not compared).
