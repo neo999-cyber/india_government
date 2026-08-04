@@ -63,6 +63,9 @@ const RESPONSES = arg('--responses', null);
 // A drop has no base to diff against — every URL in it is new. Asking for a diff would silently
 // check nothing, which is the exact failure this mode exists to close.
 const CHECK_ALL = has('--all') || Boolean(DROP);
+// Per-URL lines only when asked or when something failed. The selftest drives this with --verbose
+// because it asserts on the content-type strings of a PASSING run.
+const VERBOSE = has('--verbose');
 
 // ---------------------------------------------------------------- schema-derived URL paths
 /**
@@ -381,7 +384,7 @@ for (const url of targets) {
   const r = recorded ? (recorded[url] ?? { status: 0, contentType: '' }) : probe(url);
   const ctypeBad = want && r.status === 200 && !(r.contentType || '').includes(want.split('/')[1] ?? want);
   if (r.status === 200 && !ctypeBad) {
-    console.log(`  ok  ${r.status} ${r.contentType || '-'}${r.viaResolver ? ' (via 1.1.1.1)' : ''}  ${url}`);
+    if (VERBOSE) console.log(`  ok  ${r.status} ${r.contentType || '-'}${r.viaResolver ? ' (via 1.1.1.1)' : ''}  ${url}`);
   } else if (UNVERIFIABLE(r.status)) {
     unverifiable.push({ url, where, ...r });
   } else {

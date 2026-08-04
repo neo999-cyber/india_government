@@ -39,6 +39,7 @@ const arg = (name, fallback) => {
   const i = argv.indexOf(name);
   return i === -1 ? fallback : argv[i + 1];
 };
+const VERBOSE = process.argv.includes('--verbose');
 const DATA_DIR = arg('--data', join(ROOT, 'data'));
 const OUT_DIR = arg('--out', join(ROOT, 'out'));
 
@@ -213,4 +214,4 @@ if (missing.length > 0) {
 }
 
 console.log(`reachability OK — ${checked}/${checked} declared marks reachable on their own record page (${pages.length} pages scanned)`);
-console.log(`  ${summary}`);
+if (VERBOSE) console.log(`  ${summary}`);

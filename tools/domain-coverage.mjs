@@ -52,6 +52,7 @@ const arg = (name, fallback) => {
   const i = argv.indexOf(name);
   return i === -1 ? fallback : argv[i + 1];
 };
+const VERBOSE = process.argv.includes('--verbose');
 const DATA_DIR = arg('--data', join(ROOT, 'data'));
 const OUT_DIR = arg('--out', join(ROOT, 'out'));
 const SCHEMAS_DIR = join(ROOT, 'schemas');
@@ -365,8 +366,8 @@ console.log(
     `${counts.indexed.got}/${counts.indexed.want} linked from the index, ` +
     `${counts.records.got}/${counts.records.want} record-to-surface references reachable`,
 );
-console.log(
+if (VERBOSE) console.log(
   `  lens surfaces ${counts.lenses.got}/${counts.lenses.want} built and linked, ` +
     `${counts.lensRecords.got}/${counts.lensRecords.want} record-to-lens references reachable`,
 );
-console.log(`  domains ${DOMAINS.length} (union of 4 schemas) · lenses ${LENSES.length} (union of 3): ${LENSES.join(', ')}`);
+if (VERBOSE) console.log(`  domains ${DOMAINS.length} (union of 4 schemas) · lenses ${LENSES.length} (union of 3): ${LENSES.join(', ')}`);
