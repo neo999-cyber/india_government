@@ -39,6 +39,156 @@ Caught in cycle 2026-08-04o. L-0200 said same-publisher divergence had "no equiv
 8. **Counterfactual views show both methods** (UPA-trend extrapolation AND peer-index normalisation, 2014=100) and show endpoint sensitivity for trend fits. No composite score of any kind, ever.
 9. **English only; no title counts** — n/a here, but: no aggregate "verdict number" for a term or for the government. Scorecards roll up to counts of assessments, not to a grade.
 
+## Research and verification discipline
+
+Every rule here was earned by a defect that got through. None is a precaution against something
+imagined. **A rule earned mid-batch is written into this file in the same commit that earns it** —
+otherwise it lives only in a verification-log entry and in the head of whoever was working, and the
+next cycle silently drops it. A phase-14 audit found 23 of 28 standing rules present nowhere but the
+log.
+
+**Rule 1 — read at the moment of quoting.** Record text is read from `/data` in the same operation
+that quotes or edits it. Never reconstructed from memory, never carried forward from an earlier
+read. Anchor every prose edit on a string read in that operation and abort if the string is absent.
+Detect indentation from the file being written; do not assume it.
+
+**Rule 3 — a document is a source only if it was retrieved in this run.** An unretrieved URL is not
+a source. **A 200 serving a JavaScript shell is not a retrieval** — check that the body contains the
+document, not just that the request succeeded. **OCR output is not the document**: it may locate a
+passage, but a quote drawn from it is tiered as OCR, not as the instrument.
+
+**M1 — a reachability failure is retested from a second process, with both resolver and client
+varied, before it is recorded as an environment fact.** Expect a meaningful fraction of URLs to need
+the fallback. Known environment facts, not to be re-derived: `mod.gov.in` and `ddpmod.gov.in`
+resolve and refuse port 443; `pca-cpa.org` is Cloudflare-gated; `mea.gov.in` serves a JS shell;
+`federalregister.gov` CAPTCHAs full-text endpoints while its API works. Hosts needing an explicit
+resolver: `ppac.gov.in` 164.100.198.160, `mea.gov.in` 13.224.236.14, `www.pib.gov.in` 94.202.207.57.
+
+**M2 — a write is verified by diffing `/data`, never by the writer's own count.** Declare the
+expected diff shape before the edit — keys added, line delta — and abort on mismatch. A non-zero
+report with an empty or wrong diff is a failure, not a success. **A JSON round-trip is not a safe
+way to edit a file whose formatting you did not choose**: four whole-file reformats were caught this
+way, each reported clean by the script that caused it.
+
+**Assert per record, never sweep.** A keyword or pattern search generates CANDIDATES; the judgement
+is made per record and written down per record. Three substring sweeps in one phase produced 59, 197
+and 7 false candidates respectively. **Word boundaries are the default** in corpus search
+(`tools/lib/corpus-search.mjs`); `substring: true` is the explicit, reviewable opt-out.
+
+**Observe the effect, do not match the spelling.** Where a property can be observed, observe it. A
+static scan for `writeFileSync` missed the only mutating gate because it shelled out to `touch`; a
+grep for top-level `build()` calls would encode a belief about how a side effect looks. Import the
+module and look at the disk.
+
+**Every negative control needs a same-form positive that passes THROUGH the restriction the negative
+depends on.** A check reporting clean with no positive beside it proves the needle absent, not the
+search working. If the negative depends on "mentions China", the positive must also mention China.
+
+**Every zero result is confirmed by relaxing one restriction at a time until it goes non-zero — the
+restriction that flips it is the finding.** A zero that stays zero under full relaxation is the only
+citable zero. Record which relaxation flipped it.
+
+**No new bare-domain roots.** Deep-link every source. T1 on a bare root is worse than T4: it asserts
+primary strength for a citation that retrieves nothing. Partner-side and multilateral sources are as
+citable as domestic ones and often more retrievable — tier them honestly, by the document actually
+retrieved rather than the institution behind it.
+
+**A publication choice is not a retrieval failure.** The test: could a better retrieval technique
+produce the figure? For a Cloudflare gate, a JS shell, a textless scan or a refused port — yes in
+principle; the document exists and the channel failed, and that is retrieval-capability material.
+Where the documents retrieve perfectly and the content simply was not published, it is ordinary
+corpus material and belongs to its subject arc.
+
+## Gate discipline
+
+**Gates that read built output refuse to run against a stale build** (exit 2), and exit 2
+distinguishes "no build" from "stale build" — both used to land in one silent-skip branch. The
+direction that matters is the false PASS: a gate reading the previous build finds every mark it
+already knew about and reports clean, and nothing in the output distinguishes that from a real pass.
+
+**Every fixture asserts the specific failure it tests for — the branch, the message — never merely
+that a failure occurred.** Two lens fixtures asserted exit 1, got exit 1, and tested the wrong branch
+for two cycles while the selftest reported green.
+
+**Generated fixtures carry `GENERATED-FROM.json` and the selftest fails on enum drift**, naming
+`npm run regen:lens-fixtures` as the fix. A discipline requirement is what M2 and build-freshness
+exist to replace.
+
+**A failing check, re-run with no fix applied, must still fail.** Both assertions are required: a
+fast self-repair heals before the check runs and fails assertion one; a lazy self-repair passes run
+one and fails run two. **No checker imports from its own repair path** — asserted by importing each
+library in a child process and requiring the fixture tree to be byte-identical afterwards.
+
+**Any gate asserting a property of a field cites the schema.** If the property is not in the schema,
+either put it there or drop the assertion.
+
+**Do not pipe gates** — an exit code does not survive a pipe. And a structural check passes on a
+stub: structure passing is not content passing.
+
+**`figure-consistency`** checks declared arithmetic claims against BOTH their source values and their
+printed operands. A non-reconstructing figure must be declared, not merely correct. The claims file's
+own source values are checked, not typed from memory. Separators are normalised.
+
+**The gate list, run in full every cycle:** `validate` · `typecheck` · `validate:selftest` ·
+`reachability` · `domain-coverage` (which carries `lens-empty`) · `figure-consistency` ·
+`enum-stamp` · `url-check` on `/data`. Plus an arithmetic hand-check of every derived figure
+including internal consistency, a check that every declared lens returns a non-empty and correct
+set, and zero forward references between `parts/` files.
+
+## Authoring conventions
+
+**The four measurement categories.** A record must say which it is:
+
+1. **`differentFacts` pair** — two instruments measuring the SAME quantity and disagreeing. Both
+   sides retrieved, same period and basis, methodological reason stated where known. Never averaged,
+   never picked. (P-119, India-China trade.)
+2. **Single-sided** — one party publishes and the other does not. Not a pair; the absence is the
+   finding, localised by relaxation before it is recorded. (L-0191.)
+3. **Incommensurable** — instruments measuring DIFFERENT quantities. Not a dispute and not an
+   absence. No conversion, no side-by-side placement. **Agreement between them is as unsound as
+   disagreement and reviews clean** — "SIPRI broadly confirms the trend" is the same category error
+   wearing a friendlier face. (L-0197, TIV against rupees against HS 93.)
+4. **Mutually declined** — BOTH parties decline the same quantity, and differently. Not a pair
+   (neither gives a conflicting figure), not the single-sided case (both withhold). Record the
+   absences separately with their own `reasonKind`: `withheld` where there is an identifiable
+   refusal to a specific request, `not-published` where release is simply absent. (L-0202, the S-400
+   delivery schedule: `withheld` on the Russian side, `not-published` on the Indian.)
+
+**Share-shaped figures name their numerator and denominator.** If either is unstated in the source,
+that is the finding — do not infer the obvious one. Three distinct quantities shared the word
+"indigenisation" in one ministry's publications.
+
+**Commitment states.** Every commitment record resolves into one, stated rather than implied:
+**(a)** not yet due — the trigger date or condition, named; **(b)** due and undelivered — the date
+passed, with evidence of non-delivery; **(c)** abandoned — evidence of abandonment. **Absence of news
+is not (c).** A commitment whose source names no due date cannot leave (a) by the passage of time
+alone, and the record says so rather than inventing a trigger.
+
+**Procurement filing rule, settled.** Acquisition cost, capital-budget share, payment schedule and
+escalation file `macro`; indigenisation share, offsets, exports and DAP domestic content file
+`foreign`; a G2G deal read as a diplomatic instrument files `foreign`. The `defence-sector` lens goes
+on all of them; counterparty lenses where the record is genuinely about the relationship. `defence`
+as a DOMAIN remains armed conflict and counter-insurgency, per phase 11.
+
+**A lens is admitted when its records land, not when it is planned**, and only where the instrument
+holds a FILE — several records read together because the counterparty is itself the policy object. A
+lens over one record is a filter that returns what the reader already had.
+
+## Phase stop conditions
+
+Distinct from the code-session stops in Build workflow below. A phase run halts, reports and waits
+only for:
+
+1. A source that cannot be retrieved and that a record materially depends on — scoped to that
+   record's file, not to its arc.
+2. A lens or enum change requiring a new principle rather than an application of an existing one.
+3. A gate failure surviving two independent reproductions per M1.
+4. Anything requiring a phase 11 or 13 record's SUBSTANCE to change. Lens additions are not
+   substance and do not stop.
+
+Room is a real constraint and is not a stop condition. **A clean partial beats thin records** — close
+what is done, state what is not, and say whether it was attempted.
+
 ## Build workflow
 - Run phases autonomously: plan → apply → self-verify → commit → push.
 - Stop only for: (a) new security surface — new routes serving user data, auth changes, anything beyond static rendering; (b) destructive/irreversible actions — deleting data files, force-pushes, history rewrites.

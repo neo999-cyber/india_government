@@ -44,54 +44,113 @@ done here.
 
 ## NOT DONE — the live backlog
 
-1. **Arc E remainder — STILL OPEN, two files.** Done: exports vs target (L-0196), the
-   measurement-category record (L-0197), the indigenisation metric (L-0198), CAATSA exposure
-   (L-0199), emergency procurement (L-0200), Rafale-M (L-0201). **Not done:**
-   - ~~The S-400 delivery schedule~~ — **DONE, L-0202.** Arc ownership settled: a publication
-     choice is not a retrieval failure, so arc E owns it. The mirror check found that the apparent
-     Russian-side source (TASS) traces back to Indian press sourcing, and that a genuine
-     partner-government statement exists and REFUSES the quantity — so the record carries two
-     absences with different reasonKinds, `withheld` on the Russian side and `not-published` on the
-     Indian.
-   - **Rafale's earlier tranche.** L-0201 covers the April 2025 Navy IGA only, and says so in its
-     own caveat. The Air Force acquisition has no retrieved primary.
-   - **DAP domestic-content rules beyond the IC minimums** — offsets, positive indigenisation lists,
-     and what the lists actually bind.
+Every item states WHAT it is, WHY it is deferred, and WHAT IT DEPENDS ON, so it can be started cold
+without this conversation. Carried rules are in CLAUDE.md, not here.
 
-   `defence-sector` is at eighteen records. Filing rule settled.
+### 1. Arc E remainder — two files
 
-   **Retrieval note:** `www.mod.gov.in` and `www.ddpmod.gov.in` RESOLVE (164.100.252.190,
-   164.100.94.167) and REFUSE on port 443 — recorded as an environment fact, do not re-derive. PIB
-   is the working route; pin `www.pib.gov.in:443:94.202.207.57`. The MoD **Year End Review**
-   (PRID 2210154) is a single 654k-character document covering acquisitions, exports, diplomacy and
-   indigenisation — the highest-yield single retrieval found in this arc.
+- **Rafale's earlier tranche (the Air Force acquisition).** L-0201 covers the April 2025 Navy IGA
+  for 26 aircraft only and says so in its own caveat. *Why deferred:* no primary for the earlier
+  acquisition was retrieved, and it is not described on the strength of a 2025 document that
+  mentions the existing fleet without stating its terms. *Depends on:* a retrievable primary for the
+  original contract — try PIB releases from 2016 and the CAG audit of the acquisition, which was
+  tabled in Parliament. `mod.gov.in` is unreachable (see retrieval facts in CLAUDE.md), so PIB and
+  cag.gov.in are the routes.
+- **DAP domestic-content rules beyond the IC minimums** — offsets, positive indigenisation lists,
+  and what those lists actually bind. *Why deferred:* not attempted; room. *Depends on:* the DAP
+  chapter text, which is on `mod.gov.in` and therefore unreachable — the working substitute is the
+  PIB release announcing DAP 2020 (PRID 1659746), which carried the IC table and calculation basis
+  and may carry the offsets material too. Check that before concluding a primary is needed.
 
-2. **Arc D remainder.** UK FTA, EU negotiation, RCEP non-entry against trade data. **`europe` is
-   NOT in the enum** and enters with them — one Europe record does not earn a lens. L-0018 still
-   describes four agreements with T4 sources.
-3. **Arc G — multilateral.** G20 deliverables, IMEC announced against built, WTO fisheries and
-   public stockholding, UNSC advocacy. Nothing authored.
-4. **Arc C policy dimensions.** Adani PPA, Sri Lankan debt, Maldives swap, hydropower, FMR.
-5. **Pakistan**, deferred on retrieval; exclusion stated in L-0192/L-0193 titles.
-6. **L-0195's baseline question** — check whether the 10 March 2026 release or the underlying speech
-   names a base year for the doubling claim. If one exists the claim becomes testable and the
-   `contested` score changes.
-7. **The retrieval-capability cycle — WANTS ITS OWN SCOPING SESSION, not a slot at the end of a
-   batch.** Five distinct failure modes are now attested:
-   1. Cloudflare gating — `pca-cpa.org` (403 from two clients)
-   2. JS shells answering 200 with no document — `mea.gov.in`
-   3. Scans with no text layer — the Indus Waters Treaty PDF on MEA's portal
-   4. A resolving host refusing 443 — `www.mod.gov.in`, `www.ddpmod.gov.in`
-   5. The carried Gazette task
+Arc E is otherwise complete: L-0196 exports vs target · L-0197 measurement categories · L-0198
+indigenisation · L-0199 CAATSA · L-0200 emergency procurement · L-0201 Rafale-M · L-0202 the S-400
+schedule. `defence-sector` is at nineteen records.
 
-   Hosts needing an explicit resolver are a sixth, milder mode and are already worked around:
-   `ppac.gov.in` 164.100.198.160, `mea.gov.in` 13.224.236.14, `www.pib.gov.in` 94.202.207.57.
-   `federalregister.gov` CAPTCHAs its full-text endpoints while its API works.
+### 2. Arc D remainder — UK FTA, the EU negotiation, RCEP non-entry against subsequent trade data
 
-   **Its output is TWO things, and the second is corpus material in its own right:** retrieval where
-   possible, and a documented account of what the Indian government publishes that cannot be
-   retrieved by ordinary means. The second is a finding about the publication regime, not a
-   housekeeping note, and it belongs in the instrument rather than in a tooling log.
+*Why deferred:* room. Arc D was closed as a clean partial after TEPA's investment commitment
+(L-0194) and the doubling claim (L-0195). Nothing about these three was attempted, so nothing failed.
+*Depends on:* nothing blocking. PIB and UN Comtrade both retrieve and are sufficient — Comtrade
+gives the trade data RCEP non-entry is to be tested against, on the same query shape used in
+L-0192/L-0195. *Also:* **`europe` is NOT in the lens enum and enters with these records**, since one
+Europe record does not earn a lens. Admitting it means editing three schemas, `lib/types.ts` and
+`lib/format.ts`, and re-running `npm run regen:lens-fixtures` in the same commit — the selftest will
+fail on enum drift if that is forgotten. **L-0018 (RCEP withdrawal) is the collision:** it already
+describes four agreements' status on T4 sources and is arc D's to correct or leave.
+
+### 3. Arc G — multilateral
+
+G20 presidency deliverables against outcomes · IMEC announced against built · WTO positions
+(fisheries subsidies, public stockholding) · UNSC seat advocacy · Global South framing against
+measurable programme delivery. *Why deferred:* room; never opened. *Depends on:* nothing blocking.
+PIB carries the G20 and IMEC material; the WTO's own site was not tested and is the one unknown.
+Expect the commitment-state discipline to carry most of the weight — this arc is dense with
+announced-but-undelivered material, which is what states (a)/(b)/(c) exist for.
+
+### 4. Arc C policy dimensions
+
+Bangladesh transit, energy and the Adani PPA · Sri Lankan debt restructuring, energy and ports · the
+Maldives reversal arc, currency swap and infrastructure · Nepal-Bhutan hydropower and power trade ·
+Myanmar border fencing and the Free Movement Regime. *Why deferred:* arc C's TRADE dimension was
+authored (L-0192, L-0193) and its policy dimensions were not — **they need policy primaries rather
+than trade returns, which is a different source class with a different failure profile.**
+*Depends on:* PIB (confirmed working) and RBI press releases (confirmed working, and the route for
+the Maldives currency swap). IMF country pages return 403. Comtrade will not help here.
+
+### 5. Pakistan — deferred on retrieval, and the blockage is specific
+
+The Indus Waters Treaty abeyance, the trade suspension and transit closure. *Why deferred:* **its
+central record's primaries fail across three clients** — the Permanent Court of Arbitration
+(`pca-cpa.org`) is Cloudflare-gated and returned 403 to two independent clients; the MEA special
+briefing of 23 April 2025 at which the abeyance was announced returns HTTP 200 with 82KB of page
+chrome and no transcript body, because it loads by JavaScript; and the Indus Waters Treaty PDF on
+MEA's own legal-treaties portal is a 5MB scan with no text layer, 113 bytes of extractable text. So
+the treaty instrument is citable and NOT quotable. *Depends on:* the retrieval-capability cycle
+(item 7), or a route to any of those three documents. Pakistan's exclusion is stated in the titles of
+L-0192 and L-0193 rather than left as a silent gap in a set called "the neighbourhood".
+
+### 6. L-0195's baseline question
+
+The Prime Minister's claim that merchandise trade with Australia and the UAE "has doubled since the
+signing" is scored `contested` because it holds on a CY2020 base (x2.26, x2.21) and fails on both
+years nearest the signings (x1.38/x1.08 against CY2021, x1.11/x0.85 against CY2022). *Why deferred:*
+the claim names no baseline and none was found. *Depends on:* checking whether the 10 March 2026 PIB
+release (PRID 2237451) or the underlying speech names a base year anywhere. **If one exists the claim
+becomes testable and the score changes** — this is a small, bounded, high-value check.
+
+### 7. The retrieval-capability cycle — wants its own scoping session
+
+*Why deferred:* it is not a slot at the end of a batch. Five distinct failure modes are attested:
+(1) Cloudflare gating — `pca-cpa.org`; (2) JS shells answering 200 with no document — `mea.gov.in`;
+(3) scans with no text layer — the Indus Waters Treaty PDF; (4) a resolving host refusing 443 —
+`mod.gov.in`, `ddpmod.gov.in`; (5) the carried Gazette task. A sixth, milder mode is already worked
+around: hosts needing an explicit resolver (pins in CLAUDE.md).
+
+**Its output is TWO things and the second is corpus material in its own right:** retrieval where
+possible, and a documented account of what the Indian government publishes that cannot be retrieved
+by ordinary means. The second is a finding about the publication regime, not a housekeeping note.
+
+### 8. Rule 5c's corpus-wide sweep — belongs to the assessment audit
+
+*What:* every derived quantity whose numerator or denominator appears in a `differentFacts` pair
+must carry the divergence as an attributed range. *Why deferred here:* L-0200 was the first
+identified instance and was corrected in cycle 2026-08-04o; the sweep was deliberately NOT run in
+that cycle so the audit's finding rate is not contaminated by a partial pass. *Depends on:* the
+assessment audit being scheduled.
+
+### 9. Per-rule isolated fixture roots
+
+*What:* the 23 `MUST_FIRE` validator rules share one `broken` fixture root, so message pinning stops
+a rule passing on a phrase it never emits but does NOT isolate records — a rule can still fire on a
+neighbour's seeded violation. *Why deferred:* tedium, not hazard; the needles are distinctive enough
+that it is unlikely rather than impossible. *Depends on:* nothing.
+
+### 10. L-0200's `partly` score has a retrievable test
+
+*What:* the DAC delegation undertook order placement within six months of a case being progressed.
+Thirteen contracts exist under it. **Contract signature dates may be retrievable** and would bear
+directly on that limb, which is currently unmeasured. *Why deferred:* not attempted. *Depends on:*
+a source giving per-contract signature dates — MoD contract announcements or a Parliamentary answer.
 
 ## Harness state after B5 — what is now mechanical rather than remembered
 
