@@ -621,5 +621,104 @@
         "confidence": "high",
         "asOf": "2026-08-04",
         "revisitTrigger": "Re-test if India begins reporting values to the UN Register of Conventional Arms, or if an importing state publishes what it paid. Either would create a genuine currency-basis counterpart on the Ministry's own scope, and this record would then have a differentFacts pair beside it rather than standing alone as a statement about incommensurability."
+    },
+    {
+        "id": "L-0198",
+        "title": "Three quantities are called indigenisation: one has a defined formula, one is a production total, and the headline share has no stated basis at all",
+        "date": "2020-09-28",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "macro"
+        ],
+        "lenses": [
+            "defence-sector"
+        ],
+        "type": "reform",
+        "summary": "Defence Acquisition Procedure 2020 raised the minimum indigenous content required in each acquisition category and — this is the part usually left out — fixed how it is measured: \"IC will now be calculated on 'Base Contract Price' i.e. Total Contract Price less taxes & duties\". The minimums are Buy (Indian-IDDM) 50 per cent, up from 40; Buy (Indian) 50 per cent where the design is indigenous and 60 otherwise, up from 40; Buy & Make (Indian) 50 per cent of the Make portion; Buy (Global – Manufacture in India) 50 per cent of Buy plus Make; Buy (Global) 30 per cent for Indian vendors. Separately, the Ministry reports indigenous defence production rising from ₹46,429 crore in FY2014-15 to ₹1.78 lakh crore in FY2025-26, and states that \"nearly 65% of defence equipment is now produced domestically, compared to import dependence of 65–70% earlier\".",
+        "claimAtLaunch": "That raising the indigenous-content minimums across categories, with a verification process and a stated calculation basis, would shift procurement toward domestic design and manufacture.",
+        "whatHappened": "The basis for the CONTRACTUAL measure is defined and published, and this record says so plainly because a defined basis is worth recording as clearly as a missing one. The two figures usually quoted alongside it are different quantities. Indigenous production is a value aggregate, not a contractual share, and nothing in it is computed on Base Contract Price. The \"nearly 65 per cent\" is a share of \"defence equipment\", and no basis is stated for it anywhere retrieved here: not whether it is by value or by count, not whether the population is annual procurement or the standing inventory, and not what date \"earlier\" refers to in the 65-70 per cent it is compared against.",
+        "assessment": "partly",
+        "assessmentNote": "Partly, and the split is between the two halves of the same reform. The measurement half worked: DAP 2020 set category minimums and fixed the calculation basis, and both are published and checkable. The reporting half did not follow: the figures the Ministry leads with are a production total and an unattributed equipment share, neither computed on the basis DAP defines, so the reform's own metric is not the one the public sees. Scored against the objective stated at announcement — a shift toward domestic design and manufacture, measured by indigenous content — which is testable in principle precisely because DAP defined it.",
+        "caseFor": "The government did the hard part and did it explicitly. An indigenous-content rule is worthless without a formula, because every vendor would compute it differently and no bid would be comparable; DAP 2020 states the denominator, excludes taxes and duties so tax changes cannot move the number, and instituted a verification process. The category minimums rose by ten points across the board on a published table with the old and new figures side by side, which is an auditable commitment rather than a slogan. And the direction is not in doubt: production up from ₹46,429 crore to roughly 3.8 times that in eleven years is a real change in domestic output whatever share it represents.",
+        "caseAgainst": "The number that governs procurement and the number that is published are not the same number, and only the second is ever quoted. \"Nearly 65 per cent of defence equipment produced domestically\" is the sentence that circulates, and it has no stated denominator, no stated population and no date for the baseline it improves on — so it cannot be checked, cannot be reproduced, and cannot be compared with the DAP figure it is taken to vindicate. A production total rising is consistent with the indigenous share falling if procurement rose faster, and nothing published lets a reader rule that out. The reform defined a metric and then reported against a different one.",
+        "differentFacts": false,
+        "differentFactsNote": "Not a dispute: one government publishes all three figures and no one contradicts them. The relation between them is the incommensurability case — a per-contract contractual floor, a production aggregate and an equipment share are three different quantities, and the record's point is that they are read as one. NOTHING HERE IS PLACED SIDE BY SIDE AS CORROBORATION: that the production total rose while the DAP minimums rose is not evidence that the minimums are being met, and treating it as such is the same category error as reading a divergence between them as evidence of failure.",
+        "unmeasured": [
+            {
+                "what": "The basis of the \"nearly 65 per cent of defence equipment produced domestically\" figure",
+                "why": "No denominator, population or baseline date is stated for it in anything retrieved here. By value or by count, of annual procurement or of standing inventory, and against what year — each choice gives a different number, and the figure is quoted as though it were one quantity.",
+                "wouldFill": "A Ministry of Defence or Department of Defence Production statement of the series definition, or a Parliamentary answer giving the numerator and denominator.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "Realised indigenous content against the DAP category minimums, aggregated across contracts",
+                "why": "DAP defines how IC is computed per contract and instituted verification, but no aggregate of verified IC across signed contracts is published. Without it, the minimums are known to be contractual conditions and not known to be outcomes.",
+                "wouldFill": "An aggregate of verified indigenous content by acquisition category from the Department of Defence Production, or a CAG audit of IC verification.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "caveat": "\"1.78 lakh crore\" is stated to three significant figures while ₹46,429 crore is exact, so their ratio is determined only to about 3.82-3.84 and is written here as \"roughly 3.8 times\" rather than to more places than the source supports.",
+        "sources": [
+            {
+                "name": "Ministry of Defence, \"Raksha Mantri Shri Rajnath Singh unveils Defence Acquisition Procedure – 2020\", PIB, 28 September 2020 — the category minimums table and \"IC will now be calculated on 'Base Contract Price' i.e. Total Contract Price less taxes & duties\"",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1659746",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Defence, \"The Defence Decade\", PIB, 17 June 2026 — indigenous production ₹46,429 crore to ₹1.78 lakh crore, and \"Nearly 65% of defence equipment is now produced domestically, compared to import dependence of 65–70% earlier\"",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2273854",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-04",
+        "revisitTrigger": "Re-test if the basis of the 65 per cent figure is ever stated, or if an aggregate of verified indigenous content is published. The first would make the headline checkable; the second would make the reform's own metric testable as an outcome rather than a condition."
+    },
+    {
+        "id": "L-0199",
+        "title": "India has not been sanctioned under CAATSA for the S-400, and that is not the same as having been waived — the statute distinguishes three states and the public record separates only one",
+        "date": "2017-08-02",
+        "term": "T3",
+        "domains": [
+            "foreign"
+        ],
+        "lenses": [
+            "defence-sector",
+            "united-states",
+            "russia"
+        ],
+        "type": "institutional",
+        "summary": "Section 231(a) of the Countering America's Adversaries Through Sanctions Act provides that the President \"shall impose five or more of the sanctions described in section 235\" on a person determined to have knowingly engaged in a significant transaction with the Russian defence or intelligence sectors. India contracted for the S-400 in 2018. No sanction has been imposed. The statute makes three different things capable of producing that outcome, each with its own instrument: no determination under (a); a waiver under (b); or a delay under (c). Only the first would necessarily be visible from outside.",
+        "whatHappened": "The three states, as the statute defines them. (a) NO DETERMINATION: the duty to sanction arises only once the President determines a significant transaction occurred, and nothing compels that determination to be made or announced. (b) WAIVER — and its conditions are the striking part: a waiver requires the President to submit to congressional committees both a written determination that it is in the vital national security interests of the United States or will further enforcement, AND \"a certification that the Government of the Russian Federation has made significant efforts to reduce the number and intensity of cyber intrusions conducted by that Government\". That second condition is a finding about RUSSIA, not about India, so a waiver for India turns on a judgement India cannot influence. (c) DELAY: available if the President certifies to the committees, not less frequently than every 180 days, that the person is substantially reducing its significant transactions.",
+        "assessment": "no-objective",
+        "assessmentNote": "Not an Indian measure and not scorable as one — CAATSA is a United States statute with a United States objective. Recorded because the sentence \"India got a CAATSA waiver\" is common and, on everything retrieved here, unsupported: no waiver instrument has been located, and the absence of sanctions is not one.",
+        "caseFor": "Nothing has happened to India under this statute in eight years, through two administrations and after the S-400 deliveries began, and at some point a consistent non-event is evidence about intent even without an instrument. The strategic reasoning is not hidden either: sanctioning India would be an unusual way to pursue an Indo-Pacific partnership. A reader who wants to know whether India faces CAATSA exposure in practice has a reasonable answer, which is that it has not materialised.",
+        "caseAgainst": "An unexercised discretion is not a waiver and does not have a waiver's properties. A waiver under (b) is an instrument with a date, conditions and a submission to Congress; no determination under (a) is simply a decision not yet taken, and it can be taken later on the same facts, because the transaction does not expire. Collapsing the two turns a standing exposure into a settled question. The statutory language is mandatory once the determination is made — \"shall impose five or more\" — so the whole of India's protection lies in a determination not being made, which nothing published constrains.",
+        "differentFacts": false,
+        "differentFactsNote": "No competing accounts of any fact. The disagreement in commentary is about what the absence of a sanction MEANS, and both readings accept that no sanction has been imposed and that no waiver instrument is public.",
+        "unmeasured": [
+            {
+                "what": "Whether a section 231(b) waiver or a section 231(c) delay has been issued in respect of India",
+                "why": "Both are submissions to congressional committees rather than public actions, so their absence from the public record does not establish that they were not made. The absence CAN be established for the sanctions action itself: a determination under (a) followed by sanctions produces a published Federal Register notice, as the Department of State's notice of 7 April 2021 shows for Turkey's Presidency of Defense Industries, and a search of the Federal Register for CAATSA documents naming India returns nothing of that kind. The positive control is that same Turkey notice — the mechanism does produce a published instrument when it is used, so its absence for India is informative about sanctions and silent about waivers.",
+                "wouldFill": "A congressional committee record of a submission under section 231(b) or (c) naming India, or a Presidential determination published under Executive Order 13849.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "sources": [
+            {
+                "name": "Countering America's Adversaries Through Sanctions Act, Public Law 115-44, section 231 (22 U.S.C. 9525) — subsection (a) mandatory imposition, (b) waiver authority and its Russian-cyber certification condition, (c) delay authority and its 180-day certification",
+                "url": "https://www.govinfo.gov/content/pkg/PLAW-115publ44/html/PLAW-115publ44.htm",
+                "tier": "T1"
+            },
+            {
+                "name": "Department of State, Notice of Department of State Sanctions Actions, 86 FR 18017, 7 April 2021 — the section 231(a) determination and sanctions against Turkey's Presidency of Defense Industries, effective 14 December 2020; cited as the positive control that a determination produces a published instrument",
+                "url": "https://www.govinfo.gov/content/pkg/FR-2021-04-07/html/2021-07048.htm",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-04",
+        "revisitTrigger": "Re-test if a section 231 determination, waiver or delay naming India is published or reported to Congress, or if further Russian-origin acquisitions are contracted. The exposure does not lapse with time: the statute attaches to the transaction, and no determination has been made rather than the possibility having been closed."
     }
 ]

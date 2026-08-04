@@ -129,10 +129,10 @@ const EXPECTED_MEMBERS = {
   // record quietly losing or gaining it fails here rather than changing a filter nobody re-reads.
   'defence-sector': [
     'L-0009', 'L-0110', 'L-0111', 'L-0112', 'L-0113', 'L-0115', 'L-0116', 'L-0117',
-    'L-0119', 'L-0120', 'L-0121', 'L-0122', 'L-0196', 'L-0197',
+    'L-0119', 'L-0120', 'L-0121', 'L-0122', 'L-0196', 'L-0197', 'L-0198', 'L-0199',
   ],
-  'united-states': ['L-0184', 'L-0185', 'L-0186', 'L-0187', 'L-0188', 'L-0189'],
-  russia: ['L-0184', 'L-0189'],
+  'united-states': ['L-0184', 'L-0185', 'L-0186', 'L-0187', 'L-0188', 'L-0189', 'L-0199'],
+  russia: ['L-0184', 'L-0189', 'L-0199'],
   china: ['L-0190', 'L-0191'],
   neighbourhood: ['L-0192', 'L-0193'],
 };
