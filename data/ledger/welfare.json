@@ -210,7 +210,7 @@
   "id": "L-0040",
   "title": "MGNREGA under an inheriting government",
   "date": "2014-05",
-  "dateEnd": "2026-03",
+  "dateEnd": "2026-06-30",
   "term": "T1",
   "domains": [
    "welfare",
@@ -219,16 +219,19 @@
   ],
   "type": "episode",
   "summary": "A statutory employment guarantee enacted in 2005, publicly disparaged by the Prime Minister in February 2015 as a living monument to the previous government's failures, retained and heavily used throughout the period.",
-  "whatHappened": "Person-days totalled roughly 2,923 crore across FY2014-15 to FY2024-25, against about 1,660 crore over the preceding eight years, peaking at a record 389 crore in FY2020-21 when over ₹1.1 trillion was spent and 7.8 crore households completed 100 days. Allocations are chronically set below demand and revised upward mid-year, with wage liabilities carried into the following year. In FY2024-25 funds ran out with a reported ₹9,860 crore deficit by January 2025 and no revised allocation for the first time in five years. The Aadhaar-Based Payment System became compulsory in January 2024 after repeated extensions, and about 1.46 crore workers were net-deleted from job cards in FY2023-24. In FY2024-25 registrations rose 8.6% while employment delivery fell 7.1%. West Bengal's funds have been suspended since 2022.",
+  "whatHappened": "Person-days totalled roughly 2,923 crore across FY2014-15 to FY2024-25, against about 1,660 crore over the preceding eight years, peaking at a record 389 crore in FY2020-21 when over ₹1.1 trillion was spent and 7.8 crore households completed 100 days. Allocations are chronically set below demand and revised upward mid-year, with wage liabilities carried into the following year. In FY2024-25 funds ran out with a reported ₹9,860 crore deficit by January 2025 and no revised allocation for the first time in five years. The Aadhaar-Based Payment System became compulsory in January 2024 after repeated extensions, and about 1.46 crore workers were net-deleted from job cards in FY2023-24. In FY2024-25 registrations rose 8.6% while employment delivery fell 7.1%. West Bengal's funds were stopped in March 2022 and remained stopped for more than four years (L-0168). The Act was repealed with effect from 1 July 2026 by the Viksit Bharat - Guarantee for Rozgar and Ajeevika Mission (Gramin) Act 2025, Act No. 36 of 2025: the unskilled wage moves from 100 per cent Central under section 22(1)(a) to a 60:40 split, and the fund-stopping power used against West Bengal carries forward near-verbatim as section 29 (L-0169).",
   "assessment": "contested",
   "caseFor": "The government retained, funded and scaled a scheme it inherited and had publicly criticised, and when the pandemic hit it absorbed the returning migrant workforce at a scale nothing else could have. Total person-days over the period substantially exceed the previous government's record. Aadhaar-based payment and digital attendance address real and long-documented problems of ghost workers and muster-roll fraud, and some deletions removed genuinely ineligible records.",
-  "caseAgainst": "A demand-driven legal guarantee cannot be budget-capped without being rationed, and the pattern here is systematic: allocations below demand, mid-year exhaustion, wages paid late in breach of the statutory fifteen-day rule, and liabilities pushed into the next year. Registrations rising while delivery falls is the signature of suppressed rather than absent demand. Deleting 1.46 crore workers in a single year through an authentication mandate is exclusion operating as administration, and suspending an entire state's funds for four years turns a statutory entitlement into a discretionary transfer.",
+  "caseAgainst": "A demand-driven legal guarantee cannot be budget-capped without being rationed, and the pattern here is systematic: allocations below demand, mid-year exhaustion, wages paid late in breach of the statutory fifteen-day rule, and liabilities pushed into the next year. Registrations rising while delivery falls is the signature of suppressed rather than absent demand. Deleting 1.46 crore workers in a single year through an authentication mandate is exclusion operating as administration, and suspending an entire state's funds for more than four years turned a statutory entitlement into a discretionary transfer.",
   "shockExposure": "COVID drove the FY2020-21 record and makes the subsequent decline ambiguous between normalising demand and administrative suppression — which is precisely why the registrations-versus-delivery divergence matters as evidence.",
   "seriesRefs": [
-   "mgnrega-persondays"
+   "mgnrega-persondays",
+   "wb-mgnrega-funds-released",
+   "bihar-mgnrega-funds-released"
   ],
   "provenanceRefs": [
-   "P-28"
+   "P-28",
+   "P-114"
   ],
   "sources": [
    {
@@ -237,7 +240,7 @@
     "tier": "T4"
    }
   ],
-  "confidence": "high",
+  "confidence": "medium",
   "asOf": "2026-07-31",
   "unmeasured": [
    {
@@ -246,7 +249,9 @@
     "wouldFill": "Independent demand surveys; LibTech's registration-versus-delivery divergence is the closest available proxy",
     "reasonKind": "not-collected"
    }
-  ]
+  ],
+  "caveat": "The figures in this record cannot be checked against its citation. The sole source is the root of libtech.in, not a document: on 2026-08-04 the host served 200 and its reports-and-trackers index listed only state-level reports (Andhra Pradesh, Telangana, Jharkhand), most of them from 2020-21, none of them a national report and none carrying the aggregates stated here - the eleven-year person-day total, the FY2024-25 deficit, the job-card deletions, or the registrations-against-delivery divergence. The Ministry's own MIS at nregarep2.nic.in is reachable but its national at-a-glance page carries no person-day series and its dashboard is a script shell. Confidence was lowered from high to medium on that ground: the findings are not disputed by anything retrieved, but they rest on a citation that cannot be opened to the page that would support them.",
+  "revisitTrigger": "The first full year of the Viksit Bharat - Guarantee for Rozgar and Ajeevika Mission (Gramin) scheme, FY2027-28, is the first period on which the successor can be assessed on its own terms rather than against what it replaced."
  },
  {
   "id": "L-0041",
