@@ -45,7 +45,11 @@ Every rule here was earned by a defect that got through. None is a precaution ag
 imagined. **A rule earned mid-batch is written into this file in the same commit that earns it** —
 otherwise it lives only in a verification-log entry and in the head of whoever was working, and the
 next cycle silently drops it. A phase-14 audit found 23 of 28 standing rules present nowhere but the
-log.
+log. **And a rule that names a tool as the only sanctioned path requires that path to exist at
+the moment the rule is written.** Batch 13 wrote "every scan of retrieved text goes through the
+corpus-search helper" while the helper could read nothing but `/data` — an unfollowable instruction
+that reads exactly like a control, and would have been cited by a later cycle as though it had held.
+Build the path in the same commit, or write a weaker rule that is true.
 
 **Rule 1 — read at the moment of quoting.** Record text is read from `/data` in the same operation
 that quotes or edits it. Never reconstructed from memory, never carried forward from an earlier
@@ -100,6 +104,25 @@ have produced a POSITIVE finding: a spurious hit in a document checked for an ab
 established absence into a fabricated presence, and nothing downstream would have contradicted it.
 `--substring` remains available and is printed in the output when used, so the opt-out is visible
 rather than silent.
+
+**A zero from a boundary scan is retried with morphological variants before it is banked as an
+absence** — `node tools/scan-text.mjs <file> <term> --variants`, which scans plural, singular and
+hyphenation forms and prints a loud line when the base term scored zero and a variant did not. A
+scan for `Official Creditor` returned 0 on a document reading "Official Creditors' Committee",
+because `\b` after `Creditor` fails on the following `s`; it was caught only because the phrase
+happened to be visible in another term's context window. **Boundaries produce false negatives
+exactly as substring matching produces false positives.** The default stays where it is — a false
+negative costs a missed candidate, a false positive costs a fabricated finding — and the retry is
+what makes the safe default affordable.
+
+**A zero from a document that predates the question is not an absence, and it looks identical in the
+count.** Before recording an absence, check that the document could have contained the thing: a
+series ending January 2023 says nothing about an arrangement that would first appear in 2023-24, and
+a zero from it establishes nothing at all. This is distinct from a CHECKED absence, where the
+document is the natural place, covers the period, and does not carry the item — which is what makes
+`not-published` assertable. Godda is the standing instance: the count has been zero across every
+document scanned in two cycles and no absence has been claimed, because the measured series stops
+before the question becomes answerable.
 
 **Assert per record, never sweep.** A keyword or pattern search generates CANDIDATES; the judgement
 is made per record and written down per record. Three substring sweeps in one phase produced 59, 197

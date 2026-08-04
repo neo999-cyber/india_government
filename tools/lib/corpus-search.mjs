@@ -64,6 +64,41 @@ export function htmlToText(html) {
 }
 
 /**
+ * Morphological variants of a search term — plural, singular, hyphenation.
+ *
+ * WHY. The word-boundary default refuses `Official Creditor` against "Official Creditors'
+ * Committee", because `\b` after `Creditor` fails on the following `s`. That zero was caught only
+ * because the phrase happened to be visible in another term's context window. Boundaries produce
+ * FALSE NEGATIVES exactly as substring matching produces false positives; the defaults are set for
+ * the asymmetry — a false negative costs a missed candidate, a false positive costs a fabricated
+ * finding — and this function is what keeps the safe default from being an expensive one.
+ *
+ * NO POSSESSIVE VARIANT IS GENERATED, and that is not an omission. An apostrophe is a non-word
+ * character, so `\bOfficial Creditors\b` already matches inside "Official Creditors'" and inside
+ * "Official Creditors’" with the curly form. The plural is the variant that was needed; adding a
+ * possessive would generate a term that can never match anything the plural does not.
+ *
+ * Deliberately crude — this is candidate generation, not morphology. It over-produces (an English
+ * plural rule applied to a proper noun yields nonsense that simply scores zero) and that is the
+ * cheap direction to be wrong in.
+ */
+export function variants(term) {
+  const out = new Set([term]);
+  const words = term.trim().split(/\s+/);
+  const last = words[words.length - 1];
+  const swap = (w) => [...words.slice(0, -1), w].join(' ');
+  if (/([sxz]|[cs]h)$/i.test(last)) out.add(swap(`${last}es`));
+  else if (/[^aeiou]y$/i.test(last)) out.add(swap(`${last.slice(0, -1)}ies`));
+  else out.add(swap(`${last}s`));
+  if (/ies$/i.test(last)) out.add(swap(`${last.slice(0, -3)}y`));
+  else if (/(ses|xes|zes|ches|shes)$/i.test(last)) out.add(swap(last.slice(0, -2)));
+  if (/[^s]s$/i.test(last)) out.add(swap(last.slice(0, -1)));
+  if (term.includes(' ')) out.add(term.replace(/\s+/g, '-'));
+  if (term.includes('-')) out.add(term.replace(/-/g, ' '));
+  return [...out];
+}
+
+/**
  * Scan RETRIEVED TEXT — a fetched page, extracted PDF text, anything that is not yet in `/data`.
  *
  * WHY THIS EXISTS SEPARATELY FROM `search`. The boundary default above only ever protected scans

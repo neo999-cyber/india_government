@@ -16,14 +16,17 @@
  *   node tools/scan-text.mjs <file> <term> [term...]        # --html inferred from the extension
  *   node tools/scan-text.mjs page.html 1643 fence fencing
  *   node tools/scan-text.mjs doc.txt tariff --substring     # explicit opt-out, visible in the log
+ *   node tools/scan-text.mjs page.html "Official Creditor" --variants   # retry a zero before banking it
  *   node tools/scan-text.mjs --selftest                     # the Fengal control
  *
- * Flags: --substring (opt out of word boundaries) · --whole (forbid trailing word chars)
+ * Flags: --variants (also scan plural/singular/hyphenation forms — ALWAYS do this before
+ *          recording a zero as an absence; a boundary scan is a false-negative risk by design)
+ *        --substring (opt out of word boundaries) · --whole (forbid trailing word chars)
  *        --case (case-sensitive) · --context N · --max N (contexts printed per term, default 3)
  *        --html / --raw (override the extension-based guess)
  */
 import { readFileSync } from 'node:fs';
-import { htmlToText, scanText } from './lib/corpus-search.mjs';
+import { htmlToText, scanText, variants } from './lib/corpus-search.mjs';
 
 const argv = process.argv.slice(2);
 const flag = (name) => argv.includes(`--${name}`);
@@ -60,12 +63,27 @@ function selftest() {
     failures.push('htmlToText left <script> contents in the scanned text; a scan would see code as prose');
   }
 
+  // The false-NEGATIVE half. The Fengal case above proves boundaries refuse a spurious hit; this
+  // proves the retry recovers the genuine one they also refuse. A scanner with only the first
+  // control is a scanner that is safe and silently lossy.
+  const possessive = 'the Official Creditors\u2019 Committee (OCC) met';
+  if (scanText(possessive, ['Official Creditor'])[0].count !== 0) {
+    failures.push('"Official Creditor" matched a possessive plural without --variants; the boundary default is not applying');
+  }
+  const recovered = variants('Official Creditor').reduce((n, v) => n + scanText(possessive, [v])[0].count, 0);
+  if (recovered !== 1) {
+    failures.push(`--variants recovered ${recovered} hit(s) for "Official Creditor" against "Official Creditors\u2019", expected 1`);
+  }
+
   if (failures.length) {
     console.error('scan-text selftest FAILED');
     for (const f of failures) console.error(`  - ${f}`);
     process.exit(1);
   }
-  console.log('scan-text OK — 4 control(s): "Fengal" refused, substring opt-out proves the scanner fires, real term found, script stripped');
+  console.log(
+    'scan-text OK — 6 control(s): "Fengal" refused, substring opt-out proves the scanner fires, ' +
+      'real term found, script stripped, possessive plural refused by boundaries, --variants recovers it',
+  );
 }
 
 if (flag('selftest')) {
@@ -109,9 +127,25 @@ if (flag('selftest')) {
       `${opts.substring ? 'SUBSTRING (boundaries off)' : 'word boundaries'}${opts.whole ? ' +whole' : ''}` +
       `${opts.caseSensitive ? ', case-sensitive' : ''}`,
   );
-  for (const { term, count, hits } of scanText(text, words, opts)) {
-    console.log(`\n${term}: ${count}`);
-    for (const h of hits.slice(0, max)) console.log(`  @${h.index}  …${h.context}…`);
-    if (hits.length > max) console.log(`  (${hits.length - max} more)`);
+  const useVariants = flag('variants');
+  for (const word of words) {
+    const forms = useVariants ? variants(word) : [word];
+    const results = scanText(text, forms, opts);
+    const total = results.reduce((n, r) => n + r.count, 0);
+    const base = results[0];
+
+    console.log(`\n${word}: ${base.count}${useVariants && forms.length > 1 ? ` (${total} across ${forms.length} forms)` : ''}`);
+    // The whole point of the flag: say loudly when the base term's zero was wrong. A line that
+    // reads the same whether or not a variant rescued the term would leave the author to notice,
+    // which is what failed the first time.
+    if (useVariants && base.count === 0 && total > 0) {
+      console.log('  !! BASE TERM SCORED ZERO BUT A VARIANT DID NOT — do not record this as an absence');
+    }
+    for (const r of results) {
+      if (r.term !== word && r.count === 0) continue;
+      if (r.term !== word) console.log(`  [${r.term}: ${r.count}]`);
+      for (const h of r.hits.slice(0, max)) console.log(`  @${h.index}  …${h.context}…`);
+      if (r.hits.length > max) console.log(`  (${r.hits.length - max} more)`);
+    }
   }
 }
