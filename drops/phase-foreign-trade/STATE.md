@@ -5,7 +5,8 @@ rounding basis, url-check spacing, arc C trade · B4 `7d6c4ec`/`18728fa`/`588f97
 freshness, arc D partial · B5 `6e30c2d`/`c071418` fixture soundness, arc E opened ·
 B6 `391b16d`/`e36f6b3` idempotence controls, the SIPRI category record ·
 B7 `60e4bde` the indigenisation metric and CAATSA's three states ·
-B8 `2d384b6` emergency procurement and Rafale-M.**
+B8 `2d384b6` emergency procurement and Rafale-M ·
+B9 rule 5d, the append-only log rule, and the S-400 schedule.**
 
 ## Measurement categories established by this phase — use these, do not re-derive
 
@@ -46,12 +47,14 @@ done here.
 1. **Arc E remainder — STILL OPEN, two files.** Done: exports vs target (L-0196), the
    measurement-category record (L-0197), the indigenisation metric (L-0198), CAATSA exposure
    (L-0199), emergency procurement (L-0200), Rafale-M (L-0201). **Not done:**
-   - **The S-400 DELIVERY SCHEDULE.** Distinct from L-0199, which covers sanctions exposure only.
-     The Year End Review 2025 records a comprehensive annual maintenance contract and a ministerial
-     meeting at which "the supply of S-400 systems" was a takeaway, and states **no schedule and no
-     delivered count**. So the record is about an absence — and per the brief, a partner
-     government's statement about its own deliveries is a legitimate second instrument, so **check
-     for a Russian-side mirror BEFORE recording single-sided.** That check has not been run.
+   - ~~The S-400 delivery schedule~~ — **DONE, L-0202.** Arc ownership settled: a publication
+     choice is not a retrieval failure, so arc E owns it. The mirror check found that the apparent
+     Russian-side source (TASS) traces back to Indian press sourcing, and that a genuine
+     partner-government statement exists and REFUSES the quantity — so the record carries two
+     absences with different reasonKinds, `withheld` on the Russian side and `not-published` on the
+     Indian.
+   - **Rafale's earlier tranche.** L-0201 covers the April 2025 Navy IGA only, and says so in its
+     own caveat. The Air Force acquisition has no retrieved primary.
    - **DAP domestic-content rules beyond the IC minimums** — offsets, positive indigenisation lists,
      and what the lists actually bind.
 

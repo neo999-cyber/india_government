@@ -6389,3 +6389,120 @@ reachability        808/808
 domain-coverage     14/14 domains · 7/7 lenses · 226/226 lens refs
 arithmetic          both bounds hand-computed; ordering and non-acknowledgement read from source
 ```
+
+---
+
+# Verification log — cycle 2026-08-04p (rule 5d; and the S-400 schedule, which neither government publishes)
+
+**Appended.** `/data` diff: `52 0` on `ledger/foreign-trade.json`. Pure append, zero deletions. Zero
+`parts/` files touched, so no forward references introduced.
+
+## Rule 5c did not need widening — the general form is a different defect
+
+The brief asked whether 5c is scoped narrowly to superlatives and should be widened. **It is not
+scoped to superlatives at all.** 5c is about a derived quantity inheriting a contested input, which
+is a different failure with a different signature: it is caught by asking where a number came from.
+
+The failure the brief describes — **a claim about what EXISTS arriving dressed as a claim about what
+the SOURCES CONTAIN** — was the *other* defect in cycle 2026-08-04o, and no rule covered it.
+Widening 5c to absorb it would have made one rule name two unrelated things. Added as **5d**
+instead, with a mechanical test rather than a list of forbidden words:
+
+> **Could a single document, if it turned up tomorrow, falsify the sentence without any figure in
+> the record changing?** If yes, it is a claim about existence and must be re-grounded on what was
+> searched, where, and what was found.
+
+Superlatives are named as the loudest symptom and explicitly not the only one — a bare "unexplained",
+an "unprecedented", any negative existential smuggled in as background.
+
+## The append-only rule, promoted
+
+Added to the Build workflow beside the additive-only `/data` rule: **a closed verification-log entry
+is never edited; corrections are appended and name what they supersede.** The reason is recorded
+because it is not bookkeeping — *an append-only log that gets edited whenever an entry turns out to
+be wrong records only the errors nobody caught*, which inverts what it is for.
+
+## The arc-ownership question, settled
+
+Is the S-400 schedule arc E material or retrieval-capability material? **Arc E, and the test is
+general enough to reuse:**
+
+> Could a better retrieval technique produce the figure? For a Cloudflare gate, a JS shell, a scan
+> without a text layer or a refused port — yes, in principle: the document exists and the channel
+> failed. Here the documents retrieve perfectly and completely. What is absent is content the
+> publisher chose not to include. **A publication choice is not a retrieval failure**, and it is
+> ordinary corpus material.
+
+## The mirror check was run, and it changed the record twice
+
+The brief requires checking for a partner-government instrument before recording single-sided. Doing
+so produced two findings neither of which was expected.
+
+**First, the apparent Russian-side source is not Russian-side.** TASS's "Russia's fourth S-400 air
+defense system shipped to India" is TASS *citing the Hindustan Times citing a source*. Followed back,
+the chain ends in Indian press sourcing. It is not a partner government's statement about its own
+deliveries and is not used.
+
+**Second, a genuine partner-government statement exists and it refuses the quantity.** Russian
+Ambassador Denis Alipov, 16 April 2026: *"We have a mutually agreed timetable, schedule for these
+deliveries. They will be completed very soon [...] I will not go into the details. The US and the
+Europeans should know nothing about it."*
+
+So the record is neither of the shapes anticipated. **Not a `differentFacts` pair** — the two parties
+do not give conflicting schedules; neither gives one. **Not the ordinary single-sided case of
+L-0191** — that is one party publishing and the other not. **Here both decline the same quantity, and
+they decline it differently**, which is why the two absences are recorded separately with different
+`reasonKind` values:
+
+| party | evidence | reasonKind |
+|---|---|---|
+| Russia | an identifiable on-the-record refusal to a direct question about a quantity known to exist | **withheld** |
+| India | the Year End Review names the system twice with no schedule; no request and no refusal identified | **not-published** |
+
+That distinction is the schema's own: `withheld` "requires an identifiable refusal, not merely
+absence of release". A broadcast interviewer's question and a named official's refusal is that; the
+Indian silence is not, on the evidence retrieved, and the record says so rather than assuming the
+harsher category.
+
+## Rule 5d applied to its first new record on the day it was written
+
+The caveat states in terms: **"NOTHING IN THIS RECORD ASSERTS THAT NO SCHEDULE EXISTS: one does, on
+the ambassador's own statement — what is absent is its publication."** Without 5d the natural
+sentence would have been "no delivery schedule exists for the S-400", which the ambassador himself
+falsifies.
+
+Secondary counts of how many squadrons had been delivered by earlier dates circulate widely and are
+**not used**, because no primary for them was retrieved. The one count carried — two outstanding at
+16 April 2026 — is attributed to TASS's own framing rather than to the ambassador, in the caveat.
+
+L-0202 is kept apart from L-0199 explicitly: a sanctions question and a delivery question about the
+same acquisition have different evidence and different resolutions, and the brief was right that one
+must not be allowed to read as the other.
+
+## Arc E: seven of eight, still NOT closed
+
+Done: L-0196 exports vs target · L-0197 the measurement categories · L-0198 indigenisation ·
+L-0199 CAATSA · L-0200 emergency procurement · L-0201 Rafale-M · L-0202 the S-400 schedule.
+
+**Not done:**
+- **Rafale's earlier tranche.** L-0201 covers the April 2025 Navy IGA only and says so in its own
+  caveat. The Air Force acquisition has no retrieved primary and is not described.
+- **DAP domestic-content rules beyond the IC minimums** — offsets, positive indigenisation lists,
+  and what the lists actually bind.
+
+Neither was attempted in this batch, so neither failed.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 149 warnings (2 charset errors caught and fixed pre-merge)
+typecheck           clean
+selftest            OK
+enum-stamp          OK
+figure-consistency  7 declared claims, 7 checked, 3 artefacts declared
+reachability        812/812 (623 pages)
+domain-coverage     14/14 domains · 7/7 lenses · 228/228 lens refs
+url-check           1/1 confirmed
+lens-controls       6 paired + exact membership; russia now L-0184, L-0189, L-0199, L-0202
+parts/              zero touched, zero forward references introduced
+```

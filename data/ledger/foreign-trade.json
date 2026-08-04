@@ -822,5 +822,57 @@
         "confidence": "medium",
         "asOf": "2026-08-04",
         "revisitTrigger": "Re-test when a delivery schedule is published or first delivery occurs, and when the technology-transfer scope is described. Either would move this out of state (a); the first would give the commitment a trigger it currently lacks."
+    },
+    {
+        "id": "L-0202",
+        "title": "The S-400 delivery schedule exists, both governments know it, and neither publishes it — one of them says so on the record",
+        "date": "2018-10-05",
+        "dateEnd": "2026-04-16",
+        "term": "T3",
+        "domains": [
+            "foreign"
+        ],
+        "lenses": [
+            "defence-sector",
+            "russia"
+        ],
+        "type": "episode",
+        "summary": "India contracted in 2018 for five S-400 squadrons at US$5.43bn. As at 16 April 2026 two remained undelivered. India's Ministry of Defence, in its Year End Review for 2025, mentions the system twice — a comprehensive annual maintenance contract approved by the Defence Acquisition Council, and \"the supply of S-400 systems\" as a takeaway from a meeting with the Russian defence minister — and gives no delivery schedule and no delivered count. Russia's ambassador to India, asked directly, confirmed a schedule exists and declined to give it: \"We have a mutually agreed timetable, schedule for these deliveries. They will be completed very soon [...] I will not go into the details. The US and the Europeans should know nothing about it.\"",
+        "assessment": "no-objective",
+        "assessmentNote": "A state of the measurement, not a measure. The acquisition has objectives; this record is about what is published against them, and no objective was ever announced about disclosure. Kept separate from L-0199, which covers the CAATSA sanctions exposure of the same acquisition and nothing about deliveries — the two must not be read as one, because a sanctions question and a delivery question have different evidence and different resolutions.",
+        "caseFor": "Withholding a delivery timetable for an air-defence system is the ordinary practice of every state that operates one, and the ambassador gives the reason in terms: an adversary who knows when a battery arrives knows when it does not. Nothing here suggests the contract is troubled — he states the deliveries are proceeding to a mutually agreed schedule and will finish soon, and the Indian side's own published traces are consistent with an operating system rather than a stalled one, since a comprehensive annual maintenance contract is what a fielded platform needs. The absence is a security judgement, not an accountability failure, and treating every unpublished military figure as concealment would make the category useless.",
+        "caseAgainst": "The consequence is the same whatever the motive: the largest Russian-origin acquisition in the modern Indian inventory has no public delivery record on either side, so no one outside the two governments can say what has arrived, when, or whether the contract is on time. Every public statement about progress is therefore unfalsifiable — \"very soon\" has been the position across multiple years — and the instrument's usual recourse, checking one government's account against the other's, is closed because both decline the same quantity. It also matters that the exposure recorded in L-0199 attaches to transactions rather than to deliveries: what is unpublished here is precisely what would let anyone assess how much of that transaction is still running.",
+        "differentFacts": false,
+        "differentFactsNote": "NOT a differentFacts pair and the reason is specific: the two parties do not give conflicting schedules — neither gives one. And it is not the ordinary single-sided case of L-0191 either, where one party publishes and the other does not. Here BOTH decline the same quantity, and they decline it differently: Russia with an identifiable on-the-record refusal, India with silence. Two absences on one quantity, recorded separately below because their reasons are not the same reason.",
+        "unmeasured": [
+            {
+                "what": "The S-400 delivery schedule and delivered count, from the Russian side",
+                "why": "A schedule exists and is mutually agreed — the Russian ambassador said so on 16 April 2026 — and he declined to state it when asked in a broadcast interview: \"I will not go into the details [...] this is a sensitive area, which we try to keep under wraps.\" That is an identifiable refusal to a specific question about a quantity known to exist, which is what distinguishes withheld from not-published.",
+                "wouldFill": "A Russian Federal Service for Military-Technical Cooperation or Rosoboronexport statement giving delivery dates, or the contract's own schedule.",
+                "reasonKind": "withheld"
+            },
+            {
+                "what": "The S-400 delivery schedule and delivered count, from the Indian side",
+                "why": "The Ministry of Defence's Year End Review for 2025 refers to the system twice without a schedule or a delivered count, and no Indian statement of either was located. No request for it and no refusal of one has been identified, so this is an absence of release rather than a refusal — the narrower category does not apply on the evidence retrieved.",
+                "wouldFill": "A Ministry of Defence statement or Parliamentary answer giving squadrons delivered and dates, which is the form other acquisition figures take.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "caveat": "The figure of two squadrons outstanding at 16 April 2026 is TASS's own framing in the same report, not the ambassador's words, and the record carries it as that. Counts of how many had been delivered by earlier dates circulate widely in secondary reporting and are not used here, because no primary for them was retrieved. NOTHING IN THIS RECORD ASSERTS THAT NO SCHEDULE EXISTS: one does, on the ambassador's own statement — what is absent is its publication.",
+        "sources": [
+            {
+                "name": "TASS, \"Russia's S-400 missile systems delivery to India to be completed soon — ambassador\", 16 April 2026 — Ambassador Denis Alipov on a mutually agreed timetable, his refusal to give details, the 2018 contract for five squadrons at US$5.43bn, and two systems outstanding",
+                "url": "https://tass.com/politics/2117905",
+                "tier": "T4"
+            },
+            {
+                "name": "Ministry of Defence, \"Ministry of Defence; Year End Review - 2025\", PIB — the S-400 annual maintenance contract approved by the DAC, and \"the supply of S-400 systems\" as a takeaway of the meeting with the Russian defence minister; no schedule and no delivered count anywhere in the document",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2210154",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "medium",
+        "asOf": "2026-08-04",
+        "revisitTrigger": "Re-test if either government publishes a delivery figure, or if completion is announced. An announcement of completion would make the whole schedule retrospectively assessable and would move both unmeasured items at once."
     }
 ]
