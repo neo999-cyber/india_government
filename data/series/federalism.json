@@ -1,0 +1,3405 @@
+[
+ {
+  "id": "divisible-pool-share-gtr",
+  "title": "Divisible pool of central taxes as a share of the Union's gross tax revenue",
+  "unit": "per cent of Union gross tax revenue",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Sixteenth Finance Commission, Report for 2026-31, Volume I — Main Report, Figure 7.4 (p. 141). The Commission states its own source on the face of the figure: \"CAG certificates from 2010-11 to 2023-24, Union Budgets for remaining years.\"",
+   "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "Union gross tax revenue",
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "Fourteenth Finance Commission award begins; the states' share of this pool moves 32 to 42 per cent. The pool and the share move in opposite directions from here.",
+    "provenanceRef": "P-103"
+   },
+   {
+    "period": "FY2017-18",
+    "note": "GST and the GST Compensation Cess begin. The single largest step in the series: 86.2 to 75.6 per cent in one year. Whether the compensation cess belongs in the non-shareable wedge is a definitional choice, not a measurement.",
+    "provenanceRef": "P-100"
+   },
+   {
+    "period": "FY2020-21",
+    "note": "Fifteenth Finance Commission award begins and Jammu and Kashmir leaves the denominator of the states' share; the pool itself also reaches its trough at 74.0 per cent.",
+    "provenanceRef": "P-103"
+   },
+   {
+    "period": "FY2024-25",
+    "note": "Reporting-base shift stated by the Commission itself: actual CAG certificate through FY2023-24, Union Budget Revised and Budget Estimates thereafter.",
+    "provenanceRef": "P-113"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2010-11",
+    "value": 89,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 88.9,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 89.7,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 89.3,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 89.1,
+    "status": "verified",
+    "note": "The last year before the FC-XIV award took effect, and the figure FC-XVI itself uses as its benchmark at para 7.67."
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 86.9,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 86.2,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 75.6,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 81.2,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 80.9,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 74,
+    "status": "verified",
+    "note": "The trough of the published series."
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 75.3,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 77.5,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 79.9,
+    "status": "verified",
+    "note": "Independently reproduced at T1: CAG-certified net proceeds 27,69,957.40 crore against gross tax revenue 34,65,519 crore (Receipt Budget 2026-27, Annex 4C and Annex 1) = 79.93 per cent. The two documents agree to the second decimal. Last year on a certified basis."
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 81.9,
+    "status": "verified",
+    "note": "Revised Estimate basis, not a certificate."
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 81.3,
+    "status": "verified",
+    "note": "Budget Estimate basis, not a certificate."
+   }
+  ],
+  "provenanceRefs": [
+   "P-100",
+   "P-102",
+   "P-104",
+   "P-116"
+  ],
+  "notes": "This is the arithmetic bridge between \"the states get 41 per cent\" and \"the states get about 32 per cent of gross tax revenue\": roughly a fifth to a quarter of gross tax revenue sits outside the pool the 41 per cent is applied to. Award-period means stated by FC-XVI at para 7.35 and used as a reconciliation control: FC-XIII 89.2, FC-XIV 82.16, FC-XV 78.32; all three reconcile from the annual values above. The control is necessary because pdftotext scrambles bar-chart label order, and it is what fixes the year-to-value assignment. This series is one of three that a reader will be tempted to multiply together; see P-116 for why the product does not reproduce fc-devolution-share-of-gtr in any year.",
+  "caveat": "Read this against fc-vertical-devolution-share, never alone. A rising share of central taxes applied to a shrinking pool is the whole substance of the phase's fiscal argument, and either series read on its own supports the opposite conclusion from the pair."
+ },
+ {
+  "id": "cess-surcharge-share-gtr",
+  "title": "Cesses and surcharges as a share of gross tax revenue, GST Compensation Cess included",
+  "unit": "per cent of Union gross tax revenue",
+  "domain": "macro",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Fifteenth Finance Commission, Report for 2021-26, Volume I — Main Report, Table 3.8 \"Cesses and Surcharges\" (p. 67). The Commission states its source as \"Union Budget documents\".",
+   "url": "https://fincomindia.nic.in/asset/doc/commission-reports/XVFC%20VOL%20I%20Main%20Report.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "Union gross tax revenue",
+  "breaks": [
+   {
+    "period": "FY2017-18",
+    "note": "The GST Compensation Cess enters the aggregate. It is a levy earmarked to the states, and including it in a measure of what the Union keeps out of the pool inverts the finding — the excl-comp-cess series falls in this year while this one rises.",
+    "provenanceRef": "P-100"
+   },
+   {
+    "period": "FY2018-19",
+    "note": "The direct-tax component jumps 2.7-fold, from 53,433 to 1,45,802 crore: the 4 per cent Health and Education Cess replacing the 3 per cent Education Cess, plus a reclassification under which the same money is counted as both a cess and a surcharge.",
+    "provenanceRef": "P-100"
+   },
+   {
+    "period": "FY2019-20",
+    "note": "Reporting basis changes: Actual through FY2018-19, Revised Estimate FY2019-20, Budget Estimate FY2020-21. The last two rows do not reconcile against outturn gross tax revenue and are not measurements of the same kind as the first eight.",
+    "provenanceRef": "P-113"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 10.4,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 11.7,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 12.4,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 13.5,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 12.2,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 13.5,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 13.9,
+    "status": "verified",
+    "note": "Reproduced from the Commission's own rupee figures: 2,66,574 / 19,19,008 = 13.89 per cent."
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 19.9,
+    "status": "verified",
+    "note": "Reproduced: 4,13,195 / 20,80,465 = 19.86 per cent."
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 20.2,
+    "status": "verified",
+    "note": "Revised Estimate. Does not reconcile against outturn gross tax revenue — the same rupee figure over actual GTR gives 21.7 per cent — which is the expected behaviour of an estimate row."
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 19.9,
+    "status": "verified",
+    "note": "Budget Estimate."
+   }
+  ],
+  "provenanceRefs": [
+   "P-100",
+   "P-113"
+  ],
+  "notes": "This is the phase's central number in its most-cited form and the doubling is real on this convention: 10.4 per cent of gross tax revenue in FY2011-12 to 19.9-20.2 per cent by FY2018-19. Roughly a quarter of the end-period level is the GST Compensation Cess, which is earmarked to the states.",
+  "caveat": "Never quote this series without naming its convention. The same quantity for FY2024-25 has four defensible values spanning 9.98 to 17.71 per cent depending on whether the GST Compensation Cess and the Special Additional Excise Duty are counted — a spread larger than the entire rise this series is used to demonstrate."
+ },
+ {
+  "id": "cess-surcharge-share-gtr-excl-compcess",
+  "title": "Cesses and surcharges as a share of gross tax revenue, GST Compensation Cess excluded",
+  "unit": "per cent of Union gross tax revenue",
+  "domain": "macro",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Derived from Fifteenth Finance Commission, Volume I — Main Report, Table 3.8 (p. 67), by subtracting the Commission's own broken-out GST Compensation Cess row from its own total row. The Commission publishes both rows so that the subtraction can be made.",
+   "url": "https://fincomindia.nic.in/asset/doc/commission-reports/XVFC%20VOL%20I%20Main%20Report.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "Union gross tax revenue",
+  "breaks": [
+   {
+    "period": "FY2017-18",
+    "note": "GST begins. On this convention the share FALLS in FY2017-18, from 13.5 to 10.6, while the comp-cess-inclusive series RISES from 13.5 to 13.9. The two series move in opposite directions in the same year and it is not a rounding artefact.",
+    "provenanceRef": "P-100"
+   },
+   {
+    "period": "FY2019-20",
+    "note": "Actual to Revised Estimate to Budget Estimate, as in the parent table.",
+    "provenanceRef": "P-113"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 10.4,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 11.7,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 12.4,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 13.5,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 12.2,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 13.5,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 10.6,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 15.3,
+    "status": "verified",
+    "note": "Corroborated independently at T1: FC-XV para 4.25 states that cesses and surcharges excluding the compensation cess amounted to 3.18 lakh crore in FY2018-19 and averaged 13.1 per cent of GTR over FY2016-17 to FY2018-19; the mean of 13.5, 10.6 and 15.3 is 13.13."
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 15.7,
+    "status": "verified",
+    "note": "Revised Estimate."
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 15.3,
+    "status": "verified",
+    "note": "Budget Estimate."
+   }
+  ],
+  "provenanceRefs": [
+   "P-100",
+   "P-113"
+  ],
+  "notes": "Excluding the compensation cess, the rise from FY2011-12 to FY2020-21 is 10.4 to 15.3 — a multiple of 1.47, against 1.91 on the inclusive convention. The GST Compensation Cess accounts for roughly half of the apparent doubling. This is a separate series from cess-surcharge-share-gtr, not a variant of it, because the choice of convention inverts the sign of the FY2017-18 movement.",
+  "caveat": "This series and cess-surcharge-share-gtr must be shown together or neither. Either alone answers the question whether the Union enlarged the money it does not share in a way the other contradicts for FY2017-18."
+ },
+ {
+  "id": "cag-certified-net-proceeds",
+  "title": "Net proceeds of Union taxes certified by the Comptroller and Auditor General under Article 279(1)",
+  "unit": "₹ crore, current prices",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Sixteenth Finance Commission, Volume I — Main Report, Table 7.4 row 5, sourced by the Commission to \"CAG certificate\" (FY2018-19 to FY2022-23); Union Receipt Budget 2026-2027, Annex 4C, \"Disclosure Statement of Data on Net Proceeds as certified by the Comptroller and Auditor General of India as per Article 279 of the Constitution for FY 2023-2024\" (FY2023-24).",
+   "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 1689390,
+    "status": "verified",
+    "note": "States' entitlement at 42 per cent = 7,09,544 crore; the ratio reproduces to 42.00 per cent exactly, as it must, the entitlement row being defined as 0.42 times this one."
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 1625418,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 1499946,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 2040146,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 2368305,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 2769957.4,
+    "status": "verified",
+    "note": "From Receipt Budget 2026-27 Annex 4C, the first and so far only publication of the certificate in its own right. States' share at 41 per cent = 11,35,682.53 crore against releases of 11,36,306.00 crore, giving a final settlement of minus 623.47 crore — a recovery from the states. Integrated GST and the GST Compensation Cess are both named as lines and valued at a dash: the Article 270(1) exclusion rendered as an audited number."
+   }
+  ],
+  "provenanceRefs": [
+   "P-102"
+  ],
+  "notes": "Six years is the whole published series. Before FY2018-19 no CAG-certified pool is published in any form. Article 279(1) has required the certificate since 1950 and makes it final; it has been disclosed once, for one year, by the paying party, and only because the Sixteenth Finance Commission recommended the disclosure in 2025.",
+  "caveat": "No Article 279(1) certificate has ever been published as a document of the Comptroller and Auditor General. Every point here is the certified figure as relayed by a party to the dispute — five by the Commission the Union appoints, one by the Union's own Receipt Budget. The Regulations on Audit and Accounts 2020 contain no occurrence of \"net proceeds\", \"proceeds\" or \"279\", so no regulation governs the certificate at all."
+ },
+ {
+  "id": "fc-vertical-devolution-share",
+  "title": "States' share of the divisible pool of central taxes recommended by the Finance Commission",
+  "unit": "per cent of the divisible pool of central taxes",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Sixteenth Finance Commission, Volume I — Main Report, para 7.68 and paras 7.8-7.16, read against each Commission's own recommendation: FC-XIII para 8.17, FC-XIV para 8.13, FC-XV paras 6.9 and 6.29.",
+   "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "the divisible pool of central taxes — gross tax revenue less cesses, surcharges, Union Territory taxes and cost of collection",
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "FC-XIV, 32 to 42 per cent. The largest single-step increase in the institution's history and a real increase. FC-XIV para 8.13 gives four reasons, the first of which is \"States not being entitled to the growing share of cess and surcharges in the revenues of the Union Government\".",
+    "provenanceRef": "P-103"
+   },
+   {
+    "period": "FY2020-21",
+    "note": "FC-XV, 42 to 41 per cent. NOT a cut: FC-XV para 6.9 says the Commission \"only adjusted for the newly carved out Union Territories of Jammu and Kashmir and Ladakh, keeping the balance share broadly equivalent at 41 per cent for the remaining twenty-eight States\". FC-XVI para 7.16 puts the adjustment at approximately 1 per cent of the divisible pool.",
+    "provenanceRef": "P-103"
+   },
+   {
+    "period": "FY2026-27",
+    "note": "FC-XVI award begins. The value does not change, but the award, the horizontal formula and the entire grant architecture do, so every series keyed to an award breaks here even though this one is flat.",
+    "provenanceRef": "P-103"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2010-11",
+    "value": 32,
+    "status": "verified",
+    "note": "FC-XIII para 8.17: \"we recommend that the share of states in the net proceeds of shareable central taxes be raised from 30.5 per cent to 32 per cent\"."
+   },
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 32,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 32,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 32,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 32,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 42,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 42,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 42,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 42,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 42,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 41,
+    "status": "verified",
+    "note": "FC-XV first (one-year) report."
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 41,
+    "status": "verified",
+    "note": "FC-XV final report, para 6.29."
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 41,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 41,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 41,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 41,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2026-27",
+    "value": 41,
+    "status": "verified",
+    "note": "FC-XVI para 7.68, accepted by the Union in the Explanatory Memorandum of 1 February 2026. The Commission's stated reason is the pool itself: \"With cesses and surcharges having cut the size of the divisible pool from 89.1 per cent of GTR in 2014-15 to a 74-80 per cent range... there is no room for cutting the States' share in it.\""
+   }
+  ],
+  "provenanceRefs": [
+   "P-103",
+   "P-104",
+   "P-116"
+  ],
+  "notes": "A step function by award, carried annually because the share applies to each year's proceeds. The number is a recommendation the Union accepted in each case; it is not a measure of what was paid. For what was paid, read fc-devolution-share-of-gtr and devolution-be-to-actual-gap. This is a rule and not a measurement, which is why multiplying it by divisible-pool-share-gtr does not reproduce fc-devolution-share-of-gtr in any year — see P-116."
+ },
+ {
+  "id": "fc-devolution-share-of-gtr",
+  "title": "Tax devolution to states as a share of the Union's gross tax revenue",
+  "unit": "per cent of Union gross tax revenue",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Sixteenth Finance Commission, Volume I — Main Report, Table 7.5 (p. 135), computed by the Commission from Volume II Annexure 7.1.",
+   "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "Union gross tax revenue",
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "FC-XIV award begins (32 to 42 per cent of a different base).",
+    "provenanceRef": "P-103"
+   },
+   {
+    "period": "FY2020-21",
+    "note": "FC-XV award begins and Jammu and Kashmir leaves the states' denominator.",
+    "provenanceRef": "P-103"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2010-11",
+    "value": 27.7,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 28.8,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 28.1,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 27.9,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 27.1,
+    "status": "verified",
+    "note": "FC-XIII award average is 27.9."
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 34.8,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 35.4,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 31.5,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 35.9,
+    "status": "verified",
+    "note": "NOT the high-water mark of devolution. Devolution went out against a Revised Estimate gross tax revenue of 22,48,175 crore; actuals came in 1,67,710 crore short after the cash had moved. FC-XVI Table 7.4 records the first retrospective adjustment for FY2018-19 as minus 58,843 crore, a clawback."
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 32.4,
+    "status": "verified",
+    "note": "FC-XIV award average is 34.0."
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 29.4,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 32.6,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 31.1,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 32.6,
+    "status": "verified",
+    "note": "Last year on an Actuals basis. Table 7.5 continues to FY2024-25 (33.9, Revised Estimate) and FY2025-26 (33.3, Budget Estimate); those two rows are deliberately not carried here."
+   }
+  ],
+  "provenanceRefs": [
+   "P-104",
+   "P-105",
+   "P-113",
+   "P-116"
+  ],
+  "notes": "The series stops at FY2023-24 because the Commission's own FC-XV award average of 32.1 splices Actuals, a Revised Estimate and a Budget Estimate in one mean and does not flag it. Part 02 recomputed every row of Table 7.5 from the rupee figures in Annexure 7.1: all sixteen devolution rows and all sixteen grant rows reproduce to the published decimal, which confirms Table 7.5 is a derivation of Annexure 7.1 and not an independent source. Do NOT reconstruct this series by multiplying divisible-pool-share-gtr by fc-vertical-devolution-share: the product misses in every year, by between minus 1.70 and plus 1.80 percentage points, and the sign changes six times. Two of the three are rules and this one is cash moved in the year. P-116 sets out why and prints the residuals.",
+  "caveat": "This is devolution against gross tax revenue, not against the divisible pool. The gap between this series (about 32 per cent) and fc-vertical-devolution-share (41 per cent) is not underpayment; it is divisible-pool-share-gtr. Reading either number as the other is the commonest error in this subject."
+ },
+ {
+  "id": "fc-grants-share-of-gtr",
+  "title": "Finance Commission grants to states as a share of the Union's gross tax revenue",
+  "unit": "per cent of Union gross tax revenue",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Sixteenth Finance Commission, Volume I — Main Report, Table 7.5 (p. 135).",
+   "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "Union gross tax revenue",
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "FC-XIV award begins. FC-XIV described its own 32-to-42 recommendation as \"a compositional shift in transfers from grants to tax devolution\", so a break in this series is the intended effect of the break in the devolution series, not an independent event.",
+    "provenanceRef": "P-103"
+   },
+   {
+    "period": "FY2020-21",
+    "note": "FC-XV award begins; the revenue-deficit-grant surge of the COVID year takes this series to its peak.",
+    "provenanceRef": "P-103"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2010-11",
+    "value": 4,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 4.9,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 4.4,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 4.7,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 5.1,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 5.8,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 5.6,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 4.8,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 4.5,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 6.2,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 9.1,
+    "status": "verified",
+    "note": "Peak of the sixteen-year window."
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 7.7,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 5.7,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 4.3,
+    "status": "verified",
+    "note": "Table 7.5 continues at 3.4 (FY2024-25 RE) and 3.1 (FY2025-26 BE), the lowest in the window; those estimate rows are not carried."
+   }
+  ],
+  "provenanceRefs": [
+   "P-105",
+   "P-113"
+  ],
+  "notes": "The FC-XV grant component is front-loaded and decaying: the award's grant money peaked in its first year and fell by more than half by its last. That is where the sector-specific and state-specific grants question bites, because FC-XVI then recommended zero of both and zero revenue-deficit grants for FY2026-27 onward."
+ },
+ {
+  "id": "union-gross-tax-revenue",
+  "title": "Gross tax revenue of the Union",
+  "unit": "₹ crore, current prices",
+  "domain": "macro",
+  "tier": "T1",
+  "source": {
+   "name": "Sixteenth Finance Commission, Volume II — Annexures, Annexure 7.1, \"Time Series of Devolution, FC Grants and Non-FC Grants Transferred from Union to States (₹ crore) — First to Fifteenth Finance Commissions\".",
+   "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol2-Annexures.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2010-11",
+    "value": 793072,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 888898,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 1036234,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 1138733,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 1244885,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 1455648,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 1715822,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 1919008,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 2080465,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 2010059,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 2027104,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 2709316,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 3054192,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 3465519,
+    "status": "verified"
+   }
+  ],
+  "notes": "Carried because it is the denominator of four series in this drop and a reader cannot check any of them without it. Annexure 7.1's own source note names different instruments for different eras — Indian Public Finance Statistics to FY2015-16 actuals, then Receipt Budget Annex-2 — and states that \"for the overlapping years, the three documents match perfectly\". That is a positive control the Commission ran and printed on gross tax revenue; it ran no such control on its devolution column.",
+  "caveat": "The Commission's own headline series is a stitch of at least four instruments across eras and columns. It reconciles on this column and the reconciliation is stated; do not assume the same of the devolution column beside it."
+ },
+ {
+  "id": "fc-devolution-rupees",
+  "title": "Tax devolution transferred from the Union to the states",
+  "unit": "₹ crore, current prices, cash transferred in the year",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Sixteenth Finance Commission, Volume II — Annexures, Annexure 7.1.",
+   "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol2-Annexures.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "FC-XIV award begins.",
+    "provenanceRef": "P-103"
+   },
+   {
+    "period": "FY2020-21",
+    "note": "FC-XV award begins.",
+    "provenanceRef": "P-103"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2010-11",
+    "value": 219489,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 255592,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 291530,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 318273,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 337835,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 506191,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 607861,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 605186,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 746894,
+    "status": "verified",
+    "note": "Against an entitlement of 7,09,544 crore attributed to the same year by FC-XVI Table 7.4 — a difference of plus 37,350 crore, because this column measures cash moved in the year and that one measures entitlement after retrospective adjustment."
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 650687,
+    "status": "verified",
+    "note": "Entitlement 6,82,675 crore; difference minus 31,988 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 595227,
+    "status": "verified",
+    "note": "Entitlement 6,14,978 crore; difference minus 19,751 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 883100,
+    "status": "verified",
+    "note": "Entitlement 8,36,460 crore; difference plus 46,640 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 948982,
+    "status": "verified",
+    "note": "Entitlement 9,71,005 crore; difference minus 22,023 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 1129494,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-105",
+   "P-117"
+  ],
+  "notes": "On a year-by-year cash basis, devolution ranged 39.68 to 44.21 per cent of the certified pool over FY2018-19 to FY2022-23 while the recommended share was a flat 41 or 42 per cent. A state reading its own receipts in a single year will see a number that is not 41 per cent, and will be right. This series carries the Finance Commission's Annexure 7.1 and is NOT the same instrument as devolution-actual-receipt-budget, which carries the Union's own Receipt Budget Actuals under major head 0710 and is what devolution-be-to-actual-gap is computed from. The two agree in six of eleven overlapping years and diverge in four, by 67,819.29 crore in FY2017-18, 14,560.15 in FY2018-19, 15,292 in FY2021-22 and 576.18 in FY2022-23. Those divergences are the definitional gap between instruments and are NOT errors in this series; P-117 records them and L-0182 records that FY2017-18 is far larger than the rest and unexplained.",
+  "caveat": "Cash moved in a year, not entitlement attributed to a year. Two tables inside one Commission report give different devolution figures for the same five years, differing by up to 46,640 crore, and both are correct on their own definition. Do not subtract this series from an entitlement series and call the residue underpayment."
+ },
+ {
+  "id": "devolution-be-to-actual-gap",
+  "title": "Tax devolution finally accounted against tax devolution budgeted for the same year",
+  "unit": "per cent of the Union's Budget Estimate for tax devolution",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Union Receipt Budget, Abstract of Receipts — Budget Estimate column of year T against the Actuals column of year T+2, read across eleven editions. The current edition is linked; earlier editions sit at the parallel budget<YYYY-YYYY>/ub<YY-YY>/rec/allrec.pdf and budget<YY-YY>/doc/rec/allrec.pdf paths.",
+   "url": "https://www.indiabudget.gov.in/doc/rec/allrec.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "the Union's own Budget Estimate of tax devolution for that year",
+  "breaks": [
+   {
+    "period": "FY2021-22",
+    "note": "The error sign-flips here and never returns. This sits exactly on the FC-XV award boundary and must NOT be read as an award effect: it is a forecasting-regime change, post-COVID gross-tax-revenue budgeting turning conservative, with the states as the residual beneficiaries.",
+    "provenanceRef": "P-113"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": -11.6,
+    "status": "verified",
+    "note": "BE 3,82,215.94 crore; Actual 3,37,808.45 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": -3.4,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 6.6,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": -0.2,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": -3.4,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": -19.6,
+    "status": "verified",
+    "note": "BE 8,09,133.02 crore; Actual 6,50,677.05 crore — a shortfall of 1,58,456 crore, driven by a gross-tax-revenue shortfall of 18.3 per cent against BE, not by any devolution decision."
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": -24.1,
+    "status": "verified",
+    "note": "BE 7,84,180.87 crore; Actual 5,94,996.76 crore — a shortfall of 1,89,184 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 35,
+    "status": "verified",
+    "note": "BE 6,65,562.74 crore; Actual 8,98,392 crore — plus 2,32,829 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 16.1,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 10.6,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 3.2,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-113",
+   "P-117"
+  ],
+  "notes": "This is the series a state finance department actually experiences. A state budgets against the Union's Budget Estimate; in FY2019-20 and FY2020-21 it lost a fifth and a quarter of the devolution it had planned on. It is carried because it is the only measured form of the states' complaint that depends on no contested definition — both columns are the Union's own, for the same quantity, in the same document series. Both inputs are now authored as series in their own right — devolution-budget-estimate and devolution-actual-receipt-budget — and (Actual minus BE) divided by BE reproduces all eleven stated values to the stated decimal. Two method rules are pinned by that recomputation rather than assumed. In the three years with two budgets, FY2014-15, FY2019-20 and FY2024-25, the series uses the FULL budget and not the interim: substituting the interim Budget Estimate breaks all three years and none of the other eight, and for FY2019-20 it would move the stated shortfall from 19.6 to 23.0 per cent. And the Budget Estimate is the Budget at a Glance headline, which for FY2018-19 is the sum of the Receipt Budget's base devolution line and its separate actual-adjustment line. The Actual column is the Union's Receipt Budget, NOT the Finance Commission's Annexure 7.1 — the two are different instruments and differ in four of eleven years, once by 67,819 crore; see P-117.",
+  "caveat": "A read-trap in the source: the Receipt Budget's Tax Revenue detail pages split devolution into \"Less-States' Share\" plus a separate \"Less-States' share adjustment as per Actual\", and the Abstract of Receipts headline is the sum. Reading the detail page alone understates BE FY2018-19 devolution by 19,680 crore; these points take the Abstract. The Receipt Budget editions were retrieved and transcribed within this run by a directed retrieval agent that recorded a URL and table caption for every row, so they are one remove from the authoring part's own reading."
+ },
+ {
+  "id": "tn-fc-interse-share",
+  "title": "Tamil Nadu's inter-se share of the states' portion of the divisible pool",
+  "unit": "per cent of the states' share of the divisible pool of central taxes",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Sixteenth Finance Commission, Volume I — Main Report, Table 8.4 (FC-XI to FC-XV, two decimals) and Table 8.9 (FC-XVI); three-decimal values for FC-XIII, FC-XIV and FC-XV from those Commissions' own reports (FC-XIII Table 8.2, FC-XIV Table 8.2, FC-XV Table 6.5); the FY2020-21 value from the CAG's State Finances Audit Report on Tamil Nadu for FY2023-24, Table 2.7, which prints the basis string for each projection year.",
+   "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "the states' aggregate share of the divisible pool — 29 states under FC-XIV including Jammu and Kashmir, 28 states from FC-XV",
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "FC-XIV, and a definitional break: FC-XVI's own note under Table 8.4 states that \"Inter-se shares of FC-11 to FC-14 are exclusive of the States' shares of service taxes\", which were distributed under a separate table excluding Jammu and Kashmir. Tamil Nadu's FC-XIV award is two shares, not one — 4.023 per cent on the pool excluding service tax and 4.104 per cent on shareable service tax.",
+    "provenanceRef": "P-112"
+   },
+   {
+    "period": "FY2020-21",
+    "note": "FC-XV's one-year report for FY2020-21 carries a DIFFERENT inter-se share from its final report. An award-level series is simply wrong for this year.",
+    "provenanceRef": "P-112"
+   },
+   {
+    "period": "FY2021-22",
+    "note": "FC-XV final report. Jammu and Kashmir has left the 28-state denominator, so a state's number can move because the denominator moved.",
+    "provenanceRef": "P-112"
+   },
+   {
+    "period": "FY2026-27",
+    "note": "FC-XVI award. Its para 8.62: \"even if we were to retain the exact same criteria and associated weights as the FC-15, the States' shares shift significantly due to the updation of underlying data.\" Formula effect and data effect are not separable and the Commission says so.",
+    "provenanceRef": "P-112"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2010-11",
+    "value": 4.969,
+    "status": "verified",
+    "note": "FC-XIII. FC-XVI's Table 8.4 rounds this to 4.97."
+   },
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 4.969,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 4.969,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 4.969,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 4.969,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 4.023,
+    "status": "verified",
+    "note": "Excluding service tax; the parallel shareable-service-tax share is 4.104 per cent."
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 4.023,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 4.023,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 4.023,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 4.023,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 4.189,
+    "status": "verified",
+    "note": "FC-XV's first report, for FY2020-21 alone. This value is not in FC-XVI's compilation and is not the 4.079 the award is usually quoted at; it is read from the CAG's Tamil Nadu State Finances Audit Report FY2023-24, Table 2.7. A phase-13 correction: the award-level reading of FC-XV is wrong for this one year."
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 4.079,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 4.079,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 4.079,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 4.079,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 4.079,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2026-27",
+    "value": 4.097,
+    "status": "verified",
+    "note": "FC-XVI Table 8.9, accepted by the Union on 1 February 2026. Tamil Nadu's share rises slightly under the new formula."
+   }
+  ],
+  "provenanceRefs": [
+   "P-112"
+  ],
+  "notes": "For comparison on the same tables: West Bengal 7.264 / 7.324 / 7.523 / 7.215 and Bihar 10.917 / 9.665 / 10.058 / 9.948 across FC-XIII to FC-XVI. Tamil Nadu's fall is concentrated at the FC-XIII to FC-XIV step, not inside the FC-XV award period.",
+  "caveat": "A line drawn straight through this series runs a four-value segment on one definition (excluding service tax, 29-state denominator) and a two-value segment on another (28-state denominator, service tax subsumed into GST). The FC-XI and FC-XII values, 5.39 and 5.31, exist only at two decimals in FC-XVI's compilation and are outside this window."
+ },
+ {
+  "id": "tn-devolution-population-ratio",
+  "title": "Tamil Nadu's share in devolution divided by its share in population",
+  "unit": "ratio of share in devolution to share in population (dimensionless; 1.00 = devolution exactly proportionate to population)",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Sixteenth Finance Commission, Volume I — Main Report, Table 8.5, \"Ratios of Share in Devolution to Share in Population: Non-NEH States\", derived by the Commission from its own Table 8.4.",
+   "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "the state's share of the 2011 Census population",
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "FC-XIV. The fall from 0.82 to 0.66 is minus 19.5 per cent, and excluding Andhra Pradesh — whose 1.67 to 1.04 fall is the 2014 bifurcation, not a formula effect — it is the largest fall of any non-NEH state at this step. A figure of 24 per cent circulates for this fall and is wrong.",
+    "provenanceRef": "P-112"
+   },
+   {
+    "period": "FY2020-21",
+    "note": "FC-XV, recalculated by the Commission excluding Jammu and Kashmir.",
+    "provenanceRef": "P-112"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2010-11",
+    "value": 0.82,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 0.82,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 0.82,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 0.82,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 0.82,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 0.66,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 0.66,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 0.66,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 0.66,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 0.66,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 0.67,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 0.67,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 0.67,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 0.67,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 0.67,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 0.67,
+    "status": "verified",
+    "note": "No FC-XVI value exists: Table 8.5 stops at FC-XV and the Commission did not compute the ratio for its own award."
+   }
+  ],
+  "provenanceRefs": [
+   "P-109",
+   "P-112"
+  ],
+  "notes": "Tamil Nadu at 0.66-0.67 is not an outlier among comparable states: Haryana 0.51, Maharashtra 0.58-0.67, Gujarat 0.61-0.69, Kerala 0.69, Karnataka 0.71, and the average for the eight high-per-capita-GSDP states is 0.70 under FC-XIV and 0.68 under FC-XV. Tamil Nadu sits within a hair of its group mean. FC-XVI para 8.68 records that Tamil Nadu's relative per capita share \"remained virtually unchanged\" under FC-XV while Telangana, Karnataka and Kerala fell sharply.",
+  "caveat": "A ratio below 1.00 is not evidence of a defect. The formula is designed to devolve more per head to states with lower per capita GSDP, and FC-XVI states that each of the last five Commissions disbursed 75 per cent or more of the states' pool on equity criteria. This series measures whether the design is operating, not whether it is right."
+ },
+ {
+  "id": "wb-devolution-population-ratio",
+  "title": "West Bengal's share in devolution divided by its share in population",
+  "unit": "ratio of share in devolution to share in population (dimensionless; 1.00 = devolution exactly proportionate to population)",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Sixteenth Finance Commission, Volume I — Main Report, Table 8.5.",
+   "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "the state's share of the 2011 Census population",
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "FC-XIV.",
+    "provenanceRef": "P-112"
+   },
+   {
+    "period": "FY2020-21",
+    "note": "FC-XV, recalculated excluding Jammu and Kashmir.",
+    "provenanceRef": "P-112"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2010-11",
+    "value": 0.95,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 0.95,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 0.95,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 0.95,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 0.95,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 0.95,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 0.95,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 0.95,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 0.95,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 0.95,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 0.98,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 0.98,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 0.98,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 0.98,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 0.98,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 0.98,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-109",
+   "P-112"
+  ],
+  "notes": "This is the comparator that isolates the horizontal formula. West Bengal receives essentially its population share and is nonetheless the one state against which the Union's statutory fund-stopping power has been used. Setting Tamil Nadu against Bihar frames the devolution question as rich-against-poor, the framing on which Tamil Nadu loses; setting it against West Bengal isolates the formula. Separating the devolution dispute from the conditionality dispute is the load-bearing analytical move of this phase and these two series are how it is measured."
+ },
+ {
+  "id": "bihar-devolution-population-ratio",
+  "title": "Bihar's share in devolution divided by its share in population",
+  "unit": "ratio of share in devolution to share in population (dimensionless; 1.00 = devolution exactly proportionate to population)",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Sixteenth Finance Commission, Volume I — Main Report, Table 8.5.",
+   "url": "https://fincomindia.nic.in/asset/doc/commission-reports/16th-FC/reports/Vol1-Main-Report.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "the state's share of the 2011 Census population",
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "FC-XIV. Bihar's ratio falls 1.25 to 1.11 at this step: the largest single beneficiary of the formula is also losing ground under it.",
+    "provenanceRef": "P-112"
+   },
+   {
+    "period": "FY2020-21",
+    "note": "FC-XV, recalculated excluding Jammu and Kashmir.",
+    "provenanceRef": "P-112"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2010-11",
+    "value": 1.25,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2011-12",
+    "value": 1.25,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 1.25,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 1.25,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 1.25,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 1.11,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 1.11,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 1.11,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 1.11,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 1.11,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 1.15,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 1.15,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 1.15,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 1.15,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 1.15,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 1.15,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-109",
+   "P-112"
+  ],
+  "notes": "Bihar is the direct counterparty to Tamil Nadu's loss under the income-distance criterion, and the phase carries it so that the contributor states' memoranda are not the only voice in the record. FC-XVI Table 8.5's longer series runs 1.78 (FC-XI) to 1.15 (FC-XV): the state the formula favours most has seen its own advantage shrink by a third across five Commissions."
+ },
+ {
+  "id": "tn-direct-goi-transfers-to-sias",
+  "title": "Funds transferred by the Government of India directly to State Implementing Agencies in Tamil Nadu, outside the State Budget",
+  "unit": "₹ crore, funds transferred by the Government of India directly to State Implementing Agencies in Tamil Nadu, not routed through the State Budget or State Treasury System",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "CAG, State Finances Audit Report No. 2 of 2025, Government of Tamil Nadu, year ended March 2024, Chapter IV para 4.3, Exhibit 4.1 and Table 4.2 (pp. 114-116); back years from the FY2019-20 and FY2022-23 editions. The auditor takes the quantum from the Public Financial Management System of the Controller General of Accounts and sets it against the State Finance Accounts.",
+   "url": "https://cag.gov.in/webroot/uploads/download_audit_report/2025/English-SFAR-2023-24-068f705991fcd54.32361460.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 3914.73,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 5694.39,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 11643.64,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 11751.3,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 15113,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 18226.43,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 23156.22,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 27816.54,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 30085.53,
+    "status": "verified",
+    "note": "Largest lines: MGNREGS to the State Employment Guarantee Fund ₹10,254.44 crore; National Food Security Act decentralised procurement to the TN Civil Supplies Corporation ₹7,072.53 crore; Jal Jeevan Mission ₹2,617.10 crore; PM-KISAN ₹1,441.32 crore; PM-JAY ₹691.28 crore."
+   }
+  ],
+  "provenanceRefs": [
+   "P-106",
+   "P-108"
+  ],
+  "notes": "No break is identified across the nine points: the definition — funds to implementing agencies per the Union's own payment system, listed at Appendix VI of Volume II of the State Finance Accounts — is stated identically in every edition checked. The series matters because it is the only Tamil Nadu transfer quantity that appears in neither government's own account of transfers, and because the auditor attaches to it the finding that the State's fiscal aggregates \"did not present the true and fair picture to that extent\".",
+  "caveat": "The quantum originates in the Union's own payment system and is reported by the auditor. It is not a State figure and must not be graded as one. Note also that a Government of India decision of 8 July 2015 required all centrally sponsored scheme assistance to be released to State Governments rather than to implementing agencies; the auditor records that MGNREGS money has been released directly to agencies in Tamil Nadu since FY2015-16 notwithstanding it."
+ },
+ {
+  "id": "tn-fc-projection-minus-actual-devolution",
+  "title": "Tamil Nadu's actual tax devolution against the Finance Commission's projection for the same year",
+  "unit": "₹ crore, actual tax devolution to Tamil Nadu minus the Finance Commission's projection for the same year (negative = actual below projection)",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "CAG, State Finances Audit Report No. 2 of 2025, Government of Tamil Nadu, year ended March 2024, Table 2.7, column headed literally \"5 (4-3)\". The table's own source line reads \"Details furnished by the Finance Department\".",
+   "url": "https://cag.gov.in/webroot/uploads/download_audit_report/2025/English-SFAR-2023-24-068f705991fcd54.32361460.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "breaks": [
+   {
+    "period": "FY2020-21",
+    "note": "The projection basis changes three times inside this window and is not constant: 4.023 per cent plus a separate 4.104 per cent on shareable service tax under FC-XIV; 4.189 per cent for FY2020-21 alone; 4.079 per cent thereafter.",
+    "provenanceRef": "P-112"
+   },
+   {
+    "period": "FY2021-22",
+    "note": "The series changes sign here and never returns. This is the same forecasting-regime change that flips devolution-be-to-actual-gap in the same year and must not be read as an award effect.",
+    "provenanceRef": "P-113"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": -3035,
+    "status": "verified",
+    "note": "Projection 23,389; actual 20,354."
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": -2454,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": -4089,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": -5445,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": -15403,
+    "status": "verified",
+    "note": "The FY2015-20 aggregate printed by the auditor is 1,59,450 projected against 1,29,024 actual, a cumulative minus 30,426."
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": -10898,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 10595,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 8847,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 12445,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-108",
+   "P-112",
+   "P-113"
+  ],
+  "notes": "The cumulative shortfall of ₹30,426 crore against Fourteenth Finance Commission projections is followed by a cumulative surplus of ₹31,887 crore over three years against Fifteenth Finance Commission projections. Both halves are the same column and must be carried together.",
+  "caveat": "This series must never be read as \"the Union underpaid Tamil Nadu by ₹30,426 crore\". The column measures the Commission's forecasting error at least as much as it measures Union conduct, and no retrieved document decomposes the two. Both input columns come from the State's own Finance Department; only the subtraction is the auditor's."
+ },
+ {
+  "id": "tn-gst-compensation-received",
+  "title": "GST compensation released by the Government of India to the Government of Tamil Nadu",
+  "unit": "₹ crore, GST compensation released by the Government of India to the Government of Tamil Nadu, by financial year of release",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "CAG, State Finances Audit Report No. 2 of 2025, Government of Tamil Nadu, year ended March 2024, Table 2.19(a).",
+   "url": "https://cag.gov.in/webroot/uploads/download_audit_report/2025/English-SFAR-2023-24-068f705991fcd54.32361460.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 3151,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 8922.03,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 10602.83,
+    "status": "verified",
+    "note": "A separate ₹6,241 crore arrived this year as a back-to-back loan booked under Major Head 6004 Public Debt, not as compensation, and is not in this series."
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 7235.8,
+    "status": "verified",
+    "note": "A further ₹8,095.25 crore arrived as a back-to-back loan, excluded from every debt indicator by a Department of Expenditure decision, and is not in this series."
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 16214.83,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 4574.2,
+    "status": "verified",
+    "note": "Arrears, not a current-year entitlement: the auditor's footnote splits it into ₹3,529.28 crore for FY2021-22, ₹3.31 crore for FY2018-19 and ₹1,041.60 crore for April to June 2022."
+   }
+  ],
+  "provenanceRefs": [
+   "P-108"
+  ],
+  "notes": "Total ₹50,700.69 crore over six years. Under the accepted recommendation of Tamil Nadu's own Fifth State Finance Commission, ten per cent of it — ₹5,070.06 crore — was due to local bodies and was never transferred; the Department admitted so at the audit exit conference. The receipt and the non-transfer belong to one record and neither half may be quoted alone.",
+  "caveat": "A year-of-release series is not a year-of-entitlement series and the two must not be plotted as one. The series ends with the guarantee's own life: the compensation guarantee expired on 30 June 2022 and FY2023-24 is arrears. The compensation cess continues past that date as a separate instrument and is a separate series."
+ },
+ {
+  "id": "tn-gst-protected-revenue-shortfall",
+  "title": "Tamil Nadu's protected revenue under the GST (Compensation to States) Act less total tax collected including compensation",
+  "unit": "₹ crore, revenue protected under the GST (Compensation to States) Act 2017 — the FY2015-16 subsumed-tax base of ₹29,786.36 crore compounded at 14 per cent — minus total tax collected including compensation",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "CAG, State Finances Audit Report No. 4 of 2021, Government of Tamil Nadu, year ended March 2020, Table 2.6, with the 1.14^n arithmetic printed. The FY2018-19 row is reprinted verbatim from the FY2018-19 edition, which is a scan with no text layer.",
+   "url": "https://cag.gov.in/webroot/uploads/download_audit_report/2021/SFAR%20-%202019-20-061dbff08d26f09.85133312.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 455.16,
+    "status": "verified",
+    "note": "Nine months only, July 2017 to March 2018 — the guarantee began on 1 July 2017. Not comparable with the full years that follow."
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 2445.71,
+    "status": "verified",
+    "note": "Projected 29,786.36 x 1.14^3 = ₹44,129.80 crore against ₹41,684.09 crore actually collected including compensation — an outturn growth of 7.68 per cent against the protected 14."
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 3009.76,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-108"
+  ],
+  "notes": "This is the phase's clearest instance of an instrument that passes the independence test in its weaker form: the projection and the subtraction are the auditor's, computed from a statutory base year and a statutory rate, and the answer is in neither government's own account of itself. It is the arithmetic of the guarantee applied to one state, not an estimate of anything counterfactual.",
+  "caveat": "The actual-receipts input carries the auditor's own footnote, \"(Figures excluding refunds, as worked out by GoTN)\" — one input is the State's. Do not extend this series past FY2019-20 from the later editions without checking: those editions print the projection but the comparison table changes shape."
+ },
+ {
+  "id": "gst-compensation-cess-collected",
+  "title": "GST Compensation Cess collected by the Union",
+  "unit": "₹ crore, current prices, gross collections under the GST Compensation Cess head",
+  "domain": "macro",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Union Receipt Budget, Tax Revenue statement, head 0009 GST Compensation Cess: Actuals FY2024-25 and the FY2025-26 Revised Estimate from Receipt Budget 2026-2027; Actual FY2023-24 from Receipt Budget 2025-2026; Actual FY2022-23 from Receipt Budget 2024-2025.",
+   "url": "https://www.indiabudget.gov.in/doc/rec/allrec.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 125862.41,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 141436.16,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 150569.84,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 88000,
+    "status": "verified",
+    "note": "Revised Estimate, not an actual. The levy's notified terminal date is 31 March 2026, so this is a part-regime year."
+   },
+   {
+    "country": "IND",
+    "period": "FY2026-27",
+    "value": null,
+    "status": "pending",
+    "note": "The GST Compensation Cess line is blank in Receipt Budget 2026-2027. A blank is unreported, never zero, and this drop does not convert it into a zero. What the blank means for the levy's own statutory life is the open question."
+   }
+  ],
+  "provenanceRefs": [
+   "P-101",
+   "P-113"
+  ],
+  "notes": "This series is deliberately separate from any compensation series. The guarantee ran 1 July 2017 to 30 June 2022; the cess was extended past it by notification to 31 March 2026 in order to service the back-to-back loans, so it measures a different thing after June 2022 from what it measured before. Carried here from FY2022-23 — that is, wholly inside the post-guarantee regime — so that no point in it straddles the boundary.",
+  "caveat": "The compensation cess is not compensation. After 30 June 2022 its proceeds serviced debt raised because the GST Compensation Fund could not meet the guarantee, with interest as the first charge and principal as the second, so the states' arrears ranked behind debt service. Reading this series as money flowing to states is wrong for every point in it."
+ },
+ {
+  "id": "wb-mgnrega-funds-released",
+  "title": "MGNREGA central funds released to West Bengal",
+  "unit": "₹ crore, MGNREGA central funds released by the Government of India to West Bengal",
+  "domain": "welfare",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "PIB / Ministry of Rural Development, 5 December 2023, carrying Annexure-II to Lok Sabha Unstarred Question No. 254 of 5 December 2023 (funds released by state, three years). The source table is in ₹ lakh; the conversion to ₹ crore is this drop's.",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1982799",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "breaks": [
+   {
+    "period": "FY2022-23",
+    "note": "Release stopped under section 27 of the MGNREG Act from 9 March 2022. The zero is an administrative act, not a demand signal, and the table cannot distinguish the two from within itself.",
+    "provenanceRef": "P-114"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 11454.05,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 7507.8,
+    "status": "verified",
+    "note": "Release stopped on 9 March 2022, three weeks before the year ended, so this year is part-stopped."
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 0,
+    "status": "verified",
+    "note": "A published zero, not a blank: the Union's own table prints 0.00 against West Bengal. Section 27 was in force for the whole year."
+   }
+  ],
+  "provenanceRefs": [
+   "P-114"
+  ],
+  "notes": "Read against bihar-mgnrega-funds-released, which runs through the same three years on the same table with no stoppage. The comparison is what makes the zero legible as an act rather than as an outcome.",
+  "caveat": "The publisher is the Union, a party to the dispute, stating its own release figures. A zero in a release table normally means no demand or no claim; here it means a statutory power was exercised, and every reading of this series must carry the section 27 fact externally. The unit is funds released — not funds allocated, and not expenditure incurred."
+ },
+ {
+  "id": "bihar-mgnrega-funds-released",
+  "title": "MGNREGA central funds released to Bihar",
+  "unit": "₹ crore, MGNREGA central funds released by the Government of India to Bihar",
+  "domain": "welfare",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "PIB / Ministry of Rural Development, 5 December 2023, carrying Annexure-II to Lok Sabha Unstarred Question No. 254 of 5 December 2023. The source table is in ₹ lakh; the conversion to ₹ crore is this drop's.",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1982799",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 7284.24,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 5407.37,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 6395.29,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-114"
+  ],
+  "notes": "Carried as the control for wb-mgnrega-funds-released. Bihar's releases fall by a quarter and recover; West Bengal's go to zero and stay there. Same table, same publisher, same three years.",
+  "caveat": "The publisher is the Union, a party to the dispute, stating its own release figures. The unit is funds released, not allocated and not spent."
+ },
+ {
+  "id": "wb-mgnrega-new-jobcards",
+  "title": "New MGNREGA job cards issued in West Bengal",
+  "unit": "job cards issued in the year",
+  "domain": "welfare",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "PIB / Ministry of Rural Development, 5 December 2023, carrying Annexure-I to Lok Sabha Unstarred Question No. 254 of 5 December 2023 (new job cards by state, three years).",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1982799",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 1682297,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 825225,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 214953,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-114"
+  ],
+  "notes": "An 87 per cent fall across two years, coinciding with the stoppage. The series cannot separate cause from coincidence and the source states no break — which is why bihar-mgnrega-new-jobcards is carried beside it.",
+  "caveat": "Do NOT read this fall as caused by the section 27 stoppage without reading Bihar's, which falls from 26.68 lakh to 11.37 lakh over the same two years with no stoppage in force. Whatever moved job-card issue in this period was not confined to West Bengal, and no retrieved instrument decomposes the two effects."
+ },
+ {
+  "id": "bihar-mgnrega-new-jobcards",
+  "title": "New MGNREGA job cards issued in Bihar",
+  "unit": "job cards issued in the year",
+  "domain": "welfare",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "PIB / Ministry of Rural Development, 5 December 2023, carrying Annexure-I to Lok Sabha Unstarred Question No. 254 of 5 December 2023.",
+   "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1982799",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 2386693,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 2668111,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 1137336,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-114"
+  ],
+  "notes": "The control series. Bihar had no stoppage and its new job cards fell 57 per cent in FY2022-23. Carrying this beside West Bengal's is what stops the phase asserting a causal claim the data cannot support."
+ },
+ {
+  "id": "bihar-own-tax-share-revenue-receipts",
+  "title": "Bihar's own tax revenue as a share of its revenue receipts",
+  "unit": "per cent of the state's revenue receipts",
+  "domain": "macro",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Derived from CAG, State Finances Audit Report No. 1 of 2024, Government of Bihar, year ended 31 March 2023, Table 2.3, sourced by the auditor to the Finance Accounts.",
+   "url": "https://cag.gov.in/webroot/uploads/download_audit_report/2024/State-Finance-Report-2022-23-(ENGLISH)-066a229e6b84881.48517440.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "the state's total revenue receipts",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 22.31,
+    "status": "verified",
+    "note": "Own tax ₹29,408 crore on revenue receipts of ₹1,31,794 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 24.28,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 23.67,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 21.95,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 25.49,
+    "status": "verified",
+    "note": "Own tax ₹44,018 crore on revenue receipts of ₹1,72,688 crore."
+   }
+  ],
+  "provenanceRefs": [
+   "P-108"
+  ],
+  "notes": "Carried because the Union's case on conditionality rests on it: a state raising a fifth to a quarter of its revenue itself is the state for which a matching share is designed, and it is also the state least able to find one. The Sixteenth Finance Commission's own FY2023-24 figure for Bihar's reliance on devolution and grants is 72.3 per cent of revenue receipts against an all-states 42.2.",
+  "caveat": "Derived by division from two published columns, not published as a ratio. The Bihar audit report's Table 2.3 does not print the state's share of Union taxes as a separate line — the West Bengal report's equivalent table does — so the two states' tables are not automatically like-for-like."
+ },
+ {
+  "id": "wb-own-tax-share-revenue-receipts",
+  "title": "West Bengal's own tax revenue as a share of its revenue receipts",
+  "unit": "per cent of the state's revenue receipts",
+  "domain": "macro",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Derived from CAG, State Finances Audit Report No. 1 of 2022, Government of West Bengal, year ended 31 March 2021, Table 2.3, sourced by the auditor to the Finance Accounts.",
+   "url": "https://cag.gov.in/uploads/subsite_whats_new/Report-No-1-of-2022-State-Finances-Audit-Report-Government-of-West-Bengal-of-2020-21-0624434d4dc9868-21501088.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "the state's total revenue receipts",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 38.59,
+    "status": "verified",
+    "note": "Own tax ₹45,466 crore on revenue receipts of ₹1,17,832 crore; share of Union taxes ₹44,625 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 40.16,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 41.6,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 42.45,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 40.63,
+    "status": "verified",
+    "note": "Own tax ₹60,287 crore; share of Union taxes ₹44,737 crore; grants-in-aid from the Union ₹38,172 crore."
+   }
+  ],
+  "provenanceRefs": [
+   "P-108"
+  ],
+  "notes": "The window differs from Bihar's because the two states' audit reports were published for different years and the later West Bengal editions were not retrieved. Carried as the mirror of bihar-own-tax-share-revenue-receipts: West Bengal raises roughly twice as much of its own revenue as Bihar and receives essentially its population share of devolution — and is the one state against which the statutory fund-stopping power has been used.",
+  "caveat": "Derived by division from two published columns, not published as a ratio. Different period from the Bihar series: they are not two segments of one comparison and must not be spliced or read as a like-for-like time overlap."
+ },
+ {
+  "id": "cess-share-gtr-parliamentary",
+  "title": "Cesses as a share of gross tax revenue, as the Union states it to Parliament",
+  "unit": "per cent of Union gross tax revenue, on the Union's own undefined selection of cess line items",
+  "domain": "macro",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Rajya Sabha Starred Question No. *18, answered 21 July 2026 by the Minister of Finance, Annexure-A \"Statement showing details of Cesses & surcharges levied and collected as part of principal taxes\" — the footing row \"As % of gross tax revenue\". The identical Annexure-A is carried by Lok Sabha Unstarred Question No. 137 of 20 July 2026, which is the corroborating second copy.",
+   "url": "https://sansad.in/getFile/annex/271/AS18_7lp2Vc.pdf?source=pqars",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "Union gross tax revenue",
+  "breaks": [
+   {
+    "period": "FY2025-26",
+    "note": "Basis shift stated on the face of the Union's own table: Actuals through FY2024-25, Revised Estimate FY2025-26, Budget Estimate FY2026-27. The last two rows are not measurements of the same kind as the first three.",
+    "provenanceRef": "P-113"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 11.5,
+    "status": "verified",
+    "note": "Grand total of the Union's cess rows 350,487.53 crore. Includes the GST Compensation Cess (125,862.41 crore), which is earmarked to the states."
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 10.5,
+    "status": "verified",
+    "note": "Grand total 364,687.64 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 10,
+    "status": "verified",
+    "note": "Grand total 381,323.36 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 8.2,
+    "status": "verified",
+    "note": "Revised Estimate, not an actual. Grand total 333,650.00 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2026-27",
+    "value": 6.2,
+    "status": "verified",
+    "note": "Budget Estimate, not an actual. Grand total 273,500.00 crore, of which the GST Compensation Cess line is 0.00 — most of the fall from 8.2 to 6.2 is the compensation cess ending, not a policy retreat from cesses."
+   }
+  ],
+  "provenanceRefs": [
+   "P-100",
+   "P-113",
+   "P-115"
+  ],
+  "notes": "This is a THIRD convention, distinct from both cess series already in this drop. It is the Union's own arithmetic, laid on the Table of the House by the Finance Minister, and the answer nowhere states which line items the aggregate contains or on what test they were selected — the reader can only read the enumerated rows and add them. On this convention the seventeen enumerated cess rows include the GST Compensation Cess and exclude the Special Additional Excise Duty, which the same government's Receipt Budget note 6.05 classifies as a surcharge and which this answer accordingly carries in the surcharge table instead. The three conventions are complements, not rivals: read with surcharge-share-gtr-parliamentary, which is the other half of the same table.",
+  "caveat": "The Union does not define the set it is summing. The answer prints seventeen named cess rows and a footing percentage and supplies no test for membership, so this series states what the Union says the share is, not what a defined quantity is. Never quote it against cess-surcharge-share-gtr or cess-surcharge-share-gtr-excl-compcess as though the three disagreed about the world."
+ },
+ {
+  "id": "surcharge-share-gtr-parliamentary",
+  "title": "Surcharges as a share of gross tax revenue, as the Union states it to Parliament",
+  "unit": "per cent of Union gross tax revenue, on the Union's own undefined selection of surcharge line items",
+  "domain": "macro",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Rajya Sabha Starred Question No. *18, answered 21 July 2026 by the Minister of Finance, Annexure-A, the surcharge block \"SURCHARGES LEVIED ON –\" and its footing row \"As % of gross tax revenue\". The identical Annexure-A is carried by Lok Sabha Unstarred Question No. 137 of 20 July 2026.",
+   "url": "https://sansad.in/getFile/annex/271/AS18_7lp2Vc.pdf?source=pqars",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "Union gross tax revenue",
+  "breaks": [
+   {
+    "period": "FY2025-26",
+    "note": "Actuals through FY2024-25, Revised Estimate FY2025-26, Budget Estimate FY2026-27, as printed on the Union's own table.",
+    "provenanceRef": "P-113"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 8.9,
+    "status": "verified",
+    "note": "Grand total 272,360.61 crore, of which the Special Additional Excise Duty on petrol and diesel is 147,163.79 crore — 54 per cent of all surcharge."
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 8,
+    "status": "verified",
+    "note": "Grand total 278,060.16 crore; SAED 146,619.61 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 7.9,
+    "status": "verified",
+    "note": "Grand total 299,254.51 crore; SAED 142,880.01 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 8.2,
+    "status": "verified",
+    "note": "Revised Estimate. Grand total 335,970.00 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2026-27",
+    "value": 8.1,
+    "status": "verified",
+    "note": "Budget Estimate. Grand total 356,850.00 crore. Surcharge overtakes cess in this year for the first time in the table."
+   }
+  ],
+  "provenanceRefs": [
+   "P-100",
+   "P-113",
+   "P-115"
+  ],
+  "notes": "The five rows the Union sums here are corporation tax surcharge, income tax surcharge, fringe benefit tax, the Social Welfare Surcharge on customs and the Special Additional Excise Duties on petrol and diesel. The last is the largest, and its inclusion is what makes this series irreconcilable with the Union's own earlier answer of 1 August 2023 (Rajya Sabha Unstarred Question No. 1324), which put surcharge at 1.50 per cent of gross tax revenue for FY2021-22 against 8.9 per cent here for FY2022-23 — a difference in the set summed, not in the world. Neither answer states its basis. Recorded in P-115.",
+  "caveat": "The Union does not define the set it is summing, and its own two answers sum different sets. Read only against the cess half of the same table, and never spliced onto the FY2016-17 to FY2021-22 figures the Union gave in 2023."
+ },
+ {
+  "id": "cess-surcharge-share-gtr-parliamentary",
+  "title": "Cesses and surcharges together as a share of gross tax revenue, as the Union states it to Parliament",
+  "unit": "per cent of Union gross tax revenue, on the Union's own undefined selection of line items",
+  "domain": "macro",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Lok Sabha Unstarred Question No. 137, answered 20 July 2026, Ministry of Finance (Department of Revenue), the table in reply to part (d), which prints Total Cess, Total Surcharge, Cess+Surcharge, gross tax revenue and the percentage for each of four named years.",
+   "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/188/AU137_1GENno.pdf?source=lsapps",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "Union gross tax revenue",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 9.6,
+    "status": "verified",
+    "note": "Cess 89,117.1 + surcharge 30,792.5 = 119,909.6 crore over gross tax revenue 1,245,135.8 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 17.5,
+    "status": "verified",
+    "note": "Cess 279,579.9 + surcharge 71,273.7 = 350,853.6 crore over 2,010,059.3 crore."
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 17.9,
+    "status": "verified",
+    "note": "Cess 381,323.4 + surcharge 299,254.5 = 680,577.9 crore over 3,796,381.7 crore. Reconciles exactly with the two component series: 10.0 + 7.9 = 17.9."
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 16.4,
+    "status": "verified",
+    "note": "Cess 333,650.0 + surcharge 335,970.0 = 669,620.0 crore over 4,077,772.0 crore. Revised Estimate. Reconciles: 8.2 + 8.2 = 16.4."
+   }
+  ],
+  "provenanceRefs": [
+   "P-100",
+   "P-113",
+   "P-115"
+  ],
+  "notes": "Four years, not a continuous run: the Union answered for the four years the member named. It is carried because it is the Union's own statement of the phase's central number on the longest span it has ever given — 9.6 per cent in FY2014-15 against 17.9 per cent in FY2024-25, a rise of 1.86 times over the whole period this instrument covers. The two later points are the arithmetic sum of the two component series for the same years, so the three parliamentary series are one convention consistently applied. The member asked for the proportion to total DIRECT TAX collections; the Government answered against gross tax revenue instead and said so. That substitution is on the face of the document.",
+  "caveat": "Four discrete years, not a series with annual spacing, and the last is a Revised Estimate. Do not draw a line through these points. And do not read the 9.6-to-17.9 movement as a measured doubling of the same defined quantity: the Union defines the quantity in neither year."
+ },
+ {
+  "id": "aidc-collected",
+  "title": "Agriculture Infrastructure and Development Cess collected",
+  "unit": "₹ crore, current prices, collections under the Agriculture Infrastructure and Development Cess",
+  "domain": "macro",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Rajya Sabha Unstarred Question No. 385, answered 3 February 2026, Ministry of Finance (Department of Revenue), Annexure B item 4 \"AGRICULTURE INFRASTRUCTURE & DEVELOPMENT FUND\", column (A) Collection.",
+   "url": "https://sansad.in/getFile/annex/270/AU385_noP7w0.pdf?source=pqars",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 76950.68,
+    "status": "verified",
+    "note": "The first full year of the levy. The cess took effect 2 February 2021 under the Provisional Collection of Taxes Act 1931 and was enacted by the Finance Act 2021."
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 74142.03,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 80923.6,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 75180,
+    "status": "verified",
+    "note": "Revised Estimate as at February 2026. The Union's later answer of 21 July 2026 (RS Starred Q. *18, Annexure-A) gives the actual as 75,455.06 crore. The two are the same quantity at two vintages and the difference is 275.06 crore; this series holds the vintage the transfer column was published against, so that collection and transfer are read off one table."
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 80030,
+    "status": "verified",
+    "note": "Budget Estimate as at February 2026. The July 2026 answer revises this to 81,580.00 crore."
+   }
+  ],
+  "provenanceRefs": [
+   "P-100",
+   "P-101",
+   "P-113"
+  ],
+  "notes": "Read only against aidf-transferred, which is the adjacent column of the same table. The Union publishes both in one row precisely so the balance can be struck, and strikes it itself in a third column.",
+  "caveat": "The last two points are a Revised and a Budget Estimate and both were superseded within six months by the Union's own later answer. Collections under a receipt head are not the same accounting event as credits to a reserve fund in the Public Account (P-101); the difference between this series and aidf-transferred is not a shortfall in any single ledger."
+ },
+ {
+  "id": "aidf-transferred",
+  "title": "Transferred to the Agriculture Infrastructure and Development Fund",
+  "unit": "₹ crore, current prices, transfer to and utilisation from the designated Reserve Fund",
+  "domain": "macro",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Rajya Sabha Unstarred Question No. 385, answered 3 February 2026, Ministry of Finance (Department of Revenue), Annexure B item 4, column (B) (Transfer/Utilisation). Corroborated for FY2022-23 and FY2023-24 by Annexure B of Lok Sabha Unstarred Question No. 137 of 20 July 2026, which prints the same fund on the same basis.",
+   "url": "https://sansad.in/getFile/annex/270/AU385_noP7w0.pdf?source=pqars",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 0,
+    "status": "verified",
+    "note": "A published zero, not a blank. The Union's table prints an ellipsis in the transfer column and then carries the whole of the collection into its own Balance column: 76,950.68 minus B equals 76,950.68. The Union's own arithmetic fixes B at zero."
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 0,
+    "status": "verified",
+    "note": "Same construction: balance 74,142.03 against collection 74,142.03. Independently corroborated by Annexure B of LS Q.137, which prints an ellipsis against this fund for FY2022-23 while printing figures for six other funds in the same column."
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 120714.39,
+    "status": "verified",
+    "note": "The first transfer, and it is 1.49 times the year's collection — the fund begins catching up on the two nil years."
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 138822.37,
+    "status": "verified",
+    "note": "Revised Estimate. The July 2026 answer gives 139,768.32 crore for the same year."
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 117676.85,
+    "status": "verified",
+    "note": "Budget Estimate."
+   }
+  ],
+  "provenanceRefs": [
+   "P-101",
+   "P-113"
+  ],
+  "notes": "Over the five years the table covers, collections total 387,226.31 crore and transfers 377,213.61 crore, so on the Union's own figures the Fund is still 10,012.70 crore behind cumulatively even on Budget Estimates. The year-by-year Balance column the Union prints turns negative from FY2023-24 and reads as over-transfer; the cumulative position does not. Both are arithmetic from the same five rows.",
+  "caveat": "Utilisation and transfer are printed as one column by the Union and cannot be separated from within the table. A zero here means the earmarked Fund received nothing that year; it does not mean the money was not spent, because expenditure on agricultural infrastructure is made from the Consolidated Fund under parliamentary appropriation whether the Fund exists or not."
+ },
+ {
+  "id": "wb-css-releases",
+  "title": "Centrally sponsored scheme funds released to West Bengal",
+  "unit": "₹ crore, current prices, centrally sponsored scheme funds released by the Union to West Bengal",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Lok Sabha Unstarred Question No. 142, answered 1 December 2025, Ministry of Finance (Department of Expenditure), Annexure-I \"Centrally Sponsored Schemes\", state-wise releases FY2020-21 to FY2024-25. The document states its own source: \"Source: Public Financial Management System (PFMS).\"",
+   "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/186/AU142_6FgksB.pdf?source=lsapps",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "breaks": [
+   {
+    "period": "FY2021-22",
+    "note": "The Single Nodal Agency model takes effect. \"Released\" continues to denote money leaving the Union's payment system, but from this year the money's next stop is a nodal account rather than the state treasury, so the release figure and the state's receipt figure diverge for reasons that are accounting rather than fiscal.",
+    "provenanceRef": "P-106"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 27406.79,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 18545.33,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 13137.87,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 11386.61,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 9081.21,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-106",
+   "P-107",
+   "P-108"
+  ],
+  "notes": "A monotonic fall in every one of the four transitions, with no reversal: 66.9 per cent over five years, against an all-India total that fell 5.8 per cent over the same window. West Bengal is the second-largest recipient in the table in FY2020-21, behind Maharashtra alone, and by FY2024-25 receives less than Punjab, Himachal Pradesh or Tripura. As a share of the all-India total the state falls from 7.10 to 2.50 per cent. Read against bihar-css-releases and tn-css-releases, which are on the same table for the same years, and against css-releases-all-states, which is the denominator.",
+  "caveat": "This is releases under centrally sponsored schemes only. The same answer's Annexure-II shows West Bengal's CENTRAL SECTOR scheme releases RISING 57.5 per cent over the identical five years, so a centrally-sponsored-only reading overstates the squeeze and must not be presented as the whole of Union money reaching the state. The publisher is the Union, a party to the dispute, stating its own release figures; the answer offers no explanation for any state's trajectory."
+ },
+ {
+  "id": "bihar-css-releases",
+  "title": "Centrally sponsored scheme funds released to Bihar",
+  "unit": "₹ crore, current prices, centrally sponsored scheme funds released by the Union to Bihar",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Lok Sabha Unstarred Question No. 142, answered 1 December 2025, Ministry of Finance (Department of Expenditure), Annexure-I \"Centrally Sponsored Schemes\", state-wise releases FY2020-21 to FY2024-25. The document states its own source: \"Source: Public Financial Management System (PFMS).\"",
+   "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/186/AU142_6FgksB.pdf?source=lsapps",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "breaks": [
+   {
+    "period": "FY2021-22",
+    "note": "The Single Nodal Agency model takes effect. \"Released\" continues to denote money leaving the Union's payment system, but from this year the money's next stop is a nodal account rather than the state treasury, so the release figure and the state's receipt figure diverge for reasons that are accounting rather than fiscal.",
+    "provenanceRef": "P-106"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 22346.15,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 21893.52,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 25174.75,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 22991.59,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 27123.16,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-106",
+   "P-107",
+   "P-108"
+  ],
+  "notes": "Up 21.4 per cent over five years against an all-India total down 5.8 per cent. Carried as the control on wb-css-releases: without a state that rose on the same table in the same years, West Bengal's fall reads as a national contraction, which it is not."
+ },
+ {
+  "id": "tn-css-releases",
+  "title": "Centrally sponsored scheme funds released to Tamil Nadu",
+  "unit": "₹ crore, current prices, centrally sponsored scheme funds released by the Union to Tamil Nadu",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Lok Sabha Unstarred Question No. 142, answered 1 December 2025, Ministry of Finance (Department of Expenditure), Annexure-I \"Centrally Sponsored Schemes\", state-wise releases FY2020-21 to FY2024-25. The document states its own source: \"Source: Public Financial Management System (PFMS).\"",
+   "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/186/AU142_6FgksB.pdf?source=lsapps",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "breaks": [
+   {
+    "period": "FY2021-22",
+    "note": "The Single Nodal Agency model takes effect. \"Released\" continues to denote money leaving the Union's payment system, but from this year the money's next stop is a nodal account rather than the state treasury, so the release figure and the state's receipt figure diverge for reasons that are accounting rather than fiscal.",
+    "provenanceRef": "P-106"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 19838.22,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 24397.21,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 24164.13,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 28018.59,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 17674.73,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-106",
+   "P-107",
+   "P-108"
+  ],
+  "notes": "Down 10.9 per cent over five years, but the shape is not West Bengal's: Tamil Nadu rises to a peak of 28,018.59 crore in FY2023-24 and then falls 36.9 per cent in a single year. A one-year drop from a peak and a five-year monotonic decline are different objects and this drop does not merge them.",
+  "caveat": "The FY2024-25 fall is one year and the answer states no reason for it. It must not be read as the same phenomenon as West Bengal's five-year decline without an instrument that distinguishes a payment-cycle effect from a policy one, and no such instrument is held here."
+ },
+ {
+  "id": "css-releases-all-states",
+  "title": "Centrally sponsored scheme funds released to all states and union territories",
+  "unit": "₹ crore, current prices, centrally sponsored scheme funds released by the Union to all states and union territories",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Lok Sabha Unstarred Question No. 142, answered 1 December 2025, Ministry of Finance (Department of Expenditure), Annexure-I \"Centrally Sponsored Schemes\", state-wise releases FY2020-21 to FY2024-25. The document states its own source: \"Source: Public Financial Management System (PFMS).\"",
+   "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/186/AU142_6FgksB.pdf?source=lsapps",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "breaks": [
+   {
+    "period": "FY2021-22",
+    "note": "The Single Nodal Agency model takes effect. \"Released\" continues to denote money leaving the Union's payment system, but from this year the money's next stop is a nodal account rather than the state treasury, so the release figure and the state's receipt figure diverge for reasons that are accounting rather than fiscal.",
+    "provenanceRef": "P-106"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 386048.16,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 423616.63,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 417283.21,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 419894.88,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 363718.78,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-106",
+   "P-107",
+   "P-108"
+  ],
+  "notes": "The denominator for the three state series on the same table. It rises to FY2021-22, holds, and falls 13.4 per cent in FY2024-25 — so part of every state's FY2024-25 movement is national. Carried so that no state series in this drop can be read without its base."
+ },
+ {
+  "id": "wb-samagra-shiksha-allocation",
+  "title": "Samagra Shiksha central allocation to West Bengal",
+  "unit": "₹ crore, current prices, Samagra Shiksha central allocation for West Bengal",
+  "domain": "education",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Lok Sabha Unstarred Question No. 5783, answered 30 March 2026, Ministry of Education (Department of School Education and Literacy), Annexure — central allocation against central share released under Samagra Shiksha, state-wise, FY2021-22 to FY2025-26. The document states its own source: \"PAB Minutes / PFMS / PRABANDH Portal, as on 27.03.2026.\" The source table is in ₹ lakh; the conversion to ₹ crore is this drop's.",
+   "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/187/AU5783_XBHvUl.pdf?source=lsapps",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 1338.7732,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 1773.3804,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 1767.4791,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 1745.7986,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 1998.3946,
+    "status": "verified",
+    "note": "Allocated in a year in which the previous year's allocation had already gone entirely unreleased."
+   }
+  ],
+  "provenanceRefs": [
+   "P-106",
+   "P-107"
+  ],
+  "notes": "Allocation continues undisturbed through the two years in which nothing at all was released, and rises 14.5 per cent in the last of them. The allocation and the release are decided by different acts and the table shows both, which is the only reason the gap is visible."
+ },
+ {
+  "id": "wb-samagra-shiksha-released",
+  "title": "Samagra Shiksha central share released to West Bengal",
+  "unit": "₹ crore, current prices, Samagra Shiksha central share released for West Bengal",
+  "domain": "education",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Lok Sabha Unstarred Question No. 5783, answered 30 March 2026, Ministry of Education (Department of School Education and Literacy), Annexure — central allocation against central share released under Samagra Shiksha, state-wise, FY2021-22 to FY2025-26. The document states its own source: \"PAB Minutes / PFMS / PRABANDH Portal, as on 27.03.2026.\" The source table is in ₹ lakh; the conversion to ₹ crore is this drop's.",
+   "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/187/AU5783_XBHvUl.pdf?source=lsapps",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 1309.7448,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 1522.0421,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 311.2941,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 0,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 0,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-106",
+   "P-107"
+  ],
+  "notes": "Three stages, not one: paid in full in FY2021-22 (97.8 per cent of allocation) and largely in FY2022-23 (85.8 per cent); cut to 17.6 per cent in FY2023-24; then nil twice. Against allocations of 1,745.80 and 1,998.39 crore in the two nil years, 3,744.19 crore was allocated and nothing released. Read against tn-samagra-shiksha-released, whose nil was part-paid in arrears, and bihar-samagra-shiksha-released, which was paid 93.8 per cent in the same year West Bengal received nothing.",
+  "caveat": "A published zero, not a blank: the Union's own table prints 0.00 against West Bengal for two consecutive years, and prints figures for other states in the same column. The unit is the central share released — not allocated, and not spent. The all-India total released stayed between 29,996.83 and 34,458.21 crore across all five years, so these zeros are not a general funding shortfall."
+ },
+ {
+  "id": "tn-samagra-shiksha-allocation",
+  "title": "Samagra Shiksha central allocation to Tamil Nadu",
+  "unit": "₹ crore, current prices, Samagra Shiksha central allocation for Tamil Nadu",
+  "domain": "education",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Lok Sabha Unstarred Question No. 5783, answered 30 March 2026, Ministry of Education (Department of School Education and Literacy), Annexure — central allocation against central share released under Samagra Shiksha, state-wise, FY2021-22 to FY2025-26. The document states its own source: \"PAB Minutes / PFMS / PRABANDH Portal, as on 27.03.2026.\" The source table is in ₹ lakh; the conversion to ₹ crore is this drop's.",
+   "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/187/AU5783_XBHvUl.pdf?source=lsapps",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 1649.9607,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 2117.599,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 2127.6472,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 2153.1501,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 1847.2237,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-106",
+   "P-107"
+  ],
+  "notes": "Rises to FY2024-25 and falls 14.2 per cent in FY2025-26. Carried as the base for tn-samagra-shiksha-released."
+ },
+ {
+  "id": "tn-samagra-shiksha-released",
+  "title": "Samagra Shiksha central share released to Tamil Nadu",
+  "unit": "₹ crore, current prices, Samagra Shiksha central share released for Tamil Nadu",
+  "domain": "education",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Lok Sabha Unstarred Question No. 5783, answered 30 March 2026, Ministry of Education (Department of School Education and Literacy), Annexure — central allocation against central share released under Samagra Shiksha, state-wise, FY2021-22 to FY2025-26. The document states its own source: \"PAB Minutes / PFMS / PRABANDH Portal, as on 27.03.2026.\" The source table is in ₹ lakh; the conversion to ₹ crore is this drop's.",
+   "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/187/AU5783_XBHvUl.pdf?source=lsapps",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 1598.8218,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 2107.2333,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 1876.1554,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 0,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 626.1952,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-106",
+   "P-107"
+  ],
+  "notes": "Paid at 96.9, 99.5 and 88.2 per cent of allocation, then nil, then part-paid. The FY2025-26 figure is not a single year's money: the Union's own asterisk states that it \"includes funds amounting to Rs. 36281.00 lakh for FY 2024-25\", so 362.81 crore of it is arrears against the nil year — 16.9 per cent of that year's allocation, paid late — and 263.39 crore is FY2025-26's own release, 14.3 per cent of its allocation. THIS IS THE ASYMMETRY THAT IS THE FINDING: Tamil Nadu's zero was part-reversed in arrears and carries the Union's own footnote saying so; West Bengal's zeros carry no such footnote and no arrears at all.",
+  "caveat": "The FY2025-26 point is a composite of two years' money and the Union prints it as one figure. It must not be read as that year's release. A zero in FY2024-25 followed by an arrears payment is a delay; a zero followed by another zero is not, and the two states in this drop show one each."
+ },
+ {
+  "id": "bihar-samagra-shiksha-allocation",
+  "title": "Samagra Shiksha central allocation to Bihar",
+  "unit": "₹ crore, current prices, Samagra Shiksha central allocation for Bihar",
+  "domain": "education",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Lok Sabha Unstarred Question No. 5783, answered 30 March 2026, Ministry of Education (Department of School Education and Literacy), Annexure — central allocation against central share released under Samagra Shiksha, state-wise, FY2021-22 to FY2025-26. The document states its own source: \"PAB Minutes / PFMS / PRABANDH Portal, as on 27.03.2026.\" The source table is in ₹ lakh; the conversion to ₹ crore is this drop's.",
+   "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/187/AU5783_XBHvUl.pdf?source=lsapps",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 3827.55,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 5018.8729,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 5021.3266,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 4991.2347,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 5896.5673,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-106",
+   "P-107"
+  ],
+  "notes": "The largest state allocation in the table, rising 54.1 per cent over five years. Carried as the base for bihar-samagra-shiksha-released."
+ },
+ {
+  "id": "bihar-samagra-shiksha-released",
+  "title": "Samagra Shiksha central share released to Bihar",
+  "unit": "₹ crore, current prices, Samagra Shiksha central share released for Bihar",
+  "domain": "education",
+  "lenses": [
+   "federalism"
+  ],
+  "tier": "T1",
+  "source": {
+   "name": "Lok Sabha Unstarred Question No. 5783, answered 30 March 2026, Ministry of Education (Department of School Education and Literacy), Annexure — central allocation against central share released under Samagra Shiksha, state-wise, FY2021-22 to FY2025-26. The document states its own source: \"PAB Minutes / PFMS / PRABANDH Portal, as on 27.03.2026.\" The source table is in ₹ lakh; the conversion to ₹ crore is this drop's.",
+   "url": "https://sansad.in/getFile/lsapps/loksabhaquestions/annex/187/AU5783_XBHvUl.pdf?source=lsapps",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 3406.0845,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 3554.5946,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 4241.7308,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 4217.8144,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 5533.7253,
+    "status": "verified"
+   }
+  ],
+  "provenanceRefs": [
+   "P-106",
+   "P-107"
+  ],
+  "notes": "Paid at 89.0, 70.8, 84.5, 84.5 and 93.8 per cent of allocation — never in full, never near nil, and highest in the last year. Carried as the control: it establishes that release below allocation is the ordinary condition of this scheme in every state, and that a release of zero is therefore a different kind of event rather than the extreme of a continuum."
+ },
+ {
+  "id": "devolution-budget-estimate",
+  "title": "Tax devolution to states as the Union budgeted it, at the start of each year",
+  "unit": "₹ crore, current prices, the Union's Budget Estimate of tax devolution as originally presented",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Union Budget, Budget at a Glance, Receipts page, line \"Less - State's share\" / \"Less - States' share\", read in each year's own budget as originally presented, across eleven editions. The page is bag2.pdf for FY2014-15 to FY2016-17, bag5.pdf from FY2017-18, and sits inside Budget_at_Glance/budget_at_a_glance.pdf for FY2019-20 to FY2021-22. Every row was independently corroborated against the same year's Receipt Budget \"I. Tax Revenue\" statement, line \"Less-States' Share\", major head 0710, which carries the decimals. The FY2024-25 edition is linked.",
+   "url": "https://www.indiabudget.gov.in/budget2024-25/doc/Budget_at_Glance/bag5.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "Fourteenth Finance Commission award begins; the states' share of the divisible pool moves 32 to 42 per cent.",
+    "provenanceRef": "P-103"
+   },
+   {
+    "period": "FY2020-21",
+    "note": "Fifteenth Finance Commission award begins.",
+    "provenanceRef": "P-103"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 382216,
+    "status": "verified",
+    "note": "The FULL budget of July 2014. The interim budget of February 2014 gave 387,732 crore. The gap series uses the full budget, and this series follows it."
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 523958,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 570336.59,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 674565.45,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 788093,
+    "status": "verified",
+    "note": "The Budget at a Glance headline. The Receipt Budget of the same year splits the identical quantity into \"Less-States' Share\" 768,412.57 and \"Less-States' share adjustment as per Actual\" 19,679.95, summing to 788,092.52. Reading the base line alone understates the Budget Estimate by 19,680 crore and breaks the gap series; this series takes the Budget at a Glance headline."
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 809133.02,
+    "status": "verified",
+    "note": "Full budget of July 2019. The interim budget of February 2019 gave 844,605 crore, on which the year's shortfall would read as 23.0 per cent rather than 19.6."
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 784180.87,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 665562.74,
+    "status": "verified",
+    "note": "Budgeted 118,618 crore BELOW the previous year's Budget Estimate, in the first budget after the COVID collapse. The actual came in 232,829 crore above it."
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 816649.47,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 1021447.91,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 1247211.28,
+    "status": "verified",
+    "note": "Full budget of July 2024. The interim budget of February 2024 gave 1,219,783 crore."
+   }
+  ],
+  "provenanceRefs": [
+   "P-113",
+   "P-117"
+  ],
+  "notes": "Authored so that devolution-be-to-actual-gap can be checked by a reader rather than taken on trust: this series and devolution-actual-receipt-budget are its two inputs, and (Actual - BE) divided by BE reproduces all eleven stated values to the stated decimal. Three of the eleven years had two budgets, an interim and a full, with different Budget Estimates; the gap series uses the FULL budget in all three, and that is pinned by arithmetic rather than assumed — substituting the interim estimate breaks all three years and none of the other eight.",
+  "caveat": "This is what the Union budgeted, not what any Finance Commission recommended and not what the states were entitled to. A state budgets against this number; it is a forecast of gross tax revenue multiplied by a fixed share, and in FY2019-20 and FY2020-21 the forecast was wrong by a fifth and a quarter."
+ },
+ {
+  "id": "devolution-actual-receipt-budget",
+  "title": "Tax devolution to states as the Union finally accounted for it",
+  "unit": "₹ crore, current prices, Receipt Budget Actuals for tax devolution, major head 0710",
+  "domain": "federalism",
+  "tier": "T1",
+  "source": {
+   "name": "Union Receipt Budget, \"I. Tax Revenue\" statement, line \"Less-States' Share\", major head 0710, Actuals column, read in the Receipt Budget published two budgets after the year in question. FY2021-22 is the exception: that budget's Receipt Budget tax-revenue file is an image-only scan with no extractable text, and the figure is taken from Budget at a Glance 2023-24 instead. FY2024-25 comes from the current edition, which is linked.",
+   "url": "https://www.indiabudget.gov.in/doc/rec/tr.pdf",
+   "vintage": "2026-08"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "breaks": [
+   {
+    "period": "FY2015-16",
+    "note": "Fourteenth Finance Commission award begins; the states' share of the divisible pool moves 32 to 42 per cent.",
+    "provenanceRef": "P-103"
+   },
+   {
+    "period": "FY2020-21",
+    "note": "Fifteenth Finance Commission award begins.",
+    "provenanceRef": "P-103"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 337808.45,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 506192.96,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 608000.31,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 673005.29,
+    "status": "verified",
+    "note": "Differs from the Finance Commission's Annexure 7.1 figure for the same year by 67,819.29 crore — 11.2 per cent, and by far the largest divergence between the two instruments in any year. Unexplained. See P-117 and L-0182; the difference is not a reason to prefer either figure."
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 761454.15,
+    "status": "verified",
+    "note": "Annexure 7.1 gives 746,894 crore for the same year, 14,560 crore lower."
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 650677.05,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 594996.76,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 898392,
+    "status": "verified",
+    "note": "From Budget at a Glance 2023-24; that budget's Receipt Budget tax-revenue file is an image-only scan. Annexure 7.1 gives 883,100 crore, 15,292 crore lower."
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 948405.82,
+    "status": "verified",
+    "note": "Annexure 7.1 gives 948,982 crore, 576 crore higher — the only year in which the Commission's figure exceeds the Receipt Budget's."
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 1129493.71,
+    "status": "verified",
+    "note": "Agrees with Annexure 7.1 to the rupee. The Union separately states that the C&AG-certified actual for this year differs from the accounted actual by 623.47 crore, recoverable from the states."
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 1286885.44,
+    "status": "verified",
+    "note": "Beyond the last year of fc-devolution-rupees. The Union states that 8,460.55 crore of this is recoverable from the states in FY2025-26, because the year's actuals came in below the Revised Estimate against which money had already been released."
+   }
+  ],
+  "provenanceRefs": [
+   "P-113",
+   "P-117"
+  ],
+  "notes": "This is the second of the two inputs to devolution-be-to-actual-gap and it is NOT the same instrument as fc-devolution-rupees, which carries Finance Commission Annexure 7.1 figures. Six of the eleven years agree within 240 crore; four do not, and one of those four differs by 67,819 crore. Both instruments are correctly sourced and this drop holds both rather than reconciling them, because no published bridge exists. See P-117.",
+  "caveat": "An \"Actual\" here is not final. The Union's own Receipt Budget distinguishes \"the amount devolved as per Actuals\" from the C&AG-certified actuals, states that the figures \"are provisional and may change\", and recovers over-devolution from the states in a later year. A gap series computed on this column shows a positive gap as money the states received above budget and cannot show it later being clawed back."
+ }
+]

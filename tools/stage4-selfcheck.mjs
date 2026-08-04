@@ -372,6 +372,59 @@ function unexplainedRefReport(corpus, label) {
   return out.length;
 }
 
+// ---------------------------------------------------------------- the merge gate, run early
+/**
+ * STAGE 4 RUNS THE MERGE GATE'S OWN RULES, RATHER THAN ITS OWN IMPRESSION OF THEM.
+ *
+ * Until 2026-08-04 this file implemented its own checks — ids, derived reference forms, both
+ * cases on a scored record, `whatChanged` length, charset, per-record schema — and none of
+ * `integrity.mjs`'s thirty-four instrument rules. A drop could therefore report STAGE 4 CLEAN
+ * and hard-fail `npm run validate` the moment it was merged.
+ *
+ * That is not hypothetical. Phase 13's drop passed stage 4 twice carrying four `not-published`
+ * absences with no `wouldFill` — which `unmeasured-route` treats as an ERROR, because
+ * `not-published` asserts in its own written definition that the data exists and is producible
+ * under compulsion, so an absence on that value with no route contradicts the value it declares.
+ * Stage 4 was blind to it, and the four records were found by hand.
+ *
+ * REIMPLEMENTING THE RULES HERE WOULD BE THE SAME DEFECT ONE LEVEL UP — a second enumeration to
+ * drift out of step with the first, which is exactly the reasoning that killed the hand-written
+ * reference-form list at the top of this file. So this does not reimplement anything: it calls
+ * `checkIntegrity`, the function the merge gate calls.
+ *
+ * THE CORPUS MUST BE THE MERGED ONE. Cross-record rules cannot be evaluated on a drop alone —
+ * every reference from a drop record into a live record would dangle, and the run would drown in
+ * false positives. So the simulation is drop ∪ live, which is precisely the tree merge produces.
+ *
+ * ATTRIBUTION, AND WHY IT IS NOT JUST A FILTER. Findings that name only live records are
+ * pre-existing conditions, not this drop's debt, and gating on them would make a phase
+ * responsible for every warning already in the corpus. They are reported separately and do not
+ * gate. Findings touching a drop record gate.
+ */
+import { checkIntegrity } from './lib/integrity.mjs';
+
+const DROP_FILE = (layer) => `DROP/${layer}.json`;
+const mergedRecords = [];
+for (const layer of LAYERS) {
+  drop[layer].forEach((record, index) => mergedRecords.push({ layer, file: DROP_FILE(layer), index, record, incoming: false }));
+  live[layer].forEach((record, index) => mergedRecords.push({ layer, file: `live/${layer}.json`, index, record, incoming: false }));
+}
+const today = new Date().toISOString().slice(0, 10);
+const { findings: mergeFindings } = checkIntegrity(mergedRecords, { today });
+
+const dropAttributable = mergeFindings.filter((f) => String(f.file ?? '').startsWith('DROP/'));
+const liveOnly = mergeFindings.filter((f) => !String(f.file ?? '').startsWith('DROP/'));
+for (const f of dropAttributable) add(f.level, f.rule, f.where, f.message);
+
+const rulesRun = [...new Set(mergeFindings.map((f) => f.rule))].sort();
+console.log(`\n--- merge gate simulated on drop ∪ live (${mergedRecords.length} records) ---`);
+console.log(`    checkIntegrity is the SAME function npm run validate calls — not a reimplementation.`);
+console.log(`    drop-attributable: ${dropAttributable.filter((f) => f.level === 'error').length} error(s), ` +
+            `${dropAttributable.filter((f) => f.level === 'warn').length} warning(s) — these GATE.`);
+console.log(`    live-only: ${liveOnly.filter((f) => f.level === 'error').length} error(s), ` +
+            `${liveOnly.filter((f) => f.level === 'warn').length} warning(s) — pre-existing, do NOT gate.`);
+if (rulesRun.length) console.log(`    rules that fired on this corpus: ${rulesRun.join(', ')}`);
+
 // ---------------------------------------------------------------- report
 const total = LAYERS.reduce((n, l) => n + drop[l].length, 0);
 const errors = findings.filter((f) => f.level === 'error');
