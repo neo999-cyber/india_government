@@ -720,5 +720,107 @@
         "confidence": "high",
         "asOf": "2026-08-04",
         "revisitTrigger": "Re-test if a section 231 determination, waiver or delay naming India is published or reported to Congress, or if further Russian-origin acquisitions are contracted. The exposure does not lapse with time: the statute attaches to the transaction, and no determination has been made rather than the possibility having been closed."
+    },
+    {
+        "id": "L-0200",
+        "title": "Emergency procurement: a ₹300 crore delegation with a stated clock, and two Ministry of Defence figures for the same thirteen contracts",
+        "date": "2020-07-15",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "governance"
+        ],
+        "lenses": [
+            "defence-sector"
+        ],
+        "type": "institutional",
+        "summary": "At a special meeting on 15 July 2020, convened over \"the security environment due to prevailing situation along the Northern Borders\", the Defence Acquisition Council delegated to the Armed Forces the power to progress urgent capital acquisition cases up to ₹300 crore, undertaking that this \"will shrink the procurement timelines and ensure placement of orders within six months and commencement of deliveries within one year\". On 24 June 2025 the Ministry announced thirteen contracts under the Emergency Procurement mechanism worth ₹1,981.90 crore against a sanctioned outlay of ₹2,000 crore for the Indian Army. The Ministry's own Year End Review for 2025 puts the same thirteen at ₹1,958.80 crore.",
+        "claimAtLaunch": "Orders placed within six months of a case being progressed, and deliveries commencing within one year — both stated by the DAC as what the delegation would ensure, not as an aspiration.",
+        "whatHappened": "The power is a per-case ceiling of ₹300 crore. The ₹2,000 crore is a separate sanctioned outlay for one service and one purpose. THESE ARE NOT THE SAME QUANTITY AND ARE NOT ALIGNED HERE: thirteen contracts totalling ₹1,981.90 crore says nothing about whether any individual case sat under the ₹300 crore ceiling, and neither release states the per-case values. Of the delegation's own two undertakings — orders in six months, deliveries in one year — neither is reported against in anything retrieved. The Year End Review adds that two tranches of emergency procurement were accorded in 2025, that 29 capability development schemes had been contracted, and that a further 16 \"are likely to be contracted in Dec 2025\".",
+        "assessment": "partly",
+        "assessmentNote": "Partly, against the objective stated at announcement. The delegation exists, is used, and is used close to its sanctioned limit — that half is delivered and visible. The half that is not is the clock: the DAC undertook specific timelines and no reporting against them was found, so the mechanism's own success criterion is unmeasured five years on. Not too-early: five years is long enough for a six-month and a twelve-month undertaking to be testable, and what is missing is reporting rather than elapsed time.",
+        "caseFor": "This is a delegation that was used, which is more than can be said for many. Thirteen contracts against a ₹2,000 crore sanction is 99.1 per cent of the outlay committed on the June figure, so the money was not appropriated and left idle, and the equipment list is specific and operational rather than generic — drone detection and interdiction, low-level lightweight radars, VSHORADS launchers and missiles, loitering munitions, bulletproof jackets, night sights. The 29-schemes-contracted line indicates the mechanism runs beyond this one tranche. And a ₹300 crore ceiling is a genuine constraint: it delegates urgency without delegating major acquisitions.",
+        "caseAgainst": "An emergency power justified by a border situation in July 2020 was still being used for new sanctions in 2025, which is either a five-year emergency or a fast-track that has become a route. The DAC's own timelines are the natural test of the second reading and nothing reports against them. Oversight is the larger gap: neither release names who reviews an emergency case, what audit attaches, or whether the ₹300 crore ceiling is applied per case or per scheme. And the Ministry cannot state the total consistently — the same thirteen contracts appear at ₹1,981.90 crore in June and ₹1,958.80 crore in the December review.",
+        "differentFacts": true,
+        "differentFactsNote": "Two Ministry of Defence publications give different totals for what both describe as thirteen Emergency Procurement contracts for the Indian Army's counter-insurgency and counter-terrorism grid: ₹1,981.90 crore in the press release of 24 June 2025 and ₹1,958.80 crore in the Year End Review for 2025, a difference of ₹23.10 crore. Both are T1 and both are the same publisher, which makes this a sharper case than a two-government mirror rather than a softer one — a divergence between India and China is explained by valuation convention and entrepot attribution, and there is no equivalent explanation available for one ministry and itself. The instrument carries both and picks neither. No reconciliation is published and none is inferred here: the figures may cover different contract subsets, different dates of counting, or one may simply be wrong, and nothing retrieved distinguishes those.",
+        "unmeasured": [
+            {
+                "what": "Performance against the DAC's own emergency-procurement timelines — orders within six months, deliveries commencing within one year",
+                "why": "The delegation was granted on an explicit undertaking about speed, and no reporting against either limb was located. Contract values and counts are published; elapsed time from case initiation to order, and from order to first delivery, are not.",
+                "wouldFill": "A Ministry of Defence or Department of Defence Production statement of median time-to-order and time-to-first-delivery for emergency procurement cases, or a CAG performance audit of the mechanism.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "What oversight attaches to an emergency procurement case, and whether the ₹300 crore ceiling binds per case or per scheme",
+                "why": "Neither the delegation announcement nor the contract announcement names a reviewing authority, an audit requirement, or the unit the ceiling applies to. A per-case ceiling and a per-scheme ceiling are materially different constraints on a thirteen-contract tranche.",
+                "wouldFill": "The Defence Acquisition Procedure chapter governing emergency procurement, or the DAC minutes of 15 July 2020.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "sources": [
+            {
+                "name": "Ministry of Defence, \"Defence Ministry delegates capital procurement powers to Armed Forces\", PIB, 15 July 2020 — the ₹300 crore delegation and the six-month / one-year undertaking",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1638832",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Defence, \"Ministry of Defence concludes emergency procurement contracts worth nearly ₹2,000 crore to enhance counter-terrorism capability\", PIB, 24 June 2025 — thirteen contracts, ₹1,981.90 crore against a ₹2,000 crore sanctioned outlay, and the equipment list",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2139102",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Defence, \"Ministry of Defence; Year End Review - 2025\", PIB — \"13 schemes worth Rs 1,958.80 crore were contracted for strengthening the existing Counter Insurgency/ Counter Terrorism grid\"; two tranches accorded in 2025; 29 schemes contracted and 16 more likely in December 2025",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2210154",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-04",
+        "revisitTrigger": "Re-test if either figure is corrected or reconciled, and on whether the 16 schemes described as \"likely to be contracted in Dec 2025\" were contracted — that is a dated commitment whose trigger has passed, and its resolution into delivered or undelivered is not established by anything retrieved here."
+    },
+    {
+        "id": "L-0201",
+        "title": "Twenty-six Rafale for the Navy, signed government to government, with technology transfer for integrating Indian weapons",
+        "date": "2025-04",
+        "term": "T3",
+        "domains": [
+            "foreign"
+        ],
+        "lenses": [
+            "defence-sector"
+        ],
+        "type": "reform",
+        "summary": "In April 2025 the Governments of India and France signed an Inter-Governmental Agreement for 26 Rafale aircraft for the Indian Navy — 22 single-seaters and four twin-seaters — including training, simulator, associated equipment, weapons and performance-based logistics, along with additional equipment for the Indian Air Force's existing Rafale fleet. The agreement includes transfer of technology for the integration of indigenous weapons in India.",
+        "claimAtLaunch": "Twenty-six aircraft with an associated support package, and transfer of technology for integrating Indian-made weapons onto the platform — the second being the element the Ministry presents as the Aatmanirbhar Bharat content of the deal.",
+        "whatHappened": "COMMITMENT STATE (a) — NOT YET DUE, AND THE TRIGGER IS NOT NAMED IN THE SOURCE. The agreement was signed in April 2025. No delivery schedule is stated in the material retrieved, so the record cannot give a date by which aircraft are due and does not invent one. What is recorded is the count, the split, the government-to-government form and the technology-transfer term.",
+        "assessment": "too-early",
+        "assessmentNote": "Too-early: the agreement is in force, sixteen months old, and what would settle it — aircraft delivered, weapons actually integrated under the technology transfer — accumulates with time. The absence of a published delivery schedule is recorded as an unmeasured rather than folded into the score, because a missing schedule is a reporting fact and not a reason to judge the acquisition.",
+        "caseFor": "A government-to-government agreement is the form that carries state-level obligations rather than a vendor's, which matters for a fleet whose support runs decades, and this one buys commonality: the Navy's aircraft share a type with the Air Force's existing fleet, and the package explicitly includes equipment for that fleet. The technology-transfer term is the substantive Aatmanirbharta content and it is specific rather than gestural — integration of indigenous weapons is the capability that determines whether Indian munitions can be carried on the platform at all, and without it the aircraft is a closed system.",
+        "caseAgainst": "The technology transfer is described and not sized, and integration rights are the kind of term whose value lies entirely in scope: which weapons, on what timetable, with what source-code access, and whether integration can be performed in India without the manufacturer's participation. None of that is stated. Nor is a delivery schedule, so the commitment has no trigger against which non-delivery could ever be recorded — a commitment with no due date cannot move out of state (a) by the passage of time alone. And the strategic argument for a G2G purchase of a Western type sits alongside a fleet still substantially Russian-origin, which is the exposure L-0199 records.",
+        "unmeasured": [
+            {
+                "what": "The delivery schedule for the 26 Rafale-M aircraft",
+                "why": "No date, range or rate of delivery appears in the material retrieved. Without one the commitment cannot be resolved beyond state (a), because there is nothing for it to be late against.",
+                "wouldFill": "A Ministry of Defence statement of the delivery schedule, a Parliamentary answer, or the French government's own account of the contract — a partner government's statement about its own deliveries would be a legitimate second instrument.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "The scope of the technology transfer for indigenous weapon integration",
+                "why": "The agreement is stated to include transfer of technology for integrating Indian weapons, and nothing retrieved states which weapons, on what timetable, or whether integration can be carried out in India independently. Integration rights are valuable exactly in proportion to that scope.",
+                "wouldFill": "The Ministry's own description of the technology-transfer terms, or a Defence Acquisition Council or CCS note on the agreement.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "caveat": "This record covers the April 2025 Inter-Governmental Agreement for the Navy only. India's earlier Rafale acquisition for the Air Force is not covered: no primary for it was retrieved in this run, and it is not described here on the strength of the 2025 document, which mentions the existing fleet without stating its terms.",
+        "sources": [
+            {
+                "name": "Ministry of Defence, \"Ministry of Defence; Year End Review - 2025\", PIB — the April 2025 India-France Inter-Governmental Agreement for 26 Rafale (22 single-seater, four twin-seater) for the Indian Navy, the support package, and transfer of technology for integration of indigenous weapons",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2210154",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "medium",
+        "asOf": "2026-08-04",
+        "revisitTrigger": "Re-test when a delivery schedule is published or first delivery occurs, and when the technology-transfer scope is described. Either would move this out of state (a); the first would give the commitment a trigger it currently lacks."
     }
 ]
