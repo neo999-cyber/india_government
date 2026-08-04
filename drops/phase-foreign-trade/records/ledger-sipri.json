@@ -1,0 +1,47 @@
+[
+  {
+    "id": "L-0197",
+    "title": "India's defence exports are measured by three instruments that measure three different things, and SIPRI says in terms that its own must not be compared with the others",
+    "date": "2026-08-04",
+    "term": "T3",
+    "domains": ["foreign"],
+    "lenses": ["defence-sector"],
+    "type": "episode",
+    "summary": "The Ministry of Defence publishes defence exports as a rupee value: ₹38,424 crore for FY2025-26. SIPRI publishes Indian arms exports as a trend-indicator value, which its own sources-and-methods page states is \"intended to represent the transfer of military resources rather than the financial value of the transfer\" and which \"should therefore not be directly compared with gross domestic product (GDP), military expenditure, sales values or the financial value of export licences\". UN Comtrade carries a third figure on a currency basis — India's exports under HS chapter 93, arms and ammunition, were US$0.817bn in calendar 2025 — but chapter 93 is a commodity class, not a policy category, and excludes the aircraft, electronics and subsystems that make up much of what the Ministry counts.",
+    "assessment": "no-objective",
+    "assessmentNote": "A state of the measurement, not a measure. No objective was announced about how defence exports are counted, so there is nothing here to have worked or failed. The record exists because the MoD figure and the SIPRI figure are placed side by side constantly in commentary about whether India is becoming an arms exporter, and that comparison is one SIPRI itself rules out.",
+    "caseFor": "Three instruments for three purposes is not a defect. A finance ministry needs a currency value, a peace research institute tracking the flow of military capability needs a unit that does not move with prices or exchange rates, and a customs authority needs a commodity classification that works for every good. Each is fit for its own purpose and each publishes its method. SIPRI in particular is unusually explicit — the warning against comparison is on its own methods page, not buried — so a reader who checks the source is told not to do the thing.",
+    "caseAgainst": "The comparison is made anyway, routinely, and the instrument that most often gets used as the check on the government's number is the one that cannot serve as one. A TIV is built from unit production costs of a reference set, discounts a second-hand weapon to 40 per cent of a new one, and is deliberately held constant over time so that trends stay comparable — none of which is a claim about money received. Reading a divergence between it and the rupee series as evidence that the rupee series is inflated is a category error, and reading agreement between them as corroboration is the same error with a friendlier conclusion. The customs figure is a genuine currency value and covers a different scope, so it cannot settle it either.",
+    "differentFacts": false,
+    "differentFactsNote": "NOT a differentFacts pair, and the distinction is the point of the record. A differentFacts pair is two instruments measuring the SAME quantity and disagreeing — India and China on one trade flow, in P-119. This is two instruments measuring DIFFERENT quantities, where the divergence carries no information about either. Marking it differentFacts would file a category error as a dispute and invite exactly the averaging or picking that this record exists to refuse. It is equally not the single-sided case of L-0191: nothing here is unmeasured, and three parties publish.",
+    "caveat": "This record deliberately does not place a SIPRI TIV figure beside the Ministry's rupee figure, and does not convert between the rupee, the dollar and the TIV. Doing either would perform the comparison the record is about. The HS 93 figure is given in its own currency and period — US$0.817bn, calendar 2025, against the Ministry's ₹38,424 crore for FY2025-26 — with no arithmetic relating them, because they differ in period, currency and scope at once and no single conversion addresses all three.",
+    "unmeasured": [
+      {
+        "what": "A currency-basis figure for Indian defence exports on the same scope the Ministry counts, published by anyone other than the Ministry",
+        "why": "The only independent currency-basis series that reaches these goods is customs data, and customs classifies by commodity rather than by end use: HS chapter 93 captures arms and ammunition and leaves out the aircraft, avionics, radar and subsystems that make up much of the Ministry's total. There is therefore no second party publishing the same quantity, which is why this is not a mirror and cannot be made into one by choosing a better source.",
+        "wouldFill": "An importing state's own record of what it paid India, or India's reporting to the UN Register of Conventional Arms with values attached. Either would be a genuine currency-basis counterpart and would make a differentFacts pair possible for the first time.",
+        "reasonKind": "not-collected"
+      }
+    ],
+    "sources": [
+      {
+        "name": "SIPRI Arms Transfers Database, Sources and methods — \"The TIV is based on the known unit production costs of a core set of weapons and is intended to represent the transfer of military resources rather than the financial value of the transfer\"; \"SIPRI TIV figures do not represent sales prices for arms transfers. They should therefore not be directly compared with gross domestic product (GDP), military expenditure, sales values or the financial value of export licences\"",
+        "url": "https://www.sipri.org/databases/armstransfers/sources-and-methods",
+        "tier": "T2"
+      },
+      {
+        "name": "Ministry of Defence, \"Defence exports skyrocket to record Rs 38,424 crore in Financial Year 2025-26\", PIB, 2 April 2026",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2248124",
+        "tier": "T1"
+      },
+      {
+        "name": "UN Comtrade, India as reporter (699), partner World, flow X, HS chapter 93 (arms and ammunition; parts and accessories thereof), annual 2025",
+        "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2025&partnerCode=0&flowCode=X&cmdCode=93",
+        "tier": "T2"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-04",
+    "revisitTrigger": "Re-test if India begins reporting values to the UN Register of Conventional Arms, or if an importing state publishes what it paid. Either would create a genuine currency-basis counterpart on the Ministry's own scope, and this record would then have a differentFacts pair beside it rather than standing alone as a statement about incommensurability."
+  }
+]

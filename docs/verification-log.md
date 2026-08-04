@@ -5979,3 +5979,80 @@ figure-consistency  7 declared claims, 7 checked, 3 artefacts declared
 reachability        793/793
 domain-coverage     14/14 domains · 7/7 lenses · 219/219 lens refs
 ```
+
+---
+
+# Verification log — cycle 2026-08-04l (arc E: the SIPRI comparison is a category error, and SIPRI says so)
+
+**Appended.** `/data` diff: `49 0` on `ledger/foreign-trade.json`. Pure append, zero deletions.
+
+## L-0197 — a THIRD category beside the pair rule and the absence rule
+
+Three instruments publish something called India's defence exports:
+
+| instrument | unit | what it measures |
+|---|---|---|
+| Ministry of Defence | ₹38,424 crore, FY2025-26 | a currency value on the Ministry's own scope |
+| SIPRI | trend-indicator value | "the transfer of military resources rather than the financial value of the transfer" |
+| UN Comtrade | US$0.817bn, CY2025 | HS chapter 93 — a commodity class, not a policy category |
+
+**SIPRI's own sources-and-methods page rules out the comparison commentary makes constantly:**
+
+> SIPRI TIV figures do not represent sales prices for arms transfers. They should therefore not be
+> directly compared with gross domestic product (GDP), military expenditure, sales values or the
+> financial value of export licences.
+
+So the record is neither of the two shapes this phase has established. **It is not a
+`differentFacts` pair** — that is two instruments measuring the SAME quantity and disagreeing, as
+India and China do on one trade flow in P-119. Here they measure DIFFERENT quantities and the
+divergence carries no information about either. **It is not the single-sided case of L-0191** —
+nothing is unmeasured and three parties publish. Marking it `differentFacts` would file a category
+error as a dispute and invite the averaging or picking the record exists to refuse.
+
+Reading a divergence as evidence the rupee figure is inflated is the error; **reading agreement as
+corroboration is the same error with a friendlier conclusion**, and that half is the one nobody
+objects to.
+
+## The record's restraint is the argument
+
+It **does not place a TIV figure beside the rupee figure and does not convert between rupee, dollar
+and TIV**, and the caveat says so. Doing either would perform the comparison the record is about.
+The Comtrade figure is given in its own currency and period with no arithmetic relating it to the
+Ministry's, because the two differ in period, currency AND scope at once and no single conversion
+addresses all three.
+
+**A currency-basis mirror was looked for and does not exist.** HS chapter 93 is the only independent
+currency series that reaches these goods, and it classifies by commodity rather than end use —
+leaving out the aircraft, avionics, radar and subsystems that make up much of the Ministry's total.
+Recorded as `not-collected` with the routes that would close it named: an importing state publishing
+what it paid, or India reporting values to the UN Register of Conventional Arms. Either would make a
+differentFacts pair possible for the first time, and the revisit trigger says so.
+
+**This is the honest answer to the brief's "if a genuine currency-basis mirror exists, that one is a
+differentFacts pair": it does not exist, and the reason is a classification mismatch rather than a
+gap anyone could fill by choosing a better source.**
+
+## Arc E remains OPEN
+
+Authored across batches 5 and 6: defence exports against the 2029 target (L-0196), and the
+measurement-category record (L-0197).
+
+**Not authored:** Rafale tranches, S-400 delivery and CAATSA exposure, indigenisation share against
+target, DAP domestic-content rules, emergency-procurement powers. Nothing about them was attempted
+and nothing failed.
+
+No new lens. `defence-sector` gains L-0197 and stands at fourteen ledger records.
+
+## Gates
+
+```
+validate            VALID — 0 errors, 145 warnings
+typecheck           clean
+selftest            OK — run-twice controls, import-write guard, 33 pinned assertion sites
+enum-stamp          OK
+figure-consistency  7 declared claims, 7 checked, 3 artefacts declared
+reachability        796/796 (618 pages)
+domain-coverage     14/14 domains · 7/7 lenses · 220/220 lens refs
+url-check           2/2 confirmed
+lens-controls       6 paired + exact membership, defence-sector at 14
+```
