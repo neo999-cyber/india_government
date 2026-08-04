@@ -6,7 +6,7 @@
  *   npm run validate:incoming   canonical + /data/incoming drops (the merge gate)
  *   npm run validate:strict     warnings are treated as errors
  *
- * Flags: --incoming --strict --quiet --json --data <dir>
+ * Flags: --incoming --strict --quiet --verbose --json --data <dir>
  *
  * Exit 0 = the repo may compile. Exit 1 = it may not (CLAUDE.md, data rule 1).
  */
@@ -21,6 +21,7 @@ const argv = process.argv.slice(2);
 const includeIncoming = argv.includes('--incoming');
 const strict = argv.includes('--strict');
 const quiet = argv.includes('--quiet');
+const verbose = argv.includes('--verbose');
 const asJson = argv.includes('--json');
 // --data points the validator at an alternative data root (fixtures, or a staged merge).
 const dataFlag = argv.indexOf('--data');
@@ -94,7 +95,7 @@ const print = (list, level) => {
   }
 };
 
-if (!quiet) {
+if (!quiet && verbose) {
   console.log(
     `${C.bold}validate${C.off} ${C.dim}·${C.off} ${files.length} file(s) ${C.dim}·${C.off} ` +
       `${counts.series} series (${counts.points} points), ${counts.ledger} ledger, ${counts.provenance} provenance, ${counts.pairs} pairs` +
@@ -102,10 +103,13 @@ if (!quiet) {
   );
 }
 
+// SILENT ON PASS. Errors always print; warnings print only when something failed or when asked.
+// A passing run emitted 190 lines, 149 of them open-research warnings that do not change between
+// cycles — which is how a real warning stops being read. `--verbose` restores the full list.
 if (errorList.length) print(errorList, 'error');
-if (warnList.length) print(warnList, 'warn');
+if (warnList.length && (failed || verbose)) print(warnList, 'warn');
 
-console.log('');
+if (failed || verbose) console.log('');
 if (failed) {
   const because = errorList.length
     ? `${errorList.length} error(s)`

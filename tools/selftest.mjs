@@ -658,7 +658,9 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
       failures.push('url-check did not classify the 403 as unverifiable — failing on a bot-block would push authors to delete good citations');
     }
   }
-  const clean = check(['--all', '--data', root('url-check-clean'), '--responses', join(root('url-check-clean'), 'responses.json')]);
+  // --verbose: this block asserts on the content-type strings of a PASSING run, which the gate
+  // no longer prints by default.
+  const clean = check(['--all', '--verbose', '--data', root('url-check-clean'), '--responses', join(root('url-check-clean'), 'responses.json')]);
   if (clean.code !== 0) failures.push(`url-check fired on tests/fixtures/url-check-clean (exit ${clean.code}) — URLs that do serve their document must pass, including one with no path extension`);
   else notes.push('  url-check stays silent on URLs that serve their document, and asserts no content-type where the path states no extension');
 
@@ -714,7 +716,7 @@ if (failures.length) {
 }
 console.log(
   `selftest OK — /data valid (${realWarnings} warning(s))\n` +
-    notes.join('\n') +
+    (process.argv.includes('--verbose') ? notes.join('\n') + '\n' : '') +
     `\n  ${MUST_FIRE.length}/${MUST_FIRE.length} validator rules fire on tests/fixtures/broken ` +
     `(${broken.report.findings.filter((f) => f.level === 'error').length} errors caught)` +
     // Counted apart from the validator rules because they are a different kind of check, not a
