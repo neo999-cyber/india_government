@@ -7022,3 +7022,71 @@ abandonment", the commitment-state framework (and the discovery that a dateless 
 it), share-shaped figures name numerator and denominator (here: none computed, and why), M2, and
 author-then-gate.
 
+## Cycle 2026-08-05g — the three batch-13 rules, and the tool one of them required
+
+**Two of the three rules were writable; the third was not, and that gap was the work.** The rule
+says the corpus-search helper is the only sanctioned path for any scan of retrieved text. The
+helper could read nothing but `/data`. So the sanctioned path DID NOT EXIST, and writing the rule
+without building it would have produced an unfollowable instruction that reads like a control —
+worse than no rule, because a later cycle would cite it as though it had held.
+
+**Built: `htmlToText` and `scanText` in `tools/lib/corpus-search.mjs`, plus a `tools/scan-text.mjs`
+runner.** Two design decisions worth their reasons:
+
+- `htmlToText` moved INTO the helper rather than staying inline in each caller. Every cycle that
+  fetched a page rewrote the same three-line strip-and-unescape pipeline, and the variants
+  differed — one dropped `<style>` and another did not, one unescaped entities before stripping
+  tags and another after. A normalisation that differs between two scans makes their counts
+  incomparable, and the counts are what absence claims rest on.
+- `scanText` returns EVERY occurrence, not the first. An absence claim rests on the count being
+  zero, and a restatement count — one sentence served three times by a page that repeats its body
+  — has to be distinguishable from three distinct placements. `search` returning the first hit is
+  right for candidate generation and wrong for this.
+
+The runner exists because a rule requiring five lines of import boilerplate at the moment of asking
+a question is a rule that gets skipped at the moment of asking a question. It prints the
+normalisation applied and the character length scanned, because a zero over 400 characters of
+chrome and a zero over 190,410 characters of a ministry's annual report are different findings and
+the output must not let them look alike.
+
+**The control, and proof it fires.** `tools/scan-text.mjs --selftest` asserts four things on one
+fixture: `fenc` does NOT match "Fengal"; the same scan with `substring: true` DOES match; a real
+term (`fencing`) is still found; and `<script>` contents are stripped so a scan cannot read code as
+prose. The second assertion is the one that matters most — a control proving only the boundary case
+would pass just as well if the scanner matched nothing at all.
+
+Wired into `validate:selftest` as a SUBPROCESS, same call as enum-stamp: a control living inside
+the process it validates can be satisfied by that process. Proven by defeating it — flipping
+`substring` to default true produced, verbatim:
+
+    scan-text selftest FAILED
+      - word-boundary scan matched "fenc" 1 time(s); "Fengal" must not match
+
+and the selftest carried that specific message up rather than an exit code. Re-run without a fix,
+it failed again (exit 1). Restored, clean.
+
+**A shell error caught in the same breath, and it is the no-piped-gates rule.** The first defeat
+run was `npm run validate:selftest 2>&1 | tail -4; echo "exit=$?"`, which printed `exit=0` — the
+status of `tail`, not of the gate. The failure was visible in the text, so nothing was concluded
+wrongly, but the exit code being read was the wrong process's. This is exactly what "no piped
+gates" exists to prevent and it was violated in the act of proving a different control.
+
+**Independent confirmation of L-0209 and L-0210's evidence.** The new runner was pointed at the
+same MHA Year End Review 2024 and reproduced the batch-13 counts exactly through the sanctioned
+path: `1643` 0 · `fence` 0 · `fenced` 0 · `fencing` 3 · `FMR` 6. The scanned length differs
+slightly (190,410 chars against the ad-hoc 189,097) because the shared normaliser handles named
+entities where the ad-hoc one did not — which is precisely the incomparability the consolidation
+was meant to end. **The counts are identical, so the records stand as written**; had they differed,
+the records would have been the thing corrected, not the tool.
+
+**CLAUDE.md gained three rules.**
+1. *A claim about a class of sources is tested by varying the host.* Two failures on one domain are
+   one observation. The phase-14 instance is recorded with what it cost and what it saved: the
+   broader claim would have closed two countries that the narrower one reopened.
+2. *Any scan of retrieved text goes through the helper* — with the Fengal case and, importantly,
+   why this class of error is invisible: nothing downstream contradicts a fabricated presence.
+3. *Commitment state (d), unfalsifiable by construction.* Written into the existing commitment-state
+   paragraph rather than beside it, and with the boundary stated in both directions — a total WITH
+   a date is (a), and a condition rather than a date is still (a) where the condition is observable,
+   as in L-0205. A fourth state that swallowed those would be a worse instrument, not a richer one.
+

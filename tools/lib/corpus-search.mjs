@@ -43,6 +43,66 @@ function jsonFiles(dir) {
   return out;
 }
 
+/**
+ * Strip a retrieved HTML page to readable text.
+ *
+ * HERE RATHER THAN IN EACH CALLER because every cycle that fetches a page was re-writing this
+ * three-line pipeline inline, and the variants differed — one dropped `<style>` and another did
+ * not, one unescaped entities before stripping tags and another after, which changes what a
+ * scan can see. A normalisation that differs between two scans makes their counts
+ * incomparable, and the counts are the evidence.
+ */
+export function htmlToText(html) {
+  let t = html.replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ');
+  t = t.replace(/<[^>]+>/g, ' ');
+  t = t.replace(/&(#x?[0-9a-f]+|[a-z]+);/gi, (m, e) => {
+    const named = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', rsquo: '\u2019', lsquo: '\u2018', ldquo: '\u201c', rdquo: '\u201d', ndash: '\u2013', mdash: '\u2014' };
+    if (e[0] === '#') return String.fromCodePoint(parseInt(e[1] === 'x' || e[1] === 'X' ? e.slice(2) : e.slice(1), e[1] === 'x' || e[1] === 'X' ? 16 : 10));
+    return Object.prototype.hasOwnProperty.call(named, e.toLowerCase()) ? named[e.toLowerCase()] : m;
+  });
+  return t.replace(/[ \t\u00a0]+/g, ' ').replace(/\n\s*\n+/g, '\n').trim();
+}
+
+/**
+ * Scan RETRIEVED TEXT — a fetched page, extracted PDF text, anything that is not yet in `/data`.
+ *
+ * WHY THIS EXISTS SEPARATELY FROM `search`. The boundary default above only ever protected scans
+ * that went through this module, and until now this module could only read `/data`. Every scan of
+ * a retrieved page was therefore ad-hoc by construction, and one of them matched `fenc` inside
+ * **"Fengal"** — the cyclone — while checking whether a ministry's year-end review reported any
+ * fencing progress. That was the fourth substring false positive of phase 14 and the first that
+ * would have produced a POSITIVE finding rather than a nuisance: a spurious hit in the document
+ * being checked for an absence turns an established absence into a fabricated presence.
+ *
+ * Returns every occurrence, not the first, because the question asked of a retrieved page is
+ * usually "how many times and where" — an absence claim rests on the count being zero, and a
+ * restatement count (the same sentence served three times by one page) has to be distinguishable
+ * from three distinct placements. `first()` is left to the caller.
+ *
+ * SCAN FINDS CANDIDATES, same as `search`. A count is not a finding.
+ *
+ * @param {string} text
+ * @param {string[]} terms
+ * @param {{substring?: boolean, whole?: boolean, caseSensitive?: boolean, context?: number}} opts
+ * @returns {{term: string, count: number, hits: {index: number, match: string, context: string}[]}[]}
+ */
+export function scanText(text, terms, opts = {}) {
+  const { context = 160 } = opts;
+  return terms.map((term) => {
+    const re = matcher(term, opts);
+    const hits = [];
+    for (let m; (m = re.exec(text)) !== null; ) {
+      hits.push({
+        index: m.index,
+        match: m[0],
+        context: text.slice(Math.max(0, m.index - context), m.index + m[0].length + context).replace(/\s+/g, ' '),
+      });
+      if (m.index === re.lastIndex) re.lastIndex += 1;
+    }
+    return { term, count: hits.length, hits };
+  });
+}
+
 /** Every record in /data as {file, record}. */
 export function loadCorpus(dataDir = join(ROOT, 'data')) {
   const out = [];

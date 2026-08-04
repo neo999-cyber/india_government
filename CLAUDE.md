@@ -79,6 +79,28 @@ phrase appears exactly once, inside the sentence beginning CORRECTED" — not th
 in cycle 2026-08-05b, where a guard demanding the absence of "binding" aborted an edit that had
 correctly withdrawn the word and said so.
 
+**A claim about a CLASS of sources is tested by varying the host, not by accumulating failures
+within one.** Two failed retrievals from the same domain are one observation, not two. Before
+writing "sources of kind X are unavailable", retrieve something of kind X from a DIFFERENT
+publisher; only a failure that survives the change of host is a fact about the class. Phase 14 came
+one step from recording that neighbourhood policy primaries were unretrievable, on two MEA failures
+in a row; the next country was taken specifically because its route was RBI rather than MEA, and it
+retrieved on the first attempt. The real finding was four words narrower — MEA is the blocked
+channel — and it reopened two countries that the broader claim would have closed. **The wrong
+generalisation suppresses records silently and looks like diligence**, which is why it needs a rule
+and not a resolution: nothing downstream fails, the corpus is simply smaller and no gate can tell.
+
+**Any scan of retrieved text goes through `tools/lib/corpus-search.mjs`** — `scanText`, or the
+`node tools/scan-text.mjs <file> <term>...` runner. The word-boundary default only ever protected
+scans that went through the helper, and until batch 14 the helper could read nothing but `/data`,
+so every scan of a fetched page was ad-hoc BY CONSTRUCTION. One of them matched `fenc` inside
+**"Fengal"** — the cyclone — in the document being checked for whether a ministry reported any
+fencing progress. That is the fourth substring false positive of the phase and the first that would
+have produced a POSITIVE finding: a spurious hit in a document checked for an absence converts an
+established absence into a fabricated presence, and nothing downstream would have contradicted it.
+`--substring` remains available and is printed in the output when used, so the opt-out is visible
+rather than silent.
+
 **Assert per record, never sweep.** A keyword or pattern search generates CANDIDATES; the judgement
 is made per record and written down per record. Three substring sweeps in one phase produced 59, 197
 and 7 false candidates respectively. **Word boundaries are the default** in corpus search
@@ -198,6 +220,17 @@ that is the finding — do not infer the obvious one. Three distinct quantities 
 passed, with evidence of non-delivery; **(c)** abandoned — evidence of abandonment. **Absence of news
 is not (c).** A commitment whose source names no due date cannot leave (a) by the passage of time
 alone, and the record says so rather than inventing a trigger.
+
+**(d) unfalsifiable by construction** — a total with no date, no phasing and no annual target. It
+has no trigger, so it is not (a); it can never fall due, so it cannot reach (b); and absence does
+not evidence abandonment, so it is not (c). Such a commitment sits outside the other three rather
+than between them, and the record says which of the three tests it fails and why. **Score it
+`no-objective`: an objective is a target that can be failed.** This is not a finding that the thing
+is undone or that the commitment was insincere — it is that the announcement as made cannot be
+scored against itself at any future moment. L-0209 is the instance: the entire 1,643 km of the
+Myanmar border, announced with a starting position and no date. Note what survives the test — a
+total WITH a date is (a), and a condition rather than a date is still (a) if the condition is
+observable, as in L-0205's exchange of notifications.
 
 **Procurement filing rule, settled.** Acquisition cost, capital-budget share, payment schedule and
 escalation file `macro`; indigenisation share, offsets, exports and DAP domestic content file
