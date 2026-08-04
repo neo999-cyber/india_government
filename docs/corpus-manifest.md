@@ -5,7 +5,7 @@
 One line per record so orientation does not require scanning `/data`. Format:
 `id · domain(s) {lenses} · title`. For the authoritative text, read the record.
 
-648 records — 206 ledger, 262 series, 120 provenance, 60 pairs.
+650 records — 208 ledger, 262 series, 120 provenance, 60 pairs.
 
 ## series (262)
 
@@ -281,7 +281,7 @@ ujjwala-refills · welfare · PMUY average annual LPG refills per beneficiary
 wheat-procurement · welfare · Wheat procurement
 ```
 
-## ledger (206)
+## ledger (208)
 
 ```
 # data/ledger/agriculture.json
@@ -405,6 +405,8 @@ L-0203 · foreign+macro {defence-sector} · The 2016 Rafale agreement bought 36 
 L-0204 · foreign+macro {europe} · The India-UK trade agreement is in force, and the two headline concessions are not the same measurement: 99 pe
 L-0205 · foreign+macro {europe} · The India-EU agreement is concluded but not in force, and this time both sides published the same two measurem
 L-0206 · foreign+macro {neighbourhood} · The Maldives currency swap is an eligibility with a size and an expiry, and nothing published says how much of
+L-0207 · foreign+infrastructure {neighbourhood} · Punatsangchhu-II exported power to India for nearly seven months before the tariff protocol was signed, and no
+L-0208 · foreign+infrastructure {neighbourhood} · The Ministry of Power's account of neighbourhood cooperation lists capacity without commissioning status and a
 # data/ledger/infrastructure.json
 L-0044 · infrastructure · National highway construction programme
 L-0045 · infrastructure · Bharatmala Pariyojana

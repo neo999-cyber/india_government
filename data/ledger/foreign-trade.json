@@ -1076,5 +1076,113 @@
         "confidence": "high",
         "asOf": "2026-08-05",
         "revisitTrigger": "Re-test on 18 June 2027 when the agreement expires, and earlier if any drawing is published. Expiry without a published drawing would leave the facility's use unmeasured for its whole life, which is itself the finding."
+    },
+    {
+        "id": "L-0207",
+        "title": "Punatsangchhu-II exported power to India for nearly seven months before the tariff protocol was signed, and no tariff figure has been published for either period",
+        "date": "2026-04-09",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "infrastructure"
+        ],
+        "lenses": [
+            "neighbourhood"
+        ],
+        "type": "reform",
+        "summary": "The 1020 MW Punatsangchhu-II Hydroelectric Project in Bhutan commenced export of surplus power to India on 19 September 2025 \"at a mutually agreed starting tariff\", and was jointly inaugurated by the Prime Minister of India and the King of Bhutan on 11 November 2025. The Tariff Protocol for the project was signed on 9 April 2026, during the Union Power Minister's visit to Bhutan, alongside a Methodology for Reactive Energy Accounting of reactive power exchange. Indo-Bhutan hydropower cooperation is dated by the Ministry to 1961, with an agreement on hydroelectric power cooperation in 2006.",
+        "claimAtLaunch": "The Ministry's framing at the signing: another step in mutually beneficial hydropower cooperation, within an enhanced bilateral institutional framework mechanism covering non-hydro energy, cross-border transmission, project financing, capacity building and institutional partnerships. No tariff, revenue or export-volume target is stated for the project in anything retrieved.",
+        "whatHappened": "THE POWER MOVED BEFORE THE PRICE WAS SETTLED, AND THE PRICE IS NOT PUBLISHED IN EITHER PERIOD. Export began on 19 September 2025 at what the Ministry calls \"a mutually agreed starting tariff\" — a phrase that concedes an interim arrangement — and the Tariff Protocol was signed on 9 April 2026, six months and three weeks later. In between, on 3 February 2026, the Bhutanese Energy Minister and the Union Power Minister were still deliberating \"the commercial optimization of power output\" from the project, which places the commercial terms unsettled more than four months after power began flowing. Neither the starting tariff nor the protocol tariff appears in anything retrieved.",
+        "assessment": "worked",
+        "assessmentNote": "Scored on delivery and on delivery only: the project was built, commissioned and is exporting, which is what a joint hydropower project is for, and the two governments inaugurated it jointly. The commercial terms are NOT scored here and cannot be — no tariff is published for either period and no revenue or volume target was announced against which the arrangement could be judged. A reader should take this score as saying the electricity flows, not that the deal is good.",
+        "caseFor": "The plant exists and is exporting, which is more than most of the pipeline can say — the companion project at Punatsangchhu-I was still awaiting commissioning in February 2026 after far longer. Beginning export on an interim tariff rather than waiting for the protocol is the choice that gets power onto the grid earliest, and Bhutan is paid from the first unit rather than from the signature. The 9 April 2026 signings are substantive rather than ceremonial: a tariff protocol and a reactive-energy accounting methodology are the two instruments a cross-border interconnection actually needs to settle accounts and hold the grid stable. The institutional framework agreed at the same time gives the relationship a standing review mechanism instead of ministerial visits.",
+        "caseAgainst": "The sequence inverts the ordinary protection. Power flowed for six months and three weeks on an interim price, which means the smaller party's revenue for that period was determined by an arrangement neither government has published and neither parliament has seen. \"Commercial optimization\" was still under deliberation in February 2026, so the terms were not merely unpublished but unfinished while the asset ran. And the protocol's signature does not close the disclosure: no tariff figure exists in the public record for the interim period or the settled one, so nothing about the price — whether it rose, fell or was applied retrospectively — can be checked by anyone outside the two ministries.",
+        "unmeasured": [
+            {
+                "what": "The interim tariff applied from 19 September 2025, and the tariff set by the Protocol signed 9 April 2026",
+                "why": "The Ministry states that export began \"at a mutually agreed starting tariff\" and that a Tariff Protocol was later signed, without giving either figure. The numbers exist — an interim tariff that power was sold at is a number both parties hold, and a signed protocol contains its rate — so this is not-published rather than not-collected. No identifiable refusal was located, which is what keeps it short of withheld.",
+                "wouldFill": "The text of the Tariff Protocol, a Central Electricity Regulatory Commission filing on the import, or a Parliamentary answer stating the rate.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "Whether the Protocol's tariff was applied retrospectively to the interim period, and how much energy was exported before it was signed",
+                "why": "Nothing retrieved states the Protocol's effective date or whether it reopens the interim sales, and no export volume is published for the period from 19 September 2025. Without both, the value transferred under the interim arrangement cannot be bounded even approximately.",
+                "wouldFill": "The Protocol's commencement clause, or Ministry of Power / Central Electricity Authority monthly cross-border exchange data for the Bhutan interconnections.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "caveat": "The 1020 MW figure is the project's installed capacity as stated by the Ministry, not a measure of energy exported, and this record derives no export quantity from it. The interval between 19 September 2025 and 9 April 2026 is stated as six months and three weeks and is an elapsed period between two published dates; it is not a claim about how long any tariff negotiation took, which is not published.",
+        "sources": [
+            {
+                "name": "Ministry of Power, \"Union Minister Shri Manohar Lal Arrives in Bhutan; Reaffirms India-Bhutan Partnership on Clean Energy and Sustainable Development\", PIB, 9 April 2026 — the Tariff Protocol and Reactive Energy Accounting Methodology signings, the 1020 MW capacity, the 11 November 2025 joint inauguration, the 19 September 2025 commencement of export \"at a mutually agreed starting tariff\", and the enhanced bilateral institutional framework mechanism",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2250426",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Power, \"India and Bhutan to Strengthen Cooperation in the Power Sector\", PIB, 3 February 2026 — the deliberation on \"commercial optimization of power output\" from Punatsangchhu-II, the call for early commissioning of Punatsangchhu-I (1200 MW), cooperation dated to 1961 with the 2006 hydroelectric power agreement, and the assessment of cross-border transmission links till 2040",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2222533",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-05",
+        "revisitTrigger": "Re-test if any tariff figure is published for either period, or if cross-border exchange volumes for the Bhutan interconnections are released. Either would make the value of the interim arrangement measurable for the first time; without them it stays unmeasurable however long the plant runs."
+    },
+    {
+        "id": "L-0208",
+        "title": "The Ministry of Power's account of neighbourhood cooperation lists capacity without commissioning status and agreements without dates, and two rows of the same column are demonstrably in different states",
+        "date": "2026-04-02",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "infrastructure"
+        ],
+        "lenses": [
+            "neighbourhood"
+        ],
+        "type": "institutional",
+        "summary": "A Lok Sabha written reply of 2 April 2026 set out India's power-sector cooperation with Bhutan, Nepal, Bangladesh, Myanmar and Sri Lanka in two tables. Table-1 lists Memoranda of Understanding and agreements by the parties to them. Table-2 lists thirteen generation projects with an installed-capacity column — six in Nepal, six in Bhutan, one in Bangladesh — and thirty cross-border transmission links: fifteen with Nepal, nine with Bhutan, three with Bangladesh, two with Myanmar and one with Sri Lanka.",
+        "claimAtLaunch": "No objective is announced. The reply is a description of engagement — that the Ministry and its public sector enterprises \"engage with neighbouring countries ... to strengthen cooperation in the power sector\" — and states no target, date or outcome for any project or agreement listed.",
+        "whatHappened": "WHAT THE TABLES OMIT IS THE COLUMN THAT WOULD MAKE THEM READABLE. Table-2 gives installed capacity in megawatts for every generation project under one heading, with no column for commissioning status, and the same for thirty transmission links. That the omission is load-bearing rather than pedantic can be shown from the Ministry's own releases in the same period: Punatsangchhu-II (1020 MW) commenced export to India on 19 September 2025, while Punatsangchhu-I (1200 MW) was the subject of a call for \"early commissioning\" on 3 February 2026. One row is exporting and one is not built, and they sit adjacent in the same column under the same unit. Table-1 has the parallel defect on the agreements side: it names the parties to each instrument and nothing else — no title, no date, no term, no status — so it establishes that agreements exist without disclosing what any of them says.",
+        "assessment": "no-objective",
+        "assessmentNote": "No-objective in its strict sense: the reply announces no target, date or outcome for any project or agreement it lists, so there is nothing against which it could have worked or failed. What it establishes is what can and cannot be measured from the Ministry's own account. Recorded so that the capacity column is not later read as a stock of operating plant, which is the reading its presentation invites and the one it does not support.",
+        "caseFor": "The reply discloses more than it was obliged to and more than the equivalent answers in most sectors. Thirty named transmission links with voltages, circuit configurations and both endpoints is a genuinely specific inventory, and naming every counterparty enterprise — NHPC, NTPC, NVVN, SJVN, Power Grid — lets a reader trace any of them further. The tripartite Nepal-India-Bangladesh arrangement among NEA, NVVN and the Bangladesh Power Development Board is disclosed at all, which is not obvious for a three-country transaction. And a written answer is a schedule, not a report; the question asked what exists, and the tables answer it.",
+        "caseAgainst": "A capacity column is read as capacity, and a reader who adds this one gets a number that does not exist. Built plant and unbuilt plant are set out identically in megawatts, so the shared unit conceals the difference rather than exposing it — the reader must already know which rows are real to use the table, which is the knowledge the table was supposed to supply. The same is true of the transmission list, where a 1000 MW India-Sri Lanka HVDC bipole appears beside links that have carried power for decades. Table-1 is weaker still: a list of agreements identified only by their signatories cannot be checked, dated, or matched to any project in Table-2, and it discloses the existence of obligations while withholding every one of their terms.",
+        "unmeasured": [
+            {
+                "what": "The commissioning status and commissioning date of each of the thirteen generation projects and thirty transmission links",
+                "why": "No status column appears in either table, and the reply describes them all under the single heading of details of projects. The Ministry necessarily holds commissioning dates for assets its own enterprises built, so the information exists and was not released in this answer.",
+                "wouldFill": "A Ministry of Power or Central Electricity Authority statement of commissioning dates by project, or a subsequent Parliamentary answer carrying a status column.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "The date, title, term and current status of each agreement in Table-1",
+                "why": "Table-1 identifies every instrument by its parties alone. Whether any is still in force, when it was executed, and what it obliges either side to do are not stated. The instruments exist and are held by the executing bodies, so this is not-published; nothing retrieved records a request for them being refused, which is what keeps it short of withheld.",
+                "wouldFill": "The texts of the MoUs, or a Parliamentary answer listing them with dates and terms.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "Energy actually exchanged over any of the thirty links",
+                "why": "The tables list infrastructure, not flows. Capacity and connection are what is published; how much electricity moved in either direction, over what period, is not stated anywhere in the reply.",
+                "wouldFill": "Central Electricity Authority cross-border exchange data, or a Parliamentary answer on import and export volumes by link.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "caveat": "This record does not sum the installed-capacity column and no total is stated, because its entries are not in the same state and the shared megawatt unit does not make them commensurable. The counts given here — thirteen generation projects and thirty transmission links, distributed fifteen, nine, three, two and one — are counts of rows as printed, not of the source's serial numbers, which contain a defect: the Nepal transmission list skips serial 13 and gives serial 14 twice, and the two errors cancel so that the final serial reaches 30 correctly. The count is stated from the rows for that reason.",
+        "sources": [
+            {
+                "name": "Ministry of Power, \"COOPERATION WITH NEIGHBOURING COUNTRIES IN POWER SECTOR\", PIB, 2 April 2026 — written reply of the Minister of State Shri Shripad Naik in the Lok Sabha: Table-1's list of MoUs by parties, and Table-2's generation projects with installed capacity (Nepal: Pokhra 1, Trisuli 21, Western Gandak 15, Devighat 14.1, Arun-3 900, Lower Arun 669; Bhutan: Chukha 336, Kurichu 60, Tala 1020, Mangdechhu 720, Punatsangchhu-II 1020, Punatsangchhu-I 1200; Bangladesh: Maitree STPP 1320) and the thirty cross-border transmission links including New Madurai-Mannar 1000 MW VSC HVDC bipole with Sri Lanka",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2248339",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Power, \"India and Bhutan to Strengthen Cooperation in the Power Sector\", PIB, 3 February 2026 — the call for early commissioning of Punatsangchhu-I, which with the 19 September 2025 export commencement of Punatsangchhu-II establishes that two rows of the same capacity column are in different states",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2222533",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-05",
+        "revisitTrigger": "Re-test if a later Parliamentary answer on the same subject carries a commissioning-status column or dates for the Table-1 agreements. The India-Sri Lanka HVDC bipole is the single most informative row to watch, because it is the one link in the list for which no operating history exists at all."
     }
 ]
