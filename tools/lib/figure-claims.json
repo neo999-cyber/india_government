@@ -94,5 +94,17 @@
     "sourceB": 6168.14,
     "sourceScale": 1,
     "note": "Declared so the gate checks that the two-cut-off explanation actually reconciles. Source values are already in the printed unit (Million Units), so the scale is 1 and is stated rather than defaulted. Printed and source agree exactly; no rounding artefact."
+  },
+  {
+    "record": "L-0215",
+    "what": "Vaccine Maitri doses outside the two named channels — the stated total minus the sum of the gifted and COVAX figures (1.51 + 5.20 = 6.71)",
+    "printedA": "30.12",
+    "printedB": "6.71",
+    "printedDifference": "23.41",
+    "decimals": 2,
+    "sourceA": 30.12,
+    "sourceB": 6.71,
+    "sourceScale": 1,
+    "note": "Operand B is itself a sum of two published figures, stated here so the gate checks the subtraction the record prints rather than taking the residual on trust. Printed and source agree exactly; no rounding artefact."
   }
 ]

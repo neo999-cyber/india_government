@@ -1,0 +1,42 @@
+[
+  {
+    "id": "L-0215",
+    "title": "Vaccine Maitri is presented as a gift, and the doses the government names as gifted are 1.51 crore of a stated 30.12 crore supplied",
+    "date": "2025-06-18",
+    "term": "T3",
+    "domains": ["foreign", "human-development"],
+    "type": "institutional",
+    "summary": "A Press Information Bureau explainer of 18 June 2025 states that since January 2021 India supplied over 30.12 crore vaccine doses to 99 countries and two United Nations bodies under the Vaccine Maitri initiative, and that this \"included 1.51 crore doses gifted to over 50 nations and 5.2 crore doses through the COVAX mechanism\". The two named channels together account for 6.71 crore doses, leaving at least 23.41 crore — a little over three-quarters of the stated total — in neither category. The same explainer describes the initiative as \"a testament to its human-centric diplomacy\" under the heading \"Humanity First, Always\".",
+    "claimAtLaunch": "No target, quantity or date is announced anywhere in the document. What is offered is a characterisation: humanity first, human-centric diplomacy, and India as \"a reliable partner for global health and a compassionate voice from the Global South\". The numbers are given as achievement, not as progress against anything.",
+    "whatHappened": "THE TOTAL IS A SUPPLY FIGURE AND THE FRAMING IS A GIFT FRAMING, AND ONLY ONE OF THE THREE NUMBERS IS ABOUT GIVING. Of the 30.12 crore doses stated as supplied, 1.51 crore are described as gifted — just over five per cent, on the government's own two figures — and 5.2 crore went through COVAX, a multilateral procurement and allocation mechanism rather than a bilateral gift. The remaining 23.41 crore doses at minimum are placed in no category at all. NOTHING RETRIEVED SAYS WHAT THEY WERE. The word \"included\" is accurate and does not claim to exhaust the total, which is why this is recorded as a composition that cannot be reconstructed rather than as a false statement.",
+    "assessment": "no-objective",
+    "assessmentNote": "The initiative announces no target, no quantity and no date, so there is nothing against which it could have worked or failed, and the numbers are presented as accomplishment rather than as progress. What can be checked is the composition of what is reported, and the finding is that it cannot be reconstructed from the figures given. Recorded so that the 30.12 crore is not later read as a measure of doses given away, which is the reading the surrounding language invites and the figures do not support.",
+    "caseFor": "The disclosure is more specific than the framing required and that cuts in the government's favour. It would have been easy to publish only the 30.12 crore total under a humanitarian heading; instead the explainer breaks out the gifted doses and the COVAX doses separately, with the gifted figure to two decimal places, which is what makes the composition question askable at all. \"Included\" is the correct word for a partial breakdown and does not assert that the two named channels exhaust the total. Supplying 30.12 crore doses to 99 countries and two UN bodies from a standing start in January 2021 is a real logistical achievement whatever the commercial mix, and reaching two UN bodies and over 50 nations by gift is not a trivial share of the world. COVAX doses are also not self-interested in any ordinary sense: they went to a multilateral allocation mechanism that decided their destination.",
+    "caseAgainst": "The number that travels is 30.12 crore and the frame it travels under is a gift, and those two things do not describe the same thing. On the government's own figures the explicitly gifted portion is 1.51 crore of 30.12 crore — a little over one dose in twenty — while the heading above them reads \"Humanity First, Always\". More than three-quarters of the stated total is assigned to no channel whatever, so a reader cannot tell what the largest part of the programme actually was, and no other retrieved document supplies it. Four years after the period began, an explainer written to summarise India's global footprint gives a composition that cannot be reconstructed, which is a choice about presentation rather than a limit of the underlying records.",
+    "unmeasured": [
+      {
+        "what": "What the 23.41 crore doses outside the gifted and COVAX categories were — the channel, terms and recipients",
+        "why": "The explainer names two channels and a larger total and does not describe the difference. Nothing retrieved states what the remainder consisted of. This record does NOT name a candidate: the obvious inference is not supported by any document retrieved, and an unsourced explanation would be as much of a fabrication as an unsourced accusation.",
+        "wouldFill": "A Ministry of External Affairs or Ministry of Health statement of Vaccine Maitri supplies by channel, or a Parliamentary answer breaking the total into grant, commercial and multilateral components.",
+        "reasonKind": "not-published"
+      },
+      {
+        "what": "The value of the doses supplied, on any basis",
+        "why": "The programme is reported in doses only. No cost, price or value appears in the explainer or in anything else retrieved, so the scale of what was given, sold or contributed cannot be stated in money at all.",
+        "wouldFill": "A budgetary figure for Vaccine Maitri, or a Parliamentary answer on expenditure and receipts under the initiative.",
+        "reasonKind": "not-published"
+      }
+    ],
+    "caveat": "The stated total is \"over 30.12 crore\", a floor rather than an exact figure, so the residual of 23.41 crore is a MINIMUM and is stated as such — a larger true total makes the unassigned share larger, not smaller, and this record does not compute a share of a floor as though it were exact. The two share figures given — just over five per cent gifted, about twenty-two per cent across both named channels — take 30.12 crore as the denominator and the government's own 1.51 and 5.2 crore as numerators, and are stated with both terms named for that reason. \"Over 50 nations\" qualifies the number of countries, not the 1.51 crore doses. The explainer is a Press Information Bureau summary written in June 2025 about a period beginning January 2021; it is treated as the government's own restatement, not as the underlying record of supplies.",
+    "sources": [
+      {
+        "name": "Press Information Bureau, \"Bharat's Global Footprint\", Explainer, 18 June 2025 — Vaccine Maitri: over 30.12 crore doses to 99 countries and two UN bodies since January 2021, including 1.51 crore gifted to over 50 nations and 5.2 crore through COVAX, under the heading \"Humanity First, Always\"; and the G20 presidency from 1 December 2022 to 30 November 2023 with the 18th Leaders' Summit on 9-10 September 2023 attended by 20 member states, nine invitee countries and 14 international organisations, across over 200 meetings in 60 cities",
+        "url": "https://www.pib.gov.in/PressNoteDetails.aspx?ModuleId=3&NoteId=154680&id=154680",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-05",
+    "revisitTrigger": "Re-test if any statement breaks Vaccine Maitri supplies into channels summing to the published total, or gives a value on any basis. Either would make the programme's composition reconstructable for the first time."
+  }
+]
