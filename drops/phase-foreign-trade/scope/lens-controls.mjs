@@ -80,7 +80,38 @@ const CONTROLS = [
       why: 'RCEP withdrawal: same layer, same `foreign` domain, and a record about trade agreements and tariffs — exactly the shape a keyword sweep would wrongly pull in — with the United States not a party to RCEP at all',
     },
   },
+  {
+    // THE RESTRICTION THIS NEGATIVE DEPENDS ON IS "mentions China", AND THE POSITIVE PASSES THROUGH
+    // IT. A corpus scan for the word China returns 15 records; all but two are peer-panel comparisons
+    // or supply-chain context ("China+1", "56% of China's yield"), not the bilateral relationship.
+    // A negative drawn from a record that never mentions China would prove nothing — it would show
+    // the lens absent where nothing could have put it. Both members here mention China; only one has
+    // China as its counterparty.
+    lens: 'china',
+    positive: {
+      file: 'data/ledger/foreign-trade.json', id: 'L-0190',
+      why: 'the merchandise mirror — China is the counterparty and the record is two countries\' figures for one flow',
+    },
+    negative: {
+      file: 'data/ledger/agriculture.json', id: 'L-0073',
+      why: 'foodgrain production: mentions China, and mentions it as a YIELD COMPARATOR from the peer panel. The subject is Indian cereal yield; China is a benchmark, not a counterparty',
+    },
+  },
 ];
+
+/**
+ * Every declared lens returns a NON-EMPTY and CORRECT set.
+ *
+ * Non-empty is already enforced by `lens-empty` in domain-coverage. Correct is not, and cannot be:
+ * a gate can tell that a lens has members, not that it has the RIGHT members. These are asserted by
+ * exact membership for the two lenses this phase authored, so a record silently gaining or losing
+ * the tag is caught here rather than by a reader noticing a filter looks wrong.
+ */
+const EXPECTED_MEMBERS = {
+  'united-states': ['L-0184', 'L-0185', 'L-0186', 'L-0187', 'L-0188', 'L-0189'],
+  russia: ['L-0184', 'L-0189'],
+  china: ['L-0190', 'L-0191'],
+};
 
 let failures = 0;
 for (const c of CONTROLS) {
@@ -103,5 +134,23 @@ for (const c of CONTROLS) {
     }
   }
 }
+// Exact-membership assertions, ledger layer.
+{
+  const LEDGER_FILES = ['baseline','macro-fiscal','banking','employment','agriculture','welfare','infrastructure','education','federalism','rights-institutions','kashmir-security','kashmir-rights','foreign-trade'];
+  const all = LEDGER_FILES.flatMap((n) => {
+    try { return load(`data/ledger/${n}.json`); } catch { return []; }
+  });
+  for (const [lens, want] of Object.entries(EXPECTED_MEMBERS)) {
+    const got = all.filter((r) => lensesOf(r).has(lens)).map((r) => r.id).sort();
+    const expected = [...want].sort();
+    if (JSON.stringify(got) === JSON.stringify(expected)) {
+      console.log(`  ok   [${lens}] ledger membership is exactly ${expected.join(', ')}`);
+    } else {
+      console.error(`  FAIL [${lens}] ledger membership drifted: got ${got.join(', ') || '(none)'}, expected ${expected.join(', ')}`);
+      failures += 1;
+    }
+  }
+}
+
 console.log(failures === 0 ? `\nlens-controls OK — ${CONTROLS.length} paired controls, both members asserted` : `\nlens-controls FAILED — ${failures}`);
 process.exit(failures === 0 ? 0 : 1);

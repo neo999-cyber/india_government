@@ -1,6 +1,8 @@
 # Phase 14 — foreign policy and trade. State.
 
-**Batch 1 is merged, gated, committed (`23caebe`) and pushed. Batches 2 and 3 are NOT started.**
+**Batch 1 merged and deployed (`23caebe`). Batch 2 is ARC B ONLY — the India-China mirror — merged and gated. Arc C (neighbourhood) is NOT authored: stop condition 1 fired on its central record. Batch 3 is not started.**
+
+Arc C's blockers, so the next run does not rediscover them: `pca-cpa.org` is Cloudflare-gated (403 from two clients); `mea.gov.in` needs an explicit resolver (13.224.236.14) and then serves a JavaScript shell with no transcript body; the Indus Waters Treaty PDF on MEA's portal is a scan with no text layer. What DOES retrieve: PIB press releases, RBI press releases, UN Comtrade for every bilateral flow. IMF country pages 403.
 
 ## What is done
 

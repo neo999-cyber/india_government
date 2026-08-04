@@ -14,6 +14,7 @@ export const LENS_LABELS: Record<Lens, string> = {
   federalism: 'Federalism',
   'defence-sector': 'Defence sector',
   'united-states': 'United States',
+  china: 'China',
   russia: 'Russia',
 };
 
@@ -26,6 +27,8 @@ export const LENS_BLURBS: Record<Lens, string> = {
     'The armed forces, the defence industry, or defence procurement — whatever domain the record files. Deliberately not named “defence”: the domain of that name is narrower, covering armed conflict and counter-insurgency, and an acquisition cost or an indigenisation share is neither.',
   'united-states':
     'The United States as counterparty — tariff actions, the negotiation track, visa and services measures, defence and technology frameworks.',
+  china:
+    'The People’s Republic as counterparty — the merchandise deficit and its composition, import dependence and export controls, investment screening, and post-Galwan normalisation read as a diplomatic instrument. The conflict itself files defence.',
   russia:
     'The Russian Federation as counterparty — crude and refined-product flows, payment mechanisms, defence supply, and the linkage of any of them into a third country’s measures.',
 };

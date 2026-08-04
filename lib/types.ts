@@ -71,6 +71,7 @@ export const LENSES = [
   'federalism',
   'defence-sector',
   'united-states',
+  'china',
   'russia',
 ] as const;
 export type Lens = (typeof LENSES)[number];

@@ -4443,5 +4443,52 @@
    }
   ],
   "notes": "The direct-tax attribution key is itself a finding and not merely a caveat. A table that assigns a rupee to the state in the filer's communication address measures where companies keep their registered offices, which is a real quantity and is not the one the table is universally read as reporting. The Union defends the integrity of that attribution when it is challenged — asked in 2018 whether Jharkhand's income tax was being clubbed with Bihar's, it replied \"No Sir. The collections of income-tax from the State of Jharkhand are compiled and reported independently\" — so the attribution is deliberate and maintained, not incidental. What no document does is warn the reader what it means. The same asymmetry runs through the expenditure side of the same answers: the Union publishes what flows TO states exhaustively and what flows FROM them not at all."
- }
+ },
+  {
+    "id": "P-119",
+    "title": "India and China report different bilateral trade, and the two bilateral balances differ by nearly ten billion dollars",
+    "whatChanged": "Nothing changed; the two sides never agreed. For calendar 2024 India reports importing US$126.963bn from China and exporting US$14.899bn to it, giving an Indian-basis deficit of US$112.064bn. China reports exporting US$120.463bn to India and importing US$17.999bn from it, giving a Chinese-basis surplus of US$102.464bn. The same bilateral relationship in the same year therefore has two balances that differ by US$9.600bn — about 8.6 per cent of the larger one. In 2023 the same gap was US$6.584bn. PART of the divergence is expected and is a valuation convention: an importer records CIF and an exporter FOB, so the importer's figure is higher by freight and insurance, and this holds in BOTH directions here, which is itself the evidence that the convention is operating. The rest is not explained by valuation. On the China-to-India flow the importer's excess is 5.40 per cent in 2024, within the range freight and insurance plausibly cover. On the India-to-China flow it is 20.80 per cent — China records US$17.999bn of Indian goods arriving against India's US$14.899bn leaving. A fifth of a trade flow is not freight.",
+    "when": "Continuous. Figures here are calendar 2023 and 2024, retrieved 4 August 2026.",
+    "affectsDomains": [
+      "foreign",
+      "macro"
+    ],
+    "affectsSeries": [
+      "india-china-imports-indian-basis",
+      "india-china-imports-chinese-basis",
+      "india-china-exports-indian-basis",
+      "india-china-exports-chinese-basis"
+    ],
+    "directionOfBias": "disputed",
+    "bridgeExists": false,
+    "bridgeNote": "No reconciliation is published by either side and none is attempted here. Instrument policy: carry both series, never average them, never pick one. A single figure for India-China trade is a claim neither statistical authority makes.\n\nTHE LEADING CANDIDATE FOR THE UNEXPLAINED PORTION IS ENTREPOT ATTRIBUTION, AND IT IS SIZED HERE RATHER THAN ASSERTED. Goods leaving India for Hong Kong are recorded by India as exports to Hong Kong; where they continue to the mainland, China may record them by origin as imports from India. India's reported exports to Hong Kong were US$6.498bn in 2024 and US$8.731bn in 2023 — comfortably large enough to contain the US$3.099bn and US$2.295bn unexplained excesses. That establishes the channel is big enough to be the explanation; it does not establish that it IS the explanation, which would need origin-basis data neither side publishes in this form. Stated as a sized candidate, not a finding.",
+    "competingAccounts": [
+      {
+        "holder": "India (DGCIS, as submitted to UN Comtrade)",
+        "position": "Imports from China US$126.963bn and exports to China US$14.899bn in CY2024; bilateral deficit US$112.064bn"
+      },
+      {
+        "holder": "China (GACC, as submitted to UN Comtrade)",
+        "position": "Exports to India US$120.463bn and imports from India US$17.999bn in CY2024; bilateral surplus US$102.464bn"
+      }
+    ],
+    "sources": [
+      {
+        "name": "UN Comtrade, India as reporter (699), partner China (156), flows M and X, HS TOTAL, annual 2023 and 2024",
+        "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2024&partnerCode=156&flowCode=M&cmdCode=TOTAL",
+        "tier": "T2"
+      },
+      {
+        "name": "UN Comtrade, China as reporter (156), partner India (699), flows X and M, HS TOTAL, annual 2023 and 2024",
+        "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=156&period=2024&partnerCode=699&flowCode=X&cmdCode=TOTAL",
+        "tier": "T2"
+      },
+      {
+        "name": "UN Comtrade, India as reporter (699), partner Hong Kong (344), flow X, HS TOTAL, annual 2024 — sizing the entrepot channel",
+        "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2024&partnerCode=344&flowCode=X&cmdCode=TOTAL",
+        "tier": "T2"
+      }
+    ],
+    "notes": "Tiered T2 and not T1 deliberately. These are each country's own submissions, which would ordinarily be T1 on their own authority, but they are retrieved here from UN Comtrade rather than from DGCIS and GACC directly — and the tier grades the document actually retrieved, not the institution behind it. Retrieving both national originals would raise the tier and change no figure."
+  }
 ]
