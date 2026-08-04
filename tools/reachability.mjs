@@ -30,6 +30,7 @@
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertFresh } from './lib/freshness.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -40,6 +41,16 @@ const arg = (name, fallback) => {
 };
 const DATA_DIR = arg('--data', join(ROOT, 'data'));
 const OUT_DIR = arg('--out', join(ROOT, 'out'));
+
+// Freshness before anything else: a gate that reads built output must know the output is the
+// build of the data it is about to check. Asserted only for the repository's own directories, or
+// when a caller asks for it explicitly — a fixture supplies its own hermetic pair. See
+// tools/lib/freshness.mjs for why a false PASS is the direction that matters.
+if (argv.indexOf('--data') === -1 && argv.indexOf('--out') === -1) {
+  assertFresh('reachability', OUT_DIR, ['data', 'app', 'components', 'lib'].map((d) => join(ROOT, d)));
+} else if (argv.includes('--check-freshness')) {
+  assertFresh('reachability', OUT_DIR, [DATA_DIR]);
+}
 
 /**
  * Marks that can be suppressed by a competing view.

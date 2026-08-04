@@ -320,19 +320,19 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
 {
   const cover = (args) => {
     try {
-      execFileSync(process.execPath, [join(ROOT, 'tools', 'domain-coverage.mjs'), ...args], {
+      const out = execFileSync(process.execPath, [join(ROOT, 'tools', 'domain-coverage.mjs'), ...args], {
         // stderr piped: the fixtures are EXPECTED to fail, and letting their reports through would
         // make a passing selftest read as a broken one.
         encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, NO_COLOR: '1' },
       });
-      return 0;
+      return { code: 0, out: out ?? '' };
     } catch (err) {
-      return err.status ?? 1;
+      return { code: err.status ?? 1, out: `${err.stdout ?? ''}${err.stderr ?? ''}` };
     }
   };
   const FIXTURES = [
-    { dir: 'domain-coverage-no-page', why: 'a schema domain value with no page built for it' },
-    { dir: 'domain-coverage-record-adrift', why: 'a surface that exists but omits a record declaring it' },
+    { dir: 'domain-coverage-no-page', why: 'a schema domain value with no page built for it', expect: '[page]' },
+    { dir: 'domain-coverage-record-adrift', why: 'a surface that exists but omits a record declaring it', expect: '[record]' },
     // The lens axis, added in phase 14, and TWO fixtures because the two branches fail differently.
     //
     // `lens-coverage-no-page` is the domain case one axis over: a lens value the schemas admit with
@@ -346,22 +346,70 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
     // of the eight lenses held no records at all. A reader selecting one would have reached a
     // correctly built, correctly linked, entirely empty page. Structure passing is not content
     // passing, and this fixture pins the difference.
-    { dir: 'lens-coverage-no-page', why: 'a schema lens value with no page built for it' },
-    { dir: 'lens-coverage-empty', why: 'a lens value with a page, linked, and no record behind it — a filter that returns nothing' },
+    { dir: 'lens-coverage-no-page', why: 'a schema lens value with no page built for it', expect: '[lens] russia' },
+    { dir: 'lens-coverage-empty', why: 'a lens value with a page, linked, and no record behind it — a filter that returns nothing', expect: '[lens-empty]' },
   ];
-  for (const { dir, why } of FIXTURES) {
+  for (const { dir, why, expect } of FIXTURES) {
     const root = join(ROOT, 'tests', 'fixtures', dir);
     const fired = cover(['--data', join(root, 'data'), '--out', join(root, 'out')]);
-    if (fired !== 1) {
-      failures.push(`domain-coverage did not fire on tests/fixtures/${dir} (exit ${fired}) — ${why}`);
+    if (fired.code !== 1) {
+      failures.push(`domain-coverage did not fire on tests/fixtures/${dir} (exit ${fired.code}) — ${why}`);
+    } else if (expect && !fired.out.includes(expect)) {
+      // PIN THE BRANCH. Without this a fixture passes on ANY failure, including one from a branch
+      // it is not testing — and that is not hypothetical: both lens fixtures were generated when the
+      // enum held five values, and after two more were admitted `lens-coverage-empty` began failing
+      // on `[lens]` (no page built for the new values) instead of `[lens-empty]`. Exit code 1 either
+      // way, selftest green, and the branch it exists to pin had gone unchecked.
+      failures.push(`domain-coverage fired on tests/fixtures/${dir} but not for "${expect}" — the fixture is passing on another branch's failure`);
     } else {
-      notes.push(`  domain-coverage fires on tests/fixtures/${dir} — ${why}`);
+      notes.push(`  domain-coverage fires on tests/fixtures/${dir}${expect ? ` (${expect})` : ''} — ${why}`);
     }
   }
   const live = cover([]);
-  if (live === 2) notes.push('  domain-coverage on the live corpus skipped — no built output yet');
-  else if (live !== 0) failures.push('domain-coverage failed on the live corpus; run `npm run domain-coverage` for the list');
-  else notes.push('  domain-coverage stays silent on the live corpus — every domain value has a surface and every record reaches it');
+  if (live.code === 2 && live.out.includes('REFUSING TO RUN')) {
+    // A STALE BUILD IS A FAILURE HERE, NOT A SKIP. Exit 2 covers both "no output at all" and
+    // "output older than its inputs", and the second used to land in the same silent-skip branch as
+    // the first. A selftest that quietly declines to run its live check, and still prints OK, is the
+    // false pass this whole assertion exists to prevent — one level up.
+    failures.push('domain-coverage refused to run on the live corpus: the build is stale. Run `npm run build`, then the selftest');
+  } else if (live.code === 2) {
+    notes.push('  domain-coverage on the live corpus skipped — no built output yet');
+  } else if (live.code !== 0) {
+    failures.push('domain-coverage failed on the live corpus; run `npm run domain-coverage` for the list');
+  } else {
+    notes.push('  domain-coverage stays silent on the live corpus — every domain value has a surface and every record reaches it');
+  }
+
+  // 3e-ter. Build freshness, both controls, driven through the REAL call site.
+  //
+  // The two members differ in exactly one thing: which of the pair was touched last. Same fixture,
+  // same gate, same flags — only the mtimes move. A control pair that differed in anything else
+  // would not isolate the assertion.
+  {
+    const root = join(ROOT, 'tests', 'fixtures', 'lens-coverage-empty');
+    const touch = (dir, when) => execFileSync('find', [dir, '-type', 'f', '-exec', 'touch', '-t', when, '{}', '+'], { stdio: 'ignore' });
+    const args = ['--data', join(root, 'data'), '--out', join(root, 'out'), '--check-freshness'];
+    try {
+      touch(join(root, 'out'), '202601010000');
+      touch(join(root, 'data'), '202606010000');
+      const stale = cover(args);
+      if (stale.code === 2 && stale.out.includes('REFUSING TO RUN')) {
+        notes.push('  freshness refuses a stale build — input newer than every built artefact');
+      } else {
+        failures.push(`freshness did not refuse a stale build (exit ${stale.code}) — a gate reading a stale artefact reports clean about a build nobody is shipping`);
+      }
+      touch(join(root, 'out'), '202607010000');
+      const fresh = cover(args);
+      if (fresh.code === 2 && fresh.out.includes('REFUSING TO RUN')) {
+        failures.push('freshness refused a FRESH build — the same-form positive must pass through the assertion, or the negative proves nothing');
+      } else {
+        notes.push('  freshness passes a fresh build — same fixture, same flags, only the mtimes differ');
+      }
+    } finally {
+      // Leave the fixture newer than any plausible input so an ordinary run is unaffected.
+      touch(join(root, 'out'), '203001010000');
+    }
+  }
 }
 
 // 3e-bis. figure-consistency: a record's own arithmetic agrees with itself, or says why not.

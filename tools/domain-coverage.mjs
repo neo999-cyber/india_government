@@ -43,6 +43,7 @@
 import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { assertFresh } from './lib/freshness.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -54,6 +55,13 @@ const arg = (name, fallback) => {
 const DATA_DIR = arg('--data', join(ROOT, 'data'));
 const OUT_DIR = arg('--out', join(ROOT, 'out'));
 const SCHEMAS_DIR = join(ROOT, 'schemas');
+
+// See tools/lib/freshness.mjs. Same call shape as reachability's, same exemption for fixture pairs.
+if (argv.indexOf('--data') === -1 && argv.indexOf('--out') === -1) {
+  assertFresh('domain-coverage', OUT_DIR, ['data', 'app', 'components', 'lib'].map((d) => join(ROOT, d)));
+} else if (argv.includes('--check-freshness')) {
+  assertFresh('domain-coverage', OUT_DIR, [DATA_DIR]);
+}
 
 const readSchema = (name) => JSON.parse(readFileSync(join(SCHEMAS_DIR, `${name}.schema.json`), 'utf8'));
 
