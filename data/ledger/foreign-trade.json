@@ -442,5 +442,85 @@
         "confidence": "high",
         "asOf": "2026-08-04",
         "revisitTrigger": "Re-test when any of the three non-reporters files a return covering 2024 or later. Bangladesh is the one that matters most and has been absent longest; a Bangladeshi return would make the largest leg of L-0192 testable for the first time since 2018."
+    },
+    {
+        "id": "L-0194",
+        "title": "TEPA carries the first investment commitment in an Indian trade agreement: US$100bn over fifteen years, and the first tranche is not due until 2035",
+        "date": "2025-10-01",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "macro"
+        ],
+        "type": "reform",
+        "summary": "The India-EFTA Trade and Economic Partnership Agreement entered into force on 1 October 2025, two years after signature. It carries an investment objective of US$100bn into India over fifteen years and the facilitation of one million direct jobs, which the Ministry of Commerce describes as making it \"the first trade agreement to incorporate a firm investment commitment\". The four EFTA states — Iceland, Liechtenstein, Norway and Switzerland — have a combined population smaller than Mumbai's, a point the Minister made himself at the entry-into-force summit.",
+        "claimAtLaunch": "US$100bn of investment mobilised into India over fifteen years from entry into force, and one million direct jobs facilitated, monitored through an investment facilitation mechanism. The Minister's stated ground for calling it pioneering is that it is \"the first trade agreement to incorporate a firm investment commitment, thereby balancing interests and ensuring fairness between partners\".",
+        "whatHappened": "COMMITMENT STATE (a) — NOT YET DUE, AND THE TRIGGER IS NAMED. The agreement entered into force on 1 October 2025 and the fifteen-year horizon runs to 1 October 2040. Nothing about the target is testable at ten months, and this record does not attempt to test it. What can be recorded now is the structure and the clock. On the second anniversary of signature, 10 March 2026, the Ministry restated the target unchanged and reported implementation as proceeding; it published no cumulative figure against it, which at that point is the expected state rather than a finding.",
+        "assessment": "too-early",
+        "assessmentNote": "Too-early in its strict sense: the measure is in force and the obstacle is elapsed time and the evidence time accumulates. Not awaiting-adjudication — nothing is pending before any body outside the parties. The record exists NOW rather than in 2040 because a commitment with a fifteen-year horizon is precisely the kind that is announced once and never revisited, and the point of entering it early is to fix what was promised, by when, and how it is to be measured, before any of those become matters of recollection.",
+        "caseFor": "An investment target written into a trade agreement is a genuine novelty in Indian practice and it is the answer to the standing objection that FTAs deliver market access outward and nothing inward. It is sized, dated and given a monitoring mechanism rather than left as an aspiration, and the counterparties are four high-income economies whose outward FDI is real money rather than a projection. Ten months is not a basis for scepticism about a fifteen-year commitment.",
+        "caseAgainst": "The words the two sides use for it are not the same word. The Ministry calls it a \"firm investment commitment\"; the joint framing is an \"objective\" and an aim to \"mobilise\", which is an undertaking to try. Nothing retrieved here establishes a consequence for missing it, and an obligation with no remedy is a target. The horizon is also long enough to outlast the governments that signed it and every official who negotiated it, and the first checkpoint is a decade out — so the practical position is that nothing about this is falsifiable for ten years, which is a property of the commitment rather than a criticism of the parties.",
+        "unmeasured": [
+            {
+                "what": "Cumulative EFTA-origin FDI into India since 1 October 2025, measured on the basis the agreement's investment facilitation mechanism uses",
+                "why": "No figure against the target has been published by either side, and at ten months from entry into force none is due. The measurement basis itself is not established by anything retrieved here — whether the target counts gross inflows, net inflows, or announced intentions is the difference between a testable commitment and an untestable one, and the documents retrieved state the number without stating the basis.",
+                "wouldFill": "The first report of the investment facilitation mechanism established under TEPA, or an RBI FDI series broken down to the four EFTA states on a stated basis.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "sources": [
+            {
+                "name": "Ministry of Commerce and Industry, \"India–EFTA TEPA comes into force with USD 100 billion investment objective and one million direct jobs\", PIB, 1 October 2025",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2173968",
+                "tier": "T1"
+            },
+            {
+                "name": "Ministry of Commerce and Industry, \"India–EFTA TEPA Marks Two Years, Strengthening Trade, Investment and Technology Collaboration\", PIB, 10 March 2026",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2237451",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-04",
+        "revisitTrigger": "Re-test on the first publication of a figure against the target, or on 1 October 2035 — the ten-year point, by which the retrieved description places the first US$50bn. Whichever comes first. If 2035 passes with no published cumulative figure, the commitment state moves from (a) to (b) and the absence of a measurement basis becomes the finding rather than a caveat."
+    },
+    {
+        "id": "L-0195",
+        "title": "\"Merchandise trade with both Australia and the UAE has doubled since the signing\" — true on a baseline two years before either signature, false on both years nearest it",
+        "date": "2026-03-10",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "macro"
+        ],
+        "type": "event",
+        "summary": "On the second anniversary of TEPA's signature the Prime Minister said: \"Merchandise trade with both Australia and the UAE has doubled since the signing of FTAs with these countries.\" India's own figures as submitted to UN Comtrade support that on one baseline and contradict it on the two nearest the signings. The UAE CEPA was signed on 18 February 2022 and the Australia ECTA on 2 April 2022. Two-way merchandise trade in calendar 2025 stood at 2.26 times its CY2020 level for the UAE and 2.21 times for Australia — but only 1.38 and 1.08 times CY2021, the last full year before either signature, and 1.11 and 0.85 times CY2022, the year of signature. Australian two-way trade in 2025 is below where it was when ECTA was signed.",
+        "assessment": "contested",
+        "assessmentNote": "Contested rather than failed, and the reason is that the claim does not state its baseline. On a CY2020 base it is exactly right for both countries. On CY2021 and CY2022 it is wrong for both. The record does not choose, because choosing would require asserting a baseline the speaker did not give — and the honest finding is that a claim of this shape is unfalsifiable until the base year is named, which is itself the thing worth recording.",
+        "caseFor": "A doubling from CY2020 is arithmetically correct on India's own submissions and CY2020 is not an absurd base: the agreements were negotiated through 2020 and 2021, and a speaker describing what a trade relationship looks like now against what it looked like when the process began is making an ordinary comparison. Neither agreement was signed in a vacuum in 2022 — the UAE CEPA negotiation opened in September 2021 — so \"since the signing\" as a loose marker for the whole arc is a reading the words will bear. The UAE growth is also substantial on any base: 68.5 to 94.5 billion dollars in four years is not a rounding of the truth.",
+        "caseAgainst": "CY2020 is the deepest contraction in modern trade history and using it as a base makes almost any recovery look like a doubling. It also precedes both signatures by two years, so \"since the signing\" points at it only by straining. On the two baselines the words actually indicate the claim fails, and for Australia it fails badly: 1.08 times CY2021 is not a doubling but noise, and 0.85 times CY2022 means two-way trade with Australia has FALLEN since ECTA was signed. Presenting a COVID-trough comparison as the effect of an agreement signed two years later attributes to the agreement a recovery that would have happened without it.",
+        "differentFacts": false,
+        "differentFactsNote": "There is no dispute about any figure here. Both readings use the same series, India's own, and disagree only about which year \"since the signing\" points at. That is a difference about the meaning of a phrase, not about the world, which is why this is not a differentFacts pair even though it looks like one at a distance.",
+        "caveat": "The test uses calendar years because UN Comtrade's annual series is calendar-based on both sides, and Indian trade statistics are conventionally reported on an April-March financial year. A financial-year test would move each figure and could move a ratio near the boundary; none of the ratios here is near the boundary — the closest to 2.00 on a signature-adjacent base is 1.38 — so the conclusion does not turn on the calendar convention. It is stated because the reader should not have to assume it.",
+        "sources": [
+            {
+                "name": "Ministry of Commerce and Industry, \"India–EFTA TEPA Marks Two Years\", PIB, 10 March 2026 — the Prime Minister's statement as published",
+                "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2237451",
+                "tier": "T1"
+            },
+            {
+                "name": "UN Comtrade, India as reporter (699), partner United Arab Emirates (784), flows X and M, HS TOTAL, annual — the query shown is CY2025 exports",
+                "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2025&partnerCode=784&flowCode=X&cmdCode=TOTAL",
+                "tier": "T2"
+            },
+            {
+                "name": "UN Comtrade, India as reporter (699), partner Australia (36), flows X and M, HS TOTAL, annual — the query shown is CY2025 imports",
+                "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2025&partnerCode=36&flowCode=M&cmdCode=TOTAL",
+                "tier": "T2"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-04",
+        "revisitTrigger": "Re-test if any official statement names the base year for the doubling claim. Naming it resolves this record in one direction or the other and it stops being contested."
     }
 ]
