@@ -21,6 +21,26 @@ Three shapes, and a record must say which it is:
    SIPRI TIV). Reading agreement as corroboration is the same error as reading divergence as
    refutation.
 
+## Standing rule 5c — derived quantities inherit their inputs' contests
+
+Added to CLAUDE.md on 2026-08-04. A ratio, percentage, share or per-unit figure whose numerator or
+denominator appears in a `differentFacts` pair must carry the divergence forward as an attributed
+range, or not be stated. **No gate catches this class** — both computations are correct in isolation.
+
+**IN SCOPE FOR THE ASSESSMENT AUDIT as a corpus-wide sweep.** L-0200 was the first identified
+instance and was corrected in cycle 2026-08-04o; the corpus has not been swept for others, and that
+sweep is deliberately left to the audit so its finding rate is not contaminated by a partial pass
+done here.
+
+## Open items logged against arc E, not acted on
+
+- **L-0200's `partly` score has a retrievable test.** The DAC delegation undertook order placement
+  within six months. Thirteen contracts exist under it, and **contract signature dates may be
+  retrievable** — they would bear directly on that limb. Not attempted; the score stands.
+- **The S-400 file's arc ownership is undecided.** Its content is an absence of published schedule
+  and delivered count, which may make it retrieval-capability material rather than an arc E file.
+  **Pending an owner decision** — do not assume arc E owns it.
+
 ## NOT DONE — the live backlog
 
 1. **Arc E remainder — STILL OPEN, two files.** Done: exports vs target (L-0196), the
