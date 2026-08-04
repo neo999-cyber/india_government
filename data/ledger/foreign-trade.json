@@ -1,0 +1,233 @@
+[
+  {
+    "id": "L-0184",
+    "title": "The fifty per cent wall: a reciprocal tariff and a Russian-oil tranche, built under two orders and one emergency about Ukraine",
+    "date": "2025-04-02",
+    "dateEnd": "2026-02-20",
+    "term": "T3",
+    "domains": ["foreign", "macro"],
+    "lenses": ["united-states", "russia"],
+    "type": "shock",
+    "summary": "Executive Order 14257 of 2 April 2025 imposed a duty on all imports from all trading partners of at least 10 per cent, with higher rates for dozens of countries. Executive Order 14329 of 6 August 2025 added a further 25 per cent ad valorem on articles of India alone, effective 21 days later — 27 August 2025 — on the finding that \"the Government of India is currently directly or indirectly importing Russian Federation oil\". The second order was made under the national emergency declared in EO 14066 about Russia's actions in Ukraine, not under any trade emergency, and India is the only country it names. Both were terminated on 20 February 2026.",
+    "claimAtLaunch": "EO 14329 states its own objective in its own terms: the additional duty on India is \"necessary and appropriate\" to deal with the national emergency described in EO 14066 — the threat to United States national security and foreign policy posed by Russia's actions against Ukraine — and that imposing it \"will more effectively deal with\" that emergency.",
+    "whatHappened": "The 25 per cent India tranche took effect 27 August 2025 and stacked on the reciprocal rate, reaching 50 per cent. It ran until Executive Order 14389 of 20 February 2026 provided that the additional ad valorem duties imposed under IEEPA in EO 14257 and EO 14329, among seven other orders, \"shall no longer be in effect and, as soon as practicable, shall no longer be collected\". The national emergencies themselves were expressly left standing; only the duties went.",
+    "assessment": "no-objective",
+    "assessmentNote": "Scored no-objective from India's side, which is the side this instrument measures. EO 14329 has an objective and states it, but the objective is a change in Russian conduct toward Ukraine pursued through a duty on Indian goods, so nothing about India's condition is what it set out to move. There is no Indian measure here to have worked or failed. What the record holds is a shock and its dates.",
+    "caseFor": "The instrument was aimed and it was withdrawn, and both facts belong in the record. The rate applied for under six months, not for a term, and the emergency it was made under is one India is not party to — so a reader treating 50 per cent as a settled condition of the external sector would be reading a peak as a level. The orders also did what tariff orders are supposed to do in a negotiation: a framework for an interim agreement followed on 6 February 2026, before the orders were terminated.",
+    "caseAgainst": "For the period it ran this was the highest rate applied to any United States trading partner, and the mechanism is the part that does not wash out with the rate. The second tranche was not a finding about Indian trade practice: it names India's purchases from a third country, under an emergency declared about that third country, and no other purchaser of Russian crude was named. That makes the exposure political rather than commercial, and it is India-specific in a way no other shock in this instrument is — every other one is shared with the peer panel and can be netted against it. This one confounds every external-sector reading for FY2026 and FY2027 whatever rate finally settles.",
+    "shockExposure": "India-specific in severity and in mechanism. Cannot be netted out by peer comparison and must be carried as a standalone confound for FY2026 and FY2027 external-sector assessments.",
+    "seriesRefs": ["exports-gdp"],
+    "sources": [
+      {
+        "name": "Executive Order 14329 of August 6, 2025, Addressing Threats to the United States by the Government of the Russian Federation, 90 FR 38701, sections 1 and 2",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-11/html/2025-15267.htm",
+        "tier": "T1"
+      },
+      {
+        "name": "Executive Order 14389 of February 20, 2026, Ending Certain Tariff Actions, 91 FR 9437, section 1",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-25/html/2026-03832.htm",
+        "tier": "T1"
+      },
+      {
+        "name": "Learning Resources, Inc. v. Trump, 607 U.S. ___ (2026), No. 24-1287, syllabus, describing EO 14257's imposition of a duty on all imports from all trading partners of at least 10 per cent",
+        "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-04",
+    "revisitTrigger": "Re-test if any duty is reimposed on India on a Russian-oil finding under an authority other than IEEPA. The emergencies under EO 14066 and EO 14024 were expressly preserved by EO 14389, so the finding that India imports Russian oil survives the instrument that rested on it."
+  },
+  {
+    "id": "L-0185",
+    "title": "IEEPA does not authorise the President to impose tariffs, and every duty India faced under it ended the same day",
+    "date": "2026-02-20",
+    "term": "T3",
+    "domains": ["foreign", "macro"],
+    "lenses": ["united-states"],
+    "type": "event",
+    "summary": "On 20 February 2026 the Supreme Court of the United States held, in Learning Resources, Inc. v. Trump, that the International Emergency Economic Powers Act does not authorise the President to impose tariffs. The Court reasoned that the taxing power is Congress's, that the Government conceded no inherent presidential tariff power in peacetime, and that in IEEPA's half century \"no President has invoked the statute to impose any tariffs\". Executive Order 14389 was issued the same day, ending the duties imposed under IEEPA in nine orders, including both that applied to India.",
+    "whatHappened": "The judgment in the Court of International Trade line was affirmed. Chief Justice Roberts delivered the opinion of the Court on the constitutional framing and on the major-questions reasoning; the decision was against the Government. Justice Kavanaugh, dissenting, wrote that the decision \"might not prevent Presidents from imposing most if not all of these same sorts of tariffs under other statutory authorities\", and named section 122, section 201 and section 301 of the Trade Act of 1974. The first of those was used the same day: Proclamation 11012 of 20 February 2026 imposed a ten per cent surcharge under section 122, taking effect four days later on 24 February.",
+    "assessment": "no-objective",
+    "assessmentNote": "A judgment of a foreign court is not an Indian measure and had no objective with respect to India at all — the petitioners were two American small businesses and five more with twelve States. Recorded because it is the event that removed the legal basis for the largest India-specific external shock in the instrument, and because a reader who has L-0184 without this one would carry a 50 per cent rate forward past the date it ceased to exist.",
+    "caseFor": "The ruling is the reason the 50 per cent did not become a structural condition, and it is a durable one: it removes an authority rather than a rate, so the same instrument cannot simply be re-aimed. The reasoning is about the delegation, not about India, which means India's exposure to it does not depend on the state of the bilateral relationship.",
+    "caseAgainst": "It removed one authority and the dissent named three replacements in the opinion itself, two of which were used within five months — section 122 four days later and section 301 in July. The rate India faces has since been set three separate times by three separate statutes, so what the ruling delivered was not relief but a change of instrument, and each successor has its own duration and its own exit. Reading this as the end of the tariff exposure would repeat the error of reading the 50 per cent as a level.",
+    "seriesRefs": [],
+    "sources": [
+      {
+        "name": "Learning Resources, Inc. v. Trump, 607 U.S. ___ (2026), Nos. 24-1287 and 25-250, decided February 20, 2026 — syllabus and held; Kavanaugh, J., dissenting, on section 122, section 201 and section 301 as remaining authorities",
+        "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "Executive Order 14389 of February 20, 2026, Ending Certain Tariff Actions, 91 FR 9437",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-25/html/2026-03832.htm",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-04"
+  },
+  {
+    "id": "L-0186",
+    "title": "A ten per cent surcharge with a hundred-and-fifty-day fuse: section 122 used to its statutory maximum, and allowed to lapse",
+    "date": "2026-02-20",
+    "dateEnd": "2026-07-24",
+    "term": "T3",
+    "domains": ["foreign", "macro"],
+    "lenses": ["united-states"],
+    "type": "shock",
+    "summary": "Proclamation 11012 of 20 February 2026 imposed a ten per cent ad valorem surcharge on all articles imported into the United States under section 122 of the Trade Act of 1974, effective 12:01 a.m. on 24 February 2026 and expiring 12:01 a.m. on 24 July 2026 \"unless the effective period of such surcharge is extended by an Act of the Congress\". Section 122 caps a surcharge at 15 per cent and its period at 150 days, and requires that it be applied consistently with the principle of nondiscriminatory treatment. The interval 24 February to 24 July 2026 is 150 days exactly. No Act extended it and it lapsed.",
+    "assessment": "no-objective",
+    "assessmentNote": "A United States balance-of-payments measure, not an Indian one, and applied to all trading partners rather than to India. There is no Indian objective to score. It is in the ledger because for five months it was the rate Indian exporters actually paid, and because its expiry is the reason the rate changed again in July.",
+    "caseFor": "This was the least India-specific tariff India faced in the whole episode, and that is a substantive difference rather than a technicality: section 122 requires nondiscriminatory application, so for 150 days Indian goods carried the same surcharge as everyone else's, at a rate below both the 50 per cent peak and the 18 per cent the February framework contemplated. The statute also did what a bounded delegation is meant to do — it ran to its limit and stopped without anyone having to stop it.",
+    "caseAgainst": "The bound is on the instrument, not on the policy. Section 122's ceiling and fuse were reached and exhausted rather than restraining anything: the rate chosen was 10 of a permitted 15 per cent, the period taken was 150 of a permitted 150 days, and the day it expired a section 301 action took effect at the same moment. An exporter's exposure did not lapse; only the statute under it changed. The nondiscrimination requirement also cuts the other way — it means the surcharge was not a concession to India and was never available as one.",
+    "shockExposure": "Applied to all trading partners, so unlike L-0184 this one IS shared with the peer panel and can be netted against it.",
+    "seriesRefs": [],
+    "caveat": "The 150-day figure is the statutory maximum and the proclamation took all of it; it is not an estimate. Counted from the effective date: 24 February to 24 March is 28 days, then 31, 30, 31 and 30 to 24 July — 150. The United States Court of International Trade struck down the section 122 tariffs in May 2026 and that decision was under appeal; this record does not rest on the litigation and no document from it has been retrieved here, so nothing about the appeal's outcome is stated.",
+    "sources": [
+      {
+        "name": "Proclamation 11012 of February 20, 2026, Imposing a Temporary Import Surcharge To Address Fundamental International Payments Problems, 91 FR 9339, clauses 1 and 7",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-25/html/2026-03824.htm",
+        "tier": "T1"
+      },
+      {
+        "name": "19 U.S.C. 2132 (section 122 of the Trade Act of 1974), Balance-of-payments authority, subsections (a), (d) and (e) — 15 per cent ceiling, 150-day period, nondiscriminatory treatment",
+        "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title19/html/USCODE-2024-title19-chap12-subchapI-part2-sec2132.htm",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-04"
+  },
+  {
+    "id": "L-0187",
+    "title": "India adopts a forced-labour import prohibition and is placed in the lower tier of the tariff that replaced the surcharge",
+    "date": "2026-07-23",
+    "dateEnd": "2026-07-24",
+    "term": "T3",
+    "domains": ["foreign", "governance"],
+    "lenses": ["united-states"],
+    "type": "event",
+    "summary": "The United States Trade Representative determined action in section 301 investigations of 60 economies over the failure to impose and effectively enforce a prohibition on importing goods made with forced labour. India was investigated among the 60 and was found, with 53 others, to have failed both limbs. It then adopted a forced-labour import prohibition after the 5 June 2026 proposed action was published, and on that basis was placed in the ten per cent tier rather than the 12.5 per cent tier. The duties took effect at 12:01 a.m. eastern time on 24 July 2026 — the moment the section 122 surcharge expired.",
+    "claimAtLaunch": "The determination states the criterion for the lower tier in its own terms: an economy that \"imposes a forced labor import prohibition, has committed to impose and enforce such a prohibition through an Agreement on Reciprocal Trade (ART), or has imposed a partial regime with the effect of preventing the importation of certain forced labor goods\" receives 10 per cent rather than 12.5 per cent. India's entry reads that the determination was made \"including India's adoption of a forced labor import prohibition subsequent to the publication of the June 5, 2026 FRN\".",
+    "whatHappened": "Sixteen other economies join India in the ten per cent tier. The action carries no statutory expiry, unlike the section 122 surcharge it displaced, and exempts articles already subject to section 232 duties along with a list of raw materials and, after comment, chemical products in their pharmaceutical applications only.",
+    "assessment": "no-objective",
+    "assessmentNote": "Two measures meet here and neither is scorable as an Indian objective. The section 301 action is a United States measure with a United States objective. India's adoption of the prohibition is an Indian measure, but the record cannot establish what it was adopted FOR: no Indian announcement of it has been retrieved in this run, and the only document that describes it is the American determination that rewarded it. Scoring an Indian measure on a foreign agency's account of it would be inferring an objective, which is the thing the value exists to refuse.",
+    "caseFor": "Whatever it was adopted for, the prohibition is the reason India pays 10 rather than 12.5 per cent, and it is a rule against importing goods made with forced labour — a thing worth having on its own terms and one India had not previously had. The mechanism is also more durable than what it replaced: a section 301 action rests on a finding about conduct, so conduct can end it, where the section 122 surcharge could only be waited out.",
+    "caseAgainst": "The instrument that produced the prohibition was a tariff threat from a third country, and the finding against India on both limbs stands unchanged — the tier moved, the determination that India had failed to impose and enforce did not. A prohibition adopted between a proposed action and a final one, and evidenced here only by the foreign determination citing it, is a commitment whose enforcement nobody has yet measured. And the replacement carries no sunset: India exchanged a duty that was going to expire in any case for one that will not.",
+    "unmeasured": [
+      {
+        "what": "What India's forced-labour import prohibition requires, when it commenced, and what has been done under it",
+        "why": "The only document retrieved that establishes the prohibition exists is the United States Trade Representative's determination of 23 July 2026, which cites its adoption without describing its terms. No Indian instrument, notification or announcement of it was retrieved in this run, so the record can state that a foreign agency treated it as adopted and cannot state what it says.",
+        "wouldFill": "The Indian notification or order establishing the prohibition — most likely a DGFT notification amending the import policy, or a CBIC instruction — and any enforcement figures published under it.",
+        "reasonKind": "not-published"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Notice of Actions in Section 301 Investigations of Acts, Policies, and Practices of Various Economies Related to the Failure of Each Economy To Impose and Effectively Enforce a Prohibition on the Importation of Goods Produced With Forced Labor, 91 FR 47318, USTR-2026-0265 and USTR-2026-0266 — DATES; determination 24, India; the 10 per cent tier list; exemptions",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2026-07-28/html/2026-15181.htm",
+        "tier": "T1"
+      },
+      {
+        "name": "Memorandum of July 23, 2026, Actions by the United States in the Investigations Under Section 301 of the Trade Act of 1974 of the Acts, Policies, and Practices of 60 Economies Related to the Failure of Each Economy To Impose and Effectively Enforce a Prohibition on the Importation of Goods Produced With Forced Labor, 91 FR 47717 — India listed at 24 of 60",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2026-07-28/html/2026-15274.htm",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-04",
+    "revisitTrigger": "Re-test when the Indian instrument establishing the forced-labour import prohibition is located, or when USTR publishes a review of the section 301 action. Either would convert the unmeasured item above into a series or close it."
+  },
+  {
+    "id": "L-0188",
+    "title": "The 6 February framework: an eighteen per cent rate promised under an order struck down fourteen days later, and an interim agreement not concluded since",
+    "date": "2026-02-06",
+    "term": "T3",
+    "domains": ["foreign", "macro"],
+    "lenses": ["united-states"],
+    "type": "reform",
+    "summary": "On 6 February 2026 the United States and India announced a framework for an Interim Agreement. Its central rate term is specific about its instrument: the United States \"will apply a reciprocal tariff rate of 18 percent under Executive Order 14257 of April 2, 2025 ... as amended, on originating goods of India\". Removal of the reciprocal tariff on generic pharmaceuticals, gems and diamonds and aircraft parts was made subject to \"the successful conclusion of the Interim Agreement\". EO 14257's duties were terminated on 20 February 2026, fourteen days later.",
+    "claimAtLaunch": "That the framework would be promptly implemented and the Interim Agreement finalised, en route to a broader Bilateral Trade Agreement launched on 13 February 2025. India's side of the framework is tariff elimination or reduction on all United States industrial goods and a listed range of food and agricultural products, action on named non-tariff barriers, and an intent to \"purchase $500 billion of U.S. energy products, aircraft and aircraft parts, precious metals, technology products, and coking coal over the next 5 years\".",
+    "whatHappened": "Three commitment states, kept separate because they resolve differently. (a) NOT YET DUE: the $500 billion purchase intent runs five years from February 2026, so its trigger is February 2031 and nothing about it is testable now. The determination on standards acceptability is due within six months of entry into force, which has not begun to run. (b) DUE AND UNDELIVERED: the Interim Agreement itself. Both sides targeted July 2026 and the section 122 surcharge's 24 July expiry was the working deadline; USTR's own 2026 press-release index, retrieved 4 August 2026, records no announcement of a concluded agreement with India, while recording concluded or early-harvest agreements with other partners in the same window. (c) The 18 per cent rate is neither: it was applied, and then its authority was extinguished by a court ruling about a different case. India's rate has since been set by section 122 and then by section 301, at 10 per cent under each.",
+    "assessment": "too-early",
+    "assessmentNote": "Too-early rather than failed, and the distinction is the obstacle. What is missing is a concluded Interim Agreement, and the evidence that would settle whether the framework produced one is evidence time accumulates — further negotiating rounds, or their absence past a point where absence means something. Not awaiting-adjudication: nothing is pending before any body outside the two governments. Not failed: the framework's own headline term is a rate India is currently beating, so a reader told this failed would draw the wrong inference about the direction of the outcome. What can be said now is that the deliverable is late and the instrument it named no longer exists.",
+    "caseFor": "The framework was announced at 50 per cent and India now pays 10, and every step of that path runs through a negotiation this framework opened. The pharmaceutical, gems and aircraft-parts carve-outs are still live commitments rather than lapsed ones, and the BTA track it reaffirms has been running since February 2025. A framework is by construction a statement of intent, and holding it to a delivery date it did not set would be scoring it against an objective it did not claim.",
+    "caseAgainst": "The central term was drafted against a specific instrument by number, and that instrument was void within a fortnight — which means the promise as written could not be performed, and nothing retrieved shows it renegotiated onto a surviving authority. The valuable terms are all conditional on a conclusion that has not happened: pharmaceuticals, gems and aircraft parts turn on \"successful conclusion\", and the generic-pharmaceutical outcome is additionally contingent on the findings of a section 232 investigation that is a United States process India does not control. Against that, India's own side of the framework — tariff elimination on all US industrial goods, named non-tariff barriers, a $500 billion purchase intent — is written without conditions.",
+    "differentFacts": false,
+    "differentFactsNote": "Both readings accept the text, the dates and the termination. The disagreement is whether a framework whose named instrument was struck down is a live commitment or a dead letter, and that is a judgement about what a framework is, not a dispute about what happened.",
+    "seriesRefs": [],
+    "unmeasured": [
+      {
+        "what": "Whether the 18 per cent reciprocal rate was ever re-based onto a surviving statutory authority after EO 14257's duties were terminated",
+        "why": "The framework names EO 14257 explicitly and nothing retrieved in this run amends, replaces or re-bases that term. The rate India has actually paid since 24 February 2026 has been 10 per cent, first under section 122 and then under section 301, neither of which is the reciprocal tariff the framework describes. Whether the 18 per cent term is regarded by either government as subsisting is not established by any document retrieved.",
+        "wouldFill": "A joint statement, USTR notice or Federal Register document addressing the status of the framework's rate term after 20 February 2026.",
+        "reasonKind": "not-published"
+      }
+    ],
+    "sources": [
+      {
+        "name": "United States-India Joint Statement, The White House, 6 February 2026 — key terms of the Interim Agreement, including the 18 per cent rate under EO 14257, the conditional removals, and the $500 billion five-year purchase intent",
+        "url": "https://www.whitehouse.gov/briefings-statements/2026/02/united-states-india-joint-statement",
+        "tier": "T1"
+      },
+      {
+        "name": "Executive Order 14389 of February 20, 2026, Ending Certain Tariff Actions, 91 FR 9437 — terminating the additional ad valorem duties imposed under IEEPA in EO 14257",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-25/html/2026-03832.htm",
+        "tier": "T1"
+      },
+      {
+        "name": "Office of the United States Trade Representative, 2026 press releases index, retrieved 4 August 2026 — last India item is the 6 February joint statement; concluded and early-harvest agreements with other partners appear in the same index over the same period",
+        "url": "https://ustr.gov/about/policy-offices/press-office/press-releases/2026",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "medium",
+    "asOf": "2026-08-04",
+    "revisitTrigger": "Re-test on the earlier of: an announcement that the Interim Agreement has been concluded, or 6 February 2027, one year from the framework. If neither has happened by then the (b) commitment state should be reconsidered against `failed`, since a year of accumulated absence is evidence rather than the lack of it."
+  },
+  {
+    "id": "L-0189",
+    "title": "India was tariffed for buying Russian crude, and India does not publish how much Russian crude it buys",
+    "date": "2025-08-06",
+    "term": "T3",
+    "domains": ["foreign", "environment"],
+    "lenses": ["russia", "united-states"],
+    "type": "episode",
+    "summary": "The additional 25 per cent duty of EO 14329 rested on a finding of fact about India — that it \"is currently directly or indirectly importing Russian Federation oil\" — and the duty was calibrated to that finding rather than to any quantity of it. India's own petroleum statistics do not carry the quantity. The Petroleum Planning and Analysis Cell's monthly Snapshot of India's Oil & Gas data for June 2026, retrieved 4 August 2026, publishes crude imports in volume and value and by refinery, and contains no country-of-origin breakdown and no occurrence of the word Russia.",
+    "assessment": "no-objective",
+    "assessmentNote": "Not a measure. This is an episode in the sense the type admits: a foreign finding of fact about India, and the state of Indian publication against it. Nothing here was announced to achieve anything, so there is no objective to test.",
+    "caseFor": "The absence is a reporting-format fact rather than a suppression: PPAC's monthly snapshot has never been an origin-of-imports publication, and origin data for crude is commercially sensitive and genuinely held by refiners rather than by the ministry. India is not unusual in this — few states publish monthly crude imports by counterparty — and the quantity is estimated publicly by commercial trackers whose figures are widely reported.",
+    "caseAgainst": "A duty was levied on the entire Indian export basket on the strength of a quantity that the Indian state does not publish and the American order did not state. Neither government put a number on the record, so the proportionality of the measure to the conduct it was aimed at cannot be tested from official sources at all, and the only figures available are commercial estimates that are not official on either side. For an instrument that ties every rendered number to a source and a tier, that is the finding: the single largest India-specific external shock in the corpus rests on a fact with no official measurement behind it.",
+    "unmeasured": [
+      {
+        "what": "Indian crude oil imports by country of origin, and the Russian share of them",
+        "why": "The Petroleum Planning and Analysis Cell's Snapshot of India's Oil & Gas data for June 2026 publishes crude import volumes, values and processing but no origin breakdown; the word Russia does not appear in it. No Indian official series giving crude imports by counterparty was located in this run.",
+        "wouldFill": "PPAC's import-export tables at ppac.gov.in/import-export, or DGCIS commodity-by-country import data at the crude petroleum HS heading, either of which would give an official origin split.",
+        "reasonKind": "not-published"
+      },
+      {
+        "what": "The discount at which Russian crude was sold to Indian refiners, and its path over time",
+        "why": "No official publication on either side states it. The discount is the quantity the whole argument about the benefit of these purchases turns on, and it exists only in commercial assessments.",
+        "wouldFill": "An official statement of realised import unit values by origin — PPAC or DGCIS unit values for crude by source country would give it arithmetically.",
+        "reasonKind": "not-collected"
+      }
+    ],
+    "sources": [
+      {
+        "name": "Executive Order 14329 of August 6, 2025, 90 FR 38701, section 2(a) — \"I find that the Government of India is currently directly or indirectly importing Russian Federation oil\"",
+        "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-11/html/2025-15267.htm",
+        "tier": "T1"
+      },
+      {
+        "name": "Petroleum Planning and Analysis Cell, Snapshot of India's Oil & Gas data, June 2026 — crude import volume, value and processing; no country-of-origin table",
+        "url": "https://ppac.gov.in/download.php?file=rep_studies/1784287517_Snapshot_of_India_Oil_and_Gas_June_2026_A5.pdf",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-04",
+    "revisitTrigger": "Re-test once PPAC's import-export tables or DGCIS country-wise crude imports have been retrieved. Both are named above as routes and neither was reached in this run; retrieving either converts the first unmeasured item into a series and makes the Russian share of the import bill measurable."
+  }
+]

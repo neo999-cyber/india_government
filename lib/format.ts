@@ -1,4 +1,34 @@
-import type { Assessment, Calendar, Country, Domain, Term, Tier } from './types';
+import type { Assessment, Calendar, Country, Domain, Lens, Term, Tier } from './types';
+
+/**
+ * Display names for the lens axis, and a one-line statement of what each lens means.
+ *
+ * The blurb is not decoration. A lens page is a filter, and a filter whose criterion is unstated
+ * invites the reader to infer it from whatever happens to be listed — which is how `defence` came
+ * to be described as a lens in a doc comment when the schema had never said so. Each line here
+ * restates the schema's own definition for that value; the schema is the contract, this is what a
+ * reader sees.
+ */
+export const LENS_LABELS: Record<Lens, string> = {
+  kashmir: 'Kashmir',
+  federalism: 'Federalism',
+  'defence-sector': 'Defence sector',
+  'united-states': 'United States',
+  russia: 'Russia',
+};
+
+export const LENS_BLURBS: Record<Lens, string> = {
+  kashmir:
+    'Jammu and Kashmir as place and question. The record’s subject sits elsewhere — defence, governance, welfare — and J&K is the territory, population or conflict it is measured over. Never a subject value.',
+  federalism:
+    'Centre-state relations bearing on a record whose subject is elsewhere. Unlike the others this is also a subject in its own right, so it is legal on either axis and illegal only on both at once.',
+  'defence-sector':
+    'The armed forces, the defence industry, or defence procurement — whatever domain the record files. Deliberately not named “defence”: the domain of that name is narrower, covering armed conflict and counter-insurgency, and an acquisition cost or an indigenisation share is neither.',
+  'united-states':
+    'The United States as counterparty — tariff actions, the negotiation track, visa and services measures, defence and technology frameworks.',
+  russia:
+    'The Russian Federation as counterparty — crude and refined-product flows, payment mechanisms, defence supply, and the linkage of any of them into a third country’s measures.',
+};
 
 export const DOMAIN_LABELS: Record<Domain, string> = {
   macro: 'Macroeconomy',

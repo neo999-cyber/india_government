@@ -1,0 +1,79 @@
+[
+  {
+    "id": "L-0001",
+    "title": "A ledger record asserting one value on both of its axes",
+    "date": "2020-01-01",
+    "term": "T2",
+    "domains": [
+      "macro",
+      "federalism"
+    ],
+    "lenses": [
+      "federalism"
+    ],
+    "type": "reform",
+    "summary": "Fixture. Everything else about this record is well formed, so the only error this root may raise is the ledger lens one — which is the point: it pins the LEDGER call site of lens-duplicated, not the series and pairs one, which tests/fixtures/lens-axis-pairs already holds. Without a fixture here the ledger branch could be deleted and the selftest would stay green on the pairs fixture alone.",
+    "assessment": "no-objective",
+    "caseFor": "Fixture text. Present only so the record is well formed and the lens rule is the only thing this root can raise.",
+    "caseAgainst": "Fixture text. Present for the same reason — one fixture, one reason, so a pass here means the lens branch fired and nothing else did.",
+    "sources": [
+      {
+        "name": "Fixture, not a real source",
+        "url": "https://example.org/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-04"
+  },
+  {
+    "id": "L-0002",
+    "title": "A ledger record carrying the same value on one axis only, which is legal and must not fire",
+    "date": "2020-01-01",
+    "term": "T2",
+    "domains": [
+      "macro",
+      "federalism"
+    ],
+    "type": "reform",
+    "summary": "The stays-quiet half, in the same root as the fires half so a rule that fired on every record rather than on the duplication would be caught here rather than passing. federalism in domains[] alone is the established convention and thirteen shipped records do it.",
+    "assessment": "no-objective",
+    "caseFor": "Fixture text. Present only so the record is well formed and the lens rule is the only thing this root can raise.",
+    "caseAgainst": "Fixture text. Present for the same reason — one fixture, one reason, so a pass here means the lens branch fired and nothing else did.",
+    "sources": [
+      {
+        "name": "Fixture, not a real source",
+        "url": "https://example.org/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-04"
+  },
+  {
+    "id": "L-0003",
+    "title": "A ledger record carrying a lens that is not a domain value, which is the phase-14 case and must not fire",
+    "date": "2026-02-20",
+    "term": "T3",
+    "domains": [
+      "foreign"
+    ],
+    "lenses": [
+      "united-states"
+    ],
+    "type": "event",
+    "summary": "The other stays-quiet half. A counterparty lens can never collide with domains[] because the domain enum does not admit it, so this shape must stay silent for a structural reason rather than an accidental one — and pinning it here means a rule rewritten to compare the axes loosely would be caught.",
+    "assessment": "no-objective",
+    "caseFor": "Fixture text. Present only so the record is well formed and the lens rule is the only thing this root can raise.",
+    "caseAgainst": "Fixture text. Present for the same reason — one fixture, one reason, so a pass here means the lens branch fired and nothing else did.",
+    "sources": [
+      {
+        "name": "Fixture, not a real source",
+        "url": "https://example.org/",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-04"
+  }
+]

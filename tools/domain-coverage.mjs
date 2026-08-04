@@ -75,8 +75,35 @@ const declaredDomains = new Map();
 for (const [name, pick] of DOMAIN_PATHS) declaredDomains.set(name, pick(readSchema(name)));
 const DOMAINS = [...new Set([...declaredDomains.values()].flat())].filter((d) => d !== ALL).sort();
 
-/** The lens values, from their own enum — a subset of DOMAINS today, asserted rather than assumed. */
-const LENSES = readSchema('series').properties.lenses.items.enum;
+/**
+ * The lens values, as the union across every schema that declares them.
+ *
+ * Union, not `series`, for the reason DOMAIN_PATHS takes a union: three schemas now declare this
+ * enum — series, pairs and ledger, the last since phase 14 — and a value present in one and
+ * missing from another is itself the defect. Reading one schema would have called that agreement.
+ *
+ * THIS WAS "a subset of DOMAINS today, asserted rather than assumed", AND THE ASSERTION WAS RIGHT
+ * TO EXIST AND HAS NOW FIRED. It held while both values had been read off the domain enum. Phase
+ * 14 added six counterparty lenses that are not subject areas — a counterparty answers who a
+ * record is about, not what — so the subset relation is gone and the check that policed it would
+ * now fail every build for values that are behaving correctly. Replaced below with the claim it
+ * was standing in for: a lens must have a SURFACE, not a domain value.
+ */
+const LENS_PATHS = ['series', 'pairs', 'ledger'];
+const declaredLenses = new Map(
+  LENS_PATHS.map((n) => [n, readSchema(n).properties.lenses.items.enum]),
+);
+const LENSES = [...new Set([...declaredLenses.values()].flat())].sort();
+for (const [name, vals] of declaredLenses) {
+  const missing = LENSES.filter((l) => !vals.includes(l));
+  if (missing.length) {
+    console.error(
+      `domain-coverage: ${name}.schema.json declares lenses[] without ${missing.join(', ')} — ` +
+        `the three declarations of one enum have diverged`,
+    );
+    process.exit(2);
+  }
+}
 
 // ---------------------------------------------------------------- data
 
@@ -137,10 +164,21 @@ if (!existsSync(indexPath)) {
 }
 const indexHrefs = hrefs(readFileSync(indexPath, 'utf8'));
 
+const lensPagePath = (l) => join(OUT_DIR, 'lenses', l, 'index.html');
+const readLensPage = (l) => (existsSync(lensPagePath(l)) ? readFileSync(lensPagePath(l), 'utf8') : null);
+const lensIndexPath = join(OUT_DIR, 'lenses', 'index.html');
+const lensIndexHrefs = existsSync(lensIndexPath) ? hrefs(readFileSync(lensIndexPath, 'utf8')) : null;
+
 // ---------------------------------------------------------------- assertions
 
 const failures = [];
-const counts = { pages: { want: 0, got: 0 }, indexed: { want: 0, got: 0 }, records: { want: 0, got: 0 } };
+const counts = {
+  pages: { want: 0, got: 0 },
+  indexed: { want: 0, got: 0 },
+  records: { want: 0, got: 0 },
+  lenses: { want: 0, got: 0 },
+  lensRecords: { want: 0, got: 0 },
+};
 
 /** A. Every schema domain value emits a page, and the index links to it. */
 const surfaces = new Map();
@@ -167,11 +205,78 @@ for (const d of DOMAINS) {
   else failures.push({ kind: 'index', what: d, why: `a page exists at /domains/${d}/ but the domain index does not link to it, so nothing navigates there` });
 }
 
-/** Every lens value must also be a surface — asserted, not inferred from the subset relation. */
+/**
+ * A. bis — every lens value emits a page, and the lens index links to it.
+ *
+ * The claim being made is the one the old subset check was standing in for: a declared filter
+ * must have somewhere to land. Stated directly it survives the axis growing past the domain enum,
+ * where the old form would have failed six correct values and told the author to add six domains.
+ */
+const lensSurfaces = new Map();
+if (lensIndexHrefs === null) {
+  failures.push({
+    kind: 'lens-index',
+    what: '/lenses/',
+    why: `no lens index at ${lensIndexPath}. Every lens value is a declared filter and nothing navigates to any of them`,
+  });
+}
 for (const l of LENSES) {
-  if (!DOMAINS.includes(l)) {
-    failures.push({ kind: 'lens', what: l, why: `"${l}" is a lens value with no matching domain value, so records carrying it in lenses[] have no surface to reach` });
+  counts.lenses.want += 1;
+  const html = readLensPage(l);
+  if (html === null) {
+    const inSchemas = [...declaredLenses.entries()].filter(([, v]) => v.includes(l)).map(([n]) => n);
+    failures.push({
+      kind: 'lens',
+      what: l,
+      why:
+        `the schemas admit "${l}" as a lens (declared in ${inSchemas.join(', ')}) and no page was ` +
+        `built at /lenses/${l}/. A lens with no surface is a filter that returns nothing to a reader ` +
+        `who selects it — check that the value is in LENSES in lib/types.ts, which generateStaticParams reads`,
+    });
+    continue;
   }
+  counts.lenses.got += 1;
+  lensSurfaces.set(l, { text: text(html), hrefs: hrefs(html) });
+  if (lensIndexHrefs && !lensIndexHrefs.has(`/lenses/${l}/`)) {
+    failures.push({ kind: 'lens-index', what: l, why: `a page exists at /lenses/${l}/ but the lens index does not link to it, so nothing navigates there` });
+  }
+}
+
+/**
+ * A. ter — a declared lens must have records behind it.
+ *
+ * THE PAGE EXISTING IS NOT THE FILTER WORKING, and the gap between those two is the whole reason
+ * this rule is separate from the one above. Phase 14 added the lens route, rebuilt, and every
+ * assertion in this file went green — 8/8 surfaces built, 8/8 linked, every record-to-lens
+ * reference reachable — while six of the eight lenses held nothing at all. A structural check
+ * passes on a stub. A reader selecting `china` would have reached a correctly built, correctly
+ * linked, entirely empty page, and nothing in the build would have said so.
+ *
+ * The rule this encodes is a phase-14 authoring rule made mechanical: a lens is admitted when its
+ * records land, not when it is planned. Declaring the vocabulary early is right; merging a value
+ * with nothing behind it is what is not. Counted against /data rather than the built page, because
+ * the question is whether the instrument HOLDS anything under the lens — a page listing zero rows
+ * is the symptom, and asserting on the symptom would pass the moment the page gained a heading.
+ */
+const lensPopulation = new Map(LENSES.map((l) => [l, 0]));
+const bumpLens = (l) => { if (lensPopulation.has(l)) lensPopulation.set(l, lensPopulation.get(l) + 1); };
+for (const s of loadLayer('series')) for (const l of s.lenses ?? []) bumpLens(l);
+for (const p of loadLayer('pairs')) for (const l of p.lenses ?? []) bumpLens(l);
+for (const r of loadLayer('ledger')) {
+  // Both axes, deduplicated — a ledger record may declare a lens in `lenses[]` or, for the two
+  // values that are also domain values, in `domains[]`, and either counts as population.
+  for (const l of new Set([...(r.lenses ?? []), ...(r.domains ?? []).filter((d) => LENSES.includes(d))])) bumpLens(l);
+}
+for (const [l, n] of lensPopulation) {
+  if (n > 0) continue;
+  failures.push({
+    kind: 'lens-empty',
+    what: l,
+    why:
+      `"${l}" is in the lenses enum and no record in /data carries it, so selecting it returns ` +
+      `nothing. Either author the records that populate it, or take the value out of the enum ` +
+      `until they exist — a lens is admitted when its records land, not when it is planned`,
+  });
 }
 
 /**
@@ -189,16 +294,45 @@ const reach = (domain, probe, subject) => {
   else failures.push({ kind: 'record', what: subject, why: `declares domain "${domain}" but does not appear on /domains/${domain}/` });
 };
 
+/**
+ * B. bis — a record declaring a lens must appear on that lens's page.
+ *
+ * Where a value is BOTH a lens and a domain, both surfaces are asserted rather than one. The
+ * domain page has rendered a lens block since phase 13 and dropping the assertion on it while
+ * adding one for the new route would leave the older surface unguarded — the same shape as the
+ * regression this file exists to catch, and it would have been introduced by the fix for it.
+ */
+const reachLens = (lens, probe, subject) => {
+  counts.lensRecords.want += 1;
+  const s = lensSurfaces.get(lens);
+  if (!s) return; // the missing-page failure above already names it
+  const hit = probe.href ? s.hrefs.has(probe.href) : s.text.includes(probe.text);
+  if (hit) counts.lensRecords.got += 1;
+  else failures.push({ kind: 'lens-record', what: subject, why: `declares lens "${lens}" but does not appear on /lenses/${lens}/` });
+};
+
 for (const s of loadLayer('series')) {
   if (s.domain) reach(s.domain, { href: `/series/${s.id}/` }, `series ${s.id}`);
-  for (const l of s.lenses ?? []) reach(l, { href: `/series/${s.id}/` }, `series ${s.id} (lens)`);
+  for (const l of s.lenses ?? []) {
+    reachLens(l, { href: `/series/${s.id}/` }, `series ${s.id}`);
+    if (DOMAINS.includes(l)) reach(l, { href: `/series/${s.id}/` }, `series ${s.id} (lens)`);
+  }
 }
 for (const l of loadLayer('ledger')) {
   for (const d of l.domains ?? []) reach(d, { href: `/ledger/${l.id}/` }, `ledger ${l.id}`);
+  // A ledger lens can be declared on either axis: in `lenses[]` since phase 14, or — for the two
+  // values that are also domain values — in `domains[]`, where nineteen shipped records still
+  // carry it. Both must reach the lens page, and the union is deduplicated so a record declaring
+  // one value on both axes is counted once rather than reported twice for the same absence.
+  const declared = new Set([...(l.lenses ?? []), ...(l.domains ?? []).filter((d) => LENSES.includes(d))]);
+  for (const lens of declared) reachLens(lens, { href: `/ledger/${l.id}/` }, `ledger ${l.id}`);
 }
 for (const p of loadLayer('pairs')) {
   if (p.domain) reach(p.domain, { text: p.id }, `pair ${p.id}`);
-  for (const l of p.lenses ?? []) reach(l, { text: p.id }, `pair ${p.id} (lens)`);
+  for (const l of p.lenses ?? []) {
+    reachLens(l, { text: p.id }, `pair ${p.id}`);
+    if (DOMAINS.includes(l)) reach(l, { text: p.id }, `pair ${p.id} (lens)`);
+  }
 }
 for (const p of loadLayer('provenance')) {
   // `all` fans out: the record bears on every domain, so it must appear on every surface.
@@ -223,4 +357,8 @@ console.log(
     `${counts.indexed.got}/${counts.indexed.want} linked from the index, ` +
     `${counts.records.got}/${counts.records.want} record-to-surface references reachable`,
 );
-console.log(`  domains ${DOMAINS.length} (union of 4 schemas) · lenses ${LENSES.join(', ')}`);
+console.log(
+  `  lens surfaces ${counts.lenses.got}/${counts.lenses.want} built and linked, ` +
+    `${counts.lensRecords.got}/${counts.lensRecords.want} record-to-lens references reachable`,
+);
+console.log(`  domains ${DOMAINS.length} (union of 4 schemas) · lenses ${LENSES.length} (union of 3): ${LENSES.join(', ')}`);

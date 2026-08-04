@@ -380,9 +380,11 @@ export function checkIntegrity(records, { today }) {
    *                     axis alone is correct. Asserting both says the subject is a lens over
    *                     itself.
    *
-   * Series and pairs only. `domains[]` on the ledger is already multi-valued, so subject and lens
-   * coexist there without either being displaced — see the verification log for the three baseline
-   * records that carry a lens as their SOLE domain, which is a different defect and not this one.
+   * Series and pairs. `domains[]` on the ledger is multi-valued, so subject and lens coexist there
+   * without either being displaced — see the verification log for the three baseline records that
+   * carry a lens as their SOLE domain, which is a different defect and not this one. The ledger's
+   * own duplication case is `checkLedgerLensAxis` below, and it is not the same rule with a
+   * different reader: read its comment before assuming it is.
    *
    * @param {LoadedRecord} r
    * @param {string} where
@@ -404,6 +406,44 @@ export function checkIntegrity(records, { today }) {
         `"${domain}" is in both domain and lenses[]. Either alone is legal — it is the one value that is both a ` +
         `subject and a lens — but asserting it on both axes says the record's subject is a lens over itself. ` +
         `Keep it as domain if it IS the subject, as lenses[] if the subject is elsewhere`);
+    }
+  };
+
+  /**
+   * The ledger's lens duplication, which fires on a WIDER set of values than the series rule.
+   *
+   * `lenses[]` reached the ledger in phase 14 because six counterparty lenses are not domain
+   * values and `domains[]` cannot hold them. That created a second axis on a record type that had
+   * been expressing lenses in its first one, and the overlap is the defect.
+   *
+   * WHY `kashmir` IS INCLUDED HERE AND EXCLUDED ON A SERIES. On a series, `domain: "kashmir"` is
+   * already an error in its own right — `lens-as-subject` reports it — so reporting duplication as
+   * well would name the same mistake twice under two names. On the ledger it is NOT an error:
+   * nineteen shipped records carry `kashmir` in `domains[]` and that is the established
+   * convention, so a record carrying it in `lenses[]` as well makes a claim nothing else catches.
+   * Same rule name, same mistake — asserting one value on both axes — and the set it can reach
+   * differs because what is legal on the subject axis differs. Stated rather than inherited: the
+   * exclusion on the series side is a consequence of another rule firing, not a property of the
+   * value.
+   *
+   * No `lens-as-subject` here. A lens as SOLE domain on the ledger is a real defect and three
+   * baseline records carry it, but it is a carried, dated finding on shipped records rather than
+   * this rule's business, and adding it would fail the corpus on records nobody is repairing in
+   * this cycle.
+   *
+   * @param {LoadedRecord} r
+   * @param {string} where
+   */
+  const checkLedgerLensAxis = (r, where) => {
+    const domains = Array.isArray(r.record.domains) ? r.record.domains : [];
+    const lenses = Array.isArray(r.record.lenses) ? r.record.lenses : [];
+    for (const v of lenses) {
+      if (!domains.includes(v)) continue;
+      add('error', 'lens-duplicated', r.file, where,
+        `"${v}" is in both domains[] and lenses[]. Either axis alone is legal on a ledger record — ` +
+        `domains[] is multi-valued, so a lens has always been expressible there — but asserting it ` +
+        `on both says the record's subject is a lens over itself. Keep it in domains[] if it IS one ` +
+        `of the record's subjects, in lenses[] if the subject is elsewhere`);
     }
   };
 
@@ -672,6 +712,7 @@ export function checkIntegrity(records, { today }) {
     resolveRefs(r, l.seriesRefs, seriesIds, 'seriesRefs', 'series');
     resolveRefs(r, l.provenanceRefs, provenanceIds, 'provenanceRefs', 'provenance');
     if (Array.isArray(l.domains)) checkRelevance(r, l.provenanceRefs, l.domains, 'provenanceRefs');
+    checkLedgerLensAxis(r, where);
 
     /**
      * A value that presupposes an objective needs one on the record.

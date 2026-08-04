@@ -133,6 +133,7 @@
     "dateEnd": "2013-05",
     "term": "baseline",
     "domains": ["foreign", "defence"],
+    "lenses": ["defence-sector"],
     "type": "event",
     "summary": "Three-week platoon-scale PLA presence near Daulat Beg Oldi, resolved 5 May 2013 with mutual withdrawal; Border Defence Cooperation Agreement signed October 2013. Baseline for the post-2014 China arc (Doklam 2017, Galwan 2020) and the border-infrastructure gap.",
     "assessment": "baseline-context",

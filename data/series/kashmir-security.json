@@ -5,7 +5,8 @@
     "unit": "incidents",
     "domain": "defence",
     "lenses": [
-      "kashmir"
+      "kashmir",
+      "defence-sector"
     ],
     "tier": "T1",
     "source": {
@@ -116,7 +117,8 @@
     "unit": "incidents",
     "domain": "defence",
     "lenses": [
-      "kashmir"
+      "kashmir",
+      "defence-sector"
     ],
     "tier": "T1",
     "source": {
@@ -196,7 +198,8 @@
     "unit": "incidents",
     "domain": "defence",
     "lenses": [
-      "kashmir"
+      "kashmir",
+      "defence-sector"
     ],
     "tier": "T1",
     "source": {
@@ -283,7 +286,8 @@
     "unit": "operations",
     "domain": "defence",
     "lenses": [
-      "kashmir"
+      "kashmir",
+      "defence-sector"
     ],
     "tier": "T1",
     "source": {
@@ -373,7 +377,8 @@
     "unit": "deaths",
     "domain": "defence",
     "lenses": [
-      "kashmir"
+      "kashmir",
+      "defence-sector"
     ],
     "tier": "T1",
     "source": {
@@ -471,7 +476,8 @@
     "unit": "deaths",
     "domain": "defence",
     "lenses": [
-      "kashmir"
+      "kashmir",
+      "defence-sector"
     ],
     "tier": "T1",
     "source": {
@@ -558,7 +564,8 @@
     "unit": "deaths",
     "domain": "defence",
     "lenses": [
-      "kashmir"
+      "kashmir",
+      "defence-sector"
     ],
     "tier": "T4",
     "source": {
@@ -634,7 +641,8 @@
     "unit": "deaths",
     "domain": "defence",
     "lenses": [
-      "kashmir"
+      "kashmir",
+      "defence-sector"
     ],
     "tier": "T1",
     "source": {
@@ -733,7 +741,8 @@
     "unit": "deaths",
     "domain": "defence",
     "lenses": [
-      "kashmir"
+      "kashmir",
+      "defence-sector"
     ],
     "tier": "T4",
     "source": {
@@ -807,7 +816,8 @@
     "unit": "deaths",
     "domain": "defence",
     "lenses": [
-      "kashmir"
+      "kashmir",
+      "defence-sector"
     ],
     "tier": "T1",
     "source": {
@@ -889,7 +899,8 @@
     "unit": "attempts",
     "domain": "defence",
     "lenses": [
-      "kashmir"
+      "kashmir",
+      "defence-sector"
     ],
     "tier": "T1",
     "source": {
@@ -980,7 +991,8 @@
     "unit": "persons",
     "domain": "defence",
     "lenses": [
-      "kashmir"
+      "kashmir",
+      "defence-sector"
     ],
     "tier": "T1",
     "source": {
@@ -1172,7 +1184,8 @@
     "unit": "deaths",
     "domain": "defence",
     "lenses": [
-      "kashmir"
+      "kashmir",
+      "defence-sector"
     ],
     "tier": "T4",
     "source": {
