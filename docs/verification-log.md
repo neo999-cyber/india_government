@@ -6268,3 +6268,124 @@ url-check           3/3 confirmed
 lens-controls       6 paired + exact membership on all five phase-14 lenses
 arithmetic          5 figures hand-checked, 0 mismatches; the 23.10 difference reconstructs exactly
 ```
+
+---
+
+# Verification log — cycle 2026-08-04o (correction: L-0200's derived quantity inherited a contested input)
+
+**Correction cycle. Scope: L-0200 and one new standing rule. No sweep of other records — that
+belongs to the assessment audit, and running it here would contaminate the audit's finding rate.**
+
+`/data` diff: `4 4` on `ledger/foreign-trade.json`. Four field edits, one record, verified by parsed
+comparison: **L-0200 is the only record changed.**
+
+## The defect
+
+L-0200 carries a `differentFacts` pair on the total value of thirteen Emergency Procurement
+contracts — ₹1,981.90 crore and ₹1,958.80 crore — and correctly picks neither. It then said
+*"Thirteen contracts against a ₹2,000 crore sanction is 99.1 per cent of the outlay committed on the
+June figure"*.
+
+That is 1981.90/2000. **The other total gives 1958.80/2000 = 97.9 per cent.** Both computations are
+arithmetically correct against their own input. The record recorded a disagreement and then quietly
+resolved it in a derived quantity.
+
+**No arithmetic gate can catch this class**, and `figure-consistency` did not: it checks a claim
+against its source values and against its printed operands, and this claim was right on both. The
+defect is only visible by asking *where the input came from*.
+
+## Fix 1 — the range, attributed
+
+`caseFor` now reads: *"Thirteen contracts against a ₹2,000 crore sanction commit between 97.9 and
+99.1 per cent of the outlay — 99.1 on the June release's ₹1,981.90 crore, 97.9 on the Year End
+Review's ₹1,958.80 crore. THE RANGE IS THERE BECAUSE THE TWO MINISTRY TOTALS DIFFER, NOT BECAUSE THE
+OUTLAY IS UNCERTAIN: the ₹2,000 crore denominator is stated once and identically."*
+
+Hand-checked, not taken from a gate:
+
+```
+1981.90 / 2000 = 0.990950 -> 99.095% -> 99.1 at 1dp
+1958.80 / 2000 = 0.979400 -> 97.940% -> 97.9 at 1dp
+spread 1.155 percentage points
+```
+
+Both operands are exact to two decimals in their sources and the denominator is exact, so neither
+bound is a rounding artefact and both reconstruct from the printed operands.
+
+`whatHappened` also adopted one side — *"thirteen contracts totalling ₹1,981.90 crore says nothing
+about whether any individual case sat under the ₹300 crore ceiling"*. The point holds on either
+total, so it now reads "on either of the two figures the Ministry gives for it". Swept the record for
+any other statement deriving from a contested total: **there are none.**
+
+## Both requested source points were determinable
+
+- **Temporal ordering.** PIB release entry date **24 JUN 2025**; Year End Review entry date
+  **31 DEC 2025**. The Year End Review is the later document. Now stated in the summary.
+- **Revision acknowledgement.** The Year End Review contains the figure ₹1,981.90 **zero times**, and
+  carries no corrigendum, superseding or earlier-figure language relating to it. The `revis` and
+  `amend` hits in that document concern naval doctrine and MES engineering policy. **Determinable,
+  and the answer is that no revision is acknowledged.**
+
+## Fix 2 — the superlative re-grounded, and what was wrong with it
+
+The earlier framing, in this record's `differentFactsNote` and restated in cycle 2026-08-04n, was
+that same-publisher divergence is *sharper* than a two-government mirror because *"there is no
+equivalent explanation available for one ministry and itself"*.
+
+**That claim was wrong and is withdrawn.** Ordinary explanations are available — a contract revised
+or descoped after signature, a tax-inclusive against tax-exclusive basis, a differently drawn subset
+— and ₹23.10 crore is **1.17 per cent** of the June total, within the range a single revised contract
+would produce. Asserting that no explanation exists was an inference about the world dressed as an
+observation about the sources, which is the error the instrument exists to refuse.
+
+The record now rests the point on a **documentable property of the documents**: the later one
+acknowledges no revision, does not contain the earlier figure, and a reader meeting either alone
+would have no indication the other exists. It states that ordinary explanations are available,
+names three, and asserts neither a cause nor the absence of one.
+
+**The cycle 2026-08-04n entry above is superseded on this point and is NOT rewritten.** The log has
+been append-only for fourteen cycles and deleting a wrong sentence from a closed entry would erase
+the record of having been wrong — the same reason the L-0021 correction was stated inside the record
+rather than made silently. It stands as written; this entry governs.
+
+## Fix 3 — standing rule 5c
+
+Added to CLAUDE.md's non-negotiable data rules, between 5b and 6:
+
+> **5c. A derived quantity inherits its inputs' contests.** Any ratio, percentage, share or per-unit
+> figure whose numerator or denominator appears in a `differentFacts` pair carries the divergence
+> forward as a RANGE with each bound attributed to its source — or is not stated at all. […]
+> Arithmetic hand-checking cannot catch this class and neither can any gate: both computations are
+> correct in isolation, each against its own input, and the defect is only visible by asking where
+> the input came from.
+
+L-0200 is recorded in the rule as its first identified instance.
+
+## Logged, not acted on
+
+1. **L-0200's `partly` scoring has an open retrieval item.** The DAC delegation carried a six-month
+   order undertaking; thirteen contracts exist under it; **contract signature dates may be
+   retrievable** and would bear on that limb directly. Not attempted in this run. The scoring and its
+   reasoning are untouched.
+2. **The S-400 file's arc ownership is undecided.** Its content is an absence of published schedule
+   and delivered count, which may make it retrieval-capability material rather than an arc E file.
+   Recorded as pending an owner decision; not decided here.
+
+## Left untouched, as instructed
+
+The incommensurability refusal on the ₹300 crore per-case ceiling against the ₹2,000 crore outlay;
+the 159/175 "nearly 91%" figure (independently verified at 90.86 per cent); the `partly` score and
+its reasoning.
+
+## Gates
+
+```
+validate            VALID — 0 errors
+typecheck           clean
+selftest            OK
+enum-stamp          OK
+figure-consistency  OK
+reachability        808/808
+domain-coverage     14/14 domains · 7/7 lenses · 226/226 lens refs
+arithmetic          both bounds hand-computed; ordering and non-acknowledgement read from source
+```
