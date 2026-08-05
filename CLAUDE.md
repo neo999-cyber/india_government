@@ -279,6 +279,27 @@ module and look at the disk.
 depends on.** A check reporting clean with no positive beside it proves the needle absent, not the
 search working. If the negative depends on "mentions China", the positive must also mention China.
 
+**A NEGATIVE CONTROL ASSERTS AGAINST A STRING READ FROM `/data` AT THE TIME OF WRITING, IN THE
+CONTEXT IT APPEARS IN.** Never a needle typed from an idea of what the record says, and never a bare
+"this token must be absent". Two failures in two batches, both of them controls written from a
+memory of the record rather than from the record:
+- **Needles from memory.** Two deployed-page checks failed against pages that were rendering
+  perfectly, because the record said `FUSES` in capitals where the needle was lower-case, and
+  `Incapsula WAF stub` where the needle omitted the WAF. The pages were right and the controls were
+  wrong, which is the worst direction for a control to fail in — it sends someone hunting a
+  rendering bug that does not exist.
+- **A bare absence assertion against a correctly corrected record.** A check asserted that `28.84`
+  must be ABSENT from a page where it correctly appears **inside the sentence that withdraws it**.
+  This file already documents that shape — *"a guard that forbids a token therefore fails on a
+  correctly corrected record"* — and it was written anyway, because the control was composed from
+  the intent ("the old figure is gone") instead of from the text.
+
+**The mechanical form: read the value from `/data` in the same operation, assert it in its
+surrounding sentence, and COUNT OCCURRENCES.** "28.84 appears exactly once, inside the clause
+beginning `that construction gives`" is checkable and survives a correction; "28.84 is absent" is
+neither. The same rule is why `tools/field-render-audit.mjs` derives every needle from the record
+rather than carrying a list.
+
 **Every zero result is confirmed by relaxing one restriction at a time until it goes non-zero — the
 restriction that flips it is the finding.** A zero that stays zero under full relaxation is the only
 citable zero. Record which relaxation flipped it.
