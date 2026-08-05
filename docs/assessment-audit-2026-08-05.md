@@ -317,3 +317,41 @@ have caught the 141-versus-313 undercount at the time.
 
 The bare-root defect itself is unchanged and real: 313 citations across 255 records. What is wrong
 is only the claim that 99 of them lacked a tier.
+
+
+## C5. Cycle 2's `gdp-per-capita-usd` value defect does not exist. Supersedes it.
+
+Correction cycle 2 flagged "a 42 per cent gap that is not a revision" between the World Bank API's
+1,553.88 for India in 2014 and the record's 1,094.5, and queued it as a probable value defect.
+
+**There is no defect.** `gdp-per-capita-usd` is the only peer panel in `seed.json` that lists
+countries ALPHABETICALLY — BGD, CHN, IDN, IND, VNM — where all twelve others list India first.
+India's recorded 2014 value is 1,553.9 and its 2024 value is 2,592.0, matching the API's 1,553.88
+and 2,591.99. The 1,094.5 is Bangladesh's.
+
+The coincidence that made it look like a partial match was load-bearing: Bangladesh's 2024 figure
+(2,593.4) sits within 0.05 per cent of India's (2,591.99), so the "2024 agrees, 2014 does not"
+pattern looked like a currency-basis problem rather than a wrong row.
+
+**Fourth iteration of one error** — `points[0]` read without the `country` field beside it. The
+series is now deep-linked, and its citation carries a note naming the alphabetical ordering so the
+next reader does not repeat it.
+
+## C6. The real defect found by cycle 3's sweep: `credit-gdp-peer`.
+
+Verifying all thirteen peer series' India values against the API on both years, eleven are clean.
+Two differ by plausible revisions (`cereal-yield-peer` 2024 by 0.8 per cent,
+`agri-value-per-worker-peer` 2024 by 3.7 per cent). One does not:
+
+**`credit-gdp-peer` records 51.5 (2014) and 55.0 (2024); WDI returns 51.88 and 41.61.** 55.0 appears
+nowhere in WDI's India series for any year from 2010 to 2024, and in no peer's 2024 cell.
+`FD.AST.PRVT.GD.ZS` returns values identical to `FS.AST.PRVT.GD.ZS`, so this is not a choice between
+codes. Cycle 2 attached a WDI indicator URL to this series on a 0.74 per cent near-match at 2014 and
+called the difference a vintage revision; **that identification does not survive checking the second
+point.**
+
+No value was changed. The record names *IMF Financial Soundness Indicators* as a co-source and its
+figures may come from there. WDI's own India series also breaks between 2015 (51.87) and 2016
+(38.20) — a 13.7-point one-year fall that is a definitional change, and the likeliest reason
+credit-to-GDP diverges between publishers. The citation now states all of this and that the
+indicator is not established.
