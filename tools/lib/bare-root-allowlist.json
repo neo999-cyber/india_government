@@ -1,0 +1,1819 @@
+{
+ "_comment": "LEGACY BARE-DOMAIN ROOTS, frozen 2026-08-05 by correction cycle 1. Keyed by (id, url). This list may only SHRINK: tools/no-bare-root.mjs errors on any bare root absent from it AND on any entry here that no longer appears in /data, so a fixed citation forces its own line to be deleted. Never add to this list. A new bare root is a gate failure, not an allowlist entry.",
+ "frozen": "2026-08-05",
+ "cycle": "correction-1 (assessment audit finding 1)",
+ "entries": [
+  {
+   "id": "L-0066",
+   "file": "data/ledger/agriculture.json",
+   "url": "https://sansad.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0067",
+   "file": "data/ledger/agriculture.json",
+   "url": "https://mospi.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0069",
+   "file": "data/ledger/agriculture.json",
+   "url": "https://agricoop.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0070",
+   "file": "data/ledger/agriculture.json",
+   "url": "https://ncrb.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0071",
+   "file": "data/ledger/agriculture.json",
+   "url": "http://cgwb.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0072",
+   "file": "data/ledger/agriculture.json",
+   "url": "https://pmfby.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0073",
+   "file": "data/ledger/agriculture.json",
+   "url": "https://agricoop.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0024",
+   "file": "data/ledger/banking.json",
+   "url": "https://ibbi.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0001",
+   "file": "data/ledger/baseline.json",
+   "url": "https://cercind.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0003",
+   "file": "data/ledger/baseline.json",
+   "url": "https://www.satp.org/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0004",
+   "file": "data/ledger/baseline.json",
+   "url": "https://www.satp.org/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0005",
+   "file": "data/ledger/baseline.json",
+   "url": "https://www.satp.org/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0006",
+   "file": "data/ledger/baseline.json",
+   "url": "https://ncrb.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0007",
+   "file": "data/ledger/baseline.json",
+   "url": "https://dfpd.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0008",
+   "file": "data/ledger/baseline.json",
+   "url": "https://www.mea.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0009",
+   "file": "data/ledger/baseline.json",
+   "url": "https://www.mea.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0010",
+   "file": "data/ledger/baseline.json",
+   "url": "https://www.eci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0095",
+   "file": "data/ledger/education.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0096",
+   "file": "data/ledger/education.json",
+   "url": "https://pib.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0096",
+   "file": "data/ledger/education.json",
+   "url": "https://sansad.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0096",
+   "file": "data/ledger/education.json",
+   "url": "https://www.education.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0096",
+   "file": "data/ledger/education.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0096",
+   "file": "data/ledger/education.json",
+   "url": "https://www.sci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0097",
+   "file": "data/ledger/education.json",
+   "url": "https://www.nios.ac.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0097",
+   "file": "data/ledger/education.json",
+   "url": "https://www.sci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0102",
+   "file": "data/ledger/education.json",
+   "url": "https://www.indiabudget.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0103",
+   "file": "data/ledger/education.json",
+   "url": "https://aishe.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0104",
+   "file": "data/ledger/education.json",
+   "url": "https://aishe.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0105",
+   "file": "data/ledger/education.json",
+   "url": "https://censusindia.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0105",
+   "file": "data/ledger/education.json",
+   "url": "https://pib.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0105",
+   "file": "data/ledger/education.json",
+   "url": "https://www.mospi.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0106",
+   "file": "data/ledger/education.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0108",
+   "file": "data/ledger/education.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0108",
+   "file": "data/ledger/education.json",
+   "url": "https://www.sci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0061",
+   "file": "data/ledger/employment.json",
+   "url": "https://www.pib.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0062",
+   "file": "data/ledger/employment.json",
+   "url": "https://www.epfindia.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0063",
+   "file": "data/ledger/employment.json",
+   "url": "https://www.ilo.org/",
+   "tier": "T2"
+  },
+  {
+   "id": "L-0064",
+   "file": "data/ledger/employment.json",
+   "url": "https://sansad.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0065",
+   "file": "data/ledger/employment.json",
+   "url": "https://data.worldbank.org/",
+   "tier": "T2"
+  },
+  {
+   "id": "L-0044",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://morth.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0045",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://cag.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0045",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://morth.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0046",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://morth.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0047",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://pib.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0048",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://pib.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0049",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://data.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0050",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://powermin.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0051",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://pfcindia.com/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0052",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://mnre.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0053",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://shipmin.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0054",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://www.civilaviation.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0055",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://infravision.in/",
+   "tier": "T3"
+  },
+  {
+   "id": "L-0056",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://trai.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0057",
+   "file": "data/ledger/infrastructure.json",
+   "url": "https://mospi.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0129",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://egazette.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0132",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://www.amnesty.org/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0132",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://www.livelaw.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0133",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://jkccs.net/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0136",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://api.sci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0137",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://internetfreedom.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0139",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://egazette.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0139",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://internetshutdowns.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0140",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://internetshutdowns.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0143",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://egazette.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0143",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://jkla.neva.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0143",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://www.greaterkashmir.com/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0144",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://www.greaterkashmir.com/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0145",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://egazette.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0145",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://www.greaterkashmir.com/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0146",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://jkgad.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0146",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0148",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://nhrc.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0148",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://www.ohchr.org/",
+   "tier": "T2"
+  },
+  {
+   "id": "L-0149",
+   "file": "data/ledger/kashmir-rights.json",
+   "url": "https://cic.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0110",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://www.satp.org/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0115",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://scroll.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0115",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://www.indianarmy.nic.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0116",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://main.sci.gov.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0116",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://www.jkpolice.gov.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0117",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://www.jkpolice.gov.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0117",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://www.theweek.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0118",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://cpj.org/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0119",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://www.indianarmy.nic.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0121",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://nhrc.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0122",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://cic.gov.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0122",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://sansad.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0122",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://www.ohchr.org/",
+   "tier": "T2"
+  },
+  {
+   "id": "L-0124",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://jkccs.net/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0124",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://ucdp.uu.se/",
+   "tier": "T2"
+  },
+  {
+   "id": "L-0124",
+   "file": "data/ledger/kashmir-security.json",
+   "url": "https://www.ohchr.org/",
+   "tier": "T2"
+  },
+  {
+   "id": "L-0074",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://sansad.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0075",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://main.sci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0076",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://main.sci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0076",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0077",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://eci.gov.in/",
+   "tier": "T2"
+  },
+  {
+   "id": "L-0077",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://main.sci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0077",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://rbi.org.in/",
+   "tier": "T2"
+  },
+  {
+   "id": "L-0078",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://freedomhouse.org/",
+   "tier": "T5"
+  },
+  {
+   "id": "L-0078",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://sansad.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0078",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://www.v-dem.net/",
+   "tier": "T5"
+  },
+  {
+   "id": "L-0079",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://cpj.org/",
+   "tier": "T3"
+  },
+  {
+   "id": "L-0079",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://main.sci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0079",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://www.incometaxindia.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0080",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://bombayhighcourt.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0080",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://www.meity.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0081",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://internetshutdowns.in/",
+   "tier": "T3"
+  },
+  {
+   "id": "L-0081",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://main.sci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0082",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://main.sci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0082",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0083",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://sansad.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0084",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://main.sci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0084",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://sansad.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0085",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://snsindia.org/",
+   "tier": "T3"
+  },
+  {
+   "id": "L-0085",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0086",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0087",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://main.sci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0087",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://prsindia.org/",
+   "tier": "T3"
+  },
+  {
+   "id": "L-0088",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://main.sci.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0088",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0089",
+   "file": "data/ledger/rights-institutions.json",
+   "url": "https://cag.gov.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0034",
+   "file": "data/ledger/welfare.json",
+   "url": "https://cag.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0035",
+   "file": "data/ledger/welfare.json",
+   "url": "https://swachhbharatmission.ddws.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0036",
+   "file": "data/ledger/welfare.json",
+   "url": "https://www.business-standard.com/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0039",
+   "file": "data/ledger/welfare.json",
+   "url": "https://cag.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "L-0040",
+   "file": "data/ledger/welfare.json",
+   "url": "https://libtech.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "L-0043",
+   "file": "data/ledger/welfare.json",
+   "url": "https://www.niti.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-01",
+   "file": "data/provenance.json",
+   "url": "https://mospi.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-02",
+   "file": "data/provenance.json",
+   "url": "https://mospi.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-03",
+   "file": "data/provenance.json",
+   "url": "https://mospi.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-04",
+   "file": "data/provenance.json",
+   "url": "https://censusindia.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-05",
+   "file": "data/provenance.json",
+   "url": "https://www.rbi.org.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-06",
+   "file": "data/provenance.json",
+   "url": "https://www.indiabudget.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-07",
+   "file": "data/provenance.json",
+   "url": "https://ncrb.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-08",
+   "file": "data/provenance.json",
+   "url": "https://v-dem.net/",
+   "tier": "T5"
+  },
+  {
+   "id": "P-09",
+   "file": "data/provenance.json",
+   "url": "https://data.worldbank.org/",
+   "tier": "T2"
+  },
+  {
+   "id": "P-13",
+   "file": "data/provenance.json",
+   "url": "https://www.indiabudget.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-20",
+   "file": "data/provenance.json",
+   "url": "https://www.rbi.org.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-23",
+   "file": "data/provenance.json",
+   "url": "https://mospi.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-24",
+   "file": "data/provenance.json",
+   "url": "https://swachhbharatmission.ddws.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-25",
+   "file": "data/provenance.json",
+   "url": "https://www.business-standard.com/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-26",
+   "file": "data/provenance.json",
+   "url": "https://www.niti.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-27",
+   "file": "data/provenance.json",
+   "url": "https://cag.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-28",
+   "file": "data/provenance.json",
+   "url": "https://libtech.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-29",
+   "file": "data/provenance.json",
+   "url": "https://www.globalhungerindex.org/",
+   "tier": "T5"
+  },
+  {
+   "id": "P-30",
+   "file": "data/provenance.json",
+   "url": "https://morth.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-31",
+   "file": "data/provenance.json",
+   "url": "https://morth.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-32",
+   "file": "data/provenance.json",
+   "url": "https://powermin.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-33",
+   "file": "data/provenance.json",
+   "url": "https://www.indiabudget.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-34",
+   "file": "data/provenance.json",
+   "url": "https://data.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-35",
+   "file": "data/provenance.json",
+   "url": "https://lpi.worldbank.org/",
+   "tier": "T2"
+  },
+  {
+   "id": "P-37",
+   "file": "data/provenance.json",
+   "url": "https://bbnl.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-38",
+   "file": "data/provenance.json",
+   "url": "https://sansad.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-39",
+   "file": "data/provenance.json",
+   "url": "https://mospi.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-40",
+   "file": "data/provenance.json",
+   "url": "https://mospi.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-42",
+   "file": "data/provenance.json",
+   "url": "https://www.epfindia.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-43",
+   "file": "data/provenance.json",
+   "url": "https://www.rbi.org.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-44",
+   "file": "data/provenance.json",
+   "url": "https://ncrb.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-45",
+   "file": "data/provenance.json",
+   "url": "https://ncrb.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-46",
+   "file": "data/provenance.json",
+   "url": "https://mospi.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-47",
+   "file": "data/provenance.json",
+   "url": "https://cacp.dacnet.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-48",
+   "file": "data/provenance.json",
+   "url": "https://mospi.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-49",
+   "file": "data/provenance.json",
+   "url": "https://pmfby.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-50",
+   "file": "data/provenance.json",
+   "url": "https://sansad.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-51",
+   "file": "data/provenance.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-52",
+   "file": "data/provenance.json",
+   "url": "https://sansad.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-53",
+   "file": "data/provenance.json",
+   "url": "https://cag.gov.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-54",
+   "file": "data/provenance.json",
+   "url": "https://internetshutdowns.in/",
+   "tier": "T3"
+  },
+  {
+   "id": "P-55",
+   "file": "data/provenance.json",
+   "url": "https://sansad.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-56",
+   "file": "data/provenance.json",
+   "url": "https://rti.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-56",
+   "file": "data/provenance.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-57",
+   "file": "data/provenance.json",
+   "url": "https://sansad.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-58",
+   "file": "data/provenance.json",
+   "url": "https://cag.gov.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-64",
+   "file": "data/provenance.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-65",
+   "file": "data/provenance.json",
+   "url": "https://pib.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-66",
+   "file": "data/provenance.json",
+   "url": "https://www.indiabudget.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-67",
+   "file": "data/provenance.json",
+   "url": "https://aishe.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-68",
+   "file": "data/provenance.json",
+   "url": "https://censusindia.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-68",
+   "file": "data/provenance.json",
+   "url": "https://www.mospi.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-70",
+   "file": "data/provenance.json",
+   "url": "https://web.archive.org/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-75",
+   "file": "data/provenance.json",
+   "url": "https://www.satp.org/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-79",
+   "file": "data/provenance.json",
+   "url": "https://www.jklegislativeassembly.nic.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-80",
+   "file": "data/provenance.json",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-81",
+   "file": "data/provenance.json",
+   "url": "https://www.jklegislativeassembly.nic.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-82",
+   "file": "data/provenance.json",
+   "url": "https://cic.gov.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-82",
+   "file": "data/provenance.json",
+   "url": "https://www.ohchr.org/",
+   "tier": "T2"
+  },
+  {
+   "id": "P-83",
+   "file": "data/provenance.json",
+   "url": "https://nhrc.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-84",
+   "file": "data/provenance.json",
+   "url": "https://www.jkpolice.gov.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-84",
+   "file": "data/provenance.json",
+   "url": "https://www.theweek.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-85",
+   "file": "data/provenance.json",
+   "url": "https://scroll.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-86",
+   "file": "data/provenance.json",
+   "url": "https://www.indiacode.nic.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-87",
+   "file": "data/provenance.json",
+   "url": "https://jkccs.net/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-87",
+   "file": "data/provenance.json",
+   "url": "https://ucdp.uu.se/",
+   "tier": "T2"
+  },
+  {
+   "id": "P-87",
+   "file": "data/provenance.json",
+   "url": "https://www.ohchr.org/",
+   "tier": "T2"
+  },
+  {
+   "id": "P-89",
+   "file": "data/provenance.json",
+   "url": "https://www.greaterkashmir.com/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-92",
+   "file": "data/provenance.json",
+   "url": "https://jkccs.net/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-92",
+   "file": "data/provenance.json",
+   "url": "https://www.amnesty.org/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-92",
+   "file": "data/provenance.json",
+   "url": "https://www.livelaw.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-93",
+   "file": "data/provenance.json",
+   "url": "https://jkgad.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-95",
+   "file": "data/provenance.json",
+   "url": "https://internetshutdowns.in/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-95",
+   "file": "data/provenance.json",
+   "url": "https://www.accessnow.org/",
+   "tier": "T4"
+  },
+  {
+   "id": "P-96",
+   "file": "data/provenance.json",
+   "url": "https://www.dot.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-96",
+   "file": "data/provenance.json",
+   "url": "https://www.trai.gov.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "P-97",
+   "file": "data/provenance.json",
+   "url": "https://nhrc.nic.in/",
+   "tier": "T1"
+  },
+  {
+   "id": "aishe-publication-lag",
+   "file": "data/series/education.json",
+   "url": "https://aishe.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "edu-union-be-shortfall-pct",
+   "file": "data/series/education.json",
+   "url": "https://www.indiabudget.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "edu-union-moe-gdp",
+   "file": "data/series/education.json",
+   "url": "https://www.indiabudget.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "literacy-rate-7plus",
+   "file": "data/series/education.json",
+   "url": "https://censusindia.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "jk-panchayat-seats-vacant",
+   "file": "data/series/kashmir-rights.json",
+   "url": "https://jkgad.nic.in/",
+   "tier": null
+  },
+  {
+   "id": "jk-civilians-killed-satp",
+   "file": "data/series/kashmir-security.json",
+   "url": "https://www.satp.org/",
+   "tier": null
+  },
+  {
+   "id": "jk-security-forces-killed-satp",
+   "file": "data/series/kashmir-security.json",
+   "url": "https://www.satp.org/",
+   "tier": null
+  },
+  {
+   "id": "jkccs-civilians-killed-by-armed-forces",
+   "file": "data/series/kashmir-security.json",
+   "url": "https://jkccs.net/",
+   "tier": null
+  },
+  {
+   "id": "bills-referred-committee-pct",
+   "file": "data/series/rights-institutions.json",
+   "url": "https://prsindia.org/",
+   "tier": null
+  },
+  {
+   "id": "cag-union-audit-reports-tabled",
+   "file": "data/series/rights-institutions.json",
+   "url": "https://cag.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "ed-pmla-cases-registered",
+   "file": "data/series/rights-institutions.json",
+   "url": "https://sansad.in/",
+   "tier": null
+  },
+  {
+   "id": "ed-pmla-convictions",
+   "file": "data/series/rights-institutions.json",
+   "url": "https://sansad.in/",
+   "tier": null
+  },
+  {
+   "id": "high-court-judge-vacancies",
+   "file": "data/series/rights-institutions.json",
+   "url": "https://doj.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "internet-shutdowns-count",
+   "file": "data/series/rights-institutions.json",
+   "url": "https://internetshutdowns.in/",
+   "tier": null
+  },
+  {
+   "id": "lok-sabha-sitting-days",
+   "file": "data/series/rights-institutions.json",
+   "url": "https://prsindia.org/",
+   "tier": null
+  },
+  {
+   "id": "agri-credit",
+   "file": "data/series/seed.json",
+   "url": "https://agricoop.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "agri-employment-peer",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "agri-gdp-share",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "agri-gdp-share-peer",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "agri-gva-growth",
+   "file": "data/series/seed.json",
+   "url": "https://mospi.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "agri-value-per-worker-peer",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "airports-operational",
+   "file": "data/series/seed.json",
+   "url": "https://www.aai.aero/",
+   "tier": null
+  },
+  {
+   "id": "atc-losses",
+   "file": "data/series/seed.json",
+   "url": "https://pfcindia.com/",
+   "tier": null
+  },
+  {
+   "id": "bank-writeoffs-annual",
+   "file": "data/series/seed.json",
+   "url": "https://www.rbi.org.in/",
+   "tier": null
+  },
+  {
+   "id": "bharatnet-gps",
+   "file": "data/series/seed.json",
+   "url": "https://bbnl.nic.in/",
+   "tier": null
+  },
+  {
+   "id": "cad-gdp",
+   "file": "data/series/seed.json",
+   "url": "https://rbi.org.in/",
+   "tier": null
+  },
+  {
+   "id": "cereal-yield-peer",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "cpi-inflation",
+   "file": "data/series/seed.json",
+   "url": "https://rbi.org.in/",
+   "tier": null
+  },
+  {
+   "id": "credit-gdp-peer",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "epfo-net-additions",
+   "file": "data/series/seed.json",
+   "url": "https://www.pib.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "eshram-registrations",
+   "file": "data/series/seed.json",
+   "url": "https://eshram.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "exports-gdp-peer",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "farm-household-income",
+   "file": "data/series/seed.json",
+   "url": "https://mospi.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "farmer-indebtedness",
+   "file": "data/series/seed.json",
+   "url": "https://mospi.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "farmer-suicides",
+   "file": "data/series/seed.json",
+   "url": "https://ncrb.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "fertiliser-subsidy",
+   "file": "data/series/seed.json",
+   "url": "https://www.indiabudget.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "fertiliser-use-peer",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "fiscal-deficit",
+   "file": "data/series/seed.json",
+   "url": "https://www.indiabudget.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "foodgrain-production",
+   "file": "data/series/seed.json",
+   "url": "https://agricoop.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "forex-reserves",
+   "file": "data/series/seed.json",
+   "url": "https://rbi.org.in/",
+   "tier": null
+  },
+  {
+   "id": "gdp-growth-new-base",
+   "file": "data/series/seed.json",
+   "url": "https://mospi.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "gdp-growth-old-base",
+   "file": "data/series/seed.json",
+   "url": "https://mospi.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "gdp-per-capita-usd",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "gfcf-gdp",
+   "file": "data/series/seed.json",
+   "url": "https://mospi.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "ghi-score",
+   "file": "data/series/seed.json",
+   "url": "https://www.globalhungerindex.org/",
+   "tier": null
+  },
+  {
+   "id": "govt-capital-infusion",
+   "file": "data/series/seed.json",
+   "url": "https://www.indiabudget.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "graduate-unemployment",
+   "file": "data/series/seed.json",
+   "url": "https://www.ilo.org/",
+   "tier": null
+  },
+  {
+   "id": "groundwater-overexploited-punjab",
+   "file": "data/series/seed.json",
+   "url": "http://cgwb.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "health-exp-union",
+   "file": "data/series/seed.json",
+   "url": "https://www.indiabudget.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "household-electrification",
+   "file": "data/series/seed.json",
+   "url": "https://powermin.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "ibc-realisation-pct",
+   "file": "data/series/seed.json",
+   "url": "https://ibbi.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "ibc-resolution-days",
+   "file": "data/series/seed.json",
+   "url": "https://ibbi.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "industry-employment-peer",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "inr-usd",
+   "file": "data/series/seed.json",
+   "url": "https://rbi.org.in/",
+   "tier": null
+  },
+  {
+   "id": "internet-subscribers",
+   "file": "data/series/seed.json",
+   "url": "https://trai.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "jan-dhan-accounts",
+   "file": "data/series/seed.json",
+   "url": "https://pmjdy.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "jjm-functionality",
+   "file": "data/series/seed.json",
+   "url": "https://jaljeevanmission.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "jjm-tap-coverage",
+   "file": "data/series/seed.json",
+   "url": "https://jaljeevanmission.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "klems-employment-claim",
+   "file": "data/series/seed.json",
+   "url": "https://www.rbi.org.in/",
+   "tier": null
+  },
+  {
+   "id": "lfpr-female-peer",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "lfpr-overall-cmie",
+   "file": "data/series/seed.json",
+   "url": "https://www.cmie.com/",
+   "tier": null
+  },
+  {
+   "id": "lpi-rank",
+   "file": "data/series/seed.json",
+   "url": "https://lpi.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "manufacturing-gdp",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "metro-network",
+   "file": "data/series/seed.json",
+   "url": "https://pib.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "mgnrega-persondays",
+   "file": "data/series/seed.json",
+   "url": "https://nrega.nic.in/",
+   "tier": null
+  },
+  {
+   "id": "msp-farmers-share",
+   "file": "data/series/seed.json",
+   "url": "https://agricoop.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "msp-paddy",
+   "file": "data/series/seed.json",
+   "url": "https://agricoop.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "msp-wheat",
+   "file": "data/series/seed.json",
+   "url": "https://agricoop.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "nh-construction-pace",
+   "file": "data/series/seed.json",
+   "url": "https://morth.nic.in/",
+   "tier": null
+  },
+  {
+   "id": "nh-four-lane",
+   "file": "data/series/seed.json",
+   "url": "https://morth.nic.in/",
+   "tier": null
+  },
+  {
+   "id": "nh-network",
+   "file": "data/series/seed.json",
+   "url": "https://morth.nic.in/",
+   "tier": null
+  },
+  {
+   "id": "nh-network-length",
+   "file": "data/series/seed.json",
+   "url": "https://morth.nic.in/",
+   "tier": null
+  },
+  {
+   "id": "nominal-gdp",
+   "file": "data/series/seed.json",
+   "url": "https://mospi.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "npk-ratio",
+   "file": "data/series/seed.json",
+   "url": "https://www.faidelhi.org/",
+   "tier": null
+  },
+  {
+   "id": "npl-peer",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "pmay-g-completed",
+   "file": "data/series/seed.json",
+   "url": "https://pmayg.nic.in/",
+   "tier": null
+  },
+  {
+   "id": "pmay-g-houses",
+   "file": "data/series/seed.json",
+   "url": "https://pmayg.nic.in/",
+   "tier": null
+  },
+  {
+   "id": "pmfby-farmers",
+   "file": "data/series/seed.json",
+   "url": "https://pmfby.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "pmjay-admissions",
+   "file": "data/series/seed.json",
+   "url": "https://nha.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "pmjay-cards",
+   "file": "data/series/seed.json",
+   "url": "https://nha.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "pmkisan-beneficiaries",
+   "file": "data/series/seed.json",
+   "url": "https://pmkisan.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "port-cargo",
+   "file": "data/series/seed.json",
+   "url": "https://shipmin.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "port-turnaround",
+   "file": "data/series/seed.json",
+   "url": "https://shipmin.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "poverty-tendulkar",
+   "file": "data/series/seed.json",
+   "url": "https://pib.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "project-delays",
+   "file": "data/series/seed.json",
+   "url": "https://mospi.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "rail-accidents",
+   "file": "data/series/seed.json",
+   "url": "https://data.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "rail-avg-speed",
+   "file": "data/series/seed.json",
+   "url": "https://cag.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "rail-electrification",
+   "file": "data/series/seed.json",
+   "url": "https://pib.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "rail-freight-share",
+   "file": "data/series/seed.json",
+   "url": "https://pib.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "re-capacity",
+   "file": "data/series/seed.json",
+   "url": "https://mnre.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "road-fatalities",
+   "file": "data/series/seed.json",
+   "url": "https://morth.nic.in/",
+   "tier": null
+  },
+  {
+   "id": "soil-health-cards",
+   "file": "data/series/seed.json",
+   "url": "https://agricoop.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "thermal-plf",
+   "file": "data/series/seed.json",
+   "url": "https://cea.nic.in/",
+   "tier": null
+  },
+  {
+   "id": "udan-routes",
+   "file": "data/series/seed.json",
+   "url": "https://www.civilaviation.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "ujjwala-refills",
+   "file": "data/series/seed.json",
+   "url": "https://cag.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "unemployment-rate-cmie",
+   "file": "data/series/seed.json",
+   "url": "https://www.cmie.com/",
+   "tier": null
+  },
+  {
+   "id": "unincorporated-workers",
+   "file": "data/series/seed.json",
+   "url": "https://mospi.gov.in/",
+   "tier": null
+  },
+  {
+   "id": "vulnerable-employment-peer",
+   "file": "data/series/seed.json",
+   "url": "https://data.worldbank.org/",
+   "tier": null
+  },
+  {
+   "id": "wheat-procurement",
+   "file": "data/series/seed.json",
+   "url": "https://fci.gov.in/",
+   "tier": null
+  }
+ ]
+}
