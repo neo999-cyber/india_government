@@ -295,3 +295,72 @@ the more "realistic" choice, and the one a future cycle might reach for — ever
 appeared to lack reasoning, and the reviewers would have reported a corpus defect that was really a
 rendering defect. The extract pipeline's independence from the rendering pipeline is what protected
 the review, and that independence should be preserved deliberately rather than by luck.
+
+---
+
+# BATCH 3 HEAD ITEMS — resolved 2026-08-05
+
+**1. The gap series is regenerated and the terminal years now agree.** The four share series ran to
+FY2023-24 while the corrected headline quoted FY2025-26 — they did not meet. Extended from CEA
+*Executive Summary March 2026*: capacity **FY2025-26 only** (31.03.2026 is a published stock;
+31.03.2025 is not — both guessable archive URLs 404, consistent with CEA publishing only the current
+month), generation **FY2024-25 and FY2025-26**. So `non-fossil-capacity-share` has a deliberate hole
+at FY2024-25 and its generation twin does not. **Blanks are unreported, not zero.**
+- **Opening gap FY2014-15: 10.98 points** (31.53 capacity − 20.55 generation). First year after
+  P-122's seam, which is why the claim starts there.
+- **Closing gap FY2025-26: 24.24 points** (53.21 − 28.96).
+- Intermediate FY2023-24: 21.46.
+- **Terminal year of headline and series is now the same, FY2025-26.**
+- **The seven batch-1 series did NOT carry a superseded basis.** They were computed from General
+  Review Tables 1.2/1.3 and that construction is the one the corrected headline now uses. What was
+  superseded was the headline's CHOICE OF PAIR, which never existed in a series at all.
+
+**AND A BASIS DEFECT FOUND WHILE DOING IT, in a figure this run wrote.** The 28.84 per cent carried
+since batch 2 put CEA's **Bhutan import inside the denominator and outside the numerator** — an
+import in one and not the other, a population mismatch inside a share, and precisely the class this
+instrument exists to catch. Three constructions are defensible and the one that was here is not:
+removing the import from both sides gives **28.96** (the General Review basis, and what the series
+uses); counting the imported hydro on both sides gives **29.27**, close to the Ministry's published
+29.2. Corrected to 28.96. The gap moved 24.37 → **24.24**, and `figure-consistency` then caught that
+24.24 is the difference of the UNROUNDED ratios while the printed operands give 24.25 — declared as
+a rounding artefact in the record's own text.
+
+**2. FY2023-24 IS the maximum of the non-coking series specifically** — 205.718 MT, against
+159.388 · 149.365 · 161.245 · 183.510 · 196.704 · 164.054 · 151.504 · 181.615 · **205.718** · 186.046
+across FY2015-16 to FY2024-25. It is also the total-coal maximum. **The claim survives the (b)
+restatement**, and the record already bounds it correctly as "the highest in the published ten-year
+table" — the table spans ten years and nothing older is in it.
+
+**3. THE TWO HOSTNAMES SERVE THE SAME BUILD UNDER DIFFERENT PROTECTION — SEE THE REPORT.**
+`india-government.vercel.app` returns **HTTP 200 unauthenticated**; `india-government-anoop-osn.vercel.app`
+returns **302 to Vercel SSO**. Same edge IPs, same content. Mechanism:
+`ssoProtection = { enabled: true, deploymentType: "all_except_custom_domains" }`. **Not changed by
+this run — an auth change is a stop condition and may be deliberate.**
+
+**5. (e) STAYS DEFERRED, with a measured rate and a named next step.** `tools/seam-span-report.mjs`
+is written and is **report-only, not in the build**: 117 record-by-break spans, **88 declare the
+break, 29 do not**. Twenty-nine is a candidate list, not a defect count — the heuristic matches any
+year anywhere in a record's prose against any break on any series it cites, so it over-fires.
+**L-0222 is in the 29 and is a false positive**: it names FY2013-14 and FY2024-25 for COAL quantities
+while citing the non-fossil generation share for context, and crosses P-122's seam in no claim at
+all. Gateable once the 29 are triaged per record and the heuristic narrowed — most likely to periods
+co-occurring in one sentence rather than anywhere in the record. **The guard-scope class is now a
+rule in CLAUDE.md.**
+
+**6. reachability 1332 → 1336 is exactly P-123 and P-124**, each contributing a guarded `notes` and a
+guarded `bridgeNote` (both provenance marks since batch 2). Verified by recomputing the mark count at
+`193ab72` and `de66d65` from the same MARKS list: 1332 and 1336. **No pre-existing record's mark
+count changed.**
+
+**6b. The extract/verdict overlap, and it QUALIFIES item 8 without overturning it.** The extract
+samples **38 records, all scored, so all 38 owe a verdict paragraph.** At the extract's generating
+commit `1d08a2f`, **30 of the 38 already carried an `assessmentNote`** — so reviewer coverage of
+verdict reasoning was substantive, not vacuous, and item 8's conclusion stands. **But the records the
+audit later wrote reasoning into were overwhelmingly OUTSIDE the sample: only 3 of them are in it
+(L-0066, L-0023, L-0011).** So the reviewers' observation that verdicts lacked reasoning rested on
+roughly 8 of their 38, and the corpus-wide figure was established by the AUDIT, not by the reviewers.
+*Measurement note:* 37 records gained an `assessmentNote` after `1d08a2f` against the log's figure of
+33 unjustified verdicts; the difference is at least partly corrections written in the same sequence
+(L-0011's note begins "CORRECTED ... adversarial triage 2"), and **the decomposition has not been
+done** — 37 is what was measured, 33 is what the log claims, and they are not asserted to be the same
+set.

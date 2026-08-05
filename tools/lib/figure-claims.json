@@ -121,15 +121,15 @@
   },
   {
     "record": "L-0221",
-    "what": "FY2025-26, the matched pair: non-fossil capacity share at 31.03.2026 minus non-fossil generation share over FY2025-26",
+    "what": "FY2025-26, the matched pair: non-fossil capacity share at 31.03.2026 minus non-fossil generation share over FY2025-26, both on the General-Review-comparable basis",
     "printedA": "53.21",
-    "printedB": "28.84",
-    "printedDifference": "24.37",
+    "printedB": "28.96",
+    "printedDifference": "24.24",
     "decimals": 2,
     "sourceA": 53.20729825708887,
-    "sourceB": 28.841955366619047,
+    "sourceB": 28.964572770106138,
     "sourceScale": 1,
-    "note": "Capacity (8,780 nuclear + 274,688.09 RES-incl-large-hydro) / 532,739.68 and generation (55.19 + 167.20 + 310.59) / 1,847.94, both from CEA Executive Summary March 2026. REPLACED the FY2023-24-only claim after the summary was corrected: the record previously paired a 30.06.2026 capacity stock with an FY2025-26 generation flow, which is not one comparison."
+    "note": "Capacity (8,780 nuclear + 274,688.09 RES-incl-large-hydro) / 532,739.68 and generation (55.19 + 167.20 + 310.59) / (1,847.94 less the 7.83 BU Bhutan import), CEA Executive Summary March 2026. CORRECTED from 28.84/24.37, which left the import in the denominator only — a population mismatch inside a share. Printed operands give 24.25 and the unrounded ratios give 24.24; the record prints 24.24 and names the artefact."
   },
   {
     "record": "L-0221",
