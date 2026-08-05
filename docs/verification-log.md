@@ -8001,3 +8001,59 @@ specified. 283 remain allowlisted.
 **Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 283 allowlisted;
 url-check 1/1; selftest exit 0; diffs 4/4 on foreign-trade.json and 2/2 on kashmir-rights.json.
 
+## Cycle 2026-08-05w — correction cycle 7: a paper identified by PMID, and cycle 6's "exactly eight" was scope-limited
+
+**Allowlist 283 → 282.** One citation deep-linked and one tier moved — deliberately, for the first
+time in this sweep.
+
+**CYCLE 6's COUNT WAS WRONG BY MY OWN RULE.** It reported "exactly eight" self-documented retrieval
+failures. That pattern matched `not retrieved` and its neighbours. Widening it to `relayed`, `could
+not`, `no response`, `gave no`, `unreachable` and HTTP codes returns **22**. The undercount hid
+whole classes — every `Relayed` T4 in the Kashmir files, and L-0116's OWN first source, which says
+"no J&K Police or Home Department document was retrievable" and was missed because the word is
+*retrievable*, not *retrieved*. **This is the scope rule written in cycle 2 catching the cycle that
+followed it**, and the rule now carries the instance.
+
+**Two of the 22 are false positives, found by reading.** P-96's `dot.gov.in` and `trai.gov.in`
+citations both end "Retrieved directly and read" — the pattern matched the word *Retrieved* inside a
+sentence reporting success. They are bare roots, not gaps. A pattern that matches the presence of a
+word cannot tell what the sentence does with it.
+
+**P-80's second source: located, matched at every point, and upgraded.** The record described "a
+prospective ocular-trauma series at SMHS Hospital Srinagar, July 2016 to June 2018, 664 eyes of 643
+patients, 59.3 per cent with visual impairment and 10.8 per cent completely blinded", and said
+plainly: "Relayed: located through search summarisation and the paper itself was not opened."
+
+Found by PubMed E-utilities search, then esummary, then efetch: **PMID 35691765**, Shah FQ et al.,
+*Injury* 2022;53(9):2998-3004. Every figure matched against the publisher's abstract:
+
+- "Six hundred sixty-four eyes of 643 patients" — exact;
+- "category 5 in 72 (10.8%) eyes", WHO category 5 being no perception of light — exact;
+- 59.3 per cent as the sum of WHO categories 1 to 5, 12.8 + 5.3 + 4.5 + 25.9 + 10.8, the complement
+  of the 40.7 per cent in category 0 — reconciles exactly, and it is the DERIVED figure agreeing
+  that makes this an identification rather than a coincidence.
+
+**THE TIER MOVED T4 → T3, AND THIS IS THE CASE WHERE IT SHOULD.** The standing rule is that a better
+URL is not better evidence and the tier stays put — but the stated reason for T4 was "the paper
+itself was not opened", and the operative content has now been retrieved from the publisher's own
+index and matched. The move was asserted in the merge (`p_b['tier']=='T4' and p_a['tier']=='T3'`),
+which is the same mechanical check used in cycle 5 to prove a tier had NOT moved. The rule is not
+"never move a tier"; it is "move it only when the evidence moved, and prove which".
+
+**Two limits stated in the citation rather than glossed.** The ABSTRACT was retrieved and the full
+text was not, which is why it sits at T3 and no higher. And the study period "July 2016 to June
+2018" is **not in the abstract** and remains unverified — the record's own description contains an
+element the identification does not cover, and saying so is cheaper than discovering it later. The
+institution is also given by the paper as Government Medical College, Srinagar rather than SMHS
+Hospital by name; consistent, not verbatim, and recorded as such.
+
+**Host probes.** Live: `judgments.ecourts.gov.in`, `pubmed.ncbi.nlm.nih.gov`, `internetfreedom.in`,
+`www.satp.org`, `cpj.org`, `www.dot.gov.in`. Blocked: `www.ohchr.org` 403 on Cloudflare;
+`www.jkpolice.gov.in` has an A record (164.100.239.140) and returns HTTP 000; `digiscr.sci.gov.in`
+has no A record. **L-0116 was not closed**: `main.sci.gov.in` has no A record, and locating the
+12 September 2022 order on the ecourts route is search work that was not started rather than
+attempted and failed.
+
+**Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 282 allowlisted;
+url-check 1/1; selftest exit 0; diff 3/3 on provenance.json.
+

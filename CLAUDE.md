@@ -123,6 +123,15 @@ exactly as substring matching produces false positives.** The default stays wher
 negative costs a missed candidate, a false positive costs a fabricated finding — and the retry is
 what makes the safe default affordable.
 
+**Sweep by self-documented failure, not by host count.** A record whose source name already states
+a retrieval failure has isolated the missing variable: the gap is specified rather than searched for,
+so closing it is the cheapest work available. Scanning for that language turned up 22 such citations
+and produced, in two cycles, one closed Gazette gap, one paper identified by PMID with every figure
+matched, and live hosts for most of the rest. Note the scope trap in the method itself — the first
+scan matched "not retrieved" and reported eight; widening it to "relayed", "could not", "no
+response" and HTTP codes returned 22, and some of those are false positives that say "Retrieved
+directly and read". State the pattern beside the count.
+
 **A finding produced by a correction cycle gets the same scrutiny as the finding it corrects.** A
 correction arrives with the authority of having just fixed something, which is exactly why it is the
 least questioned thing in the room. The phase-14 audit's tier error was corrected in cycle 1 — and
