@@ -1,0 +1,47 @@
+[
+  {
+    "field": "unmeasured",
+    "layers": [
+      "series",
+      "ledger"
+    ]
+  },
+  {
+    "field": "caveat",
+    "layers": [
+      "series",
+      "ledger"
+    ]
+  },
+  {
+    "field": "notes",
+    "layers": [
+      "series",
+      "provenance"
+    ]
+  },
+  {
+    "field": "differentFactsNote",
+    "layers": [
+      "ledger"
+    ]
+  },
+  {
+    "field": "assessmentNote",
+    "layers": [
+      "ledger"
+    ]
+  },
+  {
+    "field": "revisitTrigger",
+    "layers": [
+      "ledger"
+    ]
+  },
+  {
+    "field": "bridgeNote",
+    "layers": [
+      "provenance"
+    ]
+  }
+]

@@ -56,26 +56,11 @@ if (argv.indexOf('--data') === -1 && argv.indexOf('--out') === -1) {
 /**
  * Marks that can be suppressed by a competing view.
  *
- * `notes` and `caveat` are here for the same reason `unmeasured` is: the series detail page
- * suppresses each of them when a pair view takes over, delegating to the pair. That is the
- * identical shape to the failure that produced this rule, and being currently correct is not
- * a reason to leave them unguarded.
+ * THE LIST NOW LIVES IN `tools/lib/guarded-marks.mjs` and is imported, not restated here.
+ * `no-unguarded-prose-field` binds that list to the schemas, and a binding gate reading its own
+ * copy would assert nothing — so there is exactly one definition and both tools read it.
  */
-const MARKS = [
-  { field: 'unmeasured', layers: ['series', 'ledger'], each: (r) => (r.unmeasured ?? []).map((u) => u.what) },
-  { field: 'caveat', layers: ['series', 'ledger'], each: (r) => (r.caveat ? [r.caveat] : []) },
-  { field: 'notes', layers: ['series'], each: (r) => (r.notes ? [r.notes] : []) },
-  { field: 'differentFactsNote', layers: ['ledger'], each: (r) => (r.differentFactsNote ? [r.differentFactsNote] : []) },
-  // Added phase 15. Both were written into /data and rendered NOWHERE — assessmentNote on all
-  // 164 records carrying it, revisitTrigger on all 62 — and every gate was green throughout,
-  // because the data was correct and no rule read the page for them. That is the absence bug's
-  // exact shape, and it was found by a stage-7 control rather than by anything that could fail.
-  // It matters most for assessmentNote: the assessment-audit sequence closed the day before this
-  // was found, having written reasoning into 33 verdicts that previously carried none, including
-  // the corpus's most prominent failure verdict. None of that reasoning had ever reached a reader.
-  { field: 'assessmentNote', layers: ['ledger'], each: (r) => (r.assessmentNote ? [r.assessmentNote] : []) },
-  { field: 'revisitTrigger', layers: ['ledger'], each: (r) => (r.revisitTrigger ? [r.revisitTrigger] : []) },
-];
+import { MARKS } from './lib/guarded-marks.mjs';
 
 /** @returns {string[]} every .json under dir */
 function jsonFiles(dir) {
@@ -153,9 +138,24 @@ if (pages.length === 0) {
 }
 const corpus = pages.map((p) => visibleText(readFileSync(p, 'utf8')));
 
-/** The page a record owns, where its own marks must render. */
+/**
+ * The page a record owns, where its own marks must render.
+ *
+ * THE DIRECTORY IS THE LAYER NAME. It used to read `layer === 'series' ? 'series' : 'ledger'`,
+ * which silently routed EVERY non-series layer to `ledger/`. That was invisible for as long as the
+ * guarded list happened to contain only series and ledger marks — and the moment phase 15 batch 2
+ * added the first `provenance` mark, 185 records reported "no page built", which reads like a
+ * broken build rather than a broken lookup. The list's enumeration scope had leaked into the
+ * gate's own path resolution: a default that was correct only because of what the list did not yet
+ * contain. Assert the directory rather than defaulting to one.
+ */
+const LAYER_DIR = { series: 'series', ledger: 'ledger', provenance: 'provenance' };
 function ownPage(layer, id) {
-  const dir = layer === 'series' ? 'series' : 'ledger';
+  const dir = LAYER_DIR[layer];
+  if (!dir) {
+    console.error(`reachability: no page directory known for layer "${layer}" — add it to LAYER_DIR`);
+    process.exit(2);
+  }
   const p = join(OUT_DIR, dir, id, 'index.html');
   return existsSync(p) ? visibleText(readFileSync(p, 'utf8')) : null;
 }

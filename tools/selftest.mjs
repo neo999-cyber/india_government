@@ -329,6 +329,56 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
   }
 }
 
+// 3d-bis. The guarded list is BOUND to the record types — no prose field is merely forgotten.
+//
+// `reachability` is enumeration-scoped: a field absent from its list is unguarded BY CONSTRUCTION,
+// which is how 226 marks shipped invisible with every gate green. `no-unguarded-prose-field` closes
+// that by requiring every prose field on LedgerRecord and ProvenanceRecord to be either guarded or
+// exempted by name in the schema.
+//
+// BOTH DIRECTIONS, THROUGH THE SAME SEAM. The negative injects a marks list with `assessmentNote`
+// removed — the exact field whose absence caused the original failure — and the positive injects
+// the full list the same way. Running the positive through a DIFFERENT path would leave open that
+// the negative fires for a reason unrelated to the dropped field, which is the M3a trap.
+{
+  const run = (args) => {
+    try {
+      const out = execFileSync(process.execPath, [join(ROOT, 'tools', 'no-unguarded-prose-field.mjs'), ...args], {
+        encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, NO_COLOR: '1' },
+      });
+      return { code: 0, out: out ?? '' };
+    } catch (err) {
+      return { code: err.status ?? 1, out: `${err.stdout ?? ''}${err.stderr ?? ''}` };
+    }
+  };
+  const fixtureDir = join(ROOT, 'tests', 'fixtures', 'unguarded-prose-field');
+  const dropped = join(fixtureDir, 'marks-without-assessmentnote.json');
+  const full = join(fixtureDir, 'marks-full.json');
+
+  const fired = run(['--marks-json', dropped]);
+  if (fired.code !== 1) {
+    failures.push(`no-unguarded-prose-field did not fire with assessmentNote removed from the guarded list (exit ${fired.code})`);
+  } else if (!fired.out.includes('ledger.assessmentNote')) {
+    failures.push('no-unguarded-prose-field fired with assessmentNote dropped but did not name ledger.assessmentNote — it is passing on a different failure');
+  } else {
+    notes.push('  no-unguarded-prose-field fires when a field is dropped from the guarded list (names ledger.assessmentNote)');
+  }
+
+  const quiet = run(['--marks-json', full]);
+  if (quiet.code !== 0) {
+    failures.push(`no-unguarded-prose-field fired on the FULL guarded list through the same seam (exit ${quiet.code}) — the negative above proves nothing if this does not pass`);
+  } else {
+    notes.push('  no-unguarded-prose-field stays silent on the full list, injected through the same seam');
+  }
+
+  const live = run([]);
+  if (live.code !== 0) {
+    failures.push('no-unguarded-prose-field failed on the live schemas; run `npm run no-unguarded-prose-field`');
+  } else {
+    notes.push('  no-unguarded-prose-field stays silent on the live schemas');
+  }
+}
+
 // 3e. Domain-surface coverage: every schema domain value has a page, every record reaches it.
 //
 // A SEPARATE COUNTER FROM THE 22, AND DELIBERATELY SO. The "N/N rules fire" line counts VALIDATOR

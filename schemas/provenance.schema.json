@@ -20,14 +20,17 @@
       "pattern": "^P-\\d{2,3}$"
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "description": "The measurement problem, named. NOT A GUARDED MARK: it is the page's <h1>. Covered observationally by tools/field-render-audit.mjs."
     },
     "whatChanged": {
       "type": "string",
-      "minLength": 40
+      "minLength": 40,
+      "description": "The measurement problem itself: what changed, when, and what it does to the numbers. NOT A GUARDED MARK: it is the record's entire substance and its own body copy — there is no competing view that could render a provenance record without it. Covered observationally by tools/field-render-audit.mjs. Note that `bridgeNote` and `notes` on this same record ARE guarded, because those two are the parts a dense or summarising view would drop."
     },
     "when": {
-      "type": "string"
+      "type": "string",
+      "description": "When the change took effect, as a date or period string. NOT A GUARDED MARK: a date label, not prose a view could suppress; it renders in the record's tag row. Covered observationally by tools/field-render-audit.mjs."
     },
     "affectsDomains": {
       "type": "array",
@@ -139,7 +142,8 @@
             "description": "Evidence grade of the DOCUMENT ACTUALLY RETRIEVED, not of the institution the subject belongs to. This is the operative rule and the one that goes wrong: a CAG finding known only through a newspaper's account of an RTI reply is T4, because the subject is official but the evidence is relayed. Grade what you hold, not what it is about.\n- T1: official Indian statistical or institutional source, retrieved directly - a ministry release, an RBI, MoSPI or NCRB publication, a CAG report, a Parliamentary reply.\n- T2: multilateral or international statistical source, retrieved directly - World Bank, IMF, ILO, WHO.\n- T3: peer-reviewed research or a working paper.\n- T4: reported or documentary journalism, NGO datasets, and anything RELAYED rather than retrieved - including an official figure known only through a press account, and an RTI reply cited but not obtained.\n- T5: contested composite index. Always carries a dispute record covering its own domain (CLAUDE.md rule 6).\nNote that tier is asserted in exactly one place per layer: on the series itself, or on each entry of a ledger or provenance `sources[]`. A series `source` is a SourceRef and carries NO tier - the object is closed, so a tier inside it is rejected rather than silently ignored."
           }
         }
-      }
+      },
+      "description": "Where the account of the change comes from. NOT A GUARDED MARK: structural, and separately gated by url-check and no-bare-root. Covered observationally by tools/field-render-audit.mjs."
     },
     "notes": {
       "type": "string"

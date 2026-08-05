@@ -375,10 +375,20 @@ printed operands. A non-reconstructing figure must be declared, not merely corre
 own source values are checked, not typed from memory. Separators are normalised.
 
 **The gate list, run in full every cycle:** `validate` · `typecheck` · `validate:selftest` ·
-`reachability` · `domain-coverage` (which carries `lens-empty`) · `figure-consistency` ·
-`enum-stamp` · `url-check` on `/data`. Plus an arithmetic hand-check of every derived figure
-including internal consistency, a check that every declared lens returns a non-empty and correct
-set, and zero forward references between `parts/` files.
+`reachability` · `no-unguarded-prose-field` · `field-render-audit` · `domain-coverage` (which
+carries `lens-empty`) · `figure-consistency` · `enum-stamp` · `url-check` on `/data`. Plus an
+arithmetic hand-check of every derived figure including internal consistency, a check that every
+declared lens returns a non-empty and correct set, and zero forward references between `parts/`
+files.
+
+**The three rendering gates are different in kind and none subsumes another.** `reachability` walks
+the guarded-marks list and proves each mark reaches its own record's page — but it is
+ENUMERATION-SCOPED, so it can only ever check what the list contains.
+`no-unguarded-prose-field` binds that list to the schemas: every prose field on `LedgerRecord` and
+`ProvenanceRecord` is guarded or exempted BY NAME in its own schema description, with no third
+state, so a field cannot be merely forgotten. `field-render-audit` ignores both and observes the
+built output directly, asserting every prose field on every layer reaches its own page — it is what
+catches a field that is nominally guarded and suppressed anyway.
 
 ## Authoring conventions
 
