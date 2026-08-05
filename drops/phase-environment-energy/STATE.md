@@ -475,7 +475,7 @@ from the announcing primary before touching any outturn figure.
 
 ### ARC B REOPENED THE SAME DAY — route 1 dead, route 3 landed a primary
 
-**Route 1 (rendering client against PRANA) is EXHAUSTED and the capability is confirmed absent.**
+**Route 1 CORRECTED 2026-08-05 — THE CAPABILITY WAS NEVER SHOWN ABSENT AND THE EARLIER ENTRY WAS WRONG.**
 Playwright returns `ERR_NAME_NOT_RESOLVED` — it inherits the broken system resolver, so M1 mode 3
 remains unavailable exactly as recorded on 2026-08-04. The in-app browser denied the navigation.
 **Two rendering clients, both fail: this is now tested rather than assumed.**
@@ -733,6 +733,12 @@ the primary before touching any cover number.** Also: the Van (Sanrakshan Evam S
 2023 amendment, FCA diversion figures, CAMPA. `fsi.nic.in` returned 302 on last observation;
 `moef.gov.in` is live and its `/annual-report` and `/publications` indexes are already enumerated.
 
+## 1b. ARC B — air quality. OUTTURN UNTRIED ON FOUR NAMED ROUTES (restored 2026-08-05).
+**Not exhausted.** The "no rendering client" finding was withdrawn: Playwright's failure was DNS
+(`ERR_NAME_NOT_RESOLVED`), not rendering, while curl reached the same host at HTTP 200 in the same
+environment. Four untried routes in cost order are listed under the correction below — resolve-then-
+retry, read the JS bundle for data endpoints, `sansad.in` static PDFs, `data.gov.in` CSV.
+
 ## 2. ARC A REMAINDER — grid absorption, curtailment, storage. NOT STARTED, deps ALREADY RETRIEVED.
 *Not carried into the Arc C batch by instruction.* The dependencies are on disk: the CEA RE
 Generation Portal daily reports (`gen-re.cea.gov.in/reports`, live) and the NEP's BESS scenarios
@@ -804,3 +810,143 @@ near-identical domains, and the wrong one is live.
    only what the figures mean and why two editions are not comparable. **A ledger record on cover
    change needs the 2021 restatement that does not exist, or an explicit statement that the change
    cannot be decomposed.**
+
+
+---
+
+# CORRECTION — ARC B's "no rendering client" was two different failures read as one
+
+**STATE.md recorded the rendering capability as confirmed absent. That is withdrawn: it was never
+earned.** Playwright returned **`ERR_NAME_NOT_RESOLVED`**, which is a **DNS failure** — the browser
+never reached the host and so never attempted to render anything. In the same environment and the
+same batch, `curl --resolve prana.cpcb.gov.in:443:164.100.61.207` reached the host at **HTTP 200 with
+21,735 characters**. **Two failures with different causes were read as one finding**, and the finding
+that resulted — "this environment cannot render" — does not follow from either. The in-app browser's
+refusal is a third, separately-caused failure and was folded in with the other two.
+
+This is the class-of-sources rule turned inward: the rule says two failures from one host are one
+observation, and the same discipline applies to two failures from one CLIENT for different reasons.
+A DNS error and a render failure are not evidence of the same thing.
+
+**ARC B IS THEREFORE RESTORED TO THE OPEN-ITEMS LIST as blocked-but-untried, not blocked-and-exhausted.**
+
+### Untried routes, in cost order. NOT RUN THIS BATCH.
+
+**(i) Resolve the host explicitly, then retry the browser.** The failure is DNS, and DNS is exactly
+what `--resolve` fixes for curl. The browser equivalents: an `/etc/hosts` entry, or Chromium's
+`--host-resolver-rules="MAP prana.cpcb.gov.in 164.100.61.207"`. **This is the cheapest route and it
+addresses the actual observed error**, which no previous attempt did.
+
+**(ii) Fetch the JavaScript bundle and enumerate the data endpoints out of it — do not render at
+all.** `curl` already reaches the host and returns the shell; the shell references its own scripts,
+and a client-rendered portal fetches its data from endpoints named in those scripts. Reading the
+bundle turns a rendering problem into a retrieval problem, and the retrieval half already works here.
+
+**(iii) `sansad.in` question archives.** Parliamentary answers on NCAP would carry the target, base
+year, city list and outturn in one document. It serves **static PDFs** and is a **different estate**
+from PIB's `Allrel.aspx` postback form, which is why the PIB failure says nothing about it. Pin on
+record from phase 14: `sansad.in` 164.100.252.170.
+
+**(iv) `data.gov.in`** — CPCB publishes monitoring datasets there as CSV, which is neither a portal
+nor a PDF and needs no rendering.
+
+**None of these has been attempted.** The honest state of Arc B's outturn is UNTRIED ON FOUR NAMED
+ROUTES, not unreachable.
+
+---
+
+# SCOPE ONLY — the `commitmentState` field. Proposed, NOT built. Backfill is its own batch.
+
+## The measurement first, with its scope stated
+
+**Pattern:** commitment-state vocabulary across the 8 prose fields of all ledger records —
+`(commitment )state…([a-d])`, `is ([a-d])`, `not yet due`, `due and undelivered`,
+`unfalsifiable by construction`, `no-objective`.
+**Scope:** all **225** ledger records.
+
+- **44 records** use the vocabulary at all. That is a CANDIDATE count, not a finding — several match
+  only on `no-objective`, which is an assessment value rather than a state assertion.
+- **Only 24 letter-tokens exist in the entire corpus: (a) x21, (b) x1, (d) x2.** No record asserts (c).
+- **181 records assert nothing.**
+- The two batches that did (a)/(d) work carefully — L-0223, L-0224, L-0225 — are three of the 44.
+
+**So the (a)/(d) reasoning of the last two batches is unverifiable against the other 222 records, and
+that is the actual finding.** Nothing derives the state, nothing renders it, nothing filters on it and
+no gate can ask whether a commitment record states one.
+
+## THE DENOMINATOR PROBLEM, which governs the design
+
+**There is no marker for "this is a commitment record."** `type` does not capture it — reform 71,
+episode 75, institutional 53, event 18, shock 8 — and a commitment can be announced inside any of
+them. The closest proxy is `claimAtLaunch`, carried by **88 records**. **So the field cannot be made
+required corpus-wide**, and any gate must key on a proxy and allow a named exemption, exactly as
+`no-unguarded-prose-field` does for prose fields.
+
+## The proposal
+
+**Field:** `commitmentState` on `ledger.schema.json`, optional, alongside `assessment`.
+
+**Enum — named values, not bare letters.** `not-yet-due` · `due-undelivered` · `abandoned` ·
+`unfalsifiable-by-construction`. Bare `(a)`-`(d)` is unreadable on a page and un-greppable in prose,
+which is half of why this went untracked. **Per-value definitions ship in the same commit**, lifted
+verbatim from CLAUDE.md's existing text — the preventive half of the enum rule, and no new principle
+is created because the four states already have written definitions.
+
+**Three gates, in increasing cost:**
+1. **`commitment-state-declared`** — a record carrying `claimAtLaunch` either carries
+   `commitmentState` or is exempted by name in its own schema description. Same guarded-or-exempted
+   shape as `no-unguarded-prose-field`, and the same "no third state" property.
+2. **`commitment-state-consistent`** — where `commitmentState` is `unfalsifiable-by-construction`,
+   `assessment` MUST be `no-objective`. CLAUDE.md already prescribes this mapping in terms
+   ("Score it `no-objective`"), so the gate cites the rule rather than inventing one. It is the only
+   one of the four with a prescribed assessment, so no other pair is asserted.
+3. **`commitmentState` joins `tools/lib/guarded-marks.mjs`** so `reachability` proves it reaches the
+   record's own page — and per the rule written in batch 2, **the field lands in the schema, the TYPE
+   (`lib/types.ts`), a VIEW and the guarded list in ONE commit**, or it repeats the 226-invisible-marks
+   defect exactly.
+
+**Precedent is phase 11's `lenses[]`:** a mid-phase field addition where three places move together —
+`schemas/*.schema.json` (enum + per-value definitions), `lib/types.ts`, `lib/format.ts` labels — with
+a gate that refuses the build rather than trusting an author to notice.
+
+**Backfill is its own batch and is NOT part of this proposal.** 88 candidate records carry
+`claimAtLaunch`; 44 already assert something in prose that a backfill would have to reconcile against
+rather than overwrite. **Assert per record, never sweep** — the 44 are a candidate list.
+
+## ARC C, BATCH 10 — the amending instrument was NOT retrieved, so no diversion figure was scored.
+
+**The instruction's precondition was not met and the batch stopped at it.** Establish what the Van
+(Sanrakshan Evam Samvardhan) Adhiniyam 2023 changed *from the amending instrument itself* before any
+diversion figure is scored — the instrument did not land, so **nothing about clearances was written,
+and no FCA diversion, CAMPA or amendment figure appears anywhere in this batch.** Writing one from
+recall would be the hard stop.
+
+### Routes tried, with enumerated and guessed distinguished — the stated-search rule
+
+| Route | How | Result |
+|---|---|---|
+| `moef.gov.in/forest-conservation` | **ENUMERATED** — the page's own PDF links extracted | Live, **11 PDFs, every one dated 2013-2018.** The index is stale; no 2023 amendment on it |
+| `moef.gov.in/acts-rules`, `/rules-regulations`, `/legislations` | **GUESSED** — and saying so, because three 404s from guessed paths are not a search | 404 each. They establish nothing |
+| `moef.gov.in/divisions` | **ENUMERATED** | Live; names a Forest Conservation (FC) division page, not followed this batch |
+| `www.indiacode.nic.in` **(94.202.207.59)** | Host probed, index enumerated | **Live, HTTP 200, 27,989 characters.** The canonical repository for an Act of Parliament |
+| India Code `simple-search?query=…` | Real endpoint taken off the index page | HTTP 200 but **no matching results** for the Act or the 2023 amendment |
+| India Code `browse?type=actyear&value=2023` | Real endpoint taken off the index page | HTTP 200, **zero acts listed.** The DSpace interface does not yield to URL-form queries here |
+
+**PIN CORRECTION:** STATE.md carried `indiacode 94.202.207.51` from phase 14. That address now
+**302s with an empty body**, and `indiacode.nic.in` resolves to 94.206.5.74 which also 302s.
+**The working host is `www.indiacode.nic.in` at 94.202.207.59.** Recorded so the next cycle does not
+re-derive it.
+
+### Untried routes for the amending instrument, in cost order — NOT RUN
+
+1. **India Code via its own UI rather than URL forms** — the search is a DSpace instance and likely
+   needs a POST or a paginated browse; the host is live and this is the canonical text.
+2. **`sansad.in`** (164.100.252.170) — carries Bills as introduced and as passed, serves static PDFs.
+   A different estate from both PIB and India Code.
+3. **`moef.gov.in/division/forest-divisions-2/forest-conservation-fc/…`** — the FC division's own
+   pages, enumerated as existing but not followed.
+4. **PRS Legislative Research** — non-government, so T3 at best, and usable for locating the Act's
+   gazette reference rather than as the source itself.
+
+**What Arc C holds after two batches: P-127 only** — the forest-cover definition and the ISFR 2023
+base change. **The arc's actual subject, clearances, is untouched.**

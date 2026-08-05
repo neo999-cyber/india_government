@@ -9446,3 +9446,91 @@ artefacts declared · `reachability` 1354/1354 marks on their own record page, 6
 `field-render-audit` 32 prose fields across 3 layers, 0 invisible (ledger 15/0, provenance 6/0,
 series 11/0) · `domain-coverage` 14/14 surfaces built, 14/14 linked, 1139/1139 references ·
 `validate:selftest` 23/23 validator rules fire on the broken fixtures, 2/2 output gates on theirs.
+
+## Cycle 2026-08-05ao — batch 10: a capability claim withdrawn, the commitment-state field scoped, and Arc C stopped at its precondition
+
+### ARC B'S "NO RENDERING CLIENT" IS WITHDRAWN — it was two failures with different causes
+
+**The claim was never earned.** Playwright returned **`ERR_NAME_NOT_RESOLVED`** — a **DNS failure**,
+so the browser never reached the host and never attempted to render. In the same environment and the
+same batch, `curl --resolve prana.cpcb.gov.in:443:164.100.61.207` reached it at **HTTP 200 with
+21,735 characters.** A DNS error and a rendering failure were read as one finding, and the conclusion
+drawn — that this environment cannot render — follows from neither. The in-app browser's refusal is a
+third, separately-caused failure that was folded in with them.
+
+**This is the class-of-sources rule turned inward.** That rule says two failures from one HOST are one
+observation; the same discipline applies to two failures from one CLIENT for different reasons.
+**Arc B is restored to the open-items list as blocked-but-untried**, with four routes recorded in cost
+order and none run: resolve the host explicitly and retry (`/etc/hosts`, or Chromium's
+`--host-resolver-rules` mapping to 164.100.61.207) — **which addresses the actual observed error and
+no prior attempt did**; read the JS bundle `curl` already retrieves and enumerate its data endpoints
+rather than rendering at all; `sansad.in` question archives, static PDFs on a different estate from
+PIB's postback form; and `data.gov.in`, where CPCB publishes monitoring data as CSV.
+
+### The `commitmentState` field — SCOPED ONLY, not built
+
+**Pattern and scope stated beside the count**, per the standing rule. Across the 8 prose fields of all
+**225** ledger records: **44 use commitment-state vocabulary at all** — a candidate list, since some
+match only on `no-objective`, an assessment value rather than a state — and **the entire corpus
+contains 24 letter-tokens: (a) x21, (b) x1, (d) x2, and no (c) anywhere.** **181 records assert
+nothing.** So the (a)/(d) work of the last two batches is unverifiable against the other 222 records,
+which is the finding.
+
+**THE DENOMINATOR PROBLEM GOVERNS THE DESIGN: there is no marker for "this is a commitment record."**
+`type` does not capture it (reform 71, episode 75, institutional 53, event 18, shock 8) and a
+commitment can be announced inside any of them; the closest proxy is `claimAtLaunch`, on **88**
+records. **The field therefore cannot be required corpus-wide** and any gate must key on a proxy with
+a named exemption, exactly as `no-unguarded-prose-field` does.
+
+**Proposed:** `commitmentState`, optional, with NAMED values — `not-yet-due` · `due-undelivered` ·
+`abandoned` · `unfalsifiable-by-construction` — because bare `(a)`-`(d)` is unreadable on a page and
+un-greppable in prose, which is half of why this went untracked. Definitions ship in the same commit,
+lifted verbatim from CLAUDE.md, so **no new principle is created**. Three gates: guarded-or-exempted
+declaration keyed on `claimAtLaunch`; a consistency check that `unfalsifiable-by-construction` implies
+`assessment: no-objective`, which **CLAUDE.md already prescribes** and is the only one of the four
+with a prescribed mapping; and membership of `guarded-marks.mjs` so the field lands in **schema, TYPE,
+VIEW and guarded list in one commit** or it repeats the 226-invisible-marks defect exactly. Precedent
+is phase 11's `lenses[]`. **Backfill is its own batch** — 88 candidates, 44 already asserting
+something a backfill must reconcile against rather than overwrite.
+
+### P-127 sharpened — which series the break belongs on
+
+The record already named the headline correctly as **forest AND tree cover** (8,27,356.95 km2,
+25.17 per cent), not forest cover, so the arc's own trap was not sprung. What was hedged is now
+affirmative: **both new inclusions — trees of 5-10 cm and bamboo — entered TREE COVER**, so the break
+belongs on a tree-cover series and on any combined series, and **NOT on forest cover, which remains
+like-for-like across the two editions.** A reader comparing 21.76 per cent to ISFR 2021 is on sound
+ground; one comparing 25.17 per cent is not. `affectsSeries` is empty because **the instrument holds
+no forest series at all** — there is nothing yet for the break to bind to, and the scope is fixed here
+before those series exist rather than by whoever writes them.
+
+### ARC C STOPPED AT ITS PRECONDITION — no diversion figure scored
+
+The instruction was to establish what the Van (Sanrakshan Evam Samvardhan) Adhiniyam 2023 changed
+**from the amending instrument itself** before scoring any diversion figure. **The instrument did not
+land, so nothing about clearances was written** — no FCA diversion, CAMPA or amendment figure appears
+in this batch, and writing one from recall would be the hard stop.
+
+Routes, with **enumerated and guessed distinguished** because three 404s from guessed paths are not a
+search: `moef.gov.in/forest-conservation` **enumerated** and live but **stale — all 11 PDFs are
+2013-2018**; `/acts-rules`, `/rules-regulations`, `/legislations` **guessed**, 404 each, establishing
+nothing; **`www.indiacode.nic.in` (94.202.207.59) live at 27,989 characters**, the canonical
+repository, but its `simple-search` returned no matching results and `browse?type=actyear&value=2023`
+listed zero acts — the DSpace interface does not yield to URL-form queries.
+
+**PIN CORRECTION:** phase 14's `indiacode 94.202.207.51` now **302s with an empty body**, and
+`indiacode.nic.in` resolves to 94.206.5.74 which also 302s. **The working host is
+`www.indiacode.nic.in` at 94.202.207.59.**
+
+**Arc C holds P-127 only after two batches. Its actual subject, clearances, is untouched.**
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 225 ledger · 269 series · 127 provenance · 60 pairs
+= 681 records, 1,759 points** · `no-bare-root` 0 new, 0 stale, 277 allowlisted from 277 frozen ·
+`no-unguarded-prose-field` 19 prose fields across ledger + provenance, 7 guarded / 12 exempted ·
+`figure-consistency` 15 declared claims, 15 checked against source and printed operands, 5 rounding
+artefacts declared · `reachability` 1354/1354 marks on their own record page, 661 pages scanned ·
+`field-render-audit` 32 prose fields across 3 layers, 0 invisible (ledger 15/0, provenance 6/0,
+series 11/0) · `domain-coverage` 14/14 surfaces built, 14/14 linked, 1139/1139 references ·
+`validate:selftest` 23/23 validator rules fire on the broken fixtures, 2/2 output gates on theirs.
