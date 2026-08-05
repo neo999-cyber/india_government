@@ -631,3 +631,44 @@ flattering-basis pattern found elsewhere in this phase and is recorded as such.
    2.5-3.0 GtCO2e carbon sink, and **net-zero-by-2070**. Expect the flagged shape on net-zero: a year
    with no interim phasing is likely state (d), unfalsifiable by construction, and must not be forced
    to (a) merely because a year is named.
+
+## ARC D — TWO QUANTIFIED LIMBS. **L-0224 written 2026-08-05.** Net-zero-2070 NOT in this batch.
+
+**L-0224 covers both limbs in one record because they share one defect:** an absolute tonnage, a
+date, and **no stated baseline.**
+- **One billion tonnes** (Panchamrit element 3, COP26): 'reduce the total projected carbon emissions
+  by one billion tonnes from now onwards till 2030'. The baseline is a PROJECTION — a counterfactual,
+  not observable — and India's own Long-Term Low-Emission Development Strategy publishes none:
+  `projected emissions`, `baseline scenario`, `reference scenario` all **0** across 283,363
+  characters, positive controls `emission intensity` 3 / `carbon sink` 5 / `2030` 51 passing. The
+  four `business-as-usual` hits are transport and finance discussion, read in context.
+- **2.5-3.0 GtCO2e carbon sink** (2015 NDC): 'additional' to a reference no retrieved document
+  states — `additional to` returns **0** — and it is a RANGE of half a gigatonne, so 2.6 both meets
+  and misses it, the same shape as NCAP's 20-30 per cent. The only stock offered is 'The carbon
+  stock in forests is estimated to be 7,204 million tonnes', **with no unit basis stated** against a
+  target explicitly in CO2 equivalent.
+
+### THE ENUM QUESTION THIS RAISES — flagged, NOT resolved. Operator decision.
+
+**These two limbs are a THIRD unscoreable shape and the vocabulary has no value for it.**
+- Not (d): (d) is *a total with **no date**, no phasing and no annual target*. Both carry 2030.
+  `no-objective` was therefore **not** scored and the definition was **not** stretched to reach them.
+- Not honestly `too-early` either, which is what was scored: that value's definition says the
+  obstacle is elapsed time *and the evidence time accumulates*. **Here time accumulates nothing** —
+  what is missing is a baseline, not a reading, and both limbs will be exactly as unscoreable in 2030
+  as today.
+
+**The shape: dated, quantified, and unscoreable for want of a stated baseline.** Distinct from (a),
+(b), (c) and (d). Creating or stretching an enum value mid-phase is precisely what this project's
+enum rule forbids, so it is recorded here for decision rather than settled in a record. **If a fifth
+state is admitted it needs a written definition in the same commit, per the preventive half of the
+enum rule.**
+
+### Arc D remaining — one limb, and it gets its own batch
+
+**Net-zero-by-2070 is NOT in this batch, deliberately.** STATE.md flags it as likely (d) and warns
+against forcing it to (a) because a year is named — and the two limbs written here sharpen why that
+warning matters: a year plus a quantity was still not enough to make these scoreable. **Net-zero
+needs its announcing wording retrieved first**, not recalled, and then the (a)/(d) test applied to
+what it actually says. It should also be decided AFTER the enum question above, because if a fifth
+state is admitted, net-zero may belong in it rather than in (d).
