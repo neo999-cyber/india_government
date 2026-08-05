@@ -9534,3 +9534,95 @@ artefacts declared · `reachability` 1354/1354 marks on their own record page, 6
 `field-render-audit` 32 prose fields across 3 layers, 0 invisible (ledger 15/0, provenance 6/0,
 series 11/0) · `domain-coverage` 14/14 surfaces built, 14/14 linked, 1139/1139 references ·
 `validate:selftest` 23/23 validator rules fire on the broken fixtures, 2/2 output gates on theirs.
+
+## Cycle 2026-08-05ap — batch 11: the adversarial-read rule, run on itself; Arc C closed; the e-Gazette is alive
+
+### The rule is now standing, and its first run found a defect
+
+**"Read the previous batch's report as an adversary before starting new work"** is written into
+CLAUDE.md, together with **"a flag raised against a record is checked against the RECORD, not against
+the report that describes it"** — the second earned by two prompt-side flags in three batches that
+were both wrong because the report was the thing being read.
+
+**First run, against batch 10: "all 11 PDFs are 2013-2018" is FALSE.** Re-enumerated,
+`moef.gov.in/forest-conservation` carries **nine** under `/uploads/2018/03/` and **two that are not** —
+a GIGW compliance statement dated **2025-26** and a cyber-security policy from **2021**. Both are
+site-wide boilerplate, so **the conclusion survives — the amendment is not on that index** — but the
+claim as written was wrong. **The defect is the shape, not the size:** an over-tidy generalisation made
+an index look more conclusively examined than it was, and "all 11" would have been quoted forward as
+though every link had been dated. Everything else in that report reconciled: 21+1+2=24, 225−44=181,
+six open items against six headings, and every gate figure against its gate's own emitted line.
+
+**All four instances of this class share one shape — a summary sentence tidier than the evidence it
+summarises** — and none would have been caught by a gate.
+
+### `(c)` is reachable in principle and structurally unreached — settle it before the field ships
+
+`abandoned` has **zero members in 225 records across fourteen phases**, and `assessment: reversed` has
+exactly one (L-0066, the farm laws, evidenced by an actual repeal Act). The abandonment vocabulary is
+widespread — 18 records match `abandon*` — but the corpus's own uses are the definition being quoted
+**to rule (c) out**: L-0213 reads *"nothing evidences abandonment, so it is not (c)"*.
+
+**The mechanism is now evidenced twice by this phase.** L-0222: *"REVERSED was rejected because no
+retrieved document withdraws the commitment — silence is not repudiation, and the later restatements
+set out different objectives without referring to the earlier one."* And the 175 GW target, whose
+terminal-year accounting contains "175" zero times while reporting against its successor.
+**Governments retire commitments by SUBSTITUTION, not renunciation**, and substitution leaves no
+repudiation to cite — so (c)'s evidentiary bar is unmeetable for the commonest form of abandonment.
+
+**REPORTED, NOT DECIDED, because it is an enum-contract question.** If `commitmentState` ships with an
+`abandoned` value that stays empty, the project's own `lens-empty` logic bites — *"a declared value
+with nothing behind it is a filter that returns nothing to the reader"*. The options are the
+operator's; what this cycle establishes is that a zero count there would be **a finding about how
+commitments are retired, not an authoring failure**.
+
+### Pins re-checked, dated, and one false alarm caught by testing the right path
+
+All twelve probed **2026-08-05** with the DNS answer recorded beside each. Stable: `cea.nic.in`,
+`gen-re.cea.gov.in`, `mnre.gov.in`, `coal.gov.in`, `moef.gov.in`, `fsi.nic.in`, `npp.gov.in`,
+`sansad.in`, `prana.cpcb.gov.in`. **Dead: `indiacode.nic.in` 94.202.207.51** — use
+`www.indiacode.nic.in` **94.202.207.59**.
+
+**`www.pib.gov.in` looked moved and is not.** Its DNS now answers 94.206.5.16 and a ROOT probe of the
+old pin returned 553 characters, which reads like a degraded host. **Tested on the path the citations
+actually use, both addresses are identical and healthy** — `PressReleasePage.aspx?PRID=1768712`
+returns 36,467 characters with the Panchamrit passage verbatim on each. **Probe a pin on the path the
+corpus depends on, not on `/`** — a root probe would have written a false "PIB moved" warning into
+STATE.md. And `sansad.in` returns 200 with 2,578 characters of font declarations: **a JavaScript
+shell**, same class as PRANA, which constrains Arc B's route (iii) to static question PDFs.
+
+### ARC C CLOSED PROVENANCE-ONLY — the amending instrument did not land
+
+Four query forms on India Code, one estate. **The year-facet enumeration worked and is the reusable
+part** — paginating `browse?type=actyear&order=ASC&rpp=20&offset=N` lists the years, and **2023, 2024
+and 2025 are all present**. But every route into 2023's contents returned zero acts, **including the
+page's own href followed verbatim**. That is a specific dead end rather than a failed guess: the index
+advertises the year and the browse yields nothing under it.
+
+**No FCA diversion, CAMPA or amendment figure was written.** Arc C holds **P-127 only**.
+
+### THE E-GAZETTE IS LIVE — phase 14's carried gap is FALSIFIED
+
+**`egazette.gov.in` at 164.100.190.144 returns HTTP 200 with 12,079 characters** and working
+navigation (`GazetteDirectory.aspx`, `RecentUploads.aspx?Category=1..5`). **Phase 14 recorded it as
+"unreachable and unduplicated" and carried it forward as that phase's one real retrieval gap.** It is
+not. **This is bigger than Arc C and is reported rather than acted on**: the e-Gazette is the channel
+of legal record, and a live one reopens every absence justified by its being dead. Finding a specific
+instrument still needs its search, a postback form of the same family as PIB's `Allrel.aspx` — so
+**live is not yet queryable**, and that distinction is the next thing to establish.
+
+`prsindia.org` (13.235.249.201) is also live at 13,107 characters — a genuinely different estate, not
+attempted, and **T3 at best** since a mirror is not the authentic text.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 225 ledger · 269 series · 127 provenance · 60 pairs
+= 681 records, 1,759 points** · `no-bare-root` 0 new, 0 stale, 277 allowlisted from 277 frozen ·
+`no-unguarded-prose-field` 19 prose fields across ledger + provenance, 7 guarded / 12 exempted ·
+`figure-consistency` 15 declared claims, 15 checked against source and printed operands, 5 rounding
+artefacts declared · `reachability` 1354/1354 marks on their own record page, 661 pages scanned ·
+`field-render-audit` 32 prose fields across 3 layers, 0 invisible · `domain-coverage` 14/14 surfaces
+built, 14/14 linked, 1139/1139 references · `validate:selftest` 23/23 validator rules fire on the
+broken fixtures, 2/2 output gates on theirs.
+
+**NOT PUSHED.** Push is not autonomous while the deployment is public and unauthenticated.
