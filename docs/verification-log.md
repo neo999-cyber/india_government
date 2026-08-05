@@ -8226,3 +8226,21 @@ Corrected in the record rather than by swapping the URL for a prettier one: the 
 that hold the evidence — the allowlist with its  array, the verification-log cycles, and the
 audit document with corrections C1 to C6. **A record that partitions the corpus by retrievability
 should not be exempt from its own partition.**
+
+### Cycle 2026-08-05z, addendum 2 — three words were eaten out of addendum 1
+
+Supersedes nothing in substance and corrects addendum 1's TEXT, which is appended above with three
+gaps in it. The entry was written through `python3 -c "..."` inside a double-quoted shell string, so
+zsh performed command substitution on every backticked term before Python ever saw it. Three
+identifiers vanished and the shell reported what it had tried to run: `command not found: url-check`
+and `no such file or directory: origin/main`.
+
+The sentences should read: **"`url-check` did not catch it: it diffs against `origin/main`, and the
+push had already landed, so it reported '0 to check'"** and **"the allowlist with its `history`
+array"**.
+
+Appended rather than repaired in place, because closed log entries are never edited. Recorded because
+the failure is silent in exactly the way this log keeps finding: the write succeeded, the commit
+landed, and the only evidence was two stderr lines scrolling past a successful run. **Use a quoted
+heredoc for anything containing backticks** — `python3 - <<'PY'` passes the text through untouched,
+and every other entry in this log was written that way.
