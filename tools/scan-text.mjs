@@ -75,14 +75,34 @@ function selftest() {
     failures.push(`--variants recovered ${recovered} hit(s) for "Official Creditor" against "Official Creditors\u2019", expected 1`);
   }
 
+  // Punctuation. A boundary beside a non-word character is unsatisfiable, not strict, and the scan
+  // reports an absence that could never have been a presence — the most dangerous shape a scanner
+  // has, because a zero is exactly what an absence claim is built on.
+  const punct = 'logistics costs down by up to 30% and time by 40%; see R&D annexe.';
+  for (const [term, want] of [['%', 2], ['30%', 1], ['R&D', 1]]) {
+    const got = scanText(punct, [term])[0].count;
+    if (got !== want) failures.push(`"${term}" scored ${got} against a text containing it ${want} time(s); boundaries must not be applied beside punctuation`);
+  }
+
+  // `whole` must mean whole. Plain \b does not stop a term matching the first element of a
+  // hyphenated compound, which is correct for the default and wrong for an exact-token search.
+  const hyphen = 'duty-bearing obligations and duty free imports';
+  if (scanText(hyphen, ['duty'])[0].count !== 2) {
+    failures.push('default scan should find "duty" twice in "duty-bearing ... duty free"; \\b treats the hyphen as a boundary by design');
+  }
+  if (scanText(hyphen, ['duty'], { whole: true })[0].count !== 1) {
+    failures.push('whole:true must refuse "duty-bearing" and keep "duty free"');
+  }
+
   if (failures.length) {
     console.error('scan-text selftest FAILED');
     for (const f of failures) console.error(`  - ${f}`);
     process.exit(1);
   }
   console.log(
-    'scan-text OK — 6 control(s): "Fengal" refused, substring opt-out proves the scanner fires, ' +
-      'real term found, script stripped, possessive plural refused by boundaries, --variants recovers it',
+    'scan-text OK — 11 control(s): "Fengal" refused, substring opt-out proves the scanner fires, ' +
+      'real term found, script stripped, possessive plural refused by boundaries, --variants recovers it, ' +
+      'punctuation terms (%, 30%, R&D) found not zeroed, whole:true refuses a hyphenated compound',
   );
 }
 

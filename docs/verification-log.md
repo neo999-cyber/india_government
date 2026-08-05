@@ -7395,3 +7395,52 @@ no cross-document derived quantity (the 123-of-166 ratio declined), rule 5d, dec
 over asserted arithmetic, scans through the helper with `--variants` and positive controls, corpus
 collision check before authoring, and "no records beats thin records".
 
+## Cycle 2026-08-05m — the batch-15 rules, and a 13-warning drop that had to be explained
+
+**The punctuation rule came with its fix, per the standing meta-rule.** `matcher()` now attaches a
+boundary only where the adjacent character of the TERM is a word character. `\b%` was not strict,
+it was UNSATISFIABLE: it demands a word character on both sides of a position where neither is one,
+so the scan reported an absence that could never have been a presence. That is the worst failure
+shape a scanner can have in this instrument, because every absence claim is built on a zero.
+
+**A fifth failure mode found while writing the control, and it is pre-existing.** `\bduty\b`
+matches "duty-bearing", because `-` is a non-word character and satisfies the boundary. This is
+CORRECT for the default — `cross-border` and `duty-free` should be findable by their parts — and
+wrong for `whole: true`, whose entire purpose is that an exact token was meant. `whole` now forbids
+a trailing hyphen. The module header's account of the original US-tariff sweep is accurate and was
+re-read rather than assumed: it claims tightening cut 59 candidates to 6, not that `duty` alone was
+fixed.
+
+**The defeat test was aimed at the wrong half first, and that is the note worth keeping.** To prove
+the punctuation control fires, the leading boundary was forced back on — and the selftest still
+PASSED, because for `%` inside "30%" the leading boundary is satisfiable; it was the trailing one
+that zeroed the term. A control had nearly been recorded as proven by a defeat that did not
+exercise it. Redone against `tail`, it failed with both specific messages, failed again unfixed,
+and came back clean on restore. **Proving a control fires requires defeating the exact mechanism it
+guards, not a neighbouring one** — a passing selftest under a deliberate break is evidence about
+the break, not about the control.
+
+**Controls now at eleven** in `scan-text --selftest`: the Fengal pair, the Official Creditors pair,
+three punctuation terms (`%`, `30%`, `R&D`) asserted found rather than zeroed, and the hyphen pair
+for `whole`.
+
+**A 13-warning drop with no data change, run to ground rather than accepted.** `npm run build`
+reported 164 warnings at the arc G close and 151 afterwards, with `/data` byte-identical. The
+matcher change was the obvious suspect and was ELIMINATED: `validate.mjs` does not import
+corpus-search, and stashing the tool changes still gives 151. The cause is `future-date`, the only
+date-dependent warning rule — thirteen records carry `asOf: 2026-08-05`, which was one day ahead of
+the system clock when they were written and is not ahead of it now. Counted directly: exactly 13
+records carry that date. Nothing is wrong and nothing changed; the warnings cleared themselves when
+the date rolled.
+
+Recorded for two reasons. A warning count that moves without a data change is exactly the shape of
+a gate quietly losing its grip, and "it went down, so it is fine" is the wrong response — a drop is
+as much a signal as a rise. And it is worth noting that records were being authored one day ahead
+of the clock, which is the kind of small drift that produces self-clearing warnings and trains a
+reader to ignore them.
+
+**Third rule: 5d's gloss, written into 5d itself.** Writing a finding from zero primaries produces a
+record about my search, not about the world — the same failure as an unrewritten existence claim, at
+full strength, and most tempting when the absence looks obvious. Arc G's UNSC subject is named in
+the rule as the instance where it was declined.
+

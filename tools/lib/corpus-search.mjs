@@ -162,12 +162,26 @@ export function matcher(term, opts = {}) {
   const { substring = false, whole = false, caseSensitive = false } = opts;
   const flags = caseSensitive ? 'g' : 'gi';
   if (substring) return new RegExp(escape(term), flags);
-  // Leading boundary always. Trailing: `\b` normally, or an explicit "no more word characters"
-  // where an exact token is wanted — `\btariff\b` already refuses `tariffs`, but `\bUSTR\b` with a
-  // case-insensitive flag still refuses `industry` only because of the LEADING boundary, and it is
-  // the leading one that the three failures above all needed.
-  const tail = whole ? '(?![\\w])' : '\\b';
-  return new RegExp(`\\b${escape(term)}${tail}`, flags);
+  // Trailing: `\b` normally, or an explicit "no more word characters" where an exact token is
+  // wanted — `\btariff\b` already refuses `tariffs`, but `\bUSTR\b` with a case-insensitive flag
+  // still refuses `industry` only because of the LEADING boundary, and it is the leading one that
+  // the three early failures all needed.
+  //
+  // A BOUNDARY IS ONLY MEANINGFUL BESIDE A WORD CHARACTER, and applying one beside punctuation
+  // does not tighten the match — it makes it unsatisfiable. A scan for `%` returned 0 on a document
+  // whose headline read "30%", because `\b` after `%` requires a word character on both sides of a
+  // position where neither is one. The scan reported an absence that could not have been a
+  // presence. So each boundary is attached only where the adjacent character of the TERM is a word
+  // character; `whole` likewise, since "no more word characters" is vacuous after punctuation.
+  const wordish = (c) => c !== undefined && /\w/.test(c);
+  const head = wordish(term[0]) ? '\\b' : '';
+  // `whole` also forbids a trailing hyphen. `\\b` does NOT stop a term matching the first element of
+  // a hyphenated compound — `\\bduty\\b` matches "duty-bearing", because `-` is a non-word character
+  // and so the boundary is satisfied. That is correct behaviour for the default, where `cross-border`
+  // and `duty-free` should be findable by their parts, and wrong for `whole`, whose entire purpose
+  // is that an exact token was meant.
+  const tail = !wordish(term[term.length - 1]) ? '' : whole ? '(?![\\w-])' : '\\b';
+  return new RegExp(`${head}${escape(term)}${tail}`, flags);
 }
 
 /**
