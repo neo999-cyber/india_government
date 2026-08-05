@@ -338,6 +338,38 @@ publication. **`reasonKind: not-published` and `not-collected` are claims about 
 rule 5d in full; `not-searched` is not a schema value, so where that is the truth the entry says so
 in its `why` and takes the weaker of the available kinds.**
 
+**Read the previous batch's report as an adversary before starting new work.** A batch cannot
+proofread its own output — it knows what it meant — but it can audit the batch before it, and that is
+where most of this phase's corrections came from. Before touching the arc: recompute every arithmetic
+claim in the last report; check that every count reconciles against the gate's own emitted scope;
+check that no verdict is contradicted by its own note; check that no claim rests on a premise the same
+report undermines; check that every state line in `STATE.md` matches the resolution recorded below it.
+Write what this finds into `STATE.md` as queue items before starting the arc, so the findings survive
+if the batch dies. Earned three times over: a headline pairing a stock with a flow and stating a gap
+that matched neither; a corpus count attached to a gate that had never emitted one; a `reasonKind`
+correction that made a record flatly false while reasoning about which value sounded weaker. Each was
+visible in the report that contained it.
+
+**STOP and report, do not proceed:** a shipped verdict changes, or a schema, enum or gate contract
+changes. **Commit the work already done and the finding to `STATE.md` first, then stop** — a stop that
+discards the evidence costs the next cycle the same retrieval.
+
+**Report at the end of the batch, keep working:** a structural finding spans phases, or the run is
+about to file something it cannot fully justify. Where it cannot fully justify a filing, it files the
+value that makes the fewest false assertions and states in the note which assertions that value makes
+that are false.
+
+**Everything else runs to completion:** plan, arc, self-audit, gates, commit. **Push is not autonomous
+while the deployment is public and unauthenticated.**
+
+**A flag raised against a record is checked against the RECORD, not against the report that describes
+it.** Two prompt-side flags in three batches were wrong for this reason — P-127 was said to name
+forest cover where the record says "forest and tree cover", and L-0225's revisit trigger was said to
+be 2070 where the record already named two events and said a date revisit was not useful. In both the
+report was the thing being read. **A report is a lossy summary written by the party being audited**,
+and the same rule that forbids reconstructing a record from memory forbids auditing one from its own
+description: open the record, quote the field, then judge.
+
 ## Session cost
 
 Orientation is paid for at the start of every session, so it is measured and kept small.

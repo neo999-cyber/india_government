@@ -726,7 +726,7 @@ off the printed definitions.** That is the test any future commitment record sho
 **"One arc left" is false and a cold read must not close the phase on Arc C.** Five items are
 outstanding and only the first is an arc.
 
-## 1. ARC C — forest clearances. **OPENED 2026-08-05: definition established (P-127). Clearances NOT touched.**
+## 1. ARC C — forest clearances. **CLOSED PROVENANCE-ONLY 2026-08-05 on P-127. Clearances NOT retrieved.**
 The one unstarted arc. ISFR's definition of "forest cover" is the known trap: it admits plantations,
 orchards and tea gardens, so a cover figure is not a forest figure. **Establish the definition from
 the primary before touching any cover number.** Also: the Van (Sanrakshan Evam Samvardhan) Adhiniyam
@@ -950,3 +950,139 @@ re-derive it.
 
 **What Arc C holds after two batches: P-127 only** — the forest-cover definition and the ISFR 2023
 base change. **The arc's actual subject, clearances, is untouched.**
+
+---
+
+# ADVERSARIAL READ OF BATCH 10's REPORT — run 2026-08-05, first act of batch 11
+
+The rule's first run. Findings written here before the arc was touched.
+
+## FINDING 1 — "all 11 PDFs are 2013-2018" is FALSE. Corrected.
+
+Batch 10 reported `moef.gov.in/forest-conservation` as stale on the ground that **"all 11 PDFs are
+2013–2018"**. Re-enumerated against the page itself: **nine** are under `/uploads/2018/03/` and are
+forest-conservation guidelines dated 2013-2014. **Two are not**, and neither is from that window:
+- `/storage/GIGW_3.0_STQC_Compliance_Statement_2025-26_798_signed.pdf` — **2025-26**
+- `/uploads/2021/09/National_cyber_security_policy-20131.pdf` — **2021**
+
+Both are site-wide boilerplate rather than forest documents, so **the conclusion survives — the
+amendment is not on that index** — but the claim as written is wrong. **The defect is the shape, not
+the size:** an over-tidy generalisation made an index look more conclusively stale than the evidence
+showed, and "all 11" would have been quoted forward as though every link had been examined and dated.
+The honest form is "nine of eleven are 2018-03 uploads of 2013-14 guidelines; the other two are
+site-wide boilerplate; none is the 2023 amendment."
+
+## What the audit checked and found CLEAN
+
+- **Arithmetic recomputed.** (a)21 + (b)1 + (d)2 = 24 ✓. 225 − 44 = 181 ✓.
+- **Counts against gate-emitted scope.** Every gate figure in batch 10's line matches the gate's own
+  output, including `no-bare-root`'s "277 from 277 frozen" and `validate`'s per-layer counts.
+- **Open-items count.** Six claimed; six headings present in STATE.md (1, 1b, 2, 3, 4, 5) ✓.
+- **No verdict changed in batch 10**, so no verdict-versus-note contradiction was possible.
+- **STATE.md state lines against the resolutions below them** — Arc C's "clearances NOT touched" and
+  Arc B's "untried, not exhausted" both match what is recorded beneath them.
+
+## The pattern across three runs of this class
+
+All three earlier instances and this one share a shape: **a summary sentence that is tidier than the
+evidence it summarises.** A stock paired with a flow; a count attributed to a gate that never emitted
+one; a `reasonKind` chosen for how it sounded; and now "all 11" where nine were checked. **None was a
+retrieval failure and none would have been caught by a gate** — each was visible in the report that
+contained it, to anyone reading it as an adversary rather than as its author.
+
+
+---
+
+# PINS RE-CHECKED 2026-08-05. **A pin is an observation, not a property of the host.**
+
+Every pin below was probed on **2026-08-05** with `curl --resolve`, and the current DNS answer from
+1.1.1.1 recorded beside it. **Dates are part of the record from now on**: phase 14's `indiacode .51`
+moved silently and was carried forward for a phase and a half as though it were a fact about the host.
+
+| Host | Pin | DNS 2026-08-05 | Probe | Note |
+|---|---|---|---|---|
+| `cea.nic.in` | 45.127.74.41 | same | 200, 93,051 chars | stable |
+| `gen-re.cea.gov.in` | 164.100.114.49 | same | 200, 27,190 | stable |
+| `mnre.gov.in` | 164.100.51.103 | same | 200, 76,544 | stable |
+| `coal.gov.in` | 164.100.166.94 | same | 200, 15,615 | stable |
+| `moef.gov.in` | 164.100.221.70 | same | 200, 126,006 | stable |
+| `fsi.nic.in` | 14.139.254.74 | same | 200, 26,285 | **FOREST** Survey — not `fsi.gov.in`, which is Fishery |
+| `npp.gov.in` | 45.127.74.236 | same | 200, 23,954 | stable; carries the month-stamped CEA archive |
+| `www.pib.gov.in` | 94.202.207.57 | **94.206.5.16** | 200 | **DNS moved, PIN STILL VALID — see below** |
+| `indiacode.nic.in` | ~~94.202.207.51~~ | 94.202.207.59 | 302, empty | **pin dead; use `www.indiacode.nic.in`** |
+| `www.indiacode.nic.in` | **94.202.207.59** | same | 200, 27,989 | the working India Code host |
+| `sansad.in` | 164.100.252.170 | same | 200, 2,578 | **JavaScript shell** — see below |
+| `prana.cpcb.gov.in` | 164.100.61.207 | same | 200, 21,732 | reachable; client-rendered (Arc B) |
+
+## The PIB entry is why a root probe is not a pin test
+
+A root-path probe of `www.pib.gov.in` on the old pin returned **553 characters**, which read like a
+degraded host, and DNS had moved to 94.206.5.16. **Tested on the path the citations actually use, both
+addresses are identical and healthy**: `PressReleasePage.aspx?PRID=1768712` returns 36,467 characters
+of text with the Panchamrit passage verbatim on **each**. **The old pin is not stale and dozens of
+citations are unaffected.** Had the root probe alone been recorded, STATE.md would now carry a false
+"PIB moved" warning. **Probe a pin on the path the corpus depends on, not on `/`.**
+
+## `sansad.in` is a JavaScript shell, which bears on Arc B route (iii)
+
+200 with 2,578 characters that are font declarations and styling — the same class as
+`prana.cpcb.gov.in`, not a different one. **Route (iii) will not work by fetching the site root.** It
+may still work if question PDFs sit at static paths, since those need no rendering; that is the form
+the route has to take and it is untried.
+
+
+---
+
+# ARC C — CLOSED PROVENANCE-ONLY, 2026-08-05. P-127 is the whole of it.
+
+**The amending instrument did not land on any of four routes across three estates, so no FCA
+diversion, CAMPA or amendment figure was written.** Per the batch instruction Arc C does not get a
+third batch, and it is closed here rather than left open-ended.
+
+## India Code — four query forms, one estate, and a specific dead end
+
+| Form | Result |
+|---|---|
+| `simple-search?query=Van+Sanrakshan…` | 200, **no matching results** |
+| `simple-search?query=forest+conservation+amendment+2023` | 200, **no results** |
+| `browse?type=actyear&value=2023` (constructed) | 200, **zero acts** |
+| `browse?type=actyear&order=ASC&rpp=20&value=2023` — **the page's OWN href, followed verbatim** | 200, **zero acts** |
+
+**The year-facet enumeration DID work and is the reusable part**: paginating
+`browse?type=actyear&order=ASC&rpp=20&offset=N` lists the available years, and **2023, 2024 and 2025
+are all present in the facet**. So the collection advertises 2023 and returns nothing for it.
+**That is a specific, checkable dead end rather than a failed guess** — the index says the year
+exists and the browse yields no items under it.
+
+## THE E-GAZETTE IS LIVE — phase 14's carried gap is FALSIFIED
+
+**`egazette.gov.in` at 164.100.190.144 returns HTTP 200 with 12,079 characters** and a working ASP.NET
+navigation — `GazetteDirectory.aspx`, `RecentUploads.aspx?Category=1..5`, `Circulars.aspx`. **Phase 14
+recorded it as "unreachable and unduplicated" and carried it forward as the one real retrieval gap of
+that phase.** That is no longer true and the phase-14 entry should be read as stale.
+
+**This is bigger than Arc C** and is reported rather than acted on here: the e-Gazette is the channel
+of legal record, and a live one reopens every absence that was justified by its being dead. Finding
+a specific instrument in it still needs its search, which is a postback form of the same family as
+PIB's `Allrel.aspx` — so "live" is not yet "queryable", and that distinction is the next thing to
+establish.
+
+## Also live, not attempted: `prsindia.org` (13.235.249.201, 200, 13,107 chars)
+
+A **different estate** from every government host tried. It mirrors Acts with bill-tracker pages.
+**Not attempted, and it would be T3 at best** — a mirror is not the authentic text, and for an
+amending instrument the gazette or India Code is what the instrument should rest on. Useful for
+locating the Act's gazette reference rather than as the source itself.
+
+## What Arc C holds, and what it does not
+
+**HOLDS: P-127 only** — the forest-cover definition (ten per cent canopy, any land use, orchards
+bamboo and palm included, severed from the legal category), the second incompatible definition in the
+same volume, and the ISFR 2023 base change with its scope fixed to tree cover and the combined total.
+
+**DOES NOT HOLD, and none of it was written:** the Van (Sanrakshan Evam Samvardhan) Adhiniyam 2023
+and what it changed · FCA diversion figures · CAMPA collections against spend · any cover trend or
+scored cover figure.
+
+**Reopening it needs the amending instrument first**, and the cheapest untried route is now the
+e-Gazette's own directory rather than India Code.
