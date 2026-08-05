@@ -8834,3 +8834,101 @@ resolution** — a default that was correct only because of what the list did no
 (7 guarded, 12 exempted) · `field-render-audit` 32 fields over 3 layers, 0 invisible ·
 `domain-coverage` 14/14 surfaces, 1128/1128 references · `validate:selftest` 23/23 validator rules,
 2/2 output gates.
+
+## Cycle 2026-08-05ah — batch 3: Arc A residuals, a basis defect of this run's own making, and Arc B closed with no record
+
+### The head items
+
+**The gap series did not meet the headline.** The four share series ran to FY2023-24 while the
+corrected headline quoted FY2025-26. Extended from CEA *Executive Summary March 2026*; **terminal
+years now agree at FY2025-26.** Opening gap **FY2014-15 = 10.98** points, FY2023-24 = 21.46, closing
+**FY2025-26 = 24.24**. Capacity extends only to FY2025-26 — 31.03.2025 is not a published stock at
+any guessable URL, both 404 — so `non-fossil-capacity-share` carries a deliberate hole at FY2024-25
+that its generation twin does not. **The seven batch-1 series did NOT carry a superseded basis:** they
+were computed from General Review Tables 1.2/1.3, which is the construction the corrected headline
+now uses. What was superseded was the headline's CHOICE OF PAIR, which never existed in a series.
+
+**A BASIS DEFECT IN A FIGURE THIS RUN WROTE, found while regenerating.** The 28.84 per cent carried
+since cycle ag put CEA's **Bhutan import inside the denominator and outside the numerator** — an
+import in one and not the other, a population mismatch inside a share, which is the exact class this
+instrument exists to catch. Three constructions are defensible and the one that was here is not:
+removing the import from both sides gives **28.96** (the General Review basis, and what every earlier
+year in the series uses); counting the imported hydro on both sides gives **29.27**, close to the
+Ministry's published 29.2. Corrected to 28.96, gap 24.37 → **24.24**. `figure-consistency` then caught
+that 24.24 is the difference of the UNROUNDED ratios while the printed operands give 24.25 — declared
+as a rounding artefact in the record's own text, in the gate's own vocabulary rather than by widening
+the gate's accepted phrases.
+
+**FY2023-24 IS the non-coking maximum** — 205.718 MT against nine other years — so the cycle-ag
+restatement from total to non-coking does not cost the claim. **No shipped verdict reopened:** L-0221
+stays `partly`, L-0222 stays `failed`.
+
+**reachability 1332 → 1336 is exactly P-123 and P-124**, each contributing a guarded `notes` and a
+guarded `bridgeNote`. Recomputed from the same MARKS list at both commits; no pre-existing record's
+count moved.
+
+**The extract/verdict overlap QUALIFIES cycle ag's item-8 conclusion without overturning it.** The
+extract samples 38 records, all scored. At its generating commit `1d08a2f`, **30 of 38 already carried
+an `assessmentNote`** — so reviewer coverage of verdict reasoning was substantive and item 8 stands.
+**But only 3 of the records that later gained reasoning are in the sample** (L-0066, L-0023, L-0011),
+so the reviewers' observation rested on roughly 8 of their 38 and the corpus-wide figure was the
+AUDIT's, not theirs. Measurement note: **37 records gained a note after `1d08a2f` against the log's
+33**, and the difference is at least partly corrections written in the same sequence — L-0011's note
+begins "CORRECTED … adversarial triage 2". **The decomposition has not been done; 37 is measured, 33
+is claimed, and they are not asserted to be the same set.**
+
+### The guard-scope class, now a rule
+
+**A guard binds a scope; the claim it protects has its own; write down both.** Three instances this
+phase, none found by any gate: `reachability`'s LIST against every prose field on the type (226 marks
+invisible); `ownPage()`'s `series|ledger` against the mark's `layers[]` (185 records reporting "no
+page built" the moment a provenance mark existed); and `breaks[]` binding a SERIES while the claim was
+a derived comparison in a record's PROSE. **The test is one question asked when the guard is written:
+if the claim moved one level out, would this guard still see it?**
+
+**(e) stays deferred, now with a measured rate.** `tools/seam-span-report.mjs` is written and is
+REPORT-ONLY, not in the build: **117 record-by-break spans, 88 declaring the break, 29 not.** Twenty-
+nine is a candidate list, not a defect count — the heuristic matches any year anywhere in a record's
+prose against any break on any series it cites. **L-0222 is among the 29 and is a false positive:** it
+names FY2013-14 and FY2024-25 for COAL quantities while citing the non-fossil generation share for
+context, and crosses P-122's seam in no claim at all. Gating at a 25 per cent undeclared rate would
+either block the build or invite someone to weaken it, and both are worse than the defect.
+
+### ARC B — AIR QUALITY: CLOSED WITH NO RECORD, AND THAT IS THE RESULT
+
+**No announcing primary for the National Clean Air Programme was retrieved, so nothing about its
+target is assertable and nothing was written.** The figures such a record would carry are widely
+circulated and easy to recall, which is precisely what makes writing them without the primary the
+hard stop rather than a shortcut.
+
+Five attempts across three estates. `cpcb.nic.in` and `airquality.cpcb.gov.in` both refuse TLS on
+different IPs — two observations, not one. **`prana.cpcb.gov.in` answers HTTP 200 with 21,735
+characters that are font-face CSS and chrome: the NCAP portal is CLIENT-RENDERED**, and a 200 serving
+a shell is not a retrieval. `moef.gov.in` is live with 126 KB of real text but its Control of
+Pollution division page carries no programme content at all. Three PIB release IDs were tried and
+none carried NCAP — **they were GUESSED, and guessing identifiers is why they failed rather than
+anything about PIB.**
+
+**The narrow true statement is that CPCB's estate is reachable and its flagship portal is unreadable
+to a non-rendering client** — different from, and more useful than, "CPCB is down". **It is NOT
+evidence that NCAP material is unpublished**, which is phase 14's standing lesson and was wrong three
+times there. Routes to open it are listed in STATE.md in expected-cost order, the first being a
+rendering client against PRANA.
+
+### DEPLOYMENT EXPOSURE — REPORTED, NOT CHANGED
+
+`india-government.vercel.app` serves the **full corpus unauthenticated** (HTTP 200); the team alias
+`india-government-anoop-osn.vercel.app` 302s to Vercel SSO. Same build, same edge IPs. Mechanism:
+`ssoProtection = { enabled: true, deploymentType: "all_except_custom_domains" }`. The footer of the
+publicly reachable site reads "Private research instrument. Not for publication." **No auth setting
+was changed by this run — an auth change is a stop condition under CLAUDE.md and the configuration
+may be deliberate.**
+
+### Gates
+
+`validate` 0 errors over 675 records · `typecheck` clean · `no-bare-root` 0 new / 0 stale over 277
+allowlisted · `no-unguarded-prose-field` 19 fields (7 guarded, 12 exempted) · `figure-consistency` 13
+claims, 4 declared rounding artefacts · `reachability` 1336/1336 over 655 pages · `field-render-audit`
+32 fields over 3 layers, 0 invisible · `domain-coverage` 14/14 surfaces, 1132/1132 references ·
+`validate:selftest` 23/23 validator rules, 2/2 output gates · `seam-span-report` 117 spans, 29
+undeclared, report-only.
