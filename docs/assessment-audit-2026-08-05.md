@@ -1,0 +1,229 @@
+# Assessment audit — phases 1–13 against CLAUDE.md as it now stands
+
+**Read-only sweep, 2026-08-05, from `0ab052e`. Nothing was amended. No `/data` commit.**
+
+Scope: 619 records authored before phase 14 — 183 ledger (L-0001…L-0183), 118 provenance
+(P-01…P-118), 60 pairs, 258 series. Phase 14's own output (`data/ledger/foreign-trade.json`,
+`data/series/foreign-trade.json`, P-119, P-120) is excluded, since it was written against these
+rules and would flatter the result.
+
+## How this sweep was conducted, and its limits
+
+Detectors were written deliberately loose and every output treated as a **candidate list, not a
+finding** — the rule under audit applies to the audit. Where a detector produced a set small enough
+to read in full, it was read in full; where it produced hundreds, a stated sample was read and the
+detector was then corrected and re-run. **The single largest result of this sweep is that most
+detectors were wrong, not most records.** Two detectors had to be rewritten mid-audit after their
+output was read:
+
+- The 5d detector treated "there is no X" as an existence claim. The corpus's actual idiom is
+  "there is no **published** X" / "no **official** X" / "not in **any form**" — which is exactly
+  what 5d requires. Adding those to the hedge set cut the candidate set from 168 hits to 74, and
+  reading those 74 showed most of the remainder are quotations from sources or statements of legal
+  fact.
+- The share-shaped detector fired on every percentage without a nearby "of", which caught growth
+  rates, tax rates and risk weights — none of which is share-shaped at all.
+
+**What was NOT done:** all 619 records were not read end to end. Small candidate sets (5c: 11
+records; raw-count: 30; withheld: 1) were read completely. Large sets (5d, share-shaped,
+corroboration, single-host) were sampled at 8–14 records each after tightening. Counts below
+distinguish *candidates* from *read and confirmed* throughout.
+
+---
+
+## Findings by rule
+
+### 1. T1 on a bare domain root — **REAL DEFECT, 113 records**
+
+The only large, unambiguous, mechanically certain finding in the sweep.
+
+**141 T1 citations across 113 records resolve to a bare domain root** — 50 distinct URLs, led by
+`sansad.in/` (15), `indiacode.nic.in/` (13), `mospi.gov.in/` (10), `main.sci.gov.in/` (9),
+`ncrb.gov.in/` (5), `pib.gov.in/` (5), `indiabudget.gov.in/` (5), `censusindia.gov.in/` (5),
+`morth.nic.in/` (5). A bare root names a *publisher*, not a source: it asserts primary strength for
+a citation that retrieves nothing, which is the rule's own wording.
+
+Distribution — and it does **not** favour the early phases:
+
+| phase / layer | count | | phase / layer | count |
+|---|---|---|---|---|
+| provenance, series, pairs | 49 | | agriculture (7) | 7 |
+| rights-institutions (9) | 22 | | baseline (1) | 6 |
+| education (10) | 20 | | welfare (4) | 4 |
+| infrastructure (5) | 14 | | employment (6) | 3 |
+| kashmir-rights (12) | 13 | | kashmir-security (11) | 2 |
+| | | | banking (3) | 1 |
+
+**Triage: real defect, but knowingly grandfathered.** CLAUDE.md says "**No new** bare-domain
+roots" — the rule was written forward-only, with this corpus in view. These are not violations of
+the rule as written; they are the condition the rule was written to stop growing.
+
+**One separate item inside this set:** `internetshutdowns.in` is cited at **T1** (2 citations). It
+is a civil-society tracker, not a primary publisher. That is a tier question, not a URL question,
+and is the only tier misassignment the sweep surfaced.
+
+### 2. Rule 5c — derived quantity inheriting a contested input — **0 defects, 11 candidates read in full**
+
+Candidates: L-0023, L-0028, L-0029, L-0066, L-0077, L-0094, L-0110, L-0114, L-0158, L-0159, L-0183.
+
+All read. Every hit is a **directly published figure**, not one derived from a contested quantity —
+the 14 per cent GST compensation rate, the 4.85 per cent borrowing cost, ophthalmic outcome rates
+from a named clinical series. The detector fired on "record carries `differentFacts: true` AND
+prints a percentage", which is far too loose: a record may carry a contested pair on one quantity
+and print unrelated published percentages elsewhere.
+
+**L-0110 was checked in depth** as the one candidate with the right shape — an 87.7 per cent fall
+computed from a series the record itself says was restated. It is not a 5c defect: the record's
+`differentFactsNote` states that the contest is *structural, not numeric* ("the second is not a
+quantity"), so there is no competing numeric account to inherit, and the figure sits inside an
+explicitly attributed passage ("Every measure the state publishes moves the same way").
+
+**Triage: false positive throughout.**
+
+### 3. Rule 5d — existence claim dressed as a claim about the sources — **~3 real, small**
+
+168 raw hits → 74 after correcting the hedge set → of the 14 read, the large majority are
+quotations from sources (L-0150, L-0153, L-0159 quote the Union and Kerala verbatim), statements of
+legal fact (L-0094: no national definition of sanctioned strength, because recruitment is a state
+function), or bounded sets (L-0102: "the only one of the two").
+
+5d names **superlatives** as the loudest symptom, and that is mechanically detectable: **52 hits
+across 43 records, 46 unhedged across 40**. Reading 14 of them, most are attributed quotations
+(L-0096 and L-0090 both quote the Ministry and ASER's director respectively), checkable legal firsts
+(L-0061: statutory standing for gig workers), or checkable statistical firsts (L-0106: the teaching
+workforce crossing one crore).
+
+**Genuine candidates, unhedged and in the author's own voice:**
+
+- **L-0032** — "the largest in Indian banking history" (ABG Shipyard, ₹22,842 crore).
+- **L-0064** — "the largest internal migration in India's recent history"; repeated as "the largest
+  internal displacement in decades".
+- **L-0099** — "no other state saw anything comparable"; the record does describe a national
+  comparison, so this is the weakest of the three.
+
+**Triage: cosmetic → real at the margin.** Each is a one-clause rewrite ("the largest recorded in
+the retrieved material"), none changes a finding.
+
+### 4. The four measurement categories — **0 defects found**
+
+The sharpest sub-test is *agreement between incommensurable instruments read as corroboration*: 86
+hits across 63 records, 12 sampled.
+
+Not one is the error. Several are its **opposite** — the corpus naming the error explicitly, in
+phases 6 and 12, years before the category was written down:
+
+- **L-0062**: "citing KLEMS as corroboration cites the survey back to itself".
+- **jk-psa-detenus-transferred-out**: "The apparent corroboration is not corroboration." — two
+  documents three months apart reproducing a single source paper.
+
+The remaining hits are legitimate independent corroboration at T1 (Economic Survey 2025-26
+confirming UDISE enrolment; FC-XV para 4.25 confirming the cess share).
+
+**Triage: false positive. The category was a codification of existing practice.**
+
+### 5. The four commitment states, especially (d) misfiled — **not retroactively applicable**
+
+Zero detections, and the honest reading is not that the corpus passes: **phases 1–13 predate the
+commitment-state framework entirely**, so their records were never filed into states (a)/(b)/(c) at
+all. There is no misfiling because there was no filing. State (d) was derived in phase 14 from
+L-0209 and confirmed on L-0213.
+
+**Triage: false positive by construction — the rule does not apply retroactively.** If the framework
+is ever applied backwards it is a re-authoring exercise, not a correction, and should be scoped as
+one.
+
+### 6. Share-shaped figures with unnamed numerator or denominator — **0 confirmed, 79 candidates**
+
+379 raw hits → 188 after tightening to genuine population-share language, across 79 records. Twelve
+sampled; every one names its basis in adjacent text ("manufacturing's **GDP share**", "as a **share
+of the all-India total**", "16 per cent **of government primary school teachers**").
+
+**Triage: false positive at the sampled rate.** Not exhaustively verified — this is the one rule
+where a full read might still surface individual cases.
+
+### 7. Context before count — findings resting on a raw count — **3 cosmetic gaps, 30 candidates read in full**
+
+All 30 read. **20 already state a positive control or a search scope**, several in a form the
+phase-14 rule would accept unchanged:
+
+- **L-0183**: "the word derivation appears zero times in its main report **against a positive
+  control of fifty-seven for collection**".
+- **L-0155**: "own audit-report index **with a positive control** returns no document containing
+  'net proceeds'".
+- **P-88 / L-0135 / jk-detenus-psi**: "'Ladakh' returns zero occurrences in every volume up to and
+  including PSI 2019 **and 178 in PSI 2020** — a clean binary across eleven volumes".
+- **L-0117**: "Established by **exhaustive search across seventeen retrieved reports**".
+- **jk-encounters-ct-ops**: "**by two independent searches**".
+
+Of the 10 that looked bare, 7 are detector artefacts on reading — **L-0100**'s zero for "Hindi" is
+followed immediately by "Sanskrit is named twice", which *is* a positive control; **L-0128** states a
+2,839-answer corpus; **L-0093** lists everything the report does contain; **L-0151** describes what
+an argument omits rather than grounding an absence.
+
+**Genuine cosmetic gaps — a stated zero with no control or scope in the record text:**
+**L-0127** (Annual Report 2024-25, 'statehood' and 'Article 370'), **L-0133** (Annual Report
+2019-20, 'Public Safety Act' and 'detenu'), **L-0105** (the intent notification and caste).
+
+**Triage: cosmetic.** The searches were plainly run; the control counts are not in the record, so a
+later reader cannot distinguish an absence from a failed fetch without re-running them.
+
+### 8. Class of sources — absence concluded from a single host — **small residue, cosmetic**
+
+143 `unmeasured` entries carry `not-published` or `withheld`. Of these, **30 across 24 records** sit
+in a record citing one host with no second check named in `why`. On reading, several name multiple
+documents that the detector missed — `parakh-grade3-proficient-language` names four ("the National
+Report, the FAQ, the Operational Guidelines or the document PARAKH publishes as a technical
+report"), `jk-security-forces-killed` names seventeen report years.
+
+**Triage: cosmetic, thin residue.** Distribution: education 13, seed 7, kashmir-security 6,
+federalism 4.
+
+### 9. `withheld` without named requester, specific request and date — **0 defects**
+
+143 unmeasured entries checked mechanically; exactly one flagged, **L-0114** — and on reading it
+names the requester (Prof. M. V. Rajeev Gowda), the specific instrument (Rajya Sabha Unstarred
+Question No. 511) and the date (answered 7 February 2018). The detector missed the requester because
+it looked for the words "request"/"refused" rather than a named person and question number.
+
+**Triage: false positive. This discipline was applied consistently across the whole corpus**, which
+is consistent with the standing note that phases lose `withheld` claims to `not-published` at
+authoring time.
+
+---
+
+## The distribution question, answered
+
+**The failures do not cluster in phases 3–6, and the early corpus was not written to a lower
+standard.** The one real defect class — bare-domain T1 roots — is spread across every phase and is
+*heaviest in the later ones*: rights-institutions (22), education (20) and the shared
+provenance/series/pairs layers (49) account for 91 of 141, against 6 in baseline and 1 in banking.
+
+The rules that were expected to expose an early-corpus quality gap — 5c, 5d, the measurement
+categories, context-before-count, `withheld` hygiene — found essentially nothing, because **most of
+CLAUDE.md was codification of practice the corpus was already following**, written down in phase 14
+so it would survive into later ones. Two of the phase-14 rules were being applied, by name, in
+phases 6 and 12.
+
+**Recommendation: cheap corrections, no remediation phase.**
+
+## Suggested correction cycles, in priority order
+
+Each is a separate cycle under the L-0021 precedent. None is urgent; none changes a finding.
+
+1. **Bare-root citations (113 records).** The largest and the only mechanical one. Best done as a
+   sweep with a gate afterwards — a `no-bare-root` check that errors on new ones and carries an
+   explicit allowlist of the 141 legacy citations, so the count can only fall. Deep-linking 141
+   citations is research work, not editing, and should be split by file.
+2. **The `internetshutdowns.in` T1 tier** (2 citations). One decision, then apply.
+3. **Three unhedged superlatives** — L-0032, L-0064, L-0099. One-clause rewrites.
+4. **Three bare zeros** — L-0127, L-0133, L-0105. Add the control counts, which requires re-running
+   three searches through `tools/scan-text.mjs`.
+
+## What this audit could not establish
+
+- The share-shaped rule was sampled, not exhaustively verified; a full read of the 79 candidate
+  records could still surface individual cases.
+- Commitment states were not assessed retroactively, because the framework postdates every record
+  swept. Whether phases 1–13 *should* be filed into states is a scoping question, not a defect.
+- No detector can find a term that matches and means something else. The one instance the sweep did
+  surface was found by reading, not by matching.

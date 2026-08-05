@@ -7585,3 +7585,65 @@ Arcs A-G plus Pakistan closed with records; five subjects closed with documented
 outcomes, which are results and are named as such in STATE.md. Carried forward: arc E's fourth
 file, the e-Gazette, and Godda.
 
+## Cycle 2026-08-05p — assessment audit of phases 1-13. READ-ONLY. Nothing amended.
+
+Full findings at `docs/assessment-audit-2026-08-05.md`. 619 records swept — 183 ledger, 118
+provenance, 60 pairs, 258 series — against CLAUDE.md as it now stands. Phase 14's own output was
+excluded, since it was written against these rules and would flatter the result.
+
+**THE SWEEP'S OWN LARGEST FINDING IS THAT MOST DETECTORS WERE WRONG, NOT MOST RECORDS.** Two had to
+be rewritten mid-audit after their output was read. The 5d detector treated "there is no X" as an
+existence claim; the corpus's actual idiom is "there is no PUBLISHED X" / "no OFFICIAL X", which
+is exactly what 5d requires — adding those hedges cut 168 hits to 74. The share-shaped detector
+fired on every percentage lacking a nearby "of", catching growth rates, tax rates and risk weights,
+none of which is share-shaped. **The context-before-count rule applied to the audit itself, and had
+it not been, this sweep would have reported roughly 500 defects that do not exist.**
+
+**One real defect class, and it is mechanical.** 141 T1 citations across 113 records resolve to a
+bare domain root — 50 distinct URLs, led by `sansad.in/` at 15 and `indiacode.nic.in/` at 13. A bare
+root names a publisher, not a source. CLAUDE.md's wording is "no NEW bare-domain roots", so these
+are not violations of the rule as written; they are the condition it was written to stop growing.
+One tier question sits inside the same set: `internetshutdowns.in`, a civil-society tracker, is
+cited at T1.
+
+**Everything else came back nearly clean, and the reason matters.** 5c: 11 candidates, all read, 0
+defects — L-0110 checked in depth because it had the right shape, and its contest turns out to be
+structural rather than numeric, so there is no competing quantity to inherit. `withheld` hygiene:
+143 entries, 1 flagged, and on reading L-0114 names requester, question number and answer date — 0
+defects. Measurement categories: 63 candidate records, 12 sampled, 0 defects, and **two records name
+the error explicitly years before it was written down** — L-0062's "citing KLEMS as corroboration
+cites the survey back to itself" (phase 6) and jk-psa-detenus-transferred-out's "The apparent
+corroboration is not corroboration" (phase 12).
+
+**Context-before-count is the striking one.** 30 candidates, all read; **20 already state a positive
+control or search scope**, several in a form the phase-14 rule would accept unchanged — L-0183's
+"zero times ... against a positive control of fifty-seven for collection", P-88's "zero occurrences
+in every volume up to and including PSI 2019 and 178 in PSI 2020", jk-encounters-ct-ops's "by two
+independent searches". Of the 10 that looked bare, 7 dissolved on reading: L-0100's zero for
+"Hindi" is followed immediately by "Sanskrit is named twice", which IS a positive control.
+
+**Genuine residue: six records, all cosmetic.** Three unhedged superlatives in the author's own
+voice (L-0032, L-0064, L-0099) and three stated zeros with no control in the record text (L-0127,
+L-0133, L-0105).
+
+**The distribution question, which was the point of asking.** Failures do NOT cluster in phases 3-6.
+The one real class is heaviest in the LATER phases — rights-institutions 22, education 20, and the
+shared provenance/series/pairs layers 49, against 6 in baseline and 1 in banking. The rules expected
+to expose an early-corpus quality gap found essentially nothing, because **most of CLAUDE.md was
+codification of practice the corpus was already following.** Recommendation: cheap corrections, no
+remediation phase.
+
+**Commitment states were not assessed retroactively and the report says so.** Phases 1-13 predate
+the framework entirely, so no record was ever filed into a state — there is no misfiling because
+there was no filing. Applying it backwards would be re-authoring, not correction, and should be
+scoped as such.
+
+**Limits stated in the report rather than glossed.** All 619 records were not read end to end: small
+candidate sets were read in full, large ones sampled at 8-14 records after tightening, and the text
+distinguishes candidates from read-and-confirmed throughout. The share-shaped rule is the one where
+a full read could still surface individual cases.
+
+Four correction cycles proposed in priority order, each separate under the L-0021 precedent. The
+first carries a design note: pair the bare-root sweep with a `no-bare-root` gate holding an explicit
+allowlist of the 141 legacy citations, so the count can only fall.
+
