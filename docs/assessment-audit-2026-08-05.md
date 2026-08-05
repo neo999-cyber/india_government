@@ -227,3 +227,75 @@ Each is a separate cycle under the L-0021 precedent. None is urgent; none change
   swept. Whether phases 1–13 *should* be filed into states is a scoping question, not a defect.
 - No detector can find a term that matches and means something else. The one instance the sweep did
   surface was found by reading, not by matching.
+
+
+---
+
+# CORRECTIONS — appended 2026-08-05 by correction cycle 1
+
+Appended rather than edited in place, so the errors stay visible. Each names what it supersedes.
+
+## C1. The bare-root count was understated. Supersedes finding 1's headline.
+
+Finding 1 reported **141 T1 citations across 113 records**. That was the T1 slice only, because the
+detector filtered on `tier == 'T1'`. The full figure is **313 bare-root citations across 255
+records — 302 unique (record, url) pairs**:
+
+| tier | citations |
+|---|---|
+| T1 | 141 |
+| **no tier at all** | **99** |
+| T4 | 50 |
+| T2 | 13 |
+| T3 | 6 |
+| T5 | 4 |
+
+The 99 untiered citations are the more interesting half and finding 1 missed them entirely: a source
+with neither a tier nor a retrievable URL asserts nothing a reader can check in either dimension.
+`data.worldbank.org/` alone accounts for 14 of them.
+
+## C2. The `internetshutdowns.in` tier finding was WRONG. Supersedes finding 1's closing paragraph.
+
+Finding 1 said `internetshutdowns.in` is "cited at **T1** (2 citations)… a civil-society tracker, not
+a primary publisher… the only tier misassignment the sweep surfaced." **Every part of that
+characterisation is wrong except the count.**
+
+Reading the two T1 citations — which the audit did not do, having stopped at the tier field:
+
+- **L-0139** cites, at T1, *"Government of Jammu and Kashmir, Home Department, Government Order No.
+  Home-01 (TSTS) of 2025 dated 14 January 2025… Retrieved twice and matched in every particular: once
+  from an Internet Archive capture of the Department's own file, and once live from the SFLC.in media
+  directory."*
+- **L-0140** cites, at T1, *"at least eleven distinct 2025 J&K suspension orders re-hosted on the
+  organisation's own infrastructure… One retrieved live, rendered and matched in every particular
+  against the archive copy… the other ten inventoried by filename only and not opened."*
+
+The T1 document is a **government order**. SFLC.in is the host that serves it. CLAUDE.md's own rule
+is to tier "**by the document actually retrieved rather than the institution behind it**", so T1 is
+correct and the corpus was applying the rule the audit accused it of breaking. The same tracker is
+cited at **T3** where the document is its methodology page (P-54, L-0081) and at **T4** where the
+document is its homepage disclaimer (P-95) — the corpus tiers the same host three ways according to
+what was retrieved from it, which is the rule working exactly as written.
+
+**There is no tier misassignment.** The only defect in those two citations is the bare-root URL, and
+they are already in the allowlist under finding 1.
+
+**The audit error worth naming:** a tier was judged from the `tier` field and the host name without
+reading the `name` field beside them. That is the context-before-count failure in a new dress — a
+field value is no more a finding than a count is.
+
+## C3. No citations were deep-linked this cycle, and the reason is specific.
+
+Correction cycle 1 built the gate and fixed nothing. Every candidate host returned HTTP 000 to a
+plain request — **including `pib.gov.in`, from which this session retrieved dozens of documents.**
+The cause is the broken system resolver already recorded for this machine, not dead hosts:
+`dig @1.1.1.1` resolves them (`sansad.in` → 164.100.252.170, `mospi.gov.in` → 103.210.81.67), and
+`curl --resolve` works. `www.indiacode.nic.in` is a CNAME to `indiacode.nic.in.edgesuite.net`.
+
+So deep-linking needs a resolver pin per host AND, after that, per-citation research to locate the
+document the `name` field describes and match it. That is a research cycle, not a sweep, and calling
+it cheap was wrong.
+
+**Revised recommendation for cycle 2:** work one host at a time, pin first, and delete allowlist
+entries as each citation is verified — the gate now forces that deletion, so progress is visible in
+the entry count and cannot be faked.

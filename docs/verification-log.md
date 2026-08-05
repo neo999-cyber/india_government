@@ -7647,3 +7647,73 @@ Four correction cycles proposed in priority order, each separate under the L-002
 first carries a design note: pair the bare-root sweep with a `no-bare-root` gate holding an explicit
 allowlist of the 141 legacy citations, so the count can only fall.
 
+## Cycle 2026-08-05q — correction cycle 1: the no-bare-root gate. Two audit findings corrected.
+
+Under the L-0021 precedent: a correction to shipped material, its own cycle, its own commit. **No
+record text was amended** — `git diff --numstat -- data/` returns zero lines. What shipped is the
+gate, the frozen allowlist, and two corrections to the audit that commissioned this cycle.
+
+**THE AUDIT UNDERSTATED THE DEFECT BY MORE THAN HALF.** Finding 1 reported 141 T1 citations across
+113 records. The detector had filtered on `tier == 'T1'`. The real figure is **313 bare-root
+citations across 255 records, 302 unique (record, url) pairs** — and the largest single group is
+the 99 with **no tier at all**, which finding 1 missed entirely. A source carrying neither a tier
+nor a retrievable URL asserts nothing checkable in either dimension. Corrected in the audit document
+as C1, appended rather than edited so the error stays visible.
+
+**THE AUDIT'S TIER FINDING WAS SIMPLY WRONG, AND THE CORRECTION IS THE MORE USEFUL RESULT.** The
+audit said `internetshutdowns.in` at T1 was "a civil-society tracker, not a primary publisher…
+the only tier misassignment the sweep surfaced". Reading the `name` fields — which the audit did not
+do, having stopped at the `tier` field — L-0139 cites a **Government of Jammu and Kashmir Home
+Department order** re-hosted by SFLC, "retrieved twice and matched in every particular", and L-0140
+cites eleven such orders. The T1 document is a government order; SFLC is the host. CLAUDE.md says to
+tier "by the document actually retrieved rather than the institution behind it", so **the corpus was
+applying the rule the audit accused it of breaking** — and it tiers the same host three ways (T1 for
+the orders, T3 for its methodology page, T4 for its homepage disclaimer) according to what was
+retrieved. There is no tier misassignment.
+
+**The audit error worth naming: a tier was judged from the `tier` field and the host name without
+reading the `name` field beside them.** That is the context-before-count failure in a new dress — a
+field value is no more a finding than a count is. The rule generalises past counts to any single
+field read in isolation.
+
+**The gate: `tools/no-bare-root.mjs`, wired into `npm run build`.** It enforces two directions, and
+the second is the one that matters:
+1. a bare root NOT in the allowlist errors — new ones cannot appear;
+2. an allowlist entry NOT found in `/data` ALSO errors — a fixed citation forces its own line to be
+   deleted.
+
+Without (2) the allowlist decays into a list of things that were once true, which is the failure
+mode of every grandfather clause. With it the count is monotonic and progress cannot be faked.
+Keyed by (record id, url) rather than url alone: `mospi.gov.in/` being forgivable on L-0067 says
+nothing about it being forgivable on a record written tomorrow.
+
+**Proven by defeating each direction separately** — and the first attempt did not exercise the
+mechanism. Defeat 1 removed an allowlist entry for `L-0012 + mospi`; the gate passed, because
+**L-0012 has no bare-root citation**, so nothing was removed. Redone against a real entry (L-0067),
+it failed with `NEW bare root L-0067 [T1] https://mospi.gov.in/`. Defeat 2 added a phantom entry and
+produced `STALE allowlist entry L-9999`. Both failed again unfixed; both clean on restore. **Second
+time in two sessions that a defeat test was aimed at the wrong half** — the boundary control in
+cycle 2026-08-05m was the first. The lesson is now unmistakable: a passing selftest under a
+deliberate break is evidence about the break, not about the control.
+
+**A shell error repeated for the third time this session, and it is the no-piped-gates rule.**
+`node tools/no-bare-root.mjs 2>&1 | head -4; echo exit=$?` reports the status of `head`. Every
+defeat test above was re-run writing to a file and reading `$?` unpiped.
+
+**NO CITATIONS WERE DEEP-LINKED, and the reason is specific rather than an excuse.** Every candidate
+host returned HTTP 000 to a plain request — including `pib.gov.in`, from which this session
+retrieved dozens of documents. That is the broken system resolver recorded for this machine, NOT
+dead hosts: `dig @1.1.1.1` resolves them (`sansad.in` → 164.100.252.170, `mospi.gov.in` →
+103.210.81.67; `www.indiacode.nic.in` is a CNAME to `indiacode.nic.in.edgesuite.net`). **Recording
+ten live government hosts as unreachable would have been the class-of-sources error committed one
+cycle after auditing for it.**
+
+So deep-linking needs a resolver pin per host and then per-citation research to locate and match the
+document each `name` field describes. Calling that cheap was wrong, and cycle 2 is rescoped as C3:
+one host at a time, pin first, delete allowlist entries as citations are verified. The gate forces
+the deletion, so the entry count is the progress measure.
+
+**Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 302 legacy
+allowlisted (T1:134 T2:13 T3:6 T4:46 T5:4 no-tier:99); figure-consistency 10/10; manifest 660
+records; reachability and domain-coverage unchanged; selftest exit 0. `/data` untouched.
+
