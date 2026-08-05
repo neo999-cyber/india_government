@@ -2088,3 +2088,46 @@ checked by anyone who did not write it"* **present** · `disputed on the evidenc
 · batch-17's `1.30 on the unrounded basis` still live on L-0221.
 
 `<meta name="robots" content="noindex, nofollow">` confirmed unchanged on the live page.
+
+---
+
+# RESUME HERE — written 2026-08-06 for a cold start
+
+**Phase 15 is CLOSED and has no open items. `main` @ `356a7df` + this commit, 0 unpushed, live and
+verified at https://india-government.vercel.app (public by decision, `noindex` by a separate one).**
+
+**THE NEXT SESSION IS THE STRUCTURAL CYCLE. It is not phase 16 and it is not phase-15 leftovers.**
+Six items, and the first four are ONE design because all of them need the same missing gate:
+
+1. **The non-prose render assertion.** `field-render-audit` excludes enum, format and pattern fields
+   **by construction** (`!v.enum && !v.format && !v.pattern`), so nothing asserts that a verdict, a
+   boolean or an enum reaches a reader. **Two instances are already proven**: `disputeKind` shipped
+   invisible on 19 entries until 2026-08-06, and 29 `no-objective` records render no verdict at all
+   with no written decision saying whether that is intended. **Build this first — items 2 and 3 land
+   in the same hole without it.**
+2. **`commitmentState`.** Scoped batch 10, distribution earned batches 16-17: **14 records assert, 212
+   do not, (a) 12 · (b) 2 · (d) 1 · (c) 0.** Named values, not bare letters — the corpus runs **three
+   separate `(a)-(d)` vocabularies in the same prose fields.** Schema change = stop, so it is agreed
+   before it is built.
+3. **The `contested` split.** 67 records classified by what would settle each: criterion 22 ·
+   interpretation 13 · evidence-withheld 11 · measure 10 · evidence-unobservable 5 · time 4 · residue
+   2. **`disputeKind` does NOT transfer** — its two values are defined against the stated reason for an
+   *absence*, not against two readings of a measure.
+4. **`figure-consistency`'s mining gap.** It checks DECLARED claims and never mines, so an undeclared
+   derived figure is outside the gate entirely — four this phase, all found by hand. Its claim format
+   is also subtraction-only and cannot express a ratio. Gate contract change = stop.
+5. **The seam-span triage** — 117 spans, 29 undeclared, report-only, untriaged.
+6. **Arc B's capability** — one thing, not four routes: resolve `prana.cpcb.gov.in` to
+   **164.100.61.207** and retry a rendering client. **No attempt has yet addressed the actual observed
+   error**, which was DNS, not rendering.
+
+**AND ONE THING THAT IS NOT A CYCLE ITEM BUT IS NOW OVERDUE:** the deferred verification plan
+specified an **adversarial model pass after phase 15** — a model with no history of this project,
+prompted to attack rather than confirm. Phase 15 is closed. `/method#limits` now tells every reader it
+has not been run.
+
+**Two operational facts a cold start will otherwise pay for again.** A `git push` that succeeds is not
+a deployment — check `list_deployments --since`, which returns **count 0** for "never started" where
+polling the site cannot tell that from a slow build. And `vercel deploy --prod` from this repo
+**aborts on upload** because the working tree carries the 662-page `out/`; an empty commit re-triggers
+the webhook instead.
