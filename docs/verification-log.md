@@ -8301,3 +8301,60 @@ deliberately not recorded, so the decision not to record can be argued with too.
 **Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 278 allowlisted, unchanged;
 selftest exit 0; `/data` untouched.
 
+## Cycle 2026-08-05ab — adversarial triage 1: three of eight reviewer claims did not survive
+
+Findings at `docs/adversarial-triage-1.md`. **`/data` untouched** — `git diff --numstat -- data/`
+returns nothing. Two generator defects fixed, because the generator is not corpus.
+
+**THE PREMISE-CHECKING PAID FOR ITSELF IMMEDIATELY.** Three of eight claims are false. The
+`reasonKind` flattening charge is simply wrong: all four renderings appear distinctly in the output,
+13 / 39 / 10 / 6. The "same government" charge is wrong and inverted — L-0114 says "its own state
+government" and the twenty-six-day gap between two DIFFERENT governments is the point it is making.
+And the universal-absence charge, offered as a generator artefact, is the opposite: the strings are
+in `/data` and the generator introduces none of them.
+
+**THE LARGEST FINDING IS THE ONE THE REVIEWER GOT HALF-RIGHT.** Eight universal-absence strings, all
+in one Kashmir cluster. Four ENUMERATE the instruments checked — "not MHA, which has never had a
+column for it; not GTD, which covers non-state perpetrators only by construction; not UCDP, which
+records Government-of-India one-sided violence in three country-years ever" — and largely discharge
+themselves, with a narrow residual overreach: the enumeration bounds four instruments while the
+phrase claims the world. Two are unhedged violations about a counterfactual quantity. **Two are both
+unhedged AND factually contradicted by their own record.**
+
+**L-0114 contradicts itself across two adjacent fields.** The summary says "the only pellet quantity
+any government has ever published"; `whatHappened` then reports the J&K Chief Minister giving 51
+killed, 9,042 injured, **6,221 injured by pellets**, 782 eye injuries and 510 hospitalised. And the
+sentence BEFORE the offending one is correctly hedged — "the only official Indian document located in
+this phase" — so the author had the right form in hand and dropped it in the next clause. That is
+the sharpest single defect this review surfaced.
+
+**Demonetisation is worse than charged.** Four objectives announced; evidence presented on two;
+terror financing and digitisation not measured at all, with no `unmeasured` entry acknowledging it —
+and `assessmentNote` is **null**. The corpus's most prominent failure verdict carries no stated
+reasoning.
+
+**L-0195 resolves against the note, not the analysis.** The reviewer says the record ignores that
+"since the signing" names a baseline. The `assessmentNote` does say the claim states no baseline —
+but `caseAgainst` already argues the reviewer's case and harder: "0.85 times CY2022 means two-way
+trade with Australia has FALLEN since ECTA was signed." A note-versus-body mismatch, which this
+corpus has hit before, not an error in the reasoning.
+
+**THE DISTRIBUTION IS THE STRUCTURAL FACT.** 219 ledger records: **56 reach a verdict, 163 abstain —
+74 per cent.** 72 unscoreable, 65 contested. And **92 records, 42 per cent, carry no
+`assessmentNote` at all**, every one of L-0001 to L-0024 among them. The follow-on charge is NOT
+supported, though: testing whether abstentions hide a lopsided case (`caseAgainst` > 1.6x `caseFor`)
+returns 9 of 163. Length is a crude proxy and the test is stated as such, but it points away from
+the charge.
+
+**Two generator defects, both mine, both fixed.** The tier gloss was worse than charged: it omitted
+the schema's operative rule — "Grade what you hold, not what it is about" — and actively
+misdescribed T2, under which a domestic statutory body is T1. A reviewer using that gloss would have
+mis-graded every audit-report citation in the extract. And the hard-coded "Thirty-four" against 38
+sections is now derived from the sample, with a validation that refuses to write the file on a
+mismatch; proven by forcing the old value.
+
+**Four retrieval leads listed and NOT acted on.** One deserves naming: the 1.31 per cent
+elector-parity figure for J&K delimitation is attributed to a language model. **That is not a
+source.** It is listed as requiring retrieval from the Delimitation Commission's report or an ECI
+publication, or dropping.
+
