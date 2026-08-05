@@ -51,6 +51,39 @@ commitment state (d) unfalsifiable-by-construction, the class-of-sources rule, c
 the scan-path rule with `tools/scan-text.mjs`, boundary handling beside punctuation, the
 morphological-variant retry, the correction-guard rule, and 5d's gloss.
 
+
+## Assessment-audit correction sequence — CLOSED 2026-08-05, ten cycles
+
+Allowlist **302 → 278**; 24 citations deep-linked, each identified by matching the record's own
+values against the retrieved document. **Residue partitioned and written up as L-0219** rather than
+carried as a backlog note.
+
+**The partition.** Of 278 citations across 92 distinct bare roots: **139 point at a URL returning no
+document** (54 refused while resolving, 50 returned 200 with under 500 characters of text, 23 have no
+DNS record, 12 returned 403) and **139 point at a URL returning real content**. Cutting across both,
+**139 name no document at all** — no year, no number — of which **58 sit on hosts that answer**.
+Buckets 1 and 2 are NOT disjoint; unaddressability is a property of the citation, reachability of the
+URL.
+
+**The only cheap work left: 81 citations that are both addressable and on a live host.** Everything
+else needs a rendering client, a route, or fresh research.
+
+**Two barrier classes, and pins fix only one.** Resolver-class hosts answer once pinned — that
+recovered indiacode, satp, egazette, cag, sansad. Client-rendering hosts return 200 and a scaffold:
+`sansad.in` gives 29,501 bytes and **25 characters of text**. Ranked by bytes the two are
+indistinguishable. Always measure text.
+
+**Pins on record:** egazette 164.100.190.144 · indiacode 94.202.207.51 · sansad 164.100.252.170 ·
+cag 164.100.59.171 · satp 104.21.34.220 · www.pib 94.202.207.57 · cic 164.100.252.91 · ecourts
+103.195.217.39 · data.worldbank 104.18.35.190 · api.worldbank 172.64.145.25.
+
+**Routes established as unusable, not merely unattempted:** ecourts judgment search and CIC decision
+index are CAPTCHA-gated / JavaScript-only Google CSEs; `dot.gov.in` and `mea.gov.in` are JS shells;
+PCA 403 on two hosts.
+
+**The gate holds the line.** `no-bare-root` refuses new bare roots AND stale allowlist entries, so
+the count is monotonic. Bucket 3 can be chipped at in any cheap cycle.
+
 ## Measurement categories established by this phase — use these, do not re-derive
 
 Three shapes, and a record must say which it is:

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "L-0219",
+    "title": "Of 278 citations that name a publisher rather than a document, half cannot be opened and half name nothing specific enough to open — and the two halves are not the same half",
+    "date": "2026-08-05",
+    "term": "T3",
+    "domains": ["governance"],
+    "type": "institutional",
+    "summary": "A correction sequence begun on 5 August 2026 reduced the corpus's bare-domain-root citations from 302 to 278 and then partitioned the residue rather than continuing to reduce it. Each of the 92 distinct cited roots was requested through an explicit resolver, and the response measured as text remaining after markup was stripped rather than as bytes. 139 of the 278 citations point at a URL that returns no document: 54 refused a connection despite resolving, 50 returned HTTP 200 with fewer than 500 characters of text, 23 have no DNS record, and 12 returned HTTP 403. The other 139 point at a URL that returns real content. Separately and cutting across both, 139 citations name no document at all — no year and no number anywhere in the citation — of which 58 sit on hosts that answer perfectly well.",
+    "claimAtLaunch": "None. No commitment governs how a research corpus cites, and this record scores nothing. It exists because the second output the retrieval-capability cycle was scoped to produce was a documented account of what cannot be retrieved by ordinary means, and this is that account.",
+    "whatHappened": "THE PARTITION SEPARATES THREE FAILURES THAT LOOK IDENTICAL FROM A DISTANCE. A host that refuses a connection, a host that returns 200 with a JavaScript scaffold, and a citation that names a genre rather than a document all present as \"the source cannot be checked\", and each needs a different remedy — a route, a rendering client, or new research. THE MEASUREMENT THAT SEPARATES THE FIRST TWO IS TEXT, NOT BYTES. sansad.in returns 29,501 bytes and 25 characters of text; morth.nic.in and mospi.gov.in return nothing at all; cag.gov.in returns 43,861 characters. Ranked by bytes the first two are indistinguishable from a document. THE THIRD FAILURE IS THE LARGEST AND THE LEAST VISIBLE. \"Contemporary reporting\", \"SHRC report coverage\", \"NCRB / MHA data and contemporary reporting\" — 139 citations carry neither a year nor any multi-digit number, so no working host would help. 58 of those already sit on hosts that answer.",
+    "assessment": "no-objective",
+    "assessmentNote": "Nothing here was promised, so nothing can have failed. What the record establishes is the shape of a known defect and the size of each part of it, so that later work is directed at the right remedy and the instrument does not re-measure what it has already measured. The partition is the finding; the counts are its evidence.",
+    "caseFor": "The corpus is more checkable than the raw count suggests, and that is the honest reading. 139 of 278 cited roots do return real content, so a reader who wants the publisher can reach it; the defect is precision, not fabrication. The instrument also holds a mechanical guarantee that this class cannot grow: a gate refuses any new bare root, and refuses equally when a fixed citation's allowlist entry is left behind, so the count is monotonic and progress cannot be faked. And the 24 citations closed in this sequence were closed properly — each identified by matching the record's own values against the retrieved document, with the matching query written into the citation so a later reader re-runs the identification rather than trusting it.",
+    "caseAgainst": "Half of the residue is not a link problem at all and no amount of link-fixing will touch it: 139 citations name a publisher or a genre, and closing them means finding out what was actually read, which for records written years ago may be irrecoverable. The corpus therefore contains a class of claim whose source is, in practice, the author's memory. The bare-root problem was also under-measured twice before it was measured properly — first at 141 because the detector filtered on one tier, then at 302 with a phantom class of 99 untiered entries that did not exist — so the count in this record should be read as the third attempt, not the first. And 42 of the 92 cited roots cannot be opened at all, which for a corpus whose discipline is that a source must be retrievable is a standing embarrassment however it is partitioned.",
+    "unmeasured": [
+      {
+        "what": "How many of the 139 unaddressable citations could be re-grounded, and how many are irrecoverable",
+        "why": "Establishing it requires attempting the research behind each one, which is the work itself rather than a measurement of it. The 139 is a strict lower bound in the other direction too: it counts only citations carrying neither a year nor a multi-digit number, so a citation naming a year but no document is addressable by this test and may not be in practice.",
+        "wouldFill": "A cycle that attempts a sample and reports the recovery rate.",
+        "reasonKind": "not-collected"
+      },
+      {
+        "what": "Whether the hosts classified here as returning no document serve documents on deeper paths",
+        "why": "This partition measures THE CITED URL, which is a bare root, and not the host's capacity. The Press Information Bureau is the standing counter-example: its bare root refuses and www.pib.gov.in returns 24 characters, while PressReleasePage.aspx has served dozens of documents to this instrument. A root that returns nothing is evidence about the citation, not a verdict on the publisher.",
+        "wouldFill": "Per-host probing of known document paths, which is the deep-linking work itself.",
+        "reasonKind": "not-collected"
+      }
+    ],
+    "caveat": "EVERY FIGURE HERE DESCRIBES ONE CLIENT ON ONE DAY, and the sequence that produced it recorded three separate occasions when that mattered: ten live government hosts were measured as unreachable before this machine's broken resolver was understood; the e-Gazette was recorded in L-0218 as the corpus's one unreachable channel and is not one; and two runs of this very partition had to be discarded, the first because a failed fetch left the previous host's page on disk and three unrelated hosts were scored against the Ministry of External Affairs homepage, the second because a single-try two-second DNS lookup reported hosts as having no record when working pins for them were already on file. The 500-character threshold separating a scaffold from a document was chosen after inspecting the distribution, which has a clean gap between 102 and 894 characters, and not before. The three buckets are NOT disjoint: unaddressability is a property of the citation and reachability a property of the URL, so the 139 unaddressable citations are distributed across both other groups — 58 on hosts that answer and 81 on hosts that do not.",
+    "sources": [
+      {
+        "name": "This instrument's own citation corpus and the `tools/lib/bare-root-allowlist.json` ratchet, frozen at 302 entries on 5 August 2026 and standing at 278 after correction cycles 2 to 8; each of the 92 distinct cited roots probed through an explicit resolver on 5 August 2026, with the response measured as text remaining after `htmlToText` rather than as transferred bytes",
+        "url": "https://github.com/neo999-cyber/india_government",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-05",
+    "revisitTrigger": "Re-run the partition when the allowlist next falls materially, and re-probe before trusting any host classification here — the sequence that produced it changed its own conclusions three times on re-testing. The 81 citations that are both addressable and on a live host are the only group where cheap work remains."
+  }
+]
