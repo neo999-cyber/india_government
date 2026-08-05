@@ -130,6 +130,21 @@ on long ones, and gives no sign which happened. Bound the span from the record's
 That failure was loud only because the code asserted instead of skipping — write anchors that abort,
 never anchors that shrug.
 
+**`record.get(field) or []` renders an ABSENT field and an EMPTY one identically, and they are not
+the same fact.** An empty array says the author looked and found nothing; a missing key says the
+question was never asked. L-0072 carried no `unmeasured` key at all while a read printed `[]` for
+it, and any sweep written for empty-but-present would have skipped it silently. Test `field in
+record`, print which case it is, and let an anchored edit ABORT rather than create a field it has
+invented.
+
+**Verification and commit go through `npm run commit`, not through the shell.** The rule below has
+been broken by its own author four cycles after it was written — a `;` where an `&&` belonged let a
+commit run against a build that had already printed INVALID, and the corpus was pushed in a state
+the gate had refused. `;` and `&&` are the same keystroke effort and the shell gives no sign which
+was meant, so the ordering is not left to the shell: `tools/verify-and-commit.mjs` runs the gates
+and reaches `git commit` only on green, takes its message from a FILE rather than argv, and has no
+flag that skips a gate. **A rule that is right and keeps not being followed is a mechanism problem.**
+
 **Run record edits and their allowlist deletions as ONE chained operation.** Cycle 8 ran them as
 newline-separated commands; the edit aborted and the deletion ran anyway, leaving `/data` holding
 four bare roots the allowlist had already dropped. Only the ratchet's new-direction check caught it.
