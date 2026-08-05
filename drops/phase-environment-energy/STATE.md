@@ -1780,3 +1780,187 @@ not touch L-0221's `partly`, which rests on element 2 having no reporting at all
 
 **Corpus-wide sweep for the other superseded phase-15 figures: `24.37` — 0 occurrences. `9.69` — 0
 occurrences.** Both fully purged.
+
+---
+
+# PHASE-15 CLOSE AUDIT, PART 3 — RESOLUTION, AND THE PHASE CLOSES
+
+## 1. P-123 DOES carry an assessment. Batch 16 passed a stop-check on an unchecked premise
+
+P-123 carries **`directionOfBias: "obscures"`**. Batch 16 passed R2 as no-stop on the ground that
+"P-123 is provenance and carries no verdict" — **a premise it never checked, in a phase where P-121
+carries `obscures` and P-122 carries `overstates-pre-2014` two records away.**
+
+**The conclusion survives on the correct ground.** P-123's finding is that a capacity number is
+offered against an energy-shaped promise; correcting 28.84 to 28.96 moves the generation term by 0.12
+of a point and leaves `obscures` exactly where it was. **Verified, not assumed: all seven phase-15
+`directionOfBias` values and all six assessments are unchanged from `8964806`.** Recorded as
+instructed and the run continues.
+
+## 2. The load-bearing counts — ALL FOUR RECONSTRUCT, and my first recomputation was the error
+
+| claim | recomputed | verdict |
+|---|---|---|
+| assessment audit: **619 swept** — 183 ledger, 118 provenance, 60 pairs, 258 series | 183 · 118 · 60 · 258 = **619** | **exact** |
+| phase 10 education: **91 merged, corpus 390** | +91 (20 ledger, 50 series, 12 prov, 9 pairs) → **390** | **exact** |
+| phase 12 kashmir-rights: **444 → 511** | 444 → 511, +67 = 25 · 15 · 12 · 15 | **exact, per layer** |
+| phase 13 federalism: **+106** | +106 = 34 ledger · 42 series · 19 prov · 11 pairs | **exact, per layer** |
+| shape sweep: **149 records** | ledger at that commit = 149 | **exact** |
+
+**The 619 disagreed on first recomputation — 623 — and the disagreement was MINE.** The audit
+excludes `data/series/foreign-trade.json` as well as the ledger file and P-119/P-120, and says so
+**two lines below the figure**: 262 − 4 = 258. **I recomputed the number without reading the sentence
+that scoped it**, which is the same class as the field-render audit's 53 false invisibles. Filing
+these as sites needing verification was right; the verification cleared every one.
+
+## 3. The 39/40 tokens accounted, per token, assert against mention
+
+**69 tokens under the published needle: 40 commitment-state · 17 `differentFacts` criteria · 8
+CAATSA statutory (L-0199) · 4 other.** Of the 40:
+
+| | tokens |
+|---|---|
+| **ASSERTS a state for the record itself** | **17** |
+| mentions: **rules a state OUT** for itself | 13 |
+| mentions: **prospective** — a state a revisit trigger says it would move to | 6 |
+| mentions: **quotes CLAUDE.md's definition** | 2 |
+| mentions: **cross-reference** to another record | 2 |
+
+**ASSERTING RECORDS: (a) 12 · (b) 2 · (d) 1 · (c) 0.** L-0188 asserts both (a) and (b) for different
+limbs, so the distinct set is **14 records**.
+
+**THE "NO (c)" FINDING HOLDS AND IS NOW EARNED AT TOKEN LEVEL: four `(c)` tokens sit in a
+commitment-state context and every one is a mention** — L-0209 *"cannot reach (c) abandoned"*, L-0213
+*"nothing evidences abandonment, so it is not (c)"*, L-0224 *"Not (c) — nothing retrieved repudiates
+them"*, and L-0188's list marker for a limb that is expressly *"neither"*. **Zero assertions.**
+Batch 16's record-level distribution (12 · 2 · 1 · 0) is confirmed; what it lacked was this
+distinction, which is what the finding rests on.
+
+**A NEEDLE-SENSITIVITY FINDING, against this batch's own method.** The commitment-state token count
+moved **39 → 40** between batch 16 and this batch with no data change, because the **context window**
+changed from 140/120 characters to 130/110 and one L-0225 token crossed a bucket boundary. **The
+window is part of the needle and publishing the pattern alone is not enough.** An automatic classifier
+also mislabelled three tokens — reading `Not (c) —` as an assertion twice, and L-0223's *"is
+commitment state (a). NOT awaiting-adjudication"* as a negation, where the NOT governs the next
+clause. **All three were corrected by reading. A substring test is not a claim check (M5), and that
+holds against a classifier as firmly as against a grep.**
+
+## 4. RESOLUTION OF EVERY QUEUED FINDING
+
+**Batch 15's log says "twelve findings written into STATE.md". IT FILED SIXTEEN** — seventeen `Q-`
+labels of which `Q-V2` is a check that passed. **My own miscount, in the batch whose subject was
+uncounted and fabricated figures.** Corrected here.
+
+### Corrections applied to shipped records — three, each carrying its withdrawn wording
+
+- **L-0221 `summary` (Q-A1).** *"inflating the widening by 1.29"* → **"by 1.30 on the unrounded basis
+  this record leads on, or 1.29 on the printed operands"**, with the withdrawn form and its
+  derivation stated: 1.29 is `11.77 − 10.48`, computed from the printed-operand widening the same
+  paragraph sets aside in favour of 10.47, and the summary's two artefact declarations cover the
+  widening and the full-window gap but not this third quantity.
+- **L-0226 `summary` (R1).** Now gives **both** 40-per-cent-minimum-technical-load variants — 0.09 per
+  cent for 2026-27 **and 1.29 per cent for 2031-32** — with the withdrawn sentence named as the same
+  truncation corrected in `whatHappened` two batches earlier and never carried forward.
+- **P-123 `whatChanged` (R2).** 28.84 → **28.96**, with the Bhutan-import basis defect stated, the
+  failed propagation named, and `directionOfBias` recorded as unchanged on the face of the record.
+
+### Findings closed as recorded — the defect is historical and the class is now guarded
+
+**Q-F1 · Q-F2 · Q-F3** fabricated scopes whose figures were correct (662→673, 675, 675). **Q-F4**
+`ai`'s 678, wrong at 676, superseded by `aj` before this audit. **Q-D1** `ai` and `aj` emitting no
+reachability count. **Q-D2** four unstated reachability deltas, all four recomputed correct. **Q-D3**
+`al`, `am` and `an` each stating the previous batch's corpus delta and not their own. **Q-W1** `ag`'s
+mid-batch 1332 against its own 1336. **Q-W2** `ah`'s explanation for a zero delta. **Q-W3** 185 marks
+labelled 185 records over a 122-record layer. **Q-W4** L-0220, a phase-14 record, counted among "this
+phase's own new records". **Q-P1** `ai` printing its own refutation in the sentence that made the
+claim. **Q-V1** `al` filing `too-early` in the entry arguing against it, superseded by batch 8.
+**Q-V2** a check that passed and is not a finding.
+
+**None of these is fixable by editing text: they are defects in reports that the append-only rule
+preserves.** What closes them is the guard — **`validate` now prints its own scope, and the
+adversarial-read rule now runs counts, attributions and scopes FIRST.** Recorded, not rewritten.
+
+### Corrected with a recomputation
+
+- **Q-P2** — `ao`'s *"181 records assert nothing"*. Recomputed against the published needle:
+  **14 records assert a commitment state, so 211 assert nothing at `ao`'s own commit** (225 − 14) and
+  212 at HEAD. **`ao` undercounted the silent set by 30**, in exactly the direction batch 16 predicted
+  when it called 181 a bound rather than a value.
+- **Q-F5** — `ao`'s distribution. **Withdrawn and replaced** by section 3 above. *"No (c) anywhere"*
+  was false as a token claim when written, falsified by L-0224's own note two batches earlier;
+  *"(b) ×1"* is false on any needle. **The substantive claim it was carrying survives and is now
+  earned.**
+
+### WITHDRAWN — an artefact, not a defect
+
+- **Batch 16's near-miss list stands as reported**, but one entry is upgraded: **P-126's live 28.84
+  was flagged by my own detector and cleared by reading — it is correct usage.** It stays cleared.
+- **Batch 15's "fourteen phases" scope claim** was already withdrawn in batch 16 and is not reopened.
+- **The 619 recomputation disagreement is withdrawn as MY error, not the audit's** (section 2).
+
+## 5. LOGGED, NOT FIXED — `figure-consistency` has the enumeration-scope defect it exists to catch
+
+**`figure-consistency` checks claims that are DECLARED and never mines for undeclared ones.** Its own
+header says so and gives the reason — a mining pass reported 197 failures on a corpus with two real
+cases. **The consequence is that an author who does not declare a derived figure is outside the gate
+entirely**, and this phase produced four instances: L-0223's *"roughly two-thirds"* and *"about ten
+points"*, L-0226's two ratios (which the subtraction-only claim format cannot express even if
+declared), and L-0221's 1.29 — **all four found by hand, none by the gate.**
+
+**This is the same enumeration-scope class as `reachability`'s list and `ownPage()`'s default: the
+guard binds what it enumerates, and silence about a figure is doing the work of a decision.** It sits
+in the gate meant to catch arithmetic. **A mining pass is a gate contract change and therefore a stop
+— it belongs to the structural cycle, not to this one.** Logged.
+
+---
+
+# PHASE 15 — ENVIRONMENT AND ENERGY — CLOSED
+
+## Shipped
+
+**6 ledger records · 7 provenance records · 7 series**, in two new files
+(`data/ledger/environment.json`, `data/series/environment.json`).
+
+| | |
+|---|---|
+| **L-0221** `partly` | Non-fossil capacity against non-fossil generation. **The phase's central finding: 53.21 per cent of capacity, 28.96 per cent of generation, and a gap that widened 10.47 points FY2014-15→FY2023-24 inside one document** |
+| **L-0222** `failed` | "India will stop importing thermal coal from FY2023-24" — 205.72 MT of non-coking imports in the target year, the series maximum; CIL 773.81 MT against 1,000 |
+| **L-0223** `too-early` | Emissions intensity: 33-35% raised to 45% below 2005 by 2030, **after 24 points had already been banked** |
+| **L-0224** `contested` | One billion tonnes and a 2.5-3.0 GtCO2e sink — **dated, quantified, and unscoreable for want of a stated baseline** |
+| **L-0225** `too-early` | Net zero by 2070. One clause, no scope, no interim milestone |
+| **L-0226** `contested` | A rule guarantees no RE capacity is backed down; the plan built on it projects that some will not be absorbed |
+| **P-121 · P-122** | Four concurrent official boundaries for "renewable"; renewable generation imputed, not metered, to FY2013-14 — **a break at 1 April 2014, weeks from the frozen baseline** |
+| **P-123 · P-124** | A 50-per-cent-of-CAPACITY target published as a COP26 goal when Glasgow's 50 per cent limb was ENERGY; the NDC substitution |
+| **P-125 · P-126 · P-127** | NCAP's target construction; the FY2024-25 generation seam; ISFR 2023's two definitions of forest cover and its moved base |
+
+## Arcs
+
+**A CLOSED** — spine in batch 1, remainder in L-0226. **C CLOSED PROVENANCE-ONLY** — the definition
+established, clearances untouched, and the record says so. **D COMPLETE.** **B BLOCKED** on one
+untested capability: `prana.cpcb.gov.in` is client-rendered and the "no rendering client" claim was
+withdrawn as a DNS failure misread. Four routes stand in cost order, none run.
+
+## What the phase built besides records
+
+`no-unguarded-prose-field` · `field-render-audit` · `tools/lib/guarded-marks.mjs` · `validate`
+printing its own scope · `seam-span-report` (report-only) · and **226 marks that had shipped invisible
+through every prior phase, fixed and proven on a real regression.**
+
+## OPEN AND OWNED BY THE NEXT CYCLE — not phase-15 residue
+
+These are **structural, corpus-wide and explicitly not closed by this phase.** They do not belong to
+environment and energy and must not be inherited as leftovers.
+
+1. **`figure-consistency`'s mining gap** — section 5. Four undeclared derived figures this phase, none
+   caught by the gate. A gate contract change.
+2. **`commitmentState`** — scoped batch 10, distribution established batch 16 and confirmed here:
+   14 records assert, 212 do not, none asserts (c), and **three separate `(a)-(d)` vocabularies run in
+   the same prose fields**, so named values are required rather than preferred. A schema change.
+3. **The `contested` split** — 67 records read individually: criterion 22 · interpretation 13 ·
+   evidence-withheld 11 · measure 10 · evidence-unobservable 5 · time 4 · vocabulary residue 2.
+   **To be designed WITH `commitmentState`, since both need a render assertion for non-prose fields
+   that no gate supplies.**
+4. **The seam-span triage** — 117 spans, 29 undeclared, report-only, untriaged.
+5. **Arc B's capability** — one rendering client against a resolvable host.
+6. **The deployment-auth decision** — the operator's, outstanding. `india-government.vercel.app`
+   serves the full corpus unauthenticated. **No auth setting has been changed by any run.**
