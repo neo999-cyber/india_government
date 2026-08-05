@@ -1,0 +1,40 @@
+[
+  {
+    "id": "L-0220",
+    "title": "Thirteen schemes across five domains are counted where the state hands something over and judged by what the recipient then does, and the two records that escape it are the two where the asset is itself the service",
+    "date": "2026-08-05",
+    "term": "T3",
+    "domains": ["governance"],
+    "type": "institutional",
+    "summary": "Writing the reasoning behind every scored verdict in this corpus surfaced one shape thirteen times. A scheme announces an outcome — clean cooking, an end to open defecation, protection from catastrophic medical cost, affordable regional flying — and reports a count taken at the moment the state hands something over: a cylinder, a latrine, a tap, a card, an airport, a connection, a registration. The gap between the two is where the scheme's own purpose lives, and in every one of the thirteen it is either unmeasured or measured and short. Two records in the same files do not have the gap at all, and the difference between them and the thirteen is not effort, funding or execution.",
+    "claimAtLaunch": "None. This record is a synthesis over records already in the corpus and announces nothing of its own. The claims at issue are each scheme's, and are stated in the underlying records rather than repeated here.",
+    "whatHappened": "THE DISCRIMINATOR IS WHETHER THE THING HANDED OVER BECOMES THE SERVICE WITHOUT ANYTHING FURTHER HAPPENING. Railway electrification (L-0047) is the control and its record now says so in terms: an electrified line carries electric traction from the day it energises — no behavioural change is required of anyone, no demand forecast has to be met, and no second party has to be able to afford anything. Port efficiency (L-0053) is the second control, where turnaround time halved while throughput nearly doubled, so the output metric and its utilisation counterpart moved together. THE THIRTEEN ALL REQUIRE A FURTHER STEP: a household must buy the refill, choose the latrine, be reached by water, occupy the house, be admitted to the hospital, board the flight, ride the train, receive supply, sign the contract. Each further step is where the scheme's stated purpose is realised, and each is the step the reporting stops before. A REGULARITY WORTH STATING BECAUSE IT WAS NOT ENGINEERED: all thirteen carry the score `partly` and both controls carry `worked`. Those scores were assigned in earlier phases and are unchanged by the work that found this pattern — the notes were written under an assertion that no score would move, which is checkable in the repository history.",
+    "assessment": "no-objective",
+    "assessmentNote": "Nothing was announced here, so nothing can have succeeded or failed. What this record establishes is a property of how the state measures itself that no single scheme's record can show: the measurement stops at the handover, and whether that is sound depends on a structural fact about the asset rather than on the diligence of the ministry reporting it. Recorded as a finding about instruments, not as a criticism of any of the thirteen — several of them delivered at a scale no predecessor approached, and the records say so.",
+    "caseFor": "Measuring at the handover is not laziness and the record should not imply it is. It is the point at which the state's own action is complete and attributable to it: a ministry can build a tap and cannot make a household drink. Counts at that point are auditable, timely, and available at national scale, while use requires household surveys that are slower, costlier and contestable — the Swachh Bharat record shows two instruments disagreeing about use while nobody disputes how many latrines exist. Several of the thirteen also published the assessment that exposed their own gap: the Jal Jeevan functionality study and the Ujjwala refill audit are the government's own instruments finding against the government's own headline. And a connection is genuinely a precondition — none of the thirteen could have delivered its purpose without first delivering the thing it counted.",
+    "caseAgainst": "The gap is not incidental to these schemes, it is where their entire stated purpose sits, and in eleven of the thirteen it was left without so much as a declared absence until this sweep. A scheme reporting the number of taps against a promise of water has substituted a measure it controls for the one it was judged on, and the substitution runs one way: no scheme in the corpus reports use while promising connection. Two of the thirteen go further and report a count that is not even a handover — a highway network expansion of which the overwhelming majority is existing state roads notified as national, and an airport total inflated by heliports and waterdromes. And the defence that use is hard to measure is undercut by the controls: where the asset is the service, the same ministries report use without difficulty, because there was no further step at which to stop.",
+    "unmeasured": [
+      {
+        "what": "Whether the pattern holds outside this corpus, or is an artefact of which schemes it happens to record",
+        "why": "The thirteen are the scored records this sweep read whole, not a sample drawn from all Indian schemes. A shape found in every case examined may still be a property of the selection. Nothing here establishes the base rate against which thirteen would be surprising.",
+        "reasonKind": "not-collected"
+      },
+      {
+        "what": "Whether the schemes that measure at the handover do so by choice or because the use measurement does not exist to report",
+        "why": "The two are different findings with different remedies and this record cannot separate them. Jal Jeevan and Ujjwala both commissioned use measurements and published shortfalls, which shows the choice exists; household electrification has no supply-hours series at all, which suggests in that case it may not. No general answer follows from thirteen cases.",
+        "reasonKind": "not-collected"
+      }
+    ],
+    "caveat": "THE EVIDENCE FOR THIS RECORD IS THE UNDERLYING RECORDS AND THEIR FIGURES ARE NOT RESTATED HERE, deliberately: a synthesis that repeats its sources' numbers invites them to drift apart. The thirteen are L-0012, L-0034, L-0035, L-0036, L-0037, L-0039, L-0044, L-0048, L-0050, L-0054, L-0055, L-0062 and L-0093; the two controls are L-0047 and L-0053. Each carries its own sourcing, and any figure cited in argument about this pattern should be taken from the record that holds it. The grouping is this record's own judgement and is contestable at its edges — the highway and UDAN cases are counts of a reclassified category rather than of a handover, and are included because the measurement stops short of use in the same way, not because the move is identical. The score regularity is stated as an observation, not as evidence: thirteen `partly` scores against two `worked` is consistent with the pattern being real and also with `partly` being the natural score for any large scheme.",
+    "sources": [
+      {
+        "name": "This corpus's own ledger records L-0012, L-0034 to L-0037, L-0039, L-0044, L-0048, L-0050, L-0054, L-0055, L-0062 and L-0093, and the controls L-0047 and L-0053, each read in full during the assessment-note sweep of 2026-08-05 and each carrying its own sources. INTERNAL REFERENCE, NOT AN OPENABLE URL: the repository is private and the URL below returns HTTP 404 to an unauthenticated client",
+        "url": "https://github.com/neo999-cyber/india_government",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "medium",
+    "asOf": "2026-08-05",
+    "revisitTrigger": "Re-test when the next phase writes assessment notes for the 58 abstaining records: if the shape appears there too, the base-rate question in the first absence becomes answerable from inside the corpus. Re-test also if any of the thirteen publishes a use measurement, which would move that record and weaken this one by exactly one case."
+  }
+]
