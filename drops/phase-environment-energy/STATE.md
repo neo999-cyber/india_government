@@ -1464,3 +1464,152 @@ The claims file supports subtraction only — `printedA`, `printedB`, `printedDi
 prints two ratios, 11.11x and 2.56x, which are derived arithmetic a reader can check and **which
 cannot be declared even by an author who wants to.** Three claims are declared on this record and the
 gate reads 18; the ratios are outside its vocabulary. Noted, not built.
+
+---
+
+# PHASE-15 CLOSE AUDIT, PART 1 — THE ADVERSARIAL READ OF BATCHES 1-10
+
+**QUEUE ITEMS. Written before any is resolved, per the standing rule. Nothing here is fixed in this
+batch.** Batches 1-10 (cycles `af` through `ao`) were never read under the adversarial rule, which
+entered at batch 11. Method: every arithmetic claim recomputed; every count reconciled against
+`/data` at that batch's own end commit and against `reachability --data <commit>` run on the current
+build; every report checked for a claim its own text undermines.
+
+**METHOD LIMITS, stated so the negatives are worth what they cost.** (i) Historical reachability is
+recomputed under **today's** MARKS list, which did not exist before `193ab72` — so **batch 1's
+1147/1147 is not comparable** and is not audited. (ii) Historical data is checked against the
+**current** build, so a mark whose text was later rewritten reports "renders nowhere" as a
+cross-commit artefact, not a defect; two such appear (b1's `re-capacity` note, b7's L-0224 pair) and
+neither is filed. (iii) Page counts cannot be reproduced this way and are not audited.
+
+## THE HEADLINE NEGATIVE: THE ARITHMETIC WAS NEVER THE PROBLEM
+
+**34 arithmetic claims recomputed across ten batches. 33 reconstruct exactly.** Every share, every
+sum, every ratio, every percentage — the four NPP column sums to their printed totals, both non-fossil
+shares, the 51.5 per cent GW ratio, the coal growth multiple, `24/35` and `24/33`, `45 − 34`, every
+corpus subtotal, `30 + 8 = 38`, `33 + 3 + 1 = 37`, `164 + 62 = 226`.
+
+**The one miss is 0.01 of a point** (Q-A1 below). **Not one substantive defect in ten batches was
+arithmetic. Every one was a count, an attribution, or a scope** — and the instrument has a gate for
+arithmetic and none for any of the other three.
+
+## CLASS 1 — FABRICATED SCOPE (a figure asserted from no gate). INVISIBLE TO A DELTA CHECK
+
+`validate` printed no record count until batch 6 (`d117832`). **Every record count in a batch-1 to
+batch-5 gate line was therefore attached by hand to a gate that had not emitted it.** A delta check
+cannot see this class: a fabricated figure that happens to be right passes every consistency test
+there is.
+
+- **Q-F1 · af "Corpus 662 → 673".** Recomputed: `966eb6a` = 662, `454e1fc` = 673. **Both correct, both
+  fabricated.** The same entry's gate line reads `validate VALID 0 errors` with no scope — the entry
+  holds the gate's real scope and an asserted one, three screens apart.
+- **Q-F2 · ag "0 errors over 675 records".** Recomputed at `d4a1fdd` = 675. Correct, fabricated.
+- **Q-F3 · ah "over 675 records".** Recomputed at `3b32f61` = 675. Correct, fabricated.
+- **Q-F4 · ai "over 678 records".** Recomputed at `b20f2bb` = **676. WRONG.** Already superseded by
+  aj, and it was caught only because batch 5 went looking — no gate could have caught it, because no
+  gate had said anything.
+- **Q-F5 · ao's commitment-state counts are not reproducible from the report.** *"the entire corpus
+  contains 24 letter-tokens: (a) x21, (b) x1, (d) x2, and no (c) anywhere"*, and *"44 use
+  commitment-state vocabulary"*. **The needle is not reported.** A naive reproduction over the same 8
+  prose fields at the same commit gives **82 tokens across 31 records, including 16 of `(c)`** —
+  because the corpus is full of statutory citations of the form `12(1)(c)`. **That probe over-fires
+  and does NOT refute ao.** What it establishes is that the claim cannot be checked from the report,
+  and that **"no (c) anywhere" is a strong negative published without its needle** — which is the
+  corollary the phase itself wrote at M5.
+
+## CLASS 2 — UNSTATED DELTA (a count that moved without being accounted)
+
+- **Q-D1 · ai and aj emitted NO reachability count at all** — *"over every guarded mark on 656
+  pages"*, *"every guarded mark on its own page"*. A gate whose entire output is a count, reported
+  without one. **Omitted scope is worse than an unstated delta**: it breaks the chain, and it is why
+  the next stated figure (ak's 1343) had no predecessor to be checked against.
+- **Q-D2 · reachability moved four times with no delta stated:** ah 1336 → **ak 1343** (+7, spanning
+  the two silent batches) → **al 1347** (+4) → **am 1352** (+5) → **an 1354** (+2). All four
+  recomputed and all four correct. Unaccounted, not wrong.
+- **Q-D3 · al, am and an each state the PREVIOUS batch's corpus delta and not their own.** al's head
+  item is *"Corpus 676 → 678 is L-0223 and P-126… the DELTA was not [stated], for the third batch
+  running"* — and al's own 678 → 679 (L-0224) is unstated, as are am's 679 → 680 (L-0225) and an's
+  680 → 681 (P-127). **The fix was applied backwards each time and never to the batch applying it.**
+
+## CLASS 3 — FALSE COUNT AND FALSE ATTRIBUTION. THE MOST CONSEQUENTIAL FINDING OF THE AUDIT
+
+- **Q-W1 · ag's `reachability 1332/1332` is a MID-BATCH figure.** 1332 is the count at `193ab72`; the
+  batch's final commit `d4a1fdd` is **1336**. Verified by running the gate at both: `--data 193ab72`
+  → 1332, `--data d4a1fdd` → 1336. The gate was run before the batch finished adding P-123 and P-124,
+  and the mid-batch number was reported as the batch's.
+
+- **Q-W2 · ah's "reachability 1332 → 1336 is exactly P-123 and P-124" is false three ways.**
+  1. **P-123 and P-124 were added in batch 2**, not batch 3 — provenance went 122 → 124 at `d4a1fdd`.
+  2. **Batch 3 added no record and no mark.** The per-field breakdown at `d4a1fdd` and `3b32f61` is
+     identical in all seven fields. **The true delta was ZERO.**
+  3. The entry says *"Recomputed from the same MARKS list at both commits; no pre-existing record's
+     count moved"* — **a method that would have returned 1336 at both ends.**
+
+  **An explanation was constructed for a delta that never happened, in order to reconcile the
+  previous batch's stale number.** It is internally coherent, it is arithmetically correct (2 records
+  × 2 marks = 4), it names real records, and every part of it is wrong. **This is precisely the shape
+  the adversarial rule exists to catch, and it survived ten batches** — where all five flags the
+  conversational reviewer got wrong were caught within one or two.
+
+- **Q-W3 · ag's "185 provenance records reported 'no page built'".** Provenance held **122** records
+  at `193ab72`. 185 is `notes` (80) + `bridgeNote` (105) = **185 MARKS**. A mark count wearing a
+  record label — and **numerically impossible as written**, 185 records where 122 exist.
+
+- **Q-W4 · ai's "3 are this phase's own new records (L-0221, L-0222 and one other)".** Measured at
+  `b20f2bb`, the three are L-0221, L-0222 and **L-0220 — a phase-14 record.** `33 + 3 + 1 = 37`
+  holds; the label on the 3 does not. **The unnamed "one other" is the tell**: the report
+  characterised a member it had not identified.
+
+## CLASS 4 — A CLAIM AGAINST A PREMISE THE SAME REPORT UNDERMINES
+
+- **Q-P1 · ai contained its own refutation and shipped the conclusion anyway.** Verbatim:
+  *"Playwright returns `ERR_NAME_NOT_RESOLVED` against PRANA — **it inherits the broken system
+  resolver** — and the in-app browser denied the navigation. **Two rendering clients, both fail:
+  tested, not assumed.**"* The DNS cause is stated **in the same sentence** as the rendering
+  conclusion. Batch 10 withdrew the conclusion and presented the DNS finding as new. **It was not
+  new. It was printed in the entry that made the claim, and it went unused for six batches** while
+  Arc B was recorded as blocked on a capability that was never tested.
+
+- **Q-P2 · ao's "181 records assert nothing" is stated as exact and is a bound.** It is `225 − 44`,
+  where the same paragraph calls 44 *"a candidate list, since some match only on `no-objective`, an
+  assessment value rather than a state"*. If 44 over-counts the asserting set then 181
+  **under**-counts the silent one. The direction is conservative and the argument survives; **the
+  defect is the exactness**, not the number.
+
+## CLASS 5 — VERDICT AGAINST ITS OWN NOTE. JUDGMENT FINDINGS, FLAGGED NOT RESOLVED
+
+Per the batch's own instruction, and per item 4: this pass reads its own past output and is expected
+to be stronger on arithmetic than on judgement. It produced **two** judgement flags and resolves
+neither.
+
+- **Q-V1 · al filed L-0224 `too-early` in an entry that argues `too-early` is wrong.** Verbatim:
+  *"They are not honestly `too-early` either, **which is what WAS scored**: that value's definition
+  says the obstacle is elapsed time and the evidence time accumulates, and here time accumulates
+  nothing."* The entry states the verdict is unsound, files it, and defers to an enum question. Batch
+  8 re-filed it `contested`. **The verdict shipped for one batch under an argument against itself**,
+  and the deferral was to a question the same entry had already answered on the printed definitions.
+- **Q-V2 · ah's "No shipped verdict reopened: L-0221 stays `partly`, L-0222 stays `failed`"** holds —
+  both stand today. Recorded as a check that passed, not a finding.
+
+## PHASE-15-LOCAL vs CORPUS-WIDE — only the first blocks closing
+
+**PHASE-15-LOCAL (blocks closing):** Q-F1 · Q-F2 · Q-F3 · Q-F4 · Q-W1 · Q-W2 · Q-W3 · Q-W4 · Q-D1 ·
+Q-D2 · Q-D3 · Q-A1. All are figures or attributions inside this phase's own log, and the log is the
+phase's product.
+
+**CORPUS-WIDE (does NOT block closing):**
+- **`validate` printed no record count until `d117832`, so EVERY gate line in the log quoting a
+  record count before that commit is a fabricated scope by construction.** That reaches back through
+  all fourteen prior phases, not five batches. **This is the largest finding of the audit and it is
+  not phase 15's to fix.**
+- The needle-less negative (Q-F5's class) — M5's corollary is a method rule with nothing enforcing it.
+- A report containing its own refutation (Q-P1's class).
+- A verdict filed under an argument against itself, deferred to an open question (Q-V1's class).
+
+## Q-A1 — the one arithmetic miss, and it is 0.01
+
+ai states *"the seam alone was inflating the widening by **1.29** points"*, computed as
+`11.77 − 10.48`. **The record prints 10.47**, the unrounded figure, with the artefact declared — so on
+the record's own basis the inflation is **1.30**. The entry names the 10.47/10.48 artefact two
+sentences earlier and then derives from the operand it had just set aside. Local, trivial, and
+exactly the class this phase caught four times.
