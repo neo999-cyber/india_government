@@ -102,6 +102,25 @@ export default async function LedgerDetail({ params }: Props) {
             <dd>{l.shockExposure}</dd>
           </>
         ) : null}
+        {/* The reasoning BEHIND the verdict, and it sits directly under the two cases because
+            that is what it resolves. It rendered nowhere at all until phase 15 — 164 records
+            carried one and a reader could reach none of them, including the 33 written by the
+            assessment audit specifically to stop verdicts standing without stated ground. The
+            verdict tag at the top of the page is the claim; this is the argument for it, and a
+            claim shown without its argument is the thing this instrument exists not to do. */}
+        {l.assessmentNote ? (
+          <>
+            <dt>Why this verdict</dt>
+            <dd>{l.assessmentNote}</dd>
+          </>
+        ) : null}
+        {/* What would change the reading. Also previously unrendered, on 62 records. */}
+        {l.revisitTrigger ? (
+          <>
+            <dt>Revisit when</dt>
+            <dd>{l.revisitTrigger}</dd>
+          </>
+        ) : null}
       </dl>
 
       {/* Rule 4a: what this record should be able to show and cannot. */}
