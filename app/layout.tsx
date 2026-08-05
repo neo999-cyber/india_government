@@ -50,9 +50,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </header>
           <main>{children}</main>
           <footer className="foot">
-            <span>Private research instrument. Not for publication.</span>
+            <span>
+              A public record of Indian government commitments and what became of them, from the
+              May 2014 baseline onward — built from primary documents and graded by what was
+              actually retrieved.
+            </span>
             <span>No composite score, no verdict number — anywhere, ever.</span>
-            <Link href="/method/">method &amp; tiers</Link>
+            <span>
+              One author, written with an AI assistant. No independent review has been run:{' '}
+              <Link href="/method/#limits">what that means</Link>.
+            </span>
+            <Link href="/method/">method, sources &amp; tiers</Link>
           </footer>
         </div>
       </body>

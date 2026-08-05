@@ -1964,3 +1964,98 @@ environment and energy and must not be inherited as leftovers.
 5. **Arc B's capability** — one rendering client against a resolvable host.
 6. **The deployment-auth decision** — the operator's, outstanding. `india-government.vercel.app`
    serves the full corpus unauthenticated. **No auth setting has been changed by any run.**
+
+---
+
+# PUBLICATION — 2026-08-06
+
+## OPERATOR DECISION, STANDING: the site is deliberately public
+
+**Recorded 2026-08-06 as a decision, not a default.** `india-government.vercel.app` serves the full
+corpus unauthenticated because the operator intends it to. The reasoning is that the instrument is
+built from primary documents that are already public, so publishing the record of them discloses
+nothing the sources do not. **Push is autonomous from this date.** The deployment-auth item, open
+since batch 3 when the exposure was first reported and deliberately left unchanged by every run
+since, is **CLOSED**.
+
+**A distinct setting is unchanged and is also a choice:** `app/layout.tsx` sets
+`robots: { index: false, follow: false }`. **Public is not the same as indexed** — reachable to
+anyone with the link, not surfaced by search. No instruction covered indexing and none was inferred.
+
+**Seven commits pushed**, `57a6722..059912b`. Deployment verified against the artefact rather than a
+status field, with three positive and three same-form negative controls on the same pages: L-0221's
+`1.30 on the unrounded basis` present and the pre-correction sentence absent; L-0226's `0.09 per cent
+and 1.29 per cent respectively` present and the truncated sentence absent; P-123's `supplied 28.96`
+present and `supplied 28.84` absent. **Six of six.**
+
+## THE FOOTER WAS FALSE AND IS REPLACED — and one claim in the replacement did not survive checking
+
+*"Private research instrument. Not for publication."* is gone. What replaced it states what the
+instrument is, that it has one author working with an AI assistant, and that no independent review
+has been run — with the substance on `/method#limits` and a short form in the footer itself.
+
+**THE OPERATOR'S OWN FRAMING WAS CORRECTED, and this is a decision taken rather than a question
+asked.** The instruction described the corpus as *"built entirely from public government
+primaries."* **Measured, it is not.** Of **1,205 source citations: T1 752 · T4 102 · T2 51 · T3 25 ·
+T5 6 · untiered 269**, and **287 citations are not on an Indian government host at all** — UN
+Comtrade, World Bank, ASER, `govinfo.gov`, OHCHR, PubMed, JKCCS, SATP.
+
+**Publishing "entirely government primaries" would have been a false claim on a public page, and
+false in the direction that matters most.** The non-governmental sources are concentrated exactly
+where the state does not measure or is itself the disputed party — pellet injuries recorded by
+hospital ophthalmologists in peer-reviewed journals, J&K civilian deaths, shutdown durations. **Those
+records depend on non-government evidence BECAUSE the government does not publish it, which is the
+finding.** A footer erasing that would have flattered the corpus by misdescribing its strongest work.
+The published wording gives the real mix and the grading rule.
+
+**Left for the operator to settle, and only this:** the byline. The draft says *"one author, written
+with an AI assistant"* and names nobody. Whether to name a person is not a call the evidence settles.
+
+## READER-FACING SURFACE AUDIT — one real defect, found and fixed; one detector artefact, withdrawn
+
+**Corrections and withdrawn wording all reach a reader.** `field-render-audit` compares the **full
+normalised value**, not a prefix, so a `CORRECTED 2026-08-05:` passage appended mid-field or at the
+tail is covered — which matters, because `reachability` probes only the **first 60 characters** and
+would not have caught a clamped tail on its own. **The two gates are complementary by design and the
+complementarity is load-bearing.** Prose, all layers: **32 fields, 0 invisible.**
+
+**Absences reach a reader in full**: `unmeasured[].what` 150/150, `.why` 150/150, `.wouldFill`
+131/131 on ledger, and the same three on series. `reasonKind` renders on **379 of 379**.
+
+**THE DEFECT: `disputeKind` reached no reader on any of its 19 entries.** The schema **requires** it
+whenever `reasonDisputed` is true; `components/marks.tsx` read `reasonDisputed`, printed
+*"— stated reason disputed"*, and **never read `disputeKind` at all.** No comment explained the
+omission — **the silence was doing the work of a decision, which is the 226-marks shape exactly, in
+the field batch 14 examined as the donor vocabulary for the `contested` split.**
+
+It matters because the two are different findings. **`evidentiary` means the holder's stated reason
+is contradicted by evidence the data exists — the government's account is falsified.** `normative`
+means nobody disputes the facts and what is contested is the characterisation, usually against a
+legal obligation. A reader told only "disputed" cannot tell a caught misstatement from a legal
+argument. **15 ledger records and 4 series were affected**, including L-0074 (ED case affiliations),
+L-0114 (pellet injuries), L-0136 (shutdown orders) and L-0052.
+
+**Fixed in the view**: the label now reads *"stated reason disputed on the evidence"* or *"…on the
+characterisation"*. **19 of 19 now render.** **The GUARD is not fixed and is not this batch's**:
+adding an enum field to `guarded-marks.mjs` extends a gate's scope, which is a contract change and
+belongs to the structural cycle — where it joins the render assertion for non-prose fields that
+`commitmentState` and the `contested` split both need.
+
+**WITHDRAWN as a detector artefact:** a first sweep reported **96 invisible `reasonKind` values**.
+They render — as `never collected` and `collected, not published`, the view's own labels — and my
+needle searched for the raw enum tokens. **Re-run against `REASON_KIND_LABELS` itself: 379 of 379.**
+Third instance this phase of a detector, not the artefact, being wrong; caught the same way each time,
+by reading the page before believing the count.
+
+## PHASE 15 — OPEN ITEMS: NONE
+
+Arcs A, C and D closed; B blocked on one untested capability and recorded as blocked, not complete.
+Six ledger records, seven provenance records, seven series shipped. The close audit's sixteen queued
+findings are resolved, corrected or withdrawn. **The deployment-auth decision is closed above, and it
+was the last item.**
+
+**Carried to the structural cycle, owned by it and not by this phase:** `figure-consistency`'s mining
+gap · `commitmentState` · the `contested` split · the render assertion for non-prose fields, now with
+`disputeKind` as its worked instance · the 29-candidate seam-span triage · Arc B's rendering
+capability. **And the deferred verification plan — the adversarial model pass was specified as due
+"after phase 15", which is now.**
