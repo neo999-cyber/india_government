@@ -10126,3 +10126,120 @@ broken fixtures, 2/2 output gates on theirs.
 
 **Phase NOT closed. No finding resolved. NOT PUSHED** — push is not autonomous while the deployment is
 public and unauthenticated.
+
+## Cycle 2026-08-05av — batch 17: PHASE 15 CLOSES. Resolution, and the audit read against itself
+
+**Six shipped records corrected in three fields; sixteen queued findings resolved or withdrawn; no
+verdict changed.**
+
+### THE ADVERSARIAL READ OF THIS BATCH'S OWN WORK, in the reordered form it earned
+
+**COUNTS.** Batch 15's log says *"twelve findings written into STATE.md"*. **It filed sixteen** —
+seventeen `Q-` labels of which one is a check that passed. **My own miscount, in the batch whose
+subject was uncounted and fabricated figures.** And the commitment-state token count moved **39 → 40**
+between batch 16 and this batch **with no data change**, because the classifier's context window went
+from 140/120 characters to 130/110 and one token crossed a bucket boundary — **the window is part of
+the needle, and publishing the pattern alone is not enough.**
+
+**ATTRIBUTIONS.** Batch 16 passed R2 as no-stop on the ground that *"P-123 is provenance and carries
+no verdict"*. **P-123 carries `directionOfBias: "obscures"`** — a premise never checked, in a phase
+where P-121 and P-122 carry one two records away. The conclusion survives on the correct ground: the
+28.84 → 28.96 correction moves the generation term 0.12 of a point and leaves `obscures` standing.
+**Verified, not assumed — all seven phase-15 `directionOfBias` values and all six assessments are
+unchanged from `8964806`.** Recorded as instructed; the run continued.
+
+Also: a one-field edit to `data/provenance.json` produced a **101-line diff**. `git diff -w` showed
+**one**. The other hundred were indentation — P-119 onward is 2-space where the rest of the file is
+1-space, and a whole-file rewrite normalised records I never touched. **Reverted and redone as a
+single string replacement: 1 line changed.** The standing rule caught it exactly where it was written
+to.
+
+**SCOPES.** Every figure below is traced to the tool that emitted it. Batch 15's "fourteen phases"
+claim was withdrawn in batch 16 and is not reopened.
+
+**ARITHMETIC, last and yielding nothing again:** `11.77 − 10.47 = 1.30`, `11.77 − 10.48 = 1.29`,
+`1/0.09 = 11.11`, `3.3/1.29 = 2.56`, `262 − 4 = 258`, `183+118+60+258 = 619`, `225 − 14 = 211`,
+`69 = 40+17+8+4`, `40 = 17+23`. All exact.
+
+### The load-bearing counts — ALL FOUR RECONSTRUCT, and the one disagreement was mine
+
+The assessment audit's **619** (183 ledger · 118 provenance · 60 pairs · 258 series); phase 10's
+**91 merged, corpus 390**; phase 12's **444 → 511, +67**; phase 13's **+106** — every one exact, the
+last two per layer. The shape sweep's **149** is the ledger count at its commit.
+
+**619 disagreed on first recomputation at 623, and the error was MINE.** The audit excludes
+`data/series/foreign-trade.json` as well as the ledger file and P-119/P-120, and **says so two lines
+below the figure**: 262 − 4 = 258. **I recomputed a number without reading the sentence that scoped
+it** — the same class as the field-render audit's 53 false invisibles.
+
+### The 40 commitment-state tokens, per token
+
+**69 under the published needle: 40 commitment-state · 17 `differentFacts` criteria · 8 CAATSA
+statutory · 4 other.** Of the 40: **17 assert a state for the record itself**, 13 rule one out, 6 are
+prospective, 2 quote CLAUDE.md's definition, 2 are cross-references. **Asserting records: (a) 12 ·
+(b) 2 · (d) 1 · (c) 0 — 14 distinct records**, L-0188 asserting both (a) and (b) for different limbs.
+
+**THE "NO (c)" FINDING HOLDS AND IS NOW EARNED AT TOKEN LEVEL: all four `(c)` tokens in a
+commitment-state context are mentions and none is an assertion.** An automatic classifier mislabelled
+three tokens — reading `Not (c) —` as an assertion twice, and L-0223's *"is commitment state (a). NOT
+awaiting-adjudication"* as a negation where the NOT governs the next clause. **All three corrected by
+reading: a substring test is not a claim check, and that holds against a classifier as firmly as
+against a grep.**
+
+### Resolutions
+
+**Three corrections to shipped records, each carrying its withdrawn wording.** L-0221's `summary` now
+gives **1.30 on the unrounded basis the record leads on, or 1.29 on the printed operands**, with the
+derivation stated. L-0226's `summary` now gives **both** minimum-technical-load variants — 0.09 per
+cent and **1.29 per cent** — naming the truncation it had carried past two corrections downstream of
+it. P-123's `whatChanged` now reads **28.96**, with the Bhutan-import basis defect, the failed
+propagation, and `directionOfBias` unchanged on the record's face.
+
+**One recomputed:** `ao`'s *"181 records assert nothing"* is **211** at its own commit (225 − 14) —
+undercounted by 30, in exactly the direction batch 16 predicted when it called 181 a bound.
+**One withdrawn and replaced:** `ao`'s letter distribution; the substantive claim it carried survives.
+**Twelve closed as recorded** — defects in reports the append-only rule preserves, unfixable by
+editing text. **What closes them is the guard**: `validate` now prints its own scope, and the
+adversarial-read rule now runs counts, attributions and scopes first.
+
+### LOGGED, NOT FIXED — `figure-consistency` carries the defect it exists to catch
+
+**It checks DECLARED claims and never mines for undeclared ones**, so an author who does not declare a
+derived figure is outside the gate entirely. **Four instances this phase, all found by hand and none
+by the gate:** L-0223's *"roughly two-thirds"* and *"about ten points"*, L-0226's two ratios — which
+the subtraction-only claim format cannot express even if declared — and L-0221's 1.29. **The same
+enumeration-scope class as `reachability`'s list and `ownPage()`'s default, sitting in the gate meant
+to catch arithmetic.** A mining pass is a gate contract change: it belongs to the structural cycle.
+
+### PHASE 15 CLOSED
+
+**Shipped: 6 ledger · 7 provenance · 7 series.** L-0221 `partly` — **53.21 per cent of capacity,
+28.96 per cent of generation, a gap widening 10.47 points inside one document.** L-0222 `failed` —
+205.72 MT of non-coking imports in the year imports were to stop. L-0223 `too-early` — a target raised
+after 24 points were banked. L-0224 `contested` — dated, quantified, unscoreable for want of a
+baseline. L-0225 `too-early` — net zero in one clause. L-0226 `contested`. P-121 to P-127.
+
+**Arcs: A closed · C closed provenance-only · D complete · B blocked on one untested capability.**
+Besides records the phase built `no-unguarded-prose-field`, `field-render-audit`,
+`tools/lib/guarded-marks.mjs`, `validate`'s own scope line, `seam-span-report` — and **fixed 226 marks
+that had shipped invisible through every prior phase.**
+
+**OPEN AND OWNED BY THE NEXT CYCLE, not phase-15 residue:** `figure-consistency`'s mining gap ·
+`commitmentState` · the `contested` split (67 records classified: criterion 22, interpretation 13,
+evidence-withheld 11, measure 10, evidence-unobservable 5, time 4, residue 2) · the 29-candidate
+seam-span triage · Arc B's rendering capability · **and the deployment-auth decision, which is the
+operator's and outstanding.** The first three are one design, not three, because all need a render
+assertion for non-prose fields that no gate supplies.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs =
+682 records, 1,759 points** · `manifest` 682 records, 71,554 bytes · `no-bare-root` 0 new, 0 stale,
+277 allowlisted from 277 frozen · `no-unguarded-prose-field` 19 prose fields, 7 guarded / 12 exempted
+· `figure-consistency` 18 declared claims, 18 checked against source and printed operands, 5 rounding
+artefacts declared · `reachability` 1368/1368 marks on their own record page, 662 pages scanned ·
+`field-render-audit` 32 prose fields across 3 layers, 0 invisible · `domain-coverage` 14/14 surfaces
+built, 14/14 linked, 1141/1141 references · `validate:selftest` 23/23 validator rules fire on the
+broken fixtures, 2/2 output gates on theirs.
+
+**NOT PUSHED.** Push is not autonomous while the deployment is public and unauthenticated.
