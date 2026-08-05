@@ -1639,5 +1639,69 @@
         "confidence": "high",
         "asOf": "2026-08-05",
         "revisitTrigger": "Re-test if India publishes a legal basis, if any criterion or review mechanism is attached to the reversal condition, or if the Permanent Indus Commission's operation since April 2025 is described. Any of the three would move this from a status with no test to something scoreable."
+    },
+    {
+        "id": "L-0217",
+        "title": "The trade suspended on 23 April 2025 was already one-directional and the two governments do not agree what it was: for 2024 India reports US$1,183.10m of exports to Pakistan against Pakistan's US$304.93m of imports from India",
+        "date": "2025-04-23",
+        "term": "T3",
+        "domains": [
+            "foreign",
+            "macro"
+        ],
+        "lenses": [
+            "neighbourhood"
+        ],
+        "type": "reform",
+        "summary": "The Cabinet Committee on Security decision of 23 April 2025 closed the Integrated Check Post at Attari with immediate effect, requiring those who had crossed with valid endorsements to return by 1 May 2025, and suspended all bilateral trade with Pakistan. UN Comtrade, on India's own returns, gives India's exports to Pakistan as US$523.22m in 2023, US$1,183.10m in 2024 and US$352.27m in 2025, against imports from Pakistan of US$7.69m, US$6.42m and US$3.73m in the same years. Pakistan's returns for the same trade are far smaller: imports from India of US$258.20m, US$304.93m and US$311.31m, and exports to India of US$0.04m, US$0.02m and US$0.11m.",
+        "claimAtLaunch": "No target, value or duration is announced. The measure is presented by the Press Information Bureau as severing an economic lifeline without escalating direct military conflict, alongside the Indus Waters Treaty abeyance recorded at L-0216, and is described as halting exports of goods including onions and banning imports of cement and textiles.",
+        "whatHappened": "THE FLOW SUSPENDED WAS ALREADY ALMOST ENTIRELY ONE-WAY. On India's own figures for 2024, exports to Pakistan of US$1,183.10m stood against imports from Pakistan of US$6.42m — India sent about 184 times what it received, so a suspension of \"all bilateral trade\" removes an Indian export market and almost nothing on the import side. THE TWO GOVERNMENTS DISAGREE ABOUT THE SIZE OF THAT MARKET BY MULTIPLES. For 2024 India reports US$1,183.10m of exports to Pakistan while Pakistan reports US$304.93m of imports from India — a gap of US$878.17m, with India's figure 3.88 times Pakistan's. The same disagreement runs the other way and is larger in ratio: for 2024 India records US$6.42m of imports from Pakistan against Pakistan's US$0.02m of exports to India. THE EFFECT OF THE SUSPENSION IS NOT MEASURED HERE. The 2025 annual figures straddle 23 April, and no monthly series for India is available on this route, so the year cannot be split into its pre- and post-decision parts.",
+        "assessment": "no-objective",
+        "assessmentNote": "The decision announces no target, no value and no duration, so there is nothing that could have worked or failed. What this record establishes is the measurement position: what the suspended trade was on each side's account, that the two accounts differ by multiples, and that the suspension's own effect cannot be isolated from the series available. Deliberately NOT scored as an outcome — a fall in the 2025 annual figure is consistent with the suspension and also with a return from an exceptional 2024, and nothing retrieved separates them.",
+        "caseFor": "As economic coercion goes this is unusually low-cost to the party imposing it, and that is a real argument in its favour rather than a criticism. India was the seller in this relationship by a factor of roughly 184 to one on its own 2024 figures, so suspending the trade forgoes an export market while surrendering almost no import dependence — there is no supply Indian industry loses. Closing a single land crossing at Attari is also the most reversible of the measures announced that day: an Integrated Check Post can be reopened by the same decision that closed it, unlike a treaty. And the government stated what it was doing in specific terms, naming affected goods on both sides, which is more than a general announcement of economic measures would have offered.",
+        "caseAgainst": "A government suspending a trade should be able to say how large it was, and here the two parties' figures differ by more than the whole of the smaller one — for 2024 the gap is US$878.17m against Pakistan's stated US$304.93m. Whichever figure a reader takes, the other is wrong by a margin that dwarfs any plausible valuation adjustment, and no Indian document retrieved acknowledges the divergence or explains it. The asymmetry also cuts against the framing: describing the measure as severing an economic lifeline is a claim about the effect on Pakistan, and the numbers that would support it are the numbers in dispute. And the one thing that would show whether the suspension bit — a monthly series across April 2025 — is not published on this route, so the measure's effect is unavailable at exactly the moment it matters.",
+        "differentFacts": true,
+        "differentFactsNote": "Both instruments measure the same quantity — trade between India and Pakistan in a given year — and disagree by multiples in both directions and in every year checked. Neither figure is adopted and no midpoint is taken. Ordinary explanations exist for a divergence of this kind, including valuation convention between export and import records and attribution of goods routed through third countries, and none is asserted here because no retrieved source states which applies or in what proportion. This is the same shape as the India-China pair at P-119 and larger: there the ratio is a fraction, here India's 2024 export figure is 3.88 times Pakistan's import figure. The gap is arithmetically computable and its magnitude is stated — US$878.17m for 2024 — but it is not treated as a measured quantity, because it is the difference between two accounts of the same trade rather than anything either party reports. Which side is short, and by how much, is exactly what is unresolved.",
+        "unmeasured": [
+            {
+                "what": "India-Pakistan trade by month across April 2025",
+                "why": "The annual figures span the decision date. A monthly series would isolate the trade before and after 23 April 2025 and is the only thing that would make the suspension's effect measurable; UN Comtrade's public preview returns no monthly rows for India on this query.",
+                "wouldFill": "A monthly Comtrade series, or Department of Commerce monthly trade data for Pakistan as a partner.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "Which of the two national accounts of the trade is closer to correct, and why they diverge",
+                "why": "The divergence is present in every year checked, runs in both directions, and reaches 3.88 times on India's 2024 exports. Nothing retrieved from either government acknowledges it or states a cause, so no basis exists for preferring one series or reconciling them.",
+                "wouldFill": "A reconciliation by either statistical authority, or a Comtrade partner-attribution note covering India-Pakistan trade.",
+                "reasonKind": "not-collected"
+            },
+            {
+                "what": "The value of trade actually forgone since the suspension, and whether goods continue to reach Pakistan through third countries",
+                "why": "The decision suspends direct bilateral trade. Whether the goods it covered ceased to move or were re-routed is a different question from whether direct trade fell, and nothing retrieved addresses it.",
+                "wouldFill": "A Department of Commerce assessment of the suspension's effect, or third-country trade data showing a corresponding rise.",
+                "reasonKind": "not-published"
+            }
+        ],
+        "caveat": "The 2025 annual figures are used only to state what each source records for that year. THEY ARE NOT USED TO MEASURE THE SUSPENSION: the year straddles 23 April, no monthly series is available, and this record does not report the fall from 2024 as an effect of the decision. It also does not establish that the 2025 figures are complete years — the source carries no completeness indicator on this route, and a partial year would understate both sides. The ratio of about 184 to one is India's 2024 exports to Pakistan divided by India's 2024 imports from Pakistan, both from India's own returns in the same year and the same dataset, so it compares like with like; no ratio is formed across the two reporters. All figures are UN Comtrade annual, commodity code TOTAL, in current US dollars.",
+        "sources": [
+            {
+                "name": "UN Comtrade, annual merchandise trade, reporter India (699), partner Pakistan (586), commodity TOTAL, current US dollars — exports 523,219,521.55 (2023), 1,183,104,667.26 (2024), 352,265,385.36 (2025); imports 7,694,921.24 (2023), 6,420,457.41 (2024), 3,726,123.20 (2025)",
+                "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2024&partnerCode=586&flowCode=X,M&cmdCode=TOTAL",
+                "tier": "T1"
+            },
+            {
+                "name": "UN Comtrade, annual merchandise trade, reporter Pakistan (586), partner India (699), commodity TOTAL, current US dollars — imports from India 258,201,193.28 (2023), 304,929,840.64 (2024), 311,312,741.10 (2025); exports to India 36,499.28 (2023), 16,625.29 (2024), 108,026.17 (2025)",
+                "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=586&period=2024&partnerCode=699&flowCode=X,M&cmdCode=TOTAL",
+                "tier": "T1"
+            },
+            {
+                "name": "Press Information Bureau, \"Operation SINDOOR: India's Strategic Clarity and Calculated Force\", Backgrounder, 12 May 2025 — the closure of the Integrated Check Post Attari with immediate effect and return by 1 May 2025, the suspension of all bilateral trade with Pakistan, the halting of exports including onions and the ban on imports of cement and textiles",
+                "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=154448&ModuleId=3&reg=3&lang=1",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-05",
+        "revisitTrigger": "Re-test when a monthly series across April 2025 becomes available on any route, and when 2026 annual figures are published — a full year wholly after the decision is the first observation that does not straddle it. The mirror gap should be re-checked at the same time: if it narrows as direct trade stops, that is itself informative about what was causing it."
     }
 ]
