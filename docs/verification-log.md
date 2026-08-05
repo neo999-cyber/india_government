@@ -8496,3 +8496,51 @@ by construction.
 **QUEUED, NOT STARTED: 17 remain** — welfare (7) and infrastructure (10). Both files are untouched
 and the work is identical in shape.
 
+## Cycle 2026-08-05ae — adversarial triage 4: the 33 unjustified verdicts are complete
+
+Welfare (7) and infrastructure (10) closed the set. **33 of 33 verdict-carrying records now state
+their ground. Every one of the 33 survived unchanged — none was rescored.** Thirty-one absences were
+entered across the four cycles, the overwhelming majority onto records that carried no `unmeasured`
+field at all.
+
+**THE MECHANISM FIX CAME FIRST AND THIS CYCLE'S OWN COMMITS WENT THROUGH IT.** `npm run commit`
+runs the gates and reaches `git commit` only on green; the message comes from a file, not argv; no
+flag skips a gate. Proven by breaking the corpus — an invalid assessment value produced *REFUSING TO
+COMMIT*, exit 1, HEAD unchanged, nothing staged. **The first version of the refusal was itself
+defective**: it printed the last 25 lines, which on a validator run are warnings, so the refusal
+displayed everything except its reason. A gate whose failure output hides the failure is half a
+gate; it now selects the error lines.
+
+**THE PREDICTED WELFARE PATTERN HELD IN FIVE OF SEVEN.** The scheme is counted at the connection and
+its purpose is at the use: Ujjwala at the cylinder against refills of 3.21 a year; Swachh Bharat at
+the latrine against 23 per cent of OWNERS still practising open defecation, unchanged since 2014;
+Jal Jeevan at the tap against 76 per cent receiving water meeting its own standards; housing at
+completion against an occupation gap with no number at all; PM-JAY at the card against 12.69 crore
+admissions and out-of-pocket spending still at 47 to 48 per cent.
+
+**Infrastructure ran the same shape and added a second: the reclassified headline.** Highways report
+a 60 per cent network expansion of which roughly 54,004 km of 55,000 is state roads notified as
+national, and UDAN reports airports doubling on a count including heliports and waterdromes against
+11 genuine greenfield builds. Two different schemes, the same move.
+
+**THE CONTRAST THAT MAKES THE PATTERN LEGIBLE.** Railway electrification is the file's cleanest
+`worked`, and the note says why: **the asset IS the service.** An electrified line carries electric
+traction from the day it energises — no behavioural change, no demand forecast to miss. Set against
+household electrification, which delivered 28 million connections and has **no continuous national
+supply-hours series at all**, the difference is not effort or execution but whether the output
+converts to use without anything else having to happen.
+
+**SIX MORE ANNOUNCED OBJECTIVES FOUND MEASURED NOWHERE**, on top of cycle 3's six: Ujjwala's health
+burden, PMGKAY's prevention of hunger, PM-JAY's catastrophic expenditure, UDAN's affordability,
+metro's own 14 per cent return threshold — never applied after the fact to any system — and railway
+electrification's net emissions. In every case the omission was invisible until the reasoning had to
+be written down.
+
+**Where the ground was narrowed rather than the verdict changed:** renewables `worked` on the target
+AS SET, which was a capacity target, and capacity is not generation; PM-KISAN `failed` on the dated
+doubling promise and NOT on the transfer scheme, which works as designed and which the record's own
+title bundles with it; discom reform `failed` on viability while the loss reduction was real.
+
+**QUEUED: the 29 contested and 17 unscoreable notes**, and 91 records overall still carry no note —
+now entirely abstentions. Retrieval leads untouched.
+
