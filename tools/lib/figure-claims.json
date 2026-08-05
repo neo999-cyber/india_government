@@ -106,5 +106,17 @@
     "sourceB": 6.71,
     "sourceScale": 1,
     "note": "Operand B is itself a sum of two published figures, stated here so the gate checks the subtraction the record prints rather than taking the residual on trust. Printed and source agree exactly; no rounding artefact."
+  },
+  {
+    "record": "L-0217",
+    "what": "2024 India-Pakistan mirror gap — India's reported exports to Pakistan minus Pakistan's reported imports from India, in US$ millions",
+    "printedA": "1183.10",
+    "printedB": "304.93",
+    "printedDifference": "878.17",
+    "decimals": 2,
+    "sourceA": 1183104667.256,
+    "sourceB": 304929840.637,
+    "sourceScale": 1000000,
+    "note": "The differentFacts gap itself, declared so the gate checks it against both the raw Comtrade values and the rounded operands the record prints. Both agree at 878.17; no rounding artefact."
   }
 ]
