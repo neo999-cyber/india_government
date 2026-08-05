@@ -166,5 +166,17 @@
     "sourceB": 10.984290971934406,
     "sourceScale": 1,
     "note": "The claim the record makes is the WIDENING, and until now only its endpoints were declared. Source values are the two gaps computed from unrounded ratios. Batch 1 stated 11.77 for this quantity by starting at FY2013-14, on the imputed side of P-122's seam; the 1.29-point difference is what the seam was contributing. Printed gaps give 10.48, unrounded 10.47; the record prints 10.47 and names the artefact."
+  },
+  {
+    "record": "L-0223",
+    "what": "the increment the 2022 NDC added to the emissions-intensity target — 45 per cent against the 33-35 per cent band's midpoint",
+    "printedA": "45",
+    "printedB": "34",
+    "printedDifference": "11",
+    "decimals": 0,
+    "sourceA": 45,
+    "sourceB": 34,
+    "sourceScale": 1,
+    "note": "Declared 2026-08-05 after an audit found L-0223 printing derived arithmetic that had never been declared. The record originally said 'about ten points' for this quantity; it is 11, and declaring it is what forces the check. Both operands are printed in the record and the subtraction reconstructs exactly, so this is a stays-quiet claim as well as a corrected one."
   }
 ]

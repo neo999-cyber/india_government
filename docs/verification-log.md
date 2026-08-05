@@ -9197,3 +9197,76 @@ artefacts declared · `reachability` 1343/1343 marks on their own record page, 6
 `field-render-audit` 32 prose fields across 3 layers, 0 invisible (ledger 15/0, provenance 6/0,
 series 11/0) · `domain-coverage` 14/14 surfaces built, 14/14 linked, 1136/1136 references ·
 `validate:selftest` 23/23 validator rules fire on the broken fixtures, 2/2 output gates fire on theirs.
+
+## Cycle 2026-08-05al — batch 7: three gate figures audited, and two limbs that a date does not make scoreable
+
+### The three residuals, each answered against a gate's own output
+
+**1. Corpus 676 → 678 is L-0223 and P-126, and now stated as arithmetic.** Ledger 222 → 223
+(L-0223, the emissions-intensity limb) and provenance 125 → 126 (P-126, the generation seam). Both
+records were named in cycle ak; the DELTA was not, for the third batch running, and the time before
+last the unstated delta was wrong. `validate` now prints its own counts, so the check is mechanical.
+
+**2. `no-bare-root`'s 277 is unchanged because no new bare root was introduced — PROVEN, not read.**
+The tool walks every JSON under `data/` and yields every `{url}` at any depth, so it does scan new
+sources; but reading the code is not observing the effect. A bare root was injected into L-0223 and
+the gate **fired, naming the record, its tier and its file**; the tree was restored and the gate
+passed again. So the count tracks: 277 is the number of legacy bare roots still live in `/data`, and
+every source added in batches 4-7 was deep-linked.
+
+**3. `figure-consistency` was unchanged at 14 because L-0223's derived arithmetic WAS NOT DECLARED —
+and declaring it found two loose figures.** The record printed 'roughly two-thirds' for 24 against a
+33-35 band, which is actually **68.6 to 72.7 per cent**; and 'about ten points' for the raise from the
+band's midpoint, which is **11**. Both corrected. **The second matters more than its size**: the
+sentence it sits in argues the raise was less demanding than it looks, so understating the increment
+ran in the direction of the record's own argument, which is the direction a loose derived figure
+should never run. The subtraction is now declared (15 claims) and reconstructs exactly.
+
+### ARC D — the two quantified limbs, and a date is not enough
+
+**L-0224** covers both in one record because they share one defect: **an absolute tonnage, a date,
+and no stated baseline.**
+
+**One billion tonnes** (Panchamrit element 3, COP26, T1): 'reduce the total projected carbon
+emissions by one billion tonnes from now onwards till 2030'. The baseline is a **projection** — a
+counterfactual, not observable — and India's own Long-Term Low-Emission Development Strategy
+publishes none: `projected emissions`, `baseline scenario` and `reference scenario` each **0** across
+283,363 characters, against positive controls of `emission intensity` 3, `carbon sink` 5 and `2030`
+51 in the same file and form. The four `business-as-usual` hits are transport-trend and
+financial-additionality discussion, read in context and discounted.
+
+**2.5-3.0 GtCO2e carbon sink** (2015 NDC, T1): 'additional' to a reference no retrieved document
+states — `additional to` returns **0** — and a **range of half a gigatonne**, so 2.6 both meets and
+misses it, the same shape as NCAP's 20-30 per cent. The only stock the strategy offers is 'The carbon
+stock in forests is estimated to be 7,204 million tonnes', **with no unit basis stated**, against a
+target explicitly in CO2 equivalent; the two differ by roughly 3.67× if the stock is carbon.
+
+**AND THE ENUM QUESTION IS FLAGGED, NOT RESOLVED.** These limbs are a third unscoreable shape and the
+vocabulary has no value for it. They are **not (d)** — that is defined as a total with **no date**,
+and both carry 2030, so `no-objective` was not scored and the definition was not stretched. They are
+not honestly `too-early` either, which is what WAS scored: that value's definition says the obstacle
+is elapsed time *and the evidence time accumulates*, and here **time accumulates nothing** — what is
+missing is a baseline, not a reading, so both will be exactly as unscoreable in 2030 as today.
+**The shape is: dated, quantified, unscoreable for want of a stated baseline.** Recorded in the
+assessmentNote and in STATE.md as an operator decision, because creating or stretching an enum value
+mid-phase is what the enum rule forbids. If a fifth state is admitted it needs a written definition
+in the same commit.
+
+**Confidence is MEDIUM on L-0224**, not high: the finding rests on absences in a single document, and
+a projection published elsewhere would narrow it. The caveat says so, and P-124 is cited because this
+instrument's NDC evidence is already one document removed.
+
+**Net-zero-2070 was deliberately excluded** and gets its own batch with its own retrieval of the
+announcing wording — and should be decided AFTER the enum question, since if a fifth state is
+admitted net-zero may belong in it rather than in (d).
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 224 ledger · 269 series · 126 provenance · 60 pairs
+= 679 records, 1,759 points** · `no-bare-root` 0 new, 0 stale, 277 allowlisted from 277 frozen ·
+`no-unguarded-prose-field` 19 prose fields across ledger + provenance, 7 guarded / 12 exempted ·
+`figure-consistency` 15 declared claims, 15 checked against source and printed operands, 5 rounding
+artefacts declared · `reachability` 1347/1347 marks on their own record page, 659 pages scanned ·
+`field-render-audit` 32 prose fields across 3 layers, 0 invisible (ledger 15/0, provenance 6/0,
+series 11/0) · `domain-coverage` 14/14 surfaces built, 14/14 linked, 1137/1137 references ·
+`validate:selftest` 23/23 validator rules fire on the broken fixtures, 2/2 output gates on theirs.
