@@ -8244,3 +8244,60 @@ the failure is silent in exactly the way this log keeps finding: the write succe
 landed, and the only evidence was two stderr lines scrolling past a successful run. **Use a quoted
 heredoc for anything containing backticks** — `python3 - <<'PY'` passes the text through untouched,
 and every other entry in this log was written that way.
+
+## Cycle 2026-08-05aa — the adversarial review extract, and what scrubbing it revealed
+
+**Built:** `tools/gen-review-extract.mjs` + `review/extract-sample.json`, both committed, producing
+`review/adversarial-extract.md` — 38 records and 3 no-record subjects, 275,053 bytes, 1,059 lines.
+**Deterministic:** two consecutive runs give identical MD5 (73f9a93d...). The sample is a fixed
+list, not a draw, so a reviewer's objection can be checked against exactly what they read and the
+review can be re-run against a changed corpus.
+
+**THE BRIEF'S SAMPLE SPEC WAS INTERNALLY INCONSISTENT AND IS RECORDED AS SUCH.** It asked for all
+`contested` scores within a 25-40 record sample. There are 65 contested records. Taken instead:
+both phase-14 contested records plus a ten-record spread of earlier contested across domains, with
+the conflict and the resolution written into the sample file rather than resolved silently.
+
+**THE FIRST GENERATION WAS ONE-DIRECTIONAL AND THE COUNT SHOWED IT.** The sample as specified
+produced 34 records containing **no `worked` verdict and no `failed` verdict at all** — only
+contested, unscoreable, split and too-early. A reviewer would reasonably have concluded the
+instrument never reaches a conclusion in either direction, which would have been an artefact of the
+sample rather than a property of the corpus. Four records added: two scored as having worked, one
+failed, and the corpus's only reversed score. **The brief warned about one-directionality and the
+first attempt was one-directional anyway** — the warning was about content, and the defect was in
+the score distribution, which only a count over the assembled set exposes.
+
+**SCRUBBING FOUND FOUR LEAK CLASSES, EACH NEEDING A DIFFERENT FIX.** Ids and cross-references went
+first and easily. Then: score and reason tokens appearing in PROSE and not only in fields, which no
+field-level rendering touches; dated housekeeping annotations appended to source names — "RESCORED
+contested -> unscoreable in the pass that introduced it to drain the contested sink" — which
+describe the project's administration of its own vocabulary; and annotation headers appended with no
+preceding punctuation, which a sentence-boundary regex cannot see.
+
+**READING THE CONTEXTS PREVENTED A REAL CORRUPTION.** A blunt strip of `CORRECTED` would have
+mangled **"best-corrected visual acuity"** — clinical vocabulary in the pellet-injury records,
+appearing four times against one genuine housekeeping use. The rule that a non-zero count is a
+candidate list, applied to the tool that enforces it.
+
+**ONE DELIBERATE HALF-MEASURE.** The dated headers are stripped and what follows them is KEPT,
+because what follows is usually the evidence for an identification — which figures were matched
+against which retrieved document. That is the difference between a citation improved on evidence and
+one improved on assertion, and a reviewer should see it. `withheld` is also left standing: it is an
+ordinary English word, and replacing it would damage sentences to hide a token a reader would not
+recognise as one.
+
+**The extract says it has been processed.** A reviewer told the text was transformed can discount
+accordingly; one who is not told cannot. The methodology note states what was removed, keeps the
+source-tier scale with a gloss, keeps every caveat in full — the caveats are where this corpus does
+most of its hedging, and a review that never saw them would attack a straw version — and ends by
+naming what the project would most like challenged, including whether refusing to score is ever a
+way of avoiding a conclusion the evidence supports.
+
+**Composition.** 38 records: contested 14 · unscoreable 12 · split 4 · too early 3 · worked 2 ·
+pending outside decision 1 · failed 1 · reversed 1. Ten source files; 19 of 38 from phase 14. Nine
+carry a refused-disclosure claim; six carry competing accounts. Plus three subjects examined and
+deliberately not recorded, so the decision not to record can be argued with too.
+
+**Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 278 allowlisted, unchanged;
+selftest exit 0; `/data` untouched.
+
