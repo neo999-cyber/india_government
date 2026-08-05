@@ -4749,5 +4749,35 @@
    }
   ],
   "notes": "ENTERED 2026-08-05 BECAUSE THE FACT WAS ONLY IN PROSE. The join and its asymmetry were argued in L-0221's own text and nowhere else, and a property stated only in a record's prose is exactly the class this phase deferred flag (e) on: `breaks[]` binds the SERIES and the renderer, and a sentence in a ledger record binds neither. Declaring it here puts the seam where a reader of the SERIES meets it, which is where the splice would be made. NOTE WHAT IS NOT CLAIMED: no discontinuity has been observed, no figure is disputed, and neither series' values change. This record exists to mark the limit of what was checked, which is the honest content of an unverified join."
+ },
+ {
+  "id": "P-127",
+  "title": "\"Forest cover\" counts orchards, bamboo and palm at 10 per cent canopy, and Tree Cover gained two new categories in 2023",
+  "whatChanged": "India's forest statistics rest on a definition that is far wider than the word, and the Forest Survey of India states it plainly: forest cover is 'all lands, more than one hectare with a tree canopy density of more than or equal to 10% irrespective of ownership, legal status and land use. Such lands may not necessarily be a recorded forest area. **It also includes orchards, bamboo and palm**'. Three clauses do the work and each is load-bearing. TEN PER CENT CANOPY is a very low bar — ninety per cent of a hectare may be open ground. IRRESPECTIVE OF LAND USE means a commercial orchard or plantation qualifies on the same terms as natural forest. AND 'MAY NOT NECESSARILY BE A RECORDED FOREST AREA' severs the statistic from the legal category: land can be forest cover without being forest in law, and forest in law without being forest cover. A figure for 'forest cover' is therefore not a figure for forest, and not a figure for protected or notified land either. THE SAME VOLUME ALSO CARRIES A SHORTER DEFINITION THAT OMITS THE WIDENING CLAUSES — 'All areas having tree cover with canopy density more than or equal to 10% and above and area more than or equal to one ha', followed only by 'It may be located within recorded forests, or on other government, private, or institutional lands'. That version drops 'irrespective of ... land use' and drops orchards, bamboo and palm entirely. Two definitions of one term in one report, and the shorter one is the one a reader is more likely to meet. AND THE 2023 EDITION MOVED THE BASE ON TREE COVER, in changes the report itself flags as firsts: 'the trees between 5-10 cm have been included in the analysis for Tree Cover and Growing stock', and 'Bamboo cover has also been estimated for the first time and included in Tree cover'. Two categories entered the Tree Cover total in this edition that were not in the previous one, so the headline 'forest and tree cover' of 8,27,356.95 km2 (25.17 per cent of geographical area) — Forest Cover 7,15,342.61 km2 (21.76 per cent), Tree Cover 1,12,014.34 km2 (3.41 per cent) — is not like-for-like with ISFR 2021's. The district base moved too, 751 districts against 636.",
+  "when": "2023-01-01",
+  "affectsDomains": [
+   "environment"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": false,
+  "bridgeNote": "NO BRIDGE WAS RETRIEVED, and the two problems need different ones. For the DEFINITION there is nothing to bridge — it is not a change but a standing property, and the correct handling is that no forest-cover figure is quoted in this instrument without the definition beside it, and no forest-cover figure is read as a measure of forest, of natural forest, or of legally notified forest. For the 2023 BASE CHANGE a bridge would be a restatement of the Tree Cover series excluding trees of 5-10 cm and excluding bamboo, or an equivalent recomputation of 2021 on the new basis; neither was retrieved, and until one is, a change between ISFR 2021 and ISFR 2023 in tree cover or in the combined total mixes new inclusions with real growth in unknown proportion. THE FOREST COVER COMPONENT IS NOT KNOWN TO BE AFFECTED by the two new inclusions, which the report attributes to Tree Cover; that is what the document says and it was not independently verified here.",
+  "competingAccounts": [
+   {
+    "holder": "Forest Survey of India",
+    "position": "The definition is a remote-sensing definition, stated openly in every edition, and is what makes a biennial nationwide assessment possible at all: canopy density over an area threshold is what satellite data can measure consistently, and the report says so and publishes the recorded-forest-area breakdown separately for anyone who needs the legal category. The 2023 inclusions are improvements in coverage — bamboo and small trees are real biomass that was previously missed — and the report flags each as a first rather than folding them in silently."
+   },
+   {
+    "holder": "Sceptical reading",
+    "position": "A definition that admits orchards and plantations at ten per cent canopy will report gains that are agricultural expansion rather than forest, and a headline quoted as 'forest and tree cover' invites exactly that reading. Flagging an inclusion as a first is not the same as restating the prior year so the two can be compared, and without a restatement the change between editions cannot be decomposed."
+   }
+  ],
+  "sources": [
+   {
+    "name": "Forest Survey of India, India State of Forest Report 2023, Volume 1 — both definitions of forest cover, the tree-cover definition, the 2023 first-time inclusions, and the headline cover figures",
+    "url": "https://fsi.nic.in/uploads/isfr2023/isfr_book_eng-vol-1_2023.pdf",
+    "tier": "T1"
+   }
+  ],
+  "notes": "RETRIEVED AND READ 2026-08-05: 20,145,512 bytes, 670,500 characters of extracted text, reached by enumerating fsi.nic.in's own report index rather than by guessing a path. IDENTITY CHECK WORTH RECORDING, because it nearly went wrong: `fsi.gov.in` is the FISHERY Survey of India and answers HTTP 200 with an index of fish-festival and regional-office pages; the FOREST Survey of India is `fsi.nic.in` (14.139.254.74), whose masthead carries the Hindi form of its name and whose report index lists the India State of Forest Report series from 2005 to 2023. Two organisations share the acronym and the near-identical domain, and the wrong one is live and plausible. WHAT THIS RECORD DOES NOT DO: it establishes the definition and the base change only. **No cover figure is scored, no trend is stated, and the forest-clearance material — diversion under the Forest (Conservation) Act, the 2023 Van (Sanrakshan Evam Samvardhan) Adhiniyam amendment, and CAMPA — is not touched.** The instruction for this arc was to establish the definition from the primary before touching any cover figure, and that is the whole of what is done here."
  }
 ]

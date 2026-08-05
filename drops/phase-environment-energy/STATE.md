@@ -717,3 +717,90 @@ off the printed definitions.** That is the test any future commitment record sho
 - **Net zero's scope is undefined in the retrieved documents** and India reports its own emissions
   EXCLUDING LULUCF — the one accounting choice that decides the target's difficulty is made in the
   reporting and not in the target.
+
+
+---
+
+# PHASE 15 — EVERYTHING STILL OPEN. One list. 2026-08-05.
+
+**"One arc left" is false and a cold read must not close the phase on Arc C.** Five items are
+outstanding and only the first is an arc.
+
+## 1. ARC C — forest clearances. **OPENED 2026-08-05: definition established (P-127). Clearances NOT touched.**
+The one unstarted arc. ISFR's definition of "forest cover" is the known trap: it admits plantations,
+orchards and tea gardens, so a cover figure is not a forest figure. **Establish the definition from
+the primary before touching any cover number.** Also: the Van (Sanrakshan Evam Samvardhan) Adhiniyam
+2023 amendment, FCA diversion figures, CAMPA. `fsi.nic.in` returned 302 on last observation;
+`moef.gov.in` is live and its `/annual-report` and `/publications` indexes are already enumerated.
+
+## 2. ARC A REMAINDER — grid absorption, curtailment, storage. NOT STARTED, deps ALREADY RETRIEVED.
+*Not carried into the Arc C batch by instruction.* The dependencies are on disk: the CEA RE
+Generation Portal daily reports (`gen-re.cea.gov.in/reports`, live) and the NEP's BESS scenarios
+(`nep.pdf`, Exhibit 5.5a: 38.71-67.04 GW / 193.55-335.2 GWh across scenarios). **This is the cheapest
+outstanding work in the phase** — retrieval is done, only authoring remains.
+
+## 3. FIVE `contested` RECORDS WITH NO STATED GROUND.
+L-0018, L-0025, L-0059, L-0068, L-0076 — the five of the eight review-sample records that still carry
+no `assessmentNote`, all five `contested`. **Contested is where stated ground matters most**: it reads
+as self-explanatory and is not, and without a note a reader cannot tell which two readings are live or
+whether the record declines because the evidence underdetermines it or because nobody did the work.
+Corpus-wide the figure is 58 records with no note, 29 of them contested; **these five are the ones a
+reader was demonstrably shown.**
+
+## 4. SEAM-SPAN TRIAGE — 29 candidates.
+`tools/seam-span-report.mjs` is written and REPORT-ONLY: 117 record-by-break spans, 88 declaring the
+break, **29 not**. Twenty-nine is a candidate list, not a defect count — L-0222 is among them and is a
+false positive. **Gateable only once the 29 are triaged per record and the heuristic narrowed**, most
+likely to periods co-occurring in one sentence rather than anywhere in the record. This is flag (e),
+still open.
+
+## 5. DEPLOYMENT AUTH — ANOOP'S DECISION, OUTSTANDING.
+`india-government.vercel.app` serves the full corpus **unauthenticated** (HTTP 200); the team alias
+302s to SSO. Same build, same edge IPs. Mechanism: `ssoProtection = { enabled: true, deploymentType:
+"all_except_custom_domains" }`. **Untouched by every batch since it was found, correctly** — an auth
+change is a stop condition and the configuration may be deliberate. **It is not arc work and closing
+Arc C will not close it.**
+
+## Also logged, not scheduled — a guard-scope candidate found 2026-08-05
+
+**Commitment state (a)/(b)/(c)/(d) exists ONLY IN PROSE.** It is a first-class analytical category in
+CLAUDE.md — every commitment record "resolves into one, stated rather than implied" — and there is no
+`state` field on the ledger schema, so nothing derives it, nothing renders it as a mark, and no gate
+can check that a commitment record states one at all. **That is the guard-scope class again**: the
+claim lives one level out from anything that binds it. Adding a field is a schema change and
+therefore a stop, so it is recorded here for decision rather than done.
+
+
+## ARC C — OPENED. P-127 only. The definition is established; the clearances are not.
+
+**Done: the trap, from the primary.** ISFR 2023 Volume 1 retrieved (20,145,512 bytes, 670,500
+characters, T1), reached by enumerating FSI's own report index. Forest cover is defined as **'all
+lands, more than one hectare with a tree canopy density of more than or equal to 10% irrespective of
+ownership, legal status and land use. Such lands may not necessarily be a recorded forest area. It
+also includes orchards, bamboo and palm'.** Ten per cent canopy, any land use, orchards included, and
+explicitly severed from the legal category. **The same volume also carries a shorter definition that
+drops the land-use clause and the orchards/bamboo/palm clause entirely** — two definitions of one
+term in one report.
+
+**And ISFR 2023 moved the base on Tree Cover**, in changes the report flags as firsts: trees of 5-10
+cm diameter included in Tree Cover and Growing Stock, and bamboo cover 'estimated for the first time
+and included in Tree cover'. So the headline **8,27,356.95 km2 / 25.17 per cent** (Forest Cover
+7,15,342.61 / 21.76; Tree Cover 1,12,014.34 / 3.41) is **not like-for-like with ISFR 2021's**, and no
+restatement of 2021 on the new basis was retrieved.
+
+**HOST TRAP, recorded because it nearly went wrong:** `fsi.gov.in` is the **FISHERY** Survey of India
+and answers HTTP 200 with a plausible-looking index of fish-festival and regional-office pages. The
+**FOREST** Survey of India is **`fsi.nic.in` (14.139.254.74)**. Two organisations, one acronym,
+near-identical domains, and the wrong one is live.
+
+### STILL NOT DONE in Arc C — the arc's actual subject
+
+1. **Forest clearances themselves.** Diversion of forest land under the Forest (Conservation) Act —
+   how much, to what, over what period. **Not retrieved, not attempted.**
+2. **The Van (Sanrakshan Evam Samvardhan) Adhiniyam 2023 amendment** and what it changed about which
+   land requires clearance. **Not retrieved.**
+3. **CAMPA** — compensatory afforestation funds collected against funds spent. **Not retrieved.**
+4. **The cover trend itself.** No cover figure is scored and no trend is stated; P-127 establishes
+   only what the figures mean and why two editions are not comparable. **A ledger record on cover
+   change needs the 2021 restatement that does not exist, or an explicit statement that the change
+   cannot be decomposed.**
