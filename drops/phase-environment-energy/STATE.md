@@ -733,13 +733,22 @@ the primary before touching any cover number.** Also: the Van (Sanrakshan Evam S
 2023 amendment, FCA diversion figures, CAMPA. `fsi.nic.in` returned 302 on last observation;
 `moef.gov.in` is live and its `/annual-report` and `/publications` indexes are already enumerated.
 
-## 1b. ARC B — air quality. OUTTURN UNTRIED ON FOUR NAMED ROUTES (restored 2026-08-05).
+## 1b. ARC B — air quality. **THREE OF THE FOUR ROUTES ARE ONE CAPABILITY, not three chances.**
+**Corrected 2026-08-05 so a cold read does not count four independent shots.** Routes (i), (ii) and
+(iii) all reduce to the same missing capability — **reaching content behind a client-rendered page**:
+(i) resolve the host explicitly and render, (ii) enumerate data endpoints out of the JS bundle so no
+rendering is needed, (iii) `sansad.in`, **which is itself a JavaScript shell** (200, 2,578 characters
+of font declarations), so it fails the same way unless its question PDFs sit at static paths.
+**Only route (iv), `data.gov.in` CSV, is genuinely independent.** So Arc B has ONE capability gap and
+ONE independent alternative — not four routes. *(Note the e-Gazette precedent above: a shell at the
+front door does not imply the documents are unreachable, and static paths behind it may work. That is
+what makes (ii) and the sansad-PDF form of (iii) worth trying rather than assuming.)*
 **Not exhausted.** The "no rendering client" finding was withdrawn: Playwright's failure was DNS
 (`ERR_NAME_NOT_RESOLVED`), not rendering, while curl reached the same host at HTTP 200 in the same
 environment. Four untried routes in cost order are listed under the correction below — resolve-then-
 retry, read the JS bundle for data endpoints, `sansad.in` static PDFs, `data.gov.in` CSV.
 
-## 2. ARC A REMAINDER — grid absorption, curtailment, storage. NOT STARTED, deps ALREADY RETRIEVED.
+## 2. ARC A REMAINDER — **CLOSED 2026-08-05 with L-0226.** Curtailment measurement still absent.
 *Not carried into the Arc C batch by instruction.* The dependencies are on disk: the CEA RE
 Generation Portal daily reports (`gen-re.cea.gov.in/reports`, live) and the NEP's BESS scenarios
 (`nep.pdf`, Exhibit 5.5a: 38.71-67.04 GW / 193.55-335.2 GWh across scenarios). **This is the cheapest
@@ -1086,3 +1095,141 @@ scored cover figure.
 
 **Reopening it needs the amending instrument first**, and the cheapest untried route is now the
 e-Gazette's own directory rather than India Code.
+
+---
+
+# ADVERSARIAL READ OF BATCH 11's REPORT — 2026-08-05, first act of batch 12
+
+## FINDING 1 — "Arcs A/C/D closed" contradicts the file the same batch had just written.
+
+Batch 11 closed with *"Phase 15's arcs are done — A, C and D closed."* **STATE.md's own open-items
+list, edited in that same batch, carries `## 2. ARC A REMAINDER — grid absorption, curtailment,
+storage. NOT STARTED`.** Arc A's spine closed in batch 1; its remainder never did, and it is item 3
+of the next batch's brief. **The report contradicted the file it had just written**, and the sentence
+would have let a cold read treat Arc A as finished. Corrected wording: **A's spine and C and D are
+closed; A's remainder is outstanding.**
+
+## FINDING 2 — "(c) has zero members in 225 records" presupposes a field that does not exist.
+
+There is no `commitmentState` and no `state` field on the ledger schema — this run established that
+itself in batch 9 and proposed the field in batch 10. **So there is nothing for (c) to be a member
+OF**, and "zero members" is a category error dressed as a measurement. What was actually measured is
+narrower and still sufficient: **no record asserts state (c) anywhere in the eight prose fields**,
+against (a)x21, (b)x1, (d)x2. **The substantive finding survives untouched** — abandonment is never
+evidenced, and governments retire commitments by substitution — but the framing claimed a stronger
+kind of evidence than prose-scanning provides.
+
+## Checked and CLEAN
+
+- The 11-PDF split (9 under `/uploads/2018/03/`, 2 not) re-verified against the page.
+- `assessment: reversed` is exactly one record, L-0066 ✓.
+- 225 ledger records ✓. Every gate figure matches its gate's own emitted line ✓.
+- The e-Gazette, PIB dual-address, PRS and India Code character counts all match the probes that
+  produced them ✓.
+
+**Both findings are the same class as the previous three: a summary sentence tidier or stronger than
+the evidence under it.** Neither is a retrieval failure; both were visible in the report.
+
+---
+
+# E-GAZETTE — BLAST RADIUS MEASURED, AND MY OWN BATCH-11 FINDING WAS HALF WRONG
+
+## The corpus already knew. Batch 11 announced a discovery the records had recorded first.
+
+**L-0218 carries the correction and has since the assessment-audit sequence**, before phase 15 began:
+> *"The e-Gazette was offered here as the case that proves it, being unreachable and unduplicated;
+> that example is WITHDRAWN, because the e-Gazette turned out to be reachable and its documents
+> retrievable."*
+
+So batch 11's "phase 14 carried it as unreachable, that is falsified" was **right about the STATE.md
+and wrong about the corpus.** What was stale was a *summary file*, not the records.
+
+## The blast radius is small, and most of it is mine
+
+Twenty records mention the e-Gazette. **Read in context rather than counted:**
+
+| Class | Count | Status |
+|---|---|---|
+| Cite an e-Gazette URL as a source | **15** | Citations, not availability claims. **Two static PDFs among them retrieve today** — see below |
+| Prose tying the e-Gazette to unavailability | **4 sentences** | L-0218 x2 **already corrected in place**; L-0219's caveat is about client-and-day generally, not this channel; **P-121's was mine and was FALSE** |
+| Series/pairs | 1 (`jk-assembly-seats`) | incidental |
+
+**P-121 said "the e-Gazette remains the unreachable channel". Corrected 2026-08-05.** That sentence
+was written in phase 15 batch 1 and **inherited from phase 14's STATE.md rather than from L-0218's
+corrected text** — the same file carries the correction at line 133 and the superseded wording at
+lines 43 and 393. **This is the read-the-record-not-the-summary failure operating at the scale of a
+whole phase**, and it is the second time this batch that a stale summary beat a corrected record.
+
+**NOT REWRITTEN, per instruction:** phase-14's records and STATE.md. A phase-14 reasoning defect is
+its own cycle. **What was rewritten is one sentence in P-121, which this phase wrote and which was
+false.**
+
+## IS LIVE QUERYABLE? RETRIEVAL YES, DISCOVERY NO — and the answer was already in the corpus
+
+The search is a postback form of PIB's `Allrel.aspx` family, but **it is not the only door.** The
+corpus's own citations use a **static, enumerable path**:
+
+```
+https://egazette.gov.in/WriteReadData/<year>/<number>.pdf     pin 164.100.190.144
+```
+
+Both cited notifications retrieve **today**, with real text layers:
+- `WriteReadData/2019/210407.pdf` — HTTP 200, 1,324,210 bytes, **241,662 characters**
+- `WriteReadData/2019/210049.pdf` — HTTP 200, 245,421 bytes, **7,412 characters**
+
+Each is a Gazette *Extraordinary* with the standard masthead. **So a notification whose number is
+known is retrievable without touching the search.** What the postback form provides is the
+**discovery** step — number from description — and that remains unsolved.
+
+**This reframes every e-Gazette-blocked absence in the corpus:** the question is no longer "can the
+channel be read" but "is the notification number known or findable". For P-121's Ministry of Power
+Order that is now the whole of the gap. `RecentUploads.aspx?Category=1..5` and `GazetteDirectory.aspx`
+are enumerable entry points and are **untried**.
+
+
+---
+
+# ARC A REMAINDER — CLOSED 2026-08-05. L-0226.
+
+**Written entirely from dependencies already on disk**, as predicted — no new retrieval was needed,
+which is what made this the cheapest remaining record work.
+
+**The finding is a tension inside one document.** CEA's National Electricity Plan states the Must-Run
+Rules of 22 October 2021 *"ensure that no RE capacity is backed down"*, and the same volume projects
+that **about 1 per cent of renewable generation will not be absorbed in 2026-27 and around 3.3 per
+cent in 2031-32.** Neither text reconciles them.
+
+**And the projection is mostly an assumption.** The Plan says so itself: *"Studies carried out are at
+55% Minimum technical load but CEA regulation has been brought out as per which 40 % Minimum technical
+load can be achieved, considering 40% minimum technical load the RE based generation not absorbed will
+decrease to 0.09%."* **One per cent against 0.09 — an eleven-fold range from how far coal plant is
+assumed able to turn down**, with the higher figure reported as the headline. A third value survives
+in the consultation table: the draft carried **3.48 per cent** for 2026-27.
+
+**Scored `contested`**, by the route `no-objective`'s definition prescribes and on L-0096's
+construction — the documented ACT is scored, not the outcome. **`too-early` was rejected and its
+assertions named as false**: five years of evidence already exist since the rule took effect and are
+simply not published, so time has already passed and produced nothing visible.
+
+**`caveat` carries the distinction the record turns on:** *not absorbed* is a modelled system outcome,
+*backed down* is an instruction to a generator. **The Plan uses only the second and the rule addresses
+only the first, and no retrieved document states the relationship.** The record shows that the
+relationship is unstated; it does not assert a contradiction.
+
+## The absence that closes the arc, and it is a checked one
+
+**No curtailment measure exists in CEA's three principal statistical publications.** `curtail`,
+`backed down`, `not absorbed` and `must run` all return **zero** across the General Review 2025 and
+the Executive Summaries for March and June 2026, against a positive control of `generation` returning
+**192, 34 and 33** in the same files and the same form. `reasonKind: not-published` on the
+data-existence test — despatch instructions exist in the grid operator's hands.
+
+**Storage, for the record:** Exhibit 5.5a puts battery storage at **38.71-67.04 GW / 193.55-335.2
+GWh** across the five 2031-32 scenarios. Carried in the record as context; no storage series authored.
+
+## Noted, not claimed — a divergence worth a later look
+
+The Plan states renewable-plus-large-hydro generation at **22.1 per cent for 2021-22**. The General
+Review's own tables give **21.73 per cent** for FY2021-22 on what appears to be the same basis
+(hydro + RES over total). **0.4 points apart, and not investigated** — plausibly vintage or universe.
+Recorded so it is not rediscovered as a finding, and it is NOT asserted as a differentFacts pair.

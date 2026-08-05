@@ -9626,3 +9626,104 @@ built, 14/14 linked, 1139/1139 references · `validate:selftest` 23/23 validator
 broken fixtures, 2/2 output gates on theirs.
 
 **NOT PUSHED.** Push is not autonomous while the deployment is public and unauthenticated.
+
+## Cycle 2026-08-05aq — batch 12: the e-Gazette blast radius, and my own batch-11 finding half wrong
+
+### The adversarial read caught two defects in batch 11's report
+
+**"Arcs A/C/D closed" contradicted the file the same batch had just written.** STATE.md's open-items
+list carries `ARC A REMAINDER — NOT STARTED`, edited in that batch. Arc A's SPINE closed in batch 1;
+its remainder never did, and it is this batch's arc.
+
+**"(c) has zero members in 225 records" presupposes a field that does not exist.** There is no
+`commitmentState` and no `state` field — this run established that in batch 9 and proposed the field
+in batch 10. **Nothing exists for (c) to be a member OF.** What was measured is narrower and
+sufficient: no record asserts (c) anywhere in the eight prose fields. The substantive finding stands;
+the framing claimed a stronger kind of evidence than prose-scanning provides.
+
+### E-GAZETTE: THE CORPUS ALREADY KNEW, AND BATCH 11 ANNOUNCED IT AS A DISCOVERY
+
+**L-0218 has carried the correction since the assessment-audit sequence, before phase 15 began:**
+*"The e-Gazette was offered here as the case that proves it, being unreachable and unduplicated; that
+example is WITHDRAWN, because the e-Gazette turned out to be reachable and its documents
+retrievable."* So batch 11 was **right about phase 14's STATE.md and wrong about the corpus.** What
+was stale was a summary file, not the records.
+
+**Blast radius, read in context rather than counted.** Twenty records mention the channel: **15 cite
+it as a source** (citations, not availability claims); **four sentences tie it to unavailability**, of
+which L-0218's two are already corrected in place and L-0219's is about client-and-day generally.
+**The fourth was mine and was false** — P-121 said *"the e-Gazette remains the unreachable channel"*,
+written in batch 1 and **inherited from phase 14's STATE.md, which carries the correction at one line
+and the superseded wording at two others.** Corrected today, with the inheritance path named in the
+record. **This is read-the-record-not-the-summary operating at the scale of a whole phase**, and the
+second time in one batch that a stale summary beat a corrected record. **Phase 14's own records and
+STATE.md were NOT rewritten** — that defect is its own cycle.
+
+### IS LIVE QUERYABLE? RETRIEVAL YES, DISCOVERY NO — and the answer was in the corpus
+
+The search is a postback form, but it is not the only door. **The corpus's own citations use a static
+path**, `egazette.gov.in/WriteReadData/<year>/<number>.pdf`, and both retrieve today:
+`2019/210407.pdf` at **1,324,210 bytes / 241,662 characters** and `2019/210049.pdf` at **245,421 bytes
+/ 7,412 characters**, each a Gazette *Extraordinary* with a real text layer.
+
+**So a notification whose number is known is retrievable without the search.** What the postback form
+supplies is DISCOVERY — number from description — and that is the whole remaining gap. **This
+reframes every e-Gazette-blocked absence**: the question is not whether the channel can be read but
+whether the number is known or findable. For P-121's Ministry of Power Order that is now the entire
+gap. `GazetteDirectory.aspx` and `RecentUploads.aspx?Category=1..5` are enumerable and untried.
+
+### Arc B's four routes are ONE capability plus one independent alternative
+
+Recorded so a cold read does not count four chances. Routes (i) resolve-and-render, (ii) enumerate
+data endpoints from the JS bundle, and (iii) `sansad.in` all reduce to **reaching content behind a
+client-rendered page** — and `sansad.in` is itself a shell (200, 2,578 characters of font
+declarations). **Only (iv), `data.gov.in` CSV, is genuinely independent.** The e-Gazette precedent
+above is the reason (ii) and the static-PDF form of (iii) are worth trying rather than assuming: a
+shell at the front door does not imply the documents are unreachable.
+
+### ARC A REMAINDER CLOSED — L-0226, written entirely from documents already on disk
+
+**A rule and a plan in one volume that no text reconciles.** CEA states the Must-Run Rules of 22
+October 2021 *"ensure that no RE capacity is backed down"*, and the same National Electricity Plan
+projects **about 1 per cent of renewable generation not absorbed in 2026-27 and around 3.3 per cent in
+2031-32.**
+
+**The projection is mostly an assumption, and the Plan says so:** *"Studies carried out are at 55%
+Minimum technical load but CEA regulation has been brought out as per which 40 % Minimum technical
+load can be achieved, considering 40% minimum technical load the RE based generation not absorbed will
+decrease to 0.09%."* **One per cent against 0.09 — eleven-fold, on how far coal plant is assumed able
+to turn down**, with the higher figure carried as the headline. The draft carried a third value,
+3.48 per cent, surviving in the Plan's own consultation table.
+
+**Scored `contested`** by the route `no-objective`'s definition prescribes, on L-0096's construction —
+the documented ACT is scored, not the outcome, and both cases argue the act. **`too-early` was
+rejected and its false assertions named:** it requires the obstacle to be elapsed time and the
+evidence to accumulate, and **five years of evidence already exist since the rule took effect and are
+simply not published.**
+
+**The caveat carries the distinction the record turns on:** *not absorbed* is a modelled system
+outcome, *backed down* is an instruction to a generator; the Plan uses only the second and the rule
+addresses only the first, and **no retrieved document states the relationship.** The record shows the
+relationship is unstated rather than asserting a contradiction.
+
+**A checked absence closes the arc.** `curtail`, `backed down`, `not absorbed` and `must run` return
+**zero** across the General Review 2025 and both Executive Summaries, against a positive control of
+`generation` at **192, 34 and 33** in the same files and form. `not-published` on the data-existence
+test — despatch instructions exist in the grid operator's hands.
+
+**Noted, not claimed:** the Plan states renewable-plus-large-hydro generation at 22.1 per cent for
+2021-22 against 21.73 computed from the General Review on the same basis. 0.4 points, uninvestigated,
+recorded so it is not rediscovered as a finding and **not asserted as a differentFacts pair.**
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs
+= 682 records, 1,759 points** · `no-bare-root` 0 new, 0 stale, 277 allowlisted from 277 frozen ·
+`no-unguarded-prose-field` 19 prose fields across ledger + provenance, 7 guarded / 12 exempted ·
+`figure-consistency` 15 declared claims, 15 checked against source and printed operands, 5 rounding
+artefacts declared · `reachability` 1358/1358 marks on their own record page, 662 pages scanned ·
+`field-render-audit` 32 prose fields across 3 layers, 0 invisible · `domain-coverage` 14/14 surfaces
+built, 14/14 linked, 1141/1141 references · `validate:selftest` 23/23 validator rules fire on the
+broken fixtures, 2/2 output gates on theirs.
+
+**NOT PUSHED.** Push is not autonomous while the deployment is public and unauthenticated.
