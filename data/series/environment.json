@@ -87,12 +87,19 @@
     "value": 32.5,
     "status": "verified",
     "note": "At 31.03.2024: RES 143,645 MW over total 441,970 MW."
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 41.91,
+    "status": "verified",
+    "note": "At 31.03.2026: RES 274,688.09 MW less large hydro 51,414.66 = 223,273.43 MW over 532,739.68 MW, to hold the numerator on this series' own definition."
    }
   ],
   "provenanceRefs": [
    "P-121"
   ],
-  "notes": "NUMERATOR is CEA's 'RES' column, which on this table EXCLUDES large hydro — the table's own footnote reads 'RES : Renewable Energy Sources. Includes Solar, Small Hydro Projects, Wind, Bio Power Baggasse, Bio Power-Waste to Energy'. Other current CEA and MNRE publications use 'RES' to INCLUDE large hydro and produce a materially higher share; see P-121. Direction of merit is left unset deliberately: a share of installed CAPACITY is the metric every Indian renewable target is written in, and it is not by itself a measure of how much electricity was decarbonised — the companion series res-generation-share is."
+  "notes": "NUMERATOR is CEA's 'RES' column, which on this table EXCLUDES large hydro — the table's own footnote reads 'RES : Renewable Energy Sources. Includes Solar, Small Hydro Projects, Wind, Bio Power Baggasse, Bio Power-Waste to Energy'. Other current CEA and MNRE publications use 'RES' to INCLUDE large hydro and produce a materially higher share; see P-121. Direction of merit is left unset deliberately: a share of installed CAPACITY is the metric every Indian renewable target is written in, and it is not by itself a measure of how much electricity was decarbonised — the companion series res-generation-share is. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried."
  },
  {
   "id": "res-generation-share",
@@ -189,13 +196,27 @@
     "value": 13.02,
     "status": "verified",
     "note": "FY2023-24: RES 225,835 GWh over total 1,734,375 GWh."
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 13.99,
+    "status": "verified",
+    "note": "FY2024-25: RES including small hydro 255.01 BU over 1823.40 BU, Bhutan import removed. Large hydro is a separate CEA line and stays out of this numerator."
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 16.88,
+    "status": "verified",
+    "note": "FY2025-26: RES including small hydro 310.59 BU over 1840.11 BU, Bhutan import removed. Large hydro is a separate CEA line and stays out of this numerator."
    }
   ],
   "provenanceRefs": [
    "P-121",
    "P-122"
   ],
-  "notes": "Same numerator definition and same document as res-capacity-share, so the two shares are strictly comparable and the gap between them is the arc's central measurement. NUMERATOR excludes large hydro. The FY2014-15 break is a measurement-basis change, not an activity change: RES generation is printed as FALLING from 65,520 GWh to 61,719 GWh across it while RES capacity rose from 35,850 MW to 39,950 MW."
+  "notes": "Same numerator definition and same document as res-capacity-share, so the two shares are strictly comparable and the gap between them is the arc's central measurement. NUMERATOR excludes large hydro. The FY2014-15 break is a measurement-basis change, not an activity change: RES generation is printed as FALLING from 65,520 GWh to 61,719 GWh across it while RES capacity rose from 35,850 MW to 39,950 MW. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried."
  },
  {
   "id": "non-fossil-capacity-share",
@@ -285,12 +306,19 @@
     "value": 44.97,
     "status": "verified",
     "note": "At 31.03.2024: hydro 46,928 + nuclear 8,180 + RES 143,645 = 198,753 MW over 441,970 MW."
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 53.21,
+    "status": "verified",
+    "note": "At 31.03.2026: nuclear 8,780 + RES-including-large-hydro 274,688.09 = 283,468.09 MW over 532,739.68 MW."
    }
   ],
   "provenanceRefs": [
    "P-121"
   ],
-  "notes": "This is the quantity India's NDC goal 4 is written in — 'about 50 percent cumulative electric power installed capacity from non-fossil fuel-based energy resources by 2030' — and the quantity the July 2025 'five years early' claim measures. It is DEFINITION-INDEPENDENT with respect to the large-hydro reclassification (P-121): large hydro is non-fossil on either side of that decision, so moving it between 'conventional' and 'renewable' does not change this series. That is why it, and not the RES share, is the sound basis for comparison against generation. Direction of merit unset for the same reason as res-capacity-share."
+  "notes": "This is the quantity India's NDC goal 4 is written in — 'about 50 percent cumulative electric power installed capacity from non-fossil fuel-based energy resources by 2030' — and the quantity the July 2025 'five years early' claim measures. It is DEFINITION-INDEPENDENT with respect to the large-hydro reclassification (P-121): large hydro is non-fossil on either side of that decision, so moving it between 'conventional' and 'renewable' does not change this series. That is why it, and not the RES share, is the sound basis for comparison against generation. Direction of merit unset for the same reason as res-capacity-share. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried."
  },
  {
   "id": "non-fossil-generation-share",
@@ -387,13 +415,27 @@
     "value": 23.51,
     "status": "verified",
     "note": "FY2023-24: hydro 134,054 + nuclear 47,937 + RES 225,835 = 407,826 GWh over 1,734,375 GWh."
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 25.25,
+    "status": "verified",
+    "note": "FY2024-25: nuclear 56.68 + large hydro 148.63 + RES 255.01 = 460.32 BU over 1823.40 BU. The Bhutan import of 5.48 BU is removed from the denominator because CEA's General Review carries no import column and the earlier points do not include one."
+   },
+   {
+    "country": "IND",
+    "period": "FY2025-26",
+    "value": 28.96,
+    "status": "verified",
+    "note": "FY2025-26: nuclear 55.19 + large hydro 167.2 + RES 310.59 = 532.98 BU over 1840.11 BU. The Bhutan import of 7.83 BU is removed from the denominator because CEA's General Review carries no import column and the earlier points do not include one."
    }
   ],
   "provenanceRefs": [
    "P-121",
    "P-122"
   ],
-  "notes": "The companion to non-fossil-capacity-share, computed from the facing table of the same document on the same universe. The pair is the arc's central finding: at 31.03.2024 non-fossil plant was 44.97% of installed capacity and supplied 23.51% of the electricity. Only the RES component carries the FY2014-15 basis break; hydro and nuclear generation are metered throughout."
+  "notes": "The companion to non-fossil-capacity-share, computed from the facing table of the same document on the same universe. The pair is the arc's central finding: at 31.03.2024 non-fossil plant was 44.97% of installed capacity and supplied 23.51% of the electricity. Only the RES component carries the FY2014-15 basis break; hydro and nuclear generation are metered throughout. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried."
  },
  {
   "id": "coal-production",

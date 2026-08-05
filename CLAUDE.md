@@ -343,6 +343,32 @@ library in a child process and requiring the fixture tree to be byte-identical a
 **Any gate asserting a property of a field cites the schema.** If the property is not in the schema,
 either put it there or drop the assertion.
 
+**A GUARD BINDS A SCOPE, AND THE CLAIM IT PROTECTS HAS ITS OWN. WHEN YOU ADD A GUARD, WRITE DOWN
+BOTH — what it binds and what it does not.** The gap between the two is silent by construction: the
+guard passes, because it is checking the thing it binds, and the claim outside its scope is
+unprotected with nothing to report it. **Three instances in one batch, all found by hand and none by
+any gate:**
+- `reachability` binds a LIST of marks; the claim is about every prose field on the record type.
+  `assessmentNote` and `revisitTrigger` were outside the list — 226 marks invisible.
+  Closed by `no-unguarded-prose-field`, which binds the list to the schema.
+- `reachability`'s own `ownPage()` bound `series | ledger`; the MARKS entries admit any `layers[]`.
+  Adding the first `provenance` mark made 185 records report "no page built", which reads like a
+  broken build rather than a broken lookup. **The enumeration scope had leaked one level down, into
+  the gate's own path resolution.**
+- `breaks[]` binds a SERIES — the note renders, no line is drawn across the seam — and does NOT
+  reach a DERIVED COMPARISON stated in a ledger record's prose. A widening was stated from a year
+  sitting on the imputed side of a basis break, understating the opening gap and overstating the
+  widening, with every gate green.
+
+**The test is one question asked at the moment the guard is written: if the claim moved one level
+out — to another field, another layer, another record, a sentence about the data rather than the
+data — would this guard still see it?** Where the answer is no, say so in the guard's own header.
+`tools/lib/guarded-marks.mjs` and `tools/field-render-audit.mjs` both carry that paragraph, and
+`tools/seam-span-report.mjs` exists because the third instance is not closed: it reports 117 spans
+of which 29 are undeclared, and 29 is a candidate list rather than a defect count, so it stays
+report-only until the triage narrows it. **A deferral with a measured rate and a named next step is
+a different object from a deferral that says "logged".**
+
 **A field lands in the schema, the TYPE, a VIEW and `reachability`'s guarded-marks list in ONE
 commit.** Miss either of the last two and the field renders nowhere while every gate stays green,
 because `reachability` guards a LIST and a field absent from that list is unguarded BY CONSTRUCTION —
