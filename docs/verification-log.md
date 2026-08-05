@@ -9806,3 +9806,112 @@ surfaces built, 14/14 linked, 1141/1141 references · `validate:selftest` 23/23 
 the broken fixtures, 2/2 output gates on theirs.
 
 **NOT PUSHED.** Push is not autonomous while the deployment is public and unauthenticated.
+
+## Cycle 2026-08-05as — batch 14: which measure governs, the reachability delta, and 67 records read
+
+### Head items
+
+**1. L-0226's ordering claim was true on one measure and false on the other, and named neither.**
+"The assumption dominates the near year and much less the far one" holds on the RATIO — 11.11x
+against 2.56x — and **reverses on the absolute difference**, 0.91 points against 2.01, where the far
+year moves more. The record now states which measure governs and why: its claim is about whether a
+published figure is a forecast or an artefact of a modelling choice, which asks how much of the
+quantity survives the assumption — a proportional question, so the ratio governs there and **does not
+govern the planning question**, where 2031-32 moves by more. **Same class as the truncation this
+correction was written to fix, committed one batch later in the sentence doing the fixing.** The
+truncation dropped the half that weakens the record's point; the unstated measure kept the half that
+flatters it.
+
+**2. Reachability 1358 → 1368 accounted against the gate's own output at both ends.** Same build,
+`--data` pointed at `6e26544`:
+
+```
+PREV  1358/1358 · unmeasured 379 · caveat 234 · notes 329 · differentFactsNote 72 · assessmentNote 168 · revisitTrigger 66 · bridgeNote 110
+HEAD  1368/1368 · unmeasured 379 · caveat 234 · notes 329 · differentFactsNote 72 · assessmentNote 173 · revisitTrigger 71 · bridgeNote 110
+```
+
+Five other fields byte-identical, 662 pages both times. The ten are five records times two fields —
+the five `contested` notes. **Fifth unstated delta, now stated from the gate rather than from memory.**
+
+**3. STATE.md consistency check — SCOPED, and the cheap version catches one of the two real
+instances.** A state line asserts a named object's status with a token; today neither the object nor
+the token is marked, and both real instances lived in prose and in headings. A token-matching check
+would catch **Arc B** (same file, same name, two tokens) and would **NOT** catch **phase 14** (a line
+about a channel against a line about a record — contradictory only underneath). Reported as one of
+two: a gate advertising STATE.md consistency while missing the instance that propagated a false claim
+into P-121 licenses trust it has not earned. **What would catch both is a convention, not a checker**
+— every state line dated and object-named, so the latest governs and earlier ones are mechanically
+superseded. Scope only; a new gate is a contract change.
+
+### THE 67 CONTESTED RECORDS, READ INDIVIDUALLY
+
+**Count corrected: 67, not 65** — 67 at `6e26544` and 67 at `2537cd8`, so the delta is zero and the
+error was the previous report asserting a figure no gate emitted. Sixth unstated delta, second of my
+own.
+
+**THE HYPOTHESIS IS FALSE.** Classified by asking of each record what would settle its contest:
+**criterion (normative) 22 · interpretation 13 · evidence-withheld 11 · measure 10 ·
+evidence-unobservable 5 · time 4 · vocabulary residue 2.** Normative is **a third**, not most.
+
+And the phase-skew explanation is insufficient: in the five records' own L-0015-to-L-0076
+neighbourhood the split is 8 criterion of 19 — **42 per cent, not 80.** They were unrepresentative of
+their own range. Five records cannot carry a distribution.
+
+**`disputeKind` IS WITHDRAWN AS A DONOR.** Read verbatim, both its values are defined against *the
+stated reason for an absence* — "contradicted by evidence that the data exists or was held", "the
+characterisation of the non-release". Neither has meaning applied to two readings of a measure. The
+previous report reached its conclusion from the value NAMES. Twenty-three records would be forced
+into boxes fitting neither: **interpretation is not normative** — a court can settle it, and in
+L-0163 two courts did seven months apart — **and measure-selection is not evidentiary**, since
+L-0141's problem is in its own words *"not the absence of a common measure but an embarrassment of
+them"*.
+
+### THE JOINT DESIGN — one rule, two instances. PROPOSAL ONLY
+
+**The assessment enum answers one question: what the record concludes about the measure. Every other
+question gets its own field, with written definitions, rendered and gated.** `contestGround` and
+`commitmentState` are the same problem — a second axis pushed into a value on the first — and the
+corpus has refused that move twice on this reasoning already (no fifth `reasonKind`, no fifth
+commitment state). **Neither is an enum change.** Both use the `reasonDisputed` → `disputeKind`
+conditional-required shape.
+
+**THE THIRD THING, AND WHY THEY CANNOT BE DESIGNED IN SEQUENCE: no gate asserts that an enum-valued
+or boolean field reaches its record's page.** Both gates exclude it by construction —
+`field-render-audit` line 54 tests `!v.enum && !v.format && !v.pattern`, `no-unguarded-prose-field`
+derives identically, and both announce their scope as *prose* fields. **Both proposed fields are
+enum fields and would land in the one hole the instrument has already fallen down** — the same
+enumeration-scoped blindness that shipped 226 marks invisible with every gate green.
+
+The hole is occupied, not theoretical, on two script-stripped observations of built output:
+**29 ledger records render no verdict at all, every one `no-objective`** — plausibly a deliberate view
+decision, and the finding is that nothing asserts it and no written decision records it; and
+**`differentFacts: true` renders a label while `false` renders nothing**, so the flag the schema calls
+*"the judgement most at risk of being made silently"* is silent on all 24 records that carry it, while
+the note explaining it reaches the page under `reachability`.
+
+**A third probe number is withdrawn as an artefact**: an initial count of 27 unrendered
+`differentFacts` flags searched for the literal field name where the view paraphrases — the same
+class as `field-render-audit`'s first run reporting 53 false invisibles. Not reported as a defect.
+
+**Two records fall out and are candidates, not findings**: L-0075 and L-0101 each have a live
+proceeding before a body outside the enacting authority — review petitions admitted 2022 and unheard,
+and Tamil Nadu's Article 131 suit — which is `awaiting-adjudication`'s written test. Whether the
+contest survives the ruling needs the pleadings, not the docket. And **L-0141 joins L-0092 and L-0129**
+as a third record whose note says `contested` is standing in for a presentational value that does not
+exist.
+
+### Minor
+
+`figure-consistency`'s claims format supports subtraction only, so the two ratios L-0226 now prints
+cannot be declared even by an author who wants to. Noted, not built.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs =
+682 records, 1,759 points** · `no-bare-root` 0 new, 0 stale, 277 allowlisted from 277 frozen ·
+`no-unguarded-prose-field` 19 prose fields, 7 guarded / 12 exempted · `figure-consistency` 18 claims,
+18 checked, 5 rounding artefacts declared · `reachability` 1368/1368, 662 pages ·
+`field-render-audit` 32 prose fields across 3 layers, 0 invisible · `domain-coverage` 14/14 surfaces,
+14/14 linked, 1141/1141 references · `validate:selftest` 2/2 output gates fire on their own fixtures.
+
+**NOT PUSHED.** Push is not autonomous while the deployment is public and unauthenticated.
