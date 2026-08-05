@@ -1613,3 +1613,170 @@ ai states *"the seam alone was inflating the widening by **1.29** points"*, comp
 the record's own basis the inflation is **1.30**. The entry names the 10.47/10.48 artefact two
 sentences earlier and then derives from the operand it had just set aside. Local, trivial, and
 exactly the class this phase caught four times.
+
+---
+
+# PHASE-15 CLOSE AUDIT, PART 2 — THE FOUR RESIDUALS AND THE SHIPPED-RECORD AUDIT
+
+**FINDINGS ONLY. Nothing resolved.** No verdict is contradicted by anything below, so no stop.
+
+## 1. The 0.01 miss, fully identified — and it is live in a shipped record
+
+**Batch 4 (cycle `ai`). The claim: *"the seam alone was inflating the widening by 1.29 points."*
+The record: L-0221, field `summary`,** where it still reads *"starting there instead gave 11.77
+points, so the seam alone was inflating the widening by 1.29."* It is repeated in the `note` of
+L-0221's declared widening claim in `tools/lib/figure-claims.json`.
+
+**It does NOT fall inside a declared rounding artefact.** L-0221's summary declares two artefacts —
+`10.47/10.48` for the widening and `24.24/24.25` for the full-window gap — and **neither covers 1.29.**
+1.29 is a **third** derived quantity, `11.77 − 10.48`, computed from the printed-operand value the
+same sentence sets aside two clauses earlier in favour of 10.47. **On the record's own leading basis
+the seam contribution is 1.30.**
+
+**It does not contradict a figure declared source-exact either**, and the precise statement matters:
+the widening claim IS declared, with unrounded sources reconstructing to 10.47 exactly — but 11.77 is
+itself an undeclared printed-operand figure, so 1.29 is **an undeclared third rounding artefact
+derived from an operand the record rejected**, not a contradiction of a source-exact one.
+`figure-consistency` cannot see it: claims are declared, never mined. Same class as L-0226's
+undeclarable ratios and L-0223's two loose figures.
+
+## 2. The letter-token distribution, re-run WITH THE NEEDLE PRINTED
+
+```
+NEEDLE     (?<![0-9A-Za-z\)])\(([a-d])\)
+EXCLUSION  a '(' immediately preceded by [0-9A-Za-z)] — the statutory-citation form.
+           29 such occurrences excluded corpus-wide: 12(1)(c), 239AA(7)(b), 370(1)(d), 43D(5), 60(5)(c).
+```
+
+**69 tokens survive, across 24 records — and they are THREE DIFFERENT VOCABULARIES:**
+
+| vocabulary | tokens | records |
+|---|---|---|
+| **commitment states** | 39 | 15 |
+| **`differentFacts` criteria (a)(b)(c)** | 16 | L-0132, L-0133, L-0141, L-0144, L-0145, L-0146, L-0148 |
+| other enumerations (CAATSA's three statutory states in L-0199, list markers) | 14 | 7 |
+
+**THE SUBSTANTIVE FINDING SURVIVES AND IS NOW EARNED: no record asserts commitment state (c).**
+Read individually, the positive self-assertions are **(a) on twelve records** — L-0188, L-0194,
+L-0196, L-0201, L-0204, L-0205, L-0212, L-0216, L-0221, L-0223, L-0224, L-0225 — **(b) on two**
+(L-0188, L-0222), **(d) on one** (L-0213), **and (c) on none.** The only two `(c)` tokens in a
+commitment-state context are explicit negatives: L-0209 *"cannot reach (c) abandoned"* and L-0213
+*"nothing evidences abandonment, so it is not (c)"*.
+
+**`ao`'S STATED DISTRIBUTION DOES NOT SURVIVE.**
+- *"no (c) anywhere"* is **false as a token claim.** `(c)` occurs 18 times — and **L-0224's own
+  `assessmentNote`, written two batches BEFORE `ao`, reads "Not (c) — nothing retrieved repudiates
+  them."** The claim was falsified at the moment it was made, by a record the same phase authored.
+- *"(b) ×1"* is **false on any needle.** L-0188 and L-0222 both assert (b) at `ao`'s own commit.
+- The totals (24 / 21 / 1 / 2) are not reproducible under any needle constructible from the report.
+
+**AND A THIRD FINDING BEARS DIRECTLY ON THE DESIGN: the corpus already runs three separate `(a)-(d)`
+vocabularies in the same prose fields.** A bare-letter `commitmentState` would collide with the
+`differentFacts` criteria on seven records that use both. That is independent confirmation of batch
+10's recommendation of NAMED values — reached from the data rather than from readability.
+
+## 3. "Fabricated by construction" — SCOPED, AND MY OWN CLASSIFICATION WAS WRONG
+
+**`manifest` emits a record count.** `manifest OK — 682 records, 71,554 bytes`. It has been in the
+build chain throughout, and **nine gate lines in the log quote it.** Batch 15 filed *"every record
+count in a gate line before `d117832` is a fabricated scope by construction — fourteen phases"* as the
+audit's largest corpus-wide finding. **That is wrong and is withdrawn.**
+
+**The true scope is three lines.** Exactly three lines in the entire log attribute a record count to
+`validate`, the gate that never emitted one — cycles `ag` (675, correct), `ah` (675, correct) and `ai`
+(678, **wrong, 676**). **All three are phase 15.** The finding is phase-15-LOCAL, not corpus-wide, and
+it moves from the non-blocking list to the blocking one.
+
+**LOAD-BEARING sites — a count cited as evidence rather than printed in a gate line:**
+
+| site | count | what it carries |
+|---|---|---|
+| cycle `p`, assessment audit of phases 1-13 | **619 records swept — 183 ledger, 118 provenance, 60 pairs, 258 series** | the audit's own COVERAGE claim, repeated in its limits statement. Sum reconstructs (183+118+60+258=619) |
+| cycle `p` | *"141 T1 citations across 113 records"* | **already corrected** one cycle later to *"313 bare-root citations across 255 records"* — the detector had filtered on `tier == 'T1'`. Proof the class is real AND that it was caught |
+| phase 10 merge | *"91 records merged; unified corpus 390"* | merge completeness |
+| phase 12 merge | *"15 pairs (PR-33-PR-47). Corpus 444 → 511"* | merge completeness |
+| federalism merge | *"106 records: 34 ledger…"* | merge completeness |
+| the shape sweep | *"149 records, no value added"* | sweep coverage, in a heading |
+
+**Everything else is decorative** — a gate line quoting `manifest`, `reachability` or
+`domain-coverage`, all of which emit their own scope. **Reported, not corrected, per instruction.**
+
+## 4. The adversarial-read rule reordered by observed yield — DONE, in `CLAUDE.md`
+
+Checks now run **counts → attributions → scopes → STATE.md state lines → verdict-against-note and
+self-undermining premises → arithmetic LAST**, with the reason recorded in the rule itself: 34
+arithmetic claims recomputed across ten batches, 33 exact, the one miss 0.01 of a point — against four
+count-or-attribution defects in the same ten, one of them an explanation constructed for a delta that
+never happened. **The instrument gates arithmetic and gates none of the other three, and the defects
+follow the gaps.**
+
+---
+
+# THE SHIPPED-RECORD AUDIT — L-0221 to L-0226, P-121 to P-127
+
+Method: every commit that touched each record, field by field, then the **untouched** fields read for
+residues. **The prediction held — corrections landed in some fields and not others.**
+
+| record | edits after creation | fields corrected | fields never touched |
+|---|---|---|---|
+| L-0221 | 4 | summary, whatHappened, assessmentNote, provenanceRefs | **caseFor, caseAgainst, caveat** |
+| L-0222 | 1 | summary, whatHappened | caseFor, caseAgainst |
+| L-0223 | 1 | whatHappened, caseAgainst | summary, caseFor |
+| L-0224 | 2 | assessment, assessmentNote, revisitTrigger, unmeasured | **summary, whatHappened, caseFor, caseAgainst** |
+| L-0225 | 1 | assessmentNote, unmeasured | summary, whatHappened |
+| L-0226 | 2 | whatHappened, caseAgainst | **summary** |
+| P-121 | 1 | notes | whatChanged, bridgeNote |
+| P-125 | 2 | whatChanged | notes, bridgeNote |
+| P-127 | 1 | bridgeNote | whatChanged |
+| P-122 · P-123 · P-124 · P-126 | 0 | — | all |
+
+## FINDING R1 — L-0226's `summary` still carries the truncation the record was corrected for
+
+**`summary` was never edited.** It reads: *"…about 1 per cent of renewable generation will not be
+absorbed in 2026-27 and around 3.3 per cent in 2031-32 — and that on a different assumption about how
+far coal plants can turn down, **the 2026-27 figure falls to 0.09 per cent.**"*
+
+**Both years for the 55 per cent minimum-technical-load projection; only 2026-27 for the 40 per cent
+variant.** The 2031-32 figure of 1.29 per cent is absent. That is **exactly the truncation batch 13
+corrected in `whatHappened`** and batch 14 refined in `caseAgainst` — and the omission is the one that
+flatters the record's argument, since it leaves the 11.11x near-year sensitivity standing without the
+2.56x far-year one beside it.
+
+**Worse than an ordinary residue: `summary` is the field a reader meets first**, and both corrections
+sit downstream of it. **NOT A STOP** — the verdict is `contested` on the guarantee-against-projection
+relationship, which the sensitivity magnitude does not touch.
+
+## FINDING R2 — P-123 carries 28.84 per cent as its own figure, one batch after it was corrected to 28.96
+
+P-123 was written in batch 2 and **has never been edited.** Its `whatChanged` reads: *"on the figures
+both are measured by, non-fossil sources were 53.21 per cent of installed capacity at 31.03.2026 and
+**supplied 28.84 per cent** of the electricity generated over FY2025-26."*
+
+**Batch 3 established that 28.84 puts CEA's Bhutan import inside the denominator and outside the
+numerator — a population mismatch inside a share — and corrected L-0221 to 28.96.** The correction was
+propagated to L-0221 and to all four affected series notes. **It was not propagated to P-123**, which
+states the superseded figure flat, with no contrast, no correction and no pointer.
+
+**The corpus therefore carries two values for one quantity in two records, and the superseded one is
+presented as fact.** NOT A STOP: P-123 is provenance and carries no verdict, and 0.12 of a point does
+not touch L-0221's `partly`, which rests on element 2 having no reporting at all.
+
+## Reported as defensible rather than as defects
+
+- **L-0221's `caseFor`** — never edited across four correction passes — says *"non-fossil generation
+  reached 29.2% in FY2025-26 on the Ministry's own figure"* where the summary leads on 28.96. **This
+  is sound**: the figure is explicitly attributed to the Ministry, and `whatHappened` carries the
+  reconciliation (28.96 removes the import from both sides; 29.27 counts it on both, close to the
+  Ministry's 29.2). The only weakness is that `caseFor` gives no pointer to it.
+- **L-0221's `caseAgainst`** says two releases *"announce the capacity limb as though it were that
+  goal"* — where "that goal" is Panchamrit element 2. **That is the CORRECTED claim, not the withdrawn
+  one**, and it agrees with P-123.
+- **P-123's "COP26 announced no such limb"** is scoped to the *"50 per cent of installed electric
+  power capacity"* formulation, which Glasgow genuinely did not announce. **The withdrawn claim was
+  the unscoped one about the capacity limb generally.** Surface similarity, different object.
+- **P-126's 28.84** is a live use and correct: it names 28.84 as the error against 28.96, which is the
+  record's purpose. **My detector flagged it as a live claim — a detector artefact**, because P-126
+  draws the contrast without using the words `CORRECTED` or `previously`.
+
+**Corpus-wide sweep for the other superseded phase-15 figures: `24.37` — 0 occurrences. `9.69` — 0
+occurrences.** Both fully purged.

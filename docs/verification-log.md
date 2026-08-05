@@ -10020,3 +10020,109 @@ on theirs.
 **Phase NOT closed. Records NOT audited — that is the next batch. No finding resolved.**
 
 **NOT PUSHED.** Push is not autonomous while the deployment is public and unauthenticated.
+
+## Cycle 2026-08-05au — batch 16: close audit part 2, and the audit corrects itself
+
+**FINDINGS ONLY, nothing resolved. No verdict is contradicted, so no stop.**
+
+### THE AUDIT'S OWN LARGEST FINDING IS WITHDRAWN
+
+Batch 15 filed *"every record count in a gate line before `d117832` is a fabricated scope by
+construction — fourteen phases, not five batches"* as its largest corpus-wide result. **`manifest`
+emits a record count** — `manifest OK — 682 records, 71,554 bytes` — it has been in the build chain
+throughout, and **nine gate lines in the log quote it.** The claim is wrong and is withdrawn.
+
+**The true scope is three lines.** Exactly three lines in the whole log attribute a record count to
+`validate`, the gate that never emitted one: `ag` (675, correct), `ah` (675, correct), `ai` (678,
+**wrong — 676**). **All three are phase 15.** The finding moves from corpus-wide and non-blocking to
+phase-15-local and blocking. **An audit that read one gate's output and generalised to a class it had
+not checked** — the same shape it had just filed against three other entries.
+
+**Load-bearing sites, separated as instructed:** the assessment audit's **619 records swept (183
+ledger, 118 provenance, 60 pairs, 258 series)**, a coverage claim repeated in its own limits
+statement; three merge-completeness claims (390, 511, 106/34); the shape sweep's 149; and one
+**already corrected** — *"141 T1 citations across 113 records"* became *"313 across 255"* one cycle
+later when the detector's `tier == 'T1'` filter was found. Everything else quotes `manifest`,
+`reachability` or `domain-coverage`, all of which emit their own scope. Reported, not corrected.
+
+### The 0.01 miss, named — and it is live in a shipped record
+
+**Batch 4, the claim "the seam alone was inflating the widening by 1.29 points", record L-0221,
+field `summary`**, where it still stands. **It falls inside NO declared rounding artefact**: the
+summary declares two — 10.47/10.48 and 24.24/24.25 — and 1.29 is a **third** derived quantity,
+`11.77 − 10.48`, computed from the printed operand the same sentence sets aside in favour of 10.47.
+On the record's own leading basis it is **1.30**. Nor does it contradict a source-exact figure: 11.77
+is itself undeclared, so this is **an undeclared third artefact derived from an operand the record
+rejected**. `figure-consistency` cannot see it — claims are declared, never mined.
+
+### The letter-token distribution, re-run with the needle printed
+
+`(?<![0-9A-Za-z\)])\(([a-d])\)`, excluding a `(` preceded by `[0-9A-Za-z)]` — the statutory-citation
+form, **29 occurrences excluded** (`12(1)(c)`, `239AA(7)(b)`, `43D(5)`). **69 tokens survive across 24
+records, in THREE vocabularies: commitment states 39, `differentFacts` criteria (a)(b)(c) 16, other
+enumerations 14.**
+
+**THE SUBSTANTIVE CLAIM SURVIVES AND IS NOW EARNED: no record asserts commitment state (c).** Read
+individually: **(a) on twelve records, (b) on two, (d) on one, (c) on none.** The two `(c)` tokens in
+a commitment-state context are explicit negatives.
+
+**`ao`'s stated distribution does not survive.** *"No (c) anywhere"* is false as a token claim — and
+**L-0224's own `assessmentNote`, written two batches earlier, reads "Not (c) — nothing retrieved
+repudiates them."** The claim was falsified when made, by a record the same phase authored. *"(b)
+×1"* is false on any needle: L-0188 and L-0222 both assert (b) at `ao`'s own commit.
+
+**And a third result bears on the design: the corpus runs three separate `(a)-(d)` vocabularies in the
+same prose fields**, so a bare-letter `commitmentState` would collide with the `differentFacts`
+criteria on seven records that use both — independent confirmation of batch 10's named-values
+recommendation, from the data rather than from readability.
+
+### The adversarial-read rule reordered by observed yield
+
+`CLAUDE.md` now runs **counts → attributions → scopes → STATE.md state lines → verdict-against-note
+and self-undermining premises → arithmetic LAST**, with the reason in the rule: **33 of 34 arithmetic
+claims exact across ten batches against four count-or-attribution defects in the same ten.** The
+instrument gates arithmetic and gates none of the other three, and the defects follow the gaps.
+
+### THE SHIPPED-RECORD AUDIT — two findings, and the prediction held
+
+Every commit that touched L-0221 to L-0226 and P-121 to P-127, field by field, then the **untouched**
+fields read. **Corrections landed in some fields and not others in every multi-edit record.**
+
+**R1 — L-0226's `summary` still carries the truncation the record was corrected for.** `summary` has
+never been edited. It gives both years for the 55 per cent minimum-technical-load projection and
+**only 2026-27 for the 40 per cent variant**; the 2031-32 figure of 1.29 per cent is absent — exactly
+the truncation batch 13 corrected in `whatHappened` and batch 14 refined in `caseAgainst`. **The
+omission is the one that flatters the record's argument**, leaving 11.11x standing without 2.56x
+beside it, **and `summary` is the field a reader meets first** while both corrections sit downstream.
+Not a stop: the `contested` verdict rests on the guarantee-against-projection relationship.
+
+**R2 — P-123 states 28.84 per cent as its own figure, one batch after it was corrected to 28.96.**
+P-123 was written in batch 2 and has never been edited. Batch 3 established that 28.84 puts CEA's
+Bhutan import inside the denominator and outside the numerator and corrected L-0221 and all four
+affected series notes. **P-123 was not in the propagation.** The corpus carries two values for one
+quantity in two records and presents the superseded one as fact. Not a stop: P-123 carries no verdict,
+and 0.12 of a point does not touch L-0221's `partly`.
+
+**Reported as defensible rather than as defects**, because a substring test is not a claim check:
+L-0221's `caseFor` cites the Ministry's 29.2 with explicit attribution and the reconciliation sits in
+`whatHappened`; L-0221's `caseAgainst` carries the corrected claim, not the withdrawn one; P-123's
+"COP26 announced no such limb" is scoped to the *installed-capacity percentage* formulation, which
+Glasgow genuinely did not announce; and **P-126's 28.84 is a correct live use that my own detector
+misflagged**, because P-126 draws the contrast without using the words `CORRECTED` or `previously`.
+
+**Corpus-wide sweep for the other superseded phase-15 figures: `24.37` 0 occurrences, `9.69` 0
+occurrences.** Both fully purged.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs =
+682 records, 1,759 points** · `manifest` 682 records, 71,554 bytes · `no-bare-root` 0 new, 0 stale,
+277 allowlisted from 277 frozen · `no-unguarded-prose-field` 19 prose fields, 7 guarded / 12 exempted
+· `figure-consistency` 18 declared claims, 18 checked against source and printed operands, 5 rounding
+artefacts declared · `reachability` 1368/1368 marks on their own record page, 662 pages scanned ·
+`field-render-audit` 32 prose fields across 3 layers, 0 invisible · `domain-coverage` 14/14 surfaces
+built, 14/14 linked, 1141/1141 references · `validate:selftest` 23/23 validator rules fire on the
+broken fixtures, 2/2 output gates on theirs.
+
+**Phase NOT closed. No finding resolved. NOT PUSHED** — push is not autonomous while the deployment is
+public and unauthenticated.

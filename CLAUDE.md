@@ -340,10 +340,20 @@ in its `why` and takes the weaker of the available kinds.**
 
 **Read the previous batch's report as an adversary before starting new work.** A batch cannot
 proofread its own output — it knows what it meant — but it can audit the batch before it, and that is
-where most of this phase's corrections came from. Before touching the arc: recompute every arithmetic
-claim in the last report; check that every count reconciles against the gate's own emitted scope;
-check that no verdict is contradicted by its own note; check that no claim rests on a premise the same
-report undermines; check that every state line in `STATE.md` matches the resolution recorded below it.
+where most of this phase's corrections came from. **Run the checks in this order, which is by observed yield and not by ease.** Before
+touching the arc:
+1. **COUNTS** — every count reconciled against the gate's own emitted scope, at that batch's own END
+   commit. Mid-batch gate runs are the specific trap.
+2. **ATTRIBUTIONS** — what a delta is said to consist of, checked against what actually changed.
+3. **SCOPES** — every figure traced to the gate that emitted it, and named. A figure no gate emitted
+   is a fabricated scope even when it is true, and it is invisible to every consistency check there is.
+4. Every state line in `STATE.md` matched against the resolution recorded below it.
+5. No verdict contradicted by its own note; no claim resting on a premise the same report undermines.
+6. **ARITHMETIC last.** Recompute it, but expect nothing: **the phase-15 close audit recomputed 34
+   arithmetic claims across ten batches and 33 were exact, the one miss being 0.01 of a point — while
+   the same ten batches carried four count-or-attribution defects, one of them an explanation
+   constructed for a delta that never happened, which survived all ten.** The instrument gates
+   arithmetic and gates none of the other three, and the defects follow the gaps.
 Write what this finds into `STATE.md` as queue items before starting the arc, so the findings survive
 if the batch dies. Earned three times over: a headline pairing a stock with a flow and stating a gap
 that matched neither; a corpus count attached to a gate that had never emitted one; a `reasonKind`
