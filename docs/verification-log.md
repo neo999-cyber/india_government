@@ -8358,3 +8358,53 @@ elector-parity figure for J&K delimitation is attributed to a language model. **
 source.** It is listed as requiring retrieval from the Delimitation Commission's report or an ECI
 publication, or dropping.
 
+## Cycle 2026-08-05ac — adversarial triage 2: four corrections to shipped records
+
+Four separate commits under the L-0021 precedent, each stating its correction inside the record.
+No figure changed anywhere, no score changed anywhere, and every merge asserted both.
+
+**1. L-0114 — a universal claim its own next field contradicts.** The summary read "the only pellet
+quantity any government has ever published"; the adjacent field reports the J&K Chief Minister
+giving 51 killed, 9,042 injured, **6,221 injured by pellets**, 782 eye injuries and 510
+hospitalised. Restated to what was located, in a UNION publication, and the record now names the
+counter-example it already contained. The identical claim on the `jk-pellet-deaths` series caveat
+was corrected with it. Two counterfactual claims — "nobody has ever measured that" and "No
+instrument of any provenance has ever measured it", both about deaths avoided — are now bounded to
+what this phase searched.
+
+**2. Four enumerated absence claims bounded.** L-0124, `jkccs-civilians-killed-by-armed-forces`,
+PR-32 and P-87 asserted "no instrument of any provenance publishes" the perpetrator split. The
+enumeration behind them bounds a named few — MHA, GTD, UCDP — while the phrase claimed the world.
+Now "no instrument among those searched", **with the enumeration pointed to where it is adjacent and
+NOT invented where it is not.** The remaining occurrences of the old phrase are inside the correction
+notes, where they name what they supersede.
+
+**3. Demonetisation — the reasoning written, the ground narrowed.** The corpus's most prominent
+failure verdict carried no `assessmentNote` at all. Four objectives were announced and two are
+measured here; both fail on the government's own sources. The other two — terror financing, and the
+digitisation objective that replaced the original justification as returns approached 100 per cent —
+are entered as `unmeasured` and explicitly excluded from the ground. Both are counterfactual
+attributions with no agreed definition, so `never-defined` rather than unpublished, and the second
+cites this record's own caseAgainst, which had already conceded that digital adoption was on a
+rising trend and the increment unquantified. **Writing the note exposed a second defect**: the
+caseAgainst asserts failure "against every objective stated at announcement", which overstates what
+the record measures. Left standing as a CASE, with the note saying so.
+
+**4. L-0195 — the note contradicted the body.** The note said the claim states no baseline; the
+caseAgainst already argued the opposite and harder, including "0.85 times CY2022 means two-way trade
+with Australia has FALLEN since ECTA was signed". Resolved in the direction the record supports: the
+words DO indicate a baseline, the literal reading fails, and **the contest is between two readings
+of the claim rather than between candidate base years.** Stays contested because the caseFor's
+loose-marker reading is available and not absurd — not because no baseline was given.
+
+**A VERIFICATION RUN AFTER MY OWN EDIT MEASURED MY EDIT.** Scoping item 5, a check of whether every
+record from L-0001 to L-0024 lacks an `assessmentNote` returned FALSE, and I was one step from
+"correcting" triage 1 and the brief. It returns false because **L-0011 now has a note — I wrote it
+twenty minutes earlier.** All 24 lacked one when triage 1 counted them; 23 do now. The claim was
+right and the re-check was measuring the wrong tree. Recorded because this is the same shape as
+`url-check` reporting "0 to check" after a push: a verification that runs after the change cannot
+see the state the claim was about.
+
+**Extract regenerated** against the corrected corpus: the three offending strings now return zero in
+`review/adversarial-extract.md`.
+
