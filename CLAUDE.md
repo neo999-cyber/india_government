@@ -83,6 +83,14 @@ phrase appears exactly once, inside the sentence beginning CORRECTED" — not th
 in cycle 2026-08-05b, where a guard demanding the absence of "binding" aborted an edit that had
 correctly withdrawn the word and said so.
 
+**The system resolver on this machine is broken — pin before recording any host as unreachable.**
+Government hosts return HTTP 000 to a plain `curl` and resolve normally under
+`dig +short @1.1.1.1`; `curl --resolve host:443:<ip>` then works. Correction cycle 1 measured ten
+live government hosts as unreachable, including `pib.gov.in`, from which that same session had
+retrieved dozens of documents. This is an ENVIRONMENT FACT, not a finding about the hosts, and
+writing it up as one would have been the class-of-sources error committed in the cycle that audited
+for it. Known pins live with the retrieval notes; add to them rather than re-deriving.
+
 **A claim about a CLASS of sources is tested by varying the host, not by accumulating failures
 within one.** Two failed retrievals from the same domain are one observation, not two. Before
 writing "sources of kind X are unavailable", retrieve something of kind X from a DIFFERENT
@@ -114,6 +122,21 @@ happened to be visible in another term's context window. **Boundaries produce fa
 exactly as substring matching produces false positives.** The default stays where it is — a false
 negative costs a missed candidate, a false positive costs a fabricated finding — and the retry is
 what makes the safe default affordable.
+
+**A FIELD VALUE is no more a finding than a count is.** Context-before-count extends to any single
+field read without the fields beside it. The 2026-08-05 audit judged a source's tier from the `tier`
+field plus the host name, without reading the `name` field next to it, and accused two records of a
+tier misassignment when they were citing a **government order** that a civil-society site re-hosts —
+applying the rule the audit accused them of breaking. The correction then repeated the error one
+cycle later: it reported "99 citations with no tier at all" because the detector looked for `tier`
+INSIDE the object holding `url`, and on series the tier sits on the record. All 99 carry a tier. **A
+field is a fragment of a record, and a fragment read alone misleads exactly as a count does.**
+
+**A detector's scope silently defines the size of its finding, so state the scope beside the count.**
+Filtering on `tier == 'T1'` reported 141 bare-domain roots where the real figure was 313, and
+because the filter excluded them, the report never mentioned the group it had hidden. A count with
+an unstated scope is not conservative — it is wrong by an amount nobody can see, including the
+author. Say what was searched, not only what was found.
 
 **A NON-ZERO count is a candidate list, not a finding, and the context is read before the count is
 banked.** The number returned reads like an answer and is not one. DPIIT's Year End Review 2025

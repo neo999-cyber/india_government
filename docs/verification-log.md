@@ -7717,3 +7717,66 @@ the deletion, so the entry count is the progress measure.
 allowlisted (T1:134 T2:13 T3:6 T4:46 T5:4 no-tier:99); figure-consistency 10/10; manifest 660
 records; reachability and domain-coverage unchanged; selftest exit 0. `/data` untouched.
 
+## Cycle 2026-08-05r — correction cycle 2: twelve citations deep-linked, and the same error found a third time
+
+**Twelve of fourteen World Bank citations deep-linked; the allowlist fell 302 → 290.** The gate
+forced every deletion: fixing the URLs produced `no-bare-root FAILED — 0 new, 12 stale`, and the run
+went green only after the twelve lines were removed. Progress is the entry count and it cannot be
+faked, which is what the ratchet was built for.
+
+**Each indicator was IDENTIFIED, not guessed.** The citations named an indicator family ("World Bank
+WDI / ILOSTAT modelled estimates") and no code. Assigning codes from memory would have been rule 3
+in its most tempting form, since the names are guessable. Instead each candidate code was fetched
+from the World Bank API for India and matched against the record's OWN India value:
+
+- exact to the published precision: `manufacturing-gdp` 15.07, `exports-gdp-peer` 22.97,
+  `cereal-yield-peer` 2,990.60, `industry-employment-peer` 24.90, `fertiliser-use-peer` 163.50,
+  `agri-gdp-share-peer` 16.79, `agri-value-per-worker-peer` 1,641.90;
+- exact at the series' stated 1dp: `agri-employment-peer` 45.25→45.3, `lfpr-female-peer` 26.61→26.6,
+  `vulnerable-employment-peer` 78.52→78.5, `npl-peer` 4.35→4.3.
+
+The match is recorded IN each source name with the API query that produced it, so a later reader can
+re-run the identification rather than trust it.
+
+**One accepted with its discrepancy stated: `credit-gdp-peer`.** The API gives 51.88 against the
+record's 51.5 — 0.74 per cent, and `FD.AST.PRVT.GD.ZS` returns the identical value, so the indicator
+is not in doubt and the gap is a WDI vintage revision. **The record's figure is left as published
+and is NOT restated to the current vintage**; the source name carries the difference instead. This
+cycle corrects citations, not values.
+
+**TWO DELIBERATELY NOT FIXED.**
+- `gdp-per-capita-usd` — the API gives India 1,553.88 for 2014 against the record's 1,094.5, a
+  **42 per cent gap that is not a revision**. The 2024 values agree to 0.05 per cent, so the series
+  is not simply a different indicator. No deep link was attached, because attaching one would assert
+  an identification the numbers refuse. **Flagged as a probable value defect in a shipped series**,
+  which needs its own correction cycle under the L-0021 precedent — not a silent fix inside a
+  citation sweep.
+- `agri-gdp-share` — sourced "MoSPI / World Bank WDI", unit "% of GVA", periods in Indian financial
+  years. WDI publishes % of GDP on calendar years. A WDI indicator URL would misdescribe it.
+
+**THE SAME ERROR, FOUND A THIRD TIME, IN THE CORRECTION THAT NAMED IT.** This cycle's brief said to
+start with "the untiered 99". There are none. All 99 carry a tier — on the RECORD, beside `source`,
+where series put it; the detector looked for `tier` inside the object holding `url`. Checked
+directly: records with a tierless parent, zero.
+
+So the sequence is: the audit judged a tier from the `tier` field and the host name without reading
+`name`, and accused two records that were applying the rule correctly (C2); cycle 1 corrected that
+and, in the same document, reported a 99-strong class that does not exist (C4); and this cycle was
+briefed on that phantom class. **Every iteration is one field read without the fields beside it.**
+Now a rule, together with the scope rule that would have caught the 141-versus-313 undercount when
+it was made: state a detector's scope beside its count, because a filter that excludes a group also
+excludes it from the report.
+
+**The resolver pin, promoted to a rule.** `data.worldbank.org` → 104.18.35.190, `api.worldbank.org`
+→ 172.64.145.25, both via `dig @1.1.1.1`; plain requests return HTTP 000. Written into CLAUDE.md as
+an environment fact with the explicit warning that cycle 1 measured ten live government hosts as
+unreachable — the class-of-sources error committed in the cycle that audited for it.
+
+**Verification.** `git diff --numstat data/series/seed.json` = 24 insertions, 24 deletions: twelve
+name lines and twelve url lines, no reformat. M2 went further than the diff: the merge asserted that
+the parsed before/after arrays differ on exactly the twelve expected ids, that no non-`source` field
+changed on any of them, and that no other record changed at all. build VALID (0 errors, 151
+warnings); no-bare-root OK — 0 new, 0 stale, 290 allowlisted; url-check 11/11 confirmed. Eleven, not
+twelve, because `NE.EXP.GNFS.ZS` already appeared elsewhere in the corpus — which incidentally
+confirms the URL form chosen here matches what the corpus already used.
+
