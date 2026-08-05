@@ -8057,3 +8057,62 @@ attempted and failed.
 **Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 282 allowlisted;
 url-check 1/1; selftest exit 0; diff 3/3 on provenance.json.
 
+## Cycle 2026-08-05x — correction cycle 8: SATP retrieved, four citations, and the gate caught my own broken run
+
+**Allowlist 282 → 278.** Four citations deep-linked. No value changed, no tier changed, and both
+were asserted in the merge.
+
+**THE GATE CAUGHT AN INCONSISTENT STATE I CREATED.** The first attempt ran the record edits and the
+allowlist deletion as separate newline-separated commands rather than an `&&` chain. The edit
+aborted on a bad anchor; the deletion ran anyway. `/data` still held four bare roots while the
+allowlist had dropped them, and `no-bare-root` reported **4 new, 0 stale** on the next run. That is
+the ratchet's first direction firing on its author, and it is the reason the two directions exist:
+a one-way gate would have passed a corpus with four undocumented bare roots. Restored from HEAD,
+verified back to 282 with `/data` untouched, then redone.
+
+**The anchor bug is worth naming.** The search window was `t[i:i+9000]` from the record's id.
+L-0110 is longer than that, so its SATP source sat outside the window and the regex found nothing —
+an assertion failure, correctly, rather than a silent miss. Redone against the record's ACTUAL span,
+from its id to the next one. A fixed-size window over variable-length records is a silent-miss
+generator; the only reason this one was loud is that the code asserted rather than skipped.
+
+**SATP retrieved, and every point checked.** `www.satp.org` now answers on a pin (104.21.34.220),
+ending the "gave no HTTP response of any kind in this phase" condition recorded on four citations.
+The datasheet carries the column header verbatim as the corpus describes it: *Year | Incidents of
+Killing | Civilians | Security Forces | Terrorists/Insurgents/Extremists | Not Specified | Total*.
+Matched at every point the two series carry (2014, 2016-2022): **eight of eight security-force
+values and seven of eight civilian values exact.**
+
+**ONE DIVERGENCE, AND THE VALUE STAYS.** Civilians 2022 is 28 in this corpus, taken from the
+Internet Archive snapshot, against **30** on the live page. The corpus figure is a dated reading of
+an archived vintage; the live figure is a later one. Replacing it would swap one vintage for another
+without establishing which SATP intends, and SATP revises — so the citation records the divergence
+and the number is untouched. This is the third time in this sweep that the disciplined answer to a
+mismatch was to state it rather than resolve it.
+
+**Tiers unchanged, for a reason distinct from cycle 5's and cycle 7's.** P-86 stayed T4 because the
+operative text was still unretrieved. P-80 moved T4 to T3 because its stated reason had stopped
+holding. SATP stays T4 because **retrieval improved and the source did not** — a think-tank
+compilation is T4 whether or not its server answers, and the recorded figures still derive from the
+archive. Three cases, one mechanical assertion, the expected value chosen deliberately each time,
+and that is now the rule in CLAUDE.md.
+
+**P-75's verbatim-quote constraint STANDS.** It says no SATP definition may be quoted verbatim
+because the disclaimer and "Official Data" sections were unretrieved. The datasheet was retrieved;
+those two sections were not, separately. The constraint is left in force and the citation says why —
+the barrier that produced it is gone, but the specific documents behind it are still unread.
+
+**L-0116 remains open, with a better reason than last cycle's.** `judgments.ecourts.gov.in` covers
+the Supreme Court, but its search is **CAPTCHA-gated and JavaScript-driven** — the page carries a
+Captcha control and a `Loading...` placeholder. That is not a route this instrument can use, and no
+attempt was made to work around it. Previous cycle recorded "search work not started"; the accurate
+statement is that the route is gated.
+
+**A scanning note.** `--variants` earned itself twice this cycle, printing the loud warning for
+`judgment` (0) against `judgments` (1) on the ecourts page, and for `Security Force` (0) against
+`Security Forces` (1) on the SATP datasheet. Both would have been banked as absences by a
+boundary-only scan.
+
+**Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 278 allowlisted;
+url-check 1/1; selftest exit 0; diffs 2/2, 2/2 and 4/4.
+
