@@ -123,6 +123,24 @@ exactly as substring matching produces false positives.** The default stays wher
 negative costs a missed candidate, a false positive costs a fabricated finding — and the retry is
 what makes the safe default affordable.
 
+**A finding produced by a correction cycle gets the same scrutiny as the finding it corrects.** A
+correction arrives with the authority of having just fixed something, which is exactly why it is the
+least questioned thing in the room. The phase-14 audit's tier error was corrected in cycle 1 — and
+that same correction invented a 99-strong "untiered" class that does not exist, which cycle 2's brief
+then inherited unchecked. Cycle 2 in turn flagged a 42 per cent value defect in
+`gdp-per-capita-usd`, which cycle 3's brief inherited, and which also does not exist: that series
+alone lists countries alphabetically, so `points[0]` is Bangladesh. **Three consecutive cycles
+each produced a false finding while fixing a real one.** Re-derive a correction's own claims before
+building on them.
+
+**When an identification could be GUESSED correctly, match it against the record's own value
+instead, and record the query in the source name.** WDI indicator codes are guessable from an
+indicator's name, which is what makes assigning them from memory feel safe and makes it rule 3.
+Fetch the candidate, compare it to the figure the record already publishes, and write the query and
+the returned value into the citation so a later reader re-runs the identification rather than
+trusting it. Where the match fails, say so IN THE RECORD and attach no identification:
+`credit-gdp-peer` carries "THE INDICATOR IS NOT ESTABLISHED" for that reason.
+
 **A FIELD VALUE is no more a finding than a count is.** Context-before-count extends to any single
 field read without the fields beside it. The 2026-08-05 audit judged a source's tier from the `tier`
 field plus the host name, without reading the `name` field next to it, and accused two records of a

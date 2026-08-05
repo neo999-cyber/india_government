@@ -1432,12 +1432,6 @@
    "tier": null
   },
   {
-   "id": "gdp-per-capita-usd",
-   "file": "data/series/seed.json",
-   "url": "https://data.worldbank.org/",
-   "tier": null
-  },
-  {
    "id": "gfcf-gdp",
    "file": "data/series/seed.json",
    "url": "https://mospi.gov.in/",
@@ -1750,6 +1744,12 @@
    "cycle": "correction-2",
    "removed": 12,
    "note": "World Bank WDI: twelve series deep-linked to their indicator pages, each indicator identified by matching the record’s own India value against the World Bank API. Two data.worldbank.org citations deliberately NOT fixed — see the log."
+  },
+  {
+   "date": "2026-08-05",
+   "cycle": "correction-3",
+   "removed": 1,
+   "note": "gdp-per-capita-usd deep-linked once its identification was confirmed on both India points. The cycle-2 value defect it was flagged for does not exist."
   }
  ]
 }

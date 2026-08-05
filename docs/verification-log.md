@@ -7780,3 +7780,63 @@ warnings); no-bare-root OK — 0 new, 0 stale, 290 allowlisted; url-check 11/11 
 twelve, because `NE.EXP.GNFS.ZS` already appeared elsewhere in the corpus — which incidentally
 confirms the URL form chosen here matches what the corpus already used.
 
+## Cycle 2026-08-05s — correction cycle 3: the commissioned defect does not exist, and the sweep found a different one
+
+**THE DEFECT THIS CYCLE WAS COMMISSIONED TO FIX IS NOT THERE.** `gdp-per-capita-usd` is the ONLY
+peer panel in `seed.json` that lists countries alphabetically — BGD, CHN, IDN, IND, VNM — where all
+twelve others list India first. India's recorded values are 1,553.9 (2014) and 2,592.0 (2024),
+against the API's 1,553.88 and 2,591.99. **Exact.** The 1,094.5 that cycle 2 reported as India's is
+Bangladesh's.
+
+**The coincidence was load-bearing.** Bangladesh's 2024 figure, 2,593.4, sits within 0.05 per cent
+of India's 2,591.99. So the pattern read as "2024 agrees, 2014 is 42 per cent out" — which looks
+like a currency-basis or base-year problem and sent cycle 2 hunting for one, when the actual answer
+was that the row was the wrong country. A partial match is more misleading than no match: it
+supplies a false constraint that a wrong explanation can be fitted to.
+
+**Fourth iteration of one error in three cycles.** The audit judged a tier from `tier` plus the host
+name without reading `name`. Cycle 1 corrected that and invented a 99-strong untiered class that
+does not exist. Cycle 2 inherited it, and produced this false value defect by reading `points[0]`
+without the `country` beside it. Cycle 3's brief inherited THAT. **Three consecutive correction
+cycles each produced a false finding while fixing a real one**, and each false finding was carried
+into the next brief with the authority of a correction. Now a rule: a finding produced by a
+correction cycle gets the same scrutiny as the finding it corrects.
+
+**The requested sweep was run properly and found a real defect elsewhere.** All thirteen peer series
+verified against the API on BOTH years, not one:
+
+- eleven clean within rounding;
+- `cereal-yield-peer` 2024 out by 0.8 per cent and `agri-value-per-worker-peer` 2024 by 3.7 per cent
+  — plausible WDI revisions, recorded and not acted on;
+- **`credit-gdp-peer` records 55.0 for India in 2024 against WDI's 41.61 — 24.3 per cent.**
+
+**55.0 appears nowhere.** Not in WDI's India series for any year 2010-2024, and not in any peer's
+2024 cell. `FD.AST.PRVT.GD.ZS` returns values identical to `FS.AST.PRVT.GD.ZS`, so it is not a
+choice between codes.
+
+**This retro-invalidates a cycle-2 identification, and that is the point of the new rule.** Cycle 2
+attached a WDI indicator URL to `credit-gdp-peer` on a 0.74 per cent near-match at 2014 and
+rationalised the gap as a vintage revision. Checking the SECOND point destroys that: an
+identification confirmed on one point of two is not confirmed. The citation now opens with **"THE
+INDICATOR IS NOT ESTABLISHED AND THE URL SERVES THE WDI LEG ONLY"**, states both API values against
+both recorded values, records that 55.0 appears nowhere, and notes that the record names IMF
+Financial Soundness Indicators as a co-source whose figures were not verified here.
+
+**NO VALUE WAS CHANGED, and the merge asserted it.** The brief authorised value corrections; none
+was made, because what 55.0 IS has not been established, and correcting toward WDI would substitute
+one unexplained number for another — the brief's own test. The M2 check asserted `a['points'] ==
+b['points']` on every amended series, so a value change could not have slipped through unnoticed.
+
+**A structural break worth carrying forward.** WDI's India credit-to-GDP series falls from 51.87
+(2015) to 38.20 (2016) — 13.7 points in one year, which is a definitional change and not an economic
+event. That is the likeliest reason credit-to-GDP figures diverge between publishers, and it is now
+recorded in the citation.
+
+**Allowlist 290 → 289.** `gdp-per-capita-usd` deep-linked once its identification was confirmed on
+both points, and its citation carries a note naming the alphabetical ordering explicitly, so the
+next reader does not repeat the cycle-2 error.
+
+**Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 289 allowlisted;
+url-check 1/1; selftest exit 0; `git diff --numstat data/series/seed.json` = 3 insertions, 3
+deletions, no reformat.
+
