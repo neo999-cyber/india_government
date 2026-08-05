@@ -66,6 +66,15 @@ const MARKS = [
   { field: 'caveat', layers: ['series', 'ledger'], each: (r) => (r.caveat ? [r.caveat] : []) },
   { field: 'notes', layers: ['series'], each: (r) => (r.notes ? [r.notes] : []) },
   { field: 'differentFactsNote', layers: ['ledger'], each: (r) => (r.differentFactsNote ? [r.differentFactsNote] : []) },
+  // Added phase 15. Both were written into /data and rendered NOWHERE — assessmentNote on all
+  // 164 records carrying it, revisitTrigger on all 62 — and every gate was green throughout,
+  // because the data was correct and no rule read the page for them. That is the absence bug's
+  // exact shape, and it was found by a stage-7 control rather than by anything that could fail.
+  // It matters most for assessmentNote: the assessment-audit sequence closed the day before this
+  // was found, having written reasoning into 33 verdicts that previously carried none, including
+  // the corpus's most prominent failure verdict. None of that reasoning had ever reached a reader.
+  { field: 'assessmentNote', layers: ['ledger'], each: (r) => (r.assessmentNote ? [r.assessmentNote] : []) },
+  { field: 'revisitTrigger', layers: ['ledger'], each: (r) => (r.revisitTrigger ? [r.revisitTrigger] : []) },
 ];
 
 /** @returns {string[]} every .json under dir */

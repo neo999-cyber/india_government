@@ -118,5 +118,29 @@
     "sourceB": 304929840.637,
     "sourceScale": 1000000,
     "note": "The differentFacts gap itself, declared so the gate checks it against both the raw Comtrade values and the rounded operands the record prints. Both agree at 878.17; no rounding artefact."
+  },
+  {
+    "record": "L-0221",
+    "what": "the non-fossil capacity/generation gap at 31.03.2024 (FY2023-24) — capacity share minus generation share",
+    "printedA": "44.97",
+    "printedB": "23.51",
+    "printedDifference": "21.46",
+    "decimals": 2,
+    "sourceA": 44.969794329931894,
+    "sourceB": 23.514291891891894,
+    "sourceScale": 1,
+    "note": "Both operands are themselves derived from CEA General Review 2025 Tables 1.2 and 1.3: capacity (46,928 hydro + 8,180 nuclear + 143,645 RES) / 441,970; generation (134,054 + 47,937 + 225,835) / 1,734,375. Declared so the gate checks the arithmetic the record prints against the unrounded ratios rather than against the rounded operands alone. Both routes give 21.46; no rounding artefact."
+  },
+  {
+    "record": "L-0221",
+    "what": "the same gap at 31.03.2014 (FY2013-14), the UPA baseline year — the other end of the widening the record asserts",
+    "printedA": "32.54",
+    "printedB": "22.85",
+    "printedDifference": "9.69",
+    "decimals": 2,
+    "sourceA": 32.540414408057224,
+    "sourceB": 22.85055554527399,
+    "sourceScale": 1,
+    "note": "Capacity (40,531 + 4,780 + 35,850) / 249,416; generation (134,847 + 34,228 + 65,520) / 1,026,649. Declared alongside the FY2023-24 claim because the record's finding is that the gap WIDENED between the two, so both endpoints have to hold for the claim to. Both reconstruct at 9.69."
   }
 ]

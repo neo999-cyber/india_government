@@ -5,9 +5,9 @@
 One line per record so orientation does not require scanning `/data`. Format:
 `id · domain(s) {lenses} · title`. For the authoritative text, read the record.
 
-662 records — 220 ledger, 262 series, 120 provenance, 60 pairs.
+673 records — 222 ledger, 269 series, 122 provenance, 60 pairs.
 
-## series (262)
+## series (269)
 
 ```
 # data/series/education.json
@@ -61,6 +61,14 @@ rte-quota-children · education · Children in private schools under RTE section
 rte-quota-reimbursement-approval-rate · education · RTE section 12(1)(c) reimbursement approved by the Centre as a share of state claims
 rte-quota-implementing-jurisdictions · education · States and Union Territories admitting children under RTE section 12(1)(c)
 teacher-vacancy-rate-elementary · education · Teacher vacancy rate, elementary, government and aided schools
+# data/series/environment.json
+res-capacity-share · environment · Renewables' share of installed electricity capacity (RES, excluding large hydro)
+res-generation-share · environment · Renewables' share of electricity generated (RES, excluding large hydro)
+non-fossil-capacity-share · environment · Non-fossil share of installed electricity capacity (renewables, large hydro and nuclear)
+non-fossil-generation-share · environment · Non-fossil share of electricity generated (renewables, large hydro and nuclear)
+coal-production · environment · All-India raw coal production
+coal-plf · environment · Plant load factor of coal and lignite thermal stations
+coal-imports-total · environment · Coal imports into India, all grades
 # data/series/federalism.json
 divisible-pool-share-gtr · federalism · Divisible pool of central taxes as a share of the Union's gross tax revenue
 cess-surcharge-share-gtr · macro {federalism} · Cesses and surcharges as a share of gross tax revenue, GST Compensation Cess included
@@ -281,7 +289,7 @@ ujjwala-refills · welfare · PMUY average annual LPG refills per beneficiary
 wheat-procurement · welfare · Wheat procurement
 ```
 
-## ledger (220)
+## ledger (222)
 
 ```
 # data/ledger/agriculture.json
@@ -346,6 +354,9 @@ L-0062 · employment+banking · Formalisation: registration against jobs
 L-0063 · employment+human-development · Educated youth unemployment
 L-0064 · employment+welfare+governance · The 2020 migrant exodus and its missing record
 L-0065 · employment+macro · Structural transformation reversal
+# data/ledger/environment.json
+L-0221 · environment+infrastructure · Half the fleet, under a third of the electricity: the non-fossil milestone is a capacity milestone
+L-0222 · environment+macro · Coal imports were to stop in FY2023-24 and hit their record that year; production rose 85 per cent
 # data/ledger/federalism.json
 L-0150 · macro+federalism · The divisible pool shrank from 89 to 74-80 per cent of gross tax revenue while the states' share of it rose fr
 L-0151 · federalism+macro · The Fourteenth Finance Commission raises the states' share of the divisible pool from 32 to 42 per cent
@@ -519,7 +530,7 @@ L-0042 · human-development+welfare · Nutrition outcomes and the anaemia revers
 L-0043 · poverty+welfare · Multidimensional poverty exit claim
 ```
 
-## provenance (120)
+## provenance (122)
 
 ```
 # data/provenance.json
@@ -643,6 +654,8 @@ P-117 · federalism+macro · "Devolution actual" is two instruments in this drop
 P-118 · federalism+macro+governance · A state's contribution to the Union exchequer has three components, published on two incompatible attribution 
 P-119 · foreign+macro · India and China report different bilateral trade, and the two bilateral balances differ by nearly ten billion 
 P-120 · foreign+macro · India's neighbourhood trade figures: three counterparties do not report at all, and the three that do all reco
+P-121 · environment+infrastructure · "Renewable" has at least four concurrent official boundaries, and large hydro was moved across one of them in 
+P-122 · environment+infrastructure · Renewable generation was imputed, not metered, up to FY2013-14 — the basis changes at the instrument's own bas
 ```
 
 ## pairs (60)

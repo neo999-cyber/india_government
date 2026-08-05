@@ -8544,3 +8544,159 @@ title bundles with it; discom reform `failed` on viability while the loss reduct
 **QUEUED: the 29 contested and 17 unscoreable notes**, and 91 records overall still carry no note —
 now entirely abstentions. Retrieval leads untouched.
 
+
+## Cycle 2026-08-05af — phase 15 batch 1, arc A: renewables against coal, and 226 invisible marks
+
+**PHASE 15 OPENS ON ENVIRONMENT AND ENERGY. One arc authored: A, renewables against coal
+expansion.** Air quality, forest clearances and the wider climate-commitment set are later batches
+and were deliberately not researched. Corpus 662 → 673 records.
+
+**Written: L-0221, L-0222, P-121, P-122, and seven series in two new files** —
+`data/ledger/environment.json` and `data/series/environment.json`, both new, both 1-space.
+
+### The arc's finding, and it is a share-shaped one
+
+**Non-fossil plant is 54.18 per cent of India's installed capacity and supplies 29.2 per cent of its
+electricity.** Both figures are the government's own. The gap is not a technicality: on CEA's
+General Review 2025, Tables 1.2 and 1.3 — installed capacity and gross generation, same universe,
+facing pages — the non-fossil capacity share ran 32.54 per cent at 31.03.2014 to 44.97 per cent at
+31.03.2024, while the generation share ran 22.85 to 23.51 per cent. **The gap widened from 9.69 to
+21.46 percentage points**, both ends declared to `figure-consistency` and both reconstructing.
+
+L-0221 scores **partly**, and the two limbs are scored separately: the COP26 capacity limb was met
+five years early on the metric it was written in, and that metric was fixed in 2015 and again in
+2022, before the result. What is scored against it is that **Panchamrit element 2 — "50 percent of
+its energy requirements from renewable energy by 2030", the only limb of the five denominated in
+energy — is the only one no retrieved document reports progress against**, and two official releases
+instead restate the capacity limb and attribute it to COP26, which announced no such goal.
+
+**The 51.5 per cent figure is not a monthly energy share and the instrument had it wrong.** The
+originating Ministry of Power release says "On 29 July 2025 … renewables met 51.5 % of the country's
+total electricity demand of 203 GW" and gives solar 44.50 GW + wind 29.89 GW + hydro 30.29 GW =
+104.68 GW; 104.68 ÷ 203 = 51.57 per cent. Every operand is in GW, a unit of POWER. It is a ratio of
+simultaneous readings at one unstated moment on one day. No energy unit, no time of day and no data
+source appears anywhere in the release. A later MNRE release restates it as "in July 2025", turning
+the instant into a month with the numbers unchanged. Carried as L-0221's caveat.
+
+### L-0222: the objective named a fuel, a direction and a year
+
+"India will stop importing thermal coal from Financial Year 2023-24" (Minister of Coal, 18 Feb
+2020), with a companion 1 billion tonne CIL production limb for the same year. **In FY2023-24 total
+coal imports were 264.53 MT, the maximum of the published ten-year table, and non-coking imports
+205.72 MT, also the maximum; CIL produced 773.81 MT against 1,000.** Scored **failed** — state (b),
+due and undelivered, on the Ministry's own data. Coal production rose 565.77 → 1,047.52 MT (+85 per
+cent); coal PLF is a U, not a decline, ending at 69.45 per cent above its 65.56 per cent start; and
+the announced new-coal programme roughly doubled, 51.1 GW → 97 GW, in under three years.
+
+**A research-part error caught by reading the document rather than the summary.** Part A2 proposed
+adding ~6.6 GW of lignite to the NEP's 259.6 GW to make it comparable with the later "coal & lignite"
+figures. The NEP's own Exhibit 5.5a labels that row **"Coal + Lignite"** at 259.6 and its highlight
+xii itemises "Coal-259,643 MW" — the figure already includes lignite. No adjustment is warranted and
+the revision is larger than the part allowed. The caveat now states the check rather than the
+correction.
+
+### P-121 and P-122
+
+**P-121 — "renewable" has at least four concurrent official boundaries.** Cabinet declared large
+hydro a Renewable Energy source on 7 March 2019, moving 45,399 MW across the line with no
+construction and raising the renewable share of capacity from 22.19 to 34.88 per cent in a day.
+Seven years on, CEA's General Review excludes large hydro from RES, CEA's installed-capacity report
+labels a row "RES (including Hydro)", CEA's Executive Summary prints both bases on one page, and MNRE
+publishes both as nested totals. **Inside General Review Table 1.2 the RES column is not on one basis
+down its own length**: the seven historic rows from March-1985 to March-2017 each sum to the printed
+total with residual exactly zero, and the final row overshoots by 52,064.64 MW — precisely the
+large-hydro column. `directionOfBias: obscures`; a bridge exists and is stated.
+
+**On the standing "reclassified headline" promotion test this is offered as a third sector and NOT as
+a case chosen for a headline, and the evidence against is recorded rather than omitted:** the
+reclassification cannot move the 500 GW or NDC targets at all, because both are denominated in
+NON-FOSSIL capacity and large hydro was always non-fossil; it LOWERS the growth multiple even as it
+raises the level (6.60× narrow against 3.78× wide), so a party optimising a headline would have to
+choose which; and CEA's principal historical series never adopted it. **Three government documents
+give three dates for the instrument** — 7 March, 8 March, 8 May 2019 — none citing the others. The
+Ministry of Power Order was not retrieved; that is a failure to retrieve one instrument, not evidence
+it is unpublished.
+
+**P-122 — renewable generation was imputed, not metered, up to FY2013-14.** CEA's Table 1.3 note:
+"RES Generation upto 2013-2014 as per normative generation. RES Generation during 2014-2015 onwards
+are as per actual generation received from utilities." The series is printed as FALLING 65,520 →
+61,719 GWh across the change while capacity ROSE 35,850 → 39,950 MW. **The break falls at 1 April
+2014 — within weeks of this instrument's frozen UPA baseline** — so every renewable-generation
+comparison between baseline and Modi terms crosses it at exactly the point it is anchored on, and the
+imputed basis is the higher one. `overstates-pre-2014`, no bridge, seam carried on both affected
+series.
+
+### THE BIGGEST FINDING OF THE CYCLE IS NOT A RECORD — 226 MARKS RENDERED NOWHERE
+
+Stage 7's control found **`assessmentNote` rendering on 0 of the 164 records carrying it and
+`revisitTrigger` on 0 of 62.** Written, validated, shipped, invisible — through every phase since
+each field was added, with every gate green throughout, because `reachability` guards a LIST and a
+field absent from that list is unguarded by construction.
+
+**The cost is concrete and it lands on the immediately preceding work.** Cycles 2026-08-05ad and ae
+wrote reasoning into 33 verdicts specifically so that no verdict stood without stated ground,
+including the corpus's most prominent failure verdict. **Not one of those 33 had ever reached a
+reader.** `revisitTrigger` was additionally missing from `LedgerRecord` in `lib/types.ts` for its
+whole life, so no view could have rendered it even by accident and `typecheck` was green throughout.
+
+Fixed, and proven in both directions on a REAL regression rather than a modelled one: the two fields
+were added to the guarded list FIRST, against the then-current build, and `reachability` exited **1
+with 226 of 1147 marks unreachable**; after the view fix it exits **0 at 1147/1147**. The longest
+`assessmentNote` in the corpus (L-0139, 1,744 characters) was checked to render WHOLE, not clamped.
+Rule written into CLAUDE.md in this commit.
+
+*(Noted against myself: the first read of that failing gate was through `| tail -12` and reported
+exit 0 — the pipe trap CLAUDE.md already names, hit by someone who had read the rule an hour
+earlier. Re-run unpiped, it was exit 1.)*
+
+### Judgements taken, not defaulted
+
+- **P-121's `affectsSeries` excludes `re-capacity` and `solar-capacity`.** The `back-link` gate
+  demanded reciprocity and the schema settles it: `affectsSeries` is "series this record is
+  SPECIFICALLY ABOUT — NOT a list of every series the record bears on". Solar is untouched by a
+  large-hydro reclassification; `re-capacity` is a shipped series the record bears on. **Raised, not
+  applied:** `re-capacity` is on the hydro-inclusive basis (76.38 GW at 31.03.2014 = 35,850 RES +
+  40,531 hydro) and a reader of it should see P-121.
+- **The non-fossil series cite P-121 without P-121 citing them back.** Deliberate asymmetry: they are
+  the series the reclassification CANNOT move, and the reference exists to say so.
+- **The lodged NDC was not cited.** The stage-2 agent retrieved it (559,694 bytes, goals quoted);
+  this session could not reproduce the retrieval across two clients and three hosts — `unfccc.int`
+  serves a 212-byte Incapsula stub at HTTP 200. **No citation rests on it.** The NDC goals are cited
+  to the Cabinet release of 3 August 2022, which was retrieved and read here.
+
+### Sources and verification
+
+**Every document cited was retrieved IN THIS SESSION by the main loop, not accepted from the
+research stage** — 13 verified in one pass with a distinctive needle asserted in each body, plus the
+NEP gazette checked against `Content-Length` (19,539,146 bytes, complete) because that host truncates
+large PDFs silently at HTTP 200. Stage 2's fidelity was independently confirmed before anything was
+built on it: CEA General Review byte count, character count and 18 of 18 load-bearing table values
+matched; PIB 1567817 matched byte-exact with its operative sentence verbatim.
+
+`url-check --drop` 19/19. STAGE 4 CLEAN. validate VALID 0 errors. typecheck clean. build green.
+reachability 1147/1147. domain-coverage 14/14. figure-consistency 12 claims. selftest 23/23 rules.
+no-bare-root 0 new.
+
+### Carried forward
+
+1. **Arc A remainder:** grid absorption, curtailment and storage — untouched. `grid-india.in` and
+   `posoco.in` are TLS-reset from this environment across three clients and four IPs; CEA and
+   `npp.gov.in` carry the same data, but an INDEPENDENT second measurement of generation may be
+   unavailable in principle, since MNRE and CEA turn out to be the same series published twice.
+2. **Arcs B, C, D:** air quality (NCAP), forest clearances (ISFR definitions, FCA 2023), and the
+   wider climate-commitment set. `cpcb.nic.in` shows the same TLS-reset fingerprint as Grid-India and
+   will need a second route before arc B.
+3. **L-0052 corrections owed, RAISED NOT APPLIED** (`/data` edits at source are an operator
+   decision): its `unmeasured[0]` gives `reasonKind: "not-published"` for the renewable generation
+   share, and the datum is published — CEA's monthly RE report has tables titled "Monthly Renewable
+   Energy as % of Total Electricity Generated" and "Cumulative…", by State and All-India. The
+   record's own `why` says "in anything retrieved", which was the honest form; the `reasonKind`
+   asserted something about the world and four documents falsified it. Its `caseFor` also rests on
+   "renewables meeting over half of demand in a peak month", which is the 51.5 per cent figure read
+   as a month — see L-0221's caveat. And its sole source is a bare root, `https://mnre.gov.in/`,
+   graded T1.
+4. **`re-capacity` and the `283.46 GW` pairing.** The series notes and L-0052 both attach 283.46 GW
+   to July 2025; it is a capacity stock **as on 31.03.2026**, eight months later and a different kind
+   of quantity. Also raised, not applied.
+5. **The audit that finds the phase-15 rendering class corpus-wide** has not been run for the series
+   and provenance layers — only ledger fields were swept.

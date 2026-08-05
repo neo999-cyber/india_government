@@ -343,6 +343,21 @@ library in a child process and requiring the fixture tree to be byte-identical a
 **Any gate asserting a property of a field cites the schema.** If the property is not in the schema,
 either put it there or drop the assertion.
 
+**A schema field with no view renders nowhere and every gate stays green.** `reachability` guards a
+LIST of marks, so a field absent from that list is unguarded BY CONSTRUCTION — not by oversight, and
+nothing anywhere fails. Phase 15's stage-7 control found `assessmentNote` rendering on **0 of the 164
+records carrying it** and `revisitTrigger` on **0 of 62**: 226 marks, written, validated, shipped and
+invisible, across every phase since each field was added. The data was correct throughout, which is
+precisely why nothing caught it — the same shape as the absence bug that survived three phases.
+The cost was concrete: the assessment-audit sequence closed one day earlier having written reasoning
+into 33 verdicts specifically so that no verdict stood without stated ground, and **not one of those
+33 had ever reached a reader.** A verdict shown without its argument is what this instrument exists
+not to do. **When a field is added to a schema, it is added to the type, to a view, and to the
+guarded-marks list in the same commit** — and note that TypeScript will not save you: `revisitTrigger`
+was missing from `LedgerRecord` for its whole life, so no view could have rendered it by accident and
+`typecheck` was green the entire time. The audit that finds this class is one line: for each field,
+count records carrying it against records whose own page contains it.
+
 **Do not pipe gates** — an exit code does not survive a pipe. And a structural check passes on a
 stub: structure passing is not content passing.
 

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "P-121",
+    "title": "\"Renewable\" has at least four concurrent official boundaries, and large hydro was moved across one of them in March 2019",
+    "whatChanged": "On 7 March 2019 the Union Cabinet approved measures declaring large hydropower projects a Renewable Energy source; before that only projects under 25 MW counted. The Cabinet release states it plainly: 'Large Hydropower Projects to be declared as Renewable Energy source (as per existing practice, only hydropower projects less than 25MW are categorized as Renewable Energy).' At 31.03.2019 large hydro stood at 45,399 MW against a renewable total of 79,412 MW, so the decision raised the renewable figure by 57.17 per cent, and the renewable share of installed capacity from 22.19 to 34.88 per cent, without a turbine being installed. THE RECLASSIFICATION DID NOT PROPAGATE UNIFORMLY, and that is the durable measurement problem rather than the one-day step. Seven years later the same government publishes at least four incompatible boundaries for the word: CEA's General Review 2025 defines RES to EXCLUDE large hydro (footnote: 'RES : Renewable Energy Sources. Includes Solar, Small Hydro Projects, Wind, Bio Power Baggasse, Bio Power-Waste to Energy'); CEA's monthly installed-capacity report labels a row 'RES (including Hydro)' and puts 288,589 MW in it against 236,525 MW for wind, solar and other RE; CEA's monthly Executive Summary prints BOTH bases in adjacent tables on one page; and MNRE's physical-progress page publishes 'Sub Total (Exc. Large Hydro)' and 'Total RE' as separate nested totals. The gap between the narrow and wide readings at 30.06.2026 is 52,065 MW of capacity — larger than India's entire renewable fleet in 2014. Inside CEA's General Review Table 1.2 the RES column is not even on one basis down its own length: the seven historic rows from March-1985 to March-2017 each sum to the printed total with zero residual, and the final row overshoots by 52,064.64 MW, exactly the large-hydro column, because in that row alone RES contains hydro.",
+    "when": "2019-03-07",
+    "affectsDomains": [
+      "environment",
+      "infrastructure"
+    ],
+    "affectsSeries": [
+      "res-capacity-share",
+      "res-generation-share"
+    ],
+    "directionOfBias": "obscures",
+    "bridgeExists": true,
+    "bridgeNote": "A bridge exists and is cheap, which is why this record does not stop the series being used: CEA and MNRE both publish the large-hydro component separately at every date, so either basis can be reconstructed from the other by adding or subtracting it. What does not exist is a designated preferred basis — no retrieved document says which reading is the official one — so the bridge has to be applied by the reader, every time, and a figure quoted without its basis cannot be placed on either side of it. The instrument's response is to prefer the NON-FOSSIL measure wherever a comparison is being made, because non-fossil is invariant under this reclassification: large hydro is non-fossil on both sides of the March 2019 decision, so moving it between 'conventional' and 'renewable' cannot change a non-fossil share.",
+    "competingAccounts": [
+      {
+        "holder": "Ministry of Power / Cabinet, March 2019",
+        "position": "The reclassification is a market measure with an operative purpose, not a counting exercise. Its stated problem is that distribution companies were reluctant to sign hydro power purchase agreements on tariff grounds; the answer was a Hydro Purchase Obligation inside the non-solar Renewable Purchase Obligation, with a trajectory later notified for 2021-22 to 2029-30, alongside a 40-year project life, an 18-year debt repayment period, a 2 per cent escalating tariff and budgetary support for flood moderation and enabling infrastructure. On this account the category change is the mechanism by which a purchase duty is created, and the effect on published totals is incidental."
+      },
+      {
+        "holder": "Sceptical reading",
+        "position": "Whatever the motive, the effect is that a headline category grew 57 per cent in a day and that the word now denotes different quantities in different publications of the same government, with no designated preference. A reader comparing a pre-2019 renewable figure with a post-2019 one is comparing two different things unless they check which basis each is on, and most published comparisons do not say."
+      }
+    ],
+    "sources": [
+      {
+        "name": "PIB / Cabinet, 'Cabinet approves Measures to promote Hydro Power Sector', 7 Mar 2019 — the reclassifying decision and its stated purpose",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1567817&reg=3&lang=1",
+        "tier": "T1"
+      },
+      {
+        "name": "PIB / Ministry of Power, 'Measures taken to promote Hydro Power in India', Rajya Sabha reply, 10 Aug 2021 — dates the measures to 8 March 2019 and the HPO trajectory to 29.01.2021",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1744435&reg=3&lang=1",
+        "tier": "T1"
+      },
+      {
+        "name": "CEA, General Review 2025 — Table 1.2 and its RES footnote; the RES column's basis change in the final row",
+        "url": "https://cea.nic.in/wp-content/uploads/general/2025/Updated_GR_2025_merged_new.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "CEA, Installed Capacity as on 30.06.2026 — the row labelled 'RES (including Hydro)', 288,589 MW against 236,525 MW of wind, solar and other RE",
+        "url": "https://cea.nic.in/wp-content/uploads/installed/2026/06/Website_June.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "CEA, Executive Summary on Power Sector, June 2026 — the capacity table footnoted 'RES (including large hydro)' beside a generation table listing 'Hydro (Large)' separately from 'RES including SHP'",
+        "url": "https://cea.nic.in/wp-content/uploads/executive/2026/06/Executive_Summary_June_2026_Actual.pdf",
+        "tier": "T1"
+      }
+    ],
+    "notes": "THE DATE IS NOT SETTLED AND THE RECORD DOES NOT PRETEND IT IS. Three government documents retrieved in this run give three dates for the instrument: the Cabinet release is posted 7 March 2019; the Ministry of Power's 2021 Rajya Sabha reply says measures were issued 'on 8th March, 2019'; and CEA's monthly renewable generation report cites 'Ministry of Power's Order dated 8th May, 2019'. None cites the others. The `when` field carries 7 March 2019 because that is the date of the only announcing instrument retrieved and it has the strongest attestation; the Ministry of Power Order itself was NOT retrieved in this run, and the e-Gazette remains the unreachable channel. This is a failure to retrieve one instrument, not evidence that it is unpublished. ON THE INSTRUMENT'S STANDING 'RECLASSIFIED HEADLINE' PROMOTION TEST, this is offered as a third sector but NOT as a case shown to have been chosen for a headline, and the evidence against that reading is recorded rather than omitted: the reclassification cannot move the 500 GW or NDC targets at all, because both are denominated in NON-FOSSIL capacity and large hydro was always non-fossil; it LOWERS the renewable growth multiple even as it raises the level and the share (35,850 to 236,525 MW is 6.60x on the narrow basis against 76,381 to 288,589 MW which is 3.78x on the wide one, so a party optimising a headline would have to choose which headline); and CEA's principal historical series did not adopt it. The documents retrieved contain no statement of a headline motive and no such document was located."
+  },
+  {
+    "id": "P-122",
+    "title": "Renewable generation was imputed, not metered, up to FY2013-14 — the basis changes at the instrument's own baseline",
+    "whatChanged": "CEA's General Review 2025 carries a note under Table 1.3, the gross generation series, reading in full: 'RES Generation upto 2013-2014 as per normative generation. RES Generation during 2014-2015 onwards are as per actual generation received from utilities.' Renewable generation before FY2014-15 is therefore IMPUTED — derived from installed capacity and an assumed load factor — and from FY2014-15 it is metered output reported by utilities. The two are different measurements of different things wearing one column heading. The effect is visible in the series and runs against the direction a reader would expect: RES generation is printed as FALLING from 65,520 GWh in FY2013-14 to 61,719 GWh in FY2014-15, while RES installed capacity ROSE from 35,850 MW to 39,950 MW over the same twelve months. A fall in output accompanying an 11 per cent rise in capacity is not a plausible physical event; it is the imputation being replaced by measurement, and the imputation was the higher of the two.",
+    "when": "2014-04-01",
+    "affectsDomains": [
+      "environment",
+      "infrastructure"
+    ],
+    "affectsSeries": [
+      "res-generation-share",
+      "non-fossil-generation-share"
+    ],
+    "directionOfBias": "overstates-pre-2014",
+    "bridgeExists": false,
+    "bridgeNote": "No reconciliation was retrieved. CEA states the change in a one-line note and publishes no restated back series on the actual-generation basis, no statement of the normative load factors used, and no overlap year computed both ways. Without an overlap the size of the discontinuity cannot be separated from real year-on-year variation, so no bridge can be constructed from the published figures. The series therefore renders with a seam at FY2014-15 and must not be splined across it: any growth ratio taken from a pre-FY2014-15 base to a later year has a numerator computed one way at the start and another way at the end, and will UNDERSTATE growth, because the imputed basis is the higher one.",
+    "sources": [
+      {
+        "name": "CEA, General Review 2025, Table 1.3 (Growth of Gross Electricity Generation, mode-wise, utilities only) and its Note 1 on the RES basis change",
+        "url": "https://cea.nic.in/wp-content/uploads/general/2025/Updated_GR_2025_merged_new.pdf",
+        "tier": "T1"
+      }
+    ],
+    "notes": "WHY THIS MATTERS MORE HERE THAN IT WOULD ELSEWHERE: the break falls at 1 April 2014, which is within weeks of this instrument's frozen UPA baseline of May 2014. So the last year of the imputed basis is the baseline year, and the first year of the measured basis is the first year of T1. Every comparison this instrument makes of renewable generation between the UPA baseline and the Modi terms crosses the break at exactly the point the comparison is anchored on, and the direction flatters the baseline. The affected series carry the break explicitly for that reason. THE CAPACITY SERIES ARE NOT AFFECTED — installed capacity is a nameplate count throughout and CEA's Table 1.2 carries no equivalent note — so where a like-for-like comparison across 2014 is needed and only one is available, the capacity series is the sound one and the generation series is not. Scanned the extracted text of the General Review (984,398 characters) for 'restate' and 'revised' with morphological variants; both returned zero. That zero is NOT banked as a finding here, because no positive control was run that clears it and a document of that size containing neither word is unusual enough that a tokenisation problem is a live alternative. What the record rests on instead is the direct comparison above, which is checkable from two printed columns."
+  }
+]

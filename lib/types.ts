@@ -412,6 +412,13 @@ export interface LedgerRecord {
    * cleanly fit and the value may change on review.
    */
   assessmentNote?: string;
+  /**
+   * The condition under which the record should be re-read — a date reached, a document
+   * published, a series crossing a level. Present in the schema and on 62 records since long
+   * before it was declared here; it was missing from this type, which is part of why no view
+   * ever rendered it. A field the type does not know about cannot be rendered by mistake.
+   */
+  revisitTrigger?: string;
 }
 
 /**

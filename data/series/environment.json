@@ -1,0 +1,661 @@
+[
+ {
+  "id": "res-capacity-share",
+  "title": "Renewables' share of installed electricity capacity (RES, excluding large hydro)",
+  "unit": "%",
+  "domain": "environment",
+  "tier": "T1",
+  "source": {
+   "name": "CEA General Review 2025, Tables 1.2 and 1.3 (installed capacity and gross generation, mode-wise, utilities only)",
+   "url": "https://cea.nic.in/wp-content/uploads/general/2025/Updated_GR_2025_merged_new.pdf",
+   "vintage": "2026-08-05"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "All-India installed capacity, utilities only, at 31 March — CEA General Review 2025 Table 1.2 'Total' column",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 12.33,
+    "status": "verified",
+    "note": "At 31.03.2014: RES 35,850 MW over total 249,416 MW. The UPA baseline year."
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 14.37,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 14.48,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 15.37,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 17.85,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 20.44,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 22.19,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 23.77,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 24.98,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 27.51,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 30.08,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 32.5,
+    "status": "verified",
+    "note": "At 31.03.2024: RES 143,645 MW over total 441,970 MW."
+   }
+  ],
+  "provenanceRefs": [
+   "P-121"
+  ],
+  "notes": "NUMERATOR is CEA's 'RES' column, which on this table EXCLUDES large hydro — the table's own footnote reads 'RES : Renewable Energy Sources. Includes Solar, Small Hydro Projects, Wind, Bio Power Baggasse, Bio Power-Waste to Energy'. Other current CEA and MNRE publications use 'RES' to INCLUDE large hydro and produce a materially higher share; see P-121. Direction of merit is left unset deliberately: a share of installed CAPACITY is the metric every Indian renewable target is written in, and it is not by itself a measure of how much electricity was decarbonised — the companion series res-generation-share is."
+ },
+ {
+  "id": "res-generation-share",
+  "title": "Renewables' share of electricity generated (RES, excluding large hydro)",
+  "unit": "%",
+  "domain": "environment",
+  "tier": "T1",
+  "source": {
+   "name": "CEA General Review 2025, Tables 1.2 and 1.3 (installed capacity and gross generation, mode-wise, utilities only)",
+   "url": "https://cea.nic.in/wp-content/uploads/general/2025/Updated_GR_2025_merged_new.pdf",
+   "vintage": "2026-08-05"
+  },
+  "calendar": "FY",
+  "higherIsBetter": true,
+  "denominator": "All-India gross generation, utilities only — CEA General Review 2025 Table 1.3 'Total' column",
+  "breaks": [
+   {
+    "period": "FY2014-15",
+    "note": "RES generation up to FY2013-14 is NORMATIVE (imputed); from FY2014-15 it is actual generation reported by utilities. CEA states the change in Table 1.3's own note. Do not read the FY2013-14 to FY2014-15 move as a fall in output.",
+    "provenanceRef": "P-122"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 5.96,
+    "status": "verified",
+    "note": "FY2012-13: RES 57,449 GWh over total 964,489 GWh. NORMATIVE basis — see the break at FY2014-15."
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 6.38,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 5.59,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 5.63,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 6.6,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 7.81,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 9.24,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 10,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 10.72,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 11.51,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 12.58,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 13.02,
+    "status": "verified",
+    "note": "FY2023-24: RES 225,835 GWh over total 1,734,375 GWh."
+   }
+  ],
+  "provenanceRefs": [
+   "P-121",
+   "P-122"
+  ],
+  "notes": "Same numerator definition and same document as res-capacity-share, so the two shares are strictly comparable and the gap between them is the arc's central measurement. NUMERATOR excludes large hydro. The FY2014-15 break is a measurement-basis change, not an activity change: RES generation is printed as FALLING from 65,520 GWh to 61,719 GWh across it while RES capacity rose from 35,850 MW to 39,950 MW."
+ },
+ {
+  "id": "non-fossil-capacity-share",
+  "title": "Non-fossil share of installed electricity capacity (renewables, large hydro and nuclear)",
+  "unit": "%",
+  "domain": "environment",
+  "tier": "T1",
+  "source": {
+   "name": "CEA General Review 2025, Tables 1.2 and 1.3 (installed capacity and gross generation, mode-wise, utilities only)",
+   "url": "https://cea.nic.in/wp-content/uploads/general/2025/Updated_GR_2025_merged_new.pdf",
+   "vintage": "2026-08-05"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "All-India installed capacity, utilities only, at 31 March — CEA General Review 2025 Table 1.2 'Total' column",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 32.15,
+    "status": "verified",
+    "note": "At 31.03.2014: hydro 40,531 + nuclear 4,780 + RES 35,850 = 81,161 MW over 249,416 MW."
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 32.54,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 31.53,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 31.23,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 33.47,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 35.51,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 36.77,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 37.9,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 38.8,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 40.9,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 42.97,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 44.97,
+    "status": "verified",
+    "note": "At 31.03.2024: hydro 46,928 + nuclear 8,180 + RES 143,645 = 198,753 MW over 441,970 MW."
+   }
+  ],
+  "provenanceRefs": [
+   "P-121"
+  ],
+  "notes": "This is the quantity India's NDC goal 4 is written in — 'about 50 percent cumulative electric power installed capacity from non-fossil fuel-based energy resources by 2030' — and the quantity the July 2025 'five years early' claim measures. It is DEFINITION-INDEPENDENT with respect to the large-hydro reclassification (P-121): large hydro is non-fossil on either side of that decision, so moving it between 'conventional' and 'renewable' does not change this series. That is why it, and not the RES share, is the sound basis for comparison against generation. Direction of merit unset for the same reason as res-capacity-share."
+ },
+ {
+  "id": "non-fossil-generation-share",
+  "title": "Non-fossil share of electricity generated (renewables, large hydro and nuclear)",
+  "unit": "%",
+  "domain": "environment",
+  "tier": "T1",
+  "source": {
+   "name": "CEA General Review 2025, Tables 1.2 and 1.3 (installed capacity and gross generation, mode-wise, utilities only)",
+   "url": "https://cea.nic.in/wp-content/uploads/general/2025/Updated_GR_2025_merged_new.pdf",
+   "vintage": "2026-08-05"
+  },
+  "calendar": "FY",
+  "higherIsBetter": true,
+  "denominator": "All-India gross generation, utilities only — CEA General Review 2025 Table 1.3 'Total' column",
+  "breaks": [
+   {
+    "period": "FY2014-15",
+    "note": "RES generation up to FY2013-14 is NORMATIVE (imputed); from FY2014-15 it is actual generation reported by utilities. CEA states the change in Table 1.3's own note. Do not read the FY2013-14 to FY2014-15 move as a fall in output.",
+    "provenanceRef": "P-122"
+   }
+  ],
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2012-13",
+    "value": 21.15,
+    "status": "verified",
+    "note": "FY2012-13: hydro 113,720 + nuclear 32,866 + RES 57,449 = 204,035 GWh over 964,489 GWh."
+   },
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 22.85,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 20.55,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 19.23,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 19.58,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 20.43,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 21.83,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 24.62,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 24.8,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 24.9,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 25.43,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 23.51,
+    "status": "verified",
+    "note": "FY2023-24: hydro 134,054 + nuclear 47,937 + RES 225,835 = 407,826 GWh over 1,734,375 GWh."
+   }
+  ],
+  "provenanceRefs": [
+   "P-121",
+   "P-122"
+  ],
+  "notes": "The companion to non-fossil-capacity-share, computed from the facing table of the same document on the same universe. The pair is the arc's central finding: at 31.03.2024 non-fossil plant was 44.97% of installed capacity and supplied 23.51% of the electricity. Only the RES component carries the FY2014-15 basis break; hydro and nuclear generation are metered throughout."
+ },
+ {
+  "id": "coal-production",
+  "title": "All-India raw coal production",
+  "unit": "million tonnes",
+  "domain": "environment",
+  "tier": "T1",
+  "source": {
+   "name": "Ministry of Coal, 'Company Wise Production of Raw Coal during last ten years' and Year End Review 2025",
+   "url": "https://coal.gov.in/sites/default/files/2021-01/productiondata_tenyear.pdf",
+   "vintage": "2026-08-05"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 565.77,
+    "status": "verified",
+    "note": "The UPA baseline year."
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 609.18,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 639.22,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 657.87,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 675.41,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 728.72,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 730.87,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 716.09,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 778.21,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 893.19,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 997.83,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 1047.52,
+    "status": "verified",
+    "note": "Highest on the published series. 1.85x the FY2013-14 figure."
+   }
+  ],
+  "notes": "Raw coal, all producers (Coal India, SCCL, captive and commercial). Direction of merit is genuinely contested and is left unset: the same rise is read as energy security by the Ministry of Coal and as the thing renewable expansion was meant to displace. Only one year-on-year fall appears in the whole series, FY2020-21, the COVID year."
+ },
+ {
+  "id": "coal-plf",
+  "title": "Plant load factor of coal and lignite thermal stations",
+  "unit": "%",
+  "domain": "environment",
+  "tier": "T1",
+  "source": {
+   "name": "CEA, 'Growth of Electricity Sector in India from 1947-2025', Chart 13",
+   "url": "https://cea.nic.in/wp-content/uploads/notification/2026/01/Growth_Book_2025.pdf",
+   "vintage": "2026-08-05"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": "Rated capacity of coal- and lignite-based thermal stations over the year",
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2013-14",
+    "value": 65.56,
+    "status": "verified",
+    "note": "The UPA baseline year."
+   },
+   {
+    "country": "IND",
+    "period": "FY2014-15",
+    "value": 64.25,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 62.24,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 59.88,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 60.72,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 61.07,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 55.99,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 54.49,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 58.87,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 64.15,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 69.09,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 69.45,
+    "status": "verified",
+    "note": "Highest since FY2010-11. Above the FY2013-14 level."
+   }
+  ],
+  "notes": "How hard the existing coal fleet is being run. A U, not a decline: it fell to 54.49% in FY2020-21 and then rose four years running to 69.45%, above where it started. Coal and lignite are aggregated in CEA's chart and are not separable from it. Direction of merit unset — a falling PLF can mean renewables are displacing coal or that coal plant is idle and stranded, and the series does not distinguish them."
+ },
+ {
+  "id": "coal-imports-total",
+  "title": "Coal imports into India, all grades",
+  "unit": "million tonnes",
+  "domain": "environment",
+  "tier": "T1",
+  "source": {
+   "name": "Coal Controller's Organisation / DGCI&S, 'Year Wise Import of Coal, Coke & Other Coal Products to India during last Ten Years', Table 8.1",
+   "url": "https://coal.gov.in/sites/default/files/2021-01/Import-of-Coal-and-Coke-last-ten-years.pdf",
+   "vintage": "2026-08-05"
+  },
+  "calendar": "FY",
+  "higherIsBetter": null,
+  "denominator": null,
+  "points": [
+   {
+    "country": "IND",
+    "period": "FY2015-16",
+    "value": 203.95,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2016-17",
+    "value": 191.01,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2017-18",
+    "value": 208.25,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2018-19",
+    "value": 235.35,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2019-20",
+    "value": 248.54,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2020-21",
+    "value": 215.25,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2021-22",
+    "value": 208.63,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2022-23",
+    "value": 237.67,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2023-24",
+    "value": 264.53,
+    "status": "verified"
+   },
+   {
+    "country": "IND",
+    "period": "FY2024-25",
+    "value": 243.62,
+    "status": "verified",
+    "note": "Follows the FY2023-24 series peak of 264.53 MT."
+   }
+  ],
+  "notes": "Coking plus non-coking. The series begins at FY2015-16 because that is where the ten-year table this is taken from begins; the Ministry's live import page carries FY2013-14 and FY2014-15 but prints its year labels broken (every row reads '2010-nn'), so those two years are NOT entered here rather than being entered on a positional inference. FY2023-24 is the series maximum at 264.53 MT — and FY2023-24 is the financial year from which thermal coal imports were to have stopped altogether."
+ }
+]

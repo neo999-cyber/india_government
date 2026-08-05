@@ -1,0 +1,181 @@
+[
+  {
+    "id": "L-0221",
+    "title": "Half the fleet, under a third of the electricity: the non-fossil milestone is a capacity milestone",
+    "date": "2021-11",
+    "dateEnd": "2026-03",
+    "term": "T2",
+    "domains": [
+      "environment",
+      "infrastructure"
+    ],
+    "type": "episode",
+    "summary": "India's non-fossil share of installed generating capacity rose from 32.54% at 31.03.2014 to 44.97% at 31.03.2024 and 54.18% at 30.06.2026, and the 50% milestone was announced in July 2025 as reached five years early. Non-fossil generation over the same period rose from 22.85% to 23.51%. At 31.03.2024 non-fossil plant was 44.97% of capacity and supplied 23.51% of the electricity; the government's own figure for FY2025-26 is 29.2%.",
+    "claimAtLaunch": "At COP26 on 1 November 2021 the Prime Minister announced five commitments, of which the first two bear here: 'India will reach its non-fossil energy capacity to 500 GW by 2030' and 'India will meet 50 percent of its energy requirements from renewable energy by 2030.' The updated NDC approved by Cabinet on 3 August 2022 carries the capacity limb as a share — about 50 per cent of cumulative electric power installed capacity from non-fossil sources by 2030, raised from the 40 per cent of the 2015 NDC.",
+    "whatHappened": "The capacity limb was reached early and the government said so: on 14 July 2025 MNRE announced India had reached 50% of installed electricity capacity from non-fossil sources 'five years ahead of the target', on a reading of 50.08% against 49.92% fossil at 30.06.2025 — a margin of 0.74 GW on 484.82 GW. By 30.06.2026 the figure was 54.18%. The energy limb has no reporting at all: no document retrieved in this run states progress toward '50 percent of energy requirements from renewable energy', and the nearest published quantity is of a different numerator — the Ministry's own 'share of non-fossil fuels in total generation reached 29.2% in 2025-26 (538.97 BU)' of 1,845.921 BU. Two official releases instead restate the capacity limb and attribute it to COP26, which announced no such goal. Across the twelve years CEA publishes both quantities for, the gap between the two shares widened from 9.69 to 21.46 percentage points.",
+    "assessment": "partly",
+    "caseFor": "The capacity commitment was stated in capacity, measured in capacity, and met in capacity, five years inside its deadline — and the metric was not chosen after the fact: the NDC lodged in 2022 and the 2015 NDC before it both denominate the target in installed capacity, so the government is being held to the arithmetic it published in advance. The underlying build is real and large: renewable capacity excluding large hydro rose from 35,850 MW at 31.03.2014 to 236,525 MW at 30.06.2026, and 50,905 MW was added in FY2025-26 alone, the largest year on the series. A capacity share is also the only quantity a government can directly control — it can procure plant, and it cannot procure wind — so a capacity target is the honest form for a commitment about state action. The generation share lags for a physical reason that no policy can repeal, and it is rising: non-fossil generation reached 29.2% in FY2025-26 on the Ministry's own figure, up from 23.51% two years earlier.",
+    "caseAgainst": "The two quantities are read as one, and the gap between them is not a technicality but roughly a factor of two. A reader told that non-fossil sources are 'half the nation's grid' — MNRE's own sub-headline — will take it that half the electricity is non-fossil, and under a third is. The milestone itself was claimed on 0.08 percentage points, and it depends entirely on the composition of the numerator: the same release's own second table puts renewable energy proper at 38.08%, the 50.08% being reached only by adding large hydro at 10.19% and nuclear at 1.81%. The target it was measured against reads 'about 50 percent', and nothing in any retrieved document defines what 'about' admits. Most seriously, the one commitment of the five that IS denominated in energy rather than capacity — Panchamrit element 2 — is the only one no retrieved document reports progress against, while two official releases announce the capacity limb as though it were that goal. The quantity that would test whether the energy mix changed is the quantity that goes unreported.",
+    "seriesRefs": [
+      "non-fossil-capacity-share",
+      "non-fossil-generation-share",
+      "res-capacity-share",
+      "res-generation-share",
+      "re-capacity"
+    ],
+    "provenanceRefs": [
+      "P-121",
+      "P-122"
+    ],
+    "sources": [
+      {
+        "name": "CEA, General Review 2025, Table 1.2 (installed capacity, mode-wise, utilities) and Table 1.3 (gross generation, mode-wise, utilities), 1950 to 2023-24",
+        "url": "https://cea.nic.in/wp-content/uploads/general/2025/Updated_GR_2025_merged_new.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "CEA, Installed Capacity (MW) of the country as on 30.06.2026 — 'Total Non-Fossil Fuel' 297,369 MW of 548,858 MW",
+        "url": "https://cea.nic.in/wp-content/uploads/installed/2026/06/Website_June.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "CEA, Executive Summary on Power Sector, June 2026 — generation by fuel and installed capacity sector-wise",
+        "url": "https://cea.nic.in/wp-content/uploads/executive/2026/06/Executive_Summary_June_2026_Actual.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "PIB / Prime Minister's Office, 'National Statement by Prime Minister Shri Narendra Modi at COP26 Summit in Glasgow', 1 Nov 2021 — the Panchamrit text",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1768712&reg=3&lang=1",
+        "tier": "T1"
+      },
+      {
+        "name": "PIB / Cabinet, 'Cabinet approves India's Updated Nationally Determined Contribution', 3 Aug 2022 — states the updated goals and the 2015 baseline of 40 per cent",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1847812&reg=3&lang=1",
+        "tier": "T1"
+      },
+      {
+        "name": "PIB / MNRE, 'India's Renewable Rise: Non-Fossil Sources Now Power Half the Nation's Grid', 14 Jul 2025 — the 'five years ahead' claim and the three annexure tables at 30.06.2025",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2144627&reg=3&lang=1",
+        "tier": "T1"
+      },
+      {
+        "name": "PIB / MNRE, 'India Ranks third globally in Renewable Energy Installed Capacity', 8 Apr 2026 — 283.46 GW non-fossil as on 31.03.2026 and the 29.2 per cent generation share for 2025-26",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2250039&reg=3&lang=1",
+        "tier": "T1"
+      },
+      {
+        "name": "PIB / Ministry of Power, 'India achieved Historic milestone in power sector', 29 Oct 2025 — the 51.5 per cent figure for 29 July 2025",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2183866&reg=3&lang=1",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-05",
+    "caveat": "The 51.5 per cent figure that circulates as 'renewables met 51.5% of demand in July 2025' is not a monthly or annual energy share. The Ministry of Power release that originates it states 'On 29 July 2025, India reached its highest-ever renewable energy share in electricity generation. That day, renewables met 51.5 % of the country's total electricity demand of 203 GW', and gives its components as solar 44.50 GW, wind 29.89 GW and hydro 30.29 GW. Every operand is in GW, a unit of power; 44.50 + 29.89 + 30.29 = 104.68, and 104.68 / 203 = 51.57 per cent. It is a ratio of simultaneous power readings at one unstated moment on one day, and no energy unit, time of day or data source appears anywhere in the release. A later MNRE release of 8 April 2026 restates the same sentence as 'in July 2025', converting the instant into a month with the numbers unchanged. This record does not use the figure as a generation share and neither should anything citing it.",
+    "unmeasured": [
+      {
+        "what": "Progress against Panchamrit element 2 — meeting 50 per cent of energy requirements from renewable energy by 2030",
+        "why": "This is the only one of the five COP26 commitments denominated in energy rather than capacity, and no document retrieved in this run reports progress against it. The two releases that come closest (PIB 2183866 of 29 Oct 2025 and PIB 2250039 of 8 Apr 2026) instead restate the capacity limb and attribute it to COP26. The published 29.2 per cent non-fossil generation share is not this quantity: its numerator is wider than 'renewable energy' and its denominator is generation rather than energy requirements.",
+        "wouldFill": "Any MNRE, Ministry of Power or CEA statement of renewable energy as a share of energy requirements, with the numerator and denominator named, for any year since 2021.",
+        "reasonKind": "not-published"
+      },
+      {
+        "what": "What 'about 50 percent' admits as satisfying the NDC capacity limb",
+        "why": "The updated NDC's electricity goal is stated as 'about 50 percent' and no retrieved document defines a tolerance in either direction. A 50.08 per cent reading was announced as achieving it; on the same undefined wording 49.5 per cent could be argued to satisfy it and 50.08 per cent argued not to. Whether 'by 2030' means calendar 2030 or FY2029-30 is also unstated in every document retrieved. NO ROUTE IS NAMED DELIBERATELY: this is a gap in a definition rather than in a measurement, so no retrieval closes it — only the target's own author can say what 'about' admits, and until they do the threshold is unfalsifiable in both directions. A wouldFill here would be a placeholder, which enters the verification queue and cannot be worked.",
+        "reasonKind": "never-defined"
+      }
+    ],
+    "assessmentNote": "PARTLY, and the two limbs are scored separately because they are different quantities. The capacity limb — 500 GW non-fossil capacity by 2030, and the NDC's about-50-per-cent share — is delivered ahead of schedule on the metric it was written in, and that is not a grudging concession: the metric was fixed in 2015 and again in 2022, before the result. The energy limb — 50 per cent of energy requirements from renewable energy by 2030 — is commitment state (a), not yet due, and PARTLY is NOT a finding that it has failed; 2030 has not arrived. What is scored against it is narrower and is a fact about the present, not a prediction: it is the only limb of the five with no reporting of any kind, and it is systematically replaced in official restatement by the capacity limb, twice attributed to COP26 which did not state it. A commitment nobody reports against cannot be tracked by a reader before its due date, and that is a present defect whether or not it is met in 2030. WORKED was rejected because it would score the package on the limb that was measured and stay silent on the limb that was not. FAILED and TOO-EARLY were both rejected: the capacity limb is resolved, so the record is not waiting on time, and it is resolved in the government's favour. Complements L-0052 rather than duplicating it — L-0052 scores the capacity expansion WORKED on the capacity target and states in terms that 'this record carries no figure for the generation share'. This record supplies that figure.",
+    "revisitTrigger": "Any published statement of renewable energy as a share of energy requirements, which would make Panchamrit element 2 trackable; or the non-fossil generation share reaching 40 per cent, at which point the gap against the capacity share would be narrowing rather than widening."
+  },
+  {
+    "id": "L-0222",
+    "title": "Coal imports were to stop in FY2023-24 and hit their record that year; production rose 85 per cent",
+    "date": "2020-02-18",
+    "dateEnd": "2026-03",
+    "term": "T2",
+    "domains": [
+      "environment",
+      "macro"
+    ],
+    "type": "reform",
+    "summary": "On 18 February 2020 the Minister of Coal said India would stop importing thermal coal from FY2023-24 and that Coal India would produce 1 billion tonnes that year. In FY2023-24 total coal imports were 264.53 million tonnes, the highest in the published ten-year table, of which non-coking coal was 205.72 MT, also the highest; Coal India produced 773.81 MT. All-India coal production rose from 565.77 MT in FY2013-14 to 1,047.52 MT in FY2024-25.",
+    "claimAtLaunch": "'India will stop importing thermal coal from Financial Year 2023-24', Union Minister of Coal and Mines, 18 February 2020, at a Chintan Shivir which also set a '1 billion tonnes (BT) coal production target by Coal India Limited (CIL) by Financial Year 2023-24'.",
+    "whatHappened": "Neither limb was met and the direction was opposite on both. Total coal imports rose to a series maximum of 264.53 MT in FY2023-24, the year imports of thermal coal were to have ceased; non-coking imports, the substitutable category, were 205.72 MT, also a series maximum. Coal India produced 773.81 MT against 1,000 MT. Imports fell to 243.62 MT in FY2024-25, still 46 per cent above the FY2013-14 level. The objective was restated twice on narrower terms: a March 2024 Strategy Paper moved the horizon to 2030 and the object to 'substitutable' imports, and a January 2026 review reported a 54.17 per cent reduction in 'imported coal for blending' — 5.5 MT against 12 MT — a category roughly 2.3 per cent of total imports. Meanwhile the coal fleet was not idling: PLF of coal and lignite stations fell from 65.56 per cent in FY2013-14 to 54.49 per cent in FY2020-21 and then rose four years running to 69.45 per cent in FY2024-25, above where it started and the highest since FY2010-11. The planned coal build was revised upward twice — the National Electricity Plan of May 2023 put required coal capacity at 259.6 GW in 2031-32 with 19.1 to 27.1 GW of additional build beyond 26.9 GW under construction; by July 2024 the Ministry of Power stated 283 GW and 'additional minimum 80 GW'; by February 2026, 307 GW by 2034-35 and 'additional minimum 97,000 MW'.",
+    "assessment": "failed",
+    "caseFor": "The objective was availability, not abstinence, and on availability it was delivered: all-India production rose 85 per cent in eleven years, with only one year-on-year fall in the whole series, the COVID year. Coal India's own share fell from 81.73 to 74.56 per cent as captive and commercial mines were opened to competition, so the increase came with a structural liberalisation and not only from the incumbent. Import dependence did fall against the demand it served — imports were 46 per cent higher across a period in which production rose 85 per cent, so domestic coal displaced imports at the margin, and the FY2024-25 fall of 20.9 MT was accompanied by a stated foreign-exchange saving of about $7.93 billion. Coking coal, which India cannot substitute for geological reasons, is a large part of the residual import and no policy could have removed it. A rising PLF on an existing fleet is the cheapest possible way to meet demand growth and avoids capital that would otherwise have been spent on new plant.",
+    "caseAgainst": "The commitment named a fuel, a direction and a year, and in that year the quantity it named reached its maximum. That is not a near miss: non-coking imports in FY2023-24 were 205.72 MT against a target of zero, and the production limb that was supposed to make the substitution possible came in 226 MT short. No document retrieved acknowledges the miss or restates the FY2023-24 commitment; what appears instead is a different target with a later date and a narrower object, and a progress figure — 5.5 MT of coal 'imported for blending' — drawn from a category two orders of magnitude smaller than the one the commitment was about. The wider point is that the coal system expanded on every measure at the same time as the renewable system did: production up, imports above their starting level, the existing fleet run harder than in 2014, and the announced new-build programme roughly doubled from about 51 GW to 97 GW in under three years. On the Ministry's own retrieved figures new coal is dearer per kWh than firm dispatchable renewables — INR 5.38 to 6.30 against INR 4.98 to 4.99 — and the release stating both says a direct comparison is not appropriate without saying what the appropriate one is.",
+    "seriesRefs": [
+      "coal-production",
+      "coal-imports-total",
+      "coal-plf",
+      "non-fossil-generation-share"
+    ],
+    "sources": [
+      {
+        "name": "PIB / Ministry of Coal, 'India to stop import of thermal coal from Financial Year 2023-24 - Pralhad Joshi', 18 Feb 2020",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1603554&reg=3&lang=1",
+        "tier": "T1"
+      },
+      {
+        "name": "Coal Controller's Organisation / DGCI&S, Table 8.1, 'Year Wise Import of Coal, Coke & Other Coal Products to India during last Ten Years', FY2015-16 to FY2024-25",
+        "url": "https://coal.gov.in/sites/default/files/2021-01/Import-of-Coal-and-Coke-last-ten-years.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "Ministry of Coal, 'Company Wise Production of Raw Coal during last ten years (MT)', to FY2024-25",
+        "url": "https://coal.gov.in/sites/default/files/2021-01/productiondata_tenyear.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "CEA, 'Growth of Electricity Sector in India from 1947-2025', Chart 13 — All India PLF of coal and lignite thermal stations",
+        "url": "https://cea.nic.in/wp-content/uploads/notification/2026/01/Growth_Book_2025.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "CEA, National Electricity Plan 2022-32, Volume I (Generation), gazette text — coal capacity scenarios for 2031-32",
+        "url": "https://cea.nic.in/wp-content/uploads/irp/2023/05/NEP_2022_32_FINAL_GAZETTE-1.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "PIB / Ministry of Power, 'Expansion of Thermal Power Capacity', 25 Jul 2024 — 283 GW by 2032 and additional minimum 80 GW",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2037006&reg=3&lang=1",
+        "tier": "T1"
+      },
+      {
+        "name": "PIB / Ministry of Power, Rajya Sabha reply on thermal capacity requirement, 9 Feb 2026 — about 307,000 MW by 2034-35 and additional minimum 97,000 MW",
+        "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2225430&reg=3&lang=1",
+        "tier": "T1"
+      },
+      {
+        "name": "Ministry of Coal, Strategy Paper on Coal Import Substitution, Inter-Ministerial Committee Report, March 2024 — horizon moved to 2030, object narrowed to substitutable imports",
+        "url": "https://coal.gov.in/sites/default/files/2024-03/07-03-2024a-wn.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "Ministry of Coal, Year End Review 2025 — FY2024-25 imports 243.62 MT and the 'imported coal for blending' figures",
+        "url": "https://coal.gov.in/sites/default/files/2026-01/Pib-120126.pdf",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-05",
+    "caveat": "The three coal-capacity requirement figures are like for like on fuel scope, and this was checked rather than assumed. The National Electricity Plan's running text calls 259.6 GW 'coal based capacity', which would not be comparable with the 'coal & lignite' of the two later Ministry of Power statements — but the Plan's own Exhibit 5.5a labels that row 'Coal + Lignite' at 259.6, and its highlight xii itemises the same 2031-32 conventional capacity as 'Coal-259,643 MW'. The Plan uses the short phrase for the combined quantity, so no lignite adjustment is warranted and the steps 259.6 to 283 to 307 GW stand at face value. What is NOT like for like is the horizon: the first two figures target 2031-32 and 2032, the third 2034-35, so part of the final step is three additional years of growth rather than a re-rating of the same year. The February 2026 reply also measures its 97,000 MW against installed capacity 'as on 31.03.2023', a baseline nearly three years stale at the time of the reply, and the documents retrieved contain no statement of why that baseline was used.",
+    "unmeasured": [
+      {
+        "what": "Any acknowledgement that the FY2023-24 thermal-coal-import stop was not met",
+        "why": "The commitment was stated with a fuel, a direction and a year. The documents retrieved in this run contain no restatement, revision or acknowledgement of that specific commitment after the year passed; the March 2024 Strategy Paper and the January 2026 Year End Review both set out different objectives without referring to it. This is an absence in the documents retrieved, not a finding about intent.",
+        "wouldFill": "Any Ministry of Coal statement, Parliamentary answer or audit report addressing the FY2023-24 thermal-coal-import commitment after FY2023-24.",
+        "reasonKind": "not-published"
+      },
+      {
+        "what": "Whether the 17,360 MW of thermal capacity commissioned since April 2023 counts toward the 97,000 MW additional requirement",
+        "why": "The February 2026 reply measures its 97,000 MW against installed capacity 'as on 31.03.2023' and separately reports 17,360 MW commissioned since April 2023, without stating whether the second is inside the first. The identified pipeline exceeds the target by 6,845 MW on one reading and falls 10,515 MW short on the other. The document does not resolve it.",
+        "wouldFill": "A Ministry of Power or CEA statement of the coal pipeline against a single stated baseline date.",
+        "reasonKind": "not-published"
+      }
+    ],
+    "assessmentNote": "FAILED is scored against the announced objective, which was specific: stop importing thermal coal from FY2023-24, with a named production limb to make it possible. Both limbs were dated, both fell due, and both were missed on the Ministry's own published data — non-coking imports at a series maximum in the target year, Coal India 226 MT short. Under the instrument's commitment states this is (b), due and undelivered, and FAILED is the assessment that follows; the definition covers a measure that did not achieve the objective stated at announcement, which is the case here regardless of the mechanism. REVERSED was rejected because no retrieved document withdraws the commitment — silence is not repudiation, and the later restatements set out different objectives without referring to the earlier one. PARTLY was rejected because neither limb was partially met in the relevant year: the import figure moved away from the target, not toward it. The record's wider material — production, PLF, the doubling of the planned coal build — is context for why the objective failed and is not itself scored; a rise in coal production is not a failure against any objective retrieved, because no document retrieved states an objective to reduce it.",
+    "revisitTrigger": "Any Ministry of Coal document addressing the FY2023-24 import commitment after the fact; or non-coking coal imports falling below the FY2015-16 level of 159.39 MT, which would make the substitution claim testable on the series rather than on the blending subset."
+  }
+]
