@@ -343,20 +343,29 @@ library in a child process and requiring the fixture tree to be byte-identical a
 **Any gate asserting a property of a field cites the schema.** If the property is not in the schema,
 either put it there or drop the assertion.
 
-**A schema field with no view renders nowhere and every gate stays green.** `reachability` guards a
-LIST of marks, so a field absent from that list is unguarded BY CONSTRUCTION — not by oversight, and
-nothing anywhere fails. Phase 15's stage-7 control found `assessmentNote` rendering on **0 of the 164
-records carrying it** and `revisitTrigger` on **0 of 62**: 226 marks, written, validated, shipped and
-invisible, across every phase since each field was added. The data was correct throughout, which is
-precisely why nothing caught it — the same shape as the absence bug that survived three phases.
-The cost was concrete: the assessment-audit sequence closed one day earlier having written reasoning
-into 33 verdicts specifically so that no verdict stood without stated ground, and **not one of those
-33 had ever reached a reader.** A verdict shown without its argument is what this instrument exists
-not to do. **When a field is added to a schema, it is added to the type, to a view, and to the
-guarded-marks list in the same commit** — and note that TypeScript will not save you: `revisitTrigger`
-was missing from `LedgerRecord` for its whole life, so no view could have rendered it by accident and
-`typecheck` was green the entire time. The audit that finds this class is one line: for each field,
-count records carrying it against records whose own page contains it.
+**A field lands in the schema, the TYPE, a VIEW and `reachability`'s guarded-marks list in ONE
+commit.** Miss either of the last two and the field renders nowhere while every gate stays green,
+because `reachability` guards a LIST and a field absent from that list is unguarded BY CONSTRUCTION —
+not by oversight. **Where a field is deliberately not rendered, write that in its schema description
+and leave it off the list.** An unrendered field with no such line is a defect; a view added only to
+satisfy this rule is worse than the defect, and a mark rendered somewhere other than the page of the
+record declaring it does not count.
+
+**Run the field-render audit every phase at stage 7 and state its count, per layer.** For each schema
+field, count the records carrying it against the records whose own built page contains it; any
+non-zero difference is invisible data. **Only the LEDGER layer has ever been swept. SERIES and
+PROVENANCE have not — do not read the ledger result as covering them.**
+
+Earned phase 15, and the numbers are the argument for the two instructions above. `assessmentNote`
+rendered on **0 of the 164 records carrying it** and `revisitTrigger` on **0 of 62**: 226 marks
+written, validated, shipped and invisible across every phase since each field was added, with every
+gate green throughout precisely because the data was correct — the same shape as the absence bug that
+survived three phases. It voided the previous cycle's entire output: the assessment-audit sequence had
+just written reasoning into 33 verdicts so that no verdict stood without stated ground, and **not one
+of those 33 had ever reached a reader.** A verdict shown without its argument is what this instrument
+exists not to do. **TypeScript does not protect this class** — `revisitTrigger` was absent from
+`LedgerRecord` for its whole life, so no view could have rendered it even by accident and `typecheck`
+was green the entire time.
 
 **Do not pipe gates** — an exit code does not survive a pipe. And a structural check passes on a
 stub: structure passing is not content passing.
