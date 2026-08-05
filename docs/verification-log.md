@@ -9915,3 +9915,108 @@ cannot be declared even by an author who wants to. Noted, not built.
 14/14 linked, 1141/1141 references · `validate:selftest` 2/2 output gates fire on their own fixtures.
 
 **NOT PUSHED.** Push is not autonomous while the deployment is public and unauthenticated.
+
+## Cycle 2026-08-05at — batch 15: the phase-15 close audit opens on batches 1-10
+
+**QUEUE ONLY. Twelve findings written into STATE.md before any is resolved; nothing fixed here.**
+Batches 1-10 (`af` through `ao`) were never read under the adversarial rule, which entered at batch
+11. Method: every arithmetic claim recomputed; every count reconciled against `/data` at that batch's
+own end commit and against `reachability --data <commit>` on the current build; every report checked
+for a claim its own text undermines.
+
+**Method limits stated, so the negatives are worth their cost.** Historical reachability runs under
+**today's** MARKS list, which did not exist before `193ab72` — **batch 1's 1147/1147 is not comparable
+and is not audited.** Historical data checked against the current build reports later-rewritten marks
+as "renders nowhere"; two such artefacts appear and neither is filed. Page counts are not reproducible
+this way and are not audited.
+
+### THE HEADLINE NEGATIVE: THE ARITHMETIC WAS NEVER THE PROBLEM
+
+**34 claims recomputed, 33 exact.** Four NPP column sums against their printed totals, both non-fossil
+shares, the 51.5 per cent GW ratio, the coal multiple, `24/35` and `24/33`, `45 − 34`, every corpus
+subtotal, `30 + 8 = 38`, `33 + 3 + 1 = 37`, `164 + 62 = 226`. The one miss is **0.01 of a point**.
+**Not one substantive defect in ten batches was arithmetic — every one was a count, an attribution or
+a scope, and the instrument has a gate for arithmetic and none for the other three.**
+
+### The two defect classes separated, because only one is visible to a delta check
+
+**FABRICATED SCOPE — a figure asserted from no gate.** `validate` printed no record count until
+`d117832` (batch 6), so **every record count in a batch-1 to batch-5 gate line was attached by hand.**
+Recomputed: af's 662 → 673 **correct**, ag's 675 **correct**, ah's 675 **correct**, ai's 678
+**WRONG — 676**. Three of four were right, **which is exactly why the class is invisible**: a
+fabricated figure that happens to be true passes every consistency test there is, and ai's was caught
+only because batch 5 went looking. Also filed: **ao's commitment-state counts are not reproducible
+from the report** — the needle is not given, and "no (c) anywhere" is a strong negative published
+without one. A naive reproduction over the same fields returns 82 tokens including 16 `(c)`, from
+statutory citations of the form `12(1)(c)`; **that probe over-fires and does not refute ao — it
+establishes that the claim cannot be checked.**
+
+**UNSTATED DELTA — a count that moved unaccounted.** `ai` and `aj` emitted **no reachability count at
+all**, for a gate whose entire output is a count. Reachability then moved four times unaccounted —
+1336 → 1343 → 1347 → 1352 → 1354 — all four recomputed and all four **correct**. And **al, am and an
+each state the previous batch's corpus delta and not their own**, in a sequence whose head item is
+"the DELTA was not stated, for the third batch running".
+
+### THE MOST CONSEQUENTIAL FINDING: an explanation built for a delta that never happened
+
+**`ag`'s `reachability 1332/1332` is a MID-BATCH figure.** 1332 is the count at `193ab72`; the batch's
+final commit `d4a1fdd` is **1336**. Verified by running the gate at both.
+
+**`ah`'s "reachability 1332 → 1336 is exactly P-123 and P-124" is false three ways.** P-123 and P-124
+were added in **batch 2** (provenance 122 → 124 at `d4a1fdd`). **Batch 3 added no record and no
+mark** — the per-field breakdown at `d4a1fdd` and `3b32f61` is identical in all seven fields, so **the
+true delta was ZERO.** And the entry's stated method — *"recomputed from the same MARKS list at both
+commits"* — would have returned 1336 at both ends.
+
+**It is internally coherent, arithmetically correct (2 records × 2 marks = 4), names real records, and
+every part of it is wrong.** It was constructed to reconcile the previous batch's stale number.
+**This is the shape the adversarial rule exists to catch and it survived ten batches** — where all
+five flags the conversational reviewer got wrong were caught within one or two.
+
+**Two more count defects.** `ag`'s *"185 provenance records reported 'no page built'"*: provenance held
+**122** records; 185 is `notes` (80) + `bridgeNote` (105) = **185 MARKS** — a mark count wearing a
+record label, and impossible as written. And `ai`'s *"3 are this phase's own new records (L-0221,
+L-0222 and one other)"*: the three are L-0221, L-0222 and **L-0220, a phase-14 record**. The
+arithmetic holds; the label does not, and **the unnamed "one other" is the tell.**
+
+### A report that contained its own refutation, unused for six batches
+
+`ai`, verbatim: *"Playwright returns `ERR_NAME_NOT_RESOLVED` against PRANA — **it inherits the broken
+system resolver** — … Two rendering clients, both fail: tested, not assumed."* **The DNS cause is
+stated in the same sentence as the rendering conclusion.** Batch 10 withdrew the conclusion and
+presented the DNS finding as new; it was not new, it was printed in the entry that made the claim,
+and Arc B stood blocked for six batches on a capability nobody had tested.
+
+### Judgement findings — two, both flagged, neither resolved
+
+Per item 4, this pass reads its own past output and is expected to be stronger on arithmetic than on
+judgement. **`al` filed L-0224 `too-early` in the entry that argues `too-early` is wrong** — *"They
+are not honestly `too-early` either, which is what WAS scored"* — and deferred to an enum question the
+same entry had already answered on the printed definitions. Batch 8 re-filed it. And `ao`'s "181
+records assert nothing" is stated as exact where its own paragraph makes it a bound.
+
+### Phase-15-local against corpus-wide — only the first blocks closing
+
+**LOCAL (blocks closing):** the four scope figures, the four count/attribution defects, the three
+delta gaps, the 0.01 miss. All are inside this phase's own log, and the log is the phase's product.
+
+**CORPUS-WIDE (does not block):** **`validate` printed no record count until `d117832`, so every gate
+line in the log quoting a record count before that commit is a fabricated scope by construction** —
+that reaches back through all fourteen prior phases, not five batches, and is the largest finding of
+the audit. Plus three method classes with nothing enforcing them: the needle-less negative, the report
+containing its own refutation, and the verdict filed under an argument against itself.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs =
+682 records, 1,759 points** · `no-bare-root` 0 new, 0 stale, 277 allowlisted from 277 frozen ·
+`no-unguarded-prose-field` 19 prose fields, 7 guarded / 12 exempted · `figure-consistency` 18 declared
+claims, 18 checked against source and printed operands, 5 rounding artefacts declared · `reachability`
+1368/1368 marks on their own record page, 662 pages scanned · `field-render-audit` 32 prose fields
+across 3 layers, 0 invisible · `domain-coverage` 14/14 surfaces built, 14/14 linked, 1141/1141
+references · `validate:selftest` 23/23 validator rules fire on the broken fixtures, 2/2 output gates
+on theirs.
+
+**Phase NOT closed. Records NOT audited — that is the next batch. No finding resolved.**
+
+**NOT PUSHED.** Push is not autonomous while the deployment is public and unauthenticated.
