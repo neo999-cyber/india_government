@@ -84,6 +84,99 @@ PCA 403 on two hosts.
 **The gate holds the line.** `no-bare-root` refuses new bare roots AND stale allowlist entries, so
 the count is monotonic. Bucket 3 can be chipped at in any cheap cycle.
 
+
+## ASSESSMENT AUDIT AND ADVERSARIAL SEQUENCE — CLOSED 2026-08-05
+
+Read this before reconstructing anything from the log. Fourteen cycles: an audit, ten correction
+cycles, an extract build, and four adversarial triages.
+
+**NO VALUE CHANGED ANYWHERE. Verified mechanically, not asserted:** across every record in `/data`
+between the audit commit and this one, the count whose `points` or `assessment` differ is **zero**.
+Every correction was to citations, reasoning and scope. Absences went **335 to 368 — 33 entered**
+(the triage-4 log says 31 and is wrong; this figure is the diffed one).
+
+### What was found
+
+**One real mechanical defect class.** 313 bare-domain-root citations across 255 records — a citation
+that names a publisher and retrieves nothing. Not 141, which was the audit's first count and was
+scoped by a `tier == 'T1'` filter it never disclosed.
+
+**One false claim, propagating in the author's own paraphrases.** "The only pellet quantity any
+government has ever published" was contradicted by its own record's next field, which reports the
+J&K Chief Minister giving 6,221 injured by pellets. It existed in **three phrasings across five
+records**, and each search found only the phrasing it was written for. Only searching the noun that
+cannot be paraphrased away — "pellet quantity" — surfaced all of them.
+
+**Two hostile reviews on identical input, no project rules supplied.** *Attributed to the brief; this
+session saw one consolidated claim list and cannot itself confirm the number of reviewers.* Of eight
+claims checked, **three did not survive**: the extract does not flatten the four absence reasons
+(13/39/10/6 renderings, distinct); the pellet record does not call Union and State "the same
+government" — it says "its own state government" and the 26-day gap between two different governments
+is its point; and the universal-absence language was not generator-manufactured, it was in `/data`,
+which made it a larger finding than the claim.
+
+**33 verdicts carried no reasoning at all**, including the corpus's most prominent failure verdict.
+All 33 now state their ground. **All 33 survived unchanged — none was rescored.**
+
+**Twelve announced objectives were found measured nowhere**, every one invisible until the reasoning
+had to be written: Make in India's 100 million jobs · digital public infrastructure's ghost-beneficiary
+elimination · UDISE+'s claimed savings · bank consolidation · PLI's import substitution · GST's
+buoyancy · Ujjwala's health burden · PMGKAY's prevention of hunger · PM-JAY's catastrophic
+expenditure · UDAN's affordability · railway electrification's net emissions · and metro rail's own
+14 per cent return threshold, never applied after the fact to any system.
+
+### What was fixed
+
+Citations bounded to what was searched; the pellet claim corrected in five records; demonetisation's
+missing reasoning written and its ground narrowed to the two objectives with evidence; L-0195's note
+reconciled with its own body; 24 citations deep-linked, each identified by matching the record's own
+values against the retrieved document; **L-0218 corrected on its headline claim — the e-Gazette is
+reachable and its documents retrievable, and the original finding was a resolver artefact.**
+
+**Two gates and a wrapper.** `no-bare-root` refuses new bare roots AND stale allowlist entries, so
+the count is monotonic. `tools/scan-text.mjs` is the only sanctioned path for scanning retrieved
+text, with eleven controls. `npm run commit` runs the gates and reaches `git commit` only on green —
+built because the one-chained-operation rule was broken by its own author four cycles after being
+written, letting a commit run against an INVALID build.
+
+### What was deliberately NOT fixed
+
+**The allowlist residue, partitioned rather than chipped at (L-0219).** Of 278 remaining: 139 point
+at a URL returning no document; 139 point at one returning real content; and cutting across both,
+**139 name no document at all** — of which 58 sit on hosts that answer perfectly well. The three
+buckets are not disjoint. **81 citations are both addressable and live: the entire remaining cheap
+work.**
+
+**Values that could not be established.** `credit-gdp-peer` records 55.0 for India in 2024 against
+WDI's 41.61; 55.0 appears in no year of WDI's India series and no peer's cell. Not corrected toward
+WDI, because that substitutes one unexplained number for another. The citation says the indicator is
+not established.
+
+### Two cross-record patterns — DECIDED, not defaulted
+
+**COUNTED AT CONNECTION, PURPOSED AT USE → WRITTEN AS L-0220.** Thirteen instances across FIVE
+domains, not two, with two controls. It earns a record because the discriminator — whether the asset
+becomes the service without a further step — is invisible in any single record, and because the
+controls make it falsifiable. Evidence is the underlying records, cited and not restated.
+
+**THE RECLASSIFIED HEADLINE → NO RECORD, and the reason is the decision.** Two instances is thin, and
+on reading they are not the same move: highways is *jurisdictional* reclassification (state roads
+notified as national), UDAN is *definitional* broadening (heliports and waterdromes counted as
+airports). Bundling them would assert a common mechanism the evidence does not show. **Promotion
+test: a third instance in a third sector, or one instance where the reclassification is shown to have
+been chosen for the headline.** Until then it lives in the two records that carry it.
+
+### Queued, stated, not started
+
+- **58 records still carry no assessment note** — now entirely abstentions: 29 contested, 17
+  unscoreable, 11 background-only (which arguably need none), 1 too-early.
+- **Retrieval leads, untouched.** The weakest is the **CAG report on the Rafale acquisition**: the
+  record acknowledges it was tabled and proceeds without it, which is the softest point in a record
+  the project considers strong. Also: ministry FY-baseline releases behind the doubling claim; MoD on
+  Dassault's offset partner; the CAG offsets report; and the J&K elector-parity figure, which is
+  **model-attributed and is not a source** — retrieve from the Delimitation Commission or the
+  Election Commission, or drop it.
+
 ## Measurement categories established by this phase — use these, do not re-derive
 
 Three shapes, and a record must say which it is:
