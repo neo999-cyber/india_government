@@ -133,6 +133,28 @@ alone lists countries alphabetically, so `points[0]` is Bangladesh. **Three cons
 each produced a false finding while fixing a real one.** Re-derive a correction's own claims before
 building on them.
 
+**An identification is not established by a match at ONE point. Match every point the record
+carries.** Correction cycle 2 attached a WDI indicator to `credit-gdp-peer` on a 0.74 per cent
+agreement at 2014 and rationalised the second point away as a vintage revision; the second point was
+32 per cent out and destroyed the identification. One agreement is a coincidence with a plausible
+story attached. Where a record carries a panel, check the panel: it was checking all ten cells that
+showed India's 2024 figure to be the single divergence, three of the other four matching WDI within
+about one per cent.
+
+**A PARTIAL match is more dangerous than no match.** No match prompts a search; a partial match
+prompts a theory, and the theory then explains away the part that does not fit. Bangladesh's 2024
+GDP-per-capita sitting within 0.05 per cent of India's produced the coherent false pattern "2024
+agrees, 2014 is 42 per cent out", which reads exactly like a currency-basis problem — and a brief was
+written instructing that the 2024 agreement was "the constraint any explanation must satisfy". The
+constraint was an artefact of reading the wrong row.
+
+**READ THE LABEL BESIDE THE VALUE.** Five iterations of one error in four cycles: `tier` read
+without `name`; `tier` looked for inside `source` when series carry it on the record; `points[0]`
+read without `country`; and a record's `notes` — which said in terms "World Bank has not extended
+India's series past 2020", answering the question the cycle was asking — not read at all. The next
+instance will be a different field, so the rule is not about these four: **before concluding from a
+field, read the record.**
+
 **When an identification could be GUESSED correctly, match it against the record's own value
 instead, and record the query in the source name.** WDI indicator codes are guessable from an
 indicator's name, which is what makes assigning them from memory feel safe and makes it rule 3.

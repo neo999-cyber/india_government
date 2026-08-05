@@ -7840,3 +7840,52 @@ next reader does not repeat the cycle-2 error.
 url-check 1/1; selftest exit 0; `git diff --numstat data/series/seed.json` = 3 insertions, 3
 deletions, no reformat.
 
+## Cycle 2026-08-05t — correction cycle 4: 55.0 not established, and the fifth iteration was in this record's own notes
+
+**NO VALUE CHANGED**, asserted by the merge (`a['points'] == b['points']`). One line altered in
+`/data`: 1 insertion, 1 deletion.
+
+**PREMISES CHECKED FIRST, as instructed — and the check found the fifth iteration.** The record's
+`notes` field reads: **"World Bank has not extended India's series past 2020."** That is the record
+answering, in its own text, the question cycle 3 spent the cycle on. Cycle 3 read `source.name` and
+`points` and did not read `notes`. Five iterations of one error in four cycles: `tier` without
+`name`; `tier` sought inside `source` when series carry it on the record; `points[0]` without
+`country`; and now `notes` not read at all. The rule written is deliberately not about those four
+fields: **before concluding from a field, read the record.**
+
+**The panel check establishes far more than the single-point check did.** Checking all ten cells
+against WDI FS.AST.PRVT.GD.ZS:
+
+- 2014 is WDI within rounding for four of five — India 51.5/51.88, Bangladesh 42.0/43.74, Indonesia
+  36.0/36.42, China 141.0/137.62 — and diverges for Vietnam, 100.0 against 80.00;
+- 2024 is WDI within about one per cent for three of five — Bangladesh 36.0/35.81, Indonesia
+  36.0/36.39, China 192.0/194.31 — and is NOT WDI for two: **India 55.0 against 41.61**, and
+  Vietnam 126.0 against **no WDI value at all**.
+
+So India's 2024 figure is the panel's single large divergence, and it corroborates the record's own
+note exactly. This is what checking every point buys over checking one: cycle 2 saw a 0.74 per cent
+agreement and inferred an identification; the panel shows which cells are WDI and which are not.
+
+**55.0 is NOT established, and the IMF lead was tested rather than assumed.** The IMF DataMapper's
+only credit-to-GDP indicator — `FDSAOP_GDP`, Claims on Nonfinancial Private Sector (% of GDP) —
+returns **no data for any of the five countries**, and `dataservices.imf.org` returns HTTP 400
+through this route. Per the brief's own instruction the stated non-establishment stands, no value
+was corrected toward WDI, and the citation now records the IMF attempt and its outcome so the next
+cycle does not repeat it.
+
+**A suspicion raised and then withdrawn on evidence.** `data.imf.org` resolves to 94.202.207.18 —
+the same Indian ISP range as the PIB pin — which looked like a hijacked DNS answer, and a wrong pin
+would have undermined the resolver pins recorded in cycles 2 and 3. Fetched through it, the host
+serves the genuine IMF DATA site (21 occurrences of "IMF", "International Monetary Fund", no
+`Loading`). It is a CDN edge pool, both resolvers agree, and the answers rotate within it. **The
+suspicion was wrong and is recorded as wrong**, because a retracted doubt about the pins is worth as
+much as the pins.
+
+**PART 2 NOT REACHED.** The remaining allowlist hosts were not attempted this cycle; the allowlist
+stands at 289. Part 1 turned out to need the whole cycle, and a hurried pass over new hosts using
+the single-point method this cycle was written to forbid would have manufactured exactly the class
+of finding the last three cycles have been unpicking. Clean partial beats thin records.
+
+**Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 289 allowlisted;
+selftest exit 0; `git diff --numstat data/series/seed.json` = 1/1, no reformat.
+
