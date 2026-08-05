@@ -12,6 +12,7 @@
   "summary": "Sustained expansion of the national highway network, with construction pace rising from 11.6 km/day at handover to a peak of 37 km/day in FY2020-21, and four-lane-plus length rising from 18,278 to 45,947 km.",
   "claimAtLaunch": "Break the policy paralysis that had stalled highway building, and expand the national highway network substantially.",
   "whatHappened": "Building genuinely accelerated: pace roughly tripled and four-laning went up two and a half times. But the headline network figure — 91,287 km to 146,342 km, cited as a 60% expansion — is mostly reclassification. MoRTH's own factsheet records about 54,004 km of state roads notified as national highways since April 2014, against a network increase of roughly 55,000 km.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE BUILD IS REAL AND THE HEADLINE IS AN ACCOUNTING ARTEFACT, AND PARTLY IS SCORED ON BOTH. Execution: pace roughly tripled and four-laning rose two and a half times from a standing start, which is a genuine result. The network figure: of the roughly 55,000 km increase from 91,287 to 146,342 km, about 54,004 km is state roads notified as national highways, so the 60 per cent expansion the government leads with corresponds to on the order of 1,000 km of new network. Reclassification is not fraud - it changes who maintains and funds a road - but presenting it as expansion invites a reading the figures do not support, and it obscures a build story strong enough on its own terms. Scored on execution achieved and on the headline misdescribing it.",
   "assessment": "partly",
   "caseFor": "Tripling construction pace from a standing start is a genuine execution achievement, and the shift from a collapsed PPP model to EPC and the Hybrid Annuity Model kept building going when private capital would not come. Four-laning 27,000 km of existing highway is real capacity that carries real traffic, and India's Logistics Performance Index rank improved from 54 to 38 across the same period. Reclassification is not fraud — bringing state roads onto the national network changes who maintains and funds them, which has real consequences.",
   "caseAgainst": "The number the government leads with is an accounting artefact. A 60% network expansion invites the reading that 55,000 km of road was built; roughly 1,000 km was. Presenting reclassification as expansion is the single most misleading figure in the infrastructure record, and it obscures a build story that was impressive enough on its own terms.",
@@ -24,6 +25,14 @@
   "provenanceRefs": [
    "P-30",
    "P-31"
+  ],
+  "unmeasured": [
+   {
+    "what": "Traffic carried on the newly four-laned sections",
+    "why": "The case for holds that four-laning 27,000 km is real capacity carrying real traffic, which is plausible and unquantified here. Toll and traffic-census data are collected on national highways; no before-and-after utilisation figure for the upgraded sections was retrieved.",
+    "wouldFill": "Ministry of Road Transport and Highways traffic-census or toll-plaza volumes for upgraded stretches, before and after four-laning.",
+    "reasonKind": "not-published"
+   }
   ],
   "sources": [
    {
@@ -48,6 +57,7 @@
   "summary": "Umbrella highway programme approved for 34,800 km at ₹5.35 lakh crore with a September 2022 deadline.",
   "claimAtLaunch": "34,800 km of highway including economic corridors, border and coastal roads, at ₹5.35 lakh crore, complete by September 2022.",
   "whatHappened": "About 26,425 km was awarded at ₹8.53 lakh crore and roughly 19,200 to 19,800 km built — around 55% of target — with completion now slipping to 2027-28. MoRTH's 2024-25 annual report states no further projects are being taken up under the scheme, and Phase 2 was never approved. The CAG found in August 2023 that sanctioned cost reached ₹32.17 crore per km against an approved ₹15.37 crore, that 49% of the target length had already been developed or awarded before the scheme began, and that only 1.8% was built under BOT-Toll against an approved 10%.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. SCORED AGAINST ITS OWN APPROVED PARAMETERS, ALL FOUR OF WHICH MOVED. Length: about 19,200 to 19,800 km built against 34,800 approved, roughly 55 per cent. Cost: 32.17 crore per km sanctioned against 15.37 approved. Time: September 2022 slipped to 2027-28. Scope: the auditor found 49 per cent of the target length had already been developed or awarded before the scheme began, so the headline was inflated at launch. Real corridors exist and carry traffic, and part of the cost rise reflects a deliberate move to access-controlled design rather than pure overrun - which is why this is partly and not failed. Phase 2's abandonment, disclosed in an annual report rather than announced, is recorded as the announced-but-not-delivered shape.",
   "assessment": "partly",
   "caseFor": "Real corridors were delivered — the Delhi-Mumbai, Purvanchal and Bundelkhand expressways exist and carry traffic — and cost escalation partly reflects land prices and a deliberate shift to higher-specification access-controlled design rather than pure overrun. Quietly not launching Phase 2 while completing Phase 1 is more disciplined than announcing a successor programme over an unfinished one.",
   "caseAgainst": "Cost per kilometre more than doubled against approval, the deadline slipped five years, and nearly half the target length was work already in the pipeline before the scheme was announced — which means the programme's headline scope was inflated at launch. Phase 2's quiet abandonment, disclosed in an annual report rather than announced, is the pattern this project records as announced-but-not-delivered.",
@@ -57,6 +67,14 @@
   ],
   "provenanceRefs": [
    "P-30"
+  ],
+  "unmeasured": [
+   {
+    "what": "Economic benefit realised on the corridors built, against the corridor rationale used to justify them",
+    "why": "The scheme was justified on economic corridors rather than on length alone, and no post-hoc benefit measurement appears here or in anything retrieved. The implementing ministry commissions feasibility studies before award and does not publish realised-benefit studies after.",
+    "wouldFill": "A Ministry of Road Transport and Highways or NITI Aayog post-implementation evaluation of freight time and cost on completed corridors.",
+    "reasonKind": "not-published"
+   }
   ],
   "sources": [
    {
@@ -118,12 +136,21 @@
   "summary": "Broad gauge electrification rose from about 20% (21,801 route km) in 2014 to 99.6% (69,873 route km) by March 2026.",
   "claimAtLaunch": "Complete electrification of the broad gauge network to cut fuel costs and emissions and reduce diesel dependence.",
   "whatHappened": "Delivered close to fully. Indian Railways reports fuel savings of nearly ₹6,000 crore and about 180 crore litres of diesel displaced in 2024-25. India now ranks second globally on electrified share behind Switzerland, ahead of China at 82%, Japan at 64% and Russia at 52%.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. WORKED, AND THE REASON IT CONVERTS SO CLEANLY IS WORTH STATING: THE ASSET IS THE SERVICE. An electrified line carries electric traction from the day it energises - no behavioural change is required and no demand forecast has to be met - which is why this is the clearest output-to-use conversion in the domain, against schemes elsewhere in this file that count connections rather than supply. The announced object was near-complete broad-gauge electrification to cut fuel cost and diesel dependence: delivered close to fully, with about 6,000 crore of fuel savings and 180 crore litres of diesel displaced in 2024-25, verifiable against an international benchmark. TWO QUALIFICATIONS THE VERDICT DOES NOT REST ON. The programme long predates the period, so pace reflects sustained funding as much as new policy. And the EMISSIONS half of the objective is not measured: electric traction on a coal-heavy grid displaces diesel with coal, so the net gain is smaller than the diesel figure implies by an amount nobody here has computed. Entered below.",
   "assessment": "worked",
   "caseFor": "This is the clearest case in the infrastructure domain where physical output converted directly into use, because the asset IS the service — an electrified line carries electric traction from the day it energises, with no behavioural change required and no demand forecast to miss. The cost and emissions savings are measurable and attributable, and the achievement is verifiable against an international benchmark.",
   "caseAgainst": "Electrification was already a long-running programme rather than a new initiative, and the pace reflects sustained funding more than novel policy. Its benefits are also partly contingent on the grid: electric traction on a coal-heavy grid displaces diesel with coal, so the emissions gain is smaller than the diesel figure alone implies. And a fully electrified network that still moves a falling share of national freight raises the question of what the investment bought strategically.",
   "shockExposure": "None material — the programme continued through COVID.",
   "seriesRefs": [
    "rail-electrification"
+  ],
+  "unmeasured": [
+   {
+    "what": "Net emissions change from electrification, after accounting for the generation mix supplying traction",
+    "why": "Cutting emissions was part of the announced object. This record carries diesel displaced, which is not the same quantity: traction drawn from a coal-heavy grid substitutes one emission source for another, and the net figure depends on the marginal generation mix. No net calculation was retrieved.",
+    "wouldFill": "An Indian Railways or Central Electricity Authority calculation of traction emissions on the actual generation mix against the displaced diesel.",
+    "reasonKind": "not-published"
+   }
   ],
   "sources": [
    {
@@ -148,6 +175,7 @@
   "summary": "The Eastern and Western Dedicated Freight Corridors, totalling 2,843 km, were largely completed by April 2026 at about ₹94,091 crore, against a programme conceived in 2005 and approved in 2008.",
   "claimAtLaunch": "Segregate freight from passenger traffic to raise speed and capacity, and arrest the long decline in railways' share of national freight.",
   "whatHappened": "Operational gains on the corridors are real — coal transit on the Eastern DFC fell from 35 to 20 hours, and haulage costs from 95 to 45 paise per tonne-kilometre, with 325 to 371 trains a day. Railways carried a record 1,670 MT in FY2025-26. But the modal share continued falling, from around 30% at handover to about 26% by 2024. Railways told Parliament that the full envisaged benefits would accrue only on further proliferation.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. TWO OBJECTIVES WERE ANNOUNCED; ONE IS MET AND THE OTHER IS MEASURED AND NOT MET, WHICH IS THE WHOLE OF THE SPLIT. Segregation and corridor performance: met and substantial - coal transit on the Eastern corridor fell from 35 to 20 hours and haulage cost from 95 to 45 paise per tonne-kilometre, a structural gain that compounds. Arresting the modal-share decline, which is the justification the corridors were explicitly sold on: not met. Share fell from about 30 per cent at handover to about 26 per cent by 2024, and record absolute tonnage on a falling share means rail grew more slowly than the freight market. The case for argues modal share is the wrong test for two corridors covering a fraction of the network, and that is a fair point about attribution - but it is a test the programme chose for itself, and the record scores it on the terms it was justified on.",
   "assessment": "partly",
   "caseFor": "Where the corridors operate they transformed economics — halving haulage cost per tonne-kilometre is the kind of structural gain that compounds, and record absolute tonnage shows the network is carrying more than ever. Modal share is the wrong test for two corridors covering a fraction of the network; the honest measure is performance on the sections built, which is strong. The decline has also plateaued rather than continued at its earlier rate.",
   "caseAgainst": "The corridors were justified explicitly on arresting the modal-share decline and it did not arrest. Eighteen years from conception to substantial completion, with a ₹2,690 crore avoidable overrun, is slow enough that road freight capacity grew faster than rail could respond. Record tonnage on a falling share means rail grew more slowly than the freight market — which is the definition of losing.",
@@ -211,6 +239,7 @@
   "summary": "Saubhagya connected about 2.86 crore households in roughly 18 months to claim near-universal household electrification, following the April 2018 declaration that all villages were electrified.",
   "claimAtLaunch": "Universal household electricity access, replacing a village-level standard that required only 10% of households plus public buildings to be connected.",
   "whatHappened": "Connections were delivered at extraordinary speed and the household standard is a genuine tightening on the village one. But connection is not supply: around 53% of villages received under 12 hours a day of domestic supply as of 2019, and there is no continuous national series measuring household supply-hours.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE SCHEME WAS PRESENTED AS DELIVERING ELECTRICITY AND WHAT IS MEASURED IS WIRING. Connections: about 28 million households in eighteen months, among the fastest electrification pushes anywhere, and moving the standard from village to household made the target harder rather than easier - a deliberate tightening that deserves saying. Supply: around 53 per cent of villages received under twelve hours a day of domestic supply as of 2019. THE DECISIVE FACT IS THAT THE SERVICE SIDE HAS NO CONTINUOUS SERIES AT ALL, so the gap between connection and supply cannot be tracked over time - which is itself a choice about what gets measured. Entered below. Partly is scored on connections delivered against supply unmeasured and, where measured, short. Discom finances were the binding constraint throughout and are scored separately in this file.",
   "assessment": "partly",
   "caseFor": "Connecting 28 million households in eighteen months is among the fastest electrification pushes in history, and moving the standard from village to household was a deliberate tightening that made the target harder, not easier. A connection is a precondition for supply and cannot be skipped; supply-hours are constrained by discom finances, which is a separate and older failure.",
   "caseAgainst": "The scheme was presented as delivering electricity and delivered wiring. With half of villages getting under twelve hours a day, the achievement claimed and the service received diverge sharply — and the absence of any published supply-hours series means the gap cannot be tracked, which is itself a choice. Discom finances were the binding constraint throughout and were not addressed alongside.",
@@ -221,6 +250,14 @@
   ],
   "provenanceRefs": [
    "P-32"
+  ],
+  "unmeasured": [
+   {
+    "what": "Household supply-hours as a continuous national series",
+    "why": "The record states there is no such series. Feeder-level monitoring exists and the discoms and the power ministry hold the underlying data; what is absent is a published household-level series over time, without which the connection-to-supply gap cannot be tracked at all.",
+    "wouldFill": "A Ministry of Power or Central Electricity Authority series of domestic supply-hours by state and year, or the feeder-monitoring returns published in full.",
+    "reasonKind": "not-published"
+   }
   ],
   "sources": [
    {
@@ -247,6 +284,7 @@
   "summary": "UDAY (2015) restructured distribution company debt with states absorbing 75%, followed by the Revamped Distribution Sector Scheme (2021) — the latest in a cycle of bailouts running back through IPDS and R-APDRP.",
   "claimAtLaunch": "Make distribution companies financially viable by cutting losses, restructuring debt and aligning tariffs with cost.",
   "whatHappened": "AT&C losses fell from 23.7% in FY2015-16 to 15.4% in FY2022-23, then rose to 16.12% in FY2023-24 — the first reversal in five years. The ACS-ARR gap narrowed to ₹0.45 per kWh before widening again to around ₹0.60. Accumulated discom losses stood at ₹7.08 lakh crore and outstanding debt at ₹7.42 lakh crore as of 31 March 2024. In October 2025 a package of about ₹1 lakh crore — the fifth bailout in two decades — was conveyed to six states, conditional on privatisation or listing.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. FAILED ON THE STATED OBJECTIVE, WHICH IS FINANCIAL VIABILITY, AND THE MEASURES ARE THE GOVERNMENT'S OWN. Losses fell from 23.7 per cent in FY2015-16 to 15.4 in FY2022-23 - real operational improvement - and then rose to 16.12 in FY2023-24, the first reversal in five years, while the cost-revenue gap narrowed to 0.45 rupees per kilowatt-hour and widened again to about 0.60. Accumulated losses stand at 7.08 lakh crore and debt at 7.42 lakh crore. A fifth bailout in two decades, conditional this time on privatisation or listing, is what a structural problem not being solved looks like. THE CAUSE IS NAMED AND WAS NOT ADDRESSED BY ANY ROUND: tariffs held below cost for political reasons, with cross-subsidy borne by industrial consumers. The verdict is not that nothing improved - the loss reduction was real - but that the object was viability and viability was not reached, on numbers that have started moving the wrong way. Distribution being a state subject limits central leverage, and that is recorded in the case for rather than treated as excusing the outcome.",
   "assessment": "failed",
   "caseFor": "AT&C losses fell by eight percentage points over the period, which is real operational improvement, and UDAY brought transparency to state-level discom finances that had previously been opaque. Distribution is a state subject, so the Centre's leverage is limited to conditional funding, and the October 2025 package attaches privatisation conditions that previous rounds did not.",
   "caseAgainst": "Five bailouts in two decades is the definition of a structural problem not being solved. The underlying cause — tariffs held below cost for political reasons, with cross-subsidy borne by industrial consumers — was untouched by every round including this one. Losses have started rising again, the cost-revenue gap is widening, and accumulated losses of ₹7.08 lakh crore exceed the entire annual central capital expenditure budget.",
@@ -279,12 +317,21 @@
   "summary": "Renewable capacity rose from 76.38 GW in March 2014 to 274.68 GW by March 2026, with solar going from 2.82 GW to 150.26 GW — a fifty-three-fold increase.",
   "claimAtLaunch": "Reach 175 GW of renewable capacity by 2022, later superseded by a target of 500 GW non-fossil capacity by 2030.",
   "whatHappened": "Non-fossil capacity reached 283.46 GW and renewables met 51.5% of demand in July 2025. Progress toward the 2030 target is broadly on track. The 2022 target of 175 GW was met on capacity though not on the original sectoral mix.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. WORKED IS SCORED ON THE TARGET AS SET, WHICH WAS A CAPACITY TARGET. 175 GW by 2022 was met on capacity; non-fossil capacity reached 283.46 GW against the 500 GW 2030 target and is broadly on track. A fifty-three-fold solar increase in twelve years, achieved through competitive auctions that drove tariffs to among the world's lowest, is a structural change in the generation mix. CAPACITY IS NOT GENERATION, AND THE VERDICT DOES NOT CLAIM IT IS. Renewables' share of energy generated remains well below their share of capacity because of load factors, and this record carries no figure for the generation share - entered below. The expansion has also coexisted with continued coal capacity addition, so it has supplemented rather than displaced fossil generation. A reader should take this as saying the capacity target was met, not that the energy mix changed by the same proportion.",
   "assessment": "worked",
   "caseFor": "A fifty-three-fold increase in solar capacity in twelve years, achieved largely through competitive auctions that drove tariffs to among the world's lowest, is a structural transformation of the generation mix. Unlike most infrastructure outputs here, generation capacity converts into use automatically wherever the grid can absorb it, and renewables meeting over half of demand in a peak month demonstrates that absorption.",
   "caseAgainst": "Capacity is not generation: renewables' share of energy generated remains well below their share of capacity because of load factors, and grid absorption and storage remain binding constraints. The expansion coexists with continued coal capacity addition, so it has supplemented rather than displaced fossil generation. Discom financial weakness also creates payment risk that has slowed developer investment in some states.",
   "shockExposure": "Global solar module prices fell sharply over the period, which is an external tailwind not attributable to policy; the 2022 commodity shock temporarily reversed some of it.",
   "seriesRefs": [
    "re-capacity"
+  ],
+  "unmeasured": [
+   {
+    "what": "Renewables' share of energy actually generated, against their share of installed capacity",
+    "why": "The target was set in capacity and this record scores it in capacity. The case against turns on the generation share being materially lower, and no figure for it appears here. Generation data are published by the grid operator and the electricity authority; the two shares are simply not set side by side in anything retrieved.",
+    "wouldFill": "Central Electricity Authority or Grid-India generation-mix data by source and year, set against installed capacity for the same years.",
+    "reasonKind": "not-published"
+   }
   ],
   "sources": [
    {
@@ -310,6 +357,7 @@
   "summary": "Average turnaround time at major ports fell from 96 hours in 2014 to about 49.5 hours in FY2024-25, while cargo throughput rose from 581 to 915 million tonnes.",
   "claimAtLaunch": "Modernise port infrastructure and cut turnaround time under the Sagarmala programme.",
   "whatHappened": "Both output and utilisation improved together — one of only two sub-domains in this phase where that is true. Sagarmala completed 315 projects worth ₹1.57 lakh crore, with 120 modernisation projects adding about 400 MTPA of capacity. Inland waterways cargo rose from 18.1 to 145.5 MTPA, though declared and actually navigable waterways remain far apart.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. WORKED, AND UNUSUALLY FOR THIS FILE BOTH THE OUTPUT AND ITS UTILISATION MOVED TOGETHER. Turnaround time halved while throughput nearly doubled - an efficiency gain that is verifiable, sustained, and feeds directly into logistics cost - alongside 315 completed projects worth 1.57 lakh crore and about 400 MTPA of added capacity. That is the announced object, modernisation and turnaround, delivered. TWO LIMITS THE VERDICT ACCOMMODATES RATHER THAN IGNORES. The improvement is from a low base and the gap to comparators remains large: about forty-nine hours against roughly eight in Japan. And inland waterways is the weaker half, where declared national waterways far exceed those actually navigable and the cargo growth rests on a small number of stretches; the navigable-against-declared figure is entered below.",
   "assessment": "worked",
   "caseFor": "Halving turnaround time while nearly doubling throughput is unambiguous efficiency gain, verifiable and sustained, and it feeds directly into the logistics cost that trade competitiveness depends on. It is one of the few places where a physical output metric and its utilisation counterpart moved together and in the same direction.",
   "caseAgainst": "India still trails comparators substantially — Japan turns ships around in about eight hours against India's forty-nine — so the improvement is from a very low base and the gap remains large. Inland waterways is the weaker half of the programme, where declared national waterways far exceed those actually navigable, and the headline cargo growth there rests on a small number of stretches.",
@@ -317,6 +365,14 @@
   "seriesRefs": [
    "port-turnaround",
    "port-cargo"
+  ],
+  "unmeasured": [
+   {
+    "what": "National waterways actually navigable against those declared",
+    "why": "The record states the two diverge and gives no figure for the navigable extent. The inland waterways authority declares the waterways and surveys their navigability, so both numbers exist in its hands; the comparison is not published in a form retrieved here.",
+    "wouldFill": "An Inland Waterways Authority of India statement of declared against operationally navigable length by waterway.",
+    "reasonKind": "not-published"
+   }
   ],
   "sources": [
    {
@@ -341,6 +397,7 @@
   "summary": "Regional air connectivity scheme subsidising routes to underserved airports. 679 routes were operationalised, of which roughly 342 remain operational — about half have been discontinued.",
   "claimAtLaunch": "Make flying affordable and accessible from smaller cities by subsidising regional routes through viability gap funding.",
   "whatHappened": "Operational airports rose from 74 to about 160, though only around 11 are genuinely greenfield and the count includes 9 heliports and 2 waterdromes. Viability gap funding of about ₹4,700 crore was spent plus ₹4,800 crore on airport infrastructure. UDAN 2.0 launched in July 2026 with a ₹28,840 crore outlay.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE AIRPORT COUNT AND THE OBJECTIVE ARE DIFFERENT THINGS, AND THE COUNT IS BROADENED. Operational airports rose from 74 to about 160, but only around 11 are genuinely greenfield and the total includes 9 heliports and 2 waterdromes - the same reclassification pattern this file records on highways, where a definitional change is presented as a build. Genuine air access did reach cities that had none, and about half of a large number of seeded routes surviving without permanent subsidy is a reasonable outcome for a scheme designed to seed and withdraw: attrition is partly the mechanism working. Against that, a 50 per cent route failure rate indicates demand was systematically over-estimated at award, and airports built for failed routes are stranded. AFFORDABILITY - the first word of the objective - IS NOT MEASURED HERE. Fares actually paid on the routes, and passengers actually carried, do not appear, and are entered below. Partly is scored on access delivered against a broadened count and unmeasured affordability.",
   "assessment": "partly",
   "caseFor": "Half of a large number of new routes surviving without permanent subsidy is a reasonable outcome for a scheme explicitly designed to seed markets and withdraw — attrition is the mechanism working, not failing. Genuine air access reached cities that had none, and India became the third-largest domestic aviation market over the period.",
   "caseAgainst": "A 50% route failure rate suggests demand was systematically over-estimated at award, and the airports built to serve failed routes are stranded assets. The headline airport count is inflated by a broadened definition — presenting reactivated airstrips, heliports and waterdromes alongside 11 genuine new builds as a doubling of airports is the same reclassification pattern seen in highways.",
@@ -351,6 +408,14 @@
   ],
   "provenanceRefs": [
    "P-38"
+  ],
+  "unmeasured": [
+   {
+    "what": "Fares actually paid and passengers actually carried on subsidised routes",
+    "why": "Making flying affordable and accessible was the announced object; this record carries airport counts, subsidy spent and route survival, none of which measures either fare or passenger. The regulator and the ministry hold route-level fare caps, seats sold and passenger numbers for subsidised flights.",
+    "wouldFill": "Directorate General of Civil Aviation or Ministry of Civil Aviation route-level passenger and fare data for scheme routes.",
+    "reasonKind": "not-published"
+   }
   ],
   "sources": [
    {
@@ -375,6 +440,7 @@
   "summary": "Metro network grew from 248 km in 2014 to 1,013 km across 23 cities by May 2025, with daily ridership rising from 28 lakh to 1.12 crore.",
   "claimAtLaunch": "Extend mass rapid transit to India's growing cities, with each project justified by a Detailed Project Report forecasting ridership and a 14% economic return under Metro Rail Policy 2017.",
   "whatHappened": "The assets were built. The ridership was not. An IIT-Delhi and Infravision study found most Indian metro systems carry 25 to 30% of their DPR projections, with Delhi the best performer at 47.45% and Bengaluru as low as 6%. Nagpur carries about 1 lakh daily against a 4 lakh forecast; Mumbai under 7 lakh against roughly 19 lakh on about ₹90,000 crore of spending. A 2022 Standing Committee found almost no metro system had met its initial projections.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE FORECASTS WERE NOT INCIDENTAL - THEY WERE THE JUSTIFICATION - AND THAT IS WHY THIS IS SCORED AGAINST THEM. The assets were built and quadrupling network length and ridership in a decade is real mass transit millions use daily. But most systems carry 25 to 30 per cent of the ridership their project reports forecast, with Delhi best at 47.45 per cent and Bengaluru at 6 per cent, and a parliamentary committee found almost no system had met its initial projections. Under the 2017 policy a 14 per cent economic return was the approval threshold, which created a direct incentive to inflate the forecast that secured approval. THE CASE FOR HAS REAL FORCE AND THE VERDICT ACCOMMODATES IT: ridership builds as networks reach density - Chennai moved from 13 to about 60 per cent once its loop closed - and comparing against forecasts partly measures forecast quality rather than asset performance, on assets with fifty-year lives. That is why this is partly rather than failed. WHAT IS NOT MEASURED IS THE THRESHOLD ITSELF: no realised economic return for any system appears here, so the test the policy set has never been applied after the fact. Entered below.",
   "assessment": "partly",
   "caseFor": "Quadrupling metro network length and quadrupling ridership in a decade is real mass transit that millions use daily, and ridership builds over years as networks reach critical density — Chennai went from 13% to about 60% once its Phase 1 loop closed. Comparing against DPR forecasts partly measures forecast quality rather than asset performance, and the assets have fifty-year lives against forecasts made for a single opening year.",
   "caseAgainst": "The forecasts were not incidental — they were the justification. Metro Rail Policy 2017's 14% return threshold created a direct incentive to inflate DPR ridership, and systems approved on inflated forecasts have been built at ₹300 to 600 crore per kilometre in cities where a bus rapid transit system at a tenth the cost would have carried the actual load. Bengaluru at 6% of projection is not a network maturing slowly; it is a project that should not have passed appraisal.",
@@ -384,6 +450,14 @@
   ],
   "provenanceRefs": [
    "P-22"
+  ],
+  "unmeasured": [
+   {
+    "what": "Economic rate of return actually realised by operating metro systems, against the 14 per cent approval threshold",
+    "why": "The threshold was the approval condition under the 2017 policy and no post-hoc computation for any system appears here or in anything retrieved. Ridership, fare revenue and capital cost are all held by the metro corporations and the housing ministry, so the return is computable by the bodies that set the test.",
+    "wouldFill": "A Ministry of Housing and Urban Affairs or metro-corporation post-implementation economic appraisal for operating systems.",
+    "reasonKind": "not-published"
+   }
   ],
   "sources": [
    {
