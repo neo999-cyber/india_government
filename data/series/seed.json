@@ -2936,7 +2936,7 @@
     "note": "3.59x since 2014"
    }
   ],
-  "notes": "Non-fossil capacity reached 283.46 GW; renewables met 51.5% of demand in July 2025. Progress toward the 500 GW non-fossil by 2030 target is broadly on track."
+  "notes": "Non-fossil capacity reached 283.46 GW as on 31.03.2026. CORRECTED 2026-08-05: this note previously dated that stock to July 2025 and paired it with 'renewables met 51.5% of demand in July 2025'. Both were wrong. The 283.46 GW is a capacity stock at 31 March 2026; the 51.5 per cent is a ratio of simultaneous power readings on 29 July 2025, not an energy share over July, and the two are eight months and two kinds of quantity apart. They appeared in one sentence of a single PIB release, which is how they came to be carried as a pair. Progress toward the 500 GW non-fossil by 2030 target is broadly on track."
  },
  {
   "id": "solar-capacity",

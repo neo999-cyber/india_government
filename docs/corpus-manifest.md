@@ -5,7 +5,7 @@
 One line per record so orientation does not require scanning `/data`. Format:
 `id · domain(s) {lenses} · title`. For the authoritative text, read the record.
 
-673 records — 222 ledger, 269 series, 122 provenance, 60 pairs.
+675 records — 222 ledger, 269 series, 124 provenance, 60 pairs.
 
 ## series (269)
 
@@ -530,7 +530,7 @@ L-0042 · human-development+welfare · Nutrition outcomes and the anaemia revers
 L-0043 · poverty+welfare · Multidimensional poverty exit claim
 ```
 
-## provenance (122)
+## provenance (124)
 
 ```
 # data/provenance.json
@@ -656,6 +656,8 @@ P-119 · foreign+macro · India and China report different bilateral trade, and 
 P-120 · foreign+macro · India's neighbourhood trade figures: three counterparties do not report at all, and the three that do all reco
 P-121 · environment+infrastructure · "Renewable" has at least four concurrent official boundaries, and large hydro was moved across one of them in 
 P-122 · environment+infrastructure · Renewable generation was imputed, not metered, up to FY2013-14 — the basis changes at the instrument's own bas
+P-123 · environment+infrastructure · A 50-per-cent-of-CAPACITY target is published as a COP26 goal; COP26's 50 per cent limb was 50 per cent of ENE
+P-124 · environment+infrastructure · SUBSTITUTION: India's NDC goals are cited to the Cabinet release, because the lodged instrument could not be r
 ```
 
 ## pairs (60)

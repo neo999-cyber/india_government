@@ -209,3 +209,89 @@ Raised with evidence in batch 1 and NOT applied. Under the source-edit amendment
 4. **`re-capacity`'s notes and L-0052's `whatHappened` both attach 283.46 GW to July 2025.** It is a
    capacity stock **as on 31.03.2026**. Also: `L-0052`'s sole source is a bare root,
    `https://mnre.gov.in/`, graded T1.
+
+---
+
+# BATCH 2 RESOLUTIONS — 2026-08-05
+
+Each item's statement of the defect above is left as written. These are the answers.
+
+**(a) RESOLVED, and the headline was wrong.** The three figures are not one comparison.
+`54.18%` is a non-fossil share of installed CAPACITY, **a stock as on 30.06.2026** (CEA installed-
+capacity report). `29.2%` is a share of GENERATION, **a flow over FY2025-26** (PIB 2250039, "during
+2025-26 (up to March 2026)"). They are a quarter apart and are different kinds of quantity, so
+`54.18 − 29.2 = 24.98` is a subtraction nobody should perform. `21.46` was always the FY2023-24 pair
+(44.97 capacity at 31.03.2024 − 23.51 generation over FY2023-24) and was correct.
+**The matched FY2025-26 pair, both from CEA *Executive Summary March 2026*:** non-fossil capacity at
+31.03.2026 = (8,780 nuclear + 274,688.09 RES-incl-large-hydro) ÷ 532,739.68 total = **53.21%**;
+non-fossil generation over FY2025-26 = (55.19 + 167.20 + 310.59) ÷ 1,847.94 = **28.84%**; gap
+**24.37 points**. L-0221's summary now leads on that pair. *Residual, stated in the record:* even a
+matched pair sets an END-OF-PERIOD capacity stock against a WHOLE-PERIOD flow, so the gap is
+somewhat overstated; CEA publishes no average-capacity series. Note also CEA and PIB differ slightly
+on the same quantity (28.84% from CEA's components against PIB's published 29.2%).
+
+**(b) RESOLVED, and the record cited the wrong quantity.** Coal Controller / DGCI&S Table 8.1 has
+three quantity columns — Coking, Non Coking, Total Coal. FY2023-24 reads coking **58.813** +
+non-coking **205.718** = total **264.531**. So 264.53 MT is TOTAL coal including coking, and the
+commitment named THERMAL coal. Coking coal is metallurgical and not substitutable, which L-0222's
+own caseFor concedes. **The verdict survives — 205.72 MT against a target of zero is a total miss and
+is itself the series maximum — but the evidence has been restated to the non-coking column**, with
+the total retained as context and labelled as such.
+
+**(c) RESOLVED — `partly` stands, but its ground was wrong and has been narrowed.** The conditional
+does not obtain: L-0221's `claimAtLaunch` names BOTH limbs verbatim, the 500 GW capacity limb and
+"India will meet 50 percent of its energy requirements from renewable energy by 2030". So the record
+scores a two-limb package, not a single met commitment discounted for a third party's error.
+**But the ground cited in the assessmentNote was partly a reporting fact** — that two releases
+restate the capacity limb and misattribute it — and that is a fact about PUBLISHERS, not about what
+the government achieved. It has been moved to **P-123** and removed from the verdict's ground, which
+now rests on one thing only: element 2 is the sole limb of the five with no reporting of any kind,
+so a reader cannot track it before 2030.
+
+**(d) RESOLVED — the sentence was false and is corrected in two places.** "COP26 announced no such
+goal" is wrong: Glasgow is where Panchamrit was announced, including the 500 GW non-fossil CAPACITY
+goal. The defect is narrower and survives — the 50 per cent limb announced at Glasgow was 50 per cent
+of **energy requirements** from **renewable** energy, while "about 50 per cent of cumulative electric
+power installed capacity from non-fossil sources" is the **August 2022 NDC update's** goal 4. The
+releases fuse element 2's percentage with the NDC's denominator. Corrected in L-0221's
+`whatHappened` with the withdrawn wording quoted inside the correction, and written up as **P-123**.
+The verification-log entry for cycle 2026-08-05af carries the same wrong sentence and is append-only,
+so it takes a superseding entry rather than an edit.
+
+**(e) RESOLVED — the comparison's start year moved.** The widening ran from FY2013-14, which sits on
+the IMPUTED side of P-122's basis seam where RES generation is normative and higher than metered.
+That understates the opening gap and overstates the widening. **The `breaks[]` contract binds the
+SERIES and does not reach a derived comparison stated in a record's prose — that is a structural gap
+in the break machinery, not only a wording problem, and it is logged as such.** The claim now runs
+**FY2014-15 (10.98 points) to FY2023-24 (21.46)**, entirely on the actual-generation basis, and the
+record states why the start year moved.
+
+**(f) RESOLVED — nothing is unaccounted for; the base was wrong.** Measured across the boundary:
+`966eb6a` held ledger 220 + series 262 + provenance 120 + pairs 60 = **662**. `7124b1f` held 222 +
+269 + 122 + 60 = **673**. 662 + 11 = 673 exactly. **"660" was phase 14's closing figure**, before the
+assessment-audit sequence added L-0219 and L-0220. STATE.md and the verification-log entry both say
+662 → 673 correctly; the wrong figure appeared only in the spoken batch report, quoted from the
+phase-14 STATE.md instead of measured — the stale-index hazard, in speech rather than in the repo.
+
+**(g) APPLIED under the narrow source-edit amendment** (now written into CLAUDE.md, Build workflow).
+All four, each carrying the withdrawn wording inside the correction:
+1. `L-0052.unmeasured[0].reasonKind` `not-published` → `not-collected`, and the entry **closed**,
+   because `res-generation-share` and `non-fossil-generation-share` now carry exactly what it asked
+   for. The record's own `why` had said "in anything retrieved", which was the honest form.
+2. `L-0052.caseFor` no longer rests on "renewables meeting over half of demand in a peak month".
+3. `L-0052.whatHappened` and `re-capacity.notes` — 283.46 GW redated from July 2025 to **31.03.2026**,
+   and the 51.5 per cent pairing removed from the series note.
+4. `L-0052`'s bare-root T1 source `https://mnre.gov.in/` replaced with a deep-linked CEA document.
+
+**ITEM 8 — the adversarial reviews read `/data`, NOT the deployed site, so their coverage was not
+vacuous and the closure note stands unamended.** `tools/gen-review-extract.mjs` reads
+`join(ROOT, 'data', 'ledger')` and writes `review/adversarial-extract.md` from a committed fixed
+sample; it never touches `out/` or the deployment. The extract renders `assessmentNote` inline under
+**Verdict** (38 verdict paragraphs in the file), so reviewers saw verdict reasoning wherever a record
+carried it — and the review's finding that 33 verdicts carried none was a true finding about `/data`,
+correctly obtained, which is what drove triage 3 and 4 to write them.
+**The corollary is worth more than the answer.** Had the reviews been run against the deployed site —
+the more "realistic" choice, and the one a future cycle might reach for — every verdict would have
+appeared to lack reasoning, and the reviewers would have reported a corpus defect that was really a
+rendering defect. The extract pipeline's independence from the rendering pipeline is what protected
+the review, and that independence should be preserved deliberately rather than by luck.
