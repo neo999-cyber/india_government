@@ -1282,3 +1282,185 @@ the two should be designed together rather than in sequence.
 Each note also carries a `revisitTrigger` naming what would sharpen the contest **without pretending
 it would settle a normative one** — for the four normative records the trigger explicitly says the
 measurement would not resolve the criterion question. That distinction is the point of writing them.
+
+---
+
+# THE 67 `contested` RECORDS, READ INDIVIDUALLY — and the joint design that follows
+
+**COUNT CORRECTION FIRST. It is 67, not 65.** 67 at `6e26544` and 67 at `2537cd8`, so nothing moved:
+the previous report asserted a figure no gate emitted, which is the sixth unstated delta and the
+second I have produced myself. The delta is zero; the error was in the reporting.
+
+## THE HYPOTHESIS IS FALSE. Normative is a third of the corpus, not most of it
+
+The brief's premise was that if the five-record sample generalised, most of the 67 would be normative
+disputes. **It does not generalise.** Each record was classified by reading its own `caseFor`,
+`caseAgainst` and `differentFactsNote` and asking one question: **what would settle this contest?**
+
+| Ground | n | What would settle it |
+|---|---|---|
+| **criterion** (normative) | **22** | Nothing. The facts are agreed; the dispute is which frame or objective governs |
+| **interpretation** | **13** | An authoritative reading of a document or statute. None has been given, or two inconsistent ones have |
+| **evidence-withheld** | **11** | A specific figure or document that exists or is producible, and is not published |
+| **measure** | **10** | Nothing, but the rival measures are enumerable — several valid published measures of one object point opposite ways and no party committed to one in advance |
+| **evidence-unobservable** | **5** | Nothing. The settling fact is a counterfactual, or is unbuildable while the practice stands |
+| **time** | **4** | Elapsed time. The readings make divergent predictions |
+| *(vocabulary residue)* | *2* | Not a ground — the record says `contested` is standing in for a value that does not exist |
+
+**criterion** — L-0015 · L-0019 · L-0020 · L-0025 · L-0040 · L-0059 · L-0068 · L-0076 · L-0084 ·
+L-0085 · L-0088 · L-0096 · L-0099 · L-0105 · L-0125 · L-0126 · L-0152 · L-0165 · L-0170 · L-0171 ·
+L-0173 · L-0203
+**interpretation** — L-0075 · L-0100 · L-0101 · L-0113 · L-0115 · L-0128 · L-0158 · L-0159 · L-0160 ·
+L-0163 · L-0195 · L-0224 · L-0226
+**evidence-withheld** — L-0042 · L-0057 · L-0070 · L-0110 · L-0114 · L-0137 · L-0144 · L-0148 ·
+L-0168 · L-0178 · L-0179
+**measure** — L-0043 · L-0058 · L-0060 · L-0074 · L-0078 · L-0083 · L-0091 · L-0102 · L-0132 · L-0141
+**evidence-unobservable** — L-0018 · L-0056 · L-0079 · L-0116 · L-0136
+**time** — L-0031 · L-0082 · L-0118 · L-0145
+**vocabulary residue** — L-0092 · L-0129
+
+### WHY THE SAMPLE MISLED, and it was not only phase skew
+
+The obvious explanation is that the five sat in the L-0015 to L-0076 range while the later phases —
+J&K, federalism, GST — carry the interpretation and evidence cases. **That explanation is
+insufficient.** In that same early range the 19 contested records split 8 criterion, 4 measure, 3
+evidence-withheld, 2 evidence-unobservable, 1 time, 1 interpretation — **42 per cent normative, not
+80.** The five were unrepresentative of their own neighbourhood. **Five records is too few to carry a
+distribution and the previous report should not have invited one from them.**
+
+### The two-value split does not fit, and the corpus said so before I did
+
+**`disputeKind: evidentiary | normative` cannot be lifted onto the assessment layer.** Read verbatim
+from the schema: *"evidentiary: the stated reason is contradicted by evidence that the data exists or
+was held"*; *"normative: the factual claim is not contested; what is contested is the
+characterisation of the non-release"*. **Both definitions are about the stated reason for an
+absence.** Neither has any meaning applied to a contest between two readings of a measure. The
+previous report's claim that "the distinction the assessment layer needs is already written down one
+layer over" is **withdrawn**: the names transfer, the definitions do not, and the report reached that
+conclusion from the names.
+
+Twenty-three records would have to be forced into one of two boxes that fit neither: **interpretation
+is not normative** (a court can settle it, and in L-0163 two courts did, seven months apart) **and
+measure-selection is not evidentiary** (no missing datum exists — the problem in L-0141 is, in that
+record's own words, *"not the absence of a common measure but an embarrassment of them"*).
+
+## THE JOINT DESIGN — one rule, two instances. PROPOSAL ONLY, NOTHING BUILT, ENUM UNTOUCHED
+
+### The rule
+
+**The assessment enum answers exactly one question: what the record concludes about the measure.
+Every other question a record must answer gets its own field, with its own written definitions,
+rendered and gated.** `contested` and `commitmentState` are the same problem — a second axis being
+pushed into a value on the first — and the corpus has already refused that move twice on this exact
+reasoning: no fifth `reasonKind`, and no fifth commitment state. L-0224's own note states the
+precedent in the form needed here: *"THE UNSCOREABILITY ITSELF IS NOT IN THE VERDICT AT ALL; it is a
+measurement fact and it sits in `unmeasured[]`."*
+
+So **neither proposal is an enum change.** Both are new second-axis fields carried beside the
+assessment:
+
+- **`contestGround`** — required when `assessment` is `contested`. Six values, each populated by at
+  least four records that were read individually. Not invented vocabulary: every value was derived
+  from the distribution above, and several records already name their own ground in prose.
+- **`commitmentState`** — required on records carrying a dated commitment. States (a)/(b)/(c)/(d) per
+  CLAUDE.md, unchanged.
+
+Both share the schema shape the corpus already uses for `reasonDisputed` → `disputeKind`: an `allOf`
+`if/then` that makes the second field required when the first takes a particular value.
+
+### THE THIRD THING, AND IT IS WHY THEY MUST BE DESIGNED TOGETHER RATHER THAN IN SEQUENCE
+
+**No gate asserts that an enum-valued or boolean field reaches its record's page.** This is not an
+inference — both gates derive their scope the same way, and both exclude it by construction:
+`field-render-audit` at line 54 tests `v.type === 'string' && !v.enum && !v.format && !v.pattern`,
+and `no-unguarded-prose-field` derives identically. Their own output says so: *"32 prose field(s)"*,
+*"19 prose field(s)"*. **`contestGround` and `commitmentState` are both enum fields and would both
+land in the one hole the instrument has already fallen down once** — enumeration-scoped blindness is
+what put 226 marks on the site invisibly with every gate green.
+
+Two observations from the built output, script-stripped, confirm the hole is occupied rather than
+theoretical:
+
+- **29 ledger records render no verdict at all.** Every one is `no-objective` — L-0021, L-0022,
+  L-0069, L-0071, L-0073, L-0087, L-0089, L-0103 and 21 others. This may well be a deliberate view
+  decision, and printing "No objective" as a verdict chip would read oddly. **The finding is not that
+  it is broken. It is that nothing asserts it either way and no written decision records the choice.**
+- **`differentFacts: true` renders a label — "These cases don't share a common measure" — and `false`
+  renders nothing.** The schema calls the false flag *"the judgement most at risk of being made
+  silently"* and requires a note for it; the note reaches the page under `reachability`, **and the
+  flag it explains does not.** 24 of the 67 carry `false`.
+
+**Corrected in passing: my first probe reported 27 records whose `differentFacts` flag was
+unrendered. That number is a probe artefact** — it searched for the literal field name where the view
+paraphrases, the same class as `field-render-audit`'s first run reporting 53 false invisibles. It is
+not reported as a defect.
+
+### What the joint change would therefore have to supply
+
+1. Two fields, two sets of written definitions, one conditional-required shape.
+2. **A coverage assertion**: every `contested` record has a `contestGround`, every commitment record
+   a `commitmentState`. Validator-level, cheap, and the thing that makes the field mean something.
+3. **A render assertion for non-prose fields** — the general form, not one carved for these two.
+   Without it the fields can ship invisible exactly as the 226 marks did.
+4. A backfill of 67 grounds. The classification above is the backfill, already done by reading.
+
+**(3) is the load-bearing item and it is a new gate, so it stops.** (1) is a schema change and stops.
+Neither is built here.
+
+### Two records that fall out of the reading and are NOT proposals
+
+- **L-0075** (Vijay Madanlal) and **L-0101** (Samagra Shiksha) are candidates for
+  `awaiting-adjudication` rather than `contested`. Each has a live proceeding before a body outside
+  the enacting authority — review petitions admitted in 2022 and unheard, and Tamil Nadu's Article
+  131 suit — which is `awaiting-adjudication`'s written test. **Candidates, not findings**: the
+  contest in each may survive the ruling, and deciding that requires reading the pleadings rather
+  than the docket. Logged for a batch that can retrieve them.
+- **L-0092 and L-0129** both say in their own notes that `contested` is standing in for a
+  presentational-finding value that does not exist, and both ask to be reviewed together. **L-0141's
+  note independently names the same shape.** Three records, not two.
+
+---
+
+# SCOPE: a consistency check for STATE.md — and why the cheap version would have caught one of two
+
+STATE.md is the cold-start authority, the lean-prompt form depends on it, and it is the only
+load-bearing artefact with no gate. Two batches running have found one carrying contradictory states.
+
+**What a state line is.** A line asserting the status of a named object — an arc, a queue item, a
+route, a record — using a status token (CLOSED, BLOCKED, COMPLETE, OPEN, SUPERSEDED). It is
+recognisable only if the object and the token are both identifiable, and **today neither is marked**:
+both real instances lived in ordinary prose and in headings, not in any structured field.
+
+**How a SUPERSEDED block is recognised.** Currently: not at all. I have written three by hand across
+two batches, each in a shape I chose at the time. A checkable convention needs a superseding line to
+(i) sit adjacent to what it supersedes, (ii) name it, (iii) state what is true instead — and the
+checker must then treat the superseded line as **not live**, which is the whole point.
+
+**What it would mean for two live lines to conflict.** Two live lines about the same object carrying
+different tokens. **The hard term is "the same object", and this is where the cheap gate fails.**
+
+| Instance | Would a token-matching check catch it? |
+|---|---|
+| **Arc B: heading "CLOSED PROVENANCE-ONLY" against an open-item entry listing untried routes** | **YES.** Same file, same name "Arc B", two tokens |
+| **Phase 14: "the one unreachable, unduplicated channel" against line 133 recording L-0218's correction** | **NO.** The lines name different subjects on their face — a channel and a record — and are contradictory only underneath |
+
+**One of two. Reported as one of two, because a sweep is worth what it catches (M3).** A gate
+advertising STATE.md consistency while missing the instance that propagated a false claim into P-121
+is worse than no gate, because it licenses the trust it does not earn.
+
+**What would have caught both** is not a checker but a convention: **every state line carries the
+date it was written and the object it is about, so the latest line about an object governs and every
+earlier one is mechanically superseded.** The phase-14 lines would have been dated before line 133
+and demoted without anyone having to notice they conflicted. That is an authoring change with a
+trivial checker behind it, and it is the recommendation.
+
+**Scope only. A new gate is a contract change and stops.**
+
+---
+
+# MINOR: `figure-consistency` cannot express the arithmetic L-0226 now prints
+
+The claims file supports subtraction only — `printedA`, `printedB`, `printedDifference`. L-0226
+prints two ratios, 11.11x and 2.56x, which are derived arithmetic a reader can check and **which
+cannot be declared even by an author who wants to.** Three claims are declared on this record and the
+gate reads 18; the ratios are outside its vocabulary. Noted, not built.
