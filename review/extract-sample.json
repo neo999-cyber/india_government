@@ -1,0 +1,174 @@
+{
+ "_comment": "FIXED sample for the adversarial extract. Not a random draw. Edit deliberately and regenerate; the list is committed so any review can be reproduced exactly.",
+ "generated_for": "external review by readers with no project history",
+ "note_on_contested": "The brief asked for ALL contested scores. There are 65, which cannot coexist with a 25-40 record sample. Taken instead: both phase-14 contested records, plus a ten-record spread of earlier contested across domains and phases.",
+ "records": [
+  {
+   "id": "L-0203",
+   "why": "split score; also carries a withheld claim"
+  },
+  {
+   "id": "L-0212",
+   "why": "split score"
+  },
+  {
+   "id": "L-0199",
+   "why": "project considers strongest"
+  },
+  {
+   "id": "L-0216",
+   "why": "project considers strongest"
+  },
+  {
+   "id": "L-0204",
+   "why": "project considers strongest"
+  },
+  {
+   "id": "L-0198",
+   "why": "finding runs FOR the government on the stated basis"
+  },
+  {
+   "id": "L-0196",
+   "why": "finding runs FOR the government; zero-mismatch recomputation"
+  },
+  {
+   "id": "L-0114",
+   "why": "withheld"
+  },
+  {
+   "id": "L-0122",
+   "why": "withheld"
+  },
+  {
+   "id": "L-0123",
+   "why": "withheld"
+  },
+  {
+   "id": "L-0134",
+   "why": "withheld"
+  },
+  {
+   "id": "L-0136",
+   "why": "withheld"
+  },
+  {
+   "id": "L-0137",
+   "why": "withheld"
+  },
+  {
+   "id": "L-0172",
+   "why": "withheld"
+  },
+  {
+   "id": "L-0202",
+   "why": "withheld"
+  },
+  {
+   "id": "L-0018",
+   "why": "contested; a corrected record"
+  },
+  {
+   "id": "L-0025",
+   "why": "contested; banking"
+  },
+  {
+   "id": "L-0059",
+   "why": "contested; employment"
+  },
+  {
+   "id": "L-0068",
+   "why": "contested; agriculture"
+  },
+  {
+   "id": "L-0076",
+   "why": "contested; rights and institutions"
+  },
+  {
+   "id": "L-0100",
+   "why": "contested; education"
+  },
+  {
+   "id": "L-0110",
+   "why": "contested; security"
+  },
+  {
+   "id": "L-0141",
+   "why": "contested; rights"
+  },
+  {
+   "id": "L-0158",
+   "why": "contested; federalism"
+  },
+  {
+   "id": "L-0195",
+   "why": "contested; phase 14"
+  },
+  {
+   "id": "L-0200",
+   "why": "phase 14; corrected after a derived-quantity defect"
+  },
+  {
+   "id": "L-0205",
+   "why": "phase 14; disclosure comparison"
+  },
+  {
+   "id": "L-0206",
+   "why": "phase 14; eligibility vs drawing"
+  },
+  {
+   "id": "L-0208",
+   "why": "phase 14; capacity without status"
+  },
+  {
+   "id": "L-0209",
+   "why": "phase 14; target with no date"
+  },
+  {
+   "id": "L-0211",
+   "why": "phase 14; series published then stopped"
+  },
+  {
+   "id": "L-0213",
+   "why": "phase 14; scope grew, deliverables did not"
+  },
+  {
+   "id": "L-0217",
+   "why": "phase 14; mirror disagreement"
+  },
+  {
+   "id": "L-0219",
+   "why": "phase 14; the instrument auditing itself"
+  },
+  {
+   "id": "L-0207",
+   "why": "scored as having worked; phase 14. Without a 'worked' record the set reads one-directional"
+  },
+  {
+   "id": "L-0023",
+   "why": "scored as having worked; the project's own account of a bank-cleanup success"
+  },
+  {
+   "id": "L-0011",
+   "why": "scored as having failed; the highest-profile negative verdict in the corpus"
+  },
+  {
+   "id": "L-0066",
+   "why": "the corpus's only 'reversed' score"
+  }
+ ],
+ "no_record_outcomes": [
+  {
+   "subject": "Bangladesh, first pass",
+   "source": "drops/phase-foreign-trade/STATE.md item 4"
+  },
+  {
+   "subject": "Sri Lanka, first pass",
+   "source": "drops/phase-foreign-trade/STATE.md item 4"
+  },
+  {
+   "subject": "UN Security Council advocacy",
+   "source": "drops/phase-foreign-trade/STATE.md item 3"
+  }
+ ],
+ "note_on_balance": "Four records added after the first generation showed the sample carried no 'worked' and no 'failed' verdict at all. A reviewer seeing only unscored and contested records would reasonably conclude the instrument never reaches a conclusion in either direction, which would be an artefact of the sample rather than a property of the corpus."
+}
