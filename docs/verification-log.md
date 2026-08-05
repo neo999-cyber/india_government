@@ -8211,3 +8211,18 @@ CLAUDE.md. Four of the ten cycles produced a false finding that the next brief i
 was caught by re-deriving the previous cycle's claims before building on them, which is now the
 first rule of the set.
 
+### Cycle 2026-08-05z, addendum — L-0219's own citation was unretrievable
+
+Caught within the cycle, after the commit. L-0219 cited the repository at
+`https://github.com/neo999-cyber/india_government`, which is **private and returns HTTP 404 to an
+unauthenticated client** — an unopenable citation in a record whose entire subject is unopenable
+citations.  did not catch it: it diffs against , and the push had already
+landed, so it reported "0 to check". That is the known blind spot recorded for this tool, in the
+mirror image of its usual form — normally it cannot see an unmerged drop; here it could not see a
+merged one.
+
+Corrected in the record rather than by swapping the URL for a prettier one: the citation now opens
+"INTERNAL REFERENCE, NOT AN OPENABLE URL", states the 404 explicitly, and names the three files
+that hold the evidence — the allowlist with its  array, the verification-log cycles, and the
+audit document with corrections C1 to C6. **A record that partitions the corpus by retrievability
+should not be exempt from its own partition.**
