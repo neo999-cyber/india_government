@@ -71,7 +71,9 @@
    }
   ],
   "confidence": "high",
-  "asOf": "2026-07-31"
+  "asOf": "2026-07-31",
+  "assessmentNote": "Written 2026-08-05 (phase 15 batch 13); this record carried a `contested` verdict with no stated ground. THE TWO READINGS USE THE SAME SERIES AND DIFFER ON WHAT COUNTS AS IMPROVEMENT. Agreed on both sides: participation rose about ten percentage points, measured unemployment fell, regular wage employment did not grow, real rural earnings fell from Rs 9,107 to Rs 8,842 a month, and agriculture's share of employment rose. Reading one is ABSORPTION: in a labour-surplus economy, drawing ten points more of the population into work at all is an achievement, self-employment is how most of the developing world works, and the agricultural rise is substantially a COVID artefact already moderating. Reading two is STRUCTURAL TRANSFORMATION: every quality indicator moved the wrong way, and a rising agricultural share is the reversal of the process by which countries get richer — so the same data read as a development indicator says the economy went backwards. THE RECORD DECLINES BECAUSE THE DISAGREEMENT IS NORMATIVE. The dispute is over the criterion, not the measurement, and the instrument's rule against composite scores forbids resolving it by weighting quantity against quality. NOT a case of work left undone.",
+  "revisitTrigger": "A regular-wage-employment series extending past the current window, or a real-earnings series by employment category, would sharpen reading two; neither settles the criterion question."
  },
  {
   "id": "L-0060",

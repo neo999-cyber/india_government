@@ -40,7 +40,15 @@ to two shipped records (L-0018, L-0021). Corpus 660 records.**
 
 **What carries forward.**
 1. **Arc E's fourth file** — DAP domestic-content rules beyond the IC minimums.
-2. **The e-Gazette** — the one unreachable, unduplicated channel (item 7).
+2. **The e-Gazette** — ~~the one unreachable, unduplicated channel (item 7)~~.
+   > **SUPERSEDED 2026-08-05 (phase 15 batch 13).** This line is FALSE and was false when this file
+   > was closed: line 133 below already records that L-0218 was corrected on exactly this point.
+   > The e-Gazette is REACHABLE — `egazette.gov.in` at 164.100.190.144 answers HTTP 200, and two
+   > notifications cited in this corpus retrieve today by static path
+   > `WriteReadData/<year>/<number>.pdf` with real text layers. **This line is the one that caused
+   > the damage**: phase 15 read it instead of the record and wrote the false claim into P-121.
+   > What remains unsolved is DISCOVERY — finding a notification's number from its description —
+   > not retrieval.
 3. **Godda** — zero across every document scanned in two cycles, and no absence claimed: the
    measured series ends before the question becomes answerable. Needs a 2023-24 series or a company
    primary.
@@ -390,7 +398,9 @@ and the UN Treaty Series for treaties India registered. **A failure to read a mi
 not evidence that its documents are unpublished**, and that inference was drawn three times in this
 phase and was wrong each time.
 
-**The e-Gazette is the real gap:** unreachable and unduplicated, and it is the channel of legal
+**~~The e-Gazette is the real gap:~~ SUPERSEDED 2026-08-05 (phase 15 batch 13) — see the block at
+item 2 above. The channel is reachable and its documents retrieve by static path; only discovery is
+unsolved. The original wording follows for the record:** unreachable and unduplicated, and it is the channel of legal
 record. It is the one item that carries forward.
 
 **Two general results worth reusing.** An archived JavaScript shell is still a shell — the crawler

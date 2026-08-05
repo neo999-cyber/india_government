@@ -109,7 +109,9 @@
    }
   ],
   "confidence": "high",
-  "asOf": "2026-07-31"
+  "asOf": "2026-07-31",
+  "assessmentNote": "Written 2026-08-05 (phase 15 batch 13); this record carried a `contested` verdict with no stated ground. THE TWO READINGS AGREE ON EVERY FACT AND DISAGREE ABOUT WHICH FRAME GOVERNS. Nobody disputes that recovery on written-off accounts runs at roughly 13-18 per cent, that Rs 13.91 lakh crore remains unrecovered, or that borrower liability survives the accounting entry. Reading one is PRUDENTIAL: a write-off after full provisioning is the correct treatment, the legal claim is untouched, and leaving fully provisioned assets on the books misstates a bank's position as surely as hiding them would. Reading two is ECONOMIC: at 13-18 per cent recovery the distinction between write-off and waiver is notional for the bulk of the amount, so a headline fall from 14.58 to 1.8 per cent presented as a cleanup overstates what happened, and the residue is borne by depositors and, through recapitalisation, taxpayers. THE RECORD DECLINES BECAUSE THE DISAGREEMENT IS NORMATIVE, NOT BECAUSE ANYTHING IS UNMEASURED. Both readings are simultaneously true of the same numbers; choosing between them would be choosing whether accounting correctness or economic incidence is the question, which is not a finding the evidence can settle. NOT a case of work left undone.",
+  "revisitTrigger": "A published recovery series on written-off accounts by vintage would sharpen the second reading materially, but it would not settle the contest, because the disagreement is about which frame governs rather than about the rate."
  },
  {
   "id": "L-0026",
