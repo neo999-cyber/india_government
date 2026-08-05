@@ -12,6 +12,7 @@
   "summary": "Deposit-free LPG connections to women in poor households, identified from SECC 2011. Roughly 10.3 crore connections released, taking national LPG coverage from about 62% to 94-99%.",
   "claimAtLaunch": "Free households from solid cooking fuel, reducing household air pollution and the health burden it imposes on women and children. Target 5 crore by 2019, raised to 8 crore in 2018, then extended further under Ujjwala 2.0.",
   "whatHappened": "Connections were delivered at scale and ahead of target. Refills were not. CAG Report No. 14 of 2019 found the year-one cohort averaged 3.66 refills a year, falling to 3.21 for the 3.18 crore with a year or more of tenure by December 2018, against a general-consumer benchmark above six. Of that cohort, 17.61% never returned for a second refill and 33.02% took only one to three. The CAG recorded that average refill consumption was declining, and flagged commercial diversion and beneficiary-identification problems. Subsidised refills were cut from twelve to nine in 2025 and nine to four in 2026.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE SCHEME IS COUNTED AT THE CONNECTION AND ITS PURPOSE IS AT THE BURNER. Connections: delivered at scale and ahead of a target twice raised - the infrastructure objective is met and no predecessor came close. Use: not met on the regulator's own evidence - the year-one cohort averaged 3.66 refills a year falling to 3.21, against a general-consumer benchmark above six, with 17.61 per cent never returning for a second cylinder and 33.02 per cent taking one to three. Most households in that cohort therefore continued burning biomass for most cooking. Partly rests on exactly that gap, and it widened rather than closed when subsidised refills were cut from twelve to nine in 2025 and nine to four in 2026. THE HEALTH OBJECTIVE IS NOT MEASURED AT ALL. Reducing household air pollution and the burden it imposes on women and children was the stated purpose; no population-scale health outcome appears in this record or in anything retrieved, and it is entered below. The verdict is scored on connection and refill, NOT on health.",
   "assessment": "partly",
   "caseFor": "A connection is a precondition for any clean-fuel use, and near-universal LPG access was achieved in under a decade in a country where solid-fuel cooking was the norm — an infrastructure result no predecessor came close to. Refill rates understate progress because many households use LPG as a supplementary rather than sole fuel, which still displaces some biomass. The targeted ₹300 subsidy from 2023 and state top-ups such as Uttar Pradesh's two free refills show the affordability constraint being addressed rather than ignored.",
   "caseAgainst": "The scheme's stated purpose was a clean-fuel transition and the health benefit that follows, not the distribution of cylinders. On its own regulator's evidence, a third of beneficiaries took three refills or fewer in a year and a sixth never returned at all, which means most households continued burning biomass for most cooking. Cutting subsidised refills from twelve to four while cylinder prices rose works directly against the usage problem the scheme exists to solve, and no population-scale health benefit has been demonstrated.",
@@ -22,6 +23,18 @@
   ],
   "provenanceRefs": [
    "P-22"
+  ],
+  "unmeasured": [
+   {
+    "what": "Household air pollution and the health burden it imposes, before and after connection",
+    "why": "The announced purpose of the scheme. No population-scale measurement of exposure or of the health outcomes it drives appears in this record or in anything retrieved; refill counts are a proxy for fuel use, not a measure of health. Entered 2026-08-05 when the note was written and the objective was found unscored.",
+    "reasonKind": "not-collected"
+   },
+   {
+    "what": "Biomass displaced per household, as distinct from cylinders delivered",
+    "why": "The case for holds that supplementary LPG use still displaces some biomass, which is plausible and unquantified. Refill frequency bounds it loosely at best, and no fuel-stacking measurement at national scale was retrieved.",
+    "reasonKind": "not-collected"
+   }
   ],
   "sources": [
    {
@@ -46,6 +59,7 @@
   "summary": "National sanitation campaign. Over 10 crore individual household toilets built, with rural India declared Open Defecation Free on 2 October 2019, followed by ODF-Plus and ODF-Plus Model phases.",
   "claimAtLaunch": "Eliminate open defecation in rural India by October 2019, the 150th anniversary of Gandhi's birth.",
   "whatHappened": "Latrine ownership rose enormously. Behaviour changed less. The government's NARSS 2018-19 reported 93.1% of rural households with toilets and 96.5% usage among those with access. The r.i.c.e. SQUAT panel, revisiting the same households it surveyed in 2014 across Bihar, Madhya Pradesh, Rajasthan and Uttar Pradesh, found open defecation among people over two fell from 70% to 44%, and that 23% of latrine-owners were still defecating in the open — identical to 2014.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE DECLARATION WAS A COVERAGE CLAIM AND THE OBJECTIVE WAS A BEHAVIOURAL ONE, WHICH IS THE WHOLE OF THE SPLIT. Construction: achieved, and the fall in open defecation among people over two from 70 to 44 per cent in the four hardest states is a very large public-health movement documented by the most critical independent source, not by the government. Behaviour among those who already had the option: unchanged - 23 per cent of latrine-owners were still defecating in the open, identical to 2014, which is the harder half of the problem and the half construction could not reach. TWO INSTRUMENTS DISAGREE AND NEITHER IS ADOPTED: the government's own survey reports 96.5 per cent usage among those with access while an independent panel revisiting its own 2014 households finds 23 per cent of owners still practising open defecation. Part of the divergence is instrument design - grouped household questions structurally understate open defecation against person-by-person questions - and the record says so without treating that as settling it. Partly is scored on construction achieved and behaviour partly moved, NOT on the elimination target, which was not met by the stated date.",
   "assessment": "partly",
   "caseFor": "Reducing open defecation from 70% to 44% in the four hardest states in four years is a very large public-health achievement by any historical standard, and the r.i.c.e. figures — the most critical independent source — themselves document it. Construction was the binding constraint for the majority who did switch, and mass campaigns of this kind rarely move behaviour faster. Part of the survey divergence is instrument design rather than misreporting: grouped household questions structurally understate open defecation relative to person-by-person questions.",
   "caseAgainst": "The ODF declaration was a coverage claim presented as a behavioural outcome, and the government's own 96.5% usage figure is irreconcilable with independent panel evidence from the states that mattered most. That latrine-owners' open defecation was unchanged at 23% since 2014 shows construction did not shift the practice among those who already had the option, which was the harder and more important half of the problem. Twin-pit design, pit-emptying taboos, water availability and caste attitudes to latrine use were under-addressed.",
@@ -56,6 +70,14 @@
   "provenanceRefs": [
    "P-24",
    "P-22"
+  ],
+  "unmeasured": [
+   {
+    "what": "Open-defecation behaviour at national scale from an instrument independent of the implementing ministry",
+    "why": "The independent panel evidence covers four states; the national figure comes from the ministry's own survey, which the panel's findings contradict where the two overlap. No national-scale independent behavioural measurement was retrieved, so the size of the divergence outside those four states is unknown.",
+    "wouldFill": "A national household survey measuring defecation practice person-by-person, fielded independently of the implementing ministry.",
+    "reasonKind": "not-collected"
+   }
   ],
   "sources": [
    {
@@ -80,6 +102,7 @@
   "summary": "Rural piped-water mission raising household tap connections from 3.23 crore (16.71% of rural households) at launch to roughly 82% by mid-2026.",
   "claimAtLaunch": "A functional household tap connection for every rural household by 2024, with an outlay of ₹3.60 trillion.",
   "whatHappened": "Coverage expanded very fast but the deadline slipped to 2028 under JJM 2.0, with the outlay raised to about ₹8.69 lakh crore in March 2026. The Ministry's own 2024 Functionality Assessment across 19,812 certified villages found 98% of households had a tap while only about 76% received water meeting Mission standards and 83% the minimum quantity. Ghost-tap reporting was documented in Manipur, and state functionality varied widely.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. CERTIFICATION MEASURES INFRASTRUCTURE INSTALLED AND THE PROMISE WAS WATER DELIVERED. Coverage: from about one rural household in six to four in five in seven years, among the fastest expansions of its kind. Functionality: the Ministry's own 2024 assessment across 19,812 certified villages found 98 per cent of households with a tap but about 76 per cent receiving water meeting Mission standards and 83 per cent the minimum quantity - so the headline overstates delivery by roughly a quarter, and the overstatement is built into the reporting system rather than incidental to it. The 2024 deadline was missed and moved to 2028. Partly rests on that: coverage real and fast, functionality short by a quarter, deadline missed by four years. THE GOVERNMENT PUBLISHED THE ASSESSMENT THAT EXPOSED ITS OWN SHORTFALL, which is recorded here as a point in its favour. The assessment covers certified villages rather than the country, and the national functionality figure is entered below as an absence.",
   "assessment": "partly",
   "caseFor": "Taking rural piped-water coverage from one household in six to four in five within seven years is among the fastest infrastructure expansions of its kind anywhere, and the government published a functionality assessment that exposed its own shortfall rather than concealing it. JJM 2.0 explicitly shifts the success metric from connections to reliable service delivery through Gram Panchayats, which is the correct response to the finding.",
   "caseAgainst": "A quarter of certified households do not receive water meeting the Mission's own standards, so the headline coverage figure overstates delivery by roughly that margin. Certification measures infrastructure installed rather than water delivered, which builds the overstatement into the reporting system. Groundwater depletion and arsenic, fluoride and salinity contamination threaten the durability of what has been built, and the original deadline was missed by four years.",
@@ -90,6 +113,14 @@
   ],
   "provenanceRefs": [
    "P-25"
+  ],
+  "unmeasured": [
+   {
+    "what": "Functionality - water meeting Mission standards in quantity and quality - across all covered rural households rather than in certified villages",
+    "why": "The 2024 assessment covers 19,812 certified villages, which is a subset chosen on certification status. The national figure it is routinely read as is not what it measures, and no all-India functionality measurement was retrieved. The Ministry runs the certification and holds the underlying returns.",
+    "wouldFill": "A Ministry of Jal Shakti functionality assessment on a sample representative of all covered households, or the state-wise functionality returns published in full.",
+    "reasonKind": "not-published"
+   }
   ],
   "sources": [
    {
@@ -115,6 +146,7 @@
   "summary": "Rural and urban housing programmes. PMAY-G reached about 3.87 crore houses sanctioned and 2.95 crore completed by February 2026, against an overall objective of 4.95 crore by 2029.",
   "claimAtLaunch": "Housing for All by 2022 — pucca houses with basic amenities for every household lacking one.",
   "whatHappened": "The 2022 deadline was missed. PMAY-U was extended to December 2025 and PMAY-U 2.0 announced for a further crore urban houses; PMAY-G was extended in August 2024 with two crore more rural houses to 2029. A sanctioned-to-completed gap of roughly 0.9 crore persists, with a further gap between completion and occupation. Beneficiary selection still rests on SECC 2011, supplemented by Awaas+ and revised exclusion criteria in 2024.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE PROMISE WAS DATED AND IT WAS NOT MET; THE DELIVERY UNDER IT IS LARGE. Housing for All by 2022 was missed, extended to December 2025 for the urban programme and to 2029 for the rural one, with targets raised at each extension. Nearly three crore completed rural houses is a larger delivery than any predecessor, at higher per-unit assistance, with amenity convergence tying each house to a toilet, an LPG connection and a tap. Partly is scored on that: the commitment failed on its date while the programme delivered at unprecedented scale. TWO GAPS SIT BEHIND THE HEADLINE AND ONLY ONE HAS A FIGURE. Sanctioned-to-completed is about 0.9 crore. Completed-to-OCCUPIED is asserted in this record with no number at all, and is entered below - a completed house nobody lives in is not housing delivered, and it is the second place this scheme is counted before use. Selection also still rests on a fifteen-year-old census, which embeds exclusion errors the record notes and does not quantify.",
   "assessment": "partly",
   "caseFor": "Nearly three crore completed rural houses is a larger delivery than any predecessor programme, with higher per-unit assistance and better specifications than the UPA's Indira Awaas Yojana, and with amenity convergence tying each house to a toilet, an LPG connection and a tap. Deadline extensions reflect the target being raised as capacity grew, not simply failure to deliver.",
   "caseAgainst": "Housing for All by 2022 was the promise and it was not met; the target has been extended twice and now runs to 2029. The urban shortage rose from 1.88 crore in 2012 to about 2.9 crore in 2018 on ICRIER's estimate, far outpacing units delivered. Selection on a fifteen-year-old SECC embeds exclusion errors, and unit costs have not kept pace with construction inflation, pushing the beneficiary contribution beyond what the poorest can raise.",
@@ -125,6 +157,14 @@
   "provenanceRefs": [
    "P-22",
    "P-04"
+  ],
+  "unmeasured": [
+   {
+    "what": "Completed houses actually occupied",
+    "why": "This record asserts a gap between completion and occupation and gives no figure for it. Completion is reported by the implementing ministries through their own management systems, which record construction stage rather than residence, and no occupancy measurement was retrieved. Entered 2026-08-05 when the note was written.",
+    "wouldFill": "A Ministry of Housing and Urban Affairs or Ministry of Rural Development occupancy survey of completed units, or a Comptroller and Auditor General audit sampling completed houses for residence.",
+    "reasonKind": "not-published"
+   }
   ],
   "sources": [
    {
@@ -150,6 +190,7 @@
   "summary": "Free 5 kg of grain per person per month from April 2020 as COVID relief, merged into the NFSA in December 2022 and extended to December 2028 at an approved ₹11.80 lakh crore. About 80.67 crore persons are covered.",
   "claimAtLaunch": "Prevent hunger during the pandemic, then guarantee free rather than subsidised grain to NFSA beneficiaries.",
   "whatHappened": "The COVID phases cost about ₹3.91 lakh crore over 28 months and reached hundreds of millions using the existing NFSA and One Nation One Ration Card rails, which handled roughly 30 crore portability transactions in eleven months of 2024. But NFSA coverage ratios remain fixed on Census 2011: Drèze, Khera and Mungikar estimated over 100 million people excluded, and Drèze put the figure above 120 million in 2025, since population projections imply about 920 million should be covered against 806 million actual.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE OPERATION IS MEASURED AND THE OUTCOME IT WAS FOR IS NOT. Delivery: about 3.91 lakh crore over 28 months, reaching hundreds of millions on rails that already existed, with portability handling roughly 30 crore transactions in eleven months of 2024 - one of the largest food transfers ever mounted, executed quickly because the infrastructure predated the emergency. PREVENTING HUNGER, THE STATED PURPOSE, IS NOT MEASURED ANYWHERE IN THIS RECORD, and is entered below. Partly is therefore scored on the delivery and on the exclusion, not on the outcome. THE EXCLUSION IS THE OTHER HALF AND IT IS A DISCRETE, KNOWN, CORRECTABLE FAILURE: coverage ratios remain fixed on a 2011 census, so on the scholars' estimates over 100 million and by 2025 above 120 million people are outside a statutory entitlement. That estimate is scholarly rather than official, and the absence of an official one is itself entered below.",
   "assessment": "partly",
   "caseFor": "This was one of the largest food-transfer operations ever mounted, executed quickly on rails that already existed, and it plausibly prevented mass hunger during the sharpest economic contraction in India's post-independence history. Portability genuinely served migrants, who had previously lost entitlements on moving. Extending free grain for five years past the emergency converted relief into durable support.",
   "caseAgainst": "More than 100 million people are excluded from a statutory entitlement because the denominators are fifteen years stale — a discrete, known and correctable failure that has gone uncorrected for years. The provision is cereal-only, omitting pulses and oils, so it addresses calories rather than nutrition, which is where India's deficit actually lies. Drèze argues the scheme largely rebrands existing NFSA entitlements while adding a modest price subsidy.",
@@ -160,6 +201,19 @@
   "provenanceRefs": [
    "P-04",
    "P-23"
+  ],
+  "unmeasured": [
+   {
+    "what": "Hunger or food insecurity among the covered population, before and during the transfers",
+    "why": "Preventing hunger was the stated purpose. This record measures grain moved and money spent, which are inputs. No population-scale food-insecurity measurement covering the period appears here or in anything retrieved.",
+    "reasonKind": "not-collected"
+   },
+   {
+    "what": "An official estimate of the number of people excluded from the statutory entitlement by the use of 2011 census ratios",
+    "why": "The exclusion figures in this record are scholarly estimates. The Department of Food and Public Distribution holds the coverage ratios and current population projections and can compute the shortfall directly; no official figure was retrieved.",
+    "wouldFill": "A Department of Food and Public Distribution statement of entitled population against covered population on current projections, or a Parliamentary answer giving both.",
+    "reasonKind": "not-published"
+   }
   ],
   "sources": [
    {
@@ -184,6 +238,7 @@
   "summary": "Publicly funded health insurance offering ₹5 lakh of annual hospitalisation cover per family, extended in September 2024 to all citizens aged 70 and above. About 12.69 crore admissions authorised and over ₹1.92 lakh crore of claims approved by June 2026.",
   "claimAtLaunch": "Protect the poorest 40% of households from catastrophic health expenditure.",
   "whatHappened": "Cards created, admissions authorised and claims paid diverge by an order of magnitude, with 24-30 crore cards against 12.69 crore cumulative admissions. The 2023 CAG performance audit found roughly 7.5 lakh beneficiaries linked to a single mobile number, ₹6.97 crore paid for treating 3,446 patients recorded as dead, and 78,396 cases of the same patient admitted to multiple hospitals simultaneously. The Health Ministry responded that the scheme is entitlement-based rather than enrolment-based. Public health spending stands at about 1.7-1.9% of GDP against the National Health Policy 2017 target of 2.5% by 2025, with the Union share falling from 0.37% to 0.29% of GDP.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE OBJECTIVE WAS PROTECTION FROM CATASTROPHIC EXPENDITURE AND WHAT IS MEASURED IS HOSPITALISATIONS FINANCED. Delivered: 12.69 crore cumulative admissions, and the public share of total health expenditure rising from 29 to 48 per cent - a real and large transfer of risk away from households that would otherwise have sold assets. Against it: the scheme covers hospitalisation only while medicines and diagnostics, roughly two-thirds of out-of-pocket spending, remain uncovered, and out-of-pocket spending remains around 47 to 48 per cent. So the instrument does not reach the dominant source of the harm it names. THE COVERAGE CLAIM AND THE DELIVERY COUNT DIVERGE BY AN ORDER OF MAGNITUDE - 24 to 30 crore cards against 12.69 crore admissions - and the audit findings go to whether the database can support claims made from it: 7.5 lakh beneficiaries on a single mobile number, 3,446 patients recorded as dead treated for 6.97 crore, 78,396 simultaneous multi-hospital admissions. Those concern records rather than treatments delivered, and the record says so. Partly is scored on hospitalisations financed against an objective the instrument only partly addresses. CATASTROPHIC HEALTH EXPENDITURE AMONG COVERED HOUSEHOLDS - the actual objective - IS NOT MEASURED HERE and is entered below.",
   "assessment": "partly",
   "caseFor": "Twelve and a half crore hospitalisations financed for households that would otherwise have sold assets or gone without is a real and large transfer of risk away from the poor, and the public share of total health expenditure rose from 29% to 48% over the period. Extending cover to everyone over seventy addressed the group with the highest hospitalisation risk. Database errors, while serious, concern records rather than the treatments actually delivered and paid for.",
   "caseAgainst": "The scheme covers hospitalisation only, while medicines and diagnostics — roughly two-thirds of out-of-pocket spending — remain uncovered, so it misses the dominant source of catastrophic health expenditure. Out-of-pocket spending remains around 47-48%. The CAG findings indicate the beneficiary database cannot support the coverage claims made from it. And the National Health Policy's own 2.5% target was missed while the Union's share of health spending fell, meaning insurance expanded as public provision contracted.",
@@ -195,6 +250,14 @@
   ],
   "provenanceRefs": [
    "P-27"
+  ],
+  "unmeasured": [
+   {
+    "what": "Incidence of catastrophic health expenditure among covered households, before and after enrolment",
+    "why": "This is the stated objective and the record measures admissions and aggregate out-of-pocket share instead. Neither isolates the covered population, and no before-and-after measurement of catastrophic expenditure among beneficiaries was retrieved. The National Health Authority holds enrolment and claims data and the household expenditure surveys exist separately; nothing links them in published form.",
+    "wouldFill": "A National Health Authority or National Sample Survey study of out-of-pocket and catastrophic expenditure among enrolled households against a comparable uncovered group.",
+    "reasonKind": "not-published"
+   }
   ],
   "sources": [
    {
@@ -266,6 +329,7 @@
   "summary": "Unconditional income support of ₹6,000 a year in three instalments to landholding farmers, with over ₹4.09 lakh crore disbursed across 21 instalments, set against the separate 2016 commitment to double farmers' income by 2022.",
   "claimAtLaunch": "Supplement farm household income and, alongside other measures, double farmers' income by 2022 on the Dalwai committee framework, which required about 10.4% annual real growth.",
   "whatHappened": "Transfers reached 9.4-9.7 crore farmers per instalment, down about 2.3 crore from the peak after mandatory Aadhaar e-KYC and land-record verification removed ineligible recipients. The NSSO Situation Assessment Surveys show average monthly agricultural household income rising from ₹6,426 in 2012-13 to ₹10,218 in 2018-19, about 59% nominal but only around 15% real, with crop income up roughly 23% nominal. No Situation Assessment Survey has been conducted since 2019, so the 2022 target is formally unverifiable.",
+  "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THIS RECORD BUNDLES A TRANSFER SCHEME AND A DATED PROMISE, AND FAILED IS SCORED ON THE PROMISE ONLY. The doubling commitment was specific, dated and publicly repeated, and required about 10.4 per cent annual real growth; the only authoritative instrument shows roughly 15 per cent real growth over six years, and no Situation Assessment Survey has been fielded since 2019, so the terminal year is unverifiable and is already entered below as an absence. Failed is asserted on the measured trajectory against the stated rate, and on the absence of any evidence of a terminal reversal - not on a 2022 measurement that does not exist. PM-KISAN ITSELF IS NOT WHAT FAILED, and the note says so because the title bundles them. As a transfer it works as designed: it reaches 9.4 to 9.7 crore households directly, and the 2.3 crore reduction from the peak followed verification rather than attrition, which is a targeting system functioning. Its limits are stated in the case against - un-indexed at 6,000 rupees, and land-title based, so tenant farmers and landless labourers are outside it by construction.",
   "assessment": "failed",
   "caseFor": "PM-KISAN itself works as designed: it is transparent, reaches nine and a half crore households directly, and the verification-driven deletions demonstrate a targeting system that functions. Income doubling was always contingent on factors beyond one transfer scheme, and COVID intervened in the final two years of the target window. NITI Aayog's GDP-based estimates suggest more progress than the survey data capture.",
   "caseAgainst": "The doubling commitment was specific, dated and publicly repeated, and the only authoritative measurement instrument shows roughly 15% real income growth over six years against a target requiring 10.4% a year. The absence of any post-2019 survey means the flagship agricultural promise of the period cannot be verified at all, which is itself a finding. PM-KISAN's ₹6,000 is un-indexed and small against input-cost inflation, and its land-title basis excludes tenant farmers and landless labourers — the poorest in agriculture.",
