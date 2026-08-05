@@ -8161,3 +8161,53 @@ not enforce that.
 **Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 278 allowlisted;
 selftest exit 0. `git diff --numstat -- data/` returns nothing: no record was touched this cycle.
 
+## Cycle 2026-08-05z — correction cycle 10: partition, and the sequence closes
+
+**L-0219 written; allowlist 278, unchanged.** The sweep stops by partitioning rather than by
+exhausting.
+
+**THE PARTITION HAD TO BE RUN THREE TIMES, AND THE FIRST TWO WERE WRONG IN WAYS THE BRIEF PREDICTED.**
+Run one classified by bytes and by the presence of the word "Loading": it scored `cag.gov.in` as a
+shell on 43,861 characters of real text, and — worse — it reported three unrelated hosts with
+byte-identical responses. They were byte-identical because the script did `curl -o /tmp/hc.html`
+then copied that file, so **a failed fetch left the previous host's page on disk** and
+`www.mospi.gov.in` and `www.epfindia.gov.in` were both scored against the Ministry of External
+Affairs homepage. Run two died on `declare -A`, unsupported by this machine's bash. Run three added
+recorded pins, deleted the output file before each fetch, and used a four-second two-try lookup with
+a second resolver — because run one had reported `sansad.in` and `pib.gov.in` as having **no DNS
+record when working pins for both were already on file**.
+
+**The threshold was chosen from the distribution, not before it.** Sorting the 200-responses by text
+length shows a clean gap: a cluster from 0 to 102 characters, then 894, 1,620, 1,741 and upward. 500
+sits in the gap. Picking it in advance would have been a guess dressed as a criterion.
+
+**THE FINDING THE BRIEF ASKED FOR.** `sansad.in` returns **29,501 bytes and 25 characters of text**
+— fifteen citations, the second-largest group, and reachability alone calls it live. Cycle 5 had
+recorded it as "answered on a pin", which was true and insufficient. A 200 from a shell and a 200
+from a document are indistinguishable at the host level, and this instrument has now made that error
+in both directions: calling live hosts dead in cycle 1, and calling a shell live in cycle 5.
+
+**The third failure is the largest and was not in the plan.** 139 citations carry neither a year nor
+a multi-digit number — "Contemporary reporting", "SHRC report coverage", "NCRB / MHA data and
+contemporary reporting". No working host helps; **58 of them already sit on hosts that answer
+perfectly well.** So bucket 2 is not a third slice of the same cut, as the brief framed it: it is
+orthogonal, and L-0219 says so. Half the residue is a research debt, not a link debt.
+
+**The honest total.** 139 unreachable, 139 live, 139 unaddressable, overlapping — and **81
+citations that are both addressable and on a live host**, which is the entire remaining cheap work.
+
+**A counting error caught in passing.** The first partition summed to 277 of 278 because
+`'\n'.join()` left no trailing newline and `while read` dropped the last line. `fci.gov.in` was
+probed separately: 44,702 bytes, 112 characters of text, a shell.
+
+**L-0219 records what the sequence itself got wrong**, in its caveat rather than in a footnote: ten
+live hosts once measured as unreachable, the e-Gazette wrongly recorded in L-0218 as the corpus's
+one unreachable channel, and two discarded runs of this partition. A record whose subject is
+retrieval failure should carry its own.
+
+**SEQUENCE CLOSED.** Ten cycles: an audit, a gate, 24 citations, five corrections to shipped records
+— L-0129, L-0218 twice over, P-80's tier, and the credit-gdp-peer citation — and eleven rules into
+CLAUDE.md. Four of the ten cycles produced a false finding that the next brief inherited; every one
+was caught by re-deriving the previous cycle's claims before building on them, which is now the
+first rule of the set.
+
