@@ -251,6 +251,7 @@
    {
     "what": "Ghost and duplicate beneficiaries actually removed, as distinct from savings claimed",
     "why": "The elimination of ghost and duplicate beneficiaries was an announced objective. Figures circulate as claimed savings rather than as counts of duplicates identified and removed, and the two are different quantities; no count on a stated basis was retrieved. Entered 2026-08-05 when the assessment note was written and the objective was found to be unscored.",
+    "wouldFill": "A scheme-level statement from the Department of Food and Public Distribution, the Ministry of Rural Development or the Unique Identification Authority giving beneficiaries deleted as duplicates and as non-existent, separately, by scheme and year - the holders run the deduplication and produce the counts internally.",
     "reasonKind": "not-published"
    }
   ],
