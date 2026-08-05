@@ -123,6 +123,16 @@ exactly as substring matching produces false positives.** The default stays wher
 negative costs a missed candidate, a false positive costs a fabricated finding — and the retry is
 what makes the safe default affordable.
 
+**A tier moves only when the EVIDENCE moved, and the merge asserts which direction.** Not "never
+move a tier" — move it when the stated reason for the tier no longer holds, and prove which case you
+are in before writing. P-80 moved T4 to T3 because its stated reason, "the paper itself was not
+opened", had stopped being true once the abstract was retrieved and every cited figure matched.
+P-86 stayed T4 in the same sweep because its stated reason — the operative text unretrieved — still
+held, and a working URL had changed only the URL. The four SATP citations stayed T4 for a third
+reason: retrieval improved, the SOURCE did not, and the recorded figures still derive from the
+archive snapshot rather than the page now reachable. **Same mechanical assertion in the merge, with
+the expected value chosen deliberately in each case.**
+
 **Sweep by self-documented failure, not by host count.** A record whose source name already states
 a retrieval failure has isolated the missing variable: the gap is specified rather than searched for,
 so closing it is the cheapest work available. Scanning for that language turned up 22 such citations

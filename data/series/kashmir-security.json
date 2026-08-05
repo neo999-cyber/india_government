@@ -569,8 +569,8 @@
     ],
     "tier": "T4",
     "source": {
-      "name": "South Asia Terrorism Portal, Jammu and Kashmir yearly fatalities datasheet, columns 'Incidents of Killing | Civilians | Security Forces | Terrorists/Insurgents/Extremists'. Relayed through Internet Archive snapshots of SATP's own pages: satp.org gave no HTTP response of any kind in this phase",
-      "url": "https://www.satp.org/",
+      "name": "South Asia Terrorism Portal, Jammu and Kashmir yearly fatalities datasheet, columns 'Incidents of Killing | Civilians | Security Forces | Terrorists/Insurgents/Extremists'. Relayed through Internet Archive snapshots of SATP's own pages: satp.org gave no HTTP response of any kind in this phase DEEP-LINKED 2026-08-05 (correction cycle 8): satp.org now answers on a pinned resolver (www.satp.org -> 104.21.34.220) and the datasheet was retrieved, ending the no-HTTP-response condition recorded above. The page carries the column header verbatim as described: 'Year | Incidents of Killing | Civilians | Security Forces | Terrorists/Insurgents/Extremists | Not Specified | Total'. Checked at EVERY point the two SATP series carry (2014, 2016-2022): eight of eight security-force values and seven of eight civilian values match the live datasheet exactly. ONE DIVERGENCE, LEFT UNCHANGED: civilians 2022 is 28 in this corpus, taken from the Internet Archive snapshot, against 30 on the live page. NO VALUE IS ALTERED - the recorded figures remain the archived vintage, and substituting the live vintage would replace one dated reading with another without establishing which SATP intends. THE TIER IS UNCHANGED: retrieval improved, the source did not, and the figures still derive from the archive snapshot.",
+      "url": "https://www.satp.org/datasheet-terrorist-attack/fatalities/india-jammukashmir",
       "vintage": "2026-08"
     },
     "calendar": "CY",
@@ -746,8 +746,8 @@
     ],
     "tier": "T4",
     "source": {
-      "name": "South Asia Terrorism Portal, Jammu and Kashmir yearly fatalities datasheet. Relayed through Internet Archive snapshots: satp.org gave no HTTP response of any kind in this phase",
-      "url": "https://www.satp.org/",
+      "name": "South Asia Terrorism Portal, Jammu and Kashmir yearly fatalities datasheet. Relayed through Internet Archive snapshots: satp.org gave no HTTP response of any kind in this phase DEEP-LINKED 2026-08-05 (correction cycle 8): satp.org now answers on a pinned resolver (www.satp.org -> 104.21.34.220) and the datasheet was retrieved, ending the no-HTTP-response condition recorded above. The page carries the column header verbatim as described: 'Year | Incidents of Killing | Civilians | Security Forces | Terrorists/Insurgents/Extremists | Not Specified | Total'. Checked at EVERY point the two SATP series carry (2014, 2016-2022): eight of eight security-force values and seven of eight civilian values match the live datasheet exactly. ONE DIVERGENCE, LEFT UNCHANGED: civilians 2022 is 28 in this corpus, taken from the Internet Archive snapshot, against 30 on the live page. NO VALUE IS ALTERED - the recorded figures remain the archived vintage, and substituting the live vintage would replace one dated reading with another without establishing which SATP intends. THE TIER IS UNCHANGED: retrieval improved, the source did not, and the figures still derive from the archive snapshot.",
+      "url": "https://www.satp.org/datasheet-terrorist-attack/fatalities/india-jammukashmir",
       "vintage": "2026-08"
     },
     "calendar": "CY",

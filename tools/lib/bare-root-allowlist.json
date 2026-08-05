@@ -424,12 +424,6 @@
    "tier": "T1"
   },
   {
-   "id": "L-0110",
-   "file": "data/ledger/kashmir-security.json",
-   "url": "https://www.satp.org/",
-   "tier": "T4"
-  },
-  {
    "id": "L-0115",
    "file": "data/ledger/kashmir-security.json",
    "url": "https://scroll.in/",
@@ -1048,12 +1042,6 @@
    "tier": "T4"
   },
   {
-   "id": "P-75",
-   "file": "data/provenance.json",
-   "url": "https://www.satp.org/",
-   "tier": "T4"
-  },
-  {
    "id": "P-79",
    "file": "data/provenance.json",
    "url": "https://www.jklegislativeassembly.nic.in/",
@@ -1207,18 +1195,6 @@
    "id": "jk-panchayat-seats-vacant",
    "file": "data/series/kashmir-rights.json",
    "url": "https://jkgad.nic.in/",
-   "tier": null
-  },
-  {
-   "id": "jk-civilians-killed-satp",
-   "file": "data/series/kashmir-security.json",
-   "url": "https://www.satp.org/",
-   "tier": null
-  },
-  {
-   "id": "jk-security-forces-killed-satp",
-   "file": "data/series/kashmir-security.json",
-   "url": "https://www.satp.org/",
    "tier": null
   },
   {
@@ -1732,6 +1708,12 @@
    "cycle": "correction-7",
    "removed": 1,
    "note": "P-80 second source located by PMID 35691765, every cited figure matched against the publisher abstract, tier moved T4->T3 because the operative content was actually retrieved."
+  },
+  {
+   "date": "2026-08-05",
+   "cycle": "correction-8",
+   "removed": 4,
+   "note": "SATP J&K fatalities datasheet retrieved on a pin; four citations deep-linked. 8/8 security-force and 7/8 civilian values matched; civilians 2022 diverges (28 archived vs 30 live) and was left unchanged. Tiers unchanged."
   }
  ]
 }
