@@ -18,6 +18,40 @@ export default function MethodPage() {
       </p>
       <h1>Method, tiers and what the marks mean</h1>
 
+      <h2 id="limits">What this is, who made it, and what has not been done to it</h2>
+      <p>
+        This is a longitudinal record of commitments made by the Government of India and what
+        became of them, measured against a baseline frozen at May 2014. Each ledger record states
+        what was claimed, what happened, and the strongest case on each side; series carry the
+        figures; provenance records carry the definitional breaks, reporting-base shifts and
+        disagreements between sources that make a figure mean less than it appears to. Absences are
+        recorded as findings rather than left as blank cells.
+      </p>
+      <p>
+        <strong>It is the work of one author, written with an AI assistant.</strong> That is not
+        incidental and should bear on how it is read: the prose, the retrieval and the scoring were
+        produced by that pairing, and the same pairing checked them. The gates in this repository
+        enforce internal consistency, not correctness.
+      </p>
+      <p>
+        <strong>Sources are primary where possible but not exclusively governmental.</strong> Of
+        1,205 citations, 752 are graded T1 — Indian official statistical or institutional documents
+        retrieved directly. The rest are multilateral statistics, peer-reviewed research,
+        documentary journalism and NGO datasets, used chiefly where the state does not measure the
+        thing at all or where its own account is contested. Every citation is graded on the
+        document actually retrieved, never on the institution the subject belongs to.
+      </p>
+      <p>
+        <strong>The planned independent review has not been run.</strong> Three passes were
+        specified and none has happened: an adversarial pass by a model with no history of this
+        project, prompted to attack rather than confirm; a domain economist per contested domain,
+        for methodology that depends on Indian statistical practice; and an Indian media lawyer for
+        the enforcement, electoral-bonds and press-freedom records specifically. Until those run,
+        <strong> no part of this has been checked by anyone who did not write it.</strong> Records
+        marked <em>contested</em> decline to choose between readings by design; that is a statement
+        about the evidence, not a hedge.
+      </p>
+
       <h2>Status of a figure</h2>
       <StatusKey />
       <div className="table-wrap">

@@ -218,6 +218,25 @@ export const REASON_KIND_LABELS: Record<ReasonKind, string> = {
 };
 
 /**
+ * WHICH KIND OF DISPUTE, and why the bare word "disputed" was not enough.
+ *
+ * The schema REQUIRES `disputeKind` whenever `reasonDisputed` is true, and this component read
+ * `reasonDisputed` and never read `disputeKind` — so 19 entries across 15 ledger records and 4
+ * series declared a kind that reached no reader, while every gate stayed green. Same shape as the
+ * 226 marks: no rule read the page for a field, and the silence looked like a decision.
+ *
+ * The two are materially different findings and must not collapse into one word. `evidentiary`
+ * says the holder's stated reason is contradicted by evidence the data exists — the government's
+ * account is falsified. `normative` says nobody disputes the facts and what is contested is the
+ * characterisation, typically against a legal obligation. A reader told only "disputed" cannot
+ * tell a caught misstatement from a legal argument.
+ */
+export const DISPUTE_KIND_LABELS: Record<'evidentiary' | 'normative', string> = {
+  evidentiary: 'on the evidence',
+  normative: 'on the characterisation',
+};
+
+/**
  * Measurements that do not exist, rendered as findings rather than empty space.
  *
  * The distinction drawn is between a gap in the data and a gap in the world. A blank cell
@@ -262,7 +281,11 @@ export function Absences({
             {u.reasonKind ? (
               <span className="absence-kind">
                 {REASON_KIND_LABELS[u.reasonKind]}
-                {u.reasonDisputed ? ' — stated reason disputed' : ''}
+                {u.reasonDisputed
+                  ? ` — stated reason disputed${
+                      u.disputeKind ? ` ${DISPUTE_KIND_LABELS[u.disputeKind]}` : ''
+                    }`
+                  : ''}
               </span>
             ) : null}
             <p>
