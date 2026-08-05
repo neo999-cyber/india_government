@@ -115,3 +115,97 @@ LIST; a field absent from it is unguarded by construction. When a field is added
 added to the type, to a view, and to the guarded-marks list in the same commit. TypeScript does not
 save you — `revisitTrigger` was absent from `LedgerRecord` for its whole life and `typecheck` was
 green throughout.
+
+---
+
+# BATCH 2 QUEUE — written 2026-08-05 BEFORE resolution
+
+Recorded first so that each item stands on its own if the batch dies. Every item states the
+defect, why it matters, and what would settle it. **(a)–(f) are unresolved as written here.**
+(g) is a carried correction. Anything below that is later resolved keeps its statement of the
+defect intact and gains a RESOLUTION line — the statement is not rewritten to match the answer.
+
+## (a) The Arc A headline compares a stock to a flow without establishing the periods
+
+L-0221 and the batch-1 report pair **54.18 per cent capacity** with **29.2 per cent generation** as
+one comparison. But 54.18 − 29.2 = **24.98**, against a stated endpoint gap of **21.46**. Those
+cannot both be the same comparison. The 21.46 comes from FY2023-24 (44.97 capacity − 23.51
+generation, CEA General Review Tables 1.2/1.3); the 54.18 is at 30.06.2026 and the 29.2 is FY2025-26.
+**Establish the as-of date and period of each figure and state them at every site the pair appears.**
+Capacity is a STOCK at a date; generation is a FLOW over a year. Facing tables in one publication are
+not automatically one period — that assumption is what produced a three-figure headline with two
+different gaps in it. *Depends on:* nothing external; `GR2025.txt`, the CEA installed-capacity report
+for 30.06.2026 and PIB 2250039 are all on disk or re-retrievable from the pins in this file.
+
+## (b) L-0222's 264.53 MT may not measure the limb it is scored against
+
+L-0222 scores `failed` against "India will stop importing **thermal** coal from FY2023-24" and cites
+**264.53 MT** for FY2023-24. In the source table (Coal Controller / DGCI&S Table 8.1) 264.53 is the
+**Total Coal** column — coking plus non-coking. Coking coal is not thermal coal and is not
+substitutable for geological reasons the record itself concedes. **Verify against the primary on disk
+which quantity 264.53 is.** If it is total coal, the headline evidence does not measure the limb and
+must be restated to the non-coking figure (205.72 MT on the same row) **whether or not the verdict
+survives the restatement.** A verdict that survives on a different number is still a verdict that
+cited the wrong one. *Depends on:* `Import-of-Coal-and-Coke-last-ten-years.pdf`, already retrieved.
+
+## (c) L-0221's `partly` may be discounting a met commitment for someone else's reporting error
+
+L-0221 is `partly` while its own `caseFor` says the capacity milestone is real and was met early on a
+metric fixed in advance. The `partly` rests on Panchamrit element 2 (energy requirements) being
+unreported. **Confirm what the commitment as recorded actually covers.** If the record's
+`claimAtLaunch` covers the capacity limb only, then scoring `partly` marks down a commitment that was
+met, on the ground that *third parties misreported a different limb* — and misattribution by a
+publisher is a measurement fact, which belongs in **provenance**, not in a verdict. If it covers both
+limbs, `partly` stands. Note element 2 is state (a), not yet due, which on its own cannot support a
+markdown. *Depends on:* L-0221's own text and PIB 1768712, both on disk.
+
+## (d) "COP26 announced no such goal" is wrong as written
+
+L-0221 and the batch-1 log say two releases attribute to COP26 a goal "which COP26 did not state".
+**COP26 is where Panchamrit was announced, including the 500 GW non-fossil capacity goal.** As
+written the sentence denies that, and it is false. The real defect is narrower and survives: the
+**50 per cent** limb announced at Glasgow was *"50 percent of its energy requirements from renewable
+energy"* — an ENERGY share of a RENEWABLE numerator — whereas the *"50 per cent of installed
+capacity from non-fossil sources"* target comes from the **August 2022 NDC update**. The releases
+fuse element 2's percentage with the NDC's denominator and label the result COP26. **Restate to the
+specific limb everywhere the claim appears** — it appears in L-0221's `whatHappened`, and in the
+verification-log entry for cycle 2026-08-05af, which is append-only and takes a superseding entry
+rather than an edit.
+
+## (e) P-122's seam is not carried by the derived gap comparison that spans it
+
+P-122 places the RES-generation basis seam at FY2014-15 and establishes the pre-seam (normative)
+basis as the HIGHER one. The gap series and L-0221's "widened from 9.69 to 21.46" **start at
+FY2013-14, on the imputed side of that seam.** So the opening gap is understated and the widening
+overstated, by an amount nobody has quantified. **The `breaks[]` contract binds the SERIES; it does
+not reach a derived comparison stated in a ledger record's prose.** That is a structural gap in the
+break machinery, not only a wording problem. Either the derived claim carries the caveat in its own
+text, or the start-year comparison goes and the claim starts at FY2014-15. *Depends on:* nothing
+external.
+
+## (f) The corpus arithmetic does not add up
+
+Batch 1 reports the corpus moving **660 → 673**, thirteen records, while naming **11 additions**
+(2 ledger + 2 provenance + 7 series). **Account for the remaining 2.** Candidates to check before
+assuming: whether 660 was the correct pre-batch count or was itself carried from the phase-14
+STATE.md without re-measurement; and whether any series were added to `seed.json` or elsewhere
+between 966eb6a and 7124b1f. *Depends on:* `git show 966eb6a:` versus the working tree, both local.
+
+## (g) The four L-0052 / `re-capacity` corrections raised in batch 1
+
+Raised with evidence in batch 1 and NOT applied. Under the source-edit amendment (see CLAUDE.md,
+"Build workflow") a correction the batch itself raised and evidenced may be applied by the run.
+
+1. **`L-0052.unmeasured[0].reasonKind` is `not-published` and the datum is published.** CEA's
+   monthly RE report carries tables titled **"Monthly Renewable Energy as % of Total Electricity
+   Generated"** and **"Cumulative Renewable Energy as % of Total Electricity Generated"**, by State
+   and All-India. The record's own `why` says "in anything retrieved", which was the honest form;
+   the `reasonKind` asserts something about the world and four retrieved documents falsify it.
+2. **The same `unmeasured[0]` entry can be CLOSED, not re-graded** — `res-generation-share` and
+   `non-fossil-generation-share` now supply exactly the quantity it asks for.
+3. **`L-0052.caseFor` rests on "renewables meeting over half of demand in a peak month".** That is
+   the 51.5 per cent figure, which is a single-instant GW/GW power ratio for **29 July 2025**
+   (solar 44.50 + wind 29.89 + hydro 30.29 = 104.68 GW over 203 GW), not a month.
+4. **`re-capacity`'s notes and L-0052's `whatHappened` both attach 283.46 GW to July 2025.** It is a
+   capacity stock **as on 31.03.2026**. Also: `L-0052`'s sole source is a bare root,
+   `https://mnre.gov.in/`, graded T1.
