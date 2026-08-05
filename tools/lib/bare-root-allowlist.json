@@ -106,12 +106,6 @@
    "tier": "T1"
   },
   {
-   "id": "L-0095",
-   "file": "data/ledger/education.json",
-   "url": "https://www.indiacode.nic.in/",
-   "tier": "T1"
-  },
-  {
    "id": "L-0096",
    "file": "data/ledger/education.json",
    "url": "https://pib.gov.in/",
@@ -127,12 +121,6 @@
    "id": "L-0096",
    "file": "data/ledger/education.json",
    "url": "https://www.education.gov.in/",
-   "tier": "T1"
-  },
-  {
-   "id": "L-0096",
-   "file": "data/ledger/education.json",
-   "url": "https://www.indiacode.nic.in/",
    "tier": "T1"
   },
   {
@@ -187,12 +175,6 @@
    "id": "L-0105",
    "file": "data/ledger/education.json",
    "url": "https://www.mospi.gov.in/",
-   "tier": "T1"
-  },
-  {
-   "id": "L-0106",
-   "file": "data/ledger/education.json",
-   "url": "https://www.indiacode.nic.in/",
    "tier": "T1"
   },
   {
@@ -1036,12 +1018,6 @@
    "tier": "T4"
   },
   {
-   "id": "P-64",
-   "file": "data/provenance.json",
-   "url": "https://www.indiacode.nic.in/",
-   "tier": "T1"
-  },
-  {
    "id": "P-65",
    "file": "data/provenance.json",
    "url": "https://pib.gov.in/",
@@ -1135,12 +1111,6 @@
    "id": "P-85",
    "file": "data/provenance.json",
    "url": "https://scroll.in/",
-   "tier": "T4"
-  },
-  {
-   "id": "P-86",
-   "file": "data/provenance.json",
-   "url": "https://www.indiacode.nic.in/",
    "tier": "T4"
   },
   {
@@ -1750,6 +1720,18 @@
    "cycle": "correction-3",
    "removed": 1,
    "note": "gdp-per-capita-usd deep-linked once its identification was confirmed on both India points. The cycle-2 value defect it was flagged for does not exist."
+  },
+  {
+   "date": "2026-08-05",
+   "cycle": "correction-5",
+   "removed": 4,
+   "note": "RTE Act 2009 (India Code item 123456789/12911, Type: CENTRAL ACT) deep-linked for L-0095, L-0096, L-0106, P-64. Section index verified; section text not on that item and not claimed."
+  },
+  {
+   "date": "2026-08-05",
+   "cycle": "correction-5",
+   "removed": 1,
+   "note": "P-86 deep-linked to India Code item 123456789/12030. Tier stays T4 and the relayed-secondary warning stands: the section index was retrieved, the section text was not."
   }
  ]
 }
