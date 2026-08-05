@@ -672,3 +672,48 @@ warning matters: a year plus a quantity was still not enough to make these score
 needs its announcing wording retrieved first**, not recalled, and then the (a)/(d) test applied to
 what it actually says. It should also be decided AFTER the enum question above, because if a fifth
 state is admitted, net-zero may belong in it rather than in (d).
+
+## ARC D — COMPLETE, 2026-08-05. Four limbs, three records, and the enum question closed.
+
+**L-0223** emissions intensity (`too-early`) · **L-0224** the two quantified tonnages
+(`contested`, re-filed) · **L-0225** net zero by 2070 (`too-early`).
+
+### THE ENUM QUESTION IS CLOSED — no fifth state, and no new vocabulary anywhere.
+
+**Operator decision: no fifth commitment state.** "Unscoreable for want of a stated baseline" is a
+measurement fact, not a commitment state, and belongs in `unmeasured[]` with a `reasonKind`.
+**Implemented, and it needed nothing new at any level:**
+- No fifth commitment state.
+- No new `assessment` value — `contested` fits L-0224 and is what `no-objective`'s own definition
+  ROUTES to: *"Use where nothing was claimed, not where a claim exists and its outcome is unmeasured
+  — that remains contested (see L-0096)."* L-0096 is the precedent and its note says *"What is scored
+  is the documented ACT, not the outcome"*, which is exactly L-0224's construction.
+- **No new `reasonKind` either.** `not-published` carries all three new absence entries, chosen as
+  the WEAKER candidate over `never-defined` in every case, because `never-defined` asserts that no
+  agreed definition exists anywhere and this run observed only that the retrieved documents state
+  none.
+
+### The filing correction, and why `too-early` was wrong on L-0224 but right on L-0225
+
+`too-early` asserts two things: **the obstacle is elapsed time**, and **the evidence time
+accumulates**. Both must hold.
+- **L-0224 — both FALSE.** The obstacle is a missing baseline; time supplies no baseline; in 2030
+  those limbs are exactly as unscoreable as today. Filing them there told a reader to come back and
+  find out, which licenses a wasted revisit. **Re-filed `contested`, and its revisit trigger is no
+  longer a date** — it is the publication of a national baseline projection, or a stated reference
+  for "additional to".
+- **L-0225 — both TRUE.** The obstacle is that 2070 has not arrived, and national net emissions are
+  measured and reported annually, so evidence does accumulate toward an endpoint the international
+  framework defines. `too-early` is earned rather than defaulted.
+
+**Two records of the same announcement shape take different values, and the difference is readable
+off the printed definitions.** That is the test any future commitment record should be put to.
+
+### What Arc D does NOT establish
+
+- **No outturn for any limb after 2016.** The intensity reading is a 2016 figure published in 2021.
+- **The 2015 NDC's own lodged text was never retrieved** (P-124). If it fixes the sink's reference or
+  the net-zero scope, two `unmeasured[]` entries close and L-0224's verdict should be revisited.
+- **Net zero's scope is undefined in the retrieved documents** and India reports its own emissions
+  EXCLUDING LULUCF — the one accounting choice that decides the target's difficulty is made in the
+  reporting and not in the target.

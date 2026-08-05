@@ -9270,3 +9270,82 @@ artefacts declared · `reachability` 1347/1347 marks on their own record page, 6
 `field-render-audit` 32 prose fields across 3 layers, 0 invisible (ledger 15/0, provenance 6/0,
 series 11/0) · `domain-coverage` 14/14 surfaces built, 14/14 linked, 1137/1137 references ·
 `validate:selftest` 23/23 validator rules fire on the broken fixtures, 2/2 output gates on theirs.
+
+## Cycle 2026-08-05am — batch 8: L-0224 re-filed, the enum question closed without new vocabulary, and Arc D complete
+
+### The four commitment states, printed because five batches of enum judgements had been made against text nobody had seen
+
+CLAUDE.md, verbatim: **(a)** not yet due — the trigger date or condition, named; **(b)** due and
+undelivered; **(c)** abandoned, with evidence. And **(d)** unfalsifiable by construction — *"a total
+with no date, no phasing and no annual target"*, scored `no-objective`. **The carve-out that decides
+both records in this batch is in (d)'s own paragraph: *"a total WITH a date is (a)"*.**
+
+### L-0224 RE-FILED `too-early` → `contested`, and the false assertions named
+
+`too-early`'s definition asserts two things: **THE OBSTACLE IS ELAPSED TIME** and **THE EVIDENCE TIME
+ACCUMULATES.** For L-0224's limbs **both are false** — the obstacle is a missing baseline, time
+supplies no baseline, and in 2030 those limbs will be exactly as unscoreable as today. The corpus had
+been carrying two commitments under a state that told a reader to come back and find out.
+
+`no-objective` was rejected because **its own definition forbids it**: *"Use where nothing was
+claimed, not where a claim exists and its outcome is unmeasured — that remains contested (see
+L-0096)."* Two claims were made, with quantities and a date, and they are quoted in the record's own
+`claimAtLaunch`. `awaiting-adjudication` was rejected — no outside body has anything pending.
+
+**`contested` makes no false assertion.** Its definition is *"the evidence supports more than one
+defensible reading and the record does not choose between them"*, and with no stated baseline the
+commitment admits more than one defensible reading OF WHAT IT REQUIRES — a sink additional to 2005,
+to 2015, or to the year of measurement are different targets. **And it follows L-0096 rather than
+inventing a route**: that record scores a stated deadline whose outcome was never published, and its
+note reads *"What is scored is the documented ACT, not the outcome"* — which is how L-0224's two
+cases were already written.
+
+**The revisit trigger is no longer a date.** 2030 guaranteed a wasted revisit on a record nothing
+about the calendar answers. It is now the publication of a national baseline projection, or a stated
+reference for "additional to" — the events that would change the verdict.
+
+### THE ENUM DECISION, CLOSED — and it needed no new vocabulary at any level
+
+Operator decision: **no fifth commitment state.** Unscoreability for want of a baseline is a
+measurement fact and belongs in `unmeasured[]` with a `reasonKind`. Implemented, and the stronger
+result is that nothing new was required anywhere: no fifth state, **no new `assessment` value**
+(`contested` was routed to by the existing text), and **no new `reasonKind`** — `not-published`
+carries all three new absence entries, chosen as the WEAKER candidate over `never-defined` every
+time, because `never-defined` asserts no agreed definition exists anywhere while this run observed
+only that the retrieved documents state none.
+
+### ARC D COMPLETE — net zero by 2070, L-0225
+
+Announcing wording retrieved before any test was applied, and it is one clause: *"And fifth- by the
+year 2070, India will achieve the target of Net Zero."* That is the whole of it.
+
+**Commitment state (a), trigger 2070, on the printed carve-out — and the temptation ran BOTH ways.**
+STATE.md warned against forcing it to (a) because a year is named; the answer is that the year is not
+the reason, the carve-out is. And forcing it to (d) to reach `no-objective` would have been the same
+stretch in the other direction: (d) requires *no date*, and this fails that first condition.
+
+**`too-early` is EARNED here and was not in L-0224, which is why scoring them in one batch matters.**
+Both of that value's assertions hold for net zero: the obstacle is that 2070 has not arrived, and
+national net emissions are measured and reported annually, so evidence accumulates toward an endpoint
+the international framework defines. **Two records of the same announcement shape take different
+values, and the difference is readable off the definitions.**
+
+**Two absences, both in `unmeasured[]` rather than in the verdict.** The scope of "Net Zero" is
+undefined in the retrieved documents — definitional forms return 0, `all greenhouse gases` 0,
+`scope of net` 0, against positive controls of `net-zero by 2070` at 4 — and **India reports its own
+2016 emissions as 2,838 MtCO2e 'excluding land use and land-use change and forestry (LULUCF)'**, so
+the one accounting choice that decides a NET target's difficulty is made in the reporting and not in
+the target. And no interim milestone exists: `interim target` 0, `2047` 0, and all twelve mentions of
+2050 are about DEVELOPED countries reaching net zero early or a sectoral encouragement, each read in
+context. Nothing falls due for forty-nine years.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 225 ledger · 269 series · 126 provenance · 60 pairs
+= 680 records, 1,759 points** · `no-bare-root` 0 new, 0 stale, 277 allowlisted from 277 frozen ·
+`no-unguarded-prose-field` 19 prose fields across ledger + provenance, 7 guarded / 12 exempted ·
+`figure-consistency` 15 declared claims, 15 checked against source and printed operands, 5 rounding
+artefacts declared · `reachability` 1352/1352 marks on their own record page, 660 pages scanned ·
+`field-render-audit` 32 prose fields across 3 layers, 0 invisible (ledger 15/0, provenance 6/0,
+series 11/0) · `domain-coverage` 14/14 surfaces built, 14/14 linked, 1138/1138 references ·
+`validate:selftest` 23/23 validator rules fire on the broken fixtures, 2/2 output gates on theirs.
