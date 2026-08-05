@@ -356,8 +356,8 @@
   "domain": "banking",
   "tier": "T2",
   "source": {
-   "name": "World Bank WDI / IMF Financial Soundness Indicators",
-   "url": "https://data.worldbank.org/",
+   "name": "World Bank WDI / IMF Financial Soundness Indicators — indicator FS.AST.PRVT.GD.ZS, Domestic credit to private sector (% of GDP). Indicator identified by matching against the World Bank API (https://api.worldbank.org/v2/country/IND/indicator/FS.AST.PRVT.GD.ZS), which returns 51.88 for India in 2014 against this record’s 51.5. The 0.74 per cent difference is a WDI vintage revision, not a different indicator: the alternative code FD.AST.PRVT.GD.ZS returns the identical value. The record’s figure is left as published and is NOT restated to the current vintage.",
+   "url": "https://data.worldbank.org/indicator/FS.AST.PRVT.GD.ZS",
    "vintage": "2026-07-31"
   },
   "calendar": "CY",
@@ -814,8 +814,8 @@
   "domain": "banking",
   "tier": "T2",
   "source": {
-   "name": "World Bank WDI / IMF Financial Soundness Indicators",
-   "url": "https://data.worldbank.org/",
+   "name": "World Bank WDI / IMF Financial Soundness Indicators — indicator FB.AST.NPER.ZS, Bank nonperforming loans to total gross loans (%). Indicator identified by matching this record’s own India 2014 value against the World Bank API (https://api.worldbank.org/v2/country/IND/indicator/FB.AST.NPER.ZS), which returns 4.35 — retrieved and matched, not inferred from the indicator name.",
+   "url": "https://data.worldbank.org/indicator/FB.AST.NPER.ZS",
    "vintage": "2026-07-31"
   },
   "calendar": "CY",
@@ -1394,8 +1394,8 @@
   "domain": "employment",
   "tier": "T2",
   "source": {
-   "name": "World Bank WDI / ILOSTAT modelled estimates",
-   "url": "https://data.worldbank.org/",
+   "name": "World Bank WDI / ILOSTAT modelled estimates — indicator SL.AGR.EMPL.ZS, Employment in agriculture (% of total employment), modelled ILO estimate. Indicator identified by matching this record’s own India 2014 value against the World Bank API (https://api.worldbank.org/v2/country/IND/indicator/SL.AGR.EMPL.ZS), which returns 45.25 — retrieved and matched, not inferred from the indicator name.",
+   "url": "https://data.worldbank.org/indicator/SL.AGR.EMPL.ZS",
    "vintage": "2026-07-31"
   },
   "calendar": "CY",
@@ -1625,8 +1625,8 @@
   "domain": "employment",
   "tier": "T2",
   "source": {
-   "name": "World Bank WDI / ILOSTAT modelled estimates",
-   "url": "https://data.worldbank.org/",
+   "name": "World Bank WDI / ILOSTAT modelled estimates — indicator SL.IND.EMPL.ZS, Employment in industry (% of total employment), modelled ILO estimate. Indicator identified by matching this record’s own India 2014 value against the World Bank API (https://api.worldbank.org/v2/country/IND/indicator/SL.IND.EMPL.ZS), which returns 24.90 — retrieved and matched, not inferred from the indicator name.",
+   "url": "https://data.worldbank.org/indicator/SL.IND.EMPL.ZS",
    "vintage": "2026-07-31"
   },
   "calendar": "CY",
@@ -1824,8 +1824,8 @@
   "domain": "employment",
   "tier": "T2",
   "source": {
-   "name": "World Bank WDI / ILOSTAT modelled estimates",
-   "url": "https://data.worldbank.org/",
+   "name": "World Bank WDI / ILOSTAT modelled estimates — indicator SL.TLF.CACT.FE.ZS, Labor force participation rate, female (% of female population 15+), modelled ILO estimate. Indicator identified by matching this record’s own India 2014 value against the World Bank API (https://api.worldbank.org/v2/country/IND/indicator/SL.TLF.CACT.FE.ZS), which returns 26.61 — retrieved and matched, not inferred from the indicator name.",
+   "url": "https://data.worldbank.org/indicator/SL.TLF.CACT.FE.ZS",
    "vintage": "2026-07-31"
   },
   "calendar": "CY",
@@ -2452,8 +2452,8 @@
   "domain": "employment",
   "tier": "T2",
   "source": {
-   "name": "World Bank WDI / ILOSTAT modelled estimates",
-   "url": "https://data.worldbank.org/",
+   "name": "World Bank WDI / ILOSTAT modelled estimates — indicator SL.EMP.VULN.ZS, Vulnerable employment, total (% of total employment), modelled ILO estimate. Indicator identified by matching this record’s own India 2014 value against the World Bank API (https://api.worldbank.org/v2/country/IND/indicator/SL.EMP.VULN.ZS), which returns 78.52 — retrieved and matched, not inferred from the indicator name.",
+   "url": "https://data.worldbank.org/indicator/SL.EMP.VULN.ZS",
    "vintage": "2026-07-31"
   },
   "calendar": "CY",
@@ -2582,8 +2582,8 @@
   "domain": "environment",
   "tier": "T2",
   "source": {
-   "name": "World Bank WDI / FAO",
-   "url": "https://data.worldbank.org/",
+   "name": "World Bank WDI / FAO — indicator AG.YLD.CREL.KG, Cereal yield (kg per hectare). Indicator identified by matching this record’s own India 2014 value against the World Bank API (https://api.worldbank.org/v2/country/IND/indicator/AG.YLD.CREL.KG), which returns 2,990.60 — retrieved and matched, not inferred from the indicator name.",
+   "url": "https://data.worldbank.org/indicator/AG.YLD.CREL.KG",
    "vintage": "2026-08-01"
   },
   "calendar": "CY",
@@ -2684,8 +2684,8 @@
   "domain": "environment",
   "tier": "T2",
   "source": {
-   "name": "World Bank WDI / FAO",
-   "url": "https://data.worldbank.org/",
+   "name": "World Bank WDI / FAO — indicator AG.CON.FERT.ZS, Fertilizer consumption (kilograms per hectare of arable land). Indicator identified by matching this record’s own India 2014 value against the World Bank API (https://api.worldbank.org/v2/country/IND/indicator/AG.CON.FERT.ZS), which returns 163.50 — retrieved and matched, not inferred from the indicator name.",
+   "url": "https://data.worldbank.org/indicator/AG.CON.FERT.ZS",
    "vintage": "2026-08-01"
   },
   "calendar": "CY",
@@ -3065,8 +3065,8 @@
   "domain": "foreign",
   "tier": "T2",
   "source": {
-   "name": "World Bank WDI",
-   "url": "https://data.worldbank.org/",
+   "name": "World Bank WDI — indicator NE.EXP.GNFS.ZS, Exports of goods and services (% of GDP). Indicator identified by matching this record’s own India 2014 value against the World Bank API (https://api.worldbank.org/v2/country/IND/indicator/NE.EXP.GNFS.ZS), which returns 22.97 — retrieved and matched, not inferred from the indicator name.",
+   "url": "https://data.worldbank.org/indicator/NE.EXP.GNFS.ZS",
    "vintage": "2026-07-30"
   },
   "calendar": "CY",
@@ -4727,8 +4727,8 @@
   "domain": "macro",
   "tier": "T2",
   "source": {
-   "name": "World Bank WDI / FAO",
-   "url": "https://data.worldbank.org/",
+   "name": "World Bank WDI / FAO — indicator NV.AGR.TOTL.ZS, Agriculture, forestry, and fishing, value added (% of GDP). Indicator identified by matching this record’s own India 2014 value against the World Bank API (https://api.worldbank.org/v2/country/IND/indicator/NV.AGR.TOTL.ZS), which returns 16.79 — retrieved and matched, not inferred from the indicator name.",
+   "url": "https://data.worldbank.org/indicator/NV.AGR.TOTL.ZS",
    "vintage": "2026-08-01"
   },
   "calendar": "CY",
@@ -4892,8 +4892,8 @@
   "domain": "macro",
   "tier": "T2",
   "source": {
-   "name": "World Bank WDI / FAO",
-   "url": "https://data.worldbank.org/",
+   "name": "World Bank WDI / FAO — indicator NV.AGR.EMPL.KD, Agriculture, forestry, and fishing, value added per worker (constant 2015 US$). Indicator identified by matching this record’s own India 2014 value against the World Bank API (https://api.worldbank.org/v2/country/IND/indicator/NV.AGR.EMPL.KD), which returns 1,641.90 — retrieved and matched, not inferred from the indicator name.",
+   "url": "https://data.worldbank.org/indicator/NV.AGR.EMPL.KD",
    "vintage": "2026-08-01"
   },
   "calendar": "CY",
@@ -6086,8 +6086,8 @@
   "domain": "macro",
   "tier": "T2",
   "source": {
-   "name": "World Bank WDI",
-   "url": "https://data.worldbank.org/",
+   "name": "World Bank WDI — indicator NV.IND.MANF.ZS, Manufacturing, value added (% of GDP). Indicator identified by matching this record’s own India 2014 value against the World Bank API (https://api.worldbank.org/v2/country/IND/indicator/NV.IND.MANF.ZS), which returns 15.07 — retrieved and matched, not inferred from the indicator name.",
+   "url": "https://data.worldbank.org/indicator/NV.IND.MANF.ZS",
    "vintage": "2026-07-30"
   },
   "calendar": "CY",

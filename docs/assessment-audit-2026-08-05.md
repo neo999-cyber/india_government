@@ -299,3 +299,21 @@ it cheap was wrong.
 **Revised recommendation for cycle 2:** work one host at a time, pin first, and delete allowlist
 entries as each citation is verified — the gate now forces that deletion, so progress is visible in
 the entry count and cannot be faked.
+
+
+## C4. C1 was also wrong. The "99 untiered" do not exist. Supersedes C1's table.
+
+C1 reported that the largest group of bare-root citations was **99 with no tier at all**, and called
+them the worst class in the set because they assert nothing checkable in either dimension.
+
+**All 99 carry a tier.** The detector looked for `tier` inside the object holding `url`; on series
+the tier sits on the *record*, beside `source`, not inside it. Checked directly: of the 99, the
+count with a tierless parent record is **zero**.
+
+This is the third iteration of one error in two cycles — the original tier finding, C2's correction
+of it, and now C1's own count — and every iteration is the same mistake: **a single field read
+without the fields beside it.** It is now a rule in CLAUDE.md, along with the scope rule that would
+have caught the 141-versus-313 undercount at the time.
+
+The bare-root defect itself is unchanged and real: 313 citations across 255 records. What is wrong
+is only the claim that 99 of them lacked a tier.

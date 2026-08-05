@@ -1318,19 +1318,7 @@
    "tier": null
   },
   {
-   "id": "agri-employment-peer",
-   "file": "data/series/seed.json",
-   "url": "https://data.worldbank.org/",
-   "tier": null
-  },
-  {
    "id": "agri-gdp-share",
-   "file": "data/series/seed.json",
-   "url": "https://data.worldbank.org/",
-   "tier": null
-  },
-  {
-   "id": "agri-gdp-share-peer",
    "file": "data/series/seed.json",
    "url": "https://data.worldbank.org/",
    "tier": null
@@ -1339,12 +1327,6 @@
    "id": "agri-gva-growth",
    "file": "data/series/seed.json",
    "url": "https://mospi.gov.in/",
-   "tier": null
-  },
-  {
-   "id": "agri-value-per-worker-peer",
-   "file": "data/series/seed.json",
-   "url": "https://data.worldbank.org/",
    "tier": null
   },
   {
@@ -1378,21 +1360,9 @@
    "tier": null
   },
   {
-   "id": "cereal-yield-peer",
-   "file": "data/series/seed.json",
-   "url": "https://data.worldbank.org/",
-   "tier": null
-  },
-  {
    "id": "cpi-inflation",
    "file": "data/series/seed.json",
    "url": "https://rbi.org.in/",
-   "tier": null
-  },
-  {
-   "id": "credit-gdp-peer",
-   "file": "data/series/seed.json",
-   "url": "https://data.worldbank.org/",
    "tier": null
   },
   {
@@ -1405,12 +1375,6 @@
    "id": "eshram-registrations",
    "file": "data/series/seed.json",
    "url": "https://eshram.gov.in/",
-   "tier": null
-  },
-  {
-   "id": "exports-gdp-peer",
-   "file": "data/series/seed.json",
-   "url": "https://data.worldbank.org/",
    "tier": null
   },
   {
@@ -1435,12 +1399,6 @@
    "id": "fertiliser-subsidy",
    "file": "data/series/seed.json",
    "url": "https://www.indiabudget.gov.in/",
-   "tier": null
-  },
-  {
-   "id": "fertiliser-use-peer",
-   "file": "data/series/seed.json",
-   "url": "https://data.worldbank.org/",
    "tier": null
   },
   {
@@ -1534,12 +1492,6 @@
    "tier": null
   },
   {
-   "id": "industry-employment-peer",
-   "file": "data/series/seed.json",
-   "url": "https://data.worldbank.org/",
-   "tier": null
-  },
-  {
    "id": "inr-usd",
    "file": "data/series/seed.json",
    "url": "https://rbi.org.in/",
@@ -1576,12 +1528,6 @@
    "tier": null
   },
   {
-   "id": "lfpr-female-peer",
-   "file": "data/series/seed.json",
-   "url": "https://data.worldbank.org/",
-   "tier": null
-  },
-  {
    "id": "lfpr-overall-cmie",
    "file": "data/series/seed.json",
    "url": "https://www.cmie.com/",
@@ -1591,12 +1537,6 @@
    "id": "lpi-rank",
    "file": "data/series/seed.json",
    "url": "https://lpi.worldbank.org/",
-   "tier": null
-  },
-  {
-   "id": "manufacturing-gdp",
-   "file": "data/series/seed.json",
-   "url": "https://data.worldbank.org/",
    "tier": null
   },
   {
@@ -1663,12 +1603,6 @@
    "id": "npk-ratio",
    "file": "data/series/seed.json",
    "url": "https://www.faidelhi.org/",
-   "tier": null
-  },
-  {
-   "id": "npl-peer",
-   "file": "data/series/seed.json",
-   "url": "https://data.worldbank.org/",
    "tier": null
   },
   {
@@ -1804,16 +1738,18 @@
    "tier": null
   },
   {
-   "id": "vulnerable-employment-peer",
-   "file": "data/series/seed.json",
-   "url": "https://data.worldbank.org/",
-   "tier": null
-  },
-  {
    "id": "wheat-procurement",
    "file": "data/series/seed.json",
    "url": "https://fci.gov.in/",
    "tier": null
+  }
+ ],
+ "history": [
+  {
+   "date": "2026-08-05",
+   "cycle": "correction-2",
+   "removed": 12,
+   "note": "World Bank WDI: twelve series deep-linked to their indicator pages, each indicator identified by matching the record’s own India value against the World Bank API. Two data.worldbank.org citations deliberately NOT fixed — see the log."
   }
  ]
 }
