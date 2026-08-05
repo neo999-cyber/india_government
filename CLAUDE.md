@@ -351,10 +351,23 @@ and leave it off the list.** An unrendered field with no such line is a defect; 
 satisfy this rule is worse than the defect, and a mark rendered somewhere other than the page of the
 record declaring it does not count.
 
-**Run the field-render audit every phase at stage 7 and state its count, per layer.** For each schema
-field, count the records carrying it against the records whose own built page contains it; any
-non-zero difference is invisible data. **Only the LEDGER layer has ever been swept. SERIES and
-PROVENANCE have not — do not read the ledger result as covering them.**
+**Run the field-render audit every phase at stage 7 and state its count, per layer.** It is a tool —
+`npm run field-render-audit` — and it is in the build, so this instruction is now mechanical rather
+than remembered. For each schema field it counts the records carrying it against the records whose
+own built page contains it; any non-zero difference is invisible data. **All three layers were swept
+on 2026-08-05: ledger 15 fields, provenance 6, series 11, 0 invisible.** The series sweep found the
+defect at a second site — `points[].note` rendered nowhere on any PEER series, because the panel
+branch of `SeriesTable` had no note cell at all.
+
+**Normalise the page and the value with the SAME function, and never hand-roll a second one.** The
+audit's first run reported 55 invisible values and 53 were its own artefacts: period labels render
+`FY2013–14` with an EN DASH against a hyphen in the data, and the `P-xx` linkifier turns "See P-26."
+into "See P-26 ." — three of those were CAVEATS, the worst possible false positive, since a spurious
+truncation hit sends someone hunting a clamp that rule 3a forbids and that does not exist. Same shape
+as phase 13's Indian digit grouping. **And when checking a deployed page, assert values READ FROM
+`/data` in that operation, never needles typed from memory** — two hand-written needles failed
+against pages that were rendering perfectly, because the record said `FUSES` in capitals and
+`Incapsula WAF stub` with the WAF.
 
 Earned phase 15, and the numbers are the argument for the two instructions above. `assessmentNote`
 rendered on **0 of the 164 records carrying it** and `revisitTrigger` on **0 of 62**: 226 marks
