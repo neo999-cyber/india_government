@@ -28,7 +28,7 @@ Longitudinal research instrument: India's condition and trajectory, UPA baseline
    - **The reporting basis is stated wherever the figure appears** (P-18). Domestic and global operations are different populations: the 2018 peak is 14.58% (PSB, global) or 11.46% (SCB, domestic). Series on different bases never share an axis, and a series that states no basis renders as "basis not stated" rather than being assumed onto one.
 5c. **A derived quantity inherits its inputs' contests.** Any ratio, percentage, share or per-unit figure whose numerator or denominator appears in a `differentFacts` pair carries the divergence forward as a RANGE with each bound attributed to its source — or is not stated at all. Picking one side silently converts a recorded disagreement into a settled number, and the record that carries the pair is precisely the one a reader trusts not to do that. **Arithmetic hand-checking cannot catch this class and neither can any gate**: both computations are correct in isolation, each against its own input, and the defect is only visible by asking where the input came from. L-0200 is the first identified instance — thirteen emergency-procurement contracts stated by the Ministry of Defence at ₹1,981.90 crore in June 2025 and ₹1,958.80 crore in December, against a ₹2,000 crore outlay, giving 99.1 or 97.9 per cent committed depending on which total is used. State the range and say why the range exists, distinguishing a contested numerator from an uncertain denominator; where the range is too wide to support the argument being made, the argument is what changes.
 
-5d. **A claim about what EXISTS is not a claim about what the SOURCES CONTAIN, and only the second is checkable.** "No explanation is available", "no other body publishes this", "this is the only case" — each asserts something about the world that no retrieval can establish, because retrieval bounds what was found and never what there is. Rewrite as the observation actually made: *the documents retrieved contain no explanation*, *no other publisher was located*, *this is the only case in the corpus*. The rewrite is not hedging; it is the difference between a statement a later reader can test against the same sources and one they cannot test at all.
+5d. **A claim about what EXISTS is not a claim about what the SOURCES CONTAIN, and only the second is checkable.** "No explanation is available", "no other body publishes this", "this is the only case" — each asserts something about the world that no retrieval can establish, because retrieval bounds what was found and never what there is. Rewrite as the observation actually made: *the documents retrieved contain no explanation*, *no other publisher was located*, *this is the only case in the corpus*. The rewrite is not hedging; it is the difference between a statement a later reader can test against the same sources and one they cannot test at all. **Writing a finding from zero primaries produces a record about my search, not about the world** — the same failure at full strength, and it is at its most tempting when the absence looks obvious. Arc G's UNSC advocacy was closed with no record on exactly this ground: nothing retrieved stated the advocacy as a commitment with a trigger, and a record saying so would have documented the search.
 
 **Superlatives are the loudest symptom and not the only one.** The class also covers a bare "unexplained", an "unprecedented", and any negative existential smuggled in as background. **The test is mechanical: could a single document, if it turned up tomorrow, falsify the sentence without any figure in the record changing?** If yes, it is a claim about existence and must be re-grounded on what was searched, where, and what was found.
 
@@ -114,6 +114,22 @@ happened to be visible in another term's context window. **Boundaries produce fa
 exactly as substring matching produces false positives.** The default stays where it is — a false
 negative costs a missed candidate, a false positive costs a fabricated finding — and the retry is
 what makes the safe default affordable.
+
+**A NON-ZERO count is a candidate list, not a finding, and the context is read before the count is
+banked.** The number returned reads like an answer and is not one. DPIIT's Year End Review 2025
+returns twelve hits for `corridor` in a document being checked for IMEC, and every one of them is
+the National Industrial Corridor Development Programme — a domestic scheme sharing a word. Banked
+as a count it would have supported the opposite of the true finding. **No scanner catches this**:
+the term matches, the boundaries are correct, the variants are irrelevant. Only reading the
+surrounding text does, which is why `scanText` returns contexts and not just totals.
+
+**Boundary matching is meaningless beside a punctuation character, not merely strict.** A scan for
+`%` returned 0 on a document whose headline read "30%", because `\b` after `%` demands a word
+character on both sides of a position where neither is one — the scan reported an absence that
+could never have been a presence, which is the worst shape a scanner can have when absence claims
+are built on zeros. `matcher()` now attaches each boundary only where the adjacent character of the
+TERM is a word character, and `whole` additionally forbids a trailing hyphen, since `\bduty\b`
+matches "duty-bearing" by design and an exact-token search should not.
 
 **A zero from a document that predates the question is not an absence, and it looks identical in the
 count.** Before recording an absence, check that the document could have contained the thing: a
