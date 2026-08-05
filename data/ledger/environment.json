@@ -179,5 +179,42 @@
   ],
   "assessmentNote": "FAILED is scored against the announced objective, which was specific: stop importing thermal coal from FY2023-24, with a named production limb to make it possible. Both limbs were dated, both fell due, and both were missed on the Ministry's own published data — non-coking imports at a series maximum in the target year, Coal India 226 MT short. Under the instrument's commitment states this is (b), due and undelivered, and FAILED is the assessment that follows; the definition covers a measure that did not achieve the objective stated at announcement, which is the case here regardless of the mechanism. REVERSED was rejected because no retrieved document withdraws the commitment — silence is not repudiation, and the later restatements set out different objectives without referring to the earlier one. PARTLY was rejected because neither limb was partially met in the relevant year: the import figure moved away from the target, not toward it. The record's wider material — production, PLF, the doubling of the planned coal build — is context for why the objective failed and is not itself scored; a rise in coal production is not a failure against any objective retrieved, because no document retrieved states an objective to reduce it.",
   "revisitTrigger": "Any Ministry of Coal document addressing the FY2023-24 import commitment after the fact; or non-coking coal imports falling below the FY2015-16 level of 159.39 MT, which would make the substitution claim testable on the series rather than on the blending subset."
+ },
+ {
+  "id": "L-0223",
+  "title": "The emissions-intensity limb is the only climate target in the set with a base year — and it is a ratio that can fall while emissions rise",
+  "date": "2022-08-03",
+  "term": "T2",
+  "domains": [
+   "environment",
+   "macro"
+  ],
+  "type": "institutional",
+  "summary": "India's updated NDC commits to reducing the emissions intensity of GDP by 45 per cent below 2005 levels by 2030, raised from the 33-35 per cent of the 2015 NDC. It is the only quantified climate commitment in this set that names a base year. On the Ministry's own account the intensity had already fallen 24 per cent from 2005 levels by 2016 — before the target was raised.",
+  "claimAtLaunch": "India's 2015 NDC committed 'to reducing the emissions intensity of its GDP by 33-35% below 2005 levels by 2030'. The updated NDC of August 2022 raised it: 'Reduce the emission intensity of the GDP by 45% below 2005 levels by 2030.' The Cabinet release approving the update states the same commitment in the Government's own words.",
+  "whatHappened": "The Ministry's Long-Term Low Emission Development Strategy, submitted to the UNFCCC in November 2022, reports the outturn: 'the emissions intensity of India's GDP had already reduced by 24% from 2005 levels until 2016'. That is roughly two-thirds of the 33-35 per cent target banked fourteen years before its due date, and the target was raised to 45 per cent six years after the reading and in the same year as the strategy. 2030 has not arrived and no later intensity reading was retrieved in this run.",
+  "assessment": "too-early",
+  "caseFor": "The limb is the best-constructed climate commitment India has made, and the contrast with the rest of the set is the argument. It names a base year — 2005 — where the 500 GW capacity target, the NDC's about-50-per-cent capacity share and NCAP's 20-30 per cent particulate reduction all name none, and a percentage reduction without a base year is not a computable quantity at all. It names a due date, 2030. It has been reported against with a dated figure from the Ministry's own strategy document rather than left untracked, which is more than the energy limb of Panchamrit has received. And it was RAISED rather than restated when progress ran ahead of it, from 33-35 per cent to 45, which is the opposite of the pattern this phase found elsewhere, where a target moved to a basis that flattered it.",
+  "caseAgainst": "Emissions intensity is emissions divided by GDP, and a ratio falls whenever the denominator grows faster than the numerator. **A 45 per cent intensity reduction is fully compatible with India's absolute emissions rising over the same period**, and on any plausible growth path it is: the commitment constrains the carbon efficiency of output, not the quantity of carbon. A reader who takes it for a reduction in emissions has read a different promise from the one made. The raise is also less demanding than it looks against the outturn: 24 per cent was already achieved by 2016 on the Ministry's own figure, so the increment from the old target's midpoint was about ten points and the increment actually outstanding at the moment of raising is not stated anywhere retrieved. And the reported 24 per cent is a 2016 reading published in 2021 and quoted in 2022 — the most recent outturn this run could retrieve is a decade old.",
+  "sources": [
+   {
+    "name": "MoEFCC, India's Long-Term Low-Emission Development Strategy, submitted to the UNFCCC November 2022 — carries the 2015 and 2022 NDC wordings and the 24 per cent outturn, itself cited to MoEFCC 2021",
+    "url": "https://moef.gov.in/uploads/2022/11/Indias-LT-LEDS.pdf",
+    "tier": "T1"
+   },
+   {
+    "name": "PIB / Cabinet, 'Cabinet approves India's Updated Nationally Determined Contribution', 3 Aug 2022 — the domestic announcing act, stating the 45 per cent commitment and the 33-35 per cent it replaced",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1847812&reg=3&lang=1",
+    "tier": "T1"
+   }
+  ],
+  "confidence": "high",
+  "asOf": "2026-08-05",
+  "caveat": "Emissions INTENSITY is not emissions. It is emissions per unit of GDP, and it falls whenever output grows faster than emissions do — so this target can be met in full while India's total emissions rise substantially over the same period, and nothing in the commitment constrains the total. This record carries no absolute-emissions series and makes no claim about one; the two quantities must not be read for each other.",
+  "provenanceRefs": [
+   "P-124"
+  ],
+  "assessmentNote": "TOO-EARLY, on the value's own definition: the measure is in force, the obstacle is elapsed time, and the evidence that would settle it accumulates with time rather than awaiting anyone's decision. The trigger is 2030 and it has not arrived, so the limb is commitment state (a). NOT awaiting-adjudication — nothing turns on a body outside the enacting authority. NOT no-objective: this is the one target in the phase-15 set that is NOT unfalsifiable, because it names both a base year and a due date, and that is most of what the record is for. NOT contested: the two published figures do not disagree with each other. What the record decides now, and does not defer, is the SHAPE of the commitment — that it constrains a ratio and not a total, and that the outturn available is a 2016 reading. Neither of those becomes clearer by waiting.",
+  "revisitTrigger": "Any emissions-intensity reading later than 2016 — a Biennial Update Report or National Communication would carry one — which would replace a decade-old outturn. And an absolute GHG emissions series for 2005 onward, which is what would show whether the intensity fall coincided with rising total emissions; this record asserts nothing about that and the question is open rather than answered."
  }
 ]

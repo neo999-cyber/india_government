@@ -117,8 +117,20 @@ if (failed) {
   console.log(`${C.red}${C.bold}INVALID${C.off} — ${because}. Nothing merges or deploys until this is clean (CLAUDE.md data rule 1).`);
   process.exit(1);
 }
+// THE SCOPE IS PRINTED BY THE GATE, and that is the point of printing it.
+//
+// This line used to end at the warning count, and a run report then described it as "validate 0
+// errors over 678 records" — a figure the gate had never emitted, attached to it as though it were
+// the gate's own scope. It was also wrong: the corpus was 676. Same family as reading a pipe's exit
+// status or a PR's status field instead of the artefact, and the fix is the same: make the process
+// that knows the answer be the one that says it. An audit of the other seven gates found every one
+// of them already emitting its own scope; this was the only line anybody had to fill in by hand.
+const scope = `${counts.ledger} ledger · ${counts.series} series · ${counts.provenance} provenance · ` +
+  `${counts.pairs} pairs = ${counts.ledger + counts.series + counts.provenance + counts.pairs} records, ` +
+  `${counts.points} points`;
 console.log(
   `${C.green}${C.bold}VALID${C.off} — 0 errors, ${warnList.length} warning(s)` +
-    (warnList.length ? ` ${C.dim}(open research items, not blockers)${C.off}` : ''),
+    (warnList.length ? ` ${C.dim}(open research items, not blockers)${C.off}` : '') +
+    `\n  over ${scope}`,
 );
 process.exit(0);
