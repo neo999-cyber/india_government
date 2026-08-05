@@ -1,0 +1,54 @@
+[
+  {
+    "id": "L-0216",
+    "title": "The Indus Waters Treaty was put in abeyance on 23 April 2025, and the word abeyance appears nowhere in the treaty, whose only exit is a duly ratified treaty concluded by both Governments",
+    "date": "2025-04-23",
+    "term": "T3",
+    "domains": ["foreign", "environment"],
+    "lenses": ["neighbourhood"],
+    "type": "shock",
+    "summary": "Following the Pahalgam attack of 22 April 2025, in which 26 people were killed, the Cabinet Committee on Security decided that the Indus Waters Treaty of 1960 \"will be held in abeyance with immediate effect, until Pakistan credibly and irrevocably abjures its support for cross-border terrorism\". The same decision closed the Integrated Check Post at Attari, suspended bilateral trade, and excluded Pakistani nationals from the SAARC Visa Exemption Scheme. The treaty's own final provisions, Article XII, provide two mechanisms and no others: modification \"by a duly ratified treaty concluded for that purpose between the two Governments\", and continuation in force \"until terminated by a duly ratified treaty concluded for that purpose between the two Governments\".",
+    "claimAtLaunch": "A stated condition rather than a stated outcome: the treaty is held in abeyance until Pakistan \"credibly and irrevocably abjures its support for cross-border terrorism\". The Press Information Bureau's account frames the measure as severing an economic lifeline without escalating direct military conflict, and quotes the formulation \"Blood and water cannot flow together\".",
+    "whatHappened": "THE TREATY CONTAINS NO MECHANISM ANSWERING TO WHAT WAS DONE, AND THIS IS CHECKABLE RATHER THAN ARGUABLE. Across the full text and all annexures — 215,794 characters — the words abeyance, suspension, termination and denounce do not appear at all. The word terminated appears once, in Article XII(4), and requires a duly ratified treaty concluded by both Governments. The two occurrences of suspend are the arbitral Court suspending its own proceedings pending replacement of an arbitrator under Annexure G, and the three occurrences of withdraw are withdrawals of water from named tributaries. COMMITMENT STATE (a), WITH A TRIGGER THAT NAMES NO TEST. The condition for reversal is an assessment of another state's conduct — credibly and irrevocably abjuring support for cross-border terrorism — and nothing published states who judges it, against what criterion, or on what evidence.",
+    "assessment": "partly",
+    "assessmentNote": "The action itself is established and in effect, and its instrument-side facts are now fully checkable. What cannot be scored is whether it achieves its stated end, because the end names no evaluator and no test: a condition that only one party assesses, by criteria it has not published, cannot be shown to be met or unmet at any future date. This record does NOT adjudicate the treaty-law question. Whether abeyance is available to a party outside the treaty's own terms is a question for bodies whose material could not be retrieved here, and the record confines itself to what the treaty says and what the decision says.",
+    "caseFor": "A state that believes it is being attacked from across a border is not obliged to keep every instrument of cooperation running unchanged, and the treaty is among the very few points of leverage India holds that does not require force. The measure was calibrated to that: the Press Information Bureau's account presents it explicitly as pressure applied without escalating direct military conflict, which is the choice most likely to avoid deaths. The condition attached is a condition for RESTORATION, not a demand for territory or payment — the treaty returns if the conduct stops — and stating a reversal condition at all is more than a purely punitive measure would have offered. The treaty has also survived three wars and been administered continuously since 1960, which is the strongest argument that India has treated it as durable rather than disposable, and makes the departure a considered one rather than a reflex.",
+    "caseAgainst": "The instrument's own terms provide exactly two routes, modification and termination, and both require the agreement of both Governments; the treaty offers no unilateral exit and no intermediate state, and a checked search of its full text finds no vocabulary for one. The government's own account does not settle which act it performed: one sentence describes \"India's termination of the Indus Waters Treaty\" and the next says the treaty \"will be held in abeyance\", and termination and abeyance are not the same legal act. The treaty is also expressly limited by Article XI(1)(a) to rights and obligations concerning the use of the waters and matters incidental thereto, while the condition attached to its abeyance concerns conduct outside that subject entirely. And a reversal condition assessed by one party alone, against criteria it has not published, is indistinguishable in operation from an indefinite one.",
+    "unmeasured": [
+      {
+        "what": "India's stated legal basis for placing the treaty in abeyance",
+        "why": "The measure was announced as a decision. Nothing retrieved states the provision, doctrine or instrument relied upon, and the treaty's own text supplies no mechanism of that name. This is recorded as absent from what was retrieved, not as non-existent — a legal position may have been stated in material this run could not reach, and the Permanent Court of Arbitration's site refused two independent clients with HTTP 403.",
+        "wouldFill": "A Ministry of External Affairs or Ministry of Law statement of the legal basis, a Parliamentary answer, or India's filings in any proceeding on the question.",
+        "reasonKind": "not-published"
+      },
+      {
+        "what": "Who determines whether Pakistan has \"credibly and irrevocably\" abjured support for cross-border terrorism, and by what test",
+        "why": "The condition is the sole stated route back to the treaty's operation, and no evaluator, criterion, evidentiary standard or review point appears in anything retrieved. Without one the condition cannot be shown to be satisfied, which means the abeyance cannot be shown to have ended or to have failed to end.",
+        "wouldFill": "Any published criterion, review mechanism or periodic assessment attached to the decision.",
+        "reasonKind": "never-defined"
+      },
+      {
+        "what": "What has changed in the actual operation of the treaty since 23 April 2025 — data sharing, Permanent Indus Commission meetings, or flows",
+        "why": "Abeyance is a status; what it altered in practice is a separate question. Nothing retrieved states whether Commission meetings ceased, whether hydrological data transmission stopped, or whether any physical flow changed.",
+        "wouldFill": "A Ministry of Jal Shakti or Permanent Indus Commission statement, or a Parliamentary answer on the treaty's operation since the decision.",
+        "reasonKind": "not-published"
+      }
+    ],
+    "caveat": "The zero counts above are from the treaty's own full text as registered with the United Nations, which is the natural place for its exit provisions and covers the whole instrument; they are a checked absence, not a failed search. THE NON-ZERO COUNTS WERE READ BEFORE THEY WERE USED, and this matters: `suspend` returns two hits and `withdraw` three, and banked as counts they would have supported the opposite conclusion — both `suspend` hits are the arbitral Court pausing its own proceedings, and all three `withdraw` hits are withdrawals of water. The figures the Press Information Bureau gives for Pakistan's dependence on the Indus system — 80 per cent of 16 million hectares of agricultural land, 93 per cent of total water use, 237 million people, one-fourth of GDP — are reproduced here as that document's claims about another country, with no basis, method or source stated in it, and are not adopted by this record. The Permanent Court of Arbitration proceedings are not covered: `pca-cpa.org` and `pcacases.com` both returned HTTP 403 to independent requests, so nothing about them is asserted either way.",
+    "sources": [
+      {
+        "name": "United Nations Treaty Series, Volume 419, No. 6032 — The Indus Waters Treaty 1960 (with annexes), signed at Karachi on 19 September 1960 by India, Pakistan and the International Bank for Reconstruction and Development, registered by India on 16 January 1962; Article XII(3) and XII(4) on modification and termination by duly ratified treaty, and Article XI(1)(a) limiting the Treaty to the use of the waters and matters incidental thereto. Full text with a machine-readable layer, 215,794 characters, scanned in full through the corpus-search helper",
+        "url": "https://treaties.un.org/doc/Publication/UNTS/Volume%20419/volume-419-I-6032-English.pdf",
+        "tier": "T1"
+      },
+      {
+        "name": "Press Information Bureau, \"Operation SINDOOR: India's Strategic Clarity and Calculated Force\", Backgrounder, 12 May 2025 — the Pahalgam attack of 22 April 2025 and its 26 deaths; the Indus Waters Treaty of 1960 to be \"held in abeyance with immediate effect, until Pakistan credibly and irrevocably abjures its support for cross-border terrorism\", described in the preceding sentence as \"India's termination of the Indus Waters Treaty\"; the closure of the Integrated Check Post Attari with return by 1 May 2025; the suspension of all bilateral trade; and the exclusion of Pakistani nationals from SAARC Visa Exemption Scheme visas",
+        "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=154448&ModuleId=3&reg=3&lang=1",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-05",
+    "revisitTrigger": "Re-test if India publishes a legal basis, if any criterion or review mechanism is attached to the reversal condition, or if the Permanent Indus Commission's operation since April 2025 is described. Any of the three would move this from a status with no test to something scoreable."
+  }
+]

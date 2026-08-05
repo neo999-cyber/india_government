@@ -157,17 +157,40 @@ before banking any zero** — the Power Year End Review returned zero for `expor
 implausible enough to check, and it took 19/86/39/42 control hits to establish the document had
 actually loaded.
 
-### 5. Pakistan — deferred on retrieval, and the blockage is specific
+### 5. Pakistan — ROUTE RE-TESTED 2026-08-05. Two of three blockages were STALE. One record written.
 
-The Indus Waters Treaty abeyance, the trade suspension and transit closure. *Why deferred:* **its
-central record's primaries fail across three clients** — the Permanent Court of Arbitration
-(`pca-cpa.org`) is Cloudflare-gated and returned 403 to two independent clients; the MEA special
-briefing of 23 April 2025 at which the abeyance was announced returns HTTP 200 with 82KB of page
-chrome and no transcript body, because it loads by JavaScript; and the Indus Waters Treaty PDF on
-MEA's own legal-treaties portal is a 5MB scan with no text layer, 113 bytes of extractable text. So
-the treaty instrument is citable and NOT quotable. *Depends on:* the retrieval-capability cycle
-(item 7), or a route to any of those three documents. Pakistan's exclusion is stated in the titles of
-L-0192 and L-0193 rather than left as a silent gap in a set called "the neighbourhood".
+**The three recorded blockages were each concluded from a single host, before the class-of-sources
+rule existed. Re-tested by varying the host, two opened immediately.**
+
+| Blockage | Old finding | Re-test | Result |
+|---|---|---|---|
+| Treaty text | MEA legal-treaties PDF is a 5MB scan, 113 bytes extractable | **UN Treaty Series**, vol 419 No. 6032 | **OPEN** — 1.5MB PDF, real text layer, 215,794 chars, full text + all annexures |
+| Abeyance decision | MEA special briefing is a JS shell, 82KB of chrome | **PIB PressNote 154448 + static.pib.gov.in PDF** | **OPEN** — both retrieved, decision text in India's own voice |
+| PCA proceedings | `pca-cpa.org` Cloudflare 403 to two clients | `pca-cpa.org` **and** `pcacases.com` | **STILL BLOCKED** — 403 from both |
+
+**WRITTEN: L-0216**, the Indus Waters Treaty abeyance. The treaty being quotable is what made it
+possible — the finding rests on a checked absence in the instrument's own full text (`abeyance` 0,
+`suspension` 0, `termination` 0, `denounce` 0; `terminated` 1, in Article XII(4), requiring a duly
+ratified treaty concluded by both Governments).
+
+**STILL OPEN, and now unblocked — the trade suspension and transit closure.** The CCS decision
+closed the Integrated Check Post Attari with immediate effect (returns by 1 May 2025), suspended
+all bilateral trade, and excluded Pakistani nationals from SAARC Visa Exemption Scheme visas. All
+three are carried in L-0216's summary and sources as facts of the same decision, but **no record of
+their own has been written**, because a trade-suspension record needs the measured trade it
+suspended and that was not attempted this batch. *Depends on:* UN Comtrade for the India-Pakistan
+bilateral series before and after April 2025 — the same query shape batch 3 used, which is known to
+work and needs no key. This is a normal authoring task now, not a retrieval problem.
+
+**PCA constrains one record, not the file.** What phase 14 owns is the treaty action, the trade
+suspension and transit; none of the three requires the arbitration. Item 7's retrieval cycle is now
+properly scoped BY EVIDENCE rather than by three stale failures: one genuine blockage, of a
+Cloudflare-gated non-government host.
+
+**Routes that worked here, for reuse.** `treaties.un.org` serves UNTS volumes as text-layer PDFs
+with no gate — for ANY treaty India has registered, this is the route when the Indian host serves a
+scan. `static.pib.gov.in` serves PIB backgrounder PDFs with a text layer. PIB `PressNoteDetails.aspx`
+carries backgrounders that CCS-level decisions appear in when the ministry briefing does not.
 
 ### 6. L-0195's baseline question
 

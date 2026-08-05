@@ -7444,3 +7444,71 @@ record about my search, not about the world — the same failure as an unrewritt
 full strength, and most tempting when the absence looks obvious. Arc G's UNSC subject is named in
 the rule as the instance where it was declined.
 
+## Cycle 2026-08-05n — Pakistan: the route test, and two stale blockages
+
+**Two of three blockages were stale, and both had been concluded from a single host.** They were
+recorded before the class-of-sources rule existed, and the rule's whole content is that this is not
+a valid inference.
+
+- **Treaty text.** The old finding was that MEA's legal-treaties PDF is a 5MB scan with 113 bytes
+  of extractable text. That is a fact about MEA's copy. The **UN Treaty Series** serves volume 419,
+  No. 6032 — the treaty as registered by India on 16 January 1962 — as a 1.5MB PDF with a real text
+  layer: 215,794 characters, full text plus all eight annexures. **The instrument went from citable
+  to quotable**, and that single change is what made L-0216 possible.
+- **Abeyance decision.** The old finding was that MEA's special briefing is a JavaScript shell.
+  PIB's `PressNoteDetails.aspx` backgrounder and the same document on `static.pib.gov.in` both
+  retrieved, the second as a PDF with a text layer. The decision's substance is in India's own
+  voice on a working host.
+- **PCA.** Genuinely blocked: 403 from `pca-cpa.org` AND `pcacases.com`, two hosts, independent
+  requests. Recorded as the one real blockage, which is what properly scopes the retrieval cycle.
+
+**The context-before-count rule earned itself one commit after being written, on the most
+consequential scan of the batch.** Searching the treaty for its own exit vocabulary returned
+`abeyance` 0, `suspension` 0, `termination` 0, `denounce` 0 — and `suspend` 2, `withdraw` 3,
+`terminated` 1. **Banked as counts, the non-zero results would have supported the opposite
+conclusion**: that the treaty does contemplate suspension and withdrawal. Read in context, both
+`suspend` hits are the arbitral Court pausing ITS OWN proceedings pending replacement of an
+arbitrator under Annexure G, and all three `withdraw` hits are withdrawals of WATER from named
+tributaries. The single `terminated` is Article XII(4), which requires a duly ratified treaty
+concluded by both Governments. This is the DPIIT `corridor` failure recurring within a week, on a
+record where it would have inverted the finding.
+
+**A checked absence in the strongest available form.** The treaty's own full text is the natural
+place for its exit provisions, it covers the whole instrument, and it does not carry the word. That
+is materially stronger than the ministry-annual-report absences this phase has been relying on, and
+it is worth naming why: there is no later document that could add an exit clause to a 1960 treaty.
+
+**What the record does NOT do.** It does not adjudicate the treaty-law question, and says so in the
+assessmentNote. It does not supply India's legal basis — no doctrine, provision or instrument is
+named in anything retrieved, and inventing a plausible one would be rule 3 in its most tempting
+form, since a competent reader can guess what the argument probably is. It records the basis as
+absent from what was retrieved rather than non-existent, and names the PCA 403s as the reason that
+distinction has to be drawn.
+
+**An internal inconsistency in the government's own text, recorded without resolving it.** The PIB
+backgrounder says "India's termination of the Indus Waters Treaty" and, in the next sentence, that
+the treaty "will be held in abeyance". Termination and abeyance are different legal acts. The
+record states both and does not pick.
+
+**Commitment state (a), with a sub-case worth naming: a trigger that names no test.** The reversal
+condition is that Pakistan "credibly and irrevocably abjures its support for cross-border
+terrorism" — a condition assessed by one party, with no published criterion, evaluator, evidentiary
+standard or review point. It is state (a), because a trigger IS named; but it cannot be shown
+satisfied or unsatisfied at any future date, which makes it operationally closer to (d) than the
+label suggests. Scored `partly` on the split: the action is established, the objective unscoreable.
+
+**Figures about another country, attributed and not adopted.** The backgrounder gives Pakistan's
+dependence as 80 per cent of 16 million hectares, 93 per cent of water use, 237 million people, a
+quarter of GDP. These are one government's claims about another, with no basis, method or source
+stated, and the caveat says so rather than letting them read as established.
+
+**Gates.** build VALID (0 errors, 151 warnings); figure-consistency 9/9; manifest 658 records;
+reachability 863/863 across 638 pages; domain-coverage 14/14, 1107/1107; enum-stamp 2; url-check
+2/2; typecheck clean; selftest exit 0; lens-controls 7 pairs; charset U+2026 count 0. M2: prefix
+equality and length +1 asserted before writing; numstat 57/0.
+
+**NOT written, and stated rather than left silent.** The trade suspension and transit closure are
+facts of the same decision and are carried in L-0216, but have no record of their own: that record
+needs the measured bilateral trade it suspended, and Comtrade was not queried this batch. It is now
+an authoring task with a known-working route, not a retrieval problem, and STATE.md says so.
+
