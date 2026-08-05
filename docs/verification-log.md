@@ -7889,3 +7889,60 @@ of finding the last three cycles have been unpicking. Clean partial beats thin r
 **Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 289 allowlisted;
 selftest exit 0; `git diff --numstat data/series/seed.json` = 1/1, no reformat.
 
+## Cycle 2026-08-05u — correction cycle 5: India Code, five citations, and the same-title trap twice
+
+**Allowlist 289 → 284.** Five citations deep-linked to two India Code items, each identified by
+retrieval rather than by name. No value changed anywhere; diffs are 6/6 on education.json and 4/4 on
+provenance.json.
+
+**Host selection was made on what responds, not on what is numerous.** `mospi.gov.in` (19 entries,
+the largest group) has an A record but returns HTTP 000 through it; `main.sci.gov.in` (10) has **no
+A record on 1.1.1.1 at all**. India Code (14) answered on a pin — `www.indiacode.nic.in` →
+94.202.207.51 — as did `sansad.in` (164.100.252.170) and `cag.gov.in` (164.100.59.171), which are
+now recorded for the next cycle.
+
+**READING THE RECORDS FIRST FOUND SOMETHING THE BRIEF DID NOT KNOW.** P-86 is at **T4**, not T1,
+and its source name already reads: *"Relayed from three agreeing secondary renderings —
+indiacode.nic.in failed DNS resolution and the bare Act text was not retrieved, so this must not be
+quoted as verbatim primary."* The corpus had documented this exact retrieval failure, tiered itself
+down for it, and warned against quoting. That record was the cycle's highest-value target precisely
+because it says what it lacks.
+
+**THE SAME-TITLE TRAP, CAUGHT TWICE, AND IT WOULD HAVE PASSED ANY NAME CHECK.** India Code holds
+State adoptions under identical short titles:
+
+- searching the RTE Act returns handle **13682**, "The RIGHT OF CHILDREN TO FREE AND COMPULSORY
+  EDUCATION ACT, 2009" — `Type: STATE, Location: Delhi`. The Central Act is **12911** (Act ID
+  200935, Act No. 35, `Type: CENTRAL ACT`);
+- searching the J&K Reorganisation Act returns **15875** with the same title — `Type: STATE,
+  Location: Ladakh`, and **no Section 32 at all**. The Central Act is **12030** (Act ID 201934, Act
+  No. 34, 9 August 2019).
+
+Both wrong items match the citation's words exactly. **The discriminator is a field sitting beside
+the title** — `Type`, `Location`, and in the J&K case the presence of the cited section — which is
+the read-the-label-beside-the-value rule catching a live error twice in one cycle rather than in
+retrospect.
+
+**Identification by section index, and the limit stated in the citation.** For the four RTE
+citations the item's section index was confirmed to carry every section named: 19 "Norms and
+standards for school", 23 "Qualifications for appointment and terms and conditions of service of
+teachers", 25 "Pupil-Teacher Ratio", 26 "Filling up vacancies of teachers", and the Schedule. **The
+Act-level item carries the index, not the text**, so each citation now says in terms that section
+numbers and headings are verified and the operative wording is not. The "ten per cent" of section 26
+was NOT re-verified and no citation claims it was.
+
+**P-86 deep-linked with its tier and its warning untouched, and the merge asserted it.** Section 32
+on item 12030 reads "Extent of legislative power", consistent with what the record says section
+32(1) does — but `Public Order` and `Police` return **zero occurrences** on that item, so the
+operative text is still unretrieved. The tier stays **T4**, the relayed-secondary caveat stands
+verbatim, and the assertion `src_a['tier'] == src_b['tier'] == 'T4'` ran before the write. **A better
+URL is not better evidence**, and upgrading the tier because the link improved would have been the
+cycle's easiest mistake.
+
+**Five citations, not thirty.** Four RTE plus P-86, from two retrieved documents, on a method that
+cost two searches and five fetches. The remaining 284 stand; `sansad.in` and `cag.gov.in` are pinned
+and queued.
+
+**Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 284 allowlisted
+(T1:130 T2:13 T3:6 T4:45 T5:4 no-tier:86); url-check 2/2 confirmed; selftest exit 0.
+
