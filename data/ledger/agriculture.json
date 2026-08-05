@@ -134,7 +134,9 @@
    }
   ],
   "confidence": "high",
-  "asOf": "2026-08-01"
+  "asOf": "2026-08-01",
+  "assessmentNote": "Written 2026-08-05 (phase 15 batch 13); this record carried a `contested` verdict with no stated ground. THE TWO READINGS AGREE THE TRANSFER EXISTS AND DISAGREE ABOUT WHOSE WELFARE IS THE MEASURE. Not in dispute: the implicit transfer from farmers to consumers, operating through prices rather than budgets, exceeds every farm subsidy combined, and it is invisible in any budget line. Reading one is CONSUMER-SIDE: food price stability is a legitimate central objective where food is a large share of household spending, export bans during a global commodity shock protected domestic consumers including the rural poor who buy more food than they sell, and the subsidies farmers do receive are real and large in absolute terms. Reading two is PRODUCER-SIDE: the transfer is larger than the support, it is self-defeating because it mutes the very price signals farmers are urged to respond to, and the episodic bans cost export market share without addressing why food prices are politically explosive. THE RECORD DECLINES BECAUSE THE DISAGREEMENT IS NORMATIVE AND DISTRIBUTIONAL — it is about which side of a transfer the instrument should score from, and no measurement adjudicates that. NOT a case of work left undone; the OECD producer support estimate that grounds the transfer is retrieved and cited.",
+  "revisitTrigger": "A distributional estimate of who inside the rural population gains and loses from suppressed farm-gate prices — net sellers against net buyers — would make the contest sharper without resolving whose welfare is the criterion."
  },
  {
   "id": "L-0069",

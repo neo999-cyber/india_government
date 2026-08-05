@@ -9727,3 +9727,82 @@ built, 14/14 linked, 1141/1141 references · `validate:selftest` 23/23 validator
 broken fixtures, 2/2 output gates on theirs.
 
 **NOT PUSHED.** Push is not autonomous while the deployment is public and unauthenticated.
+
+## Cycle 2026-08-05ar — batch 13: L-0226's truncated quote, the phase-14 index, and the five contested notes
+
+### SUPERSEDES TWO CLAIMS IN CYCLE 2026-08-05aq
+
+**1. "This reframes every e-Gazette-blocked absence in the corpus" is withdrawn.** The blast radius
+measured *in the same entry* found exactly **one** absence resting on that channel — and it was this
+run's own, in P-121. L-0218's two were corrected before phase 15 began; L-0219's is about
+client-and-day generally. **The reframing is real and its scope was one record, not the corpus.**
+Same over-tidy-summary class the standing rule has now caught five times — **and written into the very
+passage reporting one of those catches.**
+
+**2. "Phase 15's arcs are all closed or blocked" glossed a contradiction in the file.** Read from
+STATE.md rather than asserted: **Arc A CLOSED** (spine batch 1, remainder L-0226), **Arc C CLOSED
+provenance-only**, **Arc D COMPLETE** — but **Arc B carried two states in one file**, a heading
+reading CLOSED PROVENANCE-ONLY and an open-items entry listing untried routes. Reconciled: the later
+state governs and **Arc B is BLOCKED WITH UNTRIED ROUTES**, on one capability gap plus one
+independent alternative.
+
+### L-0226's quote was truncated, and the omission favoured the record's own argument
+
+**`figure-consistency` had stayed at 15 claims across a record carrying seven figures**, which is the
+signal batch 7 established: a gate count that does not move when records are added. Declaring the
+arithmetic surfaced the defect immediately.
+
+The Plan's sentence runs *"…will decrease to **0.09% and 1.29% in FY 2026-27 and 2031-32
+respectively**"*. **The record had quoted it cut off at 0.09%** and described the sensitivity as an
+eleven-fold range without qualification. Corrected:
+- **2026-27: 1% → 0.09%** — ratio **11.11x**, difference **0.91 points**
+- **2031-32: 3.3% → 1.29%** — ratio **2.56x**, difference **2.01 points**
+
+So **0.09% belongs to 2026-27** (the record's attribution was right) and **a 2031-32 variant exists at
+1.29% that the record never mentioned.** The assumption dominates the near year and much less the far
+one — **and the truncation dropped precisely the half that weakens the point the record was making.**
+Three claims now declared, including `55 − 40 = 15` as a stays-quiet control.
+
+### Phase 14's STATE.md corrected — the index that caused the propagation
+
+Two superseded lines carried the e-Gazette as "the one unreachable, unduplicated channel" and "the
+real gap", while line 133 of the same file already recorded L-0218's correction. **Correcting the
+record and leaving the index is the defect that produced last batch's propagated error**, so both
+lines now carry SUPERSEDED blocks naming what is true and why that line specifically caused the
+damage. Phase 14's *records* remain untouched.
+
+### THE FIVE `contested` RECORDS — closed, and none was work left undone
+
+L-0018, L-0025, L-0059, L-0068, L-0076 each now state which two readings are live and why the record
+declines. **The outcome worth reporting is the negative one: every record already carried a
+substantive caseFor and caseAgainst on retrieved sources.** None was an unwritten judgement.
+
+**THE STRUCTURAL FINDING: `contested` is doing at least two different jobs.** Four of the five are
+**NORMATIVE** — the facts are agreed and the disagreement is about which frame governs (prudential
+against economic incidence; absorption against structural transformation; consumer against producer
+welfare; legality against functional effect). **One, L-0018, is EVIDENTIARY**: what separates the
+readings is what Chinese import growth would have been inside RCEP, and no observation of a world
+India did not enter exists for anyone.
+
+**The corpus already has the vocabulary one layer over.** `disputeKind: evidentiary | normative` is
+defined in the schema and used on `unmeasured[]` entries. **The distinction the assessment layer needs
+is already written down.** REPORTED, NOT BUILT — extending it is a schema change and therefore a stop.
+**65 records carry `contested`**, and the argument bears directly on the `commitmentState` proposal:
+both want a state a record can reach, with a written definition, rendered and gated, and **they should
+be designed together rather than in sequence.**
+
+Each note's `revisitTrigger` names what would sharpen the contest **without pretending it would settle
+a normative one** — for the four normative records the trigger says so explicitly.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs
+= 682 records, 1,759 points** · `no-bare-root` 0 new, 0 stale, 277 allowlisted from 277 frozen ·
+`no-unguarded-prose-field` 19 prose fields across ledger + provenance, 7 guarded / 12 exempted ·
+`figure-consistency` **18** declared claims, 18 checked against source and printed operands, 5
+rounding artefacts declared · `reachability` **1368/1368** marks on their own record page, 662 pages
+scanned · `field-render-audit` 32 prose fields across 3 layers, 0 invisible · `domain-coverage` 14/14
+surfaces built, 14/14 linked, 1141/1141 references · `validate:selftest` 23/23 validator rules fire on
+the broken fixtures, 2/2 output gates on theirs.
+
+**NOT PUSHED.** Push is not autonomous while the deployment is public and unauthenticated.

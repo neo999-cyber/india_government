@@ -178,5 +178,41 @@
     "sourceB": 34,
     "sourceScale": 1,
     "note": "Declared 2026-08-05 after an audit found L-0223 printing derived arithmetic that had never been declared. The record originally said 'about ten points' for this quantity; it is 11, and declaring it is what forces the check. Both operands are printed in the record and the subtraction reconstructs exactly, so this is a stays-quiet claim as well as a corrected one."
+  },
+  {
+    "record": "L-0226",
+    "what": "the 2026-27 non-absorption sensitivity — 55 per cent minimum technical load against 40 per cent",
+    "printedA": "1",
+    "printedB": "0.09",
+    "printedDifference": "0.91",
+    "decimals": 2,
+    "sourceA": 1.0,
+    "sourceB": 0.09,
+    "sourceScale": 1,
+    "note": "Declared 2026-08-05 after an audit found L-0226 printing derived arithmetic that had never been declared — the same shape as L-0223 in batch 7. Declaring it is what surfaced the truncation: the record had quoted the source sentence cut off at 0.09% and missed the 2031-32 variant entirely."
+  },
+  {
+    "record": "L-0226",
+    "what": "the 2031-32 non-absorption sensitivity on the same assumption change",
+    "printedA": "3.3",
+    "printedB": "1.29",
+    "printedDifference": "2.01",
+    "decimals": 2,
+    "sourceA": 3.3,
+    "sourceB": 1.29,
+    "sourceScale": 1,
+    "note": "The half the record had omitted. Ratio 2.56x against 2026-27's 11.11x, so the assumption's grip weakens over the horizon — which cuts against the emphasis the record originally placed on it."
+  },
+  {
+    "record": "L-0226",
+    "what": "the minimum-technical-load assumption change itself, in percentage points",
+    "printedA": "55",
+    "printedB": "40",
+    "printedDifference": "15",
+    "decimals": 0,
+    "sourceA": 55,
+    "sourceB": 40,
+    "sourceScale": 1,
+    "note": "Both operands are quoted verbatim from the Plan and the subtraction reconstructs exactly — a stays-quiet claim, declared so the gate's silence on this record means something."
   }
 ]

@@ -569,7 +569,13 @@ look for, and it is a better-shaped target than NCAP's because it is per-city an
 base year is established from a primary.
 
 
-## ARC B — CLOSED PROVENANCE-ONLY, 2026-08-05. One targeted attempt made and it did not land.
+## ARC B — ~~CLOSED PROVENANCE-ONLY~~ **SUPERSEDED: see the open-items entry 1b.** 2026-08-05
+
+> **STATE CORRECTED 2026-08-05 (batch 13).** This heading said CLOSED PROVENANCE-ONLY while the
+> open-items list simultaneously carried Arc B as having untried routes — **two states for one arc
+> in one file.** The later state governs: **Arc B is BLOCKED WITH UNTRIED ROUTES**, on one capability
+> gap (content behind a client-rendered page) plus one independent alternative (`data.gov.in`).
+> The account below is what the targeted attempt of that batch found and remains accurate as history.
 
 **The attempt, as instructed: the XV Finance Commission city-wise, year-wise PM10/PM2.5 targets, by
 named document rather than portal. IT DID NOT LAND, and both halves of the failure are specific:**
@@ -754,7 +760,7 @@ Generation Portal daily reports (`gen-re.cea.gov.in/reports`, live) and the NEP'
 (`nep.pdf`, Exhibit 5.5a: 38.71-67.04 GW / 193.55-335.2 GWh across scenarios). **This is the cheapest
 outstanding work in the phase** — retrieval is done, only authoring remains.
 
-## 3. FIVE `contested` RECORDS WITH NO STATED GROUND.
+## 3. FIVE `contested` RECORDS — **NOTES WRITTEN 2026-08-05. None was work left undone.**
 L-0018, L-0025, L-0059, L-0068, L-0076 — the five of the eight review-sample records that still carry
 no `assessmentNote`, all five `contested`. **Contested is where stated ground matters most**: it reads
 as self-explanatory and is not, and without a note a reader cannot tell which two readings are live or
@@ -1181,7 +1187,7 @@ Each is a Gazette *Extraordinary* with the standard masthead. **So a notificatio
 known is retrievable without touching the search.** What the postback form provides is the
 **discovery** step — number from description — and that remains unsolved.
 
-**This reframes every e-Gazette-blocked absence in the corpus:** the question is no longer "can the
+**CORRECTED 2026-08-05 (batch 13): this read "reframes EVERY e-Gazette-blocked absence in the corpus", and the blast radius measured in the same batch found exactly ONE — this run's own, in P-121.** L-0218's two were already corrected before phase 15 began and L-0219's is about client-and-day generally. The reframing is real and its scope was one record, not the corpus. **Same over-tidy-summary class as the four the standing rule has caught — and written into the very passage reporting one of those catches.** The sound statement: for any absence that DOES rest on this channel, the question is no longer "can the
 channel be read" but "is the notification number known or findable". For P-121's Ministry of Power
 Order that is now the whole of the gap. `RecentUploads.aspx?Category=1..5` and `GazetteDirectory.aspx`
 are enumerable entry points and are **untried**.
@@ -1233,3 +1239,46 @@ The Plan states renewable-plus-large-hydro generation at **22.1 per cent for 202
 Review's own tables give **21.73 per cent** for FY2021-22 on what appears to be the same basis
 (hydro + RES over total). **0.4 points apart, and not investigated** — plausibly vintage or universe.
 Recorded so it is not rediscovered as a finding, and it is NOT asserted as a differentFacts pair.
+
+
+---
+
+# THE FIVE `contested` RECORDS — CLOSED 2026-08-05, and a structural finding falls out
+
+**L-0018 · L-0025 · L-0059 · L-0068 · L-0076.** Each note now states which two readings are live and
+why the record declines. **None turned out to be work left undone** — every one already carried a
+substantive caseFor and caseAgainst resting on retrieved sources, which was the outcome worth checking
+and is reported as a negative result rather than assumed.
+
+## THE FINDING: `contested` is carrying two different things, and the corpus already has vocabulary for the distinction
+
+| Record | Contest | Why the record declines |
+|---|---|---|
+| **L-0018** RCEP withdrawal | **EVIDENTIARY** | What separates the readings is what Chinese import growth WOULD have been inside RCEP. **No observation of a world India did not enter exists for anyone** |
+| L-0025 loan write-offs | NORMATIVE | Prudential correctness against economic incidence. Both true of the same numbers |
+| L-0059 unemployment | NORMATIVE | Absorption against structural transformation. The dispute is over the criterion, not the measurement |
+| L-0068 farmers implicitly taxed | NORMATIVE | Consumer welfare against producer welfare — whose side of a transfer is the measure |
+| L-0076 CBI general consent | NORMATIVE | Legality against functional effect |
+
+**Four of five are NORMATIVE — the facts are agreed and the disagreement is about which frame
+governs. Only one is EVIDENTIARY.** These are different objects wearing one value: a normative
+contest cannot be resolved by any retrieval, while an evidentiary one names exactly what would
+resolve it.
+
+**And the corpus already has this vocabulary — `disputeKind: evidentiary | normative`** — defined in
+the schema and used on `unmeasured[]` entries, where "evidentiary: the stated reason is contradicted
+by evidence that the data exists" and "normative: the factual claim is not contested; what is
+contested is the characterisation". **The distinction the assessment layer needs is already written
+down one layer over.**
+
+**REPORTED, NOT BUILT.** Extending `disputeKind` to the assessment layer is a schema change and
+therefore a stop. What this cycle establishes is that **65 records carry `contested`** and the value
+is doing at least two jobs — which bears directly on the `commitmentState` proposal, since the same
+argument (a state a record can reach, with a written definition, rendered and gated) applies here and
+the two should be designed together rather than in sequence.
+
+## Method note
+
+Each note also carries a `revisitTrigger` naming what would sharpen the contest **without pretending
+it would settle a normative one** — for the four normative records the trigger explicitly says the
+measurement would not resolve the criterion question. That distinction is the point of writing them.
