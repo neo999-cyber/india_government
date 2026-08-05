@@ -364,3 +364,55 @@ roughly 8 of their 38, and the corpus-wide figure was established by the AUDIT, 
 (L-0011's note begins "CORRECTED ... adversarial triage 2"), and **the decomposition has not been
 done** — 37 is what was measured, 33 is what the log claims, and they are not asserted to be the same
 set.
+
+## ARC B — AIR QUALITY: CLOSED WITH A DOCUMENTED NO-RECORD OUTCOME, 2026-08-05
+
+**No record written, and that is the result rather than a gap.** No announcing primary for the
+National Clean Air Programme was retrieved in this run, so nothing about its target is assertable.
+**The figures that would have gone into such a record — a 20-30 per cent reduction by 2024 against a
+2017 base, revised to 40 per cent by 2025-26 — are widely circulated and easy to recall, which is
+exactly what makes writing them without the primary the HARD STOP: entering a document as a source
+that has not been retrieved.** They are named here only to say they were NOT used.
+
+### The attempt record, five attempts across three estates
+
+| Host | Result |
+|---|---|
+| `cpcb.nic.in` (45.127.74.241) | HTTP 000, TLS reset — the fingerprint already recorded for Grid-India |
+| `airquality.cpcb.gov.in` (115.112.199.4) | HTTP 000, same fingerprint. A DIFFERENT IP, so this is a second observation, not a repeat |
+| `prana.cpcb.gov.in` (164.100.61.207) | **HTTP 200, 21,735 characters — and a JAVASCRIPT SHELL.** The body is font-face CSS and chrome; the NCAP portal renders client-side. A 200 serving a shell is not a retrieval |
+| `moef.gov.in` (164.100.221.70) | Live, 126 KB of real text, but `/national-clean-air-programme` and `/ncap` both 404, and the **Control of Pollution division page carries no programme content at all** — 102 KB in which the only date hits are the copyright footer and a visitor counter |
+| `www.pib.gov.in` | Live. Three release IDs tried and none carried NCAP — **they were GUESSED, which is the identifier-guessing trap, and guessing is why they failed rather than anything about PIB** |
+
+### What this is and is not
+
+**It IS a class-of-sources result, obtained the way the rule requires** — by varying the host, not by
+accumulating failures within one. Three CPCB hosts on three different IPs: two refuse TLS, one
+answers and renders client-side. So the correct narrow statement is that **CPCB's estate is reachable
+and its flagship portal is unreadable to a non-rendering client**, which is a different and more
+useful fact than "CPCB is down".
+
+**It is NOT evidence that NCAP material is unpublished.** The phase-14 finding applies directly: a
+failure to read a ministry's website is not evidence that its documents are unpublished, and that
+inference was wrong three times in that phase. PIB almost certainly carries NCAP status replies; this
+run did not find them because it guessed identifiers instead of searching.
+
+### What opens it, in order of expected cost
+
+1. **A rendering client against `prana.cpcb.gov.in`.** The portal is live and is the designated NCAP
+   channel, carrying city-wise PM data and the target. This is the single highest-value route and it
+   needs a headless browser, which is M1 mode 3 — recorded as UNAVAILABLE in this environment on
+   2026-08-04, so confirm that is still true before assuming it.
+2. **PIB via its own search rather than guessed PRIDs.** A Lok Sabha or Rajya Sabha reply on NCAP
+   status would carry the target, the base year and the city count in one document.
+3. **The NCAP document itself**, a 2019 MoEFCC publication. Not located on `moef.gov.in`, whose
+   Control of Pollution division page carries no programme content.
+
+### The one thing Arc B must get right when it is written
+
+**The target is share-shaped and its base year is the whole question.** A percentage reduction in PM
+means nothing without the base year, the pollutant (PM10 and PM2.5 are different series), and the
+city set — and the programme is reported to have been revised once, which if true means two targets
+with two horizons and possibly two bases. Expect the phase-15 pattern to repeat: **a revision that
+moves the goalposts and a headline quoted on whichever basis is kinder.** Establish the base year
+from the announcing primary before touching any outturn figure.
