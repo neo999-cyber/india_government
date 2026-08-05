@@ -5,7 +5,7 @@
 One line per record so orientation does not require scanning `/data`. Format:
 `id · domain(s) {lenses} · title`. For the authoritative text, read the record.
 
-679 records — 224 ledger, 269 series, 126 provenance, 60 pairs.
+680 records — 225 ledger, 269 series, 126 provenance, 60 pairs.
 
 ## series (269)
 
@@ -289,7 +289,7 @@ ujjwala-refills · welfare · PMUY average annual LPG refills per beneficiary
 wheat-procurement · welfare · Wheat procurement
 ```
 
-## ledger (224)
+## ledger (225)
 
 ```
 # data/ledger/agriculture.json
@@ -359,6 +359,7 @@ L-0221 · environment+infrastructure · Half the fleet, under a third of the ele
 L-0222 · environment+macro · Coal imports were to stop in FY2023-24 and hit their record that year; production rose 85 per cent
 L-0223 · environment+macro · The emissions-intensity limb is the only climate target in the set with a base year — and it is a ratio that c
 L-0224 · environment · Two quantified climate limbs state an absolute tonnage and a date, and neither states the baseline it is measu
+L-0225 · environment · Net zero by 2070 is one sentence: a year, and no statement of what is being zeroed
 # data/ledger/federalism.json
 L-0150 · macro+federalism · The divisible pool shrank from 89 to 74-80 per cent of gross tax revenue while the states' share of it rose fr
 L-0151 · federalism+macro · The Fourteenth Finance Commission raises the states' share of the divisible pool from 32 to 42 per cent
