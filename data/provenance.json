@@ -2605,9 +2605,9 @@
     "tier": "T3"
    },
    {
-    "name": "Prospective ocular-trauma series at SMHS Hospital Srinagar, July 2016 to June 2018, 664 eyes of 643 patients, 59.3 per cent with visual impairment and 10.8 per cent completely blinded (no perception of light). Relayed: located through search summarisation and the paper itself was not opened",
-    "url": "https://pubmed.ncbi.nlm.nih.gov/",
-    "tier": "T4"
+    "name": "Shah FQ, Qureshi TS, Nawaz S, Kaushik M, 'Clinical spectrum and functional outcome of firearm pellet-related eye injuries: A prospective follow-up study', Injury 2022 Sep;53(9):2998-3004, doi:10.1016/j.injury.2022.05.051, PMID 35691765 — 664 eyes of 643 patients, 59.3 per cent with visual impairment and 10.8 per cent completely blinded (no perception of light). IDENTIFIED AND UPGRADED FROM T4 2026-08-05 (correction cycle 7): the paper was previously relayed from search summarisation and not opened. It is now located by PMID and its abstract retrieved from the publisher's index (NCBI E-utilities efetch, db=pubmed id=35691765), and EVERY figure this record cites is matched in it: 'Six hundred sixty-four eyes of 643 patients'; 'category 5 in 72 (10.8%) eyes', WHO category 5 being no perception of light; and 59.3 per cent as the sum of WHO categories 1 to 5 (12.8 + 5.3 + 4.5 + 25.9 + 10.8), the complement of the 40.7 per cent in category 0. TWO LIMITS: the ABSTRACT was retrieved and the full text was NOT opened, which is why this sits at T3 and not higher; and the study period given here as July 2016 to June 2018 is NOT stated in the abstract and remains unverified. The institution is given in the paper as the Department of Ophthalmology, Government Medical College, Srinagar, rather than SMHS Hospital by name",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/35691765/",
+    "tier": "T3"
    },
    {
     "name": "J&K High Court Bar Association v. Union of India & ors., WP(C)(PIL) no. 14/2016, judgment of 11 March 2020 - Government Order No.61-Home of 2017 and its undefined categories of permanent and partial disablement",
