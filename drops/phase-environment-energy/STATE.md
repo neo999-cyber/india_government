@@ -65,9 +65,14 @@ force it to (a) because a year is named.** A year with no phasing and no interim
 due before it arrives. A total WITH a date is (a); this one needs its wording retrieved before the
 test is applied.
 
-### 5. L-0052 and `re-capacity` — CORRECTIONS OWED, RAISED NOT APPLIED
+### 5. L-0052 and `re-capacity` — **RESOLVED. ALL FOUR APPLIED IN BATCH 2 (g).**
 
-`/data` edits at source are an operator decision. Four items, all evidenced in the log entry:
+> **SUPERSEDED 2026-08-05.** This section said the corrections were owed and not applied. They were
+> applied in batch 2 under the narrow source-edit amendment, each carrying its withdrawn wording
+> inside itself, and verified on the deployed pages. **The list below is retained as the statement of
+> what was wrong, not as outstanding work.** See BATCH 2 RESOLUTIONS, item (g), lower in this file.
+
+The four, as they stood before correction:
 - `unmeasured[0].reasonKind` is `not-published`; **the datum is published** — CEA's monthly RE report
   carries tables literally titled "Monthly Renewable Energy as % of Total Electricity Generated".
   The record's own `why` says "in anything retrieved", which was right; the `reasonKind` overclaimed.
@@ -79,14 +84,43 @@ test is applied.
 - **`re-capacity`'s notes and L-0052 both attach 283.46 GW to July 2025.** It is a capacity stock as
   on 31.03.2026.
 
-### 6. The rendering audit, only half run
+### 6. The rendering audit — **RESOLVED. ALL THREE LAYERS SWEPT IN BATCH 2.**
 
-Phase 15 swept the LEDGER layer for fields that render nowhere and found two (`assessmentNote` 164,
-`revisitTrigger` 62). **The series and provenance layers have not been swept.** The audit is one
-loop: for each schema field, count records carrying it against records whose own built page contains
-it. Anything at zero is invisible.
+> **SUPERSEDED 2026-08-05.** This section said only the LEDGER layer had been swept. All three were
+> swept in batch 2 and the audit is now a tool in the build — `npm run field-render-audit`. Result:
+> **ledger 15 fields · provenance 6 · series 11 · 0 invisible.** The series sweep found the defect at
+> a second site: `points[].note` rendered nowhere on any PEER series because `SeriesTable`'s panel
+> branch had no note cell. Fixed. The original finding stands as history: `assessmentNote` was
+> invisible on 164 records and `revisitTrigger` on 62.
 
 ## Retrieval notes — pins and traps, verified this run
+
+**THE NPP MONTH-STAMPED ARCHIVE — the reusable result of batch 4, and the answer to "CEA publishes
+only the current month".** CEA's own index pages do carry only the current month; that is enumerated,
+not assumed. But the **National Power Portal mirrors the same CEA reports under a dated path**, and
+the convention was read off a live `href` on `npp.gov.in/publishedReports` rather than guessed:
+
+```
+https://npp.gov.in/public-reports/cea/monthly/<category>/<YYYY>/<MON>/<file>
+  installed capacity :  installcap/2025/MAR/capacity1-2025-03.pdf
+  categories observed:  dgr · fuel · generation · installcap · transmission
+```
+
+Pin `npp.gov.in` 45.127.74.236. `<MON>` is the three-letter uppercase month; the filename repeats the
+year and a two-digit month.
+
+**IT IS CROSS-VALIDATED AT BOTH ENDS OF THE CAPACITY SERIES, which is why the series can span three
+sources without a seam.** At **31.03.2024** NPP gives thermal 243,216.92 · hydro 46,928.17 · RES
+143,644.51 · nuclear 8,180.00 · total 441,969.60 against the General Review's 243,217 · 46,928 ·
+143,645 · 8,180 · 441,970 — **every difference under 0.5 MW**, explained by the General Review
+rounding to whole MW, and the non-fossil share identical at 44.97 per cent. At **31.03.2026** NPP
+gives 532,739.72 against the Executive Summary's 532,739.68 — **0.04 MW**, non-fossil identical.
+**Note the asymmetry: the GENERATION series has no such overlap anywhere and its FY2024-25 join is
+therefore declared as a seam (P-126).**
+
+**Also note the RES column convention differs by document and must be checked per file:** NPP and the
+General Review put hydro in its own column and EXCLUDE it from RES; the Executive Summary's `RES*`
+INCLUDES large hydro. Adding hydro to an Executive Summary RES figure double-counts about 51 GW.
 
 **Pins (all returned real text bodies):** `cea.nic.in` 45.127.74.41 · `gen-re.cea.gov.in`
 164.100.114.49 · `mnre.gov.in` 164.100.51.103 · `coal.nic.in` / `coal.gov.in` 164.100.166.94 ·
@@ -302,10 +336,12 @@ the review, and that independence should be preserved deliberately rather than b
 
 **1. The gap series is regenerated and the terminal years now agree.** The four share series ran to
 FY2023-24 while the corrected headline quoted FY2025-26 — they did not meet. Extended from CEA
-*Executive Summary March 2026*: capacity **FY2025-26 only** (31.03.2026 is a published stock;
-31.03.2025 is not — both guessable archive URLs 404, consistent with CEA publishing only the current
-month), generation **FY2024-25 and FY2025-26**. So `non-fossil-capacity-share` has a deliberate hole
-at FY2024-25 and its generation twin does not. **Blanks are unreported, not zero.**
+*Executive Summary March 2026*: capacity and generation for **FY2024-25 and FY2025-26**.
+**SUPERSEDED 2026-08-05 — the sentence this line used to carry was wrong.** It said 31.03.2025 'is
+not [a published stock] — both guessable archive URLs 404'. That was true of the URLs and was not a
+search: batch 4 retrieved the stock from the National Power Portal's month-stamped archive (see the
+retrieval notes below), and the FY2024-25 capacity hole is **filled**, not deliberate. **There is no
+hole in these series.**
 - **Opening gap FY2014-15: 10.98 points** (31.53 capacity − 20.55 generation). First year after
   P-122's seam, which is why the claim starts there.
 - **Closing gap FY2025-26: 24.24 points** (53.21 − 28.96).
@@ -531,3 +567,67 @@ look for, and it is a better-shaped target than NCAP's because it is per-city an
 **Still not retrieved and still not assertable: any PM outturn figure, the NCAP base year, and the
 40%-by-2025-26 revision.** No ledger record has been written for Arc B and none should be until the
 base year is established from a primary.
+
+
+## ARC B — CLOSED PROVENANCE-ONLY, 2026-08-05. One targeted attempt made and it did not land.
+
+**The attempt, as instructed: the XV Finance Commission city-wise, year-wise PM10/PM2.5 targets, by
+named document rather than portal. IT DID NOT LAND, and both halves of the failure are specific:**
+- **The targets are not printed in the primary that describes them.** The Annual Report says the
+  Ministry 'has been appointed as the nodal ministry … to develop' them. Appointment to develop is
+  not publication.
+- **The framework document is not in MoEFCC's publications index.** All 18 PDFs enumerated; no match
+  for the framework, for air quality, or for the grant. It is a named document — 'Assessment of
+  Performance and Outcomes for Air Quality Management in Million Plus Cities for XV-Finance
+  Commission Grant' — and it is not on the index that would carry it.
+
+**WHAT THE ATTEMPT DID YIELD went into P-125 and is sharper than the targets would have been.** The
+grant's 'performance' is scored on FOUR parameters and **only one is air quality**; the other three
+are an institutional framework, a source analysis, and progress against action plans. Half the money
+was released with no performance criteria at all. **And the report states that the relative weightings
+'are provided' and then does not provide them** — so the weight on the single outcome parameter is not
+establishable from the document that describes the framework.
+
+### ARC B FINAL STATE — provenance-only, no ledger record, and this is the whole of it
+
+| Piece | State |
+|---|---|
+| Target wording | **RETRIEVED**, T1 — '20-30% reduction of particulate matter concentration by 2024' |
+| Base year | **NOT ESTABLISHED.** 0 hits for 'base year' across 961,735 characters, positive controls passing |
+| Outturn (city PM series) | **BLOCKED** — behind `prana.cpcb.gov.in`, client-rendered, and BOTH available rendering clients fail here |
+| 40%-by-2025-26 revision | **NOT RETRIEVED, NOT ASSERTED** — absent from the one primary in hand |
+| XV-FC city-wise targets | **NOT RETRIEVED** — not printed in the primary, not on the publications index |
+| Ledger record | **NONE, and correctly none.** Nothing is scoreable without the base year and an outturn |
+
+**Records: P-125 only.** Do not spend a third batch on Arc B without a rendering client — that single
+capability is what gates the outturn, and everything else here is downstream of it.
+
+## ARC D — THE EMISSIONS-INTENSITY LIMB. **L-0223 written 2026-08-05.** One limb, not the arc.
+
+**Retrieved: MoEFCC, India's Long-Term Low-Emission Development Strategy** (submitted to the UNFCCC
+November 2022), 8,973,260 bytes, 283,363 characters, T1 — found on MoEFCC's `/publications` index by
+enumeration. It carries both NDC wordings and, uniquely among anything retrieved this phase, **an
+outturn against a target with a named base year**:
+> 2015 NDC: "reducing the emissions intensity of its GDP by 33-35% below 2005 levels by 2030"
+> 2022 update: "Reduce the emission intensity of the GDP by 45% below 2005 levels by 2030"
+> Outturn: "the emissions intensity of India's GDP had already reduced by 24% from 2005 levels until
+> 2016 (MoEFCC, 2021)"
+
+**Scored `too-early`** — state (a), trigger 2030, obstacle is elapsed time. **The two findings that
+do NOT wait for 2030 are the point of the record:** intensity is a RATIO and can fall while absolute
+emissions rise, so the commitment constrains carbon efficiency and not carbon; and the target was
+RAISED to 45 per cent after 24 points had already been banked, which is the opposite of the
+flattering-basis pattern found elsewhere in this phase and is recorded as such.
+
+### What Arc D still owes — this was one limb of four
+
+1. **A post-2016 intensity reading.** The only outturn retrieved is a 2016 figure published in 2021
+   and quoted in 2022 — a decade old. A Biennial Update Report or National Communication would carry
+   a later one. **Not attempted.**
+2. **An absolute GHG emissions series from 2005.** This is what decides whether the intensity fall
+   coincided with rising totals. **L-0223 asserts nothing about it** and declares no absence, because
+   none was searched for — the new stated-search rule forbids calling it unpublished on no search.
+3. **The remaining limbs, none attempted:** the 1-billion-tonne cumulative emissions reduction, the
+   2.5-3.0 GtCO2e carbon sink, and **net-zero-by-2070**. Expect the flagged shape on net-zero: a year
+   with no interim phasing is likely state (d), unfalsifiable by construction, and must not be forced
+   to (a) merely because a year is named.

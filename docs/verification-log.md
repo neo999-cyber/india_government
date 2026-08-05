@@ -9103,3 +9103,97 @@ stale over 277 allowlisted · `no-unguarded-prose-field` 19 fields (7 guarded, 1
 `figure-consistency` 14 claims, 5 declared artefacts · `reachability` every guarded mark on its own
 page · `field-render-audit` 32 prose fields over 3 layers, 0 invisible · `domain-coverage` 14/14
 surfaces · `validate:selftest` 23/23 validator rules, 2/2 output gates.
+
+## Cycle 2026-08-05ak — batch 6: the generation seam declared, the capacity join validated, and the only climate limb with a base year
+
+### The capacity join validates; the generation join does not, and is now declared
+
+**Item 2 resolved by retrieval.** NPP's month-stamped archive gives capacity as on **31/03/2024**:
+thermal 243,216.92 · hydro 46,928.17 · RES 143,644.51 · nuclear 8,180.00 · total 441,969.60, against
+the General Review's 243,217 · 46,928 · 143,645 · 8,180 · 441,970. **Every difference is under 0.5 MW
+and explained by the General Review rounding to whole MW; the non-fossil share is identical at 44.97
+per cent.** With the 0.04 MW agreement already established at 31.03.2026, **both capacity joins are
+verified and the capacity series spans three sources with no undeclared seam.**
+
+**The generation series has no such overlap and its FY2024-25 join is now a declared break — P-126,
+on both `res-generation-share` and `non-fossil-generation-share`.** The seam means something narrower
+than P-122's: not "do not splice" but "the values either side come from different publications and no
+observation has been made that would detect a difference between them". Nothing observed suggests a
+discontinuity and nothing observed could. **It was previously stated only in L-0221's prose, which is
+exactly the class flag (e) is deferred on: `breaks[]` binds the series and the renderer, a sentence in
+a ledger record binds neither.**
+
+### The gate-scope audit, and the one line that was mine
+
+**Item 3, audited gate by gate against each one's actual emitted summary.** Seven of eight were
+already emitting their own scope: `no-bare-root` (0 new / 0 stale over 277), `no-unguarded-prose-field`
+(19 fields, 7 guarded / 12 exempted), `figure-consistency` (14 claims, 5 artefacts), `reachability`
+(marks / pages), `field-render-audit` (32 fields, 3 layers, per-layer), `domain-coverage` (14/14,
+references), `validate:selftest` (23/23 rules, 2/2 output gates). **`validate` was the only one whose
+reported scope was attached by hand — and it had never printed a record count at all.** Fixed at the
+source rather than in the reporting habit: `validate` now prints
+`over 223 ledger · 269 series · 126 provenance · 60 pairs = 678 records, 1759 points` beneath its
+summary. The temptation is removed rather than managed.
+
+### STATE.md's stale index, corrected in place
+
+**Item 4.** Three sections at the top of the phase file described states that had been superseded
+lower in the same file, so a cold read got the wrong answer: the L-0052 corrections (applied in batch
+2, not owed), the rendering audit (all three layers swept, not half run), and a capacity "hole" at
+31.03.2025 (retrieved in batch 4, not absent). Each now carries a SUPERSEDED block naming the batch
+that resolved it, with the original text retained as the statement of what was wrong. **And the NPP
+month-stamped archive convention is written into the retrieval notes with its path form, its observed
+categories, and both validating cross-checks** — it was the reusable result of batch 4 and existed
+only in a log entry.
+
+### ARC B — CLOSED PROVENANCE-ONLY. The targeted attempt did not land.
+
+One attempt, by named document rather than portal, as instructed. **It failed in two specific ways
+and neither is a portal problem:** the city-wise year-wise targets are **not printed in the primary
+that describes them** — the Ministry "has been appointed as the nodal ministry … to develop" them,
+and appointment to develop is not publication — and the framework document is **not on MoEFCC's
+publications index**, all 18 PDFs enumerated with no match.
+
+**What the attempt yielded went into P-125 and is sharper than the targets would have been.** The
+XV-FC grant's "performance" is scored on FOUR parameters — institutional framework, source-wise cause
+analysis, action-plan progress, and quantification of air quality improvements — and **only the fourth
+is air quality.** Half the money went out before any of it applied: "The first instalment shall be
+disbursed without any performance criteria", 2,200 crore of 4,400 released. **And the weight on the
+one outcome parameter is not establishable from the document**: the report says the relative
+weightings "are provided" and then does not provide them, in either extraction mode. A framework
+described as performance-based rests on a weighting its own published account does not print.
+
+**Arc B final state: target wording retrieved; base year NOT established; outturn BLOCKED by a
+client-rendered portal neither available rendering client can read; revision NOT retrieved and NOT
+asserted; XV-FC city targets NOT retrieved. Records: P-125 only. No ledger record, and correctly
+none.** Do not spend a third batch without a rendering client — that one capability gates everything
+downstream.
+
+### ARC D — one limb, and it is the only climate target in the set with a base year
+
+**L-0223.** MoEFCC's Long-Term Low-Emission Development Strategy (UNFCCC, November 2022; 8,973,260
+bytes, 283,363 characters, T1, found by enumerating `/publications`) carries both NDC wordings and an
+outturn: 2015's "33-35% below 2005 levels by 2030", 2022's "45% below 2005 levels by 2030", and
+**"the emissions intensity of India's GDP had already reduced by 24% from 2005 levels until 2016".**
+
+Scored **`too-early`** — state (a), trigger 2030, obstacle elapsed time. **The two findings that do
+not wait for 2030 are why the record exists now.** First, **emissions intensity is a ratio**: it falls
+whenever GDP grows faster than emissions, so a 45 per cent reduction is fully compatible with absolute
+emissions rising, and the commitment constrains carbon efficiency rather than carbon. Carried as the
+record's caveat. Second, **the target was RAISED after the progress was banked** — 24 points achieved
+by 2016, the target lifted from 33-35 to 45 in 2022 — which is the OPPOSITE of the flattering-basis
+pattern this phase found elsewhere, and is recorded as such rather than assimilated to it.
+
+**No absence is declared for absolute emissions.** None was searched for, and the stated-search rule
+written this phase forbids calling unsearched material unpublished. It is a revisit trigger instead.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 223 ledger · 269 series · 126 provenance · 60 pairs
+= 678 records, 1,759 points** · `no-bare-root` 0 new, 0 stale, 277 allowlisted from 277 frozen ·
+`no-unguarded-prose-field` 19 prose fields across ledger + provenance, 7 guarded / 12 exempted ·
+`figure-consistency` 14 declared claims, 14 checked against source and printed operands, 5 rounding
+artefacts declared · `reachability` 1343/1343 marks on their own record page, 658 pages scanned ·
+`field-render-audit` 32 prose fields across 3 layers, 0 invisible (ledger 15/0, provenance 6/0,
+series 11/0) · `domain-coverage` 14/14 surfaces built, 14/14 linked, 1136/1136 references ·
+`validate:selftest` 23/23 validator rules fire on the broken fixtures, 2/2 output gates fire on theirs.

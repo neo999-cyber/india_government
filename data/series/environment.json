@@ -127,6 +127,11 @@
     "period": "FY2014-15",
     "note": "RES generation up to FY2013-14 is NORMATIVE (imputed); from FY2014-15 it is actual generation reported by utilities. CEA states the change in Table 1.3's own note. Do not read the FY2013-14 to FY2014-15 move as a fall in output.",
     "provenanceRef": "P-122"
+   },
+   {
+    "period": "FY2024-25",
+    "note": "Document join, not a basis change: the General Review's mode-wise generation table ends at FY2023-24 and the Executive Summary's begins here, and the two share no period, so the join could not be checked. Definitions and universe match and the Bhutan import is normalised out of both sides. Nothing observed suggests a discontinuity and nothing observed could. Contrast the capacity series, whose joins ARE verified at 31.03.2024 and 31.03.2026.",
+    "provenanceRef": "P-126"
    }
   ],
   "points": [
@@ -221,7 +226,8 @@
   ],
   "provenanceRefs": [
    "P-121",
-   "P-122"
+   "P-122",
+   "P-126"
   ],
   "notes": "Same numerator definition and same document as res-capacity-share, so the two shares are strictly comparable and the gap between them is the arc's central measurement. NUMERATOR excludes large hydro. The FY2014-15 break is a measurement-basis change, not an activity change: RES generation is printed as FALLING from 65,520 GWh to 61,719 GWh across it while RES capacity rose from 35,850 MW to 39,950 MW. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried."
  },
@@ -353,6 +359,11 @@
     "period": "FY2014-15",
     "note": "RES generation up to FY2013-14 is NORMATIVE (imputed); from FY2014-15 it is actual generation reported by utilities. CEA states the change in Table 1.3's own note. Do not read the FY2013-14 to FY2014-15 move as a fall in output.",
     "provenanceRef": "P-122"
+   },
+   {
+    "period": "FY2024-25",
+    "note": "Document join, not a basis change: the General Review's mode-wise generation table ends at FY2023-24 and the Executive Summary's begins here, and the two share no period, so the join could not be checked. Definitions and universe match and the Bhutan import is normalised out of both sides. Nothing observed suggests a discontinuity and nothing observed could. Contrast the capacity series, whose joins ARE verified at 31.03.2024 and 31.03.2026.",
+    "provenanceRef": "P-126"
    }
   ],
   "points": [
@@ -447,7 +458,8 @@
   ],
   "provenanceRefs": [
    "P-121",
-   "P-122"
+   "P-122",
+   "P-126"
   ],
   "notes": "The companion to non-fossil-capacity-share, computed from the facing table of the same document on the same universe. The pair is the arc's central finding: at 31.03.2024 non-fossil plant was 44.97% of installed capacity and supplied 23.51% of the electricity. Only the RES component carries the FY2014-15 basis break; hydro and nuclear generation are metered throughout. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried."
  },

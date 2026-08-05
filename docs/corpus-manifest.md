@@ -5,7 +5,7 @@
 One line per record so orientation does not require scanning `/data`. Format:
 `id · domain(s) {lenses} · title`. For the authoritative text, read the record.
 
-676 records — 222 ledger, 269 series, 125 provenance, 60 pairs.
+678 records — 223 ledger, 269 series, 126 provenance, 60 pairs.
 
 ## series (269)
 
@@ -289,7 +289,7 @@ ujjwala-refills · welfare · PMUY average annual LPG refills per beneficiary
 wheat-procurement · welfare · Wheat procurement
 ```
 
-## ledger (222)
+## ledger (223)
 
 ```
 # data/ledger/agriculture.json
@@ -357,6 +357,7 @@ L-0065 · employment+macro · Structural transformation reversal
 # data/ledger/environment.json
 L-0221 · environment+infrastructure · Half the fleet, under a third of the electricity: the non-fossil milestone is a capacity milestone
 L-0222 · environment+macro · Coal imports were to stop in FY2023-24 and hit their record that year; production rose 85 per cent
+L-0223 · environment+macro · The emissions-intensity limb is the only climate target in the set with a base year — and it is a ratio that c
 # data/ledger/federalism.json
 L-0150 · macro+federalism · The divisible pool shrank from 89 to 74-80 per cent of gross tax revenue while the states' share of it rose fr
 L-0151 · federalism+macro · The Fourteenth Finance Commission raises the states' share of the divisible pool from 32 to 42 per cent
@@ -530,7 +531,7 @@ L-0042 · human-development+welfare · Nutrition outcomes and the anaemia revers
 L-0043 · poverty+welfare · Multidimensional poverty exit claim
 ```
 
-## provenance (125)
+## provenance (126)
 
 ```
 # data/provenance.json
@@ -659,6 +660,7 @@ P-122 · environment+infrastructure · Renewable generation was imputed, not met
 P-123 · environment+infrastructure · A 50-per-cent-of-CAPACITY target is published as a COP26 goal; COP26's 50 per cent limb was 50 per cent of ENE
 P-124 · environment+infrastructure · SUBSTITUTION: India's NDC goals are cited to the Cabinet release, because the lodged instrument could not be r
 P-125 · environment · NCAP's target is a percentage reduction with no base year in the document that publishes it, and a ten-point r
+P-126 · environment · The generation series joins two CEA documents at FY2024-25 with no overlap year, so the join is unverified rat
 ```
 
 ## pairs (60)
