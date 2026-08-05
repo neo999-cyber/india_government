@@ -416,7 +416,7 @@ L-0214 · foreign+environment · India joined the WTO fisheries agreement as the
 L-0215 · foreign+human-development · Vaccine Maitri is presented as a gift, and the doses the government names as gifted are 1.51 crore of a stated
 L-0216 · foreign+environment {neighbourhood} · The Indus Waters Treaty was put in abeyance on 23 April 2025, and the word abeyance appears nowhere in the tre
 L-0217 · foreign+macro {neighbourhood} · The trade suspended on 23 April 2025 was already one-directional and the two governments do not agree what it 
-L-0218 · governance+foreign · Four Indian government publication channels cannot be read by an ordinary client, and in every case but one th
+L-0218 · governance+foreign · Three Indian government publication channels cannot be read by an ordinary client, and the documents survive b
 # data/ledger/infrastructure.json
 L-0044 · infrastructure · National highway construction programme
 L-0045 · infrastructure · Bharatmala Pariyojana

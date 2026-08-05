@@ -7946,3 +7946,58 @@ and queued.
 **Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 284 allowlisted
 (T1:130 T2:13 T3:6 T4:45 T5:4 no-tier:86); url-check 2/2 confirmed; selftest exit 0.
 
+## Cycle 2026-08-05v — correction cycle 6: the e-Gazette was never unreachable, and L-0218 said so wrongly
+
+**Allowlist 284 → 283.** One citation deep-linked, and two shipped records corrected — one of them
+phase 14's own retrieval record, on its headline claim.
+
+**THE ORDERING SUGGESTION WORKED AND SHOULD BECOME METHOD.** Scanning allowlisted citations for
+source names that already state a retrieval failure returned **exactly eight**, across
+`egazette.gov.in`, `main.sci.gov.in`, `cic.gov.in`, `greaterkashmir.com`, `scroll.in` and
+`jklegislativeassembly.nic.in`. A record that documents its own gap is the cheapest thing in the
+corpus to improve, because the gap is specified rather than searched for. **L-0129 was the best of
+the eight and said why in its own text:** "The Gazette root did not respond though a direct file path
+on the same host served the Reorganisation Act, and the file identifiers for these two notifications
+are not known." The record had isolated the missing variable. Only the identifier was needed.
+
+**L-0218'S CENTRAL FINDING IS WRONG, AND IT IS MY OWN.** That record named the e-Gazette as the
+fourth and worst of four unreadable channels — "both unreachable and unduplicated — it is the channel
+of legal record, and nothing else republishes it" — and made it the phase's one real gap. With a
+pinned resolver (`egazette.gov.in` → 164.100.190.144) the portal serves 200 with real content, and a
+Gazette notification was retrieved from it as a PDF with a text layer. **The original measurement was
+a plain request made before this machine's broken resolver was understood — which is the exact error
+L-0218 itself warns about, committed by L-0218.** Corrected in place under the L-0021 precedent: the
+count goes four → three, the withdrawn illustration is marked WITHDRAWN rather than deleted, and the
+correction names what it supersedes. `egazette.nic.in` genuinely has no A record, which is a
+different fact and stands.
+
+**L-0129's gap closed, and the honesty about HOW matters.** The Gazette original of C.O. 272 /
+G.S.R. 551(E) is now retrieved at `WriteReadData/2019/210049.pdf` and verified BY CONTENT: Part II
+Section 3 Sub-section (i) No. 444, New Delhi, Monday, August 5, 2019, Ministry of Law and Justice
+(Legislative Department), "G.S.R .551(E).— the following Order made by the President is published for
+general information: THE CONSTITUTION (APPLICATION TO JAMMU AND KASHMIR) ORDER, 2019 C.O. 272", made
+under clause (1) of article 370. **The file identifier was GUESSED and confirmed by reading the
+document, not derived from any index** — the citation says so, because a path that happens to be
+right is not a method anyone can repeat. **C.O. 273 / G.S.R. 562(E) is still not located** and the
+note says that too; `SearchGazette.aspx` returns HTTP 500, so there is no index to work from.
+
+**The brief's mospi/sci premise held under a varied-host attempt.** `mospi.gov.in` AND
+`www.mospi.gov.in` both resolve to 103.210.81.67 and both return HTTP 000 — an A record that refuses,
+on two hostnames. `main.sci.gov.in` and `www.jklegislativeassembly.nic.in` have **no A record on
+1.1.1.1 at all**. These are genuine unreachability, not resolver artefacts, and belong to the
+retrieval-capability picture rather than this sweep's backlog. Working alternatives found in passing:
+`judgments.ecourts.gov.in` (103.195.217.39) answers 200 and is the plausible route to L-0116's
+Supreme Court order that `main.sci.gov.in` cannot serve.
+
+**New pins recorded:** egazette.gov.in → 164.100.190.144 · cic.gov.in → 164.100.252.91 ·
+greaterkashmir.com → 104.16.36.6 · scroll.in → 172.67.206.153 · judgments.ecourts.gov.in →
+103.195.217.39. Six of the eight self-documented failures now have a live host.
+
+**What this cycle did NOT do.** The remaining seven self-documented failures were not closed; only
+L-0129 was. The T4 press citations (greaterkashmir, scroll) need the specific article located, which
+is search work, and L-0116 needs the judgment found on the ecourts route. All are now cheap and
+specified. 283 remain allowlisted.
+
+**Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 283 allowlisted;
+url-check 1/1; selftest exit 0; diffs 4/4 on foreign-trade.json and 2/2 on kashmir-rights.json.
+
