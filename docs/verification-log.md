@@ -7512,3 +7512,76 @@ facts of the same decision and are carried in L-0216, but have no record of thei
 needs the measured bilateral trade it suspended, and Comtrade was not queried this batch. It is now
 an authoring task with a known-working route, not a retrieval problem, and STATE.md says so.
 
+## Cycle 2026-08-05o — PHASE 14 CLOSES: the suspended trade (L-0217), the retrieval re-test (L-0218)
+
+**L-0217 — the trade the decision suspended, and a mirror gap larger than the smaller figure.**
+UN Comtrade on India's own returns: exports to Pakistan US$523.22m (2023), US$1,183.10m (2024),
+US$352.27m (2025); imports from Pakistan US$7.69m, US$6.42m, US$3.73m. On 2024 figures India sent
+about 184 times what it received — both operands India's own, same year, same dataset — so
+suspending "all bilateral trade" removes an export market and almost no import dependence.
+
+The mirror is the finding. For 2024 India reports US$1,183.10m of exports to Pakistan while
+Pakistan reports US$304.93m of imports from India: **a gap of US$878.17m, which exceeds the whole
+of the smaller figure.** India's number is 3.88 times Pakistan's. The divergence runs both ways —
+India records US$6.42m of imports against Pakistan's US$0.02m of exports — and is present in every
+year checked. Filed `differentFacts`, neither adopted, no midpoint. Ordinary explanations exist
+(valuation convention, third-country attribution) and NONE is asserted, because no retrieved source
+says which applies or in what proportion. Same discipline as P-119, larger magnitude.
+
+**The suspension's effect is deliberately NOT measured, and this is the harder call.** The 2025
+annual figures straddle 23 April, and Comtrade's public preview returns no monthly rows for India
+— that query was run and returned zero rows, so the limit is established rather than assumed. The
+70.2 per cent fall from 2024 is consistent with the suspension AND with a return from an
+exceptional 2024 that was itself more than double 2023. Nothing separates them, so the fall is not
+reported as an effect. Completeness of the 2025 figures is also not established: the route carries
+no indicator, and the caveat says a partial year would understate both sides.
+
+**A gate refusal worth recording.** `gapComputable` and `gapReason` are PAIRS-layer fields and were
+written into a ledger record by reflex. validate refused both — "the schema is closed; add it to
+the schema in chat first". The schema was applied, not amended, and the substance folded into
+`differentFactsNote`. Same call as the earlier `gapComputable: true` refusal on contested pairs.
+
+**L-0218 — the retrieval re-test, written as corpus material rather than a work queue.** Every
+recorded blockage was re-tested by varying the host, and the result inverts what the queue assumed.
+
+- **Solved.** The Indus Waters Treaty, a 5MB image on MEA's portal yielding 113 bytes, is a
+  215,794-character machine-readable document at `treaties.un.org`. Route generalises to any treaty
+  India has registered.
+- **Host dead, material fine.** `mod.gov.in` and `ddpmod.gov.in` still fail HTTPS outright — and
+  PIB served a Ministry of Defence document of 1,994,703 bytes on request. The blockage is the
+  website, not the documents.
+- **Unreadable by every route tried.** `mea.gov.in` returns HTTP 200 and a scaffold on two paths,
+  AND the Internet Archive snapshot reproduces it: 4,326 characters, `Loading...` present, zero
+  press-release text. **An archived JavaScript shell is still a shell** — the crawler preserves the
+  scaffold because the scaffold is what the server sends. Archive.org does not rescue client-
+  rendered pages, and that is worth knowing before the next phase tries it.
+- **Unreachable and unduplicated.** The e-Gazette fails to connect on both `egazette.gov.in` and
+  `egazette.nic.in`, and nothing republishes it. It is the channel of legal record and the one real
+  gap.
+- **Excluded from the four.** The PCA is 403 on two hosts and its archive snapshot resolves to the
+  case index rather than case 288 — but it is not an Indian government channel, and the record says
+  so rather than padding the list.
+
+**The finding is the opposite of the inference this phase kept making.** In three of the four
+Indian channels the DOCUMENTS are fully reachable and only the ministry's own site is dead. **A
+failure to read a ministry's website is not evidence that its documents are unpublished** — an
+inference drawn three times in this phase, wrong each time, and now written into a record rather
+than a habit.
+
+**What L-0218 refuses to claim.** It states what ONE client observed on given dates and does not
+assert the sites are unreachable in general; the second `unmeasured` says host variation is not
+network variation. It also notes that the 4,326-character figure is normalised text, not the 82,719
+bytes served — and that the gap between them is the point, because the byte size looks like a
+document and the text is not one.
+
+**Gates at close.** build VALID (0 errors, 151 warnings); figure-consistency 10/10 declared claims;
+manifest 660 records; reachability 871/871 across 640 pages; domain-coverage 14/14 surfaces,
+1111/1111 references; enum-stamp 2 fixtures; url-check clean; typecheck clean; validate:selftest
+exit 0 with 11 scan controls; lens-controls 7 paired controls. M2 on both merges, numstat 64/0 and
+48/0.
+
+**PHASE 14 CLOSED.** 35 records L-0184 to L-0218, two pairs, corrections to two shipped records.
+Arcs A-G plus Pakistan closed with records; five subjects closed with documented no-record
+outcomes, which are results and are named as such in STATE.md. Carried forward: arc E's fourth
+file, the e-Gazette, and Godda.
+

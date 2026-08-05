@@ -1703,5 +1703,53 @@
         "confidence": "high",
         "asOf": "2026-08-05",
         "revisitTrigger": "Re-test when a monthly series across April 2025 becomes available on any route, and when 2026 annual figures are published — a full year wholly after the decision is the first observation that does not straddle it. The mirror gap should be re-checked at the same time: if it narrows as direct trade stops, that is itself informative about what was causing it."
+    },
+    {
+        "id": "L-0218",
+        "title": "Four Indian government publication channels cannot be read by an ordinary client, and in every case but one the documents survive only because a different arm of the same government republishes them",
+        "date": "2026-08-05",
+        "term": "T3",
+        "domains": [
+            "governance",
+            "foreign"
+        ],
+        "type": "institutional",
+        "summary": "Every retrieval blockage recorded during phase 14 was re-tested by varying the host. Four Indian government channels remain unreadable: the Ministry of External Affairs website, which returns HTTP 200 and a JavaScript scaffold with no document text; the Ministry of Defence and Department of Defence Production sites, whose HTTPS connections fail outright; and the e-Gazette, unreachable on both of its hosts. In three of the four cases the material itself proved fully retrievable elsewhere — through the Press Information Bureau for ministry documents, and through the United Nations Treaty Series for a treaty that the Ministry's own portal serves only as an image. For the e-Gazette no alternate route was found.",
+        "claimAtLaunch": "No commitment is under test here. Every one of these sites is an official publication channel and is presented as the route by which the relevant documents are made public; that is the only claim involved, and it is implicit in their existence rather than announced.",
+        "whatHappened": "THE BLOCKAGE IS AT THE MINISTRY'S OWN WEBSITE, AND THE RECORD SURVIVES BECAUSE A DIFFERENT ARM REPUBLISHES IT. mea.gov.in returns HTTP 200 with 82,719 bytes on its press-releases path, of which 4,326 characters are navigation chrome carrying the string \"Loading...\" and no release text; the same failure was confirmed earlier on its media-briefings path. mod.gov.in and ddpmod.gov.in do not complete an HTTPS connection at all. egazette.gov.in and egazette.nic.in both fail to connect. Against this, the Press Information Bureau served a Ministry of Defence document of 1,994,703 bytes on request, and has carried Power, Home Affairs, Commerce and Prime Minister's Office material throughout this phase; and the Indus Waters Treaty — a 5MB image scan yielding 113 bytes of text on the Ministry's own legal-treaties portal — is a 215,794-character machine-readable document in the United Nations Treaty Series, where India registered it in 1962. ARCHIVING DOES NOT RESCUE A JAVASCRIPT SHELL. The Internet Archive's snapshot of the same Ministry page returns 4,326 characters, still carrying \"Loading...\" and still containing no release text: the crawler captured the scaffold, because the scaffold is what the server sends.",
+        "assessment": "no-objective",
+        "assessmentNote": "No target for the accessibility of the public record is announced by any of these bodies, so there is nothing that could have worked or failed. What this record establishes is a measurement precondition for everything else in the corpus: which official channels can be read, which cannot, and — the part that matters — that a failure to read a ministry's website is not evidence that its documents are unpublished. Recorded because the opposite inference was made three times in this phase and was wrong each time.",
+        "caseFor": "The public record is more robust than any single channel's failure suggests, and that is the honest headline. Every ministry document sought during this phase was obtained, because the Press Information Bureau republishes across ministries and does so as server-rendered pages an ordinary client can read; the redundancy is real and it worked. For treaties the redundancy extends outside the government entirely — registration with the United Nations produced a machine-readable text of a 1960 instrument that the responsible ministry serves only as an image, which is the international registration system doing exactly what it exists for. A ministry website being slow, broken or JavaScript-heavy is also an ordinary technical condition rather than a policy of concealment, and nothing here suggests otherwise.",
+        "caseAgainst": "A publication channel that cannot be read is not publishing, whatever it intends. Three of these are the designated route to their own material, and a citizen with a standard client gets HTTP 200 and an empty page from the Ministry of External Affairs — the failure mode that looks most like success and is hardest to distinguish from an absence. The redundancy that rescues the record is also incidental rather than designed: the Press Information Bureau carries what it carries, and a document no press release covers has no second route. The e-Gazette is the case that proves it, being both unreachable and unduplicated — it is the channel of legal record, and nothing else republishes it. And an archived copy of a JavaScript scaffold means the failure is being preserved rather than the document, so the loss is not merely current.",
+        "unmeasured": [
+            {
+                "what": "How much Ministry of External Affairs material has no Press Information Bureau equivalent",
+                "why": "The redundancy that rescued this phase is opportunistic. Establishing its coverage would require enumerating what the Ministry publishes, which is precisely what cannot be read from the blocked channel. The gap is unmeasurable from the outside for the same reason it matters.",
+                "wouldFill": "A server-rendered index or a machine-readable feed from the Ministry, either of which would make its output enumerable.",
+                "reasonKind": "not-published"
+            },
+            {
+                "what": "Whether these channels are readable from other networks, clients or jurisdictions",
+                "why": "Every test here ran from one location. A connection failure is a relationship between a client and a server, and this record states what one client observed rather than asserting a property of the servers. Two hosts were tried for the e-Gazette and for the arbitration site, and the Ministry site was tried on two paths, two dates and through the Internet Archive — but that is host variation, not network variation.",
+                "wouldFill": "The same requests from an independent network, or a public status or uptime record for the sites.",
+                "reasonKind": "not-collected"
+            }
+        ],
+        "caveat": "This record states what one client observed on 5 August 2026 and on the earlier dates noted in the verification log; it does not assert that these sites are unreachable in general, and the second unmeasured says so. The Permanent Court of Arbitration is deliberately excluded from the four: it returned HTTP 403 from both pca-cpa.org and pcacases.com and its Internet Archive snapshot resolves to the case index rather than the case, but it is not an Indian government publication channel and belongs to a different question. The 4,326-character figure is the normalised text remaining after markup is stripped, not the byte size served, and the two differ by more than an order of magnitude — which is the point: the byte size looks like a document and the text is not one.",
+        "sources": [
+            {
+                "name": "Retrieval observations, phase 14, recorded in docs/verification-log.md across cycles 2026-08-04 to 2026-08-05 — mea.gov.in press-releases and media-briefings paths returning HTTP 200 with a JavaScript scaffold; mod.gov.in and ddpmod.gov.in failing HTTPS; egazette.gov.in and egazette.nic.in failing to connect on both hosts; and the Internet Archive snapshot of the Ministry page reproducing the same scaffold",
+                "url": "https://www.mea.gov.in/press-releases.htm",
+                "tier": "T1"
+            },
+            {
+                "name": "United Nations Treaty Series, Volume 419, No. 6032 — the Indus Waters Treaty 1960 as registered by India on 16 January 1962, served as a machine-readable 215,794-character document, against the same instrument on the Ministry of External Affairs legal-treaties portal as an image scan yielding 113 bytes of extractable text",
+                "url": "https://treaties.un.org/doc/Publication/UNTS/Volume%20419/volume-419-I-6032-English.pdf",
+                "tier": "T1"
+            }
+        ],
+        "confidence": "high",
+        "asOf": "2026-08-05",
+        "revisitTrigger": "Re-test each channel at the start of any phase that depends on it — this record is a snapshot of a relationship between a client and four servers, and phase 14 found that two such findings had gone stale within months. The e-Gazette is the one to watch: it is the only channel here with no second route, and it is the channel of legal record."
     }
 ]

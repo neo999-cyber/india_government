@@ -8,6 +8,49 @@ B7 `60e4bde` the indigenisation metric and CAATSA's three states ·
 B8 `2d384b6` emergency procurement and Rafale-M ·
 B9 rule 5d, the append-only log rule, and the S-400 schedule.**
 
+## PHASE 14 CLOSED — 2026-08-05
+
+**35 records in `data/ledger/foreign-trade.json` (L-0184 to L-0218), plus two pairs and corrections
+to two shipped records (L-0018, L-0021). Corpus 660 records.**
+
+**Arcs that closed WITH records.**
+- **A** United States — tariffs and the currency claim.
+- **B** China — the trade mirror, P-119.
+- **C** neighbourhood — trade dimension (batch 3) and policy dimension (batch 13-14): Maldives
+  L-0206, Bhutan L-0207, the neighbours power table L-0208, Myanmar L-0209/L-0210, Bangladesh
+  L-0211, Sri Lanka L-0212.
+- **D** agreements — UK CETA L-0204, EU conclusion L-0205, RCEP via the L-0018 correction.
+- **E** procurement — closed at three of four files; indigenisation L-0198, CAATSA L-0199,
+  emergency procurement L-0200, Rafale L-0203, exports L-0196, the SIPRI category record L-0197.
+- **F** Russia — energy.
+- **G** multilateral — IMEC L-0213, WTO fisheries L-0214, Vaccine Maitri L-0215.
+- **Pakistan** — treaty abeyance L-0216, trade suspension L-0217.
+- **The instrument itself** — retrieval capability L-0218.
+
+**Arcs and subjects that closed WITH A DOCUMENTED NO-RECORD OUTCOME.** These are results, not gaps.
+- **G20 presidency deliverables** — the available line ("measured by throughput, not outcome")
+  rests on one promotional summary, whose brevity is evidence about the summary. Needs the
+  Declaration's commitments and a later report against them.
+- **UNSC advocacy** — zero retrieved primaries state it as a commitment with a trigger. That record
+  would have been about the search, not the world.
+- **Bangladesh, first pass** — Adani PPA dues hit stop condition 1; reopened later from the Power
+  side as L-0211.
+- **Sri Lanka, first pass** — MEA shell, Power empty; opened on the third route, PMO, as L-0212.
+- **WTO public stockholding** — carried inside L-0214's caveat rather than given a thin record.
+
+**What carries forward.**
+1. **Arc E's fourth file** — DAP domestic-content rules beyond the IC minimums.
+2. **The e-Gazette** — the one unreachable, unduplicated channel (item 7).
+3. **Godda** — zero across every document scanned in two cycles, and no absence claimed: the
+   measured series ends before the question becomes answerable. Needs a 2023-24 series or a company
+   primary.
+4. **Items 6, 8, 9, 10** below, unchanged.
+
+**Method the phase added, all in CLAUDE.md:** the fourth measurement category (mutually declined),
+commitment state (d) unfalsifiable-by-construction, the class-of-sources rule, context-before-count,
+the scan-path rule with `tools/scan-text.mjs`, boundary handling beside punctuation, the
+morphological-variant retry, the correction-guard rule, and 5d's gloss.
+
 ## Measurement categories established by this phase — use these, do not re-derive
 
 Three shapes, and a record must say which it is:
@@ -201,17 +244,33 @@ the claim names no baseline and none was found. *Depends on:* checking whether t
 release (PRID 2237451) or the underlying speech names a base year anywhere. **If one exists the claim
 becomes testable and the score changes** — this is a small, bounded, high-value check.
 
-### 7. The retrieval-capability cycle — wants its own scoping session
+### 7. The retrieval-capability cycle — RUN 2026-08-05. Output written as L-0218.
 
-*Why deferred:* it is not a slot at the end of a batch. Five distinct failure modes are attested:
-(1) Cloudflare gating — `pca-cpa.org`; (2) JS shells answering 200 with no document — `mea.gov.in`;
-(3) scans with no text layer — the Indus Waters Treaty PDF; (4) a resolving host refusing 443 —
-`mod.gov.in`, `ddpmod.gov.in`; (5) the carried Gazette task. A sixth, milder mode is already worked
-around: hosts needing an explicit resolver (pins in CLAUDE.md).
+**Every recorded blockage was re-tested by varying the host.** The five attested failure modes
+resolve as follows.
 
-**Its output is TWO things and the second is corpus material in its own right:** retrieval where
-possible, and a documented account of what the Indian government publishes that cannot be retrieved
-by ordinary means. The second is a finding about the publication regime, not a housekeeping note.
+| Mode | Host(s) | Re-test | Status |
+|---|---|---|---|
+| Scans with no text layer | IWT PDF on MEA legal-treaties | **treaties.un.org**, UNTS vol 419 No. 6032 | **SOLVED** — 215,794 chars, full text + annexures |
+| JS shell answering 200 | `mea.gov.in` (2 paths) | + Internet Archive snapshot | **UNREADABLE** — the archive captured the same scaffold |
+| Host refusing 443 | `mod.gov.in`, `ddpmod.gov.in` | + PIB, + Internet Archive | **HOST DEAD, MATERIAL FINE** — PIB served a 1,994,703-byte MoD document |
+| Gazette | `egazette.gov.in`, `egazette.nic.in` | both hosts | **UNREACHABLE, and unduplicated** |
+| Cloudflare gate | `pca-cpa.org`, `pcacases.com` | + Internet Archive | **BLOCKED** — archive resolves to the case index, not case 288. Not an Indian government channel |
+
+**THE FINDING, AND IT IS THE OPPOSITE OF WHAT THE QUEUE ASSUMED.** In three of the four Indian
+channels the DOCUMENTS are fully reachable; what is dead is the ministry's own website. The record
+survives because a different arm of the same government republishes it — PIB for ministry material,
+and the UN Treaty Series for treaties India registered. **A failure to read a ministry's site is
+not evidence that its documents are unpublished**, and that inference was drawn three times in this
+phase and was wrong each time.
+
+**The e-Gazette is the real gap:** unreachable and unduplicated, and it is the channel of legal
+record. It is the one item that carries forward.
+
+**Two general results worth reusing.** An archived JavaScript shell is still a shell — the crawler
+preserves the scaffold, because the scaffold is what the server sends, so archive.org does not
+rescue client-rendered pages. And `treaties.un.org` serves UNTS volumes as text-layer PDFs with no
+gate, which is the route for ANY treaty India has registered when the Indian host serves an image.
 
 ### 8. Rule 5c's corpus-wide sweep — belongs to the assessment audit
 
