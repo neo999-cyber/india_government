@@ -5,7 +5,7 @@
 One line per record so orientation does not require scanning `/data`. Format:
 `id · domain(s) {lenses} · title`. For the authoritative text, read the record.
 
-680 records — 225 ledger, 269 series, 126 provenance, 60 pairs.
+681 records — 225 ledger, 269 series, 127 provenance, 60 pairs.
 
 ## series (269)
 
@@ -533,7 +533,7 @@ L-0042 · human-development+welfare · Nutrition outcomes and the anaemia revers
 L-0043 · poverty+welfare · Multidimensional poverty exit claim
 ```
 
-## provenance (126)
+## provenance (127)
 
 ```
 # data/provenance.json
@@ -663,6 +663,7 @@ P-123 · environment+infrastructure · A 50-per-cent-of-CAPACITY target is publi
 P-124 · environment+infrastructure · SUBSTITUTION: India's NDC goals are cited to the Cabinet release, because the lodged instrument could not be r
 P-125 · environment · NCAP's target is a percentage reduction with no base year in the document that publishes it, and a ten-point r
 P-126 · environment · The generation series joins two CEA documents at FY2024-25 with no overlap year, so the join is unverified rat
+P-127 · environment · "Forest cover" counts orchards, bamboo and palm at 10 per cent canopy, and Tree Cover gained two new categorie
 ```
 
 ## pairs (60)

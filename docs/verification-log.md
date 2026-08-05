@@ -9349,3 +9349,100 @@ artefacts declared · `reachability` 1352/1352 marks on their own record page, 6
 `field-render-audit` 32 prose fields across 3 layers, 0 invisible (ledger 15/0, provenance 6/0,
 series 11/0) · `domain-coverage` 14/14 surfaces built, 14/14 linked, 1138/1138 references ·
 `validate:selftest` 23/23 validator rules fire on the broken fixtures, 2/2 output gates on theirs.
+
+## Cycle 2026-08-05an — batch 9: the reasonKind contradiction settled, and Arc C's definition established
+
+### The reasonKind settlement — and BATCH 2 WAS THE ERROR
+
+Two batches gave opposite readings of the same field and the operator was right that both cannot
+stand. **The schema settles it and neither batch had applied its test.** Verbatim: *"The STATED
+reason no figure exists — what the responsible body says, not what is true… **THE TEST IS WHETHER THE
+DATA EXISTS**"*, with `not-collected` = *"never gathered… if the holder were compelled tomorrow they
+would have nothing to produce"* and `not-published` = *"exists in a holder's hands, not released"*.
+
+**Batch 2's correction of L-0052 was wrong and made the entry worse.** It changed `not-published` to
+`not-collected` reasoning that the first asserts something about the world — a safety axis the schema
+does not contain. On the schema's own test, CEA had **gathered AND published** the datum, so
+`not-collected` is flatly false where `not-published` was merely superseded. **And the schema already
+provides the mechanism this case needs**, whose worked example is almost verbatim the situation: *"a
+body saying data was never maintained while another arm of the same government publishes some of
+it"* → set `reasonDisputed`. L-0052 now carries `not-published` + `reasonDisputed: true` +
+`disputeKind: evidentiary`, with the contradiction and the full three-step history in `why`.
+
+**Batch 8's axis was also wrong** — "the weaker candidate" is not the schema's test either — but only
+one of its four entries had the wrong kind. **L-0225's interim-milestone entry moved
+`not-published` → `not-collected`**: a milestone never announced is not a figure sitting unreleased;
+if the Ministry were compelled tomorrow it would have nothing to produce, because what is missing is
+a policy decision, not a measurement. The other three keep `not-published` on the data-existence test
+and their reasoning is restated in place.
+
+### L-0225's `too-early` — the distinction argued rather than assumed
+
+The objection was fair: an undefined scope defeats *"the evidence time accumulates"* by L-0224's own
+logic. **The answer is that the two records fail at different places, and it is now in the record.**
+L-0224's target LEVEL cannot be computed at all — a reduction against 'total projected' emissions has
+no value on any boundary, because a counterfactual is not observable. **L-0225's level IS specified,
+zero net, and only the BOUNDARY is unfixed**: the strategy reports 2016 emissions at 2,838 MtCO2e
+excluding LULUCF, so a reading exists today on one boundary and another exists including it. The
+ambiguity is about WHICH observable series counts, not whether any exists. So both of `too-early`'s
+assertions hold — **and the note now states what the value does NOT assert**: time alone is not
+sufficient, a boundary statement is also needed, and a reader must not take `too-early` to mean the
+record resolves itself by waiting.
+
+### Item 3, reported precisely: the defect was not present
+
+**L-0225's `revisitTrigger` was never 2070.** It already named two events and said in terms that a
+date revisit is not useful. The 2070 is the COMMITMENT trigger in the assessmentNote, which is
+correct — they are different things. **L-0224 carries commitment state (a) and assessment
+`contested`**, with an event-based trigger since its re-filing. *(My own check reported L-0224's
+trigger as event-free; the check was case-sensitive and the record says "PROJECTED". The detector was
+wrong, not the record.)*
+
+**A structural finding falls out and is logged, not fixed: there is no `state` field.** Commitment
+state (a)/(b)/(c)/(d) is a first-class category in CLAUDE.md — every commitment record "resolves into
+one" — and it exists ONLY in prose. Nothing derives it, nothing renders it as a mark, no gate can
+check that a commitment record states one. **That is the guard-scope class again.** A schema change
+is a stop, so it is recorded for decision.
+
+### ARC C OPENED — the definition, and only the definition
+
+**ISFR 2023 Volume 1**, 20,145,512 bytes, 670,500 characters, T1, reached by enumerating FSI's own
+report index. **P-127.** Forest cover is *"all lands, more than one hectare with a tree canopy
+density of more than or equal to 10% irrespective of ownership, legal status and land use. Such lands
+may not necessarily be a recorded forest area. **It also includes orchards, bamboo and palm**"*. Ten
+per cent canopy, any land use, orchards in, and explicitly severed from the legal category. **The
+same volume carries a second, shorter definition that drops the land-use clause and the
+orchards/bamboo/palm clause entirely** — two definitions of one term in one report, and the shorter
+one is the one a reader is likelier to meet.
+
+**ISFR 2023 also moved the base**, in changes it flags as firsts: trees of 5-10 cm included in Tree
+Cover and Growing Stock, and bamboo *"estimated for the first time and included in Tree cover"*. The
+headline 8,27,356.95 km2 / 25.17 per cent is **not like-for-like with ISFR 2021's**, and no
+restatement of 2021 on the new basis was retrieved.
+
+**HOST TRAP:** `fsi.gov.in` is the **FISHERY** Survey of India and answers 200 with a plausible index.
+The **FOREST** Survey of India is `fsi.nic.in`. One acronym, two organisations, and the wrong one is
+live.
+
+**NOT DONE and stated as such: the arc's actual subject.** No cover figure is scored, no trend
+stated, and **forest clearances — FCA diversion, the Van (Sanrakshan Evam Samvardhan) Adhiniyam 2023
+amendment, and CAMPA — are untouched.** The instruction was to establish the definition before
+touching any cover figure; that is the whole of what was done.
+
+### Phase 15's open items are now ONE list in STATE.md
+
+Because "one arc left" was false: Arc C · the Arc A remainder (grid absorption, curtailment, storage
+— dependencies already on disk, the cheapest outstanding work) · five `contested` records without
+notes · the 29-candidate seam-span triage · and the deployment-auth decision, which is the operator's
+and is outstanding. **A cold read must not be able to close the phase on Arc C alone.**
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 225 ledger · 269 series · 127 provenance · 60 pairs
+= 681 records, 1,759 points** · `no-bare-root` 0 new, 0 stale, 277 allowlisted from 277 frozen ·
+`no-unguarded-prose-field` 19 prose fields across ledger + provenance, 7 guarded / 12 exempted ·
+`figure-consistency` 15 declared claims, 15 checked against source and printed operands, 5 rounding
+artefacts declared · `reachability` 1354/1354 marks on their own record page, 661 pages scanned ·
+`field-render-audit` 32 prose fields across 3 layers, 0 invisible (ledger 15/0, provenance 6/0,
+series 11/0) · `domain-coverage` 14/14 surfaces built, 14/14 linked, 1139/1139 references ·
+`validate:selftest` 23/23 validator rules fire on the broken fixtures, 2/2 output gates on theirs.
