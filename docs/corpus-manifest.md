@@ -5,7 +5,7 @@
 One line per record so orientation does not require scanning `/data`. Format:
 `id · domain(s) {lenses} · title`. For the authoritative text, read the record.
 
-659 records — 217 ledger, 262 series, 120 provenance, 60 pairs.
+660 records — 218 ledger, 262 series, 120 provenance, 60 pairs.
 
 ## series (262)
 
@@ -281,7 +281,7 @@ ujjwala-refills · welfare · PMUY average annual LPG refills per beneficiary
 wheat-procurement · welfare · Wheat procurement
 ```
 
-## ledger (217)
+## ledger (218)
 
 ```
 # data/ledger/agriculture.json
@@ -416,6 +416,7 @@ L-0214 · foreign+environment · India joined the WTO fisheries agreement as the
 L-0215 · foreign+human-development · Vaccine Maitri is presented as a gift, and the doses the government names as gifted are 1.51 crore of a stated
 L-0216 · foreign+environment {neighbourhood} · The Indus Waters Treaty was put in abeyance on 23 April 2025, and the word abeyance appears nowhere in the tre
 L-0217 · foreign+macro {neighbourhood} · The trade suspended on 23 April 2025 was already one-directional and the two governments do not agree what it 
+L-0218 · governance+foreign · Four Indian government publication channels cannot be read by an ordinary client, and in every case but one th
 # data/ledger/infrastructure.json
 L-0044 · infrastructure · National highway construction programme
 L-0045 · infrastructure · Bharatmala Pariyojana
