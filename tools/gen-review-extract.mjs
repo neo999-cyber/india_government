@@ -124,9 +124,14 @@ const recs = ledger();
 
 const parts = [];
 parts.push('# Extract for external review\n');
+// Counted, never written by hand. The first version hard-coded "Thirty-four" and the sample later
+// grew to 38, so the document opened by misdescribing itself — and a reviewer who counts is
+// entitled to distrust everything after that.
+const N_RECORDS = sample.records.filter((s) => recs.has(s.id)).length;
+const N_NORECORD = sample.no_record_outcomes.length;
 parts.push(
-  'Thirty-four records from a longitudinal research corpus about Indian government policy, plus ' +
-    'three subjects the project examined and decided **not** to record. Presented for adversarial ' +
+  `${N_RECORDS} records from a longitudinal research corpus about Indian government policy, plus ` +
+    `${N_NORECORD} subjects the project examined and decided **not** to record. Presented for adversarial ` +
     'review: the question is what a reader objects to, in the reasoning, the sourcing, the framing, ' +
     'or the decision to record at all.\n',
 );
@@ -142,11 +147,20 @@ parts.push(
     'Scores are rendered as sentences rather than as the vocabulary the project files them under. ' +
     'The project’s own rulebook is deliberately **not** included: the point is what you object ' +
     'to without knowing what it considers acceptable.\n\n' +
-    '**Source tiers are kept**, because sourcing cannot be judged without them. They run T1 to T5: ' +
-    'T1 a primary document from the body responsible, T2 an international or statutory body’s ' +
-    'own publication, T3 a specialist or academic secondary source, T4 press or advocacy reporting ' +
-    'relayed rather than retrieved, T5 an index or composite score. A record’s claims are ' +
-    'expected to rest no higher than its best source supports.\n\n' +
+    '**Source tiers are kept**, because sourcing cannot be judged without them — but read the rule ' +
+    'before the ladder. The tier grades **the document actually held, not the institution the ' +
+    'subject belongs to**: a national auditor’s finding known only through a newspaper’s account of ' +
+    'it is T4, because the subject is official and the evidence is relayed. Grade what you hold, ' +
+    'not what it is about. On that rule: T1 an official Indian statistical or institutional source ' +
+    'retrieved directly — a ministry release, a central-bank or statistics-office publication, an ' +
+    'audit report, a parliamentary reply; T2 a multilateral or international statistical source ' +
+    'retrieved directly; T3 peer-reviewed research or a working paper; T4 journalism, NGO datasets, ' +
+    'and anything relayed rather than retrieved, including an official figure known only through a ' +
+    'press account; T5 a contested composite index.\n\n' +
+    'Two consequences a reviewer should hold the project to. A tier can move when the evidence ' +
+    'moves and not otherwise — a paper cited from a search summary sits at T4 and rises only when ' +
+    'the paper is opened. And a domestic statutory body is T1, not T2; T2 is for international ' +
+    'sources, so provenance and strength are not the same ladder.\n\n' +
     '**Caveats are kept in full.** They are where this corpus does most of its hedging, and a ' +
     'review that never saw them would be attacking something weaker than the real thing.\n',
 );
@@ -242,6 +256,18 @@ parts.push(
 );
 
 const body = parts.join('');
+
+// The declared total must equal the numbered headings actually emitted. A document that
+// misdescribes its own size invites a reviewer to discount everything else in it.
+const headings = (body.match(/^### \d+\. /gm) ?? []).length;
+if (headings !== N_RECORDS) {
+  console.error(`gen-review-extract FAILED — declares ${N_RECORDS} records but emitted ${headings} numbered headings`);
+  process.exit(1);
+}
+if (!body.startsWith(`# Extract for external review\n${N_RECORDS} records`)) {
+  console.error(`gen-review-extract FAILED — the opening line does not state ${N_RECORDS} records`);
+  process.exit(1);
+}
 writeFileSync(OUT, body);
 console.log(
   `review extract OK — ${n} records + ${sample.no_record_outcomes.length} no-record subjects, ` +
