@@ -8444,3 +8444,55 @@ paraphrased away — here "pellet quantity" — rather than the assertion around
 All corrected. The remaining occurrences in `/data` are corrected forms and correction notes naming
 what they supersede.
 
+## Cycle 2026-08-05ad — adversarial triage 3: 16 of 33 unjustified verdicts written
+
+Five file boundaries closed: employment, education, agriculture, macro-fiscal, banking. **Every one
+of the 16 verdicts survived unchanged** — none had to be narrowed or rescored. **Fifteen absences
+were entered**, thirteen of them on records that carried no `unmeasured` field at all.
+
+**WRITING THE NOTE IS WHAT FINDS THE UNSCORED OBJECTIVE, EXACTLY AS DEMONETISATION PREDICTED.** Six
+records announced an objective the record then never measures, and in every case the defect was
+invisible until the reasoning had to be written down:
+
+- **L-0016 Make in India** — the 100-million-jobs half of the target is measured NOWHERE. The
+  verdict rests on the share target alone, which is decisive on its own terms.
+- **L-0029 digital public infrastructure** — elimination of ghost and duplicate beneficiaries was one
+  of three announced objectives and is measured nowhere, and neither is its cost in exclusion.
+  `worked` is now explicitly not a finding that the system excluded nobody.
+- **L-0093 UDISE+** — savings to government from precise beneficiary identification, announced and
+  unscored.
+- **L-0026 recapitalisation** — consolidation, the second half of the objective, is not established;
+  `worked` is asserted on recapitalisation alone.
+- **L-0017 PLI** — import substitution, announced and unmeasured.
+- **L-0012 GST** — revenue buoyancy, which the case against calls never clearly met while carrying no
+  figure.
+
+**THE VERDICTS THAT NEEDED THEIR GROUND NARROWED RATHER THAN CHANGED.** L-0023: `worked` on
+recognition, which is what was promised, and NOT on the consequences — a measure whose object is to
+reveal a number succeeds when the number is revealed, and the growth-deceleration cost is argued and
+unmeasured. L-0014: `worked` on the framework holding and being renewed, NOT on attribution, since
+the share of disinflation handed over by the 2014-16 oil collapse is undecomposable. L-0066: the
+corpus's only `reversed` scores the FATE of the instrument, not its merits, which could never be
+scored because the laws were stayed within four months and the quantity they targeted was never
+observed. L-0067: `failed` on the trajectory, because the terminal year was never measured — the
+survey was discontinued.
+
+**One benchmark dispute left open on purpose.** L-0024's realisation is 167 per cent of liquidation
+value and a 67 per cent haircut on admitted claims. Both are computed from published figures; which
+is the fair denominator is a judgement, and the verdict does not depend on choosing.
+
+**TWO METHOD FAILURES, BOTH MINE, BOTH CAUGHT.** Reading L-0072 I printed its absences with
+`r.get('unmeasured') or []`, which renders an ABSENT field and an EMPTY one identically — the field
+did not exist, and the anchored edit's assertion aborted rather than writing to a field it had
+invented. And the banking commit **ran despite the build printing INVALID**, because I separated the
+build from the git commands with `;` rather than `&&`: the gate had correctly refused a
+`not-published` absence naming no route. That is the rule written in correction cycle 9 — run the
+edit and its verification as one chained operation — violated by its author four cycles later, and
+fixed in the following commit.
+
+**Warnings moved 153 → 159**, which is the audit working: every new absence is an open research item
+by construction.
+
+**QUEUED, NOT STARTED: 17 remain** — welfare (7) and infrastructure (10). Both files are untouched
+and the work is identical in shape.
+
