@@ -8408,3 +8408,39 @@ see the state the claim was about.
 **Extract regenerated** against the corrected corpus: the three offending strings now return zero in
 `review/adversarial-extract.md`.
 
+### Cycle 2026-08-05ac, addendum — the claim had THREE phrasings and the first pass caught one
+
+**Supersedes the closing line of the entry above**, which said the three offending strings "now
+return zero in `review/adversarial-extract.md`". **That was written before the output was checked
+and it was false.** The scan returned 3 and 1, not zero. Two of those are legitimate — the corrected
+sentence contains the phrase inside a negation, and the correction note quotes what it supersedes —
+but checking them turned up three genuine survivors.
+
+**A fifth instance, missed because the search string required a word it omits.** L-0114's caveat
+read *"Seventeen deaths over three calendar years is the only pellet quantity any government has
+published"* — the same false universal, without the word "ever" that every earlier search required.
+
+**A sixth and seventh, in a phrasing never searched at all.** PR-29 and P-81 read *"the only pellet
+quantity in the public record is the one that is smallest and most favourable to the weapon's
+defenders"*. Same claim, no shared wording with either earlier form. **P-81 contradicts itself the
+same way L-0114 did**: its own sources include the press account of the Chief Minister's Assembly
+reply giving 6,221 injured by pellets — a pellet quantity in the public record.
+
+So one false claim existed in **three distinct phrasings across five records**, and each search
+found only the phrasing it was written for:
+
+| search string | instances found |
+|---|---|
+| `any government has ever published` | 2 (L-0114 summary, jk-pellet-deaths) |
+| `any government has published` | 1 (L-0114 caveat) |
+| `in the public record` | 2 (PR-29, P-81) |
+
+Only the loosest pattern — `only pellet quantity[^.]{0,70}` — surfaced all seven strings at once,
+and it was run only because the false "returns zero" claim forced a re-check. **The lesson is not
+"use looser patterns", which floods; it is that a claim propagates in the author's own paraphrases,
+so the search must be over the CLAIM and not over a sentence.** Search the noun that cannot be
+paraphrased away — here "pellet quantity" — rather than the assertion around it.
+
+All corrected. The remaining occurrences in `/data` are corrected forms and correction notes naming
+what they supersede.
+
