@@ -8116,3 +8116,48 @@ boundary-only scan.
 **Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 278 allowlisted;
 url-check 1/1; selftest exit 0; diffs 2/2, 2/2 and 4/4.
 
+## Cycle 2026-08-05y — correction cycle 9: no citations closed, and the reason is a different barrier
+
+**Allowlist unchanged at 278. Zero citations deep-linked.** Four targets attempted, all four blocked,
+and the pattern across them is the cycle's actual result.
+
+**THE BARRIER CLASS HAS CHANGED.** Cycles 5-8 broke through a DNS/resolver barrier: hosts that
+looked dead answered once pinned, and five citations, then four more, followed. Every target
+attempted this cycle is blocked by something else — **client-side rendering and CAPTCHA** — which no
+resolver pin touches.
+
+- **CIC** (L-0122, P-82, one shared document). `cic.gov.in` serves, and `/decision` serves, but the
+  decision index is a **Google Custom Search Engine that runs only under JavaScript**: the page's own
+  words are "View the results at Google, or enable JavaScript to view them here", and the only form
+  fields are `cx` and `q`. Worse for this pair, the citations carry **no case number and no appellant
+  name** — only "the CIC final order of 5 June 2020" — so the order is not addressable even by a
+  working search. Two distinct blockers, and the second is a property of the citation rather than the
+  host.
+- **IFF** (L-0137). `internetfreedom.in` serves 108 KB, but `?s=` does not filter through this
+  route: the result page is the general recent-post listing, and `Jammu` returns **zero** on it. The
+  specific post URL would be needed.
+- **DoT** (P-96). `www.dot.gov.in` returns HTTP 200 and **2,325 bytes of Next.js scaffold — zero
+  characters of text after stripping**. A JavaScript shell, the same failure mode as `mea.gov.in`.
+  Noted because P-96's citation says the licence annexures were "Retrieved directly and read"; that
+  reading stands as recorded, but the host as it serves today would not support re-verification.
+- **ecourts** (L-0116) was already recorded as CAPTCHA-gated in cycle 8 and was not re-probed.
+
+**This is worth more than a citation would have been.** The retrieval-capability picture now has two
+separable classes: a resolver class, which this machine's pins solve, and a **client-rendering
+class**, which they do not. L-0218 recorded MEA as the type case of the second; CIC, DoT and ecourts
+join it, and the e-Gazette left it in cycle 6. Nothing in the remaining allowlist should be estimated
+by host reachability alone.
+
+**A shell-command lesson, small and real.** Scanning "the biggest file" after two fetches picked the
+**404 page**, because CIC's error page is larger than its content page. `ls -S` is not a proxy for
+relevance; the scan was redone against the file by name.
+
+**Two rules written, both from cycle 8's own failures.** Bound a search by the record and never by a
+character count — a fixed-size window over variable-length records finds the anchor on short records
+and misses it on long ones with no sign which happened. And run record edits and allowlist deletions
+as one chained operation, because two writes that must agree are one operation and shell newlines do
+not enforce that.
+
+**Gates.** build VALID (0 errors, 151 warnings); no-bare-root OK — 0 new, 0 stale, 278 allowlisted;
+selftest exit 0. `git diff --numstat -- data/` returns nothing: no record was touched this cycle.
+

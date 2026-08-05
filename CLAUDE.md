@@ -123,6 +123,19 @@ exactly as substring matching produces false positives.** The default stays wher
 negative costs a missed candidate, a false positive costs a fabricated finding — and the retry is
 what makes the safe default affordable.
 
+**Bound a search by the record, never by a character count.** `t[i:i+9000]` from a record's id
+missed L-0110's SATP source because the record is longer than the window. A fixed-size window over
+variable-length records is a silent-miss generator: it finds the anchor on short records, misses it
+on long ones, and gives no sign which happened. Bound the span from the record's id to the next id.
+That failure was loud only because the code asserted instead of skipping — write anchors that abort,
+never anchors that shrug.
+
+**Run record edits and their allowlist deletions as ONE chained operation.** Cycle 8 ran them as
+newline-separated commands; the edit aborted and the deletion ran anyway, leaving `/data` holding
+four bare roots the allowlist had already dropped. Only the ratchet's new-direction check caught it.
+Two writes that must agree are one operation, and shell newlines do not enforce that — `&&` or a
+single script does.
+
 **A tier moves only when the EVIDENCE moved, and the merge asserts which direction.** Not "never
 move a tier" — move it when the stated reason for the tier no longer holds, and prove which case you
 are in before writing. P-80 moved T4 to T3 because its stated reason, "the paper itself was not
