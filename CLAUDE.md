@@ -136,6 +136,21 @@ four bare roots the allowlist had already dropped. Only the ratchet's new-direct
 Two writes that must agree are one operation, and shell newlines do not enforce that — `&&` or a
 single script does.
 
+**Search the NOUN that cannot be paraphrased away, not the assertion around it.** One false claim —
+that a single figure was the only pellet quantity any government had published — existed in three
+phrasings across five records, and each search found only the phrasing it was written for:
+`any government has ever published` found two, `any government has published` found a third,
+`in the public record` found two more. Only `only pellet quantity` surfaced all of them. A claim
+propagates in the author's own paraphrases, and the assertion is what gets rewritten while the
+subject noun survives. Search the subject.
+
+**When verifying a claim about state you have just modified, verify against the state as it was when
+the claim was made.** A check of whether every record from L-0001 to L-0024 lacked an
+`assessmentNote` returned FALSE, and was one step from being written up as a correction — it returned
+false because one of those records had been filled twenty minutes earlier, by the same session. The
+control was measuring its own edit. Same shape as `url-check` reporting "0 to check" after the push
+it was meant to check. Re-read the claim's own timestamp before trusting a re-run.
+
 **A tier moves only when the EVIDENCE moved, and the merge asserts which direction.** Not "never
 move a tier" — move it when the stated reason for the tier no longer holds, and prove which case you
 are in before writing. P-80 moved T4 to T3 because its stated reason, "the paper itself was not
