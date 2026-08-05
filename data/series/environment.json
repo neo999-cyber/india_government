@@ -90,6 +90,13 @@
    },
    {
     "country": "IND",
+    "period": "FY2024-25",
+    "value": 36.84,
+    "status": "verified",
+    "note": "At 31.03.2025: RES 172,368.17 MW over 467,885.96 MW. The report's own breakup sums to the column — small hydro 5,100.55 + wind 50,037.82 + BM 10,743.11 + waste-to-energy 840.21 + solar 105,646.49."
+   },
+   {
+    "country": "IND",
     "period": "FY2025-26",
     "value": 41.91,
     "status": "verified",
@@ -99,7 +106,7 @@
   "provenanceRefs": [
    "P-121"
   ],
-  "notes": "NUMERATOR is CEA's 'RES' column, which on this table EXCLUDES large hydro — the table's own footnote reads 'RES : Renewable Energy Sources. Includes Solar, Small Hydro Projects, Wind, Bio Power Baggasse, Bio Power-Waste to Energy'. Other current CEA and MNRE publications use 'RES' to INCLUDE large hydro and produce a materially higher share; see P-121. Direction of merit is left unset deliberately: a share of installed CAPACITY is the metric every Indian renewable target is written in, and it is not by itself a measure of how much electricity was decarbonised — the companion series res-generation-share is. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried."
+  "notes": "NUMERATOR is CEA's 'RES' column, which on this table EXCLUDES large hydro — the table's own footnote reads 'RES : Renewable Energy Sources. Includes Solar, Small Hydro Projects, Wind, Bio Power Baggasse, Bio Power-Waste to Energy'. Other current CEA and MNRE publications use 'RES' to INCLUDE large hydro and produce a materially higher share; see P-121. Direction of merit is left unset deliberately: a share of installed CAPACITY is the metric every Indian renewable target is written in, and it is not by itself a measure of how much electricity was decarbonised — the companion series res-generation-share is. THE FY2024-25 CAPACITY POINT WAS RECOVERED 2026-08-05 from the National Power Portal's dated archive, `npp.gov.in/public-reports/cea/monthly/installcap/2025/MAR/capacity1-2025-03.pdf`. A previous batch recorded this year as a hole on the ground that no stock was published 'at any guessable URL' — which was true and was not a search. CEA's own index pages carry only the current month, but NPP mirrors the same CEA report under a month-stamped path, and the two agree: at 31.03.2026 NPP prints a total of 532,739.72 MW against the Executive Summary's 532,739.68, and an identical non-fossil 283,468.09. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried."
  },
  {
   "id": "res-generation-share",
@@ -309,6 +316,13 @@
    },
    {
     "country": "IND",
+    "period": "FY2024-25",
+    "value": 48.77,
+    "status": "verified",
+    "note": "At 31.03.2025: hydro 47,728.16 + RES 172,368.17 + nuclear 8,080 = 228,176.33 MW over 467,885.96 MW. This report's RES column EXCLUDES hydro, unlike the Executive Summary's, so hydro is added rather than assumed in."
+   },
+   {
+    "country": "IND",
     "period": "FY2025-26",
     "value": 53.21,
     "status": "verified",
@@ -318,7 +332,7 @@
   "provenanceRefs": [
    "P-121"
   ],
-  "notes": "This is the quantity India's NDC goal 4 is written in — 'about 50 percent cumulative electric power installed capacity from non-fossil fuel-based energy resources by 2030' — and the quantity the July 2025 'five years early' claim measures. It is DEFINITION-INDEPENDENT with respect to the large-hydro reclassification (P-121): large hydro is non-fossil on either side of that decision, so moving it between 'conventional' and 'renewable' does not change this series. That is why it, and not the RES share, is the sound basis for comparison against generation. Direction of merit unset for the same reason as res-capacity-share. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried."
+  "notes": "This is the quantity India's NDC goal 4 is written in — 'about 50 percent cumulative electric power installed capacity from non-fossil fuel-based energy resources by 2030' — and the quantity the July 2025 'five years early' claim measures. It is DEFINITION-INDEPENDENT with respect to the large-hydro reclassification (P-121): large hydro is non-fossil on either side of that decision, so moving it between 'conventional' and 'renewable' does not change this series. That is why it, and not the RES share, is the sound basis for comparison against generation. Direction of merit unset for the same reason as res-capacity-share. THE FY2024-25 CAPACITY POINT WAS RECOVERED 2026-08-05 from the National Power Portal's dated archive, `npp.gov.in/public-reports/cea/monthly/installcap/2025/MAR/capacity1-2025-03.pdf`. A previous batch recorded this year as a hole on the ground that no stock was published 'at any guessable URL' — which was true and was not a search. CEA's own index pages carry only the current month, but NPP mirrors the same CEA report under a month-stamped path, and the two agree: at 31.03.2026 NPP prints a total of 532,739.72 MW against the Executive Summary's 532,739.68, and an identical non-fossil 283,468.09. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried."
  },
  {
   "id": "non-fossil-generation-share",

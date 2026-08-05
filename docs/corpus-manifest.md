@@ -5,7 +5,7 @@
 One line per record so orientation does not require scanning `/data`. Format:
 `id · domain(s) {lenses} · title`. For the authoritative text, read the record.
 
-675 records — 222 ledger, 269 series, 124 provenance, 60 pairs.
+676 records — 222 ledger, 269 series, 125 provenance, 60 pairs.
 
 ## series (269)
 
@@ -530,7 +530,7 @@ L-0042 · human-development+welfare · Nutrition outcomes and the anaemia revers
 L-0043 · poverty+welfare · Multidimensional poverty exit claim
 ```
 
-## provenance (124)
+## provenance (125)
 
 ```
 # data/provenance.json
@@ -658,6 +658,7 @@ P-121 · environment+infrastructure · "Renewable" has at least four concurrent 
 P-122 · environment+infrastructure · Renewable generation was imputed, not metered, up to FY2013-14 — the basis changes at the instrument's own bas
 P-123 · environment+infrastructure · A 50-per-cent-of-CAPACITY target is published as a COP26 goal; COP26's 50 per cent limb was 50 per cent of ENE
 P-124 · environment+infrastructure · SUBSTITUTION: India's NDC goals are cited to the Cabinet release, because the lodged instrument could not be r
+P-125 · environment · NCAP's target is a percentage reduction with no base year in the document that publishes it, and a ten-point r
 ```
 
 ## pairs (60)

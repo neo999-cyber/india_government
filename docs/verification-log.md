@@ -8932,3 +8932,88 @@ claims, 4 declared rounding artefacts · `reachability` 1336/1336 over 655 pages
 32 fields over 3 layers, 0 invisible · `domain-coverage` 14/14 surfaces, 1132/1132 references ·
 `validate:selftest` 23/23 validator rules, 2/2 output gates · `seam-span-report` 117 spans, 29
 undeclared, report-only.
+
+## Cycle 2026-08-05ai — batch 4: the widening as a number, a hole that was a search failure, and Arc B's target retrieved
+
+### Head items
+
+**1. The widening is now stated as a NUMBER, not only as endpoints.** On one construction
+throughout: 10.98 points at FY2014-15, 21.46 at FY2023-24, 23.52 at FY2024-25, 24.24 at FY2025-26 —
+**a widening of 13.26 points over the full window**, and **10.47 over the window that sits inside a
+single document** (FY2014-15 to FY2023-24, CEA General Review alone). Batch 1 stated **11.77** for
+that quantity by starting at FY2013-14, on the imputed side of P-122's seam, **so the seam alone was
+inflating the widening by 1.29 points — flag (e)'s prediction confirmed as a measured figure.** The
+brief's 10.48 is the printed-operand subtraction; `figure-consistency` caught that the unrounded
+gaps give **10.47**, and the record prints 10.47 and names the artefact.
+
+**2. THE FY2024-25 CAPACITY HOLE WAS A SEARCH FAILURE, NOT AN ABSENCE — AND IT IS NOW FILLED.**
+The previous batch justified the hole with "not published at any guessable URL", which was true and
+was not a search. Enumerating CEA's index pages confirms they carry only the current month. But the
+**National Power Portal mirrors the same CEA report under a month-stamped archive**, and the path
+convention was read off a live page rather than guessed:
+`npp.gov.in/public-reports/cea/monthly/installcap/2025/MAR/capacity1-2025-03.pdf` returns the stock
+as on 31/03/2025 — thermal 239,709.63, hydro 47,728.16, RES 172,368.17, nuclear 8,080, total
+467,885.96, and the columns sum to the printed total exactly. **Non-fossil 48.77 per cent, RES 36.84
+per cent, both entered.** Cross-checked at the other end: NPP's 31.03.2026 total is 532,739.72
+against the Executive Summary's 532,739.68 — 0.04 MW apart, with an identical non-fossil 283,468.09,
+**so the document join in the series is validated rather than assumed.** This is the third time this
+phase that "not published" turned out to mean "not searched".
+
+**3. Arc B restated as BLOCKED with the cause named** — the NCAP portal is client-rendered and this
+environment has no rendering client. A cold read must not take zero records for a completed arc.
+
+**4. The 30-of-38 and 8-of-38 figures were never in tension: they are ONE partition described from
+both sides, and 30 + 8 = 38.** Reviewers saw actual reasoning on 30 of the 38 sampled records and a
+scored verdict with none on 8. Cycle ah presented these as competing quantities, which was wrong.
+**Item 8's conclusion stands on the 30: coverage was substantive, not vacuous.** The 8 are named:
+L-0011, L-0018, L-0023, L-0025, L-0059, L-0066, L-0068, L-0076 — and **five still carry no note
+today, all five `contested`**, which is the abstention class already queued.
+
+**37 against 33 is now DECOMPOSED and the log's 33 is exactly right.** Of 37 records gaining an
+`assessmentNote` after the extract's commit: **33 open with "Written"** — the unjustified verdicts;
+**3 are this phase's own new records** (L-0221, L-0222 and one other); **1 opens with "CORRECTED"**
+(L-0011, a triage-2 correction). 33 + 3 + 1 = 37. My 37 was over-broad; the log was not wrong.
+
+**5. The negative-control rule is in CLAUDE.md.** A negative control asserts against a string read
+from `/data` at the time of writing, in the context it appears in — never a needle typed from an idea
+of the record, and never a bare "this token must be absent", which fails on a correctly corrected
+record. Both failures that earned it are named in the rule.
+
+### ARC B — the target is retrieved, the outturn is not
+
+**Route 1 exhausted and the capability confirmed absent:** Playwright returns `ERR_NAME_NOT_RESOLVED`
+against PRANA — it inherits the broken system resolver — and the in-app browser denied the
+navigation. **Two rendering clients, both fail: tested, not assumed.** **Route 2 is not a
+URL-addressable route:** PIB's `Allrel.aspx` serves real content but filtering needs an ASP.NET
+postback, not a query string.
+
+**Route 3 landed.** MoEFCC's `/annual-report` index lists 26 PDFs — found by enumeration. **Annual
+Report 2020-21**, 11,387,012 bytes, 961,735 characters, T1:
+
+> "The program is designed to support the government's target of 20-30% reduction of particulate
+> matter concentration by 2024."
+
+**Written as P-125, and it is about the target's CONSTRUCTION, not its outcome.** Three properties,
+all read off the sentence: it names **no base year** — 0 hits for "base year" across the whole report
+against positive controls of NCAP=8 in the same file and form; it is a **ten-point range**, so 25 per
+cent both satisfies and misses it; and it says "particulate matter" without saying **PM10 or PM2.5**,
+which are different series with different standards. NCAP is also "designed to SUPPORT the
+government's target" — programme and objective are two things in the Ministry's own wording.
+
+**P-125 does NOT say NCAP has no base year. It says the retrieved document states none**, which is
+the only claim the retrieval supports. **No outturn figure was retrieved and none was written** — the
+city-level particulate series are behind the blocked portal, and the reported revision to 40 per cent
+by 2025-26 is NOT retrieved and NOT asserted.
+
+**Extraction note worth reusing:** the annual report is a TWO-COLUMN PDF and `pdftotext -layout`
+interleaves the columns into unreadable prose. Without `-layout` it reflows correctly. **A layout
+flag chosen for tables silently corrupts running text**, and the target sentence is legible only in
+the second form.
+
+### Gates
+
+`validate` 0 errors over 678 records · `typecheck` clean · `no-bare-root` 0 new / 0 stale over 277
+allowlisted · `no-unguarded-prose-field` 19 fields (7 guarded, 12 exempted) · `figure-consistency`
+14 claims, 5 declared rounding artefacts · `reachability` over every guarded mark on 656 pages ·
+`field-render-audit` 32 fields over 3 layers · `domain-coverage` 14/14 surfaces ·
+`validate:selftest` 23/23 validator rules, 2/2 output gates · `seam-span-report` report-only.

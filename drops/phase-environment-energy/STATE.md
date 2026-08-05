@@ -365,9 +365,16 @@ roughly 8 of their 38, and the corpus-wide figure was established by the AUDIT, 
 done** — 37 is what was measured, 33 is what the log claims, and they are not asserted to be the same
 set.
 
-## ARC B — AIR QUALITY: CLOSED WITH A DOCUMENTED NO-RECORD OUTCOME, 2026-08-05
+## ARC B — AIR QUALITY: **PARTLY OPEN**. One provenance record; OUTTURN still blocked. 2026-08-05
 
-**No record written, and that is the result rather than a gap.** No announcing primary for the
+**BLOCKED — read this before treating Arc B as done.** Zero records were written and the routes are
+OPEN, not exhausted. **The blocking cause is named: the NCAP portal `prana.cpcb.gov.in` is
+CLIENT-RENDERED and this environment has no rendering client**, so the designated channel returns
+HTTP 200 and no document. That is a capability gap on this machine, not a property of the programme
+and not a finding about publication. A cold read must not take the absence of records for a
+completed arc: nothing here has been decided about air quality.
+
+**No record written, and writing one from recall would have been the hard stop.** No announcing primary for the
 National Clean Air Programme was retrieved in this run, so nothing about its target is assertable.
 **The figures that would have gone into such a record — a 20-30 per cent reduction by 2024 against a
 2017 base, revised to 40 per cent by 2025-26 — are widely circulated and easy to recall, which is
@@ -416,3 +423,48 @@ city set — and the programme is reported to have been revised once, which if t
 with two horizons and possibly two bases. Expect the phase-15 pattern to repeat: **a revision that
 moves the goalposts and a headline quoted on whichever basis is kinder.** Establish the base year
 from the announcing primary before touching any outturn figure.
+
+
+### ARC B REOPENED THE SAME DAY — route 1 dead, route 3 landed a primary
+
+**Route 1 (rendering client against PRANA) is EXHAUSTED and the capability is confirmed absent.**
+Playwright returns `ERR_NAME_NOT_RESOLVED` — it inherits the broken system resolver, so M1 mode 3
+remains unavailable exactly as recorded on 2026-08-04. The in-app browser denied the navigation.
+**Two rendering clients, both fail: this is now tested rather than assumed.**
+
+**Route 2 (PIB by its own search) is NOT a URL-addressable route.** `Allrel.aspx` returns real
+content but is an ASP.NET postback form; ministry-and-date filtering needs viewstate, not a query
+string. Recorded so the next cycle does not spend the attempt.
+
+**Route 3 LANDED.** MoEFCC's `/annual-report` page lists 26 report PDFs — a real index, found by
+enumeration rather than by guessing a path. **Annual Report 2020-21** (11,387,012 bytes, 961,735
+characters of text, T1) carries NCAP. Written up as **P-125**. Verbatim:
+> "The program is designed to support the government's target of 20-30% reduction of particulate
+> matter concentration by 2024."
+> "…122 non-attainment cities which were identified by CPCB based on air quality levels exceeding
+> National Ambient Air Quality Standards (NAAQS) from 2014-2018."
+
+**Extraction note that matters for reuse:** this is a TWO-COLUMN PDF and `pdftotext -layout`
+interleaves the columns into unreadable prose. `pdftotext` WITHOUT `-layout` reflows it correctly.
+The target sentence is only legible in the second form — a layout flag chosen for tables silently
+corrupts running text.
+
+**What P-125 establishes, and it is the shape STATE.md predicted before the document was opened:**
+the target names no base year (0 hits for "base year" across the whole report, against positive
+controls of NCAP=8 in the same file and form), is a ten-point RANGE, and says "particulate matter"
+without saying PM10 or PM2.5. NCAP is also described as "designed to SUPPORT the government's
+target", so programme and objective are two things in the Ministry's own wording.
+
+### STILL BLOCKED, and this is what the next cycle must not skip
+
+1. **The base year.** P-125 says only that the RETRIEVED DOCUMENT states none. **Establish it from
+   the NCAP document itself before any outturn figure is touched.** If a base year exists, P-125's
+   scope narrows to the annual report; if none exists anywhere, the target is unscoreable by
+   construction and that is a much larger finding.
+2. **All outturn data.** The city-level particulate series live behind `prana.cpcb.gov.in`, which
+   needs the rendering client this environment does not have. **No PM figure has been retrieved and
+   none may be written from recall.**
+3. **The revision.** The target is reported elsewhere to have been revised to 40 per cent by 2025-26.
+   NOT retrieved and NOT asserted. If it exists it means two targets, two horizons and possibly two
+   bases — the phase-15 pattern of a revision that moves the goalposts, and the reason to get the
+   base year first.
