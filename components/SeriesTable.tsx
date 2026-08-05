@@ -169,6 +169,16 @@ export function SeriesTable({
                     return (
                       <td key={c} className="num">
                         {point ? <Value point={point} denominator={series.denominator} /> : <span className="t-note">—</span>}
+                        {/* The panel layout is country-per-column and had NO note cell at all —
+                            not a header, not a td — so `points[].note` was unrenderable on any
+                            peer series by construction. Six notes on the two sides of PR-18 were
+                            invisible, including the one carrying India's global maximum and its
+                            707-day span. The single-country branch below has always had a Note
+                            column; the panel branch simply never grew one, and no gate could see
+                            the difference because `reachability` does not guard `points[].note`.
+                            Rendered inside the cell rather than as a column, because a per-country
+                            note column would multiply the table width by the size of the panel. */}
+                        {point?.note ? <span className="t-note"> · {point.note}</span> : null}
                       </td>
                     );
                   })

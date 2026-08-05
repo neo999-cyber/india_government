@@ -24,7 +24,8 @@
     },
     "title": {
       "type": "string",
-      "minLength": 6
+      "minLength": 6,
+      "description": "The record's headline. NOT A GUARDED MARK: it is the page's <h1>, not a mark a competing view could delegate away — if it fails to render there is no page. Covered observationally by tools/field-render-audit.mjs."
     },
     "date": {
       "type": "string",
@@ -96,14 +97,16 @@
     },
     "summary": {
       "type": "string",
-      "minLength": 40
+      "minLength": 40,
+      "description": "What the record says, in one or two sentences. NOT A GUARDED MARK: body copy of the record's own page, with no competing view to delegate it to. Covered observationally by tools/field-render-audit.mjs. Distinct from `caveat`, which qualifies this and IS guarded, because a qualification is exactly what a dense view drops first."
     },
     "claimAtLaunch": {
       "type": "string",
-      "description": "What the government said this would achieve, where applicable"
+      "description": "What the government said this would achieve, where applicable. NOT A GUARDED MARK: body copy rendered unconditionally in the record's own definition list. Covered observationally by tools/field-render-audit.mjs."
     },
     "whatHappened": {
-      "type": "string"
+      "type": "string",
+      "description": "What actually happened, on the evidence retrieved. NOT A GUARDED MARK: body copy rendered unconditionally in the record's own definition list. Covered observationally by tools/field-render-audit.mjs."
     },
     "assessment": {
       "enum": [
@@ -121,15 +124,15 @@
     },
     "caseFor": {
       "type": "string",
-      "description": "Strongest good-faith case in favour"
+      "description": "Strongest good-faith case in favour. NOT A GUARDED MARK: body copy, and it is structurally inseparable from the verdict — the schema already REQUIRES it on every scored record, so a missing case is a validation failure rather than a rendering one. Covered observationally by tools/field-render-audit.mjs."
     },
     "caseAgainst": {
       "type": "string",
-      "description": "Strongest good-faith case against"
+      "description": "Strongest good-faith case against. NOT A GUARDED MARK: same reasoning as caseFor: required by the schema on every scored record, so its absence is caught before rendering is reached. Covered observationally by tools/field-render-audit.mjs."
     },
     "shockExposure": {
       "type": "string",
-      "description": "Which external shocks confound assessment of this record, if any"
+      "description": "Which external shocks confound assessment of this record, if any. NOT A GUARDED MARK: body copy in the record's own definition list. Covered observationally by tools/field-render-audit.mjs."
     },
     "seriesRefs": {
       "type": "array",
@@ -177,7 +180,8 @@
             "description": "Evidence grade of the DOCUMENT ACTUALLY RETRIEVED, not of the institution the subject belongs to. This is the operative rule and the one that goes wrong: a CAG finding known only through a newspaper's account of an RTI reply is T4, because the subject is official but the evidence is relayed. Grade what you hold, not what it is about.\n- T1: official Indian statistical or institutional source, retrieved directly - a ministry release, an RBI, MoSPI or NCRB publication, a CAG report, a Parliamentary reply.\n- T2: multilateral or international statistical source, retrieved directly - World Bank, IMF, ILO, WHO.\n- T3: peer-reviewed research or a working paper.\n- T4: reported or documentary journalism, NGO datasets, and anything RELAYED rather than retrieved - including an official figure known only through a press account, and an RTI reply cited but not obtained.\n- T5: contested composite index. Always carries a dispute record covering its own domain (CLAUDE.md rule 6).\nNote that tier is asserted in exactly one place per layer: on the series itself, or on each entry of a ledger or provenance `sources[]`. A series `source` is a SourceRef and carries NO tier - the object is closed, so a tier inside it is rejected rather than silently ignored."
           }
         }
-      }
+      },
+      "description": "Where every figure in this record comes from. NOT A GUARDED MARK: the source list is structural and is separately gated by url-check (every URL resolves) and no-bare-root (no citation may be a bare domain), which are stronger assertions than reachability makes. Covered observationally by tools/field-render-audit.mjs."
     },
     "confidence": {
       "enum": [
