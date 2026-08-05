@@ -2059,3 +2059,32 @@ gap · `commitmentState` · the `contested` split · the render assertion for no
 `disputeKind` as its worked instance · the 29-candidate seam-span triage · Arc B's rendering
 capability. **And the deferred verification plan — the adversarial model pass was specified as due
 "after phase 15", which is now.**
+
+## DEPLOYMENT ANOMALY — recorded, because it will recur
+
+**`385a4a0` was pushed, GitHub had it on `main`, and Vercel created NO deployment for twenty
+minutes** where every one of the previous twenty commits deployed in under three. `list_deployments`
+with `since` returned **count 0** — not a slow build, no build. A CLI production deploy
+(`vercel deploy --prod`) **aborted on upload**, the working tree carrying the 662-page `out/`.
+
+**Resolved with an empty commit** — `c76009f`, no data change, gates not re-run because the tree was
+byte-identical to the tree that had just passed them. **The webhook fired and the build was live
+inside sixty seconds.** So the integration was working and had simply missed one event.
+
+**The lesson is the one this phase keeps relearning: `git push` succeeding is not deployment, and a
+deployment's absence looks exactly like a slow build for the first several minutes.** The check that
+settled it was `list_deployments --since`, which reports **count 0** rather than a stale row — a
+status field that can distinguish "not started" from "in progress". **Nine minutes of polling the
+site could not have told those apart, and did not.**
+
+## LIVE VERIFICATION — 11 controls, all passing
+
+Against `india-government.vercel.app`, scripts stripped, positives and negatives in the same form on
+the same pages: new footer **present** and *"Private research instrument. Not for publication."*
+**absent** · the limits disclosure and authorship line **present** · *"752 are graded T1"* **present**
+and *"built entirely from public government primaries"* **absent** · *"no part of this has been
+checked by anyone who did not write it"* **present** · `disputed on the evidence` on L-0074 and
+`disputed on the characterisation` on L-0081 **present**, with the wrong kind **absent** from L-0074
+· batch-17's `1.30 on the unrounded basis` still live on L-0221.
+
+`<meta name="robots" content="noindex, nofollow">` confirmed unchanged on the live page.
