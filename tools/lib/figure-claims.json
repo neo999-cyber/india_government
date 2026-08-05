@@ -121,7 +121,19 @@
   },
   {
     "record": "L-0221",
-    "what": "the non-fossil capacity/generation gap at 31.03.2024 (FY2023-24) — capacity share minus generation share",
+    "what": "FY2025-26, the matched pair: non-fossil capacity share at 31.03.2026 minus non-fossil generation share over FY2025-26",
+    "printedA": "53.21",
+    "printedB": "28.84",
+    "printedDifference": "24.37",
+    "decimals": 2,
+    "sourceA": 53.20729825708887,
+    "sourceB": 28.841955366619047,
+    "sourceScale": 1,
+    "note": "Capacity (8,780 nuclear + 274,688.09 RES-incl-large-hydro) / 532,739.68 and generation (55.19 + 167.20 + 310.59) / 1,847.94, both from CEA Executive Summary March 2026. REPLACED the FY2023-24-only claim after the summary was corrected: the record previously paired a 30.06.2026 capacity stock with an FY2025-26 generation flow, which is not one comparison."
+  },
+  {
+    "record": "L-0221",
+    "what": "FY2023-24 endpoint of the widening: capacity share at 31.03.2024 minus generation share over FY2023-24",
     "printedA": "44.97",
     "printedB": "23.51",
     "printedDifference": "21.46",
@@ -129,18 +141,18 @@
     "sourceA": 44.969794329931894,
     "sourceB": 23.514291891891894,
     "sourceScale": 1,
-    "note": "Both operands are themselves derived from CEA General Review 2025 Tables 1.2 and 1.3: capacity (46,928 hydro + 8,180 nuclear + 143,645 RES) / 441,970; generation (134,054 + 47,937 + 225,835) / 1,734,375. Declared so the gate checks the arithmetic the record prints against the unrounded ratios rather than against the rounded operands alone. Both routes give 21.46; no rounding artefact."
+    "note": "CEA General Review 2025 Tables 1.2 and 1.3. Both operands now printed in whatHappened so the subtraction is checkable on the page."
   },
   {
     "record": "L-0221",
-    "what": "the same gap at 31.03.2014 (FY2013-14), the UPA baseline year — the other end of the widening the record asserts",
-    "printedA": "32.54",
-    "printedB": "22.85",
-    "printedDifference": "9.69",
+    "what": "FY2014-15 start of the widening — the first year on the ACTUAL generation basis, after P-122's seam",
+    "printedA": "31.53",
+    "printedB": "20.55",
+    "printedDifference": "10.98",
     "decimals": 2,
-    "sourceA": 32.540414408057224,
-    "sourceB": 22.85055554527399,
+    "sourceA": 31.53301074322115,
+    "sourceB": 20.548719771286745,
     "sourceScale": 1,
-    "note": "Capacity (40,531 + 4,780 + 35,850) / 249,416; generation (134,847 + 34,228 + 65,520) / 1,026,649. Declared alongside the FY2023-24 claim because the record's finding is that the gap WIDENED between the two, so both endpoints have to hold for the claim to. Both reconstruct at 9.69."
+    "note": "Capacity (41,267 hydro + 5,780 nuclear + 39,950 RES) / 275,895 and generation (129,244 + 36,102 + 61,719) / 1,105,006. This claim exists because the start year MOVED: the widening previously ran from FY2013-14, on the imputed side of P-122's basis seam, which understated the opening gap and overstated the widening."
   }
 ]

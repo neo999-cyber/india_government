@@ -8700,3 +8700,137 @@ no-bare-root 0 new.
    of quantity. Also raised, not applied.
 5. **The audit that finds the phase-15 rendering class corpus-wide** has not been run for the series
    and provenance layers — only ledger fields were swept.
+
+## Cycle 2026-08-05ag — phase 15 batch 2: six defects in batch 1, and the guarded list bound to the schemas
+
+**SUPERSEDES ONE SENTENCE IN CYCLE 2026-08-05af.** That entry stated that two official releases
+"announce the capacity limb as if it were the COP26 goal" and that L-0221 said COP26 "announced no
+such goal". **That is false as written and is withdrawn here.** COP26 is where Panchamrit was
+announced, including the 500 GW non-fossil CAPACITY goal. The defect is narrower and survives: the
+50 per cent limb announced at Glasgow was 50 per cent of **energy requirements** from **renewable**
+energy (element 2), while "about 50 per cent of cumulative electric power installed capacity from
+non-fossil fuel-based energy resources" is the **August 2022 NDC update's** goal 4. The releases
+fuse element 2's percentage with the NDC's denominator and attribute the result to Glasgow. Written
+up as **P-123**; L-0221 corrected in place with the withdrawn wording quoted inside the correction.
+The af entry stands as written, per the append-only rule, with this entry governing.
+
+### Deployment verified FIRST — it was item 2 of the batch-1 backlog and had not run
+
+`origin/main` and the production deployment both at **454e1fc**. `assessmentNote` and
+`revisitTrigger` confirmed rendering **whole** on the live site: L-0011 "Why this verdict" (1,176
+chars), L-0089 "Revisit when" (234), L-0221 both (1,493 and 275). Script blocks stripped before
+matching, and a same-form negative twin run beside the positive — "triage 9" absent, "triage 2"
+present, identical transformation. **The 226-invisible-marks finding is now fixed for readers, not
+only in the repo.**
+
+### The queue was written BEFORE any of it was resolved
+
+Seven items into `STATE.md` and committed at `c64c565`, so a resolution could not quietly reshape
+the defect it answered. Resolutions appended afterwards; the statements are unedited.
+
+### What the six defects turned out to be
+
+**(a) The headline compared a stock with a flow.** 54.18 per cent is capacity **as on 30.06.2026**;
+29.2 per cent is generation **over FY2025-26**. A quarter apart, different kinds of quantity, and
+`54.18 − 29.2 = 24.98` is a subtraction nobody should perform — which is exactly why it disagreed
+with the stated 21.46. The matched FY2025-26 pair, both from CEA *Executive Summary March 2026*, is
+**53.21 per cent of capacity against 28.84 per cent of generation, a gap of 24.37 points**. Residual
+carried in the record: even a matched pair sets an end-of-period stock against a whole-period flow.
+
+**(b) L-0222 cited total coal against a thermal-coal limb.** Table 8.1's columns are Coking / Non
+Coking / Total; FY2023-24 is 58.813 + 205.718 = 264.531. **264.53 is TOTAL.** The verdict survives —
+205.72 MT of non-coking against a target of zero is a total miss and the series maximum — but the
+evidence is restated to the column that measures the limb.
+
+**(c) `partly` stands; its ground was wrong.** `claimAtLaunch` names both limbs, so the conditional
+that would have made `partly` a markdown-for-someone-else's-error does not obtain. But part of the
+stated ground WAS a reporting fact, and **a fact about publishers does not belong in a verdict**.
+Moved to P-123. The ground now rests on one thing: element 2 is the only limb of the five with no
+reporting of any kind.
+
+**(e) The widening was measured across a seam the record did not carry.** It ran from FY2013-14, on
+the imputed side of P-122's basis break, which understates the opening gap and overstates the
+widening. Restated **FY2014-15 (10.98) to FY2023-24 (21.46)**, one basis throughout. **The structural
+finding is that `breaks[]` binds the SERIES and does not reach a derived comparison stated in a
+record's prose** — logged, not fixed.
+
+**(f) Nothing was unaccounted for; the base was wrong.** Measured: `966eb6a` = 662 records,
+`7124b1f` = 673, and 11 were added. **660 was phase 14's closing figure**, before L-0219 and L-0220.
+STATE.md and cycle af both say 662 → 673 correctly — the wrong number appeared only in the spoken
+report, quoted from a prior STATE.md instead of measured.
+
+### (g) applied, under an amendment written in the same commit
+
+**NARROW SOURCE-EDIT AMENDMENT, now in CLAUDE.md:** a correction THE SAME BATCH ITSELF RAISED AND
+EVIDENCED may be applied by the run that raised it. Three conditions, all required — the defect was
+written down BEFORE it was resolved; the evidence is a document retrieved in that run; and the edit
+is to a citation, reason, scope or wording, **never to a `points[]` value or an `assessment`**. The
+reversion hazard that earned the original rule does not apply when evidence and edit are one commit.
+
+Four corrections to L-0052 and `re-capacity`, each quoting the withdrawn wording inside itself:
+`reasonKind` `not-published` → `not-collected` **and the entry closed** (CEA publishes the datum —
+its monthly report has tables titled "Monthly Renewable Energy as % of Total Electricity Generated");
+`caseFor` no longer rests on the 51.5 per cent figure read as a month; 283.46 GW redated from July
+2025 to **31.03.2026** in both the record and the series note; and the bare-root T1 `mnre.gov.in`
+citation deep-linked.
+
+### Item 7 — the NDC substitution landed at PROVENANCE, and the reason is a schema fact
+
+**P-124** records the substitution: what is cited (PIB Cabinet release 1847812), what it stands in
+for (the lodged UNFCCC submission), why the original was not retrieved (`unfccc.int` answers the
+document URL with HTTP 200 and a **212-byte Incapsula stub**, which `pdftotext` accepts rather than
+refusing), and the full attempt record — four attempts, resolver, client and host varied.
+**It is NOT at citation level because `sources[]` carries `additionalProperties: false` on every
+layer**, so a structured annotation there would add properties to the contract research sessions
+author against — a schema change that alters a contract rather than documenting one, which is a stop.
+Provenance also scopes correctly: the substitution bears on every record citing the NDC goals.
+**And it does not claim the document is unretrievable** — stage 2 retrieved it at 559,694 bytes in
+this same phase; this process could not reproduce that. The finding is about a process, not about the world.
+
+### Item 8 — the adversarial reviews read `/data`, not the site
+
+`tools/gen-review-extract.mjs` reads `join(ROOT, 'data', 'ledger')` and writes
+`review/adversarial-extract.md` from a committed fixed sample. It never touches `out/`. The extract
+renders `assessmentNote` inline under **Verdict** — 38 verdict paragraphs in the file — so reviewer
+coverage of verdict reasoning was **not vacuous** and the closure note stands unamended. **The
+corollary matters more:** had the reviews been run against the deployed site, every verdict would
+have appeared to lack reasoning and the reviewers would have reported a corpus defect that was
+really a rendering defect. The extract pipeline's independence from the rendering pipeline is what
+protected the review, and it should be preserved deliberately rather than by luck.
+
+### Items 3 and 4 — the guarded list is now bound, and two layers swept
+
+**`no-unguarded-prose-field`**: every prose field on `LedgerRecord` and `ProvenanceRecord` is either
+in the guarded list or **exempted by name in its own schema description**, with no third state. 19
+fields — 7 guarded, 12 exempted with stated reasons. Proven by dropping `assessmentNote` from an
+injected list: fires, names `ledger.assessmentNote`; positive control run through the **same seam**;
+selftest assertion proven live by sabotaging the fixture and watching it fail.
+
+**`field-render-audit`**: observes built output over all three layers. **32 prose fields, 0
+invisible.** The sweep of the two unswept layers: **provenance 6 fields / 0 invisible; series 11
+fields / 1 real find** — `points[].note` rendered nowhere on ANY peer series, because the panel
+branch of `SeriesTable` has no note cell at all, not a header and not a `td`. Six notes on the two
+sides of PR-18 were invisible, including the one carrying India's global maximum and its 707-day
+span. Fixed in the cell.
+
+**The audit's first run reported 55 invisible values and 53 were its own artefacts.** Period labels
+render `FY2013–14` with an EN DASH against a hyphen in the data (50), and the `P-xx` linkifier turns
+"See P-26." into "See P-26 ." (3, all of them caveats — the worst possible false positive, since
+caveat truncation is what rule 3a forbids and a spurious hit would have sent someone hunting a clamp
+that does not exist). Both normalisers now apply to page and value alike. Same shape as phase 13's
+Indian digit grouping.
+
+**AND A LATENT BUG IN `reachability` ITSELF, surfaced by adding the first provenance mark.**
+`ownPage()` read `layer === 'series' ? 'series' : 'ledger'`, routing every non-series layer to
+`ledger/`. 185 provenance records reported "no page built", which reads like a broken build rather
+than a broken lookup. **The guarded list's enumeration scope had leaked into the gate's own path
+resolution** — a default that was correct only because of what the list did not yet contain.
+`reachability` **1147 → 1332** marks, all reachable.
+
+### Gates
+
+`validate` 0 errors over 675 records · `typecheck` clean · `no-bare-root` 0 new · `figure-consistency`
+12 declared claims · `reachability` 1332/1332 over 653 pages · `no-unguarded-prose-field` 19 fields
+(7 guarded, 12 exempted) · `field-render-audit` 32 fields over 3 layers, 0 invisible ·
+`domain-coverage` 14/14 surfaces, 1128/1128 references · `validate:selftest` 23/23 validator rules,
+2/2 output gates.

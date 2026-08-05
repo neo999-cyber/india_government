@@ -316,10 +316,10 @@
   "type": "reform",
   "summary": "Renewable capacity rose from 76.38 GW in March 2014 to 274.68 GW by March 2026, with solar going from 2.82 GW to 150.26 GW — a fifty-three-fold increase.",
   "claimAtLaunch": "Reach 175 GW of renewable capacity by 2022, later superseded by a target of 500 GW non-fossil capacity by 2030.",
-  "whatHappened": "Non-fossil capacity reached 283.46 GW and renewables met 51.5% of demand in July 2025. Progress toward the 2030 target is broadly on track. The 2022 target of 175 GW was met on capacity though not on the original sectoral mix.",
+  "whatHappened": "Non-fossil capacity reached 283.46 GW as on 31.03.2026 — CORRECTED 2026-08-05, this figure was previously attributed to July 2025, which is wrong by eight months and confuses a capacity stock with the single-day power ratio it was printed beside. Progress toward the 2030 target is broadly on track. The 2022 target of 175 GW was met on capacity though not on the original sectoral mix.",
   "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. WORKED IS SCORED ON THE TARGET AS SET, WHICH WAS A CAPACITY TARGET. 175 GW by 2022 was met on capacity; non-fossil capacity reached 283.46 GW against the 500 GW 2030 target and is broadly on track. A fifty-three-fold solar increase in twelve years, achieved through competitive auctions that drove tariffs to among the world's lowest, is a structural change in the generation mix. CAPACITY IS NOT GENERATION, AND THE VERDICT DOES NOT CLAIM IT IS. Renewables' share of energy generated remains well below their share of capacity because of load factors, and this record carries no figure for the generation share - entered below. The expansion has also coexisted with continued coal capacity addition, so it has supplemented rather than displaced fossil generation. A reader should take this as saying the capacity target was met, not that the energy mix changed by the same proportion.",
   "assessment": "worked",
-  "caseFor": "A fifty-three-fold increase in solar capacity in twelve years, achieved largely through competitive auctions that drove tariffs to among the world's lowest, is a structural transformation of the generation mix. Unlike most infrastructure outputs here, generation capacity converts into use automatically wherever the grid can absorb it, and renewables meeting over half of demand in a peak month demonstrates that absorption.",
+  "caseFor": "A fifty-three-fold increase in solar capacity in twelve years, achieved largely through competitive auctions that drove tariffs to among the world's lowest, is a structural transformation of the generation mix. Unlike most infrastructure outputs here, generation capacity converts into use automatically wherever the grid can absorb it, and renewable output has grown fast enough that absorption has kept pace with it. CORRECTED 2026-08-05: this sentence previously read 'renewables meeting over half of demand in a peak month demonstrates that absorption'. The 51.5 per cent figure it rested on is not a month and not an energy share — the originating Ministry of Power release states it for 29 July 2025 and gives its components as solar 44.50 GW, wind 29.89 GW and hydro 30.29 GW against demand of 203 GW, every operand a unit of POWER, so it is a ratio of simultaneous readings at one unstated moment on one day. See L-0221's caveat.",
   "caseAgainst": "Capacity is not generation: renewables' share of energy generated remains well below their share of capacity because of load factors, and grid absorption and storage remain binding constraints. The expansion coexists with continued coal capacity addition, so it has supplemented rather than displaced fossil generation. Discom financial weakness also creates payment risk that has slowed developer investment in some states.",
   "shockExposure": "Global solar module prices fell sharply over the period, which is an external tailwind not attributable to policy; the 2022 commodity shock temporarily reversed some of it.",
   "seriesRefs": [
@@ -328,15 +328,15 @@
   "unmeasured": [
    {
     "what": "Renewables' share of energy actually generated, against their share of installed capacity",
-    "why": "The target was set in capacity and this record scores it in capacity. The case against turns on the generation share being materially lower, and no figure for it appears here. Generation data are published by the grid operator and the electricity authority; the two shares are simply not set side by side in anything retrieved.",
-    "wouldFill": "Central Electricity Authority or Grid-India generation-mix data by source and year, set against installed capacity for the same years.",
-    "reasonKind": "not-published"
+     "why": "CLOSED 2026-08-05. The target was set in capacity and this record scores it in capacity; the case against turns on the generation share being materially lower. THIS ENTRY WAS WRONG ON ITS reasonKind AND IS SUPERSEDED. It read not-published, which asserts something about the world, while its own final clause said 'in anything retrieved', which was the honest form. Four documents retrieved on 2026-08-05 falsify the assertion: CEA publishes installed capacity and gross generation mode-wise on facing tables of its annual General Review for every year from 1950, and its monthly renewable report carries tables titled 'Monthly Renewable Energy as % of Total Electricity Generated' and 'Cumulative Renewable Energy as % of Total Electricity Generated', computed for every State and for All India. The datum was not unpublished; it was unretrieved. The quantity is now carried as series res-generation-share and non-fossil-generation-share and read in L-0221.",
+     "wouldFill": "Closed — CEA General Review Tables 1.2 and 1.3, retrieved 2026-08-05.",
+     "reasonKind": "not-collected"
    }
   ],
   "sources": [
    {
-    "name": "MNRE / CEA",
-    "url": "https://mnre.gov.in/",
+    "name": "CEA, Installed Capacity (MW) of the country as on 30.06.2026 — the deep-linked replacement for a bare mnre.gov.in root that retrieved no document",
+    "url": "https://cea.nic.in/wp-content/uploads/installed/2026/06/Website_June.pdf",
     "tier": "T1"
    }
   ],

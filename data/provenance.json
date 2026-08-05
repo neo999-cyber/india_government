@@ -4623,5 +4623,77 @@
    }
   ],
   "notes": "WHY THIS MATTERS MORE HERE THAN IT WOULD ELSEWHERE: the break falls at 1 April 2014, which is within weeks of this instrument's frozen UPA baseline of May 2014. So the last year of the imputed basis is the baseline year, and the first year of the measured basis is the first year of T1. Every comparison this instrument makes of renewable generation between the UPA baseline and the Modi terms crosses the break at exactly the point the comparison is anchored on, and the direction flatters the baseline. The affected series carry the break explicitly for that reason. THE CAPACITY SERIES ARE NOT AFFECTED — installed capacity is a nameplate count throughout and CEA's Table 1.2 carries no equivalent note — so where a like-for-like comparison across 2014 is needed and only one is available, the capacity series is the sound one and the generation series is not. Scanned the extracted text of the General Review (984,398 characters) for 'restate' and 'revised' with morphological variants; both returned zero. That zero is NOT banked as a finding here, because no positive control was run that clears it and a document of that size containing neither word is unusual enough that a tokenisation problem is a live alternative. What the record rests on instead is the direct comparison above, which is checkable from two printed columns."
+ },
+ {
+  "id": "P-123",
+  "title": "A 50-per-cent-of-CAPACITY target is published as a COP26 goal; COP26's 50 per cent limb was 50 per cent of ENERGY",
+  "whatChanged": "Two Ministry releases state, as a COP26 Panchamrit commitment, a target of '50 per cent of installed electric power capacity from non-fossil fuel sources by 2030'. COP26 announced no such limb. What the Prime Minister announced at Glasgow on 1 November 2021, as PIB publishes the text, is five commitments of which two bear here: element 1, 'India will reach its non-fossil energy capacity to 500 GW by 2030' — a capacity target, but a GW total and not a percentage — and element 2, 'India will meet 50 percent of its energy requirements from renewable energy by 2030' — a percentage, but of ENERGY REQUIREMENTS and with a RENEWABLE numerator. The 'about 50 per cent of cumulative electric power installed capacity from non-fossil fuel-based energy resources' formulation is the August 2022 NDC update's goal 4, not Glasgow's. THE PUBLISHED TARGET FUSES ELEMENT 2'S PERCENTAGE WITH THE NDC'S DENOMINATOR AND ATTRIBUTES THE RESULT TO COP26. The substitution runs in the direction that makes the commitment easier: on the figures both are measured by, non-fossil sources were 53.21 per cent of installed capacity at 31.03.2026 and supplied 28.84 per cent of the electricity generated over FY2025-26, so a reader who takes the announced 50 per cent as met has been given a capacity number against an energy-shaped promise. Element 2 is the only one of the five denominated in energy and no document retrieved reports progress against it.",
+  "when": "2025-10-29",
+  "affectsDomains": [
+   "environment",
+   "infrastructure"
+  ],
+  "directionOfBias": "obscures",
+  "bridgeExists": true,
+  "bridgeNote": "A bridge exists and is arithmetic: both quantities are published by CEA for the same periods, so a reader given either can obtain the other. What does not exist is any official statement reconciling the two, or acknowledging that the capacity limb and the energy limb are different commitments. The instrument's response is to name the limb wherever either figure appears, and never to state a 50 per cent target without saying 50 per cent OF WHAT.",
+  "competingAccounts": [
+   {
+    "holder": "Ministry of Power / MNRE, as published",
+    "position": "India committed at COP26 to 50 per cent non-fossil installed capacity by 2030 and reached it five years early. On this account the two releases are reporting a real achievement against a real commitment, and the attribution to Glasgow is shorthand for a commitment India did make there in substance."
+   },
+   {
+    "holder": "Sceptical reading",
+    "position": "The 500 GW limb is the Glasgow capacity commitment and it is not met — 283.46 GW at 31.03.2026. The percentage limb that IS met comes from a different instrument lodged nine months later, and the limb Glasgow stated as a percentage is about energy, is unreported, and stands at roughly half the capacity figure. Attributing the met target to Glasgow substitutes the achievable limb for the announced one."
+   }
+  ],
+  "sources": [
+   {
+    "name": "PIB / Prime Minister's Office, 'National Statement by Prime Minister Shri Narendra Modi at COP26 Summit in Glasgow', 1 Nov 2021 — the Panchamrit text, elements 1 and 2 verbatim",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1768712&reg=3&lang=1",
+    "tier": "T1"
+   },
+   {
+    "name": "PIB / Cabinet, 'Cabinet approves India's Updated Nationally Determined Contribution', 3 Aug 2022 — where the about-50-per-cent-of-installed-capacity goal actually comes from",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1847812&reg=3&lang=1",
+    "tier": "T1"
+   },
+   {
+    "name": "PIB / Ministry of Power, 'India achieved Historic milestone in power sector', 29 Oct 2025 — states the capacity limb as a COP26 Panchamrit goal",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2183866&reg=3&lang=1",
+    "tier": "T1"
+   },
+   {
+    "name": "PIB / MNRE, 'India Ranks third globally in Renewable Energy Installed Capacity', 8 Apr 2026 — repeats the attribution and carries the 29.2 per cent generation share alongside it",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2250039&reg=3&lang=1",
+    "tier": "T1"
+   }
+  ],
+  "notes": "ENTERED 2026-08-05 AS A CORRECTION TO L-0221, WHICH STATED THIS BADLY. That record said the releases attribute to COP26 a goal 'which COP26 did not state', and as written that is false: Glasgow is where Panchamrit was announced, including a non-fossil capacity goal of 500 GW. The defect is not that COP26 said nothing about capacity; it is that the FIFTY PER CENT is Glasgow's energy limb and the CAPACITY DENOMINATOR is the NDC's, and the two have been combined. The correction narrows the claim and is the reason this record exists rather than the sentence being merely reworded — a misattribution by publishers is a fact about measurement and reporting, and belongs here rather than inside a verdict."
+ },
+ {
+  "id": "P-124",
+  "title": "SUBSTITUTION: India's NDC goals are cited to the Cabinet release, because the lodged instrument could not be retrieved in this run",
+  "whatChanged": "A SOURCE SUBSTITUTION, recorded so that no reader takes the instrument's evidence for India's NDC to be the NDC. CITED: PIB / Cabinet, 'Cabinet approves India's Updated Nationally Determined Contribution to be communicated to the UNFCCC', Release ID 1847812, 3 August 2022, retrieved and read on 2026-08-05 (HTTP 200, 105,386 bytes, 35,210 characters of text). STANDS IN FOR: 'India's Updated First Nationally Determined Contribution Under Paris Agreement (2021-2030)', the August 2022 submission lodged with the UNFCCC — the instrument itself, which is what a claim about India's Paris obligations properly rests on. WHY THE ORIGINAL WAS NOT RETRIEVED: unfccc.int answers the document's own URL with HTTP 200 and a 212-byte Incapsula WAF stub whose body is a script tag, and pdftotext ACCEPTS that stub rather than refusing it, emitting hex-string errors and an empty extraction. A 200 here is not a retrieval, and a pipeline that checked only the status code would have carried a silent empty read. WHAT THE SUBSTITUTE CAN AND CANNOT CARRY: the Cabinet release states the two operative goals in the Government's own words — reducing emissions intensity of GDP by 45 per cent by 2030 from 2005 levels, and about 50 per cent cumulative electric power installed capacity from non-fossil sources by 2030 — and it additionally supplies the 2015 baseline those figures were raised from, 40 per cent and 33-to-35 per cent. What it is not is the lodged text, and THIS RUN DID NOT ESTABLISH WHETHER THE TWO DIFFER IN ANY RESPECT. No claim in this instrument rests on wording found only in the lodged submission.",
+  "when": "2026-08-05",
+  "affectsDomains": [
+   "environment",
+   "infrastructure"
+  ],
+  "directionOfBias": "degrades-precision",
+  "bridgeExists": false,
+  "bridgeNote": "The bridge is simply retrieving the lodged submission, and it is a retrieval problem rather than a reconciliation problem — there is nothing to reconcile until both texts are in hand. Until then every claim sourced through this substitution is one document removed from the instrument it describes, which is a weaker evidentiary position than the tier alone conveys: the Cabinet release is a genuine T1 primary OF ITS OWN CONTENT, a Cabinet decision, and is NOT a primary of the NDC's text. THE ROUTE MOST LIKELY TO WORK is a client that carries the Incapsula cookie through the redirect; the two-step with a shared cookie jar plus the '?download' suffix is known to have worked once (see notes) and did not reproduce here.",
+  "sources": [
+   {
+    "name": "PIB / Cabinet, 'Cabinet approves India's Updated Nationally Determined Contribution to be communicated to the UNFCCC', Release ID 1847812, 3 Aug 2022 — the substitute, retrieved and read 2026-08-05",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1847812&reg=3&lang=1",
+    "tier": "T1"
+   },
+   {
+    "name": "UNFCCC NDC registry entry for India's updated first NDC — the instrument this substitution stands in for. NOT RETRIEVED in this run; the URL is recorded so a later cycle can re-attempt it, and it is deliberately NOT graded as evidence for anything in this corpus",
+    "url": "https://unfccc.int/sites/default/files/NDC/2022-08/India%20Updated%20First%20Nationally%20Determined%20Contrib.pdf",
+    "tier": "T4"
+   }
+  ],
+  "notes": "THE ATTEMPT RECORD, in full, because a substitution is only auditable if the failure behind it is. Four attempts on 2026-08-05, resolver, client and host varied per M1. (1) Direct GET of the .pdf URL: HTTP 200, 212 bytes, Content-Type text/html, body an Incapsula script stub. (2) Cookie-jar two-step — seed the bare URL with -c/-b, then re-request with the '?download' suffix on the same jar, with a browser user-agent: HTTP 200, 212 bytes again. (3) WebFetch, a different process on a different network egress entirely: returned an empty document. (4) Host varied to moef.gov.in, pinned 164.100.221.70 and live with 126 KB of text: its climate-change page carries the 2015 INDC (INDIA-INDC-TO-UNFCCC.pdf) and no 2022 update; two candidate paths for the update returned HTTP 404 with an identical 3,243-byte body. HONESTY ABOUT WHAT THIS IS NOT: the document is NOT established as unretrievable, and this record does not say so. The stage-2 research agent in this same phase retrieved it successfully at 559,694 bytes with a real text layer, using the cookie-jar two-step described above; that retrieval could not be reproduced from the main loop. So the finding is about THIS PROCESS's failure to reproduce a retrieval, not about the document's availability — which is precisely why the substitution is recorded rather than the absence being written up as a fact about the world. WHY THIS IS A PROVENANCE RECORD AND NOT A CITATION FIELD: a structured substitution annotation on the citation itself would have been the more local home, but `sources[]` carries additionalProperties:false on every layer, so it would require adding properties to the contract research sessions author against — a schema change that alters a contract rather than documenting one, which is a stop. This level also scopes correctly: the substitution bears on every record citing the NDC goals, currently L-0221 and P-123, and attaching it to one citation would under-scope it."
  }
 ]
