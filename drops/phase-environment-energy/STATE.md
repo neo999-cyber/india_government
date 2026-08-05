@@ -365,7 +365,19 @@ roughly 8 of their 38, and the corpus-wide figure was established by the AUDIT, 
 done** — 37 is what was measured, 33 is what the log claims, and they are not asserted to be the same
 set.
 
-## ARC B — AIR QUALITY: **PARTLY OPEN**. One provenance record; OUTTURN still blocked. 2026-08-05
+## ARC B — AIR QUALITY: **TARGET RETRIEVED. OUTTURN NOT. REVISION NOT. NO LEDGER RECORD.**
+
+State it in those four clauses and not as one word — it is neither BLOCKED nor DONE, and the two
+halves are blocked for different reasons that must not be collapsed:
+
+| Piece | State | Blocking cause, specifically |
+|---|---|---|
+| **The target's wording** | **RETRIEVED**, T1 | none — MoEFCC Annual Report 2020-21 carries it verbatim |
+| **The target's BASE YEAR** | NOT retrieved | the retrieved report states none; the NCAP document itself is behind the client-rendered portal |
+| **The OUTTURN** (city PM series) | NOT retrieved | **`prana.cpcb.gov.in` is CLIENT-RENDERED and this environment has no rendering client.** Playwright returns `ERR_NAME_NOT_RESOLVED` (inherits the broken system resolver); the in-app browser denies the navigation. Both tested this batch. `cpcb.nic.in` and `airquality.cpcb.gov.in` refuse TLS on different IPs |
+| **The 40%-by-2025-26 REVISION** | NOT retrieved, NOT asserted | no primary located; it is reported elsewhere and that is not a source |
+| **A ledger record** | **NONE, deliberately** | nothing is scoreable without the base year and the outturn. P-125 is provenance, not a verdict |
+
 
 **BLOCKED — read this before treating Arc B as done.** Zero records were written and the routes are
 OPEN, not exhausted. **The blocking cause is named: the NCAP portal `prana.cpcb.gov.in` is
@@ -468,3 +480,54 @@ target", so programme and objective are two things in the Ministry's own wording
    NOT retrieved and NOT asserted. If it exists it means two targets, two horizons and possibly two
    bases — the phase-15 pattern of a revision that moves the goalposts, and the reason to get the
    base year first.
+
+
+## QUEUED — the five `contested` records with no stated ground
+
+Of the eight review-sample records that carried no `assessmentNote` at review time, **five still carry
+none today and all five are `contested`: L-0018, L-0025, L-0059, L-0068, L-0076.**
+
+**Contested is where stated ground matters most, and it is the value most likely to be left bare.**
+Every other scored value asserts an outcome and invites the question "on what evidence?"; `contested`
+asserts that the evidence supports more than one reading and the record does not choose — which reads
+as self-explanatory and is not. Without a note, a reader cannot tell WHICH two readings are live,
+whether they rest on different facts or on different weightings of the same facts (the distinction the
+research standard turns on), or whether the record declines to choose because the evidence genuinely
+underdetermines it or because nobody has done the work. **Those are three different records wearing
+one word.**
+
+*Scope note, so this is not mistaken for the whole problem:* these five are the intersection of the
+abstention backlog with the 38-record review sample. The corpus-wide figure is the one already
+queued — 58 records with no note, of which 29 are `contested`. **These five are simply the ones a
+reader was demonstrably shown.**
+
+
+### ARC B, BATCH 5 — the outturn and the revision are STILL NOT RETRIEVED
+
+**Routes tried this batch and what each returned, so none is retried blind:**
+- **Newer MoEFCC annual report.** The `/annual-report` index was re-enumerated: **2020-21 is the
+  newest English report listed.** There is no later one to carry a 2024 outturn.
+- **The 40% revision, inside the report already retrieved.** Checked and ABSENT: `2025-26` returns 0
+  across 961,735 characters, and the single `40%` hit is a Montreal Protocol HCFC baseline, read in
+  context and discounted. So the revision is not in the one MoEFCC primary in hand.
+- **A MoEFCC search endpoint.** There is none usable: `/search?q=` returns HTTP 500 and `/?s=` returns
+  200 with zero matches. Recorded so the next cycle does not spend the attempt.
+- **PIB `Allrel.aspx`** — confirmed last batch as an ASP.NET postback, not URL-addressable.
+
+**WHAT DID COME OUT OF THE ATTEMPT, and it is in P-125 as an amendment.** The same report carries the
+Fifteenth Finance Commission air-quality grant, and it has exactly the specificity NCAP's headline
+lacks: the Ministry is nodal 'to develop a) city-wise and year-wise targets on ambient air quality
+based on annual average concentrations of PM10 and PM2.5', with the second instalment disbursed
+'against the stipulated performance-based outcomes in terms of year on year improvement'. **City-wise,
+year-wise, pollutant-named, and enforced by money** — where the national target is a ten-point range
+over unspecified 'particulate matter' with no base year. The scale is not comparable either: 224.74
+crore released and 111 crore sanctioned under NCAP across two years, against 4,400 crore under the
+grant.
+
+**The city-wise targets themselves were NOT retrieved** — the report says the Ministry was appointed
+to DEVELOP them and describes a framework, without printing them. That is the next specific thing to
+look for, and it is a better-shaped target than NCAP's because it is per-city and per-year.
+
+**Still not retrieved and still not assertable: any PM outturn figure, the NCAP base year, and the
+40%-by-2025-26 revision.** No ledger record has been written for Arc B and none should be until the
+base year is established from a primary.

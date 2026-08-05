@@ -315,6 +315,29 @@ principle; the document exists and the channel failed, and that is retrieval-cap
 Where the documents retrieve perfectly and the content simply was not published, it is ordinary
 corpus material and belongs to its subject arc.
 
+**AN ABSENCE-OF-PUBLICATION CLAIM REQUIRES A STATED SEARCH, AND TRYING GUESSED IDENTIFIERS IS NOT A
+SEARCH.** State which of these was done, in the record: an INDEX ENUMERATED (the publisher's own
+listing read and its links extracted); an ARCHIVE CONVENTION READ OFF A LIVE PAGE (a real href
+observed, then varied); or NAMED ROUTES EXHAUSTED (each host and path listed with what it returned).
+Absent one of those, the honest wording is **"not searched"**, not "not published".
+
+**"Not published" has meant "not searched" three times in phase 15 alone, and each time the document
+was there.** A ministry's website was dead while PIB served its documents. `L-0052` carried
+`reasonKind: not-published` for the renewable generation share while CEA published tables titled
+*"Monthly Renewable Energy as % of Total Electricity Generated"*. And a capacity year was recorded as
+a hole "not published at any guessable URL" — true, and not a search: CEA's own index does carry only
+the current month, but `npp.gov.in` mirrors the same CEA reports under a month-stamped path, the
+convention was sitting in an href on a live page, and the recovered figure cross-checks to **0.04 MW**
+against the other channel.
+
+**The asymmetry is why this needs a rule rather than care.** A guessed URL that 404s produces the
+same silence as a document that does not exist, and the silence is indistinguishable at the point of
+writing. Guessing also fails in a way that FEELS like evidence — three 404s in a row read as
+confirmation. They are three observations of a filename convention, not one observation about
+publication. **`reasonKind: not-published` and `not-collected` are claims about the world and inherit
+rule 5d in full; `not-searched` is not a schema value, so where that is the truth the entry says so
+in its `why` and takes the weaker of the available kinds.**
+
 ## Session cost
 
 Orientation is paid for at the start of every session, so it is measured and kept small.

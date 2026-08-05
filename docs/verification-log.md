@@ -9017,3 +9017,89 @@ allowlisted · `no-unguarded-prose-field` 19 fields (7 guarded, 12 exempted) · 
 14 claims, 5 declared rounding artefacts · `reachability` over every guarded mark on 656 pages ·
 `field-render-audit` 32 fields over 3 layers · `domain-coverage` 14/14 surfaces ·
 `validate:selftest` 23/23 validator rules, 2/2 output gates · `seam-span-report` report-only.
+
+## Cycle 2026-08-05aj — batch 5: the join argued, a corpus count corrected, and Arc B's outturn still absent
+
+**SUPERSEDES A FIGURE IN CYCLE 2026-08-05ai.** That entry's gate line reads "`validate` 0 errors over
+**678** records". **The corpus was 676, and it is 676 now.** Measured across the boundary: `3b32f61`
+held ledger 222 + series 269 + provenance 124 + pairs 60 = **675**; `b20f2bb` held the same with
+provenance 125 = **676**. **P-125 is the ENTIRE delta — there is no second or third record to
+account for.** The +2 marks reported for `reachability` were right and are P-125's `notes` and
+`bridgeNote`.
+
+**And the line had a second defect worse than the wrong number: `validate` never printed a record
+count at all.** Its output is `VALID — 0 errors, 165 warning(s)`. The count was mine, attached to the
+gate as though it were the gate's own scope — the same family as reading a pipe's exit status or a
+PR's status field instead of the artefact. **`node tools/validate.mjs --json` DOES emit authoritative
+counts** (`series`, `ledger`, `provenance`, `pairs`, `points`) and is what a gate line should quote.
+The ai entry stands, per the append-only rule, with this entry governing.
+
+### The record now leads on the single-document window, and the reason is asymmetric validation
+
+L-0221 previously led on 13.26 points across a two-document window and demoted 10.47 to a check,
+which inverts the preference for one construction. **Resolved toward 10.47, on evidence rather than
+habit.** The CAPACITY half of the join IS validated: at 31.03.2026 the NPP archive prints 532,739.72
+MW against the Executive Summary's 532,739.68, and an identical non-fossil total. **The GENERATION
+half is NOT validated and cannot be from these documents** — the General Review's mode-wise generation
+table ends at FY2023-24, the Executive Summary's begins at FY2024-25, they share no period, and
+neither retrieved Executive Summary carries a multi-year generation-by-fuel table. Since the widening
+depends on generation as much as capacity, the single-document figure leads and the longer one is
+given with its validation status stated on each half.
+
+### "Not published" is now a rule with a stated-search requirement
+
+**Three times in one phase, "not published" meant "not searched", and the document was there every
+time** — a dead ministry site whose documents PIB served; `L-0052`'s `not-published` for a datum CEA
+publishes under its own title; a capacity year held as a hole on guessed URLs that NPP mirrors under a
+month-stamped path. **The rule now requires a STATED search — an enumerated index, an archive
+convention read off a live page, or named exhausted routes — and says that trying guessed identifiers
+is not one.** The argument for a rule rather than care is in the asymmetry: a guessed 404 and a
+non-existent document produce identical silence, and three 404s in a row feel like confirmation while
+being three observations about a filename convention.
+
+### Arc B: target retrieved, outturn and revision NOT
+
+STATE.md now states Arc B in five clauses rather than one word, with the blocking cause named
+**separately for each piece**: the target's wording is retrieved (T1); its BASE YEAR is not; the
+OUTTURN is blocked specifically because `prana.cpcb.gov.in` is client-rendered and both available
+rendering clients fail; the REVISION is not retrieved and not asserted; and **no ledger record exists,
+deliberately.**
+
+Routes tried this batch: MoEFCC's `/annual-report` index re-enumerated — **2020-21 is the newest
+English report**, so no later one carries a 2024 outturn; the 40% revision checked for INSIDE that
+report and **absent** (`2025-26` → 0 across 961,735 characters; the single `40%` hit is a Montreal
+Protocol HCFC baseline, read in context and discounted); and MoEFCC has **no usable search endpoint**
+(`/search?q=` → HTTP 500, `/?s=` → 200 with zero matches).
+
+**What the attempt did yield is an amendment to P-125, and it is the sharpest thing in that record.**
+The same report carries the Fifteenth Finance Commission air-quality grant, which has exactly the
+specificity NCAP's headline lacks: the Ministry is nodal "to develop a) **city-wise and year-wise
+targets** on ambient air quality based on annual average concentrations of **PM10 and PM2.5**", with
+the second instalment disbursed "against the stipulated **performance-based outcomes** in terms of
+year on year improvement". City-wise, year-wise, pollutant-named and enforced by money — against a
+national target that is a ten-point range over unspecified "particulate matter" with no base year.
+**The scale differs by roughly an order of magnitude too**: 224.74 crore released and 111 crore
+sanctioned under NCAP across two years (different acts, not summed here) against 4,400 crore under
+the grant. **The city-wise targets themselves were not retrieved** — the report says the Ministry was
+appointed to DEVELOP them and does not print them.
+
+### Queued: five `contested` records with no stated ground
+
+L-0018, L-0025, L-0059, L-0068, L-0076 — the five of the eight review-sample records that still carry
+no `assessmentNote`, and all five are `contested`. **Contested is where stated ground matters most**:
+every other value asserts an outcome and invites "on what evidence?", while `contested` asserts that
+the evidence supports more than one reading and reads as self-explanatory when it is not. Without a
+note a reader cannot tell which two readings are live, whether they rest on different facts or
+different weightings, or whether the record declines because the evidence underdetermines it or
+because nobody did the work. Scope stated so it is not mistaken for the whole: these five are the
+intersection of the abstention backlog with the review sample; the corpus-wide figure remains 58 with
+no note, 29 of them contested.
+
+### Gates
+
+Counts from `validate --json`, not asserted: **series 269 · ledger 222 · provenance 125 · pairs 60 ·
+1,759 points**. `validate` 0 errors / 165 warnings · `typecheck` clean · `no-bare-root` 0 new / 0
+stale over 277 allowlisted · `no-unguarded-prose-field` 19 fields (7 guarded, 12 exempted) ·
+`figure-consistency` 14 claims, 5 declared artefacts · `reachability` every guarded mark on its own
+page · `field-render-audit` 32 prose fields over 3 layers, 0 invisible · `domain-coverage` 14/14
+surfaces · `validate:selftest` 23/23 validator rules, 2/2 output gates.
