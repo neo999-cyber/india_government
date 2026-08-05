@@ -25,6 +25,7 @@
     "enum-stamp": "node tools/enum-stamp.mjs",
     "no-bare-root": "node tools/no-bare-root.mjs",
     "review-extract": "node tools/gen-review-extract.mjs",
+    "commit": "node tools/verify-and-commit.mjs",
     "scan": "node tools/scan-text.mjs",
     "manifest": "node tools/gen-manifest.mjs"
   },
