@@ -16,6 +16,7 @@ import {
   CaveatFlag,
   DifferentFactsMark,
   DifferentFactsNegativeMark,
+  ShockExposures,
   SourceList,
 } from '@/components/marks';
 
@@ -121,10 +122,12 @@ export default async function LedgerDetail({ params }: Props) {
             <dd>{l.caseAgainst}</dd>
           </>
         ) : null}
-        {l.shockExposure ? (
+        {l.shockExposure && l.shockExposure.length > 0 ? (
           <>
             <dt>Shock exposure</dt>
-            <dd>{l.shockExposure}</dd>
+            <dd>
+              <ShockExposures items={l.shockExposure} />
+            </dd>
           </>
         ) : null}
         {/* The reasoning BEHIND the verdict, and it sits directly under the two cases because

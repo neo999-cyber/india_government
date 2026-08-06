@@ -138,6 +138,53 @@ export type ReasonKind = (typeof REASON_KINDS)[number];
 export const DISPUTE_KINDS = ['evidentiary', 'normative'] as const;
 export type DisputeKind = (typeof DISPUTE_KINDS)[number];
 
+/**
+ * WHAT THE SHOCK DID to a record. Two roles that point OPPOSITE WAYS at a verdict, which is why
+ * one prose field could not carry both: `partly` on L-0017 (the shock may have caused the win)
+ * and `partly` on L-0090 (the shock degraded the measurement) meant different things and rendered
+ * identically for the whole life of the field.
+ *
+ * `none-stated` is a STATED ABSENCE and not an empty field — nine records wrote one unprompted
+ * before any rule asked them to, which is the opposite of `claimAtLaunch`.
+ */
+export const EXPOSURE_ROLES = ['confound', 'cause', 'is-the-shock', 'none-stated'] as const;
+export type ExposureRole = (typeof EXPOSURE_ROLES)[number];
+
+/**
+ * WHETHER THE RECORD ACCEPTS THE EXPLANATION. Orthogonal to the role and a modifier rather than a
+ * third role: 15 of 66 prose values limited or refused the shock and only 4 did so as the whole of
+ * what the field said.
+ *
+ * `unstated` was authorised by the operator on 2026-08-06 and **records that NO JUDGEMENT WAS
+ * MADE — not that the explanation is unresolved or pending.** L-0061 is the case: COVID "IS THE
+ * STATED REASON for much of the delay" names an explanation offered by someone else and never says
+ * whether the record accepts it, and each of the other three values would assert a judgement the
+ * record declined. A record that HAS adjudicated and is merely tentative takes `limited`.
+ */
+export const EXPOSURE_ADJUDICATIONS = ['accepted', 'limited', 'refused', 'unstated'] as const;
+export type ExposureAdjudication = (typeof EXPOSURE_ADJUDICATIONS)[number];
+
+/**
+ * One record's stated relationship to one exogenous event.
+ *
+ * WHAT THIS DOES NOT HOLD, and the condition that would unblock it: the EVENT's own properties —
+ * window, shared-with-the-peer-panel, breaks-a-series. Those are facts about the event, not about
+ * any record, and they need a first-class shock object. Ruling 8 puts that object in PROVENANCE,
+ * where `bridgeExists` has no referent for a shock that breaks no series. **So the event stays
+ * prose until a shock breaks a series** — at which point it takes a provenance record, `event`
+ * becomes a reference, and the three properties land there rather than here.
+ */
+export interface ShockExposure {
+  /** The exogenous event, in prose. NOT a reference — no shock object exists. */
+  event: string;
+  /** What the event did to this record. Omitted only where the record is exempted by name. */
+  role?: ExposureRole;
+  /** Whether the record accepts it. Omitted for `is-the-shock`, which has nothing to adjudicate. */
+  adjudication?: ExposureAdjudication;
+  /** The record's own reasoning, verbatim from the prose this field carried before 2026-08-06. */
+  why: string;
+}
+
 export interface Unmeasured {
   /** The thing that is not measured, stated positively. */
   what: string;
@@ -457,7 +504,7 @@ export interface LedgerRecord {
   assessment: Assessment;
   caseFor?: string;
   caseAgainst?: string;
-  shockExposure?: string;
+  shockExposure?: ShockExposure[];
   seriesRefs?: string[];
   provenanceRefs?: string[];
   sources: TieredSource[];

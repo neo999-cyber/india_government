@@ -7,6 +7,12 @@
     ]
   },
   {
+    "field": "shockExposure",
+    "layers": [
+      "ledger"
+    ]
+  },
+  {
     "field": "caveat",
     "layers": [
       "series",

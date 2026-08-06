@@ -11555,3 +11555,55 @@ restatements of a structured value on findable tokens across 223 ledger and 127 
 axis where the defect actually happened is the one no mechanical check can reach.**
 
 **Gates:** see the commit.
+
+---
+
+## Cycle 2026-08-06 — phase 16 batch 3. Ruling 9, the point-of-change rule, and the exposure field BUILT.
+
+**APPEND-ONLY. This entry governs over any earlier entry describing `shockExposure` as a prose string.**
+
+**`shockExposure` IS NO LONGER A STRING.** It is an array of entries carrying `event` (prose), `role`,
+`adjudication` and `why`. Field, type, label maps, view, guarded-marks list and gate in ONE commit.
+
+**THE RENDER GUARD WAS PROVEN TO FIRE BEFORE THE VIEW EXISTED, on this axis.** A fifth `role` member
+seeded into the schema alone produced two findings from `enum-parity` — against `EXPOSURE_ROLES` in
+`lib/types.ts` and against `EXPOSURE_ROLE_LABELS` — with no record carrying the value and no view
+rendering it. That ordering was the operator's condition.
+
+**Migration, from the gate's own output:** *223 ledger records · 66 declare an exposure · 66 entries ·
+roles confound 30 · cause 19 · none-stated 9 · is-the-shock 4 · adjudication accepted 32 · limited 11
+· refused 4 · unstated 2 · 4 exempted by name · 1 frozen.*
+
+**THE PROSE SURVIVES VERBATIM on all 66**, asserted per record against the pre-migration value
+before the write. **The migration was string surgery and not a JSON round-trip**: the first draft
+used `JSON.stringify(…, null, 2)` and would have reformatted eight files wholesale, which is the M2
+defect this log has recorded four times. Indentation was detected per line and the prose token
+copied with its escapes intact.
+
+**FOUR RECORDS COULD NOT TAKE A ROLE AND ARE EXEMPTED BY NAME — L-0012, L-0049, L-0051, L-0091.**
+Batch 2 of this phase said three, on the claim that the array shape resolves L-0012. **That claim is
+withdrawn**: *"severely distorts the revenue trajectory AND precipitated the compensation dispute"*
+joins the two roles in one clause, so splitting rewrites the sentence and choosing one resolves a
+judgement the reading found undetermined. **L-0091 carries a typing decision and not an exposure** —
+it is the sentence that stated Ruling 6's test before Ruling 6 existed.
+
+**ONE FROZEN: L-0002**, typed `shock` with no exposure of its own, `baseline-context`, authored
+before the field existed. Frozen with its judgement rather than fixed, on the seam-span call.
+
+**RULING 9 — the multi-objective disclosure rule — and the point-of-change rule are written into
+`CLAUDE.md`.** Ruling 9 restricts `worked` only; `failed` stands with its ground stated, because
+restricting it would convert a demonstrated failure into a non-finding; `partly`, `contested` and
+`too-early` are disclosure only, `too-early` named explicitly. **The rule states its own
+unenforceability**: nothing records that a record announced several objectives, so no gate can find
+what it binds. The point-of-change rule is a rule and not a check because `type` and
+`contestedGround` return zero findable restatements at any precision, and because 31 of 32 mentions
+of another value are correct.
+
+**L-0209's `revisitTrigger` was corrected at `7a755fe` and is verified unchanged here rather than
+corrected twice.**
+
+**0 verdicts moved and 0 types moved**, both asserted across all 223 ledger records.
+
+**Gates:** `validate` VALID · `enum-parity` 56 members across 8 axes · `exposure` NEW, six two-sided
+controls · `reachability` 1699/1699 · `field-render-audit` 37 prose + 45 non-prose across 3 layers,
+0 invisible · `withdrawn-wording` OK · `phase-name` OK · full build green.

@@ -387,6 +387,80 @@ rediscovered:**
 **RETYPING IS VERDICT-ADJACENT AND IS NOT AUTHORISED BY THESE RULINGS.** What moves under 6 and 7 is
 reported, and the move is a separate, deliberate act.
 
+**RULING 9 — THE MULTI-OBJECTIVE DISCLOSURE RULE, ruled by the operator 2026-08-06.** Ruling 2 said
+an unmeasured limb prevents `worked`. It governs one value, and **43 of the 86 records carrying a
+`claimAtLaunch` announce more than one objective** — 20 `partly`, 8 `too-early`, 7 `failed`, 5
+`contested`, and the rest. Ruling 2 speaks to none of them.
+
+> **Where a commitment states several objectives and the verdict rests on fewer than all of them, the
+> record names which objectives ground the verdict, which do not, and why — and every ungrounded
+> objective is entered as an absence.**
+
+**IT IS A DISCLOSURE REQUIREMENT AND IT RESTRICTS ONE VALUE ONLY.** One consequence per class,
+and they differ because the four values fail in different directions:
+
+- **`worked` — unavailable.** Ruling 2, unchanged. A positive verdict on a subset asserts more than
+  the evidence carries.
+- **`failed` — THE VERDICT STANDS AND ITS GROUND IS STATED.** Restricting it would convert a
+  demonstrated failure into a non-finding: L-0011 fails on two of four announced objectives and the
+  two are decisive on the government's own sources. **Ruling 1 already settled the symmetry — a
+  standard that converts missing evidence into a negative finding is as unsound as one that converts
+  it into a positive one — and the answer in this direction is disclosure, not restriction.**
+- **`partly` — disclosure only.** It already means *part of the objective*, and it is where Ruling 2
+  sends records, so a rule that also barred it would have nowhere left to send them.
+- **`contested` — disclosure only.** The contest is about readings, not coverage; where the
+  unmeasured limb IS the contest, `contestedGround` already records it.
+- **`too-early` — disclosure only, AND IT IS NAMED EXPLICITLY HERE**, because a rule written for the
+  `failed` side sweeps in eight records where nothing is wrong: the value's own definition says the
+  evidence has not accrued, so an unmeasured limb is expected rather than defective.
+
+**Three things it must not do, each earned by a live record.** It must not make an unmeasured limb an
+excuse — L-0030 is `failed` **because** the transfer did not happen and its efficiency limb is
+unmeasurable for the same reason, so a record may not convert its own central finding into a
+measurement gap. It must not treat an **unquantified** limb as an unmeasured one — L-0209 announces a
+quantified fence and a patrol track with no length, and **an unmeasured limb has a denominator nobody
+published while an unquantified limb has none at all**, only the second being a defect of the
+announcement. And it must not sweep in `too-early`.
+
+**THIS RULE IS UNENFORCEABLE TODAY AND SAYS SO.** Nothing in the corpus records that a record
+announced several objectives, so no gate can find the records it binds — it joins Ruling 2 as a rule
+in three files that nothing can apply. **That is stated inside the rule rather than discovered later**,
+because this file already warns that a rule naming a path requires the path to exist when the rule is
+written, and here the path does not.
+
+**AND THE RULE IS WHAT TELLS `objectives[]` WHAT TO HOLD, WHICH IS WHY IT IS WRITTEN FIRST.** The
+proposed field needs the objectives as a list and a measurement state per objective — and, because of
+this rule, **a flag for whether each objective GROUNDS the verdict.** That third requirement is
+invisible until the rule exists: designing the field first would have produced one that records
+measurement and not relevance, and the rule would then have been fitted to the field. **Four `failed`
+records already satisfy the rule unprompted** — L-0011, L-0016, L-0041 and L-0030 each name which
+limbs ground the verdict and which do not.
+
+**A STRUCTURED VALUE NEVER MOVES ALONE — the point-of-change rule, 2026-08-06.** When a `type`,
+`assessment`, `contestedGround`, `tier`, `reasonKind` or `directionOfBias` value changes, **the prose
+fields that restate it are searched and corrected in the SAME operation**, before the write. The
+record is read whole, not the field being changed.
+
+**IT IS A RULE AND NOT A CHECK, AND THE MEASUREMENT IS THE ARGUMENT.** Over 223 ledger and 127
+provenance records across fourteen prose fields, a scan can only find a restatement where the value's
+spelling cannot occur in ordinary prose. `no-objective`, `too-early`, `awaiting-adjudication`,
+`undated-commitment`, `evidence-withheld` and `overstates-pre-2014` are findable — **`shock`,
+`event`, `episode`, `reform`, `institutional`, `criterion`, `measure`, `time`, `worked` and `failed`
+are ordinary English words.** So `type` and `contestedGround` return **zero** findable restatements at
+any precision, **and `type` is the axis on which the defect actually happened.** A gate built on this
+measurement would report clean on the failure it was built for.
+
+**And the second half of the argument is the ratio.** Of 32 prose mentions naming a value other than
+the record's own, **31 are correct** — value-boundary defences and dated rescoring history preserved
+under the correction convention — and one was stale. A token check would fire on thirty-one right
+answers. **The distinguishing context is semantic, not lexical: *"Not too-early"* and *"Filed
+too-early"* differ by one word and by everything.**
+
+**The nearest mechanism that exists is `withdrawn-wording`'s sibling assertion**, which binds only
+fields already carrying a correction marker — it reaches the second half of the defect and not the
+first. Extending it to fire when a STRUCTURED field changes between commits is buildable and would
+need the previous commit's value, which is a different contract from every gate in the build.
+
 **A VALUE LANDS IN THE SCHEMA, THE TYPE AND THE LABEL MAP IN ONE COMMIT, OR IT IS A PROMISE THE VIEW
 CANNOT KEEP.** Adding a member to a JSON Schema enum used to be silent: `no-unguarded-prose-field`
 and `field-render-audit` both walk the corpus, so a value no record carries yet is, to them, nothing

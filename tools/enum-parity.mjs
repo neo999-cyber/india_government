@@ -137,6 +137,21 @@ const AXES = [
     type: { file: TYPES, name: 'DOMAINS', kind: 'const' },
     labels: 'DOMAIN_LABELS',
   },
+  // Added phase 16 with the exposure field. Two axes on one field, deliberately: the role and the
+  // adjudication are orthogonal, and the whole reason the field was structured is that one prose
+  // string was carrying both.
+  {
+    axis: 'shockExposure[].role',
+    schemas: { 'schemas/ledger.schema.json': 'role' },
+    type: { file: TYPES, name: 'EXPOSURE_ROLES', kind: 'const' },
+    labels: 'EXPOSURE_ROLE_LABELS',
+  },
+  {
+    axis: 'shockExposure[].adjudication',
+    schemas: { 'schemas/ledger.schema.json': 'adjudication' },
+    type: { file: TYPES, name: 'EXPOSURE_ADJUDICATIONS', kind: 'const' },
+    labels: 'EXPOSURE_ADJUDICATION_LABELS',
+  },
 ];
 
 /**

@@ -68,6 +68,8 @@ const COUNTRY = labelMap(FORMAT, 'COUNTRY_LABELS');
 const CONTESTED_GROUND = labelMap(FORMAT, 'CONTESTED_GROUND_LABELS');
 const REASON_KIND = labelMap(MARKS, 'REASON_KIND_LABELS');
 const DISPUTE_KIND = labelMap(MARKS, 'DISPUTE_KIND_LABELS');
+const EXPOSURE_ROLE = labelMap(MARKS, 'EXPOSURE_ROLE_LABELS');
+const EXPOSURE_ADJ = labelMap(MARKS, 'EXPOSURE_ADJUDICATION_LABELS');
 
 /** The parsed maps, exported so nothing else re-parses or retypes them. */
 export const LABEL_MAPS = {
@@ -80,6 +82,8 @@ export const LABEL_MAPS = {
   CONTESTED_GROUND_LABELS: CONTESTED_GROUND,
   REASON_KIND_LABELS: REASON_KIND,
   DISPUTE_KIND_LABELS: DISPUTE_KIND,
+  EXPOSURE_ROLE_LABELS: EXPOSURE_ROLE,
+  EXPOSURE_ADJUDICATION_LABELS: EXPOSURE_ADJ,
 };
 
 const identity = () => ({ kind: 'identity' });
@@ -113,6 +117,9 @@ export const RENDERINGS = {
   'ledger.provenanceRefs': identity(),
   'ledger.sources[].url': identity(),
   'ledger.sources[].tier': labels(TIER),
+  'ledger.shockExposure[].event': identity(),
+  'ledger.shockExposure[].role': labels(EXPOSURE_ROLE),
+  'ledger.shockExposure[].adjudication': labels(EXPOSURE_ADJ),
   'ledger.unmeasured[].reasonKind': labels(REASON_KIND),
   'ledger.unmeasured[].disputeKind': labels(DISPUTE_KIND),
   'ledger.unmeasured[].reasonDisputed': phrase({ true: 'stated reason disputed' }),

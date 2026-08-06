@@ -16,7 +16,14 @@
   "contestedGround": "measure",
   "caseFor": "PLFS is the statutory national survey: large sample, Census-consistent demographics, ILO-standard definitions, and public unit-level microdata that anyone can re-analyse. CMIE is private, subscription-gated, and its sampling frame has been criticised by serious economists including a former Chief Economic Adviser. The 2019 delay was procedurally poor but the report was published unaltered, and a government suppressing data would not release the number that embarrassed it.",
   "caseAgainst": "A national survey whose headline rate falls because unpaid family work is counted as employment cannot be cited as evidence that jobs were created, whatever its sampling quality. The withholding of the first round until after a general election, and two statistical commissioners resigning over it, is a governance fact independent of the survey's technical merits. And a private survey being inconvenient is not a methodological argument against it.",
-  "shockExposure": "Demonetisation (November 2016) and GST (July 2017) both fall inside the first PLFS reference year, so the 6.1% baseline itself sits on disturbed ground. COVID then dominates every 2019-2022 comparison.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "Demonetisation (November 2016) and GST (July 2017) both fall inside the first PLFS reference year, so the 6.1% baseline itself sits on disturbed ground. COVID then dominates every 2019-2022 comparison."
+    }
+  ],
   "seriesRefs": [
    "unemployment-rate",
    "unemployment-rate-cmie",
@@ -54,7 +61,14 @@
   "contestedGround": "criterion",
   "caseFor": "Participation rising by ten percentage points while unemployment fell is not nothing — more people were working, and in a labour surplus economy absorbing them at all is an achievement. Self-employment is how most of the developing world works and treating it as failure imports an assumption about what a job should look like. Agriculture's rise is substantially a COVID artefact, with workers returning to villages when urban work collapsed, and it has begun to moderate.",
   "caseAgainst": "Every quality indicator moved the wrong way while the headline improved. Regular wage employment, the only category that reliably carries contracts, leave and social security, did not grow at all. Real rural earnings fell from ₹9,107 to ₹8,842 a month. And agriculture's share rising is a reversal of structural transformation — the process by which countries get richer — so the same data read as a development indicator says the economy moved backwards.",
-  "shockExposure": "COVID dominates: the 2020-21 and 2021-22 readings are shaped by lockdown, reverse migration and agricultural absorption. But the agricultural share had already turned upward in 2019-20, before the pandemic.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "limited",
+      "why": "COVID dominates: the 2020-21 and 2021-22 readings are shaped by lockdown, reverse migration and agricultural absorption. But the agricultural share had already turned upward in 2019-20, before the pandemic."
+    }
+  ],
   "seriesRefs": [
    "unemployment-rate",
    "self-employed-share",
@@ -94,7 +108,14 @@
   "contestedGround": "measure",
   "caseFor": "Nearly doubling female participation in six years is a genuine change in who is counted as working, and dismissing it as reclassification assumes the earlier low figures were correct when they were themselves criticised as undercounting women's work. Rural women entering household enterprises is how female employment began in most economies that later industrialised. The direction is unambiguous even if its quality is arguable.",
   "caseAgainst": "Participation rose while every measure of what those women earn or hold moved the other way — fewer in salaried work, lower earnings, more in unpaid household enterprise labour. That pattern is what distress entry looks like: households sending more members to work because income fell. And the ILO's modelled estimate for India is about 32% against PLFS's 41.7%, a nine-point gap that suggests definitional artefact rather than labour market change.",
-  "shockExposure": "COVID is central and cuts both ways — it drove distress entry and also drove reverse migration into household enterprises. The pre-2020 rise from 23.3% to 30.0% predates it.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "limited",
+      "why": "COVID is central and cuts both ways — it drove distress entry and also drove reverse migration into household enterprises. The pre-2020 rise from 23.3% to 30.0% predates it."
+    }
+  ],
   "seriesRefs": [
    "lfpr-female",
    "lfpr-female-peer"
@@ -136,7 +157,14 @@
   "caseFor": "The regime being replaced protected a small formal minority while pushing everyone else into informality — a firm crossing 100 workers faced permission requirements that gave it strong reason never to cross it. Raising the threshold to 300 removes a barrier to firms growing past the size where formal jobs appear. The codes also give gig and platform workers statutory standing for the first time, and mandate appointment letters and gratuity for fixed-term workers after one year.",
   "caseAgainst": "The 300-worker threshold means most Indian firms can now retrench or close without prior permission, which is a substantial transfer of power to employers presented as a growth measure. The 60-day strike notice constrains the only leverage workers hold. Fixed-term employment is legitimised rather than limited. And the codes passed during an opposition walkout, then sat unimplemented for five years — a reform whose urgency was asserted but not demonstrated by the pace of its own enactment.",
   "revisitTrigger": "The codes came into force in November 2025 and the formal-work share is measured annually with a lag, so this is not yet due rather than not gathered. Re-test on the PLFS written-contract and social-security shares for 2027 and 2028; if no post-implementation reading has appeared by then, it becomes an absence.",
-  "shockExposure": "COVID intervened between passage and implementation and is the stated reason for much of the delay.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "unstated",
+      "why": "COVID intervened between passage and implementation and is the stated reason for much of the delay."
+    }
+  ],
   "provenanceRefs": [
    "P-22"
   ],
@@ -169,7 +197,14 @@
   "caseFor": "Formalising an existing informal job is a real gain even when it is not a new job — it brings provident fund, pension and insurance to a worker who had none, and the count of workers inside the formal net genuinely rose. The e-Shram registration of over 30 crore unorganised workers created the first database capable of delivering benefits to people the state previously could not identify.",
   "caseAgainst": "The claims made from these numbers are not the claims the numbers support. Presenting net payroll additions as jobs created counts the same worker repeatedly as they change employers, and citing KLEMS as corroboration cites the survey back to itself. Meanwhile the direct measure of formality — written contract or social security — barely moved, which is the outcome that would have shown formalisation actually happening.",
   "claimAtLaunch": "That 6.2 crore net EPFO subscriber additions between September 2017 and March 2024, and RBI KLEMS figures of 17.19 crore additional jobs over 2014-24 against 2.9 crore over 2004-14, evidence large-scale job creation and formalisation.",
-  "shockExposure": "COVID caused a large exit from and subsequent re-entry into formal payroll, inflating net additions in the recovery years.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "COVID caused a large exit from and subsequent re-entry into formal payroll, inflating net additions in the recovery years."
+    }
+  ],
   "seriesRefs": [
    "epfo-net-additions",
    "klems-employment-claim",
@@ -216,7 +251,14 @@
   "assessment": "no-objective",
   "caseFor": "Rising educated unemployment partly reflects success: far more young Indians now complete secondary and tertiary education than a decade ago, and an educated person can afford to wait for suitable work in a way an illiterate labourer cannot, so measured unemployment rises even as welfare improves. Youth unemployment did fall from 17.8% to 10.2% on PLFS, and skilling infrastructure was built where almost none existed.",
   "caseAgainst": "An economy where a graduate is nine times likelier to be unemployed than someone who cannot read is failing at the specific task of converting education into work. Two crore applicants for tens of thousands of posts is not queue behaviour, it is the absence of alternatives. And a flagship skilling programme placing between 18% and 41% of trainees, with the CAG finding 87% of batches lacking verifiable attendance records, did not build the bridge it was funded to build.",
-  "shockExposure": "COVID disrupted hiring and examinations across 2020-2022, but the educated-unemployment pattern predates it and the ILO report's baseline runs from 2000.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "refused",
+      "why": "COVID disrupted hiring and examinations across 2020-2022, but the educated-unemployment pattern predates it and the ILO report's baseline runs from 2000."
+    }
+  ],
   "seriesRefs": [
    "youth-unemployment",
    "graduate-unemployment"
@@ -258,7 +300,14 @@
   "caseAgainst": "Four hours' notice for a country where most workers are paid daily and live where they work was a choice, and its consequence was foreseeable. That no count of deaths was maintained — while the Railways held data it did not surrender to Parliament — means the human cost of the largest internal displacement in decades has no official record and now cannot be constructed. A state that could not say how many died also could not compensate anyone, which was the stated reason it did not.",
   "differentFacts": true,
   "differentFactsNote": "The government's case rests on the evacuation - 63 lakh moved on Shramik trains - and on e-Shram, built because the crisis exposed that the state could not identify its own informal workforce. The critics' case rests on the four hours' notice and on the absence of any mortality record. The second is not a quantity but the stated absence of one, and this record holds that it can no longer be constructed, so no ledger can carry both.",
-  "shockExposure": "CORRECTED 2026-08-06 on operator Ruling 6. WITHDRAWN WORDING, quoted so the correction can be checked rather than taken on trust: this field previously read \"This record is the shock. Its confound runs the other way: it distorts every employment series for 2020-21 and 2021-22.\" The record is NOT the shock. The exodus is the consequence of a lockdown announced with four hours\u2019 notice, which this record\u2019s own caseAgainst calls a choice, and under Ruling 6 a chain of state decisions is not a shock however severe its consequences. The record is now typed episode. WHAT SURVIVES THE RETYPE UNCHANGED, because it was never a claim about the type: this record distorts every employment series for 2020-21 and 2021-22, so it remains a confound other records must carry. Its own exposure to an external shock is the pandemic, which is not this record\u2019s subject.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "unstated",
+      "why": "CORRECTED 2026-08-06 on operator Ruling 6. WITHDRAWN WORDING, quoted so the correction can be checked rather than taken on trust: this field previously read \"This record is the shock. Its confound runs the other way: it distorts every employment series for 2020-21 and 2021-22.\" The record is NOT the shock. The exodus is the consequence of a lockdown announced with four hours\u2019 notice, which this record\u2019s own caseAgainst calls a choice, and under Ruling 6 a chain of state decisions is not a shock however severe its consequences. The record is now typed episode. WHAT SURVIVES THE RETYPE UNCHANGED, because it was never a claim about the type: this record distorts every employment series for 2020-21 and 2021-22, so it remains a confound other records must carry. Its own exposure to an external shock is the pandemic, which is not this record\u2019s subject."
+    }
+  ],
   "provenanceRefs": [
    "P-28",
    "P-04"
@@ -305,7 +354,14 @@
   "assessment": "no-objective",
   "caseFor": "India's services-led path is genuinely different from the East Asian manufacturing model and has produced world-competitive sectors in IT, business services and pharmaceuticals that employ millions at high productivity. Global conditions after 2014 were far less favourable to export manufacturing than during Vietnam's or China's take-off, and automation has weakened the labour absorption that manufacturing once offered anywhere.",
   "caseAgainst": "The peer panel disposes of the global-conditions defence: Vietnam and Bangladesh transformed their employment structures over exactly the same decade under the same world economy. Services at India's productivity frontier employ a small fraction of the workforce and cannot absorb 7-8 million annual entrants. An economy whose agricultural employment share is rising while its demographic dividend window is open is not choosing a different path to the same place.",
-  "shockExposure": "COVID accelerated the agricultural reabsorption, but the divergence from peers is a decade-long trend that predates it.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "limited",
+      "why": "COVID accelerated the agricultural reabsorption, but the divergence from peers is a decade-long trend that predates it."
+    }
+  ],
   "seriesRefs": [
    "agri-employment-peer",
    "industry-employment-peer",
