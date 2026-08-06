@@ -10659,3 +10659,113 @@ fourth instance this session of normalising the page and the value differently**
 independent evidence mattered: `field-render-audit` was already reporting 0 invisible on both fields
 through its own single normaliser, so the gate and the ad-hoc check disagreed and the gate was right.
 Fixed by putting both sides through one function, which is the rule that already exists.
+
+---
+
+## Cycle 2026-08-06e — STRUCTURAL CYCLE, BATCH 5. One normaliser; the cache costed; the joint design
+
+`/data` untouched. No schema or enum contract moved.
+
+### 1. The normaliser is a module and the deploy path imports it
+
+`tools/lib/page-text.mjs` holds `norm` and `pageTextFromHtml`, extracted from `field-render-audit`
+with output byte-identical afterwards. Its header carries the four failures that earned it — an en
+dash, the `P-xx` linkifier's `"See P-26 ."`, **React's SSR comment separators becoming a space when
+`<!-- -->` is stripped as a tag**, and a curly apostrophe against a straight needle.
+
+**`tools/deploy-check.mjs`** replaces the hand-written deploy script: needles derived from `/data` in
+the same operation, non-prose rendered through `value-renderings.mjs`, fields enumerated through
+`schema-fields.mjs`, normalisation through the module above — the same four imports the build gate
+uses. Deterministic evenly-spaced sample, so a failure is reproducible and a re-run cannot "fix" a
+defect by not drawing it. **A same-form negative control on every page**: a different record's title
+must be absent, or a proxy serving one page for every URL passes every positive.
+
+**Both assertion paths proven by reintroducing the defect** — value assertion pointed at a string no
+page can carry, negative control pointed at the page's own title. **Sabotaged exit 1 with 27 value
+assertions and the control failing; clean exit 0 on the same record.** Live: 27 pages, 27 controls,
+0 missing. **Not in the build** — it needs the network.
+
+**CLAUDE.md rule:** a verification reads the page through the gate's own normaliser, or it is not a
+check; and **a disagreement between the gate and an ad-hoc check is evidence about the check**.
+
+### 2. The 212 marks, against the gate's own output
+
+`reachability --verbose`: `unmeasured 379/379 · caveat 234/234 · notes 329/329 ·
+differentFactsNote 72/72 · assessmentNote 173/173 · revisitTrigger 71/71 · bridgeNote 110/110 ·
+competingAccounts 212/212`. **1368 + 212 = 1580**; nothing else moved.
+
+**The premise that 81 records should move it by 81 mistakes a per-record FIELD for a per-entry MARK
+LIST.** `MARKS.each` returns an array and every entry is probed separately — `unmeasured` has done
+this since it was added, at 379 marks over 202 carrying records. 81 records carry 212 entries:
+1×3 · **2×41** · 3×27 · 4×6 · 5×2 · 6×2. 146 entries are objects, 66 bare strings.
+**Per-entry is the only correct granularity here**: the median record carries two accounts because
+two sides is what a dispute record IS, and a per-record mark would let a view render the first and
+drop the second while passing a guard whose purpose is that both are shown.
+
+### 3. The cache, re-costed against a measured sample
+
+**40 of the 479 distinct URLs, HEAD, 12s timeout, evenly spaced by sorted URL.** 13 returned a
+`Content-Length`; **9 exceed 10 KB. Basis n=9, unstratified — an estimate with its basis stated.**
+PDF/xlsx n=6 mean **15.2 MB** (32.9 · 22.5 · 12.6 · 12.2 · 10.2 · 0.6); HTML n=3 mean **248 KB**.
+
+| option | size over 479 | on a revision | on a disappearance |
+|---|---:|---|---|
+| hash only | **116 KB** | that it changed, when, and which records rest on it | **nothing** |
+| bounded extract | **~4-20 MB** | the passage, so the change can be characterised | the evidence for the specific claim |
+| raw bytes | **0.6-2.8 GB** | everything | everything — the only option that survives it |
+
+**Raw bytes are not ruled out on size.** 0.6-2.8 GB is affordable. They are ruled out because the
+deployment is public and mirroring several hundred government PDFs is a **distribution** decision; git
+stores every revision forever and `vercel deploy --prod` already aborts on upload; and **the failure
+actually logged four times this phase is a host CHANGING BEHAVIOUR, which a hash detects and raw bytes
+detect no better.** What raw bytes uniquely buy is the disappeared-source column.
+
+**Three sampled URLs returned something that is not the document** — `indiabudget.gov.in/...cen0221.pdf`
+1,245 bytes of `text/html`; `tutorial.gst.gov.in/...` **18 bytes** of `application/pdf`;
+`imf.org/en/Publications/WEO` 15 bytes. **Candidates, not findings — a GET would settle them, and
+`url-check` passes all three today** because it asserts a URL resolves and never what it returns.
+**27 of 40 returned no `Content-Length`**, which is a fact about the HEAD response and not about the
+documents.
+
+### The joint proposal — `commitmentState` + the `contested` split
+
+**PROPOSAL ONLY, in `STATE.md`. Nothing built, no enum touched.** One design because they fail the
+same way and because they collide: the corpus runs **three `(a)-(d)` vocabularies in the same prose
+fields** across 24 records, 7 using two — **so bare letters are ruled out on evidence.**
+
+**`commitmentState`** — `not-yet-due` · `due-undelivered` · `abandoned` · `no-trigger`. Scope marker
+is **`claimAtLaunch`**, already in the schema: **89 of 226 records**, and **all 15 records that assert
+a state in prose today carry it, with none outside** — tested, not asserted. `abandoned` ships empty
+and that is the point: across 226 records the instrument has never concluded a commitment was
+abandoned. **13 `no-objective` records carry a `claimAtLaunch`** — the `no-trigger` population, at
+present indistinguishable from the 60 that claim nothing.
+
+**`contestedGround`** — `criterion` 22 · `interpretation` 13 · `evidence-withheld` 11 · `measure` 10 ·
+`evidence-unobservable` 5 · `time` 4, with **the 2 vocabulary-residue records deliberately unvalued**,
+because minting `other` would absorb the two records that are evidence the vocabulary is short. Scope
+marker is the verdict itself. **`disputeKind` does not transfer** — its definitions are about the
+stated reason for an ABSENCE and the withdrawal of that proposal stands.
+
+**Gates that bind them, all now existing:** `no-unguarded-prose-field` (declared or exempted, no third
+state) · `field-render-audit` · `validate` conditional-required, the shape `unmeasured` already uses
+for `disputeKind` · `enum-stamp` · `deploy-check` for free.
+
+**Backfill: per-record ANCHORED STRING INSERT, never a parse-and-serialise** — four whole-file
+reformats were caught that way. Span bounded id-to-next-id, never a fixed window; anchor on the
+record's own `"assessment"` line; indentation detected from the line, never assumed; **abort on an
+anchor absent or non-unique**; expected numstat declared before the edit (89/0 and 65/0) and verified
+with `git diff --numstat`, never the writer's count; **a file holding no in-scope record is never
+opened, and the numstat proves it.** The VALUES are not mechanical: 15 transcribe, 74 are judged per
+record, and the 67 classifications are **re-read against each record** because a flag is checked
+against the RECORD, not the report describing it.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs =
+682 records, 1,759 points** · `no-unguarded-prose-field` 20 prose (8 guarded, 12 exempted) · 44
+non-prose (42 declared, 2 exempted) · `reachability` **1580/1580** marks, 662 pages ·
+`field-render-audit` 36 prose + 42 non-prose, 0 invisible, 2 exempted · `domain-coverage` 14/14,
+14/14, 1141/1141 · `figure-consistency` 18 declared claims, 5 rounding artefacts · `enum-stamp` 2
+fixtures, 8 lenses / 14 domains · `no-bare-root` 0 new, 0 stale, 277 allowlisted · `seam-span-report`
+125 spans, 34 undeclared (report-only) · `validate:selftest` 23/23 validator rules, 2/2 output gates ·
+`typecheck` clean · `deploy-check` 27 pages, 27 negative controls, 0 missing.

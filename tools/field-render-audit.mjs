@@ -17,12 +17,10 @@
  * `reachability` does: a gate reading the previous build finds every mark it already knew about and
  * reports clean, and nothing in the output distinguishes that from a real pass.
  *
- * METHOD, and the two details that decide whether it works at all:
- *   1. STRIP <script> BLOCKS FIRST. The framework embeds the entire RSC payload as escaped JSON, so
- *      a field rendering NOWHERE in the visible DOM is still present in the file. Every value would
- *      match and the audit would report a clean sweep over an entirely broken site.
- *   2. NORMALISE BOTH SIDES. Entity-unescape the page and collapse whitespace on page and value
- *      alike, or a rendered value fails to match itself over an `&#x27;` or a line wrap.
+ * METHOD. Page text and normalisation live in `tools/lib/page-text.mjs` — ONE normaliser, applied
+ * to both the page and the needle, imported by every check that looks for a value on a page. It was
+ * extracted from this file on 2026-08-06 after four ad-hoc checks in one session reported correct
+ * pages broken, each by normalising the two sides differently. Its header carries the four.
  *
  * A value is counted as rendered only if it appears WHOLE. A truncated match is a fail here, which
  * is the same standard CLAUDE.md rule 3a sets for caveats.
@@ -49,6 +47,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { leafFields, isProse, valuesAt } from './lib/schema-fields.mjs';
 import { RENDERINGS, acceptedForms, EXEMPT_NON_PROSE } from './lib/value-renderings.mjs';
+import { norm, pageTextFromHtml } from './lib/page-text.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'out');
@@ -83,31 +82,10 @@ function fieldsOf(schemaName) {
  *    caveat truncation is exactly what CLAUDE.md rule 3a forbids and a spurious hit there would
  *    have sent someone hunting a clamp that does not exist.
  */
-const norm = (s) =>
-  s
-    .replace(/[‐-―]/g, '-')       // ‐ ‑ ‒ – — ―  → hyphen
-    .replace(/[‘’]/g, "'")
-    .replace(/[“”]/g, '"')
-    .replace(/\s+/g, ' ')
-    .replace(/\s+([.,;:!?)\]])/g, '$1')     // "P-26 ." → "P-26."
-    .replace(/([(\[])\s+/g, '$1')           // "( P-101" → "(P-101"
-    .trim();
-
 function pageText(layer, id) {
   const p = join(OUT, layer, id, 'index.html');
   if (!existsSync(p)) return null;
-  let raw = readFileSync(p, 'utf8');
-  raw = raw.replace(/<script[^>]*>[\s\S]*?<\/script>/g, '');   // detail 1 — scripts FIRST
-  raw = raw.replace(/<style[^>]*>[\s\S]*?<\/style>/g, '');
-  // Attribute values a reader can act on. A URL reaches a reader as an href and nowhere else, so
-  // stripping tags before looking for it would report every citation invisible.
-  const attrs = [...raw.matchAll(/(?:href|src|datetime|title|aria-label)="([^"]*)"/g)].map((m) => m[1]).join(' ');
-  const stripped = `${raw.replace(/<[^>]+>/g, ' ')} ${attrs}`;
-  const unescaped = stripped                                    // detail 2 — normalise
-    .replace(/&#x27;/g, "'").replace(/&#39;/g, "'").replace(/&quot;/g, '"')
-    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-    .replace(/&nbsp;/g, ' ').replace(/&#x2F;/g, '/');
-  return norm(unescaped);
+  return pageTextFromHtml(readFileSync(p, 'utf8'));
 }
 
 function loadLayer(layer) {
