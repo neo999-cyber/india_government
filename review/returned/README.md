@@ -29,3 +29,26 @@ such.
 It read `pass-b-deep.md` as generated at `1af2d61` — the corrected extract, with full assessment notes
 and correction clauses intact. Its findings therefore rest on evidence the pass-A extract had removed,
 which is why it reaches the opposite conclusion on L-0026.
+
+---
+
+## STANDING CONVENTION, effective 2026-08-06
+
+**External reviews land in `review/returned/` and nowhere else.** Three rounds arrived in
+`~/Downloads` instead, and one of them — the Gemini pass-B review — was triaged as non-existent
+because only the ChatGPT file was found. **That triage weighted every pass-B finding as
+single-source and was wrong on six of them.**
+
+Naming: `pass-<a|b|c>-<model-family>-<YYYY-MM-DD>.<ext>`, with a `.txt` extraction beside every
+binary, because a PDF or a `.docx` is not greppable and every later cycle searches these rather than
+reopening them.
+
+## Pass B — deep reading, returned 6 August 2026, TWO reviews
+
+- `pass-b-chatgpt-2026-08-06.pdf` / `.txt` — "Where the instrument breaks", 11 sections
+- `pass-b-gemini-2026-08-06.docx` / `.txt` — 3 sections plus a could-not-check list
+
+Both read `pass-b-deep.md` as generated at `1af2d61`, with full assessment notes and correction
+clauses intact.
+
+**Pass A's files are renamed to the same convention**: `pass-a-chatgpt-*` was `pass-a-review-A-*`.

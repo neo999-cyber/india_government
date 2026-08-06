@@ -1,0 +1,104 @@
+
+1. Verdicts Unsupported by Evidence & Methodological Contradictions
+A. Logically Unsupported worked Verdict in L-0207 (Punatsangchhu-II Hydropower)
+Record ID: L-0207
+
+Verdict: worked
+
+The Fracture: The record evaluates the 1020 MW Punatsangchhu-II Hydroelectric Project in Bhutan. Power exports to India began on September 19, 2025, under an interim "mutually agreed starting tariff," but the formal Tariff Protocol was signed on April 9, 2026—nearly seven months later. Commercial terms were under active negotiation months after power began flowing, and zero tariff figures exist on the public record for either period. The record explicitly logs unmeasured: 2 [not-published×2]. 
+
+Contradiction with Instrument Method: The record justifies its worked verdict by stating: "Scored on delivery and on delivery only... A reader should take this score as saying the electricity flows, not that the deal is good". 
+
+In L-0200 (Emergency Procurement) and L-0203 (2016 Rafale Agreement), missing pricing details or minor release discrepancies instantly force partly or contested verdicts because the central financial defense cannot be tested. 
+
+In L-0207, the instrument artificially decouples physical commissioning from total commercial/financial opacity, granting an unqualified worked verdict. Severing physical infrastructure from fiscal accountability creates an unearned pass for the government. 
+
+B. Direct Violation of Rule C.1: too-early Assigned to Measures Not in Force
+Rule C.1 (Extract C.1): too-early is strictly defined as: "the measure is in force but has not run long enough for its stated objective to be testable. THE OBSTACLE IS ELAPSED TIME AND THE EVIDENCE TIME ACCUMULATES."
+
+Violations:
+
+L-0205 (India-EU Free Trade Agreement): Scored too-early. The claim text explicitly acknowledges: "concluded but not in force... no date exists for either [signature or entry into force]" and "nothing in the schedule binds until notifications are exchanged". 
+
+L-0188 (US 6 February Trade Framework): Scored too-early. The record explicitly states: "the central term was drafted against a specific instrument by number, and that instrument was void within a fortnight... the Interim Agreement itself... has not happened". 
+
+Impact: Both measures are not in force. The obstacle to evaluation is diplomatic/legislative execution and signature, not elapsed time. Assigning too-early breaks the core requirement of Rule C.1. 
+
+C. Arbitrary Standard for Statutory & Constitutional Mandates (failed vs. no-objective)
+The Fracture: The instrument applies two contradictory standards when evaluating non-compliance with statutory and constitutional mandates. 
+
+The Contradiction:
+
+Group A (Scored failed): L-0095 (RTE Sec 26 10% vacancy ceiling), L-0106 (RTE Schedule single-teacher schools), L-0108 (WB teacher recruitment panel annulled), and L-0162 (GST Council dispute mechanism) carry none stated at announcement (or raw quotes). All four are scored failed because the instrument treats statutory/constitutional texts as the objective. 
+
+Group B (Scored no-objective): L-0094 (National teacher-vacancy statistic withdrawn), L-0122 (AFSPA Sec 7 prosecution sanctions), L-0154 (Article 281 due consideration), L-0164 (Governor bill assent delays), and L-0167 (Inter-State Council non-meetings) also represent clear statutory or constitutional non-compliance. Yet, they are funneled into no-objective under the rationale that "no objective was stated at announcement". 
+
+Impact: In L-0122, out of 50 prosecution sanction requests filed under AFSPA Sec 7 over three decades, 0 were granted, 47 were refused, and both MoD and Army HQ attested on the record that no written criteria exist. Treating L-0122 as no-objective shields complete administrative opacity and legal immunity from a failed verdict, while RTE statutory breaches in L-0095 and L-0106 are scored failed. 
+
+2. Methodological Violations & Structural Objections
+A. Systemic Violation of Rule C.5: Unverified not-published Absence Claims
+Rule C.5 (Extract C.5): "AN ABSENCE-OF-PUBLICATION CLAIM REQUIRES A STATED SEARCH, AND TRYING GUESSED IDENTIFIERS IS NOT A SEARCH. State which of these was done, in the record: an INDEX ENUMERATED... an ARCHIVE CONVENTION READ OFF A LIVE PAGE... or NAMED ROUTES EXHAUSTED. Absent one of those, the honest wording is 'not searched', not 'not published'."
+
+The Violation: not-published is logged as the unmeasured reason across dozens of records in Extract B—including L-0026, L-0047, L-0053, L-0137, L-0144, L-0148, L-0154, L-0168, L-0178, L-0179, L-0205, L-0206, L-0207, L-0208, L-0209, and L-0210. 
+
+Impact: Across these records, the prose fails to document an enumerated index, an observed archive convention, or named routes exhausted. Extract C.5 itself acknowledges that not-published was mistakenly used for not-searched three times in Phase 15 alone. The instrument routinely logs unverified search failures as official administrative non-disclosure (not-published). 
+
+B. Structural Loophole in Undated Policy Commitments (L-0209 & L-0210)
+Record IDs: L-0209, L-0210
+
+The Fracture: The Home Minister announced commitments to fence the entire 1,643 km Indo-Myanmar border (L-0209) and scrap the Free Movement Regime (L-0210). MHA's Year-End Review 2024 omitted progress metrics entirely. The instrument classifies both as no-objective on the grounds that "A total without a date cannot become due" and "MHA set no objective against which MHA could be measured". 
+
+Evaluation of Anticipated Objection: The record's text argues that commitments lacking target completion dates cannot fall due. This anticipation is inadequate: it creates a structural exploit where political commitments made without explicit deadlines are automatically insulated from failed or due and undelivered verdicts. This rewards evasive political framing and penalizes announcements that include explicit timelines. 
+
+C. False Balance and Misapplication of contested (L-0092 & L-0114)
+Record IDs: L-0092, L-0114
+
+Evaluation of L-0092: The Ministry of Education issued a Feb 2025 factsheet deleting 2022 ASER peak/trough numbers to claim a "leap in rural school enrolment" (when enrolment actually fell 6.1 points from 2022). In July 2025, the same Ministry reinstated the 2022 numbers to claim a "learning recovery". The record admits: "The assessment vocabulary is built for measures with stated objectives and this record is a presentational act... The value may change on review if a value for presentational findings is added". Yet it scores the record contested. Equating data manipulation with "précis reading" creates false balance. 
+
+Evaluation of L-0114: The record's caveat attempts to bound the frame to "Union government publication" to preserve the claim that the state published deaths while refusing injuries. However, the record acknowledges that the J&K Chief Minister gave 6,221 pellet injuries in the Legislative Assembly 26 days prior to MHA's refusal. Bounding "the state" strictly to MHA to preserve a contested "trade-off" framing fails because the state did publish the unfavourable terms via its own state government. 
+
+3. Sourcing Tier Inversion & Systematic Directional Bias
+A. Thin Sourcing on Success Claims (worked)
+The Pattern: Across Extract B, records assigned worked verdicts rest on 1 or 2 official T1 government releases:
+
+L-0023 (Asset Quality Review): 1 source [T1×1] 
+
+L-0026 (PSB Recapitalisation): 1 source [T1×1] 
+
+L-0029 (Digital Public Infrastructure): 1 source [T1×1] 
+
+L-0047 (Railway Electrification): 1 source [T1×1] 
+
+L-0052 (Renewable Energy Expansion): 1 source [T1×1] 
+
+L-0053 (Port Efficiency): 1 source [T1×1] 
+
+L-0207 (Punatsangchhu-II Hydropower): 2 sources [T1×2] 
+
+L-0014 (Flexible Inflation Targeting): 1 source [T4×1] 
+
+Impact: Awarding worked verdicts based almost exclusively on official government press releases accepts government self-reporting as ground truth. In contrast, missing figures or minor release discrepancies in L-0200 or L-0203 instantly demote those records to partly or contested. 
+
+B. Systematic Political / Directional Bias
+The Pattern: Hard physical infrastructure and macroeconomic reforms receive delivery scores (worked / partly), while institutional governance, civil liberties, and regional conflict policies are insulated from evaluation. 
+
+The Evidence in Extract B:
+
+Physical Infrastructure & Macro Successes: L-0014, L-0023, L-0026, L-0029, L-0047, L-0048, L-0052, L-0053, L-0151, L-0207 are all scored worked or partly. 
+
+Governance, Human Rights, Kashmir, & Federalism: L-0075, L-0079, L-0082, L-0094, L-0110, L-0114, L-0116, L-0122, L-0123, L-0131, L-0136, L-0137, L-0144, L-0148, L-0164, L-0166, L-0167, L-0168, L-0178, L-0179, L-0184, L-0187 contain zero worked or failed verdicts. Every single one is funneled into no-objective or contested. 
+
+Impact: The framework evaluates physical infrastructure against narrow physical targets (e.g., broad gauge electrified, port turnaround time halved), granting worked verdicts. Conversely, when evaluating severe institutional breakdowns (e.g., AFSPA Sec 7 0/50 prosecution sanction requests granted, 1,400-day Governor bill delays, 4-year CSS funding suspensions, unwritten burial of encounter dead), it neutralizes them as no-objective ("no launch claim was made") or contested ("two defensible readings"). The instrument systematically credits the government for physical infrastructure builds while insulating its civil liberties, federalism, and human rights record from negative scores. 
+
+What I could not check from this file alone
+The 269 Time Series Records & Point-Level Data: Extract B omits the underlying time series data. I could not check whether the raw series points contain undeclared basis breaks, improper splices across Finance Commission award boundaries (violating P-103), or unflagged imputed values. 
+
+The 60 Paired Comparison Records: The full prose, alignment rules, and mathematical derivations of the 60 parts/pairs records are absent. I could not check whether derived ratios propagate input uncertainties or violate Rule C.6c. 
+
+Full Prose for 153 Ledger Records & 127 Provenance Records: Extract B contains only 73 selected ledger records. I could not evaluate whether the prose for the remaining 153 ledger records and 127 provenance records contains unstated assumptions or unacknowledged contradictions. 
+
+The Rendered Frontend Output: Because I am reviewing raw data text rather than the built HTML output, I could not verify whether fields like caveat, revisitTrigger, and assessmentNote render visibly without truncation across all domain and summary pages. 
+
+Path-Probing Search Logs: I could not check the repository's path-probing logs to verify whether the not-published claims represent genuinely attempted search routes or unexecuted guesses that should be classified as not-searched under Rule C.5. 
+
+The Verification Log (docs/verification-log.md): Historical working notes and commit diffs were not provided, preventing verification of the specific analytical triggers behind historical record rescores. 
