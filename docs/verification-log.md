@@ -11008,3 +11008,94 @@ sentence.**
 non-prose, 0 invisible, 2 exempted · `no-unguarded-prose-field` 20 prose · 45 non-prose ·
 `domain-coverage` 14/14, 1141/1141 · `figure-consistency` 18 declared · `enum-stamp` 2 fixtures ·
 `no-bare-root` 0 new, 0 stale · `validate:selftest` 23/23, 2/2 · `typecheck` clean.
+
+---
+
+## Cycle 2026-08-06h — BATCH 8. Preparing the 49-record decision. NOTHING DECIDED
+
+`/data` untouched, no verdict moved, no schema or enum changed.
+
+### 1. The extract defeated the review on ALL 34 flagged records, not one
+
+Median cut ~400 bytes; the worst showed 30–107 of a 1,100–1,300-byte note; **L-0205 showed 10 bytes
+of 242**. Corpus-wide the first-sentence rule **cut 87 per cent of `assessmentNote` by volume and
+removed the correction marker from 49 of the 173 records carrying one.**
+
+**The defect ran BOTH ways.** It manufactured A2 (already recorded). It also **withheld evidence that
+sharpens two other findings**: L-0207's note concedes *"Scored on delivery and on delivery only"*, and
+L-0122's carries `VALUE-AND-NOTE RECONCILED` saying it was rescored *"in the pass that introduced
+no-objective to drain the contested sink"* — a motive the reviewer did not have. And it defeated one
+premise: L-0026's note says *"Worked is therefore asserted on the recapitalisation objective … and
+NOT on consolidation"*, meeting the reviewer's own *"unless omitted evidence establishes"* condition.
+L-0209 converts to a **disagreement**: the record agrees on the facts and differs on the value's name.
+
+**FIXED.** Correction clauses are never stripped; `assessmentNote` prints in full; provenance
+`whatChanged` keeps its first sentence and appends the correction carrier with an elision mark, since
+**5 of the 6 provenance corrections sat beyond the first sentence**. Verified **40 of 40 ledger and
+4 of 4 provenance corrections reach the extract**. The apparent miss, P-49, was **my verification
+regex** matching "previously enrolled in by default" — the generator's needle correctly ignored it.
+`pass-a-structural.md` 240,871 → **351,423 bytes**.
+
+### 2. The 24 note-less `contested` records — none is a missing ground
+
+**All 24 carry both a substantial `caseFor` and `caseAgainst`** (338–1,719 bytes each) and all now
+carry a classified ground: criterion 7 · measure 7 · evidence-withheld 4 · time 2 ·
+evidence-unobservable 2 · interpretation 2. **`assessmentNote` is a note on the VALUE, so its absence
+means no strain was recorded — not that no reasoning exists**, and the reasoning sits in
+`caseFor`/`caseAgainst`, **which Extract A omitted entirely**. Batch 13's generalisation from five
+holds, for a reason it did not state. **18 of 24 are two-readings grounds; 6 are missing-evidence
+grounds, and those 6 are where the reviewers' description is accurate.**
+
+### 3. The timidity test — the method is working on the heavily-cited set
+
+**82 per cent of non-evaluative records with ≥4 citations show a source-conflict signal**, against 64
+per cent below 4; the dominant signal is a declared provenance record carrying `competingAccounts`
+(24 of 37). **The extra citations ARE the two sides of a dispute.** Contested records on a
+missing-evidence ground carry *more* citations (3.1) than two-readings grounds (2.7).
+
+**The residual is 8 records — heavily cited, non-evaluative, no conflict at all**: L-0123 L-0021
+L-0164 L-0166 L-0213 L-0131 L-0167 L-0018. **Five are constitutional or statutory-duty records, and
+L-0164, L-0167 and L-0213 are already in the reviewers' sets.** Three findings converge on the same
+records: heavily evidenced, sources agreeing, constitutional duty, no verdict.
+
+### 4. The decision brief — two questions, in STATE.md
+
+**(a) Is an undated target scoreable?** 13 records. Not-scoreable moves 0 but commits the instrument
+to saying so where a reader sees it, because `no-objective` reads "no objective was stated" and that
+is **false on all 13**. Scoreable moves up to 13, **fewer on inspection — at least 3 (L-0218, L-0219,
+L-0220) are records about the instrument's OWN retrieval, not government commitments.**
+
+**(b) Does one government press release support `worked`?** `worked` mean 1.4 citations vs `failed`
+3.3, T1×12 T4×1, and **every resolved series is also T1**. A `worked`-only floor moves up to 7;
+**a floor of ≥2 for every scored verdict moves 61 across seven classes** — and the symmetry number is
+that **`worked` is 78 per cent single-citation, `partly` 47 per cent, `failed` 25 per cent.** The
+asymmetry is a gradient, not a `worked`-only defect.
+
+**`too-early` is the cheapest item in the set**: L-0188 and L-0205 reason correctly from the obstacle
+but the definition's first clause says "in force" and they are not. **Amend the wording, move no
+verdict.**
+
+**`commitmentState` cannot be designed before (a) is answered.** If undated targets are not
+scoreable, `no-trigger` is right and the field **formalises in a schema the behaviour both reviews
+attack**. If they are scoreable, `no-trigger` should not exist. **Either way the scope marker needs a
+second condition** — the claim must be a government commitment, not the corpus's account of its own
+retrieval.
+
+### 5. Both passes reshaped, neither run
+
+**Pass B reselected: 73 records.** The two largest previous criteria — corrected more than once,
+rescored after shipping — **carried 2 of the 8 records the reviewers argued about and are dropped**;
+a criterion selecting for the author's own correction history selects for what the author already
+knew was wrong. Now the 49 at risk **grouped by finding with their comparison sets**, plus the 10
+hardest calls **as a control**. 305,363 → **616,172 bytes**.
+
+**Pass C's E.2 now carries the `why` for all 311 entries** — it was ids-only, which is why the pass
+could not test the `not-published` finding it exists for. 293,898 → **521,039 bytes**.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs
+= 682 records, 1,759 points** · `reachability` 1645/1645 · `field-render-audit` 36 prose + 43
+non-prose, 0 invisible, 2 exempted · `no-unguarded-prose-field` 20 prose · 45 non-prose ·
+`domain-coverage` 14/14, 1141/1141 · `figure-consistency` 18 declared · `enum-stamp` 2 fixtures ·
+`no-bare-root` 0 new, 0 stale · `validate:selftest` 23/23, 2/2 · `typecheck` clean.
