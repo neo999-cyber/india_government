@@ -7,7 +7,6 @@ You have no access to the repository, so this document has to be sufficient on i
 
 - **Extract C — Method.** The instrument's own rules, quoted from the files that hold them, so you can check whether they were followed instead of inferring them from the output.
 - **Extract E — Compliance surface.** The record text each rule in Extract C actually binds, so a rule can be tested against what it governs rather than against an impression of the corpus.
-- **Extract D — Corrections.** Every record that carries a self-correction or withdrawn wording, with the needle that found them.
 
 **This pass exists for finding types 3 and 5 — an absence asserted without a search, and a rule the corpus states but did not follow.** Extract C is the rulebook and Extract E is the text each rule binds. Read the rule, then read what it governs, and report the gap. **Start with E.0**, which says which rules cannot be tested from data at all.
 
@@ -1130,9 +1129,19 @@ EXCLUDES  12(1)(c), 239AA(7)(b), 370(1)(d) and the like
 - **L-0148** `differentFactsNote` — The comparison is unbuilt, not unbuildable, and an unbuilt comparison fails (c) expressly.
 - **L-0082** `revisitTrigger` — Re-test against (c) then.
 
-## E.5 — Corrections in full field text — 75 fields
+## E.5 — Corrections in full field text — 75 fields across 66 records
 
-Extract D indexes these; this prints them, because the convention can only be judged on the sentence. The rule is that a correction is made in the record itself and **the withdrawn wording survives inside the sentence that withdraws it** — so the wrong figure is still on the page by design. Test: does each one name what it withdrew, why the old form was wrong, and in which direction the error ran? A correction that says only *"corrected"* fails the convention it claims to follow.
+**These are included deliberately and are not hidden anywhere in this document.** The rule is that a correction is made in the record itself and **the withdrawn wording survives inside the sentence that withdraws it** — so the wrong figure is still on the page, by design. If you read one of these as a live error, report it: that is evidence the correction is not visible enough, and it is a finding rather than noise.
+
+Test each one: does it name what it withdrew, why the old form was wrong, and in which direction the error ran? **A correction that says only "corrected" fails the convention it claims to follow.**
+
+**The needle, printed so the count has a scope.** A field appears here when it matches:
+
+```
+/\b(?:CORRECTED|RESCORED|VALUE-AND-NOTE RECONCILED|Bounded|CLOSED)\s+\d{4}-\d{2}-\d{2}|\bthis (?:record|sentence|note|figure) (?:previously|originally)\b|\bpreviously (?:read|carried|gave|said|stated|described|counted|attributed|dated|led on|quoted)\b|\bis WITHDRAWN\b|\bthat example is WITHDRAWN\b|\bThe earlier framing is superseded\b|\breasonKind CORRECTED\b/
+```
+
+It matches only **self-referential** corrections — a record saying what IT previously said. Ordinary uses of "withdrawn" and "superseded" that describe the world (a measure withdrawn by its enacting authority, an estimate superseded by a later answer) are excluded by construction, and there are many of them. **A needle bounds what it finds and never what there is**: a correction phrased in some other way is not in this list. Found across 60 ledger and provenance records and 6 series.
 
 **L-0066** `assessmentNote`
 
@@ -1460,87 +1469,6 @@ The filing rule in Extract C is settled and specific: acquisition cost and payme
 | L-0120 | governance, defence, kashmir | defence-sector | `no-objective` |
 | L-0121 | governance, kashmir | defence-sector | `no-objective` |
 | L-0122 | governance, kashmir | defence-sector | `no-objective` |
-
----
-
-# EXTRACT D — CORRECTIONS AND WITHDRAWN WORDING
-
-**These are included deliberately and are not hidden anywhere in this document.** The convention in C.7 means a corrected record still contains the wording it withdrew, inside the sentence that withdraws it. If you read one of these as a live error, report it — that is evidence the correction is not visible enough, and it is a finding rather than noise.
-
-**The needle, printed so the count has a scope.** A field is listed here when it matches:
-
-```
-/\b(?:CORRECTED|RESCORED|VALUE-AND-NOTE RECONCILED|Bounded|CLOSED)\s+\d{4}-\d{2}-\d{2}|\bthis (?:record|sentence|note|figure) (?:previously|originally)\b|\bpreviously (?:read|carried|gave|said|stated|described|counted|attributed|dated|led on|quoted)\b|\bis WITHDRAWN\b|\bthat example is WITHDRAWN\b|\bThe earlier framing is superseded\b|\breasonKind CORRECTED\b/
-```
-
-It matches only **self-referential** corrections — a record saying what IT previously said. Ordinary uses of "withdrawn" and "superseded" that describe the world (a measure withdrawn by its enacting authority, an estimate superseded by a later answer) are excluded by construction, and there are many of them. **A needle bounds what it finds and never what there is**: a correction phrased in some other way is not in this list.
-
-**Found: 60 ledger and provenance records, and 6 series, at `059912b`.** Full text is in the record itself — in Extract B for the 14 of these that are there, and in the field named below for the rest.
-
-| record | verdict / bias | fields carrying a correction |
-|---|---|---|
-| L-0011 | `failed` | assessmentNote |
-| L-0012 | `partly` | assessmentNote |
-| L-0013 | `failed` | assessmentNote |
-| L-0014 | `worked` | assessmentNote |
-| L-0016 | `failed` | assessmentNote |
-| L-0017 | `partly` | assessmentNote |
-| L-0018 | `contested` | whatHappened |
-| L-0021 | `no-objective` | whatHappened |
-| L-0023 | `worked` | assessmentNote |
-| L-0024 | `partly` | assessmentNote |
-| L-0026 | `worked` | assessmentNote |
-| L-0029 | `worked` | assessmentNote |
-| L-0030 | `failed` | assessmentNote |
-| L-0034 | `partly` | assessmentNote |
-| L-0035 | `partly` | assessmentNote |
-| L-0036 | `partly` | assessmentNote |
-| L-0037 | `partly` | assessmentNote |
-| L-0038 | `partly` | assessmentNote |
-| L-0039 | `partly` | assessmentNote |
-| L-0041 | `failed` | assessmentNote |
-| L-0044 | `partly` | assessmentNote |
-| L-0045 | `partly` | assessmentNote |
-| L-0047 | `worked` | assessmentNote |
-| L-0048 | `partly` | assessmentNote |
-| L-0050 | `partly` | assessmentNote |
-| L-0051 | `failed` | assessmentNote |
-| L-0052 | `worked` | whatHappened, assessmentNote, caseFor, unmeasured[].why |
-| L-0053 | `worked` | assessmentNote |
-| L-0054 | `partly` | assessmentNote |
-| L-0055 | `partly` | assessmentNote |
-| L-0062 | `partly` | assessmentNote |
-| L-0066 | `reversed` | assessmentNote |
-| L-0067 | `failed` | assessmentNote |
-| L-0072 | `partly` | assessmentNote |
-| L-0090 | `partly` | assessmentNote |
-| L-0093 | `partly` | assessmentNote |
-| L-0094 | `no-objective` | assessmentNote |
-| L-0111 | `no-objective` | assessmentNote |
-| L-0112 | `no-objective` | assessmentNote |
-| L-0114 | `contested` | caveat |
-| L-0117 | `no-objective` | assessmentNote |
-| L-0119 | `no-objective` | assessmentNote |
-| L-0120 | `no-objective` | assessmentNote |
-| L-0121 | `no-objective` | assessmentNote |
-| L-0122 | `no-objective` | assessmentNote |
-| L-0123 | `no-objective` | assessmentNote |
-| L-0124 | `no-objective` | summary, assessmentNote |
-| L-0129 | `contested` | sources[].name |
-| L-0195 | `contested` | assessmentNote |
-| L-0218 | `no-objective` | summary, caseAgainst |
-| L-0221 | `partly` | summary, whatHappened, assessmentNote |
-| L-0222 | `failed` | whatHappened |
-| L-0223 | `too-early` | caseAgainst |
-| L-0224 | `contested` | unmeasured[].why |
-| L-0225 | `too-early` | unmeasured[].why |
-| L-0226 | `contested` | summary, whatHappened |
-| P-112 | `degrades-precision` | whatChanged |
-| P-121 | `obscures` | notes |
-| P-123 | `obscures` | whatChanged |
-| P-87 | `obscures` | whatChanged |
-
-Series carrying one: `jkccs-civilians-killed-by-armed-forces` (notes) · `non-fossil-capacity-share` (notes) · `non-fossil-generation-share` (notes) · `re-capacity` (notes) · `res-capacity-share` (notes) · `res-generation-share` (notes).
 
 ---
 

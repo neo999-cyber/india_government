@@ -10444,3 +10444,103 @@ Now stamped with the last commit to touch `data` or `schemas` — **`059912b`, 2
 the only commit whose change could alter the extract's content. The stamp now changes when the corpus
 changes and not otherwise. Regeneration proven byte-identical across two consecutive runs, all four
 files.
+
+---
+
+## Cycle 2026-08-06c — STRUCTURAL CYCLE, BATCH 3. Vintage scoped; growth accounted; pass A blocked
+
+`/data` untouched — `git diff --numstat -- data` returns nothing. No schema, enum or gate contract
+moved.
+
+### 1. `vintage` on ledger and provenance sources — REPORTED, nothing changed
+
+**The premise needed correcting and the correction is the finding.** The field that exists on series is
+defined in its own schema as *"Download/access date, to whatever precision the source states"* — an
+ACCESS date, not a content date. The data agrees: **201 of 269 series carry it** and the values cluster
+on the dates the research sessions ran (`2026-08`×104, `2026-07-31`×39, `2026-08-03`×15), with 14
+outside the working window. **Correct usage, checked against the schema before it was called drift.**
+So extending `vintage` would give ledger and provenance the access date and **not** the content edition
+the brief asks for; reusing the name for the stronger meaning would be the two-axes-in-one-field defect
+for the fifth time.
+
+**(a) What it would take — five places, one of them a prerequisite.** Two schema files byte-identically
+(`TieredSource` is duplicated and both are `additionalProperties: false`, so a vintage is REJECTED
+today) · `lib/types.ts` · **a view that is not the one that already works** — `SourceLine` renders
+`vintage` but serves series and peers; ledger and provenance render through `SourceList`, which prints
+name, url and tier and nothing else · `reachability`'s list or an exemption by name · **and the
+non-prose render assertion, which is a PREREQUISITE**: `vintage` carries a `pattern`, and both render
+gates filter on `!v.enum && !v.format && !v.pattern`, so the field would be **unguarded by
+construction from the day it landed** — the `disputeKind` shape exactly.
+
+**(b) How many would need one: 936 citations across 353 records** (ledger 640, provenance 296) — the
+whole population. Under the schema's own trigger (*"WDI and any source that revises history"*),
+**146 sit on hosts that revise**, and that figure is a candidate list, not a finding: the host is a
+proxy for the behaviour.
+
+**(c) Fillable from documents on disk: ZERO, and the reason matters.** No retrieved source document is
+on disk — `data/incoming/` holds a README, and the only committed non-code artefacts are test fixtures,
+build output and one audit text file. **Every retrieval here is transient.** For the field as defined
+the information is **not recoverable at all**: re-retrieving tomorrow records tomorrow's access date,
+not the one the claim rests on. What IS fillable from the record's own text is the CONTENT edition —
+**178** names edition-shaped (a year beside *Report/Review/Survey/Annual/Census/Round/Findings*),
+**584** carrying a bare year that **may be the year of the THING rather than the edition**
+(*"Farm Laws Repeal Act 2021 and parliamentary record"*), **174** with no year at all, **150** with
+nothing in either name or url. **The 584 are the argument FOR the field**: a year inside free text
+cannot be told apart from the year of the subject, which is the shape of the stock-versus-flow error
+that cost four correction cycles.
+
+### 2. The combined file's 251,251 bytes, accounted in the same form as the 13,163
+
+Sectioned by identical anchors, in bytes, `aa80fad` against `9a62fec`: **Extract E +248,976** (did not
+exist) · opening+brief **+653** · omissions **+462** · cut note **+1,191** · gates **−31** (a
+re-capture at a later commit). **Extract A, B, C and D are byte-identical across the refactor** — the
+check worth having, since the section registry moved every block onto a new composition path. Sum of
+deltas equals the file delta exactly. **E is 99.1 per cent of the growth.**
+
+### 3. Extract D now carried by pass B only; Extract E stands with C alone
+
+**Pass B loses nothing.** **Pass C loses 4,337 bytes and no capability — but only because three things
+moved with it.** D carried the correction needle, the exclusion reasoning, and the instruction that
+reporting a corrected error as live is a finding about visibility rather than noise; E.5 printed all 75
+fields in full and carried none of the three, opening *"Extract D indexes these"* — a dangling
+reference the moment D left. E.5 now carries all three and names its own population (60 ledger and
+provenance records, 6 series). Verified after regeneration: `EXTRACT D` appears **0** times in pass C.
+
+**The resize is 1.1 per cent and is reported as such.** pass-c 297,262 → **293,898**; the other files
+unchanged. **Removing an index does not fix a skim risk.** Pass C's weight is E.5 (97 KB) and E.3
+(72 KB) — 58 per cent of the file and the pass's actual subject; pass B's is Extract B at 257 KB, whose
+only lever is fewer records, which is a change to the selection criteria and not a resize. **No further
+cut made: the evidence does not settle one.**
+
+### 4. PASS A NOT RUN — no non-Claude model is USABLE here. No Claude run substituted
+
+**The precise claim: not unreachable, uncredentialled.** Channels varied rather than failures
+accumulated in one — env vars (`ANTHROPIC_BASE_URL` resolves to `api.anthropic.com`, not a multi-model
+gateway; no other provider key) · shell rc and dotfiles · CLIs (`llm`, `openai`, `gemini`, `ollama`,
+`aichat`, `mods`, `sgpt`, `gcloud` — none installed) · local servers (11434, 1234, 8080, 8000, 4000,
+3000 dead; **port 5000 answers and is macOS AirTunes**, identified rather than assumed) · MCP registry
+(search for inference connectors returns empty).
+
+**Positive control through the same restriction:** `api.openai.com/v1/models` **401** and
+`generativelanguage.googleapis.com/v1beta/models` **403** — both resolve and answer. **The network is
+not the blocker and this is not a resolver artefact**, which this machine has produced before.
+
+**One channel considered and declined:** driving a logged-in chat UI. It would use the operator's
+account for an unauthorised substantial action, a 241 KB document cannot be pasted into a chat surface
+verifiably, and the result would not be reproducible — **and a pass whose input cannot be reproduced
+cannot be re-run against a changed corpus**, which is why the extract is deterministic in the first
+place.
+
+**Handoff:** `review/pass-a-structural.md`, 240,871 bytes, corpus at `059912b`. Capture verbatim to
+`review/pass-a-<model>-<date>.md`. **Not to a Claude model** — an independent pass run on the family
+that authored the corpus shares the blind spots it exists to find.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs =
+682 records, 1,759 points** · `manifest` 682 records, 71,554 bytes · `no-bare-root` 0 new, 0 stale,
+277 allowlisted from 277 frozen · `no-unguarded-prose-field` 19 prose fields, 7 guarded / 12 exempted
+· `figure-consistency` 18 declared claims, 18 checked against source and printed operands, 5 rounding
+artefacts declared · `enum-stamp` 2 fixtures match 8 lenses / 14 domains · `seam-span-report` 125
+spans, 91 declaring, 34 not (report-only) · `typecheck` clean · `reachability`, `field-render-audit`
+and `domain-coverage` run in the build gate at commit.

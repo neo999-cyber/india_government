@@ -9,11 +9,11 @@ SECTIONS (built once, shared between files)
   C               30,073
   D                4,337
   omissions        2,361
-  E              248,976
-  sum            749,718
+  E              250,081
+  sum            750,823
 
 FILES (opening block differs per file; shared sections are byte-identical across them)
-  adversarial-pass-input.md      752,784 bytes   5,296 lines
+  adversarial-pass-input.md      753,885 bytes   5,306 lines
   pass-a-structural.md           240,871 bytes   2,851 lines
   pass-b-deep.md                 305,363 bytes   1,700 lines
-  pass-c-method.md               297,262 bytes   1,562 lines
+  pass-c-method.md               293,898 bytes   1,490 lines
