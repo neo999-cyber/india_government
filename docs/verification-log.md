@@ -10640,3 +10640,22 @@ non-prose (42 declared, 2 exempted)** · `reachability` **1580/1580** marks, 662
 declared claims, 5 rounding artefacts · `enum-stamp` 2 fixtures, 8 lenses / 14 domains ·
 `no-bare-root` 0 new, 0 stale, 277 allowlisted · `seam-span-report` 125 spans, 34 undeclared
 (report-only) · `validate:selftest` 23/23 validator rules, 2/2 output gates · `typecheck` clean.
+
+### Deployed verification — 14/14, `6b72097`, and TWO MORE READER DEFECTS CAUGHT
+
+Against `india-government.vercel.app`. Lens labels read from `lib/format.ts` in the same operation;
+record sets read from `/data`. **Positive and negative pass through the same restriction**: records
+that were in the invisible set show their lens on their own page and link to it, and a record
+carrying NO lens shows no lens marker — without that negative, a marker printed unconditionally
+would pass every positive. Same pair on the boolean: `differentFacts` false-with-no-note now renders
+the negative mark, and a TRUE record renders the other mark and not this one.
+
+**The first run scored 12/14 and BOTH failures were mine.** `lens · Europe` failed because React's
+SSR comment separator sits between the label and the text, so tag-stripping produced
+`lens ·  Europe` with two spaces; the TRUE mark failed because the page carries a curly apostrophe
+and my needle a straight one. **The pages were right and the reader was wrong** — checked by reading
+the raw bytes before concluding, which is what stopped a rendering bug being invented. **Third and
+fourth instance this session of normalising the page and the value differently**, and the reason the
+independent evidence mattered: `field-render-audit` was already reporting 0 invisible on both fields
+through its own single normaliser, so the gate and the ad-hoc check disagreed and the gate was right.
+Fixed by putting both sides through one function, which is the rule that already exists.
