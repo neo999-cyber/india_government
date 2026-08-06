@@ -187,6 +187,73 @@ false because one of those records had been filled twenty minutes earlier, by th
 control was measuring its own edit. Same shape as `url-check` reporting "0 to check" after the push
 it was meant to check. Re-read the claim's own timestamp before trusting a re-run.
 
+### The governing principle, ruled by the operator 2026-08-06
+
+> **No record or claim stands on a source that is not credibly independent of what it establishes.**
+
+This is the principle the rest of the sourcing discipline serves, and it is stated here as a
+principle because it decides cases the specific rules do not reach. It asks a different question
+from the tier ladder. **The ladder grades the artefact; this grades the relationship between the
+artefact and the claim it is made to carry.** Both questions are asked of every citation and they
+have different answers: a ministry press release is a T1 document and, on the question of whether
+that ministry succeeded, no evidence at all. Nothing about the ladder was wrong — it was never
+asked this question.
+
+Four rulings follow from it, all effective 2026-08-06. The first two are written into the
+`assessment` definition in `schemas/ledger.schema.json` and the `Assessment` doc comment in
+`lib/types.ts`; the second two are the two enum values authorised in the same batch.
+
+**RULING 1 — `worked` REQUIRES EVIDENCE INDEPENDENT OF THE ANNOUNCING BODY.** A press release from
+the party being assessed is not credible evidence that the party succeeded. **Where no independent
+source exists, the record is not `failed`.** The outcome is *unestablished*, not negative, and
+unestablished is `partly` where part of the objective is independently established, or `contested`
+where the readings genuinely diverge. Getting this half right is the trap: a standard that converts
+missing evidence into a negative finding is as unsound as one that converts it into a positive one,
+and it would make the instrument's own evidentiary weakness read as a finding about the government.
+Independence is a matter of degree and the record states which it has — a different institution of
+the same state measuring the announcing body (the RBI on the Ministry of Finance, the CEA on the
+MNRE, a later Finance Commission on an earlier one) is *weaker* than a non-state source and
+*stronger* than the announcing body's own release, and the note says which of the three it is
+rather than asserting "independent" flatly.
+
+**RULING 2 — AN UNMEASURED LIMB PREVENTS `worked`.** Where a commitment states several objectives
+and **any one of them is unmeasured**, `worked` is unavailable and the verdict is `partly`. **This
+governs the class, not the three records that exposed it.** There is no centrepiece exception and
+the method does not permit objectives to be weighted after the results are known. A record whose
+own note explains why one limb should weigh less has **documented a departure from the definition,
+not authorised one** — the same finding batch 9 reached about L-0026 and the reason an anticipatory
+note is never a defence.
+
+**RULING 3 — A STATED, QUANTIFIED COMMITMENT WITH NO DEADLINE IS NOT `no-objective`.** It takes its
+own value, `undated-commitment`: *stated and quantified, no deadline, cannot fall due*. `no-objective`
+had been doing two contradictory jobs — nothing was claimed, and something concrete was claimed with
+no date attached — and the second reading had the effect of insulating a quotable promise from ever
+being scored. **Progress against such a commitment is reportable even though it can never become
+overdue.** The value says the clock is missing, not the objective.
+
+**RULING 4 — A FOREIGN GOVERNMENT PRIMARY TAKES ITS OWN TIER, `T1F`.** T1 is Indian official and T2
+is multilateral; a non-Indian national government is neither, and 19 citations sat in T1 by default
+because the ladder had nowhere to put them. A letter rather than a number, because the ladder's
+numbers descend in evidentiary strength and a foreign gazette is not weaker than a contested
+composite index. It also does work the ladder could not: under Ruling 1 a foreign government primary
+**is** independent of the Indian body being assessed and an Indian official release is not, and one
+tier holding both hid exactly that.
+
+**A VALUE LANDS IN THE SCHEMA, THE TYPE AND THE LABEL MAP IN ONE COMMIT, OR IT IS A PROMISE THE VIEW
+CANNOT KEEP.** Adding a member to a JSON Schema enum used to be silent: `no-unguarded-prose-field`
+and `field-render-audit` both walk the corpus, so a value no record carries yet is, to them, nothing
+at all — no record holds it, no page prints it, no gate speaks — and the first record authored into
+it would render as `undefined`. `tools/enum-parity.mjs` closes that: per axis, the schema set, the
+`lib/types.ts` declaration and the label map the view renders through must be **equal in both
+directions**, a label for a dropped member being a view promising a value the data cannot hold. Run
+before the type and the view exist it names the new member against both, which is what proving a
+guard fires *before* the change means. Its first live run caught a real one: a perl edit adding the
+source tier `T1F` to every `"T1", "T2"` pair in the schemas had also landed it in `term`, an unrelated
+axis that shares the spelling by accident. Declarations are compared as sets; **`allOf` / `if` /
+`then` branches are CONSTRAINTS**, checked as subsets whose every omission is declared by name in
+`CONSTRAINT_OMISSIONS` — that is what forced `undated-commitment` into the rule requiring `caseFor`
+and `caseAgainst`, which a set comparison alone would have let slip.
+
 **GRADE THE DOCUMENT, NOT THE SERVER — the mirror rule, ruled by the operator 2026-08-06.** Identical
 bytes ARE the document. A High Court judgment retrieved from a legal-news mirror, or a ministry PDF
 retrieved from the Internet Archive, **is the document** and keeps the tier the document earns. An

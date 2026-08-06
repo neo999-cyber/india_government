@@ -108,7 +108,7 @@ export const CONTESTED_GROUNDS = [
 ] as const;
 export type ContestedGround = (typeof CONTESTED_GROUNDS)[number];
 
-export const TIERS = ['T1', 'T2', 'T3', 'T4', 'T5'] as const;
+export const TIERS = ['T1', 'T1F', 'T2', 'T3', 'T4', 'T5'] as const;
 export type Tier = (typeof TIERS)[number];
 
 /**
@@ -315,7 +315,14 @@ export interface Pair {
  * cover two different mechanisms without the type objecting.
  *
  * - `worked` — the measure achieved the objective stated at announcement, on the evidence
- *   available.
+ *   available, subject to two conditions ruled by the operator on 2026-08-06. (1) The evidence
+ *   must include at least one source **independent of the announcing body** — a press release
+ *   from the party being assessed is not credible evidence that the party succeeded. Where no
+ *   independent source exists the record is NOT `failed`: the outcome is unestablished rather
+ *   than negative, so it takes `partly` or `contested`. (2) Where a commitment states several
+ *   objectives and **any one is unmeasured**, `worked` is unavailable and the verdict is
+ *   `partly`. There is no centrepiece exception; a note explaining the departure documents it
+ *   rather than authorising it.
  * - `partly` — it achieved part of its stated objective, or achieved it for part of the
  *   intended population.
  * - `failed` — it did not achieve the objective stated at announcement. Includes a measure
@@ -336,6 +343,10 @@ export interface Pair {
  * - `awaiting-adjudication` — the measure is in force and its effect is testable in principle,
  *   but the term that would settle the assessment is a pending decision by a body outside the
  *   enacting authority. Distinct from `too-early`, where the obstacle is elapsed time.
+ * - `undated-commitment` — a stated and quantified commitment carrying no deadline, which
+ *   therefore cannot fall due. **Progress against it is reportable even though it can never
+ *   become overdue**: the value says the clock is missing, not the objective. Distinct from
+ *   `no-objective`, where nothing quantified was claimed at all.
  * - `baseline-context` — pre-2014 context, carried so post-2014 records are read against a
  *   stated starting condition. Never scored; the schema ties it to term `baseline`.
  */
@@ -348,6 +359,7 @@ export type Assessment =
   | 'too-early'
   | 'awaiting-adjudication'
   | 'no-objective'
+  | 'undated-commitment'
   | 'baseline-context';
 
 /**

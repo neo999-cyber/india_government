@@ -45,7 +45,8 @@ export default function MethodPage() {
         <strong>Sources are primary where possible but not exclusively governmental.</strong> Of{' '}
         {cites.length.toLocaleString()} citations, {tiers.T1.toLocaleString()} are graded T1 —
         Indian official statistical or institutional documents retrieved directly. The remaining{' '}
-        {nonT1.toLocaleString()} are {tiers.T2} multilateral or international statistical sources,{' '}
+        {nonT1.toLocaleString()} are {tiers.T1F}{' '}
+        primaries issued by a national government other than India&rsquo;s, {tiers.T2} multilateral or international statistical sources,{' '}
         {tiers.T3} peer-reviewed or working-paper studies, {tiers.T4} pieces of documentary
         journalism, NGO datasets and figures known only at second hand, and {tiers.T5} contested
         composite indices, each of which carries its own dispute record. The non-governmental
@@ -62,6 +63,15 @@ export default function MethodPage() {
         citation and missed the {seriesCites.length} series, which hold it on the record instead —
         so {seriesTierT1} official statistical sources were described as journalism. The corrected
         wording is above and the count now comes from one accessor that reads both places.
+      </p>
+      <p className="prose-note">
+        <strong>T1F is new and empty.</strong> The tier for primaries issued by a foreign national
+        government was created on 6 August 2026, because T1 means Indian official and T2 means
+        multilateral and a US executive order or Federal Register notice is neither — so such
+        citations had been sitting in T1 by default. None has been moved yet, which is why the
+        count below reads {tiers.T1F}. Re-tiering a citation can move the verdict that rests on
+        it, so the whole set moves in one pass rather than piecemeal; the T1 figure above is what
+        the data currently says, not what it will say once that pass runs.
       </p>
       <p>
         <strong>The planned independent review has not been run.</strong> Three passes were

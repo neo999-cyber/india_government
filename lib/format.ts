@@ -82,6 +82,7 @@ export const CONTESTED_GROUND_LABELS: Record<ContestedGround, string> = {
 
 export const TIER_LABELS: Record<Tier, string> = {
   T1: 'Official Indian statistical / institutional source',
+  T1F: 'Foreign national government primary, retrieved directly',
   T2: 'Multilateral or international statistical source',
   T3: 'Peer-reviewed or working-paper research',
   T4: 'Reported / documentary journalism, NGO datasets',
@@ -97,6 +98,7 @@ export const ASSESSMENT_LABELS: Record<Assessment, string> = {
   'too-early': 'Too early',
   'awaiting-adjudication': 'Awaiting adjudication',
   'no-objective': 'No stated objective',
+  'undated-commitment': 'Stated commitment, no deadline',
   'baseline-context': 'Baseline context (not scored)',
 };
 
