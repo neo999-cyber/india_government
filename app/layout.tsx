@@ -26,6 +26,7 @@ const NAV = [
   { href: '/counterfactual/', label: 'counterfactual' },
   { href: '/unmeasured/', label: 'unmeasured' },
   { href: '/method/', label: 'method' },
+  { href: '/derivations/', label: 'derivations' },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

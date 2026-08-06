@@ -319,7 +319,13 @@ export interface Pair {
  *   must include at least one source **independent of the announcing body** — a press release
  *   from the party being assessed is not credible evidence that the party succeeded. Where no
  *   independent source exists the record is NOT `failed`: the outcome is unestablished rather
- *   than negative, so it takes `partly` or `contested`. (2) Where a commitment states several
+ *   than negative, so it takes `partly` or `contested`. (1a) **The intra-state test**: one arm of
+ *   the state measuring another satisfies the principle where the measuring institution publishes
+ *   the figure as part of its own statutory or routine function, and fails where the figure
+ *   appears in support of the claim. The RBI's Financial Stability Report qualifies; a joint
+ *   ministry-and-regulator release does not. The test is on the publication, not the institution —
+ *   and the qualifying source must bear on the limb in dispute and must actually be held, not
+ *   reached through a news account of it. (2) Where a commitment states several
  *   objectives and **any one is unmeasured**, `worked` is unavailable and the verdict is
  *   `partly`. There is no centrepiece exception; a note explaining the departure documents it
  *   rather than authorising it.
