@@ -593,3 +593,163 @@ correction.**
 3. The verdict-chip anchor, option 3, on the operator's word.
 4. The absence clause beside rule 4a — a rule change.
 5. `objectives[]` + the `claimAtLaunch` vocabulary, designed together — **phase 17**.
+
+---
+
+# BATCH 4 — the anchor, rule 4b, `/method`, and the third walk
+
+## Built
+
+**The verdict chip routes to its ground.** A link to `#why-this-verdict`; neither the chip nor the
+note moves. **Verified live on all ten verdict classes**: nine render as links, and L-0001
+(`baseline-context`, no note) renders as a plain span, as does L-0070 (`contested`, no note). The
+anchor target is present on the note. Styled with a dotted underline and nothing else — **a chip that
+changed colour on acquiring a link would assert a difference between records that have a note and
+records that do not.**
+
+**Rule 4b, beside 4a and not a rewrite of it.** *An absence must reach a reader, and 4a does not make
+it do so.* The two bind different properties — how it looks, where it appears — and fail
+independently. 4b explicitly does not license a corpus-wide count.
+
+**`/method` gains the two sections the inventory left homeless**, with every figure computed at build
+time rather than typed, which is that page's own standing discipline and the reason its last error
+was caught:
+
+- **What the verdict distribution measures.** *A domain with few scored verdicts contains fewer
+  announced measures.* Kashmir 11 per cent `reform` / 4 per cent scored; defence 0 / 0; governance 17
+  / 15; against infrastructure 67 / 58 and welfare 62 / 52. **And the exception, which runs the other
+  way**: employment 17 / 8 with **75 per cent declaring an exposure**, human development 25 / 25
+  against **88**. Outcome domains — much to measure, little announced — and where the instrument's
+  two questions come apart. Closes with the contested split and links to `/contested`.
+- **What changed on 6 August beyond the tiers** — the five rulings a reader had no other way to
+  know, in five sentences.
+
+**A one-line gloss under every verdict tally**, on all five surfaces that carry one. *Contested and
+no stated objective are findings, not the absence of one.* One sentence and two links, not a
+paragraph: **a tally is a scanning surface**, and a reader who wanted the argument would be on the
+record.
+
+---
+
+# REPORT — what remains of the ten-item inventory
+
+| # | item | state after this batch |
+|---|---|---|
+| 1 | the eleven refusals | **built** — on `/exposure`, with the distribution that makes them legible |
+| 2 | the outcome-versus-policy split | **built** — `/method`, computed |
+| 3 | `reform` share against the evaluative rate | **built** — `/method`, computed, stated in words rather than as a coefficient |
+| 4 | the tier distribution and T1F | already served |
+| 5 | independence categories | `/method` prose; the **field** is phase 17 and unbuilt |
+| 6 | `contestedGround` | **built** — `/contested` |
+| 7 | seams and basis breaks | already served |
+| 8 | the exposure axes | **built** — `/exposure` |
+| 9 | 374 absences | **built** — 4b, the listing markers, the reading order, the no-route class |
+| 10 | Rulings 5–9 | **built** — `/method` |
+
+**Ten of ten are now addressed or already were.** From the misread list: `/counterfactual` rewritten,
+the chip anchored, the tally gloss placed, the absence order fixed. **Nothing from either list is
+outstanding that this phase can build without a schema change.**
+
+**One thing the walk found that neither list contained, and it is a real inconsistency.** The record
+page labels `assessmentNote` **"Why this verdict"**. The schema defines it as *"a note on the
+assessment VALUE itself — typically that the existing vocabulary does not cleanly fit"*. **The view
+promises more than the field is defined to carry**, and **41 scored records have no note at all** —
+23 `contested`, 17 `no-objective`, 1 `too-early` — so a reader following the new anchor on those
+records finds nothing to follow. The anchor degrades correctly; the gap it exposes is real. **Not a
+design problem: either the field's definition should be widened to match the label, or 41 records
+owe a note.** Reported, not resolved — it is a schema-description change or an authoring batch.
+
+---
+
+# REPORT — the third walk
+
+**Measurement, not confirmation. The last two walks both found the defect was the inverse of what was
+assumed, so what follows says what changed and what did not.**
+
+## What changed
+
+- **A browsing reader now meets the instrument's own qualifications.** Absence markers appear 294
+  times on `/ledger`, 152 on a single domain page. Before this phase they appeared nowhere outside a
+  record.
+- **The largest misread has a counter-sentence at the point of the misread**, not on a page a reader
+  would have to find. The gloss sits directly under every tally.
+- **Two findings have surfaces that did not exist**: `/contested` splits 68 records into 38 that
+  nothing can settle and 28 that a named thing would; `/exposure` shows 18 refused-or-limited entries
+  with the record's own sentence beside each.
+- **A verdict is no longer a dead end.** The chip routes to its reasoning on 171 of 223 records.
+- **`/counterfactual` states a decision instead of promising a view.**
+
+## What did not change, and is right not to have
+
+- **The index still leads with counts, not conclusions.** A reader takes away *this is an instrument,
+  not an argument*, which is the correct first impression and the reason the rest is credible.
+- **The one-`worked` framing** is where it was, above the fold and in `/method`, and remains the
+  best-handled thing on the site.
+- **`/method` still says no part of this has been checked by anyone who did not write it.** More
+  surfaces have not made that less true, and the page has not softened.
+- **No composite, no score, no completeness metric** — including the absence count, which is per
+  record and never summed.
+
+## What a reader would still misread
+
+1. **The domain grid gives counts and no verdict information at all** — *Kashmir 0 series · 46
+   ledger*. The gloss is under the term tallies and the domain-page tallies; **the grid on the index
+   has neither, and it is the first thing a reader clicks.** A reader forms an impression of Kashmir
+   from a card that says only how many records exist. **Smallest remaining gap and the cheapest fix.**
+2. **`/exposure` and `/contested` are nav items whose names promise less than they hold.**
+   *contested* reads as a filter; the page is an argument about what a contest is. Nothing to build —
+   a naming decision for the design phase.
+3. **The two-case structure still requires reading.** `caseFor` and `caseAgainst` are long, and a
+   scanner takes the chip, the caveat and the absence block and leaves. **That is now a defensible
+   outcome rather than a defect** — those three are the qualifications — and it is the strongest
+   argument that the architecture is close to done.
+
+---
+
+# REPORT — when the architecture is done, and what design should inherit
+
+## It is done when the surface set stops moving, and it is one item away
+
+**Everything the inventory named is built or already was.** What remains before the surface set is
+stable:
+
+1. ~~The domain grid gloss~~ — **BUILT IN THIS BATCH.** Every card now carries its scored count and the grid carries one line saying what scored means. Kashmir reads *46 ledger · 2 scored* rather than *46 ledger*.
+2. **`objectives[]` and the `claimAtLaunch` vocabulary** — phase 17, a schema change. **They add a
+   rendered distinction on 43 records and a stated fact on 137.** The surface changes: a verdict that
+   names the limbs it rests on.
+3. **`independence`** — phase 17. **Ranked third because it is a rule field**: `/method` already
+   explains the standard better than a per-record chip would, and its value is that the 6 August pass
+   becomes reproducible from data.
+
+**So: one architecture item, then two schema items whose surfaces are known.** After those the set is
+stable and design can open against it.
+
+## What should be deferred to design rather than built now
+
+- **Naming and information hierarchy across the nav.** Seven top-level destinations now, added one at
+  a time by whichever finding needed a home. **That is exactly the accretion a design phase should
+  resolve**, and resolving it now would be guessing at a hierarchy before the last two fields land.
+- **The `basis` property for refusals.** Five grounds across eighteen entries; the prose carries it.
+  **Revisit only if the set doubles.**
+- **A shock object.** Ruling 8's condition stands: the event stays prose until a shock breaks a
+  series.
+- **The `assessmentNote` label-versus-definition inconsistency** above. It is a content question, not
+  a layout one, but it will look like a layout one — **flagged so design does not solve it by
+  renaming the heading.**
+
+## One thing design must not be handed
+
+**A surface still moving underneath it.** The last two walks each found the site's defect was the
+inverse of what was assumed — an absence too quiet rather than too loud, a `worked` framing already
+handled rather than missing. **A visual pass over a surface set that is still being corrected would
+lock in whichever misreading survived**, and the argument for opening design against a stable set is
+that the corrections have been running at roughly one per batch and have not yet stopped.
+
+---
+
+## Queue
+
+2. `objectives[]` + `claimAtLaunch` vocabulary, designed together — **phase 17**.
+3. `independence` as a rule field — phase 17.
+4. The `assessmentNote` label-versus-definition question — schema description or 41 records.
+5. **Then design opens.**

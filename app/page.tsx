@@ -103,18 +103,32 @@ export default function HomePage() {
       <div className="grid">
         {DOMAINS.map((d) => {
           const s = series.filter((x) => x.domain === d).length;
-          const l = ledger.filter((x) => x.domains.includes(d)).length;
+          const rows = ledger.filter((x) => x.domains.includes(d));
+          const l = rows.length;
+          // The scored share, on the card. A grid that gave only how many records exist invited the
+          // reading that a domain with few of them had been examined less — and the corpus's answer
+          // is that a domain with few SCORED records contains few announced measures. The number is
+          // here so the card carries the fact rather than the impression.
+          const scored = rows.filter((x) =>
+            ['worked', 'partly', 'failed', 'reversed'].includes(x.assessment),
+          ).length;
           return (
             <Link key={d} href={`/domains/${d}/`}>
               <span className="grid-title">{DOMAIN_LABELS[d]}</span>
               <span className="grid-meta">
                 {s} series · {l} ledger
+                {l > 0 ? ` · ${scored} scored` : ''}
                 {s + l === 0 ? ' · empty' : ''}
               </span>
             </Link>
           );
         })}
       </div>
+      <p className="t-note">
+        &ldquo;Scored&rdquo; counts the records reaching a verdict on an outcome. A domain with few
+        of them contains few measures the state announced against a target — not less examination.{' '}
+        <Link href="/method/">What the distribution measures</Link>.
+      </p>
     </>
   );
 }
