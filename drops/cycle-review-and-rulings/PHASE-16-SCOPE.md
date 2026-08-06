@@ -1,5 +1,12 @@
 # Phase 16 — scoping. Authors nothing. Written 2026-08-06 at `26927f4`.
 
+**SUPERSEDED 2026-08-06 as to the phase NAME, and kept for its reasoning.** This file was written
+while the question was open, and it asks in terms which phase 16 is. **The operator answered: phase
+16 is shocks calibration**, and the counterfactual engine is recorded in `CLAUDE.md` as considered
+and declined. Every occurrence below of the engine as phase 16's name is **withdrawn**; they are
+left standing because this file's subject is the disagreement itself. `CLAUDE.md`'s table is the
+authority, and any phase name here is a premise until it is read off that table.
+
 ---
 
 ## 1. What the repository actually says about phase 16

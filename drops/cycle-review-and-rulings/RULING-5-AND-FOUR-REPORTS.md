@@ -410,9 +410,9 @@ same class as report 3, on a different axis.**
 ## What happened
 
 `CLAUDE.md` at `fa518f4` said phase 16 is **shocks calibration**. `drops/cycle-review-and-rulings/STATE.md`
-said, in the same tree, *"**Phase 16 is the COUNTERFACTUAL ENGINE**, fixed in `CLAUDE.md`"* — pointing
-at the file that said the opposite, in the file a cold read is told to start from. It stood for one
-commit.
+said, in the same tree, what has since been **withdrawn** — the sentence previously read
+*"**Phase 16 is the COUNTERFACTUAL ENGINE**, fixed in `CLAUDE.md`"* — pointing at the file that said
+the opposite, in the file a cold read is told to start from. It stood for one commit.
 
 ## Against the batch-19 answer
 
@@ -450,7 +450,9 @@ Batch 19's un-catchable instance had none of the three.**
 Of the four hits that assert a name for phase 16 **against** the current table, **three are correct
 and must not fire**:
 
-- `docs/verification-log.md:1009` — *"Phase 16 is the exception. The counterfactual engine…"*. **The
+- `docs/verification-log.md:1009`, whose name for the phase was **withdrawn** on 2026-08-06 and
+  which the log correctly still carries — it previously read *"Phase 16 is the exception. The
+  counterfactual engine…"*. **The
   log is append-only and a closed entry is never edited**, by a rule whose stated reason is that an
   editable log records only the errors nobody caught. This entry correctly stands; the later entry
   governs.
