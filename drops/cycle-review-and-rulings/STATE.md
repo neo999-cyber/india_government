@@ -428,3 +428,82 @@ shape `CLAUDE.md` already documents. **Design stated, not built** (a gate is a c
 `withdrawn-wording.mjs`'s presence-in-context form, parse the table as the single source and abort if
 it has moved, exempt the append-only log by name, two-sided control. **The general convention — every
 state line dated and object-named — remains unbuilt and remains right for the general case.**
+
+---
+
+## QUESTION (c), THREE REPORTS AND THE `phase-name` GATE — 2026-08-06, after `0dc9d5b`
+
+Full account in [`QUESTION-C-AND-THREE-REPORTS.md`](QUESTION-C-AND-THREE-REPORTS.md). One gate built
+and in the build; three reports; one verbatim print. **No record authored or edited, no schema or
+enum change, no phase opened, 0 verdicts moved.**
+
+**QUESTION (c) IS FOUR LINES AND DOES NOT CONTAIN THE THREE-WAY ANALYSIS IT WAS SUMMARISED AS
+HAVING.** It names the three options and one instance of each and says the question is gating; it
+never develops what each means, costs, or answers. §4 of that file develops **one** design and
+presupposes an answer to (c). **Fourth report-versus-record instance this cycle, and this one is my
+own summary of my own file.** The comparison is supplied in the report, marked as new work.
+**The corpus's own evidence points at (ii), shock-as-provenance**, and the argument is that L-0022 →
+P-10 and L-0033 → P-21 were authored that way with no rule telling anyone to: both are records whose
+`shockExposure` says the record is a confound *for others*, and both reached for provenance
+unprompted. **Two things (ii) does not settle, which is why it is a ruling and not an inference:** a
+shock that breaks no series has no provenance home, and `ProvenanceRecord`'s own subject is a
+measurement dispute — a ruling for (ii) widens that definition.
+
+**GROUP C: PREDICTION PARTLY CONFIRMED, AND MY COUNT WAS INFLATED.** Read individually, **~12 of the
+27 candidates do limb reasoning**, not 27. Fifteen matched other uses: four cite the **written**
+`no-objective`/`contested` rule (the opposite of a per-record defence), two use `limb` for the halves
+of a dispute, and L-0025 says in terms *"THE RECORD DECLINES BECAUSE THE DISAGREEMENT IS NORMATIVE,
+NOT BECAUSE ANYTHING IS UNMEASURED."* **THIRD INFLATED COUNT OF MY OWN IN THREE BATCHES** — the 38,
+group G's 22, now 27 for 12 — all from keyword scans, all caught only by reading. **Labelling a count
+as candidates does not stop it being spent as a finding.**
+**The prediction stands on a sharper ground.** R2 constrains `worked` alone; the corpus has ONE
+`worked` record; **L-0151 asserts its own compliance in prose — *"No limb of the recommendation is
+unmeasured"* — and nothing can check that sentence**, because no field records the limbs. **And the
+larger exposure is not R2 at all: `failed` with unmeasured limbs is governed by nothing** (L-0011:
+three objectives, one grounds the verdict, two unmeasured), which is Ruling 1's missing-evidence
+question pointed the other way. **To make R2 re-applicable:** the announced objectives as a LIST, a
+measurement state per objective (the measured-and-failed / never-measured distinction is already
+load-bearing in L-0222), and the link from an unmeasured limb to its `unmeasured[]` entry. Then R2 is
+an `enum-parity`-shaped gate. Schema change; reported only.
+
+**L-0020 AND L-0091 — ONE STATES ITS TEST, THE OTHER STATES A CONCLUSION.** L-0091 gives the reason
+for its type in `shockExposure`. **L-0020 carries no `assessmentNote` at all** and its exposure field
+says *"This record IS the shock"* — an assertion, not a reason. **And L-0020's own prose applies
+L-0091's test and reaches L-0091's answer**: `whatHappened` says the depth was *"substantially policy
+and lockdown-driven rather than purely pandemic-driven"* and `caseAgainst` says it *"points to
+lockdown design, not the pandemic"*. **The four-hour notice appears in three records — L-0020
+(`shock`), L-0064 (`shock`), L-0091 (`episode`) — one causal chain of state decisions, two types, and
+the only record stating the test is the one that came out the other way.** What the ruling on (a) has
+to reach: **whether a record about the STATE'S RESPONSE is typed by the event or by the response** —
+and L-0020 bundles both into one record, so on any answer its title names two things.
+
+**THE DOMESTIC NON-STATE CATEGORY HAS AT LEAST FOUR MEMBERS AND FOUR TREATMENTS**, so **the test
+needs a third branch, not an exception**: **IL&FS** (L-0027, `shock`) · **bank frauds** — PNB/Nirav
+Modi, ABG Shipyard, DHFL, Kingfisher (L-0032, `episode`, and its exposure field reads *"None
+material"*) · **the July 2012 grid collapse** (L-0001, `event`) · **the 2022 heat shock** (no record
+at all, prose in three). **The branch cannot be drawn on ownership — L-0001's grid is state-OWNED and
+the collapse was no policy act** — so the line is whether an act of policy caused it, not whose asset
+failed. **L-0028 (Yes Bank) is the model already done right:** the failure is non-state, the record is
+`episode` because its subject is the RBI reconstruction. **A record about the response is typed by
+the response — L-0091's answer, applied in a second record, neither citing the other.**
+
+**GATE BUILT: `phase-name` (`tools/phase-name-consistency.mjs`), in `npm run build` and in
+`CLAUDE.md`'s gate list. Guards now eleven in the build.** Emitted scope: *326 tracked text files · 6
+phases named in the table · 1 superseded name in scope · 6 disagreeing assertions, 6 exempted by
+name.* **All six disagreeing assertions in the repository are CORRECT** — the append-only log, two
+quoting the withdrawn name inside the sentence withdrawing it, and three in a file that says at the
+top it is superseded. Ten-part two-sided control, run before every live run.
+**The first live run found two defects in the gate itself:** a 240-character window **read across a
+table row** and reported CLAUDE.md's own table as contradicting itself (same class as the fixed-size
+window that missed L-0110's source); and **a wrong name was rescued by a right one 200 characters
+later**, a hole that widens silently with the window. Both fixed, both with controls, and control 8
+exists so the obvious over-correction ("stop at the first newline") cannot pass.
+**Four real instances fixed by stating the withdrawal rather than deleting the text** — a
+superseded-as-to-the-name header on `PHASE-16-SCOPE.md`, the withdrawn sentence quoted inside its
+withdrawal in `PROPOSALS-2026-08-06.md` (with a line saying the three proposals do not depend on the
+name), and two rewordings in my own last report.
+**What it does not bind, in its own header:** a phase named without its number; **a wholly novel wrong
+name, because the vocabulary is closed by construction — the real limit**; any state line about
+anything other than a phase; and whether the table itself is right. **Batch 14's general conclusion
+is not overturned: this form transfers only where a named object, a declared authority and a closed
+vocabulary all hold.**

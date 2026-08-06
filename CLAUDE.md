@@ -905,7 +905,22 @@ own source values are checked, not typed from memory. Separators are normalised.
 
 **The gate list, run in full every cycle:** `validate` · `typecheck` · `validate:selftest` ·
 `reachability` · `no-unguarded-prose-field` · `field-render-audit` · `domain-coverage` (which
-carries `lens-empty`) · `figure-consistency` · `enum-stamp` · `url-check` on `/data`. Plus an
+carries `lens-empty`) · `figure-consistency` · `enum-stamp` · `phase-name` · `url-check` on `/data`.
+
+**`phase-name` is the first gate over PROSE ABOUT the corpus rather than over the corpus** —
+`tools/phase-name-consistency.mjs`, added 2026-08-06. Every assertion of the form *phase N is
+&lt;name&gt;* in a tracked file must agree with the table above, or say in its own text that the name
+was withdrawn, or live in a file that is append-only by rule. **It is buildable only because the
+object is named, the authority is declared and the vocabulary is closed** — a phase number, this
+table saying in terms that a name asserted from memory is a premise until read off it, and a
+committed list of withdrawn names. Batch 14 concluded that the general STATE.md consistency problem
+needs a convention and not a checker, and that is still true: **where any one of the three
+properties is missing, this form does not transfer, and every state line dated and object-named is
+still owed.** The gate asserts a PRESENCE IN CONTEXT and never an absence, for the reason
+`withdrawn-wording` does: at the moment it was written, **six of the six disagreeing assertions in
+the repository were CORRECT** — one in the append-only log, two quoting the withdrawn name inside
+the sentence withdrawing it, and three in a scoping file that says at the top it is superseded. A
+guard forbidding the token would have fired on six right answers and no wrong ones. Plus an
 arithmetic hand-check of every derived figure including internal consistency, a check that every
 declared lens returns a non-empty and correct set, and zero forward references between `parts/`
 files.

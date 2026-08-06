@@ -1,9 +1,13 @@
 # Three proposals and one triage. Written 2026-08-06 at `699f135`. Builds nothing.
 
-Two operator answers are written into `CLAUDE.md` in the same commit: **phase 16 is the
-counterfactual engine**, in one place, with the note that no canonical phase list exists — which is
-why two names ran in parallel unnoticed; and **engine output may not be cited by a scored record**,
-recorded alongside the self-audit rule because both answer one question.
+Two operator answers are written into `CLAUDE.md` in the same commit. The first has since been
+**WITHDRAWN**, and it is quoted here rather than edited away so the correction can be checked: this
+paragraph read *"**phase 16 is the counterfactual engine**, in one place, with the note that no
+canonical phase list exists — which is why two names ran in parallel unnoticed"*. **Phase 16 is
+shocks calibration**, on the operator correction of the same day, and the counterfactual engine is
+recorded in `CLAUDE.md` as considered and declined. The second answer stands: **engine output may
+not be cited by a scored record**, recorded alongside the self-audit rule because both answer one
+question. **The three proposals below are unaffected** — none of them depends on the phase's name.
 
 ---
 
