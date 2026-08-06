@@ -29,7 +29,9 @@
     "scan": "node tools/scan-text.mjs",
     "manifest": "node tools/gen-manifest.mjs",
     "no-unguarded-prose-field": "node tools/no-unguarded-prose-field.mjs",
-    "field-render-audit": "node tools/field-render-audit.mjs"
+    "field-render-audit": "node tools/field-render-audit.mjs",
+    "record-history": "node tools/gen-record-history.mjs",
+    "adversarial-pass-input": "node tools/gen-adversarial-pass-input.mjs"
   },
   "dependencies": {
     "next": "16.2.12",

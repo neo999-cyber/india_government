@@ -1,0 +1,39 @@
+# Gate summary lines captured verbatim at 1825b85, 2026-08-06.
+# Produced by running each gate in the standing gate list. Nothing here is retyped.
+
+$ npm run validate
+VALID — 0 errors, 165 warning(s) (open research items, not blockers)
+  over 226 ledger · 269 series · 127 provenance · 60 pairs = 682 records, 1759 points
+
+$ npm run manifest
+manifest OK — 682 records, 71,554 bytes (unchanged)
+
+$ npm run no-bare-root
+no-bare-root OK — 0 new, 0 stale; 277 legacy citation(s) remain allowlisted from 277 frozen 2026-08-05 (T1:128 T2:13 T3:6 T4:42 T5:4 no tier:84)
+
+$ npm run no-unguarded-prose-field
+no-unguarded-prose-field OK — 19 prose field(s) across ledger + provenance: 7 guarded by reachability, 12 exempted by name in the schema
+
+$ npm run figure-consistency
+figure-consistency OK — 18 declared arithmetic claim(s), 18 checked against both source and printed operands, 5 rounding artefact(s) found and declared
+
+$ npm run enum-stamp
+enum-stamp OK — 2 fixture(s) match the live enums (8 lenses, 14 domains)
+
+$ npm run reachability
+reachability OK — 1368/1368 declared marks reachable on their own record page (662 pages scanned)
+
+$ npm run field-render-audit
+field-render-audit OK — 32 prose field(s) across 3 layers, 0 invisible · ledger 15 field(s)/0 invisible · provenance 6 field(s)/0 invisible · series 11 field(s)/0 invisible
+
+$ npm run domain-coverage
+domain-coverage OK — 14/14 domain surfaces built, 14/14 linked from the index, 1141/1141 record-to-surface references reachable
+
+$ node tools/seam-span-report.mjs
+seam-span-report — 125 record-by-break span(s): 91 declare the break, 34 do not. REPORT ONLY, nothing gated, nothing fixed.
+
+$ npm run validate:selftest
+selftest OK — /data valid (165 warning(s))
+  23/23 validator rules fire on tests/fixtures/broken (57 errors caught)
+  2/2 output gates proven to fire on their own fixtures (reachability, domain-coverage)
+  misspelled schema keyword fails compilation
