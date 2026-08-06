@@ -44,6 +44,7 @@ the guard doing exactly what it was built for.**
 
 | # | item | state |
 |---|---|---|
+| **0** | **THE FIELD IS BLOCKED — two stops, batch 2.** `adjudication` needs a fourth value `unstated` (L-0061 names an offered explanation and never adjudicates it), and the three event properties need a shock object that Ruling 8 puts in provenance and cannot create. | **operator decision** |
 | 1 | **L-0020's type.** Split into two records, or decide which subject it is. | **open, and it is a record change** |
 | 2 | **Ruling 8 is not executable for the four remaining external shocks** — see below. | **blocked on Ruling 8's own unsettled items** |
 | 3 | **`objectives[]` + measurement state + `unmeasured[]` link.** | phase 17, proposed |
@@ -55,6 +56,67 @@ the guard doing exactly what it was built for.**
 Items carried unchanged from the cycle: the RBI *Financial Stability Report* is not held; L-0219's
 sweep stores nothing; seam-span's frozen twelve; arc B's one capability; the source cache; selection
 bias in the review extracts; the independent review has not been run.
+
+---
+
+## Batch 2 — the prose shadow, the multi-objective rule, one correction, one stop
+
+Full account in [`BATCH-2.md`](BATCH-2.md). **0 verdicts moved, proven. One correction applied; two
+reports; the field reported and NOT built.**
+
+**THE PROSE SHADOW, named in `CLAUDE.md`** — *a prose field that restates a structured value goes
+stale silently when the structured value moves, and no gate can see it.* The render gates prove a
+prose field is THERE; none reads what it SAYS. **Measured over 223 ledger + 127 provenance records,
+14 prose fields: 73 restatements on findable tokens, 32 naming a value other than the record's own,
+and 31 of the 32 are CORRECT** — boundary defences, or dated rescoring history preserved under the
+correction convention (L-0086, L-0127 and L-0134 all open *"Filed too-early"* and then carry the
+dated rescore in the same field). **One was stale — L-0209's `revisitTrigger`**, still naming what
+would move the record *"out of no-objective"* after it was rescored to `undated-commitment` and its
+`assessmentNote` rewritten. **The defect is PER-FIELD: a rescore that rewrites one prose field leaves
+its siblings asserting the old value.**
+**THE FINDING IS WHAT THE MEASUREMENT CANNOT REACH.** `type` and `contestedGround` return **zero**
+findable restatements at any precision, because `shock`, `event`, `episode`, `reform`,
+`institutional`, `criterion`, `measure` and `time` are ordinary English words — **so the axis where
+the defect actually happened is the one no mechanical check can see, and a gate built on this
+measurement would report clean on the failure it was built for.** With a 31 : 1 correct-to-stale
+ratio, a token check is the wrong instrument. **The answer is a rule at the point of change, not a
+gate over the corpus: a structured value never moves alone.**
+**AND ONE AXIS THE CORPUS DOES NOT HOLD AT ALL: `commitmentState`.** `CLAUDE.md` defines states
+(a)–(d), L-0209 runs the test, L-0221 and L-0223 file limbs as *"commitment state (a)"* — **and there
+is no such field on any schema.** A structured axis existing only in prose; a larger defect than the
+one measured.
+
+**THE MULTI-OBJECTIVE RULE — what it would say, and it CAN be written before `objectives[]`.** A
+**disclosure** requirement, uniform across the classes, with one consequence each: `worked`
+unavailable (R2, unchanged) · `failed` **verdict stands, ground stated** (restricting it would
+convert a demonstrated failure into a non-finding — L-0011) · `partly` disclosure only (it is where
+R2 sends records, so it must not also bar them) · `too-early` disclosure only **and the rule must say
+so explicitly**, or eight records are swept in where the value's own definition expects an unmeasured
+limb · `contested` disclosure only. **Three things it must not do:** make an unmeasured limb an
+excuse (L-0030 is `failed` BECAUSE the measure did not happen); treat an **unquantified** limb as an
+unmeasured one (L-0209 — an unmeasured limb has a denominator nobody published, an unquantified limb
+has none at all); sweep in `too-early`. **Writing it first is what tells `objectives[]` what to
+hold** — a flag for whether an objective GROUNDS the verdict, which is invisible until the rule
+exists. It will be unenforceable until the field is built, and must say so.
+
+**L-0209 CORRECTED, verdict unchanged.** Four edits in one guarded operation: `claimAtLaunch` now
+reads TWO LIMBS ARE ANNOUNCED AND ONLY ONE IS QUANTIFIED, withdrawing and quoting *"The commitment is
+to a total length"*; `assessmentNote` records that **the 30 km and the 1.8 per cent are the fence
+alone**; `revisitTrigger` corrected; a third `unmeasured[]` entry for the patrol track,
+`never-defined`, because there is no total against which any progress could be read. **I overstated
+this last batch**: the `summary` and `caseFor` carried the track throughout. The defect was narrower
+— **the field that summarises the claim, and the arithmetic built on it, treated a two-limb
+announcement as one.**
+
+**THE FIELD IS NOT BUILT. Two stop conditions met.** (1) **An enum value not in the proposal**:
+`adjudication` needs a fourth value, `unstated` — **L-0061** names an explanation offered by someone
+else and never says whether it accepts it, and `accepted`/`limited`/`refused` each assert a
+judgement the record declined. (2) **A second object**: window · shared-with-peer-panel ·
+breaks-a-series are facts about the EVENT, need a shock object, and Ruling 8 puts that in provenance
+where `bridgeExists` has no referent for a shock that breaks no series — **and none of the five
+remaining `type: shock` records breaks one.** Smaller third item: three of the 66 (L-0049, L-0051,
+**L-0091**, which carries a typing decision and not an exposure) cannot migrate without re-authoring
+the record.
 
 ---
 

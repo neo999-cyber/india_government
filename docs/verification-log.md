@@ -11520,3 +11520,38 @@ marker was false. Reworded to *"the type value carried until that date was `shoc
 fires on a false correction marker is the guard doing exactly what it was built for.**
 
 **Gates at the end of this batch:** see the commit.
+
+---
+
+## Cycle 2026-08-06 — phase 16 batch 2. L-0209 corrected; THE PROSE SHADOW named.
+
+**APPEND-ONLY. This entry governs over any earlier entry describing L-0209's claim or its revisit trigger.**
+
+**L-0209 corrected in four fields, one guarded operation, verdict UNCHANGED at `undated-commitment`
+and asserted on the computed content before the write.**
+
+- `claimAtLaunch` withdrew and quoted *"The commitment is to a total length."* It now records that
+  **two limbs are announced and only one is quantified** — the 1,643 km fence, and a paved patrol
+  track whose length is stated nowhere.
+- `assessmentNote` records that **the 30 km and the 1.8 per cent are the fence alone**; nothing
+  retrieved bears on the track and no share of it can be computed.
+- `revisitTrigger` was a PROSE SHADOW and is corrected with the stale clause quoted: it still named
+  what would move the record *"out of no-objective"* after the 2026-08-06 rescore to
+  `undated-commitment` had rewritten the `assessmentNote` beside it.
+- `unmeasured[]` gains a third entry for the patrol track's length and progress, `never-defined`,
+  because there is no total against which any progress figure could be read. The record now
+  distinguishes two absences that look alike: **the fence has a stated total and an unpublished
+  numerator; the track has neither.**
+
+**A PREVIOUS REPORT OF MINE IS WITHDRAWN.** Batch 1 of this phase reported the patrol track as *"a
+second limb nobody has noticed"*. That overstates it: the record's `summary` and `caseFor` carried
+the track throughout. **The defect was narrower — the field that summarises the claim, and the
+arithmetic built on it, treated a two-limb announcement as one.**
+
+**THE PROSE SHADOW is written into `CLAUDE.md` in the same commit**, with its measurement: 73
+restatements of a structured value on findable tokens across 223 ledger and 127 provenance records,
+32 naming a value other than the record's own, **31 of the 32 correct** and one stale. **`type` and
+`contestedGround` return zero at any precision because their values are ordinary English words — the
+axis where the defect actually happened is the one no mechanical check can reach.**
+
+**Gates:** see the commit.
