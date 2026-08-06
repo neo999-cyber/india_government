@@ -1,0 +1,1561 @@
+# Adversarial review — PASS C, method compliance
+*One of three independent passes. The other two are not in this file and you are not expected to have read them.*
+
+Generated from the corpus at commit `aa80fad` (2026-08-06) by `tools/gen-adversarial-pass-input.mjs`. Regenerating it against the same commit reproduces it byte for byte.
+
+You have no access to the repository, so this document has to be sufficient on its own. It contains:
+
+- **Extract C — Method.** The instrument's own rules, quoted from the files that hold them, so you can check whether they were followed instead of inferring them from the output.
+- **Extract E — Compliance surface.** The record text each rule in Extract C actually binds, so a rule can be tested against what it governs rather than against an impression of the corpus.
+- **Extract D — Corrections.** Every record that carries a self-correction or withdrawn wording, with the needle that found them.
+
+**This pass exists for finding types 3 and 5 — an absence asserted without a search, and a rule the corpus states but did not follow.** Extract C is the rulebook and Extract E is the text each rule binds. Read the rule, then read what it governs, and report the gap. **Start with E.0**, which says which rules cannot be tested from data at all.
+
+## What you are reading, and what to do with it
+
+This is a longitudinal research corpus about the Indian government: what was announced, what can be established since, and what cannot be established at all. It covers a frozen pre-May-2014 baseline and the three terms after it. It has **one author, working with an AI assistant**, and the same pairing wrote the records, retrieved the sources and checked the result. Nothing in it has been reviewed by anyone who did not write it. **You are the first outside reading**, and you are being asked to attack it rather than to confirm it.
+
+### What a useful finding looks like
+
+Ranked by what this corpus can act on:
+
+1. **A verdict the evidence in its own record does not support.** The record states a case for and a case against; if the verdict does not follow from them, say which one it should have been and why.
+2. **A claim stronger than its source.** The tier of every citation is given. A T4 document is journalism or a relayed figure; a claim that needs a primary and cites only a T4 is a defect even if the claim is true.
+3. **An absence asserted without a search.** This corpus treats absences as findings and records a stated reason for each. An absence claim that rests on nothing but not having found the thing is the failure mode the method section calls out most often — which means finding one is worth more, not less.
+4. **A pattern across records that no single record reveals.** Examples of the shape: a verdict value used inconsistently between two records with the same structure; a domain whose sources are systematically one tier weaker than the rest; a stated reason (`not-published`, `withheld`) applied to one kind of subject and never to another.
+5. **A rule the corpus states and did not follow.** The rules are in Extract C, quoted from the files that hold them. A rule broken is worth more than a figure wrong, because a figure is one record and a rule is a class.
+
+**Tie every finding to a record id.** A finding with no id cannot be checked and will not be acted on. Where a finding is a pattern, name the ids it rests on — at least three, or say why fewer suffice.
+
+**End with a statement of what you could not check from this file alone.** That list is as valuable as the findings: it tells us what the next version of this document has to carry. Do not guess at what you could not see; name it.
+
+**Two things not to spend budget on.** The arithmetic is gated mechanically and has been recomputed repeatedly; the last full pass found one error of 0.01 in 34 claims. And the limits listed in the next section are already known and logged — reporting one back is not a finding. Everything else is open.
+
+**Corrections are included on purpose.** This corpus corrects records in place and keeps the withdrawn wording inside the sentence that withdraws it, so a corrected record reads *"X — CORRECTED, this previously said Y"*. That means the wrong figure is still on the page, by design. If you read one of those as a live error, say so: that tells us the correction is not visible enough, which is itself the finding.
+
+---
+
+## Known limits — already logged, do not spend budget rediscovering these
+
+**1. The corpus is not built entirely from government primaries, and the public method page understates by how much.** Of 1,205 graded citations, 285 are not on an Indian government or parliamentary host (91 distinct hosts). The rule used to compute that is printed here because the number depends on it entirely: host ends `.gov.in` or `.nic.in`, or is under `sansad.in`, `rajyasabha.digital` or `rajyasabha.nic.in`; a `web.archive.org` URL is unwrapped to the host it archives before the test. The largest non-government sources are comtradeapi.un.org (30), data.worldbank.org (19), asercentre.org (15), govinfo.gov (13), rbi.org.in (11), abclive.in (9), ohchr.org (9), satp.org (7). They exist because they are concentrated where the state does not measure the thing or is itself the disputed party — injuries recorded by hospital clinicians in peer-reviewed journals, civilian-death counts in Jammu and Kashmir, internet-shutdown durations. Those records depend on non-government evidence **because** the government does not publish it, and that dependence is the finding rather than a weakness of it. **What is open for you:** whether any individual record leans on a non-government source where a government one exists, and whether the T4 records in that set carry claims that need a primary.
+
+**1a. Two figures the project publishes about its own sourcing do not reconcile with the data, and both are printed here rather than resolved.** Its public method page states that 752 of 1,205 citations are graded T1. **Measured over all three layers at `aa80fad`, the figure is 965** — the published count reads `tier` inside each `sources[]` entry, which is where it lives on ledger and provenance records, and misses the 269 series, every one of which carries a tier ON THE RECORD (T1×213 T2×29 T3×3 T4×22 T5×2). The published figure therefore UNDERSTATES the primary-source share, and the sentence after it — that the remainder is multilateral statistics, research, journalism and NGO datasets — is wrong about 213 of them, which are Indian official statistical sources. Separately, the project's internal note records 287 non-government citations against the 285 computed above; the earlier figure's host rule was not written down, so the two are not strictly comparable and the gap is not evidence of a change in the data. **Both discrepancies were found while generating this document and neither is a defect in a record** — the citations and their tiers are correct in `/data`. They are here so you do not spend budget rediscovering them, and so that a claim you meet elsewhere about this corpus's sourcing can be checked against the table in A.3.
+
+**2. One capability has never been tested, and a claim was withdrawn over it.** An air-quality arc was left open because a single publisher's site is client-rendered and was not retrieved. A first attempt recorded "no rendering client is available"; that was **withdrawn** — the observed failure was DNS resolution, not rendering, and no attempt has yet addressed the actual error. The arc is recorded as blocked rather than as complete, and no record was written from the unretrieved material.
+
+**3. Series breaks are declared per series, and a derived comparison stated in a record's prose is outside that guard.** A reporting tool measures the gap: see the `seam-span-report` line in the gate block below. It is report-only, nothing is gated on it, and the undeclared spans are a candidate list rather than a defect count — they have not been triaged. **What is open for you:** a record whose prose states a comparison across a basis change without saying so. One such case has already been found and corrected (in Extract B).
+
+**4. The arithmetic gate checks only DECLARED claims and never mines for undeclared ones.** An author who states a derived figure without declaring it is outside the gate entirely. Four such figures were found by hand in the last phase and none by the gate. The gate's claim format is also subtraction-only and cannot express a ratio at all. This is logged as a gate contract change and has not been made.
+
+**5. There is no assertion that a NON-PROSE field reaches a reader.** The rendering audit covers prose fields and excludes enum, boolean, format and pattern fields by construction. Two consequences are already proven: a dispute-kind enum shipped invisible on 19 entries until it was found by hand, and 73 records carrying the `no-objective` verdict render no verdict at all, with no written decision either way. **A field being correct in the data and absent from the page passes every gate in this repository.**
+
+### The gates, and their own emitted scopes
+
+Every figure in this document that a gate emits is quoted from the block below, captured by running each gate at `aa80fad`. Figures the document computes itself are printed with the field or needle that produced them. **The gates enforce internal consistency, not correctness** — they can prove a mark reaches a page and cannot prove the mark is true.
+
+```
+# Gate summary lines captured verbatim at aa80fad+working tree, 2026-08-06.
+# Produced by running each gate in the standing gate list. Nothing here is retyped.
+
+$ npm run validate
+VALID — 0 errors, 165 warning(s) (open research items, not blockers)
+  over 226 ledger · 269 series · 127 provenance · 60 pairs = 682 records, 1759 points
+
+$ npm run manifest
+manifest OK — 682 records, 71,554 bytes (unchanged)
+
+$ npm run no-bare-root
+no-bare-root OK — 0 new, 0 stale; 277 legacy citation(s) remain allowlisted from 277 frozen 2026-08-05 (T1:128 T2:13 T3:6 T4:42 T5:4 no tier:84)
+
+$ npm run no-unguarded-prose-field
+no-unguarded-prose-field OK — 19 prose field(s) across ledger + provenance: 7 guarded by reachability, 12 exempted by name in the schema
+
+$ npm run figure-consistency
+figure-consistency OK — 18 declared arithmetic claim(s), 18 checked against both source and printed operands, 5 rounding artefact(s) found and declared
+
+$ npm run enum-stamp
+enum-stamp OK — 2 fixture(s) match the live enums (8 lenses, 14 domains)
+
+$ npm run reachability
+reachability OK — 1368/1368 declared marks reachable on their own record page (662 pages scanned)
+
+$ npm run field-render-audit
+field-render-audit OK — 32 prose field(s) across 3 layers, 0 invisible · ledger 15 field(s)/0 invisible · provenance 6 field(s)/0 invisible · series 11 field(s)/0 invisible
+
+$ npm run domain-coverage
+domain-coverage OK — 14/14 domain surfaces built, 14/14 linked from the index, 1141/1141 record-to-surface references reachable
+
+$ node tools/seam-span-report.mjs
+seam-span-report — 125 record-by-break span(s): 91 declare the break, 34 do not. REPORT ONLY, nothing gated, nothing fixed.
+
+$ npm run validate:selftest
+
+  23/23 validator rules fire on tests/fixtures/broken (57 errors caught)
+  2/2 output gates proven to fire on their own fixtures (reachability, domain-coverage)
+  misspelled schema keyword fails compilation
+```
+
+---
+
+# EXTRACT C — METHOD
+
+The instrument's rules, quoted from the files that hold them rather than paraphrased, so you can check whether they were followed. Passages are sliced out of the project's instruction file and its JSON schemas at generation time and the generator aborts if an anchor has moved, so this section cannot silently stop describing the method it is quoted to describe.
+
+**Where a rule states a distribution, the measured value at `aa80fad` is printed beside it. They do not always agree, and where they do not, both stand.**
+
+## C.1 — The verdict vocabulary
+
+Enum, from `schemas/ledger.schema.json`: `worked` · `partly` · `failed` · `reversed` · `contested` · `too-early` · `awaiting-adjudication` · `no-objective` · `baseline-context`
+
+What the record concludes. These values had no written definitions until 2026-08-01, which is how `reversed` came to cover two different mechanisms without the type objecting. Definitions:
+- worked: the measure achieved the objective stated at announcement, on the evidence available.
+- partly: the measure achieved part of its stated objective, or achieved it for part of the intended population.
+- failed: the measure did not achieve the objective stated at announcement. Includes a measure struck down by a court, because the outcome is the same and only the mechanism differs — record the mechanism in assessmentNote.
+- reversed: the ENACTING AUTHORITY withdrew or repealed its own measure. `measure` means an INTERVENTION THAT ACTS ON THE WORLD. Withdrawing a disclosure, a publication or a reporting practice is not reversal, even where the authority withdrawing it is the one that established it. Judicial invalidation is NOT reversed either: a court striking a measure down is not the enacting authority changing its mind, and collapsing the two loses the thing that distinguishes a government retreating under pressure from a government overruled. The value attracts anything that ends, which is why this line now states what a measure is and not only who withdrew it.
+- contested: the evidence supports more than one defensible reading and the record does not choose between them.
+- too-early: the measure is in force but has not run long enough for its stated objective to be testable. THE OBSTACLE IS ELAPSED TIME AND THE EVIDENCE TIME ACCUMULATES. Where the obstacle is instead a pending decision by a body outside the enacting authority, the value is awaiting-adjudication. Re-read against its two remaining members on 2026-08-03 and it describes both: L-0061, where outcome data has not yet accrued, and L-0139, the boundary case, where what is awaited is a year of post-commencement orders and any first setting-aside - things that accumulate with time rather than a ruling anyone is waiting on.
+- awaiting-adjudication: the measure is in force and its effect is testable in principle, but the term that would settle the assessment is a pending decision by a body outside the enacting authority. Distinct from too-early, where the obstacle is elapsed time. Added 2026-08-03 after a sweep of all 149 ledger records found five records in this state and only six records carrying too-early at all - so 83 per cent of that value was occupied by a state its own definition did not describe. FOUR of the five take this value: L-0086, L-0127, L-0134 and L-0143. The fifth, L-0139, does NOT, because what it awaits is an act of publication by a holder rather than a decision by an adjudicator; the value is not stretched to absorb the member that contradicts its own definition.
+- baseline-context: pre-2014 context, carried so that post-2014 records are read against a stated starting condition. Never scored; the schema ties it to term "baseline".
+- no-objective: the record finds something real, and no objective was stated at announcement against which the finding could be scored. Distinct from contested, which is about the evidence supporting more than one reading. Use where nothing was claimed, not where a claim exists and its outcome is unmeasured — that remains contested (see L-0096). The value asserts nothing about the finding's quality: a no-objective record is as firmly established as any other, and the absence it records is the absence of a claim to test, not of evidence. Roughly half the ledger is in this state — conditions, trends, reporting instruments and structural absences — and before this value existed all of it had to take a value that presupposes an objective, which is why contested became a sink.
+
+**Measured at `aa80fad`**, over 226 ledger records: `no-objective` 73 · `contested` 67 · `partly` 32 · `failed` 16 · `too-early` 13 · `baseline-context` 11 · `worked` 9 · `awaiting-adjudication` 4 · `reversed` 1.
+
+## C.1b — The provenance layer's own value
+
+Enum, from `schemas/provenance.schema.json`: `understates-pre-2014` · `overstates-pre-2014` · `understates-post-2014` · `overstates-post-2014` · `disputed` · `obscures` · `degrades-precision`
+
+What the measurement problem does to the record it bears on.
+
+STRUCTURAL NOTE, unresolved, and the reason this field is hard to apply: the name asserts a DIRECTION, but only four of the seven values state one. `disputed`, `obscures` and `degrades-precision` state a KIND of problem with no direction attached, and they carry 35 of the 58 records. The field conflates two axes — which way a figure is pushed, and what sort of defect it has. `overstates-pre-2014` has NO users at all. Nothing has been reclassified; the definitions below describe observed use of each value as it stands.
+- understates-pre-2014: the pre-2014 figure was too low, so the earlier period looks better than it was.
+- overstates-pre-2014: the pre-2014 figure was too high. UNATTESTED — no record uses this value.
+- understates-post-2014: the post-2014 figure is too low, suppressing a count that would otherwise show.
+- overstates-post-2014: the post-2014 figure is too high, or flatters by construction.
+- disputed: two parties disagree about the figure or the instrument. No direction is asserted, and the record does not pick.
+- obscures: the figure is missing, withheld or discontinued, so the question cannot be answered either way.
+- degrades-precision: a basis, definition or coverage change breaks comparability across the series, without any claim about direction.
+
+**Measured at `aa80fad`**, over 127 provenance records: `degrades-precision` 45 · `obscures` 31 · `disputed` 24 · `overstates-post-2014` 19 · `understates-post-2014` 6 · `understates-pre-2014` 1 · `overstates-pre-2014` 1.
+
+**Read that description against that line.** The field's own schema text is a good example of what this document asks you to do: it states a distribution, and the distribution it states is not the one measured above. Which of the two is out of date, and what follows for the records filed under the values it describes, is a question for you rather than a settled point.
+
+## C.2 — The four commitment states
+
+A commitment record has to resolve into one of four states. This vocabulary is **stated in prose in the records and is not yet a field**, which means nothing validates it and nothing renders it as a value. Whether that is acceptable is open.
+
+**Commitment states.** Every commitment record resolves into one, stated rather than implied:
+**(a)** not yet due — the trigger date or condition, named; **(b)** due and undelivered — the date
+passed, with evidence of non-delivery; **(c)** abandoned — evidence of abandonment. **Absence of news
+is not (c).** A commitment whose source names no due date cannot leave (a) by the passage of time
+alone, and the record says so rather than inventing a trigger.
+
+**(d) unfalsifiable by construction** — a total with no date, no phasing and no annual target. It
+has no trigger, so it is not (a); it can never fall due, so it cannot reach (b); and absence does
+not evidence abandonment, so it is not (c). Such a commitment sits outside the other three rather
+than between them, and the record says which of the three tests it fails and why. **Score it
+`no-objective`: an objective is a target that can be failed.** This is not a finding that the thing
+is undone or that the commitment was insincere — it is that the announcement as made cannot be
+scored against itself at any future moment. L-0209 is the instance: the entire 1,643 km of the
+Myanmar border, announced with a starting position and no date. Note what survives the test — a
+total WITH a date is (a), and a condition rather than a date is still (a) if the condition is
+observable, as in L-0205's exchange of notifications.
+
+## C.3 — The filing rule
+
+Which domain a record files under, for the case where the answer is genuinely contestable. Quoted whole:
+
+**Procurement filing rule, settled.** Acquisition cost, capital-budget share, payment schedule and
+escalation file `macro`; indigenisation share, offsets, exports and DAP domestic content file
+`foreign`; a G2G deal read as a diplomatic instrument files `foreign`. The `defence-sector` lens goes
+on all of them; counterparty lenses where the record is genuinely about the relationship. `defence`
+as a DOMAIN remains armed conflict and counter-insurgency, per phase 11.
+
+And the rule for admitting a cross-cutting lens at all, from the schema: *"A LENS IS ADMITTED WHEN ITS RECORDS LAND, NOT WHEN IT IS PLANNED"* — a declared value with nothing behind it is a filter that returns nothing, and a lens over one record is a filter that returns what the reader already had.
+
+## C.4 — The withheld standard, and the four stated reasons for an absence
+
+This corpus records absences as findings. Each carries a STATED REASON — what the responsible body says, not what is true — drawn from a four-value enum. `withheld` is the narrowest and the one most likely to be over-claimed, so read its test carefully.
+
+Enum: `not-collected` · `not-published` · `withheld` · `never-defined`
+
+The STATED reason no figure exists — what the responsible body says, not what is true. Where the stated reason is contradicted, set reasonDisputed and carry the contradiction in `why`.
+
+THE TEST IS WHETHER THE DATA EXISTS, asked in this order:
+- not-collected: never gathered. No record exists to release. If the holder were compelled tomorrow they would have nothing to produce.
+- not-published: exists in a holder's hands, not released. The test is producibility under compulsion, not whether anyone has asked.
+- withheld: exists, release was specifically requested or legally required, and was refused. Narrower than not-published — requires an identifiable refusal, not merely absence of release.
+- never-defined: no agreed definition exists for the quantity, so it could not be collected even in principle. NOT "nobody has studied it" — an unstudied but definable quantity is not-collected.
+
+**`reasonDisputed`** — True where the stated reason is contradicted by evidence — for example a body saying data was never maintained while another arm of the same government publishes some of it. The contradiction must be stated in `why`. This is not a fifth reasonKind: it is a dispute about which kind applies.
+
+**`disputeKind`** (`evidentiary` · `normative`) — What kind of contradiction reasonDisputed records. Required when reasonDisputed is true.
+- evidentiary: the stated reason is contradicted by evidence that the data exists or was held.
+- normative: the factual claim is not contested; what is contested is the characterisation of the non-release, typically against a legal or judicial obligation.
+
+**Measured at `aa80fad`**: `not-published` 206 · `not-collected` 120 · `never-defined` 41 · `withheld` 12; disputed 19 (`evidentiary` 16 · `normative` 3).
+
+## C.5 — The stated-search rule: what may be claimed about an absence
+
+Two rules, and they are the ones this project breaks most often. The first governs any claim about what EXISTS; the second governs any claim that something was not published.
+
+5d. **A claim about what EXISTS is not a claim about what the SOURCES CONTAIN, and only the second is checkable.** "No explanation is available", "no other body publishes this", "this is the only case" — each asserts something about the world that no retrieval can establish, because retrieval bounds what was found and never what there is. Rewrite as the observation actually made: *the documents retrieved contain no explanation*, *no other publisher was located*, *this is the only case in the corpus*. The rewrite is not hedging; it is the difference between a statement a later reader can test against the same sources and one they cannot test at all. **Writing a finding from zero primaries produces a record about my search, not about the world** — the same failure at full strength, and it is at its most tempting when the absence looks obvious. Arc G's UNSC advocacy was closed with no record on exactly this ground: nothing retrieved stated the advocacy as a commitment with a trigger, and a record saying so would have documented the search.
+
+**Superlatives are the loudest symptom and not the only one.** The class also covers a bare "unexplained", an "unprecedented", and any negative existential smuggled in as background. **The test is mechanical: could a single document, if it turned up tomorrow, falsify the sentence without any figure in the record changing?** If yes, it is a claim about existence and must be re-grounded on what was searched, where, and what was found.
+
+Caught in cycle 2026-08-04o. L-0200 said same-publisher divergence had "no equivalent explanation available", when a post-signature revision, a tax-basis difference or a redrawn subset all fit and ₹23.10 crore is 1.17 per cent of the total — one revised contract's worth. It now rests on a property of the documents: the later one acknowledges no revision and does not contain the earlier figure. **Ordinary explanations being available is compatible with none being published, and the record must say which it means.**
+
+**AN ABSENCE-OF-PUBLICATION CLAIM REQUIRES A STATED SEARCH, AND TRYING GUESSED IDENTIFIERS IS NOT A
+SEARCH.** State which of these was done, in the record: an INDEX ENUMERATED (the publisher's own
+listing read and its links extracted); an ARCHIVE CONVENTION READ OFF A LIVE PAGE (a real href
+observed, then varied); or NAMED ROUTES EXHAUSTED (each host and path listed with what it returned).
+Absent one of those, the honest wording is **"not searched"**, not "not published".
+
+**"Not published" has meant "not searched" three times in phase 15 alone, and each time the document
+was there.** A ministry's website was dead while PIB served its documents. `L-0052` carried
+`reasonKind: not-published` for the renewable generation share while CEA published tables titled
+*"Monthly Renewable Energy as % of Total Electricity Generated"*. And a capacity year was recorded as
+a hole "not published at any guessable URL" — true, and not a search: CEA's own index does carry only
+the current month, but `npp.gov.in` mirrors the same CEA reports under a month-stamped path, the
+convention was sitting in an href on a live page, and the recovered figure cross-checks to **0.04 MW**
+against the other channel.
+
+**The asymmetry is why this needs a rule rather than care.** A guessed URL that 404s produces the
+same silence as a document that does not exist, and the silence is indistinguishable at the point of
+writing. Guessing also fails in a way that FEELS like evidence — three 404s in a row read as
+confirmation. They are three observations of a filename convention, not one observation about
+publication. **`reasonKind: not-published` and `not-collected` are claims about the world and inherit
+rule 5d in full; `not-searched` is not a schema value, so where that is the truth the entry says so
+in its `why` and takes the weaker of the available kinds.**
+
+## C.6 — The four measurement categories
+
+Where two bodies produce different numbers, the record has to say which of four situations it is in. Getting this wrong is invisible downstream, and category 3 is the one that reviews clean while being wrong.
+
+**The four measurement categories.** A record must say which it is:
+
+1. **`differentFacts` pair** — two instruments measuring the SAME quantity and disagreeing. Both
+   sides retrieved, same period and basis, methodological reason stated where known. Never averaged,
+   never picked. (P-119, India-China trade.)
+2. **Single-sided** — one party publishes and the other does not. Not a pair; the absence is the
+   finding, localised by relaxation before it is recorded. (L-0191.)
+3. **Incommensurable** — instruments measuring DIFFERENT quantities. Not a dispute and not an
+   absence. No conversion, no side-by-side placement. **Agreement between them is as unsound as
+   disagreement and reviews clean** — "SIPRI broadly confirms the trend" is the same category error
+   wearing a friendlier face. (L-0197, TIV against rupees against HS 93.)
+4. **Mutually declined** — BOTH parties decline the same quantity, and differently. Not a pair
+   (neither gives a conflicting figure), not the single-sided case (both withhold). Record the
+   absences separately with their own `reasonKind`: `withheld` where there is an identifiable
+   refusal to a specific request, `not-published` where release is simply absent. (L-0202, the S-400
+   delivery schedule: `withheld` on the Russian side, `not-published` on the Indian.)
+
+And the derived-quantity rule that follows from it:
+
+5c. **A derived quantity inherits its inputs' contests.** Any ratio, percentage, share or per-unit figure whose numerator or denominator appears in a `differentFacts` pair carries the divergence forward as a RANGE with each bound attributed to its source — or is not stated at all. Picking one side silently converts a recorded disagreement into a settled number, and the record that carries the pair is precisely the one a reader trusts not to do that. **Arithmetic hand-checking cannot catch this class and neither can any gate**: both computations are correct in isolation, each against its own input, and the defect is only visible by asking where the input came from. L-0200 is the first identified instance — thirteen emergency-procurement contracts stated by the Ministry of Defence at ₹1,981.90 crore in June 2025 and ₹1,958.80 crore in December, against a ₹2,000 crore outlay, giving 99.1 or 97.9 per cent committed depending on which total is used. State the range and say why the range exists, distinguishing a contested numerator from an uncertain denominator; where the range is too wide to support the argument being made, the argument is what changes.
+
+## C.7 — The withdrawn-wording convention
+
+**This is why wrong figures are still on the page.** A correction is made in the record itself, and the withdrawn wording survives inside the sentence that withdraws it. A record reads *"the figure is X — CORRECTED on this date, this previously said Y, and here is why Y was wrong"*. The verification log is separately append-only: an entry that turns out to be wrong is superseded by a later entry, never edited.
+
+**A correction guard asserts a presence, never an absence.** When a record is corrected, the
+withdrawn wording survives in the sentence that records the withdrawal — that is the form every
+correction in this instrument takes, because stating the change inside the record is what
+distinguishes a correction from a silent edit. **A guard that forbids a token therefore fails on a
+correctly corrected record.** Assert the specific string in its specific context — "the withdrawn
+phrase appears exactly once, inside the sentence beginning CORRECTED" — not that it is gone. Caught
+in cycle 2026-08-05b, where a guard demanding the absence of "binding" aborted an edit that had
+correctly withdrawn the word and said so.
+
+- **A closed verification-log entry is never edited.** Corrections are APPENDED and name what they supersede. The log has been append-only since the first cycle, and the reason is not bookkeeping: an append-only log that gets edited whenever an entry turns out to be wrong records only the errors nobody caught, which inverts what it is for. The record is corrected in place — that is what `/data` is — and the entry that stated the error stands, with the later entry governing. Same discipline as stating a correction inside the record rather than making it silently.
+
+## C.8 — The source ladder
+
+Evidence grade of the DOCUMENT ACTUALLY RETRIEVED, not of the institution the subject belongs to. This is the operative rule and the one that goes wrong: a CAG finding known only through a newspaper's account of an RTI reply is T4, because the subject is official but the evidence is relayed. Grade what you hold, not what it is about.
+- T1: official Indian statistical or institutional source, retrieved directly - a ministry release, an RBI, MoSPI or NCRB publication, a CAG report, a Parliamentary reply.
+- T2: multilateral or international statistical source, retrieved directly - World Bank, IMF, ILO, WHO.
+- T3: peer-reviewed research or a working paper.
+- T4: reported or documentary journalism, NGO datasets, and anything RELAYED rather than retrieved - including an official figure known only through a press account, and an RTI reply cited but not obtained.
+- T5: contested composite index. Always carries a dispute record covering its own domain (CLAUDE.md rule 6).
+Note that tier is asserted in exactly one place per layer: on the series itself, or on each entry of a ledger or provenance `sources[]`. A series `source` is a SourceRef and carries NO tier - the object is closed, so a tier inside it is rejected rather than silently ignored.
+
+6. **Tier tags travel with claims.** Any rendered number can be traced to source name, URL, tier. T5 (contested indices) always carries a dispute record covering its own domain, so a contested number never renders without the dispute — P-08 for the governance indices (RSF, Freedom House, V-Dem), P-29 for the Global Hunger Index. The rule is "its dispute", not "P-08": naming one record was right only while every T5 series was a governance index, and demanding P-08 of a human-development index would require a reference the relevance check forbids.
+
+**A tier moves only when the EVIDENCE moved, and the merge asserts which direction.** Not "never
+move a tier" — move it when the stated reason for the tier no longer holds, and prove which case you
+are in before writing. P-80 moved T4 to T3 because its stated reason, "the paper itself was not
+opened", had stopped being true once the abstract was retrieved and every cited figure matched.
+P-86 stayed T4 in the same sweep because its stated reason — the operative text unretrieved — still
+held, and a working URL had changed only the URL. The four SATP citations stayed T4 for a third
+reason: retrieval improved, the SOURCE did not, and the recorded figures still derive from the
+archive snapshot rather than the page now reachable. **Same mechanical assertion in the merge, with
+the expected value chosen deliberately in each case.**
+
+## C.9 — Two rendering rules that bear on what you can see
+
+3a. **A caveat never truncates, anywhere, at any density.** `caveat` is a schema field on both the ledger and series schemas. A record carrying one would mislead without it, so it renders wherever the record appears — detail pages, index tables, domain and term pages, cited-by grids — in full, every time. No ellipsis, no clamp, no truncation to fit a cell, no hiding it behind a hover or a disclosure. A qualification cut to fit is the failure the field exists to prevent: a half-read caveat is worse than none, because it looks like the whole of it. This binds future table and density work — if a caveat will not fit a layout, the layout is what changes. Ordinary uncertainty is not a caveat and belongs in `notes`.
+
+4a. **An absence renders unlike a finding.** Distinguish a gap in the data from a gap in the world. A blank cell says "not reported this period" (rule 4); where *nothing measures a thing at all*, that is a fact about the record and often the most important thing on the page — it renders, named, rather than being left off. PMAY-G is the canonical case: sanctioned and completed are published, occupancy is not, and a reader shown only the first two would reasonably take completion for the end of the chain. Use the `Absence` mark: dashed, unfilled, no figure, no table, visibly not a panel of results. An absence styled like a finding invites a reader to treat the frame as the content, and nothing is ever estimated into the space. Expect several in infrastructure.
+
+## C.10 — What the gates do, and what they do not check
+
+**The single most important thing to understand about this instrument: the gates enforce internal consistency, not correctness.** They prove that a declared mark reaches its own page, that every URL resolves, that no citation is a bare domain, that declared arithmetic reconstructs. **None of them can tell whether a verdict is right, whether a source supports the claim made on it, or whether an absence was really searched for.** That is the whole of what you are being asked to do.
+
+**The gate list, run in full every cycle:** `validate` · `typecheck` · `validate:selftest` ·
+`reachability` · `no-unguarded-prose-field` · `field-render-audit` · `domain-coverage` (which
+carries `lens-empty`) · `figure-consistency` · `enum-stamp` · `url-check` on `/data`. Plus an
+arithmetic hand-check of every derived figure including internal consistency, a check that every
+declared lens returns a non-empty and correct set, and zero forward references between `parts/`
+
+### The three rendering gates, and why none subsumes another
+
+**The three rendering gates are different in kind and none subsumes another.** `reachability` walks
+the guarded-marks list and proves each mark reaches its own record's page — but it is
+ENUMERATION-SCOPED, so it can only ever check what the list contains.
+`no-unguarded-prose-field` binds that list to the schemas: every prose field on `LedgerRecord` and
+`ProvenanceRecord` is guarded or exempted BY NAME in its own schema description, with no third
+state, so a field cannot be merely forgotten. `field-render-audit` ignores both and observes the
+built output directly, asserting every prose field on every layer reaches its own page — it is what
+catches a field that is nominally guarded and suppressed anyway.
+
+### The scope a guard binds, and the gap it leaves
+
+The failure mode that produces most of this project's defects. A guard passes because it is checking the thing it binds, and the claim one level outside its scope is unprotected with nothing to report it:
+
+**A GUARD BINDS A SCOPE, AND THE CLAIM IT PROTECTS HAS ITS OWN. WHEN YOU ADD A GUARD, WRITE DOWN
+BOTH — what it binds and what it does not.** The gap between the two is silent by construction: the
+guard passes, because it is checking the thing it binds, and the claim outside its scope is
+unprotected with nothing to report it. **Three instances in one batch, all found by hand and none by
+any gate:**
+- `reachability` binds a LIST of marks; the claim is about every prose field on the record type.
+  `assessmentNote` and `revisitTrigger` were outside the list — 226 marks invisible.
+  Closed by `no-unguarded-prose-field`, which binds the list to the schema.
+- `reachability`'s own `ownPage()` bound `series | ledger`; the MARKS entries admit any `layers[]`.
+  Adding the first `provenance` mark made 185 records report "no page built", which reads like a
+  broken build rather than a broken lookup. **The enumeration scope had leaked one level down, into
+  the gate's own path resolution.**
+- `breaks[]` binds a SERIES — the note renders, no line is drawn across the seam — and does NOT
+  reach a DERIVED COMPARISON stated in a ledger record's prose. A widening was stated from a year
+  sitting on the imputed side of a basis break, understating the opening gap and overstating the
+  widening, with every gate green.
+
+**The test is one question asked at the moment the guard is written: if the claim moved one level
+out — to another field, another layer, another record, a sentence about the data rather than the
+data — would this guard still see it?** Where the answer is no, say so in the guard's own header.
+`tools/lib/guarded-marks.mjs` and `tools/field-render-audit.mjs` both carry that paragraph, and
+`tools/seam-span-report.mjs` exists because the third instance is not closed: it reports 125 spans
+of which 34 are undeclared, and 34 is a candidate list rather than a defect count, so it stays
+report-only until the triage narrows it.
+
+**And the specific, proven consequence:** two fields — the note on a verdict and the re-test trigger — were written, validated and shipped on 226 records, and rendered on **none** of them, across every phase since each field was added, with every gate green throughout **precisely because the data was correct**. One prior cycle had just written reasoning into 33 verdicts so that no verdict stood without stated ground, and **not one of those 33 had ever reached a reader.**
+
+## C.11 — What the instrument refuses to do
+
+Stated so you can attack the refusals rather than assume they are hedges:
+
+- **No composite score, ever, and no aggregate verdict for a term or for the government.** Scorecards roll up to counts of verdicts, not to a grade.
+- **No splicing across a measurement break.** Where a series changes basis the seam renders and no line is drawn across it. No interpolation, no trend fitted through a break.
+- **A blank is unreported, not zero.** Where nothing measures a thing at all, that is rendered as a named absence rather than left off the page.
+- **Where two instruments measure the same quantity and disagree, neither figure is adopted and no midpoint is taken.** The disagreement is the finding.
+- **Every scored record carries a case for and a case against**, and the schema requires both, so a record presenting one is a validation failure rather than an editorial choice.
+
+---
+
+# EXTRACT E — THE COMPLIANCE SURFACE
+
+Extract C states the rules. This extract is the corpus text those rules bind, so you can test whether a rule was followed rather than whether the corpus feels rigorous. **It is selected and the exclusions are named in each subsection.** Every needle is printed beside its count: a count with an unstated scope is wrong by an amount nobody can see, and that includes the counts in this document.
+
+## E.0 — What a data-only reviewer CANNOT test, and should not try
+
+Four of the rules in Extract C are about **rendering**, and you are reading data. Nothing here can settle them, and a finding that assumes it can will be wrong:
+
+- **the caveat non-truncation rule** — whether a qualification survives into a dense table is a property of the page, not the record. The 234 caveats are correct in the data and that is not the question the rule asks.
+- **the absence-renders-unlike-a-finding rule** — same reason.
+- **the guarded-marks and render-audit gates** — they assert about built HTML.
+- **the seam rendering rules** — a seam is a visual object.
+
+What you CAN test from here is everything that lives in the text: whether an absence claim states its search, whether a stated reason matches its own definition, whether a correction says what it withdrew, whether a claim about existence was rewritten as a claim about the documents.
+
+## E.1 — The strongest absence claims, in full — 68 entries
+
+The absence vocabulary has four values and they are not equally strong. `withheld` requires an identifiable refusal to a specific request. `never-defined` asserts that **no agreed definition exists anywhere**, which is the widest claim about the world in the whole schema. And `reasonDisputed` asserts that the holder's own stated reason is contradicted by evidence. All 68 entries carrying one of those three are printed here in full — 12 `withheld`, 41 `never-defined`, 19 disputed, deduplicated. **Test each against its own definition in Extract C**, and against the stated-search rule: does the `why` state a search that was run, or does it state that nothing was found?
+
+**L-0066** (ledger) · `not-collected` · **reasonDisputed**, `evidentiary` — The three farm laws: passage, protest and repeal
+
+- *What is not measured:* Deaths during the farm law protest
+- *Why no figure exists:* The Samyukta Kisan Morcha counted roughly 700. The government told Parliament it held no record of farmer deaths during the protest and that compensation therefore did not arise. No official count was attempted.
+- *What would close it:* A state-level death registry compiled from Punjab and Haryana civil records, or an official inquiry
+
+**L-0023** (ledger) · `never-defined` — Asset Quality Review
+
+- *What is not measured:* The share of the pre-COVID growth deceleration attributable to the recognition exercise and the lending constraints that accompanied it
+- *Why no figure exists:* The case against turns on this and no decomposition exists in anything retrieved. Separating a credit-supply contraction's contribution to growth from contemporaneous demand, global and investment-cycle causes requires a counterfactual for which no agreed construction exists.
+
+**L-0094** (ledger) · `never-defined` — A national teacher-vacancy statistic, tabled for a decade and then withdrawn
+
+- *What is not measured:* A defined national statistic, as against an aggregate assembled on request
+- *Why no figure exists:* No published document defines what "sanctioned" covers, which levels, or which school-management categories. The 368th Report’s entire method note is one sentence recording that the Department furnished the table at a meeting. Two of that Report’s own tables give contradictory 2023-24 totals a page apart - 55,76,000 sanctioned and 8,31,000 vacant against 63,26,207 and 9,59,148 - and it does not reconcile them.
+
+**L-0096** (ledger) · `never-defined` — The RTE untrained-teacher deadline: missed, retrospectively cured, and the outcome never published
+
+- *What is not measured:* A pre-2019 official all-India untrained-teacher rate with a stated denominator
+- *Why no figure exists:* Three untrained-teacher stock figures circulate on three different universes - 5.12 lakh in government and aided elementary schools as on 31 March 2015, about 15 lakh registered across all managements in October 2017, and 13.79 lakh confirmed registrations - and no source states its universe alongside its number. They are not in conflict; they measure different populations. No contemporaneous total-elementary-teacher denominator was retrieved, so no rate can be computed and none should be.
+
+**L-0097** (ledger) · `never-defined` — Devesh Sharma: B.Ed. removed as a primary-teaching qualification
+
+- *What is not measured:* The share of teachers holding the qualification that authorises the class they teach
+- *Why no figure exists:* Four legally distinct populations are scored identically in the published statistic: two-year D.El.Ed. holders (valid); 18-month NIOS D.El.Ed. holders in service at 10 August 2017 (valid); the same diploma held by those not in service then (not valid, and being terminated on that ground in at least one state); and B.Ed. holders in Classes I-V appointed 2018-2023 (conditional). No published measure distinguishes them.
+
+**L-0098** (ledger) · `never-defined` — RTE section 12(1)(c): the 25 per cent private-school quota
+
+- *What is not measured:* A national series of seats notified against seats filled
+- *Why no figure exists:* Not published, not maintained, and the word 'seats' as the Ministry uses it means something else - for one state it equals exactly the previous year's approved reimbursement headcount for three consecutive years. The only genuine national measurement ever made was a DISE-based exercise for 2012-13 and 2013-14, which establishes that it is constructible.
+- *What would close it:* A UDISE+-based count of section 12(1)(c) seats notified per school
+
+**L-0098** (ledger) · `not-published` · **reasonDisputed**, `evidentiary` — RTE section 12(1)(c): the 25 per cent private-school quota
+
+- *What is not measured:* The states that have failed to implement the provision, and why
+- *Why no figure exists:* Asked directly in December 2024, the Ministry gave no list and answered only that education is in the Concurrent List - while its own replies of 2020 and 2023 had counted 17 and 19 implementing jurisdictions, so the information exists in the Department's hands.
+- *What would close it:* The Ministry's own implementation count, which it has twice tabled in aggregate
+
+**L-0100** (ledger) · `never-defined` — NEP 2020's three-language formula and Tamil Nadu's refusal
+
+- *What is not measured:* Any register of which States and UTs have formally adopted NEP 2020
+- *Why no figure exists:* Ten Ministry parliamentary answers and two press releases were checked and none contains such a list - because there is no formal adoption instrument to enumerate. The nearest official proxy is the count of States and UTs that have signed the PM-SHRI memorandum, 33 of 36.
+
+**L-0104** (ledger) · `not-collected` · **reasonDisputed**, `evidentiary` — Higher education: enrolment growth decelerates and the denominator does half the work
+
+- *What is not measured:* Faculty vacancies in central universities, IITs, NITs, IIMs and IISERs
+- *Why no figure exists:* Not established in this research phase - a retrieval gap rather than a demonstrated absence in the world. The circulating ranges were deliberately not reproduced, because a parliamentary reply cited but not obtained cannot be graded. Note that this mirrors the school-level position exactly: at both levels the national teacher-vacancy quantity is assembled from parliamentary fragments and has no standing published series.
+
+**L-0107** (ledger) · `never-defined` — Contract teaching: collected for every teacher, published for none
+
+- *What is not measured:* A stable definition of regular, contract and part-time or guest appointment
+- *Why no figure exists:* Field interaction found the categories vary from state to state and between managements; teachers exist in the system with no formal contract at all, likely on verbal terms; and 'regular' does not imply government-servant status, since contracts may run to retirement without carrying the benefits.
+
+**L-0109** (ledger) · `not-collected` · **reasonDisputed**, `evidentiary` — Private schooling plateaus while the government school stock falls
+
+- *What is not measured:* The number of schools closed or merged each year
+- *Why no figure exists:* The Ministry states it does not hold the flow because opening and closing are state functions. But it operates a school-level system with a unique code per school from which closures and mergers are directly derivable, and it publishes flow-type counts for zero-enrolment and single-teacher schools over the same years. The data is producible from a system the Union runs.
+- *What would close it:* A year-on-year reconciliation of UDISE+ school codes
+
+**L-0064** (ledger) · `not-collected` · **reasonDisputed**, `evidentiary` — The 2020 migrant exodus and its missing record
+
+- *What is not measured:* Deaths during the 2020 migrant exodus
+- *Why no figure exists:* The Labour Ministry told Parliament that no such data is maintained, and therefore that the question of compensation did not arise. That stated reason is contradicted: the Railways Minister told the Rajya Sabha that 97 people died aboard Shramik Special trains, and an RTI response indicated the government held data it had declined to give Parliament. So the absence is asserted as not-collected while evidence indicates at least partial withholding. Independent tallies reached about 971 lockdown-related non-COVID deaths.
+- *What would close it:* A compiled audit of Railways, state and health ministry mortality records, some of which demonstrably exist
+
+**L-0221** (ledger) · `never-defined` — Half the fleet, under a third of the electricity: the non-fossil milestone is a capacity milestone
+
+- *What is not measured:* What 'about 50 percent' admits as satisfying the NDC capacity limb
+- *Why no figure exists:* The updated NDC's electricity goal is stated as 'about 50 percent' and no retrieved document defines a tolerance in either direction. A 50.08 per cent reading was announced as achieving it; on the same undefined wording 49.5 per cent could be argued to satisfy it and 50.08 per cent argued not to. Whether 'by 2030' means calendar 2030 or FY2029-30 is also unstated in every document retrieved. NO ROUTE IS NAMED DELIBERATELY: this is a gap in a definition rather than in a measurement, so no retrieval closes it — only the target's own author can say what 'about' admits, and until they do the threshold is unfalsifiable in both directions. A wouldFill here would be a placeholder, which enters the verification queue and cannot be worked.
+
+**L-0150** (ledger) · `never-defined` — The divisible pool shrank from 89 to 74-80 per cent of gross tax revenue while the states' share of it rose from 32 to 41
+
+- *What is not measured:* A definition of "cesses and surcharges" as an aggregate
+- *Why no figure exists:* No Indian statute, budget document or Finance Commission report defines the set. Article 270(1) excludes cesses and surcharges but supplies no list and no test, and the Receipt Budget carries no total line — the aggregate can only be computed by a reader selecting line items, which is why four published sources give four different sums for the same year.
+
+**L-0154** (ledger) · `never-defined` — The Union's five action verbs under Article 281 have no definitions, and "due consideration" produced nil of ₹49,599 crore
+
+- *What is not measured:* Definitions of the Union's five action verbs under Article 281
+- *Why no figure exists:* No statute, rule, manual or memorandum defines "accepted", "accepted in-principle", "due consideration will be given", "takes note" or "will examine", or states what follows from each. The scale is inferred from usage, and one term has been construed only retrospectively, in answer to a parliamentary question.
+- *What would close it:* A Ministry of Finance instruction, or a parliamentary answer stating the consequences of each verb.
+
+**L-0161** (ledger) · `never-defined` — Sixteen members asked the GST Council to extend compensation and the minutes record no answer
+
+- *What is not measured:* The GST Council's disposal of the June 2022 compensation-extension request
+- *Why no figure exists:* The minute book records the requests and no response, decision, deferral, reference or refusal. There is no instrument in which a disposal could be recorded other than the minutes, and the minutes contain none, so the quantity "what the Council decided" has no definition for this item.
+
+**L-0163** (ledger) · `never-defined` — Ten Tamil Nadu bills deemed assented by the Supreme Court, and the doctrine that assented them withdrawn seven months later
+
+- *What is not measured:* The Governor's reasons for the 199 to 1,400 days
+- *Why no figure exists:* Neither judgment records any reason, because Article 200 imposes no duty to give one. After the November 2025 opinion there is no timeline to breach and no merits review, so no instrument will ever produce this quantity.
+
+**L-0164** (ledger) · `never-defined` — The Constitution sets a deadline for the elected legislature and none for the Union's appointee, and both sides argue from the same silence
+
+- *What is not measured:* How long a bill sits between the legislature passing it and Raj Bhavan receiving it
+- *Why no figure exists:* Every dated record retrieved gives a date of forwarding or presentation and a date of gubernatorial action, and none distinguishes passage, transmission and receipt. The Kerala order gives no per-bill presentation date at all, only the Court's range. The clock's start is never independently evidenced.
+
+**L-0172** (ledger) · `withheld` — The Union withheld GST transaction data from its own constitutional auditor, which certified a state's accounts on a test basis as a one-time exception
+
+- *What is not measured:* GST transaction data for the audit of GST receipts in the accounts of the Government of Tamil Nadu for FY2018-19
+- *Why no figure exists:* The requester is named — the Comptroller and Auditor General of India, a constitutional office under Articles 148-151. The request is specific — access to the data pertaining to all GST transactions. The non-provision is recorded by the requester itself, in the audit certificate on which a state's accounts stand, and dated by the certificate for the year ended 31 March 2019. What is NOT established is the date of the request itself, its addressee, and whether access was subsequently granted; the grade rests on the date of the recorded refusal rather than of the request, and that limit is stated on the record rather than hidden by it.
+- *What would close it:* A later CAG certificate recording that access was granted, or the correspondence between the CAG and the Department of Revenue or the GST Network.
+
+**L-0175** (ledger) · `never-defined` — Asked what cesses and surcharges come to, the Union gives Parliament a third answer, and defines the quantity in neither of the two it has given
+
+- *What is not measured:* The membership test by which a levy enters the Union's "cesses" or "surcharges" aggregate in a parliamentary answer
+- *Why no figure exists:* Neither answer states one. The 2026 answer enumerates seventeen cess rows and five surcharge rows and prints a footing percentage; the 2023 answer prints two rows and two percentages with no enumeration at all. Article 270(1), which creates the category, supplies no list and no test, and the Receipt Budget carries no total line for either aggregate.
+- *What would close it:* A statutory or budget-document definition of "cess" and "surcharge" as sets of receipt heads, or a parliamentary answer stating the line items summed and the test applied.
+
+**L-0183** (ledger) · `not-collected` · **reasonDisputed**, `evidentiary` — "For every rupee we contribute we get back X paise" — the most-quoted number in Indian fiscal federalism is produced by no retrievable instrument, and no body has ever refused to produce it
+
+- *What is not measured:* The ratio of Union transfers received to Union taxes contributed, for any state, in any year — the quantity the phrase "X paise in the rupee" names
+- *Why no figure exists:* No instrument computes it. The stated reason is the Government's own, given five times in sixteen years and in both Houses: state-wise data on collection of indirect taxes is not maintained, so one of the ratio's inputs does not exist to be divided into anything. The reason is DISPUTED for part of its scope, and the contradiction is the schema's own illustrative case: the goods and services tax is an indirect tax and the Ministry of Finance publishes state-wise goods and services tax collection every month, including in annexures to two of the five answers that deny keeping it. The claim holds for customs, union excise and service tax and fails for the goods and services tax as worded. NOT never-defined: the quantity was defined, measured and given numeric weight by nine Finance Commissions from 1952 to about 1990, and no body has ever told Parliament it cannot be defined. NOT withheld: more than ten dated, specific requests in both Houses produced four substitutions, one recital of the constitutional articles, one silent omission and one undertaking to supply — and zero refusals. What the record actually shows is substitution, for which the four-value enum has no slot; that is recorded here as an observation and no enum value is proposed.
+- *What would close it:* Any one of four things, in descending order of value. A laid paper fulfilling the undertaking of 1 March 2005 to collect and lay revenue collected from Gujarat directly and indirectly — laid papers were outside the reach of the question-search endpoints used here, so this is an open thread and not a closed negative. Any of five directly on-point answers that are unretrievable today because of a systemic archive defect rather than any act of suppression: Rajya Sabha Q.2833 (Maharashtra, 5 August 2014), Q.211 and Q.192 (Tamil Nadu, 22 and 8 July 2014), Starred Q.8 (Punjab, 22 November 2011) and Lok Sabha Q.1801 (24 August 2007) — the retrieval path was proved first, on downloadable sibling files in the same directory, and the session carries filenames for only 31 per cent of its records against 99.9 per cent for a comparison session. A published state-wise series for customs, union excise and service tax on a stated basis, which the Central Board of Indirect Taxes and Customs could produce as the Central Board of Direct Taxes already does. Or an explicit official statement that the quantity cannot be attributed at all, which would move the value to never-defined immediately.
+
+**L-0183** (ledger) · `not-collected` · **reasonDisputed**, `evidentiary` — "For every rupee we contribute we get back X paise" — the most-quoted number in Indian fiscal federalism is produced by no retrievable instrument, and no body has ever refused to produce it
+
+- *What is not measured:* A state's total contribution to the Union exchequer across all tax heads — the denominator of the ratio
+- *Why no figure exists:* Two of its three components are published and the third is declared not maintained, so the composite fails on one missing input rather than on incoherence. It also could not honestly be formed by addition even if the third existed, because the two published halves rest on opposite attribution principles: direct tax is assigned to the state code in the assessee's communication address, and goods and services tax is assigned by destination and settled away from the state of collection. The same blanket statement that supplies the stated reason is contradicted by the monthly publication of state-wise goods and services tax, which is why this entry carries the dispute flag.
+- *What would close it:* A single official table adding direct tax, goods and services tax and other indirect tax by state on one declared attribution basis, with the basis stated on its face.
+
+**L-0202** (ledger) · `withheld` — The S-400 delivery schedule exists, both governments know it, and neither publishes it — one of them says so on the record
+
+- *What is not measured:* The S-400 delivery schedule and delivered count, from the Russian side
+- *Why no figure exists:* A schedule exists and is mutually agreed — the Russian ambassador said so on 16 April 2026 — and he declined to state it when asked in a broadcast interview: "I will not go into the details [...] this is a sensitive area, which we try to keep under wraps." That is an identifiable refusal to a specific question about a quantity known to exist, which is what distinguishes withheld from not-published.
+- *What would close it:* A Russian Federal Service for Military-Technical Cooperation or Rosoboronexport statement giving delivery dates, or the contract's own schedule.
+
+**L-0203** (ledger) · `withheld` — The 2016 Rafale agreement bought 36 aircraft off the shelf and dropped 108 that were to be built in India, and the item-wise price is withheld under a 2008 bilateral agreement
+
+- *What is not measured:* The item-wise cost of the 2016 Rafale contract
+- *Why no figure exists:* The Ministry refused it in terms, to an identifiable demand, on 7 February 2018: "The demand that the Government disclose the details and value of the contract for the Rafale aircraft contracted in 2016 is unrealistic", on the ground that item-wise cost would reveal customisations and weapons configurations and "would also come under the ambit of the security agreement signed in 2008". A named refusal to a specific demand, with a stated legal ground, is what distinguishes withheld from not-published. The same statement says an approximate acquisition cost was provided to Parliament; that figure was not retrieved in this run and no price is stated in this record.
+- *What would close it:* The Parliamentary answer carrying the approximate acquisition cost, or the Comptroller and Auditor General's report on the acquisition, which was tabled and would carry the audited comparison.
+
+**L-0209** (ledger) · `never-defined` — The decision to fence the entire 1,643 km Myanmar border was announced with a starting position of 10 km and no completion date, and the Ministry's own year-end review for that year gives no progress figure at all
+
+- *What is not measured:* The date by which the 1,643 km is to be fenced
+- *Why no figure exists:* Neither the announcement nor the Ministry's Year End Review 2024 states a completion date, a phasing schedule or an annual target. This is not a figure held and unreleased: a date that was never set does not exist to be published, which is what distinguishes it from the progress figure below.
+- *What would close it:* A Ministry of Home Affairs statement of a target year or phasing plan, or a Parliamentary answer giving one.
+
+**L-0213** (ledger) · `never-defined` — Nineteen months after the IMEC memorandum the corridor's published scope had grown and its deliverable list was still empty, and the two figures attached to it name neither a baseline nor a date
+
+- *What is not measured:* A completion date, phasing schedule or interim milestone of any kind
+- *Why no figure exists:* None appears in the memorandum, the Inter-Governmental Framework Agreement announcement, or the April 2025 remarks. A date that was never set does not exist to be published, which is what separates this from the two items above.
+- *What would close it:* Any published schedule for either corridor, or a target year stated by any signatory.
+
+**L-0216** (ledger) · `never-defined` — The Indus Waters Treaty was put in abeyance on 23 April 2025, and the word abeyance appears nowhere in the treaty, whose only exit is a duly ratified treaty concluded by both Governments
+
+- *What is not measured:* Who determines whether Pakistan has "credibly and irrevocably" abjured support for cross-border terrorism, and by what test
+- *Why no figure exists:* The condition is the sole stated route back to the treaty's operation, and no evaluator, criterion, evidentiary standard or review point appears in anything retrieved. Without one the condition cannot be shown to be satisfied, which means the abeyance cannot be shown to have ended or to have failed to end.
+- *What would close it:* Any published criterion, review mechanism or periodic assessment attached to the decision.
+
+**L-0052** (ledger) · `not-published` · **reasonDisputed**, `evidentiary` — Renewable energy capacity expansion
+
+- *What is not measured:* Renewables' share of energy actually generated, against their share of installed capacity
+- *Why no figure exists:* CLOSED 2026-08-05, and the reasonKind CORRECTED AGAIN 2026-08-05 because the first correction was itself wrong. The target was set in capacity and this record scores it in capacity; the case against turns on the generation share being materially lower. THE HISTORY, because two corrections is exactly when a record stops being readable without it. (1) The entry originally read `not-published`. (2) A correction on 2026-08-05 changed it to `not-collected`, reasoning that `not-published` asserts something about the world and CEA does in fact publish the datum. THAT REASONING WAS ON THE WRONG AXIS AND MADE THE ENTRY WORSE. The schema's test is whether the DATA EXISTS: `not-collected` means 'never gathered — if the holder were compelled tomorrow they would have nothing to produce', and CEA had not only gathered it but published it, so `not-collected` is flatly false where `not-published` was merely superseded. (3) The schema already provides the mechanism for a stated reason that evidence contradicts, and this case matches its own worked example almost exactly — 'a body saying data was never maintained while another arm of the same government publishes some of it'. So the kind is restored to `not-published`, the reason actually stated, and `reasonDisputed` is set with the contradiction here: CEA publishes installed capacity and gross generation mode-wise on facing tables of its annual General Review for every year from 1950, and its monthly renewable report carries tables titled 'Monthly Renewable Energy as % of Total Electricity Generated' and 'Cumulative Renewable Energy as % of Total Electricity Generated', by State and All-India. The datum was not unpublished; it was unretrieved. It is now carried as series res-generation-share and non-fossil-generation-share and read in L-0221.
+- *What would close it:* Closed — CEA General Review Tables 1.2 and 1.3, retrieved 2026-08-05.
+
+**L-0127** (ledger) · `never-defined` — The undertaking to restore statehood: seven years, six statements, no date
+
+- *What is not measured:* The condition that would trigger restoration of statehood
+- *Why no figure exists:* The undertaking of 6 August 2019 is conditioned on the situation 'normalising' and the answer of 15 December 2021 on an 'appropriate time'. Neither has been defined by the Government or by anyone else, and no document retrieved defines either. This is not a subject nobody has studied: it is a condition stated by the body that must satisfy it, in terms that admit no test, so the condition could not be evaluated even in principle by the Government itself.
+
+**L-0133** (ledger) · `never-defined` — The August 2019 detentions: ten official figures, five objects, and the one question that was never answered
+
+- *What is not measured:* Which of persons, orders or detenus-on-a-date any published detention figure counts
+- *Why no figure exists:* Not one instrument in the subject states which of the three objects it is counting. NCRB's detenu row is a 31 December stock and says so; nothing else declares anything. Parliamentary replies give bare numbers, and the most careful non-state counter in the field calls a petition count 'PSA detentions' in the prose above a table headed 'Habeas Corpus Petitions filed in J&K High Court'. This is not the claim that nobody has studied it - a great deal has been counted - but that no agreed definition of what a PSA detention figure counts has ever been settled by anyone, so the quantity could not be collected consistently even in principle.
+
+**L-0134** (ledger) · `withheld` — The power to hold a J&K detenu anywhere in India, and the information barrier it creates
+
+- *What is not measured:* The identity, and the bare number, of J&K detenus held in Agra Central Prison
+- *Why no figure exists:* This is a refusal on the record and it satisfies every limb of the test. Named requester: Venkatesh Nayak, Commonwealth Human Rights Initiative. Specific request: an RTI application to Agra Central Prison, Uttar Pradesh, seeking the complete list of J&K detainees with names, age, gender and addresses, medical examination reports on admission, and the documentation enabling detainees to file representations against their detention orders. Date: received by the prison on 29 August 2019, sent by speed post. Refusal: the Public Information Officer declined, relying on a 2008 circular of the Uttar Pradesh Administrative Reforms Department and characterising the material as third-party data under the RTI Act - and the bare aggregate number was refused along with the identities, which cannot be third-party information about any identifiable person.
+- *What would close it:* A first and second appeal to the Uttar Pradesh State Information Commission against the Agra Central Prison refusal, confined to the aggregate number of J&K detenus held. Failing that, a parliamentary question to the Ministry of Home Affairs for the number of J&K PSA detenus lodged in prisons in each other State and Union Territory, year-wise - a shape of figure the J&K Home Department has already produced once, at 408 as at 31 August 2023, which is what would make a refusal informative.
+
+**L-0136** (ledger) · `withheld` · **reasonDisputed**, `normative` — The August 2019 communications blackout: four defensible durations, and orders the state refused to produce
+
+- *What is not measured:* The orders that imposed the communications restriction from 4 August 2019
+- *Why no figure exists:* Specifically requested, and refused, on the record of the Supreme Court. Named requester: the petitioners in Writ Petitions (Civil) 1031 and 1164 of 2019, and the Supreme Court of India itself. Specific request: the prayer for a mandamus directing production of 'all orders by way of which communication has been blocked in State of Jammu and Kashmir', and the Court's own order directing production. Date: 16 October 2019. Refusal: the Solicitor General claimed privilege over the orders at that hearing; the claim was subsequently dropped and only sample orders were produced, on a plea of difficulty, which the Court held 'is not a valid ground to refuse production of orders before the Court'. The stated reason moved from privilege to administrative difficulty, and those are different claims about different facts; what is contested is not whether the orders existed - samples were produced - but whether difficulty justifies non-production, which the Court answered.
+- *What would close it:* Direction (a) of the judgment of 10 January 2020 itself, which requires publication of all orders in force and any future orders for suspension of telecom services. This is one of the few routes in the corpus that is enforceable rather than requestable, and unlike the all-India case it has a specific refusal behind it rather than a general non-practice.
+
+**L-0137** (ledger) · `withheld` · **reasonDisputed**, `evidentiary` — The Review Committee for J&K: findings refused as exempt, ordered released, then said not to exist
+
+- *What is not measured:* The Review Committee's findings on J&K suspension orders between January 2020 and February 2024
+- *Why no figure exists:* Specifically requested and refused, twice, in defiance of two appellate directions. Named requester: the Internet Freedom Foundation. Specific request: RTI application IFF/RTI/2024/112 to the Home Department, Government of Jammu and Kashmir, for the findings of the Review Committee on internet suspension orders in the UT since 10 January 2020. Date: 15 May 2024; refused 6 June 2024 as exempt under section 8 without naming a clause; ordered released by the First Appellate Authority on 5 August 2024; refused again on 29 October 2024 as 'not available in the records'. The stated reason is contradicted by the same holder's own earlier reason in the same file five months apart: exempt under section 8 asserts the material exists and is held, not available in the records asserts it does not. Only one can be true.
+- *What would close it:* The second appeal already filed before the Jammu and Kashmir State Information Commission. Failing that, a request addressed to the General Administration Department, which is where the review record demonstrably sits - the published confirmations of December 2024 and February 2025 are GAD orders and carry a GAD file number. A route naming the Home Department's website is not a route: that domain no longer resolves.
+
+**L-0138** (ledger) · `never-defined` — The Union keeps no count of shutdowns because police is a State subject, and in Jammu and Kashmir it is not
+
+- *What is not measured:* Whether the reading of 'State Government' in the Suspension Rules reaches a Union Territory with its own Government
+- *Why no figure exists:* Neither the 2017 nor the 2024 Rules names a Union Territory as an ordering authority, and neither provides for a UT review committee, while the nodal-officer rule in the same instrument does say 'every service area, or State or Union territory'. The General Clauses Act was retrieved and its section 3(60) reads 'State Government' as meaning, in a Union territory, the Central Government - yet the retrieved J&K orders are signed by the Principal Secretary to the Government, Home Department, UT of J&K, expressly citing the sub-rule. Section 3 opens 'unless there is anything repugnant in the subject or context', and the Reorganisation Act creates a UT Government with its own Home Department. Which reading governs is not established and should not be authored.
+
+**L-0141** (ledger) · `never-defined` — Delimitation of Jammu and Kashmir: one Commission table, three denominators, three answers
+
+- *What is not measured:* The rule by which the Commission allocated an additional constituency for remoteness, and the tolerance band it applied
+- *Why no figure exists:* The Commission's compendium states a tolerance band of plus or minus 10 per cent in one place and plus or minus 20 per cent in another, in the same volume, and the additional constituency granted on grounds of remoteness is exercised without any published criterion. The district categorisation that converts population and area into a seat count is the Commission's own judgement and is not a measurement of anything. No agreed definition of the weighting exists, so the allocation could not be reproduced by anyone even in principle - which is a different thing from the underlying columns being unpublished, since those are published.
+
+**L-0142** (ledger) · `never-defined` — Turnout in Jammu and Kashmir: four official values for one quantity, and a denominator nobody publishes
+
+- *What is not measured:* Any measure of the population's acceptance of the post-2019 constitutional arrangement
+- *Why no figure exists:* This is the quantity every reading of the turnout figures is implicitly arguing about, and no agreed definition of it exists, so it could not be collected even in principle. This is emphatically not that nobody has studied it: turnout is being pressed into service as a proxy precisely because the thing itself has no definition. No route exists and none is invented, because a placeholder route is worse than none.
+
+**L-0143** (ledger) · `never-defined` — Five nominated seats in the J&K Assembly, and a statute that never says whether they vote
+
+- *What is not measured:* Whether a nominated member of the J&K Legislative Assembly may vote
+- *Why no figure exists:* Sections 15, 15A and 15B say nothing about the rights, powers, privileges or voting entitlement of a nominated member, and nothing elsewhere in the Reorganisation Act as retrieved or in the Amendment Act as retrieved supplies a powers clause. There is no agreed definition of what a nominated seat in this Assembly is, so the question cannot be answered from the enacted law at all - and it is not that nobody has considered it, since the Delimitation Commission's recommendation was drafted to close the gap by borrowing another Union Territory's settled position and Parliament did not enact that borrowing. No route is invented, because closing this requires either a legislative amendment or a judgment.
+
+**L-0144** (ledger) · `never-defined` — Permanent resident replaced by domicile: a definitional change, and the sub-count the Union did not publish for five years
+
+- *What is not measured:* The number of persons who held permanent-resident status and did not obtain, or were refused, a domicile certificate
+- *Why no figure exists:* The one item in this subject that meets the strict test. The two statuses have different qualifying conditions and no instrument enumerates the permanent-resident population as a stock, so the intersection is not definable, let alone countable. The published rejection figures do not answer it: they count applications rejected for missing documents, not persons whose prior status failed to convert. This is not that nobody has studied it - there is no agreed object to study. No route exists and none is invented, because closing it would require first defining and enumerating a stock that no instrument has ever defined.
+
+**L-0112** (ledger) · `not-collected` · **reasonDisputed**, `evidentiary` — MHA's 'Civilians killed' column changed meaning in 2023 and the footnote arrived fourteen months later
+
+- *What is not measured:* Civilians killed by security forces in Jammu and Kashmir, separately from civilians killed by militants
+- *Why no figure exists:* MHA has never published a column for it under any heading in any Annual Report from 2008-09 to 2024-25, and since 2022-23 has merged the two causes into one undifferentiated figure. The Ministry has stated no reason, because it has never acknowledged the category - but its own reports narrate individual such deaths in prose in the same section as the table that excludes them, so the Ministry demonstrably knows of the events and declines to count them.
+- *What would close it:* A parliamentary question to MHA asking for the two components of the 'Civilians killed' column disaggregated - that is, asking the Ministry to publish the components of a column its own footnote states is composite.
+
+**L-0114** (ledger) · `withheld` · **reasonDisputed**, `evidentiary` — Pellet-firing shotguns in Kashmir: the deaths counted, the injuries refused
+
+- *What is not measured:* Persons injured by pellet-firing shotguns in Jammu and Kashmir, year-wise
+- *Why no figure exists:* MHA was asked for the injured and the killed together by Prof. M. V. Rajeev Gowda in Rajya Sabha Unstarred Question No. 511, answered 7 February 2018, and answered, verbatim, that further details cannot be disclosed in the interest of national security. The stated ground is contradicted by the same government's conduct: the J&K Chief Minister gave the injury aggregate in the Legislative Assembly twenty-six days earlier, and the same government's Director of Health Services filed a district-wise injury list on affidavit four months later. A ministry with a month-by-month pipeline attributing deaths to pellets is working from the same case papers that carry the injuries.
+- *What would close it:* An application to the High Court of Jammu and Kashmir at Srinagar for certified copies of the counter-affidavits in WP(C)(PIL) no. 14/2016 - the affidavit of the Director, Health Services, Kashmir filed in answer to the order of 11 May 2018, and the replies of the Medical Superintendents of SMHS Hospital and Bone & Joint Hospital, Barzulla. Secondarily, an RTI to the Director, Health Services, Kashmir for the district-wise number treated for pellet injuries year-wise, stating the definition and the unit of count. The registry addressee could not be verified in this phase because jkhighcourt.nic.in was unreachable.
+
+**L-0114** (ledger) · `withheld` — Pellet-firing shotguns in Kashmir: the deaths counted, the injuries refused
+
+- *What is not measured:* Pellet cartridges, pellets and PAVA or tear-smoke munitions expended by force and year
+- *Why no figure exists:* The same sentence in the reply of 7 February 2018 refused the munitions sub-question, part (c) of Prof. M. V. Rajeev Gowda’s Rajya Sabha Unstarred Question No. 511. The holder is established: the CRPF stated a 32-day consumption figure to the High Court in August 2016, and a force that can state a 32-day figure keeps consumption returns.
+- *What would close it:* An RTI to the CPIO, Directorate General, Central Reserve Police Force for year-wise consumption of 12-bore pump-action shotgun cartridges and of PAVA and tear-smoke munitions in the Kashmir Zone. The odds are poor - the CRPF is reported to have refused such an application in January 2017 - but a refusal on the record would itself be informative.
+
+**L-0114** (ledger) · `never-defined` — Pellet-firing shotguns in Kashmir: the deaths counted, the injuries refused
+
+- *What is not measured:* An official threshold for blindness, permanent disablement or visual impairment
+- *Why no figure exists:* The government's own vocabulary carries no criterion, no examining authority and no acuity band anywhere it appears. Operable definitions exist in clinical work on this very population - no perception of light, best-corrected acuity of counting fingers or worse - and disagree with each other, producing impairment shares of 10.8, 59.3 and 82.4 per cent on overlapping populations at one hospital. On the narrow object of an official definition, none has ever existed.
+
+**L-0116** (ledger) · `not-collected` · **reasonDisputed**, `normative` — Burial of encounter dead away from home districts, and who declares the identity of the killed
+
+- *What is not measured:* Any written order, circular or SOP establishing the burial practice in force since April 2020
+- *Why no figure exists:* On the responsible officials' own account no such instrument exists: the Inspector General of Police Kashmir pointed to generic Disaster Management Act lockdown orders that say nothing about the disposal of encounter dead, a senior officer said in the same month that it was not a policy, and a lawyer was told no written order had been given. What is contested is not whether the instrument exists but whether lockdown orders are sufficient authority for it - the administration treats them as sufficient and critics treat the absence of any instrument as the defect. Nobody disputes the facts.
+- *What would close it:* An RTI to the J&K Home Department for the legal authority under which bodies of persons killed in encounters are buried without release to next of kin - framed as a request for the basis rather than for a document, since an RTI for a document officials say does not exist would return a nil reply that does not close the absence. The correct addressee could not be verified because jkhome.nic.in was unreachable.
+
+**L-0117** (ledger) · `never-defined` — Local recruitment into militancy: the quantity that is constantly quoted and has no instrument
+
+- *What is not measured:* An agreed definition of what counts as joining militancy
+- *Why no figure exists:* No official definition was located from any body. Confirmed joining, missing-with-weapon and intelligence estimate are different quantities and no source distinguishes them, and the introduction of a category defined by absence from the official list of militants makes the boundary worse rather than better. The quantity could not be collected consistently even in principle.
+
+**L-0118** (ledger) · `never-defined` — Organised stone-pelting to zero: consent or suppression
+
+- *What is not measured:* A definition of 'organized' stone-pelting
+- *Why no figure exists:* The qualifier is on the face of the published category and is nowhere defined by any body. Unorganised stone-pelting is outside the count by construction, so a published zero for a whole year says nothing about how much stone-pelting occurred.
+
+**L-0122** (ledger) · `withheld` — AFSPA section 7: fifty sanction requests from J&K, none granted, and a decision rule nobody holds
+
+- *What is not measured:* The reasons for refusal in the 47 J&K sanction cases
+- *Why no figure exists:* Disclosure was specifically requested through the statutory route by Venkatesh Nayak, whose RTI and second appeal are on the record, and refused by the Central Information Commission by its order of 5 June 2020 under section 8(1)(a), with reasons on the record associating non-disclosure with the larger public interest. This is an identifiable refusal by an identifiable authority on a stated ground.
+- *What would close it:* A writ petition challenging the CIC order of 5 June 2020, or a parliamentary question for the case-wise grounds of refusal. A fresh RTI would meet the same exemption.
+
+**L-0123** (ledger) · `withheld` — Two J&K security quantities lost their only legislative route in 2018, and it did not resume in 2024
+
+- *What is not measured:* The reasons for delay in ex-gratia and benefits under SRO-43 to families of victims of violence in J&K
+- *Why no figure exists:* A question tabled by Sheikh Khursheed, MLA for Langate (Awami Ittehad Party), was deleted by Speaker Abdul Rahim Rather on 28-29 October 2025 on the ground that the Home Department falls under the Lieutenant Governor's jurisdiction. That is a specifically requested figure, specifically refused, with an identifiable refuser, date, questioner and stated ground.
+- *What would close it:* A parliamentary question to MHA, which is now the only legislative route to this subject matter: no absence on a J&K security quantity can be given the J&K assembly as its closing route, because that route does not exist for this subject.
+
+**L-0124** (ledger) · `never-defined` — The only instruments that ever named a perpetrator for civilian deaths in Kashmir, and their termination
+
+- *What is not measured:* Enforced disappearance as a countable quantity
+- *Why no figure exists:* It is not a criminal offence in Indian law, so no official instrument could count it even in principle. The official counterpart counts a different object with a built-in causal attribution - missing persons said to have crossed over for arms training - which is a definitional switch rather than a numerical dispute. India signed the relevant convention in 2007 and has not ratified it.
+
+**L-0011** (ledger) · `never-defined` — Demonetisation
+
+- *What is not measured:* The effect of demonetisation on terror financing
+- *Why no figure exists:* Named as a founding objective and never measured in this record. The quantity is counterfactual - financing that would have occurred absent the measure - and no agreed definition of it exists, so it could not be collected even in principle. Incident counts published by the Union are not a measure of financing, and no retrieved source attributes a change in either to the note withdrawal.
+
+**L-0011** (ledger) · `never-defined` — Demonetisation
+
+- *What is not measured:* The share of the growth in digital payments and tax filings attributable to demonetisation
+- *Why no figure exists:* Digital payment volumes and filing counts are published, so the aggregates exist; what does not exist is the counterfactual against which the increment could be attributed. This record's own caseAgainst concedes the point - digital adoption was already on a rising trend, so the incremental gain is unquantified. The objective also postdates the announcement, having replaced the original justification as returns approached 100 per cent, which is recorded here rather than treated as an original aim.
+
+**L-0013** (ledger) · `never-defined` — Corporate tax rate cut
+
+- *What is not measured:* Private investment that would have occurred absent the rate cut
+- *Why no figure exists:* The case for rests on this and it cannot be observed: the cut preceded a pandemic by six months, and no counterfactual investment path exists or could be constructed from published data. The quantity has no agreed definition and could not be collected even in principle.
+
+**L-0014** (ledger) · `never-defined` — Flexible inflation targeting adopted
+
+- *What is not measured:* The share of the post-2014 disinflation attributable to the framework rather than to the 2014-16 oil price collapse
+- *Why no figure exists:* The case against turns on this and no decomposition exists in anything retrieved. Separating a policy regime's contribution from a contemporaneous terms-of-trade windfall requires a counterfactual path for which no agreed construction exists.
+
+**L-0074** (ledger) · `not-collected` · **reasonDisputed**, `evidentiary` — Expansion of PMLA enforcement by the Enforcement Directorate
+
+- *What is not measured:* Party affiliation and state of politicians facing ED cases
+- *Why no figure exists:* The Ministry of Finance told Parliament that state-wise and party-affiliation data on politicians under investigation is not maintained. The government has separately cited a specific figure - that roughly 3 per cent of ED cases involve politicians - which implies some form of political-status tagging exists. Independent reconstructions from public records have produced party-wise counts, so the data is derivable even if not maintained in the form asked about.
+
+**L-0081** (ledger) · `not-published` · **reasonDisputed**, `normative` — Internet shutdowns and Anuradha Bhasin compliance
+
+- *What is not measured:* Published shutdown orders and review committee decisions
+- *Why no figure exists:* Orders are treated as internal security instruments; no general publication mechanism has been established. The Supreme Court directed publication in Anuradha Bhasin in January 2020 and reiterated it in January 2024. Non-publication is therefore in tension with a binding direction, not merely an administrative choice.
+- *What would close it:* An RTI to state and UT home departments for shutdown orders and Review Committee decisions. The stronger instrument is the Supreme Court's direction in Anuradha Bhasin (January 2020), reiterated January 2024, which requires publication independently of any request. This is the only absence in the corpus whose route is enforceable rather than requestable.
+
+**L-0084** (ledger) · `never-defined` — NJAC struck down and the Memorandum of Procedure deadlock
+
+- *What is not measured:* A finalised Memorandum of Procedure for judicial appointments
+- *Why no figure exists:* Government and judiciary have not reached agreement, reportedly over a national-security exclusion the executive seeks and the judiciary resists. Directed by the Supreme Court in December 2015. The absence of an agreed procedure is the operative fact: appointments proceed without a settled rulebook on either side's terms. Retained as never-defined on 2026-08-01 where seven other entries were reclassified: the absent thing here IS the definition, since no agreed Memorandum of Procedure exists, rather than a defined quantity nobody has measured. It is now the only member of its kind.
+
+**govt-schools-count** (series) · `not-collected` · **reasonDisputed**, `evidentiary` — Government schools in India
+
+- *What is not measured:* The number of schools closed or merged each year
+- *Why no figure exists:* The Ministry states it does not hold the flow because opening and closing are state functions. But the same Ministry operates UDISE+, a school-level system with a unique code per school, from which closures and mergers are directly derivable - and the 2025-26 release does publish flow-type counts for zero-enrolment and single-teacher schools. The data is producible from a system the Union runs.
+- *What would close it:* A year-on-year reconciliation of UDISE+ school codes, which the Ministry can generate from its own database
+
+**teacher-vacancy-rate-ssa** (series) · `never-defined` — Teacher vacancy rate, all levels, government and aided schools
+
+- *What is not measured:* A published definition of a sanctioned teaching post
+- *Why no figure exists:* No published definition states what sanctioned covers, which levels, or which school-management categories. The base moved 10.4 per cent in one year, undisclosed and unexplained, and every vacancy rate rests on it. Report 368 prints two contradictory 2023-24 totals a page apart and does not reconcile them.
+
+**teachers-professionally-qualified-primary-udise** (series) · `never-defined` — Primary teachers recorded as professionally qualified
+
+- *What is not measured:* The share of primary teachers holding the qualification the NCTE prescribes for the class they teach
+- *Why no figure exists:* UDISE+ scores as professionally qualified four populations whose legal status differs: two-year D.El.Ed. holders (valid); 18-month NIOS D.El.Ed. holders in service at 10 August 2017 (valid per Kousik Das); the same diploma held by those not in service then (not valid); and B.Ed. holders in Classes I-V appointed 2018-2023 (conditional on completing a bridge course). The category does not correspond to any legal status and the margin by which it overstates RTE section 23 compliance has never been measured.
+- *What would close it:* A UDISE+ cross-tab of qualification held against class taught, derivable from the individual teacher records the Ministry already holds
+
+**teachers-professionally-qualified-primary-udise** (series) · `never-defined` — Primary teachers recorded as professionally qualified
+
+- *What is not measured:* The difference between 'trained' and 'professionally qualified'
+- *Why no figure exists:* Both are published annually for the same teachers, differing by 2 to 5 points at every level. Neither term appears in the Concepts and Definitions annexe of any UDISE+ edition, and the two are used interchangeably in secondary coverage.
+
+**contract-teachers-share-government** (series) · `never-defined` — Contractual teachers as a share of government-school teachers
+
+- *What is not measured:* A stable definition of 'regular', 'contract' and 'part-time/guest'
+- *Why no figure exists:* CETE's field interaction found the definitions vary from state to state and between managements, that teachers exist in the system with no formal contract at all, and that 'regular' does not imply government-servant status - contracts may run to retirement without carrying the benefits.
+
+**higher-ed-enrolment** (series) · `not-collected` · **reasonDisputed**, `evidentiary` — Total higher education enrolment
+
+- *What is not measured:* Faculty vacancies in central universities, IITs, NITs, IIMs and IISERs
+- *Why no figure exists:* Not established in this research phase - a retrieval gap, not yet demonstrated to be an absence in the world. The parliamentary-reply stream did not return and the widely circulated ranges were deliberately not reproduced. Note that this mirrors the school-level finding: at both levels the national teacher-vacancy quantity is assembled from parliamentary fragments and has no standing published series.
+- *What would close it:* The Lok Sabha and Rajya Sabha unstarred-question replies on sanctioned, filled and vacant teaching posts
+
+**literacy-rate-7plus** (series) · `never-defined` — Literacy rate, persons aged 7 and above
+
+- *What is not measured:* A measured national literacy rate from the ULLAS/NILP programme
+- *Why no figure exists:* ULLAS publishes counts, not a measurement. The Foundational Literacy and Numeracy Assessment Test is administered only to registered non-literate learners who were taught under the scheme and chose to sit - a self-selected, taught, pre-registered cohort with no population denominator - so its 89.6 per cent pass rate is what an end-of-course assessment yields and cannot be converted into a literacy rate. Goa was declared 'fully literate' on 30 May 2025 against a nationally prescribed 95 per cent benchmark while the same PIB release concedes PLFS puts Goa at 93.60 per cent, on the strength of Goa's own survey.
+
+**rte-quota-children** (series) · `never-defined` — Children in private schools under RTE section 12(1)(c) for whom reimbursement is claimed
+
+- *What is not measured:* A national series of seats notified against seats filled under section 12(1)(c)
+- *Why no figure exists:* No such series is published and the Government of India does not maintain one. Worse, the figure the Ministry labels 'total number of seats' is demonstrably a lagged reimbursement headcount: for Karnataka, the seats figure for year Y equals exactly the Project Approval Board approved reimbursement headcount for year Y minus 1, for three consecutive years, which is why seats equalled admissions perfectly for 2021-22, 2022-23 and 2023-24 - a hundred per cent fill rate by construction rather than by achievement. Any figure the Government labels 'seats' should be treated as a reimbursement-claim headcount until proven otherwise, and no national fill-rate series can be built on Ministry data.
+- *What would close it:* A UDISE+-based count of section 12(1)(c) seats notified per school, which the DISE-based 2015 exercise showed is constructible
+
+**teacher-vacancy-rate-elementary** (series) · `never-defined` — Teacher vacancy rate, elementary, government and aided schools
+
+- *What is not measured:* A published definition of a sanctioned teaching post
+- *Why no figure exists:* No source states what sanctioned covers, which levels, or which management categories. The base moved by 10.4 per cent in one year, undisclosed, and every rate in this series rests on it.
+
+**jk-civilians-killed-terror-basis** (series) · `not-collected` · **reasonDisputed**, `evidentiary` — Civilians killed in J&K, MHA bounded basis
+
+- *What is not measured:* Civilians killed by security forces in Jammu and Kashmir, on this basis or any other
+- *Why no figure exists:* MHA has never published a column for it under any heading in any Annual Report from 2008-09 to 2024-25, and has stated no reason because it has never acknowledged the category - while its own reports describe individual such deaths in prose in the same section as the tables that exclude them.
+- *What would close it:* A parliamentary question to MHA for civilians killed by security-force action in J&K, disaggregated from the composite column its own footnote concedes contains two populations.
+
+**jk-organised-stone-pelting** (series) · `never-defined` — Organised stone-pelting incidents in J&K
+
+- *What is not measured:* A definition of 'organized' stone-pelting
+- *Why no figure exists:* The qualifier is on the face of the published category and is nowhere defined by any body, so unorganised stone-pelting is outside the count by construction and the boundary of the counted quantity is unknown.
+
+**jk-pellet-deaths** (series) · `withheld` · **reasonDisputed**, `evidentiary` — Protesters killed by pellets in J&K
+
+- *What is not measured:* Persons injured by pellet-firing shotguns in J&K, year-wise
+- *Why no figure exists:* The question that produced this table — Rajya Sabha Unstarred Question No. 511 of Prof. M. V. Rajeev Gowda, answered 7 February 2018 — asked for the number injured or killed. MHA supplied the killed and refused the rest in one sentence, verbatim: 'Further details in the matter cannot be disclosed in the interest of the national security.' The stated ground is contradicted by the same government's own conduct - the J&K Chief Minister gave the injury aggregate in the Legislative Assembly twenty-six days earlier, and the state's Director of Health Services filed a district-wise injury list on affidavit in the High Court four months later.
+- *What would close it:* An application to the High Court of Jammu and Kashmir at Srinagar for certified copies of the counter-affidavits in WP(C)(PIL) no. 14/2016, in particular the affidavit of the Director, Health Services, Kashmir filed in answer to the order of 11 May 2018 containing the district-wise list. Secondarily an RTI to the Director, Health Services, Kashmir, stating the definition and the unit of count.
+
+**jk-pellet-deaths** (series) · `withheld` — Protesters killed by pellets in J&K
+
+- *What is not measured:* Pellet cartridges and rounds fired, by force and year
+- *Why no figure exists:* The same sentence refused the munitions sub-question, part (c) of Prof. M. V. Rajeev Gowda’s Rajya Sabha Unstarred Question No. 511. The holder is established: the CRPF told the High Court it had fired 1.3 million pellets, 8,650 tear-smoke shells and 2,671 plastic pellets in the 32 days from 8 July 2016, so consumption returns demonstrably exist and were produced once, to a court, when disclosure served the force's own argument.
+- *What would close it:* An RTI to the CPIO, Directorate General, Central Reserve Police Force for year-wise consumption of 12-bore pump-action shotgun cartridges and of PAVA and tear-smoke munitions in the Kashmir Zone.
+
+## E.2 — The rest of the absence population — 311 entries, ids only
+
+**Ids only, and that is a deliberate cut you should hold against this document.** These 311 entries carry `not-published` or `not-collected` without a dispute flag. Both are claims about the world and both inherit the stated-search rule in full — but the `why` is where a search is stated, and printing 311 of them would have crowded out the rules this pass exists to test. **So the stated-search rule cannot be tested against these from this file.** They are listed so the population is visible: a reviewer shown only the 68 strongest claims would judge the vocabulary on its narrowest cases and conclude it is applied more carefully than it is. If the sample in E.1 makes you suspect a pattern here, say so and name what you would need.
+
+**`not-published`** — 203: L-0072 · L-0026 · L-0029 · L-0029 · L-0091 · L-0093 · L-0093 · L-0094 · L-0094 · L-0096 · L-0096 · L-0097 · L-0097 · L-0102 · L-0102 · L-0103 · L-0103 · L-0104 · L-0104 · L-0106 · L-0106 · L-0106 · L-0107 · L-0107 · L-0221 · L-0222 · L-0222 · L-0224 · L-0224 · L-0225 · L-0226 · L-0150 · L-0152 · L-0154 · L-0155 · L-0155 · L-0157 · L-0164 · L-0166 · L-0167 · L-0168 · L-0168 · L-0174 · L-0176 · L-0178 · L-0178 · L-0179 · L-0179 · L-0180 · L-0182 · L-0187 · L-0188 · L-0189 · L-0191 · L-0193 · L-0194 · L-0196 · L-0196 · L-0198 · L-0198 · L-0199 · L-0200 · L-0200 · L-0201 · L-0201 · L-0202 · L-0203 · L-0204 · L-0204 · L-0205 · L-0205 · L-0206 · L-0207 · L-0207 · L-0208 · L-0208 · L-0208 · L-0209 · L-0210 · L-0210 · L-0211 · L-0211 · L-0212 · L-0212 · L-0212 · L-0213 · L-0213 · L-0214 · L-0214 · L-0214 · L-0215 · L-0215 · L-0216 · L-0216 · L-0217 · L-0217 · L-0218 · L-0044 · L-0045 · L-0047 · L-0050 · L-0053 · L-0054 · L-0055 · L-0126 · L-0126 · L-0126 · L-0129 · L-0132 · L-0132 · L-0133 · L-0133 · L-0134 · L-0135 · L-0135 · L-0139 · L-0140 · L-0141 · L-0142 · L-0142 · L-0143 · L-0143 · L-0144 · L-0145 · L-0145 · L-0146 · L-0146 · L-0146 · L-0146 · L-0146 · L-0147 · L-0147 · L-0148 · L-0148 · L-0149 · L-0149 · L-0149 · L-0111 · L-0111 · L-0114 · L-0114 · L-0114 · L-0116 · L-0116 · L-0117 · L-0117 · L-0118 · L-0119 · L-0119 · L-0120 · L-0121 · L-0122 · L-0122 · L-0123 · L-0012 · L-0036 · L-0037 · L-0038 · L-0039 · nas-parakh-grade3-language · nas-parakh-grade3-language · nas-parakh-grade3-language · nas-parakh-grade3-language · nas-parakh-grade3-maths · nas-parakh-grade3-maths · nas-parakh-grade3-maths · nas-parakh-grade3-maths · parakh-grade3-proficient-language · parakh-grade3-proficient-maths · school-closure-weeks-covid · school-enrolment-total-udise · single-teacher-schools-udise · single-teacher-schools-udise · teacher-vacancy-rate-ssa · contract-teachers-share-government · contract-teachers-share-government · edu-spend-gdp-edu-depts · edu-spend-gdp-all-depts · edu-spend-gdp-centre-edu-depts · higher-ed-enrolment · higher-ed-enrolment · ugc-provision-gross · teacher-vacancy-rate-elementary · india-china-imports-chinese-basis · jk-detenus-psi · jk-detenus-psi · jk-prison-detained-category · jk-published-suspension-orders · jk-terrorist-incidents-legacy · jk-terrorist-incidents-merged · jk-terrorist-initiated-incidents · jk-civilians-killed-composite · jk-security-forces-killed · jk-militants-killed · jk-infiltration-attempts · jk-organised-stone-pelting · eshram-registrations · bharatnet-gps · household-electrification · metro-network · rail-avg-speed · pmfby-farmers · ujjwala-refills
+
+**`not-collected`** — 108: L-0066 · L-0067 · L-0069 · L-0090 · L-0090 · L-0090 · L-0090 · L-0091 · L-0091 · L-0092 · L-0096 · L-0098 · L-0100 · L-0101 · L-0102 · L-0104 · L-0105 · L-0105 · L-0105 · L-0106 · L-0107 · L-0108 · L-0108 · L-0109 · L-0060 · L-0062 · L-0063 · L-0064 · L-0225 · L-0150 · L-0152 · L-0163 · L-0163 · L-0164 · L-0168 · L-0170 · L-0177 · L-0177 · L-0183 · L-0189 · L-0197 · L-0217 · L-0218 · L-0219 · L-0219 · L-0220 · L-0220 · L-0125 · L-0127 · L-0131 · L-0136 · L-0136 · L-0136 · L-0137 · L-0138 · L-0147 · L-0148 · L-0110 · L-0112 · L-0114 · L-0114 · L-0118 · L-0120 · L-0121 · L-0121 · L-0122 · L-0124 · L-0012 · L-0016 · L-0017 · L-0078 · L-0081 · L-0083 · L-0034 · L-0034 · L-0035 · L-0038 · L-0040 · L-0041 · aser-std3-reading · aser-std3-reading · aser-std3-reading · nas-parakh-grade3-language · nas-parakh-grade3-language · nas-parakh-grade3-maths · nas-parakh-grade3-maths · parakh-grade9-maths · school-closure-weeks-covid · single-teacher-schools-udise · edu-spend-gdp-edu-depts · edu-spend-gdp-centre-edu-depts · higher-ed-enrolment · literacy-rate-7plus · rte-quota-children · jk-detenus-psi · jk-psa-detenus-transferred-out · jk-encounters-ct-ops · jk-encounters-ct-ops · jk-militants-killed · jkccs-civilians-killed-by-armed-forces · epfo-net-additions · lfpr-female · jjm-functionality · farm-household-income · msp-farmers-share · pmay-g-completed · soil-health-cards · ujjwala-refills
+
+## E.3 — Claims about what EXISTS — 291 candidate sentences across 179 records
+
+The rule: a claim about what exists is not a claim about what the sources contain, and only the second is checkable. *"No other body publishes this"* asserts something no retrieval can establish; *"no other publisher was located"* states the observation actually made. The mechanical test is in Extract C and it is worth restating: **could a single document, if it turned up tomorrow, falsify the sentence without any figure in the record changing?** If yes, it is a claim about existence and has to rest on what was searched.
+
+```
+NEEDLE  /\b(?:no (?:other|body|instrument|publisher|source|explanation|figure|record|agreed|equivalent)|nobody|never been published|the only|unprecedented|unexplained|not published anywhere|any government)\b/i
+FIELDS  summary claimAtLaunch whatHappened caseFor caseAgainst assessmentNote caveat differentFactsNote revisitTrigger shockExposure whatChanged bridgeNote notes
+SCOPE   ledger + provenance + series, sentence-split on [.!?]
+```
+
+**This is a CANDIDATE LIST and most of it will be correctly grounded.** The needle matches the phrasing, not the defect; the corpus has already rewritten several of these onto what was searched, and those rewrites match too. What is wanted is the ones where the surrounding text does not carry a search.
+
+- **L-0066** `summary` — The only complete propose-resist-repeal arc in this record.
+- **L-0067** `caseAgainst` — On the only instrument that measures what was promised, real income grew about 16% over six years against a target requiring roughly 100% over seven.
+- **L-0067** `assessmentNote` — The only instrument that measures that quantity, the Situation Assessment Survey, gives about 16 per cent real growth over the six years to 2018-19 against a target requiring roughly 100 per cent over seven.
+- **L-0071** `whatHappened` — Crop diversification programmes have repeatedly failed because MSP-assured paddy and wheat are the only crops with a guaranteed buyer, so farmers rationally decline to switch without an equivalent guarantee.
+- **L-0071** `caseAgainst` — Three central policies — assured procurement of paddy, no equivalent guarantee for alternatives, and tolerance of free farm power — together make water-mining the rational choice for individual farmers, and no element has been altered.
+- **L-0025** `assessmentNote` — Nobody disputes that recovery on written-off accounts runs at roughly 13-18 per cent, that Rs 13.91 lakh crore remains unrecovered, or that borrower liability survives the accounting entry.
+- **L-0028** `assessmentNote` — The gazette was not obtained - only a private portal's reproduction of it - so no score against the scheme is supportable, and worked was resting on an objective nobody in this project has read.
+- **L-0029** `assessmentNote` — It is NOT a finding that the system excluded nobody, and the exclusion question is live and unquantified in this record.
+- **L-0033** `summary` — The one-time capital impact is not established here: the only figure in circulation is a T4 relay and no primary source for it has been retrieved.
+- **L-0033** `caseAgainst` — On this record none of that can be sized: the directions themselves have never been retrieved and the only quantified impact in circulation is a T4 relay.
+- **L-0090** `caseAgainst` — There is no causal identification and nobody claims one: the mission launched nationally and simultaneously, with no untreated comparison group, no staggered adoption and no discontinuity, and the FLN implementation questions were asked for the first time in 2024, so no difference-in-differences of any kind is possible.
+- **L-0093** `summary` — No back-cast, no dual-basis year and no reconciliation exists, so how much of the fall is deduplication and how much is real decline has never been published.
+- **L-0093** `caseAgainst` — The one number that would let anyone read the reform - how much of 1.72 crore was ghosts and how much was children - has never been published, and the Ministry holds both bases and could produce a dual run for a single year.
+- **L-0094** `whatHappened` — On 17.12.2025 an MP put the Ministry’s own two Standing Committee totals to the Minister by number and asked him to confirm them (Rajya Sabha Starred 193); the reply neither confirmed nor denied and contained no figure.
+- **L-0097** `caseAgainst` — Eight years after the notification the remediation is still running, with registration open to August 2026 and non-completion invalidating the appointment, so a cohort of serving primary teachers holds employment conditional on a course they have not yet finished - and nobody has counted them.
+- **L-0097** `caveat` — UDISE+'s 'professionally qualified' is not a compliance rate with RTE section 23 and overstates it at primary level by a margin nobody has measured.
+- **L-0099** `caseAgainst` — And the national pattern removes the innocent explanations: no other state saw anything comparable in the same years, so this was a rule change and not a demand shift, a pandemic effect, or a reporting artefact.
+- **L-0100** `caseFor` — NEP 2020 names no language at all: 'Hindi' does not occur in the language chapter, the choice is expressly assigned to states, regions and students, and the only constraint is that two of the three be native to India.
+- **L-0100** `caseAgainst` — The arithmetic then follows from the Union's own text without any empirical claim: in a Tamil-and-English school the existing two are Tamil, which is native to India, and English, which is not, so the mandatory third cannot be a foreign language and must be an Indian language other than Tamil - and the only language NEP nominates for that slot anywhere in its 66 pages is Sanskrit.
+- **L-0101** `caveat` — The Article 131 suit is weaker still: the only account of it retrieved is a paywall-truncated news report, the plaint is not public, and the Supreme Court's case-status register is CAPTCHA-gated, so the suit's diary number and filing date could not be confirmed and are not stated here.
+- **L-0102** `caseAgainst` — And the improvement itself is unexplained: other-departments education spending grew 41.7 then 49.0 per cent across FY2013-14 and FY2014-15, roughly doubling in two years, exactly at the political transition, against 11.4 and 8.4 per cent for education departments - and no retrieved document accounts for it.
+- **L-0102** `caseAgainst` — Both terminal points are Budget Estimates, which revise down by about 0.35 points to Actual on the only year where all three stages exist, and the Union underspent its own budget in 13 of 16 completed years.
+- **L-0102** `caveat` — The all-departments series must not be used for UPA-versus-Modi comparison until the unexplained doubling of other-departments spending across FY2013-14 and FY2014-15 is resolved.
+- **L-0102** `caveat` — It is simultaneously the series Parliament is briefed on, the series compared against the 6 per cent target, and the only one of the two that shows improvement across the transition - and the improvement is driven by that doubling.
+- **L-0104** `caseAgainst` — And the whole expansion is measured only at entry: India has no published higher-education dropout, retention or completion rate at all - an exhaustive search of every AISHE report from 2014-15 to 2023-24 returns zero occurrences of the terms - so nobody knows what share of the 1.08 crore additional entrants finished anything.
+- **L-0105** `caseAgainst` — The caste enumeration announced alongside Census 2027 has no defining instrument yet - the intent notification does not mention caste at all, and the only question notification issued so far covers the first phase's 33 items, whose social-category question is the same three-way split as 2011.
+- **L-0106** `whatHappened` — The distributional indicator that would show compliance was published annually by the predecessor system through 2015-16 - one in four primary schools above the norm in its final year - and has never been published since, although the current system holds school-level enrolment and teacher counts for every school.
+- **L-0106** `caseAgainst` — And the improvement is partly not one: single-teacher schools fell by about 17,000 across three years while the total school stock fell by roughly 5,000 and zero-enrolment schools by 4,631, so part of the reduction is closure and consolidation - a split no source decomposes, while the Ministry attributes the whole of it to 'conscious and meaningful governmental interventions'.
+- **L-0107** `summary` — The only national estimate that exists was produced by a university centre for the UNESCO Teacher Task Force: 11.1 per cent of state-government-school teachers were contractual in 2021-22, and 16 per cent at primary level.
+- **L-0109** `caseAgainst` — The published series is a stock and the state does not publish the flow, so nobody can say how many schools were closed as against merged, or how many children had to travel further.
+- **L-0059** `caseAgainst` — Regular wage employment, the only category that reliably carries contracts, leave and social security, did not grow at all.
+- **L-0061** `caseAgainst` — The 60-day strike notice constrains the only leverage workers hold.
+- **L-0062** `assessmentNote` — What is NOT measured is jobs created as distinct from registrations, entered below as an absence; no instrument retrieved separates them.
+- **L-0221** `caseFor` — A capacity share is also the only quantity a government can directly control — it can procure plant, and it cannot procure wind — so a capacity target is the honest form for a commitment about state action.
+- **L-0221** `caseAgainst` — Most seriously, the one commitment of the five that IS denominated in energy rather than capacity — Panchamrit element 2 — is the only one no retrieved document reports progress against, while two official releases announce the capacity limb as though it were that goal.
+- **L-0221** `assessmentNote` — That understates the opening gap and overstates the widening by an amount nobody has quantified, and the `breaks[]` contract binds the SERIES and does not reach a derived comparison stated in prose.
+- **L-0221** `assessmentNote` — Complements L-0052 rather than duplicating it — L-0052 scores the capacity expansion WORKED on the capacity target and states in terms that 'this record carries no figure for the generation share'.
+- **L-0223** `summary` — It is the only quantified climate commitment in this set that names a base year.
+- **L-0224** `caseAgainst` — It is also 'additional' to an unstated reference, and the only stock figure the strategy offers is in units the target does not use — 7,204 million tonnes of unspecified basis against a target in CO2 equivalent, which differ by roughly a factor of 3.67 if the stock is carbon.
+- **L-0224** `assessmentNote` — WHY NOT `awaiting-adjudication`: no body outside the enacting authority has anything pending.
+- **L-0224** `revisitTrigger` — Re-read on either of two events, each of which would change the verdict rather than the elapsed time: (1) any Government of India publication stating a PROJECTED national emissions trajectory to 2030, which would give the one-billion-tonne limb the baseline it is measured against and make it scoreable for the first time; or (2) any statement of the reference the 2.5-3.0 GtCO2e sink is ADDITIONAL TO, with its unit basis, which would do the same for the sink limb.
+- **L-0225** `caseFor` — And the strategy makes an equity argument on the record rather than leaving the timing unexplained: India's per capita emissions are 2.46 tCO2e against a global average of 4.79, and its historical contribution about 4 per cent, which is offered as the reason a 2070 date differs from a 2050 one.
+- **L-0225** `caseAgainst` — The scope is also unsettled in the only document that could settle it, and the gap is not academic: India reports its own emissions EXCLUDING LULUCF, and whether land sinks count is the difference between a target requiring the elimination of fossil emissions and one requiring far less.
+- **L-0225** `revisitTrigger` — Any Government of India statement fixing the gas coverage and LULUCF treatment of the 2070 target, which would settle what is being zeroed; or the publication of any interim milestone before 2070, which would give the commitment its first testable moment and would move this record off `too-early` for a reason other than the calendar.
+- **L-0150** `caseAgainst` — And the states have no instrument at all: they do not administer Union cesses, have no assessment machinery for them, and every figure they can put before a Commission is a Union figure.
+- **L-0150** `assessmentNote` — Each levy was introduced on its own stated purpose and the aggregate effect is a residual nobody claimed.
+- **L-0152** `assessmentNote` — Contested rather than no-objective because a claim was made and its outcome is unmeasured: the Union stated that the retained share finances the requirements of the new Union Territories, and no instrument tracks whether it did.
+- **L-0153** `caseAgainst` — And the same Commission that found no room to cut the states' share of the pool declined to cap or bring in the cesses that shrank it, so the only instrument it used against the trend was one it had already ruled out changing.
+- **L-0155** `summary` — It has never been published as a document of the Comptroller and Auditor General for any year.
+- **L-0155** `caseAgainst` — What now exists is a disclosure by the payer of what the auditor certified — not the certificate — for one year, and the only other five years in the public record reach it through a Commission the payer appoints.
+- **L-0157** `caveat` — Two independent government sources agree on every rate, so no figure here rests on one copy.
+- **L-0159** `assessmentNote` — The other two are legal questions about what the Compensation Act contains and whether a Council decision survives its omission from a statute, and no instrument in the corpus answers either, because the Article 279A(11) adjudication mechanism does not exist.
+- **L-0162** `caseAgainst` — A body in which the Centre alone holds a blocking third, in which no group of states can reach the 75 per cent threshold over the Chairperson's objection, and in which the only counterweight the Constitution provides has not been built, is not a shared sovereignty in the respect that matters most — what happens when the sharing fails.
+- **L-0163** `summary` — On 8 April 2025 the Supreme Court held the second-round reservation illegal, set aside the President's consequent actions and, under Article 142, declared the ten bills deemed assented as of 18 November 2023 — the only instance in Indian constitutional history in which assent has been deemed.
+- **L-0163** `whatHappened` — What survives on the states' side is a limited mandamus where inaction is "prolonged, unexplained, and indefinite" — a standard the Court did not define — and the holding that Article 361 immunises the person of the Governor but not the office.
+- **L-0163** `differentFactsNote` — Nobody disputes that Article 200 has no time limit; nobody disputes that ten bills sat for over a year; nobody disputes the dates of the second-round reservation.
+- **L-0165** `claimAtLaunch` — The Part's own heading is the only objective statement retrieved: "PROVISIONS RELATING TO THE MAINTENANCE OF THE DEMOCRATIC AND ADMINISTRATIVE BALANCE IN THE GOVERNANCE OF NATIONAL CAPITAL TERRITORY OF DELHI".
+- **L-0166** `caseAgainst` — The only cumulative figure that exists is twenty-four years old and mixes two statutes, so no published number separates Article 356 from section 51 of the Government of Union Territories Act, and any modern count that adds Puducherry 2021 to Uttarakhand 2016 is doing the same bundling without saying so.
+- **L-0168** `caseAgainst` — A statutory entitlement to a hundred days' work was suspended for the population of a state on the strength of findings in nineteen districts, and no instrument states why the whole state rather than the nineteen districts.
+- **L-0168** `caseAgainst` — And the order itself has never been published: the Union describes it in Parliament and does not produce it, so the reasons cannot be tested by anyone.
+- **L-0168** `assessmentNote` — Contested rather than failed: the two sides weight the same facts differently and no instrument in the record adjudicates between a proportionate enforcement action and a disproportionate one.
+- **L-0168** `assessmentNote` — The section 27 order itself has never been published, so the reasons that would settle it are not on any record.
+- **L-0171** `differentFactsNote` — Every figure here comes from one institution, the state's own auditor, reading both governments' accounts; nobody disputes any of them.
+- **L-0172** `assessmentNote` — No objective was stated at announcement: nobody claimed the auditor would or would not be given access, and there is no measure here whose stated purpose could be scored.
+- **L-0172** `differentFactsNote` — The certificate says what it says and nobody disputes it.
+- **L-0175** `caseAgainst` — The figure governs the argument, and the party that collects the money is also the only party that states the figure — twice, differently, and without saying what either version contains.
+- **L-0177** `caseAgainst` — A levy is exempt from sharing with the states because it is earmarked, and for four of the years in this table — on the Union's own footnote, for fifty years — there was no instrument in which the earmark could be recorded.
+- **L-0178** `whatHappened` — The answer names them without saying which, if any, applied to any state, and offers no explanation for any state's trajectory.
+- **L-0178** `caseAgainst` — The largest single component of the decline is MGNREGA, where a statutory power to stop release was exercised against this state and no other, and restored by a court rather than by the Ministry.
+- **L-0178** `assessmentNote` — Contested rather than failed: the same table supports a reading of conditions unmet and a reading of a state squeezed, and no instrument in the record adjudicates between them.
+- **L-0179** `whatHappened` — The answer offers no other state-specific reason for any state, and closes the distinction outright: "implementation of Samagra Shiksha Scheme is implementation of NEP 2020 and PM SHRI Schools are exemplar schools of NEP 2020." The general conditions it also cites are the Ministry of Finance ones — pace of expenditure, receipt of commensurate state share, audited accounts, outstanding advances, expenditure statements.
+- **L-0179** `differentFactsNote` — Both sides read the same annexure and the same reply and dispute no figure and no quotation in either.
+- **L-0179** `differentFactsNote` — The disagreement is whether an unsigned memorandum for a second scheme, offered as the only state-specific fact in a reply about the first, is an explanation or an implication — a weighting of one agreed record.
+- **L-0180** `differentFactsNote` — The rates, the totals and the claim are all the Union's own or come from its own notifications, and no figure is disputed.
+- **L-0181** `caseAgainst` — The letter is the document the trade and the press read on budget day, and its Annexure C is the only place in the entire 2021-22 budget set where the four grades appear with their totals.
+- **L-0182** `whatHappened` — That is a place to look and is not a finding: this record states the divergence, states that it is unexplained, and names no component.
+- **L-0182** `caseFor` — And FY2017-18 was a year of unprecedented accounting disruption in which eight central levies were replaced mid-year — a large one-off difference in that year is the least surprising place for one to appear.
+- **L-0182** `caseAgainst` — The exactness of the residual makes it worse rather than better: an unexplained round difference means a component is being included by one and excluded by the other, which is a definitional fact somebody knows and nobody has written down.
+- **L-0182** `caveat` — Three of the four divergences are the documented definitional gap between instruments and were characterised as such before this pass; FY2017-18 is larger and unexplained, and unexplained is where it stays.
+- **L-0183** `summary` — Nobody adds the three.
+- **L-0183** `summary` — Nobody has ever been refused them.
+- **L-0183** `caseAgainst` — A figure that no instrument produces governs the argument anyway, and the body that could settle it has been asked more than ten times over twenty-five years by members of at least eight parties about at least eight states and has answered in the form asked not once.
+- **L-0183** `differentFactsNote` — No common ledger can be built, and the reason is not that nobody has built it: one of the three inputs the ledger needs is declared by its holder not to exist, so the comparison is not merely unbuilt but blocked at the source.
+- **L-0184** `summary` — The second order was made under the national emergency declared in EO 14066 about Russia's actions in Ukraine, not under any trade emergency, and India is the only country it names.
+- **L-0184** `caseAgainst` — The second tranche was not a finding about Indian trade practice: it names India's purchases from a third country, under an emergency declared about that third country, and no other purchaser of Russian crude was named.
+- **L-0184** `caseAgainst` — That makes the exposure political rather than commercial, and it is India-specific in a way no other shock in this instrument is — every other one is shared with the peer panel and can be netted against it.
+- **L-0187** `caseAgainst` — A prohibition adopted between a proposed action and a final one, and evidenced here only by the foreign determination citing it, is a commitment whose enforcement nobody has yet measured.
+- **L-0187** `assessmentNote` — India's adoption of the prohibition is an Indian measure, but the record cannot establish what it was adopted FOR: no Indian announcement of it has been retrieved in this run, and the only document that describes it is the American determination that rewarded it.
+- **L-0189** `caseAgainst` — Neither government put a number on the record, so the proportionality of the measure to the conduct it was aimed at cannot be tested from official sources at all, and the only figures available are commercial estimates that are not official on either side.
+- **L-0191** `assessmentNote` — Recorded separately from L-0190 rather than folded into it precisely because folding it in is the error: a table showing 2023, 2024 and 2025 with two columns for the first two years and one for the third invites the reader to treat the 2025 column as the settled figure, when it is the only figure.
+- **L-0192** `summary` — Myanmar is the single exception at -0.911, and is the only neighbour in this set from which India buys more than it sells.
+- **L-0203** `caseAgainst` — 108 aircraft built in India was the largest transfer-of-manufacture commitment in the pipeline, and nothing in the IGA replaces it — the record shows no licence production, no production line and no equivalent obligation.
+- **L-0204** `revisitTrigger` — Re-test on the first full year of trade under CETA, and specifically on whether the phasing schedule is published — without it the 24.5 per cent figure is the only measurable statement about India's market opening, and it will stay that way.
+- **L-0211** `caseFor` — Parliamentary replies answer what is asked, and no reporting obligation was breached by not repeating a table nobody requested.
+- **L-0211** `caveat` — NO ANNUALISATION IS PERFORMED HERE and none should be inferred: electricity flows are seasonal, so scaling ten months to twelve would produce a figure that describes no period and belongs to no source.
+- **L-0213** `claimAtLaunch` — The only quantified claims appear nineteen months later and are benefit claims, not commitments — costs down by up to 30 per cent and transport time down by 40 per cent.
+- **L-0214** `caveat` — On public stockholding, the Department's December 2024 statement records only that there was no outcome on agriculture at the 13th Ministerial Conference and that India opposed attempts to divert focus from the Permanent Solution; no record is made here of that arc, which remains open.
+- **L-0215** `caseAgainst` — More than three-quarters of the stated total is assigned to no channel whatever, so a reader cannot tell what the largest part of the programme actually was, and no other retrieved document supplies it.
+- **L-0218** `claimAtLaunch` — Every one of these sites is an official publication channel and is presented as the route by which the relevant documents are made public; that is the only claim involved, and it is implicit in their existence rather than announced.
+- **L-0218** `revisitTrigger` — The e-Gazette is the one to watch: it is the only channel here with no second route, and it is the channel of legal record.
+- **L-0219** `caveat` — EVERY FIGURE HERE DESCRIBES ONE CLIENT ON ONE DAY, and the sequence that produced it recorded three separate occasions when that mattered: ten live government hosts were measured as unreachable before this machine's broken resolver was understood; the e-Gazette was recorded in L-0218 as the corpus's one unreachable channel and is not one; and two runs of this very partition had to be discarded, the first because a failed fetch left the previous host's page on disk and three unrelated hosts were scored against the Ministry of External Affairs homepage, the second because a single-try two-second DNS lookup reported hosts as having no record when working pins for them were already on file.
+- **L-0219** `revisitTrigger` — The 81 citations that are both addressable and on a live host are the only group where cheap work remains.
+- **L-0220** `caseFor` — Counts at that point are auditable, timely, and available at national scale, while use requires household surveys that are slower, costlier and contestable — the Swachh Bharat record shows two instruments disagreeing about use while nobody disputes how many latrines exist.
+- **L-0047** `assessmentNote` — And the EMISSIONS half of the objective is not measured: electric traction on a coal-heavy grid displaces diesel with coal, so the net gain is smaller than the diesel figure implies by an amount nobody here has computed.
+- **L-0052** `assessmentNote` — Renewables' share of energy generated remains well below their share of capacity because of load factors, and this record carries no figure for the generation share - entered below.
+- **L-0129** `assessmentNote` — failed is wrong because nobody announced an objective for a pocket edition.
+- **L-0132** `caveat` — The 99 per cent and 81 per cent figures rest on a Commonwealth Human Rights Initiative RTI reply that nobody in this phase has read, relayed through OHCHR.
+- **L-0133** `summary` — On 11 March 2020 it stated the legal basis in terms, which settles the definitional question almost nobody has noticed was settled.
+- **L-0133** `whatHappened` — The only order count MHA has ever produced is from Rajya Sabha Unstarred Q.349 of 5 February 2020: 'detention orders were issued against 444 persons under the Jammu and Kashmir Public Safety Act (PSA), 1978, since August 2019.
+- **L-0133** `whatHappened` — The only leader-adjacent number ever given is 'Nil', for political leaders detained under the National Security Act, a statute nobody had alleged was in use.
+- **L-0133** `caseAgainst` — In a population where a single person can generate up to eight successive detention orders, and one man was booked for the thirty-seventh time, the difference between persons detained and orders issued is not a rounding matter, and no instrument declares which it counts.
+- **L-0133** `caseAgainst` — For fifteen weeks after 5 August 2019 the government gave no total of any kind, while the only people in a position to count independently were under a communications blackout, which is why nothing from that window can be reconciled.
+- **L-0134** `whatHappened` — The transfer series itself is the only clean year-wise run in the subject: 44, 295, a stated zero, 146, 585 and 52 to 1 August 2023, totalling 1,122, with 408 held outside at that date.
+- **L-0134** `caseAgainst` — The transfer also removes the person from the only count that would show him: Prison Statistics India attributes an inmate to the State that holds the body, has no interstate transfer table for detenus at all where it has one for convicts and one for undertrials, and publishes only an aggregate 'belongs to other State' column that never names the origin.
+- **L-0134** `caseAgainst` — So the practice makes the detenu harder to reach, harder to litigate for, and invisible in the J&K row of the only official series.
+- **L-0134** `assessmentNote` — contested would be wrong - the evidence does not support two defensible readings of the legality question; one reading awaits confirmation by the only body entitled to give it.
+- **L-0135** `whatHappened` — The series, read from Table 3.3 (Concluded) in the pre-2016 volumes and Table 2.1 (Concluded) from 2016: 182, 409, 239, no figure for 2012, 72, 35, 90, 432, 212, 283, 404, 228, 252, 546.
+- **L-0135** `whatHappened` — First, no law-wise split exists: the only chapter that classifies inmates by the law they are held under is titled and scoped to convicts and undertrials, and NCRB names the PSA once, in a footnote to two tables, in an illustrative list ending 'etc.', with no figures.
+- **L-0135** `whatHappened` — And the series stops at 2022 because the publication stopped: NCRB's own index returns 'no record found' for 2023 and 2024.
+- **L-0135** `caseFor` — Prison statistics are compiled from returns furnished by the prison department that holds the body, which is the only department that can count it; asking NCRB to attribute an inmate to a detaining authority in another State would be asking a compiler to audit its own contributors.
+- **L-0135** `caseAgainst` — And the peak of the series is neither 2016 nor 2019 but 2022, at 546 - in a year in which the same table shows Haryana holding 235 detenus of whom three were Haryana-domiciled, and J&K's own Table 7.5 row records 706 releases against a year-end stock of 546 with 540 of them in an unexplained residual bucket.
+- **L-0137** `summary` — The Review Committee is the only safeguard the Suspension Rules provide against misuse of the power, and the Rules require it to record findings.
+- **L-0137** `caseAgainst` — On the two documents that exist, either the review was months late or the record of a timely review was published months late, and the published document cannot distinguish them - which is itself the finding, since a document whose function is to evidence timeliness omits the only date that would.
+- **L-0137** `caseAgainst` — If the second answer is the true one, then the Review Committee findings for January 2020 to February 2024 do not exist, and the only statutory oversight mechanism was not producing the record the rule requires - which is a materially worse finding than non-disclosure.
+- **L-0138** `summary` — Both Union bodies with responsibility for telecom suspension have stated on the record that they keep no record of shutdown orders issued by States and Union Territories, and the reason both give is that police and public order are State subjects.
+- **L-0138** `caseAgainst` — The Union's stated ground for holding no record is constitutional, and it does not fit the one territory where the power has been used most.
+- **L-0138** `assessmentNote` — Nobody announced a decision not to count shutdowns; the position emerges from answers given when asked, and the only stated purpose in the record is the Standing Committee's recommendation, which is a recommendation to the Government and not a claim by it.
+- **L-0138** `assessmentNote` — This follows the value's use on the phase-11 records that find a quantity has no instrument, which are decided the same way.
+- **L-0140** `assessmentNote` — Filed no-objective because the record finds something real and no objective was stated at announcement against which it could be scored - no body announced anything about the venue, and there is no claim to test.
+- **L-0141** `caseAgainst` — And the body that drew the constituencies contained nobody chosen by the population whose constituencies were drawn: its ex-officio members were the Chief Election Commissioner and a State Election Commissioner appointed by the administration of a Union Territory under President's rule, its five associate members from the Lok Sabha could by statute neither vote nor sign, and the Assembly half of its associate membership could not be constituted because the Assembly had been dissolved.
+- **L-0142** `whatHappened` — The only hard number in the vicinity is the elector count itself, which on the post-2019 territory grew from 7,743,306 at the 2019 General Election to 8,802,348 at the 2024 one, a rise of 1,059,042 or 13.68 per cent in five years - and that figure is evidence for no characterisation of who was added.
+- **L-0143** `whatHappened` — The gap is being litigated rather than legislated: a petition challenging the three sections is before the High Court on the pleaded assumption that the nominated members have full voting rights, and the Union's answer on the relayed account defends the Lieutenant Governor's discretion to nominate without addressing voting at all - so the two sides in the only live proceeding are not joined on the question.
+- **L-0143** `caseFor` — Kashmiri Migrants displaced from the Valley are dispersed across camps and cities outside the territory they would vote in, and persons displaced from Pakistan-occupied Jammu and Kashmir have no seat that answers to them; neither group can be reached by redrawing a boundary, which is the only tool delimitation has.
+- **L-0144** `caseAgainst` — The Union's own series then simply stops in March 2021, so there is no published Union figure for anything after 31 December 2020, and a reader looking at the published record cannot tell whether that is because nothing happened or because nobody asked.
+- **L-0144** `differentFactsNote` — Those are facts about who was excluded from a category, and the excluded population was never enumerated by any instrument: there is no stock count of permanent residents anywhere, and the object 'person who held permanent-resident status and did not convert' has no agreed definition at all, because the two statuses have different qualifying conditions and neither population is enumerated as a stock.
+- **L-0144** `differentFactsNote` — The one quantity that would join them, certificates by year and by qualifying limb, is not published, and the only figure that exists is on a different period under a different category name.
+- **L-0145** `summary` — The area involved was published by nobody until a restored Assembly asked in October 2025.
+- **L-0145** `caseAgainst` — The Union series then terminates in April 2023 and the area - the denominator both sides would accept - was published by nobody until a different legislature asked in 2025.
+- **L-0146** `caseAgainst` — A vacancy series that cannot distinguish a seat nobody stood for from a seat whose holder was killed is not a vacancy series.
+- **L-0147** `caseFor` — On grants, the shortfall is neither new nor unexplained in principle.
+- **L-0147** `assessmentNote` — The 2011 Act states a duty rather than an objective, and no body has announced a target for constituting a commission, for auditing the local tier, or for a devolution score.
+- **L-0148** `caseAgainst` — And the arithmetic that would settle whether any of this amounts to substitution has never been published, because nobody publishes what fraction of J&K complaints concern forces the national Commission may not investigate.
+- **L-0148** `differentFactsNote` — That the one number which would decide the argument is the one nobody has printed is the finding, and it is a gap in the instrument rather than a property of the argument.
+- **L-0149** `caseAgainst` — The successor then publishes nothing that would let anyone see the territory's caseload at all - three national totals, no state breakdown, a report sixteen months late and latterly unreadable by machine - so the only J&K number on the record since is one that leaked from a letter.
+- **L-0149** `caseAgainst` — The last published pendency figure for the abolished Commission is from 2014, so nobody can even say how many appeals were extinguished.
+- **L-0110** `differentFactsNote` — This is the phase's structural finding rather than a feature of this record alone: for six of the nine quantities examined, a two-sided account of the conflict is an assembly the researcher makes and no source makes.
+- **L-0111** `caseAgainst` — The reply of 20 July 2022 uses the composite to make exactly the claim the composite cannot support - 'There has been substantial decline in terrorist attacks from 417 in 2018 to 229 in 2021.' Two restatements of the same table in two consecutive report years, neither accompanied by a single explanatory sentence, and a restructuring applied to this theatre and no other, is not a disclosure practice a reader can audit.
+- **L-0111** `assessmentNote` — Scored no-objective on the written definition: nobody announced an objective for a reporting instrument, so no claim exists to test the restatement against, and the finding is firmly established either way.
+- **L-0113** `caseFor` — The Annual Report's 11.76 per cent comparison is a like-for-like comparison of the same bounded series year on year, which is the only comparison that series supports.
+- **L-0114** `summary` — It supplied a month-by-month table of deaths for calendar 2015 to 2017 - seventeen protesters killed, and two security-force personnel killed in law-and-order protests - and refused everything else in one sentence: 'Further details in the matter cannot be disclosed in the interest of the national security.' That single table is the only official Indian document located in this phase that puts harm to civilians and harm to the state's own personnel side by side on one page.
+- **L-0114** `summary` — It is the only pellet quantity located in this phase in a UNION government publication.
+- **L-0114** `summary` — It is not the only pellet quantity any government has published, and this record reports the counter-example itself: the Jammu and Kashmir Chief Minister gave the Legislative Assembly bounded injury aggregates twenty-six days earlier, set out below.
+- **L-0114** `caseAgainst` — The consequence has been measured, by government doctors, in peer-reviewed journals, using stated definitions, which is more than any government count offers: in one Srinagar hospital in four months of 2016, 777 patients were admitted with pellet-related ocular injuries, 76.3 per cent of eyes had open-globe injury, and final best-corrected visual acuity was counting fingers or worse in 82.4 per cent of eyes; in a prospective series at the same hospital 10.8 per cent of eyes had no perception of light at all; mean age in both is about 22.
+- **L-0114** `caseAgainst` — The trade-off argument requires knowing how many deaths were avoided, and no instrument located in this phase measures it.
+- **L-0114** `caseAgainst` — The two bodies that might have produced an independent count are gone: the State Human Rights Commission, which had produced the only severity taxonomy in existence, was extinguished on 31 October 2019, and the Assembly that extracted the only aggregate has been barred from the subject matter since.
+- **L-0114** `caveat` — CORRECTED 2026-08-05 (adversarial triage 2): the summary previously read "the only pellet quantity any government has ever published".
+- **L-0114** `caveat` — Two counterfactual claims - that nobody, and that no instrument of any provenance, has ever measured deaths avoided - are bounded to what this phase searched.
+- **L-0114** `caveat` — No figure changed and the score is unchanged.
+- **L-0114** `caveat` — Seventeen deaths over three calendar years is the only pellet quantity located in this phase in a Union government publication, and it was published in the same answer that refused the injury count.
+- **L-0114** `differentFactsNote` — No instrument located in this phase measures it, and the 2010-versus-2016 comparison that stands in for it compares different windows, different unrest intensities and different deployments, on two figures neither of which has an established basis.
+- **L-0115** `whatHappened` — On 18 September 2020 the Army stated its inquiry had found prima facie evidence that powers vested under the AFSPA (J&K) Act 1990 were exceeded and that the Chief of Army Staff's Do's and Don'ts, as approved by the Supreme Court, had been contravened; the Court of Inquiry itself has never been published.
+- **L-0115** `whatHappened` — The police chargesheet of 28 December 2020 named Capt Bhoopendra Singh and two civilians, alleged a Rs 20 lakh prize-money motive - which the Army contradicted on the record on 11 January 2021, stating it has no system of cash awards - and left documented gaps: no financial trail, no source established for the planted weapons, the statements of two majors never recorded 'in view of their transfer to the frontiers', the four soldiers who admitted firing listed as witnesses rather than accused.
+- **L-0115** `caseAgainst` — Meanwhile the civil prosecution, the only forum families can participate in, is immobilised by section 7.
+- **L-0115** `caveat` — The Court of Inquiry has never been published, the court martial was closed, and the Armed Forces Tribunal order is known only through press readings of it.
+- **L-0116** `whatHappened` — The verification machinery behind contested killings is separately inert: the Hyderpora magisterial inquiry ordered on 18 November 2021 with a fifteen-day deadline has never been published, though the Lieutenant Governor sought two days to publish it on 7 December 2021, and a Ganderbal seven-day inquiry in 2026 had not appeared weeks later.
+- **L-0116** `caveat` — No figure should be authored.
+- **L-0117** `caseFor` — But MHA has never disaggregated "Terrorists killed" into local and foreign in any of seventeen years, and no figure in circulation has a retrievable basis - see the absence recorded on this record.
+- **L-0117** `caseAgainst` — Whether they are added back is a question nobody has answered, and nobody has been in a position to compel an answer since the J&K Assembly stopped sitting - which is exactly where these numbers used to be tabled, by a Chief Minister, in writing, to a named MLA.
+- **L-0117** `assessmentNote` — Scored no-objective: no objective was ever stated for a quantity that has no instrument, so there is no claim against which the absence could be scored.
+- **L-0118** `caveat` — The counted category is 'Organized' stone-pelting and no body has ever defined 'organized'.
+- **L-0119** `whatHappened` — The only two years MHA attributed the series to anyone attributed it to the Multi Agency Centre, an Intelligence Bureau body; from 2016-17 the attribution was dropped and the series continued.
+- **L-0120** `caseAgainst` — Nobody can reconstruct the running total from the published components either, because the annual series has been restated at least three times and the years before 2014 are on bases whose definitions are unestablished.
+- **L-0121** `caseAgainst` — Whatever the reason, the effect is that in the one theatre where central forces do most of the holding, no instrument counts the resulting deaths and no instrument could.
+- **L-0121** `caveat` — And no figure from this chapter, for J&K or anywhere else, includes deaths in Army or central-armed-police custody.
+- **L-0122** `caseAgainst` — And the decision rule that produced it is held by nobody: two arms of the same government each told the statutory information authority that the other holds it and that they do not, which means no written criteria for the exercise of the power exist or can be produced.
+- **L-0124** `summary` — The Jammu Kashmir Coalition of Civil Society and the Association of Parents of Disappeared Persons published an Annual Human Rights Review which is the only instrument located in this phase that put both sides' harm on one page and named who caused it.
+- **L-0124** `summary` — After 2019 no instrument among those searched publishes the perpetrator split for civilian deaths in Jammu and Kashmir.
+- **L-0124** `summary` — (Bounded 2026-08-05, adversarial triage 2: this previously read 'no instrument of any provenance', which claimed the world while the search bounded a named few.)
+- **L-0124** `caseAgainst` — Whatever its limitations, it was the only instrument that answered the question.
+- **L-0124** `caseAgainst` — And the termination was not a publishing decision: the domain is gone, the coordinator has been in custody since November 2021, a named researcher was arrested in March 2023, the parallel international organisation halted Indian operations in 2020, and the state human rights commission that had produced the only official severity taxonomy was extinguished in 2019.
+- **L-0124** `revisitTrigger` — That check must be run before any claim that nobody publishes the perpetrator split after 2019 is treated as settled.
+- **L-0011** `caseFor` — A one-time shock was arguably the only way to force behaviour change in a cash-preferring economy.
+- **L-0018** `summary` — India withdrew from the Regional Comprehensive Economic Partnership at the final stage, the only one of sixteen negotiating countries to opt out.
+- **L-0020** `shockExposure` — Peer comparison is the only clean lens: the shared exposure means India's relative depth isolates the domestic policy contribution.
+- **L-0081** `assessmentNote` — UT of Jammu and Kashmir, MA 1086 of 2020 - a Jammu and Kashmir COMPLIANCE proceeding rather than a fresh case or a general restatement - and neither the order of 30 January 2024 nor that of 23 February 2024 was retrieved in phase 12: the only index into the Court's document identifiers is CAPTCHA-gated and was not bypassed as a matter of conduct.
+- **L-0083** `caseAgainst` — No instrument shows the overlap at all.
+- **L-0084** `caseFor` — The NJAC was passed by both Houses near-unanimously and ratified by state legislatures, and its striking down removed the only serious attempt in decades to open judicial appointments beyond the judiciary itself.
+- **L-0084** `caseFor` — The collegium has no published criteria, no record of deliberations and no appeal, which is an accountability gap the Court has not closed on its own.
+- **L-0088** `caseFor` — The Commission has continued to conduct elections at a scale no other body attempts.
+- **L-0037** `assessmentNote` — Partly is scored on that: the commitment failed on its date while the programme delivered at unprecedented scale.
+- **L-0037** `assessmentNote` — Completed-to-OCCUPIED is asserted in this record with no number at all, and is entered below - a completed house nobody lives in is not housing delivered, and it is the second place this scheme is counted before use.
+- **L-0041** `caseAgainst` — The doubling commitment was specific, dated and publicly repeated, and the only authoritative measurement instrument shows roughly 15% real income growth over six years against a target requiring 10.4% a year.
+- **L-0041** `assessmentNote` — The doubling commitment was specific, dated and publicly repeated, and required about 10.4 per cent annual real growth; the only authoritative instrument shows roughly 15 per cent real growth over six years, and no Situation Assessment Survey has been fielded since 2019, so the terminal year is unverifiable and is already entered below as an absence.
+- **P-46** `whatChanged` — It is the only instrument that measures farm household income net of paid-out and imputed costs, so the promise to double farmers' income by 2022-23 cannot be evaluated against any authoritative measure.
+- **P-48** `whatChanged` — Agriculture was the only sector to grow through the lockdown.
+- **P-59** `whatChanged` — ASER, an NGO household survey, is the only continuous series.
+- **P-59** `bridgeNote` — ASER Centre states plainly that 'their results are not comparable'; nobody disputes it and nobody has built a bridge.
+- **P-59** `notes` — On TRENDS: build the spine on ASER, from 2011-12 onward - it is the only continuous series and NAS/PARAKH cannot carry a trend by its own custodians' admission.
+- **P-63** `notes` — The average is not wrong; it is answering a question nobody asked.
+- **P-66** `whatChanged` — Separately, the terminal points of both spending series are Budget Estimates, which are systematically revised down: on the only year where all three stages exist, the broad basis reads BE 4.39, RE 4.30, Actual 4.04 - a 0.35-point BE-to-Actual revision.
+- **P-68** `whatChanged` — NFHS-5 is the only official instrument administering any reading task, and only below Standard 9, with partial credit, on a restricted 15-49/15-54 frame.
+- **P-69** `bridgeNote` — The only genuine national seats-versus-filled measurement ever made was a DISE-based exercise for 2012-13 and 2013-14: fill rates of 21.5 and 29.0 per cent, on about 21.1 lakh seats available and 6.1 lakh filled, with Rajasthan and Madhya Pradesh alone accounting for 320,000 of the 610,000.
+- **P-70** `notes` — One workaround worth carrying forward for later phases, since it was the only route that worked reliably: the Rajya Sabha committee reports are served from bucketapi.rajyasabha.digital rather than from sansad.in/getFile, which is why they retrieved in full and directly while every parliamentary question PDF had to come through a mirror or a relay.
+- **P-76** `notes` — The only two years MHA attributed the infiltration series to anyone attributed it to the Multi Agency Centre, an Intelligence Bureau body - not to the J&K Police and not to MHA's own returns.
+- **P-76** `notes` — No other J&K table in any year carries a source note in the Annual Report.
+- **P-78** `whatChanged` — PIB attributes the J&K violence series verbatim to '(Source: CID, J&K' and MHA's parliamentary reply of 24 July 2024 attributes an overlapping table to '(Source: UT of J&K)', while the Annual Reports carrying the identical figures state no source at all.
+- **P-79** `bridgeNote` — No bridge exists and none can be built, because no source states its unit.
+- **P-79** `notes` — The clinical studies are the only sources that state their unit - 664 eyes of 643 patients, with 21 patients injured in both eyes - and they are the least often quoted.
+- **P-80** `bridgeNote` — The administrative ones cannot, because they are not defined at all - so no bridge exists between any government figure and any clinical one.
+- **P-81** `bridgeNote` — There is no bridge between the published deaths and the refused injuries, and the asymmetry it produces is the point: the only pellet quantity the UNION government has published is the one that is smallest and most favourable to the weapon's defenders, and the quantities on which the criticism rests are the ones it withheld (corrected 2026-08-05, adversarial triage 2: this read "the only pellet quantity in the public record", which is contradicted by the Jammu and Kashmir Chief Minister's Assembly reply of 12 January 2018 giving 6,221 injured by pellets - a figure this record's own sources carry).
+- **P-84** `bridgeNote` — No bridge, because there is no instrument to bridge to.
+- **P-84** `bridgeNote` — No published definition of recruitment was found from any body: confirmed joining, missing-with-weapon and intelligence estimate are different quantities and no source distinguishes them.
+- **P-85** `bridgeNote` — The rate of misclassification is not merely unbuilt but unbuildable from published material: the only instrument that could establish it - independent identification of the dead - is what the practice removes.
+- **P-85** `notes` — Nothing in the public record establishes how often the classification is wrong, in either direction, and no figure should be authored.
+- **P-87** `whatChanged` — The JKCCS/APDP Annual Human Rights Review is the only instrument located in this phase, of any provenance, that recorded both sides' harm on one page and named who caused it.
+- **P-87** `whatChanged` — After 2019 no instrument among those searched publishes the perpetrator split for civilian deaths in Jammu and Kashmir.
+- **P-87** `whatChanged` — (Bounded 2026-08-05, adversarial triage 2: this previously read 'no instrument of any provenance', which claimed the world while the search bounded a named few.)
+- **P-87** `notes` — Kashmir Law and Justice Project, publishing monthly human-rights briefings as recently as April 2026, is the only identified live candidate successor and was not investigated at all in this phase; that check must be run before any claim that nobody publishes the perpetrator split after 2019 is treated as settled.
+- **P-88** `whatChanged` — Nothing changed - this is a standing property of the only official instrument that carries a J&K detenu count, and it defeats three separate questions at once.
+- **P-90** `notes` — They are different objects and must not be reconciled; the difference is roughly the J&K convicts and undertrials in UP jails, which is a real quantity nobody has stated.
+- **P-92** `bridgeNote` — Two further collisions in the same material are recorded and not resolved: The Wire gives 841 filings for 2022 where Amnesty gives 585 for the first seven months of that year, which is compatible in principle and unverified; and a set of PSA quashing figures attributed to data accessed from an unnamed holder gives 749 PSA detentions in 2022 against 841 habeas corpus petitions filed in the same year, which is impossible unless the two count different objects and nobody says which.
+- **P-93** `whatChanged` — There is no evidence that the computation ever changed - the contested-constituencies denominator is the only one the underlying data supports, since seats with no candidate have no poll and therefore no votes.
+- **P-95** `whatChanged` — Nothing changed - this is the standing structure of the only instruments that count Indian internet shutdowns, established from their own published methodologies rather than from criticism of them.
+- **P-95** `whatChanged` — On all five substantive orders retrieved and read in full, spanning January 2020 to January 2025 and both statutory regimes, the published document is the Home Department's confirmation of a direction issued by a police Authorized Officer - the Inspector General of Police, Kashmir Zone, or the Additional Director General of Police, Jammu Zone - and the originating direction is not published anywhere located.
+- **P-95** `bridgeNote` — A separate warning applies to figures circulating from a police-sourced count of how often police orders were struck down: they fail an internal check, since 749 PSA detentions in 2022 against 841 habeas corpus petitions filed the same year is impossible unless the two count different objects and nobody says which, and a police-sourced count of the fate of police orders relayed by a newspaper is the detaining authority marking its own work.
+- **P-100** `bridgeNote` — divisible-pool-share-gtr does that, is certified by the auditor for six years, and requires nobody's characterisation of what a cess is.
+- **P-101** `bridgeNote` — It is not published by either party to the transfer, is produced annually and retrospectively, and is the only place the quantity appears.
+- **P-101** `notes` — Note separately that two Union statements of one quantity — cumulative Health and Education Cess transfers to FY2023-24 — differ by ₹1,01,520.24 crore, disclosed by the auditor and unreconciled; whether that is a definitional difference or an error is stated by nobody, and its being unknown is itself the finding.
+- **P-102** `whatChanged` — It has never been published as a document of the CAG.
+- **P-102** `bridgeNote` — Union excise reconciles from published data to about ₹5 crore in 34 lakh and corporation tax to about ₹1,122 crore, but customs does not reconcile at all: ₹32,136.74 crore, 13.8 per cent of the head, is unexplained, and duty-credit-scrip debits, the obvious candidate, are recorded at nil for FY2023-24.
+- **P-107** `bridgeNote` — The only bridge is a state audit report, produced state by state on different templates in different years and never nationally.
+- **P-108** `notes` — The party position of the auditor itself is worth stating: the CAG is a Union constitutional office auditing a state government and reporting to the state legislature, so it is a party to neither side of the Centre-state fiscal dispute and is the only instrument in this phase that reads both sides' books.
+- **P-110** `whatChanged` — So the only dated records of gubernatorial delay in India are the factual tables of judgments, and those exist only for states that sued.
+- **P-111** `whatChanged` — The Council's minutes are the only instrument in Indian fiscal federalism in which both sides' positions are recorded verbatim, by name, in one signed document.
+- **P-111** `bridgeNote` — On the question the phase most wants answered — what a state was owed — no instrument can exist, because the quantity is counterfactual and the dispute is legal rather than evidentiary.
+- **P-112** `notes` — The FC-XI and FC-XII shares are 5.39 and 5.31 as printed at two decimals in the only retrieved source; three-decimal versions (5.385 and 5.305) were relayed in this run and are NOT adopted, because no retrieved document carries them.
+- **P-113** `bridgeNote` — The bridge is trivially available and nobody publishes it: state the basis per point.
+- **P-114** `bridgeNote` — The order itself has never been published, so even the external fact is a description rather than an instrument.
+- **P-117** `notes` — FY2017-18 is the outlier and is unexplained: the difference is 673,005.29 minus 605,186, which is 67,819.29 exactly, a whole-number-of-paise residual suggesting one identifiable component rather than a different vintage of the same aggregate.
+- **P-118** `whatChanged` — No instrument anywhere adds the three.
+- **P-119** `bridgeNote` — THE LEADING CANDIDATE FOR THE UNEXPLAINED PORTION IS ENTREPOT ATTRIBUTION, AND IT IS SIZED HERE RATHER THAN ASSERTED.
+- **P-119** `bridgeNote` — India's reported exports to Hong Kong were US$6.498bn in 2024 and US$8.731bn in 2023 — comfortably large enough to contain the US$3.099bn and US$2.295bn unexplained excesses.
+- **P-119** `notes` — Retrieving both national originals would raise the tier and change no figure.
+- **P-121** `notes` — The `when` field carries 7 March 2019 because that is the date of the only announcing instrument retrieved and it has the strongest attestation; the Ministry of Power Order itself was NOT retrieved in this run.
+- **P-122** `notes` — THE CAPACITY SERIES ARE NOT AFFECTED — installed capacity is a nameplate count throughout and CEA's Table 1.2 carries no equivalent note — so where a like-for-like comparison across 2014 is needed and only one is available, the capacity series is the sound one and the generation series is not.
+- **P-123** `whatChanged` — Element 2 is the only one of the five denominated in energy and no document retrieved reports progress against it.
+- **P-125** `notes` — It does not say NCAP has no base year — it says THE DOCUMENT RETRIEVED does not state one, which is a claim about the report and is the only claim the retrieval supports.
+- **P-126** `notes` — NOTE WHAT IS NOT CLAIMED: no discontinuity has been observed, no figure is disputed, and neither series' values change.
+- **aser-std3-reading** `caveat` — ASER is an NGO dataset and is graded T4 as the tier definition requires, although it was retrieved directly, is a 650,000-child one-on-one household survey with published tools, and is the only continuous national learning series India has - while PARAKH 2024, which publishes no methodology section, grades T1.
+- **aser-std3-arithmetic** `caveat` — ASER is an NGO dataset and is graded T4 as the tier definition requires, although it was retrieved directly, is a 650,000-child one-on-one household survey with published tools, and is the only continuous national learning series India has - while PARAKH 2024, which publishes no methodology section, grades T1.
+- **aser-std5-reading** `caveat` — ASER is an NGO dataset and is graded T4 as the tier definition requires, although it was retrieved directly, is a 650,000-child one-on-one household survey with published tools, and is the only continuous national learning series India has - while PARAKH 2024, which publishes no methodology section, grades T1.
+- **aser-std5-arithmetic** `caveat` — ASER is an NGO dataset and is graded T4 as the tier definition requires, although it was retrieved directly, is a 650,000-child one-on-one household survey with published tools, and is the only continuous national learning series India has - while PARAKH 2024, which publishes no methodology section, grades T1.
+- **aser-std3-reading-govt** `caveat` — ASER is an NGO dataset and is graded T4 as the tier definition requires, although it was retrieved directly, is a 650,000-child one-on-one household survey with published tools, and is the only continuous national learning series India has - while PARAKH 2024, which publishes no methodology section, grades T1.
+- **aser-std3-reading-private** `caveat` — ASER is an NGO dataset and is graded T4 as the tier definition requires, although it was retrieved directly, is a 650,000-child one-on-one household survey with published tools, and is the only continuous national learning series India has - while PARAKH 2024, which publishes no methodology section, grades T1.
+- **aser-std8-arithmetic** `caveat` — ASER is an NGO dataset and is graded T4 as the tier definition requires, although it was retrieved directly, is a 650,000-child one-on-one household survey with published tools, and is the only continuous national learning series India has - while PARAKH 2024, which publishes no methodology section, grades T1.
+- **aser-out-of-school-15-16** `caveat` — ASER is an NGO dataset and is graded T4 as the tier definition requires, although it was retrieved directly, is a 650,000-child one-on-one household survey with published tools, and is the only continuous national learning series India has - while PARAKH 2024, which publishes no methodology section, grades T1.
+- **aser-girls-11-14-not-enrolled** `caveat` — ASER is an NGO dataset and is graded T4 as the tier definition requires, although it was retrieved directly, is a 650,000-child one-on-one household survey with published tools, and is the only continuous national learning series India has - while PARAKH 2024, which publishes no methodology section, grades T1.
+- **aser-private-share-rural** `caveat` — ASER is an NGO dataset and is graded T4 as the tier definition requires, although it was retrieved directly, is a 650,000-child one-on-one household survey with published tools, and is the only continuous national learning series India has - while PARAKH 2024, which publishes no methodology section, grades T1.
+- **single-teacher-schools-udise** `notes` — The FY2023-24 spike - 12,954 schools with no students and 31,981 teachers posted to them, up 26 and 19 per cent, then collapsing - is unexplained in any source.
+- **schools-above-rte-ptr-primary-dise** `notes` — The only post-2015 computation of the same quantity is not the government's: CETE/TISS, from UDISE+ 2021-22 microdata across all 1,489,115 schools, found 67 per cent of schools below 30:1 - so one school in three is not - and 24 per cent above 35:1, of which 81 per cent are rural.
+- **schools-above-rte-ptr-primary-dise** `notes` — Note also that the RTE Act does not contain the figure 30:1 at all - the Schedule prescribes a staffing slab (two teachers up to sixty children, rising to a ceiling of 40:1 above two hundred), and 35:1 for classes VI-VIII is the only explicit ratio in the statute.
+- **edu-spend-gdp-all-depts** `caveat` — An unexplained near-doubling of 'other departments' education spending straddles FY2013-14 and FY2014-15 - growth of 41.7 then 49.0 per cent against 11.4 and 8.4 per cent for education departments - exactly at the political transition, and it is the main driver of the apparent improvement.
+- **edu-spend-gdp-all-depts** `notes` — This is the series Parliament is briefed on and the series compared against the 6 per cent target - and it is the only one of the two that shows improvement across the transition.
+- **higher-ed-enrolment** `notes` — Treat the PhD jump as a break, not a trend: total PhD enrolment goes 233,422 (FY2022-23) to 343,559 (FY2023-24), a 47 per cent single-year rise, which is more consistent with a definitional or coverage change than with real growth; the report offers no explanation.
+- **higher-ed-enrolment** `notes` — Reported teachers fall 1,518,813 (FY2015-16) to 1,284,755 (FY2017-18), 15 per cent in two years, then recover to 1,732,294; whether that is a real contraction or a response-rate artefact is explained in no AISHE report, so the government's standard 'female faculty rose from 5.69 lakh in 2014-15' line is anchored immediately before an unexplained collapse and the teacher series is not carried here.
+- **rte-quota-children** `notes` — The only genuine national seats-versus-filled measurement ever made was the DISE-based exercise for 2012-13 and 2013-14: a fill rate of 21.5 per cent in 2012-13 and 29.0 per cent in 2013-14, on about 21.1 lakh seats available and 6.1 lakh filled.
+- **fc-devolution-rupees** `notes` — Those divergences are the definitional gap between instruments and are NOT errors in this series; P-117 records them and L-0182 records that FY2017-18 is far larger than the rest and unexplained.
+- **devolution-be-to-actual-gap** `notes` — It is carried because it is the only measured form of the states' complaint that depends on no contested definition — both columns are the Union's own, for the same quantity, in the same document series.
+- **bihar-devolution-population-ratio** `notes` — Bihar is the direct counterparty to Tamil Nadu's loss under the income-distance criterion, and the phase carries it so that the contributor states' memoranda are not the only voice in the record.
+- **tn-direct-goi-transfers-to-sias** `notes` — The series matters because it is the only Tamil Nadu transfer quantity that appears in neither government's own account of transfers, and because the auditor attaches to it the finding that the State's fiscal aggregates "did not present the true and fair picture to that extent".
+- **wb-css-releases** `caveat` — The publisher is the Union, a party to the dispute, stating its own release figures; the answer offers no explanation for any state's trajectory.
+- **wb-samagra-shiksha-allocation** `notes` — The allocation and the release are decided by different acts and the table shows both, which is the only reason the gap is visible.
+- **jk-prison-detained-category** `notes` — This is the only year-wise official series on preventive detention in Jammu and Kashmir that exists in any form, and it was produced once, on request, and never published in any Ministry of Home Affairs Annual Report.
+- **jk-psa-detenus-transferred-out** `notes` — The only clean year-wise run in the whole detention subject is a count of transfers rather than of detentions, and that is itself the finding.
+- **jk-assembly-turnout** `notes` — The only check on a Commission figure is another Commission document.
+- **jk-nhrc-complaints** `caveat` — It counts cases the national Commission registered, and it rises across the period in which the only alternative forum in the territory was abolished, so part of the increase is complainants who previously had two bodies now having one.
+- **jk-terrorist-incidents-legacy** `notes` — The only definitional sentence for 'incidents' anywhere in the MHA corpus is in a parliamentary reply of 12 December 2018 and never migrated into the series: 'The number of incidents includes the violence committed by terrorists during anti militancy operations.'
+- **jk-civilians-killed-composite** `notes` — The same release attributes the whole table to CID, J&K - the Criminal Investigation Department of the J&K Police, a party to the operations being counted - while the Annual Reports carrying the identical figures state no source at all.
+- **jk-infiltration-attempts** `notes` — The only two years the series was attributed to anyone attributed it to the Multi Agency Centre, an Intelligence Bureau body; from the Annual Report 2016-17 the attribution was dropped and the series continued.
+- **jk-organised-stone-pelting** `caveat` — The counted category is 'Organized' stone-pelting and no body has ever defined 'organized'.
+- **jk-pellet-deaths** `caveat` — This is the only pellet quantity located in this phase in a Union government publication - the Jammu and Kashmir Chief Minister published bounded injury aggregates in the Legislative Assembly twenty-six days earlier, on a different period and basis, so this is not the only official pellet quantity in existence (corrected 2026-08-05, adversarial triage 2), and it was published in the same answer that refused the injury count on national-security grounds.
+- **jk-pellet-deaths** `notes` — of Security Force personnel killed during Law & Order protests', with two deaths in July 2016 and nothing else - which makes this the only official Indian document located in this phase that places harm to civilians and harm to the state's own personnel on one page, on one basis.
+- **jkccs-civilians-killed-by-armed-forces** `notes` — This is the only instrument located in this phase, of any provenance, that ever published a perpetrator split for civilian deaths in Jammu and Kashmir, and it terminated.
+- **jkccs-civilians-killed-by-armed-forces** `notes` — After 2019 no instrument among those searched - MHA, GTD and UCDP, each named above with the reason it cannot carry the quantity - publishes it.
+- **jkccs-civilians-killed-by-armed-forces** `notes` — (Bounded 2026-08-05, adversarial triage 2: this previously read 'no instrument of any provenance', which claimed the world while the search bounded a named few.) The stated method is media monitoring, field verification, records obtained through the J&K High Court registry and the organisation's own researchers' fact-finding; there is no formal methodology annex, no inclusion criteria and no stated counting unit.
+- **lfpr-female** `caveat` — A near-doubling that no instrument can currently interpret.
+- **sanitation-basic** `notes` — Full India series pulled from the World Bank API this cycle — the only fully verified series in phase 4.
+- **agri-gdp-share** `caveat` — India is also the only country in the peer panel whose agriculture GDP share ROSE across the decade — 16.79% (2014) to 17.66% (2023) on World Bank figures — while Vietnam's fell from 14.88% to 11.87%.
+- **agri-gdp-share-peer** `notes` — India is the ONLY country in the panel whose agriculture GDP share rose.
+- **agri-gva-growth** `notes` — The only sector to grow through the COVID lockdown, which is why its GDP share rose in FY2020-21.
+- **farm-household-income** `caveat` — No Situation Assessment Survey has been fielded since 2018-19, so the promise to double real farm income by 2022-23 cannot be evaluated against the only instrument that measures it.
+
+## E.4 — Commitment states asserted in prose — 55 sentences across 24 records
+
+The four commitment states are **prose only**: there is no field, nothing validates them, and no gate can see them. That makes this the least-guarded vocabulary in the instrument and the easiest place for a state to be asserted where its own definition does not fit. The needle excludes the statutory-citation form by requiring the bracket not to follow a word character or a closing bracket.
+
+```
+NEEDLE  /(?<![0-9A-Za-z)])\([a-d]\)/
+EXCLUDES  12(1)(c), 239AA(7)(b), 370(1)(d) and the like
+```
+
+**Note before you read them: the corpus runs THREE different `(a)`–`(d)` vocabularies in these same fields** — the commitment states, a three-part different-facts criterion, and ordinary list markers. Distinguishing them is part of the test. And a token can MENTION a state rather than assert one: *"cannot reach (c) abandoned"* rules a state out.
+
+- **L-0221** `assessmentNote` — The energy limb — 50 per cent of energy requirements from renewable energy by 2030 — is commitment state (a), not yet due, and PARTLY is NOT a finding that it has failed; 2030 has not arrived.
+- **L-0222** `assessmentNote` — Under the instrument's commitment states this is (b), due and undelivered, and FAILED is the assessment that follows; the definition covers a measure that did not achieve the objective stated at announcement, which is the case here regardless of the mechanism.
+- **L-0223** `assessmentNote` — The trigger is 2030 and it has not arrived, so the limb is commitment state (a).
+- **L-0224** `assessmentNote` — COMMITMENT STATE IS (a), and CLAUDE.md settles it in terms: 'a total WITH a date is (a)'.
+- **L-0224** `assessmentNote` — Not (b) — the date has not passed.
+- **L-0224** `assessmentNote` — Not (c) — nothing retrieved repudiates them.
+- **L-0224** `assessmentNote` — NOT (d) — (d) requires no date, and forcing these into it to reach `no-objective` would be the stretch the enum rule exists to stop.
+- **L-0225** `summary` — It is commitment state (a) on the instrument's own test, and unlike the other quantified limbs it does become testable when its date arrives — provided the scope is settled by then.
+- **L-0225** `assessmentNote` — COMMITMENT STATE IS (a), AND THE TEST WAS APPLIED TO THE PRINTED DEFINITION RATHER THAN TO THE INTUITION.
+- **L-0225** `assessmentNote` — CLAUDE.md settles it in terms: 'a total WITH a date is (a)'.
+- **L-0225** `assessmentNote` — Net zero by 2070 carries a date, so it is (a) with trigger 2070.
+- **L-0225** `assessmentNote` — IT IS NOT (d), and the temptation ran both ways here.
+- **L-0225** `assessmentNote` — (d) requires 'a total with NO date, no phasing and no annual target' — three conditions, and this fails the first.
+- **L-0225** `assessmentNote` — STATE.md warned against forcing it TO (a) merely because a year is named; the answer is that the year is not the reason, the printed carve-out is, and the same carve-out is what put L-0224's limbs in (a) too.
+- **L-0225** `assessmentNote` — Forcing it to (d) to reach `no-objective` would have been the same stretch in the other direction.
+- **L-0188** `whatHappened` — (a) NOT YET DUE: the $500 billion purchase intent runs five years from February 2026, so its trigger is February 2031 and nothing about it is testable now.
+- **L-0188** `whatHappened` — (b) DUE AND UNDELIVERED: the Interim Agreement itself.
+- **L-0188** `whatHappened` — (c) The 18 per cent rate is neither: it was applied, and then its authority was extinguished by a court ruling about a different case.
+- **L-0188** `revisitTrigger` — If neither has happened by then the (b) commitment state should be reconsidered against `failed`, since a year of accumulated absence is evidence rather than the lack of it.
+- **L-0194** `whatHappened` — COMMITMENT STATE (a) — NOT YET DUE, AND THE TRIGGER IS NAMED.
+- **L-0194** `revisitTrigger` — If 2035 passes with no published cumulative figure, the commitment state moves from (a) to (b) and the absence of a measurement basis becomes the finding rather than a caveat.
+- **L-0196** `whatHappened` — COMMITMENT STATE (a) — NOT YET DUE, TRIGGER NAMED: 2029.
+- **L-0196** `revisitTrigger` — If FY2028-29 closes below ₹50,000 crore the commitment state moves from (a) to (b), and the measurement-basis absence above becomes the first thing to settle, because it decides what "below" means.
+- **L-0199** `summary` — The statute makes three different things capable of producing that outcome, each with its own instrument: no determination under (a); a waiver under (b); or a delay under (c).
+- **L-0199** `whatHappened` — (a) NO DETERMINATION: the duty to sanction arises only once the President determines a significant transaction occurred, and nothing compels that determination to be made or announced.
+- **L-0199** `whatHappened` — (b) WAIVER — and its conditions are the striking part: a waiver requires the President to submit to congressional committees both a written determination that it is in the vital national security interests of the United States or will further enforcement, AND "a certification that the Government of the Russian Federation has made significant efforts to reduce the number and intensity of cyber intrusions conducted by that Government".
+- **L-0199** `whatHappened` — (c) DELAY: available if the President certifies to the committees, not less frequently than every 180 days, that the person is substantially reducing its significant transactions.
+- **L-0199** `caseAgainst` — A waiver under (b) is an instrument with a date, conditions and a submission to Congress; no determination under (a) is simply a decision not yet taken, and it can be taken later on the same facts, because the transaction does not expire.
+- **L-0201** `whatHappened` — COMMITMENT STATE (a) — NOT YET DUE, AND THE TRIGGER IS NOT NAMED IN THE SOURCE.
+- **L-0201** `caseAgainst` — Nor is a delivery schedule, so the commitment has no trigger against which non-delivery could ever be recorded — a commitment with no due date cannot move out of state (a) by the passage of time alone.
+- **L-0201** `revisitTrigger` — Either would move this out of state (a); the first would give the commitment a trigger it currently lacks.
+- **L-0204** `whatHappened` — COMMITMENT STATE (a) — NOT YET DUE, TRIGGER NAMED: 2030, for the US$100bn doubling.
+- **L-0205** `whatHappened` — COMMITMENT STATE (a) — NOT YET DUE, AND THE TRIGGER IS A NAMED CONDITION RATHER THAN A DATE.
+- **L-0205** `revisitTrigger` — Re-test on signature, and on the exchange of written notifications — the second starts the clock the FAQ describes and is what moves this out of state (a).
+- **L-0209** `whatHappened` — The commitment names a quantity — the entire 1,643 km — and no time by which it is to exist, so it falls outside all three commitment states this instrument uses: it is not (a) not-yet-due with a named trigger, because no trigger is named; it cannot reach (b) due-and-undelivered, because it can never fall due; and it cannot reach (c) abandoned without evidence of abandonment, which nothing supplies.
+- **L-0212** `whatHappened` — COMMITMENT STATE (a) RESOLVED, AND QUICKLY.
+- **L-0213** `assessmentNote` — Commitment state (d) — unfalsifiable by construction, and the second instance the instrument holds after L-0209.
+- **L-0213** `assessmentNote` — No completion date, no phasing and no target quantity means there is no trigger, so it is not state (a); it can never fall due, so it cannot reach (b); and nothing evidences abandonment, so it is not (c).
+- **L-0213** `revisitTrigger` — A named target year is the single thing that would move this out of state (d) and make the corridor scoreable at all.
+- **L-0216** `whatHappened` — COMMITMENT STATE (a), WITH A TRIGGER THAT NAMES NO TEST.
+- **L-0132** `differentFactsNote` — Criterion (c) says in terms that an unbuilt comparison fails it: the docket comparison has been built four times by private parties from public data and never once by the holder, and that is a gap in the instrument rather than a property of the argument.
+- **L-0133** `differentFactsNote` — The two sides do genuinely count different things, so criterion (a) is satisfied, and neither contradicts the other's arithmetic, so (b) is satisfied.
+- **L-0133** `differentFactsNote` — Criterion (c) is not.
+- **L-0133** `differentFactsNote` — What is absent is not a measure that could not exist but a declaration of which measure each figure is, which makes this an unbuilt reconciliation - and an unbuilt comparison fails (c) expressly.
+- **L-0141** `differentFactsNote` — Granting either side's strongest fact in full leaves the other's intact, so criterion (b) passes - but criterion (c) fails decisively, because the common ledger was not merely constructible, it was constructed here in a few lines of arithmetic from published data.
+- **L-0141** `differentFactsNote` — An unbuilt comparison fails (c); a built one fails it more clearly.
+- **L-0144** `differentFactsNote` — That is criterion (c) in its stated form: a constitutional process against a stated absence, crossing a category boundary.
+- **L-0144** `revisitTrigger` — If that appears, a common denominator exists, criterion (c) fails, and the differentFacts flag on this record should flip to false.
+- **L-0145** `differentFactsNote` — An unbuilt comparison fails criterion (c); this one is not even unbuilt.
+- **L-0146** `differentFactsNote` — But precondition (b) fails too: granting the case for's strongest fact in full - a directly elected district tier with women's and tribal reservation, more than most states have - does not leave the case against intact, because the case against's core claim is that this tier's term has expired with no election held, and that is a claim about the same tier.
+- **L-0146** `differentFactsNote` — The one place a category boundary is genuinely crossed is the devolution argument, a quantity against a stated absence - and it fails criterion (c) for the ordinary reason, that a funds-released-and-spent series for this tier is unbuilt rather than unbuildable.
+- **L-0148** `differentFactsNote` — Precondition (b) holds: granting the case for its strongest fact in full, that the State Commission had no jurisdiction over centrally controlled forces, leaves the case against untouched, because 630 complaints still abated and section 19 still bars the national Commission; and granting the case against in full leaves the extension of the national Act intact.
+- **L-0148** `differentFactsNote` — But criterion (c) fails, and it fails for the ordinary reason the criterion names.
+- **L-0148** `differentFactsNote` — The comparison is unbuilt, not unbuildable, and an unbuilt comparison fails (c) expressly.
+- **L-0082** `revisitTrigger` — Re-test against (c) then.
+
+## E.5 — Corrections in full field text — 75 fields
+
+Extract D indexes these; this prints them, because the convention can only be judged on the sentence. The rule is that a correction is made in the record itself and **the withdrawn wording survives inside the sentence that withdraws it** — so the wrong figure is still on the page by design. Test: does each one name what it withdrew, why the old form was wrong, and in which direction the error ran? A correction that says only *"corrected"* fails the convention it claims to follow.
+
+**L-0066** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. REVERSED SCORES THE FATE OF THE INSTRUMENT, NOT THE MERITS OF IT, and the distinction is the whole of the note. What is established is a sequence: three Acts passed in September 2020, stayed by the Supreme Court in January 2021, repealed by the same Parliament on 29 November 2021, and an MSP committee promised at repeal, constituted in July 2022 under the officer who had drafted the laws, which has produced no report four years on. A measure enacted and then undone by its own legislature is reversed on any reading of its substance. THE MERITS ARE NOT SCORED AND CANNOT BE. The laws were stayed within four months and never operated at scale, so the quantity they were meant to move - farm-gate prices outside the mandi system - was never observed. That is entered below as an absence rather than argued from. Both available readings of the substance have serious proponents, the caveat says so, and this record does not choose between them. What the evidence does support, and what the caveat states, is that the failure was as much of PROCESS as of substance - ordinance route, pandemic timing, no pre-legislative consultation, a refused division vote.
+
+**L-0067** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. THE VERDICT RESTS ON THE TRAJECTORY, NOT ON THE TERMINAL YEAR, AND THE TERMINAL YEAR DOES NOT EXIST. The promise was a doubling of real farm household income in seven years. The only instrument that measures that quantity, the Situation Assessment Survey, gives about 16 per cent real growth over the six years to 2018-19 against a target requiring roughly 100 per cent over seven. Reaching it from there would have required something on the order of seventy per cent real growth in the remaining period, which no retrieved evidence supports and which the Economic Survey's own capital-formation figure - 9.7 per cent annual against the 12.5 required - argues against. The government then stopped fielding the survey, so the endpoint was never measured and is entered below as an absence. Failed is therefore asserted on the measured trajectory and on the absence of any evidence of a terminal reversal, NOT on a measurement of 2022-23 that does not exist. The substitutes offered are not the same measure: sectoral gross value added and a lender's own survey do not measure household income, and a target set in household-income terms cannot be marked against sectoral output.
+
+**L-0072** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. THE SCHEME WAS ANNOUNCED AS FIXING TWO THINGS AND IT FIXED ONE. Coverage: achieved at a scale no predecessor approached - about 6.2 crore farmers by 2019-20 and 4.19 crore by 2024-25 after the 2020 restructuring made it voluntary for loanee farmers - with a claims-to-premium ratio above five to one, a large real transfer of risk away from cultivators. Settlement speed, the other stated defect of the schemes it replaced: NOT fixed. Delay against the two-month norm is chronic, the 12 per cent penalty on insurers is weakly enforced, and a payout arriving late is a loan rather than insurance. Partly rests on exactly that split. Six states exiting is treated as evidence about design and cost-sharing rather than as an outcome measure, because no retrieved source establishes what those states' farmers received instead. WHAT IS NOT MEASURED is whether the public subsidy protected farmers or accrued to insurers. This record's own case against says the question 'remains genuinely unresolved'; until this note was written it said so with NO absence entered against it, and this record carried no unmeasured field at all. One is entered below.
+
+**L-0023** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. WORKED IS ASSERTED ON RECOGNITION, WHICH IS WHAT WAS PROMISED, AND NOT ON THE CONSEQUENCES. The stated object was to force honest recognition so resolution could begin. That is measured and it happened: reported public-sector gross non-performing assets rose from 4.97 per cent in March 2015 to 14.58 per cent in March 2018 on a rise driven by recognition rather than deterioration, special dispensations were withdrawn, and losses were provided for. A measure whose object is to reveal a number succeeds when the number is revealed. THE COST SIDE IS ARGUED AND NOT MEASURED. The case against holds that simultaneous recognition under lending constraints contributed meaningfully to the growth deceleration from 8 to 3.9 per cent; no decomposition separating that contribution from the other causes exists in anything retrieved, and it is entered below as an absence. A reader should take this verdict as saying the disclosure objective was met, NOT that the sequencing was costless.
+
+**L-0024** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. THE CODE IS SCORED AGAINST ITS OWN STATED TERMS AND SPLITS ON THEM. Timeliness: failed on the stated standard - 713 days at March 2025 against a 330-day statutory cap including litigation, and worsening. Recovery: 30.56 per cent cumulative realisation at March 2026, falling year on year, with annual-flow realisation down to about 23 per cent in FY2025-26. Against the replaced regime, however, the behavioural effect is large and measured: 30,310 cases settled before admission covering defaults of 13.78 lakh crore to December 2024, which is the credible-threat effect working outside the courtroom, and Section 29A ended promoter buy-backs. Partly rests on that split - the deterrent works and the process does not meet its own clock or its own recovery expectations. ONE BENCHMARK DISPUTE IS LEFT OPEN RATHER THAN SETTLED: the case for holds that realisation should be read against liquidation value, at which it runs 167 per cent, and the case against reads it against admitted claims, at which the haircut is about 67 per cent. Both are computed from published figures; which is the fair denominator is a judgement this record does not make, and the verdict does not depend on choosing.
+
+**L-0026** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. TWO OBJECTIVES WERE ANNOUNCED AND THEY DO NOT RESOLVE THE SAME WAY. Recapitalisation: met decisively and measured - public-sector banks moved from an aggregate loss of about 85,390 crore in FY2017-18 to net profit of 1,78,364 crore in FY2024-25, capital adequacy reached 16.4 per cent by June 2025, and no government infusion has been required since FY2020-21. Five years without further capital is the strongest available evidence that the capital was adequate and correctly deployed. Consolidation: NOT established. The case against is that the profitability recovery tracks the credit cycle and rate environment rather than merger synergies, and that public-sector banks continued losing market share throughout; no evidence separating merger effects from cycle effects appears in this record and it is entered below as an absence. Worked is therefore asserted on the recapitalisation objective, which was the centrepiece and is decisively met, and NOT on consolidation. The fiscal opacity of the recapitalisation bonds - excluded from the headline deficit while adding to internal debt - is a criticism of the instrument's accounting, not of whether the banks were capitalised, and is left in the case against where it belongs.
+
+**L-0029** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. THREE OBJECTIVES WERE ANNOUNCED; TWO ARE MEASURED AND MET, AND THE THIRD IS THE ONE THE CASE AGAINST IS ABOUT. Account access: 56.77 crore Jan Dhan accounts by October 2025, 56 per cent held by women and 66 per cent rural or semi-urban, with adult account ownership rising from 53 per cent in 2014 to near-universal. A public payments rail: UPI at 24,162 crore transactions worth 314 lakh crore in FY2025-26, about 85 per cent of retail digital payments, owned by no private intermediary. Both met on their own terms and at a scale no comparable country has matched. ELIMINATION OF GHOST AND DUPLICATE BENEFICIARIES - the third announced objective - IS NOT MEASURED HERE, and neither is its cost. The case against records documented authentication failures denying rations to the elderly, manual labourers and the disabled; this record carries no count of either the duplicates removed or the eligible people excluded, and both are entered below. Worked is asserted on the two measured objectives. It is NOT a finding that the system excluded nobody, and the exclusion question is live and unquantified in this record.
+
+**L-0030** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. FAILED IS ASSERTED ON DELIVERY AGAINST A SPECIFIC ANNOUNCED COMMITMENT, AND ON NOTHING ELSE. Two public sector banks were to be privatised. Five years on none has been, no enabling legislation has been introduced, and the one live transaction is IDBI Bank - which the government's own classification does not count as a public sector bank for this purpose, and which was still at bid-evaluation stage in mid-2026. A commitment announced in a Budget speech, left formally alive and not acted on, is the announced-but-not-delivered shape this project records as failure. THE MERITS OF PRIVATISING ARE NOT SCORED. The case for is that the rationale weakened on its own terms once the banks returned to profitability and full capital adequacy without a sale, and that restraint may be judgement rather than failure of will. This record does not adjudicate that; it records that the stated intention was neither delivered nor withdrawn. A reader who thinks the policy was wrong should read this verdict as being about the commitment, not about the policy.
+
+**L-0090** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. THE ANNOUNCED TARGET IS NOT WHAT IS SCORED HERE. Universal foundational literacy and numeracy by 2026-27 is not yet due, and the Rajya Sabha Standing Committee's own view in March 2025 is that it is highly unlikely to be met, with a recommended extension to 2032. What is scored is the measured movement to 2024. MEASURED, AND SPLIT: on the composition-neutral 2018-to-2024 comparison, arithmetic rose - plus 5.8 on Standard III subtraction and plus 3.3 on Standard V division - while reading did not move at all, plus 0.0 on Standard III and minus 1.3 on Standard V. Arithmetic exceeded 2018 at every grade; reading recovered to 2018 at no grade. That split is the whole of the verdict: partly, because one half of the mission's own object moved and the other did not. NOT MEASURED, AND SEPARATELY ENTERED BELOW: attribution. The mission launched nationally and simultaneously with no untreated comparison group, no staggered adoption and no discontinuity, so no causal evaluation exists and none can be constructed from what was published. The case for and the case against therefore argue about the same numbers - the caseFor from concentration in the treated grades and sectors, the caseAgainst from an uncontrolled maternal-education confounder and from fieldwork showing the pedagogy largely not happening - and neither is resolvable on the evidence retrieved. The score rests on the measured split, NOT on any attribution to the mission.
+
+**L-0093** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. TWO OBJECTIVES WERE ANNOUNCED AND ONLY ONE IS MEASURED HERE. Accurate dropout tracking: the record establishes that individual student records make dropout tracking possible in principle, and that the transition broke the series it was meant to improve - the Ministry disclosed the break and named GER, NER and dropout, but not pupil-teacher ratio, whose numerator is the re-based count; it moderated the population denominator in the same breath; and the FY2022-23 dropout figure counted removed records as children who stopped being enrolled, reading 1.45, 7.8, 1.9, 0.3, which is not a behavioural event. Partly rests on that: the instrument improved and the series it produced is unusable across the break. SAVINGS TO GOVERNMENT - the second announced objective, precise identification of beneficiaries for Samagra Shiksha, PM POSHAN and scholarship transfers - IS NOT MEASURED ANYWHERE IN THIS RECORD, and writing this note is what surfaced that. It is entered below as an absence. The verdict does not rest on it in either direction. The split between deduplication and real decline in the 1.72 crore is likewise unmeasured and already entered; without it no longitudinal claim about enrolment since 2021 resolves either way.
+
+**L-0094** `assessmentNote`
+
+Scored no-objective, and not reversed. No objective was stated at announcement for a disclosure practice, so there is nothing to score the withdrawal against. `measure` in the reversed definition means an intervention that acts on the world, and every other reversed record withdraws something that was doing work. Here recruitment, funding and the PRABANDH returns all continue; what stopped is an answer. A disclosure practice is not a measure. Not failed either - neither side of the pair describes a failure: caseFor defends the change as competent statistical practice, caseAgainst attacks it as evasion, and neither says the Ministry tried something and could not. The definition of reversed was amended on 2026-08-02 to state this, because this record was its third candidate mechanism in two weeks. VALUE-AND-NOTE RECONCILED 2026-08-03: this record was rescored contested -> no-objective in the pass that introduced no-objective to drain the contested sink, and the note was not rewritten with it, so the reasoning of record argued a value the field had abandoned. Nothing in the validator sees that - both halves are individually valid. The substantive reasoning below stood up and is preserved verbatim; only the value it names has been corrected.
+
+**L-0062** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. TWO CLAIMS WERE MADE FROM ONE SET OF NUMBERS AND THEY ARE MEASURED SEPARATELY HERE. Job creation: not supported. Net EPFO additions count re-joiners and employer-switchers, and the one decomposition retrieved turns 4.86 crore net additions into roughly 2.27 crore genuinely new payroll entries; KLEMS cannot corroborate it because KLEMS takes employment as an input from the same surveys, so the citation is circular. Formalisation: partly supported, and the split is the reason for the score. The count of workers inside the formal net did rise, and bringing provident fund and pension to a worker who had none is a real gain whether or not the job is new. But the DIRECT measure of formality - a written contract or any social security - stayed at about 11 to 12 per cent throughout, which is the outcome that would have shown formalisation happening rather than registration rising. Partly, therefore, on registration having risen while the two claims built on it do not follow. What is NOT measured is jobs created as distinct from registrations, entered below as an absence; no instrument retrieved separates them.
+
+**L-0221** `summary`
+
+For FY2025-26, non-fossil plant was 53.21% of India's installed generating capacity at 31.03.2026 and supplied 28.96% of the electricity generated over that year — 24.24 percentage points apart. The 50% capacity milestone was announced in July 2025 as reached five years early. The gap is widening, and the widening is the finding rather than any single year. **The figure this record leads on is 10.47 points, FY2014-15 to FY2023-24**, because that window sits inside ONE document: both halves come from facing tables of CEA's General Review 2025, on one universe and one construction, so no join has to be trusted. (Subtracting the two rounded gaps printed here gives 10.48; 10.47 is the rounding artefact resolved on the unrounded ratios.) Extending to the most recent year gives 10.98 in FY2014-15, 21.46 in FY2023-24, 23.52 in FY2024-25 and 24.24 in FY2025-26 — 13.26 points across the full window — but that extension joins a second document and the join is validated ASYMMETRICALLY, which is why it does not lead. The CAPACITY half is validated: at 31.03.2026 the National Power Portal's archive prints 532,739.72 MW against the Executive Summary's 532,739.68, 0.04 MW apart, with an identical non-fossil total. The GENERATION half is NOT validated and cannot be from these documents: the General Review's mode-wise generation table ends at FY2023-24, the Executive Summary's begins at FY2024-25, they share no period, and neither retrieved Executive Summary carries a multi-year generation-by-fuel table against which the join could be checked. Both figures are given because the longer one is more current and the shorter one is more certain, and a reader is entitled to know which is which. Both windows start at FY2014-15 because FY2013-14 is on the imputed side of P-122's basis seam; starting there instead gave 11.77 points, so the seam alone was inflating the widening by 1.30 on the unrounded basis this record leads on, or 1.29 on the printed operands. CORRECTED 2026-08-05: this sentence previously gave 1.29 alone, with no basis named. 1.29 is 11.77 minus 10.48 — the printed-operand widening that this same paragraph sets aside in favour of 10.47 — so the figure was derived from the operand the record had just rejected, and the two declarations above cover the widening and the full-window gap but not this third quantity. (Subtracting the two rounded figures printed here gives 24.25. That is a rounding artefact and not an error: 24.24 is the difference computed on the unrounded ratios, and rounding-then-subtracting does not commute with subtracting-then-rounding.)
+
+**L-0221** `whatHappened`
+
+The capacity limb was reached early and the government said so: on 14 July 2025 MNRE announced India had reached 50% of installed electricity capacity from non-fossil sources 'five years ahead of the target', on a reading of 50.08% against 49.92% fossil at 30.06.2025 — a margin of 0.74 GW on 484.82 GW. By 30.06.2026 the figure was 54.18%. The energy limb has no reporting at all: no document retrieved in this run states progress toward '50 percent of energy requirements from renewable energy', and the nearest published quantity is of a different numerator — the Ministry's own 'share of non-fossil fuels in total generation reached 29.2% in 2025-26 (538.97 BU)' of 1,845.921 BU. CORRECTED 2026-08-05: the generation figure this record pairs with capacity was previously 28.84 per cent. That construction put CEA's Bhutan import inside the denominator and outside the numerator — an import in one and not the other, which is a population mismatch inside a share. Removing it from both sides gives 28.96 per cent, which is also the basis CEA's General Review uses for every earlier year in the series, and the figure this record now carries. Counting the imported hydro on both sides instead gives 29.27 per cent, close to the Ministry's published 29.2. All three are defensible except the one that was here. Two official releases instead announce a '50 per cent of installed electric power capacity from non-fossil sources' target as a COP26 goal. CORRECTED 2026-08-05: this record previously said COP26 'announced no such goal', which is wrong — COP26 is where Panchamrit was announced, including the 500 GW non-fossil CAPACITY goal. The defect is narrower and survives: the 50 per cent limb announced at Glasgow was 50 per cent of ENERGY REQUIREMENTS from RENEWABLE energy, while the 50 per cent of INSTALLED CAPACITY from NON-FOSSIL sources comes from the August 2022 NDC update. The releases fuse element 2's percentage with the NDC's denominator and attribute the result to Glasgow. That substitution is a measurement fact about publishers and is carried in P-123. On CEA's own facing tables the gap between the two shares widened from 10.98 percentage points in FY2014-15 — 31.53 per cent of capacity against 20.55 per cent of generation — to 21.46 in FY2023-24, where capacity was 44.97 per cent and generation 23.51 per cent.
+
+**L-0221** `assessmentNote`
+
+PARTLY, and the two limbs are scored separately because they are different quantities. The capacity limb — 500 GW non-fossil capacity by 2030, and the NDC's about-50-per-cent share — is delivered ahead of schedule on the metric it was written in, and that is not a grudging concession: the metric was fixed in 2015 and again in 2022, before the result. The energy limb — 50 per cent of energy requirements from renewable energy by 2030 — is commitment state (a), not yet due, and PARTLY is NOT a finding that it has failed; 2030 has not arrived. GROUND NARROWED 2026-08-05. What is scored against the package is one thing only: element 2 is the sole limb of the five with no reporting of any kind, so a reader cannot track it before 2030 whether or not it is met then. THE MISATTRIBUTION IS NOT PART OF THE GROUND AND HAS BEEN MOVED OUT. This record previously also cited two releases restating the capacity limb as a COP26 goal; that is a fact about what PUBLISHERS did, not about what the government achieved, and marking a commitment down for a third party's reporting error confuses measurement with performance. It is now P-123. Note also that the earlier wording said COP26 'did not state' the goal, which was false — Glasgow announced the 500 GW capacity limb; the substitution is between element 2's ENERGY percentage and the NDC's CAPACITY denominator. PARTLY survives the narrowing because claimAtLaunch names BOTH limbs, so the record scores a two-limb package of which one is delivered early and one is untrackable — not a single met commitment discounted for someone else's error. WORKED was rejected because it would score the package on the limb that was measured and stay silent on the limb that was not. FAILED and TOO-EARLY were both rejected: the capacity limb is resolved, so the record is not waiting on time, and it is resolved in the government's favour. THE COMPARISON'S START YEAR MOVED, and this is a correction not a preference: the widening was previously stated from FY2013-14, which sits on the IMPUTED side of P-122's basis seam, where RES generation is normative and higher than metered. That understates the opening gap and overstates the widening by an amount nobody has quantified, and the `breaks[]` contract binds the SERIES and does not reach a derived comparison stated in prose. The claim now runs FY2014-15 to FY2023-24, entirely on the actual-generation basis: 10.98 to 21.46 points. Complements L-0052 rather than duplicating it — L-0052 scores the capacity expansion WORKED on the capacity target and states in terms that 'this record carries no figure for the generation share'. This record supplies that figure.
+
+**L-0222** `whatHappened`
+
+Neither limb was met and the direction was opposite on both. CORRECTED 2026-08-05: this record previously led on total coal imports of 264.53 MT for FY2023-24. That column is TOTAL coal — coking 58.813 plus non-coking 205.718 — and coking coal is metallurgical, not thermal, and not substitutable for geological reasons this record concedes below. The commitment named thermal coal, so the quantity that measures it is the NON-COKING column: 205.72 MT in FY2023-24, against a target of zero, and the maximum of the published ten-year series. The total-coal figure is retained here only as context, not as the evidence: 264.53 MT, also a series maximum. Coal India produced 773.81 MT against 1,000 MT. Imports fell to 243.62 MT in FY2024-25, still 46 per cent above the FY2013-14 level. The objective was restated twice on narrower terms: a March 2024 Strategy Paper moved the horizon to 2030 and the object to 'substitutable' imports, and a January 2026 review reported a 54.17 per cent reduction in 'imported coal for blending' — 5.5 MT against 12 MT — a category roughly 2.3 per cent of total imports. Meanwhile the coal fleet was not idling: PLF of coal and lignite stations fell from 65.56 per cent in FY2013-14 to 54.49 per cent in FY2020-21 and then rose four years running to 69.45 per cent in FY2024-25, above where it started and the highest since FY2010-11. The planned coal build was revised upward twice — the National Electricity Plan of May 2023 put required coal capacity at 259.6 GW in 2031-32 with 19.1 to 27.1 GW of additional build beyond 26.9 GW under construction; by July 2024 the Ministry of Power stated 283 GW and 'additional minimum 80 GW'; by February 2026, 307 GW by 2034-35 and 'additional minimum 97,000 MW'.
+
+**L-0223** `caseAgainst`
+
+Emissions intensity is emissions divided by GDP, and a ratio falls whenever the denominator grows faster than the numerator. **A 45 per cent intensity reduction is fully compatible with India's absolute emissions rising over the same period**, and on any plausible growth path it is: the commitment constrains the carbon efficiency of output, not the quantity of carbon. A reader who takes it for a reduction in emissions has read a different promise from the one made. The raise is also less demanding than it looks against the outturn: 24 per cent was already achieved by 2016 on the Ministry's own figure, so against the old band's midpoint of 34 the raise to 45 is an increment of 11 points, and the increment actually outstanding at the moment of raising is not stated anywhere retrieved. CORRECTED 2026-08-05: this sentence previously said 'about ten points'. The figure is 11, and the understatement ran in the direction of this very argument — that the raise was less demanding than it looks — which is the direction a loose derived figure should never run. And the reported 24 per cent is a 2016 reading published in 2021 and quoted in 2022 — the most recent outturn this run could retrieve is a decade old.
+
+**L-0224** `unmeasured[].why`
+
+The target is stated as an ADDITIONAL sink, so the reference is half the arithmetic and without it the target names no level to reach. `additional to` returns zero across the 283,363 characters of the Ministry's Long-Term Low-Emission Development Strategy, and the only stock the document offers — 'The carbon stock in forests is estimated to be 7,204 million tonnes' — carries no unit basis against a target stated in CO2 equivalent, so it cannot serve as the reference even by assumption. REASONING RESTATED 2026-08-05: the kind was chosen as 'the weaker candidate', which is not the schema's axis. The schema's test is WHETHER THE DATA EXISTS, and on that test a treaty instrument's own definitional text is producible: if the 2015 NDC fixes the reference it exists and is published, and this run simply did not retrieve it (P-124). The earlier framing is superseded, the kind is unchanged, and the caution it was reaching for still holds: `never-defined` would assert that no agreed definition exists anywhere, which is a claim about the world this run cannot support: the 2015 NDC's own lodged text was NOT retrieved (P-124 records the substitution), and the reference may well be fixed there. `not-published` claims only that the datum exists in a holder's hands and has not been released in what was retrieved, which is what was actually observed. If the lodged NDC turns out to define it, this entry closes; if it turns out not to, the kind moves to `never-defined` and the finding gets larger.
+
+**L-0225** `unmeasured[].why`
+
+The commitment is stated as a net target and the net is what decides its difficulty. The retrieved documents do not settle it: no definitional statement of net zero appears in the Ministry's long-term strategy, and the same document reports India's own emissions EXCLUDING LULUCF, so the one accounting choice that matters most is made in the reporting and not in the target. REASONING RESTATED 2026-08-05: the kind was chosen as 'the weaker candidate', which is not the schema's axis. The schema's test is WHETHER THE DATA EXISTS, and on that test a scope decision for a lodged international target is producible on the same reasoning: if India has fixed which gases and whether LULUCF counts, that exists in a holder's hands. The earlier framing is superseded, the kind is unchanged, and the caution it was reaching for still holds: `never-defined` would assert that no agreed definition exists, which is false — the international framework India is party to has one — and what was actually observed is that the documents retrieved do not state which scope India adopts. If a scope is fixed in a document not retrieved here, this entry closes.
+
+**L-0225** `unmeasured[].why`
+
+Without one, no year before 2070 produces a test, and the commitment's progress is unfalsifiable for forty-nine years even though its endpoint is not. Searched the long-term strategy: 'interim target' 0, '2047' 0, and every 2050 mention is either about developed countries reaching net zero early or a sectoral encouragement rather than a national milestone, each read in context. reasonKind CORRECTED 2026-08-05 from `not-published` to `not-collected`, on the schema's own test of whether the data exists: a milestone that has never been announced is not a figure sitting unreleased in a holder's hands — if the Ministry were compelled tomorrow it would have nothing to produce, because the thing missing is a policy decision and not a measurement. `not-published` asserted producibility under compulsion and that assertion was not supported. This is an absence in the documents retrieved, not a finding that no milestone was ever contemplated.
+
+**L-0226** `summary`
+
+The Must-Run Rules of October 2021 are described by the Central Electricity Authority as ensuring 'that no RE capacity is backed down'. The same authority's National Electricity Plan projects that about 1 per cent of renewable generation will not be absorbed in 2026-27 and around 3.3 per cent in 2031-32 — and that on a different assumption about how far coal plants can turn down — 40 per cent minimum technical load against 55 — those figures fall to 0.09 per cent and 1.29 per cent respectively. CORRECTED 2026-08-05: this sentence previously gave the 2026-27 variant alone. That is the same truncation corrected in whatHappened two batches earlier and never carried here, and the omitted half is the one that weakens this record's own emphasis: the assumption moves the near year 11.11x and the far year only 2.56x. No measured figure for either backing-down or non-absorption appears in CEA's principal statistical publications.
+
+**L-0226** `whatHappened`
+
+The Plan's own modelling does not carry the guarantee through. It states: 'It has been observed that about 1% of RE based generation may not be absorbed during the year 2026-27 while around 3.3 % of the RE based generation may not be absorbed during 2031-32.' **AND THE FIGURE MOVES SHARPLY ON ONE MODELLING ASSUMPTION, WHICH THE DOCUMENT STATES ITSELF:** 'Studies carried out are at 55% Minimum technical load but CEA regulation has been brought out as per which 40 % Minimum technical load can be achieved, considering 40% minimum technical load the RE based generation not absorbed will decrease to 0.09% and 1.29% in FY 2026-27 and 2031-32 respectively.' So both years carry a second variant, on a minimum technical load 15 points lower — 55 per cent to 40. **CORRECTED 2026-08-05: this record previously quoted the sentence truncated at '0.09%' and described the sensitivity as an eleven-fold range, full stop.** That is right for 2026-27, where 1 per cent against 0.09 is 11.11x and a difference of 0.91 points — and it is NOT the whole picture, because the 2031-32 pair is 3.3 per cent against 1.29, a ratio of 2.56x and a difference of 2.01 points. **ON THE RATIO the assumption dominates the near year and much less so the far one: 11.11x against 2.56x. ON THE ABSOLUTE DIFFERENCE THE ORDERING REVERSES — 0.91 points against 2.01, and the far year moves by more.** Which measure governs, stated rather than chosen: this record's claim is about whether a published figure is a forecast or an artefact of a modelling choice, which asks how much of the quantity survives the assumption. That is a proportional question and the ratio answers it, so the ratio governs HERE. It does not govern the planning question. How much energy is at stake is an absolute quantity, and on that reading 2031-32 is the year that moves more — on a generation base this record has not retrieved and therefore does not size. **The ordering claim is true on one measure and false on the other, and the correction that introduced it named neither. That is the same class as the truncation the correction was written to fix**, one batch later and in the sentence doing the fixing. The truncation dropped the half that weakens the point this record was making; the unstated measure kept the half that flatters it. The draft carried a third value: a comment in the Plan's own consultation table quotes 'about 3.48 % of RE based generation may not be absorbed during the year 2026-27' and asks for the 2031-32 figure, answered 'The value included in the Final NEP'. Storage is planned against this: Exhibit 5.5a puts battery storage at 38.71 to 67.04 GW and 193.55 to 335.2 GWh across the five scenarios for 2031-32.
+
+**L-0195** `assessmentNote`
+
+CORRECTED 2026-08-05 (adversarial triage 2). This note previously read that "the claim does not state its baseline", and that is not what this record's own body establishes. The words DO indicate a baseline: "since the signing" points at the signature years, and the caseAgainst below says so in terms - on CY2021 the claim is 1.38 and 1.08 times, on CY2022 it is 1.11 and 0.85 times, and 0.85 means two-way trade with Australia has FALLEN since ECTA was signed. On the reading the words most naturally bear, the claim fails. THE CONTEST IS BETWEEN TWO READINGS OF THE CLAIM, NOT BETWEEN CANDIDATE BASE YEARS. The failing reading is the literal one. The surviving reading is the one the caseFor sets out: "since the signing" as a loose marker for the whole arc of a relationship whose negotiation opened in September 2021, on which a CY2020 base is an ordinary comparison and the doubling is arithmetically correct on India's own submissions. The record stays contested because that second reading is available and is not absurd - not because no baseline was given. A reader who takes the literal reading should read this record as a failure, and the record now says so rather than leaving the ground unstated.
+
+**L-0218** `summary`
+
+Every retrieval blockage recorded during phase 14 was re-tested by varying the host. Three Indian government channels remain unreadable: the Ministry of External Affairs website, which returns HTTP 200 and a JavaScript scaffold with no document text, and the Ministry of Defence and Department of Defence Production sites, whose HTTPS connections fail outright. CORRECTED 2026-08-05 (correction cycle 6): this record originally counted FOUR and named the e-Gazette as the fourth and worst, unreachable and unduplicated. THAT WAS WRONG AND WAS A RESOLVER ARTEFACT. With an explicit resolver pin (egazette.gov.in -> 164.100.190.144) the portal serves, and a Gazette notification was retrieved from it as a PDF with a real text layer. The measurement was made with a plain request before this machine's broken resolver was understood - the very error this record warns about, committed by this record. In three of the four cases the material itself proved fully retrievable elsewhere — through the Press Information Bureau for ministry documents, and through the United Nations Treaty Series for a treaty that the Ministry's own portal serves only as an image. For the e-Gazette no alternate route was found.
+
+**L-0218** `caseAgainst`
+
+A publication channel that cannot be read is not publishing, whatever it intends. Three of these are the designated route to their own material, and a citizen with a standard client gets HTTP 200 and an empty page from the Ministry of External Affairs — the failure mode that looks most like success and is hardest to distinguish from an absence. The redundancy that rescues the record is also incidental rather than designed: the Press Information Bureau carries what it carries, and a document no press release covers has no second route. The e-Gazette was offered here as the case that proves it, being unreachable and unduplicated; that example is WITHDRAWN, because the e-Gazette turned out to be reachable and its documents retrievable. The argument about incidental redundancy stands on its own; the illustration did not survive re-testing. And an archived copy of a JavaScript scaffold means the failure is being preserved rather than the document, so the loss is not merely current.
+
+**L-0044** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE BUILD IS REAL AND THE HEADLINE IS AN ACCOUNTING ARTEFACT, AND PARTLY IS SCORED ON BOTH. Execution: pace roughly tripled and four-laning rose two and a half times from a standing start, which is a genuine result. The network figure: of the roughly 55,000 km increase from 91,287 to 146,342 km, about 54,004 km is state roads notified as national highways, so the 60 per cent expansion the government leads with corresponds to on the order of 1,000 km of new network. Reclassification is not fraud - it changes who maintains and funds a road - but presenting it as expansion invites a reading the figures do not support, and it obscures a build story strong enough on its own terms. Scored on execution achieved and on the headline misdescribing it.
+
+**L-0045** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. SCORED AGAINST ITS OWN APPROVED PARAMETERS, ALL FOUR OF WHICH MOVED. Length: about 19,200 to 19,800 km built against 34,800 approved, roughly 55 per cent. Cost: 32.17 crore per km sanctioned against 15.37 approved. Time: September 2022 slipped to 2027-28. Scope: the auditor found 49 per cent of the target length had already been developed or awarded before the scheme began, so the headline was inflated at launch. Real corridors exist and carry traffic, and part of the cost rise reflects a deliberate move to access-controlled design rather than pure overrun - which is why this is partly and not failed. Phase 2's abandonment, disclosed in an annual report rather than announced, is recorded as the announced-but-not-delivered shape.
+
+**L-0047** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. WORKED, AND THE REASON IT CONVERTS SO CLEANLY IS WORTH STATING: THE ASSET IS THE SERVICE. An electrified line carries electric traction from the day it energises - no behavioural change is required and no demand forecast has to be met - which is why this is the clearest output-to-use conversion in the domain, against schemes elsewhere in this file that count connections rather than supply. The announced object was near-complete broad-gauge electrification to cut fuel cost and diesel dependence: delivered close to fully, with about 6,000 crore of fuel savings and 180 crore litres of diesel displaced in 2024-25, verifiable against an international benchmark. TWO QUALIFICATIONS THE VERDICT DOES NOT REST ON. The programme long predates the period, so pace reflects sustained funding as much as new policy. And the EMISSIONS half of the objective is not measured: electric traction on a coal-heavy grid displaces diesel with coal, so the net gain is smaller than the diesel figure implies by an amount nobody here has computed. Entered below.
+
+**L-0048** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. TWO OBJECTIVES WERE ANNOUNCED; ONE IS MET AND THE OTHER IS MEASURED AND NOT MET, WHICH IS THE WHOLE OF THE SPLIT. Segregation and corridor performance: met and substantial - coal transit on the Eastern corridor fell from 35 to 20 hours and haulage cost from 95 to 45 paise per tonne-kilometre, a structural gain that compounds. Arresting the modal-share decline, which is the justification the corridors were explicitly sold on: not met. Share fell from about 30 per cent at handover to about 26 per cent by 2024, and record absolute tonnage on a falling share means rail grew more slowly than the freight market. The case for argues modal share is the wrong test for two corridors covering a fraction of the network, and that is a fair point about attribution - but it is a test the programme chose for itself, and the record scores it on the terms it was justified on.
+
+**L-0050** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE SCHEME WAS PRESENTED AS DELIVERING ELECTRICITY AND WHAT IS MEASURED IS WIRING. Connections: about 28 million households in eighteen months, among the fastest electrification pushes anywhere, and moving the standard from village to household made the target harder rather than easier - a deliberate tightening that deserves saying. Supply: around 53 per cent of villages received under twelve hours a day of domestic supply as of 2019. THE DECISIVE FACT IS THAT THE SERVICE SIDE HAS NO CONTINUOUS SERIES AT ALL, so the gap between connection and supply cannot be tracked over time - which is itself a choice about what gets measured. Entered below. Partly is scored on connections delivered against supply unmeasured and, where measured, short. Discom finances were the binding constraint throughout and are scored separately in this file.
+
+**L-0051** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. FAILED ON THE STATED OBJECTIVE, WHICH IS FINANCIAL VIABILITY, AND THE MEASURES ARE THE GOVERNMENT'S OWN. Losses fell from 23.7 per cent in FY2015-16 to 15.4 in FY2022-23 - real operational improvement - and then rose to 16.12 in FY2023-24, the first reversal in five years, while the cost-revenue gap narrowed to 0.45 rupees per kilowatt-hour and widened again to about 0.60. Accumulated losses stand at 7.08 lakh crore and debt at 7.42 lakh crore. A fifth bailout in two decades, conditional this time on privatisation or listing, is what a structural problem not being solved looks like. THE CAUSE IS NAMED AND WAS NOT ADDRESSED BY ANY ROUND: tariffs held below cost for political reasons, with cross-subsidy borne by industrial consumers. The verdict is not that nothing improved - the loss reduction was real - but that the object was viability and viability was not reached, on numbers that have started moving the wrong way. Distribution being a state subject limits central leverage, and that is recorded in the case for rather than treated as excusing the outcome.
+
+**L-0052** `whatHappened`
+
+Non-fossil capacity reached 283.46 GW as on 31.03.2026 — CORRECTED 2026-08-05, this figure was previously attributed to July 2025, which is wrong by eight months and confuses a capacity stock with the single-day power ratio it was printed beside. Progress toward the 2030 target is broadly on track. The 2022 target of 175 GW was met on capacity though not on the original sectoral mix.
+
+**L-0052** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. WORKED IS SCORED ON THE TARGET AS SET, WHICH WAS A CAPACITY TARGET. 175 GW by 2022 was met on capacity; non-fossil capacity reached 283.46 GW against the 500 GW 2030 target and is broadly on track. A fifty-three-fold solar increase in twelve years, achieved through competitive auctions that drove tariffs to among the world's lowest, is a structural change in the generation mix. CAPACITY IS NOT GENERATION, AND THE VERDICT DOES NOT CLAIM IT IS. Renewables' share of energy generated remains well below their share of capacity because of load factors, and this record carries no figure for the generation share - entered below. The expansion has also coexisted with continued coal capacity addition, so it has supplemented rather than displaced fossil generation. A reader should take this as saying the capacity target was met, not that the energy mix changed by the same proportion.
+
+**L-0052** `caseFor`
+
+A fifty-three-fold increase in solar capacity in twelve years, achieved largely through competitive auctions that drove tariffs to among the world's lowest, is a structural transformation of the generation mix. Unlike most infrastructure outputs here, generation capacity converts into use automatically wherever the grid can absorb it, and renewable output has grown fast enough that absorption has kept pace with it. CORRECTED 2026-08-05: this sentence previously read 'renewables meeting over half of demand in a peak month demonstrates that absorption'. The 51.5 per cent figure it rested on is not a month and not an energy share — the originating Ministry of Power release states it for 29 July 2025 and gives its components as solar 44.50 GW, wind 29.89 GW and hydro 30.29 GW against demand of 203 GW, every operand a unit of POWER, so it is a ratio of simultaneous readings at one unstated moment on one day. See L-0221's caveat.
+
+**L-0052** `unmeasured[].why`
+
+CLOSED 2026-08-05, and the reasonKind CORRECTED AGAIN 2026-08-05 because the first correction was itself wrong. The target was set in capacity and this record scores it in capacity; the case against turns on the generation share being materially lower. THE HISTORY, because two corrections is exactly when a record stops being readable without it. (1) The entry originally read `not-published`. (2) A correction on 2026-08-05 changed it to `not-collected`, reasoning that `not-published` asserts something about the world and CEA does in fact publish the datum. THAT REASONING WAS ON THE WRONG AXIS AND MADE THE ENTRY WORSE. The schema's test is whether the DATA EXISTS: `not-collected` means 'never gathered — if the holder were compelled tomorrow they would have nothing to produce', and CEA had not only gathered it but published it, so `not-collected` is flatly false where `not-published` was merely superseded. (3) The schema already provides the mechanism for a stated reason that evidence contradicts, and this case matches its own worked example almost exactly — 'a body saying data was never maintained while another arm of the same government publishes some of it'. So the kind is restored to `not-published`, the reason actually stated, and `reasonDisputed` is set with the contradiction here: CEA publishes installed capacity and gross generation mode-wise on facing tables of its annual General Review for every year from 1950, and its monthly renewable report carries tables titled 'Monthly Renewable Energy as % of Total Electricity Generated' and 'Cumulative Renewable Energy as % of Total Electricity Generated', by State and All-India. The datum was not unpublished; it was unretrieved. It is now carried as series res-generation-share and non-fossil-generation-share and read in L-0221.
+
+**L-0053** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. WORKED, AND UNUSUALLY FOR THIS FILE BOTH THE OUTPUT AND ITS UTILISATION MOVED TOGETHER. Turnaround time halved while throughput nearly doubled - an efficiency gain that is verifiable, sustained, and feeds directly into logistics cost - alongside 315 completed projects worth 1.57 lakh crore and about 400 MTPA of added capacity. That is the announced object, modernisation and turnaround, delivered. TWO LIMITS THE VERDICT ACCOMMODATES RATHER THAN IGNORES. The improvement is from a low base and the gap to comparators remains large: about forty-nine hours against roughly eight in Japan. And inland waterways is the weaker half, where declared national waterways far exceed those actually navigable and the cargo growth rests on a small number of stretches; the navigable-against-declared figure is entered below.
+
+**L-0054** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE AIRPORT COUNT AND THE OBJECTIVE ARE DIFFERENT THINGS, AND THE COUNT IS BROADENED. Operational airports rose from 74 to about 160, but only around 11 are genuinely greenfield and the total includes 9 heliports and 2 waterdromes - the same reclassification pattern this file records on highways, where a definitional change is presented as a build. Genuine air access did reach cities that had none, and about half of a large number of seeded routes surviving without permanent subsidy is a reasonable outcome for a scheme designed to seed and withdraw: attrition is partly the mechanism working. Against that, a 50 per cent route failure rate indicates demand was systematically over-estimated at award, and airports built for failed routes are stranded. AFFORDABILITY - the first word of the objective - IS NOT MEASURED HERE. Fares actually paid on the routes, and passengers actually carried, do not appear, and are entered below. Partly is scored on access delivered against a broadened count and unmeasured affordability.
+
+**L-0055** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE FORECASTS WERE NOT INCIDENTAL - THEY WERE THE JUSTIFICATION - AND THAT IS WHY THIS IS SCORED AGAINST THEM. The assets were built and quadrupling network length and ridership in a decade is real mass transit millions use daily. But most systems carry 25 to 30 per cent of the ridership their project reports forecast, with Delhi best at 47.45 per cent and Bengaluru at 6 per cent, and a parliamentary committee found almost no system had met its initial projections. Under the 2017 policy a 14 per cent economic return was the approval threshold, which created a direct incentive to inflate the forecast that secured approval. THE CASE FOR HAS REAL FORCE AND THE VERDICT ACCOMMODATES IT: ridership builds as networks reach density - Chennai moved from 13 to about 60 per cent once its loop closed - and comparing against forecasts partly measures forecast quality rather than asset performance, on assets with fifty-year lives. That is why this is partly rather than failed. WHAT IS NOT MEASURED IS THE THRESHOLD ITSELF: no realised economic return for any system appears here, so the test the policy set has never been applied after the fact. Entered below.
+
+**L-0129** `sources[].name`
+
+Retrieval note carried on this record rather than in a provenance record, the provenance id space being exhausted: the Gazette originals of C.O. 272 (G.S.R. 551(E), 5 August 2019) and C.O. 273 (G.S.R. 562(E), 6 August 2019) were not retrieved. The Gazette root did not respond though a direct file path on the same host served the Reorganisation Act, and the file identifiers for these two notifications are not known; the Legislative Department dashboard, India Code and a J&K territorial host all failed to respond. Their full operative text is nonetheless established from two independent T1 retrievals that reproduce them in full. CORRECTED 2026-08-05 (correction cycle 6): C.O. 272 / G.S.R. 551(E) HAS NOW BEEN RETRIEVED FROM THE GAZETTE ITSELF, at https://egazette.gov.in/WriteReadData/2019/210049.pdf through a pinned resolver (egazette.gov.in -> 164.100.190.144), as a PDF with a real text layer. Verified by content, not by path: it carries Part II Section 3 Sub-section (i) No. 444, New Delhi, Monday, August 5, 2019, Ministry of Law and Justice (Legislative Department), "G.S.R .551(E).- the following Order made by the President is published for general information: THE CONSTITUTION (APPLICATION TO JAMMU AND KASHMIR) ORDER, 2019 C.O. 272", made in exercise of the powers conferred by clause (1) of article 370. The file identifier was GUESSED and confirmed by reading the document, not derived from any index. C.O. 273 / G.S.R. 562(E) of 6 August 2019 is STILL NOT LOCATED - its identifier remains unknown and no search interface was available (SearchGazette.aspx returns HTTP 500)
+
+**L-0111** `assessmentNote`
+
+The assessment vocabulary is built for measures with stated objectives and this record is a change to a reporting instrument. Scored no-objective on the written definition: nobody announced an objective for a reporting instrument, so no claim exists to test the restatement against, and the finding is firmly established either way. Explicitly not reversed - nothing that acts on the world was withdrawn, and a reporting practice altered by its own author is not a measure withdrawn by its enacting authority. VALUE-AND-NOTE RECONCILED 2026-08-03: this record was rescored contested -> no-objective in the pass that introduced no-objective to drain the contested sink, and the note was not rewritten with it, so the reasoning of record argued a value the field had abandoned. Nothing in the validator sees that - both halves are individually valid. The substantive reasoning below stood up and is preserved verbatim; only the value it names has been corrected.
+
+**L-0112** `assessmentNote`
+
+Scored no-objective as a change to a reporting instrument rather than to a measure - no objective was stated at announcement for the column, so there is nothing to score it against. Not reversed: no intervention acting on the world was withdrawn, and a definitional change to a published column is not the enacting authority repealing its own measure. VALUE-AND-NOTE RECONCILED 2026-08-03: this record was rescored contested -> no-objective in the pass that introduced no-objective to drain the contested sink, and the note was not rewritten with it, so the reasoning of record argued a value the field had abandoned. Nothing in the validator sees that - both halves are individually valid. The substantive reasoning below stood up and is preserved verbatim; only the value it names has been corrected.
+
+**L-0114** `caveat`
+
+CORRECTED 2026-08-05 (adversarial triage 2): the summary previously read "the only pellet quantity any government has ever published". That was contradicted by this record's own next field, which reports the Jammu and Kashmir Chief Minister giving 6,221 injured by pellets among five quantities, and it dropped a hedge the preceding sentence had used correctly. Restated to what was located, in a Union publication. Two counterfactual claims - that nobody, and that no instrument of any provenance, has ever measured deaths avoided - are bounded to what this phase searched. No figure changed and the score is unchanged. Seventeen deaths over three calendar years is the only pellet quantity located in this phase in a Union government publication, and it was published in the same answer that refused the injury count. (This sentence carried the same universal claim as the summary and was MISSED by the first correction pass on 2026-08-05, whose search string required the word 'ever' that this sentence omits.) It is not a measure of the harm and must never render as one. The injury aggregates in circulation - 6,221, 1,726, about 4,000, 2,942 - are five different objects on five different windows, none of which states whether it counts persons, eyes, admissions or referrals.
+
+**L-0117** `assessmentNote`
+
+Scored no-objective: no objective was ever stated for a quantity that has no instrument, so there is no claim against which the absence could be scored. Note what is not contested and must not be recorded as a dispute: whether hybrid militants enter the recruitment count is a factual question with a determinate answer that exists in someone's hands and could not be obtained. It is an absence with a route, not a disagreement. VALUE-AND-NOTE RECONCILED 2026-08-03: this record was rescored contested -> no-objective in the pass that introduced no-objective to drain the contested sink, and the note was not rewritten with it, so the reasoning of record argued a value the field had abandoned. Nothing in the validator sees that - both halves are individually valid. The substantive reasoning below stood up and is preserved verbatim; only the value it names has been corrected.
+
+**L-0119** `assessmentNote`
+
+Scored no-objective as a change to a reporting instrument - no objective was stated at announcement for the table, so nothing was claimed that its relabelling and withdrawal could be scored against. Explicitly not reversed: withdrawing a publication is not the enacting authority withdrawing a measure that acts on the world, and the border-management apparatus the table described continues to operate and is described at length in the same reports. VALUE-AND-NOTE RECONCILED 2026-08-03: this record was rescored contested -> no-objective in the pass that introduced no-objective to drain the contested sink, and the note was not rewritten with it, so the reasoning of record argued a value the field had abandoned. Nothing in the validator sees that - both halves are individually valid. The substantive reasoning below stood up and is preserved verbatim; only the value it names has been corrected.
+
+**L-0120** `assessmentNote`
+
+Scored no-objective as a change to a reporting practice - no objective was stated for the cumulative sentence, so its discontinuation has no claim to be measured against. Not reversed: what stopped is a disclosure, not an intervention acting on the world, and the definition of reversed excludes the withdrawal of a publication even by the authority that established it. VALUE-AND-NOTE RECONCILED 2026-08-03: this record was rescored contested -> no-objective in the pass that introduced no-objective to drain the contested sink, and the note was not rewritten with it, so the reasoning of record argued a value the field had abandoned. Nothing in the validator sees that - both halves are individually valid. The substantive reasoning below stood up and is preserved verbatim; only the value it names has been corrected.
+
+**L-0121** `assessmentNote`
+
+Scored no-objective on its written definition: the record finds something real - a structural absence established from the instrument's own architecture - and no objective was ever stated against which that absence could be scored. In particular no stated reason is attributed to NCRB, because NCRB has stated none - it simply has no category. VALUE-AND-NOTE RECONCILED 2026-08-03: this record was rescored contested -> no-objective in the pass that introduced no-objective to drain the contested sink, and the note was not rewritten with it, so the reasoning of record argued a value the field had abandoned. Nothing in the validator sees that - both halves are individually valid. The substantive reasoning below stood up and is preserved verbatim; only the value it names has been corrected.
+
+**L-0122** `assessmentNote`
+
+Scored no-objective as an institutional record rather than a measure - no objective was stated at announcement for the sanction regime, so the disposal record has no claim to be scored against. The value scores the disposal and the disclosure record, not the merits of any individual refusal, none of which has been seen. VALUE-AND-NOTE RECONCILED 2026-08-03: this record was rescored contested -> no-objective in the pass that introduced no-objective to drain the contested sink, and the note was not rewritten with it, so the reasoning of record argued a value the field had abandoned. Nothing in the validator sees that - both halves are individually valid. The substantive reasoning below stood up and is preserved verbatim; only the value it names has been corrected.
+
+**L-0123** `assessmentNote`
+
+Scored no-objective, and confined to answerability as it bears on whether security quantities can be counted - no objective was stated for the allocation of legislative competence, so there is nothing to score it against. The assembly, the elections and the restoration of statehood are outside this record's subject and are not scored here. SCOPE, made precise rather than weakened: the termination is SUBJECT-MATTER-SPECIFIC, not chamber-wide. It holds for security because s.32(1) removes Police and Public Order. It does not hold for revenue subjects: domicile and land sit within the UT legislature's competence - MHA told the Rajya Sabha on 11 December 2019 that the powers to make laws relating to land and property are vested with the Legislative Assembly of the Union Territory - and the restored Assembly demonstrably worked the route twice in 2025, extracting 83,742 domicile certificates granted to non-state subjects in April 2025 and 631 non-resident land buyers over 386 kanal in October 2025. That makes this a finding about s.32(1) rather than about the Assembly. VALUE-AND-NOTE RECONCILED 2026-08-03: this record was rescored contested -> no-objective in the pass that introduced no-objective to drain the contested sink, and the note was not rewritten with it, so the reasoning of record argued a value the field had abandoned. Nothing in the validator sees that - both halves are individually valid. The substantive reasoning below stood up and is preserved verbatim; only the value it names has been corrected.
+
+**L-0124** `summary`
+
+The Jammu Kashmir Coalition of Civil Society and the Association of Parents of Disappeared Persons published an Annual Human Rights Review which is the only instrument located in this phase that put both sides' harm on one page and named who caused it. Its 2019 edition records at least 80 civilians killed alongside 159 militants and 129 armed-forces personnel, and then splits the 80 by perpetrator - 19 killed by armed forces, 17 in cross-LoC shelling, 28 by unidentified gunmen, 6 by militants, 7 in explosions, one after being hit by a stone and one non-local in cross-firing. It leaves the largest bucket unattributed rather than forcing it. No edition after 2019 is retrievable, the coordinator has been in custody since November 2021, and the organisation's domain has been repurposed. After 2019 no instrument among those searched publishes the perpetrator split for civilian deaths in Jammu and Kashmir. (Bounded 2026-08-05, adversarial triage 2: this previously read 'no instrument of any provenance', which claimed the world while the search bounded a named few.)
+
+**L-0124** `assessmentNote`
+
+Scored no-objective as an institutional record - no objective was stated at announcement, and what ended was an independent instrument rather than a measure of the state's. Not reversed and not failed: no measure of the enacting authority's was withdrawn and no stated objective went unmet - what ended is an independent instrument, and the record scores the consequence for measurement rather than the enforcement actions themselves, which are outside this phase. VALUE-AND-NOTE RECONCILED 2026-08-03: this record was rescored contested -> no-objective in the pass that introduced no-objective to drain the contested sink, and the note was not rewritten with it, so the reasoning of record argued a value the field had abandoned. Nothing in the validator sees that - both halves are individually valid. The substantive reasoning below stood up and is preserved verbatim; only the value it names has been corrected.
+
+**L-0011** `assessmentNote`
+
+CORRECTED 2026-08-05 (adversarial triage 2): this record carried a failure verdict with NO stated reasoning, which is the one thing a scored record may not do. THE GROUND FOR THE VERDICT IS NARROWED TO WHAT IS MEASURED HERE. Four objectives were announced. Two are measured in this record and both fail on the government's own sources: the extinguishment of black money held as cash, against which 99.3 per cent of the notes returned to the banking system on the RBI's own count, so either little was held in cash or it was laundered and the premise was wrong either way; and the destruction of counterfeit currency, against which detection was minuscule. The other two are NOT part of the ground for this verdict and are entered below as unmeasured: the effect on terror financing, and the digitisation and formalisation objective that replaced the original justification as returns approached 100 per cent. The caseAgainst previously asserted failure "against every objective stated at announcement"; that sentence overstates what this record measures and is left standing only because it is a case, not a finding - the verdict now rests on the two objectives with evidence.
+
+**L-0012** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. FOUR THINGS WERE PROMISED AND THIS RECORD MEASURES TWO. Measured: revenue, which grew to a record 22.08 lakh crore in FY2024-25, and the registrant base, which passed 1.51 crore. Not measured here: revenue BUOYANCY, which the case against says was 'never clearly met' without giving a figure, and compliance cost, which is asserted to have fallen hardest on smaller firms and is nowhere quantified. Both are entered below as absences. Partly rests on what IS established: a constitutional amendment and a functioning federal tax council exist where two decades of attempts had failed, and interstate checkposts went; against that, the design carried four slabs for eight years and was rationalised in 2025, which is the government's own admission that the original structure was wrong. A caution about the registrant figure, on the same distinction another record in this corpus draws for payroll data: 1.51 crore registrants measures REGISTRATION, not formalisation, and this record does not treat the two as the same. The compensation arc is deliberately not restated here.
+
+**L-0013** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. THE STATED OBJECTIVE IS MEASURED AND IT DID NOT OCCUR, WHICH IS THE WHOLE OF THE VERDICT. The cut was justified as triggering a private investment revival. Private capital expenditure did not revive, while corporate profitability reached multi-year highs - Nifty-500 profit to GDP around 4.6 per cent in FY24, the highest since FY08 - and firms directed the windfall largely to deleveraging and buybacks. Profits rising while capex does not is the signature of a windfall pocketed rather than deployed, and the cost is permanent and annual at about 1.45 lakh crore. THE COUNTERFACTUAL IS NOT MEASURED AND THE CASE FOR RESTS ON IT: COVID arrived six months after the cut, and investment responses to tax changes operate with long lags. That is entered below as an absence rather than dismissed. The verdict is asserted on the observed outcome over the period, not on a claim that the cut could not have worked in other conditions.
+
+**L-0014** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. WORKED IS ASSERTED ON THE ANNOUNCED OBJECT AND NOT ON ATTRIBUTION, and the distinction carries the verdict. The object was to anchor inflation expectations after the 9 to 11 per cent inflation of 2010-2013. CPI fell decisively into a 4 per cent-centred range, breached twice under identifiable external shocks, and the framework survived both, three governors and a change of political cycle without abandonment - then was renewed on the same target for 2026 to 2031. Institutional survival across shocks and renewal on unchanged terms is the strongest evidence available that expectations anchored. WHAT IS NOT MEASURED IS HOW MUCH OF THE DISINFLATION THE FRAMEWORK CAUSED. The case against is that the 2014-16 oil collapse handed much of it over, and that is not resolvable from anything retrieved; it is entered below as an absence. A reader should take this verdict as saying the framework held and was renewed, NOT that it produced the disinflation on its own. The 2024 CPI rebasing, which lowers the food weight, is also noted in the case against as making future performance flattering by construction.
+
+**L-0016** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. TWO TARGETS WERE ANNOUNCED AND THIS RECORD MEASURES ONE. The share target is measured and decisively missed: manufacturing fell from 15.07 per cent of GDP in 2014 to 13.14 in 2024, and the target was reset to 2035 - a thirteen-year extension, which is the government's own statement that it was not met. The peer panel removes the external-conditions defence, because Bangladesh rose from 16.61 to 21.89 and Vietnam from 20.37 to 24.33 over the same decade under the same global conditions. THE 100-MILLION-JOBS TARGET IS NOT MEASURED ANYWHERE IN THIS RECORD, and writing this note is what surfaced that. It is entered below as an absence. The verdict rests on the share target alone, which is sufficient on its own terms; a reader should not take it as a finding about employment.
+
+**L-0017** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. THREE OBJECTIVES WERE ANNOUNCED AND THIS RECORD MEASURES ONE AND A HALF. Scale manufacturing: measured, and split - electronics and mobile production rose 146 per cent between FY21 and FY25 to 5.45 lakh crore, while only about 12 per cent of envisaged disbursement was paid out across five years and roughly 70 per cent of recent disbursement went to two sectors. That split is what partly rests on. Import substitution: NOT measured here at all, and entered below. Integration into global supply chains: measured only indirectly, through handset exports, and only for the sector that worked. The low disbursement is read here as evidence about the other sectors rather than about waste, because the schemes pay on verified output - unpaid money means unmet milestones. That reading cuts both ways and the record states both: it is also evidence that the diagnosis of what constrained those sectors was wrong.
+
+**L-0018** `whatHappened`
+
+RCEP proceeded without India. India subsequently pursued bilateral agreements instead: UAE CEPA (in force May 2022), Australia ECTA (December 2022), EFTA TEPA (in force 1 October 2025, carrying a US$100bn fifteen-year investment objective — L-0194 records that the Ministry calls it a "firm investment commitment" while the joint framing is an objective and an aim to "mobilise", and this record adopts neither word), the UK CETA (in force 15 July 2026, L-0204), and the EU agreement (negotiations concluded 27 January 2026, not in force, L-0205). CORRECTED 2026-08-05: this record previously described the TEPA commitment as binding and gave the China deficit as US$99.2bn in FY25 and about US$112bn in FY26 on a T4 source. That characterisation is withdrawn. The deficit figures are left out rather than restated, because the instrument now holds India-China trade on a calendar-year basis from both countries’ own submissions (L-0190, L-0191, P-119), and a financial-year figure from a newspaper cannot be set beside them — different period, different basis, and the two sides disagree in a way any single figure conceals.
+
+**L-0021** `whatHappened`
+
+Indian government estimates put roughly US$48bn of exports at risk; GTRI estimated around two-thirds of approximately US$87bn in US-bound exports were affected. CORRECTED 2026-08-04 against primaries retrieved that day. This record previously said the rate "was later cut to 18% under an interim arrangement" and that the Supreme Court "constrained" IEEPA-based tariff authority, and stated both as the current position; neither is right as written. The 18 per cent was a rate the 6 February 2026 United States-India joint statement said would be applied UNDER EXECUTIVE ORDER 14257. On 20 February 2026 the Supreme Court held in Learning Resources v. Trump that IEEPA does not authorise the President to impose tariffs at all — not that the authority was narrowed — and Executive Order 14389 the same day ended the duties imposed under every IEEPA order, including 14257 and 14329. India then paid ten per cent under a section 122 balance-of-payments surcharge from 24 February to 24 July 2026, and has paid ten per cent under a section 301 forced-labour action since. The instruments and their dates are held in L-0184 to L-0188; this record is the shock and its exposure estimates.
+
+**L-0034** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE SCHEME IS COUNTED AT THE CONNECTION AND ITS PURPOSE IS AT THE BURNER. Connections: delivered at scale and ahead of a target twice raised - the infrastructure objective is met and no predecessor came close. Use: not met on the regulator's own evidence - the year-one cohort averaged 3.66 refills a year falling to 3.21, against a general-consumer benchmark above six, with 17.61 per cent never returning for a second cylinder and 33.02 per cent taking one to three. Most households in that cohort therefore continued burning biomass for most cooking. Partly rests on exactly that gap, and it widened rather than closed when subsidised refills were cut from twelve to nine in 2025 and nine to four in 2026. THE HEALTH OBJECTIVE IS NOT MEASURED AT ALL. Reducing household air pollution and the burden it imposes on women and children was the stated purpose; no population-scale health outcome appears in this record or in anything retrieved, and it is entered below. The verdict is scored on connection and refill, NOT on health.
+
+**L-0035** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE DECLARATION WAS A COVERAGE CLAIM AND THE OBJECTIVE WAS A BEHAVIOURAL ONE, WHICH IS THE WHOLE OF THE SPLIT. Construction: achieved, and the fall in open defecation among people over two from 70 to 44 per cent in the four hardest states is a very large public-health movement documented by the most critical independent source, not by the government. Behaviour among those who already had the option: unchanged - 23 per cent of latrine-owners were still defecating in the open, identical to 2014, which is the harder half of the problem and the half construction could not reach. TWO INSTRUMENTS DISAGREE AND NEITHER IS ADOPTED: the government's own survey reports 96.5 per cent usage among those with access while an independent panel revisiting its own 2014 households finds 23 per cent of owners still practising open defecation. Part of the divergence is instrument design - grouped household questions structurally understate open defecation against person-by-person questions - and the record says so without treating that as settling it. Partly is scored on construction achieved and behaviour partly moved, NOT on the elimination target, which was not met by the stated date.
+
+**L-0036** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. CERTIFICATION MEASURES INFRASTRUCTURE INSTALLED AND THE PROMISE WAS WATER DELIVERED. Coverage: from about one rural household in six to four in five in seven years, among the fastest expansions of its kind. Functionality: the Ministry's own 2024 assessment across 19,812 certified villages found 98 per cent of households with a tap but about 76 per cent receiving water meeting Mission standards and 83 per cent the minimum quantity - so the headline overstates delivery by roughly a quarter, and the overstatement is built into the reporting system rather than incidental to it. The 2024 deadline was missed and moved to 2028. Partly rests on that: coverage real and fast, functionality short by a quarter, deadline missed by four years. THE GOVERNMENT PUBLISHED THE ASSESSMENT THAT EXPOSED ITS OWN SHORTFALL, which is recorded here as a point in its favour. The assessment covers certified villages rather than the country, and the national functionality figure is entered below as an absence.
+
+**L-0037** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE PROMISE WAS DATED AND IT WAS NOT MET; THE DELIVERY UNDER IT IS LARGE. Housing for All by 2022 was missed, extended to December 2025 for the urban programme and to 2029 for the rural one, with targets raised at each extension. Nearly three crore completed rural houses is a larger delivery than any predecessor, at higher per-unit assistance, with amenity convergence tying each house to a toilet, an LPG connection and a tap. Partly is scored on that: the commitment failed on its date while the programme delivered at unprecedented scale. TWO GAPS SIT BEHIND THE HEADLINE AND ONLY ONE HAS A FIGURE. Sanctioned-to-completed is about 0.9 crore. Completed-to-OCCUPIED is asserted in this record with no number at all, and is entered below - a completed house nobody lives in is not housing delivered, and it is the second place this scheme is counted before use. Selection also still rests on a fifteen-year-old census, which embeds exclusion errors the record notes and does not quantify.
+
+**L-0038** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE OPERATION IS MEASURED AND THE OUTCOME IT WAS FOR IS NOT. Delivery: about 3.91 lakh crore over 28 months, reaching hundreds of millions on rails that already existed, with portability handling roughly 30 crore transactions in eleven months of 2024 - one of the largest food transfers ever mounted, executed quickly because the infrastructure predated the emergency. PREVENTING HUNGER, THE STATED PURPOSE, IS NOT MEASURED ANYWHERE IN THIS RECORD, and is entered below. Partly is therefore scored on the delivery and on the exclusion, not on the outcome. THE EXCLUSION IS THE OTHER HALF AND IT IS A DISCRETE, KNOWN, CORRECTABLE FAILURE: coverage ratios remain fixed on a 2011 census, so on the scholars' estimates over 100 million and by 2025 above 120 million people are outside a statutory entitlement. That estimate is scholarly rather than official, and the absence of an official one is itself entered below.
+
+**L-0039** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THE OBJECTIVE WAS PROTECTION FROM CATASTROPHIC EXPENDITURE AND WHAT IS MEASURED IS HOSPITALISATIONS FINANCED. Delivered: 12.69 crore cumulative admissions, and the public share of total health expenditure rising from 29 to 48 per cent - a real and large transfer of risk away from households that would otherwise have sold assets. Against it: the scheme covers hospitalisation only while medicines and diagnostics, roughly two-thirds of out-of-pocket spending, remain uncovered, and out-of-pocket spending remains around 47 to 48 per cent. So the instrument does not reach the dominant source of the harm it names. THE COVERAGE CLAIM AND THE DELIVERY COUNT DIVERGE BY AN ORDER OF MAGNITUDE - 24 to 30 crore cards against 12.69 crore admissions - and the audit findings go to whether the database can support claims made from it: 7.5 lakh beneficiaries on a single mobile number, 3,446 patients recorded as dead treated for 6.97 crore, 78,396 simultaneous multi-hospital admissions. Those concern records rather than treatments delivered, and the record says so. Partly is scored on hospitalisations financed against an objective the instrument only partly addresses. CATASTROPHIC HEALTH EXPENDITURE AMONG COVERED HOUSEHOLDS - the actual objective - IS NOT MEASURED HERE and is entered below.
+
+**L-0041** `assessmentNote`
+
+Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THIS RECORD BUNDLES A TRANSFER SCHEME AND A DATED PROMISE, AND FAILED IS SCORED ON THE PROMISE ONLY. The doubling commitment was specific, dated and publicly repeated, and required about 10.4 per cent annual real growth; the only authoritative instrument shows roughly 15 per cent real growth over six years, and no Situation Assessment Survey has been fielded since 2019, so the terminal year is unverifiable and is already entered below as an absence. Failed is asserted on the measured trajectory against the stated rate, and on the absence of any evidence of a terminal reversal - not on a 2022 measurement that does not exist. PM-KISAN ITSELF IS NOT WHAT FAILED, and the note says so because the title bundles them. As a transfer it works as designed: it reaches 9.4 to 9.7 crore households directly, and the 2.3 crore reduction from the peak followed verification rather than attrition, which is a targeting system functioning. Its limits are stated in the case against - un-indexed at 6,000 rupees, and land-title based, so tenant farmers and landless labourers are outside it by construction.
+
+**P-87** `whatChanged`
+
+The JKCCS/APDP Annual Human Rights Review is the only instrument located in this phase, of any provenance, that recorded both sides' harm on one page and named who caused it. Its 2019 edition records at least 80 civilians killed alongside 159 militants and 129 armed-forces personnel, and splits the 80: 19 killed by armed forces, 17 in cross-LoC shelling, 28 by unidentified gunmen, 6 by militants, 7 in explosions, one after being hit by a stone and one non-local in cross-firing - leaving the largest bucket unattributed rather than forcing it. No official instrument is two-sided on this quantity in any year: MHA has never published a column for civilians killed by security forces under any heading; GTD covers non-state perpetrators only by definition; and UCDP records Government-of-India one-sided violence in three country-years ever, none after 2002. The instrument then terminated. No edition after 2019 is retrievable, jkccs.net now redirects to an unrelated commercial page - including the exact URL cited by OHCHR in June 2018 as the source for the 2016 Review - jkccs.info serves a web-filter deny page, the coordinator has been in custody since November 2021 and a named 2019 researcher was arrested in March 2023. After 2019 no instrument among those searched publishes the perpetrator split for civilian deaths in Jammu and Kashmir. (Bounded 2026-08-05, adversarial triage 2: this previously read 'no instrument of any provenance', which claimed the world while the search bounded a named few.)
+
+**P-112** `whatChanged`
+
+Three separate discontinuities sit inside what is usually drawn as one line. First, FC-XVI's own note under Table 8.4 states that "Inter-se shares of FC-11 to FC-14 are exclusive of the States' shares of service taxes", which were distributed under a separate table excluding Jammu and Kashmir — so a state's FC-XIV award is two shares, not one, and Tamil Nadu's are 4.023 and 4.104 per cent. Second, from FC-XV the denominator is twenty-eight states rather than twenty-nine, so a share can move because the denominator moved; J&K's own share runs 1.29, 1.30, 1.55, 1.85, 0.00 across the five columns. Third, and not previously carried anywhere in this instrument, FC-XV IS NOT CONSTANT: its one-year first report for FY2020-21 carries different inter-se shares from its final report, and for Tamil Nadu the FY2020-21 value is 4.189 per cent against 4.079 thereafter.
+
+**P-121** `notes`
+
+THE DATE IS NOT SETTLED AND THE RECORD DOES NOT PRETEND IT IS. Three government documents retrieved in this run give three dates for the instrument: the Cabinet release is posted 7 March 2019; the Ministry of Power's 2021 Rajya Sabha reply says measures were issued 'on 8th March, 2019'; and CEA's monthly renewable generation report cites 'Ministry of Power's Order dated 8th May, 2019'. None cites the others. The `when` field carries 7 March 2019 because that is the date of the only announcing instrument retrieved and it has the strongest attestation; the Ministry of Power Order itself was NOT retrieved in this run. CORRECTED 2026-08-05: this sentence continued 'and the e-Gazette remains the unreachable channel', which was false when written. **The corpus already carried the correction** — L-0218's own caseAgainst reads 'that example is WITHDRAWN, because the e-Gazette turned out to be reachable and its documents retrievable' — and the stale claim was inherited from phase 14's STATE.md, which carries the correction and the superseded wording in the same file. Confirmed live 2026-08-05: `egazette.gov.in` at 164.100.190.144 answers HTTP 200, and two Gazette notifications already cited in this corpus retrieve by static path with real text layers. **So the Order's absence here is a failure to identify its notification number, not a failure of the channel** — a different and much cheaper gap. This is a failure to retrieve one instrument, not evidence that it is unpublished. ON THE INSTRUMENT'S STANDING 'RECLASSIFIED HEADLINE' PROMOTION TEST, this is offered as a third sector but NOT as a case shown to have been chosen for a headline, and the evidence against that reading is recorded rather than omitted: the reclassification cannot move the 500 GW or NDC targets at all, because both are denominated in NON-FOSSIL capacity and large hydro was always non-fossil; it LOWERS the renewable growth multiple even as it raises the level and the share (35,850 to 236,525 MW is 6.60x on the narrow basis against 76,381 to 288,589 MW which is 3.78x on the wide one, so a party optimising a headline would have to choose which headline); and CEA's principal historical series did not adopt it. The documents retrieved contain no statement of a headline motive and no such document was located.
+
+**P-123** `whatChanged`
+
+Two Ministry releases state, as a COP26 Panchamrit commitment, a target of '50 per cent of installed electric power capacity from non-fossil fuel sources by 2030'. COP26 announced no such limb. What the Prime Minister announced at Glasgow on 1 November 2021, as PIB publishes the text, is five commitments of which two bear here: element 1, 'India will reach its non-fossil energy capacity to 500 GW by 2030' — a capacity target, but a GW total and not a percentage — and element 2, 'India will meet 50 percent of its energy requirements from renewable energy by 2030' — a percentage, but of ENERGY REQUIREMENTS and with a RENEWABLE numerator. The 'about 50 per cent of cumulative electric power installed capacity from non-fossil fuel-based energy resources' formulation is the August 2022 NDC update's goal 4, not Glasgow's. THE PUBLISHED TARGET FUSES ELEMENT 2'S PERCENTAGE WITH THE NDC'S DENOMINATOR AND ATTRIBUTES THE RESULT TO COP26. The substitution runs in the direction that makes the commitment easier: on the figures both are measured by, non-fossil sources were 53.21 per cent of installed capacity at 31.03.2026 and supplied 28.96 per cent of the electricity generated over FY2025-26 (CORRECTED 2026-08-05: previously 28.84 per cent, a construction that puts CEA's Bhutan import inside the denominator and outside the numerator, which is a population mismatch inside a share. L-0221 and all four affected series notes were corrected to 28.96 one batch after this record was written, and this record was not in that propagation. `directionOfBias` is UNCHANGED at `obscures`: the finding is that a capacity number is offered against an energy-shaped promise, and 0.12 of a point does not reach it), so a reader who takes the announced 50 per cent as met has been given a capacity number against an energy-shaped promise. Element 2 is the only one of the five denominated in energy and no document retrieved reports progress against it.
+
+**res-capacity-share** `notes`
+
+NUMERATOR is CEA's 'RES' column, which on this table EXCLUDES large hydro — the table's own footnote reads 'RES : Renewable Energy Sources. Includes Solar, Small Hydro Projects, Wind, Bio Power Baggasse, Bio Power-Waste to Energy'. Other current CEA and MNRE publications use 'RES' to INCLUDE large hydro and produce a materially higher share; see P-121. Direction of merit is left unset deliberately: a share of installed CAPACITY is the metric every Indian renewable target is written in, and it is not by itself a measure of how much electricity was decarbonised — the companion series res-generation-share is. THE FY2024-25 CAPACITY POINT WAS RECOVERED 2026-08-05 from the National Power Portal's dated archive, `npp.gov.in/public-reports/cea/monthly/installcap/2025/MAR/capacity1-2025-03.pdf`. A previous batch recorded this year as a hole on the ground that no stock was published 'at any guessable URL' — which was true and was not a search. CEA's own index pages carry only the current month, but NPP mirrors the same CEA report under a month-stamped path, and the two agree: at 31.03.2026 NPP prints a total of 532,739.72 MW against the Executive Summary's 532,739.68, and an identical non-fossil 283,468.09. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried.
+
+**res-generation-share** `notes`
+
+Same numerator definition and same document as res-capacity-share, so the two shares are strictly comparable and the gap between them is the arc's central measurement. NUMERATOR excludes large hydro. The FY2014-15 break is a measurement-basis change, not an activity change: RES generation is printed as FALLING from 65,520 GWh to 61,719 GWh across it while RES capacity rose from 35,850 MW to 39,950 MW. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried.
+
+**non-fossil-capacity-share** `notes`
+
+This is the quantity India's NDC goal 4 is written in — 'about 50 percent cumulative electric power installed capacity from non-fossil fuel-based energy resources by 2030' — and the quantity the July 2025 'five years early' claim measures. It is DEFINITION-INDEPENDENT with respect to the large-hydro reclassification (P-121): large hydro is non-fossil on either side of that decision, so moving it between 'conventional' and 'renewable' does not change this series. That is why it, and not the RES share, is the sound basis for comparison against generation. Direction of merit unset for the same reason as res-capacity-share. THE FY2024-25 CAPACITY POINT WAS RECOVERED 2026-08-05 from the National Power Portal's dated archive, `npp.gov.in/public-reports/cea/monthly/installcap/2025/MAR/capacity1-2025-03.pdf`. A previous batch recorded this year as a hole on the ground that no stock was published 'at any guessable URL' — which was true and was not a search. CEA's own index pages carry only the current month, but NPP mirrors the same CEA report under a month-stamped path, and the two agree: at 31.03.2026 NPP prints a total of 532,739.72 MW against the Executive Summary's 532,739.68, and an identical non-fossil 283,468.09. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried.
+
+**non-fossil-generation-share** `notes`
+
+The companion to non-fossil-capacity-share, computed from the facing table of the same document on the same universe. The pair is the arc's central finding: at 31.03.2024 non-fossil plant was 44.97% of installed capacity and supplied 23.51% of the electricity. Only the RES component carries the FY2014-15 basis break; hydro and nuclear generation are metered throughout. POINTS FROM FY2024-25 ONWARD COME FROM A DIFFERENT CEA DOCUMENT — Executive Summary on Power Sector, March 2026 — because the General Review's tables stop at FY2023-24. Same authority, same utilities universe, and NOT a break: the definitions match. One adjustment was required and is stated on every affected point — the Executive Summary's All-India generation total includes an import from Bhutan and the General Review's does not, so the import is removed from BOTH sides rather than left in the denominator alone. Leaving it in the denominator only would put an import in the denominator and not the numerator, which is a population mismatch inside a share; that construction gives 28.84 per cent for FY2025-26 against 28.96 on this one, and it is the figure this record previously carried.
+
+**jkccs-civilians-killed-by-armed-forces** `notes`
+
+This is the only instrument located in this phase, of any provenance, that ever published a perpetrator split for civilian deaths in Jammu and Kashmir, and it terminated. MHA has never published a column for civilians killed by security forces under any heading in any year; GTD covers non-state perpetrators only by construction; UCDP has recorded Government-of-India one-sided violence in three country-years ever, none after 2002. After 2019 no instrument among those searched - MHA, GTD and UCDP, each named above with the reason it cannot carry the quantity - publishes it. (Bounded 2026-08-05, adversarial triage 2: this previously read 'no instrument of any provenance', which claimed the world while the search bounded a named few.) The stated method is media monitoring, field verification, records obtained through the J&K High Court registry and the organisation's own researchers' fact-finding; there is no formal methodology annex, no inclusion criteria and no stated counting unit. The 2018 and 2019 figures are not necessarily on a like basis and the fall between them should not be read as a trend.
+
+**re-capacity** `notes`
+
+Non-fossil capacity reached 283.46 GW as on 31.03.2026. CORRECTED 2026-08-05: this note previously dated that stock to July 2025 and paired it with 'renewables met 51.5% of demand in July 2025'. Both were wrong. The 283.46 GW is a capacity stock at 31 March 2026; the 51.5 per cent is a ratio of simultaneous power readings on 29 July 2025, not an energy share over July, and the two are eight months and two kinds of quantity apart. They appeared in one sentence of a single PIB release, which is how they came to be carried as a pair. Progress toward the 500 GW non-fossil by 2030 target is broadly on track.
+
+## E.6 — The filing rule's surface — 20 records under the `defence-sector` lens
+
+The filing rule in Extract C is settled and specific: acquisition cost and payment schedule file one domain, indigenisation share and offsets file another, and the lens goes on all of them. It exists because the same procurement generates records that belong in different places. The domain each record actually took is printed beside it.
+
+| record | domains | lenses | verdict |
+|---|---|---|---|
+| L-0009 | foreign, defence | defence-sector | `baseline-context` |
+| L-0196 | foreign, macro | defence-sector | `too-early` |
+| L-0197 | foreign | defence-sector | `no-objective` |
+| L-0198 | foreign, macro | defence-sector | `partly` |
+| L-0199 | foreign | defence-sector, united-states, russia | `no-objective` |
+| L-0200 | foreign, governance | defence-sector | `partly` |
+| L-0201 | foreign | defence-sector | `too-early` |
+| L-0202 | foreign | defence-sector, russia | `no-objective` |
+| L-0203 | foreign, macro | defence-sector | `contested` |
+| L-0110 | defence, kashmir | defence-sector | `contested` |
+| L-0111 | governance, defence, kashmir | defence-sector | `no-objective` |
+| L-0112 | governance, defence, kashmir | defence-sector | `no-objective` |
+| L-0113 | governance, defence, kashmir | defence-sector | `contested` |
+| L-0115 | defence, governance, kashmir | defence-sector | `contested` |
+| L-0116 | governance, defence, kashmir | defence-sector | `contested` |
+| L-0117 | defence, kashmir | defence-sector | `no-objective` |
+| L-0119 | defence, governance, kashmir | defence-sector | `no-objective` |
+| L-0120 | governance, defence, kashmir | defence-sector | `no-objective` |
+| L-0121 | governance, kashmir | defence-sector | `no-objective` |
+| L-0122 | governance, kashmir | defence-sector | `no-objective` |
+
+---
+
+# EXTRACT D — CORRECTIONS AND WITHDRAWN WORDING
+
+**These are included deliberately and are not hidden anywhere in this document.** The convention in C.7 means a corrected record still contains the wording it withdrew, inside the sentence that withdraws it. If you read one of these as a live error, report it — that is evidence the correction is not visible enough, and it is a finding rather than noise.
+
+**The needle, printed so the count has a scope.** A field is listed here when it matches:
+
+```
+/\b(?:CORRECTED|RESCORED|VALUE-AND-NOTE RECONCILED|Bounded|CLOSED)\s+\d{4}-\d{2}-\d{2}|\bthis (?:record|sentence|note|figure) (?:previously|originally)\b|\bpreviously (?:read|carried|gave|said|stated|described|counted|attributed|dated|led on|quoted)\b|\bis WITHDRAWN\b|\bthat example is WITHDRAWN\b|\bThe earlier framing is superseded\b|\breasonKind CORRECTED\b/
+```
+
+It matches only **self-referential** corrections — a record saying what IT previously said. Ordinary uses of "withdrawn" and "superseded" that describe the world (a measure withdrawn by its enacting authority, an estimate superseded by a later answer) are excluded by construction, and there are many of them. **A needle bounds what it finds and never what there is**: a correction phrased in some other way is not in this list.
+
+**Found: 60 ledger and provenance records, and 6 series, at `aa80fad`.** Full text is in the record itself — in Extract B for the 14 of these that are there, and in the field named below for the rest.
+
+| record | verdict / bias | fields carrying a correction |
+|---|---|---|
+| L-0011 | `failed` | assessmentNote |
+| L-0012 | `partly` | assessmentNote |
+| L-0013 | `failed` | assessmentNote |
+| L-0014 | `worked` | assessmentNote |
+| L-0016 | `failed` | assessmentNote |
+| L-0017 | `partly` | assessmentNote |
+| L-0018 | `contested` | whatHappened |
+| L-0021 | `no-objective` | whatHappened |
+| L-0023 | `worked` | assessmentNote |
+| L-0024 | `partly` | assessmentNote |
+| L-0026 | `worked` | assessmentNote |
+| L-0029 | `worked` | assessmentNote |
+| L-0030 | `failed` | assessmentNote |
+| L-0034 | `partly` | assessmentNote |
+| L-0035 | `partly` | assessmentNote |
+| L-0036 | `partly` | assessmentNote |
+| L-0037 | `partly` | assessmentNote |
+| L-0038 | `partly` | assessmentNote |
+| L-0039 | `partly` | assessmentNote |
+| L-0041 | `failed` | assessmentNote |
+| L-0044 | `partly` | assessmentNote |
+| L-0045 | `partly` | assessmentNote |
+| L-0047 | `worked` | assessmentNote |
+| L-0048 | `partly` | assessmentNote |
+| L-0050 | `partly` | assessmentNote |
+| L-0051 | `failed` | assessmentNote |
+| L-0052 | `worked` | whatHappened, assessmentNote, caseFor, unmeasured[].why |
+| L-0053 | `worked` | assessmentNote |
+| L-0054 | `partly` | assessmentNote |
+| L-0055 | `partly` | assessmentNote |
+| L-0062 | `partly` | assessmentNote |
+| L-0066 | `reversed` | assessmentNote |
+| L-0067 | `failed` | assessmentNote |
+| L-0072 | `partly` | assessmentNote |
+| L-0090 | `partly` | assessmentNote |
+| L-0093 | `partly` | assessmentNote |
+| L-0094 | `no-objective` | assessmentNote |
+| L-0111 | `no-objective` | assessmentNote |
+| L-0112 | `no-objective` | assessmentNote |
+| L-0114 | `contested` | caveat |
+| L-0117 | `no-objective` | assessmentNote |
+| L-0119 | `no-objective` | assessmentNote |
+| L-0120 | `no-objective` | assessmentNote |
+| L-0121 | `no-objective` | assessmentNote |
+| L-0122 | `no-objective` | assessmentNote |
+| L-0123 | `no-objective` | assessmentNote |
+| L-0124 | `no-objective` | summary, assessmentNote |
+| L-0129 | `contested` | sources[].name |
+| L-0195 | `contested` | assessmentNote |
+| L-0218 | `no-objective` | summary, caseAgainst |
+| L-0221 | `partly` | summary, whatHappened, assessmentNote |
+| L-0222 | `failed` | whatHappened |
+| L-0223 | `too-early` | caseAgainst |
+| L-0224 | `contested` | unmeasured[].why |
+| L-0225 | `too-early` | unmeasured[].why |
+| L-0226 | `contested` | summary, whatHappened |
+| P-112 | `degrades-precision` | whatChanged |
+| P-121 | `obscures` | notes |
+| P-123 | `obscures` | whatChanged |
+| P-87 | `obscures` | whatChanged |
+
+Series carrying one: `jkccs-civilians-killed-by-armed-forces` (notes) · `non-fossil-capacity-share` (notes) · `non-fossil-generation-share` (notes) · `re-capacity` (notes) · `res-capacity-share` (notes) · `res-generation-share` (notes).
+
+---
+
+# What this document leaves out
+
+Stated so you can weigh a finding against what you were not shown, and so that "I could not check X" is a claim about this file rather than about the corpus.
+
+1. **The 269 series and 60 paired records.** The corpus has four layers; this document carries two. Series hold the time series a ledger verdict rests on — the actual figures, their breaks, their per-point status flags — and pairs hold constructed comparisons. A verdict here can be read for whether it follows from its own prose, but **not for whether the underlying numbers say what the prose says they say.** That is the single largest thing you cannot check.
+2. **The full assessment note for the 128 ledger records outside Extract B and its appendix.** Extract A gives the first substantive sentence only.
+3. **The full prose of the 198 ledger and 120 provenance records outside Extract B.** Their claim, verdict, first line of reasoning, tier profile and stated absences are in Extract A; their case-for, case-against and evidence are not.
+4. **The rendered site.** These records are published as web pages, and some of this project's defects were rendering defects — correct data that reached no reader. You are reading the data, not the pages, so a rendering defect is invisible to you.
+5. **The verification log**, 684 KB of cycle-by-cycle working notes. Where a decision's reasoning lives only there, it is not here.
+6. **Everything the corpus never opened.** A subject nobody researched leaves no trace in any of these extracts. If a domain looks thin, it may be thin, and the record count per domain in Extract A.3 is the only evidence you have either way.
+
+**One asymmetry to hold on to.** Extract B is selected for trouble and Extract A is complete. A pattern you find in A is a pattern in the corpus; a density you observe in B is a density in the selection. Do not generalise from B.
+
+**And one about this file specifically.** The contents list at the top is authoritative: this document is one of several cuts of the same corpus, and any extract not listed there is absent from it. That is deliberate — the passes are run separately so they cannot anchor on each other — but it means "the corpus does not contain X" is a claim you cannot make from here. "This file does not let me check X" is the claim to make, and it is a useful one.
+

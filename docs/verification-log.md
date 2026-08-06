@@ -10318,3 +10318,89 @@ built, 14/14 linked, 1141/1141 references · `enum-stamp` 2 fixtures match 8 len
 **Every count above is a gate's own emitted line.** Counts this cycle produced itself — the tier
 split by layer, the correction index, the edit histories — are printed in the extract with the field
 or needle that produced them, never bare.
+
+---
+
+## Cycle 2026-08-06b — STRUCTURAL CYCLE, BATCH 2. The live sourcing claim, and the three-way split
+
+`/data` untouched — `git diff --numstat -- data` returns nothing. No schema, enum or gate contract
+moved.
+
+### 1. `/method` fixed, and the fix is that the page no longer holds a number
+
+Was: *"Of 1,205 citations, 752 are graded T1"*, with the remainder described as multilateral
+statistics, research, journalism and NGO datasets. **752 is ledger + provenance with all 269 series
+dropped; the figure is 965, and 213 official statistical sources were described as journalism.**
+`lib/data.ts` gains `citations()` and `tierCounts()`; the page counts through them and states the
+real composition — **965 T1 · 80 T2 · 28 T3 · 124 T4 · 8 T5 = 1,205**. The tier table gains
+ledger / provenance / series / all columns and totals to 1,205 against a prose figure it previously
+could not be reconciled with. **The page states its own correction** in the withdrawn-wording form.
+**Second public-page sourcing error in two batches, in opposite directions, one cause:** a figure
+typed into a page instead of counted from the data. No hand-typed corpus figure remains on `/method`.
+
+### 2. The tier asymmetry, reported — and why no type could have held it
+
+`TieredSource` is `{name, url, tier}` in `sources[]`; a series carries `source: SourceRef` =
+`{name, url, vintage}` with `tier` on the record. **TypeScript objects when same-named fields have
+different types and is silent when they have the same type at different depths**, so
+`series.source.tier` reads `undefined` and tallies as untiered. A set-construction error, not a type
+error. **`vintage` is the mirror gap: no ledger or provenance citation can record one at all**, and
+`citations()` preserves the field rather than flattening it, so the gap stays visible.
+
+**Every other split field enumerated from the schemas:** `name`/`url` (harmless — both inside a
+source-shaped object) · `vintage` (series only) · **`status`** (`series:points[].status` vs
+`pairs:status` — split worse and **held by the type system**, two enums on two interfaces) · the
+domain axis (`domains[]` / `domain` / `domain` / `affectsDomains[]`, three shapes and a fourth name) ·
+`notes` (absent on ledger) · `caveat` (absent on provenance and pairs) · `lenses` (absent on
+provenance) · the time axis (four names). **Only `tier` had the shape that miscounts silently.**
+**Next candidate: the domain axis**, where `provenanceInDomain` carries an `'all'` branch the other
+two readers lack. New CLAUDE.md rule, with the TypeScript reasoning and both instances
+(`ledgerUnderLens()`, `citations()`). **REPORT ONLY — moving `tier` or adding `vintage` are schema
+changes and therefore stops.**
+
+### 3. The 13,163 bytes, accounted exactly — five causes
+
+488,370 reported against 501,533. **+5,002** a whole row omitted (Extract B's header and criteria) ·
+**+1,730** a row measured on a build two regenerations old · **+7,105** characters counted and bytes
+reported (UTF-8 punctuation) · **−666** and **−20** two rows rounded by hand inside a measured table ·
+**+12** a second stale row. 488,370 + 5,002 + 1,730 − 666 − 20 + 12 = **494,428 characters**;
+494,428 + 7,105 = **501,533 bytes**. Exact at both steps. **Three of the five are this instrument's
+own recurring classes** — a hand-typed figure inside a measured table is a fabricated scope, and the
+20-byte rounding is the more damning of the two because it served no purpose except that the number
+was being typed rather than read; the unit mismatch is a stock paired with a flow. **Fixed
+mechanically: the generator emits `review/pass-sizes.txt`, in bytes, with the units in the header.**
+
+### 4. `STATE.md` archive split — PROPOSED, NOT DONE
+
+157 KB when drafted, 172 KB with the entry in it. Proposal: `state/phase-15-*.md` archives, live file
+keeps resume block, open items, standing hazards and pins, and an archive index. **The rule that keeps
+a cold read complete: nothing moves until it is CLOSED — no open item depends on it and no rule it
+earned lives only there — and an open item citing archived evidence carries that evidence inline.**
+Test before splitting by reading the proposed live file cold. Expected live size 20-25 KB. **Risk
+named: this would be the first non-append operation on the file, so it goes as a pure move with
+`git diff --numstat` proving deletions equal insertions.**
+
+### 5. The pass input split in three, one generator, no duplicated block
+
+`pass-a-structural.md` **240,802** (A + C) · `pass-b-deep.md` **305,294** (B + C + D) ·
+`pass-c-method.md` **297,193** (C + E + D) · combined `adversarial-pass-input.md` **752,715**. The
+brief, limits, gate scopes and Extract C are built once in a section registry and emitted into every
+file. **Extract E is new** — the corpus text each rule binds: E.0 names the four rules a data-only
+reviewer cannot test; E.1 all 68 strongest absence claims in full; E.2 the rest by id, stating that
+the stated-search rule cannot be tested against them from that file; E.3 291 existence-claim candidate
+sentences with the needle printed; E.4 the prose-only commitment states; E.5 all 75
+correction-carrying fields in full; E.6 the filing rule's surface. **The combined file grew because E
+is new material, and E.5 reprints text Extract B also carries — an argument for running the three
+passes rather than the combined document.** Per-file checks assert by CONTENT, not by the composition
+list, since the list is where a mistake would be made.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs =
+682 records, 1,759 points** · `manifest` 682 records, 71,554 bytes · `no-bare-root` 0 new, 0 stale,
+277 allowlisted from 277 frozen · `no-unguarded-prose-field` 19 prose fields, 7 guarded / 12 exempted
+· `figure-consistency` 18 declared claims, 18 checked against source and printed operands, 5 rounding
+artefacts declared · `reachability` 1368/1368 marks on their own record page, 662 pages scanned ·
+`field-render-audit` 32 prose fields across 3 layers, 0 invisible · `domain-coverage` 14/14 surfaces
+built, 14/14 linked, 1141/1141 references · `enum-stamp` 2 fixtures match 8 lenses / 14 domains ·
+`seam-span-report` **125 spans, 91 declaring, 34 not** (report-only) · `typecheck` clean.

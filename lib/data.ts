@@ -15,8 +15,10 @@ import type {
   ProvenanceRecord,
   Series,
   Term,
+  Tier,
   Unmeasured,
 } from './types';
+import { TIERS } from './types';
 
 const DATA_DIR = join(process.cwd(), 'data');
 
@@ -237,6 +239,86 @@ export function allUnmeasured(): DeclaredAbsence[] {
     })),
   );
   return [...fromSeries, ...fromLedger];
+}
+
+/**
+ * Every graded citation in the corpus, from all three layers, in one shape.
+ *
+ * WHY THIS EXISTS, AND IT IS NOT CONVENIENCE. `tier` is asserted in two structurally different
+ * places: INSIDE each entry of `sources[]` on a ledger or provenance record, and ON THE RECORD
+ * for a series, whose `source` is a bare `SourceRef` that carries no tier at all. Any count that
+ * reads one site sees a corpus missing the other, and the failure is silent in the worst
+ * direction — a series citation read as `source.tier` returns `undefined`, which tallies as
+ * "untiered" rather than as an error.
+ *
+ * That is not hypothetical. The published sourcing claim on /method said 752 of 1,205 citations
+ * were T1; the true figure is the number this function returns, and 752 is exactly
+ * ledger + provenance with all 269 series dropped. It is the fifth recorded instance of the same
+ * read in this project.
+ *
+ * So the rule is: NOTHING COUNTS CITATIONS BY HAND. Read them here, where the asymmetry is
+ * resolved once and the resolution is visible. If `tier` ever moves — into the series `source`
+ * object, or out of the ledger `sources[]` entries — this function is the only place that has to
+ * know, and every caller keeps working.
+ *
+ * `vintage` is the mirror asymmetry and is preserved rather than flattened away: only a series
+ * `SourceRef` can carry one, so it is undefined on every ledger and provenance citation by
+ * construction, not by omission.
+ */
+export type Citation = {
+  layer: 'ledger' | 'provenance' | 'series';
+  recordId: string;
+  recordTitle: string;
+  href: string;
+  name: string;
+  url: string;
+  tier: Tier;
+  vintage?: string;
+};
+
+export function citations(): Citation[] {
+  const fromLedger: Citation[] = ledger.flatMap((l) =>
+    (l.sources ?? []).map((s) => ({
+      layer: 'ledger' as const,
+      recordId: l.id,
+      recordTitle: l.title,
+      href: `/ledger/${l.id}/`,
+      name: s.name,
+      url: s.url,
+      tier: s.tier,
+    })),
+  );
+  const fromProvenance: Citation[] = provenance.flatMap((p) =>
+    (p.sources ?? []).map((s) => ({
+      layer: 'provenance' as const,
+      recordId: p.id,
+      recordTitle: p.title,
+      href: `/provenance/${p.id}/`,
+      name: s.name,
+      url: s.url,
+      tier: s.tier,
+    })),
+  );
+  // The asymmetry, handled in the one place that is allowed to know about it.
+  const fromSeries: Citation[] = series.map((s) => ({
+    layer: 'series' as const,
+    recordId: s.id,
+    recordTitle: s.title,
+    href: `/series/${s.id}/`,
+    name: s.source.name,
+    url: s.source.url,
+    tier: s.tier,
+    vintage: s.source.vintage,
+  }));
+  return [...fromLedger, ...fromProvenance, ...fromSeries];
+}
+
+/** Tier tally over any citation set. Every tier key is present, including zeroes: a tier that
+ *  renders only when non-empty makes an absent row indistinguishable from an unread layer. */
+export function tierCounts(cites: Citation[] = citations()): Record<Tier, number> {
+  const counts = Object.fromEntries(TIERS.map((t) => [t, 0])) as Record<Tier, number>;
+  for (const c of cites) counts[c.tier] = (counts[c.tier] ?? 0) + 1;
+  return counts;
 }
 
 /**

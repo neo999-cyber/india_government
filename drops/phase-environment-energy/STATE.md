@@ -2283,3 +2283,230 @@ now **125 spans / 34 undeclared**, not 117/29 (F1).
 **And one that is reported and not actionable without a stop:** four schema descriptions state
 distributions the data contradicts (F3), one of them asserting a value is unattested while P-122 uses
 it. A schema edit is a stop, so it is agreed before it is made.
+
+---
+
+# STRUCTURAL CYCLE, BATCH 2 — 2026-08-06. The live sourcing claim is fixed; the pass input is split in three
+
+`/data` untouched again — `git diff --numstat -- data` returns nothing. No schema, enum or gate
+contract moved.
+
+## 1. `/method` FIXED, and the fix is that the page no longer holds a number
+
+The paragraph said **752 of 1,205 citations are T1** and described the rest as *"multilateral
+statistics, peer-reviewed research, documentary journalism and NGO datasets"*. **The T1 figure is 965
+and the description was false about 213 Indian official statistical sources.**
+
+**Both figures are now derived at build time.** `lib/data.ts` gains `citations()` and `tierCounts()`,
+and the page counts through them. The composition is stated for real: **965 T1 · 80 T2 · 28 T3 ·
+124 T4 · 8 T5 = 1,205**, each named for what it is rather than lumped as "the rest". The tier table
+below it, which had a single `Series` column showing 213 against a prose figure of 752 with no way to
+reconcile them, now breaks out **ledger / provenance / series / all** and totals to the same 1,205.
+
+**And the page says what it got wrong**, in the same paragraph, in the corpus's own withdrawn-wording
+form: that it read 752 until 6 August 2026, that the error was 213, and that the cause was reading the
+tier in one of the two places it lives. **This is the second time in two batches that a claim about
+the corpus's own sourcing was wrong on a public page** — the footer said "built entirely from public
+government primaries" and was corrected downward; this said 752 and was wrong upward. **Opposite
+directions, one cause: a figure typed into a page instead of counted from the data.** No hand-typed
+corpus figure remains on `/method`.
+
+## 2. THE TIER ASYMMETRY — what one accessor takes, and what else is split the same way
+
+### What `citations()` takes, and why it is an accessor rather than a type
+
+The asymmetry is real and is in the types: `TieredSource` is `{name, url, tier}` and lives in
+`sources[]` on ledger and provenance; a series carries `source: SourceRef` = `{name, url, vintage}`
+with **`tier` on the record**. `citations()` flattens all three layers to
+`{layer, recordId, recordTitle, href, name, url, tier, vintage?}` and is the only place allowed to
+know which site a tier came from. If `tier` ever moves, one function changes and every caller keeps
+working.
+
+**Why a type could not have caught this.** Both sites are a legal `Tier`. `s.source.tier` on a series
+is not a type error — the field is simply absent, so it reads `undefined` and tallies as untiered.
+**TypeScript objects when two same-named fields have different types; it cannot object when they have
+the same type at different depths.** The defect was a set-construction error, not a type error, which
+is why the fix is an accessor and a comment stating the cost, not a signature.
+
+**`vintage` is the mirror asymmetry and it is a real gap, not a cosmetic one.** Only a series
+`SourceRef` can carry a vintage; `TieredSource` has no such field, so **no ledger or provenance
+citation can record the vintage of the document it cites** — and the peer-panel vintage discipline
+(P-09) is a standing rule of this instrument. `citations()` preserves the field rather than
+flattening it away, so the gap is visible in the returned shape instead of being invisible.
+
+### Every other field split the same way, enumerated from the schemas
+
+| axis | where it lives | held by the type system? |
+|---|---|---|
+| **`tier`** | `ledger:sources[].tier` · `provenance:sources[].tier` · **`series:tier`** | **NO** — same type, different depth. This is the one that fired |
+| `name` / `url` | `sources[].name`/`url` · `series:source.name`/`url` | n/a — both sit inside a source-shaped object, so a reader that has the object is right either way |
+| `vintage` | **`series:source.vintage` only** | n/a — the field does not exist on the other two layers at all |
+| **`status`** | `series:points[].status` (`verified`/`approx`/`pending`, per OBSERVATION) · `pairs:status` (`live`/`declared-pending`, per RECORD) | **YES** — two different enums on two different interfaces, so a wrong read is a type error. `statusCounts()` is typed `Series[]` and a pair cannot reach it |
+| domain axis | `ledger:domains[]` · `series:domain` · `pairs:domain` · **`provenance:affectsDomains[]`** | partly — three shapes and a fourth NAME, with three separate readers in `lib/data.ts` |
+| `notes` | series · provenance · pairs — **absent on ledger** | n/a — a `notes` accessor would silently return nothing for a whole layer |
+| `caveat` | ledger · series — absent on provenance and pairs | n/a |
+| `lenses` | ledger · series · pairs — absent on provenance | n/a |
+| time axis | `ledger:date`/`dateEnd` · `provenance:when` (free string) · `series:calendar` + `points[].period` | n/a — four names, no shared reader exists or could |
+
+**Only `tier` had the shape that produces a silent miscount**, and the reason is stated above: same
+type, different depth, both reads legal. **`status` is the near-miss** and it is instructive — it is
+split *worse* than `tier` (two enums, two depths, two layers, one name) and has never produced a
+defect, because the two values have different types and TypeScript refuses the confusion.
+
+**The domain axis is the one to watch next.** `seriesInDomain` uses `.domain ===`,
+`ledgerInDomain` uses `.domains.includes`, and `provenanceInDomain` uses
+`.affectsDomains.includes(domain) || .includes('all')` — **and that third one carries an extra
+semantic the other two do not.** Any future unification that forgets the `'all'` branch silently
+drops every provenance record filed against every domain, or adds them everywhere. It would not be a
+type error either.
+
+**The project has already solved this shape once and did not generalise it.** `ledgerUnderLens()`
+reads a lens from BOTH `lenses[]` and the legacy `domains[]`, with a comment giving the count that
+would otherwise be lost (19 records carrying `kashmir`, 13 carrying `federalism`). That is exactly
+what `citations()` now does for tier. **Two instances of one pattern — an axis with two storage sites
+and a reader that must know about both — is enough to name it: where an axis is stored in more than
+one place, the union goes in `lib/data.ts` with the cost of getting it wrong written beside it, and
+nothing counts that axis by hand anywhere else.**
+
+**REPORT ONLY. No schema change is proposed here** — moving `tier` into the series `source` object, or
+adding `vintage` to `TieredSource`, are both schema changes and therefore stops.
+
+## 3. THE 13,163 BYTES, ACCOUNTED IN FULL — five causes, and the table was the defect
+
+The previous batch reported a section table summing to **488,370** against a stated file size of
+**501,533**. Recomputed at the same commit:
+
+| cause | bytes |
+|---|---:|
+| **A whole row omitted** — Extract B's header and selection criteria, a real section, absent from the table | **+5,002** |
+| **A stale row** — Extract A.1 measured on a build two regenerations old (124,258 against 125,988) | **+1,730** |
+| **Characters counted, bytes reported** — the table summed string indices, the file size was `Buffer.byteLength`; UTF-8 punctuation (— · × “ ”) is the difference | **+7,105** |
+| **A row rounded by hand** — the brief, 11,334 typed as "12,000" | **−666** |
+| **A row rounded by hand** — Extract C, 29,880 typed as "29,900" | **−20** |
+| **A stale row** — omissions, 1,881 against 1,893 | **+12** |
+| **total** | **13,163** |
+
+488,370 + 5,002 + 1,730 − 666 − 20 + 12 = **494,428 characters**, and 494,428 + 7,105 = **501,533
+bytes**. Exact, both steps.
+
+**Three of the five causes are the class this instrument keeps catching.** Two rows were hand-typed
+figures presented inside a measured table — a fabricated scope, and the smaller of the two (20 bytes)
+is the more damning, because rounding by twenty serves no purpose except that the number was being
+typed rather than read. Two rows were measured against a build that no longer existed. **And the
+unit mismatch is the same shape as pairing a stock with a flow**: two numbers presented as
+comparable, computed over different things, with nothing in the presentation to show it.
+
+**FIXED MECHANICALLY, not by resolving to be careful.** The generator now emits
+`review/pass-sizes.txt` itself — every section and every file, **in bytes, with the units stated in
+the header** — and a table the tool prints cannot omit a row that exists, cannot go stale against its
+own output, and cannot round.
+
+## 4. PROPOSED, NOT DONE — the `STATE.md` archive split
+
+**The problem, measured:** `STATE.md` was **157 KB** when this entry was drafted and is **172 KB** with the
+entry in it — it grew 15 KB while being written about, which is the argument in miniature. It is read
+a session-cost rule budgeting 38 KB for all orientation. It is the largest single item a cold read
+pays for and roughly 85 per cent of it is closed phase-15 material that no future cycle will act on.
+**The lean-prompt form depends on this file being readable**, so its growth is not a tidiness question.
+
+**The proposal.**
+
+```
+drops/phase-environment-energy/
+  STATE.md            LIVE — open items, standing hazards, retrieval pins, resume block
+  state/
+    phase-15-batches-1-10.md
+    phase-15-close-audit.md
+    phase-15-publication.md
+    structural-cycle.md          (batches 1-2, appended as they close)
+```
+
+**The live file keeps four things and nothing else:**
+1. **RESUME HERE** — what the next session starts on, always last in the file.
+2. **OPEN ITEMS** — one entry each, with the evidence inline, never a pointer to an archive.
+3. **STANDING HAZARDS AND PINS** — the retrieval pins, the resolver facts, the traps that cost a
+   cycle if rediscovered. These are consulted, not read; they stay.
+4. **THE ARCHIVE INDEX** — one line per archived file saying what it holds and what it settled.
+
+**THE RULE THAT KEEPS A COLD READ COMPLETE, and it is the whole of the proposal:**
+
+> **Nothing moves to the archive until it is CLOSED, and closed means: no open item depends on it,
+> and no rule it earned lives only there.** A rule earned in archived material is already in
+> `CLAUDE.md` — that is what the same-commit rule exists for — so archiving prose can never orphan a
+> rule. An open item that cites archived evidence **carries that evidence inline in the live file**;
+> the archive is where the reasoning went, never where the current state is.
+
+**Why that rule and not "archive by date".** A cold read must be complete from the live file alone,
+or the split has traded 172 KB of reading for an unbounded number of lookups, which is worse — it
+looks cheap and is not, and the failure is silent because a session that never opens the archive
+cannot tell it needed to. **Test before splitting: read the proposed live file cold and try to answer
+every open item from it.** Anything that sends you to the archive belongs in the live file.
+
+**Expected size:** the live file lands around **20-25 KB** — the resume block, eight open items, the
+pins section, and the index. Orientation drops from about 212 KB to about 80 KB, which is still about twice
+the stated budget but is within the same order as the rule that governs it.
+
+**One risk, named:** this file is append-only by habit rather than by rule, and moving prose out of it
+is the first non-append operation ever performed on it. It should be done as a **pure move** — bytes
+transplanted, nothing rewritten — with `git diff --numstat` proving deletions from `STATE.md` equal
+insertions across `state/`, and the archive index written in the same commit. **Not done. Proposed.**
+
+## 5. THE PASS INPUT IS SPLIT IN THREE, and the combined file is still generated
+
+One generator, one section registry, **no second copy of any shared block** — the brief, the known
+limits, the gate scopes and Extract C are built once and emitted into every file.
+
+| file | carries | bytes | for |
+|---|---|---:|---|
+| `pass-a-structural.md` | A + C | **240,802** | patterns across the complete population |
+| `pass-b-deep.md` | B + C + D | **305,294** | verdicts against their own evidence; claims against their sources |
+| `pass-c-method.md` | C + E + D | **297,193** | rule-following; absences asserted without a search |
+| `adversarial-pass-input.md` | A + B + C + D + E | **752,715** | the combined document |
+
+**EXTRACT E IS NEW and it is what makes pass C runnable.** A rulebook with no material is an
+invitation to form an impression. E is the corpus text each rule actually binds: **E.0** names the four
+rules a data-only reviewer *cannot* test, so budget is not spent on them; **E.1** gives all 68
+strongest absence claims in full (`withheld`, `never-defined`, and every disputed stated reason);
+**E.2** lists the remaining absence population by id and states plainly that the stated-search rule
+cannot be tested against them from that file; **E.3** gives 291 candidate sentences making a claim
+about what EXISTS, with the needle printed and labelled a candidate list; **E.4** gives the commitment
+states, which are prose-only and therefore the least-guarded vocabulary in the instrument; **E.5**
+prints all 75 correction-carrying fields in full, because the withdrawn-wording convention can only be
+judged on the sentence; **E.6** gives the filing rule's surface.
+
+**The combined file grew from 501,533 to 752,715 bytes and the growth is Extract E**, which did not
+exist before. **It is not free: E.5 reprints field text that Extract B also carries** for records in
+both, so the combined file is genuinely redundant in a way the three passes are not — which is an
+argument for running the passes and not the combined document.
+
+**Each pass carries per-file self-description checks that assert by CONTENT, not by the composition
+list** — the list is where a mistake would be made. A file declaring Extract A complete is checked
+against all 353 record ids; every file is checked for the gate block, the limits, the method and the
+"tie every finding to a record id" instruction. A missing shared block aborts the generator.
+
+**Why three.** A reviewer given 500 KB anchors on what it read first and produces one set of priors
+applied to everything. Three reviews with no shared context cannot contaminate each other, and where
+two independently reach the same finding, the agreement is evidence in a way one reviewer's
+confidence is not.
+
+---
+
+# RESUME HERE — updated 2026-08-06, after structural-cycle batch 2
+
+**The adversarial pass input is built, split in three, and STILL NOT RUN.** Run
+`review/pass-a-structural.md`, `review/pass-b-deep.md` and `review/pass-c-method.md` as three separate
+reviews against models with no history of this project. Do not run the combined file unless one review
+is all that is affordable.
+
+**Closed since batch 1:** item 7 — `/method`'s 752-vs-965 sourcing claim, fixed and derived at build
+time. Item 8's measurement stands and now has a proposal (section 4 above), not a fix.
+
+**Open, unchanged:** the non-prose render assertion · `commitmentState` · the `contested` split ·
+`figure-consistency`'s mining gap · the seam-span triage, **125 spans / 34 undeclared** · Arc B's one
+capability. **Plus:** the `STATE.md` archive split, proposed and awaiting a decision; and the four
+stale schema descriptions, reported and not touched because a schema edit is a stop.
+
+**One rule this batch earned, already in the report above:** where an axis is stored in more than one
+place, the union goes in `lib/data.ts` with the cost of getting it wrong written beside it, and
+nothing counts that axis by hand anywhere else. Two instances now — `ledgerUnderLens()` and
+`citations()`.

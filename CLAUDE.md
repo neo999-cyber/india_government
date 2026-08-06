@@ -240,6 +240,31 @@ because the filter excluded them, the report never mentioned the group it had hi
 an unstated scope is not conservative — it is wrong by an amount nobody can see, including the
 author. Say what was searched, not only what was found.
 
+**WHERE AN AXIS IS STORED IN MORE THAN ONE PLACE, THE UNION GOES IN `lib/data.ts` WITH THE COST OF
+GETTING IT WRONG WRITTEN BESIDE IT, AND NOTHING COUNTS THAT AXIS BY HAND ANYWHERE ELSE.** `tier` is
+asserted INSIDE each `sources[]` entry on ledger and provenance and ON THE RECORD for a series, whose
+`source` is a bare `SourceRef` carrying no tier at all. A count that reads one site sees a corpus
+missing the other, and the miss is silent in the worst direction: `series.source.tier` is
+`undefined`, which tallies as *untiered* rather than raising anything. That is how `/method` came to
+publish "752 of 1,205 citations are T1" when the figure is 965 — 752 is exactly ledger plus
+provenance with all 269 series dropped — and to describe 213 official statistical sources as
+journalism. Closed by `citations()` and `tierCounts()`, which are now the only sanctioned way to
+count a citation.
+
+**TYPESCRIPT CANNOT CATCH THIS CLASS AND IT IS WORTH KNOWING WHY.** It objects when two same-named
+fields have different TYPES; it is silent when they have the same type at different DEPTHS. `tier:
+Tier` on `Series` and `tier: Tier` inside `TieredSource` are both legal reads and nothing
+distinguishes "the tier of this series" from "the tier of this citation" — the defect is a
+SET-CONSTRUCTION error, not a type error, so the fix is an accessor and a comment, never a signature.
+The near-miss proves the rule: `status` is split worse (two enums, two depths, two layers, one name)
+and has never once misfired, because its two values have different types and the compiler refuses the
+confusion. **Second instance of the pattern, not the first** — `ledgerUnderLens()` already unions a
+lens read from `lenses[]` and from the legacy `domains[]`, with the count that would otherwise be lost
+written into its own header. Two instances is enough to make it a rule. **The next candidate is the
+domain axis**, which has three shapes and a fourth name, and where `provenanceInDomain` carries an
+`'all'` branch the other two readers do not — a unification that forgets it drops every
+filed-against-every-domain record silently, and that would not be a type error either.
+
 **A NON-ZERO count is a candidate list, not a finding, and the context is read before the count is
 banked.** The number returned reads like an answer and is not one. DPIIT's Year End Review 2025
 returns twelve hits for `corridor` in a document being checked for IMEC, and every one of them is
