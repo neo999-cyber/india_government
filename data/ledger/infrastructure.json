@@ -16,7 +16,14 @@
   "assessment": "partly",
   "caseFor": "Tripling construction pace from a standing start is a genuine execution achievement, and the shift from a collapsed PPP model to EPC and the Hybrid Annuity Model kept building going when private capital would not come. Four-laning 27,000 km of existing highway is real capacity that carries real traffic, and India's Logistics Performance Index rank improved from 54 to 38 across the same period. Reclassification is not fraud — bringing state roads onto the national network changes who maintains and funds them, which has real consequences.",
   "caseAgainst": "The number the government leads with is an accounting artefact. A 60% network expansion invites the reading that 55,000 km of road was built; roughly 1,000 km was. Presenting reclassification as expansion is the single most misleading figure in the infrastructure record, and it obscures a build story that was impressive enough on its own terms.",
-  "shockExposure": "COVID interrupted FY2020-21 construction, though that year still recorded the peak pace. Land acquisition costs rose sharply through the period.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "limited",
+      "why": "COVID interrupted FY2020-21 construction, though that year still recorded the peak pace. Land acquisition costs rose sharply through the period."
+    }
+  ],
   "seriesRefs": [
    "nh-network-length",
    "nh-construction-pace",
@@ -61,7 +68,14 @@
   "assessment": "partly",
   "caseFor": "Real corridors were delivered — the Delhi-Mumbai, Purvanchal and Bundelkhand expressways exist and carry traffic — and cost escalation partly reflects land prices and a deliberate shift to higher-specification access-controlled design rather than pure overrun. Quietly not launching Phase 2 while completing Phase 1 is more disciplined than announcing a successor programme over an unfinished one.",
   "caseAgainst": "Cost per kilometre more than doubled against approval, the deadline slipped five years, and nearly half the target length was work already in the pipeline before the scheme was announced — which means the programme's headline scope was inflated at launch. Phase 2's quiet abandonment, disclosed in an annual report rather than announced, is the pattern this project records as announced-but-not-delivered.",
-  "shockExposure": "COVID disrupted FY2020-21 and FY2021-22 construction and raised material costs; land acquisition costs rose independently.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "COVID disrupted FY2020-21 and FY2021-22 construction and raised material costs; land acquisition costs rose independently."
+    }
+  ],
   "seriesRefs": [
    "nh-construction-pace"
   ],
@@ -107,7 +121,14 @@
   "assessment": "no-objective",
   "caseFor": "Fatalities rose alongside rapid growth in vehicle ownership and vehicle-kilometres travelled, so the rate per vehicle or per kilometre travelled may have improved even as the absolute count rose. Better roads are not the cause of crashes; enforcement, licensing and trauma response are separate systems that no highway programme controls. The Motor Vehicles (Amendment) Act 2019 substantially raised penalties, and effects on behaviour lag.",
   "caseAgainst": "Whatever the denominator, more people die on Indian roads each year than before, and the severity per accident is rising, which points to speed. Building high-speed corridors without commensurate investment in enforcement and trauma care is a policy choice, and this is the outcome. A programme judged on kilometres delivered while its most direct human outcome deteriorates for a decade is being judged on the wrong metric.",
-  "shockExposure": "The 2020 dip is a COVID artefact and the subsequent rise partly a return to trend; the 2024 record is above pre-pandemic levels on any reading.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "limited",
+      "why": "The 2020 dip is a COVID artefact and the subsequent rise partly a return to trend; the 2024 record is above pre-pandemic levels on any reading."
+    }
+  ],
   "seriesRefs": [
    "road-fatalities",
    "nh-construction-pace"
@@ -140,7 +161,13 @@
   "assessment": "partly",
   "caseFor": "This is the clearest case in the infrastructure domain where physical output converted directly into use, because the asset IS the service — an electrified line carries electric traction from the day it energises, with no behavioural change required and no demand forecast to miss. The cost and emissions savings are measurable and attributable, and the achievement is verifiable against an international benchmark.",
   "caseAgainst": "Electrification was already a long-running programme rather than a new initiative, and the pace reflects sustained funding more than novel policy. Its benefits are also partly contingent on the grid: electric traction on a coal-heavy grid displaces diesel with coal, so the emissions gain is smaller than the diesel figure alone implies. And a fully electrified network that still moves a falling share of national freight raises the question of what the investment bought strategically.",
-  "shockExposure": "None material — the programme continued through COVID.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "none-stated",
+      "why": "None material — the programme continued through COVID."
+    }
+  ],
   "seriesRefs": [
    "rail-electrification"
   ],
@@ -179,7 +206,14 @@
   "assessment": "partly",
   "caseFor": "Where the corridors operate they transformed economics — halving haulage cost per tonne-kilometre is the kind of structural gain that compounds, and record absolute tonnage shows the network is carrying more than ever. Modal share is the wrong test for two corridors covering a fraction of the network; the honest measure is performance on the sections built, which is strong. The decline has also plateaued rather than continued at its earlier rate.",
   "caseAgainst": "The corridors were justified explicitly on arresting the modal-share decline and it did not arrest. Eighteen years from conception to substantial completion, with a ₹2,690 crore avoidable overrun, is slow enough that road freight capacity grew faster than rail could respond. Record tonnage on a falling share means rail grew more slowly than the freight market — which is the definition of losing.",
-  "shockExposure": "COVID disrupted construction and distorted freight patterns across FY2020-21 and FY2021-22.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "COVID disrupted construction and distorted freight patterns across FY2020-21 and FY2021-22."
+    }
+  ],
   "seriesRefs": [
    "rail-freight-share"
   ],
@@ -208,7 +242,12 @@
   "assessment": "no-objective",
   "caseFor": "Cutting accidents by three quarters and the rate per train kilometre by two thirds, sustained over a decade, is a large and verifiable safety improvement that saved lives. Elimination of unmanned level crossings and track renewal account for much of it. Balasore was a signalling failure of a specific type that Kavach is designed to prevent, and its deployment, while slow, is proceeding.",
   "caseAgainst": "The headline counts consequential accidents only, a narrow category. Kavach was announced in 2020 and covers under 4% of the network six years later, which is not a pace consistent with the urgency claimed after Balasore. Persistent six-figure vacancies in a safety-critical workforce are a standing risk that the accident count does not capture, and the CAG has repeatedly flagged under-utilisation of the dedicated safety fund.",
-  "shockExposure": "COVID suppressed traffic and therefore exposure across FY2020-21 and FY2021-22, flattering those years.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "why": "COVID suppressed traffic and therefore exposure across FY2020-21 and FY2021-22, flattering those years."
+    }
+  ],
   "seriesRefs": [
    "rail-accidents"
   ],
@@ -243,7 +282,13 @@
   "assessment": "partly",
   "caseFor": "Connecting 28 million households in eighteen months is among the fastest electrification pushes in history, and moving the standard from village to household was a deliberate tightening that made the target harder, not easier. A connection is a precondition for supply and cannot be skipped; supply-hours are constrained by discom finances, which is a separate and older failure.",
   "caseAgainst": "The scheme was presented as delivering electricity and delivered wiring. With half of villages getting under twelve hours a day, the achievement claimed and the service received diverge sharply — and the absence of any published supply-hours series means the gap cannot be tracked, which is itself a choice. Discom finances were the binding constraint throughout and were not addressed alongside.",
-  "shockExposure": "None material to the connection drive itself; COVID later disrupted revenue collection and worsened discom finances.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "none-stated",
+      "why": "None material to the connection drive itself; COVID later disrupted revenue collection and worsened discom finances."
+    }
+  ],
   "seriesRefs": [
    "household-electrification",
    "atc-losses"
@@ -288,7 +333,12 @@
   "assessment": "failed",
   "caseFor": "AT&C losses fell by eight percentage points over the period, which is real operational improvement, and UDAY brought transparency to state-level discom finances that had previously been opaque. Distribution is a state subject, so the Centre's leverage is limited to conditional funding, and the October 2025 package attaches privatisation conditions that previous rounds did not.",
   "caseAgainst": "Five bailouts in two decades is the definition of a structural problem not being solved. The underlying cause — tariffs held below cost for political reasons, with cross-subsidy borne by industrial consumers — was untouched by every round including this one. Losses have started rising again, the cost-revenue gap is widening, and accumulated losses of ₹7.08 lakh crore exceed the entire annual central capital expenditure budget.",
-  "shockExposure": "COVID disrupted collections and deferred tariff revisions; the 2021-22 coal price shock raised power purchase costs sharply.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "why": "COVID disrupted collections and deferred tariff revisions; the 2021-22 coal price shock raised power purchase costs sharply."
+    }
+  ],
   "seriesRefs": [
    "atc-losses",
    "thermal-plf"
@@ -321,7 +371,14 @@
   "assessment": "partly",
   "caseFor": "A fifty-three-fold increase in solar capacity in twelve years, achieved largely through competitive auctions that drove tariffs to among the world's lowest, is a structural transformation of the generation mix. Unlike most infrastructure outputs here, generation capacity converts into use automatically wherever the grid can absorb it, and renewable output has grown fast enough that absorption has kept pace with it. CORRECTED 2026-08-05: this sentence previously read 'renewables meeting over half of demand in a peak month demonstrates that absorption'. The 51.5 per cent figure it rested on is not a month and not an energy share — the originating Ministry of Power release states it for 29 July 2025 and gives its components as solar 44.50 GW, wind 29.89 GW and hydro 30.29 GW against demand of 203 GW, every operand a unit of POWER, so it is a ratio of simultaneous readings at one unstated moment on one day. See L-0221's caveat. WITHDRAWN WORDING, recovered from the repository history in the backfill of 2026-08-06 and quoted so the correction can be checked rather than taken on trust: \"A fifty-three-fold increase in solar capacity in twelve years, achieved largely through competitive auctions that drove tariffs to among the world's lowest, is a structural transformation of the generation mix.\"",
   "caseAgainst": "Capacity is not generation: renewables' share of energy generated remains well below their share of capacity because of load factors, and grid absorption and storage remain binding constraints. The expansion coexists with continued coal capacity addition, so it has supplemented rather than displaced fossil generation. Discom financial weakness also creates payment risk that has slowed developer investment in some states.",
-  "shockExposure": "Global solar module prices fell sharply over the period, which is an external tailwind not attributable to policy; the 2022 commodity shock temporarily reversed some of it.",
+  "shockExposure": [
+    {
+      "event": "the 2022 commodity shock",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "Global solar module prices fell sharply over the period, which is an external tailwind not attributable to policy; the 2022 commodity shock temporarily reversed some of it."
+    }
+  ],
   "seriesRefs": [
    "re-capacity"
   ],
@@ -363,7 +420,14 @@
   "assessment": "partly",
   "caseFor": "Halving turnaround time while nearly doubling throughput is unambiguous efficiency gain, verifiable and sustained, and it feeds directly into the logistics cost that trade competitiveness depends on. It is one of the few places where a physical output metric and its utilisation counterpart moved together and in the same direction.",
   "caseAgainst": "India still trails comparators substantially — Japan turns ships around in about eight hours against India's forty-nine — so the improvement is from a very low base and the gap remains large. Inland waterways is the weaker half of the programme, where declared national waterways far exceed those actually navigable, and the headline cargo growth there rests on a small number of stretches.",
-  "shockExposure": "COVID depressed FY2020-21 throughput; global shipping disruption in 2021-22 affected turnaround measurement.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "COVID depressed FY2020-21 throughput; global shipping disruption in 2021-22 affected turnaround measurement."
+    }
+  ],
   "seriesRefs": [
    "port-turnaround",
    "port-cargo"
@@ -403,7 +467,14 @@
   "assessment": "partly",
   "caseFor": "Half of a large number of new routes surviving without permanent subsidy is a reasonable outcome for a scheme explicitly designed to seed markets and withdraw — attrition is the mechanism working, not failing. Genuine air access reached cities that had none, and India became the third-largest domestic aviation market over the period.",
   "caseAgainst": "A 50% route failure rate suggests demand was systematically over-estimated at award, and the airports built to serve failed routes are stranded assets. The headline airport count is inflated by a broadened definition — presenting reactivated airstrips, heliports and waterdromes alongside 11 genuine new builds as a doubling of airports is the same reclassification pattern seen in highways.",
-  "shockExposure": "COVID destroyed regional aviation demand in FY2020-21 and FY2021-22 and accounts for a substantial share of route discontinuation.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "COVID destroyed regional aviation demand in FY2020-21 and FY2021-22 and accounts for a substantial share of route discontinuation."
+    }
+  ],
   "seriesRefs": [
    "airports-operational",
    "udan-routes"
@@ -446,7 +517,14 @@
   "assessment": "partly",
   "caseFor": "Quadrupling metro network length and quadrupling ridership in a decade is real mass transit that millions use daily, and ridership builds over years as networks reach critical density — Chennai went from 13% to about 60% once its Phase 1 loop closed. Comparing against DPR forecasts partly measures forecast quality rather than asset performance, and the assets have fifty-year lives against forecasts made for a single opening year.",
   "caseAgainst": "The forecasts were not incidental — they were the justification. Metro Rail Policy 2017's 14% return threshold created a direct incentive to inflate DPR ridership, and systems approved on inflated forecasts have been built at ₹300 to 600 crore per kilometre in cities where a bus rapid transit system at a tenth the cost would have carried the actual load. Bengaluru at 6% of projection is not a network maturing slowly; it is a project that should not have passed appraisal.",
-  "shockExposure": "COVID collapsed ridership across FY2020-21 and FY2021-22 and recovery has been uneven, though the underperformance against DPR predates the pandemic in most systems.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "limited",
+      "why": "COVID collapsed ridership across FY2020-21 and FY2021-22 and recovery has been uneven, though the underperformance against DPR predates the pandemic in most systems."
+    }
+  ],
   "seriesRefs": [
    "metro-network"
   ],
@@ -487,7 +565,14 @@
   "contestedGround": "evidence-unobservable",
   "caseFor": "Spectrum policy, the licensing framework and the decision not to protect incumbents from Jio's entry were government choices that made the disruption possible, and the digital public infrastructure built on top of cheap data — UPI, Aadhaar authentication, DBT — is genuinely policy-driven. A government that permits a competitor to destroy incumbent margins in the public interest deserves credit for restraint.",
   "caseAgainst": "The price collapse that drove adoption was a private commercial strategy funded by a single conglomerate, and attributing it to policy inverts cause and effect. Where the state built directly — BharatNet — the result was a sevenfold cost overrun, six deadline revisions, and a connectivity metric that measures fibre reaching a village rather than anyone receiving service. The contrast between the two is the finding.",
-  "shockExposure": "COVID accelerated data adoption worldwide, so part of the FY2020-21 onward growth reflects a global shift.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "COVID accelerated data adoption worldwide, so part of the FY2020-21 onward growth reflects a global shift."
+    }
+  ],
   "seriesRefs": [
    "internet-subscribers",
    "bharatnet-gps"
@@ -523,7 +608,14 @@
   "contestedGround": "evidence-withheld",
   "caseFor": "Sustaining a fivefold real increase in public capital expenditure through a pandemic, when private investment had withdrawn, prevented an infrastructure investment collapse and built assets that will yield for decades. Gati Shakti's coordination layer addressed a real problem of ministries planning in isolation, and monetisation recycled capital without new borrowing. Delay percentages rise mechanically when the portfolio of monitored projects expands rapidly.",
   "caseAgainst": "Delays rose by half and cost overruns reached ₹5 trillion during precisely the period when coordination was supposed to have improved, which is weak evidence for Gati Shakti's effect. The crowding-in premise failed on its own terms — private investment stayed weak throughout, as the corporate tax cut record separately shows. Overruns are likely understated because agencies do not consistently report revised estimates.",
-  "shockExposure": "COVID disrupted execution across FY2020-21 and FY2021-22, and the 2022 commodity shock raised input costs, both of which inflate delay and overrun statistics independent of management.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "COVID disrupted execution across FY2020-21 and FY2021-22, and the 2022 commodity shock raised input costs, both of which inflate delay and overrun statistics independent of management."
+    }
+  ],
   "seriesRefs": [
    "project-delays",
    "logistics-cost-gdp"

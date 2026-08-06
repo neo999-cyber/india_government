@@ -1,6 +1,17 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
-import type { Point, ReasonKind, Status, Tier, TieredSource, SourceRef, Unmeasured } from '@/lib/types';
+import type {
+  ExposureAdjudication,
+  ExposureRole,
+  Point,
+  ReasonKind,
+  ShockExposure,
+  Status,
+  Tier,
+  TieredSource,
+  SourceRef,
+  Unmeasured,
+} from '@/lib/types';
 import { TIER_LABELS, formatValue } from '@/lib/format';
 
 /**
@@ -216,6 +227,64 @@ export const REASON_KIND_LABELS: Record<ReasonKind, string> = {
   withheld: 'withheld',
   'never-defined': 'never defined',
 };
+
+/**
+ * WHAT THE SHOCK DID. Two roles that point opposite ways at a verdict — a confound debits nobody
+ * and a cause moves the finding — which is why one prose field could not carry both.
+ */
+export const EXPOSURE_ROLE_LABELS: Record<ExposureRole, string> = {
+  confound: 'degrades the measurement',
+  cause: 'produced part of the outcome',
+  'is-the-shock': 'this record is the event',
+  'none-stated': 'none material',
+};
+
+/**
+ * WHETHER THE RECORD ACCEPTS IT.
+ *
+ * `unstated` is the one that needed authorising and the one whose label has to be exact: it says
+ * the record made NO judgement, not that the question is open or pending. "not adjudicated here"
+ * carries that; "unresolved" would not, and would file an unmade judgement under a made one.
+ */
+export const EXPOSURE_ADJUDICATION_LABELS: Record<ExposureAdjudication, string> = {
+  accepted: 'accepted',
+  limited: 'accepted in part',
+  refused: 'refused',
+  unstated: 'not adjudicated here',
+};
+
+/**
+ * A record's stated relationship to the exogenous events around it.
+ *
+ * ONE BLOCK PER RECORD, one line per entry, on the same call as `Absences`: two or three
+ * exposures are facts about one record, and framing each separately would double the furniture
+ * around the same amount of prose.
+ *
+ * The role and the adjudication render on the face of every entry rather than being grouped,
+ * because the whole point of structuring this field was that a reader could not previously tell a
+ * confound from a cause — and a reader who has to infer it from the prose is back where the field
+ * started.
+ */
+export function ShockExposures({ items }: { items: ShockExposure[] | undefined }) {
+  if (!items || items.length === 0) return null;
+  return (
+    <div className="exposure">
+      <span className="label">Exposure{items.length > 1 ? ` · ${items.length} declared` : ''}</span>
+      <ul className="exposure-list">
+        {items.map((e, i) => (
+          <li key={`${e.event}-${i}`}>
+            <span className="exposure-event">{e.event}</span>
+            {e.role ? <span className="exposure-role">{EXPOSURE_ROLE_LABELS[e.role]}</span> : null}
+            {e.adjudication ? (
+              <span className="exposure-adj">{EXPOSURE_ADJUDICATION_LABELS[e.adjudication]}</span>
+            ) : null}
+            <p>{e.why}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 /**
  * WHICH KIND OF DISPUTE, and why the bare word "disputed" was not enough.

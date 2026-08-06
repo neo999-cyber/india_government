@@ -44,7 +44,7 @@ the guard doing exactly what it was built for.**
 
 | # | item | state |
 |---|---|---|
-| **0** | **THE FIELD IS BLOCKED — two stops, batch 2.** `adjudication` needs a fourth value `unstated` (L-0061 names an offered explanation and never adjudicates it), and the three event properties need a shock object that Ruling 8 puts in provenance and cannot create. | **operator decision** |
+| **0** | ~~THE FIELD IS BLOCKED~~ — **BUILT IN BATCH 3.** `unstated` authorised; the event properties refused this phase and the unblocking condition written into the field's own schema description. | **closed** |
 | 1 | **L-0020's type.** Split into two records, or decide which subject it is. | **open, and it is a record change** |
 | 2 | **Ruling 8 is not executable for the four remaining external shocks** — see below. | **blocked on Ruling 8's own unsettled items** |
 | 3 | **`objectives[]` + measurement state + `unmeasured[]` link.** | phase 17, proposed |
@@ -325,3 +325,105 @@ peer-index method depends on. And *"which records are downstream of this shock"*
 L-0033 say in words and nothing can query.
 
 **Proposal only. No schema written, no field added, no record touched by it.**
+
+---
+
+## Batch 3 — two rules written, the exposure field BUILT, and one axis logged for phase 17
+
+**0 verdicts moved, 0 types moved, and the prose preserved VERBATIM on all 66 records** — each
+asserted mechanically. Full build green: `reachability` 1699/1699 · `field-render-audit` 37 prose +
+45 non-prose across 3 layers, 0 invisible · `enum-parity` 56 members across 8 axes · `exposure` new.
+
+### RULING 9 — the multi-objective disclosure rule, written
+
+In `CLAUDE.md`. **A disclosure requirement that restricts one value only.** `worked` unavailable
+(R2 unchanged) · **`failed` stands with its ground stated** — restricting it would convert a
+demonstrated failure into a non-finding, and Ruling 1 already settled the symmetry · `partly`,
+`contested` and **`too-early` named explicitly** disclosure only, because a rule written for the
+`failed` side sweeps in eight records where the value's own definition expects an unmeasured limb.
+**Three things it must not do**, each earned by a live record: make an unmeasured limb an excuse
+(L-0030); treat an **unquantified** limb as an unmeasured one (L-0209 — an unmeasured limb has a
+denominator nobody published, an unquantified limb has none at all); sweep in `too-early`.
+**IT STATES ITS OWN UNENFORCEABILITY**: nothing records that a record announced several objectives,
+so no gate can find what it binds. **And it is what tells `objectives[]` what to hold** — a flag for
+whether each objective GROUNDS the verdict, invisible until the rule exists. Design the field first
+and you get one that records measurement and not relevance.
+
+### The point-of-change rule, written
+
+**A structured value never moves alone**: the prose fields that restate it are searched and
+corrected in the same operation, before the write. **A rule and not a check, and the measurement is
+the argument** — `type` and `contestedGround` return zero findable restatements at any precision
+because their values are ordinary English words, so a gate would report clean on the axis where the
+defect happened; and of 32 mentions naming another value, 31 are correct, so a token check fires on
+thirty-one right answers. **L-0209's `revisitTrigger`, the one stale instance, was already corrected
+at `7a755fe`** and is verified unchanged here rather than corrected twice.
+
+### THE EXPOSURE FIELD IS BUILT — field, type, view, guarded list and gate in one commit
+
+`shockExposure` is now an array of entries carrying **`event`** (prose) · **`role`** ·
+**`adjudication`** · **`why`** (the original prose, verbatim). Landed together: the schema; `lib/types.ts`
+(`EXPOSURE_ROLES`, `EXPOSURE_ADJUDICATIONS`, `ShockExposure`); the label maps and `ShockExposures`
+component in `components/marks.tsx`; the detail view; `value-renderings`; two new `enum-parity` axes;
+`guarded-marks`; and `tools/exposure.mjs` in the build with six two-sided controls.
+
+**THE RENDER GUARD WAS PROVEN TO FIRE BEFORE THE VIEW EXISTED**, on this axis and not only in the
+abstract. A fifth role member seeded into the schema alone:
+
+```
+enum-parity FAILED — 2 member(s) do not reach a reader
+  - shockExposure[].role: `seeded-amplifier` is in the schema but not in EXPOSURE_ROLES (lib/types.ts)
+  - shockExposure[].role: `seeded-amplifier` is in the schema but not in EXPOSURE_ROLE_LABELS — the view cannot render it
+```
+
+**Migration, gate-emitted:** *223 ledger records · 66 declare an exposure · 66 entries · roles
+confound 30 · cause 19 · none-stated 9 · is-the-shock 4 · adjudication accepted 32 · limited 11 ·
+refused 4 · unstated 2 · 4 exempted by name · 1 frozen.*
+
+**FOUR EXEMPTED, NOT THREE, AND THE FOURTH IS MY OWN CORRECTION.** Batch 2 said three could not
+migrate, on the claim that the array resolves **L-0012**. It does not: *"severely distorts the
+revenue trajectory AND precipitated the compensation dispute"* joins confound and cause in one
+clause, so splitting rewrites the sentence and choosing one resolves a judgement the reading found
+undetermined. L-0012 joins L-0049, L-0051 and **L-0091** (which carries a typing decision, not an
+exposure). Each is named in `tools/exposure.mjs` with the property of its sentence that blocks it.
+
+**ONE FROZEN: L-0002**, typed `shock` with no exposure of its own — `baseline-context`, authored
+before the field existed. Frozen with its judgement, not fixed, on the seam-span call.
+
+**The migration was string surgery, not a JSON round-trip** (M2): the first draft would have
+reformatted eight files wholesale. Indentation detected per line; the prose token copied verbatim
+with its escapes intact; every record asserted before the write.
+
+**One entry per record. Splitting a multi-event statement into several entries is authoring and is
+deferred** — which is also why L-0012 could not be resolved by the array shape alone.
+
+**What the field does NOT hold, with the unblocking condition in its own schema description:** the
+event's window, whether it is shared with the peer panel, and whether it breaks a series. **The
+event stays prose until a shock breaks a series** — at which point it takes a provenance record,
+`event` becomes a reference, and the three properties land there.
+
+### `commitmentState` — logged for phase 17, beside `independence` and `claimAtLaunch`
+
+**A structured axis the corpus reasons in and does not hold.** `CLAUDE.md` defines four commitment
+states — (a) not yet due, (b) due and undelivered, (c) abandoned, (d) unfalsifiable by construction
+— and records assert them: L-0209's `whatHappened` runs all three tests in terms, and **L-0221 and
+L-0223 file limbs as "commitment state (a)"**. There is no such field on any schema.
+
+**What the earlier four-value stop settled.** The set is closed at four and (d) was the addition
+that closed it: a total with no date, no phasing and no annual target has no trigger so it is not
+(a), can never fall due so it cannot reach (b), and absence does not evidence abandonment so it is
+not (c). **The rule that (d) scores `no-objective` was superseded by Ruling 3** — L-0209 is now
+`undated-commitment` — so the state and the verdict are two axes, which is exactly why the state
+needs its own field.
+
+**What it left open, and phase 17 has to decide it:**
+1. **Whether the state attaches to the RECORD or to the LIMB.** L-0221 and L-0223 both file a
+   *limb* as (a) while the record carries a verdict — so on the corpus's own usage it is per-limb,
+   which makes it a property of `objectives[]` and not a sibling of it.
+2. **Whether (c) is assertable at all.** *"Absence of news is not (c)"* is written; nothing states
+   what evidence of abandonment looks like, and no record carries (c).
+3. **How it relates to `too-early` and `awaiting-adjudication`**, which answer a neighbouring
+   question about the same records from the verdict side.
+
+**Sequenced with the other two: `objectives[]` first** — because if the state is per-limb it is a
+field on that array and not a new axis at all. **`independence` is independent of both.**

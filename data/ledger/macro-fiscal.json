@@ -28,7 +28,13 @@
   "assessment": "failed",
   "caseFor": "Digital payments adoption accelerated sharply and durably, seeding the UPI infrastructure that is now genuine world-leading public infrastructure. Income-tax filings rose, and deposit data gave authorities analytics leads on suspicious accounts that conventional enforcement would not have produced. A one-time shock was arguably the only way to force behaviour change in a cash-preferring economy.",
   "caseAgainst": "It failed against every objective stated at announcement. Near-total note return means either little black money was held as cash or it was successfully laundered; either way the premise was wrong. Counterfeit seizures were trivial. The informal economy and small business absorbed severe disruption with no offsetting gain, and cash returned to above prior levels within eighteen months. Digital adoption was already on a rising trend, so the incremental gain is unquantified. Deaths occurred in queues.",
-  "shockExposure": "None external — this is a rare clean case where the policy is not confounded by a global shock. The confound is internal: GST followed eight months later, making the two reforms' effects hard to separate through 2017-18.",
+  "shockExposure": [
+    {
+      "event": "GST",
+      "role": "none-stated",
+      "why": "None external — this is a rare clean case where the policy is not confounded by a global shock. The confound is internal: GST followed eight months later, making the two reforms' effects hard to separate through 2017-18."
+    }
+  ],
   "seriesRefs": [
    "gdp-growth-new-base"
   ],
@@ -64,7 +70,12 @@
   "assessment": "partly",
   "caseFor": "A genuine unified market replaced checkpost-ridden interstate trade; e-way bills cut logistics friction measurably. Collections proved resilient and buoyant enough to absorb the 2025 rate cuts. The taxpayer base expanded past 1.51 crore active registrants. Achieving a constitutional amendment and a functioning federal tax council at all is a real institutional accomplishment that eluded two decades of prior attempts.",
   "caseAgainst": "Eight years of four-slab complexity, classification litigation and compliance cost fell hardest on MSMEs — the rationalisation to two slabs in 2025 is an admission the original design was wrong. The 14% buoyancy promise was never clearly met. States surrendered fiscal autonomy permanently in exchange for a guarantee that expired, and the COVID-era compensation dispute showed the Centre would restructure the bargain unilaterally under stress. And there was no forum in which to contest it: sixteen members asked the Council to extend compensation and its minutes record no decision on the request, while the dispute-resolution mechanism Article 279A(11) obliges the Council to establish has never been established at all.",
-  "shockExposure": "COVID (2020-22) severely distorts the revenue trajectory and precipitated the compensation dispute; separating GST design effects from pandemic effects in FY21-FY22 is not cleanly possible.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "why": "COVID (2020-22) severely distorts the revenue trajectory and precipitated the compensation dispute; separating GST design effects from pandemic effects in FY21-FY22 is not cleanly possible."
+    }
+  ],
   "seriesRefs": [
    "nominal-gdp",
    "gst-compensation-cess-collected"
@@ -118,7 +129,14 @@
   "assessment": "failed",
   "caseFor": "It aligned Indian rates with regional competitors and repaired corporate balance sheets weakened by the twin-balance-sheet years, arguably a precondition for the later capex cycle. Investment responses to tax changes operate with long lags, and COVID arrived six months later — the counterfactual where the cut works absent a pandemic cannot be dismissed outright.",
   "caseAgainst": "The stated objective was investment revival and it did not occur; profits rose while capex did not, which is the signature of a windfall being pocketed rather than deployed. NIPFP research indicates corporate investment responds to capacity utilisation, competitiveness and credit availability — i.e. demand — not the tax rate, meaning the instrument was mismatched to the diagnosis. The cost is permanent and annual, and ~99.1% of firms were already near 25%, so benefits concentrated among roughly 4,700 large companies.",
-  "shockExposure": "COVID arrived six months after the cut, permanently confounding clean attribution. However, the pre-COVID slowdown was already underway (FY20 growth 3.9%) and capex was already weak, so the pandemic cannot carry the whole explanation.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "limited",
+      "why": "COVID arrived six months after the cut, permanently confounding clean attribution. However, the pre-COVID slowdown was already underway (FY20 growth 3.9%) and capex was already weak, so the pandemic cannot carry the whole explanation."
+    }
+  ],
   "seriesRefs": [
    "gfcf-gdp",
    "fiscal-deficit"
@@ -171,7 +189,14 @@
   "assessment": "contested",
   "caseFor": "The clearest institutional success of the period. Inflation expectations anchored, the framework survived two major shocks and three governors without abandonment, and its renewal for a further five years reflects cross-party and market acceptance. Real interest rates turned positive, supporting financial savings.",
   "caseAgainst": "The disinflation was substantially handed to the framework by the 2014-16 oil price collapse, a windfall no policy earned; the framework's independent contribution is therefore overstated by the raw before-and-after comparison. The 2024 CPI rebasing lowers the food weight, which will dampen measured volatility going forward and makes future performance flattering by construction. Institutional autonomy in the surrounding period was contested — see the RBI autonomy record.",
-  "shockExposure": "The 2014-16 oil collapse is a large positive confound at the start; COVID and the 2022 commodity shock are negative confounds mid-period. Peers faced the same commodity shocks, so peer-relative inflation performance is the fairer test.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "The 2014-16 oil collapse is a large positive confound at the start; COVID and the 2022 commodity shock are negative confounds mid-period. Peers faced the same commodity shocks, so peer-relative inflation performance is the fairer test."
+    }
+  ],
   "seriesRefs": [
    "cpi-inflation"
   ],
@@ -213,7 +238,14 @@
   "contestedGround": "criterion",
   "caseFor": "It funded fiscal consolidation and the capex push without new borrowing, converting a windfall that would otherwise have been consumed into public assets. Retaining high fuel taxes also served climate and current-account objectives by suppressing import demand. Passing the windfall to pump prices would have been reversed painfully when oil recovered.",
   "caseAgainst": "It transferred a consumer windfall to the exchequer during a period of weak household demand, and fuel taxes are regressive, falling hardest on transport-dependent low-income households. It contributed to the shift in the tax mix toward indirect taxation. When oil later rose, the duties were only partly unwound, so the burden persisted.",
-  "shockExposure": "Entirely shock-driven — the policy exists only because of the 2014-16 global oil collapse, which was external and unearned. Peers who are net oil importers received the same windfall and made different choices.",
+  "shockExposure": [
+    {
+      "event": "the 2014-16 oil collapse",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "Entirely shock-driven — the policy exists only because of the 2014-16 global oil collapse, which was external and unearned. Peers who are net oil importers received the same windfall and made different choices."
+    }
+  ],
   "seriesRefs": [
    "fiscal-deficit",
    "cpi-inflation"
@@ -245,7 +277,14 @@
   "assessment": "failed",
   "caseFor": "It durably shifted policy attention and state-level competition toward manufacturing, and specific segments — notably electronics and mobile assembly — grew substantially from a low base. Global conditions were hostile: trade growth slowed worldwide after 2014 and supply chains fragmented, so holding share might itself count as an achievement.",
   "caseAgainst": "The peer panel dismantles the external-conditions defence: Bangladesh and Vietnam raised manufacturing share substantially over exactly the same decade under the same global conditions. India's share fell. The target was missed, extended, missed again, and reset by thirteen years, which is the clearest stated-goal-versus-outcome failure of the period.",
-  "shockExposure": "COVID disrupted 2020-22, but the trajectory was already flat before 2020 and peers recovered faster. The 2025-26 US tariffs are a genuine late headwind but postdate the failure.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "refused",
+      "why": "COVID disrupted 2020-22, but the trajectory was already flat before 2020 and peers recovered faster. The 2025-26 US tariffs are a genuine late headwind but postdate the failure."
+    }
+  ],
   "seriesRefs": [
    "manufacturing-gdp"
   ],
@@ -290,7 +329,14 @@
   "assessment": "partly",
   "caseFor": "Electronics and mobile manufacturing is a genuine, large, verifiable success — India moved from assembly of last resort to a significant handset exporter within five years, which no prior industrial policy achieved. Low disbursement partly reflects the schemes' design working as intended: payment only on verified output, so unpaid money means unmet milestones rather than wasted money.",
   "caseAgainst": "Twelve percent disbursement across five years indicates most sectors could not meet thresholds, meaning the diagnosis of what constrained them was wrong. Concentration of benefit in two sectors suggests the successes were driven by specific global supply-chain shifts rather than the incentive design. Manufacturing's overall GDP share fell during the scheme's operation, which is the outcome that matters.",
-  "shockExposure": "Launched into COVID, which disrupted early years but also drove the China+1 supply-chain shift that plausibly explains most of the electronics success — i.e. the shock may have caused the win rather than obscured it.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "Launched into COVID, which disrupted early years but also drove the China+1 supply-chain shift that plausibly explains most of the electronics success — i.e. the shock may have caused the win rather than obscured it."
+    }
+  ],
   "seriesRefs": [
    "manufacturing-gdp"
   ],
@@ -327,7 +373,14 @@
   "contestedGround": "evidence-unobservable",
   "caseFor": "The stated fear was a Chinese import surge, and it happened anyway: on India's own submissions to UN Comtrade, imports from China reached US$149.495bn in calendar 2025 and were 19.86 per cent of India's total merchandise imports that year. Inside RCEP, with tariff elimination, the same pressure would have arrived against a lower tariff wall. India also retained the policy space it used — four agreements have entered into force since and a fifth is concluded, on terms negotiated bilaterally rather than accepted as a bloc schedule.",
   "caseAgainst": "India excluded itself from the world's largest trade bloc precisely as supply chains were being redrawn. The protection bought little on the measure that motivated the decision: RCEP entered into force on 1 January 2022 without India, and by calendar 2025 China supplied 19.86 per cent of India's merchandise imports, with India's total imports up 32.0 per cent on CY2021 against exports up 12.9 per cent. Staying out did not slow the import growth it was meant to slow, and the bilateral agreements that followed took until 2025 and 2026 to enter into force. Absence from the bloc also weakens India's position in regional rule-setting, which no bilateral agreement recovers.",
-  "shockExposure": "Predates COVID by months; the pandemic then reshaped supply chains in ways neither side of the argument anticipated, making the counterfactual genuinely unknowable.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "Predates COVID by months; the pandemic then reshaped supply chains in ways neither side of the argument anticipated, making the counterfactual genuinely unknowable."
+    }
+  ],
   "seriesRefs": [
    "exports-gdp"
   ],
@@ -411,7 +464,13 @@
   "assessmentNote": "Assessed contested on ground `criterion`: every figure here is agreed and the dispute is which frame governs. Neither side disputes the FY2020-21 contraction, the peer readings, the rebound or the deficit path; they disagree about whether a lockdown is judged by the time it bought a health system with very low per-capita infrastructure, or by a contraction deeper than peers facing the same virus. Nothing would settle that, which is what `criterion` records. THIS RECORD DOES NOT ADJUDICATE THE LOCKDOWN\u2019S DESIGN and does not score the fiscal response against any stated objective; the case against\u2019s reading that the depth points to lockdown design is a case, not a finding of this record. THE TYPE IS LEFT AS `shock` AND THE QUESTION IS OPEN, WRITTEN HERE RATHER THAN RESOLVED. Under operator Ruling 6 a chain of state decisions is not a shock, and under Ruling 7 a record is typed by its subject \u2014 but this record has two subjects, which its own title states: an external contraction and a domestic fiscal response. The two take different types on any answer, so no retype settles it, and the record\u2019s own whatHappened (\"India\u2019s depth was substantially policy and lockdown-driven rather than purely pandemic-driven\") cuts against the type it carries. THE CHOICE IS A SPLIT INTO TWO RECORDS OR A DECISION ABOUT WHICH SUBJECT THIS ONE IS, AND BOTH ARE MORE THAN A RETYPE. Recorded here so a later cycle inherits the question rather than rediscovering it; L-0064 and L-0027 were retyped in the same batch and this one deliberately was not.",
   "caseFor": "The lockdown bought time for health-system preparation in a country with very low per-capita health infrastructure, and free-grain distribution through PMGKAY reached hundreds of millions using existing NFSA rails — a delivery achievement few states of comparable income managed. The rebound was sharp, and consolidation from 9.2% to 4.4% within five years was faster than most peers.",
   "caseAgainst": "The contraction's depth relative to peers facing the same virus points to lockdown design, not the pandemic, and the four-hour notice period produced a migrant-worker crisis with severe human cost. Fiscal support was weighted toward credit guarantees over direct transfers, which supported balance sheets more than household demand and plausibly deepened the K-shaped recovery.",
-  "shockExposure": "This record IS the shock. Peer comparison is the only clean lens: the shared exposure means India's relative depth isolates the domestic policy contribution.",
+  "shockExposure": [
+    {
+      "event": "the COVID-19 contraction",
+      "role": "is-the-shock",
+      "why": "This record IS the shock. Peer comparison is the only clean lens: the shared exposure means India's relative depth isolates the domestic policy contribution."
+    }
+  ],
   "seriesRefs": [
    "gdp-growth-new-base",
    "fiscal-deficit",
@@ -446,7 +505,13 @@
   "assessment": "no-objective",
   "caseFor": "The headline rate overstates the realised shock on the record's own figures. The 50 per cent peak held for months, not years: it ended entirely on 20 February 2026, when the authority it rested on was held not to exist, and the rate India has actually paid since has been ten per cent under two successive non-IEEPA statutes. The exposure estimates are gross rather than net - roughly US$48bn of exports at risk on the Indian government's own count against GTRI's two-thirds of about US$87bn in US-bound exports - and neither nets out re-routing, exemptions or substitution.",
   "caseAgainst": "For the period it ran, India faced the highest rate applied to any US trading partner, and the second tranche was imposed over India's Russian crude purchases rather than over any trade dispute, which makes the exposure political rather than merely commercial. India-specific severity is the part that does not wash out: every other shock in this instrument is shared with the peer panel and can be netted against it, and this one cannot, so it confounds every external-sector assessment for FY26 and FY27 whatever rate finally settles.",
-  "shockExposure": "India-specific in severity, which makes it unusual — most shocks in this project are shared with peers. That specificity means it cannot be netted out via peer comparison and must be carried as a standalone confound for any FY26 and FY27 external-sector assessment.",
+  "shockExposure": [
+    {
+      "event": "US tariffs on Indian goods",
+      "role": "is-the-shock",
+      "why": "India-specific in severity, which makes it unusual — most shocks in this project are shared with peers. That specificity means it cannot be netted out via peer comparison and must be carried as a standalone confound for any FY26 and FY27 external-sector assessment."
+    }
+  ],
   "seriesRefs": [
    "exports-gdp"
   ],
@@ -498,7 +563,13 @@
   "assessment": "no-objective",
   "caseFor": "The methodology changed in a stated direction and the statement is primary: double deflation, a Supply-Use Table framework and new source data, set out in MoSPI's press note of 27 February 2026 and published with the release rather than reconstructed from it afterwards. That the basis is documented by the agency that made the change is the case for it, and on the sources retrieved it is the whole of the case.",
   "caseAgainst": "The revision arrived without a back-series, so there is no way to read the new basis against the old for any year before FY2023-24, and none of the three GDP regimes can be spliced. The direction of the two movements is convenient and unverifiable in the absence of that back-series: recent real growth was revised up while the level of nominal GDP was lowered by 3-4 per cent. The lower level moves every ratio-to-GDP in the instrument - fiscal deficit, general government debt, exports and gross fixed capital formation all step at 27 February 2026 with no change in underlying activity, an arithmetic step that reads as improvement.",
-  "shockExposure": "None — but this record is itself a confound for every other macro assessment in the project, which is why it also exists as provenance record P-10.",
+  "shockExposure": [
+    {
+      "event": "(none material)",
+      "role": "none-stated",
+      "why": "None — but this record is itself a confound for every other macro assessment in the project, which is why it also exists as provenance record P-10."
+    }
+  ],
   "seriesRefs": [
    "gdp-growth-2022-base",
    "nominal-gdp"

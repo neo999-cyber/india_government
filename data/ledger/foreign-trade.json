@@ -15,7 +15,13 @@
     "assessmentNote": "Scored no-objective from India's side, which is the side this instrument measures. EO 14329 has an objective and states it, but the objective is a change in Russian conduct toward Ukraine pursued through a duty on Indian goods, so nothing about India's condition is what it set out to move. There is no Indian measure here to have worked or failed. What the record holds is a shock and its dates.",
     "caseFor": "The instrument was aimed and it was withdrawn, and both facts belong in the record. The rate applied for under six months, not for a term, and the emergency it was made under is one India is not party to — so a reader treating 50 per cent as a settled condition of the external sector would be reading a peak as a level. The orders also did what tariff orders are supposed to do in a negotiation: a framework for an interim agreement followed on 6 February 2026, before the orders were terminated.",
     "caseAgainst": "For the period it ran this was the highest rate applied to any United States trading partner, and the mechanism is the part that does not wash out with the rate. The second tranche was not a finding about Indian trade practice: it names India's purchases from a third country, under an emergency declared about that third country, and no other purchaser of Russian crude was named. That makes the exposure political rather than commercial, and it is India-specific in a way no other shock in this instrument is — every other one is shared with the peer panel and can be netted against it. This one confounds every external-sector reading for FY2026 and FY2027 whatever rate finally settles.",
-    "shockExposure": "India-specific in severity and in mechanism. Cannot be netted out by peer comparison and must be carried as a standalone confound for FY2026 and FY2027 external-sector assessments.",
+    "shockExposure": [
+      {
+        "event": "the fifty per cent US tariff wall",
+        "role": "is-the-shock",
+        "why": "India-specific in severity and in mechanism. Cannot be netted out by peer comparison and must be carried as a standalone confound for FY2026 and FY2027 external-sector assessments."
+      }
+    ],
     "seriesRefs": ["exports-gdp"],
     "sources": [
       {
@@ -82,7 +88,13 @@
     "assessmentNote": "A United States balance-of-payments measure, not an Indian one, and applied to all trading partners rather than to India. There is no Indian objective to score. It is in the ledger because for five months it was the rate Indian exporters actually paid, and because its expiry is the reason the rate changed again in July.",
     "caseFor": "This was the least India-specific tariff India faced in the whole episode, and that is a substantive difference rather than a technicality: section 122 requires nondiscriminatory application, so for 150 days Indian goods carried the same surcharge as everyone else's, at a rate below both the 50 per cent peak and the 18 per cent the February framework contemplated. The statute also did what a bounded delegation is meant to do — it ran to its limit and stopped without anyone having to stop it.",
     "caseAgainst": "The bound is on the instrument, not on the policy. Section 122's ceiling and fuse were reached and exhausted rather than restraining anything: the rate chosen was 10 of a permitted 15 per cent, the period taken was 150 of a permitted 150 days, and the day it expired a section 301 action took effect at the same moment. An exporter's exposure did not lapse; only the statute under it changed. The nondiscrimination requirement also cuts the other way — it means the surcharge was not a concession to India and was never available as one.",
-    "shockExposure": "Applied to all trading partners, so unlike L-0184 this one IS shared with the peer panel and can be netted against it.",
+    "shockExposure": [
+      {
+        "event": "the section 122 surcharge",
+        "role": "is-the-shock",
+        "why": "Applied to all trading partners, so unlike L-0184 this one IS shared with the peer panel and can be netted against it."
+      }
+    ],
     "seriesRefs": [],
     "caveat": "The 150-day figure is the statutory maximum and the proclamation took all of it; it is not an estimate. Counted from the effective date: 24 February to 24 March is 28 days, then 31, 30, 31 and 30 to 24 July — 150. The United States Court of International Trade struck down the section 122 tariffs in May 2026 and that decision was under appeal; this record does not rest on the litigation and no document from it has been retrieved here, so nothing about the appeal's outcome is stated.",
     "sources": [

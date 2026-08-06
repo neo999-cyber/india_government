@@ -18,7 +18,14 @@
   "caseAgainst": "The execution was arguably too abrupt. Forcing recognition across the system simultaneously, while PCA constraints bound the affected banks, precipitated a credit squeeze at a moment when private investment was already weak — a meaningful contributor to the pre-COVID growth deceleration from 8% to 3.9%. A more graduated recognition schedule might have achieved the same honesty while preserving credit flow.",
   "differentFacts": true,
   "differentFactsNote": "The government's case rests on recognition being the precondition for every step that followed, and on the compounding cost of continued concealment. The critics' case rests on the credit contraction that followed and its contribution to the pre-COVID deceleration. Netting the two would require the cost of the concealment that did not happen, which is a counterfactual rather than a measure - unobservable in principle, not merely unbuilt.",
-  "shockExposure": "The 2018 IL&FS collapse hit as recognition peaked, compounding the credit squeeze and making the AQR's independent contribution to the slowdown hard to isolate. Demonetisation and GST also landed inside this window.",
+  "shockExposure": [
+    {
+      "event": "the IL&FS collapse",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "The 2018 IL&FS collapse hit as recognition peaked, compounding the credit squeeze and making the AQR's independent contribution to the slowdown hard to isolate. Demonetisation and GST also landed inside this window."
+    }
+  ],
   "seriesRefs": [
    "psb-gross-npa",
    "scb-gross-npa",
@@ -62,7 +69,14 @@
   "assessment": "partly",
   "caseFor": "The behavioural effect is the real achievement and it is large: 30,310 cases settled before admission, covering underlying defaults worth ₹13.78 lakh crore to December 2024. The credible threat of losing control transformed promoter behaviour in a way no previous recovery mechanism managed, and Section 29A permanently ended the practice of defaulting promoters buying back their own assets at a discount. Realisation percentages also understate performance, since the IBC inherited assets already stripped by years of delay under the old regime — realisation runs at 167% of liquidation value, which is the fairer benchmark.",
   "caseAgainst": "On its own stated terms it underdelivers. Timelines are more than double the statutory limit and worsening, realisation is low and declining monotonically as the best assets resolve first, and NCLT capacity has never matched caseload. A 67% average haircut means creditors recover a third of what they are owed, and the FY2026 collapse to 23% annual realisation suggests the trend is deteriorating rather than maturing. Pre-packaged insolvency for MSMEs, introduced in 2021, had admitted only 18 applications by March 2026.",
-  "shockExposure": "Section 10A suspended fresh insolvency proceedings from March 2020 for the COVID period, creating a caseload gap and a subsequent backlog surge that distorts year-on-year comparisons across FY2021 and FY2022.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "Section 10A suspended fresh insolvency proceedings from March 2020 for the COVID period, creating a caseload gap and a subsequent backlog surge that distorts year-on-year comparisons across FY2021 and FY2022."
+    }
+  ],
   "seriesRefs": [
    "ibc-realisation-pct",
    "ibc-resolution-days"
@@ -93,7 +107,14 @@
   "contestedGround": "criterion",
   "caseFor": "Write-offs are standard prudential practice once provisioning is complete; leaving fully provisioned bad loans on the books misrepresents a bank's position as much as concealing them does. Borrower liability is not extinguished and recovery proceedings continue, so the accounting entry and the legal claim are genuinely different things. Recoveries and upgrades now account for a rising share of NPA reduction, indicating the mechanism is shifting from write-off toward genuine resolution as the cycle matures.",
   "caseAgainst": "Recovery on written-off accounts runs at roughly 13-18% in practice, so for the overwhelming bulk of the amount the distinction between write-off and waiver is notional. The headline ratio improvement is therefore substantially cosmetic: ₹13.91 lakh crore remains unrecovered, absorbed by depositors and, through recapitalisation, by taxpayers. Presenting the fall from 14.58% to 1.8% as a cleanup without this context materially overstates what was achieved.",
-  "shockExposure": "COVID forbearance suppressed reported NPAs across FY2021-FY2022, further complicating attribution of the decline between write-offs, recoveries, and forbearance unwinding.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "COVID forbearance suppressed reported NPAs across FY2021-FY2022, further complicating attribution of the decline between write-offs, recoveries, and forbearance unwinding."
+    }
+  ],
   "seriesRefs": [
    "bank-writeoffs-annual",
    "scb-gross-npa"
@@ -131,7 +152,14 @@
   "assessment": "partly",
   "caseFor": "The fiscal and operational objective was met decisively. Banks absorbed recognised losses without a systemic failure, resumed lending, and reached self-sustaining profitability within seven years of a record loss — a turnaround few banking systems achieve after a crisis of that scale. That no further infusion has been needed for five years is the strongest evidence the capital was adequate and correctly deployed.",
   "caseAgainst": "Recapitalisation bonds were fiscally opaque: money raised was excluded from the headline fiscal deficit while adding to internal government debt, with a recurring interest cost, and in substance the government funded banks by borrowing from those same banks. Evidence that consolidation delivered its promised efficiency gains is thin — the profitability recovery tracks the credit cycle and rate environment more closely than merger synergies, and PSBs continued losing market share to private banks throughout.",
-  "shockExposure": "The mega-merger took effect in April 2020, the same month as the COVID lockdown, making integration effects and pandemic effects impossible to separate cleanly.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "The mega-merger took effect in April 2020, the same month as the COVID lockdown, making integration effects and pandemic effects impossible to separate cleanly."
+    }
+  ],
   "seriesRefs": [
    "psb-profit",
    "govt-capital-infusion",
@@ -173,7 +201,14 @@
   "assessment": "no-objective",
   "caseFor": "Board supersession rather than liquidation preserved going-concern value and produced recovery rates far above what the IBC route delivers, at 88.4% for bank creditors. The intervention was fast and prevented a disorderly cascade through the NBFC sector at a moment of acute fragility.",
   "caseAgainst": "The collapse itself represents a supervisory failure — a systemically important entity accumulated ₹99,355 crore of debt with an asset-liability mismatch that regulators did not act on until default. Resolution has taken eight years and remains incomplete. The credit freeze that followed contributed materially to the growth deceleration that preceded COVID.",
-  "shockExposure": "CORRECTED 2026-08-06 on operator Rulings 6 and 7. WITHDRAWN WORDING, quoted so the correction can be checked rather than taken on trust: this field previously read \"This record is itself a shock, and it lands inside the AQR credit squeeze, making the two effects on 2018-2020 credit conditions difficult to separate.\" The IL&FS default is a private company failing \u2014 neither an act of policy nor external to India \u2014 so Ruling 6 does not reach it, and Ruling 7 types the record by its subject, which is the failure itself and not the state\u2019s response to it. The record is now typed event. WHAT SURVIVES THE RETYPE UNCHANGED: it lands inside the AQR credit squeeze, making the two effects on 2018-2020 credit conditions difficult to separate.",
+  "shockExposure": [
+    {
+      "event": "the IL&FS collapse",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "CORRECTED 2026-08-06 on operator Rulings 6 and 7. WITHDRAWN WORDING, quoted so the correction can be checked rather than taken on trust: this field previously read \"This record is itself a shock, and it lands inside the AQR credit squeeze, making the two effects on 2018-2020 credit conditions difficult to separate.\" The IL&FS default is a private company failing \u2014 neither an act of policy nor external to India \u2014 so Ruling 6 does not reach it, and Ruling 7 types the record by its subject, which is the failure itself and not the state\u2019s response to it. The record is now typed event. WHAT SURVIVES THE RETYPE UNCHANGED: it lands inside the AQR credit squeeze, making the two effects on 2018-2020 credit conditions difficult to separate."
+    }
+  ],
   "seriesRefs": [
    "credit-growth"
   ],
@@ -206,7 +241,14 @@
   "assessmentNote": "Rescored from worked to no-objective on 2026-08-03 after retrieval failed. The objective is named and has not been read: the Yes Bank Limited Reconstruction Scheme, 2020, notified by the Central Government vide G.S.R. 174(E) of 13 March 2020 under sub-sections (4) and (7) of section 45 of the Banking Regulation Act 1949. The gazette was not obtained - only a private portal's reproduction of it - so no score against the scheme is supportable, and worked was resting on an objective nobody in this project has read. The reproduction's paragraph structure carries no objects clause at all, which if confirmed against the gazette would mean the scheme states no objective to score against in the first place. Revisit on retrieval: confirm, and if the scheme does state an object, rescore against it.",
   "differentFacts": true,
   "differentFactsNote": "The government's case rests on the financial outcome: no depositor loss, no permanent public ownership, and a profitable exit into a strategic investor. The critics' case rests on a judicial determination that the AT-1 write-off was unlawful, and on the supervision that made the rescue necessary. No measure places a court's ruling on legality and a return on capital on one ledger.",
-  "shockExposure": "The moratorium landed weeks before the COVID lockdown, so the recovery period coincides entirely with pandemic-era monetary support, which flatters the outcome.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "The moratorium landed weeks before the COVID lockdown, so the recovery period coincides entirely with pandemic-era monetary support, which flatters the outcome."
+    }
+  ],
   "seriesRefs": [],
   "sources": [
    {
@@ -239,7 +281,14 @@
   "caseAgainst": "Exclusion is the cost the headline figures hide: biometric authentication failures have produced documented denials of rations and entitlements, falling hardest on the elderly, manual labourers and the disabled — precisely those the system was meant to reach. The Aadhaar Act was passed as a money bill, bypassing the Rajya Sabha, and the Supreme Court struck down Section 57 in 2018. The Digital Personal Data Protection Act 2023 grants broad government exemptions, so the surveillance capacity this infrastructure creates remains largely unconstrained. Zero-MDR drove UPI adoption but eliminated the payment industry's revenue base, leaving the rails dependent on state support.",
   "differentFacts": true,
   "differentFactsNote": "The government's case rests on coverage: account ownership from 53 per cent of adults to near-universal, and a transfer capability the COVID response depended on. The critics' case rests on authentication failures denying entitlements, and on the constitutional route - passage as a money bill, Section 57 struck down, and the exemptions the 2023 Act grants. Exclusion counts could in principle net against coverage; the constitutional facts cannot share a ledger with account ownership.",
-  "shockExposure": "COVID accelerated digital adoption globally, so part of the UPI growth curve reflects a worldwide shift rather than India-specific policy — though India's starting infrastructure is what allowed it to capitalise.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "limited",
+      "why": "COVID accelerated digital adoption globally, so part of the UPI growth curve reflects a worldwide shift rather than India-specific policy — though India's starting infrastructure is what allowed it to capitalise."
+    }
+  ],
   "seriesRefs": [
    "upi-transactions",
    "jan-dhan-accounts"
@@ -285,7 +334,13 @@
   "assessment": "failed",
   "caseFor": "The rationale weakened on its own merits: PSBs returned to record profitability and full capital adequacy without privatisation, so the urgency that motivated the announcement dissolved. Selling recovering assets into a weak market would have destroyed value, and the IDBI process advancing to final bids shows the capability exists where the case is strong. Restraint here may reflect judgment rather than failure of will.",
   "caseAgainst": "A specific commitment announced in a Budget speech has gone unfulfilled for five years, with no enabling legislation even attempted. The political cost of bank-union opposition, not the economics, is the widely understood reason. If the intent was abandoned it should have been stated; leaving it formally alive while doing nothing is the pattern this project should record as announced-but-not-delivered.",
-  "shockExposure": "None material — the announcement postdates COVID's acute phase and the delay spans a period of banking-sector strength.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "none-stated",
+      "why": "None material — the announcement postdates COVID's acute phase and the delay spans a period of banking-sector strength."
+    }
+  ],
   "seriesRefs": [
    "psb-profit"
   ],
@@ -315,7 +370,14 @@
   "contestedGround": "time",
   "caseFor": "This is healthy diversification away from the concentrated corporate and infrastructure exposures that caused the last crisis. Granular retail risk is more predictable than lumpy project finance, and the expansion reflects genuine financial deepening in an under-banked economy where credit to the private sector is only around 55% of GDP, far below peers.",
   "caseAgainst": "It may be risk migration rather than risk reduction — the next crisis would be a household one, and the RBI has noted roughly 10% of retail borrowers missing payments. Deposit growth persistently lagging credit growth is the classic precondition for funding stress, and the fact that the regulator needed to raise risk weights and has only partially reversed them indicates supervisory discomfort rather than confidence.",
-  "shockExposure": "Post-COVID consumption recovery inflated retail credit demand, so part of the growth reflects a normalising base rather than a structural shift.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "Post-COVID consumption recovery inflated retail credit demand, so part of the growth reflects a normalising base rather than a structural shift."
+    }
+  ],
   "seriesRefs": [
    "credit-growth",
    "credit-gdp-peer"
@@ -349,7 +411,13 @@
   "assessment": "no-objective",
   "caseFor": "The enforcement architecture was genuinely strengthened — the Fugitive Economic Offenders Act, co-operative bank supervision, and improved reporting all postdate 2014 and address real gaps. That the frauds surfaced at all reflects the same recognition discipline the AQR imposed; under the previous regime several would likely have remained buried in restructured accounts.",
   "caseAgainst": "Every one of these frauds was detected years after it began, which is a supervisory failure rather than a detection success — the PNB fraud ran through SWIFT for years undetected. Governance reform through the Banks Board Bureau and its successor has thin evidence of improving board quality or appointment processes. Both principal fugitives remain outside Indian jurisdiction years after the framework designed to reach them was enacted.",
-  "shockExposure": "None material.",
+  "shockExposure": [
+    {
+      "event": "(none material)",
+      "role": "none-stated",
+      "why": "None material."
+    }
+  ],
   "provenanceRefs": [
    "P-20"
   ],
@@ -378,7 +446,13 @@
   "caseFor": "The transition is announced with a long lead and a stated timetable: directions issued 27 April 2026, effective 1 April 2027, phased to March 2031. Banks have the rule and the dates years before either binds, which is the opposite of the recognition discipline this system has had imposed on it before - retrospectively, at supervisory speed, on balance sheets already carrying the losses. A standing forward-looking rule also removes the discretion that overdue-ageing recognition leaves in the gap between a loan going bad and a bank saying so.",
   "caseAgainst": "It is a forward-dated comparability break on every asset-quality series it touches, which is why it exists in this instrument as provenance record P-21 as well as here: crar and net-npa will step at the transition for a reason that is not a change in asset quality. A four-year phase-in is also four years in which the timing of recognition is a choice rather than a rule, and the transition lands while those same series are being read as evidence that the last cleanup finished. On this record none of that can be sized: the directions themselves have never been retrieved and the only quantified impact in circulation is a T4 relay.",
   "assessmentNote": "Rescored from too-early to no-objective on 2026-08-03, on the same standard as L-0028. The objective is named and has not been read: the RBI final directions of 27 April 2026, whose primary press release failed to fetch four times on transport errors, never a 404. too-early reads 'has not run long enough for its stated objective to be testable' and that objective cannot be quoted from anything retrieved, so the value asserted something the record does not hold. Note also that the instrument's title is not settled - see the naming discrepancy logged in cycle 2026-08-03d, where two candidate titles differ only in the word order of the same five nouns and in the year. Revisit on retrieval: confirm the title from the primary, and if the directions state an object, rescore against it.",
-  "shockExposure": "None yet — but this is a forward-dated comparability break for every asset-quality series in the project, which is why it also exists as provenance record P-21.",
+  "shockExposure": [
+    {
+      "event": "(none material)",
+      "role": "none-stated",
+      "why": "None yet — but this is a forward-dated comparability break for every asset-quality series in the project, which is why it also exists as provenance record P-21."
+    }
+  ],
   "seriesRefs": [
    "crar",
    "net-npa"

@@ -20,7 +20,14 @@
   "caseAgainst": "The laws were promulgated by ordinance during a pandemic with no pre-legislative consultation and pushed through the upper house without a recorded vote. Agriculture and agricultural markets are State subjects and the central laws overrode that jurisdiction. Dispute resolution was vested in the bureaucracy with civil courts excluded. Removing the mandi tax base threatened the procurement infrastructure underpinning MSP in the grain belt, and contract farming favours large integrators over unorganised smallholders. Without a statutory price floor, dismantling the mandi system would have exposed farmers to buyer power with no fallback.",
   "differentFacts": true,
   "differentFactsNote": "The government's case rests on market structure: commission-agent rents in the mandi system, and only about 6 per cent of farmers selling at MSP. The critics' case rests on how the laws were made and what they displaced - ordinance during a pandemic, no recorded vote in the upper house, a State subject overridden, civil courts excluded. Economic surplus and legislative process have no common unit.",
-  "shockExposure": "COVID is inseparable from this record. The ordinance route was available because Parliament was not sitting normally, the protest was conducted under pandemic restrictions, and the economic distress of 2020 shaped both the government's urgency and the farmers' risk aversion.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "COVID is inseparable from this record. The ordinance route was available because Parliament was not sitting normally, the protest was conducted under pandemic restrictions, and the economic distress of 2020 shaped both the government's urgency and the farmers' risk aversion."
+    }
+  ],
   "seriesRefs": [
    "msp-farmers-share",
    "msp-wheat",
@@ -78,7 +85,14 @@
   "assessment": "failed",
   "caseFor": "The target was always ambitious and its framework was serious — the Dalwai committee identified real levers in irrigation, post-harvest infrastructure and market reform, several of which were pursued. Agricultural GVA grew respectably across the period, horticulture overtook foodgrains, and NABARD's survey reports substantial income gains on its own definition. COVID consumed two of the seven target years entirely.",
   "caseAgainst": "On the only instrument that measures what was promised, real income grew about 16% over six years against a target requiring roughly 100% over seven. The government then stopped fielding that instrument, so the flagship agricultural commitment of the period cannot be assessed at all — and the substitutes offered are not the same measure. A target set in household-income terms cannot be marked against sectoral output.",
-  "shockExposure": "COVID covered 2020 and 2021, two of the seven target years, and the 2022 fertiliser price shock raised input costs. Neither explains the shortfall in the pre-2020 years the survey data cover.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "refused",
+      "why": "COVID covered 2020 and 2021, two of the seven target years, and the 2022 fertiliser price shock raised input costs. Neither explains the shortfall in the pre-2020 years the survey data cover."
+    }
+  ],
   "seriesRefs": [
    "farm-household-income",
    "agri-gva-growth"
@@ -121,7 +135,14 @@
   "contestedGround": "criterion",
   "caseFor": "Food price stability is a legitimate and central objective in a country where a large share of household spending goes on food and where inflation is politically and materially consequential. Export bans during a global commodity shock protected domestic consumers, including the rural poor who buy more food than they sell. The subsidies farmers do receive — fertiliser, credit, PM-KISAN — are real and large in absolute terms.",
   "caseAgainst": "The policy amounts to a transfer from farmers to consumers of an order of magnitude larger than every farm subsidy combined, and it is invisible because it operates through prices rather than budgets. It is also self-defeating: suppressing farm-gate prices while urging farmers to diversify and invest asks them to respond to signals policy is actively muting. And the episodic bans cost India market share and reliability abroad without addressing the underlying reason food prices are politically explosive.",
-  "shockExposure": "The 2022 global commodity and energy shock drove both the fertiliser subsidy spike and the export bans, so the most negative PSE years are also the years of maximum external pressure.",
+  "shockExposure": [
+    {
+      "event": "the 2022 commodity shock",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "The 2022 global commodity and energy shock drove both the fertiliser subsidy spike and the export bans, so the most negative PSE years are also the years of maximum external pressure."
+    }
+  ],
   "seriesRefs": [
    "oecd-pse",
    "fertiliser-subsidy"
@@ -155,7 +176,14 @@
   "assessment": "no-objective",
   "caseFor": "Procurement volumes and MSP payments roughly doubled against the preceding decade, and MSP provides a genuine and reliable price floor for the farmers it reaches. Extending it to more states — Madhya Pradesh, Chhattisgarh and Telangana all became significant procurement centres over the period — broadened a system that had been almost entirely Punjab and Haryana. A universal legal guarantee is genuinely difficult: cost estimates range from under ₹2 lakh crore to over ₹10 lakh crore depending on scope, and it would deepen the distortion toward water-intensive paddy and wheat.",
   "caseAgainst": "A price support system reaching 6% of farmers is not a farm price policy, it is a regional procurement programme. The 1.5-times-cost claim does not hold on the cost basis the recommendation intended. And the committee constituted to examine the legal guarantee was chaired by the official who drafted the repealed laws, included their advocates, was refused participation by the unions, and has produced nothing in four years while spending about ₹53 lakh — which is a way of not answering the question rather than answering it in the negative.",
-  "shockExposure": "The 2022 heat shock collapsed wheat procurement from 43.3 MT to 18.8 MT in a single year, showing how weather-exposed the procurement system is.",
+  "shockExposure": [
+    {
+      "event": "the 2022 heat shock",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "The 2022 heat shock collapsed wheat procurement from 43.3 MT to 18.8 MT in a single year, showing how weather-exposed the procurement system is."
+    }
+  ],
   "seriesRefs": [
    "msp-wheat",
    "msp-paddy",
@@ -199,7 +227,14 @@
   "contestedGround": "evidence-withheld",
   "caseFor": "The absolute number has been broadly flat to declining across the decade despite a growing agricultural workforce, and fell in 2023 and 2024 from the 2022 peak. Suicide is multi-causal and attributing it to agricultural policy specifically is not straightforward, particularly given the labourer-cultivator composition shift. Several state-level interventions in Maharashtra and Karnataka target farm distress directly.",
   "caseAgainst": "The data cannot support a claim of improvement because they cannot support a claim about levels at all: states reporting zero are not reporting, women farmers are recorded as housewives, and the labourer category was historically excluded. A series with these defects showing roughly flat numbers is consistent with a worsening reality. And 112,000 deaths over a decade in a sector the government describes as transformed is the fact, whatever the trend.",
-  "shockExposure": "COVID and the 2020-21 rural distress period sit inside the series, as does the 2022 heat shock.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "COVID and the 2020-21 rural distress period sit inside the series, as does the 2022 heat shock."
+    }
+  ],
   "seriesRefs": [
    "farmer-suicides"
   ],
@@ -233,7 +268,13 @@
   "assessment": "no-objective",
   "caseFor": "The procurement system that drives this was built to secure national food self-sufficiency and did so; Punjab's contribution to the central pool is what makes the public distribution system possible. Free farm power is a state subject and successive state governments of every party have maintained it because withdrawing it is electorally fatal. Micro-irrigation coverage under Per Drop More Crop reached about 95.58 lakh hectares.",
   "caseAgainst": "Three central policies — assured procurement of paddy, no equivalent guarantee for alternatives, and tolerance of free farm power — together make water-mining the rational choice for individual farmers, and no element has been altered. The aquifer is finite and the timeline is measurable. Diversification has been urged for two decades without changing the incentive that prevents it, which is a policy failure rather than a farmer failure.",
-  "shockExposure": "None material; this is a slow structural process.",
+  "shockExposure": [
+    {
+      "event": "(none material)",
+      "role": "none-stated",
+      "why": "None material; this is a slow structural process."
+    }
+  ],
   "seriesRefs": [
    "groundwater-overexploited-punjab",
    "wheat-procurement"
@@ -265,7 +306,14 @@
   "assessment": "partly",
   "caseFor": "A claims-to-premium ratio of more than five to one in farmers' favour is a large real transfer of risk away from cultivators, and coverage of four crore farmers is a scale no predecessor scheme approached. Making the scheme voluntary respected farmer choice — the coverage fall reflects farmers declining a product they had been enrolled in automatically, which is information rather than failure.",
   "caseAgainst": "Six states exiting is a substantial verdict on the scheme's design and cost-sharing, and it means national figures understate withdrawal. Chronic settlement delay blunts the risk-protection function precisely when it matters — an insurance payout arriving late is a loan, not insurance. Whether the scheme protected farmers or transferred public money to insurers remains genuinely unresolved, since low-risk farmers cross-subsidise high-risk ones and insurer profitability in some state-years was high.",
-  "shockExposure": "COVID and the 2020 restructuring coincide, making the coverage fall hard to attribute cleanly between opt-out and disruption.",
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "COVID and the 2020 restructuring coincide, making the coverage fall hard to attribute cleanly between opt-out and disruption."
+    }
+  ],
   "seriesRefs": [
    "pmfby-farmers"
   ],
@@ -306,7 +354,14 @@
   "assessment": "no-objective",
   "caseFor": "A roughly 50% increase in foodgrain output across a decade is a genuine achievement that underwrote the free-grain programme covering 80 crore people through COVID and after. Horticulture output overtook foodgrains in tonnage. Buffer stocks stayed comfortably above norms throughout, which is what food security means operationally.",
   "caseAgainst": "Output growth without yield growth means the gains came from area and weather, neither of which is a policy achievement or repeatable. The yield gap against every peer is the binding constraint and it did not close. And the composition — more paddy and wheat, grown where water is scarcest — means the production record and the groundwater crisis are the same fact viewed from different ends.",
-  "shockExposure": "Monsoon variability dominates the series; the 2022 heat shock cut wheat output and triggered the export ban.",
+  "shockExposure": [
+    {
+      "event": "the 2022 heat shock",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "Monsoon variability dominates the series; the 2022 heat shock cut wheat output and triggered the export ban."
+    }
+  ],
   "seriesRefs": [
    "foodgrain-production",
    "cereal-yield-peer",

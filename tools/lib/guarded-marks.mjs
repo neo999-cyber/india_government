@@ -30,6 +30,10 @@ const labelOf = (map, v) => (v == null ? [] : [map[v] ?? String(v)]);
 
 export const MARKS = [
   { field: 'unmeasured', layers: ['series', 'ledger'], each: (r) => (r.unmeasured ?? []).map((u) => u.what) },
+  // Added phase 16 when shockExposure became an array. `why` carries the judgement verbatim from
+  // the prose the field held before 2026-08-06; a role and an adjudication with no ground is what a
+  // dense view would leave behind, so it is guarded rather than exempted.
+  { field: 'shockExposure', layers: ['ledger'], each: (r) => (r.shockExposure ?? []).map((e) => e.why) },
   { field: 'caveat', layers: ['series', 'ledger'], each: (r) => (r.caveat ? [r.caveat] : []) },
   { field: 'notes', layers: ['series', 'provenance'], each: (r) => (r.notes ? [r.notes] : []) },
   { field: 'differentFactsNote', layers: ['ledger'], each: (r) => (r.differentFactsNote ? [r.differentFactsNote] : []) },
