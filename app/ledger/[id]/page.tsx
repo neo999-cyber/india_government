@@ -97,6 +97,20 @@ export default async function LedgerDetail({ params }: Props) {
 
       <p>{l.summary}</p>
 
+      {/* MOVED ABOVE THE ARGUMENT 2026-08-06, on the operator's ruling that an absence arriving
+          below two argument blocks is the same defect as a verdict chip preceding its reasoning:
+          the conclusion reaching the reader before what qualifies it.
+
+          UNIFORMLY, AND NOT ON A TEST — a departure from the proposal, which said "where the absence
+          is load-bearing". Three candidate tests were measured before one was built and they
+          returned 13, 47 and 47 records, so the load-bearing set is an artefact of the test chosen;
+          the only faithful one was a keyword scan of `assessmentNote`, which is exactly the class of
+          thing this cycle has spent itself correcting. A view whose READING ORDER depends on a term
+          list is a defect waiting. So the block sits after the summary and before the argument on
+          every record that carries one — the position rule 3a gives the caveat, for the same
+          reason. */}
+      <Absences items={l.unmeasured} />
+
       <dl className="dl">
         {l.claimAtLaunch ? (
           <>
@@ -150,9 +164,6 @@ export default async function LedgerDetail({ params }: Props) {
           </>
         ) : null}
       </dl>
-
-      {/* Rule 4a: what this record should be able to show and cannot. */}
-      <Absences items={l.unmeasured} />
 
       {l.assessment === 'baseline-context' ? (
         <p className="prose-note">
