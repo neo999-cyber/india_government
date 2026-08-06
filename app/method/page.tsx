@@ -91,6 +91,23 @@ export default function MethodPage() {
         same thing as independent evidence; this page would rather say so than let the distinction
         sit unstated.
       </p>
+      <p>
+        <strong>
+          Why {worked === 1 ? 'one' : worked} of {ledger.length} is not a finding about the
+          government.
+        </strong>{' '}
+        The count of records saying <em>worked</em> measures two things at once: how often a policy
+        achieved what was promised, and how often anybody independent of the promising body checked.
+        <strong> This instrument cannot separate them, and it should not pretend to.</strong> Where
+        the Indian state is the only body that measures a thing — which, on most of these subjects,
+        it is — raising the evidence standard necessarily lowers the count of established successes,
+        whatever the policies actually did. So read the tally as a statement about how much of
+        Indian policy is independently measured. Read it as a statement about Indian policy only
+        where you can also see the independent evidence cited on the record. Where a record says{' '}
+        <em>partly</em> or <em>contested</em> because the outcome is unestablished, it says so in
+        those words and names what would settle it — those notes are the useful part, and the tally
+        is not.
+      </p>
       <p className="prose-note">
         <strong>The tier figures above moved on 6 August 2026, and by a lot.</strong> T1F is new:
         primaries issued by a foreign national government had been sitting in T1 by default,
