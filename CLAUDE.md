@@ -513,18 +513,23 @@ phase name asserted from memory is a premise until it is read off this table.
 | **18** | **design lock** | |
 | **19** | **polish** | |
 
-**A THIRD, ADDED 2026-08-06: PHASE 17 WAS OPENED BY THE OPERATOR AS "DESIGN LOCK", AND THIS TABLE SAYS
-17 IS INDEPENDENCE AND 18 IS DESIGN LOCK.** The name is not resolved here, because a phase name is
-the operator's to set and this table is the authority until they change it. **What the opening batch
-actually did was design-lock work** — it measured what the deployed site shows against what the
-corpus holds — and its output is in `drops/phase-17-design-lock/` under the name it was given.
-**Either the table is amended or that work belongs to 18; both are live and neither is assumed.**
+**A THIRD, ADDED AND RESOLVED 2026-08-06: A PHASE-NAME COLLISION, RULED IN THE TABLE'S FAVOUR.**
+Phase 17 was opened by the operator with the name *design lock*, and this table reads **17
+independence, 18 design lock**. **The operator has ruled that the table is right.** Phase 17 is
+independence; the design-lock work belongs to 18.
 
-**AND `phase-name` DID NOT FIRE ON THIS, WHICH IS A MEASURED GAP IN THE GATE.** It binds an assertion
-of the form *phase N **is** &lt;name&gt;* and the collision arrived as a heading — *"Phase 17 — design
-lock"* — with no assertion verb. The gate's header already says it does not bind a phase named
-without its number; **it does not say it also misses a number named without a verb, and that is the
-form a heading takes.** Recorded rather than fixed: widening the predicate is a gate contract change.
+**AND THE DESIGN WORK SEQUENCES BY DEPENDENCY, NOT BY THE NUMBER IT WAS GIVEN.** The batch that
+opened under the wrong name measured the deployed site against the corpus, and its output stands —
+it is in `drops/phase-17-design-lock/`, whose DIRECTORY NAME IS NOW WRONG AND IS LEFT WRONG on the
+same principle that leaves a withdrawn wording quoted: renaming it would erase the collision that is
+the reason this paragraph exists. **Read the directory as phase 18's opening measurement.**
+
+**`phase-name` MISSED IT, AND THE GAP WAS MEASURED BEFORE IT WAS FIXED.** The gate bound an
+assertion of the form *phase N **is** &lt;name&gt;*, and the collision arrived as a HEADING — *"Phase
+17 — design lock"* — carrying a number and a name and no verb between them. **Every heading and
+every table row takes that form**, so the gate was blind to the two places a phase name is most
+likely to be written down. Widened 2026-08-06 on operator authorisation; the predicate now reaches
+headings and table rows, and the widening is proven against this collision as it stood at `c34e83a`.
 
 **Two things a cold read must not assume.** Phase 10 was inserted, so any note written before it
 carries numbering one behind this table. And **delimitation was partly covered in phase 12**, which
@@ -937,8 +942,27 @@ about to file something it cannot fully justify. Where it cannot fully justify a
 value that makes the fewest false assertions and states in the note which assertions that value makes
 that are false.
 
-**Everything else runs to completion:** plan, arc, self-audit, gates, commit. **Push is not autonomous
-while the deployment is public and unauthenticated.**
+**Everything else runs to completion:** plan, arc, self-audit, gates, commit, **and push**.
+
+**PUSH IS AUTONOMOUS AGAIN, ruled by the operator 2026-08-06.** WITHDRAWN WORDING, quoted so the
+correction can be checked rather than taken on trust: this passage previously read *"Push is not
+autonomous while the deployment is public and unauthenticated."* **The condition it named no longer
+holds** — the operator has ruled the site DELIBERATELY public, so publication is the intent rather
+than a hazard the rule was guarding against, and a rule whose stated condition has lapsed is a rule
+that stops binding on its own terms rather than by amendment.
+
+**WHAT SUSPENDING IT COST, MEASURED, BECAUSE IT IS THE ARGUMENT FOR THE CHANGE.** At `c34e83a` the
+deployed site served `fa518f4` — **nine commits and the whole of phase 16 behind**, for two weeks.
+A reader could not see Ruling 5, Rulings 6 to 9, the point-of-change rule, three retypes, L-0209's
+two-limb correction or the structured exposure field. **The gap between what the corpus held and
+what it showed was one operator action wide and stayed there**, which is a worse failure than
+anything the suspension was protecting against.
+
+**The gates are the condition now, and they already are.** `npm run commit` reaches `git commit`
+only on green and has no flag that skips a gate, so an invalid corpus cannot become a commit and
+therefore cannot become a deployment. **Verify on the production deploy after pushing** — that
+instruction is in Build workflow below and is not new; what changes is that the push happens without
+waiting.
 
 **A flag raised against a record is checked against the RECORD, not against the report that describes
 it.** Two prompt-side flags in three batches were wrong for this reason — P-127 was said to name
