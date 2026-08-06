@@ -1,0 +1,211 @@
+ADVERSARIAL REVIEW
+
+
+Where the instrument breaks
+Deep review of pass-b-deep.md: 73 full-prose records from a public corpus tracking Indian
+government policy claims.
+
+
+WEAKEST CLAIM: L-0026 calls the measure worked after admitting that one of its two
+announced objectives is not established. The instrument's own definition calls that partly.
+
+This report tests verdicts against the instrument's stated definitions, compares records with the same structure,
+checks whether sources support the claims made on them, and attacks the absence-search method. It does not
+edit the source extract.
+
+
+Bottom line
+The verdict errors lean in the incumbent government's favour. Search and absence errors are politically mixed,
+but repeatedly make each record's preferred narrative more definite than the documented search permits.
+
+
+
+
+Prepared 6 August 2026                                                                                     Page 1
+PASS B - ADVERSARIAL REVIEW
+
+
+
+
+1. Worked is awarded when only part of the objective was established
+- L-0026 announced recapitalisation and stronger, more efficient banks through consolidation. Its note says
+   consolidation is not established, yet awards worked because recapitalisation was the centrepiece. The
+   method has no centrepiece exception.
+
+- L-0029 identifies three objectives, says only two were measured and met, and admits that eliminating ghost
+   and duplicate beneficiaries was not measured. It also lacks a count of eligible people excluded by
+   authentication failures. This is partly, not worked.
+
+- L-0047 establishes electrification, fuel savings and diesel displacement but expressly leaves the promised
+   net-emissions reduction unmeasured. Its own note calls emissions part of the announced object.
+
+- L-0048 is the control. It correctly assigns partly because corridor performance improved while the
+   modal-share objective was not met. L-0026 and L-0029 have the same structure and receive the more
+   favourable verdict.
+
+The anticipatory notes do not cure the defect; they confess it. Either these verdicts move to partly, or the method
+must disclose a rule permitting objectives to be weighted after the results are known.
+
+
+2. L-0014 substitutes CPI and institutional survival for inflation
+expectations
+L-0014 says flexible inflation targeting would anchor inflation expectations. The evidence shown is lower CPI,
+survival of the framework and its renewal. None is a measure of expectations. The note calls survival and
+renewal the strongest evidence available, but worked requires evidence that the announced objective was
+achieved, not the best available proxy.
+
+The only listed source is a T4 Trading Economics item about renewal. Even if the omitted CPI series is sound,
+CPI is not an expectations series. The verdict is unsupported without a dated expectations measure and a
+success criterion fixed independently of the observed CPI path.
+
+
+3. L-0207 invents an objective in order to award worked
+L-0207 says no tariff, revenue or export-volume target was announced. It nevertheless awards worked because
+the plant was built and exporting, which the author says is what a joint hydropower project is for. That replaces
+an announced objective with an inferred one.
+
+On the stated vocabulary, this belongs closer to L-0206 and L-0208, both no-objective, unless an announcing
+document with a concrete commissioning or export objective can be produced.
+
+
+4. Too-early is used for states its definition excludes
+- L-0188 calls the Interim Agreement due and undelivered, records a July 2026 target, and finds no concluded
+   agreement by 4 August. It then invents a February 2027 re-test. A better tariff under different legal
+   instruments does not deliver the promised agreement. On the record's own facts, the agreement limb has
+   failed; at minimum, too-early is indefensible.
+
+- L-0205 repeatedly says the India-EU agreement is not signed or in force and that nothing binds until
+   notifications are exchanged. Too-early expressly requires an in-force measure. A commitment awaiting its
+   trigger is not the same state.
+
+
+5. No-objective is made to mean two contradictory things
+The formal definition reserves no-objective for cases where nothing was claimed. L-0209 quotes an explicit
+commitment to fence the entire 1,643-kilometre border. A separate rule then declares an undated total not to be
+an objective because it cannot fall due.
+
+
+
+Prepared 6 August 2026                                                                                       Page 2
+PASS B - ADVERSARIAL REVIEW
+
+
+
+
+Those are different findings. The honest class would be undated or unfalsifiable, not no-objective. The current
+label hides the politically material fact that a concrete, quotable promise has been made permanently incapable
+of becoming overdue.
+
+
+6. L-0226 manufactures a contest from incommensurable quantities
+L-0226 juxtaposes a rule about instructions to back renewable generation down with a modelled projection of
+energy not being absorbed. Its caveat says these are distinct quantities, and its strongest case for explains how
+both can be true. Yet the title and contested verdict are built from placing them side by side.
+
+That violates the method's own rule for incommensurable quantities. No evidence currently supports two
+readings of one outcome; it supports two statements about different objects plus an absence of measured
+curtailment data. The caveat anticipates the objection but does not repair the central framing.
+
+
+7. The stated-search rule is repeatedly ignored
+The method requires an enumerated index, a verified archive convention or named routes exhausted before
+assigning not-published. It explicitly says that nothing retrieved is insufficient.
+
+- L-0210 admits the MEA channel could not be read and that it cannot distinguish published nothing from
+   published something unreachable, yet assigns not-published to the FMR's status and instrument.
+
+- L-0224 admits the lodged 2015 NDC was not retrieved and may contain the missing carbon-sink reference.
+   The evidence supports not checked in the most relevant document, not non-publication.
+
+- L-0209 inspects one Year End Review and treats absence from the natural place as sufficient. The method
+   expressly requires more.
+
+- L-0026, L-0029, L-0047 and L-0207 use formulations such as no evaluation retrieved, no count retrieved and
+   nothing retrieved states, without documenting a qualifying search.
+
+- L-0116 escalates from limited retrieval to universal claims: no published series exists, no written order has
+   ever been published and no body has published a series. These are the negative existentials prohibited by
+   rule 5d.
+
+The political direction is mixed. Unsupported absences protect worked verdicts in L-0026, L-0029 and L-0047,
+while strengthening criticism of opacity in L-0209, L-0210 and L-0116.
+
+
+8. The source ladder is not being followed
+- L-0015 labels a Business Standard news article T1. Under the explicit journalism rule it is T4.
+- L-0114 labels a High Court judgment retrieved from a Bar and Bench mirror T1. The method says to grade the
+   document actually retrieved, making the relayed copy T4.
+
+- L-0217 labels UN Comtrade T1, and L-0218 labels the UN Treaty Series T1. Both are T2 by definition.
+- L-0218, L-0219 and L-0220 label internal retrieval logs, private repository material or the corpus itself T1.
+   None is an official Indian source.
+
+- L-0021, L-0184, L-0187 and L-0188 label US courts, executive orders, White House material and USTR
+   publications T1. They may be strong primary sources, but the taxonomy defines T1 as Indian official and
+   contains no foreign-primary class.
+
+Tier counts are therefore unreliable as tagged, and the claim that tier tags travel with claims is false for these
+records.
+
+
+
+
+Prepared 6 August 2026                                                                                         Page 3
+PASS B - ADVERSARIAL REVIEW
+
+
+
+
+9. The corpus's self-audits are publicly uncheckable
+- L-0219 gives exact counts - 278 citations, 92 roots and 139 unaddressable citations - but its sole source is an
+   internal repository reference whose public URL returns 404. A reader cannot reproduce the partition or test
+   the threshold.
+
+- L-0220 claims a systematic pattern across thirteen records and says repository history proves the verdicts
+   predated the synthesis. Its only source is again the private repository.
+
+- L-0218 relies on an internal verification log, but the cited public URL is the MEA page being tested, not the log
+   containing the procedure and results.
+
+These records may be correct, but within a public instrument they are assertions by the instrument about itself,
+backed by evidence only its author can inspect. Calling that evidence T1 compounds the problem.
+
+
+10. Direction of error
+The verdict errors lean plainly in the incumbent government's favour:
+
+- L-0014 converts a proxy into worked.
+- L-0026 and L-0029 convert partial success into worked.
+- L-0047 likely does the same with an unmeasured emissions limb.
+- L-0207 invents an objective to produce worked.
+- L-0188 gives an overdue deliverable additional time not contained in the commitment.
+- L-0209 relabels an explicit but undated promise as having no objective.
+The methodological overclaims are more politically mixed. Unsupported publication absences sometimes protect
+favourable verdicts and sometimes intensify allegations of opacity. L-0226 runs against the government by
+constructing a conflict from two different quantities.
+
+Overall: the assessment vocabulary is applied with a pro-government tilt, while search and
+absence errors amplify whichever argument the individual record is already making.
+
+
+11. What I could not check from this file alone
+- Whether the underlying series contain evidence omitted from the prose, especially an actual
+   inflation-expectations measure for L-0014.
+
+- Whether the cited documents support every precise figure and causal statement attributed to them.
+- Whether searches described only as nothing retrieved were exhaustive but incompletely documented.
+- Whether the July 2026 target in L-0188 was a formal bilateral deadline or an external working assumption.
+- Whether an Indian instrument exists stating the objective and terms of L-0207 more concretely.
+- Whether the 2015 lodged NDC resolves the missing baseline and scope questions in L-0224 and L-0225.
+- Whether MEA published an FMR notification that this retrieval environment could not read.
+- Whether the private verification logs and repository history reproduce the counts in L-0218, L-0219 and
+   L-0220.
+
+- Whether the 73-record adversarial selection overstates or understates the prevalence of these defects across
+   the remaining corpus.
+
+
+
+
+Prepared 6 August 2026                                                                                       Page 4
+

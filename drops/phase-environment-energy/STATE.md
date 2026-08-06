@@ -3948,3 +3948,218 @@ bytes**.
 **Neither is run.** `pass-a-structural.md` is also regenerated at 351,423 bytes and **a second Pass A
 would now be a different document** — every finding that turned on truncated prose would be
 re-derivable or refutable from the file itself.
+
+---
+
+# BATCH 9 — TRIAGE OF THE PASS-B REVIEW. 2026-08-06
+
+**Nothing resolved, no verdict moved, `/data` untouched.**
+
+## 0. ONE REVIEW RETURNED, NOT TWO
+
+The brief describes "two independent pass-B reviews". **Only one was delivered** —
+`pass-b-deep-adversarial-review.pdf`, committed to `review/returned/`. Searched `~/Downloads`,
+`~/Desktop`, `~/Documents` and the whole home tree for anything newer than 12:00; there is one file.
+
+**This matters to how the findings are weighted.** The pass-A triage ranked by convergence — a
+finding two reviewers reached separately outranks either alone. **Nothing in the pass-B set is
+convergent-by-independence**, and every finding below is classified as single-source. Where pass B
+agrees with pass A that is convergence across ROUNDS, which is weaker: pass B read the corrected
+extract, so it saw pass A's material plus the prose pass A was denied.
+
+## 1. L-0026 OVERTURNED — the batch-7 classification was wrong, and pass B is right
+
+**The instrument has NO stated rule permitting objectives to be weighted after results are known.**
+Searched `CLAUDE.md` and `schemas/ledger.schema.json` for *centrepiece · principal objective ·
+primary objective · dominant objective · weighted after · which objective governs*: **zero hits in
+both files.** Saying so plainly, as asked: **no such rule exists.**
+
+The definitions decide it:
+
+> **worked** — the measure achieved **the** objective stated at announcement.
+> **partly** — the measure achieved **part of** its stated objective.
+
+| record | its own note's first assertion | verdict | against the definition |
+|---|---|---|---|
+| **L-0026** | *"TWO OBJECTIVES WERE ANNOUNCED AND THEY DO NOT RESOLVE THE SAME WAY"* | `worked` | **partly** |
+| **L-0029** | *"THREE OBJECTIVES WERE ANNOUNCED; TWO ARE MEASURED AND MET"* | `worked` | **partly** |
+| **L-0048** (control) | *"TWO OBJECTIVES WERE ANNOUNCED; ONE IS MET AND THE OTHER IS MEASURED AND NOT MET"* | `partly` | **correct** |
+
+**L-0026 and L-0048 state the same structure in nearly the same words and take different verdicts.**
+Batch 7 classified pass A's finding as *defeated* because the full note says worked is asserted on
+recapitalisation and not consolidation. **That reasoning was wrong**: the note explains the choice,
+and the definition does not permit it. **A record that explains why it departs from the definition
+has documented a departure, not authorised one.** Pass B's phrase is exact — *the anticipatory notes
+do not cure the defect; they confess it.*
+
+**L-0047 is weaker but not clean.** Its argument is different — *"the asset is the service"*, that
+electrification converts without behavioural change — but it **carries `unmeasured: "Net emissions
+change from electrification"` with `reasonKind: not-published`**, and its own note calls emissions
+part of the announced object. **CONFIRMED for L-0026 and L-0029; OPEN for L-0047**, which turns on
+whether an unmeasured limb is an unachieved one.
+
+**This is the first reviewer finding to overturn a prior triage classification of mine.** The
+mechanism is worth recording: batch 7 accepted a record's *explanation* as an *answer*, which is the
+same error as reading a report instead of the record.
+
+## 2. THE TIER AUDIT — 39 T1 citations do not survive the ladder, in five bands
+
+Swept all **1,205** citations. Host-classified against the ladder's own definitions; every band is
+listed because the bands differ in how settled they are.
+
+| band | n | verdict |
+|---|---:|---|
+| **A** journalism ACCOUNT of a document tagged T1 — Business Standard on an RBI Annual Report, `abclive` on the RBI Financial Stability Report | **7** | **Unambiguous violation.** The rule's own example is *"a CAG finding known only through a newspaper's account of an RTI reply is T4"* |
+| **B** multilateral tagged T1 — UN Treaty Series, UN Comtrade, World Bank | **5** | **Unambiguous.** T2 by definition |
+| **C** the instrument or its private repository tagged T1 | **3** | **Unambiguous.** Not an official Indian source on any reading — see §3 |
+| **D** foreign government primary tagged T1 — `govinfo.gov`, `whitehouse.gov`, `ustr.gov`, `supremecourt.gov` | **19** | **NOT a mis-tag — a TAXONOMY GAP.** T1 is defined *Indian* official; T2 is multilateral. **A US Executive Order retrieved directly from the Federal Register has no class in this ladder.** The reviewer's wording is exactly right |
+| **E** full document on a mirror — Bar and Bench judgment, `internetshutdowns.in` government orders | **5** | **AMBIGUOUS, and the corpus has already ruled on it once, the other way** |
+
+**Band E is the interesting one and it is a live contradiction in the instrument's own texts.**
+`CLAUDE.md` records that a 2026-08-05 audit *"accused two records of a tier misassignment when they
+were citing a government order that a civil-society site re-hosts"* and treats that audit as the
+error. But the ladder says *"Grade what you hold, not what it is about."* **The two cannot both be
+right, and nothing reconciles them.** The distinction that would — *the document itself on another
+server* versus *someone's account of it* — is not written down anywhere. **Band A is the account
+case and band E is the mirror case; the ladder does not distinguish them.**
+
+**A false positive I caught before reporting it:** 4 citations to `rchiips.org/nfhs` classified as
+academic. **IIPS is an Indian institute of national importance and NFHS is an official statistical
+publication — T1 is correct.** Host-classing would have made this a violation.
+
+### The corrected T1 figure — REPORTED, NOT SHIPPED
+
+**Published on `/method`: 965 of 1,205.**
+
+| band treatment | corrected T1 |
+|---|---:|
+| A+B+C leave T1 (D unclassifiable, E stays on the prior ruling) | **950** |
+| A+B+C+D leave | **931** |
+| strict — A+B+C+D+E all leave | **926** |
+
+**The honest public figure is a range, 926–950, and the page cannot state one number until band D has
+a class and band E is reconciled.** Not shipped, per the sizing.
+
+## 3. THREE RECORDS CITE THE INSTRUMENT ITSELF AS T1, ON A PRIVATE REPOSITORY
+
+| record | what it asserts | its source |
+|---|---|---|
+| **L-0218** | three Indian government publication channels cannot be read by an ordinary reader | *"Retrieval observations, phase 14, recorded in `docs/verification-log.md`"* — **T1**, with the URL pointing at `mea.gov.in`, **the page being tested, not the log** |
+| **L-0219** | of 278 citations naming a publisher rather than a document, half cannot be addressed | one source: `github.com/neo999-cyber/india_government`, **T1**, whose own name field reads *"INTERNAL REFERENCE, NOT AN OPENABLE URL — and the point is conceded rather than hidden"* |
+| **L-0220** | thirteen schemes across five domains show a systematic pattern | *"This corpus's own ledger records L-0012, L-0034…"* — **T1**, same repository URL |
+
+**The repository is private.** The URL returns 404 to every reader; the deployment metadata records
+`githubRepoVisibility: private`.
+
+**What a reader can check: nothing.** Not the 278, not the 92 roots, not the 139 unaddressable, not
+the thirteen-scheme pattern, not the claim that the verdicts predated the synthesis.
+
+**What would make them checkable**, cheapest first:
+1. **Publish the derivation, not the repository.** These are counts over `/data`, which IS public.
+   A generated table — the 278 citations listed, partitioned, with the threshold stated — turns an
+   assertion into a reproducible one. `no-bare-root` already emits a version of this.
+2. **Re-tier to a class that admits self-reference**, or state in the record that the evidence is the
+   instrument's own and cannot be independently checked. T1 asserts the opposite of that.
+3. **Withdraw the counts and keep the qualitative finding**, which stands without them.
+
+**Second defect on the same three records:** batch 8 found L-0218, L-0219 and L-0220 are records
+about the corpus's own retrieval rather than government commitments, and excluded them from the
+undated-commitment decision on that ground. **They are now flagged twice on two independent grounds,
+which is the strongest signal in the pass-B set that a whole record class needs a decision** — not
+whether each is right, but whether a corpus should carry records about itself in the same ledger,
+under the same verdict vocabulary, as records about the government.
+
+## 4. L-0116 AND THE NEGATIVE-EXISTENTIAL SWEEP
+
+**L-0116 confirmed.** Four sentences match, including *"No written order, circular or SOP
+establishing the practice has ever been published"* and *"no published series exists"*. Rule 5d's
+mechanical test — could one document turning up tomorrow falsify the sentence with no figure
+changing? — is met by both.
+
+**Sweep, needle printed in the log: 39 sentences across 30 records.** Highest counts: L-0114 (4),
+**L-0116 (4)**, L-0093 (2), L-0168 (2), L-0115 (2).
+
+**This is a CANDIDATE LIST and is not a finding.** The needle matches the FORM. Several will be
+correctly grounded on a stated search in the surrounding sentence — L-0155's *"It has never been
+published as a document of the Comptroller and Auditor General for any year"* names the publisher and
+the scope, which is close to the honest form. **Only reading each settles it, and that is the work,
+not this sweep.** Recorded so the population is known: **30 records carry the form.**
+
+## 5. L-0226 — CONFIRMED, and it violates the rule its own caveat states
+
+The rule for incommensurable quantities is category 3 of the four measurement categories:
+
+> instruments measuring DIFFERENT quantities. Not a dispute and not an absence. **No conversion, no
+> side-by-side placement.**
+
+L-0226's caveat: *"'Not absorbed' and 'backed down' are treated as distinct quantities throughout
+this record and must not be read as synonyms… no retrieved document states the relationship between
+them."*
+
+**The record diagnoses category 3 and then does the thing category 3 prohibits.** Its title — *"A
+rule guarantees no renewable capacity is backed down; the plan built on it projects that some will not
+be absorbed"* — is the side-by-side placement, and the `contested` verdict rests on it. Its
+`contestedGround` is `interpretation`, which asserts two readings of one thing; the caveat says there
+are two things.
+
+**And it never declared its category at all: `differentFacts` is `undefined` on L-0226** — not false,
+absent — while the four-categories rule says *"A record must say which it is."*
+
+**CONFIRMED.** The caveat anticipates the objection and does not answer it. This is also the one
+finding in the set that runs **against** the government.
+
+## 6. DIRECTION BY LAYER — both hold, and they point opposite ways
+
+| layer | measure | direction |
+|---|---|---|
+| **provenance** | `overstates-post-2014` **19** vs `understates-post-2014` **6** | **3.2:1 against the government** |
+| **ledger** | alleged verdict errors, by which way they would move if upheld | **13 against : 1 toward** — L-0026, L-0029, L-0047, L-0014, L-0207, L-0188, L-0209, L-0210, L-0122, L-0094, L-0154, L-0164, L-0167 against; **L-0226** toward |
+
+**Both hold as counts. Neither is a measurement of bias, and the difference matters.** The provenance
+figure counts LABELS the corpus applied; the ledger figure counts ERRORS a reviewer alleges. **A
+finding set's direction is a property of the reviewer as much as of the corpus** — and this one came
+from a single reviewer whose own bottom line is that the verdict errors lean pro-government, so the
+count is not independent of the conclusion it supports.
+
+### What a reader should be told, and this is the part the instrument most owes
+
+**The honest statement is not "we are balanced" and not "we lean".** It is:
+
+> The measurement-dispute records lean 3.2:1 toward finding that post-2014 figures flatter
+> performance. That is a property of which measurement problems were investigated, not a
+> finding about the government. **Separately, where external review has found the verdict
+> vocabulary misapplied, the errors have run predominantly in the government's favour.**
+> **The two point opposite ways and neither cancels the other.** A reader should treat the
+> provenance direction as a statement about the instrument's attention and the verdict
+> direction as a statement about its discipline.
+
+**Nothing is published from this yet** — it is a triage finding and the page is not touched in this
+batch. But it is the sentence `/method` will have to carry once the 70-record decision lands.
+
+## 7. THE DECISION SET GROWS: 49 → **70 RECORDS**
+
+Pass B adds 38 records, **21 of them new**: L-0011 L-0015 L-0019 L-0021 L-0033 L-0093 L-0106 L-0115
+L-0139 L-0140 L-0155 L-0166 L-0175 L-0185 L-0186 L-0189 L-0199 L-0216 L-0221 L-0224 L-0226.
+
+| class | records | new |
+|---|---:|---:|
+| `worked` against the `partly` definition (L-0048 control) | 3 | 0 |
+| `worked` on a proxy · on an inferred objective | 2 | 0 |
+| tier: journalism account tagged T1 | 3 | **3** |
+| tier: full document on a mirror (ambiguous) | 3 | 2 |
+| tier: multilateral tagged T1 | 3 | 1 |
+| tier: foreign primary, no class exists | 8 | **5** |
+| self-citation as T1 on a private repo | 3 | 0 |
+| rule-5d negative existentials | 12 | **9** |
+| incommensurable placed side by side | 1 | 1 |
+| stated-search not met on a named record | 3 | 1 |
+
+**The classes that grew are the SOURCING and ABSENCE-CLAIM classes, not the verdict classes.** Pass A
+found the verdict problems; pass B found that the evidence layer beneath them is tagged wrong. **That
+is the more serious direction of growth**: a verdict can be re-argued, and a tier that is wrong makes
+every count built on it wrong, including the one on the public page.
+
+**A third operator question now joins the two from batch 8:**
+**(c) does the ladder grade the SERVER or the DOCUMENT — and what class does a foreign government
+primary take?** It is unanswerable from the current ladder, it blocks 24 of the 70, and it is the
+only one of the three that changes a published number.
