@@ -333,7 +333,19 @@ export interface Pair {
  *   intended population.
  * - `failed` — it did not achieve the objective stated at announcement. Includes a measure
  *   struck down by a court: the outcome is the same and only the mechanism differs, so
- *   record the mechanism in `assessmentNote`.
+ *   record the mechanism in `assessmentNote`. **An objective may be IMPOSED as well as
+ *   announced** (Ruling 5, operator, 2026-08-06): a duty imposed by an authority other than
+ *   the body being assessed — a statute, a constitutional provision, a court direction — is a
+ *   legitimate objective for scoring, **provided the record names the instrument, the duty in
+ *   the instrument's own words, and the duty-holder**. Four conditions: the obligation is
+ *   imposed rather than volunteered, and an instrument's silence on a deadline does NOT move it
+ *   to `no-objective` (L-0162 against L-0210, both stated, binary and undated); the duty must be
+ *   the one the finding is about, not one merely in the vicinity (L-0154, where Article 281's
+ *   duty was discharged); naming an instrument is not breaching it (L-0122, where AFSPA section
+ *   7 sets no standard on the grant rate); and an absent duty is not a duty (L-0164, whose
+ *   finding is that Articles 200 and 201 fix no period). It does NOT reach an objective INTERNAL
+ *   to the measure — L-0108 is `failed` against the recruitment process's own object, under the
+ *   ordinary definition above.
  * - `reversed` — the ENACTING AUTHORITY withdrew or repealed its own measure. **`measure`
  *   means an intervention that acts on the world.** Withdrawing a disclosure, a publication
  *   or a reporting practice is not reversal, even where the authority withdrawing it is the
@@ -349,6 +361,18 @@ export interface Pair {
  * - `awaiting-adjudication` — the measure is in force and its effect is testable in principle,
  *   but the term that would settle the assessment is a pending decision by a body outside the
  *   enacting authority. Distinct from `too-early`, where the obstacle is elapsed time.
+ * - `no-objective` — the record finds something real, and no objective was stated at
+ *   announcement against which the finding could be scored. Distinct from `contested`, which is
+ *   about evidence supporting more than one reading. The value asserts nothing about the
+ *   finding's quality. **ADDED HERE 2026-08-06 — it had no bullet of its own for the whole of
+ *   its life**, appearing only inside `undated-commitment`'s, while carrying roughly half the
+ *   ledger; the omission surfaced only when Ruling 5 came to amend it. **An imposed duty is not
+ *   the absence of a claim**: this value reaches what was not claimed BY the government, not an
+ *   obligation imposed ON it — see `failed`. An instrument's silence on a deadline does not
+ *   restore it, because Ruling 3's undated ladder governs what was volunteered. It still
+ *   correctly covers a duty DISCHARGED while the finding is about something else (L-0154), an
+ *   instrument named but not breached (L-0122), and a finding that IS the absence of an
+ *   obligation (L-0164).
  * - `undated-commitment` — a stated and quantified commitment carrying no deadline, which
  *   therefore cannot fall due. **Progress against it is reportable even though it can never
  *   become overdue**: the value says the clock is missing, not the objective. Distinct from
