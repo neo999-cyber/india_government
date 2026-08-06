@@ -427,3 +427,76 @@ needs its own field.
 
 **Sequenced with the other two: `objectives[]` first** — because if the state is per-limb it is a
 field on that array and not a new axis at all. **`independence` is independent of both.**
+
+---
+
+## Batch 4 — the calibration. What the axis answers, and what it cannot see
+
+Full account in [`BATCH-4-CALIBRATION.md`](BATCH-4-CALIBRATION.md). **Three reports, one proposal.
+No record touched, no schema or enum change, 0 verdicts moved.**
+
+**THE CROSS-TABS.** `role × verdict` and `adjudication × verdict` are countable for the first time
+and **the striking one is circular**: 32 records accept an exogenous explanation and **not one is
+`failed`**; 4 refuse one and **3 are `failed`**. Substantively that is what method requires — a
+record that accepts the shock as producing the outcome cannot score the government as having failed.
+**But the adjudication was assigned from the same prose the verdict rests on, so the table is
+evidence about the corpus's internal consistency and not about the world.** The instrument's own
+independence principle applies to its own new axis: nothing outside the corpus would have to change
+for the cross-tab to change, so it is method. **Naming it unanswerable is worth more than the table.**
+
+**COVERAGE IS A FINDING BECAUSE IT IS ABOUT ABSENCE.** banking 100% · poverty 100% ·
+human-development 88% · welfare 81% · employment 75% · infrastructure 67% — against **governance 6%
+of 110, federalism 13% of 52, defence 0 of 10, kashmir 0 of 46**. The axis covers the delivery
+domains and does not reach the institutional and rights domains at all. **`term` coverage measures
+the wrong thing** — 50 of 66 events are COVID and `term` is when the MEASURE launched, so any
+time-series question is unanswerable. **The exposure has no date of its own, because the event's
+window is exactly the property Ruling 8 blocked**, and the table demonstrates that cost concretely.
+
+**THE TWO-VALUE SENTENCE — the operator's pairing does not hold and the conclusion survives without
+it.** L-0012 is a sentence carrying two values; **L-0002 carries no exposure sentence at all** and is
+an authoring gap in a record written before the field existed. **Two entries ARE the answer for 17
+records** that name more than one event and carry one entry — L-0012 L-0014 L-0017 L-0023 L-0027
+L-0034 L-0038 L-0041 L-0051 L-0052 L-0053 L-0057 L-0058 L-0067 L-0070 L-0072 L-0073. **L-0023 names
+four events and carries one, so three are invisible.** **L-0052 is L-0012's problem solved by
+cardinality** — a cause and a confound on two different events in one sentence — which proves the two
+shapes are different. **L-0014 shows `direction` is a per-entry property**, measured in batch 1 and
+not built. Splitting the seventeen is a mechanical pass and is queue work; L-0012, L-0049 and
+L-0051's role question stays exactly where the exemption puts it.
+
+**THE REFUSAL SET — 15, all naming COVID, and one test applied eleven times: DOES THE PATTERN PREDATE
+THE SHOCK?** *predates* · *already underway* · *already flat* · *pre-COVID years* · *before the
+pandemic* · *a decade-long trend*. Two partition by limb (L-0036, L-0037); one inverts the direction
+in the government's favour (L-0029); one is a peer comparison (L-0016, which stacks three tests in
+one sentence). **That is a method applied consistently and it belongs on the site**, unlike the
+cross-tab, because it is checkable sentence by sentence rather than circular.
+**AND THE SHARPEST INSTANCE IS NOT IN THE SET.** L-0116 — *"The COVID justification has outlived
+COVID by four years"* — **carries no exposure entry**, and it is a kashmir record in a domain that is
+0 of 46. Of the sixteen exposure-less records that reason from a shock, **four are refusals and four
+are acceptances used as a defence**, and they use **three tests the field never sees**: L-0159's
+LEGAL test (*"a once-in-a-century pandemic is not implementation"*), L-0099's DISCRIMINANT test (no
+other state saw it, so a shared shock cannot explain it), L-0195's BASELINE test (a COVID trough used
+as the comparison base). **The corpus uses four refusal tests and the field captures one.**
+**The field is right in shape and its population is selected by DOMAIN, not by whether the record
+adjudicates a shock** — that is the phase's calibration result.
+
+**`objectives[]` PROPOSED for phase 17**, and it now sequences ahead of `commitmentState`,
+`independence` and `claimAtLaunch` structurally rather than by preference: **commitment state
+attaches to the LIMB on the corpus's own usage, so it is a property of this array and not a sibling.**
+Holds `text` · `quantified` (Ruling 9's unquantified-limb prohibition) · `measurement` (`met` /
+`not-met` / `unmeasured` / **`unmeasurable-no-event`**, which is batch 1's `reasonKind` gap relocated
+to where it belongs — a property of the objective, not of a holder) · **`grounds`** (Ruling 9's core
+requirement, invisible until the rule was written) · `commitmentState` per limb · `unmeasuredRef`.
+**Makes enforceable:** Ruling 2 (live population zero, its one historical instance asserting its own
+compliance in a sentence nothing can check), Ruling 9, `commitmentState` at all, and the
+multi-objective population as a query rather than a reading. **Backfill: 43 records by id, two
+authoring batches, no verdict moves.** **Hazard stated:** it must be designed WITH the
+`claimAtLaunch` vocabulary or the two contradict, and **Ruling 5's imposed duties belong here too** —
+a duty is an objective with no `claimAtLaunch` at all.
+
+### Queue after this batch
+1. Split the seventeen multi-event exposures into one entry per event — mechanical, clause-level.
+2. Backfill exposure in governance, federalism and kashmir, where the misses concentrate, starting
+   from the sixteen exposure-less records that already adjudicate a shock.
+3. `direction` as a per-entry property (L-0014 is the case). Not proposed; measured only.
+4. The refusal finding as a site surface — four tests, named, with the records under each.
+5. `objectives[]`, phase 17, designed with the `claimAtLaunch` vocabulary.
