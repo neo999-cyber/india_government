@@ -3764,3 +3764,187 @@ claim states a search. **The pass cannot test its own most important convergent 
 **Recommendation: do not run Pass B or Pass C as built.** Reshape Extract B's selection around the 49
 records at risk, and give Extract C the `why` texts. Neither is a large change and both are
 mechanical.
+
+---
+
+# BATCH 8 — PREPARING THE 49-RECORD DECISION. 2026-08-06
+
+**Nothing decided, no verdict moved, `/data` untouched.**
+
+## 1. THE EXTRACT DEFEATED THE REVIEW ON EVERY FLAGGED RECORD, NOT ONE
+
+Re-checked all 34 records the two reports name. **The extract cut prose from all 34.** Median cut
+~400 bytes; the worst showed 30–107 bytes of a 1,100–1,300-byte note. **L-0205 showed 10 bytes of a
+242-byte note.**
+
+**Corpus-wide: the first-sentence rule cut 87 per cent of `assessmentNote` by volume and removed the
+correction marker from 49 of the 173 records carrying one.**
+
+**Which findings the cut prose actually defeats, strengthens, or leaves standing:**
+
+| finding | what the full note says | effect |
+|---|---|---|
+| **A2 awaiting-adjudication** | all three name their current value and carry `RESCORED` | **DEFEATED** — already recorded |
+| **A3 on L-0026** | *"Worked is therefore asserted on the recapitalisation objective … and NOT on consolidation"* | **PREMISE DEFEATED.** The reviewer's *"unless omitted evidence establishes…"* condition is met. It survives as a design question — may a verdict score one announced objective and record the other as an absence? — not as an inconsistency |
+| **A3 on L-0207** | *"Scored on delivery and on delivery only … A reader should take this score as saying the electricity flows, not that the deal is good"* | **STRENGTHENED.** The record concedes the exact mechanism the reviewer alleges |
+| **A1 on L-0209** | *"an objective is a target that can be failed … This is not a judgement that the fence is unbuilt"* | **CONVERTED to a DISAGREEMENT.** The record agrees with the reviewer's characterisation and differs on what the value should be called |
+| **G2A on L-0122** | `VALUE-AND-NOTE RECONCILED`: rescored *"in the pass that introduced no-objective **to drain the contested sink**"* | **STRENGTHENED.** The record supplies a motive the reviewer did not have |
+
+**So the defect ran in both directions**: it manufactured one finding, and it withheld the evidence
+that would have sharpened two others.
+
+### The generator is fixed
+
+- **A correction clause is never stripped.** The `PROVENANCE_OPENER` strip is gone.
+- **`assessmentNote` prints IN FULL** in Extract A. It is the argument for the verdict, and the
+  instrument's own words are that a verdict shown without its argument is what it exists not to do.
+- **Provenance `whatChanged` keeps its first sentence but never loses a correction** — 5 of the 6
+  records carrying one had it beyond the first sentence, so the carrier sentence is appended with an
+  elision mark.
+- **Verified: 40 of 40 ledger and 4 of 4 provenance corrections now reach the extract.** The one
+  apparent miss, P-49, was my verification regex matching *"previously enrolled in by default"* —
+  ordinary prose about farmers. The generator's needle correctly ignored it.
+- `pass-a-structural.md` 240,871 → **351,423 bytes**.
+
+## 2. THE 24 `contested` RECORDS WITH NO `assessmentNote` — none is a missing ground
+
+**All 24 carry BOTH a substantial `caseFor` and `caseAgainst`** — 338 to 1,719 bytes each, none under
+330 — **and all 24 now carry a classified `contestedGround`.**
+
+| ground | n | ids |
+|---|---:|---|
+| criterion | 7 | L-0015 L-0019 L-0020 L-0040 L-0084 L-0085 L-0126 |
+| measure | 7 | L-0043 L-0058 L-0060 L-0074 L-0078 L-0083 L-0132 |
+| evidence-withheld | 4 | L-0042 L-0057 L-0070 L-0148 |
+| time | 2 | L-0031 L-0082 |
+| evidence-unobservable | 2 | L-0056 L-0079 |
+| interpretation | 2 | L-0075 L-0128 |
+
+**Batch 13 generalised from five and the generalisation holds, but for a reason it did not state.**
+`assessmentNote` is defined as *"a note on the assessment VALUE itself — typically that the existing
+vocabulary does not cleanly fit"*. **Its absence means no strain was recorded about the value, not
+that no reasoning exists.** The reasoning is in `caseFor`/`caseAgainst` — **which Extract A omitted
+entirely**, which is why both reviewers read `contested` as under-argued.
+
+**What this does to the reviewers' finding: it weakens the general charge and sharpens the specific
+one.** 18 of 24 rest on a criterion, measure, interpretation or time ground — two readings of shared
+evidence, which is what `contested` is for. **6 of 24 rest on `evidence-withheld` or
+`evidence-unobservable`** — and those are the records where the reviewers' description is accurate:
+the verdict is declined because a fact is missing, not because two readings compete.
+
+## 3. THE TIMIDITY TEST — the method is working on the heavily-cited set, with 8 exceptions
+
+**82 per cent of high-citation non-evaluative records cite sources that disagree**, and the rate
+rises with citation count:
+
+| | records | showing a source-conflict signal |
+|---|---:|---:|
+| non-evaluative with ≥4 citations | 45 | **37 (82%)** |
+| non-evaluative with <4 citations | 95 | 61 (64%) |
+
+The dominant signal is a declared provenance record carrying `competingAccounts` (24 of the 37) —
+the record points at a measurement dispute that literally holds two parties' positions.
+**So the extra citations on non-evaluative records are the two sides of a dispute. That is the method
+working, and the "timidity" reading is not supported for the heavily-cited set.**
+
+Contested records on a **missing-evidence** ground carry *more* citations (mean 3.1) than those on a
+**two-readings** ground (2.7), which cuts mildly against the ignorance reading too.
+
+### The residual, and it converges with the other findings
+
+**8 records are heavily cited, non-evaluative, and show no source conflict at all:**
+
+`L-0123` `L-0021` `L-0164` `L-0166` `L-0213` `L-0131` `L-0167` `L-0018`
+
+**Five are constitutional or statutory-duty records** (L-0164, L-0166, L-0167, L-0123, L-0131) —
+Article 356 proclamations, Governor assent, Inter-State Council non-meetings, the Public Safety Act.
+**L-0164 and L-0167 are also in Review G's statutory double-standard set, and L-0213 is in Review A's
+undated-commitment set.** **Three findings converge on the same records: heavily evidenced, sources
+that agree, constitutional duty, and no verdict.** That is the sharpest form of the timidity charge
+and it is where the decision should look first.
+
+## 4. THE DECISION BRIEF — 49 records, two questions
+
+### QUESTION (a): is a commitment with a target and NO DEADLINE scoreable?
+
+**Reviewers:** Review A rates this Critical. *"An indefinitely drafted promise can never become
+overdue while the verdict says nothing was claimed."*
+**Measurement:** 13 `no-objective` records carry a populated `claimAtLaunch`; the ids reproduce
+exactly. L-0209's own note agrees on the facts and differs on the name: *"an objective is a target
+that can be failed."*
+
+| ruling | records that move | what it commits the instrument to |
+|---|---:|---|
+| **Not scoreable (status quo)** | **0** | Saying so **where a reader sees it**. `no-objective` currently reads "no objective was stated at announcement", which is **false on all 13**. The value would need renaming or a mandatory note. It also keeps a live incentive: an undated announcement is permanently unscoreable |
+| **Scoreable — undated targets take a real verdict** | **up to 13**, and fewer on inspection: **at least 3 (L-0218, L-0219, L-0220) are records about the INSTRUMENT'S OWN retrieval, not government commitments**, and do not move | Scoring against announcements with no due date everywhere, which means a verdict that can never be falsified by time — the objection that produced `no-objective` in the first place |
+| **A third value: "announced, undated, unfalsifiable"** | 13 relabelled, **0 verdicts change direction** | An enum change, and it is what `commitmentState`'s `no-trigger` was — see below |
+
+### QUESTION (b): does a single government press release support `worked`?
+
+**Reviewers:** both, independently. Review G: *"Awarding an unqualified `worked` verdict based on a
+single T1 government press release accepts government self-reporting as ground truth."*
+**Measurement:** `worked` 9 records, mean **1.4** citations against `failed` 3.3. **T1×12 T4×1, no T2,
+no T3.** Eight of nine resolve `seriesRefs` and **every resolved series is T1** — the series add
+volume, not independence. L-0207 has no series at all.
+
+| ruling | records that move | what it commits the instrument to |
+|---|---:|---|
+| **Yes, sufficient** | **0** | Disclosing it. The corpus's strongest claim about itself is that a verdict traces to its evidence; a success verdict resting on one government release is a property a reader must be told about, not one they should have to derive |
+| **No — `worked` needs corroboration outside the announcing body** | **up to 7** (the single-citation `worked` set: L-0023 L-0026 L-0029 L-0047 L-0052 L-0053 L-0014) | **A sourcing floor, which the instrument has never had for any verdict** |
+| **A floor of ≥2 citations for every scored verdict** | **61 records across seven classes** — `no-objective` 17 · `contested` 15 · `partly` 15 · `worked` 7 · `failed` 4 · `too-early` 2 · `awaiting-adjudication` 1 | Symmetry. **`partly` is 47 per cent single-citation and `failed` 25 per cent**, so a floor applied only to `worked` would be the asymmetry the reviewers allege, inverted |
+
+**The symmetry number is the one to hold on to: `worked` is 78 per cent single-citation, `partly` 47
+per cent, `failed` 25 per cent.** The asymmetry is real and it is a gradient, not a `worked`-only
+defect.
+
+### The other two classes in the 49
+
+**`contested` (20 records).** 5 have a pending outside adjudication and could move to
+`awaiting-adjudication` — a reclassification within existing vocabulary, no enum change, and the
+records' own notes explain why they were not (L-0163, L-0165: *"both readings rest on the same
+admitted text"*). 16 rest on a missing-evidence ground; moving them needs a value that does not exist.
+
+**`too-early` (2 records).** L-0188 and L-0205 reason explicitly from the obstacle and the commitment
+rule allows an observable condition in place of a date. **The definition's first clause says "the
+measure is in force" and they are not.** The cheapest fix in the whole set: **amend the definition's
+wording, move no verdict.**
+
+### WHAT BOTH ANSWERS IMPLY FOR `commitmentState`
+
+**The field cannot be designed before question (a) is answered, and the answer determines whether it
+exists at all.**
+
+- **If undated targets are NOT scoreable**, `no-trigger` is the right value and the field is
+  coherent — but it then **formalises in a schema the exact behaviour both reviews attack**, and
+  shipping it makes the defect harder to reverse.
+- **If undated targets ARE scoreable**, `no-trigger` should not exist, and the field reduces to three
+  states — plus the fifth value the last batch found missing (*due and delivered*), giving four again
+  but a different four.
+- **Either way the scope changes.** The proposal scoped it by `claimAtLaunch`, 89 records. **The 13
+  contested records are exactly the ones `no-trigger` would apply to**, and at least 3 of the 13 are
+  instrument-meta records that should not be in scope at all. **The scope marker needs a second
+  condition: the claim must be a GOVERNMENT commitment, not the corpus's own account of its
+  retrieval.**
+
+## 5. BOTH PASSES RESHAPED — not run
+
+**Pass B was reselected against what the triage knows.** The two largest previous criteria —
+*corrected more than once*, *rescored after shipping* — **carried 2 of the 8 records the reviewers
+argued about, and are dropped.** A criterion selecting for the author's own correction history
+selects for what the author already knew was wrong. Their counts stay in Extract A's change table.
+
+**Now: 73 records** — the 49 at risk **grouped by the finding each belongs to, with their comparison
+sets** (`L-0095 L-0106 L-0108 L-0162` beside `L-0094 L-0122 L-0154 L-0164 L-0167`; `L-0048 L-0212`
+beside the nine `worked`), because **both reviewers had to reason by comparison and the first extract
+gave them no way to do it** — plus the phase's 10 hardest calls **as a control**, so a second round
+has undisputed records to calibrate against. 305,363 → **616,172 bytes**.
+
+**Pass C's E.2 now carries the `why` for all 311 entries.** It was ids-only, which is why the pass
+could not test the `not-published` finding it exists for. The section states the measurement — zero
+of 206 meet the stated-search rule while the `why` texts argue producibility — and tells the reviewer
+to **read the two rules against each other, not just against the records.** 293,898 → **521,039
+bytes**.
+
+**Neither is run.** `pass-a-structural.md` is also regenerated at 351,423 bytes and **a second Pass A
+would now be a different document** — every finding that turned on truncated prose would be
+re-derivable or refutable from the file itself.

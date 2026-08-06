@@ -1,19 +1,19 @@
-Emitted by tools/gen-adversarial-pass-input.mjs at 6b72097. ALL FIGURES ARE BYTES, never characters.
+Emitted by tools/gen-adversarial-pass-input.mjs at 6ab86dc. ALL FIGURES ARE BYTES, never characters.
 
 SECTIONS (built once, shared between files)
   brief            3,105
   limits           4,710
   gates            2,337
-  A              196,776
-  B              257,043
+  A              307,329
+  B              567,853
   C               30,073
   D                4,337
-  omissions        2,361
-  E              250,081
-  sum            750,823
+  omissions        2,360
+  E              477,223
+  sum          1,399,327
 
 FILES (opening block differs per file; shared sections are byte-identical across them)
-  adversarial-pass-input.md      753,885 bytes   5,306 lines
-  pass-a-structural.md           240,871 bytes   2,851 lines
-  pass-b-deep.md                 305,363 bytes   1,700 lines
-  pass-c-method.md               293,898 bytes   1,490 lines
+  adversarial-pass-input.md    1,402,389 bytes   8,567 lines
+  pass-a-structural.md           351,423 bytes   2,851 lines
+  pass-b-deep.md                 616,172 bytes   3,146 lines
+  pass-c-method.md               521,039 bytes   3,305 lines

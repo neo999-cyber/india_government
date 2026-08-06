@@ -207,6 +207,27 @@ const CLASSIFICATION_DRIFT = {
 const BULK_RESCORE_SUBJECT = 'Apply the rescore: 25 records to no-objective, 4 notes, 4 held red';
 const inBulk = (id) => (HIST[id]?.values ?? []).slice(1).some((v) => v.subj === BULK_RESCORE_SUBJECT);
 
+/**
+ * THE 49 RECORDS TWO INDEPENDENT REVIEWS PUT IN QUESTION, added 2026-08-06 after the first external
+ * round. The previous criteria — corrected twice, rescored, a contested spread — were built for a
+ * different question and carried only 2 of the 8 records the reviewers argued about. A second round
+ * that re-derives confirmed findings is wasted, so the deep set now leads with the open ones.
+ *
+ * Grouped by the finding each belongs to, because a reviewer needs to see the comparison the first
+ * round had to make by hand: the records that took a verdict AND the near-identical ones that did not.
+ */
+const REVIEW_AT_RISK = {
+  'no-objective on a record that states a target': 'L-0184 L-0187 L-0206 L-0208 L-0209 L-0210 L-0211 L-0213 L-0215 L-0217 L-0218 L-0219 L-0220',
+  'statutory duty scored failed': 'L-0095 L-0106 L-0108 L-0162',
+  'statutory duty scored no-objective — the comparison set': 'L-0094 L-0122 L-0154 L-0164 L-0167',
+  'worked on one or two government citations': 'L-0014 L-0023 L-0026 L-0029 L-0047 L-0052 L-0053 L-0151 L-0207',
+  'partly on the same multi-objective shape — the comparison set': 'L-0048 L-0212',
+  'contested with a pending outside adjudication': 'L-0075 L-0082 L-0163 L-0165 L-0168',
+  'contested on a missing-evidence ground': 'L-0018 L-0042 L-0056 L-0057 L-0070 L-0079 L-0110 L-0114 L-0116 L-0136 L-0137 L-0144 L-0148 L-0178 L-0179',
+  'too-early on a measure not in force': 'L-0188 L-0205',
+  'heavily cited, non-evaluative, no source conflict': 'L-0018 L-0021 L-0123 L-0131 L-0164 L-0166 L-0167 L-0213',
+};
+
 const C1_HARDEST = ['L-0221', 'L-0222', 'L-0223', 'L-0224', 'L-0225', 'L-0226', 'P-121', 'P-122', 'P-123', 'P-127'];
 /**
  * "Corrected more than once" has to exclude corpus-wide sweeps, or it degenerates. Eight records
@@ -235,10 +256,21 @@ const mark = (ids, why) => {
     REASONS.get(id).push(why);
   }
 };
-mark(C1_HARDEST, 'the closing phase’s hardest calls');
-mark(C2_MULTI, 'corrected more than once — two or more targeted commits reworked it after it shipped');
-mark(C3_INDIVIDUAL, 'its assessment changed after it shipped, individually rather than in the bulk rescore');
+/**
+ * `C2_MULTI` and `C3_INDIVIDUAL` ARE NO LONGER SELECTED, and the reason is measured rather than felt.
+ * They were the deep set's two largest criteria in the first round and **between them they carried 2
+ * of the 8 records the two external reviewers argued about** — both of which the at-risk set now
+ * carries anyway. A criterion that selects for the author's own correction history selects for what
+ * the author already knew was wrong, which is close to the opposite of what a review is for. They
+ * are computed above and left there deliberately: the counts still appear in Extract A's change
+ * table, where a reviewer can ask for them, and dropping them from the SELECTION is not the same as
+ * hiding them.
+ */
+mark(C1_HARDEST, 'the closing phase’s hardest calls — carried as a control, not because a review questioned it');
 mark(C4_CONTESTED_SPREAD, 'the contested spread — lowest id in one of the seven grounds');
+for (const [finding, ids] of Object.entries(REVIEW_AT_RISK)) {
+  mark(ids.split(' '), `put in question by the first external review — ${finding}`);
+}
 
 const DEEP = [...REASONS.keys()].sort((a, b) => {
   const rank = (x) => (x.startsWith('L-') ? 0 : 1);
@@ -270,24 +302,53 @@ const w = (s) => {
 const S = (...names) => names.map((n) => (SECTIONS.get(n) ?? []).join('')).join('');
 const esc = (s) => String(s ?? '').replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ').trim();
 /**
- * The first SUBSTANTIVE sentence, for the one-line-per-record structural extract.
+ * A NOTE ON WHAT THIS FILE NO LONGER DOES, because it produced a false finding in a real review.
  *
- * Assessment notes written by the verdict-reasoning sweeps open with a dated provenance clause —
- * "Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no
- * stated reasoning." — which is identical on some sixty records and says nothing about the verdict.
- * Printing it would fill the extract with boilerplate and hide the thesis sentence that follows it.
- * The clause is skipped HERE ONLY; it is not removed from the record, the `corrected` marker on the
- * same block names the field it sits in, and the full note is in Extract B or D.
+ * Extract A used to print the first substantive sentence of a prose field AND strip a leading dated
+ * correction clause on top of that — so a corrected record showed the sentence arguing the OLD
+ * position and not the sentence withdrawing it. An external reviewer read three
+ * `awaiting-adjudication` records, saw "Scored too-early because…", and reported that the corpus had
+ * not corrected them. All three name their current value and carry a `RESCORED` marker, in the text
+ * the extract had cut. **The reviewer reasoned correctly from a document that had removed the
+ * evidence against the conclusion.**
+ *
+ * Measured across the corpus: the first-sentence rule cut **87 per cent** of `assessmentNote` by
+ * volume, and cut the correction marker itself on **49 of the 173 records carrying one**.
+ *
+ * TWO RULES FOLLOW, and they are not negotiable in an extract this instrument publishes:
+ *   1. A CORRECTION CLAUSE IS NEVER STRIPPED. It is the last thing that should go, not the first.
+ *      The method claims corrections stay visible; an extract that removes them makes that false.
+ *   2. `assessmentNote` PRINTS IN FULL. It is the argument for the verdict, and a verdict shown
+ *      without its argument is the thing this instrument exists not to do — its own words.
  */
-const PROVENANCE_OPENER = /^(?:Written|CORRECTED|RESCORED|VALUE-AND-NOTE RECONCILED|Bounded)\s+\d{4}-\d{2}-\d{2}[^.]*\.\s*/;
 const firstSentence = (s) => {
   if (!s) return '';
-  let t = String(s).replace(/\s*\n\s*/g, ' ').trim();
-  const stripped = t.replace(PROVENANCE_OPENER, '');
-  if (stripped && stripped !== t) t = stripped;
+  const t = String(s).replace(/\s*\n\s*/g, ' ').trim();
   const m = t.match(/^.{0,240}?[.:;](?=\s|$)/);
   return (m ? m[0] : `${t.slice(0, 240)} …`).trim();
 };
+
+/** Full text, normalised to one line. Used wherever truncation would remove an argument. */
+const whole = (s) => String(s ?? '').replace(/\s*\n\s*/g, ' ').trim();
+
+/**
+ * A first sentence that CANNOT drop a correction. Where the correction sits later in the field, the
+ * sentence carrying it is appended with an elision mark, so the reader sees both the thesis and the
+ * withdrawal and can tell that text was omitted between them.
+ *
+ * Rule 1 above is absolute: 5 of the 6 provenance records whose `whatChanged` carries a correction
+ * had it beyond the first sentence, so a plain first-sentence rule would have lost every one.
+ */
+const CORRECTION_IN_PROSE = /\b(?:CORRECTED|RESCORED|VALUE-AND-NOTE RECONCILED|WITHDRAWN|Bounded)\b|\bpreviously (?:read|carried|gave|said|stated)\b|\bthis (?:record|sentence|note) previously\b/;
+const firstSentenceKeepingCorrections = (s) => {
+  const t = whole(s);
+  if (!t) return '';
+  const head = firstSentence(t);
+  if (!CORRECTION_IN_PROSE.test(t) || CORRECTION_IN_PROSE.test(head)) return head;
+  const carrier = t.split(/(?<=[.!?])\s+/).find((sent) => CORRECTION_IN_PROSE.test(sent));
+  return carrier ? `${head} […] ${carrier.trim()}` : head;
+};
+
 const field = (label, body) => (body && String(body).trim() ? `**${label}.** ${String(body).replace(/\s*\n\s*/g, ' ').trim()}\n\n` : '');
 
 /* ============================================================ 0. BRIEF */
@@ -410,7 +471,7 @@ w(
     `- \`verdict\` — the ledger's \`assessment\` enum. Definitions are in Extract C; the measured distribution is printed there beside each value.\n` +
     `- \`bias\` — the provenance layer's \`directionOfBias\` enum. Provenance records carry no verdict; this is the closest thing they have to one.\n` +
     `- \`claim\` — \`claimAtLaunch\`, what the government said the thing would achieve. Empty where nothing was claimed, which is itself a finding the corpus scores (\`no-objective\`).\n` +
-    `- \`reasoning\` — **the first SUBSTANTIVE sentence of the record's assessment note**, not the whole note. Where a note opens with a dated clause recording when it was written or corrected, that clause is skipped here so the thesis sentence shows; the clause is still in the record and the \`corrected\` marker below names its field. The full note is present for the ${DEEP.length} records in Extract B and the ${DROPPED_BULK.length} in its appendix, and is not in this file for the rest. That omission is listed at the end.\n` +
+    `- \`reasoning\` — **the record's assessment note IN FULL**, including any dated clause recording a correction. It was previously the first sentence with the correction clause stripped, which cut 87 per cent of this field by volume and removed the correction marker from 49 of the 173 records carrying one — and produced a false finding in an external review, which reported three records as uncorrected while their notes named the correction in the text the extract had cut.\n` +
     `- \`sources\` — count by tier. **The tier grades the DOCUMENT HELD, not the institution the subject belongs to**: an official finding known only through a newspaper is T4. Ladder in Extract C.\n` +
     `- \`unmeasured\` — the stated reasons the record gives for things it says have no measurement, with the count of each. Definitions in Extract C.\n` +
     `- \`corrected\` — the fields carrying a self-correction or withdrawn wording. Full text in Extract D or B.\n\n`,
@@ -428,7 +489,7 @@ for (const r of ledger.slice().sort((a, b) => a.id.localeCompare(b.id))) {
   );
   if (r.claimAtLaunch) bits.push(`claim — ${esc(r.claimAtLaunch)}`);
   else bits.push(`claim — *none stated at announcement*`);
-  if (r.assessmentNote) bits.push(`reasoning — ${esc(firstSentence(r.assessmentNote))}`);
+  if (r.assessmentNote) bits.push(`reasoning — ${esc(whole(r.assessmentNote))}`);
   else bits.push(`reasoning — *no assessment note*`);
   bits.push(
     `sources ${(r.sources ?? []).length} [${tierStr(t) || 'none'}]` +
@@ -455,7 +516,7 @@ for (const r of provenance.slice().sort((a, b) => Number(a.id.slice(2)) - Number
   const bits = [];
   bits.push(`**${r.id}** · ${esc(r.title)}`);
   bits.push(`bias \`${r.directionOfBias}\` · ${esc(r.when)} · ${(r.affectsDomains ?? []).join('/')} · bridge ${r.bridgeExists === true ? 'exists' : r.bridgeExists === false ? 'NONE' : '—'}`);
-  bits.push(`what changed — ${esc(firstSentence(r.whatChanged))}`);
+  bits.push(`what changed — ${esc(firstSentenceKeepingCorrections(r.whatChanged))}`);
   bits.push(
     `sources ${(r.sources ?? []).length} [${tierStr(t) || 'none'}]` +
       (r.affectsSeries?.length ? ` · affects ${r.affectsSeries.length} series` : '') +
@@ -548,30 +609,36 @@ section('B');
 w(`---\n\n# EXTRACT B — DEEP\n\n`);
 w(`## How these ${DEEP.length} records were selected\n\n`);
 w(
-  `Chosen adversarially, not sampled. Four criteria, each aimed at a place where a defect is more likely than average, ` +
-    `and every record meeting any of them is here. The criteria are mechanical except the first, which is a judgement and is stated as one.\n\n`,
+  'Chosen adversarially, not sampled, and **reselected on 2026-08-06 after the first external round**. ' +
+    'The previous criteria — corrected more than once, rescored after shipping — were the two largest in the ' +
+    'set and **carried 2 of the 8 records the two independent reviewers argued about.** A criterion that ' +
+    "selects for the author's own correction history selects for what the author already knew was wrong, " +
+    'which is close to the opposite of what a review is for. They are dropped from the selection and their ' +
+    "counts remain in Extract A's change table.\n\n",
 );
 w(
-  `**(i) The closing phase's hardest calls — ${C1_HARDEST.length} records.** The last phase closed on environment and energy. Named by hand: the two records the phase could not score and filed \`contested\`; ` +
-    `the \`partly\` that four correction passes reworked; the \`failed\` that turned on which column of a coal table was the right one; the two \`too-early\` verdicts on 2030 and 2070 commitments; ` +
-    `and the four provenance records carrying the definitional break and the basis seam that those verdicts rest on. ` +
-    `**This criterion is a judgement about which calls were hardest and you should treat it as contestable** — the other three are reproducible from git and this one is not.\n\n`,
+  `**(i) The 49 records two independent reviews put in question, plus their comparison sets.** Grouped by ` +
+    `the finding each belongs to, and the groups are the point: both reviewers had to reason by comparison — ` +
+    `L-0026 against L-0048, L-0095 against L-0094 — and the first extract gave them no systematic way to do ` +
+    `it. Where a finding says "these records took verdict X and those near-identical ones took Y", **both ` +
+    `sides are here**:\n\n`,
+);
+for (const [finding, ids] of Object.entries(REVIEW_AT_RISK)) {
+  w(`- **${finding}** — ${ids.split(' ').length}: ${ids.split(' ').join(' · ')}\n`);
+}
+w('\n');
+w(
+  `**(ii) The closing phase's hardest calls — ${C1_HARDEST.length} records, carried as a CONTROL.** No review ` +
+    `questioned them. They are here so a second round has records the first round did not dispute, against ` +
+    `which to calibrate: a reviewer who finds the same density of defects in the control as in the disputed ` +
+    `set is telling us something about the reviewer, or about the corpus as a whole, rather than about the ` +
+    `disputed records.\n\n`,
 );
 w(
-  `**(ii) Corrected more than once — ${C2_MULTI.length} records.** At least two TARGETED commits reworked the record after it shipped, where targeted means the commit touched ` +
-    `${SWEEP_THRESHOLD} records or fewer. Counted by \`tools/gen-record-history.mjs\`; the count is a count of COMMITS, so one correction touching four fields counts once. ` +
-    `The threshold is not cosmetic: ${C2_SWEPT_ONLY.length} records reached three or more edits purely by being caught in three corpus-wide passes — a bulk rescore, a note-reconciliation sweep, a lens-axis migration — ` +
-    `which is three commits and no correction of that record at all. Those ${C2_SWEPT_ONLY.length} are ${C2_SWEPT_ONLY.sort().join(', ')}, named here because the threshold is a judgement and you may think it is the wrong one. ` +
-    `The premise behind the criterion is that a record reworked repeatedly is one whose author kept finding it wrong, and the last pass is not guaranteed to have been the one that fixed it.\n\n`,
-);
-w(
-  `**(iii) Assessment changed after shipping, individually — ${C3_INDIVIDUAL.length} records.** Every record whose verdict moved after it was published, EXCLUDING the ${C3_ALL_CHANGED.length - C3_INDIVIDUAL.length} moved in the single bulk commit that created the \`no-objective\` value. ` +
-    `Those ${C3_ALL_CHANGED.length - C3_INDIVIDUAL.length} are not full-prose here unless they also meet criterion (ii); the complete change table for all ${C3_ALL_CHANGED.length} is in Extract A.3 and the full assessment note of each is in the appendix at the end of this extract. ` +
-    `**Say if you think that exclusion was wrong.** The argument for it is that one decision applied to ${C3_ALL_CHANGED.length - C3_INDIVIDUAL.length} records is one decision; the argument against is that each of the ${C3_ALL_CHANGED.length - C3_INDIVIDUAL.length} was individually rescored under it and each rescoring could be wrong.\n\n`,
-);
-w(
-  `**(iv) A spread of \`contested\` — ${C4_CONTESTED_SPREAD.length} records.** \`contested\` is the verdict that declines to choose, and it carries ${ASSESSMENT.get('contested')} of ${ledger.length} records — the value most open to the charge that refusing to score is a way of avoiding a conclusion the evidence supports. ` +
-    `The project classified all ${ASSESSMENT.get('contested')} by what would settle each; the seven grounds are listed below. One record is taken from each — the lowest id, so the choice is not the author's — giving a spread across grounds rather than across domains.\n\n`,
+  `**(iii) A spread of \`contested\` — ${C4_CONTESTED_SPREAD.length} records, lowest id in each of the seven grounds.** ` +
+    `\`contested\` carries ${ASSESSMENT.get('contested')} of ${ledger.length} records and is the verdict most open to the charge ` +
+    `that declining to score avoids a conclusion the evidence supports. The project classified all ` +
+    `${ASSESSMENT.get('contested')} by what would settle each:\n\n`,
 );
 w('| ground | n | what would settle it | taken here |\n|---|---:|---|---|\n');
 const GROUND_SETTLES = {
@@ -974,17 +1041,26 @@ for (const a of STRONG) {
   w('\n');
 }
 
-w(`## E.2 — The rest of the absence population — ${REST.length} entries, ids only\n\n`);
+w(`## E.2 — The rest of the absence population — ${REST.length} entries, WITH their stated reason\n\n`);
 w(
-  `**Ids only, and that is a deliberate cut you should hold against this document.** These ${REST.length} entries carry \`not-published\` or \`not-collected\` without a dispute flag. ` +
-    `Both are claims about the world and both inherit the stated-search rule in full — but the \`why\` is where a search is stated, and printing ${REST.length} of them would have crowded out the rules this pass exists to test. ` +
-    `**So the stated-search rule cannot be tested against these from this file.** They are listed so the population is visible: a reviewer shown only the ${STRONG.length} strongest claims would judge the vocabulary on its narrowest cases and conclude it is applied more carefully than it is. ` +
-    `If the sample in E.1 makes you suspect a pattern here, say so and name what you would need.\n\n`,
+  '**These carry `not-published` or `not-collected` without a dispute flag. Both are claims about the ' +
+    'world and both inherit the stated-search rule in full**, so the `why` is printed for every one — ' +
+    'it is where a search is either stated or not, and it is the entire evidence for whether the label ' +
+    'is honest.\n\n' +
+    '**This section was ids-only in the first round, and that was the wrong cut.** An external reviewer ' +
+    `found that \`not-published\` is used ${unmeasuredAll.filter((a) => a.u.reasonKind === 'not-published').length} times and ` +
+    'could not test whether any of them met the rule, because this document had removed the field that ' +
+    "would settle it. **A measurement afterwards found zero of them state any of the rule's three " +
+    'accepted search forms** — while the `why` texts argue producibility, which is a DIFFERENT rule\'s ' +
+    'test, correctly applied. **Both rules are in Extract C. Read them against each other, not just ' +
+    'against the records.**\n\n',
 );
-for (const k of ['not-published', 'not-collected', 'withheld', 'never-defined']) {
-  const g = REST.filter((a) => a.u.reasonKind === k);
-  if (!g.length) continue;
-  w(`**\`${k}\`** — ${g.length}: ${g.map((a) => a.id).join(' · ')}\n\n`);
+for (const a of REST) {
+  w(`**${a.id}** (${a.layer}) · \`${a.u.reasonKind}\`\n\n`);
+  w(`- *What is not measured:* ${String(a.u.what).replace(/\s*\n\s*/g, ' ').trim()}\n`);
+  w(`- *Why no figure exists:* ${String(a.u.why).replace(/\s*\n\s*/g, ' ').trim()}\n`);
+  if (a.u.wouldFill) w(`- *What would close it:* ${String(a.u.wouldFill).replace(/\s*\n\s*/g, ' ').trim()}\n`);
+  w('\n');
 }
 
 w(`## E.3 — Claims about what EXISTS — ${existenceHits.length} candidate sentences across ${new Set(existenceHits.map((h) => h.id)).size} records\n\n`);
