@@ -74,6 +74,17 @@ report with an empty or wrong diff is a failure, not a success. **A JSON round-t
 way to edit a file whose formatting you did not choose**: four whole-file reformats were caught this
 way, each reported clean by the script that caused it.
 
+**A CORRECTION QUOTES WHAT IT WITHDREW, IN THE SAME FIELD — and until 2026-08-06 this was described
+here as the instrument's practice while being true of 6 fields out of 30.** The convention is real
+and it was largely aspirational; it is stated as a requirement now and the backlog was backfilled
+from git in the same batch that wrote this, because a convention asserted and not kept is worse than
+one not asserted — every later cycle cites it as though it had held. **THE ONE EXCEPTION, and it is
+not a gap: the convention does not apply where the FIELD DID NOT EXIST before the correction.**
+L-0011's `assessmentNote` is the case — the record carried a failure verdict with no stated
+reasoning and the correction *created* the note, so there is no withdrawn wording, because nothing
+was withdrawn. A correction of an absence says that it is one. Without this exception written down,
+a backfill comes up exactly one short and the gap reads as an oversight.
+
 **A correction guard asserts a presence, never an absence.** When a record is corrected, the
 withdrawn wording survives in the sentence that records the withdrawal — that is the form every
 correction in this instrument takes, because stating the change inside the record is what
@@ -275,6 +286,32 @@ axis that shares the spelling by accident. Declarations are compared as sets; **
 `then` branches are CONSTRAINTS**, checked as subsets whose every omission is declared by name in
 `CONSTRAINT_OMISSIONS` — that is what forced `undated-commitment` into the rule requiring `caseFor`
 and `caseAgainst`, which a set comparison alone would have let slip.
+
+**EVERY RULE IS EVALUATED AGAINST ONE SNAPSHOT, AND THE CORPUS IS WRITTEN ONCE — the single-snapshot
+rule, ruled by the operator 2026-08-06.** Where two rules read the same field, applying them in
+sequence makes the ORDER decide the outcome, and the order is an accident of how the batch was
+written. This was not hypothetical: the qualifying intra-state sources for L-0023, L-0026 and L-0029
+were four `abclive.in` citations, and band A re-tiered exactly those citations T1 → T4 in the same
+pass. **Re-tier first and all three fail the independence test on ordering; test independence first
+and all three pass on a tier the pass is about to withdraw.** Neither is a finding about the
+evidence. So: read the corpus into memory, evaluate every rule against **that** snapshot, collect
+the changes, and write once. A rule never reads a value another rule in the same pass has already
+changed. Where the outcome genuinely depends on the order — where rule B's input is rule A's output
+— that is a dependency to be **stated in the pass and decided deliberately**, not resolved by
+whichever loop happened to run first.
+
+**A SELF-AUDIT DOES NOT BELONG IN THE SCORED LEDGER — ruled by the operator 2026-08-06.** The tier
+ladder grades external documents by their DISTANCE FROM THE EVENT, and a derivation over the
+corpus's own `/data` is at no distance: it is the corpus restating itself. That is why band C had no
+place on the ladder and why inventing a class for it would have been the wrong repair. Under the
+governing principle, **a source is not independent of what it establishes when it IS what it
+establishes.** L-0218, L-0219 and L-0220 left the ledger on 2026-08-06. **Their findings are real
+and stay published** — as method and derivation content at `/derivations`, where the rule is printed
+beside every number and a reader can recompute it. What a scored record could carry and a derivation
+cannot is recorded there too, rather than quietly dropped: the `caseFor` and `caseAgainst`, the
+`caveat`, the `revisitTrigger` and the declared absences. **The test for a future record is whether
+anything outside this corpus would have to change for the finding to change.** If nothing would, it
+is method.
 
 **GRADE THE DOCUMENT, NOT THE SERVER — the mirror rule, ruled by the operator 2026-08-06.** Identical
 bytes ARE the document. A High Court judgment retrieved from a legal-news mirror, or a ministry PDF

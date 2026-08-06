@@ -21,17 +21,17 @@
       {
         "name": "Executive Order 14329 of August 6, 2025, Addressing Threats to the United States by the Government of the Russian Federation, 90 FR 38701, sections 1 and 2",
         "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-11/html/2025-15267.htm",
-        "tier": "T1"
+        "tier": "T1F"
       },
       {
         "name": "Executive Order 14389 of February 20, 2026, Ending Certain Tariff Actions, 91 FR 9437, section 1",
         "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-25/html/2026-03832.htm",
-        "tier": "T1"
+        "tier": "T1F"
       },
       {
         "name": "Learning Resources, Inc. v. Trump, 607 U.S. ___ (2026), No. 24-1287, syllabus, describing EO 14257's imposition of a duty on all imports from all trading partners of at least 10 per cent",
         "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf",
-        "tier": "T1"
+        "tier": "T1F"
       }
     ],
     "confidence": "high",
@@ -57,12 +57,12 @@
       {
         "name": "Learning Resources, Inc. v. Trump, 607 U.S. ___ (2026), Nos. 24-1287 and 25-250, decided February 20, 2026 — syllabus and held; Kavanaugh, J., dissenting, on section 122, section 201 and section 301 as remaining authorities",
         "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf",
-        "tier": "T1"
+        "tier": "T1F"
       },
       {
         "name": "Executive Order 14389 of February 20, 2026, Ending Certain Tariff Actions, 91 FR 9437",
         "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-25/html/2026-03832.htm",
-        "tier": "T1"
+        "tier": "T1F"
       }
     ],
     "confidence": "high",
@@ -89,12 +89,12 @@
       {
         "name": "Proclamation 11012 of February 20, 2026, Imposing a Temporary Import Surcharge To Address Fundamental International Payments Problems, 91 FR 9339, clauses 1 and 7",
         "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-25/html/2026-03824.htm",
-        "tier": "T1"
+        "tier": "T1F"
       },
       {
         "name": "19 U.S.C. 2132 (section 122 of the Trade Act of 1974), Balance-of-payments authority, subsections (a), (d) and (e) — 15 per cent ceiling, 150-day period, nondiscriminatory treatment",
         "url": "https://www.govinfo.gov/content/pkg/USCODE-2024-title19/html/USCODE-2024-title19-chap12-subchapI-part2-sec2132.htm",
-        "tier": "T1"
+        "tier": "T1F"
       }
     ],
     "confidence": "high",
@@ -128,12 +128,12 @@
       {
         "name": "Notice of Actions in Section 301 Investigations of Acts, Policies, and Practices of Various Economies Related to the Failure of Each Economy To Impose and Effectively Enforce a Prohibition on the Importation of Goods Produced With Forced Labor, 91 FR 47318, USTR-2026-0265 and USTR-2026-0266 — DATES; determination 24, India; the 10 per cent tier list; exemptions",
         "url": "https://www.govinfo.gov/content/pkg/FR-2026-07-28/html/2026-15181.htm",
-        "tier": "T1"
+        "tier": "T1F"
       },
       {
         "name": "Memorandum of July 23, 2026, Actions by the United States in the Investigations Under Section 301 of the Trade Act of 1974 of the Acts, Policies, and Practices of 60 Economies Related to the Failure of Each Economy To Impose and Effectively Enforce a Prohibition on the Importation of Goods Produced With Forced Labor, 91 FR 47717 — India listed at 24 of 60",
         "url": "https://www.govinfo.gov/content/pkg/FR-2026-07-28/html/2026-15274.htm",
-        "tier": "T1"
+        "tier": "T1F"
       }
     ],
     "confidence": "high",
@@ -170,17 +170,17 @@
       {
         "name": "United States-India Joint Statement, The White House, 6 February 2026 — key terms of the Interim Agreement, including the 18 per cent rate under EO 14257, the conditional removals, and the $500 billion five-year purchase intent",
         "url": "https://www.whitehouse.gov/briefings-statements/2026/02/united-states-india-joint-statement",
-        "tier": "T1"
+        "tier": "T1F"
       },
       {
         "name": "Executive Order 14389 of February 20, 2026, Ending Certain Tariff Actions, 91 FR 9437 — terminating the additional ad valorem duties imposed under IEEPA in EO 14257",
         "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-25/html/2026-03832.htm",
-        "tier": "T1"
+        "tier": "T1F"
       },
       {
         "name": "Office of the United States Trade Representative, 2026 press releases index, retrieved 4 August 2026 — last India item is the 6 February joint statement; concluded and early-harvest agreements with other partners appear in the same index over the same period",
         "url": "https://ustr.gov/about/policy-offices/press-office/press-releases/2026",
-        "tier": "T1"
+        "tier": "T1F"
       }
     ],
     "confidence": "medium",
@@ -218,7 +218,7 @@
       {
         "name": "Executive Order 14329 of August 6, 2025, 90 FR 38701, section 2(a) — \"I find that the Government of India is currently directly or indirectly importing Russian Federation oil\"",
         "url": "https://www.govinfo.gov/content/pkg/FR-2025-08-11/html/2025-15267.htm",
-        "tier": "T1"
+        "tier": "T1F"
       },
       {
         "name": "Petroleum Planning and Analysis Cell, Snapshot of India's Oil & Gas data, June 2026 — crude import volume, value and processing; no country-of-origin table",
@@ -713,12 +713,12 @@
             {
                 "name": "Countering America's Adversaries Through Sanctions Act, Public Law 115-44, section 231 (22 U.S.C. 9525) — subsection (a) mandatory imposition, (b) waiver authority and its Russian-cyber certification condition, (c) delay authority and its 180-day certification",
                 "url": "https://www.govinfo.gov/content/pkg/PLAW-115publ44/html/PLAW-115publ44.htm",
-                "tier": "T1"
+                "tier": "T1F"
             },
             {
                 "name": "Department of State, Notice of Department of State Sanctions Actions, 86 FR 18017, 7 April 2021 — the section 231(a) determination and sanctions against Turkey's Presidency of Defense Industries, effective 14 December 2020; cited as the positive control that a determination produces a published instrument",
                 "url": "https://www.govinfo.gov/content/pkg/FR-2021-04-07/html/2021-07048.htm",
-                "tier": "T1"
+                "tier": "T1F"
             }
         ],
         "confidence": "high",
@@ -1095,8 +1095,8 @@
         "summary": "The 1020 MW Punatsangchhu-II Hydroelectric Project in Bhutan commenced export of surplus power to India on 19 September 2025 \"at a mutually agreed starting tariff\", and was jointly inaugurated by the Prime Minister of India and the King of Bhutan on 11 November 2025. The Tariff Protocol for the project was signed on 9 April 2026, during the Union Power Minister's visit to Bhutan, alongside a Methodology for Reactive Energy Accounting of reactive power exchange. Indo-Bhutan hydropower cooperation is dated by the Ministry to 1961, with an agreement on hydroelectric power cooperation in 2006.",
         "claimAtLaunch": "The Ministry's framing at the signing: another step in mutually beneficial hydropower cooperation, within an enhanced bilateral institutional framework mechanism covering non-hydro energy, cross-border transmission, project financing, capacity building and institutional partnerships. No tariff, revenue or export-volume target is stated for the project in anything retrieved.",
         "whatHappened": "THE POWER MOVED BEFORE THE PRICE WAS SETTLED, AND THE PRICE IS NOT PUBLISHED IN EITHER PERIOD. Export began on 19 September 2025 at what the Ministry calls \"a mutually agreed starting tariff\" — a phrase that concedes an interim arrangement — and the Tariff Protocol was signed on 9 April 2026, six months and three weeks later. In between, on 3 February 2026, the Bhutanese Energy Minister and the Union Power Minister were still deliberating \"the commercial optimization of power output\" from the project, which places the commercial terms unsettled more than four months after power began flowing. Neither the starting tariff nor the protocol tariff appears in anything retrieved.",
-        "assessment": "worked",
-        "assessmentNote": "Scored on delivery and on delivery only: the project was built, commissioned and is exporting, which is what a joint hydropower project is for, and the two governments inaugurated it jointly. The commercial terms are NOT scored here and cannot be — no tariff is published for either period and no revenue or volume target was announced against which the arrangement could be judged. A reader should take this score as saying the electricity flows, not that the deal is good.",
+        "assessment": "partly",
+        "assessmentNote": "RESCORED FROM worked TO partly, 2026-08-06. Independent evidence was searched for and found where the earlier note assumed none existed: BHUTAN IS A COUNTERPARTY, NOT A BYSTANDER. The Ministry of Energy and Natural Resources of the Royal Government of Bhutan recorded the synchronisation of the final unit on 27 August 2025 and more than 2,160 million units generated — a foreign national government primary, independent of the Indian ministry whose claim is under test, and it establishes the delivery the earlier verdict rested on. The record also gets its tariff: Bhutan Broadcasting Service reported on 11 April 2026 that the export tariff was set at Nu 5.10 per unit, the highest for any Bhutanese hydropower project, which satisfies this record’s own revisit trigger. DELIVERY IS NOW INDEPENDENTLY ESTABLISHED AND THE COMMERCIAL LIMB STILL IS NOT: no figure exists for the interim tariff applied between 19 September 2025 and 9 April 2026, nothing states whether the Protocol reaches back over that period, and no project-level export volume to India has been retrieved. Power flowed for nearly seven months at a price that is still not on any public record.\n\nPREVIOUS NOTE, PRESERVED VERBATIM: Scored on delivery and on delivery only: the project was built, commissioned and is exporting, which is what a joint hydropower project is for, and the two governments inaugurated it jointly. The commercial terms are NOT scored here and cannot be — no tariff is published for either period and no revenue or volume target was announced against which the arrangement could be judged. A reader should take this score as saying the electricity flows, not that the deal is good.",
         "caseFor": "The plant exists and is exporting, which is more than most of the pipeline can say — the companion project at Punatsangchhu-I was still awaiting commissioning in February 2026 after far longer. Beginning export on an interim tariff rather than waiting for the protocol is the choice that gets power onto the grid earliest, and Bhutan is paid from the first unit rather than from the signature. The 9 April 2026 signings are substantive rather than ceremonial: a tariff protocol and a reactive-energy accounting methodology are the two instruments a cross-border interconnection actually needs to settle accounts and hold the grid stable. The institutional framework agreed at the same time gives the relationship a standing review mechanism instead of ministerial visits.",
         "caseAgainst": "The sequence inverts the ordinary protection. Power flowed for six months and three weeks on an interim price, which means the smaller party's revenue for that period was determined by an arrangement neither government has published and neither parliament has seen. \"Commercial optimization\" was still under deliberation in February 2026, so the terms were not merely unpublished but unfinished while the asset ran. And the protocol's signature does not close the disclosure: no tariff figure exists in the public record for the interim period or the settled one, so nothing about the price — whether it rose, fell or was applied retrospectively — can be checked by anyone outside the two ministries.",
         "unmeasured": [
@@ -1127,7 +1127,7 @@
             }
         ],
         "confidence": "high",
-        "asOf": "2026-08-05",
+        "asOf": "2026-08-06",
         "revisitTrigger": "Re-test if any tariff figure is published for either period, or if cross-border exchange volumes for the Bhutan interconnections are released. Either would make the value of the interim arrangement measurable for the first time; without them it stays unmeasurable however long the plant runs."
     },
     {
@@ -1630,7 +1630,7 @@
             {
                 "name": "United Nations Treaty Series, Volume 419, No. 6032 — The Indus Waters Treaty 1960 (with annexes), signed at Karachi on 19 September 1960 by India, Pakistan and the International Bank for Reconstruction and Development, registered by India on 16 January 1962; Article XII(3) and XII(4) on modification and termination by duly ratified treaty, and Article XI(1)(a) limiting the Treaty to the use of the waters and matters incidental thereto. Full text with a machine-readable layer, 215,794 characters, scanned in full through the corpus-search helper",
                 "url": "https://treaties.un.org/doc/Publication/UNTS/Volume%20419/volume-419-I-6032-English.pdf",
-                "tier": "T1"
+                "tier": "T2"
             },
             {
                 "name": "Press Information Bureau, \"Operation SINDOOR: India's Strategic Clarity and Calculated Force\", Backgrounder, 12 May 2025 — the Pahalgam attack of 22 April 2025 and its 26 deaths; the Indus Waters Treaty of 1960 to be \"held in abeyance with immediate effect, until Pakistan credibly and irrevocably abjures its support for cross-border terrorism\", described in the preceding sentence as \"India's termination of the Indus Waters Treaty\"; the closure of the Integrated Check Post Attari with return by 1 May 2025; the suspension of all bilateral trade; and the exclusion of Pakistani nationals from SAARC Visa Exemption Scheme visas",
@@ -1689,12 +1689,12 @@
             {
                 "name": "UN Comtrade, annual merchandise trade, reporter India (699), partner Pakistan (586), commodity TOTAL, current US dollars — exports 523,219,521.55 (2023), 1,183,104,667.26 (2024), 352,265,385.36 (2025); imports 7,694,921.24 (2023), 6,420,457.41 (2024), 3,726,123.20 (2025)",
                 "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=699&period=2024&partnerCode=586&flowCode=X,M&cmdCode=TOTAL",
-                "tier": "T1"
+                "tier": "T2"
             },
             {
                 "name": "UN Comtrade, annual merchandise trade, reporter Pakistan (586), partner India (699), commodity TOTAL, current US dollars — imports from India 258,201,193.28 (2023), 304,929,840.64 (2024), 311,312,741.10 (2025); exports to India 36,499.28 (2023), 16,625.29 (2024), 108,026.17 (2025)",
                 "url": "https://comtradeapi.un.org/public/v1/preview/C/A/HS?reporterCode=586&period=2024&partnerCode=699&flowCode=X,M&cmdCode=TOTAL",
-                "tier": "T1"
+                "tier": "T2"
             },
             {
                 "name": "Press Information Bureau, \"Operation SINDOOR: India's Strategic Clarity and Calculated Force\", Backgrounder, 12 May 2025 — the closure of the Integrated Check Post Attari with immediate effect and return by 1 May 2025, the suspension of all bilateral trade with Pakistan, the halting of exports including onions and the ban on imports of cement and textiles",
@@ -1705,135 +1705,5 @@
         "confidence": "high",
         "asOf": "2026-08-05",
         "revisitTrigger": "Re-test when a monthly series across April 2025 becomes available on any route, and when 2026 annual figures are published — a full year wholly after the decision is the first observation that does not straddle it. The mirror gap should be re-checked at the same time: if it narrows as direct trade stops, that is itself informative about what was causing it."
-    },
-    {
-        "id": "L-0218",
-        "title": "Three Indian government publication channels cannot be read by an ordinary client, and the documents survive because a different arm of the same government republishes them",
-        "date": "2026-08-05",
-        "term": "T3",
-        "domains": [
-            "governance",
-            "foreign"
-        ],
-        "type": "institutional",
-        "summary": "Every retrieval blockage recorded during phase 14 was re-tested by varying the host. Three Indian government channels remain unreadable: the Ministry of External Affairs website, which returns HTTP 200 and a JavaScript scaffold with no document text, and the Ministry of Defence and Department of Defence Production sites, whose HTTPS connections fail outright. CORRECTED 2026-08-05 (correction cycle 6): this record originally counted FOUR and named the e-Gazette as the fourth and worst, unreachable and unduplicated. THAT WAS WRONG AND WAS A RESOLVER ARTEFACT. With an explicit resolver pin (egazette.gov.in -> 164.100.190.144) the portal serves, and a Gazette notification was retrieved from it as a PDF with a real text layer. The measurement was made with a plain request before this machine's broken resolver was understood - the very error this record warns about, committed by this record. In three of the four cases the material itself proved fully retrievable elsewhere — through the Press Information Bureau for ministry documents, and through the United Nations Treaty Series for a treaty that the Ministry's own portal serves only as an image. For the e-Gazette no alternate route was found.",
-        "claimAtLaunch": "No commitment is under test here. Every one of these sites is an official publication channel and is presented as the route by which the relevant documents are made public; that is the only claim involved, and it is implicit in their existence rather than announced.",
-        "whatHappened": "THE BLOCKAGE IS AT THE MINISTRY'S OWN WEBSITE, AND THE RECORD SURVIVES BECAUSE A DIFFERENT ARM REPUBLISHES IT. mea.gov.in returns HTTP 200 with 82,719 bytes on its press-releases path, of which 4,326 characters are navigation chrome carrying the string \"Loading...\" and no release text; the same failure was confirmed earlier on its media-briefings path. mod.gov.in and ddpmod.gov.in do not complete an HTTPS connection at all. egazette.gov.in was originally recorded as failing to connect; on re-test with a resolver pin it serves, and that finding is corrected above. (egazette.nic.in has no A record on 1.1.1.1 at all, which is a different fact and stands.) Against this, the Press Information Bureau served a Ministry of Defence document of 1,994,703 bytes on request, and has carried Power, Home Affairs, Commerce and Prime Minister's Office material throughout this phase; and the Indus Waters Treaty — a 5MB image scan yielding 113 bytes of text on the Ministry's own legal-treaties portal — is a 215,794-character machine-readable document in the United Nations Treaty Series, where India registered it in 1962. ARCHIVING DOES NOT RESCUE A JAVASCRIPT SHELL. The Internet Archive's snapshot of the same Ministry page returns 4,326 characters, still carrying \"Loading...\" and still containing no release text: the crawler captured the scaffold, because the scaffold is what the server sends.",
-        "assessment": "no-objective",
-        "assessmentNote": "No target for the accessibility of the public record is announced by any of these bodies, so there is nothing that could have worked or failed. What this record establishes is a measurement precondition for everything else in the corpus: which official channels can be read, which cannot, and — the part that matters — that a failure to read a ministry's website is not evidence that its documents are unpublished. Recorded because the opposite inference was made three times in this phase and was wrong each time.",
-        "caseFor": "The public record is more robust than any single channel's failure suggests, and that is the honest headline. Every ministry document sought during this phase was obtained, because the Press Information Bureau republishes across ministries and does so as server-rendered pages an ordinary client can read; the redundancy is real and it worked. For treaties the redundancy extends outside the government entirely — registration with the United Nations produced a machine-readable text of a 1960 instrument that the responsible ministry serves only as an image, which is the international registration system doing exactly what it exists for. A ministry website being slow, broken or JavaScript-heavy is also an ordinary technical condition rather than a policy of concealment, and nothing here suggests otherwise.",
-        "caseAgainst": "A publication channel that cannot be read is not publishing, whatever it intends. Three of these are the designated route to their own material, and a citizen with a standard client gets HTTP 200 and an empty page from the Ministry of External Affairs — the failure mode that looks most like success and is hardest to distinguish from an absence. The redundancy that rescues the record is also incidental rather than designed: the Press Information Bureau carries what it carries, and a document no press release covers has no second route. The e-Gazette was offered here as the case that proves it, being unreachable and unduplicated; that example is WITHDRAWN, because the e-Gazette turned out to be reachable and its documents retrievable. The argument about incidental redundancy stands on its own; the illustration did not survive re-testing. And an archived copy of a JavaScript scaffold means the failure is being preserved rather than the document, so the loss is not merely current.",
-        "unmeasured": [
-            {
-                "what": "How much Ministry of External Affairs material has no Press Information Bureau equivalent",
-                "why": "The redundancy that rescued this phase is opportunistic. Establishing its coverage would require enumerating what the Ministry publishes, which is precisely what cannot be read from the blocked channel. The gap is unmeasurable from the outside for the same reason it matters.",
-                "wouldFill": "A server-rendered index or a machine-readable feed from the Ministry, either of which would make its output enumerable.",
-                "reasonKind": "not-published"
-            },
-            {
-                "what": "Whether these channels are readable from other networks, clients or jurisdictions",
-                "why": "Every test here ran from one location. A connection failure is a relationship between a client and a server, and this record states what one client observed rather than asserting a property of the servers. Two hosts were tried for the e-Gazette and for the arbitration site, and the Ministry site was tried on two paths, two dates and through the Internet Archive — but that is host variation, not network variation.",
-                "wouldFill": "The same requests from an independent network, or a public status or uptime record for the sites.",
-                "reasonKind": "not-collected"
-            }
-        ],
-        "caveat": "This record states what one client observed on 5 August 2026 and on the earlier dates noted in the verification log; it does not assert that these sites are unreachable in general, and the second unmeasured says so. The Permanent Court of Arbitration is deliberately excluded from the four: it returned HTTP 403 from both pca-cpa.org and pcacases.com and its Internet Archive snapshot resolves to the case index rather than the case, but it is not an Indian government publication channel and belongs to a different question. The 4,326-character figure is the normalised text remaining after markup is stripped, not the byte size served, and the two differ by more than an order of magnitude — which is the point: the byte size looks like a document and the text is not one.",
-        "sources": [
-            {
-                "name": "Retrieval observations, phase 14, recorded in docs/verification-log.md across cycles 2026-08-04 to 2026-08-05 — mea.gov.in press-releases and media-briefings paths returning HTTP 200 with a JavaScript scaffold; mod.gov.in and ddpmod.gov.in failing HTTPS; egazette.gov.in and egazette.nic.in failing to connect on both hosts; and the Internet Archive snapshot of the Ministry page reproducing the same scaffold",
-                "url": "https://www.mea.gov.in/press-releases.htm",
-                "tier": "T1"
-            },
-            {
-                "name": "United Nations Treaty Series, Volume 419, No. 6032 — the Indus Waters Treaty 1960 as registered by India on 16 January 1962, served as a machine-readable 215,794-character document, against the same instrument on the Ministry of External Affairs legal-treaties portal as an image scan yielding 113 bytes of extractable text",
-                "url": "https://treaties.un.org/doc/Publication/UNTS/Volume%20419/volume-419-I-6032-English.pdf",
-                "tier": "T1"
-            }
-        ],
-        "confidence": "high",
-        "asOf": "2026-08-05",
-        "revisitTrigger": "Re-test each channel at the start of any phase that depends on it — this record is a snapshot of a relationship between a client and four servers, and phase 14 found that two such findings had gone stale within months. The e-Gazette is the one to watch: it is the only channel here with no second route, and it is the channel of legal record."
-    },
-    {
-        "id": "L-0219",
-        "title": "Of 278 citations that name a publisher rather than a document, half cannot be opened and half name nothing specific enough to open — and the two halves are not the same half",
-        "date": "2026-08-05",
-        "term": "T3",
-        "domains": [
-            "governance"
-        ],
-        "type": "institutional",
-        "summary": "A correction sequence begun on 5 August 2026 reduced the corpus's bare-domain-root citations from 302 to 278 and then partitioned the residue rather than continuing to reduce it. Each of the 92 distinct cited roots was requested through an explicit resolver, and the response measured as text remaining after markup was stripped rather than as bytes. 139 of the 278 citations point at a URL that returns no document: 54 refused a connection despite resolving, 50 returned HTTP 200 with fewer than 500 characters of text, 23 have no DNS record, and 12 returned HTTP 403. The other 139 point at a URL that returns real content. Separately and cutting across both, 139 citations name no document at all — no year and no number anywhere in the citation — of which 58 sit on hosts that answer perfectly well.",
-        "claimAtLaunch": "None. No commitment governs how a research corpus cites, and this record scores nothing. It exists because the second output the retrieval-capability cycle was scoped to produce was a documented account of what cannot be retrieved by ordinary means, and this is that account.",
-        "whatHappened": "THE PARTITION SEPARATES THREE FAILURES THAT LOOK IDENTICAL FROM A DISTANCE. A host that refuses a connection, a host that returns 200 with a JavaScript scaffold, and a citation that names a genre rather than a document all present as \"the source cannot be checked\", and each needs a different remedy — a route, a rendering client, or new research. THE MEASUREMENT THAT SEPARATES THE FIRST TWO IS TEXT, NOT BYTES. sansad.in returns 29,501 bytes and 25 characters of text; morth.nic.in and mospi.gov.in return nothing at all; cag.gov.in returns 43,861 characters. Ranked by bytes the first two are indistinguishable from a document. THE THIRD FAILURE IS THE LARGEST AND THE LEAST VISIBLE. \"Contemporary reporting\", \"SHRC report coverage\", \"NCRB / MHA data and contemporary reporting\" — 139 citations carry neither a year nor any multi-digit number, so no working host would help. 58 of those already sit on hosts that answer.",
-        "assessment": "no-objective",
-        "assessmentNote": "Nothing here was promised, so nothing can have failed. What the record establishes is the shape of a known defect and the size of each part of it, so that later work is directed at the right remedy and the instrument does not re-measure what it has already measured. The partition is the finding; the counts are its evidence.",
-        "caseFor": "The corpus is more checkable than the raw count suggests, and that is the honest reading. 139 of 278 cited roots do return real content, so a reader who wants the publisher can reach it; the defect is precision, not fabrication. The instrument also holds a mechanical guarantee that this class cannot grow: a gate refuses any new bare root, and refuses equally when a fixed citation's allowlist entry is left behind, so the count is monotonic and progress cannot be faked. And the 24 citations closed in this sequence were closed properly — each identified by matching the record's own values against the retrieved document, with the matching query written into the citation so a later reader re-runs the identification rather than trusting it.",
-        "caseAgainst": "Half of the residue is not a link problem at all and no amount of link-fixing will touch it: 139 citations name a publisher or a genre, and closing them means finding out what was actually read, which for records written years ago may be irrecoverable. The corpus therefore contains a class of claim whose source is, in practice, the author's memory. The bare-root problem was also under-measured twice before it was measured properly — first at 141 because the detector filtered on one tier, then at 302 with a phantom class of 99 untiered entries that did not exist — so the count in this record should be read as the third attempt, not the first. And 42 of the 92 cited roots cannot be opened at all, which for a corpus whose discipline is that a source must be retrievable is a standing embarrassment however it is partitioned.",
-        "unmeasured": [
-            {
-                "what": "How many of the 139 unaddressable citations could be re-grounded, and how many are irrecoverable",
-                "why": "Establishing it requires attempting the research behind each one, which is the work itself rather than a measurement of it. The 139 is a strict lower bound in the other direction too: it counts only citations carrying neither a year nor a multi-digit number, so a citation naming a year but no document is addressable by this test and may not be in practice.",
-                "wouldFill": "A cycle that attempts a sample and reports the recovery rate.",
-                "reasonKind": "not-collected"
-            },
-            {
-                "what": "Whether the hosts classified here as returning no document serve documents on deeper paths",
-                "why": "This partition measures THE CITED URL, which is a bare root, and not the host's capacity. The Press Information Bureau is the standing counter-example: its bare root refuses and www.pib.gov.in returns 24 characters, while PressReleasePage.aspx has served dozens of documents to this instrument. A root that returns nothing is evidence about the citation, not a verdict on the publisher.",
-                "wouldFill": "Per-host probing of known document paths, which is the deep-linking work itself.",
-                "reasonKind": "not-collected"
-            }
-        ],
-        "caveat": "EVERY FIGURE HERE DESCRIBES ONE CLIENT ON ONE DAY, and the sequence that produced it recorded three separate occasions when that mattered: ten live government hosts were measured as unreachable before this machine's broken resolver was understood; the e-Gazette was recorded in L-0218 as the corpus's one unreachable channel and is not one; and two runs of this very partition had to be discarded, the first because a failed fetch left the previous host's page on disk and three unrelated hosts were scored against the Ministry of External Affairs homepage, the second because a single-try two-second DNS lookup reported hosts as having no record when working pins for them were already on file. The 500-character threshold separating a scaffold from a document was chosen after inspecting the distribution, which has a clean gap between 102 and 894 characters, and not before. The three buckets are NOT disjoint: unaddressability is a property of the citation and reachability a property of the URL, so the 139 unaddressable citations are distributed across both other groups — 58 on hosts that answer and 81 on hosts that do not.",
-        "sources": [
-            {
-                "name": "Derivations, section 1 (bare-domain-root citations: 288 occurrences / 277 record-url pairs / 93 roots) and section 2 (246 citations naming no document, 138 of them also bare roots) — RECOMPUTED FROM PUBLIC /data WITH THE RULE PRINTED BESIDE EACH NUMBER, so a reader can re-run the partition rather than take it on this instrument's word. Published 2026-08-06 in answer to the pass-B finding that these counts were backed by evidence only their author could inspect. SECTION 3 OF THE SAME PAGE STATES WHAT IT CANNOT DERIVE AND THAT PART IS NOT CURED: the 139 citations returning no document (54 refused / 50 under 500 characters of text / 23 without a DNS record / 12 forbidden) are a RETRIEVAL RESULT, no retrieval is stored in this repository, and a reader cannot check them here or anywhere. For that half the evidence remains three files in a private repository: `tools/lib/bare-root-allowlist.json`, the ratchet frozen at 302 entries on 5 August 2026 and standing at 278 after correction cycles 2 to 8, whose `history` array records each deletion; `docs/verification-log.md`, cycles 2026-08-05p to 2026-08-05z, carrying the probe results and the two discarded runs of this partition; and `docs/assessment-audit-2026-08-05.md` with its appended corrections C1 to C6. Each of the 92 distinct cited roots was probed through an explicit resolver on 5 August 2026 and the response measured as text remaining after `htmlToText`, not as transferred bytes",
-                "url": "https://india-government.vercel.app/derivations/",
-                "tier": "T1"
-            }
-        ],
-        "confidence": "high",
-        "asOf": "2026-08-05",
-        "revisitTrigger": "Re-run the partition when the allowlist next falls materially, and re-probe before trusting any host classification here — the sequence that produced it changed its own conclusions three times on re-testing. The 81 citations that are both addressable and on a live host are the only group where cheap work remains."
-    },
-    {
-        "id": "L-0220",
-        "title": "Thirteen schemes across five domains are counted where the state hands something over and judged by what the recipient then does, and the two records that escape it are the two where the asset is itself the service",
-        "date": "2026-08-05",
-        "term": "T3",
-        "domains": [
-            "governance"
-        ],
-        "type": "institutional",
-        "summary": "Writing the reasoning behind every scored verdict in this corpus surfaced one shape thirteen times. A scheme announces an outcome — clean cooking, an end to open defecation, protection from catastrophic medical cost, affordable regional flying — and reports a count taken at the moment the state hands something over: a cylinder, a latrine, a tap, a card, an airport, a connection, a registration. The gap between the two is where the scheme's own purpose lives, and in every one of the thirteen it is either unmeasured or measured and short. Two records in the same files do not have the gap at all, and the difference between them and the thirteen is not effort, funding or execution.",
-        "claimAtLaunch": "None. This record is a synthesis over records already in the corpus and announces nothing of its own. The claims at issue are each scheme's, and are stated in the underlying records rather than repeated here.",
-        "whatHappened": "THE DISCRIMINATOR IS WHETHER THE THING HANDED OVER BECOMES THE SERVICE WITHOUT ANYTHING FURTHER HAPPENING. Railway electrification (L-0047) is the control and its record now says so in terms: an electrified line carries electric traction from the day it energises — no behavioural change is required of anyone, no demand forecast has to be met, and no second party has to be able to afford anything. Port efficiency (L-0053) is the second control, where turnaround time halved while throughput nearly doubled, so the output metric and its utilisation counterpart moved together. THE THIRTEEN ALL REQUIRE A FURTHER STEP: a household must buy the refill, choose the latrine, be reached by water, occupy the house, be admitted to the hospital, board the flight, ride the train, receive supply, sign the contract. Each further step is where the scheme's stated purpose is realised, and each is the step the reporting stops before. A REGULARITY WORTH STATING BECAUSE IT WAS NOT ENGINEERED: all thirteen carry the score `partly` and both controls carry `worked`. Those scores were assigned in earlier phases and are unchanged by the work that found this pattern — the notes were written under an assertion that no score would move, which is checkable in the repository history.",
-        "assessment": "no-objective",
-        "assessmentNote": "Nothing was announced here, so nothing can have succeeded or failed. What this record establishes is a property of how the state measures itself that no single scheme's record can show: the measurement stops at the handover, and whether that is sound depends on a structural fact about the asset rather than on the diligence of the ministry reporting it. Recorded as a finding about instruments, not as a criticism of any of the thirteen — several of them delivered at a scale no predecessor approached, and the records say so.",
-        "caseFor": "Measuring at the handover is not laziness and the record should not imply it is. It is the point at which the state's own action is complete and attributable to it: a ministry can build a tap and cannot make a household drink. Counts at that point are auditable, timely, and available at national scale, while use requires household surveys that are slower, costlier and contestable — the Swachh Bharat record shows two instruments disagreeing about use while nobody disputes how many latrines exist. Several of the thirteen also published the assessment that exposed their own gap: the Jal Jeevan functionality study and the Ujjwala refill audit are the government's own instruments finding against the government's own headline. And a connection is genuinely a precondition — none of the thirteen could have delivered its purpose without first delivering the thing it counted.",
-        "caseAgainst": "The gap is not incidental to these schemes, it is where their entire stated purpose sits, and in eleven of the thirteen it was left without so much as a declared absence until this sweep. A scheme reporting the number of taps against a promise of water has substituted a measure it controls for the one it was judged on, and the substitution runs one way: no scheme in the corpus reports use while promising connection. Two of the thirteen go further and report a count that is not even a handover — a highway network expansion of which the overwhelming majority is existing state roads notified as national, and an airport total inflated by heliports and waterdromes. And the defence that use is hard to measure is undercut by the controls: where the asset is the service, the same ministries report use without difficulty, because there was no further step at which to stop.",
-        "unmeasured": [
-            {
-                "what": "Whether the pattern holds outside this corpus, or is an artefact of which schemes it happens to record",
-                "why": "The thirteen are the scored records this sweep read whole, not a sample drawn from all Indian schemes. A shape found in every case examined may still be a property of the selection. Nothing here establishes the base rate against which thirteen would be surprising.",
-                "reasonKind": "not-collected"
-            },
-            {
-                "what": "Whether the schemes that measure at the handover do so by choice or because the use measurement does not exist to report",
-                "why": "The two are different findings with different remedies and this record cannot separate them. Jal Jeevan and Ujjwala both commissioned use measurements and published shortfalls, which shows the choice exists; household electrification has no supply-hours series at all, which suggests in that case it may not. No general answer follows from thirteen cases.",
-                "reasonKind": "not-collected"
-            }
-        ],
-        "caveat": "THE EVIDENCE FOR THIS RECORD IS THE UNDERLYING RECORDS AND THEIR FIGURES ARE NOT RESTATED HERE, deliberately: a synthesis that repeats its sources' numbers invites them to drift apart. The thirteen are L-0012, L-0034, L-0035, L-0036, L-0037, L-0039, L-0044, L-0048, L-0050, L-0054, L-0055, L-0062 and L-0093; the two controls are L-0047 and L-0053. Each carries its own sourcing, and any figure cited in argument about this pattern should be taken from the record that holds it. The grouping is this record's own judgement and is contestable at its edges — the highway and UDAN cases are counts of a reclassified category rather than of a handover, and are included because the measurement stops short of use in the same way, not because the move is identical. The score regularity is stated as an observation, not as evidence: thirteen `partly` scores against two `worked` is consistent with the pattern being real and also with `partly` being the natural score for any large scheme.",
-        "sources": [
-            {
-                "name": "Derivations, section 4 — the thirteen handover-counted schemes and the two controls, with the discriminator stated AS A RULE a reader can apply to any record rather than as this record's conclusion, and the membership recomputed from public /data. Published 2026-08-06, replacing a private-repository reference that returned HTTP 404 to an unauthenticated client and that the pass-B reviews correctly called an assertion the instrument made about itself on evidence only its author could inspect. The underlying records are L-0012, L-0034 to L-0037, L-0039, L-0044, L-0048, L-0050, L-0054, L-0055, L-0062 and L-0093, with controls L-0047 and L-0053, each read in full during the assessment-note sweep of 2026-08-05 and each carrying its own sources; any figure cited in argument about this pattern should be taken from the record that holds it, not from here",
-                "url": "https://india-government.vercel.app/derivations/",
-                "tier": "T1"
-            }
-        ],
-        "confidence": "medium",
-        "asOf": "2026-08-05",
-        "revisitTrigger": "Re-test when the next phase writes assessment notes for the 58 abstaining records: if the shape appears there too, the base-rate question in the first absence becomes answerable from inside the corpus. Re-test also if any of the thirteen publishes a use measurement, which would move that record and weaken this one by exactly one case."
     }
 ]

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { citations, provenance, series, statusCounts, tierCounts } from '@/lib/data';
+import { citations, ledger, provenance, series, statusCounts, tierCounts } from '@/lib/data';
 import { TIER_LABELS } from '@/lib/format';
 import { TIERS } from '@/lib/types';
 import { StatusKey } from '@/components/marks';
@@ -18,6 +18,9 @@ export default function MethodPage() {
   const seriesCites = cites.filter((c) => c.layer === 'series');
   const seriesTierT1 = seriesCites.filter((c) => c.tier === 'T1').length;
   const LAYERS = ['ledger', 'provenance', 'series'] as const;
+  // Counted, never typed. This number fell from 9 to 1 on 6 August 2026 and the paragraph that
+  // reports it must move with the data, not with whoever last edited the prose.
+  const worked = ledger.filter((r) => r.assessment === 'worked').length;
 
   return (
     <>
@@ -69,27 +72,36 @@ export default function MethodPage() {
           Where a record says a measure worked, ask who measured it — and on most of these records
           the answer is one arm of government measuring another.
         </strong>{' '}
-        Of the nine records currently scored <em>worked</em>, three rest on the announcing
-        department&rsquo;s own account of its own performance and nothing else. Five rest on a
-        different institution of the same state: the Reserve Bank on the Ministry of Finance, the
-        Central Electricity Authority on the renewable-energy ministry, a later Finance Commission
-        on an earlier one. One rests on a source outside the Indian state, and it is a single
-        trade-press note. From 6 August 2026 the standard is that no record stands on a source that
-        is not credibly independent of what it establishes, and intra-state evidence meets it only
-        where the measuring institution published the figure as part of its own statutory or routine
-        function — a Comptroller and Auditor General audit does, a joint ministry-and-regulator
-        press release does not, whoever computed the number in it. That is better than a department
-        scoring itself. It is not the same thing as independent evidence, and this page would rather
-        say so than let the distinction sit unstated.
+        Until 6 August 2026 nine records said a measure worked. Three rested on the announcing
+        department&rsquo;s own account of its own performance and nothing else; five rested on a
+        different institution of the same state; one rested on a source outside the Indian state,
+        and it was a single trade-press note. On that date the standard became that no record
+        stands on a source that is not credibly independent of what it establishes, and that where
+        a commitment states several objectives and any one is unmeasured, <em>worked</em> is
+        unavailable. Intra-state evidence meets the first test only where the measuring institution
+        published the figure as part of its own statutory or routine function — a Comptroller and
+        Auditor General audit does, a joint ministry-and-regulator press release does not, whoever
+        computed the number in it.{' '}
+        <strong>
+          {worked === 1 ? 'One record now says' : `${worked} records now say`} a measure worked.
+        </strong>{' '}
+        The rest moved to <em>partly</em> or <em>contested</em> — not to <em>failed</em>, because an
+        outcome nobody independent measured is unestablished rather than negative. One arm of
+        government measuring another is better than a department scoring itself, and it is not the
+        same thing as independent evidence; this page would rather say so than let the distinction
+        sit unstated.
       </p>
       <p className="prose-note">
-        <strong>T1F is new and empty.</strong> The tier for primaries issued by a foreign national
-        government was created on 6 August 2026, because T1 means Indian official and T2 means
-        multilateral and a US executive order or Federal Register notice is neither — so such
-        citations had been sitting in T1 by default. None has been moved yet, which is why the
-        count below reads {tiers.T1F}. Re-tiering a citation can move the verdict that rests on
-        it, so the whole set moves in one pass rather than piecemeal; the T1 figure above is what
-        the data currently says, not what it will say once that pass runs.
+        <strong>The tier figures above moved on 6 August 2026, and by a lot.</strong> T1F is new:
+        primaries issued by a foreign national government had been sitting in T1 by default,
+        because T1 means Indian official and T2 means multilateral and a US executive order is
+        neither. {tiers.T1F} citations moved into it. In the same pass, journalism and relayed
+        accounts that had been tagged T1 moved to T4, and UN and World Bank sources tagged T1 moved
+        to T2. Archived copies of Indian official documents did <em>not</em> move: identical bytes
+        are the document, and of 17 archived primaries tested only 2 still answered at their
+        original host. <strong>T1 fell from 965 to {tiers.T1.toLocaleString()}.</strong> Every
+        figure on this page is counted from the data at build time, so none of that had to be
+        retyped here — which is the point, and the reason the last such correction was caught.
       </p>
       <p>
         <strong>The planned independent review has not been run.</strong> Three passes were
