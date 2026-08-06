@@ -2131,3 +2131,155 @@ a deployment — check `list_deployments --since`, which returns **count 0** for
 polling the site cannot tell that from a slow build. And `vercel deploy --prod` from this repo
 **aborts on upload** because the working tree carries the 662-page `out/`; an empty commit re-triggers
 the webhook instead.
+
+---
+
+# STRUCTURAL CYCLE, BATCH 1 — THE ADVERSARIAL PASS INPUT IS BUILT. 2026-08-06
+
+**The pass is NOT run. This batch produced the file it will be run against.** `/data` is untouched —
+0 lines changed under `data/` — and no schema, enum or gate contract moved.
+
+## What was built
+
+| artefact | what it is |
+|---|---|
+| `review/adversarial-pass-input.md` | **501,533 bytes, 4,170 lines.** The single document handed to a reviewer with no repo, no `CLAUDE.md`, no `STATE.md` and no second turn |
+| `tools/gen-adversarial-pass-input.mjs` | the transformation, deterministic; same commit → byte-identical file |
+| `tools/gen-record-history.mjs` → `review/record-history.json` | per-record edit history reconstructed from git, because two selection criteria are historical and `/data` holds only the present |
+| `review/gate-scopes.txt` | every gate's summary line, captured by RUNNING it at `1825b85`. Nothing retyped |
+
+**Four extracts, plus a brief and a stated-omissions section.** (A) structural, all 226 ledger and 127
+provenance records, complete and unsampled — id, verdict, `directionOfBias`, claim, first substantive
+sentence of the reasoning, tier counts, `unmeasured[]` reasonKinds, correction markers, plus the
+cross-tabs (verdict × tier, verdict × term, verdict × domain, the full verdict-change table).
+(B) 35 records in full prose. (C) method, sliced out of `CLAUDE.md` and the schemas **by anchor, with
+the generator aborting if an anchor has moved** — one anchor had, and it aborted, which is the guard
+working. (D) corrections and withdrawn wording, with the needle printed.
+
+**Extract B's selection, and the two thresholds that are judgements:**
+1. **the closing phase's hardest calls** — 10, named by hand and flagged in the file as contestable;
+2. **corrected more than once** — 13, defined as **two or more edits by commits touching ≤5 records**.
+   The threshold is load-bearing: **8 records reach three edits purely by being caught in three
+   corpus-wide sweeps** (the bulk rescore, a note-reconciliation pass, the phase-14 lens migration) —
+   three commits and no correction of that record at all. The 8 are named in the file;
+3. **assessment changed after shipping, individually** — 11, i.e. all 36 minus the 25 moved by the
+   single `no-objective` commit. The 25 get their full `assessmentNote` in an appendix and the
+   complete 36-row change table sits in Extract A;
+4. **a spread of `contested`** — 7, lowest id in each of the seven grounds. Checked at generation:
+   the batch-14 classification's 67 ids are **exactly** the 67 records carrying `contested` at HEAD.
+
+## FOUR FINDINGS, ALL FOUND WHILE BUILDING THE FILE. None is a stop
+
+### F1 — `seam-span-report` is 125/34, not 117/29. CORRECTED IN `CLAUDE.md`
+
+117 spans / 29 undeclared is what the tool emitted at `d69c729`, the commit that wrote it. **The tool
+has not been touched since** (one commit in its whole history) — the corpus grew and nobody re-ran it.
+The carried figure appears in `CLAUDE.md`'s guard-scope section and in this file's resume block, item
+5, both stating it as current. **Re-run at `1825b85`: 125 record-by-break spans, 91 declaring the
+break, 34 not.** `CLAUDE.md` is corrected with the withdrawn figures stated. **The class matters more
+than the number: a report-only tool is in no build, so nothing fails when its rate goes stale, and a
+deferral-with-a-measured-rate silently becomes the deferral-that-says-logged that the same paragraph
+distinguishes it from.**
+
+### F2 — THE LIVE PUBLIC PAGE UNDERSTATES T1 BY 213, AND ITS NEXT SENTENCE IS FALSE. NOT FIXED
+
+`app/method/page.tsx:38` reads: *"Of 1,205 citations, 752 are graded T1"*, and the sentence after it
+says the rest are *"multilateral statistics, peer-reviewed research, documentary journalism and NGO
+datasets"*. **1,205 is right. 752 is not: measured over all three layers the figure is 965.**
+
+```
+ledger      640 citations   T1 523  T2 36  T3 11  T4 68  T5 2
+provenance  296 citations   T1 229  T2 15  T3 14  T4 34  T5 4
+series      269 citations   T1 213  T2 29  T3  3  T4 22  T5 2
+all       1,205             T1 965  T2 80  T3 28  T4 124 T5 8   untiered 0
+```
+
+523 + 229 = **752 exactly.** The published count read `tier` INSIDE the object holding `url` and
+missed the 269 series, every one of which carries a tier **on the record** — **the fifth recorded
+instance of that exact defect**, after the "99 citations with no tier at all" correction and the
+141-vs-313 bare-root filter. It was inherited from the publication batch's own tally, which reported
+"untiered 269" and did not ask what 269 was the size of.
+
+**Two consequences, and only the second is a false statement.** The T1 figure errs CONSERVATIVELY —
+it makes the corpus look less primary-sourced than it is. But *"the rest"* then denotes 453 citations
+of which **213 are Indian official statistical sources**, and describing those as journalism and NGO
+datasets is false, on a public page, about the corpus's own sourcing.
+
+**Not applied: this batch's sizing is the extract only, and the fix is a view file.** Drafted for the
+next cycle, one sentence: *"Of 1,205 citations, 965 are graded T1 — Indian official statistical or
+institutional documents retrieved directly. The remaining 240 are multilateral statistics (80),
+peer-reviewed research (28), documentary journalism and NGO datasets (124) and contested composite
+indices (8)…"* — recompute before applying; do not copy these numbers forward. **The extract file
+prints the measured table and names the discrepancy rather than resolving it**, so the reviewer does
+not spend budget rediscovering it.
+
+### F3 — FOUR SCHEMA DESCRIPTIONS STATE DISTRIBUTIONS THE DATA CONTRADICTS. REPORTED, NOT TOUCHED
+
+A schema edit is a stop, so nothing was changed. Measured at `1825b85`:
+
+| schema text | what it says | measured |
+|---|---|---|
+| `provenance.directionOfBias` | the three directionless values *"carry 35 of the 58 records"* | **100 of 127** |
+| `provenance.directionOfBias` | *"`overstates-pre-2014` has NO users at all"* — **UNATTESTED** | **1 user** (P-122) |
+| `ledger.confidence` | *"63 high, 24 medium, 2 low across 89 records"* | **172 · 53 · 1 across 226** |
+| `ledger.assessment` / `no-objective` | *"Roughly half the ledger is in this state"* | **73 of 226 = 32.3%** |
+| `ledger.assessment` / `awaiting-adjudication` | *"a sweep of all 149 ledger records"* | 149 was right then; the corpus is 226 |
+
+**`overstates-pre-2014` is the one to act on**, because it is not a stale count but a wrong kind of
+claim: a schema asserting a value is unattested while a record uses it. The others are dated
+observations that read as present-tense facts. **The pattern is F1's and the session-cost
+paragraph's** — a measurement written into a file that is never re-measured. The extract file handles
+all of them by printing the schema text and the measured distribution side by side and telling the
+reviewer they do not always agree.
+
+### F4 — THE SESSION-COST SECTION IS FIVE TIMES OVER ITS OWN BUDGET. CORRECTED IN `CLAUDE.md`
+
+*"this file (22 KB) and the phase's `STATE.md` (16 KB) — about 38 KB"*. Measured: **54 KB and 143 KB,
+about 197 KB.** The log is 684 KB against 438; `/data` is 2.7 MB across 682 records against 2.3 MB
+across 645; the manifest 70 KB against 66. **The section whose subject is keeping orientation small
+was reporting a budget it had exceeded fivefold, in the present tense.** Corrected with the withdrawn
+figures stated. **The number to act on is `STATE.md` at 143 KB** — one phase's working notes, read
+whole at every cold start. That is a structure problem, not a growth curve, and it is now a cycle
+item.
+
+## What was deliberately left out of the extract, and why
+
+- **Series (269) and pairs (60).** Two of four layers. **A reviewer can test whether a verdict follows
+  from its own prose and cannot test whether the underlying figures say what the prose says** — named
+  in the file as the single largest thing it cannot check.
+- **Full `assessmentNote` for the 128 ledger records outside Extract B and its appendix**; Extract A
+  carries the first substantive sentence, with a leading dated correction clause skipped so the thesis
+  shows. The skip is stated and the `corrected` marker still names the field.
+- **Full prose for the 198 ledger and 120 provenance records outside Extract B.**
+- **The rendered site, the 684 KB verification log, and everything never researched.**
+- **The asymmetry is stated in the file:** A is complete, B is selected for trouble, so a pattern in A
+  is a pattern in the corpus and a density in B is a density in the selection.
+
+## Standing on the corrections question
+
+Corrections and withdrawn wording are **in** the file, and the file says so twice — in the brief and
+in Extract D — with the needle printed and the caution that a needle bounds what it finds and never
+what there is. 60 ledger and provenance records and 6 series carry one. **The brief tells the reviewer
+that reporting a corrected error as live is a finding about visibility, not noise.**
+
+---
+
+# RESUME HERE — updated 2026-08-06, after the structural cycle's first batch
+
+**The adversarial pass input is BUILT and the pass is NOT RUN.** `review/adversarial-pass-input.md`
+at 501,533 bytes. Running it is the next act and needs no repo work: hand the file to a model with no
+history of this project and ask for findings tied to record ids plus a statement of what it could not
+check.
+
+**The six structural-cycle items are unchanged and none was started**, except that item 5's figure is
+now **125 spans / 34 undeclared**, not 117/29 (F1).
+
+**Two new items, both from F2 and F4:**
+7. **`app/method/page.tsx:38` states 752 T1 where the measured figure is 965, and the sentence after
+   it is false about 213 citations.** Live and public. Drafted fix in F2; recompute before applying.
+8. **`STATE.md` is 143 KB and is read whole at every cold start.** The session-cost rule budgets 38 KB
+   for orientation and the real figure is 197 KB.
+
+**And one that is reported and not actionable without a stop:** four schema descriptions state
+distributions the data contradicts (F3), one of them asserting a value is unattested while P-122 uses
+it. A schema edit is a stop, so it is agreed before it is made.

@@ -10243,3 +10243,78 @@ built, 14/14 linked, 1141/1141 references · `validate:selftest` 23/23 validator
 broken fixtures, 2/2 output gates on theirs.
 
 **NOT PUSHED.** Push is not autonomous while the deployment is public and unauthenticated.
+
+---
+
+## Cycle 2026-08-06a — STRUCTURAL CYCLE, BATCH 1. The adversarial pass input
+
+**Built the file the adversarial model pass is run against. THE PASS IS NOT RUN.** `/data` untouched —
+`git diff --numstat -- data` returns nothing. No schema, enum or gate contract moved.
+
+### Shipped
+
+`review/adversarial-pass-input.md` — **501,533 bytes, 4,170 lines**, for a reviewer with no repo, no
+`CLAUDE.md`, no `STATE.md` and no second turn. Four extracts plus a brief and a stated-omissions
+section: (A) structural, **all 226 ledger and 127 provenance records, complete and unsampled**, with
+verdict, `directionOfBias`, claim, first substantive sentence of the reasoning, tier counts,
+`unmeasured[]` reasonKinds, correction markers and the verdict × tier / term / domain cross-tabs;
+(B) **35 records in full prose** under four named criteria; (C) method, sliced from `CLAUDE.md` and
+the schemas **by anchor with an abort on drift**; (D) corrections and withdrawn wording with the
+needle printed.
+
+Tools: `tools/gen-adversarial-pass-input.mjs`, `tools/gen-record-history.mjs` →
+`review/record-history.json`, and `review/gate-scopes.txt` holding every gate's summary line captured
+by RUNNING it. Two npm scripts added. **Positive control: regeneration at the same commit is
+byte-identical. Negative control: mutating one anchor in `CLAUDE.md` aborts the generator, and
+restoring it reproduces the identical file** — same form, through the restriction the positive
+depends on.
+
+### Four findings, none a stop
+
+**F1 — `seam-span-report` is 125 spans / 34 undeclared, not 117/29.** 117/29 is what the tool emitted
+at `d69c729`, the commit that wrote it; the tool has one commit in its history and has not been
+re-run since. **CORRECTED in `CLAUDE.md` with the withdrawn figures stated.** A report-only tool is in
+no build, so nothing fails when its rate goes stale and the deferral-with-a-measured-rate silently
+becomes the deferral-that-says-logged.
+
+**F2 — `app/method/page.tsx:38` states 752 of 1,205 citations graded T1; measured over all three
+layers it is 965.** ledger 640 (T1 523) · provenance 296 (T1 229) · series 269 (T1 213) = 1,205,
+T1 965. **523 + 229 = 752 exactly** — the published count read `tier` inside the object holding `url`
+and missed the 269 series, which carry tier ON THE RECORD. **Fifth recorded instance of that defect.**
+The T1 figure errs conservatively; the sentence after it, describing "the rest" as multilateral
+statistics, research, journalism and NGO datasets, is **false about 213 Indian official statistical
+sources, on a public page.** **NOT FIXED — the batch's sizing is the extract only and the fix is a
+view file.** Queued with drafted wording; the extract prints the measured table and names the
+discrepancy rather than resolving it.
+
+**F3 — four schema descriptions state distributions the data contradicts.** `directionOfBias`: the
+three directionless values "carry 35 of the 58 records" against **100 of 127**, and
+"`overstates-pre-2014` has NO users at all" against **1 user, P-122**. `confidence`: "63 high, 24
+medium, 2 low across 89 records" against **172 · 53 · 1 across 226**. `no-objective`: "roughly half
+the ledger" against **73 of 226 = 32.3%**. **REPORTED, NOT TOUCHED — a schema edit is a stop.** The
+extract prints schema text and measured distribution side by side.
+
+**F4 — the session-cost section is five times over its own budget.** "this file (22 KB) and the
+phase's `STATE.md` (16 KB) — about 38 KB" against **54 KB and 143 KB, about 197 KB**; log 684 KB
+against 438; `/data` 2.7 MB / 682 records against 2.3 MB / 645. **CORRECTED in `CLAUDE.md` with the
+withdrawn figures stated.** The number to act on is `STATE.md` at 143 KB, read whole at every cold
+start.
+
+**F1, F3 and F4 are one class:** a measurement written into a file that is never re-measured, read
+afterwards in the present tense.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs =
+682 records, 1,759 points** · `manifest` 682 records, 71,554 bytes · `no-bare-root` 0 new, 0 stale,
+277 allowlisted from 277 frozen · `no-unguarded-prose-field` 19 prose fields, 7 guarded / 12 exempted
+· `figure-consistency` 18 declared claims, 18 checked against source and printed operands, 5 rounding
+artefacts declared · `reachability` 1368/1368 marks on their own record page, 662 pages scanned ·
+`field-render-audit` 32 prose fields across 3 layers, 0 invisible · `domain-coverage` 14/14 surfaces
+built, 14/14 linked, 1141/1141 references · `enum-stamp` 2 fixtures match 8 lenses / 14 domains ·
+`validate:selftest` 23/23 validator rules fire on the broken fixtures, 2/2 output gates on theirs ·
+`seam-span-report` **125 spans, 91 declaring, 34 not** (report-only) · `typecheck` clean.
+
+**Every count above is a gate's own emitted line.** Counts this cycle produced itself — the tier
+split by layer, the correction index, the edit histories — are printed in the extract with the field
+or needle that produced them, never bare.
