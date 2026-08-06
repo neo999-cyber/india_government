@@ -326,6 +326,29 @@ export const DISPUTE_KIND_LABELS: Record<'evidentiary' | 'normative', string> = 
  * facts about one series, and framing each separately would read as two unrelated warnings
  * and double the furniture around the same amount of prose.
  */
+/**
+ * AN ABSENCE ON A LISTING ROW, in the caveat's idiom and for the caveat's reason.
+ *
+ * 374 declarations sat on 199 records and appeared on NO listing surface at all: not the index, not
+ * a term page, not a domain page. A reader browsing could not learn that 147 of 223 ledger records
+ * declare something nothing measures — they met it only by opening a record and scrolling past two
+ * argument blocks.
+ *
+ * Rule 4a was written against an absence rendering LIKE A FINDING, and the site never had that
+ * problem: the block is dashed, unfilled, carries no figure and no table. The live defect was the
+ * inverse — an absence that reaches no browsing reader reads as housekeeping, when the corpus's
+ * position is that it is often the most important thing on the page.
+ *
+ * A COUNT AND NOT A SCORE. It says how many declarations a record carries and nothing about whether
+ * that is many or few; there is no corpus-wide total on the index, deliberately, because one would
+ * read as a completeness score and the rule that forbids a verdict number for a term forbids one for
+ * the instrument's own coverage.
+ */
+export function AbsenceCount({ items }: { items: Unmeasured[] | undefined }) {
+  if (!items || items.length === 0) return null;
+  return <span className="absence-inline">{items.length} not measured</span>;
+}
+
 export function Absences({
   items,
   heading = 'Not measured',
@@ -368,6 +391,12 @@ export function Absences({
           </li>
         ))}
       </ul>
+      {/* The cross-link both ways. `/unmeasured` has linked back to the declaring record since it
+          was built; nothing pointed the other way, so the page where the taxonomy actually pays was
+          reachable only from the top nav. */}
+      <p className="absence-fill">
+        <Link href="/unmeasured/">Every declared absence in the corpus, grouped by kind</Link>
+      </p>
     </div>
   );
 }

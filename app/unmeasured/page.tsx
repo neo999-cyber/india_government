@@ -52,6 +52,21 @@ export default function UnmeasuredIndex() {
         The list is not scored and not ranked: an absence is a finding, not a defect to be
         burned down.
       </p>
+      {/* THE 82 WITH NO ROUTE, NAMED AS A CLASS. The line above has always said how many DO name a
+          source; the ones that do not were left as the remainder, and they are the harder finding.
+          An absence nobody can close is a different object from one waiting on a request: the first
+          is a statement about what can be known, the second about what has been asked. */}
+      {withoutRoute.length > 0 ? (
+        <p className="prose-note">
+          <strong>{withoutRoute.length} name no route at all</strong>, and they are a different
+          object from the {withRoute.length} that do. An absence waiting on a request is a statement
+          about what has been asked for; an absence with no route is a statement about what can be
+          known — no instrument exists, or the settling fact is unobservable while the practice
+          stands. They are listed below with the rest and marked{' '}
+          <span className="mono">no route</span> rather than pulled into a section of their own,
+          because the kind is still the taxonomy that pays.
+        </p>
+      ) : null}
 
       {/* Grouping pays here rather than on a record, where there are one to three entries.
           Across the dataset the taxonomy is the point: a body declining to keep a record is
@@ -124,6 +139,10 @@ export default function UnmeasuredIndex() {
                       stated reason disputed
                     </span>
                   ) : null}
+                  {/* The 82 with no route, marked where a reader meets the entry rather than only
+                      counted in the lede. An absence nobody can close is a different object from
+                      one waiting on a request. */}
+                  {a.entry.wouldFill ? null : <span className="absence-kind">no route</span>}
                 </td>
                 <td>{a.entry.what}</td>
                 <td className="t-note">{a.entry.why}</td>

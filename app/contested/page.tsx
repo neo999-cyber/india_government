@@ -4,7 +4,7 @@ import { ledger } from '@/lib/data';
 import { CONTESTED_GROUND_LABELS, DOMAIN_LABELS } from '@/lib/format';
 import { CONTESTED_GROUNDS } from '@/lib/types';
 import type { ContestedGround, LedgerRecord } from '@/lib/types';
-import { CaveatFlag } from '@/components/marks';
+import { AbsenceCount, CaveatFlag } from '@/components/marks';
 
 export const metadata: Metadata = { title: 'Contested — what would settle it' };
 
@@ -73,6 +73,12 @@ function Group({ ground, records }: { ground: ContestedGround; records: LedgerRe
                     <>
                       <br />
                       <CaveatFlag caveat={l.caveat} variant="inline" />
+                    </>
+                  ) : null}
+                  {l.unmeasured?.length ? (
+                    <>
+                      <br />
+                      <AbsenceCount items={l.unmeasured} />
                     </>
                   ) : null}
                 </td>

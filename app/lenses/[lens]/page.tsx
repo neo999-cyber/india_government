@@ -17,7 +17,7 @@ import {
   formatDateRange,
 } from '@/lib/format';
 import { LENSES, LENSES_THAT_ARE_DOMAINS, LENS_ONLY, type Lens } from '@/lib/types';
-import { CaveatFlag, DifferentFactsMark, StatusKey, StatusTally, TierTag } from '@/components/marks';
+import { AbsenceCount, CaveatFlag, DifferentFactsMark, StatusKey, StatusTally, TierTag } from '@/components/marks';
 
 type Props = { params: Promise<{ lens: string }> };
 
@@ -170,6 +170,7 @@ export default async function LensPage({ params }: Props) {
                       <td>
                         <Link href={`/ledger/${x.id}/`}>{x.title}</Link>
                         {x.caveat ? <CaveatFlag caveat={x.caveat} variant="inline" /> : null}
+                        <AbsenceCount items={x.unmeasured} />
                         {x.differentFacts ? <DifferentFactsMark variant="inline" /> : null}
                       </td>
                       <td className="mono">

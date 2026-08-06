@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { assessmentCounts, ledgerInTerm } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_LABELS, formatDateRange } from '@/lib/format';
-import { CaveatFlag, DifferentFactsMark } from '@/components/marks';
+import { AbsenceCount, CaveatFlag, DifferentFactsMark } from '@/components/marks';
 import { TERMS, type Term } from '@/lib/types';
 
 type Props = { params: Promise<{ term: string }> };
@@ -111,6 +111,7 @@ export default async function TermPage({ params }: Props) {
                     <td>
                       <Link href={`/ledger/${r.id}/`}>{r.title}</Link>
                       {r.caveat ? <CaveatFlag caveat={r.caveat} variant="inline" /> : null}
+                      <AbsenceCount items={r.unmeasured} />
                       {r.differentFacts ? <DifferentFactsMark variant="inline" /> : null}
                     </td>
                     <td className="t-note">{r.type}</td>

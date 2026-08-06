@@ -432,3 +432,164 @@ new field**: every one of the four is derivable from what `unmeasured[]` already
 4. A gloss on every verdict tally.
 5. `objectives[]` + the `claimAtLaunch` vocabulary, designed together — **phase 17**.
 6. `independence` as a rule field — phase 17.
+
+---
+
+# BATCH 3 — the absence surface, `/exposure`, and two reports
+
+## 1. The absence changes — built
+
+**All four, and the index deliberately left alone.**
+
+| change | what landed |
+|---|---|
+| **a count on every listing row** | `AbsenceCount` in the caveat's idiom, on all five ledger listings — `/ledger`, the domain pages, the term pages, `/contested`, the lens pages. **294 markers on `/ledger` alone.** Dashed border, `--ink-dim`, deliberately NOT `--alert`: a caveat is a blocking qualification and an absence is a finding, and colouring them alike would assert a severity the corpus does not |
+| **reading order** | the block now sits **after the summary and before the argument**, which is the position rule 3a gives the caveat and for the same reason |
+| **cross-link both ways** | the block links to `/unmeasured`; `/unmeasured` has linked back since it was built |
+| **the 82 with no route** | named as a class in the lede and marked `no route` on every row that has none, where a reader meets the entry rather than only in a count |
+| **no index count** | not built, as agreed: a corpus-wide absence total would read as a completeness score, and the rule forbidding a verdict number for a term forbids one for the instrument's own coverage |
+
+**A DEPARTURE FROM THE PROPOSAL, STATED RATHER THAN SLIPPED IN.** The proposal said *promote the
+block where the absence is load-bearing*. **Three candidate tests were measured before one was
+built** — a note quoting a 24-character span of the absence (**13** records), a note referring to the
+absence in terms (**47**), and evaluative-and-carries-an-absence (**47**). The load-bearing set is an
+artefact of the test chosen, and the only faithful one was a keyword scan of `assessmentNote` —
+exactly the class of thing this cycle has spent itself correcting. **A view whose reading order
+depends on a term list is a defect waiting**, so the block moves uniformly on all 147 records that
+carry one.
+
+**Verified live**, on a record carrying several and one carrying none: **L-0106** (4 absences) renders
+*"Not measured · 4 declared"* **above** Case for, Case against and Why this verdict; **L-0162** (none)
+renders no block at all.
+
+**AND MY OWN VERIFICATION FAILED FIRST, ON THE TRAP THIS FILE DOCUMENTS.** A grep for
+`"[0-9]+ not measured"` returned zero on every listing. The markers were there: React's SSR splits
+`{items.length}` from `" not measured"` with a `<!-- -->` separator, so the rendered bytes read
+`>3<!-- --> not measured<`. **Fourth instance of the ad-hoc-normaliser defect, and the first in this
+phase** — the fix was to check for the class name instead, and the standing rule is to read through
+the gate's own normaliser rather than hand-rolling a second one.
+
+## 2. `/exposure` — built, and the refusals are on it rather than on their own page
+
+**The report settled it on one page.** The eleven refusals were the obvious candidate for a page of
+their own and they are here instead, at the top of this one, for a reason that decided the design:
+**eleven rows alone cannot say whether refusal is rare or normal.** A reader meeting them without the
+44 acceptances beside them cannot tell whether the instrument refuses an exogenous defence routinely
+— which would make the refusals worthless — or seldom, which is what makes them a finding.
+**The comparison is the content.**
+
+The page carries: 76 records, 85 entries, 18 distinct events, 60 of them COVID; the two axes with
+their distributions; **the 18 refused-or-limited entries in full, each with the record's own sentence
+verbatim**; and the recurring test named in prose — *the pattern predates the event*, eleven times —
+with the four that work differently and the three that refuse on grounds nothing else shares.
+
+**The `basis` property stays unbuilt and the page says why in its own header comment:** five grounds
+across eighteen entries is a taxonomy heavier than the thing it sorts, so the ground is described in
+prose and each row carries the sentence.
+
+**And the page states what it will not show.** The adjudication-against-verdict table is striking and
+circular — the adjudication was read from the same prose the verdict rests on — so it is left off,
+with the reason on the page rather than in a drop file.
+
+---
+
+# REPORT — should rule 4a be restated to cover both directions?
+
+**They are genuinely different concerns, and the rule should be extended rather than restated.**
+
+## What rule 4a guards, and whether the risk is real here
+
+> *An absence renders unlike a finding… Use the `Absence` mark: dashed, unfilled, no figure, no
+> table, visibly not a panel of results. An absence styled like a finding invites a reader to treat
+> the frame as the content.*
+
+**The risk it names is real and it is not hypothetical elsewhere.** PMAY-G is the canonical case:
+sanctioned and completed published, occupancy not, and a reader shown the first two takes completion
+for the end of the chain. **The rule works and the site complies** — the block carries no figure, no
+table and no fill, and nothing on any surface could be mistaken for a result.
+
+**So the rule guards a risk that does not currently materialise, and that is the rule succeeding, not
+the rule being wrong.** A guard whose failure mode has stopped occurring has not become useless.
+
+## Why the inverse is a different concern and not the same rule pointed backwards
+
+**Rule 4a is about how an absence LOOKS. The live defect was about where it APPEARS and when.** Those
+are different properties and they fail independently:
+
+- An absence could be styled perfectly and appear nowhere — **which is exactly what happened**: 374
+  declarations, on no listing surface, below two argument blocks on the record.
+- An absence could be everywhere a reader looks and still be styled like a results panel.
+
+**A single rule covering both would have to say two things about two properties**, and the second
+would not follow from the first. The instrument's own experience is against collapsing them: this is
+the shape of *"a guard binds a scope, and the claim it protects has its own"*, where the gap between
+what a rule binds and what it is thought to protect is silent by construction. **Rule 4a binds the
+MARK. The claim it was thought to protect — that an absence reaches a reader as a finding — has its
+own scope, and nothing bound it.**
+
+## What I would write instead
+
+**Not a restatement of 4a. A new clause beside it**, in the form the point-of-change rule takes:
+
+> **An absence must REACH a reader, not merely render unlike a finding.** It appears on every surface
+> that lists the record, in the caveat's idiom, and it precedes the argument on the record's own
+> page. **A declaration that only a reader who opens the record and scrolls past two argument blocks
+> can find is housekeeping, whatever it looks like when they get there.**
+
+**And a sentence naming the pair**, because the two together are what the instrument means: *4a says
+an absence must not look like a result; this says it must not be reachable only by someone already
+looking for it. Neither implies the other.*
+
+**Report only — it is a rule change.**
+
+---
+
+# REPORT — the verdict chip, and whether the absence argument reaches it
+
+**The same argument applies, and the fix is not the same move.**
+
+## What it would take
+
+The chip sits in the `tag-row` beside the id, dates, type, contested ground, confidence, domains and
+lenses. `assessmentNote` renders as *"Why this verdict"* at the end of the `dl`, after `caseFor`,
+`caseAgainst` and `shockExposure`. **Moving the note is a five-line change**; the question is where.
+
+**Three options, and the third is the one I would take.**
+
+1. **Move the note up, beside the chip.** Rejected: it puts the resolution before the two cases it
+   resolves, which inverts the record's structure. The `dl` order is an argument — claim, what
+   happened, both cases, then the reasoning that chooses — and the note earns its position.
+2. **Move the chip down.** Rejected: the verdict is what the record is for, and a reader who cannot
+   see it in the first screen has to hunt for the thing they came for.
+3. **Anchor the chip to the note.** The verdict tag becomes a link to `#why`, and the note carries
+   the id. **Nothing moves; the conclusion acquires a route to its ground.** One line each.
+
+## Whether the absence argument reaches it
+
+**Partly, and the difference is worth stating rather than assuming.**
+
+The absence change was justified because *the conclusion reaches the reader before what qualifies
+it*. **An absence qualifies the record**: it says what the record cannot show, and it is true
+regardless of which way the argument runs. **The verdict's reasoning does not qualify the verdict —
+it IS the verdict, argued.** So the two are not the same object: one is a caveat on the finding, the
+other is the finding's own ground.
+
+**Where the argument does reach:** a chip with no route to its reasoning is a claim shown without its
+argument, which is *"the thing this instrument exists not to do"* in the record page's own words —
+the sentence written when `assessmentNote` rendered nowhere at all. **It rendered nowhere then and it
+renders unreachably now**, which is a smaller version of the same defect and is why option 3 is
+worth doing.
+
+**Not built. The chip is the record's most-read element and a link on it is a design decision, not a
+correction.**
+
+---
+
+## Queue after this batch
+
+1. **Rulings 5–9 as sentences in `/method`**, plus the ρ = 0.91 finding and the outcome-versus-policy
+   split. The last surface item with no home.
+2. A gloss on every verdict tally — the `contested`/`no-objective` misread on listing pages.
+3. The verdict-chip anchor, option 3, on the operator's word.
+4. The absence clause beside rule 4a — a rule change.
+5. `objectives[]` + the `claimAtLaunch` vocabulary, designed together — **phase 17**.

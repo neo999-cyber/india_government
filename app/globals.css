@@ -741,6 +741,22 @@ tr th:last-child {
    load-bearing, not cosmetic — normal white-space and visible overflow are what stop a
    table cell from clipping it, and there is deliberately no ellipsis, no line-clamp and no
    max-height here. If a caveat will not fit a layout, the layout changes. */
+/* An absence on a listing row. Modelled on .caveat-inline for placement and restraint, and
+   deliberately NOT in --alert: a caveat is a blocking qualification and an absence is a finding.
+   Colouring them alike would assert a severity the corpus does not. */
+.absence-inline {
+  display: inline-block;
+  margin-top: 0.15rem;
+  padding: 0 0.3rem;
+  border: 1px dashed var(--rule);
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--ink-dim);
+  white-space: nowrap;
+}
+
 .caveat-inline {
   display: block;
   margin-top: 0.15rem;
