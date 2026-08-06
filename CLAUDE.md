@@ -509,9 +509,22 @@ phase name asserted from memory is a premise until it is read off this table.
 | 14–15 | 15 = environment and energy | closed |
 | — | the adversarial-review and rulings cycle | closed 2026-08-06, in `drops/cycle-review-and-rulings/` |
 | **16** | **shocks calibration** — input is the whole corpus | **CLOSED 2026-08-06**, in `drops/phase-16-shocks/` |
-| **17** | **independence** — the field proposed in `PROPOSALS-2026-08-06.md`. **`objectives[]` sequences FIRST within it**, because commitment state attaches to the limb and is a property of that array. | **next** |
+| **17** | **independence** — the field proposed in `PROPOSALS-2026-08-06.md`. **`objectives[]` sequences FIRST within it**, because commitment state attaches to the limb and is a property of that array. | **OPEN**, in `drops/phase-17-design-lock/` — **and the directory name records a NAME COLLISION, not a renumbering; see below** |
 | **18** | **design lock** | |
 | **19** | **polish** | |
+
+**A THIRD, ADDED 2026-08-06: PHASE 17 WAS OPENED BY THE OPERATOR AS "DESIGN LOCK", AND THIS TABLE SAYS
+17 IS INDEPENDENCE AND 18 IS DESIGN LOCK.** The name is not resolved here, because a phase name is
+the operator's to set and this table is the authority until they change it. **What the opening batch
+actually did was design-lock work** — it measured what the deployed site shows against what the
+corpus holds — and its output is in `drops/phase-17-design-lock/` under the name it was given.
+**Either the table is amended or that work belongs to 18; both are live and neither is assumed.**
+
+**AND `phase-name` DID NOT FIRE ON THIS, WHICH IS A MEASURED GAP IN THE GATE.** It binds an assertion
+of the form *phase N **is** &lt;name&gt;* and the collision arrived as a heading — *"Phase 17 — design
+lock"* — with no assertion verb. The gate's header already says it does not bind a phase named
+without its number; **it does not say it also misses a number named without a verb, and that is the
+form a heading takes.** Recorded rather than fixed: widening the predicate is a gate contract change.
 
 **Two things a cold read must not assume.** Phase 10 was inserted, so any note written before it
 carries numbering one behind this table. And **delimitation was partly covered in phase 12**, which
