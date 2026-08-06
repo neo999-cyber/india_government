@@ -1,0 +1,30 @@
+{
+  "_comment": "Judged false positives of the seam-span NARROW rule: the record names periods either side of a break on a series it cites, IN ONE SENTENCE, but the sentence compares a DIFFERENT QUANTITY from the broken series. Each entry records what the sentence actually compares, because an id alone is an assertion and the judgement is the evidence. Frozen 2026-08-06 after reading all 21 narrow candidates. A span not in this list and not declared FAILS the gate.",
+  "frozen": "2026-08-06",
+  "entries": [
+    { "record": "L-0026", "series": "crar", "period": "FY2023-24", "ref": "P-19",
+      "comparesInstead": "public-sector bank aggregate loss in FY2017-18 against net profit in FY2024-25 — a profit-and-loss quantity, not the capital adequacy ratio the break sits on" },
+    { "record": "L-0095", "series": "ptr-primary-udise", "period": "FY2022-23", "ref": "P-63",
+      "comparesInstead": "Kendriya Vidyalaya contract engagements 2020-21 against 2025-26 — a staffing count, not the pupil-teacher ratio" },
+    { "record": "L-0095", "series": "ptr-primary-udise", "period": "FY2023-24", "ref": "P-63",
+      "comparesInstead": "the same KVS contract-engagement sentence, against the second break on the same series" },
+    { "record": "L-0104", "series": "ugc-provision-gross", "period": "FY2017-18", "ref": "P-66",
+      "comparesInstead": "higher-education gross enrolment ratio 2011-12 against 2023-24 — and the sentence states its own restated basis — not the UGC budget provision" },
+    { "record": "L-0104", "series": "ugc-provision-gross", "period": "FY2024-25", "ref": "P-66",
+      "comparesInstead": "debt service budgeted in BE FY2025-26 against a standing start in FY2019-20 — a financing-model change, not the gross provision series" },
+    { "record": "L-0222", "series": "non-fossil-generation-share", "period": "FY2014-15", "ref": "P-122",
+      "comparesInstead": "all-India coal production FY2013-14 against FY2024-25 — the case the tool's own header names, where a series is cited for context and the years belong to a different quantity" },
+    { "record": "L-0156", "series": "cess-surcharge-share-gtr", "period": "FY2017-18", "ref": "P-100",
+      "comparesInstead": "the RANGE OF AUDIT REPORTS FY2015-16 to FY2024-25 in which the CAG makes a finding — a span of documents, not a span of values" },
+    { "record": "L-0156", "series": "cess-surcharge-share-gtr-excl-compcess", "period": "FY2017-18", "ref": "P-100",
+      "comparesInstead": "the same audit-report range, against a second series carrying the same break" },
+    { "record": "L-0156", "series": "divisible-pool-share-gtr", "period": "FY2017-18", "ref": "P-100",
+      "comparesInstead": "the same audit-report range, against a third series carrying the same break" },
+    { "record": "L-0156", "series": "divisible-pool-share-gtr", "period": "FY2020-21", "ref": "P-103",
+      "comparesInstead": "the same audit-report range, against a later break on the same series" },
+    { "record": "L-0175", "series": "divisible-pool-share-gtr", "period": "FY2015-16", "ref": "P-103",
+      "comparesInstead": "cesses and surcharges as a share of gross tax revenue, on a table laid by the Ministry of Finance — and the record's own next sentence calls it 'a third convention, differing from both cess series already in this drop'. A different series from the one the break sits on, and its basis problem is disclosed" },
+    { "record": "L-0175", "series": "divisible-pool-share-gtr", "period": "FY2020-21", "ref": "P-103",
+      "comparesInstead": "the same Ministry of Finance table, against a later break on the same series" }
+  ]
+}

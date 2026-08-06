@@ -88,7 +88,7 @@
    "human-development"
   ],
   "type": "episode",
-  "summary": "Female labour force participation rose from 23.3% (2017-18) to 41.7% (2023-24) — among the largest increases recorded anywhere — reversing a long decline that had taken rural female participation from 49.4% in 2004-05 to 35.8% in 2011-12.",
+  "summary": "Female labour force participation rose from 23.3% (2017-18) to 41.7% (2023-24) — among the largest increases recorded anywhere — reversing a long decline that had taken rural female participation from 49.4% in 2004-05 to 35.8% in 2011-12. THE TWO HALVES OF THAT SENTENCE ARE NOT ONE SERIES. The 2004-05 and 2011-12 figures are NSSO Employment-Unemployment Survey rounds; the 2017-18 and 2023-24 figures are the Periodic Labour Force Survey, which replaced the EUS with a changed sampling design and stratification (P-02). The direction of both movements is not in doubt and the magnitude across the join is: a decline measured on one instrument and a rise measured on another do not subtract.",
   "whatHappened": "Rural female participation rose from 24.6% to 47.6%. But the self-employed share of employed women rose from 51.9% to 67.4%, their regular-salaried share fell to a seven-year low of 15.9%, rural women's wage-work share fell from 10.5% to 7.8%, and female self-employed monthly earnings fell even in nominal terms from ₹5,935 to ₹5,497. Azim Premji University's State of Working India 2023 characterises it as a distress-led increase in self-employment, with the self-employed share of women rising from 50% before COVID to 60% after.",
   "assessment": "contested",
   "contestedGround": "measure",
@@ -99,10 +99,7 @@
    "lfpr-female",
    "lfpr-female-peer"
   ],
-  "provenanceRefs": [
-   "P-40",
-   "P-41"
-  ],
+  "provenanceRefs": ["P-40","P-41","P-02"],
   "unmeasured": [
    {
     "what": "Whether the increase is paid market entry, reclassified unpaid work, or distress entry",

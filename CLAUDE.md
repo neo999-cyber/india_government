@@ -300,21 +300,68 @@ changed. Where the outcome genuinely depends on the order — where rule B's inp
 — that is a dependency to be **stated in the pass and decided deliberately**, not resolved by
 whichever loop happened to run first.
 
-**PHASE 16 IS THE COUNTERFACTUAL ENGINE. THAT IS ITS NAME, AND THIS IS THE ONE PLACE THAT SAYS SO.**
-Fixed by the operator 2026-08-06 after two names ran in parallel: the repository named it the
-counterfactual engine in a single paragraph of `docs/verification-log.md`, and a note kept outside
-the repository named it *shocks calibration*. **The out-of-repository name was withdrawn as soon as
-it was checked, and the reason it survived unnoticed is worth more than the correction: THERE IS NO
-CANONICAL PHASE LIST ANYWHERE IN THIS REPOSITORY.** Phases are referred to by number in prose across
-this file, the verification log and the drop files; the `drops/` directories are named by subject;
-nothing enumerates them. **A fact that lives only in prose references cannot be checked, so a second
-version of it can run for months without contradiction.** If phase names matter — and this one cost a
-scoping batch — the list belongs in one file with the numbers in it. Until it exists, a phase name
-asserted from memory is a premise, not a fact, and is checked before it is used.
+### THE PHASE LIST — this is it, and there was not one before
 
-What the engine is already bound by, before any work starts: rule 8 above (both methods, endpoint
-sensitivity, **no composite score of any kind, ever**); a statistical review of the method **as it is
-built** rather than a pass afterwards; and a rendering decision made **before** building, not after.
+**Nothing in this repository enumerated the phases until 2026-08-06.** They were referred to by
+number in prose across this file, the verification log and the drop files; the `drops/` directories
+are named by subject; no file carried the list. **That is how two names for phase 16 ran in parallel
+for a scoping batch** — one from the verification log, one from a note kept outside the repository,
+neither checkable against the other. **A fact that lives only in prose references cannot be checked,
+so a second version of it can run for months without contradiction.** The list is here now, and a
+phase name asserted from memory is a premise until it is read off this table.
+
+| # | phase | state |
+|---|---|---|
+| 1–9 | the domain phases | closed |
+| **10** | **INSERTED — not on the original list.** Numbering in any pre-insertion note is therefore offset by one from this table. | closed |
+| 11 | | closed |
+| 12 | **partly covered delimitation** | closed, but see below |
+| 13 | | **NOT SAFE TO TREAT AS COMPLETE until the delimitation overlap with phase 12 is checked** — the coverage was split across the two and neither closed on it explicitly |
+| 14–15 | 15 = environment and energy | closed |
+| — | the adversarial-review and rulings cycle | closed 2026-08-06, in `drops/cycle-review-and-rulings/` |
+| **16** | **shocks calibration** — input is the whole corpus | **next** |
+| **17** | **independence** — the field proposed in `PROPOSALS-2026-08-06.md` | this slot was the counterfactual engine; it is freed, see below |
+| **18** | **design lock** | |
+| **19** | **polish** | |
+
+**Two things a cold read must not assume.** Phase 10 was inserted, so any note written before it
+carries numbering one behind this table. And **delimitation was partly covered in phase 12**, which
+makes phase 13's completeness an open question rather than a closed one — check the overlap before
+treating 13 as done.
+
+### THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06
+
+**Not unbuilt. Declined, with the reasoning recorded, so a later cycle does not rediscover it as an
+obvious gap and build it.** The operator's ground: modelled output asserting what would have happened
+otherwise is the corpus citing itself, and that shape has now been ruled on twice — a self-audit
+leaves the ledger, and engine output may not be cited by a scored record.
+
+**Where that reasoning is strongest, and where it is not, because the distinction matters if the
+question reopens.** It is strongest against a counterfactual a record then rests on: the model's
+assumptions decide the output, the output decides the verdict, and nothing outside the corpus has to
+change for the finding to change. It is weaker as an argument against the engine EXISTING as a
+non-citable view — peer-index normalisation runs on external series (the fixed four-country panel,
+P-09), so its inputs are not the corpus, and the citation ruling already stops a record resting on
+it. **The decision does not stand on that argument alone and should not be defended with it.**
+
+**What the decision does stand on.** (1) Rule 8 already requires both methods, endpoint sensitivity
+and no composite — applied honestly to Indian data of this quality the output is usually *"the two
+methods disagree and the fit is endpoint-sensitive"*, which is a true statement the corpus can make in
+prose without an engine. (2) The verification log requires a statistical review of the method **as it
+is built**, and this project has never been able to commission the independent review it has promised
+since before phase 15; building a method whose required check cannot be obtained is building an
+unchecked method. (3) The whole 2026-08-06 cycle removed things that resemble measurement without
+being it. **An engine whose own specification describes it as producing "output that resembles
+measurement" runs against that, and a hatched band is still a line on a chart.**
+
+**RULE 8 NOW GOVERNS SOMETHING THAT WILL NOT BE BUILT, which is exactly the unfollowable-instruction
+defect this file warns about.** It is not deleted, because it still binds: it applies to every
+modelled, projected, imputed or extrapolated quantity the corpus ALREADY carries — 67 of 269 series
+mention one, P-122's imputed renewable generation is the canonical case, and 765 observations carry
+`approx` status. **Read rule 8 as the method-and-rendering rule for modelled quantities generally,
+not as a specification for a view that is not coming.** The rendering proposal in
+`drops/cycle-review-and-rulings/PROPOSALS-2026-08-06.md` survives on the same footing and applies to
+the same set.
 
 **ENGINE OUTPUT MAY NOT BE CITED BY A SCORED RECORD — ruled by the operator 2026-08-06, and it is
 the self-audit rule applied to a second case.** A counterfactual is model output. **A record scored
