@@ -192,10 +192,18 @@ method. Whether method deserves the apparatus of a record is undecided.
 
 ## AFTER THE CLOSE — 2026-08-06, `699f135` and the batch that follows it
 
-**Phase 16 is the COUNTERFACTUAL ENGINE**, fixed in `CLAUDE.md`. The name *shocks calibration* came
-from a note outside the repository and was withdrawn on checking. **There is no canonical phase list
-anywhere in this repository**, which is why two names ran in parallel unnoticed, and that is recorded
-in `CLAUDE.md` beside the fix.
+**CORRECTED 2026-08-06 at `fa518f4`, and the correction is quoted rather than made silently.** This
+paragraph read: *"**Phase 16 is the COUNTERFACTUAL ENGINE**, fixed in `CLAUDE.md`. The name *shocks
+calibration* came from a note outside the repository and was withdrawn on checking."* **That was
+withdrawn on the operator's correction.** The phase list now lives in `CLAUDE.md` — **16 shocks
+calibration · 17 independence · 18 design lock · 19 polish** — and the counterfactual engine is
+recorded there as **considered and declined**, with the reasoning, rather than as unbuilt.
+
+**The sentence above stood in this file for one commit after `CLAUDE.md` said the opposite** — and
+this is the cold-read entry point. The defect the phase list was written to prevent had reappeared in
+the file that points at it, pointing the other way. **There is no canonical phase list anywhere in
+this repository except `CLAUDE.md`'s table; read it there and treat any phase name asserted from
+memory, including from this file, as a premise.**
 
 **RULED: engine output may not be cited by a scored record.** Own layer, rendered visibly unlike
 measured data, never in a record's `sources[]`. Written beside the self-audit rule because both
@@ -227,3 +235,94 @@ answer one question.
 - **Engine rendering proposed:** hatched band never a solid line, a band never a point, both methods
   always in one frame, a permanent in-plot label *"Modelled — not measured"*, a different verb in
   captions, and no shared axis with a scored verdict.
+
+---
+
+## THE STATUTORY-BENCHMARK TRIAGE, THE 38/66 RECONCILIATION, AND THE CALIBRATION SCOPE — 2026-08-06
+
+Full account in [`PHASE-16-CALIBRATION-SCOPE.md`](PHASE-16-CALIBRATION-SCOPE.md). No records
+authored, none edited, no schema touched, no verdict moved.
+
+**THE STATUTORY DOUBLE STANDARD IS TRIAGED — the charge is not confirmed, and it finds a real defect
+it mislocates.** All nine records Gemini named read in full. **Seven of nine are correctly
+distinguished**: L-0095, L-0106 and L-0162 score `failed` against an instrument imposing an
+obligation on an identified duty-holder with measured non-performance; L-0108 is different in kind
+(its benchmark is the process's own object and the failure is adjudicated); and L-0094, L-0154 and
+L-0164 have no breached obligation at all — Art. 281 was *complied with*, and L-0164's whole finding
+is that Arts. 200–201 impose no period.
+
+**THE FINDING IS THAT THE RULE DISTINGUISHING THEM IS NOWHERE WRITTEN.** `failed` and `no-objective`
+are both defined around *the government's own announcement*, and neither reaches a duty imposed by a
+statute, the Constitution or a court. Four records score `failed` against exactly such a duty, on a
+discriminator that exists only in each record's own `assessmentNote`. **The sharpest instance:
+L-0209 (quantified, undated) is `undated-commitment` by written rule; L-0210 (binary, undated) is
+`no-objective` by written rule; L-0162 (binary, undated, constitutional "shall") is `failed` by no
+written rule at all.** On the corpus's own text an adversary reading L-0210 beside L-0162 gets
+Gemini's finding and there is nothing to answer them with. **Writing the rule is a change to the
+`assessment` enum's governing definitions and therefore A STOP. Reported, not acted on.**
+
+**Two records carry unfinished business and neither is a rescore:**
+- **L-0167** — if the Presidential Order of 28 May 1990 constituting the Inter-State Council under
+  Art. 263 prescribes a minimum meeting frequency, the record acquires the L-0095 shape exactly
+  (quantified duty, identified body, zero meetings in ten years) and is `no-objective`. **The Order
+  was NOT RETRIEVED in this run** — `interstatecouncil.gov.in` pinned to 164.100.252.222 refused 443
+  and redirected 80 to it; two Internet Archive captures 404; `www.mha.gov.in` pinned to 94.206.5.97
+  on three paths, all 404. Secondary summaries located and **not adopted** (coaching sites, and they
+  disagree between "may meet" and "shall meet"). **Not retrieved by this client, not "not published".**
+- **L-0122** — the record establishes on both custodians' attestations that no written criteria for
+  the AFSPA s.7 power exist. AFSPA s.7 itself imposes no standard on the grant rate, so this is not a
+  s.7 breach. Whether another instrument requires such norms to exist and be published is unasked;
+  **RTI s.4(1)(b)(iv) is named as a candidate only and was not retrieved.** A retrieval, not a rescore.
+
+**Class bound (candidates, not findings): 57 of the 170 records carrying a non-empty
+`assessmentNote` match a benchmark-language scan of that field alone — 8 `failed`, 12 `no-objective`,
+18 `contested`, 9 `partly`.** Half of every `failed` verdict in the corpus reasons from benchmark
+language. Three of Gemini's five `no-objective` records (L-0094, L-0122, L-0154) do not appear at
+all, because their notes name no instrument.
+
+**38 AGAINST 66 — different fields, different populations, different KINDS of measurement. Neither
+is wrong; one is not reproducible as it was stated.** **66** is `'shockExposure' in record` over all
+223 ledger records — exact, deterministic, and it re-derives to 66 with zero present-but-empty.
+**38** was a word-boundary keyword scan of `assessmentNote`/`caseFor`/`caseAgainst`/`whatHappened`
+**whose term list was never recorded**, and the count moves with it: **39** at a 5-term core, 40 with
+morphological variants, 48 at 11 terms, 52 at 19. **The load-bearing sub-claim survives intact**: the
+sixteen records carrying neither field are byte-identical at the two defensible lists, and **L-0222
+is the only evaluative one in both**. Every record the wider lists add is a false positive on reading
+the context — `sanctions` matching disciplinary sanctions and CAATSA, `tariff` matching Bhutanese
+electricity tariffs eleven times in L-0207. **Carry the sixteen ids and the term list forward, not
+the number.** Also: 45 of the 68 records carrying an exposure field use no exogenous-event language in
+those four prose fields, which is the normal case — the field is where a shock is *named*, the four
+fields are where it is *argued*.
+
+**PHASE 16 SCOPE — exposure as a property. Proposal only.** `shockExposure` is prose on 66 records,
+rendered at `app/ledger/[id]/page.tsx:124` and read by nothing else in the repository — no index, no
+filter, no cross-tab, no gate. It is already doing three unmarked jobs with opposite consequences for
+a verdict (**confound** / **cause** / **counter-explanation refused**), plus a reflexive fourth. A
+shock as a first-class object = **window · shared-with-the-peer-panel or India-specific · breaks a
+series (and which provenance record)** — the three properties the prose already restates per record,
+and where restating them is what lets them drift (L-0021, L-0184 and L-0186 assert nettability three
+times, two one way and one the other). Four gate assertions proposed, the fourth being the only one
+no reading would catch. **The eight `type: shock` records are not the corpus's shock inventory** —
+the events actually reasoned from include GST, demonetisation, the 2014-16 oil collapse, the 2022
+commodity and heat shocks and the AQR squeeze, most with no record of their own.
+
+**MUST BE SETTLED BEFORE PHASE 16 OPENS — stated, not settled, on the standing rule against resolving
+a taxonomy inside the phase that uses it:**
+1. **Is `shock` external-only?** The schema's usage note states the external reading and admits it
+   does not hold. **The note is stale in both its numbers — it reads "fits three of the five" against
+   EIGHT `type: shock` records at `fa518f4`.** Members against the external reading: **L-0027**
+   (IL&FS, named in the note), **L-0064** (migrant exodus, named), and **L-0216** — the Indus Waters
+   Treaty abeyance, **not named because it postdates the note**, and it is the Cabinet Committee on
+   Security's own decision, i.e. the schema's definition of `reform`. **And L-0091 applies the
+   external test explicitly and declines shock typing for it.** The inconsistency has four members,
+   not one, and L-0091 is where the test is already written.
+2. **Is being a shock and being exposed to one one axis or two?**
+3. **Does a shock become a record, a provenance entry, or neither?** The corpus does all three today.
+   This is the gating question — it decides whether the phase is a layer, a use of provenance, or a
+   field.
+4. **Are window / shared / breaks-a-series the right three properties?** Cheaper to decide now than
+   after 66 records migrate.
+
+**Until 1 and 3 are settled the phase can measure and cannot record**, and the measurement half
+presupposes neither: the sixteen unnamed records, **L-0002 and L-0216 typed `shock` with the exposure
+key absent**, the 66 read for role and direction, and the inventory of events actually reasoned from.
