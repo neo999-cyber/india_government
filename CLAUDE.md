@@ -137,6 +137,27 @@ it, and any sweep written for empty-but-present would have skipped it silently. 
 record`, print which case it is, and let an anchored edit ABORT rather than create a field it has
 invented.
 
+**A GUARD THAT RUNS AFTER THE DESTRUCTIVE OPERATION IS A POST-MORTEM, NOT A GUARD.** Every check
+that decides whether a write is safe runs BEFORE the write, in the same operation, and the write is
+reached only on its success. **Earned 2026-08-06 by destroying a file**: a read-modify-write script
+did `open(path,'w').write(new)` and then asserted, further down, that a string it expected was
+present. Python truncates on open, the assertion never ran because it came second, and a 918-line
+memory file became 45 lines. It was rebuilt from session transcripts with a ~50-line hole that is
+marked inline and cannot be recovered.
+
+**It is the same class as a gate reading a stale build and reporting clean** — the check and the
+thing it checks are in the wrong order, and the output looks identical to a real pass. `M2` says a
+write is verified by diffing, and `verify-and-commit` exists because `;` and `&&` are the same
+keystroke effort; this rule is the missing third: **verification before, diff after, and the write
+in between**.
+
+**The mechanical forms.** Read the file, compute the new content, ASSERT on the computed content,
+then write. Where the target is not in version control, write to a temporary path, assert on THAT,
+and rename over the original — a rename is atomic and a failed assertion leaves the original
+untouched. **And put the file in git if you can**, which is cheaper and stronger than any rule here:
+the memory directory was not tracked, which is the only reason a recoverable edit was not
+recoverable.
+
 **Verification and commit go through `npm run commit`, not through the shell.** The rule below has
 been broken by its own author four cycles after it was written — a `;` where an `&&` belonged let a
 commit run against a build that had already printed INVALID, and the corpus was pushed in a state

@@ -10769,3 +10769,86 @@ non-prose (42 declared, 2 exempted) · `reachability` **1580/1580** marks, 662 p
 fixtures, 8 lenses / 14 domains · `no-bare-root` 0 new, 0 stale, 277 allowlisted · `seam-span-report`
 125 spans, 34 undeclared (report-only) · `validate:selftest` 23/23 validator rules, 2/2 output gates ·
 `typecheck` clean · `deploy-check` 27 pages, 27 negative controls, 0 missing.
+
+---
+
+## Cycle 2026-08-06f — BATCH 6. `contestedGround` shipped; `commitmentState` STOPPED
+
+Operator-authorised schema change. One field built, one stopped on evidence found while building it.
+
+### STOP — `commitmentState` has no value for a commitment that was MET
+
+The four states are (a) not yet due · (b) due and undelivered · (c) abandoned · (d) unfalsifiable by
+construction. **A commitment whose trigger passed and which was MET fits none of them.**
+
+**The corpus had already stretched the vocabulary and did it silently.** L-0212's `whatHappened`
+reads *"COMMITMENT STATE (a) RESOLVED, AND QUICKLY … which is delivery inside four months"* — **(a)
+is "not yet due" and is being used to record delivery.** Same defect as `too-early` (83 per cent of
+that value occupied by a state its definition did not describe) and `reversed` (attracts anything
+that ends).
+
+**Scope: of the 89 records carrying `claimAtLaunch`, 9 are `worked`** — L-0014, L-0023, L-0026,
+L-0029, L-0047, L-0052, L-0053, L-0151, L-0207 — **and 28 are `partly`.** Filing any of them under
+one of the four puts a value on a record its own definition contradicts, on a public page, in the
+field whose purpose is to say which state a commitment is in.
+
+**A fifth value is an enum contract change and therefore a stop.** The authorisation was to build per
+the proposal, which specified four, and a new value needs a written definition agreed before it is
+minted. **Everything was backed out** — property, conditional rule, type, label map, rendering,
+guarded mark, view. `validate` VALID.
+
+**What the aborted build proved and is kept:** the schema rule fired on **exactly 89 records**
+(178 errors = 89 × 2, ajv emitting the specific failure and its enclosing `then`), confirming
+`claimAtLaunch` as an exact scope marker; and `no-unguarded-prose-field` **fired on both fields
+before any view existed**, exit 1, naming `ledger.commitmentState` and `ledger.contestedGround`.
+
+**For the agreement, what a fifth value would say:** *due and delivered — the trigger passed and the
+commitment was met.* It does not duplicate `assessment`: `worked` scores the measure against its
+objective, this scores the obligation against its clock, and L-0212 is `partly` while its commitment
+resolved completely.
+
+### SHIPPED — `contestedGround`, 65 of 67
+
+Schema · type · label map · rendering declaration · guarded-marks list · view, in one commit. Scope
+is the verdict itself, permitted-only where `assessment` is `contested`, in the conditional shape
+`unmeasured` already uses for `disputeKind`. **criterion 22 · interpretation 13 · evidence-withheld
+11 · measure 10 · evidence-unobservable 5 · time 4 = 65.** **L-0092 and L-0129 ship UNVALUED with the
+reason in the schema description** — both say in their own prose that `contested` stands in for a
+value that does not exist, and an `other` would absorb the evidence the vocabulary is short.
+
+Every classified id was required to be `contested` at HEAD **before** anything was written, and the
+scope reconciled 65 + 2 = **67**, the gate's own figure.
+
+**BACKFILL — declared 65 insertions / 0 deletions across 13 files, `baseline.json` named as the file
+that must not be opened. ACTUAL: 65 / 0 across 13. AGREED.** Per-record anchored string insert; span
+bounded id-to-next-id; anchor asserted unique within the span; indentation read off the anchored line
+(2-space in eight files, 4-space in five). **Every assertion ran BEFORE the write** — transformed in
+memory, re-parsed, compared record-for-record with every other field required byte-identical, line
+delta checked, then written.
+
+**`reachability` 1580 → 1645, exactly +65.** `field-render-audit` 36 prose + 43 non-prose, 0
+invisible. **The fixture-freshness check fired unprompted and was right** — *"stamp says 8 marks / 42
+renderings, live lists hold 9 / 43"* — the first real catch by a guard built two batches ago.
+
+### The ordering rule, and the memory directory in git
+
+*A guard that runs after the destructive operation is a post-mortem, not a guard.* Written into
+CLAUDE.md, earned by truncating a memory file 918 → 45 lines because the script wrote first and
+asserted second. **Same class as a gate reading a stale build and reporting clean.** The memory
+directory is now a git repository (`400353d`, 34 files, no remote and none without a deliberate
+decision) — **cheaper and stronger than the rule.**
+
+### The cache range, labelled
+
+**A decision input, not a measurement**: n=9, unstratified, projected onto 479 URLs spanning 15 bytes
+to 34.5 MB, six of nine being annual reports. Robust to decide with; not a figure to quote forward.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs =
+682 records, 1,759 points** · `reachability` **1645/1645** marks, 662 pages · `field-render-audit`
+**36 prose + 43 non-prose, 0 invisible, 2 exempted** · `no-unguarded-prose-field` 20 prose (8 guarded,
+12 exempted) · **45 non-prose (43 declared, 2 exempted)** · `domain-coverage` 14/14, 14/14,
+1141/1141 · `enum-stamp` 2 fixtures, 8 lenses / 14 domains · `figure-consistency` 18 declared claims,
+5 rounding artefacts · `no-bare-root` 0 new, 0 stale, 277 allowlisted · `validate:selftest` 23/23
+validator rules, 2/2 output gates · `typecheck` clean.

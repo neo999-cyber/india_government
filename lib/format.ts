@@ -1,4 +1,4 @@
-import type { Assessment, Calendar, Country, Domain, Lens, Term, Tier } from './types';
+import type { Assessment, Calendar, ContestedGround, Country, Domain, Lens, Term, Tier } from './types';
 
 /**
  * Display names for the lens axis, and a one-line statement of what each lens means.
@@ -68,6 +68,16 @@ export const TERM_SHORT: Record<Term, string> = {
   T1: 'T1',
   T2: 'T2',
   T3: 'T3',
+};
+
+/** What would settle a contested record. Three of the six say: nothing would. */
+export const CONTESTED_GROUND_LABELS: Record<ContestedGround, string> = {
+  criterion: 'Which criterion governs',
+  interpretation: 'An authoritative reading',
+  'evidence-withheld': 'A figure that exists and is unpublished',
+  measure: 'Which measure governs',
+  'evidence-unobservable': 'A fact that cannot be observed',
+  time: 'Elapsed time',
 };
 
 export const TIER_LABELS: Record<Tier, string> = {

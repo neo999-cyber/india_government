@@ -1,3 +1,5 @@
+import { LABEL_MAPS } from './value-renderings.mjs';
+
 /**
  * THE GUARDED-MARKS LIST — the single definition, imported by everything that needs it.
  *
@@ -17,7 +19,15 @@
  * output and asserts every prose field reaches its own record's page. The two are deliberately
  * different in kind: this list fires at authoring time and needs no build; the audit needs a build
  * and catches a field that is nominally guarded but suppressed anyway.
+ *
+ * The enum field added 2026-08-06 renders as a LABEL, not as their tokens, so the mark is the
+ * label — looked up through the same parsed maps `value-renderings.mjs` uses, never retyped here.
+ * A second copy of a label map is how a control comes to assert a page the code stopped producing.
  */
+const { CONTESTED_GROUND_LABELS } = LABEL_MAPS;
+
+const labelOf = (map, v) => (v == null ? [] : [map[v] ?? String(v)]);
+
 export const MARKS = [
   { field: 'unmeasured', layers: ['series', 'ledger'], each: (r) => (r.unmeasured ?? []).map((u) => u.what) },
   { field: 'caveat', layers: ['series', 'ledger'], each: (r) => (r.caveat ? [r.caveat] : []) },
@@ -32,6 +42,13 @@ export const MARKS = [
   // `bridgeNote` carries whether a break can be crossed at all, which is the most suppressible
   // thing in the record and the most dangerous to lose.
   { field: 'bridgeNote', layers: ['provenance'], each: (r) => (r.bridgeNote ? [r.bridgeNote] : []) },
+  // Added 2026-08-06 with the field itself. It qualifies a verdict rather than being body copy,
+  // which is exactly the shape a dense or summarising view drops first.
+  {
+    field: 'contestedGround',
+    layers: ['ledger'],
+    each: (r) => labelOf(CONTESTED_GROUND_LABELS, r.contestedGround),
+  },
   // Added 2026-08-06, when the shared leaf enumeration first made this field visible to the gate at
   // all: `competingAccounts` items are a `oneOf` of {holder, position} or a bare string, and the old
   // walk only followed `items.properties`, so the whole field was outside both render gates without

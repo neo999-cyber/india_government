@@ -2,7 +2,15 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getLedger, getProvenance, getSeries, ledger as allLedger } from '@/lib/data';
-import { ASSESSMENT_LABELS, DOMAIN_LABELS, LENS_LABELS, TERM_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
+import {
+  ASSESSMENT_LABELS,
+  CONTESTED_GROUND_LABELS,
+  DOMAIN_LABELS,
+  LENS_LABELS,
+  TERM_LABELS,
+  TERM_SHORT,
+  formatDateRange,
+} from '@/lib/format';
 import {
   Absences,
   CaveatFlag,
@@ -45,6 +53,12 @@ export default async function LedgerDetail({ params }: Props) {
         <span className="tag">{formatDateRange(l.date, l.dateEnd)}</span>
         <span className="tag">{l.type}</span>
         <span className="tag">{ASSESSMENT_LABELS[l.assessment]}</span>
+        {/* What would settle a contested record — for three of the six grounds, nothing would. */}
+        {l.contestedGround ? (
+          <span className="tag tag-state">
+            would settle it: {CONTESTED_GROUND_LABELS[l.contestedGround]}
+          </span>
+        ) : null}
         <span className="tag">confidence {l.confidence}</span>
         {l.domains.map((d) => (
           <Link key={d} className="tag" href={`/domains/${d}/`}>

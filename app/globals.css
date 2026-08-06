@@ -975,3 +975,13 @@ tr th:last-child {
   color: var(--umber, #7a5c2e);
   border-color: var(--umber, #7a5c2e);
 }
+
+/* --- commitment state and contested ground -----------------------------
+   A qualification of the verdict, not a second verdict. Umber like the
+   denominator break and the lens tag: this family means "read the number
+   with this in mind", where red means "do not splice". */
+.tag-state {
+  border-style: dashed;
+  color: var(--umber, #7a5c2e);
+  border-color: var(--umber, #7a5c2e);
+}
