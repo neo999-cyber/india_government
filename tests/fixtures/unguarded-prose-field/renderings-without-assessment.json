@@ -5,6 +5,7 @@
   "ledger.asOf",
   "ledger.term",
   "ledger.type",
+  "ledger.contestedGround",
   "ledger.confidence",
   "ledger.domains",
   "ledger.lenses",

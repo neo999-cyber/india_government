@@ -3047,7 +3047,20 @@ that a URL resolves and never what it returns.
 |---|---:|---|---|---|
 | **hash only** | **116 KB** | one 247-byte entry per URL; a rotation of GETs to refresh | **That it changed, the date it changed, and every record resting on it.** Not one word of what it said, so the corpus can say *"the document behind L-0114 is not the document we read"* and nothing more | **Nothing.** The claim becomes unverifiable and the instrument can only record that it is |
 | **bounded extract** | **~4–20 MB** | the passage actually read, which the retrieval discipline already bounds — *"fetch what answers the question"* | **The quoted passage, so the change can be characterised**: a revised figure, a deleted paragraph, a reworded commitment. This is what turns a hash alert into a research finding | **The evidence for the specific claim**, which is what a reader needs. Not the document, and not enough to re-derive anything the record did not already quote |
-| **raw bytes** | **0.6–2.8 GB** | 2.81 GB on the measured PDF mean; 0.61 GB if PDFs average 3 MB. **1,000× the 2.7 MB `/data` layer at the low end** | Everything | Everything — **and this is the only option under which a disappeared source can still be read by someone who was not there** |
+| **raw bytes** | **0.6–2.8 GB — A DECISION INPUT, NOT A MEASUREMENT** | 2.81 GB on the measured PDF mean; 0.61 GB if PDFs average 3 MB. **1,000× the 2.7 MB `/data` layer at the low end** | Everything | Everything — **and this is the only option under which a disappeared source can still be read by someone who was not there** |
+
+> **LABEL ON THE 0.6–2.8 GB RANGE, AND IT IS NOT MODESTY.** That range rests on **n=9 sized URLs**,
+> unstratified, projected onto 479 URLs whose measured members span **15 bytes to 34.5 MB** — three
+> and a half orders of magnitude. Six of the nine were PDFs and every one was an annual report, a set
+> of minutes or a survey volume, which is the fat end of the distribution and not its middle. The
+> range is wide enough to decide with — *"hash is 116 KB and raw bytes are gigabytes"* is robust to
+> any plausible correction — and **it is not a figure to quote forward.** A later cycle that writes
+> "the cache would be 2.8 GB" will be stating a number this sample cannot support.
+>
+> **What would replace it: 479 GETs recording `Content-Length`.** That is the whole measurement, it
+> costs one sweep, and until it is run the honest form of this row is an order of magnitude and a
+> direction.
+
 
 ### The judgement, restated with the cost visible
 
@@ -3255,3 +3268,138 @@ deploy-control path, both proven to fire. `npm run deploy-check`.
 mining gap · the seam-span triage, 125 spans / 34 undeclared · Arc B's one capability · the `STATE.md`
 archive split (proposed) · four stale schema descriptions · the tier/vintage asymmetry · the source
 cache, now costed at 116 KB / ~4-20 MB / 0.6-2.8 GB for its three options.
+
+---
+
+# STRUCTURAL CYCLE, BATCH 6 — 2026-08-06. `contestedGround` SHIPPED · `commitmentState` STOPPED
+
+Operator-authorised schema change. **One of the two fields was built. The other is a STOP, on
+evidence found while building it.**
+
+## 1. STOP — `commitmentState`'s four values cannot express a commitment that was MET
+
+**The vocabulary has no state for "due and delivered", and 9 records are in it.**
+
+CLAUDE.md's four states are: **(a)** not yet due · **(b)** due and undelivered · **(c)** abandoned ·
+**(d)** unfalsifiable by construction. Read them against the scope. A commitment whose trigger passed
+and which WAS met is not (a) — it is due. It is not (b) — that requires evidence of non-delivery. It
+is not (c), and it is not (d), which requires that it can never fall due. **It has no value.**
+
+**This is not a reading of mine. The corpus already had to stretch the vocabulary and did it
+silently.** L-0212's own `whatHappened` reads:
+
+> **COMMITMENT STATE (a) RESOLVED, AND QUICKLY.** The instrument named on 16 December 2024 as
+> something officials were instructed to finalise is spoken of on 5 April 2025 as existing … which is
+> delivery inside four months against a commitment that carried no date.
+
+**(a) is "not yet due". It is being used to record delivery.** That is the same defect this file has
+already documented twice — `too-early` where "83 per cent of that value was occupied by a state its
+own definition did not describe", and `reversed`, which "attracts anything that ends".
+
+**The scope of the gap, measured:** of the 89 records carrying `claimAtLaunch`, **9 are scored
+`worked`** — L-0014, L-0023, L-0026, L-0029, L-0047, L-0052, L-0053, L-0151, L-0207 — and **28 are
+`partly`**, most with a met limb and an unmet one. Filing any of them under one of the four would put
+a value on a record its own definition contradicts, on a public page, in the field whose entire
+purpose is to say precisely which state a commitment is in.
+
+**Why this is a stop and not a fix.** The remedy is a fifth value — and the authorisation was to build
+**per the proposal**, which specified four. **A fifth enum value is an enum contract change**, which
+is a stop under the standing rule and under this batch's own conditions. It also needs a written
+definition agreed before it is minted, not invented mid-backfill.
+
+**Everything for `commitmentState` was backed out** — schema property, conditional rule, type, label
+map, rendering declaration, guarded mark and view. `validate` is VALID and the tree carries no half of
+it. **What the aborted build proved and is worth keeping:**
+- the schema rule fired on **exactly 89 records** (178 errors = 89 × 2, ajv emitting the specific
+  failure and its enclosing `then`), confirming `claimAtLaunch` as an exact scope marker;
+- `no-unguarded-prose-field` **fired on both fields before any view existed**, exit 1, naming
+  `ledger.commitmentState` and `ledger.contestedGround` — the render guard proven on each, per the
+  batch's condition, before the thing it guards was written.
+
+**What a fifth value would have to say, for the agreement:** *due and delivered — the trigger passed
+and the commitment was met.* Note it does not duplicate `assessment`: `worked` scores the measure
+against its objective, this would score the obligation against its clock, and L-0212 is `partly`
+while its commitment resolved completely.
+
+## 2. SHIPPED — `contestedGround` on 65 of 67 records
+
+**Landed in one commit: schema · type · label map · rendering declaration · guarded-marks list ·
+view.** Scope marker is the verdict itself — the schema permits the field only where `assessment` is
+`contested`, in the conditional-required shape `unmeasured` already uses for `disputeKind`.
+
+| ground | written | what would settle it |
+|---|---:|---|
+| `criterion` | 22 | nothing — the facts are agreed, the dispute is which frame governs |
+| `interpretation` | 13 | an authoritative reading; none given, or two inconsistent ones |
+| `evidence-withheld` | 11 | a figure that exists or is producible and is unpublished |
+| `measure` | 10 | nothing, but the rival measures are enumerable |
+| `evidence-unobservable` | 5 | nothing — a counterfactual, or unbuildable while the practice stands |
+| `time` | 4 | elapsed time |
+| **total** | **65** | |
+
+**L-0092 and L-0129 ship UNVALUED, with the reason in the schema description.** Both say in their own
+prose that `contested` is standing in for a value that does not exist. Minting an `other` would have
+absorbed exactly the two records that are the evidence this vocabulary is short.
+
+**Checked at write time rather than trusted:** every classified id was required to be `contested` at
+HEAD before anything was written — a stale classification writing a ground onto a rescored record is
+the "flag checked against the report, not the record" trap — and the scope reconciled
+**65 valued + 2 unvalued = 67 contested**, which is the gate's own figure.
+
+### The backfill, and the numstat agreed
+
+**Declared before any write**, from the data: **65 insertions, 0 deletions, across 13 files**, with
+`baseline.json` named as the file that must not be opened.
+
+```
+ACTUAL git diff --numstat -- data/ledger
+  2 agriculture · 2 banking · 7 education · 3 employment · 2 environment · 12 federalism
+  2 foreign-trade · 2 infrastructure · 10 kashmir-rights · 6 kashmir-security · 4 macro-fiscal
+  10 rights-institutions · 3 welfare
+DECLARED 65 insertions / 0 deletions across 13 files
+ACTUAL   65 insertions / 0 deletions across 13 files — AGREED
+```
+
+**Per-record anchored string insert, never a parse-and-serialise.** Span bounded by the record's own
+id to the next id, never a fixed window. Anchor asserted UNIQUE within the span. **Indentation read
+off the anchored line** — `/data` is 2-space in eight of these files and 4-space in five.
+
+**And every assertion ran BEFORE the write**, which is the rule this session earned by destroying a
+file the other way round: the file was transformed in memory, re-parsed, compared record-for-record
+against the original with every other field required byte-identical, the line delta checked, and only
+then written.
+
+### Gate movement
+
+| gate | before | after |
+|---|---|---|
+| `reachability` | 1580/1580 | **1645/1645** — exactly +65 |
+| `field-render-audit` | 36 prose + 42 non-prose | **36 + 43**, 0 invisible, 2 exempted |
+| `no-unguarded-prose-field` | 44 non-prose | **45 non-prose** (43 declared, 2 exempted) |
+
+**The fixture-freshness check fired on its own, unprompted, and was right.** After the mark and the
+rendering landed, `validate:selftest` failed with *"stamp says 8 marks / 42 renderings, fixtures hold
+8 / 42, live lists hold 9 / 43"* — a positive control cut from a list the gate no longer used.
+`npm run regen:render-fixtures` restored it. That guard was built two batches ago and this is the
+first time it caught something real.
+
+## 3. THE ORDERING RULE, in `CLAUDE.md`
+
+*A guard that runs after the destructive operation is a post-mortem, not a guard.* Earned by
+truncating `project_india_roadmap.md` from 918 lines to 45: the script wrote first and asserted
+second, Python truncates on open, and the assertion never ran. **Same class as a gate reading a stale
+build and reporting clean** — the check and the thing it checks in the wrong order, with output
+identical to a real pass. The mechanical forms are stated: assert on the computed content before
+writing; or write to a temporary path, assert on that, and rename over the original.
+
+**And the memory directory is now a git repository** — `400353d`, 34 files, no remote, and no remote
+without a deliberate decision because those files carry personal context. **That is cheaper and
+stronger than the rule**: the directory being untracked is the only reason a recoverable edit was not
+recoverable.
+
+## 4. THE CACHE RANGE, LABELLED
+
+The 0.6–2.8 GB row now carries its own health warning in this file: **a decision input, not a
+measurement** — n=9 sized URLs, unstratified, projected onto 479 spanning 15 bytes to 34.5 MB, with
+six of the nine being annual reports and minutes, the fat end of the distribution. **Robust enough to
+decide with, not a figure to quote forward.** 479 GETs recording `Content-Length` would replace it.

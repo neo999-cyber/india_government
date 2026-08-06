@@ -39,6 +39,12 @@
     ]
   },
   {
+    "field": "contestedGround",
+    "layers": [
+      "ledger"
+    ]
+  },
+  {
     "field": "competingAccounts",
     "layers": [
       "provenance"

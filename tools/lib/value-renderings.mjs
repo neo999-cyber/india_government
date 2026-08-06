@@ -65,8 +65,22 @@ const TERM = labelMap(FORMAT, 'TERM_LABELS');
 const DOMAIN = labelMap(FORMAT, 'DOMAIN_LABELS');
 const LENS = labelMap(FORMAT, 'LENS_LABELS');
 const COUNTRY = labelMap(FORMAT, 'COUNTRY_LABELS');
+const CONTESTED_GROUND = labelMap(FORMAT, 'CONTESTED_GROUND_LABELS');
 const REASON_KIND = labelMap(MARKS, 'REASON_KIND_LABELS');
 const DISPUTE_KIND = labelMap(MARKS, 'DISPUTE_KIND_LABELS');
+
+/** The parsed maps, exported so nothing else re-parses or retypes them. */
+export const LABEL_MAPS = {
+  ASSESSMENT_LABELS: ASSESSMENT,
+  TIER_LABELS: TIER,
+  TERM_LABELS: TERM,
+  DOMAIN_LABELS: DOMAIN,
+  LENS_LABELS: LENS,
+  COUNTRY_LABELS: COUNTRY,
+  CONTESTED_GROUND_LABELS: CONTESTED_GROUND,
+  REASON_KIND_LABELS: REASON_KIND,
+  DISPUTE_KIND_LABELS: DISPUTE_KIND,
+};
 
 const identity = () => ({ kind: 'identity' });
 const labels = (map) => ({ kind: 'labels', map });
@@ -91,6 +105,7 @@ export const RENDERINGS = {
   'ledger.term': labels(TERM),
   'ledger.type': identity(),
   'ledger.assessment': labels(ASSESSMENT),
+  'ledger.contestedGround': labels(CONTESTED_GROUND),
   'ledger.confidence': identity(),
   'ledger.domains': labels(DOMAIN),
   'ledger.lenses': labels(LENS),

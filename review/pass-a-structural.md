@@ -2841,7 +2841,7 @@ Stated so you can weigh a finding against what you were not shown, and so that "
 2. **The full assessment note for the 128 ledger records outside Extract B and its appendix.** Extract A gives the first substantive sentence only.
 3. **The full prose of the 198 ledger and 120 provenance records outside Extract B.** Their claim, verdict, first line of reasoning, tier profile and stated absences are in Extract A; their case-for, case-against and evidence are not.
 4. **The rendered site.** These records are published as web pages, and some of this project's defects were rendering defects — correct data that reached no reader. You are reading the data, not the pages, so a rendering defect is invisible to you.
-5. **The verification log**, 707 KB of cycle-by-cycle working notes. Where a decision's reasoning lives only there, it is not here.
+5. **The verification log**, 714 KB of cycle-by-cycle working notes. Where a decision's reasoning lives only there, it is not here.
 6. **Everything the corpus never opened.** A subject nobody researched leaves no trace in any of these extracts. If a domain looks thin, it may be thin, and the record count per domain in Extract A.3 is the only evidence you have either way.
 
 **One asymmetry to hold on to.** Extract B is selected for trouble and Extract A is complete. A pattern you find in A is a pattern in the corpus; a density you observe in B is a density in the selection. Do not generalise from B.

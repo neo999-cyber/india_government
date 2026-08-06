@@ -103,6 +103,11 @@ export const LENSES_THAT_ARE_DOMAINS: readonly Lens[] = LENSES.filter((l): l is 
 export const TERMS = ['baseline', 'T1', 'T2', 'T3'] as const;
 export type Term = (typeof TERMS)[number];
 
+export const CONTESTED_GROUNDS = [
+  'criterion', 'interpretation', 'evidence-withheld', 'measure', 'evidence-unobservable', 'time',
+] as const;
+export type ContestedGround = (typeof CONTESTED_GROUNDS)[number];
+
 export const TIERS = ['T1', 'T2', 'T3', 'T4', 'T5'] as const;
 export type Tier = (typeof TIERS)[number];
 
@@ -419,6 +424,12 @@ export interface LedgerRecord {
    * ever rendered it. A field the type does not know about cannot be rendered by mistake.
    */
   revisitTrigger?: string;
+  /**
+   * On a `contested` record, what would settle the contest. Optional WITHIN scope: two records say
+   * in their own prose that `contested` is standing in for a value that does not exist, and they
+   * are left unvalued rather than given a catch-all that would absorb the evidence.
+   */
+  contestedGround?: ContestedGround;
 }
 
 /**
