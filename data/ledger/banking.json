@@ -167,13 +167,13 @@
    "banking",
    "macro"
   ],
-  "type": "shock",
+  "type": "event",
   "summary": "Default by Infrastructure Leasing & Financial Services, carrying ₹99,355 crore of total debt, triggering a liquidity freeze across the NBFC sector. The government superseded the board under a Uday Kotak-led team.",
   "whatHappened": "By June 2026, ₹50,387 crore had been discharged, about 82.6% of the ₹61,000 crore resolution target and roughly 61% of total external debt. Around 88.4% of the amount owed to public sector banks and financial institutions has been recovered — substantially above the average IBC recovery rate. The collapse was a major driver of the pre-COVID growth slowdown established in Phase 2.",
   "assessment": "no-objective",
   "caseFor": "Board supersession rather than liquidation preserved going-concern value and produced recovery rates far above what the IBC route delivers, at 88.4% for bank creditors. The intervention was fast and prevented a disorderly cascade through the NBFC sector at a moment of acute fragility.",
   "caseAgainst": "The collapse itself represents a supervisory failure — a systemically important entity accumulated ₹99,355 crore of debt with an asset-liability mismatch that regulators did not act on until default. Resolution has taken eight years and remains incomplete. The credit freeze that followed contributed materially to the growth deceleration that preceded COVID.",
-  "shockExposure": "This record is itself a shock, and it lands inside the AQR credit squeeze, making the two effects on 2018-2020 credit conditions difficult to separate.",
+  "shockExposure": "CORRECTED 2026-08-06 on operator Rulings 6 and 7. WITHDRAWN WORDING, quoted so the correction can be checked rather than taken on trust: this field previously read \"This record is itself a shock, and it lands inside the AQR credit squeeze, making the two effects on 2018-2020 credit conditions difficult to separate.\" The IL&FS default is a private company failing \u2014 neither an act of policy nor external to India \u2014 so Ruling 6 does not reach it, and Ruling 7 types the record by its subject, which is the failure itself and not the state\u2019s response to it. The record is now typed event. WHAT SURVIVES THE RETYPE UNCHANGED: it lands inside the AQR credit squeeze, making the two effects on 2018-2020 credit conditions difficult to separate.",
   "seriesRefs": [
    "credit-growth"
   ],

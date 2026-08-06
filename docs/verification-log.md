@@ -11470,3 +11470,53 @@ independent of the announcing body?* Three answers and their commitments are set
 `no-unguarded-prose-field` 20 prose · 45 non-prose · `reachability` 1645/1645 · `field-render-audit`
 36 prose + 43 non-prose, 0 invisible · `domain-coverage` 14/14, 1141/1141 · `no-bare-root` 0 new,
 0 stale · `figure-consistency` 18 declared · `enum-stamp` 2 fixtures · `typecheck` clean.
+
+---
+
+## Cycle 2026-08-06 — PHASE 16 OPENS. The Ruling 6 and 7 retypes, applied.
+
+**APPEND-ONLY. This entry governs over any earlier entry naming a record's type.**
+
+**Three records retyped by operator instruction, as a separate deliberate act after Rulings 6, 7 and
+8 were written at `c3b0710`.** The rulings themselves authorised no retype; this entry records the
+application.
+
+| record | from | to | ground |
+|---|---|---|---|
+| L-0216 | `shock` | `reform` | Ruling 6. The subject is the Cabinet Committee on Security's own decision of 23 April 2025 — an act of policy. The Pahalgam attack is its trigger, not its subject. |
+| L-0064 | `shock` | `episode` | Ruling 6. The exodus is the consequence of a lockdown announced with four hours' notice, which the record's own `caseAgainst` calls a choice. A pattern over a span, 2020-03 to 2020-09. |
+| L-0027 | `shock` | `event` | Ruling 7. The record's subject is the IL&FS default itself, not the state's response to it; a discrete dated occurrence. Ruling 6 does not reach it — a private company failing is neither an act of policy nor external to India — and Ruling 7 is what makes it answerable without a third branch. |
+
+**NO ASSESSMENT MOVED, asserted mechanically before the write and verified after**: `assessment`
+compared for all 223 ledger records between `c3b0710` and the working tree, 0 moved. A type change
+that would move a verdict is a stop, and this one did not.
+
+**TWO PROSE FIELDS WERE MADE FALSE BY THE RETYPE AND WERE CORRECTED IN THE SAME OPERATION.** Both
+carried *"This record is the shock"* in `shockExposure`, which the retype falsifies. Each now quotes
+its withdrawn wording under the standing convention and states what survives the retype unchanged —
+L-0064 remains a confound for every employment series 2020-21 and 2021-22, and L-0027 still lands
+inside the AQR credit squeeze. **`withdrawn-wording` passes: 27 corrections quote what they
+withdrew, 34 exempted by name, 151 sibling comparisons, 0 withdrawn claims still asserted
+elsewhere.** Had the retype been applied to `type` alone, both records would have asserted a type
+they no longer carry, with every gate green.
+
+**L-0020 WAS DELIBERATELY NOT RETYPED and now carries the `assessmentNote` it had never had.** It is
+the one record of the four with two subjects — its own title says so, *"COVID-19 contraction and
+fiscal response"* — and on any answer to Ruling 6 the two halves take different types. The note
+states the `contested`/`criterion` reasoning the record had never given, records that the type
+question is open, and names the two ways out (a split into two records, or a decision about which
+subject the record is), both of which are more than a retype.
+
+**FIVE `type: shock` RECORDS REMAIN AND THEY ARE NOT THE FIVE THE OLD SCHEMA NOTE MEANT** — L-0002,
+L-0020, L-0021, L-0184, L-0186. The note that said *"fits three of the five"* was stale against
+eight; the correction written at `c3b0710` said eight; **this entry supersedes both.** The schema's
+`type` usage note and the `LedgerType` comment are updated in the same commit.
+
+**Two defects in my own writing were caught by the gates before the commit, both on the first
+attempt at the L-0216 note.** `validate` named a `→` outside the charset allowlist. `withdrawn-wording`
+named the note as carrying a correction marker — the phrase *"previously read"* — with no attributed
+quotation, which was correct: nothing in that field was withdrawn, only the type value was, and the
+marker was false. Reworded to *"the type value carried until that date was `shock`"*. **A guard that
+fires on a false correction marker is the guard doing exactly what it was built for.**
+
+**Gates at the end of this batch:** see the commit.
