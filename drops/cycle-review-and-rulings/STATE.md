@@ -186,3 +186,44 @@ method. Whether method deserves the apparatus of a record is undecided.
 
 **No open items beyond the nine listed.** Phase 15 closed with none of its own; this cycle adds items
 1, 2, 3 and 8, and carries 4, 5, 6, 7 and 9 forward unchanged.
+
+
+---
+
+## AFTER THE CLOSE — 2026-08-06, `699f135` and the batch that follows it
+
+**Phase 16 is the COUNTERFACTUAL ENGINE**, fixed in `CLAUDE.md`. The name *shocks calibration* came
+from a note outside the repository and was withdrawn on checking. **There is no canonical phase list
+anywhere in this repository**, which is why two names ran in parallel unnoticed, and that is recorded
+in `CLAUDE.md` beside the fix.
+
+**RULED: engine output may not be cited by a scored record.** Own layer, rendered visibly unlike
+measured data, never in a record's `sources[]`. Written beside the self-audit rule because both
+answer one question.
+
+**Three proposals and one triage: [`PROPOSALS-2026-08-06.md`](PROPOSALS-2026-08-06.md).**
+
+- **Seam-span triaged, all 35.** Narrowing to one-sentence co-occurrence gives 21; reading all 21
+  gives **6 GENUINE cross-seam comparisons in 2 records** — L-0060 (`lfpr-female` @ FY2017-18, an
+  NSS-era figure set against PLFS-era figures) and **L-0150, which carries five of the six** and is
+  the flagship federalism claim. **Corrected rate 6 of 127 = 4.7 per cent**, against a raw 27.6.
+  12 are false positives; **3 (L-0182) are DECLARED IN SUBSTANCE and missed because the `declared`
+  predicate accepts only a provenance id or the period string, not an explanation in prose.**
+  **It can gate as a RATCHET** — fix the 6, widen the predicate, freeze the 12 with their judgements,
+  fail on anything new. It cannot gate on the heuristic alone: the residual is semantic.
+- **Domain asymmetry: THE DATA CANNOT ANSWER IT.** `claimAtLaunch` is optional and **empty on 137 of
+  223 records**, and in every low-evaluative domain **not one record STATES that no claim was made** —
+  the field is simply unfilled. An empty field and a stated absence are different facts. The `type`
+  distribution points at *no announced measure* (kashmir: 27 of 33 `episode`/`institutional`,
+  `reform` 2; defence: `reform` 0), offered as an inference, not a measurement.
+  **THE ONE FINDING THAT IS ABOUT THE INSTRUMENT: 10 records carry an evaluative verdict with NO
+  claim recorded at all** — L-0077, L-0080, L-0081, L-0095, L-0097, L-0098, L-0104, L-0106, L-0108,
+  L-0176 — scored against a statutory, constitutional or judicial benchmark **the record does not
+  state**. That is the reviewers' statutory double standard, located and counted. Fix is prose.
+- **An `independence` field is proposed and NOT built** (schema change = stop): values `none` /
+  `intra-state` / `external`, scope = the 57 evaluative records, a gate that checks a judgement was
+  made and is not contradicted by the citations while saying plainly it cannot check the judgement,
+  and a backfill of 47 records confirmed by reading rather than inferred.
+- **Engine rendering proposed:** hatched band never a solid line, a band never a point, both methods
+  always in one frame, a permanent in-plot label *"Modelled — not measured"*, a different verb in
+  captions, and no shared axis with a scored verdict.

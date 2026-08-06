@@ -300,6 +300,32 @@ changed. Where the outcome genuinely depends on the order — where rule B's inp
 — that is a dependency to be **stated in the pass and decided deliberately**, not resolved by
 whichever loop happened to run first.
 
+**PHASE 16 IS THE COUNTERFACTUAL ENGINE. THAT IS ITS NAME, AND THIS IS THE ONE PLACE THAT SAYS SO.**
+Fixed by the operator 2026-08-06 after two names ran in parallel: the repository named it the
+counterfactual engine in a single paragraph of `docs/verification-log.md`, and a note kept outside
+the repository named it *shocks calibration*. **The out-of-repository name was withdrawn as soon as
+it was checked, and the reason it survived unnoticed is worth more than the correction: THERE IS NO
+CANONICAL PHASE LIST ANYWHERE IN THIS REPOSITORY.** Phases are referred to by number in prose across
+this file, the verification log and the drop files; the `drops/` directories are named by subject;
+nothing enumerates them. **A fact that lives only in prose references cannot be checked, so a second
+version of it can run for months without contradiction.** If phase names matter — and this one cost a
+scoping batch — the list belongs in one file with the numbers in it. Until it exists, a phase name
+asserted from memory is a premise, not a fact, and is checked before it is used.
+
+What the engine is already bound by, before any work starts: rule 8 above (both methods, endpoint
+sensitivity, **no composite score of any kind, ever**); a statistical review of the method **as it is
+built** rather than a pass afterwards; and a rendering decision made **before** building, not after.
+
+**ENGINE OUTPUT MAY NOT BE CITED BY A SCORED RECORD — ruled by the operator 2026-08-06, and it is
+the self-audit rule applied to a second case.** A counterfactual is model output. **A record scored
+using that model, citing that model's output as its evidence, is a source that is not independent of
+what it establishes** — the same shape as the corpus citing itself, and the governing principle
+refuses both for the same reason. So: the engine's output lives in **its own layer**, is rendered
+**visibly unlike measured data**, and **never enters a record's `sources[]`**. A record may reason
+about a counterfactual in prose and say that it is one; it may not rest on it. **The two rulings
+answer one question and should be read together** — if nothing outside this corpus would have to
+change for a finding to change, it is method, not evidence.
+
 **A SELF-AUDIT DOES NOT BELONG IN THE SCORED LEDGER — ruled by the operator 2026-08-06.** The tier
 ladder grades external documents by their DISTANCE FROM THE EVENT, and a derivation over the
 corpus's own `/data` is at no distance: it is the corpus restating itself. That is why band C had no
