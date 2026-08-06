@@ -272,6 +272,59 @@ composite index. It also does work the ladder could not: under Ruling 1 a foreig
 **is** independent of the Indian body being assessed and an Indian official release is not, and one
 tier holding both hid exactly that.
 
+**RULING 5 — AN OBJECTIVE MAY BE IMPOSED AS WELL AS ANNOUNCED, ruled by the operator 2026-08-06.**
+`failed` and `no-objective` were both defined around the government's own announcement — *"the
+measure did not achieve the objective stated at announcement"*, and *"an objective is a target that
+can be failed"*. **Neither reaches an obligation imposed ON the government by a statute, a
+constitutional provision or a court direction — and four records were already scoring `failed`
+against exactly such an obligation.** They were scoring it correctly. The discriminator that let them
+lived in each record's own `assessmentNote` and nowhere else, which is the same defect as the phase
+list living only in prose references: **a rule that is applied correctly and written down nowhere
+cannot be checked, so a second version of it can run for months without contradiction.**
+
+**THE RULE: A DUTY IMPOSED BY AN EXTERNAL AUTHORITY IS A LEGITIMATE OBJECTIVE FOR SCORING, PROVIDED
+THE RECORD NAMES THE INSTRUMENT AND THE DUTY.** External authority means an authority other than the
+body being assessed. The record states the instrument, the duty in the instrument's own words, and
+the duty-holder — all three, on the record and not in a later reader's inference.
+
+**Four conditions, each earned by one of the nine records the external review named.** All nine were
+tested against the rule before it was written and **not one verdict moved**, which is the test a rule
+codifying existing practice has to pass to be written at all.
+
+1. **THE OBLIGATION IS IMPOSED, NOT VOLUNTEERED — and the absence of a deadline in the instrument
+   does NOT move an imposed duty to `no-objective`.** Ruling 3's `undated-commitment`, and the
+   *"an objective is a target that can be failed"* test, both govern what a government **volunteered**.
+   **L-0162 and L-0210 are the pair an adversary reads together**: both are stated, binary and
+   undated, and they take `failed` and `no-objective` respectively. Article 279A(11) binds the GST
+   Council whether or not the Council ever said anything; the Free Movement Regime position binds the
+   Ministry of Home Affairs only as far as the Ministry committed itself, and it committed itself to
+   a recommendation. **Who imposed the obligation is the discriminator, and until now it was written
+   in neither record.**
+2. **THE DUTY MUST BE THE ONE THE FINDING IS ABOUT.** L-0154 is the case: Article 281 imposes a real
+   duty — lay an explanatory memorandum on the action taken — and the Union **discharged** it. The
+   record's finding is about five undefined action verbs, which no instrument reaches. **A duty in
+   the vicinity is not a duty in dispute.** This is Ruling 1a's *bear on the limb in dispute* one
+   level up: there it qualifies a SOURCE, here it qualifies an OBJECTIVE.
+3. **NAMING AN INSTRUMENT IS NOT BREACHING IT.** L-0122 names AFSPA (J&K) 1990 section 7 as the source
+   of the sanction requirement; section 7 sets no standard on the grant rate, so fifty requests and
+   zero grants breach nothing in it. **Without this condition the rule degrades into "the note
+   mentions a statute", which 33 of 170 notes do.**
+4. **AN ABSENT DUTY IS NOT A DUTY.** L-0164's entire finding is that Articles 200 and 201 fix no
+   period for the Governor or the President. **A record whose finding IS the absence of an obligation
+   is the structural inverse of a record scored against one**, and reading it as an instance is the
+   most available misreading of this rule.
+
+**WHAT THE RULE DOES NOT REACH: an objective INTERNAL to the measure.** L-0108 is `failed` against
+*"the recruitment process's own object — appointing teachers on merit"*, which the Supreme Court's
+adopted findings establish it did not achieve. That is the ORDINARY definition of `failed` — an
+objective stated at enactment, not one imposed from outside — and it is named here so a later cycle
+does not cite it as an instance of this rule and widen the rule by example.
+
+**The rule is a description of practice, not a new standard.** Seven of the nine were already
+correctly distinguished and each stated its ground in its own note. What changes is that the ground
+is stated ONCE, where a reader and an adversary can find it, instead of nine times where only the
+author could.
+
 **A VALUE LANDS IN THE SCHEMA, THE TYPE AND THE LABEL MAP IN ONE COMMIT, OR IT IS A PROMISE THE VIEW
 CANNOT KEEP.** Adding a member to a JSON Schema enum used to be silent: `no-unguarded-prose-field`
 and `field-render-audit` both walk the corpus, so a value no record carries yet is, to them, nothing

@@ -326,3 +326,105 @@ a taxonomy inside the phase that uses it:**
 **Until 1 and 3 are settled the phase can measure and cannot record**, and the measurement half
 presupposes neither: the sixteen unnamed records, **L-0002 and L-0216 typed `shock` with the exposure
 key absent**, the 66 read for role and direction, and the inventory of events actually reasoned from.
+
+---
+
+## RULING 5 AND FOUR REPORTS — 2026-08-06, after `004fd5f`
+
+Full account in [`RULING-5-AND-FOUR-REPORTS.md`](RULING-5-AND-FOUR-REPORTS.md). **0 verdicts moved,
+proven by comparing `assessment` across all 223 ledger records between HEAD and the working tree, not
+asserted.** No record authored or edited; no enum value added or removed; no gate built; no phase
+opened; questions (a) and (c) still open and still the operator's.
+
+**RULING 5 IS WRITTEN — an objective may be IMPOSED as well as announced.** In `CLAUDE.md`, the
+`assessment` definition in `schemas/ledger.schema.json`, and the `Assessment` doc comment in
+`lib/types.ts`, one commit, per the convention Rulings 1 and 2 set. `enum-parity` unchanged at *48
+members across 6 axes · 3 axes exempted by name*; the schema edit is 1 insertion / 1 deletion on a
+description line.
+
+> **A duty imposed by an external authority is a legitimate objective for scoring, provided the
+> record names the instrument and the duty.**
+
+**Four conditions, each earned by one of the nine:** the obligation is **imposed, not volunteered**,
+and an instrument's silence on a deadline does not move it to `no-objective` (L-0162/L-0210); the
+duty must be **the one the finding is about** (L-0154 — Article 281's duty was DISCHARGED); **naming
+an instrument is not breaching it** (L-0122); **an absent duty is not a duty** (L-0164). It does
+**not** reach an objective **internal** to the measure — L-0108 is named in the rule so it is not
+cited as an instance and used to widen it.
+
+**All nine tested and nine hold.** L-0167 stays `no-objective` **on the record**, and the rule now
+states exactly what a retrieval of the 1990 ISC Order would have to show to change that — an open
+question converted into a specified one.
+
+**FOUND WHILE WRITING IT: `no-objective` had NO BULLET OF ITS OWN in `lib/types.ts` for the whole of
+its life** — nine of ten members defined, the missing one carrying roughly half the ledger, appearing
+only inside `undated-commitment`'s bullet. **`enum-parity` compares enum SETS and cannot see this: a
+missing DEFINITION is not a missing MEMBER.** Written in this commit, saying it was missing.
+
+**THE PATTERN, NAMED: THE PER-RECORD DEFENCE** — *a rule the corpus applies correctly, states only in
+the record that applies it, and therefore cannot be checked, re-applied, or defended in the
+aggregate.* Three instances this cycle: **the unmeasured limb** (8 records, 5 treat it as
+disqualifying and 3 do not → R2), **independence** (11 of 223 in four vocabularies, 212 silent →
+proposed, phase 17), **the external duty** (→ R5). Five properties, and the first explains why no
+gate ever fires: **the practice is correct**, so nothing downstream fails. The three render gates all
+prove the note is THERE and none reads what it SAYS. **The charge is one sentence; the defence is N
+records, and that asymmetry gets worse with corpus size.**
+
+**INVENTORY — what else is governed only by `assessmentNote`.** Scope: the 170 records with a
+non-empty note; word-boundary scan of that field alone; **candidates, not findings; no gate emits
+these.** D external duty **33** · E "no objective was stated" **29** · C unmeasured limb **27** ·
+F correction history **27** · A argues against another enum value **17** · B independence **11** ·
+G appeals to the written definition **16**.
+
+**WHERE THE NEXT REVIEW LANDS, predicted:**
+1. **Group C — RULING 2 IS WRITTEN AND UNENFORCEABLE.** Nothing records that a record announced
+   multiple objectives or which are measured, so R2 cannot be re-applied or audited, and its 27
+   candidates split across six values. **Writing a rule does not close a per-record defence.**
+2. **Group A — 17 records defending a value boundary one record at a time** (*"Not failed either"*,
+   *"Not contested"*). Two of those boundaries have been ruled on; the rest have not.
+3. Group B (scheduled, phase 17) and Group E (the `claimAtLaunch` proposal).
+**Groups D and F are now closed** — D by this rule, F by `withdrawn-wording.mjs`, which is the proof
+the class is closable. **My own first reading of group G was wrong and is corrected in the report:** a
+loose term list returned 22 apparent "documented departures"; `departure` appears in **exactly one**
+note (L-0026, the known R2 case) and the 16 are records *appealing to* the written definition, which
+is the practice working.
+
+**`shockExposure` CARRIES TWO JOBS, NOT THREE — all 66 read, assignment exhaustive and disjoint
+(universe 66, assigned 66, duplicates 0).** CONFOUND **23** · CAUSE **19** · NONE STATED **9** ·
+IS-THE-SHOCK **6** (exactly the six `type: shock` records carrying the field) · REFUSED-as-the-whole
+**4** · AMBIGUOUS **4** · NOT AN EXPOSURE **1**. **Refusal is an ADJUDICATION MODIFIER, not a third
+job: 11 further records carry it as a clause inside a confound or cause statement, so 15 of 66 refuse
+or limit the shock and only 4 do so as the whole of the field.** Two axes — what the shock did, and
+whether the record accepts it (*accepted / limited / refused*). **This is a partial answer to
+question (b), as measurement rather than as a ruling.** Three further undecided jobs found: OUTBOUND
+(3 — the record is a confound for others), a substantive FINDING (L-0034), and a TYPING DECISION
+(L-0091). The four ambiguous are L-0012, L-0049, L-0051, L-0061; **L-0061 is the clearest case — the
+shock "is the stated reason" and the record never says whether it accepts it.**
+
+**THE EIGHT `type: shock` AGAINST L-0091'S TEST — 4 pass, 2 fail, 1 mixed, 1 the test cannot reach.**
+Pass: L-0002 L-0021 L-0184 L-0186. **Fail: L-0064** (on its own words — the lockdown notice *"was a
+choice"*) and **L-0216** (the Cabinet Committee on Security deciding). **Mixed: L-0020**, and it
+contradicts L-0091 directly — one pandemic, two "response" records, `episode` for school closures and
+`shock` for the fiscal response. **Unreachable: L-0027**, which is neither a state decision nor
+external, so **the test is binary and the corpus has a third case.**
+**And a cross-tab settles L-0216 without settling the taxonomy: it is the ONLY one of the eight
+carrying a `claimAtLaunch`, the only one with an evaluative verdict, and one of two with no
+`shockExposure`.** All three are what a *measure* looks like. (L-0184's `claimAtLaunch` quotes a US
+executive order and is not the same thing.) **What L-0091's test would need to be written into the
+schema:** a third term for domestic non-state events · the locus of the CAUSING ACT not the effect ·
+a bundling rule for a record covering an event and the state's response · and a test on the record's
+SUBJECT, not its domain or its trigger. **Report only; the phase has not opened.**
+
+**THE STATE-LINE CONTRADICTION IS MECHANICALLY REACHABLE — and this is the first of the four that
+is.** Batch 14's answer (*"a convention, not a checker"*) was right for its two instances and does not
+govern this one, which has three properties phase 14's lacked: **a named machine-identifiable object**
+(a phase number), **a declared authority** (`CLAUDE.md`'s table says so in terms), and **a closed
+vocabulary** (four names). Surface: 904 bare mentions across 91 files, but only **25 in assertion
+form** (`phase 1[0-9] (is|was|becomes|=)`) — small enough to enumerate. **The trap is decisive for the
+design: of the four hits asserting a name against the current table, THREE ARE CORRECT** — the
+append-only verification log, and two that quote the withdrawn wording inside the sentence withdrawing
+it. **A token-forbidding guard would fire on three correct instances and zero incorrect ones**, the
+shape `CLAUDE.md` already documents. **Design stated, not built** (a gate is a contract change): reuse
+`withdrawn-wording.mjs`'s presence-in-context form, parse the table as the single source and abort if
+it has moved, exempt the append-only log by name, two-sided control. **The general convention — every
+state line dated and object-named — remains unbuilt and remains right for the general case.**
