@@ -1,4 +1,4 @@
-# Gate summary lines captured verbatim at 1825b85, 2026-08-06.
+# Gate summary lines captured verbatim at aa80fad+working tree, 2026-08-06.
 # Produced by running each gate in the standing gate list. Nothing here is retyped.
 
 $ npm run validate
@@ -33,7 +33,7 @@ $ node tools/seam-span-report.mjs
 seam-span-report — 125 record-by-break span(s): 91 declare the break, 34 do not. REPORT ONLY, nothing gated, nothing fixed.
 
 $ npm run validate:selftest
-selftest OK — /data valid (165 warning(s))
+
   23/23 validator rules fire on tests/fixtures/broken (57 errors caught)
   2/2 output gates proven to fire on their own fixtures (reachability, domain-coverage)
   misspelled schema keyword fails compilation

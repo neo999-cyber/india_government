@@ -1,0 +1,2850 @@
+# Adversarial review — PASS A, structural
+*One of three independent passes. The other two are not in this file and you are not expected to have read them.*
+
+Generated from the corpus at commit `aa80fad` (2026-08-06) by `tools/gen-adversarial-pass-input.mjs`. Regenerating it against the same commit reproduces it byte for byte.
+
+You have no access to the repository, so this document has to be sufficient on its own. It contains:
+
+- **Extract A — Structural.** Every one of the 226 ledger records and 127 provenance records, one compact block each: id, verdict, the claim, the first substantive sentence of the reasoning, the source count by tier, and the stated reasons for anything the record says is unmeasured. This is the part that finds defects no single record shows — a verdict class that always rests on one kind of source, a value that clusters in one phase, a tier profile that will not carry the claims made on it.
+- **Extract C — Method.** The instrument's own rules, quoted from the files that hold them, so you can check whether they were followed instead of inferring them from the output.
+
+**This pass exists for finding type 4 — a pattern across records that no single record reveals.** Extract A is COMPLETE: every ledger and provenance record is here, none sampled. So a distribution you find is the corpus’s distribution, not a selection effect. Look at the cross-tabulations before the individual blocks.
+
+## What you are reading, and what to do with it
+
+This is a longitudinal research corpus about the Indian government: what was announced, what can be established since, and what cannot be established at all. It covers a frozen pre-May-2014 baseline and the three terms after it. It has **one author, working with an AI assistant**, and the same pairing wrote the records, retrieved the sources and checked the result. Nothing in it has been reviewed by anyone who did not write it. **You are the first outside reading**, and you are being asked to attack it rather than to confirm it.
+
+### What a useful finding looks like
+
+Ranked by what this corpus can act on:
+
+1. **A verdict the evidence in its own record does not support.** The record states a case for and a case against; if the verdict does not follow from them, say which one it should have been and why.
+2. **A claim stronger than its source.** The tier of every citation is given. A T4 document is journalism or a relayed figure; a claim that needs a primary and cites only a T4 is a defect even if the claim is true.
+3. **An absence asserted without a search.** This corpus treats absences as findings and records a stated reason for each. An absence claim that rests on nothing but not having found the thing is the failure mode the method section calls out most often — which means finding one is worth more, not less.
+4. **A pattern across records that no single record reveals.** Examples of the shape: a verdict value used inconsistently between two records with the same structure; a domain whose sources are systematically one tier weaker than the rest; a stated reason (`not-published`, `withheld`) applied to one kind of subject and never to another.
+5. **A rule the corpus states and did not follow.** The rules are in Extract C, quoted from the files that hold them. A rule broken is worth more than a figure wrong, because a figure is one record and a rule is a class.
+
+**Tie every finding to a record id.** A finding with no id cannot be checked and will not be acted on. Where a finding is a pattern, name the ids it rests on — at least three, or say why fewer suffice.
+
+**End with a statement of what you could not check from this file alone.** That list is as valuable as the findings: it tells us what the next version of this document has to carry. Do not guess at what you could not see; name it.
+
+**Two things not to spend budget on.** The arithmetic is gated mechanically and has been recomputed repeatedly; the last full pass found one error of 0.01 in 34 claims. And the limits listed in the next section are already known and logged — reporting one back is not a finding. Everything else is open.
+
+**Corrections are included on purpose.** This corpus corrects records in place and keeps the withdrawn wording inside the sentence that withdraws it, so a corrected record reads *"X — CORRECTED, this previously said Y"*. That means the wrong figure is still on the page, by design. If you read one of those as a live error, say so: that tells us the correction is not visible enough, which is itself the finding.
+
+---
+
+## Known limits — already logged, do not spend budget rediscovering these
+
+**1. The corpus is not built entirely from government primaries, and the public method page understates by how much.** Of 1,205 graded citations, 285 are not on an Indian government or parliamentary host (91 distinct hosts). The rule used to compute that is printed here because the number depends on it entirely: host ends `.gov.in` or `.nic.in`, or is under `sansad.in`, `rajyasabha.digital` or `rajyasabha.nic.in`; a `web.archive.org` URL is unwrapped to the host it archives before the test. The largest non-government sources are comtradeapi.un.org (30), data.worldbank.org (19), asercentre.org (15), govinfo.gov (13), rbi.org.in (11), abclive.in (9), ohchr.org (9), satp.org (7). They exist because they are concentrated where the state does not measure the thing or is itself the disputed party — injuries recorded by hospital clinicians in peer-reviewed journals, civilian-death counts in Jammu and Kashmir, internet-shutdown durations. Those records depend on non-government evidence **because** the government does not publish it, and that dependence is the finding rather than a weakness of it. **What is open for you:** whether any individual record leans on a non-government source where a government one exists, and whether the T4 records in that set carry claims that need a primary.
+
+**1a. Two figures the project publishes about its own sourcing do not reconcile with the data, and both are printed here rather than resolved.** Its public method page states that 752 of 1,205 citations are graded T1. **Measured over all three layers at `aa80fad`, the figure is 965** — the published count reads `tier` inside each `sources[]` entry, which is where it lives on ledger and provenance records, and misses the 269 series, every one of which carries a tier ON THE RECORD (T1×213 T2×29 T3×3 T4×22 T5×2). The published figure therefore UNDERSTATES the primary-source share, and the sentence after it — that the remainder is multilateral statistics, research, journalism and NGO datasets — is wrong about 213 of them, which are Indian official statistical sources. Separately, the project's internal note records 287 non-government citations against the 285 computed above; the earlier figure's host rule was not written down, so the two are not strictly comparable and the gap is not evidence of a change in the data. **Both discrepancies were found while generating this document and neither is a defect in a record** — the citations and their tiers are correct in `/data`. They are here so you do not spend budget rediscovering them, and so that a claim you meet elsewhere about this corpus's sourcing can be checked against the table in A.3.
+
+**2. One capability has never been tested, and a claim was withdrawn over it.** An air-quality arc was left open because a single publisher's site is client-rendered and was not retrieved. A first attempt recorded "no rendering client is available"; that was **withdrawn** — the observed failure was DNS resolution, not rendering, and no attempt has yet addressed the actual error. The arc is recorded as blocked rather than as complete, and no record was written from the unretrieved material.
+
+**3. Series breaks are declared per series, and a derived comparison stated in a record's prose is outside that guard.** A reporting tool measures the gap: see the `seam-span-report` line in the gate block below. It is report-only, nothing is gated on it, and the undeclared spans are a candidate list rather than a defect count — they have not been triaged. **What is open for you:** a record whose prose states a comparison across a basis change without saying so. One such case has already been found and corrected (in Extract B).
+
+**4. The arithmetic gate checks only DECLARED claims and never mines for undeclared ones.** An author who states a derived figure without declaring it is outside the gate entirely. Four such figures were found by hand in the last phase and none by the gate. The gate's claim format is also subtraction-only and cannot express a ratio at all. This is logged as a gate contract change and has not been made.
+
+**5. There is no assertion that a NON-PROSE field reaches a reader.** The rendering audit covers prose fields and excludes enum, boolean, format and pattern fields by construction. Two consequences are already proven: a dispute-kind enum shipped invisible on 19 entries until it was found by hand, and 73 records carrying the `no-objective` verdict render no verdict at all, with no written decision either way. **A field being correct in the data and absent from the page passes every gate in this repository.**
+
+### The gates, and their own emitted scopes
+
+Every figure in this document that a gate emits is quoted from the block below, captured by running each gate at `aa80fad`. Figures the document computes itself are printed with the field or needle that produced them. **The gates enforce internal consistency, not correctness** — they can prove a mark reaches a page and cannot prove the mark is true.
+
+```
+# Gate summary lines captured verbatim at aa80fad+working tree, 2026-08-06.
+# Produced by running each gate in the standing gate list. Nothing here is retyped.
+
+$ npm run validate
+VALID — 0 errors, 165 warning(s) (open research items, not blockers)
+  over 226 ledger · 269 series · 127 provenance · 60 pairs = 682 records, 1759 points
+
+$ npm run manifest
+manifest OK — 682 records, 71,554 bytes (unchanged)
+
+$ npm run no-bare-root
+no-bare-root OK — 0 new, 0 stale; 277 legacy citation(s) remain allowlisted from 277 frozen 2026-08-05 (T1:128 T2:13 T3:6 T4:42 T5:4 no tier:84)
+
+$ npm run no-unguarded-prose-field
+no-unguarded-prose-field OK — 19 prose field(s) across ledger + provenance: 7 guarded by reachability, 12 exempted by name in the schema
+
+$ npm run figure-consistency
+figure-consistency OK — 18 declared arithmetic claim(s), 18 checked against both source and printed operands, 5 rounding artefact(s) found and declared
+
+$ npm run enum-stamp
+enum-stamp OK — 2 fixture(s) match the live enums (8 lenses, 14 domains)
+
+$ npm run reachability
+reachability OK — 1368/1368 declared marks reachable on their own record page (662 pages scanned)
+
+$ npm run field-render-audit
+field-render-audit OK — 32 prose field(s) across 3 layers, 0 invisible · ledger 15 field(s)/0 invisible · provenance 6 field(s)/0 invisible · series 11 field(s)/0 invisible
+
+$ npm run domain-coverage
+domain-coverage OK — 14/14 domain surfaces built, 14/14 linked from the index, 1141/1141 record-to-surface references reachable
+
+$ node tools/seam-span-report.mjs
+seam-span-report — 125 record-by-break span(s): 91 declare the break, 34 do not. REPORT ONLY, nothing gated, nothing fixed.
+
+$ npm run validate:selftest
+
+  23/23 validator rules fire on tests/fixtures/broken (57 errors caught)
+  2/2 output gates proven to fire on their own fixtures (reachability, domain-coverage)
+  misspelled schema keyword fails compilation
+```
+
+---
+
+# EXTRACT A — STRUCTURAL
+
+All 226 ledger records and all 127 provenance records, in id order. Nothing is sampled and nothing is omitted from this extract.
+
+**Read the field names first.**
+
+- `verdict` — the ledger's `assessment` enum. Definitions are in Extract C; the measured distribution is printed there beside each value.
+- `bias` — the provenance layer's `directionOfBias` enum. Provenance records carry no verdict; this is the closest thing they have to one.
+- `claim` — `claimAtLaunch`, what the government said the thing would achieve. Empty where nothing was claimed, which is itself a finding the corpus scores (`no-objective`).
+- `reasoning` — **the first SUBSTANTIVE sentence of the record's assessment note**, not the whole note. Where a note opens with a dated clause recording when it was written or corrected, that clause is skipped here so the thesis sentence shows; the clause is still in the record and the `corrected` marker below names its field. The full note is present for the 35 records in Extract B and the 25 in its appendix, and is not in this file for the rest. That omission is listed at the end.
+- `sources` — count by tier. **The tier grades the DOCUMENT HELD, not the institution the subject belongs to**: an official finding known only through a newspaper is T4. Ladder in Extract C.
+- `unmeasured` — the stated reasons the record gives for things it says have no measurement, with the count of each. Definitions in Extract C.
+- `corrected` — the fields carrying a self-correction or withdrawn wording. Full text in Extract D or B.
+
+## A.1 — Ledger, 226 records
+
+**L-0001** · July 2012 grid collapse  
+`baseline-context` · baseline · infrastructure · event · 2012-07-30–2012-07-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0
+
+**L-0002** · Taper tantrum and rupee crisis  
+`baseline-context` · baseline · macro · shock · 2013-05–2013-09 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0
+
+**L-0003** · 2010 Kashmir summer unrest  
+`baseline-context` · baseline · governance/kashmir · episode · 2010-06–2010-09 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T4×1] · unmeasured 0  
+1 commit(s) touched this record after it was created
+
+**L-0004** · SHRC unmarked graves report  
+`baseline-context` · baseline · kashmir/governance · episode · 2011-07-02 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T4×1] · unmeasured 0
+
+**L-0005** · Afzal Guru execution and aftermath  
+`baseline-context` · baseline · governance/kashmir · event · 2013-02-09 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T4×1] · unmeasured 0  
+1 commit(s) touched this record after it was created
+
+**L-0006** · Muzaffarnagar riots  
+`baseline-context` · baseline · governance · episode · 2013-08–2013-09 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0
+
+**L-0007** · National Food Security Act  
+`baseline-context` · baseline · welfare · reform · 2013-09 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0
+
+**L-0008** · Devyani Khobragade episode  
+`baseline-context` · baseline · foreign · event · 2013-12 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0
+
+**L-0009** · Depsang incursion  
+`baseline-context` · baseline · foreign/defence · lens defence-sector · event · 2013-04–2013-05 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0  
+1 commit(s) touched this record after it was created
+
+**L-0010** · J&K floods and assembly election  
+`baseline-context` · baseline · governance/kashmir · event · 2014-09–2014-12 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0 · CAVEAT  
+1 commit(s) touched this record after it was created
+
+**L-0011** · Demonetisation  
+`failed` · T1 · macro/banking · reform · 2016-11-08 · confidence high  
+claim — Elimination of black money held as cash, destruction of counterfeit currency, and cutting off terror financing. As returns approached 100%, the official justification shifted toward digitisation and formalisation.  
+reasoning — THE GROUND FOR THE VERDICT IS NARROWED TO WHAT IS MEASURED HERE.  
+sources 2 [T1×1 T4×1] · unmeasured 2 [never-defined×2]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0012** · Goods and Services Tax  
+`partly` · T1 · macro/federalism · reform · 2017-07-01 · confidence high  
+claim — One nation, one tax — a unified national market, simpler compliance, higher revenue buoyancy, and formalisation. States were guaranteed compensation for 14% annual revenue growth for five years.  
+reasoning — FOUR THINGS WERE PROMISED AND THIS RECORD MEASURES TWO.  
+sources 2 [T1×1 T4×1] · unmeasured 2 [not-published×1 not-collected×1]  
+2 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0013** · Corporate tax rate cut  
+`failed` · T2 · macro · reform · 2019-09-20 · confidence high  
+claim — Improved after-tax returns would trigger a private investment revival and support Make in India by making Indian rates internationally competitive.  
+reasoning — THE STATED OBJECTIVE IS MEASURED AND IT DID NOT OCCUR, WHICH IS THE WHOLE OF THE VERDICT.  
+sources 3 [T3×1 T4×2] · unmeasured 1 [never-defined×1]  
+2 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0014** · Flexible inflation targeting adopted  
+`worked` · T1 · macro · institutional · 2015-02–2016-06 · confidence high  
+claim — A rules-based framework would anchor inflation expectations after the 9-11% inflation of 2010-2013.  
+reasoning — WORKED IS ASSERTED ON THE ANNOUNCED OBJECT AND NOT ON ATTRIBUTION, and the distinction carries the verdict.  
+sources 1 [T4×1] · unmeasured 1 [never-defined×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0015** · Oil windfall capture through excise increases  
+`contested` · T1 · macro · reform · 2014-11–2016-01 · confidence medium  
+claim — Framed as fiscal prudence — using a temporary windfall to consolidate rather than fund consumption.  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0016** · Make in India and the 25% manufacturing target  
+`failed` · T1 · macro/foreign · reform · 2014-09-25 · confidence high  
+claim — Manufacturing would rise to 25% of GDP and create 100 million jobs, positioning India as a global manufacturing hub.  
+reasoning — TWO TARGETS WERE ANNOUNCED AND THIS RECORD MEASURES ONE.  
+sources 2 [T4×2] · unmeasured 1 [not-collected×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0017** · Production Linked Incentive schemes  
+`partly` · T2 · macro · reform · 2020-03 · confidence medium  
+claim — Incentivise scale manufacturing, substitute imports, and integrate India into global supply chains.  
+reasoning — THREE OBJECTIVES WERE ANNOUNCED AND THIS RECORD MEASURES ONE AND A HALF.  
+sources 1 [T4×1] · unmeasured 1 [not-collected×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0018** · RCEP withdrawal  
+`contested` · T2 · foreign · event · 2019-11-04 · confidence high  
+claim — Cited unresolved concerns over trade deficits with eleven member states, a feared surge of Chinese imports, and inadequate safeguards for domestic producers.  
+reasoning — THE TWO LIVE READINGS ARE ABOUT A COUNTERFACTUAL, NOT ABOUT THE FACTS.  
+sources 4 [T2×2 T4×2] · unmeasured 0 · revisit trigger set  
+contested ground (project's own classification, not a data field) — evidence-unobservable  
+2 commit(s) touched this record after it was created  
+corrected — whatHappened
+
+**L-0019** · RBI autonomy episodes and surplus transfers  
+`contested` · T1 · macro/governance · institutional · 2016-06–2025-05 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 2 [T1×1 T3×1] · unmeasured 0  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0020** · COVID-19 contraction and fiscal response  
+`contested` · T2 · macro/welfare · shock · 2020-03–2022-03 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T4×1] · unmeasured 0  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0021** · US tariffs on Indian goods  
+`no-objective` · T3 · foreign/macro · shock · 2025-08–2026-02 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 6 [T1×4 T4×2] · unmeasured 0  
+verdict changed after shipping — too-early , too-early→no-objective (1 change)  
+2 commit(s) touched this record after it was created  
+corrected — whatHappened
+
+**L-0022** · Third GDP base-year revision to 2022-23  
+`no-objective` · T3 · macro · institutional · 2026-02-27 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 2 [T1×1 T4×1] · unmeasured 0  
+verdict changed after shipping — too-early , too-early→no-objective (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0023** · Asset Quality Review  
+`worked` · T1 · banking · reform · 2015-07–2016-03 · confidence high  
+claim — Force honest recognition of bad loans so that resolution could begin, on the premise that a concealed problem cannot be fixed.  
+reasoning — WORKED IS ASSERTED ON RECOGNITION, WHICH IS WHAT WAS PROMISED, AND NOT ON THE CONSEQUENCES.  
+sources 1 [T1×1] · unmeasured 1 [never-defined×1] · differentFacts TRUE  
+2 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0024** · Insolvency and Bankruptcy Code  
+`partly` · T1 · banking/governance · reform · 2016-05 · confidence high  
+claim — Time-bound resolution within 180 days, extendable to 270 and later capped at 330 days including litigation, replacing a fragmented recovery regime that recovered little and took years.  
+reasoning — THE CODE IS SCORED AGAINST ITS OWN STATED TERMS AND SPLITS ON THEM.  
+sources 1 [T1×1] · unmeasured 0  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0025** · Loan write-offs and the recovery question  
+`contested` · T1 · banking · episode · 2014-04–2026-03 · confidence high  
+claim — *none stated at announcement*  
+reasoning — THE TWO READINGS AGREE ON EVERY FACT AND DISAGREE ABOUT WHICH FRAME GOVERNS.  
+sources 1 [T1×1] · unmeasured 0 · revisit trigger set  
+contested ground (project's own classification, not a data field) — criterion  
+1 commit(s) touched this record after it was created
+
+**L-0026** · PSB recapitalisation and consolidation  
+`worked` · T1 · banking · reform · 2015-08–2020-04 · confidence high  
+claim — Recapitalise banks to absorb recognised losses and resume lending; consolidate to create fewer, stronger, more efficient banks with national scale.  
+reasoning — TWO OBJECTIVES WERE ANNOUNCED AND THEY DO NOT RESOLVE THE SAME WAY.  
+sources 1 [T1×1] · unmeasured 1 [not-published×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0027** · IL&FS collapse  
+`no-objective` · T1 · banking/macro · shock · 2018-09 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T4×1] · unmeasured 0  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0028** · Yes Bank reconstruction and SMBC stake sale  
+`no-objective` · T2 · banking/foreign · episode · 2020-03–2025-09 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Rescored from worked to no-objective on 2026-08-03 after retrieval failed.  
+sources 1 [T4×1] · unmeasured 0 · differentFacts TRUE  
+verdict changed after shipping — worked , worked→no-objective (1 change)  
+2 commit(s) touched this record after it was created
+
+**L-0029** · Digital public infrastructure: Jan Dhan, Aadhaar, UPI  
+`worked` · T1 · banking/welfare/governance · reform · 2014-08-28–2026-03 · confidence high  
+claim — Universal bank account access, elimination of ghost and duplicate welfare beneficiaries through biometric authentication, and a public payments rail owned by no private intermediary.  
+reasoning — THREE OBJECTIVES WERE ANNOUNCED;  
+sources 1 [T1×1] · unmeasured 2 [not-published×2] · differentFacts TRUE  
+3 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0030** · Public sector bank privatisation programme  
+`failed` · T2 · banking · reform · 2021-02-01–2026-07 · confidence medium  
+claim — Reduce the state's footprint in banking and improve efficiency by transferring two PSBs to private ownership.  
+reasoning — FAILED IS ASSERTED ON DELIVERY AGAINST A SPECIFIC ANNOUNCED COMMITMENT, AND ON NOTHING ELSE.  
+sources 1 [T1×1] · unmeasured 0  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0031** · Credit composition shift toward unsecured retail  
+`contested` · T2 · banking · episode · 2021-04–2026-03 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T4×1] · unmeasured 0  
+contested ground (project's own classification, not a data field) — time
+
+**L-0032** · Bank frauds and supervisory detection  
+`no-objective` · T1 · banking/governance · episode · 2018-01–2022-12 · confidence low  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0  
+verdict changed after shipping — partly , partly→no-objective (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0033** · Expected Credit Loss provisioning transition  
+`no-objective` · T3 · banking · institutional · 2026-04-27–2031-03 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Rescored from too-early to no-objective on 2026-08-03, on the same standard as L-0028.  
+sources 1 [T4×1] · unmeasured 0  
+verdict changed after shipping — too-early , too-early→no-objective (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0034** · Pradhan Mantri Ujjwala Yojana  
+`partly` · T1 · welfare/environment · reform · 2016-05 · confidence high  
+claim — Free households from solid cooking fuel, reducing household air pollution and the health burden it imposes on women and children. Target 5 crore by 2019, raised to 8 crore in 2018, then extended further under Ujjwala 2.0.  
+reasoning — THE SCHEME IS COUNTED AT THE CONNECTION AND ITS PURPOSE IS AT THE BURNER.  
+sources 1 [T1×1] · unmeasured 2 [not-collected×2]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0035** · Swachh Bharat Mission  
+`partly` · T1 · welfare/human-development · reform · 2014-10-02 · confidence high  
+claim — Eliminate open defecation in rural India by October 2019, the 150th anniversary of Gandhi's birth.  
+reasoning — THE DECLARATION WAS A COVERAGE CLAIM AND THE OBJECTIVE WAS A BEHAVIOURAL ONE, WHICH IS THE WHOLE OF THE SPLIT.  
+sources 1 [T1×1] · unmeasured 1 [not-collected×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0036** · Jal Jeevan Mission  
+`partly` · T2 · infrastructure/welfare · reform · 2019-08-15 · confidence medium  
+claim — A functional household tap connection for every rural household by 2024, with an outlay of ₹3.60 trillion.  
+reasoning — CERTIFICATION MEASURES INFRASTRUCTURE INSTALLED AND THE PROMISE WAS WATER DELIVERED.  
+sources 1 [T4×1] · unmeasured 1 [not-published×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0037** · Pradhan Mantri Awas Yojana  
+`partly` · T1 · welfare/infrastructure · reform · 2015-06–2029-03 · confidence medium  
+claim — Housing for All by 2022 — pucca houses with basic amenities for every household lacking one.  
+reasoning — THE PROMISE WAS DATED AND IT WAS NOT MET;  
+sources 1 [T1×1] · unmeasured 1 [not-published×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0038** · PMGKAY free foodgrain and the NFSA exclusion  
+`partly` · T2 · welfare/poverty · reform · 2020-04–2028-12 · confidence high  
+claim — Prevent hunger during the pandemic, then guarantee free rather than subsidised grain to NFSA beneficiaries.  
+reasoning — THE OPERATION IS MEASURED AND THE OUTCOME IT WAS FOR IS NOT.  
+sources 1 [T1×1] · unmeasured 2 [not-collected×1 not-published×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0039** · Ayushman Bharat PM-JAY  
+`partly` · T1 · welfare/human-development · reform · 2018-09-23 · confidence high  
+claim — Protect the poorest 40% of households from catastrophic health expenditure.  
+reasoning — THE OBJECTIVE WAS PROTECTION FROM CATASTROPHIC EXPENDITURE AND WHAT IS MEASURED IS HOSPITALISATIONS FINANCED.  
+sources 1 [T1×1] · unmeasured 1 [not-published×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0040** · MGNREGA under an inheriting government  
+`contested` · T1 · welfare/employment/federalism · episode · 2014-05–2026-06-30 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T4×1] · unmeasured 1 [not-collected×1] · CAVEAT · revisit trigger set  
+contested ground (project's own classification, not a data field) — criterion  
+4 commit(s) touched this record after it was created
+
+**L-0041** · PM-KISAN and the doubling of farmers' income  
+`failed` · T2 · welfare/macro · reform · 2019-02 · confidence medium  
+claim — Supplement farm household income and, alongside other measures, double farmers' income by 2022 on the Dalwai committee framework, which required about 10.4% annual real growth.  
+reasoning — THIS RECORD BUNDLES A TRANSFER SCHEME AND A DATED PROMISE, AND FAILED IS SCORED ON THE PROMISE ONLY.  
+sources 1 [T1×1] · unmeasured 1 [not-collected×1]  
+3 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0042** · Nutrition outcomes and the anaemia reversal  
+`contested` · T1 · human-development/welfare · episode · 2015-16–2021-03 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0 · CAVEAT  
+contested ground (project's own classification, not a data field) — evidence-withheld  
+1 commit(s) touched this record after it was created
+
+**L-0043** · Multidimensional poverty exit claim  
+`contested` · T3 · poverty/welfare · episode · 2024-01 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0 · CAVEAT  
+contested ground (project's own classification, not a data field) — measure  
+1 commit(s) touched this record after it was created
+
+**L-0044** · National highway construction programme  
+`partly` · T1 · infrastructure · reform · 2014-05–2026-03 · confidence high  
+claim — Break the policy paralysis that had stalled highway building, and expand the national highway network substantially.  
+reasoning — THE BUILD IS REAL AND THE HEADLINE IS AN ACCOUNTING ARTEFACT, AND PARTLY IS SCORED ON BOTH.  
+sources 1 [T1×1] · unmeasured 1 [not-published×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0045** · Bharatmala Pariyojana  
+`partly` · T1 · infrastructure · reform · 2017-10–2028-03 · confidence high  
+claim — 34,800 km of highway including economic corridors, border and coastal roads, at ₹5.35 lakh crore, complete by September 2022.  
+reasoning — SCORED AGAINST ITS OWN APPROVED PARAMETERS, ALL FOUR OF WHICH MOVED.  
+sources 2 [T1×2] · unmeasured 1 [not-published×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0046** · Road safety deterioration  
+`no-objective` · T1 · infrastructure/human-development · episode · 2014-01–2024-12 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0  
+verdict changed after shipping — failed , failed→no-objective (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0047** · Railway electrification  
+`worked` · T1 · infrastructure/environment · reform · 2014-05–2026-03 · confidence high  
+claim — Complete electrification of the broad gauge network to cut fuel costs and emissions and reduce diesel dependence.  
+reasoning — WORKED, AND THE REASON IT CONVERTS SO CLEANLY IS WORTH STATING:  
+sources 1 [T1×1] · unmeasured 1 [not-published×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0048** · Dedicated Freight Corridors and the freight modal share  
+`partly` · T1 · infrastructure · reform · 2014-05–2026-04 · confidence high  
+claim — Segregate freight from passenger traffic to raise speed and capacity, and arrest the long decline in railways' share of national freight.  
+reasoning — TWO OBJECTIVES WERE ANNOUNCED;  
+sources 1 [T1×1] · unmeasured 0  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0049** · Railway safety  
+`no-objective` · T1 · infrastructure · episode · 2014-05–2026-03 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0  
+verdict changed after shipping — partly , partly→no-objective (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0050** · Household electrification and the supply-hours gap  
+`partly` · T1 · infrastructure/welfare · reform · 2017-10–2019-03 · confidence high  
+claim — Universal household electricity access, replacing a village-level standard that required only 10% of households plus public buildings to be connected.  
+reasoning — THE SCHEME WAS PRESENTED AS DELIVERING ELECTRICITY AND WHAT IS MEASURED IS WIRING.  
+sources 1 [T1×1] · unmeasured 1 [not-published×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0051** · Discom reform: UDAY and its successors  
+`failed` · T1 · infrastructure/macro/federalism · reform · 2015-11–2026-03 · confidence high  
+claim — Make distribution companies financially viable by cutting losses, restructuring debt and aligning tariffs with cost.  
+reasoning — FAILED ON THE STATED OBJECTIVE, WHICH IS FINANCIAL VIABILITY, AND THE MEASURES ARE THE GOVERNMENT'S OWN.  
+sources 1 [T1×1] · unmeasured 0  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0052** · Renewable energy capacity expansion  
+`worked` · T1 · environment/infrastructure · reform · 2014-05–2026-03 · confidence high  
+claim — Reach 175 GW of renewable capacity by 2022, later superseded by a target of 500 GW non-fossil capacity by 2030.  
+reasoning — WORKED IS SCORED ON THE TARGET AS SET, WHICH WAS A CAPACITY TARGET.  
+sources 1 [T1×1] · unmeasured 1 [not-published×1]  
+3 commit(s) touched this record after it was created  
+corrected — whatHappened, assessmentNote, caseFor, unmeasured[].why
+
+**L-0053** · Port efficiency  
+`worked` · T1 · infrastructure/foreign · reform · 2014-05–2026-03 · confidence high  
+claim — Modernise port infrastructure and cut turnaround time under the Sagarmala programme.  
+reasoning — WORKED, AND UNUSUALLY FOR THIS FILE BOTH THE OUTPUT AND ITS UTILISATION MOVED TOGETHER.  
+sources 1 [T1×1] · unmeasured 1 [not-published×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0054** · UDAN regional connectivity scheme  
+`partly` · T1 · infrastructure · reform · 2016-10–2026-07 · confidence medium  
+claim — Make flying affordable and accessible from smaller cities by subsidising regional routes through viability gap funding.  
+reasoning — THE AIRPORT COUNT AND THE OBJECTIVE ARE DIFFERENT THINGS, AND THE COUNT IS BROADENED.  
+sources 1 [T1×1] · unmeasured 1 [not-published×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0055** · Metro rail expansion  
+`partly` · T1 · infrastructure · reform · 2014-05–2026-03 · confidence high  
+claim — Extend mass rapid transit to India's growing cities, with each project justified by a Detailed Project Report forecasting ridership and a 14% economic return under Metro Rail Policy 2017.  
+reasoning — THE FORECASTS WERE NOT INCIDENTAL - THEY WERE THE JUSTIFICATION - AND THAT IS WHY THIS IS SCORED AGAINST THEM.  
+sources 1 [T3×1] · unmeasured 1 [not-published×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0056** · Mobile internet expansion and the attribution question  
+`contested` · T1 · infrastructure · episode · 2016-09–2026-03 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0  
+contested ground (project's own classification, not a data field) — evidence-unobservable
+
+**L-0057** · Capital expenditure push and execution efficiency  
+`contested` · T2 · infrastructure/macro · reform · 2021-04–2026-03 · confidence medium  
+claim — Crowd in private investment and accelerate infrastructure delivery through coordinated planning and asset monetisation.  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0  
+contested ground (project's own classification, not a data field) — evidence-withheld
+
+**L-0058** · The employment measurement dispute  
+`contested` · T1 · employment/governance · episode · 2017-07–2026-07 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T4×1] · unmeasured 0 · CAVEAT  
+contested ground (project's own classification, not a data field) — measure
+
+**L-0059** · The falling unemployment rate and what produced it  
+`contested` · T1 · employment · episode · 2017-07–2026-07 · confidence high  
+claim — *none stated at announcement*  
+reasoning — THE TWO READINGS USE THE SAME SERIES AND DIFFER ON WHAT COUNTS AS IMPROVEMENT.  
+sources 1 [T1×1] · unmeasured 0 · revisit trigger set  
+contested ground (project's own classification, not a data field) — criterion  
+1 commit(s) touched this record after it was created
+
+**L-0060** · Female labour force participation reversal  
+`contested` · T1 · employment/human-development · episode · 2017-07–2026-07 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T3×1] · unmeasured 1 [not-collected×1]  
+contested ground (project's own classification, not a data field) — measure  
+2 commit(s) touched this record after it was created
+
+**L-0061** · The four labour codes  
+`too-early` · T2 · employment/governance · reform · 2019-08–2026-05 · confidence medium  
+claim — Replace an ossified and widely evaded regime with a simplified framework that would extend social security, encourage formal hiring, and give employers the flexibility to grow.  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0 · CAVEAT · revisit trigger set  
+2 commit(s) touched this record after it was created
+
+**L-0062** · Formalisation: registration against jobs  
+`partly` · T1 · employment/banking · episode · 2017-09–2026-07 · confidence high  
+claim — That 6.2 crore net EPFO subscriber additions between September 2017 and March 2024, and RBI KLEMS figures of 17.19 crore additional jobs over 2014-24 against 2.9 crore over 2004-14, evidence large-scale job creation and formalisation.  
+reasoning — TWO CLAIMS WERE MADE FROM ONE SET OF NUMBERS AND THEY ARE MEASURED SEPARATELY HERE.  
+sources 1 [T1×1] · unmeasured 1 [not-collected×1]  
+4 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0063** · Educated youth unemployment  
+`no-objective` · T1 · employment/human-development · episode · 2014-05–2026-07 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T2×1] · unmeasured 1 [not-collected×1]  
+verdict changed after shipping — failed , failed→no-objective (1 change)  
+3 commit(s) touched this record after it was created
+
+**L-0064** · The 2020 migrant exodus and its missing record  
+`no-objective` · T2 · employment/welfare/governance · shock · 2020-03–2020-09 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 2 [not-collected×2] · differentFacts TRUE  
+verdict changed after shipping — failed , failed→no-objective (1 change)  
+4 commit(s) touched this record after it was created
+
+**L-0065** · Structural transformation reversal  
+`no-objective` · T1 · employment/macro · episode · 2014-05–2026-07 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T2×1] · unmeasured 0  
+verdict changed after shipping — failed , failed→no-objective (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0066** · The three farm laws: passage, protest and repeal  
+`reversed` · T2 · macro/federalism/governance · reform · 2020-06-05–2021-11-29 · confidence high  
+claim — Free farmers to sell outside APMC mandis without state taxes, provide a national contract-farming framework, and remove stock limits to attract private investment in storage and processing — raising farm-gate prices.  
+reasoning — REVERSED SCORES THE FATE OF THE INSTRUMENT, NOT THE MERITS OF IT, and the distinction is the whole of the note.  
+sources 2 [T1×1 T4×1] · unmeasured 2 [not-collected×2] · differentFacts TRUE · CAVEAT  
+3 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0067** · Doubling farmers' income by 2022  
+`failed` · T1 · poverty/welfare · reform · 2016-04–2023-03 · confidence high  
+claim — Farm household incomes would double in real terms within seven years.  
+reasoning — THE VERDICT RESTS ON THE TRAJECTORY, NOT ON THE TERMINAL YEAR, AND THE TERMINAL YEAR DOES NOT EXIST.  
+sources 1 [T1×1] · unmeasured 1 [not-collected×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0068** · Indian farmers are net implicitly taxed  
+`contested` · T1 · macro/foreign · episode · 2014-05–2026-07 · confidence high  
+claim — *none stated at announcement*  
+reasoning — THE TWO READINGS AGREE THE TRANSFER EXISTS AND DISAGREE ABOUT WHOSE WELFARE IS THE MEASURE.  
+sources 1 [T2×1] · unmeasured 0 · CAVEAT · revisit trigger set  
+contested ground (project's own classification, not a data field) — criterion  
+1 commit(s) touched this record after it was created
+
+**L-0069** · MSP, procurement and the legal guarantee demand  
+`no-objective` · T1 · welfare/federalism · episode · 2014-05–2026-07 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 1 [not-collected×1]  
+verdict changed after shipping — partly , partly→no-objective (1 change)  
+2 commit(s) touched this record after it was created
+
+**L-0070** · Farmer suicides  
+`contested` · T1 · human-development · episode · 2014-01–2024-12 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0  
+contested ground (project's own classification, not a data field) — evidence-withheld
+
+**L-0071** · Groundwater depletion in the grain belt  
+`no-objective` · T1 · environment/federalism · episode · 2014-05–2026-07 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0  
+verdict changed after shipping — failed , failed→no-objective (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0072** · Pradhan Mantri Fasal Bima Yojana  
+`partly` · T1 · welfare · reform · 2016-02–2026-07 · confidence medium  
+claim — Comprehensive risk cover at nominal farmer cost, replacing schemes with poor coverage and slow settlement.  
+reasoning — THE SCHEME WAS ANNOUNCED AS FIXING TWO THINGS AND IT FIXED ONE.  
+sources 1 [T1×1] · unmeasured 1 [not-published×1]  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0073** · Foodgrain production record  
+`no-objective` · T1 · environment/macro · episode · 2014-05–2026-05 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0  
+verdict changed after shipping — worked , worked→no-objective (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0074** · Expansion of PMLA enforcement by the Enforcement Directorate  
+`contested` · T1 · governance · episode · 2014–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 2 [T1×2] · unmeasured 1 [not-collected×1] · CAVEAT  
+contested ground (project's own classification, not a data field) — measure  
+2 commit(s) touched this record after it was created
+
+**L-0075** · Vijay Madanlal Choudhary and the PMLA procedural architecture  
+`contested` · T2 · governance · event · 2022-07 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 1 [T1×1] · unmeasured 0  
+contested ground (project's own classification, not a data field) — interpretation
+
+**L-0076** · Withdrawal of general consent for the CBI by states  
+`contested` · T1 · governance · institutional · 2018–2026 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — THE TWO READINGS AGREE ON THE FACTS AND DIFFER ON WHETHER LEGALITY OR EFFECT IS THE QUESTION.  
+sources 2 [T1×2] · unmeasured 0 · revisit trigger set  
+contested ground (project's own classification, not a data field) — criterion  
+2 commit(s) touched this record after it was created
+
+**L-0077** · Electoral bonds: introduction to being struck down  
+`failed` · T1 · governance · reform · 2017–2024 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Struck down by a five-judge bench of the Supreme Court in February 2024, not withdrawn by the enacting authority.  
+sources 3 [T1×1 T2×2] · unmeasured 0 · differentFacts TRUE · revisit trigger set  
+verdict changed after shipping — reversed , reversed→failed (1 change)  
+2 commit(s) touched this record after it was created
+
+**L-0078** · Press freedom indices and the government's formal rejection  
+`contested` · T2 · governance · episode · 2021–2024 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 3 [T1×1 T5×2] · unmeasured 1 [not-collected×1] · CAVEAT  
+contested ground (project's own classification, not a data field) — measure  
+1 commit(s) touched this record after it was created
+
+**L-0079** · Agency action against news organisations  
+`contested` · T2 · governance · episode · 2021–2024 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 3 [T1×2 T3×1] · unmeasured 0  
+contested ground (project's own classification, not a data field) — evidence-unobservable  
+1 commit(s) touched this record after it was created
+
+**L-0080** · IT Rules fact-check unit struck down  
+`failed` · T2 · governance · reform · 2023–2024 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Struck down by the Bombay High Court in September 2024, not withdrawn by the enacting authority.  
+sources 2 [T1×2] · unmeasured 0 · revisit trigger set  
+verdict changed after shipping — reversed , reversed→failed (1 change)  
+2 commit(s) touched this record after it was created
+
+**L-0081** · Internet shutdowns and Anuradha Bhasin compliance  
+`partly` · T2 · governance/kashmir · episode · 2019–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Assessed against a stated objective that is a court direction, not a launch claim:  
+sources 4 [T1×3 T3×1] · unmeasured 2 [not-published×1 not-collected×1]  
+4 commit(s) touched this record after it was created
+
+**L-0082** · Sedition kept in abeyance, then replaced  
+`contested` · T2 · governance · reform · 2022–2024 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 3 [T1×3] · unmeasured 0 · revisit trigger set  
+contested ground (project's own classification, not a data field) — time  
+1 commit(s) touched this record after it was created
+
+**L-0083** · UAPA use, bail and conviction rates  
+`contested` · T1 · governance · episode · 2014–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 3 [T1×2 T4×1] · unmeasured 1 [not-collected×1] · CAVEAT  
+contested ground (project's own classification, not a data field) — measure  
+2 commit(s) touched this record after it was created
+
+**L-0084** · NJAC struck down and the Memorandum of Procedure deadlock  
+`contested` · T1 · governance · institutional · 2014–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 2 [T1×2] · unmeasured 1 [never-defined×1]  
+contested ground (project's own classification, not a data field) — criterion  
+1 commit(s) touched this record after it was created
+
+**L-0085** · RTI amended and the information commissions  
+`contested` · T2 · governance · reform · 2019–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 2 [T1×1 T3×1] · unmeasured 0  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0086** · DPDP Act amendment to RTI Section 8(1)(j)  
+`awaiting-adjudication` · T2 · governance · reform · 2023–2026 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Scored too-early because the operative effect depends on the pending constitutional challenge and on how commissions apply the amended clause.  
+sources 1 [T1×1] · unmeasured 0  
+verdict changed after shipping — too-early , too-early→awaiting-adjudication (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0087** · Committee scrutiny and parliamentary process  
+`no-objective` · T1 · governance · institutional · 2014–2024 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 2 [T1×1 T3×1] · unmeasured 0  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0088** · Election Commission appointments after Anoop Baranwal  
+`contested` · T2 · governance · institutional · 2023–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Not scored 'reversed' despite following a judicial direction, because the legislature acted within an invitation the Court extended rather than against a final holding.  
+sources 2 [T1×2] · unmeasured 0  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0089** · CAG audit report volume  
+`no-objective` · T1 · governance · institutional · 2011–2024 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 2 [T4×2] · unmeasured 0 · CAVEAT · revisit trigger set  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+2 commit(s) touched this record after it was created
+
+**L-0090** · NIPUN Bharat and the 2024 foundational-learning recovery  
+`partly` · T2 · education · reform · 2021-07-05–2026-08 · confidence high  
+claim — Universal foundational literacy and numeracy by the end of Grade 2, for every child, by 2026-27.  
+reasoning — THE ANNOUNCED TARGET IS NOT WHAT IS SCORED HERE.  
+sources 4 [T1×3 T4×1] · unmeasured 4 [not-collected×4] · CAVEAT · revisit trigger set  
+2 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0091** · India's school closures, 2020-2022  
+`contested` · T2 · education/federalism · episode · 2020-03-25–2022-03-01 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Assessed contested because the two defensible readings turn on which of two published measures of the same thing is the right one, and this record does not choose.  
+sources 2 [T2×1 T4×1] · unmeasured 3 [not-collected×2 not-published×1] · CAVEAT  
+contested ground (project's own classification, not a data field) — measure  
+1 commit(s) touched this record after it was created
+
+**L-0092** · The Ministry of Education's two framings of ASER 2024, six months apart  
+`contested` · T3 · governance/education · event · 2025-02-04–2025-07-28 · confidence high  
+claim — *none stated at announcement*  
+reasoning — The assessment vocabulary is built for measures with stated objectives and this record is a presentational act.  
+sources 3 [T1×2 T4×1] · unmeasured 1 [not-collected×1]  
+contested ground (project's own classification, not a data field) — vocabulary-residue
+
+**L-0093** · UDISE+ moves to individual student records and 1.7 crore enrolments disappear  
+`partly` · T2 · governance/education · institutional · 2022-04–2026-07 · confidence high  
+claim — Accurate tracking of dropouts, and savings to government through 'precise identification of beneficiaries for benefit transfers of Samagra Shiksha scheme, PM POSHAN Scheme, National Scholarship scheme etc.'  
+reasoning — TWO OBJECTIVES WERE ANNOUNCED AND ONLY ONE IS MEASURED HERE.  
+sources 3 [T1×3] · unmeasured 2 [not-published×2] · CAVEAT · revisit trigger set  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0094** · A national teacher-vacancy statistic, tabled for a decade and then withdrawn  
+`no-objective` · T1 · governance/federalism/education · episode · 2014-07-30–2026-07-20 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Scored no-objective, and not reversed.  
+sources 8 [T1×7 T3×1] · unmeasured 3 [not-published×2 never-defined×1] · differentFacts TRUE · CAVEAT  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+3 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0095** · RTE section 26's ten per cent vacancy ceiling, breached in the Union's own schools  
+`failed` · T3 · governance/education · institutional · 2010-04-01–2025-12-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Assessed failed on the written definition - the measure did not achieve the objective stated at its enactment - with the objective being a number in the statute rather than a policy claim.  
+sources 4 [T1×4] · unmeasured 0 · CAVEAT  
+1 commit(s) touched this record after it was created
+
+**L-0096** · The RTE untrained-teacher deadline: missed, retrospectively cured, and the outcome never published  
+`contested` · T1 · governance/education · reform · 2015-03-31–2019-03-31 · confidence medium  
+claim — That this 'will be the last chance to acquire the requisite minimum qualifications and that any untrained teacher would not be allowed to continue in-service beyond 1st April 2019' - MHRD letter to all State and UT Education Secretaries, 3 August 2017, with the Minister stating publicly that there would be 'no further extension for this training programme after 31st March, 2019'.  
+reasoning — Scored `contested` on its written definition, and the value is settled rather than provisional.  
+sources 5 [T1×5] · unmeasured 4 [not-published×2 not-collected×1 never-defined×1] · CAVEAT  
+contested ground (project's own classification, not a data field) — criterion  
+1 commit(s) touched this record after it was created
+
+**L-0097** · Devesh Sharma: B.Ed. removed as a primary-teaching qualification  
+`failed` · T1 · governance/education · institutional · 2018-06-28–2026-08-30 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Assessed failed on the written definition, which states that a measure struck down by a court is failed because the outcome is the same and only the mechanism differs.  
+sources 4 [T1×3 T2×1] · unmeasured 3 [not-published×2 never-defined×1] · CAVEAT  
+1 commit(s) touched this record after it was created
+
+**L-0098** · RTE section 12(1)(c): the 25 per cent private-school quota  
+`partly` · T1 · education/governance/federalism · reform · 2014-04-01–2026-07-27 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Assessed against a statutory objective rather than a policy claim:  
+sources 6 [T1×4 T3×1 T4×1] · unmeasured 3 [never-defined×1 not-collected×1 not-published×1] · CAVEAT  
+1 commit(s) touched this record after it was created
+
+**L-0099** · Karnataka's neighbourhood rule and the collapse of quota participation  
+`contested` · T1 · education/governance/federalism · reform · 2019-01-30–2020-03-31 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Assessed contested rather than worked or failed because the same measured outcome supports both readings on their own terms:  
+sources 3 [T1×2 T4×1] · unmeasured 0 · CAVEAT  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0100** · NEP 2020's three-language formula and Tamil Nadu's refusal  
+`contested` · T2 · federalism/governance/education · episode · 2020-07-29–2026-03-09 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Assessed contested because both readings are textually available on the same document and the record does not choose between them:  
+sources 6 [T1×5 T4×1] · unmeasured 2 [not-collected×1 never-defined×1]  
+contested ground (project's own classification, not a data field) — interpretation  
+1 commit(s) touched this record after it was created
+
+**L-0101** · Samagra Shiksha funds withheld from states that have not adopted NEP 2020  
+`contested` · T3 · federalism/governance/education · episode · 2024-04-01–2026-03-05 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Assessed contested because the disagreement is not about what happened - both sides agree the money was allocated and not released, and why - but about whether the conditionality is legitimate.  
+sources 5 [T1×3 T4×2] · unmeasured 1 [not-collected×1] · CAVEAT · revisit trigger set  
+contested ground (project's own classification, not a data field) — interpretation  
+2 commit(s) touched this record after it was created
+
+**L-0102** · Public education spending: two official numerators moving in opposite directions  
+`contested` · T1 · education/macro/governance · episode · 2014-04-01–2022-03-31 · confidence high  
+claim — A standing commitment, restated in NEP 2020 and in Parliament, to 'increase the public investment in Education sector to reach 6% of GDP at the earliest'.  
+reasoning — Assessed contested because the two published measures support opposite conclusions about the same period and this record does not choose between them.  
+sources 4 [T1×4] · unmeasured 3 [not-published×2 not-collected×1] · CAVEAT  
+contested ground (project's own classification, not a data field) — measure  
+1 commit(s) touched this record after it was created
+
+**L-0103** · AISHE ceases to be a timely series  
+`no-objective` · T2 · governance/education · episode · 2021-06-10–2026-07-08 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 3 [T1×3] · unmeasured 2 [not-published×2]  
+verdict changed after shipping — partly , partly→no-objective (1 change)  
+2 commit(s) touched this record after it was created
+
+**L-0104** · Higher education: enrolment growth decelerates and the denominator does half the work  
+`partly` · T1 · education · episode · 2014-04-01–2024-03-31 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — The objective this record is scored against is NEP 2020's target of 50 per cent gross enrolment ratio in higher education by 2035, which is not a launch claim on this record and is declared here rather than left to be inferred.  
+sources 3 [T1×3] · unmeasured 4 [not-collected×2 not-published×2] · CAVEAT  
+2 commit(s) touched this record after it was created
+
+**L-0105** · Literacy: the last complete enumeration is 2011  
+`contested` · T2 · governance/education · episode · 2020-03-25–2027-03-01 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Assessed contested rather than failed because the causes and the replacement are both documented and the disagreement is about how much a sample substitutes for an enumeration - a question on which both readings are defensible.  
+sources 5 [T1×5] · unmeasured 3 [not-collected×3] · CAVEAT  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0106** · Single-teacher schools and the ratio norm that permits them  
+`failed` · T1 · governance/education · institutional · 2013-03-31–2026-07 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Assessed failed against the objective stated in the statute - the Schedule's staffing norm maintained in each school by 31 March 2013 - rather than against any programme claim.  
+sources 5 [T1×4 T2×1] · unmeasured 4 [not-published×3 not-collected×1] · CAVEAT  
+2 commit(s) touched this record after it was created
+
+**L-0107** · Contract teaching: collected for every teacher, published for none  
+`no-objective` · T2 · employment/governance/education · episode · 2020-04-01–2026-03-31 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 4 [T1×3 T2×1] · unmeasured 4 [not-published×2 never-defined×1 not-collected×1] · CAVEAT  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+2 commit(s) touched this record after it was created
+
+**L-0108** · The West Bengal teacher-recruitment panel annulled, and the anti-cheating law that does not reach it  
+`failed` · T1 · governance/federalism/education · event · 2016–2025-04-03 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Assessed failed against the recruitment process's own object - appointing teachers on merit - which the Court's adopted findings establish it did not achieve.  
+sources 3 [T1×3] · unmeasured 2 [not-collected×2] · CAVEAT  
+1 commit(s) touched this record after it was created
+
+**L-0109** · Private schooling plateaus while the government school stock falls  
+`no-objective` · T1 · education/governance · episode · 2014-04-01–2026-03-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 4 [T1×3 T4×1] · unmeasured 2 [not-collected×2] · CAVEAT  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0110** · Has militancy in Jammu and Kashmir declined since 2019, and on which measure  
+`contested` · T2 · defence/kashmir · lens defence-sector · episode · 2019-08–2026-03 · confidence high  
+claim — MHA Annual Report 2024-25 para 15.9, verbatim: 'The security situation of UT of J&K has improved significantly. Organized stone pelting and protests have become things of the past.' The stated approach, from RS Unstarred Q.384 of 6 December 2023: 'The Government has a policy of zero tolerance against terrorism. The approach of the Government is to dismantle the terror eco-system.'  
+reasoning — Scored contested on the written definition - the evidence supports more than one defensible reading and the record does not choose.  
+sources 4 [T1×3 T4×1] · unmeasured 1 [not-collected×1] · differentFacts TRUE · CAVEAT · revisit trigger set  
+contested ground (project's own classification, not a data field) — evidence-withheld  
+2 commit(s) touched this record after it was created
+
+**L-0111** · The J&K incident count: three published figures for 2018, and a composite named for one of its two parts  
+`no-objective` · T2 · governance/defence/kashmir · lens defence-sector · institutional · 2022-11-24–2023-10-11 · confidence high  
+claim — *none stated at announcement*  
+reasoning — The assessment vocabulary is built for measures with stated objectives and this record is a change to a reporting instrument.  
+sources 4 [T1×4] · unmeasured 2 [not-published×2] · CAVEAT  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+3 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0112** · MHA's 'Civilians killed' column changed meaning in 2023 and the footnote arrived fourteen months later  
+`no-objective` · T2 · governance/defence/kashmir · lens defence-sector · institutional · 2023-10-11–2024-12-27 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Scored no-objective as a change to a reporting instrument rather than to a measure - no objective was stated at announcement for the column, so there is nothing to score it against.  
+sources 3 [T1×3] · unmeasured 2 [not-collected×2] · CAVEAT  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+3 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0113** · Six civilian deaths recorded to 31 July 2016: the boundary of MHA's civilian count, visible in one document  
+`contested` · T1 · governance/defence/kashmir · lens defence-sector · event · 2016-08-10 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Contested is used on its written definition:  
+sources 2 [T1×2] · unmeasured 0 · CAVEAT  
+contested ground (project's own classification, not a data field) — interpretation  
+1 commit(s) touched this record after it was created
+
+**L-0114** · Pellet-firing shotguns in Kashmir: the deaths counted, the injuries refused  
+`contested` · T1 · governance/kashmir · episode · 2016-07-08–2026-07-30 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Contested on the written definition, and the contest is not the one usually described.  
+sources 5 [T1×3 T3×1 T4×1] · unmeasured 8 [withheld×2 not-collected×2 never-defined×1 not-published×3] · differentFacts TRUE · CAVEAT · revisit trigger set  
+contested ground (project's own classification, not a data field) — evidence-withheld  
+2 commit(s) touched this record after it was created  
+corrected — caveat
+
+**L-0115** · Amshipora: a staged encounter, established by the Army itself, and its disposal  
+`contested` · T2 · defence/governance/kashmir · lens defence-sector · event · 2020-07-18–2023-11-11 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Contested is used for the disposal and the scope of responsibility, not for whether the encounter was staged.  
+sources 2 [T4×2] · unmeasured 0 · CAVEAT · revisit trigger set  
+contested ground (project's own classification, not a data field) — interpretation  
+1 commit(s) touched this record after it was created
+
+**L-0116** · Burial of encounter dead away from home districts, and who declares the identity of the killed  
+`contested` · T2 · governance/defence/kashmir · lens defence-sector · episode · 2020-04–2026-06-13 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Contested on the written definition, and the mixture inside it must be preserved rather than averaged.  
+sources 3 [T1×1 T4×2] · unmeasured 3 [not-collected×1 not-published×2] · differentFacts TRUE · CAVEAT  
+contested ground (project's own classification, not a data field) — evidence-unobservable  
+1 commit(s) touched this record after it was created
+
+**L-0117** · Local recruitment into militancy: the quantity that is constantly quoted and has no instrument  
+`no-objective` · T1 · defence/kashmir · lens defence-sector · episode · 2018–2026-03 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Scored no-objective:  
+sources 3 [T1×1 T4×2] · unmeasured 3 [not-published×2 never-defined×1] · CAVEAT  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+3 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0118** · Organised stone-pelting to zero: consent or suppression  
+`contested` · T2 · governance/kashmir · episode · 2019-08-05–2026-03 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Contested and deliberately held open.  
+sources 3 [T1×2 T4×1] · unmeasured 3 [not-published×1 never-defined×1 not-collected×1] · CAVEAT · revisit trigger set  
+contested ground (project's own classification, not a data field) — time
+
+**L-0119** · Infiltration into J&K: three quantities under one word, then no table at all  
+`no-objective` · T1 · defence/governance/kashmir · lens defence-sector · institutional · 2015–2026-03 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Scored no-objective as a change to a reporting instrument - no objective was stated at announcement for the table, so nothing was claimed that its relabelling and withdrawal could be scored against.  
+sources 2 [T1×1 T4×1] · unmeasured 2 [not-published×2] · CAVEAT  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+3 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0120** · The cumulative J&K conflict toll: thirty years, two populations, then discontinued  
+`no-objective` · T2 · governance/defence/kashmir · lens defence-sector · institutional · 2022-11-24 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Scored no-objective as a change to a reporting practice - no objective was stated for the cumulative sentence, so its discontinuation has no claim to be measured against.  
+sources 1 [T1×1] · unmeasured 2 [not-published×1 not-collected×1]  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+3 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0121** · Deaths in Army and central-force custody have no cell in any official instrument  
+`no-objective` · T2 · governance/kashmir · lens defence-sector · institutional · 2019-10-31–2026-03 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Scored no-objective on its written definition:  
+sources 3 [T1×2 T4×1] · unmeasured 3 [not-collected×2 not-published×1] · CAVEAT  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+4 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0122** · AFSPA section 7: fifty sanction requests from J&K, none granted, and a decision rule nobody holds  
+`no-objective` · T1 · governance/kashmir · lens defence-sector · institutional · 2018-01-01–2020-06-05 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Scored no-objective as an institutional record rather than a measure - no objective was stated at announcement for the sanction regime, so the disposal record has no claim to be scored against.  
+sources 4 [T1×2 T2×1 T4×1] · unmeasured 4 [not-collected×1 withheld×1 not-published×2] · CAVEAT  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+3 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0123** · Two J&K security quantities lost their only legislative route in 2018, and it did not resume in 2024  
+`no-objective` · T1 · governance/kashmir · institutional · 2018-06-20–2025-10-29 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Scored no-objective, and confined to answerability as it bears on whether security quantities can be counted - no objective was stated for the allocation of legislative competence, so there is nothing to score it against.  
+sources 6 [T1×2 T4×4] · unmeasured 2 [withheld×1 not-published×1] · CAVEAT  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+3 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0124** · The only instruments that ever named a perpetrator for civilian deaths in Kashmir, and their termination  
+`no-objective` · T2 · governance/kashmir · institutional · 2019–2023-03 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Scored no-objective as an institutional record - no objective was stated at announcement, and what ended was an independent instrument rather than a measure of the state's.  
+sources 3 [T2×2 T4×1] · unmeasured 2 [not-collected×1 never-defined×1] · CAVEAT · revisit trigger set  
+verdict changed after shipping — contested , contested→no-objective (1 change)  
+3 commit(s) touched this record after it was created  
+corrected — summary, assessmentNote
+
+**L-0125** · The mechanism of 5 and 6 August 2019: who supplied the concurrence, and who supplied the recommendation  
+`contested` · T2 · governance/federalism/kashmir · institutional · 2019-08-05–2023-12-11 · confidence high  
+claim — The Ministry of Home Affairs release of 6 August 2019 is headed 'Parliament approves Resolution to repeal Article 370; paves way to truly integrate J&K with Indian Union'.  
+reasoning — Scored contested rather than worked or failed because the two sides do not disagree about a single retrieved fact.  
+sources 4 [T1×4] · unmeasured 1 [not-collected×1] · differentFacts TRUE  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0126** · The Fifth Schedule sorted the J&K statute book by which direction an institution faces  
+`contested` · T2 · governance/kashmir · institutional · 2019-10-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 2 [T1×2] · unmeasured 3 [not-published×3]  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0127** · The undertaking to restore statehood: seven years, six statements, no date  
+`awaiting-adjudication` · T2 · governance/federalism/kashmir · institutional · 2019-08-06–2026 · confidence high  
+claim — Union Home Minister Amit Shah, replying to the Lok Sabha debate on 6 August 2019: 'I want to assure the people of J&K that the status of State would be restored once the situation normalises.'  
+reasoning — Filed too-early on the written definition - the measure is in force and has not run long enough for its stated objective to be testable - and the value strains, which is recorded here rather than resolved.  
+sources 5 [T1×4 T4×1] · unmeasured 2 [never-defined×1 not-collected×1] · revisit trigger set  
+verdict changed after shipping — too-early , too-early→awaiting-adjudication (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0128** · The election direction of 11 December 2023, and the dates the poll was actually completed on  
+`contested` · T3 · governance/kashmir · event · 2024-10-01 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 4 [T1×4] · unmeasured 0 · CAVEAT  
+contested ground (project's own classification, not a data field) — interpretation
+
+**L-0129** · The official Constitution still prints the Article 367 substitution the Supreme Court held ultra vires  
+`contested` · T3 · governance/kashmir · institutional · 2024-05-01 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Filed contested on the written definition - the evidence supports more than one defensible reading and this record does not choose between them:  
+sources 3 [T1×3] · unmeasured 1 [not-published×1] · CAVEAT  
+contested ground (project's own classification, not a data field) — vocabulary-residue  
+1 commit(s) touched this record after it was created  
+corrected — sources[].name
+
+**L-0130** · The Public Safety Act as it stood after the 2012 amendment: one limb narrowed, the other quadrupled  
+`baseline-context` · baseline · governance/kashmir · reform · 2012-04-05 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 2 [T1×1 T2×1] · unmeasured 0
+
+**L-0131** · The Public Safety Act was retained on the appointed day, adapted by executive order, and its Advisory Board transferred to executive selection  
+`no-objective` · T2 · governance/kashmir · institutional · 2019-10-31–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Filed no-objective because no objective was stated at announcement against which any of these three acts could be scored.  
+sources 5 [T1×2 T2×1 T4×2] · unmeasured 1 [not-collected×1]
+
+**L-0132** · Two bodies review the same detention orders: one confirms almost all of them, the other strikes down four in five  
+`contested` · T1 · governance/kashmir · episode · 2016–2026 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 5 [T1×1 T2×1 T4×3] · unmeasured 2 [not-published×2] · CAVEAT  
+contested ground (project's own classification, not a data field) — measure
+
+**L-0133** · The August 2019 detentions: ten official figures, five objects, and the one question that was never answered  
+`no-objective` · T2 · governance/kashmir · episode · 2019-08-05–2021-03-09 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Filed no-objective because no objective was stated at announcement against which any of these figures could be scored.  
+sources 5 [T1×4 T4×1] · unmeasured 3 [not-published×2 never-defined×1]
+
+**L-0134** · The power to hold a J&K detenu anywhere in India, and the information barrier it creates  
+`awaiting-adjudication` · T1 · governance/kashmir · episode · 2018–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Filed too-early because the power is in force, has operated on 1,122 people, and its lawfulness is testable and before a court that has not ruled.  
+sources 5 [T1×2 T2×1 T4×2] · unmeasured 2 [withheld×1 not-published×1] · CAVEAT · revisit trigger set  
+verdict changed after shipping — too-early , too-early→awaiting-adjudication (1 change)  
+1 commit(s) touched this record after it was created
+
+**L-0135** · Thirteen years of J&K detenu counts, one undifferentiated cell, and a fall that is partly a change of address  
+`no-objective` · T1 · governance/kashmir · episode · 2009–2022 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Filed no-objective because the record finds something real about an instrument and no objective was stated at announcement against which the instrument could be scored.  
+sources 3 [T1×3] · unmeasured 2 [not-published×2]
+
+**L-0136** · The August 2019 communications blackout: four defensible durations, and orders the state refused to produce  
+`contested` · T2 · governance/kashmir · episode · 2019-08-04–2021-02-05 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Scored contested rather than partly or failed because the two sides rest on different facts, neither of which is in doubt, and no measure exists on which the record could choose between them.  
+sources 5 [T1×5] · unmeasured 4 [withheld×1 not-collected×3] · differentFacts TRUE · CAVEAT  
+contested ground (project's own classification, not a data field) — evidence-unobservable  
+1 commit(s) touched this record after it was created
+
+**L-0137** · The Review Committee for J&K: findings refused as exempt, ordered released, then said not to exist  
+`contested` · T3 · governance/kashmir · institutional · 2023-06-22–2025 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Filed contested on the written definition, and the two defensible readings are named rather than chosen:  
+sources 3 [T1×2 T4×1] · unmeasured 2 [withheld×1 not-collected×1] · CAVEAT  
+contested ground (project's own classification, not a data field) — evidence-withheld  
+1 commit(s) touched this record after it was created
+
+**L-0138** · The Union keeps no count of shutdowns because police is a State subject, and in Jammu and Kashmir it is not  
+`no-objective` · T2 · governance/federalism/kashmir · institutional · 2021-03-10–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Filed no-objective because no objective was ever stated at announcement against which the non-collection could be scored.  
+sources 4 [T1×4] · unmeasured 2 [not-collected×1 never-defined×1]  
+1 commit(s) touched this record after it was created
+
+**L-0139** · The 2024 Suspension Rules in J&K: narrow, timed and reason-bearing orders under an untested regime  
+`too-early` · T3 · governance/kashmir · reform · 2024-11-22–2026 · confidence medium  
+claim — The Rules' own face: every suspension order shall be published, a suspension shall not exceed fifteen days, the least intrusive means shall be used, and a review committee is empowered to set an order aside.  
+reasoning — Filed too-early on the written definition without strain:  
+sources 3 [T1×3] · unmeasured 1 [not-published×1] · revisit trigger set  
+2 commit(s) touched this record after it was created
+
+**L-0140** · The venue where J&K published its suspension orders no longer exists, and the live copies are held by two private organisations  
+`no-objective` · T3 · governance/kashmir · event · 2025-04-03–2026-08-03 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Filed no-objective because the record finds something real and no objective was stated at announcement against which it could be scored - no body announced anything about the venue, and there is no claim to test.  
+sources 3 [T1×3] · unmeasured 1 [not-published×1] · CAVEAT  
+1 commit(s) touched this record after it was created
+
+**L-0141** · Delimitation of Jammu and Kashmir: one Commission table, three denominators, three answers  
+`contested` · T2 · governance/kashmir · institutional · 2022-05-20 · confidence high  
+claim — The statutory objective is that constituencies shall, so far as practicable, have equal population, having regard to physical features, existing boundaries of administrative units, means of communication and public convenience.  
+reasoning — Filed contested, and the value is carrying a weighting dispute rather than an evidentiary one, which is recorded here rather than resolved.  
+sources 4 [T1×4] · unmeasured 2 [not-published×1 never-defined×1]  
+contested ground (project's own classification, not a data field) — measure
+
+**L-0142** · Turnout in Jammu and Kashmir: four official values for one quantity, and a denominator nobody publishes  
+`no-objective` · T3 · governance/kashmir · episode · 2024-10-01–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Filed no-objective because the record is a finding about a measuring instrument and no objective was stated at announcement against which the instrument could be scored.  
+sources 4 [T1×4] · unmeasured 3 [not-published×2 never-defined×1]  
+1 commit(s) touched this record after it was created
+
+**L-0143** · Five nominated seats in the J&K Assembly, and a statute that never says whether they vote  
+`awaiting-adjudication` · T2 · governance/kashmir · reform · 2023-12-26–2026 · confidence medium  
+claim — The Government's own account of its own Bill, in a press release of 6 December 2023, describes the measure five times as reservation - 'reservation of 2 seats', '1 seat to be reserved' - and states that by giving reservation to displaced Kashmiris they will have a voice in the Assembly.  
+reasoning — Filed awaiting-adjudication on the written definition and it fits on all three limbs:  
+sources 7 [T1×6 T4×1] · unmeasured 3 [never-defined×1 not-published×2] · CAVEAT · revisit trigger set  
+verdict changed after shipping — too-early , too-early→awaiting-adjudication (1 change)  
+3 commit(s) touched this record after it was created
+
+**L-0144** · Permanent resident replaced by domicile: a definitional change, and the sub-count the Union did not publish for five years  
+`contested` · T2 · governance/kashmir · reform · 2020-04-03–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Filed contested on the written definition:  
+sources 4 [T1×3 T4×1] · unmeasured 2 [not-published×1 never-defined×1] · differentFacts TRUE · revisit trigger set  
+contested ground (project's own classification, not a data field) — evidence-withheld
+
+**L-0145** · Land law repealed by executive order five days before the power lapsed, and a transfer count in four units  
+`contested` · T2 · governance/kashmir · reform · 2020-10-26–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Filed contested on the written definition.  
+sources 4 [T1×3 T4×1] · unmeasured 2 [not-published×2]  
+contested ground (project's own classification, not a data field) — time
+
+**L-0146** · The third tier in Jammu and Kashmir was elected once, and every elected term has since lapsed with no successor election  
+`partly` · T2 · governance/federalism/kashmir · institutional · 2018-11-17–2026-02-24 · confidence high  
+claim — The Ministry of Home Affairs' Annual Report for 2021-22 records 27 functions transferred to the Panchayati Raj Institutions and approximately 1,727 crore rupees devolved to them, and 17 of the 18 functions in the Twelfth Schedule devolved to the urban tier with funds and functionaries, 2,300 crore rupees devolved over two years and 3,160 works completed with 3,200 ongoing, geo-tagged and published.  
+reasoning — Scored partly, and the objective being scored is declared here because no field holds it:  
+sources 4 [T1×4] · unmeasured 5 [not-published×5] · revisit trigger set
+
+**L-0147** · The J&K local tier has no State Finance Commission report, no local-bodies audit, and its Finance Commission grants fell to zero and then stopped appearing  
+`no-objective` · T2 · governance/federalism/kashmir · institutional · 2011-06-24–2026 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Filed no-objective because the record finds something real about an institutional architecture and no objective was stated at announcement against which it could be scored.  
+sources 7 [T1×7] · unmeasured 3 [not-published×2 not-collected×1] · CAVEAT
+
+**L-0148** · The J&K human rights commission was abolished, and the body said to replace it cannot investigate the respondents its caseload named  
+`contested` · T2 · governance/kashmir · institutional · 2019-10-31–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — *no assessment note*  
+sources 4 [T1×3 T2×1] · unmeasured 3 [not-published×2 not-collected×1]  
+contested ground (project's own classification, not a data field) — evidence-withheld
+
+**L-0149** · Seven commissions wound up by seven consecutive orders on one day, and the word pending appears in none of them  
+`no-objective` · T2 · governance/kashmir · institutional · 2019-10-23–2026 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Filed no-objective because no objective was stated at announcement against which any of the seven orders could be scored.  
+sources 3 [T1×3] · unmeasured 3 [not-published×3]
+
+**L-0150** · The divisible pool shrank from 89 to 74-80 per cent of gross tax revenue while the states' share of it rose from 32 to 41  
+`no-objective` · T3 · macro/federalism · episode · 2014-04-01–2026-03-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — No objective was stated at announcement because there was no announcement:  
+sources 6 [T1×6] · unmeasured 3 [never-defined×1 not-published×1 not-collected×1]
+
+**L-0151** · The Fourteenth Finance Commission raises the states' share of the divisible pool from 32 to 42 per cent  
+`worked` · T1 · federalism/macro · reform · 2014-12-15–2015-04-01 · confidence high  
+claim — FC-XIV para 8.13, verbatim: "increasing the share of tax devolution to 42 per cent of the divisible pool", on four stated considerations — "(i) States not being entitled to the growing share of cess and surcharges in the revenues of the Union Government; (ii) the importance of increasing the share of tax devolution in total transfers; (iii) an aggregate view of the revenue expenditure needs of States without Plan and non-Plan distinction; and (iv) the space available with the Union Government." The same paragraph states the intended character of the move: "a compositional shift in transfers from grants to tax devolution... it does not impose an additional fiscal burden on the Union Government."  
+reasoning — The value scores the recommendation against the objective stated at announcement, which was to raise the states' share of the divisible pool to 42 per cent.  
+sources 4 [T1×4] · unmeasured 0
+
+**L-0152** · 42 becomes 41: Jammu and Kashmir leaves the denominator, and the one per cent retained has no ledger  
+`contested` · T2 · federalism/macro/kashmir · institutional · 2020-02-01 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Contested rather than no-objective because a claim was made and its outcome is unmeasured:  
+sources 3 [T1×3] · unmeasured 2 [not-published×1 not-collected×1] · CAVEAT  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0153** · The Sixteenth Finance Commission recommends nil revenue deficit, sector-specific and state-specific grants, and the Union takes note  
+`too-early` · T3 · federalism/macro · reform · 2025-11-17–2026-02-01 · confidence high  
+claim — That state finances no longer require deficit financing through grants and that untied local body money is a better instrument than tied sectoral grants. The Commission's stated reason for retaining 41 per cent is the size of the pool: "With cesses and surcharges having cut the size of the divisible pool from 89.1 per cent of GTR in 2014-15 to a 74-80 per cent range... there is no room for cutting the States' share in it."  
+reasoning — The award commenced on 1 April 2026 and is four months old at the date of this record.  
+sources 3 [T1×3] · unmeasured 0 · revisit trigger set
+
+**L-0154** · The Union's five action verbs under Article 281 have no definitions, and "due consideration" produced nil of ₹49,599 crore  
+`no-objective` · T2 · federalism/governance · institutional · 2021-02-01–2025-08-18 · confidence high  
+claim — *none stated at announcement*  
+reasoning — The record finds something real and firmly established — a graded vocabulary with no definitions, one term of which has now been construed on the record as refusal — and no objective was stated at announcement against which it could be scor …  
+sources 5 [T1×5] · unmeasured 2 [never-defined×1 not-published×1]
+
+**L-0155** · The certificate the Constitution makes final has been produced for seventy-six years and published once  
+`too-early` · T3 · federalism/governance · institutional · 2026-02-01 · confidence high  
+claim — FC-XVI recommendation 2 (para 7.30), that the Union publish the CAG's Article 279 net-proceeds certificate annually; recorded as "accepted" in the Explanatory Memorandum of 1 February 2026.  
+reasoning — The measure is the recommendation of annual publication, accepted and in force, and one year has been published.  
+sources 5 [T1×5] · unmeasured 2 [not-published×2] · revisit trigger set
+
+**L-0156** · Cess proceeds are not credited to the funds the cesses were levied for, in ten consecutive audit reports  
+`failed` · T3 · macro/federalism/governance · episode · 2016-01-01–2026-03-31 · confidence high  
+claim — Each levy's own enacting provision states the purpose for which it is imposed, and the Article 270(1) proviso puts a cess outside the shareable pool only because it is levied "for the purposes of the Union" — the purpose is the constitutional justification for the exclusion.  
+reasoning — Failed against the objective stated in each levy's own enacting provision — that the proceeds finance the named purpose — which is also the constitutional ground on which the levy sits outside the divisible pool.  
+sources 7 [T1×7] · unmeasured 0 · CAVEAT
+
+**L-0157** · The Agriculture Infrastructure and Development Cess: revenue-neutral at the pump, shareable revenue moved out of the pool, nil to its own fund for two years  
+`partly` · T2 · macro/federalism · reform · 2021-02-02–2025-03-31 · confidence high  
+claim — Four formulations in the Union's own documents: the Budget Speech at para 188 ("not to put additional burden on consumers on most items"); the Annexure to Part B at para 5 ("so that overall consumer does not bear any additional burden"); the Memorandum's section on the cess; and the Tax Research Unit's covering letter ("calibrated so that there would be no additional burden on the consumer"). The levying clauses open with the Article 270(1)-proviso formula: "There shall be levied and collected... for the purposes of the Union".  
+reasoning — Partly, on two stated objectives with opposite outcomes:  
+sources 17 [T1×17] · unmeasured 1 [not-published×1] · CAVEAT
+
+**L-0158** · The GST compensation guarantee: 14 per cent on a 2015-16 base, 1 July 2017 to 30 June 2022  
+`contested` · T2 · macro/federalism · reform · 2017-07-01–2022-06-30 · confidence high  
+claim — To hold states harmless against revenue loss from the change of tax regime for five years. The Council's Chairperson characterised it at the 7th meeting as a "Constitutional commitment for the Central Government to provide hundred per cent compensation"; the member from Jammu and Kashmir as "an insurance at 14 per cent... even if a State suffered from a calamity".  
+reasoning — Contested because the evidence supports more than one defensible reading of whether the guarantee was honoured, and the record does not choose.  
+sources 5 [T1×5] · unmeasured 0 · differentFacts TRUE · CAVEAT  
+contested ground (project's own classification, not a data field) — interpretation
+
+**L-0159** · The 2020 rupture: the Attorney-General's opinion, the two-bucket split, and an arrangement the GST Council never recommended  
+`contested` · T2 · macro/federalism/governance · episode · 2020-08-27–2021-05-28 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Contested on the record's own terms.  
+sources 5 [T1×5] · unmeasured 0 · differentFacts TRUE  
+contested ground (project's own classification, not a data field) — interpretation
+
+**L-0160** · The compensation cess outlives the compensation: an open-ended Council recommendation implemented as a fixed date by notification  
+`contested` · T3 · macro/federalism · institutional · 2020-10-12–2026-03-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Contested because both readings of the same documents are defensible:  
+sources 4 [T1×4] · unmeasured 0 · CAVEAT  
+contested ground (project's own classification, not a data field) — interpretation
+
+**L-0161** · Sixteen members asked the GST Council to extend compensation and the minutes record no answer  
+`no-objective` · T2 · federalism/governance · event · 2022-06-29 · confidence high  
+claim — *none stated at announcement*  
+reasoning — The agenda item carried no proposal — it was listed as a discussion, which is why no decision was capable of being taken on it — so no objective was stated at announcement against which anything could be scored.  
+sources 3 [T1×3] · unmeasured 1 [never-defined×1]
+
+**L-0162** · The GST Council's constitutional dispute-adjudication mechanism has never been established  
+`failed` · T3 · federalism/governance · institutional · 2016-09-12–2026-08-03 · confidence high  
+claim — The constitutional text itself: to adjudicate disputes arising out of the Council's recommendations or their implementation.  
+reasoning — Failed against the objective stated in the constitutional text that created the duty.  
+sources 5 [T1×5] · unmeasured 0 · revisit trigger set
+
+**L-0163** · Ten Tamil Nadu bills deemed assented by the Supreme Court, and the doctrine that assented them withdrawn seven months later  
+`contested` · T3 · federalism/governance · episode · 2020-01-13–2025-11-20 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Contested because the two sides do not disagree about a single fact.  
+sources 2 [T1×2] · unmeasured 3 [never-defined×1 not-collected×2] · CAVEAT  
+contested ground (project's own classification, not a data field) — interpretation
+
+**L-0164** · The Constitution sets a deadline for the elected legislature and none for the Union's appointee, and both sides argue from the same silence  
+`no-objective` · T3 · federalism/governance · institutional · 1950-01-26–2025-11-20 · confidence high  
+claim — *none stated at announcement*  
+reasoning — No objective was stated at announcement because the subject is a constitutional design, not a measure.  
+sources 5 [T1×5] · unmeasured 3 [not-collected×1 never-defined×1 not-published×1] · CAVEAT
+
+**L-0165** · Delhi: a Constitution Bench holding reversed by statute in eight days, under an express constitutional licence to do so  
+`contested` · T2 · federalism/governance · reform · 2023-05-11–2023-08-07 · confidence high  
+claim — The Part's own heading is the only objective statement retrieved: "PROVISIONS RELATING TO THE MAINTENANCE OF THE DEMOCRATIC AND ADMINISTRATIVE BALANCE IN THE GOVERNANCE OF NATIONAL CAPITAL TERRITORY OF DELHI".  
+reasoning — Contested because both readings rest on the same admitted text and the same dates.  
+sources 3 [T1×3] · unmeasured 0 · CAVEAT  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0166** · Article 356 since 2014: four proclamations outside Jammu and Kashmir, and no official list of any of them  
+`no-objective` · T3 · federalism/governance · episode · 2016-01-26–2026-02-04 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — No objective was stated at announcement:  
+sources 5 [T1×5] · unmeasured 1 [not-published×1] · CAVEAT
+
+**L-0167** · Three commissions recommended consulting the Chief Minister on the appointment of Governors; the Inter-State Council has met eleven times in thirty-six years and not once in the last ten  
+`no-objective` · T3 · federalism/governance · institutional · 2002-03-31–2026-03-24 · confidence high  
+claim — *none stated at announcement*  
+reasoning — No objective was stated at announcement.  
+sources 4 [T1×4] · unmeasured 1 [not-published×1] · CAVEAT
+
+**L-0168** · West Bengal's MGNREGA money stopped under section 27 on 9 March 2022, and restored by a court rather than by the Ministry  
+`contested` · T3 · federalism/welfare/employment/governance · episode · 2022-03-09–2026-06-01 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — Contested rather than failed:  
+sources 4 [T1×4] · unmeasured 3 [not-published×2 not-collected×1] · CAVEAT  
+contested ground (project's own classification, not a data field) — evidence-withheld
+
+**L-0169** · MGNREGA is repealed: the unskilled wage moves from 100 per cent Central to 60:40 and the fund-stopping power survives near-verbatim  
+`too-early` · T3 · federalism/welfare/employment · reform · 2025-12-20–2026-07-01 · confidence medium  
+claim — A raised guarantee of 125 days of work.  
+reasoning — The repeal took effect on 1 July 2026 and the record is dated five weeks later.  
+sources 3 [T1×3] · unmeasured 0 · CAVEAT · revisit trigger set
+
+**L-0170** · ₹30,085 crore a year reaches Tamil Nadu without passing through Tamil Nadu's budget, and its auditor says the State's accounts are untrue to that extent  
+`contested` · T3 · federalism/governance · episode · 2015-04-01–2024-03-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Contested, with the quantum not in dispute at all:  
+sources 3 [T1×3] · unmeasured 1 [not-collected×1]  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0171** · Tamil Nadu received ₹50,700.69 crore of GST compensation and never passed ₹5,070.06 crore of it to its own local bodies  
+`contested` · T3 · federalism/governance · episode · 2018-04-01–2024-03-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Contested and authored as ONE record.  
+sources 3 [T1×3] · unmeasured 0 · CAVEAT  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0172** · The Union withheld GST transaction data from its own constitutional auditor, which certified a state's accounts on a test basis as a one-time exception  
+`no-objective` · T2 · federalism/governance · episode · 2019-04-01 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — No objective was stated at announcement:  
+sources 2 [T1×2] · unmeasured 1 [withheld×1] · CAVEAT · revisit trigger set
+
+**L-0173** · Bihar enlarged its Contingency Fund twenty-seven-fold and used it to meet its own share of centrally sponsored schemes  
+`contested` · T3 · federalism/macro/governance · episode · 2022-04-01–2023-03-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Contested rather than failed.  
+sources 2 [T1×2] · unmeasured 0 · CAVEAT  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0174** · Released, received, passed on: three numbers for the same money, and only the auditor computes the difference  
+`no-objective` · T3 · federalism/governance · institutional · 2023-03-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — No objective was stated at announcement:  
+sources 3 [T1×3] · unmeasured 1 [not-published×1] · CAVEAT
+
+**L-0175** · Asked what cesses and surcharges come to, the Union gives Parliament a third answer, and defines the quantity in neither of the two it has given  
+`no-objective` · T3 · macro/federalism · episode · 2026-07-21 · confidence high  
+claim — *none stated at announcement*  
+reasoning — No objective was stated for the aggregate.  
+sources 5 [T1×5] · unmeasured 1 [never-defined×1] · CAVEAT
+
+**L-0176** · The Agriculture Infrastructure and Development Fund received nothing in the cess's first two full years, and the Union's own table strikes the balance  
+`partly` · T2 · macro/federalism · episode · 2021-04-01–2026-03-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Partly, against the earmark that is the levy's own justification for sitting outside the divisible pool:  
+sources 4 [T1×4] · unmeasured 1 [not-published×1] · CAVEAT
+
+**L-0177** · A cess levied since 1974 had no Reserve Fund to be credited to until FY2024-25, and the Union says so in a footnote  
+`no-objective` · T2 · macro/federalism/governance · episode · 2020-04-01–2025-03-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — The value records what this drop holds, not a judgement that no objective existed.  
+sources 4 [T1×4] · unmeasured 2 [not-collected×2]
+
+**L-0178** · Centrally sponsored scheme releases to West Bengal fell 67 per cent in five years while the national total fell 6, and the Union states four general conditions and no state-specific reason  
+`contested` · T2 · federalism/welfare/governance · episode · 2020-04-01–2025-03-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Contested rather than failed:  
+sources 3 [T1×3] · unmeasured 2 [not-published×2] · CAVEAT  
+contested ground (project's own classification, not a data field) — evidence-withheld
+
+**L-0179** · Samagra Shiksha: two states received nil, one had it paid back in arrears and one did not, and the only state-specific reason the Union gives is an unsigned memorandum for a different scheme  
+`contested` · T2 · education/federalism/governance · episode · 2021-04-01–2026-03-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Contested:  
+sources 3 [T1×3] · unmeasured 2 [not-published×2] · CAVEAT  
+contested ground (project's own classification, not a data field) — evidence-withheld
+
+**L-0180** · "No additional burden on the consumer" was true of three grades of fuel out of four: branded diesel became one paisa a litre dearer  
+`partly` · T2 · macro/federalism · reform · 2021-02-02 · confidence high  
+claim — Four formulations, each universal in its terms: the Budget Speech at para 188 ("not to put additional burden on consumers on most items"); the Annexure to Part B at para 5, on petrol and diesel specifically ("so that overall consumer does not bear any additional burden"); the Memorandum's section V ("so that consumer does not have to bear any additional burden on account of imposition of AIDC"); and the Tax Research Unit covering letter ("calibrated so that there would be no additional burden on the consumer").  
+reasoning — Partly, and narrowly:  
+sources 9 [T1×9] · unmeasured 1 [not-published×1] · CAVEAT
+
+**L-0181** · The one arithmetic error in the Union's own summary table is on the one row where the consumer's burden rose  
+`no-objective` · T2 · macro/governance/federalism · event · 2021-02-01 · confidence high  
+claim — *none stated at announcement*  
+reasoning — No objective was stated for the table's arithmetic, so there is nothing to score it against.  
+sources 5 [T1×5] · unmeasured 0 · CAVEAT
+
+**L-0182** · Two Union-origin instruments disagree by ₹67,819 crore about what the states were paid in FY2017-18, and nothing explains it  
+`no-objective` · T1 · federalism/macro · episode · 2017-04-01–2018-03-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — No objective was stated by anyone about the agreement of these two instruments;  
+sources 4 [T1×4] · unmeasured 1 [not-published×1] · CAVEAT
+
+**L-0183** · "For every rupee we contribute we get back X paise" — the most-quoted number in Indian fiscal federalism is produced by no retrievable instrument, and no body has ever refused to produce it  
+`no-objective` · T3 · federalism/macro/governance · episode · 2010-11-16–2026-08-04 · confidence high  
+claim — *none stated at announcement*  
+reasoning — No objective was ever stated by anyone to produce this quantity, so there is nothing to score.  
+sources 19 [T1×19] · unmeasured 3 [not-collected×3] · differentFacts TRUE · CAVEAT
+
+**L-0184** · The fifty per cent wall: a reciprocal tariff and a Russian-oil tranche, built under two orders and one emergency about Ukraine  
+`no-objective` · T3 · foreign/macro · lens united-states/russia · shock · 2025-04-02–2026-02-20 · confidence high  
+claim — EO 14329 states its own objective in its own terms: the additional duty on India is "necessary and appropriate" to deal with the national emergency described in EO 14066 — the threat to United States national security and foreign policy posed by Russia's actions against Ukraine — and that imposing it "will more effectively deal with" that emergency.  
+reasoning — Scored no-objective from India's side, which is the side this instrument measures.  
+sources 3 [T1×3] · unmeasured 0 · revisit trigger set
+
+**L-0185** · IEEPA does not authorise the President to impose tariffs, and every duty India faced under it ended the same day  
+`no-objective` · T3 · foreign/macro · lens united-states · event · 2026-02-20 · confidence high  
+claim — *none stated at announcement*  
+reasoning — A judgment of a foreign court is not an Indian measure and had no objective with respect to India at all — the petitioners were two American small businesses and five more with twelve States.  
+sources 2 [T1×2] · unmeasured 0
+
+**L-0186** · A ten per cent surcharge with a hundred-and-fifty-day fuse: section 122 used to its statutory maximum, and allowed to lapse  
+`no-objective` · T3 · foreign/macro · lens united-states · shock · 2026-02-20–2026-07-24 · confidence high  
+claim — *none stated at announcement*  
+reasoning — A United States balance-of-payments measure, not an Indian one, and applied to all trading partners rather than to India.  
+sources 2 [T1×2] · unmeasured 0 · CAVEAT
+
+**L-0187** · India adopts a forced-labour import prohibition and is placed in the lower tier of the tariff that replaced the surcharge  
+`no-objective` · T3 · foreign/governance · lens united-states · event · 2026-07-23–2026-07-24 · confidence high  
+claim — The determination states the criterion for the lower tier in its own terms: an economy that "imposes a forced labor import prohibition, has committed to impose and enforce such a prohibition through an Agreement on Reciprocal Trade (ART), or has imposed a partial regime with the effect of preventing the importation of certain forced labor goods" receives 10 per cent rather than 12.5 per cent. India's entry reads that the determination was made "including India's adoption of a forced labor import prohibition subsequent to the publication of the June 5, 2026 FRN".  
+reasoning — Two measures meet here and neither is scorable as an Indian objective.  
+sources 2 [T1×2] · unmeasured 1 [not-published×1] · revisit trigger set
+
+**L-0188** · The 6 February framework: an eighteen per cent rate promised under an order struck down fourteen days later, and an interim agreement not concluded since  
+`too-early` · T3 · foreign/macro · lens united-states · reform · 2026-02-06 · confidence medium  
+claim — That the framework would be promptly implemented and the Interim Agreement finalised, en route to a broader Bilateral Trade Agreement launched on 13 February 2025. India's side of the framework is tariff elimination or reduction on all United States industrial goods and a listed range of food and agricultural products, action on named non-tariff barriers, and an intent to "purchase $500 billion of U.S. energy products, aircraft and aircraft parts, precious metals, technology products, and coking coal over the next 5 years".  
+reasoning — Too-early rather than failed, and the distinction is the obstacle.  
+sources 3 [T1×3] · unmeasured 1 [not-published×1] · revisit trigger set
+
+**L-0189** · India was tariffed for buying Russian crude, and India does not publish how much Russian crude it buys  
+`no-objective` · T3 · foreign/environment · lens russia/united-states · episode · 2025-08-06 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Not a measure.  
+sources 2 [T1×2] · unmeasured 2 [not-published×1 not-collected×1] · revisit trigger set
+
+**L-0190** · The India-China merchandise deficit has two values, and the gap between them is larger than most bilateral relationships  
+`no-objective` · T3 · foreign/macro · lens china · episode · 2023-01-01–2024-12-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — No measure and no objective — this is a state of the measurement, not a policy that was announced to do something.  
+sources 4 [T2×4] · unmeasured 0 · differentFacts TRUE · revisit trigger set
+
+**L-0191** · Calendar 2025 has an Indian figure and no Chinese one, so it is not a mirror and must not be read as one  
+`no-objective` · T3 · foreign/macro · lens china · episode · 2025-01-01–2025-12-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — A state of the measurement, not a measure.  
+sources 3 [T2×3] · unmeasured 1 [not-published×1] · revisit trigger set
+
+**L-0192** · India runs a merchandise surplus with every immediate neighbour except Myanmar  
+`no-objective` · T3 · foreign/macro · lens neighbourhood · episode · 2024-01-01–2024-12-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — A measured position, not a measure.  
+sources 2 [T2×2] · unmeasured 0 · CAVEAT · revisit trigger set
+
+**L-0193** · Half the neighbourhood does not report its trade, and every neighbour that does records less arriving than India records sending  
+`no-objective` · T3 · foreign/governance · lens neighbourhood · episode · 2024-01-01–2024-12-31 · confidence high  
+claim — *none stated at announcement*  
+reasoning — A state of the measurement across an arc, not a measure.  
+sources 4 [T2×4] · unmeasured 1 [not-published×1] · differentFacts TRUE · revisit trigger set
+
+**L-0194** · TEPA carries the first investment commitment in an Indian trade agreement: US$100bn over fifteen years, and the first tranche is not due until 2035  
+`too-early` · T3 · foreign/macro · lens europe · reform · 2025-10-01 · confidence high  
+claim — US$100bn of investment mobilised into India over fifteen years from entry into force, and one million direct jobs facilitated, monitored through an investment facilitation mechanism. The Minister's stated ground for calling it pioneering is that it is "the first trade agreement to incorporate a firm investment commitment, thereby balancing interests and ensuring fairness between partners".  
+reasoning — Too-early in its strict sense:  
+sources 2 [T1×2] · unmeasured 1 [not-published×1] · revisit trigger set  
+1 commit(s) touched this record after it was created
+
+**L-0195** · "Merchandise trade with both Australia and the UAE has doubled since the signing" — true on a baseline two years before either signature, false on both years nearest it  
+`contested` · T3 · foreign/macro · event · 2026-03-10 · confidence high  
+claim — *none stated at announcement*  
+reasoning — This note previously read that "the claim does not state its baseline", and that is not what this record's own body establishes.  
+sources 3 [T1×1 T2×2] · unmeasured 0 · CAVEAT · revisit trigger set  
+contested ground (project's own classification, not a data field) — interpretation  
+1 commit(s) touched this record after it was created  
+corrected — assessmentNote
+
+**L-0196** · Defence exports reach ₹38,424 crore against a ₹50,000 crore target for 2029, and the private sector's share falls nineteen points in the year it is reported as rising  
+`too-early` · T3 · foreign/macro · lens defence-sector · reform · 2026-04-02 · confidence high  
+claim — A target of ₹50,000 crore in defence exports by 2029, restated by the Ministry in June 2026 as current.  
+reasoning — Too-early on the target, which is the record's scored object:  
+sources 2 [T1×2] · unmeasured 2 [not-published×2] · revisit trigger set
+
+**L-0197** · India's defence exports are measured by three instruments that measure three different things, and SIPRI says in terms that its own must not be compared with the others  
+`no-objective` · T3 · foreign · lens defence-sector · episode · 2026-08-04 · confidence high  
+claim — *none stated at announcement*  
+reasoning — A state of the measurement, not a measure.  
+sources 3 [T1×1 T2×2] · unmeasured 1 [not-collected×1] · CAVEAT · revisit trigger set
+
+**L-0198** · Three quantities are called indigenisation: one has a defined formula, one is a production total, and the headline share has no stated basis at all  
+`partly` · T3 · foreign/macro · lens defence-sector · reform · 2020-09-28 · confidence high  
+claim — That raising the indigenous-content minimums across categories, with a verification process and a stated calculation basis, would shift procurement toward domestic design and manufacture.  
+reasoning — Partly, and the split is between the two halves of the same reform.  
+sources 2 [T1×2] · unmeasured 2 [not-published×2] · CAVEAT · revisit trigger set
+
+**L-0199** · India has not been sanctioned under CAATSA for the S-400, and that is not the same as having been waived — the statute distinguishes three states and the public record separates only one  
+`no-objective` · T3 · foreign · lens defence-sector/united-states/russia · institutional · 2017-08-02 · confidence high  
+claim — *none stated at announcement*  
+reasoning — Not an Indian measure and not scorable as one — CAATSA is a United States statute with a United States objective.  
+sources 2 [T1×2] · unmeasured 1 [not-published×1] · revisit trigger set
+
+**L-0200** · Emergency procurement: a ₹300 crore delegation with a stated clock, and two Ministry of Defence figures for the same thirteen contracts  
+`partly` · T3 · foreign/governance · lens defence-sector · institutional · 2020-07-15 · confidence high  
+claim — Orders placed within six months of a case being progressed, and deliveries commencing within one year — both stated by the DAC as what the delegation would ensure, not as an aspiration.  
+reasoning — Partly, against the objective stated at announcement.  
+sources 3 [T1×3] · unmeasured 2 [not-published×2] · differentFacts TRUE · revisit trigger set  
+1 commit(s) touched this record after it was created
+
+**L-0201** · Twenty-six Rafale for the Navy, signed government to government, with technology transfer for integrating Indian weapons  
+`too-early` · T3 · foreign · lens defence-sector · reform · 2025-04 · confidence medium  
+claim — Twenty-six aircraft with an associated support package, and transfer of technology for integrating Indian-made weapons onto the platform — the second being the element the Ministry presents as the Aatmanirbhar Bharat content of the deal.  
+reasoning — Too-early:  
+sources 1 [T1×1] · unmeasured 2 [not-published×2] · CAVEAT · revisit trigger set
+
+**L-0202** · The S-400 delivery schedule exists, both governments know it, and neither publishes it — one of them says so on the record  
+`no-objective` · T3 · foreign · lens defence-sector/russia · episode · 2018-10-05–2026-04-16 · confidence medium  
+claim — *none stated at announcement*  
+reasoning — A state of the measurement, not a measure.  
+sources 2 [T1×1 T4×1] · unmeasured 2 [withheld×1 not-published×1] · CAVEAT · revisit trigger set
+
+**L-0203** · The 2016 Rafale agreement bought 36 aircraft off the shelf and dropped 108 that were to be built in India, and the item-wise price is withheld under a 2008 bilateral agreement  
+`contested` · T1 · foreign/macro · lens defence-sector · reform · 2016-09-23 · confidence high  
+claim — The Ministry's own comparison against the MMRCA proposal, in a Rajya Sabha written reply: "In the IGA, better terms have been achieved in terms of better pricing, better maintenance terms and better delivery schedule." Restated in 2018 as a deal "better in terms of capability, price, equipment, delivery, maintenance, training".  
+reasoning — Contested, and the reason is that the two sides are arguing about different objectives rather than about the same one.  
+sources 2 [T1×2] · unmeasured 2 [withheld×1 not-published×1] · CAVEAT · revisit trigger set  
+contested ground (project's own classification, not a data field) — criterion
+
+**L-0204** · The India-UK trade agreement is in force, and the two headline concessions are not the same measurement: 99 per cent of India's exports by value against 24.5 per cent of Britain's on day one  
+`too-early` · T3 · foreign/macro · lens europe · reform · 2026-07-15 · confidence high  
+claim — The India-UK Roadmap 2030, adopted in May 2021 alongside the Enhanced Trade Partnership, set the goal of doubling bilateral trade to US$100bn by 2030. CETA is presented as the instrument, and as balancing liberalisation against the protection of sensitive sectors through exclusions and phased reductions.  
+reasoning — Too-early in its strict sense:  
+sources 2 [T1×2] · unmeasured 2 [not-published×2] · CAVEAT · revisit trigger set
+
+**L-0205** · The India-EU agreement is concluded but not in force, and this time both sides published the same two measurements — 90.7 per cent of India's export value duty-free at once against 30.6 per cent of the EU's  
+`too-early` · T3 · foreign/macro · lens europe · reform · 2026-01-27 · confidence high  
+claim — A balanced, modern and rules-based partnership delivering, on the Ministry's statement, preferential entry for over 99 per cent of Indian exports and zero duty at entry into force on almost US$33bn of exports in labour-intensive sectors — textiles, leather, marine products, gems and jewellery — that currently face duties of up to 10 per cent. On services, the EU opens 144 subsectors to India and India opens 102 to the EU.  
+reasoning — Too-early:  
+sources 2 [T1×2] · unmeasured 2 [not-published×2] · CAVEAT · revisit trigger set
+
+**L-0206** · The Maldives currency swap is an eligibility with a size and an expiry, and nothing published says how much of it was drawn  
+`no-objective` · T3 · foreign/macro · lens neighbourhood · institutional · 2024-10-07 · confidence high  
+claim — The framework's stated purpose, in the RBI's own words: a backstop line of funding for short-term foreign exchange liquidity requirements or short-term balance of payments stress, pending longer-term arrangements. No objective is stated for the Maldives agreement specifically beyond membership of that framework.  
+reasoning — A facility, not a measure with an announced outcome.  
+sources 1 [T1×1] · unmeasured 1 [not-published×1] · CAVEAT · revisit trigger set
+
+**L-0207** · Punatsangchhu-II exported power to India for nearly seven months before the tariff protocol was signed, and no tariff figure has been published for either period  
+`worked` · T3 · foreign/infrastructure · lens neighbourhood · reform · 2026-04-09 · confidence high  
+claim — The Ministry's framing at the signing: another step in mutually beneficial hydropower cooperation, within an enhanced bilateral institutional framework mechanism covering non-hydro energy, cross-border transmission, project financing, capacity building and institutional partnerships. No tariff, revenue or export-volume target is stated for the project in anything retrieved.  
+reasoning — Scored on delivery and on delivery only:  
+sources 2 [T1×2] · unmeasured 2 [not-published×2] · CAVEAT · revisit trigger set
+
+**L-0208** · The Ministry of Power's account of neighbourhood cooperation lists capacity without commissioning status and agreements without dates, and two rows of the same column are demonstrably in different states  
+`no-objective` · T3 · foreign/infrastructure · lens neighbourhood · institutional · 2026-04-02 · confidence high  
+claim — No objective is announced. The reply is a description of engagement — that the Ministry and its public sector enterprises "engage with neighbouring countries ... to strengthen cooperation in the power sector" — and states no target, date or outcome for any project or agreement listed.  
+reasoning — No-objective in its strict sense:  
+sources 2 [T1×2] · unmeasured 3 [not-published×3] · CAVEAT · revisit trigger set
+
+**L-0209** · The decision to fence the entire 1,643 km Myanmar border was announced with a starting position of 10 km and no completion date, and the Ministry's own year-end review for that year gives no progress figure at all  
+`no-objective` · T3 · foreign/infrastructure · lens neighbourhood · reform · 2024-02-06 · confidence high  
+claim — "The Modi government is committed to building impenetrable borders. It has decided to construct a fence along the entire 1643-kilometer-long Indo-Myanmar border. To facilitate better surveillance, a patrol track along the border will also be paved." The commitment is to a total length. No date, no phasing, no annual target and no cost accompany it.  
+reasoning — No-objective in the sense this instrument uses it:  
+sources 3 [T1×3] · unmeasured 2 [never-defined×1 not-published×1] · CAVEAT · revisit trigger set
+
+**L-0210** · The Ministry that announced the Free Movement Regime would be scrapped does not own the instrument, and its own text says it recommended a suspension while another ministry was still in the process  
+`no-objective` · T3 · foreign/governance · lens neighbourhood · reform · 2024-02-08 · confidence high  
+claim — That the FMR between India and Myanmar be scrapped, on two stated grounds: the internal security of the country, and the maintenance of the demographic structure of India's North Eastern States bordering Myanmar. No date of effect, no notification number, no replacement arrangement and no test of completion accompany it.  
+reasoning — Scored on what the announcing ministry actually committed itself to, which is a recommendation and a stated position — neither of which carries a completion test, a date or an instrument.  
+sources 3 [T1×3] · unmeasured 2 [not-published×2] · CAVEAT · revisit trigger set
+
+**L-0211** · India's electricity exports to Bangladesh were published as a measured four-year series up to January 2023 and have not been published since, and the Ministry of Power's own account of 2025 does not mention Bangladesh at all  
+`no-objective` · T3 · foreign/infrastructure · lens neighbourhood · institutional · 2026-01-16 · confidence high  
+claim — None stated. Both replies are answers to questions rather than announcements, and neither sets a target for cross-border trade, a volume to be reached, or a schedule for reporting.  
+reasoning — No target, volume or reporting commitment is announced in either reply, so there is nothing that could have worked or failed.  
+sources 3 [T1×3] · unmeasured 2 [not-published×2] · CAVEAT · revisit trigger set
+
+**L-0212** · The debt-restructuring instrument was named in December 2024 and existed by April 2025, and the assistance around it is stated in three currencies, two of them without a rate, and never totalled  
+`partly` · T3 · foreign/macro · lens neighbourhood · reform · 2025-04-05 · confidence high  
+claim — Two things, and only the first is a commitment. The commitment: to finalise discussions on the bilateral MoU on Debt Restructuring, stated on 16 December 2024 with no date attached. The framing: a "strategic shift from debt-driven models towards investment led partnerships", which the two leaders agreed "would ensure a more sustainable path to economic recovery" — an assertion about a direction, carrying no target.  
+reasoning — The delivery half worked and the measurement half does not permit scoring.  
+sources 2 [T1×2] · unmeasured 3 [not-published×3] · CAVEAT · revisit trigger set
+
+**L-0213** · Nineteen months after the IMEC memorandum the corridor's published scope had grown and its deliverable list was still empty, and the two figures attached to it name neither a baseline nor a date  
+`no-objective` · T3 · foreign/infrastructure · lens europe · reform · 2025-04-16 · confidence high  
+claim — At signature, a description rather than a target: two corridors, a set of transport modes, and economic integration between India and Europe. The only quantified claims appear nineteen months later and are benefit claims, not commitments — costs down by up to 30 per cent and transport time down by 40 per cent. No completion date, no phasing, no cost, no route length and no segment target appears in any document retrieved.  
+reasoning — Commitment state (d) — unfalsifiable by construction, and the second instance the instrument holds after L-0209.  
+sources 5 [T1×5] · unmeasured 3 [not-published×2 never-defined×1] · CAVEAT · revisit trigger set
+
+**L-0214** · India joined the WTO fisheries agreement as the 123rd member to do so, ten months after it took effect without India, and the release naming three specific negotiating asks in 2024 has no successor saying whether any was obtained  
+`partly` · T3 · foreign/environment · reform · 2026-07-20 · confidence high  
+claim — The Department of Commerce, December 2024: "India is actively engaging in the ongoing fisheries subsidies negotiations to protect the interests of its fisheries communities. India has requested for longer transition periods, permanent carve out for small scale and artisanal fishers without geographical limitations, and a carve out of EEZs to protect the sovereign rights of developing countries." India also raised concerns about the proposed dilution of disciplines for distant water fishing nations.  
+reasoning — The accession is complete, dated and verifiable, and the release names real domestic implementing instruments rather than gesturing at them.  
+sources 2 [T1×2] · unmeasured 3 [not-published×3] · CAVEAT · revisit trigger set
+
+**L-0215** · Vaccine Maitri is presented as a gift, and the doses the government names as gifted are 1.51 crore of a stated 30.12 crore supplied  
+`no-objective` · T3 · foreign/human-development · institutional · 2025-06-18 · confidence high  
+claim — No target, quantity or date is announced anywhere in the document. What is offered is a characterisation: humanity first, human-centric diplomacy, and India as "a reliable partner for global health and a compassionate voice from the Global South". The numbers are given as achievement, not as progress against anything.  
+reasoning — The initiative announces no target, no quantity and no date, so there is nothing against which it could have worked or failed, and the numbers are presented as accomplishment rather than as progress.  
+sources 1 [T1×1] · unmeasured 2 [not-published×2] · CAVEAT · revisit trigger set
+
+**L-0216** · The Indus Waters Treaty was put in abeyance on 23 April 2025, and the word abeyance appears nowhere in the treaty, whose only exit is a duly ratified treaty concluded by both Governments  
+`partly` · T3 · foreign/environment · lens neighbourhood · shock · 2025-04-23 · confidence high  
+claim — A stated condition rather than a stated outcome: the treaty is held in abeyance until Pakistan "credibly and irrevocably abjures its support for cross-border terrorism". The Press Information Bureau's account frames the measure as severing an economic lifeline without escalating direct military conflict, and quotes the formulation "Blood and water cannot flow together".  
+reasoning — The action itself is established and in effect, and its instrument-side facts are now fully checkable.  
+sources 2 [T1×2] · unmeasured 3 [not-published×2 never-defined×1] · CAVEAT · revisit trigger set
+
+**L-0217** · The trade suspended on 23 April 2025 was already one-directional and the two governments do not agree what it was: for 2024 India reports US$1,183.10m of exports to Pakistan against Pakistan's US$304.93m of imports from India  
+`no-objective` · T3 · foreign/macro · lens neighbourhood · reform · 2025-04-23 · confidence high  
+claim — No target, value or duration is announced. The measure is presented by the Press Information Bureau as severing an economic lifeline without escalating direct military conflict, alongside the Indus Waters Treaty abeyance recorded at L-0216, and is described as halting exports of goods including onions and banning imports of cement and textiles.  
+reasoning — The decision announces no target, no value and no duration, so there is nothing that could have worked or failed.  
+sources 3 [T1×3] · unmeasured 3 [not-published×2 not-collected×1] · differentFacts TRUE · CAVEAT · revisit trigger set
+
+**L-0218** · Three Indian government publication channels cannot be read by an ordinary client, and the documents survive because a different arm of the same government republishes them  
+`no-objective` · T3 · governance/foreign · institutional · 2026-08-05 · confidence high  
+claim — No commitment is under test here. Every one of these sites is an official publication channel and is presented as the route by which the relevant documents are made public; that is the only claim involved, and it is implicit in their existence rather than announced.  
+reasoning — No target for the accessibility of the public record is announced by any of these bodies, so there is nothing that could have worked or failed.  
+sources 2 [T1×2] · unmeasured 2 [not-published×1 not-collected×1] · CAVEAT · revisit trigger set  
+1 commit(s) touched this record after it was created  
+corrected — summary, caseAgainst
+
+**L-0219** · Of 278 citations that name a publisher rather than a document, half cannot be opened and half name nothing specific enough to open — and the two halves are not the same half  
+`no-objective` · T3 · governance · institutional · 2026-08-05 · confidence high  
+claim — None. No commitment governs how a research corpus cites, and this record scores nothing. It exists because the second output the retrieval-capability cycle was scoped to produce was a documented account of what cannot be retrieved by ordinary means, and this is that account.  
+reasoning — Nothing here was promised, so nothing can have failed.  
+sources 1 [T1×1] · unmeasured 2 [not-collected×2] · CAVEAT · revisit trigger set  
+1 commit(s) touched this record after it was created
+
+**L-0220** · Thirteen schemes across five domains are counted where the state hands something over and judged by what the recipient then does, and the two records that escape it are the two where the asset is itself the service  
+`no-objective` · T3 · governance · institutional · 2026-08-05 · confidence medium  
+claim — None. This record is a synthesis over records already in the corpus and announces nothing of its own. The claims at issue are each scheme's, and are stated in the underlying records rather than repeated here.  
+reasoning — Nothing was announced here, so nothing can have succeeded or failed.  
+sources 1 [T1×1] · unmeasured 2 [not-collected×2] · CAVEAT · revisit trigger set
+
+**L-0221** · Half the fleet, under a third of the electricity: the non-fossil milestone is a capacity milestone  
+`partly` · T2 · environment/infrastructure · episode · 2021-11–2026-03 · confidence high  
+claim — At COP26 on 1 November 2021 the Prime Minister announced five commitments, of which the first two bear here: 'India will reach its non-fossil energy capacity to 500 GW by 2030' and 'India will meet 50 percent of its energy requirements from renewable energy by 2030.' The updated NDC approved by Cabinet on 3 August 2022 carries the capacity limb as a share — about 50 per cent of cumulative electric power installed capacity from non-fossil sources by 2030, raised from the 40 per cent of the 2015 NDC.  
+reasoning — PARTLY, and the two limbs are scored separately because they are different quantities.  
+sources 8 [T1×8] · unmeasured 2 [not-published×1 never-defined×1] · CAVEAT · revisit trigger set  
+5 commit(s) touched this record after it was created  
+corrected — summary, whatHappened, assessmentNote
+
+**L-0222** · Coal imports were to stop in FY2023-24 and hit their record that year; production rose 85 per cent  
+`failed` · T2 · environment/macro · reform · 2020-02-18–2026-03 · confidence high  
+claim — 'India will stop importing thermal coal from Financial Year 2023-24', Union Minister of Coal and Mines, 18 February 2020, at a Chintan Shivir which also set a '1 billion tonnes (BT) coal production target by Coal India Limited (CIL) by Financial Year 2023-24'.  
+reasoning — FAILED is scored against the announced objective, which was specific:  
+sources 9 [T1×9] · unmeasured 2 [not-published×2] · CAVEAT · revisit trigger set  
+1 commit(s) touched this record after it was created  
+corrected — whatHappened
+
+**L-0223** · The emissions-intensity limb is the only climate target in the set with a base year — and it is a ratio that can fall while emissions rise  
+`too-early` · T2 · environment/macro · institutional · 2022-08-03 · confidence high  
+claim — India's 2015 NDC committed 'to reducing the emissions intensity of its GDP by 33-35% below 2005 levels by 2030'. The updated NDC of August 2022 raised it: 'Reduce the emission intensity of the GDP by 45% below 2005 levels by 2030.' The Cabinet release approving the update states the same commitment in the Government's own words.  
+reasoning — TOO-EARLY, on the value's own definition:  
+sources 2 [T1×2] · unmeasured 0 · CAVEAT · revisit trigger set  
+1 commit(s) touched this record after it was created  
+corrected — caseAgainst
+
+**L-0224** · Two quantified climate limbs state an absolute tonnage and a date, and neither states the baseline it is measured from  
+`contested` · T2 · environment · institutional · 2021-11-01 · confidence medium  
+claim — At COP26 on 1 November 2021, Panchamrit element 3: 'India will reduce the total projected carbon emissions by one billion tonnes from now onwards till 2030.' Separately, the 2015 NDC committed 'to create an additional carbon sink of 2.5-3.0 GtCO2e through additional forest and tree cover by 2030', restated in the Ministry's long-term strategy as 'to create an additional carbon sink of 2.5 to 3 billion tonnes of CO2 equivalent by 2030'.  
+reasoning — RE-FILED 2026-08-05 from `too-early` to `contested`, on an operator instruction to score against the printed definitions rather than around them.  
+sources 2 [T1×2] · unmeasured 2 [not-published×2] · CAVEAT · revisit trigger set  
+contested ground (project's own classification, not a data field) — interpretation  
+verdict changed after shipping — too-early , too-early→contested (1 change)  
+2 commit(s) touched this record after it was created  
+corrected — unmeasured[].why
+
+**L-0225** · Net zero by 2070 is one sentence: a year, and no statement of what is being zeroed  
+`too-early` · T2 · environment · institutional · 2021-11-01 · confidence medium  
+claim — At COP26 on 1 November 2021, Panchamrit element 5, in full: 'And fifth- by the year 2070, India will achieve the target of Net Zero.' That is the whole of the announcement.  
+reasoning — COMMITMENT STATE IS (a), AND THE TEST WAS APPLIED TO THE PRINTED DEFINITION RATHER THAN TO THE INTUITION.  
+sources 2 [T1×2] · unmeasured 2 [not-published×1 not-collected×1] · revisit trigger set  
+1 commit(s) touched this record after it was created  
+corrected — unmeasured[].why
+
+**L-0226** · A rule guarantees no renewable capacity is backed down; the plan built on it projects that some will not be absorbed  
+`contested` · T2 · environment/infrastructure · institutional · 2021-10-22 · confidence medium  
+claim — 'Ministry of Power has notified Electricity (Promotion of generation of Electricity from Must-Run Power Plant) Rules, 2021 on 22.10.2021. This rule ensures that no RE capacity is backed down. This will ensure that the consumers get green and clean power and secure a healthy environment for the future generation.' — National Electricity Plan 2022-32, Volume I.  
+reasoning — CONTESTED, and the value is reached the same way L-0224's was — by the route `no-objective`'s own definition prescribes:  
+sources 3 [T1×3] · unmeasured 1 [not-published×1] · CAVEAT · revisit trigger set  
+contested ground (project's own classification, not a data field) — interpretation  
+3 commit(s) touched this record after it was created  
+corrected — summary, whatHappened
+
+## A.2 — Provenance, 127 records
+
+Provenance records are measurement-dispute records: a definitional change, a rebasing, a discontinued series, two publishers disagreeing. They carry no verdict on a government action. They are first-class records here rather than footnotes, and a ledger verdict that rests on a series governed by one of these is only as strong as the provenance record allows.
+
+**P-01** · GDP base-year revision (2015) and the contested back-series  
+bias `disputed` · 2015-01, back-series disputes 2018-2019 · macro · bridge NONE  
+what changed — CSO moved the GDP base year from 2004-05 to 2011-12 in January 2015, adopting GVA and SNA 2008 methodology with MCA-21 corporate data.  
+sources 2 [T1×1 T3×1] · affects 2 series · 4 competing account(s)
+
+**P-02** · EUS to PLFS employment survey transition  
+bias `disputed` · 2017-18 · employment · bridge NONE  
+what changed — NSSO Employment-Unemployment Survey (quinquennial, last round 2011-12) replaced by Periodic Labour Force Survey from 2017-18, with changed sampling design and stratification.  
+sources 1 [T1×1] · affects 2 series
+
+**P-03** · Withheld 2017-18 Consumer Expenditure Survey  
+bias `obscures` · 2019-11 (withholding) · poverty · bridge NONE  
+what changed — The NSS 2017-18 Household Consumer Expenditure Survey was not released after leaked results indicated declining rural consumption;  
+sources 1 [T1×1] · affects 1 series
+
+**P-04** · Census 2021 not conducted  
+bias `degrades-precision` · 2021 onward · all · bridge NONE  
+what changed — The decennial census due 2021 was postponed (COVID cited) and has not been conducted as of the project's last update.  
+sources 1 [T1×1]
+
+**P-05** · WPI-to-CPI inflation regime change  
+bias `degrades-precision` · 2013-2016 · macro · bridge exists  
+what changed — Headline inflation reference shifted from WPI to CPI (combined) around 2013-14;  
+sources 1 [T1×1] · affects 1 series
+
+**P-06** · Off-budget borrowing and fiscal accounting  
+bias `disputed` · Both eras; clean-up 2021-02 · macro/banking · bridge exists  
+what changed — Off-budget devices (FCI food-subsidy bonds, NSSF loans to public entities) understate the headline fiscal deficit in both eras.  
+sources 1 [T1×1] · affects 1 series  
+1 commit(s) touched this record after it was created
+
+**P-07** · NCRB reporting changes and communal-violence data gaps  
+bias `degrades-precision` · Various, 2014 onward · governance · bridge NONE  
+what changed — NCRB definitional and tabulation changes across editions, plus discontinuation/re-housing of communal-violence reporting between MHA and NCRB, complicate crime and communal-incident trend analysis across 2014.  
+sources 1 [T1×1]
+
+**P-08** · Contested governance indices (RSF, Freedom House, V-Dem)  
+bias `disputed` · Continuous · governance · bridge NONE  
+what changed — Third-party democracy/press indices carry their own methodology disputes and periodic recalibrations.  
+sources 2 [T5×2]
+
+**P-09** · Peer-country GDP rebasings and WDI vintage drift  
+bias `degrades-precision` · Bangladesh 2021, Vietnam 2021 (rebasing releases) · all · bridge exists  
+what changed — Comparator countries revised their own national accounts inside the study window:  
+sources 1 [T2×1] · affects 1 series  
+1 commit(s) touched this record after it was created
+
+**P-10** · Third GDP base-year revision to 2022-23 (released 27 February 2026)  
+bias `disputed` · 2026-02-27 · all · bridge NONE  
+what changed — MoSPI released a new national accounts series rebased from 2011-12 to 2022-23, adopting double deflation, a Supply-Use Table framework, and new source data (GST returns, PLFS, ASUSE).  
+sources 2 [T1×2] · affects 10 series · 2 competing account(s)  
+5 commit(s) touched this record after it was created
+
+**P-11** · CPI base revision to 2024 (new series from February 2026)  
+bias `understates-post-2014` · 2026-02 · macro · bridge NONE  
+what changed — A new CPI series with base year 2024 was introduced, with weights redrawn from the Household Consumption Expenditure Survey and a higher non-food weight.  
+sources 1 [T4×1] · affects 1 series
+
+**P-12** · IIP and WPI base revisions; new Producer Price Index  
+bias `degrades-precision` · 2026 (in progress) · macro · bridge NONE  
+what changed — IIP rebasing to 2022-23 (due around May 2026), a WPI revision in progress, and a planned Producer Price Index.  
+sources 1 [T4×1]
+
+**P-13** · Fiscal anchor changes from deficit to debt (from FY2026-27)  
+bias `degrades-precision` · 2026-04 (FY27 onward) · macro · bridge exists  
+what changed — From FY27 the Centre shifts its operational fiscal anchor from the annual fiscal-deficit ratio to a debt-to-GDP target (central debt ~56.1% in FY26, glide to 50%±1% by FY31).  
+sources 1 [T1×1] · affects 2 series
+
+**P-14** · World Bank WDI fiscal-year labelling for India versus calendar years for peers  
+bias `degrades-precision` · Structural, all WDI pulls · all · bridge exists  
+what changed — WDI labels India's fiscal-year observations by the starting calendar year, so WDI '2014' for India corresponds to FY2014-15 (Apr 2014-Mar 2015), while '2014' for Bangladesh, Vietnam, Indonesia and China is a different period basis.  
+sources 1 [T2×1] · affects 3 series  
+1 commit(s) touched this record after it was created
+
+**P-15** · Asset Quality Review recognition break (2015-16)  
+bias `understates-pre-2014` · 2015-2016 · banking · bridge NONE  
+what changed — The RBI's Asset Quality Review forced uniform recognition of stressed accounts previously evergreened through Corporate Debt Restructuring, and withdrew special dispensations for restructured loans.  
+sources 1 [T1×1] · affects 5 series · 2 competing account(s)  
+1 commit(s) touched this record after it was created
+
+**P-16** · COVID-era regulatory forbearance suppressing reported NPAs  
+bias `understates-post-2014` · 2020-03 to 2022-03 · banking · bridge NONE  
+what changed — The March-August 2020 loan moratorium, the Supreme Court-ordered asset classification standstill, and successive restructuring windows suppressed reported NPA figures through FY2020-21 and FY2021-22.  
+sources 1 [T4×1] · affects 3 series
+
+**P-17** · Write-offs and denominator growth flattering the headline NPA ratio  
+bias `overstates-post-2014` · Continuous, 2018 onward · banking · bridge exists  
+what changed — The fall in the gross NPA ratio from its 2018 peak is driven by three distinct mechanisms that the headline number does not separate:  
+sources 1 [T1×1] · affects 2 series · corrective 3 · 2 competing account(s)  
+1 commit(s) touched this record after it was created
+
+**P-18** · Domestic-operations versus global-operations reporting basis  
+bias `degrades-precision` · Structural, all NPA series · banking · bridge exists  
+what changed — Indian NPA statistics are published on two bases and official sources mix them without always labelling which is in use.  
+sources 1 [T1×1] · affects 7 series  
+1 commit(s) touched this record after it was created
+
+**P-19** · Risk-weight changes on unsecured retail and NBFC lending (Nov 2023, partial rollback Feb 2025)  
+bias `degrades-precision` · 2023-11, partial rollback 2025-02 · banking · bridge NONE  
+what changed — In November 2023 the RBI raised risk weights on unsecured consumer credit from 100% to 125% and added 25 percentage points to bank lending to NBFCs.  
+sources 1 [T4×1] · affects 2 series
+
+**P-20** · RBI fraud reporting: date of occurrence versus date of detection  
+bias `degrades-precision` · Effective date UNVERIFIED · banking/governance · bridge NONE  
+what changed — The RBI is reported to have changed the basis of its fraud statistics from date of detection to date of occurrence, which materially changes year-on-year fraud totals and reassigns large historical frauds to earlier years.  
+sources 1 [T4×1]
+
+**P-21** · Expected Credit Loss provisioning transition (from 1 April 2027)  
+bias `degrades-precision` · 2027-04-01, glide path to 2031-03 · banking · bridge NONE  
+what changed — RBI final directions issued 27 April 2026 mandate a shift from incurred-loss to expected-credit-loss provisioning effective 1 April 2027, with a glide path to March 2031.  
+sources 1 [T4×1] · affects 3 series  
+1 commit(s) touched this record after it was created
+
+**P-22** · Evidence base shifts from independent survey to scheme MIS  
+bias `overstates-post-2014` · 2014 onward, progressive · welfare/human-development/infrastructure/employment/banking/macro · bridge exists  
+what changed — From 2014 onward the primary evidence for welfare performance shifted from independent statistical surveys (NSSO/NSS rounds) toward scheme management information systems and dashboards.  
+sources 1 [T1×1] · affects 9 series · corrective 5  
+7 commit(s) touched this record after it was created
+
+**P-23** · HCES 2022-23 methodology change breaks consumption comparability  
+bias `overstates-post-2014` · 2022-23, repeated 2023-24 · poverty/welfare · bridge NONE  
+what changed — The Household Consumption Expenditure Survey 2022-23 and 2023-24 adopted a Modified Mixed Recall Period, a three-visit design, and imputation of items received free under government schemes.  
+sources 1 [T1×1] · affects 1 series · 2 competing account(s)
+
+**P-24** · ODF, ODF-Plus and ODF-Plus Model are successive non-identical definitions  
+bias `overstates-post-2014` · 2019-10 onward · welfare/human-development · bridge NONE  
+what changed — Rural India was declared Open Defecation Free in October 2019, after which ODF-Plus and ODF-Plus Model were introduced as further tiers.  
+sources 1 [T1×1] · affects 1 series · 2 competing account(s)
+
+**P-25** · JJM certification measures infrastructure, not water delivered  
+bias `overstates-post-2014` · 2019-08 onward · welfare/infrastructure · bridge exists  
+what changed — A 'certified Har Ghar Jal village' under Jal Jeevan Mission records tap connections installed, not water delivered.  
+sources 1 [T4×1] · affects 1 series · corrective 1  
+1 commit(s) touched this record after it was created
+
+**P-26** · MPI circularity: the poverty measure is built from the scheme outputs it is used to validate  
+bias `overstates-post-2014` · 2021 onward, NITI national MPI 2024-01 · poverty/welfare · bridge NONE  
+what changed — In the absence of consumption-based poverty estimates, the Multidimensional Poverty Index became the headline poverty measure.  
+sources 1 [T1×1] · 2 competing account(s)
+
+**P-27** · PM-JAY card creation is an eligibility token, not utilisation  
+bias `overstates-post-2014` · 2018-09 onward · welfare/human-development · bridge exists  
+what changed — Ayushman Bharat reports three numbers that diverge by an order of magnitude:  
+sources 1 [T1×1] · affects 1 series · corrective 1 · 2 competing account(s)  
+1 commit(s) touched this record after it was created
+
+**P-28** · ABPS and NMMS in MGNREGA suppress recorded demand  
+bias `understates-post-2014` · NMMS from 2021; ABPS compulsory 2024-01 · welfare/employment · bridge NONE  
+what changed — The Aadhaar-Based Payment System was made compulsory for MGNREGA from January 2024 after repeated extensions, and the National Mobile Monitoring System app changed attendance recording.  
+sources 1 [T4×1] · affects 1 series
+
+**P-29** · Global Hunger Index methodology dispute  
+bias `disputed` · Annual; government rejections from 2021 · human-development/welfare · bridge NONE  
+what changed — India ranked 105 of 127 in the 2024 Global Hunger Index with a score of 27.3 ('serious'), and its child wasting rate of 18.7% is the highest of any country in the index.  
+sources 1 [T5×1] · 2 competing account(s)
+
+**P-30** · National highway network growth is mostly reclassification, not construction  
+bias `overstates-post-2014` · 2014-04 onward, continuous · infrastructure · bridge exists  
+what changed — The NH network grew from 91,287 km (March 2014) to about 146,342 km (mid-2025), routinely cited as a 60% expansion.  
+sources 1 [T1×1] · affects 1 series · corrective 2  
+1 commit(s) touched this record after it was created
+
+**P-31** · Four-laning of existing highways counts as construction kilometres  
+bias `overstates-post-2014` · Structural · infrastructure · bridge NONE  
+what changed — MoRTH's construction figures count the widening of existing carriageways alongside genuinely new alignment, so 'kilometres constructed' conflates capacity upgrade with network extension.  
+sources 1 [T1×1] · affects 3 series  
+1 commit(s) touched this record after it was created
+
+**P-32** · Village electrification and household electrification are different thresholds  
+bias `overstates-post-2014` · DDUGJY to 2018-04; Saubhagya 2017-2019 · infrastructure/welfare · bridge NONE  
+what changed — Under DDUGJY a village counted as electrified if 10% of its households plus public buildings had a connection — a very low bar, and the basis on which village electrification was declared complete in April 2018.  
+sources 1 [T1×1] · affects 1 series
+
+**P-33** · Railway Budget merged into the Union Budget (2017)  
+bias `degrades-precision` · 2017-18 · infrastructure/macro · bridge NONE  
+what changed — The separate Railway Budget, presented annually since 1924, was merged into the Union Budget from 2017-18, concurrent with the Plan/Non-Plan to capital/revenue reclassification.  
+sources 1 [T1×1]
+
+**P-34** · Railway punctuality suspended during COVID; accident classification is selective  
+bias `overstates-post-2014` · 2020-2022 (punctuality); classification structural · infrastructure · bridge NONE  
+what changed — Punctuality reporting was suspended during the COVID period, leaving a gap in the series.  
+sources 1 [T1×1] · affects 1 series
+
+**P-35** · Logistics Performance Index 2023 methodology change  
+bias `degrades-precision` · 2023 edition · infrastructure/foreign · bridge NONE  
+what changed — The World Bank's 2023 LPI edition changed methodology and rounds scores to one decimal, and the country set differs between editions.  
+sources 1 [T2×1] · affects 1 series
+
+**P-36** · Logistics cost rebased from 13-14% to about 8% of GDP by a new methodology  
+bias `overstates-post-2014` · 2023 · infrastructure/macro · bridge NONE  
+what changed — The long-cited figure of 13-14% of GDP for India's logistics cost was replaced by a DPIIT/NCAER study (2023) estimating 7.8-8.9% for FY2021-22 and 7.97% for FY2023-24.  
+sources 1 [T4×1] · affects 1 series · 2 competing account(s)
+
+**P-37** · BharatNet 'service-ready' means middle-mile fibre, not delivered service  
+bias `overstates-post-2014` · 2011 onward, continuous · infrastructure · bridge NONE  
+what changed — A gram panchayat counts as service-ready when middle-mile fibre reaches it — not when any household or institution receives service.  
+sources 1 [T1×1] · affects 1 series
+
+**P-38** · Airport count includes heliports, waterdromes and reclassified airstrips  
+bias `overstates-post-2014` · 2014 onward · infrastructure · bridge exists  
+what changed — The frequently cited rise from 74 operational airports in 2014 to about 160 includes 9 heliports and 2 waterdromes, and counts reactivated or reclassified airstrips as new.  
+sources 1 [T1×1] · affects 1 series
+
+**P-39** · PLFS sample redesign of January 2025 breaks the series against itself  
+bias `degrades-precision` · 2025-01 · employment · bridge NONE  
+what changed — From January 2025 the Periodic Labour Force Survey was substantially redesigned:  
+sources 1 [T1×1] · affects 8 series  
+1 commit(s) touched this record after it was created
+
+**P-40** · Unpaid family helpers are counted as employed  
+bias `overstates-post-2014` · Structural to the instrument · employment · bridge exists  
+what changed — PLFS classifies unpaid helpers in household enterprises as employed, and counts subsidiary activity of 30 days or more over a 365-day recall.  
+sources 1 [T1×1] · affects 7 series · 2 competing account(s)  
+1 commit(s) touched this record after it was created
+
+**P-41** · PLFS and CMIE disagree on the direction of employment change  
+bias `disputed` · 2017-18 onward, continuous · employment · bridge NONE  
+what changed — The official PLFS and the private CMIE Consumer Pyramids Household Survey do not merely differ in level;  
+sources 1 [T3×1] · affects 5 series · 4 competing account(s)  
+1 commit(s) touched this record after it was created
+
+**P-42** · EPFO net payroll additions are not a count of new jobs  
+bias `overstates-post-2014` · 2017-09 onward · employment · bridge NONE  
+what changed — Net subscriber additions to the Employees' Provident Fund Organisation include members re-joining after a gap and members switching employers, not only first-time entrants, and the series is periodically revised.  
+sources 1 [T1×1] · affects 1 series  
+1 commit(s) touched this record after it was created
+
+**P-43** · RBI KLEMS estimates employment rather than measuring it  
+bias `disputed` · Continuous · employment/macro · bridge NONE  
+what changed — The RBI's India KLEMS database is a total factor productivity framework that takes employment as an INPUT from PLFS and the national accounts.  
+sources 1 [T1×1] · affects 1 series  
+1 commit(s) touched this record after it was created
+
+**P-44** · NCRB separated farmers from agricultural labourers in 2014  
+bias `degrades-precision` · 2014 · human-development/governance · bridge exists  
+what changed — From the 2014 edition of Accidental Deaths and Suicides in India, NCRB began reporting 'farmers/cultivators' and 'agricultural labourers' as separate categories.  
+sources 1 [T1×1] · affects 1 series
+
+**P-45** · States reporting zero farmer suicides  
+bias `understates-post-2014` · Various years, continuous · human-development/governance · bridge NONE  
+what changed — Several states — West Bengal and Bihar among them — have reported zero farm-sector suicides in some years.  
+sources 1 [T1×1] · affects 1 series
+
+**P-46** · The Situation Assessment Survey has not been repeated since 2018-19  
+bias `obscures` · 2018-19 onward · poverty/employment/welfare/banking · bridge NONE  
+what changed — The NSS Situation Assessment Survey of Agricultural Households — fielded in 2002-03, 2012-13 and 2018-19 — has not been repeated.  
+sources 1 [T1×1] · 2 competing account(s)
+
+**P-47** · The 1.5x MSP claim uses A2+FL costs, not C2  
+bias `overstates-post-2014` · 2018-19 onward · macro/welfare · bridge exists  
+what changed — The 2018-19 Budget claimed minimum support prices set at at least 1.5 times the cost of production.  
+sources 1 [T1×1] · affects 2 series · 2 competing account(s)
+
+**P-48** · Agriculture's GDP share rose during COVID as a compositional artefact  
+bias `overstates-post-2014` · 2020-21 · macro/employment · bridge exists  
+what changed — Agriculture's share of gross value added rose in 2020-21 because every other sector contracted, not because farm output surged.  
+sources 1 [T1×1] · affects 2 series  
+1 commit(s) touched this record after it was created
+
+**P-49** · PMFBY became voluntary for loanee farmers in 2020  
+bias `degrades-precision` · 2020, Kharif season · welfare · bridge exists  
+what changed — From Kharif 2020 the Pradhan Mantri Fasal Bima Yojana ceased to auto-enrol farmers holding crop loans.  
+sources 1 [T1×1] · affects 1 series
+
+**P-50** · RSF World Press Freedom Index methodology change, 2022  
+bias `degrades-precision` · 2022 · governance · bridge NONE  
+what changed — Reporters Without Borders replaced its previous seven-category questionnaire framework with a five-indicator structure (political, legal, economic and sociocultural context, plus safety), rebuilt the underlying question set, and revised its …  
+sources 2 [T1×1 T5×1] · affects 1 series · 3 competing account(s)
+
+**P-51** · Sedition series break: IPC 124A replaced by BNS Section 152  
+bias `obscures` · 2024 · governance · bridge NONE  
+what changed — With the commencement of the Bharatiya Nyaya Sanhita 2023, the offence of sedition under Section 124A of the Indian Penal Code ceased to exist as a chargeable provision and Section 152 BNS, covering acts endangering the sovereignty, unity a …  
+sources 2 [T1×2] · affects 1 series · 3 competing account(s)
+
+**P-52** · PMLA conviction rate: the denominator dispute  
+bias `disputed` · 2022-2025 · governance · bridge exists  
+what changed — Two conviction rates for PMLA enforcement circulate, both drawn from Ministry of Finance replies in Parliament, and they differ by roughly two orders of magnitude because they use different denominators.  
+sources 2 [T1×2] · affects 3 series · 3 competing account(s)  
+2 commit(s) touched this record after it was created
+
+**P-53** · CAG report counts: Union-only versus Union-plus-states  
+bias `disputed` · 2010-2023 · governance · bridge exists  
+what changed — Published counts of CAG audit reports mix two different populations.  
+sources 2 [T4×2] · affects 1 series · 3 competing account(s)
+
+**P-54** · Internet shutdown counts: no official series, three unofficial ones  
+bias `degrades-precision` · 2012-2026, with a statutory basis change on 22 November 2024 · governance/kashmir · bridge NONE  
+what changed — India publishes no official count of internet shutdowns.  
+sources 2 [T3×2] · affects 1 series · 3 competing account(s)  
+1 commit(s) touched this record after it was created
+
+**P-55** · ED case totals vary by cut-off date and by unit  
+bias `degrades-precision` · 2022-2025 · governance · bridge NONE  
+what changed — Parliamentary replies give ED case totals that do not reconcile against each other because the replies use different cut-off dates and, more importantly, different units.  
+sources 1 [T1×1] · affects 1 series · 3 competing account(s)
+
+**P-56** · Information Commissioner service conditions: pre and post 2019 regimes  
+bias `degrades-precision` · 2019 · governance · bridge NONE  
+what changed — The RTI (Amendment) Act 2019 removed the statutorily fixed five-year tenure of Information Commissioners and their salary parity with the Chief Election Commissioner and Election Commissioners, and transferred the power to prescribe tenure, …  
+sources 2 [T1×2] · 3 competing account(s)
+
+**P-57** · UAPA conviction rate: four bases in circulation  
+bias `disputed` · 2021-2024 · governance · bridge exists  
+what changed — Four different conviction rates for the same offence circulate, all sourced to government replies, and they differ by up to a factor of fifty because each uses a different base.  
+sources 2 [T1×2] · affects 4 series · 3 competing account(s)
+
+**P-58** · CAG 2015 peak reported as both 55 and 53  
+bias `degrades-precision` · 2021-2023 · governance · bridge NONE  
+what changed — The peak year for Union audit reports is given as 55 by an RTI reply obtained by The New Indian Express and as 53 by a review of over 400 reports published on the CAG website between 2010 and 2023.  
+sources 2 [T4×2] · affects 1 series · 3 competing account(s)
+
+**P-59** · ASER versus NAS/PARAKH: the central learning-measurement dispute  
+bias `disputed` · 2017-11-13 onward; ASER series from 2005 · education/governance · bridge NONE  
+what changed — India has two national learning instruments that report incompatible pictures, and the official one has been reset three times in seven years.  
+sources 7 [T1×2 T2×1 T3×3 T4×1] · affects 17 series · 5 competing account(s)
+
+**P-60** · PARAKH 2024 proficiency-band cut-scores are published nowhere  
+bias `obscures` · 2024-12-04, published July 2025 · education/governance · bridge NONE  
+what changed — PARAKH publishes a second metric alongside its mean item-success rates:  
+sources 3 [T1×3] · affects 4 series · 2 competing account(s)
+
+**P-61** · UDISE+ moves to individual student records: the 2022-23 reporting-base shift  
+bias `degrades-precision` · 2022-23 reference year; reports released end-December 2024 · education/governance · bridge NONE  
+what changed — From reference year 2022-23 UDISE+ collects individual student-level records with a portal-generated unique educational ID and voluntary Aadhaar, replacing school-wise consolidated returns, with the stated purpose of 'weeding out of duplica …  
+sources 3 [T1×3] · affects 11 series · 3 competing account(s)
+
+**P-62** · The 2025-26 NEP structural reclassification and its contradicting back-cast  
+bias `degrades-precision` · 2025-26 reference year; PIB release 7 July 2026 · education/governance · bridge NONE  
+what changed — From 2025-26 UDISE+ reclassifies the school ecosystem into the NEP 5+3+3+4 stages - Foundational, Preparatory, Middle, Secondary - from the 10+2 structure, and re-casts every education indicator with it.  
+sources 3 [T1×2 T3×1] · affects 4 series
+
+**P-63** · Pupil-teacher ratio: two breaks on opposite sides of the ratio, and PTR is not named in the disclaimer  
+bias `overstates-post-2014` · FY2022-23 and FY2023-24 · governance/education · bridge NONE  
+what changed — PTR's numerator is enrolment, the quantity re-based to individual student records in 2022-23;  
+sources 4 [T1×3 T2×1] · affects 4 series · 3 competing account(s)
+
+**P-64** · Teacher vacancies: two irreconcilable official aggregates and an undefined sanctioned-post base  
+bias `disputed` · 2021-22 onward; Committee exchanges March 2025 and March 2026 · governance/federalism/education/employment · bridge NONE  
+what changed — The Ministry of Education has never established and does not maintain a national teacher-vacancy statistic.  
+sources 5 [T1×4 T3×1] · affects 7 series · 4 competing account(s)  
+1 commit(s) touched this record after it was created
+
+**P-65** · Education spending has two official numerators and they move in opposite directions  
+bias `disputed` · FY2000-01 to FY2021-22, published throughout · education/macro/governance · bridge NONE  
+what changed — The Ministry of Education publishes two totals for public education spending side by side, in one table, for the same year:  
+sources 4 [T1×4] · affects 4 series · 3 competing account(s)
+
+**P-66** · The education budget analysis stopped being published, and its last two points are estimates  
+bias `obscures` · FY2022-23 onward; the last edition is dated 2024 and covers to FY2021-22 · education/macro/governance · bridge NONE  
+what changed — The Analysis of Budgeted Expenditure on Education, an annual Ministry of Education publication running since at least 2000-01, has published no edition covering FY2022-23 or later.  
+sources 2 [T1×2] · affects 5 series · 2 competing account(s)
+
+**P-67** · AISHE: the GER denominator was restated, and the survey ceased to be timely  
+bias `degrades-precision` · Denominator restatement in the 2020-21 report (published 29 January 2023); lag from 2019-20 onward · education/governance · bridge exists  
+what changed — Two things happened to India's higher-education statistic.  
+sources 4 [T1×4] · affects 3 series · 3 competing account(s)
+
+**P-68** · Literacy is asked, not tested - and four official instruments use four rules  
+bias `disputed` · Census 1951 onward; PLFS 2025 is the latest measurement · education/governance · bridge exists  
+what changed — India's literacy rate is a self-declaration.  
+sources 5 [T1×3 T2×1 T4×1] · affects 1 series · corrective 2 · 3 competing account(s)
+
+**P-69** · RTE section 12(1)(c): the official 'seats' figure is a lagged reimbursement headcount  
+bias `disputed` · 2012-13 onward; the Karnataka reply is dated 27 July 2026 · education/governance/federalism · bridge NONE  
+what changed — There is no published national series of seats notified against seats filled under the 25 per cent private-school quota, and the Government of India does not maintain one.  
+sources 5 [T1×3 T3×2] · affects 3 series · 3 competing account(s)
+
+**P-70** · The government's education statistics are reachable only through third-party archives  
+bias `obscures` · Observed 2026-08-01 and 2026-08-02; education.gov.in migration during 2025 · governance/education · bridge NONE  
+what changed — Over 2025-2026 the Ministry of Education's document corpus ceased to be retrievable from government hosts.  
+sources 2 [T4×2] · 2 competing account(s)  
+1 commit(s) touched this record after it was created
+
+**P-71** · MHA's headline J&K 'terrorist incidents' figure includes MHA's own operations  
+bias `obscures` · Composite basis to the Annual Report 2021-22 (posted 24 November 2022); components published separately from the Annual Report 2022-23 (posted 11 October 2023) · defence/governance/kashmir · bridge exists  
+what changed — MHA publishes two incident quantities that are routinely both called incidents, and one is the sum of the other plus operations initiated by the security forces.  
+sources 3 [T1×3] · affects 4 series · 2 competing account(s)
+
+**P-72** · MHA restated the J&K incident series for 2017-2019 and never said why  
+bias `degrades-precision` · Annual Report 2021-22, posted 24 November 2022 · defence/governance/kashmir · bridge NONE  
+what changed — The same column name, the same ministry, and two reports one year apart carry different values:  
+sources 2 [T1×2] · affects 2 series · 2 competing account(s)
+
+**P-73** · 'Civilians killed' means two different things in two MHA instruments, and changed meaning mid-series  
+bias `obscures` · Redefinition in the Annual Report 2022-23, posted 11 October 2023; disclosure in the Annual Report 2023-24, posted 27 December 2024 · defence/governance/kashmir · bridge NONE  
+what changed — For the same years MHA has published two civilian-death series under the same column name.  
+sources 3 [T1×3] · affects 2 series · 2 competing account(s)
+
+**P-74** · The bounding sentence sits where transcription does not reach: six civilian deaths recorded to 31 July 2016  
+bias `understates-post-2014` · 10 August 2016; the pattern runs across MHA instruments from 2008-09 to 2024-25 · defence/governance/kashmir · bridge NONE  
+what changed — MHA has bounded 'Civilians killed' three different ways across its instruments, and in every case the bounding sits in surrounding prose rather than in the column heading.  
+sources 3 [T1×3] · affects 1 series · 2 competing account(s)
+
+**P-75** · Five 'incident' counts for one year, and the most-cited independent counter publishes no methodology  
+bias `degrades-precision` · Concurrent, calendar 2018; the structural divergence runs throughout the period · defence/kashmir · bridge NONE  
+what changed — For calendar 2018 in Jammu and Kashmir, five separately published and separately labelled incident counts exist, all retrievable:  
+sources 2 [T1×1 T4×1] · affects 4 series · 2 competing account(s)  
+1 commit(s) touched this record after it was created
+
+**P-76** · Infiltration: attempts, successful and net estimated are three quantities under overlapping labels, and the table was deleted  
+bias `degrades-precision` · Label changes across Annual Reports 2014-15 to 2017-18; restatement in 2022-23; series discontinued after the Annual Report 2022-23 · defence/governance/kashmir · bridge NONE  
+what changed — MHA's infiltration row label changed four times and then the table disappeared.  
+sources 1 [T1×1] · affects 2 series · 2 competing account(s)
+
+**P-77** · A cumulative J&K death ledger that ran for three decades, then stopped, and never counted militants  
+bias `obscures` · Discontinued from the Annual Report 2021-22, posted 24 November 2022; terminal value 14,091 civilians and 5,356 SF personnel up to 2020 · defence/governance/kashmir · bridge NONE  
+what changed — Every MHA Annual Report from at least 2008-09 through 2020-21 opened its J&K security section with a cumulative sentence, of which the last reads:  
+sources 1 [T1×1] · 2 competing account(s)
+
+**P-78** · MHA's J&K figures are produced by the CID of the J&K Police and published without attribution  
+bias `obscures` · Attribution visible in PIB releases of 19 December 2023 and 7 February 2024 and in the parliamentary reply of 24 July 2024; absent from every Annual Report · defence/governance/kashmir · bridge NONE  
+what changed — PIB attributes the J&K violence series verbatim to '(Source:  
+sources 3 [T1×3] · affects 5 series · 2 competing account(s)
+
+**P-79** · 'Injured by pellets' is at least five different objects and no two instruments count the same one  
+bias `degrades-precision` · 2016 onward; the divergences are concurrent rather than sequential · governance/kashmir · bridge NONE  
+what changed — Every body that has produced a pellet-harm figure has produced a different object, and none states its unit of analysis.  
+sources 3 [T1×1 T3×1 T4×1] · affects 1 series · 2 competing account(s)
+
+**P-80** · 'Blinded' has no official definition, and the only definitions that exist come from clinical work that disagrees with itself  
+bias `obscures` · 2016 onward · governance/kashmir · bridge NONE  
+what changed — Three thresholds, three shares, one hospital, overlapping populations.  
+sources 3 [T1×1 T3×2] · 2 competing account(s)  
+1 commit(s) touched this record after it was created
+
+**P-81** · MHA counts pellet deaths month by month and refuses pellet injuries in the same sentence  
+bias `obscures` · 7 February 2018 · governance/kashmir · bridge NONE  
+what changed — One question asked for the number of protesters and bystanders injured or killed by pellet guns in Jammu and Kashmir each month over three years, for the number of security personnel injured or killed in protests, and for the number of pell …  
+sources 3 [T1×2 T4×1] · affects 1 series · 2 competing account(s)  
+1 commit(s) touched this record after it was created
+
+**P-82** · AFSPA is reported annually for the North East at district granularity and never once for J&K  
+bias `obscures` · Every report year 2013-14 to 2024-25 · governance/kashmir · bridge NONE  
+what changed — The Armed Forces (Special Powers) (Jammu and Kashmir) Act 1990 is never named in any MHA Annual Report retrieved - 2013-14, 2017-18, 2018-19, 2020-21, 2022-23, 2023-24 and 2024-25 all return zero occurrences of the Act's name in any of its  …  
+sources 3 [T1×1 T2×1 T4×1] · 2 competing account(s)
+
+**P-83** · Custodial deaths: the unit of account is the State police, and the J&K series breaks on 31 October 2019  
+bias `degrades-precision` · 31 October 2019 for the territorial break; the structural bounding runs throughout · governance/kashmir · bridge NONE  
+what changed — NCRB's custodial-death universe is police custody and lockup only.  
+sources 2 [T1×1 T4×1] · 2 competing account(s)  
+1 commit(s) touched this record after it was created
+
+**P-84** · Local recruitment into militancy: mutually exclusive official claims, and a category defined by absence from the list  
+bias `disputed` · 2015 onward; the 'hybrid militant' category introduced October-November 2021 · defence/kashmir · bridge NONE  
+what changed — There is no series.  
+sources 3 [T1×1 T4×2] · 2 competing account(s)
+
+**P-85** · Identity is declared by the force that killed, and the error in the series runs one way  
+bias `understates-post-2014` · April 2020 onward for the burial practice; the classification mechanism runs throughout · defence/governance/kashmir · bridge NONE  
+what changed — The categories 'Terrorists killed' and 'Civilians killed' are populated at the point of an encounter, by the force that conducted it, before independent identification, and since April 2020 the body is then buried in a remote graveyard rath …  
+sources 2 [T1×1 T4×1] · affects 4 series · 2 competing account(s)
+
+**P-86** · The producer and the publisher of the J&K security figures became the same ministry, with no seam in the arithmetic  
+bias `obscures` · 31 October 2019, the appointed day under the J&K Reorganisation Act 2019 · defence/governance/kashmir · bridge NONE  
+what changed — Before 31 October 2019 these figures were produced by a state police force answerable to a state Home Department under a Chief Minister answerable to a sitting legislature.  
+sources 3 [T1×2 T4×1] · affects 10 series · 2 competing account(s)  
+2 commit(s) touched this record after it was created
+
+**P-87** · The only instrument that ever attributed a perpetrator for civilian deaths in J&K, and its termination  
+bias `obscures` · 2019 edition is the last retrievable; termination effective from 2020 · defence/governance/kashmir · bridge NONE  
+what changed — The JKCCS/APDP Annual Human Rights Review is the only instrument located in this phase, of any provenance, that recorded both sides' harm on one page and named who caused it.  
+sources 3 [T2×2 T4×1] · affects 2 series · corrective 1 · 2 competing account(s)  
+1 commit(s) touched this record after it was created  
+corrected — whatChanged
+
+**P-88** · Prison Statistics India counts detenus in one undifferentiated cell, attributes them to the holding State, has no transfer table for them, and changes its territorial referent a volume late  
+bias `obscures` · Standing across every volume examined, 2009 to 2022; the practical consequence for J&K begins with the transfers out of the territory from 2018 · governance/kashmir · bridge NONE  
+what changed — Nothing changed - this is a standing property of the only official instrument that carries a J&K detenu count, and it defeats three separate questions at once.  
+sources 3 [T1×3] · affects 2 series · 3 competing account(s)
+
+**P-89** · The Union relays J&K's domicile and land figures without producing them, the unit changes four times, and the reorganisation changed who counts as an outsider  
+bias `degrades-precision` · The relay formula runs throughout; the unit changes across answers of August 2021 to October 2025; the category change dates from 31 October 2019 · governance/kashmir · bridge NONE  
+what changed — Three separate defects run through every published figure on domicile and land in Jammu and Kashmir.  
+sources 3 [T1×2 T4×1] · affects 2 series · 3 competing account(s)
+
+**P-90** · Two official J&K detenu instruments differ in every year, and the difference is exactly the foreign-national count in all three years that can be tested  
+bias `disputed` · The two instruments overlap for 2014 to 2019; the identity is established exactly for 2014, 2015 and 2018 · governance/kashmir · bridge exists  
+what changed — Two official instruments publish a year-end count of preventive-detention prisoners in Jammu and Kashmir, neither citing the other, and their headline figures differ in every overlapping year.  
+sources 2 [T1×2] · affects 2 series · 2 competing account(s)
+
+**P-91** · One running count of the August 2019 detentions, two silent scope changes, and ten figures on five undeclared objects  
+bias `obscures` · 20 November 2019 to 9 March 2021 · governance/kashmir · bridge exists  
+what changed — Between 20 November 2019 and 9 March 2021 the Ministry of Home Affairs gave Parliament ten detention figures for Jammu and Kashmir on at least five different objects, and no answer states which object it is counting.  
+sources 3 [T1×3] · affects 1 series · 3 competing account(s)
+
+**P-92** · Habeas corpus filings in J&K for 2019: three answers from one docket, and a case-type relabelling declared in a footnote  
+bias `degrades-precision` · Concurrent for calendar 2019; the case-type relabelling falls in 2020 · governance/kashmir · bridge NONE  
+what changed — Four readers of the same court's records give three different counts of habeas corpus petitions filed in Jammu and Kashmir in 2019.  
+sources 3 [T4×3] · 3 competing account(s)
+
+**P-93** · The J&K panchayat turnout denominator was disclosed on 3 December 2018, five releases in, with no change to the computation  
+bias `obscures` · 3 December 2018, in the sixth of nine phase releases of the 2018 J&K panchayat election · governance/kashmir · bridge NONE  
+what changed — The disclosure changed and the computation did not, on a dated day, in an official series.  
+sources 1 [T1×1] · affects 1 series · 3 competing account(s)
+
+**P-94** · Six statements of the statehood undertaking, four formulations, and no date in any of them  
+bias `obscures` · 6 August 2019 to 11 December 2023; the position has not moved since 15 December 2021 in the Ministry's own published record · governance/federalism/kashmir · bridge NONE  
+what changed — The commitment to restore statehood to Jammu and Kashmir has been made in three forums by five different actors and has never carried a date, and the form of words has changed four times without ever becoming testable.  
+sources 3 [T1×3] · 3 competing account(s)
+
+**P-95** · Counting shutdowns in J&K: four trackers on incompatible units, four defensible durations, and three official order counts of which one is not a count at all  
+bias `degrades-precision` · Standing; the tracker structure is as at 2026, and the four durations are computed from orders spanning August 2019 to February 2021 · governance/kashmir · bridge NONE  
+what changed — Nothing changed - this is the standing structure of the only instruments that count Indian internet shutdowns, established from their own published methodologies rather than from criticism of them.  
+sources 6 [T1×4 T4×2] · affects 1 series · 6 competing account(s)  
+2 commit(s) touched this record after it was created
+
+**P-96** · The TRAI Jammu and Kashmir service area includes Ladakh and does not break on 31 October 2019, and it measured the blackout without ever naming it  
+bias `degrades-precision` · The licensing boundary dates from 2004 and did not change on 31 October 2019; the divergence from every administrative J&K series begins on that date · infrastructure/governance/kashmir · bridge exists  
+what changed — This is the periodisation rule's exception, and it is silent on both sides.  
+sources 2 [T1×2] · 2 competing account(s)
+
+**P-97** · The National Human Rights Commission publishes the state dimension and the respondent dimension separately, never crosses them, and dropped the second after 2021-22  
+bias `obscures` · The two dimensions run throughout; the respondent breakdown was discontinued after the Annual Report 2021-22 · governance/kashmir · bridge NONE  
+what changed — The Commission publishes two dimensions of the same case population and has never published their intersection.  
+sources 2 [T1×2] · affects 2 series · 3 competing account(s)
+
+**P-98** · The J&K electoral instrument: four turnout values for one quantity, and three denominators for one delimitation  
+bias `degrades-precision` · The two bases run throughout; the four-value divergence is concurrent for the 2024 General Election; the 2002 denominator problem is confined to that election · governance/kashmir · bridge exists  
+what changed — Turnout is published on at least two bases and the Commission does not hold either constant.  
+sources 4 [T1×4] · affects 4 series · 6 competing account(s)
+
+**P-99** · Finance Commission grants to J&K's local tier: the recipient changed inside the final award year, the release was zero in that year, and the territory then leaves the table  
+bias `degrades-precision` · The referent changes on 31 October 2019, seven months into the final year of the XIV Finance Commission award; the absence from the XV Finance Commission table is as at 2 December 2025 · federalism/governance/kashmir · bridge NONE  
+what changed — Two distinct things happen to this series in the same year, and the record's first duty is to keep them apart rather than let one explain the other.  
+sources 4 [T1×4] · affects 2 series · 3 competing account(s)
+
+**P-100** · "Cesses and surcharges as a share of gross tax revenue" has four defensible values for the same year, and no evidentiary disagreement anywhere in the spread  
+bias `disputed` · Continuous; the two decisive ambiguities enter in FY2017-18 (the GST Compensation Cess) and FY2018-19 (a reclassification under which the same money is counted as both a cess and a surcharge). · macro/federalism · bridge NONE  
+what changed — No Indian statute, budget document or Finance Commission report defines "cesses and surcharges" as a set.  
+sources 4 [T1×4] · affects 2 series · corrective 1 · 4 competing account(s)
+
+**P-101** · "Collected" is not "credited to the Fund", and only the auditor publishes the difference  
+bias `obscures` · Every Union financial audit report from FY2015-16 to FY2024-25. · macro/federalism/governance · bridge exists  
+what changed — Two accounting events are both called cess revenue.  
+sources 5 [T1×5] · affects 1 series · 4 competing account(s)
+
+**P-102** · The divisible pool has no independently published basis: the Article 279 certificate exists for seventy-six years and was disclosed once, by the paying party  
+bias `obscures` · 1950 to date; first disclosure February 2026 for FY2023-24. · federalism/macro/governance · bridge NONE  
+what changed — Article 279(1) has required the Comptroller and Auditor General to certify the net proceeds of Union taxes since 1950 and makes the certificate final.  
+sources 5 [T1×5] · affects 2 series
+
+**P-103** · Finance Commission award boundaries are real breaks and no devolution series may be spliced across them  
+bias `degrades-precision` · FY2015-16, FY2020-21, FY2021-22 and FY2026-27. · federalism/macro · bridge NONE  
+what changed — Every quantity keyed to a Finance Commission award changes at an award boundary, and three of the four boundaries in this instrument's window change something other than the headline number.  
+sources 4 [T1×4] · affects 5 series
+
+**P-104** · "The states' share of central taxes" has four denominators, all in current use and all correct  
+bias `disputed` · Continuous. · federalism/macro · bridge exists  
+what changed — The same transfer is expressed against four different bases and the resulting numbers differ by more than the whole quantum of any dispute about them.  
+sources 2 [T1×2] · affects 3 series · 2 competing account(s)
+
+**P-105** · Entitlement, release and cash in the accounts are three quantities, and two tables inside one Commission report differ by up to ₹46,640 crore  
+bias `degrades-precision` · FY2018-19 onward, being the years for which a certified pool exists. · federalism/macro · bridge NONE  
+what changed — Devolution appears in a Finance Commission report twice, computed two ways, a hundred pages apart, with no reconciliation between them.  
+sources 4 [T1×4] · affects 3 series · 1 competing account(s)
+
+**P-106** · Two reporting-base shifts move money between statements without moving it in the world: the FY2014-15 routing change and the FY2021-22 Single Nodal Agency model  
+bias `degrades-precision` · FY2014-15 and FY2021-22. · federalism/welfare/macro/education · bridge NONE  
+what changed — In FY2014-15 centrally sponsored scheme money that had been released direct to state and district implementing agencies began to be routed through State Consolidated Funds.  
+sources 4 [T1×4] · affects 1 series
+
+**P-107** · Released, received, passed on: no instrument bridges the three, and only a state auditor computes any of the differences  
+bias `obscures` · FY2021-22 onward, being the Single Nodal Agency period in which the three legs became separately visible. · federalism/welfare/governance/education · bridge NONE  
+what changed — "Released" denotes at least three different events on a centrally sponsored scheme payment chain — money leaving the Union's payment system, money entering a state treasury, and money reaching an implementing agency — and no Union or state  …  
+sources 3 [T1×3] · 3 competing account(s)
+
+**P-108** · The subtraction is the auditor's; the inputs are frequently a party's — and the audit report says so each time  
+bias `degrades-precision` · Every edition of the State Finances Audit Reports read, FY2018-19 to FY2023-24. · federalism/governance/macro · bridge NONE  
+what changed — Three source lines in one corpus of state audit reports grade differently and must not be flattened into "the CAG says".  
+sources 4 [T1×4] · affects 6 series
+
+**P-109** · No Finance Commission publishes the state-by-criterion decomposition of a devolution share  
+bias `obscures` · FC-XIII to FC-XVI; continuous. · federalism · bridge NONE  
+what changed — Every Commission from the Thirteenth to the Sixteenth publishes the criteria, the weights, the method for each criterion and the final inter-se shares.  
+sources 3 [T1×3] · affects 3 series
+
+**P-110** · The pendency of a bill becomes measurable only when it stops being pending, and in every retrieved case litigation caused it to stop  
+bias `obscures` · 2023 to 2025, being the period in which the only such records exist. · federalism/governance · bridge NONE  
+what changed — Nothing in the world changed;  
+sources 4 [T1×4] · 1 competing account(s)
+
+**P-111** · The GST Council minute book is a shared ledger of arguments, not of facts: every number in it originates with the Department of Revenue  
+bias `disputed` · 2016 to date, across fifty-five meetings. · federalism/macro/governance · bridge NONE  
+what changed — The Council's minutes are the only instrument in Indian fiscal federalism in which both sides' positions are recorded verbatim, by name, in one signed document.  
+sources 5 [T1×5] · 2 competing account(s)
+
+**P-112** · A state's inter-se share is not one definition across six Commissions: a service-tax carve-out, a denominator that loses a state, and an award that is not constant  
+bias `degrades-precision` · FY2015-16 (the FC-XIV boundary), FY2020-21 (the single-year award) and FY2021-22 (the FC-XV final report). · federalism · bridge NONE  
+what changed — Three separate discontinuities sit inside what is usually drawn as one line.  
+sources 5 [T1×5] · affects 5 series · 3 competing account(s)  
+corrected — whatChanged
+
+**P-113** · Actuals, Revised Estimates and Budget Estimates are spliced inside published series, including by the bodies that publish them  
+bias `degrades-precision` · Continuous; the specific splices are at FY2019-20, FY2024-25 and the FC-XV award average. · macro/federalism · bridge exists  
+what changed — Several headline series in this subject mix three bases without flagging it.  
+sources 3 [T1×3] · affects 8 series
+
+**P-114** · A zero in the Union's by-state MGNREGA release table means a statutory power was exercised, and the table cannot say so  
+bias `obscures` · FY2022-23 onward for West Bengal; the power was exercised on 9 March 2022. · federalism/welfare/employment · bridge NONE  
+what changed — Nothing in the construction of the table changed;  
+sources 3 [T1×3] · affects 4 series · 2 competing account(s)
+
+**P-115** · The Union states its own cess-and-surcharge share to Parliament in two mutually irreconcilable ways, and defines neither  
+bias `disputed` · The two answers are dated 1 August 2023 and 21 July 2026; the FY2016-17 to FY2021-22 span belongs to the first and FY2022-23 to BE2026-27 to the second. · macro/federalism · bridge NONE  
+what changed — Asked the same question twice, the Ministry of Finance answered with two aggregates that cannot both be describing the same set of levies.  
+sources 5 [T1×5] · affects 3 series · 3 competing account(s)
+
+**P-116** · Multiplying the pool by the recommended share does not give the devolution share in any year, and the reason is that two of the three are rules and one is cash  
+bias `degrades-precision` · FY2010-11 to FY2023-24, every year. · federalism/macro · bridge exists  
+what changed — Nothing changed;  
+sources 3 [T1×3] · affects 3 series · 1 competing account(s)
+
+**P-117** · "Devolution actual" is two instruments in this drop, measuring two events, and one year's disagreement between them is 67,819 crore  
+bias `degrades-precision` · FY2014-15 to FY2024-25, being the years in which both instruments are populated. The largest divergence, FY2017-18, is the GST transition year. · federalism/macro · bridge NONE  
+what changed — Two series in this drop both answer to the name "what the states actually got", and they are not the same instrument.  
+sources 5 [T1×5] · affects 4 series · 3 competing account(s)
+
+**P-118** · A state's contribution to the Union exchequer has three components, published on two incompatible attribution keys and one declared absence  
+bias `obscures` · Continuous. The direct-tax table runs FY2018-19 to FY2024-25; the monthly GST sheet is current; the "not maintained" statements are dated 16 November 2010, 13 December 2022, 5 December 2023, 24 March 2025 and 10 March 2026. · federalism/macro/governance · bridge NONE  
+what changed — The quantity the whole public argument about fiscal federalism rests on — what a state pays into the centre — is not one measurement with a gap in it.  
+sources 7 [T1×7] · 4 competing account(s)
+
+**P-119** · India and China report different bilateral trade, and the two bilateral balances differ by nearly ten billion dollars  
+bias `disputed` · Continuous. Figures here are calendar 2023 and 2024, retrieved 4 August 2026. · foreign/macro · bridge NONE  
+what changed — Nothing changed;  
+sources 3 [T2×3] · affects 4 series · 2 competing account(s)  
+1 commit(s) touched this record after it was created
+
+**P-120** · India's neighbourhood trade figures: three counterparties do not report at all, and the three that do all record less arriving than India records sending  
+bias `disputed` · Calendar 2024, retrieved 4 August 2026. Non-reporting runs from 2019 for Bangladesh, 2023 for Nepal and 2024 for Bhutan. · foreign/macro · bridge NONE  
+what changed — Nothing changed;  
+sources 3 [T2×3] · 5 competing account(s)
+
+**P-121** · "Renewable" has at least four concurrent official boundaries, and large hydro was moved across one of them in March 2019  
+bias `obscures` · 2019-03-07 · environment/infrastructure · bridge exists  
+what changed — On 7 March 2019 the Union Cabinet approved measures declaring large hydropower projects a Renewable Energy source;  
+sources 5 [T1×5] · affects 2 series · 2 competing account(s)  
+1 commit(s) touched this record after it was created  
+corrected — notes
+
+**P-122** · Renewable generation was imputed, not metered, up to FY2013-14 — the basis changes at the instrument's own baseline  
+bias `overstates-pre-2014` · 2014-04-01 · environment/infrastructure · bridge NONE  
+what changed — CEA's General Review 2025 carries a note under Table 1.3, the gross generation series, reading in full:  
+sources 1 [T1×1] · affects 2 series
+
+**P-123** · A 50-per-cent-of-CAPACITY target is published as a COP26 goal; COP26's 50 per cent limb was 50 per cent of ENERGY  
+bias `obscures` · 2025-10-29 · environment/infrastructure · bridge exists  
+what changed — Two Ministry releases state, as a COP26 Panchamrit commitment, a target of '50 per cent of installed electric power capacity from non-fossil fuel sources by 2030'.  
+sources 4 [T1×4] · 2 competing account(s)  
+1 commit(s) touched this record after it was created  
+corrected — whatChanged
+
+**P-124** · SUBSTITUTION: India's NDC goals are cited to the Cabinet release, because the lodged instrument could not be retrieved in this run  
+bias `degrades-precision` · 2026-08-05 · environment/infrastructure · bridge NONE  
+what changed — A SOURCE SUBSTITUTION, recorded so that no reader takes the instrument's evidence for India's NDC to be the NDC.  
+sources 2 [T1×1 T4×1]
+
+**P-125** · NCAP's target is a percentage reduction with no base year in the document that publishes it, and a ten-point range  
+bias `obscures` · 2019-01 · environment · bridge NONE  
+what changed — The National Clean Air Programme was launched in January 2019, and the Ministry of Environment, Forest and Climate Change states its target as:  
+sources 1 [T1×1]  
+2 commit(s) touched this record after it was created
+
+**P-126** · The generation series joins two CEA documents at FY2024-25 with no overlap year, so the join is unverified rather than wrong  
+bias `degrades-precision` · 2024-04-01 · environment · bridge NONE  
+what changed — CEA's General Review 2025 carries mode-wise gross generation to FY2023-24 and stops.  
+sources 3 [T1×3] · affects 2 series
+
+**P-127** · "Forest cover" counts orchards, bamboo and palm at 10 per cent canopy, and Tree Cover gained two new categories in 2023  
+bias `obscures` · 2023-01-01 · environment · bridge NONE  
+what changed — India's forest statistics rest on a definition that is far wider than the word, and the Forest Survey of India states it plainly:  
+sources 1 [T1×1] · 2 competing account(s)  
+1 commit(s) touched this record after it was created
+
+## A.3 — The distributions, so you do not have to count
+
+Emitted by this generator from `/data` at `aa80fad`. The field read is named in each line.
+
+**Verdicts** — field `assessment`, over 226 ledger records:
+
+| verdict | n | share |
+|---|---:|---:|
+| `no-objective` | 73 | 32.3% |
+| `contested` | 67 | 29.6% |
+| `partly` | 32 | 14.2% |
+| `failed` | 16 | 7.1% |
+| `too-early` | 13 | 5.8% |
+| `baseline-context` | 11 | 4.9% |
+| `worked` | 9 | 4.0% |
+| `awaiting-adjudication` | 4 | 1.8% |
+| `reversed` | 1 | 0.4% |
+
+**Measurement bias** — field `directionOfBias`, over 127 provenance records:
+
+| value | n |
+|---|---:|
+| `degrades-precision` | 45 |
+| `obscures` | 31 |
+| `disputed` | 24 |
+| `overstates-post-2014` | 19 |
+| `understates-post-2014` | 6 |
+| `understates-pre-2014` | 1 |
+| `overstates-pre-2014` | 1 |
+
+**Stated reasons for an absence** — field `unmeasured[].reasonKind`, 293 entries on ledger records and 86 on series, 379 in total:
+
+| reason | n |
+|---|---:|
+| `not-published` | 206 |
+| `not-collected` | 120 |
+| `never-defined` | 41 |
+| `withheld` | 12 |
+
+Of those, 19 carry `reasonDisputed` — the holder's stated reason is contradicted — split `evidentiary×16` `normative×3`.
+
+**Source tiers** — 1,205 graded citations. **Tier is asserted in two different places**: inside each `sources[]` entry on ledger and provenance records, and ON THE RECORD for a series. Reading only the first is a documented recurring error in this project, so the split is printed by layer:
+
+| layer | citations | T1 | T2 | T3 | T4 | T5 |
+|---|---:|---:|---:|---:|---:|---:|
+| ledger | 640 | 523 | 36 | 11 | 68 | 2 |
+| provenance | 296 | 229 | 15 | 14 | 34 | 4 |
+| series | 269 | 213 | 29 | 3 | 22 | 2 |
+| **all** | **1205** | **965** | **80** | **28** | **124** | **8** |
+
+Untiered citations at HEAD: 0.
+
+**Verdict against source profile** — the cross-tabulation, because a verdict class that always rests on one kind of document is exactly the pattern Extract A exists to expose:
+
+| verdict | records | citations | T1 | T2 | T3 | T4 | T5 | mean cites/record |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| `no-objective` | 73 | 232 | 185 | 22 | 2 | 23 | 0 | 3.2 |
+| `contested` | 67 | 187 | 146 | 8 | 5 | 26 | 2 | 2.8 |
+| `partly` | 32 | 92 | 84 | 0 | 3 | 5 | 0 | 2.9 |
+| `failed` | 16 | 53 | 43 | 4 | 1 | 5 | 0 | 3.3 |
+| `too-early` | 13 | 31 | 31 | 0 | 0 | 0 | 0 | 2.4 |
+| `baseline-context` | 11 | 12 | 8 | 1 | 0 | 3 | 0 | 1.1 |
+| `worked` | 9 | 13 | 12 | 0 | 0 | 1 | 0 | 1.4 |
+| `awaiting-adjudication` | 4 | 18 | 13 | 1 | 0 | 4 | 0 | 4.5 |
+| `reversed` | 1 | 2 | 1 | 0 | 0 | 1 | 0 | 2.0 |
+
+**Verdict by term** — `baseline` is pre-May-2014, then the three terms:
+
+| verdict | baseline | T1 | T2 | T3 |
+|---|---:|---:|---:|---:|
+| `no-objective` | 0 | 19 | 19 | 35 |
+| `contested` | 0 | 22 | 32 | 13 |
+| `partly` | 0 | 16 | 11 | 5 |
+| `failed` | 0 | 8 | 5 | 3 |
+| `too-early` | 0 | 0 | 3 | 10 |
+| `baseline-context` | 11 | 0 | 0 | 0 |
+| `worked` | 0 | 8 | 0 | 1 |
+| `awaiting-adjudication` | 0 | 1 | 3 | 0 |
+| `reversed` | 0 | 0 | 1 | 0 |
+
+**Verdict by domain**, ledger only:
+
+| domain | records | `awaiting-adjudication` | `baseline-context` | `contested` | `failed` | `no-objective` | `partly` | `reversed` | `too-early` | `worked` |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| banking | 13 | 0 | 0 | 2 | 2 | 4 | 2 | 0 | 0 | 3 |
+| defence | 10 | 0 | 1 | 4 | 0 | 5 | 0 | 0 | 0 | 0 |
+| education | 21 | 0 | 0 | 9 | 4 | 4 | 4 | 0 | 0 | 0 |
+| employment | 12 | 0 | 0 | 5 | 0 | 4 | 1 | 0 | 2 | 0 |
+| environment | 14 | 0 | 0 | 2 | 1 | 3 | 4 | 0 | 2 | 2 |
+| federalism | 52 | 1 | 0 | 18 | 4 | 18 | 6 | 1 | 3 | 1 |
+| foreign | 43 | 0 | 2 | 4 | 1 | 23 | 5 | 0 | 6 | 2 |
+| governance | 113 | 4 | 6 | 44 | 8 | 40 | 6 | 1 | 3 | 1 |
+| human-development | 8 | 0 | 0 | 3 | 0 | 3 | 2 | 0 | 0 | 0 |
+| infrastructure | 24 | 0 | 1 | 3 | 1 | 6 | 9 | 0 | 0 | 4 |
+| kashmir | 46 | 3 | 5 | 18 | 0 | 17 | 2 | 0 | 1 | 0 |
+| macro | 57 | 0 | 1 | 13 | 7 | 19 | 7 | 1 | 7 | 2 |
+| poverty | 3 | 0 | 0 | 1 | 1 | 0 | 1 | 0 | 0 | 0 |
+| welfare | 21 | 0 | 1 | 6 | 2 | 2 | 8 | 0 | 1 | 1 |
+
+**The verdict-change history.** 36 records changed their `assessment` or `directionOfBias` after they first shipped. Emitted by `tools/gen-record-history.mjs`, which walks every commit touching `data/ledger/` and `data/provenance.json` and diffs each record against its own previous state. **25 of the 36 moved in a single commit** — the one that created the `no-objective` value and moved records that had been forced into `contested`, `failed`, `partly` or `worked` for want of it. That commit is named in the table so you can judge the bulk move as one decision rather than as 25 of them.
+
+| record | change | date | commit subject |
+|---|---|---|---|
+| L-0021 | `too-early` → `no-objective` | 2026-08-03 | Land L-0021 and L-0022 cases; retrieval failed on both primary documents |
+| L-0022 | `too-early` → `no-objective` | 2026-08-03 | Land L-0021 and L-0022 cases; retrieval failed on both primary documents |
+| L-0027 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0028 | `worked` → `no-objective` | 2026-08-03 | L-0028 -> no-objective after retrieval failed; ECL naming logged as provenance |
+| L-0032 | `partly` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0033 | `too-early` → `no-objective` | 2026-08-03 | Close L-0033: rescore to no-objective, author the pair, drop 60-70bp entirely |
+| L-0046 | `failed` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0049 | `partly` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0063 | `failed` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0064 | `failed` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0065 | `failed` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0069 | `partly` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0071 | `failed` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0073 | `worked` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0077 | `reversed` → `failed` | 2026-08-01 | Define the assessment values; rescore two judicial invalidations to failed |
+| L-0080 | `reversed` → `failed` | 2026-08-01 | Define the assessment values; rescore two judicial invalidations to failed |
+| L-0086 | `too-early` → `awaiting-adjudication` | 2026-08-03 | Add awaiting-adjudication with its definition; log shape 2 as a state with no home (#11) |
+| L-0087 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0089 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0094 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0103 | `partly` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0107 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0109 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0111 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0112 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0117 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0119 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0120 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0121 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0122 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0123 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0124 | `contested` → `no-objective` | 2026-08-03 | Apply the rescore: 25 records to no-objective, 4 notes, 4 held red |
+| L-0127 | `too-early` → `awaiting-adjudication` | 2026-08-03 | Add awaiting-adjudication with its definition; log shape 2 as a state with no home (#11) |
+| L-0134 | `too-early` → `awaiting-adjudication` | 2026-08-03 | Add awaiting-adjudication with its definition; log shape 2 as a state with no home (#11) |
+| L-0143 | `too-early` → `awaiting-adjudication` | 2026-08-03 | Add awaiting-adjudication with its definition; log shape 2 as a state with no home (#11) |
+| L-0224 | `too-early` → `contested` | 2026-08-05 | Re-file L-0224, close the enum question without new vocabulary, complete Arc D |
+
+---
+
+# EXTRACT C — METHOD
+
+The instrument's rules, quoted from the files that hold them rather than paraphrased, so you can check whether they were followed. Passages are sliced out of the project's instruction file and its JSON schemas at generation time and the generator aborts if an anchor has moved, so this section cannot silently stop describing the method it is quoted to describe.
+
+**Where a rule states a distribution, the measured value at `aa80fad` is printed beside it. They do not always agree, and where they do not, both stand.**
+
+## C.1 — The verdict vocabulary
+
+Enum, from `schemas/ledger.schema.json`: `worked` · `partly` · `failed` · `reversed` · `contested` · `too-early` · `awaiting-adjudication` · `no-objective` · `baseline-context`
+
+What the record concludes. These values had no written definitions until 2026-08-01, which is how `reversed` came to cover two different mechanisms without the type objecting. Definitions:
+- worked: the measure achieved the objective stated at announcement, on the evidence available.
+- partly: the measure achieved part of its stated objective, or achieved it for part of the intended population.
+- failed: the measure did not achieve the objective stated at announcement. Includes a measure struck down by a court, because the outcome is the same and only the mechanism differs — record the mechanism in assessmentNote.
+- reversed: the ENACTING AUTHORITY withdrew or repealed its own measure. `measure` means an INTERVENTION THAT ACTS ON THE WORLD. Withdrawing a disclosure, a publication or a reporting practice is not reversal, even where the authority withdrawing it is the one that established it. Judicial invalidation is NOT reversed either: a court striking a measure down is not the enacting authority changing its mind, and collapsing the two loses the thing that distinguishes a government retreating under pressure from a government overruled. The value attracts anything that ends, which is why this line now states what a measure is and not only who withdrew it.
+- contested: the evidence supports more than one defensible reading and the record does not choose between them.
+- too-early: the measure is in force but has not run long enough for its stated objective to be testable. THE OBSTACLE IS ELAPSED TIME AND THE EVIDENCE TIME ACCUMULATES. Where the obstacle is instead a pending decision by a body outside the enacting authority, the value is awaiting-adjudication. Re-read against its two remaining members on 2026-08-03 and it describes both: L-0061, where outcome data has not yet accrued, and L-0139, the boundary case, where what is awaited is a year of post-commencement orders and any first setting-aside - things that accumulate with time rather than a ruling anyone is waiting on.
+- awaiting-adjudication: the measure is in force and its effect is testable in principle, but the term that would settle the assessment is a pending decision by a body outside the enacting authority. Distinct from too-early, where the obstacle is elapsed time. Added 2026-08-03 after a sweep of all 149 ledger records found five records in this state and only six records carrying too-early at all - so 83 per cent of that value was occupied by a state its own definition did not describe. FOUR of the five take this value: L-0086, L-0127, L-0134 and L-0143. The fifth, L-0139, does NOT, because what it awaits is an act of publication by a holder rather than a decision by an adjudicator; the value is not stretched to absorb the member that contradicts its own definition.
+- baseline-context: pre-2014 context, carried so that post-2014 records are read against a stated starting condition. Never scored; the schema ties it to term "baseline".
+- no-objective: the record finds something real, and no objective was stated at announcement against which the finding could be scored. Distinct from contested, which is about the evidence supporting more than one reading. Use where nothing was claimed, not where a claim exists and its outcome is unmeasured — that remains contested (see L-0096). The value asserts nothing about the finding's quality: a no-objective record is as firmly established as any other, and the absence it records is the absence of a claim to test, not of evidence. Roughly half the ledger is in this state — conditions, trends, reporting instruments and structural absences — and before this value existed all of it had to take a value that presupposes an objective, which is why contested became a sink.
+
+**Measured at `aa80fad`**, over 226 ledger records: `no-objective` 73 · `contested` 67 · `partly` 32 · `failed` 16 · `too-early` 13 · `baseline-context` 11 · `worked` 9 · `awaiting-adjudication` 4 · `reversed` 1.
+
+## C.1b — The provenance layer's own value
+
+Enum, from `schemas/provenance.schema.json`: `understates-pre-2014` · `overstates-pre-2014` · `understates-post-2014` · `overstates-post-2014` · `disputed` · `obscures` · `degrades-precision`
+
+What the measurement problem does to the record it bears on.
+
+STRUCTURAL NOTE, unresolved, and the reason this field is hard to apply: the name asserts a DIRECTION, but only four of the seven values state one. `disputed`, `obscures` and `degrades-precision` state a KIND of problem with no direction attached, and they carry 35 of the 58 records. The field conflates two axes — which way a figure is pushed, and what sort of defect it has. `overstates-pre-2014` has NO users at all. Nothing has been reclassified; the definitions below describe observed use of each value as it stands.
+- understates-pre-2014: the pre-2014 figure was too low, so the earlier period looks better than it was.
+- overstates-pre-2014: the pre-2014 figure was too high. UNATTESTED — no record uses this value.
+- understates-post-2014: the post-2014 figure is too low, suppressing a count that would otherwise show.
+- overstates-post-2014: the post-2014 figure is too high, or flatters by construction.
+- disputed: two parties disagree about the figure or the instrument. No direction is asserted, and the record does not pick.
+- obscures: the figure is missing, withheld or discontinued, so the question cannot be answered either way.
+- degrades-precision: a basis, definition or coverage change breaks comparability across the series, without any claim about direction.
+
+**Measured at `aa80fad`**, over 127 provenance records: `degrades-precision` 45 · `obscures` 31 · `disputed` 24 · `overstates-post-2014` 19 · `understates-post-2014` 6 · `understates-pre-2014` 1 · `overstates-pre-2014` 1.
+
+**Read that description against that line.** The field's own schema text is a good example of what this document asks you to do: it states a distribution, and the distribution it states is not the one measured above. Which of the two is out of date, and what follows for the records filed under the values it describes, is a question for you rather than a settled point.
+
+## C.2 — The four commitment states
+
+A commitment record has to resolve into one of four states. This vocabulary is **stated in prose in the records and is not yet a field**, which means nothing validates it and nothing renders it as a value. Whether that is acceptable is open.
+
+**Commitment states.** Every commitment record resolves into one, stated rather than implied:
+**(a)** not yet due — the trigger date or condition, named; **(b)** due and undelivered — the date
+passed, with evidence of non-delivery; **(c)** abandoned — evidence of abandonment. **Absence of news
+is not (c).** A commitment whose source names no due date cannot leave (a) by the passage of time
+alone, and the record says so rather than inventing a trigger.
+
+**(d) unfalsifiable by construction** — a total with no date, no phasing and no annual target. It
+has no trigger, so it is not (a); it can never fall due, so it cannot reach (b); and absence does
+not evidence abandonment, so it is not (c). Such a commitment sits outside the other three rather
+than between them, and the record says which of the three tests it fails and why. **Score it
+`no-objective`: an objective is a target that can be failed.** This is not a finding that the thing
+is undone or that the commitment was insincere — it is that the announcement as made cannot be
+scored against itself at any future moment. L-0209 is the instance: the entire 1,643 km of the
+Myanmar border, announced with a starting position and no date. Note what survives the test — a
+total WITH a date is (a), and a condition rather than a date is still (a) if the condition is
+observable, as in L-0205's exchange of notifications.
+
+## C.3 — The filing rule
+
+Which domain a record files under, for the case where the answer is genuinely contestable. Quoted whole:
+
+**Procurement filing rule, settled.** Acquisition cost, capital-budget share, payment schedule and
+escalation file `macro`; indigenisation share, offsets, exports and DAP domestic content file
+`foreign`; a G2G deal read as a diplomatic instrument files `foreign`. The `defence-sector` lens goes
+on all of them; counterparty lenses where the record is genuinely about the relationship. `defence`
+as a DOMAIN remains armed conflict and counter-insurgency, per phase 11.
+
+And the rule for admitting a cross-cutting lens at all, from the schema: *"A LENS IS ADMITTED WHEN ITS RECORDS LAND, NOT WHEN IT IS PLANNED"* — a declared value with nothing behind it is a filter that returns nothing, and a lens over one record is a filter that returns what the reader already had.
+
+## C.4 — The withheld standard, and the four stated reasons for an absence
+
+This corpus records absences as findings. Each carries a STATED REASON — what the responsible body says, not what is true — drawn from a four-value enum. `withheld` is the narrowest and the one most likely to be over-claimed, so read its test carefully.
+
+Enum: `not-collected` · `not-published` · `withheld` · `never-defined`
+
+The STATED reason no figure exists — what the responsible body says, not what is true. Where the stated reason is contradicted, set reasonDisputed and carry the contradiction in `why`.
+
+THE TEST IS WHETHER THE DATA EXISTS, asked in this order:
+- not-collected: never gathered. No record exists to release. If the holder were compelled tomorrow they would have nothing to produce.
+- not-published: exists in a holder's hands, not released. The test is producibility under compulsion, not whether anyone has asked.
+- withheld: exists, release was specifically requested or legally required, and was refused. Narrower than not-published — requires an identifiable refusal, not merely absence of release.
+- never-defined: no agreed definition exists for the quantity, so it could not be collected even in principle. NOT "nobody has studied it" — an unstudied but definable quantity is not-collected.
+
+**`reasonDisputed`** — True where the stated reason is contradicted by evidence — for example a body saying data was never maintained while another arm of the same government publishes some of it. The contradiction must be stated in `why`. This is not a fifth reasonKind: it is a dispute about which kind applies.
+
+**`disputeKind`** (`evidentiary` · `normative`) — What kind of contradiction reasonDisputed records. Required when reasonDisputed is true.
+- evidentiary: the stated reason is contradicted by evidence that the data exists or was held.
+- normative: the factual claim is not contested; what is contested is the characterisation of the non-release, typically against a legal or judicial obligation.
+
+**Measured at `aa80fad`**: `not-published` 206 · `not-collected` 120 · `never-defined` 41 · `withheld` 12; disputed 19 (`evidentiary` 16 · `normative` 3).
+
+## C.5 — The stated-search rule: what may be claimed about an absence
+
+Two rules, and they are the ones this project breaks most often. The first governs any claim about what EXISTS; the second governs any claim that something was not published.
+
+5d. **A claim about what EXISTS is not a claim about what the SOURCES CONTAIN, and only the second is checkable.** "No explanation is available", "no other body publishes this", "this is the only case" — each asserts something about the world that no retrieval can establish, because retrieval bounds what was found and never what there is. Rewrite as the observation actually made: *the documents retrieved contain no explanation*, *no other publisher was located*, *this is the only case in the corpus*. The rewrite is not hedging; it is the difference between a statement a later reader can test against the same sources and one they cannot test at all. **Writing a finding from zero primaries produces a record about my search, not about the world** — the same failure at full strength, and it is at its most tempting when the absence looks obvious. Arc G's UNSC advocacy was closed with no record on exactly this ground: nothing retrieved stated the advocacy as a commitment with a trigger, and a record saying so would have documented the search.
+
+**Superlatives are the loudest symptom and not the only one.** The class also covers a bare "unexplained", an "unprecedented", and any negative existential smuggled in as background. **The test is mechanical: could a single document, if it turned up tomorrow, falsify the sentence without any figure in the record changing?** If yes, it is a claim about existence and must be re-grounded on what was searched, where, and what was found.
+
+Caught in cycle 2026-08-04o. L-0200 said same-publisher divergence had "no equivalent explanation available", when a post-signature revision, a tax-basis difference or a redrawn subset all fit and ₹23.10 crore is 1.17 per cent of the total — one revised contract's worth. It now rests on a property of the documents: the later one acknowledges no revision and does not contain the earlier figure. **Ordinary explanations being available is compatible with none being published, and the record must say which it means.**
+
+**AN ABSENCE-OF-PUBLICATION CLAIM REQUIRES A STATED SEARCH, AND TRYING GUESSED IDENTIFIERS IS NOT A
+SEARCH.** State which of these was done, in the record: an INDEX ENUMERATED (the publisher's own
+listing read and its links extracted); an ARCHIVE CONVENTION READ OFF A LIVE PAGE (a real href
+observed, then varied); or NAMED ROUTES EXHAUSTED (each host and path listed with what it returned).
+Absent one of those, the honest wording is **"not searched"**, not "not published".
+
+**"Not published" has meant "not searched" three times in phase 15 alone, and each time the document
+was there.** A ministry's website was dead while PIB served its documents. `L-0052` carried
+`reasonKind: not-published` for the renewable generation share while CEA published tables titled
+*"Monthly Renewable Energy as % of Total Electricity Generated"*. And a capacity year was recorded as
+a hole "not published at any guessable URL" — true, and not a search: CEA's own index does carry only
+the current month, but `npp.gov.in` mirrors the same CEA reports under a month-stamped path, the
+convention was sitting in an href on a live page, and the recovered figure cross-checks to **0.04 MW**
+against the other channel.
+
+**The asymmetry is why this needs a rule rather than care.** A guessed URL that 404s produces the
+same silence as a document that does not exist, and the silence is indistinguishable at the point of
+writing. Guessing also fails in a way that FEELS like evidence — three 404s in a row read as
+confirmation. They are three observations of a filename convention, not one observation about
+publication. **`reasonKind: not-published` and `not-collected` are claims about the world and inherit
+rule 5d in full; `not-searched` is not a schema value, so where that is the truth the entry says so
+in its `why` and takes the weaker of the available kinds.**
+
+## C.6 — The four measurement categories
+
+Where two bodies produce different numbers, the record has to say which of four situations it is in. Getting this wrong is invisible downstream, and category 3 is the one that reviews clean while being wrong.
+
+**The four measurement categories.** A record must say which it is:
+
+1. **`differentFacts` pair** — two instruments measuring the SAME quantity and disagreeing. Both
+   sides retrieved, same period and basis, methodological reason stated where known. Never averaged,
+   never picked. (P-119, India-China trade.)
+2. **Single-sided** — one party publishes and the other does not. Not a pair; the absence is the
+   finding, localised by relaxation before it is recorded. (L-0191.)
+3. **Incommensurable** — instruments measuring DIFFERENT quantities. Not a dispute and not an
+   absence. No conversion, no side-by-side placement. **Agreement between them is as unsound as
+   disagreement and reviews clean** — "SIPRI broadly confirms the trend" is the same category error
+   wearing a friendlier face. (L-0197, TIV against rupees against HS 93.)
+4. **Mutually declined** — BOTH parties decline the same quantity, and differently. Not a pair
+   (neither gives a conflicting figure), not the single-sided case (both withhold). Record the
+   absences separately with their own `reasonKind`: `withheld` where there is an identifiable
+   refusal to a specific request, `not-published` where release is simply absent. (L-0202, the S-400
+   delivery schedule: `withheld` on the Russian side, `not-published` on the Indian.)
+
+And the derived-quantity rule that follows from it:
+
+5c. **A derived quantity inherits its inputs' contests.** Any ratio, percentage, share or per-unit figure whose numerator or denominator appears in a `differentFacts` pair carries the divergence forward as a RANGE with each bound attributed to its source — or is not stated at all. Picking one side silently converts a recorded disagreement into a settled number, and the record that carries the pair is precisely the one a reader trusts not to do that. **Arithmetic hand-checking cannot catch this class and neither can any gate**: both computations are correct in isolation, each against its own input, and the defect is only visible by asking where the input came from. L-0200 is the first identified instance — thirteen emergency-procurement contracts stated by the Ministry of Defence at ₹1,981.90 crore in June 2025 and ₹1,958.80 crore in December, against a ₹2,000 crore outlay, giving 99.1 or 97.9 per cent committed depending on which total is used. State the range and say why the range exists, distinguishing a contested numerator from an uncertain denominator; where the range is too wide to support the argument being made, the argument is what changes.
+
+## C.7 — The withdrawn-wording convention
+
+**This is why wrong figures are still on the page.** A correction is made in the record itself, and the withdrawn wording survives inside the sentence that withdraws it. A record reads *"the figure is X — CORRECTED on this date, this previously said Y, and here is why Y was wrong"*. The verification log is separately append-only: an entry that turns out to be wrong is superseded by a later entry, never edited.
+
+**A correction guard asserts a presence, never an absence.** When a record is corrected, the
+withdrawn wording survives in the sentence that records the withdrawal — that is the form every
+correction in this instrument takes, because stating the change inside the record is what
+distinguishes a correction from a silent edit. **A guard that forbids a token therefore fails on a
+correctly corrected record.** Assert the specific string in its specific context — "the withdrawn
+phrase appears exactly once, inside the sentence beginning CORRECTED" — not that it is gone. Caught
+in cycle 2026-08-05b, where a guard demanding the absence of "binding" aborted an edit that had
+correctly withdrawn the word and said so.
+
+- **A closed verification-log entry is never edited.** Corrections are APPENDED and name what they supersede. The log has been append-only since the first cycle, and the reason is not bookkeeping: an append-only log that gets edited whenever an entry turns out to be wrong records only the errors nobody caught, which inverts what it is for. The record is corrected in place — that is what `/data` is — and the entry that stated the error stands, with the later entry governing. Same discipline as stating a correction inside the record rather than making it silently.
+
+## C.8 — The source ladder
+
+Evidence grade of the DOCUMENT ACTUALLY RETRIEVED, not of the institution the subject belongs to. This is the operative rule and the one that goes wrong: a CAG finding known only through a newspaper's account of an RTI reply is T4, because the subject is official but the evidence is relayed. Grade what you hold, not what it is about.
+- T1: official Indian statistical or institutional source, retrieved directly - a ministry release, an RBI, MoSPI or NCRB publication, a CAG report, a Parliamentary reply.
+- T2: multilateral or international statistical source, retrieved directly - World Bank, IMF, ILO, WHO.
+- T3: peer-reviewed research or a working paper.
+- T4: reported or documentary journalism, NGO datasets, and anything RELAYED rather than retrieved - including an official figure known only through a press account, and an RTI reply cited but not obtained.
+- T5: contested composite index. Always carries a dispute record covering its own domain (CLAUDE.md rule 6).
+Note that tier is asserted in exactly one place per layer: on the series itself, or on each entry of a ledger or provenance `sources[]`. A series `source` is a SourceRef and carries NO tier - the object is closed, so a tier inside it is rejected rather than silently ignored.
+
+6. **Tier tags travel with claims.** Any rendered number can be traced to source name, URL, tier. T5 (contested indices) always carries a dispute record covering its own domain, so a contested number never renders without the dispute — P-08 for the governance indices (RSF, Freedom House, V-Dem), P-29 for the Global Hunger Index. The rule is "its dispute", not "P-08": naming one record was right only while every T5 series was a governance index, and demanding P-08 of a human-development index would require a reference the relevance check forbids.
+
+**A tier moves only when the EVIDENCE moved, and the merge asserts which direction.** Not "never
+move a tier" — move it when the stated reason for the tier no longer holds, and prove which case you
+are in before writing. P-80 moved T4 to T3 because its stated reason, "the paper itself was not
+opened", had stopped being true once the abstract was retrieved and every cited figure matched.
+P-86 stayed T4 in the same sweep because its stated reason — the operative text unretrieved — still
+held, and a working URL had changed only the URL. The four SATP citations stayed T4 for a third
+reason: retrieval improved, the SOURCE did not, and the recorded figures still derive from the
+archive snapshot rather than the page now reachable. **Same mechanical assertion in the merge, with
+the expected value chosen deliberately in each case.**
+
+## C.9 — Two rendering rules that bear on what you can see
+
+3a. **A caveat never truncates, anywhere, at any density.** `caveat` is a schema field on both the ledger and series schemas. A record carrying one would mislead without it, so it renders wherever the record appears — detail pages, index tables, domain and term pages, cited-by grids — in full, every time. No ellipsis, no clamp, no truncation to fit a cell, no hiding it behind a hover or a disclosure. A qualification cut to fit is the failure the field exists to prevent: a half-read caveat is worse than none, because it looks like the whole of it. This binds future table and density work — if a caveat will not fit a layout, the layout is what changes. Ordinary uncertainty is not a caveat and belongs in `notes`.
+
+4a. **An absence renders unlike a finding.** Distinguish a gap in the data from a gap in the world. A blank cell says "not reported this period" (rule 4); where *nothing measures a thing at all*, that is a fact about the record and often the most important thing on the page — it renders, named, rather than being left off. PMAY-G is the canonical case: sanctioned and completed are published, occupancy is not, and a reader shown only the first two would reasonably take completion for the end of the chain. Use the `Absence` mark: dashed, unfilled, no figure, no table, visibly not a panel of results. An absence styled like a finding invites a reader to treat the frame as the content, and nothing is ever estimated into the space. Expect several in infrastructure.
+
+## C.10 — What the gates do, and what they do not check
+
+**The single most important thing to understand about this instrument: the gates enforce internal consistency, not correctness.** They prove that a declared mark reaches its own page, that every URL resolves, that no citation is a bare domain, that declared arithmetic reconstructs. **None of them can tell whether a verdict is right, whether a source supports the claim made on it, or whether an absence was really searched for.** That is the whole of what you are being asked to do.
+
+**The gate list, run in full every cycle:** `validate` · `typecheck` · `validate:selftest` ·
+`reachability` · `no-unguarded-prose-field` · `field-render-audit` · `domain-coverage` (which
+carries `lens-empty`) · `figure-consistency` · `enum-stamp` · `url-check` on `/data`. Plus an
+arithmetic hand-check of every derived figure including internal consistency, a check that every
+declared lens returns a non-empty and correct set, and zero forward references between `parts/`
+
+### The three rendering gates, and why none subsumes another
+
+**The three rendering gates are different in kind and none subsumes another.** `reachability` walks
+the guarded-marks list and proves each mark reaches its own record's page — but it is
+ENUMERATION-SCOPED, so it can only ever check what the list contains.
+`no-unguarded-prose-field` binds that list to the schemas: every prose field on `LedgerRecord` and
+`ProvenanceRecord` is guarded or exempted BY NAME in its own schema description, with no third
+state, so a field cannot be merely forgotten. `field-render-audit` ignores both and observes the
+built output directly, asserting every prose field on every layer reaches its own page — it is what
+catches a field that is nominally guarded and suppressed anyway.
+
+### The scope a guard binds, and the gap it leaves
+
+The failure mode that produces most of this project's defects. A guard passes because it is checking the thing it binds, and the claim one level outside its scope is unprotected with nothing to report it:
+
+**A GUARD BINDS A SCOPE, AND THE CLAIM IT PROTECTS HAS ITS OWN. WHEN YOU ADD A GUARD, WRITE DOWN
+BOTH — what it binds and what it does not.** The gap between the two is silent by construction: the
+guard passes, because it is checking the thing it binds, and the claim outside its scope is
+unprotected with nothing to report it. **Three instances in one batch, all found by hand and none by
+any gate:**
+- `reachability` binds a LIST of marks; the claim is about every prose field on the record type.
+  `assessmentNote` and `revisitTrigger` were outside the list — 226 marks invisible.
+  Closed by `no-unguarded-prose-field`, which binds the list to the schema.
+- `reachability`'s own `ownPage()` bound `series | ledger`; the MARKS entries admit any `layers[]`.
+  Adding the first `provenance` mark made 185 records report "no page built", which reads like a
+  broken build rather than a broken lookup. **The enumeration scope had leaked one level down, into
+  the gate's own path resolution.**
+- `breaks[]` binds a SERIES — the note renders, no line is drawn across the seam — and does NOT
+  reach a DERIVED COMPARISON stated in a ledger record's prose. A widening was stated from a year
+  sitting on the imputed side of a basis break, understating the opening gap and overstating the
+  widening, with every gate green.
+
+**The test is one question asked at the moment the guard is written: if the claim moved one level
+out — to another field, another layer, another record, a sentence about the data rather than the
+data — would this guard still see it?** Where the answer is no, say so in the guard's own header.
+`tools/lib/guarded-marks.mjs` and `tools/field-render-audit.mjs` both carry that paragraph, and
+`tools/seam-span-report.mjs` exists because the third instance is not closed: it reports 125 spans
+of which 34 are undeclared, and 34 is a candidate list rather than a defect count, so it stays
+report-only until the triage narrows it.
+
+**And the specific, proven consequence:** two fields — the note on a verdict and the re-test trigger — were written, validated and shipped on 226 records, and rendered on **none** of them, across every phase since each field was added, with every gate green throughout **precisely because the data was correct**. One prior cycle had just written reasoning into 33 verdicts so that no verdict stood without stated ground, and **not one of those 33 had ever reached a reader.**
+
+## C.11 — What the instrument refuses to do
+
+Stated so you can attack the refusals rather than assume they are hedges:
+
+- **No composite score, ever, and no aggregate verdict for a term or for the government.** Scorecards roll up to counts of verdicts, not to a grade.
+- **No splicing across a measurement break.** Where a series changes basis the seam renders and no line is drawn across it. No interpolation, no trend fitted through a break.
+- **A blank is unreported, not zero.** Where nothing measures a thing at all, that is rendered as a named absence rather than left off the page.
+- **Where two instruments measure the same quantity and disagree, neither figure is adopted and no midpoint is taken.** The disagreement is the finding.
+- **Every scored record carries a case for and a case against**, and the schema requires both, so a record presenting one is a validation failure rather than an editorial choice.
+
+---
+
+# What this document leaves out
+
+Stated so you can weigh a finding against what you were not shown, and so that "I could not check X" is a claim about this file rather than about the corpus.
+
+1. **The 269 series and 60 paired records.** The corpus has four layers; this document carries two. Series hold the time series a ledger verdict rests on — the actual figures, their breaks, their per-point status flags — and pairs hold constructed comparisons. A verdict here can be read for whether it follows from its own prose, but **not for whether the underlying numbers say what the prose says they say.** That is the single largest thing you cannot check.
+2. **The full assessment note for the 128 ledger records outside Extract B and its appendix.** Extract A gives the first substantive sentence only.
+3. **The full prose of the 198 ledger and 120 provenance records outside Extract B.** Their claim, verdict, first line of reasoning, tier profile and stated absences are in Extract A; their case-for, case-against and evidence are not.
+4. **The rendered site.** These records are published as web pages, and some of this project's defects were rendering defects — correct data that reached no reader. You are reading the data, not the pages, so a rendering defect is invisible to you.
+5. **The verification log**, 684 KB of cycle-by-cycle working notes. Where a decision's reasoning lives only there, it is not here.
+6. **Everything the corpus never opened.** A subject nobody researched leaves no trace in any of these extracts. If a domain looks thin, it may be thin, and the record count per domain in Extract A.3 is the only evidence you have either way.
+
+**One asymmetry to hold on to.** Extract B is selected for trouble and Extract A is complete. A pattern you find in A is a pattern in the corpus; a density you observe in B is a density in the selection. Do not generalise from B.
+
+**And one about this file specifically.** The contents list at the top is authoritative: this document is one of several cuts of the same corpus, and any extract not listed there is absent from it. That is deliberate — the passes are run separately so they cannot anchor on each other — but it means "the corpus does not contain X" is a claim you cannot make from here. "This file does not let me check X" is the claim to make, and it is a useful one.
+

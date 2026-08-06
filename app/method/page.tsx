@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { provenance, series, statusCounts } from '@/lib/data';
+import { citations, provenance, series, statusCounts, tierCounts } from '@/lib/data';
 import { TIER_LABELS } from '@/lib/format';
 import { TIERS } from '@/lib/types';
 import { StatusKey } from '@/components/marks';
@@ -10,6 +10,14 @@ export const metadata: Metadata = { title: 'Method' };
 export default function MethodPage() {
   const status = statusCounts(series);
   const unbridged = provenance.filter((p) => !p.bridgeExists);
+  // Counted through the one accessor that resolves the tier asymmetry. Never tallied by hand
+  // here — see the note beside `citations()` in lib/data.ts for what hand-tallying cost.
+  const cites = citations();
+  const tiers = tierCounts(cites);
+  const nonT1 = cites.length - tiers.T1;
+  const seriesCites = cites.filter((c) => c.layer === 'series');
+  const seriesTierT1 = seriesCites.filter((c) => c.tier === 'T1').length;
+  const LAYERS = ['ledger', 'provenance', 'series'] as const;
 
   return (
     <>
@@ -34,12 +42,26 @@ export default function MethodPage() {
         enforce internal consistency, not correctness.
       </p>
       <p>
-        <strong>Sources are primary where possible but not exclusively governmental.</strong> Of
-        1,205 citations, 752 are graded T1 — Indian official statistical or institutional documents
-        retrieved directly. The rest are multilateral statistics, peer-reviewed research,
-        documentary journalism and NGO datasets, used chiefly where the state does not measure the
-        thing at all or where its own account is contested. Every citation is graded on the
-        document actually retrieved, never on the institution the subject belongs to.
+        <strong>Sources are primary where possible but not exclusively governmental.</strong> Of{' '}
+        {cites.length.toLocaleString()} citations, {tiers.T1.toLocaleString()} are graded T1 —
+        Indian official statistical or institutional documents retrieved directly. The remaining{' '}
+        {nonT1.toLocaleString()} are {tiers.T2} multilateral or international statistical sources,{' '}
+        {tiers.T3} peer-reviewed or working-paper studies, {tiers.T4} pieces of documentary
+        journalism, NGO datasets and figures known only at second hand, and {tiers.T5} contested
+        composite indices, each of which carries its own dispute record. The non-governmental
+        sources are used chiefly where the state does not measure the thing at all or where its own
+        account is contested, and several records depend on them for exactly that reason. Every
+        citation is graded on the document actually retrieved, never on the institution the subject
+        belongs to.
+      </p>
+      <p className="prose-note">
+        These figures are counted from the data at build time and are not typed here. They were
+        typed here once: this paragraph read <em>&ldquo;752 are graded T1&rdquo;</em> until 6 August
+        2026, and said the rest were journalism and NGO datasets. That was wrong by{' '}
+        {tiers.T1 - 752}, because the count read the tier held inside each ledger and provenance
+        citation and missed the {seriesCites.length} series, which hold it on the record instead —
+        so {seriesTierT1} official statistical sources were described as journalism. The corrected
+        wording is above and the count now comes from one accessor that reads both places.
       </p>
       <p>
         <strong>The planned independent review has not been run.</strong> Three passes were
@@ -94,7 +116,10 @@ export default function MethodPage() {
       <h2>Source tiers</h2>
       <p className="prose-note">
         Every rendered number traces to a source name, a URL and a tier. The tier travels with the
-        claim rather than being stated once at the top of a page.
+        claim rather than being stated once at the top of a page. The count is broken out by layer
+        because the corpus asserts a tier in two structurally different places — inside each
+        citation on a ledger or provenance record, and on the record itself for a series — and a
+        total that showed only one of them is what this page got wrong.
       </p>
       <div className="table-wrap">
         <table>
@@ -102,7 +127,10 @@ export default function MethodPage() {
             <tr>
               <th>Tier</th>
               <th>What it is</th>
+              <th className="num">Ledger</th>
+              <th className="num">Provenance</th>
               <th className="num">Series</th>
+              <th className="num">All</th>
             </tr>
           </thead>
           <tbody>
@@ -110,9 +138,24 @@ export default function MethodPage() {
               <tr key={t}>
                 <td className="mono">{t}</td>
                 <td className="t-note">{TIER_LABELS[t]}</td>
-                <td className="num">{series.filter((s) => s.tier === t).length}</td>
+                {LAYERS.map((layer) => (
+                  <td key={layer} className="num">
+                    {cites.filter((c) => c.layer === layer && c.tier === t).length}
+                  </td>
+                ))}
+                <td className="num">{tiers[t]}</td>
               </tr>
             ))}
+            <tr>
+              <td className="mono">all</td>
+              <td className="t-note">Every graded citation in the corpus</td>
+              {LAYERS.map((layer) => (
+                <td key={layer} className="num">
+                  {cites.filter((c) => c.layer === layer).length}
+                </td>
+              ))}
+              <td className="num">{cites.length}</td>
+            </tr>
           </tbody>
         </table>
       </div>

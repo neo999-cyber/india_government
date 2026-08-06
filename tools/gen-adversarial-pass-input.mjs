@@ -240,8 +240,26 @@ const DROPPED_BULK = C3_ALL_CHANGED.filter((id) => !REASONS.has(id));
 
 /* ------------------------------------------------------------- rendering */
 
-const P = [];
-const w = (s) => P.push(s);
+/**
+ * Sections are written into a registry rather than one flat buffer, because the same content has
+ * to compose into four different documents: the combined file, and three independently runnable
+ * passes that must not contaminate each other. A reviewer given the whole corpus at once anchors
+ * on whatever it read first; three focused reviews with no shared context do not.
+ *
+ * The blocks every pass carries — the brief, the known limits, the gate scopes, the method —
+ * are built ONCE here and emitted into each file. There is no second copy to drift.
+ */
+const SECTIONS = new Map();
+let CURRENT = null;
+const section = (name) => {
+  CURRENT = name;
+  if (!SECTIONS.has(name)) SECTIONS.set(name, []);
+};
+const w = (s) => {
+  if (CURRENT === null) throw new Error('w() called before section()');
+  SECTIONS.get(CURRENT).push(s);
+};
+const S = (...names) => names.map((n) => (SECTIONS.get(n) ?? []).join('')).join('');
 const esc = (s) => String(s ?? '').replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ').trim();
 /**
  * The first SUBSTANTIVE sentence, for the one-line-per-record structural extract.
@@ -266,24 +284,38 @@ const field = (label, body) => (body && String(body).trim() ? `**${label}.** ${S
 
 /* ============================================================ 0. BRIEF */
 
-w(`# Adversarial review pass — input document\n`);
-w(
-  `Generated from the corpus at commit \`${HEAD}\` (${HEAD_DATE}) by \`tools/gen-adversarial-pass-input.mjs\`. ` +
-    `Regenerating it against the same commit reproduces it byte for byte.\n\n`,
-);
+/**
+ * Per-file opening: the title, the provenance line and the contents list.
+ *
+ * Only this block differs between the four documents. Everything below is built once and shared,
+ * so a correction to the brief or the method reaches every pass without a second copy to forget.
+ */
+const CONTENTS = {
+  A: `- **Extract A — Structural.** Every one of the ${ledger.length} ledger records and ${provenance.length} provenance records, one compact block each: id, verdict, the claim, the first substantive sentence of the reasoning, the source count by tier, and the stated reasons for anything the record says is unmeasured. This is the part that finds defects no single record shows — a verdict class that always rests on one kind of source, a value that clusters in one phase, a tier profile that will not carry the claims made on it.\n`,
+  B: `- **Extract B — Deep.** ${DEEP.length} records in full prose, selected adversarially rather than sampled. The criteria are stated in the section header, and what the criteria excluded is stated with them.\n`,
+  C: `- **Extract C — Method.** The instrument's own rules, quoted from the files that hold them, so you can check whether they were followed instead of inferring them from the output.\n`,
+  D: `- **Extract D — Corrections.** Every record that carries a self-correction or withdrawn wording, with the needle that found them.\n`,
+  E: `- **Extract E — Compliance surface.** The record text each rule in Extract C actually binds, so a rule can be tested against what it governs rather than against an impression of the corpus.\n`,
+};
 
+function opening({ title, subtitle, contents, focus }) {
+  return (
+    `# ${title}\n` +
+    `${subtitle}\n\n` +
+    `Generated from the corpus at commit \`${HEAD}\` (${HEAD_DATE}) by \`tools/gen-adversarial-pass-input.mjs\`. ` +
+    `Regenerating it against the same commit reproduces it byte for byte.\n\n` +
+    `You have no access to the repository, so this document has to be sufficient on its own. It contains:\n\n` +
+    contents.map((k) => CONTENTS[k]).join('') +
+    `\n${focus}\n\n`
+  );
+}
+
+section('brief');
 w(`## What you are reading, and what to do with it\n\n`);
 w(
   `This is a longitudinal research corpus about the Indian government: what was announced, what can be established since, and what cannot be established at all. ` +
     `It covers a frozen pre-May-2014 baseline and the three terms after it. It has **one author, working with an AI assistant**, and the same pairing wrote the records, retrieved the sources and checked the result. ` +
     `Nothing in it has been reviewed by anyone who did not write it. **You are the first outside reading**, and you are being asked to attack it rather than to confirm it.\n\n`,
-);
-w(
-  `You have no access to the repository, so this document has to be sufficient on its own. It is in four parts:\n\n` +
-    `- **Extract A — Structural.** Every one of the ${ledger.length} ledger records and ${provenance.length} provenance records, one compact block each: id, verdict, the claim, the first substantive sentence of the reasoning, the source count by tier, and the stated reasons for anything the record says is unmeasured. This is the part that finds defects no single record shows — a verdict class that always rests on one kind of source, a value that clusters in one phase, a tier profile that will not carry the claims made on it.\n` +
-    `- **Extract B — Deep.** ${DEEP.length} records in full prose, selected adversarially rather than sampled. The criteria are stated in the section header, and what the criteria excluded is stated with them.\n` +
-    `- **Extract C — Method.** The instrument's own rules, quoted from the files that hold them, so you can check whether they were followed instead of inferring them from the output.\n` +
-    `- **Extract D — Corrections.** Every record that carries a self-correction or withdrawn wording, with the needle that found them.\n\n`,
 );
 
 w(`### What a useful finding looks like\n\n`);
@@ -292,8 +324,8 @@ w(
     `1. **A verdict the evidence in its own record does not support.** The record states a case for and a case against; if the verdict does not follow from them, say which one it should have been and why.\n` +
     `2. **A claim stronger than its source.** The tier of every citation is given. A T4 document is journalism or a relayed figure; a claim that needs a primary and cites only a T4 is a defect even if the claim is true.\n` +
     `3. **An absence asserted without a search.** This corpus treats absences as findings and records a stated reason for each. An absence claim that rests on nothing but not having found the thing is the failure mode the method section calls out most often — which means finding one is worth more, not less.\n` +
-    `4. **A pattern across records that no single record reveals.** This is what Extract A is for. Examples of the shape: a verdict value used inconsistently between two records with the same structure; a domain whose sources are systematically one tier weaker than the rest; a stated reason (\`not-published\`, \`withheld\`) applied to one kind of subject and never to another.\n` +
-    `5. **A rule in Extract C that Extract A or B shows was not followed.**\n\n`,
+    `4. **A pattern across records that no single record reveals.** Examples of the shape: a verdict value used inconsistently between two records with the same structure; a domain whose sources are systematically one tier weaker than the rest; a stated reason (\`not-published\`, \`withheld\`) applied to one kind of subject and never to another.\n` +
+    `5. **A rule the corpus states and did not follow.** The rules are in Extract C, quoted from the files that hold them. A rule broken is worth more than a figure wrong, because a figure is one record and a rule is a class.\n\n`,
 );
 w(
   `**Tie every finding to a record id.** A finding with no id cannot be checked and will not be acted on. Where a finding is a pattern, name the ids it rests on — at least three, or say why fewer suffice.\n\n` +
@@ -308,6 +340,7 @@ w(
 
 /* ================================================== 1. KNOWN LIMITS */
 
+section('limits');
 w(`---\n\n## Known limits — already logged, do not spend budget rediscovering these\n\n`);
 w(
   `**1. The corpus is not built entirely from government primaries, and the public method page understates by how much.** ` +
@@ -349,6 +382,7 @@ w(
 
 /* ============================================ 2. GATE-EMITTED SCOPES */
 
+section('gates');
 w(`### The gates, and their own emitted scopes\n\n`);
 w(
   `Every figure in this document that a gate emits is quoted from the block below, captured by running each gate at \`${HEAD}\`. ` +
@@ -359,6 +393,7 @@ w('```\n' + GATES + '\n```\n\n');
 
 /* ================================================= 3. EXTRACT A */
 
+section('A');
 w(`---\n\n# EXTRACT A — STRUCTURAL\n\n`);
 w(
   `All ${ledger.length} ledger records and all ${provenance.length} provenance records, in id order. ` +
@@ -501,6 +536,7 @@ w('\n');
 
 /* ================================================= 4. EXTRACT B */
 
+section('B');
 w(`---\n\n# EXTRACT B — DEEP\n\n`);
 w(`## How these ${DEEP.length} records were selected\n\n`);
 w(
@@ -649,6 +685,7 @@ for (const id of DROPPED_BULK.sort()) {
 
 /* ================================================= 5. EXTRACT C */
 
+section('C');
 w(`---\n\n# EXTRACT C — METHOD\n\n`);
 w(
   `The instrument's rules, quoted from the files that hold them rather than paraphrased, so you can check whether they were followed. ` +
@@ -771,6 +808,7 @@ w(
 
 /* ================================================= 6. EXTRACT D */
 
+section('D');
 w(`---\n\n# EXTRACT D — CORRECTIONS AND WITHDRAWN WORDING\n\n`);
 w(
   `**These are included deliberately and are not hidden anywhere in this document.** ` +
@@ -800,6 +838,7 @@ w(`Series carrying one: ${[...CORRECTED_SERIES.keys()].sort().map((id) => `\`${i
 
 /* ================================================= 7. OMISSIONS */
 
+section('omissions');
 w(`---\n\n# What this document leaves out\n\n`);
 w(
   `Stated so you can weigh a finding against what you were not shown, and so that "I could not check X" is a claim about this file rather than about the corpus.\n\n` +
@@ -815,33 +854,292 @@ w(
   `**One asymmetry to hold on to.** Extract B is selected for trouble and Extract A is complete. ` +
     `A pattern you find in A is a pattern in the corpus; a density you observe in B is a density in the selection. Do not generalise from B.\n\n`,
 );
+w(
+  `**And one about this file specifically.** The contents list at the top is authoritative: this document is one of several cuts of the same corpus, and any extract not listed there is absent from it. ` +
+    `That is deliberate — the passes are run separately so they cannot anchor on each other — but it means "the corpus does not contain X" is a claim you cannot make from here. "This file does not let me check X" is the claim to make, and it is a useful one.\n\n`,
+);
 
-/* ------------------------------------------------------------- emit */
 
-const body = P.join('');
+/* ============================== EXTRACT E — THE COMPLIANCE SURFACE ============================ */
 
-// Self-description checks. A document that misstates its own size or contents invites a reviewer to
-// discount everything in it, and these have caught real drift before.
-const deepHeadings = (body.match(/^### B\.\d+ · /gm) ?? []).length;
-if (deepHeadings !== DEEP.length) {
-  console.error(`FAILED — declares ${DEEP.length} deep records, emitted ${deepHeadings} headings`);
-  process.exit(1);
-}
-for (const id of DEEP) {
-  if (!body.includes(`### B.`) || !body.includes(id)) {
-    console.error(`FAILED — deep record ${id} does not appear in the body`);
-    process.exit(1);
+/**
+ * A rule is only testable against the text it binds. Extract C states the rules; this extract is
+ * the corpus material each one governs, so the method pass can check rule-following instead of
+ * forming an impression.
+ *
+ * It is selected, not complete, and the exclusions are stated in the section — the whole absence
+ * population is 379 entries and printing every one in full would crowd out the rules themselves.
+ * What is here in full is the material where a rule is strongest and most over-claimable.
+ */
+section('E');
+
+const unmeasuredAll = [];
+for (const r of [...ledger, ...series]) {
+  for (const [i, u] of (r.unmeasured ?? []).entries()) {
+    unmeasuredAll.push({ id: r.id, title: r.title, layer: r.assessment !== undefined ? 'ledger' : 'series', i, u });
   }
 }
-if (!body.includes(GATES.split('\n')[2] ?? 'VALID')) {
-  console.error('FAILED — the gate block did not reach the body');
-  process.exit(1);
+const STRONG = unmeasuredAll.filter((a) => a.u.reasonKind === 'withheld' || a.u.reasonKind === 'never-defined' || a.u.reasonDisputed);
+const REST = unmeasuredAll.filter((a) => !STRONG.includes(a));
+
+/**
+ * Rule 5d's surface: sentences making a claim about what EXISTS rather than about what the
+ * retrieved documents contain. The needle is printed with the count, and it is deliberately
+ * OVER-INCLUSIVE — a candidate list, not a finding, per the standing rule that a non-zero count
+ * is read in context before it is banked. Many of these will be correctly grounded.
+ */
+const EXISTENCE_NEEDLE =
+  /\b(?:no (?:other|body|instrument|publisher|source|explanation|figure|record|agreed|equivalent)|nobody|never been published|the only|unprecedented|unexplained|not published anywhere|any government)\b/i;
+const PROSE_FIELDS = [
+  'summary', 'claimAtLaunch', 'whatHappened', 'caseFor', 'caseAgainst', 'assessmentNote',
+  'caveat', 'differentFactsNote', 'revisitTrigger', 'shockExposure', 'whatChanged', 'bridgeNote', 'notes',
+];
+const existenceHits = [];
+for (const r of [...ledger, ...provenance, ...series]) {
+  for (const f of PROSE_FIELDS) {
+    const v = r[f];
+    if (!v) continue;
+    for (const sent of String(v).replace(/\s*\n\s*/g, ' ').split(/(?<=[.!?])\s+/)) {
+      if (EXISTENCE_NEEDLE.test(sent)) existenceHits.push({ id: r.id, field: f, sent: sent.trim() });
+    }
+  }
 }
 
-writeFileSync(OUT, body);
-const bytes = Buffer.byteLength(body);
+/** The commitment-state vocabulary is prose-only, so its surface is the sentences carrying a bare
+ *  (a)-(d) token. The statutory-citation form — 12(1)(c), 370(1)(d) — is excluded by requiring the
+ *  '(' not to follow a word character or a closing bracket. */
+const STATE_NEEDLE = /(?<![0-9A-Za-z)])\([a-d]\)/;
+const stateHits = [];
+for (const r of ledger) {
+  for (const f of PROSE_FIELDS) {
+    const v = r[f];
+    if (!v) continue;
+    for (const sent of String(v).replace(/\s*\n\s*/g, ' ').split(/(?<=[.!?])\s+/)) {
+      if (STATE_NEEDLE.test(sent)) stateHits.push({ id: r.id, field: f, sent: sent.trim() });
+    }
+  }
+}
+
+/** Corrections in FULL FIELD TEXT — the withdrawn-wording convention's own surface. Extract D
+ *  indexes them; this prints them, because the convention can only be judged on the sentence. */
+const correctionFields = [];
+for (const r of [...ledger, ...provenance, ...series]) {
+  const walk = (v, path) => {
+    if (typeof v === 'string') {
+      if (CORRECTION_NEEDLE.test(v)) correctionFields.push({ id: r.id, path, text: v.replace(/\s*\n\s*/g, ' ').trim() });
+    } else if (v && typeof v === 'object') {
+      for (const [k, x] of Object.entries(v)) walk(x, path ? `${path}.${k}` : k);
+    }
+  };
+  walk(r, '');
+}
+
+const defenceLens = ledger.filter((r) => (r.lenses ?? []).includes('defence-sector'));
+
+w(`---\n\n# EXTRACT E — THE COMPLIANCE SURFACE\n\n`);
+w(
+  `Extract C states the rules. This extract is the corpus text those rules bind, so you can test whether a rule was followed rather than whether the corpus feels rigorous. ` +
+    `**It is selected and the exclusions are named in each subsection.** Every needle is printed beside its count: a count with an unstated scope is wrong by an amount nobody can see, and that includes the counts in this document.\n\n`,
+);
+
+w(`## E.0 — What a data-only reviewer CANNOT test, and should not try\n\n`);
+w(
+  `Four of the rules in Extract C are about **rendering**, and you are reading data. Nothing here can settle them, and a finding that assumes it can will be wrong:\n\n` +
+    `- **the caveat non-truncation rule** — whether a qualification survives into a dense table is a property of the page, not the record. The ${[...ledger, ...series].filter((r) => r.caveat).length} caveats are correct in the data and that is not the question the rule asks.\n` +
+    `- **the absence-renders-unlike-a-finding rule** — same reason.\n` +
+    `- **the guarded-marks and render-audit gates** — they assert about built HTML.\n` +
+    `- **the seam rendering rules** — a seam is a visual object.\n\n` +
+    `What you CAN test from here is everything that lives in the text: whether an absence claim states its search, whether a stated reason matches its own definition, whether a correction says what it withdrew, whether a claim about existence was rewritten as a claim about the documents.\n\n`,
+);
+
+w(`## E.1 — The strongest absence claims, in full — ${STRONG.length} entries\n\n`);
+w(
+  `The absence vocabulary has four values and they are not equally strong. \`withheld\` requires an identifiable refusal to a specific request. \`never-defined\` asserts that **no agreed definition exists anywhere**, which is the widest claim about the world in the whole schema. And \`reasonDisputed\` asserts that the holder's own stated reason is contradicted by evidence. ` +
+    `All ${STRONG.length} entries carrying one of those three are printed here in full — ${unmeasuredAll.filter((a) => a.u.reasonKind === 'withheld').length} \`withheld\`, ${unmeasuredAll.filter((a) => a.u.reasonKind === 'never-defined').length} \`never-defined\`, ${unmeasuredAll.filter((a) => a.u.reasonDisputed).length} disputed, deduplicated. ` +
+    `**Test each against its own definition in Extract C**, and against the stated-search rule: does the \`why\` state a search that was run, or does it state that nothing was found?\n\n`,
+);
+for (const a of STRONG) {
+  w(`**${a.id}** (${a.layer}) · \`${a.u.reasonKind}\`${a.u.reasonDisputed ? ` · **reasonDisputed**, \`${a.u.disputeKind ?? 'kind not given'}\`` : ''} — ${esc(a.title)}\n\n`);
+  w(`- *What is not measured:* ${String(a.u.what).replace(/\s*\n\s*/g, ' ').trim()}\n`);
+  w(`- *Why no figure exists:* ${String(a.u.why).replace(/\s*\n\s*/g, ' ').trim()}\n`);
+  if (a.u.wouldFill) w(`- *What would close it:* ${String(a.u.wouldFill).replace(/\s*\n\s*/g, ' ').trim()}\n`);
+  w('\n');
+}
+
+w(`## E.2 — The rest of the absence population — ${REST.length} entries, ids only\n\n`);
+w(
+  `**Ids only, and that is a deliberate cut you should hold against this document.** These ${REST.length} entries carry \`not-published\` or \`not-collected\` without a dispute flag. ` +
+    `Both are claims about the world and both inherit the stated-search rule in full — but the \`why\` is where a search is stated, and printing ${REST.length} of them would have crowded out the rules this pass exists to test. ` +
+    `**So the stated-search rule cannot be tested against these from this file.** They are listed so the population is visible: a reviewer shown only the ${STRONG.length} strongest claims would judge the vocabulary on its narrowest cases and conclude it is applied more carefully than it is. ` +
+    `If the sample in E.1 makes you suspect a pattern here, say so and name what you would need.\n\n`,
+);
+for (const k of ['not-published', 'not-collected', 'withheld', 'never-defined']) {
+  const g = REST.filter((a) => a.u.reasonKind === k);
+  if (!g.length) continue;
+  w(`**\`${k}\`** — ${g.length}: ${g.map((a) => a.id).join(' · ')}\n\n`);
+}
+
+w(`## E.3 — Claims about what EXISTS — ${existenceHits.length} candidate sentences across ${new Set(existenceHits.map((h) => h.id)).size} records\n\n`);
+w(
+  `The rule: a claim about what exists is not a claim about what the sources contain, and only the second is checkable. *"No other body publishes this"* asserts something no retrieval can establish; *"no other publisher was located"* states the observation actually made. ` +
+    `The mechanical test is in Extract C and it is worth restating: **could a single document, if it turned up tomorrow, falsify the sentence without any figure in the record changing?** If yes, it is a claim about existence and has to rest on what was searched.\n\n`,
+);
+w('```\nNEEDLE  ' + String(EXISTENCE_NEEDLE) + `\nFIELDS  ${PROSE_FIELDS.join(' ')}\nSCOPE   ledger + provenance + series, sentence-split on [.!?]\n\`\`\`\n\n`);
+w(
+  `**This is a CANDIDATE LIST and most of it will be correctly grounded.** The needle matches the phrasing, not the defect; the corpus has already rewritten several of these onto what was searched, and those rewrites match too. ` +
+    `What is wanted is the ones where the surrounding text does not carry a search.\n\n`,
+);
+for (const h of existenceHits) w(`- **${h.id}** \`${h.field}\` — ${esc(h.sent)}\n`);
+w('\n');
+
+w(`## E.4 — Commitment states asserted in prose — ${stateHits.length} sentences across ${new Set(stateHits.map((h) => h.id)).size} records\n\n`);
+w(
+  `The four commitment states are **prose only**: there is no field, nothing validates them, and no gate can see them. That makes this the least-guarded vocabulary in the instrument and the easiest place for a state to be asserted where its own definition does not fit. ` +
+    `The needle excludes the statutory-citation form by requiring the bracket not to follow a word character or a closing bracket.\n\n`,
+);
+w('```\nNEEDLE  ' + String(STATE_NEEDLE) + '\nEXCLUDES  12(1)(c), 239AA(7)(b), 370(1)(d) and the like\n```\n\n');
+w(
+  `**Note before you read them: the corpus runs THREE different \`(a)\`–\`(d)\` vocabularies in these same fields** — the commitment states, a three-part different-facts criterion, and ordinary list markers. Distinguishing them is part of the test. ` +
+    `And a token can MENTION a state rather than assert one: *"cannot reach (c) abandoned"* rules a state out.\n\n`,
+);
+for (const h of stateHits) w(`- **${h.id}** \`${h.field}\` — ${esc(h.sent)}\n`);
+w('\n');
+
+w(`## E.5 — Corrections in full field text — ${correctionFields.length} fields\n\n`);
+w(
+  `Extract D indexes these; this prints them, because the convention can only be judged on the sentence. The rule is that a correction is made in the record itself and **the withdrawn wording survives inside the sentence that withdraws it** — so the wrong figure is still on the page by design. ` +
+    `Test: does each one name what it withdrew, why the old form was wrong, and in which direction the error ran? A correction that says only *"corrected"* fails the convention it claims to follow.\n\n`,
+);
+for (const c of correctionFields) {
+  w(`**${c.id}** \`${c.path.replace(/\.\d+\./g, '[].')}\`\n\n${c.text}\n\n`);
+}
+
+w(`## E.6 — The filing rule's surface — ${defenceLens.length} records under the \`defence-sector\` lens\n\n`);
+w(
+  `The filing rule in Extract C is settled and specific: acquisition cost and payment schedule file one domain, indigenisation share and offsets file another, and the lens goes on all of them. It exists because the same procurement generates records that belong in different places. ` +
+    `The domain each record actually took is printed beside it.\n\n`,
+);
+w('| record | domains | lenses | verdict |\n|---|---|---|---|\n');
+for (const r of defenceLens) w(`| ${r.id} | ${(r.domains ?? []).join(', ')} | ${(r.lenses ?? []).join(', ')} | \`${r.assessment}\` |\n`);
+w('\n');
+
+/* --------------------------------------------------------------- compose and emit */
+
+const SHARED = ['brief', 'limits', 'gates'];
+
+const FILES = [
+  {
+    file: 'adversarial-pass-input.md',
+    title: 'Adversarial review pass — input document',
+    subtitle: '*The combined document. Three independently runnable passes are cut from it; see the note at the end.*',
+    contents: ['A', 'B', 'C', 'D', 'E'],
+    focus: '**All five extracts are here.** If you are running this as one review, read Extract A first: it is the only complete one, and a pattern found there is a pattern in the corpus.',
+    body: [...SHARED, 'A', 'B', 'C', 'D', 'E', 'omissions'],
+  },
+  {
+    file: 'pass-a-structural.md',
+    title: 'Adversarial review — PASS A, structural',
+    subtitle: '*One of three independent passes. The other two are not in this file and you are not expected to have read them.*',
+    contents: ['A', 'C'],
+    focus:
+      '**This pass exists for finding type 4 — a pattern across records that no single record reveals.** Extract A is COMPLETE: every ledger and provenance record is here, none sampled. ' +
+      'So a distribution you find is the corpus’s distribution, not a selection effect. Look at the cross-tabulations before the individual blocks.',
+    body: [...SHARED, 'A', 'C', 'omissions'],
+  },
+  {
+    file: 'pass-b-deep.md',
+    title: 'Adversarial review — PASS B, deep reading',
+    subtitle: '*One of three independent passes. The other two are not in this file and you are not expected to have read them.*',
+    contents: ['B', 'C', 'D'],
+    focus:
+      '**This pass exists for finding types 1 and 2 — a verdict its own record does not support, and a claim stronger than its source.** ' +
+      'Every record here is given in full, with its sources and their tiers. ' +
+      '**These records are selected for trouble and the criteria say how**, so do not read the density of problems here as the density in the corpus; Pass A holds the complete population.',
+    body: [...SHARED, 'B', 'C', 'D', 'omissions'],
+  },
+  {
+    file: 'pass-c-method.md',
+    title: 'Adversarial review — PASS C, method compliance',
+    subtitle: '*One of three independent passes. The other two are not in this file and you are not expected to have read them.*',
+    contents: ['C', 'E', 'D'],
+    focus:
+      '**This pass exists for finding types 3 and 5 — an absence asserted without a search, and a rule the corpus states but did not follow.** ' +
+      'Extract C is the rulebook and Extract E is the text each rule binds. Read the rule, then read what it governs, and report the gap. ' +
+      '**Start with E.0**, which says which rules cannot be tested from data at all.',
+    body: [...SHARED, 'C', 'E', 'D', 'omissions'],
+  },
+];
+
+const CUT_NOTE =
+  `---\n\n## How this document is cut into three passes\n\n` +
+  `The same content is emitted as one combined file and as three independently runnable passes, from one generator, with no second copy of any shared block. ` +
+  `Each pass carries the brief, the known limits, the gate scopes and Extract C — the method — because a reviewer who cannot see the rule cannot catch the rule being broken, and a reviewer who does not know the limits spends budget rediscovering them.\n\n` +
+  `| file | carries | for |\n|---|---|---|\n` +
+  `| \`pass-a-structural.md\` | A + C | patterns across the complete population |\n` +
+  `| \`pass-b-deep.md\` | B + C + D | verdicts against their own evidence, claims against their sources |\n` +
+  `| \`pass-c-method.md\` | C + E + D | rule-following, and absences asserted without a search |\n` +
+  `| \`adversarial-pass-input.md\` | A + B + C + D + E | the combined document |\n\n` +
+  `**Why three and not one.** A reviewer given 500 KB anchors on whatever it read first, and one review produces one set of priors applied to everything. Three reviews with no shared context cannot contaminate each other, and where two of them independently reach the same finding, that agreement is evidence in a way one reviewer's confidence is not.\n\n`;
+
+const emitted = [];
+for (const f of FILES) {
+  const body = opening(f) + S(...f.body) + (f.file === 'adversarial-pass-input.md' ? CUT_NOTE : '');
+
+  // Self-description checks, per file. A document that misstates its own contents invites a
+  // reviewer to discount everything in it, and these have caught real drift before.
+  if (f.body.includes('B')) {
+    const headings = (body.match(/^### B\.\d+ · /gm) ?? []).length;
+    if (headings !== DEEP.length) {
+      console.error(`FAILED ${f.file} — declares ${DEEP.length} deep records, emitted ${headings} headings`);
+      process.exit(1);
+    }
+  }
+  if (f.body.includes('A')) {
+    for (const r of [...ledger, ...provenance]) {
+      if (!body.includes(`**${r.id}**`)) {
+        console.error(`FAILED ${f.file} — Extract A is declared complete but ${r.id} does not appear`);
+        process.exit(1);
+      }
+    }
+  }
+  // Every pass must carry the shared blocks. Asserted by content, not by the composition list,
+  // because the list is what a mistake would be made in.
+  for (const needle of [GATES.split('\n')[3] ?? 'VALID', 'Known limits', 'EXTRACT C — METHOD', 'Tie every finding to a record id']) {
+    if (!body.includes(needle)) {
+      console.error(`FAILED ${f.file} — shared block missing, needle not found: ${needle.slice(0, 50)}`);
+      process.exit(1);
+    }
+  }
+
+  writeFileSync(join(ROOT, 'review', f.file), body);
+  emitted.push({ file: f.file, bytes: Buffer.byteLength(body), lines: body.split('\n').length });
+}
+
+/**
+ * The section table, emitted by the generator rather than measured by hand afterwards.
+ *
+ * Earned: a hand-built table of these sizes was reported once and missed a whole row, carried one
+ * stale figure, rounded two by hand and compared a character count against a byte count — a
+ * 13,163-byte discrepancy across five causes, in a report about a document whose subject is
+ * unreliable self-description. A table the tool prints cannot omit a row that exists.
+ */
+const sectionTable = [...SECTIONS.keys()].map((k) => ({ section: k, bytes: Buffer.byteLength(S(k)) }));
+const sectionSum = sectionTable.reduce((n, r) => n + r.bytes, 0);
+
+writeFileSync(
+  join(ROOT, 'review', 'pass-sizes.txt'),
+  `Emitted by tools/gen-adversarial-pass-input.mjs at ${HEAD}. ALL FIGURES ARE BYTES, never characters.\n\n` +
+    `SECTIONS (built once, shared between files)\n` +
+    sectionTable.map((r) => `  ${r.section.padEnd(12)} ${r.bytes.toLocaleString().padStart(9)}`).join('\n') +
+    `\n  ${'sum'.padEnd(12)} ${sectionSum.toLocaleString().padStart(9)}\n\n` +
+    `FILES (opening block differs per file; shared sections are byte-identical across them)\n` +
+    emitted.map((e) => `  ${e.file.padEnd(28)} ${e.bytes.toLocaleString().padStart(9)} bytes  ${e.lines.toLocaleString().padStart(6)} lines`).join('\n') +
+    '\n',
+);
+
 console.log(
-  `adversarial-pass-input OK — ${ledger.length} ledger + ${provenance.length} provenance in Extract A · ` +
-    `${DEEP.length} in Extract B (${DROPPED_BULK.length} more in its appendix) · ${CORRECTED.size + CORRECTED_SERIES.size} corrected records in Extract D · ` +
-    `${bytes.toLocaleString()} bytes, ${body.split('\n').length.toLocaleString()} lines -> ${OUT.replace(`${ROOT}/`, '')}`,
+  `adversarial-pass-input OK — ${ledger.length} ledger + ${provenance.length} provenance in A · ${DEEP.length} in B (+${DROPPED_BULK.length} appendix) · ` +
+    `${STRONG.length} strong absences, ${existenceHits.length} existence claims, ${correctionFields.length} correction fields in E\n` +
+    emitted.map((e) => `  ${e.file.padEnd(28)} ${e.bytes.toLocaleString().padStart(9)} bytes  ${e.lines.toLocaleString().padStart(6)} lines`).join('\n') +
+    `\n  section byte sum ${sectionSum.toLocaleString()} -> review/pass-sizes.txt`,
 );
