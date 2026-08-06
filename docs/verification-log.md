@@ -10852,3 +10852,47 @@ to 34.5 MB, six of nine being annual reports. Robust to decide with; not a figur
 1141/1141 · `enum-stamp` 2 fixtures, 8 lenses / 14 domains · `figure-consistency` 18 declared claims,
 5 rounding artefacts · `no-bare-root` 0 new, 0 stale, 277 allowlisted · `validate:selftest` 23/23
 validator rules, 2/2 output gates · `typecheck` clean.
+
+### Item 1 — the 479-URL response sweep. REPORT ONLY, nothing corrected
+
+`tools/source-response-check.mjs`, all 479 distinct URLs from 622 records, ranged GET with a 2 MB
+ceiling and the 1.1.1.1 fallback. **185 reachable only through the fallback** — the standing
+environment fact, not a finding.
+
+**86 flagged raw; 19 are defects in the SWEEP and are named, not dropped quietly.** `stub:captcha` on
+5 large bodies — the signature was a word search and fired on a **100 KB Wikipedia article** carrying
+`CaptchaNeededForGenericEdit` in MediaWiki's JS config; the tool now requires a body under 25 KB.
+`js-shell` on 3 **truncated** bodies — density measured on the first 16 KB of a 206, and
+`tradingeconomics.com` carries 33,301 characters of text in full; no longer applied to a cut body.
+**11 HTTP 429, every one `comtradeapi.un.org`, every one 200 when fetched serially** — the sweep
+rate-limited itself at 8 concurrent, and banking them would have reported eleven live citations dead.
+Concurrency lowered to 4 with the hazard in the tool's header.
+
+**67 remain across 167 records, and that still overstates it: 40 are BARE DOMAIN ROOTS** (116
+records) — the population `no-bare-root` already tracks with 277 allowlisted legacy citations, and a
+root answering with a redirect or a landing page is what a root does. **27 are deep links** (53
+records): http-error 14 · no-response 7 · too-small 2 · empty 2 · js-shell 2 · not-a-pdf 1 ·
+type-mismatch 1 · stub:incapsula 1.
+
+**THE FINDING — 6 URLs return a 2xx that is not the cited document, across 13 records, and
+`url-check` passes all six.**
+- **601,485 bytes beginning `<?xml version="1.0"` served as `application/pdf`** — a PDF begins
+  `%PDF` — on **L-0114, P-79, P-80**.
+- **212-byte Incapsula interstitial** for the India Updated First NDC on **P-124**: the logged
+  `unfccc.int` stub, confirmed still live, and `pdftotext` accepts it.
+- **0 bytes, `application/octet-stream`**, for a `download.php?file=…pdf` on `ppac.gov.in`, on **L-0189**.
+- **58 bytes, `{"count":0,"data":[],"error":""}`** — a Comtrade query returning an EMPTY RESULT SET,
+  confirmed serially so it is not the rate limit — on **L-0191**.
+- **3,770-byte JS shell** at an Internet Archive wrapper for `udise.in` on **L-0106, P-63** and three
+  series — the archived snapshot is the shell, which is the `mea.gov.in` shape.
+- 307 with 0 bytes on `ncrb.gov.in/en/crime-india` (L-0121, P-83) — probably environment.
+
+**NOTHING CORRECTED, and the two reasons bind.** A citation change can move a verdict: **L-0114 is
+the pellet-injury record and L-0191 is the corpus's worked instance of the single-sided category,
+where the absence IS the finding** — a Comtrade query now returning `count: 0` is a research question,
+not a link fix. And a response is a fact about this machine, this moment and this user-agent; this
+phase has logged four estates changing behaviour mid-project and this sweep produced 19 artefacts of
+its own before triage. **The next step is per record, not per URL.**
+
+`source-response-check` stays report-only and out of the build: it needs the network and produced a
+22 per cent artefact rate on its first run.
