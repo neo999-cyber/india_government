@@ -650,6 +650,39 @@ document is the natural place, covers the period, and does not carry the item �
 document scanned in two cycles and no absence has been claimed, because the measured series stops
 before the question becomes answerable.
 
+**THE PROSE SHADOW — a prose field that RESTATES a structured value goes stale silently when the
+structured value moves, and no gate can see it.** Named 2026-08-06. The three render gates prove a
+prose field is THERE; none reads what it SAYS, so a sentence asserting `type` or `assessment` keeps
+asserting it after the field has moved, with every gate green and the data perfectly valid.
+
+**Earned by the Ruling 6 and 7 retypes.** L-0064 and L-0027 both carried *"This record is the shock"*
+in `shockExposure`. **Had the retype touched `type` alone, both records would have asserted a type
+they no longer carry** — and nothing would have reported it. Both were corrected in the same
+operation, which is the rule: **a structured value never moves alone. Search the corpus for prose
+restating it, in the same operation, and correct or withdraw every instance before the write.**
+
+**THE AXES MOST AT RISK ARE THE ONES A MECHANICAL CHECK CANNOT REACH, and that is the whole
+difficulty.** A scan can find a shadow only where the value's spelling cannot occur in ordinary
+prose. `no-objective`, `too-early`, `awaiting-adjudication`, `undated-commitment`,
+`evidence-withheld`, `overstates-pre-2014` are findable. **`shock`, `event`, `episode`, `reform`,
+`institutional`, `criterion`, `measure`, `time`, `worked`, `failed` are ordinary English words**, so
+the `type` and `contestedGround` axes — one of which is where the defect actually happened — return
+ZERO findable restatements at any precision. **A gate here would report clean on the axis that
+failed.**
+
+**And a mention of another value is USUALLY CORRECT, which is why this cannot be a token check.**
+Measured 2026-08-06 over 223 ledger and 127 provenance records: 73 restatements on findable tokens,
+32 naming a value other than the record's own, and **31 of the 32 are right** — value-boundary
+defences (*"Not awaiting-adjudication: nothing is pending before any body outside…"*) or dated
+rescoring history preserved under the correction convention. **One was stale**: L-0209's
+`revisitTrigger` still said what would move the record *"out of no-objective"* after the record had
+been rescored to `undated-commitment` and its `assessmentNote` rewritten — **the note was corrected
+in the rescore and the trigger beside it was not.**
+
+**The defect is therefore per-field, not per-record**: a rescore that rewrites one prose field leaves
+its siblings asserting the old value. `withdrawn-wording`'s sibling check is the nearest existing
+mechanism and it binds only fields carrying a correction marker.
+
 **A COUNT DERIVED FROM A KEYWORD SCAN IS NOT A FINDING UNTIL THE MEMBERS ARE READ, AND THE TERM LIST
 IS REPORTED WITH THE COUNT OR THE COUNT IS NOT REPORTED.** Both halves, and the second is what makes
 the first checkable. **Earned by four inflated counts of my own in three consecutive batches, every
