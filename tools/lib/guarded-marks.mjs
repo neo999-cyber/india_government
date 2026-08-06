@@ -32,4 +32,15 @@ export const MARKS = [
   // `bridgeNote` carries whether a break can be crossed at all, which is the most suppressible
   // thing in the record and the most dangerous to lose.
   { field: 'bridgeNote', layers: ['provenance'], each: (r) => (r.bridgeNote ? [r.bridgeNote] : []) },
+  // Added 2026-08-06, when the shared leaf enumeration first made this field visible to the gate at
+  // all: `competingAccounts` items are a `oneOf` of {holder, position} or a bare string, and the old
+  // walk only followed `items.properties`, so the whole field was outside both render gates without
+  // anyone deciding it should be. GUARDED rather than exempted, because it is the most literally
+  // delegatable thing in the corpus — it IS the competing view, on 81 records, and a summarising
+  // view that dropped it would leave a dispute record asserting a dispute it never shows.
+  {
+    field: 'competingAccounts',
+    layers: ['provenance'],
+    each: (r) => (r.competingAccounts ?? []).map((a) => (typeof a === 'string' ? a : a.position)).filter(Boolean),
+  },
 ];

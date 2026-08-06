@@ -10,7 +10,7 @@ import {
   resolvePairSide,
   series as allSeries,
 } from '@/lib/data';
-import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
+import { DOMAIN_LABELS, LENS_LABELS, TERM_SHORT } from '@/lib/format';
 import { denominatorBreaksFor, regimeFor, regimeNeighbours, roleInProvenance } from '@/lib/rules';
 import { CoverageUsageView } from '@/components/CoverageUsageView';
 import { ContestedPairView } from '@/components/ContestedPairView';
@@ -101,6 +101,15 @@ export default async function SeriesDetail({ params }: Props) {
         <span className="tag">{s.unit}</span>
         <span className="tag">{s.calendar === 'FY' ? 'fiscal year' : 'calendar year'}</span>
         <TierTag tier={s.tier} />
+        {/*
+          The lens axis, on the series' own page — see the note on the ledger detail page. 33 of the
+          54 series carrying a lens showed it nowhere on themselves.
+        */}
+        {(s.lenses ?? []).map((x) => (
+          <Link key={x} className="tag tag-lens" href={`/lenses/${x}/`}>
+            lens · {LENS_LABELS[x]}
+          </Link>
+        ))}
         {disputes.map((p) => (
           <Link key={p.id} className="tag" href={`/provenance/${p.id}/`}>
             {p.id}

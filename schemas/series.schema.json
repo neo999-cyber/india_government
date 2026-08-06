@@ -262,14 +262,14 @@
         "boolean",
         "null"
       ],
-      "description": "Direction of merit. true = higher is better, false = lower is better, NULL = the series has no agreed direction and must render with no directional colour at all. Null is a real value, not a missing one: a conviction rate and an enforcement count are read differently by different readers, and asserting a direction would take a side."
+      "description": "Direction of merit. true = higher is better, false = lower is better, NULL = the series has no agreed direction and must render with no directional colour at all. Null is a real value, not a missing one: a conviction rate and an enforcement count are read differently by different readers, and asserting a direction would take a side. NOT A RENDERED VALUE: no view reads this field. 70 series declare a direction and `lib/types.ts` is the only file in the repository that mentions it, so the directional colour the line above requires has never existed. This exemption records a DEBT, not a decision: the field is unimplemented rather than deliberately unrendered, and it is logged as an open item. Written 2026-08-06 when the non-prose render assertion first made the gap visible."
     },
     "xAxis": {
       "enum": [
         "calendar-year",
         "lok-sabha-term"
       ],
-      "description": "What the period axis counts. Defaults to calendar-year. lok-sabha-term means each point is a Lok Sabha term identified by its first year, so the spacing is electoral rather than annual and the points must not be read as a yearly series."
+      "description": "What the period axis counts. Defaults to calendar-year. lok-sabha-term means each point is a Lok Sabha term identified by its first year, so the spacing is electoral rather than annual and the points must not be read as a yearly series. NOT A RENDERED VALUE: no view reads this field. Two series declare `lok-sabha-term` and both are rendered as an ordinary yearly series, which is what the sentence above forbids — so this is a LIVE RENDERING DEFECT on those two records and not merely an unrendered field. Exempted so the gate reports the debt rather than blocking every build on it; logged as an open item. Written 2026-08-06."
     },
     "denominator": {
       "type": [

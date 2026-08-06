@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * FIELD-RENDER AUDIT — does every prose field reach the page of the record that declares it?
+ * FIELD-RENDER AUDIT — does every field reach the page of the record that declares it?
  *
  * WHY THIS EXISTS. `reachability` guards a LIST of marks. A field absent from that list is
  * unguarded BY CONSTRUCTION — not by oversight — and nothing anywhere fails. Phase 15 found
@@ -27,6 +27,19 @@
  * A value is counted as rendered only if it appears WHOLE. A truncated match is a fail here, which
  * is the same standard CLAUDE.md rule 3a sets for caveats.
  *
+ * NON-PROSE FIELDS ARE IN SCOPE SINCE 2026-08-06, and their absence was the largest remaining hole
+ * in this instrument's rendering guarantees. Both render gates used to filter on
+ * `!enum && !format && !pattern` — so every verdict, tier, stated reason, boolean and formatted
+ * number in the corpus was outside every render assertion BY CONSTRUCTION. `disputeKind` is the
+ * proven instance: schema-REQUIRED whenever `reasonDisputed` is true, correct in the data on all 19
+ * entries, and read by no view for the whole of its life.
+ *
+ * A non-prose value cannot be looked for as itself — `assessment: "no-objective"` renders as
+ * "No stated objective" — so each one declares HOW it renders in `tools/lib/value-renderings.mjs`,
+ * and the labels there are parsed out of the modules that render them rather than retyped. A field
+ * with neither a declaration nor an exemption fails `no-unguarded-prose-field`, which is where the
+ * authoring-time half of this pair lives.
+ *
  * Usage:
  *   node tools/field-render-audit.mjs              # all layers, summary + any failures
  *   node tools/field-render-audit.mjs --verbose    # per-field counts even when clean
@@ -34,6 +47,8 @@
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { leafFields, isProse, valuesAt } from './lib/schema-fields.mjs';
+import { RENDERINGS, acceptedForms, EXEMPT_NON_PROSE } from './lib/value-renderings.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'out');
@@ -45,41 +60,13 @@ if (!existsSync(OUT)) {
   process.exit(2);
 }
 
-/** Prose fields, DERIVED from each schema rather than listed: string, no enum/format/pattern. */
-function proseFields(schemaName) {
-  const s = JSON.parse(readFileSync(join(ROOT, 'schemas', `${schemaName}.schema.json`), 'utf8'));
-  const out = [];
-  const walk = (props, prefix) => {
-    for (const [k, v] of Object.entries(props || {})) {
-      if (v.type === 'string' && !v.enum && !v.format && !v.pattern) {
-        out.push({ path: prefix + k, description: v.description || '' });
-      }
-      if (v.type === 'array' && v.items?.type === 'object') walk(v.items.properties, `${prefix}${k}[].`);
-      if (v.type === 'object') walk(v.properties, `${prefix}${k}.`);
-    }
+/** Fields of a layer, split by the shared enumeration so both gates cannot drift apart. */
+function fieldsOf(schemaName) {
+  const all = leafFields(schemaName);
+  return {
+    prose: all.filter((f) => isProse(f.def)).map((f) => ({ path: f.path, def: f.def })),
+    nonProse: all.filter((f) => !isProse(f.def)).map((f) => ({ path: f.path, def: f.def })),
   };
-  walk(s.properties, '');
-  return out;
-}
-
-/** Every value a record carries at a (possibly nested) field path. */
-function valuesAt(record, path) {
-  const parts = path.split('.');
-  let cur = [record];
-  for (const raw of parts) {
-    const isArr = raw.endsWith('[]');
-    const key = isArr ? raw.slice(0, -2) : raw;
-    const next = [];
-    for (const node of cur) {
-      if (node == null || typeof node !== 'object') continue;
-      const v = node[key];
-      if (v == null) continue;
-      if (isArr) { if (Array.isArray(v)) next.push(...v); }
-      else next.push(v);
-    }
-    cur = next;
-  }
-  return cur.filter((v) => typeof v === 'string' && v.trim().length > 0);
 }
 
 /**
@@ -112,7 +99,10 @@ function pageText(layer, id) {
   let raw = readFileSync(p, 'utf8');
   raw = raw.replace(/<script[^>]*>[\s\S]*?<\/script>/g, '');   // detail 1 — scripts FIRST
   raw = raw.replace(/<style[^>]*>[\s\S]*?<\/style>/g, '');
-  const stripped = raw.replace(/<[^>]+>/g, ' ');
+  // Attribute values a reader can act on. A URL reaches a reader as an href and nowhere else, so
+  // stripping tags before looking for it would report every citation invisible.
+  const attrs = [...raw.matchAll(/(?:href|src|datetime|title|aria-label)="([^"]*)"/g)].map((m) => m[1]).join(' ');
+  const stripped = `${raw.replace(/<[^>]+>/g, ' ')} ${attrs}`;
   const unescaped = stripped                                    // detail 2 — normalise
     .replace(/&#x27;/g, "'").replace(/&#39;/g, "'").replace(/&quot;/g, '"')
     .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
@@ -133,29 +123,62 @@ function loadLayer(layer) {
 
 const LAYERS = ['ledger', 'provenance', 'series'];
 let invisible = 0;
-let checkedFields = 0;
+let proseFieldCount = 0;
+let nonProseFieldCount = 0;
+let exemptCount = 0;
+const undeclared = [];
 const rows = [];
 
 for (const layer of LAYERS) {
   const records = loadLayer(layer);
-  const fields = proseFields(layer);
+  const { prose, nonProse } = fieldsOf(layer);
   const cache = new Map();
-  for (const f of fields) {
-    let carried = 0, rendered = 0, noPage = 0;
+  const textFor = (id) => {
+    if (!cache.has(id)) cache.set(id, pageText(layer, id));
+    return cache.get(id);
+  };
+
+  const audit = (f, formsFor, group) => {
+    let carried = 0;
+    let rendered = 0;
+    let noPage = 0;
+    const examples = [];
     for (const r of records) {
       const vals = valuesAt(r, f.path);
       if (vals.length === 0) continue;
+      // A declaration may say a value renders nothing on some branch — a false boolean with no
+      // declared phrase. Those records carry no assertable value and are not counted against it.
+      const assertable = vals.filter((v) => formsFor(v) !== null);
+      if (assertable.length === 0) continue;
       carried += 1;
-      if (!cache.has(r.id)) cache.set(r.id, pageText(layer, r.id));
-      const text = cache.get(r.id);
+      const text = textFor(r.id);
       if (text === null) { noPage += 1; continue; }
-      if (vals.every((v) => text.includes(norm(v)))) rendered += 1;
+      if (assertable.every((v) => formsFor(v).some((form) => text.includes(norm(form))))) rendered += 1;
+      else if (examples.length < 4) examples.push(`${r.id} -> ${JSON.stringify(assertable).slice(0, 70)}`);
     }
-    if (carried === 0) continue;
-    checkedFields += 1;
+    if (carried === 0) return;
+    if (group === 'prose') proseFieldCount += 1; else nonProseFieldCount += 1;
     const missing = carried - rendered - noPage;
-    rows.push({ layer, path: f.path, carried, rendered, missing, noPage });
+    rows.push({ layer, path: f.path, group, carried, rendered, missing, noPage, examples });
     if (missing > 0) invisible += missing;
+  };
+
+  for (const f of prose) audit(f, (v) => [String(v)], 'prose');
+
+  for (const f of nonProse) {
+    const key = `${layer}.${f.path}`;
+    const rendering = RENDERINGS[key];
+    if (!rendering) {
+      // Exempted by name in its own schema description, or it would have failed
+      // no-unguarded-prose-field before this gate ever ran. Counted, not audited.
+      if ((f.def.description ?? '').includes(EXEMPT_NON_PROSE)) { exemptCount += 1; continue; }
+      // Collected, never thrown on sight. A gate that dies on the first undeclared field reports
+      // one name where the operator needs the set — and the set is what says whether this is an
+      // oversight or a class.
+      undeclared.push(key);
+      continue;
+    }
+    audit(f, (v) => acceptedForms(rendering, v), 'non-prose');
   }
 }
 
@@ -167,10 +190,12 @@ if (VERBOSE || bad.length) {
     if (r.layer !== lastLayer) { console.log(`\n  ${r.layer}`); lastLayer = r.layer; }
     const flag = r.missing > 0 ? '  ** INVISIBLE **' : '';
     console.log(
-      `    ${r.path.padEnd(width)}  carried ${String(r.carried).padStart(4)}` +
+      `    ${r.path.padEnd(width)}  ${r.group === 'prose' ? 'prose    ' : 'non-prose'}` +
+      `  carried ${String(r.carried).padStart(4)}` +
       `  rendered ${String(r.rendered).padStart(4)}` +
       `  missing ${String(r.missing).padStart(4)}${flag}`,
     );
+    for (const e of r.examples ?? []) console.log(`        e.g. ${e}`);
   }
   console.log('');
 }
@@ -178,8 +203,20 @@ if (VERBOSE || bad.length) {
 const perLayer = LAYERS.map((l) => {
   const rs = rows.filter((r) => r.layer === l);
   const m = rs.reduce((a, r) => a + r.missing, 0);
-  return `${l} ${rs.length} field(s)/${m} invisible`;
+  const pr = rs.filter((r) => r.group === 'prose').length;
+  return `${l} ${pr} prose + ${rs.length - pr} non-prose/${m} invisible`;
 }).join(' · ');
+
+if (undeclared.length) {
+  console.error(
+    `field-render-audit FAILED — ${undeclared.length} non-prose field(s) neither declared nor exempted:\n` +
+    undeclared.map((u) => `  ${u}`).join('\n') +
+    '\n\n  Declare how each renders in tools/lib/value-renderings.mjs, or write' +
+    `\n  "${EXEMPT_NON_PROSE} <reason>" into that field\'s own description in its schema.` +
+    '\n  There is no third state: a field nobody has decided about is unguarded by construction.',
+  );
+  process.exit(1);
+}
 
 if (invisible > 0) {
   console.error(
@@ -190,4 +227,7 @@ if (invisible > 0) {
   );
   process.exit(1);
 }
-console.log(`field-render-audit OK — ${checkedFields} prose field(s) across ${LAYERS.length} layers, 0 invisible · ${perLayer}`);
+console.log(
+  `field-render-audit OK — ${proseFieldCount} prose + ${nonProseFieldCount} non-prose field(s) across ` +
+  `${LAYERS.length} layers, 0 invisible, ${exemptCount} exempted by name · ${perLayer}`,
+);

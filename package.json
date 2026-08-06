@@ -32,7 +32,8 @@
     "field-render-audit": "node tools/field-render-audit.mjs",
     "record-history": "node tools/gen-record-history.mjs",
     "adversarial-pass-input": "node tools/gen-adversarial-pass-input.mjs",
-    "pass-input": "node tools/gen-adversarial-pass-input.mjs"
+    "pass-input": "node tools/gen-adversarial-pass-input.mjs",
+    "regen:render-fixtures": "node tools/regen-render-fixtures.mjs"
   },
   "dependencies": {
     "next": "16.2.12",

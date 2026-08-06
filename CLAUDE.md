@@ -506,13 +506,49 @@ and leave it off the list.** An unrendered field with no such line is a defect; 
 satisfy this rule is worse than the defect, and a mark rendered somewhere other than the page of the
 record declaring it does not count.
 
+**A GUARD'S FIELD FILTER IS A SCOPE, AND `!enum && !format && !pattern` WAS THE LARGEST ONE IN THIS
+INSTRUMENT.** Both render gates selected prose by that test, so every verdict, tier, stated reason,
+boolean and formatted number in the corpus sat outside every render assertion **by construction** —
+not by oversight, and not visibly. `disputeKind` is the proven instance: schema-REQUIRED whenever
+`reasonDisputed` is true, correct in the data on all 19 entries, and read by no view for the whole of
+its life. It was found by hand. **Closed 2026-08-06, and the numbers are the argument: turning the
+non-prose half on produced 75 more invisible record-fields and 2 fields nobody had decided about at
+all.**
+
+**A non-prose value cannot be looked for as itself, which is why this needed a mechanism and not
+care.** `assessment: "no-objective"` renders as *"No stated objective"*; `bridgeExists: false` as
+*"no bridge"*; `264500000` as *"26,45,00,000"*. An audit hunting the raw token reports a field
+invisible when it renders perfectly — which already happened, in the sweep that claimed 96 invisible
+`reasonKind` values that were all on the page under the view's own labels. So **every non-prose field
+declares how it renders, in `tools/lib/value-renderings.mjs`, and the labels there are PARSED OUT OF
+THE MODULES THAT RENDER THEM rather than retyped.** A map that has moved or changed shape aborts the
+gate; it never falls back.
+
+**The structure is the same as prose and there is still no third state: DECLARED or EXEMPTED BY NAME
+in the field's own schema description.** Two fields took the exemption and both are debts rather than
+decisions, and the exemption text says so — `higherIsBetter`, carried by 70 series and read by
+`lib/types.ts` alone, so the directional colour its own description requires has never existed; and
+`xAxis`, where two series declare `lok-sabha-term` and are rendered as an ordinary yearly series,
+**which is what that field's own description forbids.** An exemption that claims a decision where
+there was none is worse than the gap, so where it is a debt the exemption records the debt.
+
+**Enumerate the complement, never the shapes you know about.** Prose is defined positively — a
+string with no enum, format or pattern — and non-prose is *everything else*, so a JSON Schema
+construct nobody anticipated lands IN scope rather than falling out of it. The old walk tested for
+known shapes and missed `competingAccounts` entirely, because its items are a `oneOf` and the walk
+only followed `items.properties`: the most literally delegatable field in the corpus, on 81 records,
+outside both render gates with nobody having decided it should be. The enumeration now lives once,
+in `tools/lib/schema-fields.mjs`, because two gates with a copy each is the same defect waiting.
+
 **Run the field-render audit every phase at stage 7 and state its count, per layer.** It is a tool —
 `npm run field-render-audit` — and it is in the build, so this instruction is now mechanical rather
 than remembered. For each schema field it counts the records carrying it against the records whose
-own built page contains it; any non-zero difference is invisible data. **All three layers were swept
-on 2026-08-05: ledger 15 fields, provenance 6, series 11, 0 invisible.** The series sweep found the
-defect at a second site — `points[].note` rendered nowhere on any PEER series, because the panel
-branch of `SeriesTable` had no note cell at all.
+own built page contains it; any non-zero difference is invisible data. **Swept 2026-08-06 with the
+non-prose half live: 36 prose + 42 non-prose fields across three layers, 0 invisible, 2 exempted by
+name.** The 2026-08-05 sweep read ledger 15, provenance 6, series 11 — prose only, and that was the
+whole of what any render gate could then see. The series sweep found the defect at a second site —
+`points[].note` rendered nowhere on any PEER series, because the panel branch of `SeriesTable` had no
+note cell at all.
 
 **Normalise the page and the value with the SAME function, and never hand-roll a second one.** The
 audit's first run reported 55 invisible values and 53 were its own artefacts: period labels render
