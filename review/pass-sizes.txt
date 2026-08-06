@@ -1,4 +1,4 @@
-Emitted by tools/gen-adversarial-pass-input.mjs at 059912b. ALL FIGURES ARE BYTES, never characters.
+Emitted by tools/gen-adversarial-pass-input.mjs at 6b72097. ALL FIGURES ARE BYTES, never characters.
 
 SECTIONS (built once, shared between files)
   brief            3,105

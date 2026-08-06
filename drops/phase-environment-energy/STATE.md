@@ -2945,3 +2945,313 @@ undeclared · Arc B's one capability · the `STATE.md` archive split (proposed) 
 descriptions · the tier/vintage asymmetry. **Newly proposed and not built:** the source cache, scoped
 in section 2 above — hash always, bounded extract usually, raw bytes never, and report-only out of the
 build because it needs the network.
+
+---
+
+# STRUCTURAL CYCLE, BATCH 5 — 2026-08-06. One normaliser; the cache costed; the joint design proposed
+
+`/data` untouched — `git diff --numstat -- data` returns nothing. No schema or enum contract moved.
+
+## 1. ONE NORMALISER, AND THE DEPLOY PATH IMPORTS IT
+
+Four ad-hoc checks in one session reported a correct page broken, all by the same mechanism, and each
+was fixed only in the reader that produced it. **The mechanism is now closed at the source.**
+
+`tools/lib/page-text.mjs` holds `norm` and `pageTextFromHtml`, extracted out of
+`field-render-audit` with its output byte-identical afterwards. Its header carries the four failures
+that earned it: an en dash against a hyphen; the `P-xx` linkifier making `"See P-26 ."`; **React's SSR
+comment separators, which become a SPACE if `<!-- -->` is stripped as a tag**, so `lens · Europe` reads
+`lens ·  Europe`; and a curly apostrophe against a straight needle.
+
+**`tools/deploy-check.mjs` replaces the hand-written deploy script.** It derives every needle from
+`/data` in the same operation, renders non-prose through `value-renderings.mjs`, enumerates fields
+through `schema-fields.mjs`, and normalises through the module above — **the same four imports the
+build gate uses**. Deterministic, evenly-spaced sample by sorted id, so a failure is reproducible and
+a re-run cannot "fix" a defect by not drawing it.
+
+**A same-form negative control on EVERY page**: a title belonging to a different record of that layer
+must be absent. Without it a proxy serving one page for every URL, or a fetch silently following a
+redirect to the index, passes every positive in the run.
+
+**Both assertion paths proven to fire**, by reintroducing the defects: the value assertion pointed at
+a string no page can carry, and the negative control pointed at the page's own title. **Sabotaged
+exit 1, 27 value assertions and the control both failing; clean exit 0 on the same record.** Live run:
+**27 record pages, 27 negative controls, 0 values missing.**
+
+**Not in the build, deliberately** — it needs the network and a live deployment, and a gate that fails
+when the host is slow blocks every commit on somebody else's uptime.
+
+**Rule written into `CLAUDE.md`:** *a verification reads the page through the gate's own normaliser,
+or it is not a check* — with the four failures, the reason the cost always runs in the worst
+direction, and the corollary that **a disagreement between the gate and an ad-hoc check is evidence
+about the check**.
+
+## 2. THE 212 MARKS — ACCOUNTED AGAINST THE GATE'S OWN OUTPUT
+
+`reachability --verbose` emits per field:
+
+```
+unmeasured 379/379 · caveat 234/234 · notes 329/329 · differentFactsNote 72/72 ·
+assessmentNote 173/173 · revisitTrigger 71/71 · bridgeNote 110/110 · competingAccounts 212/212
+```
+
+**1368 + 212 = 1580.** The whole delta is `competingAccounts` and nothing else moved.
+
+**The premise that one field per record should move it by 81 mistakes a per-record FIELD for a
+per-entry MARK LIST.** The `MARKS` contract is `each: (record) => string[]` — an array, not a value —
+and every entry it returns is a mark probed separately. `unmeasured` has behaved this way since it was
+added: **379 marks over 202 carrying records**, not 202.
+
+81 records carry **212 entries**: 3 records with 1 · **41 with 2** · 27 with 3 · 6 with 4 · 2 with 5 ·
+2 with 6. Sum 212, exactly the emitted figure. By shape, 146 entries are `{holder, position}` objects
+and 66 are bare strings — the `oneOf` that hid the field from the old walk in the first place.
+
+**Per-entry is not an accident of implementation, it is the only correct granularity for this field.**
+The median record carries two competing accounts, because two sides is what a dispute record IS. **A
+per-record mark would assert that ONE of the two reaches the page** — so a view rendering the first
+account and dropping the second would pass a guard whose entire purpose is that both are shown.
+
+## 3. THE CACHE, RE-COSTED — and raw bytes were ruled out without the cost being stated
+
+The previous batch said "raw bytes: no" and gave no number. Corrected here, **against a measured
+sample rather than remembered figures.**
+
+### What was measured, and its limits
+
+**A deterministic 40-URL sample of the 479 distinct URLs** (evenly spaced by sorted URL), HEAD with a
+12-second timeout. **13 returned a `Content-Length`; 9 of those exceed 10 KB and are plausibly the
+document.** Basis n=9. **The sample is not stratified by document type and n=9 is thin — this is an
+estimate with its basis stated, not a measurement of the corpus.**
+
+| shape | n | mean | sizes measured |
+|---|---:|---:|---|
+| PDF / xlsx | 6 | **15.2 MB** | 32.9 · 22.5 · 12.6 · 12.2 · 10.2 · 0.6 MB |
+| HTML | 3 | **248 KB** | 449 · 165 · 131 KB |
+
+**27 of 40 returned no `Content-Length` at all** — every `pib.gov.in` PressReleasePage, every
+`sansad.in` getFile, `egazette.gov.in`, `cag.gov.in`, `cea.nic.in`. **That is a fact about the HEAD
+response, not about the documents**: chunked transfer, or a server that declines HEAD. Confirming any
+of it needs a GET — **which costs what building the cache costs, and is itself an argument in the
+proposal below.**
+
+**Three sampled URLs returned something that is not the document**, and they are candidates rather
+than findings for the same reason: `indiabudget.gov.in/.../cen0221.pdf` answered **1,245 bytes of
+`text/html`**; `tutorial.gst.gov.in/.../final_monthly_gst_data...` answered **18 bytes of
+`application/pdf`**; `imf.org/en/Publications/WEO` answered **15 bytes**. An 18-byte PDF is not a PDF.
+**A GET would settle all three, and `url-check` passes every one of them today**, because it asserts
+that a URL resolves and never what it returns.
+
+### The three options, costed over 479 distinct URLs
+
+| | size | what it costs | what it preserves when a source REVISES | what it preserves when a source DISAPPEARS |
+|---|---:|---|---|---|
+| **hash only** | **116 KB** | one 247-byte entry per URL; a rotation of GETs to refresh | **That it changed, the date it changed, and every record resting on it.** Not one word of what it said, so the corpus can say *"the document behind L-0114 is not the document we read"* and nothing more | **Nothing.** The claim becomes unverifiable and the instrument can only record that it is |
+| **bounded extract** | **~4–20 MB** | the passage actually read, which the retrieval discipline already bounds — *"fetch what answers the question"* | **The quoted passage, so the change can be characterised**: a revised figure, a deleted paragraph, a reworded commitment. This is what turns a hash alert into a research finding | **The evidence for the specific claim**, which is what a reader needs. Not the document, and not enough to re-derive anything the record did not already quote |
+| **raw bytes** | **0.6–2.8 GB** | 2.81 GB on the measured PDF mean; 0.61 GB if PDFs average 3 MB. **1,000× the 2.7 MB `/data` layer at the low end** | Everything | Everything — **and this is the only option under which a disappeared source can still be read by someone who was not there** |
+
+### The judgement, restated with the cost visible
+
+**Raw bytes are not ruled out because they are expensive.** 0.6–2.8 GB is affordable storage. They
+are ruled out for three reasons the size figure does not carry, and the size is the least of them:
+
+1. **Re-hosting.** The deployment is public. Mirroring several hundred government PDFs, journalism and
+   NGO datasets is a **distribution decision**, not a storage one, and it is not this instrument's to
+   make quietly.
+2. **The repository is the wrong container.** Git stores every revision forever; a 20 MB PDF replaced
+   once costs 40 MB permanently, and `vercel deploy --prod` already **aborts on upload** because the
+   tree carries a 662-page `out/`.
+3. **It is the wrong artefact for the actual failure.** The failure this phase logged four times is a
+   *host changing behaviour* — the e-Gazette going from unreachable to live, `mea.gov.in` serving a JS
+   shell **whose Internet Archive snapshot is the same shell**, a client-rendered portal, a shared
+   TLS-reset fingerprint. **A hash detects every one of those; raw bytes detect none of them any
+   better.** What raw bytes uniquely buy is the disappeared-source case in the last column.
+
+**The recommendation is unchanged and now has its cost stated: hash for all 479, bounded extract for
+the citations a claim rests on, raw bytes never in this repository.** If the disappeared-source case
+is judged to matter, the answer is an external archive with a recorded location — not bytes in git.
+
+**And a cheap correction to this whole section, available for the asking: 479 GETs with
+`Content-Length` recorded would replace every estimate above with a measurement.** It was not run
+here because the sizing said items 1–3 are small and 479 government GETs against this machine's
+resolver is not.
+
+---
+
+# PROPOSAL — `commitmentState` AND THE `contested` SPLIT, AS ONE DESIGN
+
+**PROPOSAL ONLY. Nothing built, no enum touched, no schema edited.** Both are schema changes and
+therefore stops; this is the document they are agreed from.
+
+## Why they are one design and not two
+
+They fail the same way. Each is a judgement the corpus **already makes**, recorded only in prose,
+where nothing validates it, no gate sees it, and no reader can filter on it. Batch 10 established that
+no `state` field exists and that **nothing marks a record as a commitment record at all**; batch 14
+classified all 67 `contested` records by reading them. Both distributions are known, both are stable,
+and **both need the same thing to be safe: an assertion that a non-prose value reaches a reader** —
+which did not exist when they were scoped and does now.
+
+**And they must be designed together because they collide.** The corpus runs **three separate
+`(a)–(d)` vocabularies in the same prose fields** — commitment states, the `differentFacts` criteria,
+and ordinary list markers — across 24 records, 7 of which use two of them. **Bare letters are
+therefore ruled out on evidence, not on taste.** Both fields take named values.
+
+## FIELD 1 — `commitmentState`
+
+**What it is.** The state of the obligation a record's own `claimAtLaunch` created, as at `asOf`.
+It is **not** a verdict: `assessment` scores what happened, `commitmentState` says whether the thing
+is yet answerable. A record can be `partly` and `due-and-undelivered` at once, and today the second
+half is sayable only in prose.
+
+**Values, from CLAUDE.md's four states, named rather than lettered:**
+
+| value | definition | today's prose |
+|---|---|---|
+| `not-yet-due` | a trigger date or an observable condition is named and has not arrived | (a), 12 records |
+| `due-undelivered` | the trigger passed, with evidence of non-delivery | (b), 2 records |
+| `abandoned` | there is evidence of abandonment. **Absence of news is not this** | (c), **0 records** |
+| `no-trigger` | a total with no date, no phasing and no annual target: it has no trigger, so it is not `not-yet-due`; it can never fall due, so it cannot reach `due-undelivered`; and absence does not evidence abandonment, so it is not `abandoned` | (d), 1 record |
+
+**`abandoned` would ship with zero members and that is the point of declaring it.** Its emptiness is a
+finding — across 226 records the instrument has never once concluded that a commitment was abandoned —
+and a value that exists and is unused says that out loud, where a value that does not exist says
+nothing. The same argument was made for `overstates-pre-2014`, which sat unattested until P-122 used
+it.
+
+**WHAT MARKS A RECORD AS IN SCOPE, and it needs no new field.** A record is a commitment record when
+it carries **`claimAtLaunch`** — the field that records what the government said the thing would
+achieve. **89 of 226 records carry it.**
+
+**Tested rather than asserted: all 15 records that assert a commitment state in prose today carry
+`claimAtLaunch`, and none is outside the 89.** Zero misses, zero strays. The scope marker is already
+in the schema and already populated.
+
+**The tension the scope marker exposes, and it is a finding rather than an objection.** 13 records are
+scored `no-objective` — *"no objective was stated at announcement"* — **and carry a `claimAtLaunch`
+anyway** (L-0184, L-0187, L-0206, L-0208, L-0209, L-0210 among them). That is not a contradiction: it
+is exactly the `no-trigger` population, where something WAS announced and cannot be scored against
+itself. **`commitmentState: no-trigger` is the field that makes those 13 legible**, and at present a
+reader sees only `no-objective` and cannot tell them from the 60 `no-objective` records that carry no
+claim at all.
+
+**Cardinality:** required on the 89, absent on the other 137. Not optional-everywhere — an optional
+field on every record reproduces exactly the silence this is meant to end.
+
+## FIELD 2 — `contestedGround`
+
+**What it is.** What would settle the contest, on a record the instrument declines to score.
+**Not a hedge about confidence** — it is the answer to *"what would have to be true for this to
+resolve?"*, and for three of the seven values the honest answer is "nothing".
+
+**Values, from batch 14's read of all 67:**
+
+| value | n | what would settle it |
+|---|---:|---|
+| `criterion` | 22 | Nothing. The facts are agreed; the dispute is which frame governs |
+| `interpretation` | 13 | An authoritative reading of a document or statute — none given, or two inconsistent ones |
+| `evidence-withheld` | 11 | A specific figure or document that exists or is producible, and is not published |
+| `measure` | 10 | Nothing, but the rival measures are enumerable: several valid published measures of one object point opposite ways and none was committed to in advance |
+| `evidence-unobservable` | 5 | Nothing. The settling fact is a counterfactual, or unbuildable while the practice stands |
+| `time` | 4 | Elapsed time. The readings make divergent predictions |
+| *(residue)* | 2 | **Not a value.** L-0092 and L-0129 say `contested` is standing in for a value that does not exist |
+
+**The residue is not given a value, and that is deliberate.** Minting `other` would absorb exactly the
+two records that are evidence the vocabulary is short. They stay unvalued and the field stays
+optional-within-scope, so their absence is visible.
+
+**WHAT MARKS A RECORD AS IN SCOPE.** `assessment === 'contested'` — no marker needed, the verdict is
+the marker. **67 records at HEAD, and batch 14's 67 ids are exactly the 67 records carrying `contested`
+now**, checked at generation time by the extract generator on every run.
+
+**`disputeKind` does NOT transfer and this was tested.** Its two values are defined against *the stated
+reason for an absence*: `evidentiary` means the holder's reason is contradicted by evidence the data
+exists; `normative` means the facts are agreed and the characterisation is contested. **Neither has
+meaning applied to two readings of a measure.** Forcing 23 records into those two boxes was the batch-14
+proposal that was **withdrawn** — the names transfer, the definitions do not.
+
+## WHAT GATE BINDS THEM — and it exists now
+
+Both are enums, so both are **non-prose**, which until this week meant outside every render assertion
+by construction. That hole is closed. Landing each field means:
+
+1. **`no-unguarded-prose-field`** — declared in `tools/lib/value-renderings.mjs` or exempted by name.
+   No third state. Fires at authoring time, needs no build.
+2. **`field-render-audit`** — observes the built page and asserts the value reaches the record's own
+   page, through the one normaliser.
+3. **`validate`** — required-when-in-scope: `commitmentState` present iff `claimAtLaunch` is present;
+   `contestedGround` permitted only where `assessment === 'contested'`. **Both are conditional-required
+   rules of the shape `unmeasured` already uses** for `disputeKind` when `reasonDisputed` is true, so
+   the validator needs no new machinery.
+4. **`enum-stamp`** — the fixtures pick up the new values and the selftest fails on drift.
+5. **`tools/deploy-check.mjs`** — carries them to the deployed artefact for free, since it enumerates
+   from the schema rather than from a list.
+
+**And a label map in `lib/format.ts`, in the same commit**, because a value with no label renders as
+its own token and the renderings table would have to declare `identity` — which is legal and is
+almost never what a reader should see.
+
+## HOW THE BACKFILL RUNS — 89 + 67 records, and no file it never touched
+
+**The hazard is documented and specific.** A JSON round-trip is not a safe way to edit a file whose
+formatting you did not choose: **four whole-file reformats were caught this way**, each reported clean
+by the script that caused it. And **indentation is not uniform** — most ledger files and
+`provenance.json` are 1-space; `foreign-trade`, `education`, `baseline`, `kashmir-*` and
+`rights-institutions` are 2-space.
+
+**So the backfill is a per-record ANCHORED STRING INSERT, never a parse-and-serialise.**
+
+1. **Bound each record's span by its own id, to the next id** — never a fixed character window. A
+   `t[i:i+9000]` window missed L-0110's source because the record is longer than the window, and a
+   fixed window is a silent-miss generator: it finds the anchor on short records and misses it on long
+   ones with no sign which happened.
+2. **Anchor on the `"assessment"` line inside that span**, which every ledger record carries, and
+   insert the new key on the line after it. **Detect the indentation from the line being anchored on**,
+   never assume it.
+3. **ABORT on any anchor that is absent or occurs more than once in the span.** Write anchors that
+   abort, never anchors that shrug.
+4. **Declare the expected diff shape before the edit and abort on mismatch** — for `commitmentState`,
+   *89 insertions, 0 deletions, across the 9 ledger files that hold the 89*; for `contestedGround`,
+   *65 insertions, 0 deletions* (67 records less the 2 residue). Verify with `git diff --numstat`,
+   never with the writer's own count: **a non-zero report with an empty or wrong diff is a failure**.
+5. **A file with no in-scope record is never opened.** That is the "never touched" requirement, and it
+   is checkable: the numstat must name only the files holding in-scope records, and every other path
+   must be absent from the diff entirely.
+6. **The VALUES are not mechanical.** 15 records have a state asserted in prose and can be transcribed;
+   **the other 74 require a judgement per record**, and per the standing rule the judgement is made and
+   written per record, never swept. `contestedGround` has all 67 already classified by reading, so it
+   transcribes — but **the classification is a report and the rule is that a flag is checked against
+   the RECORD, not against the report that describes it**, so each one is re-read against its own
+   `caseFor`/`caseAgainst` before it is written.
+7. **Land the schema, the type, a view, the renderings declaration and the validator rule in ONE
+   commit**, then backfill in a second. A field that lands without its view renders nowhere while every
+   gate stays green — except that now, for the first time, one of them would not.
+
+## WHAT THIS PROPOSAL DOES NOT SETTLE
+
+- **Whether `commitmentState` should be required on all 89 or only where a state is determinable.**
+  Requiring it forces 74 judgements at once; permitting absence reintroduces the silence. My reading is
+  that required-on-89 is right and the work is the point, but it is the operator's call.
+- **Whether the 2 vocabulary-residue records get a value.** Leaving them unvalued is proposed above.
+- **Whether `no-objective` should be re-examined for the 13 records that carry a claim.** Naming them
+  `no-trigger` may make the verdict look wrong where it is right. **A shipped verdict changing is a
+  stop**, so nothing here proposes touching one.
+
+---
+
+# RESUME HERE — updated 2026-08-06, after structural-cycle batch 5
+
+**The joint `commitmentState` + `contested`-split design is PROPOSED and awaits agreement.** It is a
+schema change and therefore a stop. Everything it needs now exists: the non-prose render assertion,
+the scope markers (`claimAtLaunch` for one, the verdict itself for the other, both already populated
+and both tested against the known asserting population), and a backfill method that does not
+round-trip a file.
+
+**PASS A IS STILL BUILT AND STILL NOT RUN** — no non-Claude model is credentialled on this machine.
+
+**New this batch:** `tools/lib/page-text.mjs` is the one normaliser and `tools/deploy-check.mjs` is the
+deploy-control path, both proven to fire. `npm run deploy-check`.
+
+**Open, unchanged:** the two schema-exemption debts (`higherIsBetter`, `xAxis`) · `figure-consistency`'s
+mining gap · the seam-span triage, 125 spans / 34 undeclared · Arc B's one capability · the `STATE.md`
+archive split (proposed) · four stale schema descriptions · the tier/vintage asymmetry · the source
+cache, now costed at 116 KB / ~4-20 MB / 0.6-2.8 GB for its three options.

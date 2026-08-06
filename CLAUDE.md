@@ -304,6 +304,33 @@ module and look at the disk.
 depends on.** A check reporting clean with no positive beside it proves the needle absent, not the
 search working. If the negative depends on "mentions China", the positive must also mention China.
 
+**A VERIFICATION READS THE PAGE THROUGH THE GATE'S OWN NORMALISER, OR IT IS NOT A CHECK.** Import
+`norm` and `pageTextFromHtml` from `tools/lib/page-text.mjs`. Do not reimplement them, do not "just
+strip the tags", and do not fold entities inline at the call site. **Four ad-hoc checks in ONE
+session reported a correct page broken, and all four were the same mechanism** — the check
+normalised the page one way and its needle another, so the miss was an assertion about the check's
+own regex and not about the artefact:
+- period labels authored `FY2013-14` and rendered `FY2013–14` with an en dash;
+- the `P-xx` linkifier turning "See P-26." into "See P-26 ." once tags are stripped;
+- **React's SSR comment separators**, which become a SPACE if `<!-- -->` is stripped as a tag, so
+  `lens · Europe` reads `lens ·  Europe`;
+- a curly apostrophe on the page against a straight one in the needle.
+
+**The cost runs in the worst direction every time.** A false failure sends someone hunting a
+rendering bug that does not exist, and three of the first field-render audit's 55 "invisible" values
+were CAVEATS — where a spurious truncation hit points at a clamp rule 3a forbids and that was never
+there. **And the gate was right in all four cases**: `field-render-audit` reported 0 invisible on the
+same fields through its single normaliser while the hand-written check reported failures. **A
+disagreement between the gate and an ad-hoc check is evidence about the check.** Read the raw bytes
+of one failing page before concluding anything else.
+
+**The deploy path is no longer hand-written.** `tools/deploy-check.mjs` derives every needle from
+`/data` in the same operation, renders non-prose values through `tools/lib/value-renderings.mjs`,
+normalises through the module above, and carries a same-form negative control on every page — a title
+belonging to a DIFFERENT record must be absent, or a proxy serving one page for every URL would pass
+every positive in the run. It is deliberately NOT in the build: it needs the network, and a gate that
+fails when the host is slow blocks every commit on somebody else's uptime.
+
 **A NEGATIVE CONTROL ASSERTS AGAINST A STRING READ FROM `/data` AT THE TIME OF WRITING, IN THE
 CONTEXT IT APPEARS IN.** Never a needle typed from an idea of what the record says, and never a bare
 "this token must be absent". Two failures in two batches, both of them controls written from a
