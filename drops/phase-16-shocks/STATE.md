@@ -1,4 +1,7 @@
-# Phase 16 — shocks calibration. State. OPEN.
+# Phase 16 — shocks calibration. State. CLOSED 2026-08-06.
+
+**The close is [`CLOSE.md`](CLOSE.md)** — what was built, what was ruled, what the calibration found, what is
+unbuilt with its unblocking condition, and what carries forward. Read it first.
 
 Opened 2026-08-06 from `c3b0710`. **Start a cold read at
 [`drops/cycle-review-and-rulings/STATE.md`](../cycle-review-and-rulings/STATE.md)** — that cycle set

@@ -670,6 +670,14 @@
   "provenanceRefs": [
    "P-111"
   ],
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "unstated",
+      "why": "The Compensation Act compensates loss \"arising on account of implementation of\" GST, and a once-in-a-century pandemic is not implementation."
+    }
+  ],
   "sources": [
    {
     "name": "GST Council, minutes of the 41st meeting, 27 August 2020 — the Attorney-General's opinion, the two-bucket split and the two options",

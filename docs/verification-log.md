@@ -11607,3 +11607,55 @@ corrected twice.**
 **Gates:** `validate` VALID · `enum-parity` 56 members across 8 axes · `exposure` NEW, six two-sided
 controls · `reachability` 1699/1699 · `field-render-audit` 37 prose + 45 non-prose across 3 layers,
 0 invisible · `withdrawn-wording` OK · `phase-name` OK · full build green.
+
+---
+
+## Cycle 2026-08-06 — PHASE 16 CLOSED. Two migrations, and the calibration result.
+
+**APPEND-ONLY. Governs over any earlier entry describing exposure coverage or the multi-event count.**
+
+**MIGRATION 1 — the multi-event split. Seventeen candidates, NINE splits.** Entries 66 -> 75. Two
+candidates were false: the "second event" was the record's OWN SUBJECT (L-0012's GST in the GST
+record; L-0072's 2020 restructuring of the scheme it is about). Five could not split because the
+events share a clause or share one adjudication — L-0057's "both of which", L-0041 and L-0067's
+"Neither explains" — and splitting there orphans the judgement from half its subject, which is
+rewriting the sentence by other means. **L-0027 was not split and had the wrong `event` entirely**:
+it named the IL&FS collapse, its own subject, as its exposure. Corrected to the AQR credit squeeze.
+**Every span asserted verbatim and asserted to reconstruct the original.**
+
+**MIGRATION 2 — the exposure-less sixteen. TEN migrated, six were never exposures.** Entries 75 ->
+85; records declaring an exposure 66 -> 76; refusals 4 -> 7. `why` was NOT TYPED: an anchor phrase
+locates the sentence in the record's own prose and the sentence is copied verbatim, with a guard
+asserting the result is a substring of the record. **The guard fired on the first attempt** — a
+hand-typed quote used a curly apostrophe where L-0135 has a straight one — which is why the method
+changed from typing to extraction. Six were date markers, scene-setting or cross-references to
+another record's shock, and are reported rather than forced.
+
+**THE CALIBRATION RESULT, and it corrects the framing the batch was given.** Exposure coverage and
+the evaluative-verdict rate agree across 14 domains at rho = 0.75. **They are not two independent
+properties: `reform` share predicts the evaluative rate at rho = 0.91** — better than the two axes
+predict each other — so the agreement is one property measured twice, and the low rates in kashmir
+(11 per cent `reform`) and defence (0 per cent) are a fact about what those domains contain rather
+than a reticence about scoring them. **The residual is the finding and runs the other way**:
+employment (17 per cent `reform`, 8 per cent evaluative, 75 per cent exposure) and human-development
+(25 / 25 / 88) are outcome domains, so **exposure tracks whether a domain has measurable series while
+the evaluative rate tracks whether it has announced measures.** Those genuinely are two properties
+and they come apart exactly where the corpus is about outcomes rather than policy. Rank statistics
+computed in the batch, emitted by no gate, descriptive only on 14 points.
+
+**THE ACCEPT-VERSUS-VERDICT CROSS-TAB IS METHOD AND NOT EVIDENCE**, and is recorded as unanswerable:
+44 records accept an exogenous explanation and none is `failed`, 7 refuse and 4 are — but the
+adjudication was assigned from the same prose the verdict rests on, so nothing outside the corpus
+would have to change for the table to change.
+
+**THE SHAPE THE FIELD DOES NOT HOLD.** The corpus refuses an exogenous defence on five grounds and
+`adjudication` can name none of them: predates (eleven records), peer, partitions, discriminant
+(L-0099), baseline (L-0195), legal (L-0159, filed `unstated` and correctly so, being a party's
+argument inside a `contested` record). **What is missing is a `basis` property, not a fourth enum
+value.** Reported, not built — the phase's authorisation covered the field itself.
+
+**0 verdicts moved and 0 types moved across the whole phase**, asserted at every write.
+
+**Gates:** `validate` VALID · `exposure` 223 records / 76 declaring / 85 entries · `enum-parity` 56
+members across 8 axes · `reachability`, `field-render-audit`, `withdrawn-wording`, `phase-name` all
+green · full build green.

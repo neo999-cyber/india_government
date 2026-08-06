@@ -113,6 +113,14 @@
    "coal-plf",
    "non-fossil-generation-share"
   ],
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "unstated",
+      "why": "The objective was availability, not abstinence, and on availability it was delivered: all-India production rose 85 per cent in eleven years, with only one year-on-year fall in the whole series, the COVID year."
+    }
+  ],
   "sources": [
    {
     "name": "PIB / Ministry of Coal, 'India to stop import of thermal coal from Financial Year 2023-24 - Pralhad Joshi', 18 Feb 2020",

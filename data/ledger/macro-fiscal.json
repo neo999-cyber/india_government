@@ -191,10 +191,16 @@
   "caseAgainst": "The disinflation was substantially handed to the framework by the 2014-16 oil price collapse, a windfall no policy earned; the framework's independent contribution is therefore overstated by the raw before-and-after comparison. The 2024 CPI rebasing lowers the food weight, which will dampen measured volatility going forward and makes future performance flattering by construction. Institutional autonomy in the surrounding period was contested — see the RBI autonomy record.",
   "shockExposure": [
     {
+      "event": "the 2014-16 oil collapse",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "The 2014-16 oil collapse is a large positive confound at the start;"
+    },
+    {
       "event": "COVID-19",
       "role": "confound",
       "adjudication": "accepted",
-      "why": "The 2014-16 oil collapse is a large positive confound at the start; COVID and the 2022 commodity shock are negative confounds mid-period. Peers faced the same commodity shocks, so peer-relative inflation performance is the fairer test."
+      "why": "COVID and the 2022 commodity shock are negative confounds mid-period. Peers faced the same commodity shocks, so peer-relative inflation performance is the fairer test."
     }
   ],
   "seriesRefs": [

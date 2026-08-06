@@ -23,7 +23,13 @@
       "event": "the IL&FS collapse",
       "role": "confound",
       "adjudication": "accepted",
-      "why": "The 2018 IL&FS collapse hit as recognition peaked, compounding the credit squeeze and making the AQR's independent contribution to the slowdown hard to isolate. Demonetisation and GST also landed inside this window."
+      "why": "The 2018 IL&FS collapse hit as recognition peaked, compounding the credit squeeze and making the AQR's independent contribution to the slowdown hard to isolate."
+    },
+    {
+      "event": "demonetisation and GST",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "Demonetisation and GST also landed inside this window."
     }
   ],
   "seriesRefs": [
@@ -203,7 +209,7 @@
   "caseAgainst": "The collapse itself represents a supervisory failure — a systemically important entity accumulated ₹99,355 crore of debt with an asset-liability mismatch that regulators did not act on until default. Resolution has taken eight years and remains incomplete. The credit freeze that followed contributed materially to the growth deceleration that preceded COVID.",
   "shockExposure": [
     {
-      "event": "the IL&FS collapse",
+      "event": "the AQR credit squeeze",
       "role": "confound",
       "adjudication": "accepted",
       "why": "CORRECTED 2026-08-06 on operator Rulings 6 and 7. WITHDRAWN WORDING, quoted so the correction can be checked rather than taken on trust: this field previously read \"This record is itself a shock, and it lands inside the AQR credit squeeze, making the two effects on 2018-2020 credit conditions difficult to separate.\" The IL&FS default is a private company failing \u2014 neither an act of policy nor external to India \u2014 so Ruling 6 does not reach it, and Ruling 7 types the record by its subject, which is the failure itself and not the state\u2019s response to it. The record is now typed event. WHAT SURVIVES THE RETYPE UNCHANGED: it lands inside the AQR credit squeeze, making the two effects on 2018-2020 credit conditions difficult to separate."

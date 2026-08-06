@@ -336,7 +336,13 @@
   "shockExposure": [
     {
       "event": "COVID-19",
-      "why": "COVID disrupted collections and deferred tariff revisions; the 2021-22 coal price shock raised power purchase costs sharply."
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "COVID disrupted collections and deferred tariff revisions;"
+    },
+    {
+      "event": "the 2021-22 coal price shock",
+      "why": "the 2021-22 coal price shock raised power purchase costs sharply."
     }
   ],
   "seriesRefs": [
@@ -373,10 +379,16 @@
   "caseAgainst": "Capacity is not generation: renewables' share of energy generated remains well below their share of capacity because of load factors, and grid absorption and storage remain binding constraints. The expansion coexists with continued coal capacity addition, so it has supplemented rather than displaced fossil generation. Discom financial weakness also creates payment risk that has slowed developer investment in some states.",
   "shockExposure": [
     {
-      "event": "the 2022 commodity shock",
+      "event": "the global fall in solar module prices",
       "role": "cause",
       "adjudication": "accepted",
-      "why": "Global solar module prices fell sharply over the period, which is an external tailwind not attributable to policy; the 2022 commodity shock temporarily reversed some of it."
+      "why": "Global solar module prices fell sharply over the period, which is an external tailwind not attributable to policy;"
+    },
+    {
+      "event": "the 2022 commodity shock",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "the 2022 commodity shock temporarily reversed some of it."
     }
   ],
   "seriesRefs": [
@@ -425,7 +437,13 @@
       "event": "COVID-19",
       "role": "confound",
       "adjudication": "accepted",
-      "why": "COVID depressed FY2020-21 throughput; global shipping disruption in 2021-22 affected turnaround measurement."
+      "why": "COVID depressed FY2020-21 throughput;"
+    },
+    {
+      "event": "the 2021-22 global shipping disruption",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "global shipping disruption in 2021-22 affected turnaround measurement."
     }
   ],
   "seriesRefs": [
