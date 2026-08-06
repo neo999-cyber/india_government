@@ -24,6 +24,7 @@ const NAV = [
   { href: '/terms/', label: 'terms' },
   { href: '/peers/', label: 'peers' },
   { href: '/counterfactual/', label: 'counterfactual' },
+  { href: '/contested/', label: 'contested' },
   { href: '/unmeasured/', label: 'unmeasured' },
   { href: '/method/', label: 'method' },
   { href: '/derivations/', label: 'derivations' },

@@ -1,14 +1,19 @@
-# Phase 17 — design lock. State. OPEN.
+# Phase 18 — design lock. The opening measurement. (Directory name SUPERSEDED.)
+
+**SUPERSEDED 2026-08-06 AS TO THE PHASE NUMBER, and the directory keeps its wrong name deliberately.**
+This opened under the name *phase 17 design lock*; `CLAUDE.md`'s table reads **17 independence, 18
+design lock**, and the operator has ruled the table right. **This is phase 18's opening measurement.**
+Every occurrence below of *phase 17 — design lock* is **WITHDRAWN** as a phase name and left standing,
+on the same principle that leaves a withdrawn wording quoted: renaming the directory would erase the
+collision that is the reason this paragraph exists. **The design work sequences by dependency, not by
+the number it was given.**
 
 Opened 2026-08-06 from `f0eecc4`. **This batch builds nothing.** It measures the gap between what the
 corpus holds and what a reader can see. Phase 16 closed at [`../phase-16-shocks/CLOSE.md`](../phase-16-shocks/CLOSE.md).
 
-**A NAME COLLISION, RECORDED AND NOT RESOLVED.** This phase was opened by the operator as **design
-lock**. `CLAUDE.md`'s table says **17 is independence and 18 is design lock**. The work in this batch
-is design-lock work; the field ordering it recommends (§4) is independence work. **A phase name is
-the operator's to set and the table is the authority until they change it**, so the collision is
-written into `CLAUDE.md` beside the table and the directory keeps the name it was given. Either the
-table is amended or this belongs to 18.
+**THE COLLISION IS RESOLVED IN THE TABLE'S FAVOUR, 2026-08-06.** The work in this batch is
+design-lock work and belongs to **18**; the field ordering it recommends (§4) is **17**'s
+independence work. The two are sequenced by dependency in §4 and the numbers follow the table.
 
 **`phase-name` did not fire on it, and that is a measured gap in the gate.** It binds *phase N **is**
 &lt;name&gt;* and the collision arrived as a heading — *"Phase 17 — design lock"* — with no assertion
@@ -282,3 +287,148 @@ contradict the corpus.** Fix those; leave the rest.
 6. A gloss on every verdict tally; a cross-link between absence blocks and `/unmeasured`.
 7. `objectives[]` + the `claimAtLaunch` vocabulary, designed together.
 8. `independence` as a rule field.
+
+---
+
+# BATCH 2 — the push, two surfaces, one gate, and the absence report
+
+Written 2026-08-06. **Phase numbering resolved in the table's favour: this is phase 18 work.**
+
+## The push, and the verification
+
+**Pushed `fa518f4..c790159` — ten commits, the whole of phase 16.** Deployment `READY` at
+`c790159`, confirmed through Vercel's own state rather than by curl. **The three named checks,
+verified on the live site:**
+
+| check | live |
+|---|---|
+| L-0216 renders its corrected type | `L-0216 2025-04-23 **reform**` |
+| L-0027 renders its corrected type | `L-0027 2018-09 **event**` |
+| L-0044 renders structured exposure | `Exposure │ COVID-19 │ degrades the measurement │ accepted in part │ <the prose, verbatim>` |
+
+**A reader was nine commits behind for two weeks and is not any more.** The rule that caused it is
+withdrawn in `CLAUDE.md` with its wording quoted, and the cost is recorded there as the argument.
+
+## `/counterfactual` — rewritten as the decision
+
+It described a view in the future tense that the corpus declined on 2026-08-06. **That is the prose
+shadow on a surface rather than in a record**: a decision moved and the thing restating it did not.
+
+**Rewritten, not deleted** — for the same reason the decision was recorded rather than left as a gap.
+The page now carries what was proposed (both methods, with the endpoint sensitivity that was always
+the point), **why it was declined** — output resembling measurement, and a required statistical
+review this project has never been able to commission, which makes it *building a method whose
+required check cannot be obtained* — and **what survived**: the citation ruling, and the rendering
+discipline now governing the modelled quantities the corpus already carries. **765 observations carry
+`approx`; 43 of 269 series mention a modelled or estimated quantity** (candidate count, scope stated).
+It ends by naming what would reopen it.
+
+## `/contested` — built
+
+**68 contested records, 66 carrying a ground. 38 turn on something no document could resolve; 28
+would be settled by a specific thing the record names.** That split is the difference between a
+hedge and a finding and it was invisible on every surface — `contestedGround` rendered as a tag on
+the record and nowhere else, so a reader meeting *"44 Contested"* on a domain page had no way to
+learn that most of those contests are closed questions about disagreement rather than open ones
+about evidence.
+
+No score, no rank, no burndown: **the settleable half is not a queue**, because several are
+settleable in principle by a body that has declined to settle them, which is the finding rather than
+the task. The two records carrying no ground are shown with the schema's own reason for the
+omission.
+
+## `phase-name` — widened, and proven on the collision it missed
+
+**The gate bound `phase N is|was|becomes|= <name>` and the collision arrived as a heading** — *"#
+Phase 17 — design lock"* — a number and a name with no verb between them. **Every heading and every
+markdown table row takes that form.**
+
+Widened to admit a dash or a colon, plus **a separate pass for markdown table rows**, whose number
+and name sit in different cells so no connective pattern reaches them. **Proven on the collision as
+it stood at `c34e83a`**: run before the drop file was superseded, the widened gate named
+`drops/phase-17-design-lock/STATE.md:1` and `:14` — exactly the instance it had been blind to — and
+`CLAUDE.md:528` came up exempt on its own supersession clause. **Now green at 11 disagreeing
+assertions, 11 exempted by name**, the six from before plus the table rows the widening reaches.
+
+Four new controls: a dash heading, a colon heading, a table row, and **a table row that AGREES**,
+which is what makes `CLAUDE.md`'s own table self-validating rather than exempted.
+
+**What is still not admitted, and it is in the gate's header rather than left to be found a third
+time:** a comma (*"phase 16, the shocks calibration"*) and a bare appositive. Both widen into
+ordinary prose — *"phase 15, which closed in August"* would be scanned for a name.
+
+---
+
+# REPORT — the 374 absences, and what would make one read as a finding
+
+**Report and design. Not built.**
+
+## How they render today
+
+**SCOPE: every `unmeasured[]` entry on ledger and series. N=374 across 199 records; 147 of 223 ledger
+records carry at least one. Field tests, exact.**
+
+By kind: **not-published 205 · not-collected 115 · never-defined 42 · withheld 12.** **292 name a
+route to closing them, 82 do not. 19 record a stated reason the same government's evidence
+contradicts.**
+
+| surface | how an absence appears |
+|---|---|
+| **the record page** | a dashed, unfilled block headed *"Not measured · N declared"*, each entry carrying its kind, the prose, and *"Would close it"* — **below `caseFor`, `caseAgainst` and the verdict note** |
+| **`/unmeasured`** | all 374, grouped by kind, with the disputed-reason overlay called out |
+| **the index** | **nothing** |
+| **term pages** | **nothing** |
+| **domain pages** | **nothing** — caveats travel into every listing under rule 3a; absences do not |
+| **series pages** | the same dashed block |
+
+**So a reader browsing any listing surface never learns that 147 of 223 records declare something
+nothing measures.** They meet it only if they open a record and scroll past two argument blocks, or
+if they find `/unmeasured` in the top nav.
+
+## Why that is the largest misread on the site
+
+Rule 4a is well served *within* the record: the block is visually unlike a panel of results, carries
+no figure and no table, and cannot be mistaken for one. **The rule was written against an absence
+reading like a finding, and the site does not have that problem.**
+
+**It has the inverse.** An absence that appears nowhere a reader browses, and at the bottom of the
+page when they arrive, reads as **housekeeping** — the researcher's own to-do list, appended after
+the argument. **The corpus's position is the opposite: an absence is often the most important thing
+on the page.** L-0106's *"the share of schools complying with the RTE staffing norm, since 2015-16"*
+is the record's central finding, and it is below the fold in a dashed box.
+
+## What would make an absence read as the finding it is
+
+**Four changes, in order of effect per unit of apparatus. None is a schema change.**
+
+1. **A COUNT ON EVERY LISTING ROW.** The domain and term tables already carry a caveat inline; an
+   absence marker — *"2 not measured"* — beside it is the same idiom and the same rule. **This is
+   the single highest-effect change on the list**, because it is the only one a browsing reader
+   meets without deciding to look.
+2. **PROMOTE THE BLOCK ABOVE `caseFor`/`caseAgainst` where the absence is load-bearing.** Not
+   everywhere: on most records the absence is genuinely subordinate. **The corpus can already tell
+   the difference** — an absence named in the record's own `assessmentNote` is one the verdict turns
+   on. That is a derived test, needs no field, and would promote roughly the records where it
+   matters. *This is the one item that needs agreement before building, because it changes reading
+   order on a record page.*
+3. **A CROSS-LINK BOTH WAYS.** The record's block links to `/unmeasured` filtered to its kind;
+   `/unmeasured` already links back. One line each.
+4. **THE 82 WITH NO ROUTE, NAMED AS A CLASS ON `/unmeasured`.** *"292 name a source that would close
+   them"* is already stated; **the 82 that do not are the harder finding and are not separately
+   shown.** An absence nobody can close is a different object from one waiting on a request.
+
+**What I would not do.** No count of absences on the index — it would read as a completeness score,
+which rule 9 forbids in every other form. No "gaps closed" metric, no ranking, no burndown. **And no
+new field**: every one of the four is derivable from what `unmeasured[]` already holds.
+
+---
+
+## Queue after this batch
+
+1. The eleven-refusal page.
+2. The absence changes above — **(1), (3) and (4) are agreed-shaped and small; (2) needs the
+   operator's word because it changes reading order.**
+3. Three sentences in `/method`: the ρ = 0.91 finding, the outcome-versus-policy split, Rulings 5–9.
+4. A gloss on every verdict tally.
+5. `objectives[]` + the `claimAtLaunch` vocabulary, designed together — **phase 17**.
+6. `independence` as a rule field — phase 17.

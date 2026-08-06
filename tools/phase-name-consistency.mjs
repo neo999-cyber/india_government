@@ -112,9 +112,36 @@ const WINDOW = 240;
  */
 const DOC_HEAD = 900;
 
-const ASSERTION = /phase\s+(\d{1,2})\s+(?:is|was|becomes|=)\b/gi;
+/**
+ * WIDENED 2026-08-06 ON OPERATOR AUTHORISATION, AND THE GAP WAS MEASURED BEFORE IT WAS CLOSED.
+ *
+ * The predicate bound only `phase N is|was|becomes|= <name>`. A collision then arrived as a HEADING
+ * — `# Phase 17 — design lock`, where the table read 17 independence — carrying a number and a name
+ * with NO VERB BETWEEN THEM, and the gate was silent. **Every heading and every markdown table row
+ * takes that form**, so the predicate was blind to the two places a phase name is most likely to be
+ * written down: the title of a document about the phase, and the row of a table listing it.
+ *
+ * So it now admits a DASH or a COLON as the connective, and a separate pass reads markdown table
+ * rows whose first cell is a bare phase number.
+ *
+ * WHAT IS STILL NOT ADMITTED, and it is stated here rather than left to be discovered again: a comma
+ * (`phase 16, the shocks calibration`) and an appositive with no punctuation at all. Both were
+ * considered and both widen into ordinary prose — `phase 15, which closed in August` would be
+ * scanned for a name. The residual is the same shape as the one just closed and this comment is the
+ * only thing standing between it and a third discovery.
+ */
+const ASSERTION = /phase\s+(\d{1,2})\s*(?:\s(?:is|was|becomes)\b|=|—|–|:|\s-\s)/gi;
 /** Same pattern, non-global, for `search()` — a `g` regex carries lastIndex and would drift. */
-const ASSERTION_ONCE = /phase\s+\d{1,2}\s+(?:is|was|becomes|=)\b/i;
+const ASSERTION_ONCE = /phase\s+\d{1,2}\s*(?:\s(?:is|was|becomes)\b|=|—|–|:|\s-\s)/i;
+
+/**
+ * A markdown table row whose FIRST cell is a phase number: `| **16** | **shocks calibration** — … |`.
+ *
+ * Scanned separately because the number and the name are in different cells and no connective
+ * pattern reaches across a `|`. CLAUDE.md's own table self-validates under this — each row's name is
+ * the name the row declares — which is the correct behaviour and not an exemption.
+ */
+const TABLE_ROW = /^\|\s*\**\s*(\d{1,2})\s*\**\s*\|([^|]*)\|/gim;
 
 const normSpace = (s) => s.replace(/\s+/g, ' ');
 
@@ -211,6 +238,33 @@ export function findAssertions(names, files, readFile) {
         context: normSpace(text.slice(m.index, m.index + 120)),
       });
     }
+    // TABLE ROWS — the number and the name live in different cells, so no connective reaches them.
+    for (const m of text.matchAll(TABLE_ROW)) {
+      const phase = Number(m[1]);
+      const expected = names.get(phase);
+      if (!expected) continue;
+      const cell = normSpace(m[2]).toLowerCase();
+      const found = vocab.filter((v) => cell.includes(v.name)).map((v) => v.name);
+      if (found.length === 0 || found.includes(expected)) continue;
+      const before = text.slice(Math.max(0, m.index - LOOKBACK), m.index);
+      const ao = APPEND_ONLY.find((a) => a.file === file);
+      const exempt = ao
+        ? `append-only: ${ao.why}`
+        : SUPERSESSION.test(before)
+          ? 'governed by a supersession clause within the preceding window'
+          : SUPERSESSION.test(text.slice(0, DOC_HEAD))
+            ? 'the file declares itself superseded in its own head'
+            : null;
+      hits.push({
+        file,
+        line: text.slice(0, m.index).split('\n').length,
+        phase,
+        found,
+        expected,
+        exempt,
+        context: normSpace(m[0]).slice(0, 120),
+      });
+    }
   }
   return hits;
 }
@@ -290,6 +344,25 @@ function control() {
   // still found. Without this the fix above could be "stop at the first newline" and pass.
   const wrap = findAssertions(names, ['WRAP.md'], () => 'Two operator answers: phase 16 is the\ncounterfactual engine, in one place.\n');
   check('a name wrapping a line is still found', wrap.length === 1 && !wrap[0].exempt, `got ${wrap.length} hit(s)`);
+
+  // 4f. POSITIVE — A HEADING. The exact form that escaped the gate before 2026-08-06: a number and a
+  // name with no verb between them. Asserted on the collision as it stood at `c34e83a`.
+  const head = findAssertions(names, ['HEAD.md'], () => '# Phase 17 — design lock. State. OPEN.\n');
+  check('a heading with a dash is named', head.length === 1 && !head[0].exempt, `got ${head.length} hit(s)`);
+
+  // 4g. POSITIVE — a colon heading, the other punctuation a title takes.
+  const colon = findAssertions(names, ['COLON.md'], () => '## Phase 16: the counterfactual engine\n');
+  check('a heading with a colon is named', colon.length === 1 && !colon[0].exempt, `got ${colon.length} hit(s)`);
+
+  // 4h. POSITIVE — A TABLE ROW. The number and the name are in different cells, so no connective
+  // pattern reaches them and this needs its own pass.
+  const row = findAssertions(names, ['ROW.md'], () => '| # | phase | state |\n| **17** | **design lock** — the site | next |\n');
+  check('a table row is named', row.length === 1 && !row[0].exempt, `got ${row.length} hit(s): ${JSON.stringify(row.map((h) => h.found))}`);
+
+  // 4i. NEGATIVE through the same restriction — a table row whose name AGREES with the table passes,
+  // which is what makes CLAUDE.md's own table self-validating rather than exempted.
+  const rowOk = findAssertions(names, ['ROWOK.md'], () => '| **16** | **shocks calibration** — the corpus | closed |\n');
+  check('a table row that agrees passes', rowOk.length === 0, `got ${rowOk.length} hit(s)`);
 
   // 4e. NEGATIVE — the gate's own source is out of scope BY NAME, not by a coincidence of its prose.
   // Asserted on the seeded sentence, which is exactly what its own controls contain.
