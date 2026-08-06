@@ -2734,3 +2734,214 @@ needle, the exclusion reasoning and the visibility instruction, and pass C carri
 `figure-consistency`'s mining gap · the seam-span triage, 125 spans / 34 undeclared · Arc B's one
 capability · the `STATE.md` archive split (proposed) · four stale schema descriptions and the
 tier/vintage asymmetry (schema edits are stops).
+
+---
+
+# STRUCTURAL CYCLE, BATCH 4 — 2026-08-06. THE NON-PROSE RENDER ASSERTION IS BUILT
+
+Operator-sanctioned gate contract change, this batch only. `/data` untouched —
+`git diff --numstat -- data` returns nothing. **No schema or enum contract moved:** two schema
+DESCRIPTIONS gained an exemption line, which is the mechanism the prose half has used since it was
+built, and no property, type, enum value or validation rule changed.
+
+## 1. THE GUARD — what it binds, and what it found
+
+### The hole it closes
+
+Both render gates selected fields with `!enum && !format && !pattern`. **Every verdict, tier, stated
+reason, boolean and formatted number in the corpus was therefore outside every render assertion by
+construction** — not by oversight, and not visibly. `disputeKind` was the worked instance:
+schema-REQUIRED whenever `reasonDisputed` is true, correct in the data on all 19 entries, read by no
+view for the whole of its life, found by hand.
+
+### What was built
+
+| file | what it does |
+|---|---|
+| `tools/lib/schema-fields.mjs` | ONE leaf enumeration, shared by both gates. **Prose is defined positively and non-prose is the complement**, so a JSON Schema construct nobody anticipated lands IN scope rather than falling out of it |
+| `tools/lib/value-renderings.mjs` | how each non-prose value LOOKS once rendered — `identity`, `labels`, `phrase`, `number`. **Labels are parsed out of the modules that render them and never retyped**; a map that has moved aborts the gate |
+| `tools/field-render-audit.mjs` | extended to observe non-prose in built output |
+| `tools/no-unguarded-prose-field.mjs` | extended to bind non-prose at authoring time, with a `--renderings-json` seam |
+| `tools/regen-render-fixtures.mjs` | regenerates both controls from the live lists, with `GENERATED-FROM.json` |
+
+### PROVEN TO FIRE ON THE REAL CORPUS, BEFORE ANY FIX — the exact counts
+
+```
+  ledger
+    lenses          non-prose  carried   43  rendered   11  missing   32  ** INVISIBLE **
+    differentFacts  non-prose  carried   82  rendered   72  missing   10  ** INVISIBLE **
+  series
+    lenses          non-prose  carried   54  rendered   21  missing   33  ** INVISIBLE **
+
+field-render-audit FAILED — 2 non-prose field(s) neither declared nor exempted:
+  series.higherIsBetter
+  series.xAxis
+```
+
+**75 invisible record-fields across three fields, and 2 fields nobody had decided about at all.**
+
+### The three findings, and none is the one that was expected
+
+**(a) `lenses` reached no reader on the record that declares it — 65 records.** It rendered on
+`/lenses`, on each lens page and on the domain pages, and nowhere on the ledger or series record
+carrying it. **CLAUDE.md already forbids exactly this**: *"a mark rendered somewhere other than the
+page of the record declaring it does not count"* — the rule existed, no gate could see it, and a
+reader on L-0189 could not tell the record is also read under Russia and the United States.
+**FIXED**: both record pages now render the lens axis, styled apart from a domain tag because the two
+are different claims and rendering them alike invites reading one as the other.
+
+**(b) `differentFacts: false` with no note rendered NOTHING — 10 records.** The negative mark was
+gated on the presence of a note, so a record that had been tested and recorded false was
+indistinguishable, to a reader, from one where the question was never asked. **The schema's own line
+calls the false judgement "the judgement most at risk of being made silently", and gating its mark on
+prose was making it silently.** FIXED: the mark now renders on the flag.
+
+**(c) TWO FIELDS ARE DECLARED, TYPED, POPULATED AND READ BY NOTHING.** `higherIsBetter` — 70 series
+declare a direction of merit and `lib/types.ts` is the only file in the repository that mentions it,
+so the directional colour its own description requires **has never existed**. `xAxis` — two series
+declare `lok-sabha-term` and both render as an ordinary yearly series, **which is what that field's
+own description forbids**, so this is a live rendering defect on those records rather than merely an
+unrendered field. **EXEMPTED BY NAME, and the exemption text says it is a DEBT and not a decision.**
+An exemption claiming a decision where there was none is worse than the gap.
+
+**(d) Found by the enumeration rather than by the audit: `competingAccounts` was outside BOTH gates.**
+Its items are a `oneOf` of `{holder, position}` or a bare string, and the old walk followed only
+`items.properties` — so the most literally delegatable field in the corpus, on 81 records, was
+unguarded with nobody having decided it should be. **Added to the guarded-marks list**, which is why
+`reachability` moves 1368 → **1580 marks**.
+
+### Controls, both directions, through the same seam
+
+- **NEGATIVE**: `--renderings-json` with `ledger.assessment` dropped → gate exits 1 and **names
+  `ledger.assessment`**. Asserting the exit code alone would have tested the wrong branch, which two
+  lens fixtures did for two cycles.
+- **POSITIVE**: the full table injected **through the same seam** → exits 0. A positive run through a
+  different path would leave open that the negative fired for an unrelated reason.
+- **LIVE**: no seam at all, against the live schemas → exits 0.
+- **The dropped key is the VERDICT**, chosen deliberately: a gate that stays quiet about the one value
+  a reader cannot do without is broken in the way that matters.
+
+### The selftest assertion proven live by sabotaging its fixture
+
+`provenance.bridgeExists` was removed from the POSITIVE fixture (42 → 41 keys). **Both new assertions
+went red**: the positive control fired through the seam, and the freshness check named the drift —
+*"stamp says 8 marks / 42 renderings, fixtures hold 8 / 41, live lists hold 8 / 42"*. **Re-run with no
+fix applied, it failed identically** — both runs required, because a fast self-repair heals before the
+check and a lazy one passes run one. Restored byte-identically (`git diff` clean on that file) and the
+selftest returned green.
+
+### Gate lines, before and after
+
+| gate | before | after |
+|---|---|---|
+| `field-render-audit` | 32 prose fields, 0 invisible | **36 prose + 42 non-prose, 0 invisible, 2 exempted** |
+| `no-unguarded-prose-field` | 19 prose (7 guarded, 12 exempted) | **20 prose (8 guarded, 12 exempted) · 44 non-prose (42 declared, 2 exempted)** |
+| `reachability` | 1368/1368 marks | **1580/1580 marks** |
+
+Prose rose 32 → 36 and 19 → 20 for the same reason: the shared enumeration sees `competingAccounts`
+and `denominator`, which the old walks did not. **`denominator` is `["string","null"]`, and a strict
+`type === "string"` test threw a plain sentence out of the prose audit and into the non-prose one**,
+where it demanded a rendering declaration it should never have needed.
+
+## 2. A SOURCE CACHE — REPORTED ONLY
+
+**The exposure, stated precisely.** 1,205 citations, **zero cached sources**, every retrieval
+transient. The corpus cannot be re-verified against its own evidence without re-retrieving, and this
+phase alone logged four estates that changed behaviour mid-project: the e-Gazette moved from
+unreachable to live, `mea.gov.in` serves a JS shell whose Internet Archive snapshot is the same shell,
+`prana.cpcb.gov.in` is client-rendered, and a set of hosts share a TLS-reset fingerprint from this
+machine. **A quotation whose source has since changed cannot be distinguished from a misquotation**,
+and the corpus is now public.
+
+### Storage shape
+
+**Content-addressed, not URL-addressed.** `cache/<sha256[0:2]>/<sha256>.txt` plus a manifest keyed by
+citation. A URL-keyed store cannot represent the thing the corpus actually needs — that the SAME URL
+returned different bytes on two dates — and that is the whole failure mode.
+
+### What it holds, and the answer is not "bytes"
+
+| candidate | verdict |
+|---|---|
+| **raw bytes** | **No.** The MoD Year End Review alone is 654,000 characters and the corpus holds 1,205 citations; a repository that is currently 2.7 MB of data would gain hundreds of megabytes of third-party PDFs, and **the deployment is public, so re-hosting government PDFs is a distribution decision and not a storage one** |
+| **extracted text** | **Yes, bounded.** The instrument already retrieves bounded extracts by rule — *"fetch what answers the question"* — so the natural unit is the passage actually read, not the document. Roughly 4-40 KB per citation |
+| **hash** | **Yes, and it is the load-bearing part.** A sha256 of the full retrieved body answers *"is this the document I read?"* at negligible cost, and it is the only part that gives a re-retrieval a verdict rather than a diff to eyeball |
+
+**So: hash always, extract usually, bytes never.** The hash is the assertion; the extract is what
+survives a host going dark; the bytes are somebody else's copyright and a hosting decision.
+
+### How a gate would use it
+
+A `source-drift` gate, **report-only at first for the reason `seam-span-report` is** — the first run
+produces a candidate list, not a defect count. Re-retrieve on a rotation, hash, compare:
+**unchanged** → silent; **changed** → name the citation and the records resting on it, because a
+changed source under a quoted figure is a research finding; **unreachable** → the estate moved, which
+is the fact `url-check` already tracks; **never cached** → the backlog.
+
+**It cannot be in the build.** It needs the network, and a gate that fails when a ministry is down
+would block every commit on somebody else's uptime.
+
+### What already exists
+
+**`url-check` is half of it, and the half that matters least.** It diffs `/data` against
+`origin/main` and checks that new URLs resolve — **liveness, never content**, so a URL that now serves
+a different document passes. `no-bare-root` asserts a citation deep-links, which is a precondition for
+caching a passage rather than a homepage. The 277-citation frozen allowlist is the shape of the
+backlog register. **The retrieval discipline in CLAUDE.md is the other half and is already written:**
+a document is a source only if retrieved in this run, a 200 serving a JS shell is not a retrieval, OCR
+output is not the document. **What is missing is the artefact, not the rules.**
+
+## 3. THE 584 BARE-YEAR NAMES, RESTATED HONESTLY
+
+The previous batch counted 584 names carrying a bare year and called them the argument for a
+content-edition field. **That was true and it was not the whole statement**: it did not say how many
+could be resolved without opening the document, and resolving one by re-retrieval costs what the
+original retrieval cost.
+
+Split by what the record itself already carries:
+
+| | citations | recoverable without re-retrieval? |
+|---|---:|---|
+| a **full date** in the name — `28 July 2025`, `2026-08-05`, **`answered 02.08.2023`** | **413** | **Yes.** The document's own date is written down; the field would be a transcription, not a retrieval |
+| a **dated path** in the URL, name undated | **40** | **Yes, weakly.** The publisher's filing date, which is the document's date for a press release and is not for a report published late |
+| a bare year and **nothing else** | **131** | **No.** Someone must open the document |
+| **total** | **584** | **453 recoverable, 131 not** |
+
+**A correction to my own first pass, made before the count was banked.** The first needle scored 155
+unrecoverable, because it matched `28 July 2025` and ISO dates and **missed `dd.mm.yyyy`** — which is
+how every parliamentary answer in this corpus is dated. Reading the sample is what caught it:
+*"Rajya Sabha Unstarred Question 1460, answered 02.08.2023"* was sitting in the NOT-RECOVERABLE list
+carrying its own date in plain sight. **A non-zero count is a candidate list until the context is
+read**, and this is the fourth instance of that rule paying for itself this phase.
+
+**What the 131 actually are**, read rather than counted: statutes and policies cited by their year
+(*Farm Laws Repeal Act 2021*, *National Education Policy 2020*), multi-edition series cited across a
+span (*Union Budget Statements, FY2009-10 to FY2026-27*), and working papers cited by section. **For
+the statutes the bare year is not a missing edition at all** — the Act of 2021 is the Act of 2021 —
+so the honest count of citations that genuinely lack a recoverable edition is **smaller than 131**,
+and establishing how much smaller is a per-record judgement rather than a needle.
+
+**The corrected claim: of 584 bare-year names, 453 carry their document's date somewhere in the
+record already and 131 do not — and the 131 include an unmeasured number for which a year is the
+complete and correct citation.**
+
+---
+
+# RESUME HERE — updated 2026-08-06, after structural-cycle batch 4
+
+**The non-prose render assertion is BUILT and green.** It was the item with three dependants;
+`commitmentState`, the `contested` split and `vintage` are now unblocked, and each remains a schema
+change and therefore a stop to be agreed before it is built.
+
+**PASS A IS STILL BUILT AND STILL NOT RUN** — `review/pass-a-structural.md`, no non-Claude model is
+credentialled on this machine, and the operator runs it externally.
+
+**Two debts recorded in schema exemptions, not fixed:** `higherIsBetter`, read by nothing on 70
+series; `xAxis`, where two series render in the form their own field description forbids. Both are
+now visible to the gate as exemptions rather than invisible to it as filtered-out fields.
+
+**Open, unchanged:** `figure-consistency`'s mining gap · the seam-span triage, 125 spans / 34
+undeclared · Arc B's one capability · the `STATE.md` archive split (proposed) · four stale schema
+descriptions · the tier/vintage asymmetry. **Newly proposed and not built:** the source cache, scoped
+in section 2 above — hash always, bounded extract usually, raw bytes never, and report-only out of the
+build because it needs the network.

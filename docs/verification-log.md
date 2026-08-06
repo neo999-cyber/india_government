@@ -10544,3 +10544,99 @@ that authored the corpus shares the blind spots it exists to find.
 artefacts declared · `enum-stamp` 2 fixtures match 8 lenses / 14 domains · `seam-span-report` 125
 spans, 91 declaring, 34 not (report-only) · `typecheck` clean · `reachability`, `field-render-audit`
 and `domain-coverage` run in the build gate at commit.
+
+---
+
+## Cycle 2026-08-06d — STRUCTURAL CYCLE, BATCH 4. The non-prose render assertion
+
+Operator-sanctioned gate contract change. `/data` untouched. **No schema or enum contract moved** —
+two schema DESCRIPTIONS gained an exemption line, which is the mechanism the prose half has used since
+it was built; no property, type, enum value or validation rule changed.
+
+### The hole
+
+Both render gates selected fields with `!enum && !format && !pattern`, so **every verdict, tier,
+stated reason, boolean and formatted number was outside every render assertion BY CONSTRUCTION**.
+`disputeKind` was the worked instance — schema-required, correct on all 19 entries, read by no view
+for its whole life, found by hand.
+
+### PROVEN TO FIRE BEFORE THE FIX, exact counts
+
+`ledger.lenses` 43 carried / 11 rendered / **32 invisible** · `ledger.differentFacts` 82 / 72 /
+**10 invisible** · `series.lenses` 54 / 21 / **33 invisible** — **75 invisible record-fields** — plus
+**2 fields with no decision at all**: `series.higherIsBetter`, `series.xAxis`.
+
+### Findings
+
+**`lenses` reached no reader on the record declaring it, 65 records.** It rendered on `/lenses`, the
+lens pages and the domain pages. CLAUDE.md already forbade this — *"a mark rendered somewhere other
+than the page of the record declaring it does not count"* — and no gate could see the rule.
+**FIXED** on both record pages, styled apart from a domain tag because the two are different claims.
+
+**`differentFacts: false` with no note rendered NOTHING, 10 records** — indistinguishable from a
+record where the question was never asked, in the field whose own schema line calls the false
+judgement *"the judgement most at risk of being made silently"*. **FIXED**: the mark renders on the
+flag, not on the presence of prose.
+
+**Two fields are declared, typed, populated and read by nothing.** `higherIsBetter` — 70 series, and
+`lib/types.ts` is the only file mentioning it, so the directional colour its description requires has
+never existed. `xAxis` — two series declare `lok-sabha-term` and render as an ordinary yearly series,
+**which that field's own description forbids**, so it is a live rendering defect. **EXEMPTED BY NAME,
+with the exemption text stating it is a DEBT and not a decision.**
+
+**`competingAccounts` was outside BOTH gates and the enumeration found it, not the audit.** Its items
+are a `oneOf` and the old walk followed only `items.properties` — the most literally delegatable field
+in the corpus, 81 records, nobody having decided. **Added to guarded-marks**; `reachability` 1368 →
+**1580**.
+
+### Controls
+
+**NEGATIVE** `--renderings-json` with `ledger.assessment` dropped → exit 1 **and names the field**,
+not merely a non-zero exit. **POSITIVE** the full table **through the same seam** → exit 0. **LIVE**
+no seam → exit 0. The dropped key is the verdict, chosen because a gate quiet about it is broken in
+the way that matters.
+
+**THE SELFTEST ASSERTION PROVEN LIVE BY SABOTAGE.** `provenance.bridgeExists` removed from the
+POSITIVE fixture (42 → 41). Both new assertions went red — the positive control fired, and the
+freshness check named the drift: *"stamp says 8 marks / 42 renderings, fixtures hold 8 / 41, live
+lists hold 8 / 42"*. **Re-run with no fix applied it failed identically**, both runs required.
+Restored byte-identically; selftest green.
+
+### The rule, in CLAUDE.md in this commit
+
+A guard's field filter is a scope, and `!enum && !format && !pattern` was the largest one here ·
+a non-prose value cannot be looked for as itself, so renderings are declared and the labels are
+PARSED from the modules that render them, never retyped · declared-or-exempted-by-name, no third
+state, and where the exemption is a debt it says so · **enumerate the complement, never the shapes
+you know about**.
+
+### Source cache — REPORTED ONLY
+
+**Hash always, bounded extract usually, raw bytes never.** Content-addressed, because a URL-keyed
+store cannot represent the failure mode — the same URL returning different bytes on two dates. A
+`source-drift` gate re-retrieves on a rotation and compares hashes; **report-only and out of the
+build**, because it needs the network and would block every commit on a ministry's uptime.
+**`url-check` is the half that matters least** — it asserts liveness, never content, so a URL now
+serving a different document passes. The retrieval rules already exist; the artefact does not.
+
+### The 584 bare-year names, restated
+
+**413** carry a full date in the name (including `dd.mm.yyyy`), **40** a dated URL path, **131**
+nothing but a year — so **453 recoverable without re-retrieval, 131 not**. **My first needle scored
+155 and was wrong**: it matched `28 July 2025` and ISO and missed `dd.mm.yyyy`, which is how every
+parliamentary answer here is dated, and *"Rajya Sabha Unstarred Question 1460, answered 02.08.2023"*
+was sitting in the not-recoverable list carrying its own date. **Caught by reading the sample before
+banking the count** — fourth instance this phase. And the 131 include statutes cited by their year,
+where the bare year is the complete and correct citation, so the honest count of citations genuinely
+lacking a recoverable edition is smaller than 131 and is a per-record judgement.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs =
+682 records, 1,759 points** · `no-unguarded-prose-field` **20 prose (8 guarded, 12 exempted) · 44
+non-prose (42 declared, 2 exempted)** · `reachability` **1580/1580** marks, 662 pages ·
+`field-render-audit` **36 prose + 42 non-prose across 3 layers, 0 invisible, 2 exempted** ·
+`domain-coverage` 14/14 surfaces, 14/14 linked, 1141/1141 references · `figure-consistency` 18
+declared claims, 5 rounding artefacts · `enum-stamp` 2 fixtures, 8 lenses / 14 domains ·
+`no-bare-root` 0 new, 0 stale, 277 allowlisted · `seam-span-report` 125 spans, 34 undeclared
+(report-only) · `validate:selftest` 23/23 validator rules, 2/2 output gates · `typecheck` clean.

@@ -43,5 +43,11 @@
     "layers": [
       "provenance"
     ]
+  },
+  {
+    "field": "competingAccounts",
+    "layers": [
+      "provenance"
+    ]
   }
 ]

@@ -1,0 +1,14 @@
+{
+  "generatedBy": "tools/regen-render-fixtures.mjs",
+  "sources": [
+    "tools/lib/guarded-marks.mjs",
+    "tools/lib/value-renderings.mjs"
+  ],
+  "markFields": 8,
+  "renderingKeys": 42,
+  "droppedInNegative": {
+    "marks": "assessmentNote",
+    "renderings": "ledger.assessment"
+  },
+  "note": "A stale fixture lets a positive control pass against a list the gate no longer uses. The selftest fails on drift; regenerate with npm run regen:render-fixtures."
+}

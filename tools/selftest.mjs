@@ -14,7 +14,7 @@
  */
 import { existsSync, readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { liveEnums } from './lib/lens-fixtures.mjs';
 import { dirname, join } from 'node:path';
 import Ajv2020 from 'ajv/dist/2020.js';
@@ -376,6 +376,49 @@ for (const { dir, rule, why } of MUST_STAY_CLEAN) {
     failures.push('no-unguarded-prose-field failed on the live schemas; run `npm run no-unguarded-prose-field`');
   } else {
     notes.push('  no-unguarded-prose-field stays silent on the live schemas');
+  }
+
+  // THE NON-PROSE HALF, through its own seam and in the same both-directions form.
+  //
+  // Added 2026-08-06 with the non-prose render assertion. The dropped key is `ledger.assessment` —
+  // the verdict, the single value a reader most obviously cannot do without — because a gate that
+  // stays quiet about THAT is broken in the way that matters, and a modelled field would prove less.
+  const rFired = run(['--renderings-json', join(fixtureDir, 'renderings-without-assessment.json')]);
+  if (rFired.code !== 1) {
+    failures.push(`no-unguarded-prose-field did not fire with ledger.assessment removed from the renderings table (exit ${rFired.code})`);
+  } else if (!rFired.out.includes('ledger.assessment')) {
+    failures.push('no-unguarded-prose-field fired with ledger.assessment dropped but did not name it — it is passing on a different failure');
+  } else {
+    notes.push('  no-unguarded-prose-field fires when a non-prose field loses its rendering declaration (names ledger.assessment)');
+  }
+
+  const rQuiet = run(['--renderings-json', join(fixtureDir, 'renderings-full.json')]);
+  if (rQuiet.code !== 0) {
+    failures.push(`no-unguarded-prose-field fired on the FULL renderings table through the same seam (exit ${rQuiet.code}) — the negative above proves nothing if this does not pass`);
+  } else {
+    notes.push('  no-unguarded-prose-field stays silent on the full renderings table, injected through the same seam');
+  }
+
+  // FIXTURE FRESHNESS. A positive control cut from a list the gate no longer uses reports green and
+  // proves nothing, and nothing downstream can tell. Same reason the lens fixtures carry a stamp.
+  try {
+    const stamp = JSON.parse(readFileSync(join(fixtureDir, 'GENERATED-FROM.json'), 'utf8'));
+    const liveMarks = JSON.parse(readFileSync(join(fixtureDir, 'marks-full.json'), 'utf8')).length;
+    const liveKeys = JSON.parse(readFileSync(join(fixtureDir, 'renderings-full.json'), 'utf8')).length;
+    const { MARKS } = await import(pathToFileURL(join(ROOT, 'tools', 'lib', 'guarded-marks.mjs')).href);
+    const { RENDERINGS } = await import(pathToFileURL(join(ROOT, 'tools', 'lib', 'value-renderings.mjs')).href);
+    const realKeys = Object.keys(RENDERINGS).length;
+    if (stamp.markFields !== MARKS.length || stamp.renderingKeys !== realKeys || liveMarks !== MARKS.length || liveKeys !== realKeys) {
+      failures.push(
+        `render fixtures are STALE — stamp says ${stamp.markFields} marks / ${stamp.renderingKeys} renderings, ` +
+        `fixtures hold ${liveMarks} / ${liveKeys}, live lists hold ${MARKS.length} / ${realKeys}. ` +
+        'Run `npm run regen:render-fixtures`.',
+      );
+    } else {
+      notes.push(`  render fixtures are fresh against the live lists (${MARKS.length} marks, ${realKeys} renderings)`);
+    }
+  } catch (err) {
+    failures.push(`render fixture freshness check could not run: ${err.message}`);
   }
 }
 

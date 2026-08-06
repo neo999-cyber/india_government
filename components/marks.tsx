@@ -365,11 +365,20 @@ export function DifferentFactsMark({
  * qualification a reader needs in a table cell, and adding one would put a mark on ten records
  * that never ran the test.
  */
-export function DifferentFactsNegativeMark({ note }: { note: string }) {
+/**
+ * The FALSE branch of the different-facts test.
+ *
+ * The note is optional and that is the whole point of the change made on 2026-08-06. This mark used
+ * to render only when a note existed, so 10 records that had been tested and recorded false with no
+ * note rendered NOTHING — indistinguishable, to a reader, from a record where the question was
+ * never asked. The schema's own line calls the false judgement "the judgement most at risk of being
+ * made silently", and gating its mark on the presence of prose was making it silently.
+ */
+export function DifferentFactsNegativeMark({ note }: { note?: string }) {
   return (
     <div className="different-facts-negative">
       <span className="label">These cases were tested for different facts and recorded false</span>
-      <p>{note}</p>
+      {note ? <p>{note}</p> : null}
     </div>
   );
 }

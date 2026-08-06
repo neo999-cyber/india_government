@@ -962,3 +962,16 @@ tr th:last-child {
   white-space: normal;
   overflow: visible;
 }
+
+/* --- the lens axis on a record's own page -------------------------------
+   Distinguished from a domain tag because the two axes are different claims:
+   a domain says what the record IS ABOUT, a lens says what it ALSO BEARS ON.
+   Rendering them identically would invite a reader to read one as the other,
+   which is the confusion the lens axis was introduced to end. Umber, the
+   comparability family — not red, which is reserved for deaths, alerts and
+   break seams. */
+.tag-lens {
+  border-style: dashed;
+  color: var(--umber, #7a5c2e);
+  border-color: var(--umber, #7a5c2e);
+}

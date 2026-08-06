@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getLedger, getProvenance, getSeries, ledger as allLedger } from '@/lib/data';
-import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
+import { ASSESSMENT_LABELS, DOMAIN_LABELS, LENS_LABELS, TERM_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
 import {
   Absences,
   CaveatFlag,
@@ -51,6 +51,17 @@ export default async function LedgerDetail({ params }: Props) {
             {DOMAIN_LABELS[d]}
           </Link>
         ))}
+        {/*
+          The lens axis, on the record's own page. It rendered on /lenses, on the lens pages and on
+          the domain pages, and nowhere on the record that declares it — and a mark rendered
+          somewhere other than the page of the record declaring it does not count. A reader on this
+          page could not tell that it is also read under Russia and the United States.
+        */}
+        {(l.lenses ?? []).map((x) => (
+          <Link key={x} className="tag tag-lens" href={`/lenses/${x}/`}>
+            lens · {LENS_LABELS[x]}
+          </Link>
+        ))}
       </p>
       <p className="source-line">
         {TERM_LABELS[l.term]} · researched as of {l.asOf}
@@ -61,7 +72,7 @@ export default async function LedgerDetail({ params }: Props) {
           test having been run and returned negative is itself a finding, and gating the
           note on the boolean left it rendering nowhere. */}
       {l.differentFacts ? <DifferentFactsMark note={l.differentFactsNote} /> : null}
-      {!l.differentFacts && l.differentFactsNote ? (
+      {l.differentFacts === false ? (
         <DifferentFactsNegativeMark note={l.differentFactsNote} />
       ) : null}
 
