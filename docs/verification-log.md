@@ -10404,3 +10404,30 @@ artefacts declared · `reachability` 1368/1368 marks on their own record page, 6
 `field-render-audit` 32 prose fields across 3 layers, 0 invisible · `domain-coverage` 14/14 surfaces
 built, 14/14 linked, 1141/1141 references · `enum-stamp` 2 fixtures match 8 lenses / 14 domains ·
 `seam-span-report` **125 spans, 91 declaring, 34 not** (report-only) · `typecheck` clean.
+
+### Deployed verification — 13/13 controls, `8f28078`
+
+Against `india-government.vercel.app/method`. **Every needle derived from `/data` in the same
+operation**; every assertion an occurrence count in context, never a bare absence. Derived and
+asserted: 1,205 citations · T1 965 · T2 80 · T3 28 · T4 124 · T5 8.
+
+**Positives (8):** the corrected sentence *"1,205 citations, 965 are graded T1"* ×1 · each of the four
+composition clauses ×1 · the non-T1 remainder ×1 · the tier table's T1 row `523 229 213 965` ×1 · the
+total row `640 296 269 1205` ×1.
+
+**The correction, asserted as a presence (2):** *"this paragraph read “752 are graded T1” until 6
+August 2026"* ×1, and *"That was wrong by 213,"* ×1 — the second derived as `T1 − 752`. **A bare
+"752 must be absent" would have failed here and would have been the checker's error, not the page's**;
+this file has documented that shape twice and the control was written from the text, not from the
+intent.
+
+**Negatives, same form, same page (3):** the old sentence `1,205 citations, 752 are graded T1` — 0,
+which is the load-bearing one, since 752 DOES appear on the page inside its withdrawal and only the
+FORM distinguishes them · the old *"The rest are multilateral statistics, peer-reviewed research,
+documentary journalism and NGO datasets"* — 0 · a figure the data does not support — 0.
+
+**One reader defect caught and not written up as a page defect.** A first extraction rendered
+*"wrong by 213 ,"* with a stray space. React's SSR comment separators were being replaced by a space
+along with the tags; stripping comments first with no replacement gives *"wrong by 213,"*. **The page
+was right and the reader was wrong** — same class as the field-render audit's 53 false invisibles, and
+the third time normalising the page and the value differently has produced a phantom.
