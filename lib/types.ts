@@ -401,9 +401,27 @@ export type Assessment =
  * - `shock` — a disruption arriving from outside the government's control.
  * - `institutional` — a change to the rules of the game or a standing body.
  *
- * UNRESOLVED: `shock` is applied both to external disruptions and to domestically caused
- * failures — the 2020 migrant exodus carries it while its own caseAgainst records that the
- * four hours' notice "was a choice". The external reading above fits three of five users.
+ * SETTLED 2026-08-06 by operator Rulings 6 and 7. This comment previously read, and it is quoted
+ * so the correction can be checked: "UNRESOLVED: `shock` is applied both to external disruptions
+ * and to domestically caused failures — the 2020 migrant exodus carries it while its own
+ * caseAgainst records that the four hours' notice 'was a choice'. The external reading above fits
+ * three of five users." **The count was stale in both numbers: there are EIGHT `type: shock`
+ * records, not five.**
+ *
+ * **RULING 6 — `shock` is external to the state's own decisions.** A chain of state decisions is
+ * not a shock however severe its consequences. The line is whether **an act of policy caused it** —
+ * not severity, and not whose asset failed (L-0001's grid collapse was state-OWNED and no policy
+ * act). The test is L-0091's, stated there before any rule existed: not a shock where the thing
+ * recorded was "a sequence of state decisions rather than an external event".
+ *
+ * **RULING 7 — type by what the record is ABOUT, not by what failed.** A record about the state's
+ * RESPONSE is typed by the response; L-0028 already does this, unprompted. This is why the domestic
+ * non-state category needs no third branch — the type turns on the record's subject, not on the
+ * nature of the event.
+ *
+ * **Ruling 8 governs where a shock belongs — provenance, not the ledger — and is in CLAUDE.md with
+ * the two things it does not settle. Retyping any existing record is verdict-adjacent and is not
+ * authorised by these rulings.**
  */
 export type LedgerType = 'reform' | 'event' | 'episode' | 'shock' | 'institutional';
 
