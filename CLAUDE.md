@@ -187,6 +187,31 @@ false because one of those records had been filled twenty minutes earlier, by th
 control was measuring its own edit. Same shape as `url-check` reporting "0 to check" after the push
 it was meant to check. Re-read the claim's own timestamp before trusting a re-run.
 
+**GRADE THE DOCUMENT, NOT THE SERVER — the mirror rule, ruled by the operator 2026-08-06.** Identical
+bytes ARE the document. A High Court judgment retrieved from a legal-news mirror, or a ministry PDF
+retrieved from the Internet Archive, **is the document** and keeps the tier the document earns. An
+ACCOUNT of a document is T4 — a newspaper reporting what a report said is journalism however official
+the subject is. **The line is between holding the artefact and holding somebody's description of it,
+not between which server sent the bytes.**
+
+**Two authoring requirements follow and neither is optional.** Record the RETRIEVAL PATH with the
+citation, so a reader knows the bytes came by a third party and can weigh that. And **where the
+original no longer resolves, record that beside the citation** — a publisher's deletion is evidence
+about the publisher, not about the evidence.
+
+**The ruling rests on a measurement, and the measurement is why it went this way.** 77 citations are
+served by a third party, 65 of them by `web.archive.org` and 63 of those tagged T1. **Of 17 distinct
+archived primaries tested through a pinned resolver, 2 still answered at their original host** — six
+404, three no response, four no DNS record. **For 13 of 17 the archived copy is the only surviving
+copy.** Grading mirrors down would have told a reader the evidence was weak when the true position is
+that the evidence is strong and the publisher deleted it — **the exact inversion this ladder exists to
+prevent, applied at scale.**
+
+**What this rule does NOT settle, and the gap is still open:** a foreign government primary retrieved
+directly — a US Executive Order from the Federal Register — has no class in this ladder at all, because
+T1 is defined *Indian* official and T2 is multilateral. 19 citations sit in that hole. **A missing
+class is not a mis-tag and this ruling does not reach it.**
+
 **A tier moves only when the EVIDENCE moved, and the merge asserts which direction.** Not "never
 move a tier" — move it when the stated reason for the tier no longer holds, and prove which case you
 are in before writing. P-80 moved T4 to T3 because its stated reason, "the paper itself was not

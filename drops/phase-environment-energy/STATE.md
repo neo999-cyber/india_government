@@ -4590,3 +4590,191 @@ authorised. **Not applied.**
 named document, and one L-0116 sentence is about an inquiry's inertness rather than publication.
 **The pattern in every rewrite is the same and it is one word: `exists` → `located`, `published` →
 `retrieved`, `nobody` → `no source retrieved`.**
+
+---
+
+# BATCH 12 — BOTH PASS-B REVIEWS, RE-WEIGHTED. 2026-08-06
+
+**No verdict moved, no tier changed, no record touched.** One operator ruling written into two texts.
+
+## 0. STANDING CONVENTION, and the failure that earned it
+
+**External reviews land in `review/returned/` and nowhere else.** Three rounds arrived in
+`~/Downloads`; the Gemini pass-B review was there as `gemini.docx` — **not `gemini.doc`** — and batch
+9 searched, did not find it, and **triaged the round as one review, weighting every finding
+single-source.** Both are now committed with `.txt` extractions, named
+`pass-<pass>-<family>-<date>`, and pass A's files are renamed to match.
+
+## 1-2. THE CONVERGENCE MATRIX — and it corrects the brief on three counts
+
+Tested each finding against all four returned reports mechanically:
+
+| finding | A-chatgpt | A-gemini | B-chatgpt | B-gemini | families |
+|---|:--:|:--:|:--:|:--:|:--:|
+| **L-0026 against the `partly` definition** | ✓ | ✓ | ✓ | ✓ | **2** |
+| **L-0207's `worked`** | ✓ | ✓ | ✓ | ✓ | **2** |
+| **`too-early` on L-0188 and L-0205** | ✓ | ✓ | ✓ | ✓ | **2** |
+| **`not-published` without a stated search** | — | ✓ | ✓ | ✓ | **2** |
+| **`worked` thin sourcing, the same eight** | ✓ | ✓ | — | ✓ | **2** |
+| **method-text desync** | ✓ | ✓ | — | — | **2** |
+| statutory double standard, the nine | — | ✓ | — | ✓ | **1** |
+| no `worked`/`failed` in governance etc. | — | ✓ | — | ✓ | **1** |
+| L-0092 · L-0114 | — | — | — | ✓ | 1 |
+| L-0226 incommensurable · tier ladder | — | — | ✓ | — | 1 |
+
+**Three corrections to the brief, all measured:**
+
+1. **The statutory double standard is NOT cross-family.** Both Gemini reports name the same nine
+   records; **neither ChatGPT report mentions a single one of the nine** — zero occurrences of
+   L-0095, L-0106, L-0108, L-0162, L-0094, L-0122, L-0154, L-0164 or L-0167 in either. It is one
+   family finding the same thing twice, which is repetition, not independent convergence.
+2. **"No `worked`/`failed` in governance" is likewise Gemini-only, both rounds.**
+3. **The brief omits the most convergent finding in the entire set. `L-0026` against the `partly`
+   definition appears in ALL FOUR reports** — both families, both rounds.
+
+### The re-weighting that matters
+
+**Batch 9 overturned batch 7 on L-0026 while recording it as single-source.** It is the opposite:
+**four reports, two families, two rounds.** The overturn was right and was under-weighted, and
+`L-0026`/`L-0029` now carry the strongest evidential support of any finding in the decision set.
+
+**Six findings are cross-family** (the five above plus method desync). **Two are single-family-repeated**
+— which is weaker than cross-family and stronger than single-report, and the decision set should
+carry that as a third tier rather than collapsing it into either.
+
+## 3. THE TWO UNTRIAGED GEMINI FINDINGS
+
+### L-0092 — CONFIRMED as a vocabulary gap; the record concedes it in terms
+
+Gemini: scoring a presentational act `contested` equates data manipulation with a précis reading and
+creates false balance.
+
+**The record's own `assessmentNote`:** *"The assessment vocabulary is built for measures with stated
+objectives and **this record is a presentational act**. `contested` is used on its written definition …
+**The value may change on review if a value for presentational findings is added.**"*
+
+**So `contested` is technically correct and substantively a placeholder, and the record says so.**
+L-0092 is also **one of the two records deliberately left without a `contestedGround`**, on exactly
+the ground that `contested` is standing in for a value that does not exist. **The corpus flagged this
+before the reviewer did and shipped it anyway.** Gemini's contribution is naming the effect on a
+reader: a `contested` verdict reads as *the evidence is balanced*, and here the record's own
+`caseAgainst` is not balanced — *"a leap manufactured by deleting the peak"*.
+
+**Classification: CONFIRMED, vocabulary gap, and it belongs with the `commitmentState` question rather
+than with the verdict corrections** — both are the same defect, a value used because no accurate one
+exists.
+
+### L-0114 — the named charge is DEFEATED; a different one in the next field is CONFIRMED
+
+Gemini: the caveat *"attempts to bound the frame to 'Union government publication' to preserve the
+claim"*, but the J&K Chief Minister published 6,221 pellet injuries 26 days before MHA's refusal.
+
+**The caveat is not a device to preserve the framing — it is the CORRECTION of exactly that
+overclaim, dated 2026-08-05, before the review:** *"the summary previously read 'the only pellet
+quantity any government has ever published'. **That was contradicted by this record's own next
+field**, which reports the Jammu and Kashmir Chief Minister giving 6,221 injured by pellets …
+**Restated to what was located, in a Union publication.**" **The reviewer read the corrected wording
+and described it as the manoeuvre the correction had just undone.**
+
+**But reading past the caveat, a live defect is there — in a different field.** The `assessmentNote`
+says: *"**the state** holds the measurements for both sides of its own trade-off, publishes the term
+favourable to it and **refuses the term unfavourable to it**."* **The record's own `whatHappened`
+reports a state government publishing the unfavourable term.** If "the state" includes the J&K
+government, the assessmentNote is contradicted by the record's own account.
+
+**Classification: the caveat charge DEFEATED; the `assessmentNote` charge CONFIRMED.** The reviewer
+found a real defect while mis-locating it — the summary was fixed and the note was not.
+
+## 4. THE MULTI-OBJECTIVE SWEEP — L-0048 IS THE WRONG CONTROL, AND L-0012 IS THE RIGHT ONE
+
+**Eight records state multiple announced objectives in their own notes.** Not three, and not a rule
+nobody follows:
+
+| verdict | n | records |
+|---|---:|---|
+| `partly` | 5 | L-0012 · L-0017 · L-0048 · L-0062 · L-0093 |
+| `failed` | 1 | L-0016 |
+| `worked` | 2 | **L-0026 · L-0029** |
+
+**L-0048 is not the same structure as L-0026 and the reviewers' comparison is imprecise.** L-0048:
+*"ONE IS MET AND THE OTHER IS **MEASURED AND NOT MET**"*. L-0026: one met, the other **NOT
+ESTABLISHED** — not measured at all. **A limb measured and failed and a limb never measured are
+different situations**, and any rule has to say which one bears on the verdict.
+
+**L-0012 IS the clean control, and it is decisive.** *"FOUR THINGS WERE PROMISED AND THIS RECORD
+MEASURES TWO. Measured: revenue, which grew to a record ₹22.08 lakh crore … and the registrant base,
+which passed 1.51 crore. Not measured here: revenue BUOYANCY …"* — **two measured limbs, both
+positive, two unmeasured, and the verdict is `partly`.**
+
+**L-0029 is the same shape: *"THREE OBJECTIVES WERE ANNOUNCED; TWO ARE MEASURED AND MET, AND THE
+THIRD IS THE ONE THE CASE AGAINST IS ABOUT."* Two measured and met, one unmeasured — and the verdict
+is `worked`.**
+
+**So the corpus counts unmeasured limbs against the verdict in L-0012 and does not in L-0029, on
+identical structures.** L-0016 shows the same question on the other side: two targets, one measured
+and decisively missed, and it goes `failed` rather than `partly`.
+
+**The finding restated, and it is different from the reviewers' version and from batch 9's:** it is
+not that three records break a rule. **It is that no rule exists for how an unmeasured announced
+limb bears on a verdict, and the practice is inconsistent — 5 records treat unmeasured limbs as
+disqualifying a definitive verdict, 3 do not.** That is a vocabulary defect, not three bad calls, and
+it means **fixing L-0026 and L-0029 alone would leave the inconsistency in place.**
+
+## 5. THE MIRROR RULING, WRITTEN IN
+
+**Written verbatim into `CLAUDE.md` and into the ladder's own text in BOTH schemas, byte-identically
+(checked).** Two schema DESCRIPTION edits, 1 insertion / 1 deletion each; no property, type, enum
+value or validation rule touched.
+
+> **Grade the document, not the server.** Identical bytes ARE the document. An ACCOUNT of a document
+> is T4. The line is between holding the artefact and holding somebody's description of it, not
+> between which server sent the bytes. **Record the retrieval path with the citation**, and **where
+> the original no longer resolves, record that beside it** — a publisher's deletion is evidence about
+> the publisher, not about the evidence.
+
+### Which citations change class
+
+| | n | under the ruling |
+|---|---:|---|
+| band E — mirror, identical bytes (Bar and Bench, `internetshutdowns.in`) | 5 | **stay T1 — settled** |
+| `web.archive.org` citations | **65** (63 T1) | **stay T1 — the ruling protects them** |
+| band A — an ACCOUNT of a document | 7 | **→ T4**, confirmed not changed |
+| band B — multilateral | 5 | → T2, unaffected by this ruling |
+| band C — self-citation | 3 | no class, unaffected |
+| band D — foreign government primary | 19 | **NO CLASS EXISTS. The ruling explicitly does not reach it** |
+
+**CORRECTED T1 RANGE: 931–950, against a published 965.** The ruling **removes the 926 floor** — band
+E was the only thing between 926 and 931 — and **the sole remaining variable is band D**, which is a
+missing class rather than a mis-tag. **Nothing re-tiered.**
+
+## 6. QUESTION (b), AS IT NOW STANDS
+
+**The floor is not the question, and the counting made it look like one.**
+
+> **Does `worked` require evidence independent of the announcing body?**
+
+**The facts the decision rests on:**
+- Nine `worked` records. **Thirteen ledger citations: T1×12, T4×1.**
+- Eight of nine resolve `seriesRefs`, and **every resolved series is also T1** — so the second layer
+  adds volume and not independence.
+- **L-0014's single T4 is the only non-government citation in the entire `worked` class**, and it is
+  the record ChatGPT attacks for resting on a proxy.
+- A ≥2-citation floor moves 7 of 9 — **but if a resolved series counts as corroboration it moves
+  ZERO**, because all seven single-citation records have one.
+
+**So a count-based floor cannot express the question.** It either moves everything or nothing
+depending on whether series count, and neither setting tests independence.
+
+**The three answers and what each commits the instrument to:**
+1. **No — one official source can establish `worked`.** Then the instrument must publish that a
+   success verdict may rest entirely on the announcing body's own account, and the reviewers'
+   finding stands as a disclosed property rather than a defect.
+2. **Yes, for `worked` only.** A deliberate asymmetry: a higher burden for agreeing with the
+   government than for disagreeing. **Defensible, but it must be published as such** — a reader who
+   finds it unstated will read it as bias in the other direction.
+3. **Yes, for every definitive verdict.** Symmetric, and it moves 4 `failed` records too — including
+   L-0030, where one authoritative statement that no PSB was privatised is not weak evidence but the
+   right evidence.
+
+**Question (b) is answerable now. It does not wait on the tier audit** — no `worked` record carries a
+disputed citation — **and it does not wait on question (c)**, which is about band D alone.

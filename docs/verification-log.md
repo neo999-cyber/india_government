@@ -11376,3 +11376,97 @@ retrieved`. **Not applied.**
 `no-unguarded-prose-field` 20 prose · 45 non-prose · `domain-coverage` 14/14, 1141/1141 ·
 `figure-consistency` 18 declared · `enum-stamp` 2 fixtures · `validate:selftest` 23/23, 2/2 ·
 `typecheck` clean.
+
+---
+
+## Cycle 2026-08-06l — BATCH 12. Both pass-B reviews, re-weighted; the mirror ruling written in
+
+No verdict moved, no tier changed, no record touched. Two schema DESCRIPTION edits (1 ins / 1 del
+each), byte-identical across both schemas — no property, type, enum value or validation rule.
+
+### Standing convention, and the failure that earned it
+
+**External reviews land in `review/returned/` and nowhere else.** The Gemini pass-B review was in
+`~/Downloads` as **`gemini.docx`, not `gemini.doc`** — batch 9 searched, missed it, and **triaged the
+round as one review, weighting every finding single-source.** Both now committed with `.txt`
+extractions; pass A's files renamed to `pass-<pass>-<family>-<date>`.
+
+### The convergence matrix corrects the brief on three counts
+
+Tested mechanically against all four returned reports.
+**Cross-family (2 families): L-0026 against the `partly` definition (ALL FOUR reports) · L-0207's
+`worked` (all four) · `too-early` on L-0188/L-0205 (all four) · `not-published` without a stated
+search (3 of 4) · `worked` thin sourcing, the same eight (3 of 4) · method-text desync (both pass A).**
+
+**Corrections:** the **statutory double standard is NOT cross-family** — both Gemini reports name the
+same nine records and **neither ChatGPT report mentions one of them**, zero occurrences of any of the
+nine. **"No `worked`/`failed` in governance" is likewise Gemini-only, both rounds.** And **the brief
+omits the most convergent finding in the set: L-0026, in all four reports.**
+
+**Re-weighting: batch 9 overturned batch 7 on L-0026 while recording it single-source. It is
+four reports, two families, two rounds** — the strongest evidential support in the decision set. Six
+findings are cross-family; two are single-family-repeated, which is a third tier and should not be
+collapsed into either.
+
+### The two untriaged Gemini findings
+
+**L-0092 — CONFIRMED as a vocabulary gap, and the record concedes it**: its own note says *"this
+record is a presentational act … the value may change on review if a value for presentational findings
+is added"*. It is also one of the two records **deliberately left without a `contestedGround`** on that
+exact ground. **The corpus flagged this before the reviewer and shipped it anyway.** Belongs with the
+`commitmentState` question — same defect, a value used because no accurate one exists.
+
+**L-0114 — the named charge DEFEATED, a different one CONFIRMED.** The caveat is not a device to
+preserve the framing; **it is the correction of that exact overclaim, dated 2026-08-05, before the
+review** — *"the summary previously read 'the only pellet quantity any government has ever
+published'. That was contradicted by this record's own next field…"*. **The reviewer read the
+corrected wording and described it as the manoeuvre the correction had undone.** But the
+`assessmentNote` says *"the state … refuses the term unfavourable to it"*, and the record's own
+`whatHappened` reports a state government publishing it. **The summary was fixed and the note was
+not.**
+
+### The multi-objective sweep — L-0048 is the wrong control
+
+**Eight records state multiple announced objectives: 5 `partly`, 1 `failed`, 2 `worked`.**
+
+**L-0048 is not L-0026's structure.** L-0048's second limb is *"MEASURED AND NOT MET"*; L-0026's is
+*"NOT established"*. **A limb measured and failed and a limb never measured are different
+situations.** **L-0012 is the clean control and it is decisive**: four promised, **two measured and
+both positive**, two unmeasured — **`partly`**. **L-0029 is the same shape — two measured and met, one
+unmeasured — and is `worked`.**
+
+**So the finding restated: it is not that three records break a rule. No rule exists for how an
+UNMEASURED announced limb bears on a verdict, and the practice is inconsistent — five records treat
+unmeasured limbs as disqualifying a definitive verdict, three do not.** Fixing L-0026 and L-0029
+alone would leave the inconsistency in place.
+
+### The mirror ruling, written into CLAUDE.md and both schemas
+
+> Grade the document, not the server. Identical bytes ARE the document; an ACCOUNT of a document is
+> T4. Record the retrieval path with the citation, and where the original no longer resolves record
+> that beside it — a publisher's deletion is evidence about the publisher, not about the evidence.
+
+**Class changes:** band E (5, mirror) **stay T1, settled** · **`web.archive.org` 65 citations (63 T1)
+stay T1 — the ruling protects them** · band A (7, an account) **→ T4**, confirmed · band B (5)
+→ T2, unaffected · band C (3) no class · **band D (19, foreign primary) NO CLASS EXISTS — the ruling
+explicitly does not reach it.**
+
+**CORRECTED T1 RANGE: 931–950 against a published 965.** The ruling **removes the 926 floor** and
+**leaves band D as the sole variable.** Nothing re-tiered.
+
+### Question (b), as it stands
+
+**The floor is not the question.** Nine `worked` records, 13 citations, **T1×12 T4×1**; eight resolve
+series and **every resolved series is also T1**; **L-0014's single T4 is the only non-government
+citation in the entire class.** A ≥2 floor moves 7 of 9 — **or ZERO if a resolved series counts.**
+**A count-based floor cannot express the question**, which is: *does `worked` require evidence
+independent of the announcing body?* Three answers and their commitments are set out in STATE.md.
+**Answerable now — it waits on neither the tier audit nor question (c).**
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs
+= 682 records, 1,759 points** · `validate:selftest` 23/23 validator rules, 2/2 output gates ·
+`no-unguarded-prose-field` 20 prose · 45 non-prose · `reachability` 1645/1645 · `field-render-audit`
+36 prose + 43 non-prose, 0 invisible · `domain-coverage` 14/14, 1141/1141 · `no-bare-root` 0 new,
+0 stale · `figure-consistency` 18 declared · `enum-stamp` 2 fixtures · `typecheck` clean.
