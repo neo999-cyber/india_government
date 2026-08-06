@@ -186,6 +186,14 @@
     "provenanceRefs": [
       "P-59"
     ],
+    "shockExposure": [
+      {
+        "event": "COVID-19",
+        "role": "confound",
+        "adjudication": "unstated",
+        "why": "The pandemic saw large increases in government school enrollments (72.9 per cent in 2022)."
+      }
+    ],
     "sources": [
       {
         "name": "PIB Release PRID 2099725, Ministry of Education, 'Leap in Rural School Enrollment', 4 February 2025",
@@ -688,6 +696,14 @@
     "provenanceRefs": [
       "P-69"
     ],
+    "shockExposure": [
+      {
+        "event": "COVID-19",
+        "role": "confound",
+        "adjudication": "refused",
+        "why": "And the national pattern removes the innocent explanations: no other state saw anything comparable in the same years, so this was a rule change and not a demand shift, a pandemic effect, or a reporting artefact."
+      }
+    ],
     "sources": [
       {
         "name": "Lok Sabha Unstarred Question 1260, answered 27.07.2026 (the Ministry confirming the 2018 Amendment Rules and their content)",
@@ -1082,6 +1098,14 @@
       "P-68",
       "P-04"
     ],
+    "shockExposure": [
+      {
+        "event": "COVID-19",
+        "role": "cause",
+        "adjudication": "accepted",
+        "why": "The postponement has a stated and adequate cause: preparations for the first phase were complete and field work was scheduled to begin on 1 April 2020 when the pandemic intervened, and enumerating 1.4 billion people door to door was not available in 2020 or 2021."
+      }
+    ],
     "sources": [
       {
         "name": "Gazette notification S.O. 2681(E), 16 June 2025, Registrar General of India, under section 3 of the Census Act 1948, superseding S.O. 1455(E) of 26 March 2019",
@@ -1382,6 +1406,14 @@
       "P-59"
     ],
     "differentFacts": false,
+    "shockExposure": [
+      {
+        "event": "COVID-19",
+        "role": "confound",
+        "adjudication": "accepted",
+        "why": "The COVID swing and its reversal are corroborated independently from both sides - the household survey and the administrative universe agree in direction on the one stretch where both are clean, with government enrolment up 8.1 million and private down 5.6 million across FY2020-21 to FY2021-22."
+      }
+    ],
     "sources": [
       {
         "name": "Lok Sabha Unstarred Question 112, 'Closure or Merger of Schools', answered 03.02.2025, Annexures I and II",

@@ -18,10 +18,16 @@
   "caseAgainst": "A national survey whose headline rate falls because unpaid family work is counted as employment cannot be cited as evidence that jobs were created, whatever its sampling quality. The withholding of the first round until after a general election, and two statistical commissioners resigning over it, is a governance fact independent of the survey's technical merits. And a private survey being inconvenient is not a methodological argument against it.",
   "shockExposure": [
     {
+      "event": "demonetisation and GST",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "Demonetisation (November 2016) and GST (July 2017) both fall inside the first PLFS reference year, so the 6.1% baseline itself sits on disturbed ground."
+    },
+    {
       "event": "COVID-19",
       "role": "confound",
       "adjudication": "accepted",
-      "why": "Demonetisation (November 2016) and GST (July 2017) both fall inside the first PLFS reference year, so the 6.1% baseline itself sits on disturbed ground. COVID then dominates every 2019-2022 comparison."
+      "why": "COVID then dominates every 2019-2022 comparison."
     }
   ],
   "seriesRefs": [

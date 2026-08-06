@@ -508,8 +508,8 @@ phase name asserted from memory is a premise until it is read off this table.
 | 13 | | **NOT SAFE TO TREAT AS COMPLETE until the delimitation overlap with phase 12 is checked** — the coverage was split across the two and neither closed on it explicitly |
 | 14–15 | 15 = environment and energy | closed |
 | — | the adversarial-review and rulings cycle | closed 2026-08-06, in `drops/cycle-review-and-rulings/` |
-| **16** | **shocks calibration** — input is the whole corpus | **next** |
-| **17** | **independence** — the field proposed in `PROPOSALS-2026-08-06.md` | this slot was the counterfactual engine; it is freed, see below |
+| **16** | **shocks calibration** — input is the whole corpus | **CLOSED 2026-08-06**, in `drops/phase-16-shocks/` |
+| **17** | **independence** — the field proposed in `PROPOSALS-2026-08-06.md`. **`objectives[]` sequences FIRST within it**, because commitment state attaches to the limb and is a property of that array. | **next** |
 | **18** | **design lock** | |
 | **19** | **polish** | |
 

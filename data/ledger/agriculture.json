@@ -232,7 +232,13 @@
       "event": "COVID-19",
       "role": "confound",
       "adjudication": "accepted",
-      "why": "COVID and the 2020-21 rural distress period sit inside the series, as does the 2022 heat shock."
+      "why": "COVID and the 2020-21 rural distress period sit inside the series,"
+    },
+    {
+      "event": "the 2022 heat shock",
+      "role": "confound",
+      "adjudication": "accepted",
+      "why": "as does the 2022 heat shock."
     }
   ],
   "seriesRefs": [
@@ -356,10 +362,16 @@
   "caseAgainst": "Output growth without yield growth means the gains came from area and weather, neither of which is a policy achievement or repeatable. The yield gap against every peer is the binding constraint and it did not close. And the composition — more paddy and wheat, grown where water is scarcest — means the production record and the groundwater crisis are the same fact viewed from different ends.",
   "shockExposure": [
     {
+      "event": "monsoon variability",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "Monsoon variability dominates the series;"
+    },
+    {
       "event": "the 2022 heat shock",
       "role": "cause",
       "adjudication": "accepted",
-      "why": "Monsoon variability dominates the series; the 2022 heat shock cut wheat output and triggered the export ban."
+      "why": "the 2022 heat shock cut wheat output and triggered the export ban."
     }
   ],
   "seriesRefs": [

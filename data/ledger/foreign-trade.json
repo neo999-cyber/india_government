@@ -518,6 +518,14 @@
         "differentFacts": false,
         "differentFactsNote": "There is no dispute about any figure here. Both readings use the same series, India's own, and disagree only about which year \"since the signing\" points at. That is a difference about the meaning of a phrase, not about the world, which is why this is not a differentFacts pair even though it looks like one at a distance.",
         "caveat": "The test uses calendar years because UN Comtrade's annual series is calendar-based on both sides, and Indian trade statistics are conventionally reported on an April-March financial year. A financial-year test would move each figure and could move a ratio near the boundary; none of the ratios here is near the boundary — the closest to 2.00 on a signature-adjacent base is 1.38 — so the conclusion does not turn on the calendar convention. It is stated because the reader should not have to assume it.",
+        "shockExposure": [
+          {
+            "event": "COVID-19",
+            "role": "confound",
+            "adjudication": "refused",
+            "why": "Presenting a COVID-trough comparison as the effect of an agreement signed two years later attributes to the agreement a recovery that would have happened without it."
+          }
+        ],
         "sources": [
             {
                 "name": "Ministry of Commerce and Industry, \"India–EFTA TEPA Marks Two Years\", PIB, 10 March 2026 — the Prime Minister's statement as published",

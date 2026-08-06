@@ -619,6 +619,14 @@
    "P-53",
    "P-58"
   ],
+  "shockExposure": [
+    {
+      "event": "COVID-19",
+      "role": "confound",
+      "adjudication": "unstated",
+      "why": "Two pandemic years suppressed tabling across all parliamentary business."
+    }
+  ],
   "sources": [
    {
     "name": "RTI reply obtained by The New Indian Express, reported March 2021",

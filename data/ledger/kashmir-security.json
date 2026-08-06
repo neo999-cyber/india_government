@@ -455,6 +455,14 @@
     "provenanceRefs": [
       "P-85"
     ],
+    "shockExposure": [
+      {
+        "event": "COVID-19",
+        "role": "confound",
+        "adjudication": "refused",
+        "why": "The COVID justification has outlived COVID by four years, and the police chief said so himself when he listed stopping glamorisation alongside stopping infection."
+      }
+    ],
     "sources": [
       {
         "name": "Reporting of the Inspector General of Police Kashmir's April 2020 statements, the 2017 J&K Crime Branch report, the counts put before the Supreme Court on 29 August 2022, and the Ganderbal exhumation of 13 June 2026. Relayed throughout: no J&K Police or Home Department document was retrievable in this phase and jkpolice.gov.in and jkhome.nic.in gave no HTTP response",

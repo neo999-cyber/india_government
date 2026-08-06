@@ -586,6 +586,14 @@
       "P-90",
       "P-83"
     ],
+    "shockExposure": [
+      {
+        "event": "COVID-19",
+        "role": "confound",
+        "adjudication": "accepted",
+        "why": "The apparent collapse from 404 in 2019 to 228 in 2020 spans the largest detention wave in the territory's recent history, and the instrument offers no mechanism to distinguish release from transfer from COVID decongestion."
+      }
+    ],
     "sources": [
       {
         "name": "NCRB, Prison Statistics India 2021 - Glossary definition of 'Detenues' attributed to the MHA Model Prison Manual 2016, Table 2.12B 'Domicile of Detenues', Table 7.5 'Detenues Released', Chapter 5 'Prisoners - Offence wise' covering convicts and undertrials only, and Chart 2.12's independent 2016-2021 trend line. Retrieved as a 13.1 MB PDF from an Internet Archive id_ snapshot of NCRB's own file and text-extracted",

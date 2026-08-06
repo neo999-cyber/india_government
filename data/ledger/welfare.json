@@ -224,9 +224,15 @@
   "shockExposure": [
     {
       "event": "COVID-19",
+      "role": "cause",
+      "adjudication": "accepted",
+      "why": "The scheme is a COVID artefact by origin; separating its effect from the pandemic's is impossible by construction."
+    },
+    {
+      "event": "the 2022 food-price shock",
       "role": "confound",
       "adjudication": "accepted",
-      "why": "The scheme is a COVID artefact by origin; separating its effect from the pandemic's is impossible by construction. The 2022 food-price shock raised its value and its cost simultaneously."
+      "why": "The 2022 food-price shock raised its value and its cost simultaneously."
     }
   ],
   "seriesRefs": [
