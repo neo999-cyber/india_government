@@ -5,6 +5,9 @@ import { DOMAINS, TERMS } from '@/lib/types';
 import { StatusKey } from '@/components/marks';
 
 export default function HomePage() {
+  // Counted, never typed. It fell from 9 to 1 on 6 August 2026 and the paragraph reporting it
+  // must move with the data rather than with whoever last edited the prose.
+  const worked = ledger.filter((l) => l.assessment === 'worked').length;
   const status = statusCounts(series);
   const points = series.reduce((n, s) => n + s.points.length, 0);
   const breaks = series.reduce((n, s) => n + (s.breaks?.length ?? 0), 0);
@@ -60,6 +63,20 @@ export default function HomePage() {
       <p className="prose-note">
         Records roll up to counts of assessments, never to a grade. The baseline term is carried
         for context and is not scored.
+      </p>
+      <p className="prose-note">
+        <strong>
+          {worked === 1 ? 'One record of' : `${worked} records of`} {ledger.length} says a measure
+          worked, and that number is about the evidence rather than about the government.
+        </strong>{' '}
+        From 6 August 2026 a success verdict needs a source independent of the body that announced
+        the measure, and a promise with several parts is not delivered while any part goes
+        unmeasured. Where the Indian state is the only body that measures a thing — which, on most
+        of these subjects, it is — raising that standard lowers the count of established successes
+        whatever the policies actually did. So read this tally as a measure of how much of Indian
+        policy is independently checked, and read it as a measure of the policy only where you can
+        also see the independent evidence on the record.{' '}
+        <Link href="/method/">How that standard works, and what it cannot separate</Link>.
       </p>
       <div className="grid">
         {TERMS.map((term) => {

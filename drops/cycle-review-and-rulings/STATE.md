@@ -116,7 +116,7 @@ was re-tiering, and serial application would have let the order decide three ver
 | 1 | **The RBI *Financial Stability Report* is not held.** Six routes named on each dependent series; `rbidocs.rbi.org.in` refuses the TLS handshake from this environment. | Blocks R1a passing for L-0026 and L-0029 on one limb. **Not "not published" — not retrieved by this client.** |
 | 2 | **L-0219's 139 unaddressable and L-0218's three channels** assert results of a live sweep that stores nothing. | Findings survive at `/derivations` §3. **Fix: have `source-response-check.mjs` write a dated result file into the corpus.** Data change, not schema. |
 | 3 | **`undated-commitment` has one member.** L-0209 moved. L-0213, L-0187 and L-0210 were tested and do **not** qualify — see below. | Re-test if any of the three acquires a quantity. |
-| 4 | **Seam-span triage** — `seam-span-report` emits 125 spans / 34 undeclared. | Untouched this cycle. |
+| 4 | **Seam-span triage** — `seam-span-report` emits 127 record-by-break spans, 92 declaring the break and 35 not. **Re-run 2026-08-06: the 125/34 carried in this file until then was stale.** | Untouched this cycle. |
 | 5 | **Arc B's one capability** (phase 15 deferral). | Untouched. |
 | 6 | **The source cache** — three costed options, none chosen. | Untouched. |
 | 7 | **Selection bias in the review extracts.** 73 of 226 records were shown, chosen under criteria two of which carry a judgement threshold. | Logged. The reviewers said they could not tell whether the selection overstates or understates prevalence, and neither can the instrument. |
