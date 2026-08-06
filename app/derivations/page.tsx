@@ -173,11 +173,14 @@ export default function DerivationsPage() {
       <p className="prose-note">
         This page is generated from <code>/data</code> by <code>tools/gen-derivations.mjs</code> and
         rendered from the generated file, so it cannot state a figure the derivation does not
-        produce. It exists because <Link href="/ledger/L-0219">L-0219</Link> and{' '}
-        <Link href="/ledger/L-0220">L-0220</Link> previously cited a private repository for counts
-        about this corpus — evidence only their author could inspect. Section 3 above names what no
-        derivation over <code>/data</code> can settle, and those claims remain uncheckable rather
-        than being presented as resolved.
+        produce. It exists because three records — L-0218, L-0219 and L-0220 — asserted counts about
+        this corpus and cited the corpus as their evidence, at a repository URL that returned 404 to
+        every reader. On 6 August 2026 they left the ledger: a source is not independent of what it
+        establishes when it <em>is</em> what it establishes, so this is method rather than a scored
+        finding. Section 3 names what no derivation over <code>/data</code> can settle and section 5
+        names what a derivation cannot carry that a record could; neither is presented as resolved.
+        The <Link href="/method/">method</Link> page states the standard the three were removed
+        under.
       </p>
     </>
   );

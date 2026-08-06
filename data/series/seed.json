@@ -251,7 +251,7 @@
   "title": "Capital to risk-weighted assets ratio, scheduled commercial banks",
   "unit": "%",
   "domain": "banking",
-  "tier": "T1",
+  "tier": "T4",
   "source": {
    "name": "RBI Financial Stability Report",
    "url": "https://abclive.in/2025/07/02/rbi-inancial-stability-report-2025/"
@@ -347,7 +347,7 @@
    "P-19",
    "P-21"
   ],
-  "notes": "Multi-decade high. RBI June 2026 stress test: falls to 13.0% under the most severe adverse scenario, still above the 9% minimum."
+  "notes": "Multi-decade high. RBI June 2026 stress test: falls to 13.0% under the most severe adverse scenario, still above the 9% minimum. TIER CORRECTED T1 -> T4 ON 2026-08-06: this cites a news site’s ACCOUNT of the Financial Stability Report, not the report, and the mirror rule grades an account T4 however official its subject. RETRIEVAL OF THE REPORT ITSELF WAS ATTEMPTED ON 2026-08-06 AND FAILED, AND THE ROUTES ARE NAMED SO THE CLAIM IS \"NOT RETRIEVED BY THIS CLIENT\" RATHER THAN \"NOT PUBLISHED\": (1) the document host rbidocs.rbi.org.in refused the TLS handshake from two independent stacks, curl exiting 35 and OpenSSL reporting UNEXPECTED_EOF_WHILE_READING; (2) a second fetching agent on the same URL reported the socket closed; (3) the in-app browser was denied navigation to the host; (4) www.rbi.org.in/Scripts/FsReports.aspx returned HTTP 200 at 65 KB and is a JavaScript shell listing no document; (5) the Internet Archive availability API returned HTTP 429 twice; (6) the Archive replay of the report URL returned HTTP 200 carrying a bot-protection challenge, which was not answered. The report is published and this instrument does not hold it. Until it does, the intra-state independence test is NOT passed on anything resting here."
  },
  {
   "id": "credit-gdp-peer",
@@ -435,7 +435,7 @@
   "title": "Bank credit growth",
   "unit": "% y/y",
   "domain": "banking",
-  "tier": "T1",
+  "tier": "T4",
   "source": {
    "name": "RBI",
    "url": "https://abclive.in/2025/07/02/rbi-inancial-stability-report-2025/"
@@ -525,7 +525,7 @@
   "provenanceRefs": [
    "P-19"
   ],
-  "notes": "The 2016-2019 squeeze coincides with AQR-driven recognition and PCA constraints. FY2025-26 credit growth 14.5% outpaces deposit growth 11.5% — an RBI-flagged vulnerability."
+  "notes": "The 2016-2019 squeeze coincides with AQR-driven recognition and PCA constraints. FY2025-26 credit growth 14.5% outpaces deposit growth 11.5% — an RBI-flagged vulnerability. TIER CORRECTED T1 -> T4 ON 2026-08-06: this cites a news site’s ACCOUNT of the Financial Stability Report, not the report, and the mirror rule grades an account T4 however official its subject. RETRIEVAL OF THE REPORT ITSELF WAS ATTEMPTED ON 2026-08-06 AND FAILED, AND THE ROUTES ARE NAMED SO THE CLAIM IS \"NOT RETRIEVED BY THIS CLIENT\" RATHER THAN \"NOT PUBLISHED\": (1) the document host rbidocs.rbi.org.in refused the TLS handshake from two independent stacks, curl exiting 35 and OpenSSL reporting UNEXPECTED_EOF_WHILE_READING; (2) a second fetching agent on the same URL reported the socket closed; (3) the in-app browser was denied navigation to the host; (4) www.rbi.org.in/Scripts/FsReports.aspx returned HTTP 200 at 65 KB and is a JavaScript shell listing no document; (5) the Internet Archive availability API returned HTTP 429 twice; (6) the Archive replay of the report URL returned HTTP 200 carrying a bot-protection challenge, which was not answered. The report is published and this instrument does not hold it. Until it does, the intra-state independence test is NOT passed on anything resting here."
  },
  {
   "id": "farmer-indebtedness",
@@ -713,7 +713,7 @@
   "title": "Scheduled commercial banks net NPA ratio",
   "unit": "% of advances",
   "domain": "banking",
-  "tier": "T1",
+  "tier": "T4",
   "source": {
    "name": "RBI",
    "url": "https://abclive.in/2025/07/02/rbi-inancial-stability-report-2025/"
@@ -805,7 +805,7 @@
    "P-16",
    "P-21"
   ],
-  "notes": "FY2024-25 at 0.52% is the lowest in 20 years."
+  "notes": "FY2024-25 at 0.52% is the lowest in 20 years. TIER CORRECTED T1 -> T4 ON 2026-08-06: this cites a news site’s ACCOUNT of the Financial Stability Report, not the report, and the mirror rule grades an account T4 however official its subject. RETRIEVAL OF THE REPORT ITSELF WAS ATTEMPTED ON 2026-08-06 AND FAILED, AND THE ROUTES ARE NAMED SO THE CLAIM IS \"NOT RETRIEVED BY THIS CLIENT\" RATHER THAN \"NOT PUBLISHED\": (1) the document host rbidocs.rbi.org.in refused the TLS handshake from two independent stacks, curl exiting 35 and OpenSSL reporting UNEXPECTED_EOF_WHILE_READING; (2) a second fetching agent on the same URL reported the socket closed; (3) the in-app browser was denied navigation to the host; (4) www.rbi.org.in/Scripts/FsReports.aspx returned HTTP 200 at 65 KB and is a JavaScript shell listing no document; (5) the Internet Archive availability API returned HTTP 429 twice; (6) the Archive replay of the report URL returned HTTP 200 carrying a bot-protection challenge, which was not answered. The report is published and this instrument does not hold it. Until it does, the intra-state independence test is NOT passed on anything resting here."
  },
  {
   "id": "npl-peer",
@@ -1363,7 +1363,7 @@
   "title": "UPI transaction value",
   "unit": "₹ lakh crore",
   "domain": "banking",
-  "tier": "T1",
+  "tier": "T4",
   "source": {
    "name": "NPCI / RBI",
    "url": "https://abclive.in/2025/07/02/rbi-inancial-stability-report-2025/"
@@ -1385,7 +1385,7 @@
     "note": "24,162 crore transactions; ~85% of India's retail digital payments"
    }
   ],
-  "notes": "India holds roughly 49% of global real-time payment volume. Zero-MDR drove adoption but removed payment-industry revenue."
+  "notes": "India holds roughly 49% of global real-time payment volume. Zero-MDR drove adoption but removed payment-industry revenue. TIER CORRECTED T1 -> T4 ON 2026-08-06: this cites a news site’s ACCOUNT of the Financial Stability Report, not the report, and the mirror rule grades an account T4 however official its subject. RETRIEVAL OF THE REPORT ITSELF WAS ATTEMPTED ON 2026-08-06 AND FAILED, AND THE ROUTES ARE NAMED SO THE CLAIM IS \"NOT RETRIEVED BY THIS CLIENT\" RATHER THAN \"NOT PUBLISHED\": (1) the document host rbidocs.rbi.org.in refused the TLS handshake from two independent stacks, curl exiting 35 and OpenSSL reporting UNEXPECTED_EOF_WHILE_READING; (2) a second fetching agent on the same URL reported the socket closed; (3) the in-app browser was denied navigation to the host; (4) www.rbi.org.in/Scripts/FsReports.aspx returned HTTP 200 at 65 KB and is a JavaScript shell listing no document; (5) the Internet Archive availability API returned HTTP 429 twice; (6) the Archive replay of the report URL returned HTTP 200 carrying a bot-protection challenge, which was not answered. The report is published and this instrument does not hold it. Until it does, the intra-state independence test is NOT passed on anything resting here."
  },
  {
   "id": "agri-employment-peer",
@@ -4632,7 +4632,7 @@
   "title": "Agriculture's share of gross value added",
   "unit": "% of GVA",
   "domain": "macro",
-  "tier": "T1",
+  "tier": "T2",
   "source": {
    "name": "MoSPI / World Bank WDI",
    "url": "https://data.worldbank.org/",

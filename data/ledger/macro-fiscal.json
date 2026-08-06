@@ -12,7 +12,7 @@
   "summary": "Overnight withdrawal of ₹500 and ₹1,000 notes, ~86% of currency in circulation by value, with a limited window to deposit or exchange.",
   "claimAtLaunch": "Elimination of black money held as cash, destruction of counterfeit currency, and cutting off terror financing. As returns approached 100%, the official justification shifted toward digitisation and formalisation.",
   "whatHappened": "The RBI's Annual Report 2017-18 confirmed 99.3% of demonetised notes returned to the banking system — ₹15.31 lakh crore of ₹15.41 lakh crore, with only ~₹10,720 crore unreturned. Counterfeit detection was minuscule. Currency in circulation collapsed, then recovered past pre-demonetisation levels (₹18.03 lakh crore by end-March 2018). The Supreme Court upheld the process 4-1 in January 2023, with a dissent questioning it.",
-  "assessmentNote": "CORRECTED 2026-08-05 (adversarial triage 2): this record carried a failure verdict with NO stated reasoning, which is the one thing a scored record may not do. THE GROUND FOR THE VERDICT IS NARROWED TO WHAT IS MEASURED HERE. Four objectives were announced. Two are measured in this record and both fail on the government's own sources: the extinguishment of black money held as cash, against which 99.3 per cent of the notes returned to the banking system on the RBI's own count, so either little was held in cash or it was laundered and the premise was wrong either way; and the destruction of counterfeit currency, against which detection was minuscule. The other two are NOT part of the ground for this verdict and are entered below as unmeasured: the effect on terror financing, and the digitisation and formalisation objective that replaced the original justification as returns approached 100 per cent. The caseAgainst previously asserted failure \"against every objective stated at announcement\"; that sentence overstates what this record measures and is left standing only because it is a case, not a finding - the verdict now rests on the two objectives with evidence.",
+  "assessmentNote": "CORRECTED 2026-08-05 (adversarial triage 2): this record carried a failure verdict with NO stated reasoning, which is the one thing a scored record may not do. THE GROUND FOR THE VERDICT IS NARROWED TO WHAT IS MEASURED HERE. Four objectives were announced. Two are measured in this record and both fail on the government's own sources: the extinguishment of black money held as cash, against which 99.3 per cent of the notes returned to the banking system on the RBI's own count, so either little was held in cash or it was laundered and the premise was wrong either way; and the destruction of counterfeit currency, against which detection was minuscule. The other two are NOT part of the ground for this verdict and are entered below as unmeasured: the effect on terror financing, and the digitisation and formalisation objective that replaced the original justification as returns approached 100 per cent. The caseAgainst previously asserted failure \"against every objective stated at announcement\"; that sentence overstates what this record measures and is left standing only because it is a case, not a finding - the verdict now rests on the two objectives with evidence. THE WITHDRAWN WORDING IS NOT QUOTED HERE BECAUSE THERE IS NONE: this field did not exist before the correction, which created it rather than replacing anything. A correction of an absence says that it is one.",
   "unmeasured": [
    {
     "what": "The effect of demonetisation on terror financing",
@@ -36,7 +36,7 @@
    {
     "name": "RBI Annual Report 2017-18",
     "url": "https://www.business-standard.com/article/news-ani/99-3-demonetised-notes-returned-to-banks-rbi-118082901029_1.html",
-    "tier": "T1"
+    "tier": "T4"
    },
    {
     "name": "RBI note-return confirmation reporting",
@@ -166,8 +166,9 @@
   "summary": "Monetary Policy Framework Agreement (2015) and amended RBI Act (2016) established a 4% CPI target with a ±2% band and a six-member Monetary Policy Committee.",
   "claimAtLaunch": "A rules-based framework would anchor inflation expectations after the 9-11% inflation of 2010-2013.",
   "whatHappened": "CPI fell decisively into a 4%-centred range, with breaches during 2020 (COVID supply disruption) and 2022-23 (food and fuel following the Ukraine invasion). By mid-2026 CPI ran around 3.5-4.4%. The framework was renewed with the same 4%±2% target for April 2026 to March 2031.",
-  "assessmentNote": "Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. WORKED IS ASSERTED ON THE ANNOUNCED OBJECT AND NOT ON ATTRIBUTION, and the distinction carries the verdict. The object was to anchor inflation expectations after the 9 to 11 per cent inflation of 2010-2013. CPI fell decisively into a 4 per cent-centred range, breached twice under identifiable external shocks, and the framework survived both, three governors and a change of political cycle without abandonment - then was renewed on the same target for 2026 to 2031. Institutional survival across shocks and renewal on unchanged terms is the strongest evidence available that expectations anchored. WHAT IS NOT MEASURED IS HOW MUCH OF THE DISINFLATION THE FRAMEWORK CAUSED. The case against is that the 2014-16 oil collapse handed much of it over, and that is not resolvable from anything retrieved; it is entered below as an absence. A reader should take this verdict as saying the framework held and was renewed, NOT that it produced the disinflation on its own. The 2024 CPI rebasing, which lowers the food weight, is also noted in the case against as making future performance flattering by construction.",
-  "assessment": "worked",
+  "assessmentNote": "RESCORED FROM worked TO contested, 2026-08-06, and contested rather than partly for a reason worth stating. The announced object of flexible inflation targeting was ANCHORING INFLATION EXPECTATIONS. What this record carries is lower CPI, the framework’s survival and its renewal through 2031. None of the three is a measure of expectations: CPI is the outcome expectations are supposed to influence, and institutional survival is evidence about the institution. partly would say part of the objective was achieved, which presupposes the objective was measured; it was not, so what the evidence supports is more than one defensible reading of the same facts — that the framework anchored expectations, and that disinflation arrived through commodity prices and global conditions with the framework alongside it. The record does not choose. THE SOURCING IS ALSO THE THINNEST IN THE CORPUS FOR A SCORED CLAIM: one T4 trade-press note on the renewal. The RBI’s own Inflation Expectations Survey of Households is the series that would settle this and it is not cited here.\n\nPREVIOUS NOTE, PRESERVED VERBATIM: Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. WORKED IS ASSERTED ON THE ANNOUNCED OBJECT AND NOT ON ATTRIBUTION, and the distinction carries the verdict. The object was to anchor inflation expectations after the 9 to 11 per cent inflation of 2010-2013. CPI fell decisively into a 4 per cent-centred range, breached twice under identifiable external shocks, and the framework survived both, three governors and a change of political cycle without abandonment - then was renewed on the same target for 2026 to 2031. Institutional survival across shocks and renewal on unchanged terms is the strongest evidence available that expectations anchored. WHAT IS NOT MEASURED IS HOW MUCH OF THE DISINFLATION THE FRAMEWORK CAUSED. The case against is that the 2014-16 oil collapse handed much of it over, and that is not resolvable from anything retrieved; it is entered below as an absence. A reader should take this verdict as saying the framework held and was renewed, NOT that it produced the disinflation on its own. The 2024 CPI rebasing, which lowers the food weight, is also noted in the case against as making future performance flattering by construction.",
+  "contestedGround": "evidence-unobservable",
+  "assessment": "contested",
   "caseFor": "The clearest institutional success of the period. Inflation expectations anchored, the framework survived two major shocks and three governors without abandonment, and its renewal for a further five years reflects cross-party and market acceptance. Real interest rates turned positive, supporting financial savings.",
   "caseAgainst": "The disinflation was substantially handed to the framework by the 2014-16 oil price collapse, a windfall no policy earned; the framework's independent contribution is therefore overstated by the raw before-and-after comparison. The 2024 CPI rebasing lowers the food weight, which will dampen measured volatility going forward and makes future performance flattering by construction. Institutional autonomy in the surrounding period was contested — see the RBI autonomy record.",
   "shockExposure": "The 2014-16 oil collapse is a large positive confound at the start; COVID and the 2022 commodity shock are negative confounds mid-period. Peers faced the same commodity shocks, so peer-relative inflation performance is the fairer test.",
@@ -193,7 +194,7 @@
    }
   ],
   "confidence": "high",
-  "asOf": "2026-07-30"
+  "asOf": "2026-08-06"
  },
  {
   "id": "L-0015",
@@ -221,7 +222,7 @@
    {
     "name": "Excise duty levels, minister's statement",
     "url": "https://www.business-standard.com/article/economy-policy/excise-duty-on-petrol-was-rs-9-48-ltr-diesel-rs-3-56-in-2014-minister-122080100962_1.html",
-    "tier": "T1"
+    "tier": "T4"
    }
   ],
   "confidence": "medium",
@@ -381,7 +382,7 @@
    {
     "name": "RBI surplus transfer 2019",
     "url": "https://www.business-standard.com/article/news-cm/rbi-approves-surplus-transfer-of-rs-1-76-lakh-crore-to-government-119082601199_1.html",
-    "tier": "T1"
+    "tier": "T4"
    },
    {
     "name": "NIPFP on RBI dividends as fiscal resource",
@@ -462,22 +463,22 @@
    {
     "name": "Learning Resources, Inc. v. Trump, 607 U.S. ___ (2026), No. 24-1287, decided 20 February 2026 — held: IEEPA does not authorise the President to impose tariffs",
     "url": "https://www.supremecourt.gov/opinions/25pdf/24-1287_4gcj.pdf",
-    "tier": "T1"
+    "tier": "T1F"
    },
    {
     "name": "Executive Order 14389 of February 20, 2026, Ending Certain Tariff Actions, 91 FR 9437 — terminating the duties imposed under EO 14257 and EO 14329",
     "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-25/html/2026-03832.htm",
-    "tier": "T1"
+    "tier": "T1F"
    },
    {
     "name": "United States-India Joint Statement, The White House, 6 February 2026 — the 18 per cent rate, stated as applying under Executive Order 14257",
     "url": "https://www.whitehouse.gov/briefings-statements/2026/02/united-states-india-joint-statement",
-    "tier": "T1"
+    "tier": "T1F"
    },
    {
     "name": "Proclamation 11012 of February 20, 2026, 91 FR 9339 — the ten per cent section 122 surcharge, effective 24 February through 24 July 2026",
     "url": "https://www.govinfo.gov/content/pkg/FR-2026-02-25/html/2026-03824.htm",
-    "tier": "T1"
+    "tier": "T1F"
    }
   ],
   "confidence": "high",
