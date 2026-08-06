@@ -10431,3 +10431,16 @@ documentary journalism and NGO datasets"* — 0 · a figure the data does not su
 along with the tags; stripping comments first with no replacement gives *"wrong by 213,"*. **The page
 was right and the reader was wrong** — same class as the field-render audit's 53 false invisibles, and
 the third time normalising the page and the value differently has produced a phantom.
+
+### Follow-up — the extract stamped HEAD, which was an infinite regress
+
+The generated files opened *"Generated from the corpus at commit `<HEAD>`"*. **HEAD goes stale the
+moment anything is committed, including the commit that records the extract** — so the stamp could
+never be true for longer than one commit, and it was already wrong (`aa80fad`) by the time the files
+were committed at `8f28078`. **That is the stale-measurement class the extract itself exists to
+expose, reproduced in its own first line.**
+
+Now stamped with the last commit to touch `data` or `schemas` — **`059912b`, 2026-08-05** — which is
+the only commit whose change could alter the extract's content. The stamp now changes when the corpus
+changes and not otherwise. Regeneration proven byte-identical across two consecutive runs, all four
+files.
