@@ -11099,3 +11099,109 @@ could not test the `not-published` finding it exists for. 293,898 → **521,039 
 non-prose, 0 invisible, 2 exempted · `no-unguarded-prose-field` 20 prose · 45 non-prose ·
 `domain-coverage` 14/14, 1141/1141 · `figure-consistency` 18 declared · `enum-stamp` 2 fixtures ·
 `no-bare-root` 0 new, 0 stale · `validate:selftest` 23/23, 2/2 · `typecheck` clean.
+
+---
+
+## Cycle 2026-08-06i — BATCH 9. Triage of the pass-B review. NOTHING RESOLVED
+
+`/data` untouched, no verdict moved, no schema or enum changed. The review is committed verbatim to
+`review/returned/pass-b-review-2026-08-06.pdf` with a `.txt` extraction.
+
+### ONE review returned, not two
+
+The brief described two. Searched `~/Downloads`, `~/Desktop`, `~/Documents` and the home tree for
+anything newer than 12:00 — **there is one file.** **Nothing in the pass-B set is
+convergent-by-independence**, and the weighting that governed the pass-A triage does not apply.
+Every finding below is single-source.
+
+### L-0026 OVERTURNS MY OWN BATCH-7 CLASSIFICATION
+
+**There is NO stated rule permitting objectives to be weighted after results are known** — zero hits
+across `CLAUDE.md` and `schemas/ledger.schema.json` for *centrepiece · principal objective · primary
+objective · dominant objective · weighted after · which objective governs*.
+
+`worked` = achieved **the** objective; `partly` = achieved **part of** it. **L-0026** opens *"TWO
+OBJECTIVES WERE ANNOUNCED AND THEY DO NOT RESOLVE THE SAME WAY"* and takes `worked`; **L-0029**
+*"THREE OBJECTIVES WERE ANNOUNCED; TWO ARE MEASURED AND MET"*, `worked`; **L-0048** *"TWO OBJECTIVES
+WERE ANNOUNCED; ONE IS MET AND THE OTHER IS MEASURED AND NOT MET"*, `partly`. **Same structure,
+different verdicts.**
+
+**Batch 7 called pass A's finding defeated because the note explains the choice. That reasoning was
+wrong: a record that explains why it departs from the definition has documented a departure, not
+authorised one.** L-0047 is OPEN — a different argument, but it carries `unmeasured: "Net emissions
+change from electrification"` on a limb its own note calls part of the announced object.
+
+### The tier audit — 39 T1 citations do not survive, in five bands
+
+Swept all 1,205. **A** journalism ACCOUNT tagged T1 — **7**, unambiguous. **B** multilateral —
+**5**, unambiguous. **C** the instrument or its private repo — **3**, unambiguous. **D** foreign
+government primary (`govinfo`, `whitehouse`, `ustr`, `supremecourt.gov`) — **19**, and this is **a
+TAXONOMY GAP, not a mis-tag**: T1 is defined *Indian* official, T2 is multilateral, and a US
+Executive Order retrieved directly has no class. **E** full document on a mirror — **5, AMBIGUOUS,
+and the corpus has already ruled the other way**: `CLAUDE.md` treats a prior audit as wrong for
+flagging *"a government order that a civil-society site re-hosts"*, while the ladder says *"Grade
+what you hold."* **Both cannot be right and nothing reconciles them** — the distinction that would
+(the document itself on another server vs someone's account of it) is written down nowhere.
+
+**A false positive caught before reporting:** 4 `rchiips.org/nfhs` citations. **IIPS is an Indian
+institute of national importance and NFHS is an official statistical publication — T1 is correct.**
+
+**CORRECTED T1, REPORTED NOT SHIPPED. Published: 965 of 1,205.** A+B+C leave → **950**; A+B+C+D →
+**931**; strict → **926**. **The honest public figure is a RANGE, 926–950**, and the page cannot
+state one number until band D has a class and band E is reconciled.
+
+### Three records cite the instrument itself as T1, on a private repository
+
+L-0218 cites `docs/verification-log.md` as T1 with the URL pointing at **the page being tested, not
+the log**. L-0219's single source is the repo, its name field conceding *"INTERNAL REFERENCE, NOT AN
+OPENABLE URL"*. L-0220 cites the corpus's own ledger records. **The repo is private and the URL 404s
+for every reader**; a reader can check none of 278, 92, 139 or the thirteen-scheme pattern. Fixes,
+cheapest first: **publish the derivation over public `/data`** (a generated table, which
+`no-bare-root` already half does) · re-tier or state that the evidence is self-referential · withdraw
+the counts and keep the qualitative finding. **Second defect on the same three** — batch 8 found them
+not-government-commitments — which is the strongest signal in the set that **a whole record class
+needs a decision: whether a corpus carries records about itself in the same ledger under the same
+verdict vocabulary.**
+
+### L-0116 and the negative-existential sweep
+
+L-0116 **confirmed** — *"No written order, circular or SOP … has ever been published"*, *"no
+published series exists"*. Sweep with the needle printed: **39 sentences across 30 records**.
+**CANDIDATE LIST, not a finding** — the needle matches the form, and several are correctly grounded
+(L-0155 names publisher and scope). The population is 30 records; reading each is the work.
+
+### L-0226 — confirmed, and it breaks the rule its own caveat states
+
+Category 3 says of incommensurable quantities: **"No conversion, no side-by-side placement."**
+L-0226's caveat says the two are distinct quantities and no document states their relationship — then
+its TITLE places them side by side and the `contested` verdict rests on that placement. Its
+`contestedGround` is `interpretation`, asserting two readings of one thing, while the caveat says
+there are two things. **And `differentFacts` is `undefined` — not false, absent — while the rule says
+a record must say which category it is.** The one finding in the set running AGAINST the government.
+
+### Direction by layer — both hold, pointing opposite ways
+
+**Provenance 19:6 = 3.2:1 against the government** (labels the corpus applied). **Ledger 13:1 against
+the government** (errors a reviewer alleges, one reviewer, whose bottom line is the conclusion the
+count supports). **Neither is a measurement of bias.** The sentence `/method` will owe once the
+decision lands is drafted in STATE.md: the provenance direction is a statement about the instrument's
+ATTENTION, the verdict direction about its DISCIPLINE, and neither cancels the other. **Nothing
+published from this in this batch.**
+
+### The decision set: 49 → 70 records
+
+Pass B adds 38, **21 new**. **The classes that grew are SOURCING and ABSENCE-CLAIM, not verdict** —
+tier violations +11 new, negative existentials +9 new. **A verdict can be re-argued; a wrong tier
+makes every count built on it wrong, including the one on the public page.**
+
+**A third operator question joins the two from batch 8: (c) does the ladder grade the SERVER or the
+DOCUMENT, and what class does a foreign government primary take?** Unanswerable from the current
+ladder, blocks 24 of the 70, and is the only one of the three that changes a published number.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs
+= 682 records, 1,759 points** · `reachability` 1645/1645 · `field-render-audit` 36 prose + 43
+non-prose, 0 invisible, 2 exempted · `no-unguarded-prose-field` 20 prose · 45 non-prose ·
+`domain-coverage` 14/14, 1141/1141 · `figure-consistency` 18 declared · `enum-stamp` 2 fixtures ·
+`no-bare-root` 0 new, 0 stale · `validate:selftest` 23/23, 2/2 · `typecheck` clean.

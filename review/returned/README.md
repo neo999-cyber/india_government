@@ -15,3 +15,17 @@ against `059912b` or a fixed defect will be recorded as a reviewer error.
 
 The `.txt` files are `pdftotext -layout` extractions, kept because a PDF is not greppable and every
 later cycle will want to search these rather than reopen them.
+
+## Pass B — deep reading, returned 6 August 2026
+
+- `pass-b-review-2026-08-06.pdf` / `.txt` — "Where the instrument breaks", 11 sections
+
+**ONE review, not two.** The batch that commissioned the triage described "two independent pass-B
+reviews"; only one was delivered. **Nothing in the pass-B set is convergent-by-independence**, and the
+weighting that governed the pass-A triage — a finding two reviewers reached separately carries more
+than either alone — does not apply here. Every pass-B finding is single-source and is classified as
+such.
+
+It read `pass-b-deep.md` as generated at `1af2d61` — the corrected extract, with full assessment notes
+and correction clauses intact. Its findings therefore rest on evidence the pass-A extract had removed,
+which is why it reaches the opposite conclusion on L-0026.
