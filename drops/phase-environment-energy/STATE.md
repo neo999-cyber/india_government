@@ -4367,3 +4367,226 @@ re-measures the same estates on demand.** It found the `mea.gov.in` JS shell and
 problems on its own run — **so L-0218's finding is now independently re-derivable by a tool in the
 repository, even though the record's own evidence is not.** Pointing the record at the tool rather
 than at the log is a fourth option and probably the best one.
+
+---
+
+# BATCH 11 — DERIVATION GENERATOR, MIRROR POPULATION, QUESTION (b). 2026-08-06
+
+**No verdict, tier, record or schema touched.** One tool added.
+
+## 0. A CORRECTION TO BATCH 10, MADE BEFORE ANYTHING WAS BUILT ON IT
+
+Batch 10 recommended pointing L-0218 at `tools/source-response-check.mjs` "which re-derives the
+finding independently — it found the `mea.gov.in` JS shell on its own run". **That is false.** The
+sweep's own output for MEA:
+
+```
+https://www.mea.gov.in/                HTTP 200 · text/html · 77,919b · problems=[]
+https://www.mea.gov.in/press-releases.htm  HTTP 200 · text/html · 82,719b · problems=[]
+```
+
+**Neither was flagged.** The js-shell hits in that run were `pib.gov.in`, `education.gov.in`,
+`meity.gov.in`, `dot.gov.in`, `jkccs.net`, `ucdp.uu.se` — **MEA is not among them**, and at 78–83 KB
+it sits far above the tool's 60 KB shell ceiling. **I read a list of government roots flagged as
+shells and asserted that a specific one was on it.** Same class as reading a report instead of the
+record.
+
+## 1. `tools/gen-derivations.mjs` — and the rule was the missing artefact, exactly as scoped
+
+`npm run derivations` → `docs/derivations.md`, 6.5 KB, over public `/data`.
+
+### The three numbers are three UNITS, not three rules
+
+| unit | count |
+|---|---:|
+| bare-root citation **occurrences** | **288** |
+| distinct **(record, url) pairs** — the gate keys a Map on `${id} ${url}` | **277** |
+| distinct **roots** | **93** |
+| records affected | 231 |
+
+**288 − 277 = 11, and all eleven are duplication** — ten records citing one root twice or three
+times (L-0105 `censusindia.gov.in` ×3; L-0074, L-0089, L-0097, L-0132, L-0146, P-52, P-53, P-58,
+P-68 ×2). **L-0219's 278 is one above the pair count**, and the allowlist's own `history` records
+citations closed after that record was written.
+
+**So no number was ever wrong. A count is not reproducible until its UNIT is stated**, and none of
+the three sources stated one. The generator prints the rule beside every figure:
+
+```
+isBareRoot(u) = /^https?:\/\/[^/?#]+\/?$/.test(u)
+scope: every object carrying a `url` at any depth, every file under /data except incoming/
+```
+
+### L-0219's second partition also derives
+
+**246 citations name no document** under a stated and deliberately generous rule — no four-digit year
+AND no multi-digit number anywhere in the citation name. Against the record's 139. **The gap is the
+rule, again**: the record's own scope was the 278 bare roots, not all 1,205 citations.
+
+### L-0220 reproduces EXACTLY — and a first draft of mine did not
+
+**13 of 13 handover records carry `partly`; 2 of 2 controls carry `worked`; 0 of the 15 ever changed
+verdict** — the last from `review/record-history.json`, which is generated from git, so *"the scores
+predated the pattern"* is now checkable with `npm run record-history`.
+
+**My first draft reconstructed the thirteen from the record's summary and got two wrong** — it
+included L-0057 and L-0058, both `contested`, and printed a refutation of L-0220's claim **built
+entirely out of my own guess**. The record names its thirteen in its source field. **Taking the list
+from the record instead of from my reading of it turned a false refutation into an exact
+confirmation**, and the generator now carries that note.
+
+### What the generator cannot do, and says so
+
+L-0219's **139 returning no document** (54 refused / 50 under 500 characters / 23 no DNS / 12
+forbidden) is a **retrieval result. No retrieval is stored**, so no generator over `/data` can produce
+it. The file states the boundary rather than printing a number that looks like it.
+
+**Nothing re-cited.** A citation change may move a verdict and the 70-record decision is pending.
+
+## 2. L-0218 — the sweep covers ONE of three channels and re-derives NONE
+
+| channel L-0218 asserts | in the sweep? | result |
+|---|---|---|
+| Ministry of External Affairs | yes | **HTTP 200, 78–83 KB, NOT flagged** |
+| Ministry of Defence (`mod.gov.in`) | **no** — no citation in `/data` uses that host | — |
+| Department of Defence Production (`ddpmod.gov.in`) | **no** — same | — |
+
+**What remains unreproducible: all three findings.** Two channels cannot be swept because nothing in
+`/data` cites them — their unreachability is recorded in `CLAUDE.md`'s retrieval notes (*"`mod.gov.in`
+and `ddpmod.gov.in` resolve and refuse port 443"*) and nowhere a reader can reach. The third is
+swept and does not reproduce.
+
+**Batch 10's fourth option is withdrawn.** L-0218's real options are the three already listed: store
+the retrieval, re-scope the record to what `/data` supports, or state that the evidence is the
+instrument's own. **The tool is not a substitute** — it measures what hosts do today, and L-0218's
+claim is about what they did during phase 14.
+
+## 3. THE MIRROR POPULATION — 77 citations, and the ruling is bigger than it looked
+
+| served by | citations | tiers |
+|---|---:|---|
+| `web.archive.org` | **65** | **T1×63** T4×2 |
+| `internetshutdowns.in` | 6 | T1×2 T3×3 T4×1 |
+| `assettype` (Bar and Bench) | 3 | T1×3 |
+| image/CDN re-host | 3 | T1×3 |
+| **total** | **77** of 1,205 (**6.4%**) across **51 records** |
+
+**The primaries behind the 65 archive citations**, by original host: `dsel.education.gov.in` 17 ·
+`education.gov.in` 7 · `ncrb.gov.in` 7 · `udise.in` 5 · `cbic.gov.in` 5 · Lok Sabha `164.100.47.193`
+5 · `ppac.gov.in` 3 · `lawmin.nic.in` 2 · `jkhome.nic.in` 2 · `jkgad.nic.in` 2 · and four others.
+
+### And this is the finding: the originals are mostly gone
+
+18 distinct original URLs extracted, 17 tested through a pinned resolver:
+
+| result | n |
+|---|---:|
+| **200 — still live at the original host** | **2** |
+| 404 — gone | 6 |
+| no response | 3 |
+| no DNS record | 4 |
+| 301/302 — redirect, indeterminate | 2 |
+
+**Two of seventeen.** For 13 of 17 the archived copy is not a convenience — **it is the only
+surviving copy.**
+
+**So the operator's question is not the one it looked like.** It is not *"should a mirror count as
+T1"*. It is: **what tier does a document take when the only surviving copy is a mirror?** Grading
+those T4 would tell a reader the evidence is weak when the real position is that the evidence is
+strong and the publisher deleted it. **63 T1 citations turn on the answer, and the class grows every
+time a ministry reorganises a website** — which the dead-response sweep has already shown happening.
+
+## 4. QUESTION (b), PREPARED FOR DECISION — free-standing, answerable now
+
+### The nine `worked` records, full evidence
+
+| record | ledger cites | series refs | points | unmeasured | |
+|---|---|---|---:|---:|---|
+| L-0023 | 1 [T1] | 3 [T1×3] | 37 | 1 | Asset Quality Review |
+| L-0026 | 1 [T1] | 3 [T1×3] | 24 | 1 | PSB recapitalisation |
+| L-0029 | 1 [T1] | 2 [T1×2] | 3 | 2 | Digital public infrastructure |
+| L-0047 | 1 [T1] | 1 [T1×1] | 5 | 1 | Railway electrification |
+| L-0052 | 1 [T1] | 1 [T1×1] | 5 | 1 | Renewable capacity |
+| L-0053 | 1 [T1] | 2 [T1×2] | 10 | 1 | Port efficiency |
+| L-0014 | 1 [**T4**] | 1 [T1×1] | 12 | 1 | Flexible inflation targeting |
+| L-0151 | 4 [T1×4] | 5 [T1×5] | 75 | 0 | Fourteenth Finance Commission |
+| **L-0207** | 2 [T1×2] | **0** | **0** | **2** | **Punatsangchhu-II** |
+
+**L-0207 is the outlier on every measure**: no series, no data points, two unmeasured entries, and
+the only `worked` record resting on nothing but two ledger citations. **L-0151 is the opposite** and
+would survive any floor.
+
+### The gradient
+
+`baseline-context` 91% · **`worked` 78%** · `partly` 47% · `failed` 25% · `awaiting-adjudication` 25%
+· `no-objective` 23% · `contested` 22% · `too-early` 15% · `reversed` 0% — records with ≤1 citation.
+
+### What a ≥2-citation floor moves
+
+| floor | scope | below it | composition |
+|---|---:|---:|---|
+| **`worked` only** | 9 | **7** (78%) | `worked` 7 |
+| **all definitive verdicts** (`worked`/`failed`/`reversed`) | 26 | **11** (42%) | `worked` 7 · `failed` 4 |
+| **every scored verdict** | 215 | **61** (28%) | `no-objective` 17 · `contested` 15 · `partly` 15 · `worked` 7 · `failed` 4 · `too-early` 2 · `awaiting-adjudication` 1 |
+
+**And the number that should decide the shape of the floor: if series count as evidence, a
+`worked`-only floor moves ZERO.** All seven single-citation `worked` records resolve at least one
+series. At the definitive level it is also zero; only at the every-scored-verdict level does a
+series-aware floor still move anything — **13 of 61**.
+
+### What each floor commits the instrument to where one primary genuinely settles it
+
+**This is the real cost and it is not symmetric.**
+
+- **A `worked`-only floor** commits the instrument to saying that a success claim needs corroboration
+  a failure claim does not. **That is defensible only if stated as a deliberate asymmetry** — that
+  the burden is higher for agreeing with the government than for disagreeing — and the instrument
+  would have to publish that, because a reader who discovers it unstated will read it as bias in the
+  other direction.
+- **A definitive-verdict floor** is symmetric and moves 4 `failed` records with it. **Symmetry costs
+  something real**: L-0030 (*no PSB has been privatised*) rests on one citation and one primary
+  genuinely settles it — a single authoritative statement that a thing did not happen is not weak
+  evidence, it is the right evidence.
+- **An every-scored-verdict floor** moves 61 records, most of them non-evaluative, and **would
+  penalise exactly the records the corpus is most careful about** — a `contested` record declining to
+  score on one well-chosen source is not under-evidenced.
+- **A series-aware floor** — counting a resolved series as corroboration — **moves nothing at the
+  `worked` level and is therefore not an answer to the reviewers' finding.** The reviewers' point was
+  that both layers are Indian official material, and a floor that counts them is blind to it.
+
+**The honest framing for the decision: the floor is not really about counting. It is about whether
+`worked` requires evidence INDEPENDENT OF THE ANNOUNCING BODY.** A count is a proxy for that and a
+poor one — L-0151's four citations are all T1 government, and L-0014's single citation is the only
+non-government source in the whole `worked` class.
+
+## 5. THE 20 SENTENCES, WITH THE WORDING THAT WOULD SCOPE THEM
+
+**21 sentences across 15 records** (one more than batch 10's count — L-0116 carries four, not three).
+Each pairs the live wording with the retrieval-scoped form, so the correction pass is mechanical when
+authorised. **Not applied.**
+
+| record · field | the world-claim | the scoped form |
+|---|---|---|
+| L-0093 `summary` | "No back-cast, no dual-basis year and no reconciliation **exists**" | "…**appears in any UDISE+ report retrieved**" |
+| L-0093 `caseAgainst` | "**has never been published**" | "**is not in any UDISE+ publication retrieved in this run**" |
+| L-0115 `whatHappened` | Army inquiry sentence | already scoped to what the Army stated — **leave** |
+| L-0115 `caveat` | "The Court of Inquiry **has never been published**" | "**No published Court of Inquiry was located; the Ministry's releases and the Tribunal record retrieved carry none**" |
+| L-0116 `summary` | "No written order, circular or SOP … **has ever been published**" | "**No written order, circular or SOP was located in the J&K Police and Home Department material retrieved**, and on the police's own account none exists" |
+| L-0116 `whatHappened` ×2 | "no published…" | "**none was retrieved**" |
+| L-0116 `caveat` | "no published…" | "**no reconciling figure was located in the sources retrieved**" |
+| L-0118 `caveat` · `jk-organised-stone-pelting` `caveat` | "**no body has ever defined** 'organized'" | "**no definition of 'organized' appears in any NCRB publication or Ministry reply retrieved**" |
+| L-0144 `differentFactsNote` | "is not published, and **the only figure that exists**" | "**the only figure located**" |
+| L-0148 `caseAgainst` | "**has never been published, because nobody publishes** what fraction" | "**was not located in any of the sources retrieved, none of which publishes** what fraction" |
+| L-0166 `caseAgainst` | "**The only cumulative figure that exists**" | "**The only cumulative figure located**" |
+| L-0168 `caseAgainst` · `assessmentNote` | "the order itself **has never been published**" | "**the order was not produced in Parliament and no published copy was located**" — the Union's non-production is the checkable fact and the record already has it |
+| L-0175 `caseAgainst` | "**the only party that states** the figure" | "**the only party located stating** the figure" |
+| L-0224 `caseAgainst` | "**the only stock figure the strategy offers**" | already scoped to the strategy document — **leave** |
+| P-101 `bridgeNote` | "**is the only place** the quantity appears" | "**is the only source located** carrying the quantity" |
+| P-113 `bridgeNote` | "**nobody publishes it**" | "**no publication of it was located**" |
+| P-114 `bridgeNote` | "The order itself **has never been published**" | as L-0168 |
+| `tn-direct-goi-transfers-to-sias` `notes` | "**appears in neither government's own account**" | "**appears in neither government's account as retrieved**" |
+
+**Three of the 21 need no change** — L-0115's Army sentence and L-0224's are already scoped to a
+named document, and one L-0116 sentence is about an inquiry's inertness rather than publication.
+**The pattern in every rewrite is the same and it is one word: `exists` → `located`, `published` →
+`retrieved`, `nobody` → `no source retrieved`.**

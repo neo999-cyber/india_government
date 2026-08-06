@@ -11289,3 +11289,90 @@ can point at a tool in the repository rather than at the log.
 `no-unguarded-prose-field` 20 prose · 45 non-prose · `domain-coverage` 14/14, 1141/1141 ·
 `figure-consistency` 18 declared · `enum-stamp` 2 fixtures · `validate:selftest` 23/23, 2/2 ·
 `typecheck` clean.
+
+---
+
+## Cycle 2026-08-06k — BATCH 11. Derivation generator, mirror population, question (b)
+
+No verdict, tier, record or schema touched. One tool added.
+
+### A CORRECTION TO BATCH 10, before anything was built on it
+
+Batch 10 said `source-response-check` "re-derives L-0218's finding independently — it found the
+`mea.gov.in` JS shell on its own run". **False.** The sweep returned `mea.gov.in` at **HTTP 200,
+77,919 and 82,719 bytes, problems=[]** — not flagged, and far above the tool's 60 KB shell ceiling.
+The js-shell hits were `pib.gov.in`, `education.gov.in`, `meity.gov.in`, `dot.gov.in`, `jkccs.net`,
+`ucdp.uu.se`. **I read a list of flagged government roots and asserted a specific one was on it.**
+
+### `tools/gen-derivations.mjs` — the rule WAS the missing artefact
+
+`npm run derivations` → `docs/derivations.md`. **The three numbers are three UNITS, not three rules:**
+**288** bare-root citation OCCURRENCES · **277** distinct (record, url) PAIRS — the gate keys a Map on
+`${id} ${url}` · **93** distinct roots. **288 − 277 = 11 and all eleven are duplication**, ten records
+citing one root twice or thrice. **L-0219's 278 is one above the pair count**; the allowlist history
+records citations closed since. **No number was ever wrong — none of the three stated its unit.**
+
+**L-0220 reproduces EXACTLY: 13 of 13 `partly`, 2 of 2 controls `worked`, 0 of 15 ever changed
+verdict** (from `review/record-history.json`, so *"the scores predated the pattern"* is now checkable
+with `npm run record-history`). **My first draft reconstructed the thirteen from the summary, got two
+wrong (L-0057, L-0058, both `contested`), and printed a refutation built out of my own guess.** The
+record names its thirteen in its source field; taking the list from the record turned a false
+refutation into an exact confirmation. The generator carries that note.
+
+**What it cannot do:** L-0219's 139 returning no document is a retrieval result and no retrieval is
+stored. The file states the boundary rather than printing a number that looks like it. **Nothing
+re-cited** — a citation change may move a verdict.
+
+### L-0218 — the sweep covers ONE channel of three and re-derives NONE
+
+MEA is swept and **not flagged**. `mod.gov.in` and `ddpmod.gov.in` are **not in the sweep at all
+because no citation in `/data` uses those hosts** — their unreachability lives in `CLAUDE.md`'s
+retrieval notes and nowhere a reader can reach. **Batch 10's fourth option is WITHDRAWN.** The tool
+measures what hosts do today; L-0218's claim is about phase 14.
+
+### The mirror population — 77 citations, and the ruling is bigger than it looked
+
+**77 of 1,205 (6.4%) across 51 records**: `web.archive.org` **65 (T1×63)** · `internetshutdowns.in` 6
+· `assettype` 3 · CDN re-host 3. Primaries behind the archive set: `dsel.education.gov.in` 17,
+`education.gov.in` 7, `ncrb.gov.in` 7, `udise.in` 5, `cbic.gov.in` 5, Lok Sabha `164.100.47.193` 5,
+and seven other hosts.
+
+**17 distinct originals tested through a pinned resolver: 2 return 200. Six 404, three no response,
+four no DNS record, two redirect.** **For 13 of 17 the archived copy is the ONLY SURVIVING COPY.**
+
+**So the operator's question is not "should a mirror count as T1" but "what tier does a document take
+when the only surviving copy is a mirror".** Grading those T4 tells a reader the evidence is weak when
+the real position is that it is strong and the publisher deleted it. **63 T1 citations turn on it.**
+
+### Question (b), prepared — and the decisive number is not the one expected
+
+The nine `worked` records with full evidence are tabled in STATE.md. **L-0207 is the outlier on every
+measure** — no series, no points, two unmeasured, two ledger citations. Gradient: `worked` **78%**
+single-citation · `partly` 47% · `failed` 25% · `contested` 22% · `too-early` 15%.
+
+Floors: `worked`-only moves **7 of 9** · all definitive verdicts **11 of 26** · every scored verdict
+**61 of 215**. **But if series count as evidence, a `worked`-only floor moves ZERO** — all seven
+resolve at least one series, and so do all eleven at the definitive level.
+
+**The honest framing: the floor is not about counting, it is about whether `worked` requires evidence
+INDEPENDENT OF THE ANNOUNCING BODY.** A count is a poor proxy — L-0151's four citations are all T1
+government, and **L-0014's single citation is the only non-government source in the entire `worked`
+class.** Each floor's cost where one primary genuinely settles the question is set out in STATE.md;
+the asymmetric option requires publishing the asymmetry.
+
+### The 21 sentences, with scoped rewordings
+
+**21 across 15 records** — one more than batch 10's count; L-0116 carries four. Each is tabled with
+the live wording beside the retrieval-scoped form. **Three need no change.** **The pattern in every
+rewrite is one word:** `exists` → `located`, `published` → `retrieved`, `nobody` → `no source
+retrieved`. **Not applied.**
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs
+= 682 records, 1,759 points** · `no-bare-root` 0 new, 0 stale, 277 allowlisted from 277 frozen ·
+`derivations` 288 occurrences / 277 pairs / 93 roots, 246 citations naming no document, 13 handover +
+2 controls · `reachability` 1645/1645 · `field-render-audit` 36 prose + 43 non-prose, 0 invisible ·
+`no-unguarded-prose-field` 20 prose · 45 non-prose · `domain-coverage` 14/14, 1141/1141 ·
+`figure-consistency` 18 declared · `enum-stamp` 2 fixtures · `validate:selftest` 23/23, 2/2 ·
+`typecheck` clean.
