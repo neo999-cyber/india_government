@@ -4163,3 +4163,207 @@ every count built on it wrong, including the one on the public page.
 **(c) does the ladder grade the SERVER or the DOCUMENT — and what class does a foreign government
 primary take?** It is unanswerable from the current ladder, it blocks 24 of the 70, and it is the
 only one of the three that changes a published number.
+
+---
+
+# BATCH 10 — PREPARATION FOR THE 70-RECORD DECISION. 2026-08-06
+
+**Measurement and drafting only. No verdict, tier, record or schema touched.**
+
+## 1. THE `worked` ASYMMETRY DOES NOT DEPEND ON THE TIER TAGS AT ALL
+
+**Zero of the nine `worked` records carry a disputed citation.** All 13 of their citations survive the
+audit untouched. Recomputed both ways:
+
+| verdict class | n | citations | mean | ex-disputed | mean ex | disputed |
+|---|---:|---:|---:|---:|---:|---:|
+| `no-objective` | 73 | 232 | 3.2 | 209 | **2.9** | **23** |
+| `contested` | 67 | 187 | 2.8 | 184 | 2.7 | 3 |
+| `partly` | 32 | 92 | 2.9 | 91 | 2.8 | 1 |
+| `failed` | 16 | 53 | 3.3 | 52 | **3.3** | 1 |
+| `too-early` | 13 | 31 | 2.4 | 27 | 2.1 | 4 |
+| **`worked`** | **9** | **13** | **1.4** | **13** | **1.4** | **0** |
+
+**The finding is identical under both treatments: `worked` 1.4 against `failed` 3.3.** No `worked`
+record changes position — not one of the nine gains or loses a citation, and the tier profile stays
+T1×12 T4×1.
+
+**Which record changes position: none.**
+
+```
+L-0023 [T1] -> 1 surviving      L-0151 [T1,T1,T1,T1] -> 4      L-0052 [T1] -> 1
+L-0026 [T1] -> 1                L-0207 [T1,T1]       -> 2      L-0053 [T1] -> 1
+L-0029 [T1] -> 1                L-0047 [T1]          -> 1      L-0014 [T4] -> 1
+```
+
+**The audit's weight falls on the OTHER side of the comparison.** `no-objective` loses 23 citations
+(3.2 → 2.9) and `too-early` loses 4 (2.4 → 2.1) — the non-evaluative classes were carrying the
+disputed foreign-primary and self-citation tags. **So correcting the tiers makes the non-evaluative
+records look thinner and leaves the `worked` records exactly where they were.** If anything the
+asymmetry widens.
+
+**For the decision: question (b) — does one government press release support `worked`? — can be
+answered before question (c) — does the ladder grade the server or the document?** They were assumed
+coupled. They are not.
+
+## 2. THE 30 NEGATIVE-EXISTENTIAL RECORDS, TRIAGED
+
+39 sentences across 30 records. Split by whether the sentence is scoped to what was searched:
+
+| | sentences | records |
+|---|---:|---:|
+| **retrieval-scoped — the honest form** | 11 | 9 |
+| **world-claiming — candidates** | 28 | 22 |
+
+**But reading the 28 reduces them, and the reduction is most of the point.** Three buckets:
+
+**(a) ALREADY HANDLED — 2 sentences, and both are the corpus working.**
+- **L-0114 `caveat`** — the match is the WITHDRAWN wording quoted inside its own correction:
+  *"CORRECTED 2026-08-05 … the summary previously read 'the only pellet quantity any government has
+  ever published'."* **The detector found the corpus fixing this exact defect.**
+- **L-0124 `revisitTrigger`** — *"That check must be run before any claim that nobody publishes the
+  perpetrator split after 2019 is treated as settled."* **It guards against the claim.**
+
+**(b) NOT A PUBLICATION-EXISTENCE CLAIM — 6 sentences.** L-0088 (*"a scale no other body attempts"* —
+comparative), L-0221 (*"the only quantity a government can directly control"* — analytical),
+L-0191, L-0106 (a positive statement about what WAS published), L-0116's Hyderpora sentence,
+`jk-assembly-turnout`. **The needle matched the shape, not the claim.**
+
+**(c) GENUINE CANDIDATES — 20 sentences across 15 records:**
+`L-0093` `L-0115` `L-0116` `L-0118` `L-0144` `L-0148` `L-0166` `L-0168` `L-0175` `L-0224`
+`P-101` `P-113` `P-114` `tn-direct-goi-transfers-to-sias` `jk-organised-stone-pelting`
+
+The sharpest are the ones asserting an order does not exist rather than was not found —
+**L-0168** *"the order itself has never been published"* (twice) · **L-0115** *"The Court of Inquiry
+has never been published"* · **L-0116** *"No written order, circular or SOP … has ever been
+published"* · **L-0118** and `jk-organised-stone-pelting` *"no body has ever defined 'organized'"*.
+
+**Corrected nothing.** And the honest scope statement: **the 30 → 22 → 15 narrowing was done by
+reading, and the last step is a judgement per sentence that a later cycle should re-make rather than
+inherit.** The population is 15 records; the count is not the finding.
+
+## 3. THE MIRROR QUESTION — NEITHER TEXT DECIDES IT, AND THAT IS THE DEFECT
+
+**TEXT 1 — `schemas/ledger.schema.json`, `sources[].tier`, verbatim:**
+
+> Evidence grade of the DOCUMENT ACTUALLY RETRIEVED, not of the institution the subject belongs to.
+> This is the operative rule and the one that goes wrong: a CAG finding known only through a
+> newspaper's account of an RTI reply is T4, because the subject is official but the evidence is
+> relayed. Grade what you hold, not what it is about.
+> - T1: official Indian statistical or institutional source, **retrieved directly** …
+> - T4: reported or documentary journalism, NGO datasets, and **anything RELAYED rather than
+>   retrieved** — including an official figure known only through a press account, and an RTI reply
+>   cited but not obtained.
+
+**TEXT 2 — `CLAUDE.md` lines 250-256, verbatim:**
+
+> The 2026-08-05 audit judged a source's tier from the `tier` field plus the host name, without
+> reading the `name` field next to it, and accused two records of a tier misassignment when they were
+> citing a **government order** that a civil-society site re-hosts — applying the rule the audit
+> accused them of breaking.
+
+### Where they conflict, precisely
+
+**They do not conflict on the tier. They conflict on what has been DECIDED.**
+
+- **Text 2 rebuts a METHOD, not a tier.** Its complaint is that the audit judged from `tier` + host
+  *"without reading the `name` field"*, and its stated rule is *"a field is a fragment of a record,
+  and a fragment read alone misleads"*. **It asserts what the records were citing. It never states
+  what tier that citation should carry.**
+- **Text 1's criterion is the evidence chain, and its examples never reach the case.** All three T4
+  examples are ACCOUNTS OF a document — *"a newspaper's account of an RTI reply"*, *"an official
+  figure known only through a press account"*, *"an RTI reply cited but not obtained"*. **None is the
+  full text of the document served by a third party.**
+
+**So: Text 1 does not decide the mirror case, and Text 2 does not decide the tier.** The instrument
+has been treating a methodological rebuttal as a substantive ruling — including by me, one batch ago,
+when I described the two as contradicting each other. **They do not contradict. There is a hole, and
+inference has been filling it.**
+
+**The undecided question, stated so it can be settled:** *is a document RELAYED when a third party
+serves the identical bytes, or only when a third party describes it?* Text 1 leans T4 through
+*"retrieved directly"*, and never says so.
+
+**It bites on 5 citations now** — the Bar and Bench judgment on L-0114/P-79/P-80 and the J&K Home
+Department orders on L-0139/L-0140 — **and on every future archived or mirrored primary, which is a
+growing class**: 65 citations already resolve through `web.archive.org`.
+
+## 4. DRAFT FOR `/method` — the directional split. FOR OPERATOR REVIEW, NOT SHIPPED
+
+> **Two directional counts, and they point opposite ways.**
+>
+> Of the 127 measurement-dispute records, 100 assert no direction at all. Of the 27 that do,
+> **19 find that a post-2014 figure flatters performance and 6 that one understates it — about
+> 3.2 to 1.** Separately, where outside reviewers have found this instrument's verdict vocabulary
+> misapplied, **the errors have run predominantly in the government's favour** — on one reviewer's
+> count, 13 alleged errors that would move a verdict against the government against 1 that would move
+> one toward it.
+>
+> **Neither number measures bias, and they measure different things.**
+>
+> The first counts LABELS this instrument applied. It is a property of **which measurement problems
+> were investigated** — a corpus that went looking for definitional breaks and reporting-base shifts
+> will find them where a basis changed, and bases changed more often after 2014 because more was
+> rebased. It is a statement about the instrument's **attention**, not about the government.
+>
+> The second counts ERRORS a reviewer alleges, not errors established. It comes from a single review
+> whose stated conclusion is the direction the count supports, so the count is **not independent of
+> the argument it is offered for**. It is a statement about this instrument's **discipline** —
+> specifically, that where the verdict vocabulary has been applied loosely, the looseness has favoured
+> the government.
+>
+> **Neither cancels the other and a reader should not net them.** A corpus can pay close attention to
+> flattering measurement and still score generously; that combination is what these two numbers
+> together describe.
+
+**What a reader needs in order not to be misled by either**, and the draft above carries all four:
+1. **the denominators** — 100 of 127 assert no direction, so 19:6 is a ratio over a fifth of the layer;
+2. **that the first is a count of labels applied, not defects found**;
+3. **that the second is one reviewer's allegations, not adjudicated errors, and is not independent of
+   that reviewer's conclusion**;
+4. **that they are not commensurable and must not be netted.**
+
+**Not published in this batch.** It goes up when the 70-record decision lands, because the second
+number changes as findings are resolved or rejected.
+
+## 5. PUBLISHING THE DERIVATION — SCOPE FOR L-0218, L-0219, L-0220
+
+The three cite the private repository as T1 with URLs that 404. **Their claims split into two kinds,
+and only one kind can be published from `/data`.**
+
+### Derivable from public data, given a published RULE
+
+**L-0219's 278 citations and 92 roots.** A reader trying this today gets neither number: **288 by the
+obvious bare-root rule, 277 from the `no-bare-root` gate's own line.** Three figures for what sounds
+like one quantity. **Publishing `/data` is not enough — the RULE is the missing artefact**: what
+counts as naming a publisher rather than a document, and how the 302 → 278 reduction was scoped.
+
+**L-0220's thirteen schemes.** The record already names them in its source field (L-0012, L-0034 to
+L-0037, L-0039, L-0044, L-0048 …), so a reader can open each. **This one is nearly reproducible now**
+and needs only the shape criterion stated as a rule rather than as a conclusion.
+
+**Cost: one generator, in the shape of `no-bare-root` and `gen-manifest`** — reads `/data`, applies a
+published rule, emits a table into `docs/`. Its output becomes the citation, replacing the repo URL.
+The rule lands in the record or in `docs/`, not in the log.
+
+### NOT derivable from any public artefact
+
+**L-0219's 139 unaddressable** and **L-0218's three unreadable channels** rest on *requesting each
+root through an explicit resolver and measuring the response as text*. **That is a retrieval result,
+and no retrieval is stored** — the finding that produced the source-cache proposal. `/data` cannot
+carry it because `/data` holds citations, not responses.
+
+**Three options, and they are the operator's:**
+1. **Store the retrieval.** The scoped cache — hash and a bounded extract per URL — makes these
+   reproducible and is the only option that does. Cost: the cache, already scoped at ~116 KB for
+   hashes alone.
+2. **Re-scope the records to what `/data` supports.** L-0219 keeps 278 and 92 and drops 139; L-0218
+   keeps the qualitative finding and drops the count. **Cheapest, and it narrows two records.**
+3. **State in the record that the evidence is the instrument's own and cannot be independently
+   checked.** Honest, and incompatible with a T1 tag on any reading of the ladder.
+
+**Also in scope and not resolvable by any of the three: `tools/source-response-check.mjs` now
+re-measures the same estates on demand.** It found the `mea.gov.in` JS shell and 40 bare-root
+problems on its own run — **so L-0218's finding is now independently re-derivable by a tool in the
+repository, even though the record's own evidence is not.** Pointing the record at the tool rather
+than at the log is a fourth option and probably the best one.

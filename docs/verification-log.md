@@ -11205,3 +11205,87 @@ ladder, blocks 24 of the 70, and is the only one of the three that changes a pub
 non-prose, 0 invisible, 2 exempted · `no-unguarded-prose-field` 20 prose · 45 non-prose ·
 `domain-coverage` 14/14, 1141/1141 · `figure-consistency` 18 declared · `enum-stamp` 2 fixtures ·
 `no-bare-root` 0 new, 0 stale · `validate:selftest` 23/23, 2/2 · `typecheck` clean.
+
+---
+
+## Cycle 2026-08-06j — BATCH 10. Preparing the 70-record decision. MEASUREMENT AND DRAFTING ONLY
+
+No verdict, tier, record or schema touched.
+
+### 1. The `worked` asymmetry does NOT depend on the tier tags
+
+**Zero of the nine `worked` records carry a disputed citation.** All 13 survive untouched, tier
+profile still T1×12 T4×1. `worked` **1.4 both ways** against `failed` **3.3 both ways**. **No `worked`
+record changes position.**
+
+**The audit's weight falls on the other side:** `no-objective` loses 23 citations (3.2 → **2.9**) and
+`too-early` loses 4 (2.4 → **2.1**) — the non-evaluative classes were carrying the foreign-primary and
+self-citation tags. **Correcting the tiers thins the non-evaluative records and leaves `worked`
+exactly where it was; if anything the asymmetry widens.**
+
+**Consequence for the decision: question (b) can be answered BEFORE question (c).** They were assumed
+coupled and are not.
+
+### 2. The 30 negative-existential records, triaged
+
+39 sentences / 30 records → **11 sentences retrieval-scoped (9 records)**, 28 world-claiming (22
+records). **Reading the 28 reduces them further and that reduction is the point.** 2 are the corpus
+already working — **L-0114's match is the WITHDRAWN wording quoted inside its own correction**, and
+L-0124's `revisitTrigger` explicitly guards against the claim. 6 are not publication-existence claims
+at all (comparative or analytical; the needle matched the shape). **20 sentences across 15 records are
+genuine candidates**: L-0093 L-0115 L-0116 L-0118 L-0144 L-0148 L-0166 L-0168 L-0175 L-0224 P-101
+P-113 P-114 `tn-direct-goi-transfers-to-sias` `jk-organised-stone-pelting`. Sharpest are those
+asserting an order does not exist rather than was not found — L-0168 (×2), L-0115, L-0116, L-0118.
+**Corrected nothing, and the 30 → 22 → 15 narrowing is a per-sentence judgement a later cycle should
+re-make rather than inherit.**
+
+### 3. The mirror question — NEITHER text decides it
+
+Both quoted verbatim in STATE.md. **They do not conflict on the tier; they conflict on what has been
+DECIDED.**
+- **`CLAUDE.md` rebuts a METHOD, not a tier.** Its complaint is that the audit judged from `tier` +
+  host *"without reading the `name` field"*. **It asserts what the records were citing and never
+  states what tier that citation should carry.**
+- **The ladder's criterion is the evidence chain and its examples never reach the case.** All three T4
+  examples are ACCOUNTS OF a document. **None is the full text served by a third party.**
+
+**So the instrument has been treating a methodological rebuttal as a substantive ruling — including by
+me one batch ago, when I called the two texts contradictory. They are not. There is a HOLE and
+inference has been filling it.** The undecided question: *is a document relayed when a third party
+serves the identical bytes, or only when a third party describes it?* The ladder leans T4 through
+*"retrieved directly"* and never says so. **It bites on 5 citations now and on every future mirrored
+primary — 65 citations already resolve through `web.archive.org`.**
+
+### 4. `/method` directional-split draft — in STATE.md, FOR REVIEW, NOT SHIPPED
+
+Carries all four things a reader needs: **the denominators** (100 of 127 assert no direction, so 19:6
+is a ratio over a fifth of the layer) · **that the first counts LABELS APPLIED, not defects found** ·
+**that the second counts one reviewer's ALLEGATIONS and is not independent of that reviewer's
+conclusion** · **that the two are not commensurable and must not be netted.** Framed as: the first is
+a statement about the instrument's ATTENTION, the second about its DISCIPLINE. Goes up when the
+decision lands, because the second number moves as findings resolve.
+
+### 5. Publishing the derivation — scope
+
+**Derivable from `/data` given a published RULE:** L-0219's 278 and 92, L-0220's thirteen schemes.
+**A reader trying L-0219 today gets neither number — 288 by the obvious bare-root rule, 277 from the
+`no-bare-root` gate's own line.** Three figures for one quantity: **publishing the data is not enough,
+the RULE is the missing artefact.** Cost: one generator in the shape of `no-bare-root`/`gen-manifest`,
+emitting a table into `docs/` that becomes the citation.
+
+**NOT derivable from any public artefact:** L-0219's **139 unaddressable** and L-0218's three
+unreadable channels rest on requesting each root through a resolver and measuring the response —
+**a retrieval result, and no retrieval is stored.** Options: store it (the scoped cache) · re-scope
+the records to what `/data` supports · state that the evidence is self-referential, which is
+incompatible with T1. **A fourth and probably best: `tools/source-response-check.mjs` now re-derives
+L-0218's finding independently** — it found the `mea.gov.in` JS shell on its own run — so the record
+can point at a tool in the repository rather than at the log.
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs
+= 682 records, 1,759 points** · `no-bare-root` 0 new, 0 stale, 277 allowlisted from 277 frozen ·
+`reachability` 1645/1645 · `field-render-audit` 36 prose + 43 non-prose, 0 invisible, 2 exempted ·
+`no-unguarded-prose-field` 20 prose · 45 non-prose · `domain-coverage` 14/14, 1141/1141 ·
+`figure-consistency` 18 declared · `enum-stamp` 2 fixtures · `validate:selftest` 23/23, 2/2 ·
+`typecheck` clean.
