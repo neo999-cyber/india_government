@@ -64,6 +64,24 @@ export default function MethodPage() {
         so {seriesTierT1} official statistical sources were described as journalism. The corrected
         wording is above and the count now comes from one accessor that reads both places.
       </p>
+      <p>
+        <strong>
+          Where a record says a measure worked, ask who measured it — and on most of these records
+          the answer is one arm of government measuring another.
+        </strong>{' '}
+        Of the nine records currently scored <em>worked</em>, three rest on the announcing
+        department&rsquo;s own account of its own performance and nothing else. Five rest on a
+        different institution of the same state: the Reserve Bank on the Ministry of Finance, the
+        Central Electricity Authority on the renewable-energy ministry, a later Finance Commission
+        on an earlier one. One rests on a source outside the Indian state, and it is a single
+        trade-press note. From 6 August 2026 the standard is that no record stands on a source that
+        is not credibly independent of what it establishes, and intra-state evidence meets it only
+        where the measuring institution published the figure as part of its own statutory or routine
+        function — a Comptroller and Auditor General audit does, a joint ministry-and-regulator
+        press release does not, whoever computed the number in it. That is better than a department
+        scoring itself. It is not the same thing as independent evidence, and this page would rather
+        say so than let the distinction sit unstated.
+      </p>
       <p className="prose-note">
         <strong>T1F is new and empty.</strong> The tier for primaries issued by a foreign national
         government was created on 6 August 2026, because T1 means Indian official and T2 means

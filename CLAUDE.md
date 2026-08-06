@@ -216,6 +216,28 @@ MNRE, a later Finance Commission on an earlier one) is *weaker* than a non-state
 *stronger* than the announcing body's own release, and the note says which of the three it is
 rather than asserting "independent" flatly.
 
+**RULING 1a — THE INTRA-STATE TEST, ruled by the operator 2026-08-06.** Ruling 1 assumed two
+categories and the corpus has three. Intra-state evidence satisfies the principle **where the
+measuring institution publishes the figure as part of its own statutory or routine function**, and
+**not where the figure appears in support of the claim**. The RBI's *Financial Stability Report*
+qualifies; a joint ministry-and-regulator release does not. **The test is on the PUBLICATION, not on
+the institution** — the same body can produce a qualifying figure and a non-qualifying one on the
+same subject in the same month, and which it is turns on whether the document exists to report or
+to persuade. A CAG performance audit is the paradigm qualifying case: a constitutional auditor
+reporting to Parliament on its own initiative. A PIB release carrying a regulator's number is the
+paradigm failing case, whoever computed the number, because the document is the claim.
+
+Two things follow that must be written on the record rather than assumed. **A qualifying source has
+to bear on the LIMB IN DISPUTE** — the RBI's *Financial Stability Report* qualifies on capital
+adequacy and says nothing about whether bank mergers produced efficiencies. And **the qualifying
+document has to be HELD**: three of the five intra-state `worked` records reach the *Financial
+Stability Report* only through a news site's account of it, which under the mirror rule is T4 and is
+not the document. **A test passed against a source the instrument does not hold is not passed.**
+
+And it is stated plainly wherever these records are read: **they rest on one arm of government
+measuring another.** That is better than a department scoring itself and it is not the same thing as
+independent evidence, and a reader is told which they are looking at.
+
 **RULING 2 — AN UNMEASURED LIMB PREVENTS `worked`.** Where a commitment states several objectives
 and **any one of them is unmeasured**, `worked` is unavailable and the verdict is `partly`. **This
 governs the class, not the three records that exposed it.** There is no centrepiece exception and
