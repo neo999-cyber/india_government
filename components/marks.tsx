@@ -344,6 +344,29 @@ export const DISPUTE_KIND_LABELS: Record<'evidentiary' | 'normative', string> = 
  * read as a completeness score and the rule that forbids a verdict number for a term forbids one for
  * the instrument's own coverage.
  */
+/**
+ * THE ONE-LINE GLOSS UNDER A VERDICT TALLY, and it exists because a tally is where the largest
+ * misreading of this instrument happens.
+ *
+ * A reader meeting "44 Contested · 37 No stated objective" out of 110 takes away that 81 records
+ * reached no conclusion. The corpus's position is the opposite: `no-objective` means the record
+ * found something real and nothing was claimed against which to score it, and two thirds of the
+ * contested records turn on a question no document could settle. BOTH ARE FINDINGS.
+ *
+ * ONE SENTENCE AND TWO LINKS, not a paragraph: a tally is a scanning surface and a reader who
+ * wanted the argument would be on the record page. It says the least that stops the misreading.
+ */
+export function TallyGloss() {
+  return (
+    <p className="t-note">
+      <Link href="/contested/">Contested</Link> and <em>no stated objective</em> are findings, not
+      the absence of one — the first declines between readings the evidence supports, the second
+      records that nothing was claimed to score against.{' '}
+      <Link href="/method/">What the distribution measures</Link>.
+    </p>
+  );
+}
+
 export function AbsenceCount({ items }: { items: Unmeasured[] | undefined }) {
   if (!items || items.length === 0) return null;
   return <span className="absence-inline">{items.length} not measured</span>;

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { assessmentCounts, ledger, provenance, series, statusCounts } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
 import { DOMAINS, TERMS } from '@/lib/types';
-import { StatusKey } from '@/components/marks';
+import { StatusKey, TallyGloss } from '@/components/marks';
 
 export default function HomePage() {
   // Counted, never typed. It fell from 9 to 1 on 6 August 2026 and the paragraph reporting it
@@ -97,6 +97,7 @@ export default function HomePage() {
           );
         })}
       </div>
+      <TallyGloss />
 
       <h2>Domains</h2>
       <div className="grid">

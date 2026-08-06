@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { TallyGloss } from '@/components/marks';
 import { assessmentCounts, ledgerInTerm } from '@/lib/data';
 import { ASSESSMENT_LABELS, TERM_LABELS } from '@/lib/format';
 import { TERMS } from '@/lib/types';
@@ -40,6 +41,7 @@ export default function TermsIndex() {
       <p className="prose-note">
         No term carries a grade. Roll-ups are counts of assessments and nothing else.
       </p>
+                  ? ` ·<TallyGloss />
     </>
   );
 }

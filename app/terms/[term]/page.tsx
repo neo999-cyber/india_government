@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { assessmentCounts, ledgerInTerm } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_LABELS, formatDateRange } from '@/lib/format';
-import { AbsenceCount, CaveatFlag, DifferentFactsMark } from '@/components/marks';
+import { AbsenceCount, CaveatFlag, DifferentFactsMark, TallyGloss } from '@/components/marks';
 import { TERMS, type Term } from '@/lib/types';
 
 type Props = { params: Promise<{ term: string }> };
@@ -68,6 +68,7 @@ export default async function TermPage({ params }: Props) {
       <p className="prose-note">
         Counts only. These never combine into a score for the term or for the government.
       </p>
+<TallyGloss />
 
       {domains.length > 0 ? (
         <p className="tag-row">

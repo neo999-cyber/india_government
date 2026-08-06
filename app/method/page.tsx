@@ -21,6 +21,21 @@ export default function MethodPage() {
   // Counted, never typed. This number fell from 9 to 1 on 6 August 2026 and the paragraph that
   // reports it must move with the data, not with whoever last edited the prose.
   const worked = ledger.filter((r) => r.assessment === 'worked').length;
+  // Counted here for the same reason as `worked`: the paragraph below turns on these and a typed
+  // figure is what this page got wrong once already. `reform` share against the evaluative rate is
+  // the whole of the argument that a thin domain is a domain with few announced measures.
+  const EVALUATIVE = new Set(['worked', 'partly', 'failed', 'reversed']);
+  const evaluative = ledger.filter((r) => EVALUATIVE.has(r.assessment)).length;
+  const inDomain = (d: string) => ledger.filter((r) => r.domains.includes(d as never));
+  const rate = (rows: typeof ledger, f: (r: (typeof ledger)[number]) => boolean) =>
+    rows.length === 0 ? 0 : Math.round((100 * rows.filter(f).length) / rows.length);
+  const reformShare = (d: string) => rate(inDomain(d), (r) => r.type === 'reform');
+  const evalShare = (d: string) => rate(inDomain(d), (r) => EVALUATIVE.has(r.assessment));
+  const exposureShare = (d: string) => rate(inDomain(d), (r) => (r.shockExposure ?? []).length > 0);
+  const contested = ledger.filter((r) => r.assessment === 'contested');
+  const withGround = contested.filter((r) => r.contestedGround);
+  const UNSETTLEABLE = new Set(['criterion', 'measure', 'evidence-unobservable']);
+  const unsettleable = withGround.filter((r) => UNSETTLEABLE.has(r.contestedGround!)).length;
 
   return (
     <>
@@ -130,6 +145,81 @@ export default function MethodPage() {
         marked <em>contested</em> decline to choose between readings by design; that is a statement
         about the evidence, not a hedge.
       </p>
+
+      <h2>What the verdict distribution measures, and what it does not</h2>
+      <p className="prose-note">
+        {evaluative} of {ledger.length} records carry a verdict that scores an outcome —{' '}
+        <em>worked</em>, <em>partly</em>, <em>failed</em> or <em>reversed</em>. The rest find
+        something real and have nothing to score it against, or decline between readings.{' '}
+        <strong>A domain with few scored verdicts has not been examined less; it contains fewer
+        announced measures.</strong> Kashmir is {reformShare('kashmir')} per cent measures the state
+        deliberately introduced and {evalShare('kashmir')} per cent scored; defence is{' '}
+        {reformShare('defence')} and {evalShare('defence')}; governance {reformShare('governance')}{' '}
+        and {evalShare('governance')}. Against them infrastructure is {reformShare('infrastructure')}{' '}
+        and {evalShare('infrastructure')}, welfare {reformShare('welfare')} and{' '}
+        {evalShare('welfare')}. <strong>The two track each other across every domain</strong>, which
+        is what you would expect if a scored verdict requires something to have been promised.
+      </p>
+      <p className="prose-note">
+        The exception is the interesting part, and it runs the other way.{' '}
+        <Link href="/exposure/">Exposure to an exogenous event</Link> tracks something different:
+        whether a domain has series long enough for a shock to distort. Employment is{' '}
+        {reformShare('employment')} per cent measures and {evalShare('employment')} per cent scored,
+        and {exposureShare('employment')} per cent of its records declare an exposure; human
+        development is {reformShare('human-development')} and {evalShare('human-development')}{' '}
+        against {exposureShare('human-development')}.{' '}
+        <strong>Those are outcome domains — much to measure and little announced</strong> — and they
+        are where the two questions this instrument asks come apart.
+      </p>
+      <p className="prose-note">
+        The same applies to the largest class. {contested.length} records are{' '}
+        <em>contested</em>, and {unsettleable} of the {withGround.length} that state a ground turn on
+        something <strong>no document could settle</strong>: the facts are agreed and the dispute is
+        which frame governs, or several valid published measures point opposite ways.{' '}
+        <Link href="/contested/">Which kind each contest is</Link> is the difference between a hedge
+        and a finding.
+      </p>
+
+      <h2>What changed on 6 August 2026, beyond the tiers</h2>
+      <p className="prose-note">
+        Nine rulings landed that day and four are described above — the independence standard, the
+        intra-state test, the unmeasured-limb rule and the foreign-primary tier.{' '}
+        <strong>The other five change what a verdict on this site means, and they are recorded here
+        because a reader has no other way to know them.</strong>
+      </p>
+      <ul>
+        <li className="prose-note">
+          <strong>An objective may be imposed as well as announced.</strong> A duty in a statute, a
+          constitutional provision or a court direction is a legitimate thing to score against, if
+          the record names the instrument and the duty. Four records score <em>failed</em> against
+          one — a vacancy ceiling in the Right to Education Act, a staffing norm with a 2013
+          deadline, a constitutional &ldquo;shall establish&rdquo; unhonoured for ten years — and
+          they are not measured against anything the government said.
+        </li>
+        <li className="prose-note">
+          <strong>A shock is what the state did not choose.</strong> A chain of state decisions is
+          not a shock however severe its consequences, and a record is typed by what it is about
+          rather than by what failed. Three records were retyped: the Indus Waters Treaty abeyance
+          is a decision, the 2020 migrant exodus is the consequence of one, and the IL&amp;FS
+          collapse is a private failure the state then responded to.
+        </li>
+        <li className="prose-note">
+          <strong>Where a verdict rests on fewer objectives than were announced, the record says
+          which.</strong> Forty-three records announce more than one thing; a failure verdict resting
+          on two of four is sound, and a reader is entitled to know it is two of four. This is a
+          disclosure requirement and it restricts only <em>worked</em>.
+        </li>
+        <li className="prose-note">
+          <strong>A counterfactual engine was considered and declined</strong>, with the reasoning
+          published at <Link href="/counterfactual/">counterfactual</Link> rather than left as an
+          apparent gap.
+        </li>
+        <li className="prose-note">
+          <strong>A structured value never moves alone.</strong> When a verdict or a type changes,
+          the prose restating it is corrected in the same operation — a rule and not a check, because
+          the words that carry those values are ordinary English and no scanner can find them.
+        </li>
+      </ul>
 
       <h2>Status of a figure</h2>
       <StatusKey />

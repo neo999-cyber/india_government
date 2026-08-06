@@ -17,6 +17,28 @@ Longitudinal research instrument: India's condition and trajectory, UPA baseline
 3a. **A caveat never truncates, anywhere, at any density.** `caveat` is a schema field on both the ledger and series schemas. A record carrying one would mislead without it, so it renders wherever the record appears — detail pages, index tables, domain and term pages, cited-by grids — in full, every time. No ellipsis, no clamp, no truncation to fit a cell, no hiding it behind a hover or a disclosure. A qualification cut to fit is the failure the field exists to prevent: a half-read caveat is worse than none, because it looks like the whole of it. This binds future table and density work — if a caveat will not fit a layout, the layout is what changes. Ordinary uncertainty is not a caveat and belongs in `notes`.
 4. **Blanks are unreported, not zero.** Same discipline as the paper-leaks instrument.
 4a. **An absence renders unlike a finding.** Distinguish a gap in the data from a gap in the world. A blank cell says "not reported this period" (rule 4); where *nothing measures a thing at all*, that is a fact about the record and often the most important thing on the page — it renders, named, rather than being left off. PMAY-G is the canonical case: sanctioned and completed are published, occupancy is not, and a reader shown only the first two would reasonably take completion for the end of the chain. Use the `Absence` mark: dashed, unfilled, no figure, no table, visibly not a panel of results. An absence styled like a finding invites a reader to treat the frame as the content, and nothing is ever estimated into the space. Expect several in infrastructure.
+
+4b. **AN ABSENCE MUST REACH A READER, AND 4a DOES NOT MAKE IT DO SO.** Ruled 2026-08-06. It appears on
+every surface that LISTS the record, in the caveat's idiom, and it PRECEDES the argument on the
+record's own page. **A declaration only a reader who opens the record and scrolls past two argument
+blocks can find is housekeeping, whatever it looks like when they get there.**
+
+**THE TWO RULES BIND DIFFERENT PROPERTIES AND FAIL INDEPENDENTLY, WHICH IS WHY THIS IS A CLAUSE
+BESIDE 4a AND NOT A REWRITE OF IT.** 4a binds how an absence LOOKS; 4b binds where it APPEARS and
+when. An absence can be styled perfectly — dashed, unfilled, no figure, no table, unmistakably not a
+panel of results — and reach nobody; and an absence can be everywhere a reader looks and still be
+styled like a results panel. **Neither implies the other.**
+
+**AND THE FIRST IS WHAT HAPPENED, ON 374 DECLARATIONS ACROSS 199 RECORDS.** They complied with 4a
+completely and appeared on NO listing surface at all — not the index, not a term page, not a domain
+page — while sitting below `caseFor` and `caseAgainst` on the record itself. **4a was working and the
+thing it was thought to protect was unprotected**: this is the shape of *a guard binds a scope, and
+the claim it protects has its own*, where the gap between the two is silent by construction because
+the guard passes.
+
+**One thing 4b does not license: a corpus-wide count.** An absence total on the index would read as a
+completeness score, and the rule that forbids a verdict number for a term forbids one for the
+instrument's own coverage. **Per record, on every listing; never summed.**
 5. **All three GDP regimes always.** GDP growth exists on three incompatible bases: 2004-05 (as contemporaneously reported, ends FY2013-14), 2011-12 (FY2013-14 to FY2024-25), and 2022-23 (from FY2023-24, released 27 Feb 2026, P-10). No spliced back-series exists for either revision. Rules that follow from that:
    - Never present any one base alone as "GDP growth". Anywhere the regimes could be confused, all three render, in base order, with every seam intact.
    - **Overlap years carry every valid figure.** FY2013-14 reads 4.7% (2004-05 base) and 6.9% (2011-12 base); FY2023-24 and FY2024-25 each read differently on the 2011-12 and 2022-23 bases. Both figures are official and current — the instrument shows them adjacent and picks neither. A single number for an overlap year is a claim the published statistics do not support.
