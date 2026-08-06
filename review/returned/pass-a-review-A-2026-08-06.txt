@@ -1,0 +1,233 @@
+ADVERSARIAL STRUCTURAL REVIEW                                                                         Indian government policy-claim corpus
+
+
+
+
+ INDEPENDENT REVIEW REPORT
+
+
+ Adversarial structural review
+ A first-pass challenge to the verdict taxonomy, evidentiary architecture and political direction of a public
+ corpus tracking Indian government policy claims.
+
+  SCOPE              226 ledger records | 127 provenance records | 269 series omitted | 60 pairs omitted
+
+  SOURCE             pass-a-structural.md
+
+  METHOD             Adversarial structural comparison of verdict definitions, record metadata, source tiers and phase
+                     distributions
+
+
+
+     Bottom line: the corpus does not apply one stable burden of proof. Its no-objective and contested
+     rules protect some government claims, while its directional provenance labels lean against the
+     government by 19:6.
+
+
+
+ Findings at a glance
+ #        Severity          Finding
+
+ 1        Critical          No-objective contradicts its definition and shields undated commitments
+
+ 2        High              Three corrected verdicts still argue for the withdrawn class
+
+ 3        High              Similar multi-objective records receive incompatible verdicts
+
+ 4        High              Contested is being used as an ignorance category
+
+ 5        High              The source-profile table omits the evidence layer verdicts rest on
+
+ 6        High              Direction-of-bias labels are skewed and semantically inconsistent
+
+ 7        Medium            Worked is implausibly term-clustered
+
+ 8        High              The written method is not synchronized with the record set
+
+
+
+ Detailed findings
+          CRITICAL | No-objective contradicts its own definition and shields undated
+  1
+          commitments
+
+ The verdict definition says no-objective applies where nothing was claimed. The commitment-state rule then orders
+ the opposite: an explicit commitment with a total but no deadline must also be scored no-objective.
+
+ L-0209 exposes the contradiction. The government committed to fencing the entire 1,643 km Myanmar border. That is
+ an objective. Its missing deadline makes it unfalsifiable by time, not nonexistent. L-0210 likewise contains an explicit
+ commitment to scrap the Free Movement Regime. L-0213 files an announced corridor and later quantified benefit
+ claims as no-objective because they lack delivery parameters.
+
+ Thirteen no-objective records have populated claim fields: L-0184, L-0187, L-0206, L-0208, L-0209, L-0210, L-0211,
+ L-0213, L-0215, L-0217, L-0218, L-0219 and L-0220. Some correctly explain that no Indian commitment exists, but
+ L-0209 and L-0210 do not. This rule leans pro-government because an indefinitely drafted promise can never become
+ overdue while the verdict says nothing was claimed.
+
+
+
+
+Structural extract reviewed 6 August 2026                                                                                           Page 1
+ADVERSARIAL STRUCTURAL REVIEW                                                               Indian government policy-claim corpus
+
+
+
+
+          HIGH | Three of four awaiting-adjudication records still argue for the withdrawn
+  2
+          verdict
+
+ The method says corrections are made in place and visibly marked. That did not happen for three records migrated from
+ too-early to awaiting-adjudication:
+
+  - L-0086 says: Scored too-early.
+  - L-0127 says: Filed too-early on the written definition.
+  - L-0134 says: Filed too-early.
+  - Only L-0143 gives reasoning for its current verdict.
+ Thus 75% of this verdict class contains live reasoning for another class. The change-history table records the migration,
+ but the records themselves violate the stated correction convention.
+
+
+  3       HIGH | Similar multi-objective records receive incompatible verdicts
+
+ L-0026 is worked although its own reasoning says two objectives were announced and they do not resolve the same
+ way. Under the written definition, achieving only part of a stated objective is partly. L-0048 is indeed partly on essentially
+ that structure: two announced objectives with a split result. Unless omitted evidence establishes that both L-0026
+ objectives were fully achieved, its worked verdict is unsupported.
+
+ A second inconsistency appears in later foreign-policy records. L-0207 is worked despite stating that no tariff, revenue
+ or export-volume target was retrieved; its reasoning admits it was scored on delivery only. L-0206 and L-0208 are
+ no-objective because purpose or activity without a target is not scorable. L-0212 is only partly where one commitment
+ was delivered but the broader result was unmeasured. L-0207 receives a success verdict through a test the method
+ refuses to use for nearby records.
+
+
+  4       HIGH | Contested is being used as an ignorance category
+
+ The definition requires evidence supporting more than one defensible reading. The corpus's own ground classification
+ instead assigns 11 contested records to evidence-withheld: L-0042, L-0057, L-0070, L-0110, L-0114, L-0137, L-0144,
+ L-0148, L-0168, L-0178 and L-0179.
+
+ Another five are evidence-unobservable: L-0018, L-0056, L-0079, L-0116 and L-0136. These records often show
+ insufficient evidence to choose a reading, not evidence affirmatively supporting two readings. L-0096 makes the
+ problem explicit: its outcome was never published and it has four unmeasured quantities, yet the method cites it as the
+ model for retaining an unmeasured claim as contested.
+
+ The distinction between genuine conflict, missing evidence, withheld evidence and an unobservable counterfactual
+ exists only as a project classification, not as a data field. Where the state controls missing evidence, contested also
+ allows nonpublication to prevent an adverse verdict.
+
+
+  5       HIGH | The source-profile table cannot establish what it claims to establish
+
+ The verdict/source table tabulates ledger citations, while the extract says the omitted series contain the figures on which
+ verdicts rest and carry separately tiered sources. The table therefore cannot determine what source type a verdict
+ actually rests on.
+
+  - L-0013: failed, T3 x1 and T4 x2.
+  - L-0014: worked, T4 x1.
+  - L-0016: failed, T4 x2.
+  - L-0017 and L-0036: partly, T4 x1.
+  - L-0055: partly, T3 x1.
+
+
+
+Structural extract reviewed 6 August 2026                                                                                  Page 2
+ADVERSARIAL STRUCTURAL REVIEW                                                               Indian government policy-claim corpus
+
+
+
+
+ The omitted series may rescue these high-confidence verdicts. If so, the table is structurally incomplete; if not, the
+ verdicts are under-supported.
+
+ There is also an asymmetry inside the ledger layer. Seven of nine worked records have only one ledger citation: L-0014,
+ L-0023, L-0026, L-0029, L-0047, L-0052 and L-0053. Worked averages 1.4 citations per record, versus 3.3 for failed,
+ 2.9 for partly and 2.8 for contested. Its 13 citations are 12 T1 and one T4, with no T2 or T3 evidence. Unless the omitted
+ series reverse this pattern, success is the least documented definitive verdict and is established almost entirely using
+ Indian official material.
+
+
+  6        HIGH | The direction-of-bias field cannot support a clean political conclusion
+
+ Nineteen records say the instrument overstates or flatters post-2014 performance: P-17, P-22, P-23, P-24, P-25, P-26,
+ P-27, P-30, P-31, P-32, P-34, P-36, P-37, P-38, P-40, P-42, P-47, P-48 and P-63.
+
+ Only six say post-2014 quantities are understated: P-11, P-16, P-28, P-45, P-74 and P-85. That is a 19:6, or 3.2:1, skew
+ against the post-2014 government among records where direction is asserted.
+
+  - P-11 infers direction from a higher non-food CPI weight, but a weight change alone cannot establish direction without
+      relative component inflation.
+
+  - P-36 labels a much lower logistics-cost estimate overstates-post-2014. The label means flatters performance, not that
+      the numerical figure is overstated.
+
+  - P-34 combines a nondirectional reporting gap with allegedly selective accident classification.
+  - P-63 announces breaks on opposite sides of a ratio but assigns one direction without showing the net calculation in this
+      extract.
+
+ The documentation is also stale: it says nondirectional values cover 35 of 58 records, while the current distribution is
+ 100 of 127. It says overstates-pre-2014 has no users, although P-122 uses it. The recorded directional findings lean
+ against the government, but this file cannot establish whether that reflects real defects, record selection or unsupported
+ direction assignments.
+
+
+  7        MEDIUM | Worked is implausibly term-clustered
+
+ Eight of nine worked verdicts belong to T1: L-0014, L-0023, L-0026, L-0029, L-0047, L-0052, L-0053 and L-0151. The
+ only other one is T3 record L-0207. There are no T2 worked records, despite T2 containing 74 records and being a
+ completed term.
+
+ T2 instead contains 32 contested, 19 no-objective, 11 partly, five failed, three too-early, three awaiting-adjudication and
+ one reversed. Elapsed time cannot explain zero successes in a completed term. Term-specific selection,
+ authoring-phase drift or inconsistent thresholds could explain it, but the extract does not establish which.
+
+
+  8        HIGH | The operative method is not synchronized with the record set
+
+ The too-early definition says the class has two remaining members, L-0061 and L-0139. The current extract contains
+ 13: L-0061, L-0139, L-0153, L-0155, L-0169, L-0188, L-0194, L-0196, L-0201, L-0204, L-0205, L-0223 and L-0225.
+
+ Together with the stale provenance counts and the uncorrected awaiting-adjudication reasoning, this shows that the
+ prose method is historical commentary rather than a dependable specification of the current corpus.
+
+
+ Overall political direction
+ The structural errors do not lean only one way:
+
+  - No-objective, missing-evidence contested verdicts and thinly sourced worked verdicts tend to protect or favour the
+      government.
+
+  - Direction-bearing provenance classifications lean against the government by 19:6.
+
+
+
+Structural extract reviewed 6 August 2026                                                                                 Page 3
+ADVERSARIAL STRUCTURAL REVIEW                                                                Indian government policy-claim corpus
+
+
+
+
+  - The zero-success T2 distribution suggests term or authoring-phase bias rather than a simple partisan direction.
+ These effects do not cancel out. They show that different parts of the instrument apply different burdens of proof,
+ making political direction depend on which taxonomy a record enters.
+
+
+ What I could not check from this file alone
+  - Whether the 269 omitted series and 60 pairs substantiate the verdicts or reverse the ledger-only source asymmetries.
+  - The full reasoning, case-for and case-against text for most records.
+  - Whether L-0026's full evidence establishes both objectives despite its contradictory reasoning sentence.
+  - Whether L-0207's sources contain an explicit construction or delivery objective omitted from its claim field.
+  - The calculations needed to establish direction for P-11, P-36 and P-63.
+  - Whether cited documents support the summaries and have been assigned the correct tiers.
+  - Whether the public site displays corrections, assessment notes, contested grounds and caveats clearly.
+  - The selection denominator: which government claims or policy areas were never entered into the corpus.
+  - Whether term clustering reflects the underlying policy universe or the order and topics in which records were authored.
+
+ END OF REPORT
+
+
+
+
+Structural extract reviewed 6 August 2026                                                                                  Page 4
+

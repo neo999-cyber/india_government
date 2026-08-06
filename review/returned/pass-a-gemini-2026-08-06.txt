@@ -1,0 +1,191 @@
+1. Direct Rule Breaches & Methodological Contradictions
+
+A. Method Text Explicitly Contradicts Corpus Data ( overstates-pre-
+2014 )
+   The Rule / Claim (Extract C.1b): The schema documentation for the provenance layer
+   explicitly states: overstates-pre-2014: UNATTESTED — no record uses this
+   value.
+   The Contradiction: The corpus's own generated cross-tabulation in Extract A.3 lists
+    overstates-pre-2014: 1 . Provenance record P-122 (Renewable generation was
+   imputed, not metered, up to FY2013-14) explicitly carries bias overstates-pre-
+   2014 .
+   Impact: The method section documentation is stale and directly contradicts the
+   underlying dataset, demonstrating a failure of internal documentation synchronization.
+
+B. Misapplication of too-early to Measures Not in Force
+   The Rule (Extract C.1): too-early is strictly defined as: "the measure is in force but
+   has not run long enough for its stated objective to be testable. THE OBSTACLE IS
+   ELAPSED TIME AND THE EVIDENCE TIME ACCUMULATES."
+   The Violation:
+         L-0205 (India-EU agreement): Scored too-early . The claim text explicitly notes
+         the agreement is "concluded but not in force" and that "no date exists for either
+         [signature or entry into force]".
+         MD + 1
+         L-0188 (US 6 February trade framework): Scored too-early . The claim text notes
+         the framework contains "an interim agreement not concluded since".
+         MD + 1
+   Impact: Assigning too-early to measures that are not in force breaks the core
+   requirement of Rule C.1. Measures not in force have an obstacle of executive/legislative
+   action, not elapsed time.
+    MD + 1
+
+C. Unvetted Use of not-published Without Stated Searches
+   The Rule (Extract C.5): "An absence-of-publication claim requires a stated search...
+   Absent one of those, the honest wording is 'not searched', not 'not published'." Rule
+   C.4 adds that not-published requires data to exist in a holder's hands but remain
+   unreleased.
+    MD
+   The Violation: not-published is assigned 206 times across 226 ledger records.
+   Across Term 3 records alone—such as L-0207, L-0208, L-0209, L-0211, L-0212, L-
+   0213, L-0214, L-0215, L-0216, L-0217, L-0221, L-0222, and L-0224—the summary
+   blocks list not-published as an unmeasured reason without providing the required
+   proof of an enumerated index, observed archive convention, or exhausted named
+   routes. Extract C.5 itself concedes that not-published was mistakenly used for not-
+   searched three times in Phase 15.
+    MD + 2
+   Impact: The system routinely logs unverified search failures as official administrative
+   non-disclosure ( not-published ), inflating the apparent opacity of the state.
+    MD
+
+2. Arbitrary Categorization & Selective Verdict Boundary Enforcement
+
+A. Double Standard: Statutory Violations Scored as failed vs. Laundering
+into no-objective
+   The Contradiction:
+         In L-0095 (RTE 10% teacher vacancy ceiling), L-0106 (Single-teacher schools), L-
+         0108 (WB teacher recruitment panel), and L-0162 (GST Council dispute
+         mechanism), the claim field reads none stated at announcement (or quotes
+         raw text). Yet, all four are scored failed because the system evaluates them
+         against statutory, constitutional, or judicial benchmarks.
+         MD + 1
+         In contrast, L-0094 (National teacher-vacancy statistic withdrawn), L-0122 (AFSPA
+         Sec 7: 0/50 sanction requests granted), L-0154 (Article 281 due consideration), L-
+         0164 (Governor bill assent silence), and L-0167 (Inter-State Council non-meetings)
+         also carry none stated at announcement and represent clear
+         statutory/constitutional non-compliance. Yet, these were classified as or rescored
+         to no-objective on the grounds that no formal executive launch claim was made.
+         MD + 1
+   Impact: The framework arbitrarily decides when a statutory or constitutional mandate
+   acts as an evaluation target. This allows severe institutional breakdowns (e.g., 0 out of
+   50 AFSPA prosecution sanctions granted in L-0122) to be insulated from a failed
+   verdict by dumping them into the neutral no-objective bucket.
+    MD + 1
+
+B. Inconsistent Assignment of awaiting-adjudication vs.
+contested
+   The Rule (Extract C.1): awaiting-adjudication applies when "the measure is in
+   force and its effect is testable in principle, but the term that would settle the
+   assessment is a pending decision by a body outside the enacting authority."
+
+    MD
+   The Violation: The value was added on 2026-08-03 and assigned to L-0086, L-0127,
+   L-0134, and L-0143. However, multiple records matching this exact criterion were left in
+    contested :
+    MD
+         L-0075 (PMLA procedural architecture): In force, testable, pending final
+         constitutional reference before the Supreme Court.
+         MD
+         L-0082 (Sedition abeyance / BNS Sec 152): In force, pending judicial review before
+         the Supreme Court.
+         MD
+         L-0163 (Tamil Nadu bills assented by SC): Unsettled by a pending Constitution
+         Bench reference.
+         MD
+         L-0165 (Delhi governance law): In force, pending before a 5-judge Constitution
+         Bench.
+         MD
+         L-0168 (West Bengal MGNREGA fund stoppage): Restored by court order;
+         litigation pending.
+         MD
+   Impact: Identical legal/constitutional review states are split arbitrarily between
+    awaiting-adjudication and contested .
+    MD
+
+3. Sourcing Tier Inversion & Structural Domain Bias
+
+A. Sourcing Inversion on Success Claims ( worked )
+   The Pattern: Across 226 ledger records, only 9 receive a worked verdict (4.0%).
+    worked records carry the lowest mean citations per record in the entire corpus (1.4
+   citations/record).
+    MD + 1
+   The Evidence: 8 of the 9 worked records rely almost exclusively on 1 or 2 official T1
+   government press releases:
+         L-0023 (Asset Quality Review): 1 source [T1×1]
+         MD
+         L-0026 (PSB Recapitalisation): 1 source [T1×1]
+         MD
+         L-0029 (Digital Public Infrastructure): 1 source [T1×1]
+         MD
+         L-0047 (Railway Electrification): 1 source [T1×1]
+         MD
+         L-0052 (Renewable Energy Expansion): 1 source [T1×1]
+         MD
+         L-0053 (Port Efficiency): 1 source [T1×1]
+         MD
+         L-0207 (Punatsangchhu-II Hydropower): 2 sources [T1×2]
+         MD
+         L-0014 (Flexible Inflation Targeting): 1 source [T4×1]
+         MD
+     Methodological Vulnerability: Awarding an unqualified worked verdict based on a
+     single T1 government press release (e.g., L-0023, L-0026, L-0052, L-0053) accepts
+     government self-reporting as ground truth. Furthermore, L-0207 is marked worked
+     despite explicitly logging unmeasured: 2 [not-published×2] because tariff figures
+     and commercial terms were kept secret. In contrast, missing pricing or minor delivery
+     discrepancies in L-0200 (Emergency Procurement) or L-0203 (Rafale 2016) instantly
+     demote those records to partly or contested .
+     MD + 2
+
+B. Domain Distortion & Structural Asymmetry
+     The Pattern: Hard physical infrastructure receives a disproportionate share of
+     positive/delivery scores, while governance, civil liberties, and regional policy are
+     insulated from evaluation.
+     MD
+     The Evidence (Extract A.3 Domain Cross-Tabulation):
+          infrastructure (24 records): 4 worked , 9 partly (54.1% positive delivery).
+          MD
+          welfare (21 records): 1 worked , 8 partly (42.8% positive delivery).
+          MD
+          kashmir (46 records): 0 worked , 0 failed , 18 contested , 17 no-objective
+          (76.1% non-evaluative).
+          MD
+           governance (113 records): 1 worked , 6 partly , 44 contested , 40 no-
+          objective (74.3% non-evaluative).
+          MD
+     Methodological Vulnerability: The instrument evaluates physical infrastructure
+     against narrow physical targets (e.g., kilometers of track, installed megawatts), making
+      worked or partly achievable. Conversely, institutional governance, human rights,
+     and civil liberties records are systematically funneled into no-objective or
+      contested by framing structural administrative failures as "states of measurement"
+     rather than policy performance failures.
+     MD + 1
+
+What I could not check from this file alone
+1.    The 269 Time Series Records & Point-Level Data: Extract A contains ledger and
+      provenance metadata but omits the 269 underlying series records. I could not verify
+      whether the raw data points contain undeclared basis breaks, improper splices across
+      Finance Commission award boundaries (violating P-103), or unflagged imputed values.
+      MD + 2
+2.    The 60 Paired Comparison Records: The full prose, alignment rules, and
+      mathematical derivations of the 60 parts/pairs records are absent. I could not
+      check whether derived ratios propagate input uncertainties or violate Rule C.6c.
+      MD + 1
+3.   Full Assessment Notes for 191 Ledger Records: Extract A provides only the first
+     substantive sentence of the assessment note for most records. I could not evaluate
+     whether the full prose notes for records outside Extract B contain unstated
+     assumptions, logical leaps, or unacknowledged contradictions.
+     MD + 1
+4.   The Rendered Frontend & Visual Layouts: Because I am reviewing raw data rather
+     than the built HTML output, I could not verify whether fields like assessmentNote ,
+      revisitTrigger , or caveat actually render visibly without truncation across all
+     domain and summary pages.
+     MD + 1
+5.   Search Path Logs for not-published Claims: I could not check the repository's
+     path-probing logs to verify whether the 206 not-published claims represent
+     genuinely exhausted search routes or unexecuted guesses that should be classified as
+      not-searched under Rule C.5.
+     MD
+6.   The 699 KB Append-Only Verification Log: Historical rationale and commit diffs
+     recorded in docs/verification-log.md were not provided, preventing verification
+     of the specific analytical triggers behind historical record rescores.
+     MD
+
