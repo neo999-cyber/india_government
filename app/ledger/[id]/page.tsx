@@ -53,7 +53,26 @@ export default async function LedgerDetail({ params }: Props) {
         <span className="tag">{l.id}</span>
         <span className="tag">{formatDateRange(l.date, l.dateEnd)}</span>
         <span className="tag">{l.type}</span>
-        <span className="tag">{ASSESSMENT_LABELS[l.assessment]}</span>
+        {/* THE CHIP IS A ROUTE TO ITS GROUND WHERE ONE EXISTS, and neither it nor the note moves.
+            A verdict tag with no way to reach the reasoning behind it is a claim shown without its
+            argument — the defect found when `assessmentNote` rendered NOWHERE on 164 records, at
+            lower severity: the argument is on the page now and a reader has to know to look for it.
+
+            THE NOTE STAYS WHERE IT IS, under the two cases, because that is what it resolves; the
+            chip stays at the top because the verdict is what the record is for. Moving either
+            inverts the record's structure. So the conclusion acquires a route to its ground and
+            nothing else changes.
+
+            NOT A LINK WHERE THERE IS NO NOTE — 52 records carry none, and a link to an anchor that
+            does not exist is worse than no link. 11 are `baseline-context`, which is never scored;
+            the other 41 are a finding and are reported rather than papered over here. */}
+        {l.assessmentNote ? (
+          <a className="tag tag-verdict" href="#why-this-verdict">
+            {ASSESSMENT_LABELS[l.assessment]}
+          </a>
+        ) : (
+          <span className="tag">{ASSESSMENT_LABELS[l.assessment]}</span>
+        )}
         {/* What would settle a contested record — for three of the six grounds, nothing would. */}
         {l.contestedGround ? (
           <span className="tag tag-state">
@@ -152,7 +171,7 @@ export default async function LedgerDetail({ params }: Props) {
             claim shown without its argument is the thing this instrument exists not to do. */}
         {l.assessmentNote ? (
           <>
-            <dt>Why this verdict</dt>
+            <dt id="why-this-verdict">Why this verdict</dt>
             <dd>{l.assessmentNote}</dd>
           </>
         ) : null}

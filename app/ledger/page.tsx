@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { assessmentCounts, ledger } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
-import { AbsenceCount, CaveatFlag, DifferentFactsMark } from '@/components/marks';
+import { AbsenceCount, CaveatFlag, DifferentFactsMark, TallyGloss } from '@/components/marks';
 
 export const metadata: Metadata = { title: 'Ledger' };
 
@@ -27,6 +27,7 @@ export default function LedgerIndex() {
           </span>
         ))}
       </p>
+<TallyGloss />
 
       <div className="table-wrap">
         <table>

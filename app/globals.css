@@ -744,6 +744,14 @@ tr th:last-child {
 /* An absence on a listing row. Modelled on .caveat-inline for placement and restraint, and
    deliberately NOT in --alert: a caveat is a blocking qualification and an absence is a finding.
    Colouring them alike would assert a severity the corpus does not. */
+/* The verdict chip when it has a route to its reasoning. A dotted underline and nothing else:
+   it is the same claim it always was, and a chip that changed colour on acquiring a link would
+   assert a difference between records that have a note and records that do not. */
+.tag-verdict {
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+}
+
 .absence-inline {
   display: inline-block;
   margin-top: 0.15rem;

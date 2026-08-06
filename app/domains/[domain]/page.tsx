@@ -15,7 +15,7 @@ import {
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
 import { DOMAINS, LENSES, LENS_ONLY, type Domain, type Lens } from '@/lib/types';
 import type { Pair, Series } from '@/lib/types';
-import { AbsenceCount, CaveatFlag, DifferentFactsMark, StatusKey, StatusTally, TierTag } from '@/components/marks';
+import { AbsenceCount, CaveatFlag, DifferentFactsMark, StatusKey, StatusTally, TallyGloss, TierTag } from '@/components/marks';
 
 type Props = { params: Promise<{ domain: string }> };
 
@@ -141,6 +141,7 @@ export default async function DomainPage({ params }: Props) {
               </span>
             ))}
           </p>
+<TallyGloss />
           <div className="table-wrap">
             <table>
               <thead>
