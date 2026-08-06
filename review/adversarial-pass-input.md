@@ -4930,9 +4930,19 @@ EXCLUDES  12(1)(c), 239AA(7)(b), 370(1)(d) and the like
 - **L-0148** `differentFactsNote` — The comparison is unbuilt, not unbuildable, and an unbuilt comparison fails (c) expressly.
 - **L-0082** `revisitTrigger` — Re-test against (c) then.
 
-## E.5 — Corrections in full field text — 75 fields
+## E.5 — Corrections in full field text — 75 fields across 66 records
 
-Extract D indexes these; this prints them, because the convention can only be judged on the sentence. The rule is that a correction is made in the record itself and **the withdrawn wording survives inside the sentence that withdraws it** — so the wrong figure is still on the page by design. Test: does each one name what it withdrew, why the old form was wrong, and in which direction the error ran? A correction that says only *"corrected"* fails the convention it claims to follow.
+**These are included deliberately and are not hidden anywhere in this document.** The rule is that a correction is made in the record itself and **the withdrawn wording survives inside the sentence that withdraws it** — so the wrong figure is still on the page, by design. If you read one of these as a live error, report it: that is evidence the correction is not visible enough, and it is a finding rather than noise.
+
+Test each one: does it name what it withdrew, why the old form was wrong, and in which direction the error ran? **A correction that says only "corrected" fails the convention it claims to follow.**
+
+**The needle, printed so the count has a scope.** A field appears here when it matches:
+
+```
+/\b(?:CORRECTED|RESCORED|VALUE-AND-NOTE RECONCILED|Bounded|CLOSED)\s+\d{4}-\d{2}-\d{2}|\bthis (?:record|sentence|note|figure) (?:previously|originally)\b|\bpreviously (?:read|carried|gave|said|stated|described|counted|attributed|dated|led on|quoted)\b|\bis WITHDRAWN\b|\bthat example is WITHDRAWN\b|\bThe earlier framing is superseded\b|\breasonKind CORRECTED\b/
+```
+
+It matches only **self-referential** corrections — a record saying what IT previously said. Ordinary uses of "withdrawn" and "superseded" that describe the world (a measure withdrawn by its enacting authority, an estimate superseded by a later answer) are excluded by construction, and there are many of them. **A needle bounds what it finds and never what there is**: a correction phrased in some other way is not in this list. Found across 60 ledger and provenance records and 6 series.
 
 **L-0066** `assessmentNote`
 
@@ -5288,7 +5298,7 @@ The same content is emitted as one combined file and as three independently runn
 |---|---|---|
 | `pass-a-structural.md` | A + C | patterns across the complete population |
 | `pass-b-deep.md` | B + C + D | verdicts against their own evidence, claims against their sources |
-| `pass-c-method.md` | C + E + D | rule-following, and absences asserted without a search |
+| `pass-c-method.md` | C + E | rule-following, and absences asserted without a search |
 | `adversarial-pass-input.md` | A + B + C + D + E | the combined document |
 
 **Why three and not one.** A reviewer given 500 KB anchors on whatever it read first, and one review produces one set of priors applied to everything. Three reviews with no shared context cannot contaminate each other, and where two of them independently reach the same finding, that agreement is evidence in a way one reviewer's confidence is not.
