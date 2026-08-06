@@ -4778,3 +4778,21 @@ depending on whether series count, and neither setting tests independence.
 
 **Question (b) is answerable now. It does not wait on the tier audit** — no `worked` record carries a
 disputed citation — **and it does not wait on question (c)**, which is about band D alone.
+
+---
+
+## WHAT HAPPENED AFTER THIS PHASE CLOSED — read this before treating anything above as current
+
+Phase 15 closed 2026-08-05 with no open items. The cycle that followed authored no records and
+changed what a record has to prove. **Nine records said `worked`; one does.** Question (b), left open
+at the end of this file, was answered: **yes, `worked` requires evidence independent of the
+announcing body**, with a further test for evidence from one arm of the state about another.
+
+**Everything about that cycle is in [`drops/cycle-review-and-rulings/STATE.md`](../cycle-review-and-rulings/STATE.md).**
+Start there, not here, for anything after 2026-08-05.
+
+Two records authored in this phase moved in that cycle: **L-0221 and L-0222 are unchanged**, but
+**L-0052 (renewable capacity) fell from `worked` to `partly`** on the unmeasured-limb rule — the
+capacity-against-generation gap this phase's whole arc was about is the limb that bars the verdict.
+The arc's spine sentence above is now the reason a verdict moved, which is the strongest thing this
+phase produced.
