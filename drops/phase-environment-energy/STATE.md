@@ -3403,3 +3403,69 @@ The 0.6–2.8 GB row now carries its own health warning in this file: **a decisi
 measurement** — n=9 sized URLs, unstratified, projected onto 479 spanning 15 bytes to 34.5 MB, with
 six of the nine being annual reports and minutes, the fat end of the distribution. **Robust enough to
 decide with, not a figure to quote forward.** 479 GETs recording `Content-Length` would replace it.
+
+---
+
+# BATCH 6, ITEM 1 — THE 479-URL SWEEP. Report only, nothing corrected
+
+`tools/source-response-check.mjs`, all **479 distinct URLs** from **622 records**, ranged GET with a
+2 MB ceiling and the 1.1.1.1 resolver fallback. **185 URLs were reachable only through the fallback**,
+which is the standing environment fact and not a finding.
+
+## The count, with this sweep's own artefacts removed and named
+
+**86 flagged raw. 19 of those are defects in the sweep, not in the corpus**, and they are named
+rather than quietly dropped:
+
+| artefact | n | why it is not a finding |
+|---|---:|---|
+| `stub:captcha` on a large body | 5 | the signature was a word search. It fired on a **100 KB Wikipedia article** because MediaWiki ships `CaptchaNeededForGenericEdit` in its JS config, and on five full pages of 29–155 KB. **An interstitial that replaces a document is a few KB; a 100 KB body IS the document.** The tool now requires a body under 25 KB before a stub signature counts |
+| `js-shell` on a truncated body | 3 | the text-density test measured the first 16 KB of a **206**. `tradingeconomics.com` was flagged and carries **33,301 characters of text in full**. The tool no longer applies the test to a cut body |
+| HTTP 429 | 11 | **every one is `comtradeapi.un.org` and every one returns 200 when fetched serially.** The sweep rate-limited itself at 8 concurrent. Banking them would have reported eleven dead citations that are alive. Concurrency lowered to 4 and the hazard written into the tool's header |
+
+**67 URLs remain, across 167 records** — and that number still overstates the corpus's problem:
+
+- **40 are BARE DOMAIN ROOTS** (116 records). `pib.gov.in/`, `ncrb.gov.in/`, `morth.nic.in/`,
+  `powermin.gov.in/`, `data.gov.in/`. These are the **already-tracked** population —
+  `no-bare-root` holds 277 allowlisted legacy citations frozen 2026-08-05 — and a root answering with
+  a redirect, a JS landing page or nothing is what a bare root does. **Not new, and not this sweep's
+  finding.**
+- **27 are DEEP LINKS** (53 records): `http-error` 14 · `no-response` 7 · `too-small` 2 · `empty` 2 ·
+  `js-shell` 2 · `not-a-pdf` 1 · `type-mismatch` 1 · `stub:incapsula` 1.
+
+## THE FINDING: 6 URLs return a 2xx that is not the cited document, across 13 records
+
+**`url-check` passes every one of these**, because it asserts a URL resolves and has never asserted
+what comes back. This is the class the batch was asked to sweep for.
+
+| what comes back | records |
+|---|---|
+| **601,485 bytes beginning `<?xml version="1.0"` served as `application/pdf`.** A PDF begins `%PDF`. This one does not | **L-0114 · P-79 · P-80** |
+| **212-byte Incapsula interstitial** for the India Updated First NDC. **The already-logged unfccc.int stub, confirmed still live** — and `pdftotext` accepts it | **P-124** |
+| **0 bytes, `application/octet-stream`,** for a `download.php?file=…pdf` on `ppac.gov.in` | **L-0189** |
+| **58 bytes: `{"count":0,"data":[],"error":""}`** — a Comtrade query returning an **empty result set**, confirmed serially so it is not the rate limit | **L-0191** |
+| **3,770-byte JS shell** at an Internet Archive wrapper for `udise.in` — the archived snapshot is the shell, which is the `mea.gov.in` shape exactly | **L-0106 · P-63** + 3 series |
+| 307 with 0 bytes on `ncrb.gov.in/en/crime-india` — a redirect the fallback could not complete, so **probably environment rather than defect** | L-0121 · P-83 |
+
+**NOTHING IS CORRECTED AND NOTHING SHOULD BE, YET.** Two reasons, both binding:
+
+1. **A citation change can move a verdict.** L-0114 is the pellet-injury record and L-0191 is the
+   corpus's worked instance of the single-sided measurement category, where **the absence IS the
+   finding** — a Comtrade query now returning `count: 0` bears directly on what that record asserts
+   and is a research question, not a link fix.
+2. **A response is a fact about this machine, this moment and this user-agent.** This phase has logged
+   four estates changing behaviour mid-project, and this sweep produced 19 of its own artefacts before
+   triage. **A failure here is not evidence the citation was wrong when it was made.**
+
+**The honest next step is per record, not per URL:** open each of the 13, establish what the citation
+was for, and decide whether the document moved, the host changed, or the record's claim needs
+re-grounding. That is research work and belongs to a phase, not to a sweep.
+
+## What the sweep says about `url-check`
+
+`url-check` asserts liveness. **Of the 6 content-shape cases it passes 6.** The two gates are
+complementary in the same way `reachability` and `field-render-audit` are — one asserts the URL is
+there, the other asks whether what is there could be the document — and neither subsumes the other.
+`source-response-check` stays **report-only and out of the build**: it needs the network, it produced
+a 22 per cent artefact rate on its first run, and a gate that fails when a ministry is slow would
+block every commit on somebody else's uptime.

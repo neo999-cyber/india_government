@@ -36,7 +36,13 @@ const argv = process.argv.slice(2);
 const flagOf = (n, d = null) => { const i = argv.indexOf(n); return i === -1 ? d : argv[i + 1]; };
 const LIMIT = Number(flagOf('--limit', '0')) || 0;
 const JSON_OUT = flagOf('--json');
-const CONCURRENCY = Number(flagOf('--concurrency', '6'));
+/**
+ * CONCURRENCY IS PART OF THE MEASUREMENT, NOT A SPEED KNOB. At 8 concurrent, this tool produced 11
+ * HTTP 429s from `comtradeapi.un.org` — all of which return 200 when fetched serially. Every one was
+ * an artefact of the sweep rate-limiting itself, and a run that banked them would have reported
+ * eleven dead citations that are alive. Keep it low, and re-test any 429 serially before believing it.
+ */
+const CONCURRENCY = Number(flagOf('--concurrency', '4'));
 const TMP = mkdtempSync(join(tmpdir(), 'srcresp-'));
 
 /* ------------------------------------------------------------- the corpus */
@@ -166,12 +172,23 @@ function classify(url, r) {
     problems.push({ kind: 'too-small', detail: `${r.size} bytes, floor ${floor} for ${kind || 'unknown type'}` });
   }
   if (r.size === 0) problems.push({ kind: 'empty', detail: 'zero bytes returned' });
-  for (const [name, re] of STUB_SIGNATURES) {
-    if (re.test(r.head)) { problems.push({ kind: `stub:${name}`, detail: `${r.size} bytes` }); break; }
+  // A stub is SMALL. Requiring that is not a refinement, it is the difference between a signature
+  // and a word search: `captcha` fired on a 100 KB Wikipedia article because MediaWiki ships
+  // `CaptchaNeededForGenericEdit` in its JS config, and on five other full pages of 29-155 KB. An
+  // interstitial that replaces the document is a few KB; a 100 KB body IS the document.
+  const STUB_CEILING = 25000;
+  if (r.size > 0 && r.size < STUB_CEILING) {
+    for (const [name, re] of STUB_SIGNATURES) {
+      if (re.test(r.head)) { problems.push({ kind: `stub:${name}`, detail: `${r.size} bytes` }); break; }
+    }
   }
   // A JS shell: HTML that carries scripts and almost no text. mea.gov.in is the logged instance,
   // and its Internet Archive snapshot is the same shell.
-  if (kind === 'html' && /<script/i.test(r.head)) {
+  // NEVER on a truncated body. The text-density test measures the first 16 KB, and a real page whose
+  // <head> is mostly scripts looks identical to a shell when cut there: tradingeconomics.com was
+  // flagged at 206/16 KB and carries 33,301 characters of text in full. Only a COMPLETE small body
+  // can be a shell.
+  if (!r.truncated && kind === 'html' && /<script/i.test(r.head)) {
     const text = r.head.replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
     if (text.length < 400 && r.size < 60000) problems.push({ kind: 'js-shell', detail: `${text.length} chars of text in ${r.size} bytes` });
   }
