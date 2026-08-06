@@ -10,7 +10,7 @@
    "federalism"
   ],
   "type": "episode",
-  "summary": "Article 270(1) shares \"all taxes and duties referred to in the Union List\" with the states except the surcharges of Article 271 and any cess levied \"for the purposes of the Union\". Over the period of this instrument the Union's use of that exception grew: the divisible pool fell from 89.1 per cent of gross tax revenue in FY2014-15 to a 74.0-79.9 per cent band across FY2020-21 to FY2023-24, and cesses and surcharges rose from 10.4 per cent of gross tax revenue in FY2011-12 to between 15.3 and 20.2 per cent by the end of the decade depending on the convention used. The states' recommended share of the pool rose from 32 to 42 to 41 per cent over the same period. The two movements run in opposite directions and both are real.",
+  "summary": "Article 270(1) shares \"all taxes and duties referred to in the Union List\" with the states except the surcharges of Article 271 and any cess levied \"for the purposes of the Union\". Over the period of this instrument the Union's use of that exception grew: the divisible pool fell from 89.1 per cent of gross tax revenue in FY2014-15 to a 74.0-79.9 per cent band across FY2020-21 to FY2023-24, and cesses and surcharges rose from 10.4 per cent of gross tax revenue in FY2011-12 to between 15.3 and 20.2 per cent by the end of the decade depending on the convention used. The states' recommended share of the pool rose from 32 to 42 to 41 per cent over the same period. The two movements run in opposite directions and both are real. BOTH COMPARISONS IN THAT SENTENCE CROSS DECLARED BREAKS AND THE FIGURES ARE NOT ON ONE BASIS. FY2014-15 sits before the Fourteenth Finance Commission award boundary and FY2020-21 to FY2023-24 sit inside the Fifteenth, and every quantity keyed to an award changes at that boundary (P-103); the cess and surcharge shares also mix Actuals, Revised Estimates and Budget Estimates inside published series, including in the publications of the bodies that produce them (P-113). The direction is robust to both — the divisible pool fell and cesses rose on any basis — but the SIZE of the fall is a comparison across two seams and should not be read as one measured change.",
   "whatHappened": "The Sixteenth Finance Commission put both ends of the movement in one sentence at para 7.67: \"With cesses and surcharges having cut the size of the divisible pool from 89.1 per cent of GTR in 2014-15 to a 74-80 per cent range during the first four years of the FC-15 award period for which actuals are available, there is no room for cutting the States' share in it.\" The Union's own accounts make the mechanism visible at the level of a single tax head: of gross Union excise duty of ₹3,05,362.18 crore in FY2023-24, the CAG certified ₹33,820.71 crore as entering the divisible pool — 11.1 per cent. Gross basic excise duty that year was ₹33,786.92 crore, so the certified net proceeds of Union excise duty are, to within ₹34 crore, the basic duty and nothing else. That ratio is fully supported by published Union sources and is stated by none of them.",
   "assessment": "no-objective",
   "assessmentNote": "No objective was stated at announcement because there was no announcement: no Union measure was ever presented as shrinking the divisible pool. Each levy was introduced on its own stated purpose and the aggregate effect is a residual nobody claimed. The value asserts nothing about the finding's quality — the arithmetic is certified for one year and reconciles to the second decimal.",
@@ -26,12 +26,7 @@
    "fc-devolution-share-of-gtr",
    "cag-certified-net-proceeds"
   ],
-  "provenanceRefs": [
-   "P-100",
-   "P-101",
-   "P-102",
-   "P-104"
-  ],
+  "provenanceRefs": ["P-100","P-101","P-102","P-104","P-103","P-113"],
   "unmeasured": [
    {
     "what": "A definition of \"cesses and surcharges\" as an aggregate",
