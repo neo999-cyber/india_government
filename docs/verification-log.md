@@ -10896,3 +10896,115 @@ its own before triage. **The next step is per record, not per URL.**
 
 `source-response-check` stays report-only and out of the build: it needs the network and produced a
 22 per cent artefact rate on its first run.
+
+---
+
+## Cycle 2026-08-06g — BATCH 7. Triage of two independent adversarial reviews. NOTHING RESOLVED
+
+`/data` untouched. No schema, enum or verdict changed. The reviews are committed verbatim to
+`review/returned/` with a README stating they describe `059912b`, not HEAD.
+
+**They were not at `review/pass-a-*.md`** — that glob matches the input extract. They were two PDFs
+in `~/Downloads`, recorded here because a later cycle will look at the stated path and mistake the
+input for the output.
+
+### Convergent findings, measured at `059912b`
+
+**C1 `worked` sourcing — CONFIRMED, and it SURVIVES the series layer.** 9 records, 13 citations,
+**mean 1.4** against `failed` 3.3 / `partly` 2.9 / `contested` 2.8; **T1×12 T4×1, no T2, no T3**.
+Review A hedged on the omitted series; the hedge does not save it. **Eight of nine resolve
+`seriesRefs` and every resolved series is T1** — L-0207 has none. The series add volume, not
+independence.
+
+**C2 zero `worked` in Term 2 — CONFIRMED exactly.** T1 8 · T2 **0** · T3 1, against 74 T2 records.
+OPEN: authoring drift versus a real finding is not distinguishable from here.
+
+**C3 `no-objective` insulating statutory failure — CONFIRMED as a pattern, OPEN as a defect.**
+L-0095, L-0106, L-0108, L-0162 `failed` against statutory benchmarks with an empty claim field;
+L-0094, L-0122, L-0154, L-0164, L-0167 the same shape, `no-objective`. L-0122 is 0 of 50 AFSPA
+sanctions.
+
+**C4 `awaiting-adjudication` — SPLIT. The first half is an ARTEFACT OF MY EXTRACT.** All three
+records **name `awaiting-adjudication` and carry a `RESCORED`/`CORRECTED` marker**; the reviewer saw
+only the first substantive sentence, because Extract A prints one sentence **and my generator strips
+a leading dated correction clause on top of that**. **The extract removed the evidence against the
+reviewer's conclusion and both reviewers reasoned correctly from what was left.** The second half is
+CONFIRMED: L-0075, L-0082, L-0163, L-0165, L-0168 sit in `contested` with a pending outside
+adjudication — and **24 of 67 `contested` records carry no `assessmentNote` at all**, which neither
+review reached.
+
+**C5 `contested` absorbing missing evidence — CONFIRMED (16 of 67 by the corpus's own grounds),
+partly DISAGREEMENT.** The mechanism Review A names is real and the instrument accepts it
+deliberately; what it had never done is show a reader which ground a record rests on, which
+`contestedGround` now does.
+
+**C6 method desync — CONFIRMED, three instances, still live:** `too-early` documented at 2 members
+against **13**; `overstates-pre-2014` documented UNATTESTED while **P-122 uses it**; non-directional
+documented at 35 of 58 against **100 of 127**.
+
+### Non-convergent
+
+`no-objective` with a populated claim: **13 records, ids reproduce exactly** — CONFIRMED as fact,
+OPEN as defect. `directionOfBias` **19:6** — CONFIRMED as a count, **DISAGREEMENT as an inference**:
+the instrument has never claimed directional parity in measurement-dispute records. `too-early` on
+measures not in force — **OPEN**: both records reason explicitly from the obstacle, but the
+definition's first clause says "in force" and they are not, so **the definition needs a word, not the
+records**.
+
+### Verdicts at risk — counted, none moved
+
+**49 distinct records, 22% of the ledger**: `contested` 20 · `no-objective` 18 · `worked` 9 ·
+`too-early` 2. **All nine `worked` verdicts are in the set.**
+
+### `not-published` measured against C.5 — and it is a RULE CONFLICT
+
+206 entries. Needles printed in STATE.md. **ZERO state any of C.5's three accepted search forms; 10
+state a scoped document absence; 196 (95%) state neither.** But reading them shows the `why` texts
+argue **producibility** — C.4's test, applied correctly — not search. **The corpus satisfies C.4 and
+fails C.5, and the two rules do not agree**: C.4 says the test is producibility "not whether anyone
+has asked", C.5 requires a stated search. **196 records pass one and fail the other by construction.**
+OPEN, and it needs a precedence ruling before any record is re-labelled.
+
+### The domain cross-tab — confirmed, and the WORSE version REFUTED
+
+Review G's figures reproduce to the decimal: kashmir 46/0/0/76.1%, governance 113/74.3%,
+infrastructure 54.2%, welfare 42.9%. **My own prior that `kashmir` is a lens was wrong** — it is in
+`domains[]` on all 46.
+
+**Crossed with the citation sweep, the feared finding is refuted.** Least-evaluative domains (<25%,
+n=276) carry **3.35 citations/record**; most-evaluative (≥45%, n=75) carry **1.68**. kashmir 3.5,
+infrastructure 1.8, banking 1.1. **An evaluative verdict here is CHEAP and a non-evaluative one is
+EXPENSIVE** — the opposite mechanism from the one proposed, and whether that is rigour or timidity is
+the most important open question the reviews raise.
+
+### `commitmentState` does not survive
+
+Already stopped for having no value for a commitment that was met. **The reviews add an independent
+objection from the other direction**: both attack `no-objective`, and the proposal's `no-trigger`
+value routes undated commitments *into* it. **The field as proposed would formalise in a schema the
+behaviour two independent reviewers called the corpus's most serious structural defect.** Order
+reverses: decide whether an undated commitment is scoreable first.
+
+### Selection bias — logged as a standing item under its own name
+
+*Which government claims were never entered.* No gate can see it; every count is conditional on an
+uncharacterised population. Three partial addresses stated in STATE.md, the cheapest being an
+enumerated frame over one exhaustive published list. **The item should never be closed by any of
+them.**
+
+### Pass B and Pass C would not answer this
+
+**Pass B carries 2 of the 8 flagged records** (L-0075, L-0114). Its criteria — corrected twice,
+rescored, contested spread — do not intersect findings that cluster on `worked`, `no-objective` and
+the statutory line. **Pass C's E.2 lists 311 absence entries by id with no `why`**, so it cannot test
+the `not-published` finding it exists for. **Recommendation: do not run either as built.** Five
+reshaping requirements are listed in STATE.md, the first being **full `assessmentNote`, never a first
+sentence.**
+
+### Gates — gate-emitted scopes only
+
+`validate` VALID, 0 errors / 165 warnings **over 226 ledger · 269 series · 127 provenance · 60 pairs
+= 682 records, 1,759 points** · `reachability` 1645/1645 · `field-render-audit` 36 prose + 43
+non-prose, 0 invisible, 2 exempted · `no-unguarded-prose-field` 20 prose · 45 non-prose ·
+`domain-coverage` 14/14, 1141/1141 · `figure-consistency` 18 declared · `enum-stamp` 2 fixtures ·
+`no-bare-root` 0 new, 0 stale · `validate:selftest` 23/23, 2/2 · `typecheck` clean.
