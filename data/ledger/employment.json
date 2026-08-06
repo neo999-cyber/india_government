@@ -250,7 +250,7 @@
    "welfare",
    "governance"
   ],
-  "type": "shock",
+  "type": "episode",
   "summary": "The March 2020 lockdown, announced with four hours' notice, triggered the largest internal migration in India's recent history as urban informal workers walked, cycled and rode home. The government's figure is about 1.04 crore returnees; independent estimates run to roughly 3 crore.",
   "whatHappened": "Between 1 May and 31 August 2020, 4,611 Shramik Special trains carried about 63 lakh workers. The Labour Ministry told Parliament that no data was maintained on deaths during the exodus or on job losses, and that the question of compensation therefore did not arise. The Railways Minister separately told the Rajya Sabha that 97 people died aboard Shramik Special trains to 9 September 2020, and an RTI response indicated the government held data it had declined to give Parliament. Independent tallies recorded about 198 road-accident deaths to 2 June 2020 and about 971 non-COVID lockdown-related deaths to July 2020. The e-Shram portal, launched August 2021, has since registered over 30.98 crore unorganised workers.",
   "assessment": "no-objective",
@@ -258,7 +258,7 @@
   "caseAgainst": "Four hours' notice for a country where most workers are paid daily and live where they work was a choice, and its consequence was foreseeable. That no count of deaths was maintained — while the Railways held data it did not surrender to Parliament — means the human cost of the largest internal displacement in decades has no official record and now cannot be constructed. A state that could not say how many died also could not compensate anyone, which was the stated reason it did not.",
   "differentFacts": true,
   "differentFactsNote": "The government's case rests on the evacuation - 63 lakh moved on Shramik trains - and on e-Shram, built because the crisis exposed that the state could not identify its own informal workforce. The critics' case rests on the four hours' notice and on the absence of any mortality record. The second is not a quantity but the stated absence of one, and this record holds that it can no longer be constructed, so no ledger can carry both.",
-  "shockExposure": "This record is the shock. Its confound runs the other way: it distorts every employment series for 2020-21 and 2021-22.",
+  "shockExposure": "CORRECTED 2026-08-06 on operator Ruling 6. WITHDRAWN WORDING, quoted so the correction can be checked rather than taken on trust: this field previously read \"This record is the shock. Its confound runs the other way: it distorts every employment series for 2020-21 and 2021-22.\" The record is NOT the shock. The exodus is the consequence of a lockdown announced with four hours\u2019 notice, which this record\u2019s own caseAgainst calls a choice, and under Ruling 6 a chain of state decisions is not a shock however severe its consequences. The record is now typed episode. WHAT SURVIVES THE RETYPE UNCHANGED, because it was never a claim about the type: this record distorts every employment series for 2020-21 and 2021-22, so it remains a confound other records must carry. Its own exposure to an external shock is the pandemic, which is not this record\u2019s subject.",
   "provenanceRefs": [
    "P-28",
    "P-04"

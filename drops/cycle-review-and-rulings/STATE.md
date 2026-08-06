@@ -1,5 +1,10 @@
 # The adversarial-review and rulings cycle. State. CLOSED 2026-08-06.
 
+**PHASE 16 IS OPEN and its state lives at [`drops/phase-16-shocks/STATE.md`](../phase-16-shocks/STATE.md).**
+This file remains the cold-read entry point for the rulings; the phase's own queue is there. The
+Ruling 6 and 7 retypes were applied in phase 16 batch 1 — L-0216 to `reform`, L-0064 to `episode`,
+L-0027 to `event` — so any type named in this file for those three is superseded.
+
 **Start a cold read here.** This cycle sits between phase 15 (environment and energy, closed
 2026-08-05) and phase 16. It authored no records. It changed what a record has to prove, applied
 that to every record at once, and removed three records that could not meet it.

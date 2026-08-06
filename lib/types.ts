@@ -420,8 +420,17 @@ export type Assessment =
  * nature of the event.
  *
  * **Ruling 8 governs where a shock belongs — provenance, not the ledger — and is in CLAUDE.md with
- * the two things it does not settle. Retyping any existing record is verdict-adjacent and is not
- * authorised by these rulings.**
+ * the two things it does not settle.**
+ *
+ * **APPLIED 2026-08-06 by operator instruction, as a separate deliberate act after the rulings were
+ * written:** L-0216 → `reform`, L-0064 → `episode`, L-0027 → `event`. **No assessment moved and none
+ * may — a type change that would move a verdict is a stop.**
+ *
+ * **Five `shock` records remain, and they are NOT the five the stale note meant**: L-0002, L-0020,
+ * L-0021, L-0184, L-0186. Four pass the external reading. **L-0020 was deliberately not retyped**:
+ * it carries two subjects, which its own title states — an external contraction and a domestic
+ * fiscal response — and they take different types on any answer, so no retype settles it. The
+ * question is written into that record's own `assessmentNote` rather than resolved.
  */
 export type LedgerType = 'reform' | 'event' | 'episode' | 'shock' | 'institutional';
 
