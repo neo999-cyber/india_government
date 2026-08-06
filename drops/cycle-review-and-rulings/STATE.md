@@ -507,3 +507,90 @@ name, because the vocabulary is closed by construction — the real limit**; any
 anything other than a phase; and whether the table itself is right. **Batch 14's general conclusion
 is not overturned: this form transfers only where a named object, a declared authority and a closed
 vocabulary all hold.**
+
+---
+
+## RULINGS 6, 7 AND 8, TWO REPORTS AND ONE RULE — 2026-08-06, after `65fd4bf`
+
+Full account in [`RULINGS-6-7-8-AND-TWO-REPORTS.md`](RULINGS-6-7-8-AND-TWO-REPORTS.md). **Nothing
+retyped, no record authored or edited, no enum member added or removed, no phase opened, 0 verdicts
+moved** (proven across all 223 records). `enum-parity` unchanged at 48 members / 6 axes / 3 exempted.
+
+**THE THREE RULINGS ARE WRITTEN** into `CLAUDE.md`, the `type` usage note in
+`schemas/ledger.schema.json` and the `LedgerType` comment in `lib/types.ts`, one commit. **R6:**
+`shock` is external to the state's own decisions — the line is **whether an act of policy caused
+it**, not severity and not whose asset failed. **R7:** type by what the record is ABOUT, not by what
+failed; **no third branch**, because the type turns on the record's subject rather than the event's
+nature. **R8:** a shock is provenance, not a ledger record — **with its two unsettled items written
+into the ruling itself**: a shock that breaks no series has no provenance home, and admitting shocks
+widens `ProvenanceRecord`'s own subject, which is a schema question nobody is authorised to answer.
+**The `type` note's stale count is corrected in the same edit, old wording quoted**: eight `shock`
+records, not five — four pass the external reading, two fail, one mixed, one that R7 now resolves.
+
+**WHAT WOULD MOVE — REPORTED, NOT APPLIED.** **L-0216 → `reform`** (the CCS's own decision; the only
+one of the eight with an Indian `claimAtLaunch` and the only evaluative verdict). **L-0064 →
+`episode`**. **L-0027 → `event`** under R7, which is what makes it answerable without a branch.
+L-0002, L-0021, L-0184, L-0186 do not move. **L-0020 CANNOT BE SETTLED BY A RETYPE**: its title
+carries two objects and on any answer the halves take different types — a split or a subject
+decision, both more than a retype, and **it carries no `assessmentNote` at all, so write the note
+before deciding the type.** Fourth record in three batches carrying two objects (L-0041, L-0108,
+L-0222, now L-0020). **R8 moves nothing today** — none of the four surviving external shocks is a
+comparability break, which is its own first unsettled item biting immediately.
+
+**`failed` WITH UNMEASURED LIMBS — SIX OF SIXTEEN, all 16 read in full.** L-0011 (4 announced, 2
+scored), L-0016 (2, 1), L-0041 (2, 1), L-0030 (2, 1), L-0013 (2, 1), L-0051 (3 named measures, 2).
+**Four state it; L-0013 says "THE STATED OBJECTIVE" singular while `claimAtLaunch` names two; L-0051
+does not state it at all.** **L-0222 is the clean control** — both limbs measured, both missed, and
+the note says why `partly` was refused. **L-0067 is a seventh, distinct shape**: an unmeasured
+TERMINUS, not an unmeasured limb. **The symmetric rule is about DISCLOSURE, not about restricting the
+verdict** — *where a verdict rests on fewer than all announced objectives, the record names which
+ground it, which do not, and why, and every ungrounded limb is entered as an absence.* Restricting
+`failed` would be wrong and L-0011 shows why. **L-0030 needs an explicit case: a limb unmeasurable
+BECAUSE the measure did not happen — `reasonKind` has no value for it.** Report only; it changes the
+assessment definitions.
+
+**PROPOSAL, PHASE 17 — objectives as a list.** Three pieces: `objectives[]` in the announcement's own
+words (**designed together with the `claimAtLaunch` vocabulary or the two will contradict each
+other**); a measurement state per objective (`measured-and-met` / `measured-and-not-met` /
+`unmeasured`, and possibly a fourth for L-0030); and a reference from each objective to its
+`unmeasured[]` entry. Then **R2 becomes an `enum-parity`-shaped gate** and L-0151's *"No limb of the
+recommendation is unmeasured"* becomes a fact the corpus holds rather than a claim a reader accepts.
+
+**THE RULE IS WRITTEN: a count derived from a keyword scan is not a finding until the members are
+read, and the term list is reported with the count or the count is not reported.** Earned four times
+in three batches, all mine — 38, 22, 27, and now **17**. **Labelling a count as candidates does not
+stop it being spent as a finding**; in all four the label was there and the number was used one
+paragraph later to rank a risk. **And a scan over `assessmentNote` measures what records SAY about
+themselves**: the multi-objective sweep stated its scope honestly — *"eight records state multiple
+announced objectives IN THEIR OWN NOTES"* — and every downstream use read it as a census, when six
+`failed` records alone announce more than one.
+
+**THE RE-CHECK.** Re-derived exactly and standing: 223 · 66 · 137 · 8 shock · 57 evaluative · 16
+failed · 68 contested · 1 worked · **10 evaluative-with-no-claim (same ids)** · 66 of 68
+`contestedGround` · seam-span and the citation tiers, both gate-emitted. **CORRECTED: group A's 17 —
+all real, but 15 are governed by a written definition or by the `contestedGround` field, and only
+L-0045 and L-0055 apply a distinction nothing structured holds. My prediction ranked this group
+second; on reading it is 2, not 17.** **STANDING AS BOUNDS, MEMBERS UNREAD — queue work**: group B
+independence **11** (ids now recorded; `PROPOSALS` states 11 independently and states no term list of
+its own), group E **29**, group F **27** (mechanically gated by `withdrawn-wording`), group D **33**
+(nine read). **Nothing in `/data` rests on any bound.** **ONE COUNT MARKED UNVERIFIED**: `PROPOSALS`'s
+*"in four different vocabularies"* — the 11 re-derives, the four vocabularies are enumerated nowhere,
+and it is load-bearing for the `independence` proposal's central argument. Not withdrawn; marked,
+pending the group-B read.
+
+**AND THE GATE FOUND ONE THING ABOUT ITSELF.** After the rulings landed, `phase-name` was scoring ten
+assertions inside its own source — its controls seed contradictions on purpose — **and exempting
+every one because the word `WITHDRAWN` happens to appear in its own doc comment.** A checker passing
+its own fixtures on a coincidence of its own prose. **Its source is now out of scope BY NAME with the
+reason stated, and a control asserts it.** Live: *328 files · 8 disagreeing assertions, 8 exempted by
+name.*
+
+### Queue for phase 17 and beyond
+1. Read group B (11), E (29), F (27) and the remaining 24 of D — convert bounds to counts.
+2. Enumerate the "four vocabularies" of independence, or withdraw the claim.
+3. The retype decision on L-0216, L-0064, L-0027 — and L-0020's note before its type.
+4. `objectives[]` + measurement state + `unmeasured[]` link, designed with the `claimAtLaunch`
+   vocabulary.
+5. The symmetric disclosure rule for `failed`, and a reason-kind for a limb unmeasurable because the
+   measure did not happen.
+6. Ruling 8's two unsettled items, before any shock is moved to provenance.

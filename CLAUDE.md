@@ -325,6 +325,68 @@ correctly distinguished and each stated its ground in its own note. What changes
 is stated ONCE, where a reader and an adversary can find it, instead of nine times where only the
 author could.
 
+**RULING 6 — `shock` IS EXTERNAL TO THE STATE'S OWN DECISIONS, ruled by the operator 2026-08-06.**
+The `type` enum's usage note has recorded since phase 13 that `shock` covers both external
+disruptions and domestically caused failures, and deferred the question. It is settled now:
+**a chain of state decisions is not a shock, however severe its consequences.**
+
+**L-0091 stated the test and is correct**, and it is quoted rather than paraphrased because it is the
+only reasoned application of the boundary anywhere in the corpus — and it sits in a `shockExposure`
+field, not in a schema: *"the record is typed as an episode rather than a shock precisely because
+closure duration in India was a sequence of state decisions rather than an external event."*
+
+**L-0020 and L-0064 assert the type and give no reason.** L-0020 carries no `assessmentNote` at all,
+and **its own prose argues against its own type in two places** — `whatHappened`: *"indicating India's
+depth was substantially policy and lockdown-driven rather than purely pandemic-driven"*;
+`caseAgainst`: *"points to lockdown design, not the pandemic"*. **The four-hour notice of March 2020
+appears in three records — L-0020 `shock`, L-0064 `shock`, L-0091 `episode` — one chain of state
+decisions, two types, and the only record stating the test came out the other way.**
+
+**The line is whether an act of policy caused it, NOT whose asset failed or how severe it was.** Both
+halves matter. Severity is not the test: the migrant exodus was among the largest internal migrations
+in India's recent history and is a consequence of a decision. Ownership is not the test either: the
+July 2012 grid collapse (L-0001) was a failure of state-**owned** infrastructure and no policy act.
+
+**RULING 7 — TYPE BY WHAT THE RECORD IS ABOUT, NOT BY WHAT FAILED, ruled by the operator 2026-08-06.**
+A record about the STATE'S RESPONSE to an event is typed by the response. **L-0028 already does this
+and nothing told it to**: Yes Bank's failure is a domestic non-state event, and the record is
+`episode` because its subject is the RBI moratorium and the reconstruction scheme. L-0091 reaches the
+same answer about the same question, and neither cites the other — **the second instance of a rule
+the corpus was applying correctly and had written down nowhere.**
+
+**IL&FS follows the same way, and THERE IS NO THIRD BRANCH.** The domestic non-state category is
+real and has at least four members typed four ways — IL&FS (`shock`), the bank frauds of L-0032
+(`episode`, with *"None material"* against its own exposure field), the 2012 grid collapse
+(`event`), and the 2022 heat shock (**no record at all**, prose in three). **A third branch would
+have made the type turn on the nature of the EVENT. Ruling 7 makes it turn on the SUBJECT OF THE
+RECORD, which resolves all four without one** — a record about a private failure is typed by what
+the record is doing with it, and a record about the state's response to that failure is a response
+record.
+
+**RULING 8 — A SHOCK IS PROVENANCE, NOT A LEDGER RECORD, ruled by the operator 2026-08-06.** **The
+corpus authored it that way twice with no rule telling it to** — L-0022 → P-10 and L-0033 → P-21,
+both records whose `shockExposure` says the record is a confound *for others*, both reaching for
+provenance unprompted. **A shock is a fact about the measurement environment, not a government
+claim.** The ledger scores what the state did; a shock announces nothing, and six of the eight
+records currently typed `shock` take `no-objective` or `baseline-context` for exactly that reason —
+the ledger's apparatus of `claimAtLaunch`, `caseFor`, `caseAgainst` and a verdict is apparatus a
+shock cannot use.
+
+**TWO THINGS THIS RULING DOES NOT SETTLE, recorded here so they are inherited rather than
+rediscovered:**
+
+1. **WHERE A SHOCK THAT BREAKS NO SERIES LIVES.** P-10 and P-21 are provenance because each *is* a
+   comparability break. A shock with no break — the 2022 heat shock, the 2014-16 oil collapse — has
+   no home under this ruling and the ruling does not give it one.
+2. **THAT `ProvenanceRecord`'S OWN SUBJECT IS A MEASUREMENT DISPUTE.** The layer is defined as
+   measurement-dispute records; admitting shocks widens that definition, and **the widening is a
+   schema question this ruling authorises nobody to answer.** Settle it before the layer is used,
+   not while it is being used — the same discipline that forbids resolving a taxonomy inside the
+   phase that discovers it.
+
+**RETYPING IS VERDICT-ADJACENT AND IS NOT AUTHORISED BY THESE RULINGS.** What moves under 6 and 7 is
+reported, and the move is a separate, deliberate act.
+
 **A VALUE LANDS IN THE SCHEMA, THE TYPE AND THE LABEL MAP IN ONE COMMIT, OR IT IS A PROMISE THE VIEW
 CANNOT KEEP.** Adding a member to a JSON Schema enum used to be silent: `no-unguarded-prose-field`
 and `field-render-audit` both walk the corpus, so a value no record carries yet is, to them, nothing
@@ -587,6 +649,42 @@ document is the natural place, covers the period, and does not carry the item �
 `not-published` assertable. Godda is the standing instance: the count has been zero across every
 document scanned in two cycles and no absence has been claimed, because the measured series stops
 before the question becomes answerable.
+
+**A COUNT DERIVED FROM A KEYWORD SCAN IS NOT A FINDING UNTIL THE MEMBERS ARE READ, AND THE TERM LIST
+IS REPORTED WITH THE COUNT OR THE COUNT IS NOT REPORTED.** Both halves, and the second is what makes
+the first checkable. **Earned by four inflated counts of my own in three consecutive batches, every
+one labelled "candidates" at the moment it was produced and spent as a finding one paragraph later:**
+
+- *"38 records reason from an exogenous event"* — re-derived at **39 / 40 / 48 / 52** depending on a
+  term list that was never written down.
+- *"22 records document a departure from the written definition"* — `departure` appears in **exactly
+  one** note; the other 21 were records *appealing to* the definition, which is the practice working.
+- *"27 candidates split across six values"*, used to predict where the next external review would
+  land — **~12** on reading; four of the rest cite a written rule and two use `limb` for the halves
+  of a dispute.
+- *"17 records defending a value boundary one record at a time"*, ranked second in the same
+  prediction — all 17 are real, and **15 are governed by a written definition or by the
+  `contestedGround` field**, so the group is nearly closed rather than open.
+
+**LABELLING A COUNT AS CANDIDATES DOES NOT STOP IT BEING SPENT AS A FINDING.** In all four the
+label was present and the number was used anyway, one paragraph later, to rank a risk or size a
+population. So the rule is not "say it is a candidate" — it is **read the members, or do not state
+the number**. A count with unread members may be reported only as a bound with the reading owed
+named: *"at most N, members unread"*.
+
+**And the term list is part of the count.** A figure whose scan is unrecorded cannot be re-derived,
+which means it cannot be corrected, which means it survives every later check — the fabricated-scope
+defect wearing a true number. Where a count comes from a field test rather than a scan, say that:
+`assessment === 'failed'` is exact and reproducible and needs no term list, and the distinction is
+worth stating because the two look identical in a report.
+
+**One further trap, and it is the one that produced the largest error.** A scan over
+`assessmentNote` measures **what records SAY about themselves**, not what is true of them. The
+multi-objective sweep that produced Ruling 2 stated its scope honestly — *"eight records state
+multiple announced objectives **in their own notes**"* — and every downstream use dropped the
+qualifier and read it as a census. Reading all 16 `failed` records finds **six** that announce more
+than one objective, against the sweep's one. **The sweep was right about what it measured and wrong
+about nothing; the summary of it was a different claim.**
 
 **Assert per record, never sweep.** A keyword or pattern search generates CANDIDATES; the judgement
 is made per record and written down per record. Three substring sweeps in one phase produced 59, 197

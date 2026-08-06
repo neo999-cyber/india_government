@@ -81,6 +81,19 @@ const APPEND_ONLY = [
   },
 ];
 
+/**
+ * THIS FILE IS OUT OF ITS OWN SCOPE, BY NAME AND FOR A STATED REASON — not by luck.
+ *
+ * Its controls seed real contradictions ("Phase 16 is the counterfactual engine") on purpose, and
+ * its header quotes them to explain the trap. On the run after Rulings 6-8 were written it was
+ * scoring TEN assertions inside itself and exempting every one of them, because the word WITHDRAWN
+ * happens to appear in the doc comment above SUPERSEDED_NAMES. **A checker passing its own fixtures
+ * on a coincidence of its own prose is the shape "no checker imports from its own repair path"
+ * exists to forbid**: the exemption would have survived any edit that removed the coincidence, and
+ * nothing would have reported the change.
+ */
+const SELF = 'tools/phase-name-consistency.mjs';
+
 /** A clause attributing a name to a superseded state. Presence in context, never absence. */
 const SUPERSESSION =
   /CORRECTED\s+\d{4}-\d{2}-\d{2}|WITHDRAWN|withdrawn on|was withdrawn|this (?:paragraph|section|file|document|line) (?:read|said|stated)|previously (?:read|said|stated|carried)|SUPERSEDED|superseded by|stale|no longer (?:the|says)|OVERTAKEN|written while the question was open/i;
@@ -153,6 +166,7 @@ export function findAssertions(names, files, readFile) {
   ];
   const hits = [];
   for (const file of files) {
+    if (file === SELF) continue; // out of scope by name — see the SELF comment
     let text;
     try { text = readFile(file); } catch { continue; }
     if (!text.includes('hase')) continue;
@@ -276,6 +290,11 @@ function control() {
   // still found. Without this the fix above could be "stop at the first newline" and pass.
   const wrap = findAssertions(names, ['WRAP.md'], () => 'Two operator answers: phase 16 is the\ncounterfactual engine, in one place.\n');
   check('a name wrapping a line is still found', wrap.length === 1 && !wrap[0].exempt, `got ${wrap.length} hit(s)`);
+
+  // 4e. NEGATIVE — the gate's own source is out of scope BY NAME, not by a coincidence of its prose.
+  // Asserted on the seeded sentence, which is exactly what its own controls contain.
+  const self = findAssertions(names, [SELF], () => 'Phase 16 is the counterfactual engine.\n');
+  check('the gate excludes its own source by name', self.length === 0, `got ${self.length} hit(s)`);
 
   // 4d. POSITIVE — two assertions in one paragraph are scored separately, so a wrong name is not
   // rescued by a right one sitting inside its window.
