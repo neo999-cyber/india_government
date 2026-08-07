@@ -82,7 +82,10 @@ export default function MethodPage() {
         so {seriesTierT1} official statistical sources were described as journalism. The corrected
         wording is above and the count now comes from one accessor that reads both places.
       </p>
-      <p>
+      {/* The anchor every graded record now routes to. The standard was explained here and the
+          grade was shown on the record, with nothing joining them — the same defect as `/exposure`
+          and `/contested` being reachable only from the top nav, on the surface that came first. */}
+      <p id="independence">
         <strong>
           Where a record says a measure worked, ask who measured it — and on most of these records
           the answer is one arm of government measuring another.

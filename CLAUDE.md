@@ -498,6 +498,28 @@ axis that shares the spelling by accident. Declarations are compared as sets; **
 `CONSTRAINT_OMISSIONS` — that is what forced `undated-commitment` into the rule requiring `caseFor`
 and `caseAgainst`, which a set comparison alone would have let slip.
 
+**A DEFECT FIXED ON ONE SURFACE IS CHECKED AGAINST EVERY SURFACE OF THE SAME KIND IN THE SAME
+COMMIT — the local-fix rule, ruled by the operator 2026-08-06.** A fix applied where the defect was
+noticed and nowhere else leaves the same defect standing everywhere it was not noticed, and the
+instrument has paid for this at least three times: the reading-order defect fixed for the caveat,
+found again for absences, found again for the verdict chip; the cross-link built for `/unmeasured`
+and then not built for `/exposure` or `/contested`, both of which were authored *after* it; and the
+ad-hoc normaliser, corrected four separate times before it was written down as a class. **The
+correction is not the fix. The correction is the SWEEP** — name the class, enumerate its members
+from the code rather than from memory, and report the ones already clean alongside the ones changed,
+because a sweep that reports only its finds cannot be distinguished from a sweep that did not run.
+
+**Two things it does not say.** It does not say fix every surface: where a member of the class is
+deliberately different, the sweep records why and leaves it. And it does not reach ACROSS classes —
+"same kind" is the defect's own shape (reading order, cross-link, normaliser), not the file or the
+phase. Widening it to "check everything whenever anything changes" makes it unfollowable, which is
+the failure mode the rules in this file are written to avoid.
+
+**No gate reaches this.** Whether two surfaces are "of the same kind" is a reading, and the class is
+usually named for the first time by the fix itself. What can be checked is that the sweep HAPPENED:
+the batch report states the class and its enumerated members. That is a discipline on the report,
+not a check on the code, and it is stated here rather than left implied.
+
 **EVERY RULE IS EVALUATED AGAINST ONE SNAPSHOT, AND THE CORPUS IS WRITTEN ONCE — the single-snapshot
 rule, ruled by the operator 2026-08-06.** Where two rules read the same field, applying them in
 sequence makes the ORDER decide the outcome, and the order is an accident of how the batch was

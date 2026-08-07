@@ -464,6 +464,7 @@
   "whatHappened": "Both output and utilisation improved together — one of only two sub-domains in this phase where that is true. Sagarmala completed 315 projects worth ₹1.57 lakh crore, with 120 modernisation projects adding about 400 MTPA of capacity. Inland waterways cargo rose from 18.1 to 145.5 MTPA, though declared and actually navigable waterways remain far apart.",
   "assessmentNote": "RESCORED FROM worked TO partly, 2026-08-06, and the independent evidence found in the same pass runs the OTHER way — it is recorded here because the standard is about what the evidence can carry, not about which direction a finding runs. The World Bank and S&P Global Container Port Performance Index 2025 measures total vessel time in port, including waiting and berth, across more than 400 ports, and ranks twelve Indian ports. Jawaharlal Nehru Port stands 22nd globally on 1,307 sampled calls and appears in the report’s most-improved table with a thirty-two place gain; Chennai stands 123rd. That is external corroboration of the DIRECTION on a basis independent of the ministry — though not of the specific figure, since the index measures container vessels and the turnaround figures here are all-cargo. WHAT BARS worked IS THE SECOND LIMB: national waterways actually navigable against those declared is not measured, the record states the two diverge, and the modernisation commitment covered both.\n\nPREVIOUS NOTE, PRESERVED VERBATIM: Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. WORKED, AND UNUSUALLY FOR THIS FILE BOTH THE OUTPUT AND ITS UTILISATION MOVED TOGETHER. Turnaround time halved while throughput nearly doubled - an efficiency gain that is verifiable, sustained, and feeds directly into logistics cost - alongside 315 completed projects worth 1.57 lakh crore and about 400 MTPA of added capacity. That is the announced object, modernisation and turnaround, delivered. TWO LIMITS THE VERDICT ACCOMMODATES RATHER THAN IGNORES. The improvement is from a low base and the gap to comparators remains large: about forty-nine hours against roughly eight in Japan. And inland waterways is the weaker half, where declared national waterways far exceed those actually navigable and the cargo growth rests on a small number of stretches; the navigable-against-declared figure is entered below.",
   "assessment": "partly",
+  "independence": "external",
   "caseFor": "Halving turnaround time while nearly doubling throughput is unambiguous efficiency gain, verifiable and sustained, and it feeds directly into the logistics cost that trade competitiveness depends on. It is one of the few places where a physical output metric and its utilisation counterpart moved together and in the same direction.",
   "caseAgainst": "India still trails comparators substantially — Japan turns ships around in about eight hours against India's forty-nine — so the improvement is from a very low base and the gap remains large. Inland waterways is the weaker half of the programme, where declared national waterways far exceed those actually navigable, and the headline cargo growth there rests on a small number of stretches.",
   "shockExposure": [
@@ -498,7 +499,12 @@
     "url": "https://shipmin.gov.in/",
     "tier": "T1"
    }
-  ],
+  ,
+    {
+      "name": "The World Bank and S&P Global Market Intelligence, The Container Port Performance Index 2025: A Comparable Assessment of Performance based on Vessel Time in Port \u2014 the ranked table of container ports, carrying Jawaharlal Nehru Port (INNSA) and Chennai (INMAA). A MULTILATERAL INSTRUMENT INDEPENDENT OF THE MINISTRY whose claim is under test, and it corroborates the DIRECTION rather than the specific figure: the index measures container vessels and this record`s turnaround figures are all-cargo. RETRIEVAL PATH: located through the World Bank documents API (search.worldbank.org/api/v3/wds) from the publication page at worldbank.org/en/topic/transport/publication/cppi, and the report PDF retrieved directly. CITED 2026-08-06 for the reason above.",
+      "url": "https://documents.worldbank.org/curated/en/099060826180010325/pdf/P509479-3615350c-eada-483c-807f-be2da4e0a644.pdf",
+      "tier": "T2"
+    }],
   "confidence": "high",
   "asOf": "2026-08-06"
  },

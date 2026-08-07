@@ -328,6 +328,13 @@ export function ShockExposures({ items }: { items: ShockExposure[] | undefined }
           </li>
         ))}
       </ul>
+      {/* The cross-link, from the fourth walk and on the pattern the absence block already carries:
+          `/exposure` has linked back to the declaring record since it was built and nothing pointed
+          the other way, so the page showing how often an exposure was refused or left unadjudicated
+          was reachable only from the top nav. */}
+      <p className="absence-fill">
+        <Link href="/exposure/">Every declared exposure, by role and by what was adjudicated</Link>
+      </p>
     </div>
   );
 }
