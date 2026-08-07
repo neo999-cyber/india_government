@@ -1407,3 +1407,303 @@ label-only — are second-class in the view and unguarded by any gate.
 **Nothing was fixed. A find on the last walk before a pause is worth more unfixed and recorded than
 fixed in a hurry**, and fixing finding 3 in particular would need a decision about what a pair with
 no series side should render on, which is not a decision to take at the end of a batch.
+
+---
+
+# THE ARCHITECTURE QUEUE — three items, cold-startable. Written 2026-08-07.
+
+Walk 6 (the entry above) found these. **Nothing was fixed and nothing here is design work.** Each
+item below stands alone: the defect, the evidence, the live URLs, and what would settle it. A reader
+who has never seen this conversation should be able to pick any one of them up.
+
+## A-1. Sixteen internal links return 404 on the live site
+
+**THE DEFECT.** `resolvePairSide` resolves a pair side's `absenceFrom` host against **either** layer:
+
+```
+const host = getSeries(side.absenceFrom) ?? getLedger(side.absenceFrom);
+```
+
+`lib/data.ts:351`. It then returns `hostId: host.id` — **a bare string carrying no layer**. The
+`ResolvedSide` type's `absence` variant has no discriminator for which layer the host came from
+(`lib/data.ts:333`). `CoverageUsageView`'s absence branch consequently guesses one:
+
+```
+Declared on <Link href={`/series/${side.hostId}/`}>{side.hostTitle}</Link>.
+```
+
+`components/CoverageUsageView.tsx:58`. **Where the host is a ledger record the anchor names a route
+that is not built for any ledger id.**
+
+**THE EVIDENCE.** 22 pair sides declare an `absenceFrom` host that is a ledger record: PR-15/L-0081,
+PR-19/L-0106, PR-20/L-0098, PR-21/L-0094, PR-23/L-0109, PR-25/L-0104, PR-31/L-0117, PR-36/L-0127,
+PR-37/L-0134, PR-38/L-0136, PR-39/L-0138, PR-40/L-0142, PR-41/L-0142, PR-42/L-0144, PR-43/L-0145,
+PR-44/L-0146, PR-45/L-0148, PR-46/L-0149, PR-50/L-0155, PR-51/L-0168, PR-54/L-0170, PR-58/L-0183.
+**16 of them render the anchor on a built series page; all 16 404.** The other 6 do not render this
+branch (see A-3 — five have no series side at all, and PR-37 loses a slot-0 collision).
+
+The 16 pages carrying a dead anchor: `cag-certified-net-proceeds`, `govt-schools-count`,
+`higher-ed-enrolment`, `internet-shutdowns-count`, `jk-assembly-turnout`,
+`jk-domicile-certificates-issued`, `jk-nhrc-cases-transferred-to-shrc`, `jk-nhrc-complaints`,
+`jk-panchayat-seats-vacant`, `jk-published-suspension-orders`, `ptr-primary-udise`,
+`rte-quota-children`, `teacher-vacancy-rate-ssa`, `tn-direct-goi-transfers-to-sias`,
+`tn-fc-interse-share`, `wb-mgnrega-funds-released`.
+
+**VERIFIED LIVE 2026-08-07, re-checked at the current deploy:**
+
+| URL | status |
+| --- | --- |
+| `https://india-government.vercel.app/series/ptr-primary-udise/` | 200 |
+| `https://india-government.vercel.app/series/L-0106/` | **404** |
+| `https://india-government.vercel.app/series/govt-schools-count/` | 200 |
+| `https://india-government.vercel.app/series/L-0109/` | **404** |
+| `https://india-government.vercel.app/series/jk-nhrc-complaints/` | 200 |
+| `https://india-government.vercel.app/series/L-0148/` | **404** |
+
+**IT IS THE LOCAL-FIX CLASS, AND THE COMPARISON IS ON THE SAME SITE.** `/unmeasured` solves the
+identical either-layer problem correctly: it dispatches on the host's layer and emits
+`/series/govt-schools-count/` beside `/ledger/L-0052/`, with **no `/series/L-` anchor anywhere on the
+page**. One surface got the layer-aware route and the other did not. The cross-link sweep run in the
+batch that wrote the local-fix rule was scoped to record-page cross-links and never reached this.
+
+**WHAT WOULD SETTLE IT.** Carry the layer on the resolved side rather than re-deriving it — give the
+`absence` variant a `hostLayer: 'series' | 'ledger'` set where `resolvePairSide` already knows which
+accessor answered, and route on it. **Then close the class rather than the instance:** no gate crawls
+internal hrefs at all, so a link check over the built output belongs in `npm run build`. The crawl
+that found this is four lines — walk `out/**/index.html`, collect `href="/..."`, assert each resolves
+to a built route — and it found exactly one defect class across 661 pages, so it will not be noisy.
+
+## A-2. Three notes open with the verdict they withdraw
+
+**THE DEFECT.** A record's *Why this verdict* block is its stated ground, and the verdict chip has
+linked to it since 2026-08-06. On three records the block's **first sentence asserts the verdict the
+record no longer carries**, and the correction that withdraws it arrives hundreds of characters
+later. A reader who stops after one sentence has the chip saying one thing and its own ground saying
+another.
+
+**THE EVIDENCE.** All three carry the chip **Awaiting adjudication** and all were rescored on
+2026-08-03:
+
+| record | chip | first words of its stated ground | correction arrives after |
+| --- | --- | --- | --- |
+| L-0086 | Awaiting adjudication | *"Scored too-early because the operative effect depends on…"* | 939 chars |
+| L-0127 | Awaiting adjudication | *"Filed too-early on the written definition…"* | 850 chars |
+| L-0134 | Awaiting adjudication | *"Filed too-early because the power is in force…"* | 639 chars |
+
+**Measured, not impressionistic: 3 of the 17 `assessmentNote`s carrying a correction marker put a
+stale verdict value before the marker. The other 14 lead with the correction.** L-0151 is the control
+and is the correct form — 762 characters of correction first, then `PREVIOUS NOTE, PRESERVED
+VERBATIM:` and the old text under its own label.
+
+**VERIFIED LIVE 2026-08-07** at `/ledger/L-0086/`, `/ledger/L-0127/`, `/ledger/L-0134/` (all 200),
+read from the `id="why-this-verdict"` anchor rather than from the file, with `/ledger/L-0151/` read
+as the control.
+
+**`withdrawn-wording` PASSES AND IS RIGHT TO.** Its own scope is that a correction quotes what it
+withdrew, attributed — *29 corrections quote what they withdrew, 34 exempted by name, 166 sibling-field
+comparisons, 0 withdrawn claims still asserted elsewhere*. **It binds PRESENCE. The defect is
+POSITION.** Do not "fix" the gate by making it stricter about quotation; that is not what fails here.
+
+**WHAT WOULD SETTLE IT.** Re-order the three notes so the correction leads and the withdrawn wording
+follows under an explicit label, on L-0151's pattern. **This is an authoring edit to `assessmentNote`
+and moves no verdict**, so it is not a stop — but it touches three shipped records and the prose must
+be preserved byte-for-byte under its new label, or `withdrawn-wording` will correctly fail it. The
+generalisable half is whether the correction convention should state the order, given that 14 of 17
+already follow it without being told.
+
+## A-3. Eleven of sixty pairs render nowhere, and the code's own comment says two
+
+**THE DEFECT.** `lib/data.ts` states, in a comment around line 151: *"Two pairs currently fail that.
+PR-16 is `declared-pending` with no sides yet and is meant to render nowhere. PR-31 is fully authored
+and renders nowhere anyway, because both its sides are non-series."* **Measured against the built
+site, eleven pairs' `framing` appears on no page at all.** Nine are outside what the comment reaches.
+
+**THE EVIDENCE.** 49 of 60 pairs render their `framing`; contested pairs render it too (PR-12, PR-13,
+PR-17, PR-18, PR-22, PR-26 are the control), so the field is not unrendered by design.
+
+| pairs | mechanism | documented? |
+| --- | --- | --- |
+| PR-16 | `declared-pending`, both sides label-only, meant to render nowhere | yes, intentional |
+| PR-31 | both sides non-series — a provenance record's `competingAccounts` against a ledger absence | yes |
+| PR-34, PR-36, PR-39, PR-40, PR-43 | **the same shape as PR-31**, which the comment names as the only one of its kind | **no** |
+| PR-35, PR-37, PR-52 | **slot-0 collision.** The series page renders `pairsForSeries(id)[0]` only, and every series naming these already has another pair in that slot — PR-33, PR-33 and PR-48 respectively | **no** |
+| PR-55 | side b is **label-only**, so `resolvePairSide` returns null, `paired` is false and nothing renders. Identical in shape to PR-16 but not marked `declared-pending` | **no** |
+
+**WHY NO GATE SEES IT.** `field-render-audit` emits its own scope: *38 prose + 51 non-prose field(s)
+across **3 layers**, 0 invisible* — ledger, provenance, series. **Pairs are the FOURTH layer, added in
+phase 6c, and are outside that scope by construction.** So a pairs field reaching no reader is
+invisible to the one gate built to catch a field reaching no reader.
+
+**WHAT WOULD SETTLE IT.** Three separable things, and they should not be conflated:
+1. **Extend `field-render-audit` to the pairs layer.** This is the one that prevents recurrence and
+   should be done first; it will re-find the other two without being told.
+2. **Decide what a pair with no series side renders on.** Six pairs have none. A pair page, a section
+   on the domain page, or an explicit "declared, renders nowhere" state — this is a real design
+   decision and is why A-3 was not fixed in a hurry at the end of a batch.
+3. **The slot-0 collision** is a plain bug: render every pair a series names, not `[0]`.
+
+**AND CORRECT THE COMMENT.** It says two. Whatever the fix, the number in `lib/data.ts` must be
+re-measured rather than carried — this is the deferral-with-a-measured-rate failure CLAUDE.md already
+records against `seam-span-report`, where a rate written once was not re-run as the corpus changed.
+
+## THE ROOT A-1 AND A-3 SHARE
+
+**The pairs layer's rendering was built around `series` sides. Every other side shape is
+second-class in the view and unguarded by any gate.** A side may be a series, a `absenceFrom` host on
+either layer, a `competingAccountsFrom` provenance record, or label-only — four shapes. The view
+routes the first correctly, guesses the layer on the second, cannot host the third at all, and
+renders nothing for the fourth. `field-render-audit` covers three layers and pairs is the fourth, so
+none of it reports.
+
+**This is the SIXTH instance of a guard whose scope and its claim's scope differ, and the FIRST found
+on a whole layer rather than a field.** The full enumeration, so the count is checkable rather than
+asserted — the first three are the ones CLAUDE.md's rule already lists, the fourth is named inside
+rule 4b's own section, and the last two are walk 6's:
+
+1. `reachability` binds a LIST of marks; the claim is every prose field on the record type. 226 marks
+   invisible. Closed by `no-unguarded-prose-field`.
+2. `reachability`'s `ownPage()` bound `series | ledger`; the claim is any `layers[]`. 185 records
+   reported "no page built" the instant a provenance mark existed.
+3. `breaks[]` binds a SERIES; the claim is a derived comparison stated in a record's prose. **Still
+   open** — `seam-span` is the measured deferral.
+4. Rule 4a binds how an absence LOOKS; the claim is where it APPEARS. 374 declarations complied with
+   4a and reached no listing surface. Closed by rule 4b.
+5. `withdrawn-wording` binds the PRESENCE of an attributed withdrawal; the claim is that a reader
+   meets the correction before the wording it withdraws. **A-2.**
+6. `field-render-audit` binds THREE LAYERS; the claim is that every field in the corpus reaches a
+   reader. **A-3, and the first on a layer rather than a field.**
+
+## FOUR CANDIDATES CHECKED AND DISCARDED — recorded so a later walk does not re-derive them
+
+A walk that reports only its finds cannot be distinguished from a walk that did not run, and walk 5's
+first finding was a false positive believed from a report rather than checked against the record.
+**Two of walk 6's first three impressions were also wrong.** These are the dead ends, with the check
+that killed each:
+
+1. **`undefined` appears in 50 built pages.** Not a render defect: **every instance is the English
+   word in authored prose** — *"the Union's own undefined selection of cess line items"*, *"a
+   category whose boundary is undefined"*, *"the second side, which remains undefined"*. Killed by
+   reading the surrounding 160 characters of each.
+2. **A 330-character basis string repeats on every row of a series table.** Not repetition of
+   `points[].note` — measured, **0 of 269 series repeat one note verbatim on 3 or more points**, and
+   four of the seven points on the series that prompted this carry no note at all. The string is
+   `denominator`, rendered inline on the face of every value **by documented design**, with its
+   reason in the component: *"A rate whose base is a click away is a rate that gets quoted without
+   its base (P-52)."*
+3. **`/derivations` is pinned to commit 49c9851, three commits stale, and is not in the build
+   chain.** All six of its figures were recomputed against the current `/data` — occurrences 288,
+   (record,url) pairs 277, distinct roots 93, records affected 231, naming-no-document 246,
+   also-bare-root 138 — and **every one still holds**. Not stale in substance. That it *can* drift
+   silently with no gate is a property worth knowing and is not a defect today.
+4. **L-0047's third objective reads `"emissions"`.** Real but tiny: a split artefact of decomposing
+   *"to cut fuel costs and emissions and reduce diesel dependence"*, where the verb stayed with the
+   previous limb. **1 of 27 objective entries**; the only other short one, L-0030's *"improve
+   efficiency"*, is a complete phrase. **Reported, not filed as a queue item.** It matters slightly
+   more than its size because that limb is the one carrying the `unmeasuredRef`.
+
+## THE WALK COUNT AND THE STOPPING CONDITION
+
+**Six walks have run. FIVE found something not already on the queue.**
+
+| walk | outcome |
+| --- | --- |
+| 1–4 | each found something off-queue |
+| 5 | one real finding (caveats in table cells, now design queue item 2). **Its other finding was mine, not the site's** — it reported the independence grade rendering below the source list; the grade preceded `<SourceList>` in source, in the build and live, in the commit that built the field. Withdrawn |
+| 6 | three off-queue findings: A-1, A-2, A-3 |
+
+**THE CONDITION, AND IT IS NOT TO BE SOFTENED: a walk that finds only things already on the queue.**
+It is not met and has never been met. The condition is about **discovery**, not about whether the
+finding is small, or easy, or in a layer nobody looks at. A walk that turns up one new thing has not
+met it. Do not reword it to "no SERIOUS findings" or "nothing a reader would notice" — both of those
+would have passed walk 6, and walk 6 found sixteen dead links on the live site.
+
+## WHAT THE NEXT SESSION DOES, IN THIS ORDER
+
+1. **Fix A-1** — carry the layer on the resolved side, and add the internal-link crawl to the build.
+2. **Extend `field-render-audit` to the pairs layer.** Before fixing A-3, so the gate re-finds it
+   independently and the fix is proven against a check rather than against a description.
+3. **Fix A-2** — re-order the three notes on L-0151's pattern, preserving the withdrawn prose
+   byte-for-byte under its own label.
+4. **Fix A-3** — the slot-0 bug first, then the decision about pairs with no series side.
+5. **Walk again.** The architecture is not closed until a walk finds only what is already queued.
+
+---
+
+# SESSION CLOSE — 2026-08-07
+
+## State
+
+**HEAD is the commit carrying this entry. Pushed, deployed, working tree clean.** Live and
+deliberately public at india-government.vercel.app; push is autonomous.
+
+**Corpus, from `node tools/validate.mjs --json`:** 223 ledger · 269 series · 127 provenance · 60
+pairs = **679 records, 1,759 points**.
+
+**Every gate green, each quoting its own scope:**
+
+- `validate` — VALID, 0 errors, 163 warnings (open research items, not blockers)
+- `enum-parity` — 67 members across 11 axes agree in schema, type and label map; 3 axes exempted by name
+- `no-bare-root` — 0 new, 0 stale; 277 legacy citations allowlisted from 277 frozen 2026-08-05
+- `no-unguarded-prose-field` — 21 prose fields across ledger + provenance (10 guarded, 11 exempted); 53 non-prose across ledger + provenance + series (51 with a declared rendering, 2 exempted)
+- `withdrawn-wording` — 29 corrections quote what they withdrew, 34 exempted, 166 sibling comparisons, 0 withdrawn claims still asserted elsewhere
+- `seam-span` — 127 record-by-break spans: 101 declare the break, 26 do not, of which 12 are judged and frozen; 14 wide-only spans out of scope by design
+- `phase-name-consistency` — 339 tracked files, 6 phases named in the table, 1 superseded name in scope, 12 disagreeing assertions all exempted by name
+- `exposure` — 223 ledger records, 76 declare an exposure, 85 entries; roles cause 23 / confound 45 / none-stated 9 / is-the-shock 4; adjudication accepted 44 / refused 7 / limited 11 / unstated 6
+- `objectives` — 11 records carry objectives, 27 entries, 11 multi-objective, 11 objectives the verdict does not rest on; 3 imposed duties exempt from `claimAtLaunch`
+- `independence` — 57 evaluative records, 55 graded, 2 unvalued (L-0011, L-0036), none 23 / intra-state 19 / external 13; judgement not checked, by construction
+- `figure-consistency` — 18 declared arithmetic claims, all checked against source and printed operands, 5 rounding artefacts declared
+- `manifest` — 679 records, 71,141 bytes, unchanged
+- `reachability` — 1786/1786 declared marks reachable on their own record page, 662 pages scanned
+- `field-render-audit` — 38 prose + 51 non-prose fields across 3 layers, 0 invisible, 2 exempted **(and see A-3: three layers is not four)**
+- `domain-coverage` — 14/14 domain surfaces built, 14/14 linked from the index, 1137/1137 record-to-surface references reachable
+
+**Every scored record states why.** Scored records carrying no `assessmentNote`: **0**. The 11
+`baseline-context` records are never scored and correctly carry none.
+
+## The two queues, and they are different objects
+
+**ARCHITECTURE — 3 items, above: A-1, A-2, A-3.** These block the lock.
+
+**DESIGN — 2 items, and this list has not grown:**
+1. **Thirteen nav destinations.** Operator's ruling: design work, not architecture.
+2. **A caveat renders in full inside a table cell** on `/ledger`, `/contested`, `/terms/[term]`,
+   `/domains/[domain]`, `/lenses/[lens]` and `/series`. 103 of 223 ledger records carry a caveat,
+   median 375 characters, maximum 1,312, 68 over 300, plus 128 series caveats of which 92 are over
+   300. **Rule 3a is absolute and must NOT be relaxed to fix this: a caveat never truncates,
+   anywhere, at any density.** What is wrong is the form on a compact list, not that the caveat is
+   shown. A marker with a route, a column of its own, or a disclosure — the choice is design's.
+
+**Phase 18 opens against a stable surface set, not on a schedule** — the condition is a walk that
+adds no new surface and no new mark. If the next work adds a page, the lock waits for it.
+
+## Also open, and neither blocks
+
+- `objectives[]` is backfilled on 11 of the 43 records whose `claimAtLaunch` announces more than one.
+  Ruling 2 is enforced on the records that have the field and silent on the rest, which
+  `tools/objectives.mjs` says in its own header rather than implying by a green line.
+- `independence` is graded on 55 of 57 evaluative records. **L-0011 and L-0036 unvalued is a
+  legitimate state, not a gap** — their own evidence does not settle it and forcing a value would
+  assert a judgement nobody made.
+
+## A cold read, in this order
+
+1. **`CLAUDE.md`** — the authority. The phase table lives in it and **the table is right**. The
+   directory this file sits in is named `phase-17-design-lock` and **that name is wrong**, superseded
+   in this file's own head: phase 17 is *independence*, 18 is *design lock*, 19 is *polish*.
+2. **This file, from the bottom.** This session-close entry, then the architecture queue above it,
+   then WALK 6, then the pause entry — whose claim that *"It is done"* is **withdrawn** by walk 6 and
+   must not be read as current.
+3. **`docs/verification-log.md`** — append-only, two authors, never rewritten. Cycle 2026-08-07a is
+   the last entry.
+
+## Four standing rules a cold start gets wrong most often
+
+- **Check a flag against the RECORD, not against the report that raised it.** Walk 5's finding 1 and
+  the L-0087 flag were both wrong this way, in consecutive batches, and two of walk 6's first three
+  impressions were wrong the same way before being checked.
+- **Run the gate rather than quoting the last report of it.** Gate lines carry gate-emitted scopes
+  only; if a figure is not in a gate's own output, either make the gate emit it or drop it.
+- **A rule's headline is not the rule.** Ruling 5 was cited by its headline to flag L-0087 as
+  scoreable; it fails three of the rule's four conditions.
+- **Guard before the write; numstat declared before the edit; anchored string surgery — never
+  parse-and-serialise**, which reformats whole files whose indentation this repo did not choose.
