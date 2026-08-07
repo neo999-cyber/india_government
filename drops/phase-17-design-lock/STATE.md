@@ -1204,3 +1204,96 @@ by anyone who did not write it.
 2. **The nav at thirteen destinations** — design phase, on the operator's ruling.
 3. **L-0069 and L-0087** — operator's call. Each is one verdict.
 4. `objectives[]` backfill beyond 11 of 43.
+
+---
+
+# PAUSE ENTRY — 2026-08-07. Read this first on a cold start.
+
+**HEAD is the commit that carries this entry. Working tree clean, pushed, deployed.** Corpus, from
+`node tools/validate.mjs --json`: **223 ledger · 269 series · 127 provenance · 60 pairs = 679
+records, 1,759 points.** Live and deliberately public at india-government.vercel.app. Push is
+autonomous.
+
+## What to read, in this order
+
+1. `CLAUDE.md` — the authority. The phase table is in it and the table is right; the directory this
+   file sits in is named `phase-17-design-lock` and that name is **wrong**, superseded in this
+   file's own head. Phase 17 is *independence*; 18 is *design lock*; 19 is *polish*.
+2. This file, from the bottom. Batch entries run oldest to newest above.
+3. `docs/verification-log.md` — **append-only, two authors, never rewritten**. Cycle 2026-08-07a is
+   the last entry.
+
+## Where the architecture stands
+
+**It is done, and this is the first pause at which that can be said without qualification.** Nine
+rulings landed and are written down. Every field the rulings need exists, is typed, renders, and is
+gated: `shockExposure[]`, `objectives[]`, the `claimAtLaunch` absence vocabulary, `independence`,
+`contestedGround`. `enum-parity` reports **67 members across 11 axes** agreeing in schema, type and
+label map, three axes exempted by name.
+
+**Every scored record now states why. The count of scored records carrying no `assessmentNote` is
+0.** It was 41 two batches ago and 164 records carried a note that rendered nowhere at all three
+phases ago. The 11 `baseline-context` records correctly carry none and are never scored.
+
+**Two things are unfinished and neither blocks design.**
+
+- `objectives[]` is backfilled on 11 of the 43 records whose `claimAtLaunch` announces more than one.
+  Ruling 2 is therefore enforced on the records that have the field and is silent on the rest, which
+  `tools/objectives.mjs` says in its own header rather than implying by a green line.
+- `independence` is graded on 55 of 57 evaluative records. **L-0011 and L-0036 are unvalued and that
+  is a legitimate state**, not a gap: their own evidence does not settle the question and forcing a
+  value would assert a judgement nobody made.
+
+## The walk, and the count corrected
+
+**Five walks have run. FOUR of them found something not already on the queue — not five.**
+
+Walk five reported two findings and **the first was mine, not the site's**. It said the independence
+grade renders below the source list. It does not, and never did: it precedes `<SourceList>` in
+`app/ledger/[id]/page.tsx`, in the build output, and on the live page, in the same commit that built
+the field. The defect was that I read my own previous report instead of the record, which is the
+standing rule applied backwards. Withdrawn; no change was made to the page.
+
+Walk five's second finding is real and is on the design queue below.
+
+**THE STOPPING CONDITION, stated so a later cycle does not soften it: a walk that finds only things
+already on the queue. It is NOT met.** Walk five found the caveat-in-a-table-cell defect, which was
+on no queue before it. The condition is about *discovery*, not about whether the finding is easy —
+so a walk that turns up one new design item has not met it.
+
+## The design queue — enumerated, and this is the whole of it
+
+1. **Thirteen nav destinations.** `/contested`, `/exposure` and the rewritten `/counterfactual` all
+   arrived in phase 17, and at thirteen the accretion is no longer a question of taste. Operator's
+   ruling: design work, not architecture.
+2. **A caveat renders in full inside a table cell**, on `/ledger`, `/contested`, `/terms/[term]`,
+   `/domains/[domain]`, `/lenses/[lens]` and `/series`. 103 of 223 ledger records carry a caveat,
+   median 375 characters, maximum 1,312, 68 over 300 — plus 128 series caveats, 92 of them over 300.
+   **Rule 3a rightly forbids truncating a caveat and must not be relaxed to fix this**: what is wrong
+   is the form on a compact list, not the fact that the caveat is shown. A marker with a route, a
+   column of its own, or a disclosure — the choice is the design phase's.
+
+Nothing else is queued for design. Two items is the honest total and a longer list would be invented.
+
+## When the design phase opens
+
+**Against a stable surface set, not on a schedule.** The reason is measured rather than asserted:
+both of the queue's items are consequences of surfaces arriving after the pattern they should have
+followed was set — `/exposure` and `/contested` were built after the `/unmeasured` cross-link and did
+not get one; the caveat's list form was settled before three of the six surfaces that render it
+existed. **A design lock over a surface set that is still growing locks the wrong thing**, and the
+local-fix rule written this phase is the general statement of why.
+
+So the condition for opening phase 18 is that a walk adds no new surface and no new mark — not that a
+number of batches have passed. If the next piece of work adds a page, the lock waits for it.
+
+## Standing rules a cold start gets wrong most often
+
+- **Check a flag against the RECORD, not against the report that raised it.** Walk five's finding 1
+  and the previous batch's L-0087 flag were both wrong this way, in consecutive batches.
+- **Run the gate rather than quoting the last report of it.** Gate lines carry gate-emitted scopes
+  only; if a figure is not in a gate's own output, either make the gate emit it or drop it.
+- **A rule's headline is not the rule.** Ruling 5 was cited by its headline to flag L-0087 as
+  scoreable, and it fails three of the rule's four conditions.
+- **Guard before the write, numstat declared before the edit, anchored string surgery — never
+  parse-and-serialise**, which would reformat whole files whose indentation this repo did not choose.

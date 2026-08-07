@@ -11659,3 +11659,46 @@ value.** Reported, not built — the phase's authorisation covered the field its
 **Gates:** `validate` VALID · `exposure` 223 records / 76 declaring / 85 entries · `enum-parity` 56
 members across 8 axes · `reachability`, `field-render-audit`, `withdrawn-wording`, `phase-name` all
 green · full build green.
+
+## Cycle 2026-08-07a — two verdicts tested against two rulings; one moved, one did not
+
+**L-0069 `no-objective` to `undated-commitment`, applied on the operator's authorisation under
+Ruling 3.** The record carries the 2018-19 Budget claim of minimum support prices at at least 1.5
+times the cost of production: stated, quantified, no date, no phasing, no annual target. **This
+supersedes the ground recorded for the earlier `partly` to `no-objective` move** — *"A demand is not
+a government objective; nothing was claimed to test"* — which was right about the union demand for a
+statutory guarantee and wrong about the 2018-19 claim sitting in the same record. Both are in it,
+and only one of them is a government commitment.
+
+**Progress reported, as the value requires and `no-objective` did not.** It turns entirely on a cost
+basis the announcement never named: satisfied on A2+FL, the basis the claim was computed on, and not
+satisfied on C2, the basis the Swaminathan recommendation specified. P-47 records that CACP publishes
+both, so the C2 recomputation is possible and is not carried here. Two axes are blocked and are
+stated as blocked: the MSP series carry the level and not the ratio with no cost series beside them,
+and reach rests on a single FY2014-15 observation derived from the 2012-13 Situation Assessment
+Survey, whose successor the series already declares as an absence. The second limb — the undertaking
+to examine a statutory guarantee — is unquantified, so the value does not reach it, on the same
+footing as L-0209's paved patrol track.
+
+**L-0087 STAYS `no-objective`. Ruling 5 does not reach it, and the flag raised against it in the
+previous batch was raised without running the rule's four conditions.** It fails three of them.
+(2) The duty is not the one the finding is about: the record is about scrutiny, its two series are
+the referral rate and sitting days, and Article 93 is one clause of `caseAgainst` among four
+subjects — a duty in the vicinity is not a duty in dispute. (3) Article 93 fixes no period, its
+words being *as soon as may be*, so a term without a Deputy Speaker breaches no standard stated in
+it; naming an instrument is not breaching it. And the rule's own naming test fails: the record names
+the instrument and paraphrases the duty but **never names the duty-holder**, which Article 93 puts on
+the House rather than on the body a scrutiny finding assesses.
+
+**The generalisable part: naming an instrument in a `caseAgainst` is the cheapest way for a record to
+look scoreable, and Ruling 5's conditions 2 and 3 exist to stop exactly that.** The previous batch's
+flag cited the rule's headline and not its conditions.
+
+**Both notes written.** L-0087's could not be authored in the previous batch because the verdict
+question was open; with the test run it has stated ground, and the 41 unnoted scored records are now
+0.
+
+**Gates:** `validate` VALID — 0 errors, 163 warnings, over 223 ledger / 269 series / 127 provenance /
+60 pairs = 679 records, 1759 points. Numstat declared before the edit and matched: agriculture.json
+2 added 1 deleted, rights-institutions.json 1 added 0 deleted. 1 verdict moved, asserted at the
+write, and it is the one authorised.
