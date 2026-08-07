@@ -16,7 +16,7 @@
     "domain-coverage": "node tools/domain-coverage.mjs",
     "url-check": "node tools/url-check.mjs",
     "dev": "next dev",
-    "build": "npm run validate && npm run enum-parity && npm run no-bare-root && npm run no-unguarded-prose-field && npm run withdrawn-wording && npm run seam-span && npm run phase-name && npm run exposure && npm run figure-consistency && npm run manifest && next build && npm run reachability && npm run field-render-audit && npm run domain-coverage",
+    "build": "npm run validate && npm run enum-parity && npm run no-bare-root && npm run no-unguarded-prose-field && npm run withdrawn-wording && npm run seam-span && npm run phase-name && npm run exposure && npm run objectives && npm run figure-consistency && npm run manifest && next build && npm run reachability && npm run field-render-audit && npm run domain-coverage",
     "start": "npx serve out",
     "typecheck": "tsc --noEmit",
     "audit": "node tools/audit-manifest.mjs",
@@ -40,7 +40,8 @@
     "withdrawn-wording": "node tools/withdrawn-wording.mjs --control && node tools/withdrawn-wording.mjs",
     "seam-span": "node tools/seam-span-report.mjs --control && node tools/seam-span-report.mjs",
     "phase-name": "node tools/phase-name-consistency.mjs --control && node tools/phase-name-consistency.mjs",
-    "exposure": "node tools/exposure.mjs --control && node tools/exposure.mjs"
+    "exposure": "node tools/exposure.mjs --control && node tools/exposure.mjs",
+    "objectives": "node tools/objectives.mjs --control && node tools/objectives.mjs"
   },
   "dependencies": {
     "next": "16.2.12",

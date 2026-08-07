@@ -3,16 +3,22 @@ import type { ReactNode } from 'react';
 import type {
   ExposureAdjudication,
   ExposureRole,
+  Objective,
   Point,
   ReasonKind,
   ShockExposure,
+  SourceRef,
   Status,
   Tier,
   TieredSource,
-  SourceRef,
   Unmeasured,
 } from '@/lib/types';
-import { TIER_LABELS, formatValue } from '@/lib/format';
+import {
+  COMMITMENT_STATE_LABELS,
+  OBJECTIVE_MEASUREMENT_LABELS,
+  TIER_LABELS,
+  formatValue,
+} from '@/lib/format';
 
 /**
  * A figure with its measurement status showing (CLAUDE.md rule 3):
@@ -265,6 +271,46 @@ export const EXPOSURE_ADJUDICATION_LABELS: Record<ExposureAdjudication, string> 
  * confound from a cause — and a reader who has to infer it from the prose is back where the field
  * started.
  */
+/**
+ * WHAT WAS ANNOUNCED, LIMB BY LIMB, AND WHICH LIMBS THE VERDICT RESTS ON.
+ *
+ * `claimAtLaunch` is one paragraph and a verdict is one word, and between them a reader could not
+ * see that L-0011 announced four objectives and its `failed` rests on two. Ruling 9 requires the
+ * record to say which; this is where a reader reads it.
+ *
+ * THE GROUNDS FLAG IS THE POINT and it renders on every row, not only where it is false: a list
+ * that marked only the exceptions would leave a reader to infer the rule.
+ */
+export function Objectives({ items }: { items: Objective[] | undefined }) {
+  if (!items || items.length === 0) return null;
+  const resting = items.filter((o) => o.grounds).length;
+  return (
+    <div className="objectives">
+      <span className="label">
+        Announced{items.length > 1 ? ` · ${items.length} objectives` : ''}
+        {items.length > 1 ? ` · the verdict rests on ${resting}` : ''}
+      </span>
+      <ul className="objectives-list">
+        {items.map((o, i) => (
+          <li key={`${o.text.slice(0, 32)}-${i}`} className={o.grounds ? undefined : 'objective-aside'}>
+            <p>{o.text}</p>
+            <p className="objective-meta">
+              <span className="mono">{OBJECTIVE_MEASUREMENT_LABELS[o.measurement]}</span>
+              <span className="mono">{o.quantified ? 'quantified' : 'not quantified'}</span>
+              {o.commitmentState ? (
+                <span className="mono">{COMMITMENT_STATE_LABELS[o.commitmentState]}</span>
+              ) : null}
+              <span className="mono">
+                {o.grounds ? 'the verdict rests on this' : 'the verdict does not rest on this'}
+              </span>
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export function ShockExposures({ items }: { items: ShockExposure[] | undefined }) {
   if (!items || items.length === 0) return null;
   return (

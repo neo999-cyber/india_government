@@ -4,8 +4,8 @@
     "tools/lib/guarded-marks.mjs",
     "tools/lib/value-renderings.mjs"
   ],
-  "markFields": 10,
-  "renderingKeys": 46,
+  "markFields": 11,
+  "renderingKeys": 52,
   "droppedInNegative": {
     "marks": "assessmentNote",
     "renderings": "ledger.assessment"

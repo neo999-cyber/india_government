@@ -1,4 +1,15 @@
-import type { Assessment, Calendar, ContestedGround, Country, Domain, Lens, Term, Tier } from './types';
+import type {
+  Assessment,
+  Calendar,
+  CommitmentState,
+  ContestedGround,
+  Country,
+  Domain,
+  Lens,
+  ObjectiveMeasurement,
+  Term,
+  Tier,
+} from './types';
 
 /**
  * Display names for the lens axis, and a one-line statement of what each lens means.
@@ -78,6 +89,25 @@ export const CONTESTED_GROUND_LABELS: Record<ContestedGround, string> = {
   measure: 'Which measure governs',
   'evidence-unobservable': 'A fact that cannot be observed',
   time: 'Elapsed time',
+};
+
+/**
+ * What each measurement state says, in a reader's terms. `unmeasurable-no-event` is the one that
+ * needs its words chosen: it says the event never happened, NOT that nobody looked.
+ */
+export const OBJECTIVE_MEASUREMENT_LABELS: Record<ObjectiveMeasurement, string> = {
+  met: 'measured, met',
+  'not-met': 'measured, not met',
+  unmeasured: 'not measured',
+  'unmeasurable-no-event': 'unmeasurable — the event did not occur',
+};
+
+/** The commitment state of one limb. `unfalsifiable` says the clock is missing, not the objective. */
+export const COMMITMENT_STATE_LABELS: Record<CommitmentState, string> = {
+  'not-yet-due': 'not yet due',
+  'due-and-undelivered': 'due, undelivered',
+  abandoned: 'abandoned',
+  unfalsifiable: 'cannot fall due',
 };
 
 export const TIER_LABELS: Record<Tier, string> = {

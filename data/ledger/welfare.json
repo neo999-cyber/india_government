@@ -383,6 +383,21 @@
   "type": "reform",
   "summary": "Unconditional income support of ₹6,000 a year in three instalments to landholding farmers, with over ₹4.09 lakh crore disbursed across 21 instalments, set against the separate 2016 commitment to double farmers' income by 2022.",
   "claimAtLaunch": "Supplement farm household income and, alongside other measures, double farmers' income by 2022 on the Dalwai committee framework, which required about 10.4% annual real growth.",
+  "objectives": [
+    {
+      "text": "Supplement farm household income",
+      "quantified": false,
+      "measurement": "unmeasured",
+      "grounds": false
+    },
+    {
+      "text": "double farmers' income by 2022 on the Dalwai committee framework",
+      "quantified": true,
+      "measurement": "not-met",
+      "grounds": true,
+      "commitmentState": "due-and-undelivered"
+    }
+  ],
   "whatHappened": "Transfers reached 9.4-9.7 crore farmers per instalment, down about 2.3 crore from the peak after mandatory Aadhaar e-KYC and land-record verification removed ineligible recipients. The NSSO Situation Assessment Surveys show average monthly agricultural household income rising from ₹6,426 in 2012-13 to ₹10,218 in 2018-19, about 59% nominal but only around 15% real, with crop income up roughly 23% nominal. No Situation Assessment Survey has been conducted since 2019, so the 2022 target is formally unverifiable.",
   "assessmentNote": "Written 2026-08-05 (adversarial triage 4); this record previously carried a verdict with no stated reasoning. THIS RECORD BUNDLES A TRANSFER SCHEME AND A DATED PROMISE, AND FAILED IS SCORED ON THE PROMISE ONLY. The doubling commitment was specific, dated and publicly repeated, and required about 10.4 per cent annual real growth; the only authoritative instrument shows roughly 15 per cent real growth over six years, and no Situation Assessment Survey has been fielded since 2019, so the terminal year is unverifiable and is already entered below as an absence. Failed is asserted on the measured trajectory against the stated rate, and on the absence of any evidence of a terminal reversal - not on a 2022 measurement that does not exist. PM-KISAN ITSELF IS NOT WHAT FAILED, and the note says so because the title bundles them. As a transfer it works as designed: it reaches 9.4 to 9.7 crore households directly, and the 2.3 crore reduction from the peak followed verification rather than attrition, which is a targeting system functioning. Its limits are stated in the case against - un-indexed at 6,000 rupees, and land-title based, so tenant farmers and landless labourers are outside it by construction.",
   "assessment": "failed",

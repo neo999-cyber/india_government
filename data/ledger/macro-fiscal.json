@@ -11,6 +11,34 @@
   "type": "reform",
   "summary": "Overnight withdrawal of ₹500 and ₹1,000 notes, ~86% of currency in circulation by value, with a limited window to deposit or exchange.",
   "claimAtLaunch": "Elimination of black money held as cash, destruction of counterfeit currency, and cutting off terror financing. As returns approached 100%, the official justification shifted toward digitisation and formalisation.",
+  "objectives": [
+    {
+      "text": "Elimination of black money held as cash",
+      "quantified": false,
+      "measurement": "not-met",
+      "grounds": true
+    },
+    {
+      "text": "destruction of counterfeit currency",
+      "quantified": false,
+      "measurement": "not-met",
+      "grounds": true
+    },
+    {
+      "text": "cutting off terror financing",
+      "quantified": false,
+      "measurement": "unmeasured",
+      "grounds": false,
+      "unmeasuredRef": 0
+    },
+    {
+      "text": "the official justification shifted toward digitisation and formalisation",
+      "quantified": false,
+      "measurement": "unmeasured",
+      "grounds": false,
+      "unmeasuredRef": 1
+    }
+  ],
   "whatHappened": "The RBI's Annual Report 2017-18 confirmed 99.3% of demonetised notes returned to the banking system — ₹15.31 lakh crore of ₹15.41 lakh crore, with only ~₹10,720 crore unreturned. Counterfeit detection was minuscule. Currency in circulation collapsed, then recovered past pre-demonetisation levels (₹18.03 lakh crore by end-March 2018). The Supreme Court upheld the process 4-1 in January 2023, with a dissent questioning it.",
   "assessmentNote": "CORRECTED 2026-08-05 (adversarial triage 2): this record carried a failure verdict with NO stated reasoning, which is the one thing a scored record may not do. THE GROUND FOR THE VERDICT IS NARROWED TO WHAT IS MEASURED HERE. Four objectives were announced. Two are measured in this record and both fail on the government's own sources: the extinguishment of black money held as cash, against which 99.3 per cent of the notes returned to the banking system on the RBI's own count, so either little was held in cash or it was laundered and the premise was wrong either way; and the destruction of counterfeit currency, against which detection was minuscule. The other two are NOT part of the ground for this verdict and are entered below as unmeasured: the effect on terror financing, and the digitisation and formalisation objective that replaced the original justification as returns approached 100 per cent. The caseAgainst previously asserted failure \"against every objective stated at announcement\"; that sentence overstates what this record measures and is left standing only because it is a case, not a finding - the verdict now rests on the two objectives with evidence. THE WITHDRAWN WORDING IS NOT QUOTED HERE BECAUSE THERE IS NONE: this field did not exist before the correction, which created it rather than replacing anything. A correction of an absence says that it is one.",
   "unmeasured": [
@@ -124,6 +152,20 @@
   "type": "reform",
   "summary": "Base corporate tax cut from 30% to 22% (effective ~25.17% with surcharge and cess), and to 15% for new manufacturing companies.",
   "claimAtLaunch": "Improved after-tax returns would trigger a private investment revival and support Make in India by making Indian rates internationally competitive.",
+  "objectives": [
+    {
+      "text": "trigger a private investment revival",
+      "quantified": false,
+      "measurement": "not-met",
+      "grounds": true
+    },
+    {
+      "text": "support Make in India by making Indian rates internationally competitive",
+      "quantified": false,
+      "measurement": "unmeasured",
+      "grounds": false
+    }
+  ],
   "whatHappened": "Revenue foregone of approximately ₹1.45 lakh crore per year, which PRS Legislative Research puts at about 5.2% of the FY20 revenue estimate. Private capital expenditure did not revive. Corporate profitability reached multi-year highs — Nifty-500 profit-to-GDP around 4.6% in FY24, the highest since FY08 — while private investment stayed weak. Firms directed the windfall largely toward deleveraging and share buybacks.",
   "assessmentNote": "Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. THE STATED OBJECTIVE IS MEASURED AND IT DID NOT OCCUR, WHICH IS THE WHOLE OF THE VERDICT. The cut was justified as triggering a private investment revival. Private capital expenditure did not revive, while corporate profitability reached multi-year highs - Nifty-500 profit to GDP around 4.6 per cent in FY24, the highest since FY08 - and firms directed the windfall largely to deleveraging and buybacks. Profits rising while capex does not is the signature of a windfall pocketed rather than deployed, and the cost is permanent and annual at about 1.45 lakh crore. THE COUNTERFACTUAL IS NOT MEASURED AND THE CASE FOR RESTS ON IT: COVID arrived six months after the cut, and investment responses to tax changes operate with long lags. That is entered below as an absence rather than dismissed. The verdict is asserted on the observed outcome over the period, not on a claim that the cut could not have worked in other conditions.",
   "assessment": "failed",
@@ -278,6 +320,22 @@
   "type": "reform",
   "summary": "Flagship programme to raise manufacturing's share of GDP to 25%, originally by 2022, later extended to 2025 and then reset to 2035 under the National Manufacturing Mission.",
   "claimAtLaunch": "Manufacturing would rise to 25% of GDP and create 100 million jobs, positioning India as a global manufacturing hub.",
+  "objectives": [
+    {
+      "text": "Manufacturing would rise to 25% of GDP",
+      "quantified": true,
+      "measurement": "not-met",
+      "grounds": true,
+      "commitmentState": "due-and-undelivered"
+    },
+    {
+      "text": "create 100 million jobs",
+      "quantified": true,
+      "measurement": "unmeasured",
+      "grounds": false,
+      "unmeasuredRef": 0
+    }
+  ],
   "whatHappened": "Manufacturing's share did not rise. World Bank data show it falling from 15.07% of GDP (2014) to 13.14% (2024). Over the same decade Bangladesh rose from 16.61% to 21.89% and Vietnam from 20.37% to 24.33%. The target was reset to 2035 in Budget 2025-26.",
   "assessmentNote": "Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. TWO TARGETS WERE ANNOUNCED AND THIS RECORD MEASURES ONE. The share target is measured and decisively missed: manufacturing fell from 15.07 per cent of GDP in 2014 to 13.14 in 2024, and the target was reset to 2035 - a thirteen-year extension, which is the government's own statement that it was not met. The peer panel removes the external-conditions defence, because Bangladesh rose from 16.61 to 21.89 and Vietnam from 20.37 to 24.33 over the same decade under the same global conditions. THE 100-MILLION-JOBS TARGET IS NOT MEASURED ANYWHERE IN THIS RECORD, and writing this note is what surfaced that. It is entered below as an absence. The verdict rests on the share target alone, which is sufficient on its own terms; a reader should not take it as a finding about employment.",
   "assessment": "failed",

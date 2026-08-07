@@ -16,6 +16,7 @@ import {
   CaveatFlag,
   DifferentFactsMark,
   DifferentFactsNegativeMark,
+  Objectives,
   ShockExposures,
   SourceList,
 } from '@/components/marks';
@@ -135,6 +136,16 @@ export default async function LedgerDetail({ params }: Props) {
           <>
             <dt>Claim at launch</dt>
             <dd>{l.claimAtLaunch}</dd>
+          </>
+        ) : null}
+        {/* The limbs, directly under the claim they decompose. Ruling 9's disclosure is only
+            legible beside what was announced. */}
+        {l.objectives && l.objectives.length > 0 ? (
+          <>
+            <dt>Objectives announced</dt>
+            <dd>
+              <Objectives items={l.objectives} />
+            </dd>
           </>
         ) : null}
         {l.whatHappened ? (
