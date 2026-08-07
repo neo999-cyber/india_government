@@ -75,11 +75,14 @@ export default async function LedgerDetail({ params }: Props) {
         ) : (
           <span className="tag">{ASSESSMENT_LABELS[l.assessment]}</span>
         )}
-        {/* What would settle a contested record — for three of the six grounds, nothing would. */}
+        {/* What would settle a contested record — for three of the six grounds, nothing would.
+            NOW A ROUTE TO THE PAGE THAT GROUPS THEM, from the fourth walk: the ground was named
+            here and `/contested` was reachable only from the top nav, so a reader met the label
+            with no way to learn that 38 of the 68 are unsettleable in principle. */}
         {l.contestedGround ? (
-          <span className="tag tag-state">
+          <Link className="tag tag-state" href="/contested/">
             would settle it: {CONTESTED_GROUND_LABELS[l.contestedGround]}
-          </span>
+          </Link>
         ) : null}
         <span className="tag">confidence {l.confidence}</span>
         {l.domains.map((d) => (
@@ -215,7 +218,8 @@ export default async function LedgerDetail({ params }: Props) {
           {INDEPENDENCE_LABELS[l.independence]}
           {l.independence === 'intra-state'
             ? ' — better than a body scoring itself, and not the same thing as a source outside the state'
-            : ''}
+            : ''}{' '}
+          <Link href="/method/#independence">what this grades</Link>
         </p>
       ) : null}
       <SourceList sources={l.sources} />
