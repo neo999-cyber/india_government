@@ -103,6 +103,20 @@ export const LENSES_THAT_ARE_DOMAINS: readonly Lens[] = LENSES.filter((l): l is 
 export const TERMS = ['baseline', 'T1', 'T2', 'T3'] as const;
 export type Term = (typeof TERMS)[number];
 
+/**
+ * THE RELATIONSHIP BETWEEN THE EVIDENCE AND THE CLAIM — not the tier, which grades the artefact.
+ * Both questions are asked of the same citation and they have different answers.
+ *
+ * Ordered evidentially and not morally: `external` > `intra-state` > `none`. **`none` is a
+ * description, not a demerit** — L-0030's single authoritative statement that no bank was
+ * privatised is the right evidence, not weak evidence.
+ *
+ * NO VALUE FOR "not assessed": that is what the field's absence means, and a fourth would let a
+ * record assert that it declined to look.
+ */
+export const INDEPENDENCE_GRADES = ['none', 'intra-state', 'external'] as const;
+export type Independence = (typeof INDEPENDENCE_GRADES)[number];
+
 export const CONTESTED_GROUNDS = [
   'criterion', 'interpretation', 'evidence-withheld', 'measure', 'evidence-unobservable', 'time',
 ] as const;
@@ -600,6 +614,7 @@ export interface LedgerRecord {
    * are left unvalued rather than given a catch-all that would absorb the evidence.
    */
   contestedGround?: ContestedGround;
+  independence?: Independence;
 }
 
 /**
