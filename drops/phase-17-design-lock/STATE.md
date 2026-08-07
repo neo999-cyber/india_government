@@ -1297,3 +1297,113 @@ number of batches have passed. If the next piece of work adds a page, the lock w
   scoreable, and it fails three of the rule's four conditions.
 - **Guard before the write, numstat declared before the edit, anchored string surgery — never
   parse-and-serialise**, which would reformat whole files whose indentation this repo did not choose.
+
+---
+
+# WALK 6 — THE CONDITION IS NOT MET. Three off-queue findings, none fixed.
+
+**Scope walked:** index · a ledger record of every verdict class (`worked` L-0151, `partly` L-0047,
+`failed`/`contested`/`no-objective` L-0043 and L-0087, `too-early` and `awaiting-adjudication` L-0086
+L-0127 L-0134, `reversed` L-0066, `undated-commitment` L-0069, `baseline-context` L-0001 which
+correctly carries no note) · a four-objective record (L-0047) · a provenance record (P-01) · a series
+(aser-std3-reading, jk-detenus-psi) · `/method` · `/contested` · `/exposure` · `/unmeasured` ·
+`/derivations` · `/counterfactual` · `/domains/employment` · `/terms/T2` · `/lenses/kashmir` · plus a
+crawl of all 661 built pages for broken internal links and render anomalies.
+
+## THE PAUSE ENTRY'S CLAIM IS WITHDRAWN
+
+The entry above this one reads, and it is wrong: *"It is done, and this is the first pause at which
+that can be said without qualification."* The architecture is **not** closed. Two of the three
+findings below are in the pairs layer and one is in the notes, and none of them was on the queue.
+
+## Finding 1 — SIXTEEN BROKEN INTERNAL LINKS, live, HTTP 404
+
+`resolvePairSide` resolves an `absenceFrom` host against **either** layer —
+`getSeries(side.absenceFrom) ?? getLedger(side.absenceFrom)`, `lib/data.ts:351` — and returns
+`hostId` as a bare string with no layer. `CoverageUsageView`'s absence branch then hardcodes the
+route: `href={`/series/${side.hostId}/`}`, `components/CoverageUsageView.tsx:58`. **Where the host is
+a ledger record the anchor points at a route that is not built.**
+
+**22 pair sides declare a ledger host. 16 render the anchor on a built series page. Every one 404s.**
+Verified live: `/series/ptr-primary-udise/` 200 and its "Declared on" link `/series/L-0106/` 404;
+`/series/govt-schools-count/` 200 and `/series/L-0109/` 404. No `/series/L-` route exists for any
+ledger id, so all 16 fail by construction. The remaining 6 do not render this branch at all.
+
+**`/unmeasured` solves the same problem correctly** — it dispatches on the layer and emits
+`/series/govt-schools-count/` against `/ledger/L-0052/`, with no `/series/L-` anywhere on the page.
+So this is the **local-fix class again**: one surface got the layer-aware route and the other did not,
+and the sweep written last phase was scoped to cross-links and never reached this.
+
+## Finding 2 — THREE NOTES OPEN WITH THE WORDING THEY WITHDRAW
+
+**L-0086, L-0127 and L-0134** all carry the chip **Awaiting adjudication** and all three open their
+*Why this verdict* block with the withdrawn wording, unmarked: *"Scored too-early because…"*,
+*"Filed too-early on the written definition…"*, *"Filed too-early because…"*. The correction that
+withdraws it arrives 639 to 939 characters later. A reader who stops after one sentence has the
+verdict's ground contradicting the verdict's chip — and the chip has LINKED to that block since two
+batches ago, which made it more reachable, not less.
+
+**Measured, not impressionistic: 3 of the 17 notes carrying a correction marker put a stale verdict
+value before the marker. The other 14 lead with the correction.** L-0151 is the correct form and is
+the control — 762 characters of correction first, then *"PREVIOUS NOTE, PRESERVED VERBATIM:"*. All
+three were verified on the live page, not from the file.
+
+`withdrawn-wording` passes on all three and is right to: **it binds presence, not position.** That is
+the guard-scope class this file already names.
+
+## Finding 3 — ELEVEN OF SIXTY PAIRS RENDER NOWHERE, AND THE CODE SAYS TWO
+
+`lib/data.ts` states in its own comment: *"Two pairs currently fail that. PR-16 is `declared-pending`
+with no sides yet and is meant to render nowhere. PR-31 is fully authored and renders nowhere
+anyway."* **Measured against the built site, eleven pairs' `framing` appears on no page at all.**
+Control: 49 of 60 do render, and six contested pairs render framing, so the field is not unrendered
+by design.
+
+The nine the comment does not reach, each with its mechanism:
+
+| pairs | mechanism |
+| --- | --- |
+| PR-34, PR-36, PR-39, PR-40, PR-43 | **no series side at all** — a provenance record's competingAccounts against a ledger absence. Structurally identical to PR-31, which the comment names as the only one |
+| PR-35, PR-37, PR-52 | **slot-0 collision.** The page renders `pairsForSeries(id)[0]`; every series naming these already has another pair in that slot (PR-33, PR-33, PR-48) |
+| PR-55 | **a side that names nothing** — side b is label-only, so `resolvePairSide` returns null and the pair never renders. PR-16 has the same shape and is marked `declared-pending`; PR-55 is not |
+
+**Why no gate sees it:** `field-render-audit` reports *38 prose + 51 non-prose fields across 3
+layers*. Pairs are the FOURTH layer, added in phase 6c, and are outside its scope by construction —
+so a pairs field that reaches no reader is invisible to the gate that exists to catch exactly that.
+
+## Minor, and reported rather than filed as a finding
+
+**L-0047's third objective reads `"emissions"`.** It is a split artefact of decomposing *"to cut fuel
+costs and emissions and reduce diesel dependence"* — the verb stayed with the previous limb. 1 of 27
+objective entries; the only other short one, L-0030's *"improve efficiency"*, is a complete phrase.
+Not a class. It matters slightly more than its size because that limb is the one carrying the
+`unmeasuredRef`.
+
+## Three candidates checked against the source and DISCARDED
+
+Recorded because a walk that reports only its finds cannot be told from one that did not run, and
+because the last walk's first finding was a false positive believed from a report.
+
+1. **`undefined` in 50 built pages.** Every instance is the English word in authored prose — *"the
+   Union's own undefined selection of cess line items"*, *"a category whose boundary is undefined"*.
+   Not a render defect.
+2. **A 330-character basis string repeated on every row of a series table.** It is `denominator`,
+   rendered inline on the face of every value **by documented design**: *"A rate whose base is a
+   click away is a rate that gets quoted without its base (P-52)."* My first reading called it
+   repeated point notes; four of that series' seven points carry no note at all.
+3. **`/derivations` is pinned to commit 49c9851, three commits stale, and is not in the build
+   chain.** All six of its figures were recomputed against the current `/data` — occurrences 288,
+   pairs 277, roots 93, records 231, naming-no-document 246, also-bare-root 138 — and **every one
+   still holds.** Not stale in substance. That it *can* drift silently is a property worth knowing
+   and is not a finding today.
+
+## What this means for the queue and the lock
+
+The design queue is unchanged at two items. **These three are architecture, not design**, and they do
+not go on it. Findings 1 and 3 are both the pairs layer and share a root: its rendering was built
+around `series` sides, and the other side shapes — a ledger `absenceFrom` host, `competingAccountsFrom`,
+label-only — are second-class in the view and unguarded by any gate.
+
+**Nothing was fixed. A find on the last walk before a pause is worth more unfixed and recorded than
+fixed in a hurry**, and fixing finding 3 in particular would need a decision about what a pair with
+no series side should render on, which is not a decision to take at the end of a batch.
