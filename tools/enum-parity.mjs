@@ -143,6 +143,12 @@ const AXES = [
   // Added phase 17 with `objectives[]`. Both are per-LIMB axes: a record does not carry a
   // measurement state or a commitment state, its objectives do.
   {
+    axis: 'independence',
+    schemas: { 'schemas/ledger.schema.json': 'independence' },
+    type: { file: TYPES, name: 'INDEPENDENCE_GRADES', kind: 'const' },
+    labels: 'INDEPENDENCE_LABELS',
+  },
+  {
     axis: 'objectives[].measurement',
     schemas: { 'schemas/ledger.schema.json': 'measurement' },
     type: { file: TYPES, name: 'OBJECTIVE_MEASUREMENTS', kind: 'const' },
@@ -186,6 +192,19 @@ const EXEMPT = {
  * declaration and quietly left out of a rule that should govern it.
  */
 const CONSTRAINT_OMISSIONS = {
+  'schemas/ledger.schema.json allOf[3].if.assessment': {
+    omits: ['contested', 'too-early', 'awaiting-adjudication', 'no-objective', 'undated-commitment', 'baseline-context'],
+    why:
+      'INDEPENDENCE IS A PROPERTY OF EVIDENCE FOR A CLAIM ABOUT AN OUTCOME, and only the four ' +
+      'evaluative values assert one. `contested` declines between readings; `no-objective` ' +
+      'establishes that nothing was claimed; `too-early` and `awaiting-adjudication` are not yet ' +
+      'scoreable; `undated-commitment` can never fall due; `baseline-context` is never scored. ' +
+      'Requiring the field on those would make 166 records assert an independence grade for a ' +
+      'claim they do not make, which is worse than an absence. `failed` and `reversed` ARE ' +
+      'governed, and that asymmetry was argued rather than assumed: Ruling 1 raised the bar for ' +
+      'agreeing with the government and said nothing about disagreeing with it, and a principle ' +
+      'about what evidence can carry has no direction.',
+  },
   'schemas/ledger.schema.json allOf[2].if.assessment': {
     omits: ['baseline-context'],
     why: 'baseline-context is never scored, so it does not require caseFor and caseAgainst',
@@ -276,7 +295,16 @@ if (process.argv.includes('--control')) {
   const removed = checkAxis(a, { schema: new Set(live.filter((v) => v !== live[0])) }).failures.filter((f) =>
     f.includes(`\`${live[0]}\``) || f.includes(`[${live[0]}]`),
   );
-  if (removed.length !== 3) bad.push(`dropping \`${live[0]}\` produced ${removed.length} findings, expected 3 (rule, type, label)`);
+  // EXPECTED COUNT DERIVED, NOT TYPED. It was hardcoded at 3 — one rule, the type, the label map —
+  // and adding a SECOND rule over the assessment axis in phase 17 made it 4, so the control failed
+  // on a change that weakened nothing. A hardcoded count of findings is a figure that goes stale
+  // whenever the schema grows a constraint, which is the same class as every other typed count this
+  // instrument has had to correct. Derived from the constraints the walker actually finds.
+  const rulesNaming = enumsForKey(JSON.parse(read(Object.keys(a.schemas)[0])), Object.values(a.schemas)[0])
+    .filter((e) => e.kind !== 'declaration' && e.values.includes(live[0])).length;
+  const wantRemoved = rulesNaming + 2; // + the type and the label map
+  if (removed.length !== wantRemoved)
+    bad.push(`dropping \`${live[0]}\` produced ${removed.length} findings, expected ${wantRemoved} (${rulesNaming} rule(s), type, label)`);
 
   if (bad.length) {
     console.error(`enum-parity --control FAILED\n${bad.map((b) => '  - ' + b).join('\n')}`);
@@ -286,7 +314,7 @@ if (process.argv.includes('--control')) {
   console.log(
     'enum-parity control: a member seeded into the schema alone is named against the type and the label map ' +
       `before any view exists (2 findings); a member dropped from the schema is named against the rule, the type ` +
-      `and the label map (3 findings) — the checker fails when it should`,
+      `and the label map (${rulesNaming} rule(s) + 2) — the checker fails when it should`,
   );
   process.exit(0);
 }

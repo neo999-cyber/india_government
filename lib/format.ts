@@ -5,6 +5,7 @@ import type {
   ContestedGround,
   Country,
   Domain,
+  Independence,
   Lens,
   ObjectiveMeasurement,
   Term,
@@ -108,6 +109,17 @@ export const COMMITMENT_STATE_LABELS: Record<CommitmentState, string> = {
   'due-and-undelivered': 'due, undelivered',
   abandoned: 'abandoned',
   unfalsifiable: 'cannot fall due',
+};
+
+/**
+ * What each grade says about the evidence. The `intra-state` label carries its qualification
+ * because the value is meaningless without it: one arm of the state measuring another is better
+ * than a body scoring itself and is not the same thing as independent evidence.
+ */
+export const INDEPENDENCE_LABELS: Record<Independence, string> = {
+  none: 'the announcing body only',
+  'intra-state': 'one arm of the state measuring another',
+  external: 'a source outside the Indian state',
 };
 
 export const TIER_LABELS: Record<Tier, string> = {

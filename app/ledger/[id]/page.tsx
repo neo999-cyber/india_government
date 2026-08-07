@@ -6,6 +6,7 @@ import {
   ASSESSMENT_LABELS,
   CONTESTED_GROUND_LABELS,
   DOMAIN_LABELS,
+  INDEPENDENCE_LABELS,
   LENS_LABELS,
   TERM_LABELS,
   TERM_SHORT,
@@ -203,6 +204,20 @@ export default async function LedgerDetail({ params }: Props) {
       ) : null}
 
       <h2>Sources</h2>
+      {/* THE INDEPENDENCE GRADE SITS HERE AND NOT BESIDE THE VERDICT, deliberately. It grades the
+          EVIDENCE, and the ladder beside it grades the artefact — two questions asked of the same
+          citations, with different answers. A chip beside the verdict would read as a demerit, and
+          `none` is a description: L-0030's single authoritative statement that no bank was
+          privatised is the right evidence, not weak evidence. */}
+      {l.independence ? (
+        <p className="independence-line">
+          <span className="label">Independence of the evidence</span>{' '}
+          {INDEPENDENCE_LABELS[l.independence]}
+          {l.independence === 'intra-state'
+            ? ' — better than a body scoring itself, and not the same thing as a source outside the state'
+            : ''}
+        </p>
+      ) : null}
       <SourceList sources={l.sources} />
 
       {refSeries.length > 0 ? (

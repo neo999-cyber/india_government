@@ -752,6 +752,15 @@ tr th:last-child {
   text-underline-offset: 2px;
 }
 
+/* The independence grade, beside the sources. Same restraint as .source-line: it is a description
+   of the evidence, not a warning about it. */
+.independence-line {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-dim);
+  margin: 0.35rem 0 0.2rem;
+}
+
 .absence-inline {
   display: inline-block;
   margin-top: 0.15rem;

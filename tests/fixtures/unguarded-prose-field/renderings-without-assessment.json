@@ -6,6 +6,7 @@
   "ledger.term",
   "ledger.type",
   "ledger.contestedGround",
+  "ledger.independence",
   "ledger.confidence",
   "ledger.domains",
   "ledger.lenses",
