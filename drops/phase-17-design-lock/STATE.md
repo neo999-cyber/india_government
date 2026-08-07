@@ -1075,3 +1075,132 @@ uncited evidence.
 4. **Cross-links from records to `/exposure` and `/contested`** — new, from this walk.
 5. `objectives[]` beyond 11, bounded by what each note already states.
 6. Nav hierarchy — thirteen destinations. **Design, and now unavoidable.**
+
+---
+
+# BATCH 7 — the three sources retrieved, the cross-links built, 39 notes authored, and the fifth walk
+
+## 1. RETRIEVAL — all three held. Citation gap, not evidence gap. No verdict withdrawn.
+
+The stated-search rule applies and the routes are named.
+
+**L-0207 — T1F, retrieved directly.** `moenr.gov.bt` returns NXDOMAIN; `www.moenr.gov.bt`
+resolves to 202.144.157.71 through a pinned resolver and served 200 with real text. `/news/`,
+`/media-center/`, `/press/` and `/category/news/` all 404. The site's own index was then
+ENUMERATED — a WordPress install — and its REST search API
+(`?rest_route=/wp/v2/search&search=Punatsangchhu`) returned post 15109, retrieved at `?p=15109`.
+It carries every figure the note asserts: Unit 6 (170 MW) as the final unit of the 1,020 MW
+project, the ceremony at the Powerhouse on 27 August 2025, and "more than 2,160 million units of
+clean energy till date".
+
+**L-0053 — T2, retrieved.** The guessed publication URL 404'd. The canonical landing page
+`worldbank.org/en/topic/transport/publication/cppi` served 200 and named the World Bank and S&P
+Global Market Intelligence; the report itself came through the World Bank documents API
+(`search.worldbank.org/api/v3/wds`) and was retrieved as a 258,598-byte PDF carrying Jawaharlal
+Nehru Port (INNSA) and Chennai (INMAA). The citation states that it corroborates the DIRECTION and
+not the figure: the index measures container vessels and the record's turnaround figures are
+all-cargo.
+
+**L-0035 — T3, retrieved.** The r.i.c.e. / Accountability Initiative panel paper "Changes in open
+defecation in rural north India: 2014-2018", served by the IDS CLTS archive rather than
+riceinstitute.org. Under the mirror rule identical bytes are the document; the path is recorded in
+the citation so a reader can weigh it. Both figures confirmed verbatim: "reduced from about 70% of
+rural people in the 2014 survey" to "about 44% of people over age two", and "did not change between
+2014 and 2018: it was about 23% in both years".
+
+All three set to `external`. 0 verdicts and 0 types moved, asserted before the write.
+
+## 2. WALK FINDING 1 IS WITHDRAWN — the report was wrong, not the site
+
+**The independence grade does not render below the source list.** It precedes it in
+`app/ledger/[id]/page.tsx`, in the build output, and on the live page, and did so in the commit that
+built the field. The walk read the order backwards and the last report was believed over the record,
+which is the standing rule applied in the wrong direction. No change was made.
+
+## 3. WALK FINDING 2 STANDS — fixed, with the sweep
+
+Four record-page marks name a corpus-wide surface. One linked to it and three did not:
+
+| mark | destination | before |
+| --- | --- | --- |
+| `Absences` | `/unmeasured` | linked already |
+| `contestedGround` | `/contested` | **not linked — fixed** |
+| `shockExposure` | `/exposure` | **not linked — fixed** |
+| independence grade | `/method#independence` | **no anchor existed — added, linked** |
+
+`/peers` and `/derivations` bind to no individual record, so there is no record-side mark to link
+from. That is the whole class enumerated from the code, not from memory.
+
+**THE RULE IS WRITTEN:** *a defect fixed on one surface is checked against every surface of the same
+kind in the same commit.* It states what it does not say — it is not "fix everything", and "same
+kind" is the defect's shape rather than the file or the phase — and it states that no gate reaches
+it, so the discipline lands on the batch report rather than on the code.
+
+## 4. THE AUTHORING PASS — 39 written, 2 REPORTED
+
+The 41 are now 2. Each note says why THIS verdict rather than the adjacent one, from the record's own
+evidence.
+
+**Two are not written, because writing them would assert something the record contradicts. Both are
+verdict changes and both are stops.**
+
+- **L-0069** carries the 2018-19 claim of setting MSP at 1.5 times cost, and its own `caseAgainst`
+  says the claim does not hold on the cost basis the recommendation intended. That is a stated,
+  quantified commitment with no deadline, which **Ruling 3** gives its own value,
+  `undated-commitment` — a value the corpus already carries on one record. A note reading "the
+  record states no objective" would be false against the record's own text.
+- **L-0087**'s `caseAgainst` names Article 93 and a Deputy Speaker's chair vacant for a full term.
+  **Ruling 5** makes a duty imposed by an external authority a legitimate objective for scoring where
+  the record names the instrument and the duty, and this record names both. The referral-rate
+  headline has no target; the Article 93 limb does. One scoreable limb is enough to make a
+  no-objective note false.
+
+**One discipline correction inside the pass.** Eight `no-objective` notes were drafted as "nobody
+announced a target" and rewritten to "the record states no objective to score against". The first
+form is an absence-of-publication claim about the world and **rule C.5 requires a stated search for
+those**; the second is a claim about the record, which is what the verdict actually asserts.
+
+Numstat declared before the edit and matched exactly: 39 added, 0 deleted, across nine files.
+`reachability` moved 1745 to 1784.
+
+## 5. THE WALK — the fifth, and the fifth to find something new
+
+**The stopping condition is NOT met.**
+
+### What it found that was not on the queue
+
+**A CAVEAT RENDERS IN FULL INSIDE A TABLE CELL, ON SIX LIST SURFACES.** `/ledger`, `/contested`,
+`/terms/[term]`, `/domains/[domain]`, `/lenses/[lens]` and `/series` all print the complete caveat
+text in the Record column, between one row's title and the next. It is not a rare case: **103 of 223
+ledger records carry a caveat, median 375 characters, maximum 1,312, and 68 are over 300** — plus
+128 series caveats, 92 of them over 300. On `/ledger`, L-0164's row runs the title straight into a
+591-character caveat and then into the type and domain columns as one unbroken string.
+
+The caveat REACHING the reader is right and rule 3a requires it. What is wrong is the form on a
+compact list: a paragraph of prose inside a table cell destroys the scan the table exists to
+provide. This is the caveat's fourth position problem and the first one that is about a list rather
+than about reading order.
+
+**It is design work and is left on the queue**, on the same ground the operator gave for the nav:
+what a caveat should become on a list surface — a marker, a truncation with a route, a separate
+column — is a design decision, not an architectural one.
+
+### What is now right that was not
+
+- Every scored record's verdict tag routes to a stated ground. 39 records gained one; 2 are reported
+  above; the 11 `baseline-context` records are never scored and correctly carry a plain tag.
+- A record with an exposure, a contested ground or an independence grade routes to the page that
+  puts it in context.
+- Three verdicts that rested on evidence the corpus did not hold now rest on evidence it holds.
+
+### What did not change, and is right
+
+The index still leads with counts and no total. `/method` still says no part of this has been checked
+by anyone who did not write it.
+
+## Queue
+
+1. **The caveat's form on list surfaces** — new, from this walk. Design phase.
+2. **The nav at thirteen destinations** — design phase, on the operator's ruling.
+3. **L-0069 and L-0087** — operator's call. Each is one verdict.
+4. `objectives[]` backfill beyond 11 of 43.
