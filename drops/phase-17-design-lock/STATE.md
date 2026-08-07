@@ -753,3 +753,197 @@ that the corrections have been running at roughly one per batch and have not yet
 3. `independence` as a rule field — phase 17.
 4. The `assessmentNote` label-versus-definition question — schema description or 41 records.
 5. **Then design opens.**
+
+---
+
+# BATCH 5 — the schema pair, the backfill, and the two closing reports
+
+**Phase 17 work.** `objectives[]` and the `claimAtLaunch` vocabulary landed together in one commit
+with schema, type, label maps, view, guarded list and gate. **0 verdicts moved, 0 types moved.**
+
+## Built
+
+**The render guard proven on both new axes before any view existed.** A fifth member seeded into
+each schema enum alone produced two findings apiece — against the type and against the label map —
+with no record carrying it. `enum-parity`: **64 members across 10 axes.**
+
+**The pairing the two fields were designed together to prevent** is enforced by
+`tools/objectives.mjs`, in the build with nine two-sided controls: a record whose `claimAtLaunch`
+opens `NONE ANNOUNCED` may not carry objectives, and a record carrying objectives must carry a claim
+or be a **Ruling 5 imposed duty**, exempted by name — L-0095, L-0106, L-0108, each with its
+instrument.
+
+**`claimAtLaunch` is NOT made required.** The vocabulary is a leading-token convention. Requiring it
+would break 137 records in one commit and that backfill is authoring, not migration — **stated in the
+field's own description so a later cycle does not read the optionality as an oversight.**
+
+## The backfill — 11 records, 27 objectives, and what was deliberately left
+
+**Gate-emitted:** *223 ledger records · 11 carry objectives · 27 entries · 11 multi-objective · 11
+objectives the verdict does not rest on · met 8 · unmeasured 10 · not-met 8 · unmeasurable-no-event
+1 · 3 imposed duties exempt.*
+
+**Every `text` is a verbatim span of the record's own `claimAtLaunch`, asserted before the write.
+Every `measurement` and `grounds` flag is transcribed from what the record's `assessmentNote`
+already states.** The set is the records that satisfy both conditions.
+
+**32 of the 43 are NOT backfilled, and that is a judgement rather than a shortfall.** Their claims do
+not decompose into verbatim spans, or their notes do not state the limb structure, and supplying
+either would be **inventing a decomposition** — the corpus's own discipline forbids it, and a
+`grounds` flag guessed from a one-sentence claim is exactly the *prior is not a value* error. Three
+that looked eligible were dropped on inspection: **L-0051** treats viability as one objective with
+three means; **L-0050**'s second limb is an absence, not an announced objective; **L-0053**'s second
+limb (navigable waterways) does not appear in its claim at all.
+
+**AND THE GATE CAUGHT AN ERROR IN MY OWN BACKFILL, IN THE BATCH THAT BUILT IT.** L-0041's doubling
+limb is measured on the trajectory and missed — `not-met` — and I had it pointing at an absence. *A
+measured objective has no absence to point at.* Corrected before the commit.
+
+## `assessmentNote` — the view was right and the schema was stale
+
+**Measured before it was changed, because the instruction carried a stop condition.** Of the 171
+records carrying a note: **136 carry verdict-reasoning language, 6 carry vocabulary-fit language.**
+The opening clauses settle it — *"Assessed failed on the written definition"*, *"Filed too-early
+because"*, *"this record previously carried a verdict with no stated reasoning"*. **The description
+described a minority use as the whole of the field.** Corrected, with the previous wording quoted.
+
+**This is the inverse of the usual direction and worth naming**: every other mismatch this cycle has
+been a view lagging the corpus. Here the corpus led and the contract lagged.
+
+**41 scored records carry no note at all** — 23 `contested`, 17 `no-objective`, 1 `too-early`. **Those
+verdicts stand without stated ground, which is the one thing this instrument says a scored record may
+not do.** Queued as authoring.
+
+---
+
+# REPORT — what Ruling 2 becomes enforceable against, and the `worked` record
+
+## Ruling 2 is now a gate, and its reach is smaller than "enforced"
+
+**`tools/objectives.mjs` asserts it mechanically**: a record with more than one objective, any of
+them unmeasured, may not be `worked`. Two-sided control on both directions.
+
+**But it binds only records carrying `objectives[]`.** 11 of 223 do. **So the honest statement is
+that Ruling 2 is enforced on the records that have the field and is silent on the rest** — which is
+in the gate's own header, because *"Ruling 2 is enforced"* would be the larger claim and the false
+one. **Enforcement grows with the backfill and not with the gate.**
+
+**What it makes checkable that was a per-record defence:** for those 11, *the verdict rests on limb
+two and not limb four* is now a value a query reads rather than a sentence a reader must find. L-0011
+announces four objectives, the verdict rests on two, and both facts are now data.
+
+## The one `worked` record's self-asserted compliance is NOT yet checkable, and the reason is exact
+
+**L-0151 asserts *"No limb of the recommendation is unmeasured"* and it carries no `objectives[]`.**
+So the gate has nothing to check the sentence against, and the assertion remains a claim a reader
+must accept.
+
+**Backfilling it would not settle it either, and this is the part worth stating.** L-0151's
+`claimAtLaunch` announces **one** objective — 42 per cent of the divisible pool — on *four stated
+considerations*, which are considerations and not limbs. **A single-objective record is outside
+Ruling 2 by construction.** So the sentence would become *true and vacuous*: correct, checkable, and
+about a rule that does not reach the record.
+
+**Ruling 2's live population is zero and remains zero.** It is a prospective rule with a gate now
+waiting for it, which is the right state for a rule written before the case arrives.
+
+---
+
+# REPORT — `independence`, before building
+
+**SCOPE: data/ledger, 223 records. Field tests, exact.**
+
+## What it holds
+
+Three values on the 57 evaluative records — `worked` 1, `partly` 39, `failed` 16, `reversed` 1:
+
+- **`none`** — every source bearing on the claim is the announcing body or its own ministry.
+- **`intra-state`** — a different institution of the same state measured it **and published the
+  figure as part of its own statutory or routine function**, with the source bearing on the limb in
+  dispute and **the document actually held**. Ruling 1a's conditions are part of the value, not
+  flags beside it.
+- **`external`** — at least one source outside the Indian state bears on the claim.
+
+**No fourth value for "not assessed"**: that is what the field's absence means, and a fourth would
+let a record assert that it declined to look.
+
+## What it makes checkable that is currently a per-record defence
+
+**The 6 August pass cannot be reproduced from the data.** Nine records state an independence finding
+in `assessmentNote`, **in five distinguishable forms** — a verdict on a named test, a labelled
+clause, a search narration, a degree statement, and one that never uses the word. **212 carry no
+statement of any kind.** A reader who wants to know which records rest on the announcing body must
+re-derive it by hand, from citations, for every record.
+
+**A weak mechanical check exists and its weakness is measurable.** `external` requires at least one
+citation at `T1F`, `T2`, `T3` or `T4`; `none` requires that no such citation exists. **15 of the 57
+evaluative records carry a non-T1 citation and 42 carry only T1** — so the check would partition the
+class and catch contradictions, and it would catch nothing else: **tier grades the artefact and
+independence grades the relationship**, so a T1 CAG audit is independent of a ministry and a T4
+press relay of that ministry's release is not. The gate must say so in its own header.
+
+## Does it change any surface?
+
+**Almost nothing, and it should be built anyway.**
+
+- `/method` already explains the standard in prose better than a per-record chip would, and a chip
+  reads as a demerit where the grade is a description — **L-0030's `none` is *correct* evidence, not
+  weak evidence.**
+- The one place it would show is the sources block, beside the tier, where the two questions asked of
+  the same citation would sit together.
+
+**So it is a rule field.** Its value is that a ruling which moved nine verdicts becomes reproducible
+from the data instead of resting on nine prose sentences in five vocabularies. **That is the whole of
+the case and it is sufficient** — the corpus's most consequential pass is currently unauditable.
+
+**NOT BUILT THIS BATCH.** The authorisation at the top of this instruction names one schema change —
+`objectives[]` and the `claimAtLaunch` vocabulary — and the sizing says one schema pair. **A second
+schema change would exceed both**, and the standing stop is a schema change beyond what is
+authorised. Reported and ready.
+
+---
+
+# REPORT — is the architecture done?
+
+**No, and the stopping condition is not an empty inventory. Three walks each found something the
+previous one missed** — including this batch's `assessmentNote` label mismatch, which appeared in no
+inventory because it was a mismatch between two things that were each individually right.
+
+## What would count as evidence that the surface set has stopped moving
+
+**Not "the queue is empty".** The queue has been empty twice and refilled from a walk both times.
+Four tests, and they are about the *rate and kind* of what a walk finds rather than about a count:
+
+1. **A WALK THAT FINDS ONLY THINGS ALREADY ON THE QUEUE.** Every walk so far has produced a novel
+   item — the counterfactual page, the absence reading order, the label mismatch. **A walk whose
+   findings are all already known is the first real signal**, and it has not happened once.
+2. **NO SURFACE CONTRADICTING THE CORPUS.** Twice a page has stated something the corpus had
+   withdrawn — `/counterfactual` promising a declined view, `/method` stopping at Ruling 4. **The
+   point-of-change rule now binds records; nothing binds pages.** A gate over surfaces, or a walk
+   that finds none, is the second signal.
+3. **THE LAST TWO FIELDS LANDED AND BACKFILLED.** `independence`, and `objectives[]` past 11 of 43.
+   **A field at 26 per cent coverage is a surface still moving**, because every backfill batch
+   changes what a record page shows.
+4. **41 SCORED RECORDS WITH NO STATED GROUND, CLOSED.** They are the largest content gap the site
+   now exposes rather than hides, and the verdict chip's anchor points at nothing on each of them.
+
+## What I would defer to design regardless
+
+Nav naming and hierarchy — **eight top-level destinations, added one at a time by whichever finding
+needed a home**. And the `basis` property, the shock object, and any composite: all previously
+refused and none should be revisited by a design phase.
+
+## The honest estimate
+
+**Two authoring batches and one schema change.** `independence`; `objectives[]` from 11 to as far as
+the records' own notes support; the 41 notes. **Then a walk that finds nothing new — and if it finds
+something, that is the answer to whether the architecture was done.**
+
+---
+
+## Queue
+
+1. `independence` — reported, authorised in principle, not built.
+2. `objectives[]` backfill beyond 11 — authoring, bounded by what each note already states.
+3. The 41 scored records with no `assessmentNote`.
+4. **Then a walk. If it finds nothing new, design opens.**
