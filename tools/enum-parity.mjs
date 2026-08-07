@@ -140,6 +140,20 @@ const AXES = [
   // Added phase 16 with the exposure field. Two axes on one field, deliberately: the role and the
   // adjudication are orthogonal, and the whole reason the field was structured is that one prose
   // string was carrying both.
+  // Added phase 17 with `objectives[]`. Both are per-LIMB axes: a record does not carry a
+  // measurement state or a commitment state, its objectives do.
+  {
+    axis: 'objectives[].measurement',
+    schemas: { 'schemas/ledger.schema.json': 'measurement' },
+    type: { file: TYPES, name: 'OBJECTIVE_MEASUREMENTS', kind: 'const' },
+    labels: 'OBJECTIVE_MEASUREMENT_LABELS',
+  },
+  {
+    axis: 'objectives[].commitmentState',
+    schemas: { 'schemas/ledger.schema.json': 'commitmentState' },
+    type: { file: TYPES, name: 'COMMITMENT_STATES', kind: 'const' },
+    labels: 'COMMITMENT_STATE_LABELS',
+  },
   {
     axis: 'shockExposure[].role',
     schemas: { 'schemas/ledger.schema.json': 'role' },

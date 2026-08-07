@@ -153,6 +153,21 @@
   "type": "reform",
   "summary": "Capital infusion of ₹3.31 lakh crore into public sector banks between FY2016-17 and FY2020-21, alongside consolidation reducing the number of PSBs from 27 to 12 through the SBI associate merger (2017), Bank of Baroda-Vijaya-Dena (2019), and the August 2019 mega-merger of 10 banks into 4 effective April 2020.",
   "claimAtLaunch": "Recapitalise banks to absorb recognised losses and resume lending; consolidate to create fewer, stronger, more efficient banks with national scale.",
+  "objectives": [
+    {
+      "text": "Recapitalise banks to absorb recognised losses and resume lending",
+      "quantified": false,
+      "measurement": "met",
+      "grounds": true
+    },
+    {
+      "text": "consolidate to create fewer, stronger, more efficient banks with national scale",
+      "quantified": false,
+      "measurement": "unmeasured",
+      "grounds": false,
+      "unmeasuredRef": 0
+    }
+  ],
   "whatHappened": "The October 2017 package of ₹2.11 lakh crore was the centrepiece, roughly ₹1.35 lakh crore of it through recapitalisation bonds. PSBs swung from a record aggregate loss of about ₹85,390 crore in FY2017-18 to record net profit of ₹1,78,364 crore in FY2024-25, up 26% year on year, with SBI contributing over 40%. No government infusion has been required since FY2020-21. PSB capital adequacy reached 16.4% by June 2025.",
   "assessmentNote": "RESCORED FROM worked TO partly, 2026-08-06, on the ground two adversarial reviews reached independently and this instrument then confirmed: two objectives were announced and one is not established. Recapitalisation is evidenced; efficiency gains from consolidation, as distinct from the credit cycle and the rate environment, are not measured. There is no centrepiece exception and the note that explained the earlier choice documented a departure from the definition rather than authorising one. ON INDEPENDENCE: the qualifying source would be the RBI Financial Stability Report, whose CRAR series is the RBI’s own statutory publication and does bear on recapitalisation — but it is NOT HELD. Retrieval was attempted on 2026-08-06 through six named routes and failed at every one; see the crar series for the routes. The test is not passed on a document the instrument does not have.\n\nPREVIOUS NOTE, PRESERVED VERBATIM: Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. TWO OBJECTIVES WERE ANNOUNCED AND THEY DO NOT RESOLVE THE SAME WAY. Recapitalisation: met decisively and measured - public-sector banks moved from an aggregate loss of about 85,390 crore in FY2017-18 to net profit of 1,78,364 crore in FY2024-25, capital adequacy reached 16.4 per cent by June 2025, and no government infusion has been required since FY2020-21. Five years without further capital is the strongest available evidence that the capital was adequate and correctly deployed. Consolidation: NOT established. The case against is that the profitability recovery tracks the credit cycle and rate environment rather than merger synergies, and that public-sector banks continued losing market share throughout; no evidence separating merger effects from cycle effects appears in this record and it is entered below as an absence. Worked is therefore asserted on the recapitalisation objective, which was the centrepiece and is decisively met, and NOT on consolidation. The fiscal opacity of the recapitalisation bonds - excluded from the headline deficit while adding to internal debt - is a criticism of the instrument's accounting, not of whether the banks were capitalised, and is left in the case against where it belongs.",
   "assessment": "partly",
@@ -280,6 +295,27 @@
   "type": "reform",
   "summary": "The JAM stack — Pradhan Mantri Jan Dhan Yojana bank accounts, Aadhaar identity, and mobile connectivity — underpinning Direct Benefit Transfer and the Unified Payments Interface.",
   "claimAtLaunch": "Universal bank account access, elimination of ghost and duplicate welfare beneficiaries through biometric authentication, and a public payments rail owned by no private intermediary.",
+  "objectives": [
+    {
+      "text": "Universal bank account access",
+      "quantified": false,
+      "measurement": "met",
+      "grounds": true
+    },
+    {
+      "text": "elimination of ghost and duplicate welfare beneficiaries through biometric authentication",
+      "quantified": false,
+      "measurement": "unmeasured",
+      "grounds": false,
+      "unmeasuredRef": 1
+    },
+    {
+      "text": "a public payments rail owned by no private intermediary",
+      "quantified": false,
+      "measurement": "met",
+      "grounds": true
+    }
+  ],
   "whatHappened": "56.77 crore Jan Dhan accounts by October 2025, holding ₹2.73 lakh crore, 56% held by women and 66% rural or semi-urban. UPI grew from 535 crore transactions worth ₹8.77 lakh crore in FY2018-19 to 24,162 crore transactions worth ₹314 lakh crore in FY2025-26, around 85% of India's retail digital payments, with India accounting for roughly 49% of global real-time payment volume. ₹6.9 lakh crore was transferred via Jan Dhan accounts in FY2024-25 alone.",
   "assessmentNote": "RESCORED FROM worked TO partly, 2026-08-06. Three objectives were announced: universal account access, elimination of ghost and duplicate beneficiaries through biometric authentication, and a public payments rail. Two are evidenced. The third is not measured at all, and neither is its counterpart — eligible people excluded by authentication failure — so the record cannot say whether the deduplication removed ghosts, claimants, or both. ON INDEPENDENCE: UPI volumes are published by NPCI as a routine function and would qualify, but this record reaches them through a news account of the Financial Stability Report rather than through NPCI, and the account is T4. Account counts come from the scheme’s own portal, which is the announcing body.\n\nPREVIOUS NOTE, PRESERVED VERBATIM: Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. THREE OBJECTIVES WERE ANNOUNCED; TWO ARE MEASURED AND MET, AND THE THIRD IS THE ONE THE CASE AGAINST IS ABOUT. Account access: 56.77 crore Jan Dhan accounts by October 2025, 56 per cent held by women and 66 per cent rural or semi-urban, with adult account ownership rising from 53 per cent in 2014 to near-universal. A public payments rail: UPI at 24,162 crore transactions worth 314 lakh crore in FY2025-26, about 85 per cent of retail digital payments, owned by no private intermediary. Both met on their own terms and at a scale no comparable country has matched. ELIMINATION OF GHOST AND DUPLICATE BENEFICIARIES - the third announced objective - IS NOT MEASURED HERE, and neither is its cost. The case against records documented authentication failures denying rations to the elderly, manual labourers and the disabled; this record carries no count of either the duplicates removed or the eligible people excluded, and both are entered below. Worked is asserted on the two measured objectives. It is NOT a finding that the system excluded nobody, and the exclusion question is live and unquantified in this record.",
   "assessment": "partly",
@@ -335,6 +371,21 @@
   "type": "reform",
   "summary": "Budget 2021-22 announced the intent to privatise two public sector banks alongside the strategic sale of IDBI Bank.",
   "claimAtLaunch": "Reduce the state's footprint in banking and improve efficiency by transferring two PSBs to private ownership.",
+  "objectives": [
+    {
+      "text": "Reduce the state's footprint in banking",
+      "quantified": true,
+      "measurement": "not-met",
+      "grounds": true,
+      "commitmentState": "due-and-undelivered"
+    },
+    {
+      "text": "improve efficiency",
+      "quantified": false,
+      "measurement": "unmeasurable-no-event",
+      "grounds": false
+    }
+  ],
   "whatHappened": "Five years on, no public sector bank has been privatised. The IDBI Bank strategic sale — the government's 30.48% plus LIC's 30.24%, totalling 60.72% — advanced through FY2025-26 with revised bids from Fairfax Financial Holdings and Emirates NBD under evaluation by mid-2026, valued at around US$5.7 billion and targeted for FY27. No legislation enabling broader PSB privatisation has been introduced.",
   "assessmentNote": "Written 2026-08-05 (adversarial triage 3); this record previously carried a verdict with no stated reasoning. FAILED IS ASSERTED ON DELIVERY AGAINST A SPECIFIC ANNOUNCED COMMITMENT, AND ON NOTHING ELSE. Two public sector banks were to be privatised. Five years on none has been, no enabling legislation has been introduced, and the one live transaction is IDBI Bank - which the government's own classification does not count as a public sector bank for this purpose, and which was still at bid-evaluation stage in mid-2026. A commitment announced in a Budget speech, left formally alive and not acted on, is the announced-but-not-delivered shape this project records as failure. THE MERITS OF PRIVATISING ARE NOT SCORED. The case for is that the rationale weakened on its own terms once the banks returned to profitability and full capital adequacy without a sale, and that restraint may be judgement rather than failure of will. This record does not adjudicate that; it records that the stated intention was neither delivered nor withdrawn. A reader who thinks the policy was wrong should read this verdict as being about the commitment, not about the policy.",
   "assessment": "failed",

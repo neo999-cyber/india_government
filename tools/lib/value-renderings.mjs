@@ -66,6 +66,8 @@ const DOMAIN = labelMap(FORMAT, 'DOMAIN_LABELS');
 const LENS = labelMap(FORMAT, 'LENS_LABELS');
 const COUNTRY = labelMap(FORMAT, 'COUNTRY_LABELS');
 const CONTESTED_GROUND = labelMap(FORMAT, 'CONTESTED_GROUND_LABELS');
+const OBJ_MEASUREMENT = labelMap(FORMAT, 'OBJECTIVE_MEASUREMENT_LABELS');
+const COMMITMENT_STATE = labelMap(FORMAT, 'COMMITMENT_STATE_LABELS');
 const REASON_KIND = labelMap(MARKS, 'REASON_KIND_LABELS');
 const DISPUTE_KIND = labelMap(MARKS, 'DISPUTE_KIND_LABELS');
 const EXPOSURE_ROLE = labelMap(MARKS, 'EXPOSURE_ROLE_LABELS');
@@ -80,6 +82,8 @@ export const LABEL_MAPS = {
   LENS_LABELS: LENS,
   COUNTRY_LABELS: COUNTRY,
   CONTESTED_GROUND_LABELS: CONTESTED_GROUND,
+  OBJECTIVE_MEASUREMENT_LABELS: OBJ_MEASUREMENT,
+  COMMITMENT_STATE_LABELS: COMMITMENT_STATE,
   REASON_KIND_LABELS: REASON_KIND,
   DISPUTE_KIND_LABELS: DISPUTE_KIND,
   EXPOSURE_ROLE_LABELS: EXPOSURE_ROLE,
@@ -117,6 +121,12 @@ export const RENDERINGS = {
   'ledger.provenanceRefs': identity(),
   'ledger.sources[].url': identity(),
   'ledger.sources[].tier': labels(TIER),
+  'ledger.objectives[].text': identity(),
+  'ledger.objectives[].quantified': phrase({ true: 'quantified', false: 'not quantified' }),
+  'ledger.objectives[].measurement': labels(OBJ_MEASUREMENT),
+  'ledger.objectives[].grounds': phrase({ true: 'the verdict rests on this', false: 'the verdict does not rest on this' }),
+  'ledger.objectives[].commitmentState': labels(COMMITMENT_STATE),
+  'ledger.objectives[].unmeasuredRef': number(),
   'ledger.shockExposure[].event': identity(),
   'ledger.shockExposure[].role': labels(EXPOSURE_ROLE),
   'ledger.shockExposure[].adjudication': labels(EXPOSURE_ADJ),

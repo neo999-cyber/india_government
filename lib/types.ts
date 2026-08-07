@@ -185,6 +185,59 @@ export interface ShockExposure {
   why: string;
 }
 
+/**
+ * Whether an announced objective was measured, and what the measurement showed.
+ *
+ * `not-met` against `unmeasured` is the distinction that decided Ruling 2 — *a limb measured and
+ * failed and a limb never measured are different situations* — and L-0222 turns on it: both limbs
+ * dated, both fallen due, both missed, so `partly` was refused.
+ *
+ * `unmeasurable-no-event` lives here rather than on `Unmeasured.reasonKind` because it is a property
+ * of the OBJECTIVE and not of a holder. The `reasonKind` ladder asks whether the data exists, of
+ * whoever would hold it; here nobody holds anything because the event never happened. L-0030 is the
+ * case. **It must not become an excuse** — that record is `failed` BECAUSE the transfer did not
+ * happen, and the same fact may not be re-used to convert the finding into a measurement gap.
+ */
+export const OBJECTIVE_MEASUREMENTS = ['met', 'not-met', 'unmeasured', 'unmeasurable-no-event'] as const;
+export type ObjectiveMeasurement = (typeof OBJECTIVE_MEASUREMENTS)[number];
+
+/**
+ * The commitment state of one objective — PER LIMB, which is the corpus's own usage: L-0221 and
+ * L-0223 both file a limb as "commitment state (a)" while the record carries a verdict.
+ *
+ * Since Ruling 3, `unfalsifiable` no longer implies `no-objective`: L-0209 is `undated-commitment`,
+ * so the state and the verdict are two axes. `abandoned` has no member — absence of news is not
+ * abandonment, and what evidence of abandonment looks like is an open question.
+ */
+export const COMMITMENT_STATES = [
+  'not-yet-due',
+  'due-and-undelivered',
+  'abandoned',
+  'unfalsifiable',
+] as const;
+export type CommitmentState = (typeof COMMITMENT_STATES)[number];
+
+/**
+ * One announced objective, and whether the verdict rests on it.
+ *
+ * `grounds` is Ruling 9's core requirement and was INVISIBLE UNTIL THE RULE WAS WRITTEN: a field
+ * designed before it would have recorded measurement and not relevance. Four records already state
+ * it in prose — L-0011, L-0016, L-0041, L-0030 — and `grounds: false` is not a criticism of the
+ * record, only a fact a reader is entitled to see.
+ */
+export interface Objective {
+  /** The objective in the announcement's own words, or the duty in the instrument's own. */
+  text: string;
+  /** Does it carry a number or a date? Unquantified is a defect of the announcement, not the reporting. */
+  quantified: boolean;
+  measurement: ObjectiveMeasurement;
+  /** Does the verdict rest on this objective? */
+  grounds: boolean;
+  commitmentState?: CommitmentState;
+  /** Index into the record's own `unmeasured[]`, where this objective's absence is declared. */
+  unmeasuredRef?: number;
+}
+
 export interface Unmeasured {
   /** The thing that is not measured, stated positively. */
   what: string;
@@ -500,6 +553,7 @@ export interface LedgerRecord {
   type: LedgerType;
   summary: string;
   claimAtLaunch?: string;
+  objectives?: Objective[];
   whatHappened?: string;
   assessment: Assessment;
   caseFor?: string;
