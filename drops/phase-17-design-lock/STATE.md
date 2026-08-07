@@ -947,3 +947,131 @@ something, that is the answer to whether the architecture was done.**
 2. `objectives[]` backfill beyond 11 — authoring, bounded by what each note already states.
 3. The 41 scored records with no `assessmentNote`.
 4. **Then a walk. If it finds nothing new, design opens.**
+
+---
+
+# BATCH 6 — `independence` built, and the walk
+
+## Built
+
+**`independence` — schema, type, label map, view and gate in one commit.** Render guard proven on the
+axis before any view existed: a fourth member seeded into the schema alone was named against
+`INDEPENDENCE_GRADES` and `INDEPENDENCE_LABELS`. **`enum-parity`: 67 members across 11 axes.**
+
+**It renders beside the SOURCES, not beside the verdict** — it grades the evidence, and a chip beside
+a verdict reads as a demerit when `none` is a description. Verified live: *"one arm of the state
+measuring another"* on L-0151, *"the announcing body only"* on L-0030, *"a source outside the Indian
+state"* on L-0013, and nothing at all on L-0207, which is unvalued.
+
+**Three guards fired before the field was populated, all correctly.**
+
+1. **`enum-parity` on an undeclared omission** — the new conditional restricting the field to the
+   evaluative class omits six `assessment` values, and the omission had to be declared with its
+   reason. That reason is now in the file: independence is a property of evidence for a claim about
+   an outcome, and requiring it on the other six would make **166 records assert a grade for a claim
+   they do not make.**
+2. **The tier test had to be narrowed to T1F/T2/T3/T5.** T4 holds both ASER — an independent survey —
+   and a press relay of a ministry release, so it establishes **nothing in either direction**, and
+   including it would have produced false failures on both sides. Two controls now assert that T4
+   decides neither.
+3. **`enum-parity`'s own control had a hardcoded expected count** — 3 findings for a dropped member,
+   one rule plus type plus label — and a *second* rule over the assessment axis made it 4. **The
+   control failed on a change that weakened nothing.** The expectation is now derived from the
+   constraints the walker finds, which is the same correction this instrument has made to every
+   other typed count.
+
+## The backfill — 52 of 57, by reading
+
+**Graded by reading each record's source names, never by inferring from tier.** `none` 23 ·
+`intra-state` 19 · `external` 10 · **5 unvalued.**
+
+**All nine records that already state a finding in prose were reproduced** — the control held.
+
+**Two unvalued because the vocabulary has no value for them**: L-0011 and L-0036 each reach a
+non-announcing institution **only through a relay**, so the intra-state test fails on *held* and
+`none` is false. Forcing a value would assert a judgement nobody made.
+
+## THE FIRST LIVE RUN FOUND THREE RECORDS RESTING ON EVIDENCE THE CORPUS DOES NOT HOLD
+
+**Three of the nine control records failed the check, and it is a finding rather than a gate defect.**
+Each names an independent source in its `assessmentNote` and **cites none of them**:
+
+| record | what the note names | what `sources[]` holds |
+|---|---|---|
+| **L-0035** | *"the most critical independent source"*, and *"an independent panel revisiting its own 2014 households"* | **one** T1 citation: the Swachh Bharat Mission dashboard |
+| **L-0053** | *"The World Bank and S&P Global Container Port Performance Index 2025 … across more than 400 ports"* | **one** T1 citation: the Ministry of Ports |
+| **L-0207** | *"The Ministry of Energy and Natural Resources of the Royal Government of Bhutan"* — a T1F primary — and Bhutan Broadcasting Service | **two** T1 citations, both PIB |
+
+**Ruling 1a is explicit: *the qualifying document has to be HELD*, and *a test passed against a
+source the instrument does not hold is not passed*.** The 6 August pass rescored these records partly
+on evidence the corpus does not carry.
+
+**They are left unvalued and the discrepancy is the finding.** Not `none` — a source was found. Not
+`external` — the record does not hold it. **This is exactly what *"the pass cannot be reproduced from
+the data"* meant, now demonstrated rather than asserted**, and it appeared on the field's first live
+run against real records.
+
+**It is verdict-adjacent and no verdict moved.** Whether those rescorings survive the citations being
+retrieved — or not being retrievable — is an operator question and a retrieval, not a grading one.
+
+---
+
+# THE 41 NOTES — ATTEMPTED AND DEFERRED, WITH THE REASON
+
+**Not done, and it is a clean partial rather than a thin pass.** Authoring 41 verdict notes requires
+reading 41 records' evidence in full and writing a ground for each. **Producing them at the rate this
+batch had left would replace *a claim shown without its argument* with *an argument shown without its
+evidence*, which is the worse of the two** — and the standing rule is explicit: *a clean partial
+beats thin records; close what is done, state what is not, and say whether it was attempted.*
+
+**The set is exactly enumerated and unchanged**: 23 `contested`, 17 `no-objective`, 1 `too-early`.
+**It is one authoring batch, and it is the last content gap the architecture exposes.**
+
+---
+
+# THE WALK — and it did NOT find only things already on the queue
+
+**The stopping condition is not met. This is the fourth walk and the fourth to find something new.**
+
+## What a reader now sees that they did not
+
+- A record reads: **verdict chip (linked to its ground) → caveat → summary → what is not measured →
+  the claim → the objectives it decomposes into, each flagged for whether the verdict rests on it →
+  both cases → why this verdict → sources → the independence of the evidence.** Verified live on
+  L-0026.
+- **Thirteen nav destinations.** `/contested`, `/exposure` and the rewritten `/counterfactual` are
+  all new this phase.
+
+## What it found that was NOT on the queue
+
+1. **THE INDEPENDENCE GRADE RENDERS BELOW THE SOURCES, AFTER THE FOOTER OF THE ARGUMENT.** Placing it
+   beside the citations was right; placing it *after* the whole source list means a reader meets the
+   grade only after scrolling the evidence. **The same reading-order defect this phase has now fixed
+   twice** — for absences and for the verdict chip — reappearing on a surface built in the batch that
+   fixed it the second time. **It should precede the source list, not follow it.**
+2. **`/exposure` and `/contested` are not linked from any record they describe.** A record with an
+   exposure entry does not link to the page that puts it in context, and a `contested` record does
+   not link to the page that says what kind of contest it is. **The pages are reachable only from the
+   top nav** — the same defect the absence cross-link fixed for `/unmeasured`, unfixed on the two
+   pages built after it.
+3. **The nav is now thirteen items and is the accretion problem stated plainly.** Previously flagged
+   as *defer to design*; at thirteen it is no longer a question of taste.
+
+## What did not change, and is right
+
+The index still leads with counts. The one-`worked` framing is untouched. `/method` still says no
+part of this has been checked by anyone who did not write it — **and that sentence is now more
+load-bearing, not less**, because the independence field has just shown three records resting on
+uncited evidence.
+
+---
+
+## Queue
+
+1. **The three uncited independence sources** — retrieve and cite, or withdraw the grade the note
+   asserts. **Verdict-adjacent; operator's call.**
+2. The 41 `assessmentNote` records — one authoring batch.
+3. **The independence grade above the source list, not below it** — new, from this walk.
+4. **Cross-links from records to `/exposure` and `/contested`** — new, from this walk.
+5. `objectives[]` beyond 11, bounded by what each note already states.
+6. Nav hierarchy — thirteen destinations. **Design, and now unavoidable.**
