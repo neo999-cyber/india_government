@@ -1402,3 +1402,217 @@ tr th:last-child {
     max-width: none;
   }
 }
+
+/* --- phase 18: the scroll story (§11.3) -----------------------------------
+ *
+ * THE DEFAULT STATE IS "EVERYTHING VISIBLE". JavaScript only dims — see StoryScroller's header.
+ * So none of the rules below hide content; the muted state is a reduction in emphasis that a
+ * no-JS, reduced-motion or printing reader never enters.
+ */
+
+.story-lead {
+  font-size: 2rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.story-standfirst {
+  color: var(--ink-soft);
+  border-left: 2px solid var(--rule-strong);
+  padding-left: 0.85rem;
+  max-width: var(--measure);
+}
+
+.scroller {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  gap: 0 2.5rem;
+  align-items: start;
+  margin: 2rem 0 3rem;
+}
+
+/* The figure is first in source order so a reader without CSS meets the chart before the steps
+   that describe it. Grid puts it on the right visually without reordering the document. */
+.scroller-figure {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.scroller-sticky {
+  position: sticky;
+  top: 1.5rem;
+}
+
+.scroller-steps {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.scroller-step {
+  padding: 3.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.scroller-step:last-child {
+  border-bottom: 0;
+}
+
+.scroller-step h2 {
+  margin-top: 0;
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* The active step is marked with a rule, not with opacity on its siblings: dimming the text a
+   reader is trying to read back to is hostile, and on a phone the sticky figure is gone anyway. */
+.scroller-step.is-active {
+  border-left: 2px solid var(--ink);
+  padding-left: 1rem;
+  margin-left: -1rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scroller-step {
+    transition: border-color 0.25s ease, padding 0.25s ease, margin 0.25s ease;
+  }
+}
+
+.two-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 0.5rem 0;
+}
+
+.two-grid {
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+
+.two-path {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.two-line-aser .two-path {
+  stroke: var(--ink);
+}
+
+.two-line-aser .two-dot {
+  fill: var(--ink);
+}
+
+/* The official instrument in alert red is NOT a judgement on it. Red is the corpus's break colour,
+   and this line is the one cut at three declared resets — the red says "do not read through",
+   which is exactly what its own custodians say. */
+.two-line-nas .two-path {
+  stroke: var(--alert);
+}
+
+.two-line-nas .two-dot {
+  fill: var(--alert);
+}
+
+.two-dot-approx {
+  fill: var(--paper) !important;
+  stroke: var(--alert);
+  stroke-width: 1.5;
+}
+
+.two-line-aser .two-dot-approx {
+  stroke: var(--ink);
+}
+
+.two-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--ink);
+}
+
+.two-unit {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: var(--ink-dim);
+}
+
+.two-axis {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: var(--ink-dim);
+}
+
+/* Muted, never hidden: the line stays on the page and stays readable. */
+.two-line.is-muted {
+  opacity: 0.18;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .two-line {
+    transition: opacity 0.4s ease;
+  }
+}
+
+.story-gaps {
+  max-width: var(--measure);
+  padding-left: 1.1rem;
+}
+
+.story-gaps li {
+  margin-bottom: 0.7rem;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+}
+
+.story-callout {
+  border-left: 2px solid var(--alert);
+  padding-left: 0.85rem;
+  max-width: var(--measure);
+  font-size: 1rem;
+}
+
+/* On a phone the sticky figure has nowhere to stick: the columns collapse and the chart sits
+   above the steps, once, as an ordinary figure. */
+@media (max-width: 52rem) {
+  .scroller {
+    grid-template-columns: 1fr;
+  }
+
+  .scroller-figure,
+  .scroller-steps {
+    grid-column: 1;
+  }
+
+  .scroller-figure {
+    grid-row: 1;
+    margin-bottom: 1rem;
+  }
+
+  .scroller-steps {
+    grid-row: 2;
+  }
+
+  .scroller-sticky {
+    position: static;
+  }
+
+  .scroller-step {
+    padding: 1.75rem 0;
+  }
+
+  /* No active-step marker without the sticky figure to synchronise with — it would be motion
+     with nothing to explain. */
+  .scroller-step.is-active {
+    border-left: 0;
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  .story-lead {
+    font-size: 1.625rem;
+  }
+}

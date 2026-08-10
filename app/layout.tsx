@@ -32,6 +32,8 @@ export const metadata: Metadata = {
 const PRIMARY = [
   { href: '/', label: 'overview' },
   { href: '/domains/', label: 'explore' },
+  // Joined the primary row when the surface shipped, not before — see the note above.
+  { href: '/stories/', label: 'stories' },
 ];
 
 const EVIDENCE = [
