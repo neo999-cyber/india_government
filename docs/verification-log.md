@@ -12642,3 +12642,67 @@ still carries the approximation, per rule 3, and survives greyscale.
 
 **Gates:** \`deploy-chain\` OK, 23-step chain · \`withdrawn-wording\` 29 corrections, 0 still asserted
 · \`link-check\` 27,975 hrefs / 668 pages / 0 dead · all others unchanged from the entries above.
+
+
+---
+
+## 2026-08-11 (fourth entry) — the Overview grid's READOUT ships without the grid
+
+**Operator decision on the two options offered after the grid stop: option 1 — the movement board
+stays as the Overview surface, no grid.** What follows is what item 4 contributed anyway, because
+three of its four parts never depended on the encoding that failed.
+
+**THE MEASUREMENT THAT KILLED THE GRID ALSO SAID WHERE THE VARIATION ACTUALLY IS.** Density does not
+separate the areas: Education 12 solid of 13 against Defence's 11, and at a finer grain the ordering
+inverts. **Two other axes separate them enormously**, and both were sitting unrendered:
+
+- **What an area is MADE OF.** Infrastructure is 16 announced reforms of 24 records; Governance is
+  42 episodes and 37 institutional changes of 110; Defence is 4 institutional, 3 event, 3 episode.
+- **The STATUS of its figures.** Federalism 236 observations, **all 236 verified**. Infrastructure
+  95, **none verified**. Employment 76, **none verified**. Education 336 at 92 per cent.
+
+Both now render per card, as numbers and words. **Not as shading** — a status axis encoded as a wall
+of tone is the metadata grid rejected twice for showing the filing system rather than the country,
+and it would have arrived by the back door.
+
+**A BARE PERCENTAGE WAS WRITTEN, RENDERED, READ AND WITHDRAWN INSIDE THIS BATCH.** The first build
+printed *"0% verified"* on Employment and Infrastructure. It is arithmetically correct and a
+first-time reader can only take it as *these numbers are wrong* — they are published
+**approximations**, which is a fact about how the figure was released, not about its truth. Replaced
+by exact counts naming each status: "76 approximate", "236 verified". One more line, and it cannot
+be read as a grade. The withdrawn form is quoted in the component.
+
+**ROW ORDER IS RECOGNISABILITY, WRITTEN DOWN RATHER THAN SORTED.** Employment · Infrastructure ·
+Human development · Education · Macroeconomy · Welfare · Banking · Poverty · Environment · Defence ·
+Kashmir · External sector · Governance · Federalism. Ordering by evidence strength would open the
+page with **Federalism — 100 per cent verified over 236 observations, and the last thing a
+first-visit reader wants to meet.** The order is editorial and is a constant with its reason beside
+it, because a sort would have to rank on something and every available quantity is one this
+instrument refuses to rank on. An area missing from the list sorts LAST, not to position 0, which is
+what \`indexOf\`'s -1 would do silently.
+
+**THE "MADE OF" LINE USES THE CORPUS'S OWN \`type\` WORDS.** The brief proposed programmes ·
+surveys · agreements · constitutional duties · episodes; **three of those five name nothing the
+corpus holds**, and glossing \`institutional\` as "constitutional duties" would put a second
+vocabulary for the \`type\` axis on a public surface — the prose-shadow defect by construction,
+since a gloss cannot move when the value does. It would also have required a label map, hence an
+\`enum-parity\` axis, hence a gate-contract change, for a rendering the corpus's own words already
+do.
+
+**ITEM 6's FRAMING SHIPS WITH IT.** The cards describe what this record set holds and are not a
+measure of what the Indian state measures; which government claims were never entered has not been
+established. The &rho; framing sits beside it — **computed live at 0.92**, not the 0.91 the scope
+recorded, and computed rather than quoted for the reason a deferral with a stale rate is no better
+than one that says "logged". It is the same computation \`components/Evaluability.tsx\` runs.
+\`evaluability-wording\` passes; as its own header says, it binds the listed phrasings and cannot
+bind the claim, so the wording here is a reading and not a pass.
+
+**Verification:** 1,319 rendered text nodes on \`/overview/\` sweep clean against WCAG AA on both
+papers. 375px: scrollWidth 375, no page-level overflow, the readout's two-column grid holding at
+136px label / 165px value. \`link-check\` 27,976 hrefs / 668 pages / 0 dead · \`listing-marks\` 2,630
+rows / 3,713 marks · \`evaluability-wording\` 6 phrasings absent from 667 pages · all other gates
+unchanged.
+
+**What is NOT built, restated so a later cycle does not read this entry as the grid arriving:** there
+is no area-by-year grid, no \`Made of\` COLUMN beside one, no cell states, no row-selection readout.
+The grid's stop condition stands and the measurement behind it is in the entry above.
