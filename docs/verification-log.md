@@ -12085,3 +12085,50 @@ no clamp, no max-height.
 · `link-check` 23,876 hrefs, 0 dead · `listing-marks` **2,427 rows, 3,414 marks** all present, 374
 declarations each at most once per page · `domain-coverage` 14/14, 1137/1137. Mobile at 375px: no
 overflow outside a scroll wrapper, diagram stacks, control operable.
+
+## Cycle 2026-08-10d — phase 18 prototype B: the homepage, and the broken line
+
+**The homepage no longer opens with the size of the database.** It opened with six figures above
+the fold — 269 series, 1,759 observations, 223 ledger records, 127 disputes, 182 breaks, 14 domains
+— and then with the one-in-223 `worked` paragraph. Both are forbidden by the scope in terms: *"do
+not lead with the size of the database"* and *"no verdict aggregates, no database counts above the
+fold"*. Every word of the `worked` paragraph was true and it was still the closest thing this
+instrument had to a scoreboard on its first screen.
+
+**Rebuilt to the §3a order**, which exists to defeat the nihilism failure mode: positioning line →
+one strongly measured change → several more → a deliberate transition into a series that stops →
+the reason printed → only then anything cross-record.
+
+**`components/SeriesChart.tsx` — the signature visual (§4a).** Three properties, each a corpus rule
+rather than a style:
+- **a gap is drawn as a gap** — the path stops and restarts, no interpolation, no connect-nulls
+  (rule 4, and §2b's finding that readers do not notice missing data replaced by a default);
+- **a seam is a stop and its reason is PRINTED** beneath the figure — rule 2 forbids splicing, and a
+  tooltip is unreachable on a phone, unprintable and invisible to a screen reader;
+- **status shows on the point** — `approx` hollow and dashed, `pending` unfilled (rule 3).
+
+Categorical spacing, not a time axis: these are annual aggregates, and a true time axis would imply
+a precision — a value at an instant — that an annual observation does not have. The line draws
+itself once and the animation is **removed**, not slowed, under `prefers-reduced-motion`.
+
+**Charts chosen from the inventory (§3b), not from a list of popular subjects.** `higher-ed-ger`
+opens — 13 verified observations and a denominator restatement at FY2020-21 that splits the line in
+two and prints AISHE's own disclosure. Then `res-capacity-share`, `coal-production` and
+`sanitation-basic`. The energy transition and the coal expansion are shown together because both
+are true.
+
+**Then the chart the argument rests on:** `schools-above-rte-ptr-primary-dise`. Five verified
+observations, FY2011-12 to FY2015-16, and then it ends — DISE published it every year and UDISE+
+has published it in no edition since, although that system holds the enrolment and teacher counts
+for every school in the country. **The wording is §5a's:** *"The published series ends in
+2015-16"*, never *"no data after 2015"*. That is a fact about what was published, not about what
+happened in the schools, and the two are different claims.
+
+**No corpus-wide absence total anywhere on the page** — rule 4b forbids one, because a number there
+reads as a completeness score for the instrument.
+
+**Gates:** `reachability` 1786/1786 · `field-render-audit` 42 prose + 51 non-prose across 4 layers,
+0 invisible · `link-check` 23,876 hrefs, 0 dead · `listing-marks` 2,427 rows, 3,414 marks ·
+`domain-coverage` 14/14, 1137/1137. Verified at 375px: no overflow outside a scroll wrapper; five
+charts render with sources; the seam splits the opening line into two segments with its note in
+full.
