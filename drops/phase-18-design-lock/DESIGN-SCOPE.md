@@ -319,6 +319,73 @@ lanes); the grid ships at `/overview/`, carrying the lanes' one-fact-per-mark ho
    start year, because choosing "the important ones" is a ranking this instrument refuses.
    `listing-marks` binds every row.
 
+#### ⟳⟳ CORRECTED 2026-08-11 — THE GRID WAS REPLACED BY A MOVEMENT BOARD, ON THE OPERATOR'S REJECTION
+
+**WITHDRAWN, quoted so the correction can be checked rather than taken on trust.** The paragraph
+above shipped the surface as a status grid: *"the grid ships at `/overview/`, carrying the lanes'
+one-fact-per-mark honesty inside it"*, with cell rule 1 defining a cell as *"a fact about THIS
+RECORD'S HOLDINGS for one area-year: all observations verified (filled) · observations held, some
+approximate or pending (hatched) · no observation in this record for that year (open)"*. That
+grid was built, shipped and rejected by the operator on sight — twice.
+
+**AND THE REJECTION WAS RIGHT ON A GROUND THE SCOPE ITSELF STATES.** Every cell was true and the
+page was about the wrong subject: **the unit was the corpus's confidence in its own holdings.** A
+reader who has never opened this site does not want the instrument's grade for education in 2019;
+they want to know what happened to schooling. §3's nihilism guard says lead with what IS measured —
+and a wall of hatched and open cells is what the guard forbids, arrived at by a different route,
+because a status grid can only ever be a picture of the filing system. **The mistake was not the
+encoding. It was answering the author's question on the reader's page.**
+
+**WHAT SHIPS INSTEAD: the unit is MOVEMENT, and status is an attribute of a line rather than the
+subject of the page.** One card per area, each leading with a real series — real values, real span,
+the change stated in words — with every remaining series in the area behind a disclosure, and one
+control that moves all 262 charts at once.
+
+**THE THREE HONEST ENCODINGS, which are this surface's integrity the way the cell rules were the
+grid's:**
+
+1. **X IS SHARED AND MEANS TIME.** Every sparkline runs the same 2010→2026 axis, so a series that
+   stops in 2019 is *visibly a stub* and one that runs the period spans its card. **This is the
+   whole reason to put them side by side: span is comparable because the axis is the same.** The
+   year control **is** that axis — it carries the only year labels on the page, and its range is
+   the charts' range exactly. An earlier build ran it 2014→2026 against charts drawn 2010→2026,
+   leaving a sixth of every line unreachable; matched, a reader can scrub into the pre-2014 years
+   and be told, per card, that no observation exists there.
+2. **Y IS PER-CHART AND MEANS NOTHING ACROSS CHARTS.** Each line is scaled to its own range because
+   the units are incommensurable — per cent, rupees, kilometres, people. **The caption says "a
+   taller line is not a bigger number" in those words**, because an unlabelled shared-looking height
+   is exactly the encoding rule 7 forbids.
+3. **NOTHING ELSE IS ENCODED.** Uniform card size, fixed order, no ranking. A ranked grid is a
+   scoreboard and there is no defensible quantity to rank on.
+
+**THE CELL RULES THAT SURVIVE, unchanged and still binding:** 2 (the rejected headlines, pinned in
+`tools/evaluability-wording.mjs`), 3 (a lens-only area reads through its lens — Kashmir), 4 (the
+baseline zone is explained or the page libels by accident), 5 (seam red, and only seam red — the
+sparklines draw a red edge at every declared break and cut the path there, rule 2 at sparkline
+scale), and 6 (the year-by-year listing is complete or absent, never curated; all 223 records,
+`listing-marks` binding every row). **Rule 1 is withdrawn with the grid it defined.**
+
+**TWO THINGS AUTHORED RATHER THAN DERIVED, and both are findings rather than layout.** The headline
+series per area is **pinned, not computed** — "the longest series" would elect `jk-detenus-psi` to
+represent governance — and two picks are excluded *by name with the rule cited in the source*, so a
+later edit that improves them must read the reason first: **no GDP growth** for macroeconomy (rule
+5: three incompatible bases, all three always, and a single sparkline of one base is precisely what
+that rule forbids) and **no NPA ratio** for banking (rule 5b: never alone, never without its basis,
+and a card has room for neither the write-off adjustment nor the domestic/global basis). And where
+no series can honestly carry a card, the card says **what the area holds instead**, authored per
+area: Kashmir files no series as its own subject, and India's last official poverty headcount was
+measured for 2011-12. A generic fallback exists solely so a future area cannot render blank
+silently; if it ever fires the fix is to write that area's real reason, not to leave the shrug.
+
+**§7a's three-state rule is implemented in the reading, not just declared.** At a selected year a
+card prints the value, or the nearest year *labelled as such*, or **"No observation for 2012 · this
+series runs 2014–2025"**. It never substitutes a neighbour silently — §2b's documented failure is
+that readers do not notice missing data replaced by a default.
+
+**Mobile:** single column at 375px, no overflow, and the slider and its reset both carry a 44px hit
+area — the native range box is ~16px, which fails the acceptance constraint on the one element the
+whole board depends on.
+
 **Typography shipped with it** (§6 made concrete): Spectral display, IBM Plex Sans text, IBM Plex
 Mono figures — via `next/font`, downloaded at build and self-hosted, so the deployed site makes no
 runtime request to any font host.
