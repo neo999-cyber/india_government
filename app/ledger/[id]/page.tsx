@@ -2,8 +2,11 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getLedger, getProvenance, getSeries, ledger as allLedger, pairsHostedOn } from '@/lib/data';
+import { lastTouched } from '@/lib/history';
 import { PairSection } from '@/components/PairSection';
 import { HowDoWeKnow, RestsOn } from '@/components/RecordEvidence';
+import { RecordHistory } from '@/components/RecordHistory';
+import { LedgerLd } from '@/components/StructuredData';
 import {
   ASSESSMENT_LABELS,
   CONTESTED_GROUND_LABELS,
@@ -41,6 +44,7 @@ export default async function LedgerDetail({ params }: Props) {
 
   return (
     <>
+      <LedgerLd record={l} modified={lastTouched(l.id)} />
       <p className="crumb">
         <Link href="/">instrument</Link> / <Link href="/ledger/">ledger</Link> /{' '}
         <Link href={`/terms/${l.term}/`}>{TERM_SHORT[l.term]}</Link>
@@ -295,6 +299,8 @@ export default async function LedgerDetail({ params }: Props) {
       {hostedPairs.map((pair) => (
         <PairSection key={pair.id} pair={pair} />
       ))}
+
+      <RecordHistory id={l.id} />
 
       <div className="stub">
         <span className="label">Scaffold</span>

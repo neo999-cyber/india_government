@@ -1,0 +1,181 @@
+'use client';
+
+import { useEffect, useMemo, useRef, useState } from 'react';
+
+/**
+ * FACETED FILTERING OVER A LISTING THAT IS ALREADY FULLY RENDERED.
+ *
+ * WHAT THIS CLOSES. `app/ledger/page.tsx` carried a scaffold note reading *"Filtering by term,
+ * domain and assessment lands with the ledger view proper"* — a declared debt. The corpus has been
+ * multi-dimensional the whole time (14 domains, 8 lenses, 4 terms, 10 assessments, 173 of 223
+ * records carrying two or more domains) and **no surface let a reader use any of it.** An
+ * adversarial review read that as a flat data model. The data was never flat; the views were.
+ *
+ * ============================ WHY IT FILTERS THE DOM INSTEAD OF RENDERING RESULTS ==============
+ *
+ * The obvious build is a client component that holds the records and renders the matches. It is
+ * wrong here, for three reasons that all point the same way:
+ *
+ *   1. **RULE 4b.** A listing must carry every record's declarations, and `listing-marks` proves
+ *      it by reading BUILT HTML. Rows that exist only after hydration are rows the gate cannot
+ *      see — the guard would pass on an empty table. A defect invisible to the gate that was
+ *      written for it is the worst shape available.
+ *   2. **RULE 3a.** Caveats render in full, in their own full-width row. Re-implementing that in a
+ *      second renderer is the ad-hoc-normaliser class: two implementations of one rule, and the
+ *      copy nobody maintains is the one that truncates.
+ *   3. **JS off.** With no script the reader gets the complete listing, which is the correct
+ *      degradation. The controls hide themselves rather than presenting a filter that does nothing.
+ *
+ * So the page renders every row, server-side, exactly as before; this toggles `hidden` on them.
+ * **Filtering is a view operation over a complete document, not a query returning a subset.**
+ *
+ * ============================ THE URL CARRIES THE STATE ========================================
+ *
+ * Every filter combination is a link. That is the one property worth borrowing wholesale from the
+ * Atlas of Economic Complexity, and it is what the citability ruling demands of any state a reader
+ * can reach: a filtered view somebody can cite in an argument, and a reader can check.
+ * `replaceState` rather than `pushState`, so the back button leaves the page instead of walking
+ * back through fourteen filter states.
+ *
+ * ============================ WHAT IT DOES NOT DO ==============================================
+ *
+ * **It states no count as a finding.** The readout says how many rows of this table are showing.
+ * It is not a fact about India, it is not a coverage measure, and it is worded so it cannot be
+ * quoted as one — the same discipline the evaluability view's label carries.
+ */
+
+export type Facet = {
+  /** Matches `data-f-<key>` on each row group. */
+  key: string;
+  label: string;
+  options: { value: string; label: string }[];
+};
+
+export function ListingFacets({
+  facets,
+  target,
+  noun = 'records',
+}: {
+  facets: Facet[];
+  /** id of the element whose `[data-row]` descendants are filtered. */
+  target: string;
+  noun?: string;
+}) {
+  const [sel, setSel] = useState<Record<string, string>>({});
+  const [q, setQ] = useState('');
+  const [shown, setShown] = useState<number | null>(null);
+  const [total, setTotal] = useState<number | null>(null);
+  const ready = useRef(false);
+
+  // Read the URL once, before the first filter pass, so a shared link lands filtered.
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search);
+    const next: Record<string, string> = {};
+    for (const f of facets) {
+      const v = p.get(f.key);
+      if (v) next[f.key] = v;
+    }
+    setQ(p.get('q') ?? '');
+    setSel(next);
+    ready.current = true;
+  }, [facets]);
+
+  const active = useMemo(
+    () => Object.entries(sel).filter(([, v]) => v) as [string, string][],
+    [sel],
+  );
+
+  useEffect(() => {
+    const root = document.getElementById(target);
+    if (!root) return;
+    const rows = Array.from(root.querySelectorAll<HTMLElement>('[data-row]'));
+    const needle = q.trim().toLowerCase();
+    let visible = 0;
+
+    for (const row of rows) {
+      const okFacets = active.every(([k, v]) =>
+        (row.dataset[`f${k[0].toUpperCase()}${k.slice(1)}`] ?? '').split('|').includes(v),
+      );
+      const okText = !needle || (row.dataset.text ?? '').toLowerCase().includes(needle);
+      const show = okFacets && okText;
+      row.hidden = !show;
+      if (show) visible += 1;
+    }
+    setShown(visible);
+    setTotal(rows.length);
+
+    if (!ready.current) return;
+    const p = new URLSearchParams();
+    for (const [k, v] of active) p.set(k, v);
+    if (needle) p.set('q', q.trim());
+    const qs = p.toString();
+    window.history.replaceState(null, '', qs ? `?${qs}` : window.location.pathname);
+  }, [active, q, target]);
+
+  const clear = () => {
+    setSel({});
+    setQ('');
+  };
+  const any = active.length > 0 || q.trim() !== '';
+
+  return (
+    <div className="facets">
+      <div className="facets-row">
+        <label className="facets-find">
+          <span className="label">Find</span>
+          <input
+            type="search"
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="title, id or summary"
+            aria-label={`Filter these ${noun} by text`}
+          />
+        </label>
+
+        {facets.map((f) => (
+          <label key={f.key} className="facets-sel">
+            <span className="label">{f.label}</span>
+            <select
+              value={sel[f.key] ?? ''}
+              onChange={(e) => setSel((s) => ({ ...s, [f.key]: e.target.value }))}
+            >
+              <option value="">any</option>
+              {f.options.map((o) => (
+                <option key={o.value} value={o.value}>
+                  {o.label}
+                </option>
+              ))}
+            </select>
+          </label>
+        ))}
+
+        <button type="button" className="facets-clear" onClick={clear} disabled={!any}>
+          Clear
+        </button>
+      </div>
+
+      <p className="facets-count" aria-live="polite">
+        {shown === null || total === null ? null : any ? (
+          <>
+            Showing <strong>{shown}</strong> of {total} {noun} in this table.{' '}
+            {shown === 0 ? (
+              <span className="facets-none">
+                Nothing here matches that combination — which is a fact about this filter, not about
+                the record.
+              </span>
+            ) : (
+              <span className="t-note">
+                This is a count of rows on this page, not a measure of anything.
+              </span>
+            )}
+          </>
+        ) : (
+          <span className="t-note">
+            All {total} {noun}. Filters change what is shown and never what is counted elsewhere;
+            the URL carries the combination, so a filtered view can be linked to.
+          </span>
+        )}
+      </p>
+    </div>
+  );
+}

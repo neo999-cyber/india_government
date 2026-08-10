@@ -95,6 +95,11 @@ const EVIDENCE = [
   { href: '/unmeasured/', label: 'unmeasured' },
   { href: '/method/', label: 'method' },
   { href: '/derivations/', label: 'derivations' },
+  // Added 2026-08-11. All three answer questions a reader of the evidence has and no surface
+  // answered: who published this, has it been revised, and can I have the whole thing as data.
+  { href: '/publishers/', label: 'publishers' },
+  { href: '/corrections/', label: 'corrections' },
+  { href: '/data/', label: 'data' },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

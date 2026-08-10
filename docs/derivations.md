@@ -95,7 +95,7 @@ The same boundary applies to **L-0218**, whose three unreadable channels are a r
 
 **The claim: all thirteen carry `partly` and both controls carry `worked`.** Computed: 13 of 13 handover records are `partly`; 0 of 2 controls are `worked`.
 
-**The claim that the scores predate the pattern.** `review/record-history.json`, generated from git by `tools/gen-record-history.mjs`, records every observed change of `assessment`. Of the 15 records above, **0 changed verdict at any point**. A reader can re-derive this with `npm run record-history`.
+**The claim that the scores predate the pattern.** `review/record-history.json`, generated from git by `tools/gen-record-history.mjs`, records every observed change of `assessment`. Of the 15 records above, **2 changed verdict at any point**: L-0047 (worked→partly), L-0053 (worked→partly). A reader can re-derive this with `npm run record-history`.
 
 ---
 

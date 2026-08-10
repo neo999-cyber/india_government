@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { SeriesLd } from '@/components/StructuredData';
 import {
   getProvenance,
   getSeries,
@@ -97,6 +98,7 @@ export default async function SeriesDetail({ params }: Props) {
 
   return (
     <>
+      <SeriesLd series={s} />
       <p className="crumb">
         <Link href="/">instrument</Link> / <Link href="/series/">series</Link> /{' '}
         <Link href={`/domains/${s.domain}/`}>{DOMAIN_LABELS[s.domain]}</Link>

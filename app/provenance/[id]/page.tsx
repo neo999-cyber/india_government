@@ -9,6 +9,9 @@ import {
   seriesCitingProvenance,
 } from '@/lib/data';
 import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
+import { lastTouched } from '@/lib/history';
+import { RecordHistory } from '@/components/RecordHistory';
+import { ProvenanceLd } from '@/components/StructuredData';
 import { roleInProvenance } from '@/lib/rules';
 import { RecordMarks, SourceList } from '@/components/marks';
 import { PairSection } from '@/components/PairSection';
@@ -41,6 +44,7 @@ export default async function ProvenanceDetail({ params }: Props) {
 
   return (
     <>
+      <ProvenanceLd record={p} modified={lastTouched(p.id)} />
       <p className="crumb">
         <Link href="/">instrument</Link> / <Link href="/provenance/">provenance</Link> / {p.id}
       </p>
@@ -217,6 +221,8 @@ export default async function ProvenanceDetail({ params }: Props) {
       <h2>Sources</h2>
       <SourceList sources={p.sources} />
       {p.notes ? <p className="prose-note">{p.notes}</p> : null}
+
+      <RecordHistory id={p.id} />
     </>
   );
 }

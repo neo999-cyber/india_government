@@ -20,16 +20,49 @@
  * SCOPE. `data/ledger/*.json` and `data/provenance.json` only. Series and pairs are excluded
  * because neither carries a scored verdict, which is what the historical criteria are about.
  *
+ * ============================ IT IS NOW IN THE BUILD, WHICH MAKES THE CLONE DEPTH LOAD-BEARING
+ *
+ * The output is rendered — on every record page and at `/corrections/` — so it stopped being a
+ * private review artefact the day a reader could see it. **And it is reconstructed from `git log`,
+ * which means a SHALLOW clone silently produces a SHORTER history.** Vercel clones shallow by
+ * default. A build there would regenerate the file from ten commits, report success, and publish
+ * "edited once" over a record edited four times — a false claim about the record, produced by a
+ * green build, with nothing to contradict it.
+ *
+ * So: the file is COMMITTED, and this script refuses to overwrite it from a shallow checkout,
+ * saying so. Locally the history is full and the file is regenerated; on the deploy the committed
+ * file is used unchanged. **The failure mode that matters is the silent truncation, not the stale
+ * file** — a stale history is visible as a missing recent commit, an invented one is not.
+ *
  * Usage:  node tools/gen-record-history.mjs   ·   npm run record-history
  */
 import { execSync } from 'node:child_process';
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'review', 'record-history.json');
 const sh = (c) => execSync(c, { cwd: ROOT, maxBuffer: 1 << 28 }).toString();
+
+/**
+ * A shallow checkout cannot produce this file, and producing a wrong one is worse than not
+ * producing one. Checked BEFORE anything is computed, and before the existing file is touched.
+ */
+let shallow = false;
+try {
+  shallow = sh('git rev-parse --is-shallow-repository').trim() === 'true';
+} catch {
+  shallow = true; // no git at all is, for this purpose, the same situation
+}
+if (shallow) {
+  const kept = existsSync(OUT);
+  console.log(
+    `record-history — shallow checkout: history not reconstructed. ` +
+      `${kept ? 'The committed review/record-history.json is used unchanged.' : 'NO committed file to fall back on.'}`,
+  );
+  process.exit(kept ? 0 : 1);
+}
 
 const commits = sh('git log --reverse --format=%H%x09%ad%x09%s --date=short -- data/ledger data/provenance.json')
   .trim()
