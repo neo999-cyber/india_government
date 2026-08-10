@@ -37,12 +37,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="shell">
           <header className="masthead">
-            <h1 className="masthead-title">
+            {/* A <p>, not an <h1>, since 2026-08-10 — walk 9's one finding. The masthead had
+                been an h1 since phase 0, so every page in the instrument carried two h1s: the
+                site name and the page's own title, 661 of 661 in the built output. The page's
+                h1 is the page's subject; the masthead is the wrapper it arrives in. Styling is
+                by class, so nothing visual moves. */}
+            <p className="masthead-title">
               <Link href="/">India Roadmap Instrument</Link>
               <span className="masthead-sub">
                 baseline frozen May 2014 · T1 2014–19 · T2 2019–24 · T3 2024– living
               </span>
-            </h1>
+            </p>
             <nav className="nav">
               {NAV.map((item) => (
                 <Link key={item.href} href={item.href}>
