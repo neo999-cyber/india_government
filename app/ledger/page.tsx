@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { assessmentCounts, ledger } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
-import { AbsenceCount, CaveatFlag, DifferentFactsMark, TallyGloss } from '@/components/marks';
+import { RecordMarks, TallyGloss } from '@/components/marks';
 
 export const metadata: Metadata = { title: 'Ledger' };
 
@@ -53,9 +53,7 @@ export default function LedgerIndex() {
                 <td className="mono">{TERM_SHORT[l.term]}</td>
                 <td>
                   <Link href={`/ledger/${l.id}/`}>{l.title}</Link>
-                  {l.caveat ? <CaveatFlag caveat={l.caveat} variant="inline" /> : null}
-                  <AbsenceCount items={l.unmeasured} />
-                  {l.differentFacts ? <DifferentFactsMark variant="inline" /> : null}
+                  <RecordMarks record={l} />
                 </td>
                 <td className="t-note">{l.type}</td>
                 <td className="t-note">{l.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}</td>

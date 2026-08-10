@@ -10,7 +10,7 @@ import {
 } from '@/lib/data';
 import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
 import { roleInProvenance } from '@/lib/rules';
-import { CaveatFlag, SourceList } from '@/components/marks';
+import { RecordMarks, SourceList } from '@/components/marks';
 import { PairSection } from '@/components/PairSection';
 
 type Props = { params: Promise<{ id: string }> };
@@ -132,7 +132,7 @@ export default async function ProvenanceDetail({ params }: Props) {
                 {s.unit}
                 {s.breaks?.some((b) => b.provenanceRef === p.id) ? ' · seam here' : ''}
               </span>
-              {s.caveat ? <CaveatFlag caveat={s.caveat} variant="inline" linkify={false} /> : null}
+              <RecordMarks record={s} linkify={false} />
             </Link>
           ))}
         </div>
@@ -158,7 +158,7 @@ export default async function ProvenanceDetail({ params }: Props) {
                 {s.unit}
                 {s.breaks?.some((b) => b.provenanceRef === p.id) ? ' · seam here' : ''}
               </span>
-              {s.caveat ? <CaveatFlag caveat={s.caveat} variant="inline" linkify={false} /> : null}
+              <RecordMarks record={s} linkify={false} />
             </Link>
             ))}
           </div>
@@ -183,6 +183,9 @@ export default async function ProvenanceDetail({ params }: Props) {
                 </span>
                 <span className="grid-title">{l.title}</span>
                 <span className="grid-meta">{l.date}</span>
+                {/* Rule 3a names "cited-by grids" in terms, and this one rendered no caveat at
+                    all while the series page's grid of the same records did. */}
+                <RecordMarks record={l} linkify={false} />
               </Link>
             ))}
           </div>

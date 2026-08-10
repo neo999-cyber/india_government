@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { panelSeries } from '@/lib/data';
 import { SeriesTable } from '@/components/SeriesTable';
-import { CaveatFlag, SourceLine, StatusKey, TierTag } from '@/components/marks';
+import { Absences, CaveatFlag, SourceLine, StatusKey, TierTag } from '@/components/marks';
 
 export const metadata: Metadata = { title: 'Peer panel' };
 
@@ -53,6 +53,10 @@ export default function PeersPage() {
               </p>
             ) : null}
             <SeriesTable series={s} />
+            {/* Rule 4a. This surface renders the series WHOLE — caveat, source, table — so it
+                takes the full declaration block rather than a listing count. It rendered
+                neither until 2026-08-08. */}
+            <Absences items={s.unmeasured} />
           </section>
         ))
       )}

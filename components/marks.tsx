@@ -425,6 +425,58 @@ export function AbsenceCount({ items }: { items: Unmeasured[] | undefined }) {
   return <span className="absence-inline">{items.length} not measured</span>;
 }
 
+/**
+ * THE MARK SET A LISTED RECORD CARRIES. Decided here, once, for every surface that lists one.
+ *
+ * WHY IT IS A COMPONENT AND NOT A CONVENTION. Eleven surfaces listed records and each assembled
+ * its own marks by hand, so the sets drifted apart with nothing able to see it. Measured
+ * 2026-08-08 over built output: **1,587 listing rows linked a record that declares an absence and
+ * 843 carried no absence mark** — `AbsenceCount` was wired into the ledger TABLE of five surfaces
+ * and into no series row anywhere and no cross-reference grid at all.
+ *
+ * **AND THE CAVEAT HAD DRIFTED TOO, WHICH IS THE MORE SERIOUS HALF.** The provenance page's
+ * *Ledger records citing this dispute* grid rendered no `CaveatFlag`, while the series page's grid
+ * of the same records did. **CLAUDE.md rule 3a names that surface in terms** — a caveat renders on
+ * "detail pages, index tables, domain and term pages, cited-by grids" — so a cited-by grid without
+ * one is the rule's own example going unmet.
+ *
+ * The asymmetry was visible in a single table cell and nobody could see it: on
+ * `/domains/[domain]/` the ledger row rendered `CaveatFlag` AND `AbsenceCount`, and the series row
+ * beside it rendered `CaveatFlag` and stopped — while rule 4b's words are *"in the caveat's
+ * idiom"*.
+ *
+ * **THIS IS RULE 4b'S OWN PRIOR INSTANCE REPEATING.** 4b exists because 374 declarations complied
+ * with 4a and reached no listing surface; the fix that followed was applied to the surface where
+ * the defect was noticed and nowhere else. A shared component is what stops the third occurrence,
+ * and `tools/listing-marks.mjs` is what reports it if the component stops being used.
+ *
+ * ORDER IS FIXED AND NOT COSMETIC: caveat, then absence, then differing facts — qualification
+ * before gap before dispute, the same order these take on a record's own page.
+ */
+export function RecordMarks({
+  record,
+  linkify = true,
+}: {
+  /** A series or a ledger record. Both carry `caveat` and `unmeasured`; only ledger has the rest. */
+  record: {
+    caveat?: string;
+    unmeasured?: Unmeasured[];
+    differentFacts?: boolean;
+  };
+  /** Cards suppress P-xx linkification because the whole card is already one link. */
+  linkify?: boolean;
+}) {
+  return (
+    <>
+      {record.caveat ? (
+        <CaveatFlag caveat={record.caveat} variant="inline" linkify={linkify} />
+      ) : null}
+      <AbsenceCount items={record.unmeasured} />
+      {record.differentFacts ? <DifferentFactsMark variant="inline" /> : null}
+    </>
+  );
+}
+
 export function Absences({
   items,
   heading = 'Not measured',

@@ -4,7 +4,7 @@ import { ledger } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS } from '@/lib/format';
 import { EXPOSURE_ADJUDICATIONS } from '@/lib/types';
 import type { ExposureAdjudication, LedgerRecord, ShockExposure } from '@/lib/types';
-import { EXPOSURE_ADJUDICATION_LABELS, EXPOSURE_ROLE_LABELS } from '@/components/marks';
+import { EXPOSURE_ADJUDICATION_LABELS, EXPOSURE_ROLE_LABELS, RecordMarks } from '@/components/marks';
 
 export const metadata: Metadata = { title: 'Exposure — what the corpus does with an exogenous defence' };
 
@@ -66,6 +66,7 @@ function Table({ items }: { items: Row[] }) {
                 <span className="t-note mono">
                   {record.id} · {record.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}
                 </span>
+                <RecordMarks record={record} />
               </td>
               <td className="t-note">{ASSESSMENT_LABELS[record.assessment]}</td>
               <td className="t-note mono">

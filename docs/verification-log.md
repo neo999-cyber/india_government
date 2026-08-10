@@ -11865,3 +11865,67 @@ table, after a first draft of that sentence attributed it 14/4/2/1 and was wrong
 
 **Gates:** unchanged from cycle 2026-08-08a and re-run green at the commit carrying this entry;
 `field-render-audit` now asserts build freshness and was proven to refuse a stale build.
+
+## Cycle 2026-08-08c — A-4 closed at the class, and the view-divergence class named
+
+### A-4 — rule 4b implemented on every surface that lists a record
+
+**`RecordMarks` is now the single source of the mark set a listed record carries** — caveat, then
+absence, then differing facts. Eleven surfaces had assembled it by hand and the sets had drifted:
+`AbsenceCount` was wired into the ledger table of five pages and into no series row anywhere and no
+cross-reference grid at all.
+
+**And the caveat had drifted too, which is the more serious half.** The provenance page's *Ledger
+records citing this dispute* grid rendered no `CaveatFlag` while the series page's grid of the same
+records did — and **rule 3a names "cited-by grids" in terms.** So this was a rule 3a gap as well as
+a rule 4b one, on different surfaces, and neither was visible to any gate.
+
+**`tools/listing-marks.mjs`, new, in the build, and proven to fire before the fix landed:** run
+against the pre-fix build at `b318f56` it reported **895 missing marks**. After: **2,217 listing
+rows across 661 pages, 3,149 required marks all present, 310 records declaring one.** Its control
+strips both marks from a synthetic row naming a real record and requires both to be caught, requires
+the same row carrying them to pass, and requires a `PR-` row to be recognised as a pair listing and
+skipped.
+
+**Its scope is written in its own header** and it does NOT bind: a full rendering of a record on
+another page (`/peers/`, fixed here to take the whole `Absences` block, and unguarded — stated
+rather than left to be found); a pair side, which pools declarations at the pair's width; a prose
+mention; a `PairRows` row, which is about the pair and not the linked series; and **an ABSENT row**,
+a record that should be listed somewhere and is not.
+
+**The gate caught the local-fix error being made again, mid-fix.** The first pass added `RecordMarks`
+to the provenance page's ledger grid and left that page's two SERIES grids untouched; the build went
+895 → 98 and named them. Ninety-eight of the 895 were the surface the fix had not noticed.
+
+### The view-divergence class, named and swept — `tools/view-parity.mjs`, report-only
+
+**The class: two or more components render the same record type and disagree about which fields they
+render.** `ContestedPairView` and `CoverageUsageView` on `pair.notes` was the first instance; the six
+hand-rolled grid cards were the second, found a day later. Two instances make it a class.
+
+**Report-only and deliberately.** Most divergences are correct — a compact card should show less than
+a detail page — so only a reading decides which are defects, and a gate would fire on right answers.
+The first cut of the tool compared every file against every other and returned noise dominated by
+`id` and `title`; it now compares **near-twins** by Jaccard over field sets, which is the shape both
+known instances have.
+
+**What the reading found, and only one is a defect:**
+
+- **FIXED — the lens page's series table omitted the Breaks column**, which its two sibling tables
+  (the series index and the domain page) both carry, in alert red. **24 of the 54 lensed series
+  declare 33 seams**; on `/lenses/kashmir/` nineteen of the series listed carry one and a reader saw
+  no sign. A seam is the one thing this instrument refuses to let a reader splice across, so its
+  omission from a listing is not a density choice.
+- **REPORTED, NOT FIXED — `confidence` renders on `/ledger` and `/terms/[term]` and on neither
+  `/domains/[domain]` nor `/lenses/[lens]`**, all four of which show `assessment`. 170 high, 52
+  medium, 1 low. **A fix would change what a verdict shows on two surfaces**, so it is raised rather
+  than applied.
+- The remaining divergences read as correct density choices: `/series/` carries a Span column the
+  other two do not; `/terms/[term]` omits the Term column because the page is the term; `/contested`
+  omits Assessment because every row is contested.
+
+**Gates, each quoting its own emitted scope:** `validate` VALID — 0 errors, 163 warnings, 223 ledger
+· 269 series · 127 provenance · 60 pairs = 679 records, 1,759 points · `typecheck` clean ·
+`reachability` 1786/1786 · `field-render-audit` 42 prose + 51 non-prose across 4 layers, 0 invisible
+· `link-check` 21,522 hrefs, 0 dead · `listing-marks` 2,217 rows, 3,149 marks, 0 missing ·
+`domain-coverage` 14/14, 1137/1137.
