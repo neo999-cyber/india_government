@@ -24,7 +24,16 @@ const latest = (s: Series) => {
   return india[india.length - 1];
 };
 
-function Instrument({ series, label }: { series: Series; label: string }) {
+function Instrument({
+  series,
+  label,
+  alreadyPooled,
+}: {
+  series: Series;
+  label: string;
+  /* Declarations an earlier pair on the same page already rendered — see `pooledByPair`. */
+  alreadyPooled?: ReadonlySet<unknown>;
+}) {
   const point = latest(series);
   return (
     <div className="cp-side">
@@ -48,7 +57,11 @@ function Instrument({ series, label }: { series: Series; label: string }) {
       {series.caveat ? <CaveatFlag caveat={series.caveat} /> : null}
       <SeriesTable series={series} />
       {series.notes ? <p className="prose-note">{series.notes}</p> : null}
-      <Absences items={series.unmeasured} />
+      {/* A series that is a side of TWO pairs has its declarations rendered by both views —
+          this one in the instrument column, the coverage/usage one pooled at pair width — and
+          a reader meets the same absence twice on one page. Three did on `jk-detenus-psi`.
+          Identity comparison on the entry objects off the loaded record. */}
+      <Absences items={(series.unmeasured ?? []).filter((u) => !alreadyPooled?.has(u))} />
     </div>
   );
 }
@@ -58,6 +71,7 @@ export function ContestedPairView({
   instruments,
   labels,
   reconciliation,
+  alreadyPooled,
 }: {
   pair: Pair;
   /** Both series, in the pair's declared order — which is not precedence. */
@@ -66,6 +80,8 @@ export function ContestedPairView({
   labels: [string, string];
   /** The governing record's bridgeNote, where one exists. */
   reconciliation?: string;
+  /** Absence entries an earlier pair on the same page already rendered. See `pooledByPair`. */
+  alreadyPooled?: ReadonlySet<unknown>;
 }) {
   if (instruments.length < 2) return null;
 
@@ -94,7 +110,7 @@ export function ContestedPairView({
 
       <div className="cp-pair">
         {instruments.map((s, i) => (
-          <Instrument key={s.id} series={s} label={labels[i] ?? ''} />
+          <Instrument key={s.id} series={s} label={labels[i] ?? ''} alreadyPooled={alreadyPooled} />
         ))}
       </div>
 

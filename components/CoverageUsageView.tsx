@@ -93,7 +93,30 @@ function Side({ side, position }: { side: ResolvedSide; position: 'a' | 'b' }) {
   );
 }
 
-export function CoverageUsageView({ pair, a, b }: { pair: Pair; a: ResolvedSide; b: ResolvedSide }) {
+export function CoverageUsageView({
+  pair,
+  a,
+  b,
+  alreadyPooled,
+}: {
+  pair: Pair;
+  a: ResolvedSide;
+  b: ResolvedSide;
+  /**
+   * Absence entries a pair EARLIER ON THE SAME PAGE has already pooled.
+   *
+   * A series can be a side of two pairs, and since 2026-08-08 the series page renders both rather
+   * than dropping the second. Each pair view pools its series sides' declarations at its own
+   * width — so without this, the page's own series has its absences pooled once per pair and a
+   * reader meets the same declaration twice. Measured on the first build after that change:
+   * `jk-detenus-psi` rendered three declarations twice and `jk-psa-detenus-transferred-out` one.
+   *
+   * An absence shown twice is a smaller fault than one shown never, and it is the same kind of
+   * fault: the page stops being a faithful count of what is declared. Identity comparison, on the
+   * very entry objects the resolver returns off the loaded record, exactly as `consumed` does.
+   */
+  alreadyPooled?: ReadonlySet<unknown>;
+}) {
   /**
    * A wedge is printed only where the data says one exists.
    *
@@ -119,7 +142,9 @@ export function CoverageUsageView({ pair, a, b }: { pair: Pair; a: ResolvedSide;
   // the very entry object off the loaded record.
   const consumed = new Set([a, b].flatMap((side) => (side.kind === 'absence' ? [side.entry] : [])));
   const pooled = [a, b].flatMap((side) =>
-    side.kind === 'series' ? (side.series.unmeasured ?? []).filter((u) => !consumed.has(u)) : [],
+    side.kind === 'series'
+      ? (side.series.unmeasured ?? []).filter((u) => !consumed.has(u) && !alreadyPooled?.has(u))
+      : [],
   );
 
   const refs = pair.provenanceRefs ?? [];
