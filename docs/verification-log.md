@@ -12132,3 +12132,55 @@ reads as a completeness score for the instrument.
 `domain-coverage` 14/14, 1137/1137. Verified at 375px: no overflow outside a scroll wrapper; five
 charts render with sources; the seam splits the opening line into two segments with its note in
 full.
+
+## Cycle 2026-08-10e — phase 18 prototype C: the education story, and the third catch
+
+**The scroll story ships on education, not renewables** — the correction §11a records with the
+withdrawn wording quoted. `/stories/can-indian-children-read/`, plus a `/stories/` index and
+`stories` in the primary nav, which it joined only once the surface existed.
+
+**THE PROGRESSIVE-ENHANCEMENT DECISION IS THE WHOLE DESIGN, AND IT IS THE OPPOSITE OF THE USUAL
+ONE.** Everything is visible by default and JavaScript only **dims**. Reveal-on-scroll — the
+standard implementation — makes the text conditional on a script, which for a public instrument
+making claims about a government is the tooltip defect at page scale. So: with JS disabled the
+reader gets the whole passage; under `prefers-reduced-motion` the observer is never attached; on a
+slow phone the content is readable before any script runs; a printed or forwarded copy is complete.
+The initial active state is **-1**, meaning no step is privileged, and that is the state a no-JS
+reader never leaves.
+
+**Every step carries a stable id** — `#step-aser`, `#step-nas`, `#step-diverge`, `#step-reset`. The
+drafts rejected infinite zoom because a public instrument must be citable and then failed to apply
+the same rule to their own year control; it is applied here.
+
+**Why the two instruments may share a frame.** CLAUDE.md's third measurement category —
+INCOMMENSURABLE — bars showing two instruments together when they measure DIFFERENT quantities.
+These are not that: P-59 records them as the same quantity measured two ways with incompatible
+answers, which is category one, where showing both and picking neither is required. **No gap
+between the lines is drawn, shaded or measured**, because a wedge would be a subtraction the
+evidence does not support, and each line carries its own unit label.
+
+**The official line renders as three disconnected points and that is correct.** NAS 2017, NAS 2021
+and PARAKH 2024 each declare a break with the round before, so no path spans one — the chart
+states, visually, the thing step four says in words: there is no official series here to read a
+direction from. Verified: ASER 7 points / 4 segments, NAS-PARAKH 3 points / 3 single-point segments.
+
+**`listing-marks` caught the same defect a third time in one phase.** The story's source grid linked
+`aser-std3-reading` and `L-0092` carrying neither the caveat nor the absence mark. A story page that
+links records is a listing, rule 4b binds it, and the gate named all three before the page was ever
+deployed. Two other new surfaces in this phase — the connections diagram and this — each reproduced
+A-4 on first build.
+
+**One rendering defect found and fixed by measurement, not by eye:** the inline series labels were
+clipped by the right padding. On a chart whose entire point is that the two lines measure different
+things, the unit label is the one label that may not be cut. Checked by comparing each label's
+`getBBox()` against the viewBox rather than by looking.
+
+**Also fixed:** a `figure: (active) => ReactNode` prop that the build refused — *"Functions cannot
+be passed directly to Client Components"* — so the scroller now owns its figure and receives only
+serializable data.
+
+**Gates:** `reachability` 1786/1786 across 664 pages · `field-render-audit` 4 layers, 0 invisible ·
+`link-check` 24,585 hrefs, 15 route prefixes, 0 dead · `listing-marks` 2,429 rows, 3,417 marks ·
+`domain-coverage` 14/14, 1137/1137. At 375px: no overflow outside a scroll wrapper, the sticky
+figure goes static, the columns stack, the figure precedes the steps in source order, and both
+caveats render at 616 and 609 characters with no clamp and no max-height.
