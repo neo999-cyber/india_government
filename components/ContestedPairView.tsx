@@ -103,6 +103,15 @@ export function ContestedPairView({
         {reconciliation ?? 'No reconciliation exists between these two instruments and none should be manufactured.'}{' '}
         {pair.gapReason}
       </p>
+
+      {/* `notes` — rendered here since 2026-08-08, and it rendered NOWHERE before.
+          `CoverageUsageView` has always carried it and this view never did, so every contested
+          pair's notes were invisible however well the pair itself rendered. Seventeen pairs'
+          notes reached no reader, and only six of those were pairs that render nowhere at all —
+          the other eleven rendered perfectly, minus this field. It is the shape the field-render
+          audit exists for: a field nominally fine, suppressed by one view of two, with the data
+          correct and every other gate green. Found by extending that audit to the pairs layer. */}
+      {pair.notes ? <p className="source-line">{pair.notes}</p> : null}
     </section>
   );
 }

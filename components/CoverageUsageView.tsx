@@ -54,8 +54,11 @@ function Side({ side, position }: { side: ResolvedSide; position: 'a' | 'b' }) {
       <div className={className}>
         <span className="label">{side.label}</span>
         <Absences items={[side.entry]} heading="The counterpart that would go here" />
+        {/* The route comes off the resolved side, which knows which accessor answered. Composing
+            it here from `hostId` is what produced sixteen 404s: a ledger host has no /series/
+            route and nothing in an id says which layer it belongs to. */}
         <p className="source-line">
-          Declared on <Link href={`/series/${side.hostId}/`}>{side.hostTitle}</Link>.
+          Declared on <Link href={side.hostHref}>{side.hostTitle}</Link>.
         </p>
       </div>
     );

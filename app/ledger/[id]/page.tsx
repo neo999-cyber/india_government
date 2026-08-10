@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getLedger, getProvenance, getSeries, ledger as allLedger } from '@/lib/data';
+import { getLedger, getProvenance, getSeries, ledger as allLedger, pairsHostedOn } from '@/lib/data';
+import { PairSection } from '@/components/PairSection';
 import {
   ASSESSMENT_LABELS,
   CONTESTED_GROUND_LABELS,
@@ -40,6 +41,7 @@ export default async function LedgerDetail({ params }: Props) {
   if (!l) notFound();
 
   const refSeries = (l.seriesRefs ?? []).map(getSeries).filter((s): s is NonNullable<typeof s> => !!s);
+  const hostedPairs = pairsHostedOn(`/ledger/${l.id}/`);
   const refDisputes = (l.provenanceRefs ?? [])
     .map(getProvenance)
     .filter((p): p is NonNullable<typeof p> => !!p);
@@ -259,6 +261,16 @@ export default async function LedgerDetail({ params }: Props) {
           </div>
         </>
       ) : null}
+
+      {/* Pairs whose only hostable side is an absence declared on THIS record, and which name no
+          series on either side. None exist today — every pair with no series side leads with a
+          provenance `competingAccountsFrom`, which takes precedence in side order — and the branch
+          is here because the alternative is that the first one authored renders nowhere and the
+          build fails. `pairsHostedOn` is the single source of truth for where a pair lives; a
+          surface that does not consult it is a surface a pair can fall through. */}
+      {hostedPairs.map((pair) => (
+        <PairSection key={pair.id} pair={pair} />
+      ))}
 
       <div className="stub">
         <span className="label">Scaffold</span>

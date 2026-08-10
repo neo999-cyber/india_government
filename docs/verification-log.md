@@ -11702,3 +11702,115 @@ question was open; with the test run it has stated ground, and the 41 unnoted sc
 60 pairs = 679 records, 1759 points. Numstat declared before the edit and matched: agriculture.json
 2 added 1 deleted, rights-institutions.json 1 added 0 deleted. 1 verdict moved, asserted at the
 write, and it is the one authorised.
+
+## Cycle 2026-08-08a — the three architecture-queue items, and a fourth the gate found
+
+**All three items on the architecture queue closed, and the extension built to prove one of them
+found a defect nobody had recorded.** No verdict moved: `assessment` was asserted unchanged on every
+record touched, before the write.
+
+### A-1 — sixteen internal links returning 404, closed at the instance and at the class
+
+`resolvePairSide` resolved an `absenceFrom` host against either layer and returned a bare `hostId`
+carrying no layer, so `CoverageUsageView` composed `/series/${hostId}/` and every ledger-hosted side
+named a route that is not built for any ledger id. The `absence` variant of `ResolvedSide` now
+carries `hostHref`, set where the resolver already knows which accessor answered.
+
+**The mechanism is the one `/unmeasured` already used** — `DeclaredAbsence.href` — rather than a
+second one. That is the local-fix rule applied: the correction is the sweep. **The class enumerated
+from the code, not from memory:** 62 templated internal hrefs across `app/`, `components/` and
+`lib/`; exactly one resolved an id whose layer was not statically known, and it was this one. The
+other 61 derive their route from a statically typed record and were already correct — reported here
+because a sweep that names only its finds cannot be distinguished from a sweep that did not run.
+
+**`tools/link-check.mjs`, new, and in the build.** No gate crawled internal hrefs at all: a route
+composed from a guessed layer satisfies `reachability`, `field-render-audit` and `domain-coverage`
+alike and 404s. **Proven to fire before the fix** — run against the pre-fix build at `4a523c7` it
+named 16 dead routes on exactly the 16 pages walk 6 listed. After the fix: **21,524 internal hrefs
+across 662 built pages, 14 route prefixes, 0 dead**, and no `href="/series/L-"` anywhere in `out/`.
+Its negative control asks `resolves()` about a ledger id under the series route — the live defect's
+own shape — and requires the same id under its own route to resolve.
+
+**Its guard scope is written in its own header**, per the standing rule: it binds internal hrefs
+present in built HTML and does NOT bind external URLs, fragments, whether the target says the right
+thing, or **a link a reader should have and does not** — an absent anchor is invisible to it by
+construction.
+
+### A-3 — eleven pairs rendering nowhere, and the comment that said two
+
+**Re-measured against the built site rather than carried: eleven**, by three mechanisms the withdrawn
+comment did not reach. Six had no series side (PR-31, PR-34, PR-36, PR-39, PR-40, PR-43); three lost
+the `pairsForSeries(id)[0]` slot to another pair of the same series (PR-35, PR-37, PR-52); two are
+`declared-pending` with a side that names nothing (PR-16, PR-55).
+
+`pairHref` is now one source of truth for where a pair lives — subject series first, then a hosting
+record, then nowhere — read by the views and the listing alike. Series pages render **every** pair
+they are a side of; the six with no series side are hosted by the provenance record whose competing
+accounts are one of their two sides; the two `declared-pending` pairs print their framing, gap reason
+and notes in full in the domain listing row, which is the only surface they have. **The subject/host
+distinction is preserved**: a series that merely hosts an absence another pair cites is still not
+that pair's subject, which is what cost `jk-prison-detained-category` its own table once.
+
+**Verified per pair against the built output**, not against the description: all eleven now render,
+each on the page the rule predicts.
+
+**CORRECTION TO THE QUEUE ENTRY THAT RAISED THIS.** Walk 6 recorded PR-55 as *"identical in shape to
+PR-16 but not marked `declared-pending`"*. **PR-55 carries `"status": "declared-pending"`.** Checked
+against the record, which is what a flag raised in a report requires.
+
+### The gate extension, and the fourth defect it found
+
+`field-render-audit` ran over three layers and emitted a scope saying so. **Pairs are the fourth**,
+and were outside it by construction — so a pairs field reaching no reader was invisible to the one
+gate built to catch a field reaching no reader.
+
+**A pageless layer is audited against the whole built site**, not against a page derived from
+`pairHref`: deriving it would make the gate agree with the code it audits — read the page the view
+claims, find the value, report clean on any pair the view drops.
+
+**Run against the pre-fix build it reported 39 invisible pairs prose values, not 11.** `framing` 11,
+independently reproducing walk 6's set; `gapReason` 11; and **`notes` 17 — a defect nobody had
+recorded**. Only six of those seventeen were pairs rendering nowhere: `ContestedPairView` never
+rendered `pair.notes` while `CoverageUsageView` always had, so **eleven pairs that rendered perfectly
+were losing that field to one view of two.** Exactly the shape this audit exists for — data correct,
+every other gate green. Now 0 invisible across four layers.
+
+**The pairs line states its own limits rather than implying completeness:** `[any page]` and `[prose
+only, non-prose owed]`. The non-prose half is a recorded DEBT, not a decision — `RENDERINGS` carries
+no pairs keys, and `leafFields` returns `a` and `b` as non-prose leaves without descending, so
+`a.label` and `b.label` are not enumerated at all.
+
+**Also recorded, unfixed:** `field-render-audit`'s header states it refuses to run against a stale
+build "for the same reason `reachability` does". **It does not** — it checks only that `out/` exists.
+`reachability` and `domain-coverage` both call `assertFresh`; this one never has. A claim about a
+gate's own properties, stated and not held.
+
+### A-2 — three notes opening with the verdict they withdraw
+
+L-0086, L-0127 and L-0134 each opened *"Scored too-early"* / *"Filed too-early"* with the correction
+arriving 939, 850 and 639 characters later — offsets reproduced exactly from the records. Reordered
+onto L-0151's pattern: the `RESCORED too-early -> awaiting-adjudication` block leads, and the
+withdrawn prose follows verbatim under `PREVIOUS NOTE, PRESERVED VERBATIM:`.
+
+**Prose only. `assessment` is `awaiting-adjudication` on all three, asserted before the write and
+unchanged after it** — a verdict change is a stop and none was reached. Written by an
+assert-before-write script: every record read, every new note computed and asserted, and no file
+opened for writing until all three passed. Anchored on the JSON-escaped string with an
+occurrence count, never parse-and-serialise.
+
+**Numstat declared before the edit and matched exactly:** `kashmir-rights.json` 2 modified,
+`rights-institutions.json` 1 modified, 0 added, 0 removed, and the only changed key on every line is
+`assessmentNote`. Verified on the built pages: each note renders whole, leads with the correction,
+and the correction precedes the withdrawn wording in reading order.
+
+**Gates, each quoting its own emitted scope:** `validate` VALID — 0 errors, 163 warnings, 223 ledger
+· 269 series · 127 provenance · 60 pairs = 679 records, 1,759 points · `typecheck` clean ·
+`validate:selftest` 23/23 validator rules, 2/2 output gates · `enum-parity` 67 members across 11
+axes, 3 exempted · `no-bare-root` 0 new, 0 stale · `no-unguarded-prose-field` 21 prose + 53 non-prose
+· `withdrawn-wording` 29 corrections quote what they withdrew, 166 sibling comparisons, 0 withdrawn
+claims still asserted elsewhere · `seam-span` 127 spans, 26 undeclared of which 12 frozen ·
+`phase-name` 339 files, 12 disagreeing assertions all exempted · `exposure` 85 entries ·
+`objectives` 27 entries · `independence` 55 of 57 graded · `figure-consistency` 18 claims ·
+`manifest` 679 records, 71,141 bytes · `reachability` 1786/1786 · `field-render-audit` 42 prose + 51
+non-prose across **4 layers**, 0 invisible · `link-check` 21,524 hrefs, 0 dead · `domain-coverage`
+14/14, 1137/1137 · `enum-stamp` 2 fixtures · `url-check` 0/0 (no citation changed).

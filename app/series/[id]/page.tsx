@@ -5,15 +5,14 @@ import {
   getProvenance,
   getSeries,
   ledgerCitingSeries,
-  pairsForSeries,
+  pairsWithSeriesAsSide,
   provenanceForSeries,
   resolvePairSide,
   series as allSeries,
 } from '@/lib/data';
 import { DOMAIN_LABELS, LENS_LABELS, TERM_SHORT } from '@/lib/format';
 import { denominatorBreaksFor, regimeFor, regimeNeighbours, roleInProvenance } from '@/lib/rules';
-import { CoverageUsageView } from '@/components/CoverageUsageView';
-import { ContestedPairView } from '@/components/ContestedPairView';
+import { PairSection, contestedPairRendersBothSeries } from '@/components/PairSection';
 import {
   ADVANCES_SERIES,
   NPA_AMOUNT_SERIES,
@@ -63,27 +62,27 @@ export default async function SeriesDetail({ params }: Props) {
   // Pairs come from data/pairs.json. A series never renders alone where a pair declares it:
   // for coverage-usage the coverage figure alone says the opposite of what the pair shows,
   // and for contested a single instrument states a direction the evidence does not establish.
-  const pair = pairsForSeries(s.id)[0];
-  const sideA = pair ? resolvePairSide(pair.a) : null;
-  const sideB = pair ? resolvePairSide(pair.b) : null;
-  // A pair displaces this page's own rendering ONLY where the series is itself a SIDE of it.
-  // `pairsForSeries` also matches a series named as the HOST of an absence (`absenceFrom`), and
-  // hosting an absence another pair cites does not make the series that pair's subject — PR-34
+  //
+  // EVERY pair this series is a SIDE of, not the first one. `pairsForSeries(id)[0]` used to decide
+  // this, and it dropped three pairs entirely — PR-35, PR-37 and PR-52 each lost the slot to
+  // another pair of the same series and rendered on no page in the instrument. The subject/host
+  // distinction the old `isPairSide` test enforced is kept and now lives in `pairsWithSeriesAsSide`:
+  // a series that merely HOSTS an absence another pair cites is not that pair's subject — PR-34
   // cites jk-prison-detained-category's unmeasured[0] while its own numbers are the thing the
   // reader came for. Treating the two cases alike cost that series its table, its caveat and its
   // notes on its own page; reachability caught the two marks and the table was going with them.
-  const isPairSide = Boolean(pair && (pair.a.series === s.id || pair.b.series === s.id));
-  const paired = Boolean(pair && sideA && sideB) && isPairSide;
-  const contested = paired && pair.kind === 'contested';
-  const contestedSeries =
-    contested && sideA?.kind === 'series' && sideB?.kind === 'series'
-      ? [sideA.series, sideB.series]
-      : [];
+  const sidePairs = pairsWithSeriesAsSide(s.id);
+  const pair = sidePairs[0];
+  const sideA = pair ? resolvePairSide(pair.a) : null;
+  const sideB = pair ? resolvePairSide(pair.b) : null;
+  const paired = Boolean(pair && sideA && sideB);
   // Suppress the caveat only where ContestedPairView ACTUALLY renders it, not merely because the
   // pair is contested. A contested pair with a non-series side falls through to CoverageUsageView,
   // which renders no caveat — so `!contested` alone suppressed a mark nothing then rendered.
   // CLAUDE.md rule 3a is absolute: a caveat renders wherever the record appears, every time.
-  const contestedPairRendersCaveat = contested && contestedSeries.length === 2;
+  // The test is the one PairSection dispatches on, imported rather than restated: two copies of
+  // it would drift, and this copy is the one that decides whether a caveat is hidden.
+  const contestedPairRendersCaveat = Boolean(pair) && contestedPairRendersBothSeries(pair);
 
   const denominatorBreaks = denominatorBreaksFor(s);
   const disputes = provenanceForSeries(s);
@@ -133,22 +132,22 @@ export default async function SeriesDetail({ params }: Props) {
           amount={getSeries(NPA_AMOUNT_SERIES)}
           reported={<SeriesTable series={s} handoff={handoffFor(s.id)} />}
         />
-      ) : contested && contestedSeries.length === 2 ? (
-        <ContestedPairView
-          pair={pair}
-          instruments={contestedSeries}
-          labels={[pair.a.label, pair.b.label]}
-          reconciliation={
-            (pair.provenanceRefs ?? [])
-              .map((ref) => getProvenance(ref)?.bridgeNote)
-              .find((note): note is string => !!note) ?? undefined
-          }
-        />
-      ) : paired && sideA && sideB ? (
-        <CoverageUsageView pair={pair} a={sideA} b={sideB} />
+      ) : paired ? (
+        <PairSection pair={pair} />
       ) : (
         <SeriesTable series={s} handoff={handoffFor(s.id)} />
       )}
+
+      {/* THE SECOND AND LATER PAIRS THIS SERIES IS A SIDE OF.
+          The first displaces the bare table, because a coverage figure alone states the opposite
+          of what its pair was assembled to show. The rest cannot displace anything — there is only
+          one table — so they render after it. Taking only the first is what hid PR-35, PR-37 and
+          PR-52: each is a second pair of a series whose first slot another pair already held, and
+          all three rendered on no page in the instrument. */}
+      {sidePairs.slice(1).map((extra) => (
+        <PairSection key={extra.id} pair={extra} />
+      ))}
+
       {/* The pair view renders each side's notes beside its own table. */}
       {s.notes && !paired ? (
         <p className="prose-note">{s.notes}</p>

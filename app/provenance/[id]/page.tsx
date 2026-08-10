@@ -4,12 +4,14 @@ import type { Metadata } from 'next';
 import {
   getProvenance,
   ledgerCitingProvenance,
+  pairsHostedOn,
   provenance as allProvenance,
   seriesCitingProvenance,
 } from '@/lib/data';
 import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
 import { roleInProvenance } from '@/lib/rules';
 import { CaveatFlag, SourceList } from '@/components/marks';
+import { PairSection } from '@/components/PairSection';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -35,6 +37,7 @@ export default async function ProvenanceDetail({ params }: Props) {
     (sid) => !carrying.some((s) => s.id === sid),
   );
   const citedBy = ledgerCitingProvenance(p.id);
+  const hostedPairs = pairsHostedOn(`/provenance/${p.id}/`);
 
   return (
     <>
@@ -183,6 +186,28 @@ export default async function ProvenanceDetail({ params }: Props) {
               </Link>
             ))}
           </div>
+        </>
+      ) : null}
+
+      {/* PAIRS THIS RECORD HOSTS, BECAUSE NO SERIES CAN.
+          A pair renders on the page of a series it is a side of. Six pairs name no series on
+          either side — a provenance record's competing accounts set against a declared absence on
+          a ledger record — so no series page will ever host them, and until 2026-08-08 they
+          rendered on no page at all: their framing, their gap reason and their notes reached
+          nobody, while the domain listing carried the title alone. This record's competing
+          accounts ARE one of the two sides, which makes this page the pair's own home rather
+          than a place to put it. */}
+      {hostedPairs.length > 0 ? (
+        <>
+          <h2>{hostedPairs.length === 1 ? 'The pair this record holds a side of' : 'Pairs this record holds a side of'}</h2>
+          <p className="prose-note">
+            Neither side of {hostedPairs.length === 1 ? 'this pair' : 'these pairs'} is a series, so
+            there is no series page to carry {hostedPairs.length === 1 ? 'it' : 'them'}. The
+            competing accounts recorded above stand as one side; the other is a declared absence.
+          </p>
+          {hostedPairs.map((pair) => (
+            <PairSection key={pair.id} pair={pair} />
+          ))}
         </>
       ) : null}
 

@@ -99,7 +99,48 @@ function loadLayer(layer) {
   return files.flatMap((f) => JSON.parse(readFileSync(f, 'utf8')));
 }
 
-const LAYERS = ['ledger', 'provenance', 'series'];
+/**
+ * THE PAIRS LAYER HAS NO PAGE OF ITS OWN, AND THAT IS WHY IT WAS OUTSIDE THIS GATE.
+ *
+ * Until 2026-08-08 this tool ran over three layers and emitted its own scope saying so — *38 prose
+ * + 51 non-prose fields across 3 layers, 0 invisible*. **Pairs are the FOURTH layer**, added in
+ * phase 6c, and were outside that scope BY CONSTRUCTION rather than by oversight. So a pairs field
+ * reaching no reader was invisible to the one gate built to catch a field reaching no reader. That
+ * is the sixth instance of a guard whose scope and its claim's scope differ, and the first found on
+ * a whole layer rather than a field.
+ *
+ * WHY THE TEST IS "ANY BUILT PAGE" AND NOT "THE PAIR'S OWN PAGE". Every other layer has
+ * `out/<layer>/<id>/index.html`, and the per-record test is load-bearing there: a corpus-wide check
+ * passes even when every record page suppresses its own mark. A pair has no such page — it renders
+ * inside a host, and WHICH host is exactly the logic under suspicion. Deriving the page to read
+ * from `pairHref` would make the gate agree with the code it is auditing: it would read the page
+ * the view says it renders on, find the value, and report clean on any pair the view drops.
+ *
+ * So a pageless layer is audited against the WHOLE built site: a field is visible if some page a
+ * reader can reach carries it. That is the weakest honest claim available for a layer with no page,
+ * and it is strong enough — the eleven pairs whose `framing` reached nobody failed it.
+ */
+const PAGELESS = new Set(['pairs']);
+
+/**
+ * The pairs layer is audited on its PROSE fields only, and this is a DEBT recorded rather than a
+ * decision claimed — the same form the two named non-prose exemptions take.
+ *
+ * Two reasons, and the second is the blocking one. `RENDERINGS` is keyed `<layer>.<path>` and
+ * carries no pairs entries, so every pairs non-prose field would be undeclared and this gate would
+ * abort before auditing anything. And the enumeration itself is not well-formed here yet: `a` and
+ * `b` come back from `leafFields` as non-prose LEAVES rather than being descended into, so
+ * `a.label` and `b.label` — prose that renders on the face of every pair view — are not enumerated
+ * at all. Declaring renderings over an enumeration that does not reach the fields would assert a
+ * completeness the walk cannot deliver.
+ *
+ * What this means for the emitted scope, stated because a scope unstated is wrong by an amount
+ * nobody can see: the pairs line below counts PROSE ONLY. The non-prose half of the pairs layer,
+ * and the side-object descent that half depends on, are owed.
+ */
+const PROSE_ONLY = new Set(['pairs']);
+
+const LAYERS = ['ledger', 'provenance', 'series', 'pairs'];
 let invisible = 0;
 let proseFieldCount = 0;
 let nonProseFieldCount = 0;
@@ -107,10 +148,29 @@ let exemptCount = 0;
 const undeclared = [];
 const rows = [];
 
+/** Every built page's text, loaded once, for the pageless layers. */
+let allPagesCache = null;
+function allPageTexts() {
+  if (allPagesCache) return allPagesCache;
+  const out = [];
+  const walk = (dir) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      if (e.name.startsWith('.') || e.name === '_next') continue;
+      const full = join(dir, e.name);
+      if (e.isDirectory()) walk(full);
+      else if (e.isFile() && e.name === 'index.html') out.push(pageTextFromHtml(readFileSync(full, 'utf8')));
+    }
+  };
+  walk(OUT);
+  allPagesCache = out;
+  return out;
+}
+
 for (const layer of LAYERS) {
   const records = loadLayer(layer);
   const { prose, nonProse } = fieldsOf(layer);
   const cache = new Map();
+  const pageless = PAGELESS.has(layer);
   const textFor = (id) => {
     if (!cache.has(id)) cache.set(id, pageText(layer, id));
     return cache.get(id);
@@ -129,9 +189,15 @@ for (const layer of LAYERS) {
       const assertable = vals.filter((v) => formsFor(v) !== null);
       if (assertable.length === 0) continue;
       carried += 1;
-      const text = textFor(r.id);
-      if (text === null) { noPage += 1; continue; }
-      if (assertable.every((v) => formsFor(v).some((form) => text.includes(norm(form))))) rendered += 1;
+      // A pageless record is asked of the whole site; a paged one only of its own page, because
+      // corpus-wide reachability is satisfied by an index and that is not the claim.
+      const hit = pageless
+        ? (form) => allPageTexts().some((t) => t.includes(norm(form)))
+        : null;
+      const text = pageless ? '' : textFor(r.id);
+      if (!pageless && text === null) { noPage += 1; continue; }
+      const seen = (v) => formsFor(v).some((form) => (pageless ? hit(form) : text.includes(norm(form))));
+      if (assertable.every(seen)) rendered += 1;
       else if (examples.length < 4) examples.push(`${r.id} -> ${JSON.stringify(assertable).slice(0, 70)}`);
     }
     if (carried === 0) return;
@@ -142,6 +208,8 @@ for (const layer of LAYERS) {
   };
 
   for (const f of prose) audit(f, (v) => [String(v)], 'prose');
+
+  if (PROSE_ONLY.has(layer)) continue;
 
   for (const f of nonProse) {
     const key = `${layer}.${f.path}`;
@@ -182,7 +250,9 @@ const perLayer = LAYERS.map((l) => {
   const rs = rows.filter((r) => r.layer === l);
   const m = rs.reduce((a, r) => a + r.missing, 0);
   const pr = rs.filter((r) => r.group === 'prose').length;
-  return `${l} ${pr} prose + ${rs.length - pr} non-prose/${m} invisible`;
+  const scope =
+    (PAGELESS.has(l) ? ' [any page]' : '') + (PROSE_ONLY.has(l) ? ' [prose only, non-prose owed]' : '');
+  return `${l} ${pr} prose + ${rs.length - pr} non-prose/${m} invisible${scope}`;
 }).join(' · ');
 
 if (undeclared.length) {
@@ -199,7 +269,7 @@ if (undeclared.length) {
 if (invisible > 0) {
   console.error(
     `field-render-audit FAILED — ${invisible} record-field(s) carry a value that never reaches ` +
-    `the record's own page.\n  ${perLayer}\n\n` +
+    `the record's own page — or, on a pageless layer, any page at all.\n  ${perLayer}\n\n` +
     '  A field the page does not carry is invisible to a reader while looking correct to every\n' +
     '  other gate. Either render it, or state in its schema description why it is not rendered.',
   );

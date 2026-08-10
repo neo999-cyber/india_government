@@ -251,6 +251,16 @@ tr th:last-child {
   font-size: 0.8125rem;
 }
 
+/* A declared-pending pair's own prose, inside its listing row, because that row is the only
+   surface the pair has. Block rather than inline so the framing and the gap reason each get a
+   line — and with NO clamp of any kind, on the discipline rule 3a sets for a caveat in a cell:
+   a qualification cut to fit is the failure the field exists to prevent. */
+.pair-declared {
+  display: block;
+  margin-top: 0.35rem;
+  max-width: 62ch;
+}
+
 /* --- break seam: the one place a red rule crosses a table --------------- */
 
 .seam td {
