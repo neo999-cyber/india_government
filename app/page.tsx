@@ -1,133 +1,168 @@
 import Link from 'next/link';
-import { assessmentCounts, ledger, provenance, series, statusCounts } from '@/lib/data';
-import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
-import { DOMAINS, TERMS } from '@/lib/types';
-import { StatusKey, TallyGloss } from '@/components/marks';
+import { getSeries, ledger, provenance, series } from '@/lib/data';
+import { DOMAIN_LABELS } from '@/lib/format';
+import { DOMAINS } from '@/lib/types';
+import { SeriesChart } from '@/components/SeriesChart';
+
+/**
+ * THE HOMEPAGE — phase 18 prototype B, built to the §3a order.
+ *
+ * WHAT THIS PAGE USED TO BE, AND WHY IT COULD NOT STAY. It opened with the size of the database:
+ * 269 series, 1,759 observations, 223 ledger records, 127 disputes, six figures in a row above the
+ * fold. That is the thing the scope forbids in two separate places — *"do not lead with the size of
+ * the database, lead with why the database is useful"*, and *"no verdict aggregates, no database
+ * counts above the fold"*. It also led with the one-in-223 `worked` paragraph, which is the closest
+ * thing this instrument has to a scoreboard even though every word of it is true.
+ *
+ * THE ORDER BELOW IS §3a AND IT IS LOAD-BEARING, not a layout preference:
+ *   1. the positioning line;
+ *   2. ONE strongly measured change, told well;
+ *   3. several more recognisable, well-measured changes;
+ *   4. a deliberate transition into a series that stops;
+ *   5. that stop's reason, printed;
+ *   6. only then anything cross-record.
+ *
+ * The reason for the order is the failure mode named in §3: **nihilism.** If every chart breaks and
+ * every verdict is contested, a reader concludes the site knows nothing and leaves. A gap is only
+ * interesting against a background of things that are solidly known — so the majority of what a
+ * reader meets here is what India does measure, and the memorable minority is where it does not.
+ *
+ * EVERY CHART IS FROM THE INVENTORY (§3b). `drops/phase-17-design-lock/SERIES-INVENTORY-2026-08-08.md`
+ * measured 26 series carrying ten or more verified India observations with no pending point. The
+ * pre-phase drafts had named rail electrification and road length; neither is in that set. These are.
+ */
+
+/** Charts chosen from the inventory's clean set, with the sentence each one is here to say. */
+const OPENING = {
+  id: 'higher-ed-ger',
+  takeaway:
+    'Thirty per cent of Indians aged 18 to 23 are enrolled in higher education, up from 21 per cent in 2011-12. The line breaks in FY2020-21 because the population it is divided by was restated, not because enrolment jumped.',
+};
+
+const SUPPORTING: { id: string; takeaway: string }[] = [
+  {
+    id: 'res-capacity-share',
+    takeaway:
+      'Renewables excluding large hydro have gone from an eighth of installed electricity capacity to roughly a third. Fourteen years, every one of them verified, no break.',
+  },
+  {
+    id: 'coal-production',
+    takeaway:
+      'Coal production rose by about two-thirds over the same period. The energy transition and the coal expansion are both true at once, which is why they are shown together.',
+  },
+  {
+    id: 'sanitation-basic',
+    takeaway:
+      'The share of Indians using at least a basic sanitation service rose steeply and then flattened. This one is measured by the World Bank, not by the programme that built the toilets.',
+  },
+];
+
+const THE_STOP = 'schools-above-rte-ptr-primary-dise';
 
 export default function HomePage() {
-  // Counted, never typed. It fell from 9 to 1 on 6 August 2026 and the paragraph reporting it
-  // must move with the data rather than with whoever last edited the prose.
-  const worked = ledger.filter((l) => l.assessment === 'worked').length;
-  const status = statusCounts(series);
-  const points = series.reduce((n, s) => n + s.points.length, 0);
-  const breaks = series.reduce((n, s) => n + (s.breaks?.length ?? 0), 0);
+  const opening = getSeries(OPENING.id);
+  const supporting = SUPPORTING.map((c) => ({ ...c, s: getSeries(c.id) })).filter((c) => c.s);
+  const stop = getSeries(THE_STOP);
   const domainsWithData = DOMAINS.filter(
     (d) => series.some((s) => s.domain === d) || ledger.some((l) => l.domains.includes(d)),
   );
 
   return (
     <>
-      <h1>The instrument, as currently loaded</h1>
+      {/* 1. THE POSITIONING LINE. What the site is, in one sentence, before anything is counted. */}
+      <h1 className="home-lead">What we can actually know about how India changed</h1>
       <p className="lede">
-        Three data layers govern everything rendered here: indicator series, a ledger of
-        reforms and events, and provenance — the measurement disputes, which are first-class
-        records rather than footnotes. Nothing renders that has not passed{' '}
-        <code>npm run validate</code> first.
+        Since 2014, from India&rsquo;s own published statistics and official documents. Every figure
+        here shows where it came from — and where the record stops, this says so, with the reason.
       </p>
 
-      <h2>Loaded</h2>
-      <ul className="counts">
-        <li>
-          <span className="figure">{series.length}</span>
-          <span className="label">series</span>
-        </li>
-        <li>
-          <span className="figure">{points}</span>
-          <span className="label">observations</span>
-        </li>
-        <li>
-          <span className="figure">{ledger.length}</span>
-          <span className="label">ledger records</span>
-        </li>
-        <li>
-          <span className="figure">{provenance.length}</span>
-          <span className="label">disputes</span>
-        </li>
-        <li>
-          <span className="figure">{breaks}</span>
-          <span className="label">series breaks</span>
-        </li>
-        <li>
-          <span className="figure">{domainsWithData.length}/{DOMAINS.length}</span>
-          <span className="label">domains opened</span>
-        </li>
-      </ul>
-      <StatusKey />
-      <p className="prose-note">
-        {status.verified} observations verified against a named source this cycle,{' '}
-        {status.approx} approximate, {status.pending} pending. The open verification queue lives
-        in <code>docs/verification-log.md</code>.
-      </p>
+      {/* 2. ONE strongly measured change, told well. */}
+      {opening ? (
+        <>
+          <h2>Start with something the state measures well</h2>
+          <SeriesChart series={opening} takeaway={OPENING.takeaway} />
+        </>
+      ) : null}
 
-      <h2>Terms</h2>
-      <p className="prose-note">
-        Records roll up to counts of assessments, never to a grade. The baseline term is carried
-        for context and is not scored.
-      </p>
-      <p className="prose-note">
-        <strong>
-          {worked === 1 ? 'One record of' : `${worked} records of`} {ledger.length} says a measure
-          worked, and that number is about the evidence rather than about the government.
-        </strong>{' '}
-        From 6 August 2026 a success verdict needs a source independent of the body that announced
-        the measure, and a promise with several parts is not delivered while any part goes
-        unmeasured. Where the Indian state is the only body that measures a thing — which, on most
-        of these subjects, it is — raising that standard lowers the count of established successes
-        whatever the policies actually did. So read this tally as a measure of how much of Indian
-        policy is independently checked, and read it as a measure of the policy only where you can
-        also see the independent evidence on the record.{' '}
-        <Link href="/method/">How that standard works, and what it cannot separate</Link>.
-      </p>
-      <div className="grid">
-        {TERMS.map((term) => {
-          const records = ledger.filter((l) => l.term === term);
-          const counts = assessmentCounts(records);
-          return (
-            <Link key={term} href={`/terms/${term}/`}>
-              <span className="label">{TERM_SHORT[term]}</span>
-              <span className="grid-title">{records.length} records</span>
-              <span className="grid-meta">
-                {Object.entries(counts).length === 0
-                  ? 'not yet opened'
-                  : Object.entries(counts)
-                      .map(([k, v]) => `${v} ${ASSESSMENT_LABELS[k as keyof typeof ASSESSMENT_LABELS] ?? k}`)
-                      .join(' · ')}
-              </span>
-            </Link>
-          );
-        })}
-      </div>
-      <TallyGloss />
+      {/* 3. Several more. Plainly and confidently — §3's tone rule: a site about uncertainty must
+             not sound uncertain. */}
+      {supporting.length > 0 ? (
+        <>
+          <h2>And several more</h2>
+          {supporting.map((c) => (
+            <SeriesChart key={c.id} series={c.s!} takeaway={c.takeaway} />
+          ))}
+        </>
+      ) : null}
 
-      <h2>Domains</h2>
+      {/* 4 and 5. THE TRANSITION, and the reason printed. This is the whole argument of the site in
+             one chart: the same statistical system that produced everything above stopped producing
+             this, and the corpus knows why. */}
+      {stop ? (
+        <>
+          <h2>Now one that stops</h2>
+          <p>
+            Everything above is published every year and can be checked. This one was too — until
+            2015-16. The Right to Education Act sets a staffing standard for{' '}
+            <em>each school</em>, and this is the measure of how many schools were breaching it.
+          </p>
+          <SeriesChart
+            series={stop}
+            takeaway="Published every year by DISE through 2015-16, and by its successor system in no edition since — although that system holds the enrolment and teacher counts for every school in the country."
+          />
+          <p className="home-stop-note">
+            <strong>The published series ends in 2015-16.</strong> That is a fact about what was
+            published, not about what happened in the schools. What replaced it is a national
+            average — one number for the whole country — against a duty the Act imposes school by
+            school.
+          </p>
+        </>
+      ) : null}
+
+      {/* 6. Only now, anything cross-record. Entry points, not a scoreboard: no tally, no
+             composite, no count presented as a score. */}
+      <h2>Where to look</h2>
+      <p className="prose-note">
+        {domainsWithData.length} subject areas are open. Each one leads to the series, the records
+        and the measurement disputes behind them.
+      </p>
       <div className="grid">
         {DOMAINS.map((d) => {
           const s = series.filter((x) => x.domain === d).length;
           const rows = ledger.filter((x) => x.domains.includes(d));
-          const l = rows.length;
-          // The scored share, on the card. A grid that gave only how many records exist invited the
-          // reading that a domain with few of them had been examined less — and the corpus's answer
-          // is that a domain with few SCORED records contains few announced measures. The number is
-          // here so the card carries the fact rather than the impression.
-          const scored = rows.filter((x) =>
-            ['worked', 'partly', 'failed', 'reversed'].includes(x.assessment),
-          ).length;
           return (
             <Link key={d} href={`/domains/${d}/`}>
               <span className="grid-title">{DOMAIN_LABELS[d]}</span>
               <span className="grid-meta">
-                {s} series · {l} ledger
-                {l > 0 ? ` · ${scored} scored` : ''}
-                {s + l === 0 ? ' · empty' : ''}
+                {s + rows.length === 0
+                  ? 'not yet opened'
+                  : `${s} series · ${rows.length} record${rows.length === 1 ? '' : 's'}`}
               </span>
             </Link>
           );
         })}
       </div>
+
+      {/* WHAT THE SITE CANNOT SHOW — the second half of the thesis, and it comes AFTER the evidence
+          rather than instead of it. No corpus-wide absence total: rule 4b forbids one, because a
+          number there would read as a completeness score for the instrument. */}
+      <h2>And what nobody measures</h2>
+      <p>
+        Some of what a reader would want is not missing from this site — it is missing from the
+        record. Where nothing measures a thing at all, that is stated on the record it belongs to,
+        with the reason and with what would close it: never collected, collected but not published,
+        withheld on request, or never defined in the first place.
+      </p>
+      <p className="prose-note">
+        <Link href="/unmeasured/">Everything the instrument declares it cannot show</Link> ·{' '}
+        <Link href="/contested/">where two official sources disagree</Link> ·{' '}
+        <Link href="/method/">how the evidence is graded, and what the grading cannot do</Link>
+      </p>
+
       <p className="t-note">
-        &ldquo;Scored&rdquo; counts the records reaching a verdict on an outcome. A domain with few
-        of them contains few measures the state announced against a target — not less examination.{' '}
-        <Link href="/method/">What the distribution measures</Link>.
+        {provenance.length} measurement disputes are carried as records in their own right rather
+        than as footnotes. Counts appear here as a description of the instrument, never as a score
+        for anything it describes.
       </p>
     </>
   );
