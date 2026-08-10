@@ -15,9 +15,6 @@ export const REGIME_GROUPS: readonly (readonly string[])[] = [
   ['gdp-growth-old-base', 'gdp-growth-new-base', 'gdp-growth-2022-base'],
 ];
 
-/** Provenance record carrying the contested-index dispute (rule 6). */
-export const CONTESTED_INDEX_DISPUTE = 'P-08';
-
 /**
  * Rebasings that restated the LEVEL of nominal GDP. These move every ratio-to-GDP with no
  * change in underlying activity, which is a different thing from a series break and gets a
@@ -89,24 +86,6 @@ export function denominatorBreaksFor(series: Series): DenominatorBreak[] {
     const key = periodKey(period);
     return { ...rev, period, withinSpan: key >= first && key <= last };
   });
-}
-
-/**
- * A record's blocking caveat, read from the record itself.
- *
- * `caveat` became a schema field on both the ledger and series schemas in phase 4b, so this
- * no longer holds a list of record ids. That list was the weak point: it lived in code, it
- * could only ever name records someone had thought to add, and it went stale silently the
- * moment a drop renamed or replaced one. Research sessions now author the caveat with the
- * record, which is the only place that can stay correct.
- *
- * The contract the schema states, and which the rendering obeys: a caveat must appear
- * wherever the record appears, compact listings included. Ordinary uncertainty is not a
- * caveat and belongs in `notes` — a caveat marks a record that would mislead without it.
- */
-export function caveatOf(record: { caveat?: string } | undefined | null): string | null {
-  const text = record?.caveat?.trim();
-  return text ? text : null;
 }
 
 /**

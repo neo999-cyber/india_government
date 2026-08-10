@@ -2039,3 +2039,127 @@ two of the four surfaces that show a verdict; four dead exports, one of which
 (`CONTESTED_INDEX_DISPUTE`) is declared twice in two files with nothing binding them; and
 environment's 0% series-caveat rate against a 48% corpus rate, which is a question about phase 15's
 authoring rather than about the design.
+
+---
+
+# THE NUMBER — 2026-08-10. Four measurements, one estimate, the queue whole.
+
+Asked for twice, displaced twice. Produced now, against snapshot `8fe04b1`, with the five open
+items closed in the same batch (operator instruction: loose ends fixed, not reported). No walk ran.
+
+## MEASUREMENT 1 — every build gate's predicate against its own header
+
+Seventeen gates in the build chain, headers quoted from their own files, predicates read from
+their operative lines. **One predicate-vs-header mismatch. Two presence-blindnesses, both now
+covered at the mark level. Everything else matches, with its non-bindings stated in its own
+header.**
+
+| gate | header claims | predicate tests | gap |
+| --- | --- | --- | --- |
+| validate | "/data … the build gate" | ajv per record | data shape only, by design |
+| enum-parity | schema = type = label map, both directions | set equality; constraints as subsets with named omissions | 3 axes exempted by name, stated |
+| no-bare-root | refuse new bare roots, ratchet legacy | regex + frozen allowlist | URL shape only, not retrievability |
+| no-unguarded-prose-field | every field bound to a decision, no third state | field list vs guarded-marks + schema exemption strings | pairs fields outside — same debt as f-r-a |
+| **withdrawn-wording** | "a correction STATES WHAT IT WITHDREW, in quotation marks" | a correction CARRIES AN ATTRIBUTED QUOTATION | **THE MISMATCH: identity of the quotation with the withdrawn text is untested — a correction quoting something else would pass.** Checkable only against git history (`gen-record-history` is the input a future check would need); a different gate contract, named rather than built. |
+| seam-span | prose comparisons across declared breaks, ratcheted | span detection + frozen-judgement list | wide-only spans out of scope by design; the open class-3 instance |
+| phase-name | every phase-name assertion agrees with the table | assertion + heading + table-row forms | a name asserted with no number beside it is invisible, stated |
+| exposure | role present or exempted; adjudication exactly where adjudicable | per-entry structural checks | judgement content unchecked, by construction |
+| objectives | Rulings 2 and 9 checkable | checks records CARRYING `objectives[]` | silent on the 32 multi-objective records without the field, stated in its own header |
+| independence | judgement made, citations do not contradict it | tier-based refutation only | "judgement not checked, by construction" — its own scope line says so |
+| figure-consistency | declared arithmetic claims agree with source and print | recompute with declared dp | DECLARED claims only — an undeclared figure is invisible, stated |
+| manifest | one line per record | regenerate + byte-compare | none |
+| reachability | every declared mark reachable on its own page | `own.includes(needle)` | **presence, not cardinality** — header's own word is "reachable", so the text is honest; the blindness is in what the gate gets cited FOR |
+| field-render-audit | does every field REACH the page | `includes` | same presence-blindness — it reported 52/52 on the field it was looking at while that field rendered twice |
+| link-check | every internal href resolves | route → built file | fragments, absent links, content: all stated |
+| listing-marks | a listed record states what it declares; block cardinality | mark-in-row; block ≤1/page | absent rows, peers, prose mentions, pair rows: all stated |
+| domain-coverage | every domain value has a page, every record reaches its surface | schema-derived set vs built output | domain axis only; term/lens/contested/exposure indexes measured complete by hand in walk 8, unguarded |
+
+**A correction to this audit's own first impression, checked against the record:** the sliding
+60-char window in `stillAsserts` was initially read as a weakness — a fragment passing as the
+whole. It is the SIBLING detector, and fragment-matching there makes the guard MORE aggressive:
+any surviving 60-char run of withdrawn wording in a live sibling counts as still-asserting. The
+real gap is the one in the table.
+
+**The presence-vs-cardinality blindness is closed where it is closable.** Field-level
+exactly-once is NOT addable — measured at 759 false positives across 5,683 prose values (titles
+in `<title>` and `<h1>`, objectives in the limb list and the note). Mark-level exactly-once has
+zero false positives across 374 rendered declarations and is now IN `listing-marks`, proven three
+ways: a synthetic control through the live counting logic, and a fixture build with a real page's
+declaration block duplicated, which the full live path catches and names.
+
+## MEASUREMENT 2 — the guarded surface
+
+**7 components + 22 app `.tsx` files; 20 files read ≥3 schema fields of some layer** (the
+view-parity attribution floor; `NpaView` reads fewer than 3 distinct field names and sits below
+it — the method's stated limit, not a claim it renders nothing). Per layer: series rendered by 14
+files, ledger by 15, provenance by 11, pairs by 9.
+
+**Field coverage: 93 of ~109 leaf fields (85%) are inside `field-render-audit`** — 42 prose + 51
+non-prose with declared renderings, 2 exempted by name. **The unguarded ~15% is one region plus
+two named debts:** the pairs non-prose half (10 of the pairs schema's 14 leaves, including
+`a.label`/`b.label`, which `leafFields` does not descend into — the gate's own scope line says
+`[prose only, non-prose owed]`), and the `higherIsBetter`/`xAxis` exemptions, both recorded as
+debts in their own schema descriptions.
+
+**Is there another pairs-shaped region — invisible for the corpus's whole life because nothing
+enumerated it? No, on the enumeration available.** Every data layer is now inside
+field-render-audit (4 of 4 since 2026-08-08). Every index surface was measured complete in walk 8
+(0 missing rows across series/ledger/provenance/unmeasured/contested/exposure/peers/8 lenses/4
+terms). The remaining unguarded regions are all NAMED in some gate's own header: pairs non-prose,
+`/peers/` full renders, absent rows. A named region is a different object from the pairs layer,
+which no scope line mentioned for its whole life.
+
+## MEASUREMENT 3 — live instances per defect class, at snapshot `8fe04b1`
+
+| class | live | method | disposition |
+| --- | --- | --- | --- |
+| local fix not generalised | **1** (A-5) | open-items list + each CLAUDE.md-named sweep class checked for unswept members | **closed this batch** — `derivations` in the build with a shallow-clone fallback |
+| two views disagreeing on fields | **1** (`confidence` on 2 of 4 verdict surfaces) | view-parity near-twins + hand reading of every divergence | **closed this batch** — Conf. column on `/domains/[domain]` and `/lenses/[lens]` |
+| guard scope narrower than its claim (stated-open) | **5** | each gate's own DOES-NOT-BIND section, enumerated | open by design/deferral: seam-span derived comparisons (26 undeclared, 12 frozen), f-r-a pairs non-prose, listing-marks absent rows, link-check fragments, peers full render |
+| prose restating a structured value, stale | **0** | findable-token scan: 117 hits, 50 prose restatements naming another value, every member read — all correction-convention or value-boundary defences; enum-valued fields excluded as field values, not prose | nothing to do; L-0209 and L-0069 both corrected at their rescores |
+| count asserted from no gate | **0** in scope | every figure on `/`, `/method`, `/derivations` recomputed from `/data` (walk 8: exact); CLAUDE.md's one historical figure self-flags with a re-run instruction | nothing to do |
+| check positioned after the thing it guards | **0** | all 6 writers audited (assert-before-write or wholesale regeneration); all 4 out/-reading gates assert freshness before scanning | nothing to do |
+| predicate narrower than its header | **1** (withdrawn-wording quotation-identity) | Measurement 1, all 17 gates | **named, not built** — needs git history as input, a new gate contract |
+
+**Also closed this batch, from the open list:** the four dead exports removed (`ProvenanceTags`,
+`getPair`, `caveatOf`, and `CONTESTED_INDEX_DISPUTE` — whose doc comment still encoded the
+superseded reading of rule 6, "P-08" as THE contested-index dispute; `tools/lib/integrity.mjs`'s
+local copy is now the only declaration). The cardinality assertion added and proven. **Not
+closed, and not closable from this chair: environment's 0% series-caveat rate against a 48%
+corpus rate.** Whether 15 clean series reflect clean instruments or a phase-15 authoring standard
+gap is a judgement about records against the caveat definition — research-session work under
+Roles, not a code fact. It stays on the queue as a research question.
+
+## MEASUREMENT 4 — the estimate
+
+**One to two batches to a clean walk, and the basis is thin enough that the honest form is: the
+NEXT walk is the test, with better-than-even odds.**
+
+The basis, all three legs stated: **(1)** the off-queue find series is 3 → 1 → 1 across walks 6–8
+— declining, but three points cannot carry a trend claim. **(2)** The two generators of findings
+are both addressed: own-batch regressions (2 of walk 7's finds) are now bounded by gates proven
+to fire on exactly those shapes (link-check, listing-marks with cardinality) plus the
+batch-checks-itself-first discipline (walk 8's own-work sweep: clean); unenumerated populations
+are closed by Measurements 1–2 — every gate audited, every layer enumerated, every index surface
+measured complete. **(3)** What remains findable is, on this audit, confined to five NAMED scopes
+and one NAMED predicate gap — and a walk that finds only things already on the queue is the
+stopping condition met, so findings inside named scopes no longer defeat it.
+
+**What would falsify the estimate:** a walk 9 finding in a region Measurement 2 calls enumerated.
+That would mean the enumeration itself has a scope gap — the seventh instance of the class — and
+the estimate resets.
+
+## THE QUEUE, WHOLE, after this batch
+
+| item | state |
+| --- | --- |
+| A-5 — derivations outside the build | **CLOSED** — in the build before `next build`, stamp from last data commit, shallow-clone fallback preserves the committed stamp |
+| `confidence` missing from 2 of 4 verdict surfaces | **CLOSED** — Conf. column, /ledger's idiom, both tables |
+| four dead exports, one declared twice | **CLOSED** — all four removed; single declaration remains in `integrity.mjs` |
+| cardinality assertion on rendered absence blocks | **CLOSED** — in `listing-marks`, control + live-path fixture proof |
+| environment 0% vs corpus 48% series-caveat rate | **OPEN — research question**, not answerable from the repo; needs the 15 records read against the caveat definition |
+| seam-span: 26 spans not declaring, 12 frozen | open deferral with a measured rate; re-run the tool, never quote this line |
+| f-r-a pairs non-prose half (incl. `a.label`/`b.label` enumeration) | open debt, stated in the gate's scope line |
+| withdrawn-wording quotation-identity | open named gap; input exists (`gen-record-history`), gate not built |
+| DESIGN: thirteen nav destinations | open, unchanged |
+| DESIGN: caveat-in-cell form (466 grid cards over 300 chars) | open, unchanged |

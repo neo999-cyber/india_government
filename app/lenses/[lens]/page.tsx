@@ -170,6 +170,8 @@ export default async function LensPage({ params }: Props) {
                   <th>Record</th>
                   <th>Subject</th>
                   <th>Assessment</th>
+                  {/* Same column as /ledger, /terms and the domain page — see the note there. */}
+                  <th>Conf.</th>
                 </tr>
               </thead>
               <tbody>
@@ -195,6 +197,7 @@ export default async function LensPage({ params }: Props) {
                         ))}
                       </td>
                       <td className="t-note">{ASSESSMENT_LABELS[x.assessment]}</td>
+                      <td className="mono t-note">{x.confidence}</td>
                     </tr>
                   ))}
               </tbody>
