@@ -1801,3 +1801,241 @@ in full inside a table cell across six surfaces.
 `field-render-audit` — `RENDERINGS` carries no pairs keys and `leafFields` returns `a` and `b` as
 non-prose leaves without descending, so `a.label` and `b.label` are not enumerated at all. The
 gate's own emitted scope now says `[prose only, non-prose owed]` rather than implying completeness.
+
+---
+
+# THREE REPORTS — 2026-08-08. A-4 is closed; these are reports and were not acted on except where noted.
+
+## REPORT 1 — the same-batch regression check, and whether any gate could have caught the three
+
+**First, the count is corrected against what actually happened.** The walk-7 entry says *"three of
+walk 7's four finds were mine"*. Read strictly, **two were regressions this batch INTRODUCED** —
+the duplicated pooled absences and the dead `pairsForSeries` — and the third, three pair side
+labels rendering nowhere, was a PRE-EXISTING gap that the same batch's declared-pending row came
+within one line of closing and did not. That is incomplete work, not a regression, and the
+distinction matters because a regression check would not have caught it.
+
+### Could an existing gate have caught them? Measured, not assumed.
+
+**(1) THE DUPLICATED ABSENCES — one gate was looking straight at it and could not see it.**
+`field-render-audit` audits `series.unmeasured[].what` and `.why` on the record's OWN page, which is
+exactly the field and exactly the page that duplicated. It reported **52/52 rendered, 0 invisible,
+throughout.** Its predicate is `text.includes(needle)` — **presence**. The defect was
+**cardinality**. `reachability` is the same: `own.includes(needle)`.
+
+**So the question is whether a cardinality assertion is addable, and the answer differs sharply by
+what it binds:**
+
+| assertion | false positives today | verdict |
+| --- | --- | --- |
+| every prose field value ≥40 chars appears **exactly once** on its own page | **759 of 5,683** | **NOT addable.** Titles appear in `<title>` and `<h1>`; `objectives[].text` appears in the limb list and in the note. A gate here fires on 759 right answers. |
+| every rendered **absence block** (`what` + `why`) appears **exactly once** | **0 of 374** on own pages, **0 of 444** across every page showing one | **ADDABLE, and it would have caught this.** |
+
+**The lesson is the one CLAUDE.md keeps paying for: bind the MARK, not the field.** A field recurs
+innocently; a rendered mark does not.
+
+**(2) THE DEAD EXPORT — nothing could have caught it, and there are four more today.** There is no
+ESLint config in the repository and `tsconfig.json` sets no `noUnusedLocals`. TypeScript cannot help
+regardless: an exported symbol is used by the module system, so `typecheck` was green.
+
+A dead-export sweep is four lines and finds **four live instances** beyond the one removed:
+`components/marks.tsx ProvenanceTags` · `lib/data.ts getPair` · `lib/rules.ts
+CONTESTED_INDEX_DISPUTE` · `lib/rules.ts caveatOf`. Each verified across `app/`, `components/`,
+`lib/`, `tools/`, `schemas/` and `docs/`.
+
+**Two of the four are worth more than their size.** `caveatOf` is a rule-3a helper nobody calls. And
+`CONTESTED_INDEX_DISPUTE = 'P-08'` is declared in `lib/rules.ts` and **declared again, separately, in
+`tools/lib/integrity.mjs`** — the same value in two places with nothing binding them, which is the
+axis-in-two-places class CLAUDE.md already names for `tier` and `lens`.
+
+### What a same-batch regression check would look like
+
+**Not a new gate. A DIFF, and it is M2 lifted from `/data` to `/out`.** M2 already says a write is
+verified by diffing and never by the writer's own count, with the expected shape declared before the
+edit. The batch that introduced these ran that discipline on `/data` — the numstat was declared and
+matched — and ran nothing equivalent on rendered output, which is where both regressions landed.
+
+The mechanical form: build at the batch's base commit, keep `out/`, build at head, and diff the
+rendered text of every page. Then require a declaration of the expected shape. **The two regressions
+have opposite and equally recognisable signatures:** the duplicate absences show as ~4 pages GAINING
+a block that already existed on them, and the dead export shows as no page diff at all — which is
+the point, since a dead export is invisible to any output diff and needs the sweep above instead.
+
+**What it cannot do, stated so it is not oversold:** it reports every intentional change too, and
+this batch changed 661 pages on purpose. It is a review aid whose value is that a reviewer must
+LOOK at the diff, not a predicate that passes or fails. The cardinality assertion is the part that
+can be a gate, and it is the part worth building.
+
+## REPORT 2 — the other 11 of the 26 long clean series
+
+26 series carry ≥10 verified India observations with no pending point. **15 are fiscal** —
+`federalism` 12 and `macro` 3. **These are the other 11, and they are the homepage's real
+non-fiscal candidate set:**
+
+| # | domain | span | verified pts | seams | series |
+| --- | --- | --- | --- | --- | --- |
+| 1 | environment | FY2012-13–FY2025-26 | 14 | 0 | Renewables' share of installed electricity capacity (RES, excluding large hydro) |
+| 2 | environment | FY2012-13–FY2025-26 | 14 | 2 | Renewables' share of electricity generated (RES, excluding large hydro) |
+| 3 | environment | FY2012-13–FY2025-26 | 14 | 0 | Non-fossil share of installed electricity capacity (renewables, large hydro and nuclear) |
+| 4 | environment | FY2012-13–FY2025-26 | 14 | 2 | Non-fossil share of electricity generated (renewables, large hydro and nuclear) |
+| 5 | education | FY2011-12–FY2023-24 | 13 | 1 | Gross enrolment ratio in higher education, ages 18-23 |
+| 6 | environment | FY2013-14–FY2024-25 | 12 | 0 | All-India raw coal production |
+| 7 | environment | FY2013-14–FY2024-25 | 12 | 0 | Plant load factor of coal and lignite thermal stations |
+| 8 | defence | 2014–2024 | 11 | 0 | Security-force personnel killed in J&K, MHA |
+| 9 | environment | FY2015-16–FY2024-25 | 10 | 0 | Coal imports into India, all grades |
+| 10 | defence | 2011–2020 | 10 | 1 | Terrorist incidents in J&K, MHA 'Incidents' column as contemporaneously published |
+| 11 | human-development | 2014–2023 | 10 | 0 | Population using at least basic sanitation services |
+
+**Seven of the eleven are `environment` and they are two subjects, not seven** — the electricity mix
+(four series: capacity and generation, renewables and non-fossil) and coal (three: production,
+plant load factor, imports). **`education` contributes exactly one**, and it is higher-education
+enrolment, not learning. **Four of the eleven carry a seam.**
+
+So the non-fiscal candidate set is really **five subjects**: the electricity mix, coal, higher-
+education enrolment, J&K security, and sanitation.
+
+## REPORT 3 — education and environment & energy, evidence grade
+
+| | education | environment |
+| --- | --- | --- |
+| series | 54 | 15 |
+| India points | 366 | 115 |
+| **verified** | **309 (84%)** | **92 (80%)** |
+| approx | 20 (5%) | 23 (20%) |
+| pending | 37 (10%) | 0 (0%) |
+| declared seams | 67 | 4 |
+| tiers | T1 38 · T4 14 · T2 2 | T1 12 · T2 3 |
+| **series caveats** | **49 of 54 (91%)** | **0 of 15 (0%)** |
+| series absences | 45 declarations across 20 series | **0** |
+| ledger records | 21 | 14 |
+| ledger caveats / absences | 18 / 52 | 7 / 21 |
+| provenance affecting it | 14, of which 12 have no bridge and 12 carry competing accounts | 7, of which 5 have no bridge and 3 carry competing accounts |
+| contested verdicts | 9 of 21 | 2 of 14 |
+
+**Longest fully verified with no pending and no approx —** education: higher-education GER, 13 points,
+FY2011-12–FY2023-24, 1 seam; then private-school share, 9 points, 2006–2024, 3 seams; then the ASER
+Standard III and V series at 7 points each, 3 seams each. Environment: the four electricity-mix series
+at 14 points each, FY2012-13–FY2025-26, two of them seamless; then coal production and plant load
+factor at 12 each, both seamless.
+
+### THE PREMISE IS NOT SUPPORTED, AND THE CORRECTION MATTERS FOR THE DESIGN CHOICE
+
+The brief says environment & energy *"has the richest uncertainty material but its evidence grade is
+unstated"*. **Measured, it is the reverse on both halves.**
+
+**Environment's evidence grade is stated and is the plainest in the corpus** — 80% verified, zero
+pending, only 4 seams across 15 series, T1 12 and T2 3. **And its uncertainty material at the series
+layer is not rich; it is EMPTY.** Zero caveats and zero absence declarations across all 15 series.
+Environment is the only domain in the corpus at a 0% series caveat rate, against a corpus rate of
+128 of 269 and education's 49 of 54:
+
+`environment 0% · banking 5% · welfare 26% · foreign 29% · infrastructure 29% · employment 35% ·
+macro 42% · human-development 43% · poverty 50% · governance 52% · defence 62% · federalism 70% ·
+education 91%`
+
+**Education holds the richest uncertainty material by every measure available** — 14 provenance
+records against 7, 12 unbridged against 5, 12 with competing accounts against 3, 97 absence
+declarations against 21, 67 caveats against 7, 9 contested verdicts against 2.
+
+**One thing this does NOT establish, and it is the open question.** 13 of environment's 15 series
+carry `notes`, and rule 3a says in terms that ordinary uncertainty is not a caveat and belongs in
+`notes`. So the 0% may be correct authoring. **But 0% against a 48% corpus rate is an outlier by a
+wide margin, and whether phase 15 authored qualification to the same standard as the other phases is
+a question about the corpus, not about the design.** It is raised here and not answered: answering
+it means reading the 15 records' notes against the caveat definition, which is research work.
+
+**The design consequence is direct.** Education is the leading candidate on BOTH axes — the strongest
+evidence and the richest uncertainty — and the brief's own reasoning for displacing renewables holds.
+What does not hold is the reason given for keeping environment as the uncertainty subject: on the
+series layer it has none.
+
+---
+
+# WALK 8 — 2026-08-08. THE CONDITION IS NOT MET.
+
+**Eight walks. SEVEN have found something not already on the queue.** One finding, off-queue, below.
+
+## This batch's own work, checked first
+
+Three of walk 7's four finds were the batch's own, so this walk turned on itself before anything
+else. **All clean this time:** `/peers/` renders the full `Absences` block for the one panel series
+declaring absences; the Breaks column is present on all three lens pages carrying lensed series; and
+**0 rows anywhere carry a doubled `absence-inline` or `caveat-inline`**, so the `RecordMarks`
+rollout did not double a mark that was already hand-rendered.
+
+## THE FINDING — A-5. THE GENERATOR WHOSE OUTPUT IS PUBLISHED IS THE ONE NOT IN THE BUILD
+
+**THE DEFECT.** `tools/gen-derivations.mjs` writes `docs/derivations.md`, and `app/derivations/page.tsx`
+reads that file at build time — so whatever the file says is what the site publishes. **It is not in
+the build chain.** `tools/gen-manifest.mjs`, whose output `docs/corpus-manifest.md` is orientation
+material referenced by no page at all, **is** in the build, as `npm run manifest`.
+
+**The wiring is inverted relative to the consequence.** The generator whose output reaches readers
+regenerates only when somebody remembers; the one whose output reaches nobody but a cold-starting
+session regenerates every build.
+
+**THE EVIDENCE, MEASURED RATHER THAN QUOTED.** The published page said *"from `/data` as it stood at
+commit `49c9851` (2026-08-06)"*. `/data` stood at `69cd1b1` (2026-08-10) — **eight commits and four
+days.** Regenerated and diffed: **exactly one line changed, the stamp.** All six derived figures
+still hold — bare roots 288 occurrences / 277 pairs / 93 roots, 246 citations naming no document, 13
+handover records + 2 controls.
+
+**So the substance is sound and the CLAIM was false.** The page told a reader which commit it
+reflected and named the wrong one, with no way for that reader to tell whether the figures had moved
+with it. **That is the deferral-with-a-measured-rate failure in miniature**, and it is the failure
+CLAUDE.md already records against `seam-span-report`.
+
+**AND ITS STATUS HAS CHANGED SINCE WALK 6, which is why this is a finding and not a re-run.** Walk 6
+checked this and discarded it, correctly, on the ground that *"it CAN drift silently with no gate is
+a property worth knowing and is not a defect today"*. **Walk 8 measures that it DID drift.** The
+discard's premise had an expiry and the expiry has passed.
+
+**WHAT WOULD SETTLE IT.** Add `npm run derivations` to the build beside `npm run manifest`. The
+generator is already idempotent — proved here, since regenerating against an unchanged corpus moved
+only the stamp — so wiring it in costs one build step and removes the only published surface in the
+instrument that can go stale without any gate noticing.
+
+**The regeneration was reverted.** A walk reports; it does not fix. `docs/derivations.md` is
+unchanged at the commit carrying this entry and still carries the wrong stamp.
+
+## SIX CANDIDATES CHECKED AND DISCARDED — recorded so a later walk does not re-derive them
+
+1. **`/exposure/` lists 18 of the 76 ledger records that declare an exposure.** Not a defect. The
+   page is built on the adjudication axis and shows the 18 `refused`/`limited` entries as rows with
+   each record's own sentence; the remaining distribution is given as counts, which is precisely
+   what the page's own header argues is required — *"a reader meeting them without the 44
+   acceptances beside them has no way to tell whether refusal is rare or normal"*. Deliberate,
+   documented, and the comparison it says is the content is present.
+2. **`/method`'s citation figures.** Recomputed from `/data`: 1,205 citations, 928 T1, remainder 277
+   = T4 135 + T2 85 + T3 29 + T1F 20 + T5 8. **Exact.** The apparent 8-citation shortfall on first
+   look was my own extraction truncating the sentence before *"and 8 contested composite indices"*.
+3. **Homepage corpus figures.** 269 series, 1,759 observations, 223 ledger, 127 disputes, 182 breaks,
+   14/14 domains, 1 of 223 `worked`, terms 11/74/74/64 — every one reconciles. The
+   944 verified / 765 approx / 50 pending line counts ALL countries and sums to 1,759, where the
+   series inventory's 936/642/50 counts India only; both are right and they answer different
+   questions.
+4. **Index completeness — the "absent row" class `listing-marks` explicitly does not bind.** Tested
+   directly: `/series/` 269 of 269, `/ledger/` 223 of 223, `/provenance/` 127 of 127, `/unmeasured/`
+   52 series + 147 ledger, `/contested/` 68 of 68, `/peers/` 18 of 18, all 8 lens pages complete,
+   all 4 term pages complete. **0 missing anywhere.** The gap the gate leaves open is real and the
+   corpus does not currently fall into it.
+5. **Caveats inside grid cards, after this batch put more of them there.** 746 cards carry a caveat,
+   466 of them over 300 characters, **0 clipped** — every one present in full inside its card. Rule
+   3a holds. It does, however, size design-queue item 2 on a surface it had not been measured on: a
+   1,312-character caveat sits inside a 15rem grid cell on `/provenance/P-104/`.
+6. **Mobile, 375px, on the live site.** No horizontal document overflow; no element wider than the
+   viewport outside an `overflow-x: auto` wrapper; the new Breaks column present and its table
+   scrolling within its wrap as designed.
+
+## The queues after this walk
+
+**ARCHITECTURE — 1 item: A-5.** A-1 through A-4 are closed and deployed.
+
+**DESIGN — 2 items, still not grown:** thirteen nav destinations; a caveat rendering in full inside
+a table cell, now also measured on grid cards at 746 cards / 466 over 300 characters.
+
+**Reported and deliberately not acted on** (see the three reports above): `confidence` renders on
+two of the four surfaces that show a verdict; four dead exports, one of which
+(`CONTESTED_INDEX_DISPUTE`) is declared twice in two files with nothing binding them; and
+environment's 0% series-caveat rate against a 48% corpus rate, which is a question about phase 15's
+authoring rather than about the design.
