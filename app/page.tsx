@@ -76,6 +76,14 @@ export default function HomePage() {
         Since 2014, from India&rsquo;s own published statistics and official documents. Every figure
         here shows where it came from — and where the record stops, this says so, with the reason.
       </p>
+      {/* The at-a-glance path. Most readers want the whole picture before — or instead of — any
+          single chart, and the overview is built for exactly that reader. One link, high, not a
+          duplicate of the page below it. */}
+      <p className="home-overview-link">
+        <Link href="/overview/">
+          See the whole record in one view — every area, every year, and what happened →
+        </Link>
+      </p>
 
       {/* 2. ONE strongly measured change, told well. */}
       {opening ? (

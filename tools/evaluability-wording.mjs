@@ -71,6 +71,12 @@ const FORBIDDEN = [
   // header: the claim itself is not reachable by any list.
   'how much of Indian policy is measurable',
   'how much of Indian policy can be measured',
+  // From the overview design mocks of 2026-08-10, verbatim — the same claim wearing a headline.
+  // Both assert what INDIA counted from a record set whose selection is unknown; the permitted
+  // form is about the record's holdings. These are the likely relapse vector because they are
+  // punchier than the honest wording, which is exactly why they are pinned here.
+  'What India counted, and what it didn\'t',
+  'how much of it India actually counted',
 ];
 
 /** The heading that carries the ruling. Its ABSENCE is as much a defect as a forbidden phrase. */

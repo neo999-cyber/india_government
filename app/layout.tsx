@@ -1,7 +1,17 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Spectral, IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
 import { series } from '@/lib/data';
 import './globals.css';
+
+/**
+ * TYPE — phase 18 §6 made concrete: display serif + technical sans + mono. Loaded through
+ * `next/font`, which downloads at BUILD time and self-hosts: the deployed site makes no request
+ * to any font CDN, which matters for a static instrument that promises nothing phones home.
+ */
+const spectral = Spectral({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-display', display: 'swap' });
+const plexSans = IBM_Plex_Sans({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-body', display: 'swap' });
+const plexMono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono-face', display: 'swap' });
 
 /**
  * THE SITE IS "INDIA, ON THE RECORD". Named by the operator 2026-08-10.
@@ -60,7 +70,9 @@ export const metadata: Metadata = {
  * — the defect that gate was built for. They join when the surfaces ship.
  */
 const PRIMARY = [
-  { href: '/', label: 'overview' },
+  // Overview is its own surface since 2026-08-10 — the whole record in one view. The wordmark is
+  // the way home; "overview" pointing at "/" made the first nav item a synonym for the logo.
+  { href: '/overview/', label: 'overview' },
   { href: '/domains/', label: 'explore' },
   // Joined the primary row when the surface shipped, not before — see the note above.
   { href: '/stories/', label: 'stories' },
@@ -87,7 +99,7 @@ const EVIDENCE = [
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${spectral.variable} ${plexSans.variable} ${plexMono.variable}`}>
       <body>
         <div className="shell">
           <header className="masthead">

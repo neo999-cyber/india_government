@@ -286,6 +286,43 @@ would ASSERT; they over-reached in discarding the experience along with the asse
 
 ---
 
+### ⟳ 4e — THE OVERVIEW SURFACE, added 2026-08-10 from the operator's second round of mocks
+
+The operator's stated need: **most readers want a quick visual overview of every area across the
+whole period** — deep research remains available through the records, but the first-visit reader
+gets the whole picture at once. Two mock shapes were offered (a status grid and observation
+lanes); the grid ships at `/overview/`, carrying the lanes' one-fact-per-mark honesty inside it.
+
+**THE CELL RULES, which are the surface's whole integrity:**
+
+1. A cell states a fact about THIS RECORD'S HOLDINGS for one area-year: all observations verified
+   (filled) · observations held, some approximate or pending (hatched) · **no observation in this
+   record for that year** (open). The mock legend's *"Nothing published for that year. Looked for;
+   not there"* was rejected as a rule-5d overclaim — an absence-of-publication claim needs a stated
+   search per quantity, and none exists per area-year.
+2. **The mock headlines were rejected verbatim and pinned in the wording gate:** *"What India
+   counted, and what it didn't"* and *"how much of it India actually counted"* both assert a
+   property of India from a record set whose selection is unknown — §4c's ruling wearing a
+   headline. The shipped framing is about the record's holdings.
+3. **A lens-only domain reads through its lens, labelled.** Kashmir holds no series as subject; a
+   naive matrix draws it empty, asserting "nothing measured on Kashmir." Its row is computed from
+   `seriesUnderLens`, labelled `lens`, and the caption says those series also appear under their
+   subject rows.
+4. **The baseline zone is labelled and explained, or the page libels by accident.** Columns before
+   May 2014 are thin because THIS INSTRUMENT'S baseline is frozen there — context, not coverage.
+   Without the caption sentence, thin UPA-era columns read as "the previous government measured
+   less," which would be the corpus's own selection presented as a fact about the world.
+5. Seam edges use the seam's red, and only that. The mocks used violet for seams; rule 5a fixes
+   the seam vocabulary and a second colour for it was declined. The stamp violet is reserved for
+   the evidence control and focus marks.
+6. **The year-by-year listing is complete or absent — never curated.** All 223 records grouped by
+   start year, because choosing "the important ones" is a ranking this instrument refuses.
+   `listing-marks` binds every row.
+
+**Typography shipped with it** (§6 made concrete): Spectral display, IBM Plex Sans text, IBM Plex
+Mono figures — via `next/font`, downloaded at build and self-hosted, so the deployed site makes no
+runtime request to any font host.
+
 ## 5. Share cards are part of the content model, not a later feature
 
 Distribution via WhatsApp and social is an operator decision, so the shareable unit **is** a unit of
