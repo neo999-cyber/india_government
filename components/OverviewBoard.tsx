@@ -61,6 +61,29 @@ export type ODomain = {
   /** Where no series can carry the card, what the area holds instead. Authored, never derived. */
   instead: string | null;
   rest: OSeries[];
+  /**
+   * THE AREA'S CHARACTER, DERIVED — added 2026-08-11, and it is what survived the Overview grid.
+   *
+   * A grid of area-by-year cells was specified and measured before it was built. **The shape was
+   * not there**: Education came out 12 solid of 13 against Defence's 11, and at a finer grain the
+   * ordering inverted, because share-of-series-reporting tracks how many series an area holds
+   * rather than how well it is measured. What the measurement DID show is that areas differ
+   * enormously on two other axes — **what they are made of** (Infrastructure 16 announced reforms
+   * against Governance's 42 episodes and 37 institutional changes) and **the status of their
+   * figures** (Federalism 100 per cent verified, Infrastructure and Employment 0).
+   *
+   * So the grid's readout ships without the grid. Stated per area as numbers and words, which is
+   * where a status distinction belongs — encoded as a wall of shading it becomes the metadata view
+   * that was rejected twice for showing the filing system rather than the country.
+   */
+  obs: number;
+  /** Exact counts, not a share. See the card for why a bare percentage was withdrawn. */
+  status: { verified: number; approx: number; pending: number };
+  yearsWith: number;
+  yearsTotal: number;
+  breaks: number;
+  /** Composition in the corpus's own `type` words. No second vocabulary — see the page. */
+  composition: string;
 };
 
 const X0 = 2010;
@@ -258,6 +281,51 @@ export function OverviewBoard({ domains }: { domains: ODomain[] }) {
             ) : (
               <p className="card-instead">{d.instead}</p>
             )}
+
+            <dl className="card-stats">
+              <div>
+                <dt>Made of</dt>
+                <dd>{d.composition}</dd>
+              </div>
+              {/* EXACT COUNTS, NOT A SHARE. This read "{pct}% verified" for one build, and on
+                  Employment and Infrastructure — which are genuinely 0 of 76 and 0 of 95 — it
+                  rendered "0% verified", which a first-time reader can only take as *these numbers
+                  are wrong*. They are not: they are published approximations, which is a fact
+                  about how the figure was released. Naming each status spends one more line and
+                  cannot be read as a grade. */}
+              <div>
+                <dt>Observations</dt>
+                <dd>
+                  {fmt(d.obs)}
+                  {d.obs > 0 ? (
+                    <span className="card-stat-note">
+                      {[
+                        d.status.verified ? `${fmt(d.status.verified)} verified` : null,
+                        d.status.approx ? `${fmt(d.status.approx)} approximate` : null,
+                        d.status.pending ? `${fmt(d.status.pending)} pending` : null,
+                      ]
+                        .filter(Boolean)
+                        .join(' · ')}
+                    </span>
+                  ) : null}
+                </dd>
+              </div>
+              <div>
+                <dt>Years with a figure</dt>
+                <dd>
+                  {d.yearsWith} of {d.yearsTotal}
+                </dd>
+              </div>
+              <div>
+                <dt>Basis changes</dt>
+                <dd>
+                  {d.breaks}
+                  {d.breaks > 0 ? (
+                    <span className="card-stat-note">no line is drawn across one</span>
+                  ) : null}
+                </dd>
+              </div>
+            </dl>
 
             {d.rest.length > 0 ? (
               <details className="card-more">
