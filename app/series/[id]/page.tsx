@@ -12,7 +12,7 @@ import {
 } from '@/lib/data';
 import { DOMAIN_LABELS, LENS_LABELS, TERM_SHORT } from '@/lib/format';
 import { denominatorBreaksFor, regimeFor, regimeNeighbours, roleInProvenance } from '@/lib/rules';
-import { PairSection, contestedPairRendersBothSeries } from '@/components/PairSection';
+import { PairSection, contestedPairRendersBothSeries, pooledByPair } from '@/components/PairSection';
 import {
   ADVANCES_SERIES,
   NPA_AMOUNT_SERIES,
@@ -76,6 +76,13 @@ export default async function SeriesDetail({ params }: Props) {
   const sideA = pair ? resolvePairSide(pair.a) : null;
   const sideB = pair ? resolvePairSide(pair.b) : null;
   const paired = Boolean(pair && sideA && sideB);
+  // What every EARLIER pair on this page has already pooled, one entry per later pair.
+  // A series that is a side of two pairs would otherwise have its declarations pooled by both,
+  // and a reader would meet the same absence twice on one page — three of them on
+  // `jk-detenus-psi`, measured on the first build after the second pair started rendering.
+  const pooledBefore = sidePairs.slice(1).map(
+    (_, i) => new Set(sidePairs.slice(0, i + 1).flatMap(pooledByPair)),
+  );
   // Suppress the caveat only where ContestedPairView ACTUALLY renders it, not merely because the
   // pair is contested. A contested pair with a non-series side falls through to CoverageUsageView,
   // which renders no caveat — so `!contested` alone suppressed a mark nothing then rendered.
@@ -144,8 +151,8 @@ export default async function SeriesDetail({ params }: Props) {
           one table — so they render after it. Taking only the first is what hid PR-35, PR-37 and
           PR-52: each is a second pair of a series whose first slot another pair already held, and
           all three rendered on no page in the instrument. */}
-      {sidePairs.slice(1).map((extra) => (
-        <PairSection key={extra.id} pair={extra} />
+      {sidePairs.slice(1).map((extra, i) => (
+        <PairSection key={extra.id} pair={extra} alreadyPooled={pooledBefore[i]} />
       ))}
 
       {/* The pair view renders each side's notes beside its own table. */}

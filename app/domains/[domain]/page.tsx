@@ -331,6 +331,16 @@ function PairRows({ items, showSubject }: { items: Pair[]; showSubject?: boolean
                           something owed, invisible, which is precisely what rule 4b forbids of an
                           absence. Printed whole, never clamped: the same discipline rule 3a sets
                           for a caveat in a cell applies to a declaration in one. */}
+                      {/* THE TWO SIDES, NAMED. A pair is the judgement that these two things
+                          belong beside each other, and the side labels are the only place that
+                          judgement is written down — the framing says why it matters and the
+                          labels say what the two quantities ARE. Three of them rendered nowhere
+                          in the instrument: PR-16.b and both of PR-55's. Printing the framing
+                          and stopping short of the labels leaves the row saying what is owed
+                          without saying what would settle it. */}
+                      <span className="t-note pair-declared">
+                        <strong>a</strong> {x.a.label} · <strong>b</strong> {x.b.label}
+                      </span>
                       <span className="t-note pair-declared">{x.framing}</span>
                       {x.gapReason ? (
                         <span className="t-note pair-declared">{x.gapReason}</span>

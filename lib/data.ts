@@ -81,20 +81,21 @@ const pairById = new Map(pairs.map((p) => [p.id, p]));
 export const getPair = (id: string): Pair | undefined => pairById.get(id);
 
 /**
- * Pairs a series belongs to, from either side.
+ * REMOVED 2026-08-08, and the removal is recorded because its LAST SENTENCE was the defect.
  *
- * A series can sit in more than one — nothing forbids it, and a coverage figure criticised
- * on two different grounds would legitimately appear in two. Rendering takes the first.
+ * THE WITHDRAWN FUNCTION AND ITS DOC, QUOTED: *"Pairs a series belongs to, from either side. A
+ * series can sit in more than one — nothing forbids it, and a coverage figure criticised on two
+ * different grounds would legitimately appear in two. **Rendering takes the first.**"* It matched a
+ * series named as a SIDE and a series named merely as an absence HOST, returned them in one
+ * undifferentiated list, and every caller took `[0]`.
+ *
+ * Both halves were wrong together. Conflating side and host meant the slot could be won by a pair
+ * the series is not the subject of; taking the first meant the loser rendered nowhere. Three pairs
+ * were lost that way. `pairsWithSeriesAsSide` and `pairsHostedOn` replace it — the first keeps the
+ * side/host distinction the old list dissolved, and neither truncates.
+ *
+ * The doc admitted the consequence in its own last sentence and no gate could read a comment.
  */
-export function pairsForSeries(id: string): Pair[] {
-  return pairs.filter(
-    (p) =>
-      p.a.series === id ||
-      p.b.series === id ||
-      p.a.absenceFrom === id ||
-      p.b.absenceFrom === id,
-  );
-}
 
 export const getSeries = (id: string): Series | undefined => seriesById.get(id);
 export const getLedger = (id: string): LedgerRecord | undefined => ledgerById.get(id);

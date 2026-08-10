@@ -48,6 +48,7 @@ import { fileURLToPath } from 'node:url';
 import { leafFields, isProse, valuesAt } from './lib/schema-fields.mjs';
 import { RENDERINGS, acceptedForms, EXEMPT_NON_PROSE } from './lib/value-renderings.mjs';
 import { norm, pageTextFromHtml } from './lib/page-text.mjs';
+import { assertFresh } from './lib/freshness.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'out');
@@ -58,6 +59,33 @@ if (!existsSync(OUT)) {
   console.error('field-render-audit: no build at out/ — run `npm run build` first (exit 2)');
   process.exit(2);
 }
+
+/**
+ * AND THE STALE-BUILD REFUSAL, WHICH THIS FILE'S OWN HEADER HAS CLAIMED SINCE PHASE 15 AND WHICH
+ * WAS NEVER HERE. Added 2026-08-08.
+ *
+ * The header says, and said before this line existed: *"IT READS BUILT OUTPUT, so it refuses to run
+ * against a stale build for the same reason `reachability` does."* It did no such thing — it checked
+ * that `out/` exists and read whatever was in it. `reachability` and `domain-coverage` have both
+ * called `assertFresh` since it was extracted; this gate never did.
+ *
+ * **The direction that matters is the false PASS**, which is the argument `freshness.mjs` is built
+ * on: edit a record, forget to rebuild, run this, and it finds every value it already knew about
+ * rendering and reports clean about a build nobody is shipping. Nothing in the output distinguishes
+ * that from a real pass. It is only masked in normal use because the build runs it immediately
+ * after `next build`; run on its own — which is exactly how CLAUDE.md instructs it to be run at
+ * stage 7 of every phase — it could answer about the previous corpus.
+ *
+ * Found by sweeping the class rather than the instance: four tools read built output, three called
+ * `assertFresh`, this one did not. A gate documenting a property it does not have is worse than one
+ * that never claimed it, because the claim is what a later cycle checks against.
+ */
+assertFresh('field-render-audit', OUT, [
+  join(ROOT, 'data'),
+  join(ROOT, 'app'),
+  join(ROOT, 'components'),
+  join(ROOT, 'lib'),
+]);
 
 /** Fields of a layer, split by the shared enumeration so both gates cannot drift apart. */
 function fieldsOf(schemaName) {
