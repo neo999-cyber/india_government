@@ -12297,3 +12297,76 @@ with their marks) · `evaluability-wording` **6 forbidden phrasings** absent fro
 permitted heading on 1 · `domain-coverage` 14/14, 1137/1137. Mobile 375px: no overflow; the matrix
 scrolls inside its own wrapper; the year groups are native `<details>`, keyboard-operable, content
 in the DOM throughout.
+
+
+---
+
+## 2026-08-11 — the overview is rebuilt from a status grid into a movement board
+
+**The operator rejected the grid on sight, twice, and the second rejection carried the brief:**
+*"still dont like this. what other interactive way to showcase the data across all domains and in
+timeline form, hierarchy, what else features could work to make it more visually stunning plus
+easily navigation friendly for a normal user."*
+
+**THE DIAGNOSIS, and it is not a styling one.** The grid drew one cell per area-year coloured by
+whether the observation was verified, approximate or absent. Every cell was true. **The unit was
+the corpus's confidence in its own holdings — a picture of the filing system, not of the country.**
+A first-visit reader does not want this instrument's grade for education in 2019; they want to know
+what happened to schooling. It answered the author's question on the reader's page, and no amount
+of restyling reaches that.
+
+**SO THE UNIT CHANGED FROM STATUS TO MOVEMENT.** 14 area cards, each leading with a real series —
+real values, real span, the change in words — every remaining series behind a per-area disclosure,
+and one year control that moves all **262 sparklines** and **250 mini-charts** at once. Status has
+not been dropped (rule 3 forbids that): point markers and readings still carry it, as an attribute
+of a line rather than the subject of the page.
+
+**The three honest encodings, recorded because they are the surface's integrity:** X is SHARED and
+means time, so a series that stops in 2019 is visibly a stub — that is the whole reason to place
+them side by side; Y is PER-CHART and means nothing across charts, and the caption says *"a taller
+line is not a bigger number"* in those words, because an unlabelled shared-looking height is the
+encoding rule 7 forbids; nothing else is encoded — uniform cards, fixed order, no ranking.
+
+**THE SLIDER IS THE SHARED X-AXIS, and one build shipped it as a filter beside the charts instead.**
+It ran 2014→2026 while every chart was drawn 2010→2026, leaving a sixth of each line unreachable
+and the axis unlabelled. Matched to the charts' range, the control carries the only year labels on
+the page and a reader can now scrub into the pre-2014 years — where §7a's three-state rule fires
+correctly, per card: *"No observation for 2012 · this series runs 2014–2025"*. It never
+substitutes a neighbour silently.
+
+**Two picks are excluded by name with the rule cited in the source**, so a later edit that improves
+them must read the reason first: **not GDP growth** for macroeconomy (rule 5 — three incompatible
+bases, all three always; a single sparkline of one base is precisely what that rule forbids; the
+card leads with CPI inflation) and **not an NPA ratio** for banking (rule 5b — never alone, never
+without its basis, and a card has room for neither the write-off adjustment nor the
+domestic/global basis; the card leads with loans written off).
+
+**Two areas cannot honestly lead with a line and say what they hold instead, authored per area.**
+Kashmir files no series as its own subject — its thirty indicator series sit under defence,
+governance and federalism and read through the lens. Poverty's last official headcount was measured
+for 2011-12 (21.9 per cent, Tendulkar, from 37.2 in 2004-05) and nothing comparable has been
+published since. **A generic fallback fires on neither** — checked, and it exists only so a future
+area cannot render blank silently.
+
+**A mobile defect found and fixed rather than reported.** At 375px the native range input rendered
+a 16px box and the reset button 30px, both under the 44px acceptance constraint — on the one
+control the entire board depends on. Both now measure 44, verified through the DOM; no horizontal
+overflow, single column, scrollWidth 375.
+
+**Rule 2 at sparkline scale:** paths are cut at every declared break and a red edge drawn there, so
+no line is spliced across a seam at 260×62 any more than at full size. Investigated and left
+alone: the right-edge marks on `cpi-inflation` and `lfpr-overall` are real declared breaks
+(FY2025-26; FY2017-18 and FY2025-26), not a rendering fault.
+
+**Gates, each quoting its own emitted scope:** `validate` VALID · `typecheck` clean ·
+`no-unguarded-prose-field` 21 prose + 53 non-prose · `withdrawn-wording` 29 corrections, 166
+sibling comparisons, 0 still asserted · `seam-span` 127 spans · `figure-consistency` 18/18 ·
+`reachability` 1786/1786 across 665 pages · `field-render-audit` 4 layers, 0 invisible ·
+`link-check` **25,110 hrefs across 665 pages, 0 dead** · `listing-marks` 2,600 rows, 3,667 marks
+· `evaluability-wording` 6 forbidden phrasings absent from 664 pages, permitted heading on 1 ·
+`domain-coverage` 14/14, 1137/1137.
+
+**`drops/phase-18-design-lock/DESIGN-SCOPE.md` §4e carries the correction** with the withdrawn
+grid wording and withdrawn cell rule 1 quoted; cell rules 2–6 survive unchanged and are listed as
+surviving, since a correction that silently drops the rules it did not touch is indistinguishable
+from one that never checked them.
