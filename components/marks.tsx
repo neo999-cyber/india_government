@@ -149,18 +149,6 @@ export function SourceList({ sources }: { sources: TieredSource[] }) {
   );
 }
 
-export function ProvenanceTags({ ids }: { ids: string[] }) {
-  if (ids.length === 0) return null;
-  return (
-    <span className="tag-row">
-      {ids.map((id) => (
-        <Link key={id} className="tag" href={`/provenance/${id}/`}>
-          {id}
-        </Link>
-      ))}
-    </span>
-  );
-}
 
 /**
  * Provenance ids named inside prose, made reachable.

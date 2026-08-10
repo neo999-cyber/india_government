@@ -11929,3 +11929,58 @@ known instances have.
 `reachability` 1786/1786 · `field-render-audit` 42 prose + 51 non-prose across 4 layers, 0 invisible
 · `link-check` 21,522 hrefs, 0 dead · `listing-marks` 2,217 rows, 3,149 marks, 0 missing ·
 `domain-coverage` 14/14, 1137/1137.
+
+## Cycle 2026-08-10a — the number: predicates audited, surface enumerated, classes counted, queue closed to two
+
+**The batch the operator asked for twice.** Four measurements and the whole queue, in
+`drops/phase-17-design-lock/STATE.md` under "THE NUMBER — 2026-08-10". No walk ran. Under the
+operator's standing instruction this batch FIXED what it found rather than reporting it.
+
+**Measurement 1 — 17 build gates, header vs predicate: one mismatch.** `withdrawn-wording`'s
+header says a correction *states what it withdrew*; its predicate tests that a correction
+*carries an attributed quotation* — identity of the quotation with the withdrawn text is
+untested, and testing it needs git history as input (a new gate contract, named not built). The
+audit's own first impression — that the sibling check's sliding window was a weakness — was wrong
+and is corrected in the entry: fragment-matching in the SIBLING detector makes that guard more
+aggressive, not less. The two presence-blindnesses (reachability, field-render-audit reporting
+52/52 on a field rendering twice) are closed at the mark level, where the assertion has zero
+false positives — field-level exactly-once was measured NOT addable at 759 false positives.
+
+**Measurement 2 — the guarded surface.** 29 rendering files, 20 reading ≥3 schema fields; 93 of
+~109 leaf fields (85%) inside `field-render-audit`; the unguarded remainder is one region (pairs
+non-prose, including the undescended `a.label`/`b.label`) plus two named debts. No second
+pairs-shaped region — unnamed, unenumerated, invisible — was found: every layer is in the audit,
+every index surface measured complete in walk 8, and every remaining gap is stated in some gate's
+own header.
+
+**Measurement 3 — live instances per named class:** local-fix 1 (closed), view-disagreement 1
+(closed), guard-scope-stated-open 5 (by design/deferral), stale prose shadow 0 (117 token hits,
+50 prose restatements, every member read — all correction-convention or boundary defences),
+count-from-no-gate 0 in scope, check-after-the-guarded-thing 0 (6 writers + 4 out-readers
+audited), predicate-vs-header 1 (above).
+
+**Measurement 4 — the estimate: one to two batches to a clean walk**, stated with its basis (find
+series 3→1→1; both finding-generators addressed; remaining findables confined to named scopes)
+and its falsifier (a walk-9 find in a region the enumeration calls closed resets it).
+
+**Fixed in this batch:** A-5 — `npm run derivations` in the build before `next build`, stamp from
+the last commit touching `/data`, with a shallow-clone fallback that preserves the committed
+stamp rather than failing the deploy; `confidence` now renders on `/domains/[domain]` and
+`/lenses/[lens]` beside the verdict, matching `/ledger` and `/terms` (170 high · 52 medium · 1
+low); the four dead exports removed — `ProvenanceTags`, `getPair`, `caveatOf`, and
+`CONTESTED_INDEX_DISPUTE`, whose doc comment still encoded the superseded "P-08 is THE dispute"
+reading of rule 6, leaving `tools/lib/integrity.mjs`'s copy as the single declaration; and the
+absence-block cardinality assertion added to `listing-marks`, proven by control and by a fixture
+build carrying a real page's declaration twice, which the full live path catches.
+
+**Left open, with reasons on the record:** environment's 0% series-caveat rate (research
+judgement, not a repo fact); seam-span's measured deferral; the pairs non-prose debt; the
+quotation-identity gap; the two design-queue items.
+
+**Gates, each quoting its own emitted scope:** `validate` VALID — 0 errors, 163 warnings, 223
+ledger · 269 series · 127 provenance · 60 pairs = 679 records, 1,759 points · `typecheck` clean ·
+`derivations` bare roots 288/277/93, 246 naming no document, 8,888 bytes · `reachability`
+1786/1786, 662 pages · `field-render-audit` 42 prose + 51 non-prose across 4 layers, 0 invisible,
+2 exempted · `link-check` 21,522 hrefs, 662 pages, 0 dead · `listing-marks` 2,217 rows, 3,149
+marks all present, 374 rendered declarations each at most once per page · `domain-coverage`
+14/14, 1137/1137 · `validate:selftest` 23/23 rules, 2/2 output gates.

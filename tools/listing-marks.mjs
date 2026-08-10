@@ -26,6 +26,16 @@
  * `grid-title`), and an `<li>` — each linking a record to its own page. For every such row whose
  * record declares an absence or carries a caveat, the mark must be inside that same row.
  *
+ * AND, SINCE 2026-08-10, THE CARDINALITY OF THE RENDERED ABSENCE BLOCK: no page shows the same
+ * declaration twice. This is the assertion the duplicate-absence regression proved addable —
+ * `field-render-audit` was auditing the exact field on the exact page that duplicated and
+ * reported 52/52, because its predicate is presence and a page showing a block twice still
+ * CONTAINS it. A field-level exactly-once rule is NOT addable (759 of 5,683 prose values repeat
+ * legitimately — titles in <title> and <h1>, objectives in the limb list and the note); the
+ * RENDERED BLOCK — "No public measurement exists for {what}. {why}" — repeats nowhere
+ * legitimately, measured at 0 of 374 on own pages and 0 of 444 across every page. Bind the
+ * mark, not the field.
+ *
  * IT DOES NOT BIND:
  *   - **a FULL rendering of a record on another page.** `/peers/` renders a panel series whole —
  *     caveat, source line, table — and takes the complete `Absences` block rather than a count.
@@ -51,6 +61,7 @@ import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assertFresh } from './lib/freshness.mjs';
+import { norm, pageTextFromHtml } from './lib/page-text.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -97,6 +108,16 @@ for (const layer of ['series', 'ledger']) {
     if ((r.unmeasured ?? []).length) wants.push('absence');
     if (r.caveat) wants.push('caveat');
     if (wants.length) NEEDS.set(r.id, { layer, wants, title: r.title });
+  }
+}
+
+/** Every rendered absence block, as the one normalised needle its rendering produces. */
+const BLOCKS = [];
+for (const layer of ['series', 'ledger']) {
+  for (const r of loadLayer(layer)) {
+    for (const u of r.unmeasured ?? []) {
+      BLOCKS.push({ id: r.id, needle: norm(`No public measurement exists for ${u.what}. ${u.why}`) });
+    }
   }
 }
 
@@ -212,14 +233,66 @@ if (CONTROL) {
     );
     process.exit(1);
   }
+  // Cardinality branch, proven through the same needle construction the live pass uses: a
+  // synthetic page carrying a real record's block twice must be caught, once must pass.
+  const blk = BLOCKS[0];
+  if (!blk) {
+    console.error('listing-marks --control: no declared absence in the corpus to form the control from (exit 2)');
+    process.exit(2);
+  }
+  const once = `<p>x</p><p>${blk.needle}</p>`;
+  const twice = `<p>${blk.needle}</p><p>y</p><p>${blk.needle}</p>`;
+  const countIn = (html) => {
+    const text = norm(html.replace(/<[^>]+>/g, ' '));
+    const first = text.indexOf(blk.needle);
+    return first === -1 ? 0 : text.indexOf(blk.needle, first + 1) === -1 ? 1 : 2;
+  };
+  if (countIn(once) !== 1 || countIn(twice) !== 2) {
+    console.error(
+      `listing-marks --control FAILED — the cardinality pass cannot count.\n` +
+        `  block once counted ${countIn(once)} (expected 1); twice counted ${countIn(twice)} (expected 2)`,
+    );
+    process.exit(1);
+  }
   console.log(
     `listing-marks --control — a stripped row naming ${id} is caught on both marks, the same row ` +
-      `carrying them passes, and a PR- row is recognised as a pair listing and skipped`,
+      `carrying them passes, a PR- row is recognised as a pair listing and skipped, and a page ` +
+      `carrying ${blk.id}'s declaration twice is distinguished from one carrying it once`,
   );
   process.exit(0);
 }
 
+/**
+ * Cardinality: each rendered declaration at most once per page. Exempt routes are NOT exempt
+ * here — /unmeasured lists every declaration and must still not show one twice.
+ */
+function scanCardinality() {
+  const dup = [];
+  for (const file of pages) {
+    const route = '/' + file.slice(OUT.length + 1).replace(/index\.html$/, '');
+    const text = pageTextFromHtml(readFileSync(file, 'utf8'));
+    for (const b of BLOCKS) {
+      const first = text.indexOf(b.needle);
+      if (first === -1) continue;
+      if (text.indexOf(b.needle, first + 1) !== -1) dup.push({ route, id: b.id });
+    }
+  }
+  return dup;
+}
+
 const { bad, rowsChecked, marksChecked, marksFound, bySurface } = scan();
+const dup = scanCardinality();
+
+if (dup.length) {
+  console.error(`listing-marks FAILED — ${dup.length} rendered declaration(s) shown twice on one page:`);
+  for (const d of dup.slice(0, 12)) console.error(`  ${d.route}  ${d.id}`);
+  console.error(
+    '\n  A reader met the same absence twice on one page. The page stops being a faithful count\n' +
+      '  of what is declared — the fault the duplicate-absence regression of 2026-08-08 shipped\n' +
+      '  for an hour with every gate green.',
+  );
+  process.exit(1);
+}
 
 if (VERBOSE) {
   console.log(`\n  ${rowsChecked} listing rows · ${marksChecked} marks required · ${marksFound} present\n`);
@@ -243,5 +316,6 @@ if (bad.length) {
 console.log(
   `listing-marks OK — ${rowsChecked} listing rows across ${pages.length} built pages, ` +
     `${marksChecked} required marks all present (${NEEDS.size} records declare one), ` +
+    `${BLOCKS.length} rendered declarations each at most once per page, ` +
     `1 route and 2 row shapes exempted by name`,
 );

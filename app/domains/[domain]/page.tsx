@@ -151,6 +151,12 @@ export default async function DomainPage({ params }: Props) {
                   <th>Term</th>
                   <th>Record</th>
                   <th>Assessment</th>
+                  {/* view-parity's one defect find: /ledger and /terms carried this column and
+                      the two domain-axis tables did not, so the same verdict listed on four
+                      surfaces stated its evidential weight on only two. 170 high · 52 medium ·
+                      1 low — and the low one especially is a qualification a reader must meet
+                      wherever the verdict is met. */}
+                  <th>Conf.</th>
                 </tr>
               </thead>
               <tbody>
@@ -168,6 +174,7 @@ export default async function DomainPage({ params }: Props) {
                         <RecordMarks record={x} />
                       </td>
                       <td className="t-note">{ASSESSMENT_LABELS[x.assessment]}</td>
+                      <td className="mono t-note">{x.confidence}</td>
                     </tr>
                   ))}
               </tbody>

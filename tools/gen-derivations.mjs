@@ -42,8 +42,36 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'docs', 'derivations.md');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 
-const CORPUS = execSync('git log -1 --format=%h -- data', { cwd: ROOT }).toString().trim();
-const CORPUS_DATE = execSync('git log -1 --format=%ad --date=short -- data', { cwd: ROOT }).toString().trim();
+/**
+ * The stamp is the last commit that touched /data — not HEAD — because the figures derive from
+ * /data alone, and a stamp that moved on every commit would churn one line per commit forever.
+ *
+ * IN THE BUILD SINCE 2026-08-10 (walk 8, A-5): this generator's output is read by
+ * `app/derivations/page.tsx` at build time, so it is the one generator whose staleness a reader
+ * can see — and it was the one generator NOT in the build, while `gen-manifest`, whose output no
+ * page reads, was. The published page claimed `/data` as of a commit four days and eight commits
+ * stale; the figures all still held, so the substance was right and the claim was false.
+ *
+ * THE FALLBACK is for build hosts with a shallow or absent git history (Vercel clones shallow).
+ * `git log -- data` on a clone whose depth excludes the last data commit returns nothing; failing
+ * the build on that would take the site down over a stamp. The committed file was generated with
+ * full history, so its own stamp is the correct value to preserve — the fallback re-reads it and
+ * says nothing new, which is exactly right when nothing about /data is knowable.
+ */
+const stamped = (() => {
+  try {
+    const h = execSync('git log -1 --format=%h -- data', { cwd: ROOT }).toString().trim();
+    const d = execSync('git log -1 --format=%ad --date=short -- data', { cwd: ROOT }).toString().trim();
+    if (h && d) return { h, d };
+  } catch {
+    /* no git, or shallow history — fall through */
+  }
+  const prior = existsSync(OUT) ? readFileSync(OUT, 'utf8').match(/commit `([0-9a-f]+)` \((\d{4}-\d{2}-\d{2})\)/) : null;
+  if (prior) return { h: prior[1], d: prior[2] };
+  return { h: 'unknown', d: 'date unknown' };
+})();
+const CORPUS = stamped.h;
+const CORPUS_DATE = stamped.d;
 
 /* ------------------------------------------------------------------ /data */
 

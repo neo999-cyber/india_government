@@ -78,8 +78,6 @@ const ledgerById = new Map(ledger.map((l) => [l.id, l]));
 const provenanceById = new Map(provenance.map((p) => [p.id, p]));
 const pairById = new Map(pairs.map((p) => [p.id, p]));
 
-export const getPair = (id: string): Pair | undefined => pairById.get(id);
-
 /**
  * REMOVED 2026-08-08, and the removal is recorded because its LAST SENTENCE was the defect.
  *
