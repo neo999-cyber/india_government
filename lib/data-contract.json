@@ -1,0 +1,19 @@
+{
+  "_comment": "THE PUBLISHED-DATA CONTRACT, held once. tools/gen-public-data.mjs reads this file into /data/v1/manifest.json and app/data/page.tsx imports it for the human page, so the promise a machine reads and the promise a person reads cannot drift apart. Two copies of a contract is two contracts.",
+  "name": "India, On the Record — corpus",
+  "description": "India's condition and trajectory from a frozen UPA baseline (May 2014) through the Modi-era terms, as indicator series, ledger records of discrete reforms and events, measurement-dispute records, and paired divergent measurements.",
+  "contract": "v1",
+  "contractRule": "v1 means these schemas. A value added to an enum ships under v1, because it cannot break a consumer that ignores values it does not know. A value removed, renamed or retyped, a field removed, or a new required field, is v2 at a new path. Nothing under /data/v1/ changes shape.",
+  "readThisFirst": [
+    "Blanks are unreported, not zero. A missing observation is never a zero and never an average.",
+    "Series carry breaks[]. Never splice a series across a declared break; the values either side are not the same measurement.",
+    "Points carry status: verified, approx or pending. An approx value is an approximation and a pending one has not been confirmed.",
+    "GDP growth exists on three incompatible bases (2004-05, 2011-12, 2022-23) and no spliced back-series exists. Overlap years carry more than one official figure; both are current.",
+    "A record carrying a caveat is misleading without it. The caveat is part of the record, not a footnote, and it is never abbreviated.",
+    "unmeasured[] entries are declared absences — a fact about what nothing measures, not a gap in this file. They are not zeros and must not be filled in.",
+    "assessment is a verdict on a stated objective, not a score. There is no composite, no tally and no ranking anywhere in this corpus, and constructing one misrepresents it.",
+    "sources[].tier grades the document, not the server. It does not grade whether the source is independent of what it establishes; independence is its own field on the ledger."
+  ],
+  "licence": "The underlying figures are published by the Government of India and other cited bodies and carry their own terms. This compilation, its schemas and its assessments may be reused with attribution to India, On the Record, citing the commit.",
+  "source": "https://india-government.vercel.app/data/"
+}

@@ -2,6 +2,12 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { provenance } from '@/lib/data';
 import { DOMAIN_LABELS } from '@/lib/format';
+import { ListingFacets } from '@/components/ListingFacets';
+
+/** See the same helper on the ledger index for why options come from the data, not the enum. */
+function opts<T extends string>(values: T[], label: (v: T) => string) {
+  return [...new Set(values)].sort().map((v) => ({ value: v, label: label(v) }));
+}
 
 export const metadata: Metadata = { title: 'Provenance' };
 
@@ -20,8 +26,21 @@ export default function ProvenanceIndex() {
         travels with every number it touches rather than sitting in a footnote.
       </p>
 
+      <ListingFacets
+        target="provenance-table"
+        noun="disputes"
+        facets={[
+          { key: 'domain', label: 'Area', options: opts(provenance.flatMap((p) => p.affectsDomains), (d) => (d === 'all' ? 'all domains' : DOMAIN_LABELS[d])) },
+          { key: 'bias', label: 'Direction of bias', options: opts(provenance.map((p) => p.directionOfBias), (b) => b) },
+          { key: 'bridge', label: 'Bridge', options: [
+            { value: 'yes', label: 'a reconciliation exists' },
+            { value: 'no', label: 'none across the break' },
+          ] },
+        ]}
+      />
+
       <div className="table-wrap">
-        <table>
+        <table id="provenance-table">
           <thead>
             <tr>
               <th>ID</th>
@@ -35,7 +54,14 @@ export default function ProvenanceIndex() {
           </thead>
           <tbody>
             {provenance.map((p) => (
-              <tr key={p.id}>
+              <tr
+                key={p.id}
+                data-row
+                data-f-domain={p.affectsDomains.join('|')}
+                data-f-bias={p.directionOfBias}
+                data-f-bridge={p.bridgeExists ? 'yes' : 'no'}
+                data-text={`${p.id} ${p.title} ${p.whatChanged}`}
+              >
                 <td className="mono">
                   <Link href={`/provenance/${p.id}/`}>{p.id}</Link>
                 </td>

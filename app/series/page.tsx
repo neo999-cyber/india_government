@@ -3,6 +3,12 @@ import type { Metadata } from 'next';
 import { series } from '@/lib/data';
 import { DOMAIN_LABELS, periodKey, periodLabel } from '@/lib/format';
 import { CaveatRow, RecordMarks, StatusKey, TierTag } from '@/components/marks';
+import { ListingFacets } from '@/components/ListingFacets';
+
+/** See the same helper on the ledger index for why options come from the data, not the enum. */
+function opts<T extends string>(values: T[], label: (v: T) => string) {
+  return [...new Set(values)].sort().map((v) => ({ value: v, label: label(v) }));
+}
 
 export const metadata: Metadata = { title: 'Series' };
 
@@ -19,8 +25,22 @@ export default function SeriesIndex() {
       </p>
       <StatusKey />
 
+      <ListingFacets
+        target="series-table"
+        noun="series"
+        facets={[
+          { key: 'domain', label: 'Area', options: opts(series.map((s) => s.domain), (d) => DOMAIN_LABELS[d]) },
+          { key: 'tier', label: 'Tier', options: opts(series.map((s) => s.tier), (t) => t) },
+          { key: 'calendar', label: 'Calendar', options: opts(series.map((s) => s.calendar), (c) => c) },
+          { key: 'break', label: 'Breaks', options: [
+            { value: 'yes', label: 'has a declared break' },
+            { value: 'no', label: 'no break declared' },
+          ] },
+        ]}
+      />
+
       <div className="table-wrap">
-        <table>
+        <table id="series-table">
           <thead>
             <tr>
               <th>Series</th>
@@ -42,7 +62,15 @@ export default function SeriesIndex() {
                     ? periodLabel(periods[0], s.calendar)
                     : `${periodLabel(periods[0], s.calendar)} – ${periodLabel(periods[periods.length - 1], s.calendar)}`;
               return (
-                <tbody key={s.id}>
+                <tbody
+                  key={s.id}
+                  data-row
+                  data-f-domain={s.domain}
+                  data-f-tier={s.tier}
+                  data-f-calendar={s.calendar}
+                  data-f-break={s.breaks?.length ? 'yes' : 'no'}
+                  data-text={`${s.id} ${s.title} ${s.unit}`}
+                >
                   <tr>
                     <td>
                       <Link href={`/series/${s.id}/`}>{s.title}</Link>
