@@ -5,27 +5,58 @@
  */
 
 :root {
-  --paper: #fbfaf7;
-  --paper-sunk: #f3f1ec;
-  --ink: #1a1a18;
-  --ink-soft: #45433d;
-  --ink-dim: #6f6b62;
-  --rule: #ddd9d0;
-  --rule-strong: #c3bdb1;
+  /* ============================================================================================
+     BONE & INDIGO — the settled visual language, operator decision 2026-08-11.
+     Cool ink on warm paper. Nothing in this file hardcodes a colour literal; every rule below
+     the token block goes through a name, verified at 0 literals when this landed.
+
+     THE REASONING, KEPT SO A LATER PASS DOES NOT UNDO IT. No fill is ever black: black rectangles
+     and black chart lines on warm paper read cheap, and a deep indigo at the same value reads as
+     depth. And --mark does exactly one thing — a definition changed, something was announced, a
+     series ended, a correction was made. Never decoration, never a second brand colour.
+
+     TWO VALUES DIFFER FROM THE PALETTE AS ISSUED, AND ONLY FOR CONTRAST. Measured against
+     --bg #efeae0: the issued --ink-2 #666a78 scored 4.49 and the issued --ink-dim #8f8f97 scored
+     2.68, against 4.5 for normal text. --ink-dim carries 49 rules of labels and SOURCE LINES —
+     the apparatus this instrument's credibility rests on — so shipping it at 2.68 would have made
+     the provenance layer the least legible thing on the page. Both were darkened along the same
+     cool hue, preserving the three-level relationship the palette is made of.
+
+     BOTH RATIOS ARE QUOTED BECAUSE THERE ARE TWO PAPERS. --surface #e7e1d4 is darker than --bg,
+     and a token tuned against --bg alone fails on the panels: --ink-dim at #646875 measured 4.64
+     on --bg and **4.27 on --surface**, which a rendered sweep of a live record page caught and the
+     token arithmetic did not. Every text token is now tuned against the DARKER of the two.
+     --ink 13.15/12.10 · --ink-2 6.81/6.27 · --ink-dim 5.24/4.82 · --mark-ink 4.90/4.51.
+     --mark is a UI mark rather than text and needs 3.0: it measures 3.77/3.47.
+     Every other value is the palette as issued.
+     ============================================================================================ */
+  --bg: #efeae0;              /* warm bone paper */
+  --surface: #e7e1d4;         /* raised panels, chips, correction blocks */
+  --rule-soft: #e2dbcd;       /* internal dividers */
+  --ink-2: #4a4f5e;           /* secondary text — issued #666a78, darkened for AA (6.81:1) */
+  --fill: #2b3454;            /* deep indigo — chart lines, filled cells, solid states */
+  --mark: #a06b32;            /* brass — one job: a mark was made. Edges, rings, dashes (3.77:1) */
+  --mark-ink: #8a5a2a;        /* the same brass where it carries WORDS and must clear AA (4.90:1) */
+  --mark-soft: rgba(160, 107, 50, 0.12);
+  --ink: #1e2233;             /* body text — deep cool near-black, never #000 (13.15:1) */
+  --ink-dim: #5c606c;         /* labels, source lines, tertiary — issued #8f8f97 (5.24 / 4.82) */
+  --rule: #d7cfc1;            /* borders */
+
+  /* KEPT, AND THE PALETTE DOES NOT CONTAIN IT. Rule 5a fixes the series break as a solid red stop
+     meaning do not splice, and the design system reserves red for deaths and alerts. A palette
+     with no red cannot express either, so --alert survives unchanged rather than being quietly
+     dropped or folded into --mark. What DID fold into --mark is the denominator band: rule 5a's
+     umber said "the values either side are divided by different things", which is the operator's
+     own first example of a mark — a definition changed. One brass, one meaning, and the seam stays
+     red. The two are still told apart the way rule 5a requires — SOLID band against DASHED band,
+     each carrying words — and never by hue alone, which matters because brass and red sit 1.71
+     apart in contrast. */
   --alert: #a4161a;
   --alert-soft: #f6ebea;
-  /* Denominator shifts are not alerts. Umber, so a restated denominator can never be
-     mistaken for a break-seam at a glance. */
-  --shift: #7a5c1e;
-  --shift-soft: #f7f1e2;
 
   --font-sans: var(--font-body, ui-sans-serif), ui-sans-serif, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: var(--font-mono-face, ui-monospace), ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
   --font-serif: var(--font-display, Georgia), Georgia, 'Times New Roman', serif;
-  /* The stamp: phase 18 §6's accent, used only where a mark is made — the evidence control, focus.
-     NOT for seams: rule 5a fixes the seam at solid red and the denominator band at umber, and a
-     third meaning for either colour would cost more than an accent is worth. */
-  --stamp: #6d4a94;
 
   --measure: 68ch;
   --gutter: 1.5rem;
@@ -43,7 +74,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
+  background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: 16px;
@@ -53,7 +84,7 @@ body {
 
 a {
   color: inherit;
-  text-decoration-color: var(--rule-strong);
+  text-decoration-color: var(--rule);
   text-underline-offset: 2px;
 }
 
@@ -93,7 +124,7 @@ code {
 }
 
 .masthead {
-  border-bottom: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule);
   margin-bottom: 2rem;
   padding: 1.25rem 0 0.75rem;
 }
@@ -133,14 +164,14 @@ code {
 
 .nav a {
   text-decoration: none;
-  color: var(--ink-soft);
+  color: var(--ink-2);
   padding-bottom: 0.15rem;
   border-bottom: 2px solid transparent;
 }
 
 .nav a:hover {
   color: var(--ink);
-  border-bottom-color: var(--rule-strong);
+  border-bottom-color: var(--rule);
 }
 
 /* Two tiers (phase 18 §10a). The primary row carries the public path and reads at body weight;
@@ -175,7 +206,7 @@ code {
 }
 
 .foot {
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--rule-soft);
   margin-top: 3.5rem;
   padding-top: 1rem;
   font-family: var(--font-mono);
@@ -204,7 +235,7 @@ h2 {
   font-size: 1.0625rem;
   margin: 2.25rem 0 0.75rem;
   padding-bottom: 0.35rem;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule-soft);
   max-width: var(--measure);
 }
 
@@ -219,23 +250,23 @@ p {
 }
 
 .lede {
-  color: var(--ink-soft);
+  color: var(--ink-2);
   font-size: 1.0625rem;
 }
 
 .prose-note {
-  color: var(--ink-soft);
+  color: var(--ink-2);
   font-size: 0.9375rem;
 }
 
 .stub {
-  border: 1px dashed var(--rule-strong);
-  background: var(--paper-sunk);
+  border: 1px dashed var(--rule);
+  background: var(--surface);
   padding: 0.75rem 0.9rem;
   margin: 1rem 0 1.5rem;
   max-width: var(--measure);
   font-size: 0.875rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .stub .label {
@@ -263,13 +294,13 @@ th {
   text-transform: uppercase;
   color: var(--ink-dim);
   font-weight: 500;
-  border-bottom: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule);
   padding: 0.35rem 0.75rem 0.35rem 0;
   white-space: nowrap;
 }
 
 td {
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule-soft);
   padding: 0.4rem 0.75rem 0.4rem 0;
   vertical-align: baseline;
 }
@@ -321,23 +352,23 @@ tr th:last-child {
 
 /* --- denominator break: the series did not change, its denominator did ----
  * Deliberately unlike the seam. A seam is a solid red stop: do not splice.
- * This is a dashed umber band: the line may continue, but the values either
+ * This is a dashed BRASS band: the line may continue, but the values either
  * side are divided by different things. Red stays reserved for the seam.
  */
 
 .denominator-break td {
-  border-top: 1px dashed var(--shift);
-  border-bottom: 1px dashed var(--shift);
-  background: var(--shift-soft);
+  border-top: 1px dashed var(--mark);
+  border-bottom: 1px dashed var(--mark);
+  background: var(--mark-soft);
   padding: 0.4rem 0.5rem;
-  color: var(--shift);
+  color: var(--mark-ink);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.4;
 }
 
 .denominator-break a {
-  color: var(--shift);
+  color: var(--mark-ink);
 }
 
 .denominator-gloss {
@@ -346,21 +377,21 @@ tr th:last-child {
   max-width: var(--measure);
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
-/* Same dashed umber band as the in-table mark, so the callout and the row that
+/* Same dashed brass band as the in-table mark, so the callout and the row that
    triggered it read as one language rather than two. */
 .denominator-callout {
-  border-top: 1px dashed var(--shift);
-  border-bottom: 1px dashed var(--shift);
-  background: var(--shift-soft);
+  border-top: 1px dashed var(--mark);
+  border-bottom: 1px dashed var(--mark);
+  background: var(--mark-soft);
   padding: 0.6rem 0.85rem;
   margin: 1rem 0 1.5rem;
 }
 
 .denominator-callout .label {
-  color: var(--shift);
+  color: var(--mark-ink);
   margin-bottom: 0.3rem;
 }
 
@@ -382,7 +413,7 @@ tr th:last-child {
 
 .npa-view .toggle {
   display: inline-flex;
-  border: 1px solid var(--rule-strong);
+  border: 1px solid var(--rule);
 }
 
 .npa-radio {
@@ -404,12 +435,12 @@ tr th:last-child {
 }
 
 .npa-view .toggle label + input + label {
-  border-left: 1px solid var(--rule-strong);
+  border-left: 1px solid var(--rule);
 }
 
 .npa-radio:checked + label {
   background: var(--ink);
-  color: var(--paper);
+  color: var(--bg);
 }
 
 .npa-radio:focus-visible + label {
@@ -421,7 +452,7 @@ tr th:last-child {
   max-width: var(--measure);
   margin: 0 0 0.75rem;
   font-size: 0.8125rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .npa-basis-missing {
@@ -444,8 +475,8 @@ tr th:last-child {
 }
 
 .npa-blocked {
-  border: 1px dashed var(--rule-strong);
-  background: var(--paper-sunk);
+  border: 1px dashed var(--rule);
+  background: var(--surface);
   padding: 0.75rem 0.9rem;
 }
 
@@ -453,7 +484,7 @@ tr th:last-child {
 .npa-blocked li {
   max-width: var(--measure);
   font-size: 0.8125rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .npa-blocked p {
@@ -474,14 +505,14 @@ tr th:last-child {
 .npa-caveats {
   margin: 0.5rem 0 0;
   padding-left: 1.1rem;
-  border-left: 2px solid var(--rule-strong);
+  border-left: 2px solid var(--rule);
 }
 
 .npa-caveats li {
   max-width: var(--measure);
   margin-bottom: 0.35rem;
   font-size: 0.8125rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
   list-style: none;
 }
 
@@ -489,14 +520,14 @@ tr th:last-child {
   margin: 0;
   max-width: var(--measure);
   font-size: 0.875rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 /* --- status marks (rule 3: approx and pending are visually distinct) ----- */
 
 .status-approx {
   border-bottom: 1px dotted var(--ink-dim);
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .flag-pending {
@@ -527,12 +558,12 @@ tr th:last-child {
 .tag {
   display: inline-block;
   padding: 0 0.35rem;
-  border: 1px solid var(--rule-strong);
-  background: var(--paper);
+  border: 1px solid var(--rule);
+  background: var(--bg);
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   letter-spacing: 0.04em;
-  color: var(--ink-soft);
+  color: var(--ink-2);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -557,23 +588,23 @@ tr th:last-child {
   gap: 1px;
   /* Paper, not rule: an unfilled cell in the last row must read as blank canvas,
      not as a shaded box that looks like a record. */
-  background: var(--paper);
+  background: var(--bg);
   margin: 0.75rem 0 1.5rem;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
 }
 
 .grid > * {
-  background: var(--paper);
+  background: var(--bg);
   /* Outline rather than border: it draws into the 1px gap, so adjacent cells
      share a single hairline and nothing shifts. */
-  outline: 1px solid var(--rule);
+  outline: 1px solid var(--rule-soft);
   padding: 0.75rem 0.9rem;
   text-decoration: none;
   display: block;
 }
 
 .grid > a:hover {
-  background: var(--paper-sunk);
+  background: var(--surface);
 }
 
 .grid > * > .label {
@@ -625,7 +656,7 @@ tr th:last-child {
 }
 
 .source-line a {
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .dl {
@@ -678,7 +709,7 @@ tr th:last-child {
 
 .cu-view {
   margin: 1.25rem 0 1.5rem;
-  border-top: 2px solid var(--rule-strong);
+  border-top: 2px solid var(--rule);
   padding-top: 0.9rem;
 }
 
@@ -686,7 +717,7 @@ tr th:last-child {
   margin: 0.35rem 0 1rem;
   max-width: var(--measure);
   font-size: 0.875rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .cu-pair {
@@ -713,7 +744,7 @@ tr th:last-child {
 /* The usage side is the qualifying reading; a left rule marks it as answering the
    other column rather than standing as an independent finding. */
 .cu-side-usage {
-  border-left: 2px solid var(--shift);
+  border-left: 2px solid var(--mark);
   padding-left: 0.9rem;
 }
 
@@ -753,18 +784,18 @@ tr th:last-child {
   margin: 0.15rem 0 0;
   max-width: var(--measure);
   font-size: 0.875rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 /* Umber, like the denominator break: this is a comparability limit, not an alert. */
 .cu-gap {
   margin: 1rem 0 0;
-  border-left: 3px solid var(--shift);
-  background: var(--shift-soft);
+  border-left: 3px solid var(--mark);
+  background: var(--mark-soft);
   padding: 0.6rem 0.9rem;
   max-width: var(--measure);
   font-size: 0.875rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .cu-gap .label {
@@ -785,7 +816,7 @@ tr th:last-child {
   margin: 0.2rem 0 0;
   max-width: var(--measure);
   font-size: 0.875rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 /* CLAUDE.md rule 3a: a caveat never truncates, at any density. The properties below are
@@ -816,7 +847,7 @@ tr th:last-child {
   display: inline-block;
   margin-top: 0.15rem;
   padding: 0 0.3rem;
-  border: 1px dashed var(--rule);
+  border: 1px dashed var(--rule-soft);
   border-radius: 2px;
   font-family: var(--font-mono);
   font-size: 0.6875rem;
@@ -843,7 +874,7 @@ tr th:last-child {
    No background fill, no figure, no table; the frame is not the content. */
 .absence {
   margin: 1rem 0 0;
-  border: 1px dashed var(--rule-strong);
+  border: 1px dashed var(--rule);
   padding: 0.6rem 0.9rem;
 }
 
@@ -851,7 +882,7 @@ tr th:last-child {
   margin: 0.2rem 0 0;
   max-width: var(--measure);
   font-size: 0.875rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 /* Several absences on one record are one block with several entries, not several blocks —
@@ -864,7 +895,7 @@ tr th:last-child {
 
 .absence-list > li + li {
   margin-top: 0.6rem;
-  border-top: 1px dotted var(--rule-strong);
+  border-top: 1px dotted var(--rule);
   padding-top: 0.6rem;
 }
 
@@ -885,7 +916,7 @@ tr th:last-child {
 
 .cp-view {
   margin: 1.25rem 0 1.5rem;
-  border-top: 2px solid var(--rule-strong);
+  border-top: 2px solid var(--rule);
   padding-top: 0.9rem;
 }
 
@@ -893,7 +924,7 @@ tr th:last-child {
   margin: 0.35rem 0 1rem;
   max-width: var(--measure);
   font-size: 0.875rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .cp-pair {
@@ -919,16 +950,16 @@ tr th:last-child {
   line-height: 1.35;
 }
 
-/* Neutral, not umber: this is not a comparability limit on one side, it is an
+/* Neutral, not brass: this is not a comparability limit on one side, it is an
    unresolved disagreement between both. */
 .cp-note {
   margin: 1rem 0 0;
-  border-left: 3px solid var(--rule-strong);
-  background: var(--paper-sunk);
+  border-left: 3px solid var(--rule);
+  background: var(--surface);
   padding: 0.6rem 0.9rem;
   max-width: var(--measure);
   font-size: 0.875rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .cp-note .label {
@@ -971,19 +1002,19 @@ tr th:last-child {
   border-top: none;
 }
 
-/* Each side rests on different facts. Dashed umber, the denominator-break family: the two
+/* Each side rests on different facts. Dashed brass, the denominator-break family: the two
    sides are divided by different things. Deliberately not red — a basis mismatch is not an
    alert, and red stays reserved for deaths, alerts and break-seams. */
 .different-facts {
-  border-top: 1px dashed var(--shift);
-  border-bottom: 1px dashed var(--shift);
-  background: var(--shift-soft);
+  border-top: 1px dashed var(--mark);
+  border-bottom: 1px dashed var(--mark);
+  background: var(--mark-soft);
   padding: 0.6rem 0.85rem;
   margin: 0.75rem 0 1.25rem;
 }
 
 .different-facts .label {
-  color: var(--shift);
+  color: var(--mark-ink);
   display: block;
   margin-bottom: 0.25rem;
 }
@@ -992,19 +1023,19 @@ tr th:last-child {
   margin: 0;
   max-width: var(--measure);
   font-size: 0.9375rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
-/* The same test, recorded negative. Deliberately NOT umber: umber says the two sides are
+/* The same test, recorded negative. Deliberately NOT brass: brass says the two sides are
    divided by different things, and a false reading denies exactly that, so borrowing the
    mismatch colour would contradict the words at a glance. Neutral rule and sunk paper —
    present and readable, quieter than a finding, because what it records is a test that
    returned negative rather than a property of the argument. Solid border, not dashed:
    dashed belongs to the absence and denominator-break families. */
 .different-facts-negative {
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  background: var(--paper-sunk);
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+  background: var(--surface);
   padding: 0.6rem 0.85rem;
   margin: 0.75rem 0 1.25rem;
 }
@@ -1019,17 +1050,17 @@ tr th:last-child {
   margin: 0;
   max-width: var(--measure);
   font-size: 0.9375rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
-/* Compact form, for listings. Same umber, no frame — it sits under a title in a table cell. */
+/* Compact form, for listings. Same brass, no frame — it sits under a title in a table cell. */
 .different-facts-inline {
   display: block;
   margin-top: 0.15rem;
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   letter-spacing: 0.04em;
-  color: var(--shift);
+  color: var(--mark-ink);
   white-space: normal;
   overflow: visible;
 }
@@ -1056,8 +1087,8 @@ tr th:last-child {
    break seams. */
 .tag-lens {
   border-style: dashed;
-  color: var(--umber, #7a5c2e);
-  border-color: var(--umber, #7a5c2e);
+  color: var(--mark-ink);
+  border-color: var(--mark-ink);
 }
 
 /* --- commitment state and contested ground -----------------------------
@@ -1066,8 +1097,8 @@ tr th:last-child {
    with this in mind", where red means "do not splice". */
 .tag-state {
   border-style: dashed;
-  color: var(--umber, #7a5c2e);
-  border-color: var(--umber, #7a5c2e);
+  color: var(--mark-ink);
+  border-color: var(--mark-ink);
 }
 
 /* --- phase 18: record stages, the evidence control, the connections diagram ---
@@ -1084,7 +1115,7 @@ tr th:last-child {
   text-transform: uppercase;
   color: var(--ink-dim);
   font-weight: 500;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule-soft);
   margin: 2.5rem 0 0.85rem;
   padding-bottom: 0.35rem;
 }
@@ -1097,7 +1128,7 @@ tr th:last-child {
 .hdwk {
   max-width: var(--measure);
   margin: 0 0 1.25rem;
-  border-left: 2px solid var(--stamp);
+  border-left: 2px solid var(--mark);
 }
 
 .hdwk-summary {
@@ -1106,7 +1137,7 @@ tr th:last-child {
   padding: 0.3rem 0 0.3rem 0.7rem;
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
   list-style: none;
 }
 
@@ -1131,7 +1162,7 @@ tr th:last-child {
 /* A visible focus ring: the control is the site's thesis and a keyboard reader must be able to
    see where they are. Never removed. */
 .hdwk-summary:focus-visible {
-  outline: 2px solid var(--stamp);
+  outline: 2px solid var(--mark);
   outline-offset: 2px;
 }
 
@@ -1154,7 +1185,7 @@ tr th:last-child {
 .hdwk-line {
   margin: 0 0 0.45rem;
   font-size: 0.8125rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .hdwk-line .label {
@@ -1186,8 +1217,8 @@ tr th:last-child {
 }
 
 .rests-centre {
-  border-left: 1px solid var(--rule);
-  border-right: 1px solid var(--rule);
+  border-left: 1px solid var(--rule-soft);
+  border-right: 1px solid var(--rule-soft);
   padding: 0 1.25rem;
   max-width: 18rem;
 }
@@ -1232,8 +1263,8 @@ tr th:last-child {
   .rests-centre {
     border-left: 0;
     border-right: 0;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
+    border-top: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule-soft);
     padding: 0.75rem 0;
     max-width: none;
   }
@@ -1279,14 +1310,14 @@ tr th:last-child {
 
 .chart-takeaway {
   margin: 0;
-  color: var(--ink-soft);
+  color: var(--ink-2);
   font-size: 0.9375rem;
   max-width: var(--measure);
 }
 
 .chart-frame {
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
   padding: 0.4rem 0;
   margin: 0.6rem 0 0.5rem;
 }
@@ -1298,7 +1329,7 @@ tr th:last-child {
 }
 
 .chart-grid {
-  stroke: var(--rule);
+  stroke: var(--rule-soft);
   stroke-width: 1;
 }
 
@@ -1310,27 +1341,27 @@ tr th:last-child {
 
 .chart-line {
   fill: none;
-  stroke: var(--ink);
+  stroke: var(--fill);
   stroke-width: 2;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
 
 /* The seam: solid red, the one place red is used on a chart, and it means DO NOT SPLICE.
-   Never dashed — dashed umber is the denominator break, which means something else entirely. */
+   Never dashed — dashed brass is the denominator break, which means something else entirely. */
 .chart-seam {
   stroke: var(--alert);
   stroke-width: 2;
 }
 
 .chart-dot {
-  fill: var(--ink);
+  fill: var(--fill);
 }
 
 /* Rule 3: status is visible on the point itself, not in a legend a reader has to hold in mind. */
 .chart-dot-approx {
-  fill: var(--paper);
-  stroke: var(--ink);
+  fill: var(--bg);
+  stroke: var(--fill);
   stroke-width: 1.5;
   stroke-dasharray: 2 2;
 }
@@ -1363,7 +1394,7 @@ tr th:last-child {
   padding-left: 0.7rem;
   margin: 0.5rem 0;
   font-size: 0.8125rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
   max-width: var(--measure);
 }
 
@@ -1428,8 +1459,8 @@ tr th:last-child {
 }
 
 .story-standfirst {
-  color: var(--ink-soft);
-  border-left: 2px solid var(--rule-strong);
+  color: var(--ink-2);
+  border-left: 2px solid var(--rule);
   padding-left: 0.85rem;
   max-width: var(--measure);
 }
@@ -1461,7 +1492,7 @@ tr th:last-child {
 
 .scroller-step {
   padding: 3.5rem 0;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule-soft);
 }
 
 .scroller-step:last-child {
@@ -1492,13 +1523,13 @@ tr th:last-child {
   display: block;
   width: 100%;
   height: auto;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
   padding: 0.5rem 0;
 }
 
 .two-grid {
-  stroke: var(--rule);
+  stroke: var(--rule-soft);
   stroke-width: 1;
 }
 
@@ -1510,38 +1541,53 @@ tr th:last-child {
 }
 
 .two-line-aser .two-path {
-  stroke: var(--ink);
+  stroke: var(--fill);
 }
 
 .two-line-aser .two-dot {
-  fill: var(--ink);
+  fill: var(--fill);
 }
 
-/* The official instrument in alert red is NOT a judgement on it. Red is the corpus's break colour,
-   and this line is the one cut at three declared resets — the red says "do not read through",
-   which is exactly what its own custodians say. */
+/* CORRECTED 2026-08-11 with the palette. The withdrawn rule read: *"The official instrument in
+   alert red is NOT a judgement on it. Red is the corpus's break colour, and this line is the one
+   cut at three declared resets — the red says 'do not read through', which is exactly what its own
+   custodians say."* The reasoning was right and the vehicle was wrong twice over.
+
+   FIRST, red now means one thing: a seam. Rule 5a fixes it as a solid red stop, and this chart
+   draws real seams — a line that is entirely seam-coloured cannot also mark where it is cut.
+
+   SECOND, "do not read through" is a statement about CONTINUITY, and a dash says it directly
+   instead of by convention. So NAS/PARAKH keeps the indigo every chart line has and is told apart
+   by a broken stroke, which is the same thing its custodians say about it.
+
+   This chart was never colour-alone — `TwoInstruments` labels each line inline at its own end,
+   because the two measure different things and a legend would put the label somewhere the reader
+   has to look up. The dash removes the last dependence on hue anyway: at a glance, one line is
+   continuous and one is not, in greyscale or in colour. */
 .two-line-nas .two-path {
-  stroke: var(--alert);
+  stroke: var(--fill);
+  stroke-dasharray: 5 3;
 }
 
 .two-line-nas .two-dot {
-  fill: var(--alert);
+  fill: var(--fill);
 }
 
+/* An approximation is a HOLLOW dot on both lines — rule 3, carried by shape so it survives
+   greyscale. The base rule stroked it in --alert, which was the NAS line's colour before the
+   palette; with both lines indigo that left two red rings floating in an otherwise indigo chart,
+   reading as an alert on two arbitrary points. The per-line override that used to correct it for
+   ASER is now the only rule needed. */
 .two-dot-approx {
-  fill: var(--paper) !important;
-  stroke: var(--alert);
+  fill: var(--bg) !important;
+  stroke: var(--fill);
   stroke-width: 1.5;
-}
-
-.two-line-aser .two-dot-approx {
-  stroke: var(--ink);
 }
 
 .two-label {
   font-family: var(--font-mono);
   font-size: 11px;
-  fill: var(--ink);
+  fill: var(--fill);
 }
 
 .two-unit {
@@ -1575,7 +1621,7 @@ tr th:last-child {
 .story-gaps li {
   margin-bottom: 0.7rem;
   font-size: 0.9375rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .story-callout {
@@ -1638,10 +1684,10 @@ tr th:last-child {
 }
 
 .evalview-limit {
-  border-left: 2px solid var(--rule-strong);
+  border-left: 2px solid var(--rule);
   padding-left: 0.85rem;
   max-width: var(--measure);
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .evalbars {
@@ -1664,7 +1710,7 @@ tr th:last-child {
 
 .evalbar-name a {
   text-decoration: none;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .evalbar-name a:hover {
@@ -1674,8 +1720,8 @@ tr th:last-child {
 
 .evalbar-track {
   height: 0.65rem;
-  background: var(--paper-sunk);
-  border: 1px solid var(--rule);
+  background: var(--surface);
+  border: 1px solid var(--rule-soft);
   position: relative;
 }
 
@@ -1684,7 +1730,7 @@ tr th:last-child {
 .evalbar-fill {
   display: block;
   height: 100%;
-  background: var(--ink-soft);
+  background: var(--ink-2);
 }
 
 .evalbar-value {
@@ -1710,7 +1756,7 @@ tr th:last-child {
    nothing shortened. Rule 3a says the layout changes, and this is the layout changing. */
 
 .caveat-row td {
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule-soft);
   padding: 0 0 0.5rem;
 }
 
@@ -1740,13 +1786,13 @@ tbody > tr:has(+ .caveat-row) > td {
   align-items: center;
   gap: 0.85rem;
   flex-wrap: wrap;
-  border-top: 1px solid var(--rule-strong);
-  border-bottom: 1px solid var(--rule-strong);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
   padding: 0.7rem 0;
   margin: 1.5rem 0 1.75rem;
   position: sticky;
   top: 0;
-  background: var(--paper);
+  background: var(--bg);
   z-index: 5;
 }
 
@@ -1767,7 +1813,7 @@ tbody > tr:has(+ .caveat-row) > td {
   width: 100%;
   display: block;
   margin: 0;
-  accent-color: var(--stamp);
+  accent-color: var(--mark);
   /* A 44px HIT AREA ON THE PAGE'S ONLY CONTROL. The native range renders a ~16px box, which fails
      the mobile acceptance constraint on the one element the whole board depends on — a reader who
      cannot grab the thumb cannot use the view at all. Height gives the finger somewhere to land;
@@ -1792,7 +1838,7 @@ tbody > tr:has(+ .caveat-row) > td {
   font-variant-numeric: tabular-nums;
   font-size: 1.125rem;
   min-width: 3.4ch;
-  color: var(--stamp);
+  color: var(--mark-ink);
 }
 
 .scrub-reset {
@@ -1800,8 +1846,8 @@ tbody > tr:has(+ .caveat-row) > td {
   font-size: 0.75rem;
   font-family: var(--font-mono);
   background: none;
-  border: 1px solid var(--rule-strong);
-  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  color: var(--ink-2);
   padding: 0.3rem 0.6rem;
   cursor: pointer;
   min-height: 44px;
@@ -1822,13 +1868,13 @@ tbody > tr:has(+ .caveat-row) > td {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
   gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
   margin-bottom: 1rem;
 }
 
 .card {
-  background: var(--paper);
+  background: var(--bg);
   padding: 0.9rem 1rem 1rem;
   display: flex;
   flex-direction: column;
@@ -1859,7 +1905,7 @@ tbody > tr:has(+ .caveat-row) > td {
 
 .card-metric {
   font-size: 0.75rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
   margin: 0 0 0.3rem;
   line-height: 1.35;
   min-height: 2.1em;
@@ -1867,9 +1913,9 @@ tbody > tr:has(+ .caveat-row) > td {
 
 .card-instead {
   font-size: 0.8125rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
   margin: 0;
-  border-left: 2px dashed var(--rule-strong);
+  border-left: 2px dashed var(--rule);
   padding-left: 0.7rem;
 }
 
@@ -1881,20 +1927,20 @@ tbody > tr:has(+ .caveat-row) > td {
 
 .spk-line {
   fill: none;
-  stroke: var(--ink);
+  stroke: var(--fill);
   stroke-width: 1.6;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
 
 .spk-dot {
-  fill: var(--ink);
+  fill: var(--fill);
 }
 
 /* Rule 3 at sparkline scale: an approximation is hollow, a pending point is unfilled. */
 .spk-approx {
-  fill: var(--paper);
-  stroke: var(--ink);
+  fill: var(--bg);
+  stroke: var(--fill);
   stroke-width: 1.2;
 }
 
@@ -1911,13 +1957,13 @@ tbody > tr:has(+ .caveat-row) > td {
 }
 
 .spk-scrub {
-  stroke: var(--stamp);
+  stroke: var(--mark);
   stroke-width: 1;
   opacity: 0.55;
 }
 
 .spk-hit {
-  fill: var(--stamp);
+  fill: var(--mark);
 }
 
 .spk-before {
@@ -1992,7 +2038,7 @@ tbody > tr:has(+ .caveat-row) > td {
 }
 
 .card-more summary:focus-visible {
-  outline: 2px solid var(--stamp);
+  outline: 2px solid var(--mark);
   outline-offset: 2px;
 }
 
@@ -2024,7 +2070,7 @@ tbody > tr:has(+ .caveat-row) > td {
 }
 
 .mini:hover .spk-line {
-  stroke: var(--stamp);
+  stroke: var(--mark);
 }
 
 .board-caption {
@@ -2042,7 +2088,7 @@ tbody > tr:has(+ .caveat-row) > td {
 /* --- the year-by-year ledger ---------------------------------------------- */
 
 .yeargroup {
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--rule-soft);
   max-width: 52rem;
 }
 
@@ -2071,7 +2117,7 @@ tbody > tr:has(+ .caveat-row) > td {
 }
 
 .yeargroup summary:focus-visible {
-  outline: 2px solid var(--stamp);
+  outline: 2px solid var(--mark);
   outline-offset: 2px;
 }
 
@@ -2096,7 +2142,7 @@ tbody > tr:has(+ .caveat-row) > td {
 
 .yeargroup-list li {
   padding: 0.5rem 0;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--rule-soft);
   font-size: 0.9375rem;
 }
 
@@ -2115,12 +2161,12 @@ tbody > tr:has(+ .caveat-row) > td {
 .home-overview-link a {
   font-size: 0.9375rem;
   text-decoration: none;
-  border-bottom: 1px solid var(--stamp);
+  border-bottom: 1px solid var(--mark);
   color: var(--ink);
 }
 
 .home-overview-link a:hover {
-  color: var(--stamp);
+  color: var(--mark-ink);
 }
 
 /* ============================================================================================
@@ -2132,8 +2178,8 @@ tbody > tr:has(+ .caveat-row) > td {
 .facets {
   margin: 1.25rem 0 0.5rem;
   padding: 0.75rem 0.85rem;
-  border: 1px solid var(--rule);
-  background: var(--paper-sunk, rgba(0, 0, 0, 0.015));
+  border: 1px solid var(--rule-soft);
+  background: var(--surface);
 }
 
 .facets-row {
@@ -2162,8 +2208,8 @@ tbody > tr:has(+ .caveat-row) > td {
   font-family: var(--font-mono);
   padding: 0.4rem 0.5rem;
   min-height: 44px; /* the mobile acceptance constraint; a 30px select is not tappable */
-  border: 1px solid var(--rule-strong);
-  background: var(--paper);
+  border: 1px solid var(--rule);
+  background: var(--bg);
   color: var(--ink);
   max-width: 100%;
 }
@@ -2175,8 +2221,8 @@ tbody > tr:has(+ .caveat-row) > td {
   min-height: 44px;
   padding: 0 0.75rem;
   background: none;
-  border: 1px solid var(--rule-strong);
-  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  color: var(--ink-2);
   cursor: pointer;
 }
 
@@ -2191,7 +2237,7 @@ tbody > tr:has(+ .caveat-row) > td {
 }
 
 .facets-none {
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 /* "Has this record changed?" — set apart from the record's own argument, because it is a fact
@@ -2199,7 +2245,7 @@ tbody > tr:has(+ .caveat-row) > td {
 .rechist {
   margin-top: 2.5rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--rule-soft);
 }
 
 .rechist-line,
@@ -2221,7 +2267,7 @@ tbody > tr:has(+ .caveat-row) > td {
   gap: 0.35rem 0.75rem;
   align-items: baseline;
   padding: 0.4rem 0;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--rule-soft);
   font-size: 0.8125rem;
 }
 
@@ -2238,7 +2284,7 @@ tbody > tr:has(+ .caveat-row) > td {
 
 .rechist-subj {
   flex: 1 1 16rem;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 
 .rechist-fields {
@@ -2286,7 +2332,7 @@ tbody > tr:has(+ .caveat-row) > td {
 }
 
 .pub-carrier {
-  border-left: 2px solid var(--stamp);
+  border-left: 2px solid var(--mark);
   padding-left: 0.85rem;
   margin: 1rem 0;
 }

@@ -12543,3 +12543,102 @@ mid-batch lands in that file in the commit that earns it, rather than living onl
 **Gates after the fix:** \`deploy-chain\` OK — 23-step chain, not a copy · \`public-data\` 679
 records, 2.60 MB · \`link-check\` 27,975 hrefs / 668 pages / 0 dead · \`listing-marks\` 2,630 rows /
 3,713 marks · all others as in the entry above.
+
+
+---
+
+## 2026-08-11 (third entry) — Bone & Indigo applied; the Overview grid STOPS on its own condition
+
+**ITEMS 1-3 SHIPPED. ITEM 4 IS NOT BUILT**, on the stop the operator wrote for it.
+
+### The grid stop — the shape is not in the data, and at finer grain it runs the other way
+
+The instruction: *"Derive them from /data first and report the actual distribution before building
+the view. If Education does not come out visibly denser than Defence at true values, the encoding
+does not carry."* Derived over 14 areas x 2014-2026, a cell counting India observations across
+every series in the area (lens fallback for Kashmir), solid = any verified, faint = observations but
+none verified, empty = none:
+
+- **Education 12 solid / 0 faint / 1 empty. Defence 11 / 0 / 2.** To the eye these are the same row.
+- **Defence's row is not "nearly all empty squares"** — it is 11 of 13 solid. The premise the
+  "Made of" column was designed to rescue does not occur.
+- **The grid is saturated**: 8 of 14 rows are >= 10 solid. It says yes almost everywhere.
+- The empty 2026 column on 12 of 14 rows is the year in progress, not a finding.
+
+**At a finer, still-defensible grain the ordering INVERTS.** Share of an area's series carrying a
+figure that year, meaned over 2014-2026: **Defence 56% (2nd densest), Education 36% (9th).** Defence
+holds 13 series and Education 54; a large library with staggered spans scores LOWER. So that
+encoding measures **how many series this corpus happens to hold and how synchronised their calendars
+are**, not how well the state measures an area — and a reader would infer the second. That is rule 7:
+the quantity is not defensible for the meaning the view would carry.
+
+**The one axis that does vary strongly is solid-against-faint** — Infrastructure 0/12, Employment
+0/11, Poverty 0/1/12 — and that is *verified against approximate*, which is the metadata grid the
+operator rejected twice as "a picture of the filing system". **Building the grid on the only axis
+with contrast would rebuild the rejected view.**
+
+**Nothing was built.** Item 6's wording ruling is recorded here for whenever the question reopens:
+the framing is about the record set only, and the footnote states both the rho framing and that
+which government claims were never entered has not been established. **Recomputed live: rho = 0.92,
+not 0.91** — the scope's figure was right when written and the corpus has moved, which is why the
+Evaluability component computes it rather than carrying it.
+
+### The palette
+
+Applied as tokens; **0 colour literals outside \`:root\` before or after**, so the rename was
+mechanical. One pass with a callback rather than sequential replaces — \`--rule-strong\` -> \`--rule\`
+and \`--rule\` -> \`--rule-soft\` in sequence would have collapsed both into one. Counts verified
+either side: paper 11, paper-sunk 6, ink-soft 36, rule-strong 23, rule 28, stamp 12, shift 13,
+shift-soft 4, all -> 0. **29 chart declarations moved from \`--ink\` to \`--fill\`.**
+
+**TWO TOKENS DIFFER FROM THE PALETTE AS ISSUED, FOR CONTRAST, AND ONLY THOSE TWO.** Against
+\`--bg\`, the issued \`--ink-2\` #666a78 measured **4.49** and \`--ink-dim\` #8f8f97 measured
+**2.68**, against 4.5 for normal text. \`--ink-dim\` carries **49 rules of labels and source lines** —
+the provenance apparatus — so shipping it would have made the evidence layer the least legible thing
+on the page. Both darkened along the same cool hue, preserving the three-level relationship.
+
+**AND THE TOKEN ARITHMETIC WAS NOT ENOUGH: THERE ARE TWO PAPERS.** A rendered sweep of a live record
+page caught \`.label\` at **4.27** — \`--ink-dim\` tuned against \`--bg\` (4.64) fails on \`--surface\`
+#e7e1d4, which is darker. Retuned against the darker of the two. Final ladder, both papers:
+ink 13.15/12.10 · ink-2 6.81/6.27 · ink-dim 5.24/4.82 · mark-ink 4.90/4.51 · fill 10.17/9.36 ·
+mark 3.77/3.47 (a UI mark, needs 3.0) · alert 6.47/5.95. **1,200 rendered text nodes on \`/overview/\`
+sweep clean.**
+
+**\`--mark\` NEEDED A SECOND TOKEN FOR TEXT.** Brass at 3.77 is right for an edge, a ring or a dash
+and cannot carry words. \`--mark-ink\` #8a5a2a (4.90/4.51) is the same brass where it does; 7
+\`color:\` declarations moved to it, and the 3 border/background/stroke uses stayed \`--mark\`.
+
+### What the palette broke, reported as asked
+
+**1. RED IS NOT IN THE PALETTE AND RULE 5a REQUIRES IT.** The seam is defined as a solid red stop
+and red is reserved for deaths. \`--alert\` survives unchanged rather than being dropped or folded
+into brass; all 23 remaining uses were read one by one and every one is a stop, a caveat, a pending
+flag, a T5 contested tag or a disputed absence.
+
+**2. BRASS COLLIDES WITH RULE 5a's UMBER, AND THE COLLISION RESOLVED THE OTHER WAY.** \`--mark\`
+#a06b32 and \`--shift\` #7a5c1e sit **1.38** apart in contrast — indistinguishable. But the operator's
+first stated meaning for \`--mark\` is *a definition changed*, which is exactly what a restated
+denominator IS. So umber folded INTO brass rather than sitting beside it. **Rule 5a is unharmed
+because its discriminator was never the hue**: solid band against dashed band, words in both.
+**CLAUDE.md rule 5a is corrected in this commit with "a dashed umber band" quoted as withdrawn**,
+and seven stale "umber" comments in the stylesheet were corrected in the same operation — the
+point-of-change rule applied to a token.
+
+**3. \`--stamp\` VIOLET IS SUPERSEDED.** Its documented job — *"used only where a mark is made"* — is
+\`--mark\`'s definition verbatim. 12 uses moved; no second accent survives.
+
+**4. THE ONE STATE THAT WAS AT RISK OF COLOUR-ALONE, and it was not.** A scan found 26 rules
+distinguishing by colour or opacity alone; all but one are hover and nav states. The exception is the
+story's two instruments, ASER against NAS/PARAKH, previously indigo against red. **\`TwoInstruments\`
+already labels each line inline at its own end, so it was never colour-alone** — but red on a line
+now collides with red-means-seam on a chart that draws real seams. NAS/PARAKH keeps the indigo every
+line has and is told apart by a **broken stroke**, which states "do not read through" as shape
+rather than by convention. The withdrawn rule is quoted in the stylesheet.
+
+**5. A stray red the rename would have left.** \`.two-dot-approx\` stroked hollow points in
+\`--alert\` — correct when NAS was red, and after the change it left two red rings floating in an
+all-indigo chart, reading as an alert on two arbitrary points. Unified on \`--fill\`; hollowness
+still carries the approximation, per rule 3, and survives greyscale.
+
+**Gates:** \`deploy-chain\` OK, 23-step chain · \`withdrawn-wording\` 29 corrections, 0 still asserted
+· \`link-check\` 27,975 hrefs / 668 pages / 0 dead · all others unchanged from the entries above.
