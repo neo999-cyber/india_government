@@ -17,7 +17,7 @@ import {
   formatDateRange,
 } from '@/lib/format';
 import { LENSES, LENSES_THAT_ARE_DOMAINS, LENS_ONLY, type Lens } from '@/lib/types';
-import { AbsenceCount, CaveatFlag, DifferentFactsMark, StatusKey, StatusTally, TierTag } from '@/components/marks';
+import { RecordMarks, StatusKey, StatusTally, TierTag } from '@/components/marks';
 
 type Props = { params: Promise<{ lens: string }> };
 
@@ -107,6 +107,14 @@ export default async function LensPage({ params }: Props) {
                   <th>Cal.</th>
                   <th>Tier</th>
                   <th className="num">Points</th>
+                  {/* THE SEAM COUNT, which this table alone omitted until 2026-08-08.
+                      Its two sibling tables — the series index and the domain page — both carry
+                      it, in alert red, and 24 of the 54 lensed series declare 33 seams between
+                      them. On /lenses/kashmir/ nineteen of the series listed have a declared
+                      break and a reader saw no sign of it. A seam is the one thing this
+                      instrument refuses to let a reader splice across, so a listing that hides
+                      it is not a density choice. */}
+                  <th>Breaks</th>
                 </tr>
               </thead>
               <tbody>
@@ -114,7 +122,7 @@ export default async function LensPage({ params }: Props) {
                   <tr key={x.id}>
                     <td>
                       <Link href={`/series/${x.id}/`}>{x.title}</Link>
-                      {x.caveat ? <CaveatFlag caveat={x.caveat} variant="inline" /> : null}
+                      <RecordMarks record={x} />
                     </td>
                     <td className="mono">
                       <Link href={`/domains/${x.domain}/`}>{x.domain}</Link>
@@ -125,6 +133,13 @@ export default async function LensPage({ params }: Props) {
                       <TierTag tier={x.tier} />
                     </td>
                     <td className="num">{x.points.length}</td>
+                    <td className="mono">
+                      {x.breaks?.length ? (
+                        <span style={{ color: 'var(--alert)' }}>{x.breaks.length}</span>
+                      ) : (
+                        <span className="t-note">—</span>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -169,9 +184,7 @@ export default async function LensPage({ params }: Props) {
                       <td className="mono">{TERM_SHORT[x.term]}</td>
                       <td>
                         <Link href={`/ledger/${x.id}/`}>{x.title}</Link>
-                        {x.caveat ? <CaveatFlag caveat={x.caveat} variant="inline" /> : null}
-                        <AbsenceCount items={x.unmeasured} />
-                        {x.differentFacts ? <DifferentFactsMark variant="inline" /> : null}
+                        <RecordMarks record={x} />
                       </td>
                       <td className="mono">
                         {x.domains.map((d, i) => (

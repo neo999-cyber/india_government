@@ -13,15 +13,7 @@ import {
   TERM_SHORT,
   formatDateRange,
 } from '@/lib/format';
-import {
-  Absences,
-  CaveatFlag,
-  DifferentFactsMark,
-  DifferentFactsNegativeMark,
-  Objectives,
-  ShockExposures,
-  SourceList,
-} from '@/components/marks';
+import { Absences, CaveatFlag, DifferentFactsMark, DifferentFactsNegativeMark, Objectives, RecordMarks, ShockExposures, SourceList } from '@/components/marks';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -240,7 +232,7 @@ export default async function LedgerDetail({ params }: Props) {
                   {s.unit} · {s.points.length} points
                   {s.breaks?.length ? ` · ${s.breaks.length} break(s)` : ''}
                 </span>
-                {s.caveat ? <CaveatFlag caveat={s.caveat} variant="inline" linkify={false} /> : null}
+                <RecordMarks record={s} linkify={false} />
               </Link>
             ))}
           </div>

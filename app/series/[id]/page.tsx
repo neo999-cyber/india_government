@@ -22,7 +22,7 @@ import {
 import { SeriesTable } from '@/components/SeriesTable';
 import { NpaView } from '@/components/NpaView';
 import { RegimeOverlap } from '@/components/RegimeOverlap';
-import { Absences, CaveatFlag, SourceLine, StatusKey, TierTag } from '@/components/marks';
+import { Absences, CaveatFlag, RecordMarks, SourceLine, StatusKey, TierTag } from '@/components/marks';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -240,7 +240,7 @@ export default async function SeriesDetail({ params }: Props) {
               </span>
               <span className="grid-title">{l.title}</span>
               <span className="grid-meta">{l.date}</span>
-              {l.caveat ? <CaveatFlag caveat={l.caveat} variant="inline" linkify={false} /> : null}
+              <RecordMarks record={l} linkify={false} />
             </Link>
           ))}
         </div>

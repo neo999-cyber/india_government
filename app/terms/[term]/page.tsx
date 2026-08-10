@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { assessmentCounts, ledgerInTerm } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_LABELS, formatDateRange } from '@/lib/format';
-import { AbsenceCount, CaveatFlag, DifferentFactsMark, TallyGloss } from '@/components/marks';
+import { RecordMarks, TallyGloss } from '@/components/marks';
 import { TERMS, type Term } from '@/lib/types';
 
 type Props = { params: Promise<{ term: string }> };
@@ -111,9 +111,7 @@ export default async function TermPage({ params }: Props) {
                     <td className="mono t-note">{formatDateRange(r.date, r.dateEnd)}</td>
                     <td>
                       <Link href={`/ledger/${r.id}/`}>{r.title}</Link>
-                      {r.caveat ? <CaveatFlag caveat={r.caveat} variant="inline" /> : null}
-                      <AbsenceCount items={r.unmeasured} />
-                      {r.differentFacts ? <DifferentFactsMark variant="inline" /> : null}
+                      <RecordMarks record={r} />
                     </td>
                     <td className="t-note">{r.type}</td>
                     <td className="t-note">{r.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}</td>

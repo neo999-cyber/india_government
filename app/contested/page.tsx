@@ -4,7 +4,7 @@ import { ledger } from '@/lib/data';
 import { CONTESTED_GROUND_LABELS, DOMAIN_LABELS } from '@/lib/format';
 import { CONTESTED_GROUNDS } from '@/lib/types';
 import type { ContestedGround, LedgerRecord } from '@/lib/types';
-import { AbsenceCount, CaveatFlag } from '@/components/marks';
+import { AbsenceCount, CaveatFlag, RecordMarks } from '@/components/marks';
 
 export const metadata: Metadata = { title: 'Contested — what would settle it' };
 
@@ -161,6 +161,7 @@ export default function ContestedIndex() {
               <li key={l.id}>
                 <Link href={`/ledger/${l.id}/`}>{l.title}</Link>{' '}
                 <span className="t-note mono">{l.id}</span>
+                <RecordMarks record={l} />
               </li>
             ))}
           </ul>

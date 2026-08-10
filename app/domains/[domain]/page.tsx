@@ -15,7 +15,7 @@ import {
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
 import { DOMAINS, LENSES, LENS_ONLY, type Domain, type Lens } from '@/lib/types';
 import type { Pair, Series } from '@/lib/types';
-import { AbsenceCount, CaveatFlag, DifferentFactsMark, StatusKey, StatusTally, TallyGloss, TierTag } from '@/components/marks';
+import { RecordMarks, StatusKey, StatusTally, TallyGloss, TierTag } from '@/components/marks';
 
 type Props = { params: Promise<{ domain: string }> };
 
@@ -165,9 +165,7 @@ export default async function DomainPage({ params }: Props) {
                       <td className="mono">{TERM_SHORT[x.term]}</td>
                       <td>
                         <Link href={`/ledger/${x.id}/`}>{x.title}</Link>
-                        {x.caveat ? <CaveatFlag caveat={x.caveat} variant="inline" /> : null}
-                        <AbsenceCount items={x.unmeasured} />
-                        {x.differentFacts ? <DifferentFactsMark variant="inline" /> : null}
+                        <RecordMarks record={x} />
                       </td>
                       <td className="t-note">{ASSESSMENT_LABELS[x.assessment]}</td>
                     </tr>
@@ -251,7 +249,7 @@ function SeriesBlock({ items, showSubject }: { items: Series[]; showSubject?: bo
               <tr key={x.id}>
                 <td>
                   <Link href={`/series/${x.id}/`}>{x.title}</Link>
-                  {x.caveat ? <CaveatFlag caveat={x.caveat} variant="inline" /> : null}
+                  <RecordMarks record={x} />
                 </td>
                 {showSubject ? (
                   <td className="mono">
