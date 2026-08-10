@@ -1,14 +1,44 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { series } from '@/lib/data';
 import './globals.css';
+
+/**
+ * THE SITE IS "INDIA, ON THE RECORD". Named by the operator 2026-08-10.
+ *
+ * WHY THIS NAME. It signals **evidence rather than explanation**. "India, Explained" — the working
+ * title in the design research — promises an account; this promises something narrower and more
+ * honest, which is the corpus's whole positioning: here is what the record shows, and here is where
+ * it stops. Anything containing *truth*, *fact*, *check* or *watch* was excluded because those read
+ * as advocacy, and an anonymous instrument whose credibility rests entirely on its evidence chain
+ * cannot afford a name that argues.
+ *
+ * **THE SPAN IS IN THE SUBTITLE, NOT THE TITLE, AND IT IS DERIVED.** A name carrying "2014–2026"
+ * goes stale on a date nobody is watching for. Putting the span one line down and computing it from
+ * the corpus means the site never claims a coverage it does not have, and exactly one line changes
+ * when the coverage does — no edit, no reminder, no drift.
+ *
+ * THE SITE'S NAME AND THE INSTRUMENT'S NAME ARE DIFFERENT OBJECTS, AND THIS IS THE ONE PLACE THAT
+ * SAYS SO. The repository, `CLAUDE.md`, `README.md` and the tooling remain the *India Roadmap
+ * Instrument*: that is the research apparatus — corpus, schemas, gates. "India, On the Record" is
+ * what the apparatus publishes. A later cycle finding the two names side by side should not
+ * "correct" either into the other; the phase-name collision is the same lesson one level up.
+ */
+
+/** The last year the corpus actually observes. Derived, so the masthead cannot overstate coverage. */
+const LATEST = Math.max(
+  ...series.flatMap((s) =>
+    s.points.filter((p) => p.country === 'IND').map((p) => Number(String(p.period).replace(/^FY/, '').slice(0, 4))),
+  ),
+);
 
 export const metadata: Metadata = {
   title: {
-    default: 'India Roadmap Instrument',
-    template: '%s · India Roadmap Instrument',
+    default: 'India, On the Record',
+    template: '%s · India, On the Record',
   },
   description:
-    'Longitudinal research instrument: India’s condition and trajectory from the UPA baseline (frozen May 2014) through the Modi-era terms.',
+    'What India’s own published statistics and official documents can establish about how the country changed since 2014 — and exactly where the record stops.',
   robots: { index: false, follow: false },
 };
 
@@ -67,9 +97,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 h1 is the page's subject; the masthead is the wrapper it arrives in. Styling is
                 by class, so nothing visual moves. */}
             <p className="masthead-title">
-              <Link href="/">India Roadmap Instrument</Link>
+              <Link href="/">India, On the Record</Link>
               <span className="masthead-sub">
-                baseline frozen May 2014 · T1 2014–19 · T2 2019–24 · T3 2024– living
+                May 2014 to {LATEST} · T1 2014–19 · T2 2019–24 · T3 2024– living
               </span>
             </p>
             <nav className="nav nav-primary" aria-label="Main">

@@ -3,6 +3,7 @@ import { getSeries, ledger, provenance, series } from '@/lib/data';
 import { DOMAIN_LABELS } from '@/lib/format';
 import { DOMAINS } from '@/lib/types';
 import { SeriesChart } from '@/components/SeriesChart';
+import { Evaluability } from '@/components/Evaluability';
 
 /**
  * THE HOMEPAGE — phase 18 prototype B, built to the §3a order.
@@ -158,6 +159,13 @@ export default function HomePage() {
         <Link href="/contested/">where two official sources disagree</Link> ·{' '}
         <Link href="/method/">how the evidence is graded, and what the grading cannot do</Link>
       </p>
+
+      {/* §4c — LAST, and the position is the ruling as much as the wording is. Rev1 wanted this
+          as the OPENING image; §3a moved it here because a naive reader meets "Defence 0 of 10"
+          as an institutional score unless several screens of solidly measured things have already
+          established what the site is doing. The evaluability view belongs IN the argument, not
+          above it. */}
+      <Evaluability />
 
       <p className="t-note">
         {provenance.length} measurement disputes are carried as records in their own right rather

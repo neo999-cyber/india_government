@@ -4,7 +4,7 @@ import { ledger } from '@/lib/data';
 import { CONTESTED_GROUND_LABELS, DOMAIN_LABELS } from '@/lib/format';
 import { CONTESTED_GROUNDS } from '@/lib/types';
 import type { ContestedGround, LedgerRecord } from '@/lib/types';
-import { AbsenceCount, CaveatFlag, RecordMarks } from '@/components/marks';
+import { CaveatRow, RecordMarks } from '@/components/marks';
 
 export const metadata: Metadata = { title: 'Contested — what would settle it' };
 
@@ -61,32 +61,24 @@ function Group({ ground, records }: { ground: ContestedGround; records: LedgerRe
               <th>Domains</th>
             </tr>
           </thead>
-          <tbody>
             {records.map((l) => (
-              <tr key={l.id}>
-                <td>
-                  <Link href={`/ledger/${l.id}/`}>{l.title}</Link>
-                  <br />
-                  <span className="t-note mono">{l.id}</span>
-                  {/* Rule 3a: a caveat travels into every rendering, in full, including this one. */}
-                  {l.caveat ? (
-                    <>
-                      <br />
-                      <CaveatFlag caveat={l.caveat} variant="inline" />
-                    </>
-                  ) : null}
-                  {l.unmeasured?.length ? (
-                    <>
-                      <br />
-                      <AbsenceCount items={l.unmeasured} />
-                    </>
-                  ) : null}
-                </td>
-                <td className="t-note mono">{l.term}</td>
-                <td className="t-note">{l.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}</td>
-              </tr>
+              <tbody key={l.id}>
+                <tr>
+                  <td>
+                    <Link href={`/ledger/${l.id}/`}>{l.title}</Link>
+                    <br />
+                    <span className="t-note mono">{l.id}</span>
+                    {/* Rule 3a: the caveat travels into every rendering, in full. It renders in
+                        the full-width row below rather than in this cell — the layout changed,
+                        not the caveat. */}
+                    <RecordMarks record={l} deferCaveat />
+                  </td>
+                  <td className="t-note mono">{l.term}</td>
+                  <td className="t-note">{l.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}</td>
+                </tr>
+                <CaveatRow record={l} colSpan={4} />
+              </tbody>
             ))}
-          </tbody>
         </table>
       </div>
     </>

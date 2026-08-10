@@ -17,7 +17,7 @@ import {
   formatDateRange,
 } from '@/lib/format';
 import { LENSES, LENSES_THAT_ARE_DOMAINS, LENS_ONLY, type Lens } from '@/lib/types';
-import { RecordMarks, StatusKey, StatusTally, TierTag } from '@/components/marks';
+import { CaveatRow, RecordMarks, StatusKey, StatusTally, TierTag } from '@/components/marks';
 
 type Props = { params: Promise<{ lens: string }> };
 
@@ -117,32 +117,33 @@ export default async function LensPage({ params }: Props) {
                   <th>Breaks</th>
                 </tr>
               </thead>
-              <tbody>
                 {s.map((x) => (
-                  <tr key={x.id}>
+                  <tbody key={x.id}>
+                    <tr>
                     <td>
-                      <Link href={`/series/${x.id}/`}>{x.title}</Link>
-                      <RecordMarks record={x} />
+                    <Link href={`/series/${x.id}/`}>{x.title}</Link>
+                    <RecordMarks record={x} deferCaveat />
                     </td>
                     <td className="mono">
-                      <Link href={`/domains/${x.domain}/`}>{x.domain}</Link>
+                    <Link href={`/domains/${x.domain}/`}>{x.domain}</Link>
                     </td>
                     <td className="t-note">{x.unit}</td>
                     <td className="mono">{x.calendar}</td>
                     <td>
-                      <TierTag tier={x.tier} />
+                    <TierTag tier={x.tier} />
                     </td>
                     <td className="num">{x.points.length}</td>
                     <td className="mono">
-                      {x.breaks?.length ? (
-                        <span style={{ color: 'var(--alert)' }}>{x.breaks.length}</span>
-                      ) : (
-                        <span className="t-note">—</span>
-                      )}
+                    {x.breaks?.length ? (
+                    <span style={{ color: 'var(--alert)' }}>{x.breaks.length}</span>
+                    ) : (
+                    <span className="t-note">—</span>
+                    )}
                     </td>
-                  </tr>
+                    </tr>
+                    <CaveatRow record={x} colSpan={7} />
+                  </tbody>
                 ))}
-              </tbody>
             </table>
           </div>
         </>
@@ -174,33 +175,34 @@ export default async function LensPage({ params }: Props) {
                   <th>Conf.</th>
                 </tr>
               </thead>
-              <tbody>
                 {[...led]
                   .sort((a, b) => a.date.localeCompare(b.date))
                   .map((x) => (
-                    <tr key={x.id}>
+                    <tbody key={x.id}>
+                      <tr>
                       <td className="mono">
-                        <Link href={`/ledger/${x.id}/`}>{x.id}</Link>
+                      <Link href={`/ledger/${x.id}/`}>{x.id}</Link>
                       </td>
                       <td className="mono t-note">{formatDateRange(x.date, x.dateEnd)}</td>
                       <td className="mono">{TERM_SHORT[x.term]}</td>
                       <td>
-                        <Link href={`/ledger/${x.id}/`}>{x.title}</Link>
-                        <RecordMarks record={x} />
+                      <Link href={`/ledger/${x.id}/`}>{x.title}</Link>
+                      <RecordMarks record={x} deferCaveat />
                       </td>
                       <td className="mono">
-                        {x.domains.map((d, i) => (
-                          <span key={d}>
-                            {i > 0 ? ' · ' : ''}
-                            <Link href={`/domains/${d}/`}>{d}</Link>
-                          </span>
-                        ))}
+                      {x.domains.map((d, i) => (
+                      <span key={d}>
+                      {i > 0 ? ' · ' : ''}
+                      <Link href={`/domains/${d}/`}>{d}</Link>
+                      </span>
+                      ))}
                       </td>
                       <td className="t-note">{ASSESSMENT_LABELS[x.assessment]}</td>
                       <td className="mono t-note">{x.confidence}</td>
-                    </tr>
+                      </tr>
+                      <CaveatRow record={x} colSpan={8} />
+                    </tbody>
                   ))}
-              </tbody>
             </table>
           </div>
         </>

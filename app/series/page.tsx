@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { series } from '@/lib/data';
 import { DOMAIN_LABELS, periodKey, periodLabel } from '@/lib/format';
-import { RecordMarks, StatusKey, TierTag } from '@/components/marks';
+import { CaveatRow, RecordMarks, StatusKey, TierTag } from '@/components/marks';
 
 export const metadata: Metadata = { title: 'Series' };
 
@@ -33,7 +33,6 @@ export default function SeriesIndex() {
               <th>Breaks</th>
             </tr>
           </thead>
-          <tbody>
             {series.map((s) => {
               const periods = s.points.map((p) => p.period).sort((a, b) => periodKey(a) - periodKey(b));
               const span =
@@ -43,32 +42,34 @@ export default function SeriesIndex() {
                     ? periodLabel(periods[0], s.calendar)
                     : `${periodLabel(periods[0], s.calendar)} – ${periodLabel(periods[periods.length - 1], s.calendar)}`;
               return (
-                <tr key={s.id}>
-                  <td>
-                    <Link href={`/series/${s.id}/`}>{s.title}</Link>
-                    <br />
-                    <span className="t-note mono">{s.id}</span>
-                    <RecordMarks record={s} />
-                  </td>
-                  <td className="t-note">{DOMAIN_LABELS[s.domain]}</td>
-                  <td className="t-note">{s.unit}</td>
-                  <td className="mono">{s.calendar}</td>
-                  <td>
-                    <TierTag tier={s.tier} />
-                  </td>
-                  <td className="num">{s.points.length}</td>
-                  <td className="mono t-note">{span}</td>
-                  <td className="mono">
-                    {s.breaks?.length ? (
-                      <span style={{ color: 'var(--alert)' }}>{s.breaks.length}</span>
-                    ) : (
-                      <span className="t-note">—</span>
-                    )}
-                  </td>
-                </tr>
+                <tbody key={s.id}>
+                  <tr>
+                    <td>
+                      <Link href={`/series/${s.id}/`}>{s.title}</Link>
+                      <br />
+                      <span className="t-note mono">{s.id}</span>
+                      <RecordMarks record={s} deferCaveat />
+                    </td>
+                    <td className="t-note">{DOMAIN_LABELS[s.domain]}</td>
+                    <td className="t-note">{s.unit}</td>
+                    <td className="mono">{s.calendar}</td>
+                    <td>
+                      <TierTag tier={s.tier} />
+                    </td>
+                    <td className="num">{s.points.length}</td>
+                    <td className="mono t-note">{span}</td>
+                    <td className="mono">
+                      {s.breaks?.length ? (
+                        <span style={{ color: 'var(--alert)' }}>{s.breaks.length}</span>
+                      ) : (
+                        <span className="t-note">—</span>
+                      )}
+                    </td>
+                  </tr>
+                  <CaveatRow record={s} colSpan={9} />
+                </tbody>
               );
             })}
-          </tbody>
         </table>
       </div>
     </>
