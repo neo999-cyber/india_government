@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { assessmentCounts, ledgerInTerm } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_LABELS, formatDateRange } from '@/lib/format';
-import { RecordMarks, TallyGloss } from '@/components/marks';
+import { CaveatRow, RecordMarks, TallyGloss } from '@/components/marks';
 import { TERMS, type Term } from '@/lib/types';
 
 type Props = { params: Promise<{ term: string }> };
@@ -100,26 +100,27 @@ export default async function TermPage({ params }: Props) {
                 <th>Conf.</th>
               </tr>
             </thead>
-            <tbody>
               {[...records]
                 .sort((a, b) => a.date.localeCompare(b.date))
                 .map((r) => (
-                  <tr key={r.id}>
-                    <td className="mono">
-                      <Link href={`/ledger/${r.id}/`}>{r.id}</Link>
-                    </td>
-                    <td className="mono t-note">{formatDateRange(r.date, r.dateEnd)}</td>
-                    <td>
-                      <Link href={`/ledger/${r.id}/`}>{r.title}</Link>
-                      <RecordMarks record={r} />
-                    </td>
-                    <td className="t-note">{r.type}</td>
-                    <td className="t-note">{r.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}</td>
-                    <td className="t-note">{ASSESSMENT_LABELS[r.assessment]}</td>
-                    <td className="mono t-note">{r.confidence}</td>
-                  </tr>
+                  <tbody key={r.id}>
+                    <tr>
+                      <td className="mono">
+                        <Link href={`/ledger/${r.id}/`}>{r.id}</Link>
+                      </td>
+                      <td className="mono t-note">{formatDateRange(r.date, r.dateEnd)}</td>
+                      <td>
+                        <Link href={`/ledger/${r.id}/`}>{r.title}</Link>
+                        <RecordMarks record={r} deferCaveat />
+                      </td>
+                      <td className="t-note">{r.type}</td>
+                      <td className="t-note">{r.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}</td>
+                      <td className="t-note">{ASSESSMENT_LABELS[r.assessment]}</td>
+                      <td className="mono t-note">{r.confidence}</td>
+                    </tr>
+                    <CaveatRow record={r} colSpan={8} />
+                  </tbody>
                 ))}
-            </tbody>
           </table>
         </div>
       )}

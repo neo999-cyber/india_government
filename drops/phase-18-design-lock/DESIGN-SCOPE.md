@@ -204,7 +204,62 @@ than of these records. **If a framing satisfying this cannot be found, the view 
 largely a fact about what those areas *contain* — announced programmes vs. institutional episodes
 and constitutional duty — not about reticence in scoring them.
 
-**If 4c cannot ship,** the strongest replacement is the **corrections surface** — a record that
+### ⟳ 4c-SHIPPED — the view ships, and the label carries the whole ruling
+*(Ruled by the operator 2026-08-10. Rev2 left this conditional on a framing being found; it has
+been, and the conditional is discharged. The fallback below is retained because it remains the
+right answer if the view is ever pulled.)*
+
+**PERMITTED WORDING.** The heading is exactly:
+
+> **Where outcome evaluation was possible — in these records**
+
+Also permitted: *"Records with evaluable outcomes"* · *"What this record set can establish"*.
+
+**FORBIDDEN WORDING, RECORDED VERBATIM SO A LATER EDIT CANNOT DRIFT BACK INTO IT:**
+
+> *"how much is measurable"*
+> *"some parts of Indian policy can be measured"*
+> — or **anything else asserting a property of Indian policy rather than of this record set.**
+
+**WHY, AND IT IS PERMANENT RATHER THAN PENDING.** The denominator is this corpus's own selection.
+Which government claims were never entered has not been established, and **no quantity of
+additional records makes the sample a known one** — selection bias here is not an open task that
+further work closes, it is a property of how the corpus came to exist. So the bars are a fact about
+223 records and are not a fact about India, and the difference between those two claims lives
+entirely in one line of text.
+
+**POSITION: LATE IN THE PAGE, per §3a**, and the position is as much the ruling as the wording is.
+Rev1 wanted this as the opening image; a naive reader meets "Defence 0 of 10" as an institutional
+score unless several screens of solidly measured things have already established what the site is
+doing.
+
+**THE ρ FRAMING STAYS, AND IT WAS RE-MEASURED RATHER THAN CARRIED.** Rev2 recorded ρ = 0.91;
+computed from the corpus at this commit it is **ρ = 0.92** across the 14 subject areas holding
+records, with a least-squares fit of `evaluable% ≈ 0.9 + 0.89 × reform%`. A short bar is therefore
+largely a fact about what an area **contains** — institutional practice and constitutional duty
+rather than announced programmes — and not about reticence in scoring it. Defence holds ten records
+and none announces a target.
+
+**AND THE NAMED EXCEPTIONS WERE WRONG, WHICH IS WHY THEY ARE RE-STATED HERE.** Rev2's framing
+constraint said *"Employment and human development are the measured exceptions and should be named
+as such."* Measured by residual against the fit, **both sit on the line** — human development +2,
+employment −7. The real departures are **education (+20)**, scored far more than its composition
+predicts, and **external sector (−20)** and **macroeconomy (−12)**, scored far less. The page names
+the direction of the departure without asserting a cause, because the corpus does not hold one.
+
+**WHAT A GATE CAN BIND HERE — AND WHAT NO GATE CAN.** Asked explicitly, and the answer is half of
+each. `tools/evaluability-wording.mjs` is in the build and binds **the literal forbidden strings**
+against every built page, plus **the presence of the permitted heading** — a view that quietly
+loses its own ruling is the defect, not the fix. **It cannot bind the claim.** A rewrite asserting
+a property of Indian policy in words on no list — *"how much of the country's policy can be
+assessed"*, *"the measurable share of Indian governance"* — passes every check there is. That is
+the prose-shadow class: the defect is semantic and any guard is lexical. **So the rule lives in
+three places that must agree and only one of which is enforceable** — the component's heading, this
+section, and the gate — and the gate's own header says so about itself. A green run means no listed
+phrase was rendered. It does not mean the view says what it is allowed to say; that reading is owed
+to a human every time the label changes.
+
+**If 4c is ever pulled,** the strongest replacement is the **corrections surface** — a record that
 shows what it used to say, with the withdrawn wording visible. Nothing else about Indian policy
 does this, it is unfakeable, and it carries no denominator problem at all.
 
@@ -344,16 +399,66 @@ stated: any future off-queue walk find reopens it.
 `field-render-audit` · the quotation-identity gap in `withdrawn-wording` · environment's 0%
 series-caveat rate, which is **research, not design**.
 
-**Design-queue items this phase inherits:** thirteen nav destinations (§10a) · caveats rendering in
-full inside table cells across six surfaces, now also measured on grid cards at 746 cards / 466 over
-300 characters (§11.1 solves it).
+**Design-queue items this phase inherits — BOTH NOW CLOSED:**
+
+1. **Thirteen nav destinations** — closed by §10a's two tiers.
+2. ⟳ **Caveats rendering in full inside table cells across six surfaces — closed 2026-08-10.**
+   **The problem was never truncation:** rule 3a was already satisfied everywhere, in full, with no
+   clamp. The problem was the FORM, and it is now measured rather than described. On `/series/`
+   before the change a caveat sat in a **140px cell inside a 610px table** and the listings carrying
+   one ran to **1,080px against a 122px median — nine times**. Rule 3a names the fix in its own
+   words: *if a caveat will not fit a layout, the LAYOUT is what changes*. So the caveat left the
+   narrow cell for a full-width row directly beneath its record, grouped in a `<tbody>` so the two
+   rows are one listing. After: the cell is **610px** and the tallest listing is **447px**, with
+   **0 clamps and 0 caveats remaining in a narrow cell across all six surfaces** — `/series/` 128
+   caveat rows, `/ledger/` 103, `/contested/` 38, `/terms/T2/` 34, `/domains/education/` 67,
+   `/lenses/kashmir/` 48.
+
+   **Not a disclosure**, which is the obvious answer and the wrong one: rule 4b already settled that
+   a declaration a reader must find reaches nobody, and a caveat marks a record that *would mislead
+   without it* — putting it behind a click makes the misleading version the default view.
+
+   **`listing-marks` was widened to match, faithfully.** Its unit was the `<tr>`; a caveat in a
+   sibling row put 334 marks outside it. The unit is now **a `<tbody>` holding exactly one record**,
+   and the one-record test is what keeps this a widening rather than a hole — a `<tbody>` wrapping a
+   whole table would let one caveat cover for two hundred missing ones. The control proves both
+   halves: a single-record `<tbody>` is one unit, a two-record `<tbody>` falls back to rows.
+
+   **AND THE FORM ITSELF IS NOW CHECKABLE, WHICH THE MARK ALREADY WAS.** `listing-marks` binds that
+   the caveat is PRESENT in the listing. The structural half of the form — that a caveat inside a
+   table renders in a full-width cell rather than a narrow one — is a `colspan` property and is
+   verifiable from built output, which is how the six surfaces above were confirmed. What no gate
+   can bind is whether the resulting page reads well; that stays a human reading, and this entry
+   records the measurements so a later cycle can re-run them rather than re-argue them.
 
 ---
 
 ## 10. Undecided
 
-- **The site's name.** "India, Explained" promises explanation; this promises something narrower and
-  more honest — closer to *what the record shows*. Decide before the homepage's first line ships.
+- ⟳ **DECIDED — the site is "India, On the Record".** Ruled by the operator 2026-08-10.
+  *(Replaces: "The site's name. 'India, Explained' promises explanation; this promises something
+  narrower and more honest — closer to what the record shows. Decide before the homepage's first
+  line ships." Kept for the reasoning, which the decision follows.)*
+
+  **The name signals evidence rather than explanation.** "India, Explained" promises an account;
+  this promises something the corpus can actually deliver — here is what the record shows, and here
+  is where it stops.
+
+  **Anything containing *truth*, *fact*, *check* or *watch* was excluded because it reads as
+  advocacy.** An anonymous instrument whose credibility rests entirely on its evidence chain cannot
+  afford a name that argues: the moment the wordmark takes a side, every chart beneath it is read
+  as supporting a case rather than as a record.
+
+  **THE SPAN GOES IN THE SUBTITLE, NOT THE TITLE, AND IT IS DERIVED FROM THE CORPUS.** A name
+  carrying "2014–2026" goes stale on a date nobody is watching for. One line down and computed at
+  build time from the latest India observation, the site can never claim a coverage it does not
+  have, and **exactly one line changes when the coverage does** — no edit, no reminder, no drift.
+
+  **THE SITE'S NAME AND THE INSTRUMENT'S NAME ARE DIFFERENT OBJECTS.** The repository, `CLAUDE.md`,
+  `README.md` and the tooling remain the *India Roadmap Instrument* — that is the research
+  apparatus: corpus, schemas, gates. "India, On the Record" is what the apparatus publishes. A
+  later cycle meeting both should not correct either into the other; this is the phase-name
+  collision one level up, and it is recorded here so it cannot be mistaken for an oversight.
 - ⟳ **The `worked`/`failed` vocabulary on a public surface.** *(New.)* The corpus's enum labels are
   internal register. A naive reader meeting "No stated objective" needs a plain-language equivalent
   that asserts no more than the value does. Solve on the record prototype; do not invent a new axis.

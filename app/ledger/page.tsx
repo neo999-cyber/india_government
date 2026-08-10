@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { assessmentCounts, ledger } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
-import { RecordMarks, TallyGloss } from '@/components/marks';
+import { CaveatRow, RecordMarks, TallyGloss } from '@/components/marks';
 
 export const metadata: Metadata = { title: 'Ledger' };
 
@@ -43,25 +43,26 @@ export default function LedgerIndex() {
               <th>Conf.</th>
             </tr>
           </thead>
-          <tbody>
             {ordered.map((l) => (
-              <tr key={l.id}>
-                <td className="mono">
-                  <Link href={`/ledger/${l.id}/`}>{l.id}</Link>
-                </td>
-                <td className="mono t-note">{formatDateRange(l.date, l.dateEnd)}</td>
-                <td className="mono">{TERM_SHORT[l.term]}</td>
-                <td>
-                  <Link href={`/ledger/${l.id}/`}>{l.title}</Link>
-                  <RecordMarks record={l} />
-                </td>
-                <td className="t-note">{l.type}</td>
-                <td className="t-note">{l.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}</td>
-                <td className="t-note">{ASSESSMENT_LABELS[l.assessment]}</td>
-                <td className="mono t-note">{l.confidence}</td>
-              </tr>
+              <tbody key={l.id}>
+                <tr>
+                  <td className="mono">
+                    <Link href={`/ledger/${l.id}/`}>{l.id}</Link>
+                  </td>
+                  <td className="mono t-note">{formatDateRange(l.date, l.dateEnd)}</td>
+                  <td className="mono">{TERM_SHORT[l.term]}</td>
+                  <td>
+                    <Link href={`/ledger/${l.id}/`}>{l.title}</Link>
+                    <RecordMarks record={l} deferCaveat />
+                  </td>
+                  <td className="t-note">{l.type}</td>
+                  <td className="t-note">{l.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}</td>
+                  <td className="t-note">{ASSESSMENT_LABELS[l.assessment]}</td>
+                  <td className="mono t-note">{l.confidence}</td>
+                </tr>
+                <CaveatRow record={l} colSpan={9} />
+              </tbody>
             ))}
-          </tbody>
         </table>
       </div>
 

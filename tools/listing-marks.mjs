@@ -22,8 +22,10 @@
  * THE GUARD'S SCOPE, AND WHAT IT DOES NOT BIND — written here because CLAUDE.md requires the gap
  * to be stated at the moment the guard is written, the gap being silent by construction otherwise.
  *
- * IT BINDS three listing shapes in built HTML: a `<tr>`, a grid card (`<a>` carrying a
- * `grid-title`), and an `<li>` — each linking a record to its own page. For every such row whose
+ * IT BINDS four listing shapes in built HTML: a `<tbody>` holding exactly one record, a `<tr>`, a
+ * grid card (`<a>` carrying a `grid-title`), and an `<li>` — each linking a record to its own page.
+ * The `<tbody>` unit arrived 2026-08-10 when the caveat moved out of the table cell into a
+ * full-width row of its own; see `listingRows` for why the one-record test is load-bearing. For every such row whose
  * record declares an absence or carries a caveat, the mark must be inside that same row.
  *
  * AND, SINCE 2026-08-10, THE CARDINALITY OF THE RENDERED ABSENCE BLOCK: no page shows the same
@@ -150,14 +152,45 @@ const isPairRow = (blk) => /<td[^>]*>PR-\d+<\/td>/.test(blk);
  */
 function listingRows(html) {
   const clean = html.replace(/<script[\s\S]*?<\/script>/g, '');
-  const trs = [...clean.matchAll(/<tr[\s>][\s\S]*?<\/tr>/g)].map((m) => m[0]);
-  let rest = clean;
+
+  /**
+   * A `<tbody>` HOLDING EXACTLY ONE RECORD IS THE LISTING UNIT, AND IT IS TAKEN BEFORE `<tr>`.
+   *
+   * WHY THE UNIT HAD TO WIDEN. Rule 3a says that where a caveat will not fit a layout, the LAYOUT
+   * changes — and on 2026-08-10 it did: a caveat crammed into a 140px cell (rows to 1,080px
+   * against a 122px median) moved into a full-width row of its own directly beneath its record.
+   * The two rows are one listing, grouped in a `<tbody>`, so a check whose unit was the `<tr>`
+   * reported 334 marks missing from listings that render them perfectly.
+   *
+   * **THE WIDENING IS FAITHFUL, NOT A LOOSENING, AND THE ONE-RECORD TEST IS WHAT MAKES IT SO.** A
+   * `<tbody>` wrapping a whole table would let ANY row's mark satisfy EVERY record in it — the
+   * gate would pass on a table where one caveat covered for two hundred missing ones. So a
+   * `<tbody>` is only a unit when it links exactly one record; otherwise its `<tr>`s are taken
+   * individually, exactly as before.
+   */
+  const REC = /href="\/(?:ledger|series)\/[^"/]+\//g;
+  const bodies = [...clean.matchAll(/<tbody[\s>][\s\S]*?<\/tbody>/g)].map((m) => m[0]);
+  const units = bodies.filter((b) => {
+    const ids = new Set([...b.matchAll(/href="\/(?:ledger|series)\/([^"/]+)\//g)].map((m) => m[1]));
+    return ids.size === 1;
+  });
+
+  let scoped = clean;
+  for (const u of units) scoped = scoped.replace(u, '');
+
+  const trs = [...scoped.matchAll(/<tr[\s>][\s\S]*?<\/tr>/g)].map((m) => m[0]);
+  let rest = scoped;
   for (const t of trs) rest = rest.replace(t, '');
   const cards = [...rest.matchAll(/<a [^>]*href="\/(?:ledger|series)\/[^"]*"[\s\S]*?<\/a>/g)]
     .map((m) => m[0])
     .filter((b) => b.includes('grid-title'));
   const lis = [...rest.matchAll(/<li[\s>][\s\S]*?<\/li>/g)].map((m) => m[0]);
-  return [...trs.map((b) => ['tr', b]), ...cards.map((b) => ['card', b]), ...lis.map((b) => ['li', b])];
+  return [
+    ...units.map((b) => ['tbody', b]),
+    ...trs.map((b) => ['tr', b]),
+    ...cards.map((b) => ['card', b]),
+    ...lis.map((b) => ['li', b]),
+  ];
 }
 
 const HAS = {
@@ -224,6 +257,26 @@ if (CONTROL) {
   const missBare = check(bare);
   const missFull = check(full);
   const pairRowSeen = !isPairRow(bare) && isPairRow(`<tr><td class="mono">PR-99</td><td><a href="/${layer}/${id}/">t</a></td></tr>`);
+
+  /**
+   * THE ONE-RECORD TEST, PROVEN. This is the property that makes the `<tbody>` widening a faithful
+   * change rather than a hole: a tbody wrapping TWO records must NOT become a single unit, or one
+   * record's marks would satisfy the other's. Asserted here rather than trusted.
+   */
+  const second = [...NEEDS.keys()].find((k) => k !== id);
+  const oneRec = `<tbody><tr><td><a href="/${layer}/${id}/">a</a></td></tr><tr><td>c</td></tr></tbody>`;
+  const twoRec = `<tbody><tr><td><a href="/${layer}/${id}/">a</a></td></tr><tr><td><a href="/${NEEDS.get(second).layer}/${second}/">b</a></td></tr></tbody>`;
+  const kindsOf = (h) => listingRows(h).map(([k]) => k);
+  const oneIsTbody = kindsOf(oneRec).includes('tbody');
+  const twoIsNotTbody = !kindsOf(twoRec).includes('tbody') && kindsOf(twoRec).filter((k) => k === 'tr').length === 2;
+  if (!oneIsTbody || !twoIsNotTbody) {
+    console.error(
+      'listing-marks --control FAILED — the tbody unit does not apply the one-record test.\n' +
+        `  single-record tbody treated as a unit: ${oneIsTbody} (expected true)\n` +
+        `  two-record tbody falls back to rows:   ${twoIsNotTbody} (expected true)`,
+    );
+    process.exit(1);
+  }
   if (missBare.length !== 2 || missFull.length !== 0 || !pairRowSeen) {
     console.error(
       'listing-marks --control FAILED — the checker does not fire when it should.\n' +
@@ -256,8 +309,9 @@ if (CONTROL) {
   }
   console.log(
     `listing-marks --control — a stripped row naming ${id} is caught on both marks, the same row ` +
-      `carrying them passes, a PR- row is recognised as a pair listing and skipped, and a page ` +
-      `carrying ${blk.id}'s declaration twice is distinguished from one carrying it once`,
+      `carrying them passes, a PR- row is recognised as a pair listing and skipped, a single-record ` +
+      `tbody is one unit while a two-record tbody falls back to rows, and a page carrying ` +
+      `${blk.id}'s declaration twice is distinguished from one carrying it once`,
   );
   process.exit(0);
 }

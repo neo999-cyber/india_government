@@ -1616,3 +1616,102 @@ tr th:last-child {
     font-size: 1.625rem;
   }
 }
+
+/* --- phase 18 §4c: evaluability -------------------------------------------
+ * Bar length is the share of a subject area's records that reached a verdict on an outcome — a
+ * quantity computed from the corpus, which is what rule 7 requires of any length. Nothing else is
+ * encoded: no colour by performance, no ordering by anything but the value.
+ */
+
+.evalview {
+  margin-top: 2.5rem;
+}
+
+.evalview-limit {
+  border-left: 2px solid var(--rule-strong);
+  padding-left: 0.85rem;
+  max-width: var(--measure);
+  color: var(--ink-soft);
+}
+
+.evalbars {
+  margin: 1.25rem 0 1.5rem;
+  max-width: 40rem;
+}
+
+.evalbar {
+  display: grid;
+  grid-template-columns: 11rem 1fr 4rem;
+  align-items: center;
+  gap: 0 0.75rem;
+  padding: 0.2rem 0;
+}
+
+.evalbar-name {
+  font-size: 0.8125rem;
+  text-align: right;
+}
+
+.evalbar-name a {
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+.evalbar-name a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.evalbar-track {
+  height: 0.65rem;
+  background: var(--paper-sunk);
+  border: 1px solid var(--rule);
+  position: relative;
+}
+
+/* Ink, not a status colour. A low bar is not a failure and must not be tinted like one — the
+   whole framing beneath the chart is that a short bar is mostly about what an area contains. */
+.evalbar-fill {
+  display: block;
+  height: 100%;
+  background: var(--ink-soft);
+}
+
+.evalbar-value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.75rem;
+  color: var(--ink);
+}
+
+@media (max-width: 34rem) {
+  .evalbar {
+    grid-template-columns: 8.5rem 1fr 3.4rem;
+    gap: 0 0.5rem;
+  }
+
+  .evalbar-name {
+    font-size: 0.75rem;
+  }
+}
+
+/* The caveat's own row (design-queue item, closed 2026-08-10).
+   Full table width instead of a 140px cell: same table, same reading order, nothing hidden and
+   nothing shortened. Rule 3a says the layout changes, and this is the layout changing. */
+
+.caveat-row td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0 0 0.5rem;
+}
+
+.caveat-row .caveat-inline {
+  /* Wider than --measure on purpose: the row spans the table, and re-narrowing it here would
+     reinstate the tall-thin column this change exists to remove. */
+  max-width: none;
+}
+
+/* The record row above it loses its own bottom rule, so a record and its caveat read as one
+   listing rather than as two rows that happen to be adjacent. */
+tbody > tr:has(+ .caveat-row) > td {
+  border-bottom: 0;
+}

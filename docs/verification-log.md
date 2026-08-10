@@ -12184,3 +12184,77 @@ serializable data.
 `domain-coverage` 14/14, 1137/1137. At 375px: no overflow outside a scroll wrapper, the sticky
 figure goes static, the columns stack, the figure precedes the steps in source order, and both
 caveats render at 616 and 609 characters with no clamp and no max-height.
+
+## Cycle 2026-08-10f — the site is named, the evaluability view ships, and the caveat form closes
+
+### The name — "India, On the Record"
+
+Ruled by the operator. **The name signals evidence rather than explanation**: "India, Explained"
+promises an account, this promises what the corpus can deliver. **Anything containing *truth*,
+*fact*, *check* or *watch* was excluded because it reads as advocacy** — an anonymous instrument
+whose credibility rests entirely on its evidence chain cannot afford a wordmark that argues.
+
+**The span sits in the subtitle and is DERIVED**, so the name cannot go stale and exactly one line
+changes when coverage does: `May 2014 to {LATEST}`, where `LATEST` is computed at build time from
+the newest India observation. Applied to the wordmark, the metadata title, the title template and
+the description.
+
+**The site's name and the instrument's name are different objects, and that is now written down.**
+`CLAUDE.md`, `README.md` and the tooling stay the *India Roadmap Instrument* — the research
+apparatus. "India, On the Record" is what it publishes. Recorded in §10 so a later cycle does not
+correct either into the other; the phase-name collision one level up.
+
+### §4c ships, and the label carries the ruling
+
+**Permitted heading, exactly:** *"Where outcome evaluation was possible — in these records"*.
+**Forbidden, recorded verbatim in three places:** *"how much is measurable"*, *"some parts of Indian
+policy can be measured"*, or anything asserting a property of Indian policy rather than of this
+record set. The denominator is the corpus's own selection and **selection bias here is permanent,
+not pending** — no quantity of further records makes the sample a known one.
+
+**The ρ framing was re-measured, not carried: ρ = 0.92**, not the 0.91 rev2 recorded, with a fit of
+`evaluable% ≈ 0.9 + 0.89 × reform%` across the 14 subject areas holding records.
+
+**AND REV2'S NAMED EXCEPTIONS WERE WRONG.** It said *"Employment and human development are the
+measured exceptions and should be named as such."* By residual against the fit **both sit on the
+line** — human development +2, employment −7. The real departures are education (+20), external
+sector (−20) and macroeconomy (−12). The page names the direction without asserting a cause.
+
+**What a gate can bind here, asked and answered honestly.**
+`tools/evaluability-wording.mjs` is in the build. It binds the **literal** forbidden strings against
+every built page **and the presence of the permitted heading** — a view that quietly loses its own
+ruling is the defect, not the fix. **It cannot bind the claim:** a rewrite asserting a property of
+Indian policy in words on no list passes everything. That is the prose-shadow class — semantic
+defect, lexical guard. The rule therefore lives in three places that must agree and only one is
+enforceable, and the gate's own header and success line say so: *"LEXICAL ONLY: this cannot bind the
+claim, only the listed words."*
+
+### The carry-over — caveat-in-cell, closed on all six surfaces
+
+**The problem was never truncation.** Rule 3a was already satisfied: full text, no clamp, on every
+surface. The problem was the FORM, and it is now measured rather than described. On `/series/`
+before: a caveat in a **140px cell inside a 610px table**, listings carrying one running to
+**1,080px against a 122px median — nine times**.
+
+**Rule 3a names the fix in its own words** — *if a caveat will not fit a layout, the LAYOUT is what
+changes*. The caveat left the narrow cell for a full-width row beneath its record, the two grouped
+in a `<tbody>` so they are one listing. **After: cell 610px, tallest listing 447px, 0 clamps, and 0
+caveats remaining in a narrow cell across all six surfaces** — `/series/` 128 caveat rows,
+`/ledger/` 103, `/contested/` 38, `/terms/T2/` 34, `/domains/education/` 67, `/lenses/kashmir/` 48.
+
+**Not a disclosure**, which is the obvious answer and the wrong one: rule 4b settled that a
+declaration a reader must find reaches nobody, and a caveat marks a record that would mislead
+without it — behind a click, the misleading version becomes the default view.
+
+**`listing-marks` was widened faithfully.** Its unit was the `<tr>`; a caveat in a sibling row put
+**334 marks outside it**. The unit is now a `<tbody>` holding **exactly one record**, and that test
+is what makes this a widening rather than a hole — a `<tbody>` around a whole table would let one
+caveat cover for two hundred missing ones. The control now proves both halves: a single-record
+`<tbody>` is one unit, a two-record `<tbody>` falls back to rows.
+
+**Gates:** `validate` VALID — 0 errors, 163 warnings, 679 records, 1,759 points · `typecheck` clean
+· `phase-name` 355 files, 12 disagreeing assertions all exempted · `reachability` 1786/1786 ·
+`field-render-audit` 4 layers, 0 invisible · `link-check` 24,600 hrefs, 0 dead · `listing-marks`
+2,429 rows, 3,417 marks · `evaluability-wording` 4 forbidden phrasings absent from 663 pages,
+permitted heading present on 1 · `domain-coverage` 14/14, 1137/1137. Mobile 375px: no overflow, bars
+fit, caveat rows span the full table at colspan 9.

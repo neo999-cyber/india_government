@@ -151,6 +151,44 @@ export function SourceList({ sources }: { sources: TieredSource[] }) {
 
 
 /**
+ * THE CAVEAT'S OWN ROW — the design-queue item, closed 2026-08-10, and rule 3a decided the shape.
+ *
+ * THE PROBLEM WAS NEVER TRUNCATION. Rule 3a was already satisfied on all six table surfaces: the
+ * caveat rendered in full, no clamp, no ellipsis. What was wrong was the FORM. Measured on
+ * `/series/` before this change: the caveat sat in a **140px cell inside a 610px table**, and the
+ * rows carrying one ran to **1,080px — nine times the median row of 122px.** 128 of 269 rows.
+ *
+ * AND RULE 3a ALSO NAMES THE FIX: *"if a caveat will not fit a layout, the LAYOUT is what
+ * changes."* Not the caveat, not a disclosure, not a clamp. So the caveat leaves the narrow cell
+ * and takes a full-width row of its own, directly beneath the record it qualifies — same table,
+ * same reading order, four times the measure, nothing hidden and nothing shortened.
+ *
+ * WHY NOT A DISCLOSURE, WHICH IS THE OBVIOUS ANSWER. Because rule 4b already settled it one level
+ * up: a declaration a reader must find is a declaration that reaches nobody. A caveat marks a
+ * record that **would mislead without it** — putting it behind a click means the misleading
+ * version is the default view.
+ *
+ * THE ROW MUST BE GROUPED WITH ITS RECORD IN A `<tbody>`. Two loose `<tr>`s are two rows; a
+ * `<tbody>` per record says they are one listing, which is what `listing-marks` then binds.
+ */
+export function CaveatRow({
+  record,
+  colSpan,
+}: {
+  record: { caveat?: string };
+  colSpan: number;
+}) {
+  if (!record.caveat) return null;
+  return (
+    <tr className="caveat-row">
+      <td colSpan={colSpan}>
+        <CaveatFlag caveat={record.caveat} variant="inline" />
+      </td>
+    </tr>
+  );
+}
+
+/**
  * Provenance ids named inside prose, made reachable.
  *
  * A caveat that ends "See P-26" should get the reader there in one click, the same as the
@@ -444,6 +482,7 @@ export function AbsenceCount({ items }: { items: Unmeasured[] | undefined }) {
 export function RecordMarks({
   record,
   linkify = true,
+  deferCaveat = false,
 }: {
   /** A series or a ledger record. Both carry `caveat` and `unmeasured`; only ledger has the rest. */
   record: {
@@ -453,10 +492,17 @@ export function RecordMarks({
   };
   /** Cards suppress P-xx linkification because the whole card is already one link. */
   linkify?: boolean;
+  /**
+   * TABLE ROWS SET THIS AND RENDER `<CaveatRow>` BENEATH INSTEAD. See that component for why:
+   * the caveat is not dropped, it is moved out of a 140px cell into a full-width one. A caller
+   * that sets this and does NOT render the row has hidden a caveat, which rule 3a forbids and
+   * `listing-marks` fails.
+   */
+  deferCaveat?: boolean;
 }) {
   return (
     <>
-      {record.caveat ? (
+      {record.caveat && !deferCaveat ? (
         <CaveatFlag caveat={record.caveat} variant="inline" linkify={linkify} />
       ) : null}
       <AbsenceCount items={record.unmeasured} />
