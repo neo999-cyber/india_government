@@ -2163,3 +2163,90 @@ the estimate resets.
 | withdrawn-wording quotation-identity | open named gap; input exists (`gen-record-history`), gate not built |
 | DESIGN: thirteen nav destinations | open, unchanged |
 | DESIGN: caveat-in-cell form (466 grid cards over 300 chars) | open, unchanged |
+
+---
+
+# WALK 9 — 2026-08-10. ONE FINDING, PRE-EXISTING SINCE PHASE 0, FIXED IN-BATCH. ARCHITECTURE CLOSED.
+
+**The itinerary, walked on the deployed site as a first-time reader, desktop and 375px:** one
+ledger record of every verdict class (L-0151 worked · L-0030 failed · L-0104 partly · L-0224
+contested · L-0087 no-objective · L-0223 too-early · L-0086 awaiting-adjudication · L-0066
+reversed · L-0069 undated-commitment · L-0001 baseline-context), L-0011 as the multi-objective
+case, L-0001 as the no-note control (no verdict anchor emitted, correctly), P-84/P-10/P-104,
+`aser-std3-reading` and `fc-devolution-share-of-gtr` for seams, the GDP page for rule 5 (all
+three regimes, FY2013-14 reading 6.9 beside 4.7, seam above the first row naming what it
+supersedes), `ptr-primary-udise` for the pair with the ledger-hosted absence side (the
+"Declared on" anchor resolves to `/ledger/L-0106/`), `jk-detenus-psi` for both its pairs, and
+`/method` `/contested` `/exposure` `/unmeasured` `/derivations` `/counterfactual`
+`/domains/education/` `/terms/T2/` `/lenses/kashmir/` plus the indexes. Every field checked
+whole against `/data` through the gate normaliser: notes, caveats, absences, objectives, sources,
+confidence, break notes, framings. **All render. No mobile overflow outside a scrollable wrap on
+any page probed.**
+
+## THE FINDING — every page carried two h1 elements
+
+The masthead in `app/layout.tsx` was an `<h1>` **since `ddfead7`, phase 0**, so all 661 built
+pages carried two: the site name and the page's own title.
+
+**Against the boundary the estimate set, explicitly: NOT the falsifier.** The falsifier was a find
+in a region the enumeration calls closed. The enumeration (gate predicates, schema fields, index
+surfaces) never spoke about markup semantics — this is a region nothing had enumerated, not one
+called closed. **The estimate stands.** By the letter of the stopping condition it was an
+off-queue find at the moment of finding, and that is recorded rather than reworded.
+
+**Regression classification, which is what this walk was testing: ZERO findings are regressions
+from the last two batches.** The one finding predates the whole architecture effort by seven
+phases. The same-batch regression rate, walk 7's 2-of-4, is now 0-of-1.
+
+**FIXED IN THIS BATCH on the operator's standing instruction, and the class swept:** the masthead
+is a `<p className="masthead-title">` — styling is by class, nothing visual moves — and the sweep
+reports the class whole: **h1-per-page distribution across built output: {"1": 661}**, from
+{"2": 661} before.
+
+## Three candidates checked and discarded, two of them my own probes
+
+1. **"Objectives announced" and the absence block reported missing from L-0011** — my browser
+   probe read `innerText`, which reflects `text-transform: uppercase` on `dt`; the gate
+   normaliser reads raw HTML. Both present. The ad-hoc-check-vs-normaliser class, on my own
+   probe, caught before reporting.
+2. **A blank desktop screenshot of the pair section, reproducible** — the capture surface
+   (800×500) disagrees with the tab (1280×800, confirmed by the accessibility tree, which shows
+   the full page). An environment fact about the browser tooling, not the site. The DOM geometry
+   accounts for every pixel: caveat at y400, pair at y769, table from y968.
+3. **"composite score" matching on the homepage** — the match is *"No composite score, no verdict
+   number - anywhere, ever"*, the value-boundary defence. Correct by design.
+
+## ARCHITECTURE IS CLOSED — 2026-08-10
+
+Nine walks. The queue stands at zero architecture items: A-1 through A-5 closed and deployed,
+walk 9's finding fixed and class-swept in the same batch. **The reopening condition is stated
+rather than implied: any future off-queue find on a walk reopens this closure**, and the walk
+that finds it should say so against this entry.
+
+## WHAT DESIGN (PHASE 18) OPENS AGAINST
+
+**The surface set as it stands:** 661 pages — 223 ledger, 269 series, 127 provenance record pages,
+14 domain surfaces, 8 lens pages, 4 term pages, and the eleven standing surfaces (`/` `/series/`
+`/ledger/` `/provenance/` `/domains/` `/lenses/` `/terms/` `/peers/` `/unmeasured/` `/contested/`
+`/exposure/` `/method/` `/derivations/` `/counterfactual/`). Thirteen nav destinations. Every
+gate in the build green at this commit, each emitting its own scope.
+
+**The two design-queue items, unchanged:**
+1. **Thirteen nav destinations** — the operator's ruling: design work, not architecture.
+2. **A caveat renders in full inside a table cell** across six listing surfaces, sized at 103 of
+   223 ledger caveats (median 375 chars, max 1,312) plus 128 series caveats, and now also
+   measured on grid cards: 746 cards carry one, 466 over 300 characters. **Rule 3a binds the
+   layout, not the caveat: if a caveat will not fit a layout, the layout is what changes.**
+
+**Open non-design items, none blocking the lock, listed so the queue is whole:** seam-span's
+measured deferral (re-run the tool, never quote a count); the pairs non-prose debt in
+`field-render-audit` (including the undescended `a.label`/`b.label`); the quotation-identity gap
+in `withdrawn-wording` (needs git history as input); environment's 0% series-caveat rate against
+a corpus 48% — **research, not design**: it needs the 15 records read against the caveat
+definition by a session that owns record truth.
+
+**And the homepage-subject constraint from the inventory, restated for phase 18's first
+decision:** corpus strength and lived salience run close to inverse; education is the one domain
+strong on both axes; the 26 long-clean series resolve to five non-fiscal subjects (electricity
+mix, coal, higher-ed enrolment, J&K security, sanitation); and any lead drawn from employment,
+infrastructure, banking or welfare leads with `approx` and must say so.

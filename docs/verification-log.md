@@ -11984,3 +11984,36 @@ ledger · 269 series · 127 provenance · 60 pairs = 679 records, 1,759 points �
 2 exempted · `link-check` 21,522 hrefs, 662 pages, 0 dead · `listing-marks` 2,217 rows, 3,149
 marks all present, 374 rendered declarations each at most once per page · `domain-coverage`
 14/14, 1137/1137 · `validate:selftest` 23/23 rules, 2/2 output gates.
+
+## Cycle 2026-08-10b — walk 9: one phase-0 finding, zero regressions, architecture closed
+
+**Walk 9 ran the full itinerary on the deployed site, desktop and 375px** — every verdict class,
+the multi-objective and no-note cases, provenance, seams, the GDP regimes, both pair shapes, and
+all fifteen surfaces, every field checked whole against `/data` through the gate normaliser.
+
+**One finding: every page carried two h1 elements** — the masthead h1 in `app/layout.tsx`, there
+since `ddfead7` (phase 0). Pre-existing; **zero findings are regressions from the last two
+batches**, which is the rate the walk was testing (walk 7's was 2 of 4). Against the estimate's
+boundary: not the falsifier — markup semantics was a region nothing had enumerated, not a region
+called closed. Fixed in-batch on the operator's standing instruction: masthead is a `<p>` styled
+by the same class; class swept — h1-per-page across built output moved from {"2": 661} to
+{"1": 661}.
+
+**Three candidates discarded, two of them the walk's own probes:** `innerText` reflecting
+`text-transform: uppercase` against the gate normaliser reading raw HTML (both "missing" L-0011
+blocks present); a reproducible blank desktop screenshot that the accessibility tree and DOM
+geometry refute — a capture-surface/tab mismatch in the tooling, recorded as an environment fact;
+and the homepage's "composite score" match being the value-boundary defence.
+
+**ARCHITECTURE CLOSED**, with the reopening condition stated: any future off-queue walk find
+reopens it. Design opens against the surface set, the two design-queue items, the four open
+non-design items, and the inventory's homepage-subject constraint — all in STATE.md's walk-9
+entry.
+
+**Gates, each quoting its own emitted scope:** `validate` VALID — 0 errors, 163 warnings, 223
+ledger · 269 series · 127 provenance · 60 pairs = 679 records, 1,759 points · `typecheck` clean ·
+`derivations` bare roots 288/277/93, 246 naming no document, 8,888 bytes · `reachability`
+1786/1786, 662 pages · `field-render-audit` 42 prose + 51 non-prose across 4 layers, 0 invisible,
+2 exempted · `link-check` 21,522 hrefs, 662 pages, 0 dead · `listing-marks` 2,217 rows, 3,149
+marks all present, 374 rendered declarations each at most once per page · `domain-coverage`
+14/14, 1137/1137 · `validate:selftest` 23/23 rules, 2/2 output gates.
