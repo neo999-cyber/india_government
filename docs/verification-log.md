@@ -11814,3 +11814,54 @@ claims still asserted elsewhere · `seam-span` 127 spans, 26 undeclared of which
 `manifest` 679 records, 71,141 bytes · `reachability` 1786/1786 · `field-render-audit` 42 prose + 51
 non-prose across **4 layers**, 0 invisible · `link-check` 21,524 hrefs, 0 dead · `domain-coverage`
 14/14, 1137/1137 · `enum-stamp` 2 fixtures · `url-check` 0/0 (no citation changed).
+
+## Cycle 2026-08-08b — walk 7, and the series inventory
+
+**WALK 7 RAN AND THE STOPPING CONDITION IS NOT MET.** Seven walks, six with an off-queue find. The
+condition is *a walk that finds only things already on the queue* and it is not to be softened.
+
+**Three of walk 7's four finds were this batch's own and were repaired, not queued** — a regression
+introduced an hour earlier is not a discovery about the instrument. Duplicate pooled absences on
+pages hosting two pairs (and the first repair caught one view's shape and missed the other's, so
+`jk-detenus-psi` was still doubling after it); three pair side labels rendering nowhere;
+`pairsForSeries` left dead. The class was swept over the whole build on the RENDERED declaration
+block — the first sweep matched the bare `what`, which occurs in ordinary prose and is shared
+verbatim between records, and returned a candidate list. **374 declarations x 661 pages, 0
+duplicates.**
+
+**A-4, and it is not on any queue: rule 4b is implemented on LEDGER rows and on no SERIES row, and
+on no cross-reference grid on any record page.** 1,587 listing rows across 354 surfaces link a
+record declaring an absence; **744 carry the mark and 843 do not.** `/series/` carries 128 caveat
+marks and 0 absence marks, verified on the deployed site. The asymmetry sits in one table cell: on
+`/domains/[domain]/` the ledger row renders `CaveatFlag` **and** `AbsenceCount`, and the series row
+on the same page renders `CaveatFlag` and stops — while rule 4b's own words are *"in the caveat's
+idiom"*. **It is the local-fix class with rule 4b itself as the prior instance**: the rule written
+because 374 declarations reached no listing surface was then implemented only on the surface where
+the defect was noticed. Reported, not fixed.
+
+**Method note, because the finding turned on it.** The first two detectors were wrong and both were
+caught by controls rather than by inspection. One split the page at `<script`, which discarded the
+whole body — its positive control reported *the extraction matched nothing*, so the clean zero was
+about the regex. The second counted each table row three times, once as a `<tr>` and twice as the
+anchors inside it, producing an exact 1:2 marked-to-missing ratio that was pure arithmetic. **Three
+iterations to a defensible number, and the number was only defensible once a same-form positive
+control passed through the same restriction the zero depended on.**
+
+### The series inventory — `drops/phase-17-design-lock/SERIES-INVENTORY-2026-08-08.md`
+
+269 series by domain with spans, seams, status mix and every series listed. **The finding:
+evidentiary strength and lived salience are close to inversely correlated.** `federalism` is the
+only domain at 100 per cent verified (236 of 236) and almost nothing in it is experienced by
+anyone. **`employment` and `infrastructure` — work, roads, power, housing — hold zero verified India
+observations between them**, 76 of 76 and 94 of 95 `approx`, checked against the records rather than
+inferred. `banking` is 4 of 132; `welfare` 12 of 70. **`education` is the one domain strong on both
+axes** — 309 verified of 366, spans from 2001, subject matter a parent meets directly.
+
+Corpus totals, India observations only: **1,628 points — 936 verified, 642 approx, 50 pending; 182
+declared seams; 128 series carrying a caveat; 52 declaring an absence.** Twenty-six series are
+fully verified with no pending and ten or more observations, composed `federalism` 12,
+`environment` 7, `macro` 3, `defence` 2, `education` 1, `human-development` 1 — **counted off the
+table, after a first draft of that sentence attributed it 14/4/2/1 and was wrong.**
+
+**Gates:** unchanged from cycle 2026-08-08a and re-run green at the commit carrying this entry;
+`field-render-audit` now asserts build freshness and was proven to refuse a stale build.

@@ -1707,3 +1707,97 @@ adds no new surface and no new mark. If the next work adds a page, the lock wait
   scoreable; it fails three of the rule's four conditions.
 - **Guard before the write; numstat declared before the edit; anchored string surgery — never
   parse-and-serialise**, which reformats whole files whose indentation this repo did not choose.
+
+---
+
+# WALK 7 — 2026-08-08. THE CONDITION IS NOT MET.
+
+**Seven walks. SIX have found something not already on the queue.** The condition — *a walk that
+finds only things already on the queue* — is not met and has never been met. It is not to be
+softened: what follows is one finding, it is not on the queue, and that is the whole test.
+
+## What was cleared first, so the walk is not confused with the batch
+
+A-1, A-2 and A-3 were fixed and pushed before this walk ran (`69cd1b1`), and the walk then turned on
+the batch's own work first. **Three of its four finds were mine, and they were repaired rather than
+queued** — a regression introduced an hour earlier is not a discovery about the instrument:
+
+1. **Duplicate absences, introduced by the A-3 fix.** A series that is a side of two pairs had its
+   declarations pooled by both views: three on `jk-detenus-psi`, one on
+   `jk-psa-detenus-transferred-out`. **The first repair caught one shape and missed the other** —
+   `CoverageUsageView` pools at pair width, `ContestedPairView` renders each instrument's own in its
+   column — and `jk-detenus-psi` was still doubling after it. Both now report through `pooledByPair`.
+   Swept the class over the whole build: **374 declarations x 661 pages, 0 duplicates.**
+2. **Three pair side labels rendering nowhere** — PR-16.b and both of PR-55's. The declared-pending
+   row printed the framing and stopped short of the labels.
+3. **`pairsForSeries` left dead** by the A-3 fix, and removed with its doc quoted.
+
+**The fourth is not this batch's and is recorded here rather than fixed elsewhere:**
+`field-render-audit` has asserted in its own header since phase 15 that it *"refuses to run against
+a stale build for the same reason `reachability` does"*. **It never did** — `existsSync` and nothing
+more. Four tools read built output; three called `assertFresh`. Fixed and proven to refuse, because
+a gate extension proven against a possibly-stale build proves nothing, and this batch had just
+extended that gate.
+
+## THE FINDING — A-4. RULE 4b IS IMPLEMENTED ON LEDGER ROWS AND NOT ON SERIES ROWS, AND ON NO CROSS-REFERENCE GRID AT ALL
+
+**THE DEFECT.** Rule 4b says an absence *"appears on every surface that LISTS the record, in the
+caveat's idiom"*. The mark exists — `AbsenceCount`, rendering `N not measured` — and it is wired
+into the LEDGER table of five listing surfaces. **It is wired into no series row anywhere, and into
+no cross-reference grid on any record page.**
+
+**THE EVIDENCE, per row rather than per page.** Each listing row is counted once — `<tr>` blocks
+taken first and removed, then grid cards from what remains — and a row is marked if the mark sits
+inside the same block as the link:
+
+| surface kind | pages | rows marked | series rows unmarked | ledger rows unmarked |
+| --- | --- | --- | --- | --- |
+| `/series/[id]/` (cited-by, related) | 183 | 0 | 20 | 270 |
+| `/provenance/[id]/` (distorts, corrects, cited-by) | 97 | 0 | 99 | 180 |
+| `/domains/[id]/` | 9 | 213 | **98** | 0 |
+| `/ledger/[id]/` (series cited) | 44 | 0 | 72 | 0 |
+| `/series/` | 1 | 0 | **52** | 0 |
+| `/lenses/[id]/` | 3 | 56 | **37** | 0 |
+| `/exposure/` | 1 | 0 | 0 | 12 |
+| `/contested/` | 1 | 35 | 0 | 2 |
+| `/peers/` | 1 | 0 | 1 | 0 |
+
+**1,587 rows across 354 surfaces link a record that declares an absence. 744 carry the mark, 843 do
+not.** 52 of 269 series declare 86 absences; 147 of 223 ledger records declare 288.
+
+**THE ASYMMETRY IS THE PROOF IT IS UNINTENTIONAL, AND IT IS VISIBLE IN ONE CELL.** On
+`/domains/[domain]/` the ledger row renders `<CaveatFlag variant="inline" />` **and**
+`<AbsenceCount />`; the series row on the same page renders `<CaveatFlag variant="inline" />` and
+stops. **Rule 4b's own words are "in the caveat's idiom", and the caveat idiom is in the adjacent
+position on the same row.**
+
+**VERIFIED ON THE DEPLOYED SITE, not from the report:** `/series/` carries **128 caveat marks and 0
+absence marks**. `ptr-elementary-dise` shows its caveat in the index row; `ptr-primary-udise`
+declares *"The share of schools complying with the RTE staffing norm"* on its own page and nothing
+in the index says so.
+
+**IT IS THE LOCAL-FIX CLASS AGAIN, AND RULE 4b IS ITSELF THE PRIOR INSTANCE.** 4b was written
+because 374 declarations complied with 4a and reached no listing surface. The fix that followed was
+applied to the surface where the defect was noticed — the ledger tables — and nowhere else. **The
+rule written to close a scope gap was closed at a narrower scope than the rule states.**
+
+**WHAT WOULD SETTLE IT.** Render `AbsenceCount` beside `CaveatFlag` wherever a record is listed,
+enumerated from the code rather than from this table. **Then make it checkable**, because no gate
+sees this: `reachability` binds the record's OWN page, `field-render-audit` binds a field reaching
+SOME page, and neither asks whether a listing row states what the record declares. The measurement
+above is four lines over built output and is the shape such a gate would take.
+
+**One thing it must NOT do: a corpus-wide count.** Rule 4b says so in terms — per record, on every
+listing, never summed. The 843 above is a defect count for this entry, not a figure for any page.
+
+## The queues after this walk
+
+**ARCHITECTURE — 1 item: A-4.** A-1, A-2 and A-3 are closed and deployed.
+
+**DESIGN — 2 items, unchanged and still not grown:** thirteen nav destinations; a caveat rendering
+in full inside a table cell across six surfaces.
+
+**Also owed, and named rather than implied:** the pairs layer's non-prose half in
+`field-render-audit` — `RENDERINGS` carries no pairs keys and `leafFields` returns `a` and `b` as
+non-prose leaves without descending, so `a.label` and `b.label` are not enumerated at all. The
+gate's own emitted scope now says `[prose only, non-prose owed]` rather than implying completeness.
