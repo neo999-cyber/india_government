@@ -12,7 +12,29 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const NAV = [
+/**
+ * NAVIGATION IN TWO TIERS — phase 18 §10a, and it resolves the design-queue item that had stood
+ * since the nav reached thirteen destinations by accretion.
+ *
+ * THE PROBLEM WAS NOT LENGTH, IT WAS REGISTER. Thirteen equally-weighted mono links ask a
+ * first-time reader to know what `provenance`, `exposure` and `derivations` mean before choosing
+ * one. Nothing here is removed — removing a surface would break `domain-coverage`, and every one
+ * of them is reachable evidence. The split is: a public path a few doors wide, and the instrument
+ * one named group behind it.
+ *
+ * The EVIDENCE group is also where the "How do we know?" control lands (§4b): the control opens
+ * in place, and its deepest link is one of these surfaces. They are the layer, not a leftover.
+ *
+ * PRIMARY HOLDS ONLY ROUTES THAT EXIST. `Stories` and `Search` are named in §10a and are not here,
+ * because `link-check` walks every emitted href and a nav link to an unbuilt route is a dead link
+ * — the defect that gate was built for. They join when the surfaces ship.
+ */
+const PRIMARY = [
+  { href: '/', label: 'overview' },
+  { href: '/domains/', label: 'explore' },
+];
+
+const EVIDENCE = [
   { href: '/domains/', label: 'domains' },
   // Next to domains rather than at the end, because the two are the same question asked twice —
   // what a record is about, and what it also bears on. A lens reached only from a record page
@@ -48,8 +70,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 baseline frozen May 2014 · T1 2014–19 · T2 2019–24 · T3 2024– living
               </span>
             </p>
-            <nav className="nav">
-              {NAV.map((item) => (
+            <nav className="nav nav-primary" aria-label="Main">
+              {PRIMARY.map((item) => (
+                <Link key={item.href} href={item.href}>
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            {/* A labelled group, not a disclosure. A disclosure would hide thirteen surfaces
+                behind a control a phone reader has to find, which is the §8.2 defect: a thing
+                that renders correctly and reaches nobody. It wraps instead. */}
+            <nav className="nav nav-evidence" aria-label="Evidence">
+              <span className="nav-group-label">evidence</span>
+              {EVIDENCE.map((item) => (
                 <Link key={item.href} href={item.href}>
                   {item.label}
                 </Link>

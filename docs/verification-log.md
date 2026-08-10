@@ -12017,3 +12017,71 @@ ledger · 269 series · 127 provenance · 60 pairs = 679 records, 1,759 points �
 2 exempted · `link-check` 21,522 hrefs, 662 pages, 0 dead · `listing-marks` 2,217 rows, 3,149
 marks all present, 374 rendered declarations each at most once per page · `domain-coverage`
 14/14, 1137/1137 · `validate:selftest` 23/23 rules, 2/2 output gates.
+
+## Cycle 2026-08-10c — phase 18 opens: the research assessed, the scope amended, prototype A built
+
+**Phase 17 closed and phase 18 opened in the phase table**, per the discipline that a phase name is
+read off that table and never chosen at the point of use — the drop is `drops/phase-18-design-lock/`
+because the table says 18 is *design lock*, and a second name for a phase is the collision
+`phase-name-consistency` exists to catch.
+
+**The design research was read in full** — seven HTML mocks, four PDFs, an external critique, two
+reference sites — and dispositioned per artifact in `RESEARCH-ASSESSMENT.md`. **The direction the
+pre-phase drafts reached is right**: every rejection traces to a rule this corpus earned. The
+governing document is now `DESIGN-SCOPE.md` revision 3; both drafts are kept unedited in `inputs/`
+because the corrections are only checkable against what they replaced.
+
+**Four corrections to the drafts, each marked ⟳ with the wording it replaces:**
+
+1. **§9 was stale.** It said the architecture stopping condition was NOT met with three findings
+   open. All three closed at `69cd1b1`; A-4 and A-5 followed; architecture closed at `d7c79c2`.
+2. **§11a — the story subject moves from renewables to education, on measurement.** The withdrawn
+   wording called renewables *"the richest uncertainty material in the corpus"*. Environment's
+   series layer carries **0 caveats and 0 absences** — the only domain at 0% against a corpus 48%.
+   Education: 49 caveats, 45 absences, 67 seams, 14 provenance records of which 12 unbridged, 9
+   contested verdicts.
+3. **§3b — homepage charts bound to the series inventory.** The drafts named rail electrification
+   and road length; **neither is in the corpus's 26-series clean set.** The eleven non-fiscal clean
+   series resolve to five subjects, tabulated.
+4. **§6 — the palette reference is qualified, not cited.** `justus-john.com` is cited in the drafts
+   for a warm off-white; retrieved 2026-08-10 it reads dark. What transfers is the motion language.
+
+**Three rulings the drafts never made, now recorded:** the public design redesigns the existing site
+in place, so the archival surfaces BECOME the evidence layer the control opens into; prototypes are
+built in the app against real `/data`; and **the AI query layer is out of scope** on two independent
+grounds — the site is a static export with no server, and free-prose answers over the corpus are the
+corpus restating itself.
+
+**And the over-reach corrected: three rejected experiences return with their assertion removed**
+(§4d) — a connections diagram from declared edges only, zoom transitions between real URLs, and a
+related-records loop whose relatedness is a stated fact rather than a similarity score. The
+rejections were right about what those designs would ASSERT; the experience was discarded with it.
+
+### Built
+
+**Navigation, two tiers** (§10a) — resolves the thirteen-destination design-queue item. Primary
+carries only routes that exist, because `link-check` walks every emitted href and a nav link to an
+unbuilt surface is a dead link. Nothing removed; the register splits.
+
+**Prototype A, the record page** — four stages (*what changed → what was expected → what the record
+shows → what would change this reading*), the §4b **How do we know?** control as a real `<details>`
+(keyboard-operable, platform `aria-expanded`, works with JS disabled, 44px tap target on coarse
+pointers), and the §4d.1 **connections diagram**.
+
+**THE ABSENCE BLOCK DID NOT MOVE, AND THAT IS THE ONE PLACE THE NEW STRUCTURE BENDS.** The
+four-part form puts limits last; the 2026-08-06 ruling pins absences after the summary and before
+the argument, uniformly. The ruling wins and the page says so in its own comment.
+
+**The gate caught the new surface reproducing A-4.** The first build of the connections diagram
+linked **265 series rows carrying neither the caveat nor the absence mark** — a brand-new listing
+surface committing the exact defect A-4 was opened to fix, named by `listing-marks` before a reader
+saw it. Fixed by rendering `RecordMarks` in the diagram; verified untruncated at 609 characters,
+no clamp, no max-height.
+
+**Gates, each quoting its own emitted scope:** `validate` VALID — 0 errors, 163 warnings, 223 ledger
+· 269 series · 127 provenance · 60 pairs = 679 records, 1,759 points · `typecheck` clean ·
+`phase-name` 344 files, 6 phases in the table, 12 disagreeing assertions all exempted ·
+`reachability` 1786/1786 · `field-render-audit` 42 prose + 51 non-prose across 4 layers, 0 invisible
+· `link-check` 23,876 hrefs, 0 dead · `listing-marks` **2,427 rows, 3,414 marks** all present, 374
+declarations each at most once per page · `domain-coverage` 14/14, 1137/1137. Mobile at 375px: no
+overflow outside a scroll wrapper, diagram stacks, control operable.

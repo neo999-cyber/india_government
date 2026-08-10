@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getLedger, getProvenance, getSeries, ledger as allLedger, pairsHostedOn } from '@/lib/data';
 import { PairSection } from '@/components/PairSection';
+import { HowDoWeKnow, RestsOn } from '@/components/RecordEvidence';
 import {
   ASSESSMENT_LABELS,
   CONTESTED_GROUND_LABELS,
@@ -113,7 +114,12 @@ export default async function LedgerDetail({ params }: Props) {
           summary makes, and a reader who stops after one paragraph must still have it. */}
       {l.caveat ? <CaveatFlag caveat={l.caveat} /> : null}
 
+      <h2 className="stage">What changed</h2>
       <p>{l.summary}</p>
+
+      {/* §4b — the control sits directly under the summary, which is the first place a reader
+          meets a claim on this page. */}
+      <HowDoWeKnow record={l} disputes={refDisputes} />
 
       {/* MOVED ABOVE THE ARGUMENT 2026-08-06, on the operator's ruling that an absence arriving
           below two argument blocks is the same defect as a verdict chip preceding its reasoning:
@@ -127,8 +133,15 @@ export default async function LedgerDetail({ params }: Props) {
           list is a defect waiting. So the block sits after the summary and before the argument on
           every record that carries one — the position rule 3a gives the caveat, for the same
           reason. */}
+      {/* NO HEADING ABOVE THIS BLOCK, AND ITS POSITION IS NOT A DESIGN CHOICE. The 2026-08-06
+          ruling pinned the absence block to exactly here — after the summary, before the argument,
+          uniformly and not on a test. Phase 18's four-part structure (§7 "what changed → expected
+          → observed → limits") would put limits LAST, and that is the one rearrangement this page
+          may not make: an absence arriving below two argument blocks is the same defect as a
+          verdict chip preceding its reasoning. The structure bends around the ruling. */}
       <Absences items={l.unmeasured} />
 
+      <h2 className="stage">What was expected</h2>
       <dl className="dl">
         {l.claimAtLaunch ? (
           <>
@@ -146,6 +159,18 @@ export default async function LedgerDetail({ params }: Props) {
             </dd>
           </>
         ) : null}
+      </dl>
+
+      {/* Where a record announced nothing, say so rather than leaving an empty stage. `no-objective`
+          is a finding — nothing was claimed to score against — not a blank. */}
+      {!l.claimAtLaunch && !(l.objectives && l.objectives.length > 0) ? (
+        <p className="prose-note">
+          No objective was stated at announcement that outcomes could be checked against.
+        </p>
+      ) : null}
+
+      <h2 className="stage">What the record shows</h2>
+      <dl className="dl">
         {l.whatHappened ? (
           <>
             <dt>What happened</dt>
@@ -184,14 +209,17 @@ export default async function LedgerDetail({ params }: Props) {
             <dd>{l.assessmentNote}</dd>
           </>
         ) : null}
-        {/* What would change the reading. Also previously unrendered, on 62 records. */}
-        {l.revisitTrigger ? (
-          <>
-            <dt>Revisit when</dt>
-            <dd>{l.revisitTrigger}</dd>
-          </>
-        ) : null}
       </dl>
+
+      {/* What would change the reading. Also previously unrendered, on 62 records. Its own stage,
+          because it is the only forward-looking field on the page: everything above is what the
+          record establishes, and this is what would make it wrong. */}
+      {l.revisitTrigger ? (
+        <>
+          <h2 className="stage">What would change this reading</h2>
+          <p>{l.revisitTrigger}</p>
+        </>
+      ) : null}
 
       {l.assessment === 'baseline-context' ? (
         <p className="prose-note">
@@ -199,6 +227,10 @@ export default async function LedgerDetail({ params }: Props) {
           post-2014 records are read against a stated starting condition rather than a blank page.
         </p>
       ) : null}
+
+      {/* §4d.1 — every edge below is a field in `/data`. No causal edge is drawn. */}
+      <h2>What this rests on</h2>
+      <RestsOn record={l} series={refSeries} disputes={refDisputes} />
 
       <h2>Sources</h2>
       {/* THE INDEPENDENCE GRADE SITS HERE AND NOT BESIDE THE VERDICT, deliberately. It grades the
