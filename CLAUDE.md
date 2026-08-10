@@ -1182,6 +1182,25 @@ exists not to do. **TypeScript does not protect this class** — `revisitTrigger
 `LedgerRecord` for its whole life, so no view could have rendered it even by accident and `typecheck`
 was green the entire time.
 
+**THE DEPLOY RUNS THE BUILD, AND IT DID NOT — earned 2026-08-11.** `vercel.json` carried its own
+copy of the gate chain, four steps against `package.json`'s twenty-two, and **eighteen gates had
+never once run against the deployed artefact** — `link-check`, `listing-marks`,
+`field-render-audit`, `withdrawn-wording`, `enum-parity` and every gate written since
+`domain-coverage`. The git log shows the practice was real: `reachability` and `domain-coverage`
+each landed in BOTH files in the commit that created them. Then it stopped, and **nothing could
+report it, because both sides passed** — the full chain green locally, the four green on Vercel,
+and the deployed artefact a different thing from the one the gates cleared.
+
+**It surfaced only because a generated FILE was missing** (`/data/v1/` 404'd while every page around
+it rendered). A missing file was visible; eighteen missing gates were not.
+
+**The fix is one chain, not eighteen additions.** Adding them back restores parity today and
+re-arms the identical trap for the nineteenth gate. `vercel.json` now calls `npm run build`, and
+`tools/deploy-chain.mjs` — first step in that chain — fails if it ever restates the steps instead of
+calling them. **Its control is the exact command that shipped**, not an invented bad value. What it
+cannot bind, and says so: a build command set in the Vercel dashboard overrides the file and no gate
+here can see it, so if the deploy ever lacks something the local build produces, check that first.
+
 **Do not pipe gates** — an exit code does not survive a pipe. And a structural check passes on a
 stub: structure passing is not content passing.
 
@@ -1189,7 +1208,7 @@ stub: structure passing is not content passing.
 printed operands. A non-reconstructing figure must be declared, not merely correct. The claims file's
 own source values are checked, not typed from memory. Separators are normalised.
 
-**The gate list, run in full every cycle:** `validate` · `typecheck` · `validate:selftest` ·
+**The gate list, run in full every cycle:** `deploy-chain` · `validate` · `typecheck` · `validate:selftest` ·
 `reachability` · `no-unguarded-prose-field` · `field-render-audit` · `domain-coverage` (which
 carries `lens-empty`) · `figure-consistency` · `enum-stamp` · `phase-name` · `url-check` on `/data`.
 
