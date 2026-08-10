@@ -283,11 +283,17 @@ function SeriesBlock({ items, showSubject }: { items: Series[]; showSubject?: bo
 /**
  * Pair rows. A pair with no href renders as text, not as a dead link, and says so.
  *
- * That is not defensive coding for a case that cannot arise — PR-31 is in that state today. Both
- * its sides are non-series (a provenance record's competing accounts against a ledger absence), so
- * no series page hosts it and this listing is the only surface it has ever had. Rendering it
- * unlinked with the reason stated is the honest form; dropping it would hide the finding, and
- * linking it somewhere plausible would be worse.
+ * CORRECTED 2026-08-08. THE WITHDRAWN PARAGRAPH, QUOTED: *"That is not defensive coding for a case
+ * that cannot arise — PR-31 is in that state today. Both its sides are non-series (a provenance
+ * record's competing accounts against a ledger absence), so no series page hosts it and this
+ * listing is the only surface it has ever had."* **PR-31 now has a page: the provenance record
+ * whose competing accounts are one of its two sides hosts it**, along with five more of exactly
+ * that shape the old note did not know about.
+ *
+ * The unlinked branch is still live and still not defensive coding, for a different and narrower
+ * reason: PR-16 and PR-55 are `declared-pending` with a side that names nothing, so there is no
+ * pair to render anywhere. For those two this row IS the only surface, which is why it prints the
+ * framing and the gap reason in full rather than the title alone.
  */
 function PairRows({ items, showSubject }: { items: Pair[]; showSubject?: boolean }) {
   return (
@@ -315,10 +321,21 @@ function PairRows({ items, showSubject }: { items: Pair[]; showSubject?: boolean
                     <>
                       {name}{' '}
                       <span className="t-note">
-                        {x.status === 'declared-pending'
-                          ? '— declared, not yet authored; renders nowhere by design'
-                          : '— neither side is a series, so no series page hosts it'}
+                        — declared, not yet authored: one side names nothing, so there is no pair
+                        to render and this row is the whole of it
                       </span>
+                      {/* THE FRAMING AND THE GAP REASON, IN FULL, BECAUSE THIS ROW IS THE ONLY
+                          SURFACE THESE PAIRS HAVE. A pair with an unauthored side reaches no host
+                          page, so until 2026-08-08 its framing and gap reason rendered nowhere in
+                          the instrument while this row carried the title alone — a declaration of
+                          something owed, invisible, which is precisely what rule 4b forbids of an
+                          absence. Printed whole, never clamped: the same discipline rule 3a sets
+                          for a caveat in a cell applies to a declaration in one. */}
+                      <span className="t-note pair-declared">{x.framing}</span>
+                      {x.gapReason ? (
+                        <span className="t-note pair-declared">{x.gapReason}</span>
+                      ) : null}
+                      {x.notes ? <span className="t-note pair-declared">{x.notes}</span> : null}
                     </>
                   )}
                 </td>

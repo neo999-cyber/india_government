@@ -12,6 +12,7 @@ import type {
   LedgerRecord,
   Lens,
   Pair,
+  PairSide,
   ProvenanceRecord,
   Series,
   Term,
@@ -145,22 +146,96 @@ export const ledgerUnderLens = (lens: Lens): LedgerRecord[] =>
   );
 
 /**
- * Where a pair actually renders, or undefined if it renders nowhere.
+ * WHERE A PAIR LIVES — one source of truth, read by the views and by the listing alike.
  *
- * A pair has no page of its own: it renders inside the FIRST pair listed for one of its series
- * (`pairsForSeries(id)[0]`), so a pair is reachable only if some series it names lands it in that
- * first slot. Two pairs currently fail that. PR-16 is `declared-pending` with no sides yet and is
- * meant to render nowhere. PR-31 is fully authored and renders nowhere anyway, because both its
- * sides are non-series — a provenance record's competingAccounts against a ledger absence — so no
- * series page will ever host it. Returning undefined rather than a plausible link is the honest
- * answer; the domain listing says so in the row.
+ * CORRECTED 2026-08-08. THE WITHDRAWN COMMENT, QUOTED SO THE CORRECTION CAN BE CHECKED RATHER THAN
+ * TAKEN ON TRUST, is the paragraph that stood here from phase 6c: *"A pair has no page of its own:
+ * it renders inside the FIRST pair listed for one of its series (`pairsForSeries(id)[0]`), so a
+ * pair is reachable only if some series it names lands it in that first slot. **Two pairs currently
+ * fail that.** PR-16 is `declared-pending` with no sides yet and is meant to render nowhere. PR-31
+ * is fully authored and renders nowhere anyway, because both its sides are non-series — a
+ * provenance record's competingAccounts against a ledger absence — so no series page will ever host
+ * it."*
+ *
+ * **IT SAID TWO AND THE ANSWER WAS ELEVEN**, measured against the built site: PR-16, PR-31, PR-34,
+ * PR-35, PR-36, PR-37, PR-39, PR-40, PR-43, PR-52, PR-55. Nine were outside anything the comment
+ * reached, by three distinct mechanisms — five more pairs of PR-31's own shape, three losing the
+ * `[0]` slot to another pair, and one whose side b is label-only. **A number written once into a
+ * comment and never re-measured is the deferral-with-a-measured-rate failure CLAUDE.md already
+ * records against `seam-span-report`**, and it decayed here in the direction that reads as
+ * reassurance.
+ *
+ * One further correction, and it is to the queue entry that raised this rather than to the old
+ * comment: the walk-6 write-up says PR-55 is *"identical in shape to PR-16 but not marked
+ * `declared-pending`"*. **PR-55 carries `"status": "declared-pending"`.** Checked against the
+ * record, which is what CLAUDE.md requires of a flag raised in a report.
+ *
+ * WHAT NOW DECIDES IT. A pair renders where a record it names can host it, in this order:
+ *   1. **as a SUBJECT** — on the page of every series named as one of its two sides. A series that
+ *      merely HOSTS an absence another pair cites is not that pair's subject and does not host it
+ *      here; that distinction cost `jk-prison-detained-category` its own table once and the series
+ *      page still enforces it.
+ *   2. **as a HOST** — where no series is a side, on the page of the first side whose host record
+ *      has one: a provenance record's `competingAccounts`, or an `absenceFrom` host on either
+ *      layer. Six pairs live here and all six resolve to a provenance page today.
+ *   3. **nowhere** — where a side does not resolve at all, which is what `declared-pending` means.
+ *      PR-16 and PR-55 are the two, and their prose reaches a reader through the domain listing
+ *      row, which prints the framing rather than only saying that the pair has no home.
+ *
+ * Returning undefined rather than a plausible link is still the honest answer for case 3.
  */
-export function pairHref(p: Pair): string | undefined {
-  for (const side of [p.a, p.b]) {
-    const id = side.series;
-    if (id && pairsForSeries(id)[0]?.id === p.id) return `/series/${id}/`;
+function hostRouteForSide(side: PairSide): string | undefined {
+  if (side.series) return getSeries(side.series) ? `/series/${side.series}/` : undefined;
+  if (side.absenceFrom) {
+    if (getSeries(side.absenceFrom)) return `/series/${side.absenceFrom}/`;
+    if (getLedger(side.absenceFrom)) return `/ledger/${side.absenceFrom}/`;
+    return undefined;
+  }
+  if (side.competingAccountsFrom) {
+    return getProvenance(side.competingAccountsFrom)
+      ? `/provenance/${side.competingAccountsFrom}/`
+      : undefined;
   }
   return undefined;
+}
+
+/** Both sides resolve to something renderable. A pair with an unauthored side is not one. */
+export const pairRenders = (p: Pair): boolean =>
+  Boolean(resolvePairSide(p.a) && resolvePairSide(p.b));
+
+/** Series named as an actual SIDE of this pair — its subjects, not merely its absence hosts. */
+const subjectSeriesIds = (p: Pair): string[] =>
+  [p.a, p.b].map((s) => s.series).filter((id): id is string => Boolean(id) && Boolean(getSeries(id!)));
+
+/**
+ * Pairs a series page renders in full, because the series is one of their two sides.
+ *
+ * Every one of them, not `[0]`. Taking the first silently dropped PR-35, PR-37 and PR-52: each is
+ * a side of a series that already had another pair ahead of it, and nothing anywhere reported it.
+ */
+export const pairsWithSeriesAsSide = (id: string): Pair[] =>
+  pairs.filter((p) => pairRenders(p) && subjectSeriesIds(p).includes(id));
+
+/**
+ * Pairs a non-series record hosts, because no series is a side of them.
+ *
+ * The host is the FIRST side with a resolvable host record, so a pair has exactly one home and
+ * renders once. Rendering on both sides' hosts would put the same pair on a provenance page and a
+ * ledger page with nothing to say which is its own.
+ */
+export const pairsHostedOn = (route: string): Pair[] =>
+  pairs.filter(
+    (p) =>
+      pairRenders(p) &&
+      subjectSeriesIds(p).length === 0 &&
+      [p.a, p.b].map(hostRouteForSide).find(Boolean) === route,
+  );
+
+export function pairHref(p: Pair): string | undefined {
+  if (!pairRenders(p)) return undefined;
+  const subjects = subjectSeriesIds(p);
+  if (subjects.length) return `/series/${subjects[0]}/`;
+  return [p.a, p.b].map(hostRouteForSide).find(Boolean);
 }
 
 export const ledgerInDomain = (domain: Domain): LedgerRecord[] =>
@@ -330,7 +405,28 @@ export function tierCounts(cites: Citation[] = citations()): Record<Tier, number
  */
 export type ResolvedSide =
   | { kind: 'series'; label: string; series: Series }
-  | { kind: 'absence'; label: string; entry: Unmeasured; hostId: string; hostTitle: string }
+  | {
+      kind: 'absence';
+      label: string;
+      entry: Unmeasured;
+      hostId: string;
+      hostTitle: string;
+      /**
+       * The host's own route, carried rather than re-derived.
+       *
+       * WHY IT IS AN href AND NOT AN id. An `absenceFrom` host resolves against EITHER layer,
+       * so its id alone does not say which route serves it. Between phase 6c and 2026-08-08
+       * `CoverageUsageView` guessed `/series/${hostId}/` and every ledger-hosted side named a
+       * route that is not built for any ledger id: 22 sides declare a ledger host, 16 rendered
+       * the anchor, and all 16 returned 404 on the live site.
+       *
+       * `allUnmeasured` already solved the identical either-layer problem by carrying `href` on
+       * the resolved object (`DeclaredAbsence.href`), and `/unmeasured` has never emitted a
+       * `/series/L-` anchor. This field makes the pairs layer use that same mechanism rather
+       * than a second one — the local-fix rule: the correction is the sweep, not the instance.
+       */
+      hostHref: string;
+    }
   | { kind: 'accounts'; label: string; record: ProvenanceRecord };
 
 export function resolvePairSide(side: {
@@ -345,10 +441,21 @@ export function resolvePairSide(side: {
     return s ? { kind: 'series', label: side.label, series: s } : null;
   }
   if (side.absenceFrom) {
-    const host = getSeries(side.absenceFrom) ?? getLedger(side.absenceFrom);
+    // The accessor that answered is the only place the layer is known for free. Capture the
+    // route here; every caller downstream would otherwise have to guess it, and one did.
+    const asSeries = getSeries(side.absenceFrom);
+    const host = asSeries ?? getLedger(side.absenceFrom);
+    const hostHref = asSeries ? `/series/${side.absenceFrom}/` : `/ledger/${side.absenceFrom}/`;
     const entry = host?.unmeasured?.[side.absenceIndex ?? 0];
     return host && entry
-      ? { kind: 'absence', label: side.label, entry, hostId: host.id, hostTitle: host.title }
+      ? {
+          kind: 'absence',
+          label: side.label,
+          entry,
+          hostId: host.id,
+          hostTitle: host.title,
+          hostHref,
+        }
       : null;
   }
   if (side.competingAccountsFrom) {
