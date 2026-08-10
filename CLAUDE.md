@@ -553,8 +553,8 @@ phase name asserted from memory is a premise until it is read off this table.
 | 14–15 | 15 = environment and energy | closed |
 | — | the adversarial-review and rulings cycle | closed 2026-08-06, in `drops/cycle-review-and-rulings/` |
 | **16** | **shocks calibration** — input is the whole corpus | **CLOSED 2026-08-06**, in `drops/phase-16-shocks/` |
-| **17** | **independence** — the field proposed in `PROPOSALS-2026-08-06.md`. **`objectives[]` sequences FIRST within it**, because commitment state attaches to the limb and is a property of that array. | **OPEN**, in `drops/phase-17-design-lock/` — **and the directory name records a NAME COLLISION, not a renumbering; see below** |
-| **18** | **design lock** | |
+| **17** | **independence** — the field proposed in `PROPOSALS-2026-08-06.md`. **`objectives[]` sequences FIRST within it**, because commitment state attaches to the limb and is a property of that array. | **CLOSED 2026-08-10**, in `drops/phase-17-design-lock/` — **the directory name records a NAME COLLISION, not a renumbering; see below.** Architecture closed at the end of it: nine walks, A-1 to A-5 fixed, walk 9's one phase-0 finding fixed in-batch. **The reopening condition is stated in that file: any future off-queue walk find reopens the closure.** |
+| **18** | **design lock** | **OPEN 2026-08-10**, in `drops/phase-18-design-lock/`. Governed by `DESIGN-SCOPE.md` there, which is revision 3 and supersedes the two pre-phase drafts kept in its `inputs/`. |
 | **19** | **polish** | |
 
 **A THIRD, ADDED AND RESOLVED 2026-08-06: A PHASE-NAME COLLISION, RULED IN THE TABLE'S FAVOUR.**

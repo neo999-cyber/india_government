@@ -137,6 +137,37 @@ code {
   border-bottom-color: var(--rule-strong);
 }
 
+/* Two tiers (phase 18 §10a). The primary row carries the public path and reads at body weight;
+   the evidence group is the instrument, one step quieter but never hidden. */
+.nav-primary {
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+}
+
+.nav-primary a {
+  color: var(--ink);
+}
+
+.nav-evidence {
+  margin-top: 0.35rem;
+  gap: 0 0.85rem;
+  font-size: 0.6875rem;
+  align-items: baseline;
+}
+
+.nav-evidence a {
+  color: var(--ink-dim);
+}
+
+.nav-group-label {
+  color: var(--ink-dim);
+  opacity: 0.7;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.5625rem;
+  margin-right: 0.15rem;
+}
+
 .foot {
   border-top: 1px solid var(--rule);
   margin-top: 3.5rem;
@@ -1027,4 +1058,173 @@ tr th:last-child {
   border-style: dashed;
   color: var(--umber, #7a5c2e);
   border-color: var(--umber, #7a5c2e);
+}
+
+/* --- phase 18: record stages, the evidence control, the connections diagram ---
+ *
+ * The record page reads as four stages — what changed → what was expected → what the record shows
+ * → what would change this reading. The absence block sits between the first two and carries no
+ * heading, because the 2026-08-06 ruling pinned its position and the structure bends around it.
+ */
+
+.stage {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  font-weight: 500;
+  border-bottom: 1px solid var(--rule);
+  margin: 2.5rem 0 0.85rem;
+  padding-bottom: 0.35rem;
+}
+
+/* THE "HOW DO WE KNOW?" CONTROL (§4b).
+   A real <details>: keyboard-operable, aria-expanded via the platform, works with JS disabled.
+   Deliberately quiet when closed — it is an offer, not an alarm — and it must never look like a
+   warning, because a record with excellent sources opens the same control as a thin one. */
+
+.hdwk {
+  max-width: var(--measure);
+  margin: 0 0 1.25rem;
+  border-left: 2px solid var(--rule-strong);
+}
+
+.hdwk-summary {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.3rem 0 0.3rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  list-style: none;
+}
+
+.hdwk-summary::-webkit-details-marker {
+  display: none;
+}
+
+.hdwk-summary::before {
+  content: '+';
+  margin-right: 0.45rem;
+  color: var(--ink-dim);
+}
+
+.hdwk[open] > .hdwk-summary::before {
+  content: '–';
+}
+
+.hdwk-summary:hover {
+  color: var(--ink);
+}
+
+/* A visible focus ring: the control is the site's thesis and a keyboard reader must be able to
+   see where they are. Never removed. */
+.hdwk-summary:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* A 44px tap target on touch, which the 28px the type size alone produced is not. The control is
+   the one interaction the whole thesis rests on (§4b); a reader who cannot reliably hit it on a
+   phone meets a site that never explains itself. Pointer-coarse rather than a width query, because
+   the constraint is the finger, not the viewport. */
+@media (pointer: coarse) {
+  .hdwk-summary {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.hdwk-body {
+  padding: 0.2rem 0 0.6rem 0.7rem;
+}
+
+.hdwk-line {
+  margin: 0 0 0.45rem;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+}
+
+.hdwk-line .label {
+  display: inline;
+  margin-right: 0.3rem;
+}
+
+/* THE CONNECTIONS DIAGRAM (§4d.1).
+   Three columns: rests on → this record → reaches. The COLUMN is the relation type, which is a
+   fact from `/data`. Nothing else is encoded — no distance, no area, no opacity — because
+   CLAUDE.md forbids encoding what has no defensible meaning, and a force layout would encode a
+   simulation's opinion as if it were evidence. */
+
+.rests-on {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0 1.25rem;
+  align-items: start;
+  margin: 0.75rem 0 1.5rem;
+}
+
+.rests-col {
+  min-width: 0;
+}
+
+.rests-col > .label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.rests-centre {
+  border-left: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+  padding: 0 1.25rem;
+  max-width: 18rem;
+}
+
+.rests-node {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem;
+  line-height: 1.3;
+}
+
+.rests-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rests-list li {
+  margin-bottom: 0.6rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+/* The edge's TYPE, printed as a word beside every node. A line with no label asserts a
+   relationship the reader has to guess at; this names it. */
+.rests-edge {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-dim);
+  margin-top: 0.1rem;
+}
+
+@media (max-width: 46rem) {
+  .rests-on {
+    grid-template-columns: 1fr;
+    gap: 1.25rem 0;
+  }
+
+  /* Stacked, the vertical rules would read as a nested block rather than as a middle column. */
+  .rests-centre {
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.75rem 0;
+    max-width: none;
+  }
 }
