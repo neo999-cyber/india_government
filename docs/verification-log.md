@@ -12258,3 +12258,42 @@ caveat cover for two hundred missing ones. The control now proves both halves: a
 2,429 rows, 3,417 marks · `evaluability-wording` 4 forbidden phrasings absent from 663 pages,
 permitted heading present on 1 · `domain-coverage` 14/14, 1137/1137. Mobile 375px: no overflow, bars
 fit, caveat rows span the full table at colspan 9.
+
+## Cycle 2026-08-10g — the overview ships: the whole record in one view
+
+**The operator's second round of mocks** (a domain-year status grid, an observation-lanes plot, and
+an alternative homepage) answered a stated need: most readers want the whole record at a glance,
+across all areas and years, without opening a record. **The grid ships at `/overview/`**, computed
+entirely from `/data` at build time, plus the complete ledger grouped by year beneath it.
+
+**Four defects in the mocks were fixed rather than copied, and each is §-recorded in the scope
+(§4e):** the headline asserted a property of India (*"What India counted, and what it didn't"* —
+now pinned verbatim in `evaluability-wording`'s forbidden list, alongside *"how much of it India
+actually counted"*); the empty-cell legend claimed *"Looked for; not there"*, a rule-5d
+absence-of-publication overclaim replaced by *"no observation in this record for that year"*; the
+data was invented, including two domains this corpus does not have; and **the Kashmir row would
+have been a fabrication** — Kashmir holds no series as subject, so a naive matrix draws it empty,
+asserting "nothing measured on Kashmir." Its row reads through the lens, labelled, with the caption
+stating the double-appearance.
+
+**The baseline zone is the page's libel risk and carries its own sentence:** columns before May
+2014 are thin because this instrument's baseline is frozen there — context, not coverage — and
+without that sentence thin UPA-era columns read as "the previous government measured less," the
+corpus's own selection presented as a fact about the world.
+
+**Typography (§6) shipped:** Spectral / IBM Plex Sans / IBM Plex Mono via `next/font` — fetched at
+build, self-hosted, no runtime font requests. The stamp violet now marks the evidence control and
+focus rings; **seams stay red** — the mocks used violet for seams and rule 5a's vocabulary was not
+reopened.
+
+**Nav:** `overview` now points at `/overview/` (it pointed at `/`, a synonym for the wordmark); the
+homepage carries one prominent route to it after the lede.
+
+**Gates, each quoting its own emitted scope:** `validate` VALID — 0 errors, 163 warnings, 679
+records, 1,759 points · `typecheck` clean · `reachability` 1786/1786 across 665 pages ·
+`field-render-audit` 4 layers, 0 invisible · `link-check` 24,860 hrefs, 16 route prefixes, 0 dead ·
+`listing-marks` **2,600 rows, 3,667 marks all present** (the year listing is bound, all 223 records
+with their marks) · `evaluability-wording` **6 forbidden phrasings** absent from 664 pages, the
+permitted heading on 1 · `domain-coverage` 14/14, 1137/1137. Mobile 375px: no overflow; the matrix
+scrolls inside its own wrapper; the year groups are native `<details>`, keyboard-operable, content
+in the DOM throughout.

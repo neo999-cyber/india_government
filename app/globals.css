@@ -19,8 +19,13 @@
   --shift: #7a5c1e;
   --shift-soft: #f7f1e2;
 
-  --font-sans: ui-sans-serif, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  --font-sans: var(--font-body, ui-sans-serif), ui-sans-serif, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: var(--font-mono-face, ui-monospace), ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  --font-serif: var(--font-display, Georgia), Georgia, 'Times New Roman', serif;
+  /* The stamp: phase 18 §6's accent, used only where a mark is made — the evidence control, focus.
+     NOT for seams: rule 5a fixes the seam at solid red and the denominator band at umber, and a
+     third meaning for either colour would cost more than an accent is worth. */
+  --stamp: #6d4a94;
 
   --measure: 68ch;
   --gutter: 1.5rem;
@@ -94,6 +99,7 @@ code {
 }
 
 .masthead-title {
+  font-family: var(--font-serif);
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -183,6 +189,8 @@ code {
 /* --- typography ---------------------------------------------------------- */
 
 h1 {
+  font-family: var(--font-serif);
+  font-weight: 500;
   font-size: 1.5rem;
   line-height: 1.25;
   letter-spacing: -0.01em;
@@ -191,6 +199,8 @@ h1 {
 }
 
 h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
   font-size: 1.0625rem;
   margin: 2.25rem 0 0.75rem;
   padding-bottom: 0.35rem;
@@ -1087,7 +1097,7 @@ tr th:last-child {
 .hdwk {
   max-width: var(--measure);
   margin: 0 0 1.25rem;
-  border-left: 2px solid var(--rule-strong);
+  border-left: 2px solid var(--stamp);
 }
 
 .hdwk-summary {
@@ -1121,7 +1131,7 @@ tr th:last-child {
 /* A visible focus ring: the control is the site's thesis and a keyboard reader must be able to
    see where they are. Never removed. */
 .hdwk-summary:focus-visible {
-  outline: 2px solid var(--ink);
+  outline: 2px solid var(--stamp);
   outline-offset: 2px;
 }
 
@@ -1714,4 +1724,222 @@ tr th:last-child {
    listing rather than as two rows that happen to be adjacent. */
 tbody > tr:has(+ .caveat-row) > td {
   border-bottom: 0;
+}
+
+/* --- phase 18: the overview matrix ----------------------------------------
+ * One cell per area-year, and every cell is a computed, checkable statement about this record's
+ * holdings. Nothing else is encoded: no importance, no performance, no colour by verdict.
+ */
+
+.matrix-wrap {
+  overflow-x: auto;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.matrix {
+  border-collapse: collapse;
+  min-width: 46rem;
+  width: 100%;
+}
+
+.matrix th,
+.matrix td {
+  border: 0;
+  padding: 2px;
+  white-space: normal;
+}
+
+.matrix-name {
+  text-align: left;
+  padding-right: 0.9rem !important;
+  min-width: 11rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+.matrix-name a {
+  text-decoration: none;
+}
+
+.matrix-name a:hover {
+  text-decoration: underline;
+}
+
+.matrix-meta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--ink-dim);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.matrix-year {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--ink-dim);
+  text-align: center;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.matrix-zone {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  text-align: left;
+  font-weight: 400;
+  border-bottom: 1px solid var(--rule-strong) !important;
+  padding-bottom: 4px !important;
+}
+
+/* The baseline zone: visibly a different regime, without recolouring the states inside it.
+   The caption carries the sentence that stops the misreading; this carries the boundary. */
+.matrix-base {
+  background: var(--paper-sunk);
+}
+
+.mcell {
+  display: block;
+  width: 100%;
+  min-width: 18px;
+  height: 20px;
+  border: 1px solid var(--rule);
+}
+
+.mcell-verified {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+/* Held but not all verified: the hatch, same vocabulary as the status key and rule 3. */
+.mcell-mixed {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--ink) 0,
+    var(--ink) 1.5px,
+    transparent 1.5px,
+    transparent 4.5px
+  );
+}
+
+/* No observation in this record for that year. Open and quiet — an absence renders unlike a
+   finding (rule 4a), and this one is a per-record fact, not a claim about publication. */
+.mcell-none {
+  background:
+    linear-gradient(var(--ink-dim), var(--ink-dim)) center / 8px 1.5px no-repeat;
+  opacity: 0.55;
+}
+
+/* A declared basis change in this year: the seam's own red, the one meaning red has. */
+.mcell-brk {
+  border-left: 3px solid var(--alert);
+}
+
+.matrix-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  margin: 0.75rem 0 1rem;
+}
+
+.matrix-legend i.mcell {
+  display: inline-block;
+  width: 18px;
+  min-width: 18px;
+  height: 13px;
+  vertical-align: -2px;
+  margin-right: 0.4rem;
+}
+
+.matrix-caption {
+  max-width: var(--measure);
+}
+
+/* --- the year-by-year ledger ---------------------------------------------- */
+
+.yeargroup {
+  border-top: 1px solid var(--rule);
+  max-width: 52rem;
+}
+
+.yeargroup summary {
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  list-style: none;
+}
+
+.yeargroup summary::-webkit-details-marker {
+  display: none;
+}
+
+.yeargroup summary::after {
+  content: '+';
+  margin-left: auto;
+  font-family: var(--font-mono);
+  color: var(--ink-dim);
+}
+
+.yeargroup[open] summary::after {
+  content: '–';
+}
+
+.yeargroup summary:focus-visible {
+  outline: 2px solid var(--stamp);
+  outline-offset: 2px;
+}
+
+.yeargroup-year {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.yeargroup-count {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--ink-dim);
+  letter-spacing: 0.04em;
+}
+
+.yeargroup-list {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+}
+
+.yeargroup-list li {
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9375rem;
+}
+
+.yeargroup-meta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--ink-dim);
+}
+
+.home-overview-link {
+  max-width: var(--measure);
+  margin: -0.25rem 0 1.5rem;
+}
+
+.home-overview-link a {
+  font-size: 0.9375rem;
+  text-decoration: none;
+  border-bottom: 1px solid var(--stamp);
+  color: var(--ink);
+}
+
+.home-overview-link a:hover {
+  color: var(--stamp);
 }
