@@ -12480,3 +12480,66 @@ records over 111 commits, 45 with a changed verdict · \`public-data\` 679 recor
 bound rows) · \`evaluability-wording\` 6 phrasings absent from 667 pages · \`domain-coverage\` 14/14,
 1137/1137. Mobile 375px on all three new surfaces: scrollWidth 375, no page-level overflow, tables
 scrolling inside their own wrappers, every select and summary at a 44px hit area.
+
+
+---
+
+## 2026-08-11 (second entry) — the deploy was never running the gates, found by a 404
+
+**APPENDED, not an edit to the entry above.** That entry recorded \`/data/v1/\` shipping and every
+gate green. Both were true locally. **The deployed site 404'd on \`/data/v1/manifest.json\` while
+\`/publishers/\`, \`/corrections/\` and \`/data/\` all returned 200** — the pages built and the
+generated files did not.
+
+**THE CAUSE IS MUCH LARGER THAN THE SYMPTOM.** \`vercel.json\` carried its own copy of the build:
+
+> \`npm run validate && next build && npm run reachability && npm run domain-coverage\`
+
+Four steps. \`package.json\`'s \`build\` had **twenty-two**. Measured by parsing both, not by eye:
+**18 steps had never run against the deployed artefact** — \`enum-parity\`, \`no-bare-root\`,
+\`no-unguarded-prose-field\`, \`withdrawn-wording\`, \`seam-span\`, \`phase-name\`, \`exposure\`,
+\`objectives\`, \`independence\`, \`figure-consistency\`, \`manifest\`, \`derivations\`,
+\`record-history\`, \`public-data\`, \`field-render-audit\`, \`link-check\`, \`listing-marks\`,
+\`evaluability-wording\`.
+
+**THE PRACTICE WAS REAL AND IT STOPPED.** The git log on \`vercel.json\` shows \`reachability\`
+(\`59c1099\`) and \`domain-coverage\` (\`d5e0ca7\`) each landing in BOTH files in the commit that
+created them — the second says so in its message, *"Wired into npm run build and vercel.json after
+reachability."* Every gate after that went into one file only.
+
+**AND NOTHING COULD REPORT IT, BECAUSE BOTH SIDES PASSED.** \`npm run commit\` runs the full chain
+and reaches \`git commit\` only on green; Vercel ran its four and deployed. The artefact a reader
+receives was a different artefact from the one the gates cleared, and every signal in the project
+said fine. **This is the two-places-that-must-agree shape this corpus has paid for at least three
+times** — the ledger/series tier split, the domain axis with three shapes, the wholesale drop that
+reverted a correct fix — and it is the worst instance so far, because **the thing that diverged was
+the gate chain itself.**
+
+**It was visible only through a missing FILE.** Eighteen missing gates produced no symptom at all;
+one missing JSON did. Worth recording as the detection story, because the next instance will not
+come with a 404 attached.
+
+**THE FIX IS ONE CHAIN, NOT EIGHTEEN ADDITIONS.** Adding the missing steps to \`vercel.json\` would
+restore parity today and re-arm the identical trap for the nineteenth gate. \`vercel.json\` now reads
+\`"buildCommand": "npm run build"\`. **A rule that is right and keeps not being followed is a
+mechanism problem** — the same reasoning that produced \`verify-and-commit\`.
+
+**\`tools/deploy-chain.mjs\`, first step in the chain**, fails if \`vercel.json\` ever restates the
+steps instead of calling them, and names every step that would be skipped. **Its negative control is
+the exact command that shipped**, read from the file at \`4bcfcb3\` rather than invented — a control
+built from a made-up bad value proves only that the checker rejects made-up bad values. Proven both
+directions: the control passes, and restoring the old command to \`vercel.json\` makes the live gate
+exit 1 and print all 19 skipped steps.
+
+**What it cannot bind, stated in its own header and here:** a build command set in the Vercel
+dashboard overrides the file, and no gate in this repository can see the dashboard. The gate proves
+the file is right, never that the file is obeyed. **If the deploy ever lacks something the local
+build produces, check that first.**
+
+The rule is written into \`CLAUDE.md\` under Gate discipline in this same commit, and
+\`deploy-chain\` is added to the gate list there — per the standing requirement that a rule earned
+mid-batch lands in that file in the commit that earns it, rather than living only here.
+
+**Gates after the fix:** \`deploy-chain\` OK — 23-step chain, not a copy · \`public-data\` 679
+records, 2.60 MB · \`link-check\` 27,975 hrefs / 668 pages / 0 dead · \`listing-marks\` 2,630 rows /
+3,713 marks · all others as in the entry above.
