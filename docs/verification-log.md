@@ -14830,3 +14830,113 @@ unchanged — the periods block links by id, a citation, correctly not counted. 
 and matching: banking 128 of 132 approximate, 4 verified, 5 of 22 single-observation.
 
 **Five areas remain: governance, kashmir, federalism, foreign, defence — governance and Kashmir last.**
+
+---
+
+## 2026-08-11 (twenty-sixth entry) — DOMAIN PROSE: federalism and foreign, and the premise check finally holds
+
+Eleven of fourteen areas carry periods. Both take four.
+
+### THE PREMISE CHECK: BOTH KEYS HOLD, AND ONE IS BROADER THAN ITS NAME
+
+Read off the enum before anything else, after five failures in three batches. **`federalism` and
+`foreign` are both in the enum.** The second is labelled **"External sector & foreign policy"**, so
+the area is wider than foreign policy — trade and the external account file here too, which is why
+`exports-gdp` and the India-China trade pair sit in it. Every figure in the brief also held:
+federalism is **236 of 236 verified**, the corpus's only 100 per cent area; L-0207 carries the
+**T1F** citation and is `[foreign, infrastructure]`.
+
+### FEDERALISM: THE HARDEST WRITING PROBLEM WAS ALSO THE ANSWER
+
+The brief asked whether the periods could make a reader care about the divisible pool. **The thing
+that makes it hard is the thing that makes it matter, and it is a single sentence:**
+
+> The Fourteenth Finance Commission raised the states' share from 32 to 42 per cent — the one record
+> in this area scored `worked`. **At the same time the divisible pool itself shrank, from 89.1 per
+> cent of gross tax revenue in 2014-15 to a 74-80 per cent range**, because cesses and surcharges
+> are levied outside it and are not shared. **Forty-two per cent of a smaller thing can be less than
+> thirty-two per cent of a bigger one, and no document sets the two numbers side by side.**
+
+**That is why nobody feels it.** Two movements in opposite directions, announced years apart by
+different bodies, each individually reported and never reconciled. The Sixteenth Finance Commission
+put both ends in one sentence at para 7.67 and that is the only place they appear together.
+
+The other three periods follow from it: a guarantee deliberately priced above any defensible
+projection of nominal growth, so the shortfall was arithmetic rather than misfortune; an
+Article 279A(11) dispute mechanism **never constituted** across requests minuted at three successive
+Council meetings; a cess that outlived the guarantee it was created to fund and now services the
+borrowing raised because the guarantee was unfunded; and an area that now most often records the
+same quantity having more than one official value.
+
+### THE EVIDENCE-NOTE TEST: FEDERALISM YES, FOREIGN NO — AND FEDERALISM IS THE FIRST NOTE EXPLAINING A HIGH GRADE
+
+**`federalism` gets one and it is the unusual case the brief anticipated.** At 100 per cent it would
+be easy to argue no note is needed, because nothing looks wrong. **It is there because the grade
+invites a false inference in the other direction:** a reader who sees *fully verified* may take the
+area to be settled, when its problem is comprehension rather than documentation. The reason given is
+specific to the channel — Finance Commission reports, CAG certificates and Union Budget annexes are
+statutory publications with fixed formats and numbered tables, which exist to be cited and can be
+pointed at precisely; nothing else in this instrument is published that way. **A note earns its
+place by stopping a misreading, and a misreading can run either way.**
+
+**`foreign` takes none.** 42 per cent over 26 observations is unremarkable and the n is small. Its
+distinctive evidentiary fact is not the grade but WHERE the evidence comes from, which is a period
+subject and is in the periods.
+
+Five of fourteen now carry a note; nine do not, and every decision is written down.
+
+### FOREIGN: THE INDEPENDENCE MATERIAL IS THE SPINE
+
+**Nine records cite a foreign government primary** — all nine in this area — on the tier the ladder
+had to grow because a non-Indian national government is neither Indian official nor multilateral.
+Punatsangchhu-II is the case the brief named and it is exact: **two Indian releases describe the
+partnership, and it is the Royal Government of Bhutan's own energy ministry that establishes the
+commissioning date the verdict turns on.** Under Ruling 1 a counterparty's ministry is independent of
+the Indian body being assessed in a way an Indian release cannot be — so in this area, unusually,
+**the independent evidence is on the other side of the border.**
+
+The corollary is the absence: where the counterparty does not publish, the record gets a named gap
+instead. Half the neighbourhood does not report its trade. **And the period distinguishes two
+absences that look alike:** the India-China deficit has two values and is a `differentFacts` pair;
+calendar 2025 has an Indian figure and no Chinese one and is a single-sided absence, filed
+differently on purpose. The S-400 schedule is the third kind — both governments hold it, the Russian
+side withheld it on an identifiable refusal and the Indian side simply has not published it.
+
+**Half this area announces nothing scoreable** — 21 of 42 records take `no-objective` — because most
+of what is entered is the external environment acting on India, and the periods say so rather than
+implying a thin record.
+
+### THE TWO CARRIED CHECKS
+
+**ENUM WORDS READ DELIBERATELY, NOT LEFT TO THE PROBE.** Every occurrence of an assessment value in
+the new prose was printed with its surrounding context and read. **Thirteen occurrences, all of the
+form *scored X* or *is contested*, and every attribution correct against the record.** No ordinary-
+English collision and no verdict attributed to a record that does not hold it — which is what the
+last three instances were.
+
+**HAND-SWEEP FOR CITED-BUT-UNUSED: 30 ids across 8 periods, all drawn on.** Printed id against title
+against body and read, because the probe cannot see this shape when the id's verdict token appears
+elsewhere in the paragraph. The probe itself returned 7 candidates in the new areas and **all 7 are
+false** — five records described without being scored, and two spelling `baseline-context` in English
+as *"entered as baseline context"*, which is the third known false shape and the same as L-0001 and
+L-0007.
+
+### A FOURTH TWO-BASES INSTANCE WAS CONSIDERED AND REFUSED
+
+The standing instruction is that a fourth would make the claim about how commitments are announced
+generally. **Federalism produces a near-miss and it is not one.** L-0174 sets three figures for one
+flow side by side — ₹24,398.36 crore released, ₹22,481.46 received, ₹22,231.91 reaching — which is
+multiple official constructions of one quantity. **But it carries no `claimAtLaunch`: no promise
+rests on it.** The pattern is *a commitment kept or broken depending which of two official bases you
+read it under*; three measurement points along one flow is a related shape and a different one.
+**The count stays at three, and the near-miss is recorded so a later cycle does not bank it as a
+fourth.**
+
+### Gate line
+
+27 steps green. `listing-marks` 3,552 rows / 5,008 marks and `unrecognised-rows` **0**, both
+unchanged. `field-render-audit` 0 invisible, `rendered-space` 0. Rendered evidence-note counts
+re-derived independently and matching: federalism 0 of 236 approximate, 236 verified, 0 of 23
+single-observation.
+
+**Three areas remain: defence, then governance and Kashmir last.**

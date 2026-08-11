@@ -34,12 +34,12 @@ import type { Domain } from '@/lib/types';
  *
  * ============================ COVERAGE, STATED =================================================
  *
- * **Nine of fourteen are written**, and the count is restated here on every change because a
+ * **Eleven of fourteen are written**, and the count is restated here on every change because a
  * coverage line that goes stale is a claim about the past in the present tense — the defect this
  * repository has already paid for in its own session-cost section. `macro` is the pattern;
  * `education`, `environment`, `infrastructure`, `employment`, `welfare`, `human-development`,
- * `banking` and `poverty` followed on 2026-08-11. **The other five render the same page without
- * the periods block** —
+ * `banking`, `poverty`, `federalism` and `foreign` followed on 2026-08-11. **The other three
+ * render the same page without the periods block** —
  * not a stub, not a placeholder: the section simply is not there, which is honest, where a heading
  * over generated filler would not be.
  *
@@ -301,6 +301,68 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
       from: ['L-0067', 'L-0043', 'L-0038'],
     },
   ],
+
+  federalism: [
+    {
+      years: '2014 — 2016',
+      heading: 'The states won a bigger share of a pool that was getting smaller',
+      body:
+        'Two movements ran in opposite directions and were announced years apart by different bodies, which is why almost nobody holds them together. The Fourteenth Finance Commission raised the states’ share of the divisible pool from 32 to 42 per cent and it stayed there for the whole award — the single record in this area scored worked, and one of very few anywhere in this instrument. At the same time the divisible pool itself shrank, from 89.1 per cent of gross tax revenue in 2014-15 to a 74-80 per cent range, because cesses and surcharges are levied outside it and are not shared. Forty-two per cent of a smaller thing can be less than thirty-two per cent of a bigger one, and no document sets the two numbers side by side. Underneath, the cesses were not reaching the funds they were levied for: 35 cesses collected ₹2,74,592 crore in FY2018-19 against ₹1,64,322 crore transferred, a record scored failed.',
+      from: ['L-0151', 'L-0150', 'L-0156'],
+    },
+    {
+      years: '2017 — 2019',
+      heading: 'One tax, a guarantee priced above any defensible projection, and an arbiter never built',
+      body:
+        'GST began on 1 July 2017 and is scored partly. The compensation guarantee written to make it acceptable — 14 per cent growth on a 2015-16 base — is contested, and the record is precise about why: the rate was deliberately set above any defensible projection of nominal growth, so the shortfall it produced was arithmetic rather than misfortune. Article 279A(11) requires the Council to establish a mechanism for adjudicating disputes between the Union and the states. It has never been constituted, through repeated requests minuted at the 37th, 38th and 39th meetings, which is why that record is scored failed against a duty imposed on the Council rather than one it announced. In the same period the Union withheld GST transaction data from its own constitutional auditor.',
+      from: ['L-0012', 'L-0158', 'L-0162', 'L-0172'],
+    },
+    {
+      years: '2020 — 2022',
+      heading: 'The rupture, and a cess that outlived the thing it was created to fund',
+      body:
+        'The compensation shortfall of 2020 produced the Attorney-General’s opinion and the two-bucket split, and it is contested here rather than settled. What followed is cleaner: the guarantee ended on 30 June 2022 and the cess did not — it continues, servicing about ₹2.69 lakh crore of principal and ₹51,561 crore of interest on the borrowing that covered the shortfall, so an instrument created to fund a guarantee now funds the debt raised because the guarantee was unfunded. Separately, 42 became 41: the Fifteenth Finance Commission adjusted for Jammu and Kashmir and Ladakh leaving the states, keeping the balance broadly equivalent for the remaining twenty-eight. And money stopped moving to particular states — centrally sponsored scheme releases to West Bengal fell 67 per cent, and MGNREGA funds were halted under section 27.',
+      from: ['L-0159', 'L-0160', 'L-0152', 'L-0178', 'L-0168'],
+    },
+    {
+      years: '2023 — today',
+      heading: 'Three numbers for the same money, and the next award is not yet due',
+      body:
+        'What this area now records most often is that the same quantity has more than one official value. Released, received and passed on are three numbers for one transfer and only one of them is audited. Asked what cesses and surcharges come to, the Union has given Parliament three different answers — the Department of Economic Affairs putting surcharge at 1.50 per cent of gross tax revenue for FY2021-22 in 2023, and the Department of Revenue giving a different figure for the same year in 2026. The most-quoted number in Indian fiscal argument — what a state gets back for every rupee it contributes — is entered as not collected, because the Union says consistently that it does not compile it. The Sixteenth Finance Commission has reported and is scored too-early, which is a statement about the clock.',
+      from: ['L-0174', 'L-0175', 'L-0183', 'L-0153'],
+    },
+  ],
+
+  foreign: [
+    {
+      years: '2013 — 2016',
+      heading: 'Two inherited episodes, and the one target here that fell due and was missed',
+      body:
+        'The area opens on two records entered as baseline context rather than as anything announced — the Depsang incursion and the Khobragade episode — against which what follows is read. Make in India is the one commitment in this area with a number and a date: a 25 per cent manufacturing share of GDP, scored failed. The 2016 Rafale agreement bought 36 aircraft off the shelf and dropped what the earlier tender had carried, and is contested on what the comparison between the two is worth. Half of this area announces nothing that can be scored at all — 21 of its 42 records take no-objective — because most of what is entered is the external environment acting on India, or a disagreement about what a figure measures.',
+      from: ['L-0009', 'L-0008', 'L-0016', 'L-0203'],
+    },
+    {
+      years: '2017 — 2019',
+      heading: 'Arrangements both governments know and neither publishes',
+      body:
+        'The S-400 is the clearest case of a shape this area produces repeatedly. India has not been sanctioned under CAATSA and no waiver has been published either, so the absence of a sanction is not evidence of a decision. The delivery schedule exists and both governments hold it: the Russian side withheld it on an identifiable refusal and the Indian side simply has not published it, which are two different absences and are recorded separately. Neither is a dispute about a figure, because no figure was offered. The RCEP withdrawal of 2019 is contested on a counterfactual — what trade under the agreement would have looked like — and no observation of that exists for anyone.',
+      from: ['L-0199', 'L-0202', 'L-0018'],
+    },
+    {
+      years: '2020 — 2023',
+      heading: 'One trade flow, two official values, and neither side is wrong',
+      body:
+        'The India-China merchandise deficit has two values because both governments publish it and they do not agree, and this instrument carries both rather than picking or averaging. That is a differentFacts pair: the same quantity, the same period, two instruments. It is not the same thing as calendar 2025, where there is an Indian figure and no Chinese one — one side publishing and the other not is a single-sided absence and not a pair, and the two are filed differently on purpose. Beside them, three quantities are called indigenisation and only one has a defined formula, and emergency procurement is scored partly against a stated clock.',
+      from: ['L-0190', 'L-0191', 'L-0198', 'L-0200'],
+    },
+    {
+      years: '2024 — today',
+      heading: 'Where the independent evidence comes from is the other side',
+      body:
+        'Tariffs arrived from outside and are entered as facts about the external environment: a reciprocal rate stacking with a Russian-oil tranche to 50 per cent until an Executive Order of February 2026, and duties whose legal authority is itself disputed. Four trade agreements are concluded or in force with commitments that have not fallen due, scored too-early. What makes this area unusual is where its strongest evidence sits. Nine records here cite a foreign government primary — the tier this instrument had to create because a non-Indian national government is neither Indian official nor multilateral — and on the independence test a counterparty’s own ministry is independent of the Indian body being assessed in a way that an Indian release cannot be. Punatsangchhu-II is the case: two Indian releases describe the partnership, and it is the Royal Government of Bhutan’s own energy ministry that establishes the commissioning date the verdict turns on. Where the other side publishes, the record gets independent evidence; where it does not — half the neighbourhood does not report its trade — it gets a named absence instead.',
+      from: ['L-0184', 'L-0204', 'L-0207', 'L-0193'],
+    },
+  ],
 };
 
 /**
@@ -315,10 +377,22 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
  * sentence about the evidence cannot go stale against the evidence — which is the failure mode this
  * repository has already paid for in the one section written to prevent it.
  *
- * Only four areas carry a note, and that is the point: an evidence line on all fourteen would be
+ * Only five areas carry a note, and that is the point: an evidence line on all fourteen would be
  * boilerplate, and boilerplate is read past. **`macro`, `education`, `environment`,
- * `human-development` and `poverty` deliberately have none** — their grades are mixed and unremarkable, and a
+ * `human-development`, `poverty` and `foreign` deliberately have none** — their grades are mixed and unremarkable, and a
  * note saying so would say nothing.
+ *
+ * **`federalism` IS THE ONLY NOTE EXPLAINING A HIGH GRADE, AND THAT IS WHY IT EXISTS.** At 100 per
+ * cent it would be easy to argue no note is needed — nothing looks wrong. It is here because the
+ * grade invites a false inference in the other direction: a reader who sees *fully verified* may
+ * take the area to be settled, when its problem is comprehension rather than documentation. **A
+ * note earns its place by stopping a misreading, and a misreading can run either way.**
+ *
+ * **`foreign` WAS TESTED AND TAKES NONE.** At 42 per cent over 26 observations its grade is
+ * unremarkable and the n is small. Its distinctive evidentiary fact is not the grade but WHERE the
+ * evidence comes from — nine records rest on a foreign government primary, and on the independence
+ * test a counterparty's ministry is independent of the Indian body in a way an Indian release is
+ * not. **That is a period subject, and it is in the periods.**
  *
  * **`human-development` WAS TESTED AGAINST THIS RULE AND FAILED IT, WHICH IS WHY THE DECISION IS
  * WRITTEN DOWN RATHER THAN LEFT AS AN OMISSION.** It is 33 per cent verified — mixed, and
@@ -333,6 +407,8 @@ export const DOMAIN_EVIDENCE: Partial<Record<Domain, string>> = {
     'Almost nothing in this area is published exactly, and that is a fact about how India publishes rather than a gap in this record. These figures come from ministry dashboards, scheme reporting and annual reports — running totals, revised as they run — and not from closed statistical series. A reader arriving to ask whether things were built will find that a great deal was, and that the published quantity is usually a progress figure rather than a final one. Approximate by publication, not by omission.',
   banking:
     'Three per cent of the observations here are verified, the lowest share in the corpus, and the reason is the route the figures travel rather than their quality. Ten of the twenty-two series in this area are cited to an RBI figure RELAYED — through a PIB release, an RTI response or a Parliamentary answer — and only three are cited directly to an RBI publication, one of them the Financial Stability Report. Under this instrument’s mirror rule a relayed figure is an account of the release and not the release, so it is graded approximate however sound the underlying number is. That is a statement about what this record holds, not about the RBI: the figures are published, and what is mostly held here is somebody else’s report of them.',
+  federalism:
+    'Every observation in this area is verified — 236 of 236, the only area in the corpus at 100 per cent — and the reason is the class of document these figures come from. Finance Commission reports, CAG certificates and Union Budget annexes are statutory publications with fixed formats and numbered tables; they exist to be cited, and a figure taken from one can be pointed at precisely. Nothing else in this instrument is published that way. THE NOTE IS HERE TO STOP A READING RATHER THAN TO EXPLAIN A WEAKNESS: verified means the figure is the one the document gives, and it does not mean the thing is understood or agreed. This is the best-documented area in the corpus and the one whose central movements — a rising share of a shrinking pool — almost nobody could state. A high grade is not a settled question.',
   welfare:
     'The low verified share here is a fact about what a scheme publishes rather than about how well it is run. Welfare schemes report a CUMULATIVE RUNNING TOTAL — houses sanctioned to date, cards created to date, connections released to date — which is one number republished as it grows, not a series that can be differenced into annual figures. Nine of the nineteen series in this area therefore carry a single observation, against four of twenty-four in infrastructure and three of twenty-three in employment, and six say cumulative in their own title or note. A cumulative total is a real quantity and it answers a different question from the one a reader usually brings: it says how much has been handed out since the scheme began, and not how much was handed out last year.',
   employment:
