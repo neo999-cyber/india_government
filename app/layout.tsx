@@ -107,13 +107,27 @@ export const metadata: Metadata = {
  * nothing and stable, and it is now regrouped. That is a real cost and a small one against the
  * reader who has never been here, who is the reader this whole phase is for.
  *
- * PRIMARY HOLDS ONLY ROUTES THAT EXIST. `search` is named in §10a and is not here, because
- * `link-check` walks every emitted href and a nav link to an unbuilt route is a dead link.
+ * ============================ THE GROUPS MOVED TO THE FOOTER, 2026-08-11 ======================
+ *
+ * **The grouping was right and it was in the wrong place.** Five labelled groups made nineteen links
+ * navigable — for a reader who already knows what `provenance`, `exposure` and `derivations` mean.
+ * It did not reduce what a FIRST-TIME reader has to parse, and **three rows of links in a masthead
+ * is the single strongest signal that a site is a government portal.** The audience arrives from a
+ * forwarded link.
+ *
+ * So the masthead carries four destinations and the groups move whole into the footer directory.
+ * **Nothing is removed, nothing goes behind a disclosure, every route still resolves** — the
+ * grouping work is kept, it simply stops being the first thing a reader meets.
+ *
+ * `search` is in PRIMARY now because `/search/` was built in the same commit. It was absent before
+ * for the reason stated here since phase 18 opened: `link-check` walks every emitted href and a nav
+ * item pointing at an unbuilt route is a dead link.
  */
 const PRIMARY = [
-  { href: '/overview/', label: 'overview' },
-  { href: '/domains/', label: 'explore' },
-  { href: '/stories/', label: 'stories' },
+  { href: '/overview/', label: 'Overview' },
+  { href: '/domains/', label: 'Explore' },
+  { href: '/stories/', label: 'Stories' },
+  { href: '/search/', label: 'Search' },
 ];
 
 const GROUPS: { label: string; items: { href: string; label: string }[] }[] = [
@@ -182,19 +196,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {/* A labelled group, not a disclosure. A disclosure would hide thirteen surfaces
                 behind a control a phone reader has to find, which is the §8.2 defect: a thing
                 that renders correctly and reaches nobody. It wraps instead. */}
+
+
+          </header>
+          <main>{children}</main>
+          {/* THE DIRECTORY. The five groups, whole and unchanged, in the place a reader looks for
+              a site map rather than the place they meet the site. Every route that was in the
+              masthead is here; none moved, none is behind a disclosure. */}
+          <nav className="foot-dir" aria-label="Directory">
             {GROUPS.map((g) => (
-              <nav key={g.label} className="nav nav-evidence" aria-label={g.label}>
-                <span className="nav-group-label">{g.label}</span>
+              <div key={g.label} className="foot-dir-group">
+                <span className="foot-dir-label">{g.label}</span>
                 {g.items.map((item) => (
                   <Link key={item.href} href={item.href}>
                     {item.label}
                   </Link>
                 ))}
-              </nav>
+              </div>
             ))}
+          </nav>
 
-          </header>
-          <main>{children}</main>
           <footer className="foot">
             <span>
               A public record of Indian government commitments and what became of them, from the

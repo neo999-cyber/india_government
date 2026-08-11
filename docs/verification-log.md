@@ -13479,3 +13479,143 @@ what stops this becoming a way to opt out of rule 4b by citation.
 **Gates:** `validate` VALID · `link-check` **28,044** hrefs / 668 pages / 0 dead (was 27,979 —
 the reverse index) · `listing-marks` 2,787 rows / 3,916 marks, control green · `field-render-audit`
 4 layers, 0 invisible · `quotation-identity` 31/31 · `domain-coverage` 14/14, 1137/1137.
+
+---
+
+## 2026-08-11 (eleventh entry) — the masthead cut to four, the domain page rebuilt, and the type scale set
+
+### Operator decisions, recorded
+
+**Share cards: text-only OG tags.** The reasoning in `SHARE-CARDS-SCOPE.md` is accepted — a card
+carries a finding true without the caveat, or carries the qualification instead of the figure. Not
+Satori: leaving static export to gain an image does not solve the framing problem, and the framing
+problem is the real one. **Not built this batch** — the sizing was nav, one domain page, one index,
+one type pass, two reports.
+
+**`noindex` stays, and it is still a choice.** Confirmed present: `vercel.json` serves
+`X-Robots-Tag: noindex, nofollow` on every route. Distribution is pasted links, and the footer
+states that no independent review has been run. Recorded so a later cycle does not read it as an
+oversight and remove it.
+
+### 1. THE MASTHEAD IS FOUR DESTINATIONS
+
+**The grouping was right and it was in the wrong place.** Five labelled groups made nineteen links
+navigable for a reader who already knows the vocabulary; it did not reduce what a first-time reader
+has to parse, and **three rows of links in a masthead is the strongest available signal that a site
+is a government portal.** The audience arrives from a forwarded link.
+
+Masthead: **Overview · Explore · Stories · Search**, at 0.9375rem sans rather than 0.75rem mono in
+three stacked rows. The five groups moved **whole and unchanged** into a footer directory. No route
+changed, nothing went behind a disclosure, and `link-check` walks 30,501 hrefs across 669 pages with
+0 dead.
+
+**`/search/` WAS BUILT RATHER THAN THE ITEM OMITTED**, because a masthead pointing at nothing is the
+dead link `link-check` exists to catch. It is a filter over a complete document — all 679 records
+server-rendered, the control hiding rows — for the same three reasons the listing facets are:
+`listing-marks` cannot see rows that do not exist until hydration, rule 3a's caveats need their one
+renderer, and with scripting off a reader gets the corpus rather than an empty box.
+
+**Its weight was measured and cut rather than accepted.** 1,799 KB raw / **416 KB gzipped** on the
+first build — 2.4× the next heaviest page, on the one destination a phone reader will tap. The cause
+was `data-text`, which carried every summary, note and `whatChanged` into an attribute the page never
+renders: a full second copy of the corpus's prose, for a filter that needs titles. Cut to ids and
+titles: **1,153 KB raw / 178 KB gzipped**, on a par with the ledger index at 172.
+
+### 2. THE DOMAIN PAGE, REBUILT ON THE MOCK'S STRUCTURE
+
+Three stacked tables became: a lead chart · authored periods · a chart grid · records as items ·
+three disclosures. **Nothing was deleted. Completeness was demoted.**
+
+**THE LEAD IS DERIVED, AND THE CRITERION IS PRINTED WHERE IT IS APPLIED.** Longest unbroken run of
+India observations — consecutive periods with no declared break inside them. For macro that is
+`forex-reserves` at 14, **not the mock's CPI inflation**: the instruction was to follow the mock's
+structure and not its data, and a criterion that is overridden when its answer is unfamiliar is not
+a criterion. The chart carries brass ticks at the years this area's own records cluster in, with
+the caption saying in terms that they are **a note of what else was happening, not an explanation of
+the shape** — a reader will draw the causal line unless told not to.
+
+**IT PICKS A DIFFERENT SERIES FROM THE OVERVIEW BOARD'S HEADLINE, DELIBERATELY.** The board pins by
+hand with the governing rule cited (no GDP under rule 5, no NPA ratio under rule 5b); this derives.
+Two leads, two methods, two jobs — and each page says which it is, so neither reads as a ranking.
+
+**"WHAT CHANGED" IS THE PART THAT COULD NOT BE GENERATED, AND ONE OF FOURTEEN IS WRITTEN.** Four
+periods for macro, each naming the ledger ids it draws on, in `lib/domain-copy.ts`. The ids are
+required rather than decorative: **a sentence with no record behind it is an impression**, and they
+make the prose-shadow sweep possible — if one of the cited records is rescored, this prose asserts a
+verdict it no longer holds and no gate can see that.
+
+**The other thirteen render the same page without the periods block** — not a stub and not generated
+filler, which would be a heading over nothing. What the thirteen would take is stated below.
+
+**Records became items**: title in Spectral at 1.22rem, id and date in mono at 0.6875, marks as
+chips, verdict in words, six shown and 51 behind a disclosure. Everything else — all 31 series, all
+57 records as a table, all 34 disputes — behind three disclosures.
+
+**One duplication caught in the first build and fixed**: the wrapper printed the lead's title and
+source, and `SeriesChart` prints both itself. The wrapper now adds a rule and the criterion note and
+nothing else.
+
+### 3. THE SELECTION-CRITERION RULE, in CLAUDE.md
+
+**Rule 9 was doing a second job nobody intended.** Because any lead implies a choice, every page was
+dumping everything at equal weight — which is how a corpus comes to contain everything and say
+nothing. The rule now distinguishes: **a stated, checkable criterion is selection; an unstated
+judgement is ranking.** Three conditions — printed where the selection is made, computed from the
+data, and carrying no merit claim in its wording. It licenses one thing shown first with its reason
+attached, and explicitly does not license a ranked list, a score, or an order presented as merit.
+
+### 4. THE TYPE SCALE
+
+Body 17px, display Spectral at `clamp(2.4rem, 5.5vw, 4rem)`, mono reserved for ids, sources, dates,
+units and gate output. Previously almost everything was 11–13px and most of it mono — **mono is a
+signal meaning a machine-checkable token, and when everything is mono it signals nothing.**
+
+**WHAT BREAKS, AND THE EXCEPTION IS DECLARED RATHER THAN INHERITED.** Dense tables cannot take 17px:
+a 269-row series table at body size is unusable at any width. `.table-wrap table` keeps 0.8125rem,
+written as an exception with its reason — *the point of the scale is that prose is not set at
+footnote size, and a table of 269 series is not prose.* Nothing else shrank back to meet it.
+
+### 5. THE EXPLORE INDEX
+
+Fourteen identical count-boxes became fourteen cards each carrying a one-line character and its lead
+series' current value. **A count is the one fact about an area that cannot tell you what it is.** The
+characters are authored, in `lib/domain-copy.ts`, and are claims about the corpus rather than about
+India. Same fourteen, schema order, nothing sorted.
+
+### 6. THE GUARD-SHAPE CLASS — one gate, and necessarily one
+
+**Swept every output gate. `listing-marks` is the only one bound to markup** — 20 markup-bound
+predicates. `reachability`, `field-render-audit` and `evaluability-wording` all go through
+`pageTextFromHtml` + `norm` and ask *does this string reach this page*, which is shape-agnostic by
+construction. `link-check` binds `href="/…"`, which is a semantic and not a shape.
+
+**AND THE REASON IT IS THE ONLY ONE IS THE REASON IT KEEPS BREAKING.** The others ask a question
+about a PAGE. `listing-marks` asks a question about PROXIMITY — *is this mark in the same row as
+this record's link* — and proximity needs a container. **A container is markup.** Three breaks
+follow from that one property: the card class (`grid-title` against `mini-t`), the listing row, and
+`<td>` against `<li>` for a pair row.
+
+**BINDING BY DATA ATTRIBUTE WOULD WORK AND WOULD MOVE THE FAILURE RATHER THAN REMOVE IT.** Rows
+already carry `data-row` for the facets; a `data-record="<layer>/<id>"` on every row container would
+let the gate select `[data-record]` and stop inferring shape. Cost is ~10 call sites. **But the gate
+would then bind a DECLARATION, and a surface that forgets the attribute becomes invisible — which is
+worse than the present failure**, because tbody/tr/li/card cover most shapes by accident, so today's
+gaps are narrow and loud while a missing attribute is total and silent.
+
+**The recommendation is neither: keep the shape list and make the gap loud.** Report any
+`<a href="/(ledger|series)/…">` on a page that sits inside no recognised row shape. That converts a
+silent blind spot into a named one without requiring every surface to declare, and it would have
+caught all three breaks on the day they landed. **Not built — a contract change, and the sizing was
+two reports.**
+
+### What the other thirteen domain pages would take
+
+The structure is done and generic — lead, grid, records, disclosures all derive. **What is owed is
+the writing**: four periods per area, ~90 words each, each naming the records it draws on. Macro
+took reading 57 records and writing 4 paragraphs. Governance has 110 records and Kashmir 46; poverty
+has 3 and would take one period, not four. Estimated at two areas per batch if the records are read
+properly, which is seven batches — and it is the only part of this that cannot be generated.
+
+**Gates:** `validate` VALID · `link-check` **30,501** hrefs / 669 pages / 20 prefixes / 0 dead ·
+`listing-marks` **3,098** rows / **4,347** marks · `field-render-audit` 4 layers, 0 invisible ·
+`reachability` 1787/1787 · `quotation-identity` 31/31 · `domain-coverage` 14/14, 1137/1137.

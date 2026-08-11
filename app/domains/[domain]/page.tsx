@@ -16,6 +16,9 @@ import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@
 import { DOMAINS, LENSES, LENS_ONLY, type Domain, type Lens } from '@/lib/types';
 import type { Pair, Series } from '@/lib/types';
 import { CaveatRow, RecordMarks, StatusKey, StatusTally, TallyGloss, TierTag } from '@/components/marks';
+import { SeriesChart } from '@/components/SeriesChart';
+import { DOMAIN_CHARACTER, DOMAIN_PERIODS } from '@/lib/domain-copy';
+import type { LedgerRecord } from '@/lib/types';
 
 type Props = { params: Promise<{ domain: string }> };
 
@@ -56,44 +59,69 @@ export default async function DomainPage({ params }: Props) {
   const pairsHere = pairsInDomain(d);
   const pairsLensed = asLens ? pairsUnderLens(asLens) : [];
 
+  /**
+   * THE LEAD, AND THE CRITERION IS THE POINT.
+   *
+   * Chosen for the longest unbroken run of India observations — consecutive periods with no
+   * declared break inside them. **A stated, checkable criterion is not a ranking**, which is why
+   * this page may lead with one series where the rule against ranking would otherwise force it to
+   * dump all thirty-one at equal weight. See CLAUDE.md.
+   *
+   * It picks a DIFFERENT series from the overview board's pinned headline, deliberately: the board
+   * pins by hand with the rule cited (no GDP under rule 5, no NPA ratio under rule 5b), and this
+   * derives. Two leads chosen two ways for two jobs, and each says which it is.
+   */
+  const chartable = (s.length ? s : lensed).filter(
+    (x) => x.points.filter((pt) => pt.country === 'IND' && pt.value !== null).length >= 2,
+  );
+  const ranked = chartable
+    .map((x) => ({ x, run: longestRun(x) }))
+    .sort((a, b) => b.run - a.run || a.x.id.localeCompare(b.x.id));
+  const lead = ranked[0]?.x ?? null;
+  const leadRun = ranked[0]?.run ?? 0;
+  const grid = ranked.slice(1, 5).map((r) => r.x);
+
+  // Years in which a record filed under this area was announced, deduplicated, most-cited first
+  // then earliest. Capped at three: the lead chart has room for three labels and a fourth overlaps.
+  const evYears = new Map<number, number>();
+  for (const r of l) {
+    const y = Number(String(r.date).slice(0, 4));
+    if (Number.isFinite(y)) evYears.set(y, (evYears.get(y) ?? 0) + 1);
+  }
+  const leadEvents = [...evYears.entries()]
+    .sort((a, b) => b[1] - a[1] || a[0] - b[0])
+    .slice(0, 3)
+    .sort((a, b) => a[0] - b[0])
+    .map(([year, n]) => ({ year, label: `${year} · ${n} record${n === 1 ? '' : 's'}` }));
+
+  const periods = DOMAIN_PERIODS[d];
+  const byDate = [...l].sort((a, b) => b.date.localeCompare(a.date));
+  const shownRecords = byDate.slice(0, 6);
+  const restRecords = byDate.slice(6);
+
   return (
     <>
       <p className="crumb">
         <Link href="/">instrument</Link> / <Link href="/domains/">domains</Link> / {d}
       </p>
-      <h1>{DOMAIN_LABELS[d]}</h1>
-
-      {isLens ? (
-        <p className="lede">
-          A cross-cutting lens
-          {lensOnly
-            ? ', and only that — no record may file it as its own subject.'
-            : ', and a subject in its own right — a record may file it as either, never as both.'}{' '}
-          Records read UNDER it, whose subject is another domain, are listed apart from the subject
-          tables and carry the domain they are actually filed under.
-        </p>
-      ) : null}
-
-      <ul className="counts">
-        <li>
-          <span className="figure">{s.length}</span>
-          <span className="label">series</span>
-        </li>
-        {lensed.length ? (
-          <li>
-            <span className="figure">{lensed.length}</span>
-            <span className="label">series under this lens</span>
-          </li>
+      <h1 className="page-lead">{DOMAIN_LABELS[d]}</h1>
+      <p className="standfirst">
+        {DOMAIN_CHARACTER[d]}
+        {isLens ? (
+          <>
+            {' '}
+            It is a cross-cutting lens
+            {lensOnly
+              ? ', and only that — no record may file it as its own subject.'
+              : ', and a subject in its own right — a record may file it as either, never as both.'}
+          </>
         ) : null}
-        <li>
-          <span className="figure">{l.length}</span>
-          <span className="label">ledger records</span>
-        </li>
-        <li>
-          <span className="figure">{p.length}</span>
-          <span className="label">disputes</span>
-        </li>
-      </ul>
+      </p>
+
+      <p className="counts-line mono">
+        {s.length} series{lensed.length ? ` · ${lensed.length} under this lens` : ''} · {l.length}{' '}
+        records · {p.length} disputes
+      </p>
 
       {s.length + lensed.length + l.length === 0 ? (
         <div className="stub">
@@ -103,7 +131,122 @@ export default async function DomainPage({ params }: Props) {
         </div>
       ) : null}
 
-      <h2>Series</h2>
+      {/* ---- THE LEAD. One chart at full width, chosen by a STATED criterion. ---------------- */}
+      {lead ? (
+        <figure className="dlead">
+          {/* NO CAPTION OF ITS OWN. `SeriesChart` renders the title, the figure, the unit, the
+              span and the source line — a wrapper repeating any of them prints it twice, which the
+              first build of this page did with both the title and the source. The rule above and
+              the criterion note below are all this wrapper adds. */}
+          <div className="dlead-rule" />
+          <SeriesChart series={lead} events={leadEvents} highlightLast />
+          <p className="dlead-note">
+            <strong>Chosen for the longest unbroken run in this area, not for importance.</strong>{' '}
+            {leadRun} consecutive observations with no declared break inside them, which is the
+            longest of the {(s.length || lensed.length)} series here.
+            {leadEvents.length > 0 ? (
+              <>
+                {' '}
+                The brass ticks are years in which a record filed under this area was announced —{' '}
+                <strong>a note of what else was happening, not an explanation of the shape.</strong>
+              </>
+            ) : null}
+          </p>
+        </figure>
+      ) : null}
+
+      {/* ---- WHAT CHANGED. Authored, per period, from the records. One of fourteen written. --- */}
+      {periods ? (
+        <section className="periods">
+          <div className="sec-h">
+            <h2>What changed</h2>
+            <p className="sec-note">
+              {periods.length} periods, written from the records in this area. Each names the
+              records it draws on.
+            </p>
+          </div>
+          {periods.map((per) => (
+            <div key={per.years} className="per">
+              <span className="per-yrs mono">{per.years}</span>
+              <div>
+                <h3>{per.heading}</h3>
+                <p>{per.body}</p>
+                <p className="per-from mono">
+                  {per.from.map((id, i) => (
+                    <span key={id}>
+                      {i > 0 ? ' · ' : ''}
+                      <Link href={`/ledger/${id}/`}>{id}</Link>
+                    </span>
+                  ))}
+                </p>
+              </div>
+            </div>
+          ))}
+        </section>
+      ) : null}
+
+      {/* ---- MORE CHARTS. Same criterion, stated again where it is applied. ------------------ */}
+      {grid.length > 0 ? (
+        <section className="charts">
+          <div className="sec-h">
+            <h2>
+              {grid.length} more, side by side
+            </h2>
+            <p className="sec-note">
+              The next longest unbroken runs in this area — a stated criterion, not a ranking. All{' '}
+              {(s.length || lensed.length)} series are below.
+            </p>
+          </div>
+          <div className="cgrid">
+            {grid.map((g) => (
+              <div key={g.id} className="cw">
+                <h4>
+                  <Link href={`/series/${g.id}/`}>{g.title}</Link>
+                </h4>
+                <MiniLine series={g} />
+                <p className="cw-val">
+                  <span className="figure">{lastValue(g)}</span>
+                  <span className="mono t-note">
+                    {g.unit} · {lastPeriod(g)}
+                  </span>
+                </p>
+                <RecordMarks record={g} />
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {/* ---- RECORDS as readable items, grouped by term, a handful shown. -------------------- */}
+      {l.length > 0 ? (
+        <section className="drecords">
+          <div className="sec-h">
+            <h2>{l.length} records</h2>
+            <p className="sec-note">
+              Everything entered in this area, most recent first. Nothing is ranked.
+            </p>
+          </div>
+          {shownRecords.map((r) => (
+            <RecordItem key={r.id} record={r} />
+          ))}
+          {restRecords.length > 0 ? (
+            <details className="more">
+              <summary>The other {restRecords.length} records in this area</summary>
+              <div className="more-inner">
+                {restRecords.map((r) => (
+                  <RecordItem key={r.id} record={r} />
+                ))}
+              </div>
+            </details>
+          ) : null}
+        </section>
+      ) : null}
+
+      <h2 className="sr-only">Everything in this area</h2>
+
+      <details className="more">
+        <summary>All {s.length + lensed.length} series, with spans, bases and gaps</summary>
+        <div className="more-inner">
       {s.length === 0 ? (
         <p className="prose-note">
           No series has this domain as its subject.
@@ -128,8 +271,12 @@ export default async function DomainPage({ params }: Props) {
           <SeriesBlock items={lensed} showSubject />
         </>
       ) : null}
+        </div>
+      </details>
 
-      <h2>Ledger</h2>
+      <details className="more">
+        <summary>All {l.length} records as a table, with verdicts and marks</summary>
+        <div className="more-inner">
       {l.length === 0 ? (
         <p className="prose-note">No ledger records in this domain.</p>
       ) : (
@@ -205,7 +352,12 @@ export default async function DomainPage({ params }: Props) {
         </>
       ) : null}
 
-      <h2>Measurement disputes</h2>
+        </div>
+      </details>
+
+      <details className="more">
+        <summary>{p.length} measurement disputes bearing on this area</summary>
+        <div className="more-inner">
       {p.length === 0 ? (
         <p className="prose-note">No disputes recorded against this domain.</p>
       ) : (
@@ -224,6 +376,8 @@ export default async function DomainPage({ params }: Props) {
           ))}
         </div>
       )}
+        </div>
+      </details>
     </>
   );
 }
@@ -368,5 +522,110 @@ function PairRows({ items, showSubject }: { items: Pair[]; showSubject?: boolean
         </tbody>
       </table>
     </div>
+  );
+}
+
+
+/** Longest run of consecutive India observations with no declared break inside it. */
+function longestRun(x: Series): number {
+  const yearOf = (p: string) => Number(String(p).replace(/^FY/, '').slice(0, 4));
+  const brk = new Set((x.breaks ?? []).map((b) => yearOf(b.period)));
+  const years = x.points
+    .filter((p) => p.country === 'IND' && p.value !== null)
+    .map((p) => yearOf(p.period))
+    .sort((a, b) => a - b);
+  let best = 0;
+  let run = 0;
+  let prev: number | null = null;
+  for (const y of years) {
+    if (prev !== null && (y !== prev + 1 || brk.has(y))) run = 0;
+    run += 1;
+    prev = y;
+    if (run > best) best = run;
+  }
+  return best;
+}
+
+const indiaPoints = (x: Series) =>
+  x.points.filter((p) => p.country === 'IND' && p.value !== null);
+
+function lastValue(x: Series): string {
+  const pts = indiaPoints(x);
+  const v = pts[pts.length - 1]?.value as number | undefined;
+  if (v === undefined) return '—';
+  return Math.abs(v) >= 100000
+    ? v.toLocaleString('en-IN', { maximumFractionDigits: 0 })
+    : String(Number(v.toFixed(2)));
+}
+
+function lastPeriod(x: Series): string {
+  const pts = indiaPoints(x);
+  return pts[pts.length - 1]?.period ?? '—';
+}
+
+/**
+ * A small line for the grid. Deliberately NOT `SeriesChart`: that component carries axes, a source
+ * line, break notes and now the record's marks, all of which belong at full width. This is the
+ * shape only, and the marks render beside it in the card rather than inside the figure.
+ *
+ * Breaks still cut the path — rule 2 does not relax at small size.
+ */
+function MiniLine({ series }: { series: Series }) {
+  const W = 320;
+  const H = 72;
+  const PADX = 3;
+  const yearOf = (p: string) => Number(String(p).replace(/^FY/, '').slice(0, 4));
+  const pts = indiaPoints(series).sort((a, b) => yearOf(a.period) - yearOf(b.period));
+  if (pts.length < 2) return null;
+  const vs = pts.map((p) => p.value as number);
+  const lo = Math.min(...vs);
+  const hi = Math.max(...vs);
+  const span = hi - lo || 1;
+  const x = (i: number) => PADX + (i / (pts.length - 1)) * (W - PADX * 2);
+  const y = (v: number) => H - 4 - ((v - lo) / span) * (H - 12);
+  const brk = new Set((series.breaks ?? []).map((b) => yearOf(b.period)));
+  const segs: string[] = [];
+  let cur: string[] = [];
+  pts.forEach((p, i) => {
+    if (brk.has(yearOf(p.period)) && cur.length) {
+      segs.push(cur.join(' '));
+      cur = [];
+    }
+    cur.push(`${cur.length === 0 ? 'M' : 'L'} ${x(i).toFixed(1)} ${y(p.value as number).toFixed(1)}`);
+  });
+  if (cur.length) segs.push(cur.join(' '));
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className="cw-line" role="img" aria-label={`${series.title}, ${pts[0].period} to ${pts[pts.length - 1].period}`}>
+      {segs.map((dd, i) => (
+        <path key={i} d={dd} className="spk-line" />
+      ))}
+      <circle cx={x(pts.length - 1)} cy={y(pts[pts.length - 1].value as number)} r={3} className="spk-dot" />
+    </svg>
+  );
+}
+
+/**
+ * A record as a readable item rather than a table row: title in serif at reading size, id and date
+ * small, marks as chips, verdict in words.
+ *
+ * The whole `RecordMarks` set renders — rule 4b binds this exactly as it binds a table row, and
+ * `listing-marks` reads it as a listing card. The caveat renders in full inside the item, which is
+ * why the item is full-width rather than a grid cell.
+ */
+function RecordItem({ record }: { record: LedgerRecord }) {
+  return (
+    <article className="drec">
+      <div className="drec-main">
+        <Link href={`/ledger/${record.id}/`} className="drec-title">
+          {record.title}
+        </Link>
+        <p className="drec-meta mono">
+          {record.id} · {formatDateRange(record.date, record.dateEnd)} ·{' '}
+          {record.domains.map((x) => DOMAIN_LABELS[x]).join(', ')}
+        </p>
+        <RecordMarks record={record} />
+      </div>
+      <p className="drec-verdict">{ASSESSMENT_LABELS[record.assessment]}</p>
+    </article>
   );
 }

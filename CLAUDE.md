@@ -498,6 +498,37 @@ axis that shares the spelling by accident. Declarations are compared as sets; **
 `CONSTRAINT_OMISSIONS` — that is what forced `undated-commitment` into the rule requiring `caseFor`
 and `caseAgainst`, which a set comparison alone would have let slip.
 
+**SELECTING BY A STATED, CHECKABLE CRITERION IS NOT RANKING — ruled by the operator 2026-08-11, and
+it unblocks every page in the instrument.** Rule 9 forbids a composite, a verdict number and a
+ranking. That rule was doing a second job nobody intended: **because any lead implies a choice, every
+page was dumping everything at equal weight** — three stacked tables on a domain page, thirty-one
+charts of equal size, and nothing said first because saying anything first looked like ranking. The
+result is a corpus that contains everything and says nothing, which is the opposite of what rule 9
+protects.
+
+**THE DISTINCTION IS WHETHER THE CRITERION IS STATED AND CHECKABLE, NOT WHETHER SOMETHING COMES
+FIRST.** *"Chosen for the longest unbroken run in this area, not for importance"* is a fact about
+the data that a reader can verify and disagree with. *"The most important series in this area"* is a
+judgement with nothing behind it. **The first is selection; only the second is ranking.**
+
+Three conditions, all required. **The criterion is printed where the selection is made**, not in a
+method page — a reader meeting the lead must meet the reason in the same glance. **It is computed
+from the data**, so a later cycle can re-derive it and get the same answer. **And it does not
+smuggle a merit claim**: longest run, most recent, largest N, earliest — all describe the record;
+*best*, *most significant*, *headline* do not.
+
+**WHAT THIS DOES NOT LICENSE.** It is not an exception to rule 9 and does not permit a ranked list, a
+score, or an order presented as merit. The domains index stays in schema order with fourteen equal
+cards; the overview board stays uniform and unsorted. What it permits is ONE thing shown first with
+its reason attached — and where the reason cannot be stated in a sentence a reader can check, the
+old behaviour is correct and everything shows at equal weight.
+
+**A pinned editorial choice is the other legitimate form and is NOT this one.** The overview board's
+headline series are hand-picked with the governing rule cited in the source — no GDP under rule 5,
+no NPA ratio under rule 5b. That is an authored decision defended by a rule; this is a derived
+selection defended by a criterion. **Both are honest and they are different, so each says which it
+is** rather than leaving a reader to assume the page ranked something.
+
 **A MARK CAN GO MISSING IN THREE DISTINCT SHAPES, AND A GUARD USUALLY BINDS ONE — named 2026-08-11
 after the third was found.** Rule 4b requires a declaration to reach a reader; the ways it fails to
 are not one class:

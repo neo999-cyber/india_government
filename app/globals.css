@@ -2561,3 +2561,404 @@ tbody > tr:has(+ .caveat-row) > td {
 .rests-sub {
   margin-top: 1.5rem;
 }
+
+/* ============================================================================================
+   THE MASTHEAD IS FOUR DESTINATIONS AND THE DIRECTORY IS IN THE FOOTER — 2026-08-11.
+   ============================================================================================ */
+
+/* Four items, at reading size, in the site's own voice. The old masthead set them at 0.75rem mono
+   in three stacked rows, which is the portal signal the operator named. */
+.nav-primary {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  gap: 1.6rem;
+}
+
+.nav-primary a {
+  color: var(--ink-2);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+
+.nav-primary a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--rule);
+}
+
+/* The directory. Five groups, unchanged, where a reader looks for a site map. */
+.foot-dir {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 1.5rem 2rem;
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.foot-dir-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: flex-start;
+}
+
+.foot-dir-label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 0.2rem;
+}
+
+.foot-dir a {
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+.foot-dir a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+/* Event markers on a domain lead chart: a record in this area was announced in this year. Brass,
+   dashed, and behind the line — a mark, never a seam, and never an explanation of the shape. */
+.chart-event {
+  stroke: var(--mark);
+  stroke-width: 1.2;
+  stroke-dasharray: 2 4;
+}
+
+.chart-event-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: var(--mark-ink);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ============================================================================================
+   THE TYPE SCALE — 2026-08-11. The scale was doing more damage than the palette.
+   ============================================================================================
+
+   Almost everything on the live pages was 11-13px and most of it was mono: an instrument register
+   read as a terminal dump, and prose set at the size of a footnote. Mono is a SIGNAL — it means a
+   machine-checkable token — and when everything is mono it signals nothing.
+
+   THE SCALE. Serif display at real size · body 17px · mono reserved for ids, sources, dates, units
+   and gate output. Dense tables keep their own smaller size rather than the page shrinking back to
+   meet them; that is the exception and it is declared, not inherited. */
+body {
+  font-size: 17px;
+  line-height: 1.62;
+}
+
+.page-lead {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.022em;
+  margin: 0.6rem 0 1rem;
+}
+
+.standfirst {
+  font-size: 1.22rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 60ch;
+  margin: 0 0 1.4rem;
+}
+
+.counts-line {
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin: 0 0 2.6rem;
+}
+
+/* Section heads: a rule, a serif heading, and a right-hand note that carries the criterion. */
+.sec-h {
+  border-top: 1px solid var(--ink);
+  padding-top: 0.85rem;
+  margin: 4.5rem 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.sec-h h2 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.sec-note {
+  font-size: 0.8125rem;
+  color: var(--ink-dim);
+  max-width: 36ch;
+  text-align: right;
+  margin: 0;
+}
+
+/* The lead chart. */
+.dlead {
+  margin: 3rem 0 0;
+}
+
+.dlead-rule {
+  border-top: 1px solid var(--ink);
+  margin-bottom: 1.4rem;
+}
+
+.src {
+  font-size: 0.6875rem;
+  color: var(--ink-dim);
+  letter-spacing: 0.02em;
+}
+
+.dlead-note {
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+  max-width: 64ch;
+}
+
+/* What changed — the authored periods. */
+.per {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 1.9rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.per:last-child {
+  border-bottom: 0;
+}
+
+.per-yrs {
+  font-size: 0.78rem;
+  color: var(--mark-ink);
+  letter-spacing: 0.08em;
+  padding-top: 0.35rem;
+}
+
+.per h3 {
+  font-size: 1.35rem;
+  margin: 0 0 0.4rem;
+}
+
+.per p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 1.03rem;
+  max-width: 62ch;
+}
+
+.per-from {
+  margin-top: 0.6rem !important;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-dim) !important;
+}
+
+/* The chart grid. */
+.cgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+
+.cw {
+  background: var(--bg);
+  padding: 1.5rem 1.6rem 1.4rem;
+}
+
+.cw h4 {
+  font-size: 1.1rem;
+  margin: 0 0 0.7rem;
+}
+
+.cw h4 a {
+  text-decoration: none;
+}
+
+.cw-line {
+  width: 100%;
+  height: 72px;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.cw-val {
+  margin: 0 0 0.4rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.cw-val .figure {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* Records as items. */
+.drec {
+  display: grid;
+  grid-template-columns: 1fr 11rem;
+  gap: 1.75rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  align-items: start;
+}
+
+.drec-title {
+  font-family: var(--font-serif);
+  font-size: 1.22rem;
+  line-height: 1.3;
+  text-decoration: none;
+  display: block;
+}
+
+.drec-title:hover {
+  color: var(--mark-ink);
+}
+
+.drec-meta {
+  font-size: 0.6875rem;
+  color: var(--ink-dim);
+  letter-spacing: 0.04em;
+  margin: 0.35rem 0 0;
+}
+
+.drec-verdict {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  text-align: right;
+  margin: 0;
+  color: var(--ink-2);
+}
+
+/* Disclosures: completeness demoted, never deleted. */
+details.more {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+details.more > summary {
+  cursor: pointer;
+  padding: 1rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.more-inner {
+  padding-bottom: 1.6rem;
+}
+
+/* THE DECLARED EXCEPTION. Dense tables keep their own size rather than dragging the page down to
+   meet them — the whole point of the scale is that prose is not set at footnote size, and a table
+   of 269 series is not prose. */
+.table-wrap table {
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 860px) {
+  .per,
+  .drec {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .drec-verdict {
+    text-align: left;
+  }
+  .sec-note {
+    text-align: left;
+  }
+}
+
+/* The explore index. Cards that say what an area IS, not how much of it there is. */
+.dcards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin: 2rem 0 2.5rem;
+}
+
+.dcard {
+  background: var(--bg);
+  padding: 1.5rem 1.6rem 1.3rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.dcard:hover {
+  background: var(--surface);
+}
+
+.dcard-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.dcard-char {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+.dcard-lead {
+  margin: 0.3rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.45rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--rule-soft);
+}
+
+.dcard-lead .figure {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.dcard-lead-name {
+  flex-basis: 100%;
+  font-size: 0.8125rem;
+  color: var(--ink-dim);
+}
+
+.dcard-none {
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+
+.dcard-counts {
+  margin: 0;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
