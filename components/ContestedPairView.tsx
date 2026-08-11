@@ -28,11 +28,24 @@ function Instrument({
   series,
   label,
   alreadyPooled,
+  caveatsAlreadyShown,
 }: {
   series: Series;
   label: string;
   /* Declarations an earlier pair on the same page already rendered — see `pooledByPair`. */
   alreadyPooled?: ReadonlySet<unknown>;
+  /**
+   * Series ids whose caveat an EARLIER pair on this page already rendered.
+   *
+   * **A series can be a side of two contested pairs, and both render both sides in full** — so on
+   * its own page its caveat appeared twice, once per pair. `alreadyPooled` had solved exactly this
+   * for absences and stopped at the caveat: the sibling declaration, one field over, left behind.
+   * Two series were affected, `jk-civilians-killed-composite` and `jk-organised-stone-pelting`.
+   *
+   * **No gate reaches it.** `listing-marks` binds *each declaration at most once per page* to
+   * listing ROWS, and a pair side is not a row.
+   */
+  caveatsAlreadyShown?: ReadonlySet<string>;
 }) {
   const point = latest(series);
   return (
@@ -54,7 +67,9 @@ function Instrument({
         </p>
       ) : null}
       <SourceLine source={series.source} tier={series.tier} />
-      {series.caveat ? <CaveatFlag caveat={series.caveat} /> : null}
+      {series.caveat && !caveatsAlreadyShown?.has(series.id) ? (
+        <CaveatFlag caveat={series.caveat} />
+      ) : null}
       <SeriesTable series={series} />
       {series.notes ? <p className="prose-note">{series.notes}</p> : null}
       {/* A series that is a side of TWO pairs has its declarations rendered by both views —
@@ -72,6 +87,7 @@ export function ContestedPairView({
   labels,
   reconciliation,
   alreadyPooled,
+  caveatsAlreadyShown,
 }: {
   pair: Pair;
   /** Both series, in the pair's declared order — which is not precedence. */
@@ -82,6 +98,18 @@ export function ContestedPairView({
   reconciliation?: string;
   /** Absence entries an earlier pair on the same page already rendered. See `pooledByPair`. */
   alreadyPooled?: ReadonlySet<unknown>;
+  /**
+   * Series ids whose caveat an EARLIER pair on this page already rendered.
+   *
+   * **A series can be a side of two contested pairs, and both render both sides in full** — so on
+   * its own page its caveat appeared twice, once per pair. `alreadyPooled` had solved exactly this
+   * for absences and stopped at the caveat: the sibling declaration, one field over, left behind.
+   * Two series were affected, `jk-civilians-killed-composite` and `jk-organised-stone-pelting`.
+   *
+   * **No gate reaches it.** `listing-marks` binds *each declaration at most once per page* to
+   * listing ROWS, and a pair side is not a row.
+   */
+  caveatsAlreadyShown?: ReadonlySet<string>;
 }) {
   if (instruments.length < 2) return null;
 
@@ -110,7 +138,13 @@ export function ContestedPairView({
 
       <div className="cp-pair">
         {instruments.map((s, i) => (
-          <Instrument key={s.id} series={s} label={labels[i] ?? ''} alreadyPooled={alreadyPooled} />
+          <Instrument
+            key={s.id}
+            series={s}
+            label={labels[i] ?? ''}
+            alreadyPooled={alreadyPooled}
+            caveatsAlreadyShown={caveatsAlreadyShown}
+          />
         ))}
       </div>
 

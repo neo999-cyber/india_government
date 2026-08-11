@@ -41,6 +41,7 @@ export function SeriesChart({
   takeaway,
   highlightLast = true,
   events,
+  marksHostedByPage = false,
 }: {
   series: Series;
   /** One plain sentence stating what the chart shows. Authored per use, never derived. */
@@ -56,6 +57,26 @@ export function SeriesChart({
    * a mark was made — and never solid, which is the seam.
    */
   events?: { year: number; label: string }[];
+  /**
+   * SET ONLY WHERE THE HOST PAGE RENDERS THE SAME RECORD'S MARKS ITSELF — which today is the
+   * series' own page and nowhere else.
+   *
+   * **Added 2026-08-11 after this chart landed on `/series/<id>/` and put the caveat on 130 pages
+   * twice**: once here and once in the page's own qualification section. Rule 3a says a caveat
+   * renders wherever the record appears, in full; it does not say twice on one page, and the
+   * duplicate pushed the reading order backwards — the inline copy arrived before the key figures,
+   * ahead of the layer it belongs to.
+   *
+   * **NO GATE SAW IT.** `listing-marks` binds *each declaration at most once per page* to listing
+   * ROWS, and on a record's own page neither copy is a row; `field-render-audit` asks whether the
+   * field reaches the page, and it reached it twice. Same guard-scope shape as the embed defect
+   * this component was built to fix, arriving from the opposite direction — that fix made the chart
+   * carry marks everywhere, and this is the one surface where carrying them is a duplicate.
+   *
+   * **The default is false, so every embedded use keeps its marks.** A host that suppresses them
+   * must render them itself; this flag is a statement about the page, not a way to drop a caveat.
+   */
+  marksHostedByPage?: boolean;
 }) {
   const pts = series.points
     .filter((p) => p.country === 'IND')
@@ -139,7 +160,7 @@ export function SeriesChart({
             its OWN record's page, and it does. **A record EMBEDDED as a feature is outside both
             scopes** — which is the guard-scope shape this corpus keeps paying for, in a third
             position: not the projection, not the listing, but the embed. */}
-        <RecordMarks record={series} />
+        {marksHostedByPage ? null : <RecordMarks record={series} />}
       </figcaption>
 
       <div className="chart-frame">

@@ -24,6 +24,26 @@ open is one writing item and two standing hazards, below.
 
 ## OPEN ITEMS
 
+### DESIGN-REVISION.md — items 2, 3, 4, and 251 authored findings
+
+`DESIGN-REVISION.md` is in this directory. **§7 records eleven rejections with the rule each breaks;
+they are not re-derived and not re-proposed.**
+
+**Item 1, the series page template, is DONE** — §3's order in place on all 269 pages, the chart added
+(there had never been one), the caveat moved without being changed, id and tier demoted, and the
+"total change" figure withheld on the 97 series where a declared break sits inside the span.
+
+**Carrying forward:**
+- **251 authored findings.** 18 of 269 series carry one — 5 harvested from surfaces that already had
+  an authored sentence, 13 domain leads by longest unbroken run. A series without one renders without
+  the line. Same work and same rate as the domain periods.
+- **Item 2 — search results as cards.** §4's caveat-preview question needs the ruling it names before
+  it is built; the file's own recommendation is the safer of the two options.
+- **Item 3 — topic-page local tabs**, each a URL.
+- **Item 4 — nav labels and the two landing additions.**
+
+
+
 ### The domain period prose — 7 of 14 areas remain
 
 **This is the only part of the design work that cannot be generated.** Each area takes a set of
