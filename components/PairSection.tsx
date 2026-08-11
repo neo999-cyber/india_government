@@ -32,6 +32,18 @@ export function contestedPairRendersBothSeries(pair: Pair): boolean {
  * one what the last already showed. Kept beside the view it describes: two places computing "what
  * this pair pools" is the drift this component exists to prevent.
  */
+/**
+ * Series ids this pair's view will render a CAVEAT for. Beside `pooledByPair`, which answers the
+ * same question for absences: two places computing what a pair shows is the drift both exist to
+ * prevent, and the caveat half was missing until 2026-08-11.
+ */
+export function caveatsShownByPair(pair: Pair): string[] {
+  if (!contestedPairRendersBothSeries(pair)) return [];
+  return [pair.a, pair.b]
+    .map((side) => resolvePairSide(side))
+    .flatMap((r) => (r?.kind === 'series' && r.series.caveat ? [r.series.id] : []));
+}
+
 export function pooledByPair(pair: Pair): unknown[] {
   const a = resolvePairSide(pair.a);
   const b = resolvePairSide(pair.b);
@@ -53,9 +65,12 @@ export function pooledByPair(pair: Pair): unknown[] {
 export function PairSection({
   pair,
   alreadyPooled,
+  caveatsAlreadyShown,
 }: {
   pair: Pair;
   alreadyPooled?: ReadonlySet<unknown>;
+  /** Series ids whose caveat an earlier pair on this page rendered. See ContestedPairView. */
+  caveatsAlreadyShown?: ReadonlySet<string>;
 }) {
   const a = resolvePairSide(pair.a);
   const b = resolvePairSide(pair.b);
@@ -73,6 +88,7 @@ export function PairSection({
             .find((note): note is string => !!note) ?? undefined
         }
         alreadyPooled={alreadyPooled}
+        caveatsAlreadyShown={caveatsAlreadyShown}
       />
     );
   }

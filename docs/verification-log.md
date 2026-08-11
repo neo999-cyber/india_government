@@ -15257,3 +15257,114 @@ detects an unused id only when that id's verdict token is absent from the whole 
 3,553 → **3,716 rows / 5,247 marks**. `unrecognised-rows` **0**, unchanged.
 `field-render-audit` 0 invisible, `rendered-space` 0. Every quadrant on five spot-checked years
 re-derived independently of the page and matching.
+
+---
+
+## 2026-08-11 (thirtieth entry) — DESIGN-REVISION ITEM 1: the series page template
+
+### THE PREMISE CHECK FOUND SOMETHING WORSE THAN THE BRIEF DESCRIBED
+
+§3 says the page "eventually" reaches a chart. **There was never a chart.** Zero `<svg>` on all 269
+series pages. `SeriesChart` shipped on the homepage, the domain pages and a story — **on every
+surface except the 269 pages about the series themselves.** The component existed, the primary
+surface did not use it, and no gate asks whether a page renders a chart.
+
+The rest of premise 1 holds exactly. The page opened: breadcrumb, title, **record id**, unit,
+calendar, **tier**, provenance refs, **source line**, **status key** (four rows of legend), **full
+blocking caveat** — and then a data table.
+
+Premise 2 corrected: **129 of 269 series carry a caveat, 48 per cent.** 140 render no caveat block
+at all, so "a large blocking caveat" describes just under half the pages.
+
+### WHAT WAS BUILT
+
+§3's order, in place on all 269: title → **authored finding** → **chart** → **key figures** →
+what this tells us → **caveat, in full** → source, status, id and tier → table → related.
+
+**The caveat moved and did not change.** Not shortened, not collapsed — position only, which is a
+reading-order fix of the same kind rule 4b made for absences. **Record id and tier stay**, demoted
+to secondary metadata beneath the qualification rather than removed.
+
+**ONE OF §3's FOUR KEY FIGURES IS A RULE-2 TRAP AND IS GUARDED.** "Total change" across a declared
+break is splicing. Where a break sits inside a series' own span the change is **not computed and not
+shown**; the cell says which seam prevents it. **That is 97 of 269 series, and the count matches an
+independent derivation exactly.** 139 compute a change, 33 have one observation. A fourth figure that
+cannot honestly be computed is not a missing feature.
+
+### THE AUTHORED FINDINGS: 18 OF 269, AND WHAT THE OTHER 251 DO
+
+**A series with no finding renders without the line**, exactly as a domain without periods renders
+without the block. Nothing is generated into the gap.
+
+Two groups, by a stated and re-derivable criterion, neither a merit claim:
+- **5 harvested** — series that already carried an authored sentence on the homepage or as the
+  deliberate stop. **Reused verbatim rather than rewritten**, so the two surfaces cannot drift into
+  saying different things about one series.
+- **13 domain leads** — one per area by the longest unbroken run of India observations, the
+  criterion the domain pages already derive and print. Thirteen distinct across fourteen areas;
+  `jk-security-forces-killed` leads both `defence` and `kashmir`.
+
+**251 carry forward.** At roughly two areas' worth per batch this is several batches of writing, and
+it is the same work as the domain periods.
+
+### TWO PRE-EXISTING DUPLICATE CAVEATS, FOUND AND CLOSED
+
+Measured before and after with the same method: **HEAD rendered 127 series' caveats once and 2
+twice; it is now 129 once, 0 twice, 0 missing.**
+
+Both were guards bound to one pair on a page that renders several:
+
+- **`contestedPairRendersCaveat` tested `sidePairs[0]`** while `pooledBefore`, two lines above it,
+  already iterated every pair. Same page, same multi-pair case, one loop widened and its neighbour
+  left behind. **Widening it to `some()` then broke it the other way** — that asks *does any pair
+  render both its series*, not *does any pair render THIS series' caveat* — so the test now names
+  the series. A suppressed caveat that nothing renders is a rule 3a breach and strictly worse than
+  the duplicate.
+- **`ContestedPairView` had `alreadyPooled` for absences and nothing for the caveat.** A series that
+  is a side of two contested pairs had its caveat rendered by both. `caveatsShownByPair` now sits
+  beside `pooledByPair`, which answers the same question for absences.
+
+**And one duplicate I introduced and closed in the same batch:** putting the chart on the page made
+`SeriesChart` render the record's marks on a page that renders them itself — **130 pages, caveat
+twice.** `marksHostedByPage` fixes it, default false so every embedded use keeps its marks. That is
+the embed guard-scope defect arriving from the opposite direction: the fix that made the chart carry
+marks everywhere met the one surface where carrying them is a duplicate.
+
+**No gate sees any of these three.** `listing-marks` binds *each declaration at most once per page*
+to listing ROWS, and on a record's own page none of these copies is a row.
+
+### THREE OF MY OWN CHECKERS WERE WRONG BEFORE ONE WAS RIGHT
+
+Worth recording because the rule about this already exists and I broke it three times in one batch.
+
+1. **A hand-rolled normaliser** reported 4 caveats missing that were rendering perfectly. CLAUDE.md
+   documents exactly this — *four ad-hoc checks in ONE session reported a correct page broken*.
+2. **A first-70-characters needle** double-counted `jk-organised-stone-pelting`, because **L-0118's
+   caveat opens with the same words** and L-0118 sits in that page's cited-by grid. Two records
+   correctly rendering their own caveat is not a duplicate.
+3. **An element regex** `class="caveat-block"[\s\S]{0,4000}?</div>` stopped at the first NESTED
+   `</div>` and reported 29 missing.
+
+**The one that survived: the FULL caveat text as the needle, through `tools/lib/page-text.mjs`.** A
+whole caveat cannot collide with another record's and cannot be truncated by markup. **Every
+intermediate number in this entry's history was wrong in the loud direction** — reporting defects
+that did not exist — which is the safer direction and still cost three passes.
+
+### §9 CHECKS
+
+`unrecognised-rows` **0**, unchanged — the new chart and key-figure strip introduce no record links.
+No new container shape: the key figures are a `<dl>` carrying no record link, so `listing-marks` has
+nothing to bind. **Enum hand read over the 18 findings: zero assessment values appear in any of
+them**, zero dangling ids, zero markdown.
+
+**Mobile at 375 px:** 0 overflow, reading order confirmed as h1 → finding → chart → key figures →
+caveat → metadata → table, caveat rendered at full 637 characters with no clamp, key figures
+stacking to one column.
+
+### Gate line
+
+27 steps green. `link-check` **36,442 hrefs across 683 pages, 0 dead**. `listing-marks` 3,716 rows /
+5,247 marks and `field-render-audit` 0 invisible, both unchanged. `rendered-space` 0.
+
+**Carries forward: 251 authored findings, and DESIGN-REVISION items 2 (search), 3 (topic tabs) and
+4 (nav labels and landing additions), none started.**
