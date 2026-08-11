@@ -139,8 +139,24 @@ const pages = [];
  */
 const EXEMPT_ROUTES = new Set(['/unmeasured/']);
 
-/** A pair row: its first cell is a pair id, and the row is about the pair, not the linked record. */
-const isPairRow = (blk) => /<td[^>]*>PR-\d+<\/td>/.test(blk);
+/**
+ * A PAIR ROW: the row is about the PAIR, and the record it links is where the pair lives.
+ *
+ * The exemption is narrow and it has to be. A pair row names a `PR-xx` as its own identifier and
+ * links a series or ledger page because that is the pair's home — the linked record is the ADDRESS,
+ * not the subject, so requiring that record's marks here would demand a caveat about a series the
+ * row is not making a claim about.
+ *
+ * WIDENED 2026-08-11 FROM `<td>PR-xx</td>` TO ANY LEADING CELL. The predicate was written against
+ * the one shape that existed and the reverse index on the ledger page uses `<li>` with a `<span>`,
+ * so the gate demanded series marks on 75 rows that are about pairs. **Third time a guard has bound
+ * one shape of a thing that has several** — the card class, the listing row, and now this — so it
+ * matches the ELEMENT-WRAPPED id generally rather than a tag by name.
+ *
+ * It still requires the id to be wrapped in its own element: a `PR-xx` mentioned inside prose does
+ * not exempt a row, which is what stops this becoming a way to opt out of rule 4b by citation.
+ */
+const isPairRow = (blk) => /<(td|span|dt|strong)[^>]*>\s*PR-\d+\s*<\/\1>/.test(blk);
 
 /**
  * Listing rows on a page, each counted ONCE.

@@ -2540,3 +2540,24 @@ tbody > tr:has(+ .caveat-row) > td {
 .mini .absence-count {
   margin-top: 0.3rem;
 }
+
+/* The reverse index: pairs that name this record. A list, not a grid — each row is one link and a
+   sentence, and a card would promise a summary the pair's own page gives better. */
+.naming-pairs {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.naming-pairs li {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  padding: 0.4rem 0;
+  border-top: 1px solid var(--rule-soft);
+  font-size: 0.875rem;
+}
+
+.rests-sub {
+  margin-top: 1.5rem;
+}
