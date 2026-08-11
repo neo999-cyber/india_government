@@ -23,7 +23,8 @@ phase table. Nothing there is withdrawn by this file except the queue rows resta
 | `field-render-audit` pairs non-prose | closed | **CLOSED 2026-08-11.** Cause was `$ref`: `pairs.a`/`b` are `{"$ref":"#/$defs/side"}` and `leafFields` never resolved refs, so it pushed them as opaque leaves. Fired at **16 undeclared** before the fix. Now 1 declared rendering + 15 exemptions, 2 of which are DEBTS |
 | `withdrawn-wording` quotation-identity | closed | **CLOSED 2026-08-11** by `tools/quotation-identity.mjs`, in the build. **31 of 31 quotations across 29 fields match a value the same field actually held.** Gates from its first run because the measured backlog is zero |
 | seam-span | closed | **THE QUEUE ENTRY WAS STALE.** It has gated as a ratchet since 2026-08-06 and is in the build; 26 = 12 frozen-and-judged + 14 out of scope, nothing untriaged. **The number is stable because a ratchet's number is stable.** The 14 are a permanent stated scope limit and must not be re-entered as a queue item — the reasoning is in the tool's own header |
-| **environment: 0 of 15 series carry a caveat** | **RESEARCH SESSION — not design, not this batch** | **OPEN.** See the cold-start brief below |
+| environment: 0 of 15 series carry a caveat | closed | **CLOSED 2026-08-11 — ZERO IS CORRECT.** Explanation (a): the fifteen genuinely need no caveat. Four independent measurements agree — environment's LEDGER rate is 50% (7/14, the corpus rate) so no author forgot the field; **7 of 15 carry the disambiguation IN THE TITLE**, which renders on every listing surface (verified on four surfaces for `res-capacity-share`); `breaks[]`, `provenanceRefs` and `higherIsBetter: null` carry the rest; and education's 91% is a **different kind of object** — use prohibitions and tiering disputes that no title could carry. **Phase 15 was right; the rate needed explaining, not fixing.** Recorded in the log so it is not re-opened a fourth time |
+| **NPA basis does not travel — rule 5b fails on 3 of 5 series** | **OPERATOR — record change, STOP** | **OPEN, and it is the defect the distribution hunt actually found.** Rule 5b requires the reporting basis *wherever the figure appears*. `scb-gross-npa` and `scb-gross-npa-amount` carry it in the title and comply. **`pvt-gross-npa`** states *"BASIS NOT STATED... Cannot share an axis with any other NPA series... Blocking item"* **in `notes`, which reaches the record's own page and none of the domain page, series index or overview board** — verified. **`psb-gross-npa`** states GLOBAL OPERATIONS in notes only. **`net-npa`** states no basis anywhere. Fix is a caveat, or the title on environment's own pattern — operator's call because it is a record change |
 
 ### The two debts the pairs extension exposed, recorded rather than folded in
 
@@ -42,7 +43,11 @@ added only to satisfy a gate is worse than the gap it closes.
 
 ---
 
-## COLD-START BRIEF — environment's caveat rate
+## COLD-START BRIEF — environment's caveat rate  ·  ANSWERED 2026-08-11, KEPT FOR THE REASONING
+
+**The answer is (a): the fifteen genuinely need no caveat.** The brief below is left in place
+because it named the three explanations and the evidence chose between them — deleting it would
+leave the conclusion with no argument attached, and this question has been re-opened three times.
 
 **The observation.** Environment & energy holds 15 series and **0 of them carry a `caveat`**,
 against a corpus rate of about 48 per cent. It is the only domain at zero. Raised in phase 17,
