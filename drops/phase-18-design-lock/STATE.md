@@ -30,9 +30,10 @@ open is one writing item and two standing hazards, below.
 periods, each with a heading, two or three sentences written from that area's records, and a `from`
 list naming the ledger ids the period draws on. Authored in `lib/domain-copy.ts`.
 
-**Written: `macro`, `education`, `environment`, `infrastructure`, `employment`, `welfare`,
-`human-development`. Remaining: `banking`, `poverty`, `governance`, `kashmir`, `federalism`,
-`foreign`, `defence`.** The other seven render the same page without the periods block — not a stub
+**CLOSED 2026-08-11 at fourteen of fourteen.** All areas carry periods:
+`macro`, `education`, `environment`, `infrastructure`, `employment`, `welfare`,
+`human-development`, `banking`, `poverty`, `federalism`, `foreign`, `governance`, `defence`,
+`kashmir`. The other seven render the same page without the periods block — not a stub
 and not a placeholder; the section simply is not there, which is honest where a heading over
 generated filler would not be. `lib/domain-copy.ts` restates this count on every change.
 
@@ -56,6 +57,16 @@ Roughly two areas per batch. **Governance and Kashmir go last**, per the operato
 
 ---
 
+## RAISED AND THEN RESOLVED, 2026-08-11 — L-0114's `assessmentNote`
+
+**RESOLVED in the same batch that raised it.** The clause now reads *"and the Union ministry
+publishes the term favourable to it while refusing the term unfavourable to it"*, with the withdrawn
+wording quoted in the same field. `quotation-identity` verified the quotation against git history —
+32 attributed quotations, all matching a value the same field held — and `withdrawn-wording` reports
+0 withdrawn claims still asserted elsewhere. **The verdict is unchanged at `contested` and no figure
+moved.** The statement below is left standing as raised, because the sequence is the point.
+
+---
 ## RAISED 2026-08-11, BEFORE BEING RESOLVED — L-0114's `assessmentNote`
 
 **The defect is stated here before the edit is made, per the narrow source-edit amendment**, so that
