@@ -13215,3 +13215,140 @@ which cost eleven pairs and was found by hand.
 names it). The only real question is whether `status` should exist at all once the property is
 derivable — a gate proving the field always agrees with a derivation is also an argument that the
 field is redundant. **Not built: a contract change.**
+
+---
+
+## 2026-08-11 (ninth entry) — the queue cleared, and the projection sweep found the same class in a third position
+
+### 1. `status: "live"` deleted from twelve records
+
+**Declared numstat: 0 insertions, 12 deletions. Actual: 2 insertions, 14 deletions — and the
+difference is real, not a miss.** Ten records carry `status` mid-object with a trailing comma; **two
+carry it as the LAST key of the object**, so removing the line requires the preceding `],` to become
+`]`. That is the two extra insertions and two extra deletions. The assert-before-write was on the
+PARSED content, and it held exactly: twelve `status` keys removed, nothing else moved, both
+`declared-pending` values untouched, `provenanceRefs` on the two last-key records intact.
+
+**Worth keeping**: the first attempt asserted `count == 12` on one line form, **found 10, and
+aborted before writing.** The second form would have been silently mangled by a looser match — the
+JSON would still have parsed, because dropping `"status": "live"` after a comma leaves valid JSON;
+what would have broken is nothing, which is the dangerous kind.
+
+### 2. The correspondence gate — `pair-status`, inside `validate`
+
+**Folded into `checkIntegrity` rather than added as a step**, so it costs no build stage. It computes
+renderability the same way the existing `pair-side` branches do — exactly one source per side, and
+that source resolving — and asserts `renders === (status !== 'declared-pending')` in both directions.
+
+**WHY `status` SHOULD EXIST, written into the rule's header so a later pass cannot rationalise it
+away.** The objection is that renderability is derivable, so the field restates what the code knows.
+**That is backwards. A derived property says what the CODE DOES; a declared one says what the AUTHOR
+INTENDED**, and the rule's entire value is catching where those diverge — which is the A-3 defect,
+where eleven pairs stopped rendering and nothing said they were supposed to. Delete `status` and
+that class becomes undetectable, because there is no statement of intent left to check behaviour
+against.
+
+**Both directions proven, and they are permanent.** `tests/fixtures/pair-status/` carries PR-94
+(pending, both sides resolve — *held and hidden*) and PR-95 (a side does not resolve, no status —
+*silently gone*). Two `ISOLATED` entries in the selftest, told apart by `expect`, on the same
+reasoning as the four `pair-side` branches. Verified live: both fire with distinct messages.
+
+**And the enforcement was itself proven.** Removing PR-94 from the fixture makes the selftest FAIL
+and name which expectation went unmet — *"fired on tests/fixtures/pair-status but not for 'both sides
+resolve, so the pair renders'"*. The fixture was restored byte-identical.
+
+**One honesty point about coverage.** The *silently gone* direction overlaps with `pair-side`, which
+already errors on an unresolvable side; the new branch states the invariant directly rather than
+leaving it to fall out of four other rules, and it is the half that survives if any of those is
+relaxed. The *held and hidden* direction was caught by nothing at all.
+
+### 3. `pairs.ledgerRefs` — a DEBT, not a dead field
+
+**45 of 60 pairs, 68 references, 53 distinct ledger records, 1–3 per pair, and ZERO dangling.** Every
+reference resolves. That is maintained data, not vestige.
+
+**It is not derivable from anywhere else: no ledger record names a pair — 0 of 223.** The
+relationship exists in one direction only, so deleting the field destroys information the corpus
+holds nowhere else. That settles debt against dead.
+
+**What it is for is visible in the links themselves.** PR-14 (PMLA cases initiated versus persons
+convicted) → L-0074 (Expansion of PMLA enforcement); PR-15 (shutdown orders issued versus published)
+→ L-0081 (Internet shutdowns and *Anuradha Bhasin* compliance). **The pair is the measurement and the
+ledger record is the policy the measurement is about.**
+
+**What should read it, and the more valuable direction is the reverse one.** A pair could link to the
+records it bears on — useful. But the gap that matters is that **L-0074 never learns PR-14 exists**:
+a pair with two series sides is hosted on a series page, so the ledger record it bears on shows no
+trace of it. A reverse index over this field would put "measurements bearing on this record" on the
+ledger page. **Not built — a view, not a report.** Removing the field would be a schema change and a
+loss; it stays.
+
+### 4. `net-npa` — the evidence does NOT support a prohibition, and here is why the two differ
+
+**`net-npa` is the only NET NPA ratio in the corpus.** The NPA family: three gross ratios on
+`% of advances` (`psb-gross-npa`, `pvt-gross-npa`, `scb-gross-npa`), one gross absolute, one peer
+panel on `% of gross loans`, and `net-npa` alone on the net basis.
+
+**That is the whole difference.** `pvt-gross-npa`'s prohibition is live and specific: it is **one of
+three gross ratios on the same unit**, two of which state a basis, so a reader will put them on one
+axis and pvt's basis is unknown. The confusion is immediate and the record says so.
+
+**`net-npa` has no same-quantity sibling.** Net NPA is gross minus provisions — a different quantity
+— so there is nothing for it to be wrongly set against. Its unstated basis matters for comparison
+with another net series, and there is no other net series. **Writing a prohibition would be
+prohibiting a confusion that cannot occur.**
+
+**No record changed.** Recorded here rather than in the record's notes, which is a change to what a
+shipped record tells a reader and therefore a stop. The reasoning is preserved so the question closes:
+*a prohibition needs something to prohibit, and pvt has siblings while net does not.*
+
+**Noted in passing, because it is the record doing this well**: `net-npa`'s note names six retrieval
+routes and concludes *"The report is published and this instrument does not hold it"* — rule 5d
+applied exactly, and it is why the basis is unknown rather than merely unstated.
+
+### 5. THE CLASS, NAMED — and it has a third position
+
+**THE NARROWING PROJECTION: a type or function between `/data` and a rendering surface that drops a
+field a guard requires, so the guard — which checks the render — never sees it, because the field
+never reached the view.** No care in a component catches it: the component cannot render what it was
+not given.
+
+**Swept every projection between `/data` and a surface.** Ten candidates read: `DeclaredAbsence`,
+`Citation`, `ResolvedSide`, `Resolved`, `PublisherRollup`, `RecordHistory`, `AdjustedPoint`,
+`DenominatorBreak`, `OSeries`, `ODomain`. **`OSeries` was the only instance and it is fixed.**
+`ResolvedSide` carries the whole `Series` and drops nothing; `RecordHistory` feeds `/corrections/`,
+which re-fetches the record and renders `RecordMarks` itself; `ODomain` holds `OSeries` and inherits
+its fix; the rest do not feed a surface that lists records.
+
+**Then the sweep was run empirically rather than left at reading types**, because a type scan
+generates candidates and not findings: every built page was checked for pages linking many distinct
+records while the gate's own row detection counts few. **668 pages, one candidate — and it was
+real.**
+
+**THE HOMEPAGE. `higher-ed-ger` and `schools-above-rte-ptr-primary-dise` both carry caveats, both
+render as full feature charts, and NEITHER caveat was on the page.** `SeriesChart` takes the whole
+`Series` and rendered none of its marks, for its entire life.
+
+**It is the same class in a third position and NOT a narrowing projection** — nothing was dropped
+upstream; the component had the record and did not render. Listing marks have now gone missing in
+three distinct shapes: **the listing row** (A-4), **the narrowing projection** (`OSeries`), and **the
+embedded feature** (`SeriesChart`).
+
+**AND BOTH RENDER GATES WERE CORRECT.** `listing-marks` binds listing ROWS, and a feature chart is
+not a row. `field-render-audit` asks whether a field reaches its OWN record's page, and it does.
+**A record embedded as a feature is outside both scopes by construction.**
+
+**What was on the page while the caveat was not.** The site's opening chart, under the heading *"Start
+with something the state measures well"*, with the takeaway *"Thirty per cent of Indians aged 18 to
+23 are enrolled in higher education, up from 21 per cent in 2011-12"* — and the record's own caveat
+reads *"THE DENOMINATOR IS FALLING AND IT IS DOING HALF THE WORK... roughly half the headline
+half-point gain is denominator shrinkage rather than additional enrolment."* **The first thing a
+reader met was a rise the record says is half an artefact.**
+
+Fixed: `SeriesChart` renders `RecordMarks`. Verified on the built homepage — both caveats present,
+the 622-character one **in full, unclamped**, through the gate's own normaliser.
+
+**Gates:** `validate` VALID, 0 errors · `selftest` OK, 23/23 on `broken` plus the two new isolated
+branches · `field-render-audit` 44 prose + 52 non-prose, 4 layers, 0 invisible, 17 exempted ·
+`listing-marks` 2,787 rows / 3,916 marks · `link-check` 27,979 hrefs / 668 pages / 0 dead ·
+`quotation-identity` 31/31 · `domain-coverage` 14/14, 1137/1137.

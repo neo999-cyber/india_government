@@ -1210,7 +1210,6 @@
    "L-0150",
    "L-0151"
   ],
-  "status": "live",
   "notes": "The commonest error in this whole subject is reading either of these as the other. A reader told the states' share rose from 32 to 42 per cent and a reader told the states receive about a third of central taxes are being given the same fact on two bases, and each will draw the opposite conclusion from the one the pair supports."
  },
  {
@@ -1239,7 +1238,6 @@
   "ledgerRefs": [
    "L-0150"
   ],
-  "status": "live",
   "notes": "Neither side may be shown alone. On the inclusive convention the share rises 1.91-fold and rises in FY2017-18; on the exclusive convention it rises 1.47-fold and falls in FY2017-18. Both are honest sums of the same published line items, and the whole of the difference is definitional — there is no evidentiary disagreement anywhere in the spread."
  },
  {
@@ -1266,7 +1264,6 @@
    "L-0155",
    "L-0150"
   ],
-  "status": "live",
   "notes": "This is the pair that governs how every fiscal series in this drop should be read. The divisible pool is the denominator of the entire Centre-state fiscal argument, and for ten of the sixteen years carried here it has no certified basis at all."
  },
  {
@@ -1295,7 +1292,6 @@
   "ledgerRefs": [
    "L-0168"
   ],
-  "status": "live",
   "notes": "Read with bihar-mgnrega-funds-released, which runs through the same three years on the same table with no stoppage. Without the Bihar row the zero looks like an outcome; with it, the zero is legible as an act."
  },
  {
@@ -1321,7 +1317,6 @@
    "L-0150",
    "L-0153"
   ],
-  "status": "live",
   "notes": "The states' 50 per cent is a count of pleadings the Commission published, not a measurement, and must render labelled as advocacy. The Union's more-than-49 is a measurement on a denominator it chose and whose components it does not publish. Neither may be shown as the answer to the other."
  },
  {
@@ -1351,7 +1346,6 @@
    "L-0157",
    "L-0160"
   ],
-  "status": "live",
   "notes": "This is the strongest disciplining instrument in the phase and the pair exists to show why: the input is one party's records, the comparator is another set of records, the operation is the auditor's, and the output appears in neither party's account of itself. On the GST Compensation Cess it produced an admission in February 2020 and a correction in FY2019-20."
  },
  {
@@ -1378,7 +1372,6 @@
   "ledgerRefs": [
    "L-0170"
   ],
-  "status": "live",
   "notes": "The finding this pair carries is that the only routine publication of the quantity is thirty-odd separate state audit reports, on different templates in different years — and that this drop did not sweep the Union side exhaustively, so the absence is declared narrowly and must not be read as closed."
  },
  {
@@ -1436,7 +1429,6 @@
    "L-0157",
    "L-0177"
   ],
-  "status": "live",
   "notes": "Subtraction is available here, unusually, because the Union performs it itself: the answer prints a Balance column equal to (A) minus (B), and it is that column which fixes the first two years at zero rather than blank. Two cautions on what the gap means. Year by year it resets, so from FY2023-24 it reads as over-transfer; cumulatively across the five published years collections are 387,226.31 crore against transfers of 377,213.61, so the Fund is still 10,012.70 crore behind. And side b mixes transfer into the Fund with utilisation out of it in one column, so a large figure cannot be decomposed. Read against PR-53, which is the same question about the GST Compensation Cess and where the comparator is an auditor's rather than the publisher's own."
  },
  {
@@ -1464,7 +1456,6 @@
   "ledgerRefs": [
    "L-0179"
   ],
-  "status": "live",
   "notes": "The gap is 3,744.19 crore across the two nil years alone and is computable because both columns are the Union's own, in one table, for one state, in one unit. What makes it legible is the two controls beside it on the same table. Bihar was released between 70.8 and 93.8 per cent of allocation in every year including the years West Bengal received nothing, so a shortfall is the ordinary condition of this scheme and a zero is not the extreme of that continuum. And Tamil Nadu's zero carries the Union's own footnote recording 362.81 crore paid in arrears the following year, where West Bengal's carries none — which is the difference between a delay and a stoppage, visible only because the table runs five years."
  },
  {
@@ -1492,7 +1483,6 @@
   "ledgerRefs": [
    "L-0183"
   ],
-  "status": "live",
   "notes": "This pair exists to name a move the four-value absence vocabulary cannot express. The Government has not refused this figure — there is no refusal anywhere in more than ten dated requests across twenty-five years — and it has not said the figure does not exist. It has, four separate times, supplied an adjacent published number in its place without saying it had substituted. Substitution is neither withholding nor non-collection, and it leaves a reader who was answered believing they were answered. Side a is a real, correct, carefully sourced series, and putting it here is not a criticism of it: the point is precisely that the substitute is a good number for a different question."
  },
   {
@@ -1516,8 +1506,7 @@
     "gapReason": "The DIFFERENCE is arithmetic — US$6.500bn in 2024, 5.40 per cent of the Chinese figure — but it is not a gap, and the schema is right to refuse the word for a contested pair. A gap is a shortfall of one quantity against another that bounds it; this is the size of a disagreement between two authorities measuring the same flow, and neither bounds the other. The magnitude is stated because it is evidence about the CAUSE: an importer-minus-exporter excess of that order is consistent with the CIF/FOB valuation convention, which is what makes the 20.80 per cent excess on the opposite flow (PR-60) the anomaly rather than this one. Subtracting it would produce a third number no one publishes.",
     "provenanceRefs": [
       "P-119"
-    ],
-    "status": "live"
+    ]
   },
   {
     "id": "PR-60",
@@ -1540,7 +1529,6 @@
     "gapReason": "The difference is US$3.099bn in 2024, 20.80 per cent of India's figure, and it is a disagreement rather than a gap for the same reason as PR-59: neither side bounds the other. The magnitude is the whole point of the pair — it is four times the excess on the mirror flow and beyond what freight and insurance explain. The leading candidate is entrepot attribution through Hong Kong, sized in P-119 as large enough to contain it and NOT established as its cause. The figure is computed on the unrounded submissions: subtracting the printed series values gives 3.100, and the 0.001 is a rounding artefact, not a discrepancy — see P-119.",
     "provenanceRefs": [
       "P-119"
-    ],
-    "status": "live"
+    ]
   }
 ]

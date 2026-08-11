@@ -13,22 +13,26 @@ phase table. Nothing there is withdrawn by this file except the queue rows resta
 
 ---
 
-## THE QUEUE, WHOLE, at 13fd64a + this batch
+## THE QUEUE, WHOLE, at 3b7809c + this batch — EMPTY BUT FOR THE RESERVED DESIGN ITEM
 
-**Nothing blocks the design work.** Every item below is either closed or is a small, scoped,
-operator-owned record change. No verdict is in question and no schema or enum is open.
+**Nothing blocks the design work, and nothing is owed to an operator.**
 
-| item | owner | state |
-|---|---|---|
-| NPA basis — rule 5b failing on 3 of 5 | closed | **CLOSED 2026-08-11.** Basis in the title on `psb-gross-npa` (global operations), `pvt-gross-npa` and `net-npa` (basis not stated); the prohibition in `caveat` on `pvt-gross-npa`. Verified on all four surfaces the figure reaches, with a negative control |
-| **overview board dropped 199 declarations** | closed | **CLOSED 2026-08-11, found by the verification above.** The mini wall listed 250 series with no marks — 141 caveats, 58 absences — and `listing-marks` could not see it because its card filter read `grid-title` and the minis carry `mini-t`. Fixed at all three levels: the `OSeries` projection carries the marks, the wall renders them, and the gate's card-class list is named. `listing-marks` 2,634→**2,787** rows, 3,717→**3,916** marks |
-| environment: 0 of 15 caveats | closed | **CLOSED — zero is correct**, explanation (a). See the preceding entry and the brief below |
-| `$ref` class sweep | closed | **CLOSED.** Two refs in the corpus, both fixed; the resolver is global; no other construct hides a field |
-| `pairs.status` — two conventions | **OPERATOR — record change** | **OPEN, trivial.** Schema says `live (default)`, so absence is the intent. The 12 explicit values are **PR-48 to PR-60, one contiguous block** — one session that began writing the default. Consistency = delete `status: "live"` from 12 records. No meaning changes |
-| `pairs.status` ⟺ `pairRenders` unenforced | **OPERATOR — contract change** | **OPEN, cheap.** A pure `/data` derivation, ~40 lines, could fold into `validate`. Both directions fail differently: a pending pair whose sides resolve is held and hidden; an unmarked pair that breaks is the A-3 defect that cost eleven pairs |
-| `pairs.ledgerRefs` (45 of 60) unread | **OPERATOR** | OPEN debt, exempted with the reason in the schema. A pair naming the ledger records it bears on is real and unbuilt |
-| `net-npa` may warrant a prohibition | **OPERATOR — record change** | OPEN. Its basis is unstated, so the axis argument that applies to `pvt-gross-npa` may apply to it. **Not authored, because its note carries no prohibition and writing one would invent a judgement** |
-| NAV: 18 distinct destinations | **DESIGN** | OPEN and unchanged. The three additions are grouped; the full grouping is the reserved design item |
+| item | state |
+|---|---|
+| `pairs.status` — two conventions | **CLOSED.** `status: "live"` deleted from 12 records (PR-48…PR-60). Declared numstat 0/12, actual 2/14 — two records carried it as the last key, so `],` became `]`. The key-level assertion held exactly |
+| correspondence unenforced | **CLOSED.** `pair-status` in `checkIntegrity`, so it runs inside `validate` at no build cost. Both directions proven by `tests/fixtures/pair-status/` and two `ISOLATED` selftest entries; the enforcement itself was proven by removing a fixture and watching the selftest name the unmet expectation |
+| `pairs.ledgerRefs` | **CLOSED as a question — it is a DEBT, not dead.** 45/60 pairs, 68 refs, 53 records, **0 dangling**, and **no ledger record names a pair**, so it is not derivable and deleting it loses information. The unbuilt thing is the REVERSE index: L-0074 never learns PR-14 exists. A view, not a report |
+| `net-npa` prohibition | **CLOSED — the evidence does not support one.** It is the ONLY net NPA ratio in the corpus; `pvt-gross-npa` is one of three gross ratios on the same unit. A prohibition needs something to prohibit. No record changed; the reasoning is in the log so it closes |
+| the 199-declaration hole | **CLOSED and the CLASS is named** — see CLAUDE.md. Three shapes: the listing row, the narrowing projection, the embedded feature. Swept: 10 projections, 1 instance (fixed); 668 pages, 1 empirical candidate — **the homepage, and it was real** |
+| **NAV: 18 distinct destinations** | **OPEN — DESIGN, reserved.** The only item left. The three additions are grouped under *about the record*; the full grouping is the design decision |
+
+### Found and fixed inside this batch, not inherited
+
+**`SeriesChart` rendered no marks for its whole life.** The homepage's opening chart is
+`higher-ed-ger`, whose caveat says roughly half the headline rise is denominator shrinkage — under a
+takeaway reporting the rise and a heading calling it well measured. Both render gates were correct
+and both were out of scope: a feature chart is not a listing row, and the field does reach the
+record's own page. Fixed; the 622-character caveat renders in full on the homepage.
 
 ### The two debts the pairs extension exposed, recorded rather than folded in
 

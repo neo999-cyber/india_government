@@ -1,0 +1,23 @@
+[
+  {
+    "id": "PR-94",
+    "kind": "coverage-usage",
+    "domain": "welfare",
+    "a": { "series": "present-coverage", "label": "A side that resolves" },
+    "b": { "absenceFrom": "declares-one-absence", "absenceIndex": 0, "label": "A second side that also resolves" },
+    "status": "declared-pending",
+    "framing": "HELD AND HIDDEN. Both sides resolve, so this pair renders — and it is still recorded as owed, so it renders nowhere and nothing says why.",
+    "gapComputable": false,
+    "gapReason": "Not applicable — the fixture exists to fail on the status, not on the sides."
+  },
+  {
+    "id": "PR-95",
+    "kind": "coverage-usage",
+    "domain": "welfare",
+    "a": { "series": "present-coverage", "label": "A side that resolves" },
+    "b": { "absenceFrom": "declares-one-absence", "absenceIndex": 7, "label": "A side pointing past the end of the array" },
+    "framing": "SILENTLY GONE. Side b does not resolve and no status says so, so this pair stops appearing and nobody is told.",
+    "gapComputable": false,
+    "gapReason": "Not applicable — the fixture exists to fail on the missing status."
+  }
+]
