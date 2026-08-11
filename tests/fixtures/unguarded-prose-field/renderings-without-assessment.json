@@ -35,6 +35,7 @@
   "provenance.sources[].url",
   "provenance.sources[].tier",
   "provenance.bridgeExists",
+  "pairs.provenanceRefs",
   "series.id",
   "series.domain",
   "series.lenses",

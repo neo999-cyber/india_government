@@ -42,6 +42,36 @@ export const isProse = (def) => {
 export function leafFields(schemaName) {
   const s = JSON.parse(readFileSync(join(ROOT, 'schemas', `${schemaName}.schema.json`), 'utf8'));
   const props = s.items?.properties ?? s.properties;
+
+  /**
+   * `$ref` IS RESOLVED — added 2026-08-11, and its absence is the whole of the pairs non-prose gap.
+   *
+   * `pairs.a` and `pairs.b` are `{"$ref": "#/$defs/side"}`. A walk that does not follow the ref
+   * sees an object with **no `type` and no `properties`**, falls through every descend branch, and
+   * pushes `a` and `b` as opaque non-prose LEAVES. So `a.label` and `b.label` — hand-written prose,
+   * one per side, on all 60 pairs — were **not enumerated at all**: not audited, not guarded, not
+   * even counted as missing.
+   *
+   * **This is the enumerate-the-complement rule failing in the one direction it can.** The walk is
+   * written to put an unanticipated construct IN scope rather than let it fall out, and `$ref` did
+   * land in scope — as a leaf that can never match anything, which is worse than falling out,
+   * because a leaf that is never invisible reports clean forever. Local refs only; a ref to another
+   * file would be a different contract and aborts rather than being silently skipped.
+   */
+  const deref = (v, depth = 0) => {
+    if (!v || typeof v !== 'object' || !v.$ref) return v;
+    if (depth > 8) throw new Error(`leafFields: $ref cycle at ${v.$ref} in ${schemaName}`);
+    if (!v.$ref.startsWith('#/')) {
+      throw new Error(`leafFields: non-local $ref "${v.$ref}" in ${schemaName} — not resolvable here`);
+    }
+    const target = v.$ref
+      .slice(2)
+      .split('/')
+      .reduce((node, key) => node?.[key.replace(/~1/g, '/').replace(/~0/g, '~')], s);
+    if (!target) throw new Error(`leafFields: unresolvable $ref "${v.$ref}" in ${schemaName}`);
+    // Sibling keys beside a $ref lose to the target's own, which is what JSON Schema 2020-12 says.
+    return deref({ ...v, ...target, $ref: undefined }, depth + 1);
+  };
   const out = [];
   const seen = new Set();
   const push = (path, def) => {
@@ -54,9 +84,10 @@ export function leafFields(schemaName) {
   // reading it as a shape list invents a bare-array leaf that no record ever carries.
   const shapes = (v) => v.oneOf ?? v.anyOf ?? null;
   const walk = (p, prefix) => {
-    for (const [k, v] of Object.entries(p || {})) {
+    for (const [k, raw] of Object.entries(p || {})) {
       const path = prefix + k;
-      const item = v.items;
+      const v = deref(raw);
+      const item = v.items ? deref(v.items) : undefined;
       const itemShapes = item ? shapes(item) : null;
       let handled = false;
       if (item?.properties) {

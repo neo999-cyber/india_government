@@ -97,6 +97,30 @@ const EVIDENCE = [
   { href: '/derivations/', label: 'derivations' },
   // Added 2026-08-11. All three answer questions a reader of the evidence has and no surface
   // answered: who published this, has it been revised, and can I have the whole thing as data.
+];
+
+/**
+ * THE CORPUS ABOUT ITSELF — a second labelled group, operator decision 2026-08-11.
+ *
+ * WHAT THIS RECORDS RATHER THAN JUST FIXES. The nav has been a standing open design item at
+ * **thirteen destinations** since phase 17, under the operator's ruling that the accretion is
+ * design work. It reached **nineteen**, and the last three are mine: `/publishers/`,
+ * `/corrections/` and `/data/`, added 2026-08-11 in `4bcfcb3`. Each was defensible on its own —
+ * they answer *who published this*, *has this been revised*, *can I have the whole thing as data* —
+ * **and that is exactly how a list gets from thirteen to nineteen: one defensible item at a time,
+ * each noted nowhere.** The count is written into this comment so the next addition has to walk
+ * past it.
+ *
+ * THE CONTAINMENT IS PARTIAL BY DESIGN AND SAYS SO. Grouping these three is not the nav grouping;
+ * it touches only what this session added and leaves the other sixteen exactly as they were. **The
+ * full grouping stays reserved for the design work** and this must not be read as having done it.
+ *
+ * WHY THESE THREE ARE ONE GROUP AND NOT THREE ITEMS. They are the only surfaces whose subject is
+ * the CORPUS rather than India: who published the evidence, what this instrument has revised, and
+ * the data itself. Everything in EVIDENCE above is a way into the records; these three are ways
+ * into the record-keeping.
+ */
+const ABOUT_THE_RECORD = [
   { href: '/publishers/', label: 'publishers' },
   { href: '/corrections/', label: 'corrections' },
   { href: '/data/', label: 'data' },
@@ -132,6 +156,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <nav className="nav nav-evidence" aria-label="Evidence">
               <span className="nav-group-label">evidence</span>
               {EVIDENCE.map((item) => (
+                <Link key={item.href} href={item.href}>
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            {/* Same shape as the evidence group, same reason it is a labelled group rather than a
+                disclosure: a control a phone reader has to find is a surface that reaches nobody. */}
+            <nav className="nav nav-evidence nav-about" aria-label="About the record">
+              <span className="nav-group-label">about the record</span>
+              {ABOUT_THE_RECORD.map((item) => (
                 <Link key={item.href} href={item.href}>
                   {item.label}
                 </Link>

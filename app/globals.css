@@ -2522,3 +2522,9 @@ tbody > tr:has(+ .caveat-row) > td {
   font-size: 0.8125rem;
   color: var(--ink-2);
 }
+
+/* The second labelled nav group. Tighter to the one above it than to the rule beneath, so the two
+   read as two groups of one kind rather than as two unrelated bars. */
+.nav-about {
+  margin-top: 0.15rem;
+}

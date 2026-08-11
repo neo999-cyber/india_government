@@ -151,22 +151,23 @@ function loadLayer(layer) {
 const PAGELESS = new Set(['pairs']);
 
 /**
- * The pairs layer is audited on its PROSE fields only, and this is a DEBT recorded rather than a
- * decision claimed — the same form the two named non-prose exemptions take.
+ * CLOSED 2026-08-11. **WITHDRAWN, quoted so the closure can be checked rather than taken on trust:**
+ * *"The pairs layer is audited on its PROSE fields only, and this is a DEBT recorded rather than a
+ * decision claimed... `RENDERINGS` is keyed `<layer>.<path>` and carries no pairs entries, so every
+ * pairs non-prose field would be undeclared and this gate would abort before auditing anything. And
+ * the enumeration itself is not well-formed here yet: `a` and `b` come back from `leafFields` as
+ * non-prose LEAVES rather than being descended into, so `a.label` and `b.label` — prose that renders
+ * on the face of every pair view — are not enumerated at all."*
  *
- * Two reasons, and the second is the blocking one. `RENDERINGS` is keyed `<layer>.<path>` and
- * carries no pairs entries, so every pairs non-prose field would be undeclared and this gate would
- * abort before auditing anything. And the enumeration itself is not well-formed here yet: `a` and
- * `b` come back from `leafFields` as non-prose LEAVES rather than being descended into, so
- * `a.label` and `b.label` — prose that renders on the face of every pair view — are not enumerated
- * at all. Declaring renderings over an enumeration that does not reach the fields would assert a
- * completeness the walk cannot deliver.
+ * **Both halves are fixed.** `leafFields` now resolves `$ref`, which is what stopped it descending
+ * into `a` and `b` — see its own header; the two `label` fields were never invisible, they were
+ * never LOOKED AT. And every pairs non-prose field now carries a declared rendering or is exempted
+ * by name in `value-renderings.mjs`, on the same terms as the other three layers.
  *
- * What this means for the emitted scope, stated because a scope unstated is wrong by an amount
- * nobody can see: the pairs line below counts PROSE ONLY. The non-prose half of the pairs layer,
- * and the side-object descent that half depends on, are owed.
+ * The set is empty and stays declared rather than deleted: a layer added later that cannot yet
+ * declare its renderings goes here, with its reason, instead of quietly falling out of scope.
  */
-const PROSE_ONLY = new Set(['pairs']);
+const PROSE_ONLY = new Set([]);
 
 const LAYERS = ['ledger', 'provenance', 'series', 'pairs'];
 let invisible = 0;

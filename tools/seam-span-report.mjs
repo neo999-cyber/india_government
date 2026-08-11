@@ -37,6 +37,27 @@
  * ADJACENT SENTENCES is not caught. That is a real reduction in coverage, taken because the
  * alternative is a gate whose failures are mostly not defects.
  *
+ * ============================ THE DEFERRAL IS CLOSED, AND IT CLOSED IN 2026-08-06 =============
+ *
+ * Ruled 2026-08-11, because the queue kept carrying this as *"an open deferral with a measured
+ * rate"* and that description had been wrong for five days. **There is no untriaged remainder.**
+ * The line this tool emits accounts for every span: 127 total, 101 declaring, and of the 26 that do
+ * not, **12 are in scope and all 12 are judged and frozen with the quantity their sentence actually
+ * compares**, while 14 are wide-only and out of scope by the paragraph above. 12 + 14 = 26. Nothing
+ * is waiting on anybody.
+ *
+ * **THE NUMBER HAS NOT MOVED ACROSS THREE MEASUREMENTS BECAUSE IT IS A RATCHET, WHICH IS WHAT A
+ * RATCHET DOES.** A stable count here is the gate working, not a deferral rotting — and the two
+ * look identical in a queue, which is why this paragraph exists rather than a fourth re-measurement.
+ * `--control` proves the bite: withdrawing one frozen judgement names exactly that span and no
+ * other.
+ *
+ * **THE 14 ARE A PERMANENT SCOPE LIMIT, NOT A BACKLOG.** Widening to two adjacent sentences
+ * re-admits the false positives the narrowing removed — 15 of 21 at the wide rule were not defects —
+ * and this file already records why that trade was made. A later cycle that wants the adjacent-
+ * sentence case must argue against that measurement, not merely notice the gap. **It is not a queue
+ * item and must not be re-entered as one.**
+ *
  * Usage:  node tools/seam-span-report.mjs [--verbose] [--control]
  */
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
