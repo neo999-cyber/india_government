@@ -13,10 +13,33 @@ phase table. Nothing there is withdrawn by this file except the queue rows resta
 
 ---
 
-## THE QUEUE, WHOLE, at 1b8c7a9 + this batch
+## THE QUEUE, WHOLE, at 9147bad + this batch
 
-| item | owner | state |
-|---|---|---|
+**Five features were requested in order. One shipped, plus the cross-cutting check taken first
+because it guards the rest. Four are carried, unstarted, in the operator's order.**
+
+| item | state |
+|---|---|
+| **F1 — play on the year control** | **SHIPPED** `0d0ea60`. Play/pause, three speeds, stops rather than loops. §7a holds at every step — verified 2019→2011, **0 cards holding a stale value**. Reduced motion removes the control from the DOM, not just hides it. Step cost median 3.4ms / p90 5.6 against a 2.5/3.8 baseline and a 275ms fastest interval |
+| **cross-cutting — the prose-anchor check** | **SHIPPED** `a82f7ba`. `unrecognised-rows`, report-only, in the build. Discriminator: a listing names a record by its TITLE, a citation by its ID — 462 against 17 when measured. Found that `listing-marks` was not binding the domain rebuild's containers: **+737 rows, +1,082 marks**. Caught a hand-rolled caveat renderer in `PeerSlope`. **62 reported and carried**, each needing its component's unit named |
+| **F2 — the corrections redline** | **CARRIED, unstarted.** 31 quotations across 29 records, withdrawn against replacement, per-correction control plus a master |
+| **F3 — the series span strip** | **CARRIED, unstarted. MEASURE FIRST** — 269 spans on a shared axis, and if the picture is a uniform block rather than a structure, say so and do not build it. The status grid died on exactly this check |
+| **F4 — contested, two readings** | **CARRIED, unstarted.** The 38/28 split as the entry, then caseFor against caseAgainst at equal weight, untruncated |
+| **F5 — the exposure matrix** | **CARRIED, unstarted.** Role down, adjudication across; state on the page that exposure against verdict is refused and why; the 16 undeclared reasoners named, not filled |
+
+### Why the batch stopped here
+
+The cross-cutting check was taken before F2 deliberately — it guards every remaining feature, and
+each of them names records in running text. **It then expanded**: adding the container shapes it
+found made `listing-marks` demand declarations from two components that pool them at a different
+level, which is a per-component decision rather than a markup one. That was resolved by leaving the
+two out with the reasoning recorded and reporting them, rather than by rushing a semantic decision
+about pair views inside a batch about animation.
+
+**F2–F5 are unstarted rather than half-built**, which is the intended outcome of *stop where the
+batch is full* — a clean partial beats four thin features.
+
+---|---|---|
 | masthead / nav placement | closed | **CLOSED.** Four destinations — Overview · Explore · Stories · Search. The five groups moved whole into a footer directory; no route changed, nothing behind a disclosure. `/search/` built rather than the item omitted; weight measured and cut from 416 to **178 KB gzipped** |
 | domain page rebuild | **PATTERN DONE, 13 OWED** | **macro CLOSED.** Lead by stated criterion, four authored periods citing their records, chart grid, records as items, three disclosures. **The other thirteen render the same page without the periods block** — the structure is generic, the writing is not |
 | explore index | closed | **CLOSED.** Fourteen cards with an authored one-line character and the lead series' current value. Schema order, nothing sorted |
