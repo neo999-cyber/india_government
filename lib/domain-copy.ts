@@ -34,11 +34,12 @@ import type { Domain } from '@/lib/types';
  *
  * ============================ COVERAGE, STATED =================================================
  *
- * **Seven of fourteen are written**, and the count is restated here on every change because a
+ * **Nine of fourteen are written**, and the count is restated here on every change because a
  * coverage line that goes stale is a claim about the past in the present tense — the defect this
  * repository has already paid for in its own session-cost section. `macro` is the pattern;
- * `education`, `environment`, `infrastructure`, `employment`, `welfare` and `human-development`
- * followed on 2026-08-11. **The other seven render the same page without the periods block** —
+ * `education`, `environment`, `infrastructure`, `employment`, `welfare`, `human-development`,
+ * `banking` and `poverty` followed on 2026-08-11. **The other five render the same page without
+ * the periods block** —
  * not a stub, not a placeholder: the section simply is not there, which is honest, where a heading
  * over generated filler would not be.
  *
@@ -47,7 +48,11 @@ import type { Domain } from '@/lib/types';
  * `environment` and `employment` take three rather than four because nothing in either divides at
  * the fourth point; and `employment`'s first period exists to say that no national survey covers
  * it. `human-development` takes three on eight records because its last period carries the
- * comparability argument that is the whole area, not because three is a floor.
+ * comparability argument that is the whole area, not because three is a floor; and **`poverty`
+ * takes ONE, over 2004 to today**. Two were drafted and the first had no ledger record behind it —
+ * it was about a SERIES that stopped — so it cited a record it only pointed forward to. **A period
+ * with nothing behind it is the thing the `from` list exists to prevent**, and the honest repair
+ * was one period rather than a citation added to justify a second.
  * **A period count is a reading of the area, never a template.**
  */
 export type Period = {
@@ -206,7 +211,7 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
       years: '2013 — 2016',
       heading: 'A statutory entitlement inherited, and a wave of schemes that count what they hand out',
       body:
-        'The National Food Security Act is entered as baseline context: a statutory entitlement already in force in 2013, against which what followed is read. What followed counts deliveries. Jan Dhan, Aadhaar and UPI are scored partly and are the area’s clearest success at the thing they measure, which is accounts opened and transactions cleared. Swachh Bharat, Pradhan Mantri Awas Yojana, the crop-insurance scheme and Ujjwala are all partly, and all four publish a cumulative figure for the thing handed over. The one record here scored failed is the commitment to double farmers’ income by 2022 — a dated, quantified target announced in 2016 and not met, and the MSP guarantee demand beside it takes undated-commitment because it states a quantity with no date and cannot fall due.',
+        'The National Food Security Act is entered as baseline context: a statutory entitlement already in force in 2013, against which what followed is read. What followed counts deliveries. Jan Dhan, Aadhaar and UPI are scored partly and are the area’s clearest success at the thing they measure, which is accounts opened and transactions cleared. Swachh Bharat, Pradhan Mantri Awas Yojana, the crop-insurance scheme and Ujjwala are all partly, and all four publish a cumulative figure for the thing handed over. The one record here scored failed is the commitment to double farmers’ income by 2022 — a dated, quantified target announced in 2016 and not met, and the MSP guarantee demand beside it takes undated-commitment because it states a quantity with no date and cannot fall due. That record carries the area’s sharpest measurement question: the 2018-19 claim of setting minimum support prices at 1.5 times cost used A2+FL — paid-out costs plus imputed family labour — and not C2, the comprehensive basis the Swaminathan recommendation specified, with the announcement silent on which. It is the same shape as capacity against generation in energy and a stock against a flow in fiscal reporting: two official constructions of one word, the promise kept on one and not on the other, and nothing in the announcement saying which was meant. Three areas have now produced it, which makes it a property of how commitments are announced rather than a quirk of any one of them.',
       from: ['L-0007', 'L-0029', 'L-0035', 'L-0037', 'L-0067', 'L-0069'],
     },
     {
@@ -255,6 +260,47 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
       from: ['L-0042', 'L-0215'],
     },
   ],
+
+  banking: [
+    {
+      years: '2014 — 2016',
+      heading: 'The bad loans were recognised, not created — and the ratio that shows it is four ratios',
+      body:
+        'The Asset Quality Review is the hinge of this area. Reported public-sector gross NPAs rose from 4.97 per cent in March 2015 to a peak of 14.58 in March 2018, and the record is explicit that the rise was driven by recognition rather than by deterioration: the loans already existed and the review made banks name them. That peak figure is not one number. It is 14.58 per cent for public-sector banks on a global-operations basis and 11.46 for scheduled commercial banks on a domestic one, and the two are different populations rather than different estimates of one. Four NPA ratio series are carried here and each states its basis in its own title, one of them as *basis not stated*, because a figure that does not say which population it counts cannot be set against one that does. Beside the review, and all three scored partly: the Insolvency and Bankruptcy Code, recapitalisation, and — scored failed — the note withdrawal of November 2016 — the last of these scored failed on the limb its own announcement led with, since 99.3 per cent of the notes came back.',
+      from: ['L-0023', 'L-0024', 'L-0026', 'L-0011'],
+    },
+    {
+      years: '2017 — 2019',
+      heading: 'The peak, and the fall that has three causes',
+      body:
+        'The gross NPA ratio has fallen every year since 2018 and the reasons are not the same reason. Write-offs peaked at ₹2.36 lakh crore in FY2018-19 and a substantial share of the headline decline is attributed to them rather than to recovery — which is why any view of the gross ratio here offers the adjusted line, gross NPAs plus cumulative write-offs over the same denominator. The denominator is the second cause: credit grew through the period, so a constant stock of bad loans falls as a share without anything being resolved. Genuine resolution is the third and the smallest of them. Two records in this period announce nothing and are entered for what they show: bank frauds, where aggregate value doubled to ₹1.85 trillion in FY2020, and the IL&FS collapse.',
+      from: ['L-0025', 'L-0032', 'L-0027'],
+    },
+    {
+      years: '2020 — 2022',
+      heading: 'A bank reconstructed, and a privatisation that has not happened',
+      body:
+        'Yes Bank was reconstructed under an RBI moratorium and is typed as an episode rather than a shock, because the record’s subject is the state’s response and not the failure. The privatisation programme announced in February 2021 is the area’s second record scored failed: five years on, no public sector bank has been privatised, and the IDBI sale — where the government’s holding is 30.48 per cent and LIC’s 30.24 — is still advancing rather than done. Underneath both, the recapitalisation of the previous period delivered on the limb it is scored partly for: public-sector banks swung from an aggregate loss of about ₹85,390 crore in FY2017-18 to profit.',
+      from: ['L-0028', 'L-0030', 'L-0026'],
+    },
+    {
+      years: '2023 — today',
+      heading: 'The composition of credit changed, and the next accounting change is not yet due',
+      body:
+        'What is contested here is where the credit went. The RBI raised risk weights on unsecured consumer credit from 100 to 125 per cent in November 2023 and added 25 points on lending to NBFCs, rolling part of it back in February 2025 — a supervisor acting on a shift it had identified, with the readings differing on whether the shift is a risk or a normalisation. The Expected Credit Loss transition is entered and announces no date this record can hold it to. Recovery through the Code continues to weaken: cumulative realisation stands at 30.56 per cent of admitted claims in March 2026, against 32.76 a year earlier and around 45 in the early years.',
+      from: ['L-0031', 'L-0033', 'L-0024'],
+    },
+  ],
+
+  poverty: [
+    {
+      years: '2004 — today',
+      heading: 'The last official headcount was measured for 2011-12, and everything since is measured on something else',
+      body:
+        'India’s last official poverty headcount was measured for 2011-12 on the Tendulkar methodology, and the published series ends there. Nothing comparable has been published since, so there is no line to draw across the period this instrument covers and none is drawn. This area is small because of that, not because poverty is a small subject — three ledger records and two series, one of which is the headcount that stopped. Doubling farmers’ income by 2022 is scored failed, and the reasoning turns on the same absence: the verdict rests on the trajectory because the terminal year does not exist. The two Situation Assessment Surveys give ₹6,426 a month in 2012-13 and ₹10,218 in 2018-19 — about 59 per cent nominal and roughly 16 real, with net crop receipts up 22.6 per cent nominal — and the survey has not been repeated since 2018-19, so 2022 was never measured. The multidimensional poverty exit claim is contested for a related reason: it rests on a different index with its own cut-offs, and what an exit from it means is the dispute rather than the arithmetic. Free foodgrain under PMGKAY sits between them, scored partly on the NFSA exclusion.',
+      from: ['L-0067', 'L-0043', 'L-0038'],
+    },
+  ],
 };
 
 /**
@@ -265,13 +311,13 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
  * the difference between information and an apology, and an area that buries it under a chart has
  * hidden the most useful thing it knows about itself.
  *
- * **THE COUNTS ARE NOT WRITTEN HERE.** The page derives them from the series it is rendering, so a
+ * THE COUNTS ARE NOT WRITTEN HERE. The page derives them from the series it is rendering, so a
  * sentence about the evidence cannot go stale against the evidence — which is the failure mode this
  * repository has already paid for in the one section written to prevent it.
  *
- * Only three areas carry a note, and that is the point: an evidence line on all fourteen would be
- * boilerplate, and boilerplate is read past. **`macro`, `education`, `environment` and
- * `human-development` deliberately have none** — their grades are mixed and unremarkable, and a
+ * Only four areas carry a note, and that is the point: an evidence line on all fourteen would be
+ * boilerplate, and boilerplate is read past. **`macro`, `education`, `environment`,
+ * `human-development` and `poverty` deliberately have none** — their grades are mixed and unremarkable, and a
  * note saying so would say nothing.
  *
  * **`human-development` WAS TESTED AGAINST THIS RULE AND FAILED IT, WHICH IS WHY THE DECISION IS
@@ -285,6 +331,8 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
 export const DOMAIN_EVIDENCE: Partial<Record<Domain, string>> = {
   infrastructure:
     'Almost nothing in this area is published exactly, and that is a fact about how India publishes rather than a gap in this record. These figures come from ministry dashboards, scheme reporting and annual reports — running totals, revised as they run — and not from closed statistical series. A reader arriving to ask whether things were built will find that a great deal was, and that the published quantity is usually a progress figure rather than a final one. Approximate by publication, not by omission.',
+  banking:
+    'Three per cent of the observations here are verified, the lowest share in the corpus, and the reason is the route the figures travel rather than their quality. Ten of the twenty-two series in this area are cited to an RBI figure RELAYED — through a PIB release, an RTI response or a Parliamentary answer — and only three are cited directly to an RBI publication, one of them the Financial Stability Report. Under this instrument’s mirror rule a relayed figure is an account of the release and not the release, so it is graded approximate however sound the underlying number is. That is a statement about what this record holds, not about the RBI: the figures are published, and what is mostly held here is somebody else’s report of them.',
   welfare:
     'The low verified share here is a fact about what a scheme publishes rather than about how well it is run. Welfare schemes report a CUMULATIVE RUNNING TOTAL — houses sanctioned to date, cards created to date, connections released to date — which is one number republished as it grows, not a series that can be differenced into annual figures. Nine of the nineteen series in this area therefore carry a single observation, against four of twenty-four in infrastructure and three of twenty-three in employment, and six say cumulative in their own title or note. A cumulative total is a real quantity and it answers a different question from the one a reader usually brings: it says how much has been handed out since the scheme began, and not how much was handed out last year.',
   employment:
