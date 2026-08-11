@@ -34,14 +34,15 @@ import type { Domain } from '@/lib/types';
  *
  * ============================ COVERAGE, STATED =================================================
  *
- * **Twelve of fourteen are written**, and the count is restated here on every change because a
+ * **All fourteen are written.**, and the count is restated here on every change because a
  * coverage line that goes stale is a claim about the past in the present tense — the defect this
  * repository has already paid for in its own session-cost section. `macro` is the pattern;
  * `education`, `environment`, `infrastructure`, `employment`, `welfare`, `human-development`,
- * `banking`, `poverty`, `federalism`, `foreign` and `governance` followed on 2026-08-11. **The
- * other two — `defence` and `kashmir` — render the same page without the periods block** —
- * not a stub, not a placeholder: the section simply is not there, which is honest, where a heading
- * over generated filler would not be.
+ * `banking`, `poverty`, `federalism`, `foreign`, `governance`, `defence` and `kashmir` followed
+ * on 2026-08-11. **The set is closed.** If a fifteenth area is ever opened it gets periods in the
+ * batch that opens it, or its page renders without the block — not a stub and not a placeholder:
+ * the section simply is not there, which is honest where a heading over generated filler would not
+ * be.
  *
  * Period spans are chosen by what changed and are NOT uniform across areas. `education` opens at
  * 2010 because the Right to Education Act's own numbers are what the first period is about;
@@ -56,12 +57,13 @@ import type { Domain } from '@/lib/types';
  * was one period rather than a citation added to justify a second.
  * **A period count is a reading of the area, never a template.**
  *
- * **`defence` IS DEFERRED TO THE KASHMIR BATCH, AND THE REASON IS AN OVERLAP RATHER THAN A
- * SHORTAGE.** Measured 2026-08-11: **9 of its 10 ledger records are also `kashmir` records, and all
+ * **`defence` AND `kashmir` WERE WRITTEN AS ONE BODY OF MATERIAL, AND THE PAGES DO NOT DUPLICATE.** Measured 2026-08-11: **9 of its 10 ledger records are also `kashmir` records, and all
  * 13 of its series carry the kashmir lens.** The one exception is L-0009, the Depsang incursion,
  * which is also `foreign` and is written there. Writing `defence` alone would write the Kashmir
- * page a batch early under another heading, and the second page would then repeat the first or
- * contradict it. **The domain is not procurement** — the filing rule sends acquisition to `macro`
+ * page under another heading twice over. **So the split is by subject: `defence` carries the
+ * conflict counts and the disputes about what they count; `kashmir` carries the institutional and
+ * rights records — detentions, shutdowns, commissions, statehood, domicile, land.** Each page names
+ * what belongs to it and neither restates the other. **The domain is not procurement** — the filing rule sends acquisition to `macro`
  * and indigenisation to `foreign`, leaving `defence` as armed conflict and counter-insurgency,
  * which in this corpus is J&K.
  */
@@ -404,6 +406,61 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
       from: ['L-0080', 'L-0077', 'L-0088', 'L-0165', 'L-0086'],
     },
   ],
+
+  defence: [
+    {
+      years: '2013 — 2018',
+      heading: 'One word, several quantities, and no target behind any of them',
+      body:
+        'This domain is armed conflict and counter-insurgency, not procurement — acquisition files under macro and indigenisation under foreign — and in this corpus that means Jammu and Kashmir. Nine of its ten records are also Kashmir records and all thirteen of its series are J&K conflict counts; the tenth is the Depsang incursion of 2013, entered as baseline context and filed under foreign as well. Nothing here is scored against an announced target because nothing here announces one: five records take no-objective, four are contested, one is baseline context, and not a single verdict is evaluative. What the records are about is the counting. Infiltration is three different quantities published under one word — attempts, net estimated infiltration, and a third — with no target attached to any. The MHA count of civilians killed to 31 July 2016 has a boundary that decides the number, and the boundary is not stated where the number is. Local recruitment into militancy is the quantity most often cited and the one least clearly defined.',
+      from: ['L-0009', 'L-0119', 'L-0113', 'L-0117'],
+    },
+    {
+      years: '2019 — 2020',
+      heading: 'Two findings established against the state’s own account, by the state’s own bodies',
+      body:
+        'Whether militancy declined after August 2019 is contested here, and the reason is that the answer depends on which of several published series is read: the corpus carries three civilians-killed series on three bases, two security-forces-killed series from two publishers, and two terrorist-incident series that do not cover the same thing. Against that, two records in this period are unusually well established, and both were established from inside. Amshipora was a staged encounter and the Army itself established it, through its own summary of evidence. The burial of encounter dead away from their home districts is documented, and who declares a body unclaimed is the contested part rather than whether the practice occurred.',
+      from: ['L-0110', 'L-0115', 'L-0116'],
+    },
+    {
+      years: '2021 — today',
+      heading: 'The column changed meaning, and both readings stay in the record',
+      body:
+        'Three records in this period are about a published series ceasing to mean what it meant. MHA’s ‘Civilians killed’ column changed basis in 2023 and the earlier and later figures are not the same measurement, so both are carried rather than joined. The J&K incident count has three published figures for 2018 alone. The cumulative thirty-year conflict toll rests on two different populations and the totals in circulation do not say which. None of these is a dispute about whether a number is right; each is a dispute about what the number counts, which is why they take no-objective rather than a verdict.',
+      from: ['L-0112', 'L-0111', 'L-0120'],
+    },
+  ],
+
+  kashmir: [
+    {
+      years: '2009 — 2016',
+      heading: 'A count that already did not fit the thing it counted',
+      body:
+        'The inherited record is of quantities that resist being counted and bodies that tried. Thirteen years of detenu counts arrive in one undifferentiated cell. The State Human Rights Commission’s unmarked-graves report is entered as baseline context. Two bodies review the same detention orders and one confirms almost all of them. The clearest case is the pellet record: MHA published a month-by-month table of seventeen protesters killed over three calendar years and refused the injury count, the munitions expended and the metallurgy under a single national-security exemption on the same afternoon. What is known about the injuries was measured by government doctors and published in a peer-reviewed journal — 777 patients with pellet-related ocular injuries in one Srinagar hospital in four months, 82.4 per cent of eyes at counting-fingers vision or worse. Twenty-six days before the Union refused, the Jammu and Kashmir Chief Minister had given the Legislative Assembly a bounded injury aggregate. Both facts are on the record and neither cancels the other.',
+      from: ['L-0135', 'L-0004', 'L-0132', 'L-0114'],
+    },
+    {
+      years: '2017 — July 2019',
+      heading: 'The routes by which a figure could be extracted, closing one at a time',
+      body:
+        'Under section 7 of the AFSPA as it applied to J&K, fifty sanction requests were made over three decades and none was granted; both the ministry and army headquarters have attested that no written criteria for granting or refusing exist. Two J&K security quantities lost their only legislative route in 2018 when the assembly was suspended — the route that had produced the pellet aggregate. The power to hold a J&K detenu anywhere in India creates an information barrier of its own and is entered as awaiting adjudication. Internet shutdowns are scored partly against the compliance the Supreme Court required in Anuradha Bhasin, and they are one of the few things in this area with a verdict at all.',
+      from: ['L-0122', 'L-0123', 'L-0134', 'L-0081'],
+    },
+    {
+      years: 'August 2019 — 2020',
+      heading: 'The bodies that could have produced an independent count were wound up',
+      body:
+        'The constitutional change of 5 and 6 August 2019 is contested on the mechanism — who supplied the concurrence, and in what capacity. What followed is a matter of record and is the centre of this area. Seven commissions were wound up by seven consecutive orders on one day. The State Human Rights Commission, which had produced the only severity taxonomy in existence, was abolished, and the body said to replace it may not investigate the CRPF at all. Deaths in Army and central-force custody have no cell in any official form. The instruments that had ever named a perpetrator for a civilian death are gone. Ten official figures across five different objects were given for the August 2019 detentions, and four defensible durations exist for the communications blackout. Permanent residence was replaced by domicile and the land law was repealed by executive order five days before the power to do so lapsed.',
+      from: ['L-0125', 'L-0149', 'L-0148', 'L-0121', 'L-0133', 'L-0144', 'L-0145'],
+    },
+    {
+      years: '2021 — today',
+      heading: 'An undertaking with no date, and a publisher that no longer exists',
+      body:
+        'The undertaking to restore statehood has produced six statements over seven years and no date, and is entered as awaiting adjudication rather than scored. Delimitation produced one Commission table and three different readings of it. Turnout in the 2024 election has four official values for one quantity. The Review Committee’s findings were refused as exempt and then ordered disclosed. The 2024 Suspension Rules are narrow, timed and reason-bearing, and are too-early — the first thing in this area for some years that could be tested later against its own terms. And the shutdown series ends where it does because the venue in which J&K published its suspension orders no longer exists, which is a fact about the publisher and not about the shutdowns.',
+      from: ['L-0127', 'L-0141', 'L-0137', 'L-0142', 'L-0139', 'L-0140'],
+    },
+  ],
 };
 
 /**
@@ -418,9 +475,9 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
  * sentence about the evidence cannot go stale against the evidence — which is the failure mode this
  * repository has already paid for in the one section written to prevent it.
  *
- * Only five areas carry a note, and that is the point: an evidence line on all fourteen would be
+ * Only six areas carry a note, and that is the point: an evidence line on all fourteen would be
  * boilerplate, and boilerplate is read past. **`macro`, `education`, `environment`,
- * `human-development`, `poverty`, `foreign` and `governance` deliberately have none** — their grades are mixed and unremarkable, and a
+ * `human-development`, `poverty`, `foreign`, `governance` and `defence` deliberately have none** — their grades are mixed and unremarkable, and a
  * note saying so would say nothing.
  *
  * **`federalism` IS THE ONLY NOTE EXPLAINING A HIGH GRADE, AND THAT IS WHY IT EXISTS.** At 100 per
@@ -428,6 +485,19 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
  * grade invites a false inference in the other direction: a reader who sees *fully verified* may
  * take the area to be settled, when its problem is comprehension rather than documentation. **A
  * note earns its place by stopping a misreading, and a misreading can run either way.**
+ *
+ * **`kashmir` TAKES ONE AND IT EXPLAINS AN ABSENCE OF GRADE RATHER THAN A GRADE.** It files zero
+ * series of its own, so a reader meeting 46 records and no series column would take the area for
+ * unmeasured — the strongest available misreading of the page, and one the page itself produces.
+ * **The note says where its 184 observations actually live**, across thirty series read through its
+ * lens and filed under governance, defence and federalism. The derived line beside it counts that
+ * lensed set for the same reason; counting the area's own series would have printed *0 of 0* and
+ * asserted the misreading the note exists to stop.
+ *
+ * **`defence` WAS TESTED AND TAKES NONE.** 83 per cent over 98 observations is unremarkable. Its
+ * distinctive fact is that several of its series count the SAME quantity on different bases — three
+ * civilians-killed, two security-forces-killed, two incident series — **which is a comparability
+ * fact, not a grade one**, and it is what its periods are about.
  *
  * **`governance` WAS TESTED AND TAKES NONE.** At 76 per cent over 131 observations its grade is
  * unremarkable. Its distinctive fact is the RECORD-TO-COUNT GAP — 110 records against 131
@@ -455,6 +525,8 @@ export const DOMAIN_EVIDENCE: Partial<Record<Domain, string>> = {
     'Three per cent of the observations here are verified, the lowest share in the corpus, and the reason is the route the figures travel rather than their quality. Ten of the twenty-two series in this area are cited to an RBI figure RELAYED — through a PIB release, an RTI response or a Parliamentary answer — and only three are cited directly to an RBI publication, one of them the Financial Stability Report. Under this instrument’s mirror rule a relayed figure is an account of the release and not the release, so it is graded approximate however sound the underlying number is. That is a statement about what this record holds, not about the RBI: the figures are published, and what is mostly held here is somebody else’s report of them.',
   federalism:
     'Every observation in this area is verified — 236 of 236, the only area in the corpus at 100 per cent — and the reason is the class of document these figures come from. Finance Commission reports, CAG certificates and Union Budget annexes are statutory publications with fixed formats and numbered tables; they exist to be cited, and a figure taken from one can be pointed at precisely. Nothing else in this instrument is published that way. THE NOTE IS HERE TO STOP A READING RATHER THAN TO EXPLAIN A WEAKNESS: verified means the figure is the one the document gives, and it does not mean the thing is understood or agreed. This is the best-documented area in the corpus and the one whose central movements — a rising share of a shrinking pool — almost nobody could state. A high grade is not a settled question.',
+  kashmir:
+    'This area files NO series as its own subject, and a reader meeting a page of 46 records with no series column of its own would reasonably take it for unmeasured. It is not. Thirty series are read through the Kashmir lens and are filed under the domains whose subject they are — fifteen under governance, thirteen under defence, two under federalism — because a series counts detentions or encounters or devolution, and Jammu and Kashmir is the territory it counts them over. THE FIGURES BESIDE THIS NOTE ARE THOSE THIRTY. What the area holds in its own right is records rather than counts: institutional facts, episodes, and disputes about what a published quantity includes. Most of those counts come from the state — MHA annual reports above all. Where a count bears AGAINST the state, it tends to come from somewhere else: a hospital ophthalmology series in a peer-reviewed journal, a civil-society register, a commission that has since been wound up.',
   welfare:
     'The low verified share here is a fact about what a scheme publishes rather than about how well it is run. Welfare schemes report a CUMULATIVE RUNNING TOTAL — houses sanctioned to date, cards created to date, connections released to date — which is one number republished as it grows, not a series that can be differenced into annual figures. Nine of the nineteen series in this area therefore carry a single observation, against four of twenty-four in infrastructure and three of twenty-three in employment, and six say cumulative in their own title or note. A cumulative total is a real quantity and it answers a different question from the one a reader usually brings: it says how much has been handed out since the scheme began, and not how much was handed out last year.',
   employment:
