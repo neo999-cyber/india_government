@@ -13738,3 +13738,79 @@ tasks over 50ms.**
 `document.hidden === true`, and Chrome clamps `setInterval` to ≥1000ms in hidden tabs. A wall-clock
 measurement of tick cadence therefore reads ~998ms at every speed. That is the throttle, not the
 control, which is why the cost above is measured as work per step rather than as observed cadence.
+
+---
+
+## 2026-08-11 (fourteenth entry) — the prose-anchor gap, measured, and the check built
+
+Taken before features 2–5 rather than after, so it guards them as they land.
+
+### The discriminator, which is the whole design
+
+A record link is a LISTING or a CITATION and the page says which: **a listing names the record by its
+TITLE, a citation names it by its ID.** That is a property of the rendered page, not a convention
+anyone has to remember, and it is what makes this checkable at all. Without it the check reports 649
+links — every crumb and cross-reference in the corpus — and is switched off within a week.
+
+**Measured before building.** Of the record links outside every recognised shape whose record
+declares a mark: **462 named the record by its title, 17 by an id.** And all 462 were two real
+listing shapes nobody had bound.
+
+### What the measurement found, which was not the reported bug
+
+**`listing-marks` was not binding the domain-page record items or the chart cards.** The domain
+rebuild put the anchor around the TITLE and the marks beside it, inside a container — a shape the
+gate's anchor-card regex cannot see, because that regex expects the marks INSIDE the anchor. Every
+one of those rows renders its declarations correctly; **no gate was checking that it did.**
+
+Adding four container shapes — `drec`, `cw`, `pslope`, `peer-one` — took the gate from **3,098 rows
+/ 4,347 marks to 3,835 / 5,429**: 737 rows and 1,082 marks that were unbound.
+
+**AND IT IMMEDIATELY CAUGHT A REAL DEFECT OF MINE.** `PeerSlope` rendered its caveat through a
+hand-rolled `<p className="pslope-caveat">` rather than `CaveatFlag`. The text was correct and the
+gate could not see it, because the gate binds `caveat-inline` — the class the one sanctioned
+renderer emits. **That is the ad-hoc-normaliser class**: a second implementation of a rule, where
+the copy nobody maintains is the one that eventually truncates. Both sites now use `CaveatFlag`.
+
+### Two shapes were tried, rejected, and the rejection is the finding
+
+`chart` (the embedded feature) and `cu-view` (a pair) both look like listings. Adding them made
+`listing-marks` report **17 marks missing on pages whose declarations are plainly present** — 2
+`caveat-inline` and 2 absence blocks were right there in the HTML.
+
+**The cause is that a pair POOLS its sides' absences and renders them once at pair width**, and a
+pair whose absence side is a LEDGER record pools nothing from it at all. Taking the side as the unit
+demands a declaration twice; taking the pair demands one that is pooled nowhere.
+
+**The unit is whatever renders the declarations exactly once, and for those components that is a
+question about the component rather than about markup.** They are left out with the reasoning in the
+shape module, and the check reports them so the decision stays visible.
+
+### `tools/unrecognised-rows.mjs` — report-only, wired into the build
+
+**It asks the complement of `listing-marks`: not *does every row carry its marks* but *is every
+listing inside a row*.** It cannot be widened into blindness the same way, because its subject is
+precisely the thing outside the list — which is the property the five previous widenings all lacked.
+
+**It shares its shape list with `listing-marks` rather than restating it.** `tools/lib/listing-shapes.mjs`
+was extracted in the same commit; two copies would be the ad-hoc-normaliser class again, and the
+divergence would be silent in the worst direction — one gate calling a shape unrecognised that the
+other binds, with neither failing.
+
+**Report-only, and the reason is specific rather than cautious.** Turning it red means adding every
+reported shape, and the first two tried were rejected on contact for the reason above. **62 remain,
+each needing its component read once and its unit named** — printed on every run rather than quoted
+from a comment, because that is how a measured deferral becomes the other kind. Control proves all
+three branches: a title-link outside every shape is caught, the same link inside a `<tr>` is not, and
+an id-link is not.
+
+### Answering the question as asked, per feature
+
+**How each feature handles a record named in prose, and whether this check reaches it.** Feature 1
+names no record in prose — the board's cards carry titles inside `.card`, already bound. For features
+2–5 the answer is now mechanical rather than a promise: **any of them that names a record by its
+title outside a recognised shape appears in this gate's output on the next build**, and any that
+cites by id does not, correctly. That is the guarantee the earlier batches did not have.
+
+**Gates:** `listing-marks` 3,835 rows / 5,429 marks · `unrecognised-rows` 62 reported, 4 citations
+correctly excluded · `link-check` 30,527 hrefs / 669 pages / 0 dead · all others unchanged.

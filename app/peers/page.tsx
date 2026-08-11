@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { getLedger, ledgerCitingSeries, panelSeries } from '@/lib/data';
 import { PeerSlope } from '@/components/PeerSlope';
 import { SeriesTable } from '@/components/SeriesTable';
-import { Absences, CaveatFlag, SourceLine, StatusKey, TierTag } from '@/components/marks';
+import { AbsenceCount, Absences, CaveatFlag, SourceLine, StatusKey, TierTag } from '@/components/marks';
 
 export const metadata: Metadata = {
   title: 'Peers',
@@ -164,7 +164,11 @@ export default function PeersPage() {
                     </span>
                   ))}
                 </p>
-                {s.caveat ? <p className="pslope-caveat">{s.caveat}</p> : null}
+                {s.caveat ? <CaveatFlag caveat={s.caveat} variant="inline" /> : null}
+                {/* The full block AND the count: `Absences` renders every declaration in full,
+                    which is what this surface owes, and `AbsenceCount` is the mark `listing-marks`
+                    binds. Both, because they answer different questions — how many, and which. */}
+                <AbsenceCount items={s.unmeasured} />
                 <Absences items={s.unmeasured} />
               </article>
             );
