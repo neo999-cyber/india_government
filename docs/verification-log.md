@@ -12945,3 +12945,158 @@ spans, 12 frozen, 14 out of scope · \`field-render-audit\` 44 prose + 52 non-pr
 invisible, 17 exempted · \`withdrawn-wording\` 29 corrections, 166 sibling comparisons ·
 \`link-check\` 27,976 hrefs / 668 pages / 0 dead · \`listing-marks\` 2,630 rows / 3,713 marks ·
 \`domain-coverage\` 14/14, 1137/1137.
+
+---
+
+## 2026-08-11 (seventh entry) — the `$ref` class, `pairs.status`, and the environment caveat rate answered
+
+**NO RECORD WAS CHANGED. Two reports and one research finding, and the finding names a record change
+that is therefore a STOP.**
+
+### 1. `$ref` — an INSTANCE in the data, a CLASS in the code, and the class is closed
+
+**Swept every schema.** `$ref` appears **twice in the whole corpus**, both in `pairs.schema.json`
+(`properties.a`, `properties.b`, both to `#/$defs/side`), and nowhere in ledger, provenance or
+series. **The fix is global regardless**: `leafFields` resolves refs for every schema, so a ref added
+to any layer tomorrow descends correctly.
+
+**Before / after leaf count per layer**, measured against the actual prior module read out of
+`3b91e1b` rather than from memory:
+
+| layer | before | after | delta |
+|---|---|---|---|
+| ledger | 44 | 44 | 0 |
+| provenance | 17 | 17 | 0 |
+| series | 30 | 30 | 0 |
+| **pairs** | **14** | **22** | **+8** |
+| total | 105 | 113 | +8 |
+
+`a` and `b` stopped being leaves; ten real leaves appeared in their place.
+
+**AND THE CLASS QUESTION IS WIDER THAN `$ref`, so the other indirection constructs were checked
+too.** `additionalProperties` appears 15 times and is `false` every time — **0 carry a subschema**,
+so nothing hides there. `if` / `then` / `else` / `not` / `allOf` are constraints and are deliberately
+not walked as shapes; tested for the failure that would matter — **no property name is declared only
+inside a conditional branch**, so nothing is enumerated exclusively there. `oneOf` was already
+handled. **No second instance of the silent-leaf shape exists.**
+
+### 2. `pairs.status` — the premise is false, in a useful direction
+
+**It is not a reader-facing defect, because a `declared-pending` pair reaches no reader at all.**
+Both pending pairs fail `pairRenders`, and `pairsWithSeriesAsSide` and `pairsHostedOn` each gate on
+it, so neither appears on any surface. The concern was that a pending pair would be indistinguishable
+from a live one; it is instead invisible, which is stronger.
+
+- **PR-16** `declared-pending` — both sides unresolved (RTI applications filed / information actually
+  received). Renders nowhere.
+- **PR-55** `declared-pending` — side a resolves to a series, side b does not (devolution as the
+  states account for receiving it). Renders nowhere.
+- 12 `live` + 46 with no status = 58, **all render**.
+
+**THE CORRESPONDENCE IS EXACT IN BOTH DIRECTIONS AND ENFORCED BY NOTHING.** Every non-rendering pair
+is marked `declared-pending` and every `declared-pending` pair fails to render — 2 and 2, no
+exceptions. But no gate asserts the equivalence, and since nothing reads `status`, a divergence would
+be silent: a pending pair whose sides later resolve, or a pair that breaks without being marked.
+**The residual risk is drift, not misreading.** Also inconsistent: `live` is asserted on 12 pairs and
+left implicit on 46, for the same meaning.
+
+### 3–6. THE ENVIRONMENT CAVEAT RATE — zero is CORRECT, and the distribution found a real defect elsewhere
+
+**The definition, quoted verbatim and judged against rather than paraphrased.** Rule 3a: *"A record
+carrying one would mislead without it... Ordinary uncertainty is not a caveat and belongs in
+`notes`."* The schema, identically on both layers: *"A blocking qualification that MUST render
+wherever this record appears, including compact listings. Use only when the record would mislead
+without it — an unverified comparability assumption, a circular measure, a disputed instrument. Not
+for ordinary uncertainty, which belongs in notes."*
+
+**THE PER-DOMAIN DISTRIBUTION, series layer, so the judgement is against a spread and not one
+number.** Corpus 128/269 = 48%.
+
+| area | series | caveats | rate |
+|---|---|---|---|
+| Environment & energy | 15 | 0 | **0%** |
+| Banking & credit | 22 | 1 | **5%** |
+| Welfare delivery | 19 | 5 | 26% |
+| External sector & foreign policy | 7 | 2 | 29% |
+| Infrastructure | 24 | 7 | 29% |
+| Employment | 23 | 8 | 35% |
+| Macroeconomy | 31 | 13 | 42% |
+| Human development | 7 | 3 | 43% |
+| Poverty | 2 | 1 | 50% |
+| Governance & institutions | 29 | 15 | 52% |
+| Defence | 13 | 8 | 62% |
+| Federalism | 23 | 16 | 70% |
+| Education | 54 | 49 | **91%** |
+
+**Environment is not uniquely zero — banking is at 5%, and the two are a cluster.** The spread is 0
+to 91 points on one field.
+
+**THE DECISIVE COUNTER-EVIDENCE AGAINST "PHASE 15 UNDER-APPLIED THE FIELD": environment's LEDGER
+records are at 50% (7 of 14), the corpus rate.** Same subject, same phase, same author, different
+layer. An author who had forgotten the field would have forgotten it on both.
+
+**WHAT THE FIFTEEN ACTUALLY CARRY, read one at a time.** 13 of 15 carry notes; **7 of 15 carry the
+disambiguation IN THE TITLE**; 2 carry `breaks[]`; 6 carry `provenanceRefs`; 5 carry
+`higherIsBetter: null` for genuinely contested direction. The strongest caveat candidate was
+`res-capacity-share`, whose note says the publisher's own other documents use *"RES"* to INCLUDE
+large hydro and produce a materially higher share (P-121) — a disputed instrument on the definition's
+own terms. **It was tested rather than assumed**: the disambiguation is in the TITLE —
+*"Renewables' share of installed electricity capacity (RES, excluding large hydro)"* — and a title
+renders on every listing surface. Verified on the series page, the domain page, the series index and
+the overview board: the title tail is present on all four; the notes sentence on the record's own
+page only, which is correct, because the P-121 cross-reference is elaboration and not the blocking
+part. **The same holds for `res-generation-share`.**
+
+**AND EDUCATION'S 91% IS NOT THE SAME NEED MET MORE DILIGENTLY — IT IS A DIFFERENT KIND OF OBJECT.**
+Sampled: *"T4 BY THE SCHEMA'S LETTER"* (a tiering dispute, on ten ASER series), *"THIS SERIES MUST NOT
+BE USED FOR UPA-VERSUS-MODI COMPARISON"*, *"NEVER RENDER THIS WITHOUT edu-spend-gdp-all-depts"*,
+*"FY2022-23 IS HELD, NOT ZERO AND NOT MISSING"*, *"THIS IS THE CENTRE'S SHARE ONLY AND IS ONE QUARTER
+OF THE STORY"*. **These are instructions about how the number may be used. None of them fits in a
+title.** Environment's qualifications are definitional; a title can carry *"(RES, excluding large
+hydro)"* and cannot carry a use prohibition.
+
+**THE ANSWER: explanation (a) — the fifteen genuinely need no caveat — and it is not the comfortable
+answer, it is the one four independent measurements agree on** (the ledger rate at 50%, the seven
+parenthetical titles, the listing-surface test, and the different character of education's caveats).
+**Phase 15 was right. The rate needed explaining, not fixing.** Recorded so the next reviewer does
+not re-open it: a correct unexplained zero reads exactly like an oversight, which is why this has
+been raised three times.
+
+**Two lesser observations, not defects.** `delhi-pm25` and `solar-capacity` are single-point series
+carrying no notes at all — thin rather than misleading, since one point is visibly one point. And the
+ASER T4 caveat is duplicated verbatim across ten series, which is a maintenance shape.
+
+### THE DEFECT THE DISTRIBUTION FOUND, AND IT IS IN BANKING — STOP
+
+**Rule 5b:** *"The reporting basis is stated wherever the figure appears (P-18)... a series that
+states no basis renders as 'basis not stated' rather than being assumed onto one."* **It holds on 2
+of the 5 India NPA series and fails on 3.**
+
+| series | basis in title | caveat | where the basis is stated |
+|---|---|---|---|
+| `scb-gross-npa` | (domestic operations) | — | **title — compliant** |
+| `scb-gross-npa-amount` | (domestic operations) | — | **title — compliant** |
+| `psb-gross-npa` | no | no | notes only: *"GLOBAL OPERATIONS basis"* |
+| `pvt-gross-npa` | no | no | notes only: *"BASIS NOT STATED... Blocking item"* |
+| `net-npa` | no | no | **nowhere** |
+
+**`pvt-gross-npa` is the sharp case and its own note convicts it.** The note reads *"BASIS NOT STATED
+in the source used. Cannot share an axis with any other NPA series until resolved (P-18). Blocking
+item on the verification queue."* Verified: that text appears on the record's own page and on **none**
+of the domain page, the series index or the overview board, while the title and the figure appear on
+all four. A reader meeting it in a table puts it on the same axis as the two domestic-basis series —
+which the record itself forbids.
+
+**This is the caveat definition met exactly**: a record that would mislead without the qualification,
+where the qualification is a disputed instrument, and where the field currently holding it does not
+render in compact listings. `psb-gross-npa` is the same shape one degree weaker (the basis IS known
+and stated, just not where it travels). `net-npa` states no basis anywhere.
+
+**NOT CHANGED. This is verdict-adjacent record work and the instruction was to stop.** Three series
+need a basis that renders on every surface — as a caveat, or in the title on environment's pattern,
+which is the operator's call. Entered in `STATE.md`.
+
+**Gates:** `deploy-chain` OK · `quotation-identity` 31/31 over 111 commits · `field-render-audit` 44
+prose + 52 non-prose, 4 layers, 0 invisible, 17 exempted · `seam-span` 127 spans, 12 frozen, 14 out
+of scope · `link-check` 27,976 hrefs / 668 pages / 0 dead · `listing-marks` 2,630 rows / 3,713 marks
+· `domain-coverage` 14/14, 1137/1137.
