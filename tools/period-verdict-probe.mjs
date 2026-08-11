@@ -20,6 +20,19 @@
  *   - **A verdict can be asserted in PARAPHRASE.** *"entered with no target to score at all"* is
  *     `no-objective` stated correctly and contains none of the token.
  *
+ * ============================ ITS BLIND SPOT, WHICH IS LUCK AND NOT DETECTION ================
+ *
+ * **It catches a cited-but-unused id only when that id's verdict token happens to be ABSENT from the
+ * whole paragraph.** L-0060 was cited in a human-development period and never drawn on; it is
+ * `contested`, the paragraph contained *"contested"* for a DIFFERENT record, and the probe passed it.
+ * The same shape it had caught twice the batch before, missed on a coincidence.
+ *
+ * **So a hand-sweep of each period's `from` list against its body is still owed on new prose**, and
+ * this header says so rather than letting a green run imply the check was made. A heuristic sweep
+ * over title words was tried and returns false candidates at a high rate, because the prose names
+ * records descriptively — *"the note withdrawal of November 2016"* is L-0011 and *"housing"* is
+ * L-0037 — which is better writing than any matcher can see.
+ *
  * ============================ WHAT IT FOUND, WHICH IS WHY IT IS KEPT ==========================
  *
  * On its first run it caught a real one that reading had missed: the `macro` 2014–2016 period called

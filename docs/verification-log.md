@@ -14722,3 +14722,111 @@ withdrawn phase name inside the sentence that withdraws it. Checked rather than 
 that gate's own header records a near-miss where an exemption held by coincidence.
 `listing-marks` 3,552 rows / 5,008 marks, `unrecognised-rows` 0, `field-render-audit` 0 invisible,
 `rendered-space` 0 — all unchanged, as they should be: no code and no records moved.
+
+---
+
+## 2026-08-11 (twenty-fifth entry) — DOMAIN PROSE: banking, poverty, and one premise that failed again
+
+Nine of fourteen areas carry periods. Banking takes four; poverty takes one.
+
+### THE PREMISE CHECK, RUN FIRST AS INSTRUCTED — THREE HELD, ONE DID NOT
+
+| premise | result |
+|---|---|
+| `banking` is a domain | **holds** — in the enum, 13 records, 22 series |
+| banking is 3 per cent verified | **holds exactly** — 4 verified of 132 India observations, the lowest in the corpus |
+| `net-npa` left without a prohibition | **holds** — it carries *(basis not stated)* in its title and no caveat, and `pvt-gross-npa` is the only NPA series carrying the prohibition |
+| **`agriculture` is a domain** | **DOES NOT HOLD — it is not in the enum** |
+
+**Fifth premise failure in three batches, and the same class: a name re-used rather than re-read.**
+The agriculture material is split across four areas and none of them is called agriculture:
+P-47 — the 1.5× MSP cost-basis dispute — is filed `[macro, welfare]`; L-0067 doubling farmers'
+income is `[poverty, welfare]`; L-0069 MSP and the legal guarantee is `[welfare, federalism]`;
+L-0157 and L-0176, the agriculture cess and fund, are `[macro, federalism]`.
+
+**One figure in my own brief was also slightly off and is corrected: the NPA family is six series,
+not five.** Four are ratios — `scb-gross-npa` (domestic operations), `psb-gross-npa` (global
+operations), `pvt-gross-npa` and `net-npa` (both *basis not stated*) — and **all four now state a
+basis in the title**, with one carrying the prohibition caveat. The other two are an amount series
+and a peer panel.
+
+**`poverty` was written as the second area instead**, which keeps the arithmetic the batch was sized
+to — five remain, governance and Kashmir last — and is where L-0067 lives.
+
+### WHERE THE A2+FL VERSUS C2 PATTERN ACTUALLY WENT
+
+**It could not honestly go in poverty.** P-47 is not filed against poverty and L-0067 does not turn
+on it. **L-0069 does** — it cites P-47 and its own `whatHappened` states the point — and L-0069 was
+already in welfare's 2013–2016 `from` list. So the sentence went there, drawing on a record the
+period already names.
+
+**And the cross-area claim is made where it is true:** the 2018-19 claim of MSP at 1.5 times cost
+used A2+FL and not the C2 basis the Swaminathan recommendation specified, with the announcement
+silent on which. **Same shape as capacity against generation in energy and a stock against a flow in
+fiscal reporting — two official constructions of one word, the promise kept on one and not the
+other. Three areas have now produced it**, which makes it a property of how commitments are
+announced rather than a quirk of one.
+
+### BANKING: THE BASIS WORK EARNED A PLACE, NOT A PERIOD
+
+The judgment the brief left open. **It did not earn its own period.** A reader wants to know what
+happened to bad loans. It earned a place inside the period where the ratio IS the subject — because
+there the basis question is not a fact about the record: **the 2018 peak is 14.58 per cent for
+public-sector banks on a global basis and 11.46 for scheduled commercial banks on a domestic one,
+and those are different populations rather than two estimates of one.** A reader who is quoted "the
+peak" is being quoted one of two numbers.
+
+The four periods run: recognition rather than deterioration, and the peak that is four ratios;
+**the fall that has three causes** — write-offs at ₹2.36 lakh crore in FY2018-19, a denominator
+growing with credit, and genuine resolution third and smallest; a reconstruction and a privatisation
+that has not happened in five years; and composition, where risk weights on unsecured consumer credit
+went 100 to 125 per cent and realisation through the Code fell to 30.56 per cent of admitted claims.
+
+### THE EVIDENCE-NOTE TEST, ANSWERED FOR BOTH
+
+**BANKING GETS ONE, AND THE REASON IS THE ROUTE THE FIGURES TRAVEL — NOT THE 3 PER CENT.** **Ten of
+the twenty-two series are cited to an RBI figure RELAYED — through a PIB release, an RTI response or
+a Parliamentary answer — and only three are cited directly to an RBI publication, one of them the
+Financial Stability Report.** Under the mirror rule a relayed figure is an account of the release and
+not the release, so it grades approximate however sound the underlying number is. **That is a
+statement about what this record holds, not about the RBI**, and the note says so.
+
+**POVERTY GETS NONE.** 3 verified of 5 observations. The share is meaningless at that n and the
+area's distinctive fact is not its grade but that its headcount stopped, which is the period's
+subject.
+
+### THE PROBE: 8 CANDIDATES IN THE NEW AREAS, 2 REAL — AND ONE OF THEM IS THE BAD SHAPE
+
+- **I described a `partly` record as having "worked".** The banking 2020–2022 period read *"the
+  recapitalisation of the previous period had worked on its own terms"*. **L-0026 is `partly`.** That
+  is an enum value used as ordinary English *and* attached to a record that does not hold it — the
+  worse version of the `reversed` shape from two batches ago, because it attributes a verdict rather
+  than merely colliding with one. Rewritten to *"delivered on the limb it is scored partly for"*.
+- **"the area's second outright failure" → "second record scored failed".** Third instance of the
+  noun form; fixed for consistency with L-0051 and L-0067.
+- Three `partly` records in one period with none saying so, named once, as in welfare.
+
+**AND A CITED-BUT-UNUSED ID FOUND BY HAND, WHICH THE PROBE CANNOT SEE.** Poverty was drafted as two
+periods, and **the first had no ledger record behind it** — its subject was a SERIES that stopped —
+so it cited L-0043 while only pointing forward to it. **A period with nothing behind it is exactly
+what the `from` list exists to prevent.** The honest repair was one period covering 2004 to today,
+citing all three records and drawing on all three, rather than a citation added to justify a second
+period. **Period count follows the area, and here the area is three records.**
+
+The probe's blind spot is now recorded in its own header, per the instruction: it detects a
+cited-but-unused id only when that id's verdict token is absent from the whole paragraph, which is
+luck rather than detection, so a hand-sweep of each `from` list against its body is still owed on new
+prose.
+
+Three candidates remain in banking and all are false: two records described without being scored,
+and one — the Expected Credit Loss transition — carrying `no-objective` in paraphrase, *"announces no
+date this record can hold it to"*.
+
+### Gate line
+
+27 steps green. `listing-marks` 3,552 rows / 5,008 marks and `unrecognised-rows` **0**, both
+unchanged — the periods block links by id, a citation, correctly not counted. `field-render-audit`
+0 invisible. `rendered-space` 0. Rendered evidence-note counts re-derived independently of the page
+and matching: banking 128 of 132 approximate, 4 verified, 5 of 22 single-observation.
+
+**Five areas remain: governance, kashmir, federalism, foreign, defence — governance and Kashmir last.**
