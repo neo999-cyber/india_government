@@ -56,6 +56,29 @@ Roughly two areas per batch. **Governance and Kashmir go last**, per the operato
 
 ---
 
+## RAISED 2026-08-11, BEFORE BEING RESOLVED — L-0114's `assessmentNote`
+
+**The defect is stated here before the edit is made, per the narrow source-edit amendment**, so that
+the statement of it cannot be reshaped to fit the answer.
+
+`L-0114.assessmentNote` reads, in part: *"the state holds the measurements for both sides of its own
+trade-off, publishes the term favourable to it and refuses the term unfavourable to it."*
+
+**The refusal is the UNION ministry's, not "the state's", and this record's own `whatHappened`
+reports the counter-example**: the Jammu and Kashmir Chief Minister gave the Legislative Assembly
+bounded injury aggregates — 6,221 injured by pellets among five quantities — twenty-six days before
+MHA refused them, and the state's Director of Health Services filed a district-wise injury list on
+affidavit four months later.
+
+**It is the same over-generalisation the `caveat` already corrected in the `summary` on 2026-08-05**,
+and it survived in this field because that pass searched the summary. **The per-field prose shadow,
+in a record whose caveat documents two earlier passes of the identical defect** — the second of which
+was itself a miss, because its search string required the word *ever* that one sentence omitted.
+
+Wording correction only. No figure changes and the verdict stays `contested`.
+
+---
+
 ## STANDING HAZARDS
 
 **Phase 13's completeness is an open question**, per the CLAUDE.md phase table: delimitation was
