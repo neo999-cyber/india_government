@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { memo, useDeferredValue, useState } from 'react';
 import Link from 'next/link';
 
 /**
@@ -84,6 +84,13 @@ export type ODomain = {
   breaks: number;
   /** Composition in the corpus's own `type` words. No second vocabulary — see the page. */
   composition: string;
+  /**
+   * ITEM 1 — WHAT HAPPENED IN THE YEARS. Years in which a record filed under this area was
+   * announced, and the count per year. Derived only from `date` on records the area declares:
+   * 220 of 223 fall inside the 2010-2026 window, the other 3 are pre-2010 baseline records.
+   * Nothing is inferred and no year is invented.
+   */
+  events: { year: number; n: number }[];
 };
 
 const X0 = 2010;
@@ -136,30 +143,57 @@ function at(s: OSeries, year: number | null) {
   return { p: near, exact: false };
 }
 
-function Spark({
+/**
+ * ============================ WHY THE SCRUB LINE IS NOT REACT STATE =========================
+ *
+ * Every chart on this page shows the SAME year at the same fraction of its own width, because the
+ * X axis is shared — that is the board's whole argument. So the scrub position is **one number for
+ * the entire page**, and re-rendering 262 SVG components to move 262 lines to the same relative
+ * place is work the shared axis makes unnecessary.
+ *
+ * It is published as `--scrub-t` (0..1) on the board container and each line is translated by CSS.
+ * `transform-box: view-box` makes the translation happen in the SVG's own user units, so one
+ * variable drives a 260-wide head chart and a 120-wide mini alike; each `<svg>` carries its own
+ * `--w`. **React renders each line exactly once, at x = PAD, and never touches it again.**
+ *
+ * MEASURED, because item 2 asked for numbers and not an assurance. Before: median 6.9ms per slider
+ * step, p90 11.1, worst 22, on this desktop. The tool cannot throttle CPU; at the standard 4x
+ * mid-tier multiplier that is 28 / 44 / 88ms against a 16.7ms frame — a dragged slider at roughly
+ * 20-36fps. The fix is the one the instruction asked for: **nothing stops moving.** All 262 lines
+ * still sweep; they simply stop going through React to do it.
+ */
+const Spark = memo(function Spark({
   s,
   year,
   w = W,
   h = H,
   showDots = true,
+  events,
 }: {
   s: OSeries;
-  year: number | null;
+  /** Only for the hit dot, whose Y is per-series and cannot be a shared variable. */
+  year?: number | null;
   w?: number;
   h?: number;
   showDots?: boolean;
+  /** Years in which a record filed under this area was announced. Head charts only. */
+  events?: number[];
 }) {
   const { x, y } = geom(s.pts, w, h);
-  const hit = at(s, year);
+  const hit = year == null ? null : at(s, year);
   const last = s.pts[s.pts.length - 1];
   return (
     <svg
       viewBox={`0 0 ${w} ${h}`}
       className="spk"
+      style={{ ['--w' as string]: w }}
       role="img"
-      aria-label={`${s.title}, ${s.pts[0].y} to ${last.y}`}
+      aria-label={`${s.title}, ${s.pts[0].y} to ${last.y}${
+        events && events.length ? `. ${events.length} year(s) in which a record here begins` : ''
+      }`}
     >
-      {year !== null ? <line className="spk-scrub" x1={x(year)} x2={x(year)} y1={0} y2={h} /> : null}
+      {/* Rendered once at the axis origin; CSS moves it. See the header. */}
+      <line className="spk-scrub" x1={PAD} x2={PAD} y1={0} y2={h} />
       {s.brk.map((b) => (
         <line key={b} className="spk-brk" x1={x(b)} x2={x(b)} y1={2} y2={h - 2} />
       ))}
@@ -177,6 +211,21 @@ function Spark({
             />
           ))
         : null}
+      {/* EVENT TICKS — item 1. A record was announced in this year, in this area. They sit on the
+          baseline rather than crossing the plot: the line, the seams and the scrub rule already use
+          the vertical, and a fourth full-height mark would make the busiest areas unreadable
+          (Governance carries a record in all 17 years). Nothing is inferred — one tick per distinct
+          year in which a record filed under this area carries a date. */}
+      {events?.map((ey) => (
+        <line
+          key={`e${ey}`}
+          className="spk-event"
+          x1={x(ey)}
+          x2={x(ey)}
+          y1={h - 3.5}
+          y2={h}
+        />
+      ))}
       {hit ? <circle cx={x(hit.p.y)} cy={y(hit.p.v)} r={4} className="spk-hit" /> : null}
       {s.before ? (
         <text className="spk-before" x={1} y={h - 2}>
@@ -185,7 +234,7 @@ function Spark({
       ) : null}
     </svg>
   );
-}
+});
 
 function Reading({ s, year }: { s: OSeries; year: number | null }) {
   const first = s.pts[0];
@@ -224,11 +273,53 @@ function Reading({ s, year }: { s: OSeries; year: number | null }) {
   );
 }
 
+/**
+ * WHAT HAPPENED IN THIS YEAR, IN THIS AREA — the count, and a route to the records.
+ *
+ * IT COUNTS AND LINKS RATHER THAN LISTING, and that is a rule decision rather than a space one.
+ * A card that named the records would be a LISTING SURFACE, and rule 4b would then require every
+ * caveat and every declared absence to render inside it, in full — on fourteen cards, for up to
+ * **16 records in one area-year** (Governance, 2019). The year-by-year section further down this
+ * same page already lists all 223 with their marks and is already bound by `listing-marks`, so the
+ * count links there instead of building a second listing that would have to be kept in step.
+ *
+ * Choosing which one or two records to name would also be a ranking, and there is no defensible
+ * quantity to rank on.
+ */
+function WhatHappened({ d, year }: { d: ODomain; year: number | null }) {
+  if (year === null) return null;
+  const hit = d.events.find((e) => e.year === year);
+  return (
+    <p className="card-happened">
+      {hit ? (
+        <Link href={`/overview/#y${year}`}>
+          <strong>
+            {hit.n} record{hit.n === 1 ? '' : 's'}
+          </strong>{' '}
+          begin{hit.n === 1 ? 's' : ''} here in {year}
+        </Link>
+      ) : (
+        <span className="card-happened-none">No record in this area begins in {year}</span>
+      )}
+    </p>
+  );
+}
+
 export function OverviewBoard({ domains }: { domains: ODomain[] }) {
   const [year, setYear] = useState<number | null>(null);
+  /**
+   * The line moves now; the words catch up. `useDeferredValue` lets React drop an intermediate
+   * text update during a drag without ever dropping one at rest, so the readings are always
+   * correct when the reader stops — which is the only moment they are read.
+   */
+  const shown = useDeferredValue(year);
 
   return (
-    <>
+    <div
+      className="board"
+      data-scrub={year === null ? undefined : ''}
+      style={{ ['--scrub-t' as string]: year === null ? 0 : (year - X0) / (X1 - X0) }}
+    >
       {/* THE SLIDER IS THE SHARED X-AXIS, which is why its range is the charts' range exactly.
           An earlier version ran 2014→2026 while the charts ran 2010→2026, leaving a sixth of every
           line unreachable and unlabelled. Matched, the control stops being a filter beside the
@@ -275,11 +366,35 @@ export function OverviewBoard({ domains }: { domains: ODomain[] }) {
             {d.head ? (
               <>
                 <p className="card-metric">{d.head.title}</p>
-                <Spark s={d.head} year={year} />
-                <Reading s={d.head} year={year} />
+                <Spark s={d.head} year={shown} events={d.events.map((e) => e.year)} />
+                <Reading s={d.head} year={shown} />
+                <WhatHappened d={d} year={shown} />
               </>
             ) : (
-              <p className="card-instead">{d.instead}</p>
+              <>
+                <p className="card-instead">{d.instead}</p>
+                {/* AN AREA WITH NO TICKS MUST NOT LOOK LIKE AN AREA WHERE NOTHING HAPPENED.
+                    Kashmir and Poverty lead with no chart, so they can carry no marks — and
+                    Kashmir is among the most eventful areas in the corpus, with records in 15
+                    distinct years. Stating the count in words is what stops the absence of a
+                    tick row reading as an absence of events. */}
+                {/* AND THE PER-YEAR READOUT BELONGS HERE TOO. It was first written inside the
+                    chart branch only, which meant scrubbing to 2016 said nothing about Kashmir —
+                    the area with records in fifteen distinct years — because it has no chart. The
+                    readout is about the RECORDS, not about the series, so it does not depend on
+                    there being a line to draw. */}
+                <WhatHappened d={d} year={shown} />
+                {d.events.length > 0 ? (
+                  <p className="card-noticks">
+                    No chart here to hang them on, and{' '}
+                    <strong>
+                      {fmt(d.events.reduce((t, e) => t + e.n, 0))} records begin in this area
+                    </strong>{' '}
+                    across {d.events.length} separate years, {d.events[0].year} to{' '}
+                    {d.events[d.events.length - 1].year}.
+                  </p>
+                ) : null}
+              </>
             )}
 
             <dl className="card-stats">
@@ -333,7 +448,12 @@ export function OverviewBoard({ domains }: { domains: ODomain[] }) {
                 <div className="minigrid">
                   {d.rest.map((s) => (
                     <Link key={s.id} href={`/series/${s.id}/`} className="mini">
-                      <Spark s={s} year={year} w={120} h={30} showDots={false} />
+                      {/* NO `year` PROP, DELIBERATELY. The mini charts are memoised and never
+                          re-render: their scrub line is moved by CSS like every other, and the hit
+                          dot is dropped here because its Y is per-series and cannot be shared. At
+                          120x30 the dot was 4px on a line already carrying every point — the line
+                          still sweeps all 250, which is what the shared axis promises. */}
+                      <Spark s={s} w={120} h={30} showDots={false} />
                       <span className="mini-t">{s.title}</span>
                     </Link>
                   ))}
@@ -343,6 +463,6 @@ export function OverviewBoard({ domains }: { domains: ODomain[] }) {
           </section>
         ))}
       </div>
-    </>
+    </div>
   );
 }
