@@ -38,9 +38,15 @@ missing-data tab built as new content, nav relabelled, the three-ways cards and 
 control on the landing page.
 
 **Carrying forward:**
-- **251 authored findings.** 18 of 269 series carry one — 5 harvested from surfaces that already had
-  an authored sentence, 13 domain leads by longest unbroken run. A series without one renders without
-  the line. Same work and same rate as the domain periods.
+- **Authored series findings — RULED AND UNDER WAY. 28 of 269 carry one; 210 remain.**
+  The ruling is printed in `lib/series-copy.ts` and is the governing text: **derivation is closed**
+  (246 of the 251 already render all their authored prose on their own page; 5 hold none), and
+  **reachability partitions nothing** (0 series are index-only; a domain surface reaches all 269).
+  The one surviving boundary is what a series can support: **31 single-observation series render
+  without the line permanently**, criterion printed. Tranche 1 landed 10.
+  **The rate will not hold and the direction is measured:** authoring material per record has a
+  median of 1,786 characters across this tranche against **641 across the remaining 210**, 124 of
+  which hold less than this tranche's minimum and 3 of which hold none.
 - **DESIGN-REVISION.md is now fully applied.** Items 1–4 all shipped; §7's eleven rejections stand.
 
 

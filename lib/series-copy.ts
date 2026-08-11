@@ -40,12 +40,65 @@
  * It does not score, rank or compare across series. It does not use an assessment value as ordinary
  * English — that class has now produced five collisions, four of which attributed a verdict a record
  * does not hold, and every one was found by a hand read rather than by a checker.
+ *
+ * ============================ HOW MANY SERIES GET ONE — RULED 2026-08-12 ON A MEASUREMENT =====
+ *
+ * Three possibilities were put: all 251 remaining series need an authored sentence; a subset needs
+ * one and the rest render without the line permanently; or some are DERIVABLE from what the record
+ * already holds. **The measurement picks the second, and it refutes the third outright.**
+ *
+ * **DERIVATION IS CLOSED, AND NOT ON TASTE.** The only genuinely authored prose a series record
+ * holds is `notes` and its `points[].note`. Measured over the 251: **246 hold such prose and 246
+ * already render ALL of it on their own page**; the remaining 5 hold none at all. So harvesting
+ * would duplicate a paragraph a few hundred pixels above its own copy, in the SAME role — unlike
+ * the homepage's two copies of one caveat, which sit in two different roles four thousand
+ * characters apart. And for the 5, there is nothing to harvest but the numbers, which is the
+ * generated shell the top of this file forbids. **A narrow derivable class was looked for and does
+ * not exist.**
+ *
+ * **REACHABILITY DOES NOT PARTITION ANYTHING, WHICH CORRECTS THE PREMISE THE QUESTION CARRIED.**
+ * The subset was expected to fall out of who a reader can reach. Crawled over 738 built pages:
+ * `/search/`, `/series/` and all thirteen year pages link every one of the 269, so they
+ * discriminate nothing — and of the surfaces that DO discriminate, a domain surface reaches all
+ * 269 and another series page reaches all 269. **Zero series are reachable only from an index.**
+ * There is a gradient in PROMINENCE — 19 are drawn as a chart on a surface other than their own,
+ * 222 sit on the overview board, 5 on the homepage — but prominence here is an editorial choice
+ * made in the components, so selecting on it would be a merit claim computed from our own picks
+ * rather than from the data. Rejected on the selection-is-not-ranking rule.
+ *
+ * **THE ONE BOUNDARY THAT SURVIVES IS WHAT A SERIES CAN SUPPORT.** A finding states what a series
+ * SHOWS; a series with a single observation shows no trajectory, and the only honest sentence
+ * available is that one figure was published — which is a fact, not a finding, and which the record
+ * already states in its own point note. **Measured: 31 of the 251 carry one observation, and 31 of
+ * 31 already render that note on their own page.** Those 31 render without the line PERMANENTLY,
+ * and this paragraph is the printed criterion. Two observations is enough — `farm-household-income`
+ * carries a finding on two points, because what it adds is that there is no third.
+ *
+ * **THAT LEAVES 220 TO AUTHOR**, at the domain-period standard, ordered by the number of distinct
+ * discriminating surfaces that link the series — computed from the built site, so a later cycle
+ * re-derives it, and not a claim that the earlier ones matter more.
+ *
+ * **AND THE RATE WILL NOT HOLD — MEASURED AT THE END OF TRANCHE 1, NOT ASSUMED.** Counting the
+ * characters of `notes`, `caveat`, break notes and point notes a record carries — the material an
+ * authored sentence is written FROM — this tranche's ten have a median of 1,786 and a minimum of
+ * 943. **The remaining 210 have a median of 641, and 124 of them hold less than this tranche's
+ * minimum. Three hold none at all.** The ordering by discriminating surfaces turns out to correlate
+ * with how much a record has to say, so the first tranche was the easy end and the tail is thin.
+ * **The three with nothing but numbers sit against the same boundary the single-observation rule
+ * draws**, and whether a multi-observation series with no authored material can carry a finding is
+ * a question for the tranche that reaches them, not one to pre-empt here — a trajectory is
+ * something a single observation cannot have and these do.
  */
 export type SeriesFinding = {
   /** One or two sentences. Plain text; no markdown — the view prints it as text. */
   finding: string;
-  /** Where the sentence came from, so a later cycle can tell harvest from fresh authorship. */
-  origin: 'harvested' | 'domain-lead';
+  /**
+   * Where the sentence came from, so a later cycle can tell harvest from fresh authorship.
+   * `authored` is the 2026-08-12 tranche: written from the record, neither harvested from another
+   * surface nor selected as a domain lead. **Not rendered** — this is provenance for a later cycle,
+   * which is why a third value is a widening here and not a label-map change anywhere.
+   */
+  origin: 'harvested' | 'domain-lead' | 'authored';
 };
 
 export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
@@ -143,5 +196,60 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
     finding:
       'Non-fossil sources passed half of installed electricity capacity. Capacity is what is built; it is not generation, and roughly half the fleet produced under a third of the electricity.',
     origin: 'domain-lead',
+  },
+
+  // ---- 3. AUTHORED, tranche 1 of the 220, 2026-08-12. Ordered by the number of distinct
+  //         discriminating surfaces linking the series, which is stated in the header and computed
+  //         from the built site. Every figure and every title below was read from `/data` in the
+  //         operation that wrote the sentence.
+  'jk-civilians-killed-composite': {
+    finding:
+      'MHA\u2019s own footnote defines this column as civilians killed in terrorist-initiated incidents and civilians killed in encounter or counter-terrorism operations, counted together as one number. It begins at 55 for 2018 and reads 26 for 2024. Calendar 2025 is not held: the Annual Report 2025-26 was not located.',
+    origin: 'authored',
+  },
+  'jk-terrorist-incidents-legacy': {
+    finding:
+      'The Incidents column as MHA published it at the time, 2011 to 2020. The Annual Report 2021-22 later restated 2017 from 342 to 279, 2018 from 614 to 417 and 2019 from 594 to 255 under the identical column heading, and dropped 2014 to 2016 from view rather than restating them. These are the figures as they stood before that.',
+    origin: 'authored',
+  },
+  'jk-infiltration-attempts': {
+    finding:
+      'Infiltration attempts recorded by MHA read 419 for 2017 and 53 for 2022. MHA has never stated how an attempt is detected or counted, and the row carried an unlabelled \u2018Total\u2019, then \u2018Total Infiltration Attempts\u2019, then its present name. The series stops at 2022 because the Annual Reports for 2023-24 and 2024-25 do not carry the table.',
+    origin: 'authored',
+  },
+  'jk-net-estimated-infiltration': {
+    finding:
+      'The row MHA labels an estimate \u2014 a different row of the same table from Infiltration attempts, and never the same quantity. It reads 136 for 2017 and 14 for 2022. The published label changed twice inside three report years, from \u2018Successful\u2019 to \u2018Net infiltration (Estimated)\u2019 to \u2018Net Estimated infiltration\u2019, and no report says the first means the same as the last.',
+    origin: 'authored',
+  },
+  'divisible-pool-share-gtr': {
+    finding:
+      'The share of the Union\u2019s gross tax revenue that sits inside the pool the states\u2019 share is applied to: 89 per cent in FY2010-11, 81.3 per cent in FY2025-26, and a trough of 74.0 in FY2020-21. The largest single step is FY2017-18, 86.2 to 75.6, when GST and the compensation cess began. Between roughly a fifth and a quarter of gross tax revenue sits outside the pool \u2014 and the states\u2019 share of what is inside it rose over the same years, from 32 per cent to 41. Neither number means anything without the other.',
+    origin: 'authored',
+  },
+  'jk-encounters-ct-ops': {
+    finding:
+      'The only column in MHA\u2019s J&K tables that counts what the state did rather than what was done to it: 731 operations across 2018 to 2024, from 189 in the first year to 57 in the last. Whether a higher count is better is left unset, because the same number reads as effort to one reader and as intensity of contact with the population to another.',
+    origin: 'authored',
+  },
+  'jk-detenus-psi': {
+    finding:
+      'NCRB\u2019s count of people held in J&K prisons on 31 December under preventive-detention law, every such statute together in one cell. It reads 35 for 2014 and 546 for 2022, the highest figure the series carries, and it ends there because Prison Statistics India ended. 2012 was never published.',
+    origin: 'authored',
+  },
+  'jk-terrorist-initiated-incidents': {
+    finding:
+      'The column MHA created in the Annual Report 2022-23, when the single Incidents column was split in two. It reads 228 for 2018 and 28 for 2024. For calendar 2018 alone, five separately published and separately labelled incident counts exist, and this is one of them.',
+    origin: 'authored',
+  },
+  'fc-vertical-devolution-share': {
+    finding:
+      'A step function rather than a measurement: the share of the divisible pool the Finance Commission recommended and the Union accepted \u2014 32 per cent to FY2014-15, 42 from FY2015-16, 41 from FY2020-21 onward. The move from 42 to 41 was, in the Commission\u2019s own words, an adjustment for the newly carved out Union Territories, not a reduction. It is a rule about what should be shared, not a record of what was paid.',
+    origin: 'authored',
+  },
+  'jk-civilians-killed-terror-basis': {
+    finding:
+      'Civilians killed by militants, 2014 to 2021 \u2014 the bounded basis, superseded from the Annual Report 2022-23 by a wider count published under the identical column name. Three different bounding formulas have been used for that name and none of them appears in a table label: a bare heading in every Annual Report to 2022-23, \u2018who died due to terrorist attacks\u2019 in one parliamentary reply, \u2018in these incidents\u2019 in another.',
+    origin: 'authored',
   },
 };
