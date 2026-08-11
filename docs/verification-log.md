@@ -14940,3 +14940,95 @@ re-derived independently and matching: federalism 0 of 236 approximate, 236 veri
 single-observation.
 
 **Three areas remain: defence, then governance and Kashmir last.**
+
+---
+
+## 2026-08-11 (twenty-seventh entry) — GOVERNANCE, and defence deferred because it is Kashmir
+
+Twelve of fourteen areas carry periods. Governance takes four. **Defence was measured and moved.**
+
+### DEFENCE IS NOT WHAT THE BRIEF DESCRIBED, AND THE MEASUREMENT MOVED IT RATHER THAN SHAPED IT
+
+Three figures in the brief did not hold, and the fourth held for a different reason than given.
+
+| premise | measured |
+|---|---|
+| ten records | **holds** — 10 |
+| four published observations across twelve years | **98 India observations across 13 series** |
+| 25 per cent verified | **83 per cent** — 81 of 98 |
+| not one record scoreable against a stated target | **HOLDS** — 5 `no-objective`, 4 `contested`, 1 `baseline-context`, zero evaluative |
+
+**But the mechanism the brief proposed is not the one operating.** The guess was that defence
+publishes commitments without publishing outcomes. **Procurement is not in this domain at all** —
+the filing rule sends acquisition cost to `macro` and indigenisation to `foreign`, and leaves
+`defence` as armed conflict and counter-insurgency. The reason nothing is scoreable is that **the
+area contains no announced programmes to score**: it contains conflict counts and disputes about
+what those counts mean. Seven of the ten records are about the measurement rather than the event —
+*three quantities under one word*, *three published figures for 2018*, *the column changed meaning
+in 2023*, *two populations*.
+
+**AND THAT IS WHY IT MOVED. 9 of its 10 ledger records are also `kashmir` records, and all 13 of its
+series carry the kashmir lens.** The one exception is L-0009, the Depsang incursion, which is also
+`foreign` and is already written there. **Writing defence alone would have written the Kashmir page
+a batch early under another heading**, and Kashmir's own batch would then repeat it or contradict
+it. Deferred to the Kashmir batch, with the reason recorded in `lib/domain-copy.ts` rather than left
+as an omission.
+
+### GOVERNANCE: THE FRAMING GOES FIRST, AS INSTRUCTED
+
+**110 ledger records against 131 published observations — the widest gap in the corpus between
+things written about and things counted**, and the first period says so before it says anything
+else. The reason is what the area contains: **17 per cent of its records are reforms and 72 per cent
+are episodes or institutional facts**, and an episode announces no target a later document can be
+held against. Its evaluative rate is 15 per cent, which sits almost exactly on its reform share —
+the relationship CLAUDE.md records at ρ=0.91. **An empty verdict column here means there was nothing
+announced to score, not that this record declined to look.**
+
+*(The brief's "74 per cent non-evaluative" is close to the measured 72 per cent episode-plus-
+institutional share; on the assessment axis, non-evaluative is 85 per cent if `contested` is excluded
+and 45 per cent if it is included. The prose uses the type-mix figure, which is the one that explains
+the rate.)*
+
+The four periods: a scrutiny practice thinning — bills to Standing Committees 71 → 25 → 16 per cent,
+a 17th Lok Sabha of 274 sittings that never elected a Deputy Speaker, CAG Union audit reports from a
+2015 peak of 55 to 14 in 2020; then the enforcement ratio, **5,892 PMLA cases initiated and 15
+convictions**, with UAPA's 8,947 arrests against a conviction rate published on a completed-trial
+basis, both contested because what the numbers mean is the dispute; then a period whose operative
+check is a court; then struck down, re-enacted, and the appointment question left open.
+
+**Evidence note: none.** 76 per cent over 131 observations is unremarkable. **The area's distinctive
+fact is the record-to-count gap, which is not a fact about the evidence grade**, and it is the first
+thing the periods say. Decision recorded either way, per the standing requirement.
+
+### THE TWO HAND CHECKS, AND ONE REAL FIND
+
+**ENUM WORDS READ IN CONTEXT — one collision, caught.** The 2023 period read *"The Delhi services
+holding of a Constitution Bench was **reversed** by statute in eight days."* **L-0165 is
+`contested`**, and the corpus's only record scored `reversed` — the farm laws — is named one period
+earlier, so a reader could carry the value across. Changed to *overturned*. **Fourth instance of this
+class and the third to attribute a verdict a record does not hold**; the deliberate read found it and
+the probe did not, which is what the read is for.
+
+**HAND-SWEEP FOR CITED-BUT-UNUSED: 16 ids across 4 periods, all drawn on.** The probe returned zero
+governance candidates.
+
+### A DEFECT IN MY OWN TOOLING, RUN THREE TIMES BEFORE IT WAS CAUGHT
+
+The ad-hoc script I use to strip markdown from period bodies takes a **file slice** from
+`export const DOMAIN_PERIODS` to the end — and `DOMAIN_EVIDENCE` and `DOMAIN_CHARACTER` sit after
+that point in file order. **It had been eating `**` out of the comment blocks on every run**,
+including the federalism and foreign evidence-note decisions written last batch. Found by an anchor
+failing, restored from the diff, and verified: the only emphasis lines now differing from HEAD are
+the six I deliberately replaced.
+
+**Scope leaking one level up, in my own measuring and editing tooling, twice in two batches** — the
+classifier's narrative flag last batch and this. The durable fix is not a better strip: **the property
+is now asserted instead.** `period-verdict-probe` reports `bodies containing markdown`, currently 0.
+Asserting the property is cheap; rewriting the file to enforce it is what kept going wrong.
+
+### Gate line
+
+27 steps green. `listing-marks` 3,552 rows / 5,008 marks and `unrecognised-rows` **0**, both
+unchanged. `field-render-audit` 0 invisible, `rendered-space` 0.
+
+**Two areas remain and they are one batch: `defence` and `kashmir`, together.**

@@ -34,12 +34,12 @@ import type { Domain } from '@/lib/types';
  *
  * ============================ COVERAGE, STATED =================================================
  *
- * **Eleven of fourteen are written**, and the count is restated here on every change because a
+ * **Twelve of fourteen are written**, and the count is restated here on every change because a
  * coverage line that goes stale is a claim about the past in the present tense — the defect this
  * repository has already paid for in its own session-cost section. `macro` is the pattern;
  * `education`, `environment`, `infrastructure`, `employment`, `welfare`, `human-development`,
- * `banking`, `poverty`, `federalism` and `foreign` followed on 2026-08-11. **The other three
- * render the same page without the periods block** —
+ * `banking`, `poverty`, `federalism`, `foreign` and `governance` followed on 2026-08-11. **The
+ * other two — `defence` and `kashmir` — render the same page without the periods block** —
  * not a stub, not a placeholder: the section simply is not there, which is honest, where a heading
  * over generated filler would not be.
  *
@@ -48,12 +48,22 @@ import type { Domain } from '@/lib/types';
  * `environment` and `employment` take three rather than four because nothing in either divides at
  * the fourth point; and `employment`'s first period exists to say that no national survey covers
  * it. `human-development` takes three on eight records because its last period carries the
- * comparability argument that is the whole area, not because three is a floor; and **`poverty`
- * takes ONE, over 2004 to today**. Two were drafted and the first had no ledger record behind it —
+ * comparability argument that is the whole area, not because three is a floor; **`poverty` takes
+ * ONE, over 2004 to today**; and `governance` takes four over 110 records, opening at 2010 because
+ * the scrutiny practices its first period is about were already moving before 2014. Two were drafted and the first had no ledger record behind it —
  * it was about a SERIES that stopped — so it cited a record it only pointed forward to. **A period
  * with nothing behind it is the thing the `from` list exists to prevent**, and the honest repair
  * was one period rather than a citation added to justify a second.
  * **A period count is a reading of the area, never a template.**
+ *
+ * **`defence` IS DEFERRED TO THE KASHMIR BATCH, AND THE REASON IS AN OVERLAP RATHER THAN A
+ * SHORTAGE.** Measured 2026-08-11: **9 of its 10 ledger records are also `kashmir` records, and all
+ * 13 of its series carry the kashmir lens.** The one exception is L-0009, the Depsang incursion,
+ * which is also `foreign` and is written there. Writing `defence` alone would write the Kashmir
+ * page a batch early under another heading, and the second page would then repeat the first or
+ * contradict it. **The domain is not procurement** — the filing rule sends acquisition to `macro`
+ * and indigenisation to `foreign`, leaving `defence` as armed conflict and counter-insurgency,
+ * which in this corpus is J&K.
  */
 export type Period = {
   /** Displayed as given — a span, not a term. Periods are chosen by what changed, not by election. */
@@ -363,6 +373,37 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
       from: ['L-0184', 'L-0204', 'L-0207', 'L-0193'],
     },
   ],
+
+  governance: [
+    {
+      years: '2010 — 2016',
+      heading: 'The largest area in the corpus, and the one with the least to count',
+      body:
+        'This area holds 110 ledger records against 131 published observations — the widest gap in the instrument between things written about and things counted. That is a fact about what governance contains rather than a reticence about scoring it. Only 17 per cent of these records are reforms; 72 per cent are episodes or institutional facts — a court ruling, a commission wound up, a scrutiny practice changing — and an episode announces no target that a later document can be held against. Across the corpus the share of reforms in an area predicts its evaluative rate closely, and governance sits where that relationship says it should. An empty verdict column here means there was nothing announced to score, not that this record declined to look. What the period does record is a scrutiny practice thinning: bills referred to Parliamentary Standing Committees fell from 71 per cent in the 15th Lok Sabha to 25 in the 16th and about 16 in the 17th, which held 274 sittings and never elected a Deputy Speaker; Union audit reports tabled by the CAG fell from a 2015 peak of 55 to 14 in 2020. The NJAC was struck down in 2015 and the Memorandum of Procedure it was to replace has not been settled since.',
+      from: ['L-0087', 'L-0089', 'L-0084'],
+    },
+    {
+      years: '2017 — 2019',
+      heading: 'Enforcement grew fast, and the ratio between cases and convictions is the finding',
+      body:
+        'Two enforcement statutes carry the clearest numbers in this area and both are contested rather than scored, because what the numbers mean is the dispute. Under the Prevention of Money Laundering Act the Enforcement Directorate initiated 5,892 cases between January 2015 and June 2025 and secured 15 convictions across eight orders. Under the UAPA, 8,947 persons were arrested over 2018 to 2022 with a published conviction rate running between 18.2 and 39.7 per cent on a completed-trial basis — and the two denominators are not the same thing, which is why the record carries both rather than a rate. Electoral bonds were introduced through a Finance Act as a Money Bill in 2017, amending five other statutes, and are scored failed. The RTI Amendment of 2019 moved Information Commissioners’ tenure and salary from statute into central government rules.',
+      from: ['L-0074', 'L-0083', 'L-0077', 'L-0085'],
+    },
+    {
+      years: '2020 — 2022',
+      heading: 'The operative check in this period is a court, and it does not always hold',
+      body:
+        'Where something was tested in these years it was usually tested in litigation rather than in Parliament. The Supreme Court upheld the PMLA’s search, attachment, reverse burden and twin bail conditions in July 2022, which settled the architecture the previous period’s numbers run through. It kept sedition in abeyance in May 2022 and recorded cases fell from 76 in 2021 to 20 in 2022, before the section was removed from the penal code and re-enacted in altered form. Internet shutdowns are scored partly against the compliance the Court required in Anuradha Bhasin, and the Union keeps no count of them because police is a State subject. The three farm laws are the corpus’s only record scored reversed: passed, protested, repealed.',
+      from: ['L-0075', 'L-0082', 'L-0081', 'L-0066'],
+    },
+    {
+      years: '2023 — today',
+      heading: 'Struck down, re-enacted, and the appointment question left open',
+      body:
+        'The pattern of this period is a measure struck down and the ground reoccupied. The IT Rules fact-check unit was struck down and is scored failed; electoral bonds were struck down in 2024, seven years after introduction. Where the Court directed a process for appointing Election Commissioners — a panel of the Prime Minister, the Leader of the Opposition and the Chief Justice, until Parliament legislated — Parliament legislated differently, and that record is contested. The Delhi services holding of a Constitution Bench was overturned by statute in eight days. One record here is entered as awaiting adjudication rather than scored: the DPDP Act’s amendment to section 8(1)(j) of the RTI Act, whose effect on the exemption is before a court.',
+      from: ['L-0080', 'L-0077', 'L-0088', 'L-0165', 'L-0086'],
+    },
+  ],
 };
 
 /**
@@ -379,7 +420,7 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
  *
  * Only five areas carry a note, and that is the point: an evidence line on all fourteen would be
  * boilerplate, and boilerplate is read past. **`macro`, `education`, `environment`,
- * `human-development`, `poverty` and `foreign` deliberately have none** — their grades are mixed and unremarkable, and a
+ * `human-development`, `poverty`, `foreign` and `governance` deliberately have none** — their grades are mixed and unremarkable, and a
  * note saying so would say nothing.
  *
  * **`federalism` IS THE ONLY NOTE EXPLAINING A HIGH GRADE, AND THAT IS WHY IT EXISTS.** At 100 per
@@ -387,6 +428,11 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
  * grade invites a false inference in the other direction: a reader who sees *fully verified* may
  * take the area to be settled, when its problem is comprehension rather than documentation. **A
  * note earns its place by stopping a misreading, and a misreading can run either way.**
+ *
+ * **`governance` WAS TESTED AND TAKES NONE.** At 76 per cent over 131 observations its grade is
+ * unremarkable. Its distinctive fact is the RECORD-TO-COUNT GAP — 110 records against 131
+ * observations, the widest in the corpus — **which is not a fact about the evidence grade at all**,
+ * and it is the first thing its periods say.
  *
  * **`foreign` WAS TESTED AND TAKES NONE.** At 42 per cent over 26 observations its grade is
  * unremarkable and the n is small. Its distinctive evidentiary fact is not the grade but WHERE the
