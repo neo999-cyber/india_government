@@ -118,6 +118,12 @@ const ISOLATED = [
   { dir: 'pairs-malformed', rule: 'pair-side', expect: 'which declares 1 (valid 0-0)' },
   { dir: 'pairs-malformed', rule: 'pair-side', expect: 'carries no competingAccounts' },
   { dir: 'pair-inverted', rule: 'pair-inverted', expect: 'the wrong way round' },
+  // `status` against renderability, both directions, told apart by `expect` for the reason the
+  // four pair-side entries above are: one root, and a branch that stopped firing would otherwise
+  // be satisfied by the other's error. PR-95 also trips a pair-side branch, which is the point —
+  // pair-status states the invariant, pair-side happens to catch most of one half of it.
+  { dir: 'pair-status', rule: 'pair-status', expect: 'both sides resolve, so the pair renders' },
+  { dir: 'pair-status', rule: 'pair-status', expect: 'status does not say so' },
   { dir: 'reason-kind-missing', rule: 'reason-kind', expect: 'states no reasonKind' },
   { dir: 'absence-dispute-bare', rule: 'absence-dispute', expect: 'must not be asserted bare' },
   { dir: 'denominator-unstated', rule: 'denominator-stated', expect: 'renders 1 rate value(s)' },

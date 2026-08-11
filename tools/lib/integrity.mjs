@@ -608,6 +608,62 @@ export function checkIntegrity(records, { today }) {
 
     checkLensAxis(r, where);
 
+    /**
+     * `status` AND RENDERABILITY MUST AGREE, IN BOTH DIRECTIONS.
+     *
+     * A pair renders iff both sides resolve. `declared-pending` is the author saying it does not
+     * yet. The two are independent statements about the same pair and nothing made them agree.
+     *
+     * ============ WHY `status` IS NOT REDUNDANT, WHICH IS THE WHOLE ARGUMENT FOR THIS RULE ======
+     *
+     * The obvious objection is that renderability is derivable, so the field restates what the code
+     * already knows and could be deleted. **That is exactly backwards.** A derived property says
+     * what the CODE DOES. A declared one says what the AUTHOR INTENDED. They are different facts
+     * and this rule's entire value is catching the case where they diverge — which is the A-3
+     * defect, where eleven pairs stopped rendering and nothing anywhere said they were supposed to.
+     * **Delete `status` and that class becomes undetectable again**, because there is no longer a
+     * statement of intent to check the behaviour against. A later pass reading this field as
+     * redundant should read this paragraph first.
+     *
+     * ============ THE TWO DIRECTIONS FAIL DIFFERENTLY ==========================================
+     *
+     * HELD AND HIDDEN — pending, but both sides resolve. The comparison is complete and the corpus
+     * is still calling it owed, so a finished pair renders nowhere and the only trace is a status
+     * nobody reads. Nothing else in this file catches it.
+     *
+     * SILENTLY GONE — not pending, but a side does not resolve. The pair stops appearing and no
+     * one is told. The `pair-side` branches below already fail most instances of this, because an
+     * unresolvable side is independently an error; this branch states the invariant itself rather
+     * than leaving it as something that happens to fall out of four other rules, and it is the half
+     * that survives if any of those is ever relaxed.
+     */
+    {
+      const pending = pair.status === 'declared-pending';
+      const resolves = (side) => {
+        if (!side || typeof side !== 'object') return false;
+        const set = ['series', 'absenceFrom', 'competingAccountsFrom'].filter(
+          (k) => typeof side[k] === 'string' && side[k].trim(),
+        );
+        if (set.length !== 1) return false;
+        if (side.series) return seriesIds.has(side.series);
+        if (side.absenceFrom) {
+          const host = index.series.get(side.absenceFrom) ?? index.ledger.get(side.absenceFrom);
+          const declared = host?.record?.unmeasured ?? [];
+          return declared.length > (side.absenceIndex ?? 0);
+        }
+        const acc = index.provenance.get(side.competingAccountsFrom)?.record?.competingAccounts ?? [];
+        return acc.length > 0;
+      };
+      const renders = resolves(pair.a) && resolves(pair.b);
+      if (pending && renders) {
+        add('error', 'pair-status', r.file, where,
+          `status is "declared-pending" but both sides resolve, so the pair renders. A finished comparison recorded as owed is held and hidden: drop the status, or say which side is not yet authored`);
+      } else if (!pending && !renders) {
+        add('error', 'pair-status', r.file, where,
+          `a side does not resolve and status does not say so, so the pair silently renders nowhere. Mark it "declared-pending" if the side is owed, or repair the side`);
+      }
+    }
+
     for (const name of ['a', 'b']) {
       const side = pair[name];
       if (!side || typeof side !== 'object') continue;

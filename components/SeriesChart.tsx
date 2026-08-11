@@ -1,3 +1,4 @@
+import { RecordMarks } from '@/components/marks';
 import Link from 'next/link';
 import type { Series } from '@/lib/types';
 import { periodLabel } from '@/lib/format';
@@ -104,6 +105,22 @@ export function SeriesChart({
           <Link href={`/series/${series.id}/`}>{series.title}</Link>
         </h3>
         {takeaway ? <p className="chart-takeaway">{takeaway}</p> : null}
+        {/* THE RECORD'S OWN MARKS, added 2026-08-11 — this component took the whole `Series` and
+            rendered none of them for its whole life.
+ 
+            RULE 3a: a caveat renders *wherever the record appears*, and a full chart with an
+            authored takeaway is the record appearing about as loudly as it can. **The homepage's
+            OPENING chart is `higher-ed-ger`, whose caveat says roughly half the headline rise is
+            the denominator shrinking** — sitting under a takeaway that reports the rise and a
+            heading that calls it something the state measures well. It was the first thing a reader
+            met and the qualification was not there.
+ 
+            NEITHER RENDER GATE COULD SEE IT, AND BOTH WERE CORRECT. `listing-marks` binds listing
+            ROWS and a feature chart is not a row; `field-render-audit` asks whether a field reaches
+            its OWN record's page, and it does. **A record EMBEDDED as a feature is outside both
+            scopes** — which is the guard-scope shape this corpus keeps paying for, in a third
+            position: not the projection, not the listing, but the embed. */}
+        <RecordMarks record={series} />
       </figcaption>
 
       <div className="chart-frame">

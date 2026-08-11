@@ -498,6 +498,29 @@ axis that shares the spelling by accident. Declarations are compared as sets; **
 `CONSTRAINT_OMISSIONS` — that is what forced `undated-commitment` into the rule requiring `caseFor`
 and `caseAgainst`, which a set comparison alone would have let slip.
 
+**A MARK CAN GO MISSING IN THREE DISTINCT SHAPES, AND A GUARD USUALLY BINDS ONE — named 2026-08-11
+after the third was found.** Rule 4b requires a declaration to reach a reader; the ways it fails to
+are not one class:
+
+1. **THE LISTING ROW.** The surface lists the record and omits the mark. `listing-marks` binds this,
+   and it is the only one of the three any gate binds.
+2. **THE NARROWING PROJECTION.** A type or function between `/data` and the view drops the field, so
+   the component never had it. **No care in the component catches this** — it cannot render what it
+   was not given. `OSeries` was built with the six fields its chart needed and dropped `caveat` and
+   `unmeasured`, and 199 declarations reached nobody on a surface that had shipped four commits
+   earlier. Swept: ten projections read, one instance, fixed.
+3. **THE EMBEDDED FEATURE.** The component HAS the whole record and renders no marks, on a surface
+   that is not a listing. `SeriesChart` did this for its whole life, and the cost was the homepage's
+   OPENING chart carrying a takeaway about a rise while the record's own caveat — *half the headline
+   gain is denominator shrinkage* — was absent from the page.
+
+**BOTH RENDER GATES WERE CORRECT ON 2 AND 3.** `listing-marks` binds listing ROWS and a feature chart
+is not a row; `field-render-audit` asks whether a field reaches its OWN record's page, and it does.
+**A record embedded as a feature is outside both scopes by construction**, which is the
+guard-binds-a-scope shape in a position nobody had named. The check that found it was empirical, not
+a type scan: every built page, records linked against listing rows counted, one candidate in 668 and
+it was real.
+
 **A DEFECT FIXED ON ONE SURFACE IS CHECKED AGAINST EVERY SURFACE OF THE SAME KIND IN THE SAME
 COMMIT — the local-fix rule, ruled by the operator 2026-08-06.** A fix applied where the defect was
 noticed and nowhere else leaves the same defect standing everywhere it was not noticed, and the
