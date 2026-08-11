@@ -158,6 +158,7 @@ const pages = [];
 const found = [];
 let titleLinks = 0;
 let citations = 0;
+let graphical = 0;
 for (const file of pages) {
   const route = '/' + file.slice(OUT.length + 1).replace(/index\.html$/, '');
   const html = readFileSync(file, 'utf8').replace(/<script[\s\S]*?<\/script>/g, '');
@@ -167,9 +168,17 @@ for (const file of pages) {
     if (!rec?.declares) continue;
     if (route === `/${m[1]}/${m[2]}/`) continue; // its own page
     if (spans.some((b) => b.includes(m[0]))) continue;
-    if (linkText(m[3]) === rec.title) {
+    const text = linkText(m[3]);
+    if (text === rec.title) {
       titleLinks += 1;
       found.push({ route, id: m[2] });
+    } else if (!text) {
+      // AN ANCHOR WITH NO TEXT IS NEITHER, and counting it as a citation was wrong the moment the
+      // span strip landed: 269 of its bars are links whose accessible name is an `aria-label` and
+      // whose content is a `<span>`. They display no title, so they are not listings; they name no
+      // id either. Counted apart, because a number printed on every run gets quoted, and "144
+      // citations" would have been read as 144 prose references when 140 of them are bars.
+      graphical += 1;
     } else {
       citations += 1;
     }
@@ -198,7 +207,9 @@ if (found.length) {
   console.log(
     `unrecognised-rows — ${found.length} record link(s) name a record by its TITLE, on a page that ` +
       `is not its own, outside every listing shape any gate knows. REPORT-ONLY; each needs its ` +
-      `component's unit named. ${citations} id-link(s) are citations and are correctly not counted.`,
+      `component's unit named. ${citations} link(s) name a record by id — citations, correctly not ` +
+      `counted — and ${graphical} carry no text at all, being graphical links whose accessible name ` +
+      `is an attribute; they display no title, so they list nothing.`,
   );
   for (const [route, n] of [...byRoute].sort((a, b) => b[1] - a[1]).slice(0, VERBOSE ? 999 : 12))
     console.log(`  ${String(n).padStart(4)}  ${route}`);
@@ -212,6 +223,7 @@ if (found.length) {
 
 console.log(
   `unrecognised-rows OK — every record link naming a record by its title sits inside a recognised ` +
-    `listing shape, across ${pages.length} built pages. ${citations} link(s) name a record by id ` +
-    `and are citations, not listings — the discriminator, stated because it is the whole design.`,
+    `listing shape, across ${pages.length} built pages. ${citations} name a record by id and are ` +
+    `citations; ${graphical} carry no text and are graphical links. Neither displays a title, which ` +
+    `is the discriminator, stated because it is the whole design.`,
 );

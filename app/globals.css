@@ -3313,3 +3313,176 @@ details.more > summary {
     transition: none;
   }
 }
+
+/* ============================================================================================
+   THE SPAN STRIP — 269 series on one shared axis, sorted by first observation. 2026-08-11.
+   ============================================================================================ */
+
+.strip {
+  margin: 1.5rem 0 1rem;
+  position: relative;
+}
+
+.strip-axis {
+  position: relative;
+  height: 1.2rem;
+  border-bottom: 1px solid var(--rule);
+  margin-left: 3.2rem;
+}
+
+.strip-tick {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 0.625rem;
+  color: var(--ink-dim);
+  letter-spacing: 0.06em;
+}
+
+.strip-rows {
+  margin-top: 0.35rem;
+}
+
+.strip-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 6px;
+}
+
+/* The group label: one per distinct start year, at the real position of that group's first row.
+   No per-row labels and therefore nothing to de-collide — see the component. */
+.strip-year {
+  flex: 0 0 2.85rem;
+  text-align: right;
+  font-size: 0.5625rem;
+  color: var(--ink-dim);
+  line-height: 1;
+}
+
+.strip-track {
+  position: relative;
+  flex: 1 1 auto;
+  height: 6px;
+}
+
+.strip-bar {
+  position: absolute;
+  top: 1px;
+  height: 4px;
+  background: var(--fill);
+  display: block;
+  border-radius: 1px;
+}
+
+.strip-bar:hover {
+  background: var(--mark);
+  outline: 1px solid var(--mark);
+}
+
+/* A dashed right edge where the published series stops before the frontier. Not a colour: the
+   series is not worse, it ended. */
+.strip-bar.is-stopped::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: -1px;
+  height: 6px;
+  border-right: 2px dotted var(--mark);
+}
+
+/* A declared change of basis, cut through the bar. Rule 2 at strip scale: the values either side
+   are not the same measurement, and the bar says so. */
+.strip-seam {
+  position: absolute;
+  top: -2px;
+  height: 8px;
+  width: 1px;
+  background: var(--bg);
+  box-shadow: 0 0 0 0.5px var(--alert);
+}
+
+.strip-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 1rem 0 0.5rem;
+  border: 1px solid var(--rule);
+  width: fit-content;
+}
+
+.strip-filter-btn {
+  font: inherit;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  min-height: 44px;
+  padding: 0 0.85rem;
+  background: none;
+  border: 0;
+  border-right: 1px solid var(--rule);
+  color: var(--ink-2);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.strip-filter-btn:last-child {
+  border-right: 0;
+}
+
+.strip-filter-btn.is-on {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.strip-filter-n {
+  font-size: 0.625rem;
+  color: var(--ink-dim);
+}
+
+/* The filter hides rows by attribute — one write on the container, 269 rows filtered, and every
+   row stays in the DOM. */
+.strip[data-filter='stopped'] .strip-row:not([data-f-shape*='stopped']),
+.strip[data-filter='basis'] .strip-row:not([data-f-shape*='basis']),
+.strip[data-filter='short'] .strip-row:not([data-f-shape*='short']) {
+  display: none;
+}
+
+.strip-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--ink-2);
+}
+
+.strip-key-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.strip-swatch {
+  width: 22px;
+  height: 4px;
+  background: var(--fill);
+  display: inline-block;
+}
+
+.strip-swatch.is-faint {
+  opacity: 0.35;
+}
+
+.strip-swatch.is-seam {
+  background: var(--alert);
+  width: 2px;
+  height: 8px;
+}
+
+.strip-swatch.is-stopped {
+  background: none;
+  border-right: 2px dotted var(--mark);
+  width: 12px;
+  height: 8px;
+}

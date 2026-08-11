@@ -13941,3 +13941,99 @@ yet.
 F1 shipped last batch, the cross-cutting check and **F2 shipped this one**. F3 is measured and
 carried; **F4 and F5 are unstarted.** A clean partial beats four thin features, and the F3
 measurement was the part the instruction required before any of it.
+
+---
+
+## 2026-08-11 (seventeenth entry) — FEATURE 3 BUILT: the series span strip, and one new gate
+
+The measurement was banked in the sixteenth entry and said build it. Built. 269 spans on one shared
+axis sorted by first observation, seams as cuts, a dashed end where the published series stops, fill
+weight for the verified split, four filters.
+
+### THE FRONTIER WAS WRONG TWICE BEFORE IT WAS RIGHT, AND BOTH WRONG ANSWERS LOOKED PLAUSIBLE
+
+The instruction named this as the one thing to get right, and it took two attempts.
+
+**The first wrong answer was the one the measurement had already warned about**: *ends before the
+latest year*, computed against the maximum end year of 2026, returns **264 of 269**. That was
+identified before any code was written.
+
+**The second wrong answer was new and was not warned about.** Deriving the frontier as *the latest
+year at which a substantial share of series still report* gives **2025**, and *ends before 2025*
+returns **178**. That is neither the artefact nor the finding. The end-year distribution is
+…2022:21, 2023:31, **2024:85, 2025:86**, 2026:5 — a step, not a slope — and taking the latest
+plateau year swept in the entire 2024 cohort of 85 series that are not stopped at all, merely not
+yet updated.
+
+**The frontier is where the plateau BEGINS, not where it ends.** Derived as the earliest year
+holding at least half the busiest year's count — 43 of 86 — which is **2024**, and *ends before 2024*
+returns **93**, matching the banked measurement exactly.
+
+The number is printed in the filter's own label, explained in a note above the strip, and the
+derivation carries a paragraph in the source naming both wrong answers, because `Math.max` and
+*latest plateau year* both look like simplifications and both turn a filter naming 93 publishers who
+stopped into one asserting that most of the corpus has.
+
+### WHAT THE STRIP SHOWS, VERIFIED ON THE RENDERED DOM AND NOT ON INTENT
+
+269 rows · 25 group labels · **63 rows sharing the 2014 edge** · 93 dashed ends · filters returning
+269 / 93 / 97 / 59 · no horizontal overflow at 375px · every bar a graphical link.
+
+**The 2014 wall is not smoothed and is the picture.** 63 of 269 series begin at the frozen baseline,
+which is a fact about the instrument rather than about India, and the strip says so in those words.
+
+**LABEL COLLISION WAS AVOIDED RATHER THAN RESOLVED, WHICH IS A BETTER ANSWER THAN THE PRECEDENT
+ASKED FOR.** The `PeerSlope` rule — move text, never a datum — governs what to do when labels must
+exist. Here they must not: the row labels are GROUP labels, one per distinct start year, 25 of them,
+each at the true position of the first row in its group. Nothing is nudged because nothing collides,
+and the 2014 label sitting on the first of 63 identical rows is what makes the wall readable.
+
+**A SECOND COUNT DIFFERS FROM THE MEASUREMENT AND THE REASON IS RECORDED RATHER THAN LEFT TO BE
+REDISCOVERED.** 100 series declare a break; the *changes basis* filter returns **97**.
+`mgnrega-persondays`, `sedition-cases-registered` and `ugc-provision-gross` each declare a break at a
+period outside their own observed span — a 2023-24 break on a series holding one 2020 observation. A
+seam cannot be drawn outside the bar it cuts, so the strip counts what it can draw and the table
+below counts all 100. The two numbers answer different questions and the component says which.
+
+### RULE 4b AND THE DUPLICATE-DECLARATION DIRECTION
+
+**The strip carries no marks, deliberately**, and this is the one place where rule 4b's *appears on
+every surface that lists the record* pulls against `listing-marks`' *374 rendered declarations each
+at most once per page*. The strip is on the same page as the full table. Rendering 231 caveats twice
+would break the second rule in the other direction, so the bars are graphical links whose accessible
+name is an attribute — they display no title and therefore list nothing — and a note says in terms
+that the declarations are below, in full, exactly once.
+
+`unrecognised-rows` confirms this rather than taking it on trust: **62, the carried baseline,
+unmoved**, with the 269 new bars counted in its graphical class. F2 raised it 62 → 71 and had to be
+bound; F3 raised it by nothing, and the difference is that the strip shows spans where the redline
+showed titles.
+
+### A NEW GATE, EARNED MID-FEATURE: `rendered-space`
+
+**Two places in this feature rendered a value welded to the word after it** — `2024is where the
+frontier begins`, `269series begin there`. Both were found by eye on a DOM probe. **All twenty-six
+existing gates were green over both**, and that is not an oversight in any of them: `validate` reads
+`/data` and the data was correct; `field-render-audit` asserts a value REACHES its page and both
+values did reach it; `link-check` and `listing-marks` count structure. A welded word is valid data,
+correctly rendered, in the wrong shape — the class none of them is looking at.
+
+**The cause is a compiler rule, recorded so it is not re-diagnosed.** SWC trims whitespace at the
+start of a JSX text chunk that spans a newline, so `{total} series begin` welds when the paragraph
+happens to wrap after `begin` and does not when it wraps elsewhere. **The defect appears and
+disappears with re-wrapping**, which is exactly why care does not reach it. `{' '}` after the
+expression is the fix and it is the fix every time.
+
+**The false-positive rate was measured before the gate was wired: over 668 built pages, exactly two
+hits, both real.** The negative control then earned its keep on the first run by firing on
+`12<!-- -->th`, an ordinal wanting no space — caught before the corpus rather than after it, and the
+exemption is a closed list of four suffixes after a digit with `12thousand` still firing.
+
+It refuses a stale build with exit 2 through the shared `assertFresh`, for the reason every
+output-reading gate does. Wired into the build after `listing-marks`: **27 steps, all green.**
+
+### Where the batch stopped
+
+F1 and F2 shipped in earlier batches. **F3 ships here.** F4 (contested, two readings) and F5 (the
+exposure matrix) are unstarted. The 62 `unrecognised-rows` residue and the pair-pooling question
+stay carried, untouched, as instructed.
