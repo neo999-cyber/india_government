@@ -40,11 +40,22 @@ export function SeriesChart({
   series,
   takeaway,
   highlightLast = true,
+  events,
 }: {
   series: Series;
   /** One plain sentence stating what the chart shows. Authored per use, never derived. */
   takeaway?: string;
   highlightLast?: boolean;
+  /**
+   * MOMENTS THIS AREA'S OWN RECORDS RETURN TO — brass ticks with a label, on the domain lead only.
+   *
+   * Each is a year in which a record filed under this area was announced, taken from `date` and
+   * nothing else. **It is not an explanation of the chart's shape and the caption says so**: a mark
+   * at 2016 beside a fall in the line asserts nothing about the fall, and a reader will make the
+   * connection unless told not to. Rendered dashed and in the mark colour, which means one thing —
+   * a mark was made — and never solid, which is the seam.
+   */
+  events?: { year: number; label: string }[];
 }) {
   const pts = series.points
     .filter((p) => p.country === 'IND')
@@ -69,6 +80,14 @@ export function SeriesChart({
   const y = (v: number) => PAD.top + plotH - ((v - yMin) / (yMax - yMin)) * plotH;
 
   const breakPeriods = new Set((series.breaks ?? []).map((b) => b.period));
+
+  // An event lands on the point whose period starts in that year. Where the series has no such
+  // point the event is DROPPED rather than interpolated onto the nearest — a tick at a year the
+  // series does not observe would place a record on an axis position the data does not occupy.
+  const yearAt = (period: string) => Number(String(period).replace(/^FY/, '').slice(0, 4));
+  const eventMarks = (events ?? [])
+    .map((e) => ({ ...e, i: pts.findIndex((p) => yearAt(p.period) === e.year) }))
+    .filter((e) => e.i >= 0);
 
   /**
    * Segments. A new one starts whenever the line may not continue: a missing value, a
@@ -141,7 +160,15 @@ export function SeriesChart({
 
           {/* THE SEAM. A solid red stop, drawn before the line so the line reads on top of it —
               and never a bridge across it. */}
-          {(series.breaks ?? []).map((b) => {
+          {eventMarks.map((e) => (
+          <g key={`ev-${e.year}`}>
+            <line className="chart-event" x1={x(e.i)} x2={x(e.i)} y1={PAD.top - 6} y2={H - PAD.bottom} />
+            <text className="chart-event-label" x={x(e.i) + 5} y={PAD.top + 4}>
+              {e.label}
+            </text>
+          </g>
+        ))}
+        {(series.breaks ?? []).map((b) => {
             const i = pts.findIndex((p) => p.period === b.period);
             if (i < 0) return null;
             return (

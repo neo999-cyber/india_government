@@ -13,12 +13,20 @@ phase table. Nothing there is withdrawn by this file except the queue rows resta
 
 ---
 
-## THE QUEUE, WHOLE, at 99754d0 + this batch
-
-**Design work is running. One item is open and it is an operator decision, not work.**
+## THE QUEUE, WHOLE, at 1b8c7a9 + this batch
 
 | item | owner | state |
 |---|---|---|
+| masthead / nav placement | closed | **CLOSED.** Four destinations — Overview · Explore · Stories · Search. The five groups moved whole into a footer directory; no route changed, nothing behind a disclosure. `/search/` built rather than the item omitted; weight measured and cut from 416 to **178 KB gzipped** |
+| domain page rebuild | **PATTERN DONE, 13 OWED** | **macro CLOSED.** Lead by stated criterion, four authored periods citing their records, chart grid, records as items, three disclosures. **The other thirteen render the same page without the periods block** — the structure is generic, the writing is not |
+| explore index | closed | **CLOSED.** Fourteen cards with an authored one-line character and the lead series' current value. Schema order, nothing sorted |
+| type scale | closed | **CLOSED.** Body 17px, Spectral display at clamp(2.4rem, 5.5vw, 4rem), mono reserved. One declared exception: `.table-wrap table` at 0.8125rem, because a 269-row table is not prose |
+| selection ≠ ranking | closed | **CLOSED.** Written into CLAUDE.md. Rule 9 was forcing every page to dump everything; a stated checkable criterion is selection, an unstated judgement is ranking |
+| guard-shape class | closed as a report | **REPORTED.** `listing-marks` is the only markup-bound gate and necessarily so — it is the only one asking about PROXIMITY, which needs a container. Recommendation is neither shape nor attribute but a **loud gap**: report any record link inside no recognised row shape. Not built |
+| **share cards** | **OPERATOR — accepted, unbuilt** | Text-only OG tags, per `SHARE-CARDS-SCOPE.md`. Decision recorded; implementation is a later batch |
+| **the thirteen domain pages** | **WRITING — later batch** | Four periods per area, ~90 words each, each naming the records it draws on. Governance has 110 records, poverty has 3 and would take one period not four. ~2 areas per batch, ~7 batches. **The only part that cannot be generated** |
+
+---|---|---|
 | copy against newly-marked feature charts | closed | **CLOSED.** 4 surfaces, 3 marked series. **Two distinct problems**: the homepage opening was UNDER-qualified *and inoculating* — it named the FY2020-21 restatement, so a reader had been told the denominator was handled, while the caveat's subject is an ongoing decline making half the trend an artefact. The homepage stop and the story callout were DUPLICATING their caveats. All three rewritten; no caveat softened |
 | nav grouping | closed | **CLOSED — the whole nav.** 18 destinations, 3 groups → 5: primary · browse · records · limits · about the record. No route moved, nothing behind a disclosure, every surface still one click from every page |
 | `ledgerRefs` reverse index | closed | **CLOSED.** `pairsNaming()`, 65 rows across 51 records, under the connections diagram. Zero overlap with hosted pairs. Tripped `listing-marks` correctly and widened `isPairRow` from `<td>` to any element-wrapped `PR-xx` — the third guard bound to one shape of several |
