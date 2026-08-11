@@ -3185,3 +3185,131 @@ details.more > summary {
     display: none;
   }
 }
+
+/* ============================================================================================
+   THE CORRECTIONS REDLINE — 2026-08-11. Both texts present always; the control changes emphasis.
+   ============================================================================================ */
+
+.redline {
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.redline-meta {
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  color: var(--ink-dim);
+  margin: 0 0 0.3rem;
+}
+
+.redline-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  margin: 0 0 0.7rem;
+  line-height: 1.3;
+}
+
+.redline-title a {
+  text-decoration: none;
+}
+
+.redline-toggle {
+  font: inherit;
+  font-size: 0.6875rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  min-height: 44px;
+  padding: 0 0.75rem;
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.redline-toggle[aria-pressed='true'] {
+  border-color: var(--mark);
+  color: var(--mark-ink);
+}
+
+.redline-text {
+  margin: 0.9rem 0 0;
+  max-width: 68ch;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* THE WIPE. A background sweeps across the span as emphasis moves; the TEXT never leaves. Both
+   spans stay selectable and readable in either state — a correction that hid half of itself would
+   be the failure this page exists to disprove. */
+.redline-removed,
+.redline-added {
+  position: relative;
+  background-image: linear-gradient(to right, var(--mark-soft), var(--mark-soft));
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 420ms ease, opacity 300ms ease, color 300ms ease;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.redline-removed {
+  text-decoration: line-through;
+  text-decoration-color: var(--mark);
+  text-decoration-thickness: 1px;
+  color: var(--ink-dim);
+}
+
+.redline-added {
+  color: var(--ink);
+}
+
+/* Default: the record as it now reads. The added span is swept, the withdrawn one is struck. */
+.redline:not(.is-before) .redline-added {
+  background-size: 100% 100%;
+}
+
+/* Pressed: the prior state. Emphasis moves; nothing is removed. */
+.redline.is-before .redline-removed {
+  background-size: 100% 100%;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.redline.is-before .redline-added {
+  opacity: 0.42;
+}
+
+.redline-master {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  align-items: center;
+  margin: 1.4rem 0 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.redline-master button {
+  font: inherit;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  min-height: 44px;
+  padding: 0 0.9rem;
+  background: none;
+  border: 1px solid var(--rule-strong, var(--rule));
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.redline-master button[aria-pressed='true'] {
+  border-color: var(--mark);
+  color: var(--mark-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .redline-removed,
+  .redline-added {
+    transition: none;
+  }
+}

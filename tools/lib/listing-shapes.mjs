@@ -119,7 +119,10 @@ export function listingRows(html) {
    * demand a declaration twice in one place and zero times in another. They are left out, and
    * `unrecognised-rows` reports them so the decision is visible rather than lost.
    */
-  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one'];
+  // `redline` added 2026-08-11 in the commit that created it, because `unrecognised-rows` reported
+  // it the moment it landed. One record per container and its declarations render once inside —
+  // unlike the pair views, whose unit is still open.
+  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one', 'redline'];
   const containers = [];
   for (const cls of CONTAINER_CLASSES) {
     const open = new RegExp(`<(article|div|figure|section)[^>]*class="[^"]*\\b${cls}\\b[^"]*"`, 'g');
