@@ -14406,3 +14406,89 @@ both designed around — assert a presence in context, never an absence.
 
 27 steps green throughout. `listing-marks` 3,540 → 3,552 rows and 4,992 → 5,008 marks, the delta
 being `chart`. `unrecognised-rows` 62 → 0. `field-render-audit` 0 invisible. `rendered-space` 0.
+
+---
+
+## 2026-08-11 (twenty-second entry) — DOMAIN PROSE: infrastructure and employment, where the evidence grade is the subject
+
+Five of fourteen areas now carry periods. Infrastructure takes four; employment takes three, and its
+first exists to say that no national survey covers it.
+
+### THE EVIDENCE GRADE IS STATED AT THE TOP, AND ONLY WHERE IT IS THE SUBJECT
+
+These are the first two areas whose publication grade is the finding rather than a caveat under one.
+**Infrastructure: 94 of 95 India observations approximate, 1 pending, 0 verified. Employment: 76 of
+76 approximate, 0 verified.** Both figures re-derived independently of the page and match it exactly.
+
+A new `DOMAIN_EVIDENCE` note renders above the periods on those two pages and on no others.
+**The counts in it are derived by the page from the series it is rendering, not written into the
+copy** — a hardcoded "94 of 95" becomes a claim about the past in the present tense the first time a
+series is added, which is the failure this repository has already paid for in the one section
+written to prevent it.
+
+**And the reasons differ, which is why one boilerplate line would not have done.** Infrastructure is
+approximate because its sources are ministry dashboards, scheme reporting and annual reports —
+running totals, revised as they run, rather than closed statistical series; the source names on the
+24 series are the evidence for that. Employment is approximate because India measures employment by
+sample survey, and **a survey estimate carries a sampling error by construction, so `approx` there
+is the honest grade for a correctly published figure and not a mark against it.**
+
+Only two areas carry a note. `macro`, `education` and `environment` deliberately have none: their
+grades are mixed and unremarkable, and an evidence line on all fourteen is boilerplate, which is
+read past.
+
+### WHAT THE TWO AREAS SAY
+
+**Infrastructure is organised around built-against-used**, because that is what its records are
+about. A great deal was built and the published quantity is usually the first half of a chain:
+connections without supply-hours, coverage without functionality, metro assets carrying 25 to 30 per
+cent of the projections their approvals rested on with the promised return unpublished, and — the
+case this instrument marks absences for at all — sanctioned and completed both published for
+Pradhan Mantri Awas Yojana and occupancy not. The 2023-onward period carries four of five records
+with no objective that can fall due.
+
+**Employment is organised around its two seams.** The EUS gave way to the PLFS at FY2017-18 with
+changed sampling, stratification and definitions, and eight series carry a declared break there; the
+PLFS was redesigned again from January 2025 and the series breaks against itself at FY2025-26. The
+period spanning the first seam says what changed rather than drawing a line across it — including
+that the PLFS counts unpaid helpers as employed on a 365-day recall, which is why a falling
+unemployment rate is contested rather than reported.
+
+### THE PROBE FOUND TWO REAL DEFECTS, AND NEITHER WAS THE ONE IT WAS BUILT FOR
+
+Run over 18 periods and 78 cited ids: **19 candidates, 3 real** — a better ratio than the 1-in-9
+measured last batch, and the three are worth separating because two are a NEW failure mode.
+
+1. **A CITED ID THE PROSE NEVER DREW ON — twice, and this is not the stale-verdict class at all.**
+   L-0062 (formalisation) and L-0107 (contract teaching) sat in employment `from` lists while
+   neither period mentioned them. The convention is that a period names the ids it draws on; citing
+   one it does not is the inverse error and looks identical in the data. **The probe catches it as a
+   side effect of asking about verdicts**, because an unused id can never have its verdict named.
+   L-0062 was written in — formalisation is the third leg of the 2017-19 composition argument, and
+   EPFO's 4.86 crore net additions resolving to about 2.27 crore genuinely new entries belongs
+   there. L-0107 was dropped from the list: education's period already carries it and employment's
+   does not need it.
+
+2. **`reversed` IS AN ENUM VALUE AND AN ORDINARY ENGLISH WORD, IN ONE PARAGRAPH.** The infrastructure
+   2020-22 period read *"losses fell from 23.7 per cent to 15.4, then reversed to 16.12"* — a verb
+   about a loss ratio, sitting three clauses from a verdict claim, in a corpus where `reversed` is a
+   real assessment value held by exactly one record. Reworded to *"then rose again"*. This is the
+   `type`-axis problem from CLAUDE.md arriving in page prose: the values most at risk are the ones
+   that are ordinary words.
+
+**The sixteen remaining candidates were read and are all false**, in three ways now rather than two:
+a period cites a record it describes without scoring; a verdict is asserted in paraphrase
+(*"none of it announces a target"* is `no-objective`, correctly, with none of the token); and — new
+this batch — **the prose spells a hyphenated value in English**, so L-0001's *"entered as baseline
+context"* does not match `baseline-context`.
+
+**The probe stays outside the build.** Three real finds in two runs is a good yield for a hand-run
+probe and a bad one for a gate that would fail the build on sixteen correct paragraphs.
+
+### Gate line
+
+27 steps green. `listing-marks` 3,552 rows / 5,008 marks, unchanged. `unrecognised-rows` 0,
+unchanged — the periods block links records by id, which is a citation and correctly not counted.
+`field-render-audit` 0 invisible. `rendered-space` 0. No horizontal overflow at 375px.
+
+**Nine areas remain without periods.**
