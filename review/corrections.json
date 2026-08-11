@@ -1,6 +1,22 @@
 {
  "entries": [
   {
+   "id": "L-0114",
+   "layer": "ledger",
+   "field": "assessmentNote",
+   "title": "Pellet-firing shotguns in Kashmir: the deaths counted, the injuries refused",
+   "quote": "the state holds the measurements for both sides of its own trade-off, publishes the term favourable to it and refuses the term unfavourable to it",
+   "before": "Contested on the written definition, and the contest is not the one usually described. It is not mainly a values disagreement about proportionality: the state holds the measurements for both sides of its own trade-off, publishes the term favourable to it and refuses the term unfavourable to it.",
+   "after": "Contested on the written definition, and the contest is not the one usually described. It is not mainly a values disagreement about proportionality: the state holds the measurements for both sides of its own trade-off, and the Union ministry publishes the term favourable to it while refusing the term unfavourable to it. CORRECTED 2026-08-11: this read \"the state holds the measurements for both sides of its own trade-off, publishes the term favourable to it and refuses the term unfavourable to it\". THE REFUSAL IS THE UNION'S AND NOT THE STATE'S, and this record's own whatHappened reports the counter-example: the Jammu and Kashmir Chief Minister gave the Legislative Assembly bounded injury aggregates twenty-six days before MHA refused them, and the state's Director of Health Services filed a district-wise injury list on affidavit four months later. It is the same over-generalisation the caveat corrected in the summary on 2026-08-05, surviving here because that pass searched the summary. No figure changed and the verdict is unchanged.",
+   "beforeDate": "2026-08-03",
+   "afterDate": "2026-08-11",
+   "afterSubject": "Defence and Kashmir: the domain prose closes at fourteen of fourteen",
+   "prefix": "Contested on the written definition, and the contest is not the one usually described. It is not mainly a values disagreement about proportionality: the state holds the measurements for both sides of its own trade-off, ",
+   "removed": "publishes the term favourable to it and refuses the term unfavourable to it.",
+   "added": "and the Union ministry publishes the term favourable to it while refusing the term unfavourable to it. CORRECTED 2026-08-11: this read \"the state holds the measurements for both sides of its own trade-off, publishes the term favourable to it and refuses the term unfavourable to it\". THE REFUSAL IS THE UNION'S AND NOT THE STATE'S, and this record's own whatHappened reports the counter-example: the Jammu and Kashmir Chief Minister gave the Legislative Assembly bounded injury aggregates twenty-six days before MHA refused them, and the state's Director of Health Services filed a district-wise injury list on affidavit four months later. It is the same over-generalisation the caveat corrected in the summary on 2026-08-05, surviving here because that pass searched the summary. No figure changed and the verdict is unchanged.",
+   "suffix": ""
+  },
+  {
    "id": "L-0018",
    "layer": "ledger",
    "field": "whatHappened",
@@ -478,22 +494,6 @@
    "prefix": "Indian government estimates put roughly US$48bn of exports at risk; GTRI estimated around two-thirds of approximately US$87bn in US-bound exports were affected. ",
    "removed": "The rate was later cut to 18% under an interim arrangement, and in February 2026 the US Supreme Court constrained IEEPA-based tariff authority.",
    "added": "CORRECTED 2026-08-04 against primaries retrieved that day. This record previously said the rate \"was later cut to 18% under an interim arrangement\" and that the Supreme Court \"constrained\" IEEPA-based tariff authority, and stated both as the current position; neither is right as written. The 18 per cent was a rate the 6 February 2026 United States-India joint statement said would be applied UNDER EXECUTIVE ORDER 14257. On 20 February 2026 the Supreme Court held in Learning Resources v. Trump that IEEPA does not authorise the President to impose tariffs at all — not that the authority was narrowed — and Executive Order 14389 the same day ended the duties imposed under every IEEPA order, including 14257 and 14329. India then paid ten per cent under a section 122 balance-of-payments surcharge from 24 February to 24 July 2026, and has paid ten per cent under a section 301 forced-labour action since. The instruments and their dates are held in L-0184 to L-0188; this record is the shock and its exposure estimates.",
-   "suffix": ""
-  },
-  {
-   "id": "L-0114",
-   "layer": "ledger",
-   "field": "assessmentNote",
-   "title": "Pellet-firing shotguns in Kashmir: the deaths counted, the injuries refused",
-   "quote": "the state holds the measurements for both sides of its own trade-off, publishes the term favourable to it and refuses the term unfavourable to it",
-   "before": "Contested on the written definition, and the contest is not the one usually described. It is not mainly a values disagreement about proportionality: the state holds the measurements for both sides of its own trade-off, publishes the term favourable to it and refuses the term unfavourable to it.",
-   "after": "Contested on the written definition, and the contest is not the one usually described. It is not mainly a values disagreement about proportionality: the state holds the measurements for both sides of its own trade-off, and the Union ministry publishes the term favourable to it while refusing the term unfavourable to it. CORRECTED 2026-08-11: this read \"the state holds the measurements for both sides of its own trade-off, publishes the term favourable to it and refuses the term unfavourable to it\". THE REFUSAL IS THE UNION'S AND NOT THE STATE'S, and this record's own whatHappened reports the counter-example: the Jammu and Kashmir Chief Minister gave the Legislative Assembly bounded injury aggregates twenty-six days before MHA refused them, and the state's Director of Health Services filed a district-wise injury list on affidavit four months later. It is the same over-generalisation the caveat corrected in the summary on 2026-08-05, surviving here because that pass searched the summary. No figure changed and the verdict is unchanged.",
-   "beforeDate": "2026-08-03",
-   "afterDate": null,
-   "afterSubject": null,
-   "prefix": "Contested on the written definition, and the contest is not the one usually described. It is not mainly a values disagreement about proportionality: the state holds the measurements for both sides of its own trade-off, ",
-   "removed": "publishes the term favourable to it and refuses the term unfavourable to it.",
-   "added": "and the Union ministry publishes the term favourable to it while refusing the term unfavourable to it. CORRECTED 2026-08-11: this read \"the state holds the measurements for both sides of its own trade-off, publishes the term favourable to it and refuses the term unfavourable to it\". THE REFUSAL IS THE UNION'S AND NOT THE STATE'S, and this record's own whatHappened reports the counter-example: the Jammu and Kashmir Chief Minister gave the Legislative Assembly bounded injury aggregates twenty-six days before MHA refused them, and the state's Director of Health Services filed a district-wise injury list on affidavit four months later. It is the same over-generalisation the caveat corrected in the summary on 2026-08-05, surviving here because that pass searched the summary. No figure changed and the verdict is unchanged.",
    "suffix": ""
   }
  ]

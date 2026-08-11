@@ -90,6 +90,36 @@ Wording correction only. No figure changes and the verdict stays `contested`.
 
 ---
 
+## DECISIONS RECORDED 2026-08-11, SO THEY STOP BEING RE-PROPOSED
+
+### `unrecognised-rows` stays report-only — decided, not deferred
+
+Residue is 0. **Gating it changes nothing today and would fail the build the first time a
+component's pooling shifts** — which is a design question about that component rather than a defect,
+since the declaration would still reach the page from a different container. A red build is the
+wrong instrument for a question whose answer may be *the new arrangement is correct, register it*.
+**A report-only check sitting at zero has already won.** The reasoning is in the gate's own header
+with the withdrawn wording quoted; it should no longer be reported as an availability.
+
+### The next external adversarial round WAITS, and the condition is a change of object
+
+**Not elapsed time.** The last two rounds read a corpus with nine `worked` records, no `objectives[]`,
+no independence test, no `contestedGround`, no exposure axes, and a site that was an inventory. Since
+then most of what such a round would find has been found internally — **five enum collisions, seven
+premise failures, the guard-scope audits, the three-shape mark class, the per-field prose shadow** —
+and **a review that returns the queue has spent its budget on work already done.**
+
+**THE CONDITION: the object has changed enough that a reader of the deployed site would form a
+materially different account of it than the last round did.** Candidate triggers, none sufficient
+alone — a new layer or axis in `/data`; a scored-verdict methodology change; a surface that makes a
+claim the corpus has not made before.
+
+**AND WHEN IT RUNS IT READS THE DEPLOYED SITE, NOT A GENERATED EXTRACT.** The first round's headline
+finding was an artefact of what the extract had removed. An extract is a projection, and this
+instrument has a name for what projections do to marks.
+
+---
+
 ## STANDING HAZARDS
 
 **Phase 13's completeness is an open question**, per the CLAUDE.md phase table: delimitation was

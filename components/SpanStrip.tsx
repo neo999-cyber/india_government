@@ -92,11 +92,25 @@ export function SpanStrip({
   x0,
   x1,
   frontier,
+  atYear,
 }: {
   rows: Row[];
   x0: number;
   x1: number;
   frontier: number;
+  /**
+   * SLICE THE STRIP AT ONE YEAR — the year pages' visual, and the reason it is this component and
+   * not a new one. A reader has already learned this encoding on `/series/`: a bar is a span, a cut
+   * is a change of basis, a dashed end is a publisher stopping. **Reusing it means the year page is
+   * legible on arrival instead of carrying a second key**, which is the whole argument for putting
+   * the slice here rather than drawing something new that means the same thing.
+   *
+   * Four states, and only the first three are assertions about the year: a span RUNNING through it,
+   * a span BEGINNING in it, a span ENDING in it, and everything else receding. Nothing is removed —
+   * the receding rows stay in the DOM and stay legible, because the shape of the whole is what makes
+   * one year's slice mean anything.
+   */
+  atYear?: number;
 }) {
   const pct = (year: number) => ((year - x0) / (x1 - x0)) * 100;
   // Tick interval follows the span the axis actually covers. At 74 years only decades fit; at 26
@@ -126,6 +140,17 @@ export function SpanStrip({
               key={r.id}
               className="strip-row"
               data-row
+              data-year={
+                atYear === undefined
+                  ? undefined
+                  : r.start === atYear
+                    ? 'begins'
+                    : r.end === atYear
+                      ? 'ends'
+                      : r.start < atYear && r.end > atYear
+                        ? 'running'
+                        : 'away'
+              }
               data-f-shape={[
                 r.stopped ? 'stopped' : '',
                 r.breaks.length ? 'basis' : '',

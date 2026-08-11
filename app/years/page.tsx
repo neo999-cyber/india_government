@@ -1,0 +1,108 @@
+import Link from 'next/link';
+import type { Metadata } from 'next';
+import { ledger, series } from '@/lib/data';
+import { YEAR_NOTES } from '@/lib/year-copy';
+
+export const metadata: Metadata = {
+  title: 'Years — the record read one year at a time',
+  description:
+    'Thirteen cross-sections of this record, 2014 to 2026. What was announced, what was measured, what changed basis and what was happening — four different kinds of fact, never summed.',
+};
+
+/**
+ * THE YEAR INDEX — thirteen cards in calendar order, and nothing is sorted or ranked.
+ *
+ * The four counts are shown per year because the variation between years IS the reason these pages
+ * exist, and a reader should be able to see it before choosing one. **No year carries a total and
+ * no year is ranked against another.**
+ */
+const YEARS = Array.from({ length: 13 }, (_, i) => 2014 + i);
+const yearOfPeriod = (p: string) => Number(String(p).replace(/^FY/, '').slice(0, 4));
+
+export default function YearsIndex() {
+  const rows = YEARS.map((y) => ({
+    y,
+    began: ledger.filter((r) => Number(String(r.date).slice(0, 4)) === y).length,
+    obs: series.flatMap((s) =>
+      s.points.filter((p) => p.country === 'IND' && p.value !== null && yearOfPeriod(p.period) === y),
+    ).length,
+    seams: series.flatMap((s) => (s.breaks ?? []).filter((b) => yearOfPeriod(b.period) === y)).length,
+    exposed: ledger.filter(
+      (r) => (r.shockExposure ?? []).length > 0 && Number(String(r.date).slice(0, 4)) === y,
+    ).length,
+  }));
+
+  return (
+    <>
+      <p className="crumb">
+        <Link href="/">instrument</Link> / years
+      </p>
+      <h1 className="page-lead">The record, one year at a time</h1>
+      <p className="standfirst">
+        Thirteen cross-sections, 2014 to 2026. Each shows four counts — what was announced, what was
+        measured, what changed basis, and what was happening — and they are four different kinds of
+        fact rather than four scores.{' '}
+        <strong>No year carries a total, and no year is ranked against another.</strong>
+      </p>
+      <p className="prose-note">
+        <span className="label">Why these pages exist</span> The four counts were measured across the
+        thirteen years before anything was built, because thirteen templates with different numbers
+        would not have been worth making. They vary — records beginning run 9 to 33, observations 5
+        to 148, seams 3 to 25, exposures 0 to 22 — and they vary independently of one another, so no
+        quadrant is another quadrant restated.{' '}
+        <strong>
+          The one expectation the measurement refused: 2020 does not show measurement thinning.
+        </strong>{' '}
+        A third of the series running through it published nothing that year, which is what 2019 and
+        2021 also show. What 2020 shows is change.
+      </p>
+
+      <div className="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Records begin</th>
+              <th>Observations</th>
+              <th>Basis changes</th>
+              <th>Declare an exposure</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.y}>
+                <td>
+                  <Link href={`/years/${r.y}/`}>{r.y}</Link>
+                </td>
+                <td className="mono">{r.began}</td>
+                <td className="mono">{r.obs}</td>
+                <td className="mono">{r.seams}</td>
+                <td className="mono">{r.exposed}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="sec-h">
+        <h2>What each year is</h2>
+      </div>
+      {YEARS.map((y) => (
+        <div key={y} className="per">
+          <span className="per-yrs mono">{y}</span>
+          <div>
+            <p>{YEAR_NOTES[y].body}</p>
+            <p className="per-from mono">
+              {YEAR_NOTES[y].from.map((id, k) => (
+                <span key={id}>
+                  {k > 0 ? ' · ' : ''}
+                  <Link href={`/ledger/${id}/`}>{id}</Link>
+                </span>
+              ))}
+            </p>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+}

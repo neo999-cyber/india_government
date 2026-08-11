@@ -279,10 +279,24 @@ for (const file of pages) {
  *     because an earlier pair already did. Verified before exempting — 45 of 45 pooled-away
  *     declarations are still on their own page, so rule 4b holds. 36 links.
  *
- * **IT IS LEFT REPORT-ONLY DELIBERATELY.** Flipping it to exit 1 is a gate contract change and this
- * batch had no authority for one; the residue being zero is what makes the flip *available*, not
- * what makes it decided. Every number above is printed on each run rather than quoted from here,
- * because a stale rate is how a measured deferral becomes the other kind.
+ * **IT STAYS REPORT-ONLY. RULED BY THE OPERATOR 2026-08-11, AND THIS IS A DECISION RATHER THAN A
+ * DEFERRAL — it should stop appearing in reports as an availability.**
+ *
+ * WITHDRAWN WORDING, quoted so the change can be checked: this read *"Flipping it to exit 1 is a
+ * gate contract change and this batch had no authority for one; the residue being zero is what
+ * makes the flip available, not what makes it decided."* **The authority question is settled and
+ * the answer is no.**
+ *
+ * **The reasoning, because a later cycle will re-propose this.** Zero residue means gating changes
+ * nothing today — it would pass on every commit until something moved. What it would do is fail the
+ * build the first time a component's POOLING SHIFTS, and a pooling shift is a design question about
+ * that component, not a defect: the declaration would still be reaching the page, just from a
+ * different container. **A red build is the wrong instrument for a question whose answer might be
+ * "the new arrangement is correct, register it".** A report-only check sitting at zero has already
+ * won; making it fail builds is a cost with no matching gain.
+ *
+ * Every number above is printed on each run rather than quoted from here, because a stale rate is
+ * how a measured deferral becomes the other kind.
  */
 if (found.length) {
   const byRoute = new Map();
