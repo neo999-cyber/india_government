@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { COUNTRY_LABELS } from '@/lib/format';
+import { CaveatFlag } from '@/components/marks';
 import type { Country, Series } from '@/lib/types';
 
 /**
@@ -194,8 +195,13 @@ export function PeerSlope({ series }: { series: Series }) {
         </text>
       </svg>
 
-      {/* Rule 4b and 3a: this surface LISTS the record, so its declarations render here in full. */}
-      {series.caveat ? <p className="pslope-caveat">{series.caveat}</p> : null}
+      {/* Rule 4b and 3a: this surface LISTS the record, so its declarations render here in full.
+          THROUGH `CaveatFlag`, NOT A PARAGRAPH OF ITS OWN. The first cut hand-rolled
+          `<p className="pslope-caveat">`, which rendered the text correctly and was invisible to
+          `listing-marks` — the gate binds `caveat-inline`, the class the one sanctioned renderer
+          emits. That is the ad-hoc-normaliser class: a second implementation of a rule, and the
+          copy nobody maintains is the one that eventually truncates. */}
+      {series.caveat ? <CaveatFlag caveat={series.caveat} variant="inline" linkify={false} /> : null}
       {rows.some((r) => !r.a || !r.b) ? (
         <p className="pslope-gap">
           {rows
