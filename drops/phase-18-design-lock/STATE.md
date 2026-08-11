@@ -121,6 +121,43 @@ wrong instrument for a question whose answer may be *the new arrangement is corr
 **A report-only check sitting at zero has already won.** The reasoning is in the gate's own header
 with the withdrawn wording quoted; it should no longer be reported as an availability.
 
+### §4's caveat preview — RULED 2026-08-11, and NEITHER named option was taken
+
+§4 offered two: the caveat's first clause with a *continues on the record page* label, or the mark
+alone. **The operator ruled for the mark. It was not taken, and the reason is a measurement.**
+
+**REJECTED — the first clause with a continuation label.** A truncation with a label on it. Rule 3a
+settled this form once already, on the grid cards, and the answer was to change the layout.
+
+**REJECTED — the mark alone.** The ruling's stated ground was that *the mark is already the corpus's
+own convention for exactly this, readers meet it on every listing surface.* **Measured, it is not:
+every listing surface renders the caveat IN FULL** — 232 of 232 on `/search/`, 103 of 103 on
+`/ledger/`, 129 of 129 on `/series/`, 2 of 2 on a domain page. The mark would have made search the
+only listing surface that does not, and rule 3a names index tables in terms.
+
+**TAKEN — the caveat in full, and the card takes the whole row.** Not a third option: it is the
+ruling this phase already made on the grid cards — *a caveat-bearing card takes the full grid row* —
+which is rule 3a's own instruction that the layout is what changes. 232 of 619 cards take the full
+row. The design problem §4 reopened was already solved.
+
+### The pair-pooling parking — STILL HOLDS, with its reason narrowed
+
+The parking of `unrecognised-rows` as report-only **stands**, and the two defects the last batch
+produced do not touch it: they were caveat duplication on a record's OWN page, which
+`unrecognised-rows` does not bind and never did.
+
+**But its stated reason was too broad and is narrowed here.** It said a pooling shift is *a design
+question rather than a defect*. **Pooling has now produced two defects**, so the distinction is:
+
+- **Which container renders a declaration** — a design question. Registering the new arrangement is
+  often the right answer, and a red build is the wrong instrument for it. The parking is for this.
+- **Whether a declaration is dropped or duplicated** — a defect, every time, and no gate binds it.
+
+**What changes: `tools/own-caveat-once.mjs`**, report-only and outside the build. It asks whether a
+record's own caveat renders exactly once on its own page — a question `listing-marks`,
+`field-render-audit` and `no-unguarded-prose-field` all miss for stated reasons. It found the two
+defects at `ac20d3d` and now reports 232 of 232 clean.
+
 ### The next external adversarial round WAITS, and the condition is a change of object
 
 **Not elapsed time.** The last two rounds read a corpus with nine `worked` records, no `objectives[]`,

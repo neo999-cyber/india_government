@@ -139,7 +139,13 @@ export function listingRows(html) {
   // `ctwo` is F4's contested record: one <article> holding the title, the ground, the marks and the
   // two facing readings. Registered when the shape landed rather than after a gate reported it
   // missing — the third-shape class this list exists for.
-  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one', 'redline', 'ctwo', 'chart'];
+  // `scard` is the search result card, added 2026-08-11 in the commit that created it. **It is the
+  // SEVENTH new shape and the sixth to be caught only because someone looked**: the grid card, the
+  // listing row, `<td>` against `<li>`, the domain rebuild's four containers, the redline and the
+  // contested pair each walked past this gate first. This one was bound before it shipped and the
+  // measurement is why — replacing the search table with cards dropped listing rows 3,716 → 3,405
+  // and marks 5,247 → 4,816 while the gate reported OK, because 619 records had left its scope.
+  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one', 'redline', 'ctwo', 'chart', 'scard'];
   const containers = [];
   for (const cls of CONTAINER_CLASSES) {
     // WHOLE CLASS TOKEN, NOT `\b`. A hyphen is not a word boundary, so `\bctwo\b` matched
