@@ -57,11 +57,19 @@ const { createRequire } = await import('node:module');
 const VALUES = createRequire(process.cwd() + '/x.js')('./schemas/ledger.schema.json')
   .properties.assessment.enum;
 
+// MARKDOWN IN A BODY RENDERS LITERALLY, because the view prints `per.body` as text. Checked here
+// rather than stripped by a script: three times now I have run a slice-scoped strip over the file
+// and it ate emphasis out of the COMMENT BLOCKS that sit after `DOMAIN_PERIODS` in file order —
+// scope leaking one level up, in my own tooling, twice in two batches. Asserting the property is
+// cheap; rewriting the file to enforce it is what keeps going wrong.
+let markdown = 0;
+
 let periods = 0, ids = 0, dangling = 0, asserted = 0, mismatched = 0;
 const notes = [];
 for (const [domain, ps] of Object.entries(DOMAIN_PERIODS)) {
   for (const p of ps) {
     periods++;
+    if (/\*\*|`/.test(p.body)) { markdown++; notes.push(`MARKDOWN  ${domain}  ${p.years} — body contains ** or a backtick; it renders literally`); }
     for (const id of p.from) {
       ids++;
       const r = byId.get(id);
@@ -74,7 +82,7 @@ for (const [domain, ps] of Object.entries(DOMAIN_PERIODS)) {
     }
   }
 }
-console.log(`periods: ${periods} · ids cited: ${ids} · dangling: ${dangling}`);
+console.log(`periods: ${periods} · ids cited: ${ids} · dangling: ${dangling} · bodies containing markdown: ${markdown}`);
 console.log(`ids whose own verdict appears verbatim in their period: ${asserted}`);
 console.log(`ids whose verdict does NOT appear in their period: ${mismatched}  <- candidates, not defects`);
 for (const n of notes.slice(0, 30)) console.log(n);
