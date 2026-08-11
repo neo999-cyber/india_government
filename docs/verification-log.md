@@ -14127,3 +14127,98 @@ did not already cover. **The old figure was larger and measured less.**
 
 F3 shipped this batch, F4 ships here. **F5, the exposure matrix, is unstarted.** The 62
 `unrecognised-rows` residue is unmoved and the pair-pooling question is untouched, as instructed.
+
+---
+
+## 2026-08-11 (nineteenth entry) — FEATURE 5: the exposure matrix, and a number withdrawn
+
+Role down, adjudication across, counts in cells, click to read. 85 entries on 76 records.
+
+### MOST OF THE GRID CANNOT EXIST, AND SAYING SO IS THE FINDING
+
+Five rows against five columns is 25 cells and **10 hold a count**. A grid drawn without comment
+shows fifteen gaps. **There is one.**
+
+The other fourteen are structurally impossible and the schema is what makes them so:
+`is-the-shock` is reflexive — the record's own subject IS the event, so there is nothing to
+adjudicate and the gate names an `is-the-shock` carrying an adjudication as a defect; `none-stated`
+is a stated absence of exposure, with nothing to accept or refuse; and `cause` and `confound` must
+carry one, so their *not adjudicable* cell is impossible in the other direction. The grid is
+block-diagonal.
+
+**THREE CELL STATES, THREE RENDERINGS, AND THEY MUST NOT CONVERGE.** A count is a finding. A
+*counted zero* is a finding — the cross-tabulation is complete over all 85 entries, so the cell
+really is empty — and it is printed as `0` rather than left blank, because in this instrument a
+blank means unreported and this one is reported. An *inapplicable* cell gets the Absence mark:
+dashed, unfilled, no figure. Rule 4a distinguishes a gap in the data from a gap in the world; this
+is a third thing, a gap in the grid's own construction, and it is drawn unlike either.
+
+**THE ONE REAL GAP IS `cause × refused`.** Every refusal in the corpus lands on a confound — an
+event said to degrade the measurement — and none on an event said to have produced part of the
+outcome. Stated as what the grid shows, with no inference attached.
+
+### CLICK TO READ FILTERS ONE LIST, AND THE REASON IS A GATE CONTRACT
+
+A section per cell was the obvious build and it is not available. **`listing-marks` binds a listing
+row by its `/ledger/<id>/` href whatever the link text**, and three records — L-0038, L-0051,
+L-0052 — hold entries in two different cells, two of them declaring an absence. A cell-sectioned
+page would render the same declaration twice, breaking *each at most once per page* in the act of
+obeying rule 4b.
+
+So there is ONE listing, **one row per record**, marks rendered once, and the matrix filters it by
+the same attribute-and-CSS mechanic as the series span strip — deliberately the same, because a
+second filtering idiom for one job is the ad-hoc-normaliser class this instrument keeps paying for.
+Every row stays in the DOM and the whole list renders with scripting off.
+
+### TWO DEFECTS CAUGHT ON THE RENDERED PAGE, NEITHER VISIBLE IN THE SOURCE
+
+**A label collision one word wide.** The `unstated` adjudication renders *"not adjudicated here"* and
+means THE RECORD MADE NO JUDGEMENT — a real value with 6 entries. The impossible-cell column was
+labelled *"Not adjudicated"*. Two different facts, adjacent columns, one word apart. Renamed *"Not
+adjudicable"*.
+
+**A count that meant something other than what pressing it showed.** `confound × accepted` is 28
+entries on **23 records**, because two records declare both a cause and a confound for one event. A
+reader pressing 28 and being shown 23 rows has been told something false by the interface. The state
+line now reads *"Showing 23 records carrying the 28 entries in that cell"* and says why they differ.
+
+### THE SIXTEEN IS WITHDRAWN AND THE RESIDUAL IS FOUR
+
+The batch inherited *"the sixteen records reasoning from a shock without declaring one"*. **It is a
+pre-migration figure.** Sixteen were found before the field was structured; ten were migrated into it
+and six were judged never to have been exposures. Re-derived at this commit the residual is **four**.
+
+Scanned through the corpus-search helper over five prose fields on the 147 records carrying no
+exposure, **21 exogenous-event nouns**: pandemic, Covid, lockdown, monsoon, drought, cyclone,
+earthquake, flood, Ukraine, oil price, crude price, global financial crisis, taper tantrum, El Nino,
+El Niño, AQR, supply chain, heatwave, heat wave, recession, war.
+
+**The members were read, which is what makes four a finding rather than a count.** Two are not
+exposures: L-0079 names the second COVID wave as the *subject* of the reporting that drew a raid, and
+L-0133 uses *"the year of the lockdown"* as a date marker. Two argue from the pandemic without
+declaring it — L-0161 and L-0171 both weigh GST compensation paid *"through a pandemic"* on the
+Union's side.
+
+**They are named on the page and not filled**, and the wording is a claim about the search rather
+than about the world per rule 5d: a term nobody thought of would return a fifth. Coding an exposure
+from a keyword hit would be the instrument reading its own prose into its own structure — the one
+move this field exists to make checkable.
+
+**THE SCAN WAS WRONG ON ITS FIRST RUN AND THE FAILURE MODE IS WORTH RECORDING.** `scanText` returns
+an array of `{term, count, hits}`; the first pass read the ARRAY'S LENGTH instead of `.count`, so
+every term scored 1 and **all 147 records matched all 21 terms**. It was obvious only because the
+output was absurd. Had the list been plausible it would have been banked. This is *read the label
+beside the value* at its most literal, in the session that has the rule in front of it.
+
+### WHAT THE PAGE STILL REFUSES, UNCHANGED
+
+Adjudication against verdict stays off. It is striking — no record accepting an exogenous explanation
+is `failed` — and circular, because the adjudication was read from the same prose the verdict rests
+on. The matrix that IS shown crosses the coding against itself and claims only to show its shape;
+the refused table would cross the coding against a verdict the same prose produced, letting an
+artefact read as a result. The page states the distinction.
+
+### Where the batch stopped
+
+**F3, F4 and F5 all ship in this batch**, the three the instruction named. The 62
+`unrecognised-rows` residue is unmoved across all three and the pair-pooling question is untouched.

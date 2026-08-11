@@ -3569,3 +3569,79 @@ details.more > summary {
 .ctwo-side p { margin: 0; }
 .ctwo-settle,
 .ctwo-note { margin: 0.5rem 0 0; font-size: 0.9375rem; color: var(--ink-2); }
+
+/* ---------------------------------------------------------------------------------------------
+   F5 — THE EXPOSURE MATRIX
+
+   THREE CELL STATES, THREE RENDERINGS, AND THEY MUST NOT CONVERGE. A count is a finding; a counted
+   zero is a finding (the cross-tabulation is complete, so the cell really is empty); an
+   inapplicable cell is neither — the schema forbids an entry there. Rule 4a's absence idiom is
+   dashed, unfilled and carries no figure, and that is what the third state gets. A zero drawn like
+   an absence would say "unreported"; an absence drawn like a zero would say "nobody did this",
+   and both are false in opposite directions.
+--------------------------------------------------------------------------------------------- */
+.xmat { table-layout: auto; }
+.xmat caption { caption-side: top; text-align: left; padding-bottom: 0.6rem; }
+.xmat th[scope='col'] { font-size: 0.75rem; letter-spacing: 0.03em; vertical-align: bottom; }
+.xmat th[scope='row'] { text-align: left; white-space: nowrap; font-weight: 600; }
+.xmat td { text-align: center; vertical-align: middle; }
+
+.xmat-btn {
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.0625rem;
+  color: var(--fill);
+  background: var(--mark-soft);
+  border: 1px solid transparent;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+}
+.xmat-btn:hover,
+.xmat-btn:focus-visible { border-color: var(--mark); }
+.xmat-n.is-on .xmat-btn { background: var(--fill); color: var(--bg); }
+
+/* A COUNTED ZERO. Plain, quiet, and unmistakably a number. */
+.xmat-zero .mono { color: var(--ink-dim); font-variant-numeric: tabular-nums; }
+
+/* NOT ADJUDICABLE. Dashed, unfilled, no figure — the Absence mark, because this cell is not a
+   result and must never be read as one. */
+.xmat-na-mark,
+.xmat-na-inline {
+  display: inline-block;
+  width: 1.4rem;
+  height: 0.85rem;
+  border: 1px dashed var(--rule);
+  background: transparent;
+  vertical-align: -0.1em;
+}
+.xmat-na-inline { width: 1.1rem; height: 0.7rem; }
+.xmat-state { margin: 0.5rem 0 0; }
+.xmat-clear {
+  font: inherit;
+  color: var(--mark-ink);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--mark);
+  padding: 0;
+  cursor: pointer;
+}
+
+/* THE FILTER. Same attribute-and-CSS mechanic as the series span strip, deliberately — a second
+   idiom for the same job is the ad-hoc-normaliser class. Every row stays in the DOM; with
+   scripting off the whole list renders, which is the state a reader without JS should get. */
+#exposure-list[data-cell] tbody { display: none; }
+#exposure-list[data-cell='cause/accepted'] tbody[data-cells~='cause/accepted'],
+#exposure-list[data-cell='cause/limited'] tbody[data-cells~='cause/limited'],
+#exposure-list[data-cell='cause/refused'] tbody[data-cells~='cause/refused'],
+#exposure-list[data-cell='cause/unstated'] tbody[data-cells~='cause/unstated'],
+#exposure-list[data-cell='confound/accepted'] tbody[data-cells~='confound/accepted'],
+#exposure-list[data-cell='confound/limited'] tbody[data-cells~='confound/limited'],
+#exposure-list[data-cell='confound/refused'] tbody[data-cells~='confound/refused'],
+#exposure-list[data-cell='confound/unstated'] tbody[data-cells~='confound/unstated'],
+#exposure-list[data-cell='none-stated/none'] tbody[data-cells~='none-stated/none'],
+#exposure-list[data-cell='is-the-shock/none'] tbody[data-cells~='is-the-shock/none'],
+#exposure-list[data-cell='no-role/none'] tbody[data-cells~='no-role/none'] {
+  display: table-row-group;
+}
+.xrow-entry { margin: 0 0 0.6rem; }
+.xrow-entry:last-child { margin-bottom: 0; }
