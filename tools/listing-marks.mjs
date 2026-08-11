@@ -181,9 +181,24 @@ function listingRows(html) {
   const trs = [...scoped.matchAll(/<tr[\s>][\s\S]*?<\/tr>/g)].map((m) => m[0]);
   let rest = scoped;
   for (const t of trs) rest = rest.replace(t, '');
+  /**
+   * CARD CLASSES ARE ENUMERATED BY NAME, AND THE LIST IS THE GATE'S SCOPE.
+   *
+   * A card is distinguished from an incidental link to a record by the class its title carries.
+   * That filter read `grid-title` alone until 2026-08-11, and **the overview board's 250 mini cards
+   * carry `mini-t`** — so a surface listing 250 series, 141 of them with a caveat and 58 declaring
+   * an absence, was outside this gate BY CONSTRUCTION from the day it was built. 199 declarations
+   * reached no reader and the gate reported clean throughout, because it was never looking.
+   *
+   * **A NEW LISTING SHAPE BUILT PAST AN EXISTING GUARD** — the same class as the three A-4 finds,
+   * running the other way. The list is named here rather than inferred so a third shape has to be
+   * added deliberately; widening it to "any anchor to a record" would sweep in every cross-link in
+   * the corpus and make the gate useless.
+   */
+  const CARD_TITLE_CLASSES = ['grid-title', 'mini-t'];
   const cards = [...rest.matchAll(/<a [^>]*href="\/(?:ledger|series)\/[^"]*"[\s\S]*?<\/a>/g)]
     .map((m) => m[0])
-    .filter((b) => b.includes('grid-title'));
+    .filter((b) => CARD_TITLE_CLASSES.some((c) => b.includes(c)));
   const lis = [...rest.matchAll(/<li[\s>][\s\S]*?<\/li>/g)].map((m) => m[0]);
   return [
     ...units.map((b) => ['tbody', b]),

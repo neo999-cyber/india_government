@@ -13100,3 +13100,118 @@ which is the operator's call. Entered in `STATE.md`.
 prose + 52 non-prose, 4 layers, 0 invisible, 17 exempted · `seam-span` 127 spans, 12 frozen, 14 out
 of scope · `link-check` 27,976 hrefs / 668 pages / 0 dead · `listing-marks` 2,630 rows / 3,713 marks
 · `domain-coverage` 14/14, 1137/1137.
+
+---
+
+## 2026-08-11 (eighth entry) — the NPA basis fixed, and the verification found a 199-declaration hole I had made
+
+### 4 first, because it is the stop check
+
+**No verdict turns on the basis, so no stop.** Series carry no `assessment` field. `pvt-gross-npa`
+is cited by **zero** ledger records; `psb-gross-npa` by L-0023 (`partly`, Asset Quality Review) and
+`net-npa` by L-0033 (`no-objective`, ECL transition), and **neither record's reasoning mentions
+basis, domestic, global or P-18**. Worth noting separately: `net-npa` is affected by P-15, P-16 and
+P-21 and **not** by P-18 — consistent with it stating no basis at all, since it was never linked to
+the dispute that would have forced one.
+
+### 1 and 2 — the operator's split applied
+
+**Basis in the title**, on the pattern `scb-gross-npa` already used:
+
+| series | before | after |
+|---|---|---|
+| `psb-gross-npa` | Public sector banks gross NPA ratio | …ratio **(global operations)** |
+| `pvt-gross-npa` | Private sector banks gross NPA ratio | …ratio **(basis not stated)** |
+| `net-npa` | Scheduled commercial banks net NPA ratio | …ratio **(basis not stated)** |
+
+`net-npa` takes *(basis not stated)* rather than an inferred one. Its source is a news account of the
+RBI *Financial Stability Report*, which typically reports SCB figures on a domestic basis — and
+**inferring that is exactly what rule 5b forbids**: *"a series that states no basis renders as 'basis
+not stated' rather than being assumed onto one."* Establishing it means retrieving the FSR, which is
+research and not this batch.
+
+**The prohibition in `caveat`, on `pvt-gross-npa` only** — the one record that carries one. Opens
+*"CANNOT SHARE AN AXIS WITH ANY OTHER NPA SERIES"* and states why, naming both counterpart series and
+P-18. `psb-gross-npa` needs none: its basis is known and now travels. **`net-npa` arguably warrants
+the same prohibition and did not get one, deliberately** — its note carries no prohibition, and
+authoring one would be inventing a judgement the record does not hold. Flagged rather than written.
+
+**Edit discipline.** Anchored on strings read in the same operation; asserted on the computed content
+before the write that exactly four fields moved (`net-npa.title`, `psb-gross-npa.title`,
+`pvt-gross-npa.title`, `pvt-gross-npa.caveat`) and nothing else; M2 diff 4 insertions / 3 deletions.
+**One slip caught and fixed**: the caveat was first inserted at six-space indentation into a
+two-space file — CLAUDE.md's *detect indentation from the file being written* — corrected before
+commit.
+
+### 3 — the verification, which is where this batch earned its keep
+
+The instruction was to check the four surfaces the FIGURE reaches, not the record page. Doing that
+found something much larger than the thing being fixed.
+
+**All three titles now reach all four surfaces.** The `pvt` caveat reaches all four in full. Needles
+were read from `/data` in the same operation, never typed. Negative control: another record's caveat
+(`agri-credit`) is absent from `pvt`'s own page and legitimately present on the three listing
+surfaces, because that record is listed there too — the discriminator is the record's own page.
+
+**BUT THE CAVEAT INITIALLY REACHED THREE OF FOUR. THE OVERVIEW BOARD DROPPED IT — AND NOT ONLY
+THIS ONE.**
+
+**The board's mini wall lists 250 series and rendered no declarations at all: 141 caveats and 58
+declared absences, 199 in total, reaching no reader.** It shipped that way on 2026-08-11 and stood
+for four commits.
+
+**`listing-marks` could not see it, BY CONSTRUCTION.** The gate recognises a card by the class its
+title carries and that filter read `grid-title` alone; the minis carry `mini-t`. **A new listing
+shape built past an existing guard** — the same class as the three A-4 finds, running the other way,
+and the fourth time this corpus has paid for a guard whose scope is narrower than its claim.
+
+**And the projection is where it was actually lost.** `OSeries` is the board's own view of a series
+and was built with the six fields the chart needs. `caveat` and `unmeasured` were dropped before the
+component could render them, so no care in the view would have caught it. **A projection that
+narrows a record is where rule 4b is silently lost**, and that is worth more than the instance.
+
+**Fixed on all three levels in one commit**, because fixing the surface alone would leave the next
+shape free to escape identically: the projection carries the marks, the wall renders `RecordMarks`,
+a caveat-bearing mini takes the full grid row on the `.grid > a:has(.caveat-inline)` pattern, and the
+gate's card-class list is now named (`CARD_TITLE_CLASSES`) so a third shape must be added
+deliberately.
+
+**The numbers confirm each other exactly.** `listing-marks` went from 2,634 rows / 3,717 marks to
+**2,787 rows / 3,916 marks** — **+199 marks, the same 199 measured as unreached before the fix.**
+Verified in the browser: a caveat-bearing mini renders at 313px against a plain mini's 153px, fully
+visible, no page overflow.
+
+### 5 — `live` on 12 and implicit on 46 is not two conventions, it is one session
+
+**The schema settles which is intended: `"live (default)"`.** Absence means live, so the 12 explicit
+values are redundant rather than contradictory.
+
+**And they are not scattered — they are PR-48 to PR-60, one contiguous block, with zero
+no-status pairs inside that span.** The 46 without a status are PR-1 to PR-47. This is one authoring
+session, from PR-48 onward, beginning to write the default explicitly. Nothing is in tension; a
+convention changed mid-corpus and the earlier half was never revisited.
+
+**What consistency would take:** delete `status: "live"` from 12 records. Mechanical, no meaning
+changes because the value is the declared default, and it leaves `declared-pending` as the only value
+ever written — which is the form the field is actually for. Not done: a record change.
+
+**One correction applied, because it is mine and it is false.** The `status` exemption I wrote into
+the schema one batch ago ended *"A pending pair is currently indistinguishable from a live one on
+every surface that shows it."* This batch disproved it. Withdrawn with the wording quoted in place,
+description only, structure asserted identical.
+
+### 6 — a gate CAN bind the correspondence, and it is the cheapest gate in the repository
+
+**The property is a pure derivation over `/data`**: `pairRenders(p) === (p.status !== 'declared-pending')`,
+asserted in both directions. No build output, no git history, no network. It would run in
+milliseconds and could fold into `validate` rather than adding a step.
+
+**Both directions matter and they fail differently.** A pending pair whose sides later resolve
+becomes a renderable comparison still marked owed — a pair the corpus holds and hides. A pair that
+breaks without being marked becomes a comparison that silently stops appearing — the A-3 defect,
+which cost eleven pairs and was found by hand.
+
+**Cost: about 40 lines and one negative control** (flip one pair's status in memory, assert the gate
+names it). The only real question is whether `status` should exist at all once the property is
+derivable — a gate proving the field always agrees with a derivation is also an argument that the
+field is redundant. **Not built: a contract change.**
