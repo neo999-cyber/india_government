@@ -1,0 +1,1118 @@
+[
+ {
+  "key": "R-a9dafe",
+  "section": "CLAUDE.md — India Roadmap Instrument",
+  "lead": "# CLAUDE.md — India Roadmap Instrument",
+  "bytes": 262
+ },
+ {
+  "key": "R-36d9d5",
+  "section": "Architecture\n- Three data layers, all JSON in `/data`, each governed by a schema in `/schemas`:\n  - **series** — indicator time series, India + peer panel (BGD, VNM, IDN, CHN)\n  - **ledger** — discrete reform/event/episode records\n  - **provenance** — measurement-dispute records (P-xx), first-class citizens\n- Next.js, static export, deployed to Vercel. No server, no database, no auth.\n- Data enters via `/data/incoming/` drops from research sessions → validate → merge.",
+  "lead": "## Architecture - Three data layers, all JSON in `/data`, each governed by a schema in `/schemas`: - **series** — indica",
+  "bytes": 475
+ },
+ {
+  "key": "R-f4869f",
+  "section": "Non-negotiable data rules\n1. **Schema validation gates every merge.** A record failing validation never enters `/data`. Build the validator as a CLI (`npm run validate`) and wire it into the build so an invalid repo cannot deploy.\n2. **Never splice across a break.** Series with `breaks[]` render with a visible seam (the dual GDP series is the canonical case, P-01). No smoothing, no interpolation across breaks, no trend lines fitted through them.\n3. **Status renders visibly.** `approx` and `pending` points are visually distinct from `verified` everywhere they appear. Pending never renders without a flag.\n3a. **A caveat never truncates, anywhere, at any density.** `caveat` is a schema field on both the ledger and series schemas. A record carrying one would mislead without it, so it renders wherever the record appears — detail pages, index tables, domain and term pages, cited-by grids — in full, every time. No ellipsis, no clamp, no truncation to fit a cell, no hiding it behind a hover or a disclosure. A qualification cut to fit is the failure the field exists to prevent: a half-read caveat is worse than none, because it looks like the whole of it. This binds future table and density work — if a caveat will not fit a layout, the layout is what changes. Ordinary uncertainty is not a caveat and belongs in `notes`.\n4. **Blanks are unreported, not zero.** Same discipline as the paper-leaks instrument.\n4a. **An absence renders unlike a finding.** Distinguish a gap in the data from a gap in the world. A blank cell says \"not reported this period\" (rule 4); where *nothing measures a thing at all*, that is a fact about the record and often the most important thing on the page — it renders, named, rather than being left off. PMAY-G is the canonical case: sanctioned and completed are published, occupancy is not, and a reader shown only the first two would reasonably take completion for the end of the chain. Use the `Absence` mark: dashed, unfilled, no figure, no table, visibly not a panel of results. An absence styled like a finding invites a reader to treat the frame as the content, and nothing is ever estimated into the space. Expect several in infrastructure.",
+  "lead": "## Non-negotiable data rules 1. **Schema validation gates every merge.** A record failing validation never enters `/data",
+  "bytes": 2189
+ },
+ {
+  "key": "R-2d97a5",
+  "section": "Non-negotiable data rules\n1. **Schema validation gates every merge.** A record failing validation never enters `/data`. Build the validator as a CLI (`npm run validate`) and wire it into the build so an invalid repo cannot deploy.\n2. **Never splice across a break.** Series with `breaks[]` render with a visible seam (the dual GDP series is the canonical case, P-01). No smoothing, no interpolation across breaks, no trend lines fitted through them.\n3. **Status renders visibly.** `approx` and `pending` points are visually distinct from `verified` everywhere they appear. Pending never renders without a flag.\n3a. **A caveat never truncates, anywhere, at any density.** `caveat` is a schema field on both the ledger and series schemas. A record carrying one would mislead without it, so it renders wherever the record appears — detail pages, index tables, domain and term pages, cited-by grids — in full, every time. No ellipsis, no clamp, no truncation to fit a cell, no hiding it behind a hover or a disclosure. A qualification cut to fit is the failure the field exists to prevent: a half-read caveat is worse than none, because it looks like the whole of it. This binds future table and density work — if a caveat will not fit a layout, the layout is what changes. Ordinary uncertainty is not a caveat and belongs in `notes`.\n4. **Blanks are unreported, not zero.** Same discipline as the paper-leaks instrument.\n4a. **An absence renders unlike a finding.** Distinguish a gap in the data from a gap in the world. A blank cell says \"not reported this period\" (rule 4); where *nothing measures a thing at all*, that is a fact about the record and often the most important thing on the page — it renders, named, rather than being left off. PMAY-G is the canonical case: sanctioned and completed are published, occupancy is not, and a reader shown only the first two would reasonably take completion for the end of the chain. Use the `Absence` mark: dashed, unfilled, no figure, no table, visibly not a panel of results. An absence styled like a finding invites a reader to treat the frame as the content, and nothing is ever estimated into the space. Expect several in infrastructure.",
+  "lead": "4b. **AN ABSENCE MUST REACH A READER, AND 4a DOES NOT MAKE IT DO SO.** Ruled 2026-08-06. It appears on every surface tha",
+  "bytes": 377
+ },
+ {
+  "key": "R-7b6789",
+  "section": "Non-negotiable data rules\n1. **Schema validation gates every merge.** A record failing validation never enters `/data`. Build the validator as a CLI (`npm run validate`) and wire it into the build so an invalid repo cannot deploy.\n2. **Never splice across a break.** Series with `breaks[]` render with a visible seam (the dual GDP series is the canonical case, P-01). No smoothing, no interpolation across breaks, no trend lines fitted through them.\n3. **Status renders visibly.** `approx` and `pending` points are visually distinct from `verified` everywhere they appear. Pending never renders without a flag.\n3a. **A caveat never truncates, anywhere, at any density.** `caveat` is a schema field on both the ledger and series schemas. A record carrying one would mislead without it, so it renders wherever the record appears — detail pages, index tables, domain and term pages, cited-by grids — in full, every time. No ellipsis, no clamp, no truncation to fit a cell, no hiding it behind a hover or a disclosure. A qualification cut to fit is the failure the field exists to prevent: a half-read caveat is worse than none, because it looks like the whole of it. This binds future table and density work — if a caveat will not fit a layout, the layout is what changes. Ordinary uncertainty is not a caveat and belongs in `notes`.\n4. **Blanks are unreported, not zero.** Same discipline as the paper-leaks instrument.\n4a. **An absence renders unlike a finding.** Distinguish a gap in the data from a gap in the world. A blank cell says \"not reported this period\" (rule 4); where *nothing measures a thing at all*, that is a fact about the record and often the most important thing on the page — it renders, named, rather than being left off. PMAY-G is the canonical case: sanctioned and completed are published, occupancy is not, and a reader shown only the first two would reasonably take completion for the end of the chain. Use the `Absence` mark: dashed, unfilled, no figure, no table, visibly not a panel of results. An absence styled like a finding invites a reader to treat the frame as the content, and nothing is ever estimated into the space. Expect several in infrastructure.",
+  "lead": "**THE TWO RULES BIND DIFFERENT PROPERTIES AND FAIL INDEPENDENTLY, WHICH IS WHY THIS IS A CLAUSE BESIDE 4a AND NOT A REWR",
+  "bytes": 452
+ },
+ {
+  "key": "R-46557b",
+  "section": "Non-negotiable data rules\n1. **Schema validation gates every merge.** A record failing validation never enters `/data`. Build the validator as a CLI (`npm run validate`) and wire it into the build so an invalid repo cannot deploy.\n2. **Never splice across a break.** Series with `breaks[]` render with a visible seam (the dual GDP series is the canonical case, P-01). No smoothing, no interpolation across breaks, no trend lines fitted through them.\n3. **Status renders visibly.** `approx` and `pending` points are visually distinct from `verified` everywhere they appear. Pending never renders without a flag.\n3a. **A caveat never truncates, anywhere, at any density.** `caveat` is a schema field on both the ledger and series schemas. A record carrying one would mislead without it, so it renders wherever the record appears — detail pages, index tables, domain and term pages, cited-by grids — in full, every time. No ellipsis, no clamp, no truncation to fit a cell, no hiding it behind a hover or a disclosure. A qualification cut to fit is the failure the field exists to prevent: a half-read caveat is worse than none, because it looks like the whole of it. This binds future table and density work — if a caveat will not fit a layout, the layout is what changes. Ordinary uncertainty is not a caveat and belongs in `notes`.\n4. **Blanks are unreported, not zero.** Same discipline as the paper-leaks instrument.\n4a. **An absence renders unlike a finding.** Distinguish a gap in the data from a gap in the world. A blank cell says \"not reported this period\" (rule 4); where *nothing measures a thing at all*, that is a fact about the record and often the most important thing on the page — it renders, named, rather than being left off. PMAY-G is the canonical case: sanctioned and completed are published, occupancy is not, and a reader shown only the first two would reasonably take completion for the end of the chain. Use the `Absence` mark: dashed, unfilled, no figure, no table, visibly not a panel of results. An absence styled like a finding invites a reader to treat the frame as the content, and nothing is ever estimated into the space. Expect several in infrastructure.",
+  "lead": "**AND THE FIRST IS WHAT HAPPENED, ON 374 DECLARATIONS ACROSS 199 RECORDS.** They complied with 4a completely and appeare",
+  "bytes": 517
+ },
+ {
+  "key": "R-77d4cb",
+  "section": "Non-negotiable data rules\n1. **Schema validation gates every merge.** A record failing validation never enters `/data`. Build the validator as a CLI (`npm run validate`) and wire it into the build so an invalid repo cannot deploy.\n2. **Never splice across a break.** Series with `breaks[]` render with a visible seam (the dual GDP series is the canonical case, P-01). No smoothing, no interpolation across breaks, no trend lines fitted through them.\n3. **Status renders visibly.** `approx` and `pending` points are visually distinct from `verified` everywhere they appear. Pending never renders without a flag.\n3a. **A caveat never truncates, anywhere, at any density.** `caveat` is a schema field on both the ledger and series schemas. A record carrying one would mislead without it, so it renders wherever the record appears — detail pages, index tables, domain and term pages, cited-by grids — in full, every time. No ellipsis, no clamp, no truncation to fit a cell, no hiding it behind a hover or a disclosure. A qualification cut to fit is the failure the field exists to prevent: a half-read caveat is worse than none, because it looks like the whole of it. This binds future table and density work — if a caveat will not fit a layout, the layout is what changes. Ordinary uncertainty is not a caveat and belongs in `notes`.\n4. **Blanks are unreported, not zero.** Same discipline as the paper-leaks instrument.\n4a. **An absence renders unlike a finding.** Distinguish a gap in the data from a gap in the world. A blank cell says \"not reported this period\" (rule 4); where *nothing measures a thing at all*, that is a fact about the record and often the most important thing on the page — it renders, named, rather than being left off. PMAY-G is the canonical case: sanctioned and completed are published, occupancy is not, and a reader shown only the first two would reasonably take completion for the end of the chain. Use the `Absence` mark: dashed, unfilled, no figure, no table, visibly not a panel of results. An absence styled like a finding invites a reader to treat the frame as the content, and nothing is ever estimated into the space. Expect several in infrastructure.",
+  "lead": "**One thing 4b does not license: a corpus-wide count.** An absence total on the index would read as a completeness score",
+  "bytes": 5325
+ },
+ {
+  "key": "R-77bea8",
+  "section": "Non-negotiable data rules\n1. **Schema validation gates every merge.** A record failing validation never enters `/data`. Build the validator as a CLI (`npm run validate`) and wire it into the build so an invalid repo cannot deploy.\n2. **Never splice across a break.** Series with `breaks[]` render with a visible seam (the dual GDP series is the canonical case, P-01). No smoothing, no interpolation across breaks, no trend lines fitted through them.\n3. **Status renders visibly.** `approx` and `pending` points are visually distinct from `verified` everywhere they appear. Pending never renders without a flag.\n3a. **A caveat never truncates, anywhere, at any density.** `caveat` is a schema field on both the ledger and series schemas. A record carrying one would mislead without it, so it renders wherever the record appears — detail pages, index tables, domain and term pages, cited-by grids — in full, every time. No ellipsis, no clamp, no truncation to fit a cell, no hiding it behind a hover or a disclosure. A qualification cut to fit is the failure the field exists to prevent: a half-read caveat is worse than none, because it looks like the whole of it. This binds future table and density work — if a caveat will not fit a layout, the layout is what changes. Ordinary uncertainty is not a caveat and belongs in `notes`.\n4. **Blanks are unreported, not zero.** Same discipline as the paper-leaks instrument.\n4a. **An absence renders unlike a finding.** Distinguish a gap in the data from a gap in the world. A blank cell says \"not reported this period\" (rule 4); where *nothing measures a thing at all*, that is a fact about the record and often the most important thing on the page — it renders, named, rather than being left off. PMAY-G is the canonical case: sanctioned and completed are published, occupancy is not, and a reader shown only the first two would reasonably take completion for the end of the chain. Use the `Absence` mark: dashed, unfilled, no figure, no table, visibly not a panel of results. An absence styled like a finding invites a reader to treat the frame as the content, and nothing is ever estimated into the space. Expect several in infrastructure.",
+  "lead": "5d. **A claim about what EXISTS is not a claim about what the SOURCES CONTAIN, and only the second is checkable.** \"No e",
+  "bytes": 1052
+ },
+ {
+  "key": "R-287a44",
+  "section": "Non-negotiable data rules\n1. **Schema validation gates every merge.** A record failing validation never enters `/data`. Build the validator as a CLI (`npm run validate`) and wire it into the build so an invalid repo cannot deploy.\n2. **Never splice across a break.** Series with `breaks[]` render with a visible seam (the dual GDP series is the canonical case, P-01). No smoothing, no interpolation across breaks, no trend lines fitted through them.\n3. **Status renders visibly.** `approx` and `pending` points are visually distinct from `verified` everywhere they appear. Pending never renders without a flag.\n3a. **A caveat never truncates, anywhere, at any density.** `caveat` is a schema field on both the ledger and series schemas. A record carrying one would mislead without it, so it renders wherever the record appears — detail pages, index tables, domain and term pages, cited-by grids — in full, every time. No ellipsis, no clamp, no truncation to fit a cell, no hiding it behind a hover or a disclosure. A qualification cut to fit is the failure the field exists to prevent: a half-read caveat is worse than none, because it looks like the whole of it. This binds future table and density work — if a caveat will not fit a layout, the layout is what changes. Ordinary uncertainty is not a caveat and belongs in `notes`.\n4. **Blanks are unreported, not zero.** Same discipline as the paper-leaks instrument.\n4a. **An absence renders unlike a finding.** Distinguish a gap in the data from a gap in the world. A blank cell says \"not reported this period\" (rule 4); where *nothing measures a thing at all*, that is a fact about the record and often the most important thing on the page — it renders, named, rather than being left off. PMAY-G is the canonical case: sanctioned and completed are published, occupancy is not, and a reader shown only the first two would reasonably take completion for the end of the chain. Use the `Absence` mark: dashed, unfilled, no figure, no table, visibly not a panel of results. An absence styled like a finding invites a reader to treat the frame as the content, and nothing is ever estimated into the space. Expect several in infrastructure.",
+  "lead": "**Superlatives are the loudest symptom and not the only one.** The class also covers a bare \"unexplained\", an \"unprecede",
+  "bytes": 957
+ },
+ {
+  "key": "R-761639",
+  "section": "Non-negotiable data rules\n1. **Schema validation gates every merge.** A record failing validation never enters `/data`. Build the validator as a CLI (`npm run validate`) and wire it into the build so an invalid repo cannot deploy.\n2. **Never splice across a break.** Series with `breaks[]` render with a visible seam (the dual GDP series is the canonical case, P-01). No smoothing, no interpolation across breaks, no trend lines fitted through them.\n3. **Status renders visibly.** `approx` and `pending` points are visually distinct from `verified` everywhere they appear. Pending never renders without a flag.\n3a. **A caveat never truncates, anywhere, at any density.** `caveat` is a schema field on both the ledger and series schemas. A record carrying one would mislead without it, so it renders wherever the record appears — detail pages, index tables, domain and term pages, cited-by grids — in full, every time. No ellipsis, no clamp, no truncation to fit a cell, no hiding it behind a hover or a disclosure. A qualification cut to fit is the failure the field exists to prevent: a half-read caveat is worse than none, because it looks like the whole of it. This binds future table and density work — if a caveat will not fit a layout, the layout is what changes. Ordinary uncertainty is not a caveat and belongs in `notes`.\n4. **Blanks are unreported, not zero.** Same discipline as the paper-leaks instrument.\n4a. **An absence renders unlike a finding.** Distinguish a gap in the data from a gap in the world. A blank cell says \"not reported this period\" (rule 4); where *nothing measures a thing at all*, that is a fact about the record and often the most important thing on the page — it renders, named, rather than being left off. PMAY-G is the canonical case: sanctioned and completed are published, occupancy is not, and a reader shown only the first two would reasonably take completion for the end of the chain. Use the `Absence` mark: dashed, unfilled, no figure, no table, visibly not a panel of results. An absence styled like a finding invites a reader to treat the frame as the content, and nothing is ever estimated into the space. Expect several in infrastructure.",
+  "lead": "6. **Tier tags travel with claims.** Any rendered number can be traced to source name, URL, tier. T5 (contested indices)",
+  "bytes": 1048
+ },
+ {
+  "key": "R-f961b7",
+  "section": "Research and verification discipline",
+  "lead": "## Research and verification discipline",
+  "bytes": 900
+ },
+ {
+  "key": "R-fed88f",
+  "section": "Research and verification discipline",
+  "lead": "**Rule 1 — read at the moment of quoting.** Record text is read from `/data` in the same operation that quotes or edits ",
+  "bytes": 360
+ },
+ {
+  "key": "R-ec8f93",
+  "section": "Research and verification discipline",
+  "lead": "**Rule 3 — a document is a source only if it was retrieved in this run.** An unretrieved URL is not a source. **A 200 se",
+  "bytes": 375
+ },
+ {
+  "key": "R-66976a",
+  "section": "Research and verification discipline",
+  "lead": "**M1 — a reachability failure is retested from a second process, with both resolver and client varied, before it is reco",
+  "bytes": 584
+ },
+ {
+  "key": "R-6a8f99",
+  "section": "Research and verification discipline",
+  "lead": "**M2 — a write is verified by diffing `/data`, never by the writer's own count.** Declare the expected diff shape before",
+  "bytes": 444
+ },
+ {
+  "key": "R-8a7dff",
+  "section": "Research and verification discipline",
+  "lead": "**A CORRECTION QUOTES WHAT IT WITHDREW, IN THE SAME FIELD — and until 2026-08-06 this was described here as the instrume",
+  "bytes": 957
+ },
+ {
+  "key": "R-f674d0",
+  "section": "Research and verification discipline",
+  "lead": "**A correction guard asserts a presence, never an absence.** When a record is corrected, the withdrawn wording survives ",
+  "bytes": 713
+ },
+ {
+  "key": "R-03cdc0",
+  "section": "Research and verification discipline",
+  "lead": "**The system resolver on this machine is broken — pin before recording any host as unreachable.** Government hosts retur",
+  "bytes": 650
+ },
+ {
+  "key": "R-5bd94b",
+  "section": "Research and verification discipline",
+  "lead": "**A claim about a CLASS of sources is tested by varying the host, not by accumulating failures within one.** Two failed ",
+  "bytes": 966
+ },
+ {
+  "key": "R-60cee4",
+  "section": "Research and verification discipline",
+  "lead": "**Any scan of retrieved text goes through `tools/lib/corpus-search.mjs`** — `scanText`, or the `node tools/scan-text.mjs",
+  "bytes": 894
+ },
+ {
+  "key": "R-60cd4c",
+  "section": "Research and verification discipline",
+  "lead": "**A zero from a boundary scan is retried with morphological variants before it is banked as an absence** — `node tools/s",
+  "bytes": 810
+ },
+ {
+  "key": "R-cc1836",
+  "section": "Research and verification discipline",
+  "lead": "**Bound a search by the record, never by a character count.** `t[i:i+9000]` from a record's id missed L-0110's SATP sour",
+  "bytes": 520
+ },
+ {
+  "key": "R-6563b5",
+  "section": "Research and verification discipline",
+  "lead": "**`record.get(field) or []` renders an ABSENT field and an EMPTY one identically, and they are not the same fact.** An e",
+  "bytes": 496
+ },
+ {
+  "key": "R-976cb5",
+  "section": "Research and verification discipline",
+  "lead": "**A GUARD THAT RUNS AFTER THE DESTRUCTIVE OPERATION IS A POST-MORTEM, NOT A GUARD.** Every check that decides whether a ",
+  "bytes": 626
+ },
+ {
+  "key": "R-5b397f",
+  "section": "Research and verification discipline",
+  "lead": "**It is the same class as a gate reading a stale build and reporting clean** — the check and the thing it checks are in ",
+  "bytes": 403
+ },
+ {
+  "key": "R-fe93aa",
+  "section": "Research and verification discipline",
+  "lead": "**The mechanical forms.** Read the file, compute the new content, ASSERT on the computed content, then write. Where the ",
+  "bytes": 493
+ },
+ {
+  "key": "R-8f2b10",
+  "section": "Research and verification discipline",
+  "lead": "**Verification and commit go through `npm run commit`, not through the shell.** The rule below has been broken by its ow",
+  "bytes": 694
+ },
+ {
+  "key": "R-c0895b",
+  "section": "Research and verification discipline",
+  "lead": "**Run record edits and their allowlist deletions as ONE chained operation.** Cycle 8 ran them as newline-separated comma",
+  "bytes": 412
+ },
+ {
+  "key": "R-fba1ee",
+  "section": "Research and verification discipline",
+  "lead": "**Search the NOUN that cannot be paraphrased away, not the assertion around it.** One false claim — that a single figure",
+  "bytes": 616
+ },
+ {
+  "key": "R-6465ca",
+  "section": "Research and verification discipline",
+  "lead": "**When verifying a claim about state you have just modified, verify against the state as it was when the claim was made.",
+  "bytes": 571
+ },
+ {
+  "key": "R-b2fcf1",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "### The governing principle, ruled by the operator 2026-08-06",
+  "bytes": 61
+ },
+ {
+  "key": "R-fe2307",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "> **No record or claim stands on a source that is not credibly independent of what it establishes.**",
+  "bytes": 968
+ },
+ {
+  "key": "R-ec004c",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**RULING 1 — `worked` REQUIRES EVIDENCE INDEPENDENT OF THE ANNOUNCING BODY.** A press release from the party being asses",
+  "bytes": 1117
+ },
+ {
+  "key": "R-16013f",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**RULING 1a — THE INTRA-STATE TEST, ruled by the operator 2026-08-06.** Ruling 1 assumed two categories and the corpus h",
+  "bytes": 1812
+ },
+ {
+  "key": "R-f4af24",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**RULING 2 — AN UNMEASURED LIMB PREVENTS `worked`.** Where a commitment states several objectives and **any one of them ",
+  "bytes": 615
+ },
+ {
+  "key": "R-520b85",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**RULING 3 — A STATED, QUANTIFIED COMMITMENT WITH NO DEADLINE IS NOT `no-objective`.** It takes its own value, `undated-",
+  "bytes": 567
+ },
+ {
+  "key": "R-84fb82",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**RULING 4 — A FOREIGN GOVERNMENT PRIMARY TAKES ITS OWN TIER, `T1F`.** T1 is Indian official and T2 is multilateral; a n",
+  "bytes": 625
+ },
+ {
+  "key": "R-cb7e00",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**RULING 5 — AN OBJECTIVE MAY BE IMPOSED AS WELL AS ANNOUNCED, ruled by the operator 2026-08-06.** `failed` and `no-obje",
+  "bytes": 868
+ },
+ {
+  "key": "R-569903",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**THE RULE: A DUTY IMPOSED BY AN EXTERNAL AUTHORITY IS A LEGITIMATE OBJECTIVE FOR SCORING, PROVIDED THE RECORD NAMES THE",
+  "bytes": 381
+ },
+ {
+  "key": "R-7610f8",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**Four conditions, each earned by one of the nine records the external review named.** All nine were tested against the ",
+  "bytes": 264
+ },
+ {
+  "key": "R-551f68",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "1. **THE OBLIGATION IS IMPOSED, NOT VOLUNTEERED — and the absence of a deadline in the instrument does NOT move an impos",
+  "bytes": 1981
+ },
+ {
+  "key": "R-6da271",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**WHAT THE RULE DOES NOT REACH: an objective INTERNAL to the measure.** L-0108 is `failed` against *\"the recruitment pro",
+  "bytes": 469
+ },
+ {
+  "key": "R-51946f",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**The rule is a description of practice, not a new standard.** Seven of the nine were already correctly distinguished an",
+  "bytes": 305
+ },
+ {
+  "key": "R-145be1",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**RULING 6 — `shock` IS EXTERNAL TO THE STATE'S OWN DECISIONS, ruled by the operator 2026-08-06.** The `type` enum's usa",
+  "bytes": 361
+ },
+ {
+  "key": "R-33d3ab",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**L-0091 stated the test and is correct**, and it is quoted rather than paraphrased because it is the only reasoned appl",
+  "bytes": 392
+ },
+ {
+  "key": "R-2dd929",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**L-0020 and L-0064 assert the type and give no reason.** L-0020 carries no `assessmentNote` at all, and **its own prose",
+  "bytes": 575
+ },
+ {
+  "key": "R-6fbc49",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**The line is whether an act of policy caused it, NOT whose asset failed or how severe it was.** Both halves matter. Sev",
+  "bytes": 403
+ },
+ {
+  "key": "R-e86225",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**RULING 7 — TYPE BY WHAT THE RECORD IS ABOUT, NOT BY WHAT FAILED, ruled by the operator 2026-08-06.** A record about th",
+  "bytes": 564
+ },
+ {
+  "key": "R-38d599",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**IL&FS follows the same way, and THERE IS NO THIRD BRANCH.** The domestic non-state category is real and has at least f",
+  "bytes": 683
+ },
+ {
+  "key": "R-de6468",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**RULING 8 — A SHOCK IS PROVENANCE, NOT A LEDGER RECORD, ruled by the operator 2026-08-06.** **The corpus authored it th",
+  "bytes": 698
+ },
+ {
+  "key": "R-c00b66",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**TWO THINGS THIS RULING DOES NOT SETTLE, recorded here so they are inherited rather than rediscovered:**",
+  "bytes": 105
+ },
+ {
+  "key": "R-9604fc",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "1. **WHERE A SHOCK THAT BREAKS NO SERIES LIVES.** P-10 and P-21 are provenance because each *is* a comparability break. ",
+  "bytes": 679
+ },
+ {
+  "key": "R-8b468a",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**RETYPING IS VERDICT-ADJACENT AND IS NOT AUTHORISED BY THESE RULINGS.** What moves under 6 and 7 is reported, and the m",
+  "bytes": 154
+ },
+ {
+  "key": "R-9d8edc",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**RULING 9 — THE MULTI-OBJECTIVE DISCLOSURE RULE, ruled by the operator 2026-08-06.** Ruling 2 said an unmeasured limb p",
+  "bytes": 352
+ },
+ {
+  "key": "R-aebca0",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "> **Where a commitment states several objectives and the verdict rests on fewer than all of them, the > record names whi",
+  "bytes": 238
+ },
+ {
+  "key": "R-827cba",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**IT IS A DISCLOSURE REQUIREMENT AND IT RESTRICTS ONE VALUE ONLY.** One consequence per class, and they differ because t",
+  "bytes": 164
+ },
+ {
+  "key": "R-668a84",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "- **`worked` — unavailable.** Ruling 2, unchanged. A positive verdict on a subset asserts more than the evidence carries",
+  "bytes": 1243
+ },
+ {
+  "key": "R-2250c6",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**Three things it must not do, each earned by a live record.** It must not make an unmeasured limb an excuse — L-0030 is",
+  "bytes": 639
+ },
+ {
+  "key": "R-54ddd7",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**THIS RULE IS UNENFORCEABLE TODAY AND SAYS SO.** Nothing in the corpus records that a record announced several objectiv",
+  "bytes": 437
+ },
+ {
+  "key": "R-b2aea3",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**AND THE RULE IS WHAT TELLS `objectives[]` WHAT TO HOLD, WHICH IS WHY IT IS WRITTEN FIRST.** The proposed field needs t",
+  "bytes": 634
+ },
+ {
+  "key": "R-9a2207",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**A STRUCTURED VALUE NEVER MOVES ALONE — the point-of-change rule, 2026-08-06.** When a `type`, `assessment`, `contested",
+  "bytes": 345
+ },
+ {
+  "key": "R-91e5c3",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**IT IS A RULE AND NOT A CHECK, AND THE MEASUREMENT IS THE ARGUMENT.** Over 223 ledger and 127 provenance records across",
+  "bytes": 755
+ },
+ {
+  "key": "R-e60ad7",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**And the second half of the argument is the ratio.** Of 32 prose mentions naming a value other than the record's own, *",
+  "bytes": 445
+ },
+ {
+  "key": "R-94d865",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**The nearest mechanism that exists is `withdrawn-wording`'s sibling assertion**, which binds only fields already carryi",
+  "bytes": 390
+ },
+ {
+  "key": "R-ef2ff4",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**A VALUE LANDS IN THE SCHEMA, THE TYPE AND THE LABEL MAP IN ONE COMMIT, OR IT IS A PROMISE THE VIEW CANNOT KEEP.** Addi",
+  "bytes": 1357
+ },
+ {
+  "key": "R-2fa82b",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**SELECTING BY A STATED, CHECKABLE CRITERION IS NOT RANKING — ruled by the operator 2026-08-11, and it unblocks every pa",
+  "bytes": 603
+ },
+ {
+  "key": "R-06c902",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**THE DISTINCTION IS WHETHER THE CRITERION IS STATED AND CHECKABLE, NOT WHETHER SOMETHING COMES FIRST.** *\"Chosen for th",
+  "bytes": 821
+ },
+ {
+  "key": "R-43051b",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**WHAT THIS DOES NOT LICENSE.** It is not an exception to rule 9 and does not permit a ranked list, a score, or an order",
+  "bytes": 461
+ },
+ {
+  "key": "R-6a789c",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**A pinned editorial choice is the other legitimate form and is NOT this one.** The overview board's headline series are",
+  "bytes": 464
+ },
+ {
+  "key": "R-a1dcda",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**A MARK CAN GO MISSING IN THREE DISTINCT SHAPES, AND A GUARD USUALLY BINDS ONE — named 2026-08-11 after the third was f",
+  "bytes": 217
+ },
+ {
+  "key": "R-aa2ac9",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "1. **THE LISTING ROW.** The surface lists the record and omits the mark. `listing-marks` binds this, and it is the only ",
+  "bytes": 977
+ },
+ {
+  "key": "R-8a49a7",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**BOTH RENDER GATES WERE CORRECT ON 2 AND 3.** `listing-marks` binds listing ROWS and a feature chart is not a row; `fie",
+  "bytes": 504
+ },
+ {
+  "key": "R-b202cb",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**A DEFECT FIXED ON ONE SURFACE IS CHECKED AGAINST EVERY SURFACE OF THE SAME KIND IN THE SAME COMMIT — the local-fix rul",
+  "bytes": 977
+ },
+ {
+  "key": "R-3ab92a",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**Two things it does not say.** It does not say fix every surface: where a member of the class is deliberately different",
+  "bytes": 457
+ },
+ {
+  "key": "R-91dd62",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**No gate reaches this.** Whether two surfaces are \"of the same kind\" is a reading, and the class is usually named for t",
+  "bytes": 371
+ },
+ {
+  "key": "R-ffda02",
+  "section": "The governing principle, ruled by the operator 2026-08-06",
+  "lead": "**EVERY RULE IS EVALUATED AGAINST ONE SNAPSHOT, AND THE CORPUS IS WRITTEN ONCE — the single-snapshot rule, ruled by the ",
+  "bytes": 1112
+ },
+ {
+  "key": "R-4dba4c",
+  "section": "THE PHASE LIST — this is it, and there was not one before",
+  "lead": "### THE PHASE LIST — this is it, and there was not one before",
+  "bytes": 61
+ },
+ {
+  "key": "R-67fdb6",
+  "section": "THE PHASE LIST — this is it, and there was not one before",
+  "lead": "**Nothing in this repository enumerated the phases until 2026-08-06.** They were referred to by number in prose across t",
+  "bytes": 673
+ },
+ {
+  "key": "R-908845",
+  "section": "THE PHASE LIST — this is it, and there was not one before",
+  "lead": "| # | phase | state | |---|---|---| | 1–9 | the domain phases | closed | | **10** | **INSERTED — not on the original lis",
+  "bytes": 1542
+ },
+ {
+  "key": "R-85acb6",
+  "section": "THE PHASE LIST — this is it, and there was not one before",
+  "lead": "**A THIRD, ADDED AND RESOLVED 2026-08-06: A PHASE-NAME COLLISION, RULED IN THE TABLE'S FAVOUR.** Phase 17 was opened by ",
+  "bytes": 333
+ },
+ {
+  "key": "R-6190af",
+  "section": "THE PHASE LIST — this is it, and there was not one before",
+  "lead": "**AND THE DESIGN WORK SEQUENCES BY DEPENDENCY, NOT BY THE NUMBER IT WAS GIVEN.** The batch that opened under the wrong n",
+  "bytes": 486
+ },
+ {
+  "key": "R-786c55",
+  "section": "THE PHASE LIST — this is it, and there was not one before",
+  "lead": "**`phase-name` MISSED IT, AND THE GAP WAS MEASURED BEFORE IT WAS FIXED.** The gate bound an assertion of the form *phase",
+  "bytes": 585
+ },
+ {
+  "key": "R-74972d",
+  "section": "THE PHASE LIST — this is it, and there was not one before",
+  "lead": "**Two things a cold read must not assume.** Phase 10 was inserted, so any note written before it carries numbering one b",
+  "bytes": 316
+ },
+ {
+  "key": "R-8027bb",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "### THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "bytes": 67
+ },
+ {
+  "key": "R-fdcdaa",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**Not unbuilt. Declined, with the reasoning recorded, so a later cycle does not rediscover it as an obvious gap and buil",
+  "bytes": 372
+ },
+ {
+  "key": "R-1fa1c2",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**Where that reasoning is strongest, and where it is not, because the distinction matters if the question reopens.** It ",
+  "bytes": 682
+ },
+ {
+  "key": "R-a28f8d",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**What the decision does stand on.** (1) Rule 8 already requires both methods, endpoint sensitivity and no composite — a",
+  "bytes": 875
+ },
+ {
+  "key": "R-fa94f7",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**RULE 8 NOW GOVERNS SOMETHING THAT WILL NOT BE BUILT, which is exactly the unfollowable-instruction defect this file wa",
+  "bytes": 691
+ },
+ {
+  "key": "R-73d8de",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**ENGINE OUTPUT MAY NOT BE CITED BY A SCORED RECORD — ruled by the operator 2026-08-06, and it is the self-audit rule ap",
+  "bytes": 845
+ },
+ {
+  "key": "R-83a20d",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A SELF-AUDIT DOES NOT BELONG IN THE SCORED LEDGER — ruled by the operator 2026-08-06.** The tier ladder grades externa",
+  "bytes": 1089
+ },
+ {
+  "key": "R-e375af",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**GRADE THE DOCUMENT, NOT THE SERVER — the mirror rule, ruled by the operator 2026-08-06.** Identical bytes ARE the docu",
+  "bytes": 546
+ },
+ {
+  "key": "R-16e4cc",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**Two authoring requirements follow and neither is optional.** Record the RETRIEVAL PATH with the citation, so a reader ",
+  "bytes": 338
+ },
+ {
+  "key": "R-db06cf",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**The ruling rests on a measurement, and the measurement is why it went this way.** 77 citations are served by a third p",
+  "bytes": 635
+ },
+ {
+  "key": "R-10304c",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**What this rule does NOT settle, and the gap is still open:** a foreign government primary retrieved directly — a US Ex",
+  "bytes": 364
+ },
+ {
+  "key": "R-4294bb",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A tier moves only when the EVIDENCE moved, and the merge asserts which direction.** Not \"never move a tier\" — move it ",
+  "bytes": 835
+ },
+ {
+  "key": "R-0121e4",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**Sweep by self-documented failure, not by host count.** A record whose source name already states a retrieval failure h",
+  "bytes": 744
+ },
+ {
+  "key": "R-64b076",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A finding produced by a correction cycle gets the same scrutiny as the finding it corrects.** A correction arrives wit",
+  "bytes": 790
+ },
+ {
+  "key": "R-b605d2",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**An identification is not established by a match at ONE point. Match every point the record carries.** Correction cycle",
+  "bytes": 606
+ },
+ {
+  "key": "R-16c962",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A PARTIAL match is more dangerous than no match.** No match prompts a search; a partial match prompts a theory, and th",
+  "bytes": 544
+ },
+ {
+  "key": "R-3e8eef",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**READ THE LABEL BESIDE THE VALUE.** Five iterations of one error in four cycles: `tier` read without `name`; `tier` loo",
+  "bytes": 514
+ },
+ {
+  "key": "R-2e7641",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**When an identification could be GUESSED correctly, match it against the record's own value instead, and record the que",
+  "bytes": 641
+ },
+ {
+  "key": "R-cb1d32",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A FIELD VALUE is no more a finding than a count is.** Context-before-count extends to any single field read without th",
+  "bytes": 792
+ },
+ {
+  "key": "R-bd9713",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A detector's scope silently defines the size of its finding, so state the scope beside the count.** Filtering on `tier",
+  "bytes": 445
+ },
+ {
+  "key": "R-c328f8",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**WHERE AN AXIS IS STORED IN MORE THAN ONE PLACE, THE UNION GOES IN `lib/data.ts` WITH THE COST OF GETTING IT WRONG WRIT",
+  "bytes": 889
+ },
+ {
+  "key": "R-ada599",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**TYPESCRIPT CANNOT CATCH THIS CLASS AND IT IS WORTH KNOWING WHY.** It objects when two same-named fields have different",
+  "bytes": 1260
+ },
+ {
+  "key": "R-294fe9",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A NON-ZERO count is a candidate list, not a finding, and the context is read before the count is banked.** The number ",
+  "bytes": 665
+ },
+ {
+  "key": "R-a1b937",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**Boundary matching is meaningless beside a punctuation character, not merely strict.** A scan for `%` returned 0 on a d",
+  "bytes": 651
+ },
+ {
+  "key": "R-469c01",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A zero from a document that predates the question is not an absence, and it looks identical in the count.** Before rec",
+  "bytes": 726
+ },
+ {
+  "key": "R-271615",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**THE PROSE SHADOW — a prose field that RESTATES a structured value goes stale silently when the structured value moves,",
+  "bytes": 387
+ },
+ {
+  "key": "R-eb0d5d",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**Earned by the Ruling 6 and 7 retypes.** L-0064 and L-0027 both carried *\"This record is the shock\"* in `shockExposure`",
+  "bytes": 487
+ },
+ {
+  "key": "R-5800e0",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**THE AXES MOST AT RISK ARE THE ONES A MECHANICAL CHECK CANNOT REACH, and that is the whole difficulty.** A scan can fin",
+  "bytes": 674
+ },
+ {
+  "key": "R-72b77c",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**And a mention of another value is USUALLY CORRECT, which is why this cannot be a token check.** Measured 2026-08-06 ov",
+  "bytes": 728
+ },
+ {
+  "key": "R-f90ab5",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**The defect is therefore per-field, not per-record**: a rescore that rewrites one prose field leaves its siblings asser",
+  "bytes": 264
+ },
+ {
+  "key": "R-213374",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A COUNT DERIVED FROM A KEYWORD SCAN IS NOT A FINDING UNTIL THE MEMBERS ARE READ, AND THE TERM LIST IS REPORTED WITH TH",
+  "bytes": 1220
+ },
+ {
+  "key": "R-114a0f",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**LABELLING A COUNT AS CANDIDATES DOES NOT STOP IT BEING SPENT AS A FINDING.** In all four the label was present and the",
+  "bytes": 423
+ },
+ {
+  "key": "R-76d131",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**And the term list is part of the count.** A figure whose scan is unrecorded cannot be re-derived, which means it canno",
+  "bytes": 455
+ },
+ {
+  "key": "R-aa3685",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**One further trap, and it is the one that produced the largest error.** A scan over `assessmentNote` measures **what re",
+  "bytes": 626
+ },
+ {
+  "key": "R-8c16f1",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**Assert per record, never sweep.** A keyword or pattern search generates CANDIDATES; the judgement is made per record a",
+  "bytes": 378
+ },
+ {
+  "key": "R-ad48e3",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**Observe the effect, do not match the spelling.** Where a property can be observed, observe it. A static scan for `writ",
+  "bytes": 325
+ },
+ {
+  "key": "R-a1532f",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**Every negative control needs a same-form positive that passes THROUGH the restriction the negative depends on.** A che",
+  "bytes": 298
+ },
+ {
+  "key": "R-e26127",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A VERIFICATION READS THE PAGE THROUGH THE GATE'S OWN NORMALISER, OR IT IS NOT A CHECK.** Import `norm` and `pageTextFr",
+  "bytes": 895
+ },
+ {
+  "key": "R-badc0f",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**The cost runs in the worst direction every time.** A false failure sends someone hunting a rendering bug that does not",
+  "bytes": 642
+ },
+ {
+  "key": "R-f68889",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**The deploy path is no longer hand-written.** `tools/deploy-check.mjs` derives every needle from `/data` in the same op",
+  "bytes": 575
+ },
+ {
+  "key": "R-d58761",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A NEGATIVE CONTROL ASSERTS AGAINST A STRING READ FROM `/data` AT THE TIME OF WRITING, IN THE CONTEXT IT APPEARS IN.** ",
+  "bytes": 1213
+ },
+ {
+  "key": "R-d982ba",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**The mechanical form: read the value from `/data` in the same operation, assert it in its surrounding sentence, and COU",
+  "bytes": 409
+ },
+ {
+  "key": "R-441811",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**Every zero result is confirmed by relaxing one restriction at a time until it goes non-zero — the restriction that fli",
+  "bytes": 250
+ },
+ {
+  "key": "R-70fa69",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**No new bare-domain roots.** Deep-link every source. T1 on a bare root is worse than T4: it asserts primary strength fo",
+  "bytes": 349
+ },
+ {
+  "key": "R-2e173d",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A publication choice is not a retrieval failure.** The test: could a better retrieval technique produce the figure? Fo",
+  "bytes": 437
+ },
+ {
+  "key": "R-c7cf4d",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**AN ABSENCE-OF-PUBLICATION CLAIM REQUIRES A STATED SEARCH, AND TRYING GUESSED IDENTIFIERS IS NOT A SEARCH.** State whic",
+  "bytes": 476
+ },
+ {
+  "key": "R-c4248e",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**\"Not published\" has meant \"not searched\" three times in phase 15 alone, and each time the document was there.** A mini",
+  "bytes": 720
+ },
+ {
+  "key": "R-06e946",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**The asymmetry is why this needs a rule rather than care.** A guessed URL that 404s produces the same silence as a docu",
+  "bytes": 647
+ },
+ {
+  "key": "R-664100",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**Read the previous batch's report as an adversary before starting new work.** A batch cannot proofread its own output —",
+  "bytes": 1908
+ },
+ {
+  "key": "R-3cf975",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A STOP WHOSE PREMISE LOOKS WRONG IS STILL A STOP — ruled by the operator 2026-08-11, and it is the rule the phase-18 g",
+  "bytes": 676
+ },
+ {
+  "key": "R-f7360d",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**WHAT A RUN DOES WHEN IT BELIEVES A STOP'S PREMISE IS WRONG: report the measurement and the objection TOGETHER, and sto",
+  "bytes": 752
+ },
+ {
+  "key": "R-6130f6",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**STOP and report, do not proceed:** a shipped verdict changes, or a schema, enum or gate contract changes. **Commit the",
+  "bytes": 264
+ },
+ {
+  "key": "R-a9231c",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**Report at the end of the batch, keep working:** a structural finding spans phases, or the run is about to file somethi",
+  "bytes": 318
+ },
+ {
+  "key": "R-43a113",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**Everything else runs to completion:** plan, arc, self-audit, gates, commit, **and push**.",
+  "bytes": 91
+ },
+ {
+  "key": "R-cc1d03",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**PUSH IS AUTONOMOUS AGAIN, ruled by the operator 2026-08-06.** WITHDRAWN WORDING, quoted so the correction can be check",
+  "bytes": 554
+ },
+ {
+  "key": "R-eeb577",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**WHAT SUSPENDING IT COST, MEASURED, BECAUSE IT IS THE ARGUMENT FOR THE CHANGE.** At `c34e83a` the deployed site served ",
+  "bytes": 535
+ },
+ {
+  "key": "R-212c73",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**The gates are the condition now, and they already are.** `npm run commit` reaches `git commit` only on green and has n",
+  "bytes": 398
+ },
+ {
+  "key": "R-bf648a",
+  "section": "THE COUNTERFACTUAL ENGINE — CONSIDERED AND DECLINED, 2026-08-06",
+  "lead": "**A flag raised against a record is checked against the RECORD, not against the report that describes it.** Two prompt-s",
+  "bytes": 662
+ },
+ {
+  "key": "R-60ddf9",
+  "section": "Session cost",
+  "lead": "## Session cost",
+  "bytes": 105
+ },
+ {
+  "key": "R-ec1181",
+  "section": "Session cost",
+  "lead": "**What a session must read:** this file (54 KB) and the phase's `STATE.md` (143 KB) — about 197 KB. `docs/verification-l",
+  "bytes": 627
+ },
+ {
+  "key": "R-37d513",
+  "section": "Session cost",
+  "lead": "**CORRECTED 2026-08-06. Every figure in the paragraph above was stale, and the staleness is the finding rather than the ",
+  "bytes": 988
+ },
+ {
+  "key": "R-7894db",
+  "section": "Session cost",
+  "lead": "**Gates are silent on success.** One summary line each; full detail only on failure, or with `--verbose`. A passing `val",
+  "bytes": 379
+ },
+ {
+  "key": "R-e118e7",
+  "section": "Session cost",
+  "lead": "**Retrievals are bounded by default.** Fetch what answers the question — a targeted extract around the passage sought — ",
+  "bytes": 280
+ },
+ {
+  "key": "R-7b3c48",
+  "section": "Session cost",
+  "lead": "**Author the batch, then gate.** Do not interleave a full gate run with each record. Gates are a check on the batch, and",
+  "bytes": 320
+ },
+ {
+  "key": "R-b5a6ee",
+  "section": "Gate discipline",
+  "lead": "## Gate discipline",
+  "bytes": 18
+ },
+ {
+  "key": "R-29afe7",
+  "section": "Gate discipline",
+  "lead": "**Gates that read built output refuse to run against a stale build** (exit 2), and exit 2 distinguishes \"no build\" from ",
+  "bytes": 381
+ },
+ {
+  "key": "R-fa2f72",
+  "section": "Gate discipline",
+  "lead": "**Every fixture asserts the specific failure it tests for — the branch, the message — never merely that a failure occurr",
+  "bytes": 250
+ },
+ {
+  "key": "R-ca95b0",
+  "section": "Gate discipline",
+  "lead": "**Generated fixtures carry `GENERATED-FROM.json` and the selftest fails on enum drift**, naming `npm run regen:lens-fixt",
+  "bytes": 211
+ },
+ {
+  "key": "R-cd47c6",
+  "section": "Gate discipline",
+  "lead": "**A failing check, re-run with no fix applied, must still fail.** Both assertions are required: a fast self-repair heals",
+  "bytes": 388
+ },
+ {
+  "key": "R-3766d7",
+  "section": "Gate discipline",
+  "lead": "**Any gate asserting a property of a field cites the schema.** If the property is not in the schema, either put it there",
+  "bytes": 143
+ },
+ {
+  "key": "R-a87935",
+  "section": "Gate discipline",
+  "lead": "**A GUARD BINDS A SCOPE, AND THE CLAIM IT PROTECTS HAS ITS OWN. WHEN YOU ADD A GUARD, WRITE DOWN BOTH — what it binds an",
+  "bytes": 1318
+ },
+ {
+  "key": "R-9016c2",
+  "section": "Gate discipline",
+  "lead": "**The test is one question asked at the moment the guard is written: if the claim moved one level out — to another field",
+  "bytes": 1352
+ },
+ {
+  "key": "R-f0bf87",
+  "section": "Gate discipline",
+  "lead": "**A field lands in the schema, the TYPE, a VIEW and `reachability`'s guarded-marks list in ONE commit.** Miss either of ",
+  "bytes": 633
+ },
+ {
+  "key": "R-353784",
+  "section": "Gate discipline",
+  "lead": "**A GUARD'S FIELD FILTER IS A SCOPE, AND `!enum && !format && !pattern` WAS THE LARGEST ONE IN THIS INSTRUMENT.** Both r",
+  "bytes": 705
+ },
+ {
+  "key": "R-6b8cdc",
+  "section": "Gate discipline",
+  "lead": "**A non-prose value cannot be looked for as itself, which is why this needed a mechanism and not care.** `assessment: \"n",
+  "bytes": 721
+ },
+ {
+  "key": "R-d013f0",
+  "section": "Gate discipline",
+  "lead": "**The structure is the same as prose and there is still no third state: DECLARED or EXEMPTED BY NAME in the field's own ",
+  "bytes": 685
+ },
+ {
+  "key": "R-6a56ef",
+  "section": "Gate discipline",
+  "lead": "**Enumerate the complement, never the shapes you know about.** Prose is defined positively — a string with no enum, form",
+  "bytes": 683
+ },
+ {
+  "key": "R-0a475f",
+  "section": "Gate discipline",
+  "lead": "**Run the field-render audit every phase at stage 7 and state its count, per layer.** It is a tool — `npm run field-rend",
+  "bytes": 817
+ },
+ {
+  "key": "R-1376b1",
+  "section": "Gate discipline",
+  "lead": "**Normalise the page and the value with the SAME function, and never hand-roll a second one.** The audit's first run rep",
+  "bytes": 1752
+ },
+ {
+  "key": "R-0ca710",
+  "section": "Gate discipline",
+  "lead": "**THE DEPLOY RUNS THE BUILD, AND IT DID NOT — earned 2026-08-11.** `vercel.json` carried its own copy of the gate chain,",
+  "bytes": 725
+ },
+ {
+  "key": "R-0aa8bc",
+  "section": "Gate discipline",
+  "lead": "**It surfaced only because a generated FILE was missing** (`/data/v1/` 404'd while every page around it rendered). A mis",
+  "bytes": 175
+ },
+ {
+  "key": "R-3759c7",
+  "section": "Gate discipline",
+  "lead": "**The fix is one chain, not eighteen additions.** Adding them back restores parity today and re-arms the identical trap ",
+  "bytes": 590
+ },
+ {
+  "key": "R-bf851c",
+  "section": "Gate discipline",
+  "lead": "**Do not pipe gates** — an exit code does not survive a pipe. And a structural check passes on a stub: structure passing",
+  "bytes": 144
+ },
+ {
+  "key": "R-8f1967",
+  "section": "Gate discipline",
+  "lead": "**`figure-consistency`** checks declared arithmetic claims against BOTH their source values and their printed operands. ",
+  "bytes": 284
+ },
+ {
+  "key": "R-7d9f2e",
+  "section": "Gate discipline",
+  "lead": "**The gate list, run in full every cycle:** `deploy-chain` · `validate` · `typecheck` · `validate:selftest` · `reachabil",
+  "bytes": 386
+ },
+ {
+  "key": "R-f7bc74",
+  "section": "Gate discipline",
+  "lead": "**`rendered-space` IS THE FIRST GATE OVER THE SHAPE OF RENDERED PROSE RATHER THAN ITS PRESENCE**, and the gap it closes ",
+  "bytes": 480
+ },
+ {
+  "key": "R-3ed5fb",
+  "section": "Gate discipline",
+  "lead": "**The cause is a compiler rule and it is worth knowing rather than re-diagnosing.** SWC trims whitespace at the start of",
+  "bytes": 445
+ },
+ {
+  "key": "R-1e5114",
+  "section": "Gate discipline",
+  "lead": "**Its false-positive rate was measured before it was wired, and its negative control earned its keep on the first run:**",
+  "bytes": 421
+ },
+ {
+  "key": "R-df9df5",
+  "section": "Gate discipline",
+  "lead": "**`quotation-identity` IS THE SECOND GATE OVER SOMETHING `/data` DOES NOT CONTAIN, and the first was `record-history`.**",
+  "bytes": 1007
+ },
+ {
+  "key": "R-6093f0",
+  "section": "Gate discipline",
+  "lead": "**`phase-name` is the first gate over PROSE ABOUT the corpus rather than over the corpus** — `tools/phase-name-consisten",
+  "bytes": 1542
+ },
+ {
+  "key": "R-25cd70",
+  "section": "Gate discipline",
+  "lead": "**The three rendering gates are different in kind and none subsumes another.** `reachability` walks the guarded-marks li",
+  "bytes": 711
+ },
+ {
+  "key": "R-e5fd48",
+  "section": "Authoring conventions",
+  "lead": "## Authoring conventions",
+  "bytes": 24
+ },
+ {
+  "key": "R-4791d6",
+  "section": "Authoring conventions",
+  "lead": "**The four measurement categories.** A record must say which it is:",
+  "bytes": 67
+ },
+ {
+  "key": "R-8c67e9",
+  "section": "Authoring conventions",
+  "lead": "1. **`differentFacts` pair** — two instruments measuring the SAME quantity and disagreeing. Both sides retrieved, same p",
+  "bytes": 1243
+ },
+ {
+  "key": "R-96117a",
+  "section": "Authoring conventions",
+  "lead": "**Share-shaped figures name their numerator and denominator.** If either is unstated in the source, that is the finding ",
+  "bytes": 242
+ },
+ {
+  "key": "R-2664d8",
+  "section": "Authoring conventions",
+  "lead": "**Commitment states.** Every commitment record resolves into one, stated rather than implied: **(a)** not yet due — the ",
+  "bytes": 455
+ },
+ {
+  "key": "R-525ce4",
+  "section": "Authoring conventions",
+  "lead": "**(d) unfalsifiable by construction** — a total with no date, no phasing and no annual target. It has no trigger, so it ",
+  "bytes": 920
+ },
+ {
+  "key": "R-cd9080",
+  "section": "Authoring conventions",
+  "lead": "**Procurement filing rule, settled.** Acquisition cost, capital-budget share, payment schedule and escalation file `macr",
+  "bytes": 467
+ },
+ {
+  "key": "R-c244ce",
+  "section": "Authoring conventions",
+  "lead": "**A lens is admitted when its records land, not when it is planned**, and only where the instrument holds a FILE — sever",
+  "bytes": 275
+ },
+ {
+  "key": "R-db403e",
+  "section": "Phase stop conditions",
+  "lead": "## Phase stop conditions",
+  "bytes": 719
+ },
+ {
+  "key": "R-58363a",
+  "section": "Build workflow\n- Run phases autonomously: plan → apply → self-verify → commit → push.\n- Stop only for: (a) new security surface — new routes serving user data, auth changes, anything beyond static rendering; (b) destructive/irreversible actions — deleting data files, force-pushes, history rewrites.\n- Additive-only for `/data`: corrections happen by editing the record and noting the change in `docs/verification-log.md`, never by silent deletion.\n- **NARROW SOURCE-EDIT AMENDMENT (2026-08-05).** The standing rule is that code does not edit `/data` at source — inconsistencies are raised and the operator applies them. That rule was earned by a real regression: a correct `exports-gdp` fix made in code was silently reverted twice by the next wholesale drop, because the drop regenerates its file wholesale. **The amendment is that a correction THE SAME BATCH ITSELF RAISED AND EVIDENCED may be applied by the run that raised it.** The reversion hazard does not apply, because the evidence and the edit are in one commit and the log entry names both. Three conditions, all required: the defect was written into `STATE.md` or the log **before** it was resolved, so the statement of the defect cannot be quietly reshaped to fit the answer; the evidence is a document retrieved in that run; and the edit is to a citation, a reason, a scope or a wording — **never to a `points[]` value or an `assessment`**, which stay operator decisions without exception. A correction inherited from an earlier batch, or one resting on a source nobody in the run opened, is still raised and not applied.\n- **A closed verification-log entry is never edited.** Corrections are APPENDED and name what they supersede. The log has been append-only since the first cycle, and the reason is not bookkeeping: an append-only log that gets edited whenever an entry turns out to be wrong records only the errors nobody caught, which inverts what it is for. The record is corrected in place — that is what `/data` is — and the entry that stated the error stands, with the later entry governing. Same discipline as stating a correction inside the record rather than making it silently.\n- Visual verification: Playwright screenshots (desktop 1440px, mobile 390px) on every view after significant UI changes; review renders before considering a phase done.\n- Verify on the production deploy after push, not just locally.",
+  "lead": "## Build workflow - Run phases autonomously: plan → apply → self-verify → commit → push. - Stop only for: (a) new securi",
+  "bytes": 2391
+ },
+ {
+  "key": "R-34510f",
+  "section": "Design system (provisional — locked properly in a later session)\n- Instrument register, not dashboard-flashy: restrained, archival, dense-but-legible.\n- Light canvas. Red reserved for deaths, alerts, and break-seams. No decorative gradients.\n- Mono for system labels and figures (tabular-nums), humanist sans for prose.\n- Every view must answer: \"what does this number rest on?\" — one click to source + tier + provenance.",
+  "lead": "## Design system (provisional — locked properly in a later session) - Instrument register, not dashboard-flashy: restrai",
+  "bytes": 424
+ },
+ {
+  "key": "R-68f3af",
+  "section": "Roles\n- Chat sessions own research and the truth of `/data` records (drafted to schema, delivered to `/data/incoming/`).\n- Code sessions own everything else: pipeline, validation, views, deploy.\n- The schemas are the contract. Code may propose schema changes but they're agreed in chat before hardening, since research sessions author against them.",
+  "lead": "## Roles - Chat sessions own research and the truth of `/data` records (drafted to schema, delivered to `/data/incoming/",
+  "bytes": 352
+ }
+]
