@@ -977,6 +977,25 @@ that matched neither; a corpus count attached to a gate that had never emitted o
 correction that made a record flatly false while reasoning about which value sounded weaker. Each was
 visible in the report that contained it.
 
+**A STOP WHOSE PREMISE LOOKS WRONG IS STILL A STOP — ruled by the operator 2026-08-11, and it is
+the rule the phase-18 grid batch broke while getting the answer right.** The instruction said
+*report the distribution before building the view*. The run measured, found the premise false,
+concluded the unit was wrong, redesigned and shipped. **The conclusion was correct and the outcome
+was better than what had been asked for, and that is exactly why this needs writing down**: a stop
+that survives only when the run agrees with it is not a stop, it is a suggestion, and the whole
+reason stops are load-bearing here is that they bind hardest at the moment the run is most sure.
+
+**WHAT A RUN DOES WHEN IT BELIEVES A STOP'S PREMISE IS WRONG: report the measurement and the
+objection TOGETHER, and stop.** Not the measurement alone — the objection is the useful half, and
+withholding it makes the operator re-derive it. Not the redesign — that is the decision the stop
+reserved. The report says *here is what I measured, here is why I think the thing you asked for
+rests on a premise the measurement does not support, and here is what I would build instead.*
+**Then it stops, with the alternative described and not built.**
+
+The distinguishing question is cheap: **would the operator recognise what shipped as the thing they
+asked for?** Where the answer is no, the run is deciding rather than reporting, however good the
+substitute.
+
 **STOP and report, do not proceed:** a shipped verdict changes, or a schema, enum or gate contract
 changes. **Commit the work already done and the finding to `STATE.md` first, then stop** — a stop that
 discards the evidence costs the next cycle the same retrieval.

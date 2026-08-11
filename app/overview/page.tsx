@@ -149,6 +149,34 @@ function toO(s: Series): OSeries | null {
   };
 }
 
+/**
+ * ITEM 1 — THE EVENTS, derived and never inferred.
+ *
+ * A year appears for an area when a record the area DECLARES carries a date in that year. Records
+ * carry more than one domain, so one record can mark more than one area — that is the corpus's own
+ * filing and not a duplication. Measured at the time of writing: **223 records, all 223 carrying a
+ * parseable date, 220 of them inside the 2010-2026 chart window**; the 3 outside are pre-2010
+ * baseline records and are dropped rather than clamped to the edge, because a mark at 2010 would
+ * assert a date the record does not have.
+ *
+ * **12 of 14 areas end up carrying marks. Two do not — Kashmir and Poverty — and neither is quiet.**
+ * They lead with no chart, so there is nothing to hang a tick on; Kashmir has records in 15 distinct
+ * years and is among the most eventful areas in the corpus. The card states that in words, because
+ * a row of no ticks is otherwise indistinguishable from an area where nothing happened.
+ */
+function eventYears(d: string) {
+  const by = new Map<number, number>();
+  for (const l of ledger) {
+    if (!l.domains.includes(d as never)) continue;
+    const y = Number(String(l.date).slice(0, 4));
+    if (!Number.isFinite(y) || y < Y_MIN || y > 2026) continue;
+    by.set(y, (by.get(y) ?? 0) + 1);
+  }
+  return [...by.entries()]
+    .map(([year, n]) => ({ year, n }))
+    .sort((a, b) => a.year - b.year);
+}
+
 export default function Overview() {
   /**
    * Computed here, never quoted. The design scope recorded 0.91 when it was written and the live
@@ -211,6 +239,7 @@ export default function Overview() {
       yearsTotal: TERM_YEARS.length,
       breaks: list.reduce((t, s) => t + (s.breaks?.length ?? 0), 0),
       composition: composition(ledger.filter((l) => l.domains.includes(d)).map((l) => l.type)),
+      events: eventYears(d),
     };
   })
     .filter((d) => d.nSeries > 0 || d.nRecords > 0)

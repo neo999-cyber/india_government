@@ -17,12 +17,14 @@ phase table. Nothing there is withdrawn by this file except the queue rows resta
 
 | item | state |
 |---|---|
+| board: events, performance | **CLOSED 2026-08-11.** 125 event ticks over 12 of 14 areas; Kashmir and Poverty carry none and say so in words. Slider step median 2.5ms / p90 3.8ms / 0 long tasks over 48 steps, desktop; mid-tier is a stated 4x assumption, not measured |
 | **NAV: nineteen destinations** | **OPEN AND WORSE — see below. Inherited as "thirteen"; it is nineteen, and three of the six added are mine.** |
 | environment 0% vs corpus 48% series-caveat rate | OPEN — research, not answerable from the repo; needs the 15 records read against the caveat definition by a session that owns record truth |
 | seam-span: 26 spans not declaring, 12 frozen | open deferral with a measured rate. **Re-run 2026-08-11: 127 spans, 101 declare, 26 do not, 12 frozen, 14 wide-only out of scope. Unchanged.** Re-run the tool; never quote this line |
 | `field-render-audit` pairs non-prose half | open debt, stated in the gate's own emitted scope as `[prose only, non-prose owed]`. `RENDERINGS` carries no pairs keys and `leafFields` returns `a`/`b` without descending, so `a.label` and `b.label` are not enumerated at all |
 | `withdrawn-wording` quotation-identity | open named gap; the input exists (`gen-record-history`), the gate is not built |
-| DESIGN: caveat-in-cell form | **LOOKS CLOSED — verify before re-opening.** All six old table surfaces carry `CaveatRow`; grid cards carry `caveat-inline` with `text-overflow: clip` and no clamp or max-height; `field-render-audit` reports 0 invisible on 4 layers. The inherited row read "open, unchanged" and was stale |
+| DESIGN: caveat-in-CARD form | **CLOSED 2026-08-11.** Re-derived by balanced scan: 2,320 grid cards, 747 with a caveat, 509 over 300 chars, longest 1,320, on `/ledger/` `/provenance/` `/series/` `/stories/`. The inherited row read 746/466 and named the six TABLE surfaces, which already carried `CaveatRow`. Fixed by one rule — a caveat-bearing card takes the full grid row. **No gate can bind the form**: the HTML is byte-identical either way and the difference is one CSS rule; see the log entry for the two weaker things that are bindable |
+| DESIGN: caveat-in-cell form (tables) | **LOOKS CLOSED — verify before re-opening.** All six old table surfaces carry `CaveatRow`; grid cards carry `caveat-inline` with `text-overflow: clip` and no clamp or max-height; `field-render-audit` reports 0 invisible on 4 layers. The inherited row read "open, unchanged" and was stale |
 
 ---
 

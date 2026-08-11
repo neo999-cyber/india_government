@@ -593,6 +593,40 @@ tr th:last-child {
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
 }
 
+/* ============================================================================================
+   A CAVEAT IN A CARD TAKES THE FULL ROW — the card equivalent of `CaveatRow`, and the same rule.
+   ============================================================================================
+
+   RULE 3a BINDS THE LAYOUT, NOT THE CAVEAT: *if a caveat will not fit a layout, the layout is what
+   changes.* Tables solved this by moving the caveat out of a 140px cell into a full-width row
+   beneath, in the same table. **A grid card is the same problem in the other axis** — a 15rem
+   column against a caveat whose median is 364 characters and whose longest is 1,320 — and it had
+   the same answer available and was not given it. Measured across the build by a balanced scan of
+   every `<div class="grid">`: **2,320 cards, 747 carrying a caveat, 509 of those over 300
+   characters**, on `/ledger/`, `/provenance/`, `/series/` and `/stories/`.
+
+   Nothing is truncated, hidden or moved behind a disclosure — none of that was ever the defect.
+   What was wrong is that a 1,320-character qualification was being set in a 15rem column at
+   11px mono, which is a form that gets skipped, and a caveat that gets skipped is the failure the
+   field exists to prevent.
+
+   ONE RULE, EVERY SURFACE. `:has()` selects the card by what it CONTAINS rather than by a class an
+   author has to remember to add at each of the fourteen call sites — which is the same reasoning
+   that made `listing-marks` bind a shape rather than a list. A browser without `:has()` renders
+   exactly what it renders today, so the fallback is the status quo and not a break. */
+.grid > a:has(.caveat-inline) {
+  grid-column: 1 / -1;
+}
+
+/* Given the row, the caveat is set apart from the card's own meta rather than trailing it: it is a
+   qualification on the record, not another line of description. */
+.grid > a:has(.caveat-inline) .caveat-inline {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.75rem;
+}
+
 .grid > * {
   background: var(--bg);
   /* Outline rather than border: it draws into the 1px gap, so adjacent cells
@@ -1956,14 +1990,47 @@ tbody > tr:has(+ .caveat-row) > td {
   stroke-width: 1.4;
 }
 
+/* THE SCRUB LINE MOVES IN CSS, NOT IN REACT. Rendered once at x = PAD and translated by
+   `--scrub-t` (0..1, published on `.board`). `transform-box: view-box` makes the translation happen
+   in the SVG's own user units, so one variable drives a 260-wide head chart and a 120-wide mini
+   alike — each `<svg>` carries its own `--w`. This is what lets all 262 lines keep moving together
+   while React re-renders twelve readings instead of 262 components.
+
+   Hidden until a year is chosen: `.board` carries `data-scrub` only then, so the default view has
+   no rule across it and a reader who never touches the control sees every chart whole. */
+/* CORRECTED 2026-08-11 while the event ticks were added. The withdrawn declaration read
+   `stroke: var(--mark); stroke-width: 1; opacity: 0.55`. **Brass has exactly one job — a mark was
+   made — and a reader's cursor is not one.** Nothing was wrong with it until the ticks arrived and
+   put a second brass meaning on the same 260x62 chart; that is the collision the single-meaning
+   rule exists to prevent, and it was already there. The cursor is now ink: it belongs to the
+   reader, not to the record. */
 .spk-scrub {
-  stroke: var(--mark);
+  stroke: var(--ink-2);
   stroke-width: 1;
-  opacity: 0.55;
+  opacity: 0.45;
+  transform: translateX(calc(var(--scrub-t, 0) * (var(--w, 260) - 8) * 1px));
+  transform-box: view-box;
 }
 
+.board:not([data-scrub]) .spk-scrub {
+  display: none;
+}
+
+/* EVENT TICKS — a record filed under this area was announced in this year. Brass, because that is
+   the one thing brass means: a mark was made. On the baseline, not across the plot: the data line,
+   the seams and the scrub rule already own the vertical, and Governance carries a record in all
+   seventeen years, so a fourth full-height mark would close the chart up entirely. */
+.spk-event {
+  stroke: var(--mark);
+  stroke-width: 1.5;
+}
+
+
+/* Same correction as `.spk-scrub`, same reason: the withdrawn declaration read
+   `fill: var(--mark)`. The hit dot is where the reader's cursor meets the line — a cursor, not a
+   mark. Ink, and filled so it reads as the cursor's own point rather than as an observation. */
 .spk-hit {
-  fill: var(--mark);
+  fill: var(--ink);
 }
 
 .spk-before {
@@ -2426,4 +2493,32 @@ tbody > tr:has(+ .caveat-row) > td {
 .board-framing {
   border-left: 2px solid var(--rule);
   padding-left: 0.85rem;
+}
+
+/* WHAT HAPPENED IN THIS YEAR — the per-card event readout. It counts and links; it does not list.
+   A card that named the records would be a listing surface, and rule 4b would require every caveat
+   and declared absence inside it, in full, for up to sixteen records in one area-year. */
+.card-happened {
+  margin: 0.35rem 0 0;
+  font-size: 0.8125rem;
+  min-height: 1.3em; /* reserves the line so cards do not jump as the slider moves */
+}
+
+.card-happened a {
+  color: var(--mark-ink);
+  text-decoration-color: var(--mark);
+}
+
+.card-happened-none {
+  color: var(--ink-dim);
+}
+
+/* An area that leads with no chart can carry no ticks, and must not read as an area where nothing
+   happened. Kashmir has records in fifteen distinct years and shows no marks at all. */
+.card-noticks {
+  margin: 0.5rem 0 0;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--rule);
+  font-size: 0.8125rem;
+  color: var(--ink-2);
 }
