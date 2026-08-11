@@ -152,9 +152,14 @@ export const metadata: Metadata = {
  * for the reason stated here since phase 18 opened: `link-check` walks every emitted href and a nav
  * item pointing at an unbuilt route is a dead link.
  */
+/**
+ * RENAMED 2026-08-11 — §6. WITHDRAWN LABELS, quoted so the change can be checked: *Overview* and
+ * *Explore*. Neither distinguished itself from the other, and neither said what was behind it.
+ * **The routes are unchanged**, so every existing link still lands; only the words moved.
+ */
 const PRIMARY = [
-  { href: '/overview/', label: 'Overview' },
-  { href: '/domains/', label: 'Explore' },
+  { href: '/overview/', label: 'What changed' },
+  { href: '/domains/', label: 'Topics' },
   { href: '/stories/', label: 'Stories' },
   { href: '/search/', label: 'Search' },
 ];

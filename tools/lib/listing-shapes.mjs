@@ -145,7 +145,7 @@ export function listingRows(html) {
   // contested pair each walked past this gate first. This one was bound before it shipped and the
   // measurement is why — replacing the search table with cards dropped listing rows 3,716 → 3,405
   // and marks 5,247 → 4,816 while the gate reported OK, because 619 records had left its scope.
-  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one', 'redline', 'ctwo', 'chart', 'scard'];
+  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one', 'redline', 'ctwo', 'chart', 'scard', 'way'];
   const containers = [];
   for (const cls of CONTAINER_CLASSES) {
     // WHOLE CLASS TOKEN, NOT `\b`. A hyphen is not a word boundary, so `\bctwo\b` matched

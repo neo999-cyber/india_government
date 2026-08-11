@@ -15,10 +15,11 @@ import {
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
 import { DOMAINS, LENSES, LENS_ONLY, type Domain, type Lens } from '@/lib/types';
 import type { Pair, Series } from '@/lib/types';
-import { CaveatRow, RecordMarks, StatusKey, StatusTally, TallyGloss, TierTag } from '@/components/marks';
+import { CaveatRow, RecordMarks, REASON_KIND_LABELS, StatusKey, StatusTally, TallyGloss, TierTag } from '@/components/marks';
 import { SeriesChart } from '@/components/SeriesChart';
+import { DomainTabs } from '@/components/DomainTabs';
 import { DOMAIN_CHARACTER, DOMAIN_EVIDENCE, DOMAIN_PERIODS } from '@/lib/domain-copy';
-import type { LedgerRecord } from '@/lib/types';
+import type { LedgerRecord, Unmeasured } from '@/lib/types';
 
 type Props = { params: Promise<{ domain: string }> };
 
@@ -32,10 +33,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: label ?? 'Domain' };
 }
 
+export const DOMAIN_TABS = [
+  { key: 'overview', label: 'Overview' },
+  { key: 'indicators', label: 'Indicators' },
+  { key: 'records', label: 'Government records' },
+  { key: 'disputes', label: 'Disputes' },
+  { key: 'missing', label: 'Missing data' },
+] as const;
+export type DomainTab = (typeof DOMAIN_TABS)[number]['key'];
+
 export default async function DomainPage({ params }: Props) {
   const { domain } = await params;
   if (!DOMAINS.includes(domain as Domain)) notFound();
-  const d = domain as Domain;
+  return <DomainSurface d={domain as Domain} tab="overview" />;
+}
+
+/**
+ * ONE SURFACE, FIVE ADDRESSES — §5's local tabs, as real routes rather than as anchors.
+ *
+ * **A fragment would have satisfied the letter of *each tab is a URL* and not the point of it.**
+ * The three disclosures this replaces already held their content in the DOM; an anchor-tab is the
+ * same long page with a different control on it. A route gives each tab its own title, its own
+ * share card, and a state a reader can send to someone.
+ *
+ * **WHAT CONSTRAINED THE SPLIT.** `domain-coverage` asserts that every record declaring a domain
+ * appears on `/domains/<d>/` itself — 1,137 references — so the tables could not simply move out
+ * from under the overview. The overview therefore lists EVERY record rather than six and a
+ * disclosure: the tab holds the table with verdicts and marks, the overview holds the links. That
+ * is not a workaround; an overview that omitted half its records to a sub-page would be the
+ * reachability defect that gate exists to catch, introduced by the fix for a different one.
+ */
+export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
 
   const s = seriesInDomain(d);
   const l = ledgerInDomain(d);
@@ -113,6 +141,24 @@ export default async function DomainPage({ params }: Props) {
     (x) => x.points.filter((pt) => pt.country === 'IND' && pt.value !== null).length === 1,
   ).length;
   const byDate = [...l].sort((a, b) => b.date.localeCompare(a.date));
+  /**
+   * Every declared absence in this area, from series and ledger alike, each carrying the record
+   * that declared it. Built here rather than in the panel so the count is available to the tab
+   * strip, which must be able to say the tab is empty before a reader opens it.
+   */
+  const absences = [
+    ...s.map((x) => ({ rec: x, href: `/series/${x.id}/`, title: x.title, from: x.id })),
+    ...lensed.map((x) => ({ rec: x, href: `/series/${x.id}/`, title: x.title, from: x.id })),
+    ...l.map((x) => ({ rec: x, href: `/ledger/${x.id}/`, title: x.title, from: x.id })),
+  ].flatMap((e) =>
+    ((e.rec as { unmeasured?: Unmeasured[] }).unmeasured ?? []).map((u) => ({
+      ...e,
+      what: u.what,
+      why: u.why,
+      reasonKind: u.reasonKind,
+    })),
+  );
+
   const shownRecords = byDate.slice(0, 6);
   const restRecords = byDate.slice(6);
 
@@ -134,6 +180,17 @@ export default async function DomainPage({ params }: Props) {
           </>
         ) : null}
       </p>
+
+      <DomainTabs
+        d={d}
+        active={tab}
+        counts={{
+          indicators: s.length + lensed.length,
+          records: l.length,
+          disputes: p.length,
+          missing: absences.length,
+        }}
+      />
 
       <p className="counts-line mono">
         {s.length} series{lensed.length ? ` · ${lensed.length} under this lens` : ''} · {l.length}{' '}
@@ -258,24 +315,18 @@ export default async function DomainPage({ params }: Props) {
           {shownRecords.map((r) => (
             <RecordItem key={r.id} record={r} />
           ))}
-          {restRecords.length > 0 ? (
-            <details className="more">
-              <summary>The other {restRecords.length} records in this area</summary>
-              <div className="more-inner">
-                {restRecords.map((r) => (
-                  <RecordItem key={r.id} record={r} />
-                ))}
-              </div>
-            </details>
-          ) : null}
+          {/* NO DISCLOSURE. Every record in the area is listed here, because `domain-coverage`
+              asserts each one appears on `/domains/<d>/` and because an overview that hides half
+              its subject behind a control is the thing the tabs replace. The TABLE, with verdicts,
+              confidence and marks, is the Government records tab. */}
+          {restRecords.map((r) => (
+            <RecordItem key={r.id} record={r} />
+          ))}
         </section>
       ) : null}
 
-      <h2 className="sr-only">Everything in this area</h2>
-
-      <details className="more">
-        <summary>All {s.length + lensed.length} series, with spans, bases and gaps</summary>
-        <div className="more-inner">
+      {tab === 'indicators' ? (
+        <>
       {s.length === 0 ? (
         <p className="prose-note">
           No series has this domain as its subject.
@@ -300,12 +351,11 @@ export default async function DomainPage({ params }: Props) {
           <SeriesBlock items={lensed} showSubject />
         </>
       ) : null}
-        </div>
-      </details>
+        </>
+      ) : null}
 
-      <details className="more">
-        <summary>All {l.length} records as a table, with verdicts and marks</summary>
-        <div className="more-inner">
+      {tab === 'records' ? (
+        <>
       {l.length === 0 ? (
         <p className="prose-note">No ledger records in this domain.</p>
       ) : (
@@ -381,12 +431,11 @@ export default async function DomainPage({ params }: Props) {
         </>
       ) : null}
 
-        </div>
-      </details>
+        </>
+      ) : null}
 
-      <details className="more">
-        <summary>{p.length} measurement disputes bearing on this area</summary>
-        <div className="more-inner">
+      {tab === 'disputes' ? (
+        <>
       {p.length === 0 ? (
         <p className="prose-note">No disputes recorded against this domain.</p>
       ) : (
@@ -405,8 +454,59 @@ export default async function DomainPage({ params }: Props) {
           ))}
         </div>
       )}
-        </div>
-      </details>
+        </>
+      ) : null}
+
+      {/* ============================ MISSING DATA — NEW CONTENT, NOT A RE-ARRANGEMENT ========
+          §5's fifth tab had nothing behind it. The other four move existing sections; this one did
+          not exist on any domain page, and every area has something for it — 4 declarations in
+          poverty to 181 in governance, 374 across the corpus.
+
+          **Rule 4a governs the form and rule 4b the reach.** Each entry is dashed, unfilled and
+          carries no figure, because an absence is a finding and must not be styled as a panel of
+          results; and it names the record that declared it, so a reader can get to the ground. */}
+      {tab === 'missing' ? (
+        absences.length === 0 ? (
+          <p className="prose-note">
+            No record in this area declares an unmeasured quantity. That is a statement about what
+            has been entered, not a claim that everything here is measured.
+          </p>
+        ) : (
+          <>
+            <p className="prose-note">
+              {absences.length} {absences.length === 1 ? 'quantity' : 'quantities'} that records in
+              this area say {absences.length === 1 ? 'is' : 'are'} not measured, each named by the
+              record that declared it. <strong>These are findings, not gaps in this record</strong> —
+              a declared absence is something the corpus establishes about the published statistics,
+              and nothing is estimated into the space.
+            </p>
+            <div className="miss-list">
+              {absences.map((a, k) => (
+                <div key={`${a.from}-${k}`} className="miss">
+                  <p className="miss-what">{a.what}</p>
+                  {/* AN ATTRIBUTION, NOT A LISTING — and it uses the class the corpus already has
+                      for that. The subject of this entry is the ABSENCE; the record is named as the
+                      body that declared it, exactly as *"Declared on <record>"* does on a pair
+                      side. Written first as a bare title link, `unrecognised-rows` reported 701 —
+                      the eighth new shape, caught the moment it landed because the residue was 0
+                      and a non-zero number is the signal. Rule 4b is satisfied by construction
+                      here: this page lists absences, and each one is shown in full. */}
+                  <p className="miss-meta">
+                    <span className="absence-kind">
+                      {a.reasonKind ? REASON_KIND_LABELS[a.reasonKind] : 'reason not stated'}
+                    </span>
+                  </p>
+                  <p className="source-line miss-src">
+                    Declared on <Link href={a.href}>{a.title}</Link>{' '}
+                    <span className="mono t-note">{a.from}</span>
+                  </p>
+                  {a.why ? <p className="miss-why">{a.why}</p> : null}
+                </div>
+              ))}
+            </div>
+          </>
+        )
+      ) : null}
     </>
   );
 }

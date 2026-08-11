@@ -15480,3 +15480,115 @@ summary visible, caveat unclamped and not overflowing. Sort verified to change t
 across all three.
 
 **Carries forward: items 3 and 4, and the 251 authored findings.**
+
+---
+
+## 2026-08-12 (thirty-second entry) — DESIGN-REVISION ITEMS 3 AND 4: topic tabs, nav, and the eighth shape
+
+### THE PREMISE CHECK — §5 DESCRIBES THREE DISCLOSURES; THE PAGE HAD THEM, AND ONE THING §5 DID NOT NAME
+
+A topic page rendered an overview, six records, and three `<details>` disclosures at the foot.
+§5 holds. **What §5 did not name is that no domain page had ever shown declared absences at all** —
+the "Missing data" tab is therefore NEW CONTENT, not a re-arrangement, and it is the only one of the
+five that is. `governance/missing` renders 181.
+
+### EACH TAB IS A URL, AND THAT CONSTRAINED THE SPLIT MORE THAN IT LOOKS
+
+Five real routes per area — 56 new pages — not fragments. **A fragment would have satisfied the
+letter of *a reader must be able to link someone to a topic's disputes* and not the point of it.**
+
+**WHAT CONSTRAINED THE SPLIT:** `domain-coverage` asserts that every record declaring a domain
+appears on `/domains/<d>/` **itself** — 1,137 references — so the tables could not simply move out
+from under the overview. The overview therefore lists EVERY record rather than six and a disclosure,
+and the tabs are views over the same set.
+
+**The gate failed 632 the moment the content moved**, because `reach()` was scoped to one page. It is
+now a union over the five, **and the widening is paired with a new assertion or it would be a
+weakening**: the overview must LINK all five, so a union over pages a reader cannot reach would fail.
+Back to 1137/1137, with navigability now checked and previously not.
+
+### THE EIGHTH NEW SHAPE, AND IT WAS THE CARD ROW RATHER THAN THE TAB STRIP
+
+The operator named two new container shapes and required both bound and reported both ways. **They
+are not symmetrical and the measurement says so.**
+
+**The tab strip lists nothing.** It is a `<nav>` linking five ROUTES and naming no record — measured
+through the gate's own balanced extractor, 0 record links inside it. Binding it would add an empty
+container to `CONTAINER_CLASSES` and assert nothing. Not bound, and the reason is in the component
+header rather than left as an omission.
+
+**The card row does list, and it was already broken when the operator's constraint was written.**
+Each of the three cards names its record by title. Bound and unbound, at the same commit:
+
+| | `listing-marks` | rows | marks |
+|---|---|---|---|
+| `way` unbound | **OK** | 5,276 | 7,523 |
+| `way` bound, before the fix | **FAILS 1** | — | — |
+| `way` bound, after the fix | OK | 5,277 | 7,524 |
+
+**The failure is the whole argument for the constraint.** Card 03 is headed *The record ends* and
+names `schools-above-rte-ptr-primary-dise`, **whose 558-character caveat is the card's entire
+subject** — DISE published the indicator through 2015-16, UDISE+ has never published it in any
+edition, although it holds the school-level enrolment and teacher counts. A card about a record
+ending, carrying no part of the record's own statement of how it ended. **Unbound, the gate said OK
+over it, because an unrecognised shape is not a failure but an absence** — the eighth shape to do
+this and the third caught only because someone looked.
+
+Fixed through `RecordMarks` from the record, not by writing the caveat into the copy, so a card whose
+series later gains an absence carries it without that file being touched.
+
+### A DELIBERATE DUPLICATION, RECORDED RATHER THAN LEFT TO BE READ AS AN OVERSIGHT
+
+The fix renders the same caveat the §3a stop section renders lower down — a departure from *a
+declaration duplicated or dropped are both defects*. **That line was earned in the pair-pooling case,
+where one record appeared twice in ONE role.** Here it appears in two: a card in a taxonomy of how
+evidence behaves, and, 4,717 characters of page text later, the worked example §3a requires the
+printed reason against. Suppressing the card's copy breaches rule 4b; suppressing the section's
+removes the reason §3a exists for. **Neither can go, so both stay and the reason is in the source.**
+Different screens at every width checked.
+
+### ITEM 4 — THE RENAMES, AND THE CARD COPY I GOT WRONG FROM MEMORY
+
+*Overview* → **What changed**, *Explore* → **Topics**; five footer groups and four masthead entries
+unchanged. Withdrawn labels quoted in place.
+
+**Three cards before any navigation**, §6 copy verbatim where it fits, including *"Not a ranking.
+Three different ways evidence can behave."* — which states rule 9 at the point of selection, where
+rule 9 requires it. The colour-coding the mock proposed is refused in §7 and is not here.
+
+**My own card copy paraphrased a series title from memory and lost the word the card existed for.**
+It read *"Schools above the RTE pupil-teacher ratio"*; the record is *"Schools breaching the RTE
+pupil-teacher norm at primary level — discontinued"*. **A card headed *The record ends* naming a
+record whose title says *discontinued*, with that word dropped.** Corrected against `/data`. Tenth
+premise correction, and the second in two batches to be my own rather than the brief's.
+
+**The year control, reduced**, on the landing page: five areas, one head series each, scrub and no
+play. `rest: []` is the reduction; the flag on the component removes the play button and nothing
+about how a reading is produced — §7a holds identically, and a card with no observation for the year
+still says so. `buildBoard` is extracted and imported by both pages rather than copied, which is the
+ad-hoc-normaliser class caught before it shipped: TypeScript refused a hand-built board object
+missing `yearsWith`, `yearsTotal`, `breaks`, `composition` and `events`.
+
+### PAGE WEIGHT, REPORTED THE SAME WAY THE SEARCH PAGE WAS
+
+**Landing: 86,681 → 113,096 raw, 18,028 → 22,061 gzipped. A 4.0 KB gzipped regression** for the year
+control, the three cards and a 558-character caveat — against the search page's 89 KB, which is the
+comparison the instruction asked for. **The reduction order was not needed and stands unspent:
+excerpts first, ranks second, caveats never.** The overview is unchanged at 167,008 gzipped with all
+fourteen areas and the play control intact.
+
+Topic pages fell: `banking` overview 118,605 → 63,502 bytes, with the four tabs at 93,116 / 80,095 /
+72,984 / 77,556 — a reader who wants one view now loads one view.
+
+### Gate line
+
+27 steps green. `listing-marks` **5,277 rows / 7,524 marks across 738 pages** (from 3,716 / 5,247
+across 682 at `4e75b83`). `link-check` **41,713 hrefs across 739 pages, 0 dead** (from 36,442 / 683).
+`domain-coverage` **1137/1137**, now over five surfaces with navigability asserted.
+`unrecognised-rows` **0**, attributions 23 → 724 after the missing-data panel adopted the
+`source-line` idiom rather than bare title links. `field-render-audit` 0 invisible across 4 layers.
+`rendered-space` 0. Mobile at 375 px: 0 overflow, one column, five tabs each carrying a count so an
+empty tab is visible before opening, absences dashed and unfilled with no figure, caveat at its full
+558 characters unclamped and not overflowing.
+
+**DESIGN-REVISION.md is fully applied. Carries forward: the 251 authored findings.**
