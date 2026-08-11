@@ -15032,3 +15032,113 @@ Asserting the property is cheap; rewriting the file to enforce it is what kept g
 unchanged. `field-render-audit` 0 invisible, `rendered-space` 0.
 
 **Two areas remain and they are one batch: `defence` and `kashmir`, together.**
+
+---
+
+## 2026-08-11 (twenty-eighth entry) — DEFENCE AND KASHMIR: the domain prose closes at fourteen of fourteen
+
+One body of material under two headings, written as one piece of work. **Two premises in the brief
+did not hold, and one of them was the page's own thesis.**
+
+### THE PREMISE CHECK
+
+| premise | measured |
+|---|---|
+| `defence` and `kashmir` are both enum keys | **hold** |
+| Kashmir files no series as its own subject | **holds — zero** |
+| defence: 10 records | **holds** |
+| Kashmir: 46 records | **holds** |
+| Kashmir: twenty-three observations | **184**, across 30 lens-read series at 84 per cent verified |
+| Kashmir counts come largely from hospitals, courts and NGOs rather than the state | **DOES NOT HOLD as stated** |
+
+**Twenty of the thirty Kashmir-lens series come from the state** — MHA annual reports above all —
+with four from commissions or the Election Commission and six from elsewhere. **The observation is
+real and its scope is narrower than the sentence, and narrower is what makes it a finding:** the
+state publishes most of the counts, and *where a count bears against the state* it tends to come
+from somewhere else. L-0114 is the case — the deaths are MHA's, the injuries are a peer-reviewed
+ophthalmology series of 777 patients in one Srinagar hospital, and the two are on the same subject
+because the ministry published one and refused the other on the same afternoon.
+
+### THE SPLIT: ONE BODY, TWO PAGES, NO DUPLICATION
+
+`defence` carries the conflict counts and the disputes about what they count. `kashmir` carries the
+institutional and rights records — detentions, shutdowns, commissions, statehood, domicile, land.
+Each page names what belongs to it and neither restates the other; the split is recorded in
+`lib/domain-copy.ts` beside the coverage line.
+
+**Defence's page is about the counting, because the records are.** Not one of its ten verdicts is
+evaluative — five `no-objective`, four `contested`, one `baseline-context` — and the reason is that
+the domain announces nothing: it is armed conflict and counter-insurgency, and the filing rule sends
+procurement to `macro` and `foreign`. Three civilians-killed series on three bases, two
+security-forces-killed from two publishers, two incident series that do not cover the same thing.
+
+**Kashmir's page is about what happened to the instruments.** Seven commissions wound up by seven
+consecutive orders on one day; the State Human Rights Commission — which had produced the only
+severity taxonomy in existence — abolished, and the body said to replace it barred from investigating
+the CRPF; deaths in Army and central-force custody with no cell in any official form; two J&K
+security quantities losing their only legislative route when the assembly was suspended; and the
+venue in which J&K published its suspension orders no longer existing, which is why that series ends
+where it does.
+
+### THE EVIDENCE-NOTE TEST: KASHMIR YES, DEFENCE NO
+
+**`kashmir` gets one and it explains an ABSENCE of grade rather than a grade** — the third distinct
+job a note has done here, after a low grade and a high one. It files zero series of its own, so a
+reader meeting 46 records and no series column takes the area for unmeasured. **The page itself
+produces that misreading**, and the note stops it by saying where the 184 observations live.
+
+**AND THE DERIVED LINE HAD TO BE FIXED TO NOT PRODUCE IT.** Counting the area's own series would
+have printed *"0 of 0 India observations"* beside a note explaining that the area is measured —
+**the note asserting the thing it exists to refute**. The line now counts the set the page already
+charts, `s.length ? s : lensed`, so the prose and the figures beside it describe one thing. Verified
+no existing note moved: infrastructure, welfare, banking and federalism all print unchanged.
+
+**`defence` takes none.** 83 per cent over 98 observations is unremarkable; its distinctive fact is
+that several series count the same quantity on different bases, which is a comparability fact and is
+what its periods are about.
+
+### THE HAND CHECKS FOUND THREE DEFECTS, AND THE PROBE FOUND NONE
+
+**FIFTH ENUM COLLISION, AND THE FOURTH TO ATTRIBUTE WRONGLY.** The Kashmir August-2019 period read
+*"What followed is **not contested** and is the centre of this area"* — in a period citing L-0148,
+**which is scored `contested`**. Changed to *"is a matter of record"*. Found by reading every enum
+word in context; the probe returned zero candidates for either area.
+
+**A CITED-BUT-UNUSED ID.** L-0009 sat in defence's first `from` list while the body never named it.
+Written in rather than dropped, because it is the tenth of the *"nine of its ten records are also
+Kashmir records"* and naming it explains the nine.
+
+**AND THE INVERSE, WHICH IS NEW.** Two records were DRAWN ON AND NOT CITED — L-0145, the land law
+repealed five days before the power lapsed, and L-0137, the Review Committee findings. **The
+convention is that a period names the ids it draws on, and this is the other way round from the
+shape found twice before.** The same hand-sweep catches both because it reads the body against the
+list in both directions; no probe sees either.
+
+### L-0114: THE SHAPE THE BRIEF WARNED ABOUT WAS STILL THERE, IN A SIBLING FIELD
+
+The brief said to read for it rather than assume it was gone. **It was not gone.**
+`assessmentNote` read *"the state holds the measurements for both sides of its own trade-off,
+publishes the term favourable to it and refuses the term unfavourable to it."* **The refusal is the
+UNION ministry's**, and this record's own `whatHappened` reports the counter-example: the J&K Chief
+Minister gave the Legislative Assembly bounded injury aggregates twenty-six days before MHA refused
+them, and the state's Director of Health Services filed a district-wise injury list on affidavit four
+months later.
+
+**It is the same over-generalisation the caveat corrected in the summary on 2026-08-05 — the third
+pass over one defect in one record.** The first pass missed a sentence because its search string
+required the word *ever*; the second caught that; **neither searched the siblings.** Textbook
+per-field prose shadow, in the record whose own caveat documents the two earlier passes.
+
+**Raised in `STATE.md` before it was resolved**, per the narrow source-edit amendment, and the
+statement is left standing beside the resolution because the sequence is the point. Wording only:
+verdict unchanged at `contested`, no figure moved. **`quotation-identity` verified the new quotation
+against git history — 32 attributed quotations, all matching a value the same field held** — and
+`withdrawn-wording` reports 0 withdrawn claims still asserted elsewhere.
+
+### Gate line
+
+27 steps green. `listing-marks` 3,552 → **3,553 rows / 5,010 marks** (the new periods).
+`unrecognised-rows` **0**, unchanged. `field-render-audit` 0 invisible, `rendered-space` 0.
+`withdrawn-wording` 29 → 30 corrections; `quotation-identity` 31 → 32.
+
+**THE DOMAIN PROSE IS CLOSED AT FOURTEEN OF FOURTEEN.**
