@@ -152,6 +152,21 @@ export const RENDERINGS = {
   'provenance.bridgeExists': phrase({ true: 'bridge exists', false: 'no bridge' }),
 
   // ---- series ------------------------------------------------------------
+  /**
+   * PAIRS — the non-prose half, brought into scope 2026-08-11 when `leafFields` learned to resolve
+   * `$ref` and could finally descend into `a` and `b`.
+   *
+   * ONE ENTRY, FIFTEEN EXEMPTIONS, and the ratio is the finding rather than an oversight. A pair is
+   * a rendering of two RESOLVED sides: `series`, `absenceFrom`, `absenceIndex` and
+   * `competingAccountsFrom` are inputs to `resolvePairSide` and what reaches a reader is the thing
+   * they resolve TO — a series' chart, a host's declared absence, a provenance record's competing
+   * accounts. `id`, `kind`, `domain` and `lenses` are routing and filing. Each says so in its own
+   * schema description.
+   *
+   * `provenanceRefs` is the exception because both pair views print the `P-xx` themselves.
+   */
+  'pairs.provenanceRefs': identity(),
+
   'series.id': identity(),
   'series.domain': labels(DOMAIN),
   'series.lenses': labels(LENS),

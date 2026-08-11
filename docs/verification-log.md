@@ -12838,3 +12838,110 @@ that WOULD bind the form, and it puts a browser in the gate chain, which is the 
 **Gates:** \`deploy-chain\` OK · \`link-check\` 27,976 hrefs / 668 pages / 0 dead · \`listing-marks\`
 2,630 rows / 3,713 marks · \`field-render-audit\` 4 layers, 0 invisible · \`domain-coverage\` 14/14,
 1137/1137 · all others unchanged.
+
+
+---
+
+## 2026-08-11 (sixth entry) — the standing queue cleared: four closed, one handed to a research session
+
+### 1. NAV — the three additions become one group
+
+The three surfaces added in \`4bcfcb3\` — \`/publishers/\`, \`/corrections/\`, \`/data/\` — now sit in
+their own labelled group, **about the record**, beside the evidence group. **EVIDENCE is back to 13**,
+the number the standing item names. After: **19 links, 18 distinct routes** (\`/domains/\` appears in
+PRIMARY and EVIDENCE), **3 groups a reader scans**.
+
+**The count moved from thirteen to nineteen one defensible item at a time, each noted nowhere**, and
+that sentence is now in the source above the array so the next addition has to walk past it. **The
+containment is partial by design and the code says so**: it touches only what this session added and
+the full nav grouping stays reserved for the design work. These three group because they are the
+only surfaces whose subject is the CORPUS rather than India.
+
+### 2. PAIRS NON-PROSE — the cause was \`\`, and the gate fired at 16
+
+**\`pairs.a\` and \`pairs.b\` are \`{"$ref": "#/$defs/side"}\`, and \`leafFields\` never resolved a
+ref.** A walk that does not follow one sees an object with no \`type\` and no \`properties\`, falls
+through every descend branch, and pushes \`a\` and \`b\` as opaque non-prose LEAVES. So \`a.label\` and
+\`b.label\` — hand-written prose, one per side, on all 60 pairs — were not enumerated at all.
+
+**This is the enumerate-the-complement rule failing in the one direction it can.** The walk is
+written so an unanticipated construct lands IN scope rather than falling out, and \`$ref\` did land
+in scope — **as a leaf that can never match anything, which is worse than falling out, because a
+leaf that is never invisible reports clean forever.**
+
+**Proven before the fix, as asked.** With the ref resolved and \`PROSE_ONLY\` emptied the gate
+reported **16 non-prose fields neither declared nor exempted**. After: **1 declared rendering
+(\`pairs.provenanceRefs\`, which both pair views print) and 15 exemptions.** Final scope line: **44
+prose + 52 non-prose across 4 layers, 0 invisible, 17 exempted by name**, and the pairs line no
+longer carries \`[prose only, non-prose owed]\`. \`a.label\` and \`b.label\` were **never invisible —
+they were never looked at**, which is a different and quieter failure.
+
+**AND IT REVEALED TWO DEAD FIELDS, REPORTED RATHER THAN FOLDED IN.** Both are carried by records and
+read by nothing anywhere: **\`pairs.ledgerRefs\` on 45 of 60 pairs**, whose only other appearance in
+the repository is the type declaration; and **\`pairs.status\` on 14 of 60**, so a \`declared-pending\`
+pair is indistinguishable from a \`live\` one on every surface. They are the pairs-layer equivalents
+of \`higherIsBetter\` and \`xAxis\`, found the same way — a gate finally able to see the field. Both
+exempted with the DEBT stated, **not rendered**: a view added only to satisfy a gate is worse than
+the gap it closes.
+
+**Schema edits were DESCRIPTIONS ONLY.** 11 edits covering 15 audit paths (the 4 side edits cover
+\`a.*\` and \`b.*\` alike). Asserted before writing that the parse tree with every \`description\` key
+stripped is identical either side — no enum, type, required or pattern moved. **One self-inflicted
+catch worth recording**: the first two exemptions read \`NOT A RENDERED VALUE,\` and the gate binds
+\`NOT A RENDERED VALUE:\` — a comma against a colon, and it correctly refused both.
+
+### 3. QUOTATION IDENTITY — built, and the number nobody had taken is 31 of 31
+
+\`withdrawn-wording\` tests PRESENCE: is there an attributed quotation here. It has never tested
+IDENTITY: is the quoted text what this field used to say. **The two come apart silently** — a
+correction can quote a paraphrase and pass every check in the repository.
+
+\`tools/quotation-identity.mjs\` walks the tracked history, keeps every prior value of every prose
+field, and checks each attributed quotation against the values THAT FIELD held. **Result: 31
+attributed quotations across 29 correction-marked fields, over 111 commits — 31 match a value the
+same field held, 0 match a sibling only, 0 match nothing, 0 unverifiable.** The convention this
+instrument has asserted since before it was generally true is checkable for the first time, and it
+holds completely.
+
+**Proven twice.** \`--control\` discriminates synthetically — a held quotation passes, one word
+changed inside it fails, curly quotes pass through the same normaliser. And against a real record,
+as asked: **one word altered inside L-0094's quoted withdrawal made the gate name that field**, and
+\`data/ledger/education.json\` was restored byte-identical, verified with \`git diff --quiet\`.
+
+**It gates from its first run**, because the measured backlog is zero — report-only would have been
+a deferral with nothing deferred. It skips on a shallow checkout rather than reporting failures that
+are artefacts of clone depth, the same guard \`gen-record-history\` carries and for the same reason.
+
+### 4. SEAM-SPAN — the queue entry was stale, not the tool
+
+**It has gated as a ratchet since 2026-08-06**, is in the build, and exits 1 on an unjudged span or
+a stale allowlist entry. Its control proves the bite: withdrawing one frozen judgement names exactly
+that span and no other.
+
+**There is no untriaged remainder.** 127 spans, 101 declaring; of the 26 that do not, **12 are in
+scope and all 12 are judged and frozen with the quantity their sentence actually compares**, and 14
+are wide-only and out of scope by a stated design decision. 12 + 14 = 26.
+
+**The number has not moved across three measurements because a ratchet's number does not move.** A
+stable count is the gate working and a deferral rotting look identical in a queue, which is the
+whole reason this needed deciding rather than re-measuring a fourth time. **The 14 are a permanent
+scope limit, not a backlog** — widening to two adjacent sentences re-admits the false positives the
+narrowing removed, 15 of 21 at the wide rule. Written into the tool's own header so it cannot be
+re-entered as a queue item.
+
+### 5. ENVIRONMENT — left queued, with a cold-start brief
+
+0 of 15 series carry a caveat against a corpus rate of ~48 per cent, the only domain at zero.
+**Nothing about it is answerable from the repository**, which is why three batches have observed it
+and none closed it. The brief in \`STATE.md\` states what a session must establish: read all 15
+against the caveat definition per record; decide between the three explanations that fit — the
+series genuinely need none, phase-15 under-applied the field, or the definition is read differently
+by different sessions — and **record it as a finding even if the answer is that zero is correct**,
+because a correct unexplained zero reads exactly like an oversight. **Verdict-adjacent and therefore
+operator-owned**: a caveat added to a scored record changes how its verdict reads.
+
+**Gates:** \`deploy-chain\` OK · \`quotation-identity\` 31/31 over 111 commits · \`seam-span\` 127
+spans, 12 frozen, 14 out of scope · \`field-render-audit\` 44 prose + 52 non-prose, 4 layers, 0
+invisible, 17 exempted · \`withdrawn-wording\` 29 corrections, 166 sibling comparisons ·
+\`link-check\` 27,976 hrefs / 668 pages / 0 dead · \`listing-marks\` 2,630 rows / 3,713 marks ·
+\`domain-coverage\` 14/14, 1137/1137.

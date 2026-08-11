@@ -1228,8 +1228,21 @@ printed operands. A non-reconstructing figure must be declared, not merely corre
 own source values are checked, not typed from memory. Separators are normalised.
 
 **The gate list, run in full every cycle:** `deploy-chain` · `validate` · `typecheck` · `validate:selftest` ·
-`reachability` · `no-unguarded-prose-field` · `field-render-audit` · `domain-coverage` (which
-carries `lens-empty`) · `figure-consistency` · `enum-stamp` · `phase-name` · `url-check` on `/data`.
+`reachability` · `no-unguarded-prose-field` · `field-render-audit` · `quotation-identity` ·
+`domain-coverage` (which carries `lens-empty`) · `figure-consistency` · `enum-stamp` · `phase-name` ·
+`url-check` on `/data`.
+
+**`quotation-identity` IS THE SECOND GATE OVER SOMETHING `/data` DOES NOT CONTAIN, and the first was
+`record-history`.** `withdrawn-wording` proves a correction carries an attributed quotation —
+PRESENCE. It cannot prove the quotation is what the field actually said, because the corpus holds
+only the current state; that is the same property that makes a correction unverifiable from `/data`
+alone. **The input is git**, and the walk `gen-record-history` already proved affordable makes the
+check possible: every prior value of every prose field, compared against every quoted withdrawal.
+**Measured on its first run: 31 of 31 quotations across 29 correction-marked fields match a value
+the same field held.** The convention this file has asserted since before it was generally true is
+now, for the first time, checkable — and it holds. It gates rather than reporting because the
+measured backlog is zero, and it skips on a shallow checkout rather than reporting failures that
+are artefacts of clone depth.
 
 **`phase-name` is the first gate over PROSE ABOUT the corpus rather than over the corpus** —
 `tools/phase-name-consistency.mjs`, added 2026-08-06. Every assertion of the form *phase N is

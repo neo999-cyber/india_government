@@ -13,10 +13,71 @@ phase table. Nothing there is withdrawn by this file except the queue rows resta
 
 ---
 
-## THE QUEUE, WHOLE, at 72a4a12
+## THE QUEUE, WHOLE, at 3b91e1b + this batch
 
-| item | state |
-|---|---|
+**Five items entered this batch. Four are closed. One remains, and it is not a design item.**
+
+| item | owner | state |
+|---|---|---|
+| NAV grouping | closed | **CLOSED 2026-08-11.** The three additions of `4bcfcb3` are their own labelled group, `about the record`. EVIDENCE is back to **13** — the number the standing item names. 19 links, **18 distinct routes** (`/domains/` sits in PRIMARY and EVIDENCE), **3 groups**. The containment is PARTIAL BY DESIGN: it touches only what this session added and the full nav grouping stays reserved for the design work |
+| `field-render-audit` pairs non-prose | closed | **CLOSED 2026-08-11.** Cause was `$ref`: `pairs.a`/`b` are `{"$ref":"#/$defs/side"}` and `leafFields` never resolved refs, so it pushed them as opaque leaves. Fired at **16 undeclared** before the fix. Now 1 declared rendering + 15 exemptions, 2 of which are DEBTS |
+| `withdrawn-wording` quotation-identity | closed | **CLOSED 2026-08-11** by `tools/quotation-identity.mjs`, in the build. **31 of 31 quotations across 29 fields match a value the same field actually held.** Gates from its first run because the measured backlog is zero |
+| seam-span | closed | **THE QUEUE ENTRY WAS STALE.** It has gated as a ratchet since 2026-08-06 and is in the build; 26 = 12 frozen-and-judged + 14 out of scope, nothing untriaged. **The number is stable because a ratchet's number is stable.** The 14 are a permanent stated scope limit and must not be re-entered as a queue item — the reasoning is in the tool's own header |
+| **environment: 0 of 15 series carry a caveat** | **RESEARCH SESSION — not design, not this batch** | **OPEN.** See the cold-start brief below |
+
+### The two debts the pairs extension exposed, recorded rather than folded in
+
+Neither is a rendering gap. Both are fields **carried by records and read by nothing at all** — the
+pairs-layer equivalents of `higherIsBetter` and `xAxis`, and found by the same mechanism that found
+those: a gate finally able to see the field.
+
+- **`pairs.ledgerRefs` — 45 of 60 pairs carry it.** Its only other appearance in the repository is
+  the type declaration in `lib/types.ts`. No view, no accessor, no gate. What it is FOR — a pair
+  naming the ledger records it bears on — is real and unbuilt.
+- **`pairs.status` — 14 of 60 carry `declared-pending` or `live`.** Nothing reads either, so a
+  pending pair is indistinguishable from a live one on every surface that shows it.
+
+Both are exempted by name with the debt stated in the schema description, **not rendered**: a view
+added only to satisfy a gate is worse than the gap it closes.
+
+---
+
+## COLD-START BRIEF — environment's caveat rate
+
+**The observation.** Environment & energy holds 15 series and **0 of them carry a `caveat`**,
+against a corpus rate of about 48 per cent. It is the only domain at zero. Raised in phase 17,
+carried unresolved through phase 18.
+
+**WHY NO DESIGN BATCH CAN CLOSE IT.** Nothing about it is answerable from the repository. The
+question is whether those 15 records SHOULD carry a caveat — a judgement about each record against
+the caveat definition, which needs the sources read. A design session can only observe that the rate
+is anomalous, which is what every batch since phase 17 has done.
+
+**WHAT SUCH A SESSION WOULD HAVE TO ESTABLISH**, stated so it can be picked up cold:
+
+1. **Read all 15 environment series against the caveat definition** — *a record carrying one would
+   mislead without it*; ordinary uncertainty is not a caveat and belongs in `notes`. Per record, not
+   as a sweep: a keyword scan produces candidates and the judgement is made and written down one
+   record at a time.
+2. **Decide which of three explanations holds, and say which**, because they have different
+   consequences. (a) The 15 genuinely need none — environment's series are CEA and MNRE capacity and
+   generation figures, which are among the cleanest in the corpus, and a zero rate would then be a
+   true fact about the subject. (b) The phase-15 authoring under-applied the field, in which case
+   the caveats are owed and the batch that wrote them is identifiable from the history. (c) The
+   caveat definition is being read differently by different authoring sessions, in which case the
+   fix is the definition and not the records.
+3. **If (a), record it as a finding rather than leaving the anomaly unexplained.** A zero that is
+   correct and unexplained reads exactly like a zero that is an oversight, which is why this item
+   has survived three batches.
+4. **Check the neighbouring claim before relying on it.** Phase 17 measured environment's four
+   uncertainty traps as living in 7 provenance records rather than in series caveats. If that is the
+   explanation, the finding is that this domain expresses uncertainty in a different LAYER — which
+   is a fact about the corpus's shape and belongs in `/method`, not a backlog of 15 edits.
+
+**Verdict-adjacent: a caveat added to a scored record can change how its verdict reads, so this is
+operator-owned in the same way a rescore is.** The session reports; it does not silently edit.
+
+---|---|
 | board: events, performance | **CLOSED 2026-08-11.** 125 event ticks over 12 of 14 areas; Kashmir and Poverty carry none and say so in words. Slider step median 2.5ms / p90 3.8ms / 0 long tasks over 48 steps, desktop; mid-tier is a stated 4x assumption, not measured |
 | **NAV: nineteen destinations** | **OPEN AND WORSE — see below. Inherited as "thirteen"; it is nineteen, and three of the six added are mine.** |
 | environment 0% vs corpus 48% series-caveat rate | OPEN — research, not answerable from the repo; needs the 15 records read against the caveat definition by a session that owns record truth |
