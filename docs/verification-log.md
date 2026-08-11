@@ -13619,3 +13619,91 @@ properly, which is seven batches — and it is the only part of this that cannot
 **Gates:** `validate` VALID · `link-check` **30,501** hrefs / 669 pages / 20 prefixes / 0 dead ·
 `listing-marks` **3,098** rows / **4,347** marks · `field-render-audit` 4 layers, 0 invisible ·
 `reachability` 1787/1787 · `quotation-identity` 31/31 · `domain-coverage` 14/14, 1137/1137.
+
+---
+
+## 2026-08-11 (twelfth entry) — the geospatial mock lands as a peer slope panel
+
+A geospatial dashboard spec was proposed: a choropleth of India by state, tricolour ramp, temporal
+slider with play. **It was assessed against the corpus and the map cannot be built truthfully; the
+idea underneath can, and its only defensible home is `/peers/`.**
+
+### Why not the map, measured
+
+**There is no state dimension in any schema.** The only geographic axis is `points[].country`, a
+five-member panel. **28 of 269 series name a state, covering 7 of 36 states and union territories** —
+Tamil Nadu 9, Bihar 7, West Bengal 7, J&K 3, Delhi 1, Punjab 1. A 36-state choropleth renders **29
+states grey**: a map of what was researched, presented as a map of the country, and grey on a map
+reads as *nothing happened there* far more forcefully than a blank cell does.
+
+Three further blocks, each independent of that one. **The palette encodes merit** — saffron-to-green,
+low-to-high, makes high good, and this corpus leaves `higherIsBetter` null wherever direction is
+contested. **The spec backfills across a boundary change and says so** — *"for years < 2014… backfill
+TG data proportionally… for simplicity"* — which is rule 2 exactly. And **its data is
+`random.randint`**, so the encoding was designed against a shape nobody had checked existed, which is
+the failure the Overview grid stopped on.
+
+### What the idea decomposes into
+
+**The time-scrub half is already built** — `/overview/`, 14 areas, 262 charts, one year control on a
+shared X axis. What it deliberately refuses is the shared VALUE scale, because per cent against
+rupees against kilometres is incommensurable.
+
+**The shared-scale half had exactly one defensible home**, and the measurement then decided its form:
+**the peer panel holds two dates per country, 2014 and 2024 — not a series.** An animation has
+nothing to run on. Five entities at two dates is a SLOPE.
+
+### `/peers/`, rebuilt
+
+It was eighteen whole-series blocks stacked — title, tags, source, five-row table, absences, repeat.
+Every fact present and **the comparison the panel exists to make absent**: a reader had to hold five
+numbers across eighteen tables.
+
+Now: a computed lead finding, **sixteen slope panels**, the two single-date series as records, and
+the full eighteen behind a disclosure.
+
+**THE LEAD IS COMPUTED, NOT ASSERTED, AND THE LINK IT MAKES WAS ALREADY IN `/data`.** Agriculture's
+share of employment fell **2.9 points in India and 20.4 in Vietnam**; over the same decade
+agriculture's share of GDP **rose in India by 0.87 points — the only country in the panel where it
+rose**, against falls of 4.35, 3.01, 0.81 and 1.59. Three separate quantities, each with its own
+number, **none combined**. And L-0065 *Structural transformation reversal* already names
+`agri-employment-peer` and `industry-employment-peer` in its own `seriesRefs`, so the page cites a
+declared edge rather than drawing one.
+
+**WHAT THE SLOPE REFUSES.** No merit colouring — India is heavier, never a different hue, because
+direction of merit is unset or contested on several of these and `higherIsBetter` is a known unread
+debt. No rank number, which would convert a measurement into a standing. No line across a missing
+endpoint. Vintage prints on all sixteen (P-09).
+
+### Three defects caught in the building, each by a different check
+
+**Rounding contradicted the caption.** The first `fmt` rounded at 10 and up, printing India's
+employment share as 45 → 42 while the page's own lead said the fall was 2.9 points. Panel values run
+1.1 to 13,293; the split moved to 100, so a decimal survives exactly where it carries meaning.
+
+**`listing-marks` caught a duplicated declaration** — *"a reader met the same absence twice on one
+page."* The two single-date series rendered whole in their own block AND again in the disclosure.
+Each record now renders once, and the disclosure says which two it excludes and why.
+
+**And the block existed because of a rule-4b miss the gate could NOT catch.** The first cut named
+those two series in a prose sentence, by title, with no marks — **both carry a caveat and one
+declares two absences.** `listing-marks` saw nothing because a sentence carries no anchor: the
+guard-scope shape again, in a fifth position. They render as records now.
+
+**13 of 16 panels had overlapping labels**, measured in the browser rather than eyeballed. Fixed by
+de-colliding the TEXT to an 11-unit minimum gap while **every dot stays at its true position** — the
+one place on the page where a drawn position is not exactly the datum, said out loud in the
+component rather than left to be discovered by measuring the SVG. **0 overlaps after, at 1280 and at
+375.**
+
+**Gates:** `validate` VALID · `link-check` 30,527 hrefs / 669 pages / 0 dead · `listing-marks` 3,098
+rows / 4,347 marks, 374 declarations each at most once · `field-render-audit` 4 layers, 0 invisible ·
+`reachability` 1787/1787 · `domain-coverage` 14/14. Mobile 375px: single column, scrollWidth 375, 0
+label overlaps.
+
+### Recorded so it is not rediscovered
+
+**A choropleth is not refused in principle — it is refused on the data.** If the corpus ever holds a
+genuinely national state-level series, a map is the right view for it, with a single-hue ramp rather
+than the flag and with *not researched* visually distinct from *reported zero*. Written here so a
+later cycle finds the reasoning rather than the gap.
