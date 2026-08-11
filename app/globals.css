@@ -3379,6 +3379,19 @@ details.more > summary {
   outline: 1px solid var(--mark);
 }
 
+/* A CONTINUATION MARK where the span begins before the axis does. Mirrors the dashed end: the
+   dashes point off the edge, meaning the record carries on past it. Not a truncation and not a
+   fault — the axis was narrowed so the other 265 spans could be read, and the true start year sits
+   in the gutter beside the row. */
+.strip-bar.is-earlier::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: -1px;
+  height: 6px;
+  border-left: 2px dotted var(--mark);
+}
+
 /* A dashed right edge where the published series stops before the frontier. Not a colour: the
    series is not worse, it ended. */
 .strip-bar.is-stopped::after {
@@ -3394,7 +3407,9 @@ details.more > summary {
    are not the same measurement, and the bar says so. */
 .strip-seam {
   position: absolute;
-  top: -2px;
+  /* A sibling of the bar in the track, not a child of it — see the component. Centred on the
+     track's own 6px height rather than on the bar's. */
+  top: -1px;
   height: 8px;
   width: 1px;
   background: var(--bg);
