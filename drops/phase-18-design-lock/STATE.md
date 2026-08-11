@@ -24,6 +24,7 @@ phase table. Nothing there is withdrawn by this file except the queue rows resta
 | selection ≠ ranking | closed | **CLOSED.** Written into CLAUDE.md. Rule 9 was forcing every page to dump everything; a stated checkable criterion is selection, an unstated judgement is ranking |
 | guard-shape class | closed as a report | **REPORTED.** `listing-marks` is the only markup-bound gate and necessarily so — it is the only one asking about PROXIMITY, which needs a container. Recommendation is neither shape nor attribute but a **loud gap**: report any record link inside no recognised row shape. Not built |
 | **share cards** | **OPERATOR — accepted, unbuilt** | Text-only OG tags, per `SHARE-CARDS-SCOPE.md`. Decision recorded; implementation is a later batch |
+| `/peers/` rebuilt as slopes | closed | **CLOSED 2026-08-11.** The geospatial mock's idea, landed where the corpus can carry it: 16 slope panels, 5 countries x 2 dates, one shared scale. The map itself is refused ON THE DATA, not in principle — no state dimension exists, and 28 series cover 7 of 36 states. If a national state-level series ever lands, a map is right for it: single hue, and *not researched* distinct from *reported zero* |
 | **the thirteen domain pages** | **WRITING — later batch** | Four periods per area, ~90 words each, each naming the records it draws on. Governance has 110 records, poverty has 3 and would take one period not four. ~2 areas per batch, ~7 batches. **The only part that cannot be generated** |
 
 ---|---|---|
