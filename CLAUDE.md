@@ -1284,7 +1284,25 @@ own source values are checked, not typed from memory. Separators are normalised.
 **The gate list, run in full every cycle:** `deploy-chain` · `validate` · `typecheck` · `validate:selftest` ·
 `reachability` · `no-unguarded-prose-field` · `field-render-audit` · `quotation-identity` ·
 `domain-coverage` (which carries `lens-empty`) · `figure-consistency` · `enum-stamp` · `phase-name` ·
-`url-check` on `/data`.
+`listing-marks` · `rendered-space` · `unrecognised-rows` · `url-check` on `/data`.
+
+**`rendered-space` IS THE FIRST GATE OVER THE SHAPE OF RENDERED PROSE RATHER THAN ITS PRESENCE**, and
+the gap it closes is the reason it is listed rather than merely built. Every render gate this
+instrument has asks whether a value REACHED its page. None asks what it looks like when it gets
+there — so `2024is where the frontier begins` is valid data, correctly rendered, and green on all
+twenty-six of the others. Two instances landed in one feature and both were caught by eye.
+
+**The cause is a compiler rule and it is worth knowing rather than re-diagnosing.** SWC trims
+whitespace at the start of a JSX text chunk that spans a newline, so `{total} series begin` welds
+when the line wraps after `begin` and does not when it wraps elsewhere. **The defect therefore
+appears and disappears with paragraph re-wrapping**, which is why care does not reach it and a gate
+does. The fix is `{' '}` after the expression, every time.
+
+**Its false-positive rate was measured before it was wired, and its negative control earned its
+keep on the first run:** over 668 built pages the detector returned exactly two hits, both real —
+and it fired on `12<!-- -->th`, an ordinal wanting no space, which the control caught before the
+corpus did. A gate is worth adding at that rate and the rate is stated so a later cycle can tell a
+regression from a bad detector.
 
 **`quotation-identity` IS THE SECOND GATE OVER SOMETHING `/data` DOES NOT CONTAIN, and the first was
 `record-history`.** `withdrawn-wording` proves a correction carries an attributed quotation —
