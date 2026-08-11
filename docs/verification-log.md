@@ -15142,3 +15142,118 @@ against git history — 32 attributed quotations, all matching a value the same 
 `withdrawn-wording` 29 → 30 corrections; `quotation-identity` 31 → 32.
 
 **THE DOMAIN PROSE IS CLOSED AT FOURTEEN OF FOURTEEN.**
+
+---
+
+## 2026-08-11 (twenty-ninth entry) — TWO DECISIONS, AND THE YEAR PAGES
+
+### 1 — `unrecognised-rows` STAYS REPORT-ONLY. Decided, not deferred.
+
+Recorded in the gate's own header with the withdrawn wording quoted, and in `STATE.md`. **The
+residue is 0, so gating changes nothing today** — it would pass on every commit until something
+moved. What it would do is fail the build the first time a component's POOLING SHIFTS, and a pooling
+shift is a design question about that component rather than a defect: the declaration would still
+reach the page, from a different container. **A red build is the wrong instrument for a question
+whose answer may be "the new arrangement is correct, register it".** It should stop appearing in
+reports as an availability.
+
+### 2 — THE NEXT EXTERNAL ADVERSARIAL ROUND WAITS, ON A CONDITION THAT IS NOT TIME
+
+The last two rounds read a corpus with nine `worked` records, no `objectives[]`, no independence
+test, no `contestedGround`, no exposure axes, and a site that was an inventory. **Most of what such
+a round would now find has been found internally** — five enum collisions, seven premise failures,
+the guard-scope audits, the three-shape mark class, the per-field prose shadow — and a review that
+returns the queue has spent its budget on work already done.
+
+**The condition is a change of object: enough that a reader of the deployed site would form a
+materially different account than the last round did.** And when it runs **it reads the deployed
+site, not a generated extract** — the first round's headline finding was an artefact of what the
+extract had removed, and an extract is a projection.
+
+### 3 — THE YEAR MEASUREMENT, REPORTED BEFORE ANYTHING WAS BUILT
+
+| year | begin | obs | seams | exposed |
+|---|---|---|---|---|
+| 2014 | **33** | 110 | 3 | **22** |
+| 2015 | 9 | 78 | 17 | 6 |
+| 2016 | 16 | 86 | 11 | 7 |
+| 2017 | 11 | 96 | 13 | 7 |
+| 2018 | 12 | 125 | **3** | 3 |
+| 2019 | 21 | 117 | 11 | 6 |
+| 2020 | 23 | 126 | 23 | 11 |
+| 2021 | 18 | 130 | 12 | 4 |
+| 2022 | 10 | 146 | **25** | **0** |
+| 2023 | 9 | 134 | 8 | **0** |
+| 2024 | 11 | **148** | 13 | 1 |
+| 2025 | 15 | 90 | 16 | 3 |
+| 2026 | 17 | **5** | 5 | 4 |
+
+cv: began 0.42 · obs 0.34 · seams 0.51 · exposed 0.98.
+
+**THE DECISIVE TEST WAS NOT VARIANCE BUT INDEPENDENCE.** Four counts that moved together would be
+one number shown four times. Spearman ρ across the thirteen years: **every pair at most 0.61**, and
+that pair — `began` against `exposed` — shares a denominator by construction, since a record
+declaring an exposure is a record. The page says so where the quadrant is, rather than presenting
+the two as independent discoveries. Everything else is |ρ| ≤ 0.52. **Build.**
+
+**TWO EXPECTATIONS THE MEASUREMENT REFUSED, and both were in the brief.**
+
+**2020 does not show measurement thinning during the shock.** Of the series running through it,
+**34 per cent published nothing that year — against 36 per cent in 2019 and 33 in 2021.** Flat. What
+2020 shows is change: 23 seams and 23 records beginning, both near the top of the range. The page
+says the true thing and names the numbers that refuse the expected one.
+
+**2014's wall is partly a dating convention.** **14 of its 33 records are dated exactly `2014-05`**,
+the start of the term — a boundary marker, not fourteen things happening in one month. The page says
+this inside the quadrant, because a reader counting records per year would otherwise be counting the
+corpus's filing habit and being told it is history.
+
+**2026 is thin because it is unfinished, and that one held.** Five observations against **seventeen
+records beginning** — more than 2022, 2023 or 2024. That divergence is the argument for showing the
+four counts apart: a year can be dense in what happened and near-empty in what has been published
+about it, and one figure would hide either behind the other.
+
+### 4 — WHAT WAS BUILT
+
+Thirteen pages at `/years/<year>/` plus an index, in `browse` beside `terms` — both are ways INTO
+the record rather than layers of it. **Every year is a URL**; the control is links, not a slider,
+because a state a reader cannot paste is a state this instrument does not consider to exist.
+
+**Four quadrants, four kinds of fact, no total.** Records beginning are not records about the year
+and the page says so where the count is.
+
+**The visual is the span strip sliced**, not a new chart. Running, beginning, ending, receding —
+and the receding rows stay in the DOM, because the shape of the whole is what makes one year's
+slice mean anything. A reader learned that encoding on `/series/`, so the page is legible on arrival
+instead of carrying a second key.
+
+**THE SPAN DERIVATION WAS LIFTED INTO `lib/spans.ts` RATHER THAN COPIED.** The year slice must draw
+the spans `/series/` draws; two derivations of one quantity is the ad-hoc-normaliser class, and they
+would have agreed today and drifted on the first change with nothing to report it. `/series/` now
+reads the shared module.
+
+### 5 — THE CARRIED CHECKS FOUND NINE DEFECTS, ALL IN THE `from` LISTS
+
+**Enum words: clean.** Every occurrence in the thirteen standfirsts is *scored X* or *is contested*,
+and **every attribution was verified against the record** — eleven of them. No collision, and no
+sixth instance.
+
+**The two-directional sweep found nine.** This is the check reading the body against the list *both
+ways*, and both directions fired:
+
+- **Drawn on and NOT cited — seven.** L-0054 (UDAN) in 2016; L-0023, whose NPA peak figure the 2018
+  standfirst quotes; L-0136, L-0061 and L-0085 in 2019; L-0154 and the four Glasgow records in 2021;
+  L-0217 in 2025.
+- **Cited and NOT drawn on — two.** L-0091 in 2020 and L-0128 in 2024, both dropped. L-0141 was a
+  third and was **written in instead**, because delimitation is a real 2022 event and that
+  standfirst was thin on what began.
+
+**The probe saw none of them**, which is its known blind spot working exactly as documented: it
+detects an unused id only when that id's verdict token is absent from the whole paragraph.
+
+### Gate line
+
+27 steps green. `link-check` 35,472 → **36,173 hrefs across 683 pages, 0 dead**. `listing-marks`
+3,553 → **3,716 rows / 5,247 marks**. `unrecognised-rows` **0**, unchanged.
+`field-render-audit` 0 invisible, `rendered-space` 0. Every quadrant on five spot-checked years
+re-derived independently of the page and matching.

@@ -3681,3 +3681,51 @@ details.more > summary {
   color: var(--ink-dim);
   font-variant-numeric: tabular-nums;
 }
+
+/* ---------------------------------------------------------------------------------------------
+   THE YEAR SLICE — the span strip's own encoding, read at one year.
+
+   Nothing is removed. A row that does not touch the selected year recedes; it does not disappear,
+   because the shape of the whole corpus is what makes one year's slice mean anything. Begins and
+   ends reuse the marks the strip already carries — a reader met them on /series/.
+--------------------------------------------------------------------------------------------- */
+.strip-row[data-year='away'] .strip-bar { opacity: 0.1 !important; }
+.strip-row[data-year='away'] .strip-seam { opacity: 0.15; }
+.strip-row[data-year='begins'] .strip-bar,
+.strip-row[data-year='ends'] .strip-bar { outline: 1px solid var(--mark); }
+.strip-row[data-year='begins'] .strip-bar { background: var(--mark-ink); }
+
+.yr-quads {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin: 1.5rem 0;
+}
+.yr-quad { background: var(--bg); padding: 1.1rem 1.2rem 1.2rem; }
+.yr-quad .n {
+  font-size: 2.3rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--fill);
+  display: block;
+}
+.yr-quad .k { display: block; margin: 0.35rem 0 0.4rem; font-weight: 600; color: var(--ink); }
+.yr-quad .d { margin: 0; font-size: 0.875rem; color: var(--ink-2); }
+
+/* THE YEAR CONTROL, and every year is a URL. Links, not a slider: a state a reader cannot paste
+   is a state this instrument does not consider to exist. */
+.yr-rail { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 1.25rem 0; }
+.yr-rail a,
+.yr-rail span {
+  font-family: var(--mono, monospace);
+  font-size: 0.8125rem;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid var(--rule);
+  color: var(--ink-2);
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+}
+.yr-rail a:hover { border-color: var(--mark); color: var(--mark-ink); }
+.yr-rail span[aria-current] { background: var(--fill); color: var(--bg); border-color: var(--fill); }

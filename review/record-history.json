@@ -6255,7 +6255,7 @@
  "L-0114": {
   "firstDate": "2026-08-03",
   "firstSubj": "Phase 11 kashmir-security: 54 records, defence redefined, negative differentFacts mark",
-  "editCount": 4,
+  "editCount": 5,
   "edits": [
    {
     "sha": "fe61a892b310807efb62b467910a543726b44e15",
@@ -6290,6 +6290,14 @@
     "subj": "THE PASS: nine worked records become one, 33 citations re-tiered, three self-audits leave the ledger",
     "fields": [
      "sources"
+    ]
+   },
+   {
+    "sha": "3feef5f74ed65d3e25a25d0b90a30e359b7708c9",
+    "date": "2026-08-11",
+    "subj": "Defence and Kashmir: the domain prose closes at fourteen of fourteen",
+    "fields": [
+     "assessmentNote"
     ]
    }
   ],
