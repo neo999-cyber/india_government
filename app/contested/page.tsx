@@ -4,7 +4,7 @@ import { ledger } from '@/lib/data';
 import { CONTESTED_GROUND_LABELS, DOMAIN_LABELS } from '@/lib/format';
 import { CONTESTED_GROUNDS } from '@/lib/types';
 import type { ContestedGround, LedgerRecord } from '@/lib/types';
-import { CaveatRow, RecordMarks } from '@/components/marks';
+import { TwoReadings } from '@/components/TwoReadings';
 
 export const metadata: Metadata = { title: 'Contested — what would settle it' };
 
@@ -44,43 +44,25 @@ const WHAT_WOULD_SETTLE: Record<ContestedGround, string> = {
   'evidence-unobservable': 'nothing. The settling fact is a counterfactual, or is unbuildable while the practice stands',
 };
 
-function Group({ ground, records }: { ground: ContestedGround; records: LedgerRecord[] }) {
+function Group({
+  ground,
+  records,
+  settles,
+}: {
+  ground: ContestedGround;
+  records: LedgerRecord[];
+  settles: string;
+}) {
   if (records.length === 0) return null;
   return (
     <>
-      <h3>
+      <h3 className="cg-h">
         {CONTESTED_GROUND_LABELS[ground]} <span className="t-note">· {records.length}</span>
       </h3>
-      <p className="prose-note">{WHAT_WOULD_SETTLE[ground]}.</p>
-      <div className="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Record</th>
-              <th>Term</th>
-              <th>Domains</th>
-            </tr>
-          </thead>
-            {records.map((l) => (
-              <tbody key={l.id}>
-                <tr>
-                  <td>
-                    <Link href={`/ledger/${l.id}/`}>{l.title}</Link>
-                    <br />
-                    <span className="t-note mono">{l.id}</span>
-                    {/* Rule 3a: the caveat travels into every rendering, in full. It renders in
-                        the full-width row below rather than in this cell — the layout changed,
-                        not the caveat. */}
-                    <RecordMarks record={l} deferCaveat />
-                  </td>
-                  <td className="t-note mono">{l.term}</td>
-                  <td className="t-note">{l.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}</td>
-                </tr>
-                <CaveatRow record={l} colSpan={4} />
-              </tbody>
-            ))}
-        </table>
-      </div>
+      <p className="prose-note">{settles.charAt(0).toUpperCase() + settles.slice(1)}.</p>
+      {records.map((l) => (
+        <TwoReadings key={l.id} record={l} settles={settles} />
+      ))}
     </>
   );
 }
@@ -106,34 +88,63 @@ export default function ContestedIndex() {
         useful question is which kind of contest it is, because <strong>most of them can never be
         settled by anything at all.</strong>
       </p>
+      {/* THE SPLIT IS THE ENTRY, AND IT IS TWO OBJECTS RATHER THAN ONE BAR.
+
+          A single divided bar would be the wrong picture and it is the obvious one to reach for.
+          It puts both halves on one scale and invites the reading that 38 and 28 are two positions
+          on a spectrum of resolvedness — that the corpus is 58 per cent stuck and 42 per cent
+          pending, and that the second number ought to fall. Neither is true. A contest nothing can
+          settle is a FINDING about a disagreement; a contest something would settle is a statement
+          about a document that has not been produced. **They are different kinds of thing, so they
+          are drawn as two panels that do not touch and share no axis.**
+
+          No colour separates them either. The unsettleable half is not the bad half. */}
+      <div className="csplit">
+        <div className="csplit-half">
+          <p className="csplit-n mono">{unsettleable}</p>
+          <p className="csplit-k">Nothing would settle these</p>
+          <p className="csplit-w">
+            On the field&rsquo;s own definitions no further evidence resolves them. The facts are
+            agreed and the dispute is which frame governs, or several valid published measures of one
+            object point opposite ways, or the settling fact is a counterfactual. These are findings
+            about a disagreement, not gaps waiting on a document.
+          </p>
+        </div>
+        <div className="csplit-half">
+          <p className="csplit-n mono">{settleable}</p>
+          <p className="csplit-k">Something would settle these</p>
+          <p className="csplit-w">
+            Each record names what: a figure released, an authoritative reading given, a year
+            elapsed. That the thing is nameable does not make it obtainable — several are settleable
+            in principle by a body that has declined to settle them.
+          </p>
+        </div>
+      </div>
       <p className="prose-note">
-        {contested.length} contested records, {contested.length - unvalued.length} of them carrying a
-        stated ground. <strong>{unsettleable}</strong> turn on something no document could resolve —
-        the facts are agreed and the dispute is which frame governs, or several valid published
-        measures point opposite ways. <strong>{settleable}</strong> would be settled by a specific
-        thing the record names: a figure released, an authoritative reading given, a year elapsed.
+        {contested.length} contested records,{' '}
+        {contested.length - unvalued.length} of them carrying a stated ground.{' '}
+        <strong>The two halves are not two ends of a scale and the split is not a burndown.</strong>{' '}
+        Nothing here is scored or ranked, and the settleable half is not a queue: a contest a
+        ministry could end by publishing a figure it has not published is a finding about the
+        ministry, not an item of outstanding work for this instrument.
       </p>
       <p className="prose-note">
-        The list is not scored, not ranked, and the settleable half is not a queue. Several are
-        settleable in principle by a body that has declined to settle them, which is the finding
-        rather than the task.
+        <span className="label">Two different grounds, and the page keeps them apart</span> The
+        ground of the <em>contest</em> — the six values below — answers{' '}
+        <em>what would have to be true for this to resolve?</em> The grounds of each{' '}
+        <em>reading</em> are the two cases the record sets out, in full, on every record here. A
+        reader who runs them together takes a contest of criterion for a weak argument, when it is
+        the opposite: the facts are agreed and it is the frame that is in dispute.
       </p>
 
       <h2>Nothing would settle these — {unsettleable} records</h2>
-      <p className="prose-note">
-        On the field&rsquo;s own definitions, no further evidence resolves these. They are findings
-        about a disagreement, not gaps waiting on a document.
-      </p>
       {UNSETTLEABLE.map((g) => (
-        <Group key={g} ground={g} records={byGround[g]} />
+        <Group key={g} ground={g} records={byGround[g]} settles={WHAT_WOULD_SETTLE[g]} />
       ))}
 
       <h2>Something would settle these — {settleable} records</h2>
-      <p className="prose-note">
-        Each names what. That the thing is nameable does not make it obtainable.
-      </p>
       {SETTLEABLE.map((g) => (
-        <Group key={g} ground={g} records={byGround[g]} />
+        <Group key={g} ground={g} records={byGround[g]} settles={WHAT_WOULD_SETTLE[g]} />
       ))}
 
       {unvalued.length > 0 ? (
@@ -148,15 +159,16 @@ export default function ContestedIndex() {
             vocabulary does not have. Giving them a catch-all would absorb the only evidence that the
             vocabulary is short.
           </p>
-          <ul>
-            {unvalued.map((l) => (
-              <li key={l.id}>
-                <Link href={`/ledger/${l.id}/`}>{l.title}</Link>{' '}
-                <span className="t-note mono">{l.id}</span>
-                <RecordMarks record={l} />
-              </li>
-            ))}
-          </ul>
+          {/* These two get the same treatment as the other 66 rather than a stub list. Their
+              readings are the evidence that the vocabulary is short, so showing the contest and
+              withholding the cases would make the claim unverifiable on the page that makes it. */}
+          {unvalued.map((l) => (
+            <TwoReadings
+              key={l.id}
+              record={l}
+              settles="not stated — the record argues that no value in this vocabulary describes its contest"
+            />
+          ))}
         </>
       ) : null}
     </>

@@ -122,10 +122,19 @@ export function listingRows(html) {
   // `redline` added 2026-08-11 in the commit that created it, because `unrecognised-rows` reported
   // it the moment it landed. One record per container and its declarations render once inside —
   // unlike the pair views, whose unit is still open.
-  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one', 'redline'];
+  // `ctwo` is F4's contested record: one <article> holding the title, the ground, the marks and the
+  // two facing readings. Registered when the shape landed rather than after a gate reported it
+  // missing — the third-shape class this list exists for.
+  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one', 'redline', 'ctwo'];
   const containers = [];
   for (const cls of CONTAINER_CLASSES) {
-    const open = new RegExp(`<(article|div|figure|section)[^>]*class="[^"]*\\b${cls}\\b[^"]*"`, 'g');
+    // WHOLE CLASS TOKEN, NOT `\b`. A hyphen is not a word boundary, so `\bctwo\b` matched
+    // `class="ctwo-head"` and the gate then demanded a record's marks inside the record's own
+    // TITLE block — 76 spurious failures on a page rendering every mark correctly. This is the
+    // boundary defect the corpus-search helper exists to prevent, in the one place that had
+    // hand-rolled its own matcher. Class attributes are space-separated, so the token is bounded
+    // by a space or by the quote.
+    const open = new RegExp(`<(article|div|figure|section)[^>]*class="(?:[^"]*\\s)?${cls}(?:\\s[^"]*)?"`, 'g');
     for (const m of rest.matchAll(open)) {
       // Balanced scan to the matching close tag, so a nested element cannot truncate the unit.
       const tag = m[1];
