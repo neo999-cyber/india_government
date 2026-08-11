@@ -1,6 +1,8 @@
 'use client';
 
 import { memo, useDeferredValue, useState } from 'react';
+import { RecordMarks } from '@/components/marks';
+import type { Unmeasured } from '@/lib/types';
 import Link from 'next/link';
 
 /**
@@ -51,6 +53,17 @@ export type OSeries = {
   pts: OPoint[];
   brk: number[];
   before: boolean;
+  /**
+   * THE MARKS TRAVEL WITH THE PROJECTION, and their absence here was the defect.
+   *
+   * This type is the board's own view of a series, and it was built with exactly the six fields the
+   * chart needs. That is why the mini wall listed 250 records with no declarations: **the projection
+   * dropped them before the component could render them**, so no amount of care in the view would
+   * have caught it. A listing surface must carry what rule 4b requires, and a projection that
+   * narrows a record is where that requirement is silently lost.
+   */
+  caveat?: string;
+  unmeasured?: Unmeasured[];
 };
 export type ODomain = {
   key: string;
@@ -455,6 +468,16 @@ export function OverviewBoard({ domains }: { domains: ODomain[] }) {
                           still sweeps all 250, which is what the shared axis promises. */}
                       <Spark s={s} w={120} h={30} showDots={false} />
                       <span className="mini-t">{s.title}</span>
+                      {/* RULE 4b. This wall LISTS 250 series, so every declaration they carry must
+                          reach a reader here — 141 caveats and 58 declared absences did not, until
+                          2026-08-11. The wall escaped `listing-marks` because that gate recognises a
+                          card by the class `grid-title` and these carry `mini-t`: **a new listing
+                          shape built past an existing guard**, which is the guard-scope defect this
+                          corpus has now paid for a fourth time. The gate's filter was widened in the
+                          same commit; fixing the surface alone would have left the next shape free
+                          to escape the same way. A caveat-bearing mini takes the full row, on the
+                          `.grid > a:has(.caveat-inline)` pattern — rule 3a, the layout changes. */}
+                      <RecordMarks record={s} linkify={false} />
                     </Link>
                   ))}
                 </div>

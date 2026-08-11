@@ -710,7 +710,7 @@
  },
  {
   "id": "net-npa",
-  "title": "Scheduled commercial banks net NPA ratio",
+  "title": "Scheduled commercial banks net NPA ratio (basis not stated)",
   "unit": "% of advances",
   "domain": "banking",
   "tier": "T4",
@@ -890,7 +890,7 @@
  },
  {
   "id": "psb-gross-npa",
-  "title": "Public sector banks gross NPA ratio",
+  "title": "Public sector banks gross NPA ratio (global operations)",
   "unit": "% of advances",
   "domain": "banking",
   "tier": "T1",
@@ -1060,7 +1060,7 @@
  },
  {
   "id": "pvt-gross-npa",
-  "title": "Private sector banks gross NPA ratio",
+  "title": "Private sector banks gross NPA ratio (basis not stated)",
   "unit": "% of advances",
   "domain": "banking",
   "tier": "T1",
@@ -1154,6 +1154,7 @@
    "P-15",
    "P-18"
   ],
+  "caveat": "CANNOT SHARE AN AXIS WITH ANY OTHER NPA SERIES. The reporting basis is not stated in the source used, so this figure cannot be set against the domestic-operations series (scb-gross-npa) or the global-operations one (psb-gross-npa) without assuming a basis it does not declare - P-18 records why the two are different populations and not two readings of one. Resolving it means pinning against RBI Trend & Progress, which reports both bases.",
   "notes": "BASIS NOT STATED in the source used. Cannot share an axis with any other NPA series until resolved (P-18). Blocking item on the verification queue — pin against RBI Trend & Progress, which reports both bases."
  },
  {

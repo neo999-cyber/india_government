@@ -146,6 +146,9 @@ function toO(s: Series): OSeries | null {
     pts,
     brk: (s.breaks ?? []).map((b) => yearOf(b.period)),
     before: s.points.some((p) => p.country === 'IND' && yearOf(p.period) < Y_MIN),
+    // Carried, not dropped: the mini wall is a listing surface and rule 4b binds it.
+    caveat: s.caveat,
+    unmeasured: s.unmeasured,
   };
 }
 

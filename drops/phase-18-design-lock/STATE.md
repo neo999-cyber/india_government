@@ -13,18 +13,22 @@ phase table. Nothing there is withdrawn by this file except the queue rows resta
 
 ---
 
-## THE QUEUE, WHOLE, at 3b91e1b + this batch
+## THE QUEUE, WHOLE, at 13fd64a + this batch
 
-**Five items entered this batch. Four are closed. One remains, and it is not a design item.**
+**Nothing blocks the design work.** Every item below is either closed or is a small, scoped,
+operator-owned record change. No verdict is in question and no schema or enum is open.
 
 | item | owner | state |
 |---|---|---|
-| NAV grouping | closed | **CLOSED 2026-08-11.** The three additions of `4bcfcb3` are their own labelled group, `about the record`. EVIDENCE is back to **13** — the number the standing item names. 19 links, **18 distinct routes** (`/domains/` sits in PRIMARY and EVIDENCE), **3 groups**. The containment is PARTIAL BY DESIGN: it touches only what this session added and the full nav grouping stays reserved for the design work |
-| `field-render-audit` pairs non-prose | closed | **CLOSED 2026-08-11.** Cause was `$ref`: `pairs.a`/`b` are `{"$ref":"#/$defs/side"}` and `leafFields` never resolved refs, so it pushed them as opaque leaves. Fired at **16 undeclared** before the fix. Now 1 declared rendering + 15 exemptions, 2 of which are DEBTS |
-| `withdrawn-wording` quotation-identity | closed | **CLOSED 2026-08-11** by `tools/quotation-identity.mjs`, in the build. **31 of 31 quotations across 29 fields match a value the same field actually held.** Gates from its first run because the measured backlog is zero |
-| seam-span | closed | **THE QUEUE ENTRY WAS STALE.** It has gated as a ratchet since 2026-08-06 and is in the build; 26 = 12 frozen-and-judged + 14 out of scope, nothing untriaged. **The number is stable because a ratchet's number is stable.** The 14 are a permanent stated scope limit and must not be re-entered as a queue item — the reasoning is in the tool's own header |
-| environment: 0 of 15 series carry a caveat | closed | **CLOSED 2026-08-11 — ZERO IS CORRECT.** Explanation (a): the fifteen genuinely need no caveat. Four independent measurements agree — environment's LEDGER rate is 50% (7/14, the corpus rate) so no author forgot the field; **7 of 15 carry the disambiguation IN THE TITLE**, which renders on every listing surface (verified on four surfaces for `res-capacity-share`); `breaks[]`, `provenanceRefs` and `higherIsBetter: null` carry the rest; and education's 91% is a **different kind of object** — use prohibitions and tiering disputes that no title could carry. **Phase 15 was right; the rate needed explaining, not fixing.** Recorded in the log so it is not re-opened a fourth time |
-| **NPA basis does not travel — rule 5b fails on 3 of 5 series** | **OPERATOR — record change, STOP** | **OPEN, and it is the defect the distribution hunt actually found.** Rule 5b requires the reporting basis *wherever the figure appears*. `scb-gross-npa` and `scb-gross-npa-amount` carry it in the title and comply. **`pvt-gross-npa`** states *"BASIS NOT STATED... Cannot share an axis with any other NPA series... Blocking item"* **in `notes`, which reaches the record's own page and none of the domain page, series index or overview board** — verified. **`psb-gross-npa`** states GLOBAL OPERATIONS in notes only. **`net-npa`** states no basis anywhere. Fix is a caveat, or the title on environment's own pattern — operator's call because it is a record change |
+| NPA basis — rule 5b failing on 3 of 5 | closed | **CLOSED 2026-08-11.** Basis in the title on `psb-gross-npa` (global operations), `pvt-gross-npa` and `net-npa` (basis not stated); the prohibition in `caveat` on `pvt-gross-npa`. Verified on all four surfaces the figure reaches, with a negative control |
+| **overview board dropped 199 declarations** | closed | **CLOSED 2026-08-11, found by the verification above.** The mini wall listed 250 series with no marks — 141 caveats, 58 absences — and `listing-marks` could not see it because its card filter read `grid-title` and the minis carry `mini-t`. Fixed at all three levels: the `OSeries` projection carries the marks, the wall renders them, and the gate's card-class list is named. `listing-marks` 2,634→**2,787** rows, 3,717→**3,916** marks |
+| environment: 0 of 15 caveats | closed | **CLOSED — zero is correct**, explanation (a). See the preceding entry and the brief below |
+| `$ref` class sweep | closed | **CLOSED.** Two refs in the corpus, both fixed; the resolver is global; no other construct hides a field |
+| `pairs.status` — two conventions | **OPERATOR — record change** | **OPEN, trivial.** Schema says `live (default)`, so absence is the intent. The 12 explicit values are **PR-48 to PR-60, one contiguous block** — one session that began writing the default. Consistency = delete `status: "live"` from 12 records. No meaning changes |
+| `pairs.status` ⟺ `pairRenders` unenforced | **OPERATOR — contract change** | **OPEN, cheap.** A pure `/data` derivation, ~40 lines, could fold into `validate`. Both directions fail differently: a pending pair whose sides resolve is held and hidden; an unmarked pair that breaks is the A-3 defect that cost eleven pairs |
+| `pairs.ledgerRefs` (45 of 60) unread | **OPERATOR** | OPEN debt, exempted with the reason in the schema. A pair naming the ledger records it bears on is real and unbuilt |
+| `net-npa` may warrant a prohibition | **OPERATOR — record change** | OPEN. Its basis is unstated, so the axis argument that applies to `pvt-gross-npa` may apply to it. **Not authored, because its note carries no prohibition and writing one would invent a judgement** |
+| NAV: 18 distinct destinations | **DESIGN** | OPEN and unchanged. The three additions are grouped; the full grouping is the reserved design item |
 
 ### The two debts the pairs extension exposed, recorded rather than folded in
 

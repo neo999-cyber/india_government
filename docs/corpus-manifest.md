@@ -177,11 +177,11 @@ govt-capital-infusion · banking · Government capital infusion into public sect
 ibc-realisation-pct · banking · IBC realisation as share of admitted claims, cumulative
 ibc-resolution-days · banking · IBC average resolution time
 jan-dhan-accounts · banking · PMJDY accounts opened
-net-npa · banking · Scheduled commercial banks net NPA ratio
+net-npa · banking · Scheduled commercial banks net NPA ratio (basis not stated)
 npl-peer · banking · Bank non-performing loans to gross loans (peer panel)
-psb-gross-npa · banking · Public sector banks gross NPA ratio
+psb-gross-npa · banking · Public sector banks gross NPA ratio (global operations)
 psb-profit · banking · Public sector banks aggregate net profit
-pvt-gross-npa · banking · Private sector banks gross NPA ratio
+pvt-gross-npa · banking · Private sector banks gross NPA ratio (basis not stated)
 scb-gross-advances · banking · Scheduled commercial banks gross advances (derived, domestic operations)
 scb-gross-npa · banking · Scheduled commercial banks gross NPA ratio (domestic operations)
 scb-gross-npa-amount · banking · Scheduled commercial banks gross NPAs, absolute (domestic operations)

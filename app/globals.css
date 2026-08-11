@@ -2528,3 +2528,15 @@ tbody > tr:has(+ .caveat-row) > td {
 .nav-about {
   margin-top: 0.15rem;
 }
+
+/* A caveat-bearing mini takes the whole row — the `.grid > a:has(.caveat-inline)` pattern, applied
+   to the overview board's series wall. Rule 3a: a 400-character qualification cannot be set in a
+   120px column, so the layout is what changes. */
+.minigrid > .mini:has(.caveat-inline) {
+  grid-column: 1 / -1;
+}
+
+.mini .caveat-inline,
+.mini .absence-count {
+  margin-top: 0.3rem;
+}
