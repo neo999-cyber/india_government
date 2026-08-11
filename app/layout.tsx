@@ -43,6 +43,16 @@ const LATEST = Math.max(
 );
 
 export const metadata: Metadata = {
+  /**
+   * REQUIRED FOR SHARE CARDS TO WORK AT ALL. Without it Next emits `og:url` as the relative path it
+   * was given, and an unfurler has no origin to resolve it against — the card either fails or
+   * points at the pasting site. Not a style choice: a relative `og:url` is a broken tag.
+   *
+   * `robots: noindex` below is UNCHANGED and the two are not in conflict. WhatsApp, Slack and
+   * Signal fetch these tags directly when a link is pasted; crawlers are told not to index. So the
+   * cards work for a pasted link and do nothing for search discovery, which is the recorded choice.
+   */
+  metadataBase: new URL('https://india-government.vercel.app'),
   title: {
     default: 'India, On the Record',
     template: '%s · India, On the Record',
@@ -50,6 +60,25 @@ export const metadata: Metadata = {
   description:
     'What India’s own published statistics and official documents can establish about how the country changed since 2014 — and exactly where the record stops.',
   robots: { index: false, follow: false },
+  /**
+   * THE FALLBACK CARD, so an index surface pasted into a chat unfurls as something.
+   *
+   * Record routes override title and description through `lib/share-card.ts`; the ~49 index and
+   * utility surfaces inherit this. Without it they emitted no `og:` tags at all and unfurled as a
+   * bare URL — which is not a wording problem, it is the absence of a card on half the site's
+   * entry points.
+   *
+   * The description is the site's own, unchanged, and carries no figure — the same rule the record
+   * cards are held to, and it already satisfied it.
+   */
+  openGraph: {
+    title: 'India, On the Record',
+    description:
+      'What India’s own published statistics and official documents can establish about how the country changed since 2014 — and exactly where the record stops.',
+    siteName: 'India, On the Record',
+    type: 'website',
+  },
+  twitter: { card: 'summary' },
 };
 
 /**

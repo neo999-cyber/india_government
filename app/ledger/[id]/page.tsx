@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { ledgerCard } from '@/lib/share-card';
 import { getLedger, getProvenance, getSeries, ledger as allLedger, pairHref, pairsHostedOn, pairsNaming } from '@/lib/data';
 import { lastTouched } from '@/lib/history';
 import { PairSection } from '@/components/PairSection';
@@ -28,7 +29,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const l = getLedger(id);
-  return { title: l ? l.title : 'Ledger record' };
+  return l ? ledgerCard(l) : { title: 'Ledger record' };
 }
 
 export default async function LedgerDetail({ params }: Props) {
