@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { provenanceCard } from '@/lib/share-card';
 import {
   getProvenance,
   ledgerCitingProvenance,
@@ -25,7 +26,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const p = getProvenance(id);
-  return { title: p ? `${p.id} · ${p.title}` : 'Provenance record' };
+  return p ? provenanceCard(p) : { title: 'Provenance record' };
 }
 
 export default async function ProvenanceDetail({ params }: Props) {

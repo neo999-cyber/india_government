@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { seriesCard } from '@/lib/share-card';
 import { SeriesLd } from '@/components/StructuredData';
 import {
   getProvenance,
@@ -34,7 +35,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const s = getSeries(id);
-  return { title: s ? s.title : 'Series' };
+  return s ? seriesCard(s) : { title: 'Series' };
 }
 
 export default async function SeriesDetail({ params }: Props) {
