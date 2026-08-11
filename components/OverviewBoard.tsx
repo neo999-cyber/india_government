@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useDeferredValue, useState } from 'react';
+import { memo, useDeferredValue, useEffect, useRef, useState } from 'react';
 import { RecordMarks } from '@/components/marks';
 import type { Unmeasured } from '@/lib/types';
 import Link from 'next/link';
@@ -111,6 +111,19 @@ const X1 = 2026;
 const W = 260;
 const H = 62;
 const PAD = 4;
+
+/**
+ * Three speeds, and the slowest is the default.
+ *
+ * A year is a unit a reader has to absorb — twelve cards change at once — so the default is the one
+ * that can be read rather than the one that looks liveliest. 1,100ms is roughly a comfortable
+ * reading beat; 550 is a scan; 275 is for finding a year rather than reading one.
+ */
+const SPEEDS = [
+  { label: '1×', ms: 1100 },
+  { label: '2×', ms: 550 },
+  { label: '4×', ms: 275 },
+] as const;
 
 const fmt = (v: number) =>
   Math.abs(v) >= 100000
@@ -327,6 +340,61 @@ export function OverviewBoard({ domains }: { domains: ODomain[] }) {
    */
   const shown = useDeferredValue(year);
 
+  /**
+   * ============================ PLAY, AND THE ONE THING THAT WOULD MAKE IT DISHONEST ==========
+   *
+   * The scan line crosses every card on the same year because the axis is shared — that is the
+   * whole reason this control can be played at all.
+   *
+   * **§7a HOLDS AT EVERY STEP AND IS NOT RELAXED FOR SPEED.** A card with no observation for the
+   * year prints *"No observation for 2012 · this series runs 2014–2025"*. It does NOT hold its last
+   * value. An animation that silently carries a stale figure is the misleading-display defect at
+   * speed, and it is the one thing that would make this feature dishonest — the reader is moving
+   * too fast to notice a number that stopped changing. Nothing here special-cases the playing
+   * state: `Reading` and `at()` are the same code the scrubber uses, so the honesty is structural
+   * rather than remembered.
+   *
+   * REDUCED MOTION REMOVES THE CONTROL RATHER THAN SLOWING IT. A reader who has asked for no motion
+   * has not asked for slower motion. The scrubber stays — it moves only when they move it — and the
+   * play button is removed from the accessibility tree, not merely hidden, because a control that
+   * is announced and does nothing is worse than one that is absent.
+   */
+  const [playing, setPlaying] = useState(false);
+  const [speed, setSpeed] = useState(1);
+  const [motionOK, setMotionOK] = useState(true);
+  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const apply = () => {
+      setMotionOK(!mq.matches);
+      if (mq.matches) setPlaying(false);
+    };
+    apply();
+    mq.addEventListener('change', apply);
+    return () => mq.removeEventListener('change', apply);
+  }, []);
+
+  useEffect(() => {
+    if (!playing) return;
+    // Each tick advances one year and stops at the end rather than looping. A loop would restart
+    // the decade without a reader asking, which reads as a decorative animation rather than a
+    // control they are operating.
+    timer.current = setInterval(() => {
+      setYear((y) => {
+        const next = (y ?? X0 - 1) + 1;
+        if (next > X1) {
+          setPlaying(false);
+          return X1;
+        }
+        return next;
+      });
+    }, SPEEDS[speed].ms);
+    return () => {
+      if (timer.current) clearInterval(timer.current);
+    };
+  }, [playing, speed]);
+
   return (
     <div
       className="board"
@@ -361,7 +429,45 @@ export function OverviewBoard({ domains }: { domains: ODomain[] }) {
           </span>
         </div>
         <output className="scrub-out">{year ?? '—'}</output>
-        <button type="button" className="scrub-reset" onClick={() => setYear(null)} disabled={year === null}>
+
+        {motionOK ? (
+          <>
+            <button
+              type="button"
+              className="scrub-play"
+              onClick={() => {
+                if (!playing && (year === null || year >= X1)) setYear(X0);
+                setPlaying((p) => !p);
+              }}
+              aria-pressed={playing}
+            >
+              {playing ? '❚❚ Pause' : '▶ Play'}
+            </button>
+            <span className="scrub-speeds" role="group" aria-label="Playback speed">
+              {SPEEDS.map((sp, i) => (
+                <button
+                  key={sp.label}
+                  type="button"
+                  className={`scrub-speed${i === speed ? ' is-on' : ''}`}
+                  onClick={() => setSpeed(i)}
+                  aria-pressed={i === speed}
+                >
+                  {sp.label}
+                </button>
+              ))}
+            </span>
+          </>
+        ) : null}
+
+        <button
+          type="button"
+          className="scrub-reset"
+          onClick={() => {
+            setPlaying(false);
+            setYear(null);
+          }}
+          disabled={year === null}
+        >
           Show every year
         </button>
       </div>

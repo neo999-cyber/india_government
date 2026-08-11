@@ -13707,3 +13707,34 @@ label overlaps.
 genuinely national state-level series, a map is the right view for it, with a single-hue ramp rather
 than the flag and with *not researched* visually distinct from *reported zero*. Written here so a
 later cycle finds the reasoning rather than the gap.
+
+---
+
+## 2026-08-11 (thirteenth entry) — FEATURE 1 of 5: play on the year control
+
+**One control, shared X, 262 charts, and now a scan line that crosses every card on the same year.**
+Play / pause, three speeds (1,100 · 550 · 275 ms), stopping at 2026 rather than looping — a loop
+restarts the decade without a reader asking, which reads as decoration rather than a control.
+
+**§7a HOLDS AT EVERY STEP AND NOTHING SPECIAL-CASES THE PLAYING STATE.** `Reading` and `at()` are the
+same code the scrubber uses, so the honesty is structural rather than remembered. Verified by
+stepping 2019 → 2011 and reading five cards: at 2011 four say *"No observation for 2011 · this series
+runs 2017–2025"* and one has a genuine 2011 value. **Cards holding a stale value: 0.** An animation
+that silently carries a stale figure is the misleading-display defect at speed, and a reader moving
+at 275ms per year is exactly the reader who would not notice.
+
+**REDUCED MOTION REMOVES THE CONTROL, NOT THE SPEED.** A reader who asked for no motion did not ask
+for slower motion. `matchMedia` removes play and the speeds from the DOM — not merely hidden, since a
+control that is announced and does nothing is worse than one that is absent — and the scrubber stays,
+because it moves only when they move it. A CSS media query backs it up for a setting changed
+mid-session.
+
+**FRAME COST, measured by the same method as the scrub baseline** (dispatch, no forced reflow, 51
+steps): **median 3.4ms, p90 5.6ms, worst 8.4ms**, against a baseline of 2.5 / 3.8 and a 16.7ms frame.
+The fastest speed is 275ms per step, so a step uses about 2 per cent of the interval it has. **0 long
+tasks over 50ms.**
+
+*One measurement artefact, recorded so it is not read as a finding:* the in-app browser pane reports
+`document.hidden === true`, and Chrome clamps `setInterval` to ≥1000ms in hidden tabs. A wall-clock
+measurement of tick cadence therefore reads ~998ms at every speed. That is the throttle, not the
+control, which is why the cost above is measured as work per step rather than as observed cadence.
