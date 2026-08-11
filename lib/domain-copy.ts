@@ -34,19 +34,21 @@ import type { Domain } from '@/lib/types';
  *
  * ============================ COVERAGE, STATED =================================================
  *
- * **Five of fourteen are written**, and the count is restated here on every change because a
+ * **Seven of fourteen are written**, and the count is restated here on every change because a
  * coverage line that goes stale is a claim about the past in the present tense — the defect this
  * repository has already paid for in its own session-cost section. `macro` is the pattern;
- * `education` and `environment` followed on 2026-08-11, `infrastructure` and `employment` the same
- * day. **The other nine render the same page without the periods block** — not a stub, not a
- * placeholder: the section simply is not there, which is honest, where a heading over generated
- * filler would not be.
+ * `education`, `environment`, `infrastructure`, `employment`, `welfare` and `human-development`
+ * followed on 2026-08-11. **The other seven render the same page without the periods block** —
+ * not a stub, not a placeholder: the section simply is not there, which is honest, where a heading
+ * over generated filler would not be.
  *
  * Period spans are chosen by what changed and are NOT uniform across areas. `education` opens at
  * 2010 because the Right to Education Act's own numbers are what the first period is about;
  * `environment` and `employment` take three rather than four because nothing in either divides at
  * the fourth point; and `employment`'s first period exists to say that no national survey covers
- * it. **A period count is a reading of the area, never a template.**
+ * it. `human-development` takes three on eight records because its last period carries the
+ * comparability argument that is the whole area, not because three is a floor.
+ * **A period count is a reading of the area, never a template.**
  */
 export type Period = {
   /** Displayed as given — a span, not a term. Periods are chosen by what changed, not by election. */
@@ -198,6 +200,61 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
       from: ['L-0064', 'L-0168', 'L-0169'],
     },
   ],
+
+  welfare: [
+    {
+      years: '2013 — 2016',
+      heading: 'A statutory entitlement inherited, and a wave of schemes that count what they hand out',
+      body:
+        'The National Food Security Act is entered as baseline context: a statutory entitlement already in force in 2013, against which what followed is read. What followed counts deliveries. Jan Dhan, Aadhaar and UPI are scored partly and are the area’s clearest success at the thing they measure, which is accounts opened and transactions cleared. Swachh Bharat, Pradhan Mantri Awas Yojana, the crop-insurance scheme and Ujjwala are all partly, and all four publish a cumulative figure for the thing handed over. The one record here scored failed is the commitment to double farmers’ income by 2022 — a dated, quantified target announced in 2016 and not met, and the MSP guarantee demand beside it takes undated-commitment because it states a quantity with no date and cannot fall due.',
+      from: ['L-0007', 'L-0029', 'L-0035', 'L-0037', 'L-0067', 'L-0069'],
+    },
+    {
+      years: '2017 — 2019',
+      heading: 'The published quantity is the connection, and the metric for the scheme stops',
+      body:
+        'This is the area’s defining shape and Ujjwala is the sharpest case of it. Connections are published cumulatively and are still running; refills — which this record holds to be the metric for the scheme, not connections — stop at FY2018-19, sourced to a CAG report finding the first cohort averaged 3.66 a year against a general-consumer benchmark of roughly six, with 17.61 per cent never returning for a second cylinder. The publisher of the useful number stopped and the publisher of the flattering one did not. The same shape runs through the rest: household electrification connected at speed while supply-hours are not published as a national series, Jal Jeevan Mission expanded coverage while its own functionality assessment opens a wedge between a tap and safe water, and housing publishes sanctioned and completed while occupancy is declared not published. All four are scored partly, and in each the limb they fall short on is the used half rather than the delivered one. PM-KISAN is scored failed against the income-doubling objective it was announced to serve.',
+      from: ['L-0034', 'L-0050', 'L-0036', 'L-0037', 'L-0041'],
+    },
+    {
+      years: '2020 — 2022',
+      heading: 'Free foodgrain at scale, and transfers that stopped for reasons the records contest',
+      body:
+        'PMGKAY put free foodgrain on top of the statutory entitlement and is scored partly, with the NFSA exclusion — those outside the Act’s coverage — the limb it does not reach. Against that, three records in this period are about money not moving. Centrally sponsored scheme releases to West Bengal fell 67 per cent; MGNREGA funds to the same state were stopped under section 27 in March 2022 on stated grounds of misappropriation and non-compliance; and both are contested, on the ground given rather than on the fact of the stoppage. The 2020 exodus sits here too and has no measurement at all: the Labour Ministry told Parliament no data was maintained on deaths during it or on job losses.',
+      from: ['L-0038', 'L-0178', 'L-0168', 'L-0064'],
+    },
+    {
+      years: '2023 — today',
+      heading: 'A claim about exit from poverty, and the repeal of the largest programme here',
+      body:
+        'Two records, and they point opposite ways. The multidimensional poverty exit claim is contested — the index, its cut-offs and what an exit from it means are the dispute, not the arithmetic. And in December 2025 MGNREGA was repealed, with the unskilled wage moving off a 100 per cent Central share; it is scored too-early, which is a statement about the clock rather than about the repeal. Nothing else has been entered since 2023, which is itself a fact about the period rather than about the schemes.',
+      from: ['L-0043', 'L-0169'],
+    },
+  ],
+
+  'human-development': [
+    {
+      years: '2014 — 2016',
+      heading: 'Two survey rounds are what this area has, and the first of them is here',
+      body:
+        'This is a small area and most of its records file their subject elsewhere — road safety under infrastructure, educated youth unemployment under employment — and appear here because the human outcome is what this page is about. Its own measurement is thin and periodic: child stunting, wasting and anaemia are read from National Family Health Survey rounds 4 and 5, which is two points, and the fourth round is the one in this period. Sanitation runs annually and improves throughout. Farmer suicides run annually from 2014 and are contested, on what the classification counts rather than on the count. Swachh Bharat is scored partly and belongs to the same input-against-outcome question the next period makes explicit.',
+      from: ['L-0042', 'L-0070', 'L-0046', 'L-0063', 'L-0035'],
+    },
+    {
+      years: '2017 — 2019',
+      heading: 'The inputs improved substantially and the outcomes they are meant to produce did not',
+      body:
+        'The clearest finding in this area is a divergence rather than a level. Immunisation, institutional delivery, sanitation and clean-fuel access all improved substantially over the survey interval, while the nutritional outcomes those inputs are meant to produce improved only marginally or went backwards — anaemia in children rose, and severe wasting rose from 7.5 to 7.7 per cent. That record is contested rather than scored against anyone, because the improvement in inputs is real and the mechanism connecting them is what is in dispute. Ayushman Bharat PM-JAY was announced in 2018 and is scored partly; what it publishes is cards created and admissions authorised, both cumulative.',
+      from: ['L-0042', 'L-0039'],
+    },
+    {
+      years: '2020 — today',
+      heading: 'The last authoritative reading is the round that straddles the pandemic, and there is no round after it',
+      body:
+        'Every comparison across 2020 in this area is a question rather than a subtraction, and the reason is specific: the second and last point of anaemia, stunting and wasting is NFHS-5, whose fieldwork ran 2019-21 and overlapped COVID. The record does not resolve that by drawing a line through it. It says the overlap confounds attribution, and that the anaemia increase is too large to be attributed to the pandemic alone because the pre-pandemic phase of the same fieldwork already showed the trend — a confound accepted in part, not a shock used to explain the finding away. NFHS-6 fieldwork has been delayed and its publication status is uncertain as of mid-2026, so this is not a gap waiting to close on a known date. Seven of the eight records here declare an exposure to COVID and they adjudicate it four different ways, from refused to accepted. The one record entered since is Vaccine Maitri, presented as a gift, where the doses the government gave and the doses it sold are not the same quantity.',
+      from: ['L-0042', 'L-0215'],
+    },
+  ],
 };
 
 /**
@@ -212,13 +269,24 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
  * sentence about the evidence cannot go stale against the evidence — which is the failure mode this
  * repository has already paid for in the one section written to prevent it.
  *
- * Only two areas carry a note, and that is the point: an evidence line on all fourteen would be
- * boilerplate, and boilerplate is read past. **`macro`, `education` and `environment` deliberately
- * have none** — their grades are mixed and unremarkable, and a note saying so would say nothing.
+ * Only three areas carry a note, and that is the point: an evidence line on all fourteen would be
+ * boilerplate, and boilerplate is read past. **`macro`, `education`, `environment` and
+ * `human-development` deliberately have none** — their grades are mixed and unremarkable, and a
+ * note saying so would say nothing.
+ *
+ * **`human-development` WAS TESTED AGAINST THIS RULE AND FAILED IT, WHICH IS WHY THE DECISION IS
+ * WRITTEN DOWN RATHER THAN LEFT AS AN OMISSION.** It is 33 per cent verified — mixed, and
+ * unremarkable beside infrastructure's nought. What IS distinctive about it is cadence and
+ * cross-filing: five of its seven series carry two points or fewer because they are survey rounds,
+ * and five of its eight records file their subject in another area. **Neither is a fact about the
+ * evidence GRADE**, so both belong in the period prose, where they are, and not in a note whose
+ * whole job is to explain a grade.
  */
 export const DOMAIN_EVIDENCE: Partial<Record<Domain, string>> = {
   infrastructure:
     'Almost nothing in this area is published exactly, and that is a fact about how India publishes rather than a gap in this record. These figures come from ministry dashboards, scheme reporting and annual reports — running totals, revised as they run — and not from closed statistical series. A reader arriving to ask whether things were built will find that a great deal was, and that the published quantity is usually a progress figure rather than a final one. Approximate by publication, not by omission.',
+  welfare:
+    'The low verified share here is a fact about what a scheme publishes rather than about how well it is run. Welfare schemes report a CUMULATIVE RUNNING TOTAL — houses sanctioned to date, cards created to date, connections released to date — which is one number republished as it grows, not a series that can be differenced into annual figures. Nine of the nineteen series in this area therefore carry a single observation, against four of twenty-four in infrastructure and three of twenty-three in employment, and six say cumulative in their own title or note. A cumulative total is a real quantity and it answers a different question from the one a reader usually brings: it says how much has been handed out since the scheme began, and not how much was handed out last year.',
   employment:
     'No observation in this area is verified, and the reason is that India measures employment by sample survey. A survey estimate carries a sampling error by construction, so an approximate status here is the honest grade for a correctly published figure and not a mark against it. What does bear on comparability is that the instrument changed twice — the Employment-Unemployment Survey gave way to the Periodic Labour Force Survey at FY2017-18, and the PLFS was redesigned again from January 2025 — so the series carries two seams and no line is drawn across either.',
 };
