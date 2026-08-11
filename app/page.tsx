@@ -34,10 +34,32 @@ import { Evaluability } from '@/components/Evaluability';
  */
 
 /** Charts chosen from the inventory's clean set, with the sentence each one is here to say. */
+/**
+ * THE OPENING TAKEAWAY, REWRITTEN 2026-08-11 — and the withdrawn version is quoted because what was
+ * wrong with it is not obvious.
+ *
+ * IT READ: *"Thirty per cent of Indians aged 18 to 23 are enrolled in higher education, up from 21
+ * per cent in 2011-12. The line breaks in FY2020-21 because the population it is divided by was
+ * restated, not because enrolment jumped."*
+ *
+ * **It was written when this chart rendered no marks.** As of `99754d0` it renders its 622-character
+ * caveat directly beneath — *the denominator is falling and it is doing half the work* — and the two
+ * sat stacked as if unrelated: a takeaway reporting a rise, under a heading calling the series well
+ * measured, above a qualification saying half the rise is not enrolment.
+ *
+ * **AND THE OLD WORDING WAS WORSE THAN SILENCE, WHICH IS THE PART WORTH RECORDING.** It mentioned
+ * the denominator — the FY2020-21 restatement — so a reader had already been told the denominator
+ * was accounted for. That is a different denominator fact from the one that matters: a one-off
+ * restatement causing a visible break, against an ongoing decline making roughly half the trend an
+ * artefact. **Naming the smaller of two problems inoculates against the larger one.**
+ *
+ * The rewrite states the compound fact and hands the arithmetic to the caveat rather than
+ * duplicating it. Rule 3a binds the caveat; the copy bends around it.
+ */
 const OPENING = {
   id: 'higher-ed-ger',
   takeaway:
-    'Thirty per cent of Indians aged 18 to 23 are enrolled in higher education, up from 21 per cent in 2011-12. The line breaks in FY2020-21 because the population it is divided by was restated, not because enrolment jumped.',
+    'Thirty per cent of Indians aged 18 to 23 are enrolled in higher education, up from 21 per cent in 2011-12 — and roughly half of that rise is the 18-23 cohort shrinking rather than enrolment growing. The break at FY2020-21 is the same population being restated, not a jump. The record sets out the arithmetic itself, below.',
 };
 
 const SUPPORTING: { id: string; takeaway: string }[] = [
@@ -88,7 +110,12 @@ export default function HomePage() {
       {/* 2. ONE strongly measured change, told well. */}
       {opening ? (
         <>
-          <h2>Start with something the state measures well</h2>
+          {/* The heading used to read "Start with something the state measures well" full stop,
+              which promised a clean number over a chart whose own caveat says half the movement is
+              a denominator effect. The series IS well measured — the qualification is about what
+              the number means, not how well it was taken — so the heading keeps its claim and stops
+              implying the claim is the whole of it. */}
+          <h2>Start with something the state measures well, and read what comes with it</h2>
           <SeriesChart series={opening} takeaway={OPENING.takeaway} />
         </>
       ) : null}
@@ -119,11 +146,20 @@ export default function HomePage() {
             series={stop}
             takeaway="Published every year by DISE through 2015-16, and by its successor system in no edition since — although that system holds the enrolment and teacher counts for every school in the country."
           />
+          {/* A DIFFERENT FIX FROM THE OPENING'S, because this copy had the OPPOSITE problem.
+              It read: *"The published series ends in 2015-16. That is a fact about what was
+              published, not about what happened in the schools. What replaced it is a national
+              average — one number for the whole country — against a duty the Act imposes school by
+              school."* Every clause of that is now in the caveat rendering directly above it —
+              *DISCONTINUED, NOT MERELY UNRETRIEVED*, and the national mean against a school-by-school
+              duty. The copy was standing in for a mark that did not render; the mark renders, so the
+              stand-in goes, and what is left is the one thing the caveat does not say: why this
+              chart is the hinge of the page. */}
           <p className="home-stop-note">
-            <strong>The published series ends in 2015-16.</strong> That is a fact about what was
-            published, not about what happened in the schools. What replaced it is a national
-            average — one number for the whole country — against a duty the Act imposes school by
-            school.
+            <strong>The same statistical system produced everything above.</strong> It did not stop
+            being able to measure this. Read the caveat: the successor system holds the school-level
+            counts and publishes a national mean instead — which is why this chart, and not any of
+            the four above it, is what the rest of this site is about.
           </p>
         </>
       ) : null}

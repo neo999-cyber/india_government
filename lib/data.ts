@@ -230,6 +230,26 @@ export const pairsHostedOn = (route: string): Pair[] =>
       [p.a, p.b].map(hostRouteForSide).find(Boolean) === route,
   );
 
+/**
+ * Pairs that NAME this ledger record in `ledgerRefs` — the reverse of a link that only ran one way.
+ *
+ * WHY IT DID NOT EXIST. `ledgerRefs` is populated on 45 of 60 pairs, 68 references over 53 records,
+ * zero dangling — and **no ledger record names a pair**, so the relationship was recorded in one
+ * direction and read in neither. A pair with two series sides is hosted on a series page, so
+ * L-0074 (Expansion of PMLA enforcement) had no way of learning that PR-14 (PMLA cases initiated
+ * against persons convicted) is the measurement of exactly what it describes.
+ *
+ * **The pair is the measurement and the record is the policy.** That is the edge, and it was
+ * already in `/data`.
+ *
+ * NON-RENDERING PAIRS ARE EXCLUDED. Two are `declared-pending` and render nowhere; listing them
+ * here would put a link to a comparison the reader cannot reach. `pairHref` is the single source of
+ * truth for where a pair lives, so the row links through it rather than guessing a route — the
+ * defect that put sixteen `/series/L-` anchors on the site.
+ */
+export const pairsNaming = (ledgerId: string): Pair[] =>
+  pairs.filter((p) => pairRenders(p) && (p.ledgerRefs ?? []).includes(ledgerId));
+
 export function pairHref(p: Pair): string | undefined {
   if (!pairRenders(p)) return undefined;
   const subjects = subjectSeriesIds(p);

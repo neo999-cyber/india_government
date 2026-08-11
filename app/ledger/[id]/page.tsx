@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getLedger, getProvenance, getSeries, ledger as allLedger, pairsHostedOn } from '@/lib/data';
+import { getLedger, getProvenance, getSeries, ledger as allLedger, pairHref, pairsHostedOn, pairsNaming } from '@/lib/data';
 import { lastTouched } from '@/lib/history';
 import { PairSection } from '@/components/PairSection';
 import { HowDoWeKnow, RestsOn } from '@/components/RecordEvidence';
@@ -38,6 +38,7 @@ export default async function LedgerDetail({ params }: Props) {
 
   const refSeries = (l.seriesRefs ?? []).map(getSeries).filter((s): s is NonNullable<typeof s> => !!s);
   const hostedPairs = pairsHostedOn(`/ledger/${l.id}/`);
+  const namingPairs = pairsNaming(l.id);
   const refDisputes = (l.provenanceRefs ?? [])
     .map(getProvenance)
     .filter((p): p is NonNullable<typeof p> => !!p);
@@ -235,6 +236,34 @@ export default async function LedgerDetail({ params }: Props) {
       {/* §4d.1 — every edge below is a field in `/data`. No causal edge is drawn. */}
       <h2>What this rests on</h2>
       <RestsOn record={l} series={refSeries} disputes={refDisputes} />
+
+      {/* THE REVERSE INDEX — item 4, and it renders a link that was already in `/data` and ran only
+          one way. A pair's `ledgerRefs` names the records it bears on; nothing named the pair back,
+          and a two-series pair lives on a series page, so this record could not know it was being
+          measured. Placed under the connections diagram because that is where declared edges live,
+          and this is one: it is `ledgerRefs`, not an inference. */}
+      {namingPairs.length > 0 ? (
+        <>
+          <h3 className="rests-sub">Measurements that name this record</h3>
+          <p className="prose-note">
+            {namingPairs.length === 1 ? 'One paired measurement names' : `${namingPairs.length} paired measurements name`}{' '}
+            this record in its own <span className="mono">ledgerRefs</span>. Each sets two
+            instruments against each other on a quantity this record is about; each renders on the
+            page of a series it compares, not here.
+          </p>
+          <ul className="naming-pairs">
+            {namingPairs.map((pr) => {
+              const href = pairHref(pr);
+              return (
+                <li key={pr.id}>
+                  <span className="mono t-note">{pr.id}</span>
+                  {href ? <Link href={href}>{pr.title ?? pr.framing}</Link> : (pr.title ?? pr.framing)}
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      ) : null}
 
       <h2>Sources</h2>
       {/* THE INDEPENDENCE GRADE SITS HERE AND NOT BESIDE THE VERDICT, deliberately. It grades the

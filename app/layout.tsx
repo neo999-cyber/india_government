@@ -69,61 +69,90 @@ export const metadata: Metadata = {
  * because `link-check` walks every emitted href and a nav link to an unbuilt route is a dead link
  * — the defect that gate was built for. They join when the surfaces ship.
  */
+/**
+ * THE NAV, GROUPED WHOLE — operator decision 2026-08-11, releasing the item reserved since phase 17.
+ *
+ * IT WAS EIGHTEEN DISTINCT DESTINATIONS IN THREE GROUPS, one of which held thirteen. Thirteen items
+ * under one word is not a group, it is a list with a heading; a reader scanning it has to know what
+ * `provenance`, `exposure`, `derivations` and `counterfactual` mean before choosing, and the answer
+ * to "where do I look" was "read all thirteen".
+ *
+ * ============================ THE GROUPING, AND WHAT DECIDES IT ================================
+ *
+ * Not by layer, and not by how often a surface is used. **By the question a reader arrives with**,
+ * because that is the only thing they know before they know the vocabulary.
+ *
+ *   READ      — the three ways in that need no vocabulary at all.
+ *   BROWSE    — what is the record ABOUT: subject, lens, term, peer. Four axes over one corpus.
+ *   RECORDS   — the corpus itself, by layer: series, ledger, provenance, pairs.
+ *   LIMITS    — what the record does NOT establish. The four surfaces that exist because this
+ *               instrument's subject is partly its own incompleteness, and putting them together
+ *               is the strongest single statement the nav can make about what the site is.
+ *   ABOUT     — the corpus about itself.
+ *
+ * **`/contested/` MOVES FROM THE OLD FLAT LIST INTO `RECORDS`, not into `LIMITS`**, and the call is
+ * arguable. It holds 60 paired divergent measurements — a disagreement between two instruments is a
+ * thing the corpus HOLDS, not a thing it cannot establish. `/unmeasured/`'s 374 declared absences
+ * are the opposite: the record saying nothing measures this.
+ *
+ * ============================ WHAT IT COSTS A READER WHO GOES DIRECT ===========================
+ *
+ * **Nothing. Every route is unchanged and every one is still one click from every page.** No surface
+ * moved behind a disclosure, nothing became a sub-page, and `link-check` walks every emitted href.
+ * The change is that the thirteen are now five short rows instead of one long one, so a reader
+ * scanning for "where does it say what is missing" finds a heading called *limits* rather than
+ * having to already know that `unmeasured` is the answer.
+ *
+ * The cost is paid by a reader who had memorised the old order — the flat list was alphabetical by
+ * nothing and stable, and it is now regrouped. That is a real cost and a small one against the
+ * reader who has never been here, who is the reader this whole phase is for.
+ *
+ * PRIMARY HOLDS ONLY ROUTES THAT EXIST. `search` is named in §10a and is not here, because
+ * `link-check` walks every emitted href and a nav link to an unbuilt route is a dead link.
+ */
 const PRIMARY = [
-  // Overview is its own surface since 2026-08-10 — the whole record in one view. The wordmark is
-  // the way home; "overview" pointing at "/" made the first nav item a synonym for the logo.
   { href: '/overview/', label: 'overview' },
   { href: '/domains/', label: 'explore' },
-  // Joined the primary row when the surface shipped, not before — see the note above.
   { href: '/stories/', label: 'stories' },
 ];
 
-const EVIDENCE = [
-  { href: '/domains/', label: 'domains' },
-  // Next to domains rather than at the end, because the two are the same question asked twice —
-  // what a record is about, and what it also bears on. A lens reached only from a record page
-  // would be a filter a reader could use but not find.
-  { href: '/lenses/', label: 'lenses' },
-  { href: '/series/', label: 'series' },
-  { href: '/ledger/', label: 'ledger' },
-  { href: '/provenance/', label: 'provenance' },
-  { href: '/terms/', label: 'terms' },
-  { href: '/peers/', label: 'peers' },
-  { href: '/counterfactual/', label: 'counterfactual' },
-  { href: '/contested/', label: 'contested' },
-  { href: '/exposure/', label: 'exposure' },
-  { href: '/unmeasured/', label: 'unmeasured' },
-  { href: '/method/', label: 'method' },
-  { href: '/derivations/', label: 'derivations' },
-  // Added 2026-08-11. All three answer questions a reader of the evidence has and no surface
-  // answered: who published this, has it been revised, and can I have the whole thing as data.
-];
-
-/**
- * THE CORPUS ABOUT ITSELF — a second labelled group, operator decision 2026-08-11.
- *
- * WHAT THIS RECORDS RATHER THAN JUST FIXES. The nav has been a standing open design item at
- * **thirteen destinations** since phase 17, under the operator's ruling that the accretion is
- * design work. It reached **nineteen**, and the last three are mine: `/publishers/`,
- * `/corrections/` and `/data/`, added 2026-08-11 in `4bcfcb3`. Each was defensible on its own —
- * they answer *who published this*, *has this been revised*, *can I have the whole thing as data* —
- * **and that is exactly how a list gets from thirteen to nineteen: one defensible item at a time,
- * each noted nowhere.** The count is written into this comment so the next addition has to walk
- * past it.
- *
- * THE CONTAINMENT IS PARTIAL BY DESIGN AND SAYS SO. Grouping these three is not the nav grouping;
- * it touches only what this session added and leaves the other sixteen exactly as they were. **The
- * full grouping stays reserved for the design work** and this must not be read as having done it.
- *
- * WHY THESE THREE ARE ONE GROUP AND NOT THREE ITEMS. They are the only surfaces whose subject is
- * the CORPUS rather than India: who published the evidence, what this instrument has revised, and
- * the data itself. Everything in EVIDENCE above is a way into the records; these three are ways
- * into the record-keeping.
- */
-const ABOUT_THE_RECORD = [
-  { href: '/publishers/', label: 'publishers' },
-  { href: '/corrections/', label: 'corrections' },
-  { href: '/data/', label: 'data' },
+const GROUPS: { label: string; items: { href: string; label: string }[] }[] = [
+  {
+    label: 'browse',
+    items: [
+      { href: '/domains/', label: 'subjects' },
+      { href: '/lenses/', label: 'lenses' },
+      { href: '/terms/', label: 'terms' },
+      { href: '/peers/', label: 'peers' },
+    ],
+  },
+  {
+    label: 'records',
+    items: [
+      { href: '/series/', label: 'series' },
+      { href: '/ledger/', label: 'ledger' },
+      { href: '/provenance/', label: 'disputes' },
+      { href: '/contested/', label: 'contested pairs' },
+    ],
+  },
+  {
+    label: 'limits',
+    items: [
+      { href: '/unmeasured/', label: 'unmeasured' },
+      { href: '/exposure/', label: 'exposure' },
+      { href: '/counterfactual/', label: 'counterfactual' },
+      { href: '/method/', label: 'method' },
+    ],
+  },
+  {
+    label: 'about the record',
+    items: [
+      { href: '/derivations/', label: 'derivations' },
+      { href: '/publishers/', label: 'publishers' },
+      { href: '/corrections/', label: 'corrections' },
+      { href: '/data/', label: 'data' },
+    ],
+  },
 ];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -153,24 +182,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {/* A labelled group, not a disclosure. A disclosure would hide thirteen surfaces
                 behind a control a phone reader has to find, which is the §8.2 defect: a thing
                 that renders correctly and reaches nobody. It wraps instead. */}
-            <nav className="nav nav-evidence" aria-label="Evidence">
-              <span className="nav-group-label">evidence</span>
-              {EVIDENCE.map((item) => (
-                <Link key={item.href} href={item.href}>
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            {/* Same shape as the evidence group, same reason it is a labelled group rather than a
-                disclosure: a control a phone reader has to find is a surface that reaches nobody. */}
-            <nav className="nav nav-evidence nav-about" aria-label="About the record">
-              <span className="nav-group-label">about the record</span>
-              {ABOUT_THE_RECORD.map((item) => (
-                <Link key={item.href} href={item.href}>
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+            {GROUPS.map((g) => (
+              <nav key={g.label} className="nav nav-evidence" aria-label={g.label}>
+                <span className="nav-group-label">{g.label}</span>
+                {g.items.map((item) => (
+                  <Link key={item.href} href={item.href}>
+                    {item.label}
+                  </Link>
+                ))}
+              </nav>
+            ))}
+
           </header>
           <main>{children}</main>
           <footer className="foot">

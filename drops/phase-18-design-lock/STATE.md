@@ -13,12 +13,23 @@ phase table. Nothing there is withdrawn by this file except the queue rows resta
 
 ---
 
-## THE QUEUE, WHOLE, at 3b7809c + this batch — EMPTY BUT FOR THE RESERVED DESIGN ITEM
+## THE QUEUE, WHOLE, at 99754d0 + this batch
 
-**Nothing blocks the design work, and nothing is owed to an operator.**
+**Design work is running. One item is open and it is an operator decision, not work.**
 
-| item | state |
-|---|---|
+| item | owner | state |
+|---|---|---|
+| copy against newly-marked feature charts | closed | **CLOSED.** 4 surfaces, 3 marked series. **Two distinct problems**: the homepage opening was UNDER-qualified *and inoculating* — it named the FY2020-21 restatement, so a reader had been told the denominator was handled, while the caveat's subject is an ongoing decline making half the trend an artefact. The homepage stop and the story callout were DUPLICATING their caveats. All three rewritten; no caveat softened |
+| nav grouping | closed | **CLOSED — the whole nav.** 18 destinations, 3 groups → 5: primary · browse · records · limits · about the record. No route moved, nothing behind a disclosure, every surface still one click from every page |
+| `ledgerRefs` reverse index | closed | **CLOSED.** `pairsNaming()`, 65 rows across 51 records, under the connections diagram. Zero overlap with hosted pairs. Tripped `listing-marks` correctly and widened `isPairRow` from `<td>` to any element-wrapped `PR-xx` — the third guard bound to one shape of several |
+| **share cards** | **OPERATOR — two decisions** | **SCOPED, NOT BUILT.** `SHARE-CARDS-SCOPE.md`. (1) `next/og` is UNAVAILABLE — tested, fails the build under `output: export`; recommendation is text-only OG tags, and the reason is a rule conflict rather than cost. (2) `X-Robots-Tag: noindex, nofollow` is served on every route, so cards work for a pasted link and nothing for search discovery — two settings made at different times, and only the operator can say which is intended |
+
+### The standing design item, unchanged
+
+Nothing else is queued for design. The two items the phase opened with — nav, and a caveat rendering
+in full inside a table cell — are both closed.
+
+---|---|
 | `pairs.status` — two conventions | **CLOSED.** `status: "live"` deleted from 12 records (PR-48…PR-60). Declared numstat 0/12, actual 2/14 — two records carried it as the last key, so `],` became `]`. The key-level assertion held exactly |
 | correspondence unenforced | **CLOSED.** `pair-status` in `checkIntegrity`, so it runs inside `validate` at no build cost. Both directions proven by `tests/fixtures/pair-status/` and two `ISOLATED` selftest entries; the enforcement itself was proven by removing a fixture and watching the selftest name the unmet expectation |
 | `pairs.ledgerRefs` | **CLOSED as a question — it is a DEBT, not dead.** 45/60 pairs, 68 refs, 53 records, **0 dangling**, and **no ledger record names a pair**, so it is not derivable and deleting it loses information. The unbuilt thing is the REVERSE index: L-0074 never learns PR-14 exists. A view, not a report |

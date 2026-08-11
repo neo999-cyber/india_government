@@ -13352,3 +13352,130 @@ the 622-character one **in full, unclamped**, through the gate's own normaliser.
 branches · `field-render-audit` 44 prose + 52 non-prose, 4 layers, 0 invisible, 17 exempted ·
 `listing-marks` 2,787 rows / 3,916 marks · `link-check` 27,979 hrefs / 668 pages / 0 dead ·
 `quotation-identity` 31/31 · `domain-coverage` 14/14, 1137/1137.
+
+---
+
+## 2026-08-11 (tenth entry) — the copy pass, the nav grouped whole, the reverse index, and share cards scoped
+
+### 1. THE COPY PASS — and the sweep found two problems, not one
+
+**Four surfaces render a feature chart.** `app/page.tsx` (opening, three supporting, the stop) and
+the education story. **No domain page uses one**, so *any domain lead* has no instance. Of the five
+charted series, **three carry a mark**: `higher-ed-ger` (622 ch), `schools-above-rte-ptr-primary-dise`
+(558 ch), `parakh-grade3-proficient-language` (548 ch + one declared absence). The three supporting
+charts carry none, so nothing was owed there.
+
+**AND THE THREE SPLIT TWO WAYS, WHICH THE INSTRUCTION DID NOT ANTICIPATE AND IS THE USEFUL FINDING.**
+
+**UNDER-QUALIFIED — the homepage opening, one instance.** Rewritten. The withdrawn takeaway read
+*"Thirty per cent of Indians aged 18 to 23 are enrolled in higher education, up from 21 per cent in
+2011-12. The line breaks in FY2020-21 because the population it is divided by was restated, not
+because enrolment jumped."*
+
+**It was worse than silence, and that is the part worth recording.** It mentioned the denominator —
+so a reader had already been told the denominator was accounted for. But it named the FY2020-21
+*restatement*, a one-off causing a visible break, while the caveat's subject is an ongoing *decline*
+making roughly half the trend an artefact. **Naming the smaller of two problems inoculates against
+the larger one.** The rewrite states the compound fact — the rise, and that half of it is the cohort
+shrinking — and hands the arithmetic to the caveat rather than duplicating it. The heading gained
+five words for the same reason: it promised a clean number over a chart whose caveat says half the
+movement is a denominator effect.
+
+**DUPLICATED — the other two.** Both had copy standing in for a mark that did not render, and the
+mark now renders.
+
+- The homepage stop's note said the series ends in 2015-16, that this is a fact about publication
+  not schools, and that a national mean answers a school-by-school duty. **Every clause is in the
+  caveat directly above it.** Replaced with the one thing the caveat has no standing to say: why
+  this chart and not the four above it is what the site is about.
+- The story's callout said the cut-scores are published nowhere and no outsider can check the band.
+  **The caveat opens `THE CUT-SCORES ARE PUBLISHED NOWHERE`.** The callout stays — a scroll story's
+  callout carries the sequence, which a caveat cannot — and now says what the caveat has no standing
+  to say: what this does to the government's own claim.
+
+**No caveat was softened, shortened or moved.** Rule 3a binds the caveat; the copy bent around it in
+all three cases.
+
+### 2. SHARE CARDS — scoped, not built. `drops/phase-18-design-lock/SHARE-CARDS-SCOPE.md`
+
+**THE OBVIOUS MECHANISM DOES NOT WORK, AND THIS WAS TESTED.** A minimal
+`app/data/opengraph-image.tsx` was added and the build run: `Failed to collect page data for
+/data/opengraph-image`. **`ImageResponse` is a runtime API and `output: 'export'` has no runtime** —
+it does not degrade, it fails the build. Probe removed.
+
+Of the four remaining options, **static SVG is rejected because unfurlers do not render SVG in
+`og:image`** — the one job it has — and client-side canvas serves a download button, not a share.
+That leaves Satori in a build script (two dependencies, a font pipeline, ~700 KB of WASM) or
+**text-only OG tags**, which is the recommendation.
+
+**AND IT IS THE RECOMMENDATION BECAUSE OF A RULE CONFLICT, NOT BECAUSE IT IS CHEAP.** A card is a
+fixed frame; a caveat may not be truncated; 128 of 269 series and 103 of 223 ledger records carry
+one, median 364 characters, longest 1,320. A figure plus a *this record is qualified* badge is
+truncation wearing a badge — **the exact defect the homepage was corrected for in item 1.** The
+resolution: **a card states a finding that is true WITHOUT the caveat, or it states the qualification
+instead of the figure.** Worked on the case that prompted it — not *"30% of 18–23s, up from 21%"*,
+which would be the site publishing what it exists to catch, but *"Roughly half the rise in India's
+higher-education enrolment ratio is the 18–23 population shrinking, not more students."* Shorter,
+better, and needs no caveat because it IS the caveat's finding. A finding stated that way fits an
+`og:description` in full, which is why the constraint that kills the image also removes the need for
+one.
+
+**One thing flagged for the operator rather than decided**: `vercel.json` serves
+`X-Robots-Tag: noindex, nofollow` on every route. Cards will work for a pasted link and do nothing
+for search discovery. Two settings made at different times; only the operator can say which is
+intended.
+
+### 3. THE NAV, GROUPED WHOLE
+
+**Eighteen distinct destinations in three groups, one of which held thirteen.** Thirteen items under
+one word is a list with a heading, not a group: the answer to *where do I look* was *read all
+thirteen*, and a reader had to know what `provenance`, `exposure`, `derivations` and `counterfactual`
+mean before choosing.
+
+**Grouped by the question a reader arrives with**, because that is the only thing they know before
+they know the vocabulary — not by layer, and not by frequency of use.
+
+| group | items |
+|---|---|
+| *(primary)* | overview · explore · stories |
+| **browse** | subjects · lenses · terms · peers |
+| **records** | series · ledger · disputes · contested pairs |
+| **limits** | unmeasured · exposure · counterfactual · method |
+| **about the record** | derivations · publishers · corrections · data |
+
+**`/contested/` sits in `records`, not `limits`, and the call is arguable.** 60 paired divergent
+measurements are a thing the corpus HOLDS; `/unmeasured/`'s 374 declared absences are the record
+saying nothing measures this. Two labels also changed — `domains` reads *subjects* inside a group
+called browse, and `provenance` reads *disputes*, because the group label now carries the context
+the jargon used to have to.
+
+**WHAT IT COSTS A READER WHO GOES DIRECT: nothing.** Every route is unchanged, every one is still one
+click from every page, nothing moved behind a disclosure and nothing became a sub-page — `link-check`
+walks all 28,044 emitted hrefs. The cost is paid by a reader who had memorised the old flat order,
+which is real and small against the reader who has never been here.
+
+### 4. THE REVERSE INDEX — a link that was in `/data` and ran one way
+
+`pairsNaming(ledgerId)` on the record page, under the connections diagram where declared edges live.
+**65 rows across 51 ledger records** — the two `declared-pending` pairs are excluded, because listing
+them would link a comparison the reader cannot reach. Rows link through `pairHref`, the single source
+of truth for where a pair lives, rather than guessing a route.
+
+**Zero overlap with what the page already showed**: all 68 references are to pairs hosted elsewhere,
+so nothing is duplicated. L-0074 (Expansion of PMLA enforcement) now names PR-14 (PMLA cases
+initiated against persons convicted) and links to where it renders.
+
+**AND IT TRIPPED `listing-marks`, WHICH WAS RIGHT TO FIRE — 75 missing marks.** The new rows link a
+series page, so the gate read them as listing that series. They are not: the row is about the PAIR
+and the linked record is the ADDRESS. The gate already had that exemption — `isPairRow` — bound to
+`<td>PR-xx</td>`, and the reverse index uses `<li>` with a `<span>`.
+
+**THIRD TIME A GUARD HAS BOUND ONE SHAPE OF A THING THAT HAS SEVERAL** — the card class
+(`grid-title` against `mini-t`), the listing row, and now the pair-row cell. Widened to match an
+element-wrapped `PR-xx` in any of four tags rather than a tag by name, and **it still requires the id
+to be wrapped in its own element**, so a `PR-xx` mentioned in prose cannot exempt a row — which is
+what stops this becoming a way to opt out of rule 4b by citation.
+
+**Gates:** `validate` VALID · `link-check` **28,044** hrefs / 668 pages / 0 dead (was 27,979 —
+the reverse index) · `listing-marks` 2,787 rows / 3,916 marks, control green · `field-render-audit`
+4 layers, 0 invisible · `quotation-identity` 31/31 · `domain-coverage` 14/14, 1137/1137.

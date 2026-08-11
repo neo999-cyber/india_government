@@ -212,10 +212,22 @@ export default function Story() {
             takeaway="The eighteen-point rise the Government's headline evidence rests on."
             highlightLast={false}
           />
+          {/* THE SAME DUPLICATION AS THE HOMEPAGE STOP, and found by the same sweep. This callout
+              read: *"The cut-scores that define the band are published nowhere. Without them, no
+              one outside the body reporting the improvement can check whether the band moved or the
+              children did."* It was written when this chart rendered no marks. It now renders a
+              548-character caveat opening *THE CUT-SCORES ARE PUBLISHED NOWHERE* and making the
+              same point — plus a declared absence naming the cut-scores as not-published.
+
+              The callout stands rather than being deleted, because a scroll story's callout does
+              work a caveat cannot: the caveat qualifies the record, the callout carries the
+              sequence. So it stops restating the caveat and says the thing the caveat has no
+              standing to say — what this does to the government's own claim. */}
           <p className="story-callout">
-            <strong>The cut-scores that define the band are published nowhere.</strong> Without
-            them, no one outside the body reporting the improvement can check whether the band moved
-            or the children did.
+            <strong>So the headline evidence cannot be checked by anyone outside the body that
+            reports it.</strong> That is not an argument that the gain is unreal. It is that the one
+            number the foundational-literacy claim rests on is, on its own publisher&rsquo;s
+            disclosure, unverifiable — and the caveat above is the record saying so.
           </p>
         </>
       ) : null}
