@@ -3127,3 +3127,61 @@ details.more > summary {
   color: var(--ink-2);
   margin: 0.4rem 0 0;
 }
+
+/* Play, pause and speed on the year control. The play button is removed from the DOM under
+   reduced motion — see the component — so there is no disabled-state styling here by design. */
+.scrub-play {
+  font: inherit;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  min-height: 44px;
+  padding: 0 0.85rem;
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--ink-2);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.scrub-play[aria-pressed='true'] {
+  border-color: var(--mark);
+  color: var(--mark-ink);
+}
+
+.scrub-speeds {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+}
+
+.scrub-speed {
+  font: inherit;
+  font-size: 0.6875rem;
+  font-family: var(--font-mono);
+  min-height: 44px;
+  min-width: 40px;
+  padding: 0 0.5rem;
+  background: none;
+  border: 0;
+  border-right: 1px solid var(--rule);
+  color: var(--ink-dim);
+  cursor: pointer;
+}
+
+.scrub-speed:last-child {
+  border-right: 0;
+}
+
+.scrub-speed.is-on {
+  color: var(--ink);
+  background: var(--surface);
+}
+
+/* A belt-and-braces CSS removal to match the component's DOM removal: if scripting is off the
+   button was never rendered anyway, and if a reader's setting changes mid-session the media query
+   hides it before React re-renders. */
+@media (prefers-reduced-motion: reduce) {
+  .scrub-play,
+  .scrub-speeds {
+    display: none;
+  }
+}
