@@ -13883,3 +13883,61 @@ by disabling transitions and re-reading: every value flips correctly, `remBg` 0%
 **Gates:** `corrections` 30 redlines / 23 records over 111 commits, 144 KB · `listing-marks` 3,883
 rows / 5,515 marks · `unrecognised-rows` 62, baseline restored · `link-check` 30,587 hrefs / 669
 pages / 0 dead · all others unchanged.
+
+---
+
+## 2026-08-11 (sixteenth entry) — FEATURE 3, MEASURED AND NOT BUILT: the series span strip
+
+The instruction was **measure first and report the shape; if the spans do not visibly cluster, say
+so and do not build it.** They cluster. The strip is worth building and this batch does not have
+room for it, so the measurement is banked and the build is carried.
+
+### The shape, over 269 series with at least one India observation
+
+**START YEAR IS STRONGLY MODAL, AND THE MODE IS A FACT ABOUT THE INSTRUMENT.** 63 of 269 begin in
+**2014** — the frozen baseline — against 24 in 2018, 21 in 2013, 20 in 2010 and 17 each in 2017 and
+2020. Sorted by first observation, the strip has a visible wall at 2014 and a thin tail back to a
+single series starting 1952. That is structure, not a block.
+
+**SPAN LENGTH IS BIMODAL.** 91 series run 11–15 years — the long clean spine — against **59 at three
+years or fewer, 33 of them a single point.** Those two groups are visually opposite: full-width bars
+and stubs. A strip sorted by start year will show both, which a table of 269 rows does not.
+
+**BREAKS: 100 of 269 change basis at least once**, so seams-as-cuts will appear on roughly two rows
+in five. Enough to read as a pattern rather than as noise.
+
+**VERIFIED AGAINST APPROXIMATE IS AN ALMOST EXACT SPLIT: 124 all-verified, 123 none, 22 mixed.** Fill
+weight will divide the strip nearly in half, which is a stronger finding than the numbers suggested
+before they were laid on one axis.
+
+### ONE NUMBER WAS WRONG BEFORE IT WAS CHECKED, AND IT IS THE ONE THE FILTER IS NAMED FOR
+
+The proposed filter is *ends before the latest year*. Computed against the latest end year in the
+corpus — 2026 — it returns **264 of 269, 98 per cent**, which would make the dashed end nearly
+universal and therefore say nothing.
+
+**That figure is an artefact of 2026 barely existing: exactly five series reach it.** The real
+publication frontier is 2024–25, where 171 series end. Measured against that, **93 series end in 2023
+or earlier — 35 per cent — and 34 end in 2020 or earlier.**
+
+**35 per cent is a finding; 98 per cent would have been a bug in the filter presented as a finding
+about the corpus.** This is the unstated-scope defect precisely: a count wrong by an amount nobody
+can see, and the amount here is 171 series. The filter must be defined against the publication
+frontier, not against the maximum, and the strip must say which — otherwise a reader takes a
+still-current annual series that simply has no 2026 figure yet for one whose publisher stopped.
+
+### What the build still owes, carried
+
+The four filters, with the middle one now correctly defined: **all · ends before the publication
+frontier (93) · changes basis (100) · short span, ≤3 years (59)**. Seams as vertical cuts. A dashed
+end only where the series ends 2023 or earlier. Fill weight for verified against approximate.
+
+**Label collision at 269 rows is certain and the `PeerSlope` precedent governs**: move text, never a
+datum, and state it in the component. Nothing here has been built, so nothing has been de-collided
+yet.
+
+### Where the batch stopped
+
+F1 shipped last batch, the cross-cutting check and **F2 shipped this one**. F3 is measured and
+carried; **F4 and F5 are unstarted.** A clean partial beats four thin features, and the F3
+measurement was the part the instruction required before any of it.

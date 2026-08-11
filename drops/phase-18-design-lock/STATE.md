@@ -13,13 +13,19 @@ phase table. Nothing there is withdrawn by this file except the queue rows resta
 
 ---
 
-## THE QUEUE, WHOLE, at 9147bad + this batch
-
-**Five features were requested in order. One shipped, plus the cross-cutting check taken first
-because it guards the rest. Four are carried, unstarted, in the operator's order.**
+## THE QUEUE, WHOLE, at ae0dcaa + this batch
 
 | item | state |
 |---|---|
+| **F1 — play on the year control** | **SHIPPED** `0d0ea60` (prior batch) |
+| **cross-cutting — `unrecognised-rows`** | **SHIPPED** `a82f7ba` (prior batch). Report-only, in the build, baseline **62** |
+| **F2 — the corrections redline** | **SHIPPED** `f0d7b03`. 30 redlines / 23 records from git, before-and-after with the change marked, wipe per item plus a master. Reconstruction asserted exact, 0 failures. **It raised `unrecognised-rows` 62 → 71 on landing and was bound in the same commit, back to 62** — the check earning its place on the first feature it guarded |
+| **F3 — the series span strip** | **MEASURED, NOT BUILT. The shape is a structure and the build is carried.** 63 of 269 start in 2014; spans bimodal at 91 long against 59 ≤3 years; 100 change basis; verified splits 124/123/22. **One filter was mis-defined and the measurement caught it**: *ends before the latest year* returns 264 of 269 against 2026, which barely exists — against the real publication frontier of 2024–25 it is **93**. Build against the frontier, not the maximum |
+| **F4 — contested, two readings** | **CARRIED, unstarted** |
+| **F5 — the exposure matrix** | **CARRIED, unstarted** |
+| the 62, and the pair-pooling question | **CARRIED, untouched** — not resolved inside a feature batch, per the standing trade |
+
+---|---|
 | **F1 — play on the year control** | **SHIPPED** `0d0ea60`. Play/pause, three speeds, stops rather than loops. §7a holds at every step — verified 2019→2011, **0 cards holding a stale value**. Reduced motion removes the control from the DOM, not just hides it. Step cost median 3.4ms / p90 5.6 against a 2.5/3.8 baseline and a 275ms fastest interval |
 | **cross-cutting — the prose-anchor check** | **SHIPPED** `a82f7ba`. `unrecognised-rows`, report-only, in the build. Discriminator: a listing names a record by its TITLE, a citation by its ID — 462 against 17 when measured. Found that `listing-marks` was not binding the domain rebuild's containers: **+737 rows, +1,082 marks**. Caught a hand-rolled caveat renderer in `PeerSlope`. **62 reported and carried**, each needing its component's unit named |
 | **F2 — the corrections redline** | **CARRIED, unstarted.** 31 quotations across 29 records, withdrawn against replacement, per-correction control plus a master |
