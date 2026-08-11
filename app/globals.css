@@ -3660,3 +3660,24 @@ details.more > summary {
 }
 .xrow-entry { margin: 0 0 0.6rem; }
 .xrow-entry:last-child { margin-bottom: 0; }
+
+/* The evidence-grade note. Two areas carry one; it sits above the periods because in those two the
+   grade IS the subject, and a page that buries it under a chart has hidden the most useful thing it
+   knows about itself. Styled as a statement, not as a warning — no alert colour, no rule down the
+   side: this is information about how India publishes, not a defect being flagged. */
+.evidence-note {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  padding: 1rem 1.15rem;
+  margin: 1.5rem 0;
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+  max-width: 74ch;
+}
+.evidence-note .mono {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.8125rem;
+  color: var(--ink-dim);
+  font-variant-numeric: tabular-nums;
+}

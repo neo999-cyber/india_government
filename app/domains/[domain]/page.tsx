@@ -17,7 +17,7 @@ import { DOMAINS, LENSES, LENS_ONLY, type Domain, type Lens } from '@/lib/types'
 import type { Pair, Series } from '@/lib/types';
 import { CaveatRow, RecordMarks, StatusKey, StatusTally, TallyGloss, TierTag } from '@/components/marks';
 import { SeriesChart } from '@/components/SeriesChart';
-import { DOMAIN_CHARACTER, DOMAIN_PERIODS } from '@/lib/domain-copy';
+import { DOMAIN_CHARACTER, DOMAIN_EVIDENCE, DOMAIN_PERIODS } from '@/lib/domain-copy';
 import type { LedgerRecord } from '@/lib/types';
 
 type Props = { params: Promise<{ domain: string }> };
@@ -95,6 +95,12 @@ export default async function DomainPage({ params }: Props) {
     .map(([year, n]) => ({ year, label: `${year} · ${n} record${n === 1 ? '' : 's'}` }));
 
   const periods = DOMAIN_PERIODS[d];
+  // THE COUNTS ARE DERIVED, the sentence beside them is authored. A hardcoded "94 of 95" would be
+  // a claim about the past in the present tense the first time a series is added.
+  const evidence = DOMAIN_EVIDENCE[d];
+  const indiaPoints = s.flatMap((x) => x.points.filter((pt) => pt.country === 'IND' && pt.value !== null));
+  const verifiedPoints = indiaPoints.filter((pt) => pt.status === 'verified').length;
+  const approxPoints = indiaPoints.filter((pt) => pt.status === 'approx').length;
   const byDate = [...l].sort((a, b) => b.date.localeCompare(a.date));
   const shownRecords = byDate.slice(0, 6);
   const restRecords = byDate.slice(6);
@@ -156,6 +162,16 @@ export default async function DomainPage({ params }: Props) {
       ) : null}
 
       {/* ---- WHAT CHANGED. Authored, per period, from the records. One of fourteen written. --- */}
+      {evidence ? (
+        <p className="evidence-note">
+          <span className="label">How this area is published</span> {evidence}{' '}
+          <span className="mono">
+            {approxPoints} of {indiaPoints.length} India observations are published as
+            approximations; {verifiedPoints} {verifiedPoints === 1 ? 'is' : 'are'} verified.
+          </span>
+        </p>
+      ) : null}
+
       {periods ? (
         <section className="periods">
           <div className="sec-h">

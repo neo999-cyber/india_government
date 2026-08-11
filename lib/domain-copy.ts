@@ -34,16 +34,19 @@ import type { Domain } from '@/lib/types';
  *
  * ============================ COVERAGE, STATED =================================================
  *
- * **Three of fourteen are written**, and the count is restated here on every change because a
+ * **Five of fourteen are written**, and the count is restated here on every change because a
  * coverage line that goes stale is a claim about the past in the present tense — the defect this
  * repository has already paid for in its own session-cost section. `macro` is the pattern;
- * `education` and `environment` were written 2026-08-11. **The other eleven render the same page
- * without the periods block** — not a stub, not a placeholder: the section simply is not there,
- * which is honest, where a heading over generated filler would not be.
+ * `education` and `environment` followed on 2026-08-11, `infrastructure` and `employment` the same
+ * day. **The other nine render the same page without the periods block** — not a stub, not a
+ * placeholder: the section simply is not there, which is honest, where a heading over generated
+ * filler would not be.
  *
  * Period spans are chosen by what changed and are NOT uniform across areas. `education` opens at
- * 2010 because the Right to Education Act's own numbers are what the first period is about, and
- * `environment` has three periods rather than four because nothing in it divides at 2017.
+ * 2010 because the Right to Education Act's own numbers are what the first period is about;
+ * `environment` and `employment` take three rather than four because nothing in either divides at
+ * the fourth point; and `employment`'s first period exists to say that no national survey covers
+ * it. **A period count is a reading of the area, never a template.**
  */
 export type Period = {
   /** Displayed as given — a span, not a term. Periods are chosen by what changed, not by election. */
@@ -140,6 +143,84 @@ export const DOMAIN_PERIODS: Partial<Record<Domain, Period[]>> = {
       from: ['L-0226', 'L-0216'],
     },
   ],
+
+  infrastructure: [
+    {
+      years: '2012 — 2016',
+      heading: 'Building genuinely accelerated, and the headline figure measures something else',
+      body:
+        'This area opens on a failure of the existing plant — the July 2012 grid collapse, entered as baseline context rather than as anything announced. What followed was announced at scale and mostly delivered at scale. Highway construction roughly tripled its pace and four-laning went up two and a half times; the network figure quoted alongside it, 91,287 km to 146,342 km, is mostly reclassification of existing state roads. Freight corridors cut coal transit on the eastern route from 35 hours to 20 and haulage from 95 to 45 paise per tonne-kilometre. Metro assets were built and the ridership was not: most systems carry 25 to 30 per cent of the projections their approvals rested on, and the return those approvals promised is not published. Ports are one of the few places where output and utilisation improved together. Everything in this period is scored partly, and each for its own reason.',
+      from: ['L-0001', 'L-0044', 'L-0048', 'L-0055', 'L-0053'],
+    },
+    {
+      years: '2017 — 2019',
+      heading: 'A connection is not a supply, and the second half of each chain is the part not published',
+      body:
+        'Three schemes in this period delivered a countable thing very fast and left the thing it was for unmeasured. Household electrification connected at extraordinary speed, and around 53 per cent of villages received under twelve hours of domestic supply a day — supply-hours as a continuous national series is not published. Jal Jeevan Mission expanded coverage faster than almost anything here, and the Ministry’s own 2024 functionality assessment across 19,812 certified villages opens a wedge between 98 per cent with a tap and 76 per cent with safe water. Housing is the clearest case of the pattern and the reason this instrument marks absences at all: sanctioned and completed are both published for Pradhan Mantri Awas Yojana and occupancy is not, so the published chain stops one step before the question. Bharatmala awarded about 26,425 km and built roughly 55 per cent of target, with completion slipping to 2027-28.',
+      from: ['L-0050', 'L-0036', 'L-0037', 'L-0045'],
+    },
+    {
+      years: '2020 — 2022',
+      heading: 'Spending scaled and execution did not, and one milestone is true of the fleet and not of the output',
+      body:
+        'The capital-expenditure push is contested here rather than scored, because the two things it is judged on moved in opposite directions: spending scaled dramatically while delayed central-sector projects rose from 27.1 per cent of those monitored in March 2019 to 41.6 per cent in March 2024. The non-fossil capacity milestone was reached early and announced as such — 50.08 per cent against 49.92 at 30 June 2025 — and is scored partly for a reason that belongs in this area as much as in energy: half the fleet produced under a third of the electricity, because capacity is what is installed and generation is what is used. Discom reform is the one record here scored failed: losses fell from 23.7 per cent to 15.4, then rose again to 16.12 in FY2023-24, the first increase in five years.',
+      from: ['L-0057', 'L-0221', 'L-0051'],
+    },
+    {
+      years: '2023 — today',
+      heading: 'What is newest was announced without a schedule anything can be held against',
+      body:
+        'Four of the five records entered here since 2023 carry no objective that can fall due, and the reason is a property of the announcements rather than of the work. The decision to fence the entire 1,643 km Myanmar border states a total with no date, no phasing and no annual target, which is why it takes undated-commitment: progress against it is reportable and it can never fall due. Nineteen months after the IMEC memorandum the corridor has no published schedule to measure. Electricity exports to Bangladesh were published as a measure of cooperation, and the Ministry of Power’s account of neighbourhood cooperation lists capacities rather than flows. One record here is a finding about a plant that ran: Punatsangchhu-II exported power to India for nearly seven months before it was commissioned.',
+      from: ['L-0209', 'L-0213', 'L-0211', 'L-0208', 'L-0207'],
+    },
+  ],
+
+  employment: [
+    {
+      years: '2014 — 2016',
+      heading: 'The period with no survey in it',
+      body:
+        'There is no national employment survey covering these years. The quinquennial Employment-Unemployment Survey last ran in 2011-12 and the Periodic Labour Force Survey begins in 2017-18, so the first three years of this record are measured by scheme administration and by peer panels rather than by a household survey of India. What is entered is structural and none of it announces a target: the vulnerable-employment share — own-account and contributing family workers — stayed the highest in the peer panel at about 72 per cent, employment elasticity stayed low, and female graduates faced 34.5 per cent unemployment against male graduates at 26.4. The scale of competition for formal work is visible where administration does publish: 1.8 crore applicants for about 78,000 government posts in FY2020-21. MGNREGA is the one large programme with a continuous count, and it is contested on what the count means.',
+      from: ['L-0065', 'L-0063', 'L-0040'],
+    },
+    {
+      years: '2017 — 2019',
+      heading: 'A new survey began, and the figures either side of it are not the same measurement',
+      body:
+        'The Periodic Labour Force Survey replaced the Employment-Unemployment Survey from 2017-18 with changed sampling, stratification and definitions, and eight series in this area carry a declared break at that point. What changed is not only the instrument: the PLFS counts unpaid helpers in household enterprises as employed and counts subsidiary activity of thirty days over a 365-day recall, so an unemployment rate on this definition falls when people are absorbed into unpaid family work. That is what makes the fall contested rather than reported. Beneath it the composition moved the other way — the self-employed share rose to 58.4 per cent and unpaid helpers from 13.3 to 17.3, while regular wage and salaried employment stayed flat at 21 to 23. Female participation rose steeply and the same composition question sits under it. Formalisation is scored partly on the same distinction: EPFO net additions count members re-joining after a gap and members switching employers, so of 4.86 crore net additions across FY2020 to FY2023 one analysis finds roughly 2.27 crore genuinely new payroll entries and about 42 lakh of net formalisation. The first round was itself withheld past its release date and two members of the National Statistical Commission resigned; the four labour codes were passed in 2019 and are scored too-early.',
+      from: ['L-0058', 'L-0059', 'L-0060', 'L-0062', 'L-0061'],
+    },
+    {
+      years: '2020 — today',
+      heading: 'A second redesign, and the two largest events of the period were not recorded',
+      body:
+        'From January 2025 the PLFS was substantially redesigned again — first-stage units from 12,800 to 22,692 and the sample to about 2.72 lakh households — so the series carries a second seam at FY2025-26 and breaks against itself, not only against what preceded it. The two largest employment events of the period have no measurement at all. On the 2020 exodus, 4,611 Shramik Special trains carried about 63 lakh workers and the Labour Ministry told Parliament that no data was maintained on deaths during it or on job losses. MGNREGA money to West Bengal was stopped under section 27 in March 2022, contested on the ground given; the scheme was then repealed in December 2025, which is too-early. Where a private instrument exists it disagrees in direction rather than in level: over 2017-18 to 2021-22 the PLFS records employment growth of 4.55 per cent and CMIE a fall.',
+      from: ['L-0064', 'L-0168', 'L-0169'],
+    },
+  ],
+};
+
+/**
+ * THE EVIDENCE GRADE, WHERE IT IS THE SUBJECT RATHER THAN A CAVEAT UNDER ONE.
+ *
+ * Two areas are published almost entirely as approximations, and in both the reason is the
+ * publication channel rather than a weakness in this record. Saying so at the top of the page is
+ * the difference between information and an apology, and an area that buries it under a chart has
+ * hidden the most useful thing it knows about itself.
+ *
+ * **THE COUNTS ARE NOT WRITTEN HERE.** The page derives them from the series it is rendering, so a
+ * sentence about the evidence cannot go stale against the evidence — which is the failure mode this
+ * repository has already paid for in the one section written to prevent it.
+ *
+ * Only two areas carry a note, and that is the point: an evidence line on all fourteen would be
+ * boilerplate, and boilerplate is read past. **`macro`, `education` and `environment` deliberately
+ * have none** — their grades are mixed and unremarkable, and a note saying so would say nothing.
+ */
+export const DOMAIN_EVIDENCE: Partial<Record<Domain, string>> = {
+  infrastructure:
+    'Almost nothing in this area is published exactly, and that is a fact about how India publishes rather than a gap in this record. These figures come from ministry dashboards, scheme reporting and annual reports — running totals, revised as they run — and not from closed statistical series. A reader arriving to ask whether things were built will find that a great deal was, and that the published quantity is usually a progress figure rather than a final one. Approximate by publication, not by omission.',
+  employment:
+    'No observation in this area is verified, and the reason is that India measures employment by sample survey. A survey estimate carries a sampling error by construction, so an approximate status here is the honest grade for a correctly published figure and not a mark against it. What does bear on comparability is that the instrument changed twice — the Employment-Unemployment Survey gave way to the Periodic Labour Force Survey at FY2017-18, and the PLFS was redesigned again from January 2025 — so the series carries two seams and no line is drawn across either.',
 };
 
 /**
