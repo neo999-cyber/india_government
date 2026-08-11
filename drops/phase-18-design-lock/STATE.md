@@ -33,14 +33,15 @@ they are not re-derived and not re-proposed.**
 (there had never been one), the caveat moved without being changed, id and tier demoted, and the
 "total change" figure withheld on the 97 series where a declared break sits inside the span.
 
+**Items 3 and 4 are DONE.** Topic tabs as five real routes per area (56 new pages), the
+missing-data tab built as new content, nav relabelled, the three-ways cards and the reduced year
+control on the landing page.
+
 **Carrying forward:**
 - **251 authored findings.** 18 of 269 series carry one — 5 harvested from surfaces that already had
   an authored sentence, 13 domain leads by longest unbroken run. A series without one renders without
   the line. Same work and same rate as the domain periods.
-- **Item 2 — search results as cards.** §4's caveat-preview question needs the ruling it names before
-  it is built; the file's own recommendation is the safer of the two options.
-- **Item 3 — topic-page local tabs**, each a URL.
-- **Item 4 — nav labels and the two landing additions.**
+- **DESIGN-REVISION.md is now fully applied.** Items 1–4 all shipped; §7's eleven rejections stand.
 
 
 

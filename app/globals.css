@@ -3841,3 +3841,74 @@ details.more > summary {
 @media (min-width: 641px) {
   .facet-drawer > summary { display: none; }
 }
+
+/* ---------------------------------------------------------------------------------------------
+   TOPIC TABS — DESIGN-REVISION item 3. Five sections, five routes, one shape on every area.
+--------------------------------------------------------------------------------------------- */
+.dtabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 1px solid var(--rule);
+  margin: 1.25rem 0 1rem;
+}
+.dtab {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+.dtab:hover { color: var(--mark-ink); border-bottom-color: var(--rule); }
+.dtab.is-on { color: var(--ink); border-bottom-color: var(--fill); font-weight: 600; }
+.dtab-n { font-size: 0.6875rem; color: var(--ink-dim); font-variant-numeric: tabular-nums; }
+.dtab.is-on .dtab-n { color: var(--ink-2); }
+
+/* MISSING DATA. Rule 4a's idiom: dashed, unfilled, no figure, visibly not a panel of results. An
+   absence is a finding about the published statistics and nothing is estimated into the space. */
+.miss-list { display: grid; gap: 0.75rem; margin: 1.25rem 0; }
+.miss {
+  border: 1px dashed var(--ink-dim);
+  background: transparent;
+  padding: 0.85rem 1rem;
+}
+.miss-what { margin: 0; font-weight: 600; color: var(--ink); }
+.miss-meta { margin: 0.4rem 0 0; font-size: 0.8125rem; color: var(--ink-2); }
+.miss-why { margin: 0.5rem 0 0; font-size: 0.875rem; color: var(--ink-2); }
+
+@media (max-width: 640px) {
+  .dtabs { overflow-x: auto; flex-wrap: nowrap; }
+  .dtab { white-space: nowrap; }
+}
+.miss-src { margin: 0.35rem 0 0; font-size: 0.8125rem; }
+
+/* ---------------------------------------------------------------------------------------------
+   THREE WAYS THE RECORD SPEAKS — §6a.
+
+   ONE TREATMENT FOR ALL THREE. §7 rejects the mock's colour-coded cards: a reader learns pink
+   means "gap" within two cards and then meets the same pink on a disputes count. The numbered
+   spine (01, 02, 03) is the structural device that survives the palette being removed.
+--------------------------------------------------------------------------------------------- */
+.ways { margin: 2rem 0; }
+.ways-h { font-size: 1.0625rem; margin-bottom: 0.75rem; }
+.ways-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.way { background: var(--bg); padding: 1.1rem 1.2rem 1.2rem; }
+.way-n { display: block; font-size: 0.75rem; color: var(--ink-dim); letter-spacing: 0.1em; }
+.way h3 { font-size: 1.0625rem; margin: 0.3rem 0 0.5rem; }
+.way p { margin: 0; font-size: 0.9375rem; color: var(--ink-2); }
+.way .source-line { margin-top: 0.7rem; font-size: 0.8125rem; }
+.ways-note {
+  margin: 0.7rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--ink-dim);
+}

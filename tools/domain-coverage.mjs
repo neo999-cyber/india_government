@@ -209,7 +209,39 @@ for (const d of DOMAINS) {
     continue;
   }
   counts.pages.got += 1;
-  surfaces.set(d, { text: text(html), hrefs: hrefs(html) });
+  /**
+   * THE DOMAIN SURFACE IS FIVE PAGES SINCE 2026-08-11, NOT ONE — the topic tabs.
+   *
+   * WITHDRAWN, so the change can be checked: this read `surfaces.set(d, { text: text(html), hrefs:
+   * hrefs(html) })` over the overview alone, and on the day the tabs landed it reported **632
+   * coverage failures** — every series and every record whose listing had moved to a tab.
+   *
+   * **The claim this file makes is that a record is reachable from where a reader starts.** A
+   * reader starts at `/domains/<d>/`, meets the tab strip, and is one click from the indicators.
+   * Scoping the check to the overview alone would now fail records that ARE reachable, which is a
+   * false negative in a gate whose whole value is that its green means something.
+   *
+   * **AND THE WIDENING IS PAIRED WITH A NEW ASSERTION, OR IT WOULD BE A WEAKENING.** A union over
+   * five pages is only honest if the overview LINKS all five; otherwise this would pass on a tab
+   * nothing navigates to — the exact defect the index assertion above exists to catch, one level
+   * down. Both are checked.
+   */
+  const TABS = ['indicators', 'records', 'disputes', 'missing'];
+  const union = { text: text(html), hrefs: hrefs(html) };
+  for (const t of TABS) {
+    const tabPath = join(OUT_DIR, 'domains', d, t, 'index.html');
+    if (!existsSync(tabPath)) {
+      failures.push({ kind: 'tab', what: `${d}/${t}`, why: `the domain surface declares a "${t}" tab and no page was built at /domains/${d}/${t}/` });
+      continue;
+    }
+    if (!union.hrefs.has(`/domains/${d}/${t}/`)) {
+      failures.push({ kind: 'tab-link', what: `${d}/${t}`, why: `a page exists at /domains/${d}/${t}/ and the overview does not link to it, so the union below counts a page nothing navigates to` });
+    }
+    const th = readFileSync(tabPath, 'utf8');
+    union.text += ' ' + text(th);
+    for (const h of hrefs(th)) union.hrefs.add(h);
+  }
+  surfaces.set(d, union);
   if (indexHrefs.has(`/domains/${d}/`)) counts.indexed.got += 1;
   else failures.push({ kind: 'index', what: d, why: `a page exists at /domains/${d}/ but the domain index does not link to it, so nothing navigates there` });
 }

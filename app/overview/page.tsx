@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { ledger, series, seriesUnderLens } from '@/lib/data';
 import { DOMAIN_LABELS, formatDateRange } from '@/lib/format';
 import { DOMAINS, LENSES } from '@/lib/types';
-import type { Lens, Series } from '@/lib/types';
+import type { Lens, Series, Domain } from '@/lib/types';
 import { RecordMarks } from '@/components/marks';
 import { OverviewBoard } from '@/components/OverviewBoard';
 import type { ODomain, OSeries } from '@/components/OverviewBoard';
@@ -102,7 +102,7 @@ function composition(types: string[]): string {
  * `edu-spend-gdp-edu-depts` to represent education — both real, neither the thing a reader came
  * for. The choice is editorial, so it is written down where it can be argued with.
  */
-const HEADLINE: Record<string, string> = {
+export const HEADLINE: Record<string, string> = {
   macro: 'cpi-inflation', // NOT gdp-growth-*: rule 5 forbids one base alone.
   banking: 'bank-writeoffs-annual', // NOT *-npa: rule 5b forbids an NPA ratio without its basis.
   education: 'higher-ed-ger',
@@ -126,14 +126,14 @@ const HEADLINE: Record<string, string> = {
  * cannot render an empty card silently — if it ever fires, the right response is to write the
  * area's real reason here, not to leave the generic one standing.
  */
-const INSTEAD: Record<string, string> = {
+export const INSTEAD: Record<string, string> = {
   kashmir:
     'No series files Kashmir as its own subject: its thirty indicator series are filed under defence, governance and federalism and read through the Kashmir lens. What this area holds is forty-six records — detentions, communications shutdowns, human-rights complaints — and counts that come largely from hospitals, courts and commissions rather than from the state.',
   poverty:
     'India’s last official poverty headcount was measured for 2011-12: 21.9 per cent on the Tendulkar methodology, down from 37.2 per cent in 2004-05. Nothing comparable has been published since, so there is no line to draw across the period this site covers — the absence is the finding, and it sits before the window every other card shares.',
 };
 
-function toO(s: Series): OSeries | null {
+export function toO(s: Series): OSeries | null {
   const pts = s.points
     .filter((p) => p.country === 'IND' && p.value !== null && yearOf(p.period) >= Y_MIN)
     .map((p) => ({ y: yearOf(p.period), v: p.value as number, s: p.status }))
@@ -180,6 +180,57 @@ function eventYears(d: string) {
     .sort((a, b) => a.year - b.year);
 }
 
+/**
+ * THE BOARD'S DATA, BUILT ONCE FOR BOTH CALLERS — the overview's fourteen areas and the landing
+ * page's five. Exported rather than copied: `ODomain` carries eleven derived fields, and a second
+ * derivation would agree today and drift on the first change. **The first attempt at the landing
+ * board hit exactly that** — TypeScript refused a hand-built object missing `yearsWith`,
+ * `yearsTotal`, `breaks`, `composition` and `events`, which is the compiler catching the copy
+ * before a reader met two boards that disagreed.
+ *
+ * `headOnly` is the landing page's reduction: it drops `rest`, every chartable series in the area,
+ * which is where the weight is. The component's `reduced` flag only removes the play button.
+ */
+export function buildBoard(keys: Domain[], { headOnly = false }: { headOnly?: boolean } = {}): ODomain[] {
+  return keys.map((d) => {
+    const own = series.filter((s) => s.domain === d);
+    // A lens-only area reads through its lens rather than as an empty row — drawing Kashmir blank
+    // would assert that nothing about it is measured, which is false and is the misreading the
+    // lens axis exists to prevent.
+    const asLens = (LENSES as readonly string[]).includes(d) ? (d as unknown as Lens) : null;
+    const list = own.length > 0 ? own : asLens ? seriesUnderLens(asLens) : [];
+    const records = ledger.filter((l) => l.domains.includes(d)).length;
+
+    const chartable = list.map(toO).filter((s): s is OSeries => s !== null);
+    const head = chartable.find((s) => s.id === HEADLINE[d]) ?? null;
+
+    // The readout. Counted over India's own points only: a peer-panel observation is a fact about
+    // Bangladesh or Vietnam and would inflate an area's apparent coverage of India.
+    const pts = list.flatMap((s) => s.points.filter((p) => p.country === 'IND' && p.value !== null));
+    const verified = pts.filter((p) => p.status === 'verified').length;
+
+    return {
+      key: d,
+      label: DOMAIN_LABELS[d],
+      nSeries: list.length,
+      nRecords: records,
+      head: INSTEAD[d] ? null : head,
+      instead: INSTEAD[d] ?? (head ? null : 'This area holds no series long enough to chart.'),
+      rest: headOnly ? [] : chartable.filter((s) => s.id !== head?.id),
+      obs: pts.length,
+      status: {
+        verified,
+        approx: pts.filter((p) => p.status === 'approx').length,
+        pending: pts.filter((p) => p.status === 'pending').length,
+      },
+      yearsWith: TERM_YEARS.filter((y) => pts.some((p) => yearOf(p.period) === y)).length,
+      yearsTotal: TERM_YEARS.length,
+      breaks: list.reduce((t, s) => t + (s.breaks?.length ?? 0), 0),
+      composition: composition(ledger.filter((l) => l.domains.includes(d)).map((l) => l.type)),
+      events: eventYears(d),
+    };
+  });
+}
 export default function Overview() {
   /**
    * Computed here, never quoted. The design scope recorded 0.91 when it was written and the live
@@ -207,44 +258,7 @@ export default function Overview() {
     return 1 - (6 * d2) / (n * (n * n - 1));
   })();
 
-  const domains: ODomain[] = DOMAINS.map((d) => {
-    const own = series.filter((s) => s.domain === d);
-    // A lens-only area reads through its lens rather than as an empty row — drawing Kashmir blank
-    // would assert that nothing about it is measured, which is false and is the misreading the
-    // lens axis exists to prevent.
-    const asLens = (LENSES as readonly string[]).includes(d) ? (d as unknown as Lens) : null;
-    const list = own.length > 0 ? own : asLens ? seriesUnderLens(asLens) : [];
-    const records = ledger.filter((l) => l.domains.includes(d)).length;
-
-    const chartable = list.map(toO).filter((s): s is OSeries => s !== null);
-    const head = chartable.find((s) => s.id === HEADLINE[d]) ?? null;
-
-    // The readout. Counted over India's own points only: a peer-panel observation is a fact about
-    // Bangladesh or Vietnam and would inflate an area's apparent coverage of India.
-    const pts = list.flatMap((s) => s.points.filter((p) => p.country === 'IND' && p.value !== null));
-    const verified = pts.filter((p) => p.status === 'verified').length;
-
-    return {
-      key: d,
-      label: DOMAIN_LABELS[d],
-      nSeries: list.length,
-      nRecords: records,
-      head: INSTEAD[d] ? null : head,
-      instead: INSTEAD[d] ?? (head ? null : 'This area holds no series long enough to chart.'),
-      rest: chartable.filter((s) => s.id !== head?.id),
-      obs: pts.length,
-      status: {
-        verified,
-        approx: pts.filter((p) => p.status === 'approx').length,
-        pending: pts.filter((p) => p.status === 'pending').length,
-      },
-      yearsWith: TERM_YEARS.filter((y) => pts.some((p) => yearOf(p.period) === y)).length,
-      yearsTotal: TERM_YEARS.length,
-      breaks: list.reduce((t, s) => t + (s.breaks?.length ?? 0), 0),
-      composition: composition(ledger.filter((l) => l.domains.includes(d)).map((l) => l.type)),
-      events: eventYears(d),
-    };
-  })
+  const domains: ODomain[] = buildBoard([...DOMAINS])
     .filter((d) => d.nSeries > 0 || d.nRecords > 0)
     .sort((a, b) => {
       const ia = ORDER.indexOf(a.key);

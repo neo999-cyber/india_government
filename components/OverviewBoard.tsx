@@ -331,7 +331,25 @@ function WhatHappened({ d, year }: { d: ODomain; year: number | null }) {
   );
 }
 
-export function OverviewBoard({ domains }: { domains: ODomain[] }) {
+export function OverviewBoard({
+  domains,
+  reduced = false,
+}: {
+  domains: ODomain[];
+  /**
+   * THE LANDING PAGE'S CUT — §6b: scrub, no play, a handful of cards.
+   *
+   * **It suppresses the play control and nothing else about how a reading is produced.** §7a holds
+   * identically: a card with no observation for the selected year says so and does not hold its
+   * last value, because `Reading` and `at()` are the same code either way. A reduced control that
+   * quietly relaxed that would be the misleading-display defect on the site's most-read page.
+   *
+   * **The weight saving is in the DATA, not in this flag.** The caller passes five areas with
+   * `rest: []`, so only each area's head series ships; the full board carries every chartable
+   * series in all fourteen. Measured before and after in the log entry for this batch.
+   */
+  reduced?: boolean;
+}) {
   const [year, setYear] = useState<number | null>(null);
   /**
    * The line moves now; the words catch up. `useDeferredValue` lets React drop an intermediate
@@ -430,7 +448,7 @@ export function OverviewBoard({ domains }: { domains: ODomain[] }) {
         </div>
         <output className="scrub-out">{year ?? '—'}</output>
 
-        {motionOK ? (
+        {motionOK && !reduced ? (
           <>
             <button
               type="button"
