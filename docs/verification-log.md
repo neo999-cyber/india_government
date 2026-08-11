@@ -15592,3 +15592,108 @@ empty tab is visible before opening, absences dashed and unfilled with no figure
 558 characters unclamped and not overflowing.
 
 **DESIGN-REVISION.md is fully applied. Carries forward: the 251 authored findings.**
+
+---
+
+## 2026-08-12 (thirty-third entry) — THE 251 AUTHORED FINDINGS: scoped, ruled, and tranche 1
+
+### THE SCOPING MEASUREMENT, AND IT CORRECTS THE PREMISE THE QUESTION CARRIED
+
+The subset was expected to fall out of reachability. **It does not, because reachability is uniform.**
+Crawled over 738 built pages: `/search/`, `/series/` and all thirteen year pages link every one of
+the 269, so they discriminate nothing. Of the surfaces that DO discriminate, **a domain surface
+reaches all 269 and another series page reaches all 269** — a consequence of the tab work in
+`13ca7d5`, where the overview tab began listing every record rather than six.
+
+**Zero series are reachable only from an index.** There is a gradient in PROMINENCE — 19 drawn as a
+chart on a surface other than their own, 222 on the overview board, 5 on the homepage — but that
+gradient is an editorial choice made in the components, so selecting on it would be a merit claim
+computed from our own picks rather than from the data. Rejected on the selection-is-not-ranking rule.
+
+Of the 251: **31 carry a single observation**; **104 share a declared provenance dispute** with a
+series that already has a finding; 0 are the other side of a contested pair with one.
+
+### THE RULING — POSSIBILITY 2, AND POSSIBILITY 3 REFUTED BY MEASUREMENT
+
+**Derivation is closed, and not on taste.** The only genuinely authored prose a series record holds
+is `notes` and its `points[].note`. Measured over the 251: **246 hold such prose and 246 already
+render ALL of it on their own page.** The remaining **5 hold none at all**. So harvesting would
+duplicate a paragraph a few hundred pixels above its own copy, **in the same role** — unlike the
+homepage's two copies of one caveat, which sit in two different roles 4,717 characters apart and were
+defended on exactly that ground last batch. And for the 5 there is nothing to harvest but the
+numbers, which is the generated shell the module forbids. **A narrow derivable class was looked for
+and does not exist.**
+
+**The one boundary that survives is what a series can support.** A finding states what a series
+SHOWS; a single observation shows no trajectory, and the only honest sentence available is that one
+figure was published — a fact, not a finding, and one the record already states in its own point
+note. **31 of 31 verified to render that note on their own page.** Those 31 render without the line
+permanently, and the criterion is printed in `lib/series-copy.ts` beside the other two.
+
+Two observations is enough: `farm-household-income` carries a finding on two points, because what it
+adds is that there is no third.
+
+**220 to author.** Ordered by the number of distinct discriminating surfaces linking the series —
+computed from the built site, so a later cycle re-derives it.
+
+### TRANCHE 1 — TEN LANDED
+
+`jk-civilians-killed-composite` · `jk-terrorist-incidents-legacy` · `jk-infiltration-attempts` ·
+`jk-net-estimated-infiltration` · `divisible-pool-share-gtr` · `jk-encounters-ct-ops` ·
+`jk-detenus-psi` · `jk-terrorist-initiated-incidents` · `fc-vertical-devolution-share` ·
+`jk-civilians-killed-terror-basis`.
+
+`origin: 'authored'` is a third value on a union that **does not render** — it is provenance for a
+later cycle, consumed by nothing, so the widening touches no label map and no schema.
+
+**Every figure checked mechanically against its own record: all 75 numeric tokens trace**, with a
+positive and negative control through the same path. Quoted phrases checked the same way, and **two
+failed:** *"newly carved-out Union Territories"* was framed as the Commission's own words and the
+Commission wrote *"newly carved out"* — hyphen removed. And the row-label clause for
+`jk-infiltration-attempts` said the label *changed three times*; **the record says four times and
+then enumerates three.** Neither number is now repeated: the labels themselves are named, because
+they are checkable and the count is the record's own unresolved tension, not mine to settle.
+
+**Enum vocabulary: one hit across the ten**, *measurement* in `fc-vertical-devolution-share`, read in
+context and kept — `measure` is a `contestedGround` value, this is a series carrying no such field,
+and the phrase is the record's own note verbatim: *"This is a rule and not a measurement."*
+
+**Two of the ten were not true read alone and were revised before the build.**
+`divisible-pool-share-gtr`'s caveat says either side of the fiscal pair read on its own supports the
+opposite conclusion — and a finding reporting only the falling pool was exactly that reading, so the
+counterpart's direction is now stated in the sentence, read from that record in the same operation
+(32 per cent to 41). And `jk-civilians-killed-terror-basis` opened on *the bounded basis* without
+saying what it counts, which is the one thing its caveat asserts positively; it now opens *civilians
+killed by militants*, in the record's own words rather than by quoting the caveat into the page twice.
+
+**All ten render exactly once on their own page**, verified through `page-text.mjs` with a negative
+control on an unrelated series page.
+
+### THE RATE WILL NOT HOLD, AND THE DIRECTION IS THE FINDING
+
+Counting the characters of `notes`, `caveat`, break notes and point notes a record carries — the
+material a sentence is written FROM — **this tranche's ten have a median of 1,786 and a minimum of
+943. The remaining 210 have a median of 641, and 124 of them hold less than this tranche's minimum.
+Three hold none at all.** Ordering by discriminating surfaces turns out to correlate with how much a
+record has to say, so **the first tranche was the easy end**. The three with nothing but numbers sit
+against the same boundary the single-observation rule draws; whether a multi-observation series with
+no authored material can carry a finding is left to the tranche that reaches them, since a trajectory
+is the one thing a single observation cannot have and these do.
+
+### A FORMATTING REGRESSION OF MINE, FOUND AND STOPPED
+
+`npx prettier --write app/page.tsx` in the previous batch reformatted that whole file to double
+quotes and shipped it in `13ca7d5`. **The repo has no prettier config and no format script and is
+not prettier-formatted** — untouched files run to 372 characters a line. Re-running prettier with
+guessed settings produced 107 lines of re-wrapping churn, so that was reverted rather than
+compounded: `app/page.tsx` is left exactly as shipped, the quote inconsistency is recorded here as a
+debt with its cause named, and `lib/series-copy.ts` keeps the file's own single-quote convention.
+**The rule this sits under already exists — detect the convention from the file being written.**
+
+### Gate line
+
+27 steps green. `listing-marks` 5,277 rows / 7,524 marks across 738 pages, unchanged.
+`link-check` 41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers.
+`unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+**Carries forward: 210 authored findings, at a measured-thinner rate.**
