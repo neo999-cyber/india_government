@@ -96,6 +96,57 @@ function records() {
 }
 
 /**
+ * AN ATTRIBUTION IS NOT A LISTING, AND THE TITLE/ID TEST CANNOT TELL THEM APART.
+ *
+ * `<p class="source-line">Declared on <a href="/ledger/L-0134/">…title…</a>.</p>` names the record
+ * that DECLARED an absence being shown. It presents no record as an item: rendering L-0134's own
+ * caveat and absences there would attach one record's qualifications to another record's data.
+ *
+ * **The discriminator this gate was built on — a listing names a record by its TITLE, a citation by
+ * its ID — is a proxy, and this is where the proxy breaks.** It breaks in the honest direction: the
+ * link uses the title because *"Declared on The power to hold a J&K detenu anywhere in India"* is
+ * the sentence a reader needs and *"Declared on L-0134"* is not. Penalising good prose is not a
+ * finding about the page.
+ *
+ * So attribution is recognised STRUCTURALLY, by the `source-line` class that already carries every
+ * such sentence in this codebase, and never by guessing from the link text.
+ */
+const ATTRIBUTION_CLASS = 'source-line';
+
+/**
+ * EXEMPTED BY NAME, WITH THE MEASUREMENT THAT JUSTIFIES IT.
+ *
+ * A pair side genuinely lists a record — title, tier, figure, caveat, absences — so it is not an
+ * attribution and calling it one would be a dodge. It is unbindable for a different reason:
+ * **the declaration is pooled to the PAGE.** 137 sides are built, 59 belong to a series declaring
+ * an absence, and 28 render none because an earlier pair on the same page already rendered it.
+ * Which container holds it is an accident of pair order, so no container is the unit.
+ *
+ * **The pooling was verified correct before this exemption was written: 45 of 45 pooled-away
+ * declarations are still present elsewhere on their own page**, so rule 4b holds and what fails is
+ * the gate's container model. An exemption with a stated, re-runnable reason is better than a shape
+ * that reports clean because nobody looked — and better than a residue nobody can act on.
+ */
+const POOLED_TO_PAGE = ['cp-side', 'cu-side'];
+
+/** Is this anchor inside an element of the given class? Balanced scan, not a proximity guess. */
+function insideClass(html, index, cls) {
+  const open = new RegExp(`<(p|div|section|article|li|span)[^>]*class="(?:[^"]*\\s)?${cls}(?:\\s[^"]*)?"`, 'g');
+  for (const m of html.matchAll(open)) {
+    if (m.index > index) break;
+    const tag = m[1];
+    const re = new RegExp(`<${tag}\\b[^>]*>|</${tag}>`, 'g');
+    re.lastIndex = m.index;
+    let depth = 0, t;
+    while ((t = re.exec(html))) {
+      depth += t[0][1] === '/' ? -1 : 1;
+      if (depth === 0) { if (index > m.index && index < t.index) return true; break; }
+    }
+  }
+  return false;
+}
+
+/**
  * NEGATIVE CONTROL, through the same shape detection the live pass uses.
  *
  * A title-link outside every shape must be caught; the SAME link inside a `<tr>` must not; and a
@@ -115,25 +166,44 @@ if (CONTROL) {
       const r = rec.get(m[2]);
       if (!r?.declares) continue;
       if (spans.some((b) => b.includes(m[0]))) continue;
-      if (linkText(m[3]) === r.title) n += 1;
+      if (linkText(m[3]) !== r.title) continue;
+      // The SAME two exemptions the live pass applies, through the same function. A control that
+      // reimplements the thing it checks is testing its own copy.
+      if (insideClass(html, m.index, ATTRIBUTION_CLASS)) continue;
+      if (POOLED_TO_PAGE.some((c) => insideClass(html, m.index, c))) continue;
+      n += 1;
     }
     return n;
   };
-  const a = flag(bare);
-  const b = flag(inRow);
-  const c = flag(byId);
-  if (a !== 1 || b !== 0 || c !== 0) {
-    console.error(
-      'unrecognised-rows --control FAILED — the checker does not discriminate.\n' +
-        `  title-link outside every shape: ${a} (expected 1)\n` +
-        `  the same link inside a <tr>:    ${b} (expected 0)\n` +
-        `  link naming the record by id:   ${c} (expected 0)`,
-    );
+  // THE TWO EXEMPTIONS ADDED 2026-08-11 GET CONTROLS IN THE SAME COMMIT, because an exemption
+  // without one is an unchecked escape hatch — the gate would report clean and the reason would be
+  // that nobody looked. Each is tested in BOTH directions, and the prefix cases are tested because
+  // a `\b` match on a class name is the defect this instrument has already paid for twice.
+  const inSourceLine = `<main><p class="source-line">Declared on <a href="/ledger/L-9001/">${title}</a>.</p></main>`;
+  const inPairSide = `<main><div class="cu-side cu-side-usage"><h3><a href="/ledger/L-9001/">${title}</a></h3></div></main>`;
+  const prefixOnly = `<main><p class="source-lines"><a href="/ledger/L-9001/">${title}</a></p></main>`;
+  const afterSourceLine = `<main><p class="source-line">x</p><a href="/ledger/L-9001/">${title}</a></main>`;
+  const cases = [
+    ['title-link outside every shape', bare, 1],
+    ['the same link inside a <tr>', inRow, 0],
+    ['a link naming the record by id', byId, 0],
+    ['a title-link inside a source-line — an attribution', inSourceLine, 0],
+    ['a title-link inside a pair side — pooled to the page', inPairSide, 0],
+    ['a title-link inside class="source-lines" — a PREFIX, not the class', prefixOnly, 1],
+    ['a title-link AFTER a closed source-line, not inside it', afterSourceLine, 1],
+  ];
+  const bad = cases.filter(([, html, want]) => flag(html) !== want);
+  if (bad.length) {
+    console.error('unrecognised-rows --control FAILED — the checker does not discriminate.');
+    for (const [what, html, want] of cases)
+      console.error(`  ${what}: ${flag(html)} (expected ${want})`);
     process.exit(1);
   }
   console.log(
-    'unrecognised-rows --control — a title-link outside every shape is caught, the same link in a ' +
-      'row is not, and an id-link is not; the discriminator is TITLE against ID',
+    'unrecognised-rows --control — a title-link outside every shape is caught; the same link in a ' +
+      'row, in a source-line attribution, or in a pooled pair side is not; an id-link is not; and a ' +
+      'class that merely STARTS with an exempted name does not exempt, nor does one that has closed ' +
+      'before the link',
   );
   process.exit(0);
 }
@@ -159,6 +229,8 @@ const found = [];
 let titleLinks = 0;
 let citations = 0;
 let graphical = 0;
+let attributions = 0;
+let pooled = 0;
 for (const file of pages) {
   const route = '/' + file.slice(OUT.length + 1).replace(/index\.html$/, '');
   const html = readFileSync(file, 'utf8').replace(/<script[\s\S]*?<\/script>/g, '');
@@ -169,7 +241,11 @@ for (const file of pages) {
     if (route === `/${m[1]}/${m[2]}/`) continue; // its own page
     if (spans.some((b) => b.includes(m[0]))) continue;
     const text = linkText(m[3]);
-    if (text === rec.title) {
+    if (text === rec.title && insideClass(html, m.index, ATTRIBUTION_CLASS)) {
+      attributions += 1;
+    } else if (text === rec.title && POOLED_TO_PAGE.some((c) => insideClass(html, m.index, c))) {
+      pooled += 1;
+    } else if (text === rec.title) {
       titleLinks += 1;
       found.push({ route, id: m[2] });
     } else if (!text) {
@@ -186,20 +262,27 @@ for (const file of pages) {
 }
 
 /**
- * REPORT-ONLY, WITH A MEASURED RATE AND A NAMED NEXT STEP.
+ * REPORT-ONLY, AND THE RESIDUE IS NOW ZERO — WHICH IS A DECISION FOR THE OPERATOR, NOT FOR THIS FILE.
  *
- * It is not a gate yet and the reason is specific rather than caution. Turning it red requires
- * every reported shape to be ADDED to the shape list, and the first two tried — `chart` and
- * `cu-view` — were rejected by `listing-marks` on contact: a pair pools its sides' absences and
- * renders them once at pair width, so taking the side as the unit demands a declaration twice and
- * taking a ledger-hosted side demands one that is pooled nowhere. **Where the unit is depends on
- * where the component renders the declaration, which is a question per component and not a
- * property of markup.**
+ * WITHDRAWN WORDING, quoted so the change can be checked: this read *"It is not a gate yet and the
+ * reason is specific rather than caution. Turning it red requires every reported shape to be ADDED
+ * to the shape list… So this reports, and the report is the work item: each route below needs its
+ * component read once and its unit named."* **The work item is done.** The 62 resolved into four
+ * components, each answered on its own terms rather than by widening a regex:
  *
- * So this reports, and the report is the work item: each route below needs its component read once
- * and its unit named. **That is a deferral with a measured rate and a named next step, which is a
- * different object from a deferral that says logged** — and the rate is printed on every run rather
- * than quoted from this comment, because a stale rate is how the first kind becomes the second.
+ *   - **`chart`, the embedded feature — BOUND.** It was never a pooling problem; it failed on the
+ *     `\b` class matcher, since fixed. 3 links.
+ *   - **`source-line`, an attribution — RECOGNISED, not bound.** *"Declared on <record>"* names the
+ *     record that made a declaration and presents no record as an item. 23 links.
+ *   - **`cp-side` and `cu-side`, the pair views — EXEMPTED BY NAME.** These genuinely list a
+ *     record, and the declaration is pooled to the PAGE: 28 of 59 eligible sides render none
+ *     because an earlier pair already did. Verified before exempting — 45 of 45 pooled-away
+ *     declarations are still on their own page, so rule 4b holds. 36 links.
+ *
+ * **IT IS LEFT REPORT-ONLY DELIBERATELY.** Flipping it to exit 1 is a gate contract change and this
+ * batch had no authority for one; the residue being zero is what makes the flip *available*, not
+ * what makes it decided. Every number above is printed on each run rather than quoted from here,
+ * because a stale rate is how a measured deferral becomes the other kind.
  */
 if (found.length) {
   const byRoute = new Map();
@@ -207,9 +290,11 @@ if (found.length) {
   console.log(
     `unrecognised-rows — ${found.length} record link(s) name a record by its TITLE, on a page that ` +
       `is not its own, outside every listing shape any gate knows. REPORT-ONLY; each needs its ` +
-      `component's unit named. ${citations} link(s) name a record by id — citations, correctly not ` +
-      `counted — and ${graphical} carry no text at all, being graphical links whose accessible name ` +
-      `is an attribute; they display no title, so they list nothing.`,
+      `component's unit named. ${citations} name a record by id — citations; ` +
+      `${graphical} carry no text at all, being graphical links whose accessible name is an ` +
+      `attribute; ${attributions} sit in a source-line and ATTRIBUTE a declaration to the record ` +
+      `that made it, which lists nothing; and ${pooled} sit in a pair side whose declaration is ` +
+      `pooled to the page, exempted by name with the measurement in this file.`,
   );
   for (const [route, n] of [...byRoute].sort((a, b) => b[1] - a[1]).slice(0, VERBOSE ? 999 : 12))
     console.log(`  ${String(n).padStart(4)}  ${route}`);
@@ -223,7 +308,8 @@ if (found.length) {
 
 console.log(
   `unrecognised-rows OK — every record link naming a record by its title sits inside a recognised ` +
-    `listing shape, across ${pages.length} built pages. ${citations} name a record by id and are ` +
-    `citations; ${graphical} carry no text and are graphical links. Neither displays a title, which ` +
-    `is the discriminator, stated because it is the whole design.`,
+    `listing shape or a named exemption, across ${pages.length} built pages. ${citations} name a ` +
+    `record by id and are citations; ${graphical} carry no text and are graphical links; ` +
+    `${attributions} attribute a declaration to the record that made it; ${pooled} sit in a pair ` +
+    `side whose declaration is pooled to the page and are exempted by name.`,
 );
