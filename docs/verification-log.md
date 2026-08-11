@@ -14278,3 +14278,131 @@ true if one ever does. Seam count on the rendered page is unchanged at 166.
 
 269 rows, 93 dashed ends, the four filters returning 269 / 93 / 97 / 59, the 2014 wall at 63 rows,
 and `unrecognised-rows` at the carried 62. 27 gate steps green.
+
+---
+
+## 2026-08-11 (twenty-first entry) — CLEARING THE QUEUE: pooling, cards, domain prose, and a prose shadow found in the field
+
+Four items. One was already built, one resolved into four different answers, one found two defects
+in its own output, and the last found the defect its own instructions predicted.
+
+### 1 — THE PAIR-POOLING QUESTION AND THE 62: RESOLVED, RESIDUE ZERO
+
+**The 62 was never one problem.** Four components, four answers.
+
+**`chart` — BOUND, and the recorded withdrawal reason was wrong.** The note blamed pair pooling for
+both withdrawn shapes. WITHDRAWN WORDING is quoted in `listing-shapes.mjs`. `chart` failed because
+that file matched a container class with `\b`, and **a hyphen is not a word boundary** — `\bchart\b`
+matched `chart-head`, `chart-title` and `chart-takeaway`, demanding a record's marks inside its own
+caption. Fixed independently in the F4 batch; re-tested against the fixed matcher it binds clean,
+**+12 rows, +16 marks**. Two causes wearing one explanation, which is why a withdrawal reason is
+re-tested rather than inherited.
+
+**`source-line` — RECOGNISED AS AN ATTRIBUTION, not bound.** *"Declared on &lt;record&gt;"* names the
+record that made a declaration being shown; it presents no record as an item, and rendering that
+record's caveat there would attach one record's qualifications to another record's data. **This is
+where the title-versus-id discriminator breaks, and it breaks in the honest direction** — the link
+uses the title because that is the sentence a reader needs. Recognised structurally by class, never
+guessed from link text. 23 links.
+
+**`cp-side` and `cu-side` — EXEMPTED BY NAME.** These genuinely list a record. They are unbindable
+because **the declaration is pooled to the PAGE**: 137 sides built, 59 whose series declares an
+absence, **28 rendering none because an earlier pair on the same page already did.** Which container
+holds it is an accident of pair order. Re-tested at this commit: `cu-view` fails 17, `cp-view` 15.
+
+**The pooling was verified correct BEFORE it was exempted: 45 of 45 pooled-away declarations are
+still present elsewhere on their own page.** Rule 4b holds; what fails is the gate's container model,
+which is a different object from a defect.
+
+**Both exemptions got controls in the same commit** — seven cases now, run through the live
+classifier rather than a copy of it, including a class that merely STARTS with an exempted name and
+one that closed before the link. An exemption without a control is an escape hatch, and the gate
+would then report clean because nobody looked.
+
+**Left report-only deliberately.** Zero residue makes the flip to a gate *available*, not decided.
+
+### 2 — `ledgerRefs`' REVERSE INDEX: ALREADY BUILT. The brief was working from a stale reading.
+
+`pairsNaming()` ships in `lib/data.ts` and renders on the record page under *"Measurements that name
+this record"*. **65 rows across 51 records**, against 68 raw refs on 53 — the difference being
+non-rendering pairs, correctly excluded. The brief's own case verified on production:
+`/ledger/L-0074/` carries PR-14. Nothing to build; `unrecognised-rows` is clean over it.
+
+### 3 — SHARE CARDS: 668 of 668 PAGES, AND TWO DEFECTS FOUND BY MEASURING THE OUTPUT
+
+619 record routes get a composed card; the ~49 index and utility surfaces inherit a root fallback
+they needed — without it they emitted no `og:` tags at all and a pasted link unfurled as a bare URL.
+
+**No card carries a figure**, verified over all 619: zero descriptions contain a number that is not
+the record's own id, a period label, or a count the composer states. That is a **deliberate floor,
+not the ideal.** The ideal is a sentence that needs no caveat because it IS the caveat's finding —
+an authored judgement per record across ~670 records, which a mechanical composer cannot write and
+must not pretend to.
+
+**The caveat is deliberately NOT in the description.** `og:description` has no length limit in the
+specification and every consumer has one in practice; a 1,320-character caveat pasted into a card is
+a caveat truncated by the platform — rule 3a's failure with the platform holding the knife.
+
+**DEFECT ONE: the scope asked for a field this corpus does not have.** `source.name` here is a full
+provenance sentence — **median 100 characters, p90 372, longest 1,540, and 162 of 269 contain a
+digit.** `agri-value-per-worker-peer` reads *"…which returns 1,641.90 — retrieved and matched, not
+inferred"*. That carries a DATA VALUE, so it breached the no-figure rule outright, and at 372
+characters the platform cuts it mid-identification, where a truncated provenance sentence reads as
+the whole source. Dropped rather than trimmed to a first clause: a guessed publisher prefix is an
+assertion about attribution that nothing checks.
+
+**DEFECT TWO: the absence clause was last.** Descriptions run to a median of 191 characters and the
+platforms show about two lines, so **an absence placed last is an absence the platform cuts** — the
+shipped-and-invisible shape again, caused by ordering rather than by a missing field. It now leads:
+199 cards open with the declaration.
+
+`og:url` was relative and is now absolute via `metadataBase`; a relative `og:url` is a broken tag.
+**`noindex` is UNCHANGED**, confirmed on both channels — the `X-Robots-Tag` header and the page meta.
+`twitter:card` is `summary` on every page and `summary_large_image` on none, verified: the large card
+reserves an image slot and renders it blank.
+
+### 4 — DOMAIN PROSE: EDUCATION AND ENVIRONMENT, AND THE HOLE THE BRIEF NAMED WAS ALREADY OPEN
+
+Three of fourteen areas now carry periods. Education takes four (opening at **2010**, because the
+Right to Education Act's own numbers are what the first period is about); environment takes three,
+because nothing in it divides at 2017. **Spans are chosen by what changed and are deliberately not
+uniform across areas.**
+
+**THE PROSE SHADOW WAS NOT HYPOTHETICAL AND IT WAS ALREADY IN THIS FILE.** The `macro` 2014–2016
+period read *"Two things in this period were settled rather than argued. Flexible inflation
+targeting was adopted in 2015 and given statutory form the following year… — the single record in
+this area assessed as having worked."* **L-0014 was rescored `worked` → `contested` on 2026-08-06**,
+five days before this audit, and calling a contested record *settled rather than argued* is exactly
+the defect the file's own header warns about. Corrected, with the withdrawn wording quoted in place.
+
+**It was found by a probe over the `from` lists, not by reading**, which is the argument for keeping
+those lists complete.
+
+#### CAN A CHECK BIND IT? Report only, as instructed — and the measurement is the answer.
+
+A crude lexical form is buildable in about thirty lines: for every id in a period's `from`, ask
+whether that record's `assessment` appears as a token in the period body. Run over 11 periods and 49
+cited ids it returns **9 candidates, of which 1 was real** — a signal-to-noise of 1 in 9.
+
+The eight false ones fail in two distinct ways, and neither is fixable lexically:
+
+- **A period cites a record it DESCRIBES without scoring.** L-0157 and L-0176 are named for the
+  cesses they levied, with no verdict asserted; L-0022 and L-0021 sit in a period whose *"scored
+  too-early"* refers to four trade agreements beside them.
+- **A verdict can be asserted in PARAPHRASE.** Environment's *"entered with no target to score at
+  all"* is `no-objective` stated correctly and contains none of the token.
+
+**And the probe's own first run produced a false candidate from a hand-typed enum** — `reversed` was
+missing, so L-0066, whose period says in terms *"the corpus's only reversed record"*, was reported as
+a mismatch. Reading the enum from the schema fixed it. A checker measuring whether checking is
+feasible must not itself be the thing that fails.
+
+**Verdict: buildable, and not worth gating at 1-in-9.** What it IS worth is running as a probe when
+period prose or a verdict changes, which is the same standing as `seam-span-report`. Turning it red
+would fire on eight correct paragraphs, which is the shape `withdrawn-wording` and `phase-name` were
+both designed around — assert a presence in context, never an absence.
+
+### Gate line
+
+27 steps green throughout. `listing-marks` 3,540 → 3,552 rows and 4,992 → 5,008 marks, the delta
+being `chart`. `unrecognised-rows` 62 → 0. `field-render-audit` 0 invisible. `rendered-space` 0.
