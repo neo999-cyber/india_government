@@ -13814,3 +13814,72 @@ cites by id does not, correctly. That is the guarantee the earlier batches did n
 
 **Gates:** `listing-marks` 3,835 rows / 5,429 marks · `unrecognised-rows` 62 reported, 4 citations
 correctly excluded · `link-check` 30,527 hrefs / 669 pages / 0 dead · all others unchanged.
+
+---
+
+## 2026-08-11 (fifteenth entry) — FEATURE 2 of 5: the corrections redline
+
+**30 redlines across 23 records**, each showing what a corrected field said and what it says now,
+with the change marked, a wipe per correction and one master control.
+
+### It is built from git, because `/data` cannot answer the question
+
+The convention keeps the withdrawn wording INSIDE the corrected field, so `/data` has the quotation.
+**What it does not have is the sentence the quotation was lifted out of** — the field as it actually
+read. A redline from `/data` alone would show the quotation against the field that quotes it, which
+is a circle.
+
+`tools/gen-corrections.mjs` takes the same walk `quotation-identity` takes and keeps the whole prior
+value rather than a yes/no. `before` is **the latest prior value carrying the quotation** — latest,
+not earliest, because a field corrected twice should show what it said immediately before *this*
+correction; the record's whole life is what the history block below it is for. Committed, with the
+same shallow-clone guard as `gen-record-history`, because a shallow walk would silently show a
+correction as having no before.
+
+### Nothing is truncated on either side, and that is asserted rather than intended
+
+Both texts are in the DOM in full, always. **The control changes emphasis, never presence** — no
+fetch, no collapse, no clip, and with scripting off both sides read exactly as they do with it on.
+
+The generator asserts `prefix + removed + suffix === before` and `prefix + added + suffix === after`
+for all 30, exactly. **Reconstruction failures: 0.** So the marked-up render IS the two texts and
+not a summary of them.
+
+### Two shapes, one renderer, and the diff is snapped to words
+
+**8 of 30 are full rewrites** — before and after share nothing. **22 are partial**, a sentence
+withdrawn inside a paragraph that otherwise stands, changing as little as 4 per cent of the text. A
+common prefix and suffix expresses both. The boundaries snap to whole words in the generator,
+because a character diff cuts mid-word and renders a correction as a typo.
+
+**The master drives items through an event, not through lifted state.** A "show all" says *set them
+all to this*; an item toggled by hand afterwards may then differ from it, which is what a reader
+expects and what lifting state would have got wrong.
+
+**No merit colouring.** Brass marks both spans. A withdrawn sentence is not a wrong one being
+punished — it is one this instrument stopped standing behind, and several of these are tightenings.
+
+### `unrecognised-rows` earned its place on the first feature it guarded
+
+**It went 62 → 71 the moment the redline landed.** The redline names a record by its title inside a
+container no gate knew, and **18 of the 23 records with a redline declare a mark.** Caught at the
+moment it landed rather than three batches later, which is exactly what that check was built before
+this feature to do.
+
+Fixed by passing the rendered marks in from the server page — `ProvenanceRecord` narrowed out,
+because it carries no mark fields, the same narrowing the table below already makes — and
+registering `redline` in the shared shape list. **Back to 62, the carried baseline, unchanged.**
+`listing-marks` 3,835 → **3,883 rows / 5,515 marks**.
+
+### One environment fact, recorded so it is not read as a bug
+
+The probe reported the wipe frozen: `background-size`, `color` and `opacity` unchanged across the
+toggle, while `text-decoration` flipped correctly. **The three frozen properties are exactly the
+transitioned ones.** The pane reports `document.hidden === true`, and a hidden tab does not run CSS
+transitions — the same class of artefact as the `setInterval` clamp measured for feature 1. Proven
+by disabling transitions and re-reading: every value flips correctly, `remBg` 0% → 100%, `addBg`
+100% → 0%, `addOpacity` 1 → 0.42, `remColor` ink-dim → ink.
+
+**Gates:** `corrections` 30 redlines / 23 records over 111 commits, 144 KB · `listing-marks` 3,883
+rows / 5,515 marks · `unrecognised-rows` 62, baseline restored · `link-check` 30,587 hrefs / 669
+pages / 0 dead · all others unchanged.

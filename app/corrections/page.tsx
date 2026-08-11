@@ -5,6 +5,8 @@ import { history, verdictChanges } from '@/lib/history';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS } from '@/lib/format';
 import type { Assessment } from '@/lib/types';
 import { CaveatRow, RecordMarks } from '@/components/marks';
+import { Redline, RedlineMaster } from '@/components/Redline';
+import { redlines } from '@/lib/corrections';
 
 export const metadata: Metadata = {
   title: 'Corrections',
@@ -87,6 +89,55 @@ export default function Corrections() {
         anywhere on the site. The list below is complete over the {known} ledger and provenance
         records the history file knows about; its length is the length of a list, not a grade.
       </p>
+
+      {/* ---- THE REDLINE. What the field said, and what it says now. ------------------------- */}
+      {redlines.length > 0 ? (
+        <section className="redlines">
+          <div className="sec-h">
+            <h2>{redlines.length} corrections, shown</h2>
+            <p className="sec-note">
+              Every field whose withdrawn wording is quoted inside the correction, with the text it
+              replaced. Reconstructed from the commit history, not from a list.
+            </p>
+          </div>
+          <p>
+            <strong>This is the method rather than a claim about it.</strong>{' '}
+            <span className="mono">quotation-identity</span> proves each quoted withdrawal matches
+            what that field actually held — 31 of 31 — so what follows is the record&rsquo;s own prior
+            text, not a description of it. Brass marks both spans and neither is coloured for merit:
+            a withdrawn sentence is one this instrument stopped standing behind, and several of
+            these are tightenings rather than repairs.
+          </p>
+          <RedlineMaster count={redlines.length} />
+          {redlines.map((r) => {
+            // Ledger only. `ProvenanceRecord` carries no `caveat`, `unmeasured` or
+            // `differentFacts` — it declares no marks at all — so a mark slot for one would be a
+            // promise the layer cannot keep. The same narrowing the table below already makes.
+            const rec = getLedger(r.id);
+            return (
+              <Redline
+                key={`${r.id}.${r.field}.${r.beforeDate}`}
+                item={r}
+                marks={rec ? <RecordMarks record={rec} /> : null}
+              />
+            );
+          })}
+        </section>
+      ) : (
+        <p className="prose-note">
+          <span className="label">No redlines available</span> The commit history was not read on
+          this build, so the before-and-after texts are not shown. That is a fact about the build,
+          not about the corpus — the corrections themselves are listed below.
+        </p>
+      )}
+
+      <div className="sec-h">
+        <h2>Every verdict that moved</h2>
+        <p className="sec-note">
+          The table below is the other half: records whose ASSESSMENT changed, which is a different
+          event from a field being rewritten.
+        </p>
+      </div>
 
       <div className="table-wrap">
         <table>
