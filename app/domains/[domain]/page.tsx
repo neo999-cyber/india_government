@@ -101,6 +101,11 @@ export default async function DomainPage({ params }: Props) {
   const indiaPoints = s.flatMap((x) => x.points.filter((pt) => pt.country === 'IND' && pt.value !== null));
   const verifiedPoints = indiaPoints.filter((pt) => pt.status === 'verified').length;
   const approxPoints = indiaPoints.filter((pt) => pt.status === 'approx').length;
+  // Series carrying a single observation — the shape welfare's note is about, and worth printing on
+  // every area that carries one, because it is the difference between a series and a running total.
+  const onePointSeries = s.filter(
+    (x) => x.points.filter((pt) => pt.country === 'IND' && pt.value !== null).length === 1,
+  ).length;
   const byDate = [...l].sort((a, b) => b.date.localeCompare(a.date));
   const shownRecords = byDate.slice(0, 6);
   const restRecords = byDate.slice(6);
@@ -167,7 +172,8 @@ export default async function DomainPage({ params }: Props) {
           <span className="label">How this area is published</span> {evidence}{' '}
           <span className="mono">
             {approxPoints} of {indiaPoints.length} India observations are published as
-            approximations; {verifiedPoints} {verifiedPoints === 1 ? 'is' : 'are'} verified.
+            approximations; {verifiedPoints} {verifiedPoints === 1 ? 'is' : 'are'} verified.{' '}
+            {onePointSeries} of {s.length} series carry a single observation.
           </span>
         </p>
       ) : null}

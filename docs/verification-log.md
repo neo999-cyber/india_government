@@ -14492,3 +14492,100 @@ unchanged — the periods block links records by id, which is a citation and cor
 `field-render-audit` 0 invisible. `rendered-space` 0. No horizontal overflow at 375px.
 
 **Nine areas remain without periods.**
+
+---
+
+## 2026-08-11 (twenty-third entry) — DOMAIN PROSE: welfare and human development, and three premises corrected
+
+Seven of fourteen areas now carry periods. Welfare takes four; human development takes three on eight
+records, because its last period carries the comparability argument that is the whole area.
+
+### THREE PREMISES IN THE BRIEF DID NOT HOLD AGAINST THE RECORDS, AND ARE CORRECTED HERE
+
+**1. THE HOUSING OCCUPANCY SERIES DOES NOT EXIST, so it cannot have run five years and stopped.**
+`pmay-g-houses` and `pmay-g-completed` each carry a SINGLE observation, FY2025-26. Occupancy is not
+a series that stopped — it is an `unmeasured` declaration on L-0037 with `reasonKind: not-published`.
+
+**The reading the brief wanted is right and welfare has a better instance of it.** Ujjwala publishes
+connections cumulatively, still running to FY2025-26; **refills — which the series' own note calls
+"THE metric for this scheme, not connections" — stop at FY2018-19**, sourced to a CAG report finding
+the first cohort averaged 3.66 a year against a benchmark of roughly six, with 17.61 per cent never
+returning for a second cylinder. **The publisher of the useful number stopped and the publisher of
+the flattering one did not.** That is the published-series-ends case in the domain where it matters,
+and it is the spine of the 2017–2019 period.
+
+**2. THERE IS NO `health` DOMAIN.** The nearest is `human-development`, and it is not a health area:
+five of its eight records file their subject elsewhere — road safety under infrastructure, educated
+youth unemployment under employment — and appear here because the human outcome is what the page is
+about. The prose says so in its first sentence rather than letting a reader assume otherwise.
+
+**3. IT IS 33 PER CENT VERIFIED, NOT 55.** 10 of 30 India observations. Welfare's 17 per cent is
+correct — 12 of 70.
+
+**And a fourth, small: the evidence notes are on `infrastructure` and `employment`, not
+`infrastructure` and `environment`.** `environment` has never carried one.
+
+### THE EVIDENCE-NOTE TEST, APPLIED TO BOTH AND ANSWERED DIFFERENTLY
+
+**WELFARE GETS ONE, AND THE REASON IS NOT ITS GRADE.** A welfare scheme reports a CUMULATIVE RUNNING
+TOTAL — houses sanctioned to date, cards created to date, connections released to date — which is one
+number republished as it grows, not a series that can be differenced into annual figures.
+**Nine of nineteen welfare series therefore carry a single observation, against four of twenty-four
+in infrastructure and three of twenty-three in employment**, and six say *cumulative* in their own
+title or note against nought and one. A cumulative total is a real quantity answering a different
+question from the one a reader brings: how much since the scheme began, not how much last year.
+
+**HUMAN DEVELOPMENT DOES NOT, AND THE DECISION IS WRITTEN DOWN RATHER THAN LEFT AS AN OMISSION.** At
+33 per cent verified its grade is mixed and unremarkable beside infrastructure's nought. What IS
+distinctive is cadence and cross-filing — five of seven series carry two points or fewer because
+they are survey rounds, and five of eight records file elsewhere. **Neither is a fact about the
+evidence grade**, so both belong in the period prose, where they are, and not in a note whose whole
+job is to explain a grade.
+
+The derived line now also prints single-observation series, on all three areas that carry a note,
+because that is the shape welfare's note is about.
+
+### THE SHOCK IS THE SUBJECT IN HUMAN DEVELOPMENT, AND THE MECHANISM IS SPECIFIC
+
+Not density — banking and poverty are both 100 per cent exposed against human development's 88. The
+distinguishing fact is that **the measuring instrument itself straddles the shock**: the second and
+last point of anaemia, stunting and wasting is NFHS-5, whose fieldwork ran 2019-21 and overlapped
+COVID, and **NFHS-6 fieldwork is delayed with publication status uncertain as of mid-2026.**
+
+**The record does not draw a line through it and neither does the prose.** L-0042's own exposure
+entry is `confound` / `limited`: the overlap confounds attribution, *and* the anaemia increase is too
+large to be attributed to the pandemic alone because the pre-pandemic phase of the same fieldwork
+already showed the trend. A confound accepted in part, not a shock used to explain a finding away.
+
+### THE PROBE: 25 CANDIDATES OVER 25 PERIODS AND 104 IDS, AND WHAT IT MISSED
+
+Nine were new. **None was a stale verdict.** Two improvements were made anyway and one real defect
+was found — by hand, not by the probe.
+
+- **`L-0067`: "the one outright failure" → "the one record here scored failed."** Same fix as
+  `L-0051` last batch, applied for consistency: the noun form is not the verdict.
+- **Four `partly` records in one welfare period, none saying so.** Named once: *"All four are scored
+  partly, and in each the limb they fall short on is the used half."*
+- **`L-0060` WAS CITED IN A HUMAN-DEVELOPMENT PERIOD AND NEVER DRAWN ON — AND THE PROBE DID NOT SEE
+  IT.** This is the shape it caught twice last batch, and here it passed: L-0060 is `contested`, the
+  period body contains *"contested"* for a different record, so the token test was satisfied by
+  coincidence. **The probe detects an unused id only when that id's verdict token happens to be
+  absent from the whole paragraph** — which is luck, not detection. Dropped from the list;
+  employment's period carries it.
+
+**A hand sweep for that shape then ran over all seven areas** and returned four candidates, all
+false: the prose names records descriptively rather than by title — *"the note withdrawal of
+November 2016"* is L-0011, *"housing"* is L-0037, *"Ports"* is L-0053 — which is better writing than
+any heuristic can see. **No cited-but-unused id remains in any area.**
+
+The four remaining welfare and human-development candidates were read and are false, in the two
+known shapes: `baseline-context` spelled in English (*"entered as baseline context"*, L-0007, the
+same as L-0001 last batch), and records described without being scored.
+
+### Gate line
+
+27 steps green. `listing-marks` 3,552 rows / 5,008 marks and `unrecognised-rows` 0, both unchanged —
+the periods block links by id, a citation, correctly not counted. `field-render-audit` 0 invisible.
+`rendered-space` 0. No horizontal overflow at 375px; the evidence note precedes the periods.
+
+**Seven areas remain, and governance and Kashmir go last.**
