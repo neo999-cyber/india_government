@@ -14222,3 +14222,59 @@ artefact read as a result. The page states the distinction.
 
 **F3, F4 and F5 all ship in this batch**, the three the instruction named. The 62
 `unrecognised-rows` residue is unmoved across all three and the pair-pooling question is untouched.
+
+---
+
+## 2026-08-11 (twentieth entry) — THE SPAN STRIP'S AXIS: one series was taking half the width
+
+Reported by the operator against the shipped page: the strip is congested and the axis starts in
+1960 when the data is mostly post-2000. Both halves of that are right, and the second is the cause
+of the first.
+
+### THE MEASUREMENT
+
+The axis was anchored to `Math.min` over start years — 1952 — and **`lok-sabha-sitting-days` is the
+only series that reaches it.** The next earliest begins in 1996 and the median begins in **2014**.
+
+| cut | series beginning earlier | share of the axis freed |
+|---|---|---|
+| 1990 | 1 | 51% |
+| 2000 | 4 | **65%** |
+| 2004 | 8 | 70% |
+
+**One row held 51 per cent of the width and four held 65**, so the other 265 spans were compressed
+into the right-hand third. The median span is 7 years, which drew at **9.5 per cent** of the track.
+
+### THE FIX, AND WHAT IT DOES NOT DO
+
+The origin is now the **2nd-percentile start year — 2000 — derived, not chosen**, so it moves with
+the corpus. The median span now draws at **26.9 per cent of the track, 2.85× wider**, measured on the
+rendered DOM rather than computed.
+
+**NOTHING IS CLIPPED AND THAT IS THE POINT.** A bar shortened to fit would assert a later start than
+the data has, which is a rendering that states something false. The four earlier series are
+**clamped**: each runs to the left edge, carries a dotted continuation mark pointing off the edge —
+the mirror of the dashed end already in the key — and keeps its true start year in the gutter and in
+its accessible name. Verified: 4 marks present, all four bars flush to the track's left edge. **The
+axis is narrowed; the record is not.**
+
+Tick interval follows the span the axis covers: at 74 years only decades fitted, at 26 a decade tick
+leaves a reader counting gridlines, so the step is five years. Rendered ticks are now 2000, 2005,
+2010, 2015, 2020, 2025.
+
+### THE SEAMS HAD TO MOVE, AND THIS IS THE PART THAT COULD HAVE GONE WRONG QUIETLY
+
+Seams were positioned **inside the bar**, as a fraction of the bar's own span. **Under clamping that
+is silently false**: a clipped bar's fraction no longer maps to a year, so a declared basis change
+would render at a year it did not happen in — valid data, drawn wrong, and nothing downstream would
+have contradicted it.
+
+Seams are now siblings of the bar in the track and positioned in **axis space**, where a seam sits at
+its year whatever the bar does. Checked before relying on it: **no series in the corpus declares a
+break before 2000**, so the clamp loses no seam today, and the filter is in the code so that stays
+true if one ever does. Seam count on the rendered page is unchanged at 166.
+
+### What did not change
+
+269 rows, 93 dashed ends, the four filters returning 269 / 93 / 97 / 59, the 2014 wall at 63 rows,
+and `unrecognised-rows` at the carried 62. 27 gate steps green.

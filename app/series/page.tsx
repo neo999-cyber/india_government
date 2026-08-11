@@ -72,8 +72,23 @@ export default function SeriesIndex() {
     stopped: r.end < FRONTIER,
     short: r.span <= 3,
   }));
-  const X0 = Math.min(...rows.map((r) => r.start));
+  /**
+   * THE AXIS BEGINS WHERE THE DATA IS, NOT AT THE EARLIEST DATUM.
+   *
+   * Anchoring to `Math.min` put the origin at **1952 — one series — and that single row consumed
+   * 51 per cent of the width.** Four series begin before 2000 and between them they took 65 per
+   * cent of the axis, so the other 265 were crushed into the right-hand third and the strip could
+   * not do the one job it has: show the shape of the spans. The median start year is 2014.
+   *
+   * So the origin is the **2nd-percentile start year**, computed here so it moves with the corpus.
+   * NOTHING IS CLIPPED AWAY: a series beginning earlier is drawn to the left edge and carries a
+   * continuation mark plus its true start year, which is the same idiom as the dashed end. **The
+   * axis is narrowed; the record is not.**
+   */
+  const startsSorted = rows.map((r) => r.start).sort((a, b) => a - b);
+  const X0 = startsSorted[Math.floor(startsSorted.length * 0.02)];
   const X1 = Math.max(...rows.map((r) => r.end));
+  const earlierThanAxis = rows.filter((r) => r.start < X0).length;
   const wallCount = rows.filter((r) => r.start === 2014).length;
   const frontierN = rows.filter((r) => r.end === FRONTIER).length;
   const stripCounts = {
@@ -116,6 +131,16 @@ export default function SeriesIndex() {
         ending earlier has stopped being published; one ending in {FRONTIER} is an annual series
         whose next figure is not out yet. Measured instead against the latest year any series
         reaches, the same filter would return {rows.length - 5} of {rows.length} and mean nothing.
+      </p>
+      <p className="prose-note">
+        <span className="label">Why the axis begins in {X0}</span> Anchored to the earliest
+        observation the axis started in {rows[0]?.start}, and that one series took half the width
+        while the median series begins in 2014 — 265 spans crushed into the right-hand third. It
+        begins instead at the second-percentile start year, computed from the data.{' '}
+        <strong>
+          The {earlierThanAxis} series that begin earlier are not cut short:
+        </strong>{' '}
+        each runs to the left edge with a continuation mark and its own start year beside it.
       </p>
       <StripFilter counts={stripCounts} frontier={FRONTIER} />
       <SpanStrip rows={rows} x0={X0} x1={X1} frontier={FRONTIER} />

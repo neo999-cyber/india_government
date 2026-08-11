@@ -38,6 +38,20 @@ import type { Series } from '@/lib/types';
  * knows what the comparison is, and derived here rather than hardcoded so it moves when the corpus
  * does.
  *
+ * ============================ THE AXIS BEGINS WHERE THE DATA IS ===============================
+ *
+ * **Anchored to the earliest observation, ONE SERIES TOOK HALF THE STRIP.** `lok-sabha-sitting-days`
+ * runs from 1952; the next earliest begins in 1996 and the median in 2014. With the origin at the
+ * minimum, 51 per cent of the width carried a single row and 265 spans were crushed into the
+ * right-hand third — the strip could not show the shape of the spans, which is the only thing it is
+ * for.
+ *
+ * The origin is the **2nd-percentile start year**, derived rather than chosen, so it moves with the
+ * corpus. **Four series begin earlier and none is cut short**: each is drawn to the left edge with a
+ * continuation mark and its own start year in the gutter and in its accessible name. The axis is
+ * narrowed; the record is not, and the difference is the whole point — a bar shortened to fit would
+ * assert a later start than the data has.
+ *
  * ============================ WHY THERE ARE NO PER-ROW LABELS, AND NO DE-COLLISION ============
  *
  * At 269 rows label collision is certain, and the `PeerSlope` precedent — move text, never a datum —
@@ -85,8 +99,11 @@ export function SpanStrip({
   frontier: number;
 }) {
   const pct = (year: number) => ((year - x0) / (x1 - x0)) * 100;
+  // Tick interval follows the span the axis actually covers. At 74 years only decades fit; at 26
+  // a decade tick leaves a reader counting gridlines to place a bar, so five years is the step.
+  const step = x1 - x0 <= 30 ? 5 : 10;
   const decades = [];
-  for (let y = Math.ceil(x0 / 10) * 10; y <= x1; y += 10) decades.push(y);
+  for (let y = Math.ceil(x0 / step) * step; y <= x1; y += step) decades.push(y);
 
   let lastStart: number | null = null;
 
@@ -124,28 +141,36 @@ export function SpanStrip({
               <span className="strip-track">
                 <Link
                   href={`/series/${r.id}/`}
-                  className={`strip-bar${r.stopped ? ' is-stopped' : ''}`}
+                  className={`strip-bar${r.stopped ? ' is-stopped' : ''}${
+                    r.start < x0 ? ' is-earlier' : ''
+                  }`}
                   aria-label={`${r.title}, ${r.start} to ${r.end}${
-                    r.breaks.length ? `, ${r.breaks.length} basis change` : ''
-                  }${r.stopped ? ', published series ends here' : ''}`}
+                    r.start < x0 ? `, beginning before this axis` : ''
+                  }${r.breaks.length ? `, ${r.breaks.length} basis change` : ''}${
+                    r.stopped ? ', published series ends here' : ''
+                  }`}
                   style={{
-                    left: `${pct(r.start)}%`,
-                    width: `${Math.max(pct(r.end) - pct(r.start), 0.35)}%`,
+                    // CLAMPED, NOT CLIPPED. A span starting before the origin is drawn from the
+                    // left edge and marked as continuing; its true start is in the label beside it
+                    // and in the accessible name. Never shortened silently.
+                    left: `${Math.max(pct(r.start), 0)}%`,
+                    width: `${Math.max(pct(r.end) - Math.max(pct(r.start), 0), 0.35)}%`,
                     // Fill weight for the verified split. Opacity, not hue — direction of merit is
                     // not what this encodes and `higherIsBetter` is an unread debt besides.
                     opacity: 0.35 + r.verified * 0.65,
                   }}
-                >
-                  {r.breaks.map((b) => (
-                    <span
-                      key={b}
-                      className="strip-seam"
-                      style={{
-                        left: `${((b - r.start) / Math.max(r.end - r.start, 1)) * 100}%`,
-                      }}
-                    />
+                />
+                {/* SEAMS SIT IN AXIS SPACE, NOT IN BAR SPACE, and that is what makes clamping
+                    safe. Positioned inside the bar they would slide when a bar is clamped, moving
+                    a declared basis change to a year it did not happen in — a rendering that
+                    states something false about the data. In axis space a seam is at its year
+                    whatever the bar does. (No series in the corpus declares a break before the
+                    origin, checked; the filter is here so that stays true if one ever does.) */}
+                {r.breaks
+                  .filter((b) => b >= x0)
+                  .map((b) => (
+                    <span key={b} className="strip-seam" style={{ left: `${pct(b)}%` }} />
                   ))}
-                </Link>
               </span>
             </div>
           );
