@@ -51,7 +51,8 @@
     "exposure": "node tools/exposure.mjs --control && node tools/exposure.mjs",
     "objectives": "node tools/objectives.mjs --control && node tools/objectives.mjs",
     "independence": "node tools/independence.mjs --control && node tools/independence.mjs",
-    "rendered-space": "node tools/rendered-space.mjs"
+    "rendered-space": "node tools/rendered-space.mjs",
+    "period-verdict-probe": "tsx tools/period-verdict-probe.mjs"
   },
   "dependencies": {
     "next": "16.2.12",
