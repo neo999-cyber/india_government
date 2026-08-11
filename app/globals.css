@@ -3486,3 +3486,86 @@ details.more > summary {
   width: 12px;
   height: 8px;
 }
+
+/* ---------------------------------------------------------------------------------------------
+   F4 — CONTESTED, TWO READINGS
+
+   THE SPLIT IS TWO PANELS THAT DO NOT TOUCH. No shared axis, no shared bar, no colour separating
+   them: 38 and 28 are different kinds of contest, not two positions on a scale of resolvedness,
+   and a divided bar would say the opposite. The gap between them is the encoding.
+--------------------------------------------------------------------------------------------- */
+.csplit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.75rem;
+  margin: 1.75rem 0;
+}
+.csplit-half {
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  padding: 1.15rem 1.25rem 1.25rem;
+}
+.csplit-n {
+  font-size: 2.6rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--fill);
+  margin: 0;
+}
+.csplit-k {
+  margin: 0.4rem 0 0.6rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.csplit-w {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+.cg-h {
+  margin-top: 2.25rem;
+  padding-top: 0.6rem;
+  border-top: 2px solid var(--rule);
+}
+
+/* ONE CONTESTED RECORD. The pair is a two-column grid at reading width and a single column below
+   it — never a horizontal scroller, because a case scrolled off the side is a case truncated by
+   another name. Panels are NOT height-matched to one another: equalising them pads the shorter
+   case into looking as substantial as the longer one, which is the inverse of truncation and
+   quieter. */
+.ctwo {
+  border: 1px solid var(--rule-soft);
+  padding: 1.1rem 1.2rem 1.2rem;
+  margin: 1.1rem 0;
+  background: var(--bg);
+}
+.ctwo-head h3 { margin: 0 0 0.15rem; font-size: 1.0625rem; }
+.ctwo-meta { margin: 0 0 0.5rem; }
+.ctwo-ground { margin: 0 0 0.75rem; }
+.ctwo-pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+  margin: 0.85rem 0 0.9rem;
+}
+/* Equal weight, asserted in the styles as well as in the prose: same width, same type, same
+   colour, same rule. Neither side is emphasised and neither is coloured — the palette's red is
+   reserved for deaths, alerts and seams, and a red panel facing a plain one would score the
+   dispute this page exists not to score. */
+.ctwo-side {
+  border-top: 2px solid var(--rule);
+  padding-top: 0.55rem;
+}
+.ctwo-side h4 {
+  margin: 0 0 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.ctwo-side p { margin: 0; }
+.ctwo-settle,
+.ctwo-note { margin: 0.5rem 0 0; font-size: 0.9375rem; color: var(--ink-2); }

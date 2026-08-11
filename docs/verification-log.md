@@ -14037,3 +14037,93 @@ output-reading gate does. Wired into the build after `listing-marks`: **27 steps
 F1 and F2 shipped in earlier batches. **F3 ships here.** F4 (contested, two readings) and F5 (the
 exposure matrix) are unstarted. The 62 `unrecognised-rows` residue and the pair-pooling question
 stay carried, untouched, as instructed.
+
+---
+
+## 2026-08-11 (eighteenth entry) — FEATURE 4: contested, two readings — and a boundary defect in a gate
+
+`/contested/` listed 68 records as title, term and domains. A reader learned that a contest existed
+and never met it. The two readings are now the page.
+
+### THE 38/28 SPLIT IS THE ENTRY, AND IT IS TWO OBJECTS RATHER THAN ONE BAR
+
+38 records turn on something no document could resolve — `criterion`, `measure`,
+`evidence-unobservable`. 28 would be settled by a specific thing the record names —
+`evidence-withheld`, `interpretation`, `time`.
+
+**A single divided bar was the obvious thing to draw and it would have been the wrong picture.** It
+puts both halves on one scale and invites the reading that the corpus is 58 per cent stuck and 42
+per cent pending, with the second number due to fall. Neither is true: a contest nothing can settle
+is a FINDING about a disagreement, and a contest something would settle is a statement about a
+document that has not been produced. **Different kinds of thing, so two panels that do not touch and
+share no axis** — verified on the rendered page as a real 28px gap with the panels on one row, not
+a divided rule. No colour separates them either; the unsettleable half is not the bad half.
+
+The page says in terms that the split is not a burndown and the settleable half is not a queue: a
+contest a ministry could end by publishing a figure it has not published is a finding about the
+ministry, not outstanding work for this instrument.
+
+### THE TWO GROUNDS ARE DIFFERENT OBJECTS AND THE PAGE NOW SAYS SO
+
+`contestedGround` answers *what would have to be true for this to resolve?* The grounds inside
+`caseFor` and `caseAgainst` are what the disputants argue. **A reader who runs them together takes a
+contest of `criterion` for a weak argument when it is the opposite** — the facts are agreed and it
+is the frame that is in dispute. The contest's ground is labelled as its own, above the pair, before
+either reading is met; its consequence is restated beneath, where a reader has the argument in mind.
+
+### EQUAL WEIGHT WAS MEASURED BEFORE IT WAS BUILT
+
+Facing panels of equal width are only honest if the corpus supports them. **Median for/against
+length ratio 0.89; exactly one record of 68 has a side more than twice the other.** Had the corpus
+been lopsided, equal panels would have rendered a one-sided record as balanced — worse than the
+table they replace.
+
+Verified on the rendered DOM at 1280px rather than asserted: **68/68 facing on one row, 68/68 at
+identical width, identical font, weight and colour on both sides, and neither carrying colour** —
+the palette's red stays reserved for deaths, alerts and seams, and a red panel facing a plain one
+would score the dispute this page exists not to score.
+
+**HEIGHTS ARE DELIBERATELY NOT MATCHED: 57 of 68 rows have sides of different height.** Equalising
+them pads the shorter case into looking as substantial as the longer one, which is the inverse of
+truncation and quieter.
+
+### NOTHING IS TRUNCATED, AND THAT IS CHECKED AGAINST THE CORPUS MAXIMUM
+
+**The longest `caseAgainst` in the corpus is 2,736 characters and the longest rendered on the page is
+2,736.** No clamp, no line limit, no disclosure: the probe found zero elements with an overflowing
+scroll height, a line clamp or an ellipsis. Rule 3a is written about caveats and its reasoning is not
+specific to them — a case cut to fit a cell looks like the whole of it.
+
+Rule 4b's reading order holds too: **the record's declarations precede the argument on 68 of 68**,
+and the 39 caveats the measurement predicted are the 39 on the page.
+
+### A BOUNDARY DEFECT IN `listing-marks`, FOUND BY THE FEATURE THAT TRIPPED IT
+
+Registering the new `ctwo` shape made `listing-marks` fail **76 marks** on a page rendering every one
+of them correctly. The cause was in the gate, not the page.
+
+**`CONTAINER_CLASSES` matched with `\b`, and a hyphen is not a word boundary.** So `\bctwo\b` matched
+`class="ctwo-head"` and the gate demanded a record's marks inside the record's own TITLE block. This
+is precisely the boundary defect `tools/lib/corpus-search.mjs` exists to prevent, in the one place
+that had hand-rolled its own matcher. Fixed to a whole class token bounded by a space or the quote.
+
+**THE FIX CHANGES TWO NUMBERS THIS LOG HAS PUBLISHED, SO THEY ARE RECONCILED HERE RATHER THAN LEFT TO
+READ AS A REGRESSION.** `listing-marks` now reports **3,505 rows and 4,950 marks** against 3,883 and
+5,515 in the seventeenth entry. Measured per class over 668 built pages:
+
+| class | old (`\b`) | new (token) | accidental |
+|---|---|---|---|
+| `drec` | 866 | 433 | 433 |
+| `redline` | 60 | 30 | 30 |
+| `ctwo` | 340 | 68 | 272 |
+| `cw` · `pslope` · `peer-one` | 71 | 71 | 0 |
+
+**No registered unit was lost.** `drec` and `redline` were each counted exactly twice — a child div
+sharing the prefix — and `ctwo` five times. The phantoms were sub-blocks of the real container, so
+they passed trivially and inflated the coverage count without checking anything the outer container
+did not already cover. **The old figure was larger and measured less.**
+
+### Where the batch stopped
+
+F3 shipped this batch, F4 ships here. **F5, the exposure matrix, is unstarted.** The 62
+`unrecognised-rows` residue is unmoved and the pair-pooling question is untouched, as instructed.
