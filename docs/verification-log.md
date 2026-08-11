@@ -15368,3 +15368,115 @@ stacking to one column.
 
 **Carries forward: 251 authored findings, and DESIGN-REVISION items 2 (search), 3 (topic tabs) and
 4 (nav labels and landing additions), none started.**
+
+---
+
+## 2026-08-11 (thirty-first entry) — DESIGN-REVISION ITEM 2: search as cards, and a ruling refused on a measurement
+
+### THE PREMISE CHECK — §4 HOLDS, UNLIKE ITEM 1
+
+Item 1's premise failed structurally: there was no chart at all. **Item 2's holds exactly.**
+`/search/` renders a four-column table, ID first and title second, with the full caveat in a row
+spanning four columns. One `<table>`, one text input, two selects.
+
+**One thing the brief did not name and the page did:** the lede read *"All 619 records — 269 series,
+223 ledger entries and 127 measurement disputes"* — **the double count spelled out inside the
+sentence that commits it**, since 619 is the sum and the 269 are inside it. Removed.
+
+### THE §4 RULING: NEITHER OPTION TAKEN, AND THE GROUND IS A MEASUREMENT
+
+The operator ruled for the mark alone, over the first-clause-plus-label option. **Neither was taken.**
+
+**The first clause is rejected as proposed** — a truncation with a label on it, and rule 3a settled
+that form once already on the grid cards.
+
+**The mark alone is rejected because its stated ground does not hold.** The ruling rested on *the
+mark is already the corpus's own convention for exactly this — readers meet it on every listing
+surface.* **Measured: every listing surface renders the caveat IN FULL.** 232 of 232 on `/search/`,
+103 of 103 on `/ledger/`, 129 of 129 on `/series/`, 2 of 2 on a domain page. The mark would have
+made search the only listing surface that does not, and rule 3a names index tables in terms.
+
+**What was taken is not a third option.** It is the ruling this phase already made and recorded:
+*a caveat-bearing card takes the full grid row.* That IS rule 3a's instruction — the layout changes,
+the caveat does not — and it solves the layout problem §4 reopened. **232 of 619 cards take the full
+row.**
+
+### WHAT WAS BUILT, AND THE TWO ITEMS THAT COULD NOT BE
+
+Title first, id second, topic and record-type chips, the record's marks, the caveat in full, a
+collapsible technical detail, a mobile filter drawer, and sort by newest · topic · record type.
+
+**"Short matched excerpt" — built as a DESCRIPTION, not a match, and labelled so.** Matching runs
+over ids and titles only, because carrying every record's prose in the DOM was measured at 313 KB
+and cut from this page for that reason. What is affordable is one whole sentence — 93 KB across the
+594 records that have prose. **The rule is a complete first sentence or nothing: 516 cards show one
+and 78 show none, because their first sentence runs past 240 characters** and a long sentence cut is
+the thing a short one was chosen to avoid.
+
+**"Relevance" sort — NOT BUILT, and named as not built.** Relevance needs a query and this surface
+has none: it is a filter over a complete document. Inventing an order — title hits before id hits —
+would be a ranking with no stated criterion, which rule 9 forbids. **An order labelled *relevance*
+that is really *title-first* teaches a reader something false about what the site knows.**
+
+Sorting is CSS `order` over three precomputed ranks, so it composes with the facet control that
+hides cards and the DOM never moves. Document order is `newest`, which is what scripting-off gets.
+
+### THE NEW SHAPE WALKED PAST `listing-marks`, EXACTLY AS PREDICTED — AND THE NUMBERS ARE THE PROOF
+
+**The gate reported OK while 619 records left its scope.** Replacing the table with cards took
+listing rows **3,716 → 3,405** and marks **5,247 → 4,816**, and `listing-marks` said *OK* both times,
+because `.scard` was not a recognised container and an unrecognised shape is not a failure — it is
+absence.
+
+**That is the seventh new shape to do this** — the grid card, the listing row, `<td>` against
+`<li>`, the domain rebuild's four containers, the redline, the contested pair, and now this. Bound in
+the same commit; rows and marks returned to **3,716 / 5,247**, exactly the pre-change figures.
+
+**And binding it immediately exposed a defect of mine**: the card had a hand-rolled
+`<p className="caveat-inline">Caveat: …</p>`, and the gate failed 232. **The same ad-hoc-normaliser
+defect found in `PeerSlope`, which had also hand-rolled a caveat.** Replaced with the shared
+`CaveatFlag`. The gate found it only because the shape had just been bound — unbound, the hand-rolled
+markup would have shipped and reported clean.
+
+### THE PAIR-POOLING PARKING: HOLDS, WITH ITS REASON NARROWED
+
+The parking stands. **The two defects the last batch produced do not touch it** — they were caveat
+duplication on a record's own page, which `unrecognised-rows` does not bind and never did.
+
+**But its stated reason was too broad.** It said a pooling shift is *a design question rather than a
+defect*, and pooling has now produced two defects. Narrowed:
+
+- **Which container renders a declaration** — a design question. Registering the new arrangement is
+  often right, and a red build is the wrong instrument. The parking is for this.
+- **Whether a declaration is dropped or duplicated** — a defect, every time.
+
+**What changes:** `tools/own-caveat-once.mjs`, report-only, outside the build. Three gates touch
+caveats and none asks whether a record's own caveat renders exactly once on its own page —
+`listing-marks` binds that rule to listing ROWS, `field-render-audit`'s scope is `[any page]`, and
+`no-unguarded-prose-field` binds the list to the schema. It finds the two defects at `ac20d3d` and
+reports **232 of 232 clean** now.
+
+**Its header records the three needles that failed before one worked**, so the check is not
+re-derived a fifth time: a hand-rolled normaliser (4 false missing), a first-70-character needle
+(1 false duplicate, because **L-0118's caveat opens with the same words** as
+`jk-organised-stone-pelting`'s and sits in that page's cited-by grid), and an element regex stopping
+at the first nested `</div>` (29 false missing). The survivor is the full caveat text through the
+shared normaliser.
+
+### PAGE WEIGHT, RE-MEASURED RATHER THAN LEFT STALE
+
+The page's own header recorded 1,153 KB raw / 178 KB gzipped. **It is now 1,749 / 267** — an 89 KB
+gzipped regression, and the header says so, because a stated measurement not re-measured becomes a
+claim about the past in the present tense. Roughly 37 KB raw of it is the three sort ranks per card,
+which are inline custom properties because CSS `order` cannot read a data attribute. **If the page
+must come down, the excerpts go first and the ranks second; the caveats do not.**
+
+### Gate line
+
+27 steps green. `listing-marks` **3,716 rows / 5,247 marks**, back to the pre-change figures after
+binding. `unrecognised-rows` **0**, unchanged. `field-render-audit` 0 invisible, `rendered-space` 0,
+`link-check` 36,442 hrefs / 683 pages / 0 dead. Mobile at 375 px: 0 overflow, one column, drawer
+summary visible, caveat unclamped and not overflowing. Sort verified to change the visual order
+across all three.
+
+**Carries forward: items 3 and 4, and the 251 authored findings.**
