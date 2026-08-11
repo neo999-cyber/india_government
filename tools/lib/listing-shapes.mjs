@@ -107,17 +107,31 @@ export function listingRows(html) {
   /**
    * Widened 2026-08-11 to the four container shapes the domain and peers rebuilds introduced.
    *
-   * **TWO MORE WERE TRIED AND WITHDRAWN IN THE SAME PASS, and the reason is a finding rather than a
-   * failure.** `chart` (the embedded feature) and `cu-view` (a pair) both LOOK like listings and
-   * both were rejected by `listing-marks` the moment they were added — 17 marks reported missing on
-   * pages whose declarations are plainly present. The cause is that a pair POOLS its sides'
-   * absences and renders them once at pair width, and a pair whose absence side is a LEDGER record
-   * pools nothing from it at all.
+   * **TWO WERE TRIED AND WITHDRAWN IN THAT PASS. RESOLVED 2026-08-11, AND THEY HAD DIFFERENT
+   * CAUSES — the recorded reason was right about one and wrong about the other.** The withdrawal
+   * note blamed pair pooling for both. WITHDRAWN WORDING, quoted so the correction can be checked:
+   * *"`chart` (the embedded feature) and `cu-view` (a pair) both LOOK like listings and both were
+   * rejected by `listing-marks` the moment they were added — 17 marks reported missing on pages
+   * whose declarations are plainly present. The cause is that a pair POOLS its sides' absences and
+   * renders them once at pair width."*
    *
-   * **The unit is whatever renders the declarations once, and for those two components that is a
-   * question about the component rather than about markup.** Adding them without answering it would
-   * demand a declaration twice in one place and zero times in another. They are left out, and
-   * `unrecognised-rows` reports them so the decision is visible rather than lost.
+   * **`chart` WAS NOT A POOLING PROBLEM AND IS NOW BOUND.** It failed because this file matched a
+   * container class with `\b`, and a hyphen is not a word boundary — so `\bchart\b` matched
+   * `chart-head`, `chart-title` and `chart-takeaway` and demanded the record's marks inside its own
+   * caption and its own headline. That defect was fixed independently; re-tested against the fixed
+   * matcher `chart` binds clean, adding 12 rows and 16 marks. Two causes wearing one explanation,
+   * which is why a withdrawal reason gets re-tested rather than inherited.
+   *
+   * **THE PAIR VIEWS ARE REAL AND ARE EXEMPTED BY NAME IN `unrecognised-rows`, NOT ADDED HERE.**
+   * Re-tested at the same commit: `cu-view` still fails 17 and `cp-view` 15. Measured cause — 137
+   * `cp-side`/`cu-side` units are built, 59 belong to a series that declares an absence, and **28
+   * of those render none because an earlier pair on the same page already did.** The declaration
+   * lands once per PAGE and which container it lands in is an accident of pair order, so no
+   * container is the unit.
+   *
+   * **The pooling is correct and that was verified before it was exempted: 45 of 45 pooled-away
+   * declarations are still present elsewhere on their own page.** Rule 4b is satisfied; it is the
+   * gate's container model that does not reach the case, which is a different thing from a defect.
    */
   // `redline` added 2026-08-11 in the commit that created it, because `unrecognised-rows` reported
   // it the moment it landed. One record per container and its declarations render once inside —
@@ -125,7 +139,7 @@ export function listingRows(html) {
   // `ctwo` is F4's contested record: one <article> holding the title, the ground, the marks and the
   // two facing readings. Registered when the shape landed rather than after a gate reported it
   // missing — the third-shape class this list exists for.
-  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one', 'redline', 'ctwo'];
+  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one', 'redline', 'ctwo', 'chart'];
   const containers = [];
   for (const cls of CONTAINER_CLASSES) {
     // WHOLE CLASS TOKEN, NOT `\b`. A hyphen is not a word boundary, so `\bctwo\b` matched
