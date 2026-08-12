@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t ? `${label} — ${t.label}` : label,
     description: t
-      ? `${t.label} for ${label}: one section of this area's record, addressable on its own.`
+      ? `${t.label} for ${label}: one section of this topic's record, addressable on its own.`
       : undefined,
   };
 }

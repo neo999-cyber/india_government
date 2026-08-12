@@ -150,7 +150,7 @@ export const RENDERINGS = {
 
   // ---- provenance --------------------------------------------------------
   'provenance.id': identity(),
-  'provenance.affectsDomains': labels({ ...DOMAIN, all: 'All domains' }),
+  'provenance.affectsDomains': labels({ ...DOMAIN, all: 'all topics' }),
   'provenance.affectsSeries': identity(),
   'provenance.correctiveSeries': identity(),
   'provenance.directionOfBias': labels(DIRECTION_OF_BIAS),

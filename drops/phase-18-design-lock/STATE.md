@@ -307,12 +307,21 @@ amendment lets a run apply only a correction it raised itself, and this arrived 
 render-time move was tested and rejected** — 16 stamps lead their field, 12 sit mid-sentence inside
 the argument, so a leading-stamp rule would mangle a third of them.
 
-**2. The vocabulary.** Seven words for three concepts, breaking visibly on `/domains/kashmir/` where
+**2. The vocabulary — CLOSED 2026-08-12 as prose only, on the operator's ruling.** Nothing renamed;
+routes, hrefs and identifiers untouched. *area* → *topic*, *subjects* → *topics*, *all domains* →
+*all topics* in reader-facing text; the lens explanation rewritten in ordinary words; Kashmir's two
+true numbers now say which question each answers. **Superseded description follows.**
+
+**2. (superseded) The vocabulary.** Seven words for three concepts, breaking visibly on `/domains/kashmir/` where
 *0 series* and *Indicators 30* sit two lines apart and both are correct against different queries.
 Costed in the forty-sixth log entry: 3,384 internal hrefs and one gate assert the `/domains/` route.
 **Report-only by instruction.**
 
-**3. Seventeen ordering-defect candidates** — trajectory-only findings on records that carry a caveat,
+**3. Seventeen ordering-defect candidates — READ 2026-08-12, and 2 held.** `agri-credit` and
+`aser-out-of-school-15-16` rewritten; the other fifteen already carried their epistemic point.
+**Superseded description follows.**
+
+**3. (superseded) Seventeen ordering-defect candidates** — trajectory-only findings on records that carry a caveat,
 where the stronger sentence may be below the weaker one. **Not banked as defects**: the classifier that
 produced them failed its own control against two of the reviewer's three named cases.
 

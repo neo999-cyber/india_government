@@ -11,7 +11,7 @@ import type { ODomain, OSeries } from '@/components/OverviewBoard';
 export const metadata: Metadata = {
   title: 'Overview — what changed, everywhere, since 2014',
   description:
-    'Every area of Indian policy, the movement in each, and one control that runs the whole page through the years. Then every record, year by year.',
+    'Every topic in Indian policy, the movement in each, and one control that runs the whole page through the years. Then every record, year by year.',
 };
 
 /**
@@ -128,7 +128,7 @@ export const HEADLINE: Record<string, string> = {
  */
 export const INSTEAD: Record<string, string> = {
   kashmir:
-    'No series files Kashmir as its own subject: its thirty indicator series are filed under defence, governance and federalism and read through the Kashmir lens. What this area holds is forty-six records — detentions, communications shutdowns, human-rights complaints — and counts that come largely from hospitals, courts and commissions rather than from the state.',
+    'No series files Kashmir as its own subject: its thirty indicator series are filed under defence, governance and federalism and read through the Kashmir lens. What this topic holds is forty-six records — detentions, communications shutdowns, human-rights complaints — and counts that come largely from hospitals, courts and commissions rather than from the state.',
   poverty:
     'India’s last official poverty headcount was measured for 2011-12: 21.9 per cent on the Tendulkar methodology, down from 37.2 per cent in 2004-05. Nothing comparable has been published since, so there is no line to draw across the period this site covers — the absence is the finding, and it sits before the window every other card shares.',
 };
@@ -215,7 +215,7 @@ export function buildBoard(keys: Domain[], { headOnly = false }: { headOnly?: bo
       nSeries: list.length,
       nRecords: records,
       head: INSTEAD[d] ? null : head,
-      instead: INSTEAD[d] ?? (head ? null : 'This area holds no series long enough to chart.'),
+      instead: INSTEAD[d] ?? (head ? null : 'This topic holds no series long enough to chart.'),
       rest: headOnly ? [] : chartable.filter((s) => s.id !== head?.id),
       obs: pts.length,
       status: {
@@ -289,7 +289,7 @@ export default function Overview() {
       </p>
       <h1 className="home-lead">What changed, everywhere, since 2014</h1>
       <p className="lede">
-        One area of policy per card, each leading with a real measurement and where it went. Move
+        One topic per card, each leading with a real measurement and where it went. Move
         the year control and the whole page moves with it. Open any card for every series behind
         it, or any title for the records themselves.
       </p>
@@ -322,7 +322,7 @@ export default function Overview() {
         <span className="label">Why the thin areas are thin</span> Across the fourteen areas, the
         share of records that are announced <em>reforms</em> and the share that could be scored
         against an outcome move together almost exactly — Spearman&rsquo;s &rho; = {rho.toFixed(2)}.
-        So an area holding few scored outcomes is largely an area that <strong>contains</strong>{' '}
+        So a topic holding few scored outcomes is largely a topic that <strong>contains</strong>{' '}
         institutional practice and constitutional duty rather than announced programmes. That is
         what the <em>Made of</em> line on each card is for: it sits beside the numbers so the
         composition and the coverage are read in the same glance, rather than the second being

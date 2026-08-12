@@ -28,10 +28,17 @@ export default function LensesIndex() {
       </p>
       <h1>Lenses</h1>
       <p className="lede">
-        A lens is not a subject. <span className="mono">domain</span> says what a record is about;{' '}
-        <span className="mono">lenses[]</span> says what it also bears on. Every record listed under
-        a lens is filed under some other subject, and the subject is shown beside it. An empty lens
-        would be a filter that returns nothing, which the build refuses to ship.
+        {/* REWRITTEN 2026-08-12 on a reader's review. It read: *"A lens is not a subject.
+            `domain` says what a record is about; `lenses[]` says what it also bears on. Every record
+            listed under a lens is filed under some other subject, and the subject is shown beside
+            it."* Two field names in mono and the word *subject* three times — the distinction stated
+            in the data model's own vocabulary, to a reader who has not been given it. This is the
+            one place the site says what a lens is, so it says it in ordinary words. */}
+        A lens cuts across the topics. Everything here is filed under one topic — the thing it is
+        mainly about — and some of it also bears on something that runs through several: Kashmir,
+        federalism, the defence sector. Those are lenses. <strong>Nothing is filed under a lens.</strong>{' '}
+        A lens gathers what is filed elsewhere, and each item shows the topic it belongs to. A lens
+        holding nothing would be a filter that returns nothing, which the build refuses to ship.
       </p>
       <div className="grid">
         {LENSES.map((l) => {

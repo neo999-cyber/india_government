@@ -60,7 +60,7 @@ export default async function ProvenanceDetail({ params }: Props) {
         {p.affectsDomains.map((d) =>
           d === 'all' ? (
             <span key="all" className="tag">
-              all domains
+              all topics
             </span>
           ) : (
             <Link key={d} className="tag" href={`/domains/${d}/`}>

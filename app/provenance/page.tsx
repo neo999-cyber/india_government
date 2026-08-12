@@ -30,7 +30,7 @@ export default function ProvenanceIndex() {
         target="provenance-table"
         noun="disputes"
         facets={[
-          { key: 'domain', label: 'Area', options: opts(provenance.flatMap((p) => p.affectsDomains), (d) => (d === 'all' ? 'all domains' : DOMAIN_LABELS[d])) },
+          { key: 'domain', label: 'Topic', options: opts(provenance.flatMap((p) => p.affectsDomains), (d) => (d === 'all' ? 'all topics' : DOMAIN_LABELS[d])) },
           { key: 'bias', label: 'Direction of bias', options: opts(provenance.map((p) => p.directionOfBias), (b) => DIRECTION_OF_BIAS_LABELS[b] ?? b) },
           { key: 'bridge', label: 'Bridge', options: [
             { value: 'yes', label: 'a reconciliation exists' },
@@ -71,7 +71,7 @@ export default function ProvenanceIndex() {
                 <td className="mono t-note">{p.when}</td>
                 <td className="t-note">
                   {p.affectsDomains
-                    .map((d) => (d === 'all' ? 'all domains' : DOMAIN_LABELS[d]))
+                    .map((d) => (d === 'all' ? 'all topics' : DOMAIN_LABELS[d]))
                     .join(', ')}
                 </td>
                 <td className="t-note">{DIRECTION_OF_BIAS_LABELS[p.directionOfBias] ?? p.directionOfBias}</td>

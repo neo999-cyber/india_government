@@ -37,7 +37,7 @@ export function DomainTabs({
     { key: 'missing', label: 'Missing data', href: `/domains/${d}/missing/`, n: counts.missing },
   ];
   return (
-    <nav className="dtabs" aria-label="Sections of this area">
+    <nav className="dtabs" aria-label="Sections of this topic">
       {tabs.map((t) =>
         t.key === active ? (
           <span key={t.key} className="dtab is-on" aria-current="page">

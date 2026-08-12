@@ -84,7 +84,7 @@ export default function DomainsIndex() {
       </p>
       <h1 className="page-lead">Explore</h1>
       <p className="standfirst">
-        Fourteen subject areas, fixed by the schemas. Each card says what the area holds and where
+        Fourteen topics, fixed by the schemas. Each card says what the topic holds and where
         its longest-running measurement currently stands — <b>chosen for the longest unbroken run,
         not for importance</b>. Same fourteen, same order, nothing ranked.
       </p>
@@ -92,6 +92,12 @@ export default function DomainsIndex() {
       <div className="dcards">
         {DOMAINS.map((d) => {
           const s = series.filter((x) => x.domain === d);
+          // Kashmir files nothing as a topic and reads thirty indicators through itself as a lens.
+          // The card used to show only the first, so it read "0 series" beside a page whose tab
+          // strip said "Indicators 30". Both are true and they answer different questions.
+          const lensedHere = (LENSES as readonly string[]).includes(d)
+            ? series.filter((x) => x.domain !== d && (x.lenses ?? []).includes(d as never)).length
+            : 0;
           const l = ledger.filter((x) => x.domains.includes(d));
           const p = provenance.filter(
             (x) => x.affectsDomains.includes(d) || x.affectsDomains.includes('all'),
@@ -112,12 +118,15 @@ export default function DomainsIndex() {
               ) : (
                 <p className="dcard-lead">
                   <span className="dcard-none">
-                    No series here runs long enough to lead with — what this area holds is records.
+                    No series here runs long enough to lead with — what this topic holds is records.
                   </span>
                 </p>
               )}
               <p className="dcard-counts mono">
-                {s.length} series · {l.length} records · {p.length} disputes
+                {lensedHere
+                  ? `${s.length + lensedHere} indicators (${lensedHere} through the lens)`
+                  : `${s.length} indicators`}{' '}
+                · {l.length} records · {p.length} disputes
               </p>
             </Link>
           );
@@ -125,9 +134,9 @@ export default function DomainsIndex() {
       </div>
 
       <p className="prose-note">
-        An empty area is an unopened one — a blank here means unreported, not zero. The figure on
-        each card is the most recent observation of that area&rsquo;s longest unbroken series and is
-        not a summary of the area; the area&rsquo;s own page carries the rest.
+        An empty topic is an unopened one — a blank here means unreported, not zero. The figure on
+        each card is the most recent observation of that topic&rsquo;s longest unbroken series and is
+        not a summary of the topic; the topic&rsquo;s own page carries the rest.
       </p>
     </>
   );

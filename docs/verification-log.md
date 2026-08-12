@@ -16964,3 +16964,94 @@ reaches 0 pages; the absence-vocabulary emphasis is intact.
 
 **Carries forward: the `/data` internal-register class (research-owned), the 17 ordering-defect
 candidates, and the vocabulary decision.**
+
+---
+
+## 2026-08-12 (forty-seventh entry) — THE VOCABULARY, KASHMIR, AND SEVENTEEN READ BY HAND
+
+### THE VOCABULARY — PROSE ONLY, AS RULED
+
+Nothing renamed. Routes, hrefs, identifiers, class names and code comments are untouched; **3,384
+internal hrefs and `domain-coverage`'s route assertion never moved.** What changed is reader-facing
+text, in six files plus the authored domain copy.
+
+*area* → *topic* everywhere a reader meets it: the topic pages, the topics index, the overview board,
+the landing page's year control, the evaluability note, a tab strip's `aria-label`, and **43
+occurrences inside the authored period prose**. *subjects* → *topics* in the footer. *all domains* →
+*all topics* on the provenance index and record pages, with `value-renderings.mjs` moved in the same
+commit so the audit checks the new label.
+
+**Legitimate uses kept, and they are why this had to be read rather than swept:** *service area* is
+a TRAI licensing term, *geographical area* and *forest area* are units, *police is a State subject*
+is constitutional, *the two subjects' cut-scores* is school subjects. All are `/data` prose and all
+survive.
+
+**The lens explanation is now said once, in ordinary words.** The lenses index read *"A lens is not a
+subject. `domain` says what a record is about; `lenses[]` says what it also bears on"* — two field
+names in mono and *subject* three times, stating the distinction in the data model's own vocabulary
+to a reader who had not been given it. It now says a lens cuts across the topics, that **nothing is
+filed under a lens**, and that a lens gathers what is filed elsewhere.
+
+### KASHMIR — TWO TRUE NUMBERS THAT NOW SAY WHICH QUESTION THEY ANSWER
+
+The page carried *"0 series · 30 under this lens"* two lines under a tab strip reading *"Indicators
+30"*. Both correct: `series.domain === 'kashmir'` is 0 and `series.lenses` containing kashmir is 30.
+
+Now: the topic page reads **"30 indicators — 0 filed under this topic, 30 read through it as a
+lens"**, the topics-index card reads **"30 indicators (30 through the lens)"**, and the tab strip's
+30 matches both. The topic's own description was the densest remnant in the corpus — it used *area*,
+*subject* and *domains* in one paragraph to draw a distinction it never stated — and now opens
+*"Nothing is filed under Kashmir as a topic."*
+
+### THE SEVENTEEN, READ BY HAND — TWO FAILED
+
+A bounded candidate set is not a defect set, and this is the number that held: **2 of 17.**
+
+Fifteen already carry their epistemic point in the finding: `jk-civilians-killed-composite` opens on
+the definitional merge, `jk-nhrc-complaints` on *the increase is not evidence that more occurred*,
+`higher-ed-enrolment` on the hidden undergraduate fall, `divisible-pool-share-gtr` and
+`tn-devolution-population-ratio` on limbs added by earlier true-alone fixes. **The check that
+produced the 17 was right to be treated as candidates and wrong about 15 of them.**
+
+- **`agri-credit`** gave the generic version of its caveat's point. The caveat names the mechanism —
+  a substantial share is large-ticket lending — and what the record therefore fails to establish. The
+  finding now opens on it: disbursement exceeding target every year establishes nothing about
+  smallholders.
+- **`aser-out-of-school-15-16`** was the reviewer's failure mode exactly: a slope followed by two
+  statements of filing state. It now opens on what the number means — roughly one rural child in six
+  to one in thirteen — and names the measurement event, the four-year gap the fall spans.
+
+### A FILE WAS TRUNCATED, AND THE BUILD CAUGHT IT WHILE MY GREP DID NOT
+
+`components/DomainTabs.tsx` went to **zero bytes**. The cause is a Python idiom that opens for
+writing before evaluating the read inside the same expression, so the file is truncated and then
+written with the empty string it just produced. **`git checkout` restored it in full, which is the
+argument for the rule that says put the file in git.**
+
+**The worse half is the detection.** The build DID fail. I was grepping the log for `OK` lines and
+`FAILED`, and a module-resolution error matches neither — so I read a green result off a chain that
+had stopped, and measured the next three checks against a **stale `out/`**, which is why two counts
+looked frozen. **Every build after that checks the exit code.** A gate's own output is authoritative;
+a grep for its success strings is not the same thing, and the difference is invisible exactly when it
+matters.
+
+### THE `/data` REGISTER — HANDED OVER, NOT EDITED
+
+`review/returned/HANDOVER-data-register-2026-08-12.md`. It states the counts (40 dated stamps, 65
+archaeology passages, 38 tier letters, 21 schema names), the reason a code session may not act, the
+fact that a render-time move was tested and rejected, and **the rule such a session must establish**:
+
+> Delete the marker and ask whether a reader loses a fact about **India or its statistics**, or only
+> a fact about **this repository's editing history**. The first stays in the prose. The second moves
+> to the log.
+
+with rule 3 held apart from it — **a correction's withdrawn wording stays visible; a dated
+reconciliation stamp records when the repository noticed, which is a different object** — and the
+absence vocabulary marked as must-not-touch, because a session sweeping for shouty capitals would
+delete rule 4a along with the register.
+
+### Gate line
+
+27 steps, build exit 0. `listing-marks` 5,277 rows / 7,524 marks across 738 pages. `link-check`
+41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers.
+`unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.

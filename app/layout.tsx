@@ -168,7 +168,7 @@ const GROUPS: { label: string; items: { href: string; label: string }[] }[] = [
   {
     label: 'browse',
     items: [
-      { href: '/domains/', label: 'subjects' },
+      { href: '/domains/', label: 'topics' },
       // `years` sits in browse beside `terms` because both are ways INTO the record rather than
       // layers of it. A term is a political span; a year is a cross-section. Neither is a scorecard.
       { href: '/years/', label: 'years' },

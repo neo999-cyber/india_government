@@ -325,7 +325,7 @@ function WhatHappened({ d, year }: { d: ODomain; year: number | null }) {
           begin{hit.n === 1 ? 's' : ''} here in {year}
         </Link>
       ) : (
-        <span className="card-happened-none">No record in this area begins in {year}</span>
+        <span className="card-happened-none">No record in this topic begins in {year}</span>
       )}
     </p>
   );
@@ -517,7 +517,7 @@ export function OverviewBoard({
                     tick row reading as an absence of events. */}
                 {/* AND THE PER-YEAR READOUT BELONGS HERE TOO. It was first written inside the
                     chart branch only, which meant scrubbing to 2016 said nothing about Kashmir —
-                    the area with records in fifteen distinct years — because it has no chart. The
+                    the topic with records in fifteen distinct years — because it has no chart. The
                     readout is about the RECORDS, not about the series, so it does not depend on
                     there being a line to draw. */}
                 <WhatHappened d={d} year={shown} />
@@ -525,7 +525,7 @@ export function OverviewBoard({
                   <p className="card-noticks">
                     No chart here to hang them on, and{' '}
                     <strong>
-                      {fmt(d.events.reduce((t, e) => t + e.n, 0))} records begin in this area
+                      {fmt(d.events.reduce((t, e) => t + e.n, 0))} records begin in this topic
                     </strong>{' '}
                     across {d.events.length} separate years, {d.events[0].year} to{' '}
                     {d.events[d.events.length - 1].year}.
@@ -581,7 +581,7 @@ export function OverviewBoard({
 
             {d.rest.length > 0 ? (
               <details className="card-more">
-                <summary>All {d.nSeries} series in this area</summary>
+                <summary>All {d.nSeries} indicators in this topic</summary>
                 <div className="minigrid">
                   {d.rest.map((s) => (
                     <Link key={s.id} href={`/series/${s.id}/`} className="mini">
