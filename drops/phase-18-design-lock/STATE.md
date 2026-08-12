@@ -44,9 +44,14 @@ control on the landing page.
   **reachability partitions nothing** (0 series are index-only; a domain surface reaches all 269).
   The one surviving boundary is what a series can support: **31 single-observation series render
   without the line permanently**, criterion printed. Tranche 1 landed 10.
-  **The rate will not hold and the direction is measured:** authoring material per record has a
-  median of 1,786 characters across this tranche against **641 across the remaining 210**, 124 of
-  which hold less than this tranche's minimum and 3 of which hold none.
+  **Tranche 2 landed 11 and settled the thin-material floor.** There is no character floor: the
+  test is whether a sentence would survive the chart being deleted, applied per record and recorded
+  per record. **`port-cargo` is the first recorded failure** — 39 series now carry a finding, 198
+  remain to author, and 32 render without the line permanently (31 single-observation + `port-cargo`).
+  **Two of my own measurements were wrong and are corrected in the module header:** no series holds
+  zero material (the metric omitted `unmeasured[]` and `source.name`; the true minimum is 41), and
+  the rate did NOT fall — tranche 2 landed 11 from a material median of 791 against tranche 1's
+  2,377, with 7 written from below tranche 1's minimum.
 - **DESIGN-REVISION.md is now fully applied.** Items 1–4 all shipped; §7's eleven rejections stand.
 
 
