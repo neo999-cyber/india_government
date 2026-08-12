@@ -17692,3 +17692,118 @@ rows. `unrecognised-rows` 0, with 965 / 1,960 / 724 / 36 unchanged. `domain-cove
 **One transient build failure, retested per M1 and not a finding:** `fonts.gstatic.com` returned 404
 for two IBM Plex woff2 files mid-build. The identical build passed on the next run with zero
 `gstatic` errors.
+
+---
+
+## 2026-08-13 (fifty-third entry) — DESIGN-REVISION-2 ITEM 5: the matrix is REFUSED, and what survives
+
+### THE MATRIX, MEASURED BEFORE IT WAS BUILT, AND THE MEASUREMENT REFUSED IT
+
+§5 proposes rows of topics against columns of years, cells marking commitments, measurement breaks
+and major observations, and says it *goes through the measurement the status grid failed* and **may
+survive**. The operator's instruction was explicit that the measurement can refuse it. It does.
+
+**Shape:** 14 topics × 13 years = 182 cells, 563 dated events (401 commitments from `ledger.date`,
+162 basis changes from `series.breaks[].period`), 27 per cent of cells empty, largest cell 21.
+
+**THE DECIDING TEST — a topic's row total against its record count: r = 0.967.**
+
+| topic | events | records + series |
+|---|---|---|
+| governance | 114 | 139 |
+| federalism | 84 | 75 |
+| education | 70 | 75 |
+| macro | 69 | 88 |
+| … | | |
+| poverty | 3 | 5 |
+| human-development | 9 | 15 |
+
+**A row's length is a picture of how much has been researched into that topic, not of what happened
+in it.** That is the status grid's defect wearing different clothes: the grid was refused for showing
+*the corpus's confidence in its own holdings, a question only the author asks*, and this shows the
+corpus's coverage of its own topics. Any encoding of cell magnitude — area, bar, colour intensity,
+sort order — reads as substance and is coverage.
+
+**THE THIRD PROPOSED MARK HAS NO FIELD BEHIND IT.** *Major observations* is a judgement; the corpus
+holds 223 ledger dates and 182 series breaks and nothing it calls major. Refused on rule 9.
+
+### WHAT SURVIVED, AND WHY IT IS ONE COLUMN RATHER THAN THE GRID
+
+**The second test is where the matrix earns something.** Normalising each row and comparing its year
+profile to the corpus profile: **9 of the 12 profilable topics peak in a different year from the
+corpus peak of 2020.** Banking 2015, employment 2017, defence 2018, governance and Kashmir 2019,
+education 2022, foreign 2026, environment and infrastructure 2014. Those are recognisable and they
+are history, not effort.
+
+So **within a row the years carry a finding; across rows the lengths carry coverage.** The honest
+object is therefore one row at a time — or one column, read as a list rather than as magnitudes.
+That is §7's common annual strip, and it is what shipped.
+
+### §7 — ALL TOPICS AT ONE YEAR, LISTED AND NEVER COUNTED
+
+The simultaneity point: *a tax reform, a constitutional change in Kashmir, an employment movement and
+an education measurement break as parts of the same period.* The year page could not show it — the
+span strip is ordered by span and the record list by date, and neither groups by topic.
+
+**Every constraint on it comes from the matrix measurement.** Topics in alphabetical order; no bar,
+no area, no colour intensity, no sort by size; the entries themselves rather than a count. Measured
+on `/years/2020/`: 13 topic rows, entries ranging 1 to 17, **all rows identical in width (343 px)
+and identical in background** — nothing encodes the range. The note says what row length is, on the
+surface and not on a method page.
+
+**Series are cited by id, not listed by title**, for the reason the record spine established one item
+ago: the records beginning this year are listed below with their marks and the series are on the span
+strip above, so naming either by title here would render the same declarations twice on one page.
+**Binding `yrstrip` FAILS `listing-marks`** — reported, and it is why the shape stays a citation
+surface rather than becoming a listing. That matches the span strip's own long-standing decision on
+this page.
+
+### §7 — WHAT WAS NOT MEASURED THIS YEAR: THREE THINGS THAT LOOK ALIKE, TWO THAT ARE FINDINGS
+
+A series can miss a year because it has a HOLE, because its run had STOPPED, or because it had not
+BEGUN. **The third is not a finding about the year** — an instrument that did not exist cannot have
+failed to measure — and pooling the three would report 133 absences for 2014 and 264 for 2026, which
+is a statement about when instruments start.
+
+| year | hole at this year | already stopped |
+|---|---|---|
+| 2016 | 53 | 10 |
+| 2019 | 65 | 16 |
+| 2020 | 66 | 23 |
+| 2025 | 0 | 93 |
+| 2026 | 0 | 93 |
+
+**The stopped test runs against the derived publication frontier, not against the year.** A run
+ending before 2026 has usually not stopped; its next figure is not out. That is the error
+`lib/spans.ts` was written to prevent, and it is used by reference here rather than re-derived —
+which is why the figure saturates at 93 from the frontier year onward, and the wording says so.
+The block renders in `.absence`: dashed, unfilled, `1px dashed rgb(215,207,193)` measured.
+
+### THE PRODUCTION DEPLOY OF ITEM 4 FAILED, AND ONLY THE VERIFY STEP CAUGHT IT
+
+Item 4 pushed clean and **production stayed on `b97ff9c` for thirty minutes.** The Vercel deployment
+for `6d7ec5c` is in state ERROR:
+
+> `Error: Command "npm run build" exited with 1` — preceded by `module-not-found` for
+> `ibm_plex_sans_820af92e.module.css`, every weight.
+
+**The same failure had occurred locally forty minutes earlier and passed on retry**, and was recorded
+in the item-4 entry as transient per M1. It is transient and it is also capable of killing a
+production deploy: `next/font/google` fetches from `fonts.gstatic.com` at build time, on Vercel as
+well as here, and a 404 there fails the build.
+
+**Two things this changes.** The rule *verify on the production deploy after pushing* earned itself
+again — without it item 4 would have been reported shipped while production served item 3. And
+`tools/deploy-poll.mjs` would have caught it only by timing out after thirty minutes; **comparing
+`/data/v1/manifest.json`'s `commit` against `git rev-parse HEAD` answers the same question in one
+request** and is written into STATE as the faster check. The durable fix — self-hosting the two
+families through `next/font/local` — is a build-config change with visual consequences and is filed,
+not taken inside this item.
+
+### Gate line
+
+27 steps green. `link-check` **47,278 internal hrefs across 746 pages, 0 dead** (from 46,213).
+`listing-marks` **5,697 / 8,145 unchanged** — the annual strip adds no listing rows because it cites
+rather than lists. `unrecognised-rows` 0, id citations **1,403** (from 965; the strip's series
+citations). `rendered-space` 0. Mobile at 375 px on `/years/2020/`: 0 body overflow, 0 clamped,
+13 topic rows at one width.

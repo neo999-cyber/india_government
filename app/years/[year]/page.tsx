@@ -8,6 +8,7 @@ import { SpanStrip } from '@/components/SpanStrip';
 import { RecordMarks } from '@/components/marks';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS } from '@/lib/format';
 import { YEARS } from '@/lib/years';
+import type { Domain } from '@/lib/types';
 
 /**
  * A YEAR PAGE — a cross-section of the record at one year, and NOT an annual scorecard.
@@ -77,6 +78,63 @@ export default async function YearPage({ params }: Props) {
   const running = rows.filter((r) => r.start < y && r.end > y).length;
   const beginning = rows.filter((r) => r.start === y).length;
   const ending = rows.filter((r) => r.end === y).length;
+
+  /**
+   * §7 — THE ANNUAL STRIP AND THE TWO ABSENCE KINDS, derived here and not in the JSX.
+   *
+   * `indiaYears` is computed once per series and reused by all three: three passes over 269 series
+   * inside a render is the kind of thing that becomes four passes on the next edit.
+   */
+  const indiaYears = new Map(
+    series.map((sr) => [
+      sr.id,
+      sr.points
+        .filter((p) => p.country === 'IND' && p.value !== null)
+        .map((p) => yearOfPeriod(p.period)),
+    ]),
+  );
+  const gapSeries = series
+    .filter((sr) => {
+      const ys = indiaYears.get(sr.id)!;
+      return ys.length > 0 && !ys.includes(y) && y > Math.min(...ys) && y < Math.max(...ys);
+    })
+    .map((sr) => sr.id);
+  // Stopped, not merely quiet: the last observation is before this year AND before the derived
+  // publication frontier. Without the second test, 2026 would report 264 series as absent.
+  const stoppedBy = series
+    .filter((sr) => {
+      const ys = indiaYears.get(sr.id)!;
+      if (!ys.length) return false;
+      const end = Math.max(...ys);
+      return end < y && end < frontier;
+    })
+    .map((sr) => sr.id);
+
+  const topicRows = (() => {
+    const by = new Map<
+      Domain,
+      { domain: Domain; records: number; begins: string[]; ends: string[]; seams: [string, string][] }
+    >();
+    const at = (d: Domain) => {
+      if (!by.has(d)) by.set(d, { domain: d, records: 0, begins: [], ends: [], seams: [] });
+      return by.get(d)!;
+    };
+    for (const r of began) for (const d of r.domains ?? []) at(d).records += 1;
+    for (const sr of series) {
+      const ys = indiaYears.get(sr.id)!;
+      if (!ys.length) continue;
+      if (Math.min(...ys) === y) at(sr.domain).begins.push(sr.id);
+      if (Math.max(...ys) === y) at(sr.domain).ends.push(sr.id);
+      for (const b of sr.breaks ?? []) {
+        if (yearOfPeriod(b.period) === y) at(sr.domain).seams.push([sr.id, b.provenanceRef]);
+      }
+    }
+    // Alphabetical by label, deliberately: any order by size would be the magnitude encoding the
+    // matrix measurement refused.
+    return [...by.values()].sort((a, b) =>
+      DOMAIN_LABELS[a.domain].localeCompare(DOMAIN_LABELS[b.domain]),
+    );
+  })();
 
   const i = YEARS.indexOf(y);
 
@@ -173,7 +231,145 @@ export default async function YearPage({ params }: Props) {
       </div>
       <SpanStrip rows={rows} x0={x0} x1={x1} frontier={frontier} atYear={y} />
 
+      {/* ============================ §7 — THE COMMON ANNUAL STRIP ==============================
+
+          THE SIMULTANEITY POINT, WHICH IS THE ONE THING THE YEAR PAGE COULD NOT SHOW. The spans
+          above are the whole corpus at this year, ordered by span; the list below is this year's
+          records, ordered by date. Neither says *a tax reform, a constitutional change in Kashmir,
+          an employment movement and an education measurement break are parts of the same period*,
+          because neither groups by topic.
+
+          ============================ IT LISTS, IT DOES NOT COUNT, AND THE MATRIX IS WHY ========
+
+          §5's matrix was measured before it was built and **refused**: a topic's event count
+          correlates with its record count at **r = 0.967**, so the length of a topic's row is a
+          picture of how much has been researched into it, not of what happened. That is the status
+          grid's defect in another shape.
+
+          **This is the one column of that matrix that survives, and it survives by not encoding
+          magnitude.** No bar, no area, no colour intensity, no ordering by size — the topics are in
+          alphabetical order and each carries the events themselves. A reader seeing eleven entries
+          under Governance and one under Poverty is looking at a list, and the note says what that
+          length is.
+
+          ============================ WHY THE SERIES ARE CITED BY ID ============================
+
+          The records beginning this year are listed below with their marks, and the series are on
+          the span strip above. Naming either by title here would render the same declarations twice
+          on one page. So this strip cites series by id — the corpus's citation idiom, 965 of them —
+          and links the record count into the list below rather than repeating it. */}
+      {topicRows.length > 0 ? (
+        <>
+          <div className="sec-h">
+            <h2>All topics at {y}</h2>
+            <p className="sec-note">
+              What began, ended or changed basis in each topic in the same twelve months, in
+              alphabetical order.{' '}
+              <strong>
+                The number of entries under a topic reflects how much of it has been researched, not
+                how much happened in it
+              </strong>{' '}
+              — measured, the two move together almost exactly — so this is read one row at a time
+              and never compared down the page.
+            </p>
+          </div>
+          <div className="yrstrip">
+            {topicRows.map((t) => (
+              <div key={t.domain} className="yrstrip-r">
+                <p className="yrstrip-k">
+                  <Link href={`/domains/${t.domain}/`}>{DOMAIN_LABELS[t.domain]}</Link>
+                </p>
+                <div className="yrstrip-e">
+                  {t.records > 0 ? (
+                    <span className="yrstrip-i">
+                      <span className="yrstrip-t">records begin</span>{' '}
+                      <a href="#records-begin">
+                        {t.records} {t.records === 1 ? 'record' : 'records'}
+                      </a>
+                    </span>
+                  ) : null}
+                  {t.begins.map((id) => (
+                    <span key={`b${id}`} className="yrstrip-i">
+                      <span className="yrstrip-t">first observation</span>{' '}
+                      <Link className="mono" href={`/series/${id}/`}>
+                        {id}
+                      </Link>
+                    </span>
+                  ))}
+                  {t.ends.map((id) => (
+                    <span key={`e${id}`} className="yrstrip-i">
+                      <span className="yrstrip-t">last observation</span>{' '}
+                      <Link className="mono" href={`/series/${id}/`}>
+                        {id}
+                      </Link>
+                    </span>
+                  ))}
+                  {t.seams.map(([id, ref]) => (
+                    <span key={`s${id}${ref}`} className="yrstrip-i">
+                      <span className="yrstrip-t">basis changes</span>{' '}
+                      <Link className="mono" href={`/series/${id}/`}>
+                        {id}
+                      </Link>{' '}
+                      <Link className="tag" href={`/provenance/${ref}/`}>
+                        {ref}
+                      </Link>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      ) : null}
+
+      {/* ============================ §7 — WHAT WAS NOT MEASURED THIS YEAR ======================
+
+          THREE THINGS LOOK ALIKE HERE AND ONLY TWO ARE FINDINGS, which is why they are separated
+          rather than summed. A series can miss a year because it has a HOLE — it observes either
+          side and not this one — or because its run had already STOPPED, or because it had not
+          begun. **The third is not a finding about the year**: an instrument that did not exist yet
+          cannot have failed to measure, and pooling it would report 133 absences for 2014 and 264
+          for 2026, which is a statement about when instruments start.
+
+          **The stopped test uses the derived publication frontier and not the year itself.** A run
+          that ends before 2026 has usually not stopped; its next figure is not out. Counting those
+          as absences is the error `lib/spans.ts` was written to prevent, and it is repeated here by
+          reference rather than re-derived. */}
       <div className="sec-h">
+        <h2>What was not measured in {y}</h2>
+        <p className="sec-note">
+          Two different things, kept apart. Series that had not begun by {y} are not counted: an
+          instrument that did not exist cannot have failed to measure.
+        </p>
+      </div>
+      <div className="absence">
+        <p>
+          <strong>{gapSeries.length}</strong>{' '}
+          {gapSeries.length === 1 ? 'series has' : 'series have'} a hole at {y} — observed before it
+          and after it, and not in it.{' '}
+          {gapSeries.length > 0 ? (
+            <>
+              {gapSeries.slice(0, 12).map((id, i) => (
+                <span key={id}>
+                  {i > 0 ? ' · ' : ''}
+                  <Link className="mono" href={`/series/${id}/`}>
+                    {id}
+                  </Link>
+                </span>
+              ))}
+              {gapSeries.length > 12 ? <> · and {gapSeries.length - 12} more</> : null}
+            </>
+          ) : null}
+        </p>
+        <p>
+          <strong>{stoppedBy.length}</strong>{' '}
+          {stoppedBy.length === 1 ? 'series had' : 'series had'} already stopped by {y} — the last
+          observation falls before {y} and before the publication frontier of {frontier}, so this is
+          a run that ended rather than one whose next figure is not out.
+        </p>
+      </div>
+
+      <div className="sec-h" id="records-begin">
         <h2>The records that begin in {y}</h2>
         <p className="sec-note">
           {began.length} {began.length === 1 ? 'record' : 'records'}, in date order. Verdicts are the

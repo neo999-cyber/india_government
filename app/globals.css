@@ -4208,3 +4208,34 @@ details.more > summary {
    one. Rule 7: an encoding with no defensible meaning is not drawn, and a group of 15 against a
    group of 2 has no defensible length here because the groups are topics, not magnitudes. */
 .lensdec-n { color: var(--ink-dim); font-size: 0.8rem; }
+
+/* ============================ THE COMMON ANNUAL STRIP — DESIGN-REVISION-2 §7 =================
+
+   NO MAGNITUDE ENCODING, AND THAT IS THE MEASUREMENT SPEAKING. §5's matrix was refused because a
+   topic's event count correlates with its record count at r = 0.967 — row length would be a picture
+   of research coverage. So there is no bar, no area, no colour intensity and no size ordering here:
+   topics are alphabetical and each row is a list. Nothing in this block may gain a width, a fill or
+   a sort by count. */
+
+.yrstrip { margin: 0.8rem 0 1.8rem; }
+.yrstrip-r {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  gap: 0.4rem 1rem;
+  border-top: 1px solid var(--rule);
+  padding: 0.55rem 0;
+}
+.yrstrip-k { margin: 0; font-size: 0.9rem; }
+.yrstrip-e { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; }
+.yrstrip-i { font-size: 0.85rem; white-space: nowrap; }
+.yrstrip-t {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+@media (max-width: 767px) {
+  .yrstrip-r { grid-template-columns: 1fr; gap: 0.25rem; }
+  .yrstrip-i { white-space: normal; }
+}
