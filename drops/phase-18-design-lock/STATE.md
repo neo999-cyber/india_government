@@ -28,13 +28,13 @@ last one had shipped. A file read cold at every session start is the one place s
 which is why the pins below now carry the gate output they were measured from.
 
 **THE LIVE BRIEF IS NOW `DESIGN-REVISION-2.md`** in this directory, and it has its own build order.
-**Items 1 to 4 have shipped; items 5 to 7 carry.** See the section below.
+**Items 1 to 5 have shipped; items 6 and 7 carry.** See the section below.
 
 ---
 
 ## OPEN ITEMS
 
-### DESIGN-REVISION-2 — items 1 to 4 SHIPPED, items 5 to 7 CARRY
+### DESIGN-REVISION-2 — items 1 to 5 SHIPPED, items 6 and 7 CARRY
 
 `DESIGN-REVISION-2.md` is in this directory. Its §8 records five rejections with the rule each
 breaks, and §9 restates ten constraints; neither is re-derived.
@@ -96,8 +96,29 @@ Kashmir. **§2 had regressed**: the tab split three batches ago stopped the over
 the evidence cannot establish; restored on 14 of 14, as a statement and a route rather than a second
 listing.
 
-**ITEMS 5 TO 7 CARRY, in the brief's own build order:** matrix + year strip (§5, §7) · two-truths
-cards (§11) · stories (§8).
+**ITEM 5, THE MATRIX AND THE ANNUAL STRIP — DONE 2026-08-13, AND THE MATRIX IS REFUSED.**
+Measured before building, as §5 and the instruction required. **A topic's event count correlates
+with its record count at r = 0.967**, so a row's length is a picture of research coverage, not of
+what happened — the status grid's defect in another shape. The third proposed mark, *major
+observations*, has no field behind it. **What survived is one column read as a list:** §7's common
+annual strip, all topics at one year, alphabetical, no magnitude encoding of any kind (13 rows at
+one width, measured). Plus *what was not measured this year*, splitting a HOLE from a run that had
+STOPPED and refusing to count instruments that had not BEGUN.
+
+**Why the matrix is not merely unbuilt:** within a row the years do carry a finding — 9 of 12
+profilable topics peak in a different year from the corpus peak of 2020, and those peaks are
+recognisable history. **The grid fails across rows, not along them.** A later cycle proposing it
+again should read this rather than rediscover it.
+
+**RAISED BY ITEM 5 — THE PRODUCTION DEPLOY CAN FAIL ON A FONT FETCH.** `6d7ec5c` deployed to state
+ERROR: `next/font/google` fetches `fonts.gstatic.com` at build time and a 404 there fails the build.
+**The identical failure occurred locally and passed on retry**, so it is transient and also capable
+of killing a deploy. **The fast check is `/data/v1/manifest.json`'s `commit` against
+`git rev-parse HEAD`, one request** — `tools/deploy-poll.mjs` finds the same thing only by timing out
+after thirty minutes. The durable fix is self-hosting both families via `next/font/local`; that is a
+build-config change with visual consequences and is not taken here.
+
+**ITEMS 6 AND 7 CARRY:** two-truths cards (§11) · stories (§8).
 
 ### CLOSED 2026-08-12 — DESIGN-REVISION.md items 1-4, and the authored series findings
 
@@ -417,14 +438,14 @@ header above.
 | gate chain | **27 steps**, `npm run build`; `npm run commit` is the only sanctioned commit path |
 | `unrecognised-rows` | **0**, report-only. Zero makes flipping it to a gate *available*, not decided |
 | `listing-marks` | **5,697 listing rows · 8,145 marks** across 745 pages — re-measured 2026-08-12 after the record spine and next steps (from 5,390 · 7,674) |
-| `link-check` | 46,213 internal hrefs across 746 built pages, 22 route prefixes, 0 dead |
+| `link-check` | 47,278 internal hrefs across 746 built pages, 22 route prefixes, 0 dead |
 | authored series findings | **237 of 269**; 32 render without one, permanently and for a stated reason |
 | raw enum tokens on a public surface | `directionOfBias` 6 pages, all the one deliberate site; `pairs.kind` 0 |
 | `field-render-audit` | 0 invisible, **15** exempted by name (was 17; `higherIsBetter`'s exemption was discharged 2026-08-12 and it is now declared) |
 | `higherIsBetter` | **renders from 2026-08-12**, as words, via `DirectionMark`. 70 declare a direction · 76 declare none · 123 are silent, and the third renders nothing |
 | caveat strings are NOT identifiers | **4 groups of series share a caveat verbatim, covering 15 series** — nine ASER siblings are one group. Any check that identifies a record by its caveat text is unsound for those 15; use the id |
 | deploy | `vercel.json` calls `npm run build`; `tools/deploy-chain.mjs` fails if the chain is ever restated instead of called |
-| verify after push | `node tools/deploy-check.mjs` — needs the network, deliberately not in the build |
+| verify after push | `node tools/deploy-check.mjs` — needs the network, deliberately not in the build. **First check is one request:** `/data/v1/manifest.json`'s `commit` against `git rev-parse HEAD`. A deploy CAN fail after a clean local build — `next/font/google` 404s from gstatic have killed one |
 | DOM viewport probes | **`resize_window` at the `desktop` preset gives `clientWidth === 0`** in this hidden pane, so every element tests as overflowing. Set an explicit width (1280) or use the mobile preset |
 
 ---
