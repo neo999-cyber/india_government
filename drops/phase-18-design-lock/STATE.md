@@ -44,6 +44,17 @@ control on the landing page.
   **reachability partitions nothing** (0 series are index-only; a domain surface reaches all 269).
   The one surviving boundary is what a series can support: **31 single-observation series render
   without the line permanently**, criterion printed. Tranche 1 landed 10.
+  **Tranche 8 landed 20. Running total 151 of 269; 86 remain; 32 render without the line
+  permanently.** Rate: 10, 11, 16, 20, 20, 20, 16, 20. **The interlock measure itself was wrong and
+  is corrected in the module header** — its shared-dispute limb counted class properties (`P-09`
+  panel vintage, `P-14` WDI labelling, carried by every peer panel by construction) as reading
+  dependencies. Excluding them the set reads 15/45, inside the tested point, and twenty is what the
+  bound supports. **The set-shaped unit did NOT arrive:** clustering the remaining pool gave 17
+  groups, but only one had any member naming another in prose, and the two five-member groups had
+  none — they are artefacts of `P-64` and `P-10`. **Both frozen metrics:** family test 20 of 20
+  (running 140 of 151, 93 per cent); clause metric 50 per cent, series 40, 73, 63, 60, 40, 65, 44,
+  50 — not trending.
+
   **Tranche 7 landed 16. Running total 131 of 269; 106 remain; 32 render without the line
   permanently.** Rate: 10, 11, 16, 20, 20, 20, 16. **The bound did not cover this set** — no size
   from 10 to 24 sits inside the tested (20,45) point, and sixteen was taken on a stated ground
