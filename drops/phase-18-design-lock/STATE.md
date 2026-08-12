@@ -28,13 +28,13 @@ last one had shipped. A file read cold at every session start is the one place s
 which is why the pins below now carry the gate output they were measured from.
 
 **THE LIVE BRIEF IS NOW `DESIGN-REVISION-2.md`** in this directory, and it has its own build order.
-**Items 1, 2 and 3 have shipped; items 4 to 7 carry.** See the section below.
+**Items 1 to 4 have shipped; items 5 to 7 carry.** See the section below.
 
 ---
 
 ## OPEN ITEMS
 
-### DESIGN-REVISION-2 — items 1, 2 and 3 SHIPPED, items 4 to 7 CARRY
+### DESIGN-REVISION-2 — items 1 to 4 SHIPPED, items 5 to 7 CARRY
 
 `DESIGN-REVISION-2.md` is in this directory. Its §8 records five rejections with the rule each
 breaks, and §9 restates ten constraints; neither is re-derived.
@@ -85,8 +85,19 @@ the two are not a declared pair, they share no dispute (P-86 against P-75), and 
 that L-0110 cites both alongside eight other defence series. Nothing in `/data` picks the register
 out of the ten.
 
-**ITEMS 4 TO 7 CARRY, in the brief's own build order:** topic strips (§1, §2, §10) · matrix +
-year strip (§5, §7) · two-truths cards (§11) · stories (§8).
+**ITEM 4, TOPIC STRIPS — DONE 2026-08-12.** **§1's premise was wrong**: the page already rendered
+five series, and the renewables-against-coal case it offers as the argument was already satisfied on
+`/domains/environment/`. What was missing is §1's next sentence — *three layers on one strip*. The
+four cards now carry the commitment layer (ticks drawn, years printed in words) and the evidence
+layer (28 seam ticks across 10 topics, 31 reasons printed in full; the gap of 3 is breaks at periods
+the series does not observe). **§10's figures held exactly** — 30 through the lens, Governance 15,
+Defence 13, Federalism 2 — and the decomposition is computed for any lensed topic, not typed in for
+Kashmir. **§2 had regressed**: the tab split three batches ago stopped the overview closing on what
+the evidence cannot establish; restored on 14 of 14, as a statement and a route rather than a second
+listing.
+
+**ITEMS 5 TO 7 CARRY, in the brief's own build order:** matrix + year strip (§5, §7) · two-truths
+cards (§11) · stories (§8).
 
 ### CLOSED 2026-08-12 — DESIGN-REVISION.md items 1-4, and the authored series findings
 
@@ -406,7 +417,7 @@ header above.
 | gate chain | **27 steps**, `npm run build`; `npm run commit` is the only sanctioned commit path |
 | `unrecognised-rows` | **0**, report-only. Zero makes flipping it to a gate *available*, not decided |
 | `listing-marks` | **5,697 listing rows · 8,145 marks** across 745 pages — re-measured 2026-08-12 after the record spine and next steps (from 5,390 · 7,674) |
-| `link-check` | 46,014 internal hrefs across 746 built pages, 22 route prefixes, 0 dead |
+| `link-check` | 46,213 internal hrefs across 746 built pages, 22 route prefixes, 0 dead |
 | authored series findings | **237 of 269**; 32 render without one, permanently and for a stated reason |
 | raw enum tokens on a public surface | `directionOfBias` 6 pages, all the one deliberate site; `pairs.kind` 0 |
 | `field-render-audit` | 0 invisible, **15** exempted by name (was 17; `higherIsBetter`'s exemption was discharged 2026-08-12 and it is now declared) |
