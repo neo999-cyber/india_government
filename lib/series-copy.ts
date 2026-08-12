@@ -178,6 +178,32 @@
  * interlock buys is a bound and a direction, not a number:** at interlock at or under roughly 20
  * and 50 per cent, twenty holds; at tranche 1's 60 and 100 per cent, ten did. Anything finer has
  * been claimed three times and been wrong three times.
+ *
+ * ============================ THE FORM HAS CHANGED CHARACTER — TRANCHE 5 ======================
+ *
+ * **The clause metric FELL rather than climbing: 63, 65, then 50 per cent. The negative definition
+ * as a SHAPE has gone 13, 5, 0.** So the tic that was being watched for has not formed.
+ *
+ * **What changed instead is the subject.** Tranche 5's twenty produced SEVENTEEN distinct shapes,
+ * against tranche 4's eleven — the distribution flattened rather than concentrating. Grouped into
+ * families by a hand read:
+ *
+ *   about the measuring apparatus   8   a publication lag; a constitutionally required certificate
+ *                                       never published; a literacy rate that is asked and never
+ *                                       tested; a count whose basis broadened as it rose; a
+ *                                       category no body has defined; a proficiency band whose
+ *                                       cut-scores are published nowhere; an instrument held only
+ *                                       at second hand; a subject with no official series at all
+ *   about a basis or convention     5
+ *   about an artefact in the number 3
+ *   **about the world**             **4**
+ *
+ * **Four of twenty are about what happened in India; sixteen are about how India measures it.**
+ * That is not a drift in the prose — it is where this stretch of the reachability ordering sits,
+ * and it is the corpus's own subject arriving in the sentences. **It is recorded rather than
+ * corrected**, and the family counts are the thing to watch from here: if *about the world* keeps
+ * falling toward zero the instrument is describing itself, which is the self-audit line the
+ * derivations rule already draws.
  */
 export type SeriesFinding = {
   /** One or two sentences. Plain text; no markdown — the view prints it as text. */
@@ -590,6 +616,111 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   'jk-nhrc-cases-transferred-to-shrc': {
     finding:
       'Thirty-eight cases in FY2017-18, ten in FY2019-20, and zero in every year since \u2014 because from FY2020-21 there is no State Human Rights Commission in Jammu and Kashmir to transfer a case to, the J&K commission having been wound up with effect from 31 October 2019. The zero could not have been anything else, and it is the abolition made visible inside the national Commission\u2019s own arithmetic.',
+    origin: 'authored',
+  },
+
+  // ---- 7. AUTHORED, tranche 5, 2026-08-12. Twenty. Interlock over the candidate twenty measured
+  //         10 per cent naming a sibling and 45 per cent sharing a dispute — at or below tranche
+  //         4's 20/45, which the bound says supports twenty. Twenty taken, and no more: the bound
+  //         gives no basis for a larger number and three finer forecasts have all been wrong.
+  'school-enrolment-total-udise': {
+    finding:
+      'Enrolment falls by 1.72 crore between FY2021-22 and FY2023-24, and no published estimate separates deduplication from demographic contraction or from children leaving school \u2014 UDISE+ moved to individual student records with a unique educational ID in FY2022-23, and the two sides of that year must not be joined. The fall is concentrated in Classes I-V, down 14.4 per cent in two years, while higher secondary was roughly flat; a pure-deduplication account has to explain that concentration, and the ministry has never evidenced one.',
+    origin: 'authored',
+  },
+  'aishe-publication-lag': {
+    finding:
+      'The gap between AISHE\u2019s reference year and its release: 18 months for FY2019-20, 42 for FY2022-23, 30 for FY2023-24, all approximate because the earliest editions are dated only by cover year. The consequence is demonstrated rather than inferred \u2014 Economic Survey 2025-26 quoted an AISHE 2022-23 higher-education enrolment ratio of 29.5 while that report was still unpublished, and the same Survey\u2019s statistical appendix, unable to cite it, fell back on AISHE 2021-22 and printed 28.4. The number was in government hands and used in the government\u2019s flagship economic document months before the report containing it appeared.',
+    origin: 'authored',
+  },
+  'cag-certified-net-proceeds': {
+    finding:
+      'The pool the Constitution requires the Comptroller and Auditor General to certify, and no such certificate has ever been published as a document of the CAG. Every figure here is the certified number as relayed by a party to the dispute \u2014 five years by the Commission the Union appoints, one by the Union\u2019s own Receipt Budget. Article 279(1) has required the certificate since 1950 and makes it final; six years is the whole published series, and it exists only because the Sixteenth Finance Commission recommended the disclosure in 2025.',
+    origin: 'authored',
+  },
+  'jk-assembly-turnout': {
+    finding:
+      'Turnout at J&K assembly elections on the at-polling-stations basis, which excludes postal ballots: 53.92 per cent in 1996, 43.7 in 2002, 65.52 in 2014 and 63.88 in 2024. The Commission\u2019s assembly reports exclude postal votes while its Lok Sabha reports for the same year include them, so an assembly figure and a parliamentary figure are not on one definition. The 2024 election is also the first held on the Union Territory excluding Ladakh, and on 90 constituencies rather than 87.',
+    origin: 'authored',
+  },
+  'literacy-rate-7plus': {
+    finding:
+      'Literacy here is asked, not tested: an enumerator puts the question to a household informant, frequently about other members, and no reading or writing task is administered at any point in the Census, the NSS or PLFS. Where both methods have been run on the same respondents the gap is material \u2014 NFHS-3 found 69 per cent self-reported against 63.4 per cent when a test card had to be read. The rate reads 64.83 per cent in 2001 and 81.1 in 2025, and the last two points are sample surveys where the first two were complete enumerations.',
+    origin: 'authored',
+  },
+  'airports-operational': {
+    finding:
+      'The count rises from 74 in FY2013-14 to 165 in FY2025-26 on a basis that broadened as it rose: it includes 9 heliports and 2 waterdromes, and counts reactivated airstrips as new. About 11 genuinely greenfield airports were built over the period.',
+    origin: 'authored',
+  },
+  'teacher-vacancy-rate-ssa': {
+    finding:
+      'The vacancy rate falls from 15.73 per cent to 14.07 across three years while the absolute vacancy count rises, because the base moved beneath it. Sanctioned posts rose 10.4 per cent in a single year: elementary posts fell by 258,513 while secondary posts rose by 918,066, up 60.3 per cent in twelve months, which is an undisclosed reclassification rather than 9.2 lakh new teaching posts. Both readings breach RTE section 26, which caps vacancies at ten per cent of sanctioned strength.',
+    origin: 'authored',
+  },
+  'jk-organised-stone-pelting': {
+    finding:
+      '1,328 incidents in 2018 and zero in 2023, on a count of \u2018organised\u2019 stone-pelting that no body has ever defined \u2014 unorganised stone-pelting sits outside it by construction, so the zero says nothing about how much stone-pelting occurred. The series has never appeared in any MHA Annual Report in seventeen years, although the Annual Report 2024-25 asserts the conclusion drawn from it in prose: the assertion is published and the count behind it is not. Whether a fall here is good is left unset.',
+    origin: 'authored',
+  },
+  'parakh-grade3-proficient-language': {
+    finding:
+      '39 per cent in 2021 and 57 in 2024 \u2014 and the band boundaries that decide who counts as proficient are published nowhere, so the gain could be learning or a moved cut-score and no external party can tell which. The bands invert against the means: language has the higher mean at 64 but the lower proficiency share at 57, mathematics the lower mean at 60 but the higher share at 65, which can only happen if the two subjects\u2019 cut-scores sit at different points of their distributions. This is the statistic the Government\u2019s headline evidence for NIPUN Bharat rests on.',
+    origin: 'authored',
+  },
+  'cad-gdp': {
+    finding:
+      'The current account balance, on which a positive number is a deficit: 4.8 per cent of GDP in FY2012-13, a surplus of 0.9 in FY2020-21, and 1 for FY2025-26. It is a ratio to GDP and inherits that denominator \u2014 and whether the Reserve Bank has restated its historical balance-of-payments ratios onto the 2022-23 base is unverified, so the recent years should be read as old-denominator until it is confirmed.',
+    origin: 'authored',
+  },
+  'fc-grants-share-of-gtr': {
+    finding:
+      'Finance Commission grants to states as a share of gross tax revenue, peaking at 9.1 per cent in FY2020-21 on the revenue-deficit grants of the COVID year and back to 4.3 by FY2023-24. The step at FY2015-16 is a designed offset rather than a side effect: the Fourteenth Commission described its own 32-to-42 devolution recommendation as a compositional shift from grants to tax devolution. The Sixteenth then recommended zero sector-specific, zero state-specific and zero revenue-deficit grants from FY2026-27.',
+    origin: 'authored',
+  },
+  'gdp-growth-new-base': {
+    finding:
+      'The 2011-12 base series, one of three GDP regimes this instrument carries and never the whole of Indian GDP growth on its own. It begins at FY2013-14, which reads 6.9 per cent here and 4.7 on the 2004-05 base \u2014 both are published, and the instrument shows both rather than picking one. It is superseded by the 2022-23 base from February 2026, and no spliced back-series exists for either revision.',
+    origin: 'authored',
+  },
+  'pvt-gross-npa': {
+    finding:
+      'Private sector banks\u2019 gross NPA ratio, peaking at 5.5 per cent in FY2019-20 and reading 1.7 for FY2025-26. The source does not state the reporting basis, so this cannot be set beside the domestic-operations series or the global-operations one without assuming a basis it does not declare \u2014 and those two are different populations rather than two readings of one. Resolving it means pinning against RBI Trend & Progress, which reports both.',
+    origin: 'authored',
+  },
+  'rail-accidents': {
+    finding:
+      'Consequential train accidents average 171 a year across 2004-14 and 68 across 2014-24, with accidents per million train kilometres falling from 0.11 to 0.03. The improvement is genuine. \u2018Consequential\u2019 is also a narrow category, and the Balasore collision of June 2023, which killed about 296 people, is one accident within it.',
+    origin: 'authored',
+  },
+  'cag-union-audit-reports-tabled': {
+    finding:
+      'Union audit reports tabled fall from 55 in 2015 to 14 in 2020 and 18 in 2023. Every point is approximate because both underlying documents reach this instrument through secondary reporting and neither has been retrieved \u2014 the 2015 peak itself is reported as 55 by one source and 53 by the other. Figures that combine Union and state legislature reports are an order of magnitude larger and are a different quantity.',
+    origin: 'authored',
+  },
+  'ptr-primary-udise': {
+    finding:
+      'Two breaks on opposite sides of the ratio in consecutive years: the numerator was re-based in FY2022-23 when enrolment moved to individual student records, and the denominator in FY2023-24 when guest and part-time teachers became recordable. Both push the ratio down spuriously, and there is no continuous national series spanning FY2021-22 to FY2023-24. The Ministry\u2019s own incomparability disclaimer names the enrolment ratio, the net enrolment ratio and the dropout rate in every edition, and never names this one.',
+    origin: 'authored',
+  },
+  'higher-ed-enrolment': {
+    finding:
+      'Enrolment grew by 1.08 crore between FY2014-15 and FY2023-24, up 31.5 per cent \u2014 and undergraduate enrolment fell in absolute terms in the last of those years, which the headline hides. B.A. went from 9,377,636 to 8,958,371, B.Sc. from 4,629,957 to 4,472,087 and B.Com. from 3,738,405 to 3,410,090; the aggregate held up on engineering, computer applications, nursing, pharmacy, diplomas and doctorates. The arts-science-commerce core contracted.',
+    origin: 'authored',
+  },
+  'internet-shutdowns-count': {
+    finding:
+      '132 shutdowns recorded in 2020 and 42 in 2024, on one tracker\u2019s count. A second tracker gives different figures for the same years because the counting unit differs \u2014 order, district or incident \u2014 and neither is authoritative. No official government series exists at all.',
+    origin: 'authored',
+  },
+  'atc-losses': {
+    finding:
+      'Distribution losses fall from 23.7 per cent of energy input in FY2015-16 to 15.4 in FY2022-23, then tick back up to 16.12. The gap between the cost of supply and the revenue realised narrowed to 45 paise a unit before widening again to about 60, and accumulated distribution-company losses stood at 7.08 lakh crore rupees against debt of 7.42 lakh crore at 31 March 2024.',
+    origin: 'authored',
+  },
+  'surcharge-share-gtr-parliamentary': {
+    finding:
+      'The surcharge half of the Union\u2019s own table laid before Parliament: 8.9 per cent of gross tax revenue for FY2022-23 and 8.1 for FY2026-27. The Union does not define the set it is summing, and its own two answers sum different ones \u2014 an answer of August 2023 put surcharge at 1.50 per cent for FY2021-22, which is a difference in the set summed rather than in the world, driven mainly by the Special Additional Excise Duties on petrol and diesel. Read only against the cess half of the same table.',
     origin: 'authored',
   },
 };

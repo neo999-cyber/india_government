@@ -44,6 +44,14 @@ control on the landing page.
   **reachability partitions nothing** (0 series are index-only; a domain surface reaches all 269).
   The one surviving boundary is what a series can support: **31 single-observation series render
   without the line permanently**, criterion printed. Tranche 1 landed 10.
+  **Tranche 5 landed 20. Running total 95 of 269; 142 remain; 32 render without the line
+  permanently.** Rate: 10, 11, 16, 20, 20. Interlock over the candidate set was 10/45, at or below
+  tranche 4's, and the bound's twenty was taken with no finer claim. **The negating-clause metric
+  FELL — 63, 65, 50 — and negative-definition-as-shape has gone 13, 5, 0, so the tic did not form.**
+  **What changed is the subject: 17 distinct shapes across 20, and only 4 of 20 are about the world
+  while 16 are about how it is measured.** Recorded, not corrected; the family count is the thing to
+  watch. True-alone found 2 after its zero, so it has not gone quiet.
+
   **Tranche 4 landed 20. Running total 75 of 269; 162 remain; 32 render without the line
   permanently.** Rate by tranche: 10, 11, 16, 20. **What bounds a tranche is INTERLOCK, computable
   from `/data` before writing** — the share of a candidate set whose prose names another series
