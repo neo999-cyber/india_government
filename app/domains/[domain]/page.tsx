@@ -207,6 +207,54 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
         · {l.length} records · {p.length} disputes
       </p>
 
+      {/* §10 — THE DECOMPOSITION, AND KASHMIR IS THE CASE.
+
+          Two numbers two lines apart were both correct against different queries: `series.domain`
+          is 0 and `series.lenses` is 30. The counts line above already says which is which — that
+          was fixed two batches ago. **What it still did not say is what the 30 ARE**, and the brief
+          is right that the decomposition is the fix rather than the wording.
+
+          **The brief's figures were checked and they hold, which is worth recording because the
+          pattern has run the other way**: Governance 15, Defence 13, Federalism 2, summing to 30.
+          Fourteen premise corrections in thirteen batches, and this is not one.
+
+          **Computed, never typed** — the same query the counts line runs, grouped by the domain each
+          series is actually filed under. It renders on any topic whose lens set is non-empty, not
+          only on Kashmir, because a decomposition that exists for one topic and is hardcoded for it
+          is a caption rather than a derivation.
+
+          Not a ranking: the order is by count and the criterion is printed, which describes the
+          record and makes no merit claim. */}
+      {lensed.length > 0 ? (
+        <div className="lensdec">
+          <p className="lensdec-h">
+            {lensed.length} indicators read through this lens, by the topic each is filed under —
+            largest group first, a count and not an order of importance.
+          </p>
+          <ul className="lensdec-l">
+            {Object.entries(
+              lensed.reduce<Record<string, number>>((m, x) => {
+                m[x.domain] = (m[x.domain] ?? 0) + 1;
+                return m;
+              }, {}),
+            )
+              .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+              .map(([dom, n]) => (
+                <li key={dom}>
+                  <Link href={`/domains/${dom}/indicators/`}>{DOMAIN_LABELS[dom as Domain]}</Link>{' '}
+                  <span className="lensdec-n mono">{n}</span>
+                </li>
+              ))}
+          </ul>
+          {s.length === 0 ? (
+            <p className="lensdec-f">
+              None is filed with this topic as its formal subject, which is the technical fact under
+              the number rather than a gap in the evidence.
+            </p>
+          ) : null}
+        </div>
+      ) : null}
+
       {s.length + lensed.length + l.length === 0 ? (
         <div className="stub">
           <span className="label">Unopened domain</span>
@@ -298,7 +346,10 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
             </h2>
             <p className="sec-note">
               The next longest unbroken runs in this topic — a stated criterion, not a ranking. All{' '}
-              {(s.length || lensed.length)} series are below.
+              {(s.length || lensed.length)} series are below.{' '}
+              <strong>Each carries the same three layers as the lead</strong> — what the measure did,
+              the years this topic&rsquo;s commitments were announced, and any point at which the
+              instrument changed basis, with the reason printed.
             </p>
           </div>
           <div className="cgrid">
@@ -307,13 +358,46 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
                 <h4>
                   <Link href={`/series/${g.id}/`}>{g.title}</Link>
                 </h4>
-                <MiniLine series={g} />
+                <MiniLine series={g} events={leadEvents.map((e) => e.year)} />
                 <p className="cw-val">
                   <span className="figure">{lastValue(g)}</span>
                   <span className="mono t-note">
                     {g.unit} · {lastPeriod(g)}
                   </span>
                 </p>
+                {/* THE COMMITMENT LAYER, NAMED IN WORDS. A 320px figure cannot carry a legible
+                    year label, and an illegible one is worse than none — so the ticks are drawn
+                    and the years are printed. The disclaimer is the lead chart's, verbatim: a mark
+                    beside a movement asserts nothing about the movement, and a reader will make the
+                    connection unless told not to. */}
+                {(() => {
+                  const yrs = leadEvents
+                    .map((e) => e.year)
+                    .filter((yr) =>
+                      g.points.some(
+                        (pt) =>
+                          pt.country === 'IND' &&
+                          pt.value !== null &&
+                          Number(String(pt.period).replace(/^FY/, '').slice(0, 4)) === yr,
+                      ),
+                    );
+                  return yrs.length ? (
+                    <p className="cw-layer">
+                      <span className="cw-layer-k">Commitments</span> {yrs.join(' · ')} — years a
+                      record filed under this topic was announced,{' '}
+                      <strong>a note of what else was happening, not an explanation of the shape.</strong>
+                    </p>
+                  ) : null;
+                })()}
+                {/* THE EVIDENCE-LIMIT LAYER. The path was already cut here; the seam is now drawn
+                    and its reason PRINTED IN FULL, which is §4a — a seam a reader cannot read the
+                    reason for asserts a mystery. Never abbreviated to fit the card. */}
+                {(g.breaks ?? []).map((b) => (
+                  <p key={b.period} className="cw-seam">
+                    <span className="cw-layer-k">Basis change {b.period}</span> {b.note}{' '}
+                    <Link href={`/provenance/${b.provenanceRef}/`}>{b.provenanceRef}</Link>
+                  </p>
+                ))}
                 {SERIES_FINDINGS[g.id]?.finding ? (
                   <p className="cw-outcome">
                     <span className="outcome-label">Outcome</span>{' '}
@@ -346,6 +430,51 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
           {restRecords.map((r) => (
             <RecordItem key={r.id} record={r} />
           ))}
+        </section>
+      ) : null}
+
+      {/* §2 — THE OVERVIEW CLOSES ON WHAT THE EVIDENCE CANNOT ESTABLISH, AND IT HAD STOPPED DOING SO.
+
+          The brief says this is *already how topic pages end*. **It was, and the tab split ended it:**
+          the declared absences moved to the Missing data tab, so the surface a reader lands on
+          finished on a list of records. That is the reading order the corpus cares most about, and
+          it regressed silently three batches ago.
+
+          **A STATEMENT AND A ROUTE, NEVER A SECOND LISTING.** The tab lists each absence in full and
+          rule 4b is satisfied there. Repeating them here would render every declaration twice on one
+          area, which is the other half of the same rule — so this says how many there are, what kind
+          of thing they are, and sends the reader to them. The count is a fact about this topic and
+          not a corpus-wide sum, which 4b forbids.
+
+          **AND IT RENDERS WHEN THE COUNT IS ZERO**, which is the case that matters: a topic that
+          declares no absence is making a claim about itself, and printing nothing would let a
+          reader take the silence for completeness. */}
+      {tab === 'overview' ? (
+        <section className="dclose">
+          <div className="sec-h">
+            <h2>What this topic cannot establish</h2>
+          </div>
+          {/* THE SITE'S OWN ABSENCE IDIOM, NOT A LOOKALIKE. `absence-note` was written here and
+              turned out to have no CSS rule anywhere — it inherited body prose, so a statement
+              about what cannot be established rendered exactly like a finding, which is rule 4a
+              inverted. `.absence` is the existing mark: dashed, unfilled, `--ink-2`, visibly not a
+              panel of results. Reused rather than reimplemented. */}
+          <div className="absence">
+            {absences.length === 0 ? (
+              <p>
+                No record filed under this topic declares a quantity it cannot measure. That is a
+                fact about the records, not a finding that nothing is missing.
+              </p>
+            ) : (
+              <p>
+                {absences.length} {absences.length === 1 ? 'quantity' : 'quantities'} that records
+                here say {absences.length === 1 ? 'is' : 'are'} not measured, each with the reason
+                its own record gives and whether any source would close it.{' '}
+                <Link href={`/domains/${d}/missing/`}>Read them in full</Link> — they are listed
+                there rather than repeated here, so that no declaration renders twice on one topic.
+              </p>
+            )}
+          </div>
         </section>
       ) : null}
 
@@ -722,13 +851,38 @@ function lastPeriod(x: Series): string {
 }
 
 /**
- * A small line for the grid. Deliberately NOT `SeriesChart`: that component carries axes, a source
- * line, break notes and now the record's marks, all of which belong at full width. This is the
- * shape only, and the marks render beside it in the card rather than inside the figure.
+ * A small line for the grid — now carrying THE SAME THREE LAYERS AS THE LEAD, which is item 4.
  *
- * Breaks still cut the path — rule 2 does not relax at small size.
+ * ============================ THE BRIEF'S PREMISE, CORRECTED BY MEASUREMENT ===================
+ *
+ * §1 says the topic pages *select the longest unbroken run* and asks for four or five directly
+ * labelled charts instead of one lead series. **Measured, the page already renders five** — a lead
+ * chart and four cards, each with its title, its latest figure and unit, its outcome sentence and
+ * its marks. **And the renewables case §1 offers as the argument is already satisfied:** on
+ * `/domains/environment/`, `res-capacity-share` ranks 2 and `coal-production` ranks 4, so the two
+ * sit side by side in the grid today.
+ *
+ * **What was genuinely missing is the sentence after it: *three layers on one strip*.** The lead
+ * chart carried all three — the measured outcome, the commitments along the same timeline, and the
+ * evidence limits where an indicator changed basis. The four cards carried one. So a reader met one
+ * chart that said when the promises were made and four that did not.
+ *
+ * ============================ WHAT EACH LAYER IS, AND WHAT IT IS NOT ==========================
+ *
+ * **Outcome** — the path, and the marks and outcome sentence beside it in the card.
+ * **Commitments** — a dashed brass tick at each year in which a record filed under this topic was
+ * announced. Same source and same mark as the lead: `date`, and nothing else. **The years are
+ * printed in words under the card rather than labelled in the SVG**, because a 320px figure cannot
+ * carry a legible label and an illegible one is worse than none.
+ * **Evidence limits** — the path is cut at a declared break, and now the seam is DRAWN as well as
+ * cut, with its note printed in full below. §4a: a seam a reader cannot read the reason for is a
+ * seam that asserts a mystery. 16 of the 49 cards carry one, 30 notes in all.
+ *
+ * **A tick asserts nothing about the shape** and the card's caption says so in the lead's own
+ * words. Rule 7 is why the ticks are dashed and in the mark colour: they mean *a mark was made*,
+ * one thing, and they are never solid, which is the seam.
  */
-function MiniLine({ series }: { series: Series }) {
+function MiniLine({ series, events }: { series: Series; events?: number[] }) {
   const W = 320;
   const H = 72;
   const PADX = 3;
@@ -752,8 +906,21 @@ function MiniLine({ series }: { series: Series }) {
     cur.push(`${cur.length === 0 ? 'M' : 'L'} ${x(i).toFixed(1)} ${y(p.value as number).toFixed(1)}`);
   });
   if (cur.length) segs.push(cur.join(' '));
+  // An event lands only on a period the series actually observes. Dropped rather than interpolated
+  // onto the nearest — the lead chart's rule, restated here because this is a second implementation
+  // of the same decision and the two must not drift.
+  const eventIdx = (events ?? [])
+    .map((yr) => pts.findIndex((p) => yearOf(p.period) === yr))
+    .filter((i) => i >= 0);
+  const seamIdx = pts.map((p, i) => (brk.has(yearOf(p.period)) ? i : -1)).filter((i) => i >= 0);
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="cw-line" role="img" aria-label={`${series.title}, ${pts[0].period} to ${pts[pts.length - 1].period}`}>
+      {eventIdx.map((i) => (
+        <line key={`e${i}`} className="chart-event" x1={x(i)} x2={x(i)} y1={2} y2={H - 2} />
+      ))}
+      {seamIdx.map((i) => (
+        <line key={`s${i}`} className="chart-seam" x1={x(i)} x2={x(i)} y1={2} y2={H - 2} />
+      ))}
       {segs.map((dd, i) => (
         <path key={i} d={dd} className="spk-line" />
       ))}

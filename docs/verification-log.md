@@ -17582,3 +17582,113 @@ grade it. 0 clamped, longest break note 590 characters rendered whole at 375 px.
 exactly). `reachability` 1,787/1,787. `field-render-audit` 0 invisible. Spine on **76** ledger pages,
 next steps on **492**. L-0111 verified: all five break notes in full, all four figures present, the
 decomposition marked as a cluster.
+
+---
+
+## 2026-08-12 (fifty-second entry) — DESIGN-REVISION-2 ITEM 4: topic strips, and a brief premise that held
+
+### §1's PREMISE IS WRONG, AND THE SENTENCE AFTER IT IS THE ITEM
+
+§1 says the topic pages *select the longest unbroken run* and asks for four or five directly
+labelled charts instead of one lead series. **Measured, the page already renders five** — a lead
+chart plus four cards, each with its title, latest figure, unit, outcome sentence and marks.
+
+**And the renewables case §1 offers as the argument is already satisfied.** On
+`/domains/environment/`, `res-capacity-share` ranks 2 and `coal-production` ranks 4 on the page's
+own criterion, so capacity share and coal production have been side by side in the grid since the
+grid was built.
+
+**What was genuinely missing is §1's next sentence: *three layers on one strip*.** The lead chart
+carried all three; the four cards carried one. A reader met one chart that says when this topic's
+commitments were announced and four that do not.
+
+| layer | lead, before | cards, before | cards, now |
+|---|---|---|---|
+| measured outcome | yes | yes | yes |
+| commitments on the same timeline | yes, brass ticks + labels | **no** | ticks, years printed in words |
+| evidence limits | seam drawn, note printed | path cut, **nothing said** | seam drawn, note printed in full |
+
+**The years are printed in words rather than labelled in the SVG.** A 320px figure cannot carry a
+legible year label and an illegible one is worse than none. The lead chart's disclaimer travels
+verbatim: *a note of what else was happening, not an explanation of the shape.*
+
+**28 seam ticks across 10 topics, 31 printed reasons, and the gap of 3 is the rule working.** A
+break at a period the series does not observe gets its reason printed and no mark, because a tick
+at a period the data does not occupy would place a basis change on an axis position that does not
+exist. Same rule the lead chart has always applied. Verified per card against the corpus: 28 ticks
+drawn against 28 the rule calls for.
+
+**The two marks are the site's existing ones, measured rather than asserted:** on both the lead and
+the cards, `chart-event` is `rgb(160,107,50)` dashed `2px, 4px` and `chart-seam` is `rgb(164,22,26)`
+solid. One means *a mark was made*; the other means *do not read straight through*. No third signal
+and no gradation.
+
+### §10 — THE BRIEF'S FIGURES CHECKED OUT, WHICH IS WORTH RECORDING
+
+*30 indicators through the lens: Governance 15, Defence 13, Federalism 2.* **Measured: 30, and
+15 / 13 / 2 exactly.** Fourteen premise corrections in thirteen batches and this is not one.
+
+The counts line already distinguished *filed under* from *read through* — that was fixed two batches
+ago. **What it still did not say is what the 30 ARE**, and the brief is right that decomposition is
+the fix rather than wording. Computed from the same query the counts line runs, grouped by the
+domain each series is filed under, and rendered on **any** topic with a non-empty lens set rather
+than hardcoded for Kashmir — a decomposition that exists for one topic and is typed in for it is a
+caption, not a derivation.
+
+**A welded count, caught by reading the extracted text rather than the screen.** The label and the
+figure sat in a flex row with `gap`, which spaces them visually and **not** in `textContent`:
+`pageTextFromHtml` read *"Governance & institutions15"*. Same class as the defect `rendered-space`
+exists for, arriving through CSS instead of JSX, and invisible to that gate. Fixed with an explicit
+separator.
+
+### §2 — THE OVERVIEW HAD STOPPED CLOSING ON WHAT THE EVIDENCE CANNOT ESTABLISH
+
+§2 says a one-screen summary should close on *what the evidence cannot establish*, **which is
+already how topic pages end**. It was, and **the tab split ended it three batches ago**: the
+declared absences moved to the Missing data tab, so the surface a reader actually lands on finished
+on a list of records. A silent regression in the reading order the corpus cares most about.
+
+Restored on all **14 of 14** overviews. **A statement and a route, never a second listing** — the
+tab lists each absence in full and satisfies rule 4b there; repeating them would render every
+declaration twice on one topic. The count is per topic and never summed across the corpus.
+
+**The zero branch is written and never executes**, and that is stated rather than left to be found:
+all 14 topics declare at least one absence, so the *no record declares one* wording has no positive
+instance today. It is kept because a topic reaching zero must not read as completeness.
+
+### AN INVENTED CLASS THAT LOOKED LIKE THE REAL ONE
+
+The close first shipped with `className="absence-note"` — **a class with no CSS rule anywhere in the
+repository.** It inherited body prose, so a statement about what cannot be established rendered
+exactly like a finding, which is rule 4a inverted. Found by probing the computed colour rather than
+by reading the markup: `rgb(30,34,51)`, the body ink, where every other absence on the site is
+`--ink-2` inside a dashed unfilled box.
+
+Replaced with `.absence`, the existing mark. Measured after: `1px dashed rgb(215,207,193)`,
+transparent background, `rgb(74,79,94)` text. **Third batch running in which measuring the colour
+found something asserting compliance would have missed**, and the first in which the defect was an
+invented lookalike rather than a second appearance.
+
+### The new shapes, bound both ways — two inert, one deliberately not bound
+
+| class | `listing-marks` bound | verdict |
+|---|---|---|
+| `lensdec` | 5,697 / 8,145 — **identical** | inert: it lists topics, not records |
+| `dclose` | 5,697 / 8,145 — **identical** | inert: it names no record |
+| `charts` | 5,732 / 8,185, still OK | **not bound, and the reason is double-counting** |
+
+`charts` is the section wrapping four `cw` cards that are each already bound. Binding the wrapper
+counts the same four records a second time — +35 rows and +40 marks for no assertion the card-level
+binding does not already make. Left unbound with the reason here rather than as an omission.
+
+### Gate line
+
+27 steps green. `link-check` **46,213 internal hrefs across 746 pages, 0 dead** (from 46,014).
+`listing-marks` **5,697 / 8,145 unchanged** — the three layers add marks to existing cards, not new
+rows. `unrecognised-rows` 0, with 965 / 1,960 / 724 / 36 unchanged. `domain-coverage` 1137/1137.
+`reachability` 1,787/1,787. Mobile at 375 px on `/domains/education/` and `/domains/kashmir/`:
+0 body overflow, 0 clamped, longest card seam note 678 characters rendered whole.
+
+**One transient build failure, retested per M1 and not a finding:** `fonts.gstatic.com` returned 404
+for two IBM Plex woff2 files mid-build. The identical build passed on the next run with zero
+`gstatic` errors.

@@ -4154,3 +4154,57 @@ details.more > summary {
   .chrono-note, .nstep-why { font-size: 0.85rem; }
   .chrono-y { padding-left: 0.75rem; }
 }
+
+/* ============================ TOPIC STRIPS — DESIGN-REVISION-2 item 4 ========================
+
+   THE THREE LAYERS DIFFER BY MARK, NEVER BY SEVERITY. A commitment tick is dashed and in the mark
+   colour, meaning one thing — a mark was made. A seam is the existing `chart-seam`, solid, meaning
+   do not read straight through. Those two are already distinguished site-wide and nothing here
+   introduces a third signal or grades either. The card's own text is unchanged in colour. */
+
+.cw-layer,
+.cw-seam {
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--ink-dim);
+}
+/* Never clamped: a seam note is the printed reason §4a requires, and the longest is 864 characters. */
+.cw-seam { max-width: 60ch; }
+.cw-layer-k {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-right: 0.4rem;
+}
+
+.dclose { margin: 2rem 0 1.5rem; }
+
+.lensdec {
+  border-left: 2px solid var(--rule);
+  padding: 0.15rem 0 0.15rem 0.9rem;
+  margin: 0.9rem 0 1.4rem;
+}
+.lensdec-h,
+.lensdec-f {
+  margin: 0 0 0.4rem;
+  max-width: 74ch;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-dim);
+}
+.lensdec-f { margin: 0.4rem 0 0; }
+.lensdec-l { list-style: none; margin: 0; padding: 0; }
+.lensdec-l > li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+  padding: 0.12rem 0;
+}
+/* The bar is the COUNT and nothing else — no width encoding, no colour, no order but the printed
+   one. Rule 7: an encoding with no defensible meaning is not drawn, and a group of 15 against a
+   group of 2 has no defensible length here because the groups are topics, not magnitudes. */
+.lensdec-n { color: var(--ink-dim); font-size: 0.8rem; }
