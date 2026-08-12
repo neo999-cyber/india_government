@@ -383,7 +383,7 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'agri-credit': {
     finding:
-      'Agricultural credit disbursed rises in every year of the series. It counts money lent, not farmers reached or loans repaid, and none of those three is a proxy for the others.',
+      'Disbursement has exceeded its target in most years and grown about 13 per cent annually across the decade \u2014 and none of that establishes that smallholders were reached. A substantial share of headline agricultural credit is large-ticket lending, so this measures supply rather than access: it counts money lent, not farmers reached or loans repaid, and none of the three is a proxy for the others.',
     origin: 'domain-lead',
   },
   'lfpr-female': {
@@ -1415,7 +1415,7 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'aser-out-of-school-15-16': {
     finding:
-      'Children aged 15 to 16 not enrolled fell from 16.2 per cent in 2010 to 7.5 in 2022, and reads 7.9 in 2024. National levels are usable here where sub-national year-on-year changes are not, and it is graded T4 because the schema grades an NGO dataset so.',
+      'Roughly one rural child in six aged 15 to 16 was out of school in 2010; by 2022 it was one in thirteen, and 2024 reads 7.9 per cent. The fall spans the four-year gap in which no field survey ran at all, so where inside that window it happened is not measured. It is graded T4 because the schema grades an NGO dataset so, and national levels are usable here where sub-national year-on-year changes are not.',
     origin: 'authored',
   },
   'gfcf-gdp': {

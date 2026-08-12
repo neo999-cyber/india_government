@@ -60,17 +60,17 @@ export default async function LensPage({ params }: Props) {
 
       {alsoDomain ? (
         <p className="prose-note">
-          This value is a lens <em>and</em> a subject.{' '}
+          This word is both a topic and a lens.{' '}
           {lensOnly
-            ? 'No record may file it as its own subject, but it has a domain page because the domain enum admits the word.'
-            : 'A record may file it as either, never as both.'}{' '}
-          The subject side is at <Link href={`/domains/${l}/`}>/domains/{l}/</Link>; this page is
-          the lens side only.
+            ? 'Nothing is filed under it as a topic — it has a topic page because the two share a name.'
+            : 'Anything here is filed under it as a topic or read through it as a lens, never both.'}{' '}
+          The topic side is at <Link href={`/domains/${l}/`}>/domains/{l}/</Link>; this page is the
+          lens side only.
         </p>
       ) : (
         <p className="prose-note">
-          Not a domain value, and never will be — it answers who a record is about, not what. Every
-          record below is filed under some other subject, named in the Subject column.
+          This is a lens only, never a topic: it answers who something is about rather than what.
+          Everything below is filed under some other topic, named in the Topic column.
         </p>
       )}
 
@@ -101,7 +101,7 @@ export default async function LensPage({ params }: Props) {
               <thead>
                 <tr>
                   <th>Series</th>
-                  <th>Subject</th>
+                  <th>Topic</th>
                   <th>Unit</th>
                   <th>Cal.</th>
                   <th>Tier</th>
@@ -168,7 +168,7 @@ export default async function LensPage({ params }: Props) {
                   <th>Date</th>
                   <th>Term</th>
                   <th>Record</th>
-                  <th>Subject</th>
+                  <th>Topic</th>
                   <th>Assessment</th>
                   {/* Same column as /ledger, /terms and the domain page — see the note there. */}
                   <th>Conf.</th>
@@ -217,7 +217,7 @@ export default async function LensPage({ params }: Props) {
               <tr>
                 <th>ID</th>
                 <th>Pair</th>
-                <th>Subject</th>
+                <th>Topic</th>
                 <th>Kind</th>
               </tr>
             </thead>

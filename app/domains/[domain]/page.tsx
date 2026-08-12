@@ -116,7 +116,7 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
   const leadRun = ranked[0]?.run ?? 0;
   const grid = ranked.slice(1, 5).map((r) => r.x);
 
-  // Years in which a record filed under this area was announced, deduplicated, most-cited first
+  // Years in which a record filed under this topic was announced, deduplicated, most-cited first
   // then earliest. Capped at three: the lead chart has room for three labels and a fourth overlaps.
   const evYears = new Map<number, number>();
   for (const r of l) {
@@ -149,7 +149,7 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
   ).length;
   const byDate = [...l].sort((a, b) => b.date.localeCompare(a.date));
   /**
-   * Every declared absence in this area, from series and ledger alike, each carrying the record
+   * Every declared absence in this topic, from series and ledger alike, each carrying the record
    * that declared it. Built here rather than in the panel so the count is available to the tab
    * strip, which must be able to say the tab is empty before a reader opens it.
    */
@@ -200,14 +200,16 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
       />
 
       <p className="counts-line mono">
-        {s.length} series{lensed.length ? ` · ${lensed.length} under this lens` : ''} · {l.length}{' '}
-        records · {p.length} disputes
+        {lensed.length
+          ? `${s.length + lensed.length} indicators — ${s.length} filed under this topic, ${lensed.length} read through it as a lens`
+          : `${s.length} indicators`}{' '}
+        · {l.length} records · {p.length} disputes
       </p>
 
       {s.length + lensed.length + l.length === 0 ? (
         <div className="stub">
           <span className="label">Unopened domain</span>
-          No series and no ledger records have been researched into this domain yet. Nothing is
+          No indicators and no government records have been researched into this topic yet. Nothing is
           inferred to fill the gap.
         </div>
       ) : null}
@@ -222,13 +224,13 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
           <div className="dlead-rule" />
           <SeriesChart series={lead} events={leadEvents} highlightLast />
           <p className="dlead-note">
-            <strong>Chosen for the longest unbroken run in this area, not for importance.</strong>{' '}
+            <strong>Chosen for the longest unbroken run in this topic, not for importance.</strong>{' '}
             {leadRun} consecutive observations with no declared break inside them, which is the
             longest of the {(s.length || lensed.length)} series here.
             {leadEvents.length > 0 ? (
               <>
                 {' '}
-                The brass ticks are years in which a record filed under this area was announced —{' '}
+                The brass ticks are years in which a record filed under this topic was announced —{' '}
                 <strong>a note of what else was happening, not an explanation of the shape.</strong>
               </>
             ) : null}
@@ -239,7 +241,7 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
       {/* ---- WHAT CHANGED. Authored, per period, from the records. One of fourteen written. --- */}
       {evidence ? (
         <p className="evidence-note">
-          <span className="label">How this area is published</span> {evidence}{' '}
+          <span className="label">How this topic is published</span> {evidence}{' '}
           <span className="mono">
             {approxPoints} of {indiaPoints.length} India observations are published as
             approximations; {verifiedPoints} {verifiedPoints === 1 ? 'is' : 'are'} verified.{' '}
@@ -254,7 +256,7 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
           <div className="sec-h">
             <h2>What changed</h2>
             <p className="sec-note">
-              {periods.length} periods, written from the records in this area. Each names the
+              {periods.length} periods, written from the records in this topic. Each names the
               records it draws on.
             </p>
           </div>
@@ -286,7 +288,7 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
               {grid.length} more, side by side
             </h2>
             <p className="sec-note">
-              The next longest unbroken runs in this area — a stated criterion, not a ranking. All{' '}
+              The next longest unbroken runs in this topic — a stated criterion, not a ranking. All{' '}
               {(s.length || lensed.length)} series are below.
             </p>
           </div>
@@ -316,7 +318,7 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
           <div className="sec-h">
             <h2>{l.length} records</h2>
             <p className="sec-note">
-              Everything entered in this area, most recent first. Nothing is ranked.
+              Everything entered in this topic, most recent first. Nothing is ranked.
             </p>
           </div>
           {shownRecords.map((r) => (
@@ -451,7 +453,7 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
             <Link key={x.id} href={`/provenance/${x.id}/`}>
               <span className="label">
                 {x.id}
-                {x.affectsDomains.includes('all') ? ' · all domains' : ''}
+                {x.affectsDomains.includes('all') ? ' · all topics' : ''}
               </span>
               <span className="grid-title">{x.title}</span>
               <span className="grid-meta">
@@ -467,7 +469,7 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
 
       {/* ============================ MISSING DATA — NEW CONTENT, NOT A RE-ARRANGEMENT ========
           §5's fifth tab had nothing behind it. The other four move existing sections; this one did
-          not exist on any domain page, and every area has something for it — 4 declarations in
+          not exist on any topic page, and every topic has something for it — 4 declarations in
           poverty to 181 in governance, 374 across the corpus.
 
           **Rule 4a governs the form and rule 4b the reach.** Each entry is dashed, unfilled and
@@ -476,14 +478,14 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
       {tab === 'missing' ? (
         absences.length === 0 ? (
           <p className="prose-note">
-            No record in this area declares an unmeasured quantity. That is a statement about what
+            No record in this topic declares an unmeasured quantity. That is a statement about what
             has been entered, not a claim that everything here is measured.
           </p>
         ) : (
           <>
             <p className="prose-note">
               {absences.length} {absences.length === 1 ? 'quantity' : 'quantities'} that records in
-              this area say {absences.length === 1 ? 'is' : 'are'} not measured, each named by the
+              this topic say {absences.length === 1 ? 'is' : 'are'} not measured, each named by the
               record that declared it. <strong>These are findings, not gaps in this record</strong> —
               a declared absence is something the corpus establishes about the published statistics,
               and nothing is estimated into the space.

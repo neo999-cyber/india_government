@@ -80,7 +80,7 @@ export function Evaluability() {
         Not every record can be checked against an outcome. Some announce a target that later
         evidence can be held against; many are institutional practice, a statutory duty or a
         one-off episode, where there is no stated objective to score. The bars show, for each
-        subject area, <strong>the share of the records held here that reached a verdict on an
+        topic, <strong>the share of the records held here that reached a verdict on an
         outcome</strong>.
       </p>
 

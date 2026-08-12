@@ -159,7 +159,7 @@ export default function HomePage() {
       <section className="home-year" aria-labelledby="hy-h">
         <h2 id="hy-h">Move through the years</h2>
         <p className="prose-note">
-          Five areas on one shared axis. Where an area has no observation for
+          Five topics on one shared axis. Where a topic has no observation for
           the year it says so rather than holding its last figure &mdash; which
           is the thing this control exists to make visible.{" "}
           <Link href="/overview/">All fourteen areas, with play &rarr;</Link>
@@ -265,7 +265,7 @@ export default function HomePage() {
           duplicate of the page below it. */}
       <p className="home-overview-link">
         <Link href="/overview/">
-          See the whole record in one view — every area, every year, and what
+          See the whole record in one view — every topic, every year, and what
           happened →
         </Link>
       </p>
