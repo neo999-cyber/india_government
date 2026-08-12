@@ -1342,9 +1342,14 @@ tr th:last-child {
   text-decoration: underline;
 }
 
+/* THE OUTCOME TRACK IS ONE COLOUR. This read `--ink-2` and the three emitters added with the
+   two-track work read `--ink`, so the same track rendered in two colours depending on which
+   container it landed in. That is not a gradient — nothing was graded and no record was coloured
+   relative to another — but a track a reader is meant to recognise cannot have two appearances.
+   Aligned to `--ink`, which is what the other three use. */
 .chart-takeaway {
   margin: 0;
-  color: var(--ink-2);
+  color: var(--ink);
   font-size: 0.9375rem;
   max-width: var(--measure);
 }
@@ -3946,3 +3951,15 @@ details.more > summary {
 @media (max-width: 767px) {
   .outcome-inline { font-size: 0.86rem; }
 }
+
+/* Outcome track on the two non-table containers. Same label, same absence of any severity
+   signal as `.outcome-row` — see that rule for why the two tracks differ by label only. */
+.scard-outcome,
+.cw-outcome {
+  margin: 0.5rem 0 0;
+  max-width: 78ch;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.cw-outcome { font-size: 0.85rem; }

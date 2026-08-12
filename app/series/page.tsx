@@ -2,7 +2,8 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { series } from '@/lib/data';
 import { DOMAIN_LABELS, periodKey, periodLabel } from '@/lib/format';
-import { CaveatRow, RecordMarks, StatusKey, TierTag } from '@/components/marks';
+import { CaveatRow, OutcomeRow, RecordMarks, StatusKey, TierTag } from '@/components/marks';
+import { SERIES_FINDINGS } from '@/lib/series-copy';
 import { ListingFacets } from '@/components/ListingFacets';
 import { SpanStrip } from '@/components/SpanStrip';
 import { spanRows, spanAxis, spanFrontier } from '@/lib/spans';
@@ -163,6 +164,8 @@ export default function SeriesIndex() {
                       )}
                     </td>
                   </tr>
+                  {/* The two tracks. This catalogue shipped the evidence track alone. */}
+                  <OutcomeRow finding={SERIES_FINDINGS[s.id]?.finding} colSpan={9} />
                   <CaveatRow record={s} colSpan={9} />
                 </tbody>
               );
