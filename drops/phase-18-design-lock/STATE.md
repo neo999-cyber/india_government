@@ -28,13 +28,13 @@ last one had shipped. A file read cold at every session start is the one place s
 which is why the pins below now carry the gate output they were measured from.
 
 **THE LIVE BRIEF IS NOW `DESIGN-REVISION-2.md`** in this directory, and it has its own build order.
-**Items 1 and 2 have shipped; items 3 to 7 carry.** See the section below.
+**Items 1, 2 and 3 have shipped; items 4 to 7 carry.** See the section below.
 
 ---
 
 ## OPEN ITEMS
 
-### DESIGN-REVISION-2 — items 1 and 2 SHIPPED, items 3 to 7 CARRY
+### DESIGN-REVISION-2 — items 1, 2 and 3 SHIPPED, items 4 to 7 CARRY
 
 `DESIGN-REVISION-2.md` is in this directory. Its §8 records five rejections with the rule each
 breaks, and §9 restates ten constraints; neither is re-derived.
@@ -85,8 +85,8 @@ the two are not a declared pair, they share no dispute (P-86 against P-75), and 
 that L-0110 cites both alongside eight other defence series. Nothing in `/data` picks the register
 out of the ten.
 
-**ITEMS 4 TO 7 CARRY, in the brief's own build order:** record spine + next steps (§3, §9) · topic strips
-(§1, §2, §10) · matrix + year strip (§5, §7) · two-truths cards (§11) · stories (§8).
+**ITEMS 4 TO 7 CARRY, in the brief's own build order:** topic strips (§1, §2, §10) · matrix +
+year strip (§5, §7) · two-truths cards (§11) · stories (§8).
 
 ### CLOSED 2026-08-12 — DESIGN-REVISION.md items 1-4, and the authored series findings
 
