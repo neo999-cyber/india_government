@@ -44,6 +44,16 @@ control on the landing page.
   **reachability partitions nothing** (0 series are index-only; a domain surface reaches all 269).
   The one surviving boundary is what a series can support: **31 single-observation series render
   without the line permanently**, criterion printed. Tranche 1 landed 10.
+  **Tranche 4 landed 20. Running total 75 of 269; 162 remain; 32 render without the line
+  permanently.** Rate by tranche: 10, 11, 16, 20. **What bounds a tranche is INTERLOCK, computable
+  from `/data` before writing** — the share of a candidate set whose prose names another series
+  (60/27/19/20 per cent) and the share sharing a dispute with a set-mate (100/64/56/45). Neither
+  record count nor material volume explains it. **The forecast this enabled predicted 16-18 and
+  twenty landed — a third measurement-based forecast to miss, this time low**, so what interlock
+  buys is a bound and a direction, not a number. Form: negative definition 1 of 20 by shape (down
+  from 13 per cent), negating clause anywhere 13 of 20 against 12 of 16 — flat, not climbing.
+  **True-alone found nothing for the first time**, after 2, 2 and 4.
+
   **Tranche 3 landed 16. Running total 55 of 269; 182 remain; 32 render without the line
   permanently.** Rate by tranche: 10, 11, 16. **Form is now counted per tranche** to stop the
   negative definition becoming a template — tranche 3 was 2 of 16 by shape (trajectory 4,

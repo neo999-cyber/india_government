@@ -153,6 +153,31 @@
  * forces — *released, not allocated and not spent*; *calendar years and not financial years*; *a
  * count of deaths and not a measure of what the weapon did*. That is substance, not style. **The
  * number to watch is the first; the second is recorded so a later cycle can see if it climbs.**
+ *
+ * ============================ WHAT BOUNDS A TRANCHE — MEASURED 2026-08-12 =====================
+ *
+ * The rate went 10, 11, 16, each stopping where the next records needed reading. **Neither record
+ * count nor material volume explains it: tranches 1 and 3 read 30,411 and 34,172 characters and
+ * produced 10 and 16.** So the obvious metric fails here as it failed twice before.
+ *
+ * **WHAT TRACKS IT IS INTERLOCK, AND INTERLOCK IS COMPUTABLE FROM `/data` BEFORE A WORD IS
+ * WRITTEN.** Two measures, taken over the candidate SET:
+ *
+ *   share whose own prose names another series by id   t1 60%   t2 27%   t3 19%   t4 20%
+ *   share sharing a dispute with a set-mate            t1 100%  t2 64%   t3 56%   t4 45%
+ *   findings landed                                    t1 10    t2 11    t3 16    t4 20
+ *
+ * An interlocked record cannot be written from itself: `jk-terrorist-incidents-merged` needs both
+ * its components read, `wb-mgnrega-funds-released` needs Bihar. That is the cost, and it is a
+ * property of the RECORDS rather than of the process.
+ *
+ * **THE FORECAST THIS ENABLED WAS MADE BEFORE TRANCHE 4 AND WAS WRONG AGAIN, IN THE SAFE
+ * DIRECTION.** At 20/45 — at or below tranche 3's interlock — it predicted 16 to 18. **Twenty
+ * landed and none slipped.** That is the third measurement-based forecast about this work to miss,
+ * after the material-length metric and the thin-prose prediction. **So the honest statement of what
+ * interlock buys is a bound and a direction, not a number:** at interlock at or under roughly 20
+ * and 50 per cent, twenty holds; at tranche 1's 60 and 100 per cent, ten did. Anything finer has
+ * been claimed three times and been wrong three times.
  */
 export type SeriesFinding = {
   /** One or two sentences. Plain text; no markdown — the view prints it as text. */
@@ -460,6 +485,111 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   'net-npa': {
     finding:
       'The net NPA ratio peaks at 6.1 per cent in FY2017-18, after the asset quality review forced recognition, and falls to 0.5 by FY2025-26. The reporting basis is not stated by the source, which is why the title says so \u2014 a ratio whose basis is unstated cannot share an axis with one whose basis is known.',
+    origin: 'authored',
+  },
+
+  // ---- 6. AUTHORED, tranche 4, 2026-08-12. Twenty. The size was DERIVED before writing rather
+  //         than set: interlock across the next twenty in the ordering measured 20 per cent naming
+  //         a sibling and 45 per cent sharing a dispute, at or below tranche 3's 19/56 which
+  //         supported sixteen. See the size note in the header.
+  'edu-spend-gdp-centre-edu-depts': {
+    finding:
+      'The Centre\u2019s own education departments \u2014 about a quarter of Indian public education spending, since States and UTs carry the rest throughout, so this series moving says nothing about what India spends. It fell from 0.64 per cent of GDP in FY2013-14 to 0.40 in FY2021-22, a fall of 38 per cent in share terms, while the national narrow total fell only from 2.97 to 2.75. That 0.40 is the lowest since FY2004-05 and not the table\u2019s minimum: FY2001-02 reads 0.37.',
+    origin: 'authored',
+  },
+  'india-china-exports-indian-basis': {
+    finding:
+      'What India reports it exported to China: 16.245 billion dollars for 2023, 14.899 for 2024 and 18.086 for 2025, valued free on board. This is the direction in which the two countries\u2019 accounts diverge most \u2014 20.8 per cent in 2024 against 5.4 per cent on the import side \u2014 and valuation does not explain a gap of that size.',
+    origin: 'authored',
+  },
+  'edu-spend-gdp-edu-depts': {
+    finding:
+      'The narrow numerator \u2014 education departments only, revenue account, capital expenditure and loans excluded \u2014 and not the figure quoted in Parliament or against the 6 per cent target. It falls from 2.97 per cent of GDP in FY2013-14 to 2.75 in FY2021-22 while the all-departments series moves the other way across the same years, which is why neither may be shown without the other. States and UTs carry about three-quarters of the money throughout.',
+    origin: 'authored',
+  },
+  'govt-schools-count': {
+    finding:
+      'A stock and not a flow: the number of government schools standing each year, down 101,856 between FY2014-15 and FY2025-26, about 9.2 per cent. The Government does not publish how many closed, and declined to supply it when asked in February 2025 and again in February 2026 \u2014 so the closure figures in circulation are stock differences, netting closures against openings and saying nothing about how many schools were merged rather than shut.',
+    origin: 'authored',
+  },
+  'jk-civilians-killed-satp': {
+    finding:
+      'A press-derived register with no published methodology of any kind: no codebook, no definitions page, no inclusion criteria, and \u2018civilian\u2019 nowhere defined \u2014 the entire methodology statement is a datasheet footer saying the figures are compiled from news reports and provisional. It reads 86 for 2018 and 28 for 2022. It and MHA\u2019s count fail in opposite directions and neither contains the other: this one misses what the press does not reach, MHA\u2019s misses what the state has an interest in not booking.',
+    origin: 'authored',
+  },
+  'aidf-transferred': {
+    finding:
+      'The earmarked Fund received nothing in its first two years \u2014 zero in FY2021-22 and zero in FY2022-23 \u2014 which is not the same as agricultural infrastructure going unfunded, because that spending is made from the Consolidated Fund whether the Fund exists or not. Transfer and utilisation are printed as one column and cannot be separated from within the table. Across the five years it covers, collections total 387,226.31 crore against transfers of 377,213.61, leaving the Fund 10,012.70 crore behind cumulatively.',
+    origin: 'authored',
+  },
+  'cess-share-gtr-parliamentary': {
+    finding:
+      'A third convention for the same subject, and this one is the Union\u2019s own: seventeen named cess rows and a footing percentage laid before Parliament, with no test stated for what belongs in the set. It reads 11.5 per cent for FY2022-23 and 6.2 for FY2026-27. Because the membership rule is unstated, it says what the Union says the share is rather than what a defined quantity is, and it must not be quoted against the other two conventions as though the three disagreed about the world.',
+    origin: 'authored',
+  },
+  'jk-xiv-fc-panchayat-grants-allocated': {
+    finding:
+      'What was allocated to J&K\u2019s Gram Panchayats under the Fourteenth Finance Commission, which is not what arrived: 3,463.73 crore allocated across the award and 1,857.93 released, with the final year\u2019s whole allocation released at zero. The series ends with the award and does not resume \u2014 the Ministry\u2019s Fifteenth Commission table lists 28 States and no Union Territories, and Jammu and Kashmir has no row in it.',
+    origin: 'authored',
+  },
+  'wb-samagra-shiksha-allocation': {
+    finding:
+      'Central Samagra Shiksha allocation to West Bengal runs on undisturbed through the two years in which nothing at all was released, and rises 14.5 per cent in the last of them, to 1,998.39 crore. Allocation and release are decided by different acts, and this table prints both, which is the only reason the gap between them is visible.',
+    origin: 'authored',
+  },
+  'india-china-exports-chinese-basis': {
+    finding:
+      'What China reports it received from India: 18.541 billion dollars for 2023 and 17.999 for 2024, valued inclusive of cost, insurance and freight. China records more Indian goods arriving than India records leaving \u2014 17.999 against 14.899 for 2024 \u2014 and the excess is far beyond what freight and insurance add. It stops at 2024 because China filed no calendar-2025 return with UN Comtrade, for any partner.',
+    origin: 'authored',
+  },
+  'bihar-devolution-population-ratio': {
+    finding:
+      'Bihar receives more devolution than its population share alone would give: 1.25 times it to FY2014-15, 1.11 from FY2015-16, 1.15 from FY2020-21. The state the formula favours most has watched that advantage shrink by about a third across five Commissions, from 1.78 under the Eleventh to 1.15 under the Fifteenth.',
+    origin: 'authored',
+  },
+  'fiscal-deficit': {
+    finding:
+      'The central fiscal deficit runs 4.1 per cent of GDP in FY2014-15, spikes to 9.2 in FY2020-21 and reads 4.4 for FY2025-26. Part of that spike is an accounting change rather than spending \u2014 Food Corporation dues were brought on-budget in February 2021. The last two figures are a Revised Estimate and a target rather than accounts.',
+    origin: 'authored',
+  },
+  'genl-govt-debt': {
+    finding:
+      'General government debt, Centre and states together, on the IMF\u2019s numbers: 67 per cent of GDP in FY2014-15, 89 in FY2020-21, and 84.8 for 2024. Because it is a ratio to GDP, the 2022-23 rebasing lifts it without a rupee being borrowed.',
+    origin: 'authored',
+  },
+  'msp-wheat': {
+    finding:
+      'The announced minimum support price for wheat rises in every year of the series, from 1,400 rupees a quintal in FY2014-15 to 2,425 in FY2025-26, in nominal rupees. Where it is described as one and a half times cost, the cost is A2+FL and not the C2 basis the Swaminathan recommendation specified; on C2 the margin is substantially smaller or absent.',
+    origin: 'authored',
+  },
+  'scb-gross-npa': {
+    finding:
+      'Gross NPAs on the domestic-operations basis, peaking at 11.46 per cent in FY2017-18 after the asset quality review forced recognition, and reading 1.8 for FY2025-26. The basis is load-bearing: the same peak year reads 14.58 per cent for public sector banks on global operations. The rise at FY2015-16 is recognition rather than deterioration, and the fall since is not the whole picture without the loans written off over the same years.',
+    origin: 'authored',
+  },
+  'wheat-procurement': {
+    finding:
+      'Wheat procurement reached a record 43.3 million tonnes in FY2021-22 and fell to 18.8 the following year, after the March 2022 heat and the export ban. It is concentrated to a degree the national figure hides: in FY2024-25 five states accounted for about 99.9 per cent of it, and Punjab and Haryana alone for roughly 75.',
+    origin: 'authored',
+  },
+  'devolution-be-to-actual-gap': {
+    finding:
+      'What the states finally received against what the Union had budgeted for them in the same year. In FY2019-20 and FY2020-21 they lost about a fifth and a quarter of the devolution they had planned on; in FY2021-22 the error flips sign to plus 35 per cent and never returns, which is a change in forecasting after COVID rather than an award effect. Both columns are the Union\u2019s own, for the same quantity, in the same document series.',
+    origin: 'authored',
+  },
+  'pmfby-farmers': {
+    finding:
+      'Farmers covered by the crop insurance scheme peak at 6.2 crore in FY2020-21 and fall to 4.19 by FY2024-25 \u2014 but the scheme was made voluntary for loanee farmers in that same year, so the fall is opt-out rather than loss of access. Six states have left the scheme altogether, so a national count understates the withdrawal.',
+    origin: 'authored',
+  },
+  'aser-std5-reading': {
+    finding:
+      'Standard V reading fell to 42.8 per cent in 2022 and recovered to 48.8 in 2024, still short of the 50.5 of 2018. The shortfall is private schools rather than government ones: government-school Standard V reading went from 44.2 to 44.8 across those six years while private went from 65.1 to 59.3. It is graded T4 because the schema grades an NGO dataset so.',
+    origin: 'authored',
+  },
+  'jk-nhrc-cases-transferred-to-shrc': {
+    finding:
+      'Thirty-eight cases in FY2017-18, ten in FY2019-20, and zero in every year since \u2014 because from FY2020-21 there is no State Human Rights Commission in Jammu and Kashmir to transfer a case to, the J&K commission having been wound up with effect from 31 October 2019. The zero could not have been anything else, and it is the abolition made visible inside the national Commission\u2019s own arithmetic.',
     origin: 'authored',
   },
 };
