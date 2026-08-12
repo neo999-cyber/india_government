@@ -7,6 +7,7 @@ import { YEAR_NOTES } from '@/lib/year-copy';
 import { SpanStrip } from '@/components/SpanStrip';
 import { RecordMarks } from '@/components/marks';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS } from '@/lib/format';
+import { YEARS } from '@/lib/years';
 
 /**
  * A YEAR PAGE — a cross-section of the record at one year, and NOT an annual scorecard.
@@ -38,7 +39,6 @@ import { ASSESSMENT_LABELS, DOMAIN_LABELS } from '@/lib/format';
  */
 
 export const dynamicParams = false;
-const YEARS = Array.from({ length: 13 }, (_, i) => 2014 + i);
 const yearOfPeriod = (p: string) => Number(String(p).replace(/^FY/, '').slice(0, 4));
 
 export function generateStaticParams() {

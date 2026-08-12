@@ -28,6 +28,8 @@ import { SeriesKeyFigures } from '@/components/SeriesKeyFigures';
 import { NpaView } from '@/components/NpaView';
 import { RegimeOverlap } from '@/components/RegimeOverlap';
 import { Absences, CaveatFlag, DirectionMark, RecordMarks, SourceLine, StatusKey, TierTag } from '@/components/marks';
+import { NextSteps } from '@/components/NextSteps';
+import { citedByOverflow, stepsForSeries } from '@/lib/next-steps';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -336,6 +338,14 @@ export default async function SeriesDetail({ params }: Props) {
         </div>
       )}
 
+      {/* §9 — the reader review's own case. They wanted to go from this page's sentence about a
+          press-compiled register TO that register and had to hunt for it through ledger
+          relationships. The first step below is that link, named, with the pair that declares the
+          relation printed beside it. */}
+      <NextSteps
+        steps={stepsForSeries(s)}
+        overflow={{ n: citedByOverflow(s), href: '/ledger/', label: 'The full ledger' }}
+      />
     </>
   );
 }
