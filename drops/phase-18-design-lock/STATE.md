@@ -44,6 +44,15 @@ control on the landing page.
   **reachability partitions nothing** (0 series are index-only; a domain surface reaches all 269).
   The one surviving boundary is what a series can support: **31 single-observation series render
   without the line permanently**, criterion printed. Tranche 1 landed 10.
+  **Tranche 6 landed 20. Running total 115 of 269; 122 remain; 32 render without the line
+  permanently.** Rate: 10, 11, 16, 20, 20, 20. Interlock 15/40, inside the bound; the 16- and
+  24-sets were measured and not taken. **The tranche-5 family count of 4-of-20-about-the-world does
+  NOT replicate and is corrected in the module header:** under a stated mechanical test applied to
+  all 115, **104 carry a substantive statement about India, 90 per cent**, and tranche 5 is 16 of 20.
+  The earlier number came from an unstated classifier — the fourth measurement in this work to be
+  wrong. **The clause metric drifted the same way and is now frozen** at the six-term tranche-3
+  definition; the comparable series is 40, 73, 63, 60, 40, 65, which oscillates and does not climb.
+
   **Tranche 5 landed 20. Running total 95 of 269; 142 remain; 32 render without the line
   permanently.** Rate: 10, 11, 16, 20, 20. Interlock over the candidate set was 10/45, at or below
   tranche 4's, and the bound's twenty was taken with no finer claim. **The negating-clause metric

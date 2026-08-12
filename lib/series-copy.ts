@@ -204,6 +204,33 @@
  * corrected**, and the family counts are the thing to watch from here: if *about the world* keeps
  * falling toward zero the instrument is describing itself, which is the self-audit line the
  * derivations rule already draws.
+ *
+ * ============================ THAT FAMILY COUNT DID NOT REPLICATE — CORRECTED 2026-08-12 ======
+ *
+ * **The paragraph above says four of twenty were about the world and sixteen about how India
+ * measures it. It does not survive a stated rule, and the rule is the whole problem: there was
+ * none.** The classification was done by dominant impression, per tranche, and never written down.
+ *
+ * **Restated with a mechanical test applied uniformly to every finding: strip each clause about how
+ * the number was made, published, defined or based, and ask whether a substantive statement about
+ * India remains.** Across all 115: **104 do, or 90 per cent.** Per set — harvested 4/5, domain
+ * leads 9/13, then 8/10, 11/11, 16/16, 20/20, 16/20, 20/20. **Tranche 5 is 16 of 20 on this test,
+ * not 4 of 20**, and the eleven that fail are named: `schools-above-rte-ptr-primary-dise`,
+ * `farm-household-income`, `farmer-suicides`, `jk-psa-detenus-transferred-out`,
+ * `jk-terrorist-incidents-legacy`, `jk-civilians-killed-terror-basis`, `aishe-publication-lag`,
+ * `cag-certified-net-proceeds`, `ptr-primary-udise`, `gdp-growth-new-base`, `exports-gdp`.
+ *
+ * **So the drift the count was built to detect is not happening**, and the earlier number was an
+ * artefact of an unstated classifier — the fourth measurement in this work to be wrong, after the
+ * material-length metric, the thin-prose forecast and the tranche-size forecast. **A count whose
+ * rule is not written down is not a measurement**, which the corpus already knew and this restates
+ * with a case.
+ *
+ * **The clause metric drifted the same way and is now frozen.** Reported as 63, 65 and 50 per cent
+ * across tranches 3 to 5, each computed with a regex that had quietly gained a term. On the
+ * ORIGINAL tranche-3 definition — `is not`, `are not`, `not a`, `not the`, `rather than`,
+ * `and not` — the comparable series is **40, 73, 63, 60, 40, 65**. It oscillates and does not
+ * climb. **Any later cycle re-measuring this must use that six-term definition or say it changed.**
  */
 export type SeriesFinding = {
   /** One or two sentences. Plain text; no markdown — the view prints it as text. */
@@ -721,6 +748,109 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   'surcharge-share-gtr-parliamentary': {
     finding:
       'The surcharge half of the Union\u2019s own table laid before Parliament: 8.9 per cent of gross tax revenue for FY2022-23 and 8.1 for FY2026-27. The Union does not define the set it is summing, and its own two answers sum different ones \u2014 an answer of August 2023 put surcharge at 1.50 per cent for FY2021-22, which is a difference in the set summed rather than in the world, driven mainly by the Special Additional Excise Duties on petrol and diesel. Read only against the cess half of the same table.',
+    origin: 'authored',
+  },
+
+  // ---- 8. AUTHORED, tranche 6, 2026-08-12. Twenty. Interlock over the candidate twenty was 15/40,
+  //         inside the bound; the sets of 16 and 24 measured 19/31 and 17/50 and were not taken.
+  'wb-samagra-shiksha-released': {
+    finding:
+      'A published zero and not a blank: the Union\u2019s own table prints 0.00 against West Bengal for two consecutive years while printing figures for other states in the same column. Release came in three stages \u2014 97.8 per cent of allocation paid in FY2021-22, 85.8 in FY2022-23, cut to 17.6 in FY2023-24, then nil twice against allocations of 1,745.80 and 1,998.39 crore. What the column counts is the central share released, which is neither what was allocated nor what was spent. Nationally the programme kept paying throughout \u2014 the all-India release never fell below 29,996.83 crore in any of the five years \u2014 so nothing here is a general funding shortfall.',
+    origin: 'authored',
+  },
+  'cess-surcharge-share-gtr-parliamentary': {
+    finding:
+      'Four discrete years the Union answered for, not a series with annual spacing, and no line should be drawn through them: 9.6 per cent in FY2014-15 against 17.9 in FY2024-25, the last point a Revised Estimate. It is the Union\u2019s own statement of this quantity on the longest span it has ever given \u2014 and the Union defines the quantity in neither year, so the 1.86-times movement is not a measured doubling of one defined thing.',
+    origin: 'authored',
+  },
+  'rte-quota-children': {
+    finding:
+      'A cumulative headcount of children across Classes I-VIII in schools claiming reimbursement \u2014 not annual fresh admissions, and with no seats-available figure beside it, so the series has no denominator. A second national series built from the same approval pipeline gives 3,604,082, 3,473,922 and 2,950,342 for the same three years, diverging by up to 1.95 million children in one year, and neither can be preferred without reconciling them. The only genuine national seats-versus-filled measurement ever made was for 2012-13 and 2013-14, at fill rates of 21.5 and 29.0 per cent.',
+    origin: 'authored',
+  },
+  'unpaid-helper-share': {
+    finding:
+      'Unpaid family helpers rose from 13.3 per cent of workers in FY2018-19 to 17.3 in FY2020-21, fastest among women. This is the category whose growth mechanically lowers the unemployment rate: an unpaid helper counts as employed, so people moving into unpaid family work leave the unemployed count without entering a job.',
+    origin: 'authored',
+  },
+  'anaemia-children': {
+    finding:
+      'Anaemia in children aged 6 to 59 months reads 58.6 per cent in the fourth National Family Health Survey and 67.1 in the fifth. Whether the two rounds are comparable is unverified \u2014 the haemoglobin testing method may have differed between them \u2014 so the increase should not be cited as settled until that is checked. The sixth round\u2019s fieldwork has been delayed, so this remains the last national reading.',
+    origin: 'authored',
+  },
+  'health-exp-union': {
+    finding:
+      'Union health spending fell from 0.37 per cent of GDP in FY2020-21 to 0.29 in FY2025-26. It is the Union share alone: total public health spending including the states runs about 1.7 to 1.9 per cent of GDP, against the National Health Policy 2017 target of 2.5 per cent by 2025.',
+    origin: 'authored',
+  },
+  'jk-panchayat-seats-vacant': {
+    finding:
+      'Two points that are not the same object and must not be read as a smooth series: 12,209 unfilled seats in 2018, derived from the election result totals and counting seats never filled, against 13,241 in 2020, which is the administration\u2019s own count of vacant halqas where by-elections were being held and may be narrower than all vacant seats. The 2018 election was held on the pre-reorganisation basis including Ladakh, and both figures are restated onto the Union Territory basis of 4,290 sarpanch and 33,592 panch seats.',
+    origin: 'authored',
+  },
+  'stunting-under5': {
+    finding:
+      'Child stunting under five fell from 38.4 per cent to 35.5 between the fourth and fifth National Family Health Surveys, a marginal improvement. The sixth round\u2019s fieldwork has been delayed and its publication is uncertain, so these two points are the whole of the recent national record.',
+    origin: 'authored',
+  },
+  'fc-devolution-rupees': {
+    finding:
+      'Cash actually moved from the Union to the states in the year, not entitlement attributed to it: 219,489 crore in FY2010-11 to 1,129,494 in FY2023-24. On this cash basis devolution ran between 39.68 and 44.21 per cent of the certified pool over FY2018-19 to FY2022-23 while the recommended share was a flat 41 or 42 \u2014 so a state reading its own receipts in a single year will see a number that is not 41 per cent, and will be right. Two tables inside one Commission report give different figures for the same five years, differing by up to 46,640 crore, and both are correct on their own definition.',
+    origin: 'authored',
+  },
+  'non-fossil-generation-share': {
+    finding:
+      'What non-fossil plant actually generated, as against what was built: at 31 March 2024 non-fossil sources were 44.97 per cent of installed capacity and supplied 23.51 per cent of the electricity. The share reads 21.15 per cent in FY2012-13 and 28.96 in FY2025-26. Renewable generation before FY2014-15 is normative rather than metered \u2014 CEA imputed it \u2014 so the step at that year is a change of method and not of output.',
+    origin: 'authored',
+  },
+  'psb-gross-npa': {
+    finding:
+      'Public sector banks on the global-operations basis, peaking at 14.58 per cent in FY2017-18 and reading 1.9 for FY2025-26. The basis is stated because the same peak reads 11.46 per cent for all scheduled commercial banks on domestic operations \u2014 different populations, not two readings of one. The 4.4 per cent baseline for FY2013-14 is pre-asset-quality-review and not comparable with what follows, and the fall since is not the whole picture without the loans written off over the same years.',
+    origin: 'authored',
+  },
+  'coal-plf': {
+    finding:
+      'How hard the existing coal fleet is run, and it is a U rather than a decline: it fell to 54.49 per cent in FY2020-21 and then rose four years running to 69.45, above the 65.56 it started from. Coal and lignite are aggregated in CEA\u2019s chart and cannot be separated from it. Whether a falling load factor is good is left unset \u2014 it can mean renewables displacing coal, or coal plant standing idle, and the series does not distinguish them.',
+    origin: 'authored',
+  },
+  'fertiliser-subsidy': {
+    finding:
+      'The fertiliser subsidy spiked to about 2.25 lakh crore rupees in FY2022-23, from 71,000 crore in FY2014-15, absorbing the global energy and fertiliser shock rather than passing it to farmers, and has since come down to 168,000 crore. Urea alone accounts for about 1.19 lakh crore of the FY2025-26 figure.',
+    origin: 'authored',
+  },
+  'foodgrain-production': {
+    finding:
+      'Foodgrain production rose from 252 million tonnes in FY2014-15 to 376.56 in FY2025-26, on a crop year running July to June and with the last figure a third advance estimate. The growth is driven substantially by the monsoon and by area responding to support prices rather than by yield breakthroughs \u2014 the FY2023-24 dip to 1.4 per cent agricultural growth on an El Nino monsoon shows the dependence.',
+    origin: 'authored',
+  },
+  'bank-writeoffs-annual': {
+    finding:
+      'Loans written off run from 0.6 lakh crore in FY2014-15 to a peak of 2.36 in FY2018-19 and 1.5 in FY2024-25. Cumulatively 16,61,310 crore was written off between April 2014 and September 2024 and 2,69,795 crore recovered, about 16 per cent. These annual values are reconstructions rather than a published annual series: summing them runs roughly 2 per cent above the sourced cumulative, and the record says so.',
+    origin: 'authored',
+  },
+  'credit-gdp-peer': {
+    finding:
+      'India\u2019s domestic credit to the private sector reads 51.5 per cent of GDP for 2014 and 55 for 2024, second-lowest in the panel above only Indonesia and against China\u2019s 192. India\u2019s 2024 figure is the one point in the panel that could not be tied to a published indicator: the World Bank series gives 41.61 and has not been extended past 2020, the IMF co-source returned no data for any of the five countries, and the value is carried unchanged rather than swapped for a different unexplained number.',
+    origin: 'authored',
+  },
+  'ger-primary-udise': {
+    finding:
+      'A change across FY2021-22 to FY2022-23 is uninterpretable here: the numerator was re-based to individual student records and the denominator was moderated by the Ministry in the same year. The ratio reads 103.39 for FY2021-22 and 90.9 for FY2024-25. It has to be tagged by structure as well as by year \u2014 on the NEP 5+3+3+4 arrangement the comparable band is Preparatory at 95.4, which is not the same quantity as 90.9 for Classes I-V. The earlier years are a retrieval gap and are held pending rather than interpolated.',
+    origin: 'authored',
+  },
+  'manufacturing-gdp': {
+    finding:
+      'Manufacturing value added fell as a share of India\u2019s economy, 15.07 per cent in 2014 to 13.14 in 2024, while Bangladesh went from 16.61 to 21.89 and Vietnam from 20.37 to 24.33 across the same decade. India\u2019s World Bank years are fiscal-year labelled where the peers\u2019 are not, and this is a single-vintage pull.',
+    origin: 'authored',
+  },
+  'aser-private-share-rural': {
+    finding:
+      'The private share of rural schooling rose steeply through the UPA years, 18.7 per cent in 2006 to 30.8 by 2014, and then stopped: 30.6 in 2016, 30.9 in 2018 and 30.6 again in 2024, after a COVID dip to 25.1. Because households have no funding stake in the count, this is the better control across the UDISE+ re-basing of 2022-23 \u2014 and it shows no discontinuity there at all. It must never share a column with UDISE+ private-share figures: this one is rural, household-reported and ages 6 to 14.',
+    origin: 'authored',
+  },
+  'jk-security-forces-killed-satp': {
+    finding:
+      'A press-derived register with no published methodology \u2014 the entire methodology statement is a datasheet footer saying the figures are compiled from news reports and provisional. It reads 47 for 2014 and 30 for 2022, and it is carried because the convergence is itself the finding: this register and MHA\u2019s administrative count capture the quantity to within about ten per cent every year, which makes it the one measure in the domain that survives the objections damaging the others. The same publisher\u2019s civilian count for 2018 exceeds MHA\u2019s by more than a factor of two, on the same page.',
     origin: 'authored',
   },
 };
