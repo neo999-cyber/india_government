@@ -16467,3 +16467,94 @@ measurement clauses leaves three numbers the record itself says cannot be compar
 `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
 
 **Carries forward: 74.**
+
+---
+
+## 2026-08-12 (forty-second entry) — TRANCHE 10: twenty, and a shipped finding revised
+
+### A LIVE PAGE CHANGED, AND IT IS REPORTED FIRST
+
+**`edu-spend-gdp-centre-edu-depts`, shipped in tranche 4, has been revised.** It reads *"It fell from
+0.64 per cent of GDP in FY2013-14 to 0.40 in FY2021-22."* This tranche lands `edu-union-moe-gdp`,
+which reads **0.635 and 0.341 for those same two years** on a different construction with a similar
+name — and whose record says in terms that the two must never be joined.
+
+**A reader meeting both pages would see one series with a rounding discrepancy.** The shipped
+sentence did not say otherwise because its near-twin was not on the site when it was written. **This
+is exactly the `wb-css-releases` pattern the operator named: true alone, checked, shipped, and
+incomplete the moment its family arrived.** The sentence now names the near-twin and carries the
+do-not-join instruction, in figures taken from its own record's notes.
+
+**The other completion needed no revision, and that is worth saying too.**
+`tn-fc-projection-minus-actual-devolution` lands beside `devolution-be-to-actual-gap`, whose shipped
+finding already reads *"a change in forecasting after COVID rather than an award effect"* — the new
+record's own break note says the same thing about the same year. **It confirms the shipped sentence
+rather than qualifying it.** One of two needed changing; reporting only the one that did would have
+made the check look more productive than it is.
+
+### THE CLASS TEST WAS TOO NARROW
+
+Last batch's test asked whether every carrier of a dispute is a peer panel. **It caught `P-09` and
+missed `P-14` by one carrier** — 15 of 16 are peer panels and the sixteenth, `exports-gdp`, is not.
+Read: **all 16 are World Bank sourced**, and `P-14` is about WDI's fiscal-year labelling. It is
+carried by construction by every WDI-sourced record; peer-panel-ness was never the class.
+
+**The class is whatever the dispute is a property OF, and it may be the SOURCE rather than the
+shape.** With both excluded the candidate twenty reads **5/45 — inside the tested point.** On the
+narrow test it would have read outside, and a smaller tranche would have been taken on a false
+reading.
+
+### THE SET SHAPE, CHECKED FIRST AND ABSENT
+
+The signature is names LOW and shared HIGH. **Tranche 10 reads names 0 per cent at every size to 18**
+— no record names another at all — with shared at 22 to 45. Not the signature: an ordinary tranche of
+independent records, written as twenty singletons.
+
+### THE CHECKS, AND THE FIGURES CHECK ON ITS NEW FAILURE MODE
+
+**Figures: all 185 numeric tokens trace to their OWN record** — the twenty new sentences and the
+revised shipped one, checked together. This was the batch to watch it on: last tranche a finding was
+given another state's figures while a family was in front of me. **Nothing borrowed this time**, and
+the revised sentence's 0.635 and 0.341 come from `edu-spend-gdp-centre-edu-depts`'s own notes rather
+than from the record they describe.
+
+`gdp-growth-2022-base` is written to rule 5 without borrowing: it states that FY2023-24 and FY2024-25
+each carry a valid figure on the 2011-12 base and that the instrument shows both, **without quoting
+the other base's numbers**, which are not in this record.
+
+**Enum vocabulary: two hits, both *measures*, both the records' own word, both kept.**
+
+**Caveat-duplication, asserted corpus-wide over all 183: zero.**
+
+**True-alone found three.** `ugc-provision-gross` omitted the partial recovery to 5,783.23 crore and
+so read more negative than its own caveat. `tn-devolution-population-ratio` read as a defence of the
+devolution formula, where the caveat says the series measures whether the design is operating and not
+whether it is right. And `tn-fc-projection-minus-actual-devolution` gave a 30,426 crore shortfall
+without saying that **both input columns are the State's own Finance Department's and only the
+subtraction is the auditor's** — the mirror of last batch's `wb-css-releases` fix, with the
+interested party reversed.
+
+All twenty-one verified to render exactly once on their own page, with a negative control.
+
+### BOTH FROZEN METRICS
+
+**Family test: 20 of 20. Running total 171 of 183 — 93 per cent.**
+
+**Clause metric, frozen six-term definition: 70 per cent.** Series: **40, 73, 63, 60, 40, 65, 44, 50,
+50, 70.** Still oscillating between 40 and 73 with no direction, but this is the second-highest
+reading and the reason is in the material rather than the prose: **this tranche is unusually full of
+records whose whole point is a misreading risk** — a circulating UGC figure that is arithmetically
+true, a near-twin series, two closure measures that give opposite answers, a category that may not
+mean its name. Negative definition as a sentence SHAPE remains 0, for the fifth tranche running.
+
+### Where the count stands
+
+**183 of 269 carry a finding. 54 remain to author. 32 render without the line permanently.**
+
+### Gate line
+
+27 steps green. `listing-marks` 5,277 rows / 7,524 marks across 738 pages, unchanged.
+`link-check` 41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers.
+`unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+**Carries forward: 54.**

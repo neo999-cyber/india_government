@@ -44,6 +44,18 @@ control on the landing page.
   **reachability partitions nothing** (0 series are index-only; a domain surface reaches all 269).
   The one surviving boundary is what a series can support: **31 single-observation series render
   without the line permanently**, criterion printed. Tranche 1 landed 10.
+  **Tranche 10 landed 20, plus ONE REVISION TO A SHIPPED FINDING. Running total 183 of 269; 54
+  remain; 32 render without the line permanently.** Rate: 10, 11, 16, 20, 20, 20, 16, 20, 12, 20.
+  **`edu-spend-gdp-centre-edu-depts` was revised on a live page** because `edu-union-moe-gdp` landed
+  in this tranche reading 0.635 and 0.341 where the shipped sentence gives 0.64 and 0.40 for the
+  same years — a near-twin on a different construction, which the record says must never be joined.
+  Reported before it was made. The other completion, `tn-fc-projection-minus-actual-devolution`
+  against `devolution-be-to-actual-gap`, needed **no** revision.
+  **The class test was too narrow and is widened in the module header** — it asked whether carriers
+  are peer panels, which missed `P-14`, whose class is the SOURCE. **Set shape absent** on its own
+  signature: names 0 per cent at every size. **Both frozen metrics:** family test 20 of 20 (running
+  171 of 183, 93 per cent); clause metric 70 per cent, series 40, 73, 63, 60, 40, 65, 44, 50, 50, 70.
+
   **Tranche 9 landed 12, AS FIVE SETS. Running total 163 of 269; 74 remain; 32 render without the
   line permanently.** Rate: 10, 11, 16, 20, 20, 20, 16, 20, 12. **The set-shaped unit has arrived**
   — reported not-arrived twice, and the corrected interlock measure is what shows it: names is the
