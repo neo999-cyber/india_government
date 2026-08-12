@@ -59,9 +59,34 @@ filter would.
 ratio is provenance pages, year pages and cited-by grids — surfaces where a caveat renders and no
 series listing does.
 
-**ITEMS 3 TO 7 CARRY, in the brief's own build order:** record spine + next steps (§3, §9) · topic
-strips (§1, §2, §10) · matrix + year strip (§5, §7) · two-truths cards (§11) · stories (§8). The
-grammar item 3 inherits now holds on every series surface, which is what item 2 was waiting on.
+**ITEM 3, THE RECORD SPINE WITH NEXT STEPS — DONE 2026-08-12.** `RecordChronology` on **76 of 223**
+records — those whose cited series declare a change of basis; 92 hold only a start and an end date
+and a two-dot line is not a chronology. **The axis is the DATA YEAR, never interleaved with
+publication dates.** `NextSteps` on 492 pages, every step's reason a relation in `/data`.
+
+**RAISED BY ITEM 3, NOT RESOLVED — a real weakness in `unrecognised-rows`.** The gate decides
+containment with `span.includes(anchorHTML)`, **a string test rather than a positional one**, so a
+page rendering one record link twice — once inside a listing row, once outside — silently exempts
+the outside copy. Found because next-step anchors are byte-identical to pair-side anchors: the
+pooled-pair count fell 36 -> 0 and attributions 724 -> 708, 52 links, gate still green. Worked
+around by naming the anchor `nstep-to`, which restored both counts exactly. **The weakness is
+pre-existing and untouched.** A fix is a gate contract change and needs its own decision.
+
+**RAISED BY ITEM 3, MEASURED AND DEFERRED — series ids in prose are not links.** 15 caveats and 8
+break notes name another series by id; a `P-xx` in the same sentence has been clickable for months
+and these 23 are not. **Attempted and reverted:** `components/marks.tsx` is imported by a client
+component, so importing the id set from `lib/data` pulls `node:fs` into the browser bundle and the
+build fails at `OverviewBoard`. Needs a generated id module; 23 mentions did not justify one inside
+item 3.
+
+**NOT DERIVABLE, AND STATED SO RATHER THAN FAKED.** The reader review's own case — going from
+`jk-security-forces-killed` to the press-derived register — has no relation behind it:
+the two are not a declared pair, they share no dispute (P-86 against P-75), and the only link is
+that L-0110 cites both alongside eight other defence series. Nothing in `/data` picks the register
+out of the ten.
+
+**ITEMS 4 TO 7 CARRY, in the brief's own build order:** record spine + next steps (§3, §9) · topic strips
+(§1, §2, §10) · matrix + year strip (§5, §7) · two-truths cards (§11) · stories (§8).
 
 ### CLOSED 2026-08-12 — DESIGN-REVISION.md items 1-4, and the authored series findings
 
@@ -380,8 +405,8 @@ header above.
 |---|---|
 | gate chain | **27 steps**, `npm run build`; `npm run commit` is the only sanctioned commit path |
 | `unrecognised-rows` | **0**, report-only. Zero makes flipping it to a gate *available*, not decided |
-| `listing-marks` | **5,390 listing rows · 7,674 marks** across 745 pages — re-measured 2026-08-12 from the gate's own output after the question routes (from 5,277 · 7,524 / 738) |
-| `link-check` | 42,902 internal hrefs across 746 built pages, 22 route prefixes, 0 dead |
+| `listing-marks` | **5,697 listing rows · 8,145 marks** across 745 pages — re-measured 2026-08-12 after the record spine and next steps (from 5,390 · 7,674) |
+| `link-check` | 46,014 internal hrefs across 746 built pages, 22 route prefixes, 0 dead |
 | authored series findings | **237 of 269**; 32 render without one, permanently and for a stated reason |
 | raw enum tokens on a public surface | `directionOfBias` 6 pages, all the one deliberate site; `pairs.kind` 0 |
 | `field-render-audit` | 0 invisible, **15** exempted by name (was 17; `higherIsBetter`'s exemption was discharged 2026-08-12 and it is now declared) |
@@ -389,6 +414,7 @@ header above.
 | caveat strings are NOT identifiers | **4 groups of series share a caveat verbatim, covering 15 series** — nine ASER siblings are one group. Any check that identifies a record by its caveat text is unsound for those 15; use the id |
 | deploy | `vercel.json` calls `npm run build`; `tools/deploy-chain.mjs` fails if the chain is ever restated instead of called |
 | verify after push | `node tools/deploy-check.mjs` — needs the network, deliberately not in the build |
+| DOM viewport probes | **`resize_window` at the `desktop` preset gives `clientWidth === 0`** in this hidden pane, so every element tests as overflowing. Set an explicit width (1280) or use the mobile preset |
 
 ---
 

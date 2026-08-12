@@ -17455,3 +17455,130 @@ compliance would have missed.**
 `no-unguarded-prose-field` **52 declared, 1 exempted**. `unrecognised-rows` **0**. `rendered-space`
 0. `domain-coverage` 1137/1137. Mobile at 375 px on every new route: 0 body overflow, nothing
 outside a `.table-wrap`, 0 clamped, the 3,578-character verdict note whole.
+
+---
+
+## 2026-08-12 (fifty-first entry) — DESIGN-REVISION-2 ITEM 3: the record spine, and next steps
+
+### THE SPINE — WHAT THE CORPUS CAN AND CANNOT PUT ON A TIMELINE
+
+§3 asks for the chronological rendering, before the sources, disputes and correction history, and
+names L-0111: 614 as first published, restated to 417, decomposed into 228 + 189, **with no
+explanatory note at either transition.**
+
+**Measured, the corpus holds the transitions structurally and the publication dates only in prose.**
+L-0111's four cited series carry five `breaks[]`, each with a period, a `provenanceRef` and a note
+that explains the change in the instrument's own words — and the four figures are quoted inside
+those notes by the people who wrote them.
+
+**TWO AXES, KEPT APART, AND THAT IS THE DESIGN DECISION.** A break's `period` is a DATA YEAR; a
+record's `date` is a PUBLICATION DATE. L-0111's decomposition sits at data year 2018 and was
+published in October 2023. One axis carrying both would put a mark five years before the event that
+created it. So the panel is the data axis, ordered by period, and the heading names the axis rather
+than leaving a reader to infer it. The record's own span stays in the header where it already was.
+
+**REACH, STATED: 76 of 223 records.** 92 hold only a start and an end date — **a two-dot line is not
+a chronology** — and 55 hold a single date. Those render nothing, which is checked by a negative
+control: L-0066 cites no series with a break and carries no panel.
+
+### THE 87-RECORD SIDE-BY-SIDE THAT WAS NOT BUILT
+
+87 ledger records cite two or more series reporting DIFFERENT values for a shared period, and
+L-0111 is one. **That is a candidate list and not a finding.** Most of the 87 are series measuring
+different things — three states' allocations, a peer panel — and putting their values side by side
+under one period asserts a comparison the corpus files as incommensurable, where agreement is as
+unsound as disagreement. The break notes carry the figures already, attributed.
+
+**And no successor chain is parsed.** The notes say *supersedes jk-terrorist-incidents-legacy* in
+prose and nothing structural records it. Reading a relation out of prose is the defect refused when
+the publication-stopped question was built one batch ago.
+
+### THE GATE CORRECTED THE DESIGN TWICE, AND THE SECOND CORRECTION IS THE FINDING
+
+**First: `listing-marks` failed 176.** The panel shipped as a list whose items named each series by
+title, and a list item is a bound listing shape, so rule 4b makes the declarations travel. Carrying
+them here was not the fix — every one of those series is already listed with its marks in *What this
+rests on* below, and the same gate holds each declaration to at most once per page.
+
+**Second, and this is the part worth keeping: citing by id alone did not fix it.**
+`unrecognised-rows` separates a title link (a listing) from an id link (a citation) and recognises
+728 of the second. **`listing-marks` does not: it binds ANY record link inside a bound shape.** The
+id change satisfied one gate and left the other at exactly 176, unmoved. The two render gates draw
+the listing line in different places, and nothing said so before now.
+
+Resolved by making the container a `div`: the row's subject is the BREAK and the series is its
+address, which is the relation the pair-row exemption was written for. No gate weakened, no
+exemption added.
+
+### A REAL WEAKNESS IN `unrecognised-rows`, FOUND BY ACCIDENT AND REPORTED RATHER THAN PATCHED
+
+Next steps shipped and the gate stayed green while **two of its own counts moved with no
+explanation**: the pooled-pair exemption fell 36 -> 0 and source-line attributions 724 -> 708.
+
+**The cause: the gate decides containment with `span.includes(anchorHTML)` — a STRING test, not a
+positional one.** A next-step anchor to a paired series renders byte-identical markup to that
+series' anchor in the pair section higher up the page, so the pair-side occurrence tested as
+contained by a row it is nowhere near. 52 links in all, silently exempted, gate still OK.
+
+**The first diagnosis was wrong and the way it was wrong matters.** A hand-rolled `insideClass`
+said 44 links had been swallowed by `li` spans; instrumenting the gate's OWN code said 52 and
+pointed elsewhere. That is the reimplementation rule paying out inside a single investigation.
+
+Fixed here by naming the anchor `nstep-to`, which makes the two strings differ; accounting restored
+exactly to 36 and 724. **The underlying weakness is untouched and pre-existing: any page rendering
+one record link twice, once inside a row and once outside, has always been able to exempt the
+outside copy.** Filed, not patched — a gate contract is not this item's to change.
+
+### §9 — THE READER'S OWN CASE IS NOT DERIVABLE, AND THE HONEST ANSWER IS TO SAY SO
+
+The review wanted to go from `jk-security-forces-killed`'s sentence about a press-compiled register
+**to that register**. Measured:
+
+- `jk-security-forces-killed` and `jk-security-forces-killed-satp` are **not a declared pair**.
+- They **share no dispute record** — P-86 against P-75.
+- The only relation is that **L-0110 cites both**, and it co-cites ten series in that domain.
+
+**Nothing in `/data` picks the SATP register out of the ten.** A same-quantity-different-publisher
+test would have to run on id stems, and the schema says the id suffix is a naming convention and
+not a rule. So the step is not emitted, and the nearest structural reach — *all 34 indicators under
+Defence* — is what next steps offer instead. Inventing the link would have been a relevance order
+wearing a filter's clothes.
+
+**The general form of the complaint IS measurable and was attempted: 15 caveats and 8 break notes
+name another series by its id, and none of the 23 is a link** while a `P-xx` in the same sentence
+has been clickable for months. **Reverted, not shipped:** `marks.tsx` is imported by a client
+component, so importing the id set from `lib/data` pulls `node:fs` into the browser bundle and the
+build fails at `OverviewBoard`. Doing it properly needs a generated id module. 23 mentions did not
+justify that inside this item; it is written into STATE.md scoped and measured.
+
+### A SWEEP THE ITEM FORCED
+
+`link-check` failed 7: seven pre-baseline records linked `/years/2013/`, which does not exist.
+**The year range was defined twice, identically, in `app/years/page.tsx` and
+`app/years/[year]/page.tsx`** — and the third caller was the one that was wrong, because it had no
+range to test against. Lifted to `lib/years.ts` with `hasYearPage`; **both existing copies swept in
+the same commit**, enumerated from the code rather than from memory.
+
+### AN ENVIRONMENT FACT, COSTED ONCE
+
+A DOM probe reported **256 px of horizontal overflow** on the record page. It is an artefact:
+`resize_window` at the `desktop` preset restores the pane's native size and
+`documentElement.clientWidth` then reads **0** in this hidden pane, so every element tests as
+overflowing. **A viewport probe must set an explicit width.** At 1280 and at 375 the same page
+reports 0 overflow and nothing outside a `.table-wrap`.
+
+### Colour measured, not asserted
+
+`.chrono-note` and `.nstep-why` both `rgb(92,96,108)`; `.caveat-inline` `rgb(164,22,26)`, unchanged.
+**A cluster year differs from an ordinary one by font-weight 600 against 400 and a printed count —
+identical background, identical border, identical colour.** The count is the fact; a colour would
+grade it. 0 clamped, longest break note 590 characters rendered whole at 375 px.
+
+### Gate line
+
+27 steps green. `listing-marks` **5,697 rows / 8,145 marks across 745 pages** (from 5,390 / 7,674).
+`link-check` **46,014 hrefs across 746 pages, 0 dead** (from 42,902). `unrecognised-rows` OK with
+**965 id citations** (from 965 after the chronology's 237, and 36 pooled / 724 attributions restored
+exactly). `reachability` 1,787/1,787. `field-render-audit` 0 invisible. Spine on **76** ledger pages,
+next steps on **492**. L-0111 verified: all five break notes in full, all four figures present, the
+decomposition marked as a cluster.

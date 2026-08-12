@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ledger, series } from '@/lib/data';
 import { YEAR_NOTES } from '@/lib/year-copy';
+import { YEARS } from '@/lib/years';
 
 export const metadata: Metadata = {
   title: 'Years — the record read one year at a time',
@@ -16,7 +17,6 @@ export const metadata: Metadata = {
  * exist, and a reader should be able to see it before choosing one. **No year carries a total and
  * no year is ranked against another.**
  */
-const YEARS = Array.from({ length: 13 }, (_, i) => 2014 + i);
 const yearOfPeriod = (p: string) => Number(String(p).replace(/^FY/, '').slice(0, 4));
 
 export default function YearsIndex() {

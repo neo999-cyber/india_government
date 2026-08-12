@@ -7,6 +7,9 @@ import { lastTouched } from '@/lib/history';
 import { PairSection } from '@/components/PairSection';
 import { HowDoWeKnow, RestsOn } from '@/components/RecordEvidence';
 import { RecordHistory } from '@/components/RecordHistory';
+import { RecordChronology } from '@/components/RecordChronology';
+import { NextSteps } from '@/components/NextSteps';
+import { stepsForLedger } from '@/lib/next-steps';
 import { LedgerLd } from '@/components/StructuredData';
 import {
   ASSESSMENT_LABELS,
@@ -235,6 +238,12 @@ export default async function LedgerDetail({ params }: Props) {
         </p>
       ) : null}
 
+      {/* THE SPINE, §3 — the chronological rendering, placed BEFORE the sources, the disputes and
+          the correction history because that is where §3 puts it: a reader meets how the evidence
+          moved before meeting where it came from. Renders on the 76 records whose cited series
+          declare a change of basis and on no others; see the component header. */}
+      <RecordChronology record={l} />
+
       {/* §4d.1 — every edge below is a field in `/data`. No causal edge is drawn. */}
       <h2>What this rests on</h2>
       <RestsOn record={l} series={refSeries} disputes={refDisputes} />
@@ -332,6 +341,11 @@ export default async function LedgerDetail({ params }: Props) {
       ))}
 
       <RecordHistory id={l.id} />
+
+      {/* §9 — contextual next steps, after the record is understood rather than before it. The
+          brief is explicit that navigation off a page a reader has not finished is worse than
+          none, which is why this is the last thing on the page and not a sidebar. */}
+      <NextSteps steps={stepsForLedger(l)} />
 
     </>
   );
