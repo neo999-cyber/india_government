@@ -223,7 +223,15 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
               first build of this page did with both the title and the source. The rule above and
               the criterion note below are all this wrapper adds. */}
           <div className="dlead-rule" />
-          <SeriesChart series={lead} events={leadEvents} highlightLast />
+          {/* THE OUTCOME TRACK on a chart is the takeaway slot, which this page was the only
+              SeriesChart caller not to use — the homepage has passed one since the series-page
+              rebuild. The lead chart carried a caveat and no statement of what the result did. */}
+          <SeriesChart
+            series={lead}
+            events={leadEvents}
+            highlightLast
+            takeaway={SERIES_FINDINGS[lead.id]?.finding}
+          />
           <p className="dlead-note">
             <strong>Chosen for the longest unbroken run in this topic, not for importance.</strong>{' '}
             {leadRun} consecutive observations with no declared break inside them, which is the
@@ -306,6 +314,12 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
                     {g.unit} · {lastPeriod(g)}
                   </span>
                 </p>
+                {SERIES_FINDINGS[g.id]?.finding ? (
+                  <p className="cw-outcome">
+                    <span className="outcome-label">Outcome</span>{' '}
+                    {SERIES_FINDINGS[g.id]?.finding}
+                  </p>
+                ) : null}
                 <RecordMarks record={g} />
               </div>
             ))}

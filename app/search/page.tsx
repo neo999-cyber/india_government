@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { ledger, provenance, series } from '@/lib/data';
 import { ASSESSMENT_LABELS, DIRECTION_OF_BIAS_LABELS, DOMAIN_LABELS, formatDateRange } from '@/lib/format';
 import { CaveatFlag, RecordMarks } from '@/components/marks';
+import { SERIES_FINDINGS } from '@/lib/series-copy';
 import { ListingFacets } from '@/components/ListingFacets';
 import { SearchSort } from '@/components/SearchSort';
 
@@ -58,6 +59,9 @@ export default function SearchPage() {
     text: string;
     /** First COMPLETE sentence of the record's own prose, or nothing. Never a cut one. */
     excerpt?: string;
+    /** THE OUTCOME TRACK. Series only — a ledger record has no authored finding, and the
+        outcome-track decision for that layer is recorded in the forty-ninth log entry. */
+    outcome?: string;
     /** Sort ranks, precomputed. See `SearchSort` for why sorting is CSS `order` and not DOM moves. */
     sortDate: string;
     marks?: React.ReactNode;
@@ -96,6 +100,7 @@ export default function SearchPage() {
       domains: [s.domain],
       text: `${s.id} ${s.title} ${s.unit}`,
       excerpt: firstSentence(s.notes),
+      outcome: SERIES_FINDINGS[s.id]?.finding,
       sortDate: s.points.map((p) => String(p.period)).sort().slice(-1)[0] ?? '',
       marks: <RecordMarks record={s} deferCaveat />,
       caveatText: s.caveat,
@@ -251,6 +256,14 @@ export default function SearchPage() {
                 the same ad-hoc-normaliser defect found in `PeerSlope`, which had also hand-rolled a
                 caveat. One renderer, or the two drift and only the gate that happens to bind the
                 shape notices. */}
+            {/* THE TWO TRACKS ON A CARD. Same order as the tables: what the measured result
+                did, then what is known about the measurement. Nothing is emitted when either
+                is absent — see `OutcomeRow` for why neither empty case takes a placeholder. */}
+            {r.outcome ? (
+              <p className="scard-outcome">
+                <span className="outcome-label">Outcome</span> {r.outcome}
+              </p>
+            ) : null}
             {r.caveatText ? (
               <p className="scard-caveat">
                 <CaveatFlag caveat={r.caveatText} variant="inline" />

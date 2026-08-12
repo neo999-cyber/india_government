@@ -17157,3 +17157,91 @@ above a qualification does not shrink the qualification.
 
 **Carries forward: items 2 to 7, and the outcome track on the surfaces this item did not reach —
 `/search/`, `/series/`, the topic overview and the ledger table are all still evidence-only.**
+
+---
+
+## 2026-08-12 (forty-ninth entry) — THE OUTCOME TRACK CARRIED TO THE REMAINING SURFACES
+
+### THE RATIO, WHICH IS THE MEASURE OF WHETHER THIS LANDED
+
+Across the same 122 series measured last batch:
+
+| | before | after |
+|---|---|---|
+| pages carrying the OUTCOME, per record | 1.02 | **5.34** |
+| pages carrying the CAVEAT, per record | 11.81 | **11.81** |
+| findings reaching any page beyond their own | 3 of 122 | **122 of 122** |
+| ratio | 11.5× | **2.2×** |
+
+**The caveat figure did not move**, which is the check that the qualification was not made quieter to
+close the gap. **Every finding now escapes its own page.** The residual 2.2× is the surfaces where a
+caveat renders and no series listing does — provenance pages, year pages, cited-by grids — plus the
+ledger table, decided below.
+
+### THE THREE SERIES SURFACES
+
+- **`/series/`** — the catalogue table. Same shape as the indicators tab, so the same `OutcomeRow`.
+- **`/search/`** — cards. A `<p className="scard-outcome">` above the caveat, same reading order as
+  the tables: title, what the result did, what is known about the measurement.
+- **the topic overview** — and its premise was wrong. I reported it last batch as *evidence-only*;
+  measured, **it renders no series table at all.** Its series are a lead chart and four grid cards.
+  The lead was the **only `SeriesChart` caller in the codebase not passing a `takeaway`** — the
+  outcome track's home on a chart already existed and this page was not using it. The grid cards took
+  a `.cw-outcome` paragraph above their marks.
+
+### THE LEDGER TABLE — THE OUTCOME TRACK DOES NOT APPLY, AND HERE IS WHY
+
+Not an omission. **The track is declined for this layer on three grounds, and the third names what
+would reverse it.**
+
+1. **A ledger row already carries an outcome statement** — its assessment, rendered as a label in its
+   own column on every row. That is the corpus's own statement of what the announced thing did.
+2. **The candidate prose has never been through the checks the grammar promises.** 223 records carry
+   a `summary` and 178 a `whatHappened`, but **the true-alone check was built for and applied to the
+   237 series findings only.** Shipping `summary` to a listing surface would put unchecked sentences
+   where the grammar promises checked ones — and that check caught 18 things nothing else did.
+3. **§8 rejects reinforcing the public verdict vocabulary.** A justifying sentence set beside a
+   verdict word is the scorecard shape that rejection is about.
+
+**What would reverse it:** ledger records gaining an authored outcome sentence written to the three
+checks, the way the 237 series findings were. The component exists and the grammar already covers it;
+only the checked prose is missing.
+
+### THE NEW EMITTERS, BOUND AND CHECKED BOTH WAYS (§10)
+
+| emitter | count | contains a link, bounded to its own element |
+|---|---|---|
+| `.outcome-row` | 523 | **0** |
+| `.scard-outcome` | 237 | **0** |
+| `.cw-outcome` | 265 | **0** |
+| `.chart-takeaway` | 76 | **0** |
+
+**None is a new container, and that is the answer rather than a shortcut.** `.scard`, `.cw` and
+`.chart` are already in `CONTAINER_CLASSES`, so each new paragraph sits *inside* a bound shape.
+`.outcome-row` is a `<tr>`, and binding it stays **inert** for the reason established last batch —
+`CONTAINER_CLASSES` matches `article|div|figure|section`. `listing-marks` reads **5,277 rows / 7,524
+marks, unchanged**, and `unrecognised-rows` **0**.
+
+Every count above is bounded to its own closing tag, not to a character window — the window is what
+produced last batch's phantom 16.
+
+### SEVERITY — MEASURED, AND ONE THING WAS WRONG
+
+At 375 px, measured rather than asserted: **one caveat colour** (`rgb(164,22,26)`) across all 232
+caveats on `/search/`, **one outcome colour**, both on transparent ground, outcome before caveat in
+every card and every `<tbody>`, caveat unclamped with no overflow.
+
+**On the topic overview the measurement found two outcome colours** — `--ink` on the new emitters and
+`--ink-2` on `.chart-takeaway`, which predates this work. **Not a gradient**: nothing was graded and
+no record was coloured relative to another. But a track a reader is meant to recognise cannot have
+two appearances, so `.chart-takeaway` is aligned to `--ink`. **The check earned its place by finding
+something an assertion of compliance would have missed.**
+
+### Gate line
+
+27 steps, build exit 0. `listing-marks` 5,277 / 7,524 unchanged. `link-check` 41,713 hrefs / 739
+pages / 0 dead. `field-render-audit` 0 invisible. `unrecognised-rows` 0. `domain-coverage` 1137/1137.
+`rendered-space` 0.
+
+**Carries forward: items 2 to 7. The grammar now holds on every series surface, which is the
+condition item 2 was waiting on.**
