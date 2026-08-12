@@ -16272,3 +16272,97 @@ was lost in the move, because every batch ends at a pushed commit.
 `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
 
 **Carries forward: 106.**
+
+---
+
+## 2026-08-12 (fortieth entry) — TRANCHE 8: twenty, and the interlock measure was wrong
+
+### THE MEASURE THAT SIZES THIS WORK HAD BEEN INFLATING FOR THREE BATCHES
+
+The candidate twenty read **15/75** — apparently the most interlocked set yet, and by the same
+reasoning as last batch it would have forced a small tranche. **It is an artefact.** Six of the
+twenty are PEER PANELS, and every peer panel carries `P-09` (panel vintage discipline) and `P-14`
+(WDI fiscal-year labelling) **by construction**. Sharing those does not mean `npl-peer` must be read
+to write `cereal-yield-peer`.
+
+**Excluding the two class disputes the same set reads 15/45 — inside the tested point, with the
+lowest names figure of any tranche.** Twenty is what the bound supports, and twenty was taken.
+
+**The shared-dispute limb was measuring the wrong thing: a property of a CLASS of series rather than
+a dependency between two records.** Fifth measurement in this work to be wrong, and the third of the
+five wrong in the alarming direction.
+
+### THE SET-SHAPED UNIT WAS LOOKED FOR AND HAS NOT ARRIVED
+
+The operator asked to watch for a tranche where the honest unit becomes a set rather than a size.
+**Tested directly.** Clustering the remaining 106 by mutual interlock produced 17 groups above size
+one — the largest of six, then two of five, then a four and four threes.
+
+**Inspected, they mostly dissolve.** Only the six-record federalism group had ANY member naming
+another in its own prose, and only 1 of 6. **The five-record teacher group and the five-record macro
+group had zero** — they are linked solely by every member carrying `P-64` and `P-10` respectively.
+Sharing a corpus-wide dispute is not being unwritable apart.
+
+The genuine article looks like tranche 7's three release series, where the finding *is* the
+relationship across one table. Nothing of that kind is in the remaining pool at present. **Reported
+as not-arrived rather than forced.**
+
+### TWENTY LANDED
+
+`teachers-professionally-qualified-primary-udise` · `jjm-tap-coverage` ·
+`parakh-grade3-proficient-maths` · `ujjwala-refills` · `tn-fc-interse-share` · `res-generation-share`
+· `union-gross-tax-revenue` · `credit-growth` · `agri-gva-growth` · `devolution-budget-estimate` ·
+`devolution-actual-receipt-budget` · `agri-employment-peer` · `cereal-yield-peer` ·
+`industry-employment-peer` · `lfpr-female-peer` · `npl-peer` · `vulnerable-employment-peer` ·
+`ger-higher-secondary-udise` · `teacher-vacancy-rate-elementary` · `aser-std3-reading-govt`.
+
+The two devolution inputs are written together deliberately: `devolution-be-to-actual-gap` shipped in
+tranche 4 computed from them, and **its two inputs now carry findings so a reader can check the gap
+rather than take it on trust** — which is what that record's own note says it exists for.
+
+Six peer panels needed rule 7 care; each names its own vintage-bearing construction where it
+matters, and `lfpr-female-peer` carries the modelled-versus-survey divergence (32.4 against 41.7)
+rather than presenting one as the figure.
+
+### BOTH FROZEN METRICS
+
+**Family test: 20 of 20 this tranche. Running total 140 of 151 — 93 per cent.**
+
+**Clause metric, frozen six-term definition: 50 per cent.** Series across the eight tranches:
+**40, 73, 63, 60, 40, 65, 44, 50.** Not trending.
+
+Form: thirteen distinct shapes across twenty, with peer position at 6 — the concentration is the
+six panels arriving together in the ordering, not a narrowing of the writing. Negative definition as
+a sentence shape: 0, for the fourth tranche running.
+
+### THE CHECKS
+
+**Figures: all 175 numeric tokens trace to their own record**, with controls.
+
+**Enum vocabulary: two hits, both *measurement*, both ordinary English on series carrying no
+`contestedGround`, both kept after the hand read.**
+
+**Caveat-duplication, asserted corpus-wide over all 151: zero.**
+
+**True-alone found nothing — the second zero, after tranche 4.** Stated with its basis, as that
+batch's zero was: nine of the twenty carry a caveat and each was read against it. **The closest call
+was `devolution-actual-receipt-budget`**, whose caveat ends by saying a gap series computed on this
+column cannot show over-devolution later being clawed back. The finding says the clawback happens
+but not that the gap series is blind to it. It stands because the gap series is a separate record
+with its own shipped finding that a reader reaches on its own page — but it is the one place in this
+tranche where a caveat says something the sentence does not.
+
+All twenty verified to render exactly once on their own page through `page-text.mjs`, with a
+negative control.
+
+### Where the count stands
+
+**151 of 269 carry a finding. 86 remain to author. 32 render without the line permanently.**
+
+### Gate line
+
+27 steps green. `listing-marks` 5,277 rows / 7,524 marks across 738 pages, unchanged.
+`link-check` 41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers.
+`unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+**Carries forward: 86.**

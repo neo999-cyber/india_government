@@ -254,6 +254,29 @@
  * Bihar's, Tamil Nadu's, and the J&K panchayat grants whose allocated half was written in tranche
  * 4. Neither half of a pair can be written without the other read, which is the cost interlock
  * measures. All sixteen held; nothing was dropped for slipping.
+ *
+ * ============================ THE INTERLOCK MEASURE WAS WRONG — CORRECTED 2026-08-12 ==========
+ *
+ * **The shared-dispute limb counted a dispute that is a property of a CLASS of series as if it were
+ * a reading dependency between two records, and it is not.** Tranche 8's candidate twenty read
+ * 15/75 — apparently the most interlocked set yet. Six of the twenty are PEER PANELS, and every
+ * peer panel carries `P-09` (panel vintage discipline) and `P-14` (WDI fiscal-year labelling) by
+ * construction. Sharing those does not mean `npl-peer` must be read to write `cereal-yield-peer`.
+ *
+ * **Excluding the two class disputes, the same set reads 15/45 — inside the tested point, and the
+ * lowest names figure of any tranche.** The limb had been inflating for three batches.
+ *
+ * **The clustering test that prompted this found the same thing from the other side.** Grouping the
+ * remaining pool by mutual interlock produced 17 groups, the largest of six and five. Inspected,
+ * only ONE group had any member naming another in its own prose (1 of 6); the five-record teacher
+ * group and the five-record macro group had ZERO, and were linked solely by sharing `P-64` and
+ * `P-10`. **So the set-shaped unit the operator asked to watch for has NOT arrived** — the clusters
+ * are artefacts of corpus-wide disputes, not records that must be written together. The genuine
+ * article looks like tranche 7's three release series, where the finding IS the relationship.
+ *
+ * **What this changes going forward:** the shared limb excludes disputes carried by a structural
+ * class, and the names limb is the one that tracks genuine set-hood. **Fifth measurement in this
+ * work to be wrong, and the third of the five to be wrong in the alarming direction.**
  */
 export type SeriesFinding = {
   /** One or two sentences. Plain text; no markdown — the view prints it as text. */
@@ -958,6 +981,110 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   'household-electrification': {
     finding:
       'Household connections went from 70 per cent in FY2014-15 to 99 in FY2018-19. A connection is not supply: around 53 per cent of villages received under 12 hours a day of domestic supply as of 2019, and no continuous national series of household supply-hours exists at all.',
+    origin: 'authored',
+  },
+
+  // ---- 10. AUTHORED, tranche 8, 2026-08-12. Twenty. The interlock measure was CORRECTED first —
+  //          see the header. On the corrected shared limb this set reads 15/45, inside the tested
+  //          point, and twenty is what the bound supports. Six peer panels sit in it.
+  'teachers-professionally-qualified-primary-udise': {
+    finding:
+      'Not a compliance rate: it counts teachers holding some recognised credential, an unquantified share of which does not authorise the class they actually teach. On the statutorily operative definition \u2014 a D.El.Ed. or B.El.Ed. \u2014 the same UDISE+ microdata gives 45.72 per cent against the 87.7 here, and that roughly 42-point gap is the size of the B.Ed.-teaching-primary population rather than a measurement error. UDISE+ also publishes a \u2018trained teachers\u2019 figure for the same teachers in the same year, 91.4 at primary, and no edition defines what distinguishes the two.',
+    origin: 'authored',
+  },
+  'jjm-tap-coverage': {
+    finding:
+      'Rural tap-water coverage went from 16.71 per cent of households in FY2019-20 to 82 in FY2025-26. The mission\u2019s original 2024 deadline slipped to 2028 under a second phase approved in March 2026, with the outlay raised to about 8.69 lakh crore rupees.',
+    origin: 'authored',
+  },
+  'parakh-grade3-proficient-maths': {
+    finding:
+      '42 per cent in 2021 and 65 in 2024, on proficiency bands whose cut-scores are published nowhere \u2014 so the gain could be learning or a moved boundary, and no external party can tell which. Read with the language series the two produce the inversion those missing cut-scores conceal: language has the higher mean at 64 but the lower proficiency share at 57, mathematics the lower mean at 60 and the higher share at 65.',
+    origin: 'authored',
+  },
+  'ujjwala-refills': {
+    finding:
+      'The metric for this scheme is refills rather than connections: 3.66 a year in FY2017-18 and 3.21 in FY2018-19, against a general-consumer benchmark of roughly six or more. Of the 3.18 crore cohort the CAG examined, 17.61 per cent never returned for a second refill and 33.02 per cent took only one to three. Subsidised refills were cut from 12 to 9 in 2025 and from 9 to 4 in 2026, and no refill figure after December 2018 is held.',
+    origin: 'authored',
+  },
+  'tn-fc-interse-share': {
+    finding:
+      'Tamil Nadu\u2019s share of the states\u2019 portion falls from 4.969 per cent to 4.023 at the Fourteenth Commission and sits at 4.079 through the Fifteenth. A line drawn straight through it crosses a definitional break: the earlier values exclude the states\u2019 share of service taxes and rest on a 29-state denominator, the later ones on 28 with service tax subsumed into GST. The fall is concentrated at that one step and not inside the Fifteenth Commission\u2019s award period.',
+    origin: 'authored',
+  },
+  'res-generation-share': {
+    finding:
+      'Renewables excluding large hydro supplied 5.96 per cent of electricity in FY2012-13 and 16.88 in FY2025-26. The dip at FY2014-15 is a change of measurement and not of activity: generation before that year is normative, imputed by CEA rather than metered, and it is printed as falling from 65,520 to 61,719 GWh across the seam while capacity rose from 35,850 to 39,950 MW.',
+    origin: 'authored',
+  },
+  'union-gross-tax-revenue': {
+    finding:
+      'The Union\u2019s gross tax revenue, 793,072 crore in FY2010-11 to 3,465,519 in FY2023-24. It is carried because it is the denominator of four other series here and none of them can be checked without it. The Commission\u2019s compilation stitches at least four instruments across eras, and it ran a positive control on this column \u2014 the overlapping years match across three documents \u2014 while running no such control on the devolution column beside it.',
+    origin: 'authored',
+  },
+  'credit-growth': {
+    finding:
+      'Bank credit growth runs 9 per cent in FY2014-15, falls to 5 in FY2016-17 and reaches 14.5 in FY2025-26, where deposit growth is 11.5 \u2014 a gap the Reserve Bank has flagged. The squeeze from 2016 to 2019 coincides with asset-quality-review recognition and prompt-corrective-action constraints. It is graded T4 because what this instrument holds is a news account of the Financial Stability Report rather than the report itself.',
+    origin: 'authored',
+  },
+  'agri-gva-growth': {
+    finding:
+      'Agricultural growth swings between minus 0.2 per cent in FY2014-15 and 6.8 in FY2016-17, and reads 1.4 in FY2023-24 on an El Nino monsoon. It was the only sector to grow through the COVID lockdown, which is why agriculture\u2019s share of GDP rose in FY2020-21 \u2014 a rise in share produced by the rest of the economy contracting.',
+    origin: 'authored',
+  },
+  'devolution-budget-estimate': {
+    finding:
+      'What the Union budgeted for the states at the start of each year, 382,216 crore in FY2014-15 to 1,247,211.28 in FY2024-25 \u2014 not what any Finance Commission recommended, and not an entitlement. It is a forecast of gross tax revenue multiplied by a fixed share, and in FY2019-20 and FY2020-21 that forecast was wrong by a fifth and a quarter. It is authored so that the gap series built on it can be checked by a reader rather than taken on trust.',
+    origin: 'authored',
+  },
+  'devolution-actual-receipt-budget': {
+    finding:
+      'What the Union finally accounted for, 337,808.45 crore in FY2014-15 to 1,286,885.44 in FY2024-25 \u2014 and an \u2018Actual\u2019 here is not final. The Receipt Budget distinguishes the amount devolved as per Actuals from the CAG-certified actuals, states that the figures are provisional and may change, and recovers over-devolution from the states in a later year. It is also not the same instrument as the Finance Commission\u2019s own devolution table: six of eleven years agree within 240 crore, four do not, and one differs by 67,819 crore.',
+    origin: 'authored',
+  },
+  'agri-employment-peer': {
+    finding:
+      'Agriculture\u2019s share of employment fell about 3 points in India across the decade, 45.3 to 42.4, while Vietnam\u2019s fell 20, from 46.3 to 25.9 \u2014 and the two started within two points of each other. India\u2019s own labour survey shows the share rising again after 2018-19, which these modelled estimates do not.',
+    origin: 'authored',
+  },
+  'cereal-yield-peer': {
+    finding:
+      'India\u2019s cereal yield rose from 2,990.6 kg a hectare in 2014 to 3,602 in 2024 and is the lowest in the panel, roughly 56 per cent of China\u2019s 6,418.1. The gap is productivity rather than inputs \u2014 India also has the panel\u2019s lowest fertiliser use per hectare.',
+    origin: 'authored',
+  },
+  'industry-employment-peer': {
+    finding:
+      'Industry\u2019s share of employment in India was flat across the decade, 24.9 to 25.4, while Vietnam\u2019s rose 13 points from 21.4 to 34.3. This is the employment face of manufacturing\u2019s falling share of Indian GDP, which the instrument carries separately.',
+    origin: 'authored',
+  },
+  'lfpr-female-peer': {
+    finding:
+      'Female labour force participation rose from 26.6 per cent in 2014 to 32.4 in 2024 and remains the lowest in the panel, against Vietnam\u2019s 68.9. These are ILO modelled estimates and they differ from India\u2019s own survey, which gives 41.7 per cent for 2023-24 where the model gives 32.4 \u2014 India is lowest in the panel on either.',
+    origin: 'authored',
+  },
+  'npl-peer': {
+    finding:
+      'India\u2019s non-performing loan ratio fell from 4.3 per cent in 2014 to 2.5 in 2024 on the comparable series. National definitions diverge from it sharply and in both directions: Bangladesh reported 35.7 per cent nationally in September 2025 against 9.6 here, China\u2019s 1.5 is widely regarded as understated through forbearance, and India\u2019s own regulator gives 1.8 for March 2026.',
+    origin: 'authored',
+  },
+  'vulnerable-employment-peer': {
+    finding:
+      'Vulnerable employment \u2014 own-account and contributing family workers \u2014 fell from 78.5 per cent to 72.1 in India and is the highest in the panel by a wide margin, against China\u2019s 33.8. These are the categories India\u2019s own labour survey counts as employed, which is why the unemployment rate and this share can fall together.',
+    origin: 'authored',
+  },
+  'ger-higher-secondary-udise': {
+    finding:
+      'The largest improvement in any UDISE+ level series, 40.1 per cent in FY2012-13 to 58.4 in FY2024-25 \u2014 and the one with the least continuous evidence behind it: the run spans a reporting-base shift in FY2022-23 that re-based numerator and denominator together, and six missing years in the middle. The gross ratio also sits far above the net one, and the Economic Survey puts secondary age-specific net enrolment at 52.2 per cent.',
+    origin: 'authored',
+  },
+  'teacher-vacancy-rate-elementary': {
+    finding:
+      'Every point is a state-wise sum rather than a national observation, and \u2018vacant\u2019 is the arithmetic residual of sanctioned minus in-position rather than anything counted. Several source tables build their total over fewer than 36 jurisdictions without saying so \u2014 27 rows in 2015, 28 in 2016, 30 in 2024 \u2014 and the FY2023-24 figure tabled in the House omits Tamil Nadu entirely. The rate runs 24.09 per cent in FY2013-14 to 12.6 in FY2024-25. National totals were tabled routinely from 2014 and stopped after February 2024, so the absence since is a discontinuation and not a non-collection.',
+    origin: 'authored',
+  },
+  'aser-std3-reading-govt': {
+    finding:
+      'The government-school series, which is the one the state is accountable for and on which the case for NIPUN Bharat rests: 20.9 per cent in 2018, 16.3 in 2022 and 23.4 in 2024. The state spread in 2024 is over 40 points \u2014 Himachal Pradesh 49.7 and Kerala 44.4 at the top, Jammu and Kashmir 6.7 and Telangana 6.8 at the bottom \u2014 and national levels are usable where sub-national year-on-year changes are not. It is graded T4 because the schema grades an NGO dataset so.',
     origin: 'authored',
   },
 };
