@@ -423,7 +423,7 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'jk-security-forces-killed': {
     finding:
-      'Security-force deaths in Jammu and Kashmir fall across the period on the Ministry of Home Affairs count. A press-compiled register covering the same years is carried separately and does not agree, and neither is presented as the answer.',
+      'This is the one quantity in the domain on which the two families of instrument agree: the Ministry of Home Affairs count and an independent press-compiled register run 91 against 95 in 2018, 80 against 78 in 2019, 63 against 56 in 2020 and 42 against 45 in 2021 \u2014 within about ten per cent every year. That convergence is what makes it the measure here that survives the objections damaging the others, and a record treating every count in this domain as equally compromised would be wrong. Deaths fall across the period on both.',
     origin: 'domain-lead',
   },
   'tn-direct-goi-transfers-to-sias': {
@@ -453,7 +453,7 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'jk-terrorist-incidents-legacy': {
     finding:
-      'The Incidents column as MHA published it at the time, 2011 to 2020. The Annual Report 2021-22 later restated 2017 from 342 to 279, 2018 from 614 to 417 and 2019 from 594 to 255 under the identical column heading, and dropped 2014 to 2016 from view rather than restating them. These are the figures as they stood before that.',
+      'The Incidents column as MHA published it at the time, 2011 to 2020. The Annual Report 2021-22 later restated 2017 from 342 to 279, 2018 from 614 to 417 and 2019 from 594 to 255 under the identical column heading, and dropped 2014 to 2016 from view rather than restating them \u2014 so these figures now exist nowhere in the current official record, and dropping them here would mean adopting the revision by default.',
     origin: 'authored',
   },
   'jk-infiltration-attempts': {
@@ -463,7 +463,7 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'jk-net-estimated-infiltration': {
     finding:
-      'The row MHA labels an estimate \u2014 a different row of the same table from Infiltration attempts, and never the same quantity. It reads 136 for 2017 and 14 for 2022. The published label changed twice inside three report years, from \u2018Successful\u2019 to \u2018Net infiltration (Estimated)\u2019 to \u2018Net Estimated infiltration\u2019, and no report says the first means the same as the last.',
+      'Two different official numbers are quoted for infiltration falling \u2014 419 to 53, and 136 to 14 \u2014 and they are different rows of the same MHA table, never the same quantity. This is the second of them, the row MHA labels an estimate, reading 136 for 2017 and 14 for 2022. Its published label changed twice inside three report years, from \u2018Successful\u2019 to \u2018Net infiltration (Estimated)\u2019 to \u2018Net Estimated infiltration\u2019, and no report says the first means the same as the last.',
     origin: 'authored',
   },
   'divisible-pool-share-gtr': {

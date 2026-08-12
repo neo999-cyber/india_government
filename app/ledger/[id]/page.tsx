@@ -333,11 +333,6 @@ export default async function LedgerDetail({ params }: Props) {
 
       <RecordHistory id={l.id} />
 
-      <div className="stub">
-        <span className="label">Scaffold</span>
-        Phase 0 renders the record as authored. Timeline placement, term comparison and
-        shock-attribution views come later.
-      </div>
     </>
   );
 }

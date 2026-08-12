@@ -296,6 +296,32 @@ instrument has a name for what projections do to marks.
 
 ---
 
+## RAISED 2026-08-12 BY A READER'S REVIEW, AND NOT RESOLVED HERE
+
+**Three carry forward, and each is blocked on something other than effort.**
+
+**1. The internal register in `/data` prose.** Dated rescore stamps (40), repository archaeology (65),
+tier letters asserted in prose (38), schema or field names in prose (21), across `caveat`,
+`assessmentNote`, `notes`, `whatHappened` and `summary`. **Research-owned**: the narrow source-edit
+amendment lets a run apply only a correction it raised itself, and this arrived from outside. **A
+render-time move was tested and rejected** — 16 stamps lead their field, 12 sit mid-sentence inside
+the argument, so a leading-stamp rule would mangle a third of them.
+
+**2. The vocabulary.** Seven words for three concepts, breaking visibly on `/domains/kashmir/` where
+*0 series* and *Indicators 30* sit two lines apart and both are correct against different queries.
+Costed in the forty-sixth log entry: 3,384 internal hrefs and one gate assert the `/domains/` route.
+**Report-only by instruction.**
+
+**3. Seventeen ordering-defect candidates** — trajectory-only findings on records that carry a caveat,
+where the stronger sentence may be below the weaker one. **Not banked as defects**: the classifier that
+produced them failed its own control against two of the reviewer's three named cases.
+
+**And one thing this review settled about method:** a measured 93 per cent of findings being about the
+world, and a reader's impression that the site is an audit of statistical behaviour, are **different
+objects**. The second is not reachable by measuring the first.
+
+---
+
 ## STANDING HAZARDS
 
 **Phase 13's completeness is an open question**, per the CLAUDE.md phase table: delimitation was

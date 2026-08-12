@@ -16813,3 +16813,154 @@ periods, 197 ids cited, **0 dangling and 0 markdown bodies**, with 52 ids whose 
 not appear in their period. **That figure is the probe's own candidate count and is not banked as a
 defect**: a period draws on a record without necessarily naming its verdict, which the probe's header
 says in terms.
+
+---
+
+## 2026-08-12 (forty-sixth entry) — A READER'S REVIEW, AND FOUR THINGS NO GATE REACHES
+
+**The review itself could not be committed verbatim.** The full document was not supplied to this
+session and this machine holds no copy. `review/returned/reader-review-2026-08-12-EXCERPTS.md` holds
+the passages quoted in the brief, **marked as excerpts** — committing a reconstruction as a primary
+source would be a fabricated document, which is the one thing this instrument cannot do.
+
+### 1 — INTERNAL RELEASE NOTES WERE SHIPPING TO READERS ON 269 PAGES
+
+*"Scaffold. Phase 0 renders series as tables only. Charting comes later"* reached **rendered text on
+all 269 series pages, with the chart directly above it.** Nine site walks missed it.
+
+**The class, enumerated from the code: seven `.stub` blocks. Three changed, one relabelled, three
+kept with the rule for each.**
+
+| member | disposition |
+|---|---|
+| `series/[id]` — *charting comes later* | **REMOVED.** False on 269 pages. Its substantive rules are enforced in the chart components. |
+| `ledger/[id]` — *timeline, term comparison … come later* | **REMOVED.** A roadmap promise on a reader-facing page. |
+| `peers` — *lands with the counterfactual work* | **CORRECTED.** A second stale claim, and worse: the counterfactual engine was **declined** on 6 August, so it promised a view tied to work that will never happen. The nine walks missed this one too. |
+| `unmeasured` — *Scaffold* over settled method | **RELABELLED** *How this page works*. The content was a rule, not scaffolding. |
+| `terms/[term]` — *Unopened term* | **KEPT.** An absence in the DATA, not the site. Rule 4a. |
+| `domains/[domain]` — *Unopened domain* | **KEPT.** Same. |
+| `counterfactual` — *Status: Declined* | **KEPT.** A recorded decision, not an unfinished state. |
+
+**CAN ANYTHING BIND THE CLASS? Partly, and the gap is exact.** `phase-name-consistency` already
+covers **407 tracked text files** and asserts phase names against CLAUDE.md's table. **It did not
+catch this because "Phase 0" is not in the table** — the gate's vocabulary is the table's rows, and a
+phase that never existed falls outside a closed vocabulary by construction. That is the same
+guard-scope shape the corpus keeps meeting. The broader class *is* bindable on the `phase-name`
+pattern — named container (`.stub`), declared authority, closable futurity vocabulary (*comes later*,
+*lands with*, *will state*, *Phase 0*) — and that is **available, not done**: it adds a build step and
+a failure mode, which is a gate contract and not this batch's call.
+
+### 2 — THE LANDING PAGE WAS CLAIMING SOMETHING ELSE, AND THE COMMENT ABOVE IT SAID SO
+
+The copy read *"which is why this chart, and not any of the four above it, **is what the rest of this
+site is about**"*, over a source comment reading *"This is the whole argument of the site in one
+chart."* **The reviewer read the page as written.** Four series that hold and one that stops is the
+proportion §3a specifies; calling the fifth the thesis inverts it, and makes the measurement critique
+the subject. Both the copy and the comment are corrected, with the withdrawn wording quoted in place.
+
+**This is not the family-count risk returning.** That count was an artefact and was corrected to 93
+per cent. **A measured 93 per cent and a reader's impression are different objects, and this review is
+the case that proves the second is not reachable by measuring the first.**
+
+### 3 — THE INTERNAL REGISTER: ONE FIXED HERE, THE REST IS RESEARCH-OWNED
+
+**Measured first, because it decides who may fix it.** Of the reviewer's three examples, **two live in
+`/data`** — *"T4 BY THE SCHEMA'S LETTER"* in a caveat, *"VALUE-AND-NOTE RECONCILED 2026-08-03"* in
+`assessmentNote` — and one lives in code.
+
+**The code one is fixed.** The coverage cell read *"A low figure is not a fault — a survey run every
+five years covers exactly as it was designed to."* That answers a judgement the reader has not made.
+It now reads *observations across those years, on this series' own reporting interval* — the
+denominator's meaning and nothing else.
+
+**The `/data` ones are raised, not applied**, and the reason is the rule rather than reluctance:
+`/data` prose is research-owned, and the narrow source-edit amendment permits a run to apply only a
+correction **that run itself raised and evidenced**. This one arrived from outside. The class,
+measured for handoff:
+
+| pattern | occurrences across `caveat`, `assessmentNote`, `notes`, `whatHappened`, `summary` |
+|---|---|
+| dated rescore / reconcile stamp | 40 |
+| repository archaeology (*commit*, *batch*, *phase n*, *this run*) | 65 |
+| tier letter asserted in prose | 38 |
+| schema or field name in prose | 21 |
+
+**A render-time move was tested and rejected**, which answers the *move the trail rather than remove
+it* instruction directly: **16 of the stamps lead their field and 12 sit mid-sentence inside the
+argument.** A leading-stamp rule would work on 16 and mangle 12, and a parser over authored prose is
+the hand-rolled-normaliser class. **The trail can be moved, but only by the sessions that own the
+prose.**
+
+**KEPT, and the reviewer misattributed it:** *"DISCONTINUED, NOT MERELY UNRETRIEVED"* is rule 4a
+working — an absence rendered unlike a finding — verified still present. Also kept: the KLEMS
+finding's *"not a fault in the method"*, which defends the method against a misuse the record itself
+names, rather than answering an imagined objection.
+
+### 4 — THE VOCABULARY: SEVEN WORDS, THREE CONCEPTS (REPORT ONLY)
+
+On `/domains/kashmir/` a reader meets, in this order: breadcrumb **domains**, title *"a **lens**
+rather than a **subject**"*, tab strip **Indicators 30**, counts line **0 series** · 30 under this
+lens, prose *"thirty **series** are read through the Kashmir lens"*, masthead **Topics**, and a chart
+criterion *"longest unbroken run in this **area**"*.
+
+**Both Kashmir numbers are correct against different queries.** `series.domain === 'kashmir'` is
+**0**; `series.lenses` containing kashmir is **30**. They sit two lines apart, and that is a
+data-model remnant reaching a reader.
+
+| concept | words the site uses | status |
+|---|---|---|
+| the 14-value taxonomy a record files under | domain · Topics · area · subject | **Topics** is the public concept; *domain* is the field name in the URL and breadcrumb; *area* and *subject* are remnants |
+| a cross-cutting collection | lens | **genuine public concept** — the corpus needs it |
+| a time series | series · Indicators | **Indicators** is the public concept; *series* is the layer name |
+
+**Cost of one vocabulary**, measured: *domain*/*domains* 340 code occurrences and 11,601 in built
+pages; *area* 170 and 1,861; *subject* 96 and 928; *lens*/*lenses* 181 and 4,634. The route change is
+the load-bearing part — **3,384 internal hrefs** to `/domains/…` and **one gate, `domain-coverage`,
+asserting the route by name.** Report only, per instruction.
+
+### 5 — THE TAXONOMY, AND MY CLASSIFIER FAILED ITS OWN VALIDATION
+
+Built the reviewer's taxonomy as candidate detectors over all 237: **comparator 154, measurement event
+87, stakes 38, none-of-the-three 42.**
+
+**Then it failed the control.** Two of the three findings the reviewer names as failures —
+`jk-terrorist-incidents-legacy` and `jk-net-estimated-infiltration` — **register both a comparator and
+a measurement event.** The detector measures whether the right topics are *mentioned*; the reviewer's
+taxonomy is about whether the sentence **works read cold**. Those are different things, and the 42 is
+therefore **not** the reviewer's set and is not reported as one. It is the same gap as the whole
+review: a check can ask what renders, not what lands.
+
+**Three fixed, and the third was the serious one.**
+
+- `jk-terrorist-incidents-legacy` — *"These are the figures as they stood before that"* pointed
+  backwards and carried nothing. It now states the stakes the record's own notes give: these figures
+  exist nowhere in the current official record, and dropping them would mean adopting the revision by
+  default.
+- `jk-net-estimated-infiltration` — opened on a data-cleaning distinction. It now opens on what a
+  reader has met: **two different official numbers quoted for the same claim**, 419→53 and 136→14,
+  both from this record's own caveat.
+- **`jk-security-forces-killed` — the finding contradicted a shipped one.** It said a press-compiled
+  register *"does not agree"*. That is true of the CIVILIAN counts and **false of these**: the record's
+  notes give 91/95, 80/78, 63/56 and 42/45, and `jk-security-forces-killed-satp`'s finding, shipped in
+  tranche 12, says the two agree within about ten per cent. **Two live pages said opposite things.**
+  The convergence is the epistemic point and is now the sentence.
+
+**And the ordering defect is real, with the field misnamed.** The reviewer said the strong sentence
+was in the caveat. **`jk-security-forces-killed` has no caveat** — the strong sentence was in `notes`.
+The diagnosis was right and the location was not, which is worth recording because it is the second
+time this review has been right about a defect and wrong about which rule produced it.
+
+**Does it generalise? Bounded.** Of the 42 trajectory-only candidates, **17 sit on a record that has a
+caveat** and are the ordering-defect candidate set; **25 have no caveat, so nothing stronger is being
+buried.** Those 17 are the next batch's work and are not banked as defects here — the classifier that
+produced them has already failed its control once.
+
+### Gate line
+
+27 steps green. `rendered-space` 0 across 739 pages. `unrecognised-rows` 0. `domain-coverage`
+1137/1137. Verified on the built site: the stale-scaffold class reaches **0** pages on all four
+phrasings; the landing claim is gone and the proportion sentence is present; the coverage lecture
+reaches 0 pages; the absence-vocabulary emphasis is intact.
+
+**Carries forward: the `/data` internal-register class (research-owned), the 17 ordering-defect
+candidates, and the vocabulary decision.**

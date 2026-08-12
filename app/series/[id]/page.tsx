@@ -329,13 +329,6 @@ export default async function SeriesDetail({ params }: Props) {
         </div>
       )}
 
-      <div className="stub">
-        <span className="label">Scaffold</span>
-        Phase 0 renders series as tables only. Charting comes later and must carry both marks
-        with it: no line may be drawn across a seam and no trend fitted through one, and any
-        chart of a ratio to GDP spanning 27 Feb 2026 must show the denominator break — the
-        step is arithmetic, and a chart that hides it asserts activity that did not happen.
-      </div>
     </>
   );
 }
