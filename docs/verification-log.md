@@ -16644,3 +16644,106 @@ of 203 — 94 per cent.**
 `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
 
 **Carries forward: 34.**
+
+---
+
+## 2026-08-12 (forty-fourth entry) — TRANCHE 12: the last thirty-four, and the run whole
+
+### THE FINAL TRANCHE
+
+All 34 remaining series were inside the tested interlock point at every size — names 3 to 6 per cent,
+shared 6 to 13, the lowest of any tranche, because these are what the ordering left: the least
+connected records in the corpus. No set shape. Only `P-09` was class-wide. **The whole remainder was
+taken.**
+
+**One completion, and it needed no revision:** `single-teacher-schools-share-dise` names
+`single-teacher-schools-udise`, shipped in tranche 10. The shipped sentence says the UDISE+ indicator
+did not exist before FY2022-23 and begins on the base shift; the new one says the two look joinable
+and are not. They agree, and the new sentence carries the do-not-join instruction that the pair
+needs.
+
+**Two consistency items closed.** `aser-std8-arithmetic` and `aser-std3-reading-private` now carry
+the T4 grading their sibling states. And the ruling implied by keeping `failed` last batch is written
+into the module as a rule: **an assessment word is never asserted in the corpus's voice, and a
+quotation attributes it to its speaker, which is a different act.** The test is one question — does
+the sentence SAY this, or REPORT someone saying it? Replace on the first, quote and attribute on the
+second, never a bare occurrence either way.
+
+### THE RUN, WHOLE
+
+**237 of 269 series carry an authored finding. 32 render without one, permanently and for a stated
+reason. 237 + 32 = 269, and there are zero multi-observation series with neither a finding nor a
+recorded reason.**
+
+Verified on the built site rather than counted in the module: **237 of 237 findings render exactly
+once on their own page, and 32 of 32 series without one render no finding line.**
+
+Of the 32: **31 are single-observation series**, where a finding states what a series SHOWS and one
+observation shows no trajectory — the only honest sentence is that one figure was published, which is
+a fact rather than a finding and which each record already states in its own point note. **The
+thirty-second is `port-cargo`**, the corpus's thinnest record at 41 characters, which failed the
+survive-the-chart-being-deleted test: everything sayable about it was already on its page.
+
+**Composition:** 5 harvested from surfaces that already carried an authored sentence, 13 domain leads
+by longest unbroken run, **219 authored across twelve tranches** of 10, 11, 16, 20, 20, 20, 16, 20,
+12, 20, 20, 34.
+
+### THE THREE CHECKS, ACROSS ALL TWELVE TRANCHES
+
+| check | catches | what it caught that nothing else did |
+|---|---|---|
+| **true-alone against the caveat** | **18** | a finding true read alone that still misleads read alone |
+| **enum vocabulary in context** | 27 hits, **3 acted on** | an assessment word in the corpus's own voice |
+| **figures traced to their own record** | **4** | a figure recalled, and a figure borrowed from a sibling |
+| caveat-duplication (added at tranche 3) | **5** | the caveat's own sentence repeated as the finding |
+
+**True-alone did the most work by a wide margin and never stopped finding things** — 2, 2, 4, 0, 2,
+1, 1, 0, 3, 3, 0, 0. Its four zeros were each reported with the closest call named, because a check
+that goes quiet is either working earlier or not being run against anything hard, and the difference
+is only visible if you say what you read.
+
+**Caveat-duplication recurred five times across nine tranches and read as good writing every time.**
+Twice it was introduced by a true-alone fix — the two checks pull against each other, and that
+tension is standing rather than a one-off.
+
+### THE SIX CORRECTED MEASUREMENTS, WHICH ARE THE MOST USEFUL THING THIS RUN PRODUCED
+
+1. **The material-length metric omitted two fields the work had already drawn on.** It reported three
+   records holding no authoring material; none did. `unmeasured[]` and `source.name` were missing from
+   the count, and `jk-civilians-killed-composite`'s own finding quotes MHA's footnote out of
+   `source.name`. True minimum: 41 characters.
+2. **The thin-prose forecast.** Predicted the rate would fall as material thinned. Tranche 2 landed
+   eleven from a third of tranche 1's material, and seven of them from below its minimum.
+3. **The tranche-size forecast.** Interlock at 20/45 was said to support sixteen to eighteen. Twenty
+   landed and none slipped.
+4. **The family count.** Reported as four of twenty about the world and sixteen about measurement.
+   The classifier had no stated rule. Under a mechanical strip-and-see-what-remains test applied to
+   every finding, that tranche is **sixteen of twenty**, and the corpus-wide figure is **93 per cent**.
+5. **The clause metric drifted because its regex kept gaining terms.** Reported as 63, 65, 50 across
+   three tranches; on the frozen six-term definition the comparable series is **40, 73, 63, 60, 40,
+   65, 44, 50, 50, 70, 65, 53** — a range of 40 to 73 across twelve tranches, and flat.
+6. **Interlock's shared limb counted disputes carried by construction**, then the fix for that was
+   itself too narrow. `P-09` and `P-14` are carried by every peer panel and every World Bank record
+   respectively; the first test asked only whether carriers were peer panels and missed `P-14` by one.
+   **The class is whatever the dispute is a property OF, and it may be the SOURCE rather than the
+   shape.**
+
+**Five of the six were wrong in the alarming direction** — they made the work look harder, thinner or
+more compromised than it was. That is the pattern worth carrying: a measurement that flatters is
+questioned, and a measurement that alarms is believed.
+
+### THREE LIVE PAGES WERE REVISED BY RECORDS WRITTEN AFTER THEM
+
+`edu-spend-gdp-centre-edu-depts` and `agri-gdp-share-peer`, each because a near-twin landed later and
+made a true sentence read as a contradiction; and `tn-fc-projection-minus-actual-devolution`, whose
+own true-alone fix had taken its caveat's words. **Two further completions were checked and needed no
+revision** — `devolution-be-to-actual-gap` and the UAPA pair — and are recorded here for the reason
+the operator gave: a check that reports only its hits looks more productive than it is.
+
+### Gate line
+
+27 steps green. `listing-marks` 5,277 rows / 7,524 marks across 738 pages, unchanged across all
+twelve tranches. `link-check` 41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible
+across 4 layers. `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+**The authored-findings work is complete.**
