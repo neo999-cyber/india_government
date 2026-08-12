@@ -17,14 +17,21 @@ document.
 **Phase 18 is open.** Governed by `DESIGN-SCOPE.md` in this directory, revision 3, which supersedes
 the two pre-phase drafts kept in its `inputs/`.
 
-The five design features and the queue that carried them are **closed and archived**. What remains
-open is one writing item and two standing hazards, below.
+The five design features and the queue that carried them are **closed and archived**, and so is
+everything that was listed under OPEN ITEMS: `DESIGN-REVISION.md` items 1-4, the domain period prose
+at fourteen of fourteen, and the authored series findings at 237 of 269. **§10's last undecided item
+— the corpus's internal register on a public surface — was closed 2026-08-12 by measurement and a
+label-map sweep.** What remains is the two standing hazards, below.
+
+**This paragraph was itself stale until 2026-08-12** and said one writing item remained after the
+last one had shipped. A file read cold at every session start is the one place staleness costs most,
+which is why the pins below now carry the gate output they were measured from.
 
 ---
 
 ## OPEN ITEMS
 
-### DESIGN-REVISION.md — items 2, 3, 4, and 251 authored findings
+### CLOSED 2026-08-12 — DESIGN-REVISION.md items 1-4, and the authored series findings
 
 `DESIGN-REVISION.md` is in this directory. **§7 records eleven rejections with the rule each breaks;
 they are not re-derived and not re-proposed.**
@@ -154,7 +161,9 @@ control on the landing page.
 
 
 
-### The domain period prose — 7 of 14 areas remain
+### CLOSED 2026-08-11 — the domain period prose, fourteen of fourteen
+*(Heading corrected 2026-08-12: it still said "7 of 14 areas remain" over a body stating the
+opposite. The body was right.)*
 
 **This is the only part of the design work that cannot be generated.** Each area takes a set of
 periods, each with a heading, two or three sentences written from that area's records, and a `from`
@@ -304,7 +313,10 @@ header above.
 |---|---|
 | gate chain | **27 steps**, `npm run build`; `npm run commit` is the only sanctioned commit path |
 | `unrecognised-rows` | **0**, report-only. Zero makes flipping it to a gate *available*, not decided |
-| `listing-marks` | 3,552 listing rows · 5,008 marks |
+| `listing-marks` | **5,277 listing rows · 7,524 marks** across 738 pages — re-measured 2026-08-12 from the gate's own output; the pinned 3,552 · 5,008 had been stale since the domain rebuild |
+| `link-check` | 41,713 internal hrefs across 739 built pages, 21 route prefixes, 0 dead |
+| authored series findings | **237 of 269**; 32 render without one, permanently and for a stated reason |
+| raw enum tokens on a public surface | `directionOfBias` 6 pages, all the one deliberate site; `pairs.kind` 0 |
 | `field-render-audit` | 0 invisible, 17 exempted by name |
 | deploy | `vercel.json` calls `npm run build`; `tools/deploy-chain.mjs` fails if the chain is ever restated instead of called |
 | verify after push | `node tools/deploy-check.mjs` — needs the network, deliberately not in the build |

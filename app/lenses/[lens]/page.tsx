@@ -14,8 +14,7 @@ import {
   LENS_BLURBS,
   LENS_LABELS,
   TERM_SHORT,
-  formatDateRange,
-} from '@/lib/format';
+  formatDateRange, PAIR_KIND_LABELS } from '@/lib/format';
 import { LENSES, LENSES_THAT_ARE_DOMAINS, LENS_ONLY, type Lens } from '@/lib/types';
 import { CaveatRow, RecordMarks, StatusKey, StatusTally, TierTag } from '@/components/marks';
 
@@ -246,7 +245,7 @@ export default async function LensPage({ params }: Props) {
                     <td className="mono">
                       <Link href={`/domains/${x.domain}/`}>{x.domain}</Link>
                     </td>
-                    <td className="t-note">{x.kind}</td>
+                    <td className="t-note">{PAIR_KIND_LABELS[x.kind] ?? x.kind}</td>
                   </tr>
                 );
               })}

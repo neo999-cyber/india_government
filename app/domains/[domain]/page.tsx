@@ -12,7 +12,14 @@ import {
   seriesUnderLens,
   statusCounts,
 } from '@/lib/data';
-import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
+import {
+  ASSESSMENT_LABELS,
+  DIRECTION_OF_BIAS_LABELS,
+  DOMAIN_LABELS,
+  PAIR_KIND_LABELS,
+  TERM_SHORT,
+  formatDateRange,
+} from '@/lib/format';
 import { DOMAINS, LENSES, LENS_ONLY, type Domain, type Lens } from '@/lib/types';
 import type { Pair, Series } from '@/lib/types';
 import { CaveatRow, RecordMarks, REASON_KIND_LABELS, StatusKey, StatusTally, TallyGloss, TierTag } from '@/components/marks';
@@ -448,7 +455,8 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
               </span>
               <span className="grid-title">{x.title}</span>
               <span className="grid-meta">
-                {x.directionOfBias} · bridge {x.bridgeExists ? 'exists' : 'none'}
+                {DIRECTION_OF_BIAS_LABELS[x.directionOfBias] ?? x.directionOfBias} · bridge{' '}
+                {x.bridgeExists ? 'exists' : 'none'}
               </span>
             </Link>
           ))}
@@ -644,7 +652,7 @@ function PairRows({ items, showSubject }: { items: Pair[]; showSubject?: boolean
                     <Link href={`/domains/${x.domain}/`}>{x.domain}</Link>
                   </td>
                 ) : null}
-                <td className="t-note">{x.kind}</td>
+                <td className="t-note">{PAIR_KIND_LABELS[x.kind] ?? x.kind}</td>
               </tr>
             );
           })}

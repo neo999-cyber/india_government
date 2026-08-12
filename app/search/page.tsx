@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ledger, provenance, series } from '@/lib/data';
-import { ASSESSMENT_LABELS, DOMAIN_LABELS, formatDateRange } from '@/lib/format';
+import { ASSESSMENT_LABELS, DIRECTION_OF_BIAS_LABELS, DOMAIN_LABELS, formatDateRange } from '@/lib/format';
 import { CaveatFlag, RecordMarks } from '@/components/marks';
 import { ListingFacets } from '@/components/ListingFacets';
 import { SearchSort } from '@/components/SearchSort';
@@ -118,7 +118,7 @@ export default function SearchPage() {
       layer: 'provenance' as const,
       href: `/provenance/${p.id}/`,
       title: p.title,
-      meta: `${p.when} · ${p.directionOfBias}`,
+      meta: `${p.when} · ${DIRECTION_OF_BIAS_LABELS[p.directionOfBias] ?? p.directionOfBias}`,
       domains: p.affectsDomains.filter((x): x is Exclude<typeof x, 'all'> => x !== 'all'),
       text: `${p.id} ${p.title}`,
       excerpt: firstSentence(p.whatChanged),

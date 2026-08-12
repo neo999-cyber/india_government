@@ -16747,3 +16747,69 @@ twelve tranches. `link-check` 41,713 hrefs / 739 pages / 0 dead. `field-render-a
 across 4 layers. `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
 
 **The authored-findings work is complete.**
+
+---
+
+## 2026-08-12 (forty-fifth entry) — THE LAST UNDECIDED ITEM, CLOSED BY MEASUREMENT
+
+### WHAT WAS ACTUALLY OPEN, AFTER THE FINDINGS RUN
+
+`STATE.md` is read cold at every session start, and **it was describing itself wrongly.** Its RESUME
+paragraph said one writing item remained; none did. Both OPEN ITEMS headings named work that was
+finished — one of them over a body that said so in its own first line. And the `listing-marks` pin
+read **3,552 rows · 5,008 marks** against the gate's actual **5,277 · 7,524**, stale since the domain
+rebuild. All three are corrected, and the pins now carry the gate output they were measured from.
+
+What was genuinely open was **§10 of `DESIGN-SCOPE.md`: the corpus's internal register on a public
+surface.** *"A naive reader meeting 'No stated objective' needs a plain-language equivalent that
+asserts no more than the value does."*
+
+### THE MEASUREMENT, AND WHAT READING THE MEMBERS DID TO IT
+
+**Enumerated from `/schemas` rather than from memory: 23 string enums, of which 7 had no label map
+anywhere in the rendering code.** Six of the seven reached readers.
+
+**Reading the members cut six to two.** `type` renders `episode` and `reform`; `confidence` renders
+`high`; `status` renders `verified`; `calendar` renders `FY`. Those are already plain English or the
+conventional form, and a label map over them would be ceremony — **they are left alone deliberately,
+and that is recorded rather than left as an apparent omission.** What survived is the two enums whose
+values are hyphenated internal tokens no reader has: **`directionOfBias`, bare on 128 pages, and the
+pair `kind`, bare on 12.**
+
+### THE GATE CAUGHT THE FIX, WHICH IS THE MECHANISM WORKING
+
+Adding the labels made `field-render-audit` **fail 66 immediately**. `tools/lib/value-renderings.mjs`
+declared `provenance.directionOfBias` as `identity()` — *renders as itself* — which had been a true
+declaration of the defect. Giving the value a label made that declaration false, and the gate said so
+before anything shipped. **A non-prose value cannot be looked for as itself once it has a label**,
+which is exactly why that file exists. Both maps are now declared there and parsed out of the module
+that renders them rather than retyped.
+
+### THE SWEEP TOOK THREE PASSES, AND THE COUNT IS REPORTED BOTH WAYS
+
+The first pass wired five sites and left 22 pages; the second found the domain disputes tab and a
+lens page and left 8; the third found the provenance index — where **the filter option carried the
+raw token as its visible text** — and a story page.
+
+**`directionOfBias` 128 → 6 pages. `pairs.kind` 12 → 0.**
+
+The remaining six are one site, deliberately: `/provenance/[id]` prints the token in `mono` inside a
+sentence explaining what the FIELD means. There the token is the subject and not the value, and
+labelling it would make the sentence describe something it is not talking about.
+
+**One place keeps the raw value on purpose and is the distinction this work is about:**
+`data-f-bias` on the provenance index stays the machine token, because the filter matches on it,
+while the option a reader reads now says *overstates the years before 2014*. Value and label are
+different objects, and the fix separates them rather than replacing one with the other.
+
+### Gate line
+
+27 steps green. `listing-marks` 5,277 rows / 7,524 marks across 738 pages. `link-check` 41,713 hrefs
+/ 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers, after failing 66 and being
+fixed. `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+**Report-only probes, run by hand:** `own-caveat-once` 232 of 232 clean. `period-verdict-probe` — 49
+periods, 197 ids cited, **0 dangling and 0 markdown bodies**, with 52 ids whose verdict token does
+not appear in their period. **That figure is the probe's own candidate count and is not banked as a
+defect**: a period draws on a record without necessarily naming its verdict, which the probe's header
+says in terms.
