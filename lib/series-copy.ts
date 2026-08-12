@@ -88,6 +88,53 @@
  * draws**, and whether a multi-observation series with no authored material can carry a finding is
  * a question for the tranche that reaches them, not one to pre-empt here — a trajectory is
  * something a single observation cannot have and these do.
+ *
+ * ============================ THE THIN-MATERIAL FLOOR — RULED 2026-08-12, TRANCHE 2 ===========
+ *
+ * **FIRST, A CORRECTION TO THE PARAGRAPH ABOVE, WHICH IS MY OWN MEASUREMENT AND WAS WRONG.** It
+ * says *"Three hold none at all."* **No series holds none at all.** The metric that produced the 3
+ * counted `notes`, `caveat`, break notes and point notes, and omitted `unmeasured[]` and
+ * `source.name` — two fields tranche 1 itself had drawn on, since
+ * `jk-civilians-killed-composite`'s finding quotes MHA's definitional footnote out of `source.name`.
+ * Recomputed with both included, the thinnest record in the corpus holds **41 characters**, and the
+ * medians move to 2,377 for tranche 1 against 780 for the remaining 210. **This is the
+ * correction-cycle class exactly: a number produced while fixing something else, restated in
+ * `STATE.md` and the log, and unchallenged until it was re-derived.**
+ *
+ * **THERE IS NO CHARACTER FLOOR, AND THE MEASUREMENT REFUSES ONE.** Prose length does not predict
+ * whether a series can carry a sentence. Read whole: `poverty-tendulkar` holds 108 characters and
+ * carries a clear finding — its last point is the final official consumption-based poverty estimate
+ * India has published, because the survey that would have produced the next one was withheld.
+ * `nh-four-lane` holds 98 and carries another. **A threshold set anywhere above 41 would have
+ * silenced both.**
+ *
+ * **THE FLOOR IS A TEST, NOT A LENGTH: WOULD THE SENTENCE SURVIVE THE CHART BEING DELETED?** If
+ * everything it says is already rendered above it — the trajectory in the chart, the statuses in
+ * the marks, the periods on the axis — then there is no sentence, and the series renders without
+ * the line. **Applied per record when the record is reached, and recorded per record**, which is
+ * the assert-per-record rule and not a sweep.
+ *
+ * **THE FIRST RECORDED FAILURE IS `port-cargo`**, the thinnest in the corpus at 41 characters, all
+ * of it the ministry's name. Five approximate observations, no notes, no breaks, no dispute, no
+ * declared absence. What could honestly be said — five scattered years rather than an annual run,
+ * every figure approximate — was checked against its built page and is **already there**: the
+ * periods on the axis, the approximate status in its marks. It renders without the line, and this
+ * is its stated reason. **Of the six thinnest records read whole, five passed the test and one
+ * failed**, which is why the test is per record and not a band.
+ *
+ * **AND THE RATE FORECAST ABOVE IS REFUTED BY THE TRANCHE THAT TESTED IT.** It predicted the rate
+ * would fall as material thinned. **Tranche 2 landed ELEVEN against tranche 1's ten, from material
+ * with a median of 791 characters against 2,377 — and seven of the eleven were written from records
+ * holding LESS than tranche 1's thinnest.** So thin prose slows nothing.
+ *
+ * **What it changes is what the sentence is ABOUT.** Tranche 1's records carried their own
+ * histories — restatements, seams, disputed bases — and the sentences retell them. The thin-band
+ * records carry none of that, and what they support instead is a statement of what the series is
+ * NOT: not a count of shutdowns, not the divisible pool, not a jobs indicator, not network
+ * extension. **That comes from the record's SHAPE — its title against its unit, its breaks, its
+ * dispute refs — rather than from its prose, which is why a prose-length metric predicted the wrong
+ * thing twice.** A negative definition is the most useful sentence a thin record has, and it is the
+ * one a reader most needs, because it is the misreading the chart alone invites.
  */
 export type SeriesFinding = {
   /** One or two sentences. Plain text; no markdown — the view prints it as text. */
@@ -250,6 +297,66 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   'jk-civilians-killed-terror-basis': {
     finding:
       'Civilians killed by militants, 2014 to 2021 \u2014 the bounded basis, superseded from the Annual Report 2022-23 by a wider count published under the identical column name. Three different bounding formulas have been used for that name and none of them appears in a table label: a bare heading in every Annual Report to 2022-23, \u2018who died due to terrorist attacks\u2019 in one parliamentary reply, \u2018in these incidents\u2019 in another.',
+    origin: 'authored',
+  },
+
+  // ---- 4. AUTHORED, tranche 2, 2026-08-12. Six continuing down the reachability ordering, then
+  //         five from the thin band, which are here to carry the floor ruling rather than to fill a
+  //         quota: each was read whole and each says something its own chart does not.
+  //         `port-cargo` was read with them, failed the test, and is deliberately absent.
+  'jk-terrorist-incidents-merged': {
+    finding:
+      'The sum of militant-initiated incidents and operations the state itself launched, published under a name that names only the first. The identity is exact wherever both components exist \u2014 228 plus 189 is the 417 recorded for 2018 \u2014 and roughly 45 per cent of that figure is operations. It begins in 2017 on a restated basis, and the years before 2017 were dropped rather than restated, so no value on this basis exists for 2014, 2015 or 2016.',
+    origin: 'authored',
+  },
+  'fc-devolution-share-of-gtr': {
+    finding:
+      'Tax devolution measured against the Union\u2019s gross tax revenue, which is a different denominator from the divisible pool: about 32 per cent here against the 41 per cent the Finance Commission recommends. The gap between the two is not underpayment \u2014 it is the share of gross revenue that sits outside the pool altogether. The series reads 27.7 per cent for FY2010-11 and 32.6 for FY2023-24, and stops there rather than following the Commission\u2019s own award average, which splices an Actual, a Revised Estimate and a Budget Estimate into one mean without flagging it.',
+    origin: 'authored',
+  },
+  'unemployment-rate': {
+    finding:
+      'The usual-status unemployment rate falls from 6 per cent in FY2017-18 to 3.1 in FY2025-26. The survey counts unpaid helpers in household enterprises as employed, so the rate can fall as people are absorbed into unpaid family work rather than into jobs. Two declared breaks sit inside the run: the instrument changed in FY2017-18, when the Employment-Unemployment Survey gave way to PLFS, and the PLFS sample was redesigned in FY2025-26.',
+    origin: 'authored',
+  },
+  'jk-militants-killed': {
+    finding:
+      '1,142 deaths across 2018 to 2024, from 257 in the first year to 67 in the last. Membership of this category is declared by the force that conducted the killing, at the encounter site and before independent identification, so error in this column runs in one direction \u2014 from civilian into militant. Whether a higher count is better is left unset.',
+    origin: 'authored',
+  },
+  'jk-published-suspension-orders': {
+    finding:
+      'A count of orders in the J&K Home Department\u2019s own numbered series \u2014 not a count of shutdowns, and not a count of the police directions those orders confirm, which are not published at all. It begins at zero for 2019: not one document in the series carries that date, and publication starts in January 2020, days after the Supreme Court\u2019s direction. It reads 146 for 2020 and 4 for 2025 \u2014 a count derived here by enumerating the Department\u2019s own published documents, and not one any holder publishes.',
+    origin: 'authored',
+  },
+  'aidc-collected': {
+    finding:
+      'Collections under the Agriculture Infrastructure and Development Cess, to be read only against the transfers to the fund it is named for \u2014 the Union publishes both in one row precisely so the balance can be struck, and strikes it itself in a third column. It reads 76,950.68 crore for FY2021-22 and 80,030 for FY2025-26, and the last two figures are a Revised and a Budget Estimate rather than accounts.',
+    origin: 'authored',
+  },
+  'poverty-tendulkar': {
+    finding:
+      'Three observations and then nothing: 37.2 per cent in FY2004-05, 29.8 in FY2009-10, 21.9 in FY2011-12. That last figure is the final official consumption-based poverty estimate India has published, and the 2017-18 survey that would have produced the next one was withheld.',
+    origin: 'authored',
+  },
+  'nh-four-lane': {
+    finding:
+      'National highway length at four lanes and above rose from 18,278 km in FY2013-14 to 45,947 in FY2024-25. This is capacity upgrade rather than network extension \u2014 existing highway widened rather than new route added \u2014 and it is genuine construction either way.',
+    origin: 'authored',
+  },
+  'uapa-persons-arrested': {
+    finding:
+      'Persons arrested under the Unlawful Activities (Prevention) Act: 1,421 in 2018 and 2,636 in 2022, with 2023 not yet published. Dividing this column by the convictions column is one of four different ways a conviction rate for this offence is computed, all of them sourced to government replies and differing by up to a factor of fifty, so the quotient is not a rate this record supports.',
+    origin: 'authored',
+  },
+  'uapa-persons-convicted': {
+    finding:
+      'Persons convicted under the Unlawful Activities (Prevention) Act: 35 in 2018, 41 in 2022, with 2023 not yet published. NCRB computes its own conviction rate on cases in which trials were completed rather than on persons arrested, which is one reason four different rates for this offence are in circulation.',
+    origin: 'authored',
+  },
+  'nominal-gdp': {
+    finding:
+      'Nominal GDP in current rupees, 124.7 lakh crore in FY2014-15 to 356 in FY2025-26, every figure approximate. The 2022-23 rebasing lowers the level by roughly 3 to 4 per cent, and every ratio-to-GDP in this instrument inherits that shift.',
     origin: 'authored',
   },
 };

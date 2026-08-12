@@ -15697,3 +15697,99 @@ debt with its cause named, and `lib/series-copy.ts` keeps the file's own single-
 `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
 
 **Carries forward: 210 authored findings, at a measured-thinner rate.**
+
+---
+
+## 2026-08-12 (thirty-fourth entry) — THE THIN-MATERIAL FLOOR, AND TRANCHE 2
+
+### FIRST, TWO OF MY OWN MEASUREMENTS WERE WRONG, AND BOTH WERE LOAD-BEARING
+
+**"Three hold none at all" is false. No series holds none at all.** The metric behind it counted
+`notes`, `caveat`, break notes and point notes, and omitted `unmeasured[]` and `source.name` — two
+fields **tranche 1 itself had drawn on**, since `jk-civilians-killed-composite`'s finding quotes
+MHA's definitional footnote straight out of `source.name`. Recomputed with both: the thinnest record
+in the corpus holds **41 characters**, and the medians move from 1,786/641 to **2,377 for tranche 1
+against 780 for the remaining 210**.
+
+That figure had been restated in `STATE.md`, in the previous log entry, and in the module header, and
+it framed this batch's own instruction. **It is the correction-cycle class exactly** — a number
+produced while fixing something else, carrying the authority of the fix, and unchallenged until
+re-derived.
+
+**The second is the forecast that followed from it**, and it is refuted below by the tranche that
+tested it.
+
+### THE FLOOR: NO CHARACTER THRESHOLD, AND THE MEASUREMENT REFUSES ONE
+
+**Prose length does not predict whether a series can carry a sentence.** Read whole:
+`poverty-tendulkar` holds 108 characters and carries a clear finding — its last point is the final
+official consumption-based poverty estimate India has published, because the survey that would have
+produced the next one was withheld. `nh-four-lane` holds 98 and carries another. **Any threshold set
+above 41 would have silenced both.**
+
+**THE FLOOR IS A TEST, NOT A LENGTH: would the sentence survive the chart being deleted?** If
+everything it says is already rendered above it — the trajectory in the chart, the statuses in the
+marks, the periods on the axis — there is no sentence. **Applied per record when the record is
+reached, and recorded per record**, which is the assert-per-record rule rather than a sweep.
+
+**The first recorded failure is `port-cargo`**, the thinnest in the corpus at 41 characters, all of
+it the ministry's name: five approximate observations, no notes, no breaks, no dispute, no declared
+absence. What could honestly be said of it — five scattered years rather than an annual run, every
+figure approximate — was **checked against its built page and is already there**. It renders without
+the line. Verified both directions: `port-cargo` emits no `standfirst`, `poverty-tendulkar` does.
+
+**Of the six thinnest records read whole, five passed and one failed.** That ratio is why the test is
+per record and not a band.
+
+### TRANCHE 2 — ELEVEN LANDED, AND THE RATE FORECAST IS REFUTED
+
+Six continuing down the reachability ordering — `jk-terrorist-incidents-merged`,
+`fc-devolution-share-of-gtr`, `unemployment-rate`, `jk-militants-killed`,
+`jk-published-suspension-orders`, `aidc-collected` — then five from the thin band carrying the floor
+ruling: `poverty-tendulkar`, `nh-four-lane`, `uapa-persons-arrested`, `uapa-persons-convicted`,
+`nominal-gdp`.
+
+**Eleven against tranche 1's ten, from material with a median of 791 characters against 2,377 — and
+seven of the eleven from records holding less than tranche 1's thinnest.** Thin prose slows nothing.
+
+**What it changes is what the sentence is ABOUT, and that is the useful finding.** Tranche 1's
+records carried their own histories — restatements, seams, disputed bases — and the sentences retell
+them. The thin-band records carry none of that. What they support instead is a statement of what the
+series is NOT: not a count of shutdowns, not the divisible pool, not a jobs indicator, not network
+extension. **That comes from the record's SHAPE — title against unit, breaks, dispute refs — rather
+than from its prose, which is why a prose-length metric predicted the wrong thing twice.** A negative
+definition is the most useful sentence a thin record has, because it is precisely the misreading the
+chart alone invites.
+
+### THE THREE CARRIED CHECKS
+
+**Figures: all 76 numeric tokens across the eleven trace to their own record**, with positive and
+negative controls through the same path. No quotation defect this time.
+
+**Enum vocabulary: one hit** — *measured* in `fc-devolution-share-of-gtr`, ordinary English on a
+series carrying no `contestedGround`, kept after the hand read.
+
+**True-alone against the caveat: two of eleven failed and were revised before the build** — the same
+count as tranche 1, and it remains the check doing the most work.
+`jk-published-suspension-orders` read alone left a reader to assume the Department publishes this
+count; the caveat's *"No holder publishes this aggregation; it is derived here"* is the load-bearing
+part, and the sentence now says the count is derived here by enumerating the Department's own
+documents. `aidc-collected` said the Union publishes both columns *"so the balance can be struck"* —
+which invites exactly the shortfall reading its caveat forbids — and now carries the record's own
+next clause: the Union strikes that balance itself, in a third column.
+
+All eleven verified to render exactly once on their own page through `page-text.mjs`, with a negative
+control on an unrelated series page.
+
+### Where the count stands
+
+**39 of 269 carry a finding. 198 remain to author. 32 render without the line permanently** — 31
+single-observation series by the earlier criterion, plus `port-cargo` by this one.
+
+### Gate line
+
+27 steps green. `listing-marks` 5,277 rows / 7,524 marks across 738 pages, unchanged.
+`link-check` 41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers.
+`unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+**Carries forward: 198 authored findings, at a rate the last two tranches put at ten to eleven each.**
