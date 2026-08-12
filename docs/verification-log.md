@@ -15983,3 +15983,91 @@ negative control.
 `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
 
 **Carries forward: 162.**
+
+---
+
+## 2026-08-12 (thirty-seventh entry) — TRANCHE 5: twenty, and the form changes character
+
+### SIZED FROM INTERLOCK, AS A BOUND, WITH NO FINER CLAIM
+
+Interlock over the candidate twenty: **10 per cent naming a sibling, 45 per cent sharing a dispute**
+— at or below tranche 4's 20/45, which the bound says supports twenty. **Twenty taken and no more.**
+The set of 22 measured 14/45 and the set of 24 measured 13/42, both also inside the bound, and
+neither was taken: the bound gives no basis for a number above twenty, and three finer forecasts
+have all been wrong. Rate now 10, 11, 16, 20, 20.
+
+### TWENTY LANDED
+
+`school-enrolment-total-udise` · `aishe-publication-lag` · `cag-certified-net-proceeds` ·
+`jk-assembly-turnout` · `literacy-rate-7plus` · `airports-operational` · `teacher-vacancy-rate-ssa` ·
+`jk-organised-stone-pelting` · `parakh-grade3-proficient-language` · `cad-gdp` ·
+`fc-grants-share-of-gtr` · `gdp-growth-new-base` · `pvt-gross-npa` · `rail-accidents` ·
+`cag-union-audit-reports-tabled` · `ptr-primary-udise` · `higher-ed-enrolment` ·
+`internet-shutdowns-count` · `atc-losses` · `surcharge-share-gtr-parliamentary`.
+
+`gdp-growth-new-base` is written to rule 5: it names the 2011-12 series as one of three regimes and
+never the whole of Indian GDP growth, carries FY2013-14 at **both** 6.9 on this base and 4.7 on the
+2004-05 base rather than picking one, and states that no spliced back-series exists for either
+revision. `pvt-gross-npa` is written to rule 5b: the basis is not stated by the source, the sentence
+says so, and says it therefore cannot share an axis with either the domestic- or global-operations
+series.
+
+### THE FORM: THE TIC DID NOT FORM, AND SOMETHING ELSE MOVED
+
+**The clause metric FELL rather than climbing — 63, 65, then 50 per cent. Negative definition as the
+SHAPE of the sentence has gone 13, 5, 0.**
+
+**What changed is the subject.** Twenty findings produced **seventeen distinct shapes** against
+tranche 4's eleven: the distribution flattened rather than concentrating. Grouped by hand read:
+
+| family | n |
+|---|---|
+| about the measuring apparatus | 8 |
+| about a basis or convention | 5 |
+| about an artefact in the number | 3 |
+| **about the world** | **4** |
+
+The eight: a publication lag; a constitutionally required certificate never published as a document
+of the body required to issue it; a literacy rate that is asked and never tested; a count whose
+basis broadened as it rose; a category no body has defined; a proficiency band whose cut-scores are
+published nowhere; an instrument held only at second hand; a subject with no official series at all.
+
+**Four of twenty are about what happened in India. Sixteen are about how India measures it.** That is
+not drift in the prose — it is where this stretch of the reachability ordering sits, and it is the
+corpus's own subject arriving in the sentences. **Recorded rather than corrected, and the family
+count is now the thing to watch:** if *about the world* keeps falling toward zero, the instrument is
+describing itself, which is the line the self-audit rule already draws at `/derivations`.
+
+### THE CHECKS
+
+**Figures: all 175 numeric tokens trace to their own record**, with controls.
+
+**Enum vocabulary: no hits**, in twenty sentences, for the second tranche running.
+
+**The caveat-duplication property, asserted corpus-wide over all 95 findings: zero.**
+
+**True-alone found two — so it has not gone quiet, which was the open question.** Last tranche's
+zero was offered as "the check now runs during drafting", stated and not proved; two catches here
+say the check is still binding on hard cases rather than having stopped being run against anything.
+`school-enrolment-total-udise` offered *deduplication or real decline* where its record names three
+causes, so a reader would have missed that a falling birth cohort is an innocent third — now
+*deduplication, demographic contraction, or children leaving school*. And `aishe-publication-lag`
+quoted 18, 42 and 30 months as though exact when every point is `approx` and the caveat says why;
+the status marks render separately, but read alone the sentence gave precision the source cannot
+support, so it now carries *all approximate because the earliest editions are dated only by cover
+year*.
+
+All twenty verified to render exactly once on their own page through `page-text.mjs`, with a
+negative control.
+
+### Where the count stands
+
+**95 of 269 carry a finding. 142 remain to author. 32 render without the line permanently.**
+
+### Gate line
+
+27 steps green. `listing-marks` 5,277 rows / 7,524 marks across 738 pages, unchanged.
+`link-check` 41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers.
+`unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+**Carries forward: 142.**
