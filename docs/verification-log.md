@@ -15883,3 +15883,103 @@ single-observation series, plus `port-cargo` by the survive-the-chart test.
 `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
 
 **Carries forward: 182, at ten to sixteen a tranche.**
+
+---
+
+## 2026-08-12 (thirty-sixth entry) — TRANCHE 4: twenty, and what actually bounds a tranche
+
+### THE SIZE QUESTION, ANSWERED WITH A BASIS AND THEN TESTED IN THE SAME BATCH
+
+The rate went 10, 11, 16, each stopping where the next records needed reading. **Neither record
+count nor material volume explains it: tranches 1 and 3 read 30,411 and 34,172 characters and
+produced 10 and 16.** The obvious metric fails here as it failed twice before.
+
+**What tracks it is INTERLOCK, and interlock is computable from `/data` before a word is written.**
+
+| | t1 | t2 | t3 | t4 |
+|---|---|---|---|---|
+| prose names another series by id | 60% | 27% | 19% | 20% |
+| shares a dispute with a set-mate | 100% | 64% | 56% | 45% |
+| **findings landed** | **10** | **11** | **16** | **20** |
+
+An interlocked record cannot be written from itself — `jk-terrorist-incidents-merged` needs both its
+components read, `wb-mgnrega-funds-released` needs Bihar. **That cost is a property of the records,
+not of the process**, which is the operator's own alternative and turns out to be half right: it
+does depend on the records, and because it does, it can be measured in advance.
+
+**AND THE FORECAST IT ENABLED WAS WRONG AGAIN — the third, this time in the safe direction.** At
+20/45, at or below tranche 3's interlock, it predicted 16 to 18. **Twenty landed and none slipped.**
+After the material-length metric and the thin-prose prediction, that is three measurement-based
+forecasts about this work and three misses. **So the honest statement of what interlock buys is a
+bound and a direction, not a number:** at interlock at or under roughly 20 and 50 per cent, twenty
+holds; at tranche 1's 60 and 100 per cent, ten did. Anything finer has been claimed three times and
+been wrong three times.
+
+### TWENTY LANDED
+
+`edu-spend-gdp-centre-edu-depts` · `india-china-exports-indian-basis` · `edu-spend-gdp-edu-depts` ·
+`govt-schools-count` · `jk-civilians-killed-satp` · `aidf-transferred` ·
+`cess-share-gtr-parliamentary` · `jk-xiv-fc-panchayat-grants-allocated` ·
+`wb-samagra-shiksha-allocation` · `india-china-exports-chinese-basis` ·
+`bihar-devolution-population-ratio` · `fiscal-deficit` · `genl-govt-debt` · `msp-wheat` ·
+`scb-gross-npa` · `wheat-procurement` · `devolution-be-to-actual-gap` · `pmfby-farmers` ·
+`aser-std5-reading` · `jk-nhrc-cases-transferred-to-shrc`.
+
+`scb-gross-npa` is written to rule 5b: the domestic-operations basis is stated, the same peak year's
+14.58 per cent for public sector banks on global operations is stated beside it, and the sentence
+says the fall is not the whole picture without the write-offs over the same years.
+
+### THE FORM DISTRIBUTION, BOTH WAYS
+
+Convention-dependence 3 · promised-against-delivered 3 · trajectory 3 · component-against-the-whole
+2 · mirror divergence 2 · a-zero-explained 2 · and one each of negative definition, an-instrument-
+with-no-method, denominator effect, a-fall-that-is-a-rule-change, an-aggregate-explained-by-its-parts.
+
+**Negative definition as the SHAPE of the sentence: 1 of 20, 5 per cent, down from 13.** **Carrying
+a negating clause anywhere: 13 of 20, 65 per cent, against 63 last tranche — flat, not climbing.**
+
+Checked rather than assumed, since 65 per cent is high in absolute terms: read, every one of those
+clauses names a wrong reading and rules it out — *a stock and not a flow*, *which is not what
+arrived*, *opt-out rather than loss of access*, *recognition rather than deterioration*. Each is a
+distinction the record forces. **What is worth flagging is that *X rather than Y* has become the
+default sentence shape**, because these records are overwhelmingly quantities that look like
+something they are not. The shape metric at 5 per cent says it has not become the finding's
+structure; the clause metric is the one to keep watching.
+
+### THE CHECKS, AND A ZERO THAT IS REPORTED WITH ITS BASIS
+
+**Figures: all 150 numeric tokens trace to their own record**, with controls.
+
+**Enum vocabulary: no hits at all** in twenty sentences.
+
+**The caveat-duplication property is asserted, not merely fixed** — and it was run CORPUS-WIDE, over
+all 75 findings including the 18 written before that class was known: **zero reproduce a whole
+sentence of their own caveat.** That also settles what tranche 3's higher revision rate meant: the
+earlier tranches were independently clean, so 4-of-16 was a new detector finding a new class, not
+the standard straining at sixteen.
+
+**True-alone: nothing found, for the first time after 2, 2 and 4.** A zero from the check that has
+been the most productive deserves suspicion rather than credit, so the basis is stated: twelve of
+the twenty carry a caveat and each was read against it. **The closest call was `aser-std5-reading`**,
+whose caveat rules out year-on-year changes below the national level while the finding quotes a
+government-versus-private split. It stands because that split is a national figure disaggregated by
+school type rather than by geography, the caveat's cited ground (Johnson and Parrado) is explicitly
+about district and state variance, the record's own notes use the split for exactly this purpose,
+and 44.2 to 44.8 is a six-year change and not a year-on-year one. **The most likely explanation for
+the zero is that the check now runs during drafting rather than after it**, which is what a working
+check should cause — but it is stated as an explanation, not proved.
+
+All twenty verified to render exactly once on their own page through `page-text.mjs`, with a
+negative control.
+
+### Where the count stands
+
+**75 of 269 carry a finding. 162 remain to author. 32 render without the line permanently.**
+
+### Gate line
+
+27 steps green. `listing-marks` 5,277 rows / 7,524 marks across 738 pages, unchanged.
+`link-check` 41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers.
+`unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+**Carries forward: 162.**
