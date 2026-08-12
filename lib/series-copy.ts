@@ -277,6 +277,30 @@
  * **What this changes going forward:** the shared limb excludes disputes carried by a structural
  * class, and the names limb is the one that tracks genuine set-hood. **Fifth measurement in this
  * work to be wrong, and the third of the five to be wrong in the alarming direction.**
+ *
+ * ============================ THE SET-SHAPED UNIT HAS ARRIVED — TRANCHE 9 =====================
+ *
+ * Reported not-arrived twice. **It has arrived now, and the corrected measure is what shows it.**
+ * No candidate size sits inside the tested point — names runs 7 to 13 per cent, the LOWEST of any
+ * tranche, while shared runs 50 to 82. Checked on last batch's rule: **no dispute in this set is
+ * class-wide.** Only one peer panel is present, and every shared dispute has a heterogeneous
+ * carrier set. So the shared limb is measuring something real, and what it is measuring is
+ * FAMILIES ON ONE TABLE.
+ *
+ * **The distinguishing test stays what it was: is the finding the RELATIONSHIP?** Five sets pass it,
+ * and three complete a family whose other member is already written:
+ *
+ *   A  centrally sponsored scheme releases — one table, four states, `wb-css-releases` in tranche 7
+ *   B  MGNREGA job cards — the caveat on one names the other in terms
+ *   C  the J&K electoral frame — `jk-assembly-turnout` in tranche 5, and this is the denominator it
+ *      must be computed over, the roll behind it, and the parliamentary basis it is NOT comparable
+ *      with
+ *   D  the Union's own two school systems, under one statutory cap
+ *   E  the official learning instrument, both papers, one reset history
+ *
+ * **Twelve records, five sets, and the count is a consequence rather than a target.** It happens to
+ * land where interlock is closest to inside the bound (N=12, 8/50), and that convergence is
+ * reported as convergence and not as a derivation — the size was not chosen from it.
  */
 export type SeriesFinding = {
   /** One or two sentences. Plain text; no markdown — the view prints it as text. */
@@ -1085,6 +1109,84 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   'aser-std3-reading-govt': {
     finding:
       'The government-school series, which is the one the state is accountable for and on which the case for NIPUN Bharat rests: 20.9 per cent in 2018, 16.3 in 2022 and 23.4 in 2024. The state spread in 2024 is over 40 points \u2014 Himachal Pradesh 49.7 and Kerala 44.4 at the top, Jammu and Kashmir 6.7 and Telangana 6.8 at the bottom \u2014 and national levels are usable where sub-national year-on-year changes are not. It is graded T4 because the schema grades an NGO dataset so.',
+    origin: 'authored',
+  },
+
+  // ---- 11. AUTHORED, tranche 9, 2026-08-12. TWELVE, AND THE UNIT IS THE SET. No size sits inside
+  //          the tested interlock point and the shared limb is genuine here — checked, no dispute
+  //          in this set is class-wide. What the pool now holds is FAMILIES ON ONE TABLE, so these
+  //          twelve are five sets, three of which complete a family whose other member is already
+  //          written. See the set-shape note in the header.
+
+  // Set A — centrally sponsored scheme releases, one table, four states. `wb-css-releases` is in
+  //         tranche 7; these three complete it.
+  'css-releases-all-states': {
+    finding:
+      'The denominator for the three state series on the same table: releases rise to FY2021-22, hold, then fall 13.4 per cent in FY2024-25 \u2014 so part of every state\u2019s movement in that year is national rather than about the state. It is carried so that no state series here can be read without its base.',
+    origin: 'authored',
+  },
+  'bihar-css-releases': {
+    finding:
+      'Up 21.4 per cent across five years against an all-India total down 5.8. It is carried as the control on West Bengal\u2019s row: without a state that rose on the same table in the same years, West Bengal\u2019s fall reads as a national contraction, which it is not.',
+    origin: 'authored',
+  },
+  'tn-css-releases': {
+    finding:
+      'Down 10.9 per cent across five years, but not West Bengal\u2019s shape: Tamil Nadu rises to a peak of 28,018.59 crore in FY2023-24 and then falls 36.9 per cent in a single year, and the answer states no reason for it. A one-year drop from a peak and a five-year monotonic decline are different objects, and nothing held here distinguishes a payment-cycle effect from a policy one.',
+    origin: 'authored',
+  },
+
+  // Set B — MGNREGA job cards. Neither row means anything alone; the caveat on one names the other.
+  'bihar-mgnrega-new-jobcards': {
+    finding:
+      'New job cards in Bihar fell 57 per cent in FY2022-23, from 2,668,111 to 1,137,336, with no stoppage in force anywhere in the state. It is the control, and carrying it beside West Bengal\u2019s row is what stops this instrument asserting a causal claim the data cannot support.',
+    origin: 'authored',
+  },
+  'wb-mgnrega-new-jobcards': {
+    finding:
+      'An 87 per cent fall across two years, coinciding with the section 27 stoppage \u2014 and it must not be read as caused by it without reading Bihar\u2019s row, which falls from 26.68 lakh to 11.37 lakh over the same two years with no stoppage in force. Something moved job-card issue across both states in those years, and nothing retrieved separates that from the stoppage.',
+    origin: 'authored',
+  },
+
+  // Set C — the J&K electoral frame. `jk-assembly-turnout` is in tranche 5; the denominator it must
+  //         be computed over, the roll, and the parliamentary basis it is NOT comparable with are here.
+  'jk-assembly-seats': {
+    finding:
+      'The seats an election is actually held on: 87 through 2014, 83 in 2019 and 90 from 2022. It excludes the 24 seats reserved for territory under Pakistan\u2019s occupation, which section 14(4)(a) keeps vacant and expressly leaves out of the Assembly\u2019s reckoned membership \u2014 so turnout must be computed over these seats and never over the nominal totals of 111 or 114. Five nominated seats sit outside the count too; none has been exercised, and no provision says whether they would carry a vote.',
+    origin: 'authored',
+  },
+  'jk-assembly-electors': {
+    finding:
+      'Registered electors rose from 4,761,095 in 1996 to 8,823,899 in 2024, the last figure approximate and on a frame Ladakh has left. Division-wise in 2024 the roll is close to even per seat \u2014 Kashmir 98,653 electors a seat against Jammu\u2019s 97,377, a gap of 1.31 per cent \u2014 where the same allocation measured on 2011 Census population shows a gap of 17.17 per cent. That second comparison mixes a 2024 roll with a 2011 population and confounds age structure with thirteen years of differential growth.',
+    origin: 'authored',
+  },
+  'jk-lok-sabha-turnout': {
+    finding:
+      '49.72 per cent in 2014, 44.97 in 2019 and 58.65 in 2024, on the gross basis that includes postal ballots \u2014 unlike the Commission\u2019s assembly-report headline for the same territory, which excludes them, so the two are not comparable as published. The 2014 and 2019 values are on a territory including Ladakh and the 2024 one is not, and the like-for-like recomputation sits in each point\u2019s note.',
+    origin: 'authored',
+  },
+
+  // Set D — the Union's own schools, where it is the appointing authority and has no federal excuse.
+  'teacher-vacancy-rate-kvs': {
+    finding:
+      'These are the Union\u2019s own schools, where it is the appointing authority and RTE section 26 caps vacancies at ten per cent of sanctioned strength. The rate is 14.7 per cent in 2024 and 17.1 in 2025 \u2014 rising, above the cap in both years, and now at or worse than the state-sector aggregate. Contract engagements ran to about 15.7 per cent of sanctioned teaching strength against 8,618 vacant posts: the same gap filled two ways, on a stated rationale of a stop-gap for which no fixed contract period is possible.',
+    origin: 'authored',
+  },
+  'teacher-vacancy-rate-nvs': {
+    finding:
+      'The Union\u2019s other school system, under the same ten per cent cap: 23.62 per cent of sanctioned teaching posts vacant in 2024 and 29.58 in 2025. Contractual and ad-hoc appointments rose from 2,403 in 2021 to 3,437 in 2025, 19.4 per cent of sanctioned strength, rising in step with vacancies rather than in place of a recruitment cycle \u2014 the stop-gap has been the arrangement for at least five years. The Committee\u2019s direction to fill these posts with regular teachers by 31 March 2026 was not going to be met on the position at 31 December 2025.',
+    origin: 'authored',
+  },
+
+  // Set E — the official learning instrument, both papers, one reset history.
+  'nas-parakh-grade3-language': {
+    finding:
+      'Not a trend line: three different instruments wearing one name, each of which its own custodians say breaks comparison with its predecessor. India\u2019s official learning instrument has been reset three times in seven years, and there is no official national learning trend line. The three readings are 68, 62 and 64 \u2014 mean item-success rates on four-option papers rather than headcount ratios, so they must never be differenced against ASER, which reports the share of children clearing a fixed threshold. The guessing floor is 25 per cent and no chance-corrected score published anywhere.',
+    origin: 'authored',
+  },
+  'nas-parakh-grade3-maths': {
+    finding:
+      '64, 57 and 60 across three instruments that do not form a series, on the same reset history as the language paper \u2014 and, like it, mean item-success rates rather than headcount ratios, never to be differenced against ASER. One oddity the report does not explain: at Grade 3 the Union\u2019s own schools score lowest in mathematics, 57 against state government schools\u2019 61, and by Grade 9 the ordering flips completely \u2014 Central Government leads on everything and State Government is last, 48 against 33.',
     origin: 'authored',
   },
 };

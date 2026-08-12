@@ -16366,3 +16366,104 @@ negative control.
 `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
 
 **Carries forward: 86.**
+
+---
+
+## 2026-08-12 (forty-first entry) — TRANCHE 9: twelve, as five sets, and the shape has arrived
+
+### THE INTERLOCK MEASUREMENT, WITH LAST BATCH'S CORRECTION APPLIED
+
+**Checked first, as instructed: no dispute in this set is class-wide.** Only one peer panel is
+present, and every dispute shared by two or more of the candidate twenty has a heterogeneous carrier
+set — `P-108` 0 of 10 peer panels, `P-106` 0 of 11, `P-107` 0 of 10, `P-98` 0 of 4. **Nothing is
+excluded, and the shared limb is measuring something real.**
+
+| N | 12 | 14 | 16 | 18 | 20 | 22 |
+|---|---|---|---|---|---|---|
+| names | **8** | 7 | 13 | 11 | 10 | 9 |
+| shared | **50** | 64 | 75 | 78 | 80 | 82 |
+
+**Names is the lowest of any tranche and shared the highest.** No size sits inside the tested
+(20,45) point.
+
+### AND THAT COMBINATION IS THE SET SHAPE ARRIVING
+
+Reported not-arrived in tranches 8 and 9's predecessors. **It has arrived, and the corrected measure
+is what shows it:** records that share tables heavily but do not cite each other by id are exactly
+families whose *finding is the relationship*.
+
+**The distinguishing test stays what it was.** Five sets pass it, three of them completing a family
+whose other member is already written:
+
+- **A — centrally sponsored scheme releases.** One table, four states. `wb-css-releases` shipped in
+  tranche 7 reporting a 66.9 per cent fall *against an all-India total that fell 5.8*; that all-India
+  total is `css-releases-all-states`, and Bihar rose 21.4 per cent on the same table in the same
+  years. Without Bihar, West Bengal's fall reads as a national contraction, which it is not. Tamil
+  Nadu is a third shape again — a one-year 36.9 per cent drop from a peak, which the record refuses
+  to merge with a five-year monotonic decline.
+- **B — MGNREGA job cards.** West Bengal falls 87 per cent across the stoppage; Bihar falls 57 per
+  cent with no stoppage in force. The caveat on one names the other in terms.
+- **C — the J&K electoral frame.** `jk-assembly-turnout` shipped in tranche 5. Here are the
+  denominator it must be computed over (and the 24 seats that must never be in it), the roll behind
+  it, and the parliamentary series on the opposite postal-ballot basis.
+- **D — the Union's own two school systems**, under one statutory cap it breaches in both.
+- **E — the official learning instrument**, both papers, one reset history.
+
+**Twelve records, five sets. The count is a consequence, not a target.** It lands where interlock is
+closest to inside the bound (N=12 at 8/50) and that is reported as convergence, not as the
+derivation — the size was not chosen from it.
+
+### A STANDING FIX FOR A DEFECT THAT RECURRED
+
+`tools/deploy-poll.mjs`. **A hand-picked grep needle matched pre-existing prose twice**, in two
+different batches; both times the poll returned instantly, verification ran against the OLD build,
+and the report said 0 of 20. The needles were phrases that also sit in the record's own `notes` or
+`caveat`, which render on the same page and were already live.
+
+**The failure is silent in the worst direction** — a needle already present makes the poll succeed
+immediately, and nothing errors. The tool takes the whole new string, normalises it through
+`page-text.mjs`, and **asserts it ABSENT on the live page before the wait starts**, which is the
+negative control the corpus requires of every check applied to the one check that had none. Both
+controls run: a needle already live exits 1 with the reason; a needle under 60 characters exits 2.
+
+### THE CHECKS
+
+**Figures: all 76 numeric tokens trace to their own record**, after one catch —
+`bihar-mgnrega-new-jobcards` had been given *26.68 lakh to 11.37 lakh*, which is West Bengal's
+caveat rendering of Bihar's numbers rather than anything in Bihar's own record. Replaced with its
+own 2,668,111 and 1,137,336. **The check caught a cross-record borrowing, which is a new kind for
+it.**
+
+**Enum vocabulary: one hit**, *measured* in `jk-assembly-electors`, ordinary English, kept.
+
+**Caveat-duplication, asserted corpus-wide over all 163: one found and fixed.**
+`wb-mgnrega-new-jobcards` reproduced its caveat's closing sentence. Back to zero. **Third recurrence
+of this class across nine tranches, and it has read as good writing every time.**
+
+**True-alone found three.** `teacher-vacancy-rate-kvs` gave 14.7 and 17.1 with no comparator, losing
+the caveat's actual punch — that the Union's own best-resourced schools are now at or worse than the
+state-sector aggregate. And both NAS/PARAKH papers omitted the instruction never to difference them
+against ASER; each renders on its own page, so each needs it.
+
+All twelve verified to render exactly once on their own page, with a negative control.
+
+### BOTH FROZEN METRICS
+
+**Family test: 11 of 12** — `nas-parakh-grade3-language` is the one that fails, since stripping its
+measurement clauses leaves three numbers the record itself says cannot be compared. **Running total
+151 of 163 — 93 per cent.**
+
+**Clause metric, frozen six-term definition: 50 per cent.** Series: **40, 73, 63, 60, 40, 65, 44,
+50, 50.** Not trending.
+
+### Where the count stands
+
+**163 of 269 carry a finding. 74 remain to author. 32 render without the line permanently.**
+
+### Gate line
+
+27 steps green. `listing-marks` 5,277 rows / 7,524 marks across 738 pages, unchanged.
+`link-check` 41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers.
+`unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+**Carries forward: 74.**
