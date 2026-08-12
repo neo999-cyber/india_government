@@ -301,6 +301,26 @@
  * **Twelve records, five sets, and the count is a consequence rather than a target.** It happens to
  * land where interlock is closest to inside the bound (N=12, 8/50), and that convergence is
  * reported as convergence and not as a derivation — the size was not chosen from it.
+ *
+ * ============================ THE CLASS TEST WAS TOO NARROW — WIDENED 2026-08-12 ==============
+ *
+ * Last batch's test asked whether every carrier of a dispute is a PEER PANEL. **That caught `P-09`
+ * and missed `P-14`, which sits one carrier short of it** — 15 of its 16 carriers are peer panels
+ * and the sixteenth, `exports-gdp`, is not. Read: **all 16 are World Bank sourced**, and `P-14` is
+ * about WDI's fiscal-year labelling of India's data. It is carried by construction by every
+ * WDI-sourced record, and peer-panel-ness was never the class.
+ *
+ * **The class is whatever the dispute is a property OF, and it may be the SOURCE rather than the
+ * shape.** The test now asks both. With `P-09` and `P-14` excluded, tranche 10's twenty reads 5/45
+ * — inside the tested point — where the narrow test would have put it outside and forced a smaller
+ * tranche on a false reading.
+ *
+ * ============================ AND THE SET SHAPE IS ABSENT AGAIN, ON ITS OWN SIGNATURE =========
+ *
+ * Checked before sizing, as the shape now has a known signature: names LOW and shared HIGH.
+ * **Tranche 10 reads names 0 per cent at every size to 18** — no record names another at all — with
+ * shared at 22 to 45. That is not the signature; it is an ordinary tranche of independent records.
+ * Written as twenty singletons.
  */
 export type SeriesFinding = {
   /** One or two sentences. Plain text; no markdown — the view prints it as text. */
@@ -617,7 +637,7 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   //         supported sixteen. See the size note in the header.
   'edu-spend-gdp-centre-edu-depts': {
     finding:
-      'The Centre\u2019s own education departments \u2014 about a quarter of Indian public education spending, since States and UTs carry the rest throughout, so this series moving says nothing about what India spends. It fell from 0.64 per cent of GDP in FY2013-14 to 0.40 in FY2021-22, a fall of 38 per cent in share terms, while the national narrow total fell only from 2.97 to 2.75. That 0.40 is the lowest since FY2004-05 and not the table\u2019s minimum: FY2001-02 reads 0.37.',
+      'The Centre\u2019s own education departments \u2014 about a quarter of Indian public education spending, since States and UTs carry the rest throughout, so this series moving says nothing about what India spends. It fell from 0.64 per cent of GDP in FY2013-14 to 0.40 in FY2021-22, a fall of 38 per cent in share terms, while the national narrow total fell only from 2.97 to 2.75. That 0.40 is the lowest since FY2004-05 and not the table\u2019s minimum: FY2001-02 reads 0.37. A second series with a similar name \u2014 the Union education ministry\u2019s own actual expenditure \u2014 reads 0.635 and 0.341 for those same two years on a different construction, and the two must never be joined.',
     origin: 'authored',
   },
   'india-china-exports-indian-basis': {
@@ -1187,6 +1207,111 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   'nas-parakh-grade3-maths': {
     finding:
       '64, 57 and 60 across three instruments that do not form a series, on the same reset history as the language paper \u2014 and, like it, mean item-success rates rather than headcount ratios, never to be differenced against ASER. One oddity the report does not explain: at Grade 3 the Union\u2019s own schools score lowest in mathematics, 57 against state government schools\u2019 61, and by Grade 9 the ordering flips completely \u2014 Central Government leads on everything and State Government is last, 48 against 33.',
+    origin: 'authored',
+  },
+
+  // ---- 12. AUTHORED, tranche 10, 2026-08-12. Twenty. The set shape was checked for FIRST and is
+  //          ABSENT: names is 0 per cent at every size to 18, where the signature needs names low
+  //          AND shared high. Class-wide check widened — see the header — and with `P-09` and
+  //          `P-14` excluded the twenty reads 5/45, inside the tested point.
+  'bihar-own-tax-share-revenue-receipts': {
+    finding:
+      'Bihar raises between a fifth and a quarter of its revenue itself \u2014 22.31 per cent in FY2018-19 and 25.49 in FY2022-23. The figure is derived here by dividing two published columns and is not printed as a ratio by the auditor, and Bihar\u2019s audit table does not separate the state\u2019s share of Union taxes where West Bengal\u2019s equivalent does, so the two states\u2019 tables are not automatically like-for-like. The Sixteenth Finance Commission puts Bihar\u2019s reliance on devolution and grants at 72.3 per cent of revenue receipts against an all-states 42.2.',
+    origin: 'authored',
+  },
+  'school-closure-weeks-full-covid': {
+    finding:
+      'On full closure alone India records 25 weeks and ranks 58th of 210 \u2014 unremarkable, and well below Bangladesh\u2019s 63. On UNESCO\u2019s own headline definition, which adds partially-open days, India is the unique global maximum at 93 weeks. The two measures answer the same question and give opposite answers, and neither corrects the other, so this one must never be shown alone.',
+    origin: 'authored',
+  },
+  'self-employed-share': {
+    finding:
+      'The self-employed share rose from 52 per cent of workers in FY2017-18 to 58.4 in FY2023-24 and reads 56.2 in FY2025-26 \u2014 rising while regular wage employment stayed flat. For women it reached 67.4 per cent by 2023-24. Two declared breaks sit in the run, at its start and at the FY2025-26 sample redesign.',
+    origin: 'authored',
+  },
+  'single-teacher-schools-udise': {
+    finding:
+      'The indicator did not exist in UDISE+ before FY2022-23 \u2014 it begins ON the base shift, with nothing official behind it \u2014 and reads 8.06 per cent falling to 6.88. Part of that decline is closure and consolidation rather than teacher deployment: across the same window total schools fell by about 4,600 and zero-enrolment schools by 4,631. No source decomposes the two, and PIB attributes the whole of it to governmental interventions, a mechanism the published data cannot distinguish from closure.',
+    origin: 'authored',
+  },
+  'gdp-growth-2022-base': {
+    finding:
+      'The third GDP regime, published on 27 February 2026, and one of three this instrument carries \u2014 never the whole of Indian GDP growth on its own. It reads 7.2 per cent for FY2023-24 and 7.1 for FY2024-25, and both of those years also carry a valid figure on the 2011-12 base, which the instrument shows beside this one rather than choosing between them. No spliced back-series exists, so nothing before FY2023-24 is on this base at all.',
+    origin: 'authored',
+  },
+  'jk-land-purchases-by-non-residents': {
+    finding:
+      'One person in 2020, 57 in 2021 and 127 in 2022 \u2014 and the category may not mean what its name says. From 31 October 2019 a person from Kargil or Leh, a resident of the same State until that day, is by construction a person from outside the Union Territory. On one relayed account roughly 350 of the 631 buyers counted to 2025 are from Ladakh, which would make a clear majority of the headline people reclassified by an administrative change rather than moved. The unit is unstable across the Union\u2019s own answers too: plots, persons and area are three different objects.',
+    origin: 'authored',
+  },
+  'youth-unemployment': {
+    finding:
+      'Youth unemployment falls from 17.8 per cent in FY2017-18 to 9.9 in FY2025-26, on the same usual-status basis as the headline rate and carrying the same qualification \u2014 the survey counts an unpaid helper in a household enterprise as employed. The ILO-IHD India Employment Report 2024 found that youth were 82.9 per cent of all the unemployed.',
+    origin: 'authored',
+  },
+  'ugc-provision-gross': {
+    finding:
+      'The circulating claim that the UGC budget was slashed from 5,360 crore to 2,500 is arithmetically true and materially misleading: it sets one Budget Estimate against another and takes the FY2024-25 figure as the Consolidated Fund component alone, when the gross provision that year was 4,500 crore. The correct statement is that gross provision fell from 6,324.12 crore actual in FY2023-24 to 4,500 crore budgeted in FY2024-25, about 29 per cent rather than 53, recovering only to 5,783.23 crore by the FY2025-26 estimate and still below the FY2023-24 actual in nominal terms. The series stops at FY2023-24 deliberately, because the published FY2024-25 actual is a net figure and putting it under a gross title would manufacture a 42 per cent fall.',
+    origin: 'authored',
+  },
+  'ujjwala-connections': {
+    finding:
+      'Cumulative connections released went from 3.18 crore in FY2018-19 to 10.3 crore in FY2025-26, against a target that began at 5 crore by 2019, was raised to 8 crore in February 2018 and was extended again after that. Connections are not the metric this scheme turns on \u2014 refills are, and the instrument carries them separately.',
+    origin: 'authored',
+  },
+  'edu-union-moe-gdp': {
+    finding:
+      'The Union education ministry\u2019s own actual spending, 0.688 per cent of GDP in FY2011-12 down to 0.335 in FY2024-25 \u2014 and it must never be joined to the Centre\u2019s education-departments series, which carries a similar name on a different construction and differs from it only at the second decimal in some years. FY2023-24 has two valid values and the schema holds one: 23,500 crore net was parked in a non-lapsable fund rather than spent, so the published 0.410 per cent becomes 0.332 adjusted, which turns an 11.54 per cent shortfall into a 9.27 per cent overspend. Real spending in FY2024-25 is barely above FY2013-14 \u2014 eleven years of near-zero real growth.',
+    origin: 'authored',
+  },
+  'tn-devolution-population-ratio': {
+    finding:
+      'Tamil Nadu receives 0.67 times the devolution its population share alone would give, down from 0.82 before the Fourteenth Commission. A ratio below 1.00 is not evidence of a defect: the formula is designed to devolve more per head to states with lower per capita income, and each of the last five Commissions disbursed 75 per cent or more of the states\u2019 pool on equity criteria. Tamil Nadu is also not an outlier among comparable states \u2014 Haryana 0.51, Kerala 0.69, Karnataka 0.71 \u2014 and sits within a hair of the 0.68 average for the eight high-per-capita-GSDP states. What this series measures is whether the design is operating, not whether it is right.',
+    origin: 'authored',
+  },
+  'cpi-inflation': {
+    finding:
+      'Annual average CPI inflation runs 5.9 per cent in FY2014-15 and 4 in FY2025-26, against 9 to 11 per cent through 2010 to 2013. A new CPI base takes effect from February 2026 and its lower food weight dampens headline volatility, so the last point is not on the same construction as the rest. These annual averages are approximations rather than an exact published annual series.',
+    origin: 'authored',
+  },
+  'agri-gdp-share-peer': {
+    finding:
+      'India is the only country in the panel whose agriculture share of GDP rose \u2014 16.79 per cent in 2014 to 17.66 in 2024 \u2014 while Bangladesh fell from 15.35 to 11, Vietnam from 14.88 to 11.87 and China from 8.48 to 6.89. A rising share means agriculture grew faster than the rest of the economy, which is not the same thing as farming prospering.',
+    origin: 'authored',
+  },
+  'agri-value-per-worker-peer': {
+    finding:
+      'Value added per agricultural worker rose about 23 per cent in India, from 1,641.9 to 2,027.12 constant dollars, while Vietnam more than doubled from 1,370.33 to 2,988.84 and overtook it during the decade. India is now roughly a quarter of China\u2019s 7,555.69.',
+    origin: 'authored',
+  },
+  'exports-gdp-peer': {
+    finding:
+      'Exports as a share of GDP were flat in India across the decade, 22.97 per cent to 22.06, while Vietnam went from 69.6 to 90.17. India, Indonesia and China all sit near 20 per cent and Bangladesh nearly halved, 18.99 to 10.46 \u2014 so the panel does not divide into openers and closers, and Vietnam is the outlier rather than India being the laggard.',
+    origin: 'authored',
+  },
+  'fertiliser-use-peer': {
+    finding:
+      'India uses the least fertiliser per hectare in the panel \u2014 193.75 kg against Bangladesh\u2019s 388.94 and China\u2019s 395.14 \u2014 which rules out over-application as the explanation for its low cereal yields. The latest year carried here is 2022 rather than 2023.',
+    origin: 'authored',
+  },
+  'gdp-per-capita-usd': {
+    finding:
+      'GDP per capita rose from 1,553.9 current dollars in 2014 to 2,592 in 2024 \u2014 and Bangladesh, which began well below India at 1,094.5, ends at 2,593.4, marginally above it. Vietnam is at 4,716.7 and China at 13,293.1. India\u2019s World Bank years are fiscal-year labelled where the peers\u2019 are not.',
+    origin: 'authored',
+  },
+  'lpi-rank': {
+    finding:
+      'India\u2019s logistics rank improved from 54 in 2014 to 44 in 2018 and 38 in 2023 \u2014 one of the more robust cross-country readings in this domain, because a rank survives the 2023 methodology change better than a score does. Vietnam sits at 43 on the latest edition and China at 19.',
+    origin: 'authored',
+  },
+  'aser-std5-arithmetic': {
+    finding:
+      'Standard V division reads 27.9 per cent in 2018, 25.6 in 2022 and 30.7 in 2024 \u2014 above the pre-COVID level, and still well below the 36.2 of 2010, which sits above a trustworthy series because ASER tightened its procedures in 2011. It is graded T4 because the schema grades an NGO dataset so, and national levels are usable where sub-national year-on-year changes are not.',
+    origin: 'authored',
+  },
+  'tn-fc-projection-minus-actual-devolution': {
+    finding:
+      'A cumulative shortfall of 30,426 crore against Fourteenth Finance Commission projections, followed by a cumulative surplus of 31,887 crore across three years against the Fifteenth\u2019s \u2014 the same column, and both halves have to be carried together. It must never be read as the Union underpaying Tamil Nadu: the column measures the Commission\u2019s forecasting error at least as much as Union conduct, and nothing retrieved decomposes the two. Both input columns come from the State\u2019s own Finance Department; only the subtraction is the auditor\u2019s. The sign flips at FY2021-22 and never returns, which is the same post-COVID forecasting change that flips the national series.',
     origin: 'authored',
   },
 };
