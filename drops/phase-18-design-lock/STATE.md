@@ -44,6 +44,12 @@ control on the landing page.
   **reachability partitions nothing** (0 series are index-only; a domain surface reaches all 269).
   The one surviving boundary is what a series can support: **31 single-observation series render
   without the line permanently**, criterion printed. Tranche 1 landed 10.
+  **Tranche 3 landed 16. Running total 55 of 269; 182 remain; 32 render without the line
+  permanently.** Rate by tranche: 10, 11, 16. **Form is now counted per tranche** to stop the
+  negative definition becoming a template — tranche 3 was 2 of 16 by shape (trajectory 4,
+  convention-dependence 3, published-once 2, and five singletons), with 10 of 16 carrying a negating
+  clause somewhere, all of them unit or basis clarifications the true-alone standard forces.
+
   **Tranche 2 landed 11 and settled the thin-material floor.** There is no character floor: the
   test is whether a sentence would survive the chart being deleted, applied per record and recorded
   per record. **`port-cargo` is the first recorded failure** — 39 series now carry a finding, 198

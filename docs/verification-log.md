@@ -15793,3 +15793,93 @@ single-observation series by the earlier criterion, plus `port-cargo` by this on
 `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
 
 **Carries forward: 198 authored findings, at a rate the last two tranches put at ten to eleven each.**
+
+---
+
+## 2026-08-12 (thirty-fifth entry) — TRANCHE 3: sixteen findings, and the form counted
+
+### SIXTEEN LANDED, THE LARGEST TRANCHE SO FAR
+
+Continuing down the reachability ordering: `bihar-mgnrega-funds-released` · `jk-pellet-deaths` ·
+`edu-spend-gdp-all-depts` · `cess-surcharge-share-gtr` · `aser-std3-reading` ·
+`jk-prison-detained-category` · `gst-compensation-cess-collected` · `wb-mgnrega-funds-released` ·
+`india-china-imports-chinese-basis` · `cess-surcharge-share-gtr-excl-compcess` · `lfpr-overall` ·
+`jk-nhrc-complaints` · `india-china-imports-indian-basis` ·
+`jkccs-civilians-killed-by-armed-forces` · `crar` · `net-npa`.
+
+**Rate by tranche: 10, 11, 16.** The material median across these sixteen is well above tranche 2's
+— this stretch of the ordering is rich, and the standard did not have to bend. Stopped at sixteen
+because the next records need reading, not because sixteen was a target.
+
+### THE FORM DISTRIBUTION, WHICH IS WHY THIS BATCH IS NOT MORE OF THE SAME
+
+Tranche 2 found that thin records support a negative definition. **That was a reading of those
+records, not a house style, and 198 sentences of it would flatten into a form.** So the shape of
+each finding is now hand-classified and written down per record — not inferred by keyword, which
+would be the count-without-reading defect.
+
+| form | n | |
+|---|---|---|
+| trajectory | 4 | 25% |
+| convention-dependence | 3 | 19% |
+| published once, never repeated | 2 | 13% |
+| **negative definition** | **2** | **13%** |
+| paired control | 1 | 6% |
+| corrects a circulating figure | 1 | 6% |
+| unexplained step in the series | 1 | 6% |
+| a value that is an act, not an outcome | 1 | 6% |
+| the stop explained | 1 | 6% |
+
+**Negative definition is 2 of 16 as the SHAPE of the sentence** — well under the third that would
+signal a tic. **The honest second number is higher and is reported with it: 10 of 16 carry a
+negating clause somewhere.** Read, those are unit and basis clarifications the true-alone standard
+forces — *released, not allocated and not spent*; *calendar years and not financial years*; *a count
+of deaths and not a measure of what the weapon did*. That is substance rather than style, but the
+figure is recorded so a later cycle can see whether it climbs.
+
+The records themselves produced the variety: `wb-mgnrega-funds-released`'s zero is a statutory act
+under section 27 rather than an absence of demand, and its Bihar twin exists in the corpus expressly
+as the control that makes that legible; `cess-surcharge-share-gtr` and its excl-comp-cess sibling
+move in **opposite directions in FY2017-18** on the same underlying money; `jk-pellet-deaths`
+corrects the window of a figure that circulates with the wrong one.
+
+### THE THREE CARRIED CHECKS
+
+**Figures: all 115 numeric tokens across the sixteen trace to their own record**, with positive and
+negative controls through the same path.
+
+**Enum vocabulary: three hits, and one was changed.** *measure* in `edu-spend-gdp-all-depts` and
+*measured* in `aser-std3-reading` are ordinary English on series carrying no `contestedGround`, and
+were kept after the hand read. **The third was `failed` in `crar`** — *"retrieval was attempted and
+failed"*. Its grammatical subject is the retrieval and the same sentence says in terms that the
+Reserve Bank is not doubted, so it would have survived a defence. **It was replaced anyway**:
+`failed` is the value behind four of the five recorded collisions, the cost of that class runs one
+way, and *"attempted from several routes and none of them returned it"* says more.
+
+**True-alone: four of sixteen revised, and the check found a NEW pattern.** `jk-pellet-deaths`
+implied rather than stated the caveat's positive assertion that this is not a measure of the harm
+caused. The other three were a different defect the check has not produced before —
+`gst-compensation-cess-collected`, `jk-nhrc-complaints` and `jkccs-civilians-killed-by-armed-forces`
+each **opened with their own caveat's first sentence, near-verbatim**. Both render on the page, so
+that puts the identical sentence twice on one page a few hundred pixels apart, in the same role.
+Reworded to say the same thing in the finding's own words, and asserted afterwards: **zero findings
+now reproduce a whole sentence of their own caveat.**
+
+That check has now caught 2, 2 and 4 across three tranches, against the enum sweep's 1, 1 and 3
+hits of which one mattered. **It remains the check doing the most work.**
+
+All sixteen verified to render exactly once on their own page through `page-text.mjs`, with a
+negative control on an unrelated series page.
+
+### Where the count stands
+
+**55 of 269 carry a finding. 182 remain to author. 32 render without the line permanently** — 31
+single-observation series, plus `port-cargo` by the survive-the-chart test.
+
+### Gate line
+
+27 steps green. `listing-marks` 5,277 rows / 7,524 marks across 738 pages, unchanged.
+`link-check` 41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers.
+`unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+**Carries forward: 182, at ten to sixteen a tranche.**
