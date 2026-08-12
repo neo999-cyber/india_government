@@ -4,6 +4,7 @@ import { getLedger, getProvenance, getSeries } from '@/lib/data';
 import { StoryScroller } from '@/components/StoryScroller';
 import { SeriesChart } from '@/components/SeriesChart';
 import { CaveatFlag, RecordMarks } from '@/components/marks';
+import { DIRECTION_OF_BIAS_LABELS } from '@/lib/format';
 
 export const metadata: Metadata = {
   title: 'Can Indian children read?',
@@ -242,7 +243,7 @@ export default function Story() {
           <Link key={p!.id} href={`/provenance/${p!.id}/`}>
             <span className="label">{p!.id} · measurement dispute</span>
             <span className="grid-title">{p!.title}</span>
-            <span className="grid-meta">{p!.directionOfBias}</span>
+            <span className="grid-meta">{DIRECTION_OF_BIAS_LABELS[p!.directionOfBias] ?? p!.directionOfBias}</span>
           </Link>
         ))}
         {/* RULE 4b BINDS A STORY PAGE TOO. These are listing rows: a reader can leave for the

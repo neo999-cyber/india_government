@@ -9,7 +9,7 @@ import {
   provenance as allProvenance,
   seriesCitingProvenance,
 } from '@/lib/data';
-import { DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
+import { DIRECTION_OF_BIAS_LABELS, DOMAIN_LABELS, TERM_SHORT } from '@/lib/format';
 import { lastTouched } from '@/lib/history';
 import { RecordHistory } from '@/components/RecordHistory';
 import { ProvenanceLd } from '@/components/StructuredData';
@@ -53,7 +53,7 @@ export default async function ProvenanceDetail({ params }: Props) {
       <p className="tag-row">
         <span className="tag">{p.id}</span>
         <span className="tag">{p.when}</span>
-        <span className="tag">{p.directionOfBias}</span>
+        <span className="tag">{DIRECTION_OF_BIAS_LABELS[p.directionOfBias] ?? p.directionOfBias}</span>
         <span className={p.bridgeExists ? 'tag' : 'tag tag-t5'}>
           {p.bridgeExists ? 'bridge exists' : 'no bridge'}
         </span>

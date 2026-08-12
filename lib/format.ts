@@ -83,6 +83,40 @@ export const TERM_SHORT: Record<Term, string> = {
 };
 
 /** What would settle a contested record. Three of the six say: nothing would. */
+/**
+ * DIRECTION OF BIAS, and PAIR KIND — the two enums that reached readers as raw tokens.
+ *
+ * **Both were missing a label map entirely**, which the schema-to-label sweep of 2026-08-12 found by
+ * enumerating every string enum in `/schemas` and asking whether each value appears as a key in any
+ * map. Seven enums had no map; six of the seven rendered to readers; and reading the members
+ * narrowed those six to these two. **`type`, `confidence`, `status` and `calendar` were left alone
+ * deliberately** — `episode`, `high`, `verified` and `FY` are already plain English or the
+ * conventional form, and a label map over them would be ceremony.
+ *
+ * **The register test, from DESIGN-SCOPE §10: a plain-language equivalent that asserts no more than
+ * the value does.** `overstates-pre-2014` was appearing bare on 128 pages and `coverage-usage` on
+ * 12. Neither is a word a reader has; both are exact, so the label restates the same claim in
+ * ordinary English and adds nothing to it.
+ *
+ * **ONE SITE IS DELIBERATELY LEFT RAW** and is not an oversight: `/provenance/[id]` prints the token
+ * in `mono` inside a sentence explaining what the FIELD means. There the token is the subject, not
+ * the value, and labelling it would make the sentence describe something it is not talking about.
+ */
+export const DIRECTION_OF_BIAS_LABELS: Record<string, string> = {
+  'understates-pre-2014': 'understates the years before 2014',
+  'overstates-pre-2014': 'overstates the years before 2014',
+  'understates-post-2014': 'understates the years from 2014',
+  'overstates-post-2014': 'overstates the years from 2014',
+  disputed: 'direction disputed',
+  obscures: 'obscures the comparison',
+  'degrades-precision': 'degrades precision',
+};
+
+export const PAIR_KIND_LABELS: Record<string, string> = {
+  'coverage-usage': 'coverage against usage',
+  contested: 'contested',
+};
+
 export const CONTESTED_GROUND_LABELS: Record<ContestedGround, string> = {
   criterion: 'Which criterion governs',
   interpretation: 'An authoritative reading',

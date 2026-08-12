@@ -17,6 +17,7 @@ import {
   TERM_LABELS,
   TERM_SHORT,
   formatDateRange,
+  DIRECTION_OF_BIAS_LABELS,
 } from '@/lib/format';
 import { Absences, CaveatFlag, DifferentFactsMark, DifferentFactsNegativeMark, Objectives, RecordMarks, ShockExposures, SourceList } from '@/components/marks';
 
@@ -313,7 +314,7 @@ export default async function LedgerDetail({ params }: Props) {
               <Link key={p.id} href={`/provenance/${p.id}/`}>
                 <span className="label">{p.id}</span>
                 <span className="grid-title">{p.title}</span>
-                <span className="grid-meta">{p.directionOfBias}</span>
+                <span className="grid-meta">{DIRECTION_OF_BIAS_LABELS[p.directionOfBias] ?? p.directionOfBias}</span>
               </Link>
             ))}
           </div>

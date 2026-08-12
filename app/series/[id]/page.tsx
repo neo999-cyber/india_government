@@ -12,7 +12,7 @@ import {
   resolvePairSide,
   series as allSeries,
 } from '@/lib/data';
-import { DOMAIN_LABELS, LENS_LABELS, TERM_SHORT } from '@/lib/format';
+import { DIRECTION_OF_BIAS_LABELS, DOMAIN_LABELS, LENS_LABELS, TERM_SHORT } from '@/lib/format';
 import { denominatorBreaksFor, regimeFor, regimeNeighbours, roleInProvenance } from '@/lib/rules';
 import { PairSection, caveatsShownByPair, contestedPairRendersBothSeries, pooledByPair } from '@/components/PairSection';
 import {
@@ -303,7 +303,7 @@ export default async function SeriesDetail({ params }: Props) {
               <span className="grid-meta">
                 {roleInProvenance(s.id, p) === 'corrective'
                   ? 'this series is the corrective, not the affected party'
-                  : p.directionOfBias}{' '}
+                  : DIRECTION_OF_BIAS_LABELS[p.directionOfBias] ?? p.directionOfBias}{' '}
                 · bridge {p.bridgeExists ? 'exists' : 'none'}
               </span>
             </Link>

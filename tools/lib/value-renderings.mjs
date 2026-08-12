@@ -73,6 +73,13 @@ const REASON_KIND = labelMap(MARKS, 'REASON_KIND_LABELS');
 const DISPUTE_KIND = labelMap(MARKS, 'DISPUTE_KIND_LABELS');
 const EXPOSURE_ROLE = labelMap(MARKS, 'EXPOSURE_ROLE_LABELS');
 const EXPOSURE_ADJ = labelMap(MARKS, 'EXPOSURE_ADJUDICATION_LABELS');
+// Added 2026-08-12 with the label maps themselves. Until then `directionOfBias` and the pair
+// `kind` rendered as raw tokens on 128 and 12 pages, and this file declared the first as
+// `identity()` — a true declaration of a defect. Giving them labels made that declaration false
+// and `field-render-audit` failed 66 immediately, which is the mechanism working: a non-prose
+// value cannot be looked for as itself once it has a label.
+const DIRECTION_OF_BIAS = labelMap(FORMAT, 'DIRECTION_OF_BIAS_LABELS');
+const PAIR_KIND = labelMap(FORMAT, 'PAIR_KIND_LABELS');
 
 /** The parsed maps, exported so nothing else re-parses or retypes them. */
 export const LABEL_MAPS = {
@@ -146,7 +153,7 @@ export const RENDERINGS = {
   'provenance.affectsDomains': labels({ ...DOMAIN, all: 'All domains' }),
   'provenance.affectsSeries': identity(),
   'provenance.correctiveSeries': identity(),
-  'provenance.directionOfBias': identity(),
+  'provenance.directionOfBias': labels(DIRECTION_OF_BIAS),
   'provenance.sources[].url': identity(),
   'provenance.sources[].tier': labels(TIER),
   'provenance.bridgeExists': phrase({ true: 'bridge exists', false: 'no bridge' }),
@@ -165,6 +172,7 @@ export const RENDERINGS = {
    *
    * `provenanceRefs` is the exception because both pair views print the `P-xx` themselves.
    */
+  'pairs.kind': labels(PAIR_KIND),
   'pairs.provenanceRefs': identity(),
 
   'series.id': identity(),

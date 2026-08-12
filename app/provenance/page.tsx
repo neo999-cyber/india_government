@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { provenance } from '@/lib/data';
-import { DOMAIN_LABELS } from '@/lib/format';
+import { DOMAIN_LABELS, DIRECTION_OF_BIAS_LABELS } from '@/lib/format';
 import { ListingFacets } from '@/components/ListingFacets';
 
 /** See the same helper on the ledger index for why options come from the data, not the enum. */
@@ -31,7 +31,7 @@ export default function ProvenanceIndex() {
         noun="disputes"
         facets={[
           { key: 'domain', label: 'Area', options: opts(provenance.flatMap((p) => p.affectsDomains), (d) => (d === 'all' ? 'all domains' : DOMAIN_LABELS[d])) },
-          { key: 'bias', label: 'Direction of bias', options: opts(provenance.map((p) => p.directionOfBias), (b) => b) },
+          { key: 'bias', label: 'Direction of bias', options: opts(provenance.map((p) => p.directionOfBias), (b) => DIRECTION_OF_BIAS_LABELS[b] ?? b) },
           { key: 'bridge', label: 'Bridge', options: [
             { value: 'yes', label: 'a reconciliation exists' },
             { value: 'no', label: 'none across the break' },
@@ -74,7 +74,7 @@ export default function ProvenanceIndex() {
                     .map((d) => (d === 'all' ? 'all domains' : DOMAIN_LABELS[d]))
                     .join(', ')}
                 </td>
-                <td className="t-note">{p.directionOfBias}</td>
+                <td className="t-note">{DIRECTION_OF_BIAS_LABELS[p.directionOfBias] ?? p.directionOfBias}</td>
                 <td className="mono">
                   {p.bridgeExists ? (
                     'exists'
