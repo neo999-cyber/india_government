@@ -117,6 +117,30 @@ export const PAIR_KIND_LABELS: Record<string, string> = {
   contested: 'contested',
 };
 
+/**
+ * DIRECTION OF MERIT — the field that had never rendered, and the null branch is why it is words.
+ *
+ * `higherIsBetter` is the only thing in `/data` that holds which way is the good way, and until
+ * 2026-08-12 its schema description recorded, as an open DEBT rather than a decision, that no view
+ * read it. The question routes select on it, so it renders: a criterion a reader cannot check is
+ * rule 9's requirement failing quietly.
+ *
+ * **THREE BRANCHES, NOT TWO, AND THE THIRD IS THE REASON THIS IS NOT A COLOUR.** 70 series declare
+ * a direction, 76 declare explicitly that there is no agreed one, and 123 say nothing. Null is a
+ * real value: a conviction rate and an enforcement count are read differently by different readers,
+ * and any directional cue would take a side. A word can say *no agreed direction*; a colour has to
+ * pick a neutral shade, which reads as a third position on a scale rather than as a refusal. The
+ * palette rule points the same way — red is reserved for deaths, alerts and break-seams.
+ *
+ * The absent case takes no label at all. A record that has never been asked the question and one
+ * that was asked and declined are different facts, and only the second is in the data.
+ */
+export const HIGHER_IS_BETTER_LABELS: Record<string, string> = {
+  true: 'higher is better',
+  false: 'lower is better',
+  null: 'no agreed direction',
+};
+
 export const CONTESTED_GROUND_LABELS: Record<ContestedGround, string> = {
   criterion: 'Which criterion governs',
   interpretation: 'An authoritative reading',

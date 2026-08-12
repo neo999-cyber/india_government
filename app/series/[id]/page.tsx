@@ -27,7 +27,7 @@ import { SERIES_FINDINGS } from '@/lib/series-copy';
 import { SeriesKeyFigures } from '@/components/SeriesKeyFigures';
 import { NpaView } from '@/components/NpaView';
 import { RegimeOverlap } from '@/components/RegimeOverlap';
-import { Absences, CaveatFlag, RecordMarks, SourceLine, StatusKey, TierTag } from '@/components/marks';
+import { Absences, CaveatFlag, DirectionMark, RecordMarks, SourceLine, StatusKey, TierTag } from '@/components/marks';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -180,6 +180,13 @@ export default async function SeriesDetail({ params }: Props) {
       {/* Rule 4a. Suppressed only when the pair view already pooled them, which it does at
           the pair's width so a chain-level absence is not squeezed into one column. */}
       {paired ? null : <Absences items={s.unmeasured} />}
+
+      {/* THE DIRECTION OF MERIT, RENDERED FOR THE FIRST TIME on 2026-08-12, above the identifiers
+          rather than among them: it is not an identifier but a statement about how to read the
+          figures above it — and on the 76 series that declare no agreed direction, a statement that
+          the instrument will not tell a reader which way is the good way. The question routes
+          select on this field, and a criterion a reader cannot check is not a criterion. */}
+      <DirectionMark value={s.higherIsBetter} />
 
       {/* ============================ SECONDARY METADATA ======================================
           **The record id and the tier stay.** A citable instrument needs its identifiers visible,

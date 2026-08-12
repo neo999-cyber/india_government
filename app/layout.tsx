@@ -157,9 +157,18 @@ export const metadata: Metadata = {
  * *Explore*. Neither distinguished itself from the other, and neither said what was behind it.
  * **The routes are unchanged**, so every existing link still lands; only the words moved.
  */
+/**
+ * `Questions` added 2026-08-12 with the question routes (DESIGN-REVISION-2 §2). **It goes in the
+ * primary nav rather than the browse group and the distinction is the item's point:** the browse
+ * group is entered by someone who already knows what a series, a lens or a term is. These are the
+ * questions a reader arrives with, before any of that vocabulary, so a route offered only under
+ * `browse` would be reachable exactly by the readers who need it least. Fifth entry; nothing
+ * removed, nothing renamed.
+ */
 const PRIMARY = [
   { href: '/overview/', label: 'What changed' },
   { href: '/domains/', label: 'Topics' },
+  { href: '/questions/', label: 'Questions' },
   { href: '/stories/', label: 'Stories' },
   { href: '/search/', label: 'Search' },
 ];

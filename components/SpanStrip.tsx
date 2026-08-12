@@ -181,7 +181,9 @@ export function SpanStrip({
                     left: `${Math.max(pct(r.start), 0)}%`,
                     width: `${Math.max(pct(r.end) - Math.max(pct(r.start), 0), 0.35)}%`,
                     // Fill weight for the verified split. Opacity, not hue — direction of merit is
-                    // not what this encodes and `higherIsBetter` is an unread debt besides.
+                    // not what this encodes. (`higherIsBetter` was described here as an unread
+                    // debt; it renders from 2026-08-12, as words on the record, and still gets no
+                    // hue on this strip.)
                     opacity: 0.35 + r.verified * 0.65,
                   }}
                 />

@@ -349,9 +349,12 @@ export interface Series {
    * agreed direction, and asserting one would take a side. Anything that ever renders a
    * directional cue must treat null as "no cue at all" — not a neutral shade of one.
    *
-   * Nothing renders directional colour today; the instrument has never had any (CLAUDE.md:
-   * red is reserved for deaths, alerts and break-seams). The field is carried so that when
-   * something does, the null case is already stated in the data rather than defaulted.
+   * Nothing renders directional COLOUR and nothing is expected to; the instrument has never had
+   * any (CLAUDE.md: red is reserved for deaths, alerts and break-seams). **The field itself does
+   * render, from 2026-08-12** — as words, through `DirectionMark`, on every series page that
+   * carries it, because the question routes at `/questions/` select on it. The withdrawn sentence
+   * read "The field is carried so that when something does, the null case is already stated in
+   * the data rather than defaulted"; the null case is stated, and what states it is a phrase.
    */
   /**
    * What the number is measured against, rendered on the face of the value.

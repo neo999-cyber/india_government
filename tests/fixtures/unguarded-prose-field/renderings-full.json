@@ -45,6 +45,7 @@
   "series.source.url",
   "series.source.vintage",
   "series.calendar",
+  "series.higherIsBetter",
   "series.breaks[].provenanceRef",
   "series.provenanceRefs",
   "series.points[].country",
