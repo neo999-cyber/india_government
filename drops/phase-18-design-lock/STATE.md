@@ -44,6 +44,17 @@ control on the landing page.
   **reachability partitions nothing** (0 series are index-only; a domain surface reaches all 269).
   The one surviving boundary is what a series can support: **31 single-observation series render
   without the line permanently**, criterion printed. Tranche 1 landed 10.
+  **TRANCHE 12 LANDED THE LAST 34. THE AUTHORED-FINDINGS WORK IS COMPLETE.**
+  **237 of 269 series carry a finding; 32 render without one permanently and for a stated reason;
+  237 + 32 = 269 with zero multi-observation series unaccounted for.** Verified on the built site:
+  237 of 237 render exactly once, 32 of 32 render none. Composition: 5 harvested, 13 domain leads,
+  219 authored across twelve tranches of 10, 11, 16, 20, 20, 20, 16, 20, 12, 20, 20, 34.
+  **Check totals:** true-alone 18 catches (2,2,4,0,2,1,1,0,3,3,0,0), caveat-duplication 5, figures 4,
+  enum 27 hits with 3 acted on. **Clause metric, frozen definition:** 40, 73, 63, 60, 40, 65, 44, 50,
+  50, 70, 65, 53. **Family test: 93 per cent about the world.** **Six measurements had to be
+  corrected and five were wrong in the alarming direction** — they are set out in the module header
+  and in the forty-fourth log entry.
+
   **Tranche 11 landed 20, plus TWO revisions to shipped findings. Running total 203 of 269; 34
   remain; 32 render without the line permanently.** Rate: 10, 11, 16, 20, 20, 20, 16, 20, 12, 20, 20.
   **`agri-gdp-share-peer` was revised** because `agri-gdp-share` lands showing India's agriculture

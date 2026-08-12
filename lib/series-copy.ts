@@ -41,6 +41,17 @@
  * English — that class has now produced five collisions, four of which attributed a verdict a record
  * does not hold, and every one was found by a hand read rather than by a checker.
  *
+ * **AN ASSESSMENT WORD IS NEVER ASSERTED IN THE CORPUS'S VOICE, AND A QUOTATION IS A DIFFERENT ACT.**
+ * Ruled 2026-08-12 on the first such word kept rather than replaced. `worked` and `failed` were
+ * replaced on sight in tranches 3 and 11 because a substitute cost nothing. **`failed` in
+ * `rte-quota-implementing-jurisdictions` was kept, and the ground is not that it is harmless** — it
+ * is the parliamentary question's own word, the finding's whole point is that the Ministry did not
+ * answer that question, and substituting it would misquote what was asked. **So it is marked as a
+ * quotation**, which attributes the word to its speaker instead of asserting it here. The test is
+ * one question: does the sentence SAY this, or does it REPORT someone saying it? Where the answer is
+ * the first, replace; where it is the second, quote and attribute. **Never a bare occurrence
+ * either way.**
+ *
  * ============================ HOW MANY SERIES GET ONE — RULED 2026-08-12 ON A MEASUREMENT =====
  *
  * Three possibilities were put: all 251 remaining series need an authored sentence; a subset needs
@@ -1369,7 +1380,7 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'aser-std8-arithmetic': {
     finding:
-      'Standard VIII division barely moved through COVID \u2014 44.1 per cent in 2018, 44.7 in 2022, 45.8 in 2024 \u2014 which is what makes it the control on the 2024 learning gains: NIPUN Bharat operates on Standards I to III only, and a general drift in the instrument would have moved this with everything else. ASER\u2019s tool also tops out at a Standard III or IV skill, so at Standard VIII it is close to uninformative about what is actually being learnt.',
+      'Standard VIII division barely moved through COVID \u2014 44.1 per cent in 2018, 44.7 in 2022, 45.8 in 2024 \u2014 which is what makes it the control on the 2024 learning gains: NIPUN Bharat operates on Standards I to III only, and a general drift in the instrument would have moved this with everything else. ASER\u2019s tool also tops out at a Standard III or IV skill, so at Standard VIII it is close to uninformative about what is actually being learnt. It is graded T4 because the schema grades an NGO dataset so.',
     origin: 'authored',
   },
   'teachers-total-udise': {
@@ -1389,7 +1400,7 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'aser-std3-reading-private': {
     finding:
-      'Private-school Standard III reading fell from 40.6 per cent in 2018 to 33.1 in 2022 and has recovered only to 35.5. The government-private gap narrowed from 19.7 points to 12.1 across those six years \u2014 partly because private schools fell, not only because government schools rose. Values for 2012 and 2016 were not published in the retrieved tables and are not interpolated.',
+      'Private-school Standard III reading fell from 40.6 per cent in 2018 to 33.1 in 2022 and has recovered only to 35.5. The government-private gap narrowed from 19.7 points to 12.1 across those six years \u2014 partly because private schools fell, not only because government schools rose. Values for 2012 and 2016 were not published in the retrieved tables and are not interpolated. It is graded T4 because the schema grades an NGO dataset so.',
     origin: 'authored',
   },
   'dropout-secondary-udise': {
@@ -1415,6 +1426,180 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   'agri-gdp-share': {
     finding:
       'Agriculture\u2019s share of gross value added falls from 18.2 per cent in FY2014-15 to 16 in FY2024-25. The rise to 20.2 in FY2020-21 is a compositional artefact of the lockdown rather than farm dynamism \u2014 the other sectors contracted. On World Bank figures measured against GDP rather than gross value added the share moves the other way, 16.79 in 2014 to 17.66 in 2023, and the two are different constructions rather than a contradiction.',
+    origin: 'authored',
+  },
+
+  // ---- 14. AUTHORED, tranche 12, 2026-08-12. THE LAST THIRTY-FOUR, and the run ends here. Interlock
+  //          is the lowest of any tranche at every size (names 3-6 per cent, shared 6-13) because
+  //          these are what the ordering left: the least connected records in the corpus.
+  'genl-govt-debt-peer': {
+    finding:
+      'General government debt rose from 67.6 per cent of GDP in 2014 to 84.8 in 2024 \u2014 the highest in the panel at the start of the decade and second-highest now, behind China\u2019s 90.4. Vietnam is the only member to have cut its ratio, 43.6 to 33.8, and its IMF figure differs from its national definition for definitional reasons rather than by error.',
+    origin: 'authored',
+  },
+  'private-schools-count': {
+    finding:
+      'Private schools rose 18.5 per cent across the span in which government schools fell 9.2, from 288,164 in FY2014-15 to 341,605 in FY2025-26. Intervening years were not in the retrieved annexure and are not interpolated. Against the consolidation framing, ASER finds government primary schools with fewer than 60 children enrolled rose from 44.0 per cent in 2022 to 52.1 in 2024.',
+    origin: 'authored',
+  },
+  'psb-profit': {
+    finding:
+      'Public sector banks swung from a record aggregate loss of 85,390 crore in FY2017-18 to about 198,000 crore of profit in FY2025-26 \u2014 the sharpest turnaround in this subject. The seven years between the two span the asset quality review, the recapitalisation and the write-offs, all of which the instrument carries separately.',
+    origin: 'authored',
+  },
+  'rsf-press-freedom-rank': {
+    finding:
+      'India\u2019s rank fell from 140 of 180 in 2013 to 159 in 2024, and the series is not comparable across 2022, when the index replaced its seven-category framework with five indicators and revised the scoring bands. It is graded T5, the lowest tier this instrument uses, and the Government of India formally rejects the methodology \u2014 a rejection the corpus carries as a record of its own rather than as a footnote here.',
+    origin: 'authored',
+  },
+  'single-teacher-schools-share-dise': {
+    finding:
+      'A separate series from the UDISE+ all-school share, and the trap is that the two look joinable. This DISE elementary-universe share runs 8.86 per cent in FY2010-11 to 7.50 in FY2015-16 while the UDISE+ one runs 8.06 to 7.08 \u2014 same numeric band, different denominators, different school universes, and a six-year hole between them. Drawing one line through them is wrong. Primary-only schools were far worse throughout, 11.80 falling to 10.67.',
+    origin: 'authored',
+  },
+  'uapa-cases-registered': {
+    finding:
+      'Cases registered under the Unlawful Activities (Prevention) Act: 1,182 in 2018, a trough of 796 in 2020 and 1,005 in 2022, with 2023 unpublished. These are raw counts rather than a rate, authored so that any ratio a reader wants is derivable with its base visible \u2014 the rate itself cannot be rendered here as a single number.',
+    origin: 'authored',
+  },
+  're-capacity': {
+    finding:
+      'Installed renewable capacity went from 76.38 GW in FY2013-14 to 274.68 in FY2025-26, with non-fossil capacity reaching 283.46 GW at 31 March 2026. That is a capacity stock and not a share of electricity supplied: the widely repeated 51.5 per cent figure is a ratio of simultaneous power readings on one day in July 2025, not an energy share over any period.',
+    origin: 'authored',
+  },
+  'sedition-cases-registered': {
+    finding:
+      'Seventy-six cases in 2021 and twenty in 2022, and the series stops there. Section 124A of the Indian Penal Code ceased to be chargeable when the Bharatiya Nyaya Sanhita commenced, and section 152 of the new code is a differently worded offence rather than a renamed one \u2014 so counts either side of that seam are not comparable, and none is carried.',
+    origin: 'authored',
+  },
+  'teachers-trained-pre-primary-udise': {
+    finding:
+      'Falling steadily and fast at exactly the level the National Education Policy makes the foundational priority: 67.6 per cent in FY2021-22 to 53.3 in FY2024-25. The reason is statutory \u2014 RTE section 23 binds teachers of Classes I to VIII only, and pre-primary sits outside the 6-14 age band entirely, so the qualification duty does not reach the level with the worst deficit. That is a gap in the statute rather than in compliance with it.',
+    origin: 'authored',
+  },
+  'aser-girls-11-14-not-enrolled': {
+    finding:
+      'The unambiguous success in this subject, and it should be recorded as one: girls aged 11 to 14 out of school fell from 10.3 per cent in 2006 to 4.1 in 2018 and 2 in 2022 \u2014 roughly one in ten to one in fifty, across both political eras. No 2024 value was carried in the retrieved tables and none is interpolated. It is graded T4 because the schema grades an NGO dataset so.',
+    origin: 'authored',
+  },
+  'scb-gross-advances': {
+    finding:
+      'The denominator the write-off adjustment requires: 61.23 lakh crore in FY2013-14 and about 98 in FY2024-25. It is not the same aggregate as domestic credit, which stands near 181 lakh crore at the same date \u2014 using that instead would understate the adjusted NPA ratio by roughly half.',
+    origin: 'authored',
+  },
+  'gdp-growth-old-base': {
+    finding:
+      'The 2004-05 base series, discontinued at the base revision and never to be spliced with what follows: 9.3 per cent for FY2007-08 and 4.7 for FY2013-14. That last year is the overlap this instrument shows twice rather than resolving, and this is the first of the three GDP regimes it carries.',
+    origin: 'authored',
+  },
+  'klems-employment-claim': {
+    finding:
+      'An estimate rather than a measurement, and citing it as independent evidence of job creation is circular: the framework takes employment as an INPUT from the same labour surveys whose interpretation is in dispute. It reads 2.9 crore for FY2013-14 and 17.19 for FY2023-24. That is not a fault in the method, which does what it was designed to do \u2014 the error is in the citation.',
+    origin: 'authored',
+  },
+  'logistics-cost-gdp': {
+    finding:
+      '8.35 per cent of GDP in FY2021-22 and 7.97 in FY2023-24, on a methodology introduced in the first of those years. It must not be set against the long-cited 13 to 14 per cent figure: that number was never rigorously derived, and the gap between the two measures the change of method rather than a halving of logistics costs.',
+    origin: 'authored',
+  },
+  'rail-avg-speed': {
+    finding:
+      'The average speed of mail and express trains moved from 50 km/h in FY2014-15 to 51 in FY2018-19. It is the utilisation counterpart to new trains: the flagship service runs at about 74 km/h average against a 160 km/h design speed, because the track geometry beneath it was largely unchanged.',
+    origin: 'authored',
+  },
+  'unemployment-rate-cws': {
+    finding:
+      'The seven-day recall measure of open joblessness, 8.7 per cent in FY2017-18 to 4.9 in FY2023-24 \u2014 consistently well above the usual-status rate, and the better indicator where short-run distress matters. The instrument changed at the start of the run, when the Employment-Unemployment Survey gave way to PLFS.',
+    origin: 'authored',
+  },
+  'wasting-under5': {
+    finding:
+      'Child wasting fell from 21 per cent to 19.3 between the fourth and fifth National Family Health Surveys, while severe wasting ROSE from 7.5 to 7.7 across the same period. The sixth round\u2019s fieldwork has been delayed and its publication is uncertain, so these two points are the whole of the recent national record.',
+    origin: 'authored',
+  },
+  'coal-imports-total': {
+    finding:
+      'Coal imports, coking and non-coking together, run 203.95 million tonnes in FY2015-16 to 243.62 in FY2024-25, peaking at 264.53 in FY2023-24. The series begins where its source table begins: the Ministry\u2019s live import page carries the two earlier years but prints every year label broken, so those years are left out rather than entered on a positional inference.',
+    origin: 'authored',
+  },
+  'govt-capital-infusion': {
+    finding:
+      'The Union put 3.31 lakh crore into public sector banks cumulatively across FY2016-17 to FY2020-21, peaking at 106,000 crore in FY2018-19 and reaching zero from FY2021-22. About 1.35 lakh crore of the October 2017 package came as recapitalisation bonds, which were excluded from the fiscal deficit and added to internal debt.',
+    origin: 'authored',
+  },
+  'bills-referred-committee-pct': {
+    finding:
+      'The share of bills sent to a parliamentary committee fell from 71 per cent in the fifteenth Lok Sabha to 25 in the sixteenth and 16 in the seventeenth, against 60 in the fourteenth. These are term averages plotted at term-start years rather than annual figures, and the eighteenth is not yet held.',
+    origin: 'authored',
+  },
+  'ibc-realisation-pct': {
+    finding:
+      'Realisation against admitted claims declines in every year held, 45 per cent in FY2018-19 to 30.56 in FY2025-26 \u2014 the best assets were resolved first. Cumulatively 3.99 lakh crore has been realised against 12.31 lakh crore admitted to September 2025, a haircut of about 67 per cent.',
+    origin: 'authored',
+  },
+  'internet-subscribers': {
+    finding:
+      'Subscribers went from 30 crore in FY2014-15 to 109 in FY2025-26, and the attribution is overwhelmingly a price collapse rather than policy \u2014 roughly a 98 per cent cut in 4G data prices from 2016. Consumption rose from 0.27 GB per user per month to 20.27 by March 2024, and rural penetration remains 48.31 per 100 against urban 126.80.',
+    origin: 'authored',
+  },
+  'port-turnaround': {
+    finding:
+      'Average turnaround at the major ports halved, 96 hours in FY2013-14 to 49.5 in FY2024-25 \u2014 a genuine efficiency gain, and one of the two places in this subject where output and utilisation both improved. India still trails Japan at around 8 hours, and Singapore.',
+    origin: 'authored',
+  },
+  'rail-electrification': {
+    finding:
+      'Broad-gauge electrification went from 20 per cent in FY2013-14 to 99.6 in FY2025-26 \u2014 the clearest converted output in this subject, with about 6,000 crore of annual fuel saving and around 180 crore litres of diesel displaced in 2024-25. India ranks second globally behind Switzerland, ahead of China at 82 per cent, Japan at 64 and Russia at 52.',
+    origin: 'authored',
+  },
+  'rail-freight-share': {
+    finding:
+      'The railway share of national freight fell from 30 per cent in FY2014-15 to 26 in FY2024-25, and from around 86 to 89 per cent in the 1950s \u2014 the decline the Dedicated Freight Corridors were built to reverse. Record absolute tonnage of 1,670 million tonnes in FY2025-26 coexists with that falling share, because rail volume grew more slowly than road freight.',
+    origin: 'authored',
+  },
+  'thermal-plf': {
+    finding:
+      'Thermal plant load factor fell from 77.5 per cent in FY2009-10 to 53.37 in FY2021-22 and has recovered to 70 \u2014 an under-utilisation indicator, falling as capacity outran demand. Coal shortages nonetheless produced power crises in October 2021 and April 2022, at the bottom of that range.',
+    origin: 'authored',
+  },
+  'ibc-resolution-days': {
+    finding:
+      'Average resolution time is 679 days in FY2023-24, 713 the next year and 744 the year after \u2014 more than double the statutory limit of 330 days including litigation, and longer in each year held.',
+    origin: 'authored',
+  },
+  'oecd-pse': {
+    finding:
+      'A negative producer support estimate means Indian farmers are on net implicitly TAXED rather than subsidised: minus 21 per cent of gross farm receipts in 2022 and minus 14.5 in 2024. Fertiliser, credit and income-transfer subsidies are real but are more than offset by export bans, stock limits and marketing controls holding domestic prices below international reference levels, so the net transfer runs from farmers to consumers. Neither partisan framing of Indian farm policy survives it.',
+    origin: 'authored',
+  },
+  'manufacturing-employment-share': {
+    finding:
+      'Manufacturing\u2019s share of employment fell from 12.1 per cent in FY2018-19 to 11.4 in FY2023-24, alongside its falling share of output. A sector that is not growing as a share of what the economy produces cannot absorb labour at scale.',
+    origin: 'authored',
+  },
+  'project-delays': {
+    finding:
+      'The share of monitored central sector projects running late rose from 27.1 per cent in FY2018-19 to 41.6 in FY2023-24, with cost overruns of about 5 trillion rupees \u2014 18.7 per cent of original sanctioned cost, railways carrying the largest single-sector share. Execution efficiency did not improve across the capital-spending push, and the overruns are likely understated because agencies do not consistently report revised estimates.',
+    origin: 'authored',
+  },
+  'upi-transactions': {
+    finding:
+      'UPI transaction value went from 8.77 lakh crore in FY2018-19 to about 314 in FY2025-26, and India holds roughly 49 per cent of global real-time payment volume. A zero merchant discount rate drove the adoption and removed the payment industry\u2019s revenue with it. Graded T4 because what this instrument holds is a news account of the Financial Stability Report rather than the report.',
+    origin: 'authored',
+  },
+  'inr-usd': {
+    finding:
+      'The rupee averaged 61 to the dollar in FY2014-15 and 87 in FY2025-26. The record 68.85 of 28 August 2013, during the taper tantrum, was an intraday low \u2014 the annual average is now well past it.',
+    origin: 'authored',
+  },
+  'lok-sabha-sitting-days': {
+    finding:
+      'The Lok Sabha averaged 55 sitting days a year in the seventeenth term, against about 135 in the first. These are term averages plotted at term-start years, and the 1952 reading is long-run context rather than part of the window this instrument covers.',
+    origin: 'authored',
+  },
+  'rural-real-earnings': {
+    finding:
+      'Average real monthly earnings of rural workers fell from 9,107 rupees in FY2017-18 to 8,842 in FY2023-24 \u2014 rural men from 9,748 to 9,589 and rural women from 6,439 to 6,335. Labour productivity rose about 12 per cent over the same period, so wages and productivity diverged.',
     origin: 'authored',
   },
 };
