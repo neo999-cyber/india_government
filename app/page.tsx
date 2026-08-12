@@ -297,9 +297,17 @@ export default function HomePage() {
         </>
       ) : null}
 
-      {/* 4 and 5. THE TRANSITION, and the reason printed. This is the whole argument of the site in
-             one chart: the same statistical system that produced everything above stopped producing
-             this, and the corpus knows why. */}
+      {/* 4 and 5. THE TRANSITION, and the reason printed.
+             **CORRECTED 2026-08-12 ON A READER'S REVIEW, AND THE WITHDRAWN CLAIM IS QUOTED BECAUSE IT
+             IS THE DEFECT.** This comment read *"This is the whole argument of the site in one
+             chart"*, and the copy below it said this chart *"is what the rest of this site is
+             about"*. A reader who opened the site reading the claim correctly — *what can
+             responsibly be known about how India changed* — reported that by the bottom of this page
+             they expected an audit of the state's statistical behaviour at least as much as a record
+             of India's substantive change. **They read the page as written.** Four series that hold
+             and one that stops is the proportion §3a specifies, and calling the fifth the thesis
+             inverts it: the discontinuation is one of three ways the record speaks, which the cards
+             below say in terms. The chart stays where it is; the claim about it goes. */}
       {stop ? (
         <>
           <h2>Now one that stops</h2>
@@ -326,10 +334,12 @@ export default function HomePage() {
             <strong>
               The same statistical system produced everything above.
             </strong>{" "}
-            It did not stop being able to measure this. Read the caveat: the
-            successor system holds the school-level counts and publishes a
-            national mean instead — which is why this chart, and not any of the
-            four above it, is what the rest of this site is about.
+            It did not stop being able to measure this: the successor system
+            holds the school-level counts and publishes a national mean instead,
+            which the caveat sets out. Four series that hold and one that stops
+            is the proportion this site is built on rather than a preview of it
+            — most of what India publishes can be checked, and the exceptions
+            are worth knowing precisely because they are exceptions.
           </p>
         </>
       ) : null}

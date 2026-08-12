@@ -204,7 +204,7 @@ export default function UnmeasuredIndex() {
       ) : null}
 
       <div className="stub">
-        <span className="label">Scaffold</span>
+        <span className="label">How this page works</span>
         Absences are declared per record and collected here. They are deliberately not counted
         against a target or rendered as a completeness figure: a share of dimensions measured
         would be a composite score of exactly the kind the instrument refuses everywhere else.

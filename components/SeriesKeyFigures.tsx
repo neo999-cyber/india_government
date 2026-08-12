@@ -118,8 +118,13 @@ export function SeriesKeyFigures({ series }: { series: Series }) {
             {pts.length}/{span}
           </span>
           <span className="skf-sub">
-            observations across those years. A low figure is not a fault — a survey run every five
-            years covers exactly as it was designed to.
+            {/* CORRECTED 2026-08-12 on a reader's review, and the withdrawn wording is quoted
+                because the defect is its register, not its content: it read *"A low figure is not
+                a fault — a survey run every five years covers exactly as it was designed to."*
+                That anticipates a judgement the reader has not made and answers it, which is the
+                site talking to an imagined critic instead of stating what the number is. What the
+                cell needs is the denominator's meaning, and nothing else. */}
+            observations across those years, on this series&rsquo; own reporting interval.
           </span>
         </dd>
       </div>

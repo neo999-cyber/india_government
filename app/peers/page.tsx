@@ -234,9 +234,10 @@ export default function PeersPage() {
       </details>
 
       <div className="stub">
-        <span className="label">Scaffold</span>
-        The peer-index normalisation view (2014 = 100) lands with the counterfactual work. It will
-        state its vintage on the same line as its values.
+        <span className="label">Not built</span>
+        There is no index view normalising the panel to 2014 = 100. It had been tied to the
+        counterfactual work, and that was declined on 6 August 2026, so nothing is pending: the
+        panel is shown in its published units or not at all.
       </div>
     </>
   );
