@@ -44,6 +44,16 @@ control on the landing page.
   **reachability partitions nothing** (0 series are index-only; a domain surface reaches all 269).
   The one surviving boundary is what a series can support: **31 single-observation series render
   without the line permanently**, criterion printed. Tranche 1 landed 10.
+  **Tranche 9 landed 12, AS FIVE SETS. Running total 163 of 269; 74 remain; 32 render without the
+  line permanently.** Rate: 10, 11, 16, 20, 20, 20, 16, 20, 12. **The set-shaped unit has arrived**
+  — reported not-arrived twice, and the corrected interlock measure is what shows it: names is the
+  lowest of any tranche (7-13 per cent) while shared runs 50-82, and no dispute here is class-wide.
+  Three of the five sets complete a family whose other member is already written.
+  **A standing fix landed: `tools/deploy-poll.mjs`** asserts the needle absent before waiting, after
+  the hand-picked needle matched pre-existing prose twice. **Both frozen metrics:** family test 11
+  of 12 (running 151 of 163, 93 per cent); clause metric 50 per cent, series 40, 73, 63, 60, 40, 65,
+  44, 50, 50.
+
   **Tranche 8 landed 20. Running total 151 of 269; 86 remain; 32 render without the line
   permanently.** Rate: 10, 11, 16, 20, 20, 20, 16, 20. **The interlock measure itself was wrong and
   is corrected in the module header** — its shared-dispute limb counted class properties (`P-09`
