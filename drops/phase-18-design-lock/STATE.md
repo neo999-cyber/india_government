@@ -44,6 +44,19 @@ control on the landing page.
   **reachability partitions nothing** (0 series are index-only; a domain surface reaches all 269).
   The one surviving boundary is what a series can support: **31 single-observation series render
   without the line permanently**, criterion printed. Tranche 1 landed 10.
+  **Tranche 11 landed 20, plus TWO revisions to shipped findings. Running total 203 of 269; 34
+  remain; 32 render without the line permanently.** Rate: 10, 11, 16, 20, 20, 20, 16, 20, 12, 20, 20.
+  **`agri-gdp-share-peer` was revised** because `agri-gdp-share` lands showing India's agriculture
+  share FALLING on gross value added where the shipped peer sentence says it ROSE on GDP — both right
+  on their own denominator, a contradiction to a reader with both pages. **And a tranche-10
+  true-alone fix had to be reworded**: the sentence added to
+  `tn-fc-projection-minus-actual-devolution` took the caveat's words with it and tripped
+  caveat-duplication. **First time the two checks have pulled against each other**, and it is a
+  standing tension rather than a one-off — true-alone wants the caveat's content in the finding,
+  caveat-duplication forbids its exact words. **Both frozen metrics:** family test 19 of 20 (running
+  190 of 203, 94 per cent); clause metric 65 per cent, series 40, 73, 63, 60, 40, 65, 44, 50, 50, 70,
+  65.
+
   **Tranche 10 landed 20, plus ONE REVISION TO A SHIPPED FINDING. Running total 183 of 269; 54
   remain; 32 render without the line permanently.** Rate: 10, 11, 16, 20, 20, 20, 16, 20, 12, 20.
   **`edu-spend-gdp-centre-edu-depts` was revised on a live page** because `edu-union-moe-gdp` landed
