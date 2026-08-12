@@ -231,6 +231,29 @@
  * ORIGINAL tranche-3 definition — `is not`, `are not`, `not a`, `not the`, `rather than`,
  * `and not` — the comparable series is **40, 73, 63, 60, 40, 65**. It oscillates and does not
  * climb. **Any later cycle re-measuring this must use that six-term definition or say it changed.**
+ *
+ * ============================ WHEN THE BOUND DOES NOT COVER THE SET — TRANCHE 7 ===============
+ *
+ * **The bound has exactly two tested points: (20,45) supported twenty, and (60,100) supported ten.**
+ * Tranche 7's candidates sit inside neither. Scanned at every size from 10 to 24:
+ *
+ *   N       10    12    14    16    18    20    22    24
+ *   names   30    33    29    25    22    20    23    21
+ *   shared  60    58    50    44    61    65    59    54
+ *
+ * The closest approach is N=16 at 25/44 — shared-dispute inside the tested 45, names five points
+ * over — while N=20 reads 20/65, at the bound on one measure and far outside on the other.
+ *
+ * **So twenty is not supported here, and the honest response is to take fewer rather than to
+ * interpolate between the two tested points** — interpolation is exactly the finer forecast that has
+ * now been wrong three times. **Sixteen taken**, on the stated ground that N=16 is the only size
+ * whose shared-dispute measure falls inside the tested point, and has the lowest names measure of
+ * any size below twenty.
+ *
+ * **The cause is visible in the set and is real:** it holds three allocation/release PAIRS —
+ * Bihar's, Tamil Nadu's, and the J&K panchayat grants whose allocated half was written in tranche
+ * 4. Neither half of a pair can be written without the other read, which is the cost interlock
+ * measures. All sixteen held; nothing was dropped for slipping.
  */
 export type SeriesFinding = {
   /** One or two sentences. Plain text; no markdown — the view prints it as text. */
@@ -851,6 +874,90 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   'jk-security-forces-killed-satp': {
     finding:
       'A press-derived register with no published methodology \u2014 the entire methodology statement is a datasheet footer saying the figures are compiled from news reports and provisional. It reads 47 for 2014 and 30 for 2022, and it is carried because the convergence is itself the finding: this register and MHA\u2019s administrative count capture the quantity to within about ten per cent every year, which makes it the one measure in the domain that survives the objections damaging the others. The same publisher\u2019s civilian count for 2018 exceeds MHA\u2019s by more than a factor of two, on the same page.',
+    origin: 'authored',
+  },
+
+  // ---- 9. AUTHORED, tranche 7, 2026-08-12. SIXTEEN, and the size is the finding: NO candidate set
+  //         at any size from 10 to 24 sits inside the tested (20,45) interlock point. See the size
+  //         note in the header. The allocation/release pairs are why — each needs its twin read.
+  'aser-std3-arithmetic': {
+    finding:
+      'Standard III arithmetic reads 28.2 per cent in 2018, 25.9 in 2022 and 33.7 in 2024 \u2014 above the pre-COVID level, where reading recovered to its own 2018 mark at no grade. Two facts discipline that contrast: the arithmetic loss was small to begin with, so the bar was lower; and Standard VIII arithmetic shows no COVID dip at all, which cuts against explaining the 2024 gain as drift in the instrument. It is graded T4 because the schema grades an NGO dataset so.',
+    origin: 'authored',
+  },
+  'road-fatalities': {
+    finding:
+      'Road deaths rose from 141,526 in 2014 to 177,175 in 2024 \u2014 the counter-indicator to the highway programme, since fatalities climbed as the roads improved. Severity went from 21.6 deaths per 100 accidents in 2005 to 36.3 in 2024, and national highways carry about 2 per cent of road length but 36.6 per cent of the deaths. These are police-reported figures: verbal-autopsy estimates put the true 2022 toll near 2.7 lakh, roughly double, so the level is understated and the trend may be steeper than shown.',
+    origin: 'authored',
+  },
+  'bihar-samagra-shiksha-allocation': {
+    finding:
+      'The largest state allocation in the table, rising 54.1 per cent across five years from 3,827.55 crore in FY2021-22. It is carried as the base against which Bihar\u2019s releases are read \u2014 an allocation on its own states what was promised, not what moved.',
+    origin: 'authored',
+  },
+  'bihar-samagra-shiksha-released': {
+    finding:
+      'Paid at 89.0, 70.8, 84.5, 84.5 and 93.8 per cent of allocation \u2014 never in full, never near nil, and highest in the last year. It is carried as the control, because it establishes that release below allocation is the ordinary condition of this scheme in every state, which is what makes a release of zero a different kind of event rather than the far end of a continuum.',
+    origin: 'authored',
+  },
+  'jk-xiv-fc-panchayat-grants-released': {
+    finding:
+      'Five releases summing to 1,857.93 crore against 3,463.73 allocated, with the last year at zero. The 1,605.80 crore never released and the overall release rate of 53.64 per cent are derived here and appear nowhere in the answer, which is why they carry that label. The territorial referent also changed inside FY2019-20, on 31 October, and nothing here establishes that the one caused the other.',
+    origin: 'authored',
+  },
+  'nh-network-length': {
+    finding:
+      'The network grew from 91,287 km in FY2013-14 to 146,342 in FY2025-26, and this series overstates construction: roughly 54,004 km of the 55,000 km added since April 2014 is existing state road reclassified as national highway rather than new building. What was actually built is a different quantity and the instrument carries it separately.',
+    origin: 'authored',
+  },
+  'school-closure-weeks-covid': {
+    finding:
+      'India\u2019s schools were closed longest in the world on UNESCO\u2019s combined definition \u2014 93 weeks of fully closed plus partially open, against Indonesia\u2019s 92, Bangladesh\u2019s 86 and China\u2019s 30. On full closure alone the same database gives 25 weeks and rank 58 of 210, so a claim in either direction that does not name which measure it uses is unusable. A single national label is itself a fiction UNESCO admits: closure was state-decided and grade-differentiated, and India spent 476 days inside one undifferentiated partially-open bucket.',
+    origin: 'authored',
+  },
+  'tn-samagra-shiksha-allocation': {
+    finding:
+      'Allocation rises to FY2024-25 and then falls 14.2 per cent in FY2025-26. It is carried as the base against which Tamil Nadu\u2019s releases are read, and the fall matters because the release in the year before it was zero.',
+    origin: 'authored',
+  },
+  'tn-samagra-shiksha-released': {
+    finding:
+      'Paid at 96.9, 99.5 and 88.2 per cent of allocation, then nil, then part-paid \u2014 and that last figure is not one year\u2019s money. The Union\u2019s own asterisk states it includes 362.81 crore for FY2024-25, so that much is arrears against the nil year, 16.9 per cent of it paid late, leaving 263.39 crore as FY2025-26\u2019s own release. A zero followed by an arrears payment is a delay; a zero followed by another zero is not, and the two states carried here show one each.',
+    origin: 'authored',
+  },
+  'unincorporated-workers': {
+    finding:
+      'The unincorporated non-agricultural sector shrank by about 1.3 crore workers against its FY2015-16 baseline and only passed that level again in FY2023-24, reaching 12.81 crore by FY2025-26. Average workers per enterprise stayed at about 1.6 throughout \u2014 these are one-person and family micro-units, not firms.',
+    origin: 'authored',
+  },
+  'wb-css-releases': {
+    finding:
+      'On the Union\u2019s own account of what it released \u2014 it is a party to this dispute \u2014 centrally sponsored scheme money to West Bengal falls at every one of the four transitions with no reversal, 66.9 per cent across five years, against an all-India total that fell 5.8 per cent. The state goes from second-largest recipient in the table to receiving less than Punjab, Himachal Pradesh or Tripura, and from 7.10 to 2.50 per cent of the all-India total. It is centrally sponsored schemes only \u2014 the same answer shows the state\u2019s central sector releases rising 57.5 per cent over the identical years, so this is not the whole of Union money reaching it.',
+    origin: 'authored',
+  },
+  'metro-network': {
+    finding:
+      'The operational network grew from 248 km in FY2013-14 to 1,013 in FY2025-26. Ridership runs at 25 to 30 per cent of the projections used to justify the projects \u2014 Delhi is the best performer at 47.45 per cent and Bengaluru as low as 6 \u2014 and the Metro Rail Policy 2017\u2019s 14 per cent return threshold created an incentive to inflate those forecasts. No published annual series sets ridership against projection.',
+    origin: 'authored',
+  },
+  'regular-wage-share': {
+    finding:
+      'The regular wage or salaried share of workers is essentially flat across the period, 22.8 per cent in FY2017-18 and 23.6 in FY2025-26, while total employment rose sharply \u2014 which is the clearest evidence in this instrument that the employment gain was not firm-led hiring. For women it fell to 15.9 per cent. Two declared breaks sit in the run, at its start and at the FY2025-26 sample redesign.',
+    origin: 'authored',
+  },
+  'contract-teachers-share-government': {
+    finding:
+      'The share falls from 13 per cent in FY2013-14 to 11.1 in FY2021-22, and the fall is substantially reclassification rather than decline: Madhya Pradesh, Bihar and Delhi extended contracts to \u2018until retirement age\u2019, which re-codes the same teachers into the regular category while they stay on lower salaries and outside government-servant status. Guest teachers were not collected at all until 2023-24, so 11.1 excludes a whole category. Ninety per cent of contractual teachers are in rural schools, and 55 per cent are women against 44 per cent of the government teaching workforce overall.',
+    origin: 'authored',
+  },
+  'ed-pmla-cases-registered': {
+    finding:
+      'Cumulative anchors rather than an annual series: 209 by 2014 and 7,083 by 2024. The 5,892 recorded for 2025 is lower than the 2024 figure and is not a fall \u2014 the replies use differing cut-off dates and differing units, cases against ECIRs, so the three points do not sit on one basis and no rate of registration can be computed from them.',
+    origin: 'authored',
+  },
+  'household-electrification': {
+    finding:
+      'Household connections went from 70 per cent in FY2014-15 to 99 in FY2018-19. A connection is not supply: around 53 per cent of villages received under 12 hours a day of domestic supply as of 2019, and no continuous national series of household supply-hours exists at all.',
     origin: 'authored',
   },
 };

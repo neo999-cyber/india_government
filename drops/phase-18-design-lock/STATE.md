@@ -44,6 +44,14 @@ control on the landing page.
   **reachability partitions nothing** (0 series are index-only; a domain surface reaches all 269).
   The one surviving boundary is what a series can support: **31 single-observation series render
   without the line permanently**, criterion printed. Tranche 1 landed 10.
+  **Tranche 7 landed 16. Running total 131 of 269; 106 remain; 32 render without the line
+  permanently.** Rate: 10, 11, 16, 20, 20, 20, 16. **The bound did not cover this set** — no size
+  from 10 to 24 sits inside the tested (20,45) point, and sixteen was taken on a stated ground
+  rather than interpolated. The cause is three allocation/release pairs in the set.
+  **Both frozen metrics, reported as numbers:** family test 16 of 16 about the world (running
+  120 of 131, 92 per cent); clause metric 44 per cent on the six-term definition, against
+  40, 73, 63, 60, 40, 65 before it. Neither is trending.
+
   **Tranche 6 landed 20. Running total 115 of 269; 122 remain; 32 render without the line
   permanently.** Rate: 10, 11, 16, 20, 20, 20. Interlock 15/40, inside the bound; the 16- and
   24-sets were measured and not taken. **The tranche-5 family count of 4-of-20-about-the-world does
