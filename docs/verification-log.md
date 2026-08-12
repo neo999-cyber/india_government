@@ -16558,3 +16558,89 @@ mean its name. Negative definition as a sentence SHAPE remains 0, for the fifth 
 `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
 
 **Carries forward: 54.**
+
+---
+
+## 2026-08-12 (forty-third entry) — TRANCHE 11: twenty, two shipped revisions, and two checks in conflict
+
+### THE LIVE PAGES THAT CHANGED
+
+**`agri-gdp-share-peer`, shipped in tranche 10, has been revised.** It says India is the only country
+in the panel whose agriculture share of GDP rose. This tranche lands `agri-gdp-share`, which shows
+the share **falling** — 18.2 per cent of gross value added in FY2014-15 to 16 in FY2024-25. Both are
+right on their own denominator, and a reader with both pages sees a flat contradiction. The peer
+sentence now says India's own national accounts move the other way on gross value added, **stating
+the direction and borrowing no figure** — the numbers stay on the record that holds them, which is
+the discipline last batch's cross-record catch established.
+
+**And a fix from tranche 10 had to be fixed.** The sentence added to
+`tn-fc-projection-minus-actual-devolution` to satisfy true-alone — *"Both input columns come from the
+State's own Finance Department; only the subtraction is the auditor's"* — was taken verbatim from
+the caveat, and tripped caveat-duplication this batch.
+
+**THAT IS THE FIRST TIME THE TWO CHECKS HAVE PULLED AGAINST EACH OTHER, AND IT IS STANDING RATHER
+THAN A ONE-OFF.** True-alone wants the caveat's content in the finding; caveat-duplication forbids
+its exact words. The resolution is the one used here — carry the content in the finding's own
+sentence — but the collision will recur every time a true-alone fix is written quickly, because the
+caveat's wording is right there and reads well. Both were re-asserted corpus-wide after the rewrite.
+
+### THE SET SIGNATURE RETURNS
+
+Names 10 per cent against shared 75 at N=20 — the signature, and three of the twenty complete a
+family already written: `wb-own-tax-share-revenue-receipts` against Bihar's, `scb-gross-npa-amount`
+against the ratio, `ptr-elementary-dise` against the UDISE+ one. Only `P-09` was class-wide this
+time; `P-14` had no carriers in the set.
+
+**A fourth completion needed no revision and is reported for the same reason as last batch's:**
+`uapa-conviction-rate-ncrb` lands beside the arrests and convictions series shipped in tranche 2,
+whose findings already say NCRB computes its rate on completed trials rather than on persons
+arrested. The new record confirms them.
+
+### THE CHECKS
+
+**Figures: all 179 numeric tokens trace to their OWN record** across the twenty new sentences and the
+revised one.
+
+**Enum vocabulary: seven hits, the most in any tranche, and two were changed.** *measure*,
+*measured* ×2, *contested* and *partly* are ordinary English on series carrying no verdict field —
+and *contested* and *partly* are the records' own words. **`worked` in
+`tn-gst-protected-revenue-shortfall`** was a paraphrase of the auditor's *"as worked out by GoTN"*,
+so a substitute cost nothing and it now reads *computed by the State*. **`failed` in
+`rte-quota-implementing-jurisdictions`** is different: it is the parliamentary question's own word,
+and the finding's point is that the Ministry did not answer that question. Substituting it would
+misquote what was asked, so it is **marked as a quotation instead** — the first time an assessment
+word has been kept rather than replaced, and the ground is that a quotation attributes the word to
+its speaker.
+
+**Caveat-duplication, asserted corpus-wide over all 203: one found, and it was mine from last batch.**
+Back to zero.
+
+**True-alone found nothing — the third zero, after tranches 4 and 8.** Stated with its basis: fifteen
+of the twenty carry a caveat and each was read against it. **The closest call is a consistency point
+rather than a defect** — `aser-std8-arithmetic` and `aser-std3-reading-private` do not mention the T4
+grading that `aser-out-of-school-15-16` states in the same tranche and that four earlier ASER findings
+carry. It is not a true-alone failure, because the tier renders on the page independently, but it is
+the one place where three siblings written together do not read alike.
+
+All twenty-two verified to render exactly once on their own page, with a negative control.
+
+### BOTH FROZEN METRICS
+
+**Family test: 19 of 20** — `private-unaided-enrolment-share-udise` fails, because stripping its
+coverage-change clauses leaves a step the finding itself says is not behavioural. **Running total 190
+of 203 — 94 per cent.**
+
+**Clause metric, frozen six-term definition: 65 per cent.** Series: **40, 73, 63, 60, 40, 65, 44, 50,
+50, 70, 65.** Range unchanged at 40 to 73 across eleven tranches.
+
+### Where the count stands
+
+**203 of 269 carry a finding. 34 remain to author. 32 render without the line permanently.**
+
+### Gate line
+
+27 steps green. `listing-marks` 5,277 rows / 7,524 marks across 738 pages, unchanged.
+`link-check` 41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers.
+`unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+**Carries forward: 34.**

@@ -1276,7 +1276,7 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'agri-gdp-share-peer': {
     finding:
-      'India is the only country in the panel whose agriculture share of GDP rose \u2014 16.79 per cent in 2014 to 17.66 in 2024 \u2014 while Bangladesh fell from 15.35 to 11, Vietnam from 14.88 to 11.87 and China from 8.48 to 6.89. A rising share means agriculture grew faster than the rest of the economy, which is not the same thing as farming prospering.',
+      'India is the only country in the panel whose agriculture share of GDP rose \u2014 16.79 per cent in 2014 to 17.66 in 2024 \u2014 while Bangladesh fell from 15.35 to 11, Vietnam from 14.88 to 11.87 and China from 8.48 to 6.89. A rising share means agriculture grew faster than the rest of the economy, which is not the same thing as farming prospering. India\u2019s own national accounts, measured against gross value added rather than GDP, move the other way across the same decade \u2014 a different denominator, not a contradiction.',
     origin: 'authored',
   },
   'agri-value-per-worker-peer': {
@@ -1311,7 +1311,110 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'tn-fc-projection-minus-actual-devolution': {
     finding:
-      'A cumulative shortfall of 30,426 crore against Fourteenth Finance Commission projections, followed by a cumulative surplus of 31,887 crore across three years against the Fifteenth\u2019s \u2014 the same column, and both halves have to be carried together. It must never be read as the Union underpaying Tamil Nadu: the column measures the Commission\u2019s forecasting error at least as much as Union conduct, and nothing retrieved decomposes the two. Both input columns come from the State\u2019s own Finance Department; only the subtraction is the auditor\u2019s. The sign flips at FY2021-22 and never returns, which is the same post-COVID forecasting change that flips the national series.',
+      'A cumulative shortfall of 30,426 crore against Fourteenth Finance Commission projections, followed by a cumulative surplus of 31,887 crore across three years against the Fifteenth\u2019s \u2014 the same column, and both halves have to be carried together. It must never be read as the Union underpaying Tamil Nadu: the column measures the Commission\u2019s forecasting error at least as much as Union conduct, and nothing retrieved decomposes the two. Neither input is independent of the State: both columns are its own Finance Department\u2019s, and the auditor contributes only the subtraction. The sign flips at FY2021-22 and never returns, which is the same post-COVID forecasting change that flips the national series.',
+    origin: 'authored',
+  },
+
+  // ---- 13. AUTHORED, tranche 11, 2026-08-12. Twenty. The set signature returns — names 10 per
+  //          cent against shared 75 at N=20 — and three of these complete a family already written.
+  'wb-own-tax-share-revenue-receipts': {
+    finding:
+      'West Bengal raises around 40 per cent of its revenue itself, 38.59 per cent in FY2016-17 to 40.63 in FY2020-21 \u2014 roughly twice Bihar\u2019s share. The figure is derived here by dividing two published columns rather than printed as a ratio, and the window differs from Bihar\u2019s because the two states\u2019 audit reports cover different years: they are not two segments of one comparison and must not be spliced. It is the mirror this subject needs, because West Bengal receives essentially its population share of devolution and is the one state against which the statutory fund-stopping power has been used.',
+    origin: 'authored',
+  },
+  'scb-gross-npa-amount': {
+    finding:
+      'Three sourced points and no more: 2.51 lakh crore in FY2013-14, about 9.6 at the FY2017-18 peak and 2.73 in FY2024-25. The intervening years are not interpolated \u2014 an annual series has to come from RBI Trend & Progress before any continuous adjusted view can be rendered. The rise at FY2015-16 is the asset quality review forcing recognition rather than a deterioration in that year.',
+    origin: 'authored',
+  },
+  'ptr-elementary-dise': {
+    finding:
+      'A separate series from the UDISE+ primary ratio, on a different universe and a different level of aggregation \u2014 the two must not be joined, and a gap runs between them from FY2016-17 to FY2018-19. It reads 30 pupils per teacher in FY2010-11 and 24 in FY2015-16. Three official values circulate for FY2012-13 primary, 34.0, 28 and 27, and the basis of the 34.0 could not be established, so it is carried nowhere in this instrument.',
+    origin: 'authored',
+  },
+  'tn-gst-compensation-received': {
+    finding:
+      '50,700.69 crore released across six years, from 3,151 in FY2018-19 to 4,574.2 in FY2023-24, which is arrears \u2014 the guarantee itself expired on 30 June 2022, and a year-of-release series is not a year-of-entitlement series. Ten per cent of that total, 5,070.06 crore, was due to local bodies under the State\u2019s own Finance Commission recommendation and was never transferred; the Department admitted it at the audit exit conference, and the receipt and the non-transfer belong to one record.',
+    origin: 'authored',
+  },
+  'tn-gst-protected-revenue-shortfall': {
+    finding:
+      'The statutory guarantee applied to one state: protected revenue \u2014 the FY2015-16 subsumed-tax base of 29,786.36 crore compounded at 14 per cent \u2014 less what was actually collected including compensation. It reads 455.16 crore for FY2017-18 and 3,009.76 for FY2019-20. The projection and the subtraction are the auditor\u2019s, computed from a statutory base and a statutory rate, so the answer sits in neither government\u2019s account of itself \u2014 though the receipts input carries the auditor\u2019s own footnote that it was computed by the State.',
+    origin: 'authored',
+  },
+  'rte-quota-reimbursement-approval-rate': {
+    finding:
+      'Central approval as a share of what states claimed rises from 70.6 per cent to 88.1, and the cumulative shortfall of 2,451.39 crore across five years is a floor on the approval gap rather than a measure of what schools are owed \u2014 the Centre does not account for this money separately once released. Two structurally different failures are averaged in it: Uttar Pradesh was approved a tenth of its claim, while Karnataka claims exactly 200.00 crore every year and is approved almost exactly that, which is the 20 per cent ceiling binding rather than demand.',
+    origin: 'authored',
+  },
+  'rte-quota-implementing-jurisdictions': {
+    finding:
+      'Seventeen of 36 jurisdictions in 2020 and nineteen in 2023 \u2014 roughly half the country has never operated the provision, on the Ministry\u2019s own count, fourteen years after the Act commenced. Asked in December 2024 for the states that had, in the question\u2019s words, \u2018failed to implement\u2019 the Act, and the reasons why, the Ministry gave no list and replied only that education sits in the Concurrent List. An independent classification is internally inconsistent between 18 and 20, so 18 to 20 is the honest range.',
+    origin: 'authored',
+  },
+  'wb-devolution-population-ratio': {
+    finding:
+      'West Bengal receives essentially its population share of devolution \u2014 0.95 before the Fifteenth Commission and 0.98 after \u2014 and is nonetheless the one state against which the Union\u2019s statutory fund-stopping power has been used. That is what makes it the comparator that isolates the horizontal formula: setting Tamil Nadu against Bihar frames the devolution question as rich against poor, and setting it against West Bengal does not.',
+    origin: 'authored',
+  },
+  'unemployment-rate-cmie': {
+    finding:
+      'A private, subscription-gated survey with a contested sampling frame, reading 7 per cent in FY2018-19 and 7.7 in FY2025-26. The disagreement with the official survey is not a matter of one being right: across FY2017-18 to FY2021-22 the two record employment growth of opposite sign. April 2020 peaked at 23.5 per cent during the lockdown, and the series is still being published as of May 2026.',
+    origin: 'authored',
+  },
+  'lfpr-overall-cmie': {
+    finding:
+      'Roughly 20 percentage points below the official labour force participation rate, with the gap concentrated almost entirely among women: 43 per cent in FY2018-19 and 40 in FY2023-24. The two are not two readings of one quantity, and the instrument carries both rather than choosing.',
+    origin: 'authored',
+  },
+  'aser-std8-arithmetic': {
+    finding:
+      'Standard VIII division barely moved through COVID \u2014 44.1 per cent in 2018, 44.7 in 2022, 45.8 in 2024 \u2014 which is what makes it the control on the 2024 learning gains: NIPUN Bharat operates on Standards I to III only, and a general drift in the instrument would have moved this with everything else. ASER\u2019s tool also tops out at a Standard III or IV skill, so at Standard VIII it is close to uninformative about what is actually being learnt.',
+    origin: 'authored',
+  },
+  'teachers-total-udise': {
+    finding:
+      'Values before FY2023-24 undercount the people actually teaching, by an unknown margin, because guest and part-time teachers were not in the collection at all until that cycle. The headcount runs 9,687,577 in FY2019-20 to 10,273,020 in FY2025-26, on a universe that excludes anganwadi and unregistered private pre-primary teachers and includes the 31,981 teachers posted to zero-enrolment schools in FY2023-24.',
+    origin: 'authored',
+  },
+  'private-unaided-enrolment-share-udise': {
+    finding:
+      'The step from 34.4 per cent in FY2023-24 to 38.8 in FY2024-25 is not a behavioural shift: pre-primary enrolment, which is heavily private, entered both numerator and denominator that year, and the change appears in no disclaimer. This is precisely the kind of change that produces a spurious privatisation-surge headline. It must never share a column with the ASER rural private share, which is a different instrument on a different population.',
+    origin: 'authored',
+  },
+  'uapa-conviction-rate-ncrb': {
+    finding:
+      'NCRB\u2019s own published conviction-rate column, and not a ratio computed from arrests: 27.2 per cent for 2018 and 18.2 for 2022, with 2023 unpublished. Three other bases for the same offence are in circulation and none of them is interchangeable with this one.',
+    origin: 'authored',
+  },
+  'aser-std3-reading-private': {
+    finding:
+      'Private-school Standard III reading fell from 40.6 per cent in 2018 to 33.1 in 2022 and has recovered only to 35.5. The government-private gap narrowed from 19.7 points to 12.1 across those six years \u2014 partly because private schools fell, not only because government schools rose. Values for 2012 and 2016 were not published in the retrieved tables and are not interpolated.',
+    origin: 'authored',
+  },
+  'dropout-secondary-udise': {
+    finding:
+      'FY2022-23 is held rather than zero or missing: dropout is a year-on-year differencing operator, so it ran straight across the reporting-base shift and counted deduplicated records as children who had left. FY2023-24 is the first internally consistent year, at 14.1 per cent, falling to 11.5. A second official value exists for the same years on the NEP structure \u2014 10.9 against 14.1 for FY2023-24 \u2014 so any figure here has to be tagged by structure as well as by year.',
+    origin: 'authored',
+  },
+  'agri-employment-share': {
+    finding:
+      'Agriculture\u2019s employment share fell for decades, to 42.5 per cent in FY2018-19, and has risen since to 46.1 in FY2023-24. A rising share here is a development reversal rather than an improvement: in FY2019-20 alone employment in agriculture rose by about 32 million, absorbing roughly three-quarters of that year\u2019s entire employment increase.',
+    origin: 'authored',
+  },
+  'aser-out-of-school-15-16': {
+    finding:
+      'Children aged 15 to 16 not enrolled fell from 16.2 per cent in 2010 to 7.5 in 2022, and reads 7.9 in 2024. National levels are usable here where sub-national year-on-year changes are not, and it is graded T4 because the schema grades an NGO dataset so.',
+    origin: 'authored',
+  },
+  'gfcf-gdp': {
+    finding:
+      'Gross fixed capital formation runs 33 per cent of GDP in FY2014-15, troughs at 28 in FY2020-21 and has sat at 30 since. The late-2000s peak was around 36 to 38 per cent, so the recovery has not restored the pre-2011 investment rate.',
+    origin: 'authored',
+  },
+  'agri-gdp-share': {
+    finding:
+      'Agriculture\u2019s share of gross value added falls from 18.2 per cent in FY2014-15 to 16 in FY2024-25. The rise to 20.2 in FY2020-21 is a compositional artefact of the lockdown rather than farm dynamism \u2014 the other sectors contracted. On World Bank figures measured against GDP rather than gross value added the share moves the other way, 16.79 in 2014 to 17.66 in 2023, and the two are different constructions rather than a contradiction.',
     origin: 'authored',
   },
 };
