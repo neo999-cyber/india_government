@@ -15,6 +15,7 @@ import type {
 } from '@/lib/types';
 import {
   COMMITMENT_STATE_LABELS,
+  HIGHER_IS_BETTER_LABELS,
   OBJECTIVE_MEASUREMENT_LABELS,
   TIER_LABELS,
   formatValue,
@@ -102,6 +103,26 @@ export function TierTag({ tier }: { tier: Tier }) {
   return (
     <span className={tier === 'T5' ? 'tag tag-t5' : 'tag'} title={TIER_LABELS[tier]}>
       {tier}
+    </span>
+  );
+}
+
+/**
+ * The record's own declaration of which direction is better — or that there is no agreed one.
+ *
+ * **Renders nothing when the field is absent, and that is the whole of the three-branch rule.**
+ * `undefined` is a record nobody has asked; `null` is a record that was asked and declined. The
+ * second is a finding and prints; the first is silence and stays silent. Emitting *not stated* for
+ * the 123 absent records would manufacture a declaration out of a gap, which is rule 4 in the small.
+ *
+ * No colour, no arrow, no ordering. See `HIGHER_IS_BETTER_LABELS` for why the null branch makes a
+ * directional cue unavailable rather than merely undesirable.
+ */
+export function DirectionMark({ value }: { value?: boolean | null }) {
+  if (value === undefined) return null;
+  return (
+    <span className="direction-mark">
+      Direction of merit: {HIGHER_IS_BETTER_LABELS[String(value)]}
     </span>
   );
 }

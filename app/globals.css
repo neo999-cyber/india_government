@@ -3963,3 +3963,131 @@ details.more > summary {
   color: var(--ink);
 }
 .cw-outcome { font-size: 0.85rem; }
+
+/* ============================ QUESTION NAVIGATION — DESIGN-REVISION-2 §2 =====================
+
+   THE COLOUR RULE THESE OBEY, STATED ONCE. There is ONE outcome colour (`--ink`) and ONE caveat
+   colour, and nothing here introduces a third. `.qground` is neither track: it is the GROUND of a
+   verdict or the reason a difference is not a gap, and it takes the dimmed prose colour every
+   other secondary note on the site takes. A track a reader is meant to recognise cannot have two
+   appearances — that was measured on the topic overview last batch and cost `.chart-takeaway` its
+   separate shade — so no rule below may set a colour on `.outcome-*`.
+
+   NO SEVERITY, NO GRADATION. No question card is coloured differently from another, no set is
+   ordered by magnitude, and the improved and worsened pages are visually identical: the only
+   difference between them is which side of one declared field their rows fell on. */
+
+.qdistinct {
+  border-left: 2px solid var(--rule);
+  padding: 0.1rem 0 0.1rem 0.9rem;
+  margin: 1.4rem 0;
+}
+.qdistinct .prose-note { margin: 0; max-width: 74ch; }
+
+.qlist {
+  display: grid;
+  gap: 1.1rem;
+  margin: 1.6rem 0 2rem;
+}
+.qcard {
+  border-top: 1px solid var(--rule);
+  padding-top: 0.85rem;
+}
+.qcard h2 {
+  font-size: 1.05rem;
+  margin: 0 0 0.3rem;
+}
+/* A question that is answered elsewhere or not offered is not a lesser question, so it takes no
+   dimming and no strike. The only difference is that its heading is not a link, because there is
+   nothing to link it to — which is the honest signal and needs no decoration. */
+.qcard-off h2 { color: var(--ink); }
+.qcard-n {
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin: 0 0 0.4rem;
+}
+.qcard-crit {
+  margin: 0 0 0.35rem;
+  max-width: 78ch;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ink-dim);
+}
+
+/* The criterion on a route, in the same block idiom a caveat uses — because it makes the same kind
+   of claim about the page: this is what you are looking at, and it does not fit in a caption. */
+.qcrit {
+  border: 1px solid var(--rule);
+  padding: 0.7rem 0.85rem;
+  margin: 1.2rem 0 1.6rem;
+}
+.qcrit .label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 0.3rem;
+}
+/* SAME COLOUR AS `.qcard-crit`, AND THE MEASUREMENT IS WHY. A criterion appears twice — under its
+   question on the index and above its results on the route — and it was shipping at `--ink-dim` in
+   one place and the default `--ink` in the other. Not a severity gradation, but the same sentence
+   with two appearances, which is the defect the outcome track's own two shades were corrected for
+   one batch earlier. The box border carries the prominence the route needs; the colour does not. */
+.qcrit p {
+  margin: 0;
+  max-width: 82ch;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink-dim);
+}
+
+/* The ground of a verdict, and the reason a difference is not a gap. Full width, never clamped —
+   the longest is 3,550 characters and it renders whole, because it is the answer to the question
+   the page asks. */
+.qground-row > td {
+  padding: 0.35rem 0.6rem 0.6rem;
+  border-bottom: 1px solid var(--rule);
+}
+.qground {
+  display: block;
+  max-width: 82ch;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ink-dim);
+}
+.qground-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-right: 0.45rem;
+}
+
+.qside { display: block; }
+.qside-v {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-right: 0.4rem;
+}
+
+/* Direction of merit, on a series' own page. Words, never a colour or an arrow: see
+   HIGHER_IS_BETTER_LABELS for why the null branch makes a directional cue unavailable. */
+.direction-mark {
+  display: block;
+  margin: 1rem 0 0.2rem;
+  font-size: 0.82rem;
+  color: var(--ink-dim);
+}
+
+@media (max-width: 767px) {
+  .qcard-crit, .qcrit p, .qground { font-size: 0.85rem; }
+  .qcrit { padding: 0.6rem 0.7rem; }
+}

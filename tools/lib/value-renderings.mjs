@@ -80,6 +80,13 @@ const EXPOSURE_ADJ = labelMap(MARKS, 'EXPOSURE_ADJUDICATION_LABELS');
 // value cannot be looked for as itself once it has a label.
 const DIRECTION_OF_BIAS = labelMap(FORMAT, 'DIRECTION_OF_BIAS_LABELS');
 const PAIR_KIND = labelMap(FORMAT, 'PAIR_KIND_LABELS');
+// Parsed rather than retyped even though every other `phrase` map in this file is an inline
+// literal. The inline form is defensible where the phrase is one word invented at the call site;
+// this one has a rendering component and a label map behind it, so the same argument the header
+// makes for `labels` applies unchanged — and the null branch is exactly the kind of key a retyped
+// copy loses. Deliberately NOT added to `LABEL_MAPS`: that export feeds `enum-parity`, and a
+// boolean is not an enum.
+const HIGHER_IS_BETTER = labelMap(FORMAT, 'HIGHER_IS_BETTER_LABELS');
 
 /** The parsed maps, exported so nothing else re-parses or retypes them. */
 export const LABEL_MAPS = {
@@ -182,6 +189,17 @@ export const RENDERINGS = {
   'series.source.url': identity(),
   'series.source.vintage': identity(),
   'series.calendar': phrase({ FY: 'fiscal year', CY: 'calendar year' }),
+  /**
+   * DECLARED 2026-08-12, DISCHARGING THE DEBT ITS OWN SCHEMA DESCRIPTION LOGGED.
+   *
+   * The exemption this replaces did not say the field was deliberately unrendered — it said the
+   * field was UNIMPLEMENTED and recorded that as an open item. The question routes select on it,
+   * so it now renders on every series page that carries it. **All three keys are declared,
+   * including `null`**: a series stating that there is no agreed direction is making a
+   * declaration, not leaving a gap, and a phrase map missing that key would silently excuse 76
+   * records from the audit.
+   */
+  'series.higherIsBetter': phrase(HIGHER_IS_BETTER),
   'series.breaks[].provenanceRef': identity(),
   'series.provenanceRefs': identity(),
   'series.points[].country': labels(COUNTRY),

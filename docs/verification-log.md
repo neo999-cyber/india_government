@@ -17245,3 +17245,213 @@ pages / 0 dead. `field-render-audit` 0 invisible. `unrecognised-rows` 0. `domain
 
 **Carries forward: items 2 to 7. The grammar now holds on every series surface, which is the
 condition item 2 was waiting on.**
+
+---
+
+## 2026-08-12 (fiftieth entry) — DESIGN-REVISION-2 ITEM 2: question navigation, and the field that had never rendered
+
+### THE ITEM'S OWN PREMISE, TESTED EIGHT TIMES INSTEAD OF ACCEPTED
+
+§2 asserts that **every one of the eight questions is a filter over data already held**. Six are.
+Testing the claim per question, rather than building eight routes and discovering it, is the whole
+of the work, because a filter that cannot name the field it selects on is a judgement made at query
+time wearing a filter's clothes — the same defect as an order labelled *relevance* that is really
+title-first, which is why the search page has no relevance sort.
+
+| question | what answers it | disposition |
+|---|---|---|
+| what clearly improved | `higherIsBetter` × sign of change over the current window | **route**, 35 series |
+| what clearly worsened | the same field, other side | **route**, 13 series |
+| commitments met / missed | `assessment` | **NOT OFFERED**, two grounds |
+| what is still too early | `assessment === 'too-early'` + `assessmentNote` | **route**, 13 records |
+| where publication stopped | `spanRows().stopped` — end before the derived frontier | **route**, 93 series |
+| where official sources disagree | `pairs.kind === 'contested'` | **route**, 21 pairs |
+| what India can measure well | seven exact field tests | **route**, 24 series |
+| what cannot be known | `unmeasured[]` | **answered by `/unmeasured/`** |
+
+### THE OPERATOR'S PREMISE ON THE EXISTING SURFACES WAS WRONG IN BOTH DIRECTIONS — the thirteenth correction
+
+The instruction says `/contested/`, `/unmeasured/` and `/exposure/` are three of these questions with
+pages already built, and that the topic tabs carry a fifth. **Measured, one of the three is, one is
+adjacent to a question but a different object, and the third answers none of the eight.**
+
+- **`/unmeasured/` is one** — `allUnmeasured()`, 374 declarations across 199 records. It is why
+  *what cannot be known* is not a route.
+- **`/contested/` is a DIFFERENT OBJECT from *where sources disagree*, and conflating them was the
+  trap.** It selects `assessment === 'contested'` — 68 ledger records where the evidence supports
+  two readings of a VERDICT. *Sources disagreeing* is two instruments measuring the same quantity
+  and returning different numbers, which is `pairs.kind === 'contested'`, 21 pairs. **There was no
+  corpus-wide pairs listing at all**; pairs rendered only on their host records, their domain and
+  their lens. That question is the newest thing in this batch, not a re-entrance.
+- **`/exposure/` answers none of the eight.** It is `shockExposure` — what the corpus does when
+  offered an exogenous defence. A real surface, not one of these questions.
+
+**And a fourth surface nobody named turned out to hold a whole question.** `lib/spans.ts` already
+derives `stopped` — a series whose last observation precedes the publication frontier — with its
+frontier computed rather than chosen and a written warning against the two obvious simplifications.
+It had never produced a listing: `StripFilter` only highlights rows on the span picture, client-side
+and not in the URL. So *where did official publication stop* went from **the weakest question in the
+set to a route with 93 members**, entirely because someone read the file.
+
+### `higherIsBetter` — THE ONLY FIELD THAT HOLDS WHICH WAY IS BETTER, AND IT HAD NEVER RENDERED
+
+*What clearly improved* cannot be answered from a trend. A falling unemployment rate and a falling
+conviction rate are both falls, and only the record knows which is the good one.
+
+The field's own schema description **recorded the fact that no view read it as a DEBT, not a
+decision**, and logged it as open. Selecting on it while leaving it invisible would hand a reader a
+criterion they cannot check, which is rule 9's requirement failing quietly — so the debt is
+discharged here: declared in `value-renderings.mjs` as a phrase over all three branches, rendered on
+every series page through `DirectionMark`.
+
+**THREE BRANCHES, AND THE THIRD IS WHY IT IS WORDS RATHER THAN A CUE.** 70 series declare a
+direction, **76 declare explicitly that there is no agreed one**, and 123 are silent. A word can say
+*no agreed direction*; a colour has to pick a neutral shade, which reads as a third position on a
+scale rather than as a refusal to take one. The absent case renders **nothing** — a record never
+asked and a record that declined are different facts, and only the second is a declaration.
+Verified on all three: `aser-std3-reading` → *higher is better*, `aser-private-share-rural` → *no
+agreed direction*, `agri-credit` → nothing.
+
+**The schema edit is reported as a judgement.** The batch's stop condition is a schema or enum
+change; no property, type, enum or requirement moved, and a research session authors identically.
+What moved is a description that had become false. The withdrawn wording is quoted in the same
+field per the correction convention — **except the exemption MARKER itself, deliberately.** It is a
+token two gates test for by substring, and a quotation containing it would silently re-exempt the
+field the moment anyone removed the declaration: the same shape as a correction guard that asserts
+an absence. Three stale prose shadows fixed in the same operation — `lib/types.ts`,
+`components/SpanStrip.tsx` and `components/PeerSlope.tsx` each called the field an unread debt.
+
+### THE ONE QUESTION THAT IS NOT OFFERED, AND THE SECOND GROUND IS THE MECHANICAL ONE
+
+*Which commitments were met and which missed* is one letter from the scorecard §8 rejects. The
+instruction anticipated it and asked for a decision either way.
+
+**Ground one is the brief's:** grouping records under their verdicts produces a tally whatever the
+labels say, and a tally of 16 `failed` against 1 `worked` is the vocabulary an earlier pass removed
+and the first thing that gets screenshotted.
+
+**Ground two is mechanical and settles it without needing the first.** `/ledger/` already carries a
+facet control with an `assessment` option and a `data-f-assessment` attribute on every row. A route
+here is a second door onto a filter that exists. The verdicts are not hidden by declining it: every
+record states its own, with its ground, on its own page.
+
+### WHAT `measured well` NEARLY MEASURED, AND THE TEST THAT WAS REMOVED
+
+The obvious seventh test was *every India observation verified*. It is a fact about **this
+instrument**, not about India: `status: approx` means *from a credible report, exact primary pull
+outstanding*. Requiring it would have made the page a picture of the corpus's confidence in its own
+holdings — **the stated ground on which the status grid was refused**.
+
+It also cut hardest, so the wrong test would have produced the loudest finding:
+
+| test, in order | remaining |
+|---|---|
+| all series | 269 |
+| official primary or multilateral | 238 |
+| no methodology break | 155 |
+| no blocking caveat | 99 |
+| no declared absence | 91 |
+| no dispute record bears on it | **34** |
+| no rival instrument disagrees | 34 |
+| two or more India observations | **24** |
+
+With the removed test in place the answer was **3 series, all coal**. The ten records dropped by the
+dispute test were read rather than counted, per the candidates rule, and every one is a genuine
+dispute about the measured quantity — four boundaries for "renewable" (P-121), the Samagra Shiksha
+reporting-base shifts (P-106/P-107), India and China reporting different bilateral trade (P-119).
+
+### THE BASELINE FLOOR ON `improved` / `worsened`, AND WHY IT IS A FRAME AND NOT A THRESHOLD
+
+The comparison window starts at the later of the last methodology break and the May 2014 baseline.
+The break bound is rule 2: a first-to-last comparison spanning a break is the splice the corpus
+forbids. The 2014 bound is the instrument's own frame — without it `lok-sabha-sitting-days` enters
+the worsened set on **1952 against 2019**.
+
+**It removes one series and trims seven starts, and it flips no direction:** improved is 35 either
+way, worsened is 14 without it and 13 with it. A floor that changed which way a series moved would
+be a thumb on the scale.
+
+**No size threshold, anywhere, because any threshold would be invented here.** What stands in its
+place is a printed observation count on every row: a reader sees `2016 → 2017, 2 obs` beside
+`2014 → 2024, 11 obs` and discounts accordingly. Ordering is by run length, longest first — chosen
+because it is the ordering that most actively refuses the merit reading the page invites.
+
+### BOTH TRACKS ON EVERY COLLECTION, AND THE TWO EMPTY CASES ARE VISIBLE RATHER THAN HIDDEN
+
+Item 1's finding was a surface declaring evidence-only by omission. Measured on the built pages with
+a **depth-balanced extractor** — the first attempt used a non-greedy `</span>` and measured only the
+nested label, which is the ad-hoc-normaliser class caught in the act:
+
+| route | outcome | caveat (DOM) | ground |
+|---|---|---|---|
+| improved | 35 | 28 | — |
+| worsened | 13 | 18 | — |
+| too-early | — | 6 | 13 |
+| publication-stopped | 82 | 57 | — |
+| sources-disagree | 21 | 22 | 21 |
+| measured-well | **23** | **0** | — |
+
+**`measured-well` is outcome-only BY CONSTRUCTION** — *no blocking caveat* is one of its seven
+tests, so not one row can carry an evidence track, and nothing is emitted in its place. **`too-early`
+carries no outcome track and that is item 1's ledger decision applied, not forgotten**: what each row
+carries instead is its `assessmentNote`, labelled as the GROUND of the verdict rather than as an
+outcome sentence. 208 outcome-and-ground elements across the six routes, **0 containing a link, 0
+clamped or ellipsised**, longest 3,578 characters rendered whole at 375 px.
+
+### THE NEGATIVE CONTROL FAILED, AND THE FAILURE WAS THE CONTROL
+
+Checking rule 3a on the pairs page: 22 side caveats expected, 22 present in full. The control —
+a caveat from a series that is not a side of any contested pair — **appeared on the page**.
+
+It is not a defect. **Nine ASER series share one caveat string verbatim**, and one of the nine is a
+side of a contested pair. The needle identified nine records at once. Re-picked against a caveat
+that is unique in `/data`: 0 occurrences, with a same-form positive at exactly 1.
+
+**Pinned, because it generalises past this check: 4 groups of series share a caveat verbatim,
+covering 15 of 269.** A caveat string is not an identifier for those 15, and any check that treats
+it as one is unsound in the direction that reports a pass.
+
+### THE NEW SHAPES, BOUND BOTH WAYS — INERT, AND PROVED INERT
+
+`.qcard`, `.qcrit` and `.qdistinct` added to `CONTAINER_CLASSES` and removed again:
+
+| | `listing-marks` | `unrecognised-rows` |
+|---|---|---|
+| unbound (as shipped) | OK — 5,390 rows / 7,674 marks | OK |
+| bound | OK — 5,390 / 7,674, byte-identical | OK, byte-identical |
+
+**An inert result needs a positive control or it is indistinguishable from a blind spot.** Stripping
+one `caveat-row` from the built `/questions/improved/` makes the gate fail, naming
+`edu-union-be-shortfall-pct (tbody) has no caveat mark` — so the gate reaches these
+pages and the inert binding is real. The result rows are `<tbody>` units, a shape bound since the
+caveat-row change; the pair rows lead with their own `PR-xx` and are exempt, **and the exemption is
+not used** — both sides' caveats render, because on that page the series are the subject rather than
+the address.
+
+### COLOUR MEASURED, NOT ASSERTED — AND IT FOUND SOMETHING AGAIN
+
+Computed styles across all six routes and three series pages:
+
+- `.outcome-inline` — **one colour**, `rgb(30,34,51)`, on all 174 elements
+- `.caveat-inline` — **one colour**, `rgb(164,22,26)`
+- `.qground`, `.qcard-crit`, `.direction-mark` — `rgb(92,96,108)`, neither track
+- No background, no border-left, no icon distinguishes any row from any other
+
+**The find: the criterion was shipping in two colours** — `--ink-dim` under its question on the
+index and default `--ink` above its results on the route. Not a severity gradation, but the same
+sentence with two appearances, which is exactly what `.chart-takeaway` was corrected for one batch
+earlier. Aligned to `--ink-dim`; the box border carries the prominence the route needs.
+
+**Second batch running in which measuring the colour found a two-appearance defect that asserting
+compliance would have missed.**
+
+### Gate line
+
+27 steps green. `listing-marks` **5,390 rows / 7,674 marks across 745 pages** (from 5,277 / 7,524 /
+738). `link-check` **42,902 internal hrefs across 746 built pages, 22 route prefixes, 0 dead** (from
+41,713 / 739 / 21) — +7 pages is `/questions/` and its six routes exactly. `reachability`
+**1,787/1,787**. `field-render-audit` **0 invisible, 54 non-prose fields, 15 exempted by name** (from
+16; `higherIsBetter` moved from exempted to declared and series non-prose went 16 → 17).
+`no-unguarded-prose-field` **52 declared, 1 exempted**. `unrecognised-rows` **0**. `rendered-space`
+0. `domain-coverage` 1137/1137. Mobile at 375 px on every new route: 0 body overflow, nothing
+outside a `.table-wrap`, 0 clamped, the 3,578-character verdict note whole.

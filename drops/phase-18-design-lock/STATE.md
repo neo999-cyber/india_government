@@ -27,9 +27,41 @@ label-map sweep.** What remains is the two standing hazards, below.
 last one had shipped. A file read cold at every session start is the one place staleness costs most,
 which is why the pins below now carry the gate output they were measured from.
 
+**THE LIVE BRIEF IS NOW `DESIGN-REVISION-2.md`** in this directory, and it has its own build order.
+**Items 1 and 2 have shipped; items 3 to 7 carry.** See the section below.
+
 ---
 
 ## OPEN ITEMS
+
+### DESIGN-REVISION-2 — items 1 and 2 SHIPPED, items 3 to 7 CARRY
+
+`DESIGN-REVISION-2.md` is in this directory. Its §8 records five rejections with the rule each
+breaks, and §9 restates ten constraints; neither is re-derived.
+
+**ITEM 1, THE TWO TRACKS — DONE 2026-08-12** (`a762f62` and the commit before it). `OutcomeRow` is
+the outcome track and `CaveatRow` the evidence track, and a surface declares which it draws on by
+which it calls. Ratio outcome-pages-per-record **1.02 -> 5.34**, caveat unchanged at 11.81, so the
+asymmetry closed by adding the outcome and not by quieting the qualification. **The ledger table was
+declined with three stated grounds** and the decision stands: a ledger row already states an outcome
+(its assessment), `summary` and `whatHappened` have never been through the true-alone check, and §8
+rejects reinforcing the public verdict vocabulary. **What would reverse it:** ledger records gaining
+an authored outcome sentence written to the three checks.
+
+**ITEM 2, QUESTION NAVIGATION — DONE 2026-08-12.** `/questions/` plus six routes. **Two of the eight
+questions did not become routes and they failed differently**, both recorded in `lib/questions.ts`
+rather than dropped: *which commitments were met and which missed* is **not offered** — the ledger
+index already filters by assessment, and grouping records under their verdicts is a tally whatever
+the labels say; *what cannot be known* is **answered by `/unmeasured/`**, which does it better than a
+filter would.
+
+**The residual from item 1 is unchanged and is not an item-2 failure:** the 2.2x outcome-to-evidence
+ratio is provenance pages, year pages and cited-by grids — surfaces where a caveat renders and no
+series listing does.
+
+**ITEMS 3 TO 7 CARRY, in the brief's own build order:** record spine + next steps (§3, §9) · topic
+strips (§1, §2, §10) · matrix + year strip (§5, §7) · two-truths cards (§11) · stories (§8). The
+grammar item 3 inherits now holds on every series surface, which is what item 2 was waiting on.
 
 ### CLOSED 2026-08-12 — DESIGN-REVISION.md items 1-4, and the authored series findings
 
@@ -348,11 +380,13 @@ header above.
 |---|---|
 | gate chain | **27 steps**, `npm run build`; `npm run commit` is the only sanctioned commit path |
 | `unrecognised-rows` | **0**, report-only. Zero makes flipping it to a gate *available*, not decided |
-| `listing-marks` | **5,277 listing rows · 7,524 marks** across 738 pages — re-measured 2026-08-12 from the gate's own output; the pinned 3,552 · 5,008 had been stale since the domain rebuild |
-| `link-check` | 41,713 internal hrefs across 739 built pages, 21 route prefixes, 0 dead |
+| `listing-marks` | **5,390 listing rows · 7,674 marks** across 745 pages — re-measured 2026-08-12 from the gate's own output after the question routes (from 5,277 · 7,524 / 738) |
+| `link-check` | 42,902 internal hrefs across 746 built pages, 22 route prefixes, 0 dead |
 | authored series findings | **237 of 269**; 32 render without one, permanently and for a stated reason |
 | raw enum tokens on a public surface | `directionOfBias` 6 pages, all the one deliberate site; `pairs.kind` 0 |
-| `field-render-audit` | 0 invisible, 17 exempted by name |
+| `field-render-audit` | 0 invisible, **15** exempted by name (was 17; `higherIsBetter`'s exemption was discharged 2026-08-12 and it is now declared) |
+| `higherIsBetter` | **renders from 2026-08-12**, as words, via `DirectionMark`. 70 declare a direction · 76 declare none · 123 are silent, and the third renders nothing |
+| caveat strings are NOT identifiers | **4 groups of series share a caveat verbatim, covering 15 series** — nine ASER siblings are one group. Any check that identifies a record by its caveat text is unsound for those 15; use the id |
 | deploy | `vercel.json` calls `npm run build`; `tools/deploy-chain.mjs` fails if the chain is ever restated instead of called |
 | verify after push | `node tools/deploy-check.mjs` — needs the network, deliberately not in the build |
 

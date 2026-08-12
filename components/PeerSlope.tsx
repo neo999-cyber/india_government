@@ -28,9 +28,14 @@ import type { Country, Series } from '@/lib/types';
  * ============================ WHAT IT REFUSES TO ENCODE =======================================
  *
  * **NO MERIT COLOURING.** The mock ran saffron-to-green, low-to-high, which makes high good. This
- * corpus leaves `higherIsBetter` null wherever direction is contested and the field is a known
- * unread debt besides. India is distinguished by WEIGHT — a heavier line and a filled point — and
- * never by hue, so the chart says *where India is*, not *how India is doing*.
+ * corpus leaves `higherIsBetter` null wherever direction is contested. India is distinguished by
+ * WEIGHT — a heavier line and a filled point — and never by hue, so the chart says *where India
+ * is*, not *how India is doing*.
+ *
+ * **The withdrawn half of that sentence read “and the field is a known unread debt besides”, and
+ * it stopped being true on 2026-08-12**, when the question routes made the field render. It never
+ * carried the argument: the refusal here is that a slope chart has no defensible hue to spend, and
+ * a rendered direction of merit is a WORD on a record, not a licence to colour a line.
  *
  * **NO RANK NUMBER.** Position on the axis is the value, and reading a rank off it is the reader's
  * inference from a stated quantity. Printing "4th of 5" would convert a measurement into a
