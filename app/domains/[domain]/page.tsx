@@ -22,11 +22,12 @@ import {
 } from '@/lib/format';
 import { DOMAINS, LENSES, LENS_ONLY, type Domain, type Lens } from '@/lib/types';
 import type { Pair, Series } from '@/lib/types';
-import { CaveatRow, RecordMarks, REASON_KIND_LABELS, StatusKey, StatusTally, TallyGloss, TierTag } from '@/components/marks';
+import { CaveatRow, OutcomeRow, RecordMarks, REASON_KIND_LABELS, StatusKey, StatusTally, TallyGloss, TierTag } from '@/components/marks';
 import { SeriesChart } from '@/components/SeriesChart';
 import { DomainTabs } from '@/components/DomainTabs';
 import { DOMAIN_CHARACTER, DOMAIN_EVIDENCE, DOMAIN_PERIODS } from '@/lib/domain-copy';
 import type { LedgerRecord, Unmeasured } from '@/lib/types';
+import { SERIES_FINDINGS } from '@/lib/series-copy';
 
 type Props = { params: Promise<{ domain: string }> };
 
@@ -571,6 +572,10 @@ function SeriesBlock({ items, showSubject }: { items: Series[]; showSubject?: bo
                 )}
                 </td>
                 </tr>
+                {/* THE TWO TRACKS, in reading order: what the measured result did, then what is
+                    known about the measurement. The outcome row is new — this table shipped the
+                    evidence track alone, which is the 11.5x asymmetry recorded on `OutcomeRow`. */}
+                <OutcomeRow finding={SERIES_FINDINGS[x.id]?.finding} colSpan={7} />
                 <CaveatRow record={x} colSpan={7} />
               </tbody>
             ))}

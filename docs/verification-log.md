@@ -17055,3 +17055,105 @@ delete rule 4a along with the register.
 27 steps, build exit 0. `listing-marks` 5,277 rows / 7,524 marks across 738 pages. `link-check`
 41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers.
 `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+---
+
+## 2026-08-12 (forty-eighth entry) — DESIGN-REVISION-2 ITEM 1: the two tracks, and the brief's premise was wrong
+
+### THE PREMISE CHECK — THE TRACKS DO NOT STACK; ONE OF THEM IS BARELY SHIPPED
+
+§1 says the outcome and evidence tracks *"stack as though the second undermines the first's truth."*
+**Measured on the built site, they do not stack.** On the worked example's own page they sit 2,079
+characters apart — finding, chart, key figures, then caveat.
+
+**What is actually wrong is worse and simpler.** Across the 122 series carrying both an authored
+finding and a caveat:
+
+| | mean pages carrying it |
+|---|---|
+| the CAVEAT | **11.81** |
+| the FINDING | **1.02** |
+
+**Findings reaching any page beyond their own: 3 of 122.** The evidence track reaches **11.5×** as
+many pages as the outcome track. On `/search/`, `/series/`, `/domains/<t>/` and every indicators tab,
+a reader meets a title, a status mark and a full-width caveat row — **and no statement of what the
+measured result did.**
+
+That is not two tracks stacked. It is one track shipped, and it is the reader review's finding
+arrived at from the other end: a site whose listing surfaces carry qualification without result reads
+as an audit of statistical behaviour. **Twelfth premise correction in eleven batches** — and this one
+is not the flatters/alarms pattern: the brief understated the defect rather than overstating it.
+
+### THE GRAMMAR, FOR ITEMS 2 TO 7 TO BUILD AGAINST
+
+**What each track carries.**
+
+- **OUTCOME** — what the measured result did. The authored finding, one or two sentences, 237 of 269
+  series. Component: `OutcomeRow`.
+- **EVIDENCE** — what is known about the measurement: verified · approximate · discontinued · changed
+  basis · contested. Components: `CaveatRow` beneath, plus the inline marks a row already carries —
+  status, declared absences, differing facts, tier.
+
+**How a surface declares which it draws on.** By which component it calls. **There is no flag and no
+mode.** `OutcomeRow` is the outcome track; `CaveatRow` is the evidence track. A surface rendering one
+and not the other is making a visible choice rather than an accidental one — which is precisely the
+condition that let 11.5× go unnoticed.
+
+**The two empty cases, which are not symmetrical.**
+
+- **Outcome, no qualification** — the outcome renders alone. **Nothing is emitted for the absent
+  evidence track.** A rendered "no qualifications" would assert the measurement is clean; the corpus
+  holds only that this record declared none. Silence is the honest form. Verified: 5 such records on
+  the education tab, 0 placeholders.
+- **Qualification, no outcome** — the case the brief flagged as most likely to be got wrong.
+  **Nothing is emitted for the absent outcome track either**, and the reason is a rule rather than a
+  default: 32 series carry no authored finding, 31 because one observation shows no trajectory and
+  one because it failed the survive-the-chart test. The outcome track is **absent by a stated rule,
+  not empty by accident.** Verified: 1 such record on the education tab (`parakh-grade9-maths`, a
+  single-observation series), 0 placeholders. **A row showing only evidence is the defect this item
+  names, so where it survives it should be because the record supports no outcome sentence.**
+
+Counts reconcile: 53 outcome rows = 48 both-tracks + 5 outcome-only; 49 caveat rows = 48 + 1.
+
+### NOT A SEVERITY SCALE — CHECKED, AND ONE THING REPORTED
+
+`DESIGN-REVISION.md` §7 rejected amber-for-warnings and red-for-breaks. **The outcome row takes no
+colour, no icon, no rule and no ordering the caveat row does not** — the two are distinguished by a
+label and nothing else, both on transparent ground, the outcome label using the same `--ink-dim` as
+the caveat's.
+
+**The one place a reader could read severity, reported rather than passed over:** the caveat renders
+in `--alert` red and the outcome in ink. **That red predates this change** — red is the corpus's
+existing reserve for deaths, alerts and break-seams, and a caveat is a blocking qualification.
+**Measured, it is flat: exactly one caveat colour across all 72 caveats on the page and one outcome
+colour across all 53.** Nothing is graded, nothing is amber, no record is coloured relative to
+another. A single ungraded red on one track is a distinction of kind; §7's rejection was of a
+*gradient*, and there is none.
+
+### THE NEW SHAPE, CHECKED BOTH WAYS BEFORE COMMITTING (§10)
+
+**286 outcome rows across 14 pages.** `listing-marks` **5,277 rows / 7,524 marks** — identical before
+and after. `unrecognised-rows` **0**.
+
+**Bound and unbound both measured, and binding is INERT — which is the finding.** Adding `outcome-row`
+to `CONTAINER_CLASSES` changes nothing, because that list matches `article|div|figure|section` and
+this shape is a `<tr>`. The row is in scope as a `tr`, and it passes because **bounded to its own
+`</tr>`, 0 of 286 contain any href** — it names no record, so `unrecognised-rows` has nothing to find
+by construction and `listing-marks` counts it under the `<tbody>` unit that already carries the
+record's marks. **A first measurement said 16 contained a link; that was a 400-character window
+spilling past the row into the next one.** Bounded properly, it is 0.
+
+### RULE 3a UNTOUCHED
+
+Verified at 375 px: **0 overflow, the caveat unclamped at its full 609 characters with no overflow,
+the outcome unclamped, and the outcome above its caveat inside every `<tbody>`.** Putting a result
+above a qualification does not shrink the qualification.
+
+### Gate line
+
+27 steps, build exit 0. `listing-marks` 5,277 / 7,524 across 738 pages, unchanged. `link-check`
+41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible. `unrecognised-rows` 0.
+`domain-coverage` 1137/1137. `rendered-space` 0.
+
+**Carries forward: items 2 to 7, and the outcome track on the surfaces this item did not reach —
+`/search/`, `/series/`, the topic overview and the ledger table are all still evidence-only.**

@@ -3912,3 +3912,37 @@ details.more > summary {
   font-size: 0.8125rem;
   color: var(--ink-dim);
 }
+
+/* ── THE TWO TRACKS ──────────────────────────────────────────────────────────────────────────
+   OUTCOME ROW. Sits above the caveat row in the same table, same full width, same weight.
+
+   IT TAKES NO SEVERITY SIGNAL, DELIBERATELY. DESIGN-REVISION.md §7 rejected amber-for-warnings
+   and red-for-breaks because a caveat is a blocking qualification and an absence is a finding,
+   and colouring them alike asserts a severity the corpus does not hold. Two tracks is a
+   separation of KIND, so the outcome row is distinguished from the caveat row by its LABEL and
+   by nothing else: no colour of its own, no icon, no rule, no ordering.
+
+   The label uses --ink-dim, the same as the caveat's own label. If a later change gives either
+   row a colour the other does not have, this becomes a quality score and stops being two
+   tracks. */
+.outcome-row > td {
+  padding: 0.35rem 0.6rem 0.55rem;
+  border-bottom: 1px solid var(--rule);
+}
+.outcome-inline {
+  display: block;
+  max-width: 78ch;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.outcome-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-right: 0.45rem;
+}
+@media (max-width: 767px) {
+  .outcome-inline { font-size: 0.86rem; }
+}
