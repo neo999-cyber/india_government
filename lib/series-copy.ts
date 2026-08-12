@@ -135,6 +135,24 @@
  * dispute refs — rather than from its prose, which is why a prose-length metric predicted the wrong
  * thing twice.** A negative definition is the most useful sentence a thin record has, and it is the
  * one a reader most needs, because it is the misreading the chart alone invites.
+ *
+ * ============================ THE FORM DISTRIBUTION, COUNTED FROM TRANCHE 3 ONWARD ============
+ *
+ * **The negative definition was a real reading of what thin records support and it must not become
+ * a template.** 198 sentences of *this is not what you think it is* would flatten into a form and a
+ * reader would stop hearing any of them. So the form each finding takes is counted, by hand, and
+ * written down per record rather than inferred by keyword.
+ *
+ * **Tranche 3, sixteen findings: trajectory 4, convention-dependence 3, published-once 2, negative
+ * definition 2, and one each of paired control, corrects-a-circulating-figure, unexplained-step,
+ * a-value-that-is-an-act, and the-stop-explained.** The negative definition is **2 of 16 as the
+ * SHAPE of the sentence** — well under the third that would signal a tic.
+ *
+ * **But the honest second number is higher and is reported with it: 10 of 16 carry a negating
+ * clause somewhere.** Read, they are unit and basis clarifications that the true-alone standard
+ * forces — *released, not allocated and not spent*; *calendar years and not financial years*; *a
+ * count of deaths and not a measure of what the weapon did*. That is substance, not style. **The
+ * number to watch is the first; the second is recorded so a later cycle can see if it climbs.**
  */
 export type SeriesFinding = {
   /** One or two sentences. Plain text; no markdown — the view prints it as text. */
@@ -357,6 +375,91 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   'nominal-gdp': {
     finding:
       'Nominal GDP in current rupees, 124.7 lakh crore in FY2014-15 to 356 in FY2025-26, every figure approximate. The 2022-23 rebasing lowers the level by roughly 3 to 4 per cent, and every ratio-to-GDP in this instrument inherits that shift.',
+    origin: 'authored',
+  },
+
+  // ---- 5. AUTHORED, tranche 3, 2026-08-12. Sixteen, continuing down the reachability ordering.
+  //         The negative-definition form tranche 2 found is deliberately NOT the template here; the
+  //         form each sentence takes is whatever its record supports, and the distribution is
+  //         counted and reported rather than assumed.
+  'bihar-mgnrega-funds-released': {
+    finding:
+      'Central MGNREGA money released to Bihar across three years of one table \u2014 7,284.24 crore, then 5,407.37, then 6,395.29, down about a quarter and back up. It is carried as the control for West Bengal, whose row in the same table, from the same publisher, over the same three years, goes to zero and stays there. These are the Union\u2019s own figures for what it released, which is not what it allocated and not what was spent.',
+    origin: 'authored',
+  },
+  'jk-pellet-deaths': {
+    finding:
+      'Thirteen deaths in 2016 and four in 2017, from one parliamentary answer whose table runs January 2015 to December 2017 \u2014 every month of 2015 is a dash, which is a blank rather than a published zero. The seventeen-death total that circulates is routinely given the wrong window: the deaths fall between July 2016 and August 2017. The same answer refused the injury count on national-security grounds, so this is a count of deaths and not a measure of what the weapon did, and the word \u2018pellet\u2019 appears in no MHA Annual Report from 2013-14 to 2024-25.',
+    origin: 'authored',
+  },
+  'edu-spend-gdp-all-depts': {
+    finding:
+      'The broad measure Parliament is briefed on and the one quoted against the 6 per cent target: education departments plus the education spending of roughly 44 other ministries, of which the Ministry of Education is 39 per cent. It must not be used to compare the UPA and Modi periods \u2014 an unexplained near-doubling of the other-departments component straddles FY2013-14 and FY2014-15, growth of 41.7 then 49.0 per cent against 11.4 and 8.4 for education departments, and no retrieved document accounts for it. The series terminates at FY2021-22, with no edition covering any year since.',
+    origin: 'authored',
+  },
+  'cess-surcharge-share-gtr': {
+    finding:
+      'Cesses and surcharges as a share of gross tax revenue on the convention that includes the GST Compensation Cess: 10.4 per cent in FY2011-12 to 19.9 by FY2018-19. The doubling is real on this convention and the convention has to be named every time \u2014 the same quantity for FY2024-25 has four defensible values spanning 9.98 to 17.71 per cent, a spread wider than the rise itself. Roughly a quarter of the end-period level is the compensation cess, which is earmarked to the states.',
+    origin: 'authored',
+  },
+  'aser-std3-reading': {
+    finding:
+      'The share of rural Standard III children who can read a Standard II text reached 27.3 per cent in 2018, fell to 20.5 in 2022 and stands at 27.1 in 2024 \u2014 below where it was six years earlier. There was no field survey between November 2018 and November 2022, so the depth of the trough was measured only at its end. It is graded T4 because the schema grades an NGO dataset so, and it is the only continuous national learning series India has.',
+    origin: 'authored',
+  },
+  'jk-prison-detained-category': {
+    finding:
+      'Produced once, in a parliamentary answer of December 2019 covering six years, and never repeated: 7 prisoners in the \u2018Detained\u2019 category in 2014 and 356 as at November 2019. The reply does not state what legal instrument produces a \u2018Detained\u2019 prisoner, so this is not a Public Safety Act count. The same reply carries a companion row of J&K prisoners lodged outside the territory \u2014 zero for four years, then 41, then 261.',
+    origin: 'authored',
+  },
+  'gst-compensation-cess-collected': {
+    finding:
+      'Despite its name, none of this money reached the states as compensation. From 30 June 2022 its proceeds serviced debt raised because the fund could not meet the guarantee, interest ranking first and principal second, so the states\u2019 arrears ranked behind debt service \u2014 and every point here sits inside that period. It reads 125,862.41 crore for FY2022-23 and an 88,000 crore Revised Estimate for FY2025-26, the levy\u2019s notified terminal year.',
+    origin: 'authored',
+  },
+  'wb-mgnrega-funds-released': {
+    finding:
+      'Central MGNREGA money released to West Bengal: 11,454.05 crore, then 7,507.8, then zero. That zero is a statutory act \u2014 release was stopped under section 27 of the MGNREG Act from 9 March 2022 \u2014 and a zero in a release table otherwise means no demand or no claim, which the table cannot distinguish from within itself. Bihar\u2019s row in the same table over the same three years does not stop.',
+    origin: 'authored',
+  },
+  'india-china-imports-chinese-basis': {
+    finding:
+      'What China reports it exported to India: 117.679 billion dollars for 2023 and 120.463 for 2024, valued free on board. The series stops at 2024 because China had filed no annual UN Comtrade returns for 2025 for any partner, so the 2025 mirror does not exist rather than being unretrieved \u2014 and the two sides must not be read as diverging in that year, because only one of them has one.',
+    origin: 'authored',
+  },
+  'cess-surcharge-share-gtr-excl-compcess': {
+    finding:
+      'The same aggregate with the GST Compensation Cess taken out, and the exclusion inverts a year: in FY2017-18 this series falls from 13.5 to 10.6 while the inclusive one rises from 13.5 to 13.9. Across FY2011-12 to FY2020-21 the rise here is 10.4 to 15.3, a multiple of 1.47 against 1.91 on the inclusive convention, so roughly half the apparent doubling is a cess earmarked to the states. The two answer the same question and must be shown together or neither.',
+    origin: 'authored',
+  },
+  'lfpr-overall': {
+    finding:
+      'Labour force participation rises from 49.8 per cent in FY2017-18 to 60.1 in FY2023-24. The 39.5 per cent often quoted for 2011-12 is not the start of this line: it comes from a different survey on a different age base and the two cannot be joined. Two declared breaks sit in the run \u2014 the instrument changed at its start, and the sample was redesigned in FY2025-26.',
+    origin: 'authored',
+  },
+  'jk-nhrc-complaints': {
+    finding:
+      'Cases from J&K registered with the National Human Rights Commission rise from 194 in FY2017-18 to 995 in FY2023-24, and the increase is not evidence that more occurred. It counts cases one body registered, across the period in which the only alternative forum in the territory was abolished, so part of the increase is complainants who previously had two bodies and now have one.',
+    origin: 'authored',
+  },
+  'india-china-imports-indian-basis': {
+    finding:
+      'What India reports it imported from China: 121.967 billion dollars for 2023, rising to 149.495 for 2025, valued inclusive of cost, insurance and freight. Calendar years and not financial years \u2014 the Chinese side reports on calendar years only, and the April-to-March figures DGCIS publishes for the same flow are different numbers.',
+    origin: 'authored',
+  },
+  'jkccs-civilians-killed-by-armed-forces': {
+    finding:
+      'The only instrument located in this phase, of any provenance, that ever published a perpetrator split for civilian deaths in Jammu and Kashmir \u2014 71 in 2018 and 19 in 2019 \u2014 and it terminated. Its 2019 figure is a floor rather than a count, because its compilers record that after 5 August 2019 no proper research or documentation could be undertaken.',
+    origin: 'authored',
+  },
+  'crar': {
+    finding:
+      'Bank capital against risk-weighted assets rises from 12.94 per cent in FY2014-15 to 17.7 in FY2025-26, a multi-decade high. It is graded T4 not because the Reserve Bank is doubted but because what this instrument holds is a news site\u2019s account of the Financial Stability Report rather than the report: retrieval of the document itself was attempted from several routes and none of them returned it, and those routes are named in the record.',
+    origin: 'authored',
+  },
+  'net-npa': {
+    finding:
+      'The net NPA ratio peaks at 6.1 per cent in FY2017-18, after the asset quality review forced recognition, and falls to 0.5 by FY2025-26. The reporting basis is not stated by the source, which is why the title says so \u2014 a ratio whose basis is unstated cannot share an axis with one whose basis is known.',
     origin: 'authored',
   },
 };
