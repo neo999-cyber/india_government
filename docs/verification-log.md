@@ -16071,3 +16071,106 @@ negative control.
 `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
 
 **Carries forward: 142.**
+
+---
+
+## 2026-08-12 (thirty-eighth entry) — TRANCHE 6, and the family count does not replicate
+
+### THE QUESTION THE OPERATOR ASKED, AND THE ANSWER IS THAT MY OWN NUMBER WAS WRONG
+
+The question was whether the four-of-twenty split is a property of the ordering or of the corpus.
+**It is a property of neither. It is a property of the classifier, and the classifier had no stated
+rule.** Tranche 5's families were assigned by dominant impression, per tranche, and never written
+down — which is the count-without-a-stated-method defect the corpus already names.
+
+**Restated with a mechanical test applied uniformly to every finding ever written here:** strip each
+clause about how the number was made, published, defined or based, and ask whether a substantive
+statement about India remains.
+
+| set | n | about the world |
+|---|---|---|
+| harvested | 5 | 4 |
+| domain leads | 13 | 9 |
+| tranche 1 | 10 | 8 |
+| tranche 2 | 11 | 11 |
+| tranche 3 | 16 | 16 |
+| tranche 4 | 20 | 20 |
+| **tranche 5** | 20 | **16** |
+| tranche 6 | 20 | 20 |
+| **total** | **115** | **104 — 90 per cent** |
+
+**Tranche 5 is 16 of 20 on this test, not 4 of 20.** The eleven that fail are named in the module
+header rather than left as a residual. **The drift the count was built to detect is not happening**,
+and the alarming number was an artefact — **the fourth measurement in this work to be wrong**, after
+the material-length metric, the thin-prose forecast and the tranche-size forecast.
+
+**The clause metric had drifted the same way, and this was found by it happening again.** Tranche 6
+first measured 80 per cent, which looked like a jump; the cause was that I had added a term to the
+regex. Reported figures of 63, 65 and 50 across tranches 3 to 5 were each computed with a slightly
+wider pattern than the last. **On the original six-term tranche-3 definition the comparable series is
+40, 73, 63, 60, 40, 65** — it oscillates and does not climb. The definition is now frozen in the
+module header and a later cycle must use it or say it changed.
+
+### TWENTY LANDED
+
+Interlock over the candidate twenty was **15/40**, inside the bound. The 16-set measured 19/31 and
+the 24-set 17/50, both also inside it; **neither was taken**, on the same restraint as last batch.
+Rate now 10, 11, 16, 20, 20, 20.
+
+`psb-gross-npa` is written to rule 5b — the global-operations basis stated, the same peak at 11.46
+per cent on domestic operations stated beside it, the pre-AQR baseline marked as not comparable, and
+the write-offs named as the missing half of the fall.
+
+Two peer-panel series needed rule 7 care. `credit-gdp-peer` carries the fact that **India's own 2024
+value is the single point in the panel that could not be tied to a published indicator** — the World
+Bank gives 41.61 and stops at 2020, the IMF co-source returned nothing for any of the five countries,
+and the record keeps the value rather than substituting a different unexplained one.
+
+### FORM
+
+Thirteen distinct shapes across twenty: trajectory 6, convention-dependence 2, peer position 2, and
+one each of a-zero-explained, a-count-with-no-denominator, the-mechanism-behind-another-series,
+comparability-unverified, component-against-the-whole, two-points-that-are-not-one-series,
+promised-against-delivered, built-against-produced, a-rate-that-moved-because-its-base-did, and
+two-instruments-that-agree.
+
+**Negative definition as the shape of the sentence: 0 of 20, for the second tranche running.**
+Trajectory is back to 6, the highest since tranche 1 — this stretch of the ordering carries more
+plain time series than the last did.
+
+### THE CHECKS
+
+**Figures: all 179 numeric tokens trace to their own record**, with controls.
+
+**Enum vocabulary: four hits, all read in context and all kept.** *measured*, *measurement* and
+*measure* are ordinary English on series carrying no `contestedGround`. The fourth is **`shock` in
+`fertiliser-subsidy`** — *"absorbing the global energy and fertiliser shock"*. Last tranche `failed`
+was replaced rather than defended, and the distinction is worth stating: `failed` is an ASSESSMENT
+about the corpus's own subject, so a collision misattributes a verdict about government performance.
+`shock` is a TYPE describing an event external to the state, the sentence uses it of an event
+external to the state, and the phrase is the record's own note. **It is the enum's meaning correctly
+applied in prose, not a miscue**, and it stays.
+
+**Caveat-duplication, asserted corpus-wide over all 115: one found and fixed.**
+`wb-samagra-shiksha-released` reproduced its caveat's closing sentence about the all-India total.
+Reworded, re-asserted, back to zero. **The property is worth keeping asserted precisely because it
+recurred** — it reads as good writing every time.
+
+**True-alone found one.** `wb-samagra-shiksha-released` again: its caveat says the unit is the
+central share released, *not allocated and not spent*, and the sentence gave allocation percentages
+without ever saying that released is not spent. Now stated.
+
+All twenty verified to render exactly once on their own page through `page-text.mjs`, with a negative
+control.
+
+### Where the count stands
+
+**115 of 269 carry a finding. 122 remain to author. 32 render without the line permanently.**
+
+### Gate line
+
+27 steps green. `listing-marks` 5,277 rows / 7,524 marks across 738 pages, unchanged.
+`link-check` 41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers.
+`unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+**Carries forward: 122.**
