@@ -16174,3 +16174,101 @@ control.
 `unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
 
 **Carries forward: 122.**
+
+---
+
+## 2026-08-12 (thirty-ninth entry) — TRANCHE 7: sixteen, and the bound does not cover the set
+
+### THE SIZE, AND THE RESTRAINT WORKING IN THE OTHER DIRECTION
+
+For three batches the restraint has meant *sets inside the bound measured and not taken*. **Here it
+means the opposite, and that is the finding: no candidate set at any size sits inside the tested
+point.**
+
+The bound has exactly two tested points — (20,45) supported twenty; (60,100) supported ten. Scanned
+at every size from 10 to 24:
+
+| N | 10 | 12 | 14 | 16 | 18 | 20 | 22 | 24 |
+|---|---|---|---|---|---|---|---|---|
+| names | 30 | 33 | 29 | **25** | 22 | 20 | 23 | 21 |
+| shared | 60 | 58 | 50 | **44** | 61 | 65 | 59 | 54 |
+
+N=20 reads 20/65 — at the bound on one measure and far outside on the other. **Twenty is therefore
+not supported**, and interpolating between the two tested points is exactly the finer forecast that
+has been wrong three times. **Sixteen taken, on a stated ground:** N=16 is the only size whose
+shared-dispute measure falls inside the tested 45, and it has the lowest names measure of any size
+below twenty.
+
+**The cause is visible in the set and is real.** It holds three allocation/release PAIRS — Bihar's,
+Tamil Nadu's, and the J&K panchayat grants whose allocated half was written in tranche 4. Neither
+half can be written without the other read, which is precisely the cost interlock measures. All
+sixteen held and nothing was dropped for slipping.
+
+### SIXTEEN LANDED
+
+`aser-std3-arithmetic` · `road-fatalities` · `bihar-samagra-shiksha-allocation` ·
+`bihar-samagra-shiksha-released` · `jk-xiv-fc-panchayat-grants-released` · `nh-network-length` ·
+`school-closure-weeks-covid` · `tn-samagra-shiksha-allocation` · `tn-samagra-shiksha-released` ·
+`unincorporated-workers` · `wb-css-releases` · `metro-network` · `regular-wage-share` ·
+`contract-teachers-share-government` · `ed-pmla-cases-registered` · `household-electrification`.
+
+Two needed care beyond the standard. `ed-pmla-cases-registered` reads 7,083 for 2024 and 5,892 for
+2025, **and the sentence says in terms that this is not a fall** — the replies use differing cut-off
+dates and differing units, cases against ECIRs, so the points are not on one basis. And the three
+release series are written as a set: Bihar never in full and never near nil, Tamil Nadu's zero
+part-reversed in arrears with the Union's own footnote saying so, West Bengal's zeros not reversed —
+**the asymmetry only exists because all three sit on one table.**
+
+### BOTH FROZEN METRICS, AS NUMBERS
+
+**Family test** — strip every clause about how the number was made, published, defined or based;
+does a substantive statement about India remain? **16 of 16 for this tranche. Running total 120 of
+131, 92 per cent.**
+
+**Clause metric**, on the frozen six-term definition: **44 per cent**, against 40, 73, 63, 60, 40,
+65 for tranches 1 to 6. **Neither metric is trending.** Both had appeared to move when their
+definitions were drifting; measured properly, one sits at 92 per cent and the other oscillates
+between 40 and 73 with no direction.
+
+Form: twelve distinct shapes across sixteen — paired control 3, trajectory 2, built-against-used 2,
+and one each of nine others. **Negative definition as the shape of a sentence: 0, for the third
+tranche running.**
+
+### THE CHECKS
+
+**Figures: all 123 numeric tokens trace to their own record**, with controls.
+
+**Enum vocabulary: two hits, both read in context and both kept.** *event* in
+`bihar-samagra-shiksha-released` — *"a different kind of event rather than the far end of a
+continuum"* — is the record's own phrase and describes an occurrence, not a record type; *measure*
+in `school-closure-weeks-covid` is the caveat's own word. Neither attributes anything.
+
+**Caveat-duplication, asserted corpus-wide over all 131: zero.**
+
+**True-alone found one.** `wb-css-releases` presented a 66.9 per cent fall as fact without saying
+that the publisher is the Union, a party to this dispute, stating its own release figures — which
+its caveat says and which the two MGNREGA findings of tranche 3 both carry. The sentence now opens
+on it.
+
+All sixteen verified to render exactly once on their own page through `page-text.mjs`, with a
+negative control.
+
+### Machine note
+
+This batch ran on a different laptop from tranches 1 to 6. The repository, its toolchain and the
+build were verified before any work: HEAD identical to `origin/main`, clean tree, typecheck and
+validate clean. **Gate runs are materially slower here** — `typecheck` alone exceeded ten minutes on
+a cold cache — so the full chain was run in the background rather than in the foreground. Nothing
+was lost in the move, because every batch ends at a pushed commit.
+
+### Where the count stands
+
+**131 of 269 carry a finding. 106 remain to author. 32 render without the line permanently.**
+
+### Gate line
+
+27 steps green. `listing-marks` 5,277 rows / 7,524 marks across 738 pages, unchanged.
+`link-check` 41,713 hrefs / 739 pages / 0 dead. `field-render-audit` 0 invisible across 4 layers.
+`unrecognised-rows` 0. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+**Carries forward: 106.**
