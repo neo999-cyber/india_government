@@ -4317,3 +4317,17 @@ details.more > summary {
     margin-top: 0.6rem;
   }
 }
+
+/* The identity block on the detention story. Mono because it is an arithmetic statement quoted from
+   the record, and NOT a table: a table with a difference column is exactly what this page refuses.
+   No colour, no emphasis on any one line — the three years are equal in standing. */
+.story-ident {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.9rem 0;
+  padding: 0.7rem 0.9rem;
+  border-left: 2px solid var(--rule);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--ink);
+}

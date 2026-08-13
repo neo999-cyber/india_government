@@ -244,7 +244,26 @@ no difference anywhere, because where the subtraction can be done **it produces 
 
 **P-114 unstarted.** Its control is Bihar's row in the same table: no stoppage, releases continuing.
 
-**NEXT: PR-35, then P-114.** PR-22 (education, depth 22), PR-35 (a form the site has not
+**STORY SIX WRITTEN 2026-08-13 — the fourth form is built.** *Two counts of Kashmir's detainees, and
+the boundary between them* at `/stories/two-counts-one-boundary/`, on PR-35. Three states kept
+apart — proven (2014, 2015, 2018), consistent-but-unproven (2016, 2017), not computable (2019) — and
+**no difference drawn anywhere**, because where the subtraction can be done it produces zero. The
+decomposition is not a series, so no third line was available and none was faked.
+
+**A RULE CLARIFIED BY A GATE REFUSAL, and it binds every story from here.** Three stories were
+measured rendering one caveat twice — hoisted above the argument and again on its sources card — and
+a `refusal` field was added to defer the card copy. **`listing-marks` failed 5 immediately.** Rule 3a
+says a caveat renders wherever the record appears, *in full, every time*; the series-page
+anti-duplication logic applies on a record's OWN page, **where neither copy is a listing row**, and a
+sources card IS one. **Both copies are required.** Reverted in full; the reasoning is in
+`StorySources` so it is not re-derived.
+
+**A WELD CLASS `rendered-space` CANNOT SEE — third instance.** `<br />` between lines welds in
+extracted text (`Parliament: 72015`), as a flex `gap` did on the topic decomposition. That gate binds
+JSX expression welding only. **Use block elements, not break tags, wherever text is extracted.**
+
+**NEXT: P-114**, unstarted. Its control is Bihar's row in the same table: no stoppage, releases
+continuing. PR-22 (education, depth 22), PR-35 (a form the site has not
 published) and P-114 (welfare) are strongest on material. Each is a piece of writing.
 
 **THE BLOCKER AS IT WAS MEASURED, kept because the fix is only checkable against it.** Measured across all 750 built pages: **each story has exactly

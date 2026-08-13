@@ -20,6 +20,16 @@ import type { LedgerRecord, ProvenanceRecord, Series } from '@/lib/types';
  * Rule 4b binds a story page as it binds a table: these are listing rows, a reader leaves for the
  * record from here, so the marks travel. Provenance carries no caveat field and no marks — that is
  * the three-layers-are-not-alike fact recorded in `share-card.ts`, not an omission.
+ *
+ * **A HOISTED CAVEAT STILL RENDERS HERE, AND THAT IS RULE 3a RATHER THAN A DUPLICATE.** Three
+ * stories hoist one record's caveat above their argument, and it was measured rendering twice —
+ * once hoisted, once on this card — and deferred here on the reading that a second copy is the
+ * defect the series page fixed. **`listing-marks` refused it immediately: 5 missing marks.** The
+ * gate is right and the reading was wrong. Rule 3a says a caveat renders wherever the record
+ * appears, *in full, every time*; the series-page logic suppresses a duplicate on a record's OWN
+ * page, where neither copy is a listing row. **A grid card IS a listing row.** The hoisted copy
+ * serves reading order; this one serves a reader leaving for the record from here, and both are
+ * required.
  */
 export function StorySources({ slug }: { slug: string }) {
   const story = storyBySlug(slug);

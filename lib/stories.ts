@@ -170,6 +170,33 @@ export const STORIES: Story[] = [
       },
     ],
   },
+  {
+    slug: 'two-counts-one-boundary',
+    title: 'Two counts of Kashmir’s detainees, and the boundary between them',
+    topic: 'Kashmir',
+    card: 'Two official instruments differ in every overlapping year, and in half of them the difference is exactly the foreign-national count',
+    signature: ['PR-35'],
+    rests: [
+      { id: 'P-90', kind: 'provenance', blurb: '' },
+      { id: 'P-88', kind: 'provenance', blurb: '' },
+      { id: 'P-86', kind: 'provenance', blurb: '' },
+      {
+        id: 'jk-detenus-psi',
+        kind: 'series',
+        blurb: 'the NCRB count, which breaks down by where the detenu belongs',
+      },
+      {
+        id: 'jk-prison-detained-category',
+        kind: 'series',
+        blurb: 'the parliamentary table, produced once and never repeated, which excludes foreign nationals and does not say so',
+      },
+      {
+        id: 'L-0135',
+        kind: 'ledger',
+        blurb: 'thirteen years in one undifferentiated cell, and a peak that is not where it is usually placed',
+      },
+    ],
+  },
 ];
 
 /** The stories resting on a record — the return route, and the reason this file exists. */
