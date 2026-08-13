@@ -146,6 +146,26 @@ export default function Questions() {
         })}
       </div>
 
+      {/* A NINTH ROUTE, HELD OUTSIDE THE EIGHT DELIBERATELY. The list above is the brief's own
+          order and says so; slipping a ninth into it would falsify that sentence. This is a
+          different object anyway — not a filter over records, but four questions the instrument
+          CANNOT answer, with the four different reasons. Built after the same test that refused the
+          topic-year matrix: every reason on it is a record's declared absence, not this corpus
+          reporting its own coverage. */}
+      <section className="qcard qcard-extra">
+        <h2>
+          <Link href="/questions/unanswerable/">Four questions this cannot answer</Link>
+        </h2>
+        <p className="qcard-n mono">Not one of the eight</p>
+        <p className="qcard-crit">
+          Demonetisation, farmers&rsquo; incomes, highway usage and sanitation behaviour. Each has a
+          record that declares what was not measured, and the reasons differ:{' '}
+          <strong>only one of the four is unanswerable in principle.</strong> The other three would
+          be settled by a survey that has not been re-run, or by figures the state collects and does
+          not publish.
+        </p>
+      </section>
+
       {/* WHAT THE FILTERS REST ON, PRINTED ONCE RATHER THAN REPEATED ON SIX PAGES.
 
           Two of these numbers are the honest limits of two of the questions above, and they belong
