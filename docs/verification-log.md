@@ -18489,3 +18489,101 @@ about the subjects.*
 
 **Item 3 of the recommended order — the candidates — is not started.** PR-22, PR-35 and P-114 remain
 the strongest on material, and each is a piece of writing that gets the three checks.
+
+---
+
+## 2026-08-13 (sixty-first entry) — NAVIGATION: an overlay with no script, reader-facing labels, the last leaf types, and the ordering sweep
+
+### THREE PREMISES CHECKED, TWO WRONG
+
+**The masthead is at FIVE, not four.** *What changed · Topics · Questions · Stories · Search* —
+`Questions` was added 2026-08-12. The instruction's four is one behind.
+
+**`/contested/` and the where-measures-disagree route are NOT the same content under two names.**
+`/contested/` selects ledger records whose VERDICT is contested — **68**. The question route selects
+PAIRS where two instruments disagree — **21**. **Seven records appear in both.** Different objects,
+so both keep a name and each now says which it is.
+
+**And `/domains/` still called itself *Explore*** — in its `h1`, its metadata title and its crumb.
+The masthead was relabelled to *Topics* on 2026-08-11 and the page itself was not, so the one surface
+a reader lands on to browse topics was the last place using the withdrawn word. Corrected, wording
+quoted.
+
+### 1 · THE OVERLAY, AND IT NEEDS NO JAVASCRIPT
+
+Seventeen destinations sat in a footer. A `<details>` in the masthead opens all of them: **native,
+keyboard-operable, in the tab order, announcing its own state, and working on a page whose bundle
+never ran.** An overlay built on a state hook would be a control that renders correctly and reaches
+nobody the moment the script fails — the defect being fixed, reintroduced by the fix.
+
+Verified as markup rather than payload: the element sits at byte 3,291 of the landing page, **not
+inside any `<script>` block**, carries 17 hrefs and no inline handler. It renders on **749 of 749**
+index pages. `link-check` **47,454 → 60,204**, which is 12,750 = 17 × 750 exactly.
+
+**Not a side rail**, which is application furniture and at 375 px becomes a hamburger — the footer
+with extra steps. At 1280 px the panel is absolute, opaque and **measured as the topmost element at
+its own centre**; at 375 px it is static and opens in the flow. 0 overflow either way.
+
+**AND MEASURING THE COMPUTED STYLE CAUGHT A BUG READING THE CSS WOULD NOT.** The panel was written
+`background: var(--paper)` — **`--paper` is not a token in this palette** — and computed to
+`rgba(0,0,0,0)`: a floating panel with a transparent background over body text. Now `--surface`,
+measured at `rgb(231,225,212)`. Fourth batch running in which probing the colour found something.
+
+### 2 · LABELS, ROUTES UNTOUCHED
+
+Every label is taken from the page's own `h1`, with the withdrawn word quoted beside it. `unmeasured`
+was a field name; `exposure`, `peers` and `counterfactual` meant nothing cold; `series` was the one
+place the prose vocabulary pass had not reached.
+
+| route | was | now |
+|---|---|---|
+| `/series/` | series | **indicators** |
+| `/ledger/` | ledger | **reforms, events and episodes** |
+| `/unmeasured/` | unmeasured | **what is not measured** |
+| `/exposure/` | exposure | **when a shock is offered as the reason** |
+| `/peers/` | peers | **four comparator countries** |
+| `/terms/` | terms | **terms of government** |
+| `/lenses/` | lenses | **threads across topics** |
+| `/contested/` | contested pairs | **verdicts that stay open** — and it holds no pairs |
+| `/counterfactual/` | counterfactual | **a feature considered and declined** |
+| `/years/` · `/derivations/` · `/corrections/` · `/data/` | years · derivations · corrections · data | one year at a time · recomputed from public data · what it has changed its mind about · download the data |
+
+**21 distinct routes before and after; `link-check` 0 dead.** A label is prose; a path is an
+identifier.
+
+**`counterfactual` was the one to decide before naming.** It is not a limit of the evidence — it is
+the record of a feature this instrument considered and declined. **Moved out of `limits` into
+`about the record`**, where the other statements about how the instrument was built live. The route
+does not move.
+
+### 3 · THE LEAF TYPES THAT ENDED WITH NOTHING
+
+Audited across **33 page types: only three had a next-steps block** — series, ledger record, dispute.
+
+**Not all thirty need one, and the exclusions are reasoned rather than skipped.** An index is a
+directory and a next step under it is a second directory. A page with lateral navigation already has
+a route on: year pages carry previous and next, topic tabs carry each other, a story ends on the
+records it rests on. **What was left is the three leaf types a reader can finish with nowhere to go**
+— a question route, a lens, a term — and all three now end with one. They link SURFACES, not records,
+so no marks travel and no listing row is added: `listing-marks` **5,716 / 8,173, unchanged**.
+
+### 4 · THE ORDERING SWEEP — rule 9's second half, never checked before
+
+Swept 23 criterion-printing surfaces. **Three stated a selection and not an ordering:**
+
+- **`/publishers/`** — rows ordered by citation count descending, so the body at the top read as the
+  most important publisher when what it is, is the most cited. Stated, with the difference named.
+- **`/corrections/`** — ordered by the date of the most recent change, newest first. Stated.
+- **`/questions/unanswerable/`** — four questions in a fixed order. **The order turned out to be
+  principled and unstated**: the one that is a limit first, then the three that are decisions, which
+  is computable from whether any absence names a source that would close it. Now printed.
+
+**`/years/` was flagged and is a false positive** — it carries the stronger sentence already: *no
+year carries a total, and no year is ranked against another.* Reading the match is what cleared it,
+and two of my own probes disagreed with each other before I stopped scanning and read the page.
+
+### Gate line
+
+27 steps green. `link-check` **60,260 internal hrefs across 750 pages, 0 dead** (from 47,454 — the
+overlay puts 17 destinations on every page). `listing-marks` **5,716 / 8,173 unchanged**.
+`unrecognised-rows` 0. `reachability` 1,787/1,787. `domain-coverage` 1137/1137. `rendered-space` 0.

@@ -213,6 +213,22 @@ surface and 11 of the 29 targets. **The criterion is printed on the index**, eac
 qualifying pair or dispute, and **the ordering is stated too** — publication order, a fact, not a
 ranking. Distinct records linked: 29 before, 29 after.
 
+**NAVIGATION DONE 2026-08-13.** Seventeen footer destinations now open from the masthead through a
+**`<details>` with no JavaScript** — native, keyboard-operable, works on a page whose bundle never
+ran, and verified as markup rather than payload. Labels are reader-facing and taken from each page's
+own h1; **21 distinct routes before and after, 0 dead**. The three leaf types that ended with nothing
+— question route, lens, term — now end with a route. **`counterfactual` is filed under *about the
+record*, not *limits*:** it is the record of a declined feature, not a limit of the evidence.
+
+**PINNED — the masthead is at FIVE**, not four: *What changed · Topics · Questions · Stories ·
+Search*. And **`/contested/` is not the where-measures-disagree route**: 68 contested VERDICTS
+against 21 contested PAIRS, seven records in both.
+
+**RULE 9's ORDERING HALF IS NOW SWEPT.** 23 criterion-printing surfaces checked; three stated a
+selection and no ordering — `/publishers/` (citation count descending), `/corrections/` (newest
+first), `/questions/unanswerable/` (the limit first, then the decisions). All three now print it.
+`/years/` flagged and cleared on reading: it already says *no year is ranked against another*.
+
 **NEXT: item 3, the candidates.** PR-22 (education, depth 22), PR-35 (a form the site has not
 published) and P-114 (welfare) are strongest on material. Each is a piece of writing.
 

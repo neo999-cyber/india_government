@@ -135,7 +135,10 @@ export default function Corrections() {
         <h2>Every verdict that moved</h2>
         <p className="sec-note">
           The table below is the other half: records whose ASSESSMENT changed, which is a different
-          event from a field being rewritten.
+          event from a field being rewritten.{' '}
+          {/* Rule 9's ordering half, which this page had not stated. */}
+          <strong>Ordered by the date of the most recent change, newest first</strong> — a fact about
+          when the commit landed, and not a measure of how much any record moved.
         </p>
       </div>
 

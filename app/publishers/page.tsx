@@ -65,6 +65,17 @@ export default function Publishers() {
         who published it</strong> — and until now that lived only inside a free-text string.
       </p>
 
+      {/* RULE 9 BINDS SELECTION AND ORDERING, and this page had checked only the first. The
+          groupings carry their reasons; the ORDER did not carry anything, and it is by citation
+          count descending — so the body at the top reads as the most important publisher when what
+          it is, is the most cited one. Stated, with the difference named. */}
+      <p className="prose-note">
+        <span className="label">How this is ordered</span> By the number of citations that resolve to
+        each body, largest first. <strong>That is a count of how often this instrument cites them,
+        not a judgement of standing</strong> — a body cited once may be the only source for the thing
+        it establishes.
+      </p>
+
       <p className="prose-note">
         <span className="label">Coverage, with its scope</span> {resolved} of {total} citations
         resolve to a body or a carrier named below. The remaining{' '}

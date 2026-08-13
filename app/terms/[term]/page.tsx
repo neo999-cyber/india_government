@@ -5,6 +5,8 @@ import { assessmentCounts, ledgerInTerm } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_LABELS, formatDateRange } from '@/lib/format';
 import { CaveatRow, RecordMarks, TallyGloss } from '@/components/marks';
 import { TERMS, type Term } from '@/lib/types';
+import { NextSteps } from '@/components/NextSteps';
+import { stepsForTerm } from '@/lib/next-steps';
 
 type Props = { params: Promise<{ term: string }> };
 
@@ -124,6 +126,15 @@ export default async function TermPage({ params }: Props) {
           </table>
         </div>
       )}
+
+      {/* The adjoining terms and the year cross-sections — a term page ended on its last table row
+          with no route on. Surfaces, not records: no marks and no listing rows. */}
+      <NextSteps
+        steps={stepsForTerm(
+          t,
+          (Object.keys(TERM_LABELS) as Term[]).map((x) => ({ term: x, label: TERM_LABELS[x] })),
+        )}
+      />
     </>
   );
 }

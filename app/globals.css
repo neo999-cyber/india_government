@@ -4258,3 +4258,62 @@ details.more > summary {
 .qcard-extra { border-top-width: 2px; }
 .unans-recs { list-style: none; margin: 0; padding: 0; }
 .qcrit-order { margin: 0.5rem 0 0 !important; font-size: 0.85rem; color: var(--ink-dim); }
+
+/* ============================ ALL PAGES — the disclosure in the masthead ======================
+
+   Seventeen destinations lived in a footer, which is read by almost nobody. This opens them from
+   the masthead with NO JAVASCRIPT: `<details>` is keyboard-operable, announces its own state, and
+   works on a page whose bundle never loaded. Not a side rail — a persistent rail is application
+   furniture and at 375 px becomes a hamburger, which is the footer with extra steps. */
+
+.allpages { position: relative; display: inline-block; }
+.allpages > summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-dim);
+  border-bottom: 1px dotted var(--rule);
+}
+.allpages > summary::-webkit-details-marker { display: none; }
+.allpages > summary:hover,
+.allpages[open] > summary { color: var(--ink); }
+.allpages-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  z-index: 40;
+  min-width: 19rem;
+  max-width: min(34rem, calc(100vw - 2rem));
+  display: grid;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  /* No shadow: the palette has none anywhere and a floating card is the dashboard register the
+     design rules exclude. A hairline rule is how every other panel on this site separates. */
+}
+.allpages-group { display: grid; gap: 0.15rem; }
+.allpages-label {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin-bottom: 0.15rem;
+}
+.allpages-group > a { font-size: 0.88rem; }
+
+@media (max-width: 767px) {
+  /* Static, not floating: at phone width an absolutely-positioned panel either overflows the
+     viewport or needs its own scroll. It opens in the flow and pushes the page down, which is
+     what a phone reader can actually use. */
+  .allpages { display: block; width: 100%; }
+  .allpages-panel {
+    position: static;
+    min-width: 0;
+    max-width: none;
+    margin-top: 0.6rem;
+  }
+}
