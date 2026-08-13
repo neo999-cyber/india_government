@@ -18147,3 +18147,82 @@ would satisfy the letter and be read by nobody.
 `listing-marks` **5,707 rows / 8,160 marks** (from 5,701 / 8,149). `reachability` 1,787/1,787.
 `unrecognised-rows` 0. `field-render-audit` 0 invisible. Mobile at 375 px: 0 body overflow, 0
 clamped, absence box `1px dashed rgb(215,207,193)` unfilled, 8 record cards of which 5 carry marks.
+
+---
+
+## 2026-08-13 (fifty-seventh entry) — RENEWABLES, IN A THIRD FORM
+
+### THE FORM HAD TO BE DIFFERENT, AND THE OLD REFUSAL IS WHY
+
+Renewables was chosen as the FIRST story's subject in the design phase and refused: environment's
+series layer carries **0 caveats and 0 declared absences across all 15 series**, the only domain in
+the corpus at zero. **Re-tested for this story and unchanged.** There is no contested pair in the
+domain either.
+
+So neither existing form applies. The reading and jobs stories are **two instruments disagreeing**;
+Kashmir is **two instruments counting different things under one word**. Renewables is a third
+thing: **one publisher, four numbers that are all true, and a word whose official boundary moved.**
+Nobody disputes anything. The error is the reader's and it is definitional.
+
+### FOUR OFFICIAL ANSWERS FOR ONE YEAR, ALL VERIFIED
+
+For FY2025-26, all four `verified`, all from the same authority:
+
+| | share of the FLEET | share of the ELECTRICITY |
+|---|---|---|
+| non-fossil (incl. large hydro, nuclear) | **53.21%** | **28.96%** |
+| renewables excluding large hydro | 41.91% | 16.88% |
+
+**The spread is 16.88 to 53.21 and none of it is a revision of anything.** Two axes of definition —
+machines against electricity, and what the word admits — and the corpus carries both boundaries as
+separate series rather than choosing, which is why four numbers exist.
+
+**The 24.24-point gap is quoted, not computed.** L-0221's own summary states it. Recomputing from
+the two published figures gives 24.25, a rounding artefact of the kind `figure-consistency` already
+declares five of — so the page quotes the record's arithmetic and says it is the record's. That
+distinction is the whole reason `gapComputable` exists elsewhere.
+
+### THE STEP THAT WOULD HAVE MISLED, CAUGHT BEFORE IT WAS WRITTEN
+
+Step one must not open *53.21 per cent of India's generating fleet is non-fossil*. True, it is the
+milestone release's own sentence, and alone it is the exact misreading the page exists to correct.
+**It opens on the spread instead** — four answers, 16.88 to 53.21 — which cannot be read as a
+headline by a reader who stops at step one. Verified on the built page: the four step openings are
+*There are four official answers* · *Capacity is not electricity* · *And the word moved* ·
+*Underneath all of it, coal grew*.
+
+### THE THREE FACTS THE PAGE RESTS ON THAT ARE NOT ABOUT RENEWABLES
+
+**Large hydro moved across the boundary.** On 7 March 2019 the Cabinet declared large hydropower a
+renewable source; before, only projects under 25 MW counted. At the end of that month large hydro
+stood at **45,399 MW** — forty-five gigawatts changing category without a turbine being built.
+
+**Coal grew underneath.** Production 565.77 → 1,047.52 million tonnes, about 85 per cent, matching
+L-0222's own title. Thermal imports were to stop in FY2023-24 and reached 205.72 Mt, the highest in
+the published ten-year table. **And the load factor rose, 65.56 → 69.45 per cent** — displacement
+would show as coal plant standing idle, and it is running harder.
+
+**The baseline year is the last imputed year.** Renewable generation before FY2014-15 was imputed
+from capacity and an assumed load factor, and metered from FY2014-15; the authority states it in a
+note under its own table. **The break falls on 1 April 2014, within weeks of this instrument's
+frozen May 2014 baseline** — so any comparison across it sets an estimate against a measurement.
+The series is cut there and nothing is drawn across it. Verified in the DOM: **four paths for two
+lines**, the generation series segmented at both its declared breaks and the capacity series whole.
+
+### The three checks
+
+**Figures:** 8 claims traced to their own record at their stated period, 0 mismatches; 45,399 and
+205.72 confirmed in P-121 and L-0222 respectively.
+
+**Enum words:** none in the authored prose.
+
+**True-alone per step:** all four openings verified on the built page; none states a claim that
+standing alone would mislead.
+
+**Absences:** environment's series declare none, so all five on the page come from L-0221, L-0222
+and L-0226, rendered in the corpus's own words inside the dashed unfilled box.
+
+### Gate line
+
+27 steps green. Mobile at 375 px: 0 body overflow, 0 clamped, 12 verified chart dots and 0 approx
+(these series are pinned), 6 record cards of which 3 carry marks.
