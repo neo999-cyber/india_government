@@ -85,7 +85,7 @@ export default async function ProvenanceDetail({ params }: Props) {
       {p.competingAccounts && p.competingAccounts.length > 0 ? (
         <>
           <h2>Competing accounts</h2>
-          <div className="table-wrap">
+          <div className="table-wrap" tabIndex={0}>
             <table>
               <thead>
                 <tr>

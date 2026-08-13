@@ -42,8 +42,22 @@ export function SeriesChart({
   highlightLast = true,
   events,
   marksHostedByPage = false,
+  headingLevel = 3,
 }: {
   series: Series;
+  /**
+   * THE OUTLINE POSITION OF THE CHART'S TITLE, BECAUSE IT WAS HARDCODED TO `h3` AND THAT WAS WRONG
+   * ON EVERY SURFACE THAT LEADS WITH ONE.
+   *
+   * An external audit found heading-level skips on **340 of 753 built pages**. The largest cause was
+   * here: a series page renders `h1` then this chart, so every one of the **269 series pages** went
+   * h1 -> h3. The domain lead did the same, and the four-up grid below it went h2 -> h4.
+   *
+   * The rule the corpus wants is the plain one — **heading levels express hierarchy, not size** —
+   * and the CSS class carries the appearance, so moving the level changes the outline and nothing
+   * visual. The default stays 3 for the callers that are genuinely three deep.
+   */
+  headingLevel?: 2 | 3 | 4;
   /** One plain sentence stating what the chart shows. Authored per use, never derived. */
   takeaway?: string;
   highlightLast?: boolean;
@@ -138,12 +152,15 @@ export function SeriesChart({
   const first = pts[0];
   const ticks = [yMin + (yMax - yMin) * 0.5, yMax - (yMax - yMin) * 0.08];
 
+  // Appearance is `chart-title`, so this only moves the outline.
+  const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
+
   return (
     <figure className="chart">
       <figcaption className="chart-head">
-        <h3 className="chart-title">
+        <Heading className="chart-title">
           <Link href={`/series/${series.id}/`}>{series.title}</Link>
-        </h3>
+        </Heading>
         {takeaway ? <p className="chart-takeaway">{takeaway}</p> : null}
         {/* THE RECORD'S OWN MARKS, added 2026-08-11 — this component took the whole `Series` and
             rendered none of them for its whole life.

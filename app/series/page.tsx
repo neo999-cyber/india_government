@@ -110,7 +110,7 @@ export default function SeriesIndex() {
         ]}
       />
 
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0}>
         <table id="series-table">
           <thead>
             <tr>

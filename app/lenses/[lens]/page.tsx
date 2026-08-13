@@ -98,7 +98,7 @@ export default async function LensPage({ params }: Props) {
         <>
           <StatusKey />
           <StatusTally counts={statusCounts(s)} />
-          <div className="table-wrap">
+          <div className="table-wrap" tabIndex={0}>
             <table>
               <thead>
                 <tr>
@@ -162,7 +162,7 @@ export default async function LensPage({ params }: Props) {
               </span>
             ))}
           </p>
-          <div className="table-wrap">
+          <div className="table-wrap" tabIndex={0}>
             <table>
               <thead>
                 <tr>
@@ -213,7 +213,7 @@ export default async function LensPage({ params }: Props) {
       {p.length === 0 ? (
         <p className="prose-note">No pair is read under this lens.</p>
       ) : (
-        <div className="table-wrap">
+        <div className="table-wrap" tabIndex={0}>
           <table>
             <thead>
               <tr>

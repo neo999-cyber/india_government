@@ -274,7 +274,9 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
           {/* THE OUTCOME TRACK on a chart is the takeaway slot, which this page was the only
               SeriesChart caller not to use — the homepage has passed one since the series-page
               rebuild. The lead chart carried a caveat and no statement of what the result did. */}
+          {/* Directly under the domain h1. */}
           <SeriesChart
+            headingLevel={2}
             series={lead}
             events={leadEvents}
             highlightLast
@@ -355,9 +357,11 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
           <div className="cgrid">
             {grid.map((g) => (
               <div key={g.id} className="cw">
-                <h4>
+                {/* h3: this grid sits under the "N more, side by side" h2. It was h4, which
+                    skipped a level on every domain page. */}
+                <h3 className="cw-h">
                   <Link href={`/series/${g.id}/`}>{g.title}</Link>
-                </h4>
+                </h3>
                 <MiniLine series={g} events={leadEvents.map((e) => e.year)} />
                 <p className="cw-val">
                   <span className="figure">{lastValue(g)}</span>
@@ -521,7 +525,7 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
             ))}
           </p>
 <TallyGloss />
-          <div className="table-wrap">
+          <div className="table-wrap" tabIndex={0}>
             <table>
               <thead>
                 <tr>
@@ -676,7 +680,7 @@ function SeriesBlock({ items, showSubject }: { items: Series[]; showSubject?: bo
     <>
       <StatusKey />
       <StatusTally counts={statusCounts(items)} />
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0}>
         <table>
           <thead>
             <tr>
@@ -745,7 +749,7 @@ function SeriesBlock({ items, showSubject }: { items: Series[]; showSubject?: bo
  */
 function PairRows({ items, showSubject }: { items: Pair[]; showSubject?: boolean }) {
   return (
-    <div className="table-wrap">
+    <div className="table-wrap" tabIndex={0}>
       <table>
         <thead>
           <tr>

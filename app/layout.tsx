@@ -240,6 +240,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${spectral.variable} ${plexSans.variable} ${plexMono.variable}`}>
       <body>
+        {/* SKIP LINK. Absent from all 753 pages until 2026-08-13. Automated tooling did not call it
+            a violation because the landmarks are correct, which is exactly why it survived: the
+            masthead carries five primary links plus a directory disclosure, and some routes run
+            past 200,000px, so a keyboard reader had no way past the navigation on any of them.
+            Visible only on focus — `app/globals.css`, `.skip-link`. */}
+        <a className="skip-link" href="#main">
+          Skip to main content
+        </a>
         <div className="shell">
           <header className="masthead">
             {/* A <p>, not an <h1>, since 2026-08-10 — walk 9's one finding. The masthead had
@@ -295,7 +303,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </details>
             </nav>
           </header>
-          <main>{children}</main>
+          <main id="main">{children}</main>
           {/* THE DIRECTORY. The five groups, whole and unchanged, in the place a reader looks for
               a site map rather than the place they meet the site. Every route that was in the
               masthead is here; none moved, none is behind a disclosure. */}

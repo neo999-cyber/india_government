@@ -164,8 +164,27 @@ export function SpanStrip({
                 {newGroup ? r.start : ''}
               </span>
               <span className="strip-track">
+                {/* ============ TARGET SIZE: AN EXCEPTION INVOKED, NOT A CONFORMANCE CLAIM ======
+                    An external audit measured **393 of 583 links on this page under a 24x24
+                    target**, the commonest being these bars at 418x4 and the smallest at 3x4.
+                    That measurement is correct.
+
+                    **The rows are 6px and cannot become 24px.** 269 rows at 24px is 6,456px against
+                    1,614px — nearly 4,900px added to a page that is already 1.4 MB — and the
+                    density IS the function: this component exists to put 269 spans in one view, and
+                    the header above records the measurement that justified building it at all. That
+                    is WCAG 2.5.8's *Essential* exception, invoked here deliberately and named in
+                    the verification log rather than left to look like an oversight.
+
+                    **WHAT IS FIXED IS THE PART THAT WAS NOT ESSENTIAL: the keyboard burden.**
+                    `tabIndex={-1}` takes 269 four-pixel links out of the tab order. **No function is
+                    lost** — every series on this strip is a full row in the filterable table below
+                    it on this same page, which is the accessible route and always was. A keyboard
+                    reader previously had to traverse all 269 to reach that table. Pointer
+                    interaction is unchanged. */}
                 <Link
                   href={`/series/${r.id}/`}
+                  tabIndex={-1}
                   className={`strip-bar${r.stopped ? ' is-stopped' : ''}${
                     r.start < x0 ? ' is-earlier' : ''
                   }`}

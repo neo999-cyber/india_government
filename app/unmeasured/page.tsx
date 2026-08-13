@@ -112,7 +112,7 @@ export default function UnmeasuredIndex() {
       ) : null}
 
       <h2>Declared absences</h2>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0}>
         <table>
           <thead>
             <tr>
@@ -161,7 +161,7 @@ export default function UnmeasuredIndex() {
       {withRoute.length === 0 ? (
         <p className="prose-note">No declared absence names a source that would close it.</p>
       ) : (
-        <div className="table-wrap">
+        <div className="table-wrap" tabIndex={0}>
           <table>
             <thead>
               <tr>

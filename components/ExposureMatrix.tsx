@@ -87,7 +87,7 @@ export function ExposureMatrix({
 
   return (
     <div className="xmat-wrap">
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0}>
         <table className="xmat">
           <caption className="t-note">
             85 entries on 76 records. Rows are what the event did; columns are whether the record

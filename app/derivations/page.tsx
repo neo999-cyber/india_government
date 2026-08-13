@@ -106,7 +106,7 @@ function render(md: string): ReactNode[] {
       while (i < lines.length && lines[i].startsWith('|')) rows.push(cells(lines[i++]));
       const k = key();
       out.push(
-        <div className="table-wrap" key={k}>
+        <div className="table-wrap" key={k} tabIndex={0}>
           <table>
             <thead>
               <tr>

@@ -2785,12 +2785,12 @@ body {
   padding: 1.5rem 1.6rem 1.4rem;
 }
 
-.cw h4 {
+.cw h3.cw-h {
   font-size: 1.1rem;
   margin: 0 0 0.7rem;
 }
 
-.cw h4 a {
+.cw h3.cw-h a {
   text-decoration: none;
 }
 
@@ -4400,4 +4400,26 @@ details.more > summary {
   .qstack .outcome-row > td,
   .qstack .caveat-row > td,
   .qstack .qground-row > td { padding: 0.4rem 0 0.2rem; }
+}
+
+/* --- Skip link -------------------------------------------------------------
+   Off-screen until focused, then anchored top-left over the masthead. Not
+   `display: none` and not `visibility: hidden`, either of which would take it
+   out of the focus order and leave the same defect with tidier markup. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.6rem 0.9rem;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--mark);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
 }

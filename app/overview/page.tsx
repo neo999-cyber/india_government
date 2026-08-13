@@ -294,7 +294,8 @@ export default function Overview() {
         it, or any title for the records themselves.
       </p>
 
-      <OverviewBoard domains={domains} />
+      {/* Directly under this page's h1, so the cards are its first sections: h2. */}
+      <OverviewBoard domains={domains} headingLevel={2} />
 
       <p className="prose-note board-caption">
         <strong>Every chart shares the same years and none shares a scale.</strong> Left to right is

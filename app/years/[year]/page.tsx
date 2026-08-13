@@ -157,7 +157,10 @@ export default async function YearPage({ params }: Props) {
       {/* EVERY YEAR IS A URL. Links rather than a slider: a state a reader cannot paste is a state
           this instrument does not consider to exist, and the year control is the spine of these
           pages rather than one page's widget. */}
-      <nav className="yr-rail" aria-label="Year">
+      {/* TWO RAILS, TWO NAMES. The same year links repeat at the foot; both were named
+          "Year", so a screen reader's landmark list offered two identical destinations with no
+          way to tell which was which. */}
+      <nav className="yr-rail" aria-label="Years, above">
         {YEARS.map((yy) =>
           yy === y ? (
             <span key={yy} aria-current="page">
@@ -376,7 +379,7 @@ export default async function YearPage({ params }: Props) {
           record&rsquo;s own and are not summed.
         </p>
       </div>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0}>
         <table>
           <thead>
             <tr>
@@ -402,7 +405,7 @@ export default async function YearPage({ params }: Props) {
         </table>
       </div>
 
-      <nav className="yr-rail" aria-label="Year">
+      <nav className="yr-rail" aria-label="Years, below">
         {i > 0 ? <Link href={`/years/${YEARS[i - 1]}/`}>← {YEARS[i - 1]}</Link> : null}
         <Link href="/years/">all years</Link>
         {i < YEARS.length - 1 ? <Link href={`/years/${YEARS[i + 1]}/`}>{YEARS[i + 1]} →</Link> : null}

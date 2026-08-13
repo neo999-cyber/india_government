@@ -237,7 +237,7 @@ export default function ExposureIndex() {
         One row per record, listing every exposure it declares. A record whose entries fall in two
         cells appears once and belongs to both.
       </p>
-      <div className="table-wrap" id="exposure-list">
+      <div className="table-wrap" id="exposure-list" tabIndex={0}>
         <table>
           <thead>
             <tr>
