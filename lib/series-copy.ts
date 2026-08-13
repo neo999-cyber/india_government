@@ -402,6 +402,42 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   // What was wrong was not emphasis. The break sits at 2014 — the FIRST point — and names what it
   // supersedes; there are no figures on the other side of it in this series, so the withdrawn
   // sentence described a comparison the record does not contain.
+  /**
+   * ============ THE FINDINGS PASS OF 2026-08-13, AND WHAT READING THEM CHANGED =================
+   *
+   * An external audit: *"the outcome sentence should answer 'what happened?' in its first clause.
+   * Put how it is measured / where it comes from / why a seam exists in the full caveat that
+   * already follows."* The rule is right and this file now follows it in seven more places.
+   *
+   * **BUT THE FIRST ESTIMATE OF THE CLASS WAS ~17 AND THE TRUE NUMBER IS 7, AND THE DIFFERENCE IS
+   * THAT THE FINDINGS WERE READ.** Classifying by FIRST SENTENCE put ~17 records in scope. Reading
+   * each one whole showed most already carry their outcome in sentence two, and that for nine of
+   * them **leading with the figure would mislead** — which makes qualification-first correct rather
+   * than defective:
+   *
+   *   `teacher-vacancy-rate-elementary` — the rate is a state-wise sum, not a national observation,
+   *     and *vacant* is an arithmetic residual. 24.09 to 12.6 as a headline is a false impression.
+   *   `teachers-total-udise` — values before FY2023-24 undercount, so the rise is partly a change
+   *     in what was collected. Leading with 9.69m to 10.27m attributes a collection change to
+   *     hiring.
+   *   `literacy-rate-7plus` — asked, never tested.
+   *   `ptr-elementary-dise`, `single-teacher-schools-share-dise` — the finding IS the join trap.
+   *   `rte-quota-children` — no denominator, and a second national series diverges by 1.95 million.
+   *   `cess-share-gtr-parliamentary` — the membership rule is unstated.
+   *   `jk-civilians-killed-composite`, `jk-terrorist-incidents-merged` — a column whose name does
+   *     not describe what it counts.
+   *
+   * **THE TEST APPLIED, WHICH IS NARROWER THAN THE AUDIT'S AND SURVIVES CONTACT WITH THIS CORPUS:**
+   * lead with the outcome UNLESS leading with the figure would leave a false impression that the
+   * caveat then has to undo. Where it would, the qualification leads and the outcome follows in the
+   * same field. **Assert per record, never sweep** — the availability test generates candidates and
+   * every one of these sixteen was judged on its own record.
+   *
+   * Three more were correct and untouched for a different reason: `nas-parakh-grade3-language` has
+   * a longest unbroken run of ONE POINT and says so in its own first words, which is the audit's own
+   * escape clause already in the corpus; and the two GDP-base series may not lead with a bare
+   * outcome because rule 5 forbids presenting one base alone as "GDP growth".
+   */
   'farmer-suicides': {
     finding:
       'Farm-sector suicides fall from 12,602 in 2015 to 10,281 in 2019, then rise to 11,290 by 2022 and ease to 10,546 in 2024 — no single direction across the decade. The series starts at 2014 because NCRB separated farmers and cultivators from agricultural labourers that year; pre-2014 totals count a different population and are not carried here.',
@@ -424,7 +460,7 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'jk-psa-detenus-transferred-out': {
     finding:
-      'The count of Public Safety Act detenus moved out of Jammu and Kashmir comes from a single Home Department document, and the series exists because no recurring publication carries it.',
+      'Detenus moved out of Jammu and Kashmir swing between nought and 585 in a year with no direction across the series — 44, 295, nought, 146, 585 and 52 from 2018 to 2023. The whole of it comes from a single Home Department document, and the series exists because no recurring publication carries the count at all.',
     origin: 'domain-lead',
   },
   'jk-security-forces-killed': {
@@ -434,12 +470,12 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'tn-direct-goi-transfers-to-sias': {
     finding:
-      'Money sent by the Union directly to implementing agencies in Tamil Nadu, bypassing the state treasury. It is the part of central transfer that a state budget does not see, which is why it is counted apart from devolution.',
+      'Union money sent straight to implementing agencies in Tamil Nadu grows from 3,914.73 crore in FY2015-16 to 30,085.53 in FY2023-24 — roughly seven and a half times across nine years. It bypasses the state treasury, so it is the part of central transfer that a state budget never sees, which is why it is counted apart from devolution.',
     origin: 'domain-lead',
   },
   'exports-gdp': {
     finding:
-      'Exports of goods and services as a share of GDP. The denominator was restated in February 2026 and the ratio steps at that point with no change in trade — an arithmetic step, marked as one.',
+      'Exports of goods and services fall from 25.4 per cent of GDP in FY2013-14 to a trough of 18.7 held across FY2019-20 and FY2020-21, recover to 22.7 by FY2022-23 and read 21.0 in FY2025-26 — below where the decade began. The denominator was restated in February 2026 and the ratio steps at that point with no change in trade — an arithmetic step, marked as one.',
     origin: 'domain-lead',
   },
   'non-fossil-capacity-share': {
@@ -459,7 +495,7 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'jk-terrorist-incidents-legacy': {
     finding:
-      'The Incidents column as MHA published it at the time, 2011 to 2020. The Annual Report 2021-22 later restated 2017 from 342 to 279, 2018 from 614 to 417 and 2019 from 594 to 255 under the identical column heading, and dropped 2014 to 2016 from view rather than restating them \u2014 so these figures now exist nowhere in the current official record, and dropping them here would mean adopting the revision by default.',
+      'MHA restated this column downward and then withdrew part of it: 2017 fell from 342 to 279, 2018 from 614 to 417 and 2019 from 594 to 255 under the identical column heading, and 2014 to 2016 were dropped from view rather than restated. These are the figures as MHA first published them, 2011 to 2020 — they now exist nowhere in the current official record, and dropping them here would mean adopting the revision by default.',
     origin: 'authored',
   },
   'jk-infiltration-attempts': {
@@ -484,12 +520,12 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'jk-detenus-psi': {
     finding:
-      'NCRB\u2019s count of people held in J&K prisons on 31 December under preventive-detention law, every such statute together in one cell. It reads 35 for 2014 and 546 for 2022, the highest figure the series carries, and it ends there because Prison Statistics India ended. 2012 was never published.',
+      'Preventive detention in J&K prisons reads 35 detenus at the end of 2014 and 546 at the end of 2022, the highest figure the series carries — and it ends there, because Prison Statistics India ended. NCRB counts every preventive-detention statute together in one cell, so no single law can be separated out. 2012 was never published.',
     origin: 'authored',
   },
   'jk-terrorist-initiated-incidents': {
     finding:
-      'The column MHA created in the Annual Report 2022-23, when the single Incidents column was split in two. It reads 228 for 2018 and 28 for 2024. For calendar 2018 alone, five separately published and separately labelled incident counts exist, and this is one of them.',
+      'Militant-initiated incidents read 228 for 2018 and 28 for 2024, an eightfold fall on MHA\u2019s own count. The column exists only from the Annual Report 2022-23, when the single Incidents column was split in two — and for calendar 2018 alone, five separately published and separately labelled incident counts exist, of which this is one.',
     origin: 'authored',
   },
   'fc-vertical-devolution-share': {
@@ -734,7 +770,7 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
   },
   'devolution-be-to-actual-gap': {
     finding:
-      'What the states finally received against what the Union had budgeted for them in the same year. In FY2019-20 and FY2020-21 they lost about a fifth and a quarter of the devolution they had planned on; in FY2021-22 the error flips sign to plus 35 per cent and never returns, which is a change in forecasting after COVID rather than an award effect. Both columns are the Union\u2019s own, for the same quantity, in the same document series.',
+      'In FY2019-20 and FY2020-21 the states received about a fifth and about a quarter less tax devolution than the Union had budgeted for them; in FY2021-22 the error flips sign to plus 35 per cent and never returns. That is a change in forecasting after COVID rather than an award effect. Both columns are the Union\u2019s own, for the same quantity, in the same document series.',
     origin: 'authored',
   },
   'pmfby-farmers': {
