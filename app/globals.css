@@ -1,6 +1,9 @@
 /*
  * Design system — provisional (CLAUDE.md: locked properly in a later session).
- * Instrument register: restrained, archival, dense-but-legible. Light canvas.
+ * Instrument register: restrained, archival, dense-but-legible. **Dark canvas from 2026-08-13.**
+ * This line read "Light canvas." until then and the wording is superseded rather than deleted, on
+ * the same principle as CLAUDE.md's own supersession — the light palette is still whole under
+ * [data-theme="light"] and the decision reverses by one attribute.
  * Red is reserved for deaths, alerts and break-seams. No decorative gradients.
  */
 
@@ -4652,4 +4655,278 @@ figcaption,
 pre {
   overflow-x: auto;
   max-width: 100%;
+}
+
+/* ============================ THE RECORD CONSTELLATION — landing artwork =====================
+ *
+ * "India, made of records", on the official Survey of India sheet. Geometry lives in
+ * lib/constellation.ts; this file is presentation only, and the two are separated because the
+ * geometry has to be identical on the server and in the browser and CSS is the wrong place for
+ * anything that has to be deterministic.
+ *
+ * THE ONE NON-OBVIOUS RULE HERE: a selected constellation SCALES UP, about the centre of the whole
+ * sheet, rather than the unselected ones shrinking away. That is the operator's instruction of
+ * 2026-08-14 and it is doing real work — the risk with marks on a map of India is that a reader
+ * reads a cluster as a claim about the state under it, and the moment they concentrate hardest on
+ * one area is the moment it visibly sprawls across the entire country instead.
+ * ========================================================================================== */
+
+.rc {
+  display: grid;
+  gap: 1.25rem;
+  margin: 2.5rem 0 3rem;
+}
+
+.rc-h {
+  margin: 0 0 0.5rem;
+}
+
+.rc-lede {
+  margin: 0;
+  max-width: var(--measure);
+  color: var(--ink-2);
+}
+
+/* --- The figure ------------------------------------------------------------
+   One stable viewBox, the map as an <image> inside it, every mark in the same
+   coordinate space. Nothing measures anything, so there is no ResizeObserver
+   and nothing to loop. */
+.rc-art {
+  margin: 0;
+  width: 100%;
+  max-width: 30rem;
+  justify-self: center;
+}
+
+.rc-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+}
+
+/* The sheet is a dense full-colour scan and the marks have to read over it. Knocked back far
+   enough that bone-on-map has contrast, not so far that the boundary treatment — the reason for
+   using the official depiction at all — stops being legible. */
+.rc-map {
+  filter: saturate(0.42) brightness(0.58) contrast(1.04);
+}
+
+:root[data-theme='light'] .rc-map {
+  filter: saturate(0.5) brightness(1.06) contrast(0.9);
+  opacity: 0.72;
+}
+
+.rc-group {
+  transform-box: view-box;
+  transform-origin: 463.5px 550px;
+  transition:
+    transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 260ms ease;
+}
+
+.rc-node {
+  fill: var(--ink);
+  opacity: 0.82;
+}
+
+.rc-edge {
+  stroke: var(--ink-2);
+  stroke-width: 0.6;
+  opacity: 0.3;
+  fill: none;
+}
+
+/* THE SPREAD. Selected: bigger and further out. Unselected: quieter, and still there — the brief
+   requires the rest to stay for context, so this is opacity and never display:none. */
+.rc-group[data-state='on'] {
+  transform: scale(1.16);
+}
+
+.rc-group[data-state='on'] .rc-node {
+  fill: var(--mark);
+  opacity: 1;
+}
+
+.rc-group[data-state='on'] .rc-edge {
+  stroke: var(--mark);
+  opacity: 0.62;
+}
+
+.rc-group[data-state='off'] .rc-node {
+  opacity: 0.26;
+}
+
+.rc-group[data-state='off'] .rc-edge {
+  opacity: 0.08;
+}
+
+/* --- The controls ----------------------------------------------------------
+   Icon-only, per the brief; the name arrives by tooltip, by focus, by the
+   accessible label and by the status line. A wrapping row rather than the
+   orbital ring the brief permits: a ring of eight is what overlaps first at
+   320px and puts the last control furthest from the thumb. */
+.rc-controls {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  /* Reserved for the name caption above, so revealing it never shifts the row. */
+  padding-top: 1.5rem;
+}
+
+.rc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-width: 2.75rem; /* 44px — the touch-target floor, both axes */
+  min-height: 2.75rem;
+  padding: 0.4rem 0.55rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.rc-btn > svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: currentColor;
+  flex: none;
+}
+
+/* The shape this area's marks take, beside the icon that selects it — so the tie between control
+   and mark is visible and never rests on colour. */
+.rc-btn-shape svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  display: block;
+}
+
+.rc-btn-shape .rc-node {
+  fill: currentColor;
+  opacity: 0.75;
+}
+
+.rc-btn:hover {
+  color: var(--ink);
+  border-color: var(--mark);
+}
+
+.rc-btn:focus-visible {
+  outline: 2px solid var(--mark);
+  outline-offset: 2px;
+}
+
+.rc-btn[aria-pressed='true'] {
+  color: var(--mark-ink);
+  border-color: var(--mark);
+  background: var(--mark-soft);
+}
+
+/* THE NAME CAPTION. Hover AND focus — never hover alone; the status line prints the name on
+   selection, which is what a touch user gets, and `aria-label` carries it regardless.
+ *
+ * **IT IS ANCHORED TO THE ROW, NOT TO THE BUTTON, AND THAT IS A BUG FIX RATHER THAN A STYLE.**
+ * Per-button it was `position: absolute; left: 50%; white-space: nowrap` — so for the buttons near
+ * the edge it extended past the viewport, and because `visibility: hidden` still occupies layout it
+ * pushed the document sideways **while invisible**: 343px of scrollWidth in a 320px viewport,
+ * measured. Spanning the row with `left: 0; right: 0` makes an overflow geometrically impossible at
+ * any width instead of merely unlikely at the ones that were checked. It also reads better — one
+ * caption over a row of marks is the archival form, and tooltip chrome was never wanted here. */
+.rc-btn-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: var(--ink);
+  font-size: 0.8125rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.rc-btn:hover .rc-btn-label,
+.rc-btn:focus-visible .rc-btn-label,
+.rc-btn[aria-pressed='true'] .rc-btn-label {
+  opacity: 1;
+  visibility: visible;
+}
+
+.rc-status {
+  margin: 0;
+  text-align: center;
+  min-height: 1.5rem; /* reserved, so announcing a selection never shifts the layout */
+}
+
+.rc-status-hint {
+  color: var(--ink-dim);
+}
+
+.rc-note,
+.rc-attrib {
+  margin: 0;
+  max-width: var(--measure);
+  font-size: 0.8125rem;
+  color: var(--ink-dim);
+}
+
+.rc-attrib {
+  font-size: 0.75rem;
+}
+
+/* --- Desktop: copy beside the map ------------------------------------------
+   The sheet is portrait, so a tall column next to the reading matter uses the
+   width better than stacking. Below 900px everything stacks in DOM order, which
+   is already copy-above-visual as the brief requires. */
+@media (min-width: 900px) {
+  .rc {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+    grid-template-areas:
+      'copy art'
+      'controls art'
+      'status art'
+      'note art'
+      'attrib art';
+    grid-template-rows: auto auto auto auto 1fr;
+    column-gap: 2.5rem;
+    align-items: start;
+  }
+
+  .rc-copy {
+    grid-area: copy;
+  }
+  .rc-art {
+    grid-area: art;
+    max-width: none;
+  }
+  .rc-controls {
+    grid-area: controls;
+    justify-content: flex-start;
+  }
+
+  .rc-btn-label {
+    text-align: left;
+  }
+  .rc-status {
+    grid-area: status;
+    text-align: left;
+  }
+  .rc-note {
+    grid-area: note;
+  }
+  .rc-attrib {
+    grid-area: attrib;
+  }
+}
+
+/* Restrained by default and none at all on request. The transform is the only motion in the
+   component — there is no ambient animation to stop, which is the brief's other requirement. */
+@media (prefers-reduced-motion: reduce) {
+  .rc-group {
+    transition: none;
+  }
 }

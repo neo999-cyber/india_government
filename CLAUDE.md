@@ -753,6 +753,20 @@ what is done, state what is not, and say whether it was attempted. `[R-db403e]`
 - Mono for system labels and figures (tabular-nums), humanist sans for prose.
 - Every view answers "what does this number rest on?" — one click to source, tier and provenance.
 - Palette is Bone & Indigo, defined as tokens; nothing hardcodes a literal. `[R-34510f]`
+- **THE LANDING ARTWORK SHIPS A THIRD-PARTY COPYRIGHTED ASSET, AND IT IS THE ONLY ONE.**
+  `public/map/` carries the Survey of India *Political Map of India*, 13th edition — the official
+  depiction, chosen because the J&K/Ladakh/POK/LOC boundary treatment is not something a generic
+  outline gets right. **The sheet bears "© Government of India copyright 2026".** That was put to
+  the operator before the component was written and they ruled it usable, 2026-08-14; attribution
+  renders unconditionally beneath the figure and **the obligation travels with the asset** — anyone
+  moving, re-encoding or reusing it inherits the question. `components/RecordConstellation.tsx`
+  holds the full note.
+- **`RecordConstellation` is a deliberate exception to "no undefensible position", and it is the
+  only one.** Mark POSITION is conceptual and says so in the visible note AND in the SVG
+  description; mark DENSITY is proportional to real filings and is the one true encoding in the
+  picture. **The eight areas are a reader-facing grouping over all fourteen domains, and totality is
+  asserted at module load** — a domain with no home fails the build, because the brief this was
+  built from named seven areas covering 34% of the corpus and captioned them as the whole of it.
 
 ## Roles
 

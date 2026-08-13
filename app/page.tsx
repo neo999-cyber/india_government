@@ -8,6 +8,8 @@ import { buildBoard } from "@/app/overview/page";
 import type { Domain } from "@/lib/types";
 import { Evaluability } from "@/components/Evaluability";
 import { RecordMarks } from "@/components/marks";
+import { RecordConstellation } from "@/components/RecordConstellation";
+import { AREAS } from "@/lib/constellation";
 
 /**
  * THE HOMEPAGE — phase 18 prototype B, built to the §3a order.
@@ -135,6 +137,28 @@ export default function HomePage() {
       ledger.some((l) => l.domains.includes(d)),
   );
 
+  /**
+   * FILINGS PER AREA, from `/data`, for the constellation's mark density — the one thing in that
+   * picture that is a real measure rather than a conceptual one.
+   *
+   * A ledger record filed under two domains is held by BOTH areas and counts in both. That is not
+   * double-counting a record, because the quantity is *how much the archive holds about this area*
+   * and not a partition of the corpus — the domain axis is a tag set, which `lib/types.ts` says in
+   * its first sentence. No total is derived from these and none is printed.
+   */
+  const areaCounts = Object.fromEntries(
+    AREAS.map((a) => [
+      a.id,
+      a.domains.reduce(
+        (n, d) =>
+          n +
+          series.filter((s) => s.domain === d).length +
+          ledger.filter((l) => l.domains.includes(d)).length,
+        0,
+      ),
+    ]),
+  );
+
   return (
     <>
       {/* 1. THE POSITIONING LINE. What the site is, in one sentence, before anything is counted. */}
@@ -146,6 +170,25 @@ export default function HomePage() {
         documents. Every figure here shows where it came from — and where the
         record stops, this says so, with the reason.
       </p>
+      {/* ============================ THE RECORD CONSTELLATION ==============================
+          Commissioned by the operator 2026-08-14 as the landing visual: "India, made of records."
+
+          **IT SITS HERE, AND THAT IS A DEPARTURE FROM §3a THAT IS BEING MADE DELIBERATELY.** §3a
+          orders this page positioning line → one measured change → several more → a series that
+          stops → its reason → and only then anything cross-record. A picture of the whole archive
+          is cross-record, so by that order it belongs near the bottom.
+
+          **The reason it is allowed above them: §3a's bar is on LEADING WITH THE SIZE OF THE
+          DATABASE, and this prints no count.** The six-figure block that used to open this page is
+          what that rule was written against. What is here instead is what kind of thing the site
+          is — which is a hero's job, and which §3a's own first item is already doing in words.
+          The nihilism guard is untouched: nothing here says anything is unmeasured, and the first
+          CHART a reader meets is still the strongly measured one below.
+
+          Mark density is proportional to real filings; position is not, and the figure says so
+          twice — once in the SVG description for a reader who cannot see it, once in the note. */}
+      <RecordConstellation counts={areaCounts} />
+
       {/* ============================ THE YEAR CONTROL, REDUCED — §6b ========================
           The strongest interface on the site, and until now one page had it. Five areas, one head
           series each, scrub and no play.
