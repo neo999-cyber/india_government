@@ -258,12 +258,38 @@ anti-duplication logic applies on a record's OWN page, **where neither copy is a
 sources card IS one. **Both copies are required.** Reverted in full; the reasoning is in
 `StorySources` so it is not re-derived.
 
-**A WELD CLASS `rendered-space` CANNOT SEE — third instance.** `<br />` between lines welds in
-extracted text (`Parliament: 72015`), as a flex `gap` did on the topic decomposition. That gate binds
-JSX expression welding only. **Use block elements, not break tags, wherever text is extracted.**
+**WITHDRAWN 2026-08-13 — THERE IS NO WELD CLASS.** This entry read: *"A WELD CLASS
+`rendered-space` CANNOT SEE — third instance. `<br />` between lines welds in extracted text
+(`Parliament: 72015`), as a flex `gap` did on the topic decomposition."* **Both alleged instances
+were tested through the sanctioned normaliser and neither welds** — `pageTextFromHtml` replaces
+every tag with a space, so `Governance & institutions 15` and `Parliament: 7 2015` are what any gate,
+browser, `innerText` or screen reader gets. **What welded was `textContent`, which is what the probes
+used and what nothing reads through.** The rule that was broken already exists: *a verification reads
+the page through the gate's own normaliser, or it is not a check.* **The probe is the defect, not
+the markup.**
 
-**NEXT: P-114**, unstarted. Its control is Bihar's row in the same table: no stoppage, releases
-continuing. PR-22 (education, depth 22), PR-35 (a form the site has not
+**STORY SEVEN WRITTEN 2026-08-13 — a FIFTH form.** *A zero that is not a zero* at
+`/stories/a-zero-that-is-not-a-zero/`, on P-114. **The fifth form: one instrument, a cell it cannot
+explain, and a sibling row that makes the reading possible.** Not form 3 — P-114's own first sentence
+rules it out: *nothing in the construction of the table changed; the change is in the world it
+measures.* The control is **drawn, not described**, and the page states in terms that Bihar is not a
+counterfactual, because this instrument declined that engine.
+
+**THE MEASURED LIST IS EXHAUSTED, AND THE MATERIAL SAYS SO.** 25 signatures qualify under the printed
+criterion; **9 are carried by a story; 16 remain** — of which 2 were already dropped as duplicates of
+their own topic prose, 1 is depth 1, and 6 are already inside another story's sources. **Seven have
+no mechanical disqualifier, and reading them dissolves five:** PR-27 and P-71 are L-0111's spine,
+inside the Kashmir story; P-78 and P-97 are who-produces-the-J&K-figures, which is that story's
+subject; P-102 and P-109 are the divisible pool, and federalism was declined because the domain
+period carries it.
+
+> **The criterion permits sixteen more. The material is asking for about one** — PR-49, the cess
+> whose definitional choice inverts the sign of a decade, and even its adjacent material is well
+> covered in two domain periods.
+
+**So a next story should be commissioned by a subject rather than drawn from this list**, or the list
+should wait for the corpus to grow. The rate of one a batch with one declined was the material's
+rate, and it has been worked through rather than slowed. **SEVEN STORIES SHIPPED.** PR-22 (education, depth 22), PR-35 (a form the site has not
 published) and P-114 (welfare) are strongest on material. Each is a piece of writing.
 
 **THE BLOCKER AS IT WAS MEASURED, kept because the fix is only checkable against it.** Measured across all 750 built pages: **each story has exactly

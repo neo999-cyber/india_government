@@ -18772,3 +18772,116 @@ At 375 px: 0 body overflow, 0 clamped, 6 declared absences in the dashed box, 6 
 which 3 carry marks.
 
 **One story. P-114 carries** — its control is Bihar's row in the same table, and it is unstarted.
+
+---
+
+## 2026-08-13 (sixty-fourth entry) — STORY SEVEN, a fifth form, a correction to the entry before this one, and where the sequence stands
+
+### CORRECTION TO THE SIXTY-THIRD ENTRY: THE WELD CLASS DOES NOT EXIST
+
+That entry reported, under the heading *A WELD THAT `rendered-space` CANNOT SEE*, that the identity
+block read **"`Parliament: 72015`"** in extracted text and called it *"the same class as the
+flex-gap weld caught on the topic decomposition"* and *"third instance"*. **Both halves are
+withdrawn.**
+
+Tested directly, by running the pre-fix markup of both alleged instances through the sanctioned
+normaliser:
+
+| pre-fix markup | `pageTextFromHtml` output | welds? |
+|---|---|---|
+| flex `gap` between a label and a count | `Governance & institutions 15` | **no** |
+| `<br/>` between two identities | `… Parliament: 7 2015 · 90 = …` | **no** |
+
+`pageTextFromHtml` replaces **every** tag with a space, so neither construction can weld for any
+gate. Nor for a browser reader, nor for `innerText`, nor for a screen reader, which follow layout
+and the accessibility tree.
+
+**What welded was `textContent`, which is what my probes used** — a DOM API that concatenates
+without regard to markup and that no consumer of this site reads through. CLAUDE.md already has the
+rule this breaks: *a verification reads the page through the gate's own normaliser, or it is not a
+check.* **I broke it twice and reported the artefact as a defect twice**, the second time into a
+committed entry as evidence of a recurring class.
+
+**So the answer to whether the class is bindable is that there is no class to bind.** The two fixes
+made — a `{' '}` and three block elements — corrected nothing that was broken; both are harmless and
+the second is better markup, so both stay. **What would have to change is the probe, not the gate**,
+and the rule for it already exists.
+
+The measurement that would have been needed had the class been real is recorded for the same
+reason: a byte-level rule of *adjacent text-bearing inline siblings with no whitespace* returns
+**46,968 hits across 752 pages** — every nav link and every chip row — because the discriminator is
+whether CSS separates them, and CSS is not in the HTML. That rule was unusable regardless.
+
+### STORY SEVEN — P-114, AND IT IS A FIFTH FORM
+
+Tested against the four before drawing anything. Not one instrument short of two (forms 1, 2, 4),
+and **not form 3**, because P-114's own first sentence rules it out: *nothing in the construction of
+the table changed; the change is in the world it measures.* No boundary moved.
+
+> **The fifth form: one instrument, a cell it cannot explain, and a sibling row that makes the
+> reading possible.**
+
+A zero in a release table normally means no demand or no claim. In West Bengal's FY2022-23 row it
+means release was stopped under section 27, and the table has no column for that. What makes the
+cell legible is **Bihar's row on the same table, same publisher, same years, no stoppage.**
+
+**What the form requires.** The control must be **drawn, not described** — without Bihar on the axis
+the West Bengal line is a collapse with an obvious cause, and that cause is the thing the record
+forbids asserting. And the control must not become a counterfactual: this instrument declined a
+counterfactual engine, so the page says in terms that **Bihar is not what West Bengal would have
+looked like** — it is a second state on one table. That claim is the corpus's, in P-114's notes and
+in the job-card series' caveat, not this page's.
+
+Verified: **3 paths for 2 lines** — West Bengal cut at its declared break, Bihar whole — and the two
+job-card series drawn on **separate axes**, because a shared one would invite a reading about which
+state issues more cards, which is not the subject.
+
+### THE PREFIX, DESIGNED OUT
+
+*West Bengal's money was stopped and its job cards collapsed* is true, is the sentence the story
+exists for, and is the misleading half. **Step four's heading carries both states** — *And new job
+cards collapsed in both states* — so no prefix of the sequence states the collapse without its
+control. Seventh carrier for the shape, second consecutive batch in which it never reached a draft.
+
+### The three checks
+
+**Figures pointed at the field:** 6 series claims traced to their own record at their stated period,
+0 mismatches; **12 prose claims traced to the named field**, 0 not found. **No West Bengal
+percentage is quoted anywhere**, because no record states one — only Bihar's 57 per cent is
+published, in `P-114.notes` and in the control series' own notes, and the West Bengal figures are
+given in lakh exactly as `L-0168.whatHappened` gives them.
+
+**Enum words: none.** **True-alone: all four headings safe read alone.**
+
+### WHERE THE SEQUENCE STANDS — the measured list is exhausted
+
+**25 signatures qualify under the printed criterion; 9 are now carried by a story; 16 remain.** The
+16, triaged:
+
+| disqualifier | n | which |
+|---|---|---|
+| already dropped as a duplicate of its own topic prose | 2 | PR-59, PR-60 |
+| too thin to draw | 1 | PR-18 (depth 1) |
+| already carried inside another story's sources | 6 | P-60, P-66, P-73, P-86, P-87, P-88 |
+| **no mechanical disqualifier** | **7** | PR-27, PR-49, P-71, P-78, P-97, P-102, P-109 |
+
+**And reading the seven is what answers the question.** PR-27 and P-71 are the J&K incident
+restatement, which is L-0111's record spine and is inside the Kashmir story. P-78 and P-97 are about
+who produces the J&K figures — the Kashmir story's actual subject. P-102 and P-109 are the divisible
+pool, and the federalism story was declined because the domain period already carries it.
+
+**That leaves PR-49 — the cess whose definitional choice inverts the sign of a decade — as the one
+subject with unclaimed substance, and its adjacent material is well covered in two domain periods.**
+
+> **The criterion now permits sixteen more stories. The material is asking for about one.**
+
+The rate of one a batch, with one declined, was the material's rate and it has been worked through
+rather than slowed. **A next story should be commissioned by a subject, not drawn from this list** —
+or the list should wait for the corpus to grow, which is the honest thing it is now telling us.
+
+### Gate line
+
+27 steps green. `link-check` **60,433 internal hrefs across 753 pages, 0 dead**. `listing-marks`
+**5,727 rows / 8,190 marks**. `unrecognised-rows` 0. `reachability` 1,787/1,787. `rendered-space` 0.
+At 375 px: 0 body overflow, 0 clamped, 3 declared absences in the dashed box, 7 source cards of
+which 4 carry marks.
