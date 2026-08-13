@@ -20446,3 +20446,53 @@ category, and only reading settled it.
 ### Gate line
 
 **32 steps green** — `gate-scope` is new and last in the chain. 13 figures across 7 gates unchanged.
+
+---
+
+## 2026-08-13 (ninetieth entry) — THIRD ATTEMPT AT THE LOK SABHA DIVISION: ONE MORE T1, AND THE OUTCOME IS NOT REACHABLE FROM HERE
+
+Directed to clear it. **Three attempts, three approaches, resolver and client varied each time.**
+
+### GAINED, AND IT IS A REAL GAIN
+
+A **PIB release dated 17 APR 2026** — *"Union Home Minister … replies in Lok Sabha to the discussion
+on the Delimitation Bill, 2026; the Constitution (131st Amendment) Bill, 2026; and the Union
+Territories Laws (Amendment) Bill, 2026"*. **A government primary establishing that the debate
+happened, on that date, on all three Bills together.**
+
+**It carries no outcome and would not.** Searched in full: no *negatived*, no division, no *Ayes*, no
+withdrawal. A government release does not publish a defeat, and its silence there is evidence of
+nothing.
+
+### EVERY REMAINING ROUTE, TRIED
+
+| route | result |
+|---|---|
+| `eparlib.sansad.in` — the Digital Library, where the Bulletins live | **resolves to 164.100.166.186, HTTP 000 plain AND pinned** — unreachable, not misresolved |
+| `sansad.in/ls/debates/view-debate` — the official transcript | **JS shell: 5,860 bytes, 0 characters of visible text.** Rule 3 |
+| `sansad.in/ls/legislation/bills` | JS shell, empty table, no endpoint in any of 8 bundles |
+| `eparlib.nic.in`, `loksabhadocs.nic.in`, `loksabha.nic.in` | do not resolve |
+| `egazette.gov.in` | up — **a negatived Bill is never gazetted** |
+| `web.archive.org` | HTTP 498 |
+
+All recorded in CLAUDE.md, with `www.pib.gov.in`'s 403-to-WebFetch / 200-to-curl split, so the next
+run does not re-derive them.
+
+### THE DECISIVE POINT IS NOT SOURCING ETIQUETTE
+
+**Even accepting T4, there is no admissible assessment.** `too-early` asserts the outcome is not yet
+known — **the outcome IS known**, and that value would be false against the accounts. `failed` would
+rest a scored verdict about a constitutional amendment on accounts alone.
+
+**No value is available**, so the record waits for one document rather than being written around it.
+That is a stronger reason than the tier argument and it should have been the first one I gave.
+
+### WHAT IS HELD NOW
+
+Both Bill texts with their operative clauses and Statement of Objects and Reasons; the PIB release
+fixing the date and the joint consideration. **The gap is one line in one document: the division of
+17 April 2026.**
+
+### Gate line
+
+32 steps green · `gate-scope` 13 figures unchanged.
