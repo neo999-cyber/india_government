@@ -19555,3 +19555,61 @@ it just was not needed.
 29 steps green on `next@16.3.0`. `reachability` 1,787/1,787 · `link-check` 59,070 across 754, 0 dead
 · `listing-marks` 4,167 / 5,914 · `chart-ticks` 33/7 · `interface-invariants` 22 index surfaces ·
 `domain-coverage` 1,137/1,137. **`npm audit`: 0 vulnerabilities, from 5 high.**
+
+---
+
+## 2026-08-13 (seventy-third entry) — THE E2E SUITE, AND IT FOUND A LIVE DEFECT ON ITS FIRST RUN
+
+Four tests, bound to exactly the four properties `tools/interface-invariants.mjs` states in its own
+header that it cannot bind: **a count that updates when a facet is clicked, a rendered target size,
+keyboard reach into a scrolling region, and horizontal overflow at 375px.** `npm run e2e`, a CI step,
+**deliberately not in `npm run build`** — the build runs on Vercel, which has no browser binaries,
+the same reason `deploy-check` stays out. `tools/serve-out.mjs` serves the real `out/`, not a dev
+server, because all four are properties of what a reader receives.
+
+### THE DEFECT: `/search/` FILTERED CORRECTLY AND HID NOTHING
+
+`ListingFacets` filters by setting `row.hidden = true`. The browser's own stylesheet says
+`[hidden] { display: none }` — **but an author rule beats a user-agent rule whatever its
+specificity**, so `.scard { display: flex }` won.
+
+Measured live: **396 of 619 cards were marked hidden and all 619 stayed painted**, while the readout
+correctly said *"Showing 223 of 619"*. The count was right, the filter did nothing, and the two
+disagreed on screen.
+
+**Scoped before it was fixed, not after:** `/series/` 247 marked hidden / **0 still painted**,
+`/ledger/` 149 / **0**, `/provenance/` 97 / **0**. Only `/search/` was affected, because only its
+rows carry an author `display` rule. `[hidden] { display: none !important }` is declared globally
+anyway — the next listing built with a styled row would reintroduce it silently.
+
+**This is the defect class the audit's own P1 pointed at and neither of us reached.** The audit found
+the *count* wrong and I fixed the count; the count was only ever half of it. **A static gate could
+not have found this** — the attribute is set at runtime and the conflict is between two stylesheets.
+
+### TWO MORE, SMALLER, AND ALSO ONLY VISIBLE RENDERED
+
+**18 footer directory links at 23px and one at 18px** — under WCAG 2.5.8's 24px minimum by a single
+pixel in the first case. Exactly the kind of thing only a rendered measurement finds. Both fixed with
+`min-height: 24px`.
+
+### THREE THINGS THE SUITE GOT WRONG ABOUT ITSELF FIRST
+
+1. **`test.skip` at describe level took the wrong signature**, so every spec ran in both projects and
+   then errored — **8 failed, 22 did not run.** A suite that reports failure without testing
+   anything. Replaced with `testMatch` per project, which is declarative and cannot misfire.
+2. **`expect(page.locator('[aria-live]')).toHaveCount(1)` is flaky** — Next injects a route announcer
+   outside `main`, so the assertion read 2 on one run and 1 on the next. Scoped to `main [aria-live]`,
+   which is what it always meant. **A flaky assertion in a suite with `retries: 0` would have been
+   read as a regression.**
+3. **The target-size test flagged 106 inline links.** WCAG 2.5.8's *Inline* exception covers a link
+   sized by the line-height of the text around it, and padding one breaks its line. The exemption is
+   applied with the reason at the filter — the standard's own carve-out, not a weakening.
+
+**The suite's value is already demonstrated in the strongest available form: it failed on real
+defects and passed after they were fixed.** No fixture was needed to prove it works.
+
+### Gate line
+
+29 build steps green; **15 e2e tests pass** (4 desktop, 11 mobile). `link-check` 59,070 across 754,
+0 dead · `listing-marks` 4,167 / 5,914 · `interface-invariants` 22 index surfaces ·
+`domain-coverage` 1,137/1,137. `npm audit` 0.

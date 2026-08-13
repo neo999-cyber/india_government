@@ -55,7 +55,8 @@
     "period-verdict-probe": "tsx tools/period-verdict-probe.mjs",
     "own-caveat-once": "node tools/own-caveat-once.mjs",
     "chart-ticks": "node tools/chart-ticks.mjs --control && node tools/chart-ticks.mjs",
-    "interface-invariants": "node tools/interface-invariants.mjs --control && node tools/interface-invariants.mjs"
+    "interface-invariants": "node tools/interface-invariants.mjs --control && node tools/interface-invariants.mjs",
+    "e2e": "playwright test"
   },
   "dependencies": {
     "next": "^16.3.0",
@@ -63,6 +64,7 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.62.1",
     "@types/node": "^24.0.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
