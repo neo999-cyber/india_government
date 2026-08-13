@@ -17917,3 +17917,110 @@ in `lib/share-card.ts` where the author will meet it.
 listing, no mark and no rendered field. `link-check` 47,278 / 746 / 0 dead. `listing-marks`
 5,697 / 8,145. `unrecognised-rows` 0. `field-render-audit` 0 invisible. `figure-consistency` 18
 declared claims checked; the card figures are `/data` framings and declare no new arithmetic.
+
+---
+
+## 2026-08-13 (fifty-fifth entry) — DESIGN-REVISION-2 ITEM 7: the second story, and the candidate the brief lists first cannot be written
+
+### THE NINE CANDIDATES ARE NOT EQUALLY ANSWERABLE, AND THE FIRST IS THE LEAST
+
+§7 lists nine questions and says *most answerable from the corpus*. Measured against what the story
+form actually needs — one measure, a conflicting measure, declared absences, records to link:
+
+| question | series | contested pairs | absences | verdict |
+|---|---|---|---|---|
+| Are Indian children learning more? | 15 | 1 | 35 | **built** |
+| Is militancy in Kashmir lower? | 30 | 6 | 116 | writable, richest |
+| Did India become more federal or centralised? | 25 | 5 | 60 | writable |
+| **Did jobs grow after 2014?** | 16 | **2** | 12 | **written here** |
+| Did renewable energy replace coal? | 9 | **0** | 11 | writable in a different form |
+| Did farmers' incomes double? | 17 | 0 | 14 | not this form |
+| Did highways expand faster? | 6 | 0 | 11 | not this form |
+| Did sanitation improve, and which measure says so? | 1 | 0 | 1 | one measure and an absence, not two |
+| **Did demonetisation achieve what was announced?** | **0** | **0** | 2 | **cannot be written** |
+
+**Demonetisation is listed first in the brief and has zero series in this corpus.** One ledger
+record, L-0011, and nothing measured over time. **The zero was relaxed before it was banked**, per
+the restriction rule: `demonet` returns 0, `currency|cash|note|SBN|banknote` returns 19 series none
+of which are about it, and the November 2016 date returns 0. The form needs one measure and a
+conflicting measure; this question has neither. **Sixteenth premise correction.**
+
+Sanitation is the near-miss worth naming: PR-11 exists, but its other side is *what independent
+survey found* — an absence, not a second published measure. *Which measure says so* presupposes two.
+
+### THE STORY: DID JOBS GROW AFTER 2014?
+
+Chosen as the closest structural match to the one already built: PR-12 and PR-13 are declared
+`contested` pairs — the same quantity, two instruments, disagreeing — behind four series, four
+provenance records and three ledger records.
+
+**IT DIFFERS FROM THE READING STORY IN ONE STRUCTURAL WAY.** That story refuses a shared scale
+because ASER and PARAKH measure different quantities. **These two measure the same quantity in the
+same unit**, which is exactly what makes them contested rather than incommensurable, so the lines
+share an axis and the divergence is the picture. **What still may not happen is a gap**: PR-12
+records `gapComputable: false` — *two figures that disagree about the sign of a change have a
+disagreement, not a gap* — and no number is subtracted anywhere on the page.
+
+**RULE 2 SHAPED EVERY FIGURE ON IT.** Every PLFS series here breaks at FY2017-18 (P-02) and at
+FY2025-26 (P-39). So every comparison runs FY2017-18 to FY2023-24 and stops, and the newest official
+figures are deliberately compared to nothing. **Verified in the rendered DOM: three paths for two
+lines** — the PLFS line is cut at the redesign break and the CMIE line, which declares none, is
+whole.
+
+### THE THREE CHECKS, AND THE THIRD FOUND THREE THINGS
+
+**Figures — 14 claims traced to their own record at their stated period, 0 mismatches.** P-41's four
+figures (+4.55%, 88.86 million, −0.30%, 5.62 million) and P-39's four (12,800, 22,692, 2.72 lakh,
+1.02 lakh) each confirmed present in the provenance record quoted.
+
+**Enum words in context — `measure` ×4, `contested` ×1 in prose.** All ordinary English, and
+`contested` is the CMIE record's own phrase *a contested sampling frame*. **One was changed anyway:**
+the heading *The measure that makes the fall possible* sat on a page about L-0058, whose
+`contestedGround` is literally `measure`. Ordinary English elsewhere is unavoidable; in a heading on
+that record's own subject it is a collision. Now *The definition that makes the fall possible*.
+
+**True-alone — and it failed in the shape item 6 had just named.** Step one of a scroller is met
+alone by a reader who stops, and it read:
+
+> *Read plainly, those two movements together say a great deal: more people looking for work, and a
+> smaller share of them failing to find it.*
+
+**That is the misleading half, standing alone, one scroll from its own correction** — the truncation
+problem from the two-truths card in a different carrier. Rewritten so the naive reading is named as
+the reading the number invites, with the series' own record quoted against it in the same paragraph.
+
+**Third correction, and it turned into a finding.** The unpaid-helper chart's caption said the share
+*rose across the years in which the unemployment rate was falling*. The series runs FY2018-19 to
+FY2020-21 and stops. **By the corpus's own frontier test it is a stopped series** — so the quantity
+that shows what the falling unemployment rate is made of is one a reader cannot follow to the
+present. The page now says the window, says it stops, and says that is a fact about what is
+published rather than an inference about why.
+
+### WHAT THE PAGE REFUSES TO DO
+
+It does not answer its own title. L-0058's caveat — *this record must not be resolved in either
+direction* — renders in full **above** the rest of the page rather than in the sources at the foot,
+because a narrative wants an ending and this is the surface most likely to supply one by accident.
+Tier is stated both ways: PLFS T1, CMIE T4, and the page says the pedigree argument looks easy and
+does not work.
+
+### Verified in the rendered DOM at 375 px
+
+4 scroller steps · 2 charts · 3 of 3 chart dots hollow for `approx`, 0 verified, rule 3 intact ·
+8 record cards of which 4 carry marks — the fifth, L-0059, declares neither a caveat nor an absence
+and correctly renders nothing · 2 declared absences from L-0064 inside a dashed unfilled `.absence`
+box measured at `1px dashed rgb(215,207,193)` · 0 body overflow · 0 clamped.
+
+**A probe of mine was wrong before the page was.** `approxMarks: 0` looked like a rule 3 breach;
+`SeriesChart` marks status as `chart-dot-approx` on the point, not `.status-approx`, and says so in
+its own header. The existing story returns 0 on the same bad probe.
+
+### Gate line
+
+27 steps green. `link-check` **47,315 hrefs across 747 pages, 0 dead** (from 47,278 / 746 — one new
+page). `listing-marks` **5,701 rows / 8,149 marks** (from 5,697 / 8,145 — the four record cards that
+declare something). `unrecognised-rows` 0. `reachability` 1,787/1,787. `rendered-space` 0.
+
+**Item 7 is one story, not the sequence.** Kashmir and federalism are writable in this form today and
+are not written; renewables needs a different form because it has no contested pair; four of the
+nine cannot carry this form at all. That scoping is in STATE.
