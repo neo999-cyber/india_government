@@ -51,7 +51,6 @@
 export const ROUTES: Record<string, { label: string; nav?: string }> = {
   '/': { label: 'instrument' },
   '/overview/': { label: 'What changed', nav: 'what changed' },
-  '/domains/': { label: 'Topics', nav: 'topics' },
   '/questions/': { label: 'Questions', nav: 'questions' },
   '/stories/': { label: 'Stories', nav: 'stories' },
   '/search/': { label: 'Find a record', nav: 'search' },
@@ -114,7 +113,10 @@ export const DIRECTORY: { label: string; items: { href: string; label: string }[
   {
     label: 'ways in',
     items: [
-      { href: '/domains/', label: navLabel('/domains/') },
+      // `/domains/` was folded into `/overview/` on 2026-08-14 — it was a poorer copy of the
+      // same fourteen cards. The topics are reached from the board there, and from each
+      // record's own tags.
+      { href: '/overview/', label: navLabel('/overview/') },
       // `years` sits beside `terms` because both are ways INTO the record rather than layers of it.
       { href: '/years/', label: navLabel('/years/') }, // was: years
       { href: '/lenses/', label: navLabel('/lenses/') }, // was: lenses

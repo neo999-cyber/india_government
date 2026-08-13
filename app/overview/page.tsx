@@ -289,13 +289,21 @@ export default function Overview() {
       </p>
       <h1 className="home-lead">What changed, everywhere, since 2014</h1>
       <p className="lede">
-        One topic per card, each leading with a real measurement and where it went. Move
-        the year control and the whole page moves with it. Open any card for every series behind
-        it, or any title for the records themselves.
+        One topic per card — what it is, what it holds, and a real measurement with where it went.
+        Move the year control and the whole page moves with it. Open any card for that topic&rsquo;s
+        indicators, records, disputes and declared absences, or any title for the records
+        themselves.
       </p>
+      {/* ============ `/domains/` WAS FOLDED IN HERE ON 2026-08-14 ==============================
+          It was fourteen cards linking to the same fourteen topic pages these cards link to, with
+          the same counts and the same lead figure derived by the same criterion. **The only thing
+          it carried that this board did not was the one-line character** — so that became a prop
+          and the page went. `character` is off on the landing board, whose cut is five short cards.
+
+          The topics remain fourteen, in the schema's own order, and nothing is ranked. */}
 
       {/* Directly under this page's h1, so the cards are its first sections: h2. */}
-      <OverviewBoard domains={domains} headingLevel={2} />
+      <OverviewBoard domains={domains} headingLevel={2} character />
 
       <p className="prose-note board-caption">
         <strong>Every chart shares the same years and none shares a scale.</strong> Left to right is

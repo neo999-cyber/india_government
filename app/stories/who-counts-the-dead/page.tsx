@@ -248,7 +248,7 @@ export default function Story() {
           <strong>116 declared absences across 54 records</strong> — 64 collected and not published,
           31 never collected, 12 never defined, 9 withheld. Each is named on its own record with the
           reason that record gives, and they are listed in full on{' '}
-          <Link href="/domains/kashmir/missing/">this topic&rsquo;s missing-data page</Link> rather
+          <Link href="/domains/kashmir/#missing">this topic&rsquo;s missing-data section</Link> rather
           than repeated here, so that no declaration renders twice.
         </p>
         <p>

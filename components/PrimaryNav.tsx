@@ -30,7 +30,7 @@ import { ROUTES } from '@/lib/routes';
  * each held their own copy of a destination's name and three of them went stale.
  */
 
-const PRIMARY = ['/overview/', '/domains/', '/questions/', '/stories/', '/search/'];
+const PRIMARY = ['/overview/', '/questions/', '/stories/', '/search/'];
 
 export function PrimaryNav() {
   const here = usePathname();
