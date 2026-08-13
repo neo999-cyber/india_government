@@ -763,6 +763,14 @@ what is done, state what is not, and say whether it was attempted. `[R-db403e]`
 - Mono for system labels and figures (tabular-nums), humanist sans for prose.
 - Every view answers "what does this number rest on?" — one click to source, tier and provenance.
 - Palette is Bone & Indigo, defined as tokens; nothing hardcodes a literal. `[R-34510f]`
+- **TWO WIDTH TRACKS, AND WIDENING THE READING COLUMN IS THE WRONG FIX.** `.shell` is 68rem and
+  holds prose; `--wide` (84rem) with the `.bleed` pattern is for surfaces that are NOT prose — the
+  landing artwork and the card grids. On a 1710px display the margins either side are the text
+  behaving correctly: it measures **exactly 68 characters a line.** Widening `.shell` was measured
+  and rejected — **343 text elements already exceed 80ch inside tables and lists, and a 1344px shell
+  takes that to 964.** A bleed is safe only where extra width does not lengthen a line: the card
+  grid turns it into more columns, so cards get NARROWER (347px to 335px at 1710). **Never bleed a
+  table** — `td` is the second-largest contributor to that count.
 - **THE LANDING ARTWORK SHIPS TWO THIRD-PARTY COPYRIGHTED ASSETS, AND THEY ARE THE ONLY ONES.**
   Both are the Survey of India *Political Map of India*, 13th edition: the **vector outline** in
   `lib/india-outline.ts`, which is what a reader sees, and the **published sheet** in `public/map/`,

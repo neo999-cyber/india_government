@@ -91,6 +91,12 @@
 
   --measure: 68ch;
   --gutter: 1.5rem;
+  /* THE WIDE TRACK. The reading column is `.shell` at 68rem and it is NOT this. Measured on a
+     1710px display: prose already caps itself at exactly 68 characters a line, so the empty margins
+     are the text behaving correctly — but the CHARTS and CARD GRIDS were capped by the same 1088px
+     and had no reason to be. Widening `.shell` instead was measured and rejected: 343 text elements
+     already exceed 80ch inside tables and lists, and a 1344px shell would take that to 964. */
+  --wide: 84rem;
 
   /* TELLS THE BROWSER, NOT JUST THE STYLESHEET. Without this the native controls render light on a
      dark page: `ListingFacets` has a search input and two <select>s on every large index, and the
@@ -1991,7 +1997,13 @@ tbody > tr:has(+ .caveat-row) > td {
  * Outlining each card instead draws the same 1px lines — adjacent cards meet inside the shared gap
  * — and an empty cell now simply shows the page. `outline` rather than `border` because it does not
  * take part in layout, so no track width changes. */
+/* WIDER MEANS MORE COLUMNS, NOT WIDER CARDS — which is why this one is safe to bleed. `auto-fill`
+   with a 17rem minimum turns extra width into extra columns, so at 1710px the board goes from three
+   cards to four and each card gets NARROWER. Card text lines shorten; nothing is stretched. */
 .cards {
+  --bleed-w: min(var(--wide), calc(100vw - 3rem));
+  width: var(--bleed-w);
+  margin-inline: calc((100% - var(--bleed-w)) / 2);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
   gap: 1px;
@@ -4541,6 +4553,16 @@ pre {
   max-width: 100%;
 }
 
+/* A surface that is not prose may leave the reading column. It never exceeds the viewport: the
+   width is clamped to `100vw - 3rem`, and the 3rem is deliberate headroom for a classic scrollbar,
+   which `100vw` includes and `clientWidth` does not. Below about 1100px the clamp collapses it back
+   to the shell's own width and this becomes a no-op, so there is no breakpoint to maintain. */
+.bleed {
+  --bleed-w: min(var(--wide), calc(100vw - 3rem));
+  width: var(--bleed-w);
+  margin-inline: calc((100% - var(--bleed-w)) / 2);
+}
+
 /* ============================ THE RECORD CONSTELLATION — landing artwork =====================
  *
  * "India, made of records." Built to the operator's design reference: a split window, the official
@@ -4592,10 +4614,13 @@ pre {
    true full bleed and would also overflow by the scrollbar width on every desktop with classic
    scrollbars — a horizontal scroll the e2e suite is there to forbid. */
 .rc {
-  margin: 2.5rem calc(-1 * var(--gutter)) 3rem;
+  margin: 2.5rem 0 3rem;
 }
 
 .rc-window {
+  --bleed-w: min(var(--wide), calc(100vw - 3rem));
+  width: var(--bleed-w);
+  margin-inline: calc((100% - var(--bleed-w)) / 2);
   display: grid;
   grid-template-columns: minmax(17rem, 0.72fr) minmax(26rem, 1.28fr);
   min-height: 41rem;
@@ -4915,7 +4940,7 @@ pre {
 .rc-note,
 .rc-attrib {
   max-width: var(--measure);
-  margin: 1rem var(--gutter) 0;
+  margin: 1rem 0 0;
   font-size: 0.8125rem;
   color: var(--ink-dim);
 }
@@ -4932,10 +4957,6 @@ pre {
    Copy above the visual, per the brief. The stage narrows so the badges on the
    ring's left and right extremes keep their full 46px inside the frame. */
 @media (max-width: 767px) {
-  .rc {
-    margin-inline: 0;
-  }
-
   .rc-window {
     grid-template-columns: 1fr;
     min-height: 0;
@@ -4954,11 +4975,6 @@ pre {
   .rc-stage {
     width: min(74%, 20rem);
     top: 42%;
-  }
-
-  .rc-note,
-  .rc-attrib {
-    margin-inline: 0;
   }
 
   /* Stacked, the source line is two wrapped lines and 49px tall, and at `bottom: 3.25rem` the
