@@ -18997,3 +18997,126 @@ than an exemption. Desktop verified unchanged: nav one line, panel anchored, tab
 27 steps green. `link-check` **60,433 internal hrefs across 753 pages, 0 dead**. `listing-marks`
 **5,727 rows / 8,190 marks — unchanged across the table restacking**, which is the check that it was
 layout and not structure. `unrecognised-rows` 0. `reachability` 1,787/1,787. `rendered-space` 0.
+
+---
+
+## 2026-08-13 (sixty-sixth entry) — THE SERIES CARDS A STORY RESTS ON: fourteen was three, and the other 108 are already answered
+
+### THE COUNT IN THE BRIEF WAS RIGHT AND THE WORK IT IMPLIED WAS NOT
+
+Fourteen series carrying both a finding and a caveat are rested on by a story. That number is
+correct and I checked it before authoring. **What it does not say is how many needed a card**, and
+the answer is three.
+
+| | |
+|---|---|
+| series rested on by a story | **17** |
+| of those, carrying a caveat — the brief's fourteen | **14** |
+| of the fourteen, already carrying a two-truths card from item 6 | **11** |
+| **needing a fresh authored card** | **3** |
+
+The eleven were authored two batches ago as pair framings and are the stronger sentence: a
+two-truths card states the record's tension in the corpus's own words. **Overwriting eleven good
+cards to satisfy a count is the defect the count was meant to prevent.** Confirmed untouched: 11 of
+11 read identically before and after this batch, from the built bytes.
+
+### THE THREE, AND THE CRITERION PRINTED WHERE THE SET IS DEFINED
+
+`SERIES_CARDS` in `lib/share-card.ts` carries the criterion in its own header, so a later pass reads
+why the map has three entries and not 122. All three are P-114's material — the only story whose
+series had neither a pair nor a card.
+
+| series | chars | at 60 | 100 | 140 | 180 | figure? |
+|---|---|---|---|---|---|---|
+| `wb-mgnrega-funds-released` | 260 | safe | safe | safe | safe | none |
+| `bihar-mgnrega-funds-released` | 214 | safe | safe | safe | safe | none |
+| `wb-mgnrega-new-jobcards` | 188 | safe | safe | safe | safe | none |
+
+**All three are safe at the first cut, which is the point of the form rather than luck.** Each opens
+on the qualification: *a statutory act rather than an absence of demand* · *the Union's own figures
+for what it released — not what it allocated* · *do not read this fall as caused by the funding
+stoppage*. A sentence that opens on its qualification has no misleading prefix to find, because the
+qualification is the prefix. The no-figure floor holds on all three; it did not have to lift.
+
+**Two of the three are close to wording already in the corpus, and that is correct rather than
+lazy.** Measured: longest shared word-run with the record's own finding is 6, 9 and 10 words. The
+Bihar card is the finding's *tail clause promoted to the front* — the finding leads with figures and
+ends on the qualification, and the card does the reverse. The job-cards card is the series' caveat
+shortened, and that caveat is already qualification-first, which is why it is the right card. **The
+rule forbids leading with the figure; it does not forbid the record's own words.**
+
+**The three checks.** Non-prose tokens: two, `section 27` and `9 March 2022`, both traced to the
+field — `L-0168.summary` (as *Section 27*; a case-sensitive first pass reported a false miss) and
+`P-114.whatChanged` / `P-114.when`. Enum tokens in the three sentences: **zero**, scanned across
+fifteen values. Rewrite-of-the-finding: measured as above, and answered rather than asserted.
+
+**Authored cards now outrank two-truths cards**, with the reason written at the branch: a two-truths
+card is a *pair's* framing and an authored card is about *this page*. None of the three is a pair
+side, so nothing changed today; the order is set now so that authoring a card for a pair side later
+does the expected thing.
+
+### VERIFIED ON THE DEPLOYED PAGES, WHICH IS WHY IT WAS ASKED FOR
+
+The stories' cards looked correct in the code and unfurled the root fallback. So `seriesCard` was
+checked against the deploy rather than the source: `/series/higher-ed-ger/`,
+`/series/unemployment-rate/`, `/series/coal-production/`, `/ledger/L-0102/`, `/provenance/P-90/` —
+all five `FALLBACK? false`, and `og:description` matches `name=description` on all five. The
+composer builds `openGraph` explicitly and it reaches the page.
+
+### WHAT THE OTHER 108 ARE WORTH — the premise is empty and the answer is better than it
+
+The brief's read was that *a series reached only from the full index is not being shared*. **That
+set has no members.** Inbound links to each of the 122, counted from every `.html` in `out/`:
+
+| linked from | of the 122 |
+|---|---|
+| a domain page · search · another series page · the series index · a year page | 122 each |
+| an overview page | 119 |
+| a provenance page | 119 |
+| a ledger page | 113 |
+| a question page | 83 |
+| a lens | 39 |
+| **a story** | **14** |
+| the landing page | 2 |
+
+**Reachability does not discriminate at all** — 122 of 122 are linked from a landing, story, question
+or overview page, and 0 are index-only. The discriminator the brief reached for is not in the data,
+so the judgment has to rest on something else. It does:
+
+**The floor is already the right permanent answer, and the measurement says why.** Of the 108: **7
+carry a two-truths card**; **101 carry the mechanical floor**. And the floor is safe by construction
+rather than by review — it states domain, span, count of basis changes and the existence of a
+qualification, and asserts nothing quantitative, so there is no cut at which it can mislead.
+
+**Where the floor is weak, the title is carrying it, and the titles are distinct 108 of 108.** 87
+distinct descriptions across the 108; 37 series share their description with at least one sibling,
+the largest group being seven ASER series reading identically. Their `og:title`s are *Standard III
+children who can do at least subtraction, rural*, *Standard V children who can read a Standard II
+level text, rural*, and so on — **the card as a reader sees it is distinct even where the composed
+half is not.** This corpus authors finding-shaped titles under the same rules as the record, which
+is the reason the floor can afford to be generic.
+
+**So: no further authored cards, and the ask is not deferred but answered.** An authored card is a
+per-record human reading — the one thing `share-card.ts` says no gate can bind — and 101 of them
+buys distinctness the titles already supply. **The condition for authoring the next one is stated
+rather than left to judgment: a series gets an authored card when a story rests on it and no pair
+has already written its tension.** That is how these three were selected, it is computed from
+`lib/stories.ts` and `pairs`, and a later cycle re-derives it.
+
+### A SCOPE CORRECTION AGAINST THE ENTRY BEFORE LAST
+
+The sixty-fourth entry states that no record gives a West Bengal job-card fall as a percentage.
+`SERIES_FINDINGS['wb-mgnrega-new-jobcards']` reads **"An 87 per cent fall across two years"**. The
+claim was true of `/data` and was written without saying so; `lib/series-copy.ts` is corpus prose
+outside `/data` and carries the figure. **The scope was unstated, which is the defect rather than
+the number** — a count or an absence with an unstated scope is wrong by an amount nobody can see.
+Nothing on any page changes: the story's own text does not use the figure.
+
+### Gate line
+
+27 steps green. **This batch changed metadata composition and nothing structural, and the counts say
+so**: `listing-marks` **5,727 rows / 8,190 marks across 752 pages** and `link-check` **60,433
+internal hrefs across 753 pages, 0 dead** — both identical to the entry before this one, which is
+the check that three `og:description` strings moved and no listing did. `reachability` 1,787/1,787
+across 753 pages. `field-render-audit` 0 invisible, 15 exempted by name. `rendered-space` 0.
+`unrecognised-rows` 0. `domain-coverage` 1,137/1,137.

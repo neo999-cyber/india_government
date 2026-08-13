@@ -28,7 +28,8 @@ last one had shipped. A file read cold at every session start is the one place s
 which is why the pins below now carry the gate output they were measured from.
 
 **THE LIVE BRIEF IS NOW `DESIGN-REVISION-2.md`** in this directory, and it has its own build order.
-**Items 1 to 6 have shipped; item 7 is under way — one of its stories written.** See the section below.
+**Items 1 to 6 have shipped. Item 7's measured list is exhausted at seven stories**, and share cards
+are closed for the landing page, the seven stories and all 122 qualifying series. See below.
 
 ---
 
@@ -299,9 +300,30 @@ does not override the root layout's `openGraph`** — Next merges that object, n
 100, 140 and 180 characters and safe at every cut. **The landing card is the root fallback by
 design and stays** — it carries the positioning item 1 corrected.
 
-**OWED: 122 series cards.** Each still ships the mechanical floor — safe, no figure, and plain. Not
-broken like the story cards; a different debt. **Tranche criterion when it starts: the 14 a story
-rests on**, being the ones a reader reaches from a shared link.
+**THE 122 SERIES CARDS ARE ANSWERED, NOT OWED — closed 2026-08-13, and the answer is three.**
+The tranche criterion above said *the 14 a story rests on, being the ones a reader reaches from a
+shared link*. **The first half selected correctly; the second half was wrong and the measurement
+retired it.** Inbound links to each of the 122, counted from every built page: 122 of 122 are linked
+from a landing, story, question or overview page and **none is index-only**, so reach does not
+discriminate and no set of series is "the shared ones".
+
+**Of the fourteen, eleven already carried a two-truths card** written as a pair framing two batches
+ago — the stronger sentence, and overwriting them to satisfy a count is the defect the count exists
+to prevent. **Three were authored**, all P-114's material: `wb-mgnrega-funds-released`,
+`bihar-mgnrega-funds-released`, `wb-mgnrega-new-jobcards`. All three safe at 60, 100, 140 and 180
+characters — safe at the *first* cut, because a sentence that opens on its qualification has no
+misleading prefix. No figure on any of them; the floor did not have to lift.
+
+**Of the other 108: 7 carry a two-truths card and 101 carry the mechanical floor, and the floor is
+the right permanent answer.** It asserts nothing quantitative, so no cut can mislead. 87 distinct
+descriptions across the 108 and 37 share theirs with a sibling (seven ASER series read identically)
+— but **`og:title` is distinct 108 of 108**, and this corpus authors finding-shaped titles, so the
+card a reader sees is distinct where the composed half is not.
+
+**THE STANDING CONDITION FOR AUTHORING THE NEXT ONE**, computed rather than judged: *a series gets an
+authored card when a story rests on it and no pair has already written its tension.* Derived from
+`lib/stories.ts` and `pairs`; a later cycle re-derives it. **Authored cards outrank two-truths cards**
+in `seriesCard`, set now so that authoring a card for a pair side later does the expected thing.
 
 **MOBILE PASS DONE.** Nav **3 lines → 2**, **132 px → 88**, **40 of 40 under-44 px targets → 0**,
 and **317 px → 260** before the page's own h1. Cause of the third line was `display: block` on the
@@ -668,8 +690,10 @@ header above.
 |---|---|
 | gate chain | **27 steps**, `npm run build`; `npm run commit` is the only sanctioned commit path |
 | `unrecognised-rows` | **0**, report-only. Zero makes flipping it to a gate *available*, not decided |
-| `listing-marks` | **5,715 listing rows · 8,171 marks** across 749 pages — re-measured 2026-08-12 after the record spine and next steps (from 5,390 · 7,674) |
-| `link-check` | 47,422 internal hrefs across 750 built pages, 22 route prefixes, 0 dead |
+| `listing-marks` | **5,727 listing rows · 8,190 marks** across 752 pages — re-measured 2026-08-13 (from 5,715 · 8,171, itself from 5,390 · 7,674) |
+| `link-check` | **60,433 internal hrefs across 753 built pages**, 22 route prefixes, 0 dead — re-measured 2026-08-13 (from 47,422 across 750) |
+| series share cards | **3 authored** in `SERIES_CARDS` · **18 two-truths** · the rest the mechanical floor. Authored outranks two-truths. Condition for the next: a story rests on it and no pair has written its tension |
+| series reach | **122 of 122** qualifying series are linked from a landing, story, question or overview page; **0 are index-only.** Reach does not discriminate — do not re-propose it as a selection criterion |
 | authored series findings | **237 of 269**; 32 render without one, permanently and for a stated reason |
 | raw enum tokens on a public surface | `directionOfBias` 6 pages, all the one deliberate site; `pairs.kind` 0 |
 | `field-render-audit` | 0 invisible, **15** exempted by name (was 17; `higherIsBetter`'s exemption was discharged 2026-08-12 and it is now declared) |
