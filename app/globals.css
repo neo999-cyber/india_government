@@ -4559,3 +4559,31 @@ details.more > summary {
 [hidden] {
   display: none !important;
 }
+
+/* --- Long unbreakable tokens may not push the page sideways -----------------
+   A URL, a record id or a formula inside running prose has no break
+   opportunity, so it overflows its own box and drags the document with it.
+   Measured at 375px on production: /series/res-capacity-share/ scrolled 7px
+   past the viewport from a token inside a `.prose-note`, which is the finding
+   an external audit reported as "382px in a 375px viewport". `anywhere` rather
+   than `break-word` because it also constrains min-content sizing, which is
+   what stops a flex or grid child being sized by its longest word. */
+p,
+li,
+dd,
+dt,
+td,
+th,
+figcaption,
+.prose-note,
+.source-line,
+.lede {
+  overflow-wrap: anywhere;
+}
+
+/* Formula blocks scroll instead of wrapping: breaking a regex mid-token makes
+   it unreadable. Focusable for the same reason `.table-wrap` is. */
+pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
