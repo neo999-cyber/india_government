@@ -943,6 +943,31 @@ from genuine archaeology needs the members read, per record, which is research.
 
 ## THE 82 `unmeasured-route` WARNINGS, TRIAGED 2026-08-13 — AND THE SHAPE IS A DIFFICULTY GRADIENT
 
+**CLOSED 2026-08-13 — THESE ARE NOT WORK OWED.** All 82 read. **The shortest `why` is 177 characters
+and the median is 376; there is no empty entry in the set.** Every one already states, at length,
+why nothing measures the thing — and several are stronger than a route would be: *"The holder has
+spoken, and says there are none. The J&K Home Department confirmed under the Right to Information"*;
+*"Both responsible Union bodies told a parliamentary committee they hold none, and each named the
+other"*; *"Ten Ministry parliamentary answers and two press releases were checked and none contains
+such a list"*; *"Neither judgment records any reason, because Article 200 imposes no duty to give
+one."*
+
+**The rule warns because it tests for a FIELD, not for the substance in `why`.** `wouldFill`'s own
+schema description says *"the source that would close it, **if one is identifiable**"* — the schema
+already allows for none — and the rule's message says *"fine when no instrument for it exists —
+worth saying so if that is the case."* **They have said so. There is no canonical way to say it, so
+compliance is structurally undetectable.**
+
+**FOUR CLASSIFIERS FAILED ON THIS SET BEFORE IT WAS READ.** A regex for *no instrument | no source*
+scored 15 of 82 as compliant and marked *"no decomposition exists in anything retrieved"* and *"No
+field ASER and no government assessment"* as silent. **Reading is what settled it**, as it settled
+the register item on the same day.
+
+**What would close the warning rather than the work:** a `noRouteExists` boolean, or the rule reading
+`reasonKind` plus a non-trivial `why` instead of the presence of a field. **Both are contract
+changes** and are therefore stops, not tasks.
+
+
 Not neglect. Measured across every absence in the corpus:
 
 | `reasonKind` | with a `wouldFill` | without |
@@ -1030,9 +1055,12 @@ objects**. The second is not reachable by measuring the first.
 
 ## STANDING HAZARDS
 
-**Phase 13's completeness is an open question**, per the CLAUDE.md phase table: delimitation was
-partly covered in phase 12 and neither phase closed on the overlap explicitly. Nothing in phase 18
-touches it, and it is restated here so a cold read does not treat 13 as closed.
+**Phase 13's completeness was an open question and is CLOSED 2026-08-13.** The CLAUDE.md phase
+table asked for one thing — that the delimitation overlap with phase 12 be checked — and it has
+been: **15 records use delimitation vocabulary and every one is Jammu and Kashmir**, so both phases
+covered the same object and neither left the other's ground uncovered. The table row now records
+this. **What the check surfaced is a separate, newly-raised item and not a phase-13 residual**: the
+corpus holds no record on NATIONAL delimitation, raised in full above.
 
 **`drops/phase-17-design-lock/` is named wrong on purpose** and is left wrong, for the reason in the
 header above.

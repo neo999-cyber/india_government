@@ -5444,7 +5444,7 @@
  "L-0098": {
   "firstDate": "2026-08-02",
   "firstSubj": "Phase 10 — education: 91 records, `education` domain value, stage-4 checker rebuilt",
-  "editCount": 2,
+  "editCount": 3,
   "edits": [
    {
     "sha": "e2faa70da68ad38355e48b51aae156baf2ac0549",
@@ -5460,6 +5460,14 @@
     "subj": "independence is built, and its first live run found three records resting on evidence the corpus does not hold",
     "fields": [
      "independence"
+    ]
+   },
+   {
+    "sha": "e4a1488abadce22e9560714fd0b720952b4181a0",
+    "date": "2026-08-13",
+    "subj": "The internal register, closed by reading all 135 members, and the filed finding inverts on two of four classes",
+    "fields": [
+     "caseFor"
     ]
    }
   ],
@@ -5580,7 +5588,7 @@
  "L-0102": {
   "firstDate": "2026-08-02",
   "firstSubj": "Phase 10 — education: 91 records, `education` domain value, stage-4 checker rebuilt",
-  "editCount": 2,
+  "editCount": 3,
   "edits": [
    {
     "sha": "97aecf81544d7c042d419449a83e9d16368e0825",
@@ -5597,6 +5605,15 @@
     "fields": [
      "contestedGround"
     ]
+   },
+   {
+    "sha": "e4a1488abadce22e9560714fd0b720952b4181a0",
+    "date": "2026-08-13",
+    "subj": "The internal register, closed by reading all 135 members, and the filed finding inverts on two of four classes",
+    "fields": [
+     "summary",
+     "caseAgainst"
+    ]
    }
   ],
   "values": [
@@ -5611,7 +5628,7 @@
  "L-0103": {
   "firstDate": "2026-08-02",
   "firstSubj": "Phase 10 — education: 91 records, `education` domain value, stage-4 checker rebuilt",
-  "editCount": 3,
+  "editCount": 4,
   "edits": [
    {
     "sha": "97aecf81544d7c042d419449a83e9d16368e0825",
@@ -5635,6 +5652,14 @@
     "subj": "Thirty-nine of the forty-one unnoted scored records get their ground, and two are reported instead",
     "fields": [
      "assessmentNote"
+    ]
+   },
+   {
+    "sha": "e4a1488abadce22e9560714fd0b720952b4181a0",
+    "date": "2026-08-13",
+    "subj": "The internal register, closed by reading all 135 members, and the filed finding inverts on two of four classes",
+    "fields": [
+     "caseAgainst"
     ]
    }
   ],
@@ -5727,7 +5752,7 @@
  "L-0106": {
   "firstDate": "2026-08-02",
   "firstSubj": "Phase 10 — education: 91 records, `education` domain value, stage-4 checker rebuilt",
-  "editCount": 3,
+  "editCount": 4,
   "edits": [
    {
     "sha": "97aecf81544d7c042d419449a83e9d16368e0825",
@@ -5751,6 +5776,14 @@
     "subj": "independence is built, and its first live run found three records resting on evidence the corpus does not hold",
     "fields": [
      "independence"
+    ]
+   },
+   {
+    "sha": "e4a1488abadce22e9560714fd0b720952b4181a0",
+    "date": "2026-08-13",
+    "subj": "The internal register, closed by reading all 135 members, and the filed finding inverts on two of four classes",
+    "fields": [
+     "caseAgainst"
     ]
    }
   ],
@@ -9945,8 +9978,17 @@
  "P-122": {
   "firstDate": "2026-08-05",
   "firstSubj": "Phase 15 batch 1, arc A: renewables against coal, and 226 marks that rendered nowhere",
-  "editCount": 0,
-  "edits": [],
+  "editCount": 1,
+  "edits": [
+   {
+    "sha": "e4a1488abadce22e9560714fd0b720952b4181a0",
+    "date": "2026-08-13",
+    "subj": "The internal register, closed by reading all 135 members, and the filed finding inverts on two of four classes",
+    "fields": [
+     "notes"
+    ]
+   }
+  ],
   "values": [
    {
     "sha": "7124b1fbb9cbc6e6a2346796f2651401dc0c057d",
