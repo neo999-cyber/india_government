@@ -19935,3 +19935,71 @@ question was answered.
 
 30 build steps green · 17 e2e · lint 0/0 · `validate` 0 errors · `distinct-titles` 619 records, 1
 pair exempted by id.
+
+---
+
+## 2026-08-13 (eightieth entry) — THREE CARRIED-FORWARD ITEMS, AND THE FIRST ONE'S COUNT DID NOT SURVIVE RE-DERIVATION
+
+Worked on the operator's direction. All three had been filed as research-owned.
+
+### 1. THE INTERNAL REGISTER — THE 164 IS FOUR UNREAD SCANS
+
+Re-derived rather than trusted, and **my own classifier produced false categories**: it read *"PARAKH
+2024, which publishes no methodology section, grades T1"* as a GOVERNMENT TERM because of the year,
+when it is plainly a source tier. On 206 "repository archaeology" hits the pattern was matching
+*"this record"* — ordinary self-reference inside a record.
+
+**So the recorded 40 / 65 / 38 / 21 is four keyword scans whose members were never read**, which is
+the count rule exactly: a scan produces candidates, and labelling them as such does not stop the
+number being spent as a finding.
+
+**The one class small enough to read in full is 10**, and reading it changed the answer. Seven sit in
+`assessmentNote`, which renders under **"Why this verdict"** — the field a reader reaches by asking
+why — and in most the field name IS the subject: *"the `reasonKind` becomes withheld"*,
+*"`differentFacts` is false"*. **Plain words there would be vaguer, not clearer.**
+
+**Three reword with nothing lost, and one was in a `caveat`** — the field every reader meets on every
+surface the record appears. `L-0183` now reads *"the stated reason becomes 'withheld'"*; `P-63` and
+`P-68` say *direction of bias*. **Schema names in caveats corpus-wide: 0.**
+
+**Tier letters and rescore stamps deliberately not taken.** Tier letters are defined vocabulary with
+`/method/` explaining them. And **an unknown number of the dated stamps ARE the correction convention
+working as designed** — `quotation-identity` holds 32 quotations across 30 correction-marked fields,
+and deleting one would destroy a record and fail a gate. That separation needs the members read, per
+record.
+
+### 2. THE 82 `unmeasured-route` WARNINGS ARE A DIFFICULTY GRADIENT, NOT NEGLECT
+
+| `reasonKind` | with a route | without |
+|---|---|---|
+| `not-published` | **205** | **0** |
+| `withheld` | **12** | **0** |
+| `not-collected` | 66 | **49** |
+| `never-defined` | 9 | **33** |
+
+**Where a document exists and is merely unpublished, a route is named every single time — 217 of
+217.** The 82 sit entirely where naming one is hard.
+
+**A hypothesis tested and refuted:** that `never-defined` cannot carry a route by construction. Nine
+do. So the 33 are open, not impossible. Two carry `reasonDisputed` and are the sharpest, because
+there the stated reason is contested on the ground that the data exists.
+
+### 3. PHASE 13 — ANSWERED, WITH A NAMEABLE GAP
+
+**15 records use delimitation vocabulary and every one is Jammu and Kashmir.** Of **82 federalism
+records, exactly one mentions delimitation at all**, and that one is a J&K record.
+
+**The corpus contains no record on national delimitation** — the freeze on Lok Sabha seat
+reallocation due to lift after the first census following 2026. Stated as rule 5d requires: *the
+corpus contains no such record*, not *nothing exists*.
+
+**The phase-13 question is now answered rather than open.** The phase-12 overlap is J&K delimitation,
+both phases covered it, and what neither covered is the national question. Whether that is a gap or a
+scope decision is research's — nothing has happened yet, but an instrument with `undated-commitment`
+and 82 federalism records has the means to carry a pending constitutional trigger and does not.
+
+### Gate line
+
+30 build steps green · `quotation-identity` **32/32 across 30 correction-marked fields, unchanged by
+the three prose edits** — which is the check that mattered, since the class edited sits next to the
+correction convention.

@@ -835,9 +835,94 @@ instrument has a name for what projections do to marks.
 
 ---
 
-## RAISED 2026-08-12 BY A READER'S REVIEW, AND NOT RESOLVED HERE
+## RAISED 2026-08-12 BY A READER'S REVIEW — WORKED 2026-08-13 ON THE OPERATOR'S DIRECTION
 
-**Three carry forward, and each is blocked on something other than effort.**
+**The counts below did not survive re-derivation, and that is the first finding.** Asked to work
+these, I re-derived them rather than trusting the recorded 40 / 65 / 38 / 21, and my own classifier
+produced **demonstrably false categories** — it read *"PARAKH 2024, which publishes no methodology
+section, grades T1"* as a GOVERNMENT TERM because of the year, when it is plainly a source tier. On
+206 "repository archaeology" hits the regex was matching *"this record"*, which is ordinary
+self-reference inside a record.
+
+**So the 164 is not a work list. It is four keyword scans whose members were never read**, and the
+count rule says exactly this: a count from a keyword scan is not a finding until the members are
+read, and labelling it as candidates does not stop it being spent as one.
+
+**WHAT WAS READ, AND WHAT WAS DONE.** The one class small enough to read in full — schema and field
+names in prose — is **10 instances**, and reading them changed the judgement:
+
+- **Seven are in `assessmentNote`, which renders under the heading "Why this verdict"** — the field a
+  reader reaches by asking why. In most, the field name IS the subject: *"the `reasonKind` becomes
+  withheld"*, *"`differentFacts` is false"*. **Rewriting those into plain words would make them
+  vaguer, not clearer**, because the sentence is about which value a specific field takes.
+- **Three reword with nothing lost, and one of them was in a `caveat`** — the field every reader
+  meets on every surface the record appears. `L-0183` now reads *"the stated reason becomes
+  'withheld'"*; `P-63` and `P-68` say *direction of bias* in words. **Schema names in caveats
+  corpus-wide: 0.**
+
+**Tier letters and rescore stamps are NOT taken**, and not for effort: tier letters are defined
+vocabulary with `/method/` explaining them, and **an unknown number of the dated stamps are the
+correction convention working as designed** — `quotation-identity` holds 32 quotations across 30
+correction-marked fields, and deleting one would destroy a record and fail a gate. Separating those
+from genuine archaeology needs the members read, per record, which is research.
+
+---
+
+## THE 82 `unmeasured-route` WARNINGS, TRIAGED 2026-08-13 — AND THE SHAPE IS A DIFFICULTY GRADIENT
+
+Not neglect. Measured across every absence in the corpus:
+
+| `reasonKind` | with a `wouldFill` | without |
+|---|---|---|
+| `not-published` | **205** | **0** |
+| `withheld` | **12** | **0** |
+| `not-collected` | 66 | **49** |
+| `never-defined` | 9 | **33** |
+
+**Where a document exists and is merely unpublished, a route is always named — 217 of 217.** The 82
+sit entirely where naming one is hard: nothing was collected, or nothing was ever defined.
+
+**A hypothesis was tested and refuted:** that `never-defined` cannot carry a route by construction.
+**Nine do** — *"A UDISE+-based count of section 12(1)(c) seats notified per school"* is a route to
+measuring a thing nobody defined. So the 33 are genuinely open, not structurally impossible.
+
+By topic: governance 52 · education 29 · kashmir 26 · federalism 20 · macro 11. **Two carry
+`reasonDisputed` and are the sharpest** — `L-0104` faculty vacancies and `L-0074` party affiliation
+in ED cases — because the stated reason is contested precisely on the ground that the data exists, so
+the route is exactly what is missing.
+
+**Naming a route is research**: it asserts that a particular instrument would close the absence, which
+is a claim about the world under rule 5d. The work list above is what a research pass needs.
+
+---
+
+## PHASE 13's COMPLETENESS — ANSWERED 2026-08-13, AND THERE IS A NAMEABLE GAP
+
+The CLAUDE.md phase table carries phase 13 as **"NOT SAFE TO TREAT AS COMPLETE until the delimitation
+overlap with phase 12 is checked."** Checked:
+
+**15 records use delimitation vocabulary and every one of them is Jammu and Kashmir** — `L-0141` is
+the substantive record, *"Delimitation of Jammu and Kashmir: one Commission table…"*, filed
+`governance,kashmir`.
+
+**Of 82 federalism records, exactly one mentions delimitation at all**, and that one is `L-0146`, the
+J&K third-tier record.
+
+**So the corpus contains no record on NATIONAL delimitation** — the constitutional freeze on Lok
+Sabha seat reallocation, due to lift after the first census following 2026, and the reason southern
+states argue they will lose seats to northern ones. Stated as rule 5d requires: *the corpus contains
+no such record*, which is checkable, rather than *nothing exists*.
+
+**Whether that is a gap or a scope decision is research's to settle, and there is a real argument for
+either.** Nothing has happened yet — the freeze has not lifted — so there is no event to record; but
+an instrument carrying 82 federalism records and a commitment vocabulary (`undated-commitment`,
+`no-objective`) has the means to carry a pending constitutional trigger, and does not.
+
+**The phase-13 question is now answered rather than open**: the overlap with phase 12 is J&K
+delimitation, both covered it, and what neither covered is the national question.
+
+---
+
 
 **1. The internal register in `/data` prose.** Dated rescore stamps (40), repository archaeology (65),
 tier letters asserted in prose (38), schema or field names in prose (21), across `caveat`,
