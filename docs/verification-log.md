@@ -20100,3 +20100,51 @@ directions at once — inventing 128 defects that are not there while missing 11
 
 30 steps green · `withdrawn-wording` 30 corrections, 34 exempted · `quotation-identity` 32/32 over
 113 commits · `reachability` 1,788/1,788 · `validate` 0 errors.
+
+---
+
+## 2026-08-13 (eighty-third entry) — THE LAST TWO, AND NEITHER WAS WORK OWED
+
+### THE 82 `unmeasured-route` WARNINGS ARE A REPORTING ARTEFACT
+
+**All 82 read.** The shortest `why` is **177 characters**, the median 376, the longest 978. **There
+is no empty entry in the set.** Every one states, at length, why nothing measures the thing, and
+several are stronger than a `wouldFill` would be:
+
+> *"The holder has spoken, and says there are none. The J&K Home Department confirmed under the Right
+> to Information."*
+> *"Both responsible Union bodies told a parliamentary committee they hold none, and each named the
+> other."*
+> *"Neither judgment records any reason, because Article 200 imposes no duty to give one."*
+
+A named body confirming under RTI that nothing exists **is a closed question, not an open route.**
+
+**The rule warns because it tests for a FIELD, not for the substance.** `wouldFill`'s own schema
+description reads *"the source that would close it, **if one is identifiable**"*, and the rule's own
+message says *"fine when no instrument for it exists — worth saying so if that is the case."* **They
+have said so.** There is no canonical form for saying it, so compliance cannot be detected.
+
+**FOUR CLASSIFIERS FAILED BEFORE THE SET WAS READ.** The last scored 15 of 82 as compliant and marked
+*"no decomposition exists in anything retrieved"* as silent. Reading settled it — as reading settled
+the register item the same day, where a count was wrong in both directions at once.
+
+Closing the WARNING is a contract change — a `noRouteExists` boolean, or a rule reading `reasonKind`
+plus a non-trivial `why`. **That is a stop. The WORK is done and was done before the warning
+existed.**
+
+### PHASE 13 IS CLOSED, IN THE RULEBOOK'S OWN TERMS
+
+The phase table asked for one thing: *"NOT SAFE TO TREAT AS COMPLETE until the delimitation overlap
+with phase 12 is checked."* **Checked: 15 records use delimitation vocabulary and every one is Jammu
+and Kashmir.** Both phases covered the same object; neither left the other's ground uncovered. Rows
+12 and 13 of the table now record it, and the prose beneath the table with them.
+
+**What the check surfaced is a corpus gap, not a phase-13 residual** — no record on national
+delimitation — and it is raised separately rather than left to keep row 13 open. A row that stays
+open because a DIFFERENT question is open is a row nobody can ever close.
+
+### Gate line
+
+30 steps green · `phase-name-consistency` 443 tracked files, 6 phases named, 12 disagreements all
+exempted by name — **the gate that reads assertions about phase names passed across the table edit**,
+which is the check that mattered here.

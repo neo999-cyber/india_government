@@ -324,8 +324,8 @@ genuinely depends on order, that is a dependency to be **stated and decided deli
 | 1–9 | the domain phases | closed |
 | **10** | **INSERTED — not on the original list.** Numbering in any pre-insertion note is offset by one. | closed |
 | 11 | | closed |
-| 12 | **partly covered delimitation** | closed, but see below |
-| 13 | | **NOT SAFE TO TREAT AS COMPLETE until the delimitation overlap with phase 12 is checked** |
+| 12 | **partly covered delimitation** | closed. The *see below* was 13's condition, met 2026-08-13 |
+| 13 | | **CHECKED 2026-08-13 — the overlap is resolved and this row's condition is met.** The phase-12 overlap is J&K delimitation and both phases covered it: 15 records use delimitation vocabulary and **every one is Jammu and Kashmir**. **What neither covered is NATIONAL delimitation** — the freeze on Lok Sabha seat reallocation — which is a CORPUS gap raised in `drops/phase-18-design-lock/STATE.md`, not a phase-13 residual |
 | 14–15 | 15 = environment and energy | closed |
 | — | the adversarial-review and rulings cycle | closed 2026-08-06, `drops/cycle-review-and-rulings/` |
 | **16** | **shocks calibration** | **CLOSED 2026-08-06**, `drops/phase-16-shocks/` |
@@ -337,7 +337,8 @@ genuinely depends on order, that is a dependency to be **stated and decided deli
 right against the name it was opened under. The phase-17 directory name is wrong and is LEFT wrong,
 on the same principle that leaves a withdrawn wording quoted. **Two things a cold read must not
 assume:** phase 10 was inserted, so pre-10 notes are one behind; and delimitation was partly covered
-in phase 12, which makes 13's completeness open. *`phase-name` gates assertions of a phase name in
+in phase 12 — **13's completeness was open on that ground until 2026-08-13 and is now closed on it**,
+the overlap being J&K in both phases. *`phase-name` gates assertions of a phase name in
 tracked files, including headings and table rows.* `[R-908845]` `[R-85acb6]` `[R-6190af]`
 `[R-786c55]` `[R-74972d]`
 
