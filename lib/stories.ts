@@ -197,6 +197,42 @@ export const STORIES: Story[] = [
       },
     ],
   },
+  {
+    slug: 'a-zero-that-is-not-a-zero',
+    title: 'A zero that is not a zero',
+    topic: 'Welfare',
+    card: 'One row of the Union’s release table reads nought because a statutory power was used, and the table has no column to say so — the row underneath it is what makes the cell readable',
+    signature: ['P-114'],
+    rests: [
+      { id: 'P-114', kind: 'provenance', blurb: '' },
+      { id: 'P-107', kind: 'provenance', blurb: '' },
+      {
+        id: 'wb-mgnrega-funds-released',
+        kind: 'series',
+        blurb: 'the row that reads nought, and the reason it does',
+      },
+      {
+        id: 'bihar-mgnrega-funds-released',
+        kind: 'series',
+        blurb: 'the sibling row on the same table, where no stoppage was ordered',
+      },
+      {
+        id: 'wb-mgnrega-new-jobcards',
+        kind: 'series',
+        blurb: 'the fall the stoppage is assumed to explain, and the caveat forbidding that reading',
+      },
+      {
+        id: 'bihar-mgnrega-new-jobcards',
+        kind: 'series',
+        blurb: 'the control: down 57 per cent in the same year with no stoppage in force',
+      },
+      {
+        id: 'L-0168',
+        kind: 'ledger',
+        blurb: 'the stoppage, the two dates that circulate for it, and a restoration by a court',
+      },
+    ],
+  },
 ];
 
 /** The stories resting on a record — the return route, and the reason this file exists. */
