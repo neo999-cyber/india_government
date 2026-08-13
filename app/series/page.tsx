@@ -8,13 +8,15 @@ import { ListingFacets } from '@/components/ListingFacets';
 import { SpanStrip } from '@/components/SpanStrip';
 import { spanRows, spanAxis, spanFrontier } from '@/lib/spans';
 import { StripFilter } from '@/components/StripFilter';
+import { routeLabel } from '@/lib/routes';
 
 /** See the same helper on the ledger index for why options come from the data, not the enum. */
 function opts<T extends string>(values: T[], label: (v: T) => string) {
   return [...new Set(values)].sort().map((v) => ({ value: v, label: label(v) }));
 }
 
-export const metadata: Metadata = { title: 'Series' };
+// The tab title is the registry's public name, not a fourth copy of it. Was: 'Series'.
+export const metadata: Metadata = { title: routeLabel('/series/') };
 
 // The span derivation, the frontier and the axis now live in `lib/spans.ts`, shared with the
 // year pages. One definition of what a span IS; see that file's header for why.
@@ -38,7 +40,7 @@ export default function SeriesIndex() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / series
+        <Link href="/">instrument</Link> / indicator series
       </p>
       <h1>Indicator series</h1>
       <p className="lede">

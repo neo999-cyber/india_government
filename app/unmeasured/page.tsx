@@ -4,8 +4,10 @@ import { allUnmeasured } from '@/lib/data';
 import { DOMAIN_LABELS } from '@/lib/format';
 import { REASON_KINDS } from '@/lib/types';
 import { REASON_KIND_LABELS } from '@/components/marks';
+import { routeLabel } from '@/lib/routes';
 
-export const metadata: Metadata = { title: 'Unmeasured' };
+// The tab title is the registry's public name, not a fourth copy of it. Was: 'Unmeasured'.
+export const metadata: Metadata = { title: routeLabel('/unmeasured/') };
 
 /**
  * Every declared absence in one place, and the verification queue that falls out of them.
@@ -33,7 +35,7 @@ export default function UnmeasuredIndex() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / unmeasured
+        <Link href="/">instrument</Link> / what is not measured
       </p>
       <h1>What is not measured</h1>
       <p className="lede">

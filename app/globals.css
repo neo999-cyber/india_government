@@ -4423,3 +4423,12 @@ details.more > summary {
   left: 0.5rem;
   top: 0.5rem;
 }
+
+/* --- Current location in the masthead --------------------------------------
+   Marked in both channels: `aria-current="page"` for assistive technology and
+   this rule for sight. Neither alone is the fix — the audit found the masthead
+   silent in both while the topic tabs marked themselves in one. */
+.nav-primary a.is-here {
+  color: var(--ink);
+  border-bottom: 2px solid var(--mark);
+}

@@ -3,13 +3,15 @@ import type { Metadata } from 'next';
 import { provenance } from '@/lib/data';
 import { DOMAIN_LABELS, DIRECTION_OF_BIAS_LABELS } from '@/lib/format';
 import { ListingFacets } from '@/components/ListingFacets';
+import { routeLabel } from '@/lib/routes';
 
 /** See the same helper on the ledger index for why options come from the data, not the enum. */
 function opts<T extends string>(values: T[], label: (v: T) => string) {
   return [...new Set(values)].sort().map((v) => ({ value: v, label: label(v) }));
 }
 
-export const metadata: Metadata = { title: 'Provenance' };
+// The tab title is the registry's public name, not a fourth copy of it. Was: 'Provenance'.
+export const metadata: Metadata = { title: routeLabel('/provenance/') };
 
 export default function ProvenanceIndex() {
   const unbridged = provenance.filter((p) => !p.bridgeExists).length;
@@ -17,7 +19,7 @@ export default function ProvenanceIndex() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / provenance
+        <Link href="/">instrument</Link> / measurement disputes
       </p>
       <h1>Measurement disputes</h1>
       <p className="lede">

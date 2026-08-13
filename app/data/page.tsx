@@ -44,7 +44,7 @@ export default function DataPage() {
     <>
       <CorpusLd />
       <p className="crumb">
-        <Link href="/">instrument</Link> / data
+        <Link href="/">instrument</Link> / the data
       </p>
       <h1>The data</h1>
       <p className="lede">
