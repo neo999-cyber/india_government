@@ -11,7 +11,7 @@ import {
 import { DOMAIN_LABELS, LENS_LABELS, TERM_LABELS } from '@/lib/format';
 import { hasYearPage } from '@/lib/years';
 import { storiesRestingOn } from '@/lib/stories';
-import type { LedgerRecord, Series } from '@/lib/types';
+import type { Domain, LedgerRecord, Lens, Series, Term } from '@/lib/types';
 
 /**
  * NEXT STEPS — where to go from here, with the REASON stated as a fact from `/data`.
@@ -215,3 +215,69 @@ export function stepsForLedger(l: LedgerRecord): Step[] {
  * topics.
  */
 export const citedByOverflow = (s: Series) => Math.max(0, ledgerCitingSeries(s.id).length - 3);
+
+/**
+ * THE SURFACES THAT STILL ENDED WITH NOTHING.
+ *
+ * Audited across 33 page types on 2026-08-13: **only three had a next-steps block** — the series
+ * page, the ledger record and the dispute page. Everything else ended on its last table row.
+ *
+ * **Not every one of them needs one, and the ones that do not are named rather than skipped.** An
+ * INDEX is a directory: a next step under a list of 269 indicators is a second directory. A page
+ * with lateral navigation already has an onward route — the year pages carry previous and next, the
+ * topic tabs carry each other, a story ends on the records it rests on. **What was left is the three
+ * leaf types a reader can finish with nowhere to go: a question route, a lens, a term.**
+ *
+ * These steps link SURFACES, not records, so they carry no marks and add no listing rows — which is
+ * why they are safe to add here without touching either render gate.
+ */
+export function stepsForQuestion(slug: string, siblings: { slug: string; question: string }[]): Step[] {
+  const out: Step[] = [];
+  for (const q of siblings.filter((x) => x.slug !== slug).slice(0, 3)) {
+    out.push({
+      href: `/questions/${q.slug}/`,
+      label: q.question,
+      reason: 'another question over the same records',
+    });
+  }
+  out.push({
+    href: '/questions/',
+    label: 'All eight questions, with what each one selects on',
+    reason: 'the criterion for every filter, printed',
+  });
+  return out;
+}
+
+export function stepsForLens(lens: Lens, domains: Domain[]): Step[] {
+  const out: Step[] = [];
+  // The topics this lens actually cuts across, which is the fact that makes a lens a lens.
+  for (const d of domains.slice(0, 4)) {
+    out.push({
+      href: `/domains/${d}/indicators/`,
+      label: `${seriesInDomain(d).length} indicators filed under ${DOMAIN_LABELS[d]}`,
+      reason: 'a topic this lens cuts across',
+    });
+  }
+  out.push({
+    href: '/lenses/',
+    label: 'Every thread that cuts across topics',
+    reason: 'the other lenses',
+  });
+  return out;
+}
+
+export function stepsForTerm(term: Term, neighbours: { term: Term; label: string }[]): Step[] {
+  const out: Step[] = neighbours
+    .filter((n) => n.term !== term)
+    .map((n) => ({
+      href: `/terms/${n.term}/`,
+      label: `${ledgerInTerm(n.term).length} records in ${n.label}`,
+      reason: 'the adjoining term',
+    }));
+  out.push({
+    href: '/years/',
+    label: 'The same record, one year at a time',
+    reason: 'a cross-section rather than a political span',
+  });
+  return out;
+}

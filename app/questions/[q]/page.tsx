@@ -24,6 +24,8 @@ import {
   periodLabel,
 } from '@/lib/format';
 import { CaveatFlag, CaveatRow, OutcomeRow, RecordMarks, TierTag } from '@/components/marks';
+import { NextSteps } from '@/components/NextSteps';
+import { stepsForQuestion } from '@/lib/next-steps';
 import { SERIES_FINDINGS } from '@/lib/series-copy';
 
 type Props = { params: Promise<{ q: string }> };
@@ -102,6 +104,15 @@ export default async function QuestionRoute({ params }: Props) {
       {q === 'publication-stopped' ? <Stopped /> : null}
       {q === 'sources-disagree' ? <Disagree /> : null}
       {q === 'measured-well' ? <MeasuredWell /> : null}
+
+      {/* A question route was one of three leaf types a reader could finish with nowhere to go.
+          These are surfaces, not records, so no marks travel and no listing row is added. */}
+      <NextSteps
+        steps={stepsForQuestion(
+          q,
+          QUESTION_ROUTES.map((r) => ({ slug: r.slug, question: r.question })),
+        )}
+      />
     </>
   );
 }

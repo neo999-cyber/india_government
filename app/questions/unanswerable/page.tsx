@@ -150,6 +150,17 @@ export default function Unanswerable() {
         <strong>{noRoute} name no source that would close them</strong>.
       </p>
 
+      {/* THE ORDERING, STATED — the half of rule 9 this page had not carried. Four questions in a
+          fixed order is a selection with an order, and a reader not told is entitled to read the
+          first as the worst. It is not: it is the only one that is a LIMIT, which is computable
+          from whether any of its absences names a source that would close it. */}
+      <p className="prose-note">
+        <span className="label">How this is ordered</span> The one question that is unanswerable in
+        principle comes first, then the three that are unanswered by decision. That is computed from
+        whether each record&rsquo;s absences name a source that would close them, not from how
+        serious any of them is.
+      </p>
+
       {rows.map((r) => (
         <section key={r.question} className="unans">
           <h2>{r.question}</h2>

@@ -17,6 +17,8 @@ import {
   formatDateRange, PAIR_KIND_LABELS } from '@/lib/format';
 import { LENSES, LENSES_THAT_ARE_DOMAINS, LENS_ONLY, type Lens } from '@/lib/types';
 import { CaveatRow, RecordMarks, StatusKey, StatusTally, TierTag } from '@/components/marks';
+import { NextSteps } from '@/components/NextSteps';
+import { stepsForLens } from '@/lib/next-steps';
 
 type Props = { params: Promise<{ lens: string }> };
 
@@ -253,6 +255,12 @@ export default async function LensPage({ params }: Props) {
           </table>
         </div>
       )}
+
+      {/* The topics this lens cuts across — which is the fact that makes it a lens rather than a
+          topic, and the page ended without naming any of them as a route. */}
+      <NextSteps
+        steps={stepsForLens(l, [...new Set(s.map((x) => x.domain))])}
+      />
     </>
   );
 }

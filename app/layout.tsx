@@ -173,44 +173,65 @@ const PRIMARY = [
   { href: '/search/', label: 'Search' },
 ];
 
+/**
+ * READER-FACING LABELS, ROUTES UNTOUCHED — and every one is taken from the page's own h1.
+ *
+ * The prose vocabulary pass renamed `area` and `subject` wherever a reader met them and **never
+ * touched navigation**, so the schema's words survived at exactly the point a first-time reader
+ * meets them first. `unmeasured` is a field name; `exposure` and `peers` mean nothing cold.
+ *
+ * **A label is prose and a path is an identifier.** 3,384 internal hrefs and `link-check` assert the
+ * routes; none of them moves here. Withdrawn labels are quoted beside each so the change is
+ * checkable.
+ *
+ * TWO PROPOSALS IN THE INSTRUCTION WERE CHECKED AND ONE WAS WRONG. *`contested pairs` and the
+ * where-measures-disagree route are the same content under two names* — **they are not.**
+ * `/contested/` selects ledger records whose VERDICT is contested (68); the question route selects
+ * PAIRS where two instruments disagree (21). Seven records appear in both. Different objects, so
+ * both keep a name and each says which it is.
+ *
+ * `counterfactual` was the one to decide before naming, and it is not a limit of the evidence: it is
+ * the record of a feature this instrument considered and declined. **Moved out of `limits` and into
+ * `about the record`,** where the other statements about how the instrument was built live. The
+ * route does not move.
+ */
 const GROUPS: { label: string; items: { href: string; label: string }[] }[] = [
   {
-    label: 'browse',
+    label: 'ways in',
     items: [
       { href: '/domains/', label: 'topics' },
-      // `years` sits in browse beside `terms` because both are ways INTO the record rather than
-      // layers of it. A term is a political span; a year is a cross-section. Neither is a scorecard.
-      { href: '/years/', label: 'years' },
-      { href: '/lenses/', label: 'lenses' },
-      { href: '/terms/', label: 'terms' },
-      { href: '/peers/', label: 'peers' },
+      // `years` sits beside `terms` because both are ways INTO the record rather than layers of it.
+      { href: '/years/', label: 'one year at a time' }, // was: years
+      { href: '/lenses/', label: 'threads across topics' }, // was: lenses
+      { href: '/terms/', label: 'terms of government' }, // was: terms — ambiguous against a glossary
+      { href: '/peers/', label: 'four comparator countries' }, // was: peers
     ],
   },
   {
-    label: 'records',
+    label: 'the records',
     items: [
-      { href: '/series/', label: 'series' },
-      { href: '/ledger/', label: 'ledger' },
-      { href: '/provenance/', label: 'disputes' },
-      { href: '/contested/', label: 'contested pairs' },
+      { href: '/series/', label: 'indicators' }, // was: series — the prose pass renamed this everywhere but here
+      { href: '/ledger/', label: 'reforms, events and episodes' }, // was: ledger
+      { href: '/provenance/', label: 'measurement disputes' }, // was: disputes
+      { href: '/contested/', label: 'verdicts that stay open' }, // was: contested pairs — and it holds no pairs
     ],
   },
   {
-    label: 'limits',
+    label: 'what is missing',
     items: [
-      { href: '/unmeasured/', label: 'unmeasured' },
-      { href: '/exposure/', label: 'exposure' },
-      { href: '/counterfactual/', label: 'counterfactual' },
-      { href: '/method/', label: 'method' },
+      { href: '/unmeasured/', label: 'what is not measured' }, // was: unmeasured — a field name
+      { href: '/exposure/', label: 'when a shock is offered as the reason' }, // was: exposure
+      { href: '/method/', label: 'method, and what the marks mean' }, // was: method
     ],
   },
   {
     label: 'about the record',
     items: [
-      { href: '/derivations/', label: 'derivations' },
-      { href: '/publishers/', label: 'publishers' },
-      { href: '/corrections/', label: 'corrections' },
-      { href: '/data/', label: 'data' },
+      { href: '/derivations/', label: 'recomputed from public data' }, // was: derivations
+      { href: '/publishers/', label: 'who published it' }, // was: publishers
+      { href: '/corrections/', label: 'what it has changed its mind about' }, // was: corrections
+      { href: '/counterfactual/', label: 'a feature considered and declined' }, // was: counterfactual, and was under `limits`
+      { href: '/data/', label: 'download the data' }, // was: data
     ],
   },
 ];
@@ -238,12 +259,41 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   {item.label}
                 </Link>
               ))}
+              {/* THE SIXTEENTH DESTINATION, AND IT IS A DISCLOSURE RATHER THAN A LINK.
+
+                  **Seventeen destinations sat in a footer, and a footer is read by almost nobody.**
+                  A page nobody reaches is functionally unpublished, which is the shape rule 4b
+                  exists for. The masthead cannot absorb them — it is deliberately short, and the
+                  reason it is short is that a long one made the site read as a portal.
+
+                  **NO JAVASCRIPT, AND THAT IS THE WHOLE IMPLEMENTATION CHOICE.** `<details>` opens
+                  on click and on Enter, is in the tab order, announces its state to a screen
+                  reader, and works on a page whose script never ran. An overlay built on a state
+                  hook would be a control that renders correctly and reaches nobody the moment the
+                  bundle fails — the defect this exists to fix, reintroduced by the fix.
+
+                  **Not a side rail.** A persistent sidebar is application furniture and argues
+                  against the register the palette and the type protect; at 375 px it collapses to a
+                  hamburger, which is the footer with extra steps.
+
+                  The panel renders `GROUPS` — the same array the directory renders. One list, two
+                  places; a second copy would drift the first time a surface is added. */}
+              <details className="allpages">
+                <summary aria-label="All pages">All pages</summary>
+                <div className="allpages-panel">
+                  {GROUPS.map((g) => (
+                    <div key={g.label} className="allpages-group">
+                      <span className="allpages-label">{g.label}</span>
+                      {g.items.map((item) => (
+                        <Link key={item.href} href={item.href}>
+                          {item.label}
+                        </Link>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </details>
             </nav>
-            {/* A labelled group, not a disclosure. A disclosure would hide thirteen surfaces
-                behind a control a phone reader has to find, which is the §8.2 defect: a thing
-                that renders correctly and reaches nobody. It wraps instead. */}
-
-
           </header>
           <main>{children}</main>
           {/* THE DIRECTORY. The five groups, whole and unchanged, in the place a reader looks for

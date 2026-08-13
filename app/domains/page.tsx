@@ -6,7 +6,7 @@ import { DOMAINS, LENSES, type Domain } from '@/lib/types';
 import { DOMAIN_CHARACTER } from '@/lib/domain-copy';
 
 export const metadata: Metadata = {
-  title: 'Explore',
+  title: 'Topics',
   description:
     'The fourteen subject areas, each with what it holds and where its longest-running measurement ' +
     'currently stands. Same fourteen, same order, nothing ranked.',
@@ -80,9 +80,13 @@ export default function DomainsIndex() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / explore
+        <Link href="/">instrument</Link> / topics
       </p>
-      <h1 className="page-lead">Explore</h1>
+      {/* WITHDRAWN TITLE, quoted so the change is checkable: this page called itself *Explore* in
+          its h1, its metadata title and its crumb. The masthead was relabelled to *Topics* on
+          2026-08-11 and the page itself was not — so the one surface a reader lands on to browse
+          topics was the only one still using the old word. */}
+      <h1 className="page-lead">Topics</h1>
       <p className="standfirst">
         Fourteen topics, fixed by the schemas. Each card says what the topic holds and where
         its longest-running measurement currently stands — <b>chosen for the longest unbroken run,
