@@ -20256,3 +20256,45 @@ needed were both correct independently.
 
 30 steps green with the feature ON · `listing-marks` **4,166 / 5,913** · `reachability` 1,788/1,788 ·
 `unrecognised-rows` 0, **941 citations** · `link-check` 59,205 across 754, 0 dead · 17 e2e · lint 0/0.
+
+---
+
+## 2026-08-13 (eighty-sixth entry) — NATIONAL DELIMITATION: SCOPE SETTLED BY PRECEDENT, RECORD SPECIFIED, AUTHORING OWED
+
+### THE SCOPE QUESTION IS ANSWERED, AND NOT BY OPINION
+
+The objection to opening a record was that **nothing has happened yet** — the freeze on reallocating
+Lok Sabha seats has not lifted, so there is no event to score.
+
+**That does not survive the corpus's own practice. 19 ledger records score something unresolved:**
+`too-early` 13, `awaiting-adjudication` 4, `undated-commitment` 2. The governing precedent, read
+rather than assumed, is `L-0225` — *"Net zero by 2070 is one sentence: a year, and no statement of
+what is being zeroed"*: `too-early`, `term: T2`, two sources both T1, a quoted `claimAtLaunch`,
+`objectives: 0`. **A target 44 years out.**
+
+A constitutional trigger due after the next census is nearer than that and more concrete. **A pending
+trigger is in scope here, and is not a new kind of object.**
+
+### WHY THE RECORD IS NOT WRITTEN
+
+**Authoring a ledger record asserts a verdict about the Indian state** — the instrument's core work
+product, reserved to research by the roles rule. The narrow source-edit amendment reaches *a
+citation, a reason, a scope or a wording* and **never an `assessment`**. And every source would have
+to be retrieved in the authoring run, per rule 3.
+
+### THE SPECIFICATION, SO IT IS NOT RE-DERIVED
+
+`drops/phase-18-design-lock/DELIMITATION-BRIEF.md`. Structure after `L-0225`; the assessment values
+the rulings leave available — **`too-early` yes; `undated-commitment` almost certainly not**, since
+Ruling 3 covers a commitment with NO deadline and this has one in the instrument; **`no-objective`
+no**, since the objective is imposed, Ruling 5.
+
+**Two live traps are named.** `date` against `term`: the validator now warns only on the late side —
+narrowed earlier today for exactly this class — so an instrument date decades before the term is
+expected, and **a record must not be back-dated to silence a warning.** And rule 5d on the
+southern-states claim: *"southern states will lose seats"* is a projection, not a measurement, and
+must carry its method and attribution or a range with each bound attributed, or not be stated.
+
+### Gate line
+
+30 steps green.

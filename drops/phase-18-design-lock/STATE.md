@@ -1066,6 +1066,31 @@ is a claim about the world under rule 5d. The work list above is what a research
 
 ---
 
+## NATIONAL DELIMITATION — IN SCOPE, SPECIFIED, AND OWED TO RESEARCH
+
+**Scope settled 2026-08-13 by precedent, not by opinion.** The objection was that nothing has
+happened yet, so there is no event to score. **The corpus already carries 19 unresolved records** —
+`too-early` 13, `awaiting-adjudication` 4, `undated-commitment` 2 — and the governing precedent is
+`L-0225`, *"Net zero by 2070 is one sentence: a year, and no statement of what is being zeroed"*:
+`too-early`, two T1 sources, a quoted `claimAtLaunch`, **a target 44 years out.** A constitutional
+trigger due after the next census is nearer and more concrete. **A pending trigger is not a new kind
+of object here.**
+
+**Not written, and the reason is a rule.** Authoring a ledger record asserts a verdict; the roles
+rule reserves that for research, and the narrow source-edit amendment reaches *a citation, a reason,
+a scope or a wording* — **never an `assessment`**. And every source would have to be retrieved in the
+authoring run.
+
+**The specification is written so a research pass does not re-derive it:**
+`drops/phase-18-design-lock/DELIMITATION-BRIEF.md` — structure after `L-0225`, the assessment values
+the rulings leave available (`too-early` yes; `undated-commitment` almost certainly not, Ruling 3;
+`no-objective` no, Ruling 5), and **two live traps**: `date` against `term` — the validator now warns
+only on the late side, which was narrowed for exactly this class, so do not back-date a record to
+silence a warning — and rule 5d on the southern-states claim, which is a projection and must be
+attributed with its method or not stated.
+
+---
+
 ## PHASE 13's COMPLETENESS — ANSWERED 2026-08-13, AND THERE IS A NAMEABLE GAP
 
 The CLAUDE.md phase table carries phase 13 as **"NOT SAFE TO TREAT AS COMPLETE until the delimitation
