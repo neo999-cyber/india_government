@@ -581,6 +581,53 @@ Wording correction only. No figure changes and the verdict stays `contested`.
 
 ---
 
+## INDEX PARTITIONING — MEASURED AND DECLINED 2026-08-13, WITH THE REASONING
+
+Not unbuilt. **Declined, with the measurement recorded**, so a later cycle does not rediscover it as
+an obvious gap and build it — the same treatment the counterfactual engine got.
+
+### MY OWN PROPOSED LEVER WAS WRONG, AND THE MEASUREMENT IS WHAT SHOWED IT
+
+I reported that ~60% of these documents is Next's RSC flight payload rather than visible DOM, and
+suggested **"the bigger lever is hoisting the client islands, since Next serialises the whole tree"**.
+
+**That is false.** The share is a CONSTANT, not a function of the tree:
+
+| route | size | flight | share |
+|---|---|---|---|
+| `/search/` | 1,960 KB | 1,182 KB | **60%** |
+| `/series/` | 1,372 KB | 838 KB | **61%** |
+| `/unmeasured/` | 1,142 KB | 701 KB | **61%** |
+| `/method/` | 56 KB | 34 KB | **61%** |
+| `/directory/` | **24 KB** | 16 KB | **67%** |
+| a record page | 50 KB | 32 KB | 64% |
+
+**A 24 KB page carries the same proportion as a 1,960 KB one.** Every page ships its RSC
+representation beside its HTML at roughly 1.5× the HTML, and moving client boundaries cannot change
+that. So there is no structural saving to find — **the only lever is rendering less.**
+
+### AND RENDERING LESS ON `/search/` COSTS MORE THAN IT SAVES
+
+Of the 768 KB of visible cards, **118 KB is caveat text that rule 3a forbids shortening on any
+surface where the record appears**. The remaining weight is 619 cards at a mean of 1,271 bytes.
+
+Partitioning would break the premise argued at length in `components/ListingFacets.tsx`: rows are
+server-rendered so **`listing-marks` can read them from built HTML**, filtering is a view operation
+over a complete document, and with scripting off a reader gets the whole listing. A paginated
+`/search/` is a query returning a subset, which is the shape that ruled itself out on rule 4b.
+
+**What was taken instead, and it is the cheap real win:** `prefetch={false}` on 27 links across the
+nine densest surfaces, so the speculative fetch is no longer spent on catalogue rows nobody opens.
+
+### WHAT WOULD REVERSE THIS
+
+A measured reader cost — a field or lab figure showing the weight actually loses people — or a
+decision that `/search/` need not carry full cards at all, since **every record it lists already
+appears on `/series/`, `/ledger/` or `/provenance/`**. That second one is a product question about
+what the surface is for, not an optimisation, and it is not a code session's to make.
+
+---
+
 ## THE 163 VALIDATE WARNINGS, TRIAGED 2026-08-13 — ASSIGNED, NOT REDUCED
 
 An external audit: *"these are not all software bugs; many are honest research/data-quality debt.

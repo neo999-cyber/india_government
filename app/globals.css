@@ -4,6 +4,29 @@
  * Red is reserved for deaths, alerts and break-seams. No decorative gradients.
  */
 
+/* ============================ THE BREAKPOINT LADDER ==========================================
+ *
+ * Measured 2026-08-13, after an audit called this file accreted: **11 distinct media queries across
+ * SEVEN breakpoints, px and rem mixed** — 34rem, 640px, 641px, 46rem, 767px, 52rem, 860px, 900px.
+ * Nothing was wrong with any single one; the set had simply never been written down, so each new
+ * rule picked a plausible number and the ladder grew a rung.
+ *
+ *   34rem  (544px)  the narrowest layouts — stacked tables, single-column grids
+ *   640px           chart and table internals
+ *   767px           THE PHONE BREAK. The main one: nav, panel, question tables, the directory swap
+ *   900px           two-column to one-column on wide components
+ *
+ * `46rem`, `52rem`, `860px` and `min-width: 641px` each appear ONCE and are the tail of that growth.
+ * **They are left alone deliberately**: moving a one-off breakpoint changes the width at which a
+ * specific component reflows, and that is a visual change made blind unless someone looks at the
+ * component. This comment exists so the next rule picks a rung that is already here.
+ *
+ * **AND THE `@media` BLOCKS ARE NOT MERGED.** Seven blocks share `max-width: 767px` and they sit
+ * beside the components they modify. Collecting them into one block would shorten the file and make
+ * it harder to read — a responsive rule belongs next to the thing it makes responsive, and the
+ * duplicate-selector count that prompted this was measuring locality, not redundancy.
+ * ========================================================================================== */
+
 :root {
   /* ============================================================================================
      BONE & INDIGO — the settled visual language, operator decision 2026-08-11.
@@ -181,9 +204,11 @@ code {
   letter-spacing: 0.02em;
 }
 
-.nav-primary a {
-  color: var(--ink);
-}
+/* `.nav-primary a { color: var(--ink) }` stood here and was DEAD. The same selector is declared
+   again around line 2590 with `--ink-2`, and the later declaration wins — verified by DOM probe on
+   production, which renders rgb(74,79,94) = #4a4f5e = --ink-2. A duplicate that merely repeats a
+   value is untidy; this one stated a DIFFERENT colour and read as authoritative to anyone who found
+   it first. Removed, not merged: the surviving block is the one that governs. */
 
 .nav-evidence {
   margin-top: 0.35rem;

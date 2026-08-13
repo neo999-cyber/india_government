@@ -19809,3 +19809,68 @@ every commit and every deploy.
 
 30 build steps green · **17 e2e tests** · **lint 0/0** — the React changes verified against both,
 because a render-purity fix that broke the strip would show as a listing-marks or e2e failure.
+
+---
+
+## 2026-08-13 (seventy-eighth entry) — THE LAST THREE, AND ONE OF MY OWN RECOMMENDATIONS WAS WRONG
+
+### THE INTERPRETIVE RULE, SAID ONCE INSTEAD OF FIVE TIMES
+
+*"A note of what else was happening, not an explanation of the shape"* appeared **five times on every
+topic page** — once in the lead caption, then once per card in the four-up grid. An external audit
+read the result as *"an instruction manual"*. The rule now sits once in the section note that already
+governs every card, and says that it does. **×5 → ×2 across all fourteen topics**, the remaining two
+being the lead's own caption and the grid legend, which are different contexts.
+
+**The landing page's twice-rendered caveat is untouched and cannot be fixed this way.** The record
+appears twice there, and **rule 3a requires the caveat wherever the record appears** — `listing-marks`
+refused exactly this removal during the stories batch. With the landing page excluded by the
+operator, that half is closed rather than open.
+
+### THE 163 WARNINGS, TRIAGED RATHER THAN REDUCED
+
+Eight rules, each assigned in `STATE.md`. **Nothing was edited to silence one**, which would be the
+wrong move on every one of them. Two results worth the entry:
+
+**Six `charset-diacritic` are all the same accent in *précis*** — a normal English loanword. The rule
+says *"fine for a proper name, otherwise normalise"*; this is neither, and normalising it would
+misspell the word. **Correct as written.**
+
+**And the 51 `term-window` warnings have one explanation, which is a ruling rather than a defect.**
+All 50 measurable cases fall BEFORE their term starts; **none falls after.** `date` is when the thing
+being assessed originates, `term` is which government is held to it, and **for an imposed duty those
+cannot coincide** — RULING 5. `L-0095` is *RTE section 26's ten per cent vacancy ceiling*, dated
+2010-04-01, assessed against T3: fifteen years outside the window by construction. Resolving it means
+teaching the rule which objectives are imposed, or settling what `date` means. Both are contract
+changes.
+
+### THE STYLESHEET, AND A DEAD RULE THAT READ AS AUTHORITATIVE
+
+`.nav-primary a { color: var(--ink) }` at line 184 was **dead**: the same selector is declared again
+2,400 lines later with `--ink-2`, and the later wins. **Verified by DOM probe on production —
+rgb(74,79,94) = #4a4f5e = `--ink-2`.** A duplicate that repeats a value is untidy; this one stated a
+DIFFERENT colour and read as authoritative to anyone who found it first. **Real duplicate selectors:
+0.**
+
+The breakpoint ladder is now documented at the top of the file: **11 media queries across SEVEN
+breakpoints, px and rem mixed**, because the set had never been written down and each new rule picked
+a plausible number. The one-off rungs are left alone deliberately — moving one changes the width at
+which a specific component reflows. **And the `@media` blocks are NOT merged**: seven share
+`max-width: 767px` and sit beside the components they modify, which is locality rather than
+redundancy.
+
+### INDEX PARTITIONING — DECLINED, AND MY OWN LEVER WAS FALSE
+
+I reported that ~60% of the big indexes is RSC flight payload and proposed **"hoisting the client
+islands"** as the bigger lever. **The measurement refutes it: the share is a constant.** `/search/`
+60%, `/series/` 61%, `/method/` 61%, **`/directory/` — 24 KB — 67%.** Every page ships its RSC
+representation at roughly 1.5× its HTML and no boundary change touches that.
+
+So the only lever is rendering less, and on `/search/` that costs more than it saves: **118 KB of the
+768 KB of cards is caveat text rule 3a forbids shortening**, and a paginated listing is a query
+returning a subset, which is the shape that ruled itself out on rule 4b. Declined with the reasoning
+in `STATE.md`, and what would reverse it named.
+
+### Gate line
+
+30 build steps · **17 e2e** · **lint 0/0**.
