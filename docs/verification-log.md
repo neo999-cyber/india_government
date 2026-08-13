@@ -18885,3 +18885,115 @@ or the list should wait for the corpus to grow, which is the honest thing it is 
 **5,727 rows / 8,190 marks**. `unrecognised-rows` 0. `reachability` 1,787/1,787. `rendered-space` 0.
 At 375 px: 0 body overflow, 0 clamped, 3 declared absences in the dashed box, 7 source cards of
 which 4 carry marks.
+
+---
+
+## 2026-08-13 (sixty-fifth entry) — SHARE CARDS: seven were broken. And the mobile pass.
+
+### ALL SEVEN STORIES WERE UNFURLING THE ROOT FALLBACK
+
+Measured first, and it is the whole point of the item. Every story file exports
+`metadata = { title, description }` and every story page carried its own `<meta name="description">`
+— **and every one of them unfurled `og:title` = *India, On the Record* and `og:description` = the
+generic site blurb.**
+
+**The mechanism: a page that sets only `description` does not override the root layout's
+`openGraph`.** Next merges `openGraph` as an object, not field-by-field against `description`, so
+the layout default won on all seven. `seriesCard` and `ledgerCard` were unaffected because they
+build `openGraph` explicitly — which is precisely why `storyCard` now exists rather than seven pages
+hand-rolling tags.
+
+Distribution here is a pasted link with no search discovery. **Seven authored arguments were
+spending their one preview line on a sentence about the site.**
+
+### THE LANDING PAGE — IT IS THE ROOT FALLBACK, AND IT STAYS
+
+Confirmed: the landing card is the layout default, which for the landing page is its own
+description. It passes the truncation test at every cut. **Not changed, and the reason is
+positioning rather than inertia:** it leads with *what can be established about how the country
+changed*, which is the correction item 1 was built to make after the reader review found the site
+reading as an audit of statistical behaviour. A more concrete card would have to lead with either a
+figure or a corpus count, and the first breaks the rule while the second is the database-size lead
+the design rules exclude.
+
+### THE SEVEN, WRITTEN QUALIFICATION-FIRST AND READ AS PREFIXES
+
+Each is a fresh sentence, not a compression of the story's finding — **the 237 findings all fail the
+rule by construction**, at a median 459 characters leading with the figure and qualifying after an
+em-dash.
+
+Read at 60, 100, 140 and 180 characters, which is where platforms cut. **All seven safe at every
+cut.** The two that had to be built rather than written:
+
+- **jobs** — the qualification is the FIRST clause: *the record attached to India's official
+  unemployment rate says the series cannot be read as a jobs indicator.* The 6.0-to-3.2 figures
+  arrive at character 110, so a cut can only remove them and can never leave them standing.
+- **two-counts-one-boundary** — opens *It is not a disagreement.* Leading with *two official counts
+  differ in every year* would have been true and would have been the exact inverse of the finding;
+  at a 60-character cut the resolution is already on screen.
+
+**The no-figure floor lifted for two cards and the reason is the ruling, not an exception.**
+`how-renewable` carries a spread of four answers that cannot be truncated into one standing claim;
+`jobs` carries figures only after its qualification. It did not lift for a single figure with a
+qualification after it, which is the shape the floor exists for.
+
+### THE 122 SERIES CARDS — SIZED, NOT STARTED
+
+122 series carry both a finding and a caveat and each still ships the mechanical floor: no figure,
+absence-first, safe and uninformative. **The floor is not broken the way the story cards were** —
+it is plain, which is a different debt.
+
+**Each needs one authored qualification-first sentence through the three checks.** The tranche
+criterion, when it starts: **the 14 that a story rests on**, because those are the ones a reader
+reaches from a shared link and might forward next. Not begun here — authoring 122 sentences at the
+end of a batch that already carries a composer, seven cards and a mobile pass is where the standard
+slips.
+
+### THE MOBILE WALK — WHAT WAS MERELY ACCEPTABLE
+
+Every surface had passed 375 px for overflow and clamping. Walked as a reader arriving from a shared
+link, two things were acceptable rather than good.
+
+**TAP TARGETS — 40 of 40 navigation targets under 44 px, smallest 21.** Fixed: nav links, the
+disclosure summary and the footer directory get a 44 px minimum. **Cards and next steps were already
+compliant, 0 of 9 under.**
+
+**THE NAV WAS THREE LINES AND 132 PX, AND THE CAUSE WAS MY OWN CSS.** `display: block; width: 100%`
+on the `All pages` disclosure made it 343 px wide, so it took a line of its own. Anchoring the panel
+to the nav instead lets the summary sit inline with *Search*:
+
+| | before | after |
+|---|---|---|
+| nav lines | 3 | **2** |
+| nav height | 132 px | **88 px** |
+| nav targets under 44 px | 40 of 40 | **0 of 40** |
+| pixels before the page's own h1 | 317 | **260** — 39% of the first screen to 32% |
+
+**THE QUESTION-ROUTE TABLES RAN 229 PX WIDER THAN THE VIEWPORT.** Now stacked at ≤767 px, each cell
+carrying its column header through `data-label`. **The DOM is unchanged and that is the design** —
+`listing-marks` binds the `<tbody>` as the listing unit and `unrecognised-rows` reads the same
+shapes, so a restructure into cards would have moved both out from under their gates. Gate counts
+identical before and after: **5,727 rows / 8,190 marks.** The caveat row keeps its full 343 px, and
+is neither clamped nor collapsed — the ruling made twice, and a phone is a narrower layout rather
+than an exemption. Desktop verified unchanged: nav one line, panel anchored, table still a table.
+
+### WHAT WAS NOT FIXED, AND WHY
+
+- **`/ledger/` (264 px overflow) and `/series/` (250 px) stay tables.** They are 223- and 269-row
+  catalogues a reader scans by column; stacking them turns a scannable page into one a reader must
+  travel. Both carry `ListingFacets`, which is the intended way to narrow them on a phone. **This is
+  the table that genuinely needs to be a table.**
+- **Inline links in running prose stay at 15 px.** WCAG 2.5.8 exempts a link inside a sentence, and
+  padding one breaks the line it sits in. Four on a story page.
+- **Crumb links stay at 15 px** — inline in a text line, and every destination in them is a 44 px
+  target in the nav directly above.
+- **260 px still precede the headline.** Reduced, not eliminated: the title, the coverage subtitle
+  and the crumb are each load-bearing, and shortening the masthead further means hiding one.
+- **Charts stay at 343 × 114.** Small, but **no label anywhere is under 9 px** — measured, not
+  assumed — so nothing an annotation carries is illegible.
+
+### Gate line
+
+27 steps green. `link-check` **60,433 internal hrefs across 753 pages, 0 dead**. `listing-marks`
+**5,727 rows / 8,190 marks — unchanged across the table restacking**, which is the check that it was
+layout and not structure. `unrecognised-rows` 0. `reachability` 1,787/1,787. `rendered-space` 0.

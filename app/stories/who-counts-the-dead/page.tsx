@@ -1,16 +1,23 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { storyCard } from '@/lib/share-card';
+import { storyBySlug } from '@/lib/stories';
 import { getLedger, getProvenance, getSeries } from '@/lib/data';
 import { StoryScroller } from '@/components/StoryScroller';
 import { SeriesChart } from '@/components/SeriesChart';
 import { CaveatFlag } from '@/components/marks';
 import { StorySources } from '@/components/StorySources';
 
-export const metadata: Metadata = {
-  title: 'Who counts the dead in Kashmir?',
-  description:
-    'Twenty-seven of thirty indicators here are published by the Indian state. Three are not, and all three count deaths. What happens when you put them next to the official figure is not what you would expect.',
-};
+/**
+ * The card comes from `lib/stories.ts` through `storyCard`, not from a literal here. Every
+ * story was unfurling the root fallback because a page that sets only `description` does not
+ * override the layout's `openGraph`; the composer sets both.
+ */
+export const metadata: Metadata = storyCard(
+  storyBySlug('who-counts-the-dead')!.title,
+  storyBySlug('who-counts-the-dead')!.share,
+  'who-counts-the-dead',
+);
 
 /**
  * STORY THREE — Kashmir, and the pair-type check changed what it could draw.

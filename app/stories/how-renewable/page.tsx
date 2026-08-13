@@ -1,16 +1,23 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { storyCard } from '@/lib/share-card';
+import { storyBySlug } from '@/lib/stories';
 import { getLedger, getProvenance, getSeries } from '@/lib/data';
 import { StoryScroller } from '@/components/StoryScroller';
 import { SeriesChart } from '@/components/SeriesChart';
 import { CaveatFlag } from '@/components/marks';
 import { StorySources } from '@/components/StorySources';
 
-export const metadata: Metadata = {
-  title: 'How much of India’s electricity is renewable?',
-  description:
-    'Four official answers for the same year, all correct, from 16.88 per cent to 53.21. The spread is the definition, not the data — and coal production nearly doubled underneath it.',
-};
+/**
+ * The card comes from `lib/stories.ts` through `storyCard`, not from a literal here. Every
+ * story was unfurling the root fallback because a page that sets only `description` does not
+ * override the layout's `openGraph`; the composer sets both.
+ */
+export const metadata: Metadata = storyCard(
+  storyBySlug('how-renewable')!.title,
+  storyBySlug('how-renewable')!.share,
+  'how-renewable',
+);
 
 /**
  * STORY FOUR — renewables, and the form had to be different because there is no dispute.

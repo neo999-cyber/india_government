@@ -1,15 +1,22 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { storyCard } from '@/lib/share-card';
+import { storyBySlug } from '@/lib/stories';
 import { getLedger, getSeries } from '@/lib/data';
 import { StoryScroller } from '@/components/StoryScroller';
 import { CaveatFlag } from '@/components/marks';
 import { StorySources } from '@/components/StorySources';
 
-export const metadata: Metadata = {
-  title: 'Is India spending more on education, or less?',
-  description:
-    'The Ministry publishes two totals in one table, for the same years. One rises and one falls. Parliament is briefed on the one that rises, and the 6 per cent target is measured against it.',
-};
+/**
+ * The card comes from `lib/stories.ts` through `storyCard`, not from a literal here. Every
+ * story was unfurling the root fallback because a page that sets only `description` does not
+ * override the layout's `openGraph`; the composer sets both.
+ */
+export const metadata: Metadata = storyCard(
+  storyBySlug('what-counts-as-education-spending')!.title,
+  storyBySlug('what-counts-as-education-spending')!.share,
+  'what-counts-as-education-spending',
+);
 
 /**
  * STORY FIVE — PR-22, and it is the renewables form with a second publisher's habit attached.

@@ -4306,15 +4306,23 @@ details.more > summary {
 .allpages-group > a { font-size: 0.88rem; }
 
 @media (max-width: 767px) {
-  /* Static, not floating: at phone width an absolutely-positioned panel either overflows the
-     viewport or needs its own scroll. It opens in the flow and pushes the page down, which is
-     what a phone reader can actually use. */
-  .allpages { display: block; width: 100%; }
+  /* THE SUMMARY PACKS WITH THE LINKS; THE PANEL STILL SPANS THE WIDTH.
+
+     Measured 2026-08-13: `display: block; width: 100%` on the details made the disclosure 343 px
+     wide, which pushed it onto a line of its own and made the primary nav **three lines and 132 px**
+     — 44 px of the first screen, on every page, spent on a control that is one word long. Anchoring
+     the panel to the nav instead lets the summary sit inline with `Search` and keeps the panel full
+     width beneath it. Two lines, 88 px, nothing hidden and nothing moved. */
+  .nav-primary { position: relative; }
+  .allpages { position: static; display: inline-flex; width: auto; }
   .allpages-panel {
-    position: static;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
     min-width: 0;
     max-width: none;
-    margin-top: 0.6rem;
+    margin-top: 0.5rem;
   }
 }
 
@@ -4330,4 +4338,66 @@ details.more > summary {
   font-size: 0.85rem;
   line-height: 1.6;
   color: var(--ink);
+}
+
+/* ============================ THE MOBILE PASS — 2026-08-13 ===================================
+
+   Every surface had been checked at 375 px for overflow and clamping, which is a lower bar than
+   being usable on a phone. Walked as a reader arriving from a shared link, two things were merely
+   acceptable rather than good, and both are fixed here. What was NOT fixed is recorded in the
+   verification log with its reason. */
+
+@media (max-width: 767px) {
+  /* TAP TARGETS. Measured on a story page: 40 of 40 navigation targets under 44 px, the smallest
+     21 px, and the primary nav wrapping to THREE lines at 127 px. Giving each link a real 44 px
+     target makes it two lines and 88 px — better to hit AND shorter, which is the rare fix that
+     costs nothing. Inline links inside a sentence are deliberately untouched: WCAG 2.5.8 exempts
+     them, and padding a link in running prose breaks the line it sits in. */
+  .nav-primary a,
+  .allpages > summary,
+  .foot-dir-group > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .nav-primary { gap: 0 1.1rem; }
+
+  /* THE INDEX TABLES THAT SCROLL. `/questions/*` ran 229 px wider than the viewport at six columns.
+     Stacked, each record becomes a block and every cell carries its own label.
+
+     **THE DOM IS UNCHANGED AND THAT IS THE POINT.** `listing-marks` binds the `<tbody>` as the
+     listing unit and `unrecognised-rows` reads the same shapes; a restructure into cards would have
+     moved both out from under their gates. This is layout only — the same table, laid out down the
+     page instead of across it. The caveat and outcome rows keep their full width and are neither
+     clamped nor collapsed, which is the ruling that has now been made twice. */
+  .qstack table,
+  .qstack thead,
+  .qstack tbody,
+  .qstack tr,
+  .qstack td { display: block; width: 100%; }
+  .qstack thead { display: none; }
+  .qstack tbody {
+    border-top: 1px solid var(--rule);
+    padding: 0.7rem 0 0.4rem;
+  }
+  .qstack tbody > tr > td {
+    padding: 0.15rem 0;
+    border: 0;
+  }
+  /* The column header, carried onto the cell it labels. Without it a stacked table is a column of
+     unlabelled values, which is worse than scrolling. */
+  .qstack tbody > tr > td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  /* The two full-width rows keep their own treatment: they are not cells of a record, they are the
+     record's outcome and its qualification. */
+  .qstack .outcome-row > td,
+  .qstack .caveat-row > td,
+  .qstack .qground-row > td { padding: 0.4rem 0 0.2rem; }
 }

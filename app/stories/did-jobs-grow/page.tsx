@@ -1,16 +1,23 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { storyCard } from '@/lib/share-card';
+import { storyBySlug } from '@/lib/stories';
 import { getLedger, getProvenance, getSeries } from '@/lib/data';
 import { StoryScroller } from '@/components/StoryScroller';
 import { SeriesChart } from '@/components/SeriesChart';
 import { CaveatFlag } from '@/components/marks';
 import { StorySources } from '@/components/StorySources';
 
-export const metadata: Metadata = {
-  title: 'Did jobs grow after 2014?',
-  description:
-    'Two surveys measure Indian employment and they disagree about the direction, not the level. What each one counts, why they cannot be subtracted, and what the official fall is made of.',
-};
+/**
+ * The card comes from `lib/stories.ts` through `storyCard`, not from a literal here. Every
+ * story was unfurling the root fallback because a page that sets only `description` does not
+ * override the layout's `openGraph`; the composer sets both.
+ */
+export const metadata: Metadata = storyCard(
+  storyBySlug('did-jobs-grow')!.title,
+  storyBySlug('did-jobs-grow')!.share,
+  'did-jobs-grow',
+);
 
 /**
  * STORY TWO — DESIGN-REVISION-2 §7, and the second subject this corpus can carry in this form.
