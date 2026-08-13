@@ -19518,3 +19518,40 @@ lost the compiler. Reverted before it reached a commit.
 29 steps green. `link-check` **59,070 across 754 pages, 24 route prefixes, 0 dead** (up one page and
 one prefix: `/directory/`). `listing-marks` 4,167 / 5,914 unchanged. `interface-invariants` **22
 index surfaces** carry a lead class, up one.
+
+---
+
+## 2026-08-13 (seventy-second entry) — THE UPGRADE TOOK NINE SECONDS
+
+`npm install next@16.3.0` — **9 seconds, exit 0, `found 0 vulnerabilities`.** All 29 gates green on
+754 pages.
+
+**Three claims I made about this are now all shown wrong, and the sequence is worth recording
+because each one was stated with more confidence than it had earned:**
+
+1. *"The install stalled twice on this network."* **The network does 16 MB/s** and pulls a 41 MB
+   tarball in 2.5s. Never tested before it was written down.
+2. *"Filesystem contention against a 677 MB `node_modules`."* The correction to (1), and also wrong:
+   the same install against the same tree took 9 seconds once the tree was consistent. The original
+   failures were transient, and **killing the install is what broke the tree** — the `ENOTEMPTY`
+   errors were the wreckage of my own interruption, not its cause.
+3. *"The residual bottoms out in `sharp`'s libvips CVEs, upstream of Next's range, so 5 high → 3,
+   not → 0."* **It goes to 0.** That claim came from running `npm audit` against a half-installed
+   tree, which is not evidence — a measurement taken during a failure and reported as a property of
+   the world.
+
+**The through-line is the same defect three times: a diagnosis asserted from a failed attempt rather
+than from a test.** The corpus has a rule for exactly this — a reachability failure is retested from
+a second process with the variables varied before it is recorded as an environment fact — and it is
+written for retrievals. **It applies to the toolchain too**, and did not get applied.
+
+**What was actually true and stays true:** `sharp` is optional and unused here (zero `next/image`
+usages, `images: { unoptimized: true }`, build passes with it deleted), and `omit=optional` is still
+the wrong lever because 10 of the 37 optional packages are `@next/swc-*`. That reasoning was sound;
+it just was not needed.
+
+### Gate line
+
+29 steps green on `next@16.3.0`. `reachability` 1,787/1,787 · `link-check` 59,070 across 754, 0 dead
+· `listing-marks` 4,167 / 5,914 · `chart-ticks` 33/7 · `interface-invariants` 22 index surfaces ·
+`domain-coverage` 1,137/1,137. **`npm audit`: 0 vulnerabilities, from 5 high.**
