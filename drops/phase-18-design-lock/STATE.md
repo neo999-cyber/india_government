@@ -581,6 +581,45 @@ Wording correction only. No figure changes and the verdict stays `contested`.
 
 ---
 
+## THE 163 VALIDATE WARNINGS, TRIAGED 2026-08-13 — ASSIGNED, NOT REDUCED
+
+An external audit: *"these are not all software bugs; many are honest research/data-quality debt.
+They should nonetheless be triaged, assigned and reduced rather than accepted indefinitely."* The
+triage is here. **Nothing was edited to silence a warning**, which would be the wrong move on every
+one of them.
+
+| rule | n | owner | reading |
+|---|---|---|---|
+| `unmeasured-route` | **82** | research | an absence naming no `wouldFill`. **The rule's own text says "fine when no instrument for it exists — worth saying so if that is the case."** So the fix is usually a sentence, not a route |
+| `term-window` | **51** | **contract — see below** | a record's `date` outside its `term` window |
+| `break-span` | 12 | research | a break at a period outside the observed span. "Fine for a documented-ahead transition" |
+| `pending-note` | 6 | research | a pending placeholder with no note saying what it stands in for |
+| `charset-diacritic` | 6 | **none — correct as written** | all six are `é` in *précis*, a normal English loanword. The rule says "fine for a proper name, otherwise normalise"; this is neither, and normalising it would misspell the word |
+| `npa-basis` | 3 | research | a P-18 series stating no reporting basis |
+| `absence-dispute` | 2 | research | `reasonDisputed` set with no `wouldFill` — and here the route IS the point |
+| `affects-series-pending` | 1 | research | `lfpr-female-urban` not yet ingested; expected |
+
+### `term-window` HAS ONE EXPLANATION AND IT IS A RULING, NOT A DEFECT
+
+**All 50 measurable cases fall BEFORE their term starts. None falls after.** A one-directional
+pattern is not a scatter of typos.
+
+- `L-0070` *Farmer suicides*, dated 2014-01, term T1
+- `L-0095` *RTE section 26's ten per cent vacancy ceiling, breached*, dated **2010-04-01**, term T3
+
+**`date` is when the thing being assessed originates; `term` is which government is being held to
+it.** The validator assumes they coincide, and **for an imposed duty they systematically cannot** —
+which is RULING 5 exactly: *an objective may be imposed as well as announced*. A statutory duty from
+2010 assessed against T3 has an instrument date fifteen years outside the window by construction.
+
+**So these 50 are the structural consequence of a ruling this instrument made deliberately.**
+Resolving them means either teaching the rule which records carry an imposed objective — which needs
+a field it cannot currently read — or settling what `date` means. **Both are contract changes and
+therefore stop-and-agree items.** Not taken here; recorded so the count stops reading as 51 unexamined
+defects.
+
+---
+
 ## RAISED 2026-08-13, NOT RESOLVED — `nh-network` IS A PHASE-0 SCAFFOLD RECORD STILL ON THE SITE
 
 **This is research-owned and is deliberately NOT edited by the code session that found it.** The

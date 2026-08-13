@@ -366,7 +366,12 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
               {(s.length || lensed.length)} series are below.{' '}
               <strong>Each carries the same three layers as the lead</strong> — what the measure did,
               the years this topic&rsquo;s commitments were announced, and any point at which the
-              instrument changed basis, with the reason printed.
+              instrument changed basis, with the reason printed.{' '}
+              <strong>
+                A commitment year beside a movement is a note of what else was happening, not an
+                explanation of the shape.
+              </strong>{' '}
+              That holds for every card below.
             </p>
           </div>
           <div className="cgrid">
@@ -401,10 +406,16 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
                       ),
                     );
                   return yrs.length ? (
+                    /* THE DISCLAIMER IS NOT REPEATED HERE, and its absence is the fix rather than a
+                       loss. This block renders once per card, so with the lead caption the same
+                       sentence appeared FIVE times on one page — an external audit read the result
+                       as "an instruction manual", and it was right. The rule is now stated once in
+                       the section note above, which governs every card in the grid, and it says so.
+                       Nothing interpretive was removed from the page; one sentence stopped being
+                       printed four extra times. */
                     <p className="cw-layer">
                       <span className="cw-layer-k">Commitments</span> {yrs.join(' · ')} — years a
-                      record filed under this topic was announced,{' '}
-                      <strong>a note of what else was happening, not an explanation of the shape.</strong>
+                      record filed under this topic was announced.
                     </p>
                   ) : null;
                 })()}
