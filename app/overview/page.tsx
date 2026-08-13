@@ -285,7 +285,14 @@ export default function Overview() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / what changed
+        /* PREFETCH OFF ON THIS PAGE'S DENSE LISTS.
+           Next prefetches every in-viewport route by default. A lab run measured a topic page issuing 71
+           requests and pulling ~359 KB of route payloads a reader had not asked for, and these are the
+           pages that carry 494 to 1,286 links each. A catalogue row is a LOW-PROBABILITY destination —
+           a reader follows one of them, not forty — so the prefetch is spent almost entirely on routes
+           nobody opens, on the pages least able to afford it. Navigation is unchanged; only the
+           speculative fetch is. */
+        <Link prefetch={false} href="/">instrument</Link> / what changed
       </p>
       <h1 className="home-lead">What changed, everywhere, since 2014</h1>
       <p className="lede">
@@ -328,7 +335,7 @@ export default function Overview() {
         what the <em>Made of</em> line on each card is for: it sits beside the numbers so the
         composition and the coverage are read in the same glance, rather than the second being
         taken for a verdict on the first.{' '}
-        <Link href="/method/">How records are scored, and what a verdict does not mean</Link>.
+        <Link prefetch={false} href="/method/">How records are scored, and what a verdict does not mean</Link>.
       </p>
 
       <h2>What happened, year by year</h2>
@@ -349,7 +356,7 @@ export default function Overview() {
           <ul className="yeargroup-list">
             {baseline.map((l) => (
               <li key={l.id}>
-                <Link href={`/ledger/${l.id}/`}>{l.title}</Link>
+                <Link prefetch={false} href={`/ledger/${l.id}/`}>{l.title}</Link>
                 <span className="yeargroup-meta">
                   {formatDateRange(l.date, l.dateEnd)} ·{' '}
                   {l.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}
@@ -374,7 +381,7 @@ export default function Overview() {
             <ul className="yeargroup-list">
               {ls.map((l) => (
                 <li key={l.id}>
-                  <Link href={`/ledger/${l.id}/`}>{l.title}</Link>
+                  <Link prefetch={false} href={`/ledger/${l.id}/`}>{l.title}</Link>
                   <span className="yeargroup-meta">
                     {formatDateRange(l.date, l.dateEnd)} ·{' '}
                     {l.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}

@@ -214,3 +214,78 @@ other way.
   dedicated sitemap route — is the fix that keeps the constraint. **A 941px panel in an 812px
   viewport is a real problem; adding script to solve it reverses a stated decision.**
 - **H4 `noindex`.** A distribution question, not an engineering one.
+
+---
+
+# 7. WORKED — status as at 2026-08-13, appended to the triage rather than replacing it
+
+**Tranches 1 to 6 were run in one continuous session.** This section records what landed, what was
+deliberately not done, and where a fix departed from the audit's recommendation.
+
+| tranche | item | outcome |
+|---|---|---|
+| 1 | C1 `farmer-suicides` | **corrected** — withdrawn wording quoted in the log, reason for not quoting in-field recorded at the record |
+| 1 | C2 chart ticks | **fixed** — `lib/ticks.ts`; all 7 stories 4–6 ticks, spread 194–242px, none off-canvas |
+| 1 | C3 search count | **deleted, not wired** — `ListingFacets` already owned a correct one; `initialTotal` added on 4 call sites so no-JS keeps a true count |
+| 2 | I1 CI history | **fixed** — `fetch-depth: 0`, `--require-history` fatal in CI, dirty-tree check, pinned SHAs, `permissions: contents: read` |
+| 3 | A1 target size | **exception invoked, keyboard burden fixed** — see below |
+| 3 | A2 scrollers | **fixed** — 31 of 31 `table-wrap` containers focusable |
+| 3 | A3 heading skips | **fixed** — 340 pages → **0** |
+| 3 | A4 skip link | **added** |
+| 3 | duplicate landmarks | **fixed** — the two year rails named for position |
+| 4 | N1 label drift | **fixed** — `lib/routes.ts`, 9 surfaces realigned, 4 titles derived |
+| 4 | N2 `aria-current` | **added** — `components/PrimaryNav.tsx` |
+| 4 | N4 term shorthand | **spelled out** |
+| 5 | the findings pass | **7 rewritten, 9 kept with reasons** — see below |
+| 6 | H2 favicon | **added** — `app/icon.svg`, the site's own break-seam motif |
+| 6 | S1 tab isolation | **fixed** — records tab 264 KB → 134 KB, 5 charts → 0 |
+| 6 | S2 prefetch | **off on 27 links across 9 dense surfaces** |
+| 6 | H3 lint/tests | **substituted, and only partly** — see below |
+| 6 | H1 dependencies | see below |
+
+## Three places the work departed from the recommendation, and why
+
+**A1 target size — an exception invoked, not a conformance claim.** 393 of 583 links on `/series/`
+are under 24×24 and that measurement is right. The rows cannot become 24px: 269 rows would take the
+span strip from 1,614px to 6,456px and the density IS the function. **WCAG 2.5.8's *Essential*
+exception is invoked deliberately.** What was not essential — 269 four-pixel tab stops standing
+between a keyboard reader and the table — is fixed, and no function goes with it, because every
+series on the strip is a full row of the filterable table on the same page.
+
+**The findings class was ~17 and the true number is 7.** Sorting by first sentence put ~17 in scope;
+**reading each one whole** showed most already carry their outcome in sentence two, and that for nine
+of them leading with the figure would leave a false impression the caveat then has to undo. The test
+that survives contact with this corpus is narrower than the audit's: *lead with the outcome unless
+leading with the figure would mislead.* Sixteen candidates, sixteen judgements, per record.
+
+**H3 interface tests — `tools/interface-invariants.mjs` instead of Playwright, and it answers less.**
+It runs in `npm run build`, so it binds on every commit and every deploy, which a Playwright suite
+would not without new infrastructure; it needs no browser binaries. It asserts that `/search/` states
+its count in exactly one live region and that all **56 domain tabs across 14 topics** carry their own
+body and an orientation line and none carries the overview's. **It cannot click a facet, measure a
+rendered target, tab through a page, or detect 375px overflow. Those remain unbound and the audit's
+finding on interface regression coverage is only partly answered.**
+
+## H1 dependencies — PARTLY DONE, AND THE UPGRADE WAS REVERTED DELIBERATELY
+
+**Two of the five are fixed and committed**: `npm audit fix` resolved `fast-uri` to 3.1.5 and
+`nanoid` to 3.3.18 without touching Next. Those lockfile changes are in.
+
+**The remaining three were NOT fixed, and the audit's stated remedy would not have fixed them
+either.** They are `next`, `postcss` and `sharp`, and the residual after any Next bump is `sharp`'s
+inherited libvips CVEs (GHSA-f88m-g3jw-g9cj) — upstream of Next's dependency range. **So the figure
+goes 5 → 3, not 5 → 0 as the audit projected.**
+
+Next 16.3.0 was pinned and installed anyway, to test it. **The install stalled twice on this
+machine's network** — 30 top-level packages after a long run, nothing written for minutes — and being
+killed left `next`, `postcss` and `sharp` half-written, which broke `npm install` with `ENOTEMPTY`
+until each was cleared by hand. The pin was reverted to 16.2.12, the tree restored from the
+unchanged lock, and **the full 29-gate chain re-run green to prove the repository is not left in a
+worse state than it started.**
+
+**This is a decision, not an omission.** Blocking five tranches of verified work behind a flaky
+upgrade that buys 3 high → 3 high is the wrong trade, and the residual exposure is build/CI on a
+static export with no runtime server — which the audit itself says reduces practical
+exploitability. **The upgrade is owed and should be done on a connection that can complete it**,
+against this same chain.
+

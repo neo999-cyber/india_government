@@ -40,7 +40,14 @@ export default function SeriesIndex() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / indicator series
+        /* PREFETCH OFF ON THIS PAGE'S DENSE LISTS.
+           Next prefetches every in-viewport route by default. A lab run measured a topic page issuing 71
+           requests and pulling ~359 KB of route payloads a reader had not asked for, and these are the
+           pages that carry 494 to 1,286 links each. A catalogue row is a LOW-PROBABILITY destination —
+           a reader follows one of them, not forty — so the prefetch is spent almost entirely on routes
+           nobody opens, on the pages least able to afford it. Navigation is unchanged; only the
+           speculative fetch is. */
+        <Link prefetch={false} href="/">instrument</Link> / indicator series
       </p>
       <h1>Indicator series</h1>
       <p className="lede">
@@ -146,7 +153,7 @@ export default function SeriesIndex() {
                 >
                   <tr>
                     <td>
-                      <Link href={`/series/${s.id}/`}>{s.title}</Link>
+                      <Link prefetch={false} href={`/series/${s.id}/`}>{s.title}</Link>
                       <br />
                       <span className="t-note mono">{s.id}</span>
                       <RecordMarks record={s} deferCaveat />

@@ -157,7 +157,14 @@ export default function SearchPage() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / find a record
+        /* PREFETCH OFF ON THIS PAGE'S DENSE LISTS.
+           Next prefetches every in-viewport route by default. A lab run measured a topic page issuing 71
+           requests and pulling ~359 KB of route payloads a reader had not asked for, and these are the
+           pages that carry 494 to 1,286 links each. A catalogue row is a LOW-PROBABILITY destination —
+           a reader follows one of them, not forty — so the prefetch is spent almost entirely on routes
+           nobody opens, on the pages least able to afford it. Navigation is unchanged; only the
+           speculative fetch is. */
+        <Link prefetch={false} href="/">instrument</Link> / find a record
       </p>
       <h1 className="page-lead">Find a record</h1>
       {/* NO RECORD COUNT. The homepage rebuild removed database-size figures on the scope's own
@@ -237,7 +244,7 @@ export default function SearchPage() {
             }
           >
             <h2 className="scard-title">
-              <Link href={r.href}>{r.title}</Link>
+              <Link prefetch={false} href={r.href}>{r.title}</Link>
             </h2>
             <p className="scard-chips">
               <span className="tag">{LAYER_LABEL[r.layer]}</span>
@@ -246,7 +253,7 @@ export default function SearchPage() {
                   {DOMAIN_LABELS[d as keyof typeof DOMAIN_LABELS] ?? d}
                 </span>
               ))}
-              <Link className="scard-id mono" href={r.href}>
+              <Link prefetch={false} className="scard-id mono" href={r.href}>
                 {r.id}
               </Link>
             </p>
