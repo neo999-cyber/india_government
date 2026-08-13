@@ -33,6 +33,56 @@ are closed for the landing page, the seven stories and all 122 qualifying series
 
 ---
 
+## SESSION 2026-08-14 — the landing artwork, the topic merge, and three masthead defects
+
+**Everything below is SHIPPED, deployed and verified on production. Nothing is half-done and there
+is no branch to resume.** Seven commits, `0e7a959` to `1c5ae48`, all from `04737c1` (dark mode).
+
+**THE RECORD CONSTELLATION** (`0e7a959`, rebuilt at `b6ef594`). The landing page carries the
+official Survey of India outline as a field of marks. **The rebuild is the entry that matters:** the
+first attempt displayed the raster political sheet because I inspected the operator's design
+reference with regular expressions and never opened it — two passes counted eight `<path>` elements
+and I assumed they were icons. One of them is 34,958 characters of India. The reference draws the
+outline as vector and puts the raster behind it at six per cent as texture. `lib/india-outline.ts`
+now holds that geometry, M/L/Z only, which `lib/constellation.ts` depends on for point-in-polygon
+containment — the marks sit INSIDE the outline. Eight areas cover all fourteen domains, asserted at
+module load; the reference's seven cover 34% of the corpus.
+
+**THE TOPIC MERGE** (`d79e286`). Each topic was five routes; it is one page with four section
+anchors. 57 pages removed. `/domains/` folded into `/overview/`. `interface-invariants` 2 and 3 were
+rewritten (the old invariant 2 bound a defect that is now impossible, and its wording is quoted),
+`domain-coverage`'s index is `/overview/`, and its four fixtures moved with it — **the selftest
+refused the first commit because those fixtures had stopped firing entirely**, which is the
+behaviour that gate exists for.
+
+**THREE MASTHEAD DEFECTS** (`a4ab3ec`, `e9665db`, `a0852da`, `1c5ae48`). An empty grid cell rendering
+as a grey rectangle; the All-pages panel not closing on click-away, Escape or its own links; its
+type not matching the nav; and the panel positioned `right: 0` so it ran **-120px off the left edge
+at 1024, 1280 and 1440** and only fitted on a very wide window. Also a wide track (`--wide`,
+`.bleed`) so non-prose surfaces use a large screen.
+
+### WHAT IS OWED, AND NEITHER IS BLOCKING
+
+**1. `--mono` was never a token** and eleven rules used it, all falling back to the inherited sans.
+Fixed and swept. **The sweep is complete for that token; it was not extended to look for OTHER
+phantom custom properties**, and nothing checks for them. A gate over `var(--x)` against the
+declared set in `:root` is buildable and is not built.
+
+**2. 343 text elements already exceed 80 characters a line** — `li` 196, `td` 121, `t-note` 18,
+`prose-note` 8, measured across ten pages at the shipped 1088px shell. **This is pre-existing and was
+measured, not caused, by the width work**; it is the reason widening `.shell` was rejected, since a
+1344px shell takes it to 964. Nothing was done about the 343. They are text inside tables and lists,
+where `--measure` does not reach.
+
+**Unchanged from before this session:** the Lok Sabha record of 17 April 2026 is still the one
+document the delimitation record waits on, and is not reachable from this environment. See
+`DELIMITATION-BRIEF.md`.
+
+**Not mine, left alone:** `git stash@{0}` is a WIP from 2026-08-03 on branch
+`phase-13f-104th-amendment`. It predates this session by eleven days and was not touched.
+
+---
+
 ## OPEN ITEMS
 
 ### DESIGN-REVISION-2 — items 1 to 6 SHIPPED, item 7 EXHAUSTED AT SEVEN STORIES
