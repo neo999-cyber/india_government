@@ -26,6 +26,13 @@ const ROUTES = [
   ['/stories/did-jobs-grow/', 'a story with a scroller'],
   ['/questions/', 'a question index'],
   ['/method/', 'long prose with tables'],
+  // ADDED AFTER BOTH WERE FOUND OVERFLOWING ON PRODUCTION, by sweeping the routes this list did not
+  // cover. `/derivations/` was **641px** over — a formula block with no break opportunity — and the
+  // external audit never found it either. **A representative list is only representative of what
+  // someone thought to put in it**, which is why the sweep ran over every index route rather than
+  // trusting these eleven.
+  ['/derivations/', 'formula blocks with no break opportunity'],
+  ['/series/res-capacity-share/', 'a record page with a long token in prose'],
 ] as const;
 
 test.describe('no horizontal overflow at 375px', () => {

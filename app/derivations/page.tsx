@@ -73,8 +73,18 @@ function render(md: string): ReactNode[] {
       i += 1;
       while (i < lines.length && !lines[i].startsWith('```')) body.push(lines[i++]);
       i += 1;
+      // A DESIGNATED SCROLL REGION, and focusable, exactly like `.table-wrap`. These are formulas,
+      // and wrapping one mid-token makes it unreadable, so the block scrolls within its own box
+      // rather than dragging the page. Measured at 375px before the fix: `/derivations/` scrolled
+      // 641px past the viewport. `tabIndex` because a region that scrolls must be reachable by a
+      // keyboard — the same rule the 31 table wrappers are held to.
+      //
+      // A LINE COMMENT AND NOT `{/* */}`: this position is a function ARGUMENT, not JSX children,
+      // so a JSX comment here parses as an object literal and the build fails with
+      // `Expected ',', got 'ident'`. Third time in this session a comment has landed in a syntactic
+      // position it does not belong in.
       out.push(
-        <pre key={key()}>
+        <pre key={key()} tabIndex={0}>
           <code>{body.join('\n')}</code>
         </pre>,
       );

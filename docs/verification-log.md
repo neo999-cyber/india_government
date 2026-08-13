@@ -19704,3 +19704,52 @@ floor — fewer than 500 records loaded exits 2, because a shrunken corpus is a 
 
 **30 build steps green** — `distinct-titles` is new. 619 records across 3 layers, every title naming
 exactly one record, 1 pair exempted by id.
+
+---
+
+## 2026-08-13 (seventy-sixth entry) — CHECKING THE AUDIT LIST INSTEAD OF ASSERTING IT, AND FINDING TWO LIVE OVERFLOWS
+
+Asked whether every audit recommendation was done, I went back through the document section by
+section rather than answering from memory. **It was not**, and the check found two overflows on
+production that neither the audit nor my own e2e suite had caught.
+
+### TWO LIVE HORIZONTAL OVERFLOWS AT 375px
+
+The e2e suite covers eleven routes chosen as one per template family. **A representative list is
+only representative of what someone thought to put in it.** Sweeping every index route plus the one
+the audit named:
+
+- **`/series/res-capacity-share/` — 7px over.** This is the audit's own finding, reported as *"382px
+  in a 375px viewport because a long source path does not wrap"*. 382 − 375 = 7; it matched exactly
+  and I had never checked it. A token inside a `.prose-note` with no break opportunity.
+- **`/derivations/` — 641px over.** A `<pre><code>` formula block, `overflow-wrap: normal`. **The
+  audit did not find this one either.**
+
+Fixed differently, because the content differs: `overflow-wrap: anywhere` on prose containers, and
+`overflow-x: auto` + `tabIndex` on `pre`, since breaking `isBareRoot(u) = /^https?:\/\/[^/?#]+\/?$/`
+mid-token makes it unreadable. A scroll region that scrolls must be keyboard-reachable — the same
+rule the 31 table wrappers are held to. **Both routes are now in the e2e list**, which is 13.
+
+### A COMMENT IN THE WRONG SYNTACTIC POSITION, FOR THE THIRD TIME THIS SESSION
+
+The `<pre>` fix first went in as `out.push({/* … */} <pre …>)`. **That position is a function
+ARGUMENT, not JSX children**, so `{/* */}` parses as an object literal and Turbopack failed with
+`Expected ',', got 'ident'`.
+
+**And the failure was silent to me for a full step**, because the command was
+`npm run build && echo "build green" && python3 …` — the build failed, the chain short-circuited, and
+the edit that should have extended the test list never ran. I noticed only because the test count
+stayed at 15 when it should have risen. **`&&` chains hide which link broke unless something after
+them is checked.**
+
+Comment placement has now caused three defects here: 101 pages of leaked text, a `*/` closing its own
+block early inside a gate, and this.
+
+### `npm run selfcheck` — the audit's P3, and it had never been looked at
+
+It exited on a usage line because the package script supplied none of the positional argument the
+tool requires. Given `data/incoming` it runs: **STAGE 4 CLEAN, exit 0.**
+
+### Gate line
+
+30 build steps green; **17 e2e tests pass**, up from 15.
