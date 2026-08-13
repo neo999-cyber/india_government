@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { LINKABLE_SERIES_IDS } from '@/lib/series-ids.generated';
 import type { ReactNode } from 'react';
 import type {
   ExposureAdjudication,
@@ -270,14 +271,14 @@ export function CaveatRow({
   record,
   colSpan,
 }: {
-  record: { caveat?: string };
+  record: { id?: string; caveat?: string };
   colSpan: number;
 }) {
   if (!record.caveat) return null;
   return (
     <tr className="caveat-row">
       <td colSpan={colSpan}>
-        <CaveatFlag caveat={record.caveat} variant="inline" />
+        <CaveatFlag caveat={record.caveat} variant="inline" selfId={record.id} />
       </td>
     </tr>
   );
@@ -289,19 +290,51 @@ export function CaveatRow({
  * A caveat that ends "See P-26" should get the reader there in one click, the same as the
  * tag row does. Split rather than replace, so the text is never parsed as markup.
  */
-function withProvenanceLinks(text: string): ReactNode[] {
+/**
+ * SERIES IDS TOO, from 2026-08-13 — and it took a gate design change to land.
+ *
+ * A caveat naming `P-26` had been clickable for months; one naming `aser-std3-reading` was not, on
+ * 23 mentions. Two things had to move first, and both were right independently:
+ *
+ *   1. **`reachability`'s probe** compared a mark's first 60 characters against a page where every
+ *      tag becomes a space, so any inline link inside them broke the match. It had never fired only
+ *      because no P-id falls in any caveat's opening 60 characters.
+ *   2. **`listing-marks` took the first record href in a block as the row's subject**, so a caveat
+ *      citing another series made its own row a listing of that series. It now asks whether an
+ *      anchor's TEXT contains the record's title — a listing — as distinct from an id link, which is
+ *      a citation. `unrecognised-rows` had drawn that line for months; the two gates now share one
+ *      `linkText`.
+ */
+const SERIES_ID_ALTERNATION = LINKABLE_SERIES_IDS.map((id) =>
+  id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+).join('|');
+
+const LINKABLE = new RegExp(`(\\b(?:P-\\d{2,3}|${SERIES_ID_ALTERNATION})\\b)`, 'g');
+
+function withProvenanceLinks(text: string, selfId?: string): ReactNode[] {
   // {2,3} tracks the provenance id contract, widened 2026-08-03 when P-99 was reached.
   // Greedy and in step with the schema: /P-\d{2}/ against "P-100" would link "P-10" — a live
   // record that is not the one cited — and leave a stray "0" as text.
-  return text.split(/(P-\d{2,3})/g).map((part, i) =>
-    /^P-\d{2,3}$/.test(part) ? (
-      <Link key={`${part}-${i}`} href={`/provenance/${part}/`}>
-        {part}
-      </Link>
-    ) : (
-      <span key={`t-${i}`}>{part}</span>
-    ),
-  );
+  return text.split(LINKABLE).map((part, i) => {
+    if (/^P-\d{2,3}$/.test(part)) {
+      return (
+        <Link key={`${part}-${i}`} href={`/provenance/${part}/`}>
+          {part}
+        </Link>
+      );
+    }
+    // Not a self-link: a record naming its own id inside its own caveat is describing itself.
+    if (part !== selfId && LINKABLE_SERIES_IDS.includes(part)) {
+      return (
+        <Link key={`${part}-${i}`} href={`/series/${part}/`}>
+          {part}
+        </Link>
+      );
+    }
+    // A BARE STRING, not a <span>: the wrapper only carried a key, which strings do not need, and
+    // its nesting inside `caveat-inline` defeated a non-greedy match elsewhere.
+    return part;
+  });
 }
 
 /**
@@ -325,12 +358,15 @@ export function CaveatFlag({
    * and the card already leads to the record where they are live.
    */
   linkify = true,
+  selfId,
 }: {
   caveat: string;
   variant?: 'inline' | 'block';
   linkify?: boolean;
+  /** The record this caveat belongs to, so it is not linked to itself. */
+  selfId?: string;
 }) {
-  const body = linkify ? withProvenanceLinks(caveat) : caveat;
+  const body = linkify ? withProvenanceLinks(caveat, selfId) : caveat;
   if (variant === 'inline') {
     return <span className="caveat-inline">Caveat: {body}</span>;
   }
@@ -581,6 +617,8 @@ export function RecordMarks({
 }: {
   /** A series or a ledger record. Both carry `caveat` and `unmeasured`; only ledger has the rest. */
   record: {
+    /** So a caveat naming this record's own id does not link back to the page it is on. */
+    id?: string;
     caveat?: string;
     unmeasured?: Unmeasured[];
     differentFacts?: boolean;
@@ -598,7 +636,7 @@ export function RecordMarks({
   return (
     <>
       {record.caveat && !deferCaveat ? (
-        <CaveatFlag caveat={record.caveat} variant="inline" linkify={linkify} />
+        <CaveatFlag caveat={record.caveat} variant="inline" linkify={linkify} selfId={record.id} />
       ) : null}
       <AbsenceCount items={record.unmeasured} />
       {record.differentFacts ? <DifferentFactsMark variant="inline" /> : null}

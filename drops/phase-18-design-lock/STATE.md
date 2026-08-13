@@ -835,7 +835,39 @@ instrument has a name for what projections do to marks.
 
 ---
 
-## SERIES-ID LINKS — ATTEMPTED TWICE, DECLINED 2026-08-13, AND THE REASON IS A DESIGN CONFLICT
+## SERIES-ID LINKS — LANDED 2026-08-13 ON THE THIRD ATTEMPT, AFTER THE DESIGN QUESTION WAS SETTLED
+
+**225 links across 54 pages.** A caveat naming another series is now clickable, as `P-26` has been
+for months.
+
+**IT TOOK A DESIGN CHANGE, NOT A PATCH, AND THE FIRST TWO ATTEMPTS FAILED BECAUSE I TRIED PATCHES.**
+The settled rule, applied in two places that had disagreed:
+
+> **A row LISTS a record when an anchor's text carries that record's title. Any other link to a
+> record — an id, a phrase inside a sentence — CITES it.**
+
+`unrecognised-rows` had drawn exactly that line for months and counts 941 citations. `listing-marks`
+had no notion of link text at all: it took the FIRST record href in a block as the row's subject, so
+a caveat citing another series made its own row a listing of that series. **Both gates now share one
+`linkText` in `lib/listing-shapes.mjs`**, and the same distinction governs the `<tbody>` unit test —
+a record cited inside a caveat no longer makes a one-record block look like a multi-record one.
+
+**THE MEASUREMENT THAT MADE IT SAFE, AND IT CAUGHT A SILENT WEAKENING.** The first form of the rule
+tested `linkText === title`. That is right for a table row, where the anchor wraps the title alone,
+and **wrong for a grid card, which wraps the WHOLE CARD in one anchor** — so its text is the id, the
+tier, the title and the caveat together. Rows checked fell **4,167 → 3,041**, 1,126 real listings
+quietly dropped, and the gate still reported OK. `includes` rather than `===` restored them:
+**4,166 / 5,913, one row and one mark below the baseline, and that one is the caveat row that was
+never a listing.** A citation still fails the test, because a citation links by id and an id does not
+contain the title.
+
+**The two gate fixes it needed stand on their own** and are recorded where they were made:
+`reachability`'s probe, which was passing by luck; and this.
+
+**Three attempts, and what changed between them was not effort.** The first two moved the
+disagreement between the linkifier and the listing model from one place to another. The third asked
+what a row IS.
+
 
 **The operator authorised the gate change. It was made, and the feature still does not fit.**
 

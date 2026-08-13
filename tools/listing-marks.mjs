@@ -63,7 +63,7 @@ import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assertFresh } from './lib/freshness.mjs';
-import { listingRows, isPairRow } from './lib/listing-shapes.mjs';
+import { listingRows, isPairRow, linkText, RECORD_ANCHOR } from './lib/listing-shapes.mjs';
 import { norm, pageTextFromHtml } from './lib/page-text.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -157,7 +157,36 @@ function scan() {
     if (EXEMPT_ROUTES.has(route)) continue;
     const html = readFileSync(file, 'utf8');
     for (const [kind, blk] of listingRows(html)) {
-      const m = blk.match(/href="\/(ledger|series)\/([^"/]+)\//);
+      /**
+       * ============ A ROW LISTS A RECORD WHEN IT NAMES IT; OTHERWISE IT CITES IT ==============
+       *
+       * This took the FIRST record href in the block and called that the row's subject. **A caveat
+       * that cites another series therefore made its own row a listing of that series**, and the
+       * gate demanded marks from a row that was never about it. That is what blocked linkifying
+       * record ids inside caveat prose — a reader-facing feature declined twice for it.
+       *
+       * **The distinction is one this instrument already draws.** `unrecognised-rows` separates a
+       * link that NAMES a record from one that CITES it by id, and counts 941 citations. The
+       * discriminator is the LINK TEXT: an anchor whose text is the record's title is that record
+       * being listed; anything else — an id, a phrase, a word inside a sentence — is a citation.
+       *
+       * Both gates now use one `linkText` from `lib/listing-shapes.mjs`. **A block naming no record
+       * by title lists nothing and is skipped**, which is exactly what a caveat row is.
+       */
+      // CONTAINS the title, not EQUALS it — and the difference is 1,519 real listings.
+      //
+      // A table row's anchor wraps the title alone, so equality works there. **A grid card wraps the
+      // WHOLE CARD in one anchor**, so its text is the id, the tier, the title and the caveat
+      // together. An equality test dropped every card: rows checked fell 4,167 -> 3,041 and the gate
+      // got quietly weaker, which is the failure mode a fix like this is most likely to have.
+      //
+      // `includes` still separates listing from citation, because **a citation links by ID** — its
+      // anchor text is `edu-spend-gdp-all-depts`, which does not contain that record's title.
+      let m = null;
+      for (const a of blk.matchAll(RECORD_ANCHOR)) {
+        const cand = NEEDS.get(a[2]);
+        if (cand && cand.title && linkText(a[3]).includes(cand.title)) { m = a; break; }
+      }
       if (!m) continue;
       const need = NEEDS.get(m[2]);
       if (!need) continue;

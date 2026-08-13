@@ -29,6 +29,27 @@
  * It still requires the id to be wrapped in its own element: a `PR-xx` mentioned inside prose does
  * not exempt a row, which is what stops this becoming a way to opt out of rule 4b by citation.
  */
+/**
+ * The visible text of a link, normalised — **one implementation, shared.**
+ *
+ * It lived in `unrecognised-rows.mjs` alone while `listing-marks.mjs` had no notion of link text at
+ * all. That asymmetry is what let the two gates disagree about what a row is: one distinguished a
+ * link that NAMES a record from one that CITES it by id, and the other took the first record href in
+ * a block and called it the subject.
+ */
+export const linkText = (html) =>
+  html
+    .replace(/<[^>]*>/g, '')
+    .replace(/&#x27;|&#39;|&rsquo;/g, "'")
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+/** Every anchor to a record in a block: [full, layer, id, inner html]. */
+export const RECORD_ANCHOR = /<a [^>]*href="\/(ledger|series)\/([^"/]+)\/"[^>]*>([\s\S]*?)<\/a>/g;
+
 export const isPairRow = (blk) => /<(td|span|dt|strong)[^>]*>\s*PR-\d+\s*<\/\1>/.test(blk);
 
 /**
@@ -58,8 +79,24 @@ export function listingRows(html) {
    * individually, exactly as before.
    */
   const bodies = [...clean.matchAll(/<tbody[\s>][\s\S]*?<\/tbody>/g)].map((m) => m[0]);
+  /**
+   * THE SAME DISTINCTION THE SUBJECT TEST MAKES: a record CITED inside a caveat is not this block
+   * listing that record. Applied here too, or the two halves disagree — the subject test would read
+   * a row correctly while the unit test had already split the tbody that row belongs to.
+   *
+   * Both shapes a caveat takes are removed before counting: its own full-width row, and inline
+   * inside a cell. Only the COUNT is affected; the caveat and every mark in it still render and are
+   * still checked.
+   */
+  const withoutCaveatCitations = (b) =>
+    b
+      .replace(/<tr class="caveat-row"[\s\S]*?<\/tr>/g, ' ')
+      .replace(/<span class="caveat-inline"[\s\S]*?<\/span>/g, ' ');
+
   const units = bodies.filter((b) => {
-    const ids = new Set([...b.matchAll(/href="\/(?:ledger|series)\/([^"/]+)\//g)].map((m) => m[1]));
+    const ids = new Set(
+      [...withoutCaveatCitations(b).matchAll(/href="\/(?:ledger|series)\/([^"/]+)\//g)].map((m) => m[1]),
+    );
     return ids.size === 1;
   });
 
