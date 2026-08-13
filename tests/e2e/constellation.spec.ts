@@ -127,6 +127,43 @@ test.describe('record constellation', () => {
     });
   }
 
+  /**
+   * THE WIDE TRACK — a non-prose surface leaves the reading column and never leaves the viewport.
+   *
+   * On a 1710px display the shell caps at 1088px and leaves 311px of margin each side. That is
+   * CORRECT for prose — it measures exactly 68 characters a line — and wrong for the artwork, which
+   * was capped by the same number for no reason. Widening the shell itself was measured and
+   * rejected: 343 text elements already exceed 80ch inside tables and lists, and a 1344px shell
+   * would have taken that to 964.
+   *
+   * So the surface bleeds and the column does not, and the risk that carries is overflow — which is
+   * what this binds, at the widths where the clamp is actually doing work.
+   */
+  for (const width of [1100, 1280, 1440, 1710] as const) {
+    test(`${width}px — the artwork uses the width without overflowing it`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/');
+
+      const win = (await page.locator('.rc-window').boundingBox())!;
+      const shell = (await page.locator('.shell').boundingBox())!;
+
+      expect(win.x, 'the window runs off the left edge').toBeGreaterThanOrEqual(-1);
+      expect(win.x + win.width, 'the window runs off the right edge').toBeLessThanOrEqual(width + 1);
+
+      // Above the shell's cap it must actually be wider, or the bleed is doing nothing.
+      if (width >= 1280) {
+        expect(win.width, 'the artwork is still confined to the reading column').toBeGreaterThan(
+          shell.width,
+        );
+      }
+
+      const scrolls = await page.evaluate(
+        () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+      );
+      expect(scrolls, 'the wide surface makes the document scroll sideways').toBe(false);
+    });
+  }
+
   test('selecting focuses one constellation, selecting again returns to all eight', async ({
     page,
   }) => {
