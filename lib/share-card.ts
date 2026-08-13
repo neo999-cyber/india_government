@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import type { LedgerRecord, ProvenanceRecord, Series, Unmeasured } from './types';
 import { periodLabel } from './format';
+import { pairs } from './data';
 
 /**
  * SHARE CARDS — text-only Open Graph tags, one composer, no images.
@@ -112,6 +113,83 @@ function card(title: string, description: string, path: string): Metadata {
   };
 }
 
+/**
+ * ============================ THE TWO-TRUTHS CARD — DESIGN-REVISION-2 item 6 ==================
+ *
+ * The one card form that survives the text-only ruling: **a card whose subject IS the tension, so
+ * there is nothing to crop away that would leave a misleading claim standing.** It is the only
+ * place the no-figure floor above is lifted, and the reason it can be lifted is that the figure
+ * never travels without the half that qualifies it.
+ *
+ * ============================ THE BRIEF'S OWN WORKED EXAMPLE FAILS THE TEST ===================
+ *
+ * §6 offers this as the uncroppable card:
+ *
+ * > *Higher-education enrolment rose from 21.2% to 30%. Roughly half of that is a shrinking
+ * > 18–23 population.*
+ *
+ * **A text card is not cropped, it is TRUNCATED, and truncation is linear.** WhatsApp and Slack
+ * show roughly the first two lines. The prefix *"Higher-education enrolment rose from 21.2% to
+ * 30%."* is precisely the misleading claim this instrument exists to catch, and it is the half the
+ * platform keeps. The card is croppable, at the worst possible point, by the reader's client.
+ *
+ * **THE MISSING CONSTRAINT IS ORDER, AND THIS FILE ALREADY HAD IT.** *THE DECLARATION LEADS* was
+ * written above for absence clauses, for the same reason: *an absence clause placed last is an
+ * absence the platform cuts.* The two-truths card inherits it.
+ *
+ * > **THE TRUNCATION TEST: a card is admissible only if NO PREFIX OF IT states a claim that
+ * > standing alone would mislead.** Not *does it contain both halves* — every rejected form does
+ * > that. The qualification leads, or the sentence is not a card.
+ *
+ * ============================ WHERE THE TEXT COMES FROM, AND WHY NOT THE FINDING ==============
+ *
+ * `higher-ed-ger`'s authored finding is already the two-truths sentence the brief asks for — the
+ * 237-findings pass wrote it, after the header above was written. **It still cannot be a card**:
+ * at 459 characters median the findings lead with the figure and qualify after an em-dash, which
+ * is the failing order. Making them cards is authoring work, not plumbing, and it is not done here.
+ *
+ * What IS admissible today is a pair's `framing`. A pair's subject is literally the tension, the
+ * sentence is authored under the corpus's rules, and it is the corpus's own statement of what the
+ * disagreement is.
+ *
+ * ============================ ASSERTED PER PAIR, NEVER SWEPT ==================================
+ *
+ * All 21 contested framings were READ against the truncation test. **Eighteen pass, one fails and
+ * two are marginal**, and every judgement is named here rather than expressed as a filter:
+ *
+ * - **PR-18 FAILS and is excluded.** Its prefix *"On one measure India ranks 58th of 210 countries
+ *   and looks unremarkable"* is exactly the claim the rest of the sentence overturns.
+ * - **PR-52 is excluded as marginal.** The payoff — *both statements are true because the two
+ *   denominators are different* — is the last clause; a prefix ending earlier leaves the Union's
+ *   reply standing unqualified.
+ * - **PR-60 is INCLUDED as marginal**, and the call is recorded: its opening clause is the tension
+ *   in full (*China records more Indian goods arriving than India records leaving*), which is what
+ *   the test asks. Its later *the expected direction* clause is the risk, and it is preceded by the
+ *   tension rather than standing before it.
+ *
+ * `coverage-usage` framings are NOT used. Their pairs are incommensurable rather than contested,
+ * and several open on a definition rather than on a tension.
+ */
+const TWO_TRUTHS_PAIRS: readonly string[] = [
+  'PR-12', 'PR-13', 'PR-17', 'PR-22', 'PR-26', 'PR-27', 'PR-31', 'PR-32', 'PR-34', 'PR-35',
+  'PR-36', 'PR-39', 'PR-40', 'PR-43', 'PR-49', 'PR-53', 'PR-55', 'PR-59', 'PR-60',
+];
+
+/** Read and rejected, held so a later pass re-argues rather than rediscovers. */
+const TWO_TRUTHS_REJECTED: readonly string[] = ['PR-18', 'PR-52'];
+
+/**
+ * The admissible pair for a series, if any. **Lowest pair id wins where a series is a side of two**
+ * — deterministic, and stated because "the first one" is otherwise an accident of array order.
+ */
+function twoTruths(id: string): string | null {
+  const hit = pairs
+    .filter((p) => p.kind === 'contested' && TWO_TRUTHS_PAIRS.includes(p.id))
+    .filter((p) => p.a.series === id || p.b.series === id)
+    .sort((a, b) => a.id.localeCompare(b.id))[0];
+  return hit ? hit.framing.replace(/\s+/g, ' ').trim() : null;
+}
+
 export function seriesCard(s: Series): Metadata {
   const pts = s.points.filter((p) => p.country === 'IND' && p.value !== null);
   const first = pts[0]?.period;
@@ -140,6 +218,12 @@ export function seriesCard(s: Series): Metadata {
       : null,
     s.caveat ? 'The record carries a qualification that is read in full on the page.' : null,
   ].filter(Boolean);
+  // THE TWO-TRUTHS CARD REPLACES THE FLOOR, and it replaces the absence clause too. Both cannot
+  // lead, and the pair's framing is the stronger of the two: it is the record's tension in the
+  // corpus's own words, where the absence clause is a composed sentence about a field. The absence
+  // still renders in full on the page, which is where rule 4b binds it.
+  const tension = twoTruths(s.id);
+  if (tension) return card(s.title, tension, `/series/${s.id}/`);
   return card(s.title, lead(absenceClause(s.unmeasured), bits), `/series/${s.id}/`);
 }
 

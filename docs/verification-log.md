@@ -17807,3 +17807,113 @@ not taken inside this item.
 rather than lists. `unrecognised-rows` 0, id citations **1,403** (from 965; the strip's series
 citations). `rendered-space` 0. Mobile at 375 px on `/years/2020/`: 0 body overflow, 0 clamped,
 13 topic rows at one width.
+
+---
+
+## 2026-08-13 (fifty-fourth entry) — DESIGN-REVISION-2 ITEM 6: the two-truths card, and the brief's own example fails its own test
+
+### THE BRIEF'S WORKED EXAMPLE IS NOT UNCROPPABLE, AND THAT IS THE ITEM
+
+§6 offers one card form as surviving the text-only ruling — *a card whose subject IS the tension has
+nothing to crop away that would leave a misleading claim standing* — and gives it:
+
+> *Higher-education enrolment rose from 21.2% to 30%. Roughly half of that is a shrinking 18–23
+> population.*
+
+**A text card is not cropped, it is TRUNCATED, and truncation is linear.** WhatsApp and Slack show
+roughly the first two lines. The prefix *"Higher-education enrolment rose from 21.2% to 30%."* is
+exactly the misleading claim this instrument exists to catch, and it is the half the platform keeps.
+The card is croppable at the worst possible point, by the reader's own client.
+
+**THE MISSING CONSTRAINT IS ORDER, AND `lib/share-card.ts` ALREADY HELD IT.** *THE DECLARATION
+LEADS* was written into that file for absence clauses on exactly this ground: *an absence clause
+placed last is an absence the platform cuts.* Item 6's card inherits it, and the rule is now written
+where the card is composed:
+
+> **THE TRUNCATION TEST: a card is admissible only if NO PREFIX OF IT states a claim that standing
+> alone would mislead.** Not *does it contain both halves* — every rejected card form does that. The
+> qualification leads, or the sentence is not a card.
+
+### THE FIFTEENTH PREMISE CORRECTION, AND IT CUTS BOTH WAYS
+
+`lib/share-card.ts` says the ideal card is an authored sentence, that **a mechanical composer cannot
+write it and must not pretend to**, and that no such sentence exists. **It does now.**
+`higher-ed-ger`'s authored finding, written by the 237-findings pass after that header:
+
+> *Thirty per cent of Indians aged 18 to 23 are enrolled in higher education, up from 21 per cent in
+> 2011-12 — and roughly half of that rise is the 18-23 cohort shrinking rather than enrolment
+> growing.*
+
+That is the brief's card, already written, already through the three checks. **And it still cannot
+be a card**, for the reason above: at a median 459 characters the findings lead with the figure and
+qualify after an em-dash, which is the failing order. 122 series carry both a finding and a caveat
+and every one of them would need a shorter, qualification-first sentence. **That is authoring, not
+plumbing, and it is not done here** — it is written up as a sized sequence below.
+
+### WHAT SHIPPED: THE PAIRS, READ ONE AT A TIME
+
+A pair's subject is literally the tension, and its `framing` is the corpus's own authored statement
+of what the disagreement is. **All 21 contested framings were read in full against the truncation
+test — not scanned, not filtered.**
+
+| verdict | n | pairs |
+|---|---|---|
+| pass | 18 | PR-12 13 17 22 26 27 31 32 34 35 36 39 40 43 49 53 55 59 |
+| **fails, excluded** | 1 | **PR-18** |
+| marginal, excluded | 1 | PR-52 |
+| marginal, **included** | 1 | PR-60 |
+
+**PR-18 is the counterexample that proves the test is doing work.** Its prefix — *"On one measure
+India ranks 58th of 210 countries and looks unremarkable"* — is precisely the claim the rest of the
+sentence overturns. It is the only contested framing that fails, and it fails in the brief's own
+shape: true statement first, correction second.
+
+**PR-52 excluded as marginal:** its payoff — *both statements are true because the two denominators
+are different* — is the last clause, so a prefix ending earlier leaves the Union's reply standing
+unqualified. **PR-60 included as marginal**, and the call is recorded rather than left implicit: its
+opening clause *China records more Indian goods arriving than India records leaving* is the tension
+in full, which is what the test asks; the later *the expected direction* clause is the risk and it is
+preceded by the tension rather than standing before it.
+
+**`coverage-usage` framings are not used at all.** Those pairs are incommensurable rather than
+contested, and several open on a definition rather than on a tension.
+
+### THE FIGURE FLOOR IS LIFTED HERE AND ONLY HERE
+
+The composer's standing rule is that **a card carries no figure at all**, because a figure plus a
+badge is truncation wearing a badge. These cards carry figures — *55 against 86*, *US$126.963bn
+against US$120.463bn*, *614, 417 and 228*. **The floor lifts because the figure cannot travel
+alone:** in every admitted framing the figures arrive as a pair already in tension, and no prefix
+delivers one of them as a standing claim. That is the ruling's own logic applied, not an exception
+to it.
+
+### Verified on the built output, with a negative control
+
+**23 distinct series carry a two-truths card, 23 of 23 an exact match to their pair's framing.**
+Thirteen of the nineteen admitted pairs have a series side; the other six are absence or
+competing-accounts pairs with no series to carry them.
+
+**The tie-break is deterministic and was exercised.** `jk-civilians-killed-composite` is a side of
+both PR-26 and PR-32; the lowest pair id wins, and the page carries PR-26. A first audit reported it
+as MISSING because the audit had not applied the rule the code applies — the check was wrong, not
+the page.
+
+**Negative control:** both sides of the excluded PR-18 carry the mechanical floor, not the framing —
+`school-closure-weeks-full-covid` opens *"A published series in this instrument's record of
+India, education"* and `school-closure-weeks-covid` leads with its absence clause. Nothing leaked.
+
+Every shipped framing's first 100 characters were printed and read: all 13 lead with the tension.
+
+### WHAT REMAINS, SIZED
+
+**122 series carry both an authored finding and a caveat and none of them has a card.** Each needs
+one short qualification-first sentence, written to the three checks the 237 findings went through.
+It is the same shape of work as those tranches and it is not started here. The rule it must obey is
+in `lib/share-card.ts` where the author will meet it.
+
+### Gate line
+
+27 steps green, all counts unchanged from item 5 — a card is `<head>` metadata and touches no
+listing, no mark and no rendered field. `link-check` 47,278 / 746 / 0 dead. `listing-marks`
+5,697 / 8,145. `unrecognised-rows` 0. `field-render-audit` 0 invisible. `figure-consistency` 18
+declared claims checked; the card figures are `/data` framings and declare no new arithmetic.
