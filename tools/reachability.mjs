@@ -96,6 +96,29 @@ function loadLayer(layer) {
  * present in the file. Searching raw HTML would report everything reachable and the rule
  * would never fire.
  */
+/**
+ * ============ AN ELEMENT BOUNDARY IS NOT A SPACE, AND THIS GATE USED TO THINK IT WAS ==========
+ *
+ * Every tag becomes a space above, so `<a>ptr-primary-udise</a>,` extracts as `ptr-primary-udise ,`
+ * and a mark that opens by naming another record no longer matches itself. **The gate's premise —
+ * "marks never truncate, so a prefix is a sound test of presence" — assumes rendered text is
+ * character-identical to stored text, and any inline link has always broken that.** It had never
+ * fired because ZERO P-ids appear in the first 60 characters of any caveat: the check passed by
+ * luck, not by construction.
+ *
+ * So the space a tag boundary leaves beside punctuation is removed, **on both the page and the
+ * needle, by one function**, which is the only way the two sides can be compared at all. A reader
+ * sees `udise,`; so does this now.
+ *
+ * **It closes no hole.** The needle is still an exact substring test on 60 characters of prose. What
+ * changed is that a link inside those characters no longer counts as a difference — which it never
+ * was to a reader.
+ */
+const unspacePunctuation = (t) =>
+  t
+    .replace(/\s+([,.;:!?%)\]}])/g, '$1')
+    .replace(/([(\[{])\s+/g, '$1');
+
 function visibleText(html) {
   return html
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
@@ -109,16 +132,19 @@ function visibleText(html) {
     .replace(/&nbsp;|&#x2019;/g, ' ')
     .replace(/&mdash;|&#8212;/g, '—')
     .replace(/&ndash;|&#8211;/g, '–')
-    .replace(/\s+/g, ' ');
+    .replace(/\s+/g, ' ')
+    .replace(/\s+([,.;:!?%)\]}])/g, '$1')
+    .replace(/([(\[{])\s+/g, '$1');
 }
 
 /** Same normalisation on the needle, so escaping differences cannot cause a false failure. */
 const norm = (s) =>
-  s
-    .replace(/[‘’]/g, "'")
-    .replace(/[“”]/g, '"')
-    .replace(/\s+/g, ' ')
-    .trim();
+  unspacePunctuation(
+    s
+      .replace(/[‘’]/g, "'")
+      .replace(/[“”]/g, '"')
+      .replace(/\s+/g, ' '),
+  ).trim();
 
 function htmlFiles(dir) {
   if (!existsSync(dir)) return [];

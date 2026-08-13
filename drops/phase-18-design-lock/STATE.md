@@ -835,7 +835,47 @@ instrument has a name for what projections do to marks.
 
 ---
 
-## STOP — SERIES-ID LINKS ARE BLOCKED BY A GATE CONTRACT, AND THIS TIME THAT IS THE RIGHT WORD
+## SERIES-ID LINKS — ATTEMPTED TWICE, DECLINED 2026-08-13, AND THE REASON IS A DESIGN CONFLICT
+
+**The operator authorised the gate change. It was made, and the feature still does not fit.**
+
+`reachability`'s probe was the FIRST blocker and it is now fixed and kept — see below. Past it, four
+more interactions appeared, each one real and each one revealing the next:
+
+1. **`listing-marks` failed 46 marks.** A caveat citing another series made a one-record `<tbody>`
+   look like a multi-record block, so it stopped being a listing unit and the full-width caveat row
+   rule 3a created stopped being grouped with its record.
+2. **Excluding caveat rows from that count fixed 45 of 46.** The last was a caveat rendering INLINE
+   in a cell rather than in its own row.
+3. **Excluding both shapes fixed that**, and promoted one `<tbody>` to a unit that had not been one —
+   which silently removed the PAIR-ROW SKIP, so a PR-22 comparison row was asked for the absence mark
+   of a record it merely compares.
+4. **Excluding pair rows from units fixed that**, and left the real one: **the caveat row itself now
+   "lists" every record its text cites**, so `listing-marks` demands those records' marks from a row
+   that is not a listing of them.
+
+**THAT LAST ONE IS NOT A BUG TO PATCH.** The listing model identifies a row by the record hrefs it
+contains. Linkifying an id inside a caveat puts a record's href in a row that is not about that
+record. **Two designs disagree**, and each patch moves the disagreement rather than settling it.
+
+**Proved rather than assumed:** with the id set emptied and everything else unchanged,
+`listing-marks` returns to 4,167 / 5,914 clean. The failures were the feature's, not a coincidence.
+
+**WHAT WOULD ACTUALLY SETTLE IT** — and it is a design question, not a fix: the listing model needs a
+notion of *a row cites a record* distinct from *a row lists a record*. `unrecognised-rows` already
+has exactly that distinction (941 citations at the last count). Until `listing-marks` has it too,
+this feature cannot land, and **I was wrong twice to call it cheap.**
+
+### WHAT WAS KEPT, BECAUSE IT STANDS WITHOUT THE FEATURE
+
+**`reachability`'s probe is fixed.** It compared a mark's first 60 characters against a page where
+every tag becomes a space, so any inline link inside those characters broke the match. It had never
+fired only because zero P-ids fall inside any caveat's opening 60 characters — **the check passed by
+luck.** Both sides now remove the space a tag boundary leaves beside punctuation, through one
+function. **The shared normaliser `tools/lib/page-text.mjs` has done this since it was written**;
+`reachability` carries its own extractor and had not. That duplication is now a recorded fact rather
+than an unnoticed one.
+
 
 **Attempted 2026-08-13 and reverted.** I had said this was mislabelled as blocked and was really a
 size judgement. **That was right about the client-boundary problem and wrong about the conclusion.**

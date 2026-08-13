@@ -20148,3 +20148,67 @@ open because a DIFFERENT question is open is a row nobody can ever close.
 30 steps green · `phase-name-consistency` 443 tracked files, 6 phases named, 12 disagreements all
 exempted by name — **the gate that reads assertions about phase names passed across the table edit**,
 which is the check that mattered here.
+
+---
+
+## 2026-08-13 (eighty-fourth entry) — THREE GATE FIXES LANDED; THE FOURTH FEATURE DID NOT, AND I CALLED IT CHEAP TWICE
+
+The operator authorised four contract changes. **Three landed. The one I described as the cheap
+reader-facing win is declined, and the reason is a design conflict rather than a bug.**
+
+### ③ `unrecognised-rows` — CONTAINMENT IS POSITIONAL NOW
+
+It decided containment with `spans.some((b) => b.includes(m[0]))` — **a string test.** A page
+rendering one record link twice, once inside a listing row and once outside, produced two
+byte-identical anchors, so the outside copy was exempted BY the inside one. Found in August when
+next-step anchors turned out byte-identical to pair-side anchors: the pooled count fell 36 → 0 and
+attributions 724 → 708, **52 links silently exempted, gate green.**
+
+Now positional: row spans are located by index and an anchor is tested against them. **A control case
+was added for the exact shape the string test could not see** — the same anchor twice, one inside a
+row and one outside, which must be caught once and scored 0 before.
+
+**The control also caught a collision I introduced:** my helper was named `inRow`, and the control
+block already binds `inRow` to a fixture string, which shadowed the function inside it. Renamed
+`anchorInRow`. That is what a control is for.
+
+### ④ `term-window` — ONLY THE LATE SIDE WARNS
+
+51 warnings, **all 50 measurable cases falling BEFORE the term started and none after.** `date` is
+when the assessed thing originates; `term` is who is held to it, and **for an imposed duty those
+cannot coincide** — Ruling 5. `L-0095` is a 2010 statutory duty assessed against T3.
+
+The late side is kept and is a live check: a record dated after its term ended is genuinely anomalous,
+and zero trip it today. **163 warnings → 113.** The one survivor is the `baseline` branch, a
+different check and a legitimate one.
+
+### ② `unmeasured-route` — THE RULE WAS ALREADY RIGHT
+
+Reading it settled the question: it **already** errors on `not-published`/`withheld` and warns on the
+other two, with a comment giving the reason I had derived independently — *"for those, no route may
+exist, and demanding one invites a placeholder."* **No tiering change was warranted.** The message now
+records that all 82 were read and every one already states its ground, so it reads as a standing
+prompt rather than advice that has been ignored.
+
+### ① SERIES-ID LINKS — DECLINED, AFTER FIVE INTERACTIONS
+
+`reachability`'s probe was the first blocker and is fixed. Past it: `listing-marks` failed 46, then 1,
+then 1 again, through four successive accommodations — caveat rows excluded from the unit count,
+inline caveats too, pair rows excluded from units — each fix real and each revealing the next.
+
+**The last one is not patchable.** The listing model identifies a row by the record hrefs it
+contains; linkifying an id inside a caveat puts a record's href in a row that is not about that
+record, so **the caveat row itself starts "listing" every record its text cites.**
+
+**Proved, not assumed:** with the id set emptied and nothing else changed, `listing-marks` returns to
+4,167 / 5,914 clean.
+
+**What would settle it is a design change, not a fix:** `listing-marks` needs the *cites* versus
+*lists* distinction that `unrecognised-rows` already has and applies 941 times. **I called this cheap
+twice and it was not**; that is recorded in `STATE.md` beside the four interactions, so a third
+attempt starts from the conflict rather than from the bundle or the probe.
+
+### Gate line
+
+30 steps green · `reachability` 1,788/1,788 · `listing-marks` 4,167 / 5,914 · `unrecognised-rows` 0
+with a new control · `validate` **0 errors, 113 warnings** from 163.
