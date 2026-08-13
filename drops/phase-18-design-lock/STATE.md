@@ -159,8 +159,36 @@ the naive reading of a falling unemployment rate approvingly, one scroll from it
 the truncation problem in a different shape. **A story's first step carries its own qualification or
 the story is a headline with a disclaimer below the fold.**
 
-**ITEM 7 CONTINUES:** Kashmir and federalism next, in this form. Renewables needs its own.
-Each is a piece of writing and gets the three checks.
+**ITEM 7 CONTINUED 2026-08-13.** *Who counts the dead in Kashmir?* written, at
+`/stories/who-counts-the-dead/`. **Federalism DECLINED** — it duplicates the domain period, which
+already carries the 42-of-a-smaller-thing finding on all five federalism surfaces.
+
+**FOUND WHILE DECLINING IT, AND CORRECTED:** that paragraph closed *"and no document sets the two
+numbers side by side"* — a negative existential contradicted by **L-0150, which the paragraph itself
+cites**, whose `whatHappened` quotes the Sixteenth Finance Commission putting both ends in one
+sentence at para 7.67. Rule 5d. Corrected on all five surfaces with the withdrawn wording quoted;
+the finding survives, narrower: no retrieved source states a figure for the states' share beside the
+pool's, or computes the joint effect.
+
+**FOUND BEFORE WRITING, AND FIXED — a live defect in the jobs story.** `TwoInstruments` hardcoded
+both its `aria-label` and its y-window to the reading story. **The jobs page was telling screen
+readers it showed Grade 3 reading**, and its lines sat in the bottom eighth of a 0–75 plot. Both are
+now props set per story. **No gate can see an `aria-label`** — `field-render-audit` reads page text.
+
+**THE KASHMIR PAIR-TYPE FINDING, which a later story must not re-derive:** every Kashmir contested
+pair is **same-unit, different-quantity** — the opposite of jobs. PR-26 and PR-32 are both `deaths`
+and explicitly not one quantity; PR-27 is a component against its own composite; PR-35 is `detenus`
+against `prisoners`. `gapComputable` is false on all of them. **Same unit is not same quantity and
+the two look identical on a page.**
+
+**PREMISE CORRECTED:** the counts bearing against the state are not *hospitals, courts and
+commissions*. Measured: **27 of 30 state-published, 3 not** — a press-compiled register (two series)
+and a human-rights coalition (one). No hospital series, no court series. All three count deaths, all
+three T4.
+
+**ITEM 7 CONTINUES.** Renewables needs a different form — 9 series, 0 pairs, the tension being
+capacity share against generation share. Four of the nine candidates cannot carry this form at all;
+demonetisation has zero series.
 
 ### CLOSED 2026-08-12 — DESIGN-REVISION.md items 1-4, and the authored series findings
 
@@ -479,8 +507,8 @@ header above.
 |---|---|
 | gate chain | **27 steps**, `npm run build`; `npm run commit` is the only sanctioned commit path |
 | `unrecognised-rows` | **0**, report-only. Zero makes flipping it to a gate *available*, not decided |
-| `listing-marks` | **5,701 listing rows · 8,149 marks** across 746 pages — re-measured 2026-08-12 after the record spine and next steps (from 5,390 · 7,674) |
-| `link-check` | 47,315 internal hrefs across 747 built pages, 22 route prefixes, 0 dead |
+| `listing-marks` | **5,707 listing rows · 8,160 marks** across 747 pages — re-measured 2026-08-12 after the record spine and next steps (from 5,390 · 7,674) |
+| `link-check` | 47,353 internal hrefs across 748 built pages, 22 route prefixes, 0 dead |
 | authored series findings | **237 of 269**; 32 render without one, permanently and for a stated reason |
 | raw enum tokens on a public surface | `directionOfBias` 6 pages, all the one deliberate site; `pairs.kind` 0 |
 | `field-render-audit` | 0 invisible, **15** exempted by name (was 17; `higherIsBetter`'s exemption was discharged 2026-08-12 and it is now declared) |

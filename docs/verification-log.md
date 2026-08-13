@@ -18024,3 +18024,126 @@ declare something). `unrecognised-rows` 0. `reachability` 1,787/1,787. `rendered
 **Item 7 is one story, not the sequence.** Kashmir and federalism are writable in this form today and
 are not written; renewables needs a different form because it has no contested pair; four of the
 nine cannot carry this form at all. That scoping is in STATE.
+
+---
+
+## 2026-08-13 (fifty-sixth entry) — ITEM 7 CONTINUED: federalism declined, a live defect in the last story, and Kashmir
+
+### FEDERALISM — DECLINED, AND THE CHECK FOUND A DEFECT IN WHAT IT WOULD HAVE DUPLICATED
+
+The instruction asked whether a federalism story adds anything or duplicates a page that already
+says it well. **It duplicates.** `lib/domain-copy.ts` already carries the finding, rendering on all
+five federalism surfaces: *the Fourteenth Finance Commission raised the states' share from 32 to 42
+per cent … at the same time the divisible pool itself shrank, from 89.1 per cent of gross tax
+revenue to a 74-80 per cent range … forty-two per cent of a smaller thing can be less than
+thirty-two per cent of a bigger one.*
+
+**And its closing clause was a negative existential contradicted by its own cited source.** It read
+*"and no document sets the two numbers side by side"*. The period's `from:` list names **L-0150**,
+whose `whatHappened` opens: *"The Sixteenth Finance Commission put both ends of the movement in one
+sentence at para 7.67"* and quotes it.
+
+Rule 5d is exact about this: **a claim about what EXISTS is not a claim about what the SOURCES
+CONTAIN, and only the second is checkable.** One document turning up falsifies it, and one already
+had, inside this corpus, cited by the paragraph making the claim.
+
+**Corrected on all five surfaces, withdrawn wording quoted in place.** The replacement states what
+para 7.67 does — holds both ends in one sentence — and what no retrieved source does: state a figure
+for the states' share beside the pool's, or compute the joint effect. **The finding survives and is
+narrower.** The claim appears in exactly one place in the repository; searched by the noun, not the
+assertion.
+
+### THE JOBS STORY SHIPPED A DEFECT AND ONLY THE ADVERSARIAL READ FOUND IT
+
+Before writing anything, `TwoInstruments` was read because Kashmir would use it. **Two things in it
+were hardcoded to the story it was written for.**
+
+> `aria-label="Two national instruments measuring Grade 3 reading in India, 2010 to 2024, on
+> separate scales. They do not agree."`
+
+**That string was live on the jobs story.** A screen reader on a page about employment was told it
+was looking at a reading assessment. **Invisible to every gate by construction** — `field-render-audit`
+reads page TEXT and an `aria-label` is an attribute.
+
+**The second is the y-window.** A fixed `0–75`, correct for two percentage series in that range and
+wrong for a pair running 3.1 to 9.05: the jobs lines sat in the bottom eighth of the plot, flattening
+the divergence that was the page's entire point. Measured after the fix, the jobs paths span
+**y 47–191** instead.
+
+**The reason the window is fixed rather than fitted survives** — a scale fitted per step would let
+the emphasis step change the geometry, which would be the chart arguing — so it became a prop the
+caller sets once per story. The reading story passes `yMax={75}`, the same constant it always used,
+stated rather than inherited; its geometry is unchanged at y 46.6–202.8 across 7 paths.
+
+### KASHMIR — THE PAIR-TYPE CHECK CHANGED WHAT THE PAGE COULD DRAW
+
+The instruction required establishing which case each pair is before drawing anything. **Every
+Kashmir contested pair was checked and not one is the jobs case.**
+
+| pair | units | same quantity? |
+|---|---|---|
+| PR-26 | `deaths` / `deaths` | **no** — *not one quantity measured with error* |
+| PR-32 | `deaths` / `deaths` | **no** — *not rival estimates of one quantity* |
+| PR-27 | `incidents` / `incidents` | no — one is a component of the other's composite |
+| PR-35 | `detenus` / `prisoners` | no — different units as well |
+| PR-31, PR-34, PR-36, PR-39, PR-40, PR-43 | non-series sides | n/a |
+
+**Same unit is not same quantity, and on a page they look identical.** `gapComputable` is false on
+every one. So both series render at their real magnitudes — PR-26 requires it, *neither may be shown
+alone* — and no difference is drawn, computed or stated anywhere.
+
+### THE ASYMMETRY, MEASURED AND NARROWED — THE SEVENTEENTH PREMISE CORRECTION
+
+The scoping described the counts bearing against the state as coming from *hospitals, courts and
+commissions*. **Measured across the 30 series read through this lens: 27 are published by the Indian
+state and 3 are not.** There is no hospital series and no court series. The three are a
+press-compiled register (SATP, two) and a human-rights coalition (JKCCS and APDP, one). The NHRC is
+a statutory commission and its series are the state measuring itself, which RULING 1a admits and
+requires be said plainly.
+
+**The narrower fact is the stronger one: all three non-official series count deaths, all three are
+T4, and each is paired against an official count that disagrees.**
+
+### THE STEP THAT WOULD HAVE MISLED
+
+The expected third step is *the independent count is higher than the official one*. **The corpus's
+own figures contradict it.** Civilians killed, the five years both publish:
+
+| | 2018 | 2019 | 2020 | 2021 | 2022 |
+|---|---|---|---|---|---|
+| MHA | 55 | 44 | 38 | 41 | 31 |
+| press register | 86 | 42 | 33 | 36 | 28 |
+
+**Above in one year, below in four** — traced to both series at all five periods, 5 of 5 exact. The
+step leads with the crossover, so no prefix of it states the expected claim. That is the jobs
+story's failure applied in advance, and it is item 6's truncation rule in a third carrier.
+
+### The three checks
+
+**Figures:** 5 of 5 year-pairs traced to both series at their stated periods; the 116/64/31/12/9
+absence split recomputed and summing; 30 series, 3 non-official, all three `deaths`, verified.
+
+**Provenance ids — and one was wrong before the build ran.** The draft cited P-78 for PR-32. PR-26
+declares P-73, P-75, P-85 and PR-32 declares P-73 and P-87; **P-78 belongs to neither.** Replaced
+with P-73, P-75 and P-87, and the variables renamed for what each record SAYS rather than which pair
+it came from, so the slip cannot repeat. **A build had already passed on the wrong version** — the
+gates cannot see a citation pointing at a real record that is not the right one.
+
+**Enum words:** zero in the authored prose.
+
+**True-alone, per step, not per page:** all four steps carry their own qualification, verified on the
+built page.
+
+### 116 absences, rendered without becoming a list
+
+The dashed unfilled box carries the count, the four kinds, and a route to the topic's missing-data
+page where all 116 are listed in full. **Verified in the DOM that the box contains no list items.**
+Rule 4b binds the members where they are listed; a narrative page that reproduced 116 declarations
+would satisfy the letter and be read by nobody.
+
+### Gate line
+
+27 steps green. `link-check` **47,353 hrefs across 748 pages, 0 dead** (from 47,315 / 747).
+`listing-marks` **5,707 rows / 8,160 marks** (from 5,701 / 8,149). `reachability` 1,787/1,787.
+`unrecognised-rows` 0. `field-render-audit` 0 invisible. Mobile at 375 px: 0 body overflow, 0
+clamped, absence box `1px dashed rgb(215,207,193)` unfilled, 8 record cards of which 5 carry marks.

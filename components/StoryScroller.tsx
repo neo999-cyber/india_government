@@ -32,6 +32,8 @@ import type { Point } from '@/lib/types';
 export function StoryScroller({
   steps,
   lines,
+  yMax,
+  figureLabel,
 }: {
   steps: { id: string; body: ReactNode }[];
   /**
@@ -42,6 +44,14 @@ export function StoryScroller({
    *
    * `steps[].body` crosses the boundary fine: those are already-rendered elements, not functions.
    */
+  /**
+   * PASSED THROUGH, NOT DEFAULTED HERE. Both belong to the story, not to the scroller: the window
+   * is fixed once per story so the emphasis step cannot change the geometry, and the accessible
+   * name has to say what THIS figure shows. Shipping without the second put a reading-assessment
+   * label on an employment chart. See `TwoInstruments`.
+   */
+  yMax?: number;
+  figureLabel?: string;
   lines: {
     key: string;
     label: string;
@@ -81,7 +91,7 @@ export function StoryScroller({
     <div className="scroller">
       <div className="scroller-figure">
         <div className="scroller-sticky">
-          <TwoInstruments lines={lines} active={active} />
+          <TwoInstruments lines={lines} active={active} yMax={yMax} label={figureLabel} />
         </div>
       </div>
       <div className="scroller-steps">
