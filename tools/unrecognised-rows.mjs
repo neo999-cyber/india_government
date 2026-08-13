@@ -129,6 +129,43 @@ const ATTRIBUTION_CLASS = 'source-line';
  */
 const POOLED_TO_PAGE = ['cp-side', 'cu-side'];
 
+/**
+ * ROW SPANS BY POSITION, replacing a string-containment test — the gate's own recorded weakness,
+ * raised 2026-08-12 and fixed 2026-08-13 on the operator's direction.
+ *
+ * **THE DEFECT.** The test was `spans.some((b) => b.includes(m[0]))` — does any listing row's HTML
+ * CONTAIN this anchor's HTML? A page that renders one record link twice, once inside a listing row
+ * and once outside it, produces two byte-identical anchors, so the OUTSIDE copy was exempted by the
+ * inside one and the gate reported clean on exactly the thing it exists to catch. It was found when
+ * next-step anchors turned out byte-identical to pair-side anchors: the pooled count fell 36 -> 0
+ * and attributions 724 -> 708 — 52 links silently exempted — and the gate stayed green. The
+ * workaround at the time was to rename an anchor class.
+ *
+ * **THE FIX.** Ask whether THIS OCCURRENCE sits inside a row, by index. `listingRows` is built on
+ * string removal and returns `[kind, html]` pairs grouped by kind rather than in document order, so
+ * positions are recovered by locating every occurrence of each row's HTML in the page. Two identical
+ * rows are both genuinely rows, so covering both is correct; an anchor outside every span is not in
+ * a row however many identical copies sit inside one.
+ */
+function rowSpans(html) {
+  const spans = [];
+  for (const [, row] of listingRows(html)) {
+    if (!row) continue;
+    let i = html.indexOf(row);
+    while (i !== -1) {
+      spans.push([i, i + row.length]);
+      i = html.indexOf(row, i + 1);
+    }
+  }
+  return spans;
+}
+
+/** Is this anchor occurrence inside a listing row? Positional, never a string test.
+ *  Named `anchorInRow` and not `inRow`: the control block below already binds `inRow` to a fixture
+ *  string, and the shorter name silently shadowed this function inside it — the control caught it,
+ *  which is what a control is for. */
+const anchorInRow = (spans, index) => spans.some(([a, b]) => index >= a && index < b);
+
 /** Is this anchor inside an element of the given class? Balanced scan, not a proximity guess. */
 function insideClass(html, index, cls) {
   const open = new RegExp(`<(p|div|section|article|li|span)[^>]*class="(?:[^"]*\\s)?${cls}(?:\\s[^"]*)?"`, 'g');
@@ -160,12 +197,12 @@ if (CONTROL) {
   const byId = `<main>see <a href="/ledger/L-9001/">L-9001</a></main>`;
   const rec = new Map([['L-9001', { title, declares: true }]]);
   const flag = (html) => {
-    const spans = listingRows(html).map((r) => r[1]);
+    const spans = rowSpans(html);
     let n = 0;
     for (const m of html.matchAll(ANCHOR)) {
       const r = rec.get(m[2]);
       if (!r?.declares) continue;
-      if (spans.some((b) => b.includes(m[0]))) continue;
+      if (anchorInRow(spans, m.index)) continue;
       if (linkText(m[3]) !== r.title) continue;
       // The SAME two exemptions the live pass applies, through the same function. A control that
       // reimplements the thing it checks is testing its own copy.
@@ -183,9 +220,17 @@ if (CONTROL) {
   const inPairSide = `<main><div class="cu-side cu-side-usage"><h3><a href="/ledger/L-9001/">${title}</a></h3></div></main>`;
   const prefixOnly = `<main><p class="source-lines"><a href="/ledger/L-9001/">${title}</a></p></main>`;
   const afterSourceLine = `<main><p class="source-line">x</p><a href="/ledger/L-9001/">${title}</a></main>`;
+  // THE CASE THE STRING TEST COULD NOT SEE, and the reason the containment test is positional.
+  // One byte-identical anchor twice: once inside a listing row, once outside it. Under
+  // `spans.some((b) => b.includes(m[0]))` the outside copy was exempted BY the inside one and this
+  // returned 0. It must return 1.
+  const twiceOneInside =
+    `<main><table><tr><td><a href="/ledger/L-9001/">${title}</a></td></tr></table>` +
+    `<p><a href="/ledger/L-9001/">${title}</a></p></main>`;
   const cases = [
     ['title-link outside every shape', bare, 1],
     ['the same link inside a <tr>', inRow, 0],
+    ['the SAME anchor twice, one inside a row and one outside — the string test scored this 0', twiceOneInside, 1],
     ['a link naming the record by id', byId, 0],
     ['a title-link inside a source-line — an attribution', inSourceLine, 0],
     ['a title-link inside a pair side — pooled to the page', inPairSide, 0],
@@ -200,7 +245,7 @@ if (CONTROL) {
     process.exit(1);
   }
   console.log(
-    'unrecognised-rows --control — a title-link outside every shape is caught; the same link in a ' +
+    'unrecognised-rows --control — a title-link outside every shape is caught; the same anchor twice, one inside a row and one outside, is caught ONCE; the same link in a ' +
       'row, in a source-line attribution, or in a pooled pair side is not; an id-link is not; and a ' +
       'class that merely STARTS with an exempted name does not exempt, nor does one that has closed ' +
       'before the link',
@@ -233,12 +278,12 @@ let pooled = 0;
 for (const file of pages) {
   const route = '/' + file.slice(OUT.length + 1).replace(/index\.html$/, '');
   const html = readFileSync(file, 'utf8').replace(/<script[\s\S]*?<\/script>/g, '');
-  const spans = listingRows(html).map((r) => r[1]);
+  const spans = rowSpans(html);
   for (const m of html.matchAll(ANCHOR)) {
     const rec = REC.get(m[2]);
     if (!rec?.declares) continue;
     if (route === `/${m[1]}/${m[2]}/`) continue; // its own page
-    if (spans.some((b) => b.includes(m[0]))) continue;
+    if (anchorInRow(spans, m.index)) continue;
     const text = linkText(m[3]);
     if (text === rec.title && insideClass(html, m.index, ATTRIBUTION_CLASS)) {
       attributions += 1;

@@ -814,8 +814,25 @@ export function checkIntegrity(records, { today }) {
           add('warn', 'term-window', r.file, where, `date ${l.date} is on or after ${TERM_WINDOWS.T1.start} but term is "baseline" — intentional only if this is carried as pre-2014 context`);
         }
       } else if (win) {
-        if (ym < win.start || (win.end && ym >= win.end)) {
-          add('warn', 'term-window', r.file, where, `date ${l.date} falls outside term ${l.term} (${win.start}–${win.end ?? 'open'})`);
+        /**
+         * ============ ONLY THE LATE SIDE WARNS, FROM 2026-08-13 ==================================
+         *
+         * This warned on either side of the window and fired 51 times. **All 50 measurable cases
+         * fell BEFORE the term started. None fell after.** A one-directional pattern is not a
+         * scatter of typos.
+         *
+         * `date` is when the thing being assessed ORIGINATES; `term` is which government is being
+         * held to it. **For an imposed duty those cannot coincide** — RULING 5, an objective may be
+         * imposed as well as announced. `L-0095` is *RTE section 26's ten per cent vacancy ceiling,
+         * breached*, dated 2010-04-01 and assessed against T3: fifteen years outside the window BY
+         * CONSTRUCTION, and correct.
+         *
+         * **The late side stays and is a live check.** A record dated after its term ended is
+         * genuinely anomalous — a government cannot be assessed for an act it had left office
+         * before — and today zero records trip it, so the check fires only on a real regression.
+         */
+        if (win.end && ym >= win.end) {
+          add('warn', 'term-window', r.file, where, `date ${l.date} falls AFTER term ${l.term} ended (${win.start}–${win.end}) — a government cannot be assessed for something after it left office`);
         }
       }
     }
@@ -920,12 +937,19 @@ export function checkIntegrity(records, { today }) {
            * not-collected and never-defined stay warnings: for those, no route may exist, and
            * demanding one invites a placeholder. A placeholder route is worse than none — it
            * enters the verification queue and cannot be worked.
+           *
+           * CHECKED 2026-08-13 AND LEFT AS DESIGNED. The 82 warnings this tier emits were read in
+           * full and the tiering above is right: `not-published` and `withheld` carry a route 217
+           * times out of 217, so a missing one there is anomalous and an error; the other two carry
+           * one 75 times out of 157, so a missing one is expected and a warning. **The warnings are
+           * not a backlog** — every one of the 82 already states its ground, and the message says so
+           * rather than repeating advice that has been taken.
            */
           const ENTAILS_A_ROUTE = new Set(['not-published', 'withheld']);
           const entailed = ENTAILS_A_ROUTE.has(u.reasonKind);
           add(entailed ? 'error' : 'warn', 'unmeasured-route', r.file, where, entailed
             ? `unmeasured[${i}] ("${what}") is reasonKind "${u.reasonKind}" and names no wouldFill. That value asserts the data exists and is producible — ${u.reasonKind === 'withheld' ? 'withheld requires an identifiable refusal, so a holder and a request are already established' : 'not-published means producible under compulsion'} — so a route exists by the value's own definition and the record must name it: a holder and an instrument, not a placeholder`
-            : `unmeasured[${i}] ("${what}") names no wouldFill, so it states an absence without a route to closing it and does not reach the verification queue. Fine when no instrument for it exists — worth saying so if that is the case`);
+            : `unmeasured[${i}] ("${what}") names no wouldFill, so it does not reach the verification queue. A STANDING PROMPT, NOT AN INSTRUCTION: all 82 of these were read on 2026-08-13 and every one already states in its \`why\` why nothing measures the thing — the shortest at 177 characters, several recording that the holder was asked and confirmed none exists. What would change this is a route becoming identifiable, not more prose`);
         }
 
         // Every absence says what KIND it is. The schema leaves reasonKind optional so a
