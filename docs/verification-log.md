@@ -19322,3 +19322,57 @@ from the unchanged lock, **full chain re-run green to prove nothing was left wor
 across 753 pages, 23 route prefixes, 0 dead** · `listing-marks` **4,167 rows / 5,914 marks, all
 present** · `rendered-space` 0 · `chart-ticks` 33 lines / 7 charts · `interface-invariants` 56 tabs /
 14 topics · `unrecognised-rows` 0 · `domain-coverage` 1,137/1,137.
+
+---
+
+## 2026-08-13 (sixty-ninth entry) — I SHIPPED A SOURCE COMMENT ONTO 101 PAGES, AND THE GATE THAT CAUGHT IT WAS WRONG TWICE
+
+Found on the **production deploy**, by DOM probe, after the sixty-eighth entry was pushed. The
+verify-after-push rule earned its place again.
+
+### THE DEFECT
+
+A scripted edit added `prefetch={false}` to 27 links across nine surfaces and inserted an explanatory
+`/* … */` block above each. **Inside JSX a block comment is not a comment. It is text.** It shipped.
+The breadcrumb on `/series/` read a 470-character paragraph about route prefetching before
+*instrument / indicator series*, on **101 pages** by the gate's own normaliser.
+
+**No existing gate could see it, and the reason is structural.** `rendered-space` binds a value
+welded to a following word. `field-render-audit` asks whether a declared field reaches its own
+record's page. `listing-marks` asks whether a mark is present. **Every one asks whether something
+MISSING is there; none asks whether something is there that should not be.** That is the class, and
+it was unbound.
+
+The 27 props were correct and are kept. The reasoning now lives in ONE place, in JS context, in
+`components/SeriesTable.tsx` — putting it in nine put it on 101 pages.
+
+### THE GATE WAS WRONG TWICE BEFORE IT WAS RIGHT, AND BOTH ARE RECORDED
+
+**First: a claim written without the check.** Invariant 0's header said *"Checked against the corpus
+before being trusted: no legitimate rendered prose in this instrument contains them."* **It had not
+been checked.** Run against the build it flagged four pages that are entirely correct — L-0136,
+L-0137, L-0139 and P-95 quote the Internet Archive's `/web/*/` search URL. A false claim inside a
+gate whose whole purpose is catching what nobody checked.
+
+**Second: the delimiters overlap and the pairing did not allow for it.** Narrowing to a matched pair
+at least 40 characters apart still failed on three pages. In `/web/*/` the `*` is SHARED between the
+opening `/*` and the closing `*/`, so searching for the closer from `index + 2` steps over it and
+pairs that URL with the NEXT one's closer, 40+ characters away. **One occurrence on a page never
+showed it; two did.** Searching from `index + 1` is the fix, and the two-occurrence shape is now a
+named control.
+
+**And the control fixture had stopped resembling the defect.** It used a 27-character comment, which
+passes under the 40-character threshold — a control that no longer controls for the thing it is
+named after, which is how a gate reports clean on its own defect. It is now the block that actually
+shipped.
+
+**Three separate ways to write a check that reports clean on the failure it was built for, in one
+gate, in one sitting.** `chart-ticks` did the same thing an hour earlier with attribute order. The
+pattern is the same each time: **the control was written from an idea of the defect rather than from
+the defect.**
+
+### Gate line
+
+29 steps green. `interface-invariants` OK — 0 leaked pages (was 101), `/search/` 1 live region, 56
+domain tabs across 14 topics clean. Negative controls hold in both directions: the shipped block is
+caught, ordinary prose is not, and neither one nor two `/web/*/` URLs on a page fire it.

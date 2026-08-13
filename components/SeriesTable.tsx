@@ -5,6 +5,24 @@ import { COUNTRY_LABELS, periodKey, periodLabel } from '@/lib/format';
 import { denominatorBreaksFor, type DenominatorBreak } from '@/lib/rules';
 import { Value } from './marks';
 
+/**
+ * PREFETCH IS OFF ON THIS INSTRUMENT'S DENSE LISTS — stated here once, for all of them.
+ *
+ * Next prefetches every in-viewport route by default. A lab run measured a topic page issuing 71
+ * requests and pulling ~359 KB of route payloads nobody asked for, and the catalogue pages carry
+ * 494 to 1,286 links each. **A catalogue row is a low-probability destination** — a reader follows
+ * one of them, not forty — so the prefetch was spent almost entirely on routes nobody opens, on the
+ * pages least able to afford it. `prefetch={false}` on 27 links across nine surfaces. Navigation is
+ * unchanged; only the speculative fetch is.
+ *
+ * **THIS NOTE LIVES IN ONE PLACE BECAUSE PUTTING IT IN NINE PUT IT ON 98 PUBLISHED PAGES.** A
+ * scripted edit inserted it as a `/* *\/` block, which inside JSX is not a comment — it is text.
+ * It shipped, and the breadcrumb on `/series/` read the whole paragraph before "instrument /
+ * indicator series". No gate saw it: `rendered-space` binds welding, `field-render-audit` asks
+ * whether a field reaches its page, and neither asks whether something reached the page that was
+ * never meant to be read. `interface-invariants` now does.
+ */
+
 type Marker =
   | { kind: 'break'; placement: 'origin' | 'mid' | 'terminus'; brk: SeriesBreak }
   | { kind: 'denominator'; denom: DenominatorBreak };
@@ -98,13 +116,6 @@ export function SeriesTable({
         <>
           {' '}
           · supersedes{' '}
-          /* PREFETCH OFF ON THIS PAGE'S DENSE LISTS.
-             Next prefetches every in-viewport route by default. A lab run measured a topic page issuing 71
-             requests and pulling ~359 KB of route payloads a reader had not asked for, and these are the
-             pages that carry 494 to 1,286 links each. A catalogue row is a LOW-PROBABILITY destination —
-             a reader follows one of them, not forty — so the prefetch is spent almost entirely on routes
-             nobody opens, on the pages least able to afford it. Navigation is unchanged; only the
-             speculative fetch is. */
           <Link prefetch={false} href={`/series/${handoff.previous.id}/`}>{handoff.previous.title}</Link>
         </>
       ) : placement === 'terminus' && handoff?.next ? (
