@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import { getLedger, getProvenance, getSeries } from '@/lib/data';
 import { StoryScroller } from '@/components/StoryScroller';
 import { SeriesChart } from '@/components/SeriesChart';
-import { CaveatFlag, RecordMarks } from '@/components/marks';
-import { DIRECTION_OF_BIAS_LABELS } from '@/lib/format';
+import { CaveatFlag } from '@/components/marks';
+import { StorySources } from '@/components/StorySources';
 
 export const metadata: Metadata = {
   title: 'How much of India’s electricity is renewable?',
@@ -128,9 +128,7 @@ export default function Story() {
   const generation = getSeries('non-fossil-generation-share');
   const coal = getSeries('coal-production');
   const plf = getSeries('coal-plf');
-  const pWord = getProvenance('P-121'); // four boundaries, and large hydro moved across one
   const pImputed = getProvenance('P-122'); // generation was imputed, not metered, up to FY2013-14
-  const pJoin = getProvenance('P-126'); // the generation series joins two documents with no overlap
   const l0221 = getLedger('L-0221');
   const l0222 = getLedger('L-0222');
   const l0226 = getLedger('L-0226');
@@ -258,47 +256,7 @@ export default function Story() {
         </ul>
       </div>
 
-      <h2>Where this comes from</h2>
-      <p className="prose-note">
-        Every claim above is on a record with its sources and its declared gaps. Nothing here is a
-        dispute between publishers, because there is not one: the numbers all come from the same
-        authority and mean different things.
-      </p>
-      <div className="grid">
-        {[pWord, pImputed, pJoin].filter(Boolean).map((p) => (
-          <Link key={p!.id} href={`/provenance/${p!.id}/`}>
-            <span className="label">{p!.id} · measurement dispute</span>
-            <span className="grid-title">{p!.title}</span>
-            <span className="grid-meta">
-              {DIRECTION_OF_BIAS_LABELS[p!.directionOfBias] ?? p!.directionOfBias}
-            </span>
-          </Link>
-        ))}
-        {l0221 ? (
-          <Link href="/ledger/L-0221/">
-            <span className="label">record · {l0221.assessment}</span>
-            <span className="grid-title">{l0221.title}</span>
-            <span className="grid-meta">the capacity milestone and the electricity behind it</span>
-            <RecordMarks record={l0221} linkify={false} />
-          </Link>
-        ) : null}
-        {l0222 ? (
-          <Link href="/ledger/L-0222/">
-            <span className="label">record · {l0222.assessment}</span>
-            <span className="grid-title">{l0222.title}</span>
-            <span className="grid-meta">the import stop that did not happen</span>
-            <RecordMarks record={l0222} linkify={false} />
-          </Link>
-        ) : null}
-        {l0226 ? (
-          <Link href="/ledger/L-0226/">
-            <span className="label">record · {l0226.assessment}</span>
-            <span className="grid-title">{l0226.title}</span>
-            <span className="grid-meta">a rule and a plan that do not agree</span>
-            <RecordMarks record={l0226} linkify={false} />
-          </Link>
-        ) : null}
-      </div>
+      <StorySources slug="how-renewable" />
     </>
   );
 }

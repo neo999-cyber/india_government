@@ -205,7 +205,18 @@ second door onto `/unmeasured/`** (which lists by record and kind; this lists by
 **STORY SCOPING DONE 2026-08-13 — the candidate list, the criterion, and a blocker measured before
 any of it. No story written that batch.**
 
-**THE BLOCKER, AND IT COMES FIRST.** Measured across all 750 built pages: **each story has exactly
+**THE BLOCKER IS CLOSED 2026-08-13 — the route runs both ways.** Inbound links to stories **4 → 33**;
+record pages linking a story **0 → 29**. `lib/stories.ts` declares `rests` once, `StorySources`
+renders the grid from it and `storiesRestingOn` reads it from the other end — two lists would have
+drifted. Provenance pages gained a **Read in a story** block, being the one layer with no next-steps
+surface and 11 of the 29 targets. **The criterion is printed on the index**, each card naming its
+qualifying pair or dispute, and **the ordering is stated too** — publication order, a fact, not a
+ranking. Distinct records linked: 29 before, 29 after.
+
+**NEXT: item 3, the candidates.** PR-22 (education, depth 22), PR-35 (a form the site has not
+published) and P-114 (welfare) are strongest on material. Each is a piece of writing.
+
+**THE BLOCKER AS IT WAS MEASURED, kept because the fix is only checkable against it.** Measured across all 750 built pages: **each story has exactly
 one inbound link, from `/stories/`. No record, series, topic, year or question page links any story,
 and no story links another.** The four carry 30 outbound links to 29 distinct records — the route
 runs one way through a single door. **A reader on `/series/aser-std3-reading/` is never told the

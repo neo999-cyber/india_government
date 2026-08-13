@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import { getLedger, getProvenance, getSeries } from '@/lib/data';
 import { StoryScroller } from '@/components/StoryScroller';
 import { SeriesChart } from '@/components/SeriesChart';
-import { CaveatFlag, RecordMarks } from '@/components/marks';
-import { DIRECTION_OF_BIAS_LABELS } from '@/lib/format';
+import { CaveatFlag } from '@/components/marks';
+import { StorySources } from '@/components/StorySources';
 
 export const metadata: Metadata = {
   title: 'Who counts the dead in Kashmir?',
@@ -139,11 +139,6 @@ export default function Story() {
   // Traced to the pairs' own `provenanceRefs`: PR-26 declares P-73, P-75, P-85; PR-32 declares
   // P-73 and P-87. An earlier draft cited P-78, which belongs to neither, and the names below are
   // what each record SAYS rather than which pair it came from, so the slip cannot repeat.
-  const pMeaning = getProvenance('P-73');
-  const pMethod = getProvenance('P-75');
-  const pAttrib = getProvenance('P-87');
-  const l0110 = getLedger('L-0110');
-  const l0111 = getLedger('L-0111');
 
   const yearOf = (p: string) => Number(String(p).replace(/^FY/, '').slice(0, 4));
   const lines =
@@ -256,63 +251,7 @@ export default function Story() {
         </p>
       </div>
 
-      <h2>Where this comes from</h2>
-      <p className="prose-note">
-        Every claim above is on a record with its sources, its competing accounts and its declared
-        gaps. Nothing here resolves which count is right, because the corpus does not, and because
-        the two are not answers to one question.
-      </p>
-      <div className="grid">
-        {[pMeaning, pMethod, pAttrib].filter(Boolean).map((p) => (
-          <Link key={p!.id} href={`/provenance/${p!.id}/`}>
-            <span className="label">{p!.id} · measurement dispute</span>
-            <span className="grid-title">{p!.title}</span>
-            <span className="grid-meta">
-              {DIRECTION_OF_BIAS_LABELS[p!.directionOfBias] ?? p!.directionOfBias}
-            </span>
-          </Link>
-        ))}
-        {official ? (
-          <Link href="/series/jk-civilians-killed-composite/">
-            <span className="label">series · tier {official.tier}</span>
-            <span className="grid-title">{official.title}</span>
-            <span className="grid-meta">the official column, merged and unattributed</span>
-            <RecordMarks record={official} linkify={false} />
-          </Link>
-        ) : null}
-        {register ? (
-          <Link href="/series/jk-civilians-killed-satp/">
-            <span className="label">series · tier {register.tier}</span>
-            <span className="grid-title">{register.title}</span>
-            <span className="grid-meta">the press-compiled register, with no published method</span>
-            <RecordMarks record={register} linkify={false} />
-          </Link>
-        ) : null}
-        {jkccs ? (
-          <Link href="/series/jkccs-civilians-killed-by-armed-forces/">
-            <span className="label">series · tier {jkccs.tier}</span>
-            <span className="grid-title">{jkccs.title}</span>
-            <span className="grid-meta">the attributed count, two years, then silence</span>
-            <RecordMarks record={jkccs} linkify={false} />
-          </Link>
-        ) : null}
-        {l0111 ? (
-          <Link href="/ledger/L-0111/">
-            <span className="label">record · three figures for one year</span>
-            <span className="grid-title">{l0111.title}</span>
-            <span className="grid-meta">how the official instrument was restated, twice, with no note</span>
-            <RecordMarks record={l0111} linkify={false} />
-          </Link>
-        ) : null}
-        {l0110 ? (
-          <Link href="/ledger/L-0110/">
-            <span className="label">record · the counts side by side</span>
-            <span className="grid-title">{l0110.title}</span>
-            <span className="grid-meta">what the two families of instrument each hold</span>
-            <RecordMarks record={l0110} linkify={false} />
-          </Link>
-        ) : null}
-      </div>
+      <StorySources slug="who-counts-the-dead" />
     </>
   );
 }

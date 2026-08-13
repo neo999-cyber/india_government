@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import { getLedger, getProvenance, getSeries } from '@/lib/data';
 import { StoryScroller } from '@/components/StoryScroller';
 import { SeriesChart } from '@/components/SeriesChart';
-import { CaveatFlag, RecordMarks } from '@/components/marks';
-import { DIRECTION_OF_BIAS_LABELS } from '@/lib/format';
+import { CaveatFlag } from '@/components/marks';
+import { StorySources } from '@/components/StorySources';
 
 export const metadata: Metadata = {
   title: 'Can Indian children read?',
@@ -118,9 +118,7 @@ export default function Story() {
   const aser = getSeries('aser-std3-reading');
   const nas = getSeries('nas-parakh-grade3-language');
   const band = getSeries('parakh-grade3-proficient-language');
-  const p59 = getProvenance('P-59');
   const p60 = getProvenance('P-60');
-  const l0092 = getLedger('L-0092');
 
   const lines =
     aser && nas
@@ -240,42 +238,7 @@ export default function Story() {
         </>
       ) : null}
 
-      <h2>Where this comes from</h2>
-      <p className="prose-note">
-        Every claim above is on a record with its sources, its competing accounts and its declared
-        gaps. Nothing here resolves the dispute, because the corpus does not.
-      </p>
-      <div className="grid">
-        {[p59, p60].filter(Boolean).map((p) => (
-          <Link key={p!.id} href={`/provenance/${p!.id}/`}>
-            <span className="label">{p!.id} · measurement dispute</span>
-            <span className="grid-title">{p!.title}</span>
-            <span className="grid-meta">{DIRECTION_OF_BIAS_LABELS[p!.directionOfBias] ?? p!.directionOfBias}</span>
-          </Link>
-        ))}
-        {/* RULE 4b BINDS A STORY PAGE TOO. These are listing rows: a reader can leave for the
-            record from here, so the record's caveat and its declared absences travel with the
-            link. `listing-marks` named all three before this page was ever deployed — the third
-            time in one phase that a new surface reproduced A-4 and the gate caught it. */}
-        {aser ? (
-          <Link href="/series/aser-std3-reading/">
-            <span className="label">series · tier {aser.tier}</span>
-            <span className="grid-title">The ASER reading series in full</span>
-            <span className="grid-meta">2010 to 2024 · three declared breaks</span>
-            <RecordMarks record={aser} linkify={false} />
-          </Link>
-        ) : null}
-        {l0092 ? (
-          <Link href="/ledger/L-0092/">
-            <span className="label">record · contested</span>
-            <span className="grid-title">{l0092.title}</span>
-            <span className="grid-meta">
-              the same findings reproduced, then attributed differently
-            </span>
-            <RecordMarks record={l0092} linkify={false} />
-          </Link>
-        ) : null}
-      </div>
+      <StorySources slug="can-indian-children-read" />
     </>
   );
 }

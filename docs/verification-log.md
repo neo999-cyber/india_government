@@ -18417,3 +18417,75 @@ rests on this record* is a declared relation of exactly the kind `lib/next-steps
 ### Gate line
 
 No gate-affecting change: this batch adds a log entry and a STATE section. 27 steps green.
+
+---
+
+## 2026-08-13 (sixtieth entry) — THE RETURN ROUTE AND THE CRITERION. Items 1 and 2 of the recommended order.
+
+### 1 · THE ROUTE NOW RUNS BOTH WAYS
+
+Measured the same way the gap was measured, across all 750 built pages:
+
+| | before | after |
+|---|---|---|
+| inbound links to stories | **4** — one each, all from `/stories/` | **33** |
+| pages linking a story | 1 | **30** |
+| record pages linking a story | **0** | 29 |
+
+`/series/aser-std3-reading/` — the series the reading story is entirely about, and which never
+mentioned it — now carries the story as a next step. `/ledger/L-0221/` does. `/provenance/P-121/`
+does, through a new **Read in a story** block, because a provenance page has never had a next-steps
+surface and **11 of the 29 records the stories rest on are disputes.**
+
+**No new prose.** *This story rests on this record* is a declared relation of exactly the kind
+`lib/next-steps.ts` already renders, with its reason named beside it like every other step.
+
+### THE REFACTOR THAT MADE IT POSSIBLE, AND WHY IT WAS NOT OPTIONAL
+
+Four stories each hand-built a **Where this comes from** grid in markup. The relation had to exist in
+data for the reverse direction to be derivable at all, and **two lists would have been the
+ad-hoc-normaliser class** — agreeing today, drifting the first time a story gains a chart, with
+nothing to report it.
+
+`lib/stories.ts` holds it once. `StorySources` renders the grid from it; `storiesRestingOn` reads it
+from the other end. **The label is now derived and the blurb stays authored**: a ledger card's chip
+was hand-written per story (*record · contested*, *record · the dispute itself*) and is now the
+record's own assessment, which cannot go stale against a rescore. What the record is DOING in a
+story is not derivable and stays written.
+
+**And the refactor found three records that rested on a story and appeared in no grid.**
+`parakh-grade3-proficient-language`, `unpaid-helper-share` and `coal-production` were reached only
+from charts. They are in the list now, so they are in their story's grid and they have a return
+route. Distinct records linked by the four stories: **29 before, 29 after** — the set is unchanged,
+which is the check that the refactor moved the markup and not the content.
+
+Four orphaned constants and four unused imports were removed in the same commit rather than left.
+
+### 2 · THE CRITERION, PRINTED ON THE INDEX
+
+> **A subject is here where the corpus holds more than one official figure for one question** —
+> either two instruments that disagree, recorded as a contested pair, or one publisher whose
+> definition admits more than one boundary.
+
+Computable, re-derivable, no merit claim, and **each card names the pair or dispute that qualifies
+it** — PR-17, PR-12/PR-13, PR-26/PR-32, P-121 — recomputed by `signatureFor` from `/data` rather
+than restated, so a signature naming something the corpus no longer holds cannot print.
+
+**A crude check tripped and the reading cleared it.** A scan for *most important* fired on the
+criterion's own disclaimer — *not a claim that these are the most important subjects* — which is the
+negation, not the claim. Reading the match is what settled it.
+
+**AND THE CHECK FOUND A REAL GAP ONE LEVEL DOWN.** The criterion covers WHICH FOUR and says nothing
+about the ORDER, and rule 9 binds both: the cards come out in publication order and a reader who is
+not told that is entitled to read the first as the most important. **The order is now stated** —
+*listed in the order they were written, which is a fact about this site rather than a judgement
+about the subjects.*
+
+### Gate line
+
+27 steps green. `link-check` **47,454 hrefs across 750 pages, 0 dead** (from 47,422). `listing-marks`
+**5,716 rows / 8,173 marks**. `unrecognised-rows` **0**. `reachability` 1,787/1,787. At 375 px:
+0 body overflow; the criterion and the ordering note both `rgb(92,96,108)`, one colour.
+
+**Item 3 of the recommended order — the candidates — is not started.** PR-22, PR-35 and P-114 remain
+the strongest on material, and each is a piece of writing that gets the three checks.
