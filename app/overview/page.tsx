@@ -285,7 +285,7 @@ export default function Overview() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / overview
+        <Link href="/">instrument</Link> / what changed
       </p>
       <h1 className="home-lead">What changed, everywhere, since 2014</h1>
       <p className="lede">

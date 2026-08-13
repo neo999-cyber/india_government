@@ -157,7 +157,7 @@ export default function SearchPage() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / find
+        <Link href="/">instrument</Link> / find a record
       </p>
       <h1 className="page-lead">Find a record</h1>
       {/* NO RECORD COUNT. The homepage rebuild removed database-size figures on the scope's own

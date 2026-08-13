@@ -4,8 +4,10 @@ import { assessmentCounts, ledger } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS, TERM_SHORT, formatDateRange } from '@/lib/format';
 import { CaveatRow, RecordMarks, TallyGloss } from '@/components/marks';
 import { ListingFacets } from '@/components/ListingFacets';
+import { routeLabel } from '@/lib/routes';
 
-export const metadata: Metadata = { title: 'Ledger' };
+// The tab title is the registry's public name, not a fourth copy of it. Was: 'Ledger'.
+export const metadata: Metadata = { title: routeLabel('/ledger/') };
 
 /**
  * Facet options are derived from the records in the table, never from the enum.
@@ -27,7 +29,7 @@ export default function LedgerIndex() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / ledger
+        <Link href="/">instrument</Link> / reforms, events and episodes
       </p>
       <h1>Ledger of reforms, events and episodes</h1>
       <p className="lede">

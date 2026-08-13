@@ -11,7 +11,7 @@ export default function TermsIndex() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / terms
+        <Link href="/">instrument</Link> / terms of government
       </p>
       <h1>Terms</h1>
       <p className="lede">

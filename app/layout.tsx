@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { PrimaryNav } from '@/components/PrimaryNav';
+import { navLabel } from '@/lib/routes';
 import Link from 'next/link';
 import { Spectral, IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
 import { series } from '@/lib/data';
@@ -165,14 +167,6 @@ export const metadata: Metadata = {
  * `browse` would be reachable exactly by the readers who need it least. Fifth entry; nothing
  * removed, nothing renamed.
  */
-const PRIMARY = [
-  { href: '/overview/', label: 'What changed' },
-  { href: '/domains/', label: 'Topics' },
-  { href: '/questions/', label: 'Questions' },
-  { href: '/stories/', label: 'Stories' },
-  { href: '/search/', label: 'Search' },
-];
-
 /**
  * READER-FACING LABELS, ROUTES UNTOUCHED — and every one is taken from the page's own h1.
  *
@@ -199,39 +193,44 @@ const GROUPS: { label: string; items: { href: string; label: string }[] }[] = [
   {
     label: 'ways in',
     items: [
-      { href: '/domains/', label: 'topics' },
+      { href: '/domains/', label: navLabel('/domains/') },
       // `years` sits beside `terms` because both are ways INTO the record rather than layers of it.
-      { href: '/years/', label: 'one year at a time' }, // was: years
-      { href: '/lenses/', label: 'threads across topics' }, // was: lenses
-      { href: '/terms/', label: 'terms of government' }, // was: terms — ambiguous against a glossary
-      { href: '/peers/', label: 'four comparator countries' }, // was: peers
+      { href: '/years/', label: navLabel('/years/') }, // was: years
+      { href: '/lenses/', label: navLabel('/lenses/') }, // was: lenses
+      { href: '/terms/', label: navLabel('/terms/') }, // was: terms — ambiguous against a glossary
+      { href: '/peers/', label: navLabel('/peers/') }, // was: peers
     ],
   },
   {
     label: 'the records',
     items: [
-      { href: '/series/', label: 'indicators' }, // was: series — the prose pass renamed this everywhere but here
-      { href: '/ledger/', label: 'reforms, events and episodes' }, // was: ledger
-      { href: '/provenance/', label: 'measurement disputes' }, // was: disputes
-      { href: '/contested/', label: 'verdicts that stay open' }, // was: contested pairs — and it holds no pairs
+      // THE COMMENT THAT WAS HERE SAID: *"was: series — the prose pass renamed this everywhere but
+      // here"*. That was false. The prose pass renamed the NAV and stopped: `<title>` still said
+      // *Series*, the h1 said *Indicator series* and the breadcrumb said *series*, so one
+      // destination carried four names. The comment recorded the sweep as done, which is how it
+      // survived. Labels now come from `lib/routes.ts` and no surface holds its own copy.
+      { href: '/series/', label: navLabel('/series/') },
+      { href: '/ledger/', label: navLabel('/ledger/') }, // was: ledger
+      { href: '/provenance/', label: navLabel('/provenance/') }, // was: disputes
+      { href: '/contested/', label: navLabel('/contested/') }, // was: contested pairs — and it holds no pairs
     ],
   },
   {
     label: 'what is missing',
     items: [
-      { href: '/unmeasured/', label: 'what is not measured' }, // was: unmeasured — a field name
-      { href: '/exposure/', label: 'when a shock is offered as the reason' }, // was: exposure
-      { href: '/method/', label: 'method, and what the marks mean' }, // was: method
+      { href: '/unmeasured/', label: navLabel('/unmeasured/') }, // was: unmeasured — a field name
+      { href: '/exposure/', label: navLabel('/exposure/') }, // was: exposure
+      { href: '/method/', label: navLabel('/method/') }, // was: method
     ],
   },
   {
     label: 'about the record',
     items: [
-      { href: '/derivations/', label: 'recomputed from public data' }, // was: derivations
-      { href: '/publishers/', label: 'who published it' }, // was: publishers
-      { href: '/corrections/', label: 'what it has changed its mind about' }, // was: corrections
-      { href: '/counterfactual/', label: 'a feature considered and declined' }, // was: counterfactual, and was under `limits`
-      { href: '/data/', label: 'download the data' }, // was: data
+      { href: '/derivations/', label: navLabel('/derivations/') }, // was: derivations
+      { href: '/publishers/', label: navLabel('/publishers/') }, // was: publishers
+      { href: '/corrections/', label: navLabel('/corrections/') }, // was: corrections
+      { href: '/counterfactual/', label: navLabel('/counterfactual/') }, // was: counterfactual, and was under `limits`
+      { href: '/data/', label: navLabel('/data/') }, // was: data
     ],
   },
 ];
@@ -257,16 +256,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 by class, so nothing visual moves. */}
             <p className="masthead-title">
               <Link href="/">India, On the Record</Link>
+              {/* SPELLED OUT 2026-08-13. It read *"T1 2014–19 · T2 2019–24 · T3 2024– living"* on
+                  every page — an internal shorthand that a reader has no way to expand, and where
+                  "living" reads either as a database state or, worse, as commentary. The terms are
+                  named as terms and the open one says what it means. */}
               <span className="masthead-sub">
-                May 2014 to {LATEST} · T1 2014–19 · T2 2019–24 · T3 2024– living
+                May 2014 to {LATEST} · first term 2014–19 · second 2019–24 · third 2024–, still
+                being added to
               </span>
             </p>
-            <nav className="nav nav-primary" aria-label="Main">
-              {PRIMARY.map((item) => (
-                <Link key={item.href} href={item.href}>
-                  {item.label}
-                </Link>
-              ))}
+            {/* The five primary links moved to `components/PrimaryNav.tsx` so they can carry
+                `aria-current`, which needs the pathname and therefore a client component. The
+                All-pages disclosure stays here and stays script-free — see its own note. */}
+            <PrimaryNav />
+            <nav className="nav nav-primary nav-secondary" aria-label="All pages">
               {/* THE SIXTEENTH DESTINATION, AND IT IS A DISCLOSURE RATHER THAN A LINK.
 
                   **Seventeen destinations sat in a footer, and a footer is read by almost nobody.**
