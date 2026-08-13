@@ -19120,3 +19120,101 @@ internal hrefs across 753 pages, 0 dead** — both identical to the entry before
 the check that three `og:description` strings moved and no listing did. `reachability` 1,787/1,787
 across 753 pages. `field-render-audit` 0 invisible, 15 exempted by name. `rendered-space` 0.
 `unrecognised-rows` 0. `domain-coverage` 1,137/1,137.
+
+---
+
+## 2026-08-13 (sixty-seventh entry) — AN EXTERNAL AUDIT, TRIAGED AND WORKED. Tranches 1 and 2.
+
+An independent read-only audit of the deployed site at `76f899a`. **Every claim was re-derived
+against the code, the built bytes or a DOM probe before anything was changed** — an audit arrives
+with the authority of having just found something real, which is the least questioned thing in the
+room. Triage in `drops/phase-18-design-lock/AUDIT-TRIAGE-2026-08-13.md`.
+
+**Nineteen findings confirmed, one wrong.** The wrong one: *"generated documentation is stale on
+main"* does not reproduce — a full build leaves `git status` clean, and `docs/derivations.md`'s
+`3feef5f` stamp is the last commit that touched `/data`, deliberately not HEAD, documented in the
+generator's own header to stop one line churning on every commit. What the auditor saw was **a
+second symptom of their own P0**, a truncated clone changing generated output. Their proposed fix
+would have destroyed the anti-churn design. The stamp is untouched.
+
+### C1 — `farmer-suicides` ASSERTED SOMETHING ITS OWN DATA CONTRADICTS
+
+The finding read, in full, and this is the withdrawn wording:
+
+> *"Suicides in the farming sector are published annually and the series carries a declared break,
+> because what the category counts changed. Figures either side of the seam are not the same
+> measurement."*
+
+**The break sits at 2014 — the first point.** It is a start seam, `pre-2014 totals not comparable`,
+naming what it supersedes. **There are no figures on the other side of it in this series**: eleven
+unbroken points, 12,360 in 2014 to 10,546 in 2024. The sentence described a comparison the record
+does not contain.
+
+Now: *"Farm-sector suicides fall from 12,602 in 2015 to 10,281 in 2019, then rise to 11,290 by 2022
+and ease to 10,546 in 2024 — no single direction across the decade. The series starts at 2014
+because NCRB separated farmers and cultivators from agricultural labourers that year; pre-2014
+totals count a different population and are not carried here."*
+
+**The withdrawn wording is quoted here and NOT in the field**, which is a departure from the
+correction convention and a deliberate one. `quotation-identity` scopes `data/ledger` and
+`data/provenance.json`; `lib/series-copy.ts` is authored prose in code, outside it. And this field's
+entire job is to say what happened — a meta-note about a previous version in the outcome slot would
+recreate the defect being corrected. The reason is recorded at the record in a comment.
+
+### C2 — FIVE OF SEVEN STORY CHARTS DREW THEIR GRID OFF THEIR OWN SCALE
+
+`TwoInstruments` took `yMax` as a prop on 2026-08-13 and **left its grid ticks hardcoded at
+`[0, 25, 50, 75]`.** Read from the built bytes:
+
+| story | `yMax` | grid `y1` as shipped | off-canvas |
+|---|---|---|---|
+| `what-counts-as-education-spending` | 6 | 266, −742, −1751, −2759 | **3 of 4** |
+| `did-jobs-grow` | 10 | 266, −339, −944, −1549 | **3 of 4** |
+| `how-renewable` | 60 | 266, 165, 64, −36 | 1 of 4 |
+| `a-zero-that-is-not-a-zero` | 12000 | 266, 265, 265, 264 | 0, welded to the baseline |
+| `two-counts-one-boundary` | 600 | 266, 256, 245, 235 | 0, collapsed into 31px |
+
+**Only two were right — the two whose `yMax` was near the original 75.** Nothing in the type system
+had an opinion: `yMax` is a number and the array is numbers, related only by an assumption nobody
+wrote down. `lib/ticks.ts` derives them; all seven now carry 4 to 6 ticks spread over 194–242px,
+every one inside its own viewBox.
+
+**THE GATE I WROTE FOR IT SHIPPED GREEN OVER NOTHING, AND THE SCOPE LINE IS WHY IT WAS CAUGHT.**
+`chart-ticks` first reported `0 grid line(s) across 0 story chart(s)` **as a pass**. Its regexes
+required `class` before `viewBox` on the svg and before `y1` on the line; Next emits both the other
+way. **And the `--control` fixtures were written in MY order, so the control passed through a
+restriction the real scan never hit** — the negative-control rule states exactly this and I broke it
+inside the same file that cites it. Fixed three ways: attribute-order-agnostic matching, control
+fixtures copied from the emitted bytes, and **a floor that exits 2 when zero charts are found**,
+because a scan finding nothing is a broken scan and never a clean site. Now: 33 lines, 7 charts.
+
+### C3 — TWO LIVE REGIONS ON `/search/`, ONE PERMANENTLY WRONG
+
+`SearchSort` printed `{count} shown` from an immutable prop inside `aria-live="polite"`, four
+elements from `ListingFacets`' correct live readout. **Filtering toggles `hidden` on rows and the
+DOM never moves, so the number was structurally incapable of tracking anything.** The comment above
+it claimed it was *"a count of what the current filter leaves showing"* — an assertion the component
+could not satisfy.
+
+**The fix was to delete the duplicate, not to wire it up.** `ListingFacets` already owns the count.
+Deleting it would have removed the only count a no-JS reader sees, so `initialTotal` was added and
+the unfiltered branch now tests `total` alone, rendering server-side. **Applied to all four call
+sites — `/series/`, `/ledger/`, `/search/`, `/provenance/` — enumerated from the code**, four
+changed, none already correct.
+
+### I1 — CI NEVER FETCHED THE HISTORY ITS GATES REQUIRE
+
+`actions/checkout@v4` with no `fetch-depth`, so `quotation-identity` **skipped on every CI run since
+it was written**, and a green tick did not distinguish that from a run that had tested it. Now
+`fetch-depth: 0`; a `--require-history` flag makes the skip fatal and CI passes it as a separate
+step; a `git diff --exit-code` step fails on any tracked file the build rewrote. **The flag rather
+than a hard failure because Vercel clones shallow and the deploy must not go down over a check the
+build host structurally cannot run.** Both actions pinned to immutable SHAs and a
+`permissions: contents: read` block added.
+
+### Gate line
+
+28 steps green — `chart-ticks` is new and in the build. `reachability` 1,787/1,787 · `link-check`
+60,433 across 753, 0 dead · `listing-marks` 5,727 / 8,190 · `field-render-audit` 0 invisible ·
+`rendered-space` 0 · `unrecognised-rows` 0 · `domain-coverage` 1,137/1,137 ·
+**`chart-ticks` 33 grid lines across 7 charts.**

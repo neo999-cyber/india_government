@@ -5,12 +5,27 @@ on:
     branches: [main]
   pull_request:
 
+# Least privilege: this workflow reads the repository and publishes nothing.
+permissions:
+  contents: read
+
 jobs:
   gate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      # `fetch-depth: 0` IS LOAD-BEARING AND NOT A PERFORMANCE CHOICE.
+      #
+      # The default shallow clone made `quotation-identity` skip — it says so on stdout and exits 0
+      # — so every CI run since that gate was written passed WITHOUT testing whether a correction
+      # still quotes what it withdrew, and a green tick did not distinguish that from a run which
+      # had tested it. `record-history` and `corrections` reuse committed files in a shallow clone
+      # rather than reconstructing them, with the same result. Found by an external audit, not here.
+      # Pinned to an immutable commit, not a mutable tag: `@v4` is a moving target and a
+      # compromised tag would run arbitrary code with this repository checked out.
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
           cache: npm
@@ -20,3 +35,18 @@ jobs:
       - run: npm run validate:selftest
       - run: npm run typecheck
       - run: npm run build
+
+      # THE SKIP IS NOW FATAL HERE, AND ONLY HERE. Vercel clones shallow and structurally cannot
+      # run this, so the gate keeps its skip for the deploy; CI has the history and must prove it.
+      - run: node tools/quotation-identity.mjs --require-history
+
+      # A BUILD THAT REWRITES A TRACKED FILE AND LEAVES IT UNCOMMITTED IS A SILENT DRIFT.
+      # Nothing previously looked. This is not a hypothetical: the generated-documentation stamp is
+      # derived from git history, so a clone without that history produces different bytes — which
+      # is exactly the failure mode `fetch-depth: 0` above prevents, and this catches if it returns.
+      - name: generated files must match the committed ones
+        run: |
+          if ! git diff --exit-code --stat; then
+            echo "::error::the build modified tracked files — commit the regenerated output or fix the generator"
+            exit 1
+          fi

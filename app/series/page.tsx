@@ -98,6 +98,7 @@ export default function SeriesIndex() {
       <ListingFacets
         target="series-table"
         noun="series"
+        initialTotal={series.length}
         facets={[
           { key: 'domain', label: 'Area', options: opts(series.map((s) => s.domain), (d) => DOMAIN_LABELS[d]) },
           { key: 'tier', label: 'Tier', options: opts(series.map((s) => s.tier), (t) => t) },

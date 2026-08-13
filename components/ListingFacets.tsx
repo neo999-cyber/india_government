@@ -55,16 +55,26 @@ export function ListingFacets({
   facets,
   target,
   noun = 'records',
+  initialTotal,
 }: {
   facets: Facet[];
   /** id of the element whose `[data-row]` descendants are filtered. */
   target: string;
   noun?: string;
+  /**
+   * The row count as the server already knows it. **Added because deleting a duplicate count
+   * elsewhere would otherwise have deleted the only one a no-JS reader ever sees.** `SearchSort`
+   * used to print `619 shown` from an immutable prop beside this component's live readout — two
+   * `aria-live` regions on one page, one of them permanently wrong the moment a filter was
+   * applied. The wrong one is gone; this makes the surviving one render before hydration too, so
+   * nothing was lost with scripting off.
+   */
+  initialTotal?: number;
 }) {
   const [sel, setSel] = useState<Record<string, string>>({});
   const [q, setQ] = useState('');
   const [shown, setShown] = useState<number | null>(null);
-  const [total, setTotal] = useState<number | null>(null);
+  const [total, setTotal] = useState<number | null>(initialTotal ?? null);
   const ready = useRef(false);
 
   // Read the URL once, before the first filter pass, so a shared link lands filtered.
@@ -154,8 +164,13 @@ export function ListingFacets({
         </button>
       </div>
 
+      {/* THE ONLY LIVE COUNT ON THE PAGE. There were two: this one, correct, and a static
+          `{count} shown` in `SearchSort` that could never change because filtering hides rows with
+          CSS and the DOM never moves. A screen reader met both. `shown` is null until the first
+          filter pass runs, so the unfiltered branch tests `total` alone — that is what lets the
+          server render a true count for a reader with no scripting. */}
       <p className="facets-count" aria-live="polite">
-        {shown === null || total === null ? null : any ? (
+        {total === null ? null : any && shown !== null ? (
           <>
             Showing <strong>{shown}</strong> of {total} {noun} in this table.{' '}
             {shown === 0 ? (

@@ -29,6 +29,7 @@ export default function ProvenanceIndex() {
       <ListingFacets
         target="provenance-table"
         noun="disputes"
+        initialTotal={provenance.length}
         facets={[
           { key: 'domain', label: 'Topic', options: opts(provenance.flatMap((p) => p.affectsDomains), (d) => (d === 'all' ? 'all topics' : DOMAIN_LABELS[d])) },
           { key: 'bias', label: 'Direction of bias', options: opts(provenance.map((p) => p.directionOfBias), (b) => DIRECTION_OF_BIAS_LABELS[b] ?? b) },

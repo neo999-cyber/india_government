@@ -32,7 +32,7 @@ const SORTS = [
   { key: 'type', label: 'Record type' },
 ] as const;
 
-export function SearchSort({ count }: { count: number }) {
+export function SearchSort() {
   const [active, setActive] = useState<string>('newest');
 
   useEffect(() => {
@@ -54,12 +54,16 @@ export function SearchSort({ count }: { count: number }) {
           {s.label}
         </button>
       ))}
-      {/* Not a count of the corpus — a count of what the current filter leaves showing. The
-          database-size figure was removed from the opening on the scope's own rule, and 619 also
-          contains the 269 series twice over. */}
-      <span className="srt-n mono" aria-live="polite">
-        {count} shown
-      </span>
+      {/* THE COUNT THAT USED TO SIT HERE IS GONE, AND THE COMMENT THAT DESCRIBED IT WAS FALSE.
+          It read: *"Not a count of the corpus — a count of what the current filter leaves
+          showing."* This component receives `count` as an immutable prop and filtering is done by
+          `ListingFacets` toggling `hidden` on rows, so the number was structurally incapable of
+          ever being a count of what was showing. It sat in an `aria-live` region, which made it a
+          second announcement contradicting the correct one four elements away.
+
+          A sort control is not a place a count belongs. `ListingFacets` already owns the readout,
+          already tracks `shown` against `total`, and now renders its total on the server as well,
+          so nothing is lost with scripting off. */}
     </div>
   );
 }

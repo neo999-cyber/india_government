@@ -49,6 +49,7 @@ export default function LedgerIndex() {
       <ListingFacets
         target="ledger-table"
         noun="records"
+        initialTotal={ordered.length}
         facets={[
           { key: 'term', label: 'Term', options: opts(ordered.map((l) => l.term), (t) => TERM_SHORT[t]) },
           { key: 'domain', label: 'Area', options: opts(ordered.flatMap((l) => l.domains), (d) => DOMAIN_LABELS[d]) },
