@@ -229,7 +229,22 @@ selection and no ordering — `/publishers/` (citation count descending), `/corr
 first), `/questions/unanswerable/` (the limit first, then the decisions). All three now print it.
 `/years/` flagged and cleared on reading: it already says *no year is ranked against another*.
 
-**NEXT: item 3, the candidates.** PR-22 (education, depth 22), PR-35 (a form the site has not
+**STORY FIVE WRITTEN 2026-08-13** — *Is India spending more on education, or less?* at
+`/stories/what-counts-as-education-spending/`, on PR-22. **Chosen first on the material**: 22
+observations a side against 6 for PR-35 and one state's table for P-114. Filed as a `contested` pair
+and **structurally the renewables form** — one publisher, one table, two definitional scopes.
+
+**PR-35 IS A FOURTH FORM, ESTABLISHED AND NOT WRITTEN — read this before starting it.** Different
+units (`detenus`/`prisoners`), the SAME quantity, two publishers, and **the discrepancy is explained
+to the unit**: in three of six overlapping years the difference is exactly NCRB's foreign-detenu
+count. **What the form requires:** separate the three years where the explanation is PROVEN from the
+two where it is only CONSISTENT (the domicile decomposition was not retrieved for 2016-17) and the
+one where it CANNOT be computed (2019 sets a November figure against a 31 December one) — and draw
+no difference anywhere, because where the subtraction can be done **it produces zero, not a gap**.
+
+**P-114 unstarted.** Its control is Bihar's row in the same table: no stoppage, releases continuing.
+
+**NEXT: PR-35, then P-114.** PR-22 (education, depth 22), PR-35 (a form the site has not
 published) and P-114 (welfare) are strongest on material. Each is a piece of writing.
 
 **THE BLOCKER AS IT WAS MEASURED, kept because the fix is only checkable against it.** Measured across all 750 built pages: **each story has exactly

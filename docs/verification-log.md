@@ -18587,3 +18587,94 @@ and two of my own probes disagreed with each other before I stopped scanning and
 27 steps green. `link-check` **60,260 internal hrefs across 750 pages, 0 dead** (from 47,454 — the
 overlay puts 17 destinations on every page). `listing-marks` **5,716 / 8,173 unchanged**.
 `unrecognised-rows` 0. `reachability` 1,787/1,787. `domain-coverage` 1137/1137. `rendered-space` 0.
+
+---
+
+## 2026-08-13 (sixty-second entry) — STORY FIVE: what counts as education spending. And PR-35's form, established and not written.
+
+### WHY PR-22 WENT FIRST
+
+All three candidates were read before one was chosen. **PR-22 wins on the material and it is not
+close: 22 observations on each side, against 6 for PR-35 and one state's release table for P-114.**
+Its form is already published, so the risk sits in the writing rather than in establishing a shape.
+And its subject is a target the government invokes in Parliament, which is a thing a reader arrives
+holding.
+
+### PR-35 IS A FOURTH FORM. ESTABLISHED BEFORE WRITING, AND NOT WRITTEN.
+
+Tested against each signature rather than assumed:
+
+| form | test | PR-35 |
+|---|---|---|
+| 1 · jobs | same quantity, same unit | **no** — `detenus` against `prisoners` |
+| 2 · reading, Kashmir | different quantities | **no** — both count preventive-detention prisoners in J&K |
+| 3 · renewables | one publisher, a boundary | **no** — NCRB and a Rajya Sabha answer |
+
+**What makes it a fourth rather than a variant: its discrepancy is EXPLAINED to the unit.** The two
+differ in all six overlapping years — 28, 36, 37, 40, 30, 48 — and in 2014, 2015 and 2018 the
+parliamentary figure equals NCRB's count of J&K-domiciled detenus exactly, with NCRB's foreign
+detenus accounting for the whole of each gap.
+
+**What the form requires, which is why it is a batch of its own.** The page must separate **three
+years where the explanation is proven** from **two where it is only consistent** — the domicile
+decomposition was not retrieved for 2016 and 2017 — and **one where it cannot be computed at all**,
+2019 setting a November figure against a 31 December one. And it must draw no difference anywhere,
+because in the one place the subtraction can be done **it produces zero rather than a gap.**
+
+### THE STORY, AND THE PAIR IS FILED ONE WAY AND SHAPED ANOTHER
+
+PR-22 is a `contested` pair in the data and **structurally it is the renewables form** — one
+publisher, one table, two definitional scopes, both correct, no instrument disagreeing with another.
+So the lines share an axis and the page computes no difference: `gapComputable` is false and the
+pair says why, the difference running from 0.52 points of GDP to 1.46 rather than sitting still.
+
+For FY2021-22 the two totals read **2.75** and **4.12** per cent of GDP. Across FY2013-14 to
+FY2021-22 the broad rises 3.84 → 4.12 and the narrow falls 2.97 → 2.75. **Parliament is briefed on
+the broad one and the 6 per cent target is invoked against it, so the distance to target is 1.9
+points or 3.3 depending on a choice never stated when the target is quoted.**
+
+**AND THE COMPARISON THE RECORD MAKES CROSSES A SEAM THE RECORD ALSO DECLARES.** FY2019-20 is an
+estimate-stage break: from that row the table annotates Actual, Revised Estimate, Budget Estimate,
+so both terminal points are budgeted rather than spent and the last Actual on either series is
+FY2019-20. **Both facts render** — the chart cuts at every seam (verified: **8 paths for 2 lines**,
+four segments each) and the page states in words that Budget Estimates revise down, 4.39 → 4.30 →
+4.04 on the one year all three stages exist. That is the record and its own provenance shown
+together, not a correction of either.
+
+### The three checks, and two caught something
+
+**Figures — 6 series claims traced to their own record at their stated period, 0 mismatches**, and
+15 prose figures traced to the field that carries them.
+
+**And the field scope was wrong before the figures were.** 41.7 and 49.0 came back *not in its
+record* against L-0102's `caveat` — they are in its `caseAgainst`. The figures were right and my
+check was pointed at the wrong field, which is the read-the-label-beside-the-value lesson in its
+smallest form. The prose now attributes them to the case against, which is what they are.
+
+**Enum words — one hit, and it was the collision the instruction named.** The closing sentence read
+*no observation on either measure*, on a page about a record whose `contestedGround` is literally
+`measure`. Ordinary English, and the jobs story changed a heading for exactly this. Now *either of
+the two totals*. **Zero enum words in the authored prose after the fix.**
+
+**True-alone, per step.** The four openings are *There are two totals, in one table, for the same
+year* · *Across the decade they move in opposite directions* · *And the target is measured against
+the one that rises* · *And the rise has an unexplained step in it*. **No step opens on a bare
+direction.** The failing shape this has now taken in four carriers — true statement first, correction
+second — is absent because step two gives both directions in one sentence.
+
+### The refusal, above the page
+
+L-0102's caveat says the broad series **must not be used for UPA-versus-Modi comparison** until the
+unexplained doubling is resolved — and it is the sentence that disarms this story's most quotable
+line, which is exactly why it cannot sit in the sources. Rendered above the rest of the page,
+verified in the DOM as preceding the sources grid.
+
+### Gate line
+
+27 steps green. `link-check` **60,315 internal hrefs across 751 pages, 0 dead**. `listing-marks`
+**5,719 rows / 8,179 marks**. `unrecognised-rows` 0. `reachability` 1,787/1,787. At 1280 px and
+375 px: 0 body overflow, 0 clamped, the 1,017-character caveat whole, 5 source cards of which 3
+carry marks, 3 declared absences in the dashed unfilled box.
+
+**One story, not two.** PR-35 needs its fourth form built and P-114 is unstarted; both are written
+up above rather than begun at the end of a batch.
