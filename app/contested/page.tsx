@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
-import { ledger } from '@/lib/data';
-import { CONTESTED_GROUND_LABELS, DOMAIN_LABELS } from '@/lib/format';
-import { CONTESTED_GROUNDS } from '@/lib/types';
-import type { ContestedGround, LedgerRecord } from '@/lib/types';
-import { TwoReadings } from '@/components/TwoReadings';
+import type {Metadata} from 'next';
+import {ledger} from '@/lib/data';
+import {CONTESTED_GROUND_LABELS} from '@/lib/format';
+import {CONTESTED_GROUNDS} from '@/lib/types';
+import type {ContestedGround, LedgerRecord} from '@/lib/types';
+import {TwoReadings} from '@/components/TwoReadings';
 
 export const metadata: Metadata = { title: 'Contested — what would settle it' };
 
@@ -81,7 +81,7 @@ export default function ContestedIndex() {
       <p className="crumb">
         <Link href="/">instrument</Link> / contested
       </p>
-      <h1>Contested — and what would settle it</h1>
+      <h1 className="page-lead">Contested — and what would settle it</h1>
       <p className="lede">
         A record marked <span className="mono">contested</span> declines to choose between readings
         the evidence supports. That is a statement about the evidence and not a hedge — and the

@@ -102,12 +102,12 @@ export default async function LensPage({ params }: Props) {
             <table>
               <thead>
                 <tr>
-                  <th>Series</th>
-                  <th>Topic</th>
-                  <th>Unit</th>
-                  <th>Cal.</th>
-                  <th>Tier</th>
-                  <th className="num">Points</th>
+                  <th scope="col">Series</th>
+                  <th scope="col">Topic</th>
+                  <th scope="col">Unit</th>
+                  <th scope="col">Cal.</th>
+                  <th scope="col">Tier</th>
+                  <th scope="col" className="num">Points</th>
                   {/* THE SEAM COUNT, which this table alone omitted until 2026-08-08.
                       Its two sibling tables — the series index and the domain page — both carry
                       it, in alert red, and 24 of the 54 lensed series declare 33 seams between
@@ -115,7 +115,7 @@ export default async function LensPage({ params }: Props) {
                       break and a reader saw no sign of it. A seam is the one thing this
                       instrument refuses to let a reader splice across, so a listing that hides
                       it is not a density choice. */}
-                  <th>Breaks</th>
+                  <th scope="col">Breaks</th>
                 </tr>
               </thead>
                 {s.map((x) => (
@@ -166,14 +166,14 @@ export default async function LensPage({ params }: Props) {
             <table>
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Date</th>
-                  <th>Term</th>
-                  <th>Record</th>
-                  <th>Topic</th>
-                  <th>Assessment</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Term</th>
+                  <th scope="col">Record</th>
+                  <th scope="col">Topic</th>
+                  <th scope="col">Assessment</th>
                   {/* Same column as /ledger, /terms and the domain page — see the note there. */}
-                  <th>Conf.</th>
+                  <th scope="col">Conf.</th>
                 </tr>
               </thead>
                 {[...led]
@@ -217,10 +217,10 @@ export default async function LensPage({ params }: Props) {
           <table>
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Pair</th>
-                <th>Topic</th>
-                <th>Kind</th>
+                <th scope="col">ID</th>
+                <th scope="col">Pair</th>
+                <th scope="col">Topic</th>
+                <th scope="col">Kind</th>
               </tr>
             </thead>
             <tbody>

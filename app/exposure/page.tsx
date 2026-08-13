@@ -139,7 +139,7 @@ export default function ExposureIndex() {
       <p className="crumb">
         <Link href="/">instrument</Link> / exposure
       </p>
-      <h1>Exposure — what the corpus does with an exogenous defence</h1>
+      <h1 className="page-lead">Exposure — what the corpus does with an exogenous defence</h1>
       <p className="lede">
         When an outcome is bad and a pandemic, a commodity shock or a foreign tariff can be pointed
         at, the defence writes itself. <strong>These are the records where this instrument was
@@ -241,9 +241,9 @@ export default function ExposureIndex() {
         <table>
           <thead>
             <tr>
-              <th>Record</th>
-              <th>Verdict</th>
-              <th>The exposure, and what the record says about it</th>
+              <th scope="col">Record</th>
+              <th scope="col">Verdict</th>
+              <th scope="col">The exposure, and what the record says about it</th>
             </tr>
           </thead>
           {declaring.map((l) => (

@@ -13,7 +13,7 @@ export default function TermsIndex() {
       <p className="crumb">
         <Link href="/">instrument</Link> / terms of government
       </p>
-      <h1>Terms</h1>
+      <h1 className="page-lead">Terms</h1>
       <p className="lede">
         The baseline is frozen at May 2014 and carried as context, not scored. T3 is living:
         records in it are provisional by construction.

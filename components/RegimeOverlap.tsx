@@ -34,9 +34,9 @@ export function RegimeOverlap({ regimes }: { regimes: Series[] }) {
       <table>
         <thead>
           <tr>
-            <th>Fiscal year</th>
+            <th scope="col">Fiscal year</th>
             {regimes.map((s) => (
-              <th key={s.id} className="num">
+              <th scope="col" key={s.id} className="num">
                 {baseLabel(s)}
               </th>
             ))}

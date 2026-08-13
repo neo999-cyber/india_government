@@ -21,7 +21,8 @@ export const metadata: Metadata = { title: routeLabel('/series/') };
 // The span derivation, the frontier and the axis now live in `lib/spans.ts`, shared with the
 // year pages. One definition of what a span IS; see that file's header for why.
 
-const yearOfPeriod = (p: string) => Number(String(p).replace(/^FY/, '').slice(0, 4));
+// `yearOfPeriod` was here and is gone: the comment above says the span derivation moved to
+// `lib/spans.ts`, and this local was the last thing left behind by that move.
 
 export default function SeriesIndex() {
   const rows = spanRows();
@@ -42,7 +43,7 @@ export default function SeriesIndex() {
       <p className="crumb">
         <Link prefetch={false} href="/">instrument</Link> / indicator series
       </p>
-      <h1>Indicator series</h1>
+      <h1 className="page-lead">Indicator series</h1>
       <p className="lede">
         {series.length} series. Every series names its calendar and never mixes calendars
         internally; every break is carried as a seam rather than smoothed away.
@@ -116,14 +117,14 @@ export default function SeriesIndex() {
         <table id="series-table">
           <thead>
             <tr>
-              <th>Series</th>
-              <th>Domain</th>
-              <th>Unit</th>
-              <th>Cal.</th>
-              <th>Tier</th>
-              <th className="num">Points</th>
-              <th>Span</th>
-              <th>Breaks</th>
+              <th scope="col">Series</th>
+              <th scope="col">Domain</th>
+              <th scope="col">Unit</th>
+              <th scope="col">Cal.</th>
+              <th scope="col">Tier</th>
+              <th scope="col" className="num">Points</th>
+              <th scope="col">Span</th>
+              <th scope="col">Breaks</th>
             </tr>
           </thead>
             {series.map((s) => {

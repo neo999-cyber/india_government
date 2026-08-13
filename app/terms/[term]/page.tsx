@@ -93,13 +93,13 @@ export default async function TermPage({ params }: Props) {
           <table>
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Record</th>
-                <th>Type</th>
-                <th>Domains</th>
-                <th>Assessment</th>
-                <th>Conf.</th>
+                <th scope="col">ID</th>
+                <th scope="col">Date</th>
+                <th scope="col">Record</th>
+                <th scope="col">Type</th>
+                <th scope="col">Domains</th>
+                <th scope="col">Assessment</th>
+                <th scope="col">Conf.</th>
               </tr>
             </thead>
               {[...records]

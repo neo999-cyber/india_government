@@ -89,8 +89,8 @@ export default async function ProvenanceDetail({ params }: Props) {
             <table>
               <thead>
                 <tr>
-                  <th>Holder</th>
-                  <th>Position</th>
+                  <th scope="col">Holder</th>
+                  <th scope="col">Position</th>
                 </tr>
               </thead>
               <tbody>

@@ -26,7 +26,11 @@
       "@/*": [
         "./*"
       ]
-    }
+    },
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true
   },
   "include": [
     "next-env.d.ts",

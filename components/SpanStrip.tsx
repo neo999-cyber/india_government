@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import type { Series } from '@/lib/types';
 
 /**
  * THE SPAN STRIP — 269 series as spans on one shared axis, sorted by first observation.

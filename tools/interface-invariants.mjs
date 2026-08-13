@@ -83,6 +83,32 @@ function hasOverviewBody(html) {
   return /class="dlead"/.test(html);
 }
 
+/**
+ * INVARIANT 4 — EVERY INDEX SURFACE'S h1 CARRIES A LEAD CLASS.
+ *
+ * The type scale had no role rule: 21 index routes split 4 / 1 / 16 across three sizes, and which
+ * one a page got was an accident of which template had received a class. The rule is now stated in
+ * `app/globals.css` — index surfaces take `page-lead`, stories `story-lead`, the landing and the
+ * overview board `home-lead`, and record pages keep the bare h1 because they are read after
+ * arriving rather than arrived at.
+ *
+ * **THIS BINDS INDEX ROUTES ONLY.** A record page (`/series/<id>/`, `/ledger/<id>/`) is out of scope
+ * by construction and a bare h1 there is correct. The list is the routes in `ROUTES` from
+ * `lib/routes.ts` — so adding a destination to the registry brings it under this check, which is
+ * the point of having the registry.
+ */
+const INDEX_ROUTES = [
+  'overview', 'domains', 'questions', 'stories', 'search', 'series', 'ledger', 'provenance',
+  'contested', 'unmeasured', 'exposure', 'lenses', 'terms', 'peers', 'years', 'publishers',
+  'method', 'derivations', 'corrections', 'data', 'counterfactual',
+];
+function leadClass(html) {
+  const m = html.match(/<h1\b([^>]*)>/);
+  if (!m) return null;
+  const c = (m[1].match(/class="([^"]*)"/) || [])[1] || '';
+  return /\b(page-lead|home-lead|story-lead)\b/.test(c) ? c.trim() : '';
+}
+
 /** INVARIANT 3 — a non-overview tab says what it contains. */
 function hasOrientation(html) {
   return /class="dtab-orient/.test(html);
@@ -121,6 +147,13 @@ if (process.argv.includes('--control')) {
   if (leakedSource("orders were enumerated, not as a wildcard listing: a /web/*/ URL is the archive's search interface, and a second /web/*/ appears further down the same record").length !== 0)
     throw new Error('control FAILED: two /web/*/ URLs on one page were paired into a false leak');
 
+  if (leadClass('<h1 class="page-lead">Indicator series</h1>') !== 'page-lead')
+    throw new Error('control FAILED: a lead class was not detected');
+  if (leadClass('<h1>All-India raw coal production</h1>') !== '')
+    throw new Error('control FAILED: a bare h1 was not reported as unclassed');
+  if (leadClass('<p>no heading here</p>') !== null)
+    throw new Error('control FAILED: a page with no h1 was not distinguished from one with a bare h1');
+
   console.log(
     'interface-invariants --control — a leaked block comment in page text is caught, ordinary prose is not, and the Internet Archive /web/*/ URL that four records quote is not; two live count regions are rejected and one is accepted; a tab carrying the overview lead figure is rejected and a tab carrying only its orientation line and its own table is accepted',
   );
@@ -133,6 +166,7 @@ if (!existsSync(OUT)) {
 }
 
 const problems = [];
+let indexChecked = 0;
 
 // --- 0. leaked source across every built page ------------------------------------------------
 {
@@ -162,6 +196,24 @@ const problems = [];
     problems.push(
       `${leaked} page(s) render comment delimiters in their text — a block comment placed in JSX is text, not a comment. First: ${shown.join(' | ')}`,
     );
+}
+
+// --- 4. the type scale on index surfaces ------------------------------------------------------
+{
+  let checked = 0;
+  for (const r of INDEX_ROUTES) {
+    const p = join(OUT, r, 'index.html');
+    if (!existsSync(p)) continue;
+    checked += 1;
+    const c = leadClass(readFileSync(p, 'utf8'));
+    if (c === null) problems.push(`/${r}/ has no h1 at all`);
+    else if (c === '') problems.push(`/${r}/ has a bare h1 — an index surface takes a lead class, see the type-scale rule in app/globals.css`);
+  }
+  indexChecked = checked;
+  if (checked < INDEX_ROUTES.length - 2) {
+    console.error(`interface-invariants: only ${checked} of ${INDEX_ROUTES.length} index routes were found in the build. A shrunken scope is a broken scan.`);
+    process.exit(2);
+  }
 }
 
 // --- 1. the search readout -------------------------------------------------------------------
@@ -213,6 +265,6 @@ if (problems.length) {
   process.exit(1);
 }
 console.log(
-  `interface-invariants OK — /search/ states its count in 1 live region; ${tabs} domain tab(s) across ${overviews} topic(s) carry their own body and an orientation line, and none carries the overview's` +
+  `interface-invariants OK — /search/ states its count in 1 live region; ${tabs} domain tab(s) across ${overviews} topic(s) carry their own body and an orientation line, and none carries the overview's; ${indexChecked} index surface(s) carry a lead class` +
     (verbose ? ' · CANNOT bind: count updates on interaction, rendered target size, keyboard traversal, 375px overflow' : ''),
 );

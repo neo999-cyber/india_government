@@ -46,7 +46,7 @@ export default function DataPage() {
       <p className="crumb">
         <Link href="/">instrument</Link> / the data
       </p>
-      <h1>The data</h1>
+      <h1 className="page-lead">The data</h1>
       <p className="lede">
         The whole corpus — {total} records — as schema-validated JSON, with its schemas beside it,
         at a versioned path. Everything on this site is rendered from these files and nothing is
@@ -58,9 +58,9 @@ export default function DataPage() {
         <table>
           <thead>
             <tr>
-              <th>File</th>
-              <th>Records</th>
-              <th>What it holds</th>
+              <th scope="col">File</th>
+              <th scope="col">Records</th>
+              <th scope="col">What it holds</th>
             </tr>
           </thead>
           <tbody>

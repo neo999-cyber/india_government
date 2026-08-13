@@ -76,7 +76,8 @@ export const pairs: Pair[] = loadPairs();
 const seriesById = new Map(series.map((s) => [s.id, s]));
 const ledgerById = new Map(ledger.map((l) => [l.id, l]));
 const provenanceById = new Map(provenance.map((p) => [p.id, p]));
-const pairById = new Map(pairs.map((p) => [p.id, p]));
+// `pairById` lived here and its only consumer was withdrawn 2026-08-08; the note below records
+// that removal and its reason. The index went with it.
 
 /**
  * REMOVED 2026-08-08, and the removal is recorded because its LAST SENTENCE was the defect.

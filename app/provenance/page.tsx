@@ -21,7 +21,7 @@ export default function ProvenanceIndex() {
       <p className="crumb">
         <Link prefetch={false} href="/">instrument</Link> / measurement disputes
       </p>
-      <h1>Measurement disputes</h1>
+      <h1 className="page-lead">Measurement disputes</h1>
       <p className="lede">
         {provenance.length} records, {unbridged} of them with no accepted reconciliation across
         the break. These are first-class citizens of the instrument: where a dispute exists, it
@@ -46,13 +46,13 @@ export default function ProvenanceIndex() {
         <table id="provenance-table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Dispute</th>
-              <th>When</th>
-              <th>Domains</th>
-              <th>Direction of bias</th>
-              <th>Bridge</th>
-              <th className="num">Accounts</th>
+              <th scope="col">ID</th>
+              <th scope="col">Dispute</th>
+              <th scope="col">When</th>
+              <th scope="col">Domains</th>
+              <th scope="col">Direction of bias</th>
+              <th scope="col">Bridge</th>
+              <th scope="col" className="num">Accounts</th>
             </tr>
           </thead>
           <tbody>

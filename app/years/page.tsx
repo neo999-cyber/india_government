@@ -61,11 +61,11 @@ export default function YearsIndex() {
         <table>
           <thead>
             <tr>
-              <th>Year</th>
-              <th>Records begin</th>
-              <th>Observations</th>
-              <th>Basis changes</th>
-              <th>Declare an exposure</th>
+              <th scope="col">Year</th>
+              <th scope="col">Records begin</th>
+              <th scope="col">Observations</th>
+              <th scope="col">Basis changes</th>
+              <th scope="col">Declare an exposure</th>
             </tr>
           </thead>
           <tbody>

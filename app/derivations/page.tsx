@@ -85,7 +85,9 @@ function render(md: string): ReactNode[] {
     if (h) {
       const k = key();
       const text = inline(h[2], k);
-      if (h[1].length === 1) out.push(<h1 key={k}>{text}</h1>);
+      // `page-lead` here too: this page is an index surface like every other, and its h1 comes from
+      // the generated markdown rather than from JSX, which is the only reason it was missed.
+      if (h[1].length === 1) out.push(<h1 key={k} className="page-lead">{text}</h1>);
       else if (h[1].length === 2) out.push(<h2 key={k}>{text}</h2>);
       else out.push(<h3 key={k}>{text}</h3>);
       i += 1;
@@ -111,7 +113,7 @@ function render(md: string): ReactNode[] {
             <thead>
               <tr>
                 {head.map((c, x) => (
-                  <th key={x} className={align[x]}>
+                  <th scope="col" key={x} className={align[x]}>
                     {inline(c, `${k}h${x}`)}
                   </th>
                 ))}

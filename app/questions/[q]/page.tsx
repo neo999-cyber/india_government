@@ -124,12 +124,12 @@ function MoveTable({ rows }: { rows: DirectedMove[] }) {
       <table>
         <thead>
           <tr>
-            <th>Indicator</th>
-            <th>Direction of merit</th>
-            <th>From</th>
-            <th>To</th>
-            <th>Obs.</th>
-            <th>Topic</th>
+            <th scope="col">Indicator</th>
+            <th scope="col">Direction of merit</th>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">Obs.</th>
+            <th scope="col">Topic</th>
           </tr>
         </thead>
         {rows.map(({ s, from, to, n }) => (
@@ -183,9 +183,9 @@ function Stopped() {
         <table>
           <thead>
             <tr>
-              <th>Indicator</th>
-              <th>Last observation</th>
-              <th>Topic</th>
+              <th scope="col">Indicator</th>
+              <th scope="col">Last observation</th>
+              <th scope="col">Topic</th>
             </tr>
           </thead>
           {rows.map(({ s, end }) => (
@@ -219,10 +219,10 @@ function MeasuredWell() {
       <table>
         <thead>
           <tr>
-            <th>Indicator</th>
-            <th>Observations</th>
-            <th>Source grade</th>
-            <th>Topic</th>
+            <th scope="col">Indicator</th>
+            <th scope="col">Observations</th>
+            <th scope="col">Source grade</th>
+            <th scope="col">Topic</th>
           </tr>
         </thead>
         {rows.map((s) => (
@@ -258,11 +258,11 @@ function TooEarly() {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Date</th>
-            <th>Term</th>
-            <th>Record</th>
-            <th>Verdict</th>
+            <th scope="col">ID</th>
+            <th scope="col">Date</th>
+            <th scope="col">Term</th>
+            <th scope="col">Record</th>
+            <th scope="col">Verdict</th>
           </tr>
         </thead>
         {rows.map((l) => (
@@ -304,9 +304,9 @@ function Disagree() {
       <table>
         <thead>
           <tr>
-            <th>Pair</th>
-            <th>The two instruments</th>
-            <th>Topic</th>
+            <th scope="col">Pair</th>
+            <th scope="col">The two instruments</th>
+            <th scope="col">Topic</th>
           </tr>
         </thead>
         {rows.map((p) => {

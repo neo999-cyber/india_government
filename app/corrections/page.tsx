@@ -64,7 +64,7 @@ export default function Corrections() {
       <p className="crumb">
         <Link href="/">instrument</Link> / corrections
       </p>
-      <h1>What this instrument has changed its mind about</h1>
+      <h1 className="page-lead">What this instrument has changed its mind about</h1>
       <p className="lede">
         Records are corrected in place — that is what <span className="mono">/data</span> is — and
         the withdrawn wording stays inside the field that changed. This page is the other half:
@@ -146,11 +146,11 @@ export default function Corrections() {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Record</th>
-              <th>Moved</th>
-              <th>Date</th>
-              <th>In</th>
+              <th scope="col">ID</th>
+              <th scope="col">Record</th>
+              <th scope="col">Moved</th>
+              <th scope="col">Date</th>
+              <th scope="col">In</th>
             </tr>
           </thead>
           {rows.map((r) => (
