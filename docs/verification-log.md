@@ -19649,3 +19649,58 @@ one, with nothing changed, is not verification — it is the same coin landing t
 29 build steps green from a cold `.next`; **15 e2e tests pass** — which is the check that matters
 here, because fonts change text metrics and the target-size and overflow assertions are measured on
 rendered boxes.
+
+---
+
+## 2026-08-13 (seventy-fifth entry) — `nh-network`: RAISED WITH ITS EVIDENCE, GATED, AND NOT EDITED
+
+The last item on the audit's list, and the only one that ends in a handoff rather than a fix.
+
+### WHAT IT IS
+
+Two series answer to the identical title *"National highway network length"* — **the only duplicate
+title anywhere in the corpus**, measured across 269 series, 223 ledger and 127 provenance records.
+
+`nh-network` entered in **`ddfead7`, "Phase 0: validation gate and static-export scaffold"**: one
+point, **no caveat**, no `provenanceRefs`, a bare-root source with no vintage, cited by nothing, and
+never once named in this log. `nh-network-length` entered in **phase 5** with P-30, P-31, a vintaged
+source, five points and the caveat this log elsewhere calls **rule 3a's hardest test** — *roughly
+54,004 km of the ~55,000 km increase since April 2014 is reclassification of existing state roads*.
+
+**Its single point is the first point of the other series.** Its note reads *"April 2014;
+construction pace 11.6 km/day"*; the other's reads *"Phase-1 baseline"*.
+
+**So the corpus publishes the headline network figure twice: once qualified, once bare.** That is
+worse than two rows a reader cannot tell apart, which is how the finding was first described.
+
+### WHY IT WAS NOT FIXED HERE, AND THE RULE THAT SAYS SO
+
+`/data` is research-owned. The narrow source-edit amendment lets a batch apply a correction it
+raised **only where the evidence is a document retrieved in that run** — here the evidence is the
+corpus and its own git history, so the amendment does not reach it. **Whether `nh-network` is
+superseded or a distinct measurement that coincides is a claim about the record, and every signal
+above is consistent with either a scaffold left behind or a record nobody finished.**
+
+The brief is written into `STATE.md` in full, including what a correction may not touch: additive
+only, no `points[]`, no schema change — the series schema has no supersession field and `notes`
+carries this case without one.
+
+### WHAT THE CODE SESSION DID INSTEAD
+
+**`tools/distinct-titles.mjs`, in the build.** No two records in a layer share a title. Ids are
+unique by construction so nothing else in the chain looked, and `unrecognised-rows` enforces only
+that a title-named record sits in a listing shape, not that the title identifies one record.
+
+**The pair is exempted BY ID, not by title text** — a text exemption would also silence a genuinely
+new record reusing the words. **The exemption exists so a second duplicate cannot arrive unnoticed
+behind the first**, which is exactly what a report-only tool would have permitted. When the research
+pass resolves it, the entry is deleted and the gate holds the whole corpus with no exemption.
+
+Controls: a duplicate differing only in case and spacing is caught and its records named; distinct
+titles are not; the known pair matches in either id order and an unrelated pair does not. Plus a
+floor — fewer than 500 records loaded exits 2, because a shrunken corpus is a broken scan.
+
+### Gate line
+
+**30 build steps green** — `distinct-titles` is new. 619 records across 3 layers, every title naming
+exactly one record, 1 pair exempted by id.
