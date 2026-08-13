@@ -40,6 +40,12 @@ export default defineConfig({
   // EACH SPEC RUNS AT THE ONE WIDTH IT IS ABOUT, declared here rather than skipped inside the test.
   // The first version used `test.skip` at describe level and every spec ran in both projects and
   // then errored, which is a suite that reports failure without testing anything.
+  //
+  // **A SPEC NAMED IN NEITHER `testMatch` RUNS ZERO TESTS AND THE SUITE STILL REPORTS GREEN.**
+  // `constellation.spec.ts` was written, saved, and reported as passing by a run that never opened
+  // it — the count stayed at 17 and nothing said why. That is the `gate-scope` defect one level up:
+  // the suite passed while examining less than it was asked to. **A new spec file must be added to
+  // a project here, and the count in the run output is the thing that proves it was.**
   projects: [
     {
       name: 'desktop',
@@ -48,7 +54,7 @@ export default defineConfig({
     },
     {
       name: 'mobile',
-      testMatch: /(keyboard-scroll|overflow)\.spec\.ts/,
+      testMatch: /(keyboard-scroll|overflow|constellation)\.spec\.ts/,
       use: { ...devices['Desktop Chrome'], viewport: { width: 375, height: 812 } },
     },
   ],
