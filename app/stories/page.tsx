@@ -44,6 +44,14 @@ export default function StoriesIndex() {
             count deaths, and they do not sit where you would expect
           </span>
         </Link>
+        <Link href="/stories/how-renewable/">
+          <span className="label">Environment · one publisher, four answers</span>
+          <span className="grid-title">How much of India&rsquo;s electricity is renewable?</span>
+          <span className="grid-meta">
+            Four official figures for the same year, all correct, from 16.88 per cent to 53.21 — and
+            coal production nearly doubled underneath them
+          </span>
+        </Link>
       </div>
     </>
   );
