@@ -1,103 +1,154 @@
-# National delimitation — scope settled, record specified, authoring owed to research
+# National delimitation — scope settled, primaries retrieved, one fact short of a record
 
-**Raised 2026-08-13 by the phase-13 completeness check. Scope question answered here. The record
-itself is not written, and the reason is a rule rather than effort.**
-
----
-
-## 1. THE GAP, MEASURED
-
-**Of 82 federalism records, exactly one mentions delimitation at all — and it is a Jammu and Kashmir
-record.** Across the whole corpus, **15 records use delimitation vocabulary and every one is J&K**:
-`L-0141` is the substantive one, *"Delimitation of Jammu and Kashmir: one Commission table…"*.
-
-**The corpus holds no record on national delimitation** — the freeze on reallocating Lok Sabha seats
-between states. Stated as rule 5d requires: *the corpus contains no such record*, which is checkable
-from the corpus, not *nothing exists in the world*.
+**Raised 2026-08-13 by the phase-13 check. Scope settled. Two primary documents retrieved and held.
+The record is still not written, and the reason is now specific rather than general.**
 
 ---
 
-## 2. SCOPE — SETTLED BY THE CORPUS'S OWN PRACTICE, NOT BY OPINION
+## 1. THE BRIEF'S OWN PREMISE WAS WRONG, AND RETRIEVAL IS WHAT SHOWED IT
 
-The objection to opening a record is that **nothing has happened yet**: the freeze has not lifted, so
-there is no event to score. That objection does not survive contact with what the corpus already
-carries.
+The first version of this brief argued the record was in scope **even though nothing had happened
+yet** — a pending constitutional trigger, on the `L-0225` precedent.
 
-**19 ledger records score something unresolved:**
+**Something has happened.** Three Bills were introduced in Lok Sabha on **16 April 2026**, and two of
+them are the subject:
 
-| assessment | n |
-|---|---|
-| `too-early` | 13 |
-| `awaiting-adjudication` | 4 |
-| `undated-commitment` | 2 |
+- **Bill No. 107 of 2026** — the Constitution (One Hundred and Thirty-first Amendment) Bill, 2026
+- **Bill No. 108 of 2026** — the Delimitation Bill, 2026
 
-**The governing precedent is `L-0225`**, read rather than assumed:
-
-- title: *"Net zero by 2070 is one sentence: a year, and no statement of what is being zeroed"*
-- `assessment: too-early` · `term: T2` · `date: 2021-11-01` · 2 sources, both T1 · `objectives: 0`
-
-**A target 44 years out, scored `too-early`, on two primary sources and a quoted claim at launch.** A
-constitutional trigger due after the next census is nearer than that and far more concrete.
-
-**So a pending national-delimitation record is in scope.** The instrument already carries pending
-triggers; this one is not a new kind of object.
+Both texts were retrieved in this run and are quoted below. **A brief written from the corpus alone
+asserted a state of the world that one retrieval overturned** — which is rule 5d's whole point,
+demonstrated against my own writing.
 
 ---
 
-## 3. WHY IT IS NOT WRITTEN HERE
+## 2. WHAT THE PRIMARIES SAY — verbatim, from documents retrieved 2026-08-13
 
-**Authoring a ledger record means asserting a verdict about the Indian state.** That is the
-instrument's core work product, and the roles rule reserves it: *chat sessions own research and the
-truth of `/data` records, drafted to schema and delivered to `/data/incoming/`.*
+**Retrieval path:** both PDFs from `prsindia.org/files/bills_acts/bills_parliament/2026/`. Under the
+mirror rule the document keeps the tier it earns — **a Bill as introduced in Lok Sabha is a primary**
+— and the path is recorded because the host is not the publisher.
 
-**The narrow source-edit amendment does not reach it either.** That permits a run to apply a
-correction it raised, to *a citation, a reason, a scope or a wording* — **never an `assessment`**. A
-new record is an assessment plus everything under it.
+### Bill No. 107, on the freeze
 
-**And the evidence is not held.** Every source would have to be retrieved in the authoring run — rule
-3: *a document is a source only if it was retrieved in this run.* Nothing in this corpus can stand in
-for that.
+> *"4. In article 82 of the Constitution,–– … (d) the third proviso shall be omitted."*
+
+**The third proviso is the freeze.** The Bill's own Statement of Objects and Reasons says what it
+does:
+
+> *"The third proviso to article 82 and the third proviso to clause (3), of article 170, inter alia,
+> provide that there shall be no fresh readjustment of constituencies until the relevant figures for
+> the first census taken after the year 2026 have been published."*
+
+### On the size of the House
+
+> *"(1) The House of the People shall consist of— (a) not more than eight hundred and fifteen members
+> chosen by direct election from territorial constituencies in the States; and (b) not more than
+> thirty-five members to represent the Union territories…"*
+
+### On which census
+
+> *"'population' means the population as ascertained at such census, as Parliament may by law
+> determine, of which the relevant figures have been published."*
+
+### THE STATED OBJECTIVE IS NOT SEAT REALLOCATION — AND THIS IS THE FINDING
+
+The Statement of Objects and Reasons puts women's reservation first, and delimitation as its vehicle:
+
+> *"6. The next census and the consequential delimitation exercise thereafter will take considerable
+> time and thus, delay the effective and dedicated participation of women in our democratic polity.
+> Hence, the objective of the proposed Bill is to operationalise one-third reservation for women…
+> through delimitation exercise to be undertaken on the basis of the population figures of the latest
+> published census."*
+
+It also records what the earlier amendments did:
+
+> *"The Constitution (Eighty-fourth Amendment) Act, 2001 amended articles 55, 81, 82, 170, 330 and 332
+> to freeze the allocation of seats … on the basis of the 1971 census until the first census conducted
+> after the year 2026, while providing for the readjustment of territorial constituencies on the basis
+> of the figures of the 1991 census."*
+
+> *"the Constitution (Eighty-seventh Amendment) Act, 2003 amended articles 81, 82, 170 and 330 to
+> provide for readjustment of territorial constituencies … based on the figures of 2001 census,
+> without affecting the total number of seats allotted to the States."*
+
+### Bill No. 108, the machinery
+
+> *"to provide for the readjustment of the allocation of seats in the House of the People to the
+> States and Union territories…"* and it defines *"'latest census figures' means the latest census
+> figures published as on the date of the constitution of the Commission"*.
 
 ---
 
-## 4. WHAT THE RECORD HAS TO CONTAIN — the specification, so a research pass does not re-derive it
+## 3. THE ONE FACT THAT STOPS THE RECORD
 
-**Structure**, following `L-0225` as the nearest precedent:
+**A think-tank bill tracker states the Constitution (131st Amendment) Bill was NEGATIVED in Lok Sabha
+on 17 April 2026** — the day after introduction. Read verbatim from that page:
 
-- **`claimAtLaunch`** — the constitutional text creating the freeze, quoted, with the instrument
-  named and the article number. Not a paraphrase: Ruling 5 requires the duty **in the instrument's
-  own words** where an objective is imposed rather than announced.
-- **`sources[]`** — the amendment text and any census-timing instrument, each retrieved in the run and
-  tiered. **A bare domain root is not a citation** (`no-bare-root` is in the build); deep-link each.
-- **`date`** — see the trap below.
-- **`domains`** — `federalism` at minimum. `governance` if the record is about the mechanism rather
-  than the distribution.
-- **`assessment`** — the available values, given the rulings:
-  - **`too-early`** if the record is about the trigger and its consequences, which is `L-0225`'s shape.
-  - **`undated-commitment`** is likely WRONG: Ruling 3 covers *a stated, quantified commitment with no
-    deadline*, and this has a deadline in the instrument.
-  - **`no-objective`** is wrong: an objective exists and is imposed. Ruling 5.
+> *"Introduced Lok Sabha Apr 16, 2026 · Negatived Lok Sabha Apr 17, 2026"*
+
+**That is an ACCOUNT, and under the mirror rule an account is T4.** The primary was sought and not
+retrieved:
+
+- `sansad.in/ls/legislation/bills` returns **HTTP 200 and a JavaScript shell** — the bill table is
+  empty in the HTML and the page itself says to *"refer to the Gazette copies of the Acts and Bills
+  for authentic version"*. **Under rule 3 that is not a retrieval.** No data endpoint is exposed in
+  the served HTML.
+- `loksabha.nic.in` returns **HTTP 000** and does not resolve under `dig +short @1.1.1.1`.
+- `egazette.gov.in` is up (HTTP 200), **but a negatived Bill is not gazetted** — only enacted Acts
+  are, so the gazette cannot confirm a defeat.
+
+**Environment fact established in this run, per M1** (retested from a second client): 
+`legislative.gov.in` returns **403 to WebFetch and 200 to curl with a browser user-agent.** It is not
+unreachable; it refuses one client.
+
+### WHY THAT ONE FACT IS DECISIVE
+
+**The verdict turns on it entirely.** If the Bill was defeated, the record is about an attempt that
+failed; if it is live, the record is about a pending change. Those are different records with
+different assessments.
+
+**And a verdict resting on a single T4 account is exactly what this instrument refuses.** The
+governing principle: *no record or claim stands on a source that is not credibly independent of what
+it establishes* — and one tracker, uncorroborated, on the pivotal fact, is not a basis for scoring
+the defeat of a constitutional amendment.
+
+---
+
+## 4. WHAT A RESEARCH PASS NEEDS TO DO — and it is now one step, not a survey
+
+**Retrieve the Lok Sabha record of 17 April 2026.** Bulletin Part I, the day's Revised List of
+Business, or the debate transcript. Any one of them settles it and makes the record writable
+immediately, because everything else is already held and quoted above.
+
+**Then the assessment follows from what that document says**, and the rulings narrow it:
+
+- **Negatived** → the record is about a failed attempt. Note the special-majority requirement for a
+  constitutional amendment; whether it fell for want of that is itself a fact to retrieve, not to
+  infer.
+- **Still live** → `too-early`, on the `L-0225` shape.
+- **`undated-commitment` is wrong either way** — Ruling 3 covers a commitment with no deadline, and
+  the freeze has one in the instrument.
+- **`no-objective` is wrong** — the objective is imposed by the Constitution and stated in the Bill's
+  own Statement of Objects and Reasons. Ruling 5.
 
 **Two traps, both live:**
 
-1. **`date` against `term`.** The validator warns only on the LATE side from 2026-08-13, so an
-   instrument date decades before the term is fine and expected — that narrowing was made for exactly
-   this class. Do not back-date the record to make a warning go away.
-2. **Rule 5d on the southern-states claim.** *"Southern states will lose seats"* is a projection, not
-   a measurement. It must be attributed to whoever projected it, with their method, or stated as a
-   range with each bound attributed — **or not stated at all.** The record is about a mechanism and
-   its timing; the distributional consequence is a modelled quantity and inherits every constraint on
-   one.
-
-**What would make the record `worked`, `failed` or `partly` is a later question.** Nothing has
-happened; `too-early` is the honest value today, and the record's job is to make the trigger visible
-before it fires rather than to score it.
+1. **`date` against `term`.** The validator warns only on the late side from 2026-08-13 — narrowed
+   for exactly this class — so an instrument date decades before the term is expected. **Do not
+   back-date a record to silence a warning.**
+2. **Rule 5d on the distributional claim.** *"Southern states will lose seats"* is a projection, not a
+   measurement. It must carry its method and attribution, or a range with each bound attributed, or
+   not be stated. **Note that the Bill's own stated objective is women's reservation** — a record that
+   leads with seat reallocation is describing the effect rather than the announced purpose, and under
+   the two-truths discipline both belong on the page.
 
 ---
 
-## 5. WHAT IS CLOSED AND WHAT IS NOT
+## 5. STATUS
 
-**Closed:** the phase-13 completeness question, and the scope question — a pending constitutional
-trigger is in scope, on precedent.
+**Closed:** phase-13 completeness; the scope question; and the premise that nothing had happened,
+which retrieval overturned.
 
-**Open, and research's:** the record. This brief is what it needs; it is not a substitute for it.
+**Held:** both Bill texts, quoted above, retrieved 2026-08-13.
+
+**Owed:** one primary — the Lok Sabha record of 17 April 2026 — and then the record itself.

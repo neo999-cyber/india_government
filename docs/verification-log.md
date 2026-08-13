@@ -20298,3 +20298,61 @@ must carry its method and attribution or a range with each bound attributed, or 
 ### Gate line
 
 30 steps green.
+
+---
+
+## 2026-08-13 (eighty-seventh entry) — DELIMITATION: I WROTE A BRIEF FROM THE CORPUS AND ONE RETRIEVAL OVERTURNED ITS PREMISE
+
+Directed to write the record. **Two primaries retrieved and held; the record is one document short,
+and the missing one is named.**
+
+### THE BRIEF I WROTE THIS MORNING ASSERTED SOMETHING FALSE
+
+It argued the record was in scope *even though nothing had happened yet* — a pending constitutional
+trigger on the `L-0225` precedent. **Three Bills were introduced in Lok Sabha on 16 April 2026.**
+
+**A brief written from the corpus alone asserted a state of the world that one retrieval
+overturned.** That is rule 5d demonstrated against my own writing on the same day I invoked it: *a
+claim about what EXISTS is not a claim about what the SOURCES CONTAIN, and only the second is
+checkable.* The scope reasoning survived; the premise did not.
+
+### WHAT IS HELD
+
+**Bill No. 107 of 2026**, the Constitution (131st Amendment) Bill, retrieved as PDF and quoted
+verbatim: *"In article 82 of the Constitution … the third proviso shall be omitted"* — the freeze —
+the House raised to *"not more than eight hundred and fifteen"* elected from the States plus 35 for
+Union territories, and a Statement of Objects and Reasons whose **stated objective is operationalising
+one-third reservation for women**, with delimitation as the vehicle rather than the aim. **Bill No.
+108**, the Delimitation Bill, is held too.
+
+Retrieval path recorded with the citation: both from a think-tank's file host. **Under the mirror
+rule the document keeps the tier it earns** — a Bill as introduced is a primary — and the path is
+noted because the host is not the publisher.
+
+### THE ONE FACT THAT STOPS THE RECORD, AND WHY IT STOPS IT
+
+A tracker states the Bill was **negatived on 17 April 2026**, the day after introduction. **That is
+an account, and an account is T4.** The primary was sought:
+
+- `sansad.in/ls/legislation/bills` — HTTP 200 and a **JavaScript shell**, bill table empty in the
+  HTML, the page itself directing readers to the Gazette. **Rule 3: not a retrieval.** No data
+  endpoint in the served HTML.
+- `loksabha.nic.in` — HTTP 000, does not resolve under `dig +short @1.1.1.1`.
+- `egazette.gov.in` — up, **but a negatived Bill is never gazetted**, so it cannot confirm a defeat.
+
+**The verdict turns on that fact entirely.** A failed attempt and a pending change are different
+records with different assessments. **A verdict resting on one uncorroborated T4 account is precisely
+what the governing principle refuses** — no claim stands on a source not credibly independent of what
+it establishes. So the record is not written, and what is owed is **one document**: the Lok Sabha
+record of 17 April 2026.
+
+### AND ONE ENVIRONMENT FACT, ESTABLISHED PER M1
+
+`legislative.gov.in` returns **403 to WebFetch and 200 to `curl` with a browser user-agent** —
+retested from a second client before being written down. **It refuses a client, it is not
+unreachable.** Added to CLAUDE.md's known-environment list with `sansad.in`'s JS shell and
+`loksabha.nic.in`'s failure to resolve, so the next run does not re-derive them.
+
+### Gate line
+
+30 steps green.
