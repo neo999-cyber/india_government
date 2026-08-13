@@ -28,13 +28,13 @@ last one had shipped. A file read cold at every session start is the one place s
 which is why the pins below now carry the gate output they were measured from.
 
 **THE LIVE BRIEF IS NOW `DESIGN-REVISION-2.md`** in this directory, and it has its own build order.
-**Items 1 to 5 have shipped; items 6 and 7 carry.** See the section below.
+**Items 1 to 6 have shipped; item 7 carries.** See the section below.
 
 ---
 
 ## OPEN ITEMS
 
-### DESIGN-REVISION-2 — items 1 to 5 SHIPPED, items 6 and 7 CARRY
+### DESIGN-REVISION-2 — items 1 to 6 SHIPPED, item 7 CARRIES
 
 `DESIGN-REVISION-2.md` is in this directory. Its §8 records five rejections with the rule each
 breaks, and §9 restates ten constraints; neither is re-derived.
@@ -118,7 +118,24 @@ of killing a deploy. **The fast check is `/data/v1/manifest.json`'s `commit` aga
 after thirty minutes. The durable fix is self-hosting both families via `next/font/local`; that is a
 build-config change with visual consequences and is not taken here.
 
-**ITEMS 6 AND 7 CARRY:** two-truths cards (§11) · stories (§8).
+**ITEM 6, TWO-TRUTHS CARDS — DONE 2026-08-13.** **The brief's own worked example fails its own
+test**: a text card is truncated linearly, so *"Higher-education enrolment rose from 21.2% to 30%."*
+is the half the platform keeps. The missing constraint is ORDER, and `lib/share-card.ts` already
+held it for absences. **THE TRUNCATION TEST — a card is admissible only if no prefix of it states a
+claim that standing alone would mislead** — is written where cards are composed.
+
+All 21 contested framings read one at a time: 18 pass, **PR-18 fails and is excluded** (its prefix
+is the claim its own rest overturns), PR-52 excluded as marginal, PR-60 included as marginal with
+the call recorded. **23 distinct series carry a card, 23 of 23 exact.** The no-figure floor lifts
+here and only here, because in these sentences the figures arrive already in tension.
+
+**OWED, SIZED, NOT STARTED — 122 two-truths sentences.** 122 series carry both an authored finding
+and a caveat and none has a card: the findings lead with the figure and qualify after an em-dash,
+which is the failing order, at a median 459 characters. Each needs one short qualification-first
+sentence written to the three checks the 237 findings went through. Same shape of work as those
+tranches. **The rule it must obey is in `lib/share-card.ts`, where the author will meet it.**
+
+**ITEM 7 CARRIES: stories (§8)** — its own sequence, read before it ships.
 
 ### CLOSED 2026-08-12 — DESIGN-REVISION.md items 1-4, and the authored series findings
 
