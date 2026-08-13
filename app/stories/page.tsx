@@ -28,6 +28,14 @@ export default function StoriesIndex() {
             Two national instruments, one question, and answers that point different ways
           </span>
         </Link>
+        <Link href="/stories/did-jobs-grow/">
+          <span className="label">Employment · measurement dispute</span>
+          <span className="grid-title">Did jobs grow after 2014?</span>
+          <span className="grid-meta">
+            Two surveys of the same quantity that disagree about the direction, and an official fall
+            made of something other than jobs
+          </span>
+        </Link>
       </div>
     </>
   );
