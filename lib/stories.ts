@@ -144,6 +144,32 @@ export const STORIES: Story[] = [
       { id: 'L-0226', kind: 'ledger', blurb: 'a rule and a plan that do not agree' },
     ],
   },
+  {
+    slug: 'what-counts-as-education-spending',
+    title: 'Is India spending more on education, or less?',
+    topic: 'Education',
+    card: 'Two totals in one table for the same years — one rises, one falls, and the 6 per cent target is measured against the one that rises',
+    signature: ['PR-22'],
+    rests: [
+      { id: 'P-66', kind: 'provenance', blurb: '' },
+      { id: 'P-65', kind: 'provenance', blurb: '' },
+      {
+        id: 'edu-spend-gdp-edu-depts',
+        kind: 'series',
+        blurb: 'the narrow numerator, which falls — and is not the one quoted against the target',
+      },
+      {
+        id: 'edu-spend-gdp-all-depts',
+        kind: 'series',
+        blurb: 'the broad numerator, which rises — the one Parliament is briefed on',
+      },
+      {
+        id: 'L-0102',
+        kind: 'ledger',
+        blurb: 'two official numerators moving in opposite directions, and what the target is measured against',
+      },
+    ],
+  },
 ];
 
 /** The stories resting on a record — the return route, and the reason this file exists. */
