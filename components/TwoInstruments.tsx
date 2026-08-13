@@ -41,7 +41,40 @@ type Line = {
 
 const yearOf = (p: string) => Number(String(p).replace(/^FY/, '').slice(0, 4));
 
-export function TwoInstruments({ lines, active }: { lines: Line[]; active: number }) {
+/**
+ * ============================ PARAMETERISED 2026-08-13, AND IT WAS SHIPPING WRONG =============
+ *
+ * This component was written for one story and used by a second, and **two things in it were
+ * hardcoded to the first**: the accessible name and the y-window.
+ *
+ * **The accessible name is the serious one.** The jobs story shipped an SVG whose `aria-label` read
+ * *"Two national instruments measuring Grade 3 reading in India, 2010 to 2024"* — so a screen
+ * reader on a page about employment was told it was looking at a reading assessment. Live, on
+ * production, and invisible to every gate: `field-render-audit` reads page TEXT and an `aria-label`
+ * is an attribute. Found by reading the previous batch's output as an adversary, which is the rule
+ * that exists for exactly this.
+ *
+ * **The y-window is the second.** `0–75` was correct for two percentage series in that range and
+ * squashed the jobs pair, which runs 3.1 to 9.05, into the bottom eighth of the plot — flattening
+ * the divergence that was the whole point of the page.
+ *
+ * **The reason the window is FIXED rather than fitted survives and is why `yMax` is a prop.** A
+ * scale fitted per step would let the emphasis step change the geometry, which would be the chart
+ * arguing. So the caller fixes it once for the whole story and it never moves with `active`.
+ */
+export function TwoInstruments({
+  lines,
+  active,
+  yMax = 75,
+  label,
+}: {
+  lines: Line[];
+  active: number;
+  /** Fixed for the whole story, never derived per step. See the header. */
+  yMax?: number;
+  /** The SVG's accessible name. Required in practice: the default names no subject. */
+  label?: string;
+}) {
   const years = lines.flatMap((l) => l.points.map((p) => yearOf(p.period)));
   const x0 = Math.min(...years);
   const x1 = Math.max(...years);
@@ -49,16 +82,17 @@ export function TwoInstruments({ lines, active }: { lines: Line[]; active: numbe
   const plotH = H - PAD.top - PAD.bottom;
 
   const x = (yr: number) => PAD.left + ((yr - x0) / (x1 - x0 || 1)) * plotW;
-  // A fixed 0–75 window: both series are percentages in that range, and a scale fitted to the data
-  // would let the emphasis step change the geometry, which would be the chart arguing.
-  const y = (v: number) => PAD.top + plotH - (v / 75) * plotH;
+  // Fixed by the caller for the whole story: a scale fitted to the data would let the emphasis
+  // step change the geometry, which would be the chart arguing. See the header for why it moved
+  // from a constant to a prop.
+  const y = (v: number) => PAD.top + plotH - (v / yMax) * plotH;
 
   // Step 0 introduces ASER alone; every later step shows both. -1 (no JS, reduced motion) shows both.
   const shown = (i: number) => active !== 0 || i === 0;
 
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="two-svg" role="img"
-      aria-label="Two national instruments measuring Grade 3 reading in India, 2010 to 2024, on separate scales. They do not agree.">
+      aria-label={label ?? `Two instruments, ${x0} to ${x1}, on separate scales. They do not agree.`}>
       {[0, 25, 50, 75].map((t) => (
         <line key={t} x1={PAD.left} x2={W - PAD.right} y1={y(t)} y2={y(t)} className="two-grid" />
       ))}

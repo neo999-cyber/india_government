@@ -194,7 +194,17 @@ export default function Story() {
         at the end.
       </p>
 
-      {lines.length === 2 ? <StoryScroller steps={STEPS} lines={lines} /> : null}
+      {lines.length === 2 ? (
+        <StoryScroller
+          steps={STEPS}
+          lines={lines}
+          /* 10, not the component's old hardcoded 75: these two run 3.1 to 9.05, and on a 0-75
+             window the divergence that is the whole point of the page sat in the bottom eighth.
+             Fixed for the story, so the emphasis step never changes the geometry. */
+          yMax={10}
+          figureLabel="Two surveys of the Indian unemployment rate, 2017-18 to 2025-26, on one scale because both measure the same quantity. They disagree about the direction."
+        />
+      ) : null}
 
       {/* THE INSTRUCTION IS THE CORPUS'S OWN, AND IT RENDERS IN FULL. L-0058's caveat says the
           record must not be resolved in either direction. A story is exactly the surface most

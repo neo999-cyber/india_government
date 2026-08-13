@@ -36,6 +36,14 @@ export default function StoriesIndex() {
             made of something other than jobs
           </span>
         </Link>
+        <Link href="/stories/who-counts-the-dead/">
+          <span className="label">Kashmir · who publishes</span>
+          <span className="grid-title">Who counts the dead in Kashmir?</span>
+          <span className="grid-meta">
+            Twenty-seven of thirty indicators are published by the state; the three that are not all
+            count deaths, and they do not sit where you would expect
+          </span>
+        </Link>
       </div>
     </>
   );

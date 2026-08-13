@@ -162,7 +162,14 @@ export default function Story() {
       </p>
 
       {lines.length === 2 ? (
-        <StoryScroller steps={STEPS} lines={lines} />
+        <StoryScroller
+          steps={STEPS}
+          lines={lines}
+          /* 75 was this component's hardcoded constant until 2026-08-13 and is now stated here, so
+             this page's geometry is unchanged and the number belongs to the story that chose it. */
+          yMax={75}
+          figureLabel="Two national instruments measuring Grade 3 reading in India, 2010 to 2024, on separate scales. They do not agree."
+        />
       ) : null}
 
       <h2>What neither instrument can tell you</h2>
