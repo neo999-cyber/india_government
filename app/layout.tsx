@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { PrimaryNav } from '@/components/PrimaryNav';
 // `navLabel` moved with `DIRECTORY`: the per-item labels are resolved where the list is declared.
 import { DIRECTORY } from '@/lib/routes';
+import { AllPagesDisclosure } from '@/components/AllPagesDisclosure';
 import Link from 'next/link';
 import localFont from 'next/font/local';
 import { series } from '@/lib/data';
@@ -282,6 +283,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   hook would be a control that renders correctly and reaches nobody the moment the
                   bundle fails — the defect this exists to fix, reintroduced by the fix.
 
+                  **AMENDED 2026-08-14, AND THE PARAGRAPH ABOVE STILL STANDS.** It is still a
+                  `<details>`, the state is still the browser's, and with no script it behaves
+                  exactly as it did. What it was NOT doing was closing: not on a click elsewhere,
+                  not on Escape, and not when a reader followed one of its own 17 links — client-side
+                  navigation keeps this element alive, so the panel hung open over the next page.
+                  `AllPagesDisclosure` adds those three dismissals and owns nothing else, so a
+                  failed bundle costs a reader the ways OUT of an open panel and never the way in.
+
                   **Not a side rail.** A persistent sidebar is application furniture and argues
                   against the register the palette and the type protect; at 375 px it collapses to a
                   hamburger, which is the footer with extra steps.
@@ -294,8 +303,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link className="allpages-link" href="/directory/">
                 All pages
               </Link>
-              <details className="allpages">
-                <summary aria-label="All pages">All pages</summary>
+              <AllPagesDisclosure>
                 <div className="allpages-panel">
                   {DIRECTORY.map((g) => (
                     <div key={g.label} className="allpages-group">
@@ -308,7 +316,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </div>
                   ))}
                 </div>
-              </details>
+              </AllPagesDisclosure>
             </nav>
           </header>
           <main id="main">{children}</main>
