@@ -83,6 +83,33 @@ test.describe('all-pages disclosure', () => {
     await expect(d).toHaveJSProperty('open', true);
   });
 
+  /**
+   * THE OPEN PANEL STAYS INSIDE THE VIEWPORT.
+   *
+   * It was `right: 0` — pinned to the summary's right edge and growing LEFTWARD from a control that
+   * sits near the shell's left margin. At 1280px the panel's left edge measured **-120px**: a fifth
+   * of it off-screen, unreachable, and with no horizontal scroll to recover it, because an
+   * absolutely positioned box does not extend the scroll area leftward. **It fitted on a wide
+   * window, which is exactly why it survived** — so this checks the narrow ones too.
+   */
+  for (const width of [1024, 1280, 1440] as const) {
+    test(`${width}px — the open panel is fully inside the viewport`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/');
+      await open(page);
+
+      const box = (await page.locator('.allpages-panel').boundingBox())!;
+      expect(box.x, 'panel runs off the left edge').toBeGreaterThanOrEqual(-1);
+      expect(box.x + box.width, 'panel runs off the right edge').toBeLessThanOrEqual(width + 1);
+
+      // And it must not have bought that by making the document scroll sideways.
+      const scrolls = await page.evaluate(
+        () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+      );
+      expect(scrolls, 'the open panel makes the document scroll sideways').toBe(false);
+    });
+  }
+
   test('the summary still toggles it shut, which is the no-script path', async ({ page }) => {
     await page.goto('/');
     const d = await open(page);
