@@ -114,6 +114,33 @@ the defeat of a constitutional amendment.
 
 ---
 
+## 3b. A SECOND ATTEMPT, 2026-08-13 — MORE ACCOUNTS, STILL NO RECORD
+
+Retried with the variables varied, per M1. **The outcome is now multiply attested and still entirely
+T4.** What the accounts add:
+
+- **The division figures.** One legal-news report: *"298 members present out of 528 members present
+  and voting approved the Bill, 230 members voted against it."* A search summary gives the same
+  298/230 and puts the special-majority threshold at 352.
+- **The companion Bill was WITHDRAWN.** The same report's headline: *"Centre Withdraws Delimitation
+  Bill."* That is a second event and is not the same as a defeat.
+- **The mechanism.** A constitutional amendment needs the Article 368(2) special majority — two-thirds
+  of those present and voting AND more than half the total membership.
+
+**None of it moves the tier.** The legal-news report is **paywalled beyond the summary** and, on its
+own account, **does not cite the Lok Sabha's own record**. Every other hit is an aggregator, a
+coaching-notes site, an encyclopaedia or a commentary blog. **Independence is satisfied — these are
+outside the government — but the tier is not: they are accounts, and an account is T4 however
+official its subject.**
+
+**This is the shape the corpus already names as thinnest.** `L-0014` carries the note *"THE SOURCING
+IS ALSO THE THINNEST IN THE CORPUS FOR A SCORED CLAIM: one T4 trade-press note"* — and that record
+scores something far smaller than the defeat of a constitutional amendment.
+
+**Two facts are now owed rather than one**, and both sit in the same document:
+1. the division on the Constitution (131st Amendment) Bill, and
+2. the withdrawal of the Delimitation Bill.
+
 ## 4. WHAT A RESEARCH PASS NEEDS TO DO — and it is now one step, not a survey
 
 **Retrieve the Lok Sabha record of 17 April 2026.** Bulletin Part I, the day's Revised List of

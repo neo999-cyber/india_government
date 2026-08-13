@@ -20356,3 +20356,35 @@ unreachable.** Added to CLAUDE.md's known-environment list with `sansad.in`'s JS
 ### Gate line
 
 30 steps green.
+
+---
+
+## 2026-08-13 (eighty-eighth entry) — A SECOND ATTEMPT AT THE DELIMITATION PRIMARY: MORE ACCOUNTS, SAME TIER
+
+Retried per M1, variables varied. **The outcome is now multiply attested and still entirely T4.**
+
+**What the second pass added**: division figures — *"298 members present out of 528 members present
+and voting approved the Bill, 230 members voted against it"* — against an Article 368(2) threshold
+reported as 352; and **the companion Delimitation Bill was WITHDRAWN**, which is a second event and
+not the same as a defeat.
+
+**What it did not move is the tier.** The best source is **paywalled beyond its summary** and, on its
+own account, **does not cite the Lok Sabha's record**. The rest are aggregators, coaching notes, an
+encyclopaedia and a commentary blog. **Independence holds — every one is outside the government — but
+independence and tier are different tests, and this fails the second.** An account is T4 however
+official its subject.
+
+**This is the shape the corpus already names as its thinnest.** `L-0014` carries *"THE SOURCING IS
+ALSO THE THINNEST IN THE CORPUS FOR A SCORED CLAIM: one T4 trade-press note"* — and that record
+scores something far smaller than a constitutional amendment being defeated.
+
+**So the record is still not written, and the ask is now two facts rather than one**: the division,
+and the withdrawal. Both sit in the same document — the Lok Sabha record of 17 April 2026.
+
+**The temptation here was the point.** Multiple sources agreeing is not the same as a source that
+carries the fact, and a session that has been pushed past two wrong blockers today is exactly the one
+most likely to mistake the second for the first.
+
+### Gate line
+
+30 steps green.
