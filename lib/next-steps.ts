@@ -114,7 +114,7 @@ export function stepsForSeries(s: Series): Step[] {
 
   // 4. THE SURFACES IT IS FILED ON. Counts computed here so the sentence is checkable.
   out.push({
-    href: `/domains/${s.domain}/indicators/`,
+    href: `/domains/${s.domain}/#indicators`,
     label: `All ${seriesInDomain(s.domain).length} indicators under ${DOMAIN_LABELS[s.domain]}`,
     reason: 'filed under the same topic',
   });
@@ -162,12 +162,12 @@ export function stepsForLedger(l: LedgerRecord): Step[] {
 
   for (const d of l.domains ?? []) {
     out.push({
-      href: `/domains/${d}/records/`,
+      href: `/domains/${d}/#records`,
       label: `The ${ledgerInDomain(d).length} records filed under ${DOMAIN_LABELS[d]}`,
       reason: 'the same topic',
     });
     out.push({
-      href: `/domains/${d}/indicators/`,
+      href: `/domains/${d}/#indicators`,
       label: `The ${seriesInDomain(d).length} indicators under ${DOMAIN_LABELS[d]}`,
       reason: 'the same topic, measured rather than recorded',
     });
@@ -253,7 +253,7 @@ export function stepsForLens(_lens: Lens, domains: Domain[]): Step[] {
   // The topics this lens actually cuts across, which is the fact that makes a lens a lens.
   for (const d of domains.slice(0, 4)) {
     out.push({
-      href: `/domains/${d}/indicators/`,
+      href: `/domains/${d}/#indicators`,
       label: `${seriesInDomain(d).length} indicators filed under ${DOMAIN_LABELS[d]}`,
       reason: 'a topic this lens cuts across',
     });

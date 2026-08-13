@@ -78,9 +78,27 @@ function liveCounts(html) {
   return (html.match(/aria-live=/g) || []).length;
 }
 
-/** INVARIANT 2 — the overview's lead figure appears on the overview and on no other tab. */
+/**
+ * INVARIANT 2 — A TOPIC PAGE CARRIES ITS OWN BODY AND ALL FOUR SECTIONS.
+ *
+ * **REWRITTEN 2026-08-14 WHEN THE TABS WERE MERGED, AND THE WITHDRAWN FORM IS QUOTED BECAUSE THE
+ * DEFECT IT BOUND IS NOW IMPOSSIBLE RATHER THAN FIXED.** It read *"the overview's lead figure
+ * appears on the overview and on no other tab"* and existed because every tab re-rendered the
+ * overview's whole body before its own — `/domains/macro/records/` opened with the lead chart, the
+ * period narrative, four more charts and the entire record list, so the control said it had
+ * filtered and had appended. **There is one page now, so nothing can append to anything.**
+ *
+ * What replaces it is the merge's own invariant: the four sections that used to be routes are all
+ * present, each with its `id` so a fragment link lands, and each with a heading. A section that
+ * silently stopped rendering would take its records off the topic page with every gate green —
+ * which is exactly what the tab split did to the overview in the other direction.
+ */
+const SECTIONS = ['indicators', 'records', 'disputes', 'missing'];
 function hasOverviewBody(html) {
   return /class="dlead"/.test(html);
+}
+function missingSections(html) {
+  return SECTIONS.filter((s) => !new RegExp(`<section id="${s}"`).test(html));
 }
 
 /**
@@ -98,7 +116,7 @@ function hasOverviewBody(html) {
  * the point of having the registry.
  */
 const INDEX_ROUTES = [
-  'overview', 'domains', 'questions', 'stories', 'search', 'series', 'ledger', 'provenance',
+  'overview', 'questions', 'stories', 'search', 'series', 'ledger', 'provenance',
   'contested', 'unmeasured', 'exposure', 'lenses', 'terms', 'peers', 'years', 'publishers',
   'method', 'derivations', 'corrections', 'data', 'counterfactual', 'directory',
 ];
@@ -109,9 +127,23 @@ function leadClass(html) {
   return /\b(page-lead|home-lead|story-lead)\b/.test(c) ? c.trim() : '';
 }
 
-/** INVARIANT 3 — a non-overview tab says what it contains. */
-function hasOrientation(html) {
-  return /class="dtab-orient/.test(html);
+/**
+ * INVARIANT 3 — EVERY SECTION SAYS WHAT IT CONTAINS.
+ *
+ * Unchanged in substance, moved in scope. A table with no sentence in front of it was the defect
+ * when a tab opened cold; on one page it is the same defect one scroll down. The class changed from
+ * `dtab-orient` to the site's ordinary `sec-note` inside `sec-h`, so this counts orientation lines
+ * against sections rather than testing for a bespoke class.
+ */
+function orientedSections(html) {
+  return SECTIONS.filter((s) => {
+    // The section's HEAD — from its opening tag to the close of `sec-h`, which holds the h2 and
+    // the orientation line. An earlier version stopped at the first `<` after `</h2>`, so it
+    // matched the opening bracket of `<p class="sec-note">` and never saw the class. The control
+    // below caught that, which is the whole reason it counts rather than merely asserting truthy.
+    const m = html.match(new RegExp(`<section id="${s}"[\\s\\S]{0,800}?</div>`));
+    return !!m && /class="sec-note"/.test(m[0]);
+  });
 }
 
 if (process.argv.includes('--control')) {
@@ -121,12 +153,20 @@ if (process.argv.includes('--control')) {
   if (liveCounts(twoLive) !== 2) throw new Error('control FAILED: two live regions were not counted as two');
   if (liveCounts(oneLive) !== 1) throw new Error('control FAILED: one live region was not counted as one');
 
-  const tabWithBody = '<div class="dtabs"></div><figure class="dlead"><svg></svg></figure><table></table>';
-  const tabWithout = '<div class="dtabs"></div><p class="dtab-orient prose-note">Every record.</p><table></table>';
-  if (!hasOverviewBody(tabWithBody)) throw new Error('control FAILED: an overview body on a tab was not detected');
-  if (hasOverviewBody(tabWithout)) throw new Error('control FAILED: a clean tab was reported as carrying the overview body');
-  if (!hasOrientation(tabWithout)) throw new Error('control FAILED: an orientation line was not detected');
-  if (hasOrientation(tabWithBody)) throw new Error('control FAILED: a missing orientation line was reported present');
+  // ATTRIBUTE ORDER AND SHAPE COPIED FROM WHAT NEXT ACTUALLY EMITS, not from an idea of it — the
+  // mistake that once let `chart-ticks` report 0 charts as a pass.
+  const sec = (id, oriented) =>
+    `<section id="${id}" class="dsec"><div class="sec-h"><h2>${id}</h2>` +
+    (oriented ? `<p class="sec-note">What this section holds.</p>` : '') + `</div><table></table></section>`;
+  const whole = '<figure class="dlead"><svg></svg></figure>' + SECTIONS.map((s) => sec(s, true)).join('');
+  const shy = '<figure class="dlead"><svg></svg></figure>' + SECTIONS.filter((s) => s !== 'disputes').map((s) => sec(s, true)).join('');
+  const mute = '<figure class="dlead"><svg></svg></figure>' + SECTIONS.map((s) => sec(s, s !== 'missing')).join('');
+  if (!hasOverviewBody(whole)) throw new Error('control FAILED: a topic body was not detected');
+  if (hasOverviewBody('<table></table>')) throw new Error('control FAILED: a bodiless page was reported as having one');
+  if (missingSections(whole).length) throw new Error('control FAILED: a complete topic was reported as missing a section');
+  if (missingSections(shy).join() !== 'disputes') throw new Error('control FAILED: a dropped section was not named');
+  if (orientedSections(whole).length !== 4) throw new Error('control FAILED: four orientation lines were not counted as four');
+  if (orientedSections(mute).includes('missing')) throw new Error('control FAILED: a section with no orientation line was reported as having one');
 
   // THE FIXTURE IS THE REAL LEAK, NOT A SHORT STAND-IN FOR IT. The first version of this control
   // used a 27-character comment, which passes under MIN_COMMENT_SPAN — a control that no longer
@@ -155,7 +195,7 @@ if (process.argv.includes('--control')) {
     throw new Error('control FAILED: a page with no h1 was not distinguished from one with a bare h1');
 
   console.log(
-    'interface-invariants --control — a leaked block comment in page text is caught, ordinary prose is not, and the Internet Archive /web/*/ URL that four records quote is not; two live count regions are rejected and one is accepted; a tab carrying the overview lead figure is rejected and a tab carrying only its orientation line and its own table is accepted',
+    'interface-invariants --control — a leaked block comment in page text is caught, ordinary prose is not, and the Internet Archive /web/*/ URL that four records quote is not; two live count regions are rejected and one is accepted; a complete topic passes, a topic missing its disputes section is named, and a section with no orientation line is caught',
   );
   process.exit(0);
 }
@@ -228,34 +268,30 @@ if (nLive !== 1)
     `/search/ carries ${nLive} aria-live region(s), expected exactly 1. Two of them announced different result counts, and the static one could never be right because filtering hides rows without moving the DOM.`,
   );
 
-// --- 2 and 3. the domain tabs ----------------------------------------------------------------
+// --- 2 and 3. the merged topic pages ----------------------------------------------------------
 const domainsDir = join(OUT, 'domains');
 let overviews = 0;
-let tabs = 0;
+let sections = 0;
 for (const d of readdirSync(domainsDir, { withFileTypes: true })) {
   if (!d.isDirectory()) continue;
-  const base = join(domainsDir, d.name);
-  const idx = join(base, 'index.html');
-  if (existsSync(idx)) {
-    overviews += 1;
-    if (!hasOverviewBody(readFileSync(idx, 'utf8')))
-      problems.push(`/domains/${d.name}/ has no lead figure — the overview tab lost its own body`);
-  }
-  for (const t of readdirSync(base, { withFileTypes: true })) {
-    if (!t.isDirectory()) continue;
-    const p = join(base, t.name, 'index.html');
-    if (!existsSync(p)) continue;
-    tabs += 1;
-    const html = readFileSync(p, 'utf8');
-    if (hasOverviewBody(html))
-      problems.push(`/domains/${d.name}/${t.name}/ renders the overview's lead figure — tabs are appending, not selecting`);
-    if (!hasOrientation(html))
-      problems.push(`/domains/${d.name}/${t.name}/ opens with no orientation sentence`);
-  }
+  const idx = join(domainsDir, d.name, 'index.html');
+  if (!existsSync(idx)) continue;
+  overviews += 1;
+  const html = readFileSync(idx, 'utf8');
+  if (!hasOverviewBody(html))
+    problems.push(`/domains/${d.name}/ has no lead figure — the topic lost its own body`);
+  const gone = missingSections(html);
+  if (gone.length)
+    problems.push(`/domains/${d.name}/ is missing ${gone.length} section(s): ${gone.join(', ')} — a fragment link to one of them lands nowhere and its records are off this page`);
+  const oriented = orientedSections(html);
+  sections += oriented.length;
+  for (const s of SECTIONS)
+    if (!gone.includes(s) && !oriented.includes(s))
+      problems.push(`/domains/${d.name}/#${s} has a heading and no orientation sentence`);
 }
 
-if (overviews === 0 || tabs === 0) {
-  console.error(`interface-invariants: found ${overviews} overview(s) and ${tabs} tab(s). A zero here is a broken scan, never a pass.`);
+if (overviews === 0 || sections === 0) {
+  console.error(`interface-invariants: found ${overviews} topic(s) and ${sections} oriented section(s). A zero here is a broken scan, never a pass.`);
   process.exit(2);
 }
 
@@ -265,6 +301,6 @@ if (problems.length) {
   process.exit(1);
 }
 console.log(
-  `interface-invariants OK — /search/ states its count in 1 live region; ${tabs} domain tab(s) across ${overviews} topic(s) carry their own body and an orientation line, and none carries the overview's; ${indexChecked} index surface(s) carry a lead class` +
+  `interface-invariants OK — /search/ states its count in 1 live region; ${overviews} topic(s) carry their own body and all four sections, ${sections} of which state what they contain; ${indexChecked} index surface(s) carry a lead class` +
     (verbose ? ' · CANNOT bind: count updates on interaction, rendered target size, keyboard traversal, 375px overflow' : ''),
 );

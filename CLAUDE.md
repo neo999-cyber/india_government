@@ -293,6 +293,16 @@ headline series are hand-picked with the governing rule cited. That is an author
 by a rule; this is a derived selection defended by a criterion. **Each says which it is.**
 `[R-2fa82b]` `[R-06c902]` `[R-43051b]` `[R-6a789c]`
 
+**A TOPIC IS ONE PAGE, NOT FIVE — merged 2026-08-14.** `/domains/<d>/` carries the lead chart, the
+period narrative, then `#indicators`, `#records`, `#disputes` and `#missing` as sections. The five-
+route form was measured first: **70 pages, 6.36 MB, and every overview's records 100% contained in
+its own tabs.** The lens pages had already been doing all four on one surface. **What was lost is
+stated rather than glossed: a tab was a URL and a section is a fragment** — addressable, no longer
+isolable. `/domains/` itself was folded into `/overview/`, which linked the same fourteen topics
+with the same counts and the same derived lead; the one thing it carried alone, the topic character
+line, moved onto the board's cards. *`interface-invariants` binds the four sections and their
+orientation lines; `domain-coverage`'s index is now `/overview/`.*
+
 **A MARK CAN GO MISSING IN THREE DISTINCT SHAPES, AND A GUARD USUALLY BINDS ONE.**
 1. **THE LISTING ROW** — the surface lists the record and omits the mark. `listing-marks` binds this
    and is the only one of the three any gate binds.

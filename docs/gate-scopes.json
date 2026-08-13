@@ -7,15 +7,15 @@
   },
   "reachability": {
     "marksDeclared": 1788,
-    "pagesScanned": 754
+    "pagesScanned": 697
   },
   "listing-marks": {
-    "listingRows": 4166,
-    "pagesScanned": 753,
-    "marksRequired": 5913
+    "listingRows": 3812,
+    "pagesScanned": 696,
+    "marksRequired": 5391
   },
   "unrecognised-rows": {
-    "pagesScanned": 753,
+    "pagesScanned": 696,
     "citations": 941
   },
   "field-render-audit": {

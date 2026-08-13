@@ -166,9 +166,16 @@ function hrefs(html) {
 const pagePath = (d) => join(OUT_DIR, 'domains', d, 'index.html');
 const readPage = (d) => (existsSync(pagePath(d)) ? readFileSync(pagePath(d), 'utf8') : null);
 
-const indexPath = join(OUT_DIR, 'domains', 'index.html');
+/**
+ * THE TOPIC INDEX IS `/overview/`, NOT `/domains/` — changed 2026-08-14 when the two were merged.
+ *
+ * `/domains/` was fourteen cards linking to the same fourteen topic pages `/overview/`'s board
+ * already links to, carrying the same counts and the same derived lead figure. It was folded in and
+ * removed, so the surface that must link every topic is the board.
+ */
+const indexPath = join(OUT_DIR, 'overview', 'index.html');
 if (!existsSync(indexPath)) {
-  console.error(`domain-coverage: no domain index at ${indexPath} — run the build first`);
+  console.error(`domain-coverage: no topic index at ${indexPath} — run the build first`);
   process.exit(2);
 }
 const indexHrefs = hrefs(readFileSync(indexPath, 'utf8'));
@@ -210,40 +217,22 @@ for (const d of DOMAINS) {
   }
   counts.pages.got += 1;
   /**
-   * THE DOMAIN SURFACE IS FIVE PAGES SINCE 2026-08-11, NOT ONE — the topic tabs.
+   * THE TOPIC SURFACE IS ONE PAGE AGAIN — 2026-08-14.
    *
-   * WITHDRAWN, so the change can be checked: this read `surfaces.set(d, { text: text(html), hrefs:
-   * hrefs(html) })` over the overview alone, and on the day the tabs landed it reported **632
-   * coverage failures** — every series and every record whose listing had moved to a tab.
+   * WITHDRAWN, so the change is checkable. This read a UNION over five pages, and its own note said
+   * why: *"THE DOMAIN SURFACE IS FIVE PAGES SINCE 2026-08-11, NOT ONE — the topic tabs … on the day
+   * the tabs landed it reported 632 coverage failures"*. It also asserted that the overview LINKED
+   * all four tabs, because a union over pages nothing navigates to would have been a weakening.
    *
-   * **The claim this file makes is that a record is reachable from where a reader starts.** A
-   * reader starts at `/domains/<d>/`, meets the tab strip, and is one click from the indicators.
-   * Scoping the check to the overview alone would now fail records that ARE reachable, which is a
-   * false negative in a gate whose whole value is that its green means something.
-   *
-   * **AND THE WIDENING IS PAIRED WITH A NEW ASSERTION, OR IT WOULD BE A WEAKENING.** A union over
-   * five pages is only honest if the overview LINKS all five; otherwise this would pass on a tab
-   * nothing navigates to — the exact defect the index assertion above exists to catch, one level
-   * down. Both are checked.
+   * **Both were correct for the tabs and neither has anything to bind now.** The four sections are
+   * on the page this reads, so the union is the page, and there is no separate route to navigate
+   * to. The check goes back to what it asserted before the split, which is the stronger form: every
+   * record declaring this topic is reachable from the one surface a reader lands on.
    */
-  const TABS = ['indicators', 'records', 'disputes', 'missing'];
   const union = { text: text(html), hrefs: hrefs(html) };
-  for (const t of TABS) {
-    const tabPath = join(OUT_DIR, 'domains', d, t, 'index.html');
-    if (!existsSync(tabPath)) {
-      failures.push({ kind: 'tab', what: `${d}/${t}`, why: `the domain surface declares a "${t}" tab and no page was built at /domains/${d}/${t}/` });
-      continue;
-    }
-    if (!union.hrefs.has(`/domains/${d}/${t}/`)) {
-      failures.push({ kind: 'tab-link', what: `${d}/${t}`, why: `a page exists at /domains/${d}/${t}/ and the overview does not link to it, so the union below counts a page nothing navigates to` });
-    }
-    const th = readFileSync(tabPath, 'utf8');
-    union.text += ' ' + text(th);
-    for (const h of hrefs(th)) union.hrefs.add(h);
-  }
   surfaces.set(d, union);
   if (indexHrefs.has(`/domains/${d}/`)) counts.indexed.got += 1;
-  else failures.push({ kind: 'index', what: d, why: `a page exists at /domains/${d}/ but the domain index does not link to it, so nothing navigates there` });
+  else failures.push({ kind: 'index', what: d, why: `a page exists at /domains/${d}/ and /overview/ does not link to it, so nothing navigates there` });
 }
 
 /**

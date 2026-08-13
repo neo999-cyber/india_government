@@ -2,8 +2,10 @@
 
 import { memo, useDeferredValue, useEffect, useRef, useState } from 'react';
 import { RecordMarks } from '@/components/marks';
-import type { Unmeasured } from '@/lib/types';
+import type { Domain, Unmeasured } from '@/lib/types';
+import { DOMAINS } from '@/lib/types';
 import Link from 'next/link';
+import { DOMAIN_CHARACTER } from '@/lib/domain-copy';
 
 /**
  * THE OVERVIEW BOARD — what changed, across every area, with one control that moves all of it.
@@ -335,6 +337,7 @@ export function OverviewBoard({
   domains,
   reduced = false,
   headingLevel = 3,
+  character = false,
 }: {
   domains: ODomain[];
   /**
@@ -357,6 +360,15 @@ export function OverviewBoard({
    * series in all fourteen. Measured before and after in the log entry for this batch.
    */
   reduced?: boolean;
+  /**
+   * THE ONE THING `/domains/` HAD THAT THIS BOARD DID NOT — a sentence saying what the topic IS.
+   *
+   * `/domains/` was fourteen cards linking to the same fourteen pages this board links to, carrying
+   * the same counts and the same lead figure, plus this line. That made it a strictly poorer copy
+   * of this board, so it was folded in here on 2026-08-14 and the line came with it. Off by default
+   * because the landing page's cut is deliberately five short cards.
+   */
+  character?: boolean;
 }) {
   const [year, setYear] = useState<number | null>(null);
   /**
@@ -505,6 +517,12 @@ export function OverviewBoard({
             <CardHeading className="card-title">
               <Link href={`/domains/${d.key}/`}>{d.label}</Link>
             </CardHeading>
+            {/* `key` is a plain string on ODomain — the board is also fed hand-built rows. Narrowed
+                against the enum rather than cast, so a key that is not a domain renders nothing
+                instead of `undefined`, and the card simply loses its character line. */}
+            {character && (DOMAINS as readonly string[]).includes(d.key) ? (
+              <p className="card-char">{DOMAIN_CHARACTER[d.key as Domain]}</p>
+            ) : null}
             <p className="card-counts">
               {d.nSeries} series · {d.nRecords} records
             </p>

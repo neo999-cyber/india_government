@@ -24,9 +24,9 @@ import { DOMAINS, LENSES, LENS_ONLY, type Domain, type Lens } from '@/lib/types'
 import type { Pair, Series } from '@/lib/types';
 import { CaveatRow, OutcomeRow, RecordMarks, REASON_KIND_LABELS, StatusKey, StatusTally, TallyGloss, TierTag } from '@/components/marks';
 import { SeriesChart } from '@/components/SeriesChart';
-import { DomainTabs } from '@/components/DomainTabs';
+import { DomainSections, DOMAIN_SECTIONS } from '@/components/DomainSections';
 import { DOMAIN_CHARACTER, DOMAIN_EVIDENCE, DOMAIN_PERIODS } from '@/lib/domain-copy';
-import type { LedgerRecord, Unmeasured } from '@/lib/types';
+import type { Unmeasured } from '@/lib/types';
 import { SERIES_FINDINGS } from '@/lib/series-copy';
 
 type Props = { params: Promise<{ domain: string }> };
@@ -41,19 +41,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: label ?? 'Domain' };
 }
 
-export const DOMAIN_TABS = [
-  { key: 'overview', label: 'Overview' },
-  { key: 'indicators', label: 'Indicators' },
-  { key: 'records', label: 'Government records' },
-  { key: 'disputes', label: 'Disputes' },
-  { key: 'missing', label: 'Missing data' },
-] as const;
-export type DomainTab = (typeof DOMAIN_TABS)[number]['key'];
 
 export default async function DomainPage({ params }: Props) {
   const { domain } = await params;
   if (!DOMAINS.includes(domain as Domain)) notFound();
-  return <DomainSurface d={domain as Domain} tab="overview" />;
+  return <DomainSurface d={domain as Domain} />;
 }
 
 /**
@@ -71,7 +63,7 @@ export default async function DomainPage({ params }: Props) {
  * is not a workaround; an overview that omitted half its records to a sub-page would be the
  * reachability defect that gate exists to catch, introduced by the fix for a different one.
  */
-export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
+export async function DomainSurface({ d }: { d: Domain }) {
 
   const s = seriesInDomain(d);
   const l = ledgerInDomain(d);
@@ -148,11 +140,10 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
   const onePointSeries = counted.filter(
     (x) => x.points.filter((pt) => pt.country === 'IND' && pt.value !== null).length === 1,
   ).length;
-  const byDate = [...l].sort((a, b) => b.date.localeCompare(a.date));
   /**
    * Every declared absence in this topic, from series and ledger alike, each carrying the record
-   * that declared it. Built here rather than in the panel so the count is available to the tab
-   * strip, which must be able to say the tab is empty before a reader opens it.
+   * that declared it. Built here rather than in the section so the count is available to the
+   * contents strip, which must be able to say a section is empty before a reader scrolls to it.
    */
   const absences = [
     ...s.map((x) => ({ rec: x, href: `/series/${x.id}/`, title: x.title, from: x.id })),
@@ -167,13 +158,11 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
     })),
   );
 
-  const shownRecords = byDate.slice(0, 6);
-  const restRecords = byDate.slice(6);
 
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / <Link href="/domains/">domains</Link> / {d}
+        <Link href="/">instrument</Link> / <Link href="/overview/">what changed</Link> / {d}
       </p>
       <h1 className="page-lead">{DOMAIN_LABELS[d]}</h1>
       <p className="standfirst">
@@ -189,9 +178,8 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
         ) : null}
       </p>
 
-      <DomainTabs
+      <DomainSections
         d={d}
-        active={tab}
         counts={{
           indicators: s.length + lensed.length,
           records: l.length,
@@ -200,12 +188,16 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
         }}
       />
 
-      <p className="counts-line mono">
-        {lensed.length
-          ? `${s.length + lensed.length} indicators — ${s.length} filed under this topic, ${lensed.length} read through it as a lens`
-          : `${s.length} indicators`}{' '}
-        · {l.length} records · {p.length} disputes
-      </p>
+      {/* THE COUNTS LINE LOST ITS FIRST JOB TO THE CONTENTS STRIP, 2026-08-14 — it read
+          `N indicators · N records · N disputes`, which the strip above now states beside the
+          section each number belongs to. What the strip cannot say is the SPLIT, so that is all
+          this says now, and only where there is one. Withdrawn wording kept above rather than
+          deleted: the three counts were correct, they were simply printed twice, two lines apart. */}
+      {lensed.length ? (
+        <p className="counts-line mono">
+          {`${s.length + lensed.length} indicators — ${s.length} filed under this topic, ${lensed.length} read through it as a lens`}
+        </p>
+      ) : null}
 
       {/* §10 — THE DECOMPOSITION, AND KASHMIR IS THE CASE.
 
@@ -241,7 +233,7 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
               .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
               .map(([dom, n]) => (
                 <li key={dom}>
-                  <Link href={`/domains/${dom}/indicators/`}>{DOMAIN_LABELS[dom as Domain]}</Link>{' '}
+                  <Link href={`/domains/${dom}/#indicators`}>{DOMAIN_LABELS[dom as Domain]}</Link>{' '}
                   <span className="lensdec-n mono">{n}</span>
                 </li>
               ))}
@@ -276,8 +268,6 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
           regression.** The readable list stops rendering on four tabs where it was a duplicate;
           every record it named is still a row of the records tab's own table, so rule 4b is
           satisfied where it was always meant to be. */}
-      {tab === 'overview' ? (
-        <>
       {/* ---- THE LEAD. One chart at full width, chosen by a STATED criterion. ---------------- */}
       {lead ? (
         <figure className="dlead">
@@ -441,29 +431,16 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
         </section>
       ) : null}
 
-      {/* ---- RECORDS as readable items, grouped by term, a handful shown. -------------------- */}
-      {l.length > 0 ? (
-        <section className="drecords">
-          <div className="sec-h">
-            <h2>{l.length} records</h2>
-            <p className="sec-note">
-              Everything entered in this topic, most recent first. Nothing is ranked.
-            </p>
-          </div>
-          {shownRecords.map((r) => (
-            <RecordItem key={r.id} record={r} />
-          ))}
-          {/* NO DISCLOSURE. Every record in the area is listed here, because `domain-coverage`
-              asserts each one appears on `/domains/<d>/` and because an overview that hides half
-              its subject behind a control is the thing the tabs replace. The TABLE, with verdicts,
-              confidence and marks, is the Government records tab. */}
-          {restRecords.map((r) => (
-            <RecordItem key={r.id} record={r} />
-          ))}
-        </section>
-      ) : null}
-        </>
-      ) : null}
+      {/* ---- THE READABLE RECORD LIST IS GONE, AND THAT IS THE POINT OF THE MERGE ----------
+          It listed every record in the topic as a link; the records section below lists the same
+          records again as a table with verdicts, confidence and marks. Measured before the merge:
+          100% of each overview's records also appeared on its own tabs, on all fourteen topics.
+
+          **On one page the two cannot coexist.** `listing-marks` asserts a rendered declaration
+          appears AT MOST ONCE PER PAGE, so keeping both would have failed the build rather than
+          merely repeating itself. The table stayed because it carries the verdicts and the marks;
+          the link list carried neither. Every record still appears on `/domains/<d>/`, which is
+          what `domain-coverage` asserts, and now it does so once. */}
 
       {/* §2 — THE OVERVIEW CLOSES ON WHAT THE EVIDENCE CANNOT ESTABLISH, AND IT HAD STOPPED DOING SO.
 
@@ -481,37 +458,12 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
           **AND IT RENDERS WHEN THE COUNT IS ZERO**, which is the case that matters: a topic that
           declares no absence is making a claim about itself, and printing nothing would let a
           reader take the silence for completeness. */}
-      {tab === 'overview' ? (
-        <section className="dclose">
-          <div className="sec-h">
-            <h2>What this topic cannot establish</h2>
-          </div>
-          {/* THE SITE'S OWN ABSENCE IDIOM, NOT A LOOKALIKE. `absence-note` was written here and
-              turned out to have no CSS rule anywhere — it inherited body prose, so a statement
-              about what cannot be established rendered exactly like a finding, which is rule 4a
-              inverted. `.absence` is the existing mark: dashed, unfilled, `--ink-2`, visibly not a
-              panel of results. Reused rather than reimplemented. */}
-          <div className="absence">
-            {absences.length === 0 ? (
-              <p>
-                No record filed under this topic declares a quantity it cannot measure. That is a
-                fact about the records, not a finding that nothing is missing.
-              </p>
-            ) : (
-              <p>
-                {absences.length} {absences.length === 1 ? 'quantity' : 'quantities'} that records
-                here say {absences.length === 1 ? 'is' : 'are'} not measured, each with the reason
-                its own record gives and whether any source would close it.{' '}
-                <Link href={`/domains/${d}/missing/`}>Read them in full</Link> — they are listed
-                there rather than repeated here, so that no declaration renders twice on one topic.
-              </p>
-            )}
-          </div>
-        </section>
-      ) : null}
 
-      {tab === 'indicators' ? (
-        <>
+      <section id="indicators" className="dsec">
+        <div className="sec-h">
+          <h2>{DOMAIN_SECTIONS[0].label}</h2>
+          <p className="sec-note">{DOMAIN_SECTIONS[0].orient}</p>
+        </div>
       {s.length === 0 ? (
         <p className="prose-note">
           No series has this domain as its subject.
@@ -536,11 +488,14 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
           <SeriesBlock items={lensed} showSubject />
         </>
       ) : null}
-        </>
-      ) : null}
+      </section>
 
-      {tab === 'records' ? (
-        <>
+
+      <section id="records" className="dsec">
+        <div className="sec-h">
+          <h2>{DOMAIN_SECTIONS[1].label}</h2>
+          <p className="sec-note">{DOMAIN_SECTIONS[1].orient}</p>
+        </div>
       {l.length === 0 ? (
         <p className="prose-note">No ledger records in this domain.</p>
       ) : (
@@ -616,11 +571,14 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
         </>
       ) : null}
 
-        </>
-      ) : null}
+      </section>
 
-      {tab === 'disputes' ? (
-        <>
+
+      <section id="disputes" className="dsec">
+        <div className="sec-h">
+          <h2>{DOMAIN_SECTIONS[2].label}</h2>
+          <p className="sec-note">{DOMAIN_SECTIONS[2].orient}</p>
+        </div>
       {p.length === 0 ? (
         <p className="prose-note">No disputes recorded against this domain.</p>
       ) : (
@@ -640,8 +598,8 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
           ))}
         </div>
       )}
-        </>
-      ) : null}
+      </section>
+
 
       {/* ============================ MISSING DATA — NEW CONTENT, NOT A RE-ARRANGEMENT ========
           §5's fifth tab had nothing behind it. The other four move existing sections; this one did
@@ -651,8 +609,17 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
           **Rule 4a governs the form and rule 4b the reach.** Each entry is dashed, unfilled and
           carries no figure, because an absence is a finding and must not be styled as a panel of
           results; and it names the record that declared it, so a reader can get to the ground. */}
-      {tab === 'missing' ? (
-        absences.length === 0 ? (
+      <section id="missing" className="dsec">
+        <div className="sec-h">
+          <h2>What this topic cannot establish</h2>
+          <p className="sec-note">{DOMAIN_SECTIONS[3].orient}</p>
+        </div>
+        {/* THE ZERO CASE RENDERS, AND THAT IS WHY THIS HEADING SURVIVED THE MERGE.
+            A topic that declares no absence is making a claim about itself, and printing
+            nothing would let a reader take the silence for completeness. It used to be a
+            separate block on the overview tab pointing at the missing tab; on one page the
+            pointer is gone and the statement sits directly above what it describes. */}
+        {absences.length === 0 ? (
           <p className="prose-note">
             No record in this topic declares an unmeasured quantity. That is a statement about what
             has been entered, not a claim that everything here is measured.
@@ -691,8 +658,9 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
               ))}
             </div>
           </>
-        )
-      ) : null}
+        )}
+      </section>
+
     </>
   );
 }
@@ -970,28 +938,3 @@ function MiniLine({ series, events }: { series: Series; events?: number[] }) {
   );
 }
 
-/**
- * A record as a readable item rather than a table row: title in serif at reading size, id and date
- * small, marks as chips, verdict in words.
- *
- * The whole `RecordMarks` set renders — rule 4b binds this exactly as it binds a table row, and
- * `listing-marks` reads it as a listing card. The caveat renders in full inside the item, which is
- * why the item is full-width rather than a grid cell.
- */
-function RecordItem({ record }: { record: LedgerRecord }) {
-  return (
-    <article className="drec">
-      <div className="drec-main">
-        <Link href={`/ledger/${record.id}/`} className="drec-title">
-          {record.title}
-        </Link>
-        <p className="drec-meta mono">
-          {record.id} · {formatDateRange(record.date, record.dateEnd)} ·{' '}
-          {record.domains.map((x) => DOMAIN_LABELS[x]).join(', ')}
-        </p>
-        <RecordMarks record={record} />
-      </div>
-      <p className="drec-verdict">{ASSESSMENT_LABELS[record.assessment]}</p>
-    </article>
-  );
-}
