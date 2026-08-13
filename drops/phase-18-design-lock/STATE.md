@@ -111,13 +111,23 @@ profilable topics peak in a different year from the corpus peak of 2020, and tho
 recognisable history. **The grid fails across rows, not along them.** A later cycle proposing it
 again should read this rather than rediscover it.
 
-**RAISED BY ITEM 5 — THE PRODUCTION DEPLOY CAN FAIL ON A FONT FETCH.** `6d7ec5c` deployed to state
-ERROR: `next/font/google` fetches `fonts.gstatic.com` at build time and a 404 there fails the build.
-**The identical failure occurred locally and passed on retry**, so it is transient and also capable
-of killing a deploy. **The fast check is `/data/v1/manifest.json`'s `commit` against
-`git rev-parse HEAD`, one request** — `tools/deploy-poll.mjs` finds the same thing only by timing out
-after thirty minutes. The durable fix is self-hosting both families via `next/font/local`; that is a
-build-config change with visual consequences and is not taken here.
+**RAISED BY ITEM 5, AND CLOSED 2026-08-13 AFTER IT KILLED A SECOND DEPLOY.** `6d7ec5c` deployed to
+state ERROR: `next/font/google` fetches `fonts.gstatic.com` at build time and a 404 there fails the
+build. This entry then said *"the durable fix is self-hosting both families via `next/font/local`;
+that is a build-config change with visual consequences and is not taken here."*
+
+**It was not taken, and `de1c3ff` died the same way** — all 29 gates green, then `next build` failing
+on `module-not-found` for the IBM Plex Sans CSS module. **A recorded hazard that is not fixed is a
+hazard with a second turn**, and the deferral above is what gave it one.
+
+**DONE NOW.** Six latin woff2 files in `app/fonts/`, loaded through `next/font/local`, from the same
+gstatic URLs the helper resolved; `plex-sans-var.woff2` checked byte-for-byte in size against the
+file the last successful build produced. IBM Plex Sans is variable, so one file covers 400–600. **A
+cold build emits 6 woff2 against 31**, because the helper fetched every subset and weight variant and
+six were ever used. **The deployed site still makes no font request** — it never did; the BUILD did.
+
+**The fast check on a deploy is unchanged and still one request:** `/data/v1/manifest.json`'s
+`commit` against `git rev-parse HEAD`.
 
 **ITEM 6, TWO-TRUTHS CARDS — DONE 2026-08-13.** **The brief's own worked example fails its own
 test**: a text card is truncated linearly, so *"Higher-education enrolment rose from 21.2% to 30%."*
@@ -732,7 +742,7 @@ header above.
 | search indexing | **`noindex, nofollow`, decided and recorded 2026-08-13.** Do not build sitemap/robots/canonical while it holds; if it changes, remove the header FIRST |
 | security headers | CSP, `X-Frame-Options`, COOP, `Permissions-Policy` set 2026-08-13 · `docs/security-headers.md` · **`script-src` carries `'unsafe-inline'` and cannot not, on a static export** |
 | deploy | `vercel.json` calls `npm run build`; `tools/deploy-chain.mjs` fails if the chain is ever restated instead of called |
-| verify after push | `node tools/deploy-check.mjs` — needs the network, deliberately not in the build. **First check is one request:** `/data/v1/manifest.json`'s `commit` against `git rev-parse HEAD`. A deploy CAN fail after a clean local build — `next/font/google` 404s from gstatic have killed one |
+| verify after push | `node tools/deploy-check.mjs` — needs the network, deliberately not in the build. **First check is one request:** `/data/v1/manifest.json`'s `commit` against `git rev-parse HEAD`. A deploy CAN fail after a clean local build. **The font-fetch cause is closed 2026-08-13** — fonts are vendored in `app/fonts/`; it had killed two |
 | DOM viewport probes | **`resize_window` at the `desktop` preset gives `clientWidth === 0`** in this hidden pane, so every element tests as overflowing. Set an explicit width (1280) or use the mobile preset |
 
 ---
