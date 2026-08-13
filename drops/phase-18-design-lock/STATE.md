@@ -186,9 +186,26 @@ commissions*. Measured: **27 of 30 state-published, 3 not** — a press-compiled
 and a human-rights coalition (one). No hospital series, no court series. All three count deaths, all
 three T4.
 
-**ITEM 7 CONTINUES.** Renewables needs a different form — 9 series, 0 pairs, the tension being
-capacity share against generation share. Four of the nine candidates cannot carry this form at all;
-demonetisation has zero series.
+**ITEM 7 CONTINUED 2026-08-13, second pass.** *How much of India's electricity is renewable?* at
+`/stories/how-renewable/` — a **third story form**: one publisher, four true answers for one year
+(53.21 / 41.91 / 28.96 / 16.88 per cent), and a word whose official boundary moved. Neither existing
+form applied: environment's series layer carries **0 caveats and 0 absences across all 15 series**,
+re-tested, and there is no contested pair in the domain.
+
+**AND THE ABSENCE PAGE HOLDS** — `/questions/unanswerable/`, four questions this cannot answer.
+It passed the matrix's own test: every reason is a **declared absence in `/data`**, not this corpus
+reporting its coverage. **The finding is that only one of the four is a limit** — demonetisation's
+two absences name no `wouldFill` at all because the quantities are counterfactual; the other three
+name exactly what would close them. **Three are unanswered rather than unanswerable.**
+
+**Deliberately not on `/stories/`** (four questions have no sequence, and that index's criterion is
+sequence), **not a ninth among the eight** (that list is the brief's order and says so), and **not a
+second door onto `/unmeasured/`** (which lists by record and kind; this lists by public question).
+
+**STORIES NOW: four.** reading · jobs · Kashmir · renewables. Federalism declined as a duplicate.
+Remaining candidates from §7 that are writable in the two-instrument form: **militancy in Kashmir is
+written; federalism declined; the four unwritable ones now have their own page.** What is left of §7
+is new subjects, not the original nine.
 
 ### CLOSED 2026-08-12 — DESIGN-REVISION.md items 1-4, and the authored series findings
 
@@ -507,8 +524,8 @@ header above.
 |---|---|
 | gate chain | **27 steps**, `npm run build`; `npm run commit` is the only sanctioned commit path |
 | `unrecognised-rows` | **0**, report-only. Zero makes flipping it to a gate *available*, not decided |
-| `listing-marks` | **5,707 listing rows · 8,160 marks** across 747 pages — re-measured 2026-08-12 after the record spine and next steps (from 5,390 · 7,674) |
-| `link-check` | 47,353 internal hrefs across 748 built pages, 22 route prefixes, 0 dead |
+| `listing-marks` | **5,715 listing rows · 8,171 marks** across 749 pages — re-measured 2026-08-12 after the record spine and next steps (from 5,390 · 7,674) |
+| `link-check` | 47,422 internal hrefs across 750 built pages, 22 route prefixes, 0 dead |
 | authored series findings | **237 of 269**; 32 render without one, permanently and for a stated reason |
 | raw enum tokens on a public surface | `directionOfBias` 6 pages, all the one deliberate site; `pairs.kind` 0 |
 | `field-render-audit` | 0 invisible, **15** exempted by name (was 17; `higherIsBetter`'s exemption was discharged 2026-08-12 and it is now declared) |

@@ -18226,3 +18226,90 @@ and L-0226, rendered in the corpus's own words inside the dashed unfilled box.
 
 27 steps green. Mobile at 375 px: 0 body overflow, 0 clamped, 12 verified chart dots and 0 approx
 (these series are pinned), 6 record cards of which 3 carry marks.
+
+---
+
+## 2026-08-13 (fifty-eighth entry) — THE ABSENCE PAGE: it holds, and the finding is not that they are unanswerable
+
+### THE TEST IT HAD TO PASS WAS THE MATRIX'S
+
+*We cannot answer this* means one of two things and only one is publishable: **nobody measured it**,
+a fact about India's statistical system, or **we have not researched it**, a fact about this
+corpus's coverage — which is the ground the status grid was refused on and the topic-year matrix
+after it.
+
+**So the test: for each question, is the reason a DECLARED absence in `/data`?** All four are.
+
+### THE MEASUREMENT WAS WRONG TWICE BEFORE IT WAS RIGHT
+
+**First pass, substring regex.** `/highway|road/i` matched **L-0102 (education spending)** and
+**L-0152 (the divisible pool)** — because `road` is inside *broad*. `/farmer|SAS/i` matched
+**L-0154**, a federalism record, on `SAS`. Two of four candidate sets contaminated, and the verdict
+*"reason is DECLARED"* had been drawn from them.
+
+**Second pass, word-bounded, returned zero on all four** — which is plainly false, since L-0011 is
+titled *Demonetisation*. The zero was my API misuse: `scanText` returns an array of
+`{term, count, hits}` and I read `.total`. **Relaxing one restriction at a time found the
+restriction that flipped it, and it was the caller, not the corpus.**
+
+**Third pass, correct.** The real picture:
+
+| question | ledger | series | declared absences |
+|---|---|---|---|
+| demonetisation | 1 · L-0011, **failed** | 0 | 2, both `never-defined` |
+| farmers' income doubling | 8 | 4 | 8 · 6 `not-collected`, 2 `not-published` |
+| highways | 3 | 4 | 2 `not-published` |
+| sanitation | 2 | 1 | 1 `not-collected` |
+
+### THE FINDING, AND IT IS NOT "THESE CANNOT BE ANSWERED"
+
+**It is that only one of the four is a limit.** `wouldFill` is the second axis and it decides:
+
+- **Demonetisation's two absences name no source at all.** The quantities are counterfactual — the
+  financing that would have occurred absent the measure, the share of digital-payment growth
+  attributable to it — and the record says plainly that no agreed definition exists, *so it could
+  not be collected even in principle*.
+- **The other three name exactly what would close them.** A Situation Assessment Survey not fielded
+  since 2018-19. Traffic-census and toll volumes **that are already collected** and not published.
+  A national behavioural survey run by someone other than the ministry being assessed.
+
+**Three of these four questions are unanswered rather than unanswerable**, and that is a statement
+about decisions rather than about difficulty.
+
+### WHERE IT WENT, AND TWO PLACES IT DELIBERATELY DID NOT
+
+**Not on `/stories/`.** That index says it holds *subjects where the order you meet the evidence in
+changes what it means*, and the scroller is earned only where sequence does work. **Four independent
+questions have no sequence**, so putting it there would contradict the index's own criterion.
+
+**Not as a ninth entry among the eight on `/questions/`.** That list is the brief's order and says
+so; slipping a ninth into it would falsify the sentence. It sits in its own block below them.
+
+**And not a second door onto `/unmeasured/`** — the object the question-navigation item declined a
+route for. That page lists all 374 declarations by record and by kind; this takes four questions a
+reader asks and shows what specifically was not measured under each. Same relation as `/questions/`
+to `/ledger/`.
+
+### THE GATE CAUGHT IT, AND IT CAUGHT IT REPORT-ONLY
+
+First build passed and `unrecognised-rows` went **0 → 5**: five records named by TITLE outside every
+listing shape, on the new page. **The build still exited 0 because that gate is report-only** —
+precisely the shape CLAUDE.md names, *an unrecognised shape is not a failure but an absence*.
+
+The page LISTS those records rather than citing them, so the unit became `<li>` — already recognised
+by both render gates — with `RecordMarks` on the row. **None of the five carries a caveat, checked
+rather than assumed**, so what the marks add is the absence count beside the absences themselves,
+and each declaration still renders exactly once. `unrecognised-rows` back to 0; `listing-marks`
+5,710 → 5,715 rows, all marks present.
+
+### Verified in the DOM at 375 px
+
+4 questions · 5 record rows, **5 of 5 carrying marks** · 6 absence declarations, matching the page's
+own stated 6 · **2 that nothing would close and 4 that something would**, summing · both `wouldFill`
+branches in **one colour**, `rgb(92,96,108)`, the difference carried by words and weight rather than
+hue · 0 body overflow · 0 clamped.
+
+### Gate line
+
+27 steps green. `link-check` **47,422 hrefs across 750 pages, 0 dead**. `listing-marks` **5,715 rows
+/ 8,171 marks**. `unrecognised-rows` **0**. `reachability` 1,787/1,787.
