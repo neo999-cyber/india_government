@@ -4432,3 +4432,13 @@ details.more > summary {
   color: var(--ink);
   border-bottom: 2px solid var(--mark);
 }
+
+/* --- Tab orientation line --------------------------------------------------
+   One sentence under the tab strip on every tab except the overview, which has
+   its own lead. Added with the tab isolation: a tab that no longer inherits the
+   overview's introduction opens straight onto a table, and a table with nothing
+   in front of it is the other half of the defect that isolation fixed. */
+.dtab-orient {
+  margin: 0.5rem 0 1.25rem;
+  max-width: var(--measure);
+}

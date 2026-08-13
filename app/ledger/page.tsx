@@ -29,7 +29,14 @@ export default function LedgerIndex() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / reforms, events and episodes
+        /* PREFETCH OFF ON THIS PAGE'S DENSE LISTS.
+           Next prefetches every in-viewport route by default. A lab run measured a topic page issuing 71
+           requests and pulling ~359 KB of route payloads a reader had not asked for, and these are the
+           pages that carry 494 to 1,286 links each. A catalogue row is a LOW-PROBABILITY destination —
+           a reader follows one of them, not forty — so the prefetch is spent almost entirely on routes
+           nobody opens, on the pages least able to afford it. Navigation is unchanged; only the
+           speculative fetch is. */
+        <Link prefetch={false} href="/">instrument</Link> / reforms, events and episodes
       </p>
       <h1>Ledger of reforms, events and episodes</h1>
       <p className="lede">
@@ -86,12 +93,12 @@ export default function LedgerIndex() {
               >
                 <tr>
                   <td className="mono">
-                    <Link href={`/ledger/${l.id}/`}>{l.id}</Link>
+                    <Link prefetch={false} href={`/ledger/${l.id}/`}>{l.id}</Link>
                   </td>
                   <td className="mono t-note">{formatDateRange(l.date, l.dateEnd)}</td>
                   <td className="mono">{TERM_SHORT[l.term]}</td>
                   <td>
-                    <Link href={`/ledger/${l.id}/`}>{l.title}</Link>
+                    <Link prefetch={false} href={`/ledger/${l.id}/`}>{l.title}</Link>
                     <RecordMarks record={l} deferCaveat />
                   </td>
                   <td className="t-note">{l.type}</td>

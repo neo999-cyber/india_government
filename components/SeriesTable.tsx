@@ -98,12 +98,19 @@ export function SeriesTable({
         <>
           {' '}
           · supersedes{' '}
-          <Link href={`/series/${handoff.previous.id}/`}>{handoff.previous.title}</Link>
+          /* PREFETCH OFF ON THIS PAGE'S DENSE LISTS.
+             Next prefetches every in-viewport route by default. A lab run measured a topic page issuing 71
+             requests and pulling ~359 KB of route payloads a reader had not asked for, and these are the
+             pages that carry 494 to 1,286 links each. A catalogue row is a LOW-PROBABILITY destination —
+             a reader follows one of them, not forty — so the prefetch is spent almost entirely on routes
+             nobody opens, on the pages least able to afford it. Navigation is unchanged; only the
+             speculative fetch is. */
+          <Link prefetch={false} href={`/series/${handoff.previous.id}/`}>{handoff.previous.title}</Link>
         </>
       ) : placement === 'terminus' && handoff?.next ? (
         <>
           {' '}
-          · continues in <Link href={`/series/${handoff.next.id}/`}>{handoff.next.title}</Link>
+          · continues in <Link prefetch={false} href={`/series/${handoff.next.id}/`}>{handoff.next.title}</Link>
         </>
       ) : null;
 
@@ -111,7 +118,7 @@ export function SeriesTable({
       <tr className="seam" key={`seam-${brk.period}-${brk.provenanceRef}-${placement}`}>
         <td colSpan={colSpan}>
           {lead} · {periodLabel(brk.period, series.calendar)} · {brk.note} ·{' '}
-          <Link href={`/provenance/${brk.provenanceRef}/`}>{brk.provenanceRef}</Link> · do not
+          <Link prefetch={false} href={`/provenance/${brk.provenanceRef}/`}>{brk.provenanceRef}</Link> · do not
           splice
           {handoffNote}
         </td>
@@ -124,7 +131,7 @@ export function SeriesTable({
       <td colSpan={colSpan}>
         denominator break · {m.denom.date} ({periodLabel(m.denom.period, series.calendar)}) ·{' '}
         {m.denom.label} ·{' '}
-        <Link href={`/provenance/${m.denom.provenance}/`}>{m.denom.provenance}</Link>
+        <Link prefetch={false} href={`/provenance/${m.denom.provenance}/`}>{m.denom.provenance}</Link>
         <span className="denominator-gloss">
           The ratio steps here because what it is divided by was restated, not because
           activity changed. Values either side rest on different denominators and no

@@ -35,7 +35,14 @@ export default function UnmeasuredIndex() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / what is not measured
+        /* PREFETCH OFF ON THIS PAGE'S DENSE LISTS.
+           Next prefetches every in-viewport route by default. A lab run measured a topic page issuing 71
+           requests and pulling ~359 KB of route payloads a reader had not asked for, and these are the
+           pages that carry 494 to 1,286 links each. A catalogue row is a LOW-PROBABILITY destination —
+           a reader follows one of them, not forty — so the prefetch is spent almost entirely on routes
+           nobody opens, on the pages least able to afford it. Navigation is unchanged; only the
+           speculative fetch is. */
+        <Link prefetch={false} href="/">instrument</Link> / what is not measured
       </p>
       <h1>What is not measured</h1>
       <p className="lede">
@@ -106,7 +113,7 @@ export default function UnmeasuredIndex() {
           <ul>
             {disputed.map((a) => (
               <li key={`${a.recordId}-${a.entry.what}`}>
-                {a.entry.what} — <Link href={a.href}>{a.recordId}</Link>
+                {a.entry.what} — <Link prefetch={false} href={a.href}>{a.recordId}</Link>
               </li>
             ))}
           </ul>
@@ -128,7 +135,7 @@ export default function UnmeasuredIndex() {
             {all.map((a) => (
               <tr key={`${a.recordId}-${a.entry.what}`}>
                 <td>
-                  <Link href={a.href}>{a.recordTitle}</Link>
+                  <Link prefetch={false} href={a.href}>{a.recordTitle}</Link>
                   <br />
                   <span className="t-note mono">
                     {a.recordId} · {a.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}
@@ -178,7 +185,7 @@ export default function UnmeasuredIndex() {
                   <td>{a.entry.wouldFill}</td>
                   <td className="t-note">{a.entry.what}</td>
                   <td className="mono t-note">
-                    <Link href={a.href}>{a.recordId}</Link>
+                    <Link prefetch={false} href={a.href}>{a.recordId}</Link>
                   </td>
                 </tr>
               ))}
@@ -198,7 +205,7 @@ export default function UnmeasuredIndex() {
           <ul>
             {withoutRoute.map((a) => (
               <li key={`none-${a.recordId}-${a.entry.what}`}>
-                {a.entry.what} — <Link href={a.href}>{a.recordId}</Link>
+                {a.entry.what} — <Link prefetch={false} href={a.href}>{a.recordId}</Link>
               </li>
             ))}
           </ul>

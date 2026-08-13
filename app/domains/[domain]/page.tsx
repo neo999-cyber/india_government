@@ -263,6 +263,21 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
         </div>
       ) : null}
 
+      {/* ============ THE TABS ARE TABS NOW, AND WERE ADDITIONS ==============================
+          Everything from the lead chart to the readable record list rendered on EVERY tab, before
+          the selected tab's own body. So `/domains/macro/records/` opened with the overview's lead
+          chart, its period narrative, four more charts and the whole 57-record readable list, and
+          only then reached the records table — 269,862 bytes against the overview's 158,021, with
+          "Demonetisation" appearing twice and no way for a reader to tell whether the tab had done
+          anything. An external audit called it the most misleading page on the site and that was
+          the right word: the control said it had filtered and it had appended.
+
+          **`listing-marks` will read lower after this and that is the expected direction, not a
+          regression.** The readable list stops rendering on four tabs where it was a duplicate;
+          every record it named is still a row of the records tab's own table, so rule 4b is
+          satisfied where it was always meant to be. */}
+      {tab === 'overview' ? (
+        <>
       {/* ---- THE LEAD. One chart at full width, chosen by a STATED criterion. ---------------- */}
       {lead ? (
         <figure className="dlead">
@@ -435,6 +450,8 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
             <RecordItem key={r.id} record={r} />
           ))}
         </section>
+      ) : null}
+        </>
       ) : null}
 
       {/* §2 — THE OVERVIEW CLOSES ON WHAT THE EVIDENCE CANNOT ESTABLISH, AND IT HAD STOPPED DOING SO.

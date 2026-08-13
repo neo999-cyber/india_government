@@ -16,7 +16,7 @@
     "domain-coverage": "node tools/domain-coverage.mjs",
     "url-check": "node tools/url-check.mjs",
     "dev": "next dev",
-    "build": "npm run deploy-chain && npm run validate && npm run enum-parity && npm run no-bare-root && npm run no-unguarded-prose-field && npm run withdrawn-wording && npm run quotation-identity && npm run seam-span && npm run phase-name && npm run exposure && npm run objectives && npm run independence && npm run figure-consistency && npm run manifest && npm run derivations && npm run record-history && npm run corrections && npm run public-data && next build && npm run reachability && npm run field-render-audit && npm run link-check && npm run listing-marks && npm run rendered-space && npm run chart-ticks && npm run unrecognised-rows && npm run evaluability-wording && npm run domain-coverage",
+    "build": "npm run deploy-chain && npm run validate && npm run enum-parity && npm run no-bare-root && npm run no-unguarded-prose-field && npm run withdrawn-wording && npm run quotation-identity && npm run seam-span && npm run phase-name && npm run exposure && npm run objectives && npm run independence && npm run figure-consistency && npm run manifest && npm run derivations && npm run record-history && npm run corrections && npm run public-data && next build && npm run reachability && npm run field-render-audit && npm run link-check && npm run listing-marks && npm run rendered-space && npm run chart-ticks && npm run interface-invariants && npm run unrecognised-rows && npm run evaluability-wording && npm run domain-coverage",
     "start": "npx serve out",
     "typecheck": "tsc --noEmit",
     "audit": "node tools/audit-manifest.mjs",
@@ -54,7 +54,8 @@
     "rendered-space": "node tools/rendered-space.mjs",
     "period-verdict-probe": "tsx tools/period-verdict-probe.mjs",
     "own-caveat-once": "node tools/own-caveat-once.mjs",
-    "chart-ticks": "node tools/chart-ticks.mjs --control && node tools/chart-ticks.mjs"
+    "chart-ticks": "node tools/chart-ticks.mjs --control && node tools/chart-ticks.mjs",
+    "interface-invariants": "node tools/interface-invariants.mjs --control && node tools/interface-invariants.mjs"
   },
   "dependencies": {
     "next": "16.2.12",
