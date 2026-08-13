@@ -226,6 +226,43 @@ export function storyCard(title: string, share: string, slug: string): Metadata 
   return card(title, share, `/stories/${slug}/`);
 }
 
+/**
+ * ============================ AUTHORED SERIES CARDS, AND THE CRITERION FOR THE SET =============
+ *
+ * **THE CRITERION, PRINTED HERE SO A LATER PASS DOES NOT READ THIS SET AS ARBITRARY:**
+ *
+ * > A series gets an authored card where **a story rests on it** — because those are the pages a
+ * > reader reaches from a shared link. Someone forwards a story; a friend clicks a source.
+ *
+ * 122 series carry both a finding and a caveat. **17 are rested on by a story; 14 of those carry
+ * both.** The remaining 108 are reached from the full index and from nothing that gets forwarded,
+ * and for them the mechanical floor below is the permanent answer rather than a backlog.
+ *
+ * **ELEVEN OF THE FOURTEEN WERE ALREADY DONE and that was not checked when the set was sized.**
+ * They are sides of a contested pair and already carry a two-truths card — a pair's `framing`, read
+ * against the truncation test when those shipped. So this map holds **three**, and the criterion
+ * rather than the count is what a later pass should read.
+ *
+ * ============================ WHAT EACH ONE IS =================================================
+ *
+ * A fresh qualification-first sentence, **never a rewrite of the finding**: the 237 findings fail
+ * the rule by construction, leading with the figure and qualifying after an em-dash at a median 459
+ * characters. Read at 60, 100, 140 and 180 characters before shipping.
+ *
+ * **The no-figure floor holds on all three.** None carries a figure at all, so there is nothing a
+ * prefix could deliver as a standing claim. It lifted twice for the story cards, where four
+ * official answers or a qualification-then-figures order made truncation safe; a series card is
+ * usually the other case, and these are.
+ */
+const SERIES_CARDS: Record<string, string> = {
+  'wb-mgnrega-funds-released':
+    'A zero in this row is a statutory act rather than an absence of demand: release was stopped under section 27 from 9 March 2022, and the table cannot say so from within itself. The publisher is the Union, a party to the dispute, stating its own release figures.',
+  'bihar-mgnrega-funds-released':
+    'These are the Union’s own figures for what it released — not what it allocated, and not what was spent. The row is carried as the control for West Bengal’s, which goes to zero in the same table over the same years.',
+  'wb-mgnrega-new-jobcards':
+    'Do not read this fall as caused by the funding stoppage without reading Bihar’s, which falls over the same two years with no stoppage in force. Nothing retrieved separates the two effects.',
+};
+
 export function seriesCard(s: Series): Metadata {
   const pts = s.points.filter((p) => p.country === 'IND' && p.value !== null);
   const first = pts[0]?.period;
@@ -258,6 +295,12 @@ export function seriesCard(s: Series): Metadata {
   // lead, and the pair's framing is the stronger of the two: it is the record's tension in the
   // corpus's own words, where the absence clause is a composed sentence about a field. The absence
   // still renders in full on the page, which is where rule 4b binds it.
+  // AUTHORED FIRST, AND THE ORDER IS DELIBERATE. A two-truths card is a PAIR's framing, written
+  // about the tension; an authored card is written about THIS page. Where both exist the page's own
+  // sentence wins. None of the three authored today is a pair side, so nothing changes yet — the
+  // order is set now so that authoring a card for a pair side later does the expected thing.
+  const authored = SERIES_CARDS[s.id];
+  if (authored) return card(s.title, authored, `/series/${s.id}/`);
   const tension = twoTruths(s.id);
   if (tension) return card(s.title, tension, `/series/${s.id}/`);
   return card(s.title, lead(absenceClause(s.unmeasured), bits), `/series/${s.id}/`);
