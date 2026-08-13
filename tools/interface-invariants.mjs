@@ -26,9 +26,9 @@
  * plus the post-fix shape and requires acceptance — in the attribute order the build actually emits,
  * which is the mistake `chart-ticks` made on its first run.
  */
-import { readdirSync, readFileSync, existsSync, statSync } from 'node:fs';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import {readdirSync, readFileSync, existsSync} from 'node:fs';
+import {join, dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'out');

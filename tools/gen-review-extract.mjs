@@ -24,9 +24,9 @@
  *
  * Usage:  node tools/gen-review-extract.mjs   ·   npm run review-extract
  */
-import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import {readFileSync, writeFileSync, readdirSync} from 'node:fs';
+import {join, dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SAMPLE = join(ROOT, 'review', 'extract-sample.json');

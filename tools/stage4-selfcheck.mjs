@@ -137,8 +137,6 @@ const live = { series: [], ledger: [], provenance: [], pairs: [] };
   }
 })(DATA);
 
-/** Live + drop as flat arrays. Derivation reads the whole corpus, not just the drop. */
-const universeCorpus = Object.fromEntries(LAYERS.map((l) => [l, [...live[l], ...drop[l]]]));
 const universe = {};
 const dropIds = {};
 for (const layer of LAYERS) {

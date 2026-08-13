@@ -33,10 +33,10 @@
  *
  * Usage:  node tools/gen-derivations.mjs   ·   npm run derivations
  */
-import { readdirSync, readFileSync, writeFileSync, existsSync, statSync } from 'node:fs';
-import { execSync } from 'node:child_process';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import {readdirSync, readFileSync, writeFileSync, existsSync} from 'node:fs';
+import {execSync} from 'node:child_process';
+import {join, dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'docs', 'derivations.md');

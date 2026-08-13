@@ -12,13 +12,13 @@
  *
  * Run with `npm run validate:selftest`.
  */
-import { existsSync, readFileSync, writeFileSync, readdirSync, statSync } from 'node:fs';
-import { execFileSync } from 'node:child_process';
-import { fileURLToPath, pathToFileURL } from 'node:url';
-import { liveEnums } from './lib/lens-fixtures.mjs';
-import { dirname, join } from 'node:path';
+import {readFileSync, writeFileSync, readdirSync, statSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath, pathToFileURL} from 'node:url';
+import {} from './lib/lens-fixtures.mjs';
+import {dirname, join} from 'node:path';
 import Ajv2020 from 'ajv/dist/2020.js';
-import { AJV_OPTIONS } from './lib/schema.mjs';
+import {AJV_OPTIONS} from './lib/schema.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const VALIDATOR = join(ROOT, 'tools', 'validate.mjs');
@@ -242,9 +242,9 @@ const broken = run(['--data', join(ROOT, 'tests', 'fixtures', 'broken')]);
 if (broken.code === 0 || broken.report.ok) {
   failures.push('tests/fixtures/broken validated clean — the gate is not closed');
 }
-const firedRules = new Set(
-  broken.report.findings.filter((f) => f.level === 'error').map((f) => f.rule),
-);
+// `firedRules` was built here and never read. The MUST_FIRE loop below is strictly stronger: it
+// asserts each rule fired AND that it fired for the violation the fixture seeds, which is the
+// rule that every fixture asserts the specific failure it tests for.
 for (const { rule, expect } of MUST_FIRE) {
   const hits = broken.report.findings.filter((f) => f.level === 'error' && f.rule === rule);
   if (hits.length === 0) {
