@@ -20003,3 +20003,46 @@ and 82 federalism records has the means to carry a pending constitutional trigge
 30 build steps green · `quotation-identity` **32/32 across 30 correction-marked fields, unchanged by
 the three prose edits** — which is the check that mattered, since the class edited sits next to the
 correction convention.
+
+---
+
+## 2026-08-13 (eighty-first entry) — SERIES-ID LINKS: ATTEMPTED, REVERTED, AND THE BLOCKER IS A GATE
+
+I said this one was mine and had been mislabelled as blocked. **Right about the client boundary,
+wrong about the conclusion.**
+
+The boundary is solvable: a generated module gives `marks.tsx` 267 linkable ids without importing
+`lib/data` — longest-first because 11 ids are a strict prefix of another, with `crar` and
+`remittances` excluded as an ordinary acronym and an ordinary word, since **a false link asserts a
+citation nobody made**. That worked.
+
+**`reachability` failed — 3 of 1788.** Its probe is a mark's first 60 characters against a page
+extracted by replacing every tag with a space, so `<a>id</a>,` becomes `id ,` and a caveat opening
+*"A SEPARATE SERIES FROM ptr-primary-udise, on a different uni"* no longer matches itself.
+
+**The conflict is pre-existing and P-linkification has only ever passed by luck: zero P-ids appear in
+the first 60 characters of any caveat.** The gate's premise — a prefix is a sound test because marks
+never truncate — assumes rendered text is character-identical to stored text, and linkification has
+always broken that. 267 tokens where a pattern matched a handful is what made it fire.
+
+Fixing the probe is a gate-contract change, which the stop rule names explicitly. **Reverted;
+finding recorded; stopped.**
+
+### TWO DIAGNOSTIC ERRORS ON THE WAY, BOTH KEPT
+
+I tested the needle at **90 characters when `PROBE` is 60**, and then through **`pageTextFromHtml`
+when `reachability` has its own `visibleText`**. My check reported "found: true" three times against
+a gate that was failing. The rule that a verification reads the page through the gate's own
+normaliser presumes a single shared normaliser; **this gate predates that and carries its own**, and
+that gap is what let a wrong check look right twice.
+
+### AND ONE COUNT EXPLAINED RATHER THAN WAVED THROUGH
+
+`reachability` went 1787 → 1788. `notes` is a guarded mark, so the increment is the `nh-network` note
+added two entries ago — and the gate proving it reaches its own page is the check that it renders.
+
+### Gate line
+
+30 steps green after the revert · `reachability` 1,788/1,788 · generated files `docs/derivations.md`
+and `review/record-history.json` committed with the `/data` change, which is what the new CI
+dirty-tree step exists to catch.
