@@ -334,8 +334,16 @@ function WhatHappened({ d, year }: { d: ODomain; year: number | null }) {
 export function OverviewBoard({
   domains,
   reduced = false,
+  headingLevel = 3,
 }: {
   domains: ODomain[];
+  /**
+   * OUTLINE POSITION OF THE CARD TITLES. Hardcoded `h3` put `/overview/` into an h1 -> h3 skip on
+   * all twelve cards, because that page renders this board directly under its own h1. The landing
+   * page has an h2 above it and is correct at 3, which is why this is a prop rather than a change.
+   * Appearance is `card-title`; only the outline moves.
+   */
+  headingLevel?: 2 | 3;
   /**
    * THE LANDING PAGE'S CUT — §6b: scrub, no play, a handful of cards.
    *
@@ -377,6 +385,7 @@ export function OverviewBoard({
    * play button is removed from the accessibility tree, not merely hidden, because a control that
    * is announced and does nothing is worse than one that is absent.
    */
+  const CardHeading = `h${headingLevel}` as 'h2' | 'h3';
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(1);
   const [motionOK, setMotionOK] = useState(true);
@@ -493,9 +502,9 @@ export function OverviewBoard({
       <div className="cards">
         {domains.map((d) => (
           <section key={d.key} className="card">
-            <h3 className="card-title">
+            <CardHeading className="card-title">
               <Link href={`/domains/${d.key}/`}>{d.label}</Link>
-            </h3>
+            </CardHeading>
             <p className="card-counts">
               {d.nSeries} series · {d.nRecords} records
             </p>

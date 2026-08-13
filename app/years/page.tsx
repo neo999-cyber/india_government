@@ -57,7 +57,7 @@ export default function YearsIndex() {
         2021 also show. What 2020 shows is change.
       </p>
 
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0}>
         <table>
           <thead>
             <tr>

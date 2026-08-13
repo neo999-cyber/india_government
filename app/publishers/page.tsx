@@ -94,7 +94,7 @@ export default function Publishers() {
         them.
       </p>
 
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0}>
         <table>
           <thead>
             <tr>
@@ -175,7 +175,7 @@ export default function Publishers() {
         <summary>
           Every string that resolved to no body ({unresolvedSegments.length} distinct)
         </summary>
-        <div className="table-wrap">
+        <div className="table-wrap" tabIndex={0}>
           <table>
             <thead>
               <tr>

@@ -30,7 +30,7 @@ export function RegimeOverlap({ regimes }: { regimes: Series[] }) {
   if (periods.length === 0) return null;
 
   return (
-    <div className="table-wrap">
+    <div className="table-wrap" tabIndex={0}>
       <table>
         <thead>
           <tr>

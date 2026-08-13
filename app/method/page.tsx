@@ -226,7 +226,7 @@ export default function MethodPage() {
 
       <h2>Status of a figure</h2>
       <StatusKey />
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0}>
         <table>
           <thead>
             <tr>
@@ -271,7 +271,7 @@ export default function MethodPage() {
         citation on a ledger or provenance record, and on the record itself for a series — and a
         total that showed only one of them is what this page got wrong.
       </p>
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0}>
         <table>
           <thead>
             <tr>

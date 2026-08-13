@@ -160,7 +160,9 @@ export default async function SeriesDetail({ params }: Props) {
       {/* `marksHostedByPage` — this page renders the caveat and the absences as their own
           sections below, so the chart must not also carry them. Without it the caveat appeared
           twice on 130 of 269 pages and no gate could see it; see the flag's own note. */}
-      <SeriesChart series={s} highlightLast={false} marksHostedByPage />
+      {/* Directly under this page's h1, so the chart title is the first section: h2, not h3.
+          Hardcoded h3 here put every one of the 269 series pages into an h1 -> h3 skip. */}
+      <SeriesChart series={s} highlightLast={false} marksHostedByPage headingLevel={2} />
 
       <SeriesKeyFigures series={s} />
 

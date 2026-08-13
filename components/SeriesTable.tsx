@@ -138,7 +138,7 @@ export function SeriesTable({
     m.kind === 'break' ? seamRow(m) : denominatorRow(m);
 
   return (
-    <div className="table-wrap">
+    <div className="table-wrap" tabIndex={0}>
       <table>
         <thead>
           <tr>

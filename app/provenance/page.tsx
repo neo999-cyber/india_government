@@ -40,7 +40,7 @@ export default function ProvenanceIndex() {
         ]}
       />
 
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0}>
         <table id="provenance-table">
           <thead>
             <tr>

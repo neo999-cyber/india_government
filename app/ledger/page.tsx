@@ -58,7 +58,7 @@ export default function LedgerIndex() {
         ]}
       />
 
-      <div className="table-wrap">
+      <div className="table-wrap" tabIndex={0}>
         <table id="ledger-table">
           <thead>
             <tr>

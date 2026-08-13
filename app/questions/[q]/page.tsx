@@ -120,7 +120,7 @@ export default async function QuestionRoute({ params }: Props) {
 /** The improved and worsened sets: the same table, selected on opposite sides of one field. */
 function MoveTable({ rows }: { rows: DirectedMove[] }) {
   return (
-    <div className="table-wrap qstack">
+    <div className="table-wrap qstack" tabIndex={0}>
       <table>
         <thead>
           <tr>
@@ -179,7 +179,7 @@ function Stopped() {
         series-ends plateau rather than chosen. A series ending in {frontier} is an annual series
         whose next figure is not out yet; the ones below end before it.
       </p>
-      <div className="table-wrap qstack">
+      <div className="table-wrap qstack" tabIndex={0}>
         <table>
           <thead>
             <tr>
@@ -215,7 +215,7 @@ function Stopped() {
 function MeasuredWell() {
   const rows = measuredWell();
   return (
-    <div className="table-wrap qstack">
+    <div className="table-wrap qstack" tabIndex={0}>
       <table>
         <thead>
           <tr>
@@ -254,7 +254,7 @@ function MeasuredWell() {
 function TooEarly() {
   const rows = tooEarly();
   return (
-    <div className="table-wrap qstack">
+    <div className="table-wrap qstack" tabIndex={0}>
       <table>
         <thead>
           <tr>
@@ -300,7 +300,7 @@ function TooEarly() {
 function Disagree() {
   const rows = disagreeing();
   return (
-    <div className="table-wrap qstack">
+    <div className="table-wrap qstack" tabIndex={0}>
       <table>
         <thead>
           <tr>
