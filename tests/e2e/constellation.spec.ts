@@ -1,54 +1,81 @@
 import { test, expect } from '@playwright/test';
 
 /**
- * THE RECORD CONSTELLATION — the landing artwork, and the one defect in it that was invisible.
+ * THE RECORD CONSTELLATION — the landing artwork, and the defects in it that were invisible.
  *
- * **WHY THIS FILE EXISTS RATHER THAN A LINE IN `overflow.spec.ts`.** The name caption under the
- * eight controls was first written as a per-button tooltip: absolutely positioned, `left: 50%`,
- * `white-space: nowrap`, `visibility: hidden` until hover. **A `visibility: hidden` element still
- * occupies layout**, so at 320px the captions on the edge buttons extended past the viewport and
- * pushed the document sideways — 343px of scrollWidth in a 320px window — *while invisible*.
+ * **WHY THIS FILE EXISTS RATHER THAN A LINE IN `overflow.spec.ts`.** The area name was first a
+ * per-button tooltip: absolutely positioned, `left: 50%`, `white-space: nowrap`, `visibility:
+ * hidden` until hover. **A `visibility: hidden` element still occupies layout**, so at 320px the
+ * tooltips on the outermost controls extended past the viewport and pushed the document sideways —
+ * 343px of scrollWidth in a 320px window — *while invisible*. Nothing on screen looked wrong and the
+ * element causing it could not be seen.
  *
- * That is the shape worth a regression test: nothing on the screen looked wrong, the element
- * causing it could not be seen, and `overflow.spec.ts` runs at 375px where it did not yet bite. So
- * this asserts at **320px, the narrowest width the brief names**, and it asserts with the caption
- * REVEALED as well as hidden — a check that only ever measures the resting state would have passed
- * over the bug in one direction and over its fix in the other.
+ * So this asserts at **320px, the narrowest width the design brief names**, and it asserts with the
+ * name REVEALED as well as hidden — a check that only ever measures the resting state passes over
+ * the bug in one direction and over its fix in the other.
  *
- * The rest holds the interaction contract the brief specifies: eight controls, real buttons,
- * `aria-pressed`, selecting toggles back off, and the unselected constellations stay PRESENT rather
- * than being removed — they are context, and `display: none` would be the easy wrong fix.
+ * **THE SECOND CLASS IS OVERLAP**, which bit twice: the status caption sat inside the source line at
+ * desktop width (the source wraps to two lines) and again at 320px (where it wraps to four). Both
+ * were found by measuring, and both are held here, because spacing set from one width is a guess
+ * about every other one.
+ *
+ * The rest holds the interaction contract: eight controls, real buttons, `aria-pressed`, selecting
+ * toggles back off, and the unselected constellations stay PRESENT rather than removed — they are
+ * context, and `display: none` would be the easy wrong fix.
  */
 
+const boxes = async (page: import('@playwright/test').Page) =>
+  page.evaluate(() => {
+    const rc = document.querySelector('.rc')!;
+    const r = (s: string) => {
+      const b = rc.querySelector(s)!.getBoundingClientRect();
+      return { l: b.left, r: b.right, t: b.top, b: b.bottom };
+    };
+    return {
+      art: r('.rc-art'),
+      stage: r('.rc-stage'),
+      status: r('.rc-status'),
+      source: r('.rc-source'),
+      badges: [...rc.querySelectorAll('.rc-node-btn')].map((el) => {
+        const b = el.getBoundingClientRect();
+        return {
+          area: (el as HTMLElement).dataset.area!,
+          l: b.left,
+          r: b.right,
+          t: b.top,
+          b: b.bottom,
+          w: b.width,
+          h: b.height,
+        };
+      }),
+    };
+  });
+
+type Box = { l: number; r: number; t: number; b: number };
+const overlaps = (a: Box, z: Box) => !(a.r <= z.l || z.r <= a.l || a.b <= z.t || z.b <= a.t);
+
 test.describe('record constellation', () => {
-  test('320px — nothing pushes the document sideways, caption hidden or shown', async ({
-    page,
-  }) => {
+  test('320px — nothing pushes the document sideways, name hidden or shown', async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 720 });
     await page.goto('/');
 
     /**
-     * THE RIGHT EDGE ONLY, and that is not laziness.
-     *
-     * The first version of this also failed anything with `left < -1`, and it caught `.skip-link` —
-     * the site's skip-to-content link, parked off-screen to the LEFT until it takes focus. That is
-     * the standard idiom, it is deliberate, and in a left-to-right document it cannot scroll
-     * anything: there is nothing to scroll to left of the origin. **A check that fails on a correct
-     * accessibility affordance would be removed within a cycle, and the real assertion would go with
-     * it.** Same semantics as `overflow.spec.ts`, for the same reason.
+     * THE RIGHT EDGE ONLY, and that is not laziness. An earlier version also failed anything with
+     * `left < -1` and it caught `.skip-link` — the skip-to-content link, parked off-screen to the
+     * left until it takes focus. That is the standard idiom and in a left-to-right document it
+     * cannot scroll anything. **A check that fails on a correct accessibility affordance gets
+     * deleted within a cycle, and the real assertion goes with it.**
      */
     const measure = () =>
       page.evaluate(() => {
         const de = document.documentElement;
         const offenders: string[] = [];
         for (const el of document.body.querySelectorAll('*')) {
-          const r = el.getBoundingClientRect();
-          if (r.right > de.clientWidth + 1 && !el.closest('.table-wrap, .dtabs, [data-scroll-x]')) {
+          const b = el.getBoundingClientRect();
+          if (b.right > de.clientWidth + 1 && !el.closest('.table-wrap, .dtabs, [data-scroll-x]')) {
             const c = el.className;
             offenders.push(
-              typeof c === 'string'
-                ? c
-                : ((c as unknown as SVGAnimatedString)?.baseVal ?? el.tagName),
+              typeof c === 'string' ? c : ((c as unknown as SVGAnimatedString)?.baseVal ?? el.tagName),
             );
           }
         }
@@ -59,37 +86,46 @@ test.describe('record constellation', () => {
     expect(resting.offenders, 'at rest, nothing may extend past the viewport').toEqual([]);
     expect(resting.scrollWidth).toBeLessThanOrEqual(resting.clientWidth);
 
-    // Reveal the LONGEST caption — "Government and the states" — on the LAST control, which is the
-    // one furthest right and therefore the one that overflowed.
-    const controls = page.locator('.rc-btn');
-    await controls.last().focus();
-
+    // Reveal the longest name — "Government and the states" — and measure again.
+    await page.locator('.rc-node-btn[data-area="government"]').focus();
     const revealed = await measure();
-    expect(revealed.offenders, 'with the caption shown, still nothing past the viewport').toEqual(
-      [],
-    );
+    expect(revealed.offenders, 'with the name shown, still nothing past the viewport').toEqual([]);
     expect(revealed.scrollWidth).toBeLessThanOrEqual(revealed.clientWidth);
   });
 
-  test('eight controls, each a real button with a 44px target and an accessible name', async ({
-    page,
-  }) => {
-    await page.setViewportSize({ width: 320, height: 720 });
-    await page.goto('/');
+  for (const width of [320, 375, 768, 1280] as const) {
+    test(`${width}px — the stage, the controls and both captions keep out of each other`, async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/');
+      const b = await boxes(page);
 
-    const controls = page.locator('.rc-btn');
-    await expect(controls).toHaveCount(8);
+      expect(b.badges, 'all eight areas are present').toHaveLength(8);
 
-    for (let i = 0; i < 8; i++) {
-      const b = controls.nth(i);
-      expect(await b.evaluate((el) => el.tagName)).toBe('BUTTON');
-      const name = await b.getAttribute('aria-label');
-      expect(name, 'every control names its area').toBeTruthy();
-      const box = await b.boundingBox();
-      expect(box!.width, `${name} width`).toBeGreaterThanOrEqual(44);
-      expect(box!.height, `${name} height`).toBeGreaterThanOrEqual(44);
-    }
-  });
+      for (const badge of b.badges) {
+        expect(badge.w, `${badge.area} target width`).toBeGreaterThanOrEqual(44);
+        expect(badge.h, `${badge.area} target height`).toBeGreaterThanOrEqual(44);
+        expect(badge.l, `${badge.area} is inside the panel`).toBeGreaterThanOrEqual(b.art.l - 1);
+        expect(badge.r, `${badge.area} is inside the panel`).toBeLessThanOrEqual(b.art.r + 1);
+        expect(overlaps(badge, b.status), `${badge.area} clear of the status line`).toBe(false);
+        expect(overlaps(badge, b.source), `${badge.area} clear of the attribution`).toBe(false);
+      }
+
+      // No two controls on the ring may touch.
+      for (let i = 0; i < b.badges.length; i++)
+        for (let j = i + 1; j < b.badges.length; j++)
+          expect(
+            overlaps(b.badges[i], b.badges[j]),
+            `${b.badges[i].area} overlaps ${b.badges[j].area}`,
+          ).toBe(false);
+
+      expect(overlaps(b.status, b.source), 'status line clear of the attribution').toBe(false);
+      expect(overlaps(b.status, b.stage), 'status line clear of the map').toBe(false);
+      expect(b.stage.t, 'the map is not clipped at the top').toBeGreaterThanOrEqual(b.art.t - 1);
+      expect(b.stage.b, 'the map is not clipped at the foot').toBeLessThanOrEqual(b.art.b + 1);
+    });
+  }
 
   test('selecting focuses one constellation, selecting again returns to all eight', async ({
     page,
@@ -97,9 +133,9 @@ test.describe('record constellation', () => {
     await page.goto('/');
 
     const status = page.locator('.rc-status');
-    await expect(status).toContainText('All eight constellations');
+    await expect(status).toHaveText('All eight constellations');
 
-    const gov = page.locator('.rc-btn[aria-label^="Government"]');
+    const gov = page.locator('.rc-node-btn[data-area="government"]');
     await expect(gov).toHaveAttribute('aria-pressed', 'false');
     await gov.click();
 
@@ -110,8 +146,8 @@ test.describe('record constellation', () => {
       'on',
     );
 
-    // THE UNSELECTED ONES REMAIN. Quieter, and still on the page — the brief requires them for
-    // context and `display: none` is the fix that would pass a weaker assertion.
+    // THE UNSELECTED ONES REMAIN. Quieter, and still on the page — they are context, and
+    // `display: none` is the fix that would pass a weaker assertion.
     const edu = page.locator('.rc-group[data-area="education"]');
     await expect(edu).toHaveAttribute('data-state', 'off');
     await expect(edu).toBeVisible();
@@ -119,18 +155,22 @@ test.describe('record constellation', () => {
 
     await gov.click();
     await expect(gov).toHaveAttribute('aria-pressed', 'false');
-    await expect(status).toContainText('All eight constellations');
+    await expect(status).toHaveText('All eight constellations');
     await expect(page.locator('.rc-group[data-area="government"]')).toHaveAttribute(
       'data-state',
       'all',
     );
   });
 
-  test('the map, the conceptual-position note and the attribution all render', async ({ page }) => {
+  test('the official outline, the ghost sheet and the attribution all render', async ({ page }) => {
     await page.goto('/');
 
-    // The official sheet actually loads — a broken href would leave the marks floating on nothing
-    // and every other assertion here would still pass.
+    // The outline is the thing a reader actually sees, and it is 35KB of official geometry. A
+    // truncated or missing path would leave the marks floating on nothing while every other
+    // assertion here still passed.
+    const d = await page.locator('.rc-outline').getAttribute('d');
+    expect(d!.length, 'the India outline is the full path').toBeGreaterThan(30_000);
+
     const res = await page.request.get('/map/india-political-2026-soi-13th-edition.jpg');
     expect(res.status()).toBe(200);
     expect(Number(res.headers()['content-length'])).toBeGreaterThan(100_000);
@@ -138,7 +178,7 @@ test.describe('record constellation', () => {
     await expect(page.locator('.rc-note')).toContainText(
       'Conceptual positions — not geographic values',
     );
-    await expect(page.locator('.rc-attrib')).toContainText('Survey of India');
+    await expect(page.locator('.rc-source')).toContainText('Survey of India');
     await expect(page.locator('.rc-attrib')).toContainText('Government of India copyright 2026');
   });
 });

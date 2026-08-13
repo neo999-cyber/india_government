@@ -4659,217 +4659,379 @@ pre {
 
 /* ============================ THE RECORD CONSTELLATION — landing artwork =====================
  *
- * "India, made of records", on the official Survey of India sheet. Geometry lives in
- * lib/constellation.ts; this file is presentation only, and the two are separated because the
- * geometry has to be identical on the server and in the browser and CSS is the wrong place for
- * anything that has to be deterministic.
+ * "India, made of records." Built to the operator's design reference: a split window, the official
+ * outline over a dashed orbit, eight tethered icon badges on the ring, a mono status caption and a
+ * two-part source line. Geometry lives in `lib/constellation.ts` and `lib/india-outline.ts`; this
+ * file is presentation only, because the geometry must be identical on the server and in the
+ * browser and CSS is the wrong place for anything that has to be deterministic.
  *
- * THE ONE NON-OBVIOUS RULE HERE: a selected constellation SCALES UP, about the centre of the whole
- * sheet, rather than the unselected ones shrinking away. That is the operator's instruction of
- * 2026-08-14 and it is doing real work — the risk with marks on a map of India is that a reader
- * reads a cluster as a claim about the state under it, and the moment they concentrate hardest on
- * one area is the moment it visibly sprawls across the entire country instead.
+ * THE ONE NON-OBVIOUS RULE: a selected constellation SCALES UP about the centre of the sheet rather
+ * than the others merely dimming. That is the operator's instruction of 2026-08-14 and it does real
+ * work — the risk of marks on a map of India is that a reader takes a cluster for a claim about the
+ * state underneath, and the moment they concentrate hardest on one area is the moment it visibly
+ * sprawls across the whole country.
+ *
+ * THE AREA HUES ARE NOMINAL. They say WHICH area and never how much or how well, they are taken
+ * from the operator's reference, and every area also has its own mark SHAPE — so nothing here is
+ * carried by colour alone. They are deliberately not `--mark`: brass keeps its single job.
  * ========================================================================================== */
 
+:root {
+  --area-education: #8cb1c2; /* dusty blue  */
+  --area-world: #a9a1c8; /* lavender    */
+  --area-infrastructure: #d1ad64; /* gold        */
+  --area-health: #cf8fa2; /* rose        */
+  --area-environment: #8cb094; /* sage        */
+  --area-government: #a8a89c; /* stone       */
+  --area-economy: #dd985c; /* amber       */
+  --area-security: #d38a70; /* terracotta  */
+}
+
+/* THE SAME EIGHT HUES, RE-MEASURED FOR THE OTHER PAPER — and this was a real defect, not a polish.
+   The values above are the reference's and they are tuned for a near-black canvas: against the bone
+   panel the WORST of them measured 1.77, where a UI mark needs 3.0. Same discipline as the token
+   block — measured against the harder of the two backgrounds, which on the light theme is the
+   lighter one — and the same conclusion the palette inversion reached: the direction flips, the
+   method does not. Hue family preserved so the two themes are recognisably one design. */
+:root[data-theme='light'] {
+  --area-education: #3f6d82;
+  --area-world: #5a5286;
+  --area-infrastructure: #7a5c18;
+  --area-health: #8a4257;
+  --area-environment: #3d6b48;
+  --area-government: #55564c;
+  --area-economy: #8a5117;
+  --area-security: #8a4028;
+}
+
+/* The band escapes the shell's gutter and no further. `margin-inline: calc(50% - 50vw)` would be
+   true full bleed and would also overflow by the scrollbar width on every desktop with classic
+   scrollbars — a horizontal scroll the e2e suite is there to forbid. */
 .rc {
+  margin: 2.5rem calc(-1 * var(--gutter)) 3rem;
+}
+
+.rc-window {
   display: grid;
-  gap: 1.25rem;
-  margin: 2.5rem 0 3rem;
+  grid-template-columns: minmax(17rem, 0.72fr) minmax(26rem, 1.28fr);
+  min-height: 41rem;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.rc-copy {
+  padding: 3rem 2rem;
+  border-right: 1px solid var(--rule);
+  background: var(--surface);
+  align-self: stretch;
+}
+
+.rc-kicker {
+  margin: 0 0 0.75rem;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mark-ink);
 }
 
 .rc-h {
-  margin: 0 0 0.5rem;
+  margin: 0 0 1rem;
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
 }
 
 .rc-lede {
   margin: 0;
-  max-width: var(--measure);
   color: var(--ink-2);
 }
 
-/* --- The figure ------------------------------------------------------------
-   One stable viewBox, the map as an <image> inside it, every mark in the same
-   coordinate space. Nothing measures anything, so there is no ResizeObserver
-   and nothing to loop. */
-.rc-art {
-  margin: 0;
-  width: 100%;
-  max-width: 30rem;
-  justify-self: center;
+.rc-rule {
+  margin: 1.75rem 0 1rem;
+  border: 0;
+  border-top: 1px solid var(--mark);
+  opacity: 0.5;
 }
 
-.rc-svg {
+.rc-hint {
+  margin: 0;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+  color: var(--ink-dim);
+}
+
+/* --- The stage -------------------------------------------------------------
+   One fixed viewBox, the outline and every mark inside it, the controls placed
+   as a percentage of the same box. Nothing measures anything, so there is no
+   ResizeObserver and no loop to produce. */
+.rc-art {
+  position: relative;
+  min-height: 44rem;
+  background: linear-gradient(135deg, var(--surface), var(--bg));
+}
+
+/* MEASURED, NOT GUESSED. At `min(84%, 35rem)` and `top: 48%` the stage was 560x640 in a 656px
+   panel: it overhung the top edge by 5px and its box reached under both captions, which is the
+   overlap the brief forbids. This leaves a clear band at the foot of the panel for them. */
+.rc-stage {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: min(80%, 33rem);
+  aspect-ratio: 560 / 640;
+}
+
+/* The published sheet as texture, not as a map. At six per cent it contributes the faint grid of
+   roads and district lines inside the shape and nothing legible — which is the point: the OUTLINE
+   is the official depiction a reader reads, and this is the paper it was printed on. */
+.rc-reference {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.055;
+  filter: grayscale(1) invert(1) contrast(1.25);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+:root[data-theme='light'] .rc-reference {
+  opacity: 0.06;
+  filter: grayscale(1) contrast(1.35);
+  mix-blend-mode: multiply;
+}
+
+.rc-map {
   display: block;
   width: 100%;
-  height: auto;
-  border: 1px solid var(--rule);
-  background: var(--surface);
+  height: 100%;
+  overflow: visible;
 }
 
-/* The sheet is a dense full-colour scan and the marks have to read over it. Knocked back far
-   enough that bone-on-map has contrast, not so far that the boundary treatment — the reason for
-   using the official depiction at all — stops being legible. */
-.rc-map {
-  filter: saturate(0.42) brightness(0.58) contrast(1.04);
+.rc-orbit {
+  fill: none;
+  stroke: var(--ink-dim);
+  stroke-width: 1;
+  stroke-dasharray: 3 7;
+  opacity: 0.52;
 }
 
-:root[data-theme='light'] .rc-map {
-  filter: saturate(0.5) brightness(1.06) contrast(0.9);
-  opacity: 0.72;
+.rc-outline {
+  fill: color-mix(in srgb, var(--surface) 62%, transparent);
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.rc-tether {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  opacity: 0.34;
+  transition: opacity 260ms ease;
 }
 
 .rc-group {
   transform-box: view-box;
-  transform-origin: 463.5px 550px;
+  transform-origin: 280px 320px;
   transition:
     transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1),
     opacity 260ms ease;
 }
 
 .rc-node {
-  fill: var(--ink);
-  opacity: 0.82;
+  fill: currentColor;
+  opacity: 0.9;
 }
 
 .rc-edge {
-  stroke: var(--ink-2);
-  stroke-width: 0.6;
-  opacity: 0.3;
+  stroke: currentColor;
+  stroke-width: 0.7;
+  opacity: 0.16;
   fill: none;
 }
 
-/* THE SPREAD. Selected: bigger and further out. Unselected: quieter, and still there — the brief
-   requires the rest to stay for context, so this is opacity and never display:none. */
+/* Every area's colour, applied once as `color` so marks, lines, tether and badge all inherit it. */
+.rc-group[data-area='education'],
+.rc-tether[data-area='education'],
+.rc-node-btn[data-area='education'] {
+  color: var(--area-education);
+}
+.rc-group[data-area='world'],
+.rc-tether[data-area='world'],
+.rc-node-btn[data-area='world'] {
+  color: var(--area-world);
+}
+.rc-group[data-area='infrastructure'],
+.rc-tether[data-area='infrastructure'],
+.rc-node-btn[data-area='infrastructure'] {
+  color: var(--area-infrastructure);
+}
+.rc-group[data-area='health'],
+.rc-tether[data-area='health'],
+.rc-node-btn[data-area='health'] {
+  color: var(--area-health);
+}
+.rc-group[data-area='environment'],
+.rc-tether[data-area='environment'],
+.rc-node-btn[data-area='environment'] {
+  color: var(--area-environment);
+}
+.rc-group[data-area='government'],
+.rc-tether[data-area='government'],
+.rc-node-btn[data-area='government'] {
+  color: var(--area-government);
+}
+.rc-group[data-area='economy'],
+.rc-tether[data-area='economy'],
+.rc-node-btn[data-area='economy'] {
+  color: var(--area-economy);
+}
+.rc-group[data-area='security'],
+.rc-tether[data-area='security'],
+.rc-node-btn[data-area='security'] {
+  color: var(--area-security);
+}
+
+/* THE SPREAD. Selected: bigger, brighter, further out. Unselected: quieter and STILL THERE — the
+   reference keeps them for context, so this is opacity and never `display: none`. */
 .rc-group[data-state='on'] {
-  transform: scale(1.16);
+  transform: scale(1.13);
 }
 
 .rc-group[data-state='on'] .rc-node {
-  fill: var(--mark);
   opacity: 1;
 }
 
 .rc-group[data-state='on'] .rc-edge {
-  stroke: var(--mark);
-  opacity: 0.62;
+  opacity: 0.7;
+  stroke-width: 0.9;
 }
 
 .rc-group[data-state='off'] .rc-node {
-  opacity: 0.26;
+  opacity: 0.22;
 }
 
 .rc-group[data-state='off'] .rc-edge {
-  opacity: 0.08;
+  opacity: 0.07;
 }
 
-/* --- The controls ----------------------------------------------------------
-   Icon-only, per the brief; the name arrives by tooltip, by focus, by the
-   accessible label and by the status line. A wrapping row rather than the
-   orbital ring the brief permits: a ring of eight is what overlaps first at
-   320px and puts the last control furthest from the thumb. */
-.rc-controls {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-  /* Reserved for the name caption above, so revealing it never shifts the row. */
-  padding-top: 1.5rem;
+.rc-map[data-selected]:not([data-selected='']) .rc-tether {
+  opacity: 0.1;
 }
 
-.rc-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  min-width: 2.75rem; /* 44px — the touch-target floor, both axes */
-  min-height: 2.75rem;
-  padding: 0.4rem 0.55rem;
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  color: var(--ink-2);
-  cursor: pointer;
-}
-
-.rc-btn > svg {
-  width: 1.4rem;
-  height: 1.4rem;
-  fill: currentColor;
-  flex: none;
-}
-
-/* The shape this area's marks take, beside the icon that selects it — so the tie between control
-   and mark is visible and never rests on colour. */
-.rc-btn-shape svg {
-  width: 0.85rem;
-  height: 0.85rem;
-  display: block;
-}
-
-.rc-btn-shape .rc-node {
-  fill: currentColor;
-  opacity: 0.75;
-}
-
-.rc-btn:hover {
-  color: var(--ink);
-  border-color: var(--mark);
-}
-
-.rc-btn:focus-visible {
-  outline: 2px solid var(--mark);
-  outline-offset: 2px;
-}
-
-.rc-btn[aria-pressed='true'] {
-  color: var(--mark-ink);
-  border-color: var(--mark);
-  background: var(--mark-soft);
-}
-
-/* THE NAME CAPTION. Hover AND focus — never hover alone; the status line prints the name on
-   selection, which is what a touch user gets, and `aria-label` carries it regardless.
- *
- * **IT IS ANCHORED TO THE ROW, NOT TO THE BUTTON, AND THAT IS A BUG FIX RATHER THAN A STYLE.**
- * Per-button it was `position: absolute; left: 50%; white-space: nowrap` — so for the buttons near
- * the edge it extended past the viewport, and because `visibility: hidden` still occupies layout it
- * pushed the document sideways **while invisible**: 343px of scrollWidth in a 320px viewport,
- * measured. Spanning the row with `left: 0; right: 0` makes an overflow geometrically impossible at
- * any width instead of merely unlikely at the ones that were checked. It also reads better — one
- * caption over a row of marks is the archival form, and tooltip chrome was never wanted here. */
-.rc-btn-label {
+/* --- The controls, on the ring --------------------------------------------- */
+.rc-node-btn {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
+  width: 2.875rem; /* 46px — clears the 44px touch floor on both axes */
+  height: 2.875rem;
+  margin: -1.4375rem 0 0 -1.4375rem;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 4;
+  padding: 0;
+  transition:
+    transform 160ms ease,
+    background 160ms ease;
+}
+
+.rc-node-btn > svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rc-node-btn:hover {
+  transform: scale(1.08);
+}
+
+.rc-node-btn:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.rc-node-btn[aria-pressed='true'] {
+  background: currentColor;
+  transform: scale(1.1);
+}
+
+.rc-node-btn[aria-pressed='true'] > svg {
+  stroke: var(--bg);
+}
+
+/* The name. Hover AND focus — never hover alone; the status caption below prints it on selection,
+   which is what a touch user gets, and `aria-label` carries it regardless. Centred on the stage
+   rather than on the badge, so it cannot extend past the frame at any width. */
+.rc-tip {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.4rem);
+  transform: translateX(-50%);
+  padding: 0.15rem 0.4rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
   color: var(--ink);
-  font-size: 0.8125rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  white-space: nowrap;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  z-index: 6;
 }
 
-.rc-btn:hover .rc-btn-label,
-.rc-btn:focus-visible .rc-btn-label,
-.rc-btn[aria-pressed='true'] .rc-btn-label {
+.rc-node-btn:hover .rc-tip,
+.rc-node-btn:focus-visible .rc-tip {
   opacity: 1;
   visibility: visible;
 }
 
 .rc-status {
+  position: absolute;
+  left: 50%;
+  /* 3.25rem, not 2.25: the source line's left half wraps to two lines at this width and its top
+     edge rose into the status caption by 7px. Measured, not assumed. */
+  bottom: 3.25rem;
+  transform: translateX(-50%);
   margin: 0;
+  min-width: 13rem;
   text-align: center;
-  min-height: 1.5rem; /* reserved, so announcing a selection never shifts the layout */
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.055em;
+  color: var(--ink-2);
 }
 
-.rc-status-hint {
+.rc-source {
+  position: absolute;
+  left: 1.125rem;
+  right: 1.125rem;
+  bottom: 0.5rem;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.5625rem;
+  line-height: 1.3;
   color: var(--ink-dim);
 }
 
 .rc-note,
 .rc-attrib {
-  margin: 0;
   max-width: var(--measure);
+  margin: 1rem var(--gutter) 0;
   font-size: 0.8125rem;
   color: var(--ink-dim);
 }
@@ -4878,55 +5040,61 @@ pre {
   font-size: 0.75rem;
 }
 
-/* --- Desktop: copy beside the map ------------------------------------------
-   The sheet is portrait, so a tall column next to the reading matter uses the
-   width better than stacking. Below 900px everything stacks in DOM order, which
-   is already copy-above-visual as the brief requires. */
-@media (min-width: 900px) {
+.rc-note-hint {
+  color: var(--ink-dim);
+}
+
+/* --- Stacked below the phone break ------------------------------------------
+   Copy above the visual, per the brief. The stage narrows so the badges on the
+   ring's left and right extremes keep their full 46px inside the frame. */
+@media (max-width: 767px) {
   .rc {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
-    grid-template-areas:
-      'copy art'
-      'controls art'
-      'status art'
-      'note art'
-      'attrib art';
-    grid-template-rows: auto auto auto auto 1fr;
-    column-gap: 2.5rem;
-    align-items: start;
+    margin-inline: 0;
+  }
+
+  .rc-window {
+    grid-template-columns: 1fr;
+    min-height: 0;
   }
 
   .rc-copy {
-    grid-area: copy;
-  }
-  .rc-art {
-    grid-area: art;
-    max-width: none;
-  }
-  .rc-controls {
-    grid-area: controls;
-    justify-content: flex-start;
+    padding: 1.75rem 1.25rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
   }
 
-  .rc-btn-label {
-    text-align: left;
+  .rc-art {
+    min-height: 31rem;
   }
-  .rc-status {
-    grid-area: status;
-    text-align: left;
+
+  .rc-stage {
+    width: min(74%, 20rem);
+    top: 42%;
   }
-  .rc-note {
-    grid-area: note;
-  }
+
+  .rc-note,
   .rc-attrib {
-    grid-area: attrib;
+    margin-inline: 0;
+  }
+
+  /* Stacked, the source line is two wrapped lines and 49px tall, and at `bottom: 3.25rem` the
+     status caption sat 5px inside it. Measured at 320px, not assumed from the desktop spacing. */
+  .rc-source {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .rc-status {
+    bottom: 4.75rem;
   }
 }
 
-/* Restrained by default and none at all on request. The transform is the only motion in the
-   component — there is no ambient animation to stop, which is the brief's other requirement. */
+/* Restrained by default, none on request. The scale is the only motion in the component — there is
+   no ambient animation to stop, which is the other half of what the brief asked for. */
 @media (prefers-reduced-motion: reduce) {
-  .rc-group {
+  .rc-group,
+  .rc-node-btn,
+  .rc-tether {
     transition: none;
   }
 }
