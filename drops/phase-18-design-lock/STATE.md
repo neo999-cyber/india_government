@@ -35,7 +35,7 @@ are closed for the landing page, the seven stories and all 122 qualifying series
 
 ## OPEN ITEMS
 
-### DESIGN-REVISION-2 — items 1 to 6 SHIPPED, item 7 UNDER WAY
+### DESIGN-REVISION-2 — items 1 to 6 SHIPPED, item 7 EXHAUSTED AT SEVEN STORIES
 
 `DESIGN-REVISION-2.md` is in this directory. Its §8 records five rejections with the rule each
 breaks, and §9 restates ten constraints; neither is re-derived.
@@ -885,10 +885,13 @@ header above.
 
 | pin | value |
 |---|---|
-| gate chain | **27 steps**, `npm run build`; `npm run commit` is the only sanctioned commit path |
+| gate chain | **30 steps**, `npm run build`; `npm run commit` is the only sanctioned commit path. **`lint` and `e2e` are NOT in it** — CI steps, because Vercel has no browser binaries and the build is paid for on every deploy |
+| `npm run e2e` | **17 Playwright tests** — the four properties `interface-invariants` says it cannot bind: a count updating on a click, rendered target size, keyboard reach into a scroller, 375px overflow across 13 routes |
+| `npm run lint` | **0 errors, 0 warnings.** ESLint 9 — pinned, because `eslint-plugin-react` declares peers only to `^9.7` and `eslint-config-next`'s `>=9.0.0` is too loose |
+| `distinct-titles` | **619 records, every title naming exactly one record, 1 pair exempted by id** — `nh-network`/`nh-network-length`. Delete the exemption when the record question is settled and the gate holds the whole corpus |
 | `unrecognised-rows` | **0**, report-only. Zero makes flipping it to a gate *available*, not decided |
-| `listing-marks` | **5,727 listing rows · 8,190 marks** across 752 pages — re-measured 2026-08-13 (from 5,715 · 8,171, itself from 5,390 · 7,674) |
-| `link-check` | **60,433 internal hrefs across 753 built pages**, 22 route prefixes, 0 dead — re-measured 2026-08-13 (from 47,422 across 750) |
+| `listing-marks` | **4,167 listing rows · 5,914 marks** across 753 pages — re-measured 2026-08-13 after the topic tabs stopped duplicating the overview body (from 5,727 · 8,190). **The fall is the expected direction**: a readable list stopped rendering on four tabs where it was a duplicate |
+| `link-check` | **59,070 internal hrefs across 754 built pages**, 24 route prefixes, 0 dead — re-measured 2026-08-13 (from 60,433 across 753; the page and two prefixes are `/directory/` and `/icon.svg`) |
 | series share cards | **3 authored** in `SERIES_CARDS` · **18 two-truths** · the rest the mechanical floor. Authored outranks two-truths. Condition for the next: a story rests on it and no pair has written its tension |
 | series reach | **122 of 122** qualifying series are linked from a landing, story, question or overview page; **0 are index-only.** Reach does not discriminate — do not re-propose it as a selection criterion |
 | authored series findings | **237 of 269**; 32 render without one, permanently and for a stated reason |
