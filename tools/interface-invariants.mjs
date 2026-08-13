@@ -34,6 +34,45 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'out');
 const verbose = process.argv.includes('--verbose');
 
+/**
+ * INVARIANT 0 — NO PAGE RENDERS SOURCE THAT WAS MEANT TO BE A COMMENT.
+ *
+ * **This exists because it happened, on 98 published pages, during the batch that wrote this file.**
+ * A scripted edit inserted an explanatory `/* … *\/` block into JSX. Inside JSX that is not a
+ * comment, it is text, and it shipped — the breadcrumb on `/series/` read a full paragraph about
+ * route prefetching before "instrument / indicator series".
+ *
+ * **No existing gate could see it.** `rendered-space` binds a value welded to a following word;
+ * `field-render-audit` asks whether a declared field reaches its own record's page; `listing-marks`
+ * asks whether a mark is present. **Every one of them asks whether something MISSING is there. None
+ * asks whether something is there that should not be**, and that is the whole class.
+ *
+ * **THE FIRST DISCRIMINATOR WAS BARE DELIMITERS AND THE HEADER CLAIMED THE CORPUS HAD BEEN CHECKED
+ * FOR THEM. IT HAD NOT BEEN.** Run against the build it found four pages that are entirely correct:
+ * L-0136, L-0137, L-0139 and P-95 quote the Internet Archive's `/web/*\/` search URL, which contains
+ * both delimiters four characters apart. A claim written without the check, inside a gate whose
+ * purpose is to catch things nobody checked.
+ *
+ * So the discriminator is a MATCHED PAIR with at least 40 characters between them, which is what a
+ * leaked comment looks like and what a URL does not. `/web/*\/` spans one character and is silent;
+ * the block that shipped spanned 470 and is caught. The four records are the named positive control
+ * that must NOT fire.
+ */
+const MIN_COMMENT_SPAN = 40;
+function leakedSource(text) {
+  const hits = [];
+  for (const m of text.matchAll(/\/\*/g)) {
+    // FROM +1, NOT +2. In `/web/*\/` the closing delimiter overlaps the opening one — the `*` is
+    // shared — so searching from +2 steps over it and pairs this URL with the NEXT one's closer,
+    // 40+ characters away. That is why three pages still failed after the span threshold was added.
+    const close = text.indexOf('*/', m.index + 1);
+    if (close === -1) continue;
+    if (close - (m.index + 2) < MIN_COMMENT_SPAN) continue; // a URL like /web/*/, not a comment
+    hits.push(text.slice(Math.max(0, m.index - 60), m.index + 40).replace(/\s+/g, ' ').trim());
+  }
+  return hits;
+}
+
 /** INVARIANT 1 — a page states its result count in exactly one live region. */
 function liveCounts(html) {
   return (html.match(/aria-live=/g) || []).length;
@@ -63,8 +102,27 @@ if (process.argv.includes('--control')) {
   if (!hasOrientation(tabWithout)) throw new Error('control FAILED: an orientation line was not detected');
   if (hasOrientation(tabWithBody)) throw new Error('control FAILED: a missing orientation line was reported present');
 
+  // THE FIXTURE IS THE REAL LEAK, NOT A SHORT STAND-IN FOR IT. The first version of this control
+  // used a 27-character comment, which passes under MIN_COMMENT_SPAN — a control that no longer
+  // resembles the thing it controls for, which is how a gate comes to report clean on its own
+  // defect. This is the opening of the block that actually shipped on 101 pages.
+  const realLeak =
+    'a crumb /* PREFETCH OFF ON THIS PAGE\u2019S DENSE LISTS. Next prefetches every in-viewport route by default. A lab run measured a topic page issuing 71 requests and pulling ~359 KB of route payloads a reader had not asked for. */ instrument / indicator series';
+  if (leakedSource(realLeak).length !== 1)
+    throw new Error('control FAILED: a leaked block comment in page text was not detected');
+  if (leakedSource('instrument / indicator series — 269 series, 100 with a declared break').length !== 0)
+    throw new Error('control FAILED: ordinary rendered prose was reported as leaked source');
+  // THE NAMED POSITIVE CONTROL, taken verbatim from L-0136's rendered text. The first version of
+  // this gate fired on it and the header claimed the corpus had been checked. It had not.
+  if (leakedSource("a timestamped snapshot rather than a wildcard listing: a /web/*/ URL is the archive's search interface").length !== 0)
+    throw new Error("control FAILED: the Internet Archive's /web/*/ URL was reported as leaked source");
+  // TWO of them on one page is the shape that actually produced the false positive: the first URL's
+  // opening delimiter pairing with the second's closer. One occurrence never showed it.
+  if (leakedSource("orders were enumerated, not as a wildcard listing: a /web/*/ URL is the archive's search interface, and a second /web/*/ appears further down the same record").length !== 0)
+    throw new Error('control FAILED: two /web/*/ URLs on one page were paired into a false leak');
+
   console.log(
-    'interface-invariants --control — two live count regions are rejected and one is accepted; a tab carrying the overview lead figure is rejected and a tab carrying only its orientation line and its own table is accepted',
+    'interface-invariants --control — a leaked block comment in page text is caught, ordinary prose is not, and the Internet Archive /web/*/ URL that four records quote is not; two live count regions are rejected and one is accepted; a tab carrying the overview lead figure is rejected and a tab carrying only its orientation line and its own table is accepted',
   );
   process.exit(0);
 }
@@ -75,6 +133,36 @@ if (!existsSync(OUT)) {
 }
 
 const problems = [];
+
+// --- 0. leaked source across every built page ------------------------------------------------
+{
+  const { pageTextFromHtml } = await import('./lib/page-text.mjs');
+  const pages = [];
+  (function walk(d) {
+    for (const e of readdirSync(d, { withFileTypes: true })) {
+      const p = join(d, e.name);
+      if (e.isDirectory()) walk(p);
+      else if (e.name.endsWith('.html')) pages.push(p);
+    }
+  })(OUT);
+  if (pages.length === 0) {
+    console.error('interface-invariants: no built pages found. A zero here is a broken scan.');
+    process.exit(2);
+  }
+  let leaked = 0;
+  const shown = [];
+  for (const p of pages) {
+    const hits = leakedSource(pageTextFromHtml(readFileSync(p, 'utf8')));
+    if (hits.length) {
+      leaked += 1;
+      if (shown.length < 4) shown.push(`${p.slice(OUT.length + 1)} — …${hits[0]}…`);
+    }
+  }
+  if (leaked)
+    problems.push(
+      `${leaked} page(s) render comment delimiters in their text — a block comment placed in JSX is text, not a comment. First: ${shown.join(' | ')}`,
+    );
+}
 
 // --- 1. the search readout -------------------------------------------------------------------
 const searchPath = join(OUT, 'search', 'index.html');
