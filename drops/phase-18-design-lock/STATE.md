@@ -571,6 +571,36 @@ Wording correction only. No figure changes and the verdict stays `contested`.
 
 ---
 
+## DECIDED 2026-08-13 — SEARCH INDEXING STAYS OFF, AND THE DIRECTORY BECAME A PAGE
+
+**`noindex, nofollow` IS THE INTENDED SETTING AND IS NOT AN OVERSIGHT.** An external audit raised it
+as a P2 — *"the entire site deliberately blocks indexing… incompatible with broad organic discovery
+of a public-record resource"* — which is a fair reading of the header and the wrong reading of the
+project. **CLAUDE.md's first paragraph says "Private audience"**, and the share-card work was scoped
+by the operator as *"distribution is by pasted link with no search discovery"*; the entire card
+design follows from that premise. The setting matches the brief.
+
+**Recorded here so a later pass stops re-raising it**, which is exactly how it surfaced this time.
+
+**WHAT FOLLOWS FROM IT, so nobody builds the wrong thing:** `/robots.txt` and `/sitemap.xml` are 404
+and **should stay that way while this holds** — a sitemap under `noindex` is work that does nothing.
+Per-route canonical URLs are the same. **If the intent ever changes the ORDER matters:** remove
+`noindex` first, confirm index coverage, and only then build sitemap, robots and canonical.
+
+**`/directory/` IS NOT THAT, and the name was chosen to keep them apart.** It is a reader's contents
+page carrying the same 17 destinations the masthead disclosure carries, not a machine document for
+crawlers.
+
+**AND THE MOBILE PANEL IS CLOSED BY IT.** The `All pages` disclosure opened to **941px inside an
+812px viewport** at 375px, with no backdrop, no Escape and no scroll lock. **It could not have them**
+— it is deliberately script-free, and making it a scripted modal would make the one control designed
+to survive a failed bundle depend on one. So below 768px the disclosure is replaced by a link to
+`/directory/`, **swapped in CSS with `display: none` so exactly one is in the accessibility tree**,
+and both render `DIRECTORY` from `lib/routes.ts`. The panel is kept above 768px, where it was
+measured to work.
+
+---
+
 ## DECISIONS RECORDED 2026-08-11, SO THEY STOP BEING RE-PROPOSED
 
 ### `unrecognised-rows` stays report-only — decided, not deferred
@@ -699,6 +729,8 @@ header above.
 | `field-render-audit` | 0 invisible, **15** exempted by name (was 17; `higherIsBetter`'s exemption was discharged 2026-08-12 and it is now declared) |
 | `higherIsBetter` | **renders from 2026-08-12**, as words, via `DirectionMark`. 70 declare a direction · 76 declare none · 123 are silent, and the third renders nothing |
 | caveat strings are NOT identifiers | **4 groups of series share a caveat verbatim, covering 15 series** — nine ASER siblings are one group. Any check that identifies a record by its caveat text is unsound for those 15; use the id |
+| search indexing | **`noindex, nofollow`, decided and recorded 2026-08-13.** Do not build sitemap/robots/canonical while it holds; if it changes, remove the header FIRST |
+| security headers | CSP, `X-Frame-Options`, COOP, `Permissions-Policy` set 2026-08-13 · `docs/security-headers.md` · **`script-src` carries `'unsafe-inline'` and cannot not, on a static export** |
 | deploy | `vercel.json` calls `npm run build`; `tools/deploy-chain.mjs` fails if the chain is ever restated instead of called |
 | verify after push | `node tools/deploy-check.mjs` — needs the network, deliberately not in the build. **First check is one request:** `/data/v1/manifest.json`'s `commit` against `git rev-parse HEAD`. A deploy CAN fail after a clean local build — `next/font/google` 404s from gstatic have killed one |
 | DOM viewport probes | **`resize_window` at the `desktop` preset gives `clientWidth === 0`** in this hidden pane, so every element tests as overflowing. Set an explicit width (1280) or use the mobile preset |

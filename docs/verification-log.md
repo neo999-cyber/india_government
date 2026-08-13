@@ -19459,3 +19459,62 @@ beneath it, one local left behind when the span derivation moved to `lib/spans.t
 across 753, 0 dead · `listing-marks` 4,167 / 5,914 · `rendered-space` 0 · `chart-ticks` 33/7 ·
 **`interface-invariants` 56 tabs / 14 topics / 21 index surfaces** · `unrecognised-rows` 0 ·
 `domain-coverage` 1,137/1,137.
+
+---
+
+## 2026-08-13 (seventy-first entry) — THE DIRECTORY BECAME A PAGE, INDEXING WAS RECORDED AS DECIDED, AND MY DIAGNOSIS OF THE INSTALL FAILURES WAS WRONG
+
+### THE 941px PANEL — CLOSED BY REPLACING IT AT NARROW WIDTHS, NOT BY SCRIPTING IT
+
+Measured at 375x812: the `All pages` disclosure opens to **941px inside an 812px viewport**, no
+backdrop, no Escape, no scroll lock. **It cannot have them** — it is deliberately a `<details>` with
+no script, so it works on a page whose bundle never loaded, and a scripted modal would make the one
+control designed to survive a failed bundle depend on one.
+
+**So below 768px the disclosure is replaced by a link to `/directory/`**, which renders the same list
+as an ordinary page: it scrolls, it can be bookmarked, and closing it is the back button. Above
+768px the panel stays, where it was measured to work. **The swap is `display: none` in CSS, so
+exactly one of the two is in the accessibility tree at any width.**
+
+**One list, two surfaces.** `GROUPS` moved out of `app/layout.tsx` into `lib/routes.ts` as
+`DIRECTORY`; the masthead and the page both render it, and the per-item labels still resolve through
+`navLabel`, so a rename happens in one place. A second copy would have drifted the first time a
+destination was added — the same reasoning that produced `ROUTES` two entries ago.
+
+**Named `/directory/` and not `/sitemap/` deliberately**: a sitemap is a machine document for
+crawlers and this site sends `noindex`. This is a reader's contents page.
+
+### INDEXING — DECIDED, NOT PENDING
+
+The audit raised `noindex, nofollow` as a P2. **CLAUDE.md's first paragraph says "Private
+audience"**, and the share-card work was scoped by the operator as *"distribution is by pasted link
+with no search discovery"* — the whole card design follows from that premise. The setting matches
+the brief and is now recorded in `STATE.md` so a later pass stops re-raising it, which is exactly how
+it surfaced. **`/robots.txt` and `/sitemap.xml` stay 404 while it holds**; if it ever changes, the
+header comes off FIRST and the sitemap follows.
+
+### AND THE INSTALL DIAGNOSIS WAS WRONG, WHICH MATTERS MORE THAN EITHER
+
+Two entries ago I recorded that the Next 16.3.0 upgrade *"stalled twice on this network"* and that
+the remaining three vulnerabilities *"bottom out in sharp's inherited libvips CVEs, upstream of
+Next's range"*. **Both claims are wrong and neither was tested.**
+
+**The network is fine: 16 MB/s, a 41 MB tarball in 2.5 seconds, registry ping 0.83s.** The actual
+errors were `ENOTEMPTY: directory not empty, rename` — npm's rename-heavy tree rebuild against a
+677 MB `node_modules`. **Filesystem contention, not bandwidth**, and killing the install is what
+broke the tree rather than the install failing on its own.
+
+**And npm's own resolution says `next@16.3.0` fixes all three** — `next`, `postcss` and `sharp`. My
+contrary claim came from running `npm audit` against a half-installed tree, which is not evidence.
+
+**A shortcut was tried and rejected on measurement.** `sharp` is optional and genuinely unused here —
+zero `next/image` usages, `images: { unoptimized: true }`, and the build passes with it deleted — so
+`omit=optional` in `.npmrc` looked like a clean fix and dropped the count. **It is wrong:** of 37
+optional packages, 10 are `@next/swc-*`, which Next requires to compile. A clean `npm ci` would have
+lost the compiler. Reverted before it reached a commit.
+
+### Gate line
+
+29 steps green. `link-check` **59,070 across 754 pages, 24 route prefixes, 0 dead** (up one page and
+one prefix: `/directory/`). `listing-marks` 4,167 / 5,914 unchanged. `interface-invariants` **22
+index surfaces** carry a lead class, up one.
