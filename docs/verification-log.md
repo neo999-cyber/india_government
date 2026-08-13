@@ -18678,3 +18678,97 @@ carry marks, 3 declared absences in the dashed unfilled box.
 
 **One story, not two.** PR-35 needs its fourth form built and P-114 is unstarted; both are written
 up above rather than begun at the end of a batch.
+
+---
+
+## 2026-08-13 (sixty-third entry) — STORY SIX: the fourth form, built. And the gate refused my fix.
+
+### THE FOURTH FORM: TWO INSTRUMENTS, ONE QUANTITY, AND A DISCREPANCY THAT RESOLVES
+
+`detenus` against `prisoners` — different units, same quantity, two publishers neither citing the
+other. Not the jobs case, not the Kashmir case, not the renewables case. **P-90 records
+`bridgeExists: true`, the only story subject so far where the corpus holds a bridge.**
+
+**Three states, kept apart, because they are three different claims:**
+
+| | years | what the page does |
+|---|---|---|
+| **proven** | 2014, 2015, 2018 | the identity printed — *35 = 7 own + 0 other State + 28 other country · Parliament: 7* |
+| **consistent, unproven** | 2016, 2017 | the implied residuals stated **with the corpus's own label**: consistent with the pattern, not evidence for it |
+| **not computable** | 2019 | November against 31 December; no residual formed at all |
+
+**AND NO DIFFERENCE IS DRAWN ANYWHERE** — no band, no residual column, no subtraction on the chart.
+What renders is the COMPOSITION as an identity, which makes the coincidence visible without
+subtracting. Where the subtraction can honestly be done it produces **zero**, so a drawn gap would
+assert a quantity the one testable case says is not there.
+
+**The decomposition is not a series** — it lives in P-90's prose and nowhere in `/data` as points —
+so a third line was not available and is not faked. Two lines, and the identity in words.
+
+**Rule 2 verified in the DOM: 6 paths for 2 lines.** NCRB carries three breaks and the
+parliamentary series one, so four segments and two.
+
+### THE PREFIX THAT WOULD HAVE MISLED, WHICH WAS THIS PAGE'S WHOLE RISK
+
+*Two official figures for the same thing differ in every year* is true, is the obvious opening, and
+is **the opposite of the finding.** Step one carries both halves in one sentence — *their figures
+differ in every year they both cover, and in half of those years the difference is exactly the
+number of foreign nationals* — so a reader who stops at step one has the finding rather than its
+inverse. Sixth carrier for that shape, and the first where it was designed out before drafting.
+
+### THE GATE REFUSED MY FIX, AND THE GATE WAS RIGHT
+
+Before writing, three shipped stories were measured **rendering one caveat twice** — hoisted above
+the argument and again on its sources card. That looked like the duplication the series page has
+explicit logic against, so a `refusal` field was added to `lib/stories.ts` and `StorySources`
+deferred that record's caveat.
+
+**`listing-marks` failed immediately: 5 missing marks, one per story.** The reading was wrong.
+
+- **Rule 3a says a caveat renders wherever the record appears, *in full, every time*.**
+- The series-page logic suppresses a duplicate on a record's OWN page, **where neither copy is a
+  listing row** — its own comment says exactly that.
+- **A sources card IS a listing row.** The hoisted copy serves reading order; the card copy serves a
+  reader leaving for the record from there. Both are required.
+
+Reverted in full — the field removed from the type and from five stories, the deferral removed from
+the component — and the reasoning written into `StorySources` so the next pass does not re-derive
+it. **A measurement that looked like a defect, checked against the rule, and the rule won.**
+
+### The three checks
+
+**Figures, pointed at the field the prose claims** — last batch's refinement, and it paid.
+**13 series claims traced to their own record at their stated period, 0 mismatches**, and **9 prose
+claims traced to the named field** — six to `P-90.whatChanged`, three to `P-90.notes` — 0 not found.
+
+**Enum words: none** in the authored prose.
+
+**And the checks surfaced a reading hazard the prose then had to answer.** P-90's
+`directionOfBias` is `disputed`, so its sources card renders *direction disputed* on a page whose
+argument is that this is not a disagreement. Not a contradiction — the identity holds in three
+years, while which instrument runs high as a general matter is unsettled — but a reader meeting both
+is owed the distinction, and the page now makes it rather than leaving it in the grid.
+
+### A WELD THAT `rendered-space` CANNOT SEE
+
+The identity block used `<br />` between its three lines. Visually correct; in extracted text it
+read **`Parliament: 72015`** — which is what a screen reader and every text check get. Same class as
+the flex-gap weld caught on the topic decomposition, arriving through a break tag instead of CSS,
+and outside `rendered-space`'s scope both times: that gate binds JSX expression welding. Now three
+block elements; verified absent in the page text.
+
+### The refusal, above the argument
+
+A reader arriving at a page about detention in Kashmir will assume these are Public Safety Act
+figures. **Neither series is**, and NCRB's caveat says so in its first four words. Hoisted above,
+verified in the DOM as preceding the sources grid — and, per the reversal above, rendering again on
+its card because that is a listing row.
+
+### Gate line
+
+27 steps green. `link-check` **60,372 internal hrefs across 752 pages, 0 dead**. `listing-marks`
+**5,722 rows / 8,184 marks**. `unrecognised-rows` 0. `reachability` 1,787/1,787. `rendered-space` 0.
+At 375 px: 0 body overflow, 0 clamped, 6 declared absences in the dashed box, 6 source cards of
+which 3 carry marks.
+
+**One story. P-114 carries** — its control is Bihar's row in the same table, and it is unstarted.
