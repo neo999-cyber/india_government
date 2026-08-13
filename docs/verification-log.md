@@ -20496,3 +20496,56 @@ fixing the date and the joint consideration. **The gap is one line in one docume
 ### Gate line
 
 32 steps green · `gate-scope` 13 figures unchanged.
+
+---
+
+## 2026-08-13 (ninety-first entry) — DARK CANVAS BY DEFAULT, AND THE ALARM I RAISED ABOUT IT WAS WRONG
+
+Operator direction, from a reference image. **It supersedes a recorded design rule** — CLAUDE.md read
+*"Light canvas"* — so the old wording is quoted in place rather than deleted.
+
+### THE CHANGE IS A TOKEN CHANGE, WHICH IS THE SYSTEM WORKING
+
+Audited first: **2 colour literals outside `:root`, and both are inside a comment.** The whole
+4,600-line stylesheet goes through names, so inverting the canvas is one block. `#efeae0` was `--bg`
+and is now `--ink` — the palette read from the other side.
+
+**What did not change, because it is not decoration:** `--mark` still does one job; `--alert` is still
+red and still reserved for deaths, alerts and break-seams; brass and red are still told apart by
+SOLID against DASHED and by words, never by hue — they sit 1.24 apart here against 1.71 before, which
+is why the rule was never hue.
+
+**Measured, not estimated, and against both papers.** On a dark canvas the harder background is
+`--surface`, the LIGHTER one. `--ink` 14.24/12.67 · `--ink-2` 9.30/8.28 · `--ink-dim` 5.72/5.09 ·
+`--mark-ink` 8.76/7.80 · `--alert` 5.69/5.06; UI marks needing 3.0: `--mark` 7.09/6.31, `--fill`
+6.59/5.86. **`--alert` is the one value chosen by measurement rather than inversion** — at `#e5484d`
+it scored 3.88 and failed the 4.5 it needs where it carries words.
+
+`color-scheme: dark` is declared: `ListingFacets` puts a search input and two `<select>`s on every
+large index, and light native widgets on a dark page are the tell that a theme was painted on rather
+than declared. The light palette is kept whole under `:root[data-theme='light']` — verified switching
+both ways — so the decision reverses by one attribute.
+
+### THE SEMANTICS WERE PROBED, NOT ASSUMED
+
+Rendered, by DOM probe: the **chart seam is `#ef6b6f` with `stroke-dasharray: none` — solid red**,
+which is rule 5a's whole discriminator. The **denominator band is dashed brass top-and-bottom with
+its soft fill** — rule 5a's other side. `.absence` is **dashed and unfilled with a transparent
+background** — rule 4a. Caveats carry alert red; absence kinds carry `--ink-dim`.
+
+### AND THE DEFECT I RAISED AGAINST MYSELF DID NOT EXIST
+
+I measured `--rule` at **1.47 against `--bg`**, called it "the classic inversion trap", and was about
+to lighten it. **Then I measured what the light palette actually had: `--rule` at 1.29.** The dark
+value is *stronger* than the relationship it replaced, not weaker. I had compared it against an
+absolute 3.0 floor that applies to UI components and meaningful graphics, **not to a presentational
+divider** — and rule 4a's "visibly unlike a finding" is carried by dashed, unfilled and no figure,
+not by border contrast.
+
+**Nothing was changed.** Making an unevidenced change to fix an unevidenced problem is the same
+defect as the one it imagines, and today has enough of those in it already.
+
+### Gate line
+
+32 steps green · 17 e2e · lint 0/0 · `gate-scope` 13 figures unchanged — which is the check that the
+palette work moved no gate's scope.

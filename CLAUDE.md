@@ -740,7 +740,16 @@ what is done, state what is not, and say whether it was attempted. `[R-db403e]`
 ## Design system
 
 - Instrument register, not dashboard-flashy: restrained, archival, dense-but-legible.
-- Light canvas. Red reserved for deaths, alerts and break-seams. No decorative gradients.
+- **Dark canvas, from 2026-08-13 — this supersedes "Light canvas", which is quoted here rather
+  than deleted.** Warm near-black `#1c1c1a`; the bone `#efeae0` that used to be the paper is now
+  the ink. **The palette is the same palette read from the other side**, and the light one is kept
+  whole under `:root[data-theme='light']` with its own measured ratios, so the decision reverses by
+  one attribute. Red is still reserved for deaths, alerts and break-seams. No decorative gradients.
+  **Every text token is measured against the HARDER of the two papers — which on a dark canvas is
+  `--surface`, the lighter one. The direction flips; the method does not.** `--alert` is the one
+  value chosen by measurement rather than inversion: at `#e5484d` it scored 3.88 and failed the 4.5
+  it needs where it carries words. `color-scheme: dark` is declared, because a dark canvas with
+  light native selects and scrollbars is the tell that a theme was painted on rather than declared.
 - Mono for system labels and figures (tabular-nums), humanist sans for prose.
 - Every view answers "what does this number rest on?" — one click to source, tier and provenance.
 - Palette is Bone & Indigo, defined as tokens; nothing hardcodes a literal. `[R-34510f]`

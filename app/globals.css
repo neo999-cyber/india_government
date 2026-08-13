@@ -29,53 +29,58 @@
 
 :root {
   /* ============================================================================================
-     BONE & INDIGO — the settled visual language, operator decision 2026-08-11.
-     Cool ink on warm paper. Nothing in this file hardcodes a colour literal; every rule below
-     the token block goes through a name, verified at 0 literals when this landed.
+     BONE & INDIGO, INVERTED — dark is the default from 2026-08-13, operator decision.
 
-     THE REASONING, KEPT SO A LATER PASS DOES NOT UNDO IT. No fill is ever black: black rectangles
-     and black chart lines on warm paper read cheap, and a deep indigo at the same value reads as
-     depth. And --mark does exactly one thing — a definition changed, something was announced, a
-     series ended, a correction was made. Never decoration, never a second brand colour.
+     **THIS SUPERSEDES A DESIGN RULE AND SAYS SO.** CLAUDE.md's design system read "Light canvas"
+     and the block that stood here read "Cool ink on warm paper". The canvas is now warm near-black
+     and the ink is the bone that used to be the paper — #efeae0 was --bg and is now --ink. The
+     palette is the same palette, read from the other side.
 
-     TWO VALUES DIFFER FROM THE PALETTE AS ISSUED, AND ONLY FOR CONTRAST. Measured against
-     --bg #efeae0: the issued --ink-2 #666a78 scored 4.49 and the issued --ink-dim #8f8f97 scored
-     2.68, against 4.5 for normal text. --ink-dim carries 49 rules of labels and SOURCE LINES —
-     the apparatus this instrument's credibility rests on — so shipping it at 2.68 would have made
-     the provenance layer the least legible thing on the page. Both were darkened along the same
-     cool hue, preserving the three-level relationship the palette is made of.
+     WHAT DID NOT CHANGE, BECAUSE IT IS NOT DECORATION.
+       · --mark still does exactly one job: a definition changed, something was announced, a series
+         ended, a correction was made. One brass, one meaning, never a second brand colour.
+       · --alert is still red and still reserved for deaths, alerts and break-seams. Rule 5a fixes
+         the series break as a SOLID red stop; a palette that could not say that would be the wrong
+         palette however it looked.
+       · Brass and red are still told apart by SOLID against DASHED and by words in both bands,
+         never by hue — they sit 1.24 apart in contrast here against 1.71 before, which is why the
+         rule was never hue in the first place.
+       · No fill is pure white, for the reason no fill was ever pure black: a white rectangle on
+         near-black reads cheap, and bone at the same value reads as paper.
 
-     BOTH RATIOS ARE QUOTED BECAUSE THERE ARE TWO PAPERS. --surface #e7e1d4 is darker than --bg,
-     and a token tuned against --bg alone fails on the panels: --ink-dim at #646875 measured 4.64
-     on --bg and **4.27 on --surface**, which a rendered sweep of a live record page caught and the
-     token arithmetic did not. Every text token is now tuned against the DARKER of the two.
-     --ink 13.15/12.10 · --ink-2 6.81/6.27 · --ink-dim 5.24/4.82 · --mark-ink 4.90/4.51.
-     --mark is a UI mark rather than text and needs 3.0: it measures 3.77/3.47.
-     Every other value is the palette as issued.
+     EVERY RATIO BELOW IS MEASURED, NOT ESTIMATED, AND AGAINST BOTH PAPERS.
+     There are two backgrounds and on a dark canvas the HARDER one is --surface, because it is the
+     lighter of the two and light text contrasts less against it. Every text token is tuned against
+     that harder case, which is the same discipline the light palette used against its own darker
+     paper — the direction flips, the method does not.
+
+       --ink      14.24 / 12.67      --ink-2    9.30 / 8.28      --ink-dim  5.72 / 5.09
+       --mark-ink  8.76 / 7.80       --alert    5.69 / 5.06
+     UI marks need 3.0 rather than 4.5 and clear it comfortably:
+       --mark      7.09 / 6.31       --fill     6.59 / 5.86
+
+     --alert was #e5484d at 4.36/3.88 and FAILED the 4.5 it needs where it carries words. It was
+     lightened along the same hue until it cleared on the harder paper. That is the one value in
+     this block chosen by measurement rather than by inversion.
+
+     THE LIGHT PALETTE IS NOT DELETED. It is below, under [data-theme="light"], with its own
+     measured ratios intact, so the decision is reversible by one attribute and nothing has to be
+     reconstructed from this comment.
      ============================================================================================ */
-  --bg: #efeae0;              /* warm bone paper */
-  --surface: #e7e1d4;         /* raised panels, chips, correction blocks */
-  --rule-soft: #e2dbcd;       /* internal dividers */
-  --ink-2: #4a4f5e;           /* secondary text — issued #666a78, darkened for AA (6.81:1) */
-  --fill: #2b3454;            /* deep indigo — chart lines, filled cells, solid states */
-  --mark: #a06b32;            /* brass — one job: a mark was made. Edges, rings, dashes (3.77:1) */
-  --mark-ink: #8a5a2a;        /* the same brass where it carries WORDS and must clear AA (4.90:1) */
-  --mark-soft: rgba(160, 107, 50, 0.12);
-  --ink: #1e2233;             /* body text — deep cool near-black, never #000 (13.15:1) */
-  --ink-dim: #5c606c;         /* labels, source lines, tertiary — issued #8f8f97 (5.24 / 4.82) */
-  --rule: #d7cfc1;            /* borders */
+  --bg: #1c1c1a;              /* warm near-black canvas */
+  --surface: #262622;         /* raised panels, chips, correction blocks — LIGHTER than --bg here */
+  --rule-soft: #302f2a;       /* internal dividers */
+  --ink-2: #c4bfb2;           /* secondary text (9.30 / 8.28) */
+  --fill: #8fa0d0;            /* indigo, lifted to read on dark — chart lines, filled cells (6.59) */
+  --mark: #c9a06a;            /* brass — a mark was made. Edges, rings, dashes (7.09 / 6.31) */
+  --mark-ink: #d9b47e;        /* the same brass where it carries WORDS (8.76 / 7.80) */
+  --mark-soft: rgba(201, 160, 106, 0.16);
+  --ink: #efeae0;             /* body text — the bone that used to be the paper (14.24 / 12.67) */
+  --ink-dim: #9a958a;         /* labels, source lines, tertiary (5.72 / 5.09) */
+  --rule: #3a3934;            /* borders */
 
-  /* KEPT, AND THE PALETTE DOES NOT CONTAIN IT. Rule 5a fixes the series break as a solid red stop
-     meaning do not splice, and the design system reserves red for deaths and alerts. A palette
-     with no red cannot express either, so --alert survives unchanged rather than being quietly
-     dropped or folded into --mark. What DID fold into --mark is the denominator band: rule 5a's
-     umber said "the values either side are divided by different things", which is the operator's
-     own first example of a mark — a definition changed. One brass, one meaning, and the seam stays
-     red. The two are still told apart the way rule 5a requires — SOLID band against DASHED band,
-     each carrying words — and never by hue alone, which matters because brass and red sit 1.71
-     apart in contrast. */
-  --alert: #a4161a;
-  --alert-soft: #f6ebea;
+  --alert: #ef6b6f;           /* deaths, alerts, break-seams — lightened for AA (5.69 / 5.06) */
+  --alert-soft: rgba(239, 107, 111, 0.14);
 
   --font-sans: var(--font-body, ui-sans-serif), ui-sans-serif, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: var(--font-mono-face, ui-monospace), ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
@@ -83,6 +88,42 @@
 
   --measure: 68ch;
   --gutter: 1.5rem;
+
+  /* TELLS THE BROWSER, NOT JUST THE STYLESHEET. Without this the native controls render light on a
+     dark page: `ListingFacets` has a search input and two <select>s on every large index, and the
+     scrollbar and focus ring come from the platform too. A dark canvas with light OS widgets is the
+     tell that a theme was painted on rather than declared. */
+  color-scheme: dark;
+}
+
+/* ==============================================================================================
+   THE LIGHT PALETTE, KEPT WHOLE AND REACHABLE BY ONE ATTRIBUTE.
+
+   Not a fallback and not dead code: it is the palette this instrument shipped from 2026-08-11 to
+   2026-08-13, with its own contrast work intact. Set `data-theme="light"` on <html> to restore it.
+
+   Its own measured ratios, against the darker of ITS two papers (--surface #e7e1d4):
+     --ink 13.15/12.10 · --ink-2 6.81/6.27 · --ink-dim 5.24/4.82 · --mark-ink 4.90/4.51
+     --mark is a UI mark needing 3.0: 3.77/3.47.
+   --ink-2 and --ink-dim differ from the palette as issued (#666a78 scored 4.49, #8f8f97 scored
+   2.68) and were darkened along the same cool hue. --ink-dim carries 49 rules of labels and SOURCE
+   LINES — the apparatus this instrument's credibility rests on.
+   ============================================================================================== */
+:root[data-theme='light'] {
+  --bg: #efeae0;
+  --surface: #e7e1d4;
+  --rule-soft: #e2dbcd;
+  --ink-2: #4a4f5e;
+  --fill: #2b3454;
+  --mark: #a06b32;
+  --mark-ink: #8a5a2a;
+  --mark-soft: rgba(160, 107, 50, 0.12);
+  --ink: #1e2233;
+  --ink-dim: #5c606c;
+  --rule: #d7cfc1;
+  --alert: #a4161a;
+  --alert-soft: #f6ebea;
+  color-scheme: light;
 }
 
 *,

@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="India, On the Record">
-  <!-- The site's own signature visual: a series drawn to a declared break, a red seam, and the
-       series resuming on the other side of it without a line joining the two. Rule 2, at 32px.
-       Bone canvas and indigo ink from the palette tokens, written out because an icon cannot
-       carry CSS custom properties. -->
-  <rect width="32" height="32" fill="#f7f5f0"/>
-  <path d="M3 21 L7 17 L11 18.5 L14 12" fill="none" stroke="#2b3a67" stroke-width="2.2"
+  <!-- The site's signature visual: a series drawn to a declared break, a red seam, and the series
+       resuming on the other side without a line joining the two. Rule 2, at 32px.
+       INVERTED 2026-08-13 with the canvas — bone ink on warm near-black, the same values the
+       stylesheet uses, written out because an icon cannot carry CSS custom properties. -->
+  <rect width="32" height="32" fill="#1c1c1a"/>
+  <path d="M3 21 L7 17 L11 18.5 L14 12" fill="none" stroke="#efeae0" stroke-width="2.2"
         stroke-linecap="square" stroke-linejoin="miter"/>
-  <line x1="16" y1="5" x2="16" y2="27" stroke="#a3271f" stroke-width="1.6"/>
-  <path d="M18 19 L21 14.5 L25 15.5 L29 9" fill="none" stroke="#2b3a67" stroke-width="2.2"
+  <line x1="16" y1="5" x2="16" y2="27" stroke="#ef6b6f" stroke-width="1.6"/>
+  <path d="M18 19 L21 14.5 L25 15.5 L29 9" fill="none" stroke="#efeae0" stroke-width="2.2"
         stroke-linecap="square" stroke-linejoin="miter"/>
 </svg>
