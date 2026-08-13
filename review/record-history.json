@@ -5945,8 +5945,17 @@
  "P-63": {
   "firstDate": "2026-08-02",
   "firstSubj": "Phase 10 — education: 91 records, `education` domain value, stage-4 checker rebuilt",
-  "editCount": 0,
-  "edits": [],
+  "editCount": 1,
+  "edits": [
+   {
+    "sha": "3cec8b9062213b9a61f1b35a832554f3680ff372",
+    "date": "2026-08-13",
+    "subj": "Three carried-forward items, and the first one's count did not survive re-derivation",
+    "fields": [
+     "notes"
+    ]
+   }
+  ],
   "values": [
    {
     "sha": "a0124440c3743a4e2c108ff21188b51bdffc49f4",
@@ -6024,8 +6033,17 @@
  "P-68": {
   "firstDate": "2026-08-02",
   "firstSubj": "Phase 10 — education: 91 records, `education` domain value, stage-4 checker rebuilt",
-  "editCount": 0,
-  "edits": [],
+  "editCount": 1,
+  "edits": [
+   {
+    "sha": "3cec8b9062213b9a61f1b35a832554f3680ff372",
+    "date": "2026-08-13",
+    "subj": "Three carried-forward items, and the first one's count did not survive re-derivation",
+    "fields": [
+     "notes"
+    ]
+   }
+  ],
   "values": [
    {
     "sha": "a0124440c3743a4e2c108ff21188b51bdffc49f4",
@@ -8612,8 +8630,17 @@
  "L-0183": {
   "firstDate": "2026-08-04",
   "firstSubj": "Phase 13 federalism: 106 records; drop gate closed against the merge gate (#15)",
-  "editCount": 0,
-  "edits": [],
+  "editCount": 1,
+  "edits": [
+   {
+    "sha": "3cec8b9062213b9a61f1b35a832554f3680ff372",
+    "date": "2026-08-13",
+    "subj": "Three carried-forward items, and the first one's count did not survive re-derivation",
+    "fields": [
+     "caveat"
+    ]
+   }
+  ],
   "values": [
    {
     "sha": "d6479b7e3e19c20abc4df31a891d074818e30c95",

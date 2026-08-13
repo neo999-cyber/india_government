@@ -835,6 +835,53 @@ instrument has a name for what projections do to marks.
 
 ---
 
+## STOP — SERIES-ID LINKS ARE BLOCKED BY A GATE CONTRACT, AND THIS TIME THAT IS THE RIGHT WORD
+
+**Attempted 2026-08-13 and reverted.** I had said this was mislabelled as blocked and was really a
+size judgement. **That was right about the client-boundary problem and wrong about the conclusion.**
+
+**The client boundary is genuinely solvable.** `components/marks.tsx` cannot import `lib/data`
+because `OverviewBoard` is a client component and pulls it into the browser bundle, and `lib/data`
+reads `node:fs`. A generated id module solves it: 267 linkable ids, longest-first (11 are a strict
+prefix of another — `nh-network` against `nh-network-length`), with `crar` and `remittances` excluded
+because they are an ordinary acronym and an ordinary word and **a false link asserts a citation
+nobody made**. That part worked.
+
+### WHAT STOPPED IT
+
+**`reachability` FAILED — 3 of 1788 marks.** Its probe is the first **60 characters** of a mark,
+compared against the page through its own `visibleText`, which replaces every tag with a space. So
+`<a>ptr-primary-udise</a>,` extracts as `ptr-primary-udise ,` and the needle
+`A SEPARATE SERIES FROM ptr-primary-udise, on a different uni` no longer matches. **Three caveats
+open by naming another series inside the first 60 characters.**
+
+**THE CONFLICT IS PRE-EXISTING AND LATENT, AND P-LINKIFICATION HAS ONLY EVER PASSED BY LUCK.**
+Measured: **zero P-ids appear in the first 60 characters of any caveat.** The gate's stated premise —
+*"marks never truncate, so a prefix is a sound test of presence"* — assumes rendered text is
+character-identical to stored text, and **linkification has always broken that assumption**. Adding
+267 linkable tokens where a pattern previously matched a handful is what made it fire.
+
+### WHY IT WAS NOT FIXED HERE
+
+Making the probe tolerate an element boundary is **a change to a gate's matching contract**, and the
+code-session stop rule names exactly that: *a schema, enum or gate contract changes* — commit the
+work and the finding, then stop.
+
+**Two diagnostic errors on the way, both worth keeping.** I first tested the needle at 90 characters
+when `PROBE` is 60, and then tested it through `pageTextFromHtml` when **`reachability` has its own
+`visibleText`** — so my check said "found: true" three times against a gate that was failing. The
+rule that a verification must read the page through the gate's own normaliser assumes there is one
+shared normaliser; **this gate predates that and has its own**, which is the gap that let a wrong
+check look right.
+
+### WHAT A LATER PASS SHOULD DO FIRST
+
+Decide the probe, not the linkifier. Either compare with a normalisation that collapses a space
+before punctuation, or anchor the probe on a window that no element boundary can fall inside. **Until
+then the 23 mentions stay unlinked, and the reason is the gate rather than the bundle.**
+
+---
+
 ## RAISED 2026-08-12 BY A READER'S REVIEW — WORKED 2026-08-13 ON THE OPERATOR'S DIRECTION
 
 **The counts below did not survive re-derivation, and that is the first finding.** Asked to work
