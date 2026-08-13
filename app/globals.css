@@ -3899,7 +3899,7 @@ details.more > summary {
   line-height: 1.5;
 }
 .outcome-label {
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -3983,7 +3983,7 @@ details.more > summary {
 }
 .qcrit .label {
   display: block;
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -4018,7 +4018,7 @@ details.more > summary {
   color: var(--ink-dim);
 }
 .qground-label {
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -4028,7 +4028,7 @@ details.more > summary {
 
 .qside { display: block; }
 .qside-v {
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -4075,7 +4075,7 @@ details.more > summary {
 }
 .chrono-cluster > .chrono-year { font-weight: 600; }
 .chrono-n {
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -4130,7 +4130,7 @@ details.more > summary {
 /* Never clamped: a seam note is the printed reason §4a requires, and the longest is 864 characters. */
 .cw-seam { max-width: 60ch; }
 .cw-layer-k {
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -4187,7 +4187,7 @@ details.more > summary {
 .yrstrip-e { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; }
 .yrstrip-i { font-size: 0.85rem; white-space: nowrap; }
 .yrstrip-t {
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 0.66rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -4205,7 +4205,7 @@ details.more > summary {
 .unans-holds, .unans-rec { margin: 0.3rem 0 0.6rem; max-width: 80ch; font-size: 0.9rem; }
 .unans-holds { color: var(--ink-dim); }
 .unans-k {
-  font-family: var(--mono);
+  font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -4225,21 +4225,33 @@ details.more > summary {
    furniture and at 375 px becomes a hamburger, which is the footer with extra steps. */
 
 .allpages { position: relative; display: inline-block; }
+/* IT SITS IN THE NAV ROW, SO IT TAKES THE NAV'S TYPE. It was 0.78rem against the primary nav's
+   0.9375rem — 12.5px beside 15px — and dimmer, so the sixteenth destination read as a footnote to
+   the other four. It also asked for `var(--mono)`, which is not a token: every rule using that name
+   fell back to the inherited sans, so this was never monospace in the first place. The dotted
+   underline stays; that is what says "this opens" rather than "this navigates". */
 .allpages > summary {
   cursor: pointer;
   list-style: none;
-  font-family: var(--mono);
-  font-size: 0.78rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
   letter-spacing: 0.02em;
-  color: var(--ink-dim);
+  color: var(--ink-2);
   border-bottom: 1px dotted var(--rule);
 }
 .allpages > summary::-webkit-details-marker { display: none; }
 .allpages > summary:hover,
 .allpages[open] > summary { color: var(--ink); }
+/* IT OPENS RIGHTWARD, AND IT USED TO OPEN LEFTWARD OFF THE PAGE.
+   Withdrawn: `right: 0`, which pinned the panel's right edge to the summary and grew it leftward.
+   The summary sits near the shell's left margin, so at a 1280px viewport the panel's left edge
+   measured **-120px** — a fifth of it off-screen and unreachable, with no horizontal scroll to
+   recover it because an absolutely positioned box does not extend the scroll area leftward. It only
+   fit on wide windows, which is why it survived. `left: 0` grows it into the page instead, and the
+   `max-width` below already stops it reaching the right edge. */
 .allpages-panel {
   position: absolute;
-  right: 0;
+  left: 0;
   top: calc(100% + 0.5rem);
   z-index: 40;
   min-width: 19rem;
@@ -4253,13 +4265,19 @@ details.more > summary {
      design rules exclude. A hairline rule is how every other panel on this site separates. */
 }
 .allpages-group { display: grid; gap: 0.15rem; }
+/* THE GROUP LABELS ARE SUBHEADERS AND NOW LOOK LIKE ONE. At 0.66rem in `--ink-dim` they were
+   smaller and fainter than the links beneath them, so four groups read as one list. Weight 500
+   rather than 600: only 400 and 500 of the mono are loaded, and 600 would be synthesised — a faux
+   bold on a monospace face at this size smears. The prominence comes from size, weight, colour and
+   the space above instead. */
 .allpages-label {
-  font-family: var(--mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-dim);
-  margin-bottom: 0.15rem;
+  color: var(--ink-2);
+  margin-bottom: 0.4rem;
 }
 .allpages-group > a { font-size: 0.88rem; }
 
@@ -4347,7 +4365,7 @@ details.more > summary {
   .qstack tbody > tr > td[data-label]::before {
     content: attr(data-label);
     display: block;
-    font-family: var(--mono);
+    font-family: var(--font-mono);
     font-size: 0.66rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
