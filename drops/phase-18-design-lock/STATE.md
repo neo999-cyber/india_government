@@ -1066,7 +1066,34 @@ is a claim about the world under rule 5d. The work list above is what a research
 
 ---
 
-## NATIONAL DELIMITATION — IN SCOPE, SPECIFIED, AND OWED TO RESEARCH
+## NATIONAL DELIMITATION — PRIMARIES RETRIEVED 2026-08-13, ONE FACT SHORT OF A RECORD
+
+**The scope question is closed, and so is the premise I wrote it on.** This entry argued a record was
+in scope *even though nothing had happened yet*. **Something has happened, and one retrieval showed
+it**: three Bills were introduced in Lok Sabha on **16 April 2026**, two of them on this subject.
+
+**HELD, retrieved in this run and quoted in full in `DELIMITATION-BRIEF.md`:**
+- **Bill No. 107 of 2026**, the Constitution (131st Amendment) Bill — *"In article 82 … the third
+  proviso shall be omitted"*, the House raised to *"not more than eight hundred and fifteen"* elected
+  from States plus 35 for Union territories, and a Statement of Objects and Reasons whose stated
+  objective is **operationalising women's reservation**, with delimitation as the vehicle.
+- **Bill No. 108 of 2026**, the Delimitation Bill.
+
+**OWED: exactly one document.** A think-tank tracker states the 131st Amendment Bill was
+**negatived on 17 April 2026**, the day after introduction. **That is an account, and an account is
+T4.** The primary was sought and not retrieved: `sansad.in` serves a JavaScript shell with an empty
+bill table (rule 3 — not a retrieval), `loksabha.nic.in` returns HTTP 000 and does not resolve, and
+a negatived Bill is never gazetted so `egazette.gov.in` cannot confirm a defeat.
+
+**The verdict turns on that one fact entirely** — a failed attempt and a pending change are different
+records with different assessments — and **a verdict resting on a single uncorroborated T4 account is
+what this instrument refuses.** Retrieve the Lok Sabha record of 17 April 2026 and the record is
+writable immediately; everything else is held.
+
+**Environment fact, established per M1 by retesting from a second client:** `legislative.gov.in`
+returns **403 to WebFetch and 200 to curl with a browser user-agent.** Not unreachable — it refuses
+one client.
+
 
 **Scope settled 2026-08-13 by precedent, not by opinion.** The objection was that nothing has
 happened yet, so there is no event to score. **The corpus already carries 19 unresolved records** —
