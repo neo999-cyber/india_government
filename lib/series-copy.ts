@@ -396,9 +396,15 @@ export const SERIES_FINDINGS: Record<string, SeriesFinding> = {
       'Two observations, six years apart, and there is no third: the Situation Assessment Survey has not been repeated since 2018-19. A line between two points is the whole of what this series can show.',
     origin: 'domain-lead',
   },
+  // CORRECTED 2026-08-13. The withdrawn wording is quoted verbatim in the verification log, with
+  // the reason it is not quoted here: this field's whole job is to say what happened, and a
+  // meta-note about a previous version in the outcome slot would recreate the defect being fixed.
+  // What was wrong was not emphasis. The break sits at 2014 — the FIRST point — and names what it
+  // supersedes; there are no figures on the other side of it in this series, so the withdrawn
+  // sentence described a comparison the record does not contain.
   'farmer-suicides': {
     finding:
-      'Suicides in the farming sector are published annually and the series carries a declared break, because what the category counts changed. Figures either side of the seam are not the same measurement.',
+      'Farm-sector suicides fall from 12,602 in 2015 to 10,281 in 2019, then rise to 11,290 by 2022 and ease to 10,546 in 2024 — no single direction across the decade. The series starts at 2014 because NCRB separated farmers and cultivators from agricultural labourers that year; pre-2014 totals count a different population and are not carried here.',
     origin: 'domain-lead',
   },
   'nh-construction-pace': {

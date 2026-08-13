@@ -160,9 +160,29 @@ if (CONTROL) {
 let shallow = false;
 try { shallow = sh('git rev-parse --is-shallow-repository').trim() === 'true'; } catch { shallow = true; }
 if (shallow) {
+  /**
+   * **A SKIP IS INVISIBLE IN A GREEN RUN, WHICH IS THE WHOLE PROBLEM.** This gate skipped on a
+   * shallow clone and said so on stdout, and CI cloned shallow by default — so every CI run since
+   * the gate was written passed WITHOUT testing quotation identity, and nothing in the result
+   * distinguished that from a run that tested it. An external audit found this, not the repository.
+   *
+   * `--require-history` makes the skip fatal. **CI passes it** (`.github/workflows/validate.yml`),
+   * alongside `fetch-depth: 0` so the flag is satisfiable. Vercel still clones shallow and still
+   * needs the skip, which is why this is a flag rather than a hard failure: the deploy must not go
+   * down over a check the build host structurally cannot run.
+   */
+  if (process.argv.includes('--require-history')) {
+    console.error(
+      'quotation-identity FAILED — --require-history was passed and this is a shallow checkout. ' +
+        'Prior field values are unavailable, so identity cannot be tested. Set `fetch-depth: 0` on ' +
+        'the checkout step. A skipped history gate must not read as a pass.',
+    );
+    process.exit(1);
+  }
   console.log(
     'quotation-identity — shallow checkout: prior field values are not available, so identity ' +
-      'cannot be tested and is NOT reported as passing. Skipped.',
+      'cannot be tested and is NOT reported as passing. Skipped. (Pass --require-history to make ' +
+      'this fatal; CI does.)',
   );
   process.exit(0);
 }

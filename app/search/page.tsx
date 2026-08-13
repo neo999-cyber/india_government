@@ -178,6 +178,7 @@ export default function SearchPage() {
       <ListingFacets
         target="search-cards"
         noun="records"
+        initialTotal={rows.length}
         facets={[
           {
             key: 'layer',
@@ -200,7 +201,7 @@ export default function SearchPage() {
       />
       </details>
 
-      <SearchSort count={rows.length} />
+      <SearchSort />
 
       {/* ============================ THE RESULT CARDS =======================================
           §4's rebuild: title first, id second, chips for topic and record type, one whole sentence

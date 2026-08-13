@@ -1,6 +1,7 @@
 'use client';
 
 import type { Point } from '@/lib/types';
+import { ticksForMax } from '@/lib/ticks';
 
 /**
  * The story's figure: two instruments measuring the same thing on one set of axes.
@@ -93,7 +94,12 @@ export function TwoInstruments({
   return (
     <svg viewBox={`0 0 ${W} ${H}`} className="two-svg" role="img"
       aria-label={label ?? `Two instruments, ${x0} to ${x1}, on separate scales. They do not agree.`}>
-      {[0, 25, 50, 75].map((t) => (
+      {/* DERIVED FROM `yMax`, NEVER CONSTANT. These were `[0, 25, 50, 75]` while `yMax` was a prop,
+          so five of seven stories drew their grid somewhere other than on their own scale — three
+          of four lines off-canvas at yMax 6 and 10, all four welded to the baseline at 600 and
+          12000. `lib/ticks.ts` carries the measurement; `tools/chart-ticks.mjs` asserts the result
+          in the built output rather than trusting this call site. */}
+      {ticksForMax(yMax).map((t) => (
         <line key={t} x1={PAD.left} x2={W - PAD.right} y1={y(t)} y2={y(t)} className="two-grid" />
       ))}
 
