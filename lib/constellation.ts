@@ -3,9 +3,9 @@
  *
  * ============================ WHY GROUPS AND NOT THE DOMAIN ENUM =============================
  *
- * The brief that commissioned this asked for seven symbols labelled Education, Defence, Foreign
- * relations, Infrastructure, Human development, Environment and Energy. Measured against `/data`,
- * that set names six real domains, one thing that is not a domain at all — **`energy` is inside
+ * The operator's design reference labels seven symbols Education, Defence, Foreign relations,
+ * Infrastructure, Human development, Environment and Energy. Measured against `/data`, that set
+ * names six real domains, one thing that is not a domain at all — **`energy` is inside
  * `environment`; phase 15 was literally "environment and energy"** — and it covers **239 of 702
  * filings, 34%**. The eight it omits are not the tail: `governance` and `federalism` alone are 214.
  *
@@ -14,47 +14,49 @@
  *
  * **THE OPERATOR'S RULING, 2026-08-14: keep the plain words, drop the jargon.** *"these words were
  * used because most easily understood. didn't wanna use kashmir or poverty, federalism."* That is a
- * reading decision and it is a good one — `federalism` and `human-development` are terms of art, and
- * a landing page is the worst place to meet one.
+ * reading decision and a good one — `federalism` and `human-development` are terms of art, and a
+ * landing page is the worst place to meet one.
  *
- * **The resolution is grouping, not selection.** Eight groups carry the plain words the operator
- * asked for AND every one of the fourteen domains, so nothing is hidden and no reader meets the
- * word `kashmir` before they have chosen to. It is eight rather than seven for one reason:
- * `governance` + `federalism` is the single largest block in the corpus and none of the brief's
- * seven had a home for it. Seven would have put 214 filings nowhere.
+ * **The resolution is grouping, not selection.** Eight groups carry the plain words AND every one of
+ * the fourteen domains, so nothing is hidden and no reader meets the word `kashmir` before they have
+ * chosen to. It is eight rather than seven because `governance` + `federalism` is the single largest
+ * block in the corpus and none of the reference's seven had a home for it.
  *
- * **TOTALITY IS ASSERTED AT MODULE LOAD, NOT PROMISED IN A COMMENT.** `assertTotality()` runs in
- * the build. A domain added to the enum with no home here fails the build rather than quietly
- * vanishing from the picture — which is exactly how the 34% happened in the first place.
+ * **TOTALITY IS ASSERTED AT MODULE LOAD, NOT PROMISED IN A COMMENT.** A domain added to the enum
+ * with no home here fails the build rather than quietly vanishing from the picture — which is
+ * exactly how the 34% happened in the first place.
  *
  * ============================ WHAT THE ART ENCODES, AND WHAT IT REFUSES TO ====================
  *
- * **POSITION MEANS NOTHING AND THE PAGE SAYS SO.** This is the rule the nodal-discovery mock was
- * rejected under — *if every position needs an explainer, position is the wrong primary encoding* —
- * and putting marks over a map of India makes it sharper, because geography is the most strongly
- * read encoding there is. A reader who sees a dot over Bihar will read it as a claim about Bihar.
+ * **THE MARKS SIT INSIDE THE OUTLINE, AND POSITION STILL MEANS NOTHING.** They are tested for
+ * containment against the official geometry, so the field of records has India's shape — which is
+ * the whole idea, *India, made of records*. Where any individual mark falls is a low-discrepancy
+ * sequence and nothing else, and the page says so twice: in the visible note, and in the SVG
+ * description for the reader who cannot see it.
  *
- * Two things hold that off, and the second is the operator's:
- *   1. The scatter is a **low-discrepancy R2 sequence over the whole frame, interleaved across
- *      groups by steepest deficit**, so no group occupies a region. There is no cluster to mistake
- *      for a state, by construction rather than by hope.
- *   2. **Selecting an area SPREADS its constellation outward** rather than zooming into it —
- *      operator's instruction, 2026-08-14. The selected constellation gets larger and sprawls
- *      further across the sheet, so the one moment a reader looks hardest at a single group is the
- *      moment that group most obviously spans the whole country.
+ * Two things keep that honest, and the second is the operator's:
+ *   1. The scatter is an **R2 low-discrepancy sequence interleaved across areas by steepest
+ *      deficit**, so every area covers the whole country and no area occupies a region. There is no
+ *      cluster to mistake for a state, by construction rather than by hope. **The reference clusters
+ *      each domain around a single anchor point and this deliberately does not** — that is the
+ *      operator's correction of 2026-08-14 and it is the substantive change from the prototype.
+ *   2. **Selecting an area SPREADS its constellation outward** rather than concentrating it, so the
+ *      one moment a reader looks hardest at a single area is the moment it most obviously spans the
+ *      whole map.
  *
- * **DENSITY IS THE ONE THING THAT IS TRUE.** Marks per group are proportional to what the archive
- * actually holds there, at a stated ratio, computed from `/data` by the caller. It is the only
- * defensible encoding in the picture and it is the one that makes "India, made of records" a
- * statement rather than a slogan. No figure is printed: the homepage rule is that the size of the
- * database is not the lead.
+ * **DENSITY IS THE ONE THING THAT IS TRUE.** Marks per area are proportional to what the archive
+ * holds there, at a stated ratio, computed from `/data` by the caller. No figure is printed: the
+ * homepage rule is that the size of the database is not the lead.
  *
  * **WHAT IS NOT HERE.** No verdict, no score, no verified/unverified split, no severity colour, no
- * state comparison. A mark is a record existing, nothing more.
+ * state comparison. A mark is a record existing, nothing more. The area hues are NOMINAL — they say
+ * which area, never how much or how well — and shape carries the same information for anyone who
+ * cannot separate them.
  */
 import { DOMAINS, type Domain } from '@/lib/types';
+import { INDIA_OUTLINE, VIEWBOX, ORBIT } from '@/lib/india-outline';
 
-/** The eight non-colour node shapes. Colour is never the only difference between two groups. */
+/** The eight non-colour mark shapes. Colour is never the only difference between two areas. */
 export type NodeShape =
   | 'circle'
   | 'diamond'
@@ -66,28 +68,31 @@ export type NodeShape =
   | 'chevron';
 
 export type Area = {
-  /** Stable id — used for `data-area`, the button key and the CSS hook. Not shown to a reader. */
   id: string;
-  /** The plain words. This is what a reader sees, in the tooltip and the status line. */
+  /** The plain words — the caption, the tooltip and the status line. */
   label: string;
-  /** The accessible name. Says what selecting does, because an icon button's label should. */
+  /** Accessible name. Says what selecting does, because an icon button's label should. */
   aria: string;
-  /** Which of the fourteen domains this group carries. Every domain appears exactly once. */
+  /** Which of the fourteen domains this area carries. Every domain appears exactly once. */
   domains: readonly Domain[];
-  /** Where the control links. One domain → its own page; several → the topics index. */
+  /** One domain → its own page; several → the topics index. */
   href: string;
   shape: NodeShape;
-  /** 24×24 icon path. Deliberately geometric and deliberately verdict-free — see below. */
+  /** Position on the orbital ring, in degrees clockwise from the top. */
+  angle: number;
+  /** 24×24 icon path, in the reference's line-icon idiom. */
   icon: string;
 };
 
 /**
  * THE ICONS CARRY NO DIRECTION, WHICH TOOK ONE REJECTION TO GET RIGHT.
  *
- * The obvious icon for the money group is a rising bar chart, and a rising bar chart is a verdict —
- * it says the economy went up, on a landing page whose entire discipline is that it does not say
+ * The obvious icon for the money area is a rising bar chart, and a rising bar chart is a verdict —
+ * it says the economy went up, on a landing page whose whole discipline is that it does not say
  * that. It is three bars of EQUAL length here, a ledger rather than a trend. The government icon is
  * a portico for the same reason: an institution, not an outcome.
+ *
+ * Drawn as strokes rather than fills to match the reference's line-icon register.
  */
 export const AREAS: readonly Area[] = [
   {
@@ -97,52 +102,8 @@ export const AREAS: readonly Area[] = [
     domains: ['education'],
     href: '/domains/education/',
     shape: 'circle',
-    icon: 'M3 5.5c3-1.2 5.5-1.2 8.5 0v13c-3-1.2-5.5-1.2-8.5 0zM21 5.5c-3-1.2-5.5-1.2-8.5 0v13c3-1.2 5.5-1.2 8.5 0z',
-  },
-  {
-    id: 'health',
-    label: 'Health and welfare',
-    aria: 'Health and welfare — trace this constellation',
-    domains: ['human-development', 'welfare', 'poverty'],
-    href: '/domains/',
-    shape: 'diamond',
-    icon: 'M12 20.2 4.2 12.6a4.6 4.6 0 0 1 0-6.6 4.9 4.9 0 0 1 6.7 0l1.1 1.1 1.1-1.1a4.9 4.9 0 0 1 6.7 0 4.6 4.6 0 0 1 0 6.6z',
-  },
-  {
-    id: 'economy',
-    label: 'Money and work',
-    aria: 'Money and work — trace this constellation',
-    domains: ['macro', 'banking', 'employment'],
-    href: '/domains/',
-    shape: 'square',
-    icon: 'M3.5 5.5h17v3.2h-17zM3.5 10.4h17v3.2h-17zM3.5 15.3h17v3.2h-17z',
-  },
-  {
-    id: 'infrastructure',
-    label: 'Infrastructure',
-    aria: 'Infrastructure — trace this constellation',
-    domains: ['infrastructure'],
-    href: '/domains/infrastructure/',
-    shape: 'triangle',
-    icon: 'M12 2.4 2.6 20.4h3.1L12 8.6l6.3 11.8h3.1zM12 12.6l-3.1 5.9h6.2z',
-  },
-  {
-    id: 'environment',
-    label: 'Environment and energy',
-    aria: 'Environment and energy — trace this constellation',
-    domains: ['environment'],
-    href: '/domains/environment/',
-    shape: 'star',
-    icon: 'M20.4 3.2C11.2 3 4.4 6.6 4.4 13.6a7.4 7.4 0 0 0 1.3 4.3L3.2 20.4l1.6 1.6 2.5-2.5a7.4 7.4 0 0 0 4.3 1.3c7 0 10.6-6.8 10.4-16zM8.2 17.1c1.2-4.3 4.4-7.5 8.7-8.7-1.2 4.3-4.4 7.5-8.7 8.7z',
-  },
-  {
-    id: 'security',
-    label: 'Security',
-    aria: 'Security — trace this constellation',
-    domains: ['defence', 'kashmir'],
-    href: '/domains/defence/',
-    shape: 'hexagon',
-    icon: 'M12 2.2 3.6 5.4v6.1c0 5 3.6 9.1 8.4 10.3 4.8-1.2 8.4-5.3 8.4-10.3V5.4zm0 2.3 6.2 2.4v4.6c0 3.8-2.6 7-6.2 8.1-3.6-1.1-6.2-4.3-6.2-8.1V6.9z',
+    angle: 0,
+    icon: 'M3 5.5c3-1.1 5.5-1.1 8.5 0v13c-3-1.1-5.5-1.1-8.5 0zM21 5.5c-3-1.1-5.5-1.1-8.5 0v13c3-1.1 5.5-1.1 8.5 0zM12 6.6v11.5',
   },
   {
     id: 'world',
@@ -151,7 +112,38 @@ export const AREAS: readonly Area[] = [
     domains: ['foreign'],
     href: '/domains/foreign/',
     shape: 'cross',
-    icon: 'M12 2.2a9.8 9.8 0 1 0 0 19.6 9.8 9.8 0 0 0 0-19.6zm0 2c1.3 0 2.6 2.1 3.2 5.3H8.8C9.4 6.3 10.7 4.2 12 4.2zM4.4 12c0-.7.1-1.4.3-2h3.7a24 24 0 0 0 0 4H4.7a7.8 7.8 0 0 1-.3-2zm4 4h6.1c-.6 3.2-1.9 5.3-3.2 5.3S9 19.2 8.4 16zm7.2-2H8.4a21 21 0 0 1 0-4h7.2a21 21 0 0 1 0 4zm1.7 2h2.6a7.9 7.9 0 0 1-4.3 3.7c.7-1 1.3-2.3 1.7-3.7zm.3-2a24 24 0 0 0 0-4h3.7a7.7 7.7 0 0 1 0 4zm2.3-6h-2.6c-.4-1.4-1-2.7-1.7-3.7A7.9 7.9 0 0 1 19.9 8zM8.7 4.3C8 5.3 7.4 6.6 7 8H4.4a7.9 7.9 0 0 1 4.3-3.7zM4.4 16H7c.4 1.4 1 2.7 1.7 3.7A7.9 7.9 0 0 1 4.4 16z',
+    angle: 45,
+    icon: 'M12 2.8a9.2 9.2 0 1 0 0 18.4 9.2 9.2 0 0 0 0-18.4zM2.8 12h18.4M12 2.8c2.3 2.5 3.6 5.8 3.6 9.2s-1.3 6.7-3.6 9.2c-2.3-2.5-3.6-5.8-3.6-9.2S9.7 5.3 12 2.8z',
+  },
+  {
+    id: 'infrastructure',
+    label: 'Infrastructure',
+    aria: 'Infrastructure — trace this constellation',
+    domains: ['infrastructure'],
+    href: '/domains/infrastructure/',
+    shape: 'triangle',
+    angle: 90,
+    icon: 'M3 20.5h18M5.5 20.5V9.2L12 4l6.5 5.2v11.3M9.5 20.5v-6h5v6',
+  },
+  {
+    id: 'health',
+    label: 'Health and welfare',
+    aria: 'Health and welfare — trace this constellation',
+    domains: ['human-development', 'welfare', 'poverty'],
+    href: '/domains/',
+    shape: 'diamond',
+    angle: 135,
+    icon: 'M12 20.3 4.6 13a4.4 4.4 0 0 1 0-6.3 4.7 4.7 0 0 1 6.4 0l1 1 1-1a4.7 4.7 0 0 1 6.4 0 4.4 4.4 0 0 1 0 6.3z',
+  },
+  {
+    id: 'environment',
+    label: 'Environment and energy',
+    aria: 'Environment and energy — trace this constellation',
+    domains: ['environment'],
+    href: '/domains/environment/',
+    shape: 'star',
+    angle: 180,
+    icon: 'M20.2 3.6C11.4 3.4 4.8 6.9 4.8 13.5a7 7 0 0 0 1.3 4.1L3.6 20.1M7.4 18.9a7 7 0 0 0 4.1 1.3c6.6 0 10.1-6.6 9.9-15.2M8.6 16.6c1.2-4.1 4.2-7.1 8.3-8.3',
   },
   {
     id: 'government',
@@ -160,20 +152,40 @@ export const AREAS: readonly Area[] = [
     domains: ['governance', 'federalism'],
     href: '/domains/governance/',
     shape: 'chevron',
-    icon: 'M12 2.4 1.8 7.6v2.1h20.4V7.6zM4.4 11.4h2.8v7.2H4.4zm3.9 0h2.8v7.2H8.3zm3.9 0H15v7.2h-2.8zm3.9 0h2.8v7.2h-2.8zM1.8 19.7h20.4v2H1.8z',
+    angle: 225,
+    icon: 'M2.6 8.2 12 3.2l9.4 5M4.6 8.2v10M9.5 8.2v10M14.5 8.2v10M19.4 8.2v10M2.6 20.8h18.8',
+  },
+  {
+    id: 'economy',
+    label: 'Money and work',
+    aria: 'Money and work — trace this constellation',
+    domains: ['macro', 'banking', 'employment'],
+    href: '/domains/',
+    shape: 'square',
+    angle: 270,
+    icon: 'M3.6 6.2h16.8M3.6 12h16.8M3.6 17.8h16.8',
+  },
+  {
+    id: 'security',
+    label: 'Security',
+    aria: 'Security — trace this constellation',
+    domains: ['defence', 'kashmir'],
+    href: '/domains/defence/',
+    shape: 'hexagon',
+    angle: 315,
+    icon: 'M12 2.9 4.4 5.7v6c0 4.7 3.3 8.6 7.6 9.6 4.3-1 7.6-4.9 7.6-9.6v-6z',
   },
 ] as const;
 
 /**
- * Every domain lands in exactly one group, checked in the build.
+ * Every domain lands in exactly one area, checked in the build.
  *
- * A domain in two groups double-counts its filings and inflates the picture; a domain in none
- * disappears from it silently — which is the 34% defect, and the reason this throws rather than
- * warns. Called at module load below, so importing this module is the check.
+ * A domain in two areas double-counts its filings; a domain in none disappears from the picture
+ * silently — which is the 34% defect, and the reason this throws rather than warns.
  */
 function assertTotality(): void {
   const seen = new Map<string, string>();
-  for (const a of AREAS) {
+  for (const a of AREAS)
     for (const d of a.domains) {
       const prior = seen.get(d);
       if (prior)
@@ -182,122 +194,180 @@ function assertTotality(): void {
         );
       seen.set(d, a.id);
     }
-  }
   const missing = DOMAINS.filter((d) => !seen.has(d));
   if (missing.length)
     throw new Error(
       `constellation: ${missing.length} domain(s) have no area and would vanish from the landing artwork: ${missing.join(', ')}. ` +
         `Add each to an area in lib/constellation.ts, or the picture asserts a corpus that does not exist.`,
     );
-  const unknown = [...seen.keys()].filter((d) => !(DOMAINS as readonly string[]).includes(d));
-  if (unknown.length)
-    throw new Error(`constellation: area(s) name domains that are not in the enum: ${unknown.join(', ')}`);
 }
 assertTotality();
 
 /**
- * ONE MARK PER THIS MANY FILINGS. Printed on the page, because a ratio a reader cannot check is
- * decoration. At 702 filings this yields roughly 200 marks — enough to read as an archive, few
- * enough to stay under a sane DOM budget on a phone.
+ * One mark per this many filings. Printed on the page — a ratio a reader cannot check is decor.
+ *
+ * **IT WAS 3.5 AND THAT WAS TOO MANY.** 200 marks and 192 spanning-tree lines inside the outline is
+ * the *noisy particle effect* the brief names as the failure mode on the other side of "numerous
+ * enough to communicate an archive". At 5 the field reads as a constellation rather than static,
+ * and the proportion between areas — the only thing the density claims — is unchanged.
  */
-export const FILINGS_PER_MARK = 3.5;
-/** No area shrinks below this, so a small area is still visibly present rather than absent. */
+export const FILINGS_PER_MARK = 5;
 const MIN_MARKS = 4;
 
 export type ConstellationNode = { x: number; y: number; area: string };
 export type ConstellationEdge = { x1: number; y1: number; x2: number; y2: number; area: string };
 
-/** The frame the scatter fills, in viewBox units, inset so the spread transform stays on the sheet. */
-export const FRAME = { w: 927, h: 1100, inset: 92 };
+export { VIEWBOX, ORBIT };
+
+/** A point on the orbital ring, in viewBox units — where an area's control and its curve begin. */
+export function orbitPoint(angleDeg: number): { x: number; y: number } {
+  const t = ((angleDeg - 90) * Math.PI) / 180;
+  return { x: ORBIT.cx + ORBIT.rx * Math.cos(t), y: ORBIT.cy + ORBIT.ry * Math.sin(t) };
+}
+
+/** The same point as a percentage of the stage, for positioning the HTML control buttons. */
+export function orbitPercent(angleDeg: number): { left: string; top: string } {
+  const p = orbitPoint(angleDeg);
+  return { left: `${(p.x / VIEWBOX.w) * 100}%`, top: `${(p.y / VIEWBOX.h) * 100}%` };
+}
 
 /**
- * THE R2 LOW-DISCREPANCY SEQUENCE — even coverage without randomness.
- *
- * A pseudo-random scatter clumps, and a clump over a state is precisely the misreading this whole
- * component is arranged to prevent. R2 is the two-dimensional generalisation of the golden-ratio
- * sequence and fills a square about as evenly as anything can while still looking unplanned. It is
- * also pure: same input, same picture, on the server and in the browser, which matters because this
- * component is prerendered into the static HTML and must not hydrate into a different sky.
+ * The tether from an area's control inward. Quadratic, swept a few degrees so it curves rather than
+ * pointing — the reference's most characteristic line, and the thing that makes the badge read as
+ * belonging to the field rather than floating beside it.
  */
+export function tether(angleDeg: number): string {
+  const s = orbitPoint(angleDeg);
+  const at = (f: number, d: number) => {
+    const t = ((angleDeg + d - 90) * Math.PI) / 180;
+    return { x: ORBIT.cx + ORBIT.rx * f * Math.cos(t), y: ORBIT.cy + ORBIT.ry * f * Math.sin(t) };
+  };
+  const c = at(0.78, 6);
+  const e = at(0.46, 14);
+  return `M${s.x.toFixed(1)},${s.y.toFixed(1)} Q${c.x.toFixed(1)},${c.y.toFixed(1)} ${e.x.toFixed(1)},${e.y.toFixed(1)}`;
+}
+
+/**
+ * THE OUTLINE AS RINGS. `lib/india-outline.ts` is M/L/Z only, which is why this can be a parse and
+ * not a bezier flattener — and why it asserts rather than guessing if that ever stops being true.
+ */
+let RINGS: [number, number][][] | null = null;
+function polygons(): [number, number][][] {
+  if (RINGS) return RINGS;
+  const bad = INDIA_OUTLINE.match(/[CcQqAaSsTtHhVv]/);
+  if (bad)
+    throw new Error(
+      `constellation: the India outline contains a "${bad[0]}" command. This parser handles M/L/Z only; ` +
+        `containment would be computed against a mis-read shape. Flatten the path or extend the parser.`,
+    );
+  const rings: [number, number][][] = [];
+  let cur: [number, number][] = [];
+  for (const m of INDIA_OUTLINE.matchAll(/([MLZ])([-\d.]+)?,?([-\d.]+)?/g)) {
+    if (m[1] === 'Z') {
+      if (cur.length > 2) rings.push(cur);
+      cur = [];
+      continue;
+    }
+    if (m[1] === 'M') {
+      if (cur.length > 2) rings.push(cur);
+      cur = [];
+    }
+    if (m[2] !== undefined && m[3] !== undefined) cur.push([Number(m[2]), Number(m[3])]);
+  }
+  if (cur.length > 2) rings.push(cur);
+  RINGS = rings;
+  return rings;
+}
+
+/** Even-odd crossing count across every ring — islands are separate rings and count correctly. */
+function inside(x: number, y: number): boolean {
+  let crossings = 0;
+  for (const ring of polygons())
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [xi, yi] = ring[i];
+      const [xj, yj] = ring[j];
+      if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) crossings++;
+    }
+  return crossings % 2 === 1;
+}
+
 const G = 1.32471795724474602596;
 const A1 = 1 / G;
 const A2 = 1 / (G * G);
 
 /**
- * Assign each successive point to whichever area is furthest behind its quota — a steepest-deficit
- * interleave. The effect is that every area's marks are spread through the WHOLE sequence, and
- * because the sequence covers the frame evenly, through the whole frame. No area gets a corner.
+ * Build the field. R2 gives even coverage without randomness — a pseudo-random scatter clumps, and a
+ * clump over a state is the misreading this component is arranged to prevent. It is also pure: same
+ * input, same sky, on the server and in the browser, which matters because this is prerendered into
+ * the static HTML and must not hydrate into a different picture.
  */
 export function buildConstellation(counts: Record<string, number>): {
   nodes: ConstellationNode[];
   edges: ConstellationEdge[];
-  marks: Record<string, number>;
 } {
   const marks: Record<string, number> = {};
-  for (const a of AREAS) {
-    const filings = counts[a.id] ?? 0;
-    marks[a.id] = Math.max(MIN_MARKS, Math.round(filings / FILINGS_PER_MARK));
-  }
+  for (const a of AREAS)
+    marks[a.id] = Math.max(MIN_MARKS, Math.round((counts[a.id] ?? 0) / FILINGS_PER_MARK));
   const total = Object.values(marks).reduce((s, n) => s + n, 0);
 
+  // Candidate points from the sequence, keeping only those that land on land.
+  const pts: { x: number; y: number }[] = [];
+  for (let n = 1; pts.length < total && n < 60_000; n++) {
+    const x = ((0.5 + A1 * n) % 1) * VIEWBOX.w;
+    const y = ((0.5 + A2 * n) % 1) * VIEWBOX.h;
+    if (inside(x, y)) pts.push({ x, y });
+  }
+
+  // Steepest-deficit interleave: each area's marks are spread through the whole sequence, and
+  // because the sequence covers the landmass evenly, through the whole country.
   const assigned: Record<string, number> = {};
   for (const a of AREAS) assigned[a.id] = 0;
-
-  const nodes: ConstellationNode[] = [];
-  for (let n = 0; n < total; n++) {
+  const nodes: ConstellationNode[] = pts.map((p, n) => {
     let pick = AREAS[0];
     let best = -Infinity;
     for (const a of AREAS) {
-      const deficit = ((marks[a.id] / total) * (n + 1)) - assigned[a.id];
+      const deficit = (marks[a.id] / total) * (n + 1) - assigned[a.id];
       if (deficit > best) {
         best = deficit;
         pick = a;
       }
     }
     assigned[pick.id]++;
-
-    const fx = (0.5 + A1 * (n + 1)) % 1;
-    const fy = (0.5 + A2 * (n + 1)) % 1;
-    nodes.push({
-      x: FRAME.inset + fx * (FRAME.w - 2 * FRAME.inset),
-      y: FRAME.inset + fy * (FRAME.h - 2 * FRAME.inset),
-      area: pick.id,
-    });
-  }
+    return { x: p.x, y: p.y, area: pick.id };
+  });
 
   /**
-   * The lines. A minimum spanning tree over each area's own marks — every mark joined to the
-   * nearest one already in the figure. It reads as a constellation rather than as a chart, it never
-   * leaves a mark stranded, and it is deterministic. It is also, deliberately, the ONLY thing the
-   * lines say: these marks belong to the same area. They do not claim a relationship between two
-   * records, because no such relationship is in `/data` at this level.
+   * The lines. A minimum spanning tree over each area's own marks — every mark joined to the nearest
+   * one already in the figure. It reads as a constellation rather than a chart and never strands a
+   * mark. It is also, deliberately, the ONLY thing the lines say: these marks belong to the same
+   * area. They do not claim a relationship between two records, because no such relationship exists
+   * in `/data` at this level.
    */
   const edges: ConstellationEdge[] = [];
   for (const a of AREAS) {
-    const pts = nodes.filter((p) => p.area === a.id);
-    if (pts.length < 2) continue;
-    const inTree = [0];
-    const out = pts.map((_, i) => i).slice(1);
+    const p = nodes.filter((n) => n.area === a.id);
+    if (p.length < 2) continue;
+    const tree = [0];
+    const out = p.map((_, i) => i).slice(1);
     while (out.length) {
       let bi = 0;
-      let bj = 0;
+      let bk = 0;
       let bd = Infinity;
-      for (const i of inTree)
+      for (const i of tree)
         for (let k = 0; k < out.length; k++) {
-          const j = out[k];
-          const d = (pts[i].x - pts[j].x) ** 2 + (pts[i].y - pts[j].y) ** 2;
+          const d = (p[i].x - p[out[k]].x) ** 2 + (p[i].y - p[out[k]].y) ** 2;
           if (d < bd) {
             bd = d;
             bi = i;
-            bj = k;
+            bk = k;
           }
         }
-      const j = out[bj];
-      edges.push({ x1: pts[bi].x, y1: pts[bi].y, x2: pts[j].x, y2: pts[j].y, area: a.id });
-      inTree.push(j);
-      out.splice(bj, 1);
+      const j = out[bk];
+      edges.push({ x1: p[bi].x, y1: p[bi].y, x2: p[j].x, y2: p[j].y, area: a.id });
+      tree.push(j);
+      out.splice(bk, 1);
     }
   }
 
-  return { nodes, edges, marks };
+  return { nodes, edges };
 }
