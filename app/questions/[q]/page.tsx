@@ -120,7 +120,7 @@ export default async function QuestionRoute({ params }: Props) {
 /** The improved and worsened sets: the same table, selected on opposite sides of one field. */
 function MoveTable({ rows }: { rows: DirectedMove[] }) {
   return (
-    <div className="table-wrap">
+    <div className="table-wrap qstack">
       <table>
         <thead>
           <tr>
@@ -135,7 +135,7 @@ function MoveTable({ rows }: { rows: DirectedMove[] }) {
         {rows.map(({ s, from, to, n }) => (
           <tbody key={s.id} data-row>
             <tr>
-              <td>
+              <td data-label="Indicator">
                 <Link href={`/series/${s.id}/`}>{s.title}</Link>
                 <RecordMarks record={s} deferCaveat />
                 <br />
@@ -144,21 +144,21 @@ function MoveTable({ rows }: { rows: DirectedMove[] }) {
                 </span>
               </td>
               {/* The field the page selects on, on the row it selected. */}
-              <td className="t-note">{HIGHER_IS_BETTER_LABELS[String(s.higherIsBetter)]}</td>
-              <td className="mono">
+              <td className="t-note" data-label="Direction of merit">{HIGHER_IS_BETTER_LABELS[String(s.higherIsBetter)]}</td>
+              <td className="mono" data-label="From">
                 {formatValue(from.value!)}
                 <br />
                 <span className="t-note">{periodLabel(from.period, s.calendar)}</span>
               </td>
-              <td className="mono">
+              <td className="mono" data-label="To">
                 {formatValue(to.value!)}
                 <br />
                 <span className="t-note">{periodLabel(to.period, s.calendar)}</span>
               </td>
               {/* Printed on every row so a two-observation move is not read as a trend. There is
                   no threshold here and this column is what stands in for one. */}
-              <td className="mono t-note">{n}</td>
-              <td className="t-note">{DOMAIN_LABELS[s.domain]}</td>
+              <td className="mono t-note" data-label="Observations">{n}</td>
+              <td className="t-note" data-label="Topic">{DOMAIN_LABELS[s.domain]}</td>
             </tr>
             <OutcomeRow finding={SERIES_FINDINGS[s.id]?.finding} colSpan={6} />
             <CaveatRow record={s} colSpan={6} />
@@ -179,7 +179,7 @@ function Stopped() {
         series-ends plateau rather than chosen. A series ending in {frontier} is an annual series
         whose next figure is not out yet; the ones below end before it.
       </p>
-      <div className="table-wrap">
+      <div className="table-wrap qstack">
         <table>
           <thead>
             <tr>
@@ -200,7 +200,7 @@ function Stopped() {
                   </span>
                 </td>
                 <td className="mono">{end}</td>
-                <td className="t-note">{DOMAIN_LABELS[s.domain]}</td>
+                <td className="t-note" data-label="Topic">{DOMAIN_LABELS[s.domain]}</td>
               </tr>
               <OutcomeRow finding={SERIES_FINDINGS[s.id]?.finding} colSpan={3} />
               <CaveatRow record={s} colSpan={3} />
@@ -215,7 +215,7 @@ function Stopped() {
 function MeasuredWell() {
   const rows = measuredWell();
   return (
-    <div className="table-wrap">
+    <div className="table-wrap qstack">
       <table>
         <thead>
           <tr>
@@ -228,7 +228,7 @@ function MeasuredWell() {
         {rows.map((s) => (
           <tbody key={s.id} data-row>
             <tr>
-              <td>
+              <td data-label="Indicator">
                 <Link href={`/series/${s.id}/`}>{s.title}</Link>
                 <RecordMarks record={s} deferCaveat />
                 <br />
@@ -238,7 +238,7 @@ function MeasuredWell() {
               <td>
                 <TierTag tier={s.tier} />
               </td>
-              <td className="t-note">{DOMAIN_LABELS[s.domain]}</td>
+              <td className="t-note" data-label="Topic">{DOMAIN_LABELS[s.domain]}</td>
             </tr>
             <OutcomeRow finding={SERIES_FINDINGS[s.id]?.finding} colSpan={4} />
             {/* No CaveatRow, and its absence is the set's own criterion rather than an omission:
@@ -254,7 +254,7 @@ function MeasuredWell() {
 function TooEarly() {
   const rows = tooEarly();
   return (
-    <div className="table-wrap">
+    <div className="table-wrap qstack">
       <table>
         <thead>
           <tr>
@@ -300,7 +300,7 @@ function TooEarly() {
 function Disagree() {
   const rows = disagreeing();
   return (
-    <div className="table-wrap">
+    <div className="table-wrap qstack">
       <table>
         <thead>
           <tr>

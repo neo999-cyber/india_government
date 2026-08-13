@@ -1,16 +1,23 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { storyCard } from '@/lib/share-card';
+import { storyBySlug } from '@/lib/stories';
 import { getLedger, getProvenance, getSeries } from '@/lib/data';
 import { StoryScroller } from '@/components/StoryScroller';
 import { SeriesChart } from '@/components/SeriesChart';
 import { CaveatFlag } from '@/components/marks';
 import { StorySources } from '@/components/StorySources';
 
-export const metadata: Metadata = {
-  title: 'A zero that is not a zero',
-  description:
-    'One row of the Union’s MGNREGA release table reads nought. It does not mean no claim was made — it means a statutory power was used, and the table has no way of saying so.',
-};
+/**
+ * The card comes from `lib/stories.ts` through `storyCard`, not from a literal here. Every
+ * story was unfurling the root fallback because a page that sets only `description` does not
+ * override the layout's `openGraph`; the composer sets both.
+ */
+export const metadata: Metadata = storyCard(
+  storyBySlug('a-zero-that-is-not-a-zero')!.title,
+  storyBySlug('a-zero-that-is-not-a-zero')!.share,
+  'a-zero-that-is-not-a-zero',
+);
 
 /**
  * STORY SEVEN — P-114, and it is a FIFTH form.

@@ -48,8 +48,19 @@ export type Story = {
   title: string;
   /** The topic chip on the index. */
   topic: string;
-  /** One sentence on the index card. */
+  /** One sentence on the index card, read beneath a visible title and in a list of siblings. */
   card: string;
+  /**
+   * THE SHARE CARD, AND IT IS A DIFFERENT SENTENCE FROM `card` ON PURPOSE.
+   *
+   * `card` sits under a heading among six siblings; this one arrives alone in a chat window beside
+   * a title, with no page around it and no way back. **And it is subject to the truncation rule**:
+   * a platform keeps the prefix, so the qualification leads and any figure follows it, which means
+   * a cut can only remove the figure and never leave it standing alone.
+   *
+   * Never a compression of the story's finding. The 237 findings all fail the rule by construction.
+   */
+  share: string;
   /**
    * The qualifying signature: the contested pair ids, or the boundary provenance ids, that make this
    * subject one the criterion selects. **Checked against `/data` by `signatureFor`, not trusted.**
@@ -64,6 +75,8 @@ export const STORIES: Story[] = [
     title: 'Can Indian children read?',
     topic: 'Education',
     card: 'Two national instruments, one question, and answers that point different ways',
+    share:
+      'Two national instruments measure whether Indian children can read and they point different ways. Neither is hidden, neither is obviously wrong, and this instrument picks neither.',
     signature: ['PR-17'],
     rests: [
       { id: 'P-59', kind: 'provenance', blurb: '' },
@@ -86,6 +99,8 @@ export const STORIES: Story[] = [
     title: 'Did jobs grow after 2014?',
     topic: 'Employment',
     card: 'Two surveys of the same quantity that disagree about the direction, and an official fall made of something other than jobs',
+    share:
+      'The record attached to India’s official unemployment rate says the series cannot be read as a jobs indicator. It fell anyway, from 6.0 to 3.2 per cent, while self-employment and unpaid family work rose and a second survey recorded employment moving the other way.',
     signature: ['PR-12', 'PR-13'],
     rests: [
       { id: 'P-41', kind: 'provenance', blurb: '' },
@@ -108,6 +123,8 @@ export const STORIES: Story[] = [
     title: 'Who counts the dead in Kashmir?',
     topic: 'Kashmir',
     card: 'Twenty-seven of thirty indicators are published by the state; the three that are not all count deaths, and they do not sit where you would expect',
+    share:
+      'Twenty-seven of the thirty Kashmir indicators here are published by the state. The three that are not all count deaths, and they do not sit where you would expect.',
     signature: ['PR-26', 'PR-32'],
     rests: [
       { id: 'P-73', kind: 'provenance', blurb: '' },
@@ -129,6 +146,8 @@ export const STORIES: Story[] = [
     title: 'How much of India’s electricity is renewable?',
     topic: 'Environment',
     card: 'Four official figures for the same year, all correct, from 16.88 per cent to 53.21 — and coal production nearly doubled underneath them',
+    share:
+      'The government publishes four answers for the same year and every one of them is correct. The spread is what the words mean rather than a dispute, and coal production nearly doubled underneath it.',
     signature: ['P-121'],
     rests: [
       { id: 'P-121', kind: 'provenance', blurb: '' },
@@ -149,6 +168,8 @@ export const STORIES: Story[] = [
     title: 'Is India spending more on education, or less?',
     topic: 'Education',
     card: 'Two totals in one table for the same years — one rises, one falls, and the 6 per cent target is measured against the one that rises',
+    share:
+      'The Ministry publishes two totals for education spending side by side in one table. Over the last decade one rises and the other falls, and the 6 per cent target is measured against the one that rises.',
     signature: ['PR-22'],
     rests: [
       { id: 'P-66', kind: 'provenance', blurb: '' },
@@ -175,6 +196,8 @@ export const STORIES: Story[] = [
     title: 'Two counts of Kashmir’s detainees, and the boundary between them',
     topic: 'Kashmir',
     card: 'Two official instruments differ in every overlapping year, and in half of them the difference is exactly the foreign-national count',
+    share:
+      'It is not a disagreement. Two official counts of Kashmir’s detainees differ in every year they share, and where it can be tested the difference is exactly the foreign-national count.',
     signature: ['PR-35'],
     rests: [
       { id: 'P-90', kind: 'provenance', blurb: '' },
@@ -202,6 +225,8 @@ export const STORIES: Story[] = [
     title: 'A zero that is not a zero',
     topic: 'Welfare',
     card: 'One row of the Union’s release table reads nought because a statutory power was used, and the table has no column to say so — the row underneath it is what makes the cell readable',
+    share:
+      'A zero in the Union’s release table normally means no claim was made. In West Bengal’s row it means a statutory power was used, and the table has no column in which to say so.',
     signature: ['P-114'],
     rests: [
       { id: 'P-114', kind: 'provenance', blurb: '' },

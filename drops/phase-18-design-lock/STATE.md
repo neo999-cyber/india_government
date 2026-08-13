@@ -289,7 +289,30 @@ period carries it.
 
 **So a next story should be commissioned by a subject rather than drawn from this list**, or the list
 should wait for the corpus to grow. The rate of one a batch with one declined was the material's
-rate, and it has been worked through rather than slowed. **SEVEN STORIES SHIPPED.** PR-22 (education, depth 22), PR-35 (a form the site has not
+rate, and it has been worked through rather than slowed. **SEVEN STORIES SHIPPED.**
+
+**SHARE CARDS FIXED 2026-08-13, AND SEVEN WERE BROKEN.** Every story unfurled `og:title` = *India,
+On the Record* and `og:description` = the site blurb, because **a page that sets only `description`
+does not override the root layout's `openGraph`** — Next merges that object, not field-by-field.
+`storyCard` in `lib/share-card.ts` sets both; the seven sentences live in `lib/stories.ts` as
+`share`, distinct from the index `card` because a share card arrives alone. All seven read at 60,
+100, 140 and 180 characters and safe at every cut. **The landing card is the root fallback by
+design and stays** — it carries the positioning item 1 corrected.
+
+**OWED: 122 series cards.** Each still ships the mechanical floor — safe, no figure, and plain. Not
+broken like the story cards; a different debt. **Tranche criterion when it starts: the 14 a story
+rests on**, being the ones a reader reaches from a shared link.
+
+**MOBILE PASS DONE.** Nav **3 lines → 2**, **132 px → 88**, **40 of 40 under-44 px targets → 0**,
+and **317 px → 260** before the page's own h1. Cause of the third line was `display: block` on the
+`All pages` disclosure — my own CSS from the navigation batch. **Question-route tables stack at
+≤767 px via `data-label`, DOM unchanged**, so `listing-marks` reads 5,727 / 8,190 identically before
+and after — the check that it was layout, not structure.
+
+**DELIBERATELY NOT FIXED:** `/ledger/` and `/series/` stay tables (223- and 269-row catalogues
+scanned by column, with `ListingFacets` as the phone path); inline prose links stay at 15 px (WCAG
+2.5.8 exempts them); 260 px still precede the headline because title, coverage subtitle and crumb
+are each load-bearing; charts stay small but **no label is under 9 px, measured**. PR-22 (education, depth 22), PR-35 (a form the site has not
 published) and P-114 (welfare) are strongest on material. Each is a piece of writing.
 
 **THE BLOCKER AS IT WAS MEASURED, kept because the fix is only checkable against it.** Measured across all 750 built pages: **each story has exactly

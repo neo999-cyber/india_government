@@ -1,15 +1,22 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { storyCard } from '@/lib/share-card';
+import { storyBySlug } from '@/lib/stories';
 import { getLedger, getProvenance, getSeries } from '@/lib/data';
 import { StoryScroller } from '@/components/StoryScroller';
 import { CaveatFlag } from '@/components/marks';
 import { StorySources } from '@/components/StorySources';
 
-export const metadata: Metadata = {
-  title: 'Two counts of Kashmir’s detainees, and the boundary between them',
-  description:
-    'Two official instruments count preventive detention in Jammu and Kashmir and differ in every overlapping year. In half those years the difference is exactly one thing, and it is not a disagreement.',
-};
+/**
+ * The card comes from `lib/stories.ts` through `storyCard`, not from a literal here. Every
+ * story was unfurling the root fallback because a page that sets only `description` does not
+ * override the layout's `openGraph`; the composer sets both.
+ */
+export const metadata: Metadata = storyCard(
+  storyBySlug('two-counts-one-boundary')!.title,
+  storyBySlug('two-counts-one-boundary')!.share,
+  'two-counts-one-boundary',
+);
 
 /**
  * STORY SIX — PR-35, and the fourth form, built.

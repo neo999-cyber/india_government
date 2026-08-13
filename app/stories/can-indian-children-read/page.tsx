@@ -1,16 +1,23 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { storyCard } from '@/lib/share-card';
+import { storyBySlug } from '@/lib/stories';
 import { getLedger, getProvenance, getSeries } from '@/lib/data';
 import { StoryScroller } from '@/components/StoryScroller';
 import { SeriesChart } from '@/components/SeriesChart';
 import { CaveatFlag } from '@/components/marks';
 import { StorySources } from '@/components/StorySources';
 
-export const metadata: Metadata = {
-  title: 'Can Indian children read?',
-  description:
-    'Two national instruments measure whether Indian children can read, and they point different ways. What each one is, why they disagree, and what neither can tell you.',
-};
+/**
+ * The card comes from `lib/stories.ts` through `storyCard`, not from a literal here. Every
+ * story was unfurling the root fallback because a page that sets only `description` does not
+ * override the layout's `openGraph`; the composer sets both.
+ */
+export const metadata: Metadata = storyCard(
+  storyBySlug('can-indian-children-read')!.title,
+  storyBySlug('can-indian-children-read')!.share,
+  'can-indian-children-read',
+);
 
 /**
  * PHASE 18 PROTOTYPE C — the scroll story, on the subject the inventory selected.

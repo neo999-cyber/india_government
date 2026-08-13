@@ -190,6 +190,42 @@ function twoTruths(id: string): string | null {
   return hit ? hit.framing.replace(/\s+/g, ' ').trim() : null;
 }
 
+/**
+ * ============================ THE STORY CARD, AND THE DEFECT IT FIXES =========================
+ *
+ * **All seven stories were unfurling the root fallback.** Each story file exports
+ * `metadata = { title, description }`, and each page's `<meta name="description">` carried its own
+ * sentence — but `og:title` read *India, On the Record* and `og:description` read the site blurb on
+ * every one of them.
+ *
+ * **The mechanism: a page that sets only `description` does not override the root layout's
+ * `openGraph`.** Next merges `openGraph` as an object, not field-by-field against `description`, so
+ * the layout's default won on every story. `seriesCard` and `ledgerCard` were unaffected because
+ * they build `openGraph` explicitly — which is exactly why this composer exists rather than each
+ * story hand-rolling its tags.
+ *
+ * Distribution here is a pasted link with no search discovery, so this line does the whole job of
+ * deciding whether a stranger opens the page. Seven stories were spending it on a generic blurb.
+ *
+ * ============================ THE RULE, WHICH IS ORDER AND NOT CONTENT ========================
+ *
+ * > **A card is admissible only if NO PREFIX of it states a claim that standing alone would
+ * > mislead.** The qualification leads, or the sentence is not a card.
+ *
+ * A platform keeps the prefix and drops the tail, so a sentence that states a figure and qualifies
+ * it afterwards ships the figure alone. **The 237 authored findings all fail this** at a median 459
+ * characters, leading with the figure and qualifying after an em-dash — which is why a story's card
+ * is a fresh sentence written to the rule and never a compression of its finding.
+ *
+ * **The no-figure floor lifts only where the figures arrive already in tension**, as it does for the
+ * two-truths cards: a spread of four official answers cannot be truncated into one standing claim.
+ * It does not lift for a single figure with a qualification after it, and where a story's card
+ * carries figures at all they sit AFTER the qualification, so a cut can only remove them.
+ */
+export function storyCard(title: string, share: string, slug: string): Metadata {
+  return card(title, share, `/stories/${slug}/`);
+}
+
 export function seriesCard(s: Series): Metadata {
   const pts = s.points.filter((p) => p.country === 'IND' && p.value !== null);
   const first = pts[0]?.period;
