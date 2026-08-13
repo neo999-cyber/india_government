@@ -19613,3 +19613,39 @@ defects and passed after they were fixed.** No fixture was needed to prove it wo
 29 build steps green; **15 e2e tests pass** (4 desktop, 11 mobile). `link-check` 59,070 across 754,
 0 dead · `listing-marks` 4,167 / 5,914 · `interface-invariants` 22 index surfaces ·
 `domain-coverage` 1,137/1,137. `npm audit` 0.
+
+---
+
+## 2026-08-13 (seventy-fourth entry) — THE DEPLOY WENT RED, AND IT WAS NOT THE THING I HAD JUST ADDED
+
+`de1c3ff` deployed to **ERROR**. The obvious suspect was the Playwright devDependency added in that
+same commit. **It was not that.** Vercel's log: all 29 gates green, then `next build` failed with
+`module-not-found` on `[next]/internal/font/google/ibm_plex_sans_*.module.css`.
+
+**`next/font/google` downloads at BUILD time.** The deployed site never contacted a font CDN — that
+promise held — **but every build did, and a build-time network dependency is a deploy that can fail
+for a reason unrelated to the change being deployed.**
+
+**This is the second time.** `6d7ec5c` earlier in this phase died the same way. It was recorded in
+`STATE.md` as a hazard and left unfixed, **and a recorded hazard that is not fixed is a hazard with a
+second turn.**
+
+**Fixed by vendoring, not by redeploying.** Six latin woff2 files in `app/fonts/`, loaded through
+`next/font/local`, taken from the same `fonts.gstatic.com` URLs the helper resolved.
+**`plex-sans-var.woff2` is 40,240 bytes — byte-identical in size to the file the last successful
+build produced**, which is how the download was checked rather than assumed. IBM Plex Sans is a
+variable font, so one file covers 400–600 and is declared as the range it is; Spectral and Plex Mono
+ship static weights and get one file each.
+
+**A clean build — `.next` removed — emits 6 woff2 against 31 before**, because the helper was
+fetching every subset and weight variant and only six were ever used. Sizes in the output match the
+six in the repository exactly.
+
+**Retrying the deploy would have been the wrong move even if it had worked.** A green run after a red
+one, with nothing changed, is not verification — it is the same coin landing the other way.
+
+### Gate line
+
+29 build steps green from a cold `.next`; **15 e2e tests pass** — which is the check that matters
+here, because fonts change text metrics and the target-size and overflow assertions are measured on
+rendered boxes.

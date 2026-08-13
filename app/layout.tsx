@@ -3,18 +3,60 @@ import { PrimaryNav } from '@/components/PrimaryNav';
 // `navLabel` moved with `DIRECTORY`: the per-item labels are resolved where the list is declared.
 import { DIRECTORY } from '@/lib/routes';
 import Link from 'next/link';
-import { Spectral, IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import { series } from '@/lib/data';
 import './globals.css';
 
 /**
- * TYPE — phase 18 §6 made concrete: display serif + technical sans + mono. Loaded through
- * `next/font`, which downloads at BUILD time and self-hosts: the deployed site makes no request
- * to any font CDN, which matters for a static instrument that promises nothing phones home.
+ * TYPE — phase 18 §6 made concrete: display serif + technical sans + mono.
+ *
+ * ============================ VENDORED 2026-08-13, AND THE REASON IS A RED DEPLOY =============
+ *
+ * These loaded through `next/font/google` until today. That helper downloads at BUILD time and
+ * self-hosts the result, so the DEPLOYED site never contacted a font CDN — the promise below held —
+ * **but the BUILD contacted one on every run, and a build-time network dependency is a deploy that
+ * can fail for a reason unrelated to the change being deployed.**
+ *
+ * **It has now done so twice.** `6d7ec5c` in this phase, and `de1c3ff`, where all 29 gates passed
+ * and `next build` then failed on `module-not-found` for the IBM Plex Sans CSS module. Nothing was
+ * wrong with either commit. The hazard was recorded in `STATE.md` after the first one and left
+ * unfixed, which is how it got a second turn.
+ *
+ * **So the files are in the repository.** Six of them, latin subset, taken from the same
+ * `fonts.gstatic.com` URLs the helper resolved — `plex-sans-var.woff2` is byte-identical in size to
+ * the file the last successful build produced, which is how it was checked rather than assumed. IBM
+ * Plex Sans is a VARIABLE font and one file covers 400 to 600; Spectral and Plex Mono ship static
+ * weights, so they get one file each.
+ *
+ * **What this does not change:** the deployed site still makes no font request, the CSS variables
+ * are the same three names, and nothing in the stylesheet moves. What it changes is that a deploy
+ * can no longer fail because a Google server had a bad minute.
  */
-const spectral = Spectral({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-display', display: 'swap' });
-const plexSans = IBM_Plex_Sans({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-body', display: 'swap' });
-const plexMono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono-face', display: 'swap' });
+const spectral = localFont({
+  src: [
+    { path: './fonts/spectral-400.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/spectral-500.woff2', weight: '500', style: 'normal' },
+    { path: './fonts/spectral-600.woff2', weight: '600', style: 'normal' },
+  ],
+  variable: '--font-display',
+  display: 'swap',
+});
+const plexSans = localFont({
+  // One variable file across the range the site uses. Declaring '400 600' rather than three faces
+  // is what the file actually is; three entries pointing at one file would be a lie the browser
+  // then has to resolve.
+  src: [{ path: './fonts/plex-sans-var.woff2', weight: '400 600', style: 'normal' }],
+  variable: '--font-body',
+  display: 'swap',
+});
+const plexMono = localFont({
+  src: [
+    { path: './fonts/plex-mono-400.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/plex-mono-500.woff2', weight: '500', style: 'normal' },
+  ],
+  variable: '--font-mono-face',
+  display: 'swap',
+});
 
 /**
  * THE SITE IS "INDIA, ON THE RECORD". Named by the operator 2026-08-10.
