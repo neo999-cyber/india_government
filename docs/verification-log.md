@@ -19753,3 +19753,59 @@ tool requires. Given `data/incoming` it runs: **STAGE 4 CLEAN, exit 0.**
 ### Gate line
 
 30 build steps green; **17 e2e tests pass**, up from 15.
+
+---
+
+## 2026-08-13 (seventy-seventh entry) — LINT, AND IT FOUND A RENDER-PURITY BUG THE COMPILER COULD NOT
+
+**The install was never impossible — it was blocked by the Next version.** `eslint-config-next`
+resolves `@next/eslint-plugin-next` at its own version, and at Next 16.2.12 that version was
+unpublished. At 16.3.0 both exist. **The upgrade two entries ago unblocked this**, which is not what
+I said at the time.
+
+**Three attempts, each corrected by reading rather than guessing.** `FlatCompat` made ESLint 10 die
+in its own config validator (`Converting circular structure to JSON`) — checked the package exports
+and found `core-web-vitals` and `typescript` are ALREADY flat arrays, so the shim was the problem.
+Then `eslint-plugin-react` threw `contextOrFilename.getFilename is not a function` — read its
+declared peers: `^3 || … || ^9.7`, so **ESLint 10 is out of range and `eslint-config-next`'s
+`>=9.0.0` is simply too loose.** Pinned to 9.
+
+### WHAT IT CAUGHT, AND ONE OF THEM IS A REAL BUG
+
+**`SpanStrip` mutated a variable during render.** `let lastStart` was reassigned inside `rows.map`
+to decide which rows open a start-year group. **React may interrupt and restart a render, and a
+restarted pass would read a value left over from the abandoned one — the group labels would land on
+the wrong rows.** It has never misbehaved because this component renders on the server in one pass,
+**which is luck about where it runs rather than a property of the code.** Replaced with a `Set` of
+group-head indices computed before the map; the render is now pure.
+
+**`ListingFacets` read the URL in an effect and called `setState` synchronously** — mount, then an
+immediate second render to apply values knowable before the first. Moved into a lazy state
+initialiser, guarded for the server where `window` does not exist.
+
+**One suppression, and it is the rule's own exception.** The filter effect reports the count it
+observed after hiding rows. **The count cannot come from React state because this component holds no
+records** — that is the design, argued in its header: rows are server-rendered so `listing-marks`
+can see them. Disabled at the line with the reason, not repo-wide.
+
+### AND IT FOUND 16 DEAD VALUES IN `tools/*.mjs`, WHICH `tsc` NEVER SEES
+
+`typecheck` covers TypeScript; the gate tooling is `.mjs` and was unlinted. **One of the 16 was a
+deliberate record** — `CONTESTED_INDEX_DISPUTE`, whose own comment says *"kept for reference, but
+rule 6 is no longer checked by naming it"*. Kept, with a line-level disable and the reason: **the
+second time this session a linter has proposed deleting a decision.**
+
+`REC` in `listing-shapes.mjs` was superseded by the capturing pattern on the line below it.
+`firedRules` in `selftest.mjs` was redundant against the `MUST_FIRE` loop, which is strictly
+stronger — it asserts each rule fired AND that it fired for the violation the fixture seeds. The two
+one-off pass scripts are exempted at file level as historical artefacts, with the reason: deleting
+what they computed would erase what that run measured.
+
+**0 errors, 0 warnings.** `npm run lint`, a CI step after `typecheck` — not in the build, for the
+same reason as the e2e suite: the build gates the corpus and the rendered output and is paid for on
+every commit and every deploy.
+
+### Gate line
+
+30 build steps green · **17 e2e tests** · **lint 0/0** — the React changes verified against both,
+because a render-purity fix that broke the strip would show as a listing-marks or e2e failure.

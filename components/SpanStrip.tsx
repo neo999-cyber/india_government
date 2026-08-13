@@ -118,7 +118,24 @@ export function SpanStrip({
   const decades = [];
   for (let y = Math.ceil(x0 / step) * step; y <= x1; y += step) decades.push(y);
 
-  let lastStart: number | null = null;
+  /**
+   * GROUP HEADS COMPUTED BEFORE THE MAP, NOT ACCUMULATED DURING IT.
+   *
+   * This was `let lastStart` reassigned inside `rows.map`, which mutates a variable DURING RENDER.
+   * React may interrupt and restart a render, and a restarted pass would read a `lastStart` left
+   * over from the abandoned one — the group labels would land on the wrong rows. It has not
+   * misbehaved in practice because this component renders on the server in one pass, **which is
+   * luck about where it runs rather than a property of the code**. `react-hooks` flags it as
+   * "cannot reassign variable after render completes" and it is right.
+   *
+   * A Set of the row indices that OPEN a start-year group. Derived once, read-only in the map,
+   * and the render becomes pure.
+   */
+  const groupHeads = new Set<number>();
+  rows.reduce<number | null>((prev, r, i) => {
+    if (r.start !== prev) groupHeads.add(i);
+    return r.start;
+  }, null);
 
   return (
     <div className="strip" id="span-strip">
@@ -131,9 +148,8 @@ export function SpanStrip({
       </div>
 
       <div className="strip-rows">
-        {rows.map((r) => {
-          const newGroup = r.start !== lastStart;
-          lastStart = r.start;
+        {rows.map((r, i) => {
+          const newGroup = groupHeads.has(i);
           return (
             <div
               key={r.id}

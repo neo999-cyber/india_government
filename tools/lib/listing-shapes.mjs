@@ -57,7 +57,6 @@ export function listingRows(html) {
    * `<tbody>` is only a unit when it links exactly one record; otherwise its `<tr>`s are taken
    * individually, exactly as before.
    */
-  const REC = /href="\/(?:ledger|series)\/[^"/]+\//g;
   const bodies = [...clean.matchAll(/<tbody[\s>][\s\S]*?<\/tbody>/g)].map((m) => m[0]);
   const units = bodies.filter((b) => {
     const ids = new Set([...b.matchAll(/href="\/(?:ledger|series)\/([^"/]+)\//g)].map((m) => m[1]));

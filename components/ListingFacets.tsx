@@ -71,24 +71,37 @@ export function ListingFacets({
    */
   initialTotal?: number;
 }) {
-  const [sel, setSel] = useState<Record<string, string>>({});
-  const [q, setQ] = useState('');
-  const [shown, setShown] = useState<number | null>(null);
-  const [total, setTotal] = useState<number | null>(initialTotal ?? null);
-  const ready = useRef(false);
-
-  // Read the URL once, before the first filter pass, so a shared link lands filtered.
-  useEffect(() => {
+  /**
+   * THE URL IS READ IN THE STATE INITIALISER, NOT IN AN EFFECT.
+   *
+   * This was a `useEffect` calling `setQ` and `setSel` on mount, which `react-hooks` flags as
+   * *"calling setState synchronously within an effect can trigger cascading renders"* — and it did
+   * exactly that: mount, then an immediate second render to apply values that were knowable before
+   * the first. A lazy initialiser is the shape React wants for state derived from outside React, and
+   * it is one render instead of two.
+   *
+   * **It must be safe on the SERVER**, where `window` does not exist and this component is
+   * pre-rendered before hydration. It returns the empty case there, which is the correct
+   * server-rendered state: nothing is filtered until the reader's URL is readable.
+   */
+  const fromUrl = (): { sel: Record<string, string>; q: string } => {
+    if (typeof window === 'undefined') return { sel: {}, q: '' };
     const p = new URLSearchParams(window.location.search);
-    const next: Record<string, string> = {};
+    const sel: Record<string, string> = {};
     for (const f of facets) {
       const v = p.get(f.key);
-      if (v) next[f.key] = v;
+      if (v) sel[f.key] = v;
     }
-    setQ(p.get('q') ?? '');
-    setSel(next);
-    ready.current = true;
-  }, [facets]);
+    return { sel, q: p.get('q') ?? '' };
+  };
+  const [initial] = useState(fromUrl);
+  const [sel, setSel] = useState<Record<string, string>>(initial.sel);
+  const [q, setQ] = useState(initial.q);
+  const [shown, setShown] = useState<number | null>(null);
+  const [total, setTotal] = useState<number | null>(initialTotal ?? null);
+  /** False until the first filter pass has run, so arriving at a filtered link does not immediately
+   *  rewrite the URL it arrived on. Set at the end of that pass, not during render. */
+  const ready = useRef(false);
 
   const active = useMemo(
     () => Object.entries(sel).filter(([, v]) => v) as [string, string][],
@@ -111,10 +124,30 @@ export function ListingFacets({
       row.hidden = !show;
       if (show) visible += 1;
     }
+    /**
+     * THE ONE `react-hooks/set-state-in-effect` SUPPRESSION IN THIS REPOSITORY, and it is the rule's
+     * own exception rather than a way around it.
+     *
+     * The rule says an effect should *"update external systems with the latest state from React"* or
+     * *"subscribe for updates from some external system, calling setState in a callback"*. This does
+     * the first and then reports what it observed. **The count cannot be computed from React state
+     * because this component holds no records** — that is the whole design, argued at length in the
+     * header: rows are server-rendered so `listing-marks` can see them, and this toggles `hidden`.
+     * The DOM is the external system, and the number of rows left showing is only knowable after the
+     * pass that hides them.
+     *
+     * **Restructuring to satisfy the rule would mean holding the records in the client**, which
+     * breaks rule 4b's gate and re-implements rule 3a in a second renderer. The rule is right in
+     * general and wrong here, so it is disabled at the line with the reason rather than repo-wide.
+     */
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setShown(visible);
     setTotal(rows.length);
 
-    if (!ready.current) return;
+    if (!ready.current) {
+      ready.current = true;
+      return;
+    }
     const p = new URLSearchParams();
     for (const [k, v] of active) p.set(k, v);
     if (needle) p.set('q', q.trim());

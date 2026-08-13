@@ -140,6 +140,9 @@ const DISPUTE_WHY_FLOOR = 160;
  * a contested index must carry a dispute record covering its own domain, and which record
  * that is depends on the index.
  */
+// Kept deliberately: the comment above records why rule 6 stopped naming it, and deleting a
+// reference because a linter cannot see a use for it is how a recorded decision disappears.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const CONTESTED_INDEX_DISPUTE = 'P-08';
 
 /**

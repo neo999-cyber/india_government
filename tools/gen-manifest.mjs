@@ -17,9 +17,9 @@
  *
  * Usage:  node tools/gen-manifest.mjs   ·   npm run manifest
  */
-import { readdirSync, readFileSync, writeFileSync, existsSync, statSync } from 'node:fs';
-import { join, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import {readdirSync, readFileSync, writeFileSync, existsSync} from 'node:fs';
+import {join, dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = join(ROOT, 'data');

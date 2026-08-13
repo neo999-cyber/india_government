@@ -34,6 +34,11 @@ jobs:
       - run: npm run validate
       - run: npm run validate:selftest
       - run: npm run typecheck
+      # LINT IS A CI STEP AND NOT A BUILD STEP. The build gates the CORPUS and the rendered output
+      # and is paid for on every commit and every Vercel deploy; lint findings are code-quality
+      # signals about source `typecheck` has already proven type-correct. Same judgement, same
+      # reason, as the e2e suite below.
+      - run: npm run lint
       - run: npm run build
 
       # THE SKIP IS NOW FATAL HERE, AND ONLY HERE. Vercel clones shallow and structurally cannot

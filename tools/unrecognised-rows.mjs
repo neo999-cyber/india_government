@@ -226,7 +226,6 @@ const pages = [];
 })(OUT);
 
 const found = [];
-let titleLinks = 0;
 let citations = 0;
 let graphical = 0;
 let attributions = 0;
@@ -246,7 +245,6 @@ for (const file of pages) {
     } else if (text === rec.title && POOLED_TO_PAGE.some((c) => insideClass(html, m.index, c))) {
       pooled += 1;
     } else if (text === rec.title) {
-      titleLinks += 1;
       found.push({ route, id: m[2] });
     } else if (!text) {
       // AN ANCHOR WITH NO TEXT IS NEITHER, and counting it as a citation was wrong the moment the

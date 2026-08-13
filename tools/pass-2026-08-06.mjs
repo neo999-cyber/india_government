@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+/* eslint-disable @typescript-eslint/no-unused-vars -- A ONE-OFF SCRIPT FROM THE 2026-08-06 PASS, KEPT AS A RECORD OF WHAT IT COMPUTED.
+   Some values it derives are no longer read by its output. Deleting them would make the script
+   tidier and would erase what that run actually measured, which is the reason it is still here.
+   Not maintained; not in any gate. */
 /**
  * THE PASS — the single operation in which the four rulings, the intra-state test and the tier
  * corrections are applied to the corpus. Kept as a tool rather than run as a shell one-liner
