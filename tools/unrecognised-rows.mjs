@@ -58,7 +58,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assertFresh } from './lib/freshness.mjs';
-import { listingRows } from './lib/listing-shapes.mjs';
+import { listingRows, linkText } from './lib/listing-shapes.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'out');
@@ -67,15 +67,7 @@ const VERBOSE = argv.includes('--verbose');
 const CONTROL = argv.includes('--control');
 
 /** Text of a rendered anchor, normalised the way the page renders entities. */
-const linkText = (html) =>
-  html
-    .replace(/<[^>]*>/g, '')
-    .replace(/&#x27;|&#39;|&rsquo;/g, "'")
-    .replace(/&amp;/g, '&')
-    .replace(/&quot;/g, '"')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+// `linkText` moved to `lib/listing-shapes.mjs` so `listing-marks` uses the same one.
 
 const ANCHOR = /<a [^>]*href="\/(ledger|series)\/([^"/]+)\/"[^>]*>([\s\S]*?)<\/a>/g;
 

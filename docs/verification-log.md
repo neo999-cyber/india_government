@@ -20212,3 +20212,47 @@ attempt starts from the conflict rather than from the bundle or the probe.
 
 30 steps green · `reachability` 1,788/1,788 · `listing-marks` 4,167 / 5,914 · `unrecognised-rows` 0
 with a new control · `validate` **0 errors, 113 warnings** from 163.
+
+---
+
+## 2026-08-13 (eighty-fifth entry) — THE CITES-VERSUS-LISTS QUESTION, SETTLED; 225 LINKS LANDED
+
+**The operator authorised the design change. It is made, and the feature I had declined twice now
+works: 225 series-id links across 54 pages.**
+
+### THE RULE, APPLIED IN THE TWO PLACES THAT HAD DISAGREED
+
+> **A row LISTS a record when an anchor's text carries that record's title. Any other link to a
+> record — an id, a phrase inside a sentence — CITES it.**
+
+`unrecognised-rows` had drawn that line for months and counts 941 citations. **`listing-marks` had no
+notion of link text at all** — it took the first record href in a block as the row's subject, which
+is why a caveat citing another series made its own row a listing of that series. Both gates now share
+one `linkText` from `lib/listing-shapes.mjs`, and the same distinction governs the `<tbody>` unit
+test.
+
+### THE MEASUREMENT CAUGHT MY OWN FIX WEAKENING THE GATE
+
+The first form tested `linkText === title`. Correct for a table row, where the anchor wraps the title
+alone. **Wrong for a grid card, which wraps the WHOLE CARD in one anchor**, so its text is the id,
+the tier, the title and the caveat together.
+
+**Rows checked fell 4,167 → 3,041 — 1,126 real listings silently dropped — and the gate still
+reported OK.** That is the exact failure mode a change like this is most likely to have, and the only
+reason it was caught is that the baseline was recorded before the edit and compared after.
+
+`includes` rather than `===` restored them: **4,166 / 5,913 — one row and one mark below baseline,
+and that one is the caveat row that was never a listing.** A citation still fails the test, because a
+citation links by id and an id does not contain the title.
+
+### THREE ATTEMPTS, AND WHAT CHANGED WAS NOT EFFORT
+
+The first two moved the disagreement between the linkifier and the listing model from one place to
+another — five interactions, each patch revealing the next. **The third asked what a row IS.** I
+called this cheap twice; it was a design question wearing a bug's clothes, and the two gate fixes it
+needed were both correct independently.
+
+### Gate line
+
+30 steps green with the feature ON · `listing-marks` **4,166 / 5,913** · `reachability` 1,788/1,788 ·
+`unrecognised-rows` 0, **941 citations** · `link-check` 59,205 across 754, 0 dead · 17 e2e · lint 0/0.
