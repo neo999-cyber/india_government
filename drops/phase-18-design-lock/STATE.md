@@ -1079,6 +1079,23 @@ it**: three Bills were introduced in Lok Sabha on **16 April 2026**, two of them
   objective is **operationalising women's reservation**, with delimitation as the vehicle.
 - **Bill No. 108 of 2026**, the Delimitation Bill.
 
+**THREE ATTEMPTS MADE 2026-08-13, THE THIRD ADDING A T1 AND STILL NOT THE OUTCOME.** Gained: a PIB
+release dated **17 APR 2026** establishing that the Lok Sabha debate happened, on that date, on all
+three Bills together, with the Home Minister replying. It carries no outcome and would not — a
+government release does not publish a defeat.
+
+**Every remaining route was tried with client and resolver varied:** `eparlib.sansad.in`, where the
+Bulletins live, **resolves and returns HTTP 000 plain and pinned**; `sansad.in`'s debate transcript is
+a JS shell with 0 characters of visible text; `eparlib.nic.in`, `loksabhadocs.nic.in` and
+`loksabha.nic.in` do not resolve; the archive returns 498. **The division is not reachable from this
+environment**, and the hosts are now recorded in CLAUDE.md so the next run does not re-derive them.
+
+**AND IT COULD NOT BE WRITTEN EVEN ON T4, WHICH IS THE DECISIVE POINT.** `too-early` asserts the
+outcome is not yet known; **the outcome IS known** and I cannot source it at T1. That value would be
+false against the accounts. `failed` would rest a scored verdict about a constitutional amendment on
+accounts alone. **There is no admissible value**, so the record waits for the document rather than
+being written around it.
+
 **OWED: exactly one document.** A think-tank tracker states the 131st Amendment Bill was
 **negatived on 17 April 2026**, the day after introduction. **That is an account, and an account is
 T4.** The primary was sought and not retrieved: `sansad.in` serves a JavaScript shell with an empty

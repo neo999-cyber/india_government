@@ -141,6 +141,43 @@ scores something far smaller than the defeat of a constitutional amendment.
 1. the division on the Constitution (131st Amendment) Bill, and
 2. the withdrawal of the Delimitation Bill.
 
+## 3c. THIRD ATTEMPT, 2026-08-13 — ONE MORE T1 GAINED, THE OUTCOME STILL NOT REACHABLE
+
+**Gained, and it is a real gain:** a PIB release dated **17 APR 2026** — *"Union Home Minister … 
+replies in Lok Sabha to the discussion on the Delimitation Bill, 2026; the Constitution (131st
+Amendment) Bill, 2026; and the Union Territories Laws (Amendment) Bill, 2026"*. **A government
+primary establishing that the debate happened, on that date, on all three Bills together.**
+
+**It carries no outcome, and would not.** Searched in full: no *negatived*, no division, no *Ayes*, no
+withdrawal. A government release does not publish a defeat, and its absence there is not evidence of
+anything.
+
+**Every remaining route to the division was tried, resolver and client varied per M1:**
+
+| route | result |
+|---|---|
+| `eparlib.sansad.in` — the Digital Library, where the Bulletins live | **resolves to 164.100.166.186 and returns HTTP 000, plain AND pinned.** Genuinely unreachable from here, not DNS |
+| `sansad.in/ls/debates/view-debate?...` — the official transcript | **JS shell: 5,860 bytes, 0 characters of visible text.** Rule 3 — not a retrieval |
+| `sansad.in/ls/legislation/bills` | JS shell, empty table, no data endpoint in any of its 8 bundles |
+| `eparlib.nic.in`, `loksabhadocs.nic.in`, `loksabha.nic.in` | do not resolve |
+| `egazette.gov.in` | up — **but a negatived Bill is never gazetted** |
+| `web.archive.org` | HTTP 498 |
+
+**Three attempts, three different approaches. The division is not reachable from this environment.**
+
+## 3d. AND IT COULD NOT BE WRITTEN EVEN IF I ACCEPTED T4
+
+This is the decisive point, and it is not about sourcing etiquette.
+
+**The assessment would be wrong.** `too-early` asserts that the outcome is not yet known. **The
+outcome IS known** — multiple independent accounts say the Bill was negatived on 17 April 2026 — and
+I simply cannot source it at T1. Writing `too-early` would publish a false assessment while the
+sources say otherwise; writing `failed` would rest a scored verdict about a constitutional amendment
+on accounts alone.
+
+**There is no admissible value.** That is why the record waits for one document rather than being
+written around it.
+
 ## 4. WHAT A RESEARCH PASS NEEDS TO DO — and it is now one step, not a survey
 
 **Retrieve the Lok Sabha record of 17 April 2026.** Bulletin Part I, the day's Revised List of

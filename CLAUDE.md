@@ -110,9 +110,13 @@ re-derived: `mod.gov.in` and `ddpmod.gov.in` resolve and refuse 443; `pca-cpa.or
 Cloudflare-gated; `mea.gov.in` serves a JS shell; `federalregister.gov` CAPTCHAs full text while its
 API works. **`legislative.gov.in` refuses one CLIENT and not the request** — 403 to the WebFetch
 user-agent, 200 to `curl` with a browser one, established 2026-08-13 by retesting from a second
-client. **`sansad.in` serves a JavaScript shell** for its bill list: HTTP 200, an empty table, and
-the page's own instruction to use the Gazette for the authentic version. `loksabha.nic.in` does not
-resolve at all. Resolver pins: `ppac.gov.in` 164.100.198.160, `mea.gov.in` 13.224.236.14,
+client. **`sansad.in` serves a JavaScript shell** for its bill list AND its debate transcripts: HTTP 200,
+an empty table, 0 characters of visible text, and no data endpoint in any of its bundles.
+**`eparlib.sansad.in` — the Parliament Digital Library, where the Bulletins live — resolves to
+164.100.166.186 and returns HTTP 000 plain AND pinned**, so it is unreachable rather than
+misresolved. `loksabha.nic.in`, `eparlib.nic.in` and `loksabhadocs.nic.in` do not resolve at all.
+**`www.pib.gov.in` refuses the WebFetch client with 403 and serves 200 to curl**, like
+`legislative.gov.in`. All established 2026-08-13 by retesting with the client and resolver varied. Resolver pins: `ppac.gov.in` 164.100.198.160, `mea.gov.in` 13.224.236.14,
 `www.pib.gov.in` 94.202.207.57. `[R-66976a]`
 
 **M2 — a write is verified by diffing `/data`, never by the writer's own count.** Declare the
