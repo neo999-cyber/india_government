@@ -1980,17 +1980,28 @@ tbody > tr:has(+ .caveat-row) > td {
   color: var(--ink);
 }
 
+/* THE HAIRLINES ARE DRAWN BY THE CARDS, NOT BY THE CONTAINER — and that is a bug fix.
+ *
+ * This grid used to paint `--rule-soft` on the CONTAINER and let it show through 1px gaps, with
+ * each card painting `--bg` over its own cell. It gives the right hairlines and it has one failure:
+ * **a cell with no card in it has nothing painting over it, so the whole cell renders in the rule
+ * colour** — a solid grey rectangle where a card would be. Five cards in three columns on the
+ * homepage, fourteen in three columns on /overview/: both leave one, and at 3-up both showed it.
+ *
+ * Outlining each card instead draws the same 1px lines — adjacent cards meet inside the shared gap
+ * — and an empty cell now simply shows the page. `outline` rather than `border` because it does not
+ * take part in layout, so no track width changes. */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
   gap: 1px;
-  background: var(--rule-soft);
-  border: 1px solid var(--rule-soft);
+  background: var(--bg);
   margin-bottom: 1rem;
 }
 
 .card {
   background: var(--bg);
+  outline: 1px solid var(--rule-soft);
   padding: 0.9rem 1rem 1rem;
   display: flex;
   flex-direction: column;
