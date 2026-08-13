@@ -216,6 +216,14 @@ code {
   flex-wrap: wrap;
   gap: 0.5rem 1.25rem;
 }
+/* The footer's own links sit directly in the flex row, outside `.foot-dir`, and measured 18px.
+   Same finding as `.foot-dir a`, same fix: 24px is WCAG 2.5.8's minimum. */
+.foot > a {
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+}
+
 
 /* --- typography ---------------------------------------------------------- */
 
@@ -2621,6 +2629,11 @@ tbody > tr:has(+ .caveat-row) > td {
   font-size: 0.875rem;
   color: var(--ink-2);
   text-decoration: none;
+  /* 24px is WCAG 2.5.8's minimum and these measured 23. Found by the e2e suite; one pixel,
+     and the kind that only a rendered measurement ever finds. */
+  min-height: 24px;
+  display: flex;
+  align-items: center;
 }
 
 .foot-dir a:hover {
@@ -4526,4 +4539,23 @@ details.more > summary {
   min-height: 44px;
   display: flex;
   align-items: center;
+}
+
+/* --- `hidden` MUST ACTUALLY HIDE ------------------------------------------
+   Found by the e2e suite on its first run, live on /search/.
+
+   `ListingFacets` filters by setting `row.hidden = true`. The browser's own
+   stylesheet says `[hidden] { display: none }` — but an AUTHOR rule beats a
+   user-agent rule whatever its specificity, so `.scard { display: flex }` won
+   and 396 of 619 filtered-out cards stayed on screen while the readout said
+   "Showing 223 of 619". The filter counted correctly and hid nothing.
+
+   Only /search/ was affected: /series/, /ledger/ and /provenance/ filter table
+   rows, which carry no author `display` rule — measured, all three at 0 still
+   painted. This is declared globally anyway, because the next listing built
+   with a styled row would reintroduce it silently. `!important` is correct
+   here and is not a shortcut: `hidden` is a statement that the element is not
+   relevant, and no layout rule should be able to overrule it. */
+[hidden] {
+  display: none !important;
 }

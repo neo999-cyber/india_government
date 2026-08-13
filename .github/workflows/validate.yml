@@ -40,6 +40,19 @@ jobs:
       # run this, so the gate keeps its skip for the deploy; CI has the history and must prove it.
       - run: node tools/quotation-identity.mjs --require-history
 
+      # END-TO-END, AND DELIBERATELY NOT PART OF `npm run build`.
+      #
+      # These four properties need a browser with layout: a count that updates when a facet is
+      # clicked, a rendered target size, keyboard reach into a scrolling region, and horizontal
+      # overflow at 375px. `tools/interface-invariants.mjs` states in its own header that it cannot
+      # bind them, and this is what does.
+      #
+      # It is not in the build chain because the build runs on Vercel, which has no browser
+      # binaries — the same reason `tools/deploy-check.mjs` stays out. Here the browser caches
+      # between runs. It runs AFTER the build because it serves `out/`.
+      - run: npx playwright install --with-deps chromium
+      - run: npm run e2e
+
       # A BUILD THAT REWRITES A TRACKED FILE AND LEAVES IT UNCOMMITTED IS A SILENT DRIFT.
       # Nothing previously looked. This is not a hypothetical: the generated-documentation stamp is
       # derived from git history, so a clone without that history produces different bytes — which
