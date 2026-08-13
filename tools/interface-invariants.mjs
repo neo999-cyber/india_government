@@ -100,7 +100,7 @@ function hasOverviewBody(html) {
 const INDEX_ROUTES = [
   'overview', 'domains', 'questions', 'stories', 'search', 'series', 'ledger', 'provenance',
   'contested', 'unmeasured', 'exposure', 'lenses', 'terms', 'peers', 'years', 'publishers',
-  'method', 'derivations', 'corrections', 'data', 'counterfactual',
+  'method', 'derivations', 'corrections', 'data', 'counterfactual', 'directory',
 ];
 function leadClass(html) {
   const m = html.match(/<h1\b([^>]*)>/);

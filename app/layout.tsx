@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { PrimaryNav } from '@/components/PrimaryNav';
-import { navLabel } from '@/lib/routes';
+// `navLabel` moved with `DIRECTORY`: the per-item labels are resolved where the list is declared.
+import { DIRECTORY } from '@/lib/routes';
 import Link from 'next/link';
 import { Spectral, IBM_Plex_Sans, IBM_Plex_Mono } from 'next/font/google';
 import { series } from '@/lib/data';
@@ -189,51 +190,7 @@ export const metadata: Metadata = {
  * `about the record`,** where the other statements about how the instrument was built live. The
  * route does not move.
  */
-const GROUPS: { label: string; items: { href: string; label: string }[] }[] = [
-  {
-    label: 'ways in',
-    items: [
-      { href: '/domains/', label: navLabel('/domains/') },
-      // `years` sits beside `terms` because both are ways INTO the record rather than layers of it.
-      { href: '/years/', label: navLabel('/years/') }, // was: years
-      { href: '/lenses/', label: navLabel('/lenses/') }, // was: lenses
-      { href: '/terms/', label: navLabel('/terms/') }, // was: terms — ambiguous against a glossary
-      { href: '/peers/', label: navLabel('/peers/') }, // was: peers
-    ],
-  },
-  {
-    label: 'the records',
-    items: [
-      // THE COMMENT THAT WAS HERE SAID: *"was: series — the prose pass renamed this everywhere but
-      // here"*. That was false. The prose pass renamed the NAV and stopped: `<title>` still said
-      // *Series*, the h1 said *Indicator series* and the breadcrumb said *series*, so one
-      // destination carried four names. The comment recorded the sweep as done, which is how it
-      // survived. Labels now come from `lib/routes.ts` and no surface holds its own copy.
-      { href: '/series/', label: navLabel('/series/') },
-      { href: '/ledger/', label: navLabel('/ledger/') }, // was: ledger
-      { href: '/provenance/', label: navLabel('/provenance/') }, // was: disputes
-      { href: '/contested/', label: navLabel('/contested/') }, // was: contested pairs — and it holds no pairs
-    ],
-  },
-  {
-    label: 'what is missing',
-    items: [
-      { href: '/unmeasured/', label: navLabel('/unmeasured/') }, // was: unmeasured — a field name
-      { href: '/exposure/', label: navLabel('/exposure/') }, // was: exposure
-      { href: '/method/', label: navLabel('/method/') }, // was: method
-    ],
-  },
-  {
-    label: 'about the record',
-    items: [
-      { href: '/derivations/', label: navLabel('/derivations/') }, // was: derivations
-      { href: '/publishers/', label: navLabel('/publishers/') }, // was: publishers
-      { href: '/corrections/', label: navLabel('/corrections/') }, // was: corrections
-      { href: '/counterfactual/', label: navLabel('/counterfactual/') }, // was: counterfactual, and was under `limits`
-      { href: '/data/', label: navLabel('/data/') }, // was: data
-    ],
-  },
-];
+// `GROUPS` moved to `lib/routes.ts` as `DIRECTORY` so `/directory/` can render the same list.
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -287,12 +244,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   against the register the palette and the type protect; at 375 px it collapses to a
                   hamburger, which is the footer with extra steps.
 
-                  The panel renders `GROUPS` — the same array the directory renders. One list, two
+                  The panel renders `DIRECTORY` — the same array `/directory/` renders. One list, two
                   places; a second copy would drift the first time a surface is added. */}
+              {/* AT NARROW WIDTHS THIS LINK REPLACES THE PANEL, and the swap is CSS only — see
+                  `app/directory/page.tsx` for why the panel could not simply be made a modal.
+                  Both render `DIRECTORY`; neither holds its own copy of the list. */}
+              <Link className="allpages-link" href="/directory/">
+                All pages
+              </Link>
               <details className="allpages">
                 <summary aria-label="All pages">All pages</summary>
                 <div className="allpages-panel">
-                  {GROUPS.map((g) => (
+                  {DIRECTORY.map((g) => (
                     <div key={g.label} className="allpages-group">
                       <span className="allpages-label">{g.label}</span>
                       {g.items.map((item) => (
@@ -311,7 +274,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               a site map rather than the place they meet the site. Every route that was in the
               masthead is here; none moved, none is behind a disclosure. */}
           <nav className="foot-dir" aria-label="Directory">
-            {GROUPS.map((g) => (
+            {DIRECTORY.map((g) => (
               <div key={g.label} className="foot-dir-group">
                 <span className="foot-dir-label">{g.label}</span>
                 {g.items.map((item) => (

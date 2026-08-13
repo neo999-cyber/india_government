@@ -72,6 +72,7 @@ export const ROUTES: Record<string, { label: string; nav?: string }> = {
   '/publishers/': { label: 'Who published it', nav: 'who published it' },
   '/corrections/': { label: 'Corrections', nav: 'what it has changed its mind about' },
   '/data/': { label: 'The data', nav: 'the data' },
+  '/directory/': { label: 'All pages', nav: 'all pages' },
   '/counterfactual/': { label: 'Counterfactual', nav: 'counterfactual' },
 };
 
@@ -98,3 +99,59 @@ export function crumbLabel(href: string): string {
   const l = routeLabel(href);
   return l.charAt(0).toLowerCase() + l.slice(1);
 }
+
+/**
+ * THE DIRECTORY — every destination, grouped, with the reader-facing gloss for each.
+ *
+ * **Moved here from `app/layout.tsx` on 2026-08-13 so that two surfaces can render one list.** The
+ * masthead disclosure renders it; so does `/directory/`. A second copy would drift the first time a
+ * destination is added, which is the same reasoning that produced `ROUTES` above.
+ *
+ * Group labels are authored; the per-item labels come from `navLabel`, so a rename still happens in
+ * exactly one place.
+ */
+export const DIRECTORY: { label: string; items: { href: string; label: string }[] }[] = [
+  {
+    label: 'ways in',
+    items: [
+      { href: '/domains/', label: navLabel('/domains/') },
+      // `years` sits beside `terms` because both are ways INTO the record rather than layers of it.
+      { href: '/years/', label: navLabel('/years/') }, // was: years
+      { href: '/lenses/', label: navLabel('/lenses/') }, // was: lenses
+      { href: '/terms/', label: navLabel('/terms/') }, // was: terms — ambiguous against a glossary
+      { href: '/peers/', label: navLabel('/peers/') }, // was: peers
+    ],
+  },
+  {
+    label: 'the records',
+    items: [
+      // THE COMMENT THAT WAS HERE SAID: *"was: series — the prose pass renamed this everywhere but
+      // here"*. That was false. The prose pass renamed the NAV and stopped: `<title>` still said
+      // *Series*, the h1 said *Indicator series* and the breadcrumb said *series*, so one
+      // destination carried four names. The comment recorded the sweep as done, which is how it
+      // survived. Labels now come from `lib/routes.ts` and no surface holds its own copy.
+      { href: '/series/', label: navLabel('/series/') },
+      { href: '/ledger/', label: navLabel('/ledger/') }, // was: ledger
+      { href: '/provenance/', label: navLabel('/provenance/') }, // was: disputes
+      { href: '/contested/', label: navLabel('/contested/') }, // was: contested pairs — and it holds no pairs
+    ],
+  },
+  {
+    label: 'what is missing',
+    items: [
+      { href: '/unmeasured/', label: navLabel('/unmeasured/') }, // was: unmeasured — a field name
+      { href: '/exposure/', label: navLabel('/exposure/') }, // was: exposure
+      { href: '/method/', label: navLabel('/method/') }, // was: method
+    ],
+  },
+  {
+    label: 'about the record',
+    items: [
+      { href: '/derivations/', label: navLabel('/derivations/') }, // was: derivations
+      { href: '/publishers/', label: navLabel('/publishers/') }, // was: publishers
+      { href: '/corrections/', label: navLabel('/corrections/') }, // was: corrections
+      { href: '/counterfactual/', label: navLabel('/counterfactual/') }, // was: counterfactual, and was under `limits`
+      { href: '/data/', label: navLabel('/data/') }, // was: data
+    ],
+  },
+];
