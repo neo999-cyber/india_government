@@ -1,12 +1,25 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { STORIES, STORY_CRITERION, signatureFor } from '@/lib/stories';
 
 export const metadata: Metadata = { title: 'Stories' };
 
 /**
- * The stories index. Deliberately short: §2c says scroll-driven narrative is for the few subjects
- * where sequence explains something, not the default page structure, so this list should stay
- * small and each entry should be able to say why it earned the form.
+ * The stories index — now rendered from `lib/stories.ts` rather than hand-listed, and now printing
+ * its criterion.
+ *
+ * ============================ WHY A CRITERION, AND WHY HERE ===================================
+ *
+ * **Every other selection on this site prints one.** The domain lead prints *chosen for the longest
+ * unbroken run in this topic, not for importance*; the search page prints what its sort actually is,
+ * and has no *relevance* order because that name would teach a reader something false. A stories
+ * index is a selection of four subjects out of the whole corpus, and **without a stated criterion a
+ * reader is entitled to read the selection as an argument** — that these four are what matters about
+ * the last decade. With four subjects that is a live risk and it grows with every one added.
+ *
+ * The criterion is computable, carries no merit claim, and **each card names the pair or dispute
+ * that qualifies it**, recomputed from `/data` by `signatureFor` rather than restated. §2c's rule
+ * still governs whether a subject gets the scroll form: sequence has to do work.
  */
 export default function StoriesIndex() {
   return (
@@ -20,39 +33,37 @@ export default function StoriesIndex() {
         here is also in the records; these read it in sequence.
       </p>
 
-      <div className="grid">
-        <Link href="/stories/can-indian-children-read/">
-          <span className="label">Education · measurement dispute</span>
-          <span className="grid-title">Can Indian children read?</span>
-          <span className="grid-meta">
-            Two national instruments, one question, and answers that point different ways
-          </span>
-        </Link>
-        <Link href="/stories/did-jobs-grow/">
-          <span className="label">Employment · measurement dispute</span>
-          <span className="grid-title">Did jobs grow after 2014?</span>
-          <span className="grid-meta">
-            Two surveys of the same quantity that disagree about the direction, and an official fall
-            made of something other than jobs
-          </span>
-        </Link>
-        <Link href="/stories/who-counts-the-dead/">
-          <span className="label">Kashmir · who publishes</span>
-          <span className="grid-title">Who counts the dead in Kashmir?</span>
-          <span className="grid-meta">
-            Twenty-seven of thirty indicators are published by the state; the three that are not all
-            count deaths, and they do not sit where you would expect
-          </span>
-        </Link>
-        <Link href="/stories/how-renewable/">
-          <span className="label">Environment · one publisher, four answers</span>
-          <span className="grid-title">How much of India&rsquo;s electricity is renewable?</span>
-          <span className="grid-meta">
-            Four official figures for the same year, all correct, from 16.88 per cent to 53.21 — and
-            coal production nearly doubled underneath them
-          </span>
-        </Link>
+      {/* THE CRITERION COVERS WHICH FOUR; IT DOES NOT COVER THE ORDER, and rule 9 binds both.
+          The cards come out in `STORIES` order, which is the order they were written — a fact, not
+          a judgement — and a reader who is not told that is entitled to read the first as the most
+          important. Stated rather than left to be inferred, for the same reason the criterion is
+          printed at all. */}
+      <div className="qcrit">
+        <span className="label">How these four were chosen</span>
+        <p>{STORY_CRITERION}</p>
+        <p className="qcrit-order">
+          They are listed in the order they were written, which is a fact about this site rather
+          than a judgement about the subjects. Nothing here is ranked.
+        </p>
       </div>
+
+      <div className="grid">
+        {STORIES.map((s) => (
+          <Link key={s.slug} href={`/stories/${s.slug}/`}>
+            <span className="label">
+              {s.topic} · {signatureFor(s).map((x) => x.id).join(', ')}
+            </span>
+            <span className="grid-title">{s.title}</span>
+            <span className="grid-meta">{s.card}</span>
+          </Link>
+        ))}
+      </div>
+
+      <p className="prose-note">
+        Each story ends with the records it rests on, and{' '}
+        <strong>each of those records links back to it</strong> — the route runs both ways, which
+        until 13 August 2026 it did not: every story had exactly one inbound link, from this page.
+      </p>
     </>
   );
 }

@@ -10,6 +10,7 @@ import {
 } from '@/lib/data';
 import { DOMAIN_LABELS, LENS_LABELS, TERM_LABELS } from '@/lib/format';
 import { hasYearPage } from '@/lib/years';
+import { storiesRestingOn } from '@/lib/stories';
 import type { LedgerRecord, Series } from '@/lib/types';
 
 /**
@@ -55,6 +56,22 @@ export type Step = {
 
 export function stepsForSeries(s: Series): Step[] {
   const out: Step[] = [];
+  /**
+   * THE RETURN ROUTE, AND IT IS THE FIRST STEP BECAUSE IT WAS THE MISSING ONE.
+   *
+   * Measured 2026-08-13: every story had exactly one inbound link, from `/stories/`, and no record
+   * or series page pointed at one. A story is the surface that gives a reader a reason to open a
+   * record, and the traffic ran one way. `rests` is a declared relation like any other here, so it
+   * gets a step with its reason named.
+   */
+  for (const st of storiesRestingOn(s.id)) {
+    out.push({
+      href: `/stories/${st.slug}/`,
+      label: st.title,
+      reason: 'a story on this site rests on this record',
+    });
+  }
+
 
   // 1. THE COUNTERPART. The reader review's exact ask: the other instrument, named.
   for (const p of pairsWithSeriesAsSide(s.id)) {
@@ -127,6 +144,22 @@ export function stepsForSeries(s: Series): Step[] {
  */
 export function stepsForLedger(l: LedgerRecord): Step[] {
   const out: Step[] = [];
+  /**
+   * THE RETURN ROUTE, AND IT IS THE FIRST STEP BECAUSE IT WAS THE MISSING ONE.
+   *
+   * Measured 2026-08-13: every story had exactly one inbound link, from `/stories/`, and no record
+   * or series page pointed at one. A story is the surface that gives a reader a reason to open a
+   * record, and the traffic ran one way. `rests` is a declared relation like any other here, so it
+   * gets a step with its reason named.
+   */
+  for (const st of storiesRestingOn(l.id)) {
+    out.push({
+      href: `/stories/${st.slug}/`,
+      label: st.title,
+      reason: 'a story on this site rests on this record',
+    });
+  }
+
   for (const d of l.domains ?? []) {
     out.push({
       href: `/domains/${d}/records/`,

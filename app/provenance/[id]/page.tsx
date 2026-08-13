@@ -14,6 +14,7 @@ import { lastTouched } from '@/lib/history';
 import { RecordHistory } from '@/components/RecordHistory';
 import { ProvenanceLd } from '@/components/StructuredData';
 import { roleInProvenance } from '@/lib/rules';
+import { storiesRestingOn } from '@/lib/stories';
 import { RecordMarks, SourceList } from '@/components/marks';
 import { PairSection } from '@/components/PairSection';
 
@@ -216,6 +217,26 @@ export default async function ProvenanceDetail({ params }: Props) {
           {hostedPairs.map((pair) => (
             <PairSection key={pair.id} pair={pair} />
           ))}
+        </>
+      ) : null}
+
+      {/* THE RETURN ROUTE, in the one place that has no next-steps block. `stepsForSeries` and
+          `stepsForLedger` carry it for the other two layers; a provenance page has never had a
+          next-steps surface, and 11 of the 29 records the four stories rest on are disputes. This
+          is the smallest thing that closes the gap rather than a new section for its own sake. */}
+      {storiesRestingOn(p.id).length > 0 ? (
+        <>
+          <h2>Read in a story</h2>
+          <ul className="nsteps">
+            {storiesRestingOn(p.id).map((st) => (
+              <li key={st.slug}>
+                <Link className="nstep-to" href={`/stories/${st.slug}/`}>
+                  {st.title}
+                </Link>
+                <span className="nstep-why"> — a story on this site rests on this dispute</span>
+              </li>
+            ))}
+          </ul>
         </>
       ) : null}
 

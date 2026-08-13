@@ -4257,3 +4257,4 @@ details.more > summary {
 .unans-fill { display: block; margin-top: 0.4rem; font-size: 0.85rem; color: var(--ink-dim); }
 .qcard-extra { border-top-width: 2px; }
 .unans-recs { list-style: none; margin: 0; padding: 0; }
+.qcrit-order { margin: 0.5rem 0 0 !important; font-size: 0.85rem; color: var(--ink-dim); }

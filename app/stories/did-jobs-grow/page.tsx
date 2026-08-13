@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import { getLedger, getProvenance, getSeries } from '@/lib/data';
 import { StoryScroller } from '@/components/StoryScroller';
 import { SeriesChart } from '@/components/SeriesChart';
-import { CaveatFlag, RecordMarks } from '@/components/marks';
-import { DIRECTION_OF_BIAS_LABELS } from '@/lib/format';
+import { CaveatFlag } from '@/components/marks';
+import { StorySources } from '@/components/StorySources';
 
 export const metadata: Metadata = {
   title: 'Did jobs grow after 2014?',
@@ -143,10 +143,7 @@ export default function Story() {
   const cmie = getSeries('unemployment-rate-cmie');
   const unpaid = getSeries('unpaid-helper-share');
   const p39 = getProvenance('P-39');
-  const p40 = getProvenance('P-40');
-  const p41 = getProvenance('P-41');
   const l0058 = getLedger('L-0058');
-  const l0059 = getLedger('L-0059');
   const l0064 = getLedger('L-0064');
 
   /**
@@ -290,65 +287,7 @@ export default function Story() {
         </>
       ) : null}
 
-      <h2>Where this comes from</h2>
-      <p className="prose-note">
-        Every claim above is on a record with its sources, its competing accounts and its declared
-        gaps. Nothing here resolves the disagreement, because the corpus does not.
-      </p>
-      <div className="grid">
-        {[p41, p40, p39].filter(Boolean).map((p) => (
-          <Link key={p!.id} href={`/provenance/${p!.id}/`}>
-            <span className="label">{p!.id} · measurement dispute</span>
-            <span className="grid-title">{p!.title}</span>
-            <span className="grid-meta">
-              {DIRECTION_OF_BIAS_LABELS[p!.directionOfBias] ?? p!.directionOfBias}
-            </span>
-          </Link>
-        ))}
-        {/* Rule 4b binds a story page: a reader can leave for the record from here, so the marks
-            travel with the link. The reading story learned this from `listing-marks` naming three
-            of its cards before it ever deployed. */}
-        {plfs ? (
-          <Link href="/series/unemployment-rate/">
-            <span className="label">series · tier {plfs.tier}</span>
-            <span className="grid-title">{plfs.title}</span>
-            <span className="grid-meta">the official rate, with its two declared breaks</span>
-            <RecordMarks record={plfs} linkify={false} />
-          </Link>
-        ) : null}
-        {cmie ? (
-          <Link href="/series/unemployment-rate-cmie/">
-            <span className="label">series · tier {cmie.tier}</span>
-            <span className="grid-title">{cmie.title}</span>
-            <span className="grid-meta">the private survey, on the same quantity</span>
-            <RecordMarks record={cmie} linkify={false} />
-          </Link>
-        ) : null}
-        {l0058 ? (
-          <Link href="/ledger/L-0058/">
-            <span className="label">record · the dispute itself</span>
-            <span className="grid-title">{l0058.title}</span>
-            <span className="grid-meta">why neither instrument may be read alone</span>
-            <RecordMarks record={l0058} linkify={false} />
-          </Link>
-        ) : null}
-        {l0059 ? (
-          <Link href="/ledger/L-0059/">
-            <span className="label">record · the composition</span>
-            <span className="grid-title">{l0059.title}</span>
-            <span className="grid-meta">what the falling rate is made of</span>
-            <RecordMarks record={l0059} linkify={false} />
-          </Link>
-        ) : null}
-        {l0064 ? (
-          <Link href="/ledger/L-0064/">
-            <span className="label">record · the missing count</span>
-            <span className="grid-title">{l0064.title}</span>
-            <span className="grid-meta">two quantities nobody collected</span>
-            <RecordMarks record={l0064} linkify={false} />
-          </Link>
-        ) : null}
-      </div>
+      <StorySources slug="did-jobs-grow" />
     </>
   );
 }
