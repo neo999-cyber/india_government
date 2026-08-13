@@ -1085,7 +1085,7 @@ T4.** The primary was sought and not retrieved: `sansad.in` serves a JavaScript 
 bill table (rule 3 — not a retrieval), `loksabha.nic.in` returns HTTP 000 and does not resolve, and
 a negatived Bill is never gazetted so `egazette.gov.in` cannot confirm a defeat.
 
-**The verdict turns on that one fact entirely** — a failed attempt and a pending change are different
+**Retried 2026-08-13 with the variables varied: the outcome is now multiply attested — 298 for, 230 against, threshold 352 — and the companion Delimitation Bill was WITHDRAWN, a second event. Every one of those sources is an account and the best of them is paywalled and does not cite the House record. Independence holds; the tier does not.** **The verdict turns on that one fact entirely** — a failed attempt and a pending change are different
 records with different assessments — and **a verdict resting on a single uncorroborated T4 account is
 what this instrument refuses.** Retrieve the Lok Sabha record of 17 April 2026 and the record is
 writable immediately; everything else is held.
