@@ -1,35 +1,22 @@
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
-import { seriesCard } from '@/lib/share-card';
-import { SeriesLd } from '@/components/StructuredData';
-import {
-  getProvenance,
-  getSeries,
-  ledgerCitingSeries,
-  pairsWithSeriesAsSide,
-  provenanceForSeries,
-  resolvePairSide,
-  series as allSeries,
-} from '@/lib/data';
-import { DIRECTION_OF_BIAS_LABELS, DOMAIN_LABELS, LENS_LABELS, TERM_SHORT } from '@/lib/format';
-import { denominatorBreaksFor, regimeFor, regimeNeighbours, roleInProvenance } from '@/lib/rules';
-import { PairSection, caveatsShownByPair, contestedPairRendersBothSeries, pooledByPair } from '@/components/PairSection';
-import {
-  ADVANCES_SERIES,
-  NPA_AMOUNT_SERIES,
-  WRITE_OFFS_SERIES,
-  hasWriteOffAdjustment,
-} from '@/lib/npa';
-import { SeriesTable } from '@/components/SeriesTable';
-import { SeriesChart } from '@/components/SeriesChart';
-import { SERIES_FINDINGS } from '@/lib/series-copy';
-import { SeriesKeyFigures } from '@/components/SeriesKeyFigures';
-import { NpaView } from '@/components/NpaView';
-import { RegimeOverlap } from '@/components/RegimeOverlap';
-import { Absences, CaveatFlag, DirectionMark, RecordMarks, SourceLine, StatusKey, TierTag } from '@/components/marks';
-import { NextSteps } from '@/components/NextSteps';
-import { citedByOverflow, stepsForSeries } from '@/lib/next-steps';
+import {notFound} from 'next/navigation';
+import type {Metadata} from 'next';
+import {seriesCard} from '@/lib/share-card';
+import {SeriesLd} from '@/components/StructuredData';
+import {getSeries, ledgerCitingSeries, pairsWithSeriesAsSide, provenanceForSeries, resolvePairSide, series as allSeries} from '@/lib/data';
+import {DIRECTION_OF_BIAS_LABELS, DOMAIN_LABELS, LENS_LABELS, TERM_SHORT} from '@/lib/format';
+import {denominatorBreaksFor, regimeFor, regimeNeighbours, roleInProvenance} from '@/lib/rules';
+import {PairSection, caveatsShownByPair, contestedPairRendersBothSeries, pooledByPair} from '@/components/PairSection';
+import {ADVANCES_SERIES, NPA_AMOUNT_SERIES, WRITE_OFFS_SERIES, hasWriteOffAdjustment} from '@/lib/npa';
+import {SeriesTable} from '@/components/SeriesTable';
+import {SeriesChart} from '@/components/SeriesChart';
+import {SERIES_FINDINGS} from '@/lib/series-copy';
+import {SeriesKeyFigures} from '@/components/SeriesKeyFigures';
+import {NpaView} from '@/components/NpaView';
+import {RegimeOverlap} from '@/components/RegimeOverlap';
+import {Absences, CaveatFlag, DirectionMark, RecordMarks, SourceLine, StatusKey, TierTag} from '@/components/marks';
+import {NextSteps} from '@/components/NextSteps';
+import {citedByOverflow, stepsForSeries} from '@/lib/next-steps';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -231,7 +218,7 @@ export default async function SeriesDetail({ params }: Props) {
           writeOffs={getSeries(WRITE_OFFS_SERIES)}
           advances={getSeries(ADVANCES_SERIES)}
           amount={getSeries(NPA_AMOUNT_SERIES)}
-          reported={<SeriesTable series={s} handoff={handoffFor(s.id)} />}
+          reported={<SeriesTable series={s} handoff={handoffFor(s.id)} caption="As reported by the publisher, without the write-off adjustment" />}
         />
       ) : paired ? (
         <PairSection pair={pair} />

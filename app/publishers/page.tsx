@@ -58,7 +58,7 @@ export default function Publishers() {
       <p className="crumb">
         <Link href="/">instrument</Link> / who published it
       </p>
-      <h1>Who published it</h1>
+      <h1 className="page-lead">Who published it</h1>
       <p className="lede">
         The bodies behind the citations, resolved across renames and abbreviations. This exists
         because <strong>whether a source is independent of what it establishes is a question about
@@ -98,11 +98,11 @@ export default function Publishers() {
         <table>
           <thead>
             <tr>
-              <th>Body</th>
-              <th className="num">Cited</th>
-              <th>Kind</th>
-              <th>Tiers of its documents</th>
-              <th>Grouped because</th>
+              <th scope="col">Body</th>
+              <th scope="col" className="num">Cited</th>
+              <th scope="col">Kind</th>
+              <th scope="col">Tiers of its documents</th>
+              <th scope="col">Grouped because</th>
             </tr>
           </thead>
           <tbody>
@@ -179,8 +179,8 @@ export default function Publishers() {
           <table>
             <thead>
               <tr>
-                <th>Cited as</th>
-                <th className="num">Times</th>
+                <th scope="col">Cited as</th>
+                <th scope="col" className="num">Times</th>
               </tr>
             </thead>
             <tbody>

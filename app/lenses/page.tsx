@@ -26,7 +26,7 @@ export default function LensesIndex() {
       <p className="crumb">
         <Link href="/">instrument</Link> / lenses
       </p>
-      <h1>Lenses</h1>
+      <h1 className="page-lead">Lenses</h1>
       <p className="lede">
         {/* REWRITTEN 2026-08-12 on a reader's review. It read: *"A lens is not a subject.
             `domain` says what a record is about; `lenses[]` says what it also bears on. Every record

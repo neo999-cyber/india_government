@@ -45,8 +45,20 @@ type Marker =
 export function SeriesTable({
   series,
   handoff,
+  caption,
 }: {
   series: Series;
+  /**
+   * A NAME FOR THE TABLE, USED ONLY WHERE THE PRECEDING HEADING DOES NOT IDENTIFY IT.
+   *
+   * An external audit reported 531 of 532 tables carrying no caption. Measured against the
+   * structure rather than a character window, **510 of the 532 ARE uniquely identified by their
+   * nearest heading** and captioning them would add 510 restatements of a heading a screen reader
+   * has just read. **22 are not**, and they are two shapes: the NPA pages, where a reported and a
+   * write-off-adjusted table sit under one h1, and two topic records tabs where a `Pairs` heading
+   * covers two tables. Those get a caption; nothing else does.
+   */
+  caption?: string;
   /** Titles of the regimes either side, when this series is one of several bases. */
   handoff?: { previous?: { id: string; title: string }; next?: { id: string; title: string } };
 }) {
@@ -158,19 +170,20 @@ export function SeriesTable({
   return (
     <div className="table-wrap" tabIndex={0}>
       <table>
+        {caption ? <caption className="tbl-caption">{caption}</caption> : null}
         <thead>
           <tr>
-            <th>{series.calendar === 'FY' ? 'Fiscal year' : 'Year'}</th>
+            <th scope="col">{series.calendar === 'FY' ? 'Fiscal year' : 'Year'}</th>
             {isPanel ? (
               countries.map((c) => (
-                <th key={c} className="num">
+                <th scope="col" key={c} className="num">
                   {COUNTRY_LABELS[c as Country]}
                 </th>
               ))
             ) : (
               <>
-                <th className="num">{series.unit}</th>
-                <th>Note</th>
+                <th scope="col" className="num">{series.unit}</th>
+                <th scope="col">Note</th>
               </>
             )}
           </tr>

@@ -75,7 +75,7 @@ export default function Questions() {
       <p className="crumb">
         <Link href="/">instrument</Link> / questions
       </p>
-      <h1>Questions</h1>
+      <h1 className="page-lead">Questions</h1>
       <p className="lede">
         Eight questions a reader arrives with. Each is a filter over records the instrument already
         holds — <strong>not a new score, and not a ranking of anything against anything.</strong>{' '}

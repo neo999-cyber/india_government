@@ -37,7 +37,7 @@ export default function UnmeasuredIndex() {
       <p className="crumb">
         <Link prefetch={false} href="/">instrument</Link> / what is not measured
       </p>
-      <h1>What is not measured</h1>
+      <h1 className="page-lead">What is not measured</h1>
       <p className="lede">
         Dimensions the instrument should be able to show and cannot, declared on the records
         that need them. These are not sparse periods — a blank cell means unreported this
@@ -118,10 +118,10 @@ export default function UnmeasuredIndex() {
         <table>
           <thead>
             <tr>
-              <th>Record</th>
-              <th>Kind</th>
-              <th>Not measured</th>
-              <th>Why</th>
+              <th scope="col">Record</th>
+              <th scope="col">Kind</th>
+              <th scope="col">Not measured</th>
+              <th scope="col">Why</th>
             </tr>
           </thead>
           <tbody>
@@ -167,9 +167,9 @@ export default function UnmeasuredIndex() {
           <table>
             <thead>
               <tr>
-                <th>Would close</th>
-                <th>The absence it closes</th>
-                <th>Record</th>
+                <th scope="col">Would close</th>
+                <th scope="col">The absence it closes</th>
+                <th scope="col">Record</th>
               </tr>
             </thead>
             <tbody>

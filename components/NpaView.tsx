@@ -101,7 +101,7 @@ export function NpaView({
       <div className="npa-panel npa-panel-adjusted">
         {derived ? (
           <>
-            <SeriesTable series={derived} />
+            <SeriesTable series={derived} caption="Write-off adjusted: gross NPAs plus cumulative write-offs, over gross advances" />
             <p className="source-line">
               Adjusted = (gross NPAs + cumulative write-offs) ÷ gross advances (
               <Link href={`/provenance/${WRITE_OFF_DISPUTE}/`}>{WRITE_OFF_DISPUTE}</Link>), all

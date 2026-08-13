@@ -19376,3 +19376,86 @@ the defect.**
 29 steps green. `interface-invariants` OK — 0 leaked pages (was 101), `/search/` 1 live region, 56
 domain tabs across 14 topics clean. Negative controls hold in both directions: the shipped block is
 caught, ordinary prose is not, and neither one nor two `/web/*/` URLs on a page fire it.
+
+---
+
+## 2026-08-13 (seventieth entry) — TABLE SEMANTICS, THE TYPE SCALE, SECURITY HEADERS, AND THE LINT THAT BECAME FOUR COMPILER FLAGS
+
+The five audit items that needed no ruling. Landing-page order closed by the operator: leave as
+authored.
+
+### TABLES — 1,824 OF 1,824 SCOPED, AND 22 CAPTIONS RATHER THAN 532
+
+The audit: *531 of 532 tables carry no caption and 1,813 header cells omit scope.* Both figures were
+right and they need opposite responses.
+
+**`scope`: every header cell, mechanically.** Classified by section before writing — **137 column
+headers, 0 row headers, 0 undetermined.** Now 1,824 of 1,824.
+
+**Captions: 22, not 532, and the difference is a measurement.** *"Where the preceding heading does
+not uniquely identify a table"* is the audit's own condition, so it was measured against the
+STRUCTURE — nearest preceding heading per table, no distance bound. **510 of 532 are uniquely
+identified already**; captioning them would make a screen reader read the same words twice. The 22
+are two shapes: NPA pages where a reported and a write-off-adjusted table share one h1, and two
+topic records tabs where a `Pairs` heading covers two tables.
+
+**THE FIRST MEASUREMENT USED A 1,200-CHARACTER WINDOW AND SAID 255.** A fixed window over
+variable-length markup, which is the rule against bounding a search by a character count — broken
+again, three hours after breaking it on the heading diagnostic. Bounded by the record instead, the
+answer was 22.
+
+**AND THE FIX FOR THE LAST 8 MADE IT WORSE BEFORE IT WAS REVERTED.** Captioning the pair views'
+tables looked right; those views render once per SIDE, so an identical caption landed on both and
+the shared count went **8 → 9** while adding **130 captions to pages that never needed one**.
+Reverted, with the measurement recorded at the call site. **8 of 532 remain**, on four series pages
+where an authored heading repeats — the honest residual, not a completed sweep.
+
+### THE TYPE SCALE — A RULE STATED, BECAUSE THERE WAS NONE
+
+Measured: **21 index routes split 4 / 1 / 16 across three sizes**, and which one a page got was an
+accident of which template had received a class. `/series/` and `/ledger/` rendered at 24px while
+`/domains/` and `/search/` — the same kind of page — rendered at up to 64px.
+
+The rule, now in `app/globals.css` and asserted by `interface-invariants`: **index surfaces take
+`page-lead`** (a destination a reader arrives at and must orient in), stories `story-lead`, the
+landing and overview board `home-lead`, and **record pages keep the bare h1** because they are read
+after arriving rather than arrived at. 16 routes brought into line; **21 of 21 now carry a lead
+class** and the gate states the count.
+
+### SECURITY HEADERS — AND THE ONE DIRECTIVE THAT IS WEAKER THAN IT LOOKS
+
+CSP, `X-Frame-Options: DENY`, `Cross-Origin-Opener-Policy: same-origin` and a `Permissions-Policy`
+denying every feature by name. Documented in `docs/security-headers.md`.
+
+**`script-src` carries `'unsafe-inline'` and that is stated rather than buried.** The landing page
+emits **22 inline `<script>` blocks** — Next's RSC payload pushes — and 20 inline `style` attributes.
+The fix for inline script is a per-response nonce and **a static export has no response to put one
+in.** So this CSP does not stop injected inline script; what it does bind is every external origin
+for script, style, font, image, media and XHR, plus `object-src`, `base-uri`, `form-action` and
+framing. **Measured before writing:** the only external origins in the built HTML are five
+government and archive hosts, every one a link destination in a citation rather than a resource
+load. `Access-Control-Allow-Origin: *` is deliberately kept — `/data/v1/` is a published contract
+meant to be fetched.
+
+### THE LINT THAT COULD NOT BE INSTALLED, AND WHAT REPLACED IT
+
+`eslint-config-next` resolves `@next/eslint-plugin-next@16.2.12`, **which is not published**, so the
+install fails outright. Rather than leave the gap, the compiler checks that overlap with what a lint
+would catch are now on in `tsconfig.json` — `noUnusedLocals`, `noUnusedParameters`,
+`noFallthroughCasesInSwitch`, `noImplicitOverride` — **and they run in `typecheck`, which is already
+in the build and in `npm run commit`.** This is narrower than ESLint and it is enforced everywhere
+rather than when someone remembers.
+
+**It found ten, and one of them was a decision rather than dead code.** `TWO_TRUTHS_REJECTED` is
+documented as *"read and rejected, held so a later pass re-argues rather than rediscovers"*.
+**Exported rather than deleted**, with the reason at the declaration: deleting a record because a
+compiler cannot see a use for it is exactly what the rulebook forbids. The other nine were real —
+seven unused imports, one index whose consumer was withdrawn in 2026-08-08 and documented directly
+beneath it, one local left behind when the span derivation moved to `lib/spans.ts`.
+
+### Gate line
+
+29 steps green. `reachability` 1,787/1,787 · `field-render-audit` 0 invisible · `link-check` 58,254
+across 753, 0 dead · `listing-marks` 4,167 / 5,914 · `rendered-space` 0 · `chart-ticks` 33/7 ·
+**`interface-invariants` 56 tabs / 14 topics / 21 index surfaces** · `unrecognised-rows` 0 ·
+`domain-coverage` 1,137/1,137.

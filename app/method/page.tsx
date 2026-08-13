@@ -42,7 +42,7 @@ export default function MethodPage() {
       <p className="crumb">
         <Link href="/">instrument</Link> / method
       </p>
-      <h1>Method, tiers and what the marks mean</h1>
+      <h1 className="page-lead">Method, tiers and what the marks mean</h1>
 
       <h2 id="limits">What this is, who made it, and what has not been done to it</h2>
       <p>
@@ -230,9 +230,9 @@ export default function MethodPage() {
         <table>
           <thead>
             <tr>
-              <th>Status</th>
-              <th>Meaning</th>
-              <th className="num">Observations</th>
+              <th scope="col">Status</th>
+              <th scope="col">Meaning</th>
+              <th scope="col" className="num">Observations</th>
             </tr>
           </thead>
           <tbody>
@@ -275,12 +275,12 @@ export default function MethodPage() {
         <table>
           <thead>
             <tr>
-              <th>Tier</th>
-              <th>What it is</th>
-              <th className="num">Ledger</th>
-              <th className="num">Provenance</th>
-              <th className="num">Series</th>
-              <th className="num">All</th>
+              <th scope="col">Tier</th>
+              <th scope="col">What it is</th>
+              <th scope="col" className="num">Ledger</th>
+              <th scope="col" className="num">Provenance</th>
+              <th scope="col" className="num">Series</th>
+              <th scope="col" className="num">All</th>
             </tr>
           </thead>
           <tbody>

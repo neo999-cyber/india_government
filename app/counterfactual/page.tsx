@@ -25,7 +25,7 @@ export default function CounterfactualPage() {
       <p className="crumb">
         <Link href="/">instrument</Link> / counterfactual
       </p>
-      <h1>Counterfactual — considered, and declined</h1>
+      <h1 className="page-lead">Counterfactual — considered, and declined</h1>
       <p className="lede">
         This instrument does not compute counterfactuals. That is a decision taken on 6 August 2026,
         not a gap waiting to be filled, and the reasoning is set out here so it can be argued with

@@ -383,9 +383,9 @@ export default async function YearPage({ params }: Props) {
         <table>
           <thead>
             <tr>
-              <th>Record</th>
-              <th>Verdict</th>
-              <th>Areas</th>
+              <th scope="col">Record</th>
+              <th scope="col">Verdict</th>
+              <th scope="col">Areas</th>
             </tr>
           </thead>
           {began.map((r) => (

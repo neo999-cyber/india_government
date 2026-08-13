@@ -31,7 +31,7 @@ export default function LedgerIndex() {
       <p className="crumb">
         <Link prefetch={false} href="/">instrument</Link> / reforms, events and episodes
       </p>
-      <h1>Ledger of reforms, events and episodes</h1>
+      <h1 className="page-lead">Ledger of reforms, events and episodes</h1>
       <p className="lede">
         {ledger.length} records. Each carries its own assessment, its sources with tiers, and —
         where scored — the strongest good-faith case on both sides.
@@ -64,14 +64,14 @@ export default function LedgerIndex() {
         <table id="ledger-table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Date</th>
-              <th>Term</th>
-              <th>Record</th>
-              <th>Type</th>
-              <th>Domains</th>
-              <th>Assessment</th>
-              <th>Conf.</th>
+              <th scope="col">ID</th>
+              <th scope="col">Date</th>
+              <th scope="col">Term</th>
+              <th scope="col">Record</th>
+              <th scope="col">Type</th>
+              <th scope="col">Domains</th>
+              <th scope="col">Assessment</th>
+              <th scope="col">Conf.</th>
             </tr>
           </thead>
             {ordered.map((l) => (

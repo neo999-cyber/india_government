@@ -4406,6 +4406,21 @@ details.more > summary {
    Off-screen until focused, then anchored top-left over the masthead. Not
    `display: none` and not `visibility: hidden`, either of which would take it
    out of the focus order and leave the same defect with tidier markup. */
+/* --- THE TYPE SCALE, STATED 2026-08-13 ------------------------------------
+   An external audit: desktop index h1s reached 64px while series, ledger and
+   method sat at 24px, and no rule explained which was which. Measured: 21 index
+   routes split 4 / 1 / 16 across three sizes. **There was no role rule at all**,
+   only which templates had happened to receive a class.
+
+   The rule, and it is a rule about ROLE rather than about size:
+     .page-lead   INDEX surfaces  — a destination a reader arrives at and must
+                                    orient in. All 21 of them now.
+     .story-lead  STORY pages     — a sequence read from the top.
+     .home-lead   the landing page and the overview board.
+     bare h1      RECORD pages    — read after arriving, not arrived at.
+
+   `interface-invariants` asserts it, so the next template cannot guess. */
+
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -4441,4 +4456,17 @@ details.more > summary {
 .dtab-orient {
   margin: 0.5rem 0 1.25rem;
   max-width: var(--measure);
+}
+
+/* --- Table captions --------------------------------------------------------
+   Used on the 22 tables whose nearest heading covers more than one of them,
+   and on no others: 510 of 532 are already uniquely identified by the heading
+   above them, and captioning those would make a screen reader read the same
+   words twice. Styled as a quiet sub-head, not a title. */
+.tbl-caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 0.8125rem;
+  color: var(--ink-2);
+  padding: 0 0 0.35rem;
 }

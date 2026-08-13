@@ -175,8 +175,15 @@ const TWO_TRUTHS_PAIRS: readonly string[] = [
   'PR-36', 'PR-39', 'PR-40', 'PR-43', 'PR-49', 'PR-53', 'PR-55', 'PR-59', 'PR-60',
 ];
 
-/** Read and rejected, held so a later pass re-argues rather than rediscovers. */
-const TWO_TRUTHS_REJECTED: readonly string[] = ['PR-18', 'PR-52'];
+/**
+ * Read and rejected, held so a later pass re-argues rather than rediscovers.
+ *
+ * **EXPORTED ONLY SO IT SURVIVES `noUnusedLocals`.** Turning that check on in 2026-08-13 flagged
+ * this as dead code, and it is not dead — it is a decision. Deleting a record because a compiler
+ * cannot see a use for it is precisely what the rulebook forbids: a rule with no visible reason is
+ * exactly what a later pass rationalises away.
+ */
+export const TWO_TRUTHS_REJECTED: readonly string[] = ['PR-18', 'PR-52'];
 
 /**
  * The admissible pair for a series, if any. **Lowest pair id wins where a series is a side of two**

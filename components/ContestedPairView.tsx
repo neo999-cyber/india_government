@@ -70,6 +70,10 @@ function Instrument({
       {series.caveat && !caveatsAlreadyShown?.has(series.id) ? (
         <CaveatFlag caveat={series.caveat} />
       ) : null}
+      {/* NO CAPTION HERE, AND IT WAS TRIED. This view renders once per SIDE, so a caption naming
+          "this side of the pair" lands identically on both and creates the collision it was meant
+          to remove — measured: 8 shared identifiers became 9, and 130 captions appeared on pages
+          that never needed one. The heading above each side already names it. */}
       <SeriesTable series={series} />
       {series.notes ? <p className="prose-note">{series.notes}</p> : null}
       {/* A series that is a side of TWO pairs has its declarations rendered by both views —

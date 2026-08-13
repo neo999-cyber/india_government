@@ -27,7 +27,7 @@ export default function StoriesIndex() {
       <p className="crumb">
         <Link href="/">instrument</Link> / stories
       </p>
-      <h1>Stories</h1>
+      <h1 className="page-lead">Stories</h1>
       <p className="lede">
         A few subjects where the order you meet the evidence in changes what it means. Everything
         here is also in the records; these read it in sequence.

@@ -546,17 +546,17 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
             <table>
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Date</th>
-                  <th>Term</th>
-                  <th>Record</th>
-                  <th>Assessment</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Term</th>
+                  <th scope="col">Record</th>
+                  <th scope="col">Assessment</th>
                   {/* view-parity's one defect find: /ledger and /terms carried this column and
                       the two domain-axis tables did not, so the same verdict listed on four
                       surfaces stated its evidential weight on only two. 170 high · 52 medium ·
                       1 low — and the low one especially is a qualification a reader must meet
                       wherever the verdict is met. */}
-                  <th>Conf.</th>
+                  <th scope="col">Conf.</th>
                 </tr>
               </thead>
                 {[...l]
@@ -593,13 +593,13 @@ export async function DomainSurface({ d, tab }: { d: Domain; tab: DomainTab }) {
             has no page of its own: it renders inside the first series that names it, which is
             where the link goes.
           </p>
-          <PairRows items={pairsHere} />
+          <PairRows items={pairsHere} caption="Pairs whose subject is filed under this topic" />
           {pairsLensed.length ? (
             <>
               <p className="prose-note">
                 Under this lens — subject filed elsewhere:
               </p>
-              <PairRows items={pairsLensed} showSubject />
+              <PairRows items={pairsLensed} showSubject caption="Pairs filed under another topic and read under this one as a lens" />
             </>
           ) : null}
         </>
@@ -701,13 +701,13 @@ function SeriesBlock({ items, showSubject }: { items: Series[]; showSubject?: bo
         <table>
           <thead>
             <tr>
-              <th>Series</th>
-              {showSubject ? <th>Subject</th> : null}
-              <th>Unit</th>
-              <th>Cal.</th>
-              <th>Tier</th>
-              <th className="num">Points</th>
-              <th>Breaks</th>
+              <th scope="col">Series</th>
+              {showSubject ? <th scope="col">Subject</th> : null}
+              <th scope="col">Unit</th>
+              <th scope="col">Cal.</th>
+              <th scope="col">Tier</th>
+              <th scope="col" className="num">Points</th>
+              <th scope="col">Breaks</th>
             </tr>
           </thead>
             {items.map((x) => (
@@ -764,16 +764,25 @@ function SeriesBlock({ items, showSubject }: { items: Series[]; showSubject?: bo
  * pair to render anywhere. For those two this row IS the only surface, which is why it prints the
  * framing and the gap reason in full rather than the title alone.
  */
-function PairRows({ items, showSubject }: { items: Pair[]; showSubject?: boolean }) {
+/**
+ * `caption` NAMES THIS TABLE WHERE THE `Pairs` HEADING COVERS TWO OF THEM.
+ *
+ * On federalism and kashmir the records tab renders pairs filed here AND pairs read under the topic
+ * as a lens, both under one h2. Those are the only two topics where the heading identifies two
+ * tables — measured against the structure, 510 of the corpus's 532 tables are uniquely identified
+ * by their nearest heading and are deliberately left uncaptioned.
+ */
+function PairRows({ items, showSubject, caption }: { items: Pair[]; showSubject?: boolean; caption?: string }) {
   return (
     <div className="table-wrap" tabIndex={0}>
       <table>
+        {caption ? <caption className="tbl-caption">{caption}</caption> : null}
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Pair</th>
-            {showSubject ? <th>Subject</th> : null}
-            <th>Kind</th>
+            <th scope="col">ID</th>
+            <th scope="col">Pair</th>
+            {showSubject ? <th scope="col">Subject</th> : null}
+            <th scope="col">Kind</th>
           </tr>
         </thead>
         <tbody>

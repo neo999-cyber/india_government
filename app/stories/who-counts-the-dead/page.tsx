@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
-import { storyCard } from '@/lib/share-card';
-import { storyBySlug } from '@/lib/stories';
-import { getLedger, getProvenance, getSeries } from '@/lib/data';
-import { StoryScroller } from '@/components/StoryScroller';
-import { SeriesChart } from '@/components/SeriesChart';
-import { CaveatFlag } from '@/components/marks';
-import { StorySources } from '@/components/StorySources';
+import type {Metadata} from 'next';
+import {storyCard} from '@/lib/share-card';
+import {storyBySlug} from '@/lib/stories';
+import {getSeries} from '@/lib/data';
+import {StoryScroller} from '@/components/StoryScroller';
+import {SeriesChart} from '@/components/SeriesChart';
+import {CaveatFlag} from '@/components/marks';
+import {StorySources} from '@/components/StorySources';
 
 /**
  * The card comes from `lib/stories.ts` through `storyCard`, not from a literal here. Every

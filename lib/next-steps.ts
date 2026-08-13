@@ -248,7 +248,7 @@ export function stepsForQuestion(slug: string, siblings: { slug: string; questio
   return out;
 }
 
-export function stepsForLens(lens: Lens, domains: Domain[]): Step[] {
+export function stepsForLens(_lens: Lens, domains: Domain[]): Step[] {
   const out: Step[] = [];
   // The topics this lens actually cuts across, which is the fact that makes a lens a lens.
   for (const d of domains.slice(0, 4)) {
