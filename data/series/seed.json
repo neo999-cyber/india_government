@@ -4103,6 +4103,7 @@
  },
  {
   "id": "nh-network",
+  "notes": "This record and nh-network-length carry the same title and the same FY2013-14 value of 91,287 km. This one holds that single observation; the other holds five, running to 146,342 km in FY2025-26, cites P-30 and P-31, and states that roughly 54,004 km of the ~55,000 km increase since April 2014 is reclassification of existing state roads rather than new building. No record in this corpus cites this id. Read nh-network-length for the series. Whether this record should be withdrawn is open in the phase-18 state file and is not settled here.",
   "title": "National highway network length",
   "unit": "km",
   "domain": "infrastructure",

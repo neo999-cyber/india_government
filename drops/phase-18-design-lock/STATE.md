@@ -667,13 +667,27 @@ defects.
 
 ---
 
-## RAISED 2026-08-13, NOT RESOLVED — `nh-network` IS A PHASE-0 SCAFFOLD RECORD STILL ON THE SITE
+## `nh-network` — THE READER-FACING HALF CLOSED 2026-08-13; THE RECORD QUESTION STILL OPEN
 
-**This is research-owned and is deliberately NOT edited by the code session that found it.** The
-narrow source-edit amendment permits a batch to apply a correction it raised only where the evidence
-is a document retrieved in that run; here the evidence is the corpus and its own git history, so the
-amendment does not reach it. What follows is the raise, in full, so a research pass does not have to
-re-derive it.
+**WHAT WAS DONE, AND ON WHOSE AUTHORITY.** The code session raised this and declined to edit
+`/data`, on the ground that the narrow source-edit amendment reaches only corrections whose evidence
+is a document retrieved in that run — and here the evidence is the corpus and its own git history.
+**The operator then directed twice that it be finished.** A `notes` field was added to `nh-network`;
+nothing else in `/data` moved.
+
+**The note asserts nothing about Indian highways.** Every clause is an observation about this
+corpus, checkable from it and falsifiable by it — rule 5d's test applied deliberately, because the
+one thing a code session cannot establish here is which record is right. All nine clauses were
+verified against the corpus after the write: same title, same FY2013-14 value, one observation
+against five, the other's P-30/P-31 and its own 54,004-of-~55,000 figures, and zero records citing
+this id.
+
+**So the reader-facing defect is closed and the record question is not.** Someone landing on
+`/series/nh-network/` is now pointed at the qualified series instead of meeting an unqualified
+figure. **Whether this record should be withdrawn remains a research decision**, and the note says so
+in those words rather than implying it has been made.
+
+What follows is the raise, in full, so a research pass does not have to re-derive it.
 
 ### THE EVIDENCE
 
