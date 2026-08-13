@@ -1,0 +1,29 @@
+{
+  "validate": {
+    "recordsValidated": 223
+  },
+  "distinct-titles": {
+    "recordsScanned": 619
+  },
+  "reachability": {
+    "marksDeclared": 1788,
+    "pagesScanned": 754
+  },
+  "listing-marks": {
+    "listingRows": 4166,
+    "pagesScanned": 753,
+    "marksRequired": 5913
+  },
+  "unrecognised-rows": {
+    "pagesScanned": 753,
+    "citations": 941
+  },
+  "field-render-audit": {
+    "proseFields": 44,
+    "nonProseFields": 54
+  },
+  "chart-ticks": {
+    "gridLines": 33,
+    "charts": 7
+  }
+}

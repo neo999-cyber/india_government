@@ -20388,3 +20388,61 @@ most likely to mistake the second for the first.
 ### Gate line
 
 30 steps green.
+
+---
+
+## 2026-08-13 (eighty-ninth entry) — THE PATTERN BEHIND TODAY'S SIX ERRORS, AND THE ONE OF THEM THAT WAS MECHANISABLE
+
+Asked to fix the errors I had flagged. **All six were already corrected in the code and the log**, so
+the ask is the pattern. Sorted, they are two failure modes and only one is mechanisable.
+
+### MODE 1 — A CLAIM ASSERTED FROM A FAILED ATTEMPT RATHER THAN FROM A TEST
+
+The network ("stalled on this network" — it does 16 MB/s, never tested). The vulnerability count
+("5 high → 3" — measured against a half-installed tree). The index-weight lever ("hoisting the client
+islands would cut most of the 60%" — the share is a constant, 67% on a 24 KB page).
+
+**The rulebook already covers this.** M1: *a reachability failure is retested from a second process,
+with both resolver and client varied, before it is recorded as an environment fact.* It is written for
+retrievals and I did not apply it to the toolchain. **A rule that exists and is not reached is not
+fixed by writing it again**, so nothing was added for this — what was added is the habit's evidence,
+in three log entries that say plainly which claim was wrong and why.
+
+### MODE 2 — A CHECK THAT PASSES WHILE EXAMINING LESS THAN IT DID
+
+`chart-ticks` reporting *"0 grid lines across 0 charts"* as a pass. `interface-invariants` reporting
+clean while finding nothing. **And `listing-marks` falling 4,167 → 3,041 rows — 1,126 real listings —
+with every gate green.**
+
+The first two were given a floor: *a zero here is never a pass*. **A floor only catches the collapse
+to nothing. A scope that halves still passes one.** The third was caught only because I had written
+the baseline down by hand before the edit — **luck about note-taking, not a property of the system.**
+
+### `tools/gate-scope.mjs`, AND WHAT IT BINDS
+
+`docs/gate-scopes.json` records **13 scope figures across 7 gates** — counts of what was EXAMINED:
+rows, pages, records, prose fields, marks declared, charts. **Never what was found**, because then
+every legitimate correction would fail the build.
+
+**Any movement fails**, and the fix is `--update` committed with the change that moved it, which
+forces the number into a commit message and a human decision. **A pattern that stops matching is also
+a failure, not a skip** — a reworded summary line would silently drop its figure from the ledger,
+leaving the drift invisible again, which is the same defect one level up.
+
+**Both modes were tested against the real thing**, not a fixture of an idea of it: the ledger seeded
+with `listing-marks.listingRows = 3041` — **the number the actual regression produced** — fails with
+the movement named and exit 1; a reworded `chart-ticks` summary fails as unreadable; unchanged exits
+0. It re-runs the gates it watches, ~6 seconds, rather than parsing a log the build happened to
+leave behind.
+
+### THE SIXTH ERROR IS NOT MECHANISABLE AND THAT IS THE FINDING
+
+The register's 164 was four keyword scans whose members were never read — **wrong in both directions
+at once**, inventing 128 defects that were not there while missing 11 that were. `[R-213374]` already
+says a count is not a finding until its members are read. **No gate can enforce reading.** What the
+day added is the demonstration: four successive classifiers on that one class each produced a false
+category, and only reading settled it.
+
+### Gate line
+
+**32 steps green** — `gate-scope` is new and last in the chain. 13 figures across 7 gates unchanged.
