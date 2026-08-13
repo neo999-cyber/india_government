@@ -561,6 +561,16 @@ name the scope it was computed over, so the returned number is usable under the 
 above. Keep in the main context only what the batch must reason about directly — the records being
 edited, the gate output, the file being written.
 
+**A GATE'S SCOPE IS CHECKED, NOT JUST ITS VERDICT.** A gate can PASS while examining less than it
+did, and a floor catches only the collapse to nothing — **a scope that halves still passes a floor.**
+On 2026-08-13 a change took `listing-marks` from 4,167 rows to 3,041, dropping 1,126 real listings,
+and every gate stayed green; it was caught because a baseline had been written down by hand, which is
+luck about note-taking rather than a property of the system. `docs/gate-scopes.json` records what each
+watched gate EXAMINES — never what it finds — and `gate-scope` fails on any movement, so the number
+has to reach a commit message. **A pattern that stops matching is also a failure**, because a
+reworded summary line silently removes a figure from the ledger and that is the same defect one level
+up. `[R-scope1]`
+
 **Gates are silent on success.** One summary line each; full detail only on failure or with
 `--verbose`. Anything asserting on a gate's PASSING output must pass `--verbose` explicitly.
 `[R-7894db]`
@@ -636,7 +646,7 @@ printed operands. A non-reconstructing figure must be declared, not merely corre
 **The gate list, run in full every cycle:** `deploy-chain` · `validate` · `typecheck` ·
 `validate:selftest` · `reachability` · `no-unguarded-prose-field` · `field-render-audit` ·
 `quotation-identity` · `domain-coverage` (carrying `lens-empty`) · `figure-consistency` ·
-`enum-stamp` · `phase-name` · `listing-marks` · `rendered-space` · `unrecognised-rows` · `url-check`
+`enum-stamp` · `phase-name` · `listing-marks` · `rendered-space` · `unrecognised-rows` · `gate-scope` · `url-check`
 on `/data`. Plus an arithmetic hand-check of every derived figure, a check that every declared lens
 returns a non-empty and correct set, and zero forward references between `parts/` files.
 `[R-7d9f2e]`

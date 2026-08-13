@@ -1871,3 +1871,38 @@ what is done, state what is not, and say whether it was attempted.
 - Code sessions own everything else: pipeline, validation, views, deploy.
 - The schemas are the contract. Code may propose schema changes but they're agreed in chat before hardening, since research sessions author against them.
 
+
+---
+
+## `[R-scope1]` — A GATE'S SCOPE IS CHECKED, NOT JUST ITS VERDICT
+
+**Earned 2026-08-13, three times in one day.**
+
+**The case that earned it.** `listing-marks` was taught to distinguish a row that LISTS a record from
+one that CITES it. The first form of the rule tested `linkText === title` — correct for a table row,
+where the anchor wraps the title alone, and **wrong for a grid card, which wraps the whole card in one
+anchor.** Rows checked fell **4,167 → 3,041**. **1,126 real listings stopped being checked and the
+gate reported OK.**
+
+It was caught only because the baseline had been recorded by hand before the edit and compared after.
+**That is luck about note-taking, not a property of the system**, and it is the single most dangerous
+shape available: a change that makes a gate weaker looks exactly like a change that makes it correct.
+
+**Two more the same day, same shape, smaller.** `chart-ticks` reported *"0 grid line(s) across 0 story
+chart(s)"* as a PASS — its matcher assumed an attribute order Next does not emit, so it examined
+nothing. `interface-invariants` reported clean while finding nothing, for the same reason. Both were
+given a floor — *a zero here is never a pass* — **and a floor only catches the collapse to nothing.**
+
+**What the rule binds.** `docs/gate-scopes.json` records, per watched gate, the counts of WHAT WAS
+EXAMINED — rows, pages, records, fields, marks declared. Never what was found: `0 dead links` is a
+result and belongs to `link-check`; `754 pages crawled` is scope. **Any movement fails the build**,
+and the fix is `--update` committed alongside the change that moved it, which forces the number into
+a commit message and a human decision.
+
+**And a pattern that stops matching is a failure, not a skip.** A reworded summary line would silently
+drop its figure from the ledger, leaving the drift it was watching invisible again — the same defect
+one level up, which is exactly how the original got through.
+
+**What it does not do.** It does not watch findings, because then every legitimate correction would
+fail the build. It re-runs the gates it watches rather than parsing a log the build happened to leave
+behind, which costs ~6 seconds and buys independence from how the build was invoked.
