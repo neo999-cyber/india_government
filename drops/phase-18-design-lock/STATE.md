@@ -581,6 +581,63 @@ Wording correction only. No figure changes and the verdict stays `contested`.
 
 ---
 
+## RAISED 2026-08-13, NOT RESOLVED — `nh-network` IS A PHASE-0 SCAFFOLD RECORD STILL ON THE SITE
+
+**This is research-owned and is deliberately NOT edited by the code session that found it.** The
+narrow source-edit amendment permits a batch to apply a correction it raised only where the evidence
+is a document retrieved in that run; here the evidence is the corpus and its own git history, so the
+amendment does not reach it. What follows is the raise, in full, so a research pass does not have to
+re-derive it.
+
+### THE EVIDENCE
+
+Two series answer to the identical title **"National highway network length"**, and they are the
+only duplicate title anywhere in the corpus — 269 series, 223 ledger, 127 provenance, **one
+collision**.
+
+| | `nh-network` | `nh-network-length` |
+|---|---|---|
+| introduced | **`ddfead7` — "Phase 0: validation gate and static-export scaffold"** | `5c6909f` — "Phase 5 infrastructure: four pairs…" |
+| points | **1** (FY2013-14 = 91,287) | **5** (FY2013-14 = 91,287 → FY2025-26 = 146,342) |
+| caveat | **none** | present |
+| `provenanceRefs` | **none** | P-30, P-31 |
+| `source` | `MoRTH`, bare root, no vintage | `MoRTH / Lok Sabha replies`, vintage 2026-07-31 |
+| cited by other records | **0** | **4** |
+| named in `docs/verification-log.md` | **never** | repeatedly |
+
+**Its single point is the first point of the other series**, and its point note reads
+*"April 2014; construction pace 11.6 km/day"* against the other's *"Phase-1 baseline"*.
+
+### WHY IT MATTERS MORE THAN A DUPLICATE NAME
+
+**`nh-network` renders a page carrying no caveat.** Its researched counterpart's caveat states that
+*roughly 54,004 km of the ~55,000 km increase since April 2014 is reclassification of existing state
+roads as national highways* — and the verification log cites that caveat as **rule 3a's hardest
+test**. So the corpus publishes one page where the headline network figure appears qualified and
+another where the same figure appears bare.
+
+### WHAT A RESEARCH PASS HAS TO DECIDE, AND WHAT IT MUST NOT DO
+
+The question is whether `nh-network` is superseded or is a distinct measurement that coincides. **The
+code session cannot tell**, and every signal above is consistent with either a scaffold left behind
+or a record nobody finished.
+
+- **Additive only.** A correction edits the record and notes the change in the log; it never deletes.
+- **The series schema has NO supersession field** — `id title unit domain lenses tier source calendar
+  breaks points provenanceRefs notes caveat unmeasured higherIsBetter xAxis denominator`. Adding one
+  is a schema change and therefore a stop-and-agree item. **`notes` carries this case without one.**
+- **`points[]` and any assessment are out of bounds** for a correction of this kind.
+
+### WHAT THE CODE SESSION DID INSTEAD
+
+**`tools/distinct-titles.mjs`, in the build.** No two records in a layer may share a title. This pair
+is exempted **by id, with the reason, and by id rather than by title text** — a text exemption would
+also silence a genuinely new record that reused the words. **The exemption exists so a SECOND
+duplicate cannot arrive unnoticed behind the first.** When the research pass resolves this, delete
+the entry and the gate holds the whole corpus with no exemption at all.
+
+---
+
 ## DECIDED 2026-08-13 — SEARCH INDEXING STAYS OFF, AND THE DIRECTORY BECAME A PAGE
 
 **`noindex, nofollow` IS THE INTENDED SETTING AND IS NOT AN OVERSIGHT.** An external audit raised it
