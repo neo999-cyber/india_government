@@ -202,6 +202,40 @@ name exactly what would close them. **Three are unanswered rather than unanswera
 sequence), **not a ninth among the eight** (that list is the brief's order and says so), and **not a
 second door onto `/unmeasured/`** (which lists by record and kind; this lists by public question).
 
+**STORY SCOPING DONE 2026-08-13 — the candidate list, the criterion, and a blocker measured before
+any of it. No story written that batch.**
+
+**THE BLOCKER, AND IT COMES FIRST.** Measured across all 750 built pages: **each story has exactly
+one inbound link, from `/stories/`. No record, series, topic, year or question page links any story,
+and no story links another.** The four carry 30 outbound links to 29 distinct records — the route
+runs one way through a single door. **A reader on `/series/aser-std3-reading/` is never told the
+reading story exists.** The fix is the §9 relation already built (`lib/next-steps.ts`): *this story
+rests on this record*, 29 pages gaining an inbound route. **Do this before a fifth story.**
+
+**THE CRITERION, for the stories index** — computable, selects all four written stories, no merit
+claim: *a subject qualifies where the corpus holds more than one official figure for one question —
+either a `contested` pair with a series on both sides, or a provenance record graded `obscures`
+affecting two or more series.* **25 signatures; 9 carried by a story; 16 unwritten.**
+
+**THE UNIT IS NOT A PROXY FOR THE QUANTITY, and here is the number.** 13 of 26 two-series pairs
+share a unit; **only 4 of those 13 are the same quantity**, and PR-35 is the same quantity with
+DIFFERENT units. Assign the form by reading each `gapReason`, never by comparing units.
+
+**LIVE CANDIDATES after the duplication test** — PR-22 (education, depth 22), PR-24, PR-27, PR-33,
+PR-35, PR-56; partial PR-49, PR-57; boundary arm P-66, P-102, P-109, P-114.
+**DROPPED as already stated well in their own topic prose:** PR-05, PR-30, PR-47, PR-48, **PR-59 and
+PR-60** — the last two were the strongest-looking candidates in the set, and the foreign domain
+period already carries them under the heading *One trade flow, two official values*.
+
+**PR-35 IS A FOURTH SHAPE.** Its record resolves the disagreement: the two counts differ in all six
+overlapping years and in three the difference is exactly NCRB's foreign-detenu count, so the
+parliamentary series silently excludes foreigners. Not the jobs form and not the Kashmir form.
+
+**A METHOD NOTE THAT COST TWO WRONG PASSES:** the duplication probe must be **scoped to the
+candidate's own topic block**. Unscoped, `reclassified` matched large hydro in environment while
+testing an infrastructure candidate and `mirror` matched the tier rule while testing India–China
+trade — three false positives in six.
+
 **STORIES NOW: four.** reading · jobs · Kashmir · renewables. Federalism declined as a duplicate.
 Remaining candidates from §7 that are writable in the two-instrument form: **militancy in Kashmir is
 written; federalism declined; the four unwritable ones now have their own page.** What is left of §7

@@ -18313,3 +18313,107 @@ hue · 0 body overflow · 0 clamped.
 
 27 steps green. `link-check` **47,422 hrefs across 750 pages, 0 dead**. `listing-marks` **5,715 rows
 / 8,171 marks**. `unrecognised-rows` **0**. `reachability` 1,787/1,787.
+
+---
+
+## 2026-08-13 (fifty-ninth entry) — SCOPING THE REMAINING STORIES. No story written.
+
+### 1 · WHAT EXISTS, PER FORM, AND THE UNIT IS NOT A PROXY FOR THE QUANTITY
+
+**26 pairs have a series on both sides** — 12 contested, 14 coverage-usage — plus **13 provenance
+records** that carry a definitional boundary across two or more series. Each contested pair's
+`gapReason` was READ and the form assigned per pair.
+
+| form | signature | pairs |
+|---|---|---|
+| 1 · two instruments, same quantity | the disagreement is about a number both sides claim to measure | PR-12, PR-13 *(jobs, written)*, PR-59, PR-60, PR-35 |
+| 2 · two instruments, different quantities | share a unit or not; no shared axis either way | PR-17 *(reading, written)*, PR-26, PR-32 *(Kashmir, written)*, and all 14 coverage-usage by construction |
+| 3 · one publisher, a boundary | no rival instrument; several official figures, all true | PR-18, PR-22, PR-27, PR-49, and the 13 boundary records incl. P-121 *(renewables, written)* |
+
+**THE CHECK THE INSTRUCTION REQUIRED, AND THE NUMBER IT PRODUCES.** 13 of the 26 pairs share a unit.
+**Only 4 of those 13 are form 1.** And PR-35 — `detenus` against `prisoners` — is form 1 with
+*different* units. **So unit agreement predicts quantity identity in 4 of 13 cases and misses one
+in the other direction. The unit is not a proxy and a page cannot show the difference.**
+
+**PR-35 is a fourth shape, not a fourth instance.** Its own record RESOLVES the disagreement: the
+two counts differ in all six overlapping years and in three of them the difference is exactly
+NCRB's foreign-detenu count, so the parliamentary series silently excludes foreigners. A pair whose
+discrepancy is explained to the unit is not the jobs story and not the Kashmir story.
+
+### 2 · WHAT IS WRITABLE AND NOT WORTH WRITING — the federalism test, applied to all fourteen
+
+**Six of fourteen pair candidates are already stated well on a surface a reader reaches, and two of
+those six were the strongest-looking in the set.**
+
+| dropped | the domain prose already says it |
+|---|---|
+| **PR-59, PR-60** foreign | an entire period headed *"One trade flow, two official values, and neither side is wrong"* — *"both governments publish it and they do not agree, and this instrument carries both rather than picking or averaging"* |
+| **PR-05** infrastructure | *"the network figure quoted alongside it, 91,287 km to 146,342 km, is mostly reclassification of existing state roads"* |
+| **PR-30** defence | *"Infiltration is three different quantities published under one word — attempts, net estimated infiltration, and a third"* |
+| **PR-47** federalism | *"Released, received and passed on are three numbers for one transfer and only one of them is audited"* |
+| **PR-48** federalism | the divisible-pool paragraph, which is the one federalism was declined over |
+
+**Surviving: PR-22, PR-24, PR-27, PR-33, PR-35, PR-56** (subject absent from its own topic's prose),
+with **PR-49 and PR-57 partial** — adjacent material covered, the specific finding not. On the
+boundary arm, **P-66, P-102, P-109, P-114 are absent** from their topic prose; P-86, P-88, P-97 are
+present.
+
+**THE DUPLICATION PROBE WAS WRONG TWICE BEFORE IT WAS RIGHT.** Matching bare years against the prose
+made every candidate look covered — every paragraph contains years. Matching distinctive nouns
+across the WHOLE file then produced **three false positives out of six**: `reclassified` matched
+large hydro in ENVIRONMENT while testing an INFRASTRUCTURE candidate, and `mirror` matched the tier
+rule and a destroyed OMR sheet while testing India–China trade. **The probe has to be scoped to the
+candidate's own topic block**, and scoping it is what dropped PR-05 and PR-59/60 for real reasons
+rather than for accidental ones.
+
+### 3 · THE SELECTION CRITERION, COMPUTABLE AND PROPOSED FOR THE STORIES INDEX
+
+> **A subject qualifies where the corpus holds more than one official figure for one question:
+> either a `contested` pair with a series on both sides, or a provenance record graded `obscures`
+> that affects two or more series.**
+
+**It selects all four written stories** — PR-17, PR-12/13, PR-26/32, P-121 — and it is a filter over
+declared fields, re-derivable next cycle, with no merit claim in it. **25 signatures: 12 pairs and
+13 boundary records. 9 are carried by a story already; 16 are unwritten.**
+
+What it deliberately does not say is that these are the most important subjects. It says the corpus
+holds two numbers where a reader expects one, which is a fact about the record.
+
+### 4 · WHAT A READER DOES AFTER A STORY — and it inverts the premise for writing more
+
+| story | record links | in the closing grid | next steps |
+|---|---|---|---|
+| can-indian-children-read | 5 | 4 | **no** |
+| did-jobs-grow | 9 | 8 | **no** |
+| who-counts-the-dead | 9 | 8 | **no** |
+| how-renewable | 7 | 6 | **no** |
+
+30 links, 29 distinct targets — 9 series, 9 ledger records, 11 disputes. **None of the four has the
+§9 next-steps block**, which landed on record and series pages and not here.
+
+**And the traffic only runs one way.** Measured across all 750 built pages:
+
+- **each story has exactly ONE inbound link, from `/stories/`**;
+- **no record, series, topic, year or question page links any story**;
+- **no story links any other story.**
+
+**A reader on `/series/aser-std3-reading/` — the series the reading story is entirely about — is
+never told the story exists.** The operator's ground for more stories is that a story is the only
+surface giving a reader a reason to open a record; the direction is right and **the route in is a
+single door**. Writing more multiplies outbound links from pages almost nobody can reach.
+
+**The fix is already built and is not applied here**, because this batch writes nothing: *this story
+rests on this record* is a declared relation of exactly the kind `lib/next-steps.ts` renders, and
+**29 pages would gain an inbound route** from the four existing stories alone.
+
+### Recommendation, in order
+
+1. **The return route first.** 29 pages, one relation, no new prose. Until it exists, a fifth story
+   is a fifth page behind the same door.
+2. **The criterion onto the stories index**, with four subjects listed under it.
+3. **Then the six live candidates**, of which **PR-22 (depth 22), PR-35 and P-114** are the strongest
+   on material — and PR-35 is a form the site has not published.
+
+### Gate line
+
+No gate-affecting change: this batch adds a log entry and a STATE section. 27 steps green.
