@@ -20046,3 +20046,57 @@ added two entries ago — and the gate proving it reaches its own page is the ch
 30 steps green after the revert · `reachability` 1,788/1,788 · generated files `docs/derivations.md`
 and `review/record-history.json` committed with the `/data` change, which is what the new CI
 dirty-tree step exists to catch.
+
+---
+
+## 2026-08-13 (eighty-second entry) — THE INTERNAL REGISTER, CLOSED BY READING ALL 135 MEMBERS, AND THE FILED FINDING INVERTS ON TWO OF FOUR CLASSES
+
+Directed to close the gaps. **86 T-tokens and 49 dated stamps read individually** — the work the
+recorded counts had never had done to them.
+
+### TIER LETTERS ARE CORRECT USAGE, AND LOAD-BEARING
+
+Filed as 38 defects. Read: *"the only figure in circulation is a T4 relay"*, *"ASER is graded T4 as
+the tier definition requires"*, *"Tiered T2 and not T1 deliberately"*. **The tier is the SUBJECT of
+the sentence** — strip the letter and the claim goes with it. `/method/` defines the ladder, so it is
+defined vocabulary, not jargon. **None touched.**
+
+### THE REAL DEFECT WAS THE TERM LETTERS, WHICH NOBODY HAD SEPARATED OUT
+
+`T1` also means *the first term*, and in that sense it is internal shorthand a reader cannot expand —
+the same defect already fixed in the masthead. **11 found by reading, 11 reworded**: *"the first year
+of T1"* → *"the first year of the first term (2014-19)"*; *"opened in T2 and reached its maximum in
+T3"* → *"opened in the second term and reached its maximum in the third"*.
+
+**Term-shorthand uses now: 0.** A residual test reported 7 remaining and **all 7 are tier uses it
+failed to recognise** — the third false category automated classification produced inside this one
+item, after reading *"PARAKH 2024 … grades T1"* as a term and *"this record"* as archaeology.
+
+### THE RESCORE STAMPS ARE THE CORRECTION CONVENTION, AND REMOVING THEM WOULD HAVE BEEN VANDALISM
+
+Filed as 40; there are 49. **`withdrawn-wording` gates 30 as corrections that quote what they
+withdrew, and `quotation-identity` matches 32 quotations against 113 commits of history.**
+
+**And they render verbatim on `/corrections/`** — verified: *"CORRECTED 2026-08-05"* and
+*"2026-08-03: this record was rescored"* are on that page. **They are that surface's source data.**
+Deleting them would break two gates, destroy the record of what changed, and contradict the
+append-only rule in the same breath. **None touched.**
+
+### SO THE ITEM CLOSES WITH TWO OF ITS FOUR CLASSES REVERSED
+
+| filed as | read as |
+|---|---|
+| schema names, 21 | **10.** 3 reworded, 7 correct where they are — the field name is the subject under "Why this verdict" |
+| tier letters, 38 | **correct usage.** The tier is the claim |
+| rescore stamps, 40 | **the correction convention.** Protected by two gates and published at `/corrections/` |
+| repository archaeology, 65 | **largely the phrase "this record"** — ordinary self-reference inside a record |
+| **term letters, 0** | **11 — the actual defect, and it was in none of the four classes** |
+
+**The lesson is the one the count rule already states and this item demonstrates four times over:** a
+keyword scan produces candidates, and a count whose members are never read can be wrong in both
+directions at once — inventing 128 defects that are not there while missing 11 that are.
+
+### Gate line
+
+30 steps green · `withdrawn-wording` 30 corrections, 34 exempted · `quotation-identity` 32/32 over
+113 commits · `reachability` 1,788/1,788 · `validate` 0 errors.

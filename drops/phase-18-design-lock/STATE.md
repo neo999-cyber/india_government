@@ -895,6 +895,32 @@ self-reference inside a record.
 count rule says exactly this: a count from a keyword scan is not a finding until the members are
 read, and labelling it as candidates does not stop it being spent as one.
 
+**CLOSED 2026-08-13 — ALL 86 T-TOKENS AND ALL 49 DATED STAMPS READ, AND THE FILED FINDING INVERTS
+ON BOTH.**
+
+**Tier letters (filed as 38) are correct usage and load-bearing.** Read in full: *"the only figure in
+circulation is a T4 relay"*, *"ASER is graded T4 as the tier definition requires"*, *"Tiered T2 and
+not T1 deliberately"*. **The tier IS the subject of the sentence** — strip the letter and the claim
+goes with it. `/method/` defines the ladder, so it is defined vocabulary, not jargon.
+
+**The real defect was the TERM letters, which nobody had separated out** — `T1` meaning *the first
+term* rather than *a primary source*. **11 found by reading, 11 reworded**: *"the first year of T1"*
+→ *"the first year of the first term (2014-19)"*, *"opened in T2 and reached its maximum in T3"* →
+*"opened in the second term and reached its maximum in the third"*. **Term-shorthand uses now: 0.**
+A crude residual test reported 7 left; all 7 are tier uses it failed to recognise, which is the third
+time in this item that automated classification of T-tokens produced a false category.
+
+**Rescore stamps (filed as 40, actually 49) ARE THE CORRECTION CONVENTION AND MUST NOT BE TOUCHED.**
+`withdrawn-wording` gates 30 of them as corrections that quote what they withdrew; `quotation-identity`
+holds 32 quotations against history. **And they render verbatim on `/corrections/`** — checked:
+*"CORRECTED 2026-08-05"* and *"2026-08-03: this record was rescored"* are on that page. **They are
+the corrections surface's source data.** Removing them would break two gates, destroy the record of
+what changed, and contradict the append-only rule directly.
+
+**So this item is closed with two of its four classes reversed.** Schema names: 3 reworded, 7 correct
+where they are. Tier letters: correct. Rescore stamps: protected. Term letters: the actual defect,
+found by reading, and fixed.
+
 **WHAT WAS READ, AND WHAT WAS DONE.** The one class small enough to read in full — schema and field
 names in prose — is **10 instances**, and reading them changed the judgement:
 
