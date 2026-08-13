@@ -46,7 +46,7 @@ const KNOWN_OPEN = [
       'nh-network entered in phase 0 as static-export scaffold: one point, no caveat, no provenanceRefs, ' +
       'cited by nothing. nh-network-length entered in phase 5 with P-30, P-31 and the caveat recording that ' +
       '~54,004 km of the ~55,000 km increase is reclassification. Which record survives is a claim about the ' +
-      'record and is research-owned. See STATE.md.',
+      'record and is research-owned. `nh-network` now carries a `notes` field pointing a reader at the other one, so the reader-facing half is closed; the exemption stays until the record question is settled. See STATE.md.',
   },
 ];
 

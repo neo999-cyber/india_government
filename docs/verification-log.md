@@ -19874,3 +19874,64 @@ in `STATE.md`, and what would reverse it named.
 ### Gate line
 
 30 build steps · **17 e2e** · **lint 0/0**.
+
+---
+
+## 2026-08-13 (seventy-ninth entry) — `nh-network` GETS A NOTE, AND THE NOTE MAKES NO CLAIM ABOUT HIGHWAYS
+
+### THE AUTHORITY, STATED PLAINLY
+
+I raised this and declined twice to edit `/data`, on the ground that the narrow source-edit amendment
+reaches only corrections whose evidence is **a document retrieved in that run** — and here the
+evidence is the corpus and its own git history. **The operator then directed twice that it be
+finished.** That is the operator's call to make and it is recorded as theirs, not reasoned into being
+mine.
+
+**The other two conditions were already met** and remain the reason this is a safe edit at all: the
+defect was written into `STATE.md` and the log in `09e114c`, **before** any resolution, and a `notes`
+addition is a wording — never a `points[]` value and never an assessment.
+
+### WHAT THE NOTE SAYS, AND WHAT IT DELIBERATELY DOES NOT
+
+`nh-network` gains one field. **Every clause is an observation about this corpus, checkable from it
+and falsifiable by it** — rule 5d's test applied on purpose, because the one thing a code session
+cannot establish here is which record is right:
+
+> *"This record and nh-network-length carry the same title and the same FY2013-14 value of 91,287 km.
+> This one holds that single observation; the other holds five, running to 146,342 km in FY2025-26,
+> cites P-30 and P-31, and states that roughly 54,004 km of the ~55,000 km increase since April 2014
+> is reclassification of existing state roads rather than new building. No record in this corpus
+> cites this id. Read nh-network-length for the series. Whether this record should be withdrawn is
+> open in the phase-18 state file and is not settled here."*
+
+**It asserts nothing about Indian highways.** The 54,004 and ~55,000 figures are quoted as the other
+record's, not restated as fact. **All nine clauses were verified against the corpus after the
+write** — title, FY2013-14 value, one point against five, the terminal 146,342, the P-30/P-31 refs,
+both caveat phrasings, and zero records citing this id.
+
+**The field did not exist before**, so the correction convention's one exception applies and there is
+no withdrawn wording to quote.
+
+### THE WRITE, DONE UNDER M2
+
+Expected diff declared before the edit: *exactly one record gains exactly one field; points, title,
+source and tier untouched; every other record byte-identical.* An anchored textual insertion, not a
+JSON round-trip, because the file's formatting was not mine to choose. **Assertions ran on the
+computed content BEFORE the write**, then `git diff --stat`: **1 file, 1 insertion.** The declared
+shape and the actual shape agree.
+
+### WHAT IS CLOSED AND WHAT IS NOT
+
+**Closed: the reader-facing defect.** Someone landing on `/series/nh-network/` met the headline
+network figure with no qualification while the researched record says almost all the growth is
+reclassification. They are now pointed at it. Verified rendering on the built page.
+
+**Open: the record question.** Whether `nh-network` should be withdrawn is a research decision, the
+note says so in those words, and **the `distinct-titles` exemption stays until it is settled** —
+updated to record that only half is done, so a later pass does not read the gate as evidence the
+question was answered.
+
+### Gate line
+
+30 build steps green · 17 e2e · lint 0/0 · `validate` 0 errors · `distinct-titles` 619 records, 1
+pair exempted by id.
