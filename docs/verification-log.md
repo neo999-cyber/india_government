@@ -19218,3 +19218,107 @@ build host structurally cannot run.** Both actions pinned to immutable SHAs and 
 60,433 across 753, 0 dead · `listing-marks` 5,727 / 8,190 · `field-render-audit` 0 invisible ·
 `rendered-space` 0 · `unrecognised-rows` 0 · `domain-coverage` 1,137/1,137 ·
 **`chart-ticks` 33 grid lines across 7 charts.**
+
+---
+
+## 2026-08-13 (sixty-eighth entry) — THE AUDIT WORKED THROUGH: tranches 3 to 6
+
+Continues the sixty-seventh. Triage and worked status in
+`drops/phase-18-design-lock/AUDIT-TRIAGE-2026-08-13.md`.
+
+### TRANCHE 3 — ACCESSIBILITY
+
+**Heading skips ran on 340 of 753 pages and the cause was two hardcoded levels, not scatter.**
+`SeriesChart` titled itself `h3` wherever it appeared, so all **269 series pages** went h1 → h3;
+`OverviewBoard` did the same on `/overview/`; the domain four-up grid went h2 → h4. All three take a
+`headingLevel` prop now, appearance carried by the class so only the outline moved. **340 → 0.**
+
+**And the first diagnostic was wrong in a way the rulebook names.** It capped heading text at 60
+characters, so `coal-production` read as clean — *bound a search by the record, never by a character
+count*, broken inside the fix for a different defect. Re-run unbounded, the h3 was there.
+
+**No skip link on any page.** Automated tooling does not call it a violation because the landmarks
+are correct, which is exactly why it survived. **31 of 31 `table-wrap` containers** now focusable,
+variants enumerated from the code. **The two year rails** were both named *Year*.
+
+**393 of 583 links on `/series/` are under a 24×24 target and the rows cannot become 24px** — 269
+rows would take the strip from 1,614px to 6,456px and the density is the function. **WCAG 2.5.8's
+*Essential* exception is invoked deliberately and named rather than left looking like an oversight.**
+What was not essential is fixed: the bars leave the tab order, and no function goes with them,
+because every series on the strip is a full row of the table below it on the same page.
+
+### TRANCHE 4 — ONE REGISTRY
+
+The audit named four routes; measuring the class found **12 of 21 index routes drifting between
+`<title>` and `<h1>`, with the breadcrumb using the URL slug on every one.** `lib/routes.ts` holds
+one entry per destination — `label` for the tab and the crumb, `nav` for the navigation's gloss.
+Nine surfaces realigned, four titles derived rather than re-typed.
+
+**`app/layout.tsx` carried `// was: series — the prose pass renamed this everywhere but here`, and
+it was false.** The pass renamed the nav and stopped. The withdrawn comment is quoted in place. **A
+comment recording a sweep as done is how a partial fix survives review** — the local-fix rule, and I
+broke it.
+
+`aria-current` was absent; the five primary links are now a client island, and **what that costs — no
+marking without script — is stated at the component.** The masthead's *T1 · T2 · T3 living* is spelled
+out.
+
+### TRANCHE 5 — THE FINDINGS, AND MY OWN COUNT WAS WRONG
+
+**I estimated the class at ~17 from first sentences. Reading each finding whole put it at 7.** Most
+already carry their outcome in sentence two, and for **nine** of them leading with the figure would
+leave a false impression the caveat then has to undo — `teacher-vacancy-rate-elementary` is a
+state-wise sum and not a national observation; `teachers-total-udise` undercounts before FY2023-24,
+so the rise is partly a collection change; `literacy-rate-7plus` is asked and never tested. Those
+keep their order with the reason written at the head of the pass.
+
+**The test that survives contact with this corpus is narrower than the audit's:** *lead with the
+outcome unless leading with the figure would mislead.* Sixteen candidates, sixteen judgements, per
+record. Three untouched for a different reason: `nas-parakh-grade3-language` has a longest unbroken
+run of ONE POINT and says so in its own first words — the audit's escape clause already in the
+corpus — and the two GDP-base series may not lead with a bare outcome under rule 5.
+
+**Every figure in the seven rewrites was hand-checked against the record: 22 assertions, 22 pass.**
+None is a declared arithmetic claim, so `figure-consistency` would not have caught a wrong one.
+
+### TRANCHE 6 — STRUCTURE, AND TWO GATES INSTEAD OF A BROWSER SUITE
+
+**The topic tabs were appending, not selecting.** `/domains/macro/records/` 264 KB → **134 KB**, five
+charts → **none**, *Demonetisation* visible once instead of twice; each tab carries an orientation
+sentence. **`listing-marks` 5,727/8,190 → 4,167/5,914 and `link-check` 60,433 → 58,254, and that is
+the expected direction**: the readable list stopped duplicating on four tabs, every mark it carried
+is still present, and every record is a row of the records tab's own table.
+
+Prefetch off on 27 links across nine dense surfaces. A favicon, drawn as the break seam.
+
+**`tools/interface-invariants.mjs` instead of Playwright, and it answers less.** It runs in the
+build, so it binds on every commit and deploy; it needs no browser binaries; it asserts one live
+count region on `/search/` and that **56 domain tabs across 14 topics** carry their own body and none
+carries the overview's. **It cannot click a facet, measure a rendered target, tab through a page or
+detect 375px overflow, and says so in its own header.**
+
+### AND A GATE I WROTE SHIPPED GREEN OVER NOTHING
+
+`chart-ticks` first reported **`0 grid line(s) across 0 story chart(s)` as a pass.** Its regexes
+required `class` before `viewBox` and before `y1`; Next emits both the other way. **The `--control`
+fixtures were written in MY order, so the control never passed through the restriction the real scan
+depends on** — the negative-control rule, broken inside the file that cites it. Fixed three ways:
+order-agnostic matching, controls copied from the emitted bytes, and **a floor that exits 2 on zero
+charts found**, because a scan finding nothing is a broken scan and never a clean site.
+
+### THE ONE AUDIT CLAIM THAT DID NOT SURVIVE, AND THE ONE UPGRADE THAT DID NOT LAND
+
+*"Generated documentation is stale on main"* does not reproduce; the stamp is deliberate and the
+auditor was seeing a second symptom of their own P0. **Dependencies: `fast-uri` and `nanoid` fixed;
+the other three do not resolve at Next 16.3.0 as projected — they bottom out in `sharp`'s inherited
+libvips CVEs, upstream of Next's range — so 5 high → 3, not → 0.** The upgrade was pinned and
+attempted; the install stalled twice and left three packages half-written. Reverted, tree restored
+from the unchanged lock, **full chain re-run green to prove nothing was left worse.** Owed.
+
+### Gate line
+
+**29 steps green** — `chart-ticks` and `interface-invariants` are new and both in the build.
+`reachability` 1,787/1,787 · `field-render-audit` 0 invisible, 15 exempted · `link-check` **58,254
+across 753 pages, 23 route prefixes, 0 dead** · `listing-marks` **4,167 rows / 5,914 marks, all
+present** · `rendered-space` 0 · `chart-ticks` 33 lines / 7 charts · `interface-invariants` 56 tabs /
+14 topics · `unrecognised-rows` 0 · `domain-coverage` 1,137/1,137.
