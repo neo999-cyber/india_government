@@ -110,8 +110,7 @@ re-derived: `mod.gov.in` and `ddpmod.gov.in` resolve and refuse 443; `pca-cpa.or
 Cloudflare-gated; `mea.gov.in` serves a JS shell; `federalregister.gov` CAPTCHAs full text while its
 API works. **`legislative.gov.in` refuses one CLIENT and not the request** — 403 to the WebFetch
 user-agent, 200 to `curl` with a browser one, established 2026-08-13 by retesting from a second
-client. **`sansad.in` serves a JavaScript shell** for its bill list AND its debate transcripts: HTTP 200,
-an empty table, 0 characters of visible text, and no data endpoint in any of its bundles.
+client. **`sansad.in` REFUSES ONE CLIENT AND PUBLISHES A JSON API — corrected 2026-08-14, and the withdrawn wording is quoted because it stopped three retrieval attempts.** It read: *"**`sansad.in` serves a JavaScript shell** for its bill list AND its debate transcripts: HTTP 200, an empty table, 0 characters of visible text, and no data endpoint in any of its bundles."* To curl with a browser user-agent it returns **319,236 bytes** of server-rendered Next.js, the same refuse-one-client shape as `legislative.gov.in` and `www.pib.gov.in`. **It also exposes a public JSON API at `/api_ls/` and `/api_rs/`** — `legislation/getBills`, `debate/debate-search`, `business/getAllLoksabhaAndSession` and more, whose inventory is recoverable from the Wayback CDX index over the domain. **A page that renders empty is a statement about the client, and the API was never in the bundles because it is a different origin path.**
 **`eparlib.sansad.in` — the Parliament Digital Library, where the Bulletins live — resolves to
 164.100.166.186 and returns HTTP 000 plain AND pinned**, so it is unreachable rather than
 misresolved. `loksabha.nic.in`, `eparlib.nic.in` and `loksabhadocs.nic.in` do not resolve at all.
