@@ -178,6 +178,91 @@ on accounts alone.
 **There is no admissible value.** That is why the record waits for one document rather than being
 written around it.
 
+
+## 3e. FOURTH ATTEMPT, 2026-08-14 — THE OUTCOME IS NOW T1, AND THE BLOCKER IS GONE
+
+**The document was never the only route. Parliament publishes a JSON API and nobody here had looked
+for it.**
+
+### THE ENVIRONMENT FACT THAT WAS WRONG
+
+Recorded in CLAUDE.md and quoted here because it is what stopped three attempts:
+
+> *"`sansad.in` serves a JavaScript shell for its bill list AND its debate transcripts: HTTP 200, an
+> empty table, 0 characters of visible text, and no data endpoint in any of its bundles."*
+
+**It refuses one CLIENT, exactly as `legislative.gov.in` and `www.pib.gov.in` do.** To curl with a
+browser user-agent, `sansad.in/ls/debates/text-of-debates` returns **319,236 bytes** of server-
+rendered Next.js, and the site exposes a public JSON API at **`/api_ls/`** and **`/api_rs/`**. The
+endpoint inventory was recovered from the Wayback CDX index over the domain, not guessed.
+
+### WHAT THE API ESTABLISHES — all retrieved 2026-08-14, all T1
+
+`GET https://sansad.in/api_rs/legislation/getBills?house=Lok%20Sabha&billStatus=Negatived&...`
+
+> `billNumber 107 · "THE CONSTITUTION (ONE HUNDRED AND THIRTY-FIRST AMENDMENT) BILL, 2026" ·`
+> `billCategory "Constitutional Amendment Bill" · ministryName "LAW AND JUSTICE" ·`
+> `billIntroducedDate "2026-04-16 00:00:00.0" · **status "Negatived"**`
+
+`GET https://sansad.in/api_ls/debate/debate-search?loksabha=18&sessionNumber=7&searchKeyword=Delimitation`
+
+> `dbSlno 5667 · debateDate "17/04/2026" · debateTypeDesc "GOVERNMENT BILLS" · debateTitle`
+> `" The Constitution (One Hundred and Thirty-First Amendment) Bill, 2026 and Union Territories`
+> `Laws (Amendment) Bill, 2026 and Delimitation Bill, 2026?Contd.. - **not passed**"`
+
+`GET https://sansad.in/api_ls/business/getAllLoksabhaAndSession?locale=en`
+
+> 18th Lok Sabha, **session 7: "28/01/2026 to 02/04/2026", "16/04/2026 to 18/04/2026"**
+
+**The outcome the record waited on is established by the House's own database, on two independent
+endpoints, and it agrees with the T4 accounts.**
+
+### AND ONE PLACE THE T4 ACCOUNTS ARE CONTRADICTED
+
+The legal-news report headline was *"Centre Withdraws Delimitation Bill."* Parliament's API says:
+
+> `billNumber 108 · "THE DELIMITATION BILL, 2026." · billCategory "Financial Bill" ·`
+> `billIntroducedDate "2026-04-16 00:00:00.0" · **status "Pending"**`
+
+**"Withdrawn" is a value this API can emit** — `getBillStatus` returns
+`["Withdrawn","Negatived","Assented","Passed","Pending","Lapsed","Removed","Repealed","Part-discussed"]`
+— and 90 Lok Sabha Bills carry it, most recently one introduced 2025-08-18. So the field is
+populated, not vestigial.
+
+**Two readings and this brief picks neither.** Either the Bill was not withdrawn, or the database has
+not been updated for it. **What weighs against the second:** Bill 107 was before the House on the
+same day and its status DID move. **A record must not assert the withdrawal on the T4 headline
+alone**, and it cannot assert the negative either — the honest entry is that the House's database
+carries the Delimitation Bill as pending, and says why that is contested.
+
+### WHAT IS STILL NOT HELD, WITH THE SEARCH STATED
+
+**The division figures — 298 for, 230 against, threshold 352 — remain T4 and are not in the API.**
+
+- **Bulletin Part I.** The archive convention was read off live URLs, not guessed:
+  `getFile/bull1mk/{ls}/{session-in-roman}/{DDMMYYYY}.pdf?source=loksabhadocs`. **Positive control
+  passed** — `18/III/02112024.pdf` returns a 30-page PDF, `18/I/24062024.pdf` an 18-page one. Under
+  session `VII`, six known session-7 sitting dates and three date formats all return 404.
+- **The verbatim debate text.** Same method on `getFile/debatestextmk/{ls}/{session}/`. **Positive
+  control passed** (`15/I/0306.pdf`, 211 KB); `18/VII/` returns 404 in every form tried.
+- `eparlib.sansad.in` **retested in all four combinations** — http and https, plain and pinned to
+  164.100.166.186 — and returns 000 in each. Unreachable, not misresolved.
+
+**Named routes were exhausted with a positive control beside them. That is not the same as "not
+published"** and this brief does not say it is: for a sitting four months old, not-yet-uploaded is
+at least as likely as not-published, and nothing here distinguishes them.
+
+### STATUS AFTER THIS ATTEMPT
+
+**Closed:** the outcome. `Negatived` is T1, on the record of the House itself.
+
+**Open, and it is now a drafting question rather than a retrieval one:** the record's assessment. The
+brief's own §3d said no value was admissible because `too-early` would be false and `failed` would
+rest on T4 alone. **The second objection is answered.** The first still holds, so `too-early` is out.
+
+**Still owed, and neither blocks the record:** the division figures, and the true status of the
+Delimitation Bill.
+
 ## 4. WHAT A RESEARCH PASS NEEDS TO DO — and it is now one step, not a survey
 
 **Retrieve the Lok Sabha record of 17 April 2026.** Bulletin Part I, the day's Revised List of
