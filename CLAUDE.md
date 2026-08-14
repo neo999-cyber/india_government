@@ -775,6 +775,11 @@ what is done, state what is not, and say whether it was attempted. `[R-db403e]`
   layout. **Caps, not widths:** a short cell is unaffected, no table changed width, none began to
   scroll, and `/lenses/`, `/directory/` and `/peers/` did not move. Table pages get taller —
   `/series/` by ~5,100px — which is what shorter lines cost.
+- **A CONTENTS RAIL FILLS THE SPACE BESIDE A 68ch COLUMN; A WIDER FRAME DOES NOT.** `.rail` is one
+  piece of markup in two presentations — the horizontal strip below 1280px, a sticky 13rem column
+  above it — scoped by `main:has(.rail)` so the ~690 pages without one reserve nothing. No
+  JavaScript: jump links, no current-section highlighting, works with the bundle dead. *Bound by
+  `rail.spec.ts` at 1280/1440/1710, at 1279 for the seam, and on three rail-less pages.*
 - **MEASURING LINE LENGTH: measure the TEXT-BEARING BLOCK against ITS OWN FONT.** This instrument
   was wrong twice in one session and both errors inflated the count. Measuring the `td` rather than
   the capped span inside it reported cells as over-long when the text was not; and dividing a span's

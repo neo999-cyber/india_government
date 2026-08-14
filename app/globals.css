@@ -5076,3 +5076,78 @@ td,
 li {
   max-width: 78ch;
 }
+
+/* ============================ THE CONTENTS RAIL — 2026-08-14 =================================
+ *
+ * Operator's choice, and it answers the right question. The frame is 84rem and prose is a
+ * 68-character column, so a 1710px screen keeps empty space beside the text — and widening the
+ * frame further does not close it, it only makes the ribbon of text look narrower. What closes it
+ * is putting something in the space, and navigation is the honest thing to put there.
+ *
+ * **ONE PIECE OF MARKUP, TWO PRESENTATIONS.** Below 1280px `.rail` is exactly the horizontal strip
+ * it has always been, in the place it has always been. At and above 1280px it becomes a sticky
+ * column beside the page. No second component, no duplicated list, nothing hidden at either width.
+ *
+ * **`main:has(.rail)` is the scope**, so a page without a rail is untouched — no reserved column, no
+ * layout shift on 690-odd pages that do not use it.
+ *
+ * **NO JAVASCRIPT.** No current-section highlighting, which would need an IntersectionObserver: it
+ * is a list of jump links, it works with the bundle dead, and there is nothing here to loop.
+ * ========================================================================================== */
+
+.rail-h {
+  display: none;
+}
+
+@media (min-width: 1280px) {
+  main:has(.rail) {
+    display: grid;
+    /* `minmax(0, 1fr)` is INSURANCE AND NOT THE THING THAT WORKS, and the first version of this
+       comment claimed the opposite: *"a grid child's min-width is auto, so a wide table would
+       otherwise push the column past its track and take the rail off the page with it."* That is
+       true of grid in general and false here. Tested by removing it on five topic pages at 1280 and
+       1710: identical tracks, identical rail position, no overflow either way. **`.table-wrap`
+       already establishes a scroll container, so no table's intrinsic width ever reaches this
+       track.** Kept because it costs nothing and would matter if a wide child ever landed outside a
+       wrap — but it is not load-bearing today and the comment no longer says it is. */
+    grid-template-columns: minmax(0, 1fr) 13rem;
+    column-gap: 2.5rem;
+    align-items: start;
+  }
+
+  main:has(.rail) > * {
+    grid-column: 1;
+    min-width: 0;
+  }
+
+  main > .rail {
+    grid-column: 2;
+    /* `span 400` rather than `1 / -1`: with no explicit rows declared, `-1` resolves to the first
+       line and the rail would occupy one row and stop sticking. */
+    grid-row: 1 / span 400;
+    position: sticky;
+    top: 1.5rem;
+    display: block;
+    margin: 0;
+    padding: 0 0 0 1rem;
+    border-bottom: 0;
+    border-left: 1px solid var(--rule);
+  }
+
+  .rail .rail-h {
+    display: block;
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-dim);
+    margin-bottom: 0.6rem;
+  }
+
+  .rail .dsecnav-i {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+  }
+}
