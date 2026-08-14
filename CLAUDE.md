@@ -762,14 +762,16 @@ what is done, state what is not, and say whether it was attempted. `[R-db403e]`
 - Mono for system labels and figures (tabular-nums), humanist sans for prose.
 - Every view answers "what does this number rest on?" — one click to source, tier and provenance.
 - Palette is Bone & Indigo, defined as tokens; nothing hardcodes a literal. `[R-34510f]`
-- **TWO WIDTH TRACKS, AND WIDENING THE READING COLUMN IS THE WRONG FIX.** `.shell` is 68rem and
-  holds prose; `--wide` (84rem) with the `.bleed` pattern is for surfaces that are NOT prose — the
-  landing artwork and the card grids. On a 1710px display the margins either side are the text
-  behaving correctly: it measures **exactly 68 characters a line.** Widening `.shell` was measured
-  and rejected — **343 text elements already exceed 80ch inside tables and lists, and a 1344px shell
-  takes that to 964.** A bleed is safe only where extra width does not lengthen a line: the card
-  grid turns it into more columns, so cards get NARROWER (347px to 335px at 1710). **Never bleed a
-  table** — `td` is the second-largest contributor to that count.
+- **ONE PAGE WIDTH, 84rem, AND THE TWO-TRACK VERSION IS QUOTED BECAUSE IT SHIPPED AND WAS WRONG.**
+  It read *"TWO WIDTH TRACKS, AND WIDENING THE READING COLUMN IS THE WRONG FIX — `.shell` is 68rem
+  and holds prose; `--wide` (84rem) with the `.bleed` pattern is for surfaces that are NOT prose"*.
+  It gave the artwork 84rem and the text 68rem, and **the left edge moved as a reader scrolled past
+  the map.** The frame is now one width and prose is held at `--measure` inside it. **The cost was
+  measured twice, by two instruments that agreed:** over-80ch text lines across six pages go 470 to
+  997 and the worst case 102ch to 127ch, almost all of it prose in TABLE CELLS, where `--measure`
+  does not reach. **The operator asked for the width with that measurement in front of them.**
+  Capping table-cell prose is the follow-up that pays it back, and until it lands this is a known,
+  accepted cost rather than an oversight.
 - **THE LANDING ARTWORK SHIPS TWO THIRD-PARTY COPYRIGHTED ASSETS, AND THEY ARE THE ONLY ONES.**
   Both are the Survey of India *Political Map of India*, 13th edition: the **vector outline** in
   `lib/india-outline.ts`, which is what a reader sees, and the **published sheet** in `public/map/`,

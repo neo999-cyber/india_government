@@ -128,39 +128,33 @@ test.describe('record constellation', () => {
   }
 
   /**
-   * THE WIDE TRACK — a non-prose surface leaves the reading column and never leaves the viewport.
+   * ONE PAGE EDGE — the artwork and the prose start at the same x, at every width.
    *
-   * On a 1710px display the shell caps at 1088px and leaves 311px of margin each side. That is
-   * CORRECT for prose — it measures exactly 68 characters a line — and wrong for the artwork, which
-   * was capped by the same number for no reason. Widening the shell itself was measured and
-   * rejected: 343 text elements already exceed 80ch inside tables and lists, and a 1344px shell
-   * would have taken that to 964.
+   * **THIS TEST PREVIOUSLY ASSERTED THE OPPOSITE and the withdrawn assertion is worth recording:**
+   * it required the artwork to be WIDER than the shell, because for one commit the page ran two
+   * width tracks — 84rem for surfaces, 68rem for text. The result was a left edge that moved as a
+   * reader scrolled past the map, which the operator caught on sight. The page is now one 84rem
+   * frame with prose held at `--measure` inside it.
    *
-   * So the surface bleeds and the column does not, and the risk that carries is overflow — which is
-   * what this binds, at the widths where the clamp is actually doing work.
+   * So the property to bind is ALIGNMENT, not width. A future change that re-widens one element
+   * without the other reintroduces exactly the defect that was shipped and reverted.
    */
-  for (const width of [1100, 1280, 1440, 1710] as const) {
-    test(`${width}px — the artwork uses the width without overflowing it`, async ({ page }) => {
+  for (const width of [768, 1100, 1280, 1440, 1710] as const) {
+    test(`${width}px — the artwork and the prose share one left edge`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 });
       await page.goto('/');
 
-      const win = (await page.locator('.rc-window').boundingBox())!;
-      const shell = (await page.locator('.shell').boundingBox())!;
+      const h1 = (await page.locator('h1').first().boundingBox())!;
+      const art = (await page.locator('.rc-window').boundingBox())!;
 
-      expect(win.x, 'the window runs off the left edge').toBeGreaterThanOrEqual(-1);
-      expect(win.x + win.width, 'the window runs off the right edge').toBeLessThanOrEqual(width + 1);
-
-      // Above the shell's cap it must actually be wider, or the bleed is doing nothing.
-      if (width >= 1280) {
-        expect(win.width, 'the artwork is still confined to the reading column').toBeGreaterThan(
-          shell.width,
-        );
-      }
+      expect(Math.abs(art.x - h1.x), 'the artwork and the heading start at different x').toBeLessThanOrEqual(1);
+      expect(art.x, 'the artwork runs off the left edge').toBeGreaterThanOrEqual(-1);
+      expect(art.x + art.width, 'the artwork runs off the right edge').toBeLessThanOrEqual(width + 1);
 
       const scrolls = await page.evaluate(
         () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
       );
-      expect(scrolls, 'the wide surface makes the document scroll sideways').toBe(false);
+      expect(scrolls, 'the page scrolls sideways').toBe(false);
     });
   }
 

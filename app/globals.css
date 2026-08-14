@@ -91,12 +91,6 @@
 
   --measure: 68ch;
   --gutter: 1.5rem;
-  /* THE WIDE TRACK. The reading column is `.shell` at 68rem and it is NOT this. Measured on a
-     1710px display: prose already caps itself at exactly 68 characters a line, so the empty margins
-     are the text behaving correctly — but the CHARTS and CARD GRIDS were capped by the same 1088px
-     and had no reason to be. Widening `.shell` instead was measured and rejected: 343 text elements
-     already exceed 80ch inside tables and lists, and a 1344px shell would take that to 964. */
-  --wide: 84rem;
 
   /* TELLS THE BROWSER, NOT JUST THE STYLESHEET. Without this the native controls render light on a
      dark page: `ListingFacets` has a search input and two <select>s on every large index, and the
@@ -190,8 +184,18 @@ code {
 
 /* --- shell --------------------------------------------------------------- */
 
+/* ONE PAGE WIDTH — 84rem from 2026-08-14, and the withdrawn value is quoted: it was 68rem.
+   The two-track layout that briefly stood here gave the artwork 84rem and the text 68rem, and the
+   result was a LEFT EDGE THAT MOVED as a reader scrolled past the map. Restated: the frame is one
+   width and prose is held at `--measure` INSIDE it, so the text column reads as it did while the
+   page fills more of a large screen.
+
+   THE COST IS MEASURED AND IT IS REAL. Across six pages, text lines running past 80 characters go
+   from 470 to 997, and the worst case from 102 to 127 characters — measured twice, by two different
+   instruments, both agreeing. Almost all of it is prose inside TABLE CELLS, where `--measure` does
+   not reach. Capping those cells is the follow-up that pays this back. */
 .shell {
-  max-width: 68rem;
+  max-width: 84rem;
   margin: 0 auto;
   padding: 0 var(--gutter) 5rem;
 }
@@ -2001,9 +2005,6 @@ tbody > tr:has(+ .caveat-row) > td {
    with a 17rem minimum turns extra width into extra columns, so at 1710px the board goes from three
    cards to four and each card gets NARROWER. Card text lines shorten; nothing is stretched. */
 .cards {
-  --bleed-w: min(var(--wide), calc(100vw - 3rem));
-  width: var(--bleed-w);
-  margin-inline: calc((100% - var(--bleed-w)) / 2);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
   gap: 1px;
@@ -4553,16 +4554,6 @@ pre {
   max-width: 100%;
 }
 
-/* A surface that is not prose may leave the reading column. It never exceeds the viewport: the
-   width is clamped to `100vw - 3rem`, and the 3rem is deliberate headroom for a classic scrollbar,
-   which `100vw` includes and `clientWidth` does not. Below about 1100px the clamp collapses it back
-   to the shell's own width and this becomes a no-op, so there is no breakpoint to maintain. */
-.bleed {
-  --bleed-w: min(var(--wide), calc(100vw - 3rem));
-  width: var(--bleed-w);
-  margin-inline: calc((100% - var(--bleed-w)) / 2);
-}
-
 /* ============================ THE RECORD CONSTELLATION — landing artwork =====================
  *
  * "India, made of records." Built to the operator's design reference: a split window, the official
@@ -4618,9 +4609,6 @@ pre {
 }
 
 .rc-window {
-  --bleed-w: min(var(--wide), calc(100vw - 3rem));
-  width: var(--bleed-w);
-  margin-inline: calc((100% - var(--bleed-w)) / 2);
   display: grid;
   grid-template-columns: minmax(17rem, 0.72fr) minmax(26rem, 1.28fr);
   min-height: 41rem;
