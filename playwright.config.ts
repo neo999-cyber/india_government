@@ -49,7 +49,7 @@ export default defineConfig({
   projects: [
     {
       name: 'desktop',
-      testMatch: /(search-count|target-size|allpages|rail)\.spec\.ts/,
+      testMatch: /(search-count|target-size|allpages|rail|chart-labels)\.spec\.ts/,
       use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 900 } },
     },
     {

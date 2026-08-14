@@ -50,6 +50,7 @@ const UPDATE = process.argv.includes('--update');
  */
 const WATCHED = [
   { script: 'validate', figures: { recordsValidated: /over ([\d,]+) ledger/ } },
+  { script: 'css-vars', figures: { varUses: /OK — ([\d,]+) var\(\) use/, declared: /\((\d+) declared/ } },
   { script: 'distinct-titles', figures: { recordsScanned: /OK — ([\d,]+) records across 3 layers/ } },
   { script: 'reachability', figures: { marksDeclared: /(?:\d+)\/([\d,]+) declared marks/, pagesScanned: /\(([\d,]+) pages scanned\)/ } },
   { script: 'listing-marks', figures: { listingRows: /OK — ([\d,]+) listing rows/, pagesScanned: /across ([\d,]+) built pages/, marksRequired: /([\d,]+) required marks/ } },

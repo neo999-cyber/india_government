@@ -2,6 +2,10 @@
   "validate": {
     "recordsValidated": 223
   },
+  "css-vars": {
+    "varUses": 643,
+    "declared": 34
+  },
   "distinct-titles": {
     "recordsScanned": 619
   },
