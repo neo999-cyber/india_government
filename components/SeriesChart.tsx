@@ -125,6 +125,54 @@ export function SeriesChart({
     .filter((e) => e.i >= 0);
 
   /**
+   * LABEL PLACEMENT — two lanes and a right-edge flip, because every label used to sit on one line
+   * at one height and two events close together simply overlapped.
+   *
+   * **Measured before it was fixed: three overlapping pairs across eight pages**, worst 60px, on the
+   * topic lead charts where two commitment years fall near each other. It looked like a rendering
+   * bug because it was one.
+   *
+   * **THE WIDTH IS ESTIMATED, NOT MEASURED, AND IT HAS TO BE.** This is server-rendered SVG — there
+   * is no layout to ask. The label is `.chart-event-label`: IBM Plex Mono at 9px with 0.08em
+   * tracking, so every glyph advances the same 0.6em + tracking. `CH` below is that advance, and
+   * the estimate is checked against the built output rather than trusted.
+   *
+   * **NOTHING IS DROPPED.** Where more than two labels collide the third reuses the nearer lane and
+   * may still touch — a label removed is a commitment year the reader never learns about, and that
+   * is worse than a tight fit. The lanes reduce collisions; they do not promise none.
+   */
+  const CH = 9 * 0.6 + 9 * 0.08; // advance per character: mono at 9px, plus letter-spacing
+  const GAP = 8;
+  /**
+   * LANE SPACING IS 13 BECAUSE THE LABEL BOX IS 12, and the first attempt used 11 — one pixel less
+   * than the box. Two labels in DIFFERENT lanes still overlapped by 1px, so the fix reported four
+   * collisions where there had been three and I had to measure the rendered boxes to see it:
+   * lane 0 occupied screen y 13-25 and lane 1 occupied 24-36. **A lane that does not clear the
+   * glyph box is not a lane.**
+   *
+   * THREE lanes, not two: `/domains/banking/` has commitment years in 2014, 2015 and 2016, and with
+   * two lanes the third wraps back onto the first at almost exactly its right edge.
+   */
+  const LANES = 3;
+  const LANE_H = 13;
+  const laneEnd: number[] = [];
+  const placedEvents = eventMarks.map((e) => {
+    const w = e.label.length * CH;
+    // Past the right edge, the label reads back from the tick instead of running off the chart.
+    const flip = x(e.i) + 5 + w > W - PAD.right;
+    const left = flip ? x(e.i) - 5 - w : x(e.i) + 5;
+    let lane = [...Array(LANES).keys()].find(
+      (l) => laneEnd[l] === undefined || left >= laneEnd[l] + GAP,
+    );
+    // All lanes busy: reuse the one that frees up soonest rather than drop the label. A commitment
+    // year the reader never learns about is worse than a tight fit.
+    if (lane === undefined)
+      lane = [...Array(LANES).keys()].reduce((a, b) => (laneEnd[a] <= laneEnd[b] ? a : b));
+    laneEnd[lane] = left + w;
+    return { ...e, lane, flip };
+  });
+
+  /**
    * Segments. A new one starts whenever the line may not continue: a missing value, a
    * non-consecutive year, or a declared break at this period. The break case is rule 2 — the
    * seam is where a reader must NOT read straight through.
@@ -198,10 +246,15 @@ export function SeriesChart({
 
           {/* THE SEAM. A solid red stop, drawn before the line so the line reads on top of it —
               and never a bridge across it. */}
-          {eventMarks.map((e) => (
+          {placedEvents.map((e) => (
           <g key={`ev-${e.year}`}>
             <line className="chart-event" x1={x(e.i)} x2={x(e.i)} y1={PAD.top - 6} y2={H - PAD.bottom} />
-            <text className="chart-event-label" x={x(e.i) + 5} y={PAD.top + 4}>
+            <text
+              className="chart-event-label"
+              x={e.flip ? x(e.i) - 5 : x(e.i) + 5}
+              y={PAD.top + 4 + e.lane * LANE_H}
+              textAnchor={e.flip ? 'end' : undefined}
+            >
               {e.label}
             </text>
           </g>

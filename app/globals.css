@@ -3108,7 +3108,10 @@ details.more > summary {
 }
 
 .pslope-gap {
-  border-left-color: var(--rule-strong, var(--rule));
+  /* `--rule-strong` was never declared, here or anywhere, so this has always rendered as
+     `var(--rule)`. Using the declared name changes nothing on the page and stops the rule
+     promising a token that does not exist. */
+  border-left-color: var(--rule);
   color: var(--ink-dim);
 }
 
@@ -3307,7 +3310,8 @@ details.more > summary {
   min-height: 44px;
   padding: 0 0.9rem;
   background: none;
-  border: 1px solid var(--rule-strong, var(--rule));
+  /* Was `var(--rule-strong, var(--rule))` — see the note above; the phantom never resolved. */
+  border: 1px solid var(--rule);
   color: var(--ink-2);
   cursor: pointer;
 }
@@ -3729,7 +3733,11 @@ details.more > summary {
 .yr-rail { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 1.25rem 0; }
 .yr-rail a,
 .yr-rail span {
-  font-family: var(--mono, monospace);
+  /* WAS `var(--mono, monospace)` — the twelfth of twelve, and the one the hand sweep missed. The
+     other eleven had no fallback and rendered in the inherited SANS, which is what made them
+     findable. This one fell back to a generic monospace, so the year rail rendered in the system
+     mono rather than the site's, and looked close enough to be right. Caught by `css-vars`. */
+  font-family: var(--font-mono);
   font-size: 0.8125rem;
   padding: 0.3rem 0.55rem;
   border: 1px solid var(--rule);

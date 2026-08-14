@@ -659,10 +659,23 @@ printed operands. A non-reconstructing figure must be declared, not merely corre
 **The gate list, run in full every cycle:** `deploy-chain` · `validate` · `typecheck` ·
 `validate:selftest` · `reachability` · `no-unguarded-prose-field` · `field-render-audit` ·
 `quotation-identity` · `domain-coverage` (carrying `lens-empty`) · `figure-consistency` ·
-`enum-stamp` · `phase-name` · `listing-marks` · `rendered-space` · `unrecognised-rows` · `gate-scope` · `url-check`
+`css-vars` · `enum-stamp` · `phase-name` · `listing-marks` · `rendered-space` · `unrecognised-rows` · `gate-scope` · `url-check`
 on `/data`. Plus an arithmetic hand-check of every derived figure, a check that every declared lens
 returns a non-empty and correct set, and zero forward references between `parts/` files.
 `[R-7d9f2e]`
+
+**`css-vars` IS THE FIRST GATE OVER THE STYLESHEET ITSELF, AND A FALLBACK IS WHAT MADE ITS DEFECT
+INVISIBLE.** `--mono` was never a token — the name is `--font-mono` — and eleven rules asked for it,
+every one a system label, every one silently rendering in the inherited sans. **A TWELFTH SURVIVED
+THE HAND SWEEP THAT FIXED THE ELEVEN**, because `var(--mono, monospace)` fell back to a generic
+monospace: invisible to a search for the broken pattern and invisible on the page. **A fallback does
+not make an undeclared property correct; it makes it quiet**, which is why the gate's control
+asserts the fallback case specifically. Declarations are collected from the stylesheets, from
+`next/font` `variable:` entries, and from TSX inline styles in BOTH spellings the codebase uses —
+reading one would have reported `--scrub-t` and `--w` as phantoms. It found `--rule-strong`, used
+twice and declared nowhere, on its first run. *It says nothing about UNUSED declarations: that is
+dead weight, not a rendering defect, and folding them together would make one failure mean two
+things.*
 
 **`rendered-space` is the first gate over the SHAPE of rendered prose rather than its presence.** SWC
 trims whitespace at the start of a JSX text chunk spanning a newline, so `{total} series begin` welds
