@@ -1,0 +1,70 @@
+[
+  {
+    "id": "L-0227",
+    "title": "The Constitution (One Hundred and Thirty-first Amendment) Bill, 2026: the attempt to lift the seat freeze, negatived in the Lok Sabha",
+    "date": "2026-04-16",
+    "dateEnd": "2026-04-17",
+    "term": "T3",
+    "domains": ["governance", "federalism"],
+    "type": "reform",
+    "summary": "On 16 April 2026 the Government introduced in the Lok Sabha a constitutional amendment that would have omitted the third proviso to article 82 — the freeze, since the Constitution (Eighty-fourth Amendment) Act, 2001, on readjusting the allocation of Lok Sabha seats among the States — capped the House at not more than 815 elected members from the States and 35 from the Union territories, and made the one-third reservation of seats for women inserted by the Constitution (One Hundred and Sixth Amendment) Act, 2023 operative on a delimitation carried out on the latest published census. A companion Delimitation Bill, 2026 was introduced the same day. The House debated all of it on 17 April 2026 and the amendment did not pass. Parliament's own legislation database records Bill No. 107 of 2026 as Negatived.",
+    "claimAtLaunch": "From the Bill's Statement of Objects and Reasons, paragraph 6, as introduced: \"The next census and the consequential delimitation exercise thereafter will take considerable time and thus, delay the effective and dedicated participation of women in our democratic polity. Hence, the objective of the proposed Bill is to operationalise one-third reservation for women, including women belonging to the Scheduled Castes and the Scheduled Tribes, in the House of the People and the Legislative Assemblies of the States, the National Capital Territory of Delhi and the Union territories through delimitation exercise to be undertaken on the basis of the population figures of the latest published census.\"",
+    "objectives": [
+      {
+        "text": "Operationalise the one-third reservation of seats for women inserted by the Constitution (One Hundred and Sixth Amendment) Act, 2023, through a delimitation carried out on the population figures of the latest published census. Stated as the objective of the Bill in paragraph 6 of its own Statement of Objects and Reasons.",
+        "quantified": true,
+        "measurement": "not-met",
+        "grounds": true
+      },
+      {
+        "text": "Omit the third proviso to article 82 of the Constitution — the bar, in force since the Constitution (Eighty-fourth Amendment) Act, 2001, on any fresh readjustment of constituencies until the relevant figures of the first census taken after 2026 are published. Clause 4(d) of the Bill as introduced.",
+        "quantified": false,
+        "measurement": "not-met",
+        "grounds": true
+      },
+      {
+        "text": "Substitute article 81(1) so that the House of the People consists of not more than eight hundred and fifteen members chosen by direct election from territorial constituencies in the States and not more than thirty-five members representing the Union territories. Clause 3(a) of the Bill as introduced.",
+        "quantified": true,
+        "measurement": "not-met",
+        "grounds": true
+      }
+    ],
+    "whatHappened": "Bill No. 107 of 2026 and the Delimitation Bill, 2026 (Bill No. 108) were introduced in the Lok Sabha on 16 April 2026, both from the Ministry of Law and Justice. The Lok Sabha debate index records a sitting of 17 April 2026 under GOVERNMENT BILLS covering the Constitution (One Hundred and Thirty-first Amendment) Bill, the Union Territories Laws (Amendment) Bill and the Delimitation Bill together, and titles that record \"- not passed\". The legislation database carries Bill 107 with status Negatived. All three objectives above therefore failed together: none of the amendments took effect, so the verdict rests on all of them and no limb is left ungrounded.",
+    "assessment": "failed",
+    "independence": "intra-state",
+    "caseFor": "The Government's case, in the Bill's own words, is that the 2023 women's reservation cannot begin until a delimitation is done, that the next census and the delimitation following it would take considerable time, and that tying the reservation to the latest published census instead would start it sooner. The Statement of Objects and Reasons also records that the 1971 freeze \"served an important policy purpose\" and argues the demographic case has changed: \"significant inter-State and intra-State population shifts, rapid urbanisation and migration, and disproportionate growth in certain regions, resulting in wide disparities in the population and the constituencies\".",
+    "caseAgainst": "The House did not pass it, and a constitutional amendment requires the special majority of article 368(2). The Bill would have ended a freeze that has held the inter-State allocation of Lok Sabha seats at 1971 population since 2001, and no source held here records what was argued against it or by whom — the members listed in the debate index are a participation list, not positions. Nothing in this record establishes the grounds of the defeat.",
+    "sources": [
+      {
+        "name": "Lok Sabha legislation database, Bills negatived in the Lok Sabha — Bill No. 107 of 2026, \"THE CONSTITUTION (ONE HUNDRED AND THIRTY-FIRST AMENDMENT) BILL, 2026\", billIntroducedDate 2026-04-16, status \"Negatived\". Parliament of India JSON API, retrieved 2026-08-14",
+        "url": "https://sansad.in/api_rs/legislation/getBills?house=Lok%20Sabha&billStatus=Negatived&page=1&size=8&locale=en&sortOn=billIntroducedDate&sortBy=desc",
+        "tier": "T1"
+      },
+      {
+        "name": "Lok Sabha debate index, 18th Lok Sabha session 7 — dbSlno 5667, debateDate 17/04/2026, GOVERNMENT BILLS, title \"The Constitution (One Hundred and Thirty-First Amendment) Bill, 2026 and Union Territories Laws (Amendment) Bill, 2026 and Delimitation Bill, 2026?Contd.. - not passed\". Parliament of India JSON API, retrieved 2026-08-14",
+        "url": "https://sansad.in/api_ls/debate/debate-search?debateTypeId=&loksabha=18&sessionNumber=7&fromDate=&toDate=&searchKeyword=Delimitation&page=1&size=10&sortBy&sortOrder",
+        "tier": "T1"
+      },
+      {
+        "name": "The Constitution (One Hundred and Thirty-first Amendment) Bill, 2026, as introduced in Lok Sabha — Bill No. 107 of 2026, text and Statement of Objects and Reasons. Retrieved 2026-08-14, 349,595 bytes",
+        "url": "https://sansad.in/getFile/BillsTexts/LSBillTexts/Asintroduced/AS%20INTRO416202612944PM.pdf?source=legislation",
+        "tier": "T1"
+      },
+      {
+        "name": "The Delimitation Bill, 2026, as introduced in Lok Sabha — Bill No. 108 of 2026, the companion machinery Bill. Retrieved 2026-08-14, 252,428 bytes",
+        "url": "https://sansad.in/getFile/BillsTexts/LSBillTexts/Asintroduced/AS%20INTRO%20THE%20DELIMITATION416202611944PM.pdf?source=legislation",
+        "tier": "T1"
+      },
+      {
+        "name": "Lok Sabha sessions and sitting dates — 18th Lok Sabha, session 7: \"28/01/2026 to 02/04/2026\" and \"16/04/2026 to 18/04/2026\". Parliament of India JSON API, retrieved 2026-08-14",
+        "url": "https://sansad.in/api_ls/business/getAllLoksabhaAndSession?locale=en",
+        "tier": "T1"
+      }
+    ],
+    "confidence": "high",
+    "asOf": "2026-08-14",
+    "caveat": "The outcome is established and the margin is not. Parliament's own database records Bill No. 107 of 2026 as Negatived and titles the sitting of 17 April 2026 \"not passed\", but no source held here gives the division figures, and none establishes whether the Bill fell short of the two-thirds-of-members-present-and-voting that article 368(2) requires or was defeated on a simple majority. Accounts outside the parliamentary record report figures; they were not retrieved for this record and nothing here rests on them.",
+    "assessmentNote": "failed, on the ordinary definition — the measure did not achieve the objective stated at announcement, and the objective is internal to the measure (its own Statement of Objects and Reasons), so Ruling 5's imposed-duty branch is not engaged. The mechanism is a negative vote in the House rather than a court striking the measure down, which the schema's definition of failed treats as the same outcome by a different mechanism, recorded here as it requires. NOT reversed: that value is for the enacting authority withdrawing or repealing its own measure, and nothing was enacted — the House refused the Bill, which is not the Government retreating. NOT too-early: the outcome is known. NOT no-objective: paragraph 6 of the Statement of Objects and Reasons states one. Independence is intra-state and this is the paradigm qualifying case under Ruling 1a — the Lok Sabha's legislation database publishes bill outcomes as part of its own routine function, not in support of anyone's claim, and the outcome it records is adverse to the body that moved the Bill. There is no unmeasured[] entry: the division figures are a RETRIEVAL failure on this instrument's part, not an absence in the published record, and the two are not the same thing.",
+    "revisitTrigger": "The Lok Sabha Bulletin Part I or the verbatim debate text for 17 April 2026, at getFile/bull1mk/18/VII/ or getFile/debatestextmk/18/VII/ — neither is present at those paths as at 2026-08-14 though the same conventions serve earlier sittings. Either would establish the division and the ground of the defeat. Separately, Parliament's database carries the companion Delimitation Bill, 2026 (Bill No. 108) as status \"Pending\" as at 2026-08-14 while accounts outside the record report it withdrawn; a research pass should settle that before any record asserts either."
+  }
+]
