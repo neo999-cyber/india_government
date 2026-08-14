@@ -70,7 +70,11 @@ export function DomainSections({
   counts: Record<DomainSectionKey, number>;
 }) {
   return (
-    <nav className="dsecnav" aria-label="Sections of this topic">
+    <nav className="rail dsecnav" aria-label="Sections of this topic">
+      {/* THE HEADING IS FOR THE RAIL PRESENTATION ONLY. As a horizontal strip under the standfirst
+          it needs no label — it reads as a strip of links. Standing in a column beside the page it
+          does, and a bare list of four words in the margin is the thing readers ignore. */}
+      <span className="rail-h mono">On this page</span>
       {DOMAIN_SECTIONS.map((sct) => (
         <a key={sct.key} className="dsecnav-i" href={`#${sct.key}`}>
           {sct.label}
