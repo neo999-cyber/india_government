@@ -763,15 +763,23 @@ what is done, state what is not, and say whether it was attempted. `[R-db403e]`
 - Every view answers "what does this number rest on?" — one click to source, tier and provenance.
 - Palette is Bone & Indigo, defined as tokens; nothing hardcodes a literal. `[R-34510f]`
 - **ONE PAGE WIDTH, 84rem, AND THE TWO-TRACK VERSION IS QUOTED BECAUSE IT SHIPPED AND WAS WRONG.**
-  It read *"TWO WIDTH TRACKS, AND WIDENING THE READING COLUMN IS THE WRONG FIX — `.shell` is 68rem
-  and holds prose; `--wide` (84rem) with the `.bleed` pattern is for surfaces that are NOT prose"*.
-  It gave the artwork 84rem and the text 68rem, and **the left edge moved as a reader scrolled past
-  the map.** The frame is now one width and prose is held at `--measure` inside it. **The cost was
-  measured twice, by two instruments that agreed:** over-80ch text lines across six pages go 470 to
-  997 and the worst case 102ch to 127ch, almost all of it prose in TABLE CELLS, where `--measure`
-  does not reach. **The operator asked for the width with that measurement in front of them.**
-  Capping table-cell prose is the follow-up that pays it back, and until it lands this is a known,
-  accepted cost rather than an oversight.
+  It read *"TWO WIDTH TRACKS — `.shell` is 68rem and holds prose; `--wide` (84rem) with the `.bleed`
+  pattern is for surfaces that are NOT prose"*. It gave the artwork 84rem and the text 68rem, and
+  **the left edge moved as a reader scrolled past the map.** One frame now, prose at `--measure`
+  inside it. *Bound by `constellation.spec.ts`, which asserts the artwork and the h1 share a left
+  edge at five widths — it previously asserted the opposite and failed, correctly.*
+- **`--measure` DOES NOT REACH INSIDE A TABLE, AND THAT IS WHERE THE LONG LINES WERE.** A `td`, a
+  `.t-note` and an `li` take their width from the layout, so widening the frame took 1,003 elements
+  past 80 characters a line across seven pages, worst 127. Capped at 78ch — **1,003 to 5**, worst
+  114, the five being `t-note` inside cells where `max-width` is only advisory in an auto table
+  layout. **Caps, not widths:** a short cell is unaffected, no table changed width, none began to
+  scroll, and `/lenses/`, `/directory/` and `/peers/` did not move. Table pages get taller —
+  `/series/` by ~5,100px — which is what shorter lines cost.
+- **MEASURING LINE LENGTH: measure the TEXT-BEARING BLOCK against ITS OWN FONT.** This instrument
+  was wrong twice in one session and both errors inflated the count. Measuring the `td` rather than
+  the capped span inside it reported cells as over-long when the text was not; and dividing a span's
+  pixel width by the PARENT's character width inflates the ratio whenever the two fonts differ. Walk
+  down to the block that actually holds the text, and take `ch` from that element.
 - **THE LANDING ARTWORK SHIPS TWO THIRD-PARTY COPYRIGHTED ASSETS, AND THEY ARE THE ONLY ONES.**
   Both are the Survey of India *Political Map of India*, 13th edition: the **vector outline** in
   `lib/india-outline.ts`, which is what a reader sees, and the **published sheet** in `public/map/`,

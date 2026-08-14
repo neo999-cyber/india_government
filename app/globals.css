@@ -1887,9 +1887,17 @@ tr th:last-child {
 }
 
 .caveat-row .caveat-inline {
-  /* Wider than --measure on purpose: the row spans the table, and re-narrowing it here would
-     reinstate the tall-thin column this change exists to remove. */
-  max-width: none;
+  /* CAPPED AT 78ch FROM 2026-08-14. The withdrawn value was `max-width: none`, and its reason is
+     quoted because it was right about the thing it was fixing and wrong about the range: *"Wider
+     than --measure on purpose: the row spans the table, and re-narrowing it here would reinstate
+     the tall-thin column this change exists to remove."*
+
+     The column it escaped was 140px. 78ch is not that: it is the same cap the outcome track already
+     carries, and at 84rem the uncapped caveat measured **127 characters a line** — roughly double
+     the readable band, on the one piece of text rule 3a says must be read in full. Escaping a
+     140px cell and filling a 1296px row are not the same requirement, and the old comment treated
+     them as one. */
+  max-width: 78ch;
 }
 
 /* The record row above it loses its own bottom rule, so a record and its caveat read as one
@@ -5045,4 +5053,26 @@ pre {
   margin: 0 0 0.5rem;
   color: var(--ink-2);
   font-size: 0.875rem;
+}
+
+/* ============================ LINE LENGTH INSIDE TABLES — 2026-08-14 =========================
+ *
+ * `--measure` holds prose to 68 characters and does not reach inside a table: a `td`, a `.t-note`
+ * and an `li` all set their own width from the layout around them. At the 84rem frame that left
+ * **1,003 text elements running past 80 characters a line across seven pages, the worst at 127** —
+ * the measured cost of the width change, recorded there as a debt and paid here.
+ *
+ * **These are caps, not widths.** `max-width` on a short cell does nothing at all; it bites only
+ * where a cell holds a sentence. Measured before adopting: no table changes width, no `.table-wrap`
+ * begins to scroll, and `/lenses/`, `/directory/` and `/peers/` do not move by a pixel. Table pages
+ * get TALLER — `/series/` by about 5,100px — which is what shorter lines cost and the reason the
+ * trade is worth stating rather than hiding.
+ *
+ * **`td` is advisory in an auto table layout** and that is why five stragglers remain, all
+ * `.t-note` inside cells the browser widens anyway. 1,003 to 5 is the honest figure, not zero.
+ * ========================================================================================== */
+td,
+.t-note,
+li {
+  max-width: 78ch;
 }
