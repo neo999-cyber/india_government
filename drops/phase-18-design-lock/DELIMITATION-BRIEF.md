@@ -263,6 +263,54 @@ rest on T4 alone. **The second objection is answered.** The first still holds, s
 **Still owed, and neither blocks the record:** the division figures, and the true status of the
 Delimitation Bill.
 
+
+## 3f. FIFTH ATTEMPT, 2026-08-14 — THE WITHDRAWAL HAS A POSITIVE CONTROL AND FAILS IT
+
+**The Delimitation Bill question is now answered as far as the record can answer it, and the answer
+is stated as what the sources CONTAIN.**
+
+`GET /api_ls/debate/debate-search?loksabha=18&sessionNumber=7&fromDate=17/04/2026&toDate=17/04/2026`
+returns the **complete eight-item record of that day's business**: papers laid, two committee
+presentations, a ministerial correction, two statutory resolutions (both *adopted*), a point of
+order, and the single GOVERNMENT BILLS entry covering all three Bills. **No withdrawal motion, and
+no division record.**
+
+The same index for **18/04/2026** returns **one item** — *"The Speaker made Valedictory Reference on
+the conclusion of the 7th Session"*. No legislative business on the session's last sitting day.
+
+### THE POSITIVE CONTROL, WHICH IS WHAT MAKES THE ABSENCE MEAN ANYTHING
+
+Searching session 7 for `withdraw` returns five matches, and one is exactly the form a withdrawal
+takes in this index:
+
+> *"The Jan Vishwas (Amendment of Provisions) Bill, 2025-**Withdrawn**"* — 17/03/2026
+
+**So the index records Bill withdrawals, with that suffix, and did so in this very session a month
+earlier.** Its silence on the Delimitation Bill is therefore an observation and not a gap in
+coverage. It sits alongside the legislation database carrying Bill 108 as `Pending` while emitting
+`Withdrawn` for 90 other Lok Sabha Bills.
+
+**What this does NOT license.** It is not a finding that no withdrawal happened — that is a claim
+about the world, and rule 5d governs it. It is a finding that **two parliamentary indexes which
+demonstrably record withdrawals record none for this Bill.** A record may state that; it may not
+state the negative existential.
+
+### THE DIVISION FIGURES: THE SEARCH IS NOW EXHAUSTIVE AND STILL EMPTY
+
+Every route tried, each with a control where one exists:
+
+| route | result |
+|---|---|
+| `getFile/bull1mk/18/VII/` — Bulletin Part I | 404 on six known sitting dates, three date formats. **Control passes:** `18/III/02112024.pdf` is a 30-page PDF |
+| `getFile/debatestextmk/18/VII/` — verbatim text | 404 in every form. **Control passes:** `15/I/0306.pdf`, 211 KB |
+| `api_ls/debate/synopsis-*`, `uncorrected-*`, `participationInBills` | 404 on every parameter style copied from the working `debate-search` call |
+| a division or voting endpoint | **none exists** in the Wayback CDX inventory of `api_ls`/`api_rs` |
+| the day's own eight-item business record | carries no division |
+| `eparlib.sansad.in` | 000 in all four combinations — http and https, plain and pinned |
+
+**The figures are not reachable from here, and this is now a stated search rather than an
+impression.** 298/230 against a threshold of 352 remains T4 and unretrieved in any run since.
+
 ## 4. WHAT A RESEARCH PASS NEEDS TO DO — and it is now one step, not a survey
 
 **Retrieve the Lok Sabha record of 17 April 2026.** Bulletin Part I, the day's Revised List of
