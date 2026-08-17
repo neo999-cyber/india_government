@@ -335,7 +335,6 @@ function WhatHappened({ d, year }: { d: ODomain; year: number | null }) {
 
 export function OverviewBoard({
   domains,
-  reduced = false,
   headingLevel = 3,
   character = false,
 }: {
@@ -348,18 +347,17 @@ export function OverviewBoard({
    */
   headingLevel?: 2 | 3;
   /**
-   * THE LANDING PAGE'S CUT — §6b: scrub, no play, a handful of cards.
+   * REMOVED 2026-08-17 — `reduced` had exactly one caller and that caller is gone.
    *
-   * **It suppresses the play control and nothing else about how a reading is produced.** §7a holds
-   * identically: a card with no observation for the selected year says so and does not hold its
-   * last value, because `Reading` and `at()` are the same code either way. A reduced control that
-   * quietly relaxed that would be the misleading-display defect on the site's most-read page.
+   * It read: *"THE LANDING PAGE'S CUT — §6b. It suppresses the play control and nothing else about
+   * how a reading is produced … The weight saving is in the DATA, not in this flag."*
    *
-   * **The weight saving is in the DATA, not in this flag.** The caller passes five areas with
-   * `rest: []`, so only each area's head series ships; the full board carries every chartable
-   * series in all fourteen. Measured before and after in the log entry for this batch.
+   * The landing page's five-card board was measured as a strict subset of this one — same five
+   * topics, same head series, same figures — and was removed. An optional prop with no caller is
+   * dead code TypeScript will not flag, and the next reader would take the two presentations for a
+   * live design decision. The play control is now unconditional, which is what every remaining
+   * caller was already getting.
    */
-  reduced?: boolean;
   /**
    * THE ONE THING `/domains/` HAD THAT THIS BOARD DID NOT — a sentence saying what the topic IS.
    *
@@ -469,7 +467,7 @@ export function OverviewBoard({
         </div>
         <output className="scrub-out">{year ?? '—'}</output>
 
-        {motionOK && !reduced ? (
+        {motionOK ? (
           <>
             <button
               type="button"
