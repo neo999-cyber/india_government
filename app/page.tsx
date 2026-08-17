@@ -3,9 +3,6 @@ import { getSeries, ledger, provenance, series } from "@/lib/data";
 import { DOMAIN_LABELS } from "@/lib/format";
 import { DOMAINS } from "@/lib/types";
 import { SeriesChart } from "@/components/SeriesChart";
-import { OverviewBoard } from "@/components/OverviewBoard";
-import { buildBoard } from "@/app/overview/page";
-import type { Domain } from "@/lib/types";
 import { Evaluability } from "@/components/Evaluability";
 import { RecordMarks } from "@/components/marks";
 import { RecordConstellation } from "@/components/RecordConstellation";
@@ -88,28 +85,7 @@ const SUPPORTING: { id: string; takeaway: string }[] = [
 
 const THE_STOP = "schools-above-rte-ptr-primary-dise";
 
-/**
- * FIVE AREAS FOR THE LANDING BOARD, and the choice is stated because it is a selection.
- *
- * **Not a ranking and not the five most important areas.** They are the five whose head series is
- * pinned in the overview's own `HEADLINE` map AND runs the full span — so the reduced control shows
- * five lines that actually move across the scrub, which is the only thing this control is for. Any
- * area whose card would read *no observation* for most of the range would teach a reader that the
- * scrub does nothing.
- */
-const HOME_AREAS: Domain[] = [
-  "macro",
-  "education",
-  "environment",
-  "infrastructure",
-  "welfare",
-];
-
 export default function HomePage() {
-  // ONE DERIVATION, TWO CALLERS. `toO` and the pinned-headline map are the overview's, imported
-  // rather than copied; `rest: []` is the reduction and is where the weight saving is.
-  const homeBoard = buildBoard(HOME_AREAS, { headOnly: true });
-
   // The three records the cards name, read from `/data` so their marks render from the record and
   // not from the copy. Throws rather than rendering a card that names nothing.
   const WAYS = [
@@ -189,27 +165,25 @@ export default function HomePage() {
           twice — once in the SVG description for a reader who cannot see it, once in the note. */}
       <RecordConstellation counts={areaCounts} />
 
-      {/* ============================ THE YEAR CONTROL, REDUCED — §6b ========================
-          The strongest interface on the site, and until now one page had it. Five areas, one head
-          series each, scrub and no play.
+      {/* ============================ THE REDUCED BOARD IS GONE — 2026-08-17 =================
+          WITHDRAWN, and quoted because the reasoning was good and the measurement beat it. It read:
+          *"THE YEAR CONTROL, REDUCED — §6b. The strongest interface on the site, and until now one
+          page had it. Five areas, one head series each, scrub and no play."*
 
-          **`rest: []` IS THE REDUCTION.** The full board carries every chartable series in all
-          fourteen areas; this carries five head series. The flag on the component only removes the
-          play button — the weight is in what the caller passes, and it is measured in the log.
+          **Measured: all five cards were IDENTICAL to five of `/overview/`'s fourteen** — same
+          topics, same head series, same figures — and the scrub control was the same component with
+          the play button hidden. The operator read the two pages as near-duplicates and they were.
 
-          **§7a is not relaxed for the smaller version.** A card with no observation for the year
-          says so rather than holding its last value; it is the same code the full board runs. */}
-      <section className="home-year" aria-labelledby="hy-h">
-        <h2 id="hy-h">Move through the years</h2>
-        <p className="prose-note">
-          Five topics on one shared axis. Where a topic has no observation for
-          the year it says so rather than holding its last figure &mdash; which
-          is the thing this control exists to make visible.{" "}
-          <Link href="/overview/">All fourteen areas, with play &rarr;</Link>
-        </p>
-        <OverviewBoard domains={homeBoard} reduced />
-      </section>
+          **It also repeated this page against itself.** The opening chart below is the higher-
+          education enrolment ratio, and the education card in that board was the same measurement,
+          full-size at the top and again as a card a screen later.
 
+          **AND REMOVING IT RESTORES §3a's OWN ORDER**, which puts anything cross-record last: a
+          board of fourteen topics is the most cross-record thing on the site and it was sitting
+          second. What a reader now meets is the constellation, then one measurement told well.
+
+          The control is not lost — `/overview/` has it with play, speeds and all fourteen areas, and
+          the link below says so. Nothing here was unique to this page. */}
       {/* ============================ THREE WAYS THE RECORD SPEAKS ==========================
           §6a, before any navigation, because it teaches a reader what KIND of thing they are about
           to meet. **Two truths is the shape the site had no home for** and it is the corpus's most
@@ -303,13 +277,14 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* The at-a-glance path. Most readers want the whole picture before — or instead of — any
-          single chart, and the overview is built for exactly that reader. One link, high, not a
-          duplicate of the page below it. */}
+      {/* The at-a-glance path, and since 2026-08-17 the ONLY route to the year control from here —
+          the reduced board that used to sit above it is gone, because its five cards were five of
+          the overview's own fourteen. So this link now names what is on the other side rather than
+          merely pointing at it. */}
       <p className="home-overview-link">
         <Link href="/overview/">
-          See the whole record in one view — every topic, every year, and what
-          happened →
+          See the whole record in one view — all fourteen topics on one shared
+          axis, every year, with what happened →
         </Link>
       </p>
 

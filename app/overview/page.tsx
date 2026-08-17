@@ -188,10 +188,11 @@ function eventYears(d: string) {
  * `yearsTotal`, `breaks`, `composition` and `events`, which is the compiler catching the copy
  * before a reader met two boards that disagreed.
  *
- * `headOnly` is the landing page's reduction: it drops `rest`, every chartable series in the area,
- * which is where the weight is. The component's `reduced` flag only removes the play button.
+ * `headOnly` WAS an option here and is gone as of 2026-08-17, with the landing board that was its
+ * only caller: *"the landing page's reduction: it drops `rest`, every chartable series in the area"*.
+ * Every caller now gets the full board, which is what the one remaining caller always asked for.
  */
-export function buildBoard(keys: Domain[], { headOnly = false }: { headOnly?: boolean } = {}): ODomain[] {
+export function buildBoard(keys: Domain[]): ODomain[] {
   return keys.map((d) => {
     const own = series.filter((s) => s.domain === d);
     // A lens-only area reads through its lens rather than as an empty row — drawing Kashmir blank
@@ -216,7 +217,7 @@ export function buildBoard(keys: Domain[], { headOnly = false }: { headOnly?: bo
       nRecords: records,
       head: INSTEAD[d] ? null : head,
       instead: INSTEAD[d] ?? (head ? null : 'This topic holds no series long enough to chart.'),
-      rest: headOnly ? [] : chartable.filter((s) => s.id !== head?.id),
+      rest: chartable.filter((s) => s.id !== head?.id),
       obs: pts.length,
       status: {
         verified,
