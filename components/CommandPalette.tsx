@@ -22,6 +22,7 @@ const ITEMS: SearchItem[] = [
   { id: 'r-exposure', title: 'Exposure to shocks', category: 'Route', href: '/exposure/', meta: 'Demonetisation, COVID-19' },
   { id: 'r-terms', title: 'Terms of government', category: 'Route', href: '/terms/', meta: 'Term 1, Term 2, Term 3' },
   { id: 'r-peers', title: 'Four comparator countries', category: 'Route', href: '/peers/', meta: 'BGD, VNM, IDN, CHN' },
+  { id: 'r-compare', title: 'Compare series (Comparator Workbench)', category: 'Route', href: '/compare/', meta: 'Side-by-side indicator comparisons' },
   { id: 'r-method', title: 'Method, sources & tiers', category: 'Route', href: '/method/', meta: 'Validation criteria' },
 
   // Domains

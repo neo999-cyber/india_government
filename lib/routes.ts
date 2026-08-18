@@ -73,6 +73,7 @@ export const ROUTES: Record<string, { label: string; nav?: string }> = {
   '/data/': { label: 'The data', nav: 'the data' },
   '/directory/': { label: 'All pages', nav: 'all pages' },
   '/counterfactual/': { label: 'Counterfactual', nav: 'counterfactual' },
+  '/compare/': { label: 'Compare series', nav: 'side-by-side comparison' },
 };
 
 /** The destination's public name. Throws on an unknown route rather than inventing one from the
@@ -122,6 +123,7 @@ export const DIRECTORY: { label: string; items: { href: string; label: string }[
       { href: '/lenses/', label: navLabel('/lenses/') }, // was: lenses
       { href: '/terms/', label: navLabel('/terms/') }, // was: terms — ambiguous against a glossary
       { href: '/peers/', label: navLabel('/peers/') }, // was: peers
+      { href: '/compare/', label: navLabel('/compare/') },
     ],
   },
   {

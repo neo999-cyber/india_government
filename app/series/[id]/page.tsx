@@ -17,6 +17,7 @@ import {RegimeOverlap} from '@/components/RegimeOverlap';
 import {Absences, CaveatFlag, DirectionMark, RecordMarks, SourceLine, StatusKey, TierTag} from '@/components/marks';
 import {NextSteps} from '@/components/NextSteps';
 import {citedByOverflow, stepsForSeries} from '@/lib/next-steps';
+import {ShareCardExporter} from '@/components/ShareCardExporter';
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -150,6 +151,27 @@ export default async function SeriesDetail({ params }: Props) {
       {/* Directly under this page's h1, so the chart title is the first section: h2, not h3.
           Hardcoded h3 here put every one of the 269 series pages into an h1 -> h3 skip. */}
       <SeriesChart series={s} highlightLast={false} marksHostedByPage headingLevel={2} />
+
+      <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '0.5rem 0' }}>
+        <ShareCardExporter
+          data={{
+            title: s.title,
+            domain: s.domain,
+            tier: s.tier,
+            publisher: s.source?.name,
+            unit: s.unit,
+            caveat: s.caveat,
+            points: s.points
+              .filter((p) => p.country === 'IND' && p.value !== null && typeof p.value === 'number')
+              .map((p) => ({
+                year: Number(String(p.period).replace(/^FY/, '').slice(0, 4)),
+                value: p.value as number,
+              }))
+              .filter((p) => !isNaN(p.year)),
+          }}
+          label="Share Chart Card (PNG)"
+        />
+      </div>
 
       <SeriesKeyFigures series={s} />
 
