@@ -236,9 +236,16 @@ const Spark = memo(function Spark({
               cy={y(p.v)}
               r={p.y === last.y ? 3 : 1.8}
               className={`spk-dot spk-${p.s}`}
-            />
+            >
+              <title>{`${p.y}: ${fmt(p.v)} ${s.unit} (${p.s})`}</title>
+            </circle>
           ))
         : null}
+      {hit ? (
+        <circle cx={x(hit.p.y)} cy={y(hit.p.v)} r={4.5} className="spk-hit">
+          <title>{`${hit.p.y}: ${fmt(hit.p.v)} ${s.unit}${hit.exact ? '' : ' (nearest)'}`}</title>
+        </circle>
+      ) : null}
       {/* EVENT TICKS — item 1. A record was announced in this year, in this area. They sit on the
           baseline rather than crossing the plot: the line, the seams and the scrub rule already use
           the vertical, and a fourth full-height mark would make the busiest areas unreadable
