@@ -196,6 +196,36 @@ export function SeriesChart({
   const path = (seg: { i: number; v: number }[]) =>
     seg.map((s, k) => `${k === 0 ? 'M' : 'L'} ${x(s.i).toFixed(1)} ${y(s.v).toFixed(1)}`).join(' ');
 
+  const minYear = yearOf(pts[0].period);
+  const maxYear = yearOf(pts[pts.length - 1].period);
+
+  const xForYear = (yr: number) => {
+    if (yr <= minYear) return PAD.left;
+    if (yr >= maxYear) return W - PAD.right;
+    for (let i = 0; i < pts.length - 1; i++) {
+      const y1 = yearOf(pts[i].period);
+      const y2 = yearOf(pts[i + 1].period);
+      if (yr >= y1 && yr <= y2) {
+        const frac = (yr - y1) / (y2 - y1 || 1);
+        return x(i) + frac * (x(i + 1) - x(i));
+      }
+    }
+    return PAD.left;
+  };
+
+  const termBands = [
+    { name: 'Term 1 (2014-19)', start: 2014, end: 2019, fill: 'var(--band-term-1)' },
+    { name: 'Term 2 (2019-24)', start: 2019, end: 2024, fill: 'var(--band-term-2)' },
+    { name: 'Term 3 (2024-)', start: 2024, end: 2026, fill: 'var(--band-term-3)' },
+  ]
+    .filter((t) => maxYear >= t.start && minYear <= t.end)
+    .map((t) => {
+      const startX = Math.max(PAD.left, xForYear(t.start));
+      const endX = Math.min(W - PAD.right, xForYear(t.end));
+      return { ...t, startX, endX, width: Math.max(0, endX - startX) };
+    })
+    .filter((t) => t.width > 8);
+
   const last = pts[pts.length - 1];
   const first = pts[0];
   const ticks = [yMin + (yMax - yMin) * 0.5, yMax - (yMax - yMin) * 0.08];
@@ -210,21 +240,6 @@ export function SeriesChart({
           <Link href={`/series/${series.id}/`}>{series.title}</Link>
         </Heading>
         {takeaway ? <p className="chart-takeaway">{takeaway}</p> : null}
-        {/* THE RECORD'S OWN MARKS, added 2026-08-11 — this component took the whole `Series` and
-            rendered none of them for its whole life.
- 
-            RULE 3a: a caveat renders *wherever the record appears*, and a full chart with an
-            authored takeaway is the record appearing about as loudly as it can. **The homepage's
-            OPENING chart is `higher-ed-ger`, whose caveat says roughly half the headline rise is
-            the denominator shrinking** — sitting under a takeaway that reports the rise and a
-            heading that calls it something the state measures well. It was the first thing a reader
-            met and the qualification was not there.
- 
-            NEITHER RENDER GATE COULD SEE IT, AND BOTH WERE CORRECT. `listing-marks` binds listing
-            ROWS and a feature chart is not a row; `field-render-audit` asks whether a field reaches
-            its OWN record's page, and it does. **A record EMBEDDED as a feature is outside both
-            scopes** — which is the guard-scope shape this corpus keeps paying for, in a third
-            position: not the projection, not the listing, but the embed. */}
         {marksHostedByPage ? null : <RecordMarks record={series} />}
       </figcaption>
 
@@ -235,6 +250,25 @@ export function SeriesChart({
           role="img"
           aria-label={`${series.title}. ${series.unit}. ${periodLabel(first.period, series.calendar)} to ${periodLabel(last.period, series.calendar)}.`}
         >
+          {/* Government term shading background bands */}
+          {termBands.map((t) => (
+            <g key={t.name}>
+              <rect
+                x={t.startX}
+                y={PAD.top}
+                width={t.width}
+                height={plotH}
+                fill={t.fill}
+                className="chart-term-band"
+              />
+              {t.width > 45 ? (
+                <text x={t.startX + 6} y={PAD.top + 11} className="chart-term-label">
+                  {t.name}
+                </text>
+              ) : null}
+            </g>
+          ))}
+
           {ticks.map((t, k) => (
             <g key={k}>
               <line x1={PAD.left} x2={W - PAD.right} y1={y(t)} y2={y(t)} className="chart-grid" />
@@ -247,19 +281,19 @@ export function SeriesChart({
           {/* THE SEAM. A solid red stop, drawn before the line so the line reads on top of it —
               and never a bridge across it. */}
           {placedEvents.map((e) => (
-          <g key={`ev-${e.year}`}>
-            <line className="chart-event" x1={x(e.i)} x2={x(e.i)} y1={PAD.top - 6} y2={H - PAD.bottom} />
-            <text
-              className="chart-event-label"
-              x={e.flip ? x(e.i) - 5 : x(e.i) + 5}
-              y={PAD.top + 4 + e.lane * LANE_H}
-              textAnchor={e.flip ? 'end' : undefined}
-            >
-              {e.label}
-            </text>
-          </g>
-        ))}
-        {(series.breaks ?? []).map((b) => {
+            <g key={`ev-${e.year}`}>
+              <line className="chart-event" x1={x(e.i)} x2={x(e.i)} y1={PAD.top - 6} y2={H - PAD.bottom} />
+              <text
+                className="chart-event-label"
+                x={e.flip ? x(e.i) - 5 : x(e.i) + 5}
+                y={PAD.top + 4 + e.lane * LANE_H}
+                textAnchor={e.flip ? 'end' : undefined}
+              >
+                {e.label}
+              </text>
+            </g>
+          ))}
+          {(series.breaks ?? []).map((b) => {
             const i = pts.findIndex((p) => p.period === b.period);
             if (i < 0) return null;
             return (
@@ -284,9 +318,11 @@ export function SeriesChart({
                 key={p.period}
                 cx={x(i)}
                 cy={y(p.value)}
-                r={highlightLast && i === pts.length - 1 ? 5 : 3}
+                r={highlightLast && i === pts.length - 1 ? 5 : 3.5}
                 className={`chart-dot chart-dot-${p.status}`}
-              />
+              >
+                <title>{`${periodLabel(p.period, series.calendar)}: ${p.value} ${series.unit} (${p.status})`}</title>
+              </circle>
             ),
           )}
 
