@@ -70,20 +70,42 @@
      measured ratios intact, so the decision is reversible by one attribute and nothing has to be
      reconstructed from this comment.
      ============================================================================================ */
-  --bg: #1c1c1a;              /* warm near-black canvas */
-  --surface: #262622;         /* raised panels, chips, correction blocks — LIGHTER than --bg here */
-  --rule-soft: #302f2a;       /* internal dividers */
-  --ink-2: #c4bfb2;           /* secondary text (9.30 / 8.28) */
-  --fill: #8fa0d0;            /* indigo, lifted to read on dark — chart lines, filled cells (6.59) */
-  --mark: #c9a06a;            /* brass — a mark was made. Edges, rings, dashes (7.09 / 6.31) */
-  --mark-ink: #d9b47e;        /* the same brass where it carries WORDS (8.76 / 7.80) */
-  --mark-soft: rgba(201, 160, 106, 0.16);
-  --ink: #efeae0;             /* body text — the bone that used to be the paper (14.24 / 12.67) */
-  --ink-dim: #9a958a;         /* labels, source lines, tertiary (5.72 / 5.09) */
-  --rule: #3a3934;            /* borders */
+  /* Studio Slate Dark Theme — Crisp Obsidian & Refined Slate Surfaces */
+  --bg: #0d1117;              /* deep obsidian canvas */
+  --surface: #161b22;         /* refined slate surface cards */
+  --rule-soft: #21262d;       /* subtle internal dividers */
+  --rule: #30363d;            /* slate borders */
+  --ink: #f0f6fc;             /* luminous primary body text */
+  --ink-2: #8b949e;           /* secondary description text */
+  --ink-dim: #6e7681;         /* labels, source lines, tertiary */
+  
+  --fill: #58a6ff;            /* electric blue/indigo for chart lines & highlights */
+  --mark: #f59e0b;            /* amber brass — a mark / caveat was made */
+  --mark-ink: #fbbf24;        /* luminous amber for badge text */
+  --mark-soft: rgba(245, 158, 11, 0.14);
+  
+  --alert: #f87171;           /* coral red — deaths, alerts, break seams */
+  --alert-soft: rgba(248, 113, 113, 0.14);
 
-  --alert: #ef6b6f;           /* deaths, alerts, break-seams — lightened for AA (5.69 / 5.06) */
-  --alert-soft: rgba(239, 107, 111, 0.14);
+  /* Semantic Data Integrity Accents */
+  --accent-verified: #31c48d;
+  --accent-verified-soft: rgba(49, 196, 141, 0.14);
+  --accent-caveat: #f59e0b;
+  --accent-caveat-soft: rgba(245, 158, 11, 0.14);
+  --accent-dispute: #f87171;
+  --accent-dispute-soft: rgba(248, 113, 113, 0.14);
+  --accent-unmeasured: #818cf8;
+  --accent-unmeasured-soft: rgba(129, 140, 248, 0.14);
+
+  /* Government Term Bands */
+  --band-term-1: rgba(49, 196, 141, 0.04);
+  --band-term-2: rgba(129, 140, 248, 0.04);
+  --band-term-3: rgba(245, 158, 11, 0.04);
+
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
 
   --font-sans: var(--font-body, ui-sans-serif), ui-sans-serif, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: var(--font-mono-face, ui-monospace), ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
@@ -92,10 +114,6 @@
   --measure: 68ch;
   --gutter: 1.5rem;
 
-  /* TELLS THE BROWSER, NOT JUST THE STYLESHEET. Without this the native controls render light on a
-     dark page: `ListingFacets` has a search input and two <select>s on every large index, and the
-     scrollbar and focus ring come from the platform too. A dark canvas with light OS widgets is the
-     tell that a theme was painted on rather than declared. */
   color-scheme: dark;
 }
 
@@ -1473,6 +1491,20 @@ tr th:last-child {
   stroke-linecap: round;
 }
 
+/* Government term shading bands */
+.chart-term-band {
+  transition: opacity 0.2s ease;
+}
+
+.chart-term-label {
+  fill: var(--ink-dim);
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.05em;
+  opacity: 0.65;
+  text-transform: uppercase;
+}
+
 /* The seam: solid red, the one place red is used on a chart, and it means DO NOT SPLICE.
    Never dashed — dashed brass is the denominator break, which means something else entirely. */
 .chart-seam {
@@ -1482,6 +1514,12 @@ tr th:last-child {
 
 .chart-dot {
   fill: var(--fill);
+  transition: r 0.15s ease, filter 0.15s ease;
+  cursor: pointer;
+}
+
+.chart-dot:hover {
+  filter: drop-shadow(0 0 6px var(--fill));
 }
 
 /* Rule 3: status is visible on the point itself, not in a legend a reader has to hold in mind. */
@@ -1920,14 +1958,17 @@ tbody > tr:has(+ .caveat-row) > td {
   align-items: center;
   gap: 0.85rem;
   flex-wrap: wrap;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  padding: 0.7rem 0;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 1.2rem;
   margin: 1.5rem 0 1.75rem;
   position: sticky;
-  top: 0;
-  background: var(--bg);
-  z-index: 5;
+  top: 0.8rem;
+  background: rgba(22, 27, 34, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 20;
+  box-shadow: var(--card-shadow);
 }
 
 .scrub-label {
@@ -1979,8 +2020,9 @@ tbody > tr:has(+ .caveat-row) > td {
   font: inherit;
   font-size: 0.75rem;
   font-family: var(--font-mono);
-  background: none;
+  background: var(--surface);
   border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
   color: var(--ink-2);
   padding: 0.3rem 0.6rem;
   cursor: pointer;
@@ -2015,17 +2057,25 @@ tbody > tr:has(+ .caveat-row) > td {
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-  gap: 1px;
-  background: var(--bg);
-  margin-bottom: 1rem;
+  gap: 12px;
+  background: transparent;
+  margin-bottom: 1.5rem;
 }
 
 .card {
-  background: var(--bg);
-  outline: 1px solid var(--rule-soft);
-  padding: 0.9rem 1rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.1rem 1.1rem;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--rule-soft);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
 }
 
 .card-title {
@@ -5159,3 +5209,217 @@ li {
     padding: 0.3rem 0;
   }
 }
+
+/* ============================ COMMAND PALETTE (CMD+K) ========================================= */
+.cmd-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  color: var(--ink-2);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.cmd-trigger:hover {
+  border-color: var(--mark);
+  color: var(--ink);
+  background: var(--rule-soft);
+}
+
+.cmd-trigger-icon {
+  font-size: 0.875rem;
+}
+
+.cmd-trigger-text {
+  font-size: 0.75rem;
+}
+
+.cmd-kbd {
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  color: var(--ink-dim);
+  padding: 0.05rem 0.35rem;
+  border-radius: 3px;
+  font-size: 0.6875rem;
+}
+
+.cmd-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10vh 1rem 2rem;
+}
+
+.cmd-modal {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 38rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cmd-search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.2rem;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+}
+
+.cmd-search-icon {
+  font-size: 1.1rem;
+  color: var(--ink-dim);
+}
+
+.cmd-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  outline: none;
+}
+
+.cmd-input::placeholder {
+  color: var(--ink-dim);
+}
+
+.cmd-clear {
+  background: none;
+  border: none;
+  color: var(--ink-dim);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0.2rem;
+}
+
+.cmd-clear:hover {
+  color: var(--ink);
+}
+
+.cmd-results {
+  max-height: 22rem;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.cmd-empty {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--ink-dim);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.cmd-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+.cmd-item.is-selected,
+.cmd-item:hover {
+  background: var(--rule-soft);
+}
+
+.cmd-item-main {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.cmd-badge {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  background: var(--rule);
+  color: var(--ink-2);
+  flex-shrink: 0;
+}
+
+.cmd-badge-route {
+  background: var(--accent-unmeasured-soft);
+  color: var(--accent-unmeasured);
+}
+
+.cmd-badge-domain {
+  background: var(--accent-verified-soft);
+  color: var(--accent-verified);
+}
+
+.cmd-badge-story {
+  background: var(--accent-caveat-soft);
+  color: var(--accent-caveat);
+}
+
+.cmd-badge-record {
+  background: var(--accent-dispute-soft);
+  color: var(--accent-dispute);
+}
+
+.cmd-title {
+  font-size: 0.875rem;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cmd-meta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--ink-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 14rem;
+}
+
+.cmd-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  border-top: 1px solid var(--rule-soft);
+  background: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--ink-dim);
+}
+
+.cmd-footer kbd {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  padding: 0.05rem 0.3rem;
+  border-radius: 3px;
+  color: var(--ink-2);
+}
+
