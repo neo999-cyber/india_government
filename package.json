@@ -43,6 +43,7 @@
     "pass-input": "node tools/gen-adversarial-pass-input.mjs",
     "regen:render-fixtures": "node tools/regen-render-fixtures.mjs",
     "deploy-check": "node tools/deploy-check.mjs",
+    "legacy-routes": "node tools/legacy-routes.mjs",
     "derivations": "node tools/gen-derivations.mjs",
     "enum-parity": "node tools/enum-parity.mjs --control && node tools/enum-parity.mjs",
     "withdrawn-wording": "node tools/withdrawn-wording.mjs --control && node tools/withdrawn-wording.mjs",
