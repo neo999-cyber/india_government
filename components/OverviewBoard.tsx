@@ -1,6 +1,15 @@
 'use client';
 
-import { memo, useDeferredValue, useEffect, useRef, useState } from 'react';
+import {
+  memo,
+  useCallback,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from 'react';
 import { RecordMarks } from '@/components/marks';
 import type { Domain, Unmeasured } from '@/lib/types';
 import { DOMAINS } from '@/lib/types';
@@ -126,6 +135,20 @@ const SPEEDS = [
   { label: '2×', ms: 550 },
   { label: '4×', ms: 275 },
 ] as const;
+
+const ATLAS_URL_EVENT = 'atlas-view-change';
+
+function subscribeAtlasURL(notify: () => void) {
+  window.addEventListener('popstate', notify);
+  window.addEventListener(ATLAS_URL_EVENT, notify);
+  return () => {
+    window.removeEventListener('popstate', notify);
+    window.removeEventListener(ATLAS_URL_EVENT, notify);
+  };
+}
+
+const atlasURLSnapshot = () => window.location.search;
+const atlasServerSnapshot = () => '';
 
 const fmt = (v: number) =>
   Math.abs(v) >= 100000
@@ -375,13 +398,75 @@ export function OverviewBoard({
    */
   character?: boolean;
 }) {
-  const [year, setYear] = useState<number | null>(null);
+  const [copyState, setCopyState] = useState<'idle' | 'copied' | 'failed'>('idle');
+  const search = useSyncExternalStore(subscribeAtlasURL, atlasURLSnapshot, atlasServerSnapshot);
+  const domainKeys = useMemo(() => new Set(domains.map((d) => d.key)), [domains]);
+  const { year, focused } = useMemo(() => {
+    const params = new URLSearchParams(search);
+    const requestedYear = Number(params.get('year'));
+    const validYear =
+      Number.isInteger(requestedYear) && requestedYear >= X0 && requestedYear <= X1
+        ? requestedYear
+        : null;
+    const requestedTopics = (params.get('topics') ?? '')
+      .split(',')
+      .filter((key) => domainKeys.has(key));
+    return { year: validYear, focused: new Set(requestedTopics) };
+  }, [domainKeys, search]);
+
+  const writeView = useCallback(
+    (nextYear: number | null, nextFocused: Set<string>) => {
+      const url = new URL(window.location.href);
+      if (nextYear === null) url.searchParams.delete('year');
+      else url.searchParams.set('year', String(nextYear));
+      if (nextFocused.size) {
+        const ordered = domains.filter((d) => nextFocused.has(d.key)).map((d) => d.key);
+        url.searchParams.set('topics', ordered.join(','));
+      } else {
+        url.searchParams.delete('topics');
+      }
+      window.history.replaceState(
+        window.history.state,
+        '',
+        `${url.pathname}${url.search}${url.hash}`,
+      );
+      window.dispatchEvent(new Event(ATLAS_URL_EVENT));
+      setCopyState('idle');
+    },
+    [domains],
+  );
+  const setYear = useCallback(
+    (next: number | null | ((current: number | null) => number | null)) =>
+      writeView(typeof next === 'function' ? next(year) : next, focused),
+    [focused, writeView, year],
+  );
+  const setFocused = useCallback(
+    (next: Set<string>) => writeView(year, next),
+    [writeView, year],
+  );
   /**
    * The line moves now; the words catch up. `useDeferredValue` lets React drop an intermediate
    * text update during a drag without ever dropping one at rest, so the readings are always
    * correct when the reader stops — which is the only moment they are read.
    */
   const shown = useDeferredValue(year);
+
+  /**
+   * ============================ A VIEW, NOT A NEW DATA SURFACE ================================
+   *
+   * Fourteen cards are useful as an atlas and heavy as a first comparison. Topic focus changes
+   * only which EXISTING cards are visible; it never changes their fixed order, chooses a winner,
+   * derives a category or alters a value. An empty selection means all topics, so the control can
+   * never strand the reader on a blank board.
+   *
+   * Year and topic state live in the URL because this is a public record: a view worth discussing
+   * must survive reload, the back button and a copied link. The query is optional, so `/overview/`
+   * remains the canonical old URL and a dead client bundle still renders the complete board.
+   */
+  const visibleDomains = useMemo(
+    () => (focused.size ? domains.filter((d) => focused.has(d.key)) : domains),
+    [domains, focused],
+  );
 
   /**
    * ============================ PLAY, AND THE ONE THING THAT WOULD MAKE IT DISHONEST ==========
@@ -437,7 +522,7 @@ export function OverviewBoard({
     return () => {
       if (timer.current) clearInterval(timer.current);
     };
-  }, [playing, speed]);
+  }, [playing, setYear, speed]);
 
   return (
     <div
@@ -473,6 +558,31 @@ export function OverviewBoard({
           </span>
         </div>
         <output className="scrub-out">{year ?? '—'}</output>
+
+        <span className="scrub-step" role="group" aria-label="Step through years">
+          <button
+            type="button"
+            onClick={() => {
+              setPlaying(false);
+              setYear((current) => Math.max(X0, (current ?? X0 + 1) - 1));
+            }}
+            disabled={year === X0}
+            aria-label="Previous year"
+          >
+            ←
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setPlaying(false);
+              setYear((current) => Math.min(X1, (current ?? X0 - 1) + 1));
+            }}
+            disabled={year === X1}
+            aria-label="Next year"
+          >
+            →
+          </button>
+        </span>
 
         {motionOK ? (
           <>
@@ -516,9 +626,78 @@ export function OverviewBoard({
         </button>
       </div>
 
+      <div className="board-tools">
+        <details className="board-focus">
+          <summary>
+            Focus topics
+            <span>{focused.size ? `${focused.size} of ${domains.length}` : `All ${domains.length}`}</span>
+          </summary>
+          <div className="board-focus-panel">
+            <p id="board-focus-help">
+              Select one or more topics to compare. This changes what is visible, not the data or
+              the order.
+            </p>
+            <div className="board-topic-buttons" aria-describedby="board-focus-help">
+              {domains.map((d) => {
+                const on = focused.has(d.key);
+                return (
+                  <button
+                    key={d.key}
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() => {
+                      const next = new Set(focused);
+                      if (next.has(d.key)) next.delete(d.key);
+                      else next.add(d.key);
+                      setFocused(next);
+                    }}
+                  >
+                    {d.label}
+                  </button>
+                );
+              })}
+            </div>
+            <button
+              type="button"
+              className="board-show-all"
+              disabled={!focused.size}
+              onClick={() => setFocused(new Set())}
+            >
+              Show all topics
+            </button>
+          </div>
+        </details>
+
+        <p className="board-visible" aria-live="polite">
+          Showing {visibleDomains.length} topic{visibleDomains.length === 1 ? '' : 's'}
+        </p>
+
+        <button
+          type="button"
+          className="board-copy"
+          onClick={async () => {
+            try {
+              await navigator.clipboard.writeText(window.location.href);
+              setCopyState('copied');
+            } catch {
+              setCopyState('failed');
+            }
+          }}
+        >
+          Copy this view
+        </button>
+        <span className="board-copy-status" role="status">
+          {copyState === 'copied'
+            ? 'Link copied.'
+            : copyState === 'failed'
+              ? 'Could not copy; use the browser address bar.'
+              : ''}
+        </span>
+      </div>
+
       <div className="cards">
-        {domains.map((d) => (
-          <section key={d.key} className="card">
+        {visibleDomains.map((d) => (
+          <section key={d.key} id={`topic-${d.key}`} className="card">
             <CardHeading className="card-title">
               <Link href={`/domains/${d.key}/`}>{d.label}</Link>
             </CardHeading>

@@ -31,7 +31,12 @@ import { periodLabel } from '@/lib/format';
 
 const W = 720;
 const H = 240;
+const EVENT_H = 282;
 const PAD = { top: 18, right: 16, bottom: 30, left: 44 };
+const EVENT_PAD_TOP = 60;
+const TERM_LABEL_Y = 12;
+const EVENT_LABEL_Y = 27;
+const TERM_CH = 8.5 * (0.6 + 0.05); // mono glyph plus `.chart-term-label` tracking
 
 /** Sortable year from `FY2013-14` or `2013`. The first four digits are the opening year either way. */
 const yearOf = (period: string) => Number(String(period).replace(/^FY/, '').slice(0, 4));
@@ -113,9 +118,7 @@ export function SeriesChart({
   const yMax = hi + span * 0.15;
 
   const plotW = W - PAD.left - PAD.right;
-  const plotH = H - PAD.top - PAD.bottom;
   const x = (i: number) => PAD.left + (pts.length === 1 ? plotW / 2 : (i / (pts.length - 1)) * plotW);
-  const y = (v: number) => PAD.top + plotH - ((v - yMin) / (yMax - yMin)) * plotH;
 
   const breakPeriods = new Set((series.breaks ?? []).map((b) => b.period));
 
@@ -128,7 +131,19 @@ export function SeriesChart({
     .filter((e) => e.i >= 0);
 
   /**
-   * LABEL PLACEMENT — two lanes and a right-edge flip, because every label used to sit on one line
+   * EVENT CHARTS HAVE A REAL HEADER BAND. Term names and event labels previously occupied the
+   * same 18px top padding: three event lanes could avoid one another and still sit directly over a
+   * term name. The five topic charts failed exactly that way. Giving the two layers separate rows
+   * removes the collision by construction; the event chart grows by the same 42px the header takes,
+   * so the data plot keeps its original height rather than being compressed to pay for metadata.
+   */
+  const chartH = eventMarks.length ? EVENT_H : H;
+  const plotTop = eventMarks.length ? EVENT_PAD_TOP : PAD.top;
+  const plotH = chartH - plotTop - PAD.bottom;
+  const y = (v: number) => plotTop + plotH - ((v - yMin) / (yMax - yMin)) * plotH;
+
+  /**
+   * LABEL PLACEMENT — three lanes and a right-edge flip, because every label used to sit on one line
    * at one height and two events close together simply overlapped.
    *
    * **Measured before it was fixed: three overlapping pairs across eight pages**, worst 60px, on the
@@ -225,7 +240,16 @@ export function SeriesChart({
     .map((t) => {
       const startX = Math.max(PAD.left, xForYear(t.start));
       const endX = Math.min(W - PAD.right, xForYear(t.end));
-      return { ...t, startX, endX, width: Math.max(0, endX - startX) };
+      const labelW = t.name.length * TERM_CH;
+      const labelFlip = startX + 6 + labelW > W - PAD.right;
+      return {
+        ...t,
+        startX,
+        endX,
+        width: Math.max(0, endX - startX),
+        labelX: labelFlip ? W - PAD.right - 2 : startX + 6,
+        labelFlip,
+      };
     })
     .filter((t) => t.width > 8);
 
@@ -248,7 +272,7 @@ export function SeriesChart({
 
       <div className="chart-frame">
         <svg
-          viewBox={`0 0 ${W} ${H}`}
+          viewBox={`0 0 ${W} ${chartH}`}
           className="chart-svg"
           role="img"
           aria-label={`${series.title}. ${series.unit}. ${periodLabel(first.period, series.calendar)} to ${periodLabel(last.period, series.calendar)}.`}
@@ -258,14 +282,19 @@ export function SeriesChart({
             <g key={t.name}>
               <rect
                 x={t.startX}
-                y={PAD.top}
+                y={plotTop}
                 width={t.width}
                 height={plotH}
                 fill={t.fill}
                 className="chart-term-band"
               />
               {t.width > 45 ? (
-                <text x={t.startX + 6} y={PAD.top + 11} className="chart-term-label">
+                <text
+                  x={t.labelX}
+                  y={eventMarks.length ? TERM_LABEL_Y : plotTop + 11}
+                  className="chart-term-label"
+                  textAnchor={t.labelFlip ? 'end' : undefined}
+                >
                   {t.name}
                 </text>
               ) : null}
@@ -285,11 +314,17 @@ export function SeriesChart({
               and never a bridge across it. */}
           {placedEvents.map((e) => (
             <g key={`ev-${e.year}`}>
-              <line className="chart-event" x1={x(e.i)} x2={x(e.i)} y1={PAD.top - 6} y2={H - PAD.bottom} />
+              <line
+                className="chart-event"
+                x1={x(e.i)}
+                x2={x(e.i)}
+                y1={plotTop - 6}
+                y2={chartH - PAD.bottom}
+              />
               <text
                 className="chart-event-label"
                 x={e.flip ? x(e.i) - 5 : x(e.i) + 5}
-                y={PAD.top + 4 + e.lane * LANE_H}
+                y={EVENT_LABEL_Y + e.lane * LANE_H}
                 textAnchor={e.flip ? 'end' : undefined}
               >
                 {e.label}
@@ -304,8 +339,8 @@ export function SeriesChart({
                 key={b.period}
                 x1={x(i)}
                 x2={x(i)}
-                y1={PAD.top - 6}
-                y2={PAD.top + plotH}
+                y1={plotTop - 6}
+                y2={plotTop + plotH}
                 className="chart-seam"
               />
             );
@@ -332,10 +367,10 @@ export function SeriesChart({
             ),
           )}
 
-          <text x={PAD.left} y={H - 8} className="chart-axis">
+          <text x={PAD.left} y={chartH - 8} className="chart-axis">
             {periodLabel(first.period, series.calendar)}
           </text>
-          <text x={W - PAD.right} y={H - 8} className="chart-axis" textAnchor="end">
+          <text x={W - PAD.right} y={chartH - 8} className="chart-axis" textAnchor="end">
             {periodLabel(last.period, series.calendar)}
           </text>
         </svg>

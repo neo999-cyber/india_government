@@ -71,13 +71,17 @@ export function CommandPalette() {
         e.preventDefault();
         setOpen((prev) => !prev);
       }
-      if (e.key === 'Escape') {
+      // ONLY AN OPEN PALETTE OWNS ESCAPE. This used to call `close()` even while closed, which
+      // scheduled focus onto Quick Search one animation frame after another control handled the
+      // same key. The All-pages disclosure closed correctly and focused its summary; this dormant
+      // listener then stole focus, so the failure appeared to live in the disclosure.
+      if (e.key === 'Escape' && open) {
         close();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [close]);
+  }, [close, open]);
 
   useEffect(() => {
     if (!open) return;
