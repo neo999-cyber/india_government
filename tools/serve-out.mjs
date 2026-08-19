@@ -56,6 +56,10 @@ createServer(async (req, res) => {
     res.end('not found');
     return;
   }
-  res.writeHead(200, { 'content-type': TYPES[extname(file)] ?? 'application/octet-stream' });
-  res.end(await readFile(file));
+  const body = await readFile(file);
+  res.writeHead(200, {
+    'content-type': TYPES[extname(file)] ?? 'application/octet-stream',
+    'content-length': body.byteLength,
+  });
+  res.end(body);
 }).listen(PORT, () => console.log(`serving out/ on http://localhost:${PORT}`));

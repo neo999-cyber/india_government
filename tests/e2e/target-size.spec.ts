@@ -53,4 +53,25 @@ test.describe('target size', () => {
     );
     expect(reachable).toBe(0);
   });
+
+  test('the Atlas year and focus controls keep a 44px touch target', async ({ page }) => {
+    await page.goto('/overview/');
+    await page.locator('.board-focus summary').click();
+
+    const small = await page.evaluate(() =>
+      [...document.querySelectorAll('.scrub button, .board-tools button, .board-focus summary')]
+        .filter((el) => (el as HTMLElement).offsetParent !== null)
+        .map((el) => {
+          const r = el.getBoundingClientRect();
+          return {
+            text: (el.textContent ?? '').trim().slice(0, 35),
+            width: Math.round(r.width),
+            height: Math.round(r.height),
+          };
+        })
+        .filter((box) => box.width < 44 || box.height < 44),
+    );
+
+    expect(small, `Atlas controls under 44px: ${JSON.stringify(small, null, 1)}`).toEqual([]);
+  });
 });

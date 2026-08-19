@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const E2E_PORT = Number(process.env.E2E_PORT ?? 4321);
+const E2E_URL = `http://localhost:${E2E_PORT}`;
+
 /**
  * END-TO-END TESTS — and this file exists to bind FOUR properties, not to become a second test suite.
  *
@@ -34,7 +37,7 @@ export default defineConfig({
   retries: 0,
   reporter: process.env.CI ? [['github'], ['list']] : [['list']],
   use: {
-    baseURL: 'http://localhost:4321',
+    baseURL: E2E_URL,
     trace: 'retain-on-failure',
   },
   // EACH SPEC RUNS AT THE ONE WIDTH IT IS ABOUT, declared here rather than skipped inside the test.
@@ -49,7 +52,7 @@ export default defineConfig({
   projects: [
     {
       name: 'desktop',
-      testMatch: /(search-count|target-size|allpages|rail|chart-labels)\.spec\.ts/,
+      testMatch: /(search-count|target-size|allpages|rail|chart-labels|overview-state)\.spec\.ts/,
       use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 900 } },
     },
     {
@@ -59,9 +62,12 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'node tools/serve-out.mjs',
-    url: 'http://localhost:4321/',
-    reuseExistingServer: !process.env.CI,
+    command: `PORT=${E2E_PORT} node tools/serve-out.mjs`,
+    url: `${E2E_URL}/`,
+    // Reusing a server can make a green suite inspect another worktree's stale `out/`. A developer
+    // with the default port occupied chooses E2E_PORT; the suite never guesses that old pages are
+    // the build it was asked to test.
+    reuseExistingServer: false,
     timeout: 30_000,
   },
 });

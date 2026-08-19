@@ -40,7 +40,7 @@
  * fallback — that is the case the hand sweep missed. POSITIVE CONTROL beside it: a fixture using
  * only declared names, and one using a name declared solely by an inline style, must both pass.
  */
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
