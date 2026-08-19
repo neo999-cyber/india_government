@@ -2028,6 +2028,39 @@ tbody > tr:has(+ .caveat-row) > td {
   color: var(--mark-ink);
 }
 
+.scrub-step {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.scrub-step button {
+  width: 44px;
+  min-height: 44px;
+  border: 0;
+  border-right: 1px solid var(--rule);
+  background: var(--surface);
+  color: var(--ink-2);
+  font: inherit;
+  cursor: pointer;
+}
+
+.scrub-step button:last-child {
+  border-right: 0;
+}
+
+.scrub-step button:hover:not(:disabled),
+.scrub-step button:focus-visible {
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.scrub-step button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 .scrub-reset {
   font: inherit;
   font-size: 0.75rem;
@@ -2050,6 +2083,133 @@ tbody > tr:has(+ .caveat-row) > td {
 .scrub-reset:not(:disabled):hover {
   border-color: var(--ink);
   color: var(--ink);
+}
+
+/* FOCUS CHANGES VISIBILITY, NEVER ORDER. The Atlas remains fourteen equal cards by default; this
+   control lets a reader put two or three beside each other without deriving a category, score or
+   ranking. The optional state is mirrored in the URL by the component, so it is citable. */
+.board-tools {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.8rem;
+  margin: -0.65rem 0 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+}
+
+.board-focus[open] {
+  flex-basis: 100%;
+}
+
+.board-focus summary {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  color: var(--ink-2);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.board-focus summary::-webkit-details-marker {
+  display: none;
+}
+
+.board-focus summary::before {
+  content: '+ ';
+  color: var(--mark-ink);
+}
+
+.board-focus[open] summary::before {
+  content: '– ';
+}
+
+.board-focus summary span {
+  color: var(--ink-dim);
+}
+
+.board-focus summary:hover,
+.board-focus summary:focus-visible {
+  color: var(--ink);
+  border-color: var(--ink-dim);
+}
+
+.board-focus-panel {
+  margin-top: 0.55rem;
+  padding: 0.85rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.board-focus-panel p {
+  max-width: 68ch;
+  margin: 0 0 0.7rem;
+  color: var(--ink-dim);
+  line-height: 1.5;
+}
+
+.board-topic-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.board-topic-buttons button,
+.board-show-all,
+.board-copy {
+  min-height: 44px;
+  padding: 0 0.72rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink-2);
+  font: inherit;
+  cursor: pointer;
+}
+
+.board-topic-buttons button[aria-pressed='true'] {
+  border-color: var(--mark);
+  background: var(--mark-soft);
+  color: var(--mark-ink);
+}
+
+.board-topic-buttons button:hover,
+.board-topic-buttons button:focus-visible,
+.board-show-all:hover:not(:disabled),
+.board-show-all:focus-visible,
+.board-copy:hover,
+.board-copy:focus-visible {
+  border-color: var(--ink-dim);
+  color: var(--ink);
+}
+
+.board-show-all {
+  margin-top: 0.7rem;
+}
+
+.board-show-all:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.board-visible {
+  margin: 0;
+  color: var(--ink-dim);
+}
+
+.board-copy {
+  margin-left: auto;
+}
+
+.board-copy-status {
+  color: var(--ink-dim);
+  max-width: 27rem;
 }
 
 /* THE HAIRLINES ARE DRAWN BY THE CARDS, NOT BY THE CONTAINER — and that is a bug fix.
@@ -2083,6 +2243,23 @@ tbody > tr:has(+ .caveat-row) > td {
   flex-direction: column;
   box-shadow: var(--card-shadow);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card {
+    animation: board-card-enter 180ms ease-out both;
+  }
+
+  @keyframes board-card-enter {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
 .card:hover {
@@ -3233,7 +3410,7 @@ details.more > summary {
   font-size: 0.6875rem;
   font-family: var(--font-mono);
   min-height: 44px;
-  min-width: 40px;
+  min-width: 44px;
   padding: 0 0.5rem;
   background: none;
   border: 0;

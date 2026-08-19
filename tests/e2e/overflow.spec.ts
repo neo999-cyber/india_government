@@ -20,6 +20,7 @@ const ROUTES = [
   ['/ledger/', 'a second index, different table shape'],
   ['/search/', 'the heaviest document'],
   ['/directory/', 'the new contents page'],
+  ['/overview/', 'the visual atlas and its topic-focus controls'],
   ['/domains/macro/', 'a topic — all four sections on one page'],
   ['/series/coal-production/', 'a record page'],
   ['/stories/did-jobs-grow/', 'a story with a scroller'],

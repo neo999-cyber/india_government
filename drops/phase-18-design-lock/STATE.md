@@ -33,6 +33,38 @@ are closed for the landing page, the seven stories and all 122 qualifying series
 
 ---
 
+## SESSION 2026-08-19 — a citable cross-sector Atlas view
+
+**Built locally on `codex/cross-sector-visual-dashboard`; not pushed or deployed.** The Atlas now
+lets a reader focus any combination of its existing fourteen topic cards, step one year backward or
+forward, and copy the exact view. The optional query is `?year=2020&topics=employment,education`;
+`/overview/` remains unchanged as the complete default and every old URL remains valid.
+
+**THIS IS A VIEW CONTROL, NOT A NEW AXIS.** Focusing changes only which existing cards are visible.
+It does not change their fixed order, derive a category, rank a topic, aggregate a verdict or alter
+a value. An empty selection means all topics, so the control cannot produce a blank board. Shared
+URLs restore through `useSyncExternalStore`, which keeps back-button state and static HTML aligned;
+with JavaScript absent, the complete fourteen-card board remains the document.
+
+**The interaction has its own browser contract.** Two new state tests cover URL restoration,
+year-stepping, topic addition and clearing, plus invalid-query fallback. `/overview/` joined the
+375px overflow sweep, and every Atlas control now measures at least 44×44px. Eighteen targeted
+browser tests pass. The production build is green across all 33 gates and 698 pages; data, schemas,
+caveats and the official map were untouched.
+
+**THE TEST SERVER HAD BEEN REUSING ANOTHER WORKTREE'S STALE BUILD.** `playwright.config.ts` now
+accepts `E2E_PORT` and refuses to reuse an existing server; `tools/serve-out.mjs` sends an explicit
+content length. This made the new Atlas tests inspect this branch rather than the older process on
+4321 and restored the map-asset assertion.
+
+**Six browser failures remain outside this tranche and are not hidden:** the All-pages Escape path
+closes but does not return focus to its summary, and the existing topic-strip term labels overlap
+event labels on Education, Banking, Environment, Macroeconomy and Governance. Those components and
+styles were not changed here. They are the next interface-repair batch, not folded into an Atlas
+commit whose assertion and acceptance tests are already bounded.
+
+---
+
 ## SESSION 2026-08-14 — the landing artwork, the topic merge, and three masthead defects
 
 **Everything below is SHIPPED, deployed and verified on production. Nothing is half-done and there
