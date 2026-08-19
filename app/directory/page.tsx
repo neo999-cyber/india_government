@@ -43,8 +43,9 @@ export default function Directory() {
 
       <h1 className="page-lead">All pages</h1>
       <p className="lede">
-        Every surface this instrument publishes, grouped by how a reader reaches it. {total}{' '}
-        destinations, and nothing here is ordered by importance.
+        The seven main destinations first, followed by the specialist evidence indexes whose
+        existing addresses remain intact. {total} destinations, and nothing here is ordered by
+        importance.
       </p>
 
       <div className="dir-groups">

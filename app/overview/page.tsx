@@ -1,17 +1,16 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ledger, series, seriesUnderLens } from '@/lib/data';
-import { DOMAIN_LABELS, formatDateRange } from '@/lib/format';
+import { DOMAIN_LABELS } from '@/lib/format';
 import { DOMAINS, LENSES } from '@/lib/types';
 import type { Lens, Series, Domain } from '@/lib/types';
-import { RecordMarks } from '@/components/marks';
 import { OverviewBoard } from '@/components/OverviewBoard';
 import type { ODomain, OSeries } from '@/components/OverviewBoard';
 
 export const metadata: Metadata = {
-  title: 'Overview — what changed, everywhere, since 2014',
+  title: 'Atlas of change since 2014',
   description:
-    'Every topic in Indian policy, the movement in each, and one control that runs the whole page through the years. Then every record, year by year.',
+    'A coordinated visual view of change across every topic in the record, with one shared year control.',
 };
 
 /**
@@ -233,32 +232,6 @@ export function buildBoard(keys: Domain[]): ODomain[] {
   });
 }
 export default function Overview() {
-  /**
-   * Computed here, never quoted. The design scope recorded 0.91 when it was written and the live
-   * value is 0.92 — a rate stated from memory is the deferral defect this instrument has paid for
-   * more than once, and this is the same computation `components/Evaluability.tsx` runs.
-   */
-  const rho = (() => {
-    const EVALUATED = new Set(['worked', 'partly', 'failed', 'reversed']);
-    const rs = DOMAINS.map((d) => {
-      const all = ledger.filter((l) => l.domains.includes(d));
-      return {
-        n: all.length,
-        pct: all.length ? (100 * all.filter((l) => EVALUATED.has(l.assessment)).length) / all.length : 0,
-        reformPct: all.length ? (100 * all.filter((l) => l.type === 'reform').length) / all.length : 0,
-      };
-    }).filter((r) => r.n > 0);
-    const rank = (xs: number[]) => {
-      const sorted = [...xs].sort((a, b) => a - b);
-      return xs.map((x) => sorted.indexOf(x) + 1);
-    };
-    const rr = rank(rs.map((r) => r.reformPct));
-    const re = rank(rs.map((r) => r.pct));
-    const n = rs.length;
-    const d2 = rr.reduce((t, x, i) => t + (x - re[i]) ** 2, 0);
-    return 1 - (6 * d2) / (n * (n * n - 1));
-  })();
-
   const domains: ODomain[] = buildBoard([...DOMAINS])
     .filter((d) => d.nSeries > 0 || d.nRecords > 0)
     .sort((a, b) => {
@@ -269,31 +242,16 @@ export default function Overview() {
       return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
     });
 
-  // Every record, grouped by the year it begins. All of them: choosing "the important ones" is a
-  // ranking this instrument refuses to make.
-  const byYear = new Map<number, typeof ledger>();
-  for (const l of ledger) {
-    const y = yearOf(l.date);
-    if (!byYear.has(y)) byYear.set(y, []);
-    byYear.get(y)!.push(l);
-  }
-  const baseline = [...byYear.entries()]
-    .filter(([y]) => y < 2014)
-    .flatMap(([, ls]) => ls)
-    .sort((a, b) => a.date.localeCompare(b.date));
-  const termYears = [...byYear.keys()].filter((y) => y >= 2014).sort((a, b) => a - b);
-
   return (
     <>
       <p className="crumb">
-        <Link prefetch={false} href="/">instrument</Link> / what changed
+        <Link prefetch={false} href="/">instrument</Link> / atlas
       </p>
-      <h1 className="home-lead">What changed, everywhere, since 2014</h1>
+      <p className="home-kicker mono">A visual reading of the public record</p>
+      <h1 className="home-lead">Atlas of change since 2014</h1>
       <p className="lede">
-        One topic per card — what it is, what it holds, and a real measurement with where it went.
-        Move the year control and the whole page moves with it. Open any card for that topic&rsquo;s
-        indicators, records, disputes and declared absences, or any title for the records
-        themselves.
+        Move the year control and every topic moves with it. Each card leads with one real series;
+        open it for the other indicators, official records, disputes and caveats behind the line.
       </p>
       {/* ============ `/domains/` WAS FOLDED IN HERE ON 2026-08-14 ==============================
           It was fourteen cards linking to the same fourteen topic pages these cards link to, with
@@ -317,84 +275,38 @@ export default function Overview() {
         observations from before 2010, not drawn here.
       </p>
 
-      {/* §4c's ruling, applied to this surface. The permitted claim is about the record set; a
-          claim about what India measures is not available from a corpus whose own selection is
-          unestablished. `tools/evaluability-wording.mjs` binds the literal forbidden phrasings and
-          cannot bind the claim — see its header — so the wording here is a reading, not a pass. */}
       <p className="prose-note board-framing">
-        <span className="label">What these cards are about</span> They describe{' '}
-        <strong>what this record set holds</strong> — the series entered here, their observations
-        and their status. They are not a measure of what the Indian state measures. Which
-        government claims were never entered into this corpus has not been established, and no
-        amount of further research makes that sample a known one.
-      </p>
-      <p className="prose-note">
-        <span className="label">Why the thin areas are thin</span> Across the fourteen areas, the
-        share of records that are announced <em>reforms</em> and the share that could be scored
-        against an outcome move together almost exactly — Spearman&rsquo;s &rho; = {rho.toFixed(2)}.
-        So a topic holding few scored outcomes is largely a topic that <strong>contains</strong>{' '}
-        institutional practice and constitutional duty rather than announced programmes. That is
-        what the <em>Made of</em> line on each card is for: it sits beside the numbers so the
-        composition and the coverage are read in the same glance, rather than the second being
-        taken for a verdict on the first.{' '}
-        <Link prefetch={false} href="/method/">How records are scored, and what a verdict does not mean</Link>.
+        <span className="label">How to read this view</span> The line is the selected indicator,
+        not a score for its topic. The filing counts describe this archive, not how well a sector
+        performed. Every qualification remains attached to the card and its underlying record.
       </p>
 
-      <h2>What happened, year by year</h2>
-      <p className="prose-note">
-        Every record in the ledger, grouped by the year it begins — all of them, because choosing
-        the important ones would be a ranking this instrument does not make. Each carries its
-        verdict on its own page, with the reasoning beside it.
-      </p>
-
-      {baseline.length > 0 ? (
-        <details className="yeargroup">
-          <summary>
-            <span className="yeargroup-year">Before May 2014</span>
-            <span className="yeargroup-count">
-              {baseline.length} records · baseline context, not scored
-            </span>
-          </summary>
-          <ul className="yeargroup-list">
-            {baseline.map((l) => (
-              <li key={l.id}>
-                <Link prefetch={false} href={`/ledger/${l.id}/`}>{l.title}</Link>
-                <span className="yeargroup-meta">
-                  {formatDateRange(l.date, l.dateEnd)} ·{' '}
-                  {l.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}
-                </span>
-                <RecordMarks record={l} />
+      <section className="atlas-year-section" aria-labelledby="atlas-years-title">
+        <div className="atlas-year-head">
+          <div>
+            <p className="home-kicker mono">Open the underlying chronology</p>
+            <h2 id="atlas-years-title">One year at a time</h2>
+          </div>
+          <Link href="/years/">See the complete year index →</Link>
+        </div>
+        <ol className="atlas-years">
+          {TERM_YEARS.map((year) => {
+            const term = year < 2019 ? 'First term' : year < 2024 ? 'Second term' : 'Third term';
+            return (
+              <li key={year} data-term={term}>
+                <Link href={`/years/${year}/`}>
+                  <span>{year}</span>
+                  <small>{term}</small>
+                </Link>
               </li>
-            ))}
-          </ul>
-        </details>
-      ) : null}
-
-      {termYears.map((y) => {
-        const ls = byYear.get(y)!.sort((a, b) => a.date.localeCompare(b.date));
-        return (
-          <details key={y} className="yeargroup" id={`y${y}`}>
-            <summary>
-              <span className="yeargroup-year">{y}</span>
-              <span className="yeargroup-count">
-                {ls.length} record{ls.length === 1 ? '' : 's'} begin{ls.length === 1 ? 's' : ''}
-              </span>
-            </summary>
-            <ul className="yeargroup-list">
-              {ls.map((l) => (
-                <li key={l.id}>
-                  <Link prefetch={false} href={`/ledger/${l.id}/`}>{l.title}</Link>
-                  <span className="yeargroup-meta">
-                    {formatDateRange(l.date, l.dateEnd)} ·{' '}
-                    {l.domains.map((d) => DOMAIN_LABELS[d]).join(', ')}
-                  </span>
-                  <RecordMarks record={l} />
-                </li>
-              ))}
-            </ul>
-          </details>
-        );
-      })}
+            );
+          })}
+        </ol>
+        <p className="prose-note">
+          Each year page contains the full dated ledger for that year. The equal-width points are
+          navigation; they do not encode the number or importance of records.
+        </p>
+      </section>
     </>
   );
 }

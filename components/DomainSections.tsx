@@ -1,5 +1,3 @@
-import type { Domain } from '@/lib/types';
-
 /**
  * THE TOPIC CONTENTS STRIP — what the tab strip became on 2026-08-14.
  *
@@ -30,9 +28,9 @@ import type { Domain } from '@/lib/types';
  * FRAGMENTS of the page it sits on and names no record. `unrecognised-rows` is what would catch it
  * if that ever changed.
  *
- * Each entry carries the number of things behind it, so a reader can see an empty section without
- * scrolling to it. **A count of what this topic holds, not a score and not a ranking** — the order
- * is fixed and identical on all fourteen topics, and nothing here compares one section to another.
+ * The order is fixed and identical on all fourteen topics. Counts belong inside the sections they
+ * describe; putting them beside these four links made the rail look like a performance dashboard
+ * before the reader had encountered any evidence.
  */
 export const DOMAIN_SECTIONS = [
   {
@@ -55,7 +53,7 @@ export const DOMAIN_SECTIONS = [
   },
   {
     key: 'missing',
-    label: 'Missing data',
+    label: 'Declared gaps',
     orient:
       'What this topic declares it cannot measure, in the record’s own words. An absence here is a fact about the record, not an estimate of anything.',
   },
@@ -63,12 +61,7 @@ export const DOMAIN_SECTIONS = [
 
 export type DomainSectionKey = (typeof DOMAIN_SECTIONS)[number]['key'];
 
-export function DomainSections({
-  counts,
-}: {
-  d: Domain;
-  counts: Record<DomainSectionKey, number>;
-}) {
+export function DomainSections() {
   return (
     <nav className="rail dsecnav" aria-label="Sections of this topic">
       {/* THE HEADING IS FOR THE RAIL PRESENTATION ONLY. As a horizontal strip under the standfirst
@@ -78,7 +71,6 @@ export function DomainSections({
       {DOMAIN_SECTIONS.map((sct) => (
         <a key={sct.key} className="dsecnav-i" href={`#${sct.key}`}>
           {sct.label}
-          <span className="dsecnav-n mono">{counts[sct.key]}</span>
         </a>
       ))}
     </nav>

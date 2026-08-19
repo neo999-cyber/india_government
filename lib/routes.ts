@@ -50,10 +50,10 @@
  */
 export const ROUTES: Record<string, { label: string; nav?: string }> = {
   '/': { label: 'instrument' },
-  '/overview/': { label: 'What changed', nav: 'what changed' },
-  '/questions/': { label: 'Questions', nav: 'questions' },
-  '/stories/': { label: 'Stories', nav: 'stories' },
-  '/search/': { label: 'Find a record', nav: 'search' },
+  '/overview/': { label: 'What changed', nav: 'Atlas' },
+  '/questions/': { label: 'Questions', nav: 'Questions' },
+  '/stories/': { label: 'Stories', nav: 'Stories' },
+  '/search/': { label: 'Find a record', nav: 'Records' },
   '/years/': { label: 'Years', nav: 'one year at a time' },
   '/lenses/': { label: 'Lenses', nav: 'threads across topics' },
   '/terms/': { label: 'Terms of government', nav: 'terms of government' },
@@ -64,17 +64,31 @@ export const ROUTES: Record<string, { label: string; nav?: string }> = {
   '/ledger/': { label: 'Reforms, events and episodes', nav: 'reforms, events and episodes' },
   '/provenance/': { label: 'Measurement disputes', nav: 'measurement disputes' },
   '/contested/': { label: 'Contested', nav: 'verdicts that stay open' },
-  '/unmeasured/': { label: 'What is not measured', nav: 'what is not measured' },
+  '/unmeasured/': { label: 'What is not measured', nav: 'Gaps' },
   '/exposure/': { label: 'Exposure', nav: 'when a shock is offered as the reason' },
-  '/method/': { label: 'Method', nav: 'method, and what the marks mean' },
+  '/method/': { label: 'Method', nav: 'About' },
   '/derivations/': { label: 'Derivations', nav: 'recomputed from public data' },
   '/publishers/': { label: 'Who published it', nav: 'who published it' },
   '/corrections/': { label: 'Corrections', nav: 'what it has changed its mind about' },
   '/data/': { label: 'The data', nav: 'the data' },
   '/directory/': { label: 'All pages', nav: 'all pages' },
   '/counterfactual/': { label: 'Counterfactual', nav: 'counterfactual' },
-  '/compare/': { label: 'Compare series', nav: 'side-by-side comparison' },
+  '/compare/': { label: 'Compare series', nav: 'Compare' },
 };
+
+/**
+ * The seven public concepts. These are the only destinations a first-time reader needs to learn;
+ * the evidence indexes remain available in the directory and keep every established URL.
+ */
+export const PRIMARY_NAV = [
+  '/overview/',
+  '/questions/',
+  '/stories/',
+  '/search/',
+  '/compare/',
+  '/unmeasured/',
+  '/method/',
+] as const;
 
 /** The destination's public name. Throws on an unknown route rather than inventing one from the
  *  slug — a silent fallback is how the slug got onto 38 breadcrumbs in the first place. */
@@ -112,50 +126,31 @@ export function crumbLabel(href: string): string {
  */
 export const DIRECTORY: { label: string; items: { href: string; label: string }[] }[] = [
   {
-    label: 'ways in',
-    items: [
-      // `/domains/` was folded into `/overview/` on 2026-08-14 — it was a poorer copy of the
-      // same fourteen cards. The topics are reached from the board there, and from each
-      // record's own tags.
-      { href: '/overview/', label: navLabel('/overview/') },
-      // `years` sits beside `terms` because both are ways INTO the record rather than layers of it.
-      { href: '/years/', label: navLabel('/years/') }, // was: years
-      { href: '/lenses/', label: navLabel('/lenses/') }, // was: lenses
-      { href: '/terms/', label: navLabel('/terms/') }, // was: terms — ambiguous against a glossary
-      { href: '/peers/', label: navLabel('/peers/') }, // was: peers
-      { href: '/compare/', label: navLabel('/compare/') },
-    ],
+    label: 'start here',
+    items: PRIMARY_NAV.map((href) => ({ href, label: navLabel(href) })),
   },
   {
-    label: 'the records',
+    label: 'browse the archive',
     items: [
-      // THE COMMENT THAT WAS HERE SAID: *"was: series — the prose pass renamed this everywhere but
-      // here"*. That was false. The prose pass renamed the NAV and stopped: `<title>` still said
-      // *Series*, the h1 said *Indicator series* and the breadcrumb said *series*, so one
-      // destination carried four names. The comment recorded the sweep as done, which is how it
-      // survived. Labels now come from `lib/routes.ts` and no surface holds its own copy.
+      { href: '/years/', label: navLabel('/years/') },
+      { href: '/lenses/', label: navLabel('/lenses/') },
+      { href: '/terms/', label: navLabel('/terms/') },
+      { href: '/peers/', label: navLabel('/peers/') },
       { href: '/series/', label: navLabel('/series/') },
-      { href: '/ledger/', label: navLabel('/ledger/') }, // was: ledger
-      { href: '/provenance/', label: navLabel('/provenance/') }, // was: disputes
-      { href: '/contested/', label: navLabel('/contested/') }, // was: contested pairs — and it holds no pairs
-    ],
-  },
-  {
-    label: 'what is missing',
-    items: [
-      { href: '/unmeasured/', label: navLabel('/unmeasured/') }, // was: unmeasured — a field name
-      { href: '/exposure/', label: navLabel('/exposure/') }, // was: exposure
-      { href: '/method/', label: navLabel('/method/') }, // was: method
+      { href: '/ledger/', label: navLabel('/ledger/') },
+      { href: '/provenance/', label: navLabel('/provenance/') },
+      { href: '/contested/', label: navLabel('/contested/') },
+      { href: '/exposure/', label: navLabel('/exposure/') },
     ],
   },
   {
     label: 'about the record',
     items: [
-      { href: '/derivations/', label: navLabel('/derivations/') }, // was: derivations
-      { href: '/publishers/', label: navLabel('/publishers/') }, // was: publishers
-      { href: '/corrections/', label: navLabel('/corrections/') }, // was: corrections
-      { href: '/counterfactual/', label: navLabel('/counterfactual/') }, // was: counterfactual, and was under `limits`
-      { href: '/data/', label: navLabel('/data/') }, // was: data
+      { href: '/derivations/', label: navLabel('/derivations/') },
+      { href: '/publishers/', label: navLabel('/publishers/') },
+      { href: '/corrections/', label: navLabel('/corrections/') },
+      { href: '/counterfactual/', label: navLabel('/counterfactual/') },
+      { href: '/data/', label: navLabel('/data/') },
     ],
   },
 ];

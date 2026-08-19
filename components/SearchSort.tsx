@@ -18,13 +18,13 @@ import { useEffect, useState } from 'react';
  * built rather than approximated**, because an order labelled *relevance* that is really
  * *title-first* teaches a reader something false about what the site knows.
  *
- * ============================ WHY CSS `order` AND NOT DOM REORDERING ==========================
+ * ============================ WHY THE DOM IS REORDERED ========================================
  *
- * The existing facet control hides cards with CSS. A sort that reorders DOM nodes would fight it and
- * would have to re-run on every filter change. Instead each card carries its three ranks as custom
- * properties and this control sets one attribute on the container; CSS picks the property. **The
- * DOM never moves**, so filtering and sorting compose, and with scripting off the document order —
- * newest — is what a reader gets.
+ * CSS `order` made the visual order disagree with keyboard and screen-reader order, and required
+ * three inline rank properties on every card. Reordering the existing server-rendered nodes keeps
+ * the reading order and visible order together. Filtering only toggles `hidden`, so the two
+ * operations compose without another copy of the corpus. With scripting off the server document
+ * is already newest-first.
  */
 const SORTS = [
   { key: 'newest', label: 'Newest' },
@@ -37,7 +37,23 @@ export function SearchSort() {
 
   useEffect(() => {
     const el = document.getElementById('search-cards');
-    if (el) el.setAttribute('data-sort', active);
+    if (!el) return;
+
+    const cards = Array.from(el.querySelectorAll<HTMLElement>(':scope > .scard'));
+    const title = (card: HTMLElement) => card.querySelector('.scard-title')?.textContent?.trim() ?? '';
+    const compareTitle = (a: HTMLElement, b: HTMLElement) => title(a).localeCompare(title(b));
+    cards.sort((a, b) => {
+      if (active === 'topic') {
+        const topicA = a.dataset.fDomain || '\uffff';
+        const topicB = b.dataset.fDomain || '\uffff';
+        return topicA.localeCompare(topicB) || compareTitle(a, b);
+      }
+      if (active === 'type') {
+        return (a.dataset.fLayer ?? '').localeCompare(b.dataset.fLayer ?? '') || compareTitle(a, b);
+      }
+      return (b.dataset.sortDate ?? '').localeCompare(a.dataset.sortDate ?? '') || compareTitle(a, b);
+    });
+    el.append(...cards);
   }, [active]);
 
   return (

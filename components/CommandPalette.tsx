@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface SearchItem {
@@ -11,19 +11,19 @@ interface SearchItem {
 }
 
 const ITEMS: SearchItem[] = [
-  { id: 'r-overview', title: 'What changed (Overview)', category: 'Route', href: '/overview/', meta: 'All topic cards & year scrubber' },
+  { id: 'r-overview', title: 'Atlas — what changed', category: 'Route', href: '/overview/', meta: 'Topics and years across the record' },
   { id: 'r-questions', title: 'Questions', category: 'Route', href: '/questions/', meta: 'Core policy inquiries' },
   { id: 'r-stories', title: 'Stories', category: 'Route', href: '/stories/', meta: 'Sequential evidence & disputes' },
-  { id: 'r-search', title: 'Find a record (Search)', category: 'Route', href: '/search/', meta: 'Comprehensive index' },
+  { id: 'r-search', title: 'Records — find any record', category: 'Route', href: '/search/', meta: 'Comprehensive index' },
   { id: 'r-serieq', title: 'Indicator series', category: 'Route', href: '/series/', meta: 'Time series data' },
   { id: 'r-ledger', title: 'Reforms, events and episodes', category: 'Route', href: '/ledger/', meta: 'Historical ledger' },
   { id: 'r-provenance', title: 'Measurement disputes', category: 'Route', href: '/provenance/', meta: 'Contested methodologies' },
-  { id: 'r-unmeasured', title: 'What is not measured', category: 'Route', href: '/unmeasured/', meta: 'Data absences & gaps' },
+  { id: 'r-unmeasured', title: 'Gaps — what is not measured', category: 'Route', href: '/unmeasured/', meta: 'Data absences and gaps' },
   { id: 'r-exposure', title: 'Exposure to shocks', category: 'Route', href: '/exposure/', meta: 'Demonetisation, COVID-19' },
   { id: 'r-terms', title: 'Terms of government', category: 'Route', href: '/terms/', meta: 'Term 1, Term 2, Term 3' },
   { id: 'r-peers', title: 'Four comparator countries', category: 'Route', href: '/peers/', meta: 'BGD, VNM, IDN, CHN' },
-  { id: 'r-compare', title: 'Compare series (Comparator Workbench)', category: 'Route', href: '/compare/', meta: 'Side-by-side indicator comparisons' },
-  { id: 'r-method', title: 'Method, sources & tiers', category: 'Route', href: '/method/', meta: 'Validation criteria' },
+  { id: 'r-compare', title: 'Compare — side-by-side series', category: 'Route', href: '/compare/', meta: 'Side-by-side indicator comparisons' },
+  { id: 'r-method', title: 'About — method, sources and tiers', category: 'Route', href: '/method/', meta: 'Validation criteria and project limits' },
 
   // Domains
   { id: 'd-employment', title: 'Employment & Labour', category: 'Domain', href: '/domains/employment/', meta: 'PLFS, CMIE, female LFPR, informal sector' },
@@ -33,8 +33,12 @@ const ITEMS: SearchItem[] = [
   { id: 'd-macro', title: 'Macroeconomy & GDP', category: 'Domain', href: '/domains/macro/', meta: 'GDP revisions, fiscal deficit, inflation' },
   { id: 'd-banking', title: 'Banking & Financial System', category: 'Domain', href: '/domains/banking/', meta: 'NPA ratios, write-offs, credit growth' },
   { id: 'd-environment', title: 'Environment & Renewable Energy', category: 'Domain', href: '/domains/environment/', meta: 'Renewables, coal production, emissions' },
-  { id: 'd-agriculture', title: 'Agriculture & Rural Economy', category: 'Domain', href: '/domains/agriculture/', meta: 'MSP, crop output, farm suicides' },
-  { id: 'd-defense', title: 'Defence & Security', category: 'Domain', href: '/domains/defense/', meta: 'Capital expenditure, modernisation' },
+  { id: 'd-poverty', title: 'Poverty', category: 'Domain', href: '/domains/poverty/', meta: 'Poverty lines, consumption and multidimensional measures' },
+  { id: 'd-welfare', title: 'Welfare Delivery', category: 'Domain', href: '/domains/welfare/', meta: 'Benefits, schemes and delivery systems' },
+  { id: 'd-governance', title: 'Governance & Institutions', category: 'Domain', href: '/domains/governance/', meta: 'Institutions, administration and accountability' },
+  { id: 'd-kashmir', title: 'Kashmir', category: 'Domain', href: '/domains/kashmir/', meta: 'Rights, security and institutional change' },
+  { id: 'd-foreign', title: 'Foreign Relations', category: 'Domain', href: '/domains/foreign/', meta: 'Trade, counterparties and external relations' },
+  { id: 'd-defence', title: 'Defence & Security', category: 'Domain', href: '/domains/defence/', meta: 'Capital expenditure, modernisation and security' },
   { id: 'd-federalism', title: 'Federalism & State Finances', category: 'Domain', href: '/domains/federalism/', meta: 'Cess/surcharge share, devolution' },
 
   // Stories
@@ -43,7 +47,7 @@ const ITEMS: SearchItem[] = [
   { id: 's-dead', title: 'Who counts the dead in Kashmir?', category: 'Story', href: '/stories/who-counts-the-dead/', meta: 'Civilian and security fatalities' },
   { id: 's-renewable', title: 'How much of India’s electricity is renewable?', category: 'Story', href: '/stories/how-renewable/', meta: 'Installed capacity vs generation' },
   { id: 's-edu-spend', title: 'Is India spending more on education, or less?', category: 'Story', href: '/stories/what-counts-as-education-spending/', meta: 'Two budget totals dispute' },
-  { id: 's-detainees', title: 'Two counts of Kashmir�s detainees', category: 'Story', href: '/stories/two-counts-one-boundary/', meta: 'Foreign national boundary counts' },
+  { id: 's-detainees', title: 'Two counts of Kashmir’s detainees', category: 'Story', href: '/stories/two-counts-one-boundary/', meta: 'Foreign national boundary counts' },
   { id: 's-zero', title: 'A zero that is not a zero', category: 'Story', href: '/stories/a-zero-that-is-not-a-zero/', meta: 'Welfare statutory powers' },
 ];
 
@@ -52,6 +56,14 @@ export function CommandPalette() {
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const router = useRouter();
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const close = useCallback(() => {
+    setOpen(false);
+    window.requestAnimationFrame(() => triggerRef.current?.focus());
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -60,26 +72,43 @@ export function CommandPalette() {
         setOpen((prev) => !prev);
       }
       if (e.key === 'Escape') {
-        setOpen(false);
+        close();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [close]);
+
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.requestAnimationFrame(() => inputRef.current?.focus());
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [open]);
 
   const results = useMemo(() => {
-    if (!query.trim()) return ITEMS.slice(0, 8);
-    const q = query.toLowerCase();
-    return ITEMS.filter(
+    const trimmed = query.trim();
+    if (!trimmed) return ITEMS.slice(0, 8);
+    const q = trimmed.toLowerCase();
+    const matches = ITEMS.filter(
       (item) =>
         item.title.toLowerCase().includes(q) ||
         item.category.toLowerCase().includes(q) ||
         (item.meta && item.meta.toLowerCase().includes(q)),
-    ).slice(0, 10);
-  }, [query]);
-
-  useEffect(() => {
-    setSelectedIndex(0);
+    ).slice(0, 9);
+    return [
+      ...matches,
+      {
+        id: 'search-all-records',
+        title: `Search every record for “${trimmed}”`,
+        category: 'Record' as const,
+        href: `/search/?q=${encodeURIComponent(trimmed)}`,
+        meta: 'Series, ledger records and measurement disputes',
+      },
+    ];
   }, [query]);
 
   const navigateTo = useCallback(
@@ -101,51 +130,90 @@ export function CommandPalette() {
     } else if (e.key === 'Enter' && results[selectedIndex]) {
       e.preventDefault();
       navigateTo(results[selectedIndex].href);
+    } else if (e.key === 'Tab') {
+      const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), input:not([disabled]), a[href]',
+      );
+      if (!focusable?.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   };
 
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         className="cmd-trigger"
         onClick={() => setOpen(true)}
-        aria-label="Open search command palette (Cmd+K)"
+        aria-keyshortcuts="Meta+K Control+K"
         title="Quick search (Cmd+K)"
       >
-        <span className="cmd-trigger-icon">⌕</span>
+        <span className="cmd-trigger-icon" aria-hidden="true">⌕</span>
         <span className="cmd-trigger-text">Quick Search</span>
-        <kbd className="cmd-kbd">⌘K</kbd>
+        <kbd className="cmd-kbd" aria-hidden="true">⌘K</kbd>
       </button>
 
       {open ? (
-        <div className="cmd-backdrop" onClick={() => setOpen(false)}>
-          <div className="cmd-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="cmd-backdrop" onMouseDown={(e) => e.target === e.currentTarget && close()}>
+          <div
+            ref={dialogRef}
+            className="cmd-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Quick search"
+            onKeyDown={handleKeyNavigation}
+          >
             <div className="cmd-search-box">
               <span className="cmd-search-icon">⌕</span>
               <input
+                ref={inputRef}
                 type="text"
-                autoFocus
                 className="cmd-input"
-                placeholder="Search series, stories, domains, records… (Press Esc to exit)"
+                placeholder="Search pages and topics, or search the full record…"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={handleKeyNavigation}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setSelectedIndex(0);
+                }}
+                role="combobox"
+                aria-expanded="true"
+                aria-controls="cmd-results"
+                aria-activedescendant={results[selectedIndex] ? `cmd-option-${results[selectedIndex].id}` : undefined}
               />
               {query ? (
-                <button type="button" className="cmd-clear" onClick={() => setQuery('')}>
+                <button
+                  type="button"
+                  className="cmd-clear"
+                  onClick={() => {
+                    setQuery('');
+                    setSelectedIndex(0);
+                    inputRef.current?.focus();
+                  }}
+                  aria-label="Clear search"
+                >
                   ✕
                 </button>
               ) : null}
             </div>
 
-            <div className="cmd-results" role="listbox">
+            <div className="cmd-results" id="cmd-results" role="listbox" aria-label="Search results">
               {results.length === 0 ? (
                 <p className="cmd-empty">No matching records found for &quot;{query}&quot;</p>
               ) : (
                 results.map((item, idx) => (
-                  <div
+                  <button
                     key={item.id}
+                    id={`cmd-option-${item.id}`}
+                    type="button"
                     className={`cmd-item${idx === selectedIndex ? ' is-selected' : ''}`}
                     onClick={() => navigateTo(item.href)}
                     onMouseEnter={() => setSelectedIndex(idx)}
@@ -159,7 +227,7 @@ export function CommandPalette() {
                       <span className="cmd-title">{item.title}</span>
                     </div>
                     {item.meta ? <span className="cmd-meta">{item.meta}</span> : null}
-                  </div>
+                  </button>
                 ))
               )}
             </div>

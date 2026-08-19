@@ -2,19 +2,25 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ROUTES } from '@/lib/routes';
+import { PRIMARY_NAV, navLabel } from '@/lib/routes';
 import { CommandPalette } from '@/components/CommandPalette';
 
-const PRIMARY = ['/overview/', '/questions/', '/stories/', '/search/'];
+const SECTION_PREFIXES: Partial<Record<(typeof PRIMARY_NAV)[number], readonly string[]>> = {
+  '/overview/': ['/domains/', '/years/', '/lenses/', '/terms/', '/peers/'],
+  '/search/': ['/series/', '/ledger/', '/provenance/', '/contested/', '/exposure/'],
+  '/method/': ['/derivations/', '/publishers/', '/corrections/', '/counterfactual/', '/data/', '/directory/'],
+};
 
 export function PrimaryNav() {
   const here = usePathname();
   return (
     <nav className="nav nav-primary" aria-label="Main">
-      {PRIMARY.map((href) => {
-        // Exact match only. `/domains/macro/` is a topic page, not the topics index, and marking the
-        // index as current there would tell a reader they are somewhere they are not.
-        const current = here === href || `${here}/` === href;
+      {PRIMARY_NAV.map((href) => {
+        const current =
+          here === href.slice(0, -1) ||
+          here === href ||
+          here.startsWith(href) ||
+          Boolean(SECTION_PREFIXES[href]?.some((prefix) => here.startsWith(prefix)));
         return (
           <Link
             key={href}
@@ -22,7 +28,7 @@ export function PrimaryNav() {
             aria-current={current ? 'page' : undefined}
             className={current ? 'is-here' : undefined}
           >
-            {ROUTES[href].label}
+            {navLabel(href)}
           </Link>
         );
       })}

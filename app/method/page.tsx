@@ -4,6 +4,7 @@ import { citations, ledger, provenance, series, statusCounts, tierCounts } from 
 import { TIER_LABELS } from '@/lib/format';
 import { TIERS } from '@/lib/types';
 import { StatusKey } from '@/components/marks';
+import { Evaluability } from '@/components/Evaluability';
 
 export const metadata: Metadata = { title: 'Method' };
 
@@ -21,17 +22,6 @@ export default function MethodPage() {
   // Counted, never typed. This number fell from 9 to 1 on 6 August 2026 and the paragraph that
   // reports it must move with the data, not with whoever last edited the prose.
   const worked = ledger.filter((r) => r.assessment === 'worked').length;
-  // Counted here for the same reason as `worked`: the paragraph below turns on these and a typed
-  // figure is what this page got wrong once already. `reform` share against the evaluative rate is
-  // the whole of the argument that a thin domain is a domain with few announced measures.
-  const EVALUATIVE = new Set(['worked', 'partly', 'failed', 'reversed']);
-  const evaluative = ledger.filter((r) => EVALUATIVE.has(r.assessment)).length;
-  const inDomain = (d: string) => ledger.filter((r) => r.domains.includes(d as never));
-  const rate = (rows: typeof ledger, f: (r: (typeof ledger)[number]) => boolean) =>
-    rows.length === 0 ? 0 : Math.round((100 * rows.filter(f).length) / rows.length);
-  const reformShare = (d: string) => rate(inDomain(d), (r) => r.type === 'reform');
-  const evalShare = (d: string) => rate(inDomain(d), (r) => EVALUATIVE.has(r.assessment));
-  const exposureShare = (d: string) => rate(inDomain(d), (r) => (r.shockExposure ?? []).length > 0);
   const contested = ledger.filter((r) => r.assessment === 'contested');
   const withGround = contested.filter((r) => r.contestedGround);
   const UNSETTLEABLE = new Set(['criterion', 'measure', 'evidence-unobservable']);
@@ -149,31 +139,9 @@ export default function MethodPage() {
         about the evidence, not a hedge.
       </p>
 
-      <h2>What the verdict distribution measures, and what it does not</h2>
-      <p className="prose-note">
-        {evaluative} of {ledger.length} records carry a verdict that scores an outcome —{' '}
-        <em>worked</em>, <em>partly</em>, <em>failed</em> or <em>reversed</em>. The rest find
-        something real and have nothing to score it against, or decline between readings.{' '}
-        <strong>A domain with few scored verdicts has not been examined less; it contains fewer
-        announced measures.</strong> Kashmir is {reformShare('kashmir')} per cent measures the state
-        deliberately introduced and {evalShare('kashmir')} per cent scored; defence is{' '}
-        {reformShare('defence')} and {evalShare('defence')}; governance {reformShare('governance')}{' '}
-        and {evalShare('governance')}. Against them infrastructure is {reformShare('infrastructure')}{' '}
-        and {evalShare('infrastructure')}, welfare {reformShare('welfare')} and{' '}
-        {evalShare('welfare')}. <strong>The two track each other across every domain</strong>, which
-        is what you would expect if a scored verdict requires something to have been promised.
-      </p>
-      <p className="prose-note">
-        The exception is the interesting part, and it runs the other way.{' '}
-        <Link href="/exposure/">Exposure to an exogenous event</Link> tracks something different:
-        whether a domain has series long enough for a shock to distort. Employment is{' '}
-        {reformShare('employment')} per cent measures and {evalShare('employment')} per cent scored,
-        and {exposureShare('employment')} per cent of its records declare an exposure; human
-        development is {reformShare('human-development')} and {evalShare('human-development')}{' '}
-        against {exposureShare('human-development')}.{' '}
-        <strong>Those are outcome domains — much to measure and little announced</strong> — and they
-        are where the two questions this instrument asks come apart.
-      </p>
+      <Evaluability />
+
+      <h2>Why some records stay contested</h2>
       <p className="prose-note">
         The same applies to the largest class. {contested.length} records are{' '}
         <em>contested</em>, and {unsettleable} of the {withGround.length} that state a ground turn on
