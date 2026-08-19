@@ -35,7 +35,7 @@ are closed for the landing page, the seven stories and all 122 qualifying series
 
 ## SESSION 2026-08-19 — a citable cross-sector Atlas view
 
-**Built locally on `codex/cross-sector-visual-dashboard`; not pushed or deployed.** The Atlas now
+**Committed and pushed on `codex/cross-sector-visual-dashboard`; not deployed.** The Atlas now
 lets a reader focus any combination of its existing fourteen topic cards, step one year backward or
 forward, and copy the exact view. The optional query is `?year=2020&topics=employment,education`;
 `/overview/` remains unchanged as the complete default and every old URL remains valid.
@@ -62,6 +62,14 @@ closes but does not return focus to its summary, and the existing topic-strip te
 event labels on Education, Banking, Environment, Macroeconomy and Governance. Those components and
 styles were not changed here. They are the next interface-repair batch, not folded into an Atlas
 commit whose assertion and acceptance tests are already bounded.
+
+**CLOSED IN THE FOLLOW-UP REPAIR, 2026-08-19.** The dormant command-palette Escape listener was
+stealing focus one animation frame after the disclosure returned it; it now owns Escape only while
+the palette is open. Event-bearing charts now reserve separate term and event-label rows, use three
+event lanes, and flip right-edge term labels back into the SVG. The complete browser suite passes
+**51 of 51**, including the five named topic pages and the disclosure focus-return contract. A
+desktop render of Environment was also measured directly: six header labels, zero overlaps and zero
+escapes from the chart.
 
 ---
 
