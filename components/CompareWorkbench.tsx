@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { ShareCardExporter } from './ShareCardExporter';
 
@@ -39,6 +39,42 @@ export function CompareWorkbench({
   const [seriesBId, setSeriesBId] = useState<string>(pairsList[0]?.seriesB || seriesList[1]?.id || '');
   const [showAllPairs, setShowAllPairs] = useState(false);
   const [pairQuery, setPairQuery] = useState('');
+  const [linkCopied, setLinkCopied] = useState(false);
+
+  const writeUrl = useCallback((next: { pair?: string; a?: string; b?: string }) => {
+    const url = new URL(window.location.href);
+    url.searchParams.delete('pair');
+    url.searchParams.delete('a');
+    url.searchParams.delete('b');
+    if (next.pair) url.searchParams.set('pair', next.pair);
+    if (next.a) url.searchParams.set('a', next.a);
+    if (next.b) url.searchParams.set('b', next.b);
+    window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`);
+  }, []);
+
+  useEffect(() => {
+    const syncFromUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      const pair = pairsList.find((item) => item.id === params.get('pair'));
+      if (pair) {
+        setSelectedPairId(pair.id);
+        setSeriesAId(pair.seriesA);
+        setSeriesBId(pair.seriesB);
+        return;
+      }
+      const nextA = params.get('a');
+      const nextB = params.get('b');
+      if (nextA && seriesList.some((item) => item.id === nextA)) setSeriesAId(nextA);
+      if (nextB && seriesList.some((item) => item.id === nextB)) setSeriesBId(nextB);
+      if (nextA || nextB) setSelectedPairId('');
+    };
+    const frame = window.requestAnimationFrame(syncFromUrl);
+    window.addEventListener('popstate', syncFromUrl);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener('popstate', syncFromUrl);
+    };
+  }, [pairsList, seriesList]);
 
   const activePair = useMemo(() => {
     return pairsList.find((p) => p.id === selectedPairId);
@@ -56,16 +92,29 @@ export function CompareWorkbench({
     setSelectedPairId(pair.id);
     setSeriesAId(pair.seriesA);
     setSeriesBId(pair.seriesB);
+    writeUrl({ pair: pair.id });
   };
 
   const handleCustomA = (id: string) => {
     setSeriesAId(id);
     setSelectedPairId('');
+    writeUrl({ a: id, b: seriesBId });
   };
 
   const handleCustomB = (id: string) => {
     setSeriesBId(id);
     setSelectedPairId('');
+    writeUrl({ a: seriesAId, b: id });
+  };
+
+  const copyComparisonLink = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setLinkCopied(true);
+      window.setTimeout(() => setLinkCopied(false), 1800);
+    } catch {
+      setLinkCopied(false);
+    }
   };
 
   // Year range 2010 -> 2026
@@ -248,7 +297,7 @@ export function CompareWorkbench({
       <div className="compare-selectors-bar">
         <div className="compare-selector-group">
           <label htmlFor="sel-a" className="compare-label compare-label-a">
-            ● SERIES A (BLUE)
+            <span aria-hidden="true">●</span> SERIES A
           </label>
           <select
             id="sel-a"
@@ -266,7 +315,7 @@ export function CompareWorkbench({
 
         <div className="compare-selector-group">
           <label htmlFor="sel-b" className="compare-label compare-label-b">
-            ● SERIES B (CORAL)
+            <span aria-hidden="true">●</span> SERIES B
           </label>
           <select
             id="sel-b"
@@ -283,14 +332,18 @@ export function CompareWorkbench({
         </div>
 
         <div className="compare-export-wrap">
+          <button type="button" className="compare-link-copy" onClick={copyComparisonLink}>
+            {linkCopied ? 'Link copied' : 'Copy comparison link'}
+          </button>
           <ShareCardExporter data={exportData} label="Export Comparison Card" />
+          <span className="sr-only" aria-live="polite">{linkCopied ? 'Comparison link copied' : ''}</span>
         </div>
       </div>
 
       {/* Methodological Framing / Dispute Callout */}
       {activePair ? (
         <div className="compare-framing-box">
-          <p className="compare-framing-title">Methodological Divergence & Context</p>
+          <p className="compare-framing-title">Why these belong side by side</p>
           <p className="compare-framing-text">{activePair.framing}</p>
           {activePair.gapReason ? (
             <p className="compare-gap-reason">

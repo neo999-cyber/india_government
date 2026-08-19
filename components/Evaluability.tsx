@@ -122,7 +122,7 @@ export function Evaluability() {
       <p className="prose-note">
         The clearest departures from that pattern run in both directions: education is scored more
         than its composition predicts, and external-sector and macroeconomic records less.{' '}
-        <Link href="/method/">How records are scored, and what a verdict does not mean</Link>.
+        <Link href="/questions/">Browse the questions these records can and cannot answer</Link>.
       </p>
     </section>
   );

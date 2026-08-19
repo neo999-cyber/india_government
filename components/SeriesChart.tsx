@@ -43,6 +43,7 @@ export function SeriesChart({
   events,
   marksHostedByPage = false,
   headingLevel = 3,
+  showTitle = true,
 }: {
   series: Series;
   /**
@@ -58,6 +59,8 @@ export function SeriesChart({
    * visual. The default stays 3 for the callers that are genuinely three deep.
    */
   headingLevel?: 2 | 3 | 4;
+  /** The record page already has the exact series title as its h1; embedded charts keep it. */
+  showTitle?: boolean;
   /** One plain sentence stating what the chart shows. Authored per use, never derived. */
   takeaway?: string;
   highlightLast?: boolean;
@@ -235,13 +238,13 @@ export function SeriesChart({
 
   return (
     <figure className="chart">
-      <figcaption className="chart-head">
-        <Heading className="chart-title">
+      {showTitle || takeaway || !marksHostedByPage ? <figcaption className="chart-head">
+        {showTitle ? <Heading className="chart-title">
           <Link href={`/series/${series.id}/`}>{series.title}</Link>
-        </Heading>
+        </Heading> : null}
         {takeaway ? <p className="chart-takeaway">{takeaway}</p> : null}
         {marksHostedByPage ? null : <RecordMarks record={series} />}
-      </figcaption>
+      </figcaption> : null}
 
       <div className="chart-frame">
         <svg
@@ -320,6 +323,9 @@ export function SeriesChart({
                 cy={y(p.value)}
                 r={highlightLast && i === pts.length - 1 ? 5 : 3.5}
                 className={`chart-dot chart-dot-${p.status}`}
+                tabIndex={0}
+                role="img"
+                aria-label={`${periodLabel(p.period, series.calendar)}: ${p.value} ${series.unit}, ${p.status}`}
               >
                 <title>{`${periodLabel(p.period, series.calendar)}: ${p.value} ${series.unit} (${p.status})`}</title>
               </circle>

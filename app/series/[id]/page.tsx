@@ -150,9 +150,9 @@ export default async function SeriesDetail({ params }: Props) {
           twice on 130 of 269 pages and no gate could see it; see the flag's own note. */}
       {/* Directly under this page's h1, so the chart title is the first section: h2, not h3.
           Hardcoded h3 here put every one of the 269 series pages into an h1 -> h3 skip. */}
-      <SeriesChart series={s} highlightLast={false} marksHostedByPage headingLevel={2} />
+      <SeriesChart series={s} highlightLast={false} marksHostedByPage headingLevel={2} showTitle={false} />
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '0.5rem 0' }}>
+      <div className="share-card-export-row">
         <ShareCardExporter
           data={{
             title: s.title,

@@ -11,19 +11,19 @@ interface SearchItem {
 }
 
 const ITEMS: SearchItem[] = [
-  { id: 'r-overview', title: 'What changed (Overview)', category: 'Route', href: '/overview/', meta: 'All topic cards & year scrubber' },
+  { id: 'r-overview', title: 'Atlas — what changed', category: 'Route', href: '/overview/', meta: 'Topics and years across the record' },
   { id: 'r-questions', title: 'Questions', category: 'Route', href: '/questions/', meta: 'Core policy inquiries' },
   { id: 'r-stories', title: 'Stories', category: 'Route', href: '/stories/', meta: 'Sequential evidence & disputes' },
-  { id: 'r-search', title: 'Find a record (Search)', category: 'Route', href: '/search/', meta: 'Comprehensive index' },
+  { id: 'r-search', title: 'Records — find any record', category: 'Route', href: '/search/', meta: 'Comprehensive index' },
   { id: 'r-serieq', title: 'Indicator series', category: 'Route', href: '/series/', meta: 'Time series data' },
   { id: 'r-ledger', title: 'Reforms, events and episodes', category: 'Route', href: '/ledger/', meta: 'Historical ledger' },
   { id: 'r-provenance', title: 'Measurement disputes', category: 'Route', href: '/provenance/', meta: 'Contested methodologies' },
-  { id: 'r-unmeasured', title: 'What is not measured', category: 'Route', href: '/unmeasured/', meta: 'Data absences & gaps' },
+  { id: 'r-unmeasured', title: 'Gaps — what is not measured', category: 'Route', href: '/unmeasured/', meta: 'Data absences and gaps' },
   { id: 'r-exposure', title: 'Exposure to shocks', category: 'Route', href: '/exposure/', meta: 'Demonetisation, COVID-19' },
   { id: 'r-terms', title: 'Terms of government', category: 'Route', href: '/terms/', meta: 'Term 1, Term 2, Term 3' },
   { id: 'r-peers', title: 'Four comparator countries', category: 'Route', href: '/peers/', meta: 'BGD, VNM, IDN, CHN' },
-  { id: 'r-compare', title: 'Compare series (Comparator Workbench)', category: 'Route', href: '/compare/', meta: 'Side-by-side indicator comparisons' },
-  { id: 'r-method', title: 'Method, sources & tiers', category: 'Route', href: '/method/', meta: 'Validation criteria' },
+  { id: 'r-compare', title: 'Compare — side-by-side series', category: 'Route', href: '/compare/', meta: 'Side-by-side indicator comparisons' },
+  { id: 'r-method', title: 'About — method, sources and tiers', category: 'Route', href: '/method/', meta: 'Validation criteria and project limits' },
 
   // Domains
   { id: 'd-employment', title: 'Employment & Labour', category: 'Domain', href: '/domains/employment/', meta: 'PLFS, CMIE, female LFPR, informal sector' },
@@ -47,7 +47,7 @@ const ITEMS: SearchItem[] = [
   { id: 's-dead', title: 'Who counts the dead in Kashmir?', category: 'Story', href: '/stories/who-counts-the-dead/', meta: 'Civilian and security fatalities' },
   { id: 's-renewable', title: 'How much of India’s electricity is renewable?', category: 'Story', href: '/stories/how-renewable/', meta: 'Installed capacity vs generation' },
   { id: 's-edu-spend', title: 'Is India spending more on education, or less?', category: 'Story', href: '/stories/what-counts-as-education-spending/', meta: 'Two budget totals dispute' },
-  { id: 's-detainees', title: 'Two counts of Kashmir�s detainees', category: 'Story', href: '/stories/two-counts-one-boundary/', meta: 'Foreign national boundary counts' },
+  { id: 's-detainees', title: 'Two counts of Kashmir’s detainees', category: 'Story', href: '/stories/two-counts-one-boundary/', meta: 'Foreign national boundary counts' },
   { id: 's-zero', title: 'A zero that is not a zero', category: 'Story', href: '/stories/a-zero-that-is-not-a-zero/', meta: 'Welfare statutory powers' },
 ];
 
