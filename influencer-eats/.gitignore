@@ -1,0 +1,20 @@
+# ---------------------------------------------------------------------------
+# PERSONAL DATA AND CREDENTIALS — the containing repository is PUBLIC.
+#
+# `following.json` is the user's Instagram social graph: 1,288 accounts, by handle, with the
+# timestamp each was followed. The scan output derives from it and carries the bio, follower
+# count and category of every one of them. Neither belongs in a public repository, and neither
+# is needed there — the code reproduces the output from an export the user holds.
+#
+# A cookie is a live session credential. Committing one hands over the account.
+# ---------------------------------------------------------------------------
+data/following.json
+data/*.jsonl
+data/report/
+cookie.txt
+*.cookie
+.env
+
+__pycache__/
+*.pyc
+.venv/
