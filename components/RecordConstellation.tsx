@@ -103,7 +103,18 @@ export function RecordConstellation({
             {/* The published sheet, at six per cent — texture inside the shape, never a map to be
                 read. `alt=""` because it carries no information a reader needs; the outline does,
                 and the SVG below names it. */}
-            <img className="rc-reference" src="/map/india-political-2026-soi-13th-edition.jpg" alt="" aria-hidden="true" />
+            <img
+              className="rc-reference"
+              src="/map/india-political-2026-soi-13th-edition-texture.webp"
+              srcSet="/map/india-political-2026-soi-13th-edition-texture.webp 600w, /map/india-political-2026-soi-13th-edition.jpg 927w"
+              sizes="(max-width: 767px) 80vw, 33rem"
+              width="600"
+              height="712"
+              loading="lazy"
+              decoding="async"
+              alt=""
+              aria-hidden="true"
+            />
 
             <svg
               className="rc-map"

@@ -33,17 +33,12 @@ export const metadata: Metadata = {
  * of the transfer for no reading benefit. A reader searching the body of a summary is searching
  * the corpus, which is what `/data/v1/` is published for.
  *
- * **RE-MEASURED 2026-08-11 AFTER THE CARD REBUILD, because a stated measurement that is not
- * re-measured becomes a claim about the past in the present tense.** The figures were 1,799 KB raw
- * / 416 KB gzipped before the first cut and 1,153 / 178 after it. **They are now 1,749 KB raw /
- * 267 KB gzipped**, an 89 KB gzipped increase, and it buys three things §4 asked for: a whole-
- * sentence description on 516 cards, three sort ranks per card as inline custom properties, and the
- * card markup itself. **Roughly 37 KB raw of that is the sort ranks** — three integers per card,
- * because CSS `order` reads a custom property and cannot read a data attribute.
- *
- * **It is a regression against the 178 and it is recorded as one.** If the page needs to come back
- * down, the excerpts are the cheapest thing to drop and the sort ranks are the next; the caveats
- * are not, because rule 3a governs them and every other listing surface renders them in full.
+ * **RE-MEASURED 2026-08-19 AFTER THE ACCESSIBILITY/PERFORMANCE PASS.** The complete page moved
+ * from 2,027,004 bytes raw / 325,148 gzipped to 1,769,903 / 262,878: 12.7% less raw and 19.2% less
+ * compressed. The cut removes descriptive excerpts, which duplicated prose available on each
+ * record page, and replaces three inline CSS sort ranks with one date. Sorting now moves the DOM,
+ * so visual, keyboard and screen-reader order agree. Caveats and declared absences remain in full;
+ * they are the page's irreducible weight under rule 3a.
  *
  * The alternative — a client index of titles alone — would be smaller again and would drop every
  * caveat and absence from a surface that lists records, which is the trade rule 4b exists to refuse.
@@ -57,37 +52,14 @@ export default function SearchPage() {
     meta: string;
     domains: string[];
     text: string;
-    /** First COMPLETE sentence of the record's own prose, or nothing. Never a cut one. */
-    excerpt?: string;
     /** THE OUTCOME TRACK. Series only — a ledger record has no authored finding, and the
         outcome-track decision for that layer is recorded in the forty-ninth log entry. */
     outcome?: string;
-    /** Sort ranks, precomputed. See `SearchSort` for why sorting is CSS `order` and not DOM moves. */
+    /** A sortable date retained once per card; the server document is already newest-first. */
     sortDate: string;
     marks?: React.ReactNode;
     /** The caveat's own text. Rendered IN FULL on the card — see the note at the card markup. */
     caveatText?: string;
-  };
-
-  /**
-   * THE FIRST COMPLETE SENTENCE, OR NOTHING — never a cut one.
-   *
-   * §4 asks for a *short matched excerpt*. **Matched is not available**: matching runs over ids and
-   * titles only, because carrying every record's prose in the DOM was measured at 313 KB and removed
-   * from this page for exactly that reason. What is affordable is a DESCRIPTION — one whole sentence,
-   * about 93 KB across 594 records — and it is labelled as what it is rather than as a match.
-   *
-   * **A sentence cut mid-clause is the caveat defect in a field where nobody is watching.** Rule 3a
-   * binds caveats and this is a summary, so the rule does not reach it; the reasoning does. Where the
-   * first sentence runs past 240 characters the card shows none, because a long sentence truncated is
-   * the thing the short one was chosen to avoid.
-   */
-  const firstSentence = (text?: string): string | undefined => {
-    if (!text) return undefined;
-    const flat = text.replace(/\s+/g, ' ').trim();
-    const m = /^.*?[.!?](?=\s|$)/.exec(flat);
-    const one = m ? m[0] : flat;
-    return one.length <= 240 ? one : undefined;
   };
 
   const rows: Row[] = [
@@ -99,7 +71,6 @@ export default function SearchPage() {
       meta: `${s.unit} · ${s.points.length} points · ${DOMAIN_LABELS[s.domain]}`,
       domains: [s.domain],
       text: `${s.id} ${s.title} ${s.unit}`,
-      excerpt: firstSentence(s.notes),
       outcome: SERIES_FINDINGS[s.id]?.finding,
       sortDate: s.points.map((p) => String(p.period)).sort().slice(-1)[0] ?? '',
       marks: <RecordMarks record={s} deferCaveat />,
@@ -113,7 +84,6 @@ export default function SearchPage() {
       meta: `${formatDateRange(l.date, l.dateEnd)} · ${ASSESSMENT_LABELS[l.assessment]}`,
       domains: l.domains,
       text: `${l.id} ${l.title}`,
-      excerpt: firstSentence(l.summary ?? l.whatHappened),
       sortDate: String(l.date),
       marks: <RecordMarks record={l} deferCaveat />,
       caveatText: l.caveat,
@@ -126,30 +96,15 @@ export default function SearchPage() {
       meta: `${p.when} · ${DIRECTION_OF_BIAS_LABELS[p.directionOfBias] ?? p.directionOfBias}`,
       domains: p.affectsDomains.filter((x): x is Exclude<typeof x, 'all'> => x !== 'all'),
       text: `${p.id} ${p.title}`,
-      excerpt: firstSentence(p.whatChanged),
       sortDate: String(p.when),
     })),
-  ];
+  ].sort((a, b) => b.sortDate.localeCompare(a.sortDate) || a.title.localeCompare(b.title));
 
   const LAYER_LABEL: Record<Row['layer'], string> = {
     series: 'series',
     ledger: 'ledger record',
     provenance: 'measurement dispute',
   };
-
-  /**
-   * SORT RANKS, PRECOMPUTED SERVER-SIDE. Each card carries three integers and CSS `order` picks one;
-   * the DOM never moves, so sorting composes with the facet control that hides cards. Document order
-   * is `newest`, which is what a reader with scripting off gets.
-   */
-  const key = (r: Row) => `${r.layer}-${r.id}`;
-  const rankFrom = (cmp: (a: Row, b: Row) => number) =>
-    new Map([...rows].sort(cmp).map((r, i) => [key(r), i]));
-  const rankNewest = rankFrom((a, b) => b.sortDate.localeCompare(a.sortDate) || a.title.localeCompare(b.title));
-  const rankTopic = rankFrom(
-    (a, b) => (a.domains[0] ?? '').localeCompare(b.domains[0] ?? '') || a.title.localeCompare(b.title),
-  );
-  const rankType = rankFrom((a, b) => a.layer.localeCompare(b.layer) || a.title.localeCompare(b.title));
 
   const opts = <T extends string>(values: T[], label: (v: T) => string) =>
     [...new Set(values)].sort().map((v) => ({ value: v, label: label(v) }));
@@ -219,8 +174,8 @@ export default function SearchPage() {
           `tools/lib/listing-shapes.mjs`. Every previous new shape walked past `listing-marks`:
           the grid card, the listing row, `<td>` against `<li>`, the domain rebuild's four
           containers, the redline, the contested pair. That is six, and this is the seventh. */}
-      <div className="scards" id="search-cards" data-sort="newest">
-        {rows.map((r, k) => (
+      <div className="scards" id="search-cards">
+        {rows.map((r) => (
           <article
             key={`${r.layer}-${r.id}`}
             className="scard"
@@ -228,13 +183,7 @@ export default function SearchPage() {
             data-f-layer={r.layer}
             data-f-domain={r.domains.join('|')}
             data-text={r.text}
-            style={
-              {
-                '--o-newest': rankNewest.get(`${r.layer}-${r.id}`) ?? k,
-                '--o-topic': rankTopic.get(`${r.layer}-${r.id}`) ?? k,
-                '--o-type': rankType.get(`${r.layer}-${r.id}`) ?? k,
-              } as React.CSSProperties
-            }
+            data-sort-date={r.sortDate}
           >
             <h2 className="scard-title">
               <Link prefetch={false} href={r.href}>{r.title}</Link>
@@ -246,11 +195,10 @@ export default function SearchPage() {
                   {DOMAIN_LABELS[d as keyof typeof DOMAIN_LABELS] ?? d}
                 </span>
               ))}
-              <Link prefetch={false} className="scard-id mono" href={r.href}>
+              <span className="scard-id mono">
                 {r.id}
-              </Link>
+              </span>
             </p>
-            {r.excerpt ? <p className="scard-ex">{r.excerpt}</p> : null}
             {r.marks}
             {/* THE SHARED RENDERER, not a hand-rolled one. The first cut of this card wrote its
                 own `<p className="caveat-inline">Caveat: …</p>` and `listing-marks` failed 232 —

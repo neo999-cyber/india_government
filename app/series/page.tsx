@@ -48,6 +48,10 @@ export default function SeriesIndex() {
         {series.length} series. Every series names its calendar and never mixes calendars
         internally; every break is carried as a seam rather than smoothed away.
       </p>
+      <nav className="series-jumps" aria-label="Series index views">
+        <a href="#span-strip">Explore the time spans</a>
+        <a href="#series-table-heading">Browse the full table</a>
+      </nav>
       <StatusKey />
 
       {/* ---- THE SPAN STRIP. 269 spans on one axis, sorted by first observation. -------------- */}
@@ -92,7 +96,7 @@ export default function SeriesIndex() {
       </p>
 
       <div className="sec-h">
-        <h2>The table</h2>
+        <h2 id="series-table-heading">The table</h2>
         <p className="sec-note">
           The same {rows.length} series, with spans, bases, tiers and every declaration in full.
         </p>

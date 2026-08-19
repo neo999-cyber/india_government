@@ -5,7 +5,7 @@ import { DIRECTORY } from '@/lib/routes';
 import { AllPagesDisclosure } from '@/components/AllPagesDisclosure';
 import Link from 'next/link';
 import localFont from 'next/font/local';
-import { series, provenance } from '@/lib/data';
+import { series } from '@/lib/data';
 import { ProvenanceDrawer } from '@/components/ProvenanceDrawer';
 import './globals.css';
 
@@ -350,24 +350,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </span>
             <Link href="/method/">method, sources &amp; tiers</Link>
           </footer>
-          <ProvenanceDrawer
-            provenanceData={provenance.map((p) => ({
-              id: p.id,
-              title: p.title,
-              whatChanged: p.whatChanged,
-              when: p.when,
-              directionOfBias: p.directionOfBias,
-              bridgeNote: p.bridgeNote,
-              affectsDomains: p.affectsDomains,
-              affectsSeries: p.affectsSeries,
-              competingAccounts: p.competingAccounts?.map((acc) =>
-                typeof acc === 'string'
-                  ? { holder: 'Account', position: acc }
-                  : { holder: acc.holder, position: acc.position },
-              ),
-              sources: p.sources?.map((s) => ({ name: s.name, url: s.url, tier: s.tier })),
-            }))}
-          />
+          <ProvenanceDrawer />
         </div>
       </body>
     </html>

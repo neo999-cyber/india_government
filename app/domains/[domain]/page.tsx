@@ -123,23 +123,7 @@ export async function DomainSurface({ d }: { d: Domain }) {
     .map(([year, n]) => ({ year, label: `${year} · ${n} record${n === 1 ? '' : 's'}` }));
 
   const periods = DOMAIN_PERIODS[d];
-  // THE COUNTS ARE DERIVED, the sentence beside them is authored. A hardcoded "94 of 95" would be
-  // a claim about the past in the present tense the first time a series is added.
   const evidence = DOMAIN_EVIDENCE[d];
-  // COUNT THE SERIES A READER OF THIS PAGE ACTUALLY MEETS. Where an area files none of its own —
-  // `kashmir` files zero and is read entirely through its lens — counting `s` yields "0 of 0
-  // observations", which asserts the area is unmeasured. It is the exact misreading the note exists
-  // to stop, produced by the note. The page already picks `s.length ? s : lensed` for its charts;
-  // the note now uses the same set, so the prose and the figures beside it describe one thing.
-  const counted = s.length ? s : lensed;
-  const indiaPoints = counted.flatMap((x) => x.points.filter((pt) => pt.country === 'IND' && pt.value !== null));
-  const verifiedPoints = indiaPoints.filter((pt) => pt.status === 'verified').length;
-  const approxPoints = indiaPoints.filter((pt) => pt.status === 'approx').length;
-  // Series carrying a single observation — the shape welfare's note is about, and worth printing on
-  // every area that carries one, because it is the difference between a series and a running total.
-  const onePointSeries = counted.filter(
-    (x) => x.points.filter((pt) => pt.country === 'IND' && pt.value !== null).length === 1,
-  ).length;
   /**
    * Every declared absence in this topic, from series and ledger alike, each carrying the record
    * that declared it. Built here rather than in the section so the count is available to the
@@ -178,15 +162,7 @@ export async function DomainSurface({ d }: { d: Domain }) {
         ) : null}
       </p>
 
-      <DomainSections
-        d={d}
-        counts={{
-          indicators: s.length + lensed.length,
-          records: l.length,
-          disputes: p.length,
-          missing: absences.length,
-        }}
-      />
+      <DomainSections />
 
       {/* THE COUNTS LINE LOST ITS FIRST JOB TO THE CONTENTS STRIP, 2026-08-14 — it read
           `N indicators · N records · N disputes`, which the strip above now states beside the
@@ -305,13 +281,7 @@ export async function DomainSurface({ d }: { d: Domain }) {
       {/* ---- WHAT CHANGED. Authored, per period, from the records. One of fourteen written. --- */}
       {evidence ? (
         <p className="evidence-note">
-          <span className="label">How this topic is published</span> {evidence}{' '}
-          <span className="mono">
-            {approxPoints} of {indiaPoints.length} India observations are published as
-            approximations; {verifiedPoints} {verifiedPoints === 1 ? 'is' : 'are'} verified.{' '}
-            {onePointSeries} of {counted.length} series carry a single observation
-            {s.length === 0 && lensed.length > 0 ? ', all of them read through this lens' : ''}.
-          </span>
+          <span className="label">How this topic is published</span> {evidence}
         </p>
       ) : null}
 
@@ -937,4 +907,3 @@ function MiniLine({ series, events }: { series: Series; events?: number[] }) {
     </svg>
   );
 }
-

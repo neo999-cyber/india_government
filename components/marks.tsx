@@ -147,7 +147,7 @@ export function SourceLine({ source, tier }: { source: SourceRef; tier?: Tier })
   return (
     <p className="source-line">
       Source:{' '}
-      <a href={source.url} target="_blank" rel="noreferrer">
+      <a href={source.url} target="_blank" rel="noreferrer noopener">
         {source.name}
       </a>
       {tier ? <> · tier {tier}</> : null}
@@ -161,7 +161,7 @@ export function SourceList({ sources }: { sources: TieredSource[] }) {
     <ul style={{ listStyle: 'none', padding: 0, margin: '0.35rem 0 1rem' }}>
       {sources.map((s) => (
         <li key={`${s.name}-${s.url}`} className="source-line">
-          <a href={s.url} target="_blank" rel="noreferrer">
+          <a href={s.url} target="_blank" rel="noreferrer noopener">
             {s.name}
           </a>{' '}
           · tier {s.tier}

@@ -41,7 +41,7 @@ export default function TermsIndex() {
       <p className="prose-note">
         No term carries a grade. Roll-ups are counts of assessments and nothing else.
       </p>
-                  ? ` ·<TallyGloss />
+      <TallyGloss />
     </>
   );
 }
