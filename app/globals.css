@@ -5330,6 +5330,11 @@ li {
 }
 
 .cmd-item {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  text-align: left;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -5338,6 +5343,11 @@ li {
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: background 0.1s ease;
+}
+
+.cmd-item:focus-visible {
+  outline: 2px solid var(--mark);
+  outline-offset: 1px;
 }
 
 .cmd-item.is-selected,
@@ -5580,6 +5590,27 @@ li {
   margin-bottom: 0.75rem;
 }
 
+.compare-presets-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.compare-presets-head .compare-section-label {
+  margin: 0;
+}
+
+.compare-preset-find input {
+  width: min(16rem, 42vw);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--ink);
+  padding: 0.42rem 0.6rem;
+}
+
 .compare-presets-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
@@ -5607,6 +5638,20 @@ li {
 .compare-preset-btn.is-active {
   border-color: var(--mark);
   background: var(--rule-soft);
+}
+
+.compare-preset-more {
+  margin-top: 0.75rem;
+  border: 0;
+  background: transparent;
+  color: var(--mark-ink);
+  font: 0.75rem var(--font-mono);
+  cursor: pointer;
+  padding: 0.35rem 0;
+}
+
+.compare-preset-more:hover {
+  text-decoration: underline;
 }
 
 .compare-preset-domain {
@@ -5655,11 +5700,11 @@ li {
 }
 
 .compare-label-a {
-  color: #58a6ff;
+  color: var(--fill);
 }
 
 .compare-label-b {
-  color: #f87171;
+  color: var(--alert);
 }
 
 .compare-select {
@@ -5732,11 +5777,11 @@ li {
 }
 
 .compare-card-a {
-  border-top: 3px solid #58a6ff;
+  border-top: 3px solid var(--fill);
 }
 
 .compare-card-b {
-  border-top: 3px solid #f87171;
+  border-top: 3px solid var(--alert);
 }
 
 .compare-card-top {
@@ -5806,6 +5851,17 @@ li {
   display: block;
 }
 
+.compare-svg circle:focus-visible {
+  outline: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+}
+
+.compare-seam-label {
+  fill: var(--alert);
+  font: 8px var(--font-mono);
+}
+
 .compare-caveat {
   font-size: 0.75rem;
   color: var(--accent-caveat);
@@ -5855,11 +5911,11 @@ li {
 }
 
 .compare-table .val-a {
-  color: #58a6ff;
+  color: var(--fill);
 }
 
 .compare-table .val-b {
-  color: #f87171;
+  color: var(--alert);
 }
 
 .term-tag {
@@ -6101,6 +6157,4 @@ li {
 .spk path {
   transition: stroke-dashoffset 0.3s ease;
 }
-
-
 

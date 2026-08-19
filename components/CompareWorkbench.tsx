@@ -37,6 +37,8 @@ export function CompareWorkbench({
   const [selectedPairId, setSelectedPairId] = useState<string>(pairsList[0]?.id || '');
   const [seriesAId, setSeriesAId] = useState<string>(pairsList[0]?.seriesA || seriesList[0]?.id || '');
   const [seriesBId, setSeriesBId] = useState<string>(pairsList[0]?.seriesB || seriesList[1]?.id || '');
+  const [showAllPairs, setShowAllPairs] = useState(false);
+  const [pairQuery, setPairQuery] = useState('');
 
   const activePair = useMemo(() => {
     return pairsList.find((p) => p.id === selectedPairId);
@@ -76,7 +78,7 @@ export function CompareWorkbench({
 
   const renderSpark = (s: CompactSeries, color: string) => {
     if (!s.points || s.points.length === 0) return null;
-    const pts = s.points;
+    const pts = [...s.points].sort((a, b) => a.year - b.year);
     const vMin = Math.min(...pts.map((p) => p.value));
     const vMax = Math.max(...pts.map((p) => p.value));
     const vRange = vMax - vMin || 1;
@@ -84,9 +86,24 @@ export function CompareWorkbench({
     const getX = (yr: number) => padX + ((yr - X0) / (X1 - X0)) * (W - padX * 2);
     const getY = (v: number) => H - padY - ((v - vMin) / vRange) * (H - padY * 2);
 
-    const pathD = pts
-      .map((p, i) => (i === 0 ? 'M' : 'L') + ' ' + getX(p.year) + ' ' + getY(p.value))
-      .join(' ');
+    const breakYears = new Set(s.breaks ?? []);
+    const segments: typeof pts[] = [];
+    let current: typeof pts = [];
+    pts.forEach((p, index) => {
+      const previous = pts[index - 1];
+      const cut = breakYears.has(p.year) || (previous && p.year - previous.year > 1);
+      if (cut && current.length) {
+        segments.push(current);
+        current = [];
+      }
+      current.push(p);
+    });
+    if (current.length) segments.push(current);
+
+    const pathFor = (segment: typeof pts) =>
+      segment
+        .map((p, i) => `${i === 0 ? 'M' : 'L'} ${getX(p.year).toFixed(1)} ${getY(p.value).toFixed(1)}`)
+        .join(' ');
 
     const t1X = getX(2014);
     const t1W = getX(2019) - t1X;
@@ -98,15 +115,40 @@ export function CompareWorkbench({
     return (
       <svg viewBox={'0 0 ' + W + ' ' + H} className="compare-svg" role="img" aria-label={s.title}>
         {/* Term Bands */}
-        <rect x={t1X} y={0} width={t1W} height={H} fill="rgba(56, 139, 253, 0.06)" />
-        <rect x={t2X} y={0} width={t2W} height={H} fill="rgba(56, 139, 253, 0.10)" />
-        <rect x={t3X} y={0} width={t3W} height={H} fill="rgba(56, 139, 253, 0.14)" />
+        <rect x={t1X} y={0} width={t1W} height={H} fill="var(--band-term-1)" />
+        <rect x={t2X} y={0} width={t2W} height={H} fill="var(--band-term-2)" />
+        <rect x={t3X} y={0} width={t3W} height={H} fill="var(--band-term-3)" />
 
         {/* Baseline */}
         <line x1={padX} y1={H - padY} x2={W - padX} y2={H - padY} stroke="var(--rule)" strokeWidth="1" />
 
         {/* Series Line */}
-        <path d={pathD} fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+        {segments.map((segment, index) => (
+          <path
+            key={index}
+            d={pathFor(segment)}
+            fill="none"
+            stroke={color}
+            strokeWidth="2.5"
+            strokeLinecap="round"
+          />
+        ))}
+
+        {(s.breaks ?? []).map((year) => (
+          <g key={year}>
+            <line
+              x1={getX(year)}
+              x2={getX(year)}
+              y1={padY}
+              y2={H - padY}
+              stroke="var(--alert)"
+              strokeWidth="1.5"
+            />
+            <text x={getX(year) + 4} y={padY + 10} className="compare-seam-label">
+              basis changed
+            </text>
+          </g>
+        ))}
 
         {/* Points */}
         {pts.map((p) => (
@@ -118,6 +160,9 @@ export function CompareWorkbench({
             fill={color}
             stroke="var(--bg)"
             strokeWidth="1.5"
+            tabIndex={0}
+            role="img"
+            aria-label={`${p.year}: ${p.value} ${s.unit}`}
           >
             <title>{p.year + ': ' + p.value + ' ' + s.unit}</title>
           </circle>
@@ -149,13 +194,36 @@ export function CompareWorkbench({
     };
   }, [seriesA, seriesB, activePair]);
 
+  const shownPairs = useMemo(() => {
+    const needle = pairQuery.trim().toLowerCase();
+    const filtered = needle
+      ? pairsList.filter((pair) =>
+          `${pair.id} ${pair.domain} ${pair.labelA} ${pair.labelB}`.toLowerCase().includes(needle),
+        )
+      : pairsList;
+    return showAllPairs || needle ? filtered : filtered.slice(0, 8);
+  }, [pairQuery, pairsList, showAllPairs]);
+
   return (
     <div className="compare-workbench">
       {/* Curated Presets Carousel / Tabs */}
       <div className="compare-presets-section">
-        <span className="compare-section-label">CURATED DISPUTE & COMPARATOR PRESETS ({pairsList.length})</span>
+        <div className="compare-presets-head">
+          <span className="compare-section-label">
+            {showAllPairs || pairQuery ? 'ALL' : 'FEATURED'} COMPARISON PRESETS ({shownPairs.length} OF {pairsList.length})
+          </span>
+          <label className="compare-preset-find">
+            <span className="sr-only">Find a comparison preset</span>
+            <input
+              type="search"
+              value={pairQuery}
+              onChange={(event) => setPairQuery(event.target.value)}
+              placeholder="Find a comparison"
+            />
+          </label>
+        </div>
         <div className="compare-presets-grid">
-          {pairsList.slice(0, 8).map((pair) => (
+          {shownPairs.map((pair) => (
             <button
               key={pair.id}
               type="button"
@@ -169,6 +237,11 @@ export function CompareWorkbench({
             </button>
           ))}
         </div>
+        {!pairQuery && pairsList.length > 8 ? (
+          <button type="button" className="compare-preset-more" onClick={() => setShowAllPairs((value) => !value)}>
+            {showAllPairs ? 'Show the featured eight' : `Show all ${pairsList.length} comparisons`}
+          </button>
+        ) : null}
       </div>
 
       {/* Selectors Bar */}
@@ -240,7 +313,7 @@ export function CompareWorkbench({
           </div>
           <h3 className="compare-card-h">{seriesA?.title}</h3>
           <p className="compare-unit">Unit: {seriesA?.unit} · Source: {seriesA?.publisher || 'Official'}</p>
-          {seriesA ? renderSpark(seriesA, '#58a6ff') : null}
+          {seriesA ? renderSpark(seriesA, 'var(--fill)') : null}
           {seriesA?.caveat ? <p className="compare-caveat">⚠ {seriesA.caveat}</p> : null}
         </div>
 
@@ -255,7 +328,7 @@ export function CompareWorkbench({
           </div>
           <h3 className="compare-card-h">{seriesB?.title}</h3>
           <p className="compare-unit">Unit: {seriesB?.unit} · Source: {seriesB?.publisher || 'Official'}</p>
-          {seriesB ? renderSpark(seriesB, '#f87171') : null}
+          {seriesB ? renderSpark(seriesB, 'var(--alert)') : null}
           {seriesB?.caveat ? <p className="compare-caveat">⚠ {seriesB.caveat}</p> : null}
         </div>
       </div>
@@ -286,9 +359,9 @@ export function CompareWorkbench({
                   <td className="mono val-b">{ptB ? ptB.value + ' ' + seriesB?.unit : '— (unreported)'}</td>
                   <td className="cell-note">
                     {ptA && ptB
-                      ? seriesA?.unit === seriesB?.unit
-                        ? 'Delta: ' + (ptA.value - ptB.value > 0 ? '+' : '') + (ptA.value - ptB.value).toFixed(1) + ' ' + seriesA?.unit
-                        : 'Different units (' + seriesA?.unit + ' vs ' + seriesB?.unit + ')'
+                      ? activePair?.gapReason
+                        ? 'Not subtracted: the two measurements are not directly interchangeable.'
+                        : 'Shown in parallel. No arithmetic comparison is inferred.'
                       : 'Partial observation'}
                   </td>
                 </tr>
