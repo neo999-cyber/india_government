@@ -255,6 +255,7 @@ export function CompareWorkbench({
 
   return (
     <div className="compare-workbench">
+      <h2 className="sr-only">Comparison workspace</h2>
       {/* Curated Presets Carousel / Tabs */}
       <div className="compare-presets-section">
         <div className="compare-presets-head">

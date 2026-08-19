@@ -154,12 +154,12 @@ export function CommandPalette() {
         type="button"
         className="cmd-trigger"
         onClick={() => setOpen(true)}
-        aria-label="Open search command palette (Cmd+K)"
+        aria-keyshortcuts="Meta+K Control+K"
         title="Quick search (Cmd+K)"
       >
-        <span className="cmd-trigger-icon">⌕</span>
+        <span className="cmd-trigger-icon" aria-hidden="true">⌕</span>
         <span className="cmd-trigger-text">Quick Search</span>
-        <kbd className="cmd-kbd">⌘K</kbd>
+        <kbd className="cmd-kbd" aria-hidden="true">⌘K</kbd>
       </button>
 
       {open ? (

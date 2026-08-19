@@ -146,7 +146,7 @@ export function RestsOn({
         <ul className="rests-list">
           {record.sources.map((s) => (
             <li key={`${s.name}-${s.url}`}>
-              <a href={s.url} target="_blank" rel="noreferrer">
+              <a href={s.url} target="_blank" rel="noreferrer noopener">
                 {s.name}
               </a>
               <span className="rests-edge">tier {s.tier}</span>

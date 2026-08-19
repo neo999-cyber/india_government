@@ -364,7 +364,7 @@ export function SeriesChart({
 
       <p className="chart-source">
         <span className="label">Source</span>{' '}
-        <a href={series.source.url} target="_blank" rel="noreferrer">
+        <a href={series.source.url} target="_blank" rel="noreferrer noopener">
           {series.source.name}
         </a>{' '}
         · tier {series.tier}
