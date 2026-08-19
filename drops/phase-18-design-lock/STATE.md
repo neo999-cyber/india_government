@@ -35,7 +35,7 @@ are closed for the landing page, the seven stories and all 122 qualifying series
 
 ## SESSION 2026-08-19 — a citable cross-sector Atlas view
 
-**Committed and pushed on `codex/cross-sector-visual-dashboard`; not deployed.** The Atlas now
+**Deployed from merge commit `94a1214` on 2026-08-19.** The Atlas now
 lets a reader focus any combination of its existing fourteen topic cards, step one year backward or
 forward, and copy the exact view. The optional query is `?year=2020&topics=employment,education`;
 `/overview/` remains unchanged as the complete default and every old URL remains valid.
@@ -70,6 +70,17 @@ event lanes, and flip right-edge term labels back into the SVG. The complete bro
 **51 of 51**, including the five named topic pages and the disclosure focus-return contract. A
 desktop render of Environment was also measured directly: six header labels, zero overlaps and zero
 escapes from the chart.
+
+**CORRECTION — THE OLD-URL CLAIM ABOVE WAS FALSE.** The withdrawn wording is: *“every old URL
+remains valid.”* Production verification after the merge found `/domains/` and one representative
+topic's four former subsection routes returning 404. The removed shape comprises **57 routes** —
+the topic index plus four subsections for each of fourteen topics — so five sampled 404s exposed a
+structural compatibility omission, not five isolated pages. The local hotfix branch
+`codex/restore-legacy-domain-urls` adds permanent same-origin redirects: `/domains/` to `/overview/`,
+and each former subsection to its existing topic-page fragment. It restores addressability without
+restoring duplicate pages. The configuration validates against Vercel's current official schema;
+the 33-gate, 698-page production build and all 51 browser tests pass; and `legacy-routes` binds all
+57 old addresses to built targets. Production HTTP verification is owed after the hotfix deploys.
 
 ---
 
