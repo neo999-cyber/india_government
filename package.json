@@ -29,7 +29,7 @@
     "commit": "node tools/verify-and-commit.mjs",
     "scan": "node tools/scan-text.mjs",
     "manifest": "node tools/gen-manifest.mjs",
-    "public-data": "node tools/gen-public-data.mjs",
+    "public-data": "node tools/build-commit.mjs && node tools/gen-public-data.mjs",
     "deploy-chain": "node tools/deploy-chain.mjs --control && node tools/deploy-chain.mjs",
     "no-unguarded-prose-field": "node tools/no-unguarded-prose-field.mjs",
     "field-render-audit": "node tools/field-render-audit.mjs",

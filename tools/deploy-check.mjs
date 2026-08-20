@@ -31,9 +31,11 @@
  *   node tools/deploy-check.mjs                          # deterministic sample across all layers
  *   node tools/deploy-check.mjs --ids L-0221,P-123
  *   node tools/deploy-check.mjs --sample 12 --base https://india-government.vercel.app
+ *   node tools/deploy-check.mjs --commit 59d33b7   # verify a squash/merge commit from another branch
  *   node tools/deploy-check.mjs --verbose
  */
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { leafFields, isProse, valuesAt } from './lib/schema-fields.mjs';
@@ -50,6 +52,7 @@ const BASE = (flag('--base', 'https://india-government.vercel.app') ?? '').repla
 const VERBOSE = argv.includes('--verbose');
 const SAMPLE = Number(flag('--sample', '9'));
 const ONLY_IDS = flag('--ids') ? flag('--ids').split(',').map((s) => s.trim()) : null;
+const EXPECTED_REF = flag('--commit', 'HEAD');
 
 const LAYERS = ['ledger', 'provenance', 'series'];
 
@@ -81,6 +84,30 @@ const fetchText = async (url) => {
   if (!res.ok) return { status: res.status, text: null };
   return { status: res.status, text: pageTextFromHtml(await res.text()) };
 };
+
+/** THE FIRST REQUEST IS THE DEPLOY IDENTITY, not a sampled page. A page can be correct and old. */
+let expectedCommit;
+try {
+  expectedCommit = execFileSync('git', ['rev-parse', EXPECTED_REF], { cwd: ROOT, encoding: 'utf8' }).trim().toLowerCase();
+} catch {
+  console.error(`deploy-check FAILED — cannot resolve expected commit ${EXPECTED_REF}; pass --commit with a reachable ref`);
+  process.exit(1);
+}
+
+let deployedCommit = null;
+try {
+  const response = await fetch(`${BASE}/data/v1/manifest.json`, { redirect: 'follow' });
+  if (response.ok) deployedCommit = String((await response.json()).commit ?? '').toLowerCase();
+} catch {
+  /* the failure below names the missing manifest rather than leaking a fetch implementation error */
+}
+if (deployedCommit !== expectedCommit) {
+  console.error(
+    `deploy-check FAILED — production manifest identifies ${deployedCommit || 'no commit'}, expected ${expectedCommit}\n` +
+    '  Record-page assertions cannot prove deployment freshness; fix the build stamp or wait for the requested deploy.',
+  );
+  process.exit(1);
+}
 
 const results = [];
 const record = (ok, layer, id, label, detail) => results.push({ ok, layer, id, label, detail });
@@ -156,7 +183,8 @@ if (failures.length) {
 }
 
 console.log(
-  `deploy-check OK — ${results.filter((x) => x.label === 'fields asserted').length} record page(s) fetched from ${BASE}, ` +
+  `deploy-check OK — manifest matches ${expectedCommit.slice(0, 7)} · ` +
+  `${results.filter((x) => x.label === 'fields asserted').length} record page(s) fetched from ${BASE}, ` +
   `${results.filter((x) => x.label === 'negative control').length} negative control(s), 0 value(s) missing · ` +
   `needles derived from /data through tools/lib/page-text.mjs`,
 );
