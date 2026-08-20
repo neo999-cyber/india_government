@@ -5,6 +5,7 @@ import { DOMAIN_LABELS } from '@/lib/format';
 import { DOMAINS, LENSES } from '@/lib/types';
 import type { Lens, Series, Domain } from '@/lib/types';
 import { OverviewBoard } from '@/components/OverviewBoard';
+import { SectionNav } from '@/components/SectionNav';
 import type { ODomain, OSeries } from '@/components/OverviewBoard';
 
 export const metadata: Metadata = {
@@ -246,6 +247,7 @@ export default function Overview() {
         Move the year control and every topic moves with it. Each card leads with one real series;
         open it for the other indicators, official records, disputes and caveats behind the line.
       </p>
+      <SectionNav section="atlas" />
       {/* ============ `/domains/` WAS FOLDED IN HERE ON 2026-08-14 ==============================
           It was fourteen cards linking to the same fourteen topic pages these cards link to, with
           the same counts and the same lead figure derived by the same criterion. **The only thing
@@ -255,7 +257,9 @@ export default function Overview() {
           The topics remain fourteen, in the schema's own order, and nothing is ranked. */}
 
       {/* Directly under this page's h1, so the cards are its first sections: h2. */}
-      <OverviewBoard domains={domains} headingLevel={2} character />
+      <div id="topics" className="atlas-board-anchor">
+        <OverviewBoard domains={domains} headingLevel={2} character />
+      </div>
 
       <p className="prose-note board-framing">
         <span className="label">What every Atlas view preserves</span> No mode creates a government

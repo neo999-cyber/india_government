@@ -3019,7 +3019,7 @@ tbody > tr:has(+ .caveat-row) > td {
   border-bottom-color: var(--rule);
 }
 
-/* The directory. Five groups, unchanged, where a reader looks for a site map. */
+/* The directory mirrors the seven public sections instead of teaching a second grouping system. */
 .foot-dir {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
@@ -3043,6 +3043,7 @@ tbody > tr:has(+ .caveat-row) > td {
   text-transform: uppercase;
   color: var(--ink-dim);
   margin-bottom: 0.2rem;
+  text-decoration: none;
 }
 
 .foot-dir a {
@@ -3059,6 +3060,15 @@ tbody > tr:has(+ .caveat-row) > td {
 .foot-dir a:hover {
   color: var(--ink);
   text-decoration: underline;
+}
+
+.foot-dir a.foot-dir-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
 }
 
 /* Event markers on a domain lead chart: a record in this area was announced in this year. Brass,
@@ -4890,10 +4900,11 @@ details.more > summary {
   left: 0;
   top: calc(100% + 0.5rem);
   z-index: 40;
-  min-width: 19rem;
-  max-width: min(34rem, calc(100vw - 2rem));
+  width: min(72rem, calc(100vw - 2rem));
+  max-width: calc(100vw - 2rem);
   display: grid;
-  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 1.1rem 1.25rem;
   padding: 0.9rem 1rem;
   background: var(--surface);
   border: 1px solid var(--rule);
@@ -4914,8 +4925,16 @@ details.more > summary {
   text-transform: uppercase;
   color: var(--ink-2);
   margin-bottom: 0.4rem;
+  text-decoration: none;
 }
-.allpages-group > a { font-size: 0.88rem; }
+.allpages-group > a {
+  display: flex;
+  align-items: center;
+  min-height: 24px;
+  font-size: 0.88rem;
+}
+.allpages-group > a.allpages-label { font-size: 0.78rem; }
+.allpages-label:hover { color: var(--ink); }
 
 @media (max-width: 767px) {
   /* THE SUMMARY PACKS WITH THE LINKS; THE PANEL STILL SPANS THE WIDTH.
@@ -5114,6 +5133,22 @@ details.more > summary {
   margin: 0 0 0.6rem;
 }
 
+.dir-group h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dir-group h2 a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.dir-group > p {
+  margin: 0 0 0.65rem;
+  color: var(--ink-2);
+  font-size: 0.8125rem;
+}
+
 .dir-group ul {
   list-style: none;
   margin: 0;
@@ -5128,6 +5163,102 @@ details.more > summary {
   min-height: 44px;
   display: flex;
   align-items: center;
+}
+
+/* --- Section gateways -----------------------------------------------------
+   One compact map of a primary section, derived from the same registry as All pages. It links
+   existing routes, query-controlled views and fragments; it never copies a record or a caveat. */
+.section-nav {
+  margin: 1.25rem 0 2rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-nav-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 0.65rem;
+}
+
+.section-nav-head .label {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.section-nav-head p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 0.8125rem;
+}
+
+.section-nav ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+
+.section-nav li {
+  margin: 0;
+  background: var(--bg);
+}
+
+.section-nav a {
+  display: flex;
+  min-height: 72px;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.18rem;
+  padding: 0.65rem 0.75rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.section-nav a:hover,
+.section-nav a:focus-visible {
+  background: var(--surface);
+}
+
+.section-nav strong {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.section-nav a span {
+  color: var(--ink-2);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.atlas-board-anchor,
+#series-comparison,
+#declared-absences,
+#verification-queue {
+  scroll-margin-top: 1rem;
+}
+
+@media (max-width: 640px) {
+  .section-nav-head {
+    display: block;
+  }
+
+  .section-nav-head p {
+    margin-top: 0.35rem;
+  }
+
+  .section-nav ul {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* --- `hidden` MUST ACTUALLY HIDE ------------------------------------------

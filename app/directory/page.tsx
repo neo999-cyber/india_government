@@ -28,12 +28,12 @@ export const metadata: Metadata = { title: routeLabel('/directory/') };
  * `X-Robots-Tag: noindex, nofollow` deliberately. This is a reader's contents page, and it is named
  * for what a reader would call it.
  *
- * **And it ranks nothing.** The groups are the same authored groups the masthead has carried since
- * the navigation pass, in the same order, which is by how a reader arrives rather than by
- * importance — rule 9.
+ * **And it ranks nothing.** The groups are the seven concepts the masthead teaches, in that same
+ * authored order. Specialist routes sit under the concept a reader already knows rather than
+ * under a second vocabulary invented for the directory.
  */
 export default function Directory() {
-  const total = DIRECTORY.reduce((n, g) => n + g.items.length, 0);
+  const total = DIRECTORY.reduce((n, g) => n + g.items.length + 1, 0);
 
   return (
     <>
@@ -43,15 +43,16 @@ export default function Directory() {
 
       <h1 className="page-lead">All pages</h1>
       <p className="lede">
-        The seven main destinations first, followed by the specialist evidence indexes whose
-        existing addresses remain intact. {total} destinations, and nothing here is ordered by
-        importance.
+        The same seven sections used in the masthead, each followed by the specialist views it
+        contains. All {total} destinations keep their existing addresses, and nothing here is
+        ordered by importance.
       </p>
 
       <div className="dir-groups">
         {DIRECTORY.map((g) => (
-          <section key={g.label} className="dir-group">
-            <h2>{g.label}</h2>
+          <section key={g.key} className="dir-group">
+            <h2><Link href={g.href}>{g.label}</Link></h2>
+            <p>{g.description}</p>
             <ul>
               {g.items.map((item) => (
                 <li key={item.href}>

@@ -77,9 +77,10 @@ test.describe('all-pages disclosure', () => {
     await page.goto('/');
     const d = await open(page);
 
-    // A group label is inert text inside the panel. Selecting or mis-tapping there must not
-    // dismiss — the guard is containment, and a naive document-level handler would fail this.
-    await d.locator('.allpages-label').first().click();
+    // Click the panel's own padding rather than a link. The group labels now link their seven
+    // parent sections, so using one as the inert control would test navigation instead of
+    // containment. A naive document-level dismissal still fails this padding click.
+    await d.locator('.allpages-panel').click({ position: { x: 4, y: 4 } });
     await expect(d).toHaveJSProperty('open', true);
   });
 

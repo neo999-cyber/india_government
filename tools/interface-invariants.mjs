@@ -118,7 +118,7 @@ function missingSections(html) {
 const INDEX_ROUTES = [
   'overview', 'questions', 'stories', 'search', 'series', 'ledger', 'provenance',
   'contested', 'unmeasured', 'exposure', 'lenses', 'terms', 'peers', 'years', 'publishers',
-  'method', 'derivations', 'corrections', 'data', 'counterfactual', 'directory',
+  'about', 'method', 'derivations', 'corrections', 'data', 'counterfactual', 'directory',
 ];
 function leadClass(html) {
   const m = html.match(/<h1\b([^>]*)>/);
