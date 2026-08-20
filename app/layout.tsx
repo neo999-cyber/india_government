@@ -242,7 +242,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {/* SKIP LINK. Absent from all 753 pages until 2026-08-13. Automated tooling did not call it
             a violation because the landmarks are correct, which is exactly why it survived: the
-            masthead carries five primary links plus a directory disclosure, and some routes run
+            masthead carries seven primary links plus a directory disclosure, and some routes run
             past 200,000px, so a keyboard reader had no way past the navigation on any of them.
             Visible only on focus — `app/globals.css`, `.skip-link`. */}
         <a className="skip-link" href="#main">
@@ -266,7 +266,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 being added to
               </span>
             </p>
-            {/* The five primary links moved to `components/PrimaryNav.tsx` so they can carry
+            {/* The seven primary links moved to `components/PrimaryNav.tsx` so they can carry
                 `aria-current`, which needs the pathname and therefore a client component. The
                 All-pages disclosure stays here and stays script-free — see its own note. */}
             <PrimaryNav />
@@ -307,8 +307,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <AllPagesDisclosure>
                 <div className="allpages-panel">
                   {DIRECTORY.map((g) => (
-                    <div key={g.label} className="allpages-group">
-                      <span className="allpages-label">{g.label}</span>
+                    <div key={g.key} className="allpages-group">
+                      <Link prefetch={false} className="allpages-label" href={g.href}>
+                        {g.label}
+                      </Link>
                       {g.items.map((item) => (
                         <Link prefetch={false} key={item.href} href={item.href}>
                           {item.label}
@@ -321,13 +323,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </nav>
           </header>
           <main id="main">{children}</main>
-          {/* THE DIRECTORY. The five groups, whole and unchanged, in the place a reader looks for
-              a site map rather than the place they meet the site. Every route that was in the
-              masthead is here; none moved, none is behind a disclosure. */}
+          {/* THE DIRECTORY. The same seven groups as the masthead, in the place a reader looks for
+              a site map. Specialist routes keep their old addresses and gain a visible parent. */}
           <nav className="foot-dir" aria-label="Directory">
             {DIRECTORY.map((g) => (
-              <div key={g.label} className="foot-dir-group">
-                <span className="foot-dir-label">{g.label}</span>
+              <div key={g.key} className="foot-dir-group">
+                <Link prefetch={false} className="foot-dir-label" href={g.href}>
+                  {g.label}
+                </Link>
                 {g.items.map((item) => (
                   <Link prefetch={false} key={item.href} href={item.href}>
                     {item.label}

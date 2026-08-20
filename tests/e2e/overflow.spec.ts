@@ -25,6 +25,7 @@ const ROUTES = [
   ['/series/coal-production/', 'a record page'],
   ['/stories/did-jobs-grow/', 'a story with a scroller'],
   ['/questions/', 'a question index'],
+  ['/about/', 'the section hub'],
   ['/method/', 'long prose with tables'],
   // ADDED AFTER BOTH WERE FOUND OVERFLOWING ON PRODUCTION, by sweeping the routes this list did not
   // cover. `/derivations/` was **641px** over — a formula block with no break opportunity — and the

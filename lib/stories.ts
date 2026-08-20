@@ -1,4 +1,5 @@
 import { getLedger, getProvenance, getSeries } from '@/lib/data';
+import { STORY_INDEX } from '@/lib/story-index';
 
 /**
  * THE STORIES, DECLARED ONCE — and the declaration exists to make the route run BOTH WAYS.
@@ -259,6 +260,11 @@ export const STORIES: Story[] = [
     ],
   },
 ];
+
+const declaredStoryIndex = STORIES.map(({ slug, title, topic }) => ({ slug, title, topic }));
+if (JSON.stringify(declaredStoryIndex) !== JSON.stringify(STORY_INDEX)) {
+  throw new Error('STORY_INDEX must match the published STORIES order, slugs, titles and topics');
+}
 
 /** The stories resting on a record — the return route, and the reason this file exists. */
 export const storiesRestingOn = (id: string): Story[] =>

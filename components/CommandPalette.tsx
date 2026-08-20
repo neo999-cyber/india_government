@@ -23,7 +23,8 @@ const ITEMS: SearchItem[] = [
   { id: 'r-terms', title: 'Terms of government', category: 'Route', href: '/terms/', meta: 'Term 1, Term 2, Term 3' },
   { id: 'r-peers', title: 'Four comparator countries', category: 'Route', href: '/peers/', meta: 'BGD, VNM, IDN, CHN' },
   { id: 'r-compare', title: 'Compare — side-by-side series', category: 'Route', href: '/compare/', meta: 'Side-by-side indicator comparisons' },
-  { id: 'r-method', title: 'About — method, sources and tiers', category: 'Route', href: '/method/', meta: 'Validation criteria and project limits' },
+  { id: 'r-about', title: 'About — method, sources, data and corrections', category: 'Route', href: '/about/', meta: 'How the record was built and changed' },
+  { id: 'r-method', title: 'Method — evidence rules and source tiers', category: 'Route', href: '/method/', meta: 'Validation criteria and project limits' },
 
   // Domains
   { id: 'd-employment', title: 'Employment & Labour', category: 'Domain', href: '/domains/employment/', meta: 'PLFS, CMIE, female LFPR, informal sector' },

@@ -54,12 +54,12 @@ export default defineConfig({
   projects: [
     {
       name: 'desktop',
-      testMatch: /(search-count|target-size|allpages|rail|chart-labels|overview-state|atlas-modes|keyboard-interactions)\.spec\.ts/,
+      testMatch: /(search-count|target-size|allpages|rail|chart-labels|overview-state|atlas-modes|keyboard-interactions|navigation-ia)\.spec\.ts/,
       use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 900 } },
     },
     {
       name: 'mobile',
-      testMatch: /(keyboard-scroll|overflow|constellation|atlas-modes)\.spec\.ts/,
+      testMatch: /(keyboard-scroll|overflow|constellation|atlas-modes|navigation-ia)\.spec\.ts/,
       use: { ...devices['Desktop Chrome'], viewport: { width: 375, height: 812 } },
     },
     {
