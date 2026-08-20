@@ -5,27 +5,27 @@
   "outputDirectory": null,
   "redirects": [
     {
-      "source": "/domains",
+      "source": "/domains/",
       "destination": "/overview/",
       "permanent": true
     },
     {
-      "source": "/domains/:domain/indicators",
+      "source": "/domains/:domain/indicators/",
       "destination": "/domains/:domain/#indicators",
       "permanent": true
     },
     {
-      "source": "/domains/:domain/records",
+      "source": "/domains/:domain/records/",
       "destination": "/domains/:domain/#records",
       "permanent": true
     },
     {
-      "source": "/domains/:domain/disputes",
+      "source": "/domains/:domain/disputes/",
       "destination": "/domains/:domain/#disputes",
       "permanent": true
     },
     {
-      "source": "/domains/:domain/missing",
+      "source": "/domains/:domain/missing/",
       "destination": "/domains/:domain/#missing",
       "permanent": true
     }
