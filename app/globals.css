@@ -4401,6 +4401,7 @@ details.more > summary {
   margin: 4rem 0 1rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--rule);
+  overflow-x: hidden;
 }
 
 .atlas-year-head {
@@ -4420,6 +4421,10 @@ details.more > summary {
   margin: 0;
   padding: 0;
   list-style: none;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   overflow-x: auto;
   border: 1px solid var(--rule);
 }
@@ -4580,6 +4585,11 @@ details.more > summary {
 .qcard h2 {
   font-size: 1.05rem;
   margin: 0 0 0.3rem;
+}
+.qcard h2 a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 /* A question that is answered elsewhere or not offered is not a lesser question, so it takes no
    dimming and no strike. The only difference is that its heading is not a link, because there is
@@ -6123,6 +6133,7 @@ li {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  overflow-x: hidden;
 }
 
 .compare-presets-section {
@@ -6451,6 +6462,10 @@ li {
   border: 1px solid var(--rule);
   border-radius: var(--radius-md);
   padding: 1.1rem 1.25rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   overflow-x: auto;
 }
 
@@ -6565,7 +6580,12 @@ li {
   color: var(--ink-dim);
   cursor: pointer;
   font-size: 1.1rem;
-  padding: 0.2rem 0.5rem;
+  padding: 0;
+  min-width: 44px;
+  min-height: 44px;
+  flex: 0 0 44px;
+  display: grid;
+  place-items: center;
 }
 
 .prov-drawer-close:hover {

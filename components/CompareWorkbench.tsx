@@ -412,7 +412,13 @@ export function CompareWorkbench({
       </div>
 
       {/* Synchronized Year-by-Year Observation Table */}
-      <div className="compare-table-wrap">
+      <div
+        className="compare-table-wrap"
+        data-scroll-x
+        role="region"
+        aria-label="Synchronized yearly observations; scroll horizontally to see all columns"
+        tabIndex={0}
+      >
         <h4 className="compare-table-h">Synchronized Yearly Observations (2010–2026)</h4>
         <table className="compare-table">
           <thead>
