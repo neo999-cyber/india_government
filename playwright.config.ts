@@ -4,14 +4,16 @@ const E2E_PORT = Number(process.env.E2E_PORT ?? 4321);
 const E2E_URL = `http://localhost:${E2E_PORT}`;
 
 /**
- * END-TO-END TESTS — and this file exists to bind FOUR properties, not to become a second test suite.
+ * END-TO-END TESTS — browser-only properties, including named phone profiles.
  *
- * ============================ WHY THESE FOUR AND NOTHING ELSE =================================
+ * ============================ WHY THESE PROPERTIES LIVE HERE ==================================
  *
  * `tools/interface-invariants.mjs` runs inside `npm run build` and states, in its own header,
  * exactly what it cannot do: **it cannot click a facet and watch a count change, measure a rendered
- * target, tab through a page, or detect horizontal overflow at 375px.** Those four need a real
- * browser with layout. This suite is those four and no more.
+ * target, tab through a page, detect horizontal overflow, or exercise a touch/mobile browser
+ * context.** Those need a browser with layout. The named phone projects add viewport, device-scale,
+ * touch, mobile user-agent and browser-engine coverage; they remain emulation, not physical-device
+ * evidence.
  *
  * **EVERYTHING A STATIC CHECK CAN BIND STAYS IN THE BUILD.** A browser test is slower, needs a
  * downloaded binary, and does not run on the Vercel deploy — so a property that could have been a
@@ -59,6 +61,26 @@ export default defineConfig({
       name: 'mobile',
       testMatch: /(keyboard-scroll|overflow|constellation|atlas-modes)\.spec\.ts/,
       use: { ...devices['Desktop Chrome'], viewport: { width: 375, height: 812 } },
+    },
+    {
+      name: 'phone-iphone-se',
+      testMatch: /phone-journeys\.spec\.ts/,
+      use: { ...devices['iPhone SE (3rd gen)'] },
+    },
+    {
+      name: 'phone-iphone-16',
+      testMatch: /phone-journeys\.spec\.ts/,
+      use: { ...devices['iPhone 16'] },
+    },
+    {
+      name: 'phone-pixel-9',
+      testMatch: /phone-journeys\.spec\.ts/,
+      use: { ...devices['Pixel 9'] },
+    },
+    {
+      name: 'phone-galaxy-s24',
+      testMatch: /phone-journeys\.spec\.ts/,
+      use: { ...devices['Galaxy S24'] },
     },
   ],
   webServer: {

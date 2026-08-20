@@ -47,15 +47,17 @@ jobs:
 
       # END-TO-END, AND DELIBERATELY NOT PART OF `npm run build`.
       #
-      # These four properties need a browser with layout: a count that updates when a facet is
+      # These properties need a browser with layout: a count that updates when a facet is
       # clicked, a rendered target size, keyboard reach into a scrolling region, and horizontal
-      # overflow at 375px. `tools/interface-invariants.mjs` states in its own header that it cannot
-      # bind them, and this is what does.
+      # overflow at responsive widths, plus touch/mobile contexts under Chromium and WebKit.
+      # `tools/interface-invariants.mjs` states in its own header that it cannot bind them, and this
+      # is what does.
       #
       # It is not in the build chain because the build runs on Vercel, which has no browser
       # binaries — the same reason `tools/deploy-check.mjs` stays out. Here the browser caches
       # between runs. It runs AFTER the build because it serves `out/`.
-      - run: npx playwright install --with-deps chromium
+      # Chromium covers desktop and Android profiles; WebKit exercises both iPhone profiles.
+      - run: npx playwright install --with-deps chromium webkit
       - run: npm run e2e
 
       # A BUILD THAT REWRITES A TRACKED FILE AND LEAVES IT UNCOMMITTED IS A SILENT DRIFT.

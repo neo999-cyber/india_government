@@ -33,6 +33,29 @@ are closed for the landing page, the seven stories and all 122 qualifying series
 
 ---
 
+## SESSION 2026-08-20 — named phone profiles, and what they found
+
+**The browser contract is now 76 tests: the previous 60 plus 16 phone journeys.** Four named
+profiles run the same landing, Atlas, provenance and question paths: iPhone SE (3rd generation) and
+iPhone 16 under WebKit; Pixel 9 and Galaxy S24 under Chromium. The descriptors add mobile user
+agents, touch, device scale and their actual profile viewports. CI installs both browser engines.
+
+**The first phone run found three defects rather than merely certifying the existing layout.** The
+provenance drawer close button was 27.375px high, and question-card links were 26px high; both are
+now at least 44px. In WebKit, the Atlas year strip and Compare table correctly scrolled inside
+their own 343px boxes but leaked a 520px document width, so an iPhone viewport could itself scroll
+127–145px sideways. Both scrollers now have explicit width bounds and focusable scroll semantics,
+and their parent sections contain WebKit's overflow. The test attempts a document-level horizontal
+scroll as well as checking geometry, so an internally scrollable table cannot disguise a page that
+also moves.
+
+**These are reproducible phone browser profiles, not physical hardware.** They cover WebKit versus
+Chromium layout and touch behavior; they do not claim thermal behavior, a carrier network, or an
+actual Safari build on an attached iPhone. A physical-device pass therefore remains a manual
+release check, exactly as stated below.
+
+---
+
 ## SESSION 2026-08-20 — repair the red post-merge verification
 
 **PR #21 deployed correctly and its main-branch CI was red for a generated-file reason.** The build
@@ -1387,7 +1410,7 @@ header above.
 | pin | value |
 |---|---|
 | gate chain | **33 steps**, `npm run build`; `npm run commit` is the only sanctioned commit path. **`lint` and `e2e` are NOT in it** — CI steps, because Vercel has no browser binaries and the build is paid for on every deploy |
-| `npm run e2e` | **60 Playwright tests** — Atlas modes and URL state at desktop and mobile, chart/dialog keyboard contracts, plus count updates, rendered targets, keyboard reach into scrollers, constellation geometry and 375px overflow across 13 representative routes |
+| `npm run e2e` | **76 Playwright tests** — the prior 60 desktop/responsive contracts plus 16 landing, Atlas, provenance and question journeys across iPhone SE, iPhone 16, Pixel 9 and Galaxy S24 profiles; iPhones use WebKit, Android phones use Chromium |
 | `npm run lint` | **0 errors, 0 warnings.** ESLint 9 — pinned, because `eslint-plugin-react` declares peers only to `^9.7` and `eslint-config-next`'s `>=9.0.0` is too loose |
 | `distinct-titles` | **619 records, every title naming exactly one record, 1 pair exempted by id** — `nh-network`/`nh-network-length`. Delete the exemption when the record question is settled and the gate holds the whole corpus |
 | `unrecognised-rows` | **0**, report-only. Zero makes flipping it to a gate *available*, not decided |

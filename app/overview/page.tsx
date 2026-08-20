@@ -271,7 +271,12 @@ export default function Overview() {
           </div>
           <Link href="/years/">See the complete year index →</Link>
         </div>
-        <ol className="atlas-years">
+        <ol
+          className="atlas-years"
+          data-scroll-x
+          aria-label="Years 2014 to 2026; scroll horizontally to see every year"
+          tabIndex={0}
+        >
           {TERM_YEARS.map((year) => {
             const term = year < 2019 ? 'First term' : year < 2024 ? 'Second term' : 'Third term';
             return (
