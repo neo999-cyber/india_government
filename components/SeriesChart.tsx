@@ -2,6 +2,7 @@ import { RecordMarks } from '@/components/marks';
 import Link from 'next/link';
 import type { Series } from '@/lib/types';
 import { periodLabel } from '@/lib/format';
+import { ChartPoint } from '@/components/ChartPoint';
 
 /**
  * PHASE 18 §4a — THE BROKEN LINE. The signature visual, and the one chart type this instrument
@@ -352,18 +353,16 @@ export function SeriesChart({
 
           {pts.map((p, i) =>
             p.value === null ? null : (
-              <circle
+              <ChartPoint
                 key={p.period}
                 cx={x(i)}
                 cy={y(p.value)}
                 r={highlightLast && i === pts.length - 1 ? 5 : 3.5}
                 className={`chart-dot chart-dot-${p.status}`}
-                tabIndex={0}
-                role="img"
-                aria-label={`${periodLabel(p.period, series.calendar)}: ${p.value} ${series.unit}, ${p.status}`}
-              >
-                <title>{`${periodLabel(p.period, series.calendar)}: ${p.value} ${series.unit} (${p.status})`}</title>
-              </circle>
+                tabIndex={i === 0 ? 0 : -1}
+                label={`${periodLabel(p.period, series.calendar)}: ${p.value} ${series.unit}, ${p.status}`}
+                title={`${periodLabel(p.period, series.calendar)}: ${p.value} ${series.unit} (${p.status})`}
+              />
             ),
           )}
 

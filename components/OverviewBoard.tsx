@@ -10,11 +10,21 @@ import {
   useState,
   useSyncExternalStore,
 } from 'react';
-import { RecordMarks } from '@/components/marks';
-import type { Domain, Unmeasured } from '@/lib/types';
+import type { Domain } from '@/lib/types';
 import { DOMAINS } from '@/lib/types';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { DOMAIN_CHARACTER } from '@/lib/domain-copy';
+import { RecordConstellation } from '@/components/RecordConstellation';
+import { AREAS } from '@/lib/constellation';
+
+const AtlasCompareMode = dynamic(
+  () => import('@/components/AtlasCompareMode').then((module) => module.AtlasCompareMode),
+  {
+    ssr: false,
+    loading: () => <p className="atlas-compare-loading" role="status">Loading comparison tools…</p>,
+  },
+);
 
 /**
  * THE OVERVIEW BOARD — what changed, across every area, with one control that moves all of it.
@@ -60,21 +70,11 @@ export type OPoint = { y: number; v: number; s: string };
 export type OSeries = {
   id: string;
   title: string;
+  domain: string;
   unit: string;
   pts: OPoint[];
   brk: number[];
   before: boolean;
-  /**
-   * THE MARKS TRAVEL WITH THE PROJECTION, and their absence here was the defect.
-   *
-   * This type is the board's own view of a series, and it was built with exactly the six fields the
-   * chart needs. That is why the mini wall listed 250 records with no declarations: **the projection
-   * dropped them before the component could render them**, so no amount of care in the view would
-   * have caught it. A listing surface must carry what rule 4b requires, and a projection that
-   * narrows a record is where that requirement is silently lost.
-   */
-  caveat?: string;
-  unmeasured?: Unmeasured[];
 };
 export type ODomain = {
   key: string;
@@ -84,7 +84,8 @@ export type ODomain = {
   head: OSeries | null;
   /** Where no series can carry the card, what the area holds instead. Authored, never derived. */
   instead: string | null;
-  rest: OSeries[];
+  /** Series titles only, so Atlas search can find a topic without shipping every full record. */
+  searchText: string;
   /**
    * THE AREA'S CHARACTER, DERIVED — added 2026-08-11, and it is what survived the Overview grid.
    *
@@ -137,6 +138,15 @@ const SPEEDS = [
 ] as const;
 
 const ATLAS_URL_EVENT = 'atlas-view-change';
+const ATLAS_VIEWS = ['movement', 'timeline', 'constellation', 'compare'] as const;
+type AtlasView = (typeof ATLAS_VIEWS)[number];
+
+const VIEW_LABELS: Record<AtlasView, { label: string; short: string }> = {
+  movement: { label: 'Movement', short: 'How indicators moved' },
+  timeline: { label: 'Timeline', short: 'When records begin' },
+  constellation: { label: 'Constellation', short: 'What the archive covers' },
+  compare: { label: 'Compare', short: 'Two series, side by side' },
+};
 
 function subscribeAtlasURL(notify: () => void) {
   window.addEventListener('popstate', notify);
@@ -338,8 +348,9 @@ function Reading({ s, year }: { s: OSeries; year: number | null }) {
  * A card that named the records would be a LISTING SURFACE, and rule 4b would then require every
  * caveat and every declared absence to render inside it, in full — on fourteen cards, for up to
  * **16 records in one area-year** (Governance, 2019). The year-by-year section further down this
- * same page already lists all 223 with their marks and is already bound by `listing-marks`, so the
- * count links there instead of building a second listing that would have to be kept in step.
+ * linked year page lists the complete chronology with its marks and is already bound by
+ * `listing-marks`, so the count links there instead of building a second listing that would have
+ * to be kept in step.
  *
  * Choosing which one or two records to name would also be a ranking, and there is no defensible
  * quantity to rank on.
@@ -350,7 +361,7 @@ function WhatHappened({ d, year }: { d: ODomain; year: number | null }) {
   return (
     <p className="card-happened">
       {hit ? (
-        <Link href={`/overview/#y${year}`}>
+        <Link href={`/years/${year}/`}>
           <strong>
             {hit.n} record{hit.n === 1 ? '' : 's'}
           </strong>{' '}
@@ -360,6 +371,57 @@ function WhatHappened({ d, year }: { d: ODomain; year: number | null }) {
         <span className="card-happened-none">No record in this topic begins in {year}</span>
       )}
     </p>
+  );
+}
+
+function TimelineView({ domains, year }: { domains: ODomain[]; year: number | null }) {
+  const years = Array.from({ length: X1 - X0 + 1 }, (_, index) => X0 + index);
+  return (
+    <section className="atlas-timeline" aria-labelledby="atlas-timeline-title">
+      <div className="atlas-mode-head">
+        <div>
+          <p className="home-kicker mono">Record chronology</p>
+          <h2 id="atlas-timeline-title">When this archive&rsquo;s records begin</h2>
+        </div>
+        <p>
+          One mark means one or more dated records begin in that topic and year. Mark size never
+          changes, so this is chronology—not a measure of importance or performance.
+        </p>
+      </div>
+      <div className="atlas-timeline-scroll" data-scroll-x="" tabIndex={0}>
+        <div className="atlas-timeline-years" aria-hidden="true">
+          <span />
+          {years.map((item) => <span key={item}>{item}</span>)}
+        </div>
+        {domains.map((domain) => (
+          <div className="atlas-timeline-row" key={domain.key}>
+            <Link href={`/domains/${domain.key}/`} className="atlas-timeline-topic">
+              {domain.label}
+            </Link>
+            {years.map((item) => {
+              const event = domain.events.find((entry) => entry.year === item);
+              const current = item === year;
+              return event ? (
+                <Link
+                  key={item}
+                  href={`/years/${item}/`}
+                  className={`atlas-timeline-cell has-record${current ? ' is-year' : ''}`}
+                  aria-label={`${domain.label}, ${item}: ${event.n} record${event.n === 1 ? '' : 's'} begin`}
+                >
+                  <span aria-hidden="true" />
+                </Link>
+              ) : (
+                <span
+                  key={item}
+                  className={`atlas-timeline-cell${current ? ' is-year' : ''}`}
+                  aria-hidden="true"
+                />
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -401,7 +463,7 @@ export function OverviewBoard({
   const [copyState, setCopyState] = useState<'idle' | 'copied' | 'failed'>('idle');
   const search = useSyncExternalStore(subscribeAtlasURL, atlasURLSnapshot, atlasServerSnapshot);
   const domainKeys = useMemo(() => new Set(domains.map((d) => d.key)), [domains]);
-  const { year, focused } = useMemo(() => {
+  const { year, focused, view, query } = useMemo(() => {
     const params = new URLSearchParams(search);
     const requestedYear = Number(params.get('year'));
     const validYear =
@@ -411,7 +473,16 @@ export function OverviewBoard({
     const requestedTopics = (params.get('topics') ?? '')
       .split(',')
       .filter((key) => domainKeys.has(key));
-    return { year: validYear, focused: new Set(requestedTopics) };
+    const requestedView = params.get('view');
+    const validView = (ATLAS_VIEWS as readonly string[]).includes(requestedView ?? '')
+      ? (requestedView as AtlasView)
+      : 'movement';
+    return {
+      year: validYear,
+      focused: new Set(requestedTopics),
+      view: validView,
+      query: (params.get('q') ?? '').trim(),
+    };
   }, [domainKeys, search]);
 
   const writeView = useCallback(
@@ -444,6 +515,18 @@ export function OverviewBoard({
     (next: Set<string>) => writeView(year, next),
     [writeView, year],
   );
+  const writeParam = useCallback((key: string, value: string | null) => {
+    const url = new URL(window.location.href);
+    if (value) url.searchParams.set(key, value);
+    else url.searchParams.delete(key);
+    window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`);
+    window.dispatchEvent(new Event(ATLAS_URL_EVENT));
+    setCopyState('idle');
+  }, []);
+  const setView = useCallback(
+    (next: AtlasView) => writeParam('view', next === 'movement' ? null : next),
+    [writeParam],
+  );
   /**
    * The line moves now; the words catch up. `useDeferredValue` lets React drop an intermediate
    * text update during a drag without ever dropping one at rest, so the readings are always
@@ -463,9 +546,37 @@ export function OverviewBoard({
    * must survive reload, the back button and a copied link. The query is optional, so `/overview/`
    * remains the canonical old URL and a dead client bundle still renders the complete board.
    */
-  const visibleDomains = useMemo(
-    () => (focused.size ? domains.filter((d) => focused.has(d.key)) : domains),
-    [domains, focused],
+  const visibleDomains = useMemo(() => {
+    const scoped = focused.size ? domains.filter((d) => focused.has(d.key)) : domains;
+    const needle = query.toLowerCase();
+    if (!needle || view === 'compare') return scoped;
+    return scoped.filter((domain) =>
+      [
+        domain.key,
+        domain.label,
+        domain.composition,
+        domain.head?.title ?? '',
+        domain.searchText,
+        (DOMAINS as readonly string[]).includes(domain.key)
+          ? DOMAIN_CHARACTER[domain.key as Domain]
+          : '',
+      ]
+        .join(' ')
+        .toLowerCase()
+        .includes(needle),
+    );
+  }, [domains, focused, query, view]);
+
+  const constellationCounts = useMemo(
+    () => Object.fromEntries(
+      AREAS.map((area) => [
+        area.id,
+        visibleDomains
+          .filter((domain) => area.domains.includes(domain.key as Domain))
+          .reduce((total, domain) => total + domain.nSeries + domain.nRecords, 0),
+      ]),
+    ),
+    [visibleDomains],
   );
 
   /**
@@ -505,7 +616,7 @@ export function OverviewBoard({
   }, []);
 
   useEffect(() => {
-    if (!playing) return;
+    if (!playing || view !== 'movement') return;
     // Each tick advances one year and stops at the end rather than looping. A loop would restart
     // the decade without a reader asking, which reads as a decorative animation rather than a
     // control they are operating.
@@ -522,20 +633,70 @@ export function OverviewBoard({
     return () => {
       if (timer.current) clearInterval(timer.current);
     };
-  }, [playing, setYear, speed]);
+  }, [playing, setYear, speed, view]);
 
   return (
     <div
       className="board"
+      data-atlas-view={view}
       data-scrub={year === null ? undefined : ''}
       style={{ ['--scrub-t' as string]: year === null ? 0 : (year - X0) / (X1 - X0) }}
     >
+      <div className="atlas-modebar" role="tablist" aria-label="Atlas view">
+        {ATLAS_VIEWS.map((item) => (
+          <button
+            key={item}
+            type="button"
+            role="tab"
+            id={`atlas-tab-${item}`}
+            aria-selected={view === item}
+            aria-controls={`atlas-panel-${item}`}
+            tabIndex={view === item ? 0 : -1}
+            onClick={() => {
+              setPlaying(false);
+              setView(item);
+            }}
+            onKeyDown={(event) => {
+              if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+              event.preventDefault();
+              const current = ATLAS_VIEWS.indexOf(view);
+              const next = event.key === 'Home'
+                ? 0
+                : event.key === 'End'
+                  ? ATLAS_VIEWS.length - 1
+                  : event.key === 'ArrowLeft'
+                    ? (current - 1 + ATLAS_VIEWS.length) % ATLAS_VIEWS.length
+                    : (current + 1) % ATLAS_VIEWS.length;
+              setPlaying(false);
+              setView(ATLAS_VIEWS[next]);
+              window.requestAnimationFrame(() =>
+                document.getElementById(`atlas-tab-${ATLAS_VIEWS[next]}`)?.focus(),
+              );
+            }}
+          >
+            <strong>{VIEW_LABELS[item].label}</strong>
+            <span>{VIEW_LABELS[item].short}</span>
+          </button>
+        ))}
+      </div>
+
+      <p className="atlas-read-guide">
+        <span className="label">How to read this visual</span>{' '}
+        {view === 'movement'
+          ? 'Every card uses the same years but its own vertical scale. Lines may be compared through time, never by height between topics.'
+          : view === 'timeline'
+            ? 'A mark says at least one record in this archive begins in that topic and year. It is chronology, not magnitude or a government score.'
+            : view === 'constellation'
+              ? 'Density reflects how much this archive files under an area. Positions inside the official outline are conceptual and never state-wise.'
+              : 'The two series keep their own scales, sources, seams and caveats. The workbench never infers a delta merely because units match.'}
+      </p>
+
       {/* THE SLIDER IS THE SHARED X-AXIS, which is why its range is the charts' range exactly.
           An earlier version ran 2014→2026 while the charts ran 2010→2026, leaving a sixth of every
           line unreachable and unlabelled. Matched, the control stops being a filter beside the
           charts and becomes the one axis all of them are drawn on — which is also the only place a
           year label is needed, since the shared axis is what makes the spans comparable. */}
-      <div className="scrub">
+      {view === 'movement' || view === 'timeline' ? <div className="scrub">
         <label className="scrub-label" htmlFor="yr">
           Move through the years
         </label>
@@ -549,7 +710,11 @@ export function OverviewBoard({
             value={year ?? X0}
             onChange={(e) => setYear(Number(e.target.value))}
             aria-valuetext={
-              year === null ? 'no year selected; every chart shows its whole span' : String(year)
+              year === null
+                ? view === 'timeline'
+                  ? 'no year selected; the timeline shows its complete span'
+                  : 'no year selected; every chart shows its whole span'
+                : String(year)
             }
           />
           <span className="scrub-ends" aria-hidden="true">
@@ -624,7 +789,7 @@ export function OverviewBoard({
         >
           Show every year
         </button>
-      </div>
+      </div> : null}
 
       <div className="board-tools">
         <details className="board-focus">
@@ -668,6 +833,18 @@ export function OverviewBoard({
           </div>
         </details>
 
+        {view === 'compare' ? null : (
+          <label className="board-search">
+            <span className="sr-only">Search within the active Atlas view</span>
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => writeParam('q', event.target.value.trimStart() || null)}
+              placeholder="Search this view"
+            />
+          </label>
+        )}
+
         <p className="board-visible" aria-live="polite">
           Showing {visibleDomains.length} topic{visibleDomains.length === 1 ? '' : 's'}
         </p>
@@ -695,7 +872,19 @@ export function OverviewBoard({
         </span>
       </div>
 
-      <div className="cards">
+      {visibleDomains.length === 0 ? (
+        <div className="atlas-empty" role="status">
+          <h2>No topic matches this view</h2>
+          <p>Clear the search or show all topics. No data has been removed.</p>
+          <button type="button" onClick={() => writeParam('q', null)}>Clear search</button>
+        </div>
+      ) : view === 'movement' ? (
+      <div
+        className="cards"
+        id="atlas-panel-movement"
+        role="tabpanel"
+        aria-labelledby="atlas-tab-movement"
+      >
         {visibleDomains.map((d) => (
           <section key={d.key} id={`topic-${d.key}`} className="card">
             <CardHeading className="card-title">
@@ -790,37 +979,47 @@ export function OverviewBoard({
               </div>
             </dl>
 
-            {d.rest.length > 0 ? (
-              <details className="card-more">
-                <summary>All {d.nSeries} indicators in this topic</summary>
-                <div className="minigrid">
-                  {d.rest.map((s) => (
-                    <Link key={s.id} href={`/series/${s.id}/`} className="mini">
-                      {/* NO `year` PROP, DELIBERATELY. The mini charts are memoised and never
-                          re-render: their scrub line is moved by CSS like every other, and the hit
-                          dot is dropped here because its Y is per-series and cannot be shared. At
-                          120x30 the dot was 4px on a line already carrying every point — the line
-                          still sweeps all 250, which is what the shared axis promises. */}
-                      <Spark s={s} w={120} h={30} showDots={false} />
-                      <span className="mini-t">{s.title}</span>
-                      {/* RULE 4b. This wall LISTS 250 series, so every declaration they carry must
-                          reach a reader here — 141 caveats and 58 declared absences did not, until
-                          2026-08-11. The wall escaped `listing-marks` because that gate recognises a
-                          card by the class `grid-title` and these carry `mini-t`: **a new listing
-                          shape built past an existing guard**, which is the guard-scope defect this
-                          corpus has now paid for a fourth time. The gate's filter was widened in the
-                          same commit; fixing the surface alone would have left the next shape free
-                          to escape the same way. A caveat-bearing mini takes the full row, on the
-                          `.grid > a:has(.caveat-inline)` pattern — rule 3a, the layout changes. */}
-                      <RecordMarks record={s} linkify={false} />
-                    </Link>
-                  ))}
-                </div>
-              </details>
-            ) : null}
+            {/* The former disclosure duplicated all 250 non-headline series—including every full
+                caveat—inside the Atlas. The same complete listings already exist on the topic
+                pages, so the duplication cost 620 KiB on the default document and made simulated
+                mobile LCP wait behind data a reader had not opened. This is a route, not a summary:
+                no caveat is shortened or hidden on the destination. */}
+            <p className="source-line card-topic-link">
+              <Link href={`/domains/${d.key}/`}>
+                Browse all {d.nSeries} indicators, records, disputes and gaps →
+              </Link>
+            </p>
           </section>
         ))}
       </div>
+      ) : view === 'timeline' ? (
+        <div id="atlas-panel-timeline" role="tabpanel" aria-labelledby="atlas-tab-timeline">
+          <TimelineView domains={visibleDomains} year={shown} />
+        </div>
+      ) : view === 'constellation' ? (
+        <div
+          id="atlas-panel-constellation"
+          role="tabpanel"
+          aria-labelledby="atlas-tab-constellation"
+          className="atlas-constellation"
+        >
+          <RecordConstellation
+            counts={constellationCounts}
+            scopeLabel={focused.size || query
+              ? `${visibleDomains.length} selected topic${visibleDomains.length === 1 ? '' : 's'}`
+              : undefined}
+          />
+        </div>
+      ) : (
+        <div
+          id="atlas-panel-compare"
+          role="tabpanel"
+          aria-labelledby="atlas-tab-compare"
+          className="atlas-compare"
+        >
+          <AtlasCompareMode focused={[...focused]} />
+        </div>
+      )}
     </div>
   );
 }

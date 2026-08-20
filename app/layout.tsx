@@ -256,7 +256,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 h1 is the page's subject; the masthead is the wrapper it arrives in. Styling is
                 by class, so nothing visual moves. */}
             <p className="masthead-title">
-              <Link href="/">India, On the Record</Link>
+              <Link prefetch={false} href="/">India, On the Record</Link>
               {/* SPELLED OUT 2026-08-13. It read *"T1 2014–19 · T2 2019–24 · T3 2024– living"* on
                   every page — an internal shorthand that a reader has no way to expand, and where
                   "living" reads either as a database state or, worse, as commentary. The terms are
@@ -301,7 +301,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {/* AT NARROW WIDTHS THIS LINK REPLACES THE PANEL, and the swap is CSS only — see
                   `app/directory/page.tsx` for why the panel could not simply be made a modal.
                   Both render `DIRECTORY`; neither holds its own copy of the list. */}
-              <Link className="allpages-link" href="/directory/">
+              <Link prefetch={false} className="allpages-link" href="/directory/">
                 All pages
               </Link>
               <AllPagesDisclosure>
@@ -310,7 +310,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <div key={g.label} className="allpages-group">
                       <span className="allpages-label">{g.label}</span>
                       {g.items.map((item) => (
-                        <Link key={item.href} href={item.href}>
+                        <Link prefetch={false} key={item.href} href={item.href}>
                           {item.label}
                         </Link>
                       ))}
@@ -329,7 +329,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div key={g.label} className="foot-dir-group">
                 <span className="foot-dir-label">{g.label}</span>
                 {g.items.map((item) => (
-                  <Link key={item.href} href={item.href}>
+                  <Link prefetch={false} key={item.href} href={item.href}>
                     {item.label}
                   </Link>
                 ))}
@@ -346,9 +346,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <span>No composite score, no verdict number — anywhere, ever.</span>
             <span>
               One author, written with an AI assistant. No independent review has been run:{' '}
-              <Link href="/method/#limits">what that means</Link>.
+              <Link prefetch={false} href="/method/#limits">what that means</Link>.
             </span>
-            <Link href="/method/">method, sources &amp; tiers</Link>
+            <Link prefetch={false} href="/method/">method, sources &amp; tiers</Link>
           </footer>
           <ProvenanceDrawer />
         </div>
