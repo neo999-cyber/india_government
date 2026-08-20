@@ -82,6 +82,16 @@ restoring duplicate pages. The configuration validates against Vercel's current 
 the 33-gate, 698-page production build and all 51 browser tests pass; and `legacy-routes` binds all
 57 old addresses to built targets. Production HTTP verification is owed after the hotfix deploys.
 
+**CORRECTION TO THE FIRST HOTFIX — its local check bound the wrong source shape.** Merge commit
+`d668905` was live in the public manifest, but all **57 of 57** original trailing-slash addresses
+still returned 404. The five no-slash forms returned Vercel's own 308 to their slash form, proving
+the platform canonicalises these requests before the no-slash custom rules can match. The follow-up
+branch `codex/fix-trailing-slash-legacy-routes` puts the trailing slash in all five rule sources and
+changes `legacy-routes` to bind the addresses that actually existed. The corrected configuration
+validates against Vercel's current official schema; the 33-gate, 698-page build, the 57-address
+contract and all 51 browser tests pass. Production verification is owed again after that follow-up
+deploys.
+
 ---
 
 ## SESSION 2026-08-14 — the landing artwork, the topic merge, and three masthead defects
