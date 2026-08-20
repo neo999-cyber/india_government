@@ -19,9 +19,9 @@ const domains = seriesSchema.properties.domain.enum;
 
 const sections = ['indicators', 'records', 'disputes', 'missing'];
 const expected = [
-  { source: '/domains', destination: '/overview/', permanent: true },
+  { source: '/domains/', destination: '/overview/', permanent: true },
   ...sections.map((section) => ({
-    source: `/domains/:domain/${section}`,
+    source: `/domains/:domain/${section}/`,
     destination: `/domains/:domain/#${section}`,
     permanent: true,
   })),
