@@ -6,6 +6,7 @@ import { CaveatFlag, RecordMarks } from '@/components/marks';
 import { SERIES_FINDINGS } from '@/lib/series-copy';
 import { ListingFacets } from '@/components/ListingFacets';
 import { SearchSort } from '@/components/SearchSort';
+import { SectionNav } from '@/components/SectionNav';
 
 export const metadata: Metadata = {
   title: 'Find a record',
@@ -124,6 +125,7 @@ export default function SearchPage() {
         disputes together. The controls hide cards rather than fetching them, so the list works with
         scripting off, and every declaration a record carries is here whether or not it is showing.
       </p>
+      <SectionNav section="records" />
 
       {/* THE MOBILE FILTER DRAWER. `open` in the markup, so with scripting off — and above 640px,
           where CSS hides the summary — the facets are simply present. A drawer that starts closed

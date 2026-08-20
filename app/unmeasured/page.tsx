@@ -5,6 +5,7 @@ import { DOMAIN_LABELS } from '@/lib/format';
 import { REASON_KINDS } from '@/lib/types';
 import { REASON_KIND_LABELS } from '@/components/marks';
 import { routeLabel } from '@/lib/routes';
+import { SectionNav } from '@/components/SectionNav';
 
 // The tab title is the registry's public name, not a fourth copy of it. Was: 'Unmeasured'.
 export const metadata: Metadata = { title: routeLabel('/unmeasured/') };
@@ -45,6 +46,7 @@ export default function UnmeasuredIndex() {
         These are things nothing measures at all: a missing link in a chain, an intended
         outcome no study tested, a series stopping short of what it is cited to demonstrate.
       </p>
+      <SectionNav section="gaps" />
       <p className="prose-note">
         {all.length} declaration{all.length === 1 ? '' : 's'} across {records.size} record
         {records.size === 1 ? '' : 's'}.{' '}
@@ -113,7 +115,7 @@ export default function UnmeasuredIndex() {
         </div>
       ) : null}
 
-      <h2>Declared absences</h2>
+      <h2 id="declared-absences">Declared absences</h2>
       <div className="table-wrap" tabIndex={0}>
         <table>
           <thead>
@@ -154,7 +156,7 @@ export default function UnmeasuredIndex() {
         </table>
       </div>
 
-      <h2>Verification queue</h2>
+      <h2 id="verification-queue">Verification queue</h2>
       <p className="prose-note">
         Where a source has been identified that would close the absence. This is a research
         queue rather than a backlog — several of these depend on a survey being conducted or a

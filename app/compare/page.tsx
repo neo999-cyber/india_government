@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { series, pairs } from '@/lib/data';
 import { routeLabel } from '@/lib/routes';
 import { CompareWorkbench } from '@/components/CompareWorkbench';
+import { SectionNav } from '@/components/SectionNav';
 
 export const metadata: Metadata = {
   title: routeLabel('/compare/'),
@@ -50,8 +51,11 @@ export default function ComparePage() {
       <p className="lede">
         Compare any two official indicator series side-by-side on an aligned timeline with Government Term shading. Direct comparisons preserve source tiers, non-interpolation rules, and explain why divergent measurements cannot be smoothed away.
       </p>
+      <SectionNav section="compare" />
 
-      <CompareWorkbench seriesList={compactSeries} pairsList={compactPairs} />
+      <div id="series-comparison">
+        <CompareWorkbench seriesList={compactSeries} pairsList={compactPairs} />
+      </div>
     </>
   );
 }

@@ -2,25 +2,16 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { PRIMARY_NAV, navLabel } from '@/lib/routes';
+import { PRIMARY_NAV, navLabel, sectionForPath } from '@/lib/routes';
 import { CommandPalette } from '@/components/CommandPalette';
-
-const SECTION_PREFIXES: Partial<Record<(typeof PRIMARY_NAV)[number], readonly string[]>> = {
-  '/overview/': ['/domains/', '/years/', '/lenses/', '/terms/', '/peers/'],
-  '/search/': ['/series/', '/ledger/', '/provenance/', '/contested/', '/exposure/'],
-  '/method/': ['/derivations/', '/publishers/', '/corrections/', '/counterfactual/', '/data/', '/directory/'],
-};
 
 export function PrimaryNav() {
   const here = usePathname();
+  const currentSection = sectionForPath(here);
   return (
     <nav className="nav nav-primary" aria-label="Main">
       {PRIMARY_NAV.map((href) => {
-        const current =
-          here === href.slice(0, -1) ||
-          here === href ||
-          here.startsWith(href) ||
-          Boolean(SECTION_PREFIXES[href]?.some((prefix) => here.startsWith(prefix)));
+        const current = currentSection?.href === href;
         return (
           <Link
             key={href}
