@@ -16,6 +16,32 @@ import { spanFrontier, spanRows } from '@/lib/spans';
 
 export const metadata: Metadata = { title: 'Questions — eight ways in, and two that are not' };
 
+function QuestionGlyph({ kind }: { kind: string }) {
+  const path =
+    kind === 'improved'
+      ? 'M4 18 10 12l4 3 6-9M15 6h5v5'
+      : kind === 'worsened'
+        ? 'M4 6l6 6 4-3 6 9M15 18h5v-5'
+        : kind === 'too-early'
+          ? 'M12 4v8l5 3M5 5l-2 3M19 5l2 3M5 20h14'
+          : kind === 'publication-stopped'
+            ? 'M4 7h5v10H4zM15 7h5v10h-5zM11 12h2'
+            : kind === 'sources-disagree'
+              ? 'M4 7h7l-2-2m2 2L9 9M20 17h-7l2-2m-2 2 2 2'
+              : kind === 'measured-well'
+                ? 'M4 18V6m0 12h16M7 15l4-4 3 2 5-7'
+                : kind === 'answered-elsewhere'
+                  ? 'M5 6h14v12H5zM8 9h8M8 13h5'
+                  : kind === 'not-offered'
+                    ? 'M6 6l12 12M18 6 6 18'
+                    : 'M12 4a7 7 0 1 0 0 14m0-10v5m0 3v.1';
+  return (
+    <span className="qcard-glyph" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false"><path d={path} /></svg>
+    </span>
+  );
+}
+
 /**
  * QUESTION NAVIGATION — `DESIGN-REVISION-2.md` §2, and the two questions it could not build.
  *
@@ -112,35 +138,41 @@ export default function Questions() {
           if (route) {
             return (
               <section key={route.slug} className="qcard">
-                <h2>
-                  <Link href={`/questions/${route.slug}/`}>{route.question}</Link>
-                </h2>
-                <p className="qcard-n mono">
-                  {counts[route.slug]} {route.slug === 'too-early' ? 'records' : route.slug === 'sources-disagree' ? 'pairs' : 'series'}
-                </p>
-                <p className="qcard-crit">{route.criterion}</p>
+                <QuestionGlyph kind={route.slug} />
+                <div className="qcard-body">
+                  <h2>
+                    <Link href={`/questions/${route.slug}/`}>{route.question}</Link>
+                  </h2>
+                  <p className="qcard-n mono">
+                    {counts[route.slug]} {route.slug === 'too-early' ? 'records' : route.slug === 'sources-disagree' ? 'pairs' : 'series'}
+                  </p>
+                  <p className="qcard-crit">{route.criterion}</p>
+                </div>
               </section>
             );
           }
           const d = disposal!;
           return (
             <section key={d.question} className="qcard qcard-off">
-              <h2>{d.question}</h2>
-              <p className="qcard-n mono">
-                {d.kind === 'not-offered' ? 'Not offered as a filter' : 'Answered elsewhere'}
-              </p>
-              <p className="qcard-crit">{d.reason}</p>
-              {d.href ? (
-                <p className="qcard-crit">
-                  <Link href={d.href}>{d.hrefLabel}</Link> — {absences.length} declared absences
-                  across {absenceRecords} records, each with its kind and its stated reason.
+              <QuestionGlyph kind={d.kind} />
+              <div className="qcard-body">
+                <h2>{d.question}</h2>
+                <p className="qcard-n mono">
+                  {d.kind === 'not-offered' ? 'Not offered as a filter' : 'Answered elsewhere'}
                 </p>
-              ) : (
-                <p className="qcard-crit">
-                  <Link href="/ledger/">The ledger</Link> lists every record with its own
-                  assessment, and filters by it.
-                </p>
-              )}
+                <p className="qcard-crit">{d.reason}</p>
+                {d.href ? (
+                  <p className="qcard-crit">
+                    <Link href={d.href}>{d.hrefLabel}</Link> — {absences.length} declared absences
+                    across {absenceRecords} records, each with its kind and its stated reason.
+                  </p>
+                ) : (
+                  <p className="qcard-crit">
+                    <Link href="/ledger/">The ledger</Link> lists every record with its own
+                    assessment, and filters by it.
+                  </p>
+                )}
+              </div>
             </section>
           );
         })}
@@ -153,17 +185,20 @@ export default function Questions() {
           topic-year matrix: every reason on it is a record's declared absence, not this corpus
           reporting its own coverage. */}
       <section className="qcard qcard-extra">
-        <h2>
-          <Link href="/questions/unanswerable/">Four questions this cannot answer</Link>
-        </h2>
-        <p className="qcard-n mono">Not one of the eight</p>
-        <p className="qcard-crit">
-          Demonetisation, farmers&rsquo; incomes, highway usage and sanitation behaviour. Each has a
-          record that declares what was not measured, and the reasons differ:{' '}
-          <strong>only one of the four is unanswerable in principle.</strong> The other three would
-          be settled by a survey that has not been re-run, or by figures the state collects and does
-          not publish.
-        </p>
+        <QuestionGlyph kind="unanswerable" />
+        <div className="qcard-body">
+          <h2>
+            <Link href="/questions/unanswerable/">Four questions this cannot answer</Link>
+          </h2>
+          <p className="qcard-n mono">Not one of the eight</p>
+          <p className="qcard-crit">
+            Demonetisation, farmers&rsquo; incomes, highway usage and sanitation behaviour. Each has a
+            record that declares what was not measured, and the reasons differ:{' '}
+            <strong>only one of the four is unanswerable in principle.</strong> The other three would
+            be settled by a survey that has not been re-run, or by figures the state collects and does
+            not publish.
+          </p>
+        </div>
       </section>
 
       {/* WHAT THE FILTERS REST ON, PRINTED ONCE RATHER THAN REPEATED ON SIX PAGES.

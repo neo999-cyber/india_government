@@ -66,9 +66,12 @@ import { INDIA_OUTLINE } from '@/lib/india-outline';
  */
 export function RecordConstellation({
   counts,
+  scopeLabel,
 }: {
   /** Filings per area, from `/data`. Density is the one real encoding in the picture. */
   counts: Record<string, number>;
+  /** Optional Atlas scope. The landing artwork omits it and always shows the complete archive. */
+  scopeLabel?: string;
 }) {
   const [selected, setSelected] = useState<string | null>(null);
   const { nodes, edges } = buildConstellation(counts);
@@ -78,7 +81,8 @@ export function RecordConstellation({
   const titleId = `${uid}-t`;
   const descId = `${uid}-d`;
 
-  const active = AREAS.find((a) => a.id === selected) ?? null;
+  const effectiveSelected = selected && (counts[selected] ?? 0) > 0 ? selected : null;
+  const active = AREAS.find((a) => a.id === effectiveSelected) ?? null;
 
   return (
     <section className="rc" aria-labelledby={`${uid}-h`}>
@@ -121,7 +125,7 @@ export function RecordConstellation({
               viewBox={`0 0 ${VIEWBOX.w} ${VIEWBOX.h}`}
               role="img"
               aria-labelledby={`${titleId} ${descId}`}
-              data-selected={selected ?? ''}
+              data-selected={effectiveSelected ?? ''}
             >
               <title id={titleId}>
                 The official outline of India, filled with conceptual record
@@ -154,13 +158,13 @@ export function RecordConstellation({
                   wherever its marks happen to sit. `non-scaling-stroke` keeps the lines fine while
                   the figure grows. */}
               {AREAS.map((a) => {
-                const on = selected === a.id;
+                const on = effectiveSelected === a.id;
                 return (
                   <g
                     key={a.id}
                     className="rc-group"
                     data-area={a.id}
-                    data-state={on ? 'on' : selected ? 'off' : 'all'}
+                    data-state={on ? 'on' : effectiveSelected ? 'off' : 'all'}
                   >
                     {edges
                       .filter((e) => e.area === a.id)
@@ -197,7 +201,8 @@ export function RecordConstellation({
                   data-area={a.id}
                   style={{ left: pos.left, top: pos.top }}
                   aria-label={a.aria}
-                  aria-pressed={selected === a.id}
+                  aria-pressed={effectiveSelected === a.id}
+                  disabled={(counts[a.id] ?? 0) <= 0}
                   onClick={() => setSelected((s) => (s === a.id ? null : a.id))}
                 >
                   <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -212,7 +217,7 @@ export function RecordConstellation({
           {/* `aria-live` so a screen-reader user hears what changed — `aria-pressed` alone reports
               the button's state and never says what happened to the picture. */}
           <p className="rc-status mono" aria-live="polite">
-            {active ? `${active.label} constellation` : 'All eight constellations'}
+            {active ? `${active.label} constellation` : scopeLabel ?? 'All eight constellations'}
           </p>
 
           <p className="rc-source mono">
@@ -235,6 +240,7 @@ export function RecordConstellation({
           </>
         ) : (
           <>
+            {scopeLabel ? <><strong>{scopeLabel}.</strong>{' '}</> : null}
             One mark for roughly every {FILINGS_PER_MARK} records and indicators
             the archive holds in an area, so how dense an area looks is a real
             measure of how much is filed under it.{' '}

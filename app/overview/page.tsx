@@ -141,13 +141,11 @@ export function toO(s: Series): OSeries | null {
   return {
     id: s.id,
     title: s.title,
+    domain: s.domain,
     unit: s.unit,
     pts,
     brk: (s.breaks ?? []).map((b) => yearOf(b.period)),
     before: s.points.some((p) => p.country === 'IND' && yearOf(p.period) < Y_MIN),
-    // Carried, not dropped: the mini wall is a listing surface and rule 4b binds it.
-    caveat: s.caveat,
-    unmeasured: s.unmeasured,
   };
 }
 
@@ -180,16 +178,11 @@ function eventYears(d: string) {
 }
 
 /**
- * THE BOARD'S DATA, BUILT ONCE FOR BOTH CALLERS — the overview's fourteen areas and the landing
- * page's five. Exported rather than copied: `ODomain` carries eleven derived fields, and a second
- * derivation would agree today and drift on the first change. **The first attempt at the landing
- * board hit exactly that** — TypeScript refused a hand-built object missing `yearsWith`,
- * `yearsTotal`, `breaks`, `composition` and `events`, which is the compiler catching the copy
- * before a reader met two boards that disagreed.
- *
- * `headOnly` WAS an option here and is gone as of 2026-08-17, with the landing board that was its
- * only caller: *"the landing page's reduction: it drops `rest`, every chartable series in the area"*.
- * Every caller now gets the full board, which is what the one remaining caller always asked for.
+ * THE BOARD'S DATA, PROJECTED FOR THE FOURTEEN TOPIC PORTRAITS. It carries the headline line,
+ * counts, composition, chronology and a title-only search index. Full non-headline records remain
+ * on the merged topic pages; the Compare mode requests the already-published `/data/v1` contract
+ * only when a reader opens that mode. Keeping those two payloads out of this projection is what
+ * prevents the default Atlas document from becoming a second copy of the record database.
  */
 export function buildBoard(keys: Domain[]): ODomain[] {
   return keys.map((d) => {
@@ -216,7 +209,7 @@ export function buildBoard(keys: Domain[]): ODomain[] {
       nRecords: records,
       head: INSTEAD[d] ? null : head,
       instead: INSTEAD[d] ?? (head ? null : 'This topic holds no series long enough to chart.'),
-      rest: chartable.filter((s) => s.id !== head?.id),
+      searchText: list.map((record) => record.title).join(' '),
       obs: pts.length,
       status: {
         verified,
@@ -264,21 +257,10 @@ export default function Overview() {
       {/* Directly under this page's h1, so the cards are its first sections: h2. */}
       <OverviewBoard domains={domains} headingLevel={2} character />
 
-      <p className="prose-note board-caption">
-        <strong>Every chart shares the same years and none shares a scale.</strong> Left to right is
-        2010 to 2026 on all of them, so a line that stops short really did stop — that is the point
-        of putting them side by side. Up and down is scaled to each series&rsquo; own range, because
-        the units are per cent, rupees, kilometres and people: <strong>a taller line is not a bigger
-        number,</strong> and heights cannot be compared between cards. A red edge is a declared
-        change of basis — figures either side are not the same measurement. A hollow point was
-        published as an approximation. <span className="mono">◀</span> means the series holds
-        observations from before 2010, not drawn here.
-      </p>
-
       <p className="prose-note board-framing">
-        <span className="label">How to read this view</span> The line is the selected indicator,
-        not a score for its topic. The filing counts describe this archive, not how well a sector
-        performed. Every qualification remains attached to the card and its underlying record.
+        <span className="label">What every Atlas view preserves</span> No mode creates a government
+        score, ranks a topic or fills a missing observation. Topic and year controls change the
+        view, not the records; every qualification remains attached to its underlying page.
       </p>
 
       <section className="atlas-year-section" aria-labelledby="atlas-years-title">

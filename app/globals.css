@@ -1965,6 +1965,162 @@ tbody > tr:has(+ .caveat-row) > td {
  * across charts. Nothing else is encoded — card size is uniform, order is not a ranking.
  */
 
+.atlas-modebar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 1.5rem 0 1rem;
+  border: 1px solid var(--rule);
+}
+
+.atlas-modebar button {
+  min-height: 64px;
+  padding: 0.65rem 0.8rem;
+  border: 0;
+  border-right: 1px solid var(--rule);
+  background: var(--bg);
+  color: var(--ink-2);
+  text-align: left;
+  cursor: pointer;
+}
+
+.atlas-modebar button:last-child { border-right: 0; }
+.atlas-modebar button strong,
+.atlas-modebar button span { display: block; }
+.atlas-modebar button strong { color: var(--ink); font: 500 0.9rem var(--font-serif); }
+.atlas-modebar button span { margin-top: 0.2rem; font: 0.64rem var(--font-mono); }
+
+.atlas-modebar button[aria-selected='true'] {
+  background: var(--surface);
+  box-shadow: inset 0 -3px 0 var(--fill);
+}
+
+.atlas-modebar button:hover,
+.atlas-modebar button:focus-visible {
+  background: var(--surface);
+  outline: 2px solid var(--fill);
+  outline-offset: -2px;
+}
+
+.atlas-read-guide {
+  max-width: 82ch;
+  margin: 0 0 1rem;
+  color: var(--ink-2);
+  font-size: 0.875rem;
+}
+
+.atlas-read-guide .label { color: var(--mark-ink); }
+
+.board-search input {
+  min-height: 44px;
+  width: min(18rem, 70vw);
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  color: var(--ink);
+  padding: 0 0.75rem;
+  font: inherit;
+}
+
+.board-search input:focus-visible { outline: 2px solid var(--fill); outline-offset: 1px; }
+
+.atlas-empty {
+  border: 1px dashed var(--ink-dim);
+  padding: 1.25rem;
+  margin: 1rem 0 2rem;
+}
+.atlas-empty h2 { margin-top: 0; }
+.atlas-empty p { color: var(--ink-2); }
+.atlas-empty button {
+  min-height: 44px;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  color: var(--ink);
+  padding: 0 0.8rem;
+  cursor: pointer;
+}
+
+.atlas-mode-head {
+  display: grid;
+  grid-template-columns: minmax(15rem, 0.7fr) minmax(18rem, 1.3fr);
+  gap: 2rem;
+  align-items: end;
+  margin: 1.5rem 0 1rem;
+}
+.atlas-mode-head h2 { margin: 0; }
+.atlas-mode-head > p { margin: 0; color: var(--ink-2); max-width: 68ch; }
+
+.atlas-timeline-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  margin-bottom: 2rem;
+}
+.atlas-timeline-scroll:focus-visible { outline: 2px solid var(--fill); outline-offset: 2px; }
+.atlas-timeline-years,
+.atlas-timeline-row {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1.7fr) repeat(17, minmax(2.75rem, 1fr));
+  min-width: 60rem;
+}
+.atlas-timeline-years {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--surface);
+  border-bottom: 1px solid var(--rule);
+}
+.atlas-timeline-years span {
+  padding: 0.55rem 0.15rem;
+  border-right: 1px solid var(--rule-soft);
+  color: var(--ink-dim);
+  text-align: center;
+  font: 0.62rem var(--font-mono);
+}
+.atlas-timeline-row { border-bottom: 1px solid var(--rule-soft); }
+.atlas-timeline-row:last-child { border-bottom: 0; }
+.atlas-timeline-topic {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0.45rem 0.7rem;
+  border-right: 1px solid var(--rule);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.82rem;
+}
+.atlas-timeline-cell {
+  min-height: 48px;
+  display: grid;
+  place-items: center;
+  border-right: 1px solid var(--rule-soft);
+  text-decoration: none;
+}
+.atlas-timeline-cell.is-year { background: var(--mark-soft); }
+.atlas-timeline-cell span {
+  width: 0.55rem;
+  height: 0.55rem;
+  border: 2px solid var(--fill);
+  transform: rotate(45deg);
+}
+.atlas-timeline-cell:hover,
+.atlas-timeline-cell:focus-visible { outline: 2px solid var(--fill); outline-offset: -2px; }
+
+.atlas-constellation .rc { margin-top: 1rem; }
+.atlas-compare { margin-top: 1rem; }
+
+@media (max-width: 767px) {
+  .atlas-modebar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .atlas-modebar button:nth-child(2) { border-right: 0; }
+  .atlas-modebar button:nth-child(-n + 2) { border-bottom: 1px solid var(--rule); }
+  .atlas-mode-head { grid-template-columns: 1fr; gap: 0.5rem; }
+  .board-search { order: 3; flex-basis: 100%; }
+  .board-search input { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-modebar button,
+  .atlas-timeline-cell span { transition: none; }
+}
+
 .scrub {
   display: flex;
   align-items: center;
@@ -2093,7 +2249,7 @@ tbody > tr:has(+ .caveat-row) > td {
   align-items: center;
   flex-wrap: wrap;
   gap: 0.55rem 0.8rem;
-  margin: -0.65rem 0 1rem;
+  margin: 0 0 1rem;
   font-family: var(--font-mono);
   font-size: 0.6875rem;
 }
@@ -2243,6 +2399,8 @@ tbody > tr:has(+ .caveat-row) > td {
   flex-direction: column;
   box-shadow: var(--card-shadow);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 42rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -2425,72 +2583,6 @@ tbody > tr:has(+ .caveat-row) > td {
   font-size: 0.625rem;
   color: var(--ink-dim);
   letter-spacing: 0.02em;
-}
-
-.card-more {
-  margin-top: auto;
-  padding-top: 0.6rem;
-}
-
-.card-more summary {
-  cursor: pointer;
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.06em;
-  color: var(--ink-dim);
-  list-style: none;
-}
-
-.card-more summary::-webkit-details-marker {
-  display: none;
-}
-
-.card-more summary::before {
-  content: '+ ';
-}
-
-.card-more[open] summary::before {
-  content: '– ';
-}
-
-.card-more summary:hover {
-  color: var(--ink);
-}
-
-.card-more summary:focus-visible {
-  outline: 2px solid var(--mark);
-  outline-offset: 2px;
-}
-
-.minigrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
-  gap: 0.5rem;
-  margin-top: 0.6rem;
-}
-
-.mini {
-  text-decoration: none;
-  display: block;
-}
-
-.mini .spk-line {
-  stroke-width: 1.2;
-}
-
-.mini-t {
-  display: block;
-  font-size: 0.5625rem;
-  line-height: 1.3;
-  color: var(--ink-dim);
-}
-
-.mini:hover .mini-t {
-  color: var(--ink);
-}
-
-.mini:hover .spk-line {
-  stroke: var(--mark);
 }
 
 .board-caption {
@@ -2880,18 +2972,6 @@ tbody > tr:has(+ .caveat-row) > td {
    read as two groups of one kind rather than as two unrelated bars. */
 .nav-about {
   margin-top: 0.15rem;
-}
-
-/* A caveat-bearing mini takes the whole row — the `.grid > a:has(.caveat-inline)` pattern, applied
-   to the overview board's series wall. Rule 3a: a 400-character qualification cannot be set in a
-   120px column, so the layout is what changes. */
-.minigrid > .mini:has(.caveat-inline) {
-  grid-column: 1 / -1;
-}
-
-.mini .caveat-inline,
-.mini .absence-count {
-  margin-top: 0.3rem;
 }
 
 /* The reverse index: pairs that name this record. A list, not a grid — each row is one link and a
@@ -4464,13 +4544,39 @@ details.more > summary {
 
 .qlist {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
   gap: 1.1rem;
   margin: 1.6rem 0 2rem;
 }
 .qcard {
-  border-top: 1px solid var(--rule);
-  padding-top: 0.85rem;
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 0.9rem;
+  align-content: start;
+  border: 1px solid var(--rule);
+  padding: 1rem;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 14rem;
 }
+.qcard-extra { margin: 0 0 2rem; }
+.qcard-glyph {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rule);
+  color: var(--fill);
+}
+.qcard-glyph svg {
+  width: 1.55rem;
+  height: 1.55rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.qcard-body { min-width: 0; }
 .qcard h2 {
   font-size: 1.05rem;
   margin: 0 0 0.3rem;
@@ -5369,6 +5475,11 @@ pre {
 .rc-node-btn[aria-pressed='true'] {
   background: currentColor;
   transform: scale(1.1);
+}
+
+.rc-node-btn:disabled {
+  opacity: 0.28;
+  cursor: default;
 }
 
 .rc-node-btn[aria-pressed='true'] > svg {

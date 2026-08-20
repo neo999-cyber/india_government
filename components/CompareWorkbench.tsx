@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { ShareCardExporter } from './ShareCardExporter';
+import { moveChartPointFocus } from './ChartPoint';
 
 export interface CompactSeries {
   id: string;
@@ -200,7 +201,7 @@ export function CompareWorkbench({
         ))}
 
         {/* Points */}
-        {pts.map((p) => (
+        {pts.map((p, index) => (
           <circle
             key={p.year}
             cx={getX(p.year)}
@@ -209,9 +210,11 @@ export function CompareWorkbench({
             fill={color}
             stroke="var(--bg)"
             strokeWidth="1.5"
-            tabIndex={0}
+            tabIndex={index === 0 ? 0 : -1}
             role="img"
             aria-label={`${p.year}: ${p.value} ${s.unit}`}
+            data-chart-point=""
+            onKeyDown={moveChartPointFocus}
           >
             <title>{p.year + ': ' + p.value + ' ' + s.unit}</title>
           </circle>
@@ -247,11 +250,27 @@ export function CompareWorkbench({
     const needle = pairQuery.trim().toLowerCase();
     const filtered = needle
       ? pairsList.filter((pair) =>
-          `${pair.id} ${pair.domain} ${pair.labelA} ${pair.labelB}`.toLowerCase().includes(needle),
+          `${pair.id} ${pair.domain} ${pair.labelA} ${pair.labelB} ${seriesList.find((series) => series.id === pair.seriesA)?.title ?? ''} ${seriesList.find((series) => series.id === pair.seriesB)?.title ?? ''}`
+            .toLowerCase()
+            .includes(needle),
         )
       : pairsList;
     return showAllPairs || needle ? filtered : filtered.slice(0, 8);
-  }, [pairQuery, pairsList, showAllPairs]);
+  }, [pairQuery, pairsList, seriesList, showAllPairs]);
+
+  const repeatedPairLabels = useMemo(() => {
+    const counts = new Map<string, number>();
+    pairsList.forEach((pair) => {
+      const key = `${pair.labelA}\u0000${pair.labelB}`;
+      counts.set(key, (counts.get(key) ?? 0) + 1);
+    });
+    return new Set([...counts].filter(([, count]) => count > 1).map(([key]) => key));
+  }, [pairsList]);
+
+  const seriesTitleById = useMemo(
+    () => new Map(seriesList.map((series) => [series.id, series.title])),
+    [seriesList],
+  );
 
   return (
     <div className="compare-workbench">
@@ -280,7 +299,12 @@ export function CompareWorkbench({
               className={'compare-preset-btn' + (selectedPairId === pair.id ? ' is-active' : '')}
               onClick={() => handleSelectPair(pair)}
             >
-              <span className="compare-preset-domain">{pair.domain}</span>
+              <span className="compare-preset-domain">
+                {pair.domain}
+                {repeatedPairLabels.has(`${pair.labelA}\u0000${pair.labelB}`)
+                  ? ` · ${seriesTitleById.get(pair.seriesA) ?? pair.seriesA}`
+                  : ''}
+              </span>
               <span className="compare-preset-title">
                 {pair.labelA} <span className="compare-vs">vs</span> {pair.labelB}
               </span>
