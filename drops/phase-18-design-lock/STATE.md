@@ -33,6 +33,33 @@ are closed for the landing page, the seven stories and all 122 qualifying series
 
 ---
 
+## SESSION 2026-08-20 — repair the red post-merge verification
+
+**PR #21 deployed correctly and its main-branch CI was red for a generated-file reason.** The build
+rewrote one line of `docs/derivations.md` only in the full-history GitHub checkout. The generator
+trusted `git log -- data` in a shallow checkout. Git treats the shallow boundary as a root, so the
+snapshot commit `f284769` appeared to introduce every data file; full-history CI correctly found
+`a244360` as the last real data commit. The repair refuses to derive a stamp from shallow history
+and preserves the committed full-history stamp there. In a complete checkout it reads `%H`,
+validates the full object id and takes exactly seven characters; `%h` is clone-dependent and is no
+longer used. Recursive data-file discovery and the ledger file list are also sorted explicitly, so
+filesystem enumeration order cannot become the next one-line drift.
+
+**The production manifest was delayed, not permanently stale.** Vercel reported the deployment
+complete before the public alias served the new `/data/v1/manifest.json`; during that interval the
+new Atlas HTML was live while the manifest still named `401d95c`. It later converged to the correct
+merge commit `59d33b7`. `deploy-check` previously sampled 27 correct pages and called that success
+without checking deployment identity, contradicting this file's own pin. It now fetches the
+manifest first, compares its full commit to `HEAD` or an explicit `--commit`, and refuses to sample
+pages if they differ. The live positive control passes for `59d33b7`; the negative control against
+`401d95c` fails before a page sample.
+
+**The manifest build stamp now prefers provider identity:** `VERCEL_GIT_COMMIT_SHA`, then
+`GITHUB_SHA`, then checkout `HEAD`. A control runs inside `npm run public-data` and proves that
+priority, checkout fallback, absent-Git behaviour and rejection of a malformed provider SHA.
+
+---
+
 ## SESSION 2026-08-20 — the coherent Atlas and the performance boundary
 
 **The four Atlas readings now share one surface and one URL contract.** `/overview/` keeps Movement

@@ -39,7 +39,7 @@
 import { readFileSync, readdirSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { execSync } from 'node:child_process';
+import { resolveBuildCommit } from './lib/build-commit.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = join(ROOT, 'data');
@@ -97,12 +97,7 @@ if (schemaFiles.length === 0) {
   process.exit(1);
 }
 
-let commit = 'unknown';
-try {
-  commit = execSync('git rev-parse HEAD', { cwd: ROOT }).toString().trim();
-} catch {
-  /* a shallow or absent checkout still publishes; the manifest says the commit is unknown */
-}
+const { commit, source: commitSource } = resolveBuildCommit({ cwd: ROOT });
 
 /**
  * The contract, stated where a consumer meets it.
@@ -164,5 +159,5 @@ const counts = Object.entries(manifest.counts)
   .join(' · ');
 console.log(
   `public-data OK — /data/v1/ published at contract v1: ${counts} · ${schemaFiles.length} schema(s) · ` +
-    `${(bytes / 1024 / 1024).toFixed(2)} MB · commit ${commit.slice(0, 7)}`,
+    `${(bytes / 1024 / 1024).toFixed(2)} MB · commit ${commit.slice(0, 7)} (${commitSource})`,
 );

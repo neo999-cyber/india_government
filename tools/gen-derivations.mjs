@@ -53,16 +53,23 @@ const read = (p) => readFileSync(join(ROOT, p), 'utf8');
  * stale; the figures all still held, so the substance was right and the claim was false.
  *
  * THE FALLBACK is for build hosts with a shallow or absent git history (Vercel clones shallow).
- * `git log -- data` on a clone whose depth excludes the last data commit returns nothing; failing
- * the build on that would take the site down over a stamp. The committed file was generated with
- * full history, so its own stamp is the correct value to preserve — the fallback re-reads it and
- * says nothing new, which is exactly right when nothing about /data is knowable.
+ * A shallow `git log -- data` DOES NOT reliably return nothing: Git treats the boundary commit as
+ * a root, so a snapshot commit can appear to have introduced every data file and falsely outrank
+ * the real data commit outside the clone. That is how `f284769` was written locally while full CI
+ * correctly found `a244360`. A shallow history is therefore never queried. The committed file was
+ * generated with full history, so its own stamp is the value a shallow build must preserve.
  */
 const stamped = (() => {
   try {
-    const h = execSync('git log -1 --format=%h -- data', { cwd: ROOT }).toString().trim();
+    const shallow = execSync('git rev-parse --is-shallow-repository', { cwd: ROOT }).toString().trim();
+    if (shallow === 'true') throw new Error('shallow history cannot identify the last data commit');
+    /* `%h` IS NOT A FIXED-LENGTH VALUE. Git extends it until it is unambiguous among every object
+       present in that clone, so the full-history CI checkout can emit more characters than a local
+       or Vercel checkout for the same commit. Read the stable full object id and abbreviate it
+       ourselves after the full-history check above. */
+    const full = execSync('git log -1 --format=%H -- data', { cwd: ROOT }).toString().trim();
     const d = execSync('git log -1 --format=%ad --date=short -- data', { cwd: ROOT }).toString().trim();
-    if (h && d) return { h, d };
+    if (/^[0-9a-f]{40}$/i.test(full) && d) return { h: full.slice(0, 7), d };
   } catch {
     /* no git, or shallow history — fall through */
   }
@@ -77,7 +84,7 @@ const CORPUS_DATE = stamped.d;
 
 function jsonFiles(dir) {
   const out = [];
-  for (const e of readdirSync(dir, { withFileTypes: true })) {
+  for (const e of readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
     if (e.name.startsWith('.') || e.name === 'incoming') continue;
     const full = join(dir, e.name);
     if (e.isDirectory()) out.push(...jsonFiles(full));
@@ -127,7 +134,7 @@ for (const c of genreOcc) genrePairs.set(`${c.id} ${c.url} ${c.name}`, c);
 /* ---------------------------------------------------- L-0220's thirteen */
 
 const ledger = [];
-for (const f of readdirSync(join(ROOT, 'data/ledger')).filter((x) => x.endsWith('.json'))) {
+for (const f of readdirSync(join(ROOT, 'data/ledger')).filter((x) => x.endsWith('.json')).sort()) {
   ledger.push(...JSON.parse(read(`data/ledger/${f}`)));
 }
 const byId = new Map(ledger.map((r) => [r.id, r]));
