@@ -33,6 +33,42 @@ are closed for the landing page, the seven stories and all 122 qualifying series
 
 ---
 
+## SESSION 2026-08-20 — the coherent Atlas and the performance boundary
+
+**The four Atlas readings now share one surface and one URL contract.** `/overview/` keeps Movement
+as its unchanged default; `view=timeline`, `view=constellation` and `view=compare` select the other
+readings, while `year`, `topics` and the active-view query remain shareable and restorable. The
+Timeline uses equal marks only for chronology, the Constellation reuses the official Survey of
+India outline and explicitly remains conceptual rather than state-wise, and Compare preserves each
+series' own scale, seam, source and caveat. Every mode carries a specific “How to read this visual”
+sentence. Topic cards now act as portraits rather than a second record index, and each routes to the
+merged topic page for the complete indicators, records, disputes and gaps.
+
+**The first performance attempt failed its measurement.** Simulated-mobile Lighthouse on the local
+production server found 3,654 KiB transferred and 21.3 s LCP: global navigation was prefetching the
+three heaviest routes and the Atlas document itself duplicated every non-headline series. Global
+directory links no longer prefetch those payloads; the duplicated 250-series disclosure was replaced
+by the existing complete topic route; Compare fetches the already-published `/data/v1` contract only
+after that mode opens and its tools are code-split. The Atlas HTML fell from **619,347 to 117,401
+bytes (81%)**. Final local Lighthouse: **78 performance, 100 accessibility, 100 best practices**;
+FCP **1.7 s**, LCP **5.9 s**, TBT **10 ms**, CLS **0**, 842 KiB on the uncompressed local server.
+The SEO score remains 60 because the standing `noindex, nofollow` decision is intentional.
+
+**The interaction contract is now sixty browser tests.** Atlas mode, URL, search and comparison
+tests run at both 1280px and 375px; the existing overflow and constellation suite also measures
+320px. Chart points use one tab stop plus arrow/Home/End traversal. Command-palette and provenance
+dialogs trap and return focus. The question index has distinct code-native visual gateways. Reduced
+motion removes purposeful transitions, and long card/question lists use offscreen rendering. The
+full 33-gate build passes across 698 pages, with 0 dead internal links and all 1,788 declared marks
+reachable. Data, schemas, caveat strings, official map geometry and old routes are unchanged.
+
+**One check cannot be honestly closed here:** a physical phone/tablet pass. The browser suite covers
+responsive geometry and interaction under mobile viewports, and Lighthouse covers simulated mobile
+CPU/network, but this machine has no attached real device. Production hardware testing remains a
+manual release check; it is not represented as completed by emulation.
+
+---
+
 ## SESSION 2026-08-19 — a citable cross-sector Atlas view
 
 **Deployed from merge commit `94a1214` on 2026-08-19.** The Atlas now
@@ -1323,13 +1359,13 @@ header above.
 
 | pin | value |
 |---|---|
-| gate chain | **30 steps**, `npm run build`; `npm run commit` is the only sanctioned commit path. **`lint` and `e2e` are NOT in it** — CI steps, because Vercel has no browser binaries and the build is paid for on every deploy |
-| `npm run e2e` | **17 Playwright tests** — the four properties `interface-invariants` says it cannot bind: a count updating on a click, rendered target size, keyboard reach into a scroller, 375px overflow across 13 routes |
+| gate chain | **33 steps**, `npm run build`; `npm run commit` is the only sanctioned commit path. **`lint` and `e2e` are NOT in it** — CI steps, because Vercel has no browser binaries and the build is paid for on every deploy |
+| `npm run e2e` | **60 Playwright tests** — Atlas modes and URL state at desktop and mobile, chart/dialog keyboard contracts, plus count updates, rendered targets, keyboard reach into scrollers, constellation geometry and 375px overflow across 13 representative routes |
 | `npm run lint` | **0 errors, 0 warnings.** ESLint 9 — pinned, because `eslint-plugin-react` declares peers only to `^9.7` and `eslint-config-next`'s `>=9.0.0` is too loose |
 | `distinct-titles` | **619 records, every title naming exactly one record, 1 pair exempted by id** — `nh-network`/`nh-network-length`. Delete the exemption when the record question is settled and the gate holds the whole corpus |
 | `unrecognised-rows` | **0**, report-only. Zero makes flipping it to a gate *available*, not decided |
-| `listing-marks` | **4,167 listing rows · 5,914 marks** across 753 pages — re-measured 2026-08-13 after the topic tabs stopped duplicating the overview body (from 5,727 · 8,190). **The fall is the expected direction**: a readable list stopped rendering on four tabs where it was a duplicate |
-| `link-check` | **59,070 internal hrefs across 754 built pages**, 24 route prefixes, 0 dead — re-measured 2026-08-13 (from 60,433 across 753; the page and two prefixes are `/directory/` and `/icon.svg`) |
+| `listing-marks` | **3,486 listing rows · 4,940 required marks** across 697 checked pages. The 2026-08-20 fall is intentional: `/overview/` stopped duplicating 250 full series already listed on the fourteen merged topic pages; those destination listings retain every mark and remain checked |
+| `link-check` | **61,482 internal hrefs across 698 built pages**, 25 route prefixes, 0 dead |
 | series share cards | **3 authored** in `SERIES_CARDS` · **18 two-truths** · the rest the mechanical floor. Authored outranks two-truths. Condition for the next: a story rests on it and no pair has written its tension |
 | series reach | **122 of 122** qualifying series are linked from a landing, story, question or overview page; **0 are index-only.** Reach does not discriminate — do not re-propose it as a selection criterion |
 | authored series findings | **237 of 269**; 32 render without one, permanently and for a stated reason |

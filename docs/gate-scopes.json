@@ -3,7 +3,7 @@
     "recordsValidated": 223
   },
   "css-vars": {
-    "varUses": 912,
+    "varUses": 946,
     "declared": 46
   },
   "distinct-titles": {
@@ -14,9 +14,9 @@
     "pagesScanned": 698
   },
   "listing-marks": {
-    "listingRows": 3639,
+    "listingRows": 3486,
     "pagesScanned": 697,
-    "marksRequired": 5139
+    "marksRequired": 4940
   },
   "unrecognised-rows": {
     "pagesScanned": 697,

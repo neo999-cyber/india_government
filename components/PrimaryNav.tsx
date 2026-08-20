@@ -25,6 +25,7 @@ export function PrimaryNav() {
           <Link
             key={href}
             href={href}
+            prefetch={false}
             aria-current={current ? 'page' : undefined}
             className={current ? 'is-here' : undefined}
           >

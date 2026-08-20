@@ -306,8 +306,10 @@ export function buildConstellation(counts: Record<string, number>): {
   edges: ConstellationEdge[];
 } {
   const marks: Record<string, number> = {};
-  for (const a of AREAS)
-    marks[a.id] = Math.max(MIN_MARKS, Math.round((counts[a.id] ?? 0) / FILINGS_PER_MARK));
+  for (const a of AREAS) {
+    const count = counts[a.id] ?? 0;
+    marks[a.id] = count <= 0 ? 0 : Math.max(MIN_MARKS, Math.round(count / FILINGS_PER_MARK));
+  }
   const total = Object.values(marks).reduce((s, n) => s + n, 0);
 
   // Candidate points from the sequence, keeping only those that land on land.
