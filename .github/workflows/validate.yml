@@ -20,12 +20,12 @@ jobs:
       # still quotes what it withdrew, and a green tick did not distinguish that from a run which
       # had tested it. `record-history` and `corrections` reuse committed files in a shallow clone
       # rather than reconstructing them, with the same result. Found by an external audit, not here.
-      # Pinned to an immutable commit, not a mutable tag: `@v4` is a moving target and a
+      # Pinned to an immutable commit, not a mutable tag: `@v7` is a moving target and a
       # compromised tag would run arbitrary code with this repository checked out.
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1 — Node 24 runtime
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0 — Node 24 runtime
         with:
           node-version: '22'
           cache: npm
