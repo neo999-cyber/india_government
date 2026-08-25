@@ -352,6 +352,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link prefetch={false} href="/method/#limits">what that means</Link>.
             </span>
             <Link prefetch={false} href="/method/">method, sources &amp; tiers</Link>
+            {/* THE SOURCE LINK, AND IT IS DELIBERATELY QUIET — operator's instruction 2026-08-17:
+                findable by anyone who wants to work on it, not an invitation on every page. The
+                footer is where a reader already looks for provenance about the ARTEFACT rather than
+                about the data, and it sits beside the authorship disclosure it belongs with.
+
+                A plain `<a>` rather than `next/link`, because this leaves the site and `Link` is for
+                routes inside it. No `target="_blank"`: window management is the reader's decision,
+                and `Referrer-Policy: no-referrer` in `vercel.json` already means GitHub learns
+                nothing about where the visitor came from. */}
+            <a className="foot-src" href="https://github.com/neo999-cyber/india_government">
+              source, data and the gates on GitHub
+            </a>
           </footer>
           <ProvenanceDrawer />
         </div>

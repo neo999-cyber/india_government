@@ -6882,3 +6882,13 @@ li {
 .spk path {
   transition: stroke-dashoffset 0.3s ease;
 }
+
+/* The source link in the footer. One shade dimmer than the three lines beside it: those are for
+   every reader, this one is for the reader who goes looking. */
+.foot-src {
+  color: var(--ink-dim);
+}
+
+.foot-src:hover {
+  color: var(--mark-ink);
+}
