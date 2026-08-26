@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import type { ReactNode } from 'react';
 import { TwoInstruments } from './TwoInstruments';
 import type { Point } from '@/lib/types';
+import { motionReduced, subscribeMotion } from '@/lib/reading-prefs';
 
 /**
  * PHASE 18 §11.3 — the ONE scroll-controlled passage, and the discipline around it.
@@ -17,7 +18,8 @@ import type { Point } from '@/lib/types';
  * THE PROGRESSIVE-ENHANCEMENT DECISION, AND IT IS THE WHOLE DESIGN. **Everything is visible by
  * default and JavaScript only DIMS.** Not the other way round. So:
  *   - with JS disabled, the reader gets the entire passage as ordinary prose and both lines;
- *   - with `prefers-reduced-motion`, the observer is never attached and nothing dims;
+ *   - with reduced motion — the system preference OR this site's own Reading switch — the
+ *     observer is never attached and nothing dims;
  *   - on a slow phone, the content is readable before any script runs;
  *   - a scraped, printed or forwarded copy is complete.
  *
@@ -65,8 +67,25 @@ export function StoryScroller({
   const [active, setActive] = useState(-1);
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
+  /**
+   * REDUCED MOTION IS NOW REACTIVE, AND IT WAS NOT BEFORE. The check used to be a bare `matchMedia`
+   * read inside the observer effect with `[]` deps, so it was decided once at mount. That was
+   * correct while the only source was a system preference — which does not change mid-read — and is
+   * wrong now that a reader can throw the Reading switch on the page they are on. The subscription
+   * listens to both sources; the OR can only ever ADD suppression, never remove it.
+   */
+  const reduced = useSyncExternalStore(subscribeMotion, motionReduced, () => false);
+
+  /**
+   * -1 IS DERIVED, NOT ASSIGNED. **WITHDRAWN: a `setActive(-1)` call in the observer effect below**,
+   * which was a cascading render and unnecessary — "no step is privileged" is a FUNCTION of
+   * `reduced`, not a second fact to store. Deriving it also means switching motion back on restores
+   * the step the reader was at, instead of having destroyed it on the way out.
+   */
+  const shown = reduced ? -1 : active;
+
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (reduced) return;
     if (typeof IntersectionObserver === 'undefined') return;
 
     const io = new IntersectionObserver(
@@ -85,13 +104,13 @@ export function StoryScroller({
 
     for (const el of refs.current) if (el) io.observe(el);
     return () => io.disconnect();
-  }, []);
+  }, [reduced]);
 
   return (
     <div className="scroller">
       <div className="scroller-figure">
         <div className="scroller-sticky">
-          <TwoInstruments lines={lines} active={active} yMax={yMax} label={figureLabel} />
+          <TwoInstruments lines={lines} active={shown} yMax={yMax} label={figureLabel} />
         </div>
       </div>
       <div className="scroller-steps">
@@ -102,7 +121,7 @@ export function StoryScroller({
             ref={(el) => {
               refs.current[i] = el;
             }}
-            className={`scroller-step${active === i ? ' is-active' : ''}`}
+            className={`scroller-step${shown === i ? ' is-active' : ''}`}
           >
             {s.body}
           </div>

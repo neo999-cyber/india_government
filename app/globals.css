@@ -147,6 +147,53 @@
   color-scheme: light;
 }
 
+/* ==============================================================================================
+   READING PREFERENCES — the four attributes `components/ReadingPreferences.tsx` puts on <html>.
+
+   **The light palette above was already exactly this mechanism with no switch attached to it**, so
+   these follow its shape rather than inventing a second one: one attribute, one block, and the
+   stylesheet stays the only place that knows what a preference LOOKS like. `lib/reading-prefs.ts`
+   holds the matching declaration, and the reasoning for why the set is four switches rather than
+   the fourteen a commercial overlay offers.
+   ============================================================================================== */
+
+/* TEXT SIZE SCALES THE ROOT, which moves the 303 rem font sizes AND the rem spacing around them
+   together. Scaling type without its spacing is how a "larger text" control overflows its own
+   buttons — so this is deliberately a page zoom, not a font-size override.
+   **The two `body` rules below were px and are now rem for this reason.** `font-size: 17px` won
+   the cascade, and left in px it would have pinned every paragraph on the site at 17px while the
+   furniture around it grew. */
+:root[data-text='large'] { font-size: 112.5%; }
+:root[data-text='largest'] { font-size: 125%; }
+
+/* ALWAYS-UNDERLINED LINKS. `!important` is load-bearing rather than lazy: 32 rules in this file set
+   `text-decoration: none`, and a reader asking for underlines is asking to override exactly those.
+   `currentColor` because the default decoration colour is `--rule` — a hairline, and underlining in
+   a colour a reader cannot see is the same defect one level down. */
+:root[data-links='underline'] a {
+  text-decoration-line: underline !important;
+  text-decoration-color: currentColor !important;
+}
+
+/* MOTION OFF — ONE UNIVERSAL BLOCK, not an edit to the twelve `prefers-reduced-motion` blocks
+   already in this file. A per-rule opt-out is a list, and the next animation added forgets to join
+   it; this cannot be forgotten because it names nothing.
+
+   `0.01ms` rather than `none` is the part worth keeping: an animation that never runs also never
+   fires `animationend`, so anything waiting on that event hangs instead of skipping. Two components
+   decide in JavaScript whether to animate at all — they read `motionReduced()`, which ORs this
+   attribute with the system preference and can only ever ADD suppression. */
+:root[data-motion='off'] *,
+:root[data-motion='off'] *::before,
+:root[data-motion='off'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-delay: 0s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  transition-delay: 0s !important;
+  scroll-behavior: auto !important;
+}
+
 *,
 *::before,
 *::after {
@@ -162,7 +209,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.55;
   font-feature-settings: 'kern' 1;
 }
@@ -2132,7 +2179,17 @@ tbody > tr:has(+ .caveat-row) > td {
   margin: 1.5rem 0 1.75rem;
   position: sticky;
   top: 0.8rem;
-  background: rgba(22, 27, 34, 0.9);
+  /* WITHDRAWN 2026-08-26: `background: rgba(22, 27, 34, 0.9)`. It was `--surface` at 90% written
+     as a literal, which the design rules forbid ("nothing hardcodes a literal") — and the reason
+     the rule exists is exactly what it did here. **A dark surface survived into the light palette**,
+     so `--ink-dim` and `--ink-2` light-theme text landed on a near-black bar at 1.62:1 and 2.11:1
+     where they need 4.5. Five nodes, all in this one component.
+
+     It was invisible for two years because nothing in the interface could reach `[data-theme=light]`
+     — the palette was complete and unswitchable. The Reading panel made it reachable, which is how
+     a switch that changes no rendering logic still surfaces real defects. `color-mix` keeps the
+     translucency the sticky bar needs and takes the token, so both palettes now compose correctly. */
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   z-index: 20;
@@ -3099,7 +3156,7 @@ tbody > tr:has(+ .caveat-row) > td {
    and gate output. Dense tables keep their own smaller size rather than the page shrinking back to
    meet them; that is the exception and it is declared, not inherited. */
 body {
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1.62;
 }
 
@@ -5111,6 +5168,121 @@ details.more > summary {
   .allpages-link {
     display: inline-flex;
     align-items: center;
+  }
+}
+
+/* --- reading preferences -------------------------------------------------- */
+/* IT DOES NOT RENDER WITHOUT JAVASCRIPT, AND THAT IS WHAT `data-js` IS FOR.
+
+   A `<details>` opens fine with the bundle dead — and every switch inside it would be inert, which
+   is a control that lies about what it does. The rest of this site works without script; this one
+   thing cannot, so it removes itself rather than pretending. `BOOT` sets `data-js` synchronously
+   before the first paint, so there is no frame in which the control appears and then vanishes.
+
+   The type, the dotted underline and the hairline-bordered panel are `.allpages`' idiom, because
+   that is the sibling control in the same row and two disclosures in one nav should not read as
+   two different kinds of thing. */
+.prefs { display: none; }
+:root[data-js='on'] .prefs { position: relative; display: inline-block; }
+
+.prefs > summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-2);
+  border-bottom: 1px dotted var(--rule);
+}
+.prefs > summary::-webkit-details-marker { display: none; }
+.prefs > summary:hover,
+.prefs[open] > summary { color: var(--ink); }
+
+.prefs-panel {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 0.5rem);
+  z-index: 40;
+  width: min(26rem, calc(100vw - 2rem));
+  max-width: calc(100vw - 2rem);
+  display: grid;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  /* No shadow, for the reason `.allpages-panel` has none: a floating card is the dashboard
+     register the design rules exclude, and a hairline is how every other panel here separates. */
+}
+
+.prefs-intro,
+.prefs-foot {
+  margin: 0;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--ink-dim);
+}
+.prefs-foot {
+  border-top: 1px solid var(--rule-soft);
+  padding-top: 0.7rem;
+}
+
+.prefs-group { display: grid; gap: 0.3rem; }
+.prefs-legend {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.prefs-options { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+/* 44px MINIMUM, which `target-size.spec.ts` asserts across the site and this panel must not be the
+   exception to — a control built for readers with a motor or vision difficulty is the last place
+   to ship a small tap target. */
+.prefs-opt {
+  min-height: 44px;
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.prefs-opt:hover { color: var(--ink); border-color: var(--ink-dim); }
+/* THE SELECTED STATE IS A FILL, NOT A TINT, AND IT READS THE SAME ATTRIBUTE A SCREEN READER DOES.
+   `aria-pressed` is what gets announced and what this selector matches, so the visible state and
+   the announced state cannot drift apart. */
+.prefs-opt[aria-pressed='true'] {
+  color: var(--bg);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.prefs-note {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--ink-dim);
+}
+
+@media (max-width: 767px) {
+  /* THE PANEL ANCHORS TO THE NAV, NOT TO THE SUMMARY, AND THE REASON IS ARITHMETIC.
+
+     `.allpages-panel` once opened leftward off the page at desktop width — recorded in its own note
+     — and the same shape bites here in the other direction: this summary sits toward the RIGHT of a
+     375px nav row, so a panel with `left: 0` on the summary would start near 300px and run well
+     past the viewport. Making `.prefs` static hands the absolute positioning to `.nav-secondary`,
+     so `left: 0; right: 0` spans the nav and cannot overflow at any width.
+
+     `.allpages` needs none of this because it is `display: none` below 767px and swaps for a link
+     to `/directory/`. **This control has no second surface to swap for**, so it stays visible. */
+  .nav-secondary { position: relative; }
+  :root[data-js='on'] .prefs { position: static; }
+  .prefs-panel {
+    left: 0;
+    right: 0;
+    width: auto;
+    max-width: none;
   }
 }
 

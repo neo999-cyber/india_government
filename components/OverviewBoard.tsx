@@ -17,6 +17,7 @@ import dynamic from 'next/dynamic';
 import { DOMAIN_CHARACTER } from '@/lib/domain-copy';
 import { RecordConstellation } from '@/components/RecordConstellation';
 import { AREAS } from '@/lib/constellation';
+import { motionReduced, subscribeMotion } from '@/lib/reading-prefs';
 
 const AtlasCompareMode = dynamic(
   () => import('@/components/AtlasCompareMode').then((module) => module.AtlasCompareMode),
@@ -604,15 +605,20 @@ export function OverviewBoard({
   const [motionOK, setMotionOK] = useState(true);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  /**
+   * TWO SOURCES OF TRUTH, ORed — the system preference and this site's own Reading switch. This
+   * read `matchMedia` directly until the Reading panel shipped. The helper adds the switch without
+   * letting it override a system preference in the permissive direction: a reader who has asked
+   * their OS for reduced motion gets it here whatever the panel says.
+   */
   useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
     const apply = () => {
-      setMotionOK(!mq.matches);
-      if (mq.matches) setPlaying(false);
+      const off = motionReduced();
+      setMotionOK(!off);
+      if (off) setPlaying(false);
     };
     apply();
-    mq.addEventListener('change', apply);
-    return () => mq.removeEventListener('change', apply);
+    return subscribeMotion(apply);
   }, []);
 
   useEffect(() => {

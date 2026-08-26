@@ -3,6 +3,8 @@ import { PrimaryNav } from '@/components/PrimaryNav';
 // `navLabel` moved with `DIRECTORY`: the per-item labels are resolved where the list is declared.
 import { DIRECTORY } from '@/lib/routes';
 import { AllPagesDisclosure } from '@/components/AllPagesDisclosure';
+import { ReadingPreferences } from '@/components/ReadingPreferences';
+import { BOOT } from '@/lib/reading-prefs';
 import Link from 'next/link';
 import localFont from 'next/font/local';
 import { series } from '@/lib/data';
@@ -240,6 +242,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${spectral.variable} ${plexSans.variable} ${plexMono.variable}`}>
       <body>
+        {/* THE READING-PREFERENCE BOOT SCRIPT, AND IT HAS TO BE HERE AND HAVE TO BE INLINE.
+
+            It restores the four `<html>` attributes a reader chose — canvas, text size, link
+            underlines, motion — from `localStorage`. **A React effect would be exactly one paint too
+            late:** a reader who chose the light palette would get a full-page flash of the dark one
+            on every single navigation. That is the one thing this feature cannot do from a
+            component, which is why the only inline script in the codebase is this one.
+
+            It also sets `data-js`, which is what makes the control itself appear. Everything else on
+            this site works with the bundle dead; a panel of switches does not, so it stays hidden
+            until this line proves script is running. See `lib/reading-prefs.ts` — the source is
+            GENERATED from the same declaration the component reads, because a hand-copied key list
+            goes stale silently: a boot script reading the wrong key does not throw, it just quietly
+            restores nothing.
+
+            `vercel.json` already allows `'unsafe-inline'` for scripts, so no header changes. */}
+        <script dangerouslySetInnerHTML={{ __html: BOOT }} />
         {/* SKIP LINK. Absent from all 753 pages until 2026-08-13. Automated tooling did not call it
             a violation because the landmarks are correct, which is exactly why it survived: the
             masthead carries seven primary links plus a directory disclosure, and some routes run
@@ -320,6 +339,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   ))}
                 </div>
               </AllPagesDisclosure>
+              {/* READING PREFERENCES — four switches, and a deliberate exception to the standing
+                  rule two comments above that this masthead stays short.
+
+                  **A reader who needs larger text cannot read their way down to a footer to ask for
+                  it.** Every other site-level affordance here is something a reader wants after
+                  reading; this is the one they need before it, so it is the one that cannot be
+                  filed at the bottom of the page. The cost is one short control beside "All pages".
+
+                  It renders nothing without JavaScript — see its own header. */}
+              <ReadingPreferences />
             </nav>
           </header>
           <main id="main">{children}</main>
