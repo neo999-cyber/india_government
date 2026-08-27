@@ -5585,19 +5585,31 @@ pre {
    ResizeObserver and no loop to produce. */
 .rc-art {
   position: relative;
-  min-height: 44rem;
+  /* Raised from 44rem with the stage: a bigger map needs a taller panel, or the height cap above
+     simply shrinks it back to where it started. */
+  min-height: 50rem;
   background: linear-gradient(135deg, var(--surface), var(--bg));
 }
 
 /* MEASURED, NOT GUESSED. At `min(84%, 35rem)` and `top: 48%` the stage was 560x640 in a 656px
    panel: it overhung the top edge by 5px and its box reached under both captions, which is the
    overlap the brief forbids. This leaves a clear band at the foot of the panel for them. */
+/* **WITHDRAWN: `width: min(80%, 33rem)`.** The map sat in the middle of its frame with a wide
+   empty margin all round — the panel was doing nothing with most of its area, and the eight symbols
+   orbited well inside the border. The stage now takes nearly the full panel; the symbols move out
+   with it, which is what puts them near the frame rather than floating in the middle of it.
+   `constellation.spec.ts` is what keeps this honest: it asserts at four widths that no symbol
+   leaves the panel or touches the status and source lines. */
 .rc-stage {
   position: absolute;
   left: 50%;
   top: 45%;
   transform: translate(-50%, -50%);
-  width: min(80%, 33rem);
+  width: min(94%, 45rem);
+  /* AND A HEIGHT CAP, because the first enlargement only bounded the width: at 94% the stage came
+     out 720x823 in an 828x704 panel — 117% of the panel's height, overflowing it. With
+     `aspect-ratio` set, whichever of the two caps binds first shrinks the other. */
+  max-height: 92%;
   aspect-ratio: 560 / 640;
 }
 
@@ -7240,11 +7252,16 @@ li {
    from 706px to 344px and gains a third column, so the row is not one small picture beside a wall
    of nothing. */
 .rc--compact { display: grid; gap: 2rem; grid-template-columns: 1fr; align-items: start; }
+/* THE ATTRIBUTION ENDS LEVEL WITH THE PICTURE. **WITHDRAWN: leaving `.rc-note` and `.rc-attrib`
+   to auto-place in column 2**, which put each in its own implicit row and left a tall empty gap
+   between them — the note at the top, the attribution stranded far below the frame's foot. The
+   window now spans both rows, the note sits at the top of the column and the attribution at the
+   bottom, so the two columns finish on the same line. */
 @media (min-width: 1240px) {
-  .rc--compact { grid-template-columns: minmax(0, 1fr) minmax(240px, 20rem); }
-  .rc--compact .rc-window { grid-column: 1; }
-  .rc--compact .rc-note,
-  .rc--compact .rc-attrib { grid-column: 2; margin-top: 0; }
+  .rc--compact { grid-template-columns: minmax(0, 1fr) minmax(240px, 20rem); align-items: stretch; }
+  .rc--compact .rc-window { grid-column: 1; grid-row: 1 / span 2; }
+  .rc--compact .rc-note { grid-column: 2; grid-row: 1; align-self: start; margin-top: 0; }
+  .rc--compact .rc-attrib { grid-column: 2; grid-row: 2; align-self: end; margin: 0; }
 }
 .rc--compact .rc-window { max-width: none; }
 .rc--compact .rc-stage { max-width: 21rem; margin-inline: auto; }

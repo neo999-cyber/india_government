@@ -72,9 +72,9 @@ export const PLATE = { w: 1536, h: 1024, src: '/landscape/plate.webp' } as const
 
 export const LANDMARKS: readonly Landmark[] = [
   { key: 'kashmir', label: 'Kashmir', art: 'kashmir-peaks', cx: 414.7, baseY: 399.4, w: 140.4, h: 155.7 },
-  { key: 'defence', label: 'Defence', art: 'radar-tower', cx: 583.7, baseY: 276.5, w: 106.3, h: 194.9 },
+  { key: 'defence', label: 'Defence', art: 'defence-post', cx: 583.7, baseY: 276.5, w: 123.4, h: 110.3 },
   { key: 'governance', label: 'Governance', art: 'parliament', cx: 875.5, baseY: 307.2, w: 151.5, h: 187.5 },
-  { key: 'federalism', label: 'Federalism', art: 'boundary-stones', cx: 1059.8, baseY: 348.2, w: 101.1, h: 126.2 },
+  { key: 'federalism', label: 'Federalism', art: 'federalism-hall', cx: 1059.8, baseY: 348.2, w: 116.7, h: 130.0 },
   { key: 'environment', label: 'Environment', art: 'broadleaf-trees', cx: 230.4, baseY: 460.8, w: 133.1, h: 171.9 },
   { key: 'human-development', label: 'Human development', art: 'hospital', cx: 537.6, baseY: 481.3, w: 121.8, h: 156.8 },
   { key: 'macro', label: 'Macroeconomy', art: 'bank', cx: 775.7, baseY: 436.3, w: 140.1, h: 152.6 },
