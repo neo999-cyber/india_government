@@ -3,7 +3,7 @@
     "recordsValidated": 223
   },
   "css-vars": {
-    "varUses": 990,
+    "varUses": 993,
     "declared": 46
   },
   "distinct-titles": {
@@ -11,15 +11,15 @@
   },
   "reachability": {
     "marksDeclared": 1788,
-    "pagesScanned": 699
+    "pagesScanned": 700
   },
   "listing-marks": {
-    "listingRows": 3486,
-    "pagesScanned": 698,
-    "marksRequired": 4940
+    "listingRows": 3488,
+    "pagesScanned": 699,
+    "marksRequired": 4942
   },
   "unrecognised-rows": {
-    "pagesScanned": 698,
+    "pagesScanned": 699,
     "citations": 942
   },
   "field-render-audit": {

@@ -75,7 +75,11 @@ test.describe('seven-section information architecture', () => {
   });
 
   test('section landing pages expose their existing child routes', async ({ page }) => {
+    // `/in-short/` joins the Atlas group at its head, 2026-08-27. It is the way IN to the Atlas
+    // rather than an eighth public section — the masthead's seven are untouched, which the first
+    // test in this file still asserts exactly.
     await expectGateway(page, '/overview/', [
+      '/in-short/',
       '/overview/#topics',
       '/overview/?view=timeline#topics',
       '/years/',

@@ -53,6 +53,7 @@ import { STORY_INDEX } from '@/lib/story-index';
  */
 export const ROUTES: Record<string, { label: string; nav?: string }> = {
   '/': { label: 'instrument' },
+  '/in-short/': { label: 'In short', nav: 'the whole record in one read' },
   '/overview/': { label: 'What changed', nav: 'Atlas' },
   '/questions/': { label: 'Questions', nav: 'Questions' },
   '/stories/': { label: 'Stories', nav: 'Stories' },
@@ -166,6 +167,12 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
     description: 'Topics, chronology and the same record seen through time.',
     activePrefixes: ['/overview/', '/domains/', '/years/', '/lenses/', '/terms/'],
     items: [
+      /* FIRST IN THE GROUP, AND NOT AN EIGHTH PRIMARY DESTINATION. The masthead's seven public
+         sections are a settled decision and this does not reopen it — `/in-short/` is the way IN to
+         the Atlas rather than a peer of it, so it sits at the top of the Atlas group and is linked
+         from the landing page. Readers reported they could not get an overall picture; the answer
+         is a better front door, not a wider corridor. */
+      { href: '/in-short/', label: 'In short', description: 'The whole record in one read, before any of the tools.' },
       { href: '/overview/#topics', label: 'Topics', description: 'Fourteen topic portraits on shared years.' },
       { href: '/overview/?view=timeline#topics', label: 'Timeline', description: 'See when records begin across topics.' },
       { href: '/years/', label: 'Years', description: 'Open the complete record one year at a time.' },

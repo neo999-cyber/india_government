@@ -11,6 +11,16 @@ const WAY_RECORDS = [
 ] as const;
 
 const PATHS = [
+  /* FIRST, AND FIRST IS THE POINT. Readers the site was shared with reported the same thing: good
+     records, no way to get an overall picture. Every one of the paths below hands them a TOOL —
+     a timeline, a filter, a story, a search box — and a reader who does not yet know what the
+     archive contains cannot choose between tools. This one hands them the contents. */
+  {
+    href: '/in-short/',
+    eyebrow: 'Read',
+    title: 'The whole record in one read',
+    copy: 'Fourteen subjects in a sentence each, how the commitments came out, and what this cannot tell you.',
+  },
   {
     href: '/overview/',
     eyebrow: 'Explore',

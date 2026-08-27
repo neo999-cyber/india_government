@@ -60,15 +60,23 @@ async function expectTouchTarget(locator: import('@playwright/test').Locator, la
 }
 
 test.describe('phone journeys', () => {
-  test('landing is visual-first and all four journeys remain usable', async ({ page }) => {
+  test('landing is visual-first and all five journeys remain usable', async ({ page }) => {
     await page.goto('/');
 
     await expect(page.getByRole('heading', { level: 1 })).toContainText('What we can actually know');
     await expect(page.locator('.rc-window')).toBeVisible();
 
+    /**
+     * FIVE FROM 2026-08-27, AND THE NEW ONE IS FIRST DELIBERATELY. **WITHDRAWN: a count of 4 and a
+     * list beginning `/overview/`.** Readers reported they could not get an overall picture, and
+     * every one of the original four hands them a TOOL — a timeline, a filter, a story, a search
+     * box. A reader who does not yet know what the archive contains cannot choose between tools,
+     * so `/in-short/` goes above all of them. The assertion stays exact: same count check, same
+     * href-by-position check, so a reordering still fails here.
+     */
     const journeys = page.locator('.home-path');
-    await expect(journeys).toHaveCount(4);
-    const expectedHrefs = ['/overview/', '/questions/', '/stories/', '/search/'];
+    await expect(journeys).toHaveCount(5);
+    const expectedHrefs = ['/in-short/', '/overview/', '/questions/', '/stories/', '/search/'];
     for (let index = 0; index < expectedHrefs.length; index += 1) {
       await expect(journeys.nth(index)).toHaveAttribute('href', expectedHrefs[index]);
     }

@@ -5171,6 +5171,39 @@ details.more > summary {
   }
 }
 
+/* --- /in-short/ ------------------------------------------------------------ */
+/* A READ surface, so it is set as prose and not as a board. The Atlas is the grid; this is the
+   thing you read before you know you want a grid. Sections are separated by a hairline rather than
+   boxed — fourteen cards would be the Atlas again, one page further from the front door. */
+/* TWO COLUMNS ON A WIDE SCREEN. The fourteen subjects are independent blocks rather than a
+   continuous argument, so column order costs a reader nothing — and it halves a page whose entire
+   reason for existing is that there was too much to look at. The prose above and below stays one
+   column, because that IS continuous. */
+.ins-grid {
+  display: grid;
+  gap: 0 2.5rem;
+}
+@media (min-width: 900px) {
+  .ins-grid { grid-template-columns: 1fr 1fr; }
+}
+.ins {
+  margin: 1.2rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--rule-soft);
+}
+.ins h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+}
+.ins-char,
+.ins-lead {
+  margin: 0 0 0.5rem;
+  max-width: var(--measure);
+}
+.ins-lead .mono {
+  color: var(--ink-2);
+}
+
 /* --- reading preferences -------------------------------------------------- */
 /* IT DOES NOT RENDER WITHOUT JAVASCRIPT, AND THAT IS WHAT `data-js` IS FOR.
 

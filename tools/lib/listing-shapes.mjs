@@ -181,7 +181,16 @@ export function listingRows(html) {
   // contested pair each walked past this gate first. This one was bound before it shipped and the
   // measurement is why — replacing the search table with cards dropped listing rows 3,716 → 3,405
   // and marks 5,247 → 4,816 while the gate reported OK, because 619 records had left its scope.
-  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one', 'redline', 'ctwo', 'chart', 'scard', 'way'];
+  // `ins` is `/in-short/`'s topic section, added 2026-08-27 in the commit that created it. **The
+  // gate reported it before it shipped, which is the outcome `unrecognised-rows` was built for** —
+  // two record links naming a record by title, in a shape nothing recognised, on a page that had
+  // not yet been pushed. Eighth new shape; the third bound before a reader ever saw it.
+  //
+  // One record per section: the topic's lead series, whose caveat and declared absences render
+  // inside the same <section> through `RecordMarks`. The two sections with no lead — poverty and
+  // kashmir — link no record at all and contribute no unit, which is correct: their absence is
+  // authored prose in the `.absence` mark, not a record listing.
+  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one', 'redline', 'ctwo', 'chart', 'scard', 'way', 'ins'];
   const containers = [];
   for (const cls of CONTAINER_CLASSES) {
     // WHOLE CLASS TOKEN, NOT `\b`. A hyphen is not a word boundary, so `\bctwo\b` matched

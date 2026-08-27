@@ -58,7 +58,11 @@ const TERM_YEARS = Array.from({ length: 13 }, (_, i) => 2014 + i);
  * because a sort would have to rank on something, and every quantity available to rank on is one
  * this instrument refuses to present as a ranking.
  */
-const ORDER = [
+/**
+ * EXPORTED 2026-08-27 so `/in-short/` orders its fourteen sections the same way this board does.
+ * A second copy of this list would be two orders that agree until someone edits one of them.
+ */
+export const ORDER = [
   'employment',
   'infrastructure',
   'human-development',
