@@ -67,11 +67,19 @@ import { INDIA_OUTLINE } from '@/lib/india-outline';
 export function RecordConstellation({
   counts,
   scopeLabel,
+  compact = false,
 }: {
   /** Filings per area, from `/data`. Density is the one real encoding in the picture. */
   counts: Record<string, number>;
   /** Optional Atlas scope. The landing artwork omits it and always shows the complete archive. */
   scopeLabel?: string;
+  /**
+   * A SMALLER SETTING, NOT A DIFFERENT PICTURE — added 2026-08-27 when the landscape took the
+   * landing hero and this moved below it. Nothing is removed: the same eight symbols, the same
+   * marks, the same note and the same Survey of India attribution, which travels with the assets
+   * wherever they sit. Only the stylesheet reads this; the markup and the encoding are unchanged.
+   */
+  compact?: boolean;
 }) {
   const [selected, setSelected] = useState<string | null>(null);
   const { nodes, edges } = buildConstellation(counts);
@@ -85,7 +93,7 @@ export function RecordConstellation({
   const active = AREAS.find((a) => a.id === effectiveSelected) ?? null;
 
   return (
-    <section className="rc" aria-labelledby={`${uid}-h`}>
+    <section className={`rc${compact ? ' rc--compact' : ''}`} aria-labelledby={`${uid}-h`}>
       <div className="rc-window">
         <div className="rc-copy">
           <p className="rc-kicker mono">The archive</p>

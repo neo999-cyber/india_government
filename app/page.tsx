@@ -3,6 +3,8 @@ import { getSeries, ledger, series } from '@/lib/data';
 import { RecordMarks } from '@/components/marks';
 import { RecordConstellation } from '@/components/RecordConstellation';
 import { AREAS } from '@/lib/constellation';
+import { RecordLandscape } from '@/components/RecordLandscape';
+import { landscapeSubjects } from '@/lib/landscape';
 
 const WAY_RECORDS = [
   'res-capacity-share',
@@ -10,42 +12,6 @@ const WAY_RECORDS = [
   'schools-above-rte-ptr-primary-dise',
 ] as const;
 
-const PATHS = [
-  /* FIRST, AND FIRST IS THE POINT. Readers the site was shared with reported the same thing: good
-     records, no way to get an overall picture. Every one of the paths below hands them a TOOL —
-     a timeline, a filter, a story, a search box — and a reader who does not yet know what the
-     archive contains cannot choose between tools. This one hands them the contents. */
-  {
-    href: '/in-short/',
-    eyebrow: 'Read',
-    title: 'The whole record in one read',
-    copy: 'Fourteen subjects in a sentence each, how the commitments came out, and what this cannot tell you.',
-  },
-  {
-    href: '/overview/',
-    eyebrow: 'Explore',
-    title: 'See change across India',
-    copy: 'Move through the years and scan every topic on one shared timeline.',
-  },
-  {
-    href: '/questions/',
-    eyebrow: 'Ask',
-    title: 'Start with a question',
-    copy: 'What improved, worsened, stayed open, or cannot yet be answered?',
-  },
-  {
-    href: '/stories/',
-    eyebrow: 'Understand',
-    title: 'Follow an evidence story',
-    copy: 'Read one disagreement or change of definition from beginning to end.',
-  },
-  {
-    href: '/search/',
-    eyebrow: 'Find',
-    title: 'Open a specific record',
-    copy: 'Search the series, official commitments, events and measurement disputes.',
-  },
-] as const;
 
 export default function HomePage() {
   const wayRecords = WAY_RECORDS.map((id) => {
@@ -71,33 +37,35 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="home-intro" aria-labelledby="home-title">
-        <p className="home-kicker mono">India, on the record · May 2014 onward</p>
-        <h1 id="home-title" className="home-lead">
-          What we can actually know about how India changed
-        </h1>
-        <p className="lede">
-          Built from India&rsquo;s published statistics and official documents. Every figure leads
-          back to its source; every change of basis, disagreement and declared gap stays attached
-          to the record it qualifies.
-        </p>
-      </section>
+      {/* THE LANDSCAPE IS THE DOOR — operator decision 2026-08-27, option D of four mocked.
+          **WITHDRAWN: the four `home-paths` cards.** They handed a first-time reader a TOOL each —
+          a timeline, a filter, a story, a search box — and a reader who does not yet know what the
+          archive contains cannot choose between tools. Fourteen named subjects is what they wanted.
+          Every one of those four destinations is still one click away in the masthead and in the
+          footer directory, so nothing became unreachable; `link-check` walks them all. */}
+      <RecordLandscape
+        subjects={landscapeSubjects()}
+        totals={{ series: series.length, records: ledger.length }}
+      >
+        <section className="home-intro" aria-labelledby="home-title">
+          <p className="home-kicker mono">India, on the record &middot; May 2014 onward</p>
+          <h1 id="home-title" className="home-lead">
+            What we can actually know about how India changed
+          </h1>
+          <p className="lede">
+            Built from India&rsquo;s published statistics and official documents. Every figure leads
+            back to its source; every change of basis, disagreement and declared gap stays attached
+            to the record it qualifies.
+          </p>
+        </section>
+      </RecordLandscape>
 
-      <RecordConstellation counts={areaCounts} />
-
-      <nav className="home-paths" aria-label="Choose how to explore the record">
-        {PATHS.map((path, index) => (
-          <Link key={path.href} href={path.href} className="home-path">
-            <span className="home-path-index mono">0{index + 1}</span>
-            <span className="home-path-copy">
-              <span className="home-path-eyebrow mono">{path.eyebrow}</span>
-              <strong>{path.title}</strong>
-              <span>{path.copy}</span>
-            </span>
-            <span className="home-path-arrow" aria-hidden="true">↗</span>
-          </Link>
-        ))}
-      </nav>
+      {/* THE CONSTELLATION KEEPS ITS PLACE, SMALLER, AND THE REASON IS NOT SENTIMENT.
+          It is the only picture on this site built on India&rsquo;s real outline, and it declares its
+          own positions conceptual. That declaration is what lets the landscape above be invented
+          terrain without a reader taking it for geography. Remove this and the landscape becomes
+          the site&rsquo;s only picture of India, which it must never be. */}
+      <RecordConstellation counts={areaCounts} compact />
 
       <section className="ways" aria-labelledby="ways-h">
         <div className="home-section-head">

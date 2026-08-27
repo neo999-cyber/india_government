@@ -60,38 +60,48 @@ async function expectTouchTarget(locator: import('@playwright/test').Locator, la
 }
 
 test.describe('phone journeys', () => {
-  test('landing is visual-first and all five journeys remain usable', async ({ page }) => {
+  test('landing is visual-first and the fourteen subjects are reachable', async ({ page }) => {
     await page.goto('/');
 
     await expect(page.getByRole('heading', { level: 1 })).toContainText('What we can actually know');
-    await expect(page.locator('.rc-window')).toBeVisible();
 
     /**
-     * FIVE FROM 2026-08-27, AND THE NEW ONE IS FIRST DELIBERATELY. **WITHDRAWN: a count of 4 and a
-     * list beginning `/overview/`.** Readers reported they could not get an overall picture, and
-     * every one of the original four hands them a TOOL — a timeline, a filter, a story, a search
-     * box. A reader who does not yet know what the archive contains cannot choose between tools,
-     * so `/in-short/` goes above all of them. The assertion stays exact: same count check, same
-     * href-by-position check, so a reordering still fails here.
+     * THE LANDSCAPE IS THE DOOR, THE CONSTELLATION IS STILL THE THESIS — 2026-08-27, option D.
+     *
+     * **WITHDRAWN: a count of 5 `.home-path` cards and their href-by-position list.** Those cards
+     * are gone. They handed a first-time reader a TOOL each — a timeline, a filter, a story, a
+     * search box — and a reader who does not yet know what the archive holds cannot choose between
+     * tools. The landscape names the fourteen subjects instead.
+     *
+     * **BOTH PICTURES ARE ASSERTED, AND THE ORDER BETWEEN THEM IS THE POINT.** The landscape must
+     * finish before the constellation begins: if that ever inverts, the page has quietly gone back
+     * to leading with the abstract picture.
      */
-    const journeys = page.locator('.home-path');
-    await expect(journeys).toHaveCount(5);
-    const expectedHrefs = ['/in-short/', '/overview/', '/questions/', '/stories/', '/search/'];
-    for (let index = 0; index < expectedHrefs.length; index += 1) {
-      await expect(journeys.nth(index)).toHaveAttribute('href', expectedHrefs[index]);
+    const landscape = page.locator('.lsc-svg');
+    const constellation = page.locator('.rc-window');
+    await expect(landscape).toBeVisible();
+    await expect(constellation).toBeVisible();
+
+    const lb = await landscape.boundingBox();
+    const cb = await constellation.boundingBox();
+    expect(lb, 'the landscape is missing').not.toBeNull();
+    expect(cb, 'the constellation is missing').not.toBeNull();
+    expect(lb!.y, 'the constellation appears above the landscape').toBeLessThan(cb!.y);
+
+    /**
+     * THE PILLS ARE HIDDEN BELOW 760px AND THAT IS DELIBERATE — fourteen of them at 375px are
+     * smaller than a fingertip, so they are removed rather than shrunk. What must NOT happen is the
+     * subjects becoming unreachable, so the masthead directory is asserted in the same breath.
+     */
+    const pills = page.locator('a.lsc-mk');
+    await expect(pills).toHaveCount(14);
+    if (page.viewportSize()!.width <= 760) {
+      await expect(pills.first()).toBeHidden();
+      await expect(page.locator('.allpages-link, .allpages').first()).toBeAttached();
     }
 
-    const visual = await page.locator('.rc-window').boundingBox();
-    const firstJourney = await journeys.first().boundingBox();
-    expect(visual, 'landing visual is missing').not.toBeNull();
-    expect(firstJourney, 'first journey is missing').not.toBeNull();
-    expect(visual!.y + visual!.height, 'journeys appear before the landing visual finishes').toBeLessThanOrEqual(
-      firstJourney!.y + 1,
-    );
-
-    for (let index = 0; index < 4; index += 1) {
-      await expectTouchTarget(journeys.nth(index), `landing journey ${index + 1}`);
-    }
+    // The readout carries the counts the single-word pills no longer do.
+    await expect(page.locator('.lsc-read-name')).toContainText('subjects, one landscape');
 
     const government = page.locator('.rc-node-btn[data-area="government"]');
     await government.tap();
