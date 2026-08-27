@@ -345,7 +345,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   **A reader who needs larger text cannot read their way down to a footer to ask for
                   it.** Every other site-level affordance here is something a reader wants after
                   reading; this is the one they need before it, so it is the one that cannot be
-                  filed at the bottom of the page. The cost is one short control beside "All pages".
+                  filed at the bottom of the page. The cost is one short bordered control beside "All pages", in the Quick
+                  Search idiom so it reads as a control rather than a fifteenth destination.
 
                   It renders nothing without JavaScript — see its own header. */}
               <ReadingPreferences />

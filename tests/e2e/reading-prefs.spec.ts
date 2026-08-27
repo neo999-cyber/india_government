@@ -53,7 +53,11 @@ test.describe('reading preferences', () => {
     await expect(page.locator('html')).toHaveAttribute('data-js', 'on');
     const prefs = page.locator('details.prefs');
     await expect(prefs).toBeVisible();
-    await expect(prefs.locator('summary')).toHaveText('Reading');
+    // The label is 'Accessibility' and the mark is decoration: `toHaveText` would see "AaAccessibility",
+    // so this asserts the accessible name a screen reader announces instead, which is the thing that
+    // actually has to be right.
+    await expect(prefs.locator('summary')).toHaveAccessibleName('Accessibility and reading preferences');
+    await expect(prefs.locator('summary')).toContainText('Accessibility');
   });
 
   test('each switch sets its own attribute, and nothing else moves', async ({ page }) => {

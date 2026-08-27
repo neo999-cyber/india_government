@@ -137,7 +137,19 @@ export function ReadingPreferences() {
 
   return (
     <details className="prefs" ref={ref}>
-      <summary aria-label="Reading preferences">Reading</summary>
+      {/* LABELLED "Accessibility", operator's choice 2026-08-26. **WITHDRAWN: `Reading`** — accurate,
+          and not the word anyone scans for. This site is being shared with institutions that ask
+          about accessibility by name, and a control they cannot see is a control they will report
+          as absent.
+
+          It does name a broader promise than four switches can keep, which is why the panel's
+          closing note is not optional: it says plainly that a website cannot switch on a screen
+          reader or a magnifier, and that everything here changes this page only. **The label may
+          overclaim; the panel must not.** */}
+      <summary aria-label="Accessibility and reading preferences">
+        <span className="prefs-mark" aria-hidden="true">Aa</span>
+        <span>Accessibility</span>
+      </summary>
       <div className="prefs-panel">
         <p className="prefs-intro">
           Saved in this browser only. Nothing is sent anywhere, and no account is involved.

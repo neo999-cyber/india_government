@@ -5179,24 +5179,56 @@ details.more > summary {
    thing cannot, so it removes itself rather than pretending. `BOOT` sets `data-js` synchronously
    before the first paint, so there is no frame in which the control appears and then vanishes.
 
-   The type, the dotted underline and the hairline-bordered panel are `.allpages`' idiom, because
-   that is the sibling control in the same row and two disclosures in one nav should not read as
-   two different kinds of thing. */
+   ============================ THE TRIGGER IS A CONTROL, NOT A LINK ===========================
+
+   **WITHDRAWN, because it shipped and the operator could not find it on the page:** *"The type, the
+   dotted underline and the hairline-bordered panel are `.allpages`' idiom, because that is the
+   sibling control in the same row and two disclosures in one nav should not read as two different
+   kinds of thing."*
+
+   That reasoning was self-defeating. The argument for putting this in the masthead at all is that a
+   reader who needs it must be able to FIND it — and then it was styled to match `All pages`
+   exactly, so it read as one more dim nav link and vanished into the row. **A control nobody finds
+   is the same as no control**, which is the whole objection to the overlay widgets this replaces.
+
+   It now takes `.cmd-trigger`'s idiom instead — the Quick Search control two elements away. That is
+   the precedent already in this design for *this is a control, not a destination*: a bordered box
+   on `--surface`, mono, with a mark before the word. The panel keeps the hairline border it always
+   had, so only the trigger changed. */
 .prefs { display: none; }
 :root[data-js='on'] .prefs { position: relative; display: inline-block; }
 
 .prefs > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   cursor: pointer;
   list-style: none;
-  font-family: var(--font-sans);
-  font-size: 0.9375rem;
-  letter-spacing: 0.02em;
+  background: var(--surface);
+  border: 1px solid var(--rule);
   color: var(--ink-2);
-  border-bottom: 1px dotted var(--rule);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
 }
 .prefs > summary::-webkit-details-marker { display: none; }
 .prefs > summary:hover,
-.prefs[open] > summary { color: var(--ink); }
+.prefs[open] > summary {
+  border-color: var(--mark);
+  color: var(--ink);
+  background: var(--rule-soft);
+}
+/* THE MARK. Serif "Aa" in brass — the one glyph that says "this changes how text reads" without a
+   word, and the reason a reader's eye stops on the control at all. `aria-hidden`, because it is
+   decoration beside a label that already says what this is. */
+.prefs-mark {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  line-height: 1;
+  color: var(--mark-ink);
+}
 
 .prefs-panel {
   position: absolute;
