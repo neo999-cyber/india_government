@@ -6485,13 +6485,34 @@ li {
   border-color: var(--mark);
 }
 
+/* THE PRIMARY ACTION TAKES THE INK/PAPER PAIR, NOT `--mark`, AND THE BACKGROUND IS WHAT CHANGED.
+   The palette block declares `--mark` as a UI mark measured to 3.0 rather than to the 4.5 a control
+   carrying words needs, and the arithmetic says there is no foreground that clears 4.5 on it in
+   BOTH palettes: white scored 2.15 on the dark `--mark` #f59e0b and 4.52 on the light #a06b32, and
+   `--bg` — the obvious candidate, and how `.prefs-opt[aria-pressed='true']` reads at a glance —
+   gives 8.81 dark but only 3.77 light, because the light `--mark` is itself a 3.47 mark. So the
+   foreground could not be fixed in place; `--mark` had to stop being the background.
+   `.prefs-opt[aria-pressed='true']` solves the same problem with the same pair — `--ink` beneath
+   `--bg` — and measures 17.39 dark / 13.15 light here.
+   The withdrawn declaration was `color: #ffffff` against `background: var(--mark)`, and it was the
+   only hardcoded colour literal this stylesheet carried. */
 .export-action-primary {
-  background: var(--mark);
-  color: #ffffff;
-  border-color: var(--mark);
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
 }
 
+/* THE HOVER RESTATES ITS BACKGROUND BECAUSE THE GENERIC HOVER OUTRANKS THE PRIMARY RULE, AND THAT
+   WAS THE WORSE OF THE TWO DEFECTS. `.export-action-btn:hover` is (0,2,0) and
+   `.export-action-primary` is (0,1,0), so hovering took the primary's background away and left its
+   foreground standing: white on `--rule-soft`, which is 15.22 on the dark canvas and **1.38 in the
+   light palette** — invisible, and reached only by pointing at the button, which is why neither an
+   axe scan nor a screenshot of the resting modal would ever have shown it. Restating background and
+   border here is load-bearing, not decoration. `opacity: 0.9` composites both halves against
+   `--bg`, the actions bar behind it: 14.11 dark / 10.00 light. */
 .export-action-primary:hover {
+  background: var(--ink);
+  border-color: var(--ink);
   opacity: 0.9;
 }
 
