@@ -91,19 +91,29 @@ export default async function QuestionRoute({ params }: Props) {
       </p>
       <h1>{route.question}</h1>
       <p className="lede">{route.lede}</p>
-      {/* THE CRITERION, PRINTED WHERE THE SELECTION IS MADE — rule 9's requirement, and it is
-          printed here rather than on a method page because that is where the rule puts it. */}
-      <div className="qcrit">
-        <span className="label">What this selects</span>
-        <p>{route.criterion}</p>
-      </div>
-
       {q === 'improved' ? <MoveTable rows={improved()} /> : null}
       {q === 'worsened' ? <MoveTable rows={worsened()} /> : null}
       {q === 'too-early' ? <TooEarly /> : null}
       {q === 'publication-stopped' ? <Stopped /> : null}
       {q === 'sources-disagree' ? <Disagree /> : null}
       {q === 'measured-well' ? <MeasuredWell /> : null}
+
+      {/* THE CRITERION, PRINTED WHERE THE SELECTION IS MADE — rule 9's requirement, unchanged.
+          **MOVED BELOW THE ANSWER 2026-08-27, and the rule is satisfied either way.** It requires
+          the criterion to be printed WHERE the selection is made rather than on a method page; it
+          says nothing about the order, and the order was doing damage. Readers the site was shared
+          with reported that they could not get an overall picture — and this page opened with three
+          paragraphs of selection method before a single fact, so the commonest outcome was that
+          nobody reached the answer at all. A criterion nobody reads is a criterion nobody can check,
+          which is the requirement failing quietly in the other direction.
+
+          **What did NOT move, because position is exactly what rule 3a is not about:** every caveat
+          still renders in full on its own row inside the table, and every absence still precedes
+          the argument on the record's own page. This moves an apparatus block, not a warning. */}
+      <div className="qcrit">
+        <span className="label">What this selects</span>
+        <p>{route.criterion}</p>
+      </div>
 
       {/* A question route was one of three leaf types a reader could finish with nowhere to go.
           These are surfaces, not records, so no marks travel and no listing row is added. */}

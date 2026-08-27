@@ -33,20 +33,6 @@ export default function StoriesIndex() {
         here is also in the records; these read it in sequence.
       </p>
 
-      {/* THE CRITERION COVERS WHICH FOUR; IT DOES NOT COVER THE ORDER, and rule 9 binds both.
-          The cards come out in `STORIES` order, which is the order they were written — a fact, not
-          a judgement — and a reader who is not told that is entitled to read the first as the most
-          important. Stated rather than left to be inferred, for the same reason the criterion is
-          printed at all. */}
-      <div className="qcrit">
-        <span className="label">How these four were chosen</span>
-        <p>{STORY_CRITERION}</p>
-        <p className="qcrit-order">
-          They are listed in the order they were written, which is a fact about this site rather
-          than a judgement about the subjects. Nothing here is ranked.
-        </p>
-      </div>
-
       <div className="grid">
         {STORIES.map((s) => (
           <Link key={s.slug} href={`/stories/${s.slug}/`}>
@@ -57,6 +43,24 @@ export default function StoriesIndex() {
             <span className="grid-meta">{s.card}</span>
           </Link>
         ))}
+      </div>
+
+      {/* THE CRITERION COVERS WHICH FOUR; IT DOES NOT COVER THE ORDER, and rule 9 binds both.
+          The cards come out in `STORIES` order, which is the order they were written — a fact, not
+          a judgement — and a reader who is not told that is entitled to read the first as the most
+          important. Stated rather than left to be inferred, for the same reason the criterion is
+          printed at all.
+
+          **MOVED BELOW THE CARDS 2026-08-27**, with the question routes and for the same reason:
+          the criterion has to be printed where the selection is made, not ahead of what it selected.
+          Four cards behind a block of method is a smaller version of the same defect. */}
+      <div className="qcrit">
+        <span className="label">How these four were chosen</span>
+        <p>{STORY_CRITERION}</p>
+        <p className="qcrit-order">
+          They are listed in the order they were written, which is a fact about this site rather
+          than a judgement about the subjects. Nothing here is ranked.
+        </p>
       </div>
 
       <p className="prose-note">
