@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 // PLATE from the pure module; the subject TYPE only, so no data module reaches the browser.
 import { PLATE } from '@/lib/landscape-plate';
 import type { LandscapeSubject } from '@/lib/landscape';
@@ -41,11 +41,22 @@ type Props = {
   children: React.ReactNode;
 };
 
-/** Pills, laid out under their landmark and pushed clear of each other. Pure, so it is stable. */
-function labelLayout(subjects: LandscapeSubject[]) {
+/**
+ * PINS, IN PERCENT OF THE PLATE — because the labels are HTML over the picture, not SVG inside it.
+ *
+ * **WITHDRAWN: pills drawn inside the `<svg>`.** Text in an SVG scales with the viewBox, so the
+ * label rendered at 9.6px on a 1280px desktop, 6.5px at 884, and 4.9px on a Fold's inner screen —
+ * and was hidden outright below 768px, which left that screen a still picture with no labels and no
+ * interaction at all. Measured across ten widths before this was rewritten.
+ *
+ * As HTML the pin takes CSS pixels: one size at every viewport, a real tap target, and a real link.
+ */
+function pinLayout(subjects: LandscapeSubject[]) {
   const out = subjects.map((s) => ({
-    key: s.key, label: s.label, ax: s.cx, ay: s.baseY + 2,
-    x: s.cx, y: s.baseY + 16, w: s.label.length * 7.6 + 30, h: 26,
+    key: s.key, label: s.label,
+    // the landmark's own base, and the pin's resting place just below it
+    ax: s.cx, ay: s.baseY + 2, x: s.cx, y: s.baseY + 16,
+    w: s.label.length * 7.6 + 30,
   }));
   out.sort((a, b) => a.y - b.y);
   for (let i = 0; i < out.length; i++)
@@ -53,13 +64,29 @@ function labelLayout(subjects: LandscapeSubject[]) {
       const A = out[i], B = out[j];
       if (Math.abs(A.x - B.x) < (A.w + B.w) / 2 + 8 && Math.abs(A.y - B.y) < 34) A.y = B.y + 36;
     }
-  return out;
+  return out.map((o) => ({
+    key: o.key, label: o.label,
+    left: (o.x / PLATE.w) * 100, top: (o.y / PLATE.h) * 100,
+    dotLeft: (o.ax / PLATE.w) * 100, dotTop: (o.ay / PLATE.h) * 100,
+  }));
 }
 
 export function RecordLandscape({ subjects, totals, children }: Props) {
   const [hot, setHot] = useState<string | null>(null);
+  /* A click event is not necessarily a PointerEvent, so the pointer TYPE is recorded on pointerdown
+     and read on click. Reading it off the click's own native event does not typecheck, and would be
+     undefined for a keyboard-activated click in any case. */
+  const lastPointer = useRef<string>('mouse');
+  /**
+   * THE TWO-STEP NEEDS ITS OWN STATE, AND THIS IS THE SECOND TIME THAT LESSON HAS BEEN PAID FOR.
+   * **WITHDRAWN: a click test of `hot !== P.key`.** Tapping a link FOCUSES it, and `onFocus` runs
+   * before `onClick` — so the tap set `hot` to its own subject, the click then read itself as
+   * already-selected, and the first tap navigated. Exactly the bug the two-step exists to prevent.
+   * `tapped` is written by a tap and by nothing else.
+   */
+  const tapped = useRef<string | null>(null);
   const current = hot ? subjects.find((s) => s.key === hot) ?? null : null;
-  const labels = labelLayout(subjects);
+  const pins = pinLayout(subjects);
   const drawn = [...subjects].sort((a, b) => a.baseY - b.baseY);
 
   return (
@@ -91,13 +118,25 @@ export function RecordLandscape({ subjects, totals, children }: Props) {
       </div>
 
       <div className={`lsc${hot ? ' is-dimmed' : ''}`}
-           onPointerLeave={() => setHot(null)} onBlur={() => setHot(null)}>
+           /* ON TOUCH, `pointerleave` FIRES THE MOMENT THE FINGER LIFTS. Clearing the tap state
+              there disarmed the two-step between the first tap and the second, so the second tap
+              behaved as another first and the subject never opened. A mouse leaving really has
+              left, so it still clears. A touch selection is cleared by tapping elsewhere. */
+           onPointerLeave={(e) => {
+             if (e.pointerType === 'touch') return;
+             tapped.current = null;
+             setHot(null);
+           }}
+           onBlur={() => { tapped.current = null; setHot(null); }}>
         <p className="lsc-label">
           <strong>Choose a subject</strong>
           <span className="mono">
             {subjects.length} subjects · one mark per filing · invented terrain, not a map
           </span>
         </p>
+        {/* The pins are positioned in percent of the PLATE, so they must overlay exactly the
+            picture's box and nothing else — hence a frame around the two of them. */}
+        <div className="lsc-frame">
         <svg viewBox={`0 0 ${PLATE.w} ${PLATE.h}`} className="lsc-svg"
              role="img" aria-label="An invented landscape with one landmark for each subject of the archive">
           <defs>
@@ -120,26 +159,44 @@ export function RecordLandscape({ subjects, totals, children }: Props) {
               </g>
             );
           })}
-          {labels.map((L) => {
-            const s = subjects.find((x) => x.key === L.key)!;
-            return (
-              <a key={L.key} className={`lsc-mk${hot === L.key ? ' is-hot' : ''}`} data-k={L.key}
-                 href={`/domains/${L.key}/`}
-                 aria-label={`${L.label} — ${s.series} series, ${s.records} records`}
-                 onPointerEnter={() => setHot(L.key)} onFocus={() => setHot(L.key)}>
-                <rect className="lsc-hit" x={L.x - L.w / 2 - 5} y={L.y - 5} width={L.w + 10} height={L.h + 10} rx={18} />
-                {Math.abs(L.y - L.ay) > 10 ? (
-                  <line className="lsc-stem" x1={L.ax} y1={L.ay} x2={L.x} y2={L.y + 2} />
-                ) : null}
-                <circle className="lsc-dot" cx={L.ax} cy={L.ay} r={3} />
-                <g className="lsc-pill" transform={`translate(${L.x - L.w / 2},${L.y})`}>
-                  <rect className="lsc-bg" width={L.w} height={L.h} rx={13} />
-                  <text className="lsc-t" x={L.w / 2} y={17} textAnchor="middle">{L.label}</text>
-                </g>
-              </a>
-            );
-          })}
         </svg>
+
+        {/* THE PINS. Fixed-size HTML over the picture, so the label is the same size on a phone,
+            a folding tablet and a desktop. Below 900px only the dot shows and the name arrives in
+            the readout instead — fourteen full labels do not fit a narrow picture at a legible
+            size, and shrinking them to fit is what this rewrite exists to stop. */}
+        <div className="lsc-pins">
+          {pins.map((P) => (
+            <a
+              key={P.key}
+              className={`lsc-pin${hot === P.key ? ' is-hot' : ''}`}
+              data-k={P.key}
+              href={`/domains/${P.key}/`}
+              style={{ left: `${P.left}%`, top: `${P.top}%` }}
+              aria-label={`${P.label} — ${subjects.find((s) => s.key === P.key)!.series} series, ${subjects.find((s) => s.key === P.key)!.records} records`}
+              onPointerEnter={(e) => { if (e.pointerType !== 'touch') setHot(P.key); }}
+              onFocus={() => setHot(P.key)}
+              // Both: some touch environments deliver touchstart without a pointerdown, and the
+              // two-step then never arms — the first tap navigates and the readout is never seen.
+              onPointerDown={(e) => { lastPointer.current = e.pointerType; }}
+              onTouchStart={() => { lastPointer.current = 'touch'; }}
+              onClick={(e) => {
+                /* TOUCH HAS NO HOVER, so a tap went straight to the subject and a phone reader
+                   never saw the readout at all. First tap selects, second opens. A mouse is
+                   unaffected: it has already selected on hover by the time it clicks. */
+                if (lastPointer.current === 'touch' && tapped.current !== P.key) {
+                  e.preventDefault();
+                  tapped.current = P.key;
+                  setHot(P.key);
+                }
+              }}
+            >
+              <span className="lsc-pin-dot" aria-hidden="true" />
+              <span className="lsc-pin-t">{P.label}</span>
+            </a>
+          ))}
+        </div>
+        </div>
       </div>
     </>
   );

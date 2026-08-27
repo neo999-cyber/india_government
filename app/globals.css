@@ -7159,26 +7159,54 @@ li {
 .lsc-lm { transition: opacity 0.35s ease; }
 .lsc.is-dimmed .lsc-lm:not(.is-hot) { opacity: 0.42; }
 
-.lsc-mk { cursor: pointer; outline: none; }
-.lsc-hit { fill: transparent; }
-.lsc-bg { fill: var(--surface); stroke: var(--rule); stroke-width: 1; transition: fill 0.18s ease, stroke 0.18s ease; }
-.lsc-t { font-family: var(--font-mono); font-size: 12px; fill: var(--ink-2); transition: fill 0.18s ease; }
-.lsc-dot { fill: var(--mark); }
-.lsc-stem { stroke: var(--mark); stroke-width: 1.2; stroke-dasharray: 2 3; opacity: 0.7; }
-/* NO TRANSFORM ON THE PILL, AND THIS IS A BUG FIX RATHER THAN A PREFERENCE.
-   **WITHDRAWN: a `transition: transform` on `.lsc-pill` with a hover `transform: translateY(-1.5px)`.**
-   The pill is positioned by an SVG `transform="translate(x,y)"` attribute, which IS the CSS
-   `transform` property — so the hover rule did not nudge the label, it REPLACED its position and
-   threw it to the canvas origin. Measured: Governance's pill jumped 694px left and 273px up. Every
-   label did it; only the hovered one was ever visible doing it.
-   Hover now changes colour only. The label stays where it is and the rest of the scene dims to it. */
-.lsc-mk:hover .lsc-bg,
-.lsc-mk:focus-visible .lsc-bg,
-.lsc-mk.is-hot .lsc-bg { fill: var(--bg); stroke: var(--mark); }
-.lsc-mk:hover .lsc-t,
-.lsc-mk:focus-visible .lsc-t,
-.lsc-mk.is-hot .lsc-t { fill: var(--ink); }
-.lsc-mk:focus-visible .lsc-bg { stroke-width: 2.6; }
+/* ==============================================================================================
+   THE PINS ARE HTML OVER THE PICTURE, NOT TEXT INSIDE IT.
+
+   **WITHDRAWN: the whole `.lsc-mk` family** — pills drawn inside the `<svg>`. Text in an SVG scales
+   with the viewBox, so the label rendered at 9.6px on a 1280px desktop, 6.5px at 884, 4.9px on a
+   folding tablet's inner screen, and was hidden outright below 768px, which left that screen a
+   still picture with no labels and no interaction at all. Measured at ten widths before the rewrite.
+
+   As HTML a pin takes CSS pixels: the same size at every viewport, a real tap target and a real
+   link. Below 900px it collapses to a dot and opens into its name when selected, because fourteen
+   full labels do not fit a narrow picture at a legible size — and shrinking them to fit is the
+   defect this replaces.
+   ============================================================================================== */
+.lsc-frame { position: relative; }
+.lsc-pins { position: absolute; inset: 0; pointer-events: none; }
+.lsc-pin {
+  position: absolute;
+  transform: translate(-50%, 0);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  pointer-events: auto;
+  text-decoration: none;
+  white-space: nowrap;
+  min-height: 28px;
+  padding: 0.25rem 0.6rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-2);
+  transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+}
+.lsc-pin-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mark); flex: none; }
+.lsc-pin:hover,
+.lsc-pin:focus-visible,
+.lsc-pin.is-hot { background: var(--bg); border-color: var(--mark); color: var(--ink); }
+.lsc-pin:focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; }
+
+/* Narrow: a dot that opens into its name when chosen. 28px keeps the tap target above the 24px
+   minimum this suite holds a phone target to. */
+@media (max-width: 900px) {
+  .lsc-pin { padding: 0; width: 44px; height: 44px; justify-content: center; }
+  .lsc-pin-t { display: none; }
+  .lsc-pin.is-hot { width: auto; height: auto; padding: 0.25rem 0.6rem; }
+  .lsc-pin.is-hot .lsc-pin-t { display: inline; }
+}
 
 /* THE ARTWORK FOLLOWS THE THEME AS FAR AS A BAKED RASTER CAN. The constellation genuinely
    recolours; this is a daylight render, so on the dark canvas it moves to dusk. Four settings were
@@ -7193,7 +7221,6 @@ li {
 /* PHONE: fourteen pills at 375px are smaller than a fingertip, so they are removed rather than
    shrunk. The masthead and the footer directory still reach every subject. */
 @media (max-width: 760px) {
-  .lsc-mk { display: none; }
   .lsc-head { gap: 1.5rem; margin-top: 2rem; }
 }
 @media (prefers-reduced-motion: reduce) {

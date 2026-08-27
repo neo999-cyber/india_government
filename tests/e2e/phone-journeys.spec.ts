@@ -89,19 +89,31 @@ test.describe('phone journeys', () => {
     expect(lb!.y, 'the constellation appears above the landscape').toBeLessThan(cb!.y);
 
     /**
-     * THE PILLS ARE HIDDEN BELOW 760px AND THAT IS DELIBERATE — fourteen of them at 375px are
-     * smaller than a fingertip, so they are removed rather than shrunk. What must NOT happen is the
-     * subjects becoming unreachable, so the masthead directory is asserted in the same breath.
+     * THE PINS ARE HTML OVER THE PICTURE, NOT TEXT INSIDE IT — rewritten 2026-08-28.
+     *
+     * **WITHDRAWN: assertions on the SVG pill locator, and that the first was HIDDEN below 760px.**
+     * Labels drawn inside the SVG scaled with the viewBox: 9.6px on a 1280px desktop, 4.9px on a
+     * folding tablet's inner screen, and hidden outright below 768px — which left that screen a
+     * still picture with no labels and no interaction at all, exactly as the operator reported.
+     *
+     * A pin is now HTML at a fixed CSS size. It is PRESENT at every width. Below 900px it collapses
+     * to a dot and opens into its name when selected, so the assertion is on the TAP TARGET, which
+     * is the thing that has to survive a small screen.
      */
-    const pills = page.locator('a.lsc-mk');
-    await expect(pills).toHaveCount(14);
-    if (page.viewportSize()!.width <= 760) {
-      await expect(pills.first()).toBeHidden();
-      await expect(page.locator('.allpages-link, .allpages').first()).toBeAttached();
-    }
+    const pins = page.locator('a.lsc-pin');
+    await expect(pins).toHaveCount(14);
+    await expect(pins.first()).toBeVisible();
+    await expectTouchTarget(pins.first(), 'landscape pin');
 
     // The readout carries the counts the single-word pills no longer do.
+    // The readout carries the counts the single-word pins do not.
     await expect(page.locator('.lsc-read-name')).toContainText('subjects, one landscape');
+
+    /* THE TWO-STEP, WHICH IS THE OTHER HALF OF THE SAME REPORT. A tap used to go straight to the
+       subject page, so a touch reader never saw the readout at all. First tap selects. */
+    await page.locator('a.lsc-pin[data-k="governance"]').tap();
+    await expect(page.locator('.lsc-read-name')).toHaveText('Governance');
+    await expect(page).toHaveURL(/\/$/);
 
     const government = page.locator('.rc-node-btn[data-area="government"]');
     await government.tap();
