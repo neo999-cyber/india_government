@@ -7165,7 +7165,13 @@ li {
 .lsc-t { font-family: var(--font-mono); font-size: 12px; fill: var(--ink-2); transition: fill 0.18s ease; }
 .lsc-dot { fill: var(--mark); }
 .lsc-stem { stroke: var(--mark); stroke-width: 1.2; stroke-dasharray: 2 3; opacity: 0.7; }
-.lsc-pill { transition: transform 0.18s ease; }
+/* NO TRANSFORM ON THE PILL, AND THIS IS A BUG FIX RATHER THAN A PREFERENCE.
+   **WITHDRAWN: a `transition: transform` on `.lsc-pill` with a hover `transform: translateY(-1.5px)`.**
+   The pill is positioned by an SVG `transform="translate(x,y)"` attribute, which IS the CSS
+   `transform` property — so the hover rule did not nudge the label, it REPLACED its position and
+   threw it to the canvas origin. Measured: Governance's pill jumped 694px left and 273px up. Every
+   label did it; only the hovered one was ever visible doing it.
+   Hover now changes colour only. The label stays where it is and the rest of the scene dims to it. */
 .lsc-mk:hover .lsc-bg,
 .lsc-mk:focus-visible .lsc-bg,
 .lsc-mk.is-hot .lsc-bg { fill: var(--bg); stroke: var(--mark); }
@@ -7173,8 +7179,6 @@ li {
 .lsc-mk:focus-visible .lsc-t,
 .lsc-mk.is-hot .lsc-t { fill: var(--ink); }
 .lsc-mk:focus-visible .lsc-bg { stroke-width: 2.6; }
-.lsc-mk:hover .lsc-pill,
-.lsc-mk.is-hot .lsc-pill { transform: translateY(-1.5px); }
 
 /* THE ARTWORK FOLLOWS THE THEME AS FAR AS A BAKED RASTER CAN. The constellation genuinely
    recolours; this is a daylight render, so on the dark canvas it moves to dusk. Four settings were
