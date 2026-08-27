@@ -7199,13 +7199,21 @@ li {
 .lsc-pin.is-hot { background: var(--bg); border-color: var(--mark); color: var(--ink); }
 .lsc-pin:focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; }
 
-/* Narrow: a dot that opens into its name when chosen. 28px keeps the tap target above the 24px
-   minimum this suite holds a phone target to. */
+/* THE NAME IS ALWAYS SHOWN.
+   **WITHDRAWN: collapsing the pin to a bare dot below 900px**, with its name appearing only once
+   selected — and the comment above it still said 28px after the value had moved to 44, which is
+   how a stale number survives a change. The dots read as a scatter of anonymous points: a reader
+   had to tap each one to learn what it was, which is worse than a label that is merely small.
+   Narrow screens keep the word. The pill grows to the 44px height a phone target needs rather than
+   shedding its text to get there. */
+/* **WITHDRAWN: a 44px min-height on the narrow pin.** That figure came from the journey-card
+   helper in the phone spec, which sizes ONE large control; applied to fourteen pins on a 625px
+   picture it produced 151px-wide pills that covered the landscape they label. The site's own
+   general minimum is 24px — WCAG 2.5.8 at AA, and what `target-size.spec.ts` holds every other
+   control to. A 26px pin clears it and leaves the picture visible. */
 @media (max-width: 900px) {
-  .lsc-pin { padding: 0; width: 44px; height: 44px; justify-content: center; }
-  .lsc-pin-t { display: none; }
-  .lsc-pin.is-hot { width: auto; height: auto; padding: 0.25rem 0.6rem; }
-  .lsc-pin.is-hot .lsc-pin-t { display: inline; }
+  .lsc-pin { min-height: 26px; padding: 0.14rem 0.45rem; font-size: 0.62rem; gap: 0.28rem; }
+  .lsc-pin-dot { width: 4px; height: 4px; }
 }
 
 /* THE ARTWORK FOLLOWS THE THEME AS FAR AS A BAKED RASTER CAN. The constellation genuinely
