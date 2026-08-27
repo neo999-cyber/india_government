@@ -43,15 +43,23 @@ import type { Domain } from '@/lib/types';
  * than the corpus holds, and nothing anywhere sums them: the figure is per subject, and rule 4b's
  * prohibition on corpus-wide totals is why it stays that way.
  *
- * **TWO SUBJECTS ARE EMPTY STAKED PLOTS.** Poverty's last official headcount was taken for 2011-12;
- * Kashmir carries 46 records and no measured series at all. Both render as marked-out ground with
- * nothing built on it, which is rule 4a's absence mark in this picture's own idiom.
+ * **THE TWO EMPTY PLOTS WERE WITHDRAWN 2026-08-27, ON THE OPERATOR'S INSTRUCTION, AND WHAT THAT
+ * COSTS IS RECORDED HERE.** Poverty and Kashmir used to render as marked-out ground with nothing
+ * built on it — rule 4a's absence mark in this picture's idiom, and the sharpest honest thing on
+ * the page. They now take supplied artwork like every other subject: mountains for Kashmir, a
+ * market stall for Poverty.
+ *
+ * **The facts did not change and are still shown, but the PICTURE no longer says them.** Kashmir
+ * carries 46 records and NO measured series; Poverty's last official headcount was taken for
+ * 2011-12 and its series stop in 2018. Both survive in the hover readout, which prints each
+ * subject's series and record counts, and in the filing density — Poverty's five marks against
+ * Governance's 139. A reader who only looks will no longer see it; a reader who points will.
  */
 
 export type Landmark = {
   readonly key: Domain;
   readonly label: string;
-  /** File under `public/landscape/`. Two subjects deliberately share `empty-staked-plot`. */
+  /** File under `public/landscape/`. Every subject now has its own; two once shared one plot. */
   readonly art: string;
   /** Frozen placement, in the plate's own 1536x1024 coordinate space. `baseY` is where it stands. */
   readonly cx: number;
@@ -63,17 +71,18 @@ export type Landmark = {
 export const PLATE = { w: 1536, h: 1024, src: '/landscape/plate.webp' } as const;
 
 export const LANDMARKS: readonly Landmark[] = [
-  { key: 'kashmir', label: 'Kashmir', art: 'empty-staked-plot', cx: 414.7, baseY: 399.4, w: 140.4, h: 102.7 },
+  { key: 'kashmir', label: 'Kashmir', art: 'kashmir-peaks', cx: 414.7, baseY: 399.4, w: 140.4, h: 155.7 },
   { key: 'defence', label: 'Defence', art: 'radar-tower', cx: 583.7, baseY: 276.5, w: 106.3, h: 194.9 },
   { key: 'governance', label: 'Governance', art: 'parliament', cx: 875.5, baseY: 307.2, w: 151.5, h: 187.5 },
   { key: 'federalism', label: 'Federalism', art: 'boundary-stones', cx: 1059.8, baseY: 348.2, w: 101.1, h: 126.2 },
   { key: 'environment', label: 'Environment', art: 'broadleaf-trees', cx: 230.4, baseY: 460.8, w: 133.1, h: 171.9 },
   { key: 'human-development', label: 'Human development', art: 'hospital', cx: 537.6, baseY: 481.3, w: 121.8, h: 156.8 },
   { key: 'macro', label: 'Macroeconomy', art: 'bank', cx: 775.7, baseY: 436.3, w: 140.1, h: 152.6 },
-  { key: 'banking', label: 'Banking and credit', art: 'coins-vault', cx: 983, baseY: 481.3, w: 119.8, h: 134.1 },
-  { key: 'infrastructure', label: 'Infrastructure', art: 'overpass-power-pylon', cx: 1105.9, baseY: 583.7, w: 157.2, h: 148 },
+  { key: 'banking', label: 'Banking and credit', art: 'coins-vault', cx: 983.0, baseY: 481.3, w: 119.8, h: 134.1 },
+  { key: 'infrastructure', label: 'Infrastructure', art: 'overpass-power-pylon', cx: 1105.9, baseY: 583.7, w: 157.2, h: 148.0 },
   { key: 'foreign', label: 'Foreign policy', art: 'quay-crane', cx: 1259.5, baseY: 624.6, w: 159.2, h: 160.4 },
-  { key: 'education', label: 'Education', art: 'school', cx: 384, baseY: 614.4, w: 160.8, h: 132.6 },
+  { key: 'education', label: 'Education', art: 'school', cx: 384.0, baseY: 614.4, w: 160.8, h: 132.6 },
   { key: 'employment', label: 'Employment', art: 'workshop-shed', cx: 537.6, baseY: 645.1, w: 136.7, h: 144.8 },
-  { key: 'welfare', label: 'Welfare delivery', art: 'grain-silos', cx: 675.8, baseY: 727, w: 137.9, h: 200.7 },
-  { key: 'poverty', label: 'Poverty', art: 'empty-staked-plot', cx: 539.5, baseY: 772.3, w: 166.3, h: 121.7 },];
+  { key: 'welfare', label: 'Welfare delivery', art: 'grain-silos', cx: 675.8, baseY: 727.0, w: 137.9, h: 200.7 },
+  { key: 'poverty', label: 'Poverty', art: 'poverty-market', cx: 885.9, baseY: 815.8, w: 168.4, h: 176.4 },
+];
