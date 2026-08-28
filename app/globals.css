@@ -7327,9 +7327,19 @@ li {
    bound still holds by construction: the backing spans the copy plus 6rem left and 12rem right, so
    at the copy's widest — 46rem = 736px — the copy's right edge sits at 832/1024 = 81% of that span
    and only moves LEFT as the copy narrows, which is why solid-to-82% covers the text at every
-   width. Vertically it is a MASK, because a second background gradient would multiply the colour
-   rather than the coverage. The mask holds solid from 18% to 82% of a box that is 4.5rem taller
-   than the text on each side, so the fade happens entirely outside the glyphs. */
+   width.
+
+   **A FOURTH WITHDRAWAL, VERTICAL THIS TIME: `inset: -4.5rem -12rem -4.5rem -6rem` with
+   `mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%)`.**
+   Softening the top and bottom edges removed the seams but left the backing as a BAND: it began
+   and ended inside the plate, and on the dark canvas — where the backing is dark and the artwork's
+   own paper is pale — you could see exactly where it stopped. The operator: "the gradient behind is
+   still not edge to edge \u2026 in light you dont notice that."
+
+   So the backing is full-bleed top to bottom and fades only to the right, which is the one
+   direction that has anything to fade INTO. It gets there by geometry rather than by a number:
+   `.atlas-hero-copy` takes `align-self: stretch` and centres its own text, so `inset: 0` on its
+   backing IS the plate's full height at every width and every content length. */
 .atlas-hero::before {
   content: '';
   position: absolute;
@@ -7360,11 +7370,9 @@ li {
 .atlas-hero-copy::before {
   content: '';
   position: absolute;
-  inset: -4.5rem -12rem -4.5rem -6rem;
+  inset: 0 -12rem 0 -6rem;
   background: linear-gradient(90deg, rgba(13, 17, 23, 0.93) 0%, rgba(13, 17, 23, 0.9) 82%,
                                      rgba(13, 17, 23, 0) 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
-  mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
 }
 :root[data-theme='light'] .atlas-hero-copy::before {
   background: linear-gradient(90deg, rgba(239, 234, 224, 0.95) 0%, rgba(239, 234, 224, 0.92) 82%,
@@ -7383,7 +7391,7 @@ li {
    scrim the kicker sat over the brighter right-hand collage at 4.04:1 against the 4.5 it needs. */
 @media (max-width: 760px) {
   .atlas-hero-copy::before {
-    inset: -3rem -1.4rem;
+    inset: 0 -1.4rem;
     background: rgba(13, 17, 23, 0.9);
   }
   :root[data-theme='light'] .atlas-hero-copy::before { background: rgba(239, 234, 224, 0.93); }
@@ -7394,6 +7402,12 @@ li {
   padding: 2.4rem 2rem;
   max-width: 46rem;
   z-index: 1;
+  /* Full height, so its backing can be. The plate's `align-items: center` used to do the centring;
+     the copy does it for itself now. */
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 /* The backing is a positioned pseudo-element, so it paints above in-flow content unless the
    content is positioned too. */
