@@ -7290,11 +7290,14 @@ li {
    because an alpha channel is what WebP compresses worst — quality made almost no difference
    across a sweep from q0.82 to q0.58, only dimensions did.
    ============================================================================================== */
+/* NO BORDER AND NO RADIUS. **WITHDRAWN: `border: 1px solid var(--rule)` with
+   `border-radius: var(--radius-md)`.** A ruled, rounded box around a photograph reads as a card
+   pasted onto the page — the operator's question was "does it need the border?", and it does not:
+   the plate is the header, not an object sitting in it. What replaces the border is an edge fade
+   to `--bg` on all four sides, so the picture ends by dissolving rather than by being cut. */
 .atlas-hero {
   position: relative;
   margin: 0 0 2rem;
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-md);
   overflow: hidden;
   background-color: var(--bg);
   background-image: url('/atlas/banner.webp');
@@ -7313,36 +7316,58 @@ li {
    the first falling off at 34% and the second held to 58%.** Both were guesses at where the text
    ends as a fraction of the FRAME, and the text has no frame's width: `.atlas-hero-copy` is capped
    at 46rem, which is 57% of an 84rem frame and 100% of a narrow one. The first guess left the light
-   kicker at 3.07:1; the second passed contrast at every width and bleached the photographs, which
-   is the operator's own complaint arriving from the other side.
+   kicker at 3.07:1; the second passed contrast at every width and bleached the photographs.
 
-   So the FRAME now carries only a light settling veil, and the READABLE backing is a gradient on
-   the COPY element, fading out past its own right edge. **The one number in it is bounded rather
-   than tuned:** the backing spans the copy plus 3rem left and 9rem right, so the copy's right edge
-   is at its widest — copy 46rem = 736px — 784/928 = 84.5% of that span, and it only moves LEFT as
-   the copy narrows. Holding the gradient solid to 86% therefore covers the text at every width by
-   construction, not by measurement. */
+   **A THIRD WITHDRAWAL, AND IT IS THE ONE A READER COULD SEE: `inset: -2rem -9rem -2rem -3rem` with
+   the gradient solid to 86%.** Fading left-to-right inside a box leaves the box's TOP AND BOTTOM
+   edges hard, so on a wide screen the backing read as a dark rectangle laid over the collage with
+   three visible seams. The operator: "the gradient is too sharp".
+
+   The fix is that the backing now fades on every side. Horizontally it is still a gradient, so the
+   bound still holds by construction: the backing spans the copy plus 6rem left and 12rem right, so
+   at the copy's widest — 46rem = 736px — the copy's right edge sits at 832/1024 = 81% of that span
+   and only moves LEFT as the copy narrows, which is why solid-to-82% covers the text at every
+   width. Vertically it is a MASK, because a second background gradient would multiply the colour
+   rather than the coverage. The mask holds solid from 18% to 82% of a box that is 4.5rem taller
+   than the text on each side, so the fade happens entirely outside the glyphs. */
 .atlas-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(11, 13, 17, 0.44) 0%, rgba(11, 13, 17, 0.3) 50%,
-                                      rgba(11, 13, 17, 0.48) 100%);
+  background: linear-gradient(180deg, rgba(13, 17, 23, 0.52) 0%, rgba(13, 17, 23, 0.38) 50%,
+                                      rgba(13, 17, 23, 0.56) 100%);
 }
 :root[data-theme='light'] .atlas-hero::before {
   background: linear-gradient(180deg, rgba(239, 234, 224, 0.42) 0%, rgba(239, 234, 224, 0.26) 50%,
                                       rgba(239, 234, 224, 0.46) 100%);
 }
 
+/* The edge fade that replaces the border. It paints the page's own background inward from each
+   side, and it sits BELOW the copy — `.atlas-hero-copy` takes `z-index: 1` — so it dissolves the
+   picture without touching a glyph. */
+.atlas-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, var(--bg) 0%, transparent 7%),
+    linear-gradient(270deg, var(--bg) 0%, transparent 9%),
+    linear-gradient(180deg, var(--bg) 0%, transparent 14%),
+    linear-gradient(0deg, var(--bg) 0%, transparent 14%);
+}
+
 .atlas-hero-copy::before {
   content: '';
   position: absolute;
-  inset: -2rem -9rem -2rem -3rem;
-  background: linear-gradient(90deg, rgba(11, 13, 17, 0.93) 0%, rgba(11, 13, 17, 0.9) 86%,
-                                     rgba(11, 13, 17, 0) 100%);
+  inset: -4.5rem -12rem -4.5rem -6rem;
+  background: linear-gradient(90deg, rgba(13, 17, 23, 0.93) 0%, rgba(13, 17, 23, 0.9) 82%,
+                                     rgba(13, 17, 23, 0) 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%);
 }
 :root[data-theme='light'] .atlas-hero-copy::before {
-  background: linear-gradient(90deg, rgba(239, 234, 224, 0.95) 0%, rgba(239, 234, 224, 0.92) 86%,
+  background: linear-gradient(90deg, rgba(239, 234, 224, 0.95) 0%, rgba(239, 234, 224, 0.92) 82%,
                                      rgba(239, 234, 224, 0) 100%);
 }
 
@@ -7353,13 +7378,13 @@ li {
 :root[data-theme='light'] .atlas-hero-copy .home-lead { color: #1b1f2e; }
 :root[data-theme='light'] .atlas-hero-copy .lede { color: #3a3f4d; }
 
-/* On a phone the copy spans the whole plate, so its backing has nothing to fade INTO. It goes flat
-   and edge-to-edge there. Measured at 390px under the old frame scrim the kicker sat over the
-   brighter right-hand collage at 4.04:1 against the 4.5 it needs. */
+/* On a phone the copy spans the whole plate, so its backing has nothing to fade INTO horizontally.
+   It goes flat left-to-right and keeps the vertical mask. Measured at 390px under the old frame
+   scrim the kicker sat over the brighter right-hand collage at 4.04:1 against the 4.5 it needs. */
 @media (max-width: 760px) {
   .atlas-hero-copy::before {
-    inset: -1.1rem -1.4rem;
-    background: rgba(11, 13, 17, 0.9);
+    inset: -3rem -1.4rem;
+    background: rgba(13, 17, 23, 0.9);
   }
   :root[data-theme='light'] .atlas-hero-copy::before { background: rgba(239, 234, 224, 0.93); }
 }
@@ -7368,6 +7393,7 @@ li {
   position: relative;
   padding: 2.4rem 2rem;
   max-width: 46rem;
+  z-index: 1;
 }
 /* The backing is a positioned pseudo-element, so it paints above in-flow content unless the
    content is positioned too. */
