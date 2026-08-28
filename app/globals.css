@@ -7265,3 +7265,68 @@ li {
 }
 .rc--compact .rc-window { max-width: none; }
 .rc--compact .rc-stage { max-width: 21rem; margin-inline: auto; }
+
+/* ==============================================================================================
+   THE ATLAS BANNER — a supplied collage behind the page's own heading, added 2026-08-28.
+
+   **IT ENCODES NOTHING, AND THAT IS THE POINT OF SAYING SO.** Every other picture on this site
+   carries a claim: the constellation's density is proportional to real filings, the landscape's
+   marks are one per filing. This one is decoration — no count, no series, no position in it means
+   anything — so it is a CSS background with an empty alt rather than content, and the words in
+   front of it are the same kicker, h1 and lede the page already carried.
+
+   THE SCRIM IS A FIXED DARK PLATE IN BOTH THEMES. The artwork is cream, so light text needs the
+   image darkened whichever ground the page is on; a scrim that flipped with the theme would mean
+   two different banners and two contrast problems. The gradient is heaviest on the left, where the
+   text sits and the collage is emptiest, and lifts to the right so the pictures stay readable.
+   ============================================================================================== */
+.atlas-hero {
+  position: relative;
+  margin: 0 0 2rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: #14161b;
+  background-image: url('/atlas/banner.webp');
+  background-size: cover;
+  background-position: 62% center;
+  min-height: clamp(15rem, 26vw, 24rem);
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 760px) {
+  .atlas-hero { background-image: url('/atlas/banner-sm.webp'); background-position: 68% center; }
+}
+.atlas-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(11, 13, 17, 0.94) 0%, rgba(11, 13, 17, 0.9) 34%,
+                           rgba(11, 13, 17, 0.62) 62%, rgba(11, 13, 17, 0.4) 100%),
+    linear-gradient(180deg, rgba(11, 13, 17, 0.35) 0%, rgba(11, 13, 17, 0.15) 45%,
+                            rgba(11, 13, 17, 0.5) 100%);
+}
+/* A LEFT-WEIGHTED SCRIM ASSUMES THE TEXT STAYS LEFT, AND ON A PHONE IT DOES NOT. Measured at
+   390px the kicker sat over the brighter right-hand collage at 4.04:1 against the 4.5 it needs.
+   Narrow screens get a near-uniform veil instead: the text spans the whole plate there, so the
+   whole plate has to carry it. */
+@media (max-width: 760px) {
+  .atlas-hero::before {
+    background: linear-gradient(180deg, rgba(11, 13, 17, 0.92) 0%, rgba(11, 13, 17, 0.86) 55%,
+                                        rgba(11, 13, 17, 0.94) 100%);
+  }
+}
+
+.atlas-hero-copy {
+  position: relative;
+  padding: 2.4rem 2rem;
+  max-width: 46rem;
+}
+/* Painted, not inherited: the plate is dark in both themes, so these cannot take the page's ink. */
+.atlas-hero-copy .home-kicker { color: #f2b656; }
+.atlas-hero-copy .home-lead { color: #f7f4ea; margin-bottom: 0.9rem; }
+.atlas-hero-copy .lede { color: #ddd8cb; max-width: 54ch; margin: 0; }
+@media (max-width: 760px) {
+  .atlas-hero-copy { padding: 1.6rem 1.15rem; }
+}

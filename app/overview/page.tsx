@@ -245,12 +245,25 @@ export default function Overview() {
       <p className="crumb">
         <Link prefetch={false} href="/">instrument</Link> / atlas
       </p>
-      <p className="home-kicker mono">A visual reading of the public record</p>
-      <h1 className="home-lead">Atlas of change since 2014</h1>
-      <p className="lede">
-        Move the year control and every topic moves with it. Each card leads with one real series;
-        open it for the other indicators, official records, disputes and caveats behind the line.
-      </p>
+      {/* THE BANNER IS DECORATION AND IS MARKED AS SUCH.
+          It is a supplied collage — parliament, a port, a school, a hospital, a farm, solar, a
+          metro — and it encodes NOTHING. No count, no series, no position means anything in it,
+          which is why it carries an empty `alt` and sits behind the text as a background rather
+          than as content. Every picture on this site that DOES encode something says what; this
+          one says nothing, and that distinction is the reason it is allowed to be pretty.
+
+          The words are unchanged — the same kicker, h1 and lede this page already carried. */}
+      <header className="atlas-hero">
+        <div className="atlas-hero-copy">
+          <p className="home-kicker mono">A visual reading of the public record</p>
+          <h1 className="home-lead">Atlas of change since 2014</h1>
+          <p className="lede">
+            Move the year control and every topic moves with it. Each card leads with one real
+            series; open it for the other indicators, official records, disputes and caveats behind
+            the line.
+          </p>
+        </div>
+      </header>
       <SectionNav section="atlas" />
       {/* ============ `/domains/` WAS FOLDED IN HERE ON 2026-08-14 ==============================
           It was fourteen cards linking to the same fourteen topic pages these cards link to, with
