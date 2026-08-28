@@ -67,9 +67,16 @@ test.describe('reading preferences', () => {
     /**
      * AN UNSET PREFERENCE IS AN ABSENT ATTRIBUTE, NOT A DEFAULT VALUE — and the first version of
      * this test asserted `'dark'` here and failed, correctly. `BOOT` writes an attribute only for a
-     * value it found in storage, and the stylesheet's default palette is bare `:root` with no
-     * `[data-theme='dark']` rule at all. So "as the site ships" IS the absence, and asserting a
-     * string would have locked in a defaulting behaviour the CSS does not have.
+     * value it found in storage, so "as the site ships" IS the absence, and asserting a string
+     * would have locked in a defaulting behaviour the CSS does not have.
+     *
+     * **THE SECOND HALF OF THAT SENTENCE WAS WITHDRAWN ON 2026-08-28.** It read: "and the
+     * stylesheet's default palette is bare `:root` with no `[data-theme='dark']` rule at all."
+     * There are now ten `[data-theme='dark']` rules, because the default palette moved to light and
+     * the dark one became the conditional. **The property this test asserts is untouched** — it is
+     * about the attribute being absent, not about which palette is the default — which is the whole
+     * reason the assertion below survived a change that inverted every theme-conditional rule in
+     * the stylesheet.
      *
      * The property this test's name claims is therefore UNCHANGED, not equal-to-a-fallback: a panel
      * that wrote all four attributes on every press would pass a per-switch check while silently
@@ -92,6 +99,60 @@ test.describe('reading preferences', () => {
 
     await setSwitch(page, 'Motion', 'Stop animation');
     expect(await rootAttr(page, 'data-motion')).toBe('off');
+  });
+
+  /**
+   * THE PANEL MUST REPORT THE STATE IT WRITES, AND FOR MONTHS IT DID NOT.
+   *
+   * Every existing test here asserts the ATTRIBUTE the panel writes, and the panel wrote the right
+   * one — so the palette changed, the tests passed, and `aria-pressed` was FALSE ON EVERY OPTION OF
+   * EVERY SWITCH. The cause was a positional zip: the component unpacked `prefsSnapshot()` against
+   * its own `SWITCHES` array (text, theme, links, motion) while the string was packed from `PREFS`
+   * (theme, text, links, motion), so Canvas read the text size and Text size read the canvas, each
+   * compared against the other axis's option values.
+   *
+   * It was found on 2026-08-28 by probing whether Canvas reported the new light default. **A tick
+   * that is never there does not look like a bug**, which is why this asserts a PRESENCE — exactly
+   * one pressed option per group, and its label — rather than the absence of a wrong one.
+   */
+  test('every switch reports its own state, and it is the one the attribute names', async ({ page }) => {
+    await page.goto('/');
+    await openPanel(page);
+
+    const pressed = async () =>
+      page.evaluate(() =>
+        [...document.querySelectorAll('.prefs-group')].map((g) => ({
+          legend: g.getAttribute('aria-label'),
+          on: [...g.querySelectorAll('button[aria-pressed="true"]')].map((b) => b.textContent?.trim()),
+        })),
+      );
+
+    // As the site ships: one tick per group, and Canvas is the light default the stylesheet paints.
+    expect(await pressed()).toEqual([
+      { legend: 'Text size', on: ['Default'] },
+      { legend: 'Canvas', on: ['Light'] },
+      { legend: 'Links', on: ['Default'] },
+      { legend: 'Motion', on: ['Default'] },
+    ]);
+
+    // And the tick FOLLOWS a choice, on the axis that was chosen and on no other.
+    await setSwitch(page, 'Canvas', 'Dark');
+    expect(await rootAttr(page, 'data-theme')).toBe('dark');
+    expect(await pressed()).toEqual([
+      { legend: 'Text size', on: ['Default'] },
+      { legend: 'Canvas', on: ['Dark'] },
+      { legend: 'Links', on: ['Default'] },
+      { legend: 'Motion', on: ['Default'] },
+    ]);
+
+    // The misaligned zip put Canvas's value on Text size. Moving Text size proves they are separate.
+    await setSwitch(page, 'Text size', 'Large');
+    expect(await pressed()).toEqual([
+      { legend: 'Text size', on: ['Large'] },
+      { legend: 'Canvas', on: ['Dark'] },
+      { legend: 'Links', on: ['Default'] },
+      { legend: 'Motion', on: ['Default'] },
+    ]);
   });
 
   test('a choice survives a navigation, restored before the first paint', async ({ page }) => {

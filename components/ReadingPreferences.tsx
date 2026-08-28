@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useSyncExternalStore } from 'react';
 import {
+  PREF_ORDER,
   PREFS_SERVER_SNAPSHOT,
   prefsSnapshot,
   subscribePrefs,
@@ -106,7 +107,17 @@ export function ReadingPreferences() {
    */
   const snapshot = useSyncExternalStore(subscribePrefs, prefsSnapshot, () => PREFS_SERVER_SNAPSHOT);
   const values = snapshot.split('|');
-  const current = Object.fromEntries(SWITCHES.map((s, i) => [s.name, values[i]]));
+  /**
+   * UNPACKED BY THE ORDER IT WAS PACKED IN. **WITHDRAWN:
+   * `Object.fromEntries(SWITCHES.map((s, i) => [s.name, values[i]]))`.** That zipped the snapshot
+   * against THIS file's array, and the two orders were never the same — `SWITCHES` runs text,
+   * theme, links, motion; `PREFS` runs theme, text, links, motion. Canvas read the text size and
+   * Text size read the canvas, each compared against the other axis's option values, so
+   * `aria-pressed` was false on every option of every switch. The panel still WROTE the right
+   * attribute, which is why nothing failed and why it went unnoticed: a tick that is never there
+   * does not look like a bug.
+   */
+  const current = Object.fromEntries(PREF_ORDER.map((n, i) => [n, values[i]]));
 
   useEffect(() => {
     const el = ref.current;

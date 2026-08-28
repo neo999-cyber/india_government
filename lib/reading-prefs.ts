@@ -55,11 +55,16 @@ export type Pref = {
 
 export const PREFS = {
   /**
-   * The light palette is NOT a fallback and not dead code — see its own header in `globals.css`.
-   * It shipped from 2026-08-11 to 2026-08-13 with its own measured ratios, which is why this is a
-   * two-value switch and not a "high contrast" filter invented on top of the dark one.
+   * Both palettes are real and both were measured — see their headers in `globals.css`. This is a
+   * two-value switch, not a "high contrast" filter invented on top of one of them.
+   *
+   * **`fallback` MOVED FROM `'dark'` TO `'light'` ON 2026-08-28**, with the stylesheet, on the
+   * operator's ruling. It is what the PANEL REPORTS when storage is empty, and it has to agree with
+   * what the stylesheet actually paints or the control lies about the state of the page: `BOOT`
+   * writes an attribute only for a value it FOUND, so an unset preference is an absent attribute
+   * and the default is whichever palette bare `:root` carries. That is now the light one.
    */
-  theme: { attr: 'data-theme', key: 'ior:theme', values: ['dark', 'light'], fallback: 'dark' },
+  theme: { attr: 'data-theme', key: 'ior:theme', values: ['dark', 'light'], fallback: 'light' },
   /**
    * Scales the ROOT, so the 303 rem-based sizes move and so does everything spaced in rem. Scaling
    * type without its spacing is how a "larger text" control overflows its own buttons.
@@ -127,14 +132,30 @@ export function subscribePrefs(onChange: () => void): () => void {
  * **It must return a stable primitive, not a fresh object** — a new object each call compares
  * unequal on every render and spins. The panel splits it back apart at the call site.
  */
+/**
+ * THE ORDER `prefsSnapshot` AND `PREFS_SERVER_SNAPSHOT` PACK THEIR VALUES IN — exported because a
+ * consumer that splits the string has to unpack it by the SAME order, and the only way to guarantee
+ * that is to hand it the order rather than let it assume one.
+ *
+ * **THIS EXISTS BECAUSE THE ASSUMPTION WAS WRONG.** `ReadingPreferences` unpacked the string by
+ * zipping it against its own `SWITCHES` array — `SWITCHES.map((s, i) => [s.name, values[i]])` —
+ * and the two orders were never the same: `SWITCHES` runs text, theme, links, motion and `PREFS`
+ * runs theme, text, links, motion. So the Canvas switch was reading the text size and the Text size
+ * switch was reading the canvas, both compared against option values from the other axis, and
+ * `aria-pressed` was therefore FALSE ON EVERY OPTION OF EVERY SWITCH. Nothing failed: the panel
+ * still WROTE the right attribute, so the palette changed and the tests that assert the attribute
+ * passed. Only the tick was missing, and a tick that is never there does not look like a bug.
+ *
+ * It surfaced on 2026-08-28 while checking that the Canvas switch reported the new light default.
+ */
+export const PREF_ORDER = Object.keys(PREFS) as PrefName[];
+
 export function prefsSnapshot(): string {
-  return (Object.keys(PREFS) as PrefName[]).map((n) => readPref(n)).join('|');
+  return PREF_ORDER.map((n) => readPref(n)).join('|');
 }
 
 /** The server has no document, so every switch renders at its fallback and BOOT corrects it. */
-export const PREFS_SERVER_SNAPSHOT = (Object.keys(PREFS) as PrefName[])
-  .map((n) => PREFS[n].fallback)
-  .join('|');
+export const PREFS_SERVER_SNAPSHOT = PREF_ORDER.map((n) => PREFS[n].fallback).join('|');
 
 /** Read one preference off the live document. The DOM is the state; storage only seeds it. */
 export function readPref(name: PrefName): string {

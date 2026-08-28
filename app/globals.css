@@ -1,9 +1,11 @@
 /*
  * Design system — provisional (CLAUDE.md: locked properly in a later session).
- * Instrument register: restrained, archival, dense-but-legible. **Dark canvas from 2026-08-13.**
- * This line read "Light canvas." until then and the wording is superseded rather than deleted, on
- * the same principle as CLAUDE.md's own supersession — the light palette is still whole under
- * [data-theme="light"] and the decision reverses by one attribute.
+ * Instrument register: restrained, archival, dense-but-legible. **LIGHT CANVAS FROM 2026-08-28,
+ * operator ruling: "make light mode the default. its more pleasing".** This line read "Light
+ * canvas." to 2026-08-13, then **"Dark canvas from 2026-08-13"**, and reads light again now. Every
+ * wording is superseded rather than deleted, because a rule whose reasons are invisible is the one
+ * a later pass rationalises away. The dark palette is whole under [data-theme="dark"] and the
+ * decision still reverses by one attribute — what moved is WHICH VALUE THE ATTRIBUTE CARRIES.
  * Red is reserved for deaths, alerts and break-seams. No decorative gradients.
  */
 
@@ -32,7 +34,18 @@
 
 :root {
   /* ============================================================================================
-     BONE & INDIGO, INVERTED — dark is the default from 2026-08-13, operator decision.
+     BONE & INDIGO — light is the default again from 2026-08-28, operator decision. This header read
+     "BONE & INDIGO, INVERTED — dark is the default from 2026-08-13" and is kept, because both
+     palettes are still live and both were measured: what changed is WHICH ONE THE ATTRIBUTE
+     SELECTS. The dark values, their ratios and their reasoning sit under `:root[data-theme='dark']`
+     below, unaltered.
+
+     THE SWEEP THIS TOOK, ENUMERATED, because a sweep reporting only its finds cannot be told from
+     one that did not run. TEN theme-conditional rules existed in this file and every one moved: the
+     token palette, the eight area hues, `.rc-reference`, `.lsc-art`, and the Atlas banner's four
+     rule groups. `.lsc-art` is worth naming — it was written `:root:not([data-theme='light'])`,
+     which was correct while ABSENT MEANT DARK and is now simply `[data-theme='dark']`. A sweep that
+     had matched on the string `[data-theme='light']` would have missed it.
 
      **THIS SUPERSEDES A DESIGN RULE AND SAYS SO.** CLAUDE.md's design system read "Light canvas"
      and the block that stood here read "Cool ink on warm paper". The canvas is now warm near-black
@@ -66,26 +79,25 @@
      lightened along the same hue until it cleared on the harder paper. That is the one value in
      this block chosen by measurement rather than by inversion.
 
-     THE LIGHT PALETTE IS NOT DELETED. It is below, under [data-theme="light"], with its own
-     measured ratios intact, so the decision is reversible by one attribute and nothing has to be
-     reconstructed from this comment.
+     THE DARK PALETTE IS NOT DELETED. It is below, under [data-theme="dark"], with its own measured
+     ratios intact, so the decision is reversible by one attribute and nothing has to be
+     reconstructed from this comment. This paragraph said "THE LIGHT PALETTE" and pointed at
+     [data-theme="light"] until 2026-08-28.
      ============================================================================================ */
-  /* Studio Slate Dark Theme — Crisp Obsidian & Refined Slate Surfaces */
-  --bg: #0d1117;              /* deep obsidian canvas */
-  --surface: #161b22;         /* refined slate surface cards */
-  --rule-soft: #21262d;       /* subtle internal dividers */
-  --rule: #30363d;            /* slate borders */
-  --ink: #f0f6fc;             /* luminous primary body text */
-  --ink-2: #8b949e;           /* secondary description text */
-  --ink-dim: #7d8590;         /* tertiary text; 5.07:1 on canvas, 4.64:1 on cards */
-  
-  --fill: #58a6ff;            /* electric blue/indigo for chart lines & highlights */
-  --mark: #f59e0b;            /* amber brass — a mark / caveat was made */
-  --mark-ink: #fbbf24;        /* luminous amber for badge text */
-  --mark-soft: rgba(245, 158, 11, 0.14);
-  
-  --alert: #f87171;           /* coral red — deaths, alerts, break seams */
-  --alert-soft: rgba(248, 113, 113, 0.14);
+  /* Bone & Indigo — the default palette, light, from 2026-08-28 (operator ruling). */
+  --bg: #efeae0;
+  --surface: #e7e1d4;
+  --rule-soft: #e2dbcd;
+  --ink-2: #4a4f5e;
+  --fill: #2b3454;
+  --mark: #a06b32;
+  --mark-ink: #8a5a2a;
+  --mark-soft: rgba(160, 107, 50, 0.12);
+  --ink: #1e2233;
+  --ink-dim: #5c606c;
+  --rule: #d7cfc1;
+  --alert: #a4161a;
+  --alert-soft: #f6ebea;
 
   /* Semantic Data Integrity Accents */
   --accent-verified: #31c48d;
@@ -114,14 +126,15 @@
   --measure: 68ch;
   --gutter: 1.5rem;
 
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 /* ==============================================================================================
-   THE LIGHT PALETTE, KEPT WHOLE AND REACHABLE BY ONE ATTRIBUTE.
+   THE DARK PALETTE, KEPT WHOLE AND REACHABLE BY ONE ATTRIBUTE.
 
-   Not a fallback and not dead code: it is the palette this instrument shipped from 2026-08-11 to
-   2026-08-13, with its own contrast work intact. Set `data-theme="light"` on <html> to restore it.
+   Not a fallback and not dead code: it is the palette this instrument shipped from 2026-08-13 to
+   2026-08-28, with its own contrast work intact. Set `data-theme="dark"` on <html> to restore it.
+   This header described the LIGHT palette and named `data-theme="light"` until 2026-08-28.
 
    Its own measured ratios, against the darker of ITS two papers (--surface #e7e1d4):
      --ink 13.15/12.10 · --ink-2 6.81/6.27 · --ink-dim 5.24/4.82 · --mark-ink 4.90/4.51
@@ -130,21 +143,24 @@
    2.68) and were darkened along the same cool hue. --ink-dim carries 49 rules of labels and SOURCE
    LINES — the apparatus this instrument's credibility rests on.
    ============================================================================================== */
-:root[data-theme='light'] {
-  --bg: #efeae0;
-  --surface: #e7e1d4;
-  --rule-soft: #e2dbcd;
-  --ink-2: #4a4f5e;
-  --fill: #2b3454;
-  --mark: #a06b32;
-  --mark-ink: #8a5a2a;
-  --mark-soft: rgba(160, 107, 50, 0.12);
-  --ink: #1e2233;
-  --ink-dim: #5c606c;
-  --rule: #d7cfc1;
-  --alert: #a4161a;
-  --alert-soft: #f6ebea;
-  color-scheme: light;
+:root[data-theme='dark'] {
+  /* Studio Slate Dark Theme — Crisp Obsidian & Refined Slate Surfaces */
+  --bg: #0d1117;              /* deep obsidian canvas */
+  --surface: #161b22;         /* refined slate surface cards */
+  --rule-soft: #21262d;       /* subtle internal dividers */
+  --rule: #30363d;            /* slate borders */
+  --ink: #f0f6fc;             /* luminous primary body text */
+  --ink-2: #8b949e;           /* secondary description text */
+  --ink-dim: #7d8590;         /* tertiary text; 5.07:1 on canvas, 4.64:1 on cards */
+  
+  --fill: #58a6ff;            /* electric blue/indigo for chart lines & highlights */
+  --mark: #f59e0b;            /* amber brass — a mark / caveat was made */
+  --mark-ink: #fbbf24;        /* luminous amber for badge text */
+  --mark-soft: rgba(245, 158, 11, 0.14);
+  
+  --alert: #f87171;           /* coral red — deaths, alerts, break seams */
+  --alert-soft: rgba(248, 113, 113, 0.14);
+  color-scheme: dark;
 }
 
 /* ==============================================================================================
@@ -2185,7 +2201,7 @@ tbody > tr:has(+ .caveat-row) > td {
      so `--ink-dim` and `--ink-2` light-theme text landed on a near-black bar at 1.62:1 and 2.11:1
      where they need 4.5. Five nodes, all in this one component.
 
-     It was invisible for two years because nothing in the interface could reach `[data-theme=light]`
+     It was invisible for two years because nothing in the interface could reach the other palette
      — the palette was complete and unswitchable. The Reading panel made it reachable, which is how
      a switch that changes no rendering logic still surfaces real defects. `color-mix` keeps the
      translucency the sticky bar needs and takes the token, so both palettes now compose correctly. */
@@ -5571,23 +5587,6 @@ pre {
  * ========================================================================================== */
 
 :root {
-  --area-education: #8cb1c2; /* dusty blue  */
-  --area-world: #a9a1c8; /* lavender    */
-  --area-infrastructure: #d1ad64; /* gold        */
-  --area-health: #cf8fa2; /* rose        */
-  --area-environment: #8cb094; /* sage        */
-  --area-government: #a8a89c; /* stone       */
-  --area-economy: #dd985c; /* amber       */
-  --area-security: #d38a70; /* terracotta  */
-}
-
-/* THE SAME EIGHT HUES, RE-MEASURED FOR THE OTHER PAPER — and this was a real defect, not a polish.
-   The values above are the reference's and they are tuned for a near-black canvas: against the bone
-   panel the WORST of them measured 1.77, where a UI mark needs 3.0. Same discipline as the token
-   block — measured against the harder of the two backgrounds, which on the light theme is the
-   lighter one — and the same conclusion the palette inversion reached: the direction flips, the
-   method does not. Hue family preserved so the two themes are recognisably one design. */
-:root[data-theme='light'] {
   --area-education: #3f6d82;
   --area-world: #5a5286;
   --area-infrastructure: #7a5c18;
@@ -5596,6 +5595,23 @@ pre {
   --area-government: #55564c;
   --area-economy: #8a5117;
   --area-security: #8a4028;
+}
+
+/* THE SAME EIGHT HUES, RE-MEASURED FOR THE OTHER PAPER — and this was a real defect, not a polish.
+   The values above are the reference's and they are tuned for a near-black canvas: against the bone
+   panel the WORST of them measured 1.77, where a UI mark needs 3.0. Same discipline as the token
+   block — measured against the harder of the two backgrounds, which on the light theme is the
+   lighter one — and the same conclusion the palette inversion reached: the direction flips, the
+   method does not. Hue family preserved so the two themes are recognisably one design. */
+:root[data-theme='dark'] {
+  --area-education: #8cb1c2; /* dusty blue  */
+  --area-world: #a9a1c8; /* lavender    */
+  --area-infrastructure: #d1ad64; /* gold        */
+  --area-health: #cf8fa2; /* rose        */
+  --area-environment: #8cb094; /* sage        */
+  --area-government: #a8a89c; /* stone       */
+  --area-economy: #dd985c; /* amber       */
+  --area-security: #d38a70; /* terracotta  */
 }
 
 /* The band escapes the shell's gutter and no further. `margin-inline: calc(50% - 50vw)` would be
@@ -5699,16 +5715,16 @@ pre {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  opacity: 0.055;
-  filter: grayscale(1) invert(1) contrast(1.25);
-  mix-blend-mode: screen;
-  pointer-events: none;
-}
-
-:root[data-theme='light'] .rc-reference {
   opacity: 0.06;
   filter: grayscale(1) contrast(1.35);
   mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+:root[data-theme='dark'] .rc-reference {
+  opacity: 0.055;
+  filter: grayscale(1) invert(1) contrast(1.25);
+  mix-blend-mode: screen;
 }
 
 .rc-map {
@@ -7311,7 +7327,7 @@ li {
    and the strongest cooling loses the greens and looks underexposed. A filter only SUBTRACTS — it
    cannot add lit windows or a night sky, which authored night would need. */
 .lsc-art { transition: filter 0.35s ease; }
-:root:not([data-theme='light']) .lsc-art {
+:root[data-theme='dark'] .lsc-art {
   filter: brightness(0.62) saturate(0.62) hue-rotate(-12deg) contrast(1.08);
 }
 
@@ -7421,12 +7437,12 @@ li {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(13, 17, 23, 0.52) 0%, rgba(13, 17, 23, 0.38) 50%,
-                                      rgba(13, 17, 23, 0.56) 100%);
-}
-:root[data-theme='light'] .atlas-hero::before {
   background: linear-gradient(180deg, rgba(239, 234, 224, 0.42) 0%, rgba(239, 234, 224, 0.26) 50%,
                                       rgba(239, 234, 224, 0.46) 100%);
+}
+:root[data-theme='dark'] .atlas-hero::before {
+  background: linear-gradient(180deg, rgba(13, 17, 23, 0.52) 0%, rgba(13, 17, 23, 0.38) 50%,
+                                      rgba(13, 17, 23, 0.56) 100%);
 }
 
 /* The edge fade that replaces the border. It paints the page's own background inward from each
@@ -7448,20 +7464,20 @@ li {
   content: '';
   position: absolute;
   inset: 0 -12rem 0 -6rem;
-  background: linear-gradient(90deg, rgba(13, 17, 23, 0.93) 0%, rgba(13, 17, 23, 0.9) 82%,
-                                     rgba(13, 17, 23, 0) 100%);
-}
-:root[data-theme='light'] .atlas-hero-copy::before {
   background: linear-gradient(90deg, rgba(239, 234, 224, 0.95) 0%, rgba(239, 234, 224, 0.92) 82%,
                                      rgba(239, 234, 224, 0) 100%);
 }
+:root[data-theme='dark'] .atlas-hero-copy::before {
+  background: linear-gradient(90deg, rgba(13, 17, 23, 0.93) 0%, rgba(13, 17, 23, 0.9) 82%,
+                                     rgba(13, 17, 23, 0) 100%);
+}
 
-.atlas-hero-copy .home-kicker { color: #f2b656; }
-.atlas-hero-copy .home-lead { color: #f7f4ea; margin-bottom: 0.9rem; }
-.atlas-hero-copy .lede { color: #ddd8cb; max-width: 54ch; margin: 0; }
-:root[data-theme='light'] .atlas-hero-copy .home-kicker { color: #6b431d; }
-:root[data-theme='light'] .atlas-hero-copy .home-lead { color: #1b1f2e; }
-:root[data-theme='light'] .atlas-hero-copy .lede { color: #3a3f4d; }
+.atlas-hero-copy .home-kicker { color: #6b431d; }
+.atlas-hero-copy .home-lead { color: #1b1f2e; margin-bottom: 0.9rem; }
+.atlas-hero-copy .lede { color: #3a3f4d; max-width: 54ch; margin: 0; }
+:root[data-theme='dark'] .atlas-hero-copy .home-kicker { color: #f2b656; }
+:root[data-theme='dark'] .atlas-hero-copy .home-lead { color: #f7f4ea; }
+:root[data-theme='dark'] .atlas-hero-copy .lede { color: #ddd8cb; }
 
 /* On a phone the copy spans the whole plate, so its backing has nothing to fade INTO horizontally.
    It goes flat left-to-right and keeps the vertical mask. Measured at 390px under the old frame
@@ -7469,9 +7485,9 @@ li {
 @media (max-width: 760px) {
   .atlas-hero-copy::before {
     inset: 0 -1.4rem;
-    background: rgba(13, 17, 23, 0.9);
+    background: rgba(239, 234, 224, 0.93);
   }
-  :root[data-theme='light'] .atlas-hero-copy::before { background: rgba(239, 234, 224, 0.93); }
+  :root[data-theme='dark'] .atlas-hero-copy::before { background: rgba(13, 17, 23, 0.9); }
 }
 
 .atlas-hero-copy {

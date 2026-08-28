@@ -762,16 +762,31 @@ what is done, state what is not, and say whether it was attempted. `[R-db403e]`
 ## Design system
 
 - Instrument register, not dashboard-flashy: restrained, archival, dense-but-legible.
-- **Dark canvas, from 2026-08-13 — this supersedes "Light canvas", which is quoted here rather
-  than deleted.** Warm near-black `#1c1c1a`; the bone `#efeae0` that used to be the paper is now
-  the ink. **The palette is the same palette read from the other side**, and the light one is kept
-  whole under `:root[data-theme='light']` with its own measured ratios, so the decision reverses by
-  one attribute. Red is still reserved for deaths, alerts and break-seams. No decorative gradients.
-  **Every text token is measured against the HARDER of the two papers — which on a dark canvas is
-  `--surface`, the lighter one. The direction flips; the method does not.** `--alert` is the one
-  value chosen by measurement rather than inversion: at `#e5484d` it scored 3.88 and failed the 4.5
-  it needs where it carries words. `color-scheme: dark` is declared, because a dark canvas with
-  light native selects and scrollbars is the tell that a theme was painted on rather than declared.
+- **LIGHT CANVAS, FROM 2026-08-28 — operator ruling, "make light mode the default. its more
+  pleasing". THIS IS THE THIRD WORDING OF THIS RULE AND ALL THREE ARE QUOTED**, because a rule that
+  has reversed once will be read as arbitrary the next time and the record of the reversals is the
+  only thing that stops it. It read *"Light canvas"* to 2026-08-13; then **"Dark canvas, from
+  2026-08-13 — this supersedes 'Light canvas', which is quoted here rather than deleted. Warm
+  near-black `#1c1c1a`; the bone `#efeae0` that used to be the paper is now the ink … and the light
+  one is kept whole under `:root[data-theme='light']` … `color-scheme: dark` is declared"**; and it
+  is light again now.
+  **THE PALETTES DID NOT MOVE. THE ATTRIBUTE DID.** Bone `#efeae0` paper with cool ink is on bare
+  `:root`; the dark palette is whole under `:root[data-theme='dark']` with its measured ratios
+  intact, so the decision still reverses by one attribute. **One correction carried in passing: the
+  withdrawn wording named the dark canvas `#1c1c1a` and `--bg` has been `#0d1117` since the Studio
+  Slate values landed** — the rulebook was quoting a hex the stylesheet had stopped using.
+  Red is still reserved for deaths, alerts and break-seams. No decorative gradients.
+  **Every text token is measured against the HARDER of the two papers — on the light canvas that is
+  `--surface`, the DARKER one; on the dark canvas it was `--surface` as the LIGHTER one. The
+  direction flips; the method does not.** `--alert` on the dark canvas is the one value chosen by
+  measurement rather than inversion: at `#e5484d` it scored 3.88 and failed the 4.5 it needs where
+  it carries words. `color-scheme` is declared on both, because native selects and scrollbars in the
+  wrong theme are the tell that a canvas was painted on rather than declared.
+  **A THEME DEFAULT IS A SWEEP, NOT A SWITCH.** Ten theme-conditional rules existed and every one
+  moved: the token palette, the eight area hues, `.rc-reference`, `.lsc-art`, and the Atlas banner's
+  four rule groups. **One of the ten could not be found by searching for `[data-theme='light']`** —
+  `.lsc-art` was keyed `:root:not([data-theme='light'])`, correct while ABSENT MEANT DARK. Enumerate
+  the class from the stylesheet, never from a string match.
 - Mono for system labels and figures (tabular-nums), humanist sans for prose.
 - Every view answers "what does this number rest on?" — one click to source, tier and provenance.
 - Palette is Bone & Indigo, defined as tokens; nothing hardcodes a literal. `[R-34510f]`
