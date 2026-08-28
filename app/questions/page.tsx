@@ -101,13 +101,39 @@ export default function Questions() {
       <p className="crumb">
         <Link href="/">instrument</Link> / questions
       </p>
-      <h1 className="page-lead">Questions</h1>
-      <p className="lede">
-        Eight questions a reader arrives with. Each is a filter over records the instrument already
-        holds — <strong>not a new score, and not a ranking of anything against anything.</strong>{' '}
-        Under every question is the criterion it selects on, named field by field, so that a reader
-        can check it and disagree with it.
-      </p>
+      {/* THE PLATE IS DECORATION AND IS MARKED AS SUCH — the same reading, and the same treatment,
+          as the Atlas banner. A supplied illustration: a spray of filed papers feeding a row of
+          lenses, each lens dropping a tag, the tags landing in trays. It encodes NOTHING. There are
+          eight lenses and eight questions, and that is a coincidence of the drawing rather than a
+          mapping — no lens IS a question, no tag is a record, and no tray is a count. So it carries
+          no `alt` and sits behind the text as a background rather than as content.
+
+          THE TEXT IS PLACED IN THE ARTWORK'S OWN HOLES, WHICH WERE MEASURED RATHER THAN EYEBALLED.
+          A 40x24 alpha grid over the source PNG, then the largest disjoint rectangles under 2% ink:
+          a full-height strip at x 0-18%, a large field at x 0-41% below y 42%, and a top-right
+          block at x 60-100% above y 21%. The two blocks below sit in the second and the third. The
+          words are unchanged — the same h1, lede and notes this page already carried. */}
+      <div className="qhero">
+        <div className="qhero-art" />
+        <div className="qhero-lead">
+          <h1 className="page-lead">Questions</h1>
+          <p className="lede">
+            Eight questions a reader arrives with. Each is a filter over records the instrument
+            already holds — <strong>not a new score, and not a ranking of anything against
+            anything.</strong>{' '}
+            Under every question is the criterion it selects on, named field by field, so that a
+            reader can check it and disagree with it.
+          </p>
+        </div>
+        <div className="qhero-note">
+          <p className="prose-note">
+            The order is the one the design brief lists them in — an authored choice, stated so it
+            is not read as a ranking. Six lead to a page of their own; one is answered by a surface
+            that already exists and links to it; one is not offered, and the reason is under the
+            question.
+          </p>
+        </div>
+      </div>
 
       {/* THE FIVE THAT BLUR, AND SEPARATING THEM IS THE POINT OF THE ITEM.
 
@@ -126,12 +152,6 @@ export default function Questions() {
           difference between them is most of what this instrument knows.
         </p>
       </div>
-
-      <p className="prose-note">
-        The order is the one the design brief lists them in — an authored choice, stated so it is
-        not read as a ranking. Six lead to a page of their own; one is answered by a surface that
-        already exists and links to it; one is not offered, and the reason is under the question.
-      </p>
 
       <div className="qlist">
         {ordered.map(({ route, disposal }) => {

@@ -4536,6 +4536,83 @@ details.more > summary {
    ordered by magnitude, and the improved and worsened pages are visually identical: the only
    difference between them is which side of one declared field their rows fell on. */
 
+/* ==============================================================================================
+   THE QUESTIONS PLATE — text placed in an illustration's measured holes.
+
+   THE HOLES WERE MEASURED, NOT EYEBALLED. A 40x24 alpha grid over the source PNG, then the largest
+   disjoint rectangles carrying under 2% ink, as a fraction of the plate:
+
+     x  0-18%  y  0-100%    a full-height strip down the left
+     x  0-41%  y 42- 96%    the large field under the paper spray
+     x 60-100% y  0- 21%    the top-right corner
+     x 18-31%  y 75- 96%    below the left field, narrower
+
+   `.qhero-lead` sits in the second and `.qhero-note` in the third. The percentages below are those
+   measurements minus a margin, not a designer's guess, and they are stated here so a later change
+   to the artwork can be checked against them rather than re-guessed.
+
+   BELOW 901px THE PLACEMENT IS ABANDONED RATHER THAN SHRUNK. The holes are a property of the
+   drawing at its own aspect ratio; a 390px-wide plate is 219px tall and no hole in it holds a
+   paragraph. The plate becomes an illustration above the prose, and the prose returns to the
+   ordinary column.
+   ============================================================================================== */
+.qhero {
+  position: relative;
+  margin: 0 0 2.75rem;
+}
+.qhero-art {
+  aspect-ratio: 1672 / 941;
+  background: url('/questions/plate.webp') center center / contain no-repeat;
+}
+.qhero-lead h1 { margin-top: 0; }
+.qhero-lead .lede { margin-bottom: 0; }
+.qhero-note .prose-note { margin: 0; }
+
+/* THE BREAKPOINT IS A MEASUREMENT, AND **WITHDRAWN: `@media (min-width: 901px)` with the lead at
+   `top: 44%; width: 34%` and the note at `width: 36%`.** 901px was a guess at where a plate stops
+   being big enough, and the reason it was wrong is the same one that has caught this instrument
+   twice already on the Atlas banner: THE HOLES ARE A FRACTION OF THE PLATE AND THE TEXT IS NOT.
+   The plate shrinks with the viewport; a paragraph does not. Measured, lead block bottom edge as a
+   fraction of the plate:
+
+     1344px  74%      1200px  82%      1100px  90%      950px  101%      901px  104%
+
+   At 901px the lead ran off the bottom of the picture entirely, and the note's bottom reached 31%
+   against a hole that ends at 21% — both over the artwork, at 1.03:1 and 1.64:1 where small text
+   needs 4.5.
+
+   So the placement holds only where both blocks are provably inside their holes, and the note is
+   the binding constraint. Two changes make 1200px the honest floor rather than 1330px: the lead
+   widens to 40% and starts at 40%, which is one line shorter and one line higher, and the note
+   widens to 39% — the full top-right hole less a margin — which takes it from five lines to four.
+   The lead must also clear y75%, not y96%, because BELOW y75% the empty field narrows from x 0-41%
+   to x 0-31% and a 40%-wide block would sit on the trays. */
+@media (min-width: 1200px) {
+  .qhero-lead {
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 40%;
+  }
+  .qhero-note {
+    position: absolute;
+    right: 0;
+    top: 1%;
+    width: 39%;
+  }
+  /* Inside the plate the prose has no column to sit in, so it takes its measure from the hole. */
+  .qhero-lead .lede,
+  .qhero-note .prose-note { max-width: none; }
+}
+
+@media (max-width: 1199px) {
+  .qhero { display: flex; flex-direction: column; gap: 1.5rem; }
+  .qhero-art { order: -1; }
+}
+@media (max-width: 820px) {
+  .qhero-art { background-image: url('/questions/plate-sm.webp'); }
+}
+
 .qdistinct {
   border-left: 2px solid var(--rule);
   padding: 0.1rem 0 0.1rem 0.9rem;
