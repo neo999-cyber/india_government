@@ -7267,18 +7267,28 @@ li {
 .rc--compact .rc-stage { max-width: 21rem; margin-inline: auto; }
 
 /* ==============================================================================================
-   THE ATLAS BANNER — a supplied collage behind the page's own heading, added 2026-08-28.
+   THE ATLAS BANNER — a supplied collage behind the page's own heading.
 
-   **IT ENCODES NOTHING, AND THAT IS THE POINT OF SAYING SO.** Every other picture on this site
-   carries a claim: the constellation's density is proportional to real filings, the landscape's
-   marks are one per filing. This one is decoration — no count, no series, no position in it means
-   anything — so it is a CSS background with an empty alt rather than content, and the words in
-   front of it are the same kicker, h1 and lede the page already carried.
+   **IT ENCODES NOTHING, AND SAYING SO IS THE POINT.** Every other picture on this site carries a
+   claim: the constellation's density is proportional to real filings, the landscape's marks are one
+   per filing, and both declare their positions conceptual. This one is decoration — no count, no
+   series, no position in it means anything — so it is a CSS background with no alt text rather than
+   content. That distinction is the reason it is allowed to be pretty.
 
-   THE SCRIM IS A FIXED DARK PLATE IN BOTH THEMES. The artwork is cream, so light text needs the
-   image darkened whichever ground the page is on; a scrim that flipped with the theme would mean
-   two different banners and two contrast problems. The gradient is heaviest on the left, where the
-   text sits and the collage is emptiest, and lifts to the right so the pictures stay readable.
+   **WITHDRAWN: an opaque cream collage under a fixed dark scrim in both themes.** On the light
+   canvas that produced a near-black band in a bone page — the operator's report, and correct. The
+   artwork is now a TRANSPARENT plate whose paper ground is semi-transparent, so the page's own
+   background shows through it: it goes dark on the dark canvas and blends into the bone on the
+   light one, and the photographs stay vivid on both because they no longer need dimming to make
+   room for the text.
+
+   THE SCRIM AND THE TEXT NOW FOLLOW THE THEME. Dark veil and light ink on the dark canvas; bone
+   veil and dark ink on the light one. Every value is a literal rather than a token, because the
+   veil sits over photographs rather than over a surface, and its opacity is tuned to the image.
+
+   IT COSTS MORE THAN THE OPAQUE VERSION AND THAT IS STATED, NOT HIDDEN: 572 KB against 236 KB,
+   because an alpha channel is what WebP compresses worst — quality made almost no difference
+   across a sweep from q0.82 to q0.58, only dimensions did.
    ============================================================================================== */
 .atlas-hero {
   position: relative;
@@ -7286,7 +7296,7 @@ li {
   border: 1px solid var(--rule);
   border-radius: var(--radius-md);
   overflow: hidden;
-  background-color: #14161b;
+  background-color: var(--bg);
   background-image: url('/atlas/banner.webp');
   background-size: cover;
   background-position: 62% center;
@@ -7297,25 +7307,61 @@ li {
 @media (max-width: 760px) {
   .atlas-hero { background-image: url('/atlas/banner-sm.webp'); background-position: 68% center; }
 }
+
+/* THE READABLE BACKING BELONGS TO THE COPY, NOT TO THE FRAME — and guessing it as a fraction of
+   the frame is what went wrong twice. **WITHDRAWN: two full-width gradients on `.atlas-hero::before`,
+   the first falling off at 34% and the second held to 58%.** Both were guesses at where the text
+   ends as a fraction of the FRAME, and the text has no frame's width: `.atlas-hero-copy` is capped
+   at 46rem, which is 57% of an 84rem frame and 100% of a narrow one. The first guess left the light
+   kicker at 3.07:1; the second passed contrast at every width and bleached the photographs, which
+   is the operator's own complaint arriving from the other side.
+
+   So the FRAME now carries only a light settling veil, and the READABLE backing is a gradient on
+   the COPY element, fading out past its own right edge. **The one number in it is bounded rather
+   than tuned:** the backing spans the copy plus 3rem left and 9rem right, so the copy's right edge
+   is at its widest — copy 46rem = 736px — 784/928 = 84.5% of that span, and it only moves LEFT as
+   the copy narrows. Holding the gradient solid to 86% therefore covers the text at every width by
+   construction, not by measurement. */
 .atlas-hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(90deg, rgba(11, 13, 17, 0.94) 0%, rgba(11, 13, 17, 0.9) 34%,
-                           rgba(11, 13, 17, 0.62) 62%, rgba(11, 13, 17, 0.4) 100%),
-    linear-gradient(180deg, rgba(11, 13, 17, 0.35) 0%, rgba(11, 13, 17, 0.15) 45%,
-                            rgba(11, 13, 17, 0.5) 100%);
+  background: linear-gradient(180deg, rgba(11, 13, 17, 0.44) 0%, rgba(11, 13, 17, 0.3) 50%,
+                                      rgba(11, 13, 17, 0.48) 100%);
 }
-/* A LEFT-WEIGHTED SCRIM ASSUMES THE TEXT STAYS LEFT, AND ON A PHONE IT DOES NOT. Measured at
-   390px the kicker sat over the brighter right-hand collage at 4.04:1 against the 4.5 it needs.
-   Narrow screens get a near-uniform veil instead: the text spans the whole plate there, so the
-   whole plate has to carry it. */
+:root[data-theme='light'] .atlas-hero::before {
+  background: linear-gradient(180deg, rgba(239, 234, 224, 0.42) 0%, rgba(239, 234, 224, 0.26) 50%,
+                                      rgba(239, 234, 224, 0.46) 100%);
+}
+
+.atlas-hero-copy::before {
+  content: '';
+  position: absolute;
+  inset: -2rem -9rem -2rem -3rem;
+  background: linear-gradient(90deg, rgba(11, 13, 17, 0.93) 0%, rgba(11, 13, 17, 0.9) 86%,
+                                     rgba(11, 13, 17, 0) 100%);
+}
+:root[data-theme='light'] .atlas-hero-copy::before {
+  background: linear-gradient(90deg, rgba(239, 234, 224, 0.95) 0%, rgba(239, 234, 224, 0.92) 86%,
+                                     rgba(239, 234, 224, 0) 100%);
+}
+
+.atlas-hero-copy .home-kicker { color: #f2b656; }
+.atlas-hero-copy .home-lead { color: #f7f4ea; margin-bottom: 0.9rem; }
+.atlas-hero-copy .lede { color: #ddd8cb; max-width: 54ch; margin: 0; }
+:root[data-theme='light'] .atlas-hero-copy .home-kicker { color: #6b431d; }
+:root[data-theme='light'] .atlas-hero-copy .home-lead { color: #1b1f2e; }
+:root[data-theme='light'] .atlas-hero-copy .lede { color: #3a3f4d; }
+
+/* On a phone the copy spans the whole plate, so its backing has nothing to fade INTO. It goes flat
+   and edge-to-edge there. Measured at 390px under the old frame scrim the kicker sat over the
+   brighter right-hand collage at 4.04:1 against the 4.5 it needs. */
 @media (max-width: 760px) {
-  .atlas-hero::before {
-    background: linear-gradient(180deg, rgba(11, 13, 17, 0.92) 0%, rgba(11, 13, 17, 0.86) 55%,
-                                        rgba(11, 13, 17, 0.94) 100%);
+  .atlas-hero-copy::before {
+    inset: -1.1rem -1.4rem;
+    background: rgba(11, 13, 17, 0.9);
   }
+  :root[data-theme='light'] .atlas-hero-copy::before { background: rgba(239, 234, 224, 0.93); }
 }
 
 .atlas-hero-copy {
@@ -7323,10 +7369,9 @@ li {
   padding: 2.4rem 2rem;
   max-width: 46rem;
 }
-/* Painted, not inherited: the plate is dark in both themes, so these cannot take the page's ink. */
-.atlas-hero-copy .home-kicker { color: #f2b656; }
-.atlas-hero-copy .home-lead { color: #f7f4ea; margin-bottom: 0.9rem; }
-.atlas-hero-copy .lede { color: #ddd8cb; max-width: 54ch; margin: 0; }
+/* The backing is a positioned pseudo-element, so it paints above in-flow content unless the
+   content is positioned too. */
+.atlas-hero-copy > * { position: relative; }
 @media (max-width: 760px) {
   .atlas-hero-copy { padding: 1.6rem 1.15rem; }
 }
