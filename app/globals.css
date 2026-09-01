@@ -4385,7 +4385,12 @@ details.more > summary {
   color: var(--ink-2);
 }
 
-.home-next > a {
+/* TWO DOORS NOW, NOT ONE, so they are wrapped rather than made into a third grid column — the
+   aside's columns are "what is behind here" and "the way in", and a second link belongs in the
+   second column beside the first, not in a column of its own. */
+.home-next-go { display: flex; flex-direction: column; gap: 0.55rem; }
+.home-next > a,
+.home-next-go > a {
   padding: 0.65rem 0.85rem;
   border: 1px solid var(--fill);
   color: var(--ink);
@@ -4394,7 +4399,9 @@ details.more > summary {
 }
 
 .home-next > a:hover,
-.home-next > a:focus-visible {
+.home-next > a:focus-visible,
+.home-next-go > a:hover,
+.home-next-go > a:focus-visible {
   background: var(--fill);
   color: var(--bg);
   outline: none;
@@ -4403,7 +4410,7 @@ details.more > summary {
 @media (max-width: 767px) {
   .home-intro { margin-top: 2rem; }
   .home-next { grid-template-columns: 1fr; align-items: start; }
-  .home-next > a { justify-self: start; }
+  .home-next > a, .home-next-go { justify-self: start; }
 }
 
 

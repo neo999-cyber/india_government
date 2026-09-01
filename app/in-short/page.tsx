@@ -72,7 +72,19 @@ function tally() {
   return [...m.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 }
 
+/** The three records the evidence-shape examples rest on, moved here with the section. */
+const WAY_RECORDS = [
+  'res-capacity-share',
+  'coal-production',
+  'schools-above-rte-ptr-primary-dise',
+] as const;
+
 export default function InShort() {
+  const wayRecords = WAY_RECORDS.map((id) => {
+    const record = getSeries(id);
+    if (!record) throw new Error(`in-short: missing required series ${id}`);
+    return record;
+  });
   const board = buildBoard([...ORDER] as Domain[]);
   const rows = tally();
   const scored = rows.reduce((t, [, n]) => t + n, 0);
@@ -185,6 +197,65 @@ export default function InShort() {
         Ordered by how many records carry each value, which is a fact about this corpus rather than
         an order of severity. Nothing here is ranked.
       </p>
+
+      {/* MOVED HERE FROM THE LANDING PAGE, 2026-09-01, on the operator's reading that readers
+          "are overwhelmed with records and text" and that the landing page should be the picture.
+          It is three worked examples of what an evidence shape looks like, in plain language, with
+          three real records attached — which is this page's audience exactly, and was the last
+          block of prose standing between a first-time reader and the fourteen landmarks.
+
+          Its `way` containers are bound by `listing-marks`, which counts rows across all 699 pages,
+          so moving them changes which page carries the rows and not how many are checked. */}
+      <section className="ways" aria-labelledby="ways-h">
+        <div className="home-section-head">
+          <p className="home-kicker mono">How to read the archive</p>
+          <h2 id="ways-h" className="ways-h">Three ways the record speaks</h2>
+          <p>These are evidence shapes, not grades. The underlying records carry the detail.</p>
+        </div>
+
+        <div className="ways-grid">
+          <article className="way">
+            <span className="way-n mono">01</span>
+            <h3>Clear trend</h3>
+            <p>
+              Renewables excluding large hydro rose from an eighth of installed electricity
+              capacity to roughly a third across a continuous published series.
+            </p>
+            <RecordMarks record={wayRecords[0]} />
+            <p className="source-line">
+              <Link href="/series/res-capacity-share/">Open the renewable-capacity record →</Link>
+            </p>
+          </article>
+
+          <article className="way">
+            <span className="way-n mono">02</span>
+            <h3>Two truths</h3>
+            <p>
+              Renewables grew and coal production grew. A transition and an expansion can occupy
+              the same decade; the archive carries both instead of selecting the easier story.
+            </p>
+            <RecordMarks record={wayRecords[1]} />
+            <p className="source-line">
+              <Link href="/series/coal-production/">Open the coal-production record →</Link>
+            </p>
+          </article>
+
+          <article className="way">
+            <span className="way-n mono">03</span>
+            <h3>The record ends</h3>
+            <p>
+              The school-level pupil-teacher series stopped after 2015-16 even though its successor
+              system still holds the inputs. The full reason remains visible with the record.
+            </p>
+            <RecordMarks record={wayRecords[2]} />
+            <p className="source-line">
+              <Link href="/series/schools-above-rte-ptr-primary-dise/">
+                Open the discontinued school record →
+              </Link>
+            </p>
+          </article>
+        </div>
+      </section>
 
       <h2>What this cannot tell you</h2>
       <p>

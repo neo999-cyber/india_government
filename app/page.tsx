@@ -1,26 +1,12 @@
 import Link from 'next/link';
-import { getSeries, ledger, series } from '@/lib/data';
-import { RecordMarks } from '@/components/marks';
+import { ledger, series } from '@/lib/data';
 import { RecordConstellation } from '@/components/RecordConstellation';
 import { AREAS } from '@/lib/constellation';
 import { RecordLandscape } from '@/components/RecordLandscape';
 import { archiveYears, landscapeSubjects } from '@/lib/landscape';
 import { YEARS } from '@/lib/years';
 
-const WAY_RECORDS = [
-  'res-capacity-share',
-  'coal-production',
-  'schools-above-rte-ptr-primary-dise',
-] as const;
-
-
 export default function HomePage() {
-  const wayRecords = WAY_RECORDS.map((id) => {
-    const record = getSeries(id);
-    if (!record) throw new Error(`homepage: missing required series ${id}`);
-    return record;
-  });
-
   /* Density is derived from the archive; location inside the outline remains deliberately
      conceptual. A multi-domain ledger record belongs to every area it declares. */
   const areaCounts = Object.fromEntries(
@@ -70,67 +56,29 @@ export default function HomePage() {
           the site&rsquo;s only picture of India, which it must never be. */}
       <RecordConstellation counts={areaCounts} compact />
 
-      <section className="ways" aria-labelledby="ways-h">
-        <div className="home-section-head">
-          <p className="home-kicker mono">How to read the archive</p>
-          <h2 id="ways-h" className="ways-h">Three ways the record speaks</h2>
-          <p>These are evidence shapes, not grades. The underlying records carry the detail.</p>
-        </div>
+      {/* THE SECOND ROOM, NAMED AS ONE — operator reading, 2026-09-01: readers "are overwhelmed
+          with records and text", so this page is the picture and the dense surfaces sit one step
+          behind it. Two doors, not four: the Atlas for the fourteen topics with their lines, and
+          `/in-short/` for the same record in plain language — which is now where the three
+          evidence-shape examples live, having been lifted off this page in the same commit.
 
-        <div className="ways-grid">
-          <article className="way">
-            <span className="way-n mono">01</span>
-            <h3>Clear trend</h3>
-            <p>
-              Renewables excluding large hydro rose from an eighth of installed electricity
-              capacity to roughly a third across a continuous published series.
-            </p>
-            <RecordMarks record={wayRecords[0]} />
-            <p className="source-line">
-              <Link href="/series/res-capacity-share/">Open the renewable-capacity record →</Link>
-            </p>
-          </article>
-
-          <article className="way">
-            <span className="way-n mono">02</span>
-            <h3>Two truths</h3>
-            <p>
-              Renewables grew and coal production grew. A transition and an expansion can occupy
-              the same decade; the archive carries both instead of selecting the easier story.
-            </p>
-            <RecordMarks record={wayRecords[1]} />
-            <p className="source-line">
-              <Link href="/series/coal-production/">Open the coal-production record →</Link>
-            </p>
-          </article>
-
-          <article className="way">
-            <span className="way-n mono">03</span>
-            <h3>The record ends</h3>
-            <p>
-              The school-level pupil-teacher series stopped after 2015-16 even though its successor
-              system still holds the inputs. The full reason remains visible with the record.
-            </p>
-            <RecordMarks record={wayRecords[2]} />
-            <p className="source-line">
-              <Link href="/series/schools-above-rte-ptr-primary-dise/">
-                Open the discontinued school record →
-              </Link>
-            </p>
-          </article>
-        </div>
-      </section>
-
+          It says what is BEHIND each door rather than naming a tool. The four `home-paths` cards
+          withdrawn in August failed for exactly that reason: a reader who does not yet know what
+          the archive contains cannot choose between a timeline, a filter, a story and a search. */}
       <aside className="home-next" aria-label="Continue exploring">
         <div>
-          <span className="home-kicker mono">Next view</span>
-          <h2>Put every topic on the same years</h2>
+          <span className="home-kicker mono">Go deeper</span>
+          <h2>Two ways in from here</h2>
           <p>
-            The Atlas turns the archive into a coordinated visual overview while keeping every
-            series, caveat and source link intact.
+            The <strong>Atlas</strong> puts all fourteen topics on the same years, each leading with
+            one real series. <strong>In short</strong> is the same record in plain language, with
+            what it cannot tell you stated alongside.
           </p>
         </div>
-        <Link href="/overview/">Open the Atlas →</Link>
+        <div className="home-next-go">
+          <Link href="/overview/">Open the Atlas →</Link>
+          <Link href="/in-short/">Read it in short →</Link>
+        </div>
       </aside>
     </>
   );

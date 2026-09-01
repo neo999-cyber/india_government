@@ -1,8 +1,9 @@
 'use client';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 // PLATE from the pure module; the subject TYPE only, so no data module reaches the browser.
 import { PLATE } from '@/lib/landscape-plate';
+import { motionReduced, subscribeMotion } from '@/lib/reading-prefs';
 import type { LandscapeSubject, SubjectYear } from '@/lib/landscape';
 
 /**
@@ -129,6 +130,22 @@ function Brief({
  *
  * As HTML the pin takes CSS pixels: one size at every viewport, a real tap target, and a real link.
  */
+/**
+ * THE ADDRESS BAR AS AN EXTERNAL STORE.
+ *
+ * **WITHDRAWN: reading `location.hash` once in a `useEffect` and calling `setPinned`/`setYear`.**
+ * `react-hooks/set-state-in-effect` refused it, and the rule is right here for the reason the
+ * Reading panel already paid for: state seeded from an effect is a second copy of a fact that lives
+ * somewhere else, kept in step by hand. Subscribed properly the hash is a FALLBACK the reader's own
+ * choices override, which also makes back and forward work.
+ *
+ * `history.replaceState` does not fire `hashchange`, so writing the hash cannot feed itself.
+ */
+const subscribeHash = (cb: () => void) => {
+  window.addEventListener('hashchange', cb);
+  return () => window.removeEventListener('hashchange', cb);
+};
+
 function pinLayout(subjects: LandscapeSubject[]) {
   const out = subjects.map((s) => ({
     key: s.key, label: s.label,
@@ -153,7 +170,21 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
   const [hot, setHot] = useState<string | null>(null);
   /** null is "all years": every mark lit, the brief idle. The slider cannot express it, so the
       button beside it does, and the slider's `aria-valuetext` says which state it is in. */
-  const [year, setYear] = useState<number | null>(null);
+  /** `undefined` is "the reader has not chosen"; `null` is "they chose all years". The two are
+      different, because only the first should fall back to what the address bar names. */
+  const [yearChoice, setYear] = useState<number | null | undefined>(undefined);
+  /**
+   * THE SUBJECT THE URL NAMES, WHICH IS NOT THE SUBJECT UNDER THE POINTER.
+   *
+   * `hot` is hover and clears when the pointer leaves the block; a link someone was sent has to
+   * survive that. So a hovered subject also PINS, `current` reads `hot ?? pinned`, and the address
+   * bar carries whatever the reader last read rather than whatever the pointer is on this instant.
+   * The dimming stays keyed on `hot` alone — a pinned subject must not leave the other thirteen
+   * greyed out for a reader who has moved on.
+   */
+  const [pinnedChoice, setPinned] = useState<string | null | undefined>(undefined);
+  const [playing, setPlaying] = useState(false);
+  const [motionOK, setMotionOK] = useState(true);
   /* A click event is not necessarily a PointerEvent, so the pointer TYPE is recorded on pointerdown
      and read on click. Reading it off the click's own native event does not typecheck, and would be
      undefined for a keyboard-activated click in any case. */
@@ -166,7 +197,48 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
    * `tapped` is written by a tap and by nothing else.
    */
   const tapped = useRef<string | null>(null);
-  const current = hot ? subjects.find((s) => s.key === hot) ?? null : null;
+  const hash = useSyncExternalStore(subscribeHash, () => window.location.hash, () => '');
+  const m = /^#([a-z-]+)-(\d{4})$/.exec(hash);
+  const linked =
+    m && subjects.some((s) => s.key === m[1]) && years.includes(Number(m[2]))
+      ? { key: m[1], year: Number(m[2]) }
+      : null;
+  const pinned = pinnedChoice === undefined ? linked?.key ?? null : pinnedChoice;
+  const year = yearChoice === undefined ? linked?.year ?? null : yearChoice;
+  const shown = hot ?? pinned;
+  const current = shown ? subjects.find((s) => s.key === shown) ?? null : null;
+  /** `#<subject>-<year>`, written on every change with `replaceState`, so scrubbing a decade does
+      not leave thirteen entries in the reader's back button. */
+  useEffect(() => {
+    const want = current && year !== null ? `#${current.key}-${year}` : '';
+    if (want && window.location.hash !== want) history.replaceState(null, '', want);
+  }, [current, year]);
+
+  useEffect(() => {
+    const apply = () => {
+      const off = motionReduced();
+      setMotionOK(!off);
+      if (off) setPlaying(false);
+    };
+    apply();
+    return subscribeMotion(apply);
+  }, []);
+
+  /* One year a tick, stopping at the end rather than looping: a loop would restart the decade
+     without anyone asking, which reads as decoration rather than as a control being operated. */
+  useEffect(() => {
+    if (!playing) return;
+    const last = years[years.length - 1];
+    const t = setTimeout(() => {
+      const next = (year ?? years[0] - 1) + 1;
+      if (next >= last) {
+        setPlaying(false);
+        setYear(last);
+      } else setYear(next);
+    }, 900);
+    return () => clearTimeout(t);
+  }, [playing, year, years]);
+
   const yi = year === null ? -1 : years.indexOf(year);
   const bit = yi < 0 ? 0 : 1 << yi;
   const cell = current && yi >= 0 ? current.years[yi] ?? null : null;
@@ -265,8 +337,12 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
               href={`/domains/${P.key}/`}
               style={{ left: `${P.left}%`, top: `${P.top}%` }}
               aria-label={`${P.label} — ${subjects.find((s) => s.key === P.key)!.series} series, ${subjects.find((s) => s.key === P.key)!.records} records`}
-              onPointerEnter={(e) => { if (e.pointerType !== 'touch') setHot(P.key); }}
-              onFocus={() => setHot(P.key)}
+              onPointerEnter={(e) => {
+                if (e.pointerType === 'touch') return;
+                setHot(P.key);
+                setPinned(P.key);
+              }}
+              onFocus={() => { setHot(P.key); setPinned(P.key); }}
               // Both: some touch environments deliver touchstart without a pointerdown, and the
               // two-step then never arms — the first tap navigates and the readout is never seen.
               onPointerDown={(e) => { lastPointer.current = e.pointerType; }}
@@ -279,6 +355,7 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
                   e.preventDefault();
                   tapped.current = P.key;
                   setHot(P.key);
+                  setPinned(P.key);
                 }
               }}
             >
@@ -328,7 +405,18 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
                 <span>{years[years.length - 1]}</span>
               </span>
             </div>
-            <button type="button" className="lsc-allyears" onClick={() => setYear(null)}
+            {/* PLAY IS ABSENT, NOT DISABLED, WHERE MOTION IS REDUCED. A control that announces
+                itself and does nothing is worse than one that was never offered, and the reader who
+                asked for less motion has already said what they want. The site switch is ORed with
+                the system preference and can only ADD suppression. */}
+            {motionOK ? (
+              <button type="button" className="lsc-allyears" onClick={() => setPlaying((p) => !p)}
+                      aria-pressed={playing}>
+                {playing ? '❚❚ Pause' : '▶ Play'}
+              </button>
+            ) : null}
+            <button type="button" className="lsc-allyears"
+                    onClick={() => { setPlaying(false); setYear(null); }}
                     disabled={year === null}>
               All years
             </button>

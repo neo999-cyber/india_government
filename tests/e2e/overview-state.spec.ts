@@ -83,3 +83,38 @@ test.describe('the year scrubbers reach their first year', () => {
     });
   }
 });
+
+/**
+ * THE LANDING BRIEF IS CITABLE, which is the same property this file already asserts for the Atlas
+ * and for the same reason: static output can prove the control exists, not that using it changes
+ * the view AND its URL.
+ *
+ * The hash is a FALLBACK the reader's own choices override, not a seed copied into state — so the
+ * assertions are that a link opens on its subject-year, that a nonsense hash pins nothing, and that
+ * reading writes the address bar without filling the back button.
+ */
+test.describe('the landing brief is citable', () => {
+  test('a shared subject-year opens on it, and reading rewrites the hash', async ({ page }) => {
+    await page.goto('/#education-2019');
+    await expect(page.locator('.lsc-brief-h')).toContainText('Education');
+    await expect(page.locator('.lsc-brief-h')).toContainText('2019');
+
+    // POSITIVE CONTROL: a hash naming no subject must pin nothing, so a test that passed by
+    // matching any brief at all would fail here.
+    await page.goto('/#notasubject-2019');
+    await expect(page.locator('.lsc-brief-idle')).toBeVisible();
+    await expect(page.locator('.lsc-brief-h')).toHaveCount(0);
+
+    await page.goto('/');
+    const before = await page.evaluate(() => history.length);
+    const slider = page.locator('#lsc-yr');
+    await slider.scrollIntoViewIfNeeded();
+    await slider.focus();
+    await page.keyboard.press('Home');
+    for (let i = 0; i < 6; i += 1) await page.keyboard.press('ArrowRight');
+    await page.locator('a.lsc-pin[data-k="kashmir"]').hover();
+    await expect(page).toHaveURL(/#kashmir-2020$/);
+    // `replaceState`, so scrubbing a decade leaves one entry rather than thirteen.
+    expect(await page.evaluate(() => history.length)).toBe(before);
+  });
+});
