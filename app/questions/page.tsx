@@ -188,7 +188,7 @@ export default function Questions() {
                   </p>
                 ) : (
                   <p className="qcard-crit">
-                    <Link href="/ledger/">The ledger</Link> lists every record with its own
+                    <Link href="/search/?layer=ledger">The ledger</Link> lists every record with its own
                     assessment, and filters by it.
                   </p>
                 )}

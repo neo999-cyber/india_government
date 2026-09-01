@@ -62,17 +62,18 @@ export const ROUTES: Record<string, { label: string; nav?: string }> = {
   '/lenses/': { label: 'Lenses', nav: 'threads across topics' },
   '/terms/': { label: 'Terms of government', nav: 'terms of government' },
   '/peers/': { label: 'Peers', nav: 'four comparator countries' },
-  // `nav` and `label` name the same thing here now. They did not: the nav said "indicators", the
-  // title said "Series", the h1 said "Indicator series" and the crumb said "series".
-  '/series/': { label: 'Indicator series', nav: 'indicator series' },
-  '/ledger/': { label: 'Reforms, events and episodes', nav: 'reforms, events and episodes' },
-  '/provenance/': { label: 'Measurement disputes', nav: 'measurement disputes' },
+  // **WITHDRAWN: `/series/`, `/ledger/` and `/provenance/` as routes**, merged into `/search/` on
+  // 2026-09-01. Each listed a subset this page already lists in full, reachable by one filter, at
+  // a cost of 2.7 MB. Their record pages are untouched — only the three indexes went. The comment
+  // that stood here recorded that their nav, title, h1 and crumb had once disagreed; the table in
+  // this file's own header still carries that history and is not rewritten by a later merge.
   '/contested/': { label: 'Contested', nav: 'verdicts that stay open' },
   '/unmeasured/': { label: 'What is not measured', nav: 'Gaps' },
   '/exposure/': { label: 'Exposure', nav: 'when a shock is offered as the reason' },
   '/seams/': { label: 'Where the instruments changed', nav: 'where the instruments changed' },
-  '/about/': { label: 'About', nav: 'About' },
-  '/method/': { label: 'Method', nav: 'method and evidence rules' },
+  // `/about/` was a gateway of 310 words and no headings, and every one of its six links is in the
+  // About menu. It is gone; About names `/method/`, which is where the page told a reader to start.
+  '/method/': { label: 'Method', nav: 'About' },
   '/derivations/': { label: 'Derivations', nav: 'recomputed from public data' },
   '/publishers/': { label: 'Who published it', nav: 'who published it' },
   '/corrections/': { label: 'Corrections', nav: 'what it has changed its mind about' },
@@ -93,7 +94,7 @@ export const PRIMARY_NAV = [
   '/search/',
   '/compare/',
   '/unmeasured/',
-  '/about/',
+  '/method/',
 ] as const;
 
 /** The destination's public name. Throws on an unknown route rather than inventing one from the
@@ -210,11 +211,14 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
     href: '/search/',
     label: 'Records',
     description: 'The archive itself, together or separated by the kind of record.',
+    /* The three index routes are gone but their RECORD pages are not, and a prefix is matched
+       against a pathname — so `/ledger/` stays here to keep `/ledger/L-0164/` highlighting Records.
+       A query string could never match and would have silently un-highlighted every record page. */
     activePrefixes: ['/search/', '/series/', '/ledger/', '/provenance/', '/contested/', '/exposure/'],
     items: [
-      { href: '/ledger/', label: 'Commitments and events', description: 'Reforms, announcements, events and episodes.' },
-      { href: '/series/', label: 'Indicators', description: 'Published series, spans, seams and caveats.' },
-      { href: '/provenance/', label: 'Measurement disputes', description: 'Definitions, basis changes and incompatible instruments.' },
+      { href: '/search/?layer=ledger', label: 'Commitments and events', description: 'Reforms, announcements, events and episodes.' },
+      { href: '/search/?layer=series', label: 'Indicators', description: 'Published series, spans, seams and caveats.' },
+      { href: '/search/?layer=provenance', label: 'Measurement disputes', description: 'Definitions, basis changes and incompatible instruments.' },
       { href: '/contested/', label: 'Contested readings', description: 'Open verdicts and what could—or could not—settle them.' },
       { href: '/exposure/', label: 'Exposure', description: 'Records where a shock is offered as the reason.', landing: false },
     ],
@@ -246,10 +250,10 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
   },
   {
     key: 'about',
-    href: '/about/',
+    href: '/method/',
     label: 'About',
     description: 'How the record was built, sourced, derived and corrected.',
-    activePrefixes: ['/about/', '/method/', '/publishers/', '/derivations/', '/data/', '/corrections/', '/counterfactual/'],
+    activePrefixes: ['/method/', '/method/', '/publishers/', '/derivations/', '/data/', '/corrections/', '/counterfactual/'],
     items: [
       { href: '/method/', label: 'Method', description: 'Evidence rules, source tiers, marks and limits.' },
       { href: '/publishers/', label: 'Sources and publishers', description: 'The bodies behind citations, resolved across names.' },

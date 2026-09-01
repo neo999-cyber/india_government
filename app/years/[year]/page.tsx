@@ -33,7 +33,7 @@ import type { Domain } from '@/lib/types';
  *
  * ============================ WHY THE VISUAL IS THE SPAN STRIP ================================
  *
- * A reader has already learned that encoding on `/series/`. Reusing it sliced — running, beginning,
+ * A reader has already learned that encoding on `/search/?layer=series`. Reusing it sliced — running, beginning,
  * ending, receding — makes this page legible on arrival instead of carrying a second key. The rows
  * that do not touch the year recede and are not removed, because the shape of the whole is what
  * makes one year's slice mean anything.
@@ -227,7 +227,7 @@ export default async function YearPage({ params }: Props) {
       <div className="sec-h">
         <h2>The corpus, read at {y}</h2>
         <p className="sec-note">
-          The same encoding as <Link href="/series/">every series as a span</Link>, sliced here:{' '}
+          The same encoding as <Link href="/search/?layer=series">every series as a span</Link>, sliced here:{' '}
           {beginning} series begin in {y}, {ending} end in it, {running} run through it, and the rest
           recede without being removed.
         </p>

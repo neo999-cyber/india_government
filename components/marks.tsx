@@ -177,7 +177,7 @@ export function SourceList({ sources }: { sources: TieredSource[] }) {
  *
  * THE PROBLEM WAS NEVER TRUNCATION. Rule 3a was already satisfied on all six table surfaces: the
  * caveat rendered in full, no clamp, no ellipsis. What was wrong was the FORM. Measured on
- * `/series/` before this change: the caveat sat in a **140px cell inside a 610px table**, and the
+ * `/search/?layer=series` before this change: the caveat sat in a **140px cell inside a 610px table**, and the
  * rows carrying one ran to **1,080px — nine times the median row of 122px.** 128 of 269 rows.
  *
  * AND RULE 3a ALSO NAMES THE FIX: *"if a caveat will not fit a layout, the LAYOUT is what

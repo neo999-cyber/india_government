@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { RecordMarks } from '@/components/marks';
+import { RecordMarks, StatusKey } from '@/components/marks';
+import { SpanStrip } from '@/components/SpanStrip';
+import { StripFilter } from '@/components/StripFilter';
+import { spanAxis, spanFrontier, spanRows } from '@/lib/spans';
 import { DOMAIN_LABELS } from '@/lib/format';
 import { seamSeries, seamSubjects, seamYears, seams } from '@/lib/seams';
 
@@ -45,6 +48,20 @@ export default function Seams() {
   const peak = Math.max(...byYear.values());
   const seriesCount = new Set(all.map((s) => s.seriesId)).size;
   const chronology = years.filter((y) => byYear.has(y));
+
+  // The span strip's own derivations, lifted with it from `/search/?layer=series`.
+  const rows = spanRows();
+  const FRONTIER = spanFrontier(rows);
+  const { x0: X0, x1: X1 } = spanAxis(rows);
+  const earlierThanAxis = rows.filter((r) => r.start < X0).length;
+  const wallCount = rows.filter((r) => r.start === 2014).length;
+  const frontierN = rows.filter((r) => r.end === FRONTIER).length;
+  const stripCounts = {
+    '': rows.length,
+    stopped: rows.filter((r) => r.stopped).length,
+    basis: rows.filter((r) => r.breaks.length > 0).length,
+    short: rows.filter((r) => r.short).length,
+  };
 
   return (
     <>
@@ -127,6 +144,55 @@ export default function Seams() {
         <span><i className="seam-key-stop" aria-hidden="true" /> one break</span>{' '}
         <span>brass bar &mdash; breaks that year across all subjects</span>{' '}
         <span>a cell leads to that subject and year below</span>
+      </p>
+
+      {/* ============ THE SPAN STRIP, MOVED HERE FROM `/search/?layer=series` ON 2026-09-01 ==============
+          `/search/?layer=series` was merged into `/search/?layer=series`, which lists the same 269 records with
+          the same marks. **What that merge would have destroyed is this**, which is not a row shape
+          but a picture: 269 spans on one shared axis, and the wall at 2014 that a reader sees
+          before they read a word.
+
+          It belongs here on its own terms rather than as a rescue. A span is where a series runs
+          and a seam is where it stops being comparable with itself; this page is about the second
+          and could not previously show the first. Nothing about the strip changed except the
+          sentence at its foot, which used to point at a table on the same page. */}
+      <h2 id="spans">Every series as a span</h2>
+      <p className="prose-note">
+        Sorted by first observation. Left to right is time and shared; bar length is the span; the
+        vertical order encodes nothing but the start year.
+      </p>
+      <p>
+        <strong>The wall at {2014} is the picture.</strong> {wallCount} of {rows.length} series
+        begin there, because that is where this instrument&rsquo;s baseline is frozen &mdash; a fact
+        about the record, not about India. Below it the spans fan out; above it a thin tail runs
+        back to {rows[0]?.start}.
+      </p>
+      <p className="prose-note">
+        <span className="label">What &ldquo;ends before {FRONTIER}&rdquo; means</span> {FRONTIER} is
+        where the corpus&rsquo;s publication frontier begins: {frontierN} series carry a figure for it
+        and a comparable number for {FRONTIER + 1}, and before it the counts fall away. A series
+        ending earlier has stopped being published; one ending in {FRONTIER} is an annual series
+        whose next figure is not out yet.
+      </p>
+      <p className="prose-note">
+        <span className="label">Why the axis begins in {X0}</span> Anchored to the earliest
+        observation the axis started in {rows[0]?.start}, and that one series took half the width
+        while the median begins in 2014. It begins instead at the second-percentile start year,
+        computed from the data.{' '}
+        <strong>The {earlierThanAxis} series that begin earlier are not cut short:</strong> each
+        runs to the left edge with a continuation mark and its own start year beside it.
+      </p>
+      <StatusKey />
+      <StripFilter counts={stripCounts} frontier={FRONTIER} />
+      <SpanStrip rows={rows} x0={X0} x1={X1} frontier={FRONTIER} />
+      <p className="prose-note">
+        <span className="label">What the strip does not carry</span> Its bars draw spans, not
+        declarations. **WITHDRAWN: &ldquo;every one of these series is in the table below&rdquo;** &mdash;
+        there is no table below any more. Each of these {rows.length} series carries its caveats and
+        declared absences in full on{' '}
+        <Link href="/search/?layer=series">the record index</Link>, exactly once; rendering them
+        twice on one page is the duplicate-declaration defect, so the strip points there rather than
+        repeating it.
       </p>
 
       <h2>The chronology</h2>

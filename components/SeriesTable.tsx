@@ -17,7 +17,7 @@ import { Value } from './marks';
  *
  * **THIS NOTE LIVES IN ONE PLACE BECAUSE PUTTING IT IN NINE PUT IT ON 98 PUBLISHED PAGES.** A
  * scripted edit inserted it as a `/* *\/` block, which inside JSX is not a comment — it is text.
- * It shipped, and the breadcrumb on `/series/` read the whole paragraph before "instrument /
+ * It shipped, and the breadcrumb on `/search/?layer=series` read the whole paragraph before "instrument /
  * indicator series". No gate saw it: `rendered-space` binds welding, `field-render-audit` asks
  * whether a field reaches its page, and neither asks whether something reached the page that was
  * never meant to be read. `interface-invariants` now does.

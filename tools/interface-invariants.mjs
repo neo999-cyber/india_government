@@ -115,10 +115,14 @@ function missingSections(html) {
  * `lib/routes.ts` — so adding a destination to the registry brings it under this check, which is
  * the point of having the registry.
  */
+/* **WITHDRAWN: `'series', 'ledger', 'provenance', 'about'`**, merged away on 2026-09-01 — the
+   three indexes into `/search/` behind its own layer filter, and `/about/` into the About menu that
+   now lists its six links. Their RECORD pages are untouched and were never in this list: it binds
+   index routes only. `seams` is added, which had been missing since that page shipped. */
 const INDEX_ROUTES = [
-  'overview', 'questions', 'stories', 'search', 'series', 'ledger', 'provenance',
+  'overview', 'questions', 'stories', 'search', 'seams',
   'contested', 'unmeasured', 'exposure', 'lenses', 'terms', 'peers', 'years', 'publishers',
-  'about', 'method', 'derivations', 'corrections', 'data', 'counterfactual', 'directory',
+  'method', 'derivations', 'corrections', 'data', 'counterfactual', 'directory',
 ];
 function leadClass(html) {
   const m = html.match(/<h1\b([^>]*)>/);

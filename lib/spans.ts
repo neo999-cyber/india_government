@@ -7,7 +7,7 @@ import { series } from '@/lib/data';
  * A second derivation of one quantity is the ad-hoc-normaliser class this instrument has paid for
  * four times: the two would agree today and drift on the first change to either, and nothing would
  * report it because both would be internally consistent. The year slice must draw the spans
- * `/series/` draws, so it reads them from here.
+ * `/search/?layer=series` draws, so it reads them from here.
  */
 
 const yearOfPeriod = (p: string) => Number(String(p).replace(/^FY/, '').slice(0, 4));

@@ -48,7 +48,7 @@ export default async function ProvenanceDetail({ params }: Props) {
     <>
       <ProvenanceLd record={p} modified={lastTouched(p.id)} />
       <p className="crumb">
-        <Link href="/">instrument</Link> / <Link href="/provenance/">provenance</Link> / {p.id}
+        <Link href="/">instrument</Link> / <Link href="/search/?layer=provenance">provenance</Link> / {p.id}
       </p>
       <h1>{p.title}</h1>
       <p className="tag-row">

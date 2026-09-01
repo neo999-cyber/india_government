@@ -11,16 +11,16 @@
   },
   "reachability": {
     "marksDeclared": 1788,
-    "pagesScanned": 701
+    "pagesScanned": 697
   },
   "listing-marks": {
-    "listingRows": 3620,
-    "pagesScanned": 700,
-    "marksRequired": 5114
+    "listingRows": 3309,
+    "pagesScanned": 696,
+    "marksRequired": 4683
   },
   "unrecognised-rows": {
-    "pagesScanned": 700,
-    "citations": 942
+    "pagesScanned": 696,
+    "citations": 941
   },
   "field-render-audit": {
     "proseFields": 44,

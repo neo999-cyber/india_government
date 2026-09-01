@@ -99,7 +99,7 @@ export function SpanStrip({
   frontier: number;
   /**
    * SLICE THE STRIP AT ONE YEAR — the year pages' visual, and the reason it is this component and
-   * not a new one. A reader has already learned this encoding on `/series/`: a bar is a span, a cut
+   * not a new one. A reader has already learned this encoding on `/search/?layer=series`: a bar is a span, a cut
    * is a change of basis, a dashed end is a publisher stopping. **Reusing it means the year page is
    * legible on arrival instead of carrying a second key**, which is the whole argument for putting
    * the slice here rather than drawing something new that means the same thing.

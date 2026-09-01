@@ -38,7 +38,7 @@ export const metadata: Metadata = {
  * `/unmeasured/` answers it. **This is a different object.** That page lists all 374 declarations
  * organised by record and by kind; this one takes four questions a reader actually asks and shows
  * what specifically was not measured under each. The relation is the same as `/questions/` to
- * `/ledger/`: not a filter over the same list, but the public question the list answers.
+ * `/search/?layer=ledger`: not a filter over the same list, but the public question the list answers.
  *
  * ============================ THE FINDING, WHICH IS NOT "THESE CANNOT BE ANSWERED" ============
  *

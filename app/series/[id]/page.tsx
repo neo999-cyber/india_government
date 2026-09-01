@@ -128,7 +128,7 @@ export default async function SeriesDetail({ params }: Props) {
     <>
       <SeriesLd series={s} />
       <p className="crumb">
-        <Link href="/">instrument</Link> / <Link href="/series/">series</Link> /{' '}
+        <Link href="/">instrument</Link> / <Link href="/search/?layer=series">series</Link> /{' '}
         <Link href={`/domains/${s.domain}/`}>{DOMAIN_LABELS[s.domain]}</Link>
       </p>
       <h1>{s.title}</h1>
@@ -355,7 +355,7 @@ export default async function SeriesDetail({ params }: Props) {
           relation printed beside it. */}
       <NextSteps
         steps={stepsForSeries(s)}
-        overflow={{ n: citedByOverflow(s), href: '/ledger/', label: 'The full ledger' }}
+        overflow={{ n: citedByOverflow(s), href: '/search/?layer=ledger', label: 'The full ledger' }}
       />
     </>
   );

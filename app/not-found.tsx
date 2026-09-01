@@ -12,13 +12,13 @@ export default function NotFound() {
         validation. Nothing is generated to fill a gap.
       </p>
       <p className="tag-row">
-        <Link className="tag" href="/series/">
+        <Link className="tag" href="/search/?layer=series">
           series
         </Link>
-        <Link className="tag" href="/ledger/">
+        <Link className="tag" href="/search/?layer=ledger">
           ledger
         </Link>
-        <Link className="tag" href="/provenance/">
+        <Link className="tag" href="/search/?layer=provenance">
           provenance
         </Link>
       </p>

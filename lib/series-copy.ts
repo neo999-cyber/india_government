@@ -69,7 +69,7 @@
  *
  * **REACHABILITY DOES NOT PARTITION ANYTHING, WHICH CORRECTS THE PREMISE THE QUESTION CARRIED.**
  * The subset was expected to fall out of who a reader can reach. Crawled over 738 built pages:
- * `/search/`, `/series/` and all thirteen year pages link every one of the 269, so they
+ * `/search/`, `/search/?layer=series` and all thirteen year pages link every one of the 269, so they
  * discriminate nothing — and of the surfaces that DO discriminate, a domain surface reaches all
  * 269 and another series page reaches all 269. **Zero series are reachable only from an index.**
  * There is a gradient in PROMINENCE — 19 are drawn as a chart on a surface other than their own,

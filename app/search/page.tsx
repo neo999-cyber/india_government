@@ -125,6 +125,40 @@ export default function SearchPage() {
         disputes together. The controls hide cards rather than fetching them, so the list works with
         scripting off, and every declaration a record carries is here whether or not it is showing.
       </p>
+      {/* THE THREE LAYERS, NAMED HERE BECAUSE THEIR OWN INDEXES ARE GONE.
+          `/search/?layer=ledger`, `/search/?layer=series` and `/search/?layer=provenance` were merged into this page on 2026-09-01: each
+          listed a subset this page already lists in full, reachable by one filter. What they held
+          that a filter does not is the sentence each used to open with, and those are here. */}
+      <dl className="layer-key">
+        <div>
+          <dt>
+            <Link href="/search/?layer=series">Series</Link>
+          </dt>
+          <dd>
+            Every series names its calendar and never mixes calendars internally; every break is
+            carried as a seam rather than smoothed away. Their spans are drawn together on{' '}
+            <Link href="/seams/#spans">the span strip</Link>.
+          </dd>
+        </div>
+        <div>
+          <dt>
+            <Link href="/search/?layer=ledger">Reforms, events and episodes</Link>
+          </dt>
+          <dd>
+            Each carries its own assessment, its sources with tiers, and &mdash; where scored &mdash;
+            the strongest good-faith case on both sides.
+          </dd>
+        </div>
+        <div>
+          <dt>
+            <Link href="/search/?layer=provenance">Measurement disputes</Link>
+          </dt>
+          <dd>
+            First-class citizens of the instrument: where a dispute exists it travels with every
+            number it touches rather than sitting in a footnote.
+          </dd>
+        </div>
+      </dl>
       <SectionNav section="records" />
 
       {/* THE MOBILE FILTER DRAWER. `open` in the markup, so with scripting off — and above 640px,

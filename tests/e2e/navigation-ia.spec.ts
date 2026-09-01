@@ -16,7 +16,7 @@ const MAIN = [
   ['Records', '/search/'],
   ['Compare', '/compare/'],
   ['Gaps', '/unmeasured/'],
-  ['About', '/about/'],
+  ['About', '/method/'],
 ] as const;
 
 async function expectGateway(page: Page, route: string, hrefs: readonly string[]) {
@@ -154,7 +154,7 @@ test.describe('seven-section information architecture', () => {
       '/overview/?view=timeline#topics',
       '/years/',
     ]);
-    await expectGateway(page, '/search/', ['/ledger/', '/series/', '/provenance/', '/contested/']);
+    await expectGateway(page, '/search/', ['/search/?layer=ledger', '/search/?layer=series', '/search/?layer=provenance', '/contested/']);
     await expectGateway(page, '/compare/', ['/compare/#series-comparison', '/peers/']);
     // `/seams/` joins Gaps 2026-09-01, between what the record does not carry and what would close
     // it: a break is not an absence, but it is the other way the published record stops being
@@ -166,7 +166,7 @@ test.describe('seven-section information architecture', () => {
       '/seams/',
       '/unmeasured/#verification-queue',
     ]);
-    await expectGateway(page, '/about/', ['/method/', '/publishers/', '/data/', '/derivations/', '/corrections/']);
+    await expectGateway(page, '/method/', ['/method/', '/publishers/', '/data/', '/derivations/', '/corrections/']);
   });
 
   test('Questions and Stories remain their own complete child indexes', async ({ page }) => {

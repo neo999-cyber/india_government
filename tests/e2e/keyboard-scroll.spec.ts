@@ -16,7 +16,11 @@ test.describe('horizontal scrollers', () => {
   // Width is set by the `mobile` project in `playwright.config.ts`.
 
   test('a scrolling table region takes focus and moves with the arrow keys', async ({ page }) => {
-    await page.goto('/series/');
+    /* **WITHDRAWN: `/series/`.** It merged into `/search/` on 2026-09-01, and `/search/` renders
+       cards rather than a table — so there is no `.table-wrap` on it to focus. `/publishers/` is
+       the same shape the test was written for: a wide table in a focusable wrapper, and it
+       overflows at 375px, which the positive control below still proves rather than assumes. */
+    await page.goto('/publishers/');
 
     const wrap = page.locator('.table-wrap').first();
     await expect(wrap).toHaveAttribute('tabindex', '0');
@@ -33,8 +37,14 @@ test.describe('horizontal scrollers', () => {
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
     await page.keyboard.press('ArrowRight');
-    const after = await wrap.evaluate((el) => el.scrollLeft);
-
-    expect(after, 'arrow keys must scroll the focused region').toBeGreaterThan(before);
+    /* POLLED, NOT READ ONCE. The stylesheet sets `scroll-behavior: smooth`, so `scrollLeft` has
+       not landed on the tick after the keypress — a single read returns the value from before the
+       animation and the test failed on a region that scrolls perfectly well. Measured: 0 read
+       immediately, 80 after 200ms on the same page. */
+    await expect
+      .poll(() => wrap.evaluate((el) => el.scrollLeft), {
+        message: 'arrow keys must scroll the focused region',
+      })
+      .toBeGreaterThan(before);
   });
 });

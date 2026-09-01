@@ -387,7 +387,7 @@ export function CompareWorkbench({
               <span className="badge badge-verified">{seriesA?.domain.toUpperCase()}</span>
               {seriesA?.tier ? <span className="badge badge-tier">{seriesA.tier}</span> : null}
             </div>
-            {seriesA ? <Link href={'/series/' + seriesA.id + '/'} className="compare-link">View Record →</Link> : null}
+            {seriesA ? <Link href={'/search/?layer=series' + seriesA.id + '/'} className="compare-link">View Record →</Link> : null}
           </div>
           <h3 className="compare-card-h">{seriesA?.title}</h3>
           <p className="compare-unit">Unit: {seriesA?.unit} · Source: {seriesA?.publisher || 'Official'}</p>
@@ -402,7 +402,7 @@ export function CompareWorkbench({
               <span className="badge badge-dispute">{seriesB?.domain.toUpperCase()}</span>
               {seriesB?.tier ? <span className="badge badge-tier">{seriesB.tier}</span> : null}
             </div>
-            {seriesB ? <Link href={'/series/' + seriesB.id + '/'} className="compare-link">View Record →</Link> : null}
+            {seriesB ? <Link href={'/search/?layer=series' + seriesB.id + '/'} className="compare-link">View Record →</Link> : null}
           </div>
           <h3 className="compare-card-h">{seriesB?.title}</h3>
           <p className="compare-unit">Unit: {seriesB?.unit} · Source: {seriesB?.publisher || 'Official'}</p>

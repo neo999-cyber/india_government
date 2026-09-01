@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SectionNav } from '@/components/SectionNav';
 import type { Metadata } from 'next';
 import { citations, ledger, provenance, series, statusCounts, tierCounts } from '@/lib/data';
 import { TIER_LABELS } from '@/lib/format';
@@ -33,6 +34,12 @@ export default function MethodPage() {
         <Link href="/">instrument</Link> / method
       </p>
       <h1 className="page-lead">Method, tiers and what the marks mean</h1>
+      {/* METHOD IS THE ABOUT SECTION'S LANDING PAGE FROM 2026-09-01. `/about/` was 310 words and
+          no headings — six links with one-line descriptions, and all six are in the About menu now
+          — so the section points here, which is where that page itself told a reader to start. The
+          gateway strip comes with the job: a section landing lists its children, and below 900px,
+          where the menus do not render, this is the only place they appear. */}
+      <SectionNav section="about" />
 
       <h2 id="limits">What this is, who made it, and what has not been done to it</h2>
       <p>

@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 /**
  * TARGET SIZE — measured on the rendered page, which is the only place it exists.
  *
- * An external audit found **393 of 583 links on `/series/` under a 24x24 target**, the commonest
+ * An external audit found **393 of 583 links on `/search/?layer=series` under a 24x24 target**, the commonest
  * being the span strip's bars at 418x4 and the smallest at 3x4. The strip's density is its function
  * — 269 rows at 24px would take it from 1,614px to 6,456px — so WCAG 2.5.8's *Essential* exception
  * is invoked there deliberately, and the bars were taken out of the tab order instead, because
@@ -21,7 +21,7 @@ test.describe('target size', () => {
   // Width is set by the `desktop` project in `playwright.config.ts`.
 
   test('nothing reachable by keyboard on /series/ is under 24x24', async ({ page }) => {
-    await page.goto('/series/');
+    await page.goto('/search/?layer=series');
 
     const small = await page.evaluate((min) => {
       return [...document.querySelectorAll('a, button, [tabindex]')]
@@ -43,7 +43,9 @@ test.describe('target size', () => {
   });
 
   test('the span strip is still out of the tab order, and still there', async ({ page }) => {
-    await page.goto('/series/');
+    // The strip moved to `/seams/` on 2026-09-01 when `/series/` merged into `/search/`: it is a
+    // picture rather than a row shape, and a span and a seam are the same subject.
+    await page.goto('/seams/#spans');
     // The positive half: the bars exist and are drawn. Without it this test would pass on a page
     // that had simply lost the strip.
     const bars = page.locator('a.strip-bar');
