@@ -2948,11 +2948,15 @@ tbody > tr:has(+ .caveat-row) > td {
    reader. The arrow carries `aria-hidden`, so without this the transition is either read twice or
    not at all depending on which of the two is missing.
 
-   The class has exactly two users, both listed here because the sweep is the correction and a
+   The class has exactly THREE users, all listed here because the sweep is the correction and a
    sweep that reports only its finds cannot be told from one that did not run:
      · components/RecordHistory.tsx  — the verdict transition on a record page
      · app/corrections/page.tsx      — the same transition in the corrections table
-   Both were fixed by this rule; neither markup site changed. */
+     · app/seams/page.tsx            — the seam grid's table caption, added 2026-09-01
+   The first two were fixed by this rule; neither markup site changed. **The third was written as
+   `visually-hidden`, a class no rule defines, and its caption rendered on the page** — the same
+   defect this comment was written to record, repeated by an author who had not read it. That is the
+   argument for naming the users here rather than trusting a search. */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -4558,6 +4562,112 @@ details.more > summary {
    NO SEVERITY, NO GRADATION. No question card is coloured differently from another, no set is
    ordered by magnitude, and the improved and worsened pages are visually identical: the only
    difference between them is which side of one declared field their rows fell on. */
+
+/* ==============================================================================================
+   WHERE THE INSTRUMENTS CHANGED — the seam grid.
+
+   The cells are LINKS, not hover targets: the page carries no script of its own, every cell is
+   addressable, and the chronology below is the whole content rather than a panel that reveals it.
+   RED IS THE BREAK COLOUR AND IS NOT BORROWED HERE — rule 5a fixes a series break as a solid red
+   stop, and this page is nothing but series breaks, so it uses the token the rest of the site
+   already uses for exactly this.
+   ============================================================================================== */
+.seam-plate {
+  margin: 1.6rem 0 0;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 1rem;
+  overflow-x: auto;
+}
+.seam-grid {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 46rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+}
+.seam-grid th {
+  font-weight: 400;
+  color: var(--ink-dim);
+  text-align: left;
+  padding: 0 0.6rem 0.35rem 0;
+  white-space: nowrap;
+}
+.seam-grid thead th[scope='col'] { text-align: center; padding: 0 0 0.4rem; }
+.seam-grid td {
+  padding: 0;
+  border-left: 1px solid var(--rule-soft);
+  height: 24px;
+  text-align: center;
+  vertical-align: middle;
+}
+.seam-grid tbody tr + tr td,
+.seam-grid tbody tr + tr th { border-top: 1px solid var(--rule-soft); }
+.seam-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  height: 24px;
+  text-decoration: none;
+}
+.seam-cell:hover, .seam-cell:focus-visible { background: var(--alert-soft); }
+.seam-stop { width: 3px; height: 14px; background: var(--alert); border-radius: 1px; }
+.seam-more { font-size: 0.56rem; color: var(--alert); margin-left: 1px; }
+.seam-totals td { height: 36px; vertical-align: bottom; }
+.seam-bar { display: block; margin: 0 auto; width: 9px; background: var(--mark); opacity: 0.55; }
+.seam-n { display: block; font-size: 0.56rem; color: var(--ink-dim); margin-top: 2px; }
+.seam-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.5rem;
+  font-size: 0.66rem;
+  color: var(--ink-dim);
+  margin: 0.8rem 0 0;
+}
+.seam-key-stop {
+  display: inline-block;
+  width: 4px;
+  height: 11px;
+  background: var(--alert);
+  vertical-align: -1px;
+  margin-right: 0.35rem;
+}
+
+.seam-year { margin: 2.2rem 0 0; }
+.seam-year-h {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.3rem;
+  margin: 0 0 0.9rem;
+}
+.seam-year-h span { font-size: 0.68rem; color: var(--ink-dim); margin-left: 0.5rem; }
+/* The anchor a grid cell lands on. `scroll-margin-top` keeps it clear of the sticky masthead. */
+.seam-sub { margin: 0 0 1.4rem; scroll-margin-top: 5rem; }
+.seam-sub-h {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  margin: 0 0 0.5rem;
+}
+/* `seam-rec`, NOT `seam`. **WITHDRAWN: `.seam` for this record block.** `.seam` has been the
+   break-seam ROW inside a series table since long before this page existed, on 100+ `/series/`
+   pages, so the name collided twice over: these blocks silently inherited `.seam td` and `.seam a`,
+   and adding `seam` to the listing gate's container list turned every existing seam row into a
+   CONTAINER, swallowing the units inside it. The gate stayed green and its scope fell by 64 rows —
+   caught only because `gate-scope` watches what a gate EXAMINES, not just its verdict. */
+.seam-rec {
+  border-left: 2px solid var(--alert);
+  padding: 0 0 0 0.9rem;
+  margin: 0 0 1rem;
+}
+.seam-t { margin: 0 0 0.25rem; }
+.seam-p { font-size: 0.66rem; color: var(--ink-dim); white-space: nowrap; }
+.seam-note { margin: 0 0 0.4rem; font-size: 0.9rem; color: var(--ink-2); max-width: 78ch; }
 
 /* ==============================================================================================
    THE QUESTIONS PLATE — text placed in an illustration's measured holes.

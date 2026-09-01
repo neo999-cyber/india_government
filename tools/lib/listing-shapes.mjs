@@ -190,7 +190,7 @@ export function listingRows(html) {
   // inside the same <section> through `RecordMarks`. The two sections with no lead — poverty and
   // kashmir — link no record at all and contribute no unit, which is correct: their absence is
   // authored prose in the `.absence` mark, not a record listing.
-  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one', 'redline', 'ctwo', 'chart', 'scard', 'way', 'ins'];
+  const CONTAINER_CLASSES = ['drec', 'cw', 'pslope', 'peer-one', 'redline', 'ctwo', 'chart', 'scard', 'way', 'ins', 'seam-rec'];
   const containers = [];
   for (const cls of CONTAINER_CLASSES) {
     // WHOLE CLASS TOKEN, NOT `\b`. A hyphen is not a word boundary, so `\bctwo\b` matched

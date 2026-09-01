@@ -54,7 +54,7 @@ export default defineConfig({
   projects: [
     {
       name: 'desktop',
-      testMatch: /(search-count|target-size|allpages|rail|chart-labels|overview-state|atlas-modes|keyboard-interactions|navigation-ia|reading-prefs)\.spec\.ts/,
+      testMatch: /(search-count|target-size|allpages|rail|chart-labels|overview-state|atlas-modes|keyboard-interactions|navigation-ia|reading-prefs|seams)\.spec\.ts/,
       use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 900 } },
     },
     {
