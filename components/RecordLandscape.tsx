@@ -59,7 +59,7 @@ type Props = {
  * and every declared absence to render inside it in full — 97 of the 212 dated records carry a
  * caveat averaging 450 characters, and Governance 2019 alone holds 16 filings. Measured, listing
  * them here would have added roughly 200 KB to the one page that exists to feel light, and would
- * have built a second listing to keep in step with `/years/`, which is already bound by
+ * have built a second listing to keep in step with `/overview/#years`, which is already bound by
  * `listing-marks` and already lists exactly this.
  *
  * So the brief states the SHAPE of the year and hands the reader the surface that holds it.

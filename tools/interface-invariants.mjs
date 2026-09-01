@@ -121,13 +121,15 @@ function missingSections(html) {
    index routes only. `seams` is added, which had been missing since that page shipped.
    **AND `'derivations', 'data', 'counterfactual'` on the same day**, folded into `/method/` as
    sections, and `'peers'` into `/compare/`. A section is not an index route and this list binds
-   index routes. **`peers` had to be removed rather than left to the tolerance**: the floor is
+   index routes. **`years`, `terms`, `lenses`, `corrections`, `contested` and `exposure` followed on the
+   same day**, the last two into `/search/`.
+   **`peers` had to be removed rather than left to the tolerance**: the floor is
    `length - 2`, so a missing route can pass while the gate quietly checks one surface fewer, which
    is the shrunken scope this very check exists to refuse. */
 const INDEX_ROUTES = [
   'overview', 'questions', 'stories', 'search', 'seams',
-  'contested', 'unmeasured', 'exposure', 'lenses', 'terms', 'years', 'publishers',
-  'method', 'corrections', 'directory',
+  'unmeasured', 'publishers',
+  'method', 'directory',
 ];
 function leadClass(html) {
   const m = html.match(/<h1\b([^>]*)>/);

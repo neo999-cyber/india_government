@@ -1,14 +1,7 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { ledger, series } from '@/lib/data';
 import { YEAR_NOTES } from '@/lib/year-copy';
 import { YEARS } from '@/lib/years';
-
-export const metadata: Metadata = {
-  title: 'Years — the record read one year at a time',
-  description:
-    'Thirteen cross-sections of this record, 2014 to 2026. What was announced, what was measured, what changed basis and what was happening — four different kinds of fact, never summed.',
-};
 
 /**
  * THE YEAR INDEX — thirteen cards in calendar order, and nothing is sorted or ranked.
@@ -19,7 +12,7 @@ export const metadata: Metadata = {
  */
 const yearOfPeriod = (p: string) => Number(String(p).replace(/^FY/, '').slice(0, 4));
 
-export default function YearsIndex() {
+export function YearsSection() {
   const rows = YEARS.map((y) => ({
     y,
     began: ledger.filter((r) => Number(String(r.date).slice(0, 4)) === y).length,
@@ -34,10 +27,7 @@ export default function YearsIndex() {
 
   return (
     <>
-      <p className="crumb">
-        <Link href="/">instrument</Link> / years
-      </p>
-      <h1 className="page-lead">The record, one year at a time</h1>
+      <h2 id="years">The record, one year at a time</h2>
       <p className="standfirst">
         Thirteen cross-sections, 2014 to 2026. Each shows four counts — what was announced, what was
         measured, what changed basis, and what was happening — and they are four different kinds of

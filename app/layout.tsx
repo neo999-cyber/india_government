@@ -168,7 +168,7 @@ export const metadata: Metadata = {
  *               is the strongest single statement the nav can make about what the site is.
  *   ABOUT     — the corpus about itself.
  *
- * **`/contested/` MOVES FROM THE OLD FLAT LIST INTO `RECORDS`, not into `LIMITS`**, and the call is
+ * **`/search/#contested` MOVES FROM THE OLD FLAT LIST INTO `RECORDS`, not into `LIMITS`**, and the call is
  * arguable. It holds 60 paired divergent measurements — a disagreement between two instruments is a
  * thing the corpus HOLDS, not a thing it cannot establish. `/unmeasured/`'s 374 declared absences
  * are the opposite: the record saying nothing measures this.
@@ -227,7 +227,7 @@ export const metadata: Metadata = {
  *
  * TWO PROPOSALS IN THE INSTRUCTION WERE CHECKED AND ONE WAS WRONG. *`contested pairs` and the
  * where-measures-disagree route are the same content under two names* — **they are not.**
- * `/contested/` selects ledger records whose VERDICT is contested (68); the question route selects
+ * `/search/#contested` selects ledger records whose VERDICT is contested (68); the question route selects
  * PAIRS where two instruments disagree (21). Seven records appear in both. Different objects, so
  * both keep a name and each says which it is.
  *

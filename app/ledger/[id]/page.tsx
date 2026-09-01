@@ -85,7 +85,7 @@ export default async function LedgerDetail({ params }: Props) {
             here and `/contested` was reachable only from the top nav, so a reader met the label
             with no way to learn that 38 of the 68 are unsettleable in principle. */}
         {l.contestedGround ? (
-          <Link className="tag tag-state" href="/contested/">
+          <Link className="tag tag-state" href="/search/#contested">
             would settle it: {CONTESTED_GROUND_LABELS[l.contestedGround]}
           </Link>
         ) : null}

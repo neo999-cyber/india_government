@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { SectionNav } from '@/components/SectionNav';
+import { CorrectionsSection } from '@/components/CorrectionsSection';
 import { DataSection } from '@/components/DataSection';
 import { DerivationsSection } from '@/components/DerivationsSection';
 import { CounterfactualSection } from '@/components/CounterfactualSection';
@@ -157,7 +158,7 @@ export default function MethodPage() {
         <em>contested</em>, and {unsettleable} of the {withGround.length} that state a ground turn on
         something <strong>no document could settle</strong>: the facts are agreed and the dispute is
         which frame governs, or several valid published measures point opposite ways.{' '}
-        <Link href="/contested/">Which kind each contest is</Link> is the difference between a hedge
+        <Link href="/search/#contested">Which kind each contest is</Link> is the difference between a hedge
         and a finding.
       </p>
 
@@ -333,6 +334,11 @@ export default function MethodPage() {
           cost the five-tab topic merge recorded in August, paid again.
 
           Their bodies are unchanged. Only the crumb, the metadata and the heading level moved. */}
+      {/* `/method/#corrections` FOLDED IN HERE TOO. 15,024 words and 31 corrections — by far the largest
+          of the fifteen merges, and the one the audit flagged as most likely to be worth its own
+          URL, because a standing public commitment loses something when it becomes a fragment.
+          It is here because it IS the method: the record of the method working. */}
+      <CorrectionsSection />
       <DataSection />
       <DerivationsSection />
       <CounterfactualSection />

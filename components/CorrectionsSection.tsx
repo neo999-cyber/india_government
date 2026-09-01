@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { getLedger, getProvenance } from '@/lib/data';
 import { history, verdictChanges } from '@/lib/history';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS } from '@/lib/format';
@@ -8,15 +7,8 @@ import { CaveatRow, RecordMarks } from '@/components/marks';
 import { Redline, RedlineMaster } from '@/components/Redline';
 import { redlines } from '@/lib/corrections';
 
-export const metadata: Metadata = {
-  title: 'Corrections',
-  description:
-    'Every record whose verdict this instrument has changed since publishing it, with the date, ' +
-    'the move and the commit. Reconstructed from git, not from a hand-kept list.',
-};
-
 /**
- * `/corrections/` — WHERE THE INSTRUMENT SAYS OUT LOUD THAT IT CHANGED ITS MIND.
+ * `/method/#corrections` — WHERE THE INSTRUMENT SAYS OUT LOUD THAT IT CHANGED ITS MIND.
  *
  * WHY IT IS A SURFACE AND NOT A LOG ENTRY. The verification log is append-only and 684 KB; it is
  * the right home for the reasoning and the wrong home for the question *"has anything I read here
@@ -45,7 +37,7 @@ export const metadata: Metadata = {
  * RULE 4b: this LISTS records, so every declaration and caveat renders here in full, exactly as on
  * any other listing surface. `listing-marks` binds it.
  */
-export default function Corrections() {
+export function CorrectionsSection() {
   const changes = verdictChanges();
   const known = Object.keys(history).length;
 
@@ -61,10 +53,7 @@ export default function Corrections() {
 
   return (
     <>
-      <p className="crumb">
-        <Link href="/">instrument</Link> / corrections
-      </p>
-      <h1 className="page-lead">What this instrument has changed its mind about</h1>
+      <h2 id="corrections">What this instrument has changed its mind about</h2>
       <p className="lede">
         Records are corrected in place — that is what <span className="mono">/data</span> is — and
         the withdrawn wording stays inside the field that changed. This page is the other half:

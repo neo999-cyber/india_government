@@ -141,7 +141,7 @@ export default async function YearPage({ params }: Props) {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / <Link href="/years/">years</Link> / {y}
+        <Link href="/">instrument</Link> / <Link href="/overview/#years">years</Link> / {y}
       </p>
       <h1 className="page-lead">{y}</h1>
       <p className="standfirst">{note.body}</p>
@@ -407,7 +407,7 @@ export default async function YearPage({ params }: Props) {
 
       <nav className="yr-rail" aria-label="Years, below">
         {i > 0 ? <Link href={`/years/${YEARS[i - 1]}/`}>← {YEARS[i - 1]}</Link> : null}
-        <Link href="/years/">all years</Link>
+        <Link href="/overview/#years">all years</Link>
         {i < YEARS.length - 1 ? <Link href={`/years/${YEARS[i + 1]}/`}>{YEARS[i + 1]} →</Link> : null}
       </nav>
     </>

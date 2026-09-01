@@ -182,7 +182,12 @@ const indexHrefs = hrefs(readFileSync(indexPath, 'utf8'));
 
 const lensPagePath = (l) => join(OUT_DIR, 'lenses', l, 'index.html');
 const readLensPage = (l) => (existsSync(lensPagePath(l)) ? readFileSync(lensPagePath(l), 'utf8') : null);
-const lensIndexPath = join(OUT_DIR, 'lenses', 'index.html');
+/* THE LENS INDEX IS A SECTION OF `/overview/` FROM 2026-09-01, not a page of its own.
+   **WITHDRAWN: `join(OUT_DIR, 'lenses', 'index.html')`.** What this gate binds is unchanged and is
+   the point of it — every declared lens value must have somewhere that navigates to it — so it
+   follows the index to wherever the index is rather than asserting a route. The lens PAGES at
+   `/lenses/<lens>/` never moved. */
+const lensIndexPath = join(OUT_DIR, 'overview', 'index.html');
 const lensIndexHrefs = existsSync(lensIndexPath) ? hrefs(readFileSync(lensIndexPath, 'utf8')) : null;
 
 // ---------------------------------------------------------------- assertions

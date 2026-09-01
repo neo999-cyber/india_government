@@ -1,19 +1,13 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { TallyGloss } from '@/components/marks';
 import { assessmentCounts, ledgerInTerm } from '@/lib/data';
 import { ASSESSMENT_LABELS, TERM_LABELS } from '@/lib/format';
 import { TERMS } from '@/lib/types';
 
-export const metadata: Metadata = { title: 'Terms' };
-
-export default function TermsIndex() {
+export function TermsSection() {
   return (
     <>
-      <p className="crumb">
-        <Link href="/">instrument</Link> / terms of government
-      </p>
-      <h1 className="page-lead">Terms</h1>
+      <h2 id="terms">Terms of government</h2>
       <p className="lede">
         The baseline is frozen at May 2014 and carried as context, not scored. T3 is living:
         records in it are provisional by construction.

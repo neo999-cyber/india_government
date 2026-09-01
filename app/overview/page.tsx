@@ -1,4 +1,7 @@
 import Link from 'next/link';
+import { YearsSection } from '@/components/YearsSection';
+import { TermsSection } from '@/components/TermsSection';
+import { LensesSection } from '@/components/LensesSection';
 import type { Metadata } from 'next';
 import { ledger, series, seriesUnderLens } from '@/lib/data';
 import { DOMAIN_LABELS } from '@/lib/format';
@@ -290,7 +293,7 @@ export default function Overview() {
             <p className="home-kicker mono">Open the underlying chronology</p>
             <h2 id="atlas-years-title">One year at a time</h2>
           </div>
-          <Link href="/years/">See the complete year index →</Link>
+          <Link href="/overview/#years">See the complete year index →</Link>
         </div>
         <ol
           className="atlas-years"
@@ -315,6 +318,18 @@ export default function Overview() {
           navigation; they do not encode the number or importance of records.
         </p>
       </section>
+
+      {/* ============ THREE AXES FOLDED IN HERE ON 2026-09-01 ==============================
+          `/overview/#years`, `/overview/#terms` and `/overview/#lenses` were 1,796, 378 and 645 words: three alternate cuts
+          across the same fourteen topics and the same 619 records — by year, by term of government,
+          by cross-cutting thread. This page already puts every topic on one shared axis, so these
+          are three more of them rather than three destinations.
+
+          **Only the indexes folded.** The 13 year pages, the 3 term pages and every lens page are
+          untouched; each of these sections still links to its own. */}
+      <YearsSection />
+      <TermsSection />
+      <LensesSection />
     </>
   );
 }

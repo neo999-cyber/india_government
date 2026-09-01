@@ -490,7 +490,7 @@ export function ShockExposures({ items }: { items: ShockExposure[] | undefined }
           the other way, so the page showing how often an exposure was refused or left unadjudicated
           was reachable only from the top nav. */}
       <p className="absence-fill">
-        <Link href="/exposure/">Every declared exposure, by role and by what was adjudicated</Link>
+        <Link href="/search/#exposure">Every declared exposure, by role and by what was adjudicated</Link>
       </p>
     </div>
   );
@@ -569,7 +569,7 @@ export const DISPUTE_KIND_LABELS: Record<'evidentiary' | 'normative', string> = 
 export function TallyGloss() {
   return (
     <p className="t-note">
-      <Link href="/contested/">Contested</Link> and <em>no stated objective</em> are findings, not
+      <Link href="/search/#contested">Contested</Link> and <em>no stated objective</em> are findings, not
       the absence of one — the first declines between readings the evidence supports, the second
       records that nothing was claimed to score against.{' '}
       <Link href="/method/">What the distribution measures</Link>.

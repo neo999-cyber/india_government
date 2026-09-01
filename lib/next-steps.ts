@@ -259,7 +259,7 @@ export function stepsForLens(_lens: Lens, domains: Domain[]): Step[] {
     });
   }
   out.push({
-    href: '/lenses/',
+    href: '/overview/#lenses',
     label: 'Every thread that cuts across topics',
     reason: 'the other lenses',
   });
@@ -275,7 +275,7 @@ export function stepsForTerm(term: Term, neighbours: { term: Term; label: string
       reason: 'the adjoining term',
     }));
   out.push({
-    href: '/years/',
+    href: '/overview/#years',
     label: 'The same record, one year at a time',
     reason: 'a cross-section rather than a political span',
   });

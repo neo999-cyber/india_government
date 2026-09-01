@@ -1,12 +1,8 @@
-import Link from 'next/link';
-import type {Metadata} from 'next';
 import {ledger} from '@/lib/data';
 import {CONTESTED_GROUND_LABELS} from '@/lib/format';
 import {CONTESTED_GROUNDS} from '@/lib/types';
 import type {ContestedGround, LedgerRecord} from '@/lib/types';
 import {TwoReadings} from '@/components/TwoReadings';
-
-export const metadata: Metadata = { title: 'Contested — what would settle it' };
 
 /**
  * THE DISTINCTION BETWEEN A HEDGE AND A FINDING, which the site could not previously show.
@@ -67,7 +63,7 @@ function Group({
   );
 }
 
-export default function ContestedIndex() {
+export function ContestedSection() {
   const contested = ledger.filter((l) => l.assessment === 'contested');
   const byGround = Object.fromEntries(
     CONTESTED_GROUNDS.map((g) => [g, contested.filter((l) => l.contestedGround === g)]),
@@ -78,10 +74,7 @@ export default function ContestedIndex() {
 
   return (
     <>
-      <p className="crumb">
-        <Link href="/">instrument</Link> / contested
-      </p>
-      <h1 className="page-lead">Contested — and what would settle it</h1>
+      <h2 id="contested">Contested — and what would settle it</h2>
       <p className="lede">
         A record marked <span className="mono">contested</span> declines to choose between readings
         the evidence supports. That is a statement about the evidence and not a hedge — and the

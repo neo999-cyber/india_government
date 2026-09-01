@@ -1,11 +1,8 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { ledgerUnderLens, pairsUnderLens, seriesUnderLens } from '@/lib/data';
 import { LENS_BLURBS, LENS_LABELS } from '@/lib/format';
 import { LENSES, LENSES_THAT_ARE_DOMAINS } from '@/lib/types';
-
-export const metadata: Metadata = { title: 'Lenses' };
 
 /**
  * The lens index.
@@ -20,13 +17,10 @@ export const metadata: Metadata = { title: 'Lenses' };
  * "what is filed under this subject", this one answers "what is read under this lens", and pooling
  * them would restate the conflation the axis exists to remove.
  */
-export default function LensesIndex() {
+export function LensesSection() {
   return (
     <>
-      <p className="crumb">
-        <Link href="/">instrument</Link> / lenses
-      </p>
-      <h1 className="page-lead">Lenses</h1>
+      <h2 id="lenses">Lenses</h2>
       <p className="lede">
         {/* REWRITTEN 2026-08-12 on a reader's review. It read: *"A lens is not a subject.
             `domain` says what a record is about; `lenses[]` says what it also bears on. Every record

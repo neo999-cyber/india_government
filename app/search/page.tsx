@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { ContestedSection } from '@/components/ContestedSection';
+import { ExposureSection } from '@/components/ExposureSection';
 import type { Metadata } from 'next';
 import { ledger, provenance, series } from '@/lib/data';
 import { ASSESSMENT_LABELS, DIRECTION_OF_BIAS_LABELS, DOMAIN_LABELS, formatDateRange } from '@/lib/format';
@@ -265,6 +267,21 @@ export default function SearchPage() {
         ))}
       </div>
 
+
+
+
+      {/* ============ TWO READINGS OF THE LEDGER, FOLDED IN ON 2026-09-01 ==================
+          `/search/#contested` (68 records) and `/search/#exposure` (76) were both already 100% present on this
+          page: every id they name is in the grid above. What they are NOT is a filter — they carry
+          35,047 and 6,451 words arguing what a contested verdict and an exogenous defence MEAN, and
+          an argument has nowhere to live in a facet.
+
+          **THIS WAS THE WEAKEST OF THE FIFTEEN AND THE AUDIT SAID SO BEFORE IT WAS DONE.** It is
+          done because the operator read that and asked for all fifteen. The cost is weight on the
+          site's heaviest page, measured and stated in the commit rather than discovered later. Both
+          keep their prose, their groupings and their own record lists. */}
+      <ContestedSection />
+      <ExposureSection />
     </>
   );
 }

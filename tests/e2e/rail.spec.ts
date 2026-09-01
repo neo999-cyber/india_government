@@ -71,7 +71,7 @@ test.describe('contents rail', () => {
   test('a page with no rail keeps a single column and reserves nothing', async ({ page }) => {
     await page.setViewportSize({ width: 1710, height: 900 });
 
-    for (const path of ['/lenses/', '/method/', '/']) {
+    for (const path of ['/overview/#lenses', '/method/', '/']) {
       await page.goto(path);
       expect(await page.locator('.rail').count(), `${path} unexpectedly has a rail`).toBe(0);
       const cols = await page

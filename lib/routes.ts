@@ -58,10 +58,6 @@ export const ROUTES: Record<string, { label: string; nav?: string }> = {
   '/questions/': { label: 'Questions', nav: 'Questions' },
   '/stories/': { label: 'Stories', nav: 'Stories' },
   '/search/': { label: 'Find a record', nav: 'Records' },
-  '/years/': { label: 'Years', nav: 'one year at a time' },
-  '/lenses/': { label: 'Lenses', nav: 'threads across topics' },
-  '/terms/': { label: 'Terms of government', nav: 'terms of government' },
-  '/compare/#peers': { label: 'Peers', nav: 'four comparator countries' },
   // **WITHDRAWN 2026-09-01: `/data/`, `/derivations/` and `/counterfactual/` as routes too**, folded
   // into `/method/` as sections. A ROUTES key is a route; a fragment is not one, so they are gone
   // from here and named only as `#data`, `#derivations` and `#counterfactual` in the About items.
@@ -70,15 +66,14 @@ export const ROUTES: Record<string, { label: string; nav?: string }> = {
   // a cost of 2.7 MB. Their record pages are untouched — only the three indexes went. The comment
   // that stood here recorded that their nav, title, h1 and crumb had once disagreed; the table in
   // this file's own header still carries that history and is not rewritten by a later merge.
-  '/contested/': { label: 'Contested', nav: 'verdicts that stay open' },
+  '/search/#contested': { label: 'Contested', nav: 'verdicts that stay open' },
   '/unmeasured/': { label: 'What is not measured', nav: 'Gaps' },
-  '/exposure/': { label: 'Exposure', nav: 'when a shock is offered as the reason' },
+  '/search/#exposure': { label: 'Exposure', nav: 'when a shock is offered as the reason' },
   '/seams/': { label: 'Where the instruments changed', nav: 'where the instruments changed' },
   // `/about/` was a gateway of 310 words and no headings, and every one of its six links is in the
   // About menu. It is gone; About names `/method/`, which is where the page told a reader to start.
   '/method/': { label: 'Method', nav: 'About' },
     '/publishers/': { label: 'Who published it', nav: 'who published it' },
-  '/corrections/': { label: 'Corrections', nav: 'what it has changed its mind about' },
     '/directory/': { label: 'All pages', nav: 'all pages' },
     '/compare/': { label: 'Compare series', nav: 'Compare' },
 };
@@ -167,6 +162,9 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
     href: '/overview/',
     label: 'Atlas',
     description: 'Topics, chronology and the same record seen through time.',
+    /* Prefixes are matched against a PATHNAME, so a fragment can never be one. The three folded
+       indexes keep their RECORD routes — `/years/2019/`, `/terms/T2/`, `/lenses/kashmir/` — and
+       those are what belong here, or every one of them stops highlighting Atlas. */
     activePrefixes: ['/overview/', '/domains/', '/years/', '/lenses/', '/terms/'],
     items: [
       /* FIRST IN THE GROUP, AND NOT AN EIGHTH PRIMARY DESTINATION. The masthead's seven public
@@ -177,9 +175,9 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
       { href: '/in-short/', label: 'In short', description: 'The whole record in one read, before any of the tools.' },
       { href: '/overview/#topics', label: 'Topics', description: 'Fourteen topic portraits on shared years.' },
       { href: '/overview/?view=timeline#topics', label: 'Timeline', description: 'See when records begin across topics.' },
-      { href: '/years/', label: 'Years', description: 'Open the complete record one year at a time.' },
-      { href: '/lenses/', label: 'Lenses', description: 'Follow threads that cross topic boundaries.', landing: false },
-      { href: '/terms/', label: 'Terms of government', description: 'Read the same archive by government term.', landing: false },
+      { href: '/overview/#years', label: 'Years', description: 'Open the complete record one year at a time.' },
+      { href: '/overview/#lenses', label: 'Lenses', description: 'Follow threads that cross topic boundaries.', landing: false },
+      { href: '/overview/#terms', label: 'Terms of government', description: 'Read the same archive by government term.', landing: false },
     ],
   },
   {
@@ -214,13 +212,13 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
     /* The three index routes are gone but their RECORD pages are not, and a prefix is matched
        against a pathname — so `/ledger/` stays here to keep `/ledger/L-0164/` highlighting Records.
        A query string could never match and would have silently un-highlighted every record page. */
-    activePrefixes: ['/search/', '/series/', '/ledger/', '/provenance/', '/contested/', '/exposure/'],
+    activePrefixes: ['/search/', '/series/', '/ledger/', '/provenance/', '/search/#contested', '/search/#exposure'],
     items: [
       { href: '/search/?layer=ledger', label: 'Commitments and events', description: 'Reforms, announcements, events and episodes.' },
       { href: '/search/?layer=series', label: 'Indicators', description: 'Published series, spans, seams and caveats.' },
       { href: '/search/?layer=provenance', label: 'Measurement disputes', description: 'Definitions, basis changes and incompatible instruments.' },
-      { href: '/contested/', label: 'Contested readings', description: 'Open verdicts and what could—or could not—settle them.' },
-      { href: '/exposure/', label: 'Exposure', description: 'Records where a shock is offered as the reason.', landing: false },
+      { href: '/search/#contested', label: 'Contested readings', description: 'Open verdicts and what could—or could not—settle them.' },
+      { href: '/search/#exposure', label: 'Exposure', description: 'Records where a shock is offered as the reason.', landing: false },
     ],
   },
   {
@@ -228,7 +226,7 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
     href: '/compare/',
     label: 'Compare',
     description: 'Aligned series inside India, or India beside four comparator countries.',
-    activePrefixes: ['/compare/', '/compare/#peers'],
+    activePrefixes: ['/compare/'],
     items: [
       { href: '/compare/#series-comparison', label: 'Series', description: 'Place two compatible indicators side by side.' },
       { href: '/compare/#peers', label: 'India and peers', description: 'India beside Bangladesh, Vietnam, Indonesia and China.' },
@@ -239,7 +237,7 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
     href: '/unmeasured/',
     label: 'Gaps',
     description: 'What the published record cannot answer, and what would close the gap.',
-    activePrefixes: ['/unmeasured/', '/unmeasured/#unanswerable', '/questions/publication-stopped/', '/seams/'],
+    activePrefixes: ['/unmeasured/', '/questions/publication-stopped/', '/seams/'],
     items: [
       { href: '/unmeasured/#unanswerable', label: 'Four public questions', description: 'Four familiar questions and four different reasons they remain unanswered.' },
       { href: '/unmeasured/#declared-absences', label: 'Declared absences', description: 'What individual records say is not measured.' },
@@ -255,13 +253,13 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
     description: 'How the record was built, sourced, derived and corrected.',
     /* Prefixes match a pathname, so a fragment can never be one and a repeat buys nothing. The
        three folded routes are reached at `/method/#…` and `/method/` already covers them. */
-    activePrefixes: ['/method/', '/publishers/', '/corrections/'],
+    activePrefixes: ['/method/', '/publishers/'],
     items: [
       { href: '/method/', label: 'Method', description: 'Evidence rules, source tiers, marks and limits.' },
       { href: '/publishers/', label: 'Sources and publishers', description: 'The bodies behind citations, resolved across names.' },
       { href: '/method/#data', label: 'Public data', description: 'Download the records in their published schema.' },
       { href: '/method/#derivations', label: 'Derivations', description: 'Recompute claims this instrument makes about itself.' },
-      { href: '/corrections/', label: 'Corrections', description: 'What the record changed and why.' },
+      { href: '/method/#corrections', label: 'Corrections', description: 'What the record changed and why.' },
       { href: '/method/#counterfactual', label: 'Counterfactual', description: 'The modelling feature considered and deliberately declined.', landing: false },
     ],
   },

@@ -55,7 +55,7 @@ export default async function LensPage({ params }: Props) {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / <Link href="/lenses/">lenses</Link> / {l}
+        <Link href="/">instrument</Link> / <Link href="/overview/#lenses">lenses</Link> / {l}
       </p>
       <h1>{LENS_LABELS[l]}</h1>
       <p className="lede">{LENS_BLURBS[l]}</p>

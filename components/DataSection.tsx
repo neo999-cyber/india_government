@@ -109,7 +109,7 @@ export function DataSection() {
       <p>
         Cite the commit. The manifest carries it, every build stamps it, and it is the only thing
         that makes a figure you quote re-findable after the record is corrected — which happens,
-        deliberately and often. <Link href="/corrections/">What has been corrected, and when</Link>{' '}
+        deliberately and often. <Link href="/method/#corrections">What has been corrected, and when</Link>{' '}
         is published for the same reason.
       </p>
       <p className="prose-note">{contract.licence}</p>

@@ -1,13 +1,10 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { ledger } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS } from '@/lib/format';
 import { EXPOSURE_ADJUDICATIONS } from '@/lib/types';
 import type { ExposureAdjudication, LedgerRecord } from '@/lib/types';
 import { EXPOSURE_ADJUDICATION_LABELS, EXPOSURE_ROLE_LABELS, RecordMarks } from '@/components/marks';
 import { ExposureMatrix } from '@/components/ExposureMatrix';
-
-export const metadata: Metadata = { title: 'Exposure — what the corpus does with an exogenous defence' };
 
 /**
  * ONE PAGE, LED BY THE ADJUDICATION AXIS — and the refusals are not given a page of their own.
@@ -83,7 +80,7 @@ function RecordRow({ record }: { record: LedgerRecord }) {
   );
 }
 
-export default function ExposureIndex() {
+export function ExposureSection() {
   const declaring = ledger.filter((l) => (l.shockExposure ?? []).length > 0);
   const entries = declaring.flatMap((l) => l.shockExposure ?? []);
   const refusingEntries = entries.filter((e) => e.adjudication && REFUSING.includes(e.adjudication));
@@ -136,10 +133,7 @@ export default function ExposureIndex() {
 
   return (
     <>
-      <p className="crumb">
-        <Link href="/">instrument</Link> / exposure
-      </p>
-      <h1 className="page-lead">Exposure — what the corpus does with an exogenous defence</h1>
+      <h2 id="exposure">Exposure — what the corpus does with an exogenous defence</h2>
       <p className="lede">
         When an outcome is bad and a pandemic, a commodity shock or a foreign tariff can be pointed
         at, the defence writes itself. <strong>These are the records where this instrument was

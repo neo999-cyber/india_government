@@ -8,7 +8,7 @@ import { RecordMarks } from '@/components/marks';
  *
  * ============================ WHY THIS REPLACES A TABLE ROW ===================================
  *
- * `/contested/` listed 68 records as title, term and domains. A reader learned that a contest
+ * `/search/#contested` listed 68 records as title, term and domains. A reader learned that a contest
  * exists and never met it. **The two readings are the content of a contested record** — the schema
  * requires both on every scored record and calls each *the strongest good-faith case* — and a page
  * about contests that shows neither is an index of disputes rather than the disputes.
