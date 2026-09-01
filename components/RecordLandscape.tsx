@@ -1,8 +1,9 @@
 'use client';
+import Link from 'next/link';
 import { useRef, useState } from 'react';
 // PLATE from the pure module; the subject TYPE only, so no data module reaches the browser.
 import { PLATE } from '@/lib/landscape-plate';
-import type { LandscapeSubject } from '@/lib/landscape';
+import type { LandscapeSubject, SubjectYear } from '@/lib/landscape';
 
 /**
  * THE LANDING PICTURE A READER ENTERS THROUGH.
@@ -38,8 +39,85 @@ type Props = {
    * or anywhere else.
    */
   totals: { series: number; records: number };
+  /**
+   * THE YEARS, AND THE ARCHIVE'S OWN PER-YEAR COUNTS — corpus totals, never a sum of the fourteen.
+   * A record declaring three subjects is one filing in its year and three marks on the picture, and
+   * those two facts are counted by different code for that reason.
+   */
+  years: readonly number[];
+  yearTotals: readonly SubjectYear[];
   children: React.ReactNode;
 };
+
+/**
+ * WHAT THE RECORD HOLDS FOR ONE SUBJECT IN ONE YEAR — and it COUNTS AND LINKS rather than listing.
+ *
+ * **That is a rule decision, not a space one, and the Atlas board already made it**: a panel that
+ * named the records would be a LISTING SURFACE, and rules 3a and 4b would then require every caveat
+ * and every declared absence to render inside it in full — 97 of the 212 dated records carry a
+ * caveat averaging 450 characters, and Governance 2019 alone holds 16 filings. Measured, listing
+ * them here would have added roughly 200 KB to the one page that exists to feel light, and would
+ * have built a second listing to keep in step with `/years/`, which is already bound by
+ * `listing-marks` and already lists exactly this.
+ *
+ * So the brief states the SHAPE of the year and hands the reader the surface that holds it.
+ *
+ * **AND IT SAYS "THE RECORD HOLDS", NEVER "WHAT HAPPENED".** A thin year means nobody filed, not
+ * that nothing occurred, and rule 5d is exactly the distinction between a claim about the world and
+ * a claim about what the sources contain. An empty cell is rendered in the absence idiom for the
+ * same reason — Poverty is empty in 10 of the 13 years, and that emptiness is the most truthful
+ * thing this picture can say about it.
+ */
+function Brief({
+  year,
+  subject,
+  cell,
+  archive,
+}: {
+  year: number | null;
+  subject: LandscapeSubject | null;
+  cell: SubjectYear | null;
+  archive: SubjectYear | null;
+}) {
+  if (year === null)
+    return (
+      <p className="lsc-brief-idle">
+        Move the year control to read what the record holds for a single year
+        {subject ? ` of ${subject.label.toLowerCase()}` : ''}.
+      </p>
+    );
+  const c = subject ? cell : archive;
+  const name = subject ? subject.label : 'The archive';
+  const empty = c !== null && c.reporting === 0 && c.records === 0;
+  return (
+    <>
+      <p className="lsc-brief-h">
+        <strong>{name}</strong> <span className="mono">in {year}</span>
+      </p>
+      {empty ? (
+        <p className="absence lsc-brief-none">
+          Nothing is filed here. No series of this subject carries an observation dated {year}, and
+          no record is dated in it. That is a fact about this archive, not about the year.
+        </p>
+      ) : (
+        <p className="lsc-brief-n">
+          <span>
+            <b>{c ? c.reporting : 0}</b>
+            <i>series reported</i>
+          </span>
+          <span>
+            <b>{c ? c.records : 0}</b>
+            <i>{c && c.records === 1 ? 'filing dated here' : 'filings dated here'}</i>
+          </span>
+        </p>
+      )}
+      <p className="lsc-brief-go">
+        <Link href={`/years/${year}/`}>The {year} record in full →</Link>
+        {subject ? <Link href={`/domains/${subject.key}/`}>{subject.label} in full →</Link> : null}
+      </p>
+    </>
+  );
+}
 
 /**
  * PINS, IN PERCENT OF THE PLATE — because the labels are HTML over the picture, not SVG inside it.
@@ -71,8 +149,11 @@ function pinLayout(subjects: LandscapeSubject[]) {
   }));
 }
 
-export function RecordLandscape({ subjects, totals, children }: Props) {
+export function RecordLandscape({ subjects, totals, years, yearTotals, children }: Props) {
   const [hot, setHot] = useState<string | null>(null);
+  /** null is "all years": every mark lit, the brief idle. The slider cannot express it, so the
+      button beside it does, and the slider's `aria-valuetext` says which state it is in. */
+  const [year, setYear] = useState<number | null>(null);
   /* A click event is not necessarily a PointerEvent, so the pointer TYPE is recorded on pointerdown
      and read on click. Reading it off the click's own native event does not typecheck, and would be
      undefined for a keyboard-activated click in any case. */
@@ -86,6 +167,10 @@ export function RecordLandscape({ subjects, totals, children }: Props) {
    */
   const tapped = useRef<string | null>(null);
   const current = hot ? subjects.find((s) => s.key === hot) ?? null : null;
+  const yi = year === null ? -1 : years.indexOf(year);
+  const bit = yi < 0 ? 0 : 1 << yi;
+  const cell = current && yi >= 0 ? current.years[yi] ?? null : null;
+  const archive = yi >= 0 ? yearTotals[yi] ?? null : null;
   const pins = pinLayout(subjects);
   const drawn = [...subjects].sort((a, b) => a.baseY - b.baseY);
 
@@ -151,8 +236,14 @@ export function RecordLandscape({ subjects, totals, children }: Props) {
               <g key={s.key} className={`lsc-lm${hot === s.key ? ' is-hot' : ''}`} data-k={s.key}>
                 <ellipse className="lsc-shadow" cx={s.cx} cy={s.baseY - 3} rx={sw} ry={sw * 0.34}
                          filter="url(#lsc-soft)" />
+                {/* A MARK IS LIT IN A YEAR ITS OWN FILING IS ACTIVE IN — a series in a year it
+                    carries an India observation, a record in the year it is dated. WHICH mark dims
+                    is as meaningless as where it sits, which is the picture's settled claim already:
+                    density is real, position is not. What is exact is the COUNT, per filing,
+                    checkable against /data. */}
                 {s.marks.map((m, i) => (
-                  <circle key={i} className="lsc-fm" cx={m.x} cy={m.y} r={1.9} />
+                  <circle key={i} className={`lsc-fm${bit && !(m.m & bit) ? ' is-off' : ''}`}
+                          cx={m.x} cy={m.y} r={1.9} />
                 ))}
                 <image className="lsc-art" href={`/landscape/${s.art}.webp`}
                        x={s.cx - s.w / 2} y={s.baseY - s.h} width={s.w} height={s.h} />
@@ -196,6 +287,55 @@ export function RecordLandscape({ subjects, totals, children }: Props) {
             </a>
           ))}
         </div>
+        </div>
+
+        {/* THE YEAR CONTROL AND THE BRIEF. The range runs `YEARS` exactly — the same 2014-2026 the
+            year pages are generated over — so every year the reader can reach has a page the brief
+            can link to. A range that ran to 2013 would count a year and then dead-end on it, which
+            is the failure `lib/years.ts` records having already been paid for once. */}
+        <div className="lsc-year">
+          <div className="scrub lsc-scrub">
+            <label className="scrub-label" htmlFor="lsc-yr">Move through the years</label>
+            <div className="scrub-track">
+              <input
+                id="lsc-yr"
+                type="range"
+                min={years[0]}
+                max={years[years.length - 1]}
+                step={1}
+                value={year ?? years[0]}
+                onChange={(e) => setYear(Number(e.target.value))}
+                aria-valuetext={
+                  year === null ? 'all years; every filing on the picture is lit' : String(year)
+                }
+              /* THE FIRST YEAR WAS UNREACHABLE FROM THE UNSET STATE, ON BOTH SCRUBBERS.
+                 While no year is chosen the thumb parks at the minimum, so asking for the minimum
+                 changes nothing, fires no `change`, and the reader sees the unset readout with the
+                 thumb sitting on the year they just clicked. Measured on both surfaces with a
+                 positive control: the third year moved the readout, the first never did.
+                 Widening the range by one step would fix it and would break the Atlas's stated
+                 invariant that the slider's range IS the charts' range, so instead an interaction
+                 that produces no value change is itself read as a selection. */
+              onPointerUp={(e) => {
+                if (year === null) setYear(Number((e.target as HTMLInputElement).value));
+              }}
+              onKeyUp={(e) => {
+                if (year === null) setYear(Number((e.target as HTMLInputElement).value));
+              }}
+              />
+              <span className="scrub-ends" aria-hidden="true">
+                <span>{years[0]}</span>
+                <span>{years[years.length - 1]}</span>
+              </span>
+            </div>
+            <button type="button" className="lsc-allyears" onClick={() => setYear(null)}
+                    disabled={year === null}>
+              All years
+            </button>
+          </div>
+          <div className="lsc-brief" aria-live="polite">
+            <Brief year={year} subject={current} cell={cell} archive={archive} />
+          </div>
         </div>
       </div>
     </>

@@ -722,6 +722,20 @@ export function OverviewBoard({
                   : 'no year selected; every chart shows its whole span'
                 : String(year)
             }
+            /* THE FIRST YEAR WAS UNREACHABLE FROM THE UNSET STATE, ON BOTH SCRUBBERS.
+               While no year is chosen the thumb parks at the minimum, so asking for the minimum
+               changes nothing, fires no `change`, and the reader sees the unset readout with the
+               thumb sitting on the year they just clicked. Measured on both surfaces with a
+               positive control: the third year moved the readout, the first never did.
+               Widening the range by one step would fix it and would break the Atlas's stated
+               invariant that the slider's range IS the charts' range, so instead an interaction
+               that produces no value change is itself read as a selection. */
+            onPointerUp={(e) => {
+              if (year === null) setYear(Number((e.target as HTMLInputElement).value));
+            }}
+            onKeyUp={(e) => {
+              if (year === null) setYear(Number((e.target as HTMLInputElement).value));
+            }}
           />
           <span className="scrub-ends" aria-hidden="true">
             <span>{X0}</span>

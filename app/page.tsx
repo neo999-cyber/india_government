@@ -4,7 +4,8 @@ import { RecordMarks } from '@/components/marks';
 import { RecordConstellation } from '@/components/RecordConstellation';
 import { AREAS } from '@/lib/constellation';
 import { RecordLandscape } from '@/components/RecordLandscape';
-import { landscapeSubjects } from '@/lib/landscape';
+import { archiveYears, landscapeSubjects } from '@/lib/landscape';
+import { YEARS } from '@/lib/years';
 
 const WAY_RECORDS = [
   'res-capacity-share',
@@ -46,6 +47,8 @@ export default function HomePage() {
       <RecordLandscape
         subjects={landscapeSubjects()}
         totals={{ series: series.length, records: ledger.length }}
+        years={YEARS}
+        yearTotals={archiveYears()}
       >
         <section className="home-intro" aria-labelledby="home-title">
           <p className="home-kicker mono">India, on the record &middot; May 2014 onward</p>

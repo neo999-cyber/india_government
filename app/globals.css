@@ -7261,6 +7261,77 @@ li {
 /* ONE MARK PER FILING. The marks take the ink token, so they invert with the theme and stay
    legible on the plate at either setting. */
 .lsc-fm { fill: var(--ink); opacity: 0.42; }
+/* A MARK DIMS RATHER THAN DISAPPEARING WHEN ITS FILING IS NOT ACTIVE IN THE SELECTED YEAR. It has
+   to stay visible: the whole ground is the subject's record and the lit subset is the year's part
+   of it, so removing the rest would turn a subset into the total and make every year look complete.
+   Opacity only — the mark does not move, resize or change colour, because size and position are not
+   claims this picture makes. */
+.lsc-fm { transition: opacity 0.3s ease; }
+.lsc-fm.is-off { opacity: 0.1; }
+
+/* ==============================================================================================
+   THE YEAR CONTROL AND THE BRIEF.
+
+   The brief COUNTS AND LINKS; it never lists. The reason is in `RecordLandscape` beside the
+   component, because it is a rule decision (3a and 4b) rather than a layout one.
+   ============================================================================================== */
+.lsc-year {
+  margin: 1.6rem 0 0;
+  display: grid;
+  gap: 1.1rem 2rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+  align-items: stretch;
+}
+/* `.scrub` is the Atlas's bar and is STICKY there, which is right for a control that governs
+   fourteen charts a reader scrolls past. Here it governs one picture directly above it, so it
+   stays put; a bar that detached and followed the reader down into the constellation would be
+   pointing at nothing. The extra bottom padding is for `.scrub-ends`, whose -6px margin sits it
+   below the 44px input and was being clipped by the panel's own padding. */
+.lsc-scrub { margin: 0; position: static; top: auto; z-index: auto; padding-bottom: 1.15rem; }
+.lsc-scrub .scrub-label { margin-bottom: 0.45rem; }
+.lsc-allyears {
+  margin-top: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  padding: 0.34rem 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.lsc-allyears:hover:not(:disabled) { color: var(--ink); border-color: var(--ink-dim); }
+.lsc-allyears:disabled { opacity: 0.45; cursor: default; }
+
+.lsc-brief {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  padding: 0.9rem 1.1rem;
+  min-height: 8.5rem;
+}
+.lsc-brief-idle { margin: 0; font-size: 0.86rem; color: var(--ink-dim); max-width: 34ch; }
+.lsc-brief-h { margin: 0 0 0.55rem; }
+.lsc-brief-h strong { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; }
+.lsc-brief-h span { font-size: 0.72rem; color: var(--ink-dim); }
+.lsc-brief-n { display: flex; gap: 1.6rem; margin: 0 0 0.7rem; }
+.lsc-brief-n span { display: flex; flex-direction: column; }
+.lsc-brief-n b {
+  font-family: var(--font-mono);
+  font-size: 1.45rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.lsc-brief-n i { font-style: normal; font-size: 0.68rem; color: var(--ink-dim); }
+/* The empty cell keeps the site's absence idiom — dashed, unfilled, no figure — because it is one:
+   nothing measures that subject in that year and the panel must not look like a result. */
+.lsc-brief-none { margin: 0 0 0.7rem; font-size: 0.82rem; }
+.lsc-brief-go { display: flex; flex-wrap: wrap; gap: 0.2rem 1.1rem; margin: 0; font-size: 0.78rem; }
+
+@media (max-width: 900px) {
+  .lsc-year { grid-template-columns: minmax(0, 1fr); }
+}
 .lsc-lm { transition: opacity 0.35s ease; }
 .lsc.is-dimmed .lsc-lm:not(.is-hot) { opacity: 0.42; }
 
