@@ -1,27 +1,11 @@
 import Link from 'next/link';
 import { ledger, series } from '@/lib/data';
-import { RecordConstellation } from '@/components/RecordConstellation';
-import { AREAS } from '@/lib/constellation';
+import { EvidenceBase } from '@/components/EvidenceBase';
 import { RecordLandscape } from '@/components/RecordLandscape';
 import { archiveYears, landscapeSubjects } from '@/lib/landscape';
 import { YEARS } from '@/lib/years';
 
 export default function HomePage() {
-  /* Density is derived from the archive; location inside the outline remains deliberately
-     conceptual. A multi-domain ledger record belongs to every area it declares. */
-  const areaCounts = Object.fromEntries(
-    AREAS.map((area) => [
-      area.id,
-      area.domains.reduce(
-        (count, domain) =>
-          count +
-          series.filter((record) => record.domain === domain).length +
-          ledger.filter((record) => record.domains.includes(domain)).length,
-        0,
-      ),
-    ]),
-  );
-
   return (
     <>
       {/* THE LANDSCAPE IS THE DOOR — operator decision 2026-08-27, option D of four mocked.
@@ -49,12 +33,25 @@ export default function HomePage() {
         </section>
       </RecordLandscape>
 
-      {/* THE CONSTELLATION KEEPS ITS PLACE, SMALLER, AND THE REASON IS NOT SENTIMENT.
-          It is the only picture on this site built on India&rsquo;s real outline, and it declares its
-          own positions conceptual. That declaration is what lets the landscape above be invented
-          terrain without a reader taking it for geography. Remove this and the landscape becomes
-          the site&rsquo;s only picture of India, which it must never be. */}
-      <RecordConstellation counts={areaCounts} compact />
+      {/* THE CONSTELLATION LEAVES THE FRONT DOOR, AND IS NOT DELETED.
+          Operator, 2026-09-01: "i dont see the point of the constellation map — no purpose — feels
+          like a gimmick." The reason it read that way is structural, not cosmetic: THERE IS NO
+          GEOGRAPHY IN THIS CORPUS. No series or record carries a state, region or district field;
+          `country` holds only IND and the four peers; 27 of 269 series name a state at all, and
+          only inside their titles. An outline over data with no places in it cannot be made to
+          mean anything.
+
+          **WITHDRAWN, and it was the argument for keeping it here:** "it is the only picture on
+          this site built on India's real outline, and it declares its own positions conceptual —
+          that declaration is what lets the landscape above be invented terrain without a reader
+          taking it for geography." The landscape says "invented terrain, not a map" in words, and
+          `/seams/` now carries the instrument's argument about what can and cannot be read. The
+          declaration was doing less work than that sentence claimed.
+
+          It remains one of the Atlas's four views, labelled "What the archive covers", which is
+          where a coverage picture belongs — so nothing is lost and the Survey of India outline and
+          its attribution stay on the site. */}
+      <EvidenceBase />
 
       {/* THE SECOND ROOM, NAMED AS ONE — operator reading, 2026-09-01: readers "are overwhelmed
           with records and text", so this page is the picture and the dense surfaces sit one step

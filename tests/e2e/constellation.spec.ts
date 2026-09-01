@@ -24,6 +24,14 @@ import { test, expect } from '@playwright/test';
  * context, and `display: none` would be the easy wrong fix.
  */
 
+/**
+ * THE CONSTELLATION LEFT THE LANDING PAGE ON 2026-09-01 and is now one of the Atlas's four views,
+ * where it always also lived. **WITHDRAWN: `page.goto('/')` in all five places.** Nothing about the
+ * artwork changed — this file's assertions are about its own layout and interaction contract, which
+ * is why repointing the route was the whole of the change.
+ */
+const ROUTE = '/overview/?view=constellation';
+
 const boxes = async (page: import('@playwright/test').Page) =>
   page.evaluate(() => {
     const rc = document.querySelector('.rc')!;
@@ -57,7 +65,7 @@ const overlaps = (a: Box, z: Box) => !(a.r <= z.l || z.r <= a.l || a.b <= z.t ||
 test.describe('record constellation', () => {
   test('320px — nothing pushes the document sideways, name hidden or shown', async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 720 });
-    await page.goto('/');
+    await page.goto(ROUTE);
 
     /**
      * THE RIGHT EDGE ONLY, and that is not laziness. An earlier version also failed anything with
@@ -98,7 +106,7 @@ test.describe('record constellation', () => {
       page,
     }) => {
       await page.setViewportSize({ width, height: 900 });
-      await page.goto('/');
+      await page.goto(ROUTE);
       const b = await boxes(page);
 
       expect(b.badges, 'all eight areas are present').toHaveLength(8);
@@ -142,12 +150,18 @@ test.describe('record constellation', () => {
   for (const width of [768, 1100, 1280, 1440, 1710] as const) {
     test(`${width}px — the artwork and the prose share one left edge`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 });
-      await page.goto('/');
+      await page.goto(ROUTE);
 
-      const h1 = (await page.locator('h1').first().boundingBox())!;
+      // ANCHORED TO THE COMPONENT'S OWN PROSE, NOT THE PAGE'S `h1`. **WITHDRAWN: a comparison
+      // against `page.locator('h1')`.** That worked while this artwork was the landing page's own
+      // block; on the Atlas it sits inside the board, 32px in from the page heading, and the test
+      // failed on a correct layout. The property being bound is that the artwork does not run on a
+      // width track of its own — so the thing to compare it with is the prose beside it, `.rc-copy`,
+      // which travels with the component to whatever page hosts it.
+      const prose = (await page.locator('.rc-copy').boundingBox())!;
       const art = (await page.locator('.rc-window').boundingBox())!;
 
-      expect(Math.abs(art.x - h1.x), 'the artwork and the heading start at different x').toBeLessThanOrEqual(1);
+      expect(Math.abs(art.x - prose.x), 'the artwork and its prose start at different x').toBeLessThanOrEqual(1);
       expect(art.x, 'the artwork runs off the left edge').toBeGreaterThanOrEqual(-1);
       expect(art.x + art.width, 'the artwork runs off the right edge').toBeLessThanOrEqual(width + 1);
 
@@ -161,7 +175,7 @@ test.describe('record constellation', () => {
   test('selecting focuses one constellation, selecting again returns to all eight', async ({
     page,
   }) => {
-    await page.goto('/');
+    await page.goto(ROUTE);
 
     const status = page.locator('.rc-status');
     await expect(status).toHaveText('All eight constellations');
@@ -194,7 +208,7 @@ test.describe('record constellation', () => {
   });
 
   test('the official outline, the ghost sheet and the attribution all render', async ({ page }) => {
-    await page.goto('/');
+    await page.goto(ROUTE);
 
     // The outline is the thing a reader actually sees, and it is 35KB of official geometry. A
     // truncated or missing path would leave the marks floating on nothing while every other

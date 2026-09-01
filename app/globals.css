@@ -4627,6 +4627,50 @@ details.more > summary {
    difference between them is which side of one declared field their rows fell on. */
 
 /* ==============================================================================================
+   WHAT THIS ARCHIVE RESTS ON — the landing page's second picture, in the constellation's slot.
+
+   ONE MARK PER CITATION, in six bands rather than six colours. The tiers are a ladder and position
+   says so without asking a hue to carry an ordering that would then have to be explained; the
+   shape is the whole claim, because T1 is most of the archive and everything else is a margin.
+   ============================================================================================== */
+.evb { margin: 3.5rem 0 0; border-top: 1px solid var(--rule); padding-top: 1.6rem; }
+.evb-head h2 { margin: 0.2rem 0 0.5rem; font-size: clamp(1.4rem, 2.6vw, 1.9rem); text-wrap: balance; }
+.evb-head p { max-width: var(--measure); color: var(--ink-2); margin: 0; }
+.evb-tiers { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 0.9rem; }
+/* A MARK FIELD IS NOT PROSE, AND THE SITE'S `li` CAP IS FOR PROSE. Every `li` is capped at 78ch —
+   795.6px here — which is right for a list a reader reads and wrong for a block whose whole job is
+   to show a mass. Measured: the section is 1296px and the marks were wrapping at 796. Overridden
+   for this one list, and only for it. */
+.evb-tier { max-width: none; }
+.evb-tier-h {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin: 0 0 0.3rem;
+  flex-wrap: wrap;
+}
+.evb-tier-h b { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--ink); min-width: 2.4rem; }
+.evb-n { font-size: 0.95rem; font-variant-numeric: tabular-nums; color: var(--ink); min-width: 3rem; }
+.evb-what { font-size: 0.76rem; color: var(--ink-dim); }
+/* The marks. `line-height: 0` so the rows pack tightly and the block reads as a mass rather than
+   as a list; each mark is the ink token, so it inverts with the theme like every other mark. */
+.evb-marks { display: block; line-height: 0; }
+.evb-marks i {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  margin: 0 2px 2px 0;
+  background: var(--ink);
+  opacity: 0.55;
+  border-radius: 1px;
+}
+.evb-split { margin: 1.6rem 0 0; }
+.evb-split p { max-width: var(--measure); color: var(--ink-2); margin: 0 0 0.6rem; }
+.evb-most { font-size: 0.82rem; }
+.evb-most b { color: var(--ink); }
+.evb-go { display: flex; flex-wrap: wrap; gap: 0.2rem 1.4rem; font-size: 0.82rem; }
+
+/* ==============================================================================================
    WHERE THE INSTRUMENTS CHANGED — the seam grid.
 
    The cells are LINKS, not hover targets: the page carries no script of its own, every cell is
@@ -5881,8 +5925,18 @@ pre {
   width: min(94%, 45rem);
   /* AND A HEIGHT CAP, because the first enlargement only bounded the width: at 94% the stage came
      out 720x823 in an 828x704 panel — 117% of the panel's height, overflowing it. With
-     `aspect-ratio` set, whichever of the two caps binds first shrinks the other. */
-  max-height: 92%;
+     `aspect-ratio` set, whichever of the two caps binds first shrinks the other.
+
+     **WITHDRAWN: `max-height: 92%`, and the reason is arithmetic rather than taste.** The stage is
+     centred with `top: 45%` and `translateY(-50%)`, so its top edge sits at `45% - height/2`. At 92%
+     that is 45 − 46 = −1%: the map is clipped by one per cent of the panel, measured at 7px in a
+     700px panel. **It never showed on the landing page** because the compact variant caps the stage
+     at 21rem, far below the height cap, so the binding constraint there was width. It showed the
+     moment the artwork was tested where it renders full size, on the Atlas.
+
+     90% makes the two agree: top at 45 − 45 = 0%, foot at 90%, and the clear band the captions need
+     is what remains below it. */
+  max-height: 90%;
   aspect-ratio: 560 / 640;
 }
 

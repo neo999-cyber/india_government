@@ -73,20 +73,25 @@ test.describe('phone journeys', () => {
      * search box — and a reader who does not yet know what the archive holds cannot choose between
      * tools. The landscape names the fourteen subjects instead.
      *
-     * **BOTH PICTURES ARE ASSERTED, AND THE ORDER BETWEEN THEM IS THE POINT.** The landscape must
-     * finish before the constellation begins: if that ever inverts, the page has quietly gone back
-     * to leading with the abstract picture.
+     * **BOTH BLOCKS ARE ASSERTED, AND THE ORDER BETWEEN THEM IS THE POINT.** The landscape must
+     * finish before the evidence base begins: if that ever inverts, the page has gone back to
+     * leading with something other than the fourteen named subjects.
+     *
+     * **WITHDRAWN: `.rc-window`, the constellation.** It left the landing page on 2026-09-01 —
+     * there is no geography in this corpus for an outline of India to encode — and is now one of
+     * the Atlas's four views, where `constellation.spec.ts` tests it. What stands here instead is
+     * the evidence base: 1,205 citations, one mark each, banded by tier.
      */
     const landscape = page.locator('.lsc-svg');
-    const constellation = page.locator('.rc-window');
+    const evidence = page.locator('.evb-tiers');
     await expect(landscape).toBeVisible();
-    await expect(constellation).toBeVisible();
+    await expect(evidence).toBeVisible();
 
     const lb = await landscape.boundingBox();
-    const cb = await constellation.boundingBox();
+    const cb = await evidence.boundingBox();
     expect(lb, 'the landscape is missing').not.toBeNull();
-    expect(cb, 'the constellation is missing').not.toBeNull();
-    expect(lb!.y, 'the constellation appears above the landscape').toBeLessThan(cb!.y);
+    expect(cb, 'the evidence base is missing').not.toBeNull();
+    expect(lb!.y, 'the evidence base appears above the landscape').toBeLessThan(cb!.y);
 
     /**
      * THE PINS ARE HTML OVER THE PICTURE, NOT TEXT INSIDE IT — rewritten 2026-08-28.
@@ -129,9 +134,13 @@ test.describe('phone journeys', () => {
     await expect(page.locator('.lsc-read-name')).toHaveText(expected);
     await expect(page).toHaveURL(/\/$/);
 
-    const government = page.locator('.rc-node-btn[data-area="government"]');
-    await government.tap();
-    await expect(government).toHaveAttribute('aria-pressed', 'true');
+    /* **WITHDRAWN: tapping `.rc-node-btn[data-area="government"]` and asserting `aria-pressed`.**
+       The constellation left the landing page on 2026-09-01. Its touch contract did not go
+       untested — it moved with the component to `constellation.spec.ts`, which runs at 375px and
+       taps the same buttons. What stands here now has no controls to tap: the evidence base is a
+       field of 1,205 marks, so the property left to hold at this width is that it does not push
+       the document sideways. */
+    await expect(page.locator('.evb-marks i').first()).toBeVisible();
     await expectNoBodyOverflow(page);
   });
 
