@@ -92,13 +92,29 @@ function marks(cx: number, baseY: number, w: number, n: number) {
  */
 export type LandscapeMark = { readonly x: number; readonly y: number; readonly m: number };
 
-/** What the record holds for one subject in one year. Counts only; the rows are rendered as HTML. */
+/**
+ * What the record holds for one subject in one year. COUNTS ONLY — no record is named, which is
+ * what keeps this off the listing rules that would drag every caveat onto the landing page.
+ *
+ * **It reported HOW MUCH and said nothing about WHAT KIND**, which is the whole of what a reader
+ * asked of it. Counts of assessments are the one roll-up the rules allow by name: a scorecard rolls
+ * up to counts of assessments, never to a grade, and this is that and stops there.
+ */
 export type SubjectYear = {
   readonly year: number;
   /** Distinct series of this subject carrying an India observation dated in this year. */
   readonly reporting: number;
   /** Ledger records declaring this subject and dated in this year. */
   readonly records: number;
+  /** `[assessment, n]`, commonest first. Empty where the year's filings carry none. */
+  readonly assessments: readonly (readonly [string, number])[];
+  /** `[type, n]`, commonest first. */
+  readonly types: readonly (readonly [string, number])[];
+  /**
+   * Series of this subject whose own `breaks[]` fall in this year. The most useful thing the brief
+   * can say, because no count tells a reader that the year's figures are not comparable.
+   */
+  readonly seams: number;
 };
 
 export type LandscapeSubject = Landmark & {
@@ -109,6 +125,25 @@ export type LandscapeSubject = Landmark & {
   readonly marks: readonly LandscapeMark[];
   /** One entry per year of `YEARS`, in that order. */
   readonly years: readonly SubjectYear[];
+  /** Declared absences on this subject's records. Per subject, never summed across them. */
+  readonly absences: number;
+  /**
+   * The last year ANY series of this subject reported, and the total observations under it.
+   *
+   * **BOTH, BECAUSE THE FIRST ALONE MISLEADS, AND IT DID.** The panel first read "this subject's
+   * series last reported for 2018" — true of poverty, and read as "poverty was measured in 2018".
+   * It was not. Poverty carries TWO series: `poverty-tendulkar`, the headcount, whose last
+   * observation is FY2011-12, and `farm-household-income`, which runs to FY2018-19. A `max()` over
+   * a subject's heterogeneous series is a number about the FILING, not about the thing, and
+   * presenting it as the latter is the read-the-label-beside-the-value defect exactly.
+   *
+   * With the observation count beside it the sentence stops claiming a measurement and starts
+   * describing a record: poverty carries 2 series and 5 observations in all. That thinness is the
+   * finding, and it points the reader at the subject rather than answering for it.
+   */
+  readonly lastReported: number | null;
+  /** India observations across every series of this subject, over their whole spans. */
+  readonly observations: number;
 };
 
 /**
@@ -129,6 +164,25 @@ const filingMasks = (d: Domain): number[] => {
   return out;
 };
 
+/** `[value, n]` commonest first, then alphabetical so the order is stable across builds. */
+const tally = (values: readonly (string | undefined)[]): (readonly [string, number])[] => {
+  const m = new Map<string, number>();
+  for (const v of values) if (v) m.set(v, (m.get(v) ?? 0) + 1);
+  return [...m.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+};
+
+/** The last year ANY series of this subject carried an India observation, over its whole span. */
+const lastReported = (d: Domain): number | null => {
+  const ys: number[] = [];
+  for (const s of series.filter((x) => x.domain === d))
+    for (const p of s.points)
+      if (p.country === 'IND' && p.value !== null) {
+        const y = yearOf(String(p.period));
+        if (Number.isFinite(y)) ys.push(y);
+      }
+  return ys.length ? Math.max(...ys) : null;
+};
+
 /** Server-side: everything the picture needs, derived from `/data` so it cannot drift from it. */
 export function landscapeSubjects(): LandscapeSubject[] {
   return LANDMARKS.map((l) => {
@@ -143,15 +197,29 @@ export function landscapeSubjects(): LandscapeSubject[] {
       filings: filings(l.key),
       from: firstYear(l.key),
       marks: pts.map((p, i) => ({ ...p, m: masks[i] ?? 0 })),
-      years: YEARS.map((year) => ({
-        year,
-        reporting: mine.filter((s) =>
-          s.points.some(
-            (p) => p.country === 'IND' && p.value !== null && yearOf(String(p.period)) === year,
-          ),
-        ).length,
-        records: rs.filter((r) => yearOf(r.date) === year).length,
-      })),
+      years: YEARS.map((year) => {
+        const dated = rs.filter((r) => yearOf(r.date) === year);
+        return {
+          year,
+          reporting: mine.filter((s) =>
+            s.points.some(
+              (p) => p.country === 'IND' && p.value !== null && yearOf(String(p.period)) === year,
+            ),
+          ).length,
+          records: dated.length,
+          assessments: tally(dated.map((r) => r.assessment)),
+          types: tally(dated.map((r) => r.type)),
+          seams: mine.filter((s) =>
+            (s.breaks ?? []).some((b) => yearOf(String(b.period)) === year),
+          ).length,
+        };
+      }),
+      absences: rs.reduce((n, r) => n + (r.unmeasured?.length ?? 0), 0),
+      lastReported: lastReported(l.key),
+      observations: mine.reduce(
+        (n, s) => n + s.points.filter((p) => p.country === 'IND' && p.value !== null).length,
+        0,
+      ),
     };
   });
 }
@@ -163,13 +231,21 @@ export function landscapeSubjects(): LandscapeSubject[] {
  * readout say 433 records against a corpus of 223.
  */
 export function archiveYears(): SubjectYear[] {
-  return YEARS.map((year) => ({
-    year,
-    reporting: series.filter((s) =>
-      s.points.some(
-        (p) => p.country === 'IND' && p.value !== null && yearOf(String(p.period)) === year,
-      ),
-    ).length,
-    records: ledger.filter((r) => yearOf(r.date) === year).length,
-  }));
+  return YEARS.map((year) => {
+    const dated = ledger.filter((r) => yearOf(r.date) === year);
+    return {
+      year,
+      reporting: series.filter((s) =>
+        s.points.some(
+          (p) => p.country === 'IND' && p.value !== null && yearOf(String(p.period)) === year,
+        ),
+      ).length,
+      records: dated.length,
+      assessments: tally(dated.map((r) => r.assessment)),
+      types: tally(dated.map((r) => r.type)),
+      seams: series.filter((s) =>
+        (s.breaks ?? []).some((b) => yearOf(String(b.period)) === year),
+      ).length,
+    };
+  });
 }

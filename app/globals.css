@@ -7494,7 +7494,7 @@ li {
   border-radius: var(--radius-md);
   background: var(--surface);
   padding: 0.9rem 1.1rem;
-  min-height: 8.5rem;
+  min-height: 9.5rem;
 }
 .lsc-brief-idle { margin: 0; font-size: 0.86rem; color: var(--ink-dim); max-width: 34ch; }
 .lsc-brief-h { margin: 0 0 0.55rem; }
@@ -7512,6 +7512,12 @@ li {
 /* The empty cell keeps the site's absence idiom — dashed, unfilled, no figure — because it is one:
    nothing measures that subject in that year and the panel must not look like a result. */
 .lsc-brief-none { margin: 0 0 0.7rem; font-size: 0.82rem; }
+.lsc-brief-k { margin: 0 0 0.55rem; font-size: 0.76rem; color: var(--ink-2); }
+.lsc-brief-k b { font-family: var(--font-mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+/* The seam warning takes the break colour, because that is what it is warning about. */
+.lsc-brief-seam { margin: 0 0 0.55rem; font-size: 0.76rem; }
+.lsc-brief-seam a { color: var(--alert); }
+.lsc-brief-seam strong { font-family: var(--font-mono); font-weight: 500; }
 .lsc-brief-go { display: flex; flex-wrap: wrap; gap: 0.2rem 1.1rem; margin: 0; font-size: 0.78rem; }
 
 @media (max-width: 900px) {

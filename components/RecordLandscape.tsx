@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState, useSyncExternalStore } from 'react';
 // PLATE from the pure module; the subject TYPE only, so no data module reaches the browser.
 import { PLATE } from '@/lib/landscape-plate';
+import { ASSESSMENT_LABELS } from '@/lib/format';
 import { motionReduced, subscribeMotion } from '@/lib/reading-prefs';
 import type { LandscapeSubject, SubjectYear } from '@/lib/landscape';
 
@@ -90,6 +91,8 @@ function Brief({
   const c = subject ? cell : archive;
   const name = subject ? subject.label : 'The archive';
   const empty = c !== null && c.reporting === 0 && c.records === 0;
+  const label = (k: string) =>
+    ASSESSMENT_LABELS[k as keyof typeof ASSESSMENT_LABELS]?.toLowerCase() ?? k;
   return (
     <>
       <p className="lsc-brief-h">
@@ -97,24 +100,66 @@ function Brief({
       </p>
       {empty ? (
         <p className="absence lsc-brief-none">
-          Nothing is filed here. No series of this subject carries an observation dated {year}, and
-          no record is dated in it. That is a fact about this archive, not about the year.
+          {/* "NOTHING IS FILED HERE" IS TRUE AND USELESS ON ITS OWN. Where the subject's series
+              stopped is the fact a reader can actually do something with — Poverty's last official
+              headcount was for 2011-12, before this control's floor, and that sentence says more
+              about poverty measurement in India than any count on this panel. */}
+          Nothing is filed here.{' '}
+          {subject && subject.series === 0
+            ? `No series measures ${name.toLowerCase()} at all, so no year of it can report.`
+            : subject && subject.lastReported !== null
+              ? `${name} carries ${subject.series} series and ${subject.observations} observations in all, the most recent for ${subject.lastReported} — open the subject to see which measure that is.`
+              : 'No series of this subject carries an observation dated here.'}{' '}
+          That is a fact about this archive, not about the year.
         </p>
       ) : (
-        <p className="lsc-brief-n">
-          <span>
-            <b>{c ? c.reporting : 0}</b>
-            <i>series reported</i>
-          </span>
-          <span>
-            <b>{c ? c.records : 0}</b>
-            <i>{c && c.records === 1 ? 'filing dated here' : 'filings dated here'}</i>
-          </span>
-        </p>
+        <>
+          <p className="lsc-brief-n">
+            <span>
+              <b>{c ? c.reporting : 0}</b>
+              <i>series reported</i>
+            </span>
+            <span>
+              <b>{c ? c.records : 0}</b>
+              <i>{c && c.records === 1 ? 'filing dated here' : 'filings dated here'}</i>
+            </span>
+          </p>
+          {/* WHAT THE FILINGS ARE, not merely how many. Counts of assessments are the one roll-up
+              the rules permit by name, and this stops there: no grade, no total, no order of
+              severity — commonest first, which is a fact about the corpus. */}
+          {c && c.assessments.length ? (
+            <p className="lsc-brief-k">
+              {c.assessments.map(([k, n], i) => (
+                <span key={k}>
+                  {i ? ' · ' : ''}
+                  <b>{n}</b> {label(k)}
+                </span>
+              ))}
+            </p>
+          ) : null}
+        </>
       )}
+      {/* THE ONE THING NO COUNT CAN SAY. Where a series of this subject breaks in this year, the
+          figures either side are not comparable, and a reader reading the numbers above needs to
+          know that before they read them. */}
+      {c && c.seams ? (
+        <p className="lsc-brief-seam">
+          <Link href={subject ? `/seams/#${subject.key}-${year}` : `/seams/`}>
+            <strong>
+              {c.seams} series break{c.seams === 1 ? 's' : ''} here
+            </strong>{' '}
+            — the figures either side are not comparable →
+          </Link>
+        </p>
+      ) : null}
       <p className="lsc-brief-go">
         <Link href={`/years/${year}/`}>The {year} record in full →</Link>
         {subject ? <Link href={`/domains/${subject.key}/`}>{subject.label} in full →</Link> : null}
+        {subject && subject.absences ? (
+          <Link href="/unmeasured/">
+            {subject.absences} declared absence{subject.absences === 1 ? '' : 's'} →
+          </Link>
+        ) : null}
       </p>
     </>
   );
