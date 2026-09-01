@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 // PLATE from the pure module; the subject TYPE only, so no data module reaches the browser.
 import { PLATE } from '@/lib/landscape-plate';
 import { motionReduced, subscribeMotion } from '@/lib/reading-prefs';
@@ -185,18 +185,27 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
   const [pinnedChoice, setPinned] = useState<string | null | undefined>(undefined);
   const [playing, setPlaying] = useState(false);
   const [motionOK, setMotionOK] = useState(true);
-  /* A click event is not necessarily a PointerEvent, so the pointer TYPE is recorded on pointerdown
-     and read on click. Reading it off the click's own native event does not typecheck, and would be
-     undefined for a keyboard-activated click in any case. */
-  const lastPointer = useRef<string>('mouse');
   /**
-   * THE TWO-STEP NEEDS ITS OWN STATE, AND THIS IS THE SECOND TIME THAT LESSON HAS BEEN PAID FOR.
-   * **WITHDRAWN: a click test of `hot !== P.key`.** Tapping a link FOCUSES it, and `onFocus` runs
-   * before `onClick` — so the tap set `hot` to its own subject, the click then read itself as
-   * already-selected, and the first tap navigated. Exactly the bug the two-step exists to prevent.
-   * `tapped` is written by a tap and by nothing else.
+   * THE TWO-STEP IS NOW EVERY POINTER'S, NOT ONLY TOUCH'S — operator request, 2026-09-01: "first
+   * click activates it and use the scroller, then double click goes to the domain".
+   *
+   * **WITHDRAWN: `lastPointer`, a ref recording the pointer type on `pointerdown` so the two-step
+   * could be applied to touch alone.** With the step applied to every pointer there is nothing left
+   * to discriminate, and the `onPointerDown`/`onTouchStart` pair that fed it goes with it. A mouse
+   * reader could not previously hold a subject in the brief while moving the year control, because
+   * the only way to choose one was to hover it, and the only thing a click did was leave.
+   *
+   * **KEYBOARD ACTIVATION IS EXEMPT AND MUST BE.** `detail === 0` is a click that came from Enter
+   * or Space rather than a button, and such a reader has already selected the pin by focusing it —
+   * `onFocus` sets both `hot` and `pinned`. Making them press twice would be a second step that
+   * buys them nothing and looks like a broken link.
+   *
+   * **WITHDRAWN, AND THE REASON IS WHY THIS IS STATE AND NOT A TEST OF `hot`:** a click test of
+   * `hot !== P.key`. Focusing a link fires `onFocus` BEFORE `onClick`, so the first press set `hot`
+   * to its own subject and the click then read itself as already-selected and navigated. `armed` is
+   * written by a click and by nothing else, which is what makes it safe.
    */
-  const tapped = useRef<string | null>(null);
+  const [armed, setArmed] = useState<string | null>(null);
   const hash = useSyncExternalStore(subscribeHash, () => window.location.hash, () => '');
   const m = /^#([a-z-]+)-(\d{4})$/.exec(hash);
   const linked =
@@ -266,10 +275,15 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
               </>
             )}
           </div>
+          {/* A FIRST PRESS THAT DOES NOT NAVIGATE LOOKS LIKE A BROKEN LINK UNLESS THE PAGE SAYS
+              OTHERWISE. This line is the only thing that distinguishes "selected, press again" from
+              "nothing happened", and the pin carries `is-armed` for the same reason. */}
           <p className="lsc-read-foot mono">
-            {current
-              ? `${current.filings} filings marked${current.from ? ` · record begins ${current.from}` : ''}`
-              : 'Point at a landmark to read its subject here'}
+            {armed && current && armed === current.key
+              ? `Selected \u2014 press again to open ${current.label}`
+              : current
+                ? `${current.filings} filings marked${current.from ? ` · record begins ${current.from}` : ''}`
+                : 'Point at a landmark to read its subject here'}
           </p>
         </div>
       </div>
@@ -281,10 +295,20 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
               left, so it still clears. A touch selection is cleared by tapping elsewhere. */
            onPointerLeave={(e) => {
              if (e.pointerType === 'touch') return;
-             tapped.current = null;
+             setArmed(null);
              setHot(null);
            }}
-           onBlur={() => { tapped.current = null; setHot(null); }}>
+           /* REACT'S `onBlur` BUBBLES, AND THAT BROKE THE ONE WORKFLOW THIS CHANGE EXISTS FOR.
+              **WITHDRAWN: `onBlur={() => { setArmed(null); setHot(null); }}`.** Clicking a pin
+              focuses it; moving to the year control then blurs the pin, and because the handler is
+              on the CONTAINER that blur bubbled to it and disarmed the selection — so the second
+              press armed again instead of opening. Native `blur` does not bubble, which is why this
+              reads as safe and is not. Focus moving WITHIN the block is not focus leaving it. */
+           onBlur={(e) => {
+             if (e.currentTarget.contains(e.relatedTarget as Node | null)) return;
+             setArmed(null);
+             setHot(null);
+           }}>
         <p className="lsc-label">
           <strong>Choose a subject</strong>
           <span className="mono">
@@ -332,7 +356,7 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
           {pins.map((P) => (
             <a
               key={P.key}
-              className={`lsc-pin${hot === P.key ? ' is-hot' : ''}`}
+              className={`lsc-pin${hot === P.key ? ' is-hot' : ''}${armed === P.key ? ' is-armed' : ''}`}
               data-k={P.key}
               href={`/domains/${P.key}/`}
               style={{ left: `${P.left}%`, top: `${P.top}%` }}
@@ -343,20 +367,16 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
                 setPinned(P.key);
               }}
               onFocus={() => { setHot(P.key); setPinned(P.key); }}
-              // Both: some touch environments deliver touchstart without a pointerdown, and the
-              // two-step then never arms — the first tap navigates and the readout is never seen.
-              onPointerDown={(e) => { lastPointer.current = e.pointerType; }}
-              onTouchStart={() => { lastPointer.current = 'touch'; }}
               onClick={(e) => {
-                /* TOUCH HAS NO HOVER, so a tap went straight to the subject and a phone reader
-                   never saw the readout at all. First tap selects, second opens. A mouse is
-                   unaffected: it has already selected on hover by the time it clicks. */
-                if (lastPointer.current === 'touch' && tapped.current !== P.key) {
-                  e.preventDefault();
-                  tapped.current = P.key;
-                  setHot(P.key);
-                  setPinned(P.key);
-                }
+                /* FIRST PRESS SELECTS, SECOND OPENS — for every pointer. A reader can now hold a
+                   subject in the brief while working the year control, which a hover-only selection
+                   could not survive. `detail === 0` is a keyboard activation, which has already
+                   selected by focusing and opens at once. */
+                if (e.detail === 0 || armed === P.key) return;
+                e.preventDefault();
+                setArmed(P.key);
+                setHot(P.key);
+                setPinned(P.key);
               }}
             >
               <span className="lsc-pin-dot" aria-hidden="true" />

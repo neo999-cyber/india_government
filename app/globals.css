@@ -351,6 +351,69 @@ code {
   letter-spacing: 0.02em;
 }
 
+/* ==============================================================================================
+   THE SECTION MENUS.
+
+   CSS only, for the reason the component states: navigation is the last thing that should stop
+   working when the bundle does. `visibility` rather than `display` because `display: none` removes
+   the items from the tab order, which makes `:focus-within` unreachable — there is nothing inside
+   to focus. Focus lands on the section link, that reveals the menu, the next Tab enters it.
+   ============================================================================================== */
+.pnav-sec { position: relative; display: inline-flex; }
+/* NOT RENDERED AT ALL BELOW 900px, AND `display: none` IS DOING TWO JOBS HERE.
+   **WITHDRAWN: `visibility: hidden` as the only resting state.** An absolutely positioned box still
+   contributes to the DOCUMENT'S SCROLLABLE WIDTH while invisible, so a 13rem menu at a 320px
+   viewport pushed the page sideways — nine overflow tests caught it, on pages that have nothing to
+   do with the masthead. It also has nowhere sensible to open on a narrow screen. Below 900px the
+   section link goes to the section page, which lists the same children. */
+.pnav-menu { display: none; }
+@media (min-width: 900px) {
+  .pnav-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: -0.6rem;
+    z-index: 60;
+    min-width: 13rem;
+    max-width: 23rem;
+    margin-top: 0.45rem;
+    padding: 0.4rem;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-md);
+    box-shadow: var(--card-shadow);
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+.pnav-menu ul { list-style: none; margin: 0; padding: 0; }
+.pnav-menu li + li { border-top: 1px solid var(--rule-soft); }
+/* Overrides `.nav a`, whose transparent bottom border is for the masthead row, not for a list. */
+.pnav-menu a {
+  display: block;
+  padding: 0.42rem 0.6rem;
+  border-bottom: 0;
+  border-radius: var(--radius-sm);
+  color: var(--ink-2);
+  font-size: 0.72rem;
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+.pnav-menu a:hover,
+.pnav-menu a:focus-visible { background: var(--bg); color: var(--ink); border-bottom: 0; }
+.pnav-sec:focus-within > .pnav-menu { visibility: visible; opacity: 1; }
+/* HOVER ONLY WHERE HOVER IS REAL. It sticks after a tap on a touchscreen, so a menu opened this
+   way would stay open over the page the reader had just navigated to. */
+@media (hover: hover) and (pointer: fine) {
+  .pnav-sec:hover > .pnav-menu { visibility: visible; opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pnav-menu { transition: opacity 0.12s ease; }
+}
+/* The last two sections would open off the right edge of a narrow window. */
+.pnav-sec:nth-last-of-type(2) .pnav-menu,
+.pnav-sec:nth-last-of-type(1) .pnav-menu { left: auto; right: -0.6rem; }
+
 /* `.nav-primary a { color: var(--ink) }` stood here and was DEAD. The same selector is declared
    again around line 2590 with `--ink-2`, and the later declaration wins — verified by DOM probe on
    production, which renders rgb(74,79,94) = #4a4f5e = --ink-2. A duplicate that merely repeats a
@@ -7384,6 +7447,11 @@ li {
    Opacity only — the mark does not move, resize or change colour, because size and position are not
    claims this picture makes. */
 .lsc-fm { transition: opacity 0.3s ease; }
+/* THE ARMED PIN. A first press that does not navigate has to look different from a press that did
+   nothing, or the link reads as broken. Brass, because this is the site's "a mark was made" colour
+   and the pin has been selected rather than opened. */
+.lsc-pin.is-armed { border-color: var(--mark); box-shadow: 0 0 0 2px var(--mark-soft); }
+.lsc-pin.is-armed .lsc-pin-dot { background: var(--mark); }
 .lsc-fm.is-off { opacity: 0.1; }
 
 /* ==============================================================================================

@@ -118,3 +118,62 @@ test.describe('the landing brief is citable', () => {
     expect(await page.evaluate(() => history.length)).toBe(before);
   });
 });
+
+/**
+ * THE LANDMARK PINS TAKE TWO PRESSES, FROM EVERY POINTER.
+ *
+ * Operator, 2026-09-01: "first click activates it and use the scroller, then double click goes to
+ * the domain". A hover-only selection could not survive the reader moving to the year control, so
+ * a mouse reader had no way to hold a subject while scrubbing.
+ *
+ * **THE MOUSE WORK NEEDS BOTH ELEMENTS ON SCREEN FIRST.** Scrolling to one can put the other
+ * outside the viewport, where a mouse move is clamped and lands somewhere else; the probe that
+ * found this bug dragged at a clamped coordinate, changed no year, and read as a page defect.
+ */
+test.describe('the landmark pins', () => {
+  test('first press selects, the year control still works, the second press opens', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('.lsc-year').scrollIntoViewIfNeeded();
+    const pin = page.locator('a.lsc-pin[data-k="education"]');
+    await expect(pin).toBeInViewport();
+    await expect(page.locator('#lsc-yr')).toBeInViewport();
+
+    await pin.click();
+    await expect(page).toHaveURL(/\/$/);
+    await expect(pin).toHaveClass(/is-armed/);
+    // A first press that does not navigate has to say so, or it reads as a broken link.
+    await expect(page.locator('.lsc-read-foot')).toContainText('press again to open Education');
+
+    // The year control lives inside the same block, so working it must not disarm the selection.
+    const track = (await page.locator('#lsc-yr').boundingBox())!;
+    await page.mouse.move(track.x + track.width * 0.1, track.y + track.height / 2);
+    await page.mouse.down();
+    await page.mouse.move(track.x + track.width * 0.45, track.y + track.height / 2, { steps: 8 });
+    await page.mouse.up();
+    await expect(page.locator('.lsc-brief-h')).toContainText('Education');
+    await expect(pin).toHaveClass(/is-armed/);
+
+    await pin.click();
+    await expect(page).toHaveURL(/\/domains\/education\/$/);
+  });
+
+  test('a keyboard press opens at once, and leaving the block disarms', async ({ page }) => {
+    // POSITIVE CONTROL for the two-step: a keyboard activation has already selected by focusing, so
+    // making it press twice would buy nothing and look broken. `detail === 0` is the discriminator.
+    await page.goto('/');
+    await page.locator('a.lsc-pin[data-k="defence"]').focus();
+    await page.keyboard.press('Enter');
+    await expect(page).toHaveURL(/\/domains\/defence\/$/);
+
+    // And an armed pin does not stay armed once the pointer has left: a stray click minutes later
+    // must not navigate. The brief keeps the subject; only the armed state resets.
+    await page.goto('/');
+    await page.locator('.lsc-year').scrollIntoViewIfNeeded();
+    const pin = page.locator('a.lsc-pin[data-k="education"]');
+    await pin.click();
+    await expect(pin).toHaveClass(/is-armed/);
+    await page.mouse.move(20, 20, { steps: 6 });
+    await expect(pin).not.toHaveClass(/is-armed/);
+    await expect(page.locator('.lsc-read-name')).toHaveText('Education');
+  });
+});
