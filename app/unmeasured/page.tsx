@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { UnanswerableSection } from '@/components/UnanswerableSection';
 import type { Metadata } from 'next';
 import { allUnmeasured } from '@/lib/data';
 import { DOMAIN_LABELS } from '@/lib/format';
@@ -213,6 +214,15 @@ export default function UnmeasuredIndex() {
         against a target or rendered as a completeness figure: a share of dimensions measured
         would be a composite score of exactly the kind the instrument refuses everywhere else.
       </div>
+
+      {/* `/unmeasured/#unanswerable` FOLDED IN HERE ON 2026-09-01. Four records whose declared
+          absences ARE the answer, on the page that holds declared absences — it was already
+          cross-filed under Gaps.
+
+          **The framing it arrived with had to be rewritten, not just moved.** The questions page
+          called it "a ninth route, held outside the eight deliberately", and it is no longer a
+          route at all; that sentence is corrected there in the same commit. */}
+      <UnanswerableSection />
     </>
   );
 }

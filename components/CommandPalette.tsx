@@ -21,7 +21,7 @@ const ITEMS: SearchItem[] = [
   { id: 'r-unmeasured', title: 'Gaps — what is not measured', category: 'Route', href: '/unmeasured/', meta: 'Data absences and gaps' },
   { id: 'r-exposure', title: 'Exposure to shocks', category: 'Route', href: '/exposure/', meta: 'Demonetisation, COVID-19' },
   { id: 'r-terms', title: 'Terms of government', category: 'Route', href: '/terms/', meta: 'Term 1, Term 2, Term 3' },
-  { id: 'r-peers', title: 'Four comparator countries', category: 'Route', href: '/peers/', meta: 'BGD, VNM, IDN, CHN' },
+  { id: 'r-peers', title: 'Four comparator countries', category: 'Route', href: '/compare/#peers', meta: 'BGD, VNM, IDN, CHN' },
   { id: 'r-compare', title: 'Compare — side-by-side series', category: 'Route', href: '/compare/', meta: 'Side-by-side indicator comparisons' },
   { id: 'r-about', title: 'About — method, sources, data and corrections', category: 'Route', href: '/method/', meta: 'How the record was built and changed' },
   { id: 'r-method', title: 'Method — evidence rules and source tiers', category: 'Route', href: '/method/', meta: 'Validation criteria and project limits' },

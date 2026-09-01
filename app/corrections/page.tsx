@@ -189,7 +189,7 @@ export default function Corrections() {
       <p className="prose-note">
         Every commit that has ever touched a given record is listed on that record&rsquo;s own page,
         under <em>Has this record changed?</em> — including the ones that moved no verdict.{' '}
-        <Link href="/data/">Cite the commit</Link>, not the page: it is what makes a figure you
+        <Link href="/method/#data">Cite the commit</Link>, not the page: it is what makes a figure you
         quote today re-findable after the record is corrected.
       </p>
     </>

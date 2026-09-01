@@ -198,7 +198,10 @@ export default function Questions() {
         })}
       </div>
 
-      {/* A NINTH ROUTE, HELD OUTSIDE THE EIGHT DELIBERATELY. The list above is the brief's own
+      {/* A NINTH ENTRY, HELD OUTSIDE THE EIGHT DELIBERATELY. **WITHDRAWN: "A NINTH ROUTE".**
+          It stopped being a route on 2026-09-01, when it folded into `/unmeasured/` as a section —
+          four records whose declared absences ARE the answer, on the page that holds declared
+          absences. It is still held outside the eight and still not one of them. The list above is the brief's own
           order and says so; slipping a ninth into it would falsify that sentence. This is a
           different object anyway — not a filter over records, but four questions the instrument
           CANNOT answer, with the four different reasons. Built after the same test that refused the
@@ -208,7 +211,7 @@ export default function Questions() {
         <QuestionGlyph kind="unanswerable" />
         <div className="qcard-body">
           <h2>
-            <Link href="/questions/unanswerable/">Four questions this cannot answer</Link>
+            <Link href="/unmeasured/#unanswerable">Four questions this cannot answer</Link>
           </h2>
           <p className="qcard-n mono">Not one of the eight</p>
           <p className="qcard-crit">

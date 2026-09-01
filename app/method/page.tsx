@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { SectionNav } from '@/components/SectionNav';
+import { DataSection } from '@/components/DataSection';
+import { DerivationsSection } from '@/components/DerivationsSection';
+import { CounterfactualSection } from '@/components/CounterfactualSection';
 import type { Metadata } from 'next';
 import { citations, ledger, provenance, series, statusCounts, tierCounts } from '@/lib/data';
 import { TIER_LABELS } from '@/lib/format';
@@ -189,7 +192,7 @@ export default function MethodPage() {
         </li>
         <li className="prose-note">
           <strong>A counterfactual engine was considered and declined</strong>, with the reasoning
-          published at <Link href="/counterfactual/">counterfactual</Link> rather than left as an
+          published at <Link href="/method/#counterfactual">counterfactual</Link> rather than left as an
           apparent gap.
         </li>
         <li className="prose-note">
@@ -317,6 +320,22 @@ export default function MethodPage() {
         Corrections to <code>/data</code> are made by editing the record and logging the change in{' '}
         <code>docs/verification-log.md</code> — never by silent deletion.
       </p>
+
+      {/* ============ THREE PAGES FOLDED IN HERE ON 2026-09-01 ==============================
+          `/method/#data`, `/method/#derivations` and `/method/#counterfactual` were 906, 1,647 and 888 words each, and
+          all three answer one question this page already asks: how does this instrument work on
+          itself. The files it publishes, the claims it recomputes about its own corpus, and the
+          engine it declined to build.
+
+          **What it costs is stated rather than glossed:** each was a route that could be linked to
+          as a standing commitment and is now a fragment. `/method/#derivations` in particular is where the
+          rules send a self-audit, and a fragment is addressable but no longer isolable — the same
+          cost the five-tab topic merge recorded in August, paid again.
+
+          Their bodies are unchanged. Only the crumb, the metadata and the heading level moved. */}
+      <DataSection />
+      <DerivationsSection />
+      <CounterfactualSection />
     </>
   );
 }

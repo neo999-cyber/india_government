@@ -1,8 +1,5 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { series } from '@/lib/data';
-
-export const metadata: Metadata = { title: 'Counterfactual — considered and declined' };
 
 /**
  * THIS PAGE USED TO DESCRIBE A VIEW IN THE FUTURE TENSE. The view was declined on 2026-08-06 and the
@@ -13,7 +10,7 @@ export const metadata: Metadata = { title: 'Counterfactual — considered and de
  * gap — so a later cycle does not rediscover a counterfactual engine as an obvious omission and
  * build it.
  */
-export default function CounterfactualPage() {
+export function CounterfactualSection() {
   const withBreaks = series.filter((s) => (s.breaks?.length ?? 0) > 0);
   const approx = series.reduce(
     (n, s) => n + (s.points ?? []).filter((p) => p.status === 'approx').length,
@@ -22,10 +19,7 @@ export default function CounterfactualPage() {
 
   return (
     <>
-      <p className="crumb">
-        <Link href="/">instrument</Link> / counterfactual
-      </p>
-      <h1 className="page-lead">Counterfactual — considered, and declined</h1>
+      <h2 id="counterfactual">Counterfactual — considered, and declined</h2>
       <p className="lede">
         This instrument does not compute counterfactuals. That is a decision taken on 6 August 2026,
         not a gap waiting to be filled, and the reasoning is set out here so it can be argued with
@@ -49,7 +43,7 @@ export default function CounterfactualPage() {
         number for something nobody observed. The whole of the 6 August work removed things with that
         shape from this corpus — three records left the scored ledger the same day because a
         derivation over the instrument&rsquo;s own data is at no distance from what it reports, and
-        their findings moved to <Link href="/derivations/">derivations</Link>, where the rule is
+        their findings moved to <Link href="/method/#derivations">derivations</Link>, where the rule is
         printed beside every number.
       </p>
       <p className="prose-note">

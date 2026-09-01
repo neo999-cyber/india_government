@@ -108,7 +108,7 @@ export function RecordHistory({ id }: { id: string }) {
 
       <p className="prose-note">
         <Link href="/corrections/">Every verdict this instrument has changed its mind about</Link> ·{' '}
-        <Link href="/data/">cite the commit, not the page</Link>
+        <Link href="/method/#data">cite the commit, not the page</Link>
       </p>
     </section>
   );

@@ -1,10 +1,7 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Fragment, type ReactNode } from 'react';
-
-export const metadata: Metadata = { title: 'Derivations' };
 
 /**
  * WHY THIS PAGE EXISTS. `docs/derivations.md` recomputes, from public `/data`, the counts that
@@ -75,7 +72,7 @@ function render(md: string): ReactNode[] {
       i += 1;
       // A DESIGNATED SCROLL REGION, and focusable, exactly like `.table-wrap`. These are formulas,
       // and wrapping one mid-token makes it unreadable, so the block scrolls within its own box
-      // rather than dragging the page. Measured at 375px before the fix: `/derivations/` scrolled
+      // rather than dragging the page. Measured at 375px before the fix: `/method/#derivations` scrolled
       // 641px past the viewport. `tabIndex` because a region that scrolls must be reachable by a
       // keyboard — the same rule the 31 table wrappers are held to.
       //
@@ -97,9 +94,13 @@ function render(md: string): ReactNode[] {
       const text = inline(h[2], k);
       // `page-lead` here too: this page is an index surface like every other, and its h1 comes from
       // the generated markdown rather than from JSX, which is the only reason it was missed.
-      if (h[1].length === 1) out.push(<h1 key={k} className="page-lead">{text}</h1>);
-      else if (h[1].length === 2) out.push(<h2 key={k}>{text}</h2>);
-      else out.push(<h3 key={k}>{text}</h3>);
+      /* EVERY HEADING DROPS ONE LEVEL, because this is a SECTION of `/method/` now and not a page.
+         **WITHDRAWN: `<h1 className="page-lead">` for a `#`**, which was right while this was an
+         index surface of its own and would have given `/method/` a second h1 the moment it was
+         folded in. The generated markdown is unchanged; only the level it renders at moved. */
+      if (h[1].length === 1) out.push(<h2 key={k} id="derivations">{text}</h2>);
+      else if (h[1].length === 2) out.push(<h3 key={k}>{text}</h3>);
+      else out.push(<h4 key={k}>{text}</h4>);
       i += 1;
       continue;
     }
@@ -173,12 +174,9 @@ function render(md: string): ReactNode[] {
   return out;
 }
 
-export default function DerivationsPage() {
+export function DerivationsSection() {
   return (
     <>
-      <p className="crumb">
-        <Link href="/">instrument</Link> / derivations
-      </p>
       {render(SRC).map((node, i) => (
         <Fragment key={i}>{node}</Fragment>
       ))}

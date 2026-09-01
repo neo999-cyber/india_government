@@ -111,8 +111,8 @@ test.describe('seven-section information architecture', () => {
 
   test('cross-filed routes identify their public parent, not their URL prefix', async ({ page }) => {
     for (const [route, parent] of [
-      ['/peers/', 'Compare'],
-      ['/questions/unanswerable/', 'Gaps'],
+      ['/compare/#peers', 'Compare'],
+      ['/unmeasured/#unanswerable', 'Gaps'],
       ['/questions/publication-stopped/', 'Gaps'],
       ['/publishers/', 'About'],
     ] as const) {
@@ -155,18 +155,18 @@ test.describe('seven-section information architecture', () => {
       '/years/',
     ]);
     await expectGateway(page, '/search/', ['/search/?layer=ledger', '/search/?layer=series', '/search/?layer=provenance', '/contested/']);
-    await expectGateway(page, '/compare/', ['/compare/#series-comparison', '/peers/']);
+    await expectGateway(page, '/compare/', ['/compare/#series-comparison', '/compare/#peers']);
     // `/seams/` joins Gaps 2026-09-01, between what the record does not carry and what would close
     // it: a break is not an absence, but it is the other way the published record stops being
     // readable straight through.
     await expectGateway(page, '/unmeasured/', [
-      '/questions/unanswerable/',
+      '/unmeasured/#unanswerable',
       '/unmeasured/#declared-absences',
       '/questions/publication-stopped/',
       '/seams/',
       '/unmeasured/#verification-queue',
     ]);
-    await expectGateway(page, '/method/', ['/method/', '/publishers/', '/data/', '/derivations/', '/corrections/']);
+    await expectGateway(page, '/method/', ['/method/', '/publishers/', '/method/#data', '/method/#derivations', '/corrections/']);
   });
 
   test('Questions and Stories remain their own complete child indexes', async ({ page }) => {

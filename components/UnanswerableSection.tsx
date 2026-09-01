@@ -1,14 +1,7 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { getLedger } from '@/lib/data';
 import { REASON_KIND_LABELS, RecordMarks } from '@/components/marks';
 import type { LedgerRecord } from '@/lib/types';
-
-export const metadata: Metadata = {
-  title: 'Four questions this cannot answer',
-  description:
-    'Four questions people ask about the last decade that this instrument cannot answer, and the four different reasons why. Only one of them is unanswerable in principle.',
-};
 
 /**
  * THE ABSENCE PAGE — measured before it was built, and the measurement admitted it.
@@ -119,7 +112,7 @@ function Absences({ record }: { record: LedgerRecord }) {
   );
 }
 
-export default function Unanswerable() {
+export function UnanswerableSection() {
   const rows = QUESTIONS.map((q) => ({
     ...q,
     records: q.recordIds.map(getLedger).filter((r): r is LedgerRecord => !!r),
@@ -132,11 +125,7 @@ export default function Unanswerable() {
 
   return (
     <>
-      <p className="crumb">
-        <Link href="/">instrument</Link> / <Link href="/questions/">questions</Link> / four it cannot
-        answer
-      </p>
-      <h1>Four questions this cannot answer</h1>
+      <h2 id="unanswerable">Four questions this cannot answer</h2>
       <p className="lede">
         These are questions people ask about the last decade, and this instrument cannot answer any
         of them. <strong>The useful part is that it cannot answer them for four different

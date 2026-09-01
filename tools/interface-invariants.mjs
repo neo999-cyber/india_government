@@ -118,11 +118,16 @@ function missingSections(html) {
 /* **WITHDRAWN: `'series', 'ledger', 'provenance', 'about'`**, merged away on 2026-09-01 — the
    three indexes into `/search/` behind its own layer filter, and `/about/` into the About menu that
    now lists its six links. Their RECORD pages are untouched and were never in this list: it binds
-   index routes only. `seams` is added, which had been missing since that page shipped. */
+   index routes only. `seams` is added, which had been missing since that page shipped.
+   **AND `'derivations', 'data', 'counterfactual'` on the same day**, folded into `/method/` as
+   sections, and `'peers'` into `/compare/`. A section is not an index route and this list binds
+   index routes. **`peers` had to be removed rather than left to the tolerance**: the floor is
+   `length - 2`, so a missing route can pass while the gate quietly checks one surface fewer, which
+   is the shrunken scope this very check exists to refuse. */
 const INDEX_ROUTES = [
   'overview', 'questions', 'stories', 'search', 'seams',
-  'contested', 'unmeasured', 'exposure', 'lenses', 'terms', 'peers', 'years', 'publishers',
-  'method', 'derivations', 'corrections', 'data', 'counterfactual', 'directory',
+  'contested', 'unmeasured', 'exposure', 'lenses', 'terms', 'years', 'publishers',
+  'method', 'corrections', 'directory',
 ];
 function leadClass(html) {
   const m = html.match(/<h1\b([^>]*)>/);

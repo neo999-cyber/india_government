@@ -1,18 +1,10 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { ledger, provenance, series, pairs, citations } from '@/lib/data';
 import contract from '@/lib/data-contract.json';
 import { CorpusLd } from '@/components/StructuredData';
 
-export const metadata: Metadata = {
-  title: 'The data',
-  description:
-    'The whole corpus as schema-validated JSON, with its schemas, at a versioned path. What the ' +
-    'contract guarantees, what it does not, and the eight things to read before using it.',
-};
-
 /**
- * `/data/` — THE MACHINE-READABLE LAYER, AND THE CONTRACT THAT COMES WITH SERVING IT.
+ * `/method/#data` — THE MACHINE-READABLE LAYER, AND THE CONTRACT THAT COMES WITH SERVING IT.
  *
  * WHY THIS PAGE EXISTS RATHER THAN JUST THE FILES. A JSON endpoint with no page is a trap: a
  * consumer downloads `series.json`, sees `value: null`, and fills it with a zero — and this corpus
@@ -31,7 +23,7 @@ export const metadata: Metadata = {
  * another file format. The JSON keeps the shape the schema guarantees; a consumer who wants a
  * table makes the flattening decisions themselves, where they can see them.
  */
-export default function DataPage() {
+export function DataSection() {
   const files = [
     { name: 'ledger.json', n: ledger.length, what: 'discrete reforms, events and episodes, each with its verdict, sources and declared absences' },
     { name: 'series.json', n: series.length, what: 'indicator time series for India and the peer panel, with breaks, statuses and per-point notes' },
@@ -43,10 +35,7 @@ export default function DataPage() {
   return (
     <>
       <CorpusLd />
-      <p className="crumb">
-        <Link href="/">instrument</Link> / the data
-      </p>
-      <h1 className="page-lead">The data</h1>
+      <h2 id="data">The data</h2>
       <p className="lede">
         The whole corpus — {total} records — as schema-validated JSON, with its schemas beside it,
         at a versioned path. Everything on this site is rendered from these files and nothing is
@@ -135,7 +124,7 @@ export default function DataPage() {
         <strong>No derived quantities, roll-ups or joins.</strong> {citations().length} citations
         sit inside the records that carry them rather than in a table of their own, because a
         citation away from its claim loses the thing that makes it checkable.{' '}
-        <Link href="/derivations/">Derivations</Link> publishes the few computed figures separately,
+        <Link href="/method/#derivations">Derivations</Link> publishes the few computed figures separately,
         with the rule printed beside each one.
       </p>
       <p>

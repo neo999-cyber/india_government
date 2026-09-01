@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { PeersSection } from '@/components/PeersSection';
 import Link from 'next/link';
 import { series, pairs } from '@/lib/data';
 import { routeLabel } from '@/lib/routes';
@@ -56,6 +57,12 @@ export default function ComparePage() {
       <div id="series-comparison">
         <CompareWorkbench seriesList={compactSeries} pairsList={compactPairs} />
       </div>
+
+      {/* `/compare/#peers` FOLDED IN HERE ON 2026-09-01. Compare had exactly two children and one of them
+          was already a fragment of this page; peers was the other. One comparison surface, two
+          modes. It costs weight — 302 KB onto a page that was 378 — and the merged page is among
+          the heaviest on the site, which is the trade the audit named. */}
+      <PeersSection />
     </>
   );
 }

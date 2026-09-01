@@ -1,22 +1,13 @@
 import Link from 'next/link';
-import type { Metadata } from 'next';
 import { getLedger, ledgerCitingSeries, panelSeries } from '@/lib/data';
 import { PeerSlope } from '@/components/PeerSlope';
 import { SeriesTable } from '@/components/SeriesTable';
 import { AbsenceCount, Absences, CaveatFlag, SourceLine, StatusKey, TierTag } from '@/components/marks';
 
-export const metadata: Metadata = {
-  title: 'Peers',
-  description:
-    'India against Bangladesh, Vietnam, Indonesia and China on sixteen indicators, 2014 against ' +
-    '2024. One indicator, one source, one definition — the only place in this record where a value ' +
-    'on one country means the same thing as a value on another.',
-};
-
 const yearOf = (p: string) => Number(String(p).replace(/^FY/, '').slice(0, 4));
 
 /**
- * `/peers/` — REBUILT 2026-08-11 from eighteen stacked whole-series blocks.
+ * `/compare/#peers` — REBUILT 2026-08-11 from eighteen stacked whole-series blocks.
  *
  * WHAT WAS WRONG. The page rendered each panel series in full, one after another: title, tags,
  * source, a five-row table, absences, repeat. Every fact was there and **the comparison the panel
@@ -37,7 +28,7 @@ const yearOf = (p: string) => Number(String(p).replace(/^FY/, '').slice(0, 4));
  * P-09 governs the whole surface and always did: values are pulled as a panel at one vintage, and
  * the vintage prints on every slope.
  */
-export default function PeersPage() {
+export function PeersSection() {
   const panels = panelSeries();
   const slopes = panels.filter(
     (s) => new Set(s.points.filter((p) => p.value !== null).map((p) => yearOf(p.period))).size >= 2,
@@ -73,10 +64,7 @@ export default function PeersPage() {
 
   return (
     <>
-      <p className="crumb">
-        <Link href="/">instrument</Link> / peers
-      </p>
-      <h1 className="page-lead">Peers</h1>
+      <h2 id="peers">India and peers</h2>
       <p className="standfirst">
         India against Bangladesh, Vietnam, Indonesia and China, 2014 against 2024.{' '}
         <b>
