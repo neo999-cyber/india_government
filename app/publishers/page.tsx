@@ -107,7 +107,7 @@ export default function Publishers() {
           </thead>
           <tbody>
             {bodies.map((r) => (
-              <tr key={r.publisher.id}>
+              <tr key={r.publisher.id} id={r.publisher.id}>
                 <td>
                   <strong>{r.publisher.name}</strong>
                   {r.publisher.aka.length > 1 ? (
@@ -119,6 +119,17 @@ export default function Publishers() {
                 <td className="num">{r.asBody.length}</td>
                 <td className="t-note">{r.publisher.kind.replace(/-/g, ' ')}</td>
                 <td>
+                  {/* ONE MARK PER CITATION, BANDED BY TIER — the landing page's evidence-base idiom
+                      at the scale of one body, added 2026-09-01. Position carries the tier, colour
+                      carries nothing; the tags below still name each tier and its count, so the
+                      band is the glance and the tags are the figure. */}
+                  <span className="pub-band" aria-hidden="true">
+                    {tierSpread(r.asBody.map((x) => x.citation.tier)).map(([t, n]) => (
+                      <span key={t} className="pub-band-tier" data-t={t}>
+                        {Array.from({ length: n }, (_, i) => <i key={i} />)}
+                      </span>
+                    ))}
+                  </span>
                   {tierSpread(r.asBody.map((x) => x.citation.tier)).map(([t, n]) => (
                     <span key={t} className="pub-tier">
                       <TierTag tier={t} />

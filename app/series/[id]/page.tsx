@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { publisherFor } from '@/lib/publishers';
 import {notFound} from 'next/navigation';
 import type {Metadata} from 'next';
 import {seriesCard} from '@/lib/share-card';
@@ -132,6 +133,13 @@ export default async function SeriesDetail({ params }: Props) {
         <Link href={`/domains/${s.domain}/`}>{DOMAIN_LABELS[s.domain]}</Link>
       </p>
       <h1>{s.title}</h1>
+      {/* ONE DOOR TO COMPARE, added 2026-09-01: the audit counted 3 inbound content links to
+          /compare/ against /search/'s 819, and the page that draws one series is exactly where a
+          reader asks "against what?". The workbench reads `?a=` and puts this series in the first
+          slot with nothing chosen for the second. */}
+      <p className="series-compare mono">
+        <Link href={`/compare/?a=${s.id}`}>Compare this series with another &rarr;</Link>
+      </p>
 
       {/* ============================ THE FINDING, WHERE THE READER LANDS =====================
           §3's new order, and the governing sentence of the revision: show the finding first, then
@@ -225,7 +233,7 @@ export default async function SeriesDetail({ params }: Props) {
           </Link>
         ))}
       </p>
-      <SourceLine source={s.source} tier={s.tier} />
+      <SourceLine source={s.source} tier={s.tier} resolve={publisherFor} />
       <StatusKey />
 
 
@@ -297,7 +305,7 @@ export default async function SeriesDetail({ params }: Props) {
               <h3>
                 <Link href={`/series/${c.id}/`}>{c.title}</Link>
               </h3>
-              <SourceLine source={c.source} tier={c.tier} />
+              <SourceLine source={c.source} tier={c.tier} resolve={publisherFor} />
               <SeriesTable series={c} handoff={handoffFor(c.id)} />
             </section>
           ))}

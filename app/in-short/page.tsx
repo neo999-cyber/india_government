@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { InlineSpark } from '@/components/InlineSpark';
 import type { Metadata } from 'next';
 import type { Domain } from '@/lib/types';
 import { getSeries, ledger, series } from '@/lib/data';
@@ -79,6 +80,8 @@ const WAY_RECORDS = [
   'schools-above-rte-ptr-primary-dise',
 ] as const;
 
+const yearOf = (period: string) => Number(String(period).replace(/^FY/, '').slice(0, 4));
+
 export default function InShort() {
   const wayRecords = WAY_RECORDS.map((id) => {
     const record = getSeries(id);
@@ -126,7 +129,7 @@ export default function InShort() {
         const instead = INSTEAD[d.key];
 
         return (
-          <section key={d.key} className="ins">
+          <section key={d.key} id={d.key} className="ins">
             <h3>
               <Link prefetch={false} href={`/domains/${d.key}/`}>{DOMAIN_LABELS[d.key as Domain]}</Link>
             </h3>
@@ -153,6 +156,8 @@ export default function InShort() {
                 </p>
                 {/* THE RECORD, WHOLE. Its caveat and its declared absences travel with it here
                     exactly as they do on its own page — see this file's header for why. */}
+                {/* THE SLOPE THE SENTENCE ABOVE DESCRIBES, drawn from the same points. */}
+                <InlineSpark points={pts} breaks={head.breaks ?? []} yearOf={yearOf} />
                 <RecordMarks record={head} />
               </>
             ) : null}

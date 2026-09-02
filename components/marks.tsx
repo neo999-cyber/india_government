@@ -143,30 +143,59 @@ export function StatusTally({ counts }: { counts: Record<string, number> }) {
 }
 
 /** Source, tier and vintage on one line — one click from any number (rule 6/7). */
-export function SourceLine({ source, tier }: { source: SourceRef; tier?: Tier }) {
+/**
+ * `resolve` IS A PROP, NOT AN IMPORT, and the reason is the bundle boundary. The publisher table
+ * lives in `lib/publishers.ts`, which imports the data module; this file has only server consumers
+ * today, and an import here would make it un-importable from any client component tomorrow. The
+ * record pages already hold the data module, so they pass the resolver in.
+ *
+ * WHY THE LINK EXISTS. The surface audit of 2026-09-01 counted inbound links from page content:
+ * /publishers/ had 2. It is the page that says who this record rests on, and every record cites
+ * the bodies it lists. Where a citation resolves to a named body, the body's name is a link to its
+ * row there; where it does not — a document rather than a publisher — nothing changes.
+ */
+export type PublisherLink = (name: string) => { id: string; name: string } | undefined;
+
+export function SourceLine({ source, tier, resolve }: { source: SourceRef; tier?: Tier; resolve?: PublisherLink }) {
+  const body = resolve?.(source.name);
   return (
     <p className="source-line">
       Source:{' '}
       <a href={source.url} target="_blank" rel="noreferrer noopener">
         {source.name}
       </a>
+      {body ? (
+        <>
+          {' '}
+          <Link className="pub-link mono" href={`/publishers/#${body.id}`}>{body.name} &rarr;</Link>
+        </>
+      ) : null}
       {tier ? <> · tier {tier}</> : null}
       {source.vintage ? <> · vintage {source.vintage}</> : null}
     </p>
   );
 }
 
-export function SourceList({ sources }: { sources: TieredSource[] }) {
+export function SourceList({ sources, resolve }: { sources: TieredSource[]; resolve?: PublisherLink }) {
   return (
     <ul style={{ listStyle: 'none', padding: 0, margin: '0.35rem 0 1rem' }}>
-      {sources.map((s) => (
-        <li key={`${s.name}-${s.url}`} className="source-line">
-          <a href={s.url} target="_blank" rel="noreferrer noopener">
-            {s.name}
-          </a>{' '}
-          · tier {s.tier}
-        </li>
-      ))}
+      {sources.map((s) => {
+        const body = resolve?.(s.name);
+        return (
+          <li key={`${s.name}-${s.url}`} className="source-line">
+            <a href={s.url} target="_blank" rel="noreferrer noopener">
+              {s.name}
+            </a>{' '}
+            · tier {s.tier}
+            {body ? (
+              <>
+                {' '}
+                <Link className="pub-link mono" href={`/publishers/#${body.id}`}>{body.name} &rarr;</Link>
+              </>
+            ) : null}
+          </li>
+        );
+      })}
     </ul>
   );
 }

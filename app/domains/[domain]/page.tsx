@@ -11,6 +11,7 @@ import {
   seriesInDomain,
   seriesUnderLens,
   statusCounts,
+  series,
 } from '@/lib/data';
 import {
   ASSESSMENT_LABELS,
@@ -163,6 +164,20 @@ export async function DomainSurface({ d }: { d: Domain }) {
       </p>
 
       <DomainSections />
+      {/* TWO DOORS OUT OF A TOPIC, added 2026-09-01. The site audit counted inbound links from page
+          content, navigation excluded: /in-short/ had 2 and /seams/ had 2, against /search/'s 819.
+          The plain-language reading of THIS subject and the record of where ITS instruments changed
+          are the two things a reader on this page is most likely to want next, and neither was
+          reachable from here. The seam link lands on this subject's own row of the grid. */}
+      <p className="topic-doors mono">
+        <Link href={`/in-short/#${d}`}>Read {DOMAIN_LABELS[d].toLowerCase()} in plain language &rarr;</Link>
+        {/* ONLY WHERE THE ROW EXISTS. The seam grid has a row for a subject only if a series of
+            it breaks; Kashmir has no series and Foreign policy's never break, so this door linked
+            them to nothing — two dead fragments of 37,892, caught by the sweep. */}
+        {series.some((x) => x.domain === d && (x.breaks ?? []).length > 0) ? (
+          <Link href={`/seams/#row-${d}`}>Where its instruments changed &rarr;</Link>
+        ) : null}
+      </p>
 
       {/* THE COUNTS LINE LOST ITS FIRST JOB TO THE CONTENTS STRIP, 2026-08-14 — it read
           `N indicators · N records · N disputes`, which the strip above now states beside the

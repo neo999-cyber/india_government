@@ -47,6 +47,20 @@ export const metadata: Metadata = {
  * The alternative — a client index of titles alone — would be smaller again and would drop every
  * caveat and absence from a surface that lists records, which is the trade rule 4b exists to refuse.
  */
+/**
+ * ============================ THE WEIGHT OF THIS PAGE, MEASURED ===============================
+ *
+ * 2,472 KB of HTML after `/contested/` and `/exposure/` folded in on 2026-09-01, and the surface
+ * audit named it as the page to watch. Measured rather than assumed, the same day:
+ *
+ *   on the wire      190 KB brotli · 436 KB gzip   (Vercel serves brotli)
+ *   on a phone       519 ms to DOMContentLoaded at 4x CPU throttle, 375px, cold, median of three
+ *   in the DOM       10,866 nodes
+ *
+ * That is half a second on a slow device, and the transfer is the size of one large image. The raw
+ * figure is DOM weight, not cost to a reader, and nothing moves on its account. **If a future
+ * measurement disagrees, it is the measurement that governs, not the 2.4 MB.**
+ */
 export default function SearchPage() {
   type Row = {
     id: string;

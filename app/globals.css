@@ -4674,6 +4674,27 @@ details.more > summary {
    says so without asking a hue to carry an ordering that would then have to be explained; the
    shape is the whole claim, because T1 is most of the archive and everything else is a margin.
    ============================================================================================== */
+/* THE ABSENCE BANDS on /unmeasured/ — the evidence-base idiom, counting declarations. The no-route
+   band is the absence mark itself: an unfilled dashed square, never a filled one. */
+/* THE PUBLISHER BAND — one mark per citation, tier groups separated by a gap so position, not
+   colour, says which tier. Sits above the tier tags in the same cell. */
+.pub-band { display: flex; flex-wrap: wrap; gap: 0 0.45rem; line-height: 0; margin: 0 0 0.35rem; max-width: 14rem; }
+.pub-band-tier { display: inline-block; line-height: 0; }
+.pub-band-tier i { display: inline-block; width: 4px; height: 4px; margin: 0 1px 1px 0; background: var(--ink); opacity: 0.55; border-radius: 1px; }
+/* A T5 is a contested composite and always carries its dispute: its marks are the mark colour. */
+.pub-band-tier[data-t='T5'] i { background: var(--mark); opacity: 0.85; }
+
+.abs-bands { margin: 1.4rem 0 0; }
+.abs-bands-h { margin: 0 0 0.6rem; font-size: 0.9rem; color: var(--ink-2); }
+.abs-bands-h b { font-size: 1.3rem; font-variant-numeric: tabular-nums; color: var(--ink); margin-right: 0.35rem; }
+.abs-band { margin: 0 0 0.8rem; }
+.abs-band-h { display: flex; align-items: baseline; gap: 0.5rem; margin: 0 0 0.25rem; }
+.abs-band-h b { font-size: 0.95rem; font-variant-numeric: tabular-nums; color: var(--ink); min-width: 2.6rem; }
+.abs-band-h span { font-size: 0.74rem; color: var(--ink-dim); }
+.abs-marks { display: block; line-height: 0; }
+.abs-marks i { display: inline-block; width: 5px; height: 5px; margin: 0 2px 2px 0; background: var(--ink); opacity: 0.55; border-radius: 1px; }
+.abs-band.is-none .abs-marks i { background: transparent; border: 1px dashed var(--ink-dim); opacity: 0.9; width: 4px; height: 4px; }
+
 .evb { margin: 3.5rem 0 0; border-top: 1px solid var(--rule); padding-top: 1.6rem; }
 .evb-head h2 { margin: 0.2rem 0 0.5rem; font-size: clamp(1.4rem, 2.6vw, 1.9rem); text-wrap: balance; }
 .evb-head p { max-width: var(--measure); color: var(--ink-2); margin: 0; }
@@ -5466,6 +5487,13 @@ details.more > summary {
    continuous argument, so column order costs a reader nothing — and it halves a page whose entire
    reason for existing is that there was too much to look at. The prose above and below stays one
    column, because that IS continuous. */
+/* The inline slope beside a subject's lead figure. Ink for the run, the break colour for a seam,
+   nothing for direction — 199 of 269 series decline to say which way is better. */
+.ins-spark { display: block; width: 120px; height: 28px; margin: 0.25rem 0 0.35rem; overflow: visible; }
+.ins-spark polyline { fill: none; stroke: var(--ink-2); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+.ins-spark circle { fill: var(--ink-2); }
+.ins-spark .ins-spark-end { fill: var(--ink); }
+.ins-spark .ins-spark-stop { stroke: var(--alert); stroke-width: 1.6; }
 .ins-grid {
   display: grid;
   gap: 0 2.5rem;
@@ -7614,6 +7642,22 @@ li {
 .lsc-brief-seam a { color: var(--alert); }
 .lsc-brief-seam strong { font-family: var(--font-mono); font-weight: 500; }
 .lsc-brief-go { display: flex; flex-wrap: wrap; gap: 0.2rem 1.1rem; margin: 0; font-size: 0.78rem; }
+
+/* ==============================================================================================
+   THE EDITORIAL DOORS — cross-links added 2026-09-01 after the audit counted inbound links from
+   page CONTENT: /in-short/ 2, /seams/ 2, /publishers/ 2, /compare/ 3, against /search/ 819. One
+   idiom for all of them: a quiet mono line with an arrow, the brief's own `.lsc-brief-go`.
+   ============================================================================================== */
+.topic-doors, .year-seams, .series-compare {
+  display: flex; flex-wrap: wrap; gap: 0.25rem 1.4rem; margin: 0.9rem 0 0; font-size: 0.74rem;
+}
+.topic-doors a, .year-seams a, .series-compare a { color: var(--ink-2); text-decoration: none; }
+.topic-doors a:hover, .year-seams a:hover, .series-compare a:hover { color: var(--ink); text-decoration: underline; }
+/* The seam line takes the break colour, because that is what it is warning about. */
+.year-seams a { color: var(--alert); }
+/* A publisher link sits after the source it resolves, one step quieter than the source itself. */
+.pub-link { font-size: 0.68rem; color: var(--ink-dim); text-decoration: none; margin-left: 0.1rem; }
+.pub-link:hover { color: var(--ink); text-decoration: underline; }
 
 @media (max-width: 900px) {
   .lsc-year { grid-template-columns: minmax(0, 1fr); }

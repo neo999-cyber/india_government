@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { publisherFor } from '@/lib/publishers';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { provenanceCard } from '@/lib/share-card';
@@ -241,7 +242,7 @@ export default async function ProvenanceDetail({ params }: Props) {
       ) : null}
 
       <h2>Sources</h2>
-      <SourceList sources={p.sources} />
+      <SourceList sources={p.sources} resolve={publisherFor} />
       {p.notes ? <p className="prose-note">{p.notes}</p> : null}
 
       <RecordHistory id={p.id} />

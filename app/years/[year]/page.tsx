@@ -153,6 +153,17 @@ export default async function YearPage({ params }: Props) {
           </span>
         ))}
       </p>
+      {/* THE YEAR'S SEAMS, WHICH THIS PAGE ALREADY COMPUTED AND NEVER NAMED. `seams` at the top of
+          this component has always held every break dated in this year; it fed the per-topic rows
+          and nothing else. A reader about to read a year's figures needs to know first whether the
+          instruments moved underneath them, and /seams/ has carried the answer since 2026-09-01. */}
+      {seams.length ? (
+        <p className="year-seams mono">
+          <Link href={`/seams/#year-${y}`}>
+            {seams.length} series change basis in {y} &mdash; the figures either side are not comparable &rarr;
+          </Link>
+        </p>
+      ) : null}
 
       {/* EVERY YEAR IS A URL. Links rather than a slider: a state a reader cannot paste is a state
           this instrument does not consider to exist, and the year control is the spine of these

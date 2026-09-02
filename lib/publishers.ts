@@ -414,3 +414,12 @@ export function publisherRollups(): {
       .sort((a, b) => b.n - a.n || a.segment.localeCompare(b.segment)),
   };
 }
+
+/**
+ * The body a source NAME resolves to, for a link from a record page to `/publishers/#<id>`. A thin
+ * wrapper so the record pages pass one function rather than construct a `Citation` each.
+ */
+export function publisherFor(name: string): { id: string; name: string } | undefined {
+  const r = resolveCitation({ layer: 'ledger', recordId: '', recordTitle: '', href: '', name, url: '', tier: 'T1' });
+  return r.body ? { id: r.body.id, name: r.body.name } : undefined;
+}

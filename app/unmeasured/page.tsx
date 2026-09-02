@@ -54,6 +54,27 @@ export default function UnmeasuredIndex() {
         { id: 'verification-queue', label: 'Verification queue' },
         { id: 'unanswerable', label: 'Four questions' },
       ]} />
+
+      {/* THE PAGE'S THESIS, DRAWN BEFORE IT IS READ. Three counts carry this page — every declared
+          absence, the ones that name a source that would close them, the ones that name no route —
+          and until 2026-09-01 they were three numbers in a paragraph 1.2 MB long. One mark per
+          declaration, in two bands, the landing page's evidence-base idiom counting a different
+          thing. **The no-route band is dashed and unfilled**, because rule 4a says an absence
+          renders unlike a finding, and an absence with no route to closing it is the most absent
+          thing on the site. Nothing is summed: the two bands ARE the total, side by side. */}
+      <div className="abs-bands" aria-label={`${all.length} declared absences: ${withRoute.length} name a source that would close them, ${withoutRoute.length} name no route`}>
+        <p className="abs-bands-h">
+          <b className="mono">{all.length}</b> <span>declared absences, across {records.size} records</span>
+        </p>
+        <div className="abs-band">
+          <p className="abs-band-h"><b className="mono">{withRoute.length}</b><span>name a source that would close them</span></p>
+          <span className="abs-marks" aria-hidden="true">{Array.from({ length: withRoute.length }, (_, i) => <i key={i} />)}</span>
+        </div>
+        <div className="abs-band is-none">
+          <p className="abs-band-h"><b className="mono">{withoutRoute.length}</b><span>name no route at all</span></p>
+          <span className="abs-marks" aria-hidden="true">{Array.from({ length: withoutRoute.length }, (_, i) => <i key={i} />)}</span>
+        </div>
+      </div>
       <p className="prose-note">
         {all.length} declaration{all.length === 1 ? '' : 's'} across {records.size} record
         {records.size === 1 ? '' : 's'}.{' '}

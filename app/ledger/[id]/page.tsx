@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { publisherFor } from '@/lib/publishers';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ledgerCard } from '@/lib/share-card';
@@ -292,7 +293,7 @@ export default async function LedgerDetail({ params }: Props) {
           <Link href="/method/#independence">what this grades</Link>
         </p>
       ) : null}
-      <SourceList sources={l.sources} />
+      <SourceList sources={l.sources} resolve={publisherFor} />
 
       {refSeries.length > 0 ? (
         <>

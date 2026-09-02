@@ -118,7 +118,7 @@ export default function Seams() {
           </thead>
           <tbody>
             {subjects.map((d) => (
-              <tr key={d}>
+              <tr key={d} id={`row-${d}`}>
                 <th scope="row">{DOMAIN_LABELS[d]}</th>
                 {years.map((y) => {
                   const n = byCell.get(`${d}|${y}`) ?? 0;
