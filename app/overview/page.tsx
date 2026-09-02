@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { SubjectCarousel } from '@/components/SubjectCarousel';
+import { carouselSubjects } from '@/lib/carousel';
 import { ContentsRail } from '@/components/ContentsRail';
 import { YearsSection } from '@/components/YearsSection';
 import { TermsSection } from '@/components/TermsSection';
@@ -268,6 +270,15 @@ export default function Overview() {
           </p>
         </div>
       </header>
+      {/* THE CAROUSEL IS THE DOOR TO THE BOARD. Operator, 2026-09-02, from a supplied reference:
+          "something like this for the domains … a normal website with premium design and
+          animation, not a typical government portal". The fourteen as cover-flow cards, one in
+          focus; the active card scrolls to its own board below, and the board's own link opens the
+          topic. What it changes from the reference is stated in the component and the stylesheet:
+          a figure rather than a rating, the subject's own hue rather than red, an absence card for
+          Kashmir, a sober card for Defence. */}
+      <SubjectCarousel subjects={carouselSubjects()} />
+
       {/* THE RAIL IS A CHILD OF <main>, NOT OF THE HERO. It was first placed after the lede, which on
           this page lives inside `header.atlas-hero > div.atlas-hero-copy` — so `main > .rail` never
           matched, the rail rendered `position: relative` inside the banner, and the geometry check

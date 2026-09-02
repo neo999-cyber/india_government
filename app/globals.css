@@ -7761,6 +7761,77 @@ li {
 .rc--compact .rc-stage { max-width: 21rem; margin-inline: auto; }
 
 /* ==============================================================================================
+   THE SUBJECT CAROUSEL — a cover-flow of the fourteen, at the top of the Atlas.
+
+   Built 2026-09-02 from an operator-supplied reference: one poster centred and forward, neighbours
+   receding, a glow behind the active one. Every position is a data value the server already set
+   (`--i` offset from centre, `--d` its distance capped at 3), so the flow lays out with no script.
+
+   TWO THINGS THE REFERENCE DID THAT THIS MUST NOT. Its glow is red; here red is reserved for
+   deaths, alerts and seams, so the glow is the subject's AREA hue via the eight `--area-*` tokens
+   that already exist in both palettes. And its big number is a rating; here it is a figure with a
+   unit, and two cards render no bold figure at all — see the component.
+   ============================================================================================== */
+.sc { margin: 1.4rem 0 0; }
+.sc-head { display: flex; align-items: baseline; gap: 0.9rem; flex-wrap: wrap; margin: 0 0 0.7rem; }
+.sc-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; margin: 0; }
+.sc-sub { font-size: 0.68rem; color: var(--ink-dim); margin: 0; }
+.sc-stage {
+  position: relative; height: min(64vw, 520px); overflow: hidden; border-radius: var(--radius-md);
+  background: var(--surface); border: 1px solid var(--rule); touch-action: pan-y; user-select: none;
+}
+.sc-glow {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.42;
+  background: radial-gradient(ellipse 46% 60% at 50% 52%, color-mix(in srgb, var(--hue) 60%, transparent) 0%, transparent 70%);
+  transition: opacity 0.6s ease;
+}
+:root[data-theme='dark'] .sc-glow { opacity: 0.5; }
+.sc-track { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; perspective: 1400px; }
+.sc-card {
+  position: absolute; width: min(56vw, 300px); aspect-ratio: 3 / 4.35; border-radius: 14px; overflow: hidden;
+  background: var(--surface); color: var(--ink); text-decoration: none; cursor: pointer;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--rule);
+  transform: translateX(calc(var(--i) * 68%)) translateZ(calc(var(--d) * -180px)) scale(calc(1 - var(--d) * 0.13));
+  opacity: calc(1 - var(--d) * 0.32); filter: saturate(calc(1 - var(--d) * 0.55));
+  transition: transform 0.65s cubic-bezier(0.22, 0.9, 0.24, 1), opacity 0.65s ease, filter 0.65s ease;
+  will-change: transform; z-index: calc(10 - var(--d));
+}
+.sc-card.is-active { cursor: default; box-shadow: 0 44px 90px -24px rgba(0, 0, 0, 0.45), 0 0 0 1px color-mix(in srgb, var(--hue) 55%, transparent); }
+.sc-card:focus-visible { outline: 2px solid var(--mark); outline-offset: 3px; }
+.sc-art { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 55% at 50% 42%, color-mix(in srgb, var(--hue) 22%, var(--surface)) 0%, var(--surface) 72%); }
+.sc-art img { position: absolute; left: 50%; top: 44%; width: 74%; height: auto; transform: translate(-50%, -50%); filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.28)); }
+.sc-body {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 1rem 1.05rem 1rem; display: block;
+  background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--surface) 88%, transparent) 42%, var(--surface) 100%);
+}
+.sc-area { display: block; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--hue); margin: 0 0 0.25rem; }
+.sc-name { display: block; font-family: var(--font-serif); font-weight: 600; font-size: 1.32rem; line-height: 1.12; margin: 0 0 0.45rem; text-wrap: balance; }
+.sc-fig { display: flex; align-items: baseline; gap: 0.4rem; margin: 0 0 0.15rem; }
+.sc-fig b { font-size: 1.55rem; font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.sc-fig span { font-size: 0.62rem; color: var(--ink-dim); }
+.sc-lead { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 0.68rem; color: var(--ink-2); line-height: 1.3; margin: 0 0 0.55rem; }
+.sc-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.sc-chips span { font-size: 0.6rem; padding: 0.16rem 0.45rem; border-radius: 4px; background: color-mix(in srgb, var(--ink) 8%, transparent); color: var(--ink-2); }
+/* The absence card: dashed, unfilled, no figure — rule 4a in a poster's clothes. */
+.sc-absence { display: block; border: 1px dashed var(--ink-dim); border-radius: 6px; padding: 0.45rem 0.55rem; font-size: 0.66rem; color: var(--ink-2); margin: 0 0 0.55rem; }
+/* The sober card: a count of the dead is stated, at text size, in the alert colour — never a poster figure. */
+.sc-sober { display: block; font-size: 0.72rem; color: var(--alert); margin: 0 0 0.55rem; line-height: 1.3; }
+.sc-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 0.8rem 0 0; flex-wrap: wrap; }
+.sc-dots { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.sc-dots button { width: 22px; height: 6px; border-radius: 3px; border: 0; background: var(--rule); cursor: pointer; padding: 0; transition: background 0.3s, width 0.3s; }
+.sc-dots button.is-on { background: var(--hue); width: 34px; }
+.sc-dots button:focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; }
+.sc-read { font-size: 0.7rem; color: var(--ink-dim); margin: 0; }
+.sc-read a { color: var(--ink-2); }
+.sc-nav { display: flex; gap: 0.4rem; }
+.sc-nav button { font-family: var(--font-mono); font-size: 0.72rem; padding: 0.45rem 0.8rem; border: 1px solid var(--rule); background: var(--surface); color: var(--ink-2); border-radius: var(--radius-sm); cursor: pointer; }
+.sc-nav button:hover { color: var(--ink); border-color: var(--ink-dim); }
+@media (prefers-reduced-motion: reduce) { .sc-card, .sc-glow, .sc-dots button { transition: none; } }
+@media (max-width: 700px) {
+  .sc-card { transform: translateX(calc(var(--i) * 78%)) translateZ(calc(var(--d) * -180px)) scale(calc(1 - var(--d) * 0.16)); }
+}
+
+/* ==============================================================================================
    THE ATLAS BANNER — a supplied collage behind the page's own heading.
 
    **IT ENCODES NOTHING, AND SAYING SO IS THE POINT.** Every other picture on this site carries a

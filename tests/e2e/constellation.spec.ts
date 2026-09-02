@@ -66,6 +66,9 @@ test.describe('record constellation', () => {
   test('320px — nothing pushes the document sideways, name hidden or shown', async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 720 });
     await page.goto(ROUTE);
+    // A CLIENT-RENDERED VIEW IS NOT THERE AT `goto`. `.rc` mounts after hydration, and the subject
+    // carousel above it (14 images) moved that past the moment `boxes()` used to run: `.rc` was null.
+    await page.locator('.rc').waitFor();
 
     /**
      * THE RIGHT EDGE ONLY, and that is not laziness. An earlier version also failed anything with
@@ -80,7 +83,12 @@ test.describe('record constellation', () => {
         const offenders: string[] = [];
         for (const el of document.body.querySelectorAll('*')) {
           const b = el.getBoundingClientRect();
-          if (b.right > de.clientWidth + 1 && !el.closest('.table-wrap, .dtabs, [data-scroll-x]')) {
+          // `.sc-stage` joined the named clipping containers on 2026-09-02: the subject carousel's
+          // off-centre cards are translated past the stage's edges BY DESIGN and the stage clips them
+          // (`overflow: hidden`), so their rects exceed the viewport while the document does not
+          // scroll — the same shape as a table inside `.table-wrap`. The document-scroll assertion
+          // below still binds the page; this list names what may legitimately extend.
+          if (b.right > de.clientWidth + 1 && !el.closest('.table-wrap, .dtabs, [data-scroll-x], .sc-stage')) {
             const c = el.className;
             offenders.push(
               typeof c === 'string' ? c : ((c as unknown as SVGAnimatedString)?.baseVal ?? el.tagName),
@@ -107,6 +115,9 @@ test.describe('record constellation', () => {
     }) => {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(ROUTE);
+    // A CLIENT-RENDERED VIEW IS NOT THERE AT `goto`. `.rc` mounts after hydration, and the subject
+    // carousel above it (14 images) moved that past the moment `boxes()` used to run: `.rc` was null.
+    await page.locator('.rc').waitFor();
       const b = await boxes(page);
 
       expect(b.badges, 'all eight areas are present').toHaveLength(8);
@@ -151,6 +162,9 @@ test.describe('record constellation', () => {
     test(`${width}px — the artwork and the prose share one left edge`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(ROUTE);
+    // A CLIENT-RENDERED VIEW IS NOT THERE AT `goto`. `.rc` mounts after hydration, and the subject
+    // carousel above it (14 images) moved that past the moment `boxes()` used to run: `.rc` was null.
+    await page.locator('.rc').waitFor();
 
       // ANCHORED TO THE COMPONENT'S OWN PROSE, NOT THE PAGE'S `h1`. **WITHDRAWN: a comparison
       // against `page.locator('h1')`.** That worked while this artwork was the landing page's own
@@ -176,6 +190,9 @@ test.describe('record constellation', () => {
     page,
   }) => {
     await page.goto(ROUTE);
+    // A CLIENT-RENDERED VIEW IS NOT THERE AT `goto`. `.rc` mounts after hydration, and the subject
+    // carousel above it (14 images) moved that past the moment `boxes()` used to run: `.rc` was null.
+    await page.locator('.rc').waitFor();
 
     const status = page.locator('.rc-status');
     await expect(status).toHaveText('All eight constellations');
@@ -209,6 +226,9 @@ test.describe('record constellation', () => {
 
   test('the official outline, the ghost sheet and the attribution all render', async ({ page }) => {
     await page.goto(ROUTE);
+    // A CLIENT-RENDERED VIEW IS NOT THERE AT `goto`. `.rc` mounts after hydration, and the subject
+    // carousel above it (14 images) moved that past the moment `boxes()` used to run: `.rc` was null.
+    await page.locator('.rc').waitFor();
 
     // The outline is the thing a reader actually sees, and it is 35KB of official geometry. A
     // truncated or missing path would leave the marks floating on nothing while every other
