@@ -7827,156 +7827,26 @@ li {
 .sc-nav button { font-family: var(--font-mono); font-size: 0.72rem; padding: 0.45rem 0.8rem; border: 1px solid var(--rule); background: var(--surface); color: var(--ink-2); border-radius: var(--radius-sm); cursor: pointer; }
 .sc-nav button:hover { color: var(--ink); border-color: var(--ink-dim); }
 @media (prefers-reduced-motion: reduce) { .sc-card, .sc-glow, .sc-dots button { transition: none; } }
+/* ON A PHONE THE STAGE IS AS TALL AS ITS CARD, NOT AS WIDE AS THE SCREEN. `min(64vw, 520px)` gave a
+   240px stage at 375px against a 304px card — the card's foot was clipped. The card is 62vw wide,
+   its height follows from the aspect ratio, and the stage adds room for the glow. Type steps down
+   one notch; the flow spreads 74% per step so the neighbours' edges still show. Swipe already
+   navigates (`touch-action: pan-y` leaves vertical scrolling to the browser). */
 @media (max-width: 700px) {
-  .sc-card { transform: translateX(calc(var(--i) * 78%)) translateZ(calc(var(--d) * -180px)) scale(calc(1 - var(--d) * 0.16)); }
+  .sc-card { width: 62vw; transform: translateX(calc(var(--i) * 74%)) translateZ(calc(var(--d) * -140px)) scale(calc(1 - var(--d) * 0.16)); }
+  .sc-stage { height: calc(62vw * 4.35 / 3 + 3rem); }
+  .sc-name { font-size: 1.1rem; }
+  .sc-fig b { font-size: 1.3rem; }
+  .sc-body { padding: 0.8rem 0.85rem 0.85rem; }
+  .sc-bar { gap: 0.6rem; }
+  .sc-read { order: 3; flex-basis: 100%; }
 }
 
 /* ==============================================================================================
-   THE ATLAS BANNER — a supplied collage behind the page's own heading.
-
-   **IT ENCODES NOTHING, AND SAYING SO IS THE POINT.** Every other picture on this site carries a
-   claim: the constellation's density is proportional to real filings, the landscape's marks are one
-   per filing, and both declare their positions conceptual. This one is decoration — no count, no
-   series, no position in it means anything — so it is a CSS background with no alt text rather than
-   content. That distinction is the reason it is allowed to be pretty.
-
-   **WITHDRAWN: an opaque cream collage under a fixed dark scrim in both themes.** On the light
-   canvas that produced a near-black band in a bone page — the operator's report, and correct. The
-   artwork is now a TRANSPARENT plate whose paper ground is semi-transparent, so the page's own
-   background shows through it: it goes dark on the dark canvas and blends into the bone on the
-   light one, and the photographs stay vivid on both because they no longer need dimming to make
-   room for the text.
-
-   THE SCRIM AND THE TEXT NOW FOLLOW THE THEME. Dark veil and light ink on the dark canvas; bone
-   veil and dark ink on the light one. Every value is a literal rather than a token, because the
-   veil sits over photographs rather than over a surface, and its opacity is tuned to the image.
-
-   IT COSTS MORE THAN THE OPAQUE VERSION AND THAT IS STATED, NOT HIDDEN: 572 KB against 236 KB,
-   because an alpha channel is what WebP compresses worst — quality made almost no difference
-   across a sweep from q0.82 to q0.58, only dimensions did.
+   THE ATLAS BANNER IS GONE — operator, 2026-09-02: "no need of hero banner images any more".
+   **WITHDRAWN: the whole `.atlas-hero` block** — the collage as a background, the frame veil, the
+   copy's own backing that ran the full height of the plate, the four-side edge fade that replaced
+   its border, and the light/dark variants of each. Four commits of work on it are in the history
+   (8c9fa9c9, 05f7bc24, c13b191a, f3ee1385) and their withdrawn wordings with them; the header that
+   stood here quoted them. The two WebP files leave with it.
    ============================================================================================== */
-/* NO BORDER AND NO RADIUS. **WITHDRAWN: `border: 1px solid var(--rule)` with
-   `border-radius: var(--radius-md)`.** A ruled, rounded box around a photograph reads as a card
-   pasted onto the page — the operator's question was "does it need the border?", and it does not:
-   the plate is the header, not an object sitting in it. What replaces the border is an edge fade
-   to `--bg` on all four sides, so the picture ends by dissolving rather than by being cut. */
-.atlas-hero {
-  position: relative;
-  margin: 0 0 2rem;
-  overflow: hidden;
-  background-color: var(--bg);
-  background-image: url('/atlas/banner.webp');
-  background-size: cover;
-  background-position: 62% center;
-  min-height: clamp(15rem, 26vw, 24rem);
-  display: flex;
-  align-items: center;
-}
-@media (max-width: 760px) {
-  .atlas-hero { background-image: url('/atlas/banner-sm.webp'); background-position: 68% center; }
-}
-
-/* THE READABLE BACKING BELONGS TO THE COPY, NOT TO THE FRAME — and guessing it as a fraction of
-   the frame is what went wrong twice. **WITHDRAWN: two full-width gradients on `.atlas-hero::before`,
-   the first falling off at 34% and the second held to 58%.** Both were guesses at where the text
-   ends as a fraction of the FRAME, and the text has no frame's width: `.atlas-hero-copy` is capped
-   at 46rem, which is 57% of an 84rem frame and 100% of a narrow one. The first guess left the light
-   kicker at 3.07:1; the second passed contrast at every width and bleached the photographs.
-
-   **A THIRD WITHDRAWAL, AND IT IS THE ONE A READER COULD SEE: `inset: -2rem -9rem -2rem -3rem` with
-   the gradient solid to 86%.** Fading left-to-right inside a box leaves the box's TOP AND BOTTOM
-   edges hard, so on a wide screen the backing read as a dark rectangle laid over the collage with
-   three visible seams. The operator: "the gradient is too sharp".
-
-   The fix is that the backing now fades on every side. Horizontally it is still a gradient, so the
-   bound still holds by construction: the backing spans the copy plus 6rem left and 12rem right, so
-   at the copy's widest — 46rem = 736px — the copy's right edge sits at 832/1024 = 81% of that span
-   and only moves LEFT as the copy narrows, which is why solid-to-82% covers the text at every
-   width.
-
-   **A FOURTH WITHDRAWAL, VERTICAL THIS TIME: `inset: -4.5rem -12rem -4.5rem -6rem` with
-   `mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 82%, transparent 100%)`.**
-   Softening the top and bottom edges removed the seams but left the backing as a BAND: it began
-   and ended inside the plate, and on the dark canvas — where the backing is dark and the artwork's
-   own paper is pale — you could see exactly where it stopped. The operator: "the gradient behind is
-   still not edge to edge \u2026 in light you dont notice that."
-
-   So the backing is full-bleed top to bottom and fades only to the right, which is the one
-   direction that has anything to fade INTO. It gets there by geometry rather than by a number:
-   `.atlas-hero-copy` takes `align-self: stretch` and centres its own text, so `inset: 0` on its
-   backing IS the plate's full height at every width and every content length. */
-.atlas-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(239, 234, 224, 0.42) 0%, rgba(239, 234, 224, 0.26) 50%,
-                                      rgba(239, 234, 224, 0.46) 100%);
-}
-:root[data-theme='dark'] .atlas-hero::before {
-  background: linear-gradient(180deg, rgba(13, 17, 23, 0.52) 0%, rgba(13, 17, 23, 0.38) 50%,
-                                      rgba(13, 17, 23, 0.56) 100%);
-}
-
-/* The edge fade that replaces the border. It paints the page's own background inward from each
-   side, and it sits BELOW the copy — `.atlas-hero-copy` takes `z-index: 1` — so it dissolves the
-   picture without touching a glyph. */
-.atlas-hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(90deg, var(--bg) 0%, transparent 7%),
-    linear-gradient(270deg, var(--bg) 0%, transparent 9%),
-    linear-gradient(180deg, var(--bg) 0%, transparent 14%),
-    linear-gradient(0deg, var(--bg) 0%, transparent 14%);
-}
-
-.atlas-hero-copy::before {
-  content: '';
-  position: absolute;
-  inset: 0 -12rem 0 -6rem;
-  background: linear-gradient(90deg, rgba(239, 234, 224, 0.95) 0%, rgba(239, 234, 224, 0.92) 82%,
-                                     rgba(239, 234, 224, 0) 100%);
-}
-:root[data-theme='dark'] .atlas-hero-copy::before {
-  background: linear-gradient(90deg, rgba(13, 17, 23, 0.93) 0%, rgba(13, 17, 23, 0.9) 82%,
-                                     rgba(13, 17, 23, 0) 100%);
-}
-
-.atlas-hero-copy .home-kicker { color: #6b431d; }
-.atlas-hero-copy .home-lead { color: #1b1f2e; margin-bottom: 0.9rem; }
-.atlas-hero-copy .lede { color: #3a3f4d; max-width: 54ch; margin: 0; }
-:root[data-theme='dark'] .atlas-hero-copy .home-kicker { color: #f2b656; }
-:root[data-theme='dark'] .atlas-hero-copy .home-lead { color: #f7f4ea; }
-:root[data-theme='dark'] .atlas-hero-copy .lede { color: #ddd8cb; }
-
-/* On a phone the copy spans the whole plate, so its backing has nothing to fade INTO horizontally.
-   It goes flat left-to-right and keeps the vertical mask. Measured at 390px under the old frame
-   scrim the kicker sat over the brighter right-hand collage at 4.04:1 against the 4.5 it needs. */
-@media (max-width: 760px) {
-  .atlas-hero-copy::before {
-    inset: 0 -1.4rem;
-    background: rgba(239, 234, 224, 0.93);
-  }
-  :root[data-theme='dark'] .atlas-hero-copy::before { background: rgba(13, 17, 23, 0.9); }
-}
-
-.atlas-hero-copy {
-  position: relative;
-  padding: 2.4rem 2rem;
-  max-width: 46rem;
-  z-index: 1;
-  /* Full height, so its backing can be. The plate's `align-items: center` used to do the centring;
-     the copy does it for itself now. */
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-/* The backing is a positioned pseudo-element, so it paints above in-flow content unless the
-   content is positioned too. */
-.atlas-hero-copy > * { position: relative; }
-@media (max-width: 760px) {
-  .atlas-hero-copy { padding: 1.6rem 1.15rem; }
-}

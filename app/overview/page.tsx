@@ -259,17 +259,14 @@ export default function Overview() {
           one says nothing, and that distinction is the reason it is allowed to be pretty.
 
           The words are unchanged — the same kicker, h1 and lede this page already carried. */}
-      <header className="atlas-hero">
-        <div className="atlas-hero-copy">
-          <p className="home-kicker mono">A visual reading of the public record</p>
-          <h1 className="home-lead">Atlas of change since 2014</h1>
-          <p className="lede">
-            Move the year control and every topic moves with it. Each card leads with one real
-            series; open it for the other indicators, official records, disputes and caveats behind
-            the line.
-          </p>
-        </div>
-      </header>
+      {/* THE BANNER IS GONE — operator, 2026-09-02: "no need of hero banner images any more".
+          **WITHDRAWN: `<header className="atlas-hero">` with its kicker "A visual reading of the
+          public record" and the lede "Move the year control and every topic moves with it. Each
+          card leads with one real series; open it for the other indicators, official records,
+          disputes and caveats behind the line."** The h1 is the page's own heading and stays; the
+          lede's two claims survive, shortened, as the carousel's sub-line, which is where a reader
+          now meets the page. The collage and its two WebP files go with the header. */}
+      <h1 className="page-lead">Atlas of change since 2014</h1>
       {/* THE CAROUSEL IS THE DOOR TO THE BOARD. Operator, 2026-09-02, from a supplied reference:
           "something like this for the domains … a normal website with premium design and
           animation, not a typical government portal". The fourteen as cover-flow cards, one in
