@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ledger, series } from '@/lib/data';
@@ -9,6 +9,8 @@ import { RecordMarks } from '@/components/marks';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS } from '@/lib/format';
 import { YEARS } from '@/lib/years';
 import type { Domain } from '@/lib/types';
+import { LandscapeStill, YearSubjectStrip } from '@/components/LandscapeStill';
+import { landscapeSubjects } from '@/lib/landscape';
 
 /**
  * A YEAR PAGE — a cross-section of the record at one year, and NOT an annual scorecard.
@@ -137,6 +139,7 @@ export default async function YearPage({ params }: Props) {
   })();
 
   const i = YEARS.indexOf(y);
+  const subjects = landscapeSubjects();
 
   return (
     <>
@@ -234,6 +237,21 @@ export default async function YearPage({ params }: Props) {
           </p>
         </div>
       </div>
+
+      {/* THE PICTURE, LIT FOR THIS YEAR — operator, 2026-09-02: "the year page gets the picture".
+          The landing landscape with only this year's filings lit, then the fourteen subjects as
+          cells. Both count and link, neither lists: a cell opens the subject's own timeline at this
+          year, where the same brief the landing page reads is waiting. */}
+      <div className="sec-h">
+        <h2>The year, subject by subject</h2>
+        <p className="sec-note">
+          The landing picture with only the filings active in {y} lit, and beneath it each
+          subject&rsquo;s shape for the year. A landmark or a cell opens that subject&rsquo;s own
+          timeline at {y}.
+        </p>
+      </div>
+      <LandscapeStill subjects={subjects} year={y} years={YEARS} />
+      <YearSubjectStrip subjects={subjects} year={y} years={YEARS} />
 
       <div className="sec-h">
         <h2>The corpus, read at {y}</h2>

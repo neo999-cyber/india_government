@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { siteSection, type SectionKey } from '@/lib/routes';
 
 /** A compact gateway on section landing pages. It links existing views; it never duplicates data. */

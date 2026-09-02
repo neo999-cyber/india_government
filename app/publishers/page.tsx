@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Metadata } from 'next';
 import { publisherRollups } from '@/lib/publishers';
 import { TierTag } from '@/components/marks';

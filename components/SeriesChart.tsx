@@ -1,5 +1,5 @@
 import { RecordMarks } from '@/components/marks';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Series } from '@/lib/types';
 import { periodLabel } from '@/lib/format';
 import { ChartPoint } from '@/components/ChartPoint';

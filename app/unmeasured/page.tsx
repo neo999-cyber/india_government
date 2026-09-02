@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { ContentsRail } from '@/components/ContentsRail';
 import { UnanswerableSection } from '@/components/UnanswerableSection';
 import type { Metadata } from 'next';

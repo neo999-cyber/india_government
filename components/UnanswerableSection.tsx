@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { getLedger } from '@/lib/data';
 import { REASON_KIND_LABELS, RecordMarks } from '@/components/marks';
 import type { LedgerRecord } from '@/lib/types';

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { historyFor } from '@/lib/history';
 import { ASSESSMENT_LABELS } from '@/lib/format';
 import type { Assessment } from '@/lib/types';

@@ -650,6 +650,14 @@ first step in that chain — fails if it ever restates the steps instead of call
 cannot bind, and says so:** a build command set in the Vercel dashboard overrides the file and no gate
 here can see it. `[R-0ca710]` `[R-0aa8bc]` `[R-3759c7]`
 
+**EVERY `<Link>` GOES THROUGH `components/Link.tsx`, WHICH TURNS PREFETCH OFF.** The App Router
+prefetches the full payload of every static route whose link enters the viewport, and this site's
+pages are made of links. Measured on the build, one scroll top to bottom: `/overview/` fetched 120
+route payloads, 9.6 MB; a topic page 5.4 MB; `/search/` 5.9 MB — none of it asked for, all of it
+parsed on the main thread while the reader scrolled. `prefetch={false}` costs one fetch per link
+FOLLOWED, at the size of the page it opens. *Gated by `link-prefetch`, which asserts the wrapper
+still imports `next/link` and nothing else does.* `[R-9e2f10]`
+
 **Do not pipe gates** — an exit code does not survive a pipe. **And a structural check passes on a
 stub: structure passing is not content passing.** `[R-bf851c]`
 
@@ -659,7 +667,7 @@ printed operands. A non-reconstructing figure must be declared, not merely corre
 **The gate list, run in full every cycle:** `deploy-chain` · `validate` · `typecheck` ·
 `validate:selftest` · `reachability` · `no-unguarded-prose-field` · `field-render-audit` ·
 `quotation-identity` · `domain-coverage` (carrying `lens-empty`) · `figure-consistency` ·
-`css-vars` · `enum-stamp` · `phase-name` · `listing-marks` · `rendered-space` · `unrecognised-rows` · `gate-scope` · `url-check`
+`css-vars` · `link-prefetch` · `enum-stamp` · `phase-name` · `listing-marks` · `rendered-space` · `unrecognised-rows` · `gate-scope` · `url-check`
 on `/data`. Plus an arithmetic hand-check of every derived figure, a check that every declared lens
 returns a non-empty and correct set, and zero forward references between `parts/` files.
 `[R-7d9f2e]`
@@ -787,6 +795,12 @@ what is done, state what is not, and say whether it was attempted. `[R-db403e]`
   four rule groups. **One of the ten could not be found by searching for `[data-theme='light']`** —
   `.lsc-art` was keyed `:root:not([data-theme='light'])`, correct while ABSENT MEANT DARK. Enumerate
   the class from the stylesheet, never from a string match.
+- **ON A SURFACE THAT MOVES MANY ELEMENTS AT ONCE, ONLY `transform` AND `opacity` ANIMATE.** The
+  cover-flow transitioned `filter: saturate()` on seven visible cards, each carrying a `drop-shadow()`
+  filter on its image — rasterised on the CPU every frame, which was the jitter. With both gone and
+  the receding done by opacity and a static veil, four transitions ran 181 frames at a 16.7 ms
+  median and one frame over 33 ms. Intrinsic `width`/`height` on every image; `decoding="async"`.
+  `[R-4b7c22]`
 - Mono for system labels and figures (tabular-nums), humanist sans for prose.
 - Every view answers "what does this number rest on?" — one click to source, tier and provenance.
 - Palette is Bone & Indigo, defined as tokens; nothing hardcodes a literal. `[R-34510f]`

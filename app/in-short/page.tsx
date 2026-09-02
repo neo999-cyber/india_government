@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { InlineSpark } from '@/components/InlineSpark';
 import type { Metadata } from 'next';
 import type { Domain } from '@/lib/types';

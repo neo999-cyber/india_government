@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { citations, tierCounts } from '@/lib/data';
 import { publisherRollups } from '@/lib/publishers';
 import { TIER_LABELS } from '@/lib/format';

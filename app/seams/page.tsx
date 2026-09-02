@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Metadata } from 'next';
 import { RecordMarks, StatusKey } from '@/components/marks';
 import { SpanStrip } from '@/components/SpanStrip';

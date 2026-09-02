@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { LINKABLE_SERIES_IDS } from '@/lib/series-ids.generated';
 import type { ReactNode } from 'react';
 import type {

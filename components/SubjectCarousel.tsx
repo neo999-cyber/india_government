@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { useEffect, useRef, useState } from 'react';
 import { formatValue, periodLabel } from '@/lib/format';
 import type { CarouselSubject } from '@/lib/carousel';
@@ -106,7 +106,12 @@ export function SubjectCarousel({ subjects }: { subjects: readonly CarouselSubje
                              visibility: Math.abs(off) > 3 ? 'hidden' : undefined }}
                     onClick={(e) => { if (!isActive) { e.preventDefault(); go(i); } }}>
                 <span className="sc-art" aria-hidden="true">
-                  <img src={`/landscape/${s.art}.webp`} alt="" loading={d ? 'lazy' : 'eager'} />
+                  {/* INTRINSIC SIZE AND ASYNC DECODE. Without width/height the card reflows when the
+                      art lands; without `decoding="async"` a decode can land on the main thread in
+                      the middle of the 650ms flow. The neighbours the reader is about to reach are
+                      `eager` too — a lazy image on a hidden card fetches anyway, only later. */}
+                  <img src={`/landscape/${s.art}.webp`} alt="" width={s.artW} height={s.artH}
+                       decoding="async" loading={d < 2 ? 'eager' : 'lazy'} />
                 </span>
                 <span className="sc-body">
                   <span className="sc-area mono">{s.area}</span>

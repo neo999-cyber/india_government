@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { ledger } from '@/lib/data';
 import { DOMAIN_LABELS } from '@/lib/format';
 import { DOMAINS } from '@/lib/types';

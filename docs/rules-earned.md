@@ -1906,3 +1906,36 @@ one level up, which is exactly how the original got through.
 **What it does not do.** It does not watch findings, because then every legitimate correction would
 fail the build. It re-runs the gates it watches rather than parsing a log the build happened to leave
 behind, which costs ~6 seconds and buys independence from how the build was invoked.
+
+### [R-9e2f10]
+
+**THE SITE-WIDE SLOWNESS WAS PREFETCH, AND IT WAS MEASURED BEFORE IT WAS TOUCHED.** Operator,
+2026-09-02: "overall the website is slow. check if anything can be done about this." The bundle was
+suspected first and was not it: 662 KB of JS raw, 210 KB gzipped, ordinary for the framework. What
+the scroll probe found instead — a Playwright page counting `.txt` responses while scrolling the
+built site end to end in 600 px steps:
+
+| page | route payloads fetched | bytes |
+|---|---|---|
+| `/overview/` | 120 | 9,620,842 |
+| `/domains/education/` | 114 | 5,376,118 |
+| `/search/` | 150 | 5,850,110 |
+
+The App Router prefetches the full payload of every static route whose `<Link>` enters the
+viewport; `/overview/` carries 272 internal links, a topic page 399, `/search/` 929. The fix is one
+file — `components/Link.tsx`, `prefetch={false}` — and a codemod of the 64 importers, with
+`tools/link-prefetch.mjs` asserting that the wrapper is the only importer. Re-measured after: 0
+payloads on the same scroll, and a click still navigates client-side with one fetch.
+
+### [R-4b7c22]
+
+**THE JITTER WAS A FILTER, AND A FILTER IS NOT A COMPOSITOR PROPERTY.** Operator, 2026-09-02:
+"the flow is slow and jittery. I know it's a bit heavy, can anything be done." The cover-flow's
+cards transitioned `filter: saturate(calc(1 - var(--d) * 0.55))` over 0.65 s alongside their
+transform, and each card's `<img>` carried `filter: drop-shadow(0 18px 24px …)`; seven cards are
+visible at once, each a rounded clip. Both filters removed, the receding expressed as opacity plus a
+static surface veil sized by `--d`, `will-change: transform, opacity`, `contain: layout paint style`,
+intrinsic sizes read off the WebP headers at build time and `decoding="async"`. Measured through
+four consecutive transitions with a `requestAnimationFrame` gap recorder on the build: 181 frames,
+median 16.7 ms, p95 17.3 ms, max 33.4 ms, one frame over 33 ms; computed `filter` on every card and
+image `none`.

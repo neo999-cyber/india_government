@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { Fragment, type ReactNode } from 'react';

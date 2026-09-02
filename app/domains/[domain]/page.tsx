@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
@@ -29,6 +29,9 @@ import { DomainSections, DOMAIN_SECTIONS } from '@/components/DomainSections';
 import { DOMAIN_CHARACTER, DOMAIN_EVIDENCE, DOMAIN_PERIODS } from '@/lib/domain-copy';
 import type { Unmeasured } from '@/lib/types';
 import { SERIES_FINDINGS } from '@/lib/series-copy';
+import { SubjectTimeline } from '@/components/SubjectTimeline';
+import { landscapeSubjects } from '@/lib/landscape';
+import { YEARS } from '@/lib/years';
 
 type Props = { params: Promise<{ domain: string }> };
 
@@ -70,6 +73,7 @@ export async function DomainSurface({ d }: { d: Domain }) {
   const l = ledgerInDomain(d);
   const p = provenanceInDomain(d);
   const counts = assessmentCounts(l);
+  const timeline = landscapeSubjects().find((x) => x.key === d) ?? null;
 
   // The lens axis. `domain` is what a record is ABOUT, `lenses[]` what it also BEARS ON, and the
   // two are never pooled: a J&K militancy count is a defence series read under the Kashmir lens,
@@ -299,6 +303,12 @@ export async function DomainSurface({ d }: { d: Domain }) {
           <span className="label">How this topic is published</span> {evidence}
         </p>
       ) : null}
+
+      {/* THE SUBJECT, YEAR BY YEAR — operator, 2026-09-02. One row of the landing picture on the
+          subject's own page: a cell a year, and the same brief the landing page reads. It stands
+          before the period narrative because a reader arriving from a year page lands on
+          `#y-<year>` here and should find the year, not a paragraph about the decade. */}
+      {timeline ? <SubjectTimeline subject={timeline} years={YEARS} /> : null}
 
       {periods ? (
         <section className="periods">

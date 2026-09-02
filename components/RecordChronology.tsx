@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { clusteredYears, evidenceChronology } from '@/lib/chronology';
 import type { LedgerRecord } from '@/lib/types';
 

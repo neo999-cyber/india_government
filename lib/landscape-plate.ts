@@ -86,3 +86,40 @@ export const LANDMARKS: readonly Landmark[] = [
   { key: 'welfare', label: 'Welfare delivery', art: 'grain-silos', cx: 675.8, baseY: 727.0, w: 137.9, h: 200.7 },
   { key: 'poverty', label: 'Poverty', art: 'poverty-market', cx: 885.9, baseY: 815.8, w: 168.4, h: 176.4 },
 ];
+
+/**
+ * PINS, IN PERCENT OF THE PLATE — because the labels are HTML over the picture, not SVG inside it.
+ * Moved here from `RecordLandscape` 2026-09-02 so the year page's still of the picture lays its
+ * pins out identically; a second copy of the collision pass would drift from the first.
+ *
+ * **WITHDRAWN (in the landing picture, 2026-08-28): pills drawn inside the `<svg>`.** Text in an
+ * SVG scales with the viewBox — 9.6px at 1280, 4.9px on a Fold's inner screen. As HTML the pin
+ * takes CSS pixels: one size at every viewport, a real tap target, and a real link.
+ */
+export type Pin = {
+  readonly key: string;
+  readonly label: string;
+  readonly left: number;
+  readonly top: number;
+  readonly dotLeft: number;
+  readonly dotTop: number;
+};
+
+export function pinLayout(subjects: readonly Landmark[]): Pin[] {
+  const out = subjects.map((s) => ({
+    key: s.key, label: s.label,
+    ax: s.cx, ay: s.baseY + 2, x: s.cx, y: s.baseY + 16,
+    w: s.label.length * 7.6 + 30,
+  }));
+  out.sort((a, b) => a.y - b.y);
+  for (let i = 0; i < out.length; i++)
+    for (let j = 0; j < i; j++) {
+      const A = out[i], B = out[j];
+      if (Math.abs(A.x - B.x) < (A.w + B.w) / 2 + 8 && Math.abs(A.y - B.y) < 34) A.y = B.y + 36;
+    }
+  return out.map((o) => ({
+    key: o.key, label: o.label,
+    left: (o.x / PLATE.w) * 100, top: (o.y / PLATE.h) * 100,
+    dotLeft: (o.ax / PLATE.w) * 100, dotTop: (o.ay / PLATE.h) * 100,
+  }));
+}

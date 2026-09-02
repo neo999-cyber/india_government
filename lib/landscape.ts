@@ -1,5 +1,7 @@
-import { ledger, series } from '@/lib/data';
+import { getSeries, ledger, series } from '@/lib/data';
 import type { Domain } from '@/lib/types';
+import type { Lead } from '@/lib/landscape-window';
+import { HEADLINE } from '@/app/overview/page';
 import { LANDMARKS, type Landmark } from '@/lib/landscape-plate';
 import { YEARS } from '@/lib/years';
 
@@ -144,6 +146,15 @@ export type LandscapeSubject = Landmark & {
   readonly lastReported: number | null;
   /** India observations across every series of this subject, over their whole spans. */
   readonly observations: number;
+  /**
+   * THE LEAD SERIES, AS THE WINDOW BRIEF READS IT — the same series the Atlas board leads with,
+   * chosen by the same stated rule (`HEADLINE`), with its India points and its own seams. Null
+   * where the subject has no lead; the brief then says nothing about a lead rather than inventing
+   * one. Measured before this was built: nine of the thirteen leads read end to end, and four are
+   * refused across some window by a seam of their own — macro (2025), education (2020), federalism
+   * (2015, 2020, 2026), employment (2017, 2025). The refusals are the finding.
+   */
+  readonly lead: Lead | null;
 };
 
 /**
@@ -220,8 +231,39 @@ export function landscapeSubjects(): LandscapeSubject[] {
         (n, s) => n + s.points.filter((p) => p.country === 'IND' && p.value !== null).length,
         0,
       ),
+      lead: lead(l.key),
     };
   });
+}
+
+const lead = (d: Domain): Lead | null => {
+  const id = HEADLINE[d];
+  const s = id ? getSeries(id) : undefined;
+  if (!s) return null;
+  const points = s.points
+    .filter((p) => p.country === 'IND' && p.value !== null)
+    .map((p) => [yearOf(String(p.period)), p.value as number, String(p.period)] as const)
+    .filter(([y]) => Number.isFinite(y))
+    .sort((a, b) => a[0] - b[0] || a[2].localeCompare(b[2]));
+  const seams = [...new Set((s.breaks ?? []).map((b) => yearOf(String(b.period))))]
+    .filter((y) => Number.isFinite(y))
+    .sort((a, b) => a - b);
+  return { id: s.id, title: s.title, unit: s.unit ?? '', points, seams };
+};
+
+/**
+ * ONE YEAR MASK PER SERIES OF THE CORPUS, so a window over the whole archive can count DISTINCT
+ * series reporting rather than summing per-year counts — a series that reported in three years
+ * of the window is one series reporting.
+ */
+export function archiveSeriesMasks(): number[] {
+  return series.map((s) =>
+    yearMask(
+      s.points
+        .filter((p) => p.country === 'IND' && p.value !== null)
+        .map((p) => yearOf(String(p.period))),
+    ),
+  );
 }
 
 /**

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 
 /**
  * THE SPAN STRIP — 269 series as spans on one shared axis, sorted by first observation.

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo, useEffect, useCallback } from 'react';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { ShareCardExporter } from './ShareCardExporter';
 import { moveChartPointFocus } from './ChartPoint';
 

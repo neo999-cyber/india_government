@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { COUNTRY_LABELS } from '@/lib/format';
 import { CaveatFlag } from '@/components/marks';
 import type { Country, Series } from '@/lib/types';

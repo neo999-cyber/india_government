@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { ledger, provenance, series, pairs, citations } from '@/lib/data';
 import contract from '@/lib/data-contract.json';
 import { CorpusLd } from '@/components/StructuredData';

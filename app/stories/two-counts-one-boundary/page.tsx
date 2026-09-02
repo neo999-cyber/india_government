@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Metadata } from 'next';
 import { storyCard } from '@/lib/share-card';
 import { storyBySlug } from '@/lib/stories';

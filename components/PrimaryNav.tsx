@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { usePathname } from 'next/navigation';
 import { PRIMARY_NAV, SITE_SECTIONS, navLabel, sectionForPath } from '@/lib/routes';
 import { CommandPalette } from '@/components/CommandPalette';

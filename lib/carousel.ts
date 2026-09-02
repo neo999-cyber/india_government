@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { getSeries, ledger, series } from '@/lib/data';
 import { DOMAIN_LABELS } from '@/lib/format';
 import { LANDMARKS } from '@/lib/landscape-plate';
@@ -22,6 +24,9 @@ export type CarouselSubject = {
   readonly label: string;
   readonly area: string;
   readonly art: string;
+  /** The art's pixel size, read off the file at build time so the card never reflows on load. */
+  readonly artW: number;
+  readonly artH: number;
   readonly series: number;
   readonly records: number;
   readonly span: readonly [number, number] | null;
@@ -30,6 +35,23 @@ export type CarouselSubject = {
 };
 
 const yearOf = (p: string) => Number(String(p).replace(/^FY/, '').slice(0, 4));
+
+/**
+ * A WEBP'S PIXEL SIZE, READ FROM ITS HEADER AT BUILD TIME. VP8 (lossy), VP8L (lossless) and VP8X
+ * (extended) each state it differently; a file that is none of the three throws, because a card
+ * with a guessed size would reflow exactly as one with no size does.
+ */
+function artSize(art: string): { artW: number; artH: number } {
+  const b = readFileSync(join(process.cwd(), 'public', 'landscape', `${art}.webp`));
+  const tag = b.toString('ascii', 12, 16);
+  if (tag === 'VP8 ') return { artW: b.readUInt16LE(26) & 0x3fff, artH: b.readUInt16LE(28) & 0x3fff };
+  if (tag === 'VP8L') {
+    const bits = b.readUInt32LE(21);
+    return { artW: (bits & 0x3fff) + 1, artH: ((bits >> 14) & 0x3fff) + 1 };
+  }
+  if (tag === 'VP8X') return { artW: b.readUIntLE(24, 3) + 1, artH: b.readUIntLE(27, 3) + 1 };
+  throw new Error(`carousel: ${art}.webp is not a WebP this reader knows (${tag})`);
+}
 
 export function carouselSubjects(): CarouselSubject[] {
   // ORDER is the board's own list and is typed as strings; every member is a Domain by construction.
@@ -55,6 +77,7 @@ export function carouselSubjects(): CarouselSubject[] {
       label: DOMAIN_LABELS[key],
       area,
       art: mark.art,
+      ...artSize(mark.art),
       series: mine.length,
       records: recs.length,
       span: years.length ? [Math.min(...years), Math.max(...years)] : null,

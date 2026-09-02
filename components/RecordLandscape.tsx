@@ -1,9 +1,9 @@
 'use client';
-import Link from 'next/link';
 import { useEffect, useState, useSyncExternalStore } from 'react';
-// PLATE from the pure module; the subject TYPE only, so no data module reaches the browser.
-import { PLATE } from '@/lib/landscape-plate';
-import { ASSESSMENT_LABELS } from '@/lib/format';
+import { YearBrief } from '@/components/YearBrief';
+// PLATE and the pin layout from the pure module; the subject TYPE only, so no data module reaches the browser.
+import { PLATE, pinLayout } from '@/lib/landscape-plate';
+import { windowMask } from '@/lib/landscape-window';
 import { motionReduced, subscribeMotion } from '@/lib/reading-prefs';
 import type { LandscapeSubject, SubjectYear } from '@/lib/landscape';
 
@@ -28,6 +28,23 @@ import type { LandscapeSubject, SubjectYear } from '@/lib/landscape';
  *
  * `<a>` inside SVG is a real link: every landmark and every label opens its subject, with or
  * without script. The hover state is an enhancement on top and nothing depends on it.
+ *
+ * ============================ A WINDOW, NOT ONLY A YEAR — 2026-09-02 ========================
+ *
+ * Operator: "a range on the scrubber — 'from this year to this'. Two handles instead of one." The
+ * year control is one thumb until the reader asks for a span; then a second, FROM, appears above
+ * it and the two bound a window. **The single-year control is unchanged by the addition**, which
+ * is why the span is opt-in rather than a second thumb that a reader reaching for the one control
+ * might grab: two thumbs parked on the same year are indistinguishable, and dragging the wrong one
+ * would open a window nobody asked for.
+ *
+ * Within a span, the marks light for every filing active in any year of it, the brief counts across
+ * it, and the lead indicator's two ends are read — or refused where its instrument changed inside
+ * the window, which is the more useful half of the feature. The brief's arithmetic is in
+ * `lib/landscape-window.ts`, shared with the topic page's timeline; the prose is `YearBrief`.
+ *
+ * Play runs the TO thumb. With a span open, the window grows from FROM as the years advance, which
+ * is "from this time to this" being operated rather than decoration.
  */
 
 type Props = {
@@ -48,133 +65,11 @@ type Props = {
    */
   years: readonly number[];
   yearTotals: readonly SubjectYear[];
+  /** One year mask per series of the corpus, so a window counts DISTINCT series reporting. */
+  archiveMasks: readonly number[];
   children: React.ReactNode;
 };
 
-/**
- * WHAT THE RECORD HOLDS FOR ONE SUBJECT IN ONE YEAR — and it COUNTS AND LINKS rather than listing.
- *
- * **That is a rule decision, not a space one, and the Atlas board already made it**: a panel that
- * named the records would be a LISTING SURFACE, and rules 3a and 4b would then require every caveat
- * and every declared absence to render inside it in full — 97 of the 212 dated records carry a
- * caveat averaging 450 characters, and Governance 2019 alone holds 16 filings. Measured, listing
- * them here would have added roughly 200 KB to the one page that exists to feel light, and would
- * have built a second listing to keep in step with `/overview/#years`, which is already bound by
- * `listing-marks` and already lists exactly this.
- *
- * So the brief states the SHAPE of the year and hands the reader the surface that holds it.
- *
- * **AND IT SAYS "THE RECORD HOLDS", NEVER "WHAT HAPPENED".** A thin year means nobody filed, not
- * that nothing occurred, and rule 5d is exactly the distinction between a claim about the world and
- * a claim about what the sources contain. An empty cell is rendered in the absence idiom for the
- * same reason — Poverty is empty in 10 of the 13 years, and that emptiness is the most truthful
- * thing this picture can say about it.
- */
-function Brief({
-  year,
-  subject,
-  cell,
-  archive,
-}: {
-  year: number | null;
-  subject: LandscapeSubject | null;
-  cell: SubjectYear | null;
-  archive: SubjectYear | null;
-}) {
-  if (year === null)
-    return (
-      <p className="lsc-brief-idle">
-        Move the year control to read what the record holds for a single year
-        {subject ? ` of ${subject.label.toLowerCase()}` : ''}.
-      </p>
-    );
-  const c = subject ? cell : archive;
-  const name = subject ? subject.label : 'The archive';
-  const empty = c !== null && c.reporting === 0 && c.records === 0;
-  const label = (k: string) =>
-    ASSESSMENT_LABELS[k as keyof typeof ASSESSMENT_LABELS]?.toLowerCase() ?? k;
-  return (
-    <>
-      <p className="lsc-brief-h">
-        <strong>{name}</strong> <span className="mono">in {year}</span>
-      </p>
-      {empty ? (
-        <p className="absence lsc-brief-none">
-          {/* "NOTHING IS FILED HERE" IS TRUE AND USELESS ON ITS OWN. Where the subject's series
-              stopped is the fact a reader can actually do something with — Poverty's last official
-              headcount was for 2011-12, before this control's floor, and that sentence says more
-              about poverty measurement in India than any count on this panel. */}
-          Nothing is filed here.{' '}
-          {subject && subject.series === 0
-            ? `No series measures ${name.toLowerCase()} at all, so no year of it can report.`
-            : subject && subject.lastReported !== null
-              ? `${name} carries ${subject.series} series and ${subject.observations} observations in all, the most recent for ${subject.lastReported} — open the subject to see which measure that is.`
-              : 'No series of this subject carries an observation dated here.'}{' '}
-          That is a fact about this archive, not about the year.
-        </p>
-      ) : (
-        <>
-          <p className="lsc-brief-n">
-            <span>
-              <b>{c ? c.reporting : 0}</b>
-              <i>series reported</i>
-            </span>
-            <span>
-              <b>{c ? c.records : 0}</b>
-              <i>{c && c.records === 1 ? 'filing dated here' : 'filings dated here'}</i>
-            </span>
-          </p>
-          {/* WHAT THE FILINGS ARE, not merely how many. Counts of assessments are the one roll-up
-              the rules permit by name, and this stops there: no grade, no total, no order of
-              severity — commonest first, which is a fact about the corpus. */}
-          {c && c.assessments.length ? (
-            <p className="lsc-brief-k">
-              {c.assessments.map(([k, n], i) => (
-                <span key={k}>
-                  {i ? ' · ' : ''}
-                  <b>{n}</b> {label(k)}
-                </span>
-              ))}
-            </p>
-          ) : null}
-        </>
-      )}
-      {/* THE ONE THING NO COUNT CAN SAY. Where a series of this subject breaks in this year, the
-          figures either side are not comparable, and a reader reading the numbers above needs to
-          know that before they read them. */}
-      {c && c.seams ? (
-        <p className="lsc-brief-seam">
-          <Link href={subject ? `/seams/#${subject.key}-${year}` : `/seams/`}>
-            <strong>
-              {c.seams} series break{c.seams === 1 ? 's' : ''} here
-            </strong>{' '}
-            — the figures either side are not comparable →
-          </Link>
-        </p>
-      ) : null}
-      <p className="lsc-brief-go">
-        <Link href={`/years/${year}/`}>The {year} record in full →</Link>
-        {subject ? <Link href={`/domains/${subject.key}/`}>{subject.label} in full →</Link> : null}
-        {subject && subject.absences ? (
-          <Link href="/unmeasured/">
-            {subject.absences} declared absence{subject.absences === 1 ? '' : 's'} →
-          </Link>
-        ) : null}
-      </p>
-    </>
-  );
-}
-
-/**
- * PINS, IN PERCENT OF THE PLATE — because the labels are HTML over the picture, not SVG inside it.
- *
- * **WITHDRAWN: pills drawn inside the `<svg>`.** Text in an SVG scales with the viewBox, so the
- * label rendered at 9.6px on a 1280px desktop, 6.5px at 884, and 4.9px on a Fold's inner screen —
- * and was hidden outright below 768px, which left that screen a still picture with no labels and no
- * interaction at all. Measured across ten widths before this was rewritten.
- *
- * As HTML the pin takes CSS pixels: one size at every viewport, a real tap target, and a real link.
- */
 /**
  * THE ADDRESS BAR AS AN EXTERNAL STORE.
  *
@@ -185,39 +80,22 @@ function Brief({
  * choices override, which also makes back and forward work.
  *
  * `history.replaceState` does not fire `hashchange`, so writing the hash cannot feed itself.
+ *
+ * `#<subject>-<year>` names a year; `#<subject>-<from>-<to>` names a window.
  */
 const subscribeHash = (cb: () => void) => {
   window.addEventListener('hashchange', cb);
   return () => window.removeEventListener('hashchange', cb);
 };
 
-function pinLayout(subjects: LandscapeSubject[]) {
-  const out = subjects.map((s) => ({
-    key: s.key, label: s.label,
-    // the landmark's own base, and the pin's resting place just below it
-    ax: s.cx, ay: s.baseY + 2, x: s.cx, y: s.baseY + 16,
-    w: s.label.length * 7.6 + 30,
-  }));
-  out.sort((a, b) => a.y - b.y);
-  for (let i = 0; i < out.length; i++)
-    for (let j = 0; j < i; j++) {
-      const A = out[i], B = out[j];
-      if (Math.abs(A.x - B.x) < (A.w + B.w) / 2 + 8 && Math.abs(A.y - B.y) < 34) A.y = B.y + 36;
-    }
-  return out.map((o) => ({
-    key: o.key, label: o.label,
-    left: (o.x / PLATE.w) * 100, top: (o.y / PLATE.h) * 100,
-    dotLeft: (o.ax / PLATE.w) * 100, dotTop: (o.ay / PLATE.h) * 100,
-  }));
-}
+/** `from` null is a single year at `to`; a number is a window's start, never above `to`. */
+type Choice = { readonly to: number; readonly from: number | null };
 
-export function RecordLandscape({ subjects, totals, years, yearTotals, children }: Props) {
+export function RecordLandscape({ subjects, totals, years, yearTotals, archiveMasks, children }: Props) {
   const [hot, setHot] = useState<string | null>(null);
-  /** null is "all years": every mark lit, the brief idle. The slider cannot express it, so the
-      button beside it does, and the slider's `aria-valuetext` says which state it is in. */
   /** `undefined` is "the reader has not chosen"; `null` is "they chose all years". The two are
       different, because only the first should fall back to what the address bar names. */
-  const [yearChoice, setYear] = useState<number | null | undefined>(undefined);
+  const [choice, setChoice] = useState<Choice | null | undefined>(undefined);
   /**
    * THE SUBJECT THE URL NAMES, WHICH IS NOT THE SUBJECT UNDER THE POINTER.
    *
@@ -231,14 +109,8 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
   const [playing, setPlaying] = useState(false);
   const [motionOK, setMotionOK] = useState(true);
   /**
-   * THE TWO-STEP IS NOW EVERY POINTER'S, NOT ONLY TOUCH'S — operator request, 2026-09-01: "first
+   * THE TWO-STEP IS EVERY POINTER'S, NOT ONLY TOUCH'S — operator request, 2026-09-01: "first
    * click activates it and use the scroller, then double click goes to the domain".
-   *
-   * **WITHDRAWN: `lastPointer`, a ref recording the pointer type on `pointerdown` so the two-step
-   * could be applied to touch alone.** With the step applied to every pointer there is nothing left
-   * to discriminate, and the `onPointerDown`/`onTouchStart` pair that fed it goes with it. A mouse
-   * reader could not previously hold a subject in the brief while moving the year control, because
-   * the only way to choose one was to hover it, and the only thing a click did was leave.
    *
    * **KEYBOARD ACTIVATION IS EXEMPT AND MUST BE.** `detail === 0` is a click that came from Enter
    * or Space rather than a button, and such a reader has already selected the pin by focusing it —
@@ -252,21 +124,30 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
    */
   const [armed, setArmed] = useState<string | null>(null);
   const hash = useSyncExternalStore(subscribeHash, () => window.location.hash, () => '');
-  const m = /^#([a-z-]+)-(\d{4})$/.exec(hash);
-  const linked =
-    m && subjects.some((s) => s.key === m[1]) && years.includes(Number(m[2]))
-      ? { key: m[1], year: Number(m[2]) }
-      : null;
+  const m = /^#([a-z-]+)-(\d{4})(?:-(\d{4}))?$/.exec(hash);
+  const linked = (() => {
+    if (!m || !subjects.some((s) => s.key === m[1])) return null;
+    const a = Number(m[2]), b = m[3] ? Number(m[3]) : null;
+    if (!years.includes(a) || (b !== null && (!years.includes(b) || b < a))) return null;
+    return { key: m[1], choice: b === null ? { to: a, from: null } : { to: b, from: a } };
+  })();
   const pinned = pinnedChoice === undefined ? linked?.key ?? null : pinnedChoice;
-  const year = yearChoice === undefined ? linked?.year ?? null : yearChoice;
+  const chosen = choice === undefined ? linked?.choice ?? null : choice;
+  const to = chosen?.to ?? null;
+  const from = chosen ? chosen.from ?? chosen.to : null;
   const shown = hot ?? pinned;
   const current = shown ? subjects.find((s) => s.key === shown) ?? null : null;
-  /** `#<subject>-<year>`, written on every change with `replaceState`, so scrubbing a decade does
-      not leave thirteen entries in the reader's back button. */
+  /** Written on every change with `replaceState`, so scrubbing a decade does not leave thirteen
+      entries in the reader's back button. */
   useEffect(() => {
-    const want = current && year !== null ? `#${current.key}-${year}` : '';
+    // A span dragged shut — from equal to to — is written as the year it is, so the address a reader
+    // copies names a year and not a one-year window.
+    const want =
+      current && chosen
+        ? `#${current.key}-${chosen.from === null || chosen.from === chosen.to ? chosen.to : `${chosen.from}-${chosen.to}`}`
+        : '';
     if (want && window.location.hash !== want) history.replaceState(null, '', want);
-  }, [current, year]);
+  }, [current, chosen]);
 
   useEffect(() => {
     const apply = () => {
@@ -284,21 +165,35 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
     if (!playing) return;
     const last = years[years.length - 1];
     const t = setTimeout(() => {
-      const next = (year ?? years[0] - 1) + 1;
+      const next = (to ?? years[0] - 1) + 1;
+      const keepFrom = chosen?.from ?? null;
       if (next >= last) {
         setPlaying(false);
-        setYear(last);
-      } else setYear(next);
+        setChoice({ to: last, from: keepFrom });
+      } else setChoice({ to: next, from: keepFrom });
     }, 900);
     return () => clearTimeout(t);
-  }, [playing, year, years]);
+  }, [playing, to, chosen, years]);
 
-  const yi = year === null ? -1 : years.indexOf(year);
-  const bit = yi < 0 ? 0 : 1 << yi;
-  const cell = current && yi >= 0 ? current.years[yi] ?? null : null;
-  const archive = yi >= 0 ? yearTotals[yi] ?? null : null;
+  const window_ = to !== null && from !== null ? { from, to } : null;
+  const mask = window_ ? windowMask(years, window_) : 0;
   const pins = pinLayout(subjects);
   const drawn = [...subjects].sort((a, b) => a.baseY - b.baseY);
+  const spanOn = chosen !== null && chosen.from !== null;
+
+  /**
+   * THE SETTERS READ `chosen`, NEVER A FUNCTIONAL UPDATER'S ARGUMENT. **WITHDRAWN:
+   * `setChoice((c) => …)` in all three.** The updater receives the STATE, which is `undefined`
+   * until the reader's first choice — while the window a link named lives in `chosen`, derived
+   * from the hash. Measured on the build: arriving at `#education-2016-2020` and pressing the span
+   * button OPENED a second span (2014–2026) instead of closing the linked one, and moving the TO
+   * thumb collapsed a linked span silently. Every setter starts from what the reader can see.
+   */
+  /** The TO thumb. Moving it below an open FROM drags FROM with it: a window never inverts. */
+  const setTo = (v: number) =>
+    setChoice({ to: v, from: chosen?.from !== null && chosen?.from !== undefined ? Math.min(chosen.from, v) : null });
+  /** The FROM thumb. Moving it above TO drags TO with it, for the same reason. */
+  const setFrom = (v: number) => setChoice({ to: Math.max(chosen?.to ?? v, v), from: v });
 
   return (
     <>
@@ -325,7 +220,7 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
               "nothing happened", and the pin carries `is-armed` for the same reason. */}
           <p className="lsc-read-foot mono">
             {armed && current && armed === current.key
-              ? `Selected \u2014 press again to open ${current.label}`
+              ? `Selected — press again to open ${current.label}`
               : current
                 ? `${current.filings} filings marked${current.from ? ` · record begins ${current.from}` : ''}`
                 : 'Point at a landmark to read its subject here'}
@@ -378,12 +273,12 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
                 <ellipse className="lsc-shadow" cx={s.cx} cy={s.baseY - 3} rx={sw} ry={sw * 0.34}
                          filter="url(#lsc-soft)" />
                 {/* A MARK IS LIT IN A YEAR ITS OWN FILING IS ACTIVE IN — a series in a year it
-                    carries an India observation, a record in the year it is dated. WHICH mark dims
-                    is as meaningless as where it sits, which is the picture's settled claim already:
-                    density is real, position is not. What is exact is the COUNT, per filing,
-                    checkable against /data. */}
+                    carries an India observation, a record in the year it is dated — and across a
+                    window, in ANY year of it. WHICH mark dims is as meaningless as where it sits,
+                    which is the picture's settled claim already: density is real, position is not.
+                    What is exact is the COUNT, per filing, checkable against /data. */}
                 {s.marks.map((m, i) => (
-                  <circle key={i} className={`lsc-fm${bit && !(m.m & bit) ? ' is-off' : ''}`}
+                  <circle key={i} className={`lsc-fm${mask && !(m.m & mask) ? ' is-off' : ''}`}
                           cx={m.x} cy={m.y} r={1.9} />
                 ))}
                 <image className="lsc-art" href={`/landscape/${s.art}.webp`}
@@ -437,18 +332,41 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
             is the failure `lib/years.ts` records having already been paid for once. */}
         <div className="lsc-year">
           <div className="scrub lsc-scrub">
-            <label className="scrub-label" htmlFor="lsc-yr">Move through the years</label>
+            <label className="scrub-label" htmlFor="lsc-yr">
+              {spanOn ? 'Move through the years — to' : 'Move through the years'}
+            </label>
             <div className="scrub-track">
+              {/* THE FROM THUMB, ONLY WHEN A SPAN IS OPEN. Absent rather than hidden: a second
+                  thumb parked on the same year as the first is the one a reader grabs by mistake. */}
+              {spanOn ? (
+                <div className="lsc-from">
+                  <label className="scrub-label" htmlFor="lsc-from">from</label>
+                  <input
+                    id="lsc-from"
+                    type="range"
+                    min={years[0]}
+                    max={years[years.length - 1]}
+                    step={1}
+                    value={from ?? years[0]}
+                    onChange={(e) => setFrom(Number(e.target.value))}
+                    aria-valuetext={`from ${from}`}
+                  />
+                </div>
+              ) : null}
               <input
                 id="lsc-yr"
                 type="range"
                 min={years[0]}
                 max={years[years.length - 1]}
                 step={1}
-                value={year ?? years[0]}
-                onChange={(e) => setYear(Number(e.target.value))}
+                value={to ?? years[0]}
+                onChange={(e) => setTo(Number(e.target.value))}
                 aria-valuetext={
-                  year === null ? 'all years; every filing on the picture is lit' : String(year)
+                  to === null
+                    ? 'all years; every filing on the picture is lit'
+                    : spanOn
+                      ? `to ${to}, from ${from}`
+                      : String(to)
                 }
               /* THE FIRST YEAR WAS UNREACHABLE FROM THE UNSET STATE, ON BOTH SCRUBBERS.
                  While no year is chosen the thumb parks at the minimum, so asking for the minimum
@@ -459,10 +377,10 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
                  invariant that the slider's range IS the charts' range, so instead an interaction
                  that produces no value change is itself read as a selection. */
               onPointerUp={(e) => {
-                if (year === null) setYear(Number((e.target as HTMLInputElement).value));
+                if (to === null) setTo(Number((e.target as HTMLInputElement).value));
               }}
               onKeyUp={(e) => {
-                if (year === null) setYear(Number((e.target as HTMLInputElement).value));
+                if (to === null) setTo(Number((e.target as HTMLInputElement).value));
               }}
               />
               <span className="scrub-ends" aria-hidden="true">
@@ -480,14 +398,28 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, children 
                 {playing ? '❚❚ Pause' : '▶ Play'}
               </button>
             ) : null}
+            {/* SPAN: opens the FROM thumb at the first year, so the window is "from the start to
+                here" until the reader moves it. Closing it returns to the single year at TO. */}
+            <button type="button" className="lsc-allyears lsc-span"
+                    onClick={() => {
+                      setPlaying(false);
+                      setChoice(
+                        chosen && chosen.from !== null
+                          ? { to: chosen.to, from: null }
+                          : { to: chosen?.to ?? years[years.length - 1], from: years[0] },
+                      );
+                    }}
+                    aria-pressed={spanOn}>
+              {spanOn ? 'Single year' : 'Span years'}
+            </button>
             <button type="button" className="lsc-allyears"
-                    onClick={() => { setPlaying(false); setYear(null); }}
-                    disabled={year === null}>
+                    onClick={() => { setPlaying(false); setChoice(null); }}
+                    disabled={chosen === null}>
               All years
             </button>
           </div>
           <div className="lsc-brief" aria-live="polite">
-            <Brief year={year} subject={current} cell={cell} archive={archive} />
+            <YearBrief window={window_} subject={current} years={years} archive={yearTotals} archiveMasks={archiveMasks} />
           </div>
         </div>
       </div>

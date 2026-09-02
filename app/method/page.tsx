@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { ContentsRail } from '@/components/ContentsRail';
 import { SectionNav } from '@/components/SectionNav';
 import { CorrectionsSection } from '@/components/CorrectionsSection';

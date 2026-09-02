@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { LedgerRecord, ProvenanceRecord, Series } from '@/lib/types';
 import { INDEPENDENCE_LABELS, TIER_LABELS } from '@/lib/format';
 import { RecordMarks } from './marks';

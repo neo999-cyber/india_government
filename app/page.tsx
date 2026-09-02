@@ -1,8 +1,8 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { ledger, series } from '@/lib/data';
 import { EvidenceBase } from '@/components/EvidenceBase';
 import { RecordLandscape } from '@/components/RecordLandscape';
-import { archiveYears, landscapeSubjects } from '@/lib/landscape';
+import { archiveSeriesMasks, archiveYears, landscapeSubjects } from '@/lib/landscape';
 import { YEARS } from '@/lib/years';
 
 export default function HomePage() {
@@ -19,6 +19,7 @@ export default function HomePage() {
         totals={{ series: series.length, records: ledger.length }}
         years={YEARS}
         yearTotals={archiveYears()}
+        archiveMasks={archiveSeriesMasks()}
       >
         <section className="home-intro" aria-labelledby="home-title">
           <p className="home-kicker mono">India, on the record &middot; May 2014 onward</p>

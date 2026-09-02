@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { DIRECTION_OF_BIAS_LABELS, ASSESSMENT_LABELS } from '@/lib/format';
 import { RecordMarks } from '@/components/marks';
 import { resolveRef, storyBySlug } from '@/lib/stories';

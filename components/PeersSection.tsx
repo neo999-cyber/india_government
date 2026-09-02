@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { getLedger, ledgerCitingSeries, panelSeries } from '@/lib/data';
 import { PeerSlope } from '@/components/PeerSlope';
 import { SeriesTable } from '@/components/SeriesTable';

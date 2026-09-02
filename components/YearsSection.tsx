@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { ledger, series } from '@/lib/data';
 import { YEAR_NOTES } from '@/lib/year-copy';
 import { YEARS } from '@/lib/years';

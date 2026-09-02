@@ -12,7 +12,7 @@ import {
 } from 'react';
 import type { Domain } from '@/lib/types';
 import { DOMAINS } from '@/lib/types';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import dynamic from 'next/dynamic';
 import { DOMAIN_CHARACTER } from '@/lib/domain-copy';
 import { RecordConstellation } from '@/components/RecordConstellation';

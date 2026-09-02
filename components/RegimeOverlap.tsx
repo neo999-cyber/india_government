@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Series } from '@/lib/types';
 import { periodKey, periodLabel } from '@/lib/format';
 import { Value } from './marks';

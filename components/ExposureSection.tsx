@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { ledger } from '@/lib/data';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS } from '@/lib/format';
 import { EXPOSURE_ADJUDICATIONS } from '@/lib/types';

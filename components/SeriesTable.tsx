@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Country, Series, SeriesBreak } from '@/lib/types';
 import { COUNTRY_LABELS, periodKey, periodLabel } from '@/lib/format';
 import { denominatorBreaksFor, type DenominatorBreak } from '@/lib/rules';

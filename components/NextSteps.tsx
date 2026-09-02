@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { getLedger, getSeries } from '@/lib/data';
 import type { Step } from '@/lib/next-steps';
 import { RecordMarks } from '@/components/marks';

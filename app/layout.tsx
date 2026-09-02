@@ -5,7 +5,7 @@ import { DIRECTORY } from '@/lib/routes';
 import { AllPagesDisclosure } from '@/components/AllPagesDisclosure';
 import { ReadingPreferences } from '@/components/ReadingPreferences';
 import { BOOT } from '@/lib/reading-prefs';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import localFont from 'next/font/local';
 import { series } from '@/lib/data';
 import { ProvenanceDrawer } from '@/components/ProvenanceDrawer';

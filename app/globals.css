@@ -7792,14 +7792,28 @@ li {
   background: var(--surface); color: var(--ink); text-decoration: none; cursor: pointer;
   box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--rule);
   transform: translateX(calc(var(--i) * 68%)) translateZ(calc(var(--d) * -180px)) scale(calc(1 - var(--d) * 0.13));
-  opacity: calc(1 - var(--d) * 0.32); filter: saturate(calc(1 - var(--d) * 0.55));
-  transition: transform 0.65s cubic-bezier(0.22, 0.9, 0.24, 1), opacity 0.65s ease, filter 0.65s ease;
-  will-change: transform; z-index: calc(10 - var(--d));
+  opacity: calc(1 - var(--d) * 0.32);
+  /* ONLY TRANSFORM AND OPACITY ANIMATE — operator, 2026-09-02: "the flow is slow and jittery".
+     **WITHDRAWN: `filter: saturate(calc(1 - var(--d) * 0.55))` with `filter 0.65s ease` in the
+     transition.** A filter is rasterised on the CPU for every frame it changes, on every one of
+     the seven visible cards at once, each a rounded clip over a shadowed image — measured as the
+     one property here the compositor could not carry. The neighbours' receding is now opacity
+     alone, and the desaturation is done once, statically, by the veil in `.sc-art::after`. */
+  transition: transform 0.65s cubic-bezier(0.22, 0.9, 0.24, 1), opacity 0.65s ease;
+  will-change: transform, opacity; backface-visibility: hidden; contain: layout paint style;
+  z-index: calc(10 - var(--d));
 }
-.sc-card.is-active { cursor: default; box-shadow: 0 44px 90px -24px rgba(0, 0, 0, 0.45), 0 0 0 1px color-mix(in srgb, var(--hue) 55%, transparent); }
+.sc-card.is-active { cursor: default; box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.4), 0 0 0 1px color-mix(in srgb, var(--hue) 55%, transparent); }
 .sc-card:focus-visible { outline: 2px solid var(--mark); outline-offset: 3px; }
 .sc-art { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 55% at 50% 42%, color-mix(in srgb, var(--hue) 22%, var(--surface)) 0%, var(--surface) 72%); }
-.sc-art img { position: absolute; left: 50%; top: 44%; width: 74%; height: auto; transform: translate(-50%, -50%); filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.28)); }
+/* THE IMAGE CARRIES NO FILTER. **WITHDRAWN: `filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.28))`
+   on the `<img>`** — a per-pixel shadow re-rasterised whenever the card's layer re-scaled, fourteen
+   times over. A soft ellipse beneath the art, drawn once, gives the same grounding for nothing. */
+.sc-art img { position: absolute; left: 50%; top: 44%; width: 74%; height: auto; transform: translate(-50%, -50%); }
+.sc-art::before { content: ''; position: absolute; left: 50%; top: 66%; width: 58%; height: 9%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.22), transparent 70%); }
+/* Static desaturation of a receding card: a veil of the card's own surface, sized by `--d` once
+   and never animated as a filter would be. */
+.sc-art::after { content: ''; position: absolute; inset: 0; background: var(--surface); opacity: calc(var(--d) * 0.18); pointer-events: none; }
 .sc-body {
   position: absolute; left: 0; right: 0; bottom: 0; padding: 1rem 1.05rem 1rem; display: block;
   background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--surface) 88%, transparent) 42%, var(--surface) 100%);
@@ -7833,7 +7847,7 @@ li {
    one notch; the flow spreads 74% per step so the neighbours' edges still show. Swipe already
    navigates (`touch-action: pan-y` leaves vertical scrolling to the browser). */
 @media (max-width: 700px) {
-  .sc-card { width: 62vw; transform: translateX(calc(var(--i) * 74%)) translateZ(calc(var(--d) * -140px)) scale(calc(1 - var(--d) * 0.16)); }
+  .sc-card { width: 62vw; transform: translateX(calc(var(--i) * 74%)) translateZ(calc(var(--d) * -140px)) scale(calc(1 - var(--d) * 0.16)); box-shadow: 0 0 0 1px var(--rule); }
   .sc-stage { height: calc(62vw * 4.35 / 3 + 3rem); }
   .sc-name { font-size: 1.1rem; }
   .sc-fig b { font-size: 1.3rem; }
@@ -7850,3 +7864,93 @@ li {
    (8c9fa9c9, 05f7bc24, c13b191a, f3ee1385) and their withdrawn wordings with them; the header that
    stood here quoted them. The two WebP files leave with it.
    ============================================================================================== */
+
+/* ==============================================================================================
+   THE FOUR PICTURES OF 2026-09-02 — a span on the landing scrubber, the year page's still and
+   strip, the subject timeline on every topic page, and the three terms side by side. Every one
+   counts and links; none lists a record; nothing is scaled against another subject.
+   ============================================================================================== */
+
+/* THE FROM THUMB, above the TO thumb inside the same track, present only while a span is open. */
+.lsc-from { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 0.6rem; margin-bottom: -10px; }
+.lsc-from .scrub-label { font-size: 0.6rem; }
+.lsc-from input[type='range'] { width: 100%; display: block; margin: 0; accent-color: var(--mark-ink); height: 34px; }
+.lsc-span[aria-pressed='true'] { border-color: var(--mark); color: var(--mark-ink); }
+.lsc-brief-lead { margin: 0 0 0.55rem; font-size: 0.78rem; color: var(--ink-2); }
+.lsc-brief-lead em { font-style: italic; color: var(--ink); }
+.lsc-brief-lead b { font-variant-numeric: tabular-nums; color: var(--ink); }
+.lsc-brief-lead.absence { border: 0; padding: 0; }
+
+/* THE STILL — the landing picture with no hover state, on a year page. */
+.lsc-still { margin: 0.4rem 0 1.4rem; }
+.lsc-still .lsc-pin { cursor: pointer; }
+.lsc-still .lsc-pin:hover { background: var(--bg); border-color: var(--mark); color: var(--ink); }
+
+/* THE SUBJECT STRIP — fourteen cells, the subjects' own order, no cell scaled against another. */
+.yss { list-style: none; margin: 0 0 2rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(11rem, 100%), 1fr)); gap: 0.5rem; }
+.yss-cell a { display: grid; gap: 0.2rem; min-height: 4.4rem; padding: 0.55rem 0.7rem; border: 1px solid var(--rule); border-radius: var(--radius-sm); background: var(--surface); text-decoration: none; color: var(--ink); }
+.yss-cell a:hover { border-color: var(--mark); }
+.yss-cell.is-empty a { border-style: dashed; background: transparent; color: var(--ink-dim); }
+.yss-k { font-family: var(--font-serif); font-size: 0.95rem; font-weight: 600; }
+.yss-n { font-size: 0.66rem; color: var(--ink-2); }
+.yss-cell.is-empty .yss-n { color: var(--ink-dim); }
+.yss-foot { display: flex; gap: 0.4rem; align-items: center; min-height: 8px; }
+
+/* THE TIMELINE — thirteen cells a row, one subject. */
+.stl { margin: 1.4rem 0 2rem; }
+.stl-label { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 1rem; margin: 0 0 0.6rem; }
+.stl-label strong { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; }
+.stl-label span { font-size: 0.66rem; color: var(--ink-dim); }
+.stl-row { list-style: none; margin: 0 0 0.8rem; padding: 0; display: grid; grid-template-columns: repeat(13, minmax(0, 1fr)); gap: 3px; }
+/* A linked cell (`#y-2019`) lands below the sticky masthead, not under it. */
+.stl-cell a { scroll-margin-top: 6rem; display: grid; grid-template-rows: auto 1fr auto auto; gap: 0.25rem; min-height: 5.2rem; padding: 0.4rem 0.35rem 0.35rem; border: 1px solid var(--rule); border-radius: var(--radius-sm); background: var(--surface); text-decoration: none; color: var(--ink); }
+.stl-cell a:hover { border-color: var(--mark); }
+.stl-cell.is-on a { border-color: var(--mark); box-shadow: 0 0 0 2px var(--mark-soft); background: var(--bg); }
+.stl-cell.is-empty a { border-style: dashed; background: transparent; }
+.stl-y { font-size: 0.62rem; color: var(--ink-dim); letter-spacing: 0.04em; }
+.stl-cell.is-on .stl-y { color: var(--ink); }
+.stl-marks { display: flex; flex-wrap: wrap; gap: 2px; align-content: flex-start; min-height: 14px; }
+.stl-marks i { width: 5px; height: 5px; background: var(--ink); opacity: 0.7; border-radius: 1px; }
+.stl-marks b { font-family: var(--font-mono); font-size: 0.58rem; line-height: 5px; color: var(--ink-2); }
+.stl-rep { font-size: 0.6rem; color: var(--ink-2); }
+.stl-cell.is-empty .stl-rep { color: var(--ink-dim); }
+.stl-foot { display: flex; gap: 4px; align-items: center; min-height: 6px; }
+/* Red is reserved for deaths, alerts and break-seams; this is a seam. */
+.stl-seam { width: 8px; height: 6px; background: var(--alert); flex: none; }
+.stl-lead { width: 6px; height: 6px; border-radius: 50%; border: 1px solid var(--ink-dim); flex: none; }
+.stl-lead.is-on { background: var(--mark); border-color: var(--mark); }
+.stl-brief { margin-top: 0.6rem; }
+@media (max-width: 760px) {
+  .stl-row { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .stl-cell a { min-height: 4.6rem; }
+}
+
+/* THE TERM BARS — nine swatches, three ink tones by three textures, none of them a colour. */
+.tb { margin: 0.6rem 0 1.4rem; }
+.tb-key { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin: 0 0 0.9rem; font-size: 0.64rem; color: var(--ink-2); }
+.tb-key span { display: inline-flex; align-items: center; gap: 0.35rem; }
+.tb-key .tb-a { width: 14px; height: 10px; }
+.tb-a { display: block; flex: none; min-width: 2px; }
+.tb-a-0 { background: var(--ink); }
+.tb-a-1 { background: repeating-linear-gradient(135deg, var(--ink) 0 3px, transparent 3px 6px); }
+.tb-a-2 { background: radial-gradient(var(--ink) 1.2px, transparent 1.4px) 0 0 / 5px 5px; }
+.tb-a-3 { background: var(--ink-2); }
+.tb-a-4 { background: repeating-linear-gradient(135deg, var(--ink-2) 0 3px, transparent 3px 6px); }
+.tb-a-5 { background: radial-gradient(var(--ink-2) 1.2px, transparent 1.4px) 0 0 / 5px 5px; }
+.tb-a-6 { background: var(--ink-dim); }
+.tb-a-7 { background: repeating-linear-gradient(135deg, var(--ink-dim) 0 3px, transparent 3px 6px); }
+.tb-a-8 { background: radial-gradient(var(--ink-dim) 1.2px, transparent 1.4px) 0 0 / 5px 5px; }
+.tb-rows { display: grid; gap: 0.15rem; }
+.tb-row { display: grid; grid-template-columns: minmax(7rem, 11rem) 1fr; gap: 0.3rem 1rem; align-items: start; border-top: 1px solid var(--rule); padding: 0.5rem 0; }
+.tb-k { margin: 0; font-size: 0.9rem; }
+.tb-bars { display: grid; gap: 4px; }
+.tb-bar { display: grid; grid-template-columns: 2ch 1fr auto; align-items: center; gap: 0.6rem; }
+.tb-t { font-size: 0.62rem; color: var(--ink-dim); }
+.tb-stack { display: flex; height: 12px; gap: 1px; min-width: 2px; }
+.tb-stack .tb-a { flex-basis: 0; }
+.tb-stack.is-empty { width: 1.2rem; height: 12px; border: 1px dashed var(--ink-dim); opacity: 0.6; }
+.tb-n { font-size: 0.66rem; color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tb-bar.is-living .tb-stack { opacity: 0.85; }
+@media (max-width: 600px) {
+  .tb-row { grid-template-columns: 1fr; gap: 0.25rem; }
+}

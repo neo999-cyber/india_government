@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { SubjectCarousel } from '@/components/SubjectCarousel';
 import { carouselSubjects } from '@/lib/carousel';
 import { ContentsRail } from '@/components/ContentsRail';

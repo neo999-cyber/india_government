@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { ContestedGround, LedgerRecord } from '@/lib/types';
 import { CONTESTED_GROUND_LABELS, DOMAIN_LABELS } from '@/lib/format';
 import { RecordMarks } from '@/components/marks';

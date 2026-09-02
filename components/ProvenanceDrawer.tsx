@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import Link from 'next/link';
+import Link from '@/components/Link';
 
 export interface ProvenancePreview {
   id: string;

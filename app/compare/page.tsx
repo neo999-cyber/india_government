@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { ContentsRail } from '@/components/ContentsRail';
 import { PeersSection } from '@/components/PeersSection';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { series, pairs } from '@/lib/data';
 import { routeLabel } from '@/lib/routes';
 import { CompareWorkbench } from '@/components/CompareWorkbench';

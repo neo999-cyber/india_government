@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { ledgerUnderLens, pairsUnderLens, seriesUnderLens } from '@/lib/data';
 import { LENS_BLURBS, LENS_LABELS } from '@/lib/format';
 import { LENSES, LENSES_THAT_ARE_DOMAINS } from '@/lib/types';

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import type { Pair, Series } from '@/lib/types';
 import type { ResolvedSide } from '@/lib/data';
 import { periodLabel } from '@/lib/format';

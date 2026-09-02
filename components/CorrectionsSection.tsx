@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from '@/components/Link';
 import { getLedger, getProvenance } from '@/lib/data';
 import { history, verdictChanges } from '@/lib/history';
 import { ASSESSMENT_LABELS, DOMAIN_LABELS } from '@/lib/format';
