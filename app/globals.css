@@ -99,15 +99,29 @@
   --alert: #a4161a;
   --alert-soft: #f6ebea;
 
-  /* Semantic Data Integrity Accents */
-  --accent-verified: #31c48d;
-  --accent-verified-soft: rgba(49, 196, 141, 0.14);
-  --accent-caveat: #f59e0b;
-  --accent-caveat-soft: rgba(245, 158, 11, 0.14);
-  --accent-dispute: #f87171;
-  --accent-dispute-soft: rgba(248, 113, 113, 0.14);
-  --accent-unmeasured: #818cf8;
-  --accent-unmeasured-soft: rgba(129, 140, 248, 0.14);
+  /* SEMANTIC ACCENTS, MEASURED FOR THIS PAPER — and this block did not exist until 2026-09-01.
+     The four accents were declared ONCE, with values tuned for a near-black canvas, and the light
+     palette never overrode them. Invisible while dark was the default; a defect the day light was:
+     on /compare/ the "vs" and the framing title rendered #f59e0b on bone at 1.55:1 and the
+     verified/dispute badges at 1.57 and 1.89, against the 4.5 they need. axe found 11 nodes on one
+     page; the class is every `color: var(--accent-*)` rule, 11 of them site-wide.
+
+     Measured against --surface #e7e1d4, the HARDER light paper, then --bg:
+       verified   #196347  5.53 / 6.00      caveat     #7a4f1e  5.44 / 5.91
+     **WITHDRAWN: #1c6e51 and #8a5a2a**, which cleared --surface and then measured 4.05 and 4.26 on
+     the grounds two components actually put them on — a badge's own 12% tint over the surface, and
+     the ACTIVE preset button's --rule-soft. The paper a token is measured against has to be the
+     darkest ground any component gives it, not the darkest page background.
+       dispute    #a4161a  5.95 / 6.47  (it IS --alert)      unmeasured #3f4bb5  5.59 / 6.07
+     The soft partners are the same hues at 12%, as backgrounds under the accent text. */
+  --accent-verified: #196347;
+  --accent-verified-soft: rgba(28, 110, 81, 0.12);
+  --accent-caveat: #7a4f1e;
+  --accent-caveat-soft: rgba(138, 90, 42, 0.12);
+  --accent-dispute: #a4161a;
+  --accent-dispute-soft: rgba(164, 22, 26, 0.10);
+  --accent-unmeasured: #3f4bb5;
+  --accent-unmeasured-soft: rgba(63, 75, 181, 0.12);
 
   /* Government Term Bands */
   --band-term-1: rgba(49, 196, 141, 0.04);
@@ -144,6 +158,15 @@
    LINES — the apparatus this instrument's credibility rests on.
    ============================================================================================== */
 :root[data-theme='dark'] {
+  /* The dark accents as issued — moved here from bare :root on 2026-09-01; see the light block. */
+  --accent-verified: #31c48d;
+  --accent-verified-soft: rgba(49, 196, 141, 0.14);
+  --accent-caveat: #f59e0b;
+  --accent-caveat-soft: rgba(245, 158, 11, 0.14);
+  --accent-dispute: #f87171;
+  --accent-dispute-soft: rgba(248, 113, 113, 0.14);
+  --accent-unmeasured: #818cf8;
+  --accent-unmeasured-soft: rgba(129, 140, 248, 0.14);
   /* Studio Slate Dark Theme — Crisp Obsidian & Refined Slate Surfaces */
   --bg: #0d1117;              /* deep obsidian canvas */
   --surface: #161b22;         /* refined slate surface cards */
@@ -1088,6 +1111,9 @@ tr th:last-child {
   background: var(--alert-soft);
   padding: 0.6rem 0.9rem;
 }
+/* The label inside a caveat block sits on the block's own tint, where --ink-dim measured 4.24 on the
+   dark canvas. --ink-2 clears it; the generic `.label` rule is not changed for every other label. */
+.caveat-block .label { color: var(--ink-2); }
 
 .caveat-block p {
   margin: 0.2rem 0 0;
@@ -3355,9 +3381,16 @@ body {
 }
 
 /* The chart grid. */
+/* SIX GRIDS, ONE CLASS, FIXED TOGETHER. `minmax(Nrem, 1fr)` with N >= 18 is wider than a 320px
+   viewport less its padding, so the track cannot shrink and the page scrolls sideways: /search/ by
+   52px and /compare/ by 33px, measured, and four more grids of the same shape that no test loaded
+   at 320. `min(Nrem, 100%)` keeps the minimum everywhere it fits and yields where it cannot. The
+   members, so a sweep that reports only its finds can be told from one that did not run:
+   .cgrid 19rem · .pslopes 21rem · .ctwo-pair 18rem · .scards 20rem · .qlist 19rem ·
+   .compare-dual-grid 18rem. */
 .cgrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr));
   gap: 1px;
   background: var(--rule);
   border: 1px solid var(--rule);
@@ -3469,7 +3502,7 @@ details.more > summary {
 
 .pslopes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(21rem, 100%), 1fr));
   gap: 1px;
   background: var(--rule);
   border: 1px solid var(--rule);
@@ -4043,7 +4076,7 @@ details.more > summary {
 .ctwo-ground { margin: 0 0 0.75rem; }
 .ctwo-pair {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
   gap: 1.25rem;
   align-items: start;
   margin: 0.85rem 0 0.9rem;
@@ -4255,13 +4288,19 @@ details.more > summary {
 --------------------------------------------------------------------------------------------- */
 .scards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
   gap: 1px;
   background: var(--rule);
   border: 1px solid var(--rule);
   margin: 1.25rem 0;
 }
 .scard {
+  /* A GRID ITEM'S DEFAULT `min-width: auto` IS ITS MIN-CONTENT WIDTH, and one unbreakable token —
+     a mono id, a URL — sets it for the whole card. Measured at 320px: the track resolved to 288px
+     correctly and the card inside it was 355, pushing the page 52px sideways. `min-width: 0` lets
+     the card take the track; `overflow-wrap: anywhere` lets the token break instead of the page. */
+  min-width: 0;
+  overflow-wrap: anywhere;
   background: var(--bg);
   padding: 1rem 1.1rem 1.1rem;
   display: flex;
@@ -4278,8 +4317,10 @@ details.more > summary {
 .scard-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: baseline; margin: 0; }
 .scard-id { font-size: 0.6875rem; color: var(--ink-dim); text-decoration: none; }
 .scard-caveat { margin: 0; }
-.scard-more { font-size: 0.8125rem; color: var(--ink-2); }
-.scard-more summary { cursor: pointer; color: var(--ink-dim); }
+.scard-more { font-size: 0.8125rem; color: var(--ink-2); }/* `--ink-2`, not `--ink-dim`: this summary sits on a --rule-coloured bar, and --ink-dim measured 4.06 on it —
+   the only marginal contrast left on /search/ after the accent fix. --ink-2 is 5.6+ on the same bar. */
+
+.scard-more summary { cursor: pointer; color: var(--ink); /* on a --rule bar: --ink-2 measured 3.96 dark */ }
 .scard-more p { margin: 0.4rem 0 0; }
 
 /* The complete search document stays in the HTML, while off-screen cards postpone layout and
@@ -4862,7 +4903,7 @@ details.more > summary {
 
 .qlist {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(19rem, 100%), 1fr));
   gap: 1.1rem;
   margin: 1.6rem 0 2rem;
 }
@@ -6878,7 +6919,7 @@ li {
   font-family: var(--font-mono);
   font-size: 0.625rem;
   text-transform: uppercase;
-  color: var(--ink-dim);
+  color: var(--ink-2); /* was var(--ink-dim): inside the ACTIVE preset it sits on --rule-soft, 4.08 dark */
 }
 
 .compare-preset-title {
@@ -7003,7 +7044,7 @@ li {
 
 .compare-dual-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
   gap: 1rem;
 }
 
@@ -7058,7 +7099,7 @@ li {
 
 .badge-tier {
   background: var(--rule);
-  color: var(--ink-2);
+  color: var(--ink); /* on a --rule bar: --ink-2 measured 3.96 dark */
 }
 
 .compare-link {

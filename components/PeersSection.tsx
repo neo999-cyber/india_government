@@ -76,7 +76,7 @@ export function PeersSection() {
 
       {empIND !== null && empVNM !== null && gdpIND !== null && gdpAllFell && l0065 ? (
         <section className="peer-lead">
-          <h2>What the panel shows first</h2>
+          <h3 id="what-the-panel-shows-first">What the panel shows first</h3>
           <p>
             Agriculture&rsquo;s share of employment fell{' '}
             <strong>{Math.abs(empIND).toFixed(1)} points in India</strong> over the decade and{' '}
@@ -95,7 +95,7 @@ export function PeersSection() {
       ) : null}
 
       <div className="sec-h">
-        <h2>Sixteen indicators</h2>
+        <h3 id="sixteen-indicators">Sixteen indicators</h3>
         <p className="sec-note">
           Two dates per country, so the line is the change and its angle is the comparison. India is
           drawn heavier — never a different colour, because direction of merit is unset or contested
@@ -125,7 +125,7 @@ export function PeersSection() {
       {single.length > 0 ? (
         <section className="peer-single">
           <div className="sec-h">
-            <h2>Two with one date</h2>
+            <h3 id="two-with-one-date">Two with one date</h3>
             <p className="sec-note">
               One observation each, so there is no slope to draw and none is drawn. A point is not a
               trend. These two render in full here rather than in the list below, so nothing on this
@@ -136,9 +136,9 @@ export function PeersSection() {
             const pts = s.points.filter((p) => p.value !== null);
             return (
               <article key={s.id} className="peer-one">
-                <h3>
+                <h4>
                   <Link href={`/series/${s.id}/`}>{s.title}</Link>
-                </h3>
+                </h4>
                 <p className="pslope-unit mono">
                   {s.unit} · tier {s.tier}
                   {s.source.vintage ? ` · vintage ${s.source.vintage}` : ' · VINTAGE NOT RECORDED'}
@@ -179,9 +179,9 @@ export function PeersSection() {
             const citedBy = ledgerCitingSeries(s.id);
             return (
               <section key={s.id} className="peer-full">
-                <h3>
+                <h4>
                   <Link href={`/series/${s.id}/`}>{s.title}</Link>
-                </h3>
+                </h4>
                 <p className="tag-row">
                   <span className="tag">{s.unit}</span>
                   <span className="tag">{s.calendar === 'FY' ? 'fiscal year' : 'calendar year'}</span>

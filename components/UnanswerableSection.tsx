@@ -152,7 +152,7 @@ export function UnanswerableSection() {
 
       {rows.map((r) => (
         <section key={r.question} className="unans">
-          <h2>{r.question}</h2>
+          <h3 id="">{r.question}</h3>
           <p className="unans-holds">
             <span className="unans-k">What the corpus does hold</span> {r.holds}
           </p>
@@ -179,7 +179,7 @@ export function UnanswerableSection() {
         </section>
       ))}
 
-      <h2>Why the difference matters</h2>
+      <h3 id="why-the-difference-matters">Why the difference matters</h3>
       <p>
         One of these four is unanswerable in principle. The effect of demonetisation on terror
         financing, and the share of digital-payment growth attributable to it, are{' '}

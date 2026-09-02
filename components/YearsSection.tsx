@@ -75,7 +75,7 @@ export function YearsSection() {
       </div>
 
       <div className="sec-h">
-        <h2>What each year is</h2>
+        <h3 id="what-each-year-is">What each year is</h3>
       </div>
       {YEARS.map((y) => (
         <div key={y} className="per">

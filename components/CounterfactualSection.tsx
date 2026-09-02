@@ -26,7 +26,7 @@ export function CounterfactualSection() {
         rather than rediscovered.
       </p>
 
-      <h2>What was proposed</h2>
+      <h3 id="what-was-proposed">What was proposed</h3>
       <p className="prose-note">
         Two methods, run side by side and never combined. <strong>Method A</strong> fits the pre-2014
         trend and extends it, with the fit&rsquo;s acute sensitivity to the start year — 2004 in the
@@ -36,7 +36,7 @@ export function CounterfactualSection() {
         assumption at the cost of assuming the peers are comparable.
       </p>
 
-      <h2>Why it was declined</h2>
+      <h3 id="why-it-was-declined">Why it was declined</h3>
       <p className="prose-note">
         <strong>Because the output would resemble measurement without being it.</strong> A hatched
         band on a chart is still a line on a chart, and a reader who arrives at one has been given a
@@ -63,7 +63,7 @@ export function CounterfactualSection() {
         engine to produce it.
       </p>
 
-      <h2>What did not survive, and what did</h2>
+      <h3 id="what-did-not-survive-and-what-did">What did not survive, and what did</h3>
       <p className="prose-note">
         <strong>A ruling travelled with the decision:</strong> model output may not be cited by a
         scored record. A counterfactual is method, not evidence — if nothing outside this corpus would

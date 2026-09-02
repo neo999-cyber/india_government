@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ContentsRail } from '@/components/ContentsRail';
 import { UnanswerableSection } from '@/components/UnanswerableSection';
 import type { Metadata } from 'next';
 import { allUnmeasured } from '@/lib/data';
@@ -48,6 +49,11 @@ export default function UnmeasuredIndex() {
         outcome no study tested, a series stopping short of what it is cited to demonstrate.
       </p>
       <SectionNav section="gaps" />
+      <ContentsRail items={[
+        { id: 'declared-absences', label: 'Declared absences' },
+        { id: 'verification-queue', label: 'Verification queue' },
+        { id: 'unanswerable', label: 'Four questions' },
+      ]} />
       <p className="prose-note">
         {all.length} declaration{all.length === 1 ? '' : 's'} across {records.size} record
         {records.size === 1 ? '' : 's'}.{' '}

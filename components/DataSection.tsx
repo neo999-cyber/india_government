@@ -42,7 +42,7 @@ export function DataSection() {
         computed that is not shown.
       </p>
 
-      <h2>Files</h2>
+      <h3 id="files">Files</h3>
       <div className="table-wrap" tabIndex={0}>
         <table>
           <thead>
@@ -84,7 +84,7 @@ export function DataSection() {
         </table>
       </div>
 
-      <h2>Read this before you use it</h2>
+      <h3 id="read-this-before-you-use-it">Read this before you use it</h3>
       <p>
         These are not caveats about quality. They are the conditions under which the figures mean
         what they say, and most of them exist because getting them wrong is easy and silent.
@@ -95,7 +95,7 @@ export function DataSection() {
         ))}
       </ol>
 
-      <h2>What the version means</h2>
+      <h3 id="what-the-version-means">What the version means</h3>
       <p>{contract.contractRule}</p>
       <p className="prose-note">
         <span className="label">Why a version at all</span>{' '}Publishing the schemas makes them a
@@ -105,7 +105,7 @@ export function DataSection() {
         without quietly breaking anyone, and so a citation of this data says which shape it had.
       </p>
 
-      <h2>Citing it</h2>
+      <h3 id="citing-it">Citing it</h3>
       <p>
         Cite the commit. The manifest carries it, every build stamps it, and it is the only thing
         that makes a figure you quote re-findable after the record is corrected — which happens,
@@ -114,7 +114,7 @@ export function DataSection() {
       </p>
       <p className="prose-note">{contract.licence}</p>
 
-      <h2>What is not published here</h2>
+      <h3 id="what-is-not-published-here">What is not published here</h3>
       <p>
         <strong>No CSV.</strong> Flattening the ledger into columns means deciding which
         qualification survives the flattening, and a caveat cut to fit a cell is the one thing this

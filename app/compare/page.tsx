@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ContentsRail } from '@/components/ContentsRail';
 import { PeersSection } from '@/components/PeersSection';
 import Link from 'next/link';
 import { series, pairs } from '@/lib/data';
@@ -52,6 +53,10 @@ export default function ComparePage() {
       <p className="lede">
         Compare any two official indicator series side-by-side on an aligned timeline with Government Term shading. Direct comparisons preserve source tiers, non-interpolation rules, and explain why divergent measurements cannot be smoothed away.
       </p>
+      <ContentsRail items={[
+        { id: 'series-comparison', label: 'Series' },
+        { id: 'peers', label: 'India and peers' },
+      ]} />
       <SectionNav section="compare" />
 
       <div id="series-comparison">

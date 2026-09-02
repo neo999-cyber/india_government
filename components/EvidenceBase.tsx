@@ -97,7 +97,7 @@ export function EvidenceBase() {
         </p>
         <p className="evb-go">
           <Link href="/publishers/">Who published it &rarr;</Link>
-          <Link href="/method/#tiers">What the tiers mean &rarr;</Link>
+          <Link href="/method/#source-tiers">What the tiers mean &rarr;</Link>
         </p>
       </div>
     </section>

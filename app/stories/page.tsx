@@ -14,7 +14,7 @@ export const metadata: Metadata = { title: 'Stories' };
  * unbroken run in this topic, not for importance*; the search page prints what its sort actually is,
  * and has no *relevance* order because that name would teach a reader something false. A stories
  * index is a selection of four subjects out of the whole corpus, and **without a stated criterion a
- * reader is entitled to read the selection as an argument** — that these four are what matters about
+ * reader is entitled to read the selection as an argument** — that these are what matters about
  * the last decade. With four subjects that is a live risk and it grows with every one added.
  *
  * The criterion is computable, carries no merit claim, and **each card names the pair or dispute
@@ -55,7 +55,7 @@ export default function StoriesIndex() {
           the criterion has to be printed where the selection is made, not ahead of what it selected.
           Four cards behind a block of method is a smaller version of the same defect. */}
       <div className="qcrit">
-        <span className="label">How these four were chosen</span>
+        <span className="label">How these {['','one','two','three','four','five','six','seven','eight','nine'][STORIES.length] ?? STORIES.length} were chosen</span>
         <p>{STORY_CRITERION}</p>
         <p className="qcrit-order">
           They are listed in the order they were written, which is a fact about this site rather

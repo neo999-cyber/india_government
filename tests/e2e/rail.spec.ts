@@ -71,7 +71,10 @@ test.describe('contents rail', () => {
   test('a page with no rail keeps a single column and reserves nothing', async ({ page }) => {
     await page.setViewportSize({ width: 1710, height: 900 });
 
-    for (const path of ['/overview/#lenses', '/method/', '/']) {
+    // **WITHDRAWN: `'/overview/#lenses', '/method/'`** — both have a rail from 2026-09-01, when the
+    // surface merges turned them into long documents and the topic rail was generalised to them.
+    // The property this test binds is unchanged: a page WITHOUT a rail reserves no column for one.
+    for (const path of ['/stories/', '/directory/', '/']) {
       await page.goto(path);
       expect(await page.locator('.rail').count(), `${path} unexpectedly has a rail`).toBe(0);
       const cols = await page

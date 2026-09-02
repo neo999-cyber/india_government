@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ContentsRail } from '@/components/ContentsRail';
 import { SectionNav } from '@/components/SectionNav';
 import { CorrectionsSection } from '@/components/CorrectionsSection';
 import { DataSection } from '@/components/DataSection';
@@ -44,6 +45,20 @@ export default function MethodPage() {
           gateway strip comes with the job: a section landing lists its children, and below 900px,
           where the menus do not render, this is the only place they appear. */}
       <SectionNav section="about" />
+      <ContentsRail items={[
+        { id: 'limits', label: 'What this is' },
+        { id: 'why-some-records-stay-contested', label: 'Why some stay contested' },
+        { id: 'status-of-a-figure', label: 'Status of a figure' },
+        { id: 'source-tiers', label: 'Source tiers' },
+        { id: 'breaks-and-splicing', label: 'Breaks and splicing' },
+        { id: 'blanks', label: 'Blanks' },
+        { id: 'roll-ups', label: 'Roll-ups' },
+        { id: 'the-gate', label: 'The gate' },
+        { id: 'corrections', label: 'Corrections' },
+        { id: 'data', label: 'The data' },
+        { id: 'derivations', label: 'Derivations' },
+        { id: 'counterfactual', label: 'Counterfactual' },
+      ]} />
 
       <h2 id="limits">What this is, who made it, and what has not been done to it</h2>
       <p>
@@ -152,7 +167,7 @@ export default function MethodPage() {
 
       <Evaluability />
 
-      <h2>Why some records stay contested</h2>
+      <h2 id="why-some-records-stay-contested">Why some records stay contested</h2>
       <p className="prose-note">
         The same applies to the largest class. {contested.length} records are{' '}
         <em>contested</em>, and {unsettleable} of the {withGround.length} that state a ground turn on
@@ -162,7 +177,7 @@ export default function MethodPage() {
         and a finding.
       </p>
 
-      <h2>What changed on 6 August 2026, beyond the tiers</h2>
+      <h2 id="what-changed-on-6-august-2026-beyond-the">What changed on 6 August 2026, beyond the tiers</h2>
       <p className="prose-note">
         Nine rulings landed that day and four are described above — the independence standard, the
         intra-state test, the unmeasured-limb rule and the foreign-primary tier.{' '}
@@ -203,7 +218,7 @@ export default function MethodPage() {
         </li>
       </ul>
 
-      <h2>Status of a figure</h2>
+      <h2 id="status-of-a-figure">Status of a figure</h2>
       <StatusKey />
       <div className="table-wrap" tabIndex={0}>
         <table>
@@ -242,7 +257,7 @@ export default function MethodPage() {
         </table>
       </div>
 
-      <h2>Source tiers</h2>
+      <h2 id="source-tiers">Source tiers</h2>
       <p className="prose-note">
         Every rendered number traces to a source name, a URL and a tier. The tier travels with the
         claim rather than being stated once at the top of a page. The count is broken out by layer
@@ -289,7 +304,7 @@ export default function MethodPage() {
         </table>
       </div>
 
-      <h2>Breaks and splicing</h2>
+      <h2 id="breaks-and-splicing">Breaks and splicing</h2>
       <p className="prose-note">
         A series break is a hard stop. Values either side are not spliced, no value is
         interpolated across one, and no trend is fitted through one. Breaks render as a red seam
@@ -298,18 +313,18 @@ export default function MethodPage() {
         at all.
       </p>
 
-      <h2>Blanks</h2>
+      <h2 id="blanks">Blanks</h2>
       <p className="prose-note">
         A blank is unreported. It is never rendered as zero, and never filled by inference.
       </p>
 
-      <h2>Roll-ups</h2>
+      <h2 id="roll-ups">Roll-ups</h2>
       <p className="prose-note">
         Scorecards roll up to counts of assessments. There is no verdict number for a term, for a
         domain, or for the government — and no composite index of any kind.
       </p>
 
-      <h2>The gate</h2>
+      <h2 id="the-gate">The gate</h2>
       <p className="prose-note">
         <code>npm run validate</code> checks every file in <code>/data</code> against{' '}
         <code>/schemas</code>, then checks cross-reference integrity and the instrument rules that

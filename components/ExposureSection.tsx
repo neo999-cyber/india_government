@@ -154,7 +154,7 @@ export function ExposureSection() {
         ), and <strong>whether the record accepts it</strong>.
       </p>
 
-      <h2>Refused, or accepted only in part — {refusingEntries.length} entries</h2>
+      <h3 id="refused-or-accepted-only-in-part-entries">Refused, or accepted only in part — {refusingEntries.length} entries</h3>
       <p className="prose-note">
         <strong>Eleven of these refute on the same ground: the pattern predates the event.</strong>{' '}
         The trajectory was already flat before 2020; the shortfall is in the pre-COVID years the
@@ -181,7 +181,7 @@ export function ExposureSection() {
         distribution rather than beside it.
       </p>
 
-      <h2>The rest of the distribution</h2>
+      <h3 id="the-rest-of-the-distribution">The rest of the distribution</h3>
       <p className="prose-note">
         {byAdj.accepted} entries accept the event as stated, {byAdj.limited} accept it in part,{' '}
         {byAdj.refused} refuse it outright, and {byAdj.unstated}{' '}
@@ -196,7 +196,7 @@ export function ExposureSection() {
         records whose own subject <em>is</em> the event.
       </p>
 
-      <h2>The matrix — what the event did, against whether the record accepted it</h2>
+      <h3 id="the-matrix-what-the-event-did-against-whether-th">The matrix — what the event did, against whether the record accepted it</h3>
       <p className="prose-note">
         <strong>
           {impossible} of the {MROWS.length * MCOLS.length} cells cannot hold an entry at all,
@@ -226,7 +226,7 @@ export function ExposureSection() {
         applicable={applicable}
       />
 
-      <h2>The records — {declaring.length}</h2>
+      <h3 id="the-records">The records — {declaring.length}</h3>
       <p className="prose-note">
         One row per record, listing every exposure it declares. A record whose entries fall in two
         cells appears once and belongs to both.

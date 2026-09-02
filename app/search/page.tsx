@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ContentsRail } from '@/components/ContentsRail';
 import { ContestedSection } from '@/components/ContestedSection';
 import { ExposureSection } from '@/components/ExposureSection';
 import type { Metadata } from 'next';
@@ -162,6 +163,11 @@ export default function SearchPage() {
         </div>
       </dl>
       <SectionNav section="records" />
+      <ContentsRail items={[
+        { id: 'search-cards', label: 'Every record' },
+        { id: 'contested', label: 'Contested' },
+        { id: 'exposure', label: 'Exposure' },
+      ]} />
 
       {/* THE MOBILE FILTER DRAWER. `open` in the markup, so with scripting off — and above 640px,
           where CSS hides the summary — the facets are simply present. A drawer that starts closed

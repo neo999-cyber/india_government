@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ContentsRail } from '@/components/ContentsRail';
 import { YearsSection } from '@/components/YearsSection';
 import { TermsSection } from '@/components/TermsSection';
 import { LensesSection } from '@/components/LensesSection';
@@ -267,6 +268,16 @@ export default function Overview() {
           </p>
         </div>
       </header>
+      {/* THE RAIL IS A CHILD OF <main>, NOT OF THE HERO. It was first placed after the lede, which on
+          this page lives inside `header.atlas-hero > div.atlas-hero-copy` — so `main > .rail` never
+          matched, the rail rendered `position: relative` inside the banner, and the geometry check
+          reported it "not beside the content". The stylesheet positions a DIRECT child of main. */}
+      <ContentsRail items={[
+        { id: 'topics', label: 'Topics' },
+        { id: 'years', label: 'Years' },
+        { id: 'terms', label: 'Terms' },
+        { id: 'lenses', label: 'Lenses' },
+      ]} />
       <SectionNav section="atlas" />
       {/* ============ `/domains/` WAS FOLDED IN HERE ON 2026-08-14 ==============================
           It was fourteen cards linking to the same fourteen topic pages these cards link to, with

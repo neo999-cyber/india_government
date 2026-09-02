@@ -83,7 +83,7 @@ export function CorrectionsSection() {
       {redlines.length > 0 ? (
         <section className="redlines">
           <div className="sec-h">
-            <h2>{redlines.length} corrections, shown</h2>
+            <h3 id="corrections-shown">{redlines.length} corrections, shown</h3>
             <p className="sec-note">
               Every field whose withdrawn wording is quoted inside the correction, with the text it
               replaced. Reconstructed from the commit history, not from a list.
@@ -121,7 +121,7 @@ export function CorrectionsSection() {
       )}
 
       <div className="sec-h">
-        <h2>Every verdict that moved</h2>
+        <h3 id="every-verdict-that-moved">Every verdict that moved</h3>
         <p className="sec-note">
           The table below is the other half: records whose ASSESSMENT changed, which is a different
           event from a field being rewritten.{' '}

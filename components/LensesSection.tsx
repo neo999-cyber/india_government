@@ -54,7 +54,7 @@ export function LensesSection() {
         })}
       </div>
 
-      <h2>What each one means</h2>
+      <h3 id="what-each-one-means">What each one means</h3>
       <dl className="dl">
         {LENSES.map((l) => (
           <Fragment key={l}>

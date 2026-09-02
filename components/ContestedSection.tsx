@@ -52,9 +52,9 @@ function Group({
   if (records.length === 0) return null;
   return (
     <>
-      <h3 className="cg-h">
+      <h4 className="cg-h">
         {CONTESTED_GROUND_LABELS[ground]} <span className="t-note">· {records.length}</span>
-      </h3>
+      </h4>
       <p className="prose-note">{settles.charAt(0).toUpperCase() + settles.slice(1)}.</p>
       {records.map((l) => (
         <TwoReadings key={l.id} record={l} settles={settles} />
@@ -130,19 +130,19 @@ export function ContestedSection() {
         the opposite: the facts are agreed and it is the frame that is in dispute.
       </p>
 
-      <h2>Nothing would settle these — {unsettleable} records</h2>
+      <h3 id="nothing-would-settle-these-records">Nothing would settle these — {unsettleable} records</h3>
       {UNSETTLEABLE.map((g) => (
         <Group key={g} ground={g} records={byGround[g]} settles={WHAT_WOULD_SETTLE[g]} />
       ))}
 
-      <h2>Something would settle these — {settleable} records</h2>
+      <h3 id="something-would-settle-these-records">Something would settle these — {settleable} records</h3>
       {SETTLEABLE.map((g) => (
         <Group key={g} ground={g} records={byGround[g]} settles={WHAT_WOULD_SETTLE[g]} />
       ))}
 
       {unvalued.length > 0 ? (
         <>
-          <h2>No ground stated — {unvalued.length} records</h2>
+          <h3 id="no-ground-stated-records">No ground stated — {unvalued.length} records</h3>
           {/* The omission is deliberate and documented in the schema: these say in their own prose
               that `contested` is standing in for a value that does not exist, and minting a
               catch-all would absorb exactly the records that are evidence the vocabulary is short. */}
