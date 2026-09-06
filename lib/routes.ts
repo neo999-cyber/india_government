@@ -53,9 +53,9 @@ import { STORY_INDEX } from '@/lib/story-index';
  */
 export const ROUTES: Record<string, { label: string; nav?: string }> = {
   '/': { label: 'instrument' },
-  '/in-short/': { label: 'In short', nav: 'the whole record in one read' },
-  '/overview/': { label: 'What changed', nav: 'Atlas' },
-  '/questions/': { label: 'Questions', nav: 'Questions' },
+  '/in-short/': { label: 'In short', nav: 'Start here' },
+  '/overview/': { label: 'What changed', nav: 'Explore topics' },
+  '/questions/': { label: 'Questions', nav: 'Questions & stories' },
   '/stories/': { label: 'Stories', nav: 'Stories' },
   '/search/': { label: 'Find a record', nav: 'Records' },
   // **WITHDRAWN 2026-09-01: `/data/`, `/derivations/` and `/counterfactual/` as routes too**, folded
@@ -79,17 +79,14 @@ export const ROUTES: Record<string, { label: string; nav?: string }> = {
 };
 
 /**
- * The seven public concepts. These are the only destinations a first-time reader needs to learn;
- * the evidence indexes remain available in the directory and keep every established URL.
+ * Four first decisions for a new reader. The seven complete archive sections remain available in
+ * the directory and keep every established URL; they are no longer seven equal choices at entry.
  */
 export const PRIMARY_NAV = [
+  '/in-short/',
   '/overview/',
   '/questions/',
-  '/stories/',
-  '/search/',
   '/compare/',
-  '/unmeasured/',
-  '/method/',
 ] as const;
 
 /** The destination's public name. Throws on an unknown route rather than inventing one from the
@@ -135,7 +132,7 @@ export type SectionItem = {
 
 export type SiteSection = {
   key: SectionKey;
-  href: (typeof PRIMARY_NAV)[number];
+  href: string;
   label: string;
   description: string;
   /** Prefixes are resolved longest-first, so a route may be cross-filed without two nav items
@@ -167,7 +164,7 @@ export const SITE_SECTIONS: readonly SiteSection[] = [
        those are what belong here, or every one of them stops highlighting Atlas. */
     activePrefixes: ['/overview/', '/domains/', '/years/', '/lenses/', '/terms/'],
     items: [
-      /* FIRST IN THE GROUP, AND NOT AN EIGHTH PRIMARY DESTINATION. The masthead's seven public
+      /* FIRST IN THE GROUP. The masthead's four novice destinations do not replace the complete
          sections are a settled decision and this does not reopen it — `/in-short/` is the way IN to
          the Atlas rather than a peer of it, so it sits at the top of the Atlas group and is linked
          from the landing page. Readers reported they could not get an overall picture; the answer

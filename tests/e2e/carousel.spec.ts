@@ -23,7 +23,12 @@ test.describe('the subject carousel', () => {
     await expect(active).toHaveCount(1);
     const before = await active.getAttribute('id');
 
-    // ArrowRight moves the focus one card on
+    // Arrow keys do nothing globally: the carousel only owns them while its stage is focused.
+    await page.keyboard.press('ArrowRight');
+    await expect(page.locator('.sc-card.is-active')).toHaveAttribute('id', before ?? '');
+
+    // Once focused, ArrowRight moves the active card one position.
+    await page.locator('.sc-stage').focus();
     await page.keyboard.press('ArrowRight');
     await expect(page.locator('.sc-card.is-active')).not.toHaveAttribute('id', before ?? '');
 
@@ -48,6 +53,17 @@ test.describe('the subject carousel', () => {
     await page.goto('/overview/');
     await expect(page.locator('.sc-card')).toHaveCount(14);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true);
+  });
+
+  test('vertical wheel movement over the carousel scrolls the page', async ({ page }) => {
+    await page.goto('/overview/');
+    const stage = page.locator('.sc-stage');
+    await stage.hover();
+    const activeBefore = await page.locator('.sc-card.is-active').getAttribute('id');
+    const scrollBefore = await page.evaluate(() => window.scrollY);
+    await page.mouse.wheel(0, 500);
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(scrollBefore);
+    await expect(page.locator('.sc-card.is-active')).toHaveAttribute('id', activeBefore ?? '');
   });
 
   test.describe('with the bundle dead', () => {

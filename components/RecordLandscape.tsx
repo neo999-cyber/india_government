@@ -123,6 +123,7 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, archiveMa
    * written by a click and by nothing else, which is what makes it safe.
    */
   const [armed, setArmed] = useState<string | null>(null);
+  const [showMobilePicture, setShowMobilePicture] = useState(false);
   const hash = useSyncExternalStore(subscribeHash, () => window.location.hash, () => '');
   const m = /^#([a-z-]+)-(\d{4})(?:-(\d{4}))?$/.exec(hash);
   const linked = (() => {
@@ -249,15 +250,31 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, archiveMa
              setArmed(null);
              setHot(null);
            }}>
-        <p className="lsc-label">
+        <p className="lsc-label" id="subjects">
           <strong>Choose a subject</strong>
           <span className="mono">
             {subjects.length} subjects · one mark per filing · invented terrain, not a map
           </span>
         </p>
+        <nav className="lsc-mobile-topics" aria-label="Explore subjects">
+          {subjects.map((subject) => (
+            <a key={subject.key} href={`/domains/${subject.key}/`}>
+              <span>{subject.label}</span>
+              <small>{subject.series ? `${subject.series} series` : 'Related records across topics'}</small>
+            </a>
+          ))}
+        </nav>
+        <button
+          type="button"
+          className="lsc-picture-toggle"
+          aria-expanded={showMobilePicture}
+          onClick={() => setShowMobilePicture((value) => !value)}
+        >
+          {showMobilePicture ? 'Hide illustrated landscape' : 'View illustrated landscape'}
+        </button>
         {/* The pins are positioned in percent of the PLATE, so they must overlay exactly the
             picture's box and nothing else — hence a frame around the two of them. */}
-        <div className="lsc-frame">
+        <div className={`lsc-frame${showMobilePicture ? ' is-mobile-open' : ''}`}>
         <svg viewBox={`0 0 ${PLATE.w} ${PLATE.h}`} className="lsc-svg"
              role="img" aria-label="An invented landscape with one landmark for each subject of the archive">
           <defs>

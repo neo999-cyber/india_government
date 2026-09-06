@@ -4,29 +4,7 @@ import { useState, useMemo, useEffect, useCallback } from 'react';
 import Link from '@/components/Link';
 import { ShareCardExporter } from './ShareCardExporter';
 import { moveChartPointFocus } from './ChartPoint';
-
-export interface CompactSeries {
-  id: string;
-  title: string;
-  domain: string;
-  unit: string;
-  publisher?: string;
-  tier?: string;
-  points: { year: number; value: number }[];
-  caveat?: string;
-  breaks?: number[];
-}
-
-export interface CompactPair {
-  id: string;
-  domain: string;
-  labelA: string;
-  seriesA: string;
-  labelB: string;
-  seriesB: string;
-  framing: string;
-  gapReason?: string;
-}
+import type { CompactPair, CompactSeries } from '@/lib/compare';
 
 export function CompareWorkbench({
   seriesList,
@@ -39,6 +17,7 @@ export function CompareWorkbench({
   const [seriesAId, setSeriesAId] = useState<string>(pairsList[0]?.seriesA || seriesList[0]?.id || '');
   const [seriesBId, setSeriesBId] = useState<string>(pairsList[0]?.seriesB || seriesList[1]?.id || '');
   const [showAllPairs, setShowAllPairs] = useState(false);
+  const [customOpen, setCustomOpen] = useState(false);
   const [pairQuery, setPairQuery] = useState('');
   const [linkCopied, setLinkCopied] = useState(false);
 
@@ -68,6 +47,7 @@ export function CompareWorkbench({
       if (nextA && seriesList.some((item) => item.id === nextA)) setSeriesAId(nextA);
       if (nextB && seriesList.some((item) => item.id === nextB)) setSeriesBId(nextB);
       if (nextA || nextB) setSelectedPairId('');
+      if (nextA || nextB) setCustomOpen(true);
     };
     const frame = window.requestAnimationFrame(syncFromUrl);
     window.addEventListener('popstate', syncFromUrl);
@@ -93,6 +73,7 @@ export function CompareWorkbench({
     setSelectedPairId(pair.id);
     setSeriesAId(pair.seriesA);
     setSeriesBId(pair.seriesB);
+    setCustomOpen(false);
     writeUrl({ pair: pair.id });
   };
 
@@ -127,8 +108,10 @@ export function CompareWorkbench({
   const padY = 20;
 
   const renderSpark = (s: CompactSeries, color: string) => {
-    if (!s.points || s.points.length === 0) return null;
-    const pts = [...s.points].sort((a, b) => a.year - b.year);
+    const pts = s.points
+      .filter((point): point is typeof point & { value: number } => typeof point.value === 'number')
+      .sort((a, b) => a.year - b.year);
+    if (pts.length === 0) return null;
     const vMin = Math.min(...pts.map((p) => p.value));
     const vMax = Math.max(...pts.map((p) => p.value));
     const vRange = vMax - vMin || 1;
@@ -136,7 +119,7 @@ export function CompareWorkbench({
     const getX = (yr: number) => padX + ((yr - X0) / (X1 - X0)) * (W - padX * 2);
     const getY = (v: number) => H - padY - ((v - vMin) / vRange) * (H - padY * 2);
 
-    const breakYears = new Set(s.breaks ?? []);
+    const breakYears = new Set((s.breaks ?? []).map((item) => item.year));
     const segments: typeof pts[] = [];
     let current: typeof pts = [];
     pts.forEach((p, index) => {
@@ -184,39 +167,41 @@ export function CompareWorkbench({
           />
         ))}
 
-        {(s.breaks ?? []).map((year) => (
-          <g key={year}>
+        {(s.breaks ?? []).map((item) => (
+          <g key={item.period}>
             <line
-              x1={getX(year)}
-              x2={getX(year)}
+              x1={getX(item.year)}
+              x2={getX(item.year)}
               y1={padY}
               y2={H - padY}
               stroke="var(--alert)"
               strokeWidth="1.5"
             />
-            <text x={getX(year) + 4} y={padY + 10} className="compare-seam-label">
+            <text x={getX(item.year) + 4} y={padY + 10} className="compare-seam-label">
               basis changed
             </text>
+            <title>{`${item.period}: ${item.note}`}</title>
           </g>
         ))}
 
         {/* Points */}
         {pts.map((p, index) => (
           <circle
-            key={p.year}
+            key={p.period}
             cx={getX(p.year)}
             cy={getY(p.value)}
             r={3.5}
-            fill={color}
-            stroke="var(--bg)"
+            fill={p.status === 'approx' ? 'var(--bg)' : color}
+            stroke={p.status === 'approx' ? color : 'var(--bg)'}
             strokeWidth="1.5"
+            strokeDasharray={p.status === 'approx' ? '2 2' : undefined}
             tabIndex={index === 0 ? 0 : -1}
             role="img"
-            aria-label={`${p.year}: ${p.value} ${s.unit}`}
+            aria-label={`${p.period}: ${p.value} ${s.unit}, ${p.status}${p.note ? `. ${p.note}` : ''}`}
             data-chart-point=""
             onKeyDown={moveChartPointFocus}
           >
-            <title>{p.year + ': ' + p.value + ' ' + s.unit}</title>
+            <title>{`${p.period}: ${p.value} ${s.unit} (${p.status})${p.note ? ` — ${p.note}` : ''}`}</title>
           </circle>
         ))}
       </svg>
@@ -239,9 +224,9 @@ export function CompareWorkbench({
       publisher: seriesA?.publisher,
       unit: seriesA?.unit,
       caveat: activePair?.framing || seriesA?.caveat || seriesB?.caveat,
-      points: seriesA?.points || [],
+      points: seriesA?.points.filter((point): point is typeof point & { value: number } => typeof point.value === 'number') || [],
       seriesBTitle: seriesB?.title,
-      seriesBPoints: seriesB?.points || [],
+      seriesBPoints: seriesB?.points.filter((point): point is typeof point & { value: number } => typeof point.value === 'number') || [],
       seriesBUnit: seriesB?.unit,
     };
   }, [seriesA, seriesB, activePair]);
@@ -318,6 +303,13 @@ export function CompareWorkbench({
         ) : null}
       </div>
 
+      <details
+        className="compare-custom"
+        open={customOpen}
+        onToggle={(event) => setCustomOpen(event.currentTarget.open)}
+      >
+        <summary>Build a custom comparison</summary>
+        <p>Choose from the complete indicator archive. The curated comparisons above are the easier starting point.</p>
       {/* Selectors Bar */}
       <div className="compare-selectors-bar">
         <div className="compare-selector-group">
@@ -364,6 +356,7 @@ export function CompareWorkbench({
           <span className="sr-only" aria-live="polite">{linkCopied ? 'Comparison link copied' : ''}</span>
         </div>
       </div>
+      </details>
 
       {/* Methodological Framing / Dispute Callout */}
       {activePair ? (
@@ -387,10 +380,10 @@ export function CompareWorkbench({
               <span className="badge badge-verified">{seriesA?.domain.toUpperCase()}</span>
               {seriesA?.tier ? <span className="badge badge-tier">{seriesA.tier}</span> : null}
             </div>
-            {seriesA ? <Link href={'/search/?layer=series' + seriesA.id + '/'} className="compare-link">View Record →</Link> : null}
+            {seriesA ? <Link href={`/series/${seriesA.id}/`} className="compare-link">View record →</Link> : null}
           </div>
           <h3 className="compare-card-h">{seriesA?.title}</h3>
-          <p className="compare-unit">Unit: {seriesA?.unit} · Source: {seriesA?.publisher || 'Official'}</p>
+          <p className="compare-unit">Unit: {seriesA?.unit} · Source: {seriesA?.publisher || 'Official'}{seriesA?.vintage ? ` · Vintage: ${seriesA.vintage}` : ''}</p>
           {seriesA ? renderSpark(seriesA, 'var(--fill)') : null}
           {seriesA?.caveat ? <p className="compare-caveat">⚠ {seriesA.caveat}</p> : null}
         </div>
@@ -402,10 +395,10 @@ export function CompareWorkbench({
               <span className="badge badge-dispute">{seriesB?.domain.toUpperCase()}</span>
               {seriesB?.tier ? <span className="badge badge-tier">{seriesB.tier}</span> : null}
             </div>
-            {seriesB ? <Link href={'/search/?layer=series' + seriesB.id + '/'} className="compare-link">View Record →</Link> : null}
+            {seriesB ? <Link href={`/series/${seriesB.id}/`} className="compare-link">View record →</Link> : null}
           </div>
           <h3 className="compare-card-h">{seriesB?.title}</h3>
-          <p className="compare-unit">Unit: {seriesB?.unit} · Source: {seriesB?.publisher || 'Official'}</p>
+          <p className="compare-unit">Unit: {seriesB?.unit} · Source: {seriesB?.publisher || 'Official'}{seriesB?.vintage ? ` · Vintage: ${seriesB.vintage}` : ''}</p>
           {seriesB ? renderSpark(seriesB, 'var(--alert)') : null}
           {seriesB?.caveat ? <p className="compare-caveat">⚠ {seriesB.caveat}</p> : null}
         </div>
@@ -423,7 +416,7 @@ export function CompareWorkbench({
         <table className="compare-table">
           <thead>
             <tr>
-              <th>Year</th>
+              <th>Aligned year</th>
               <th>Term</th>
               <th>{seriesA?.title || 'Series A'}</th>
               <th>{seriesB?.title || 'Series B'}</th>
@@ -439,14 +432,23 @@ export function CompareWorkbench({
                 <tr key={yr}>
                   <td className="mono">{yr}</td>
                   <td><span className="term-tag">{term}</span></td>
-                  <td className="mono val-a">{ptA ? ptA.value + ' ' + seriesA?.unit : '— (unreported)'}</td>
-                  <td className="mono val-b">{ptB ? ptB.value + ' ' + seriesB?.unit : '— (unreported)'}</td>
+                  <td className={`mono val-a${ptA?.status === 'approx' ? ' is-approx' : ''}`}>
+                    {ptA && ptA.value !== null ? `${ptA.period} · ${ptA.value} ${seriesA?.unit}` : `— (${ptA?.note || 'unreported'})`}
+                  </td>
+                  <td className={`mono val-b${ptB?.status === 'approx' ? ' is-approx' : ''}`}>
+                    {ptB && ptB.value !== null ? `${ptB.period} · ${ptB.value} ${seriesB?.unit}` : `— (${ptB?.note || 'unreported'})`}
+                  </td>
                   <td className="cell-note">
-                    {ptA && ptB
-                      ? activePair?.gapReason
-                        ? 'Not subtracted: the two measurements are not directly interchangeable.'
-                        : 'Shown in parallel. No arithmetic comparison is inferred.'
-                      : 'Partial observation'}
+                    {[ptA?.status === 'approx' || ptB?.status === 'approx' ? 'Hollow point: approximate observation.' : '',
+                      ptA?.note ? `A: ${ptA.note}` : '',
+                      ptB?.note ? `B: ${ptB.note}` : '',
+                      ptA && ptB
+                        ? activePair?.gapReason
+                          ? 'Not subtracted: the measurements are not directly interchangeable.'
+                          : 'Shown in parallel; no arithmetic comparison is inferred.'
+                        : 'Partial observation.']
+                      .filter(Boolean)
+                      .join(' ')}
                   </td>
                 </tr>
               );

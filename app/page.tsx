@@ -31,6 +31,10 @@ export default function HomePage() {
             back to its source; every change of basis, disagreement and declared gap stays attached
             to the record it qualifies.
           </p>
+          <div className="home-start-actions" aria-label="Start exploring">
+            <Link href="/in-short/">Start with the overview</Link>
+            <Link href="#subjects">Choose a topic</Link>
+          </div>
         </section>
       </RecordLandscape>
 

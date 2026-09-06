@@ -10,6 +10,13 @@ import { test, expect, type Page } from '@playwright/test';
  */
 
 const MAIN = [
+  ['Start here', '/in-short/'],
+  ['Explore topics', '/overview/'],
+  ['Questions & stories', '/questions/'],
+  ['Compare', '/compare/'],
+] as const;
+
+const DIRECTORY_GROUPS = [
   ['Atlas', '/overview/'],
   ['Questions', '/questions/'],
   ['Stories', '/stories/'],
@@ -28,8 +35,8 @@ async function expectGateway(page: Page, route: string, hrefs: readonly string[]
   }
 }
 
-test.describe('seven-section information architecture', () => {
-  test('the masthead exposes the seven public sections in one stable order', async ({ page }) => {
+test.describe('progressive information architecture', () => {
+  test('the masthead exposes four novice-oriented destinations in one stable order', async ({ page }) => {
     await page.goto('/');
     // Each section link is wrapped in `.pnav-sec` so its menu can position against it, 2026-09-01.
     // The property this test asserts is unchanged — seven section links, in one order — and the
@@ -55,7 +62,7 @@ test.describe('seven-section information architecture', () => {
     // not rendered — asserted by its own test below rather than skipped into silence.
     test.skip((page.viewportSize()?.width ?? 0) < 900, 'the menus exist only at 900px and wider');
     await page.goto('/');
-    const atlas = page.locator('nav[aria-label="Main"] > .pnav-sec').first();
+    const atlas = page.locator('nav[aria-label="Main"] > .pnav-sec').nth(1);
     const menu = atlas.locator('.pnav-menu');
 
     await expect(menu).toBeHidden();
@@ -87,7 +94,7 @@ test.describe('seven-section information architecture', () => {
     const menus = page.locator('nav[aria-label="Main"] .pnav-menu');
     await expect(menus.first()).toHaveCSS('display', 'none');
     // The section links themselves are untouched, so nothing became unreachable.
-    await expect(page.locator('nav[aria-label="Main"] > .pnav-sec > a')).toHaveCount(7);
+    await expect(page.locator('nav[aria-label="Main"] > .pnav-sec > a')).toHaveCount(4);
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
       'and the page does not scroll sideways',
@@ -100,37 +107,39 @@ test.describe('seven-section information architecture', () => {
     test('the menus still open, because they were never script', async ({ page }) => {
       test.skip((page.viewportSize()?.width ?? 0) < 900, 'the menus exist only at 900px and wider');
       await page.goto('/');
-      const gaps = page.locator('nav[aria-label="Main"] > .pnav-sec').nth(5);
-      await expect(gaps.locator('> a')).toHaveText('Gaps');
-      await expect(gaps.locator('.pnav-menu')).toBeHidden();
-      await gaps.hover();
-      await expect(gaps.locator('.pnav-menu')).toBeVisible();
-      await expect(gaps.locator('.pnav-menu a').last()).toHaveText('Verification queue');
+      const topics = page.locator('nav[aria-label="Main"] > .pnav-sec').nth(1);
+      await expect(topics.locator('> a')).toHaveText('Explore topics');
+      await expect(topics.locator('.pnav-menu')).toBeHidden();
+      await topics.hover();
+      await expect(topics.locator('.pnav-menu')).toBeVisible();
+      await expect(topics.locator('.pnav-menu a').first()).toHaveText('In short');
     });
   });
 
   test('cross-filed routes identify their public parent, not their URL prefix', async ({ page }) => {
     for (const [route, parent] of [
       ['/compare/#peers', 'Compare'],
-      ['/unmeasured/#unanswerable', 'Gaps'],
-      ['/questions/publication-stopped/', 'Gaps'],
-      ['/publishers/', 'About'],
+      ['/stories/did-jobs-grow/', 'Questions & stories'],
     ] as const) {
       await page.goto(route);
       const current = page.locator('nav[aria-label="Main"] a[aria-current="page"]');
       await expect(current).toHaveCount(1);
       await expect(current).toHaveText(parent);
     }
+    for (const route of ['/unmeasured/#unanswerable', '/publishers/']) {
+      await page.goto(route);
+      await expect(page.locator('nav[aria-label="Main"] a[aria-current="page"]')).toHaveCount(0);
+    }
   });
 
   test('All pages mirrors the same seven groups', async ({ page }) => {
     await page.goto('/directory/');
     const groups = page.locator('.dir-group');
-    await expect(groups).toHaveCount(MAIN.length);
-    for (let index = 0; index < MAIN.length; index += 1) {
+    await expect(groups).toHaveCount(DIRECTORY_GROUPS.length);
+    for (let index = 0; index < DIRECTORY_GROUPS.length; index += 1) {
       const heading = groups.nth(index).locator('h2 a');
-      await expect(heading).toHaveText(MAIN[index][0]);
-      await expect(heading).toHaveAttribute('href', MAIN[index][1]);
+      await expect(heading).toHaveText(DIRECTORY_GROUPS[index][0]);
+      await expect(heading).toHaveAttribute('href', DIRECTORY_GROUPS[index][1]);
     }
 
     const questions = groups.nth(1).locator('ul a');
