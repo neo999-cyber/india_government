@@ -32,6 +32,7 @@ import { SERIES_FINDINGS } from '@/lib/series-copy';
 import { SubjectTimeline } from '@/components/SubjectTimeline';
 import { landscapeSubjects } from '@/lib/landscape';
 import { YEARS } from '@/lib/years';
+import { EvidenceExplainer, type ExplainerMetric } from '@/components/EvidenceExplainer';
 
 type Props = { params: Promise<{ domain: string }> };
 
@@ -129,6 +130,7 @@ export async function DomainSurface({ d }: { d: Domain }) {
 
   const periods = DOMAIN_PERIODS[d];
   const evidence = DOMAIN_EVIDENCE[d];
+  const explainer = topicExplainer(d);
   /**
    * Every declared absence in this topic, from series and ledger alike, each carrying the record
    * that declared it. Built here rather than in the section so the count is available to the
@@ -193,6 +195,8 @@ export async function DomainSurface({ d }: { d: Domain }) {
           {`${s.length + lensed.length} indicators — ${s.length} filed under this topic, ${lensed.length} read through it as a lens`}
         </p>
       ) : null}
+
+      {explainer}
 
       {/* §10 — THE DECOMPOSITION, AND KASHMIR IS THE CASE.
 
@@ -658,6 +662,99 @@ export async function DomainSurface({ d }: { d: Domain }) {
 
     </>
   );
+}
+
+function metric(id: string, period: string, label: string): ExplainerMetric {
+  const record = series.find((candidate) => candidate.id === id);
+  const point = record?.points.find(
+    (candidate) => candidate.country === 'IND' && candidate.period === period && typeof candidate.value === 'number',
+  );
+  if (!record || !point || point.value === null) {
+    throw new Error(`Missing explainer observation ${id} at ${period}`);
+  }
+  return {
+    id,
+    label,
+    value: point.value,
+    unit: record.unit,
+    period: point.period,
+    href: `/series/${record.id}/`,
+    status: point.status,
+    note: point.note,
+  };
+}
+
+function topicExplainer(domain: Domain) {
+  if (domain === 'employment') {
+    return (
+      <EvidenceExplainer
+        eyebrow="One rate does not describe a job"
+        title="Employment rose, but what kind of work was it?"
+        intro="Read participation together with the composition of work. A lower unemployment rate does not by itself mean more salaried jobs."
+        metrics={[
+          metric('regular-wage-share', 'FY2023-24', 'Regular wage or salaried'),
+          metric('self-employed-share', 'FY2023-24', 'Self-employed'),
+          metric('unpaid-helper-share', 'FY2020-21', 'Unpaid family helper'),
+        ]}
+        steps={[
+          {
+            label: 'Employed ≠ salaried',
+            title: 'The employment count includes several kinds of work.',
+            body: 'Regular wage work is one category. Self-employment is another, and the official employed total includes both.',
+            metrics: ['regular-wage-share', 'self-employed-share'],
+          },
+          {
+            label: 'Look at composition',
+            title: 'Self-employment formed the larger share.',
+            body: 'In FY2023-24, 58.4% of workers were self-employed while 21.7% were in regular wage or salaried work.',
+            metrics: ['self-employed-share', 'regular-wage-share'],
+          },
+          {
+            label: 'Notice unpaid work',
+            title: 'Some self-employment is unpaid family work.',
+            body: 'The latest observation held here is from FY2020-21, so it is shown separately rather than silently carried forward to 2023-24.',
+            metrics: ['unpaid-helper-share'],
+          },
+        ]}
+        caveat="These are survey estimates. The unpaid-helper observation is from a different period, and the PLFS redesign means 2025 results are not strictly comparable with earlier rounds."
+      />
+    );
+  }
+  if (domain === 'environment') {
+    return (
+      <EvidenceExplainer
+        eyebrow="Built capacity versus electricity supplied"
+        title="Half the fleet is not half the electricity"
+        intro="Capacity measures what can generate at one moment. Generation measures the electricity actually produced across the year."
+        metrics={[
+          metric('non-fossil-capacity-share', 'FY2023-24', 'Installed non-fossil capacity'),
+          metric('non-fossil-generation-share', 'FY2023-24', 'Non-fossil electricity generated'),
+        ]}
+        steps={[
+          {
+            label: 'What was built',
+            title: 'Capacity is the equipment available to produce electricity.',
+            body: 'At 31 March 2024, non-fossil sources represented 44.97% of installed utility capacity.',
+            metrics: ['non-fossil-capacity-share'],
+          },
+          {
+            label: 'What was produced',
+            title: 'Generation is the electricity the fleet supplied over time.',
+            body: 'Across FY2023-24, non-fossil sources supplied 23.51% of utility electricity generation.',
+            metrics: ['non-fossil-generation-share'],
+          },
+          {
+            label: 'Read them together',
+            title: 'The two percentages answer different questions.',
+            body: 'The contrast is informative, but it is not a score and the two values should not be treated as interchangeable claims about renewable electricity.',
+            metrics: ['non-fossil-capacity-share', 'non-fossil-generation-share'],
+          },
+        ]}
+        caveat="Both observations use the same CEA utilities universe and FY2023-24 reference. Capacity is a stock at year-end; generation is a flow across the year, so their difference is not an arithmetic shortfall."
+      />
+    );
+  }
+  return null;
 }
 
 /**

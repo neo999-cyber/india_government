@@ -13,6 +13,7 @@ import {
 } from '@/lib/questions';
 import { allUnmeasured, series } from '@/lib/data';
 import { spanFrontier, spanRows } from '@/lib/spans';
+import { GuidedStoryPicks } from '@/components/GuidedStoryPicks';
 
 export const metadata: Metadata = { title: 'Questions — eight ways in, and two that are not' };
 
@@ -116,24 +117,21 @@ export default function Questions() {
       <div className="qhero">
         <div className="qhero-art" />
         <div className="qhero-lead">
-          <h1 className="page-lead">Questions</h1>
+          <h1 className="page-lead">Questions &amp; stories</h1>
           <p className="lede">
-            Eight questions a reader arrives with. Each is a filter over records the instrument
-            already holds — <strong>not a new score, and not a ranking of anything against
-            anything.</strong>{' '}
-            Under every question is the criterion it selects on, named field by field, so that a
-            reader can check it and disagree with it.
+            Begin with something you want to understand. Choose a question for a focused answer,
+            or follow a guided story to see how the evidence, disagreement and limitations fit together.
           </p>
         </div>
         <div className="qhero-note">
           <p className="prose-note">
-            The order is the one the design brief lists them in — an authored choice, stated so it
-            is not read as a ranking. Six lead to a page of their own; one is answered by a surface
-            that already exists and links to it; one is not offered, and the reason is under the
-            question.
+            New to the site? Start with a guided story. Each one explains a familiar issue before
+            introducing the underlying records and measurement choices.
           </p>
         </div>
       </div>
+
+      <GuidedStoryPicks />
 
       {/* THE FIVE THAT BLUR, AND SEPARATING THEM IS THE POINT OF THE ITEM.
 

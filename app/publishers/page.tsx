@@ -2,6 +2,7 @@ import Link from '@/components/Link';
 import type { Metadata } from 'next';
 import { publisherRollups } from '@/lib/publishers';
 import { TierTag } from '@/components/marks';
+import { EvidenceBase } from '@/components/EvidenceBase';
 import type { Tier } from '@/lib/types';
 
 export const metadata: Metadata = {
@@ -84,6 +85,8 @@ export default function Publishers() {
         parliamentary question. That is not a backlog to be cleared: a citation of{' '}
         <span className="mono">The Constitution of India</span> has no publishing body to find.
       </p>
+
+      <EvidenceBase />
 
       <h2>Bodies</h2>
       <p>

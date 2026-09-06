@@ -3,8 +3,8 @@
     "recordsValidated": 223
   },
   "css-vars": {
-    "varUses": 1187,
-    "declared": 49
+    "varUses": 1262,
+    "declared": 50
   },
   "distinct-titles": {
     "recordsScanned": 619
@@ -20,7 +20,7 @@
   },
   "unrecognised-rows": {
     "pagesScanned": 685,
-    "citations": 941
+    "citations": 942
   },
   "field-render-audit": {
     "proseFields": 44,

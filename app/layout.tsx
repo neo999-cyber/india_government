@@ -9,6 +9,7 @@ import Link from '@/components/Link';
 import localFont from 'next/font/local';
 import { series } from '@/lib/data';
 import { ProvenanceDrawer } from '@/components/ProvenanceDrawer';
+import { CommandPalette } from '@/components/CommandPalette';
 import './globals.css';
 
 /**
@@ -280,16 +281,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   every page — an internal shorthand that a reader has no way to expand, and where
                   "living" reads either as a database state or, worse, as commentary. The terms are
                   named as terms and the open one says what it means. */}
-              <span className="masthead-sub">
+              <span className="masthead-sub masthead-sub-wide">
                 May 2014 to {LATEST} · first term 2014–19 · second 2019–24 · third 2024–, still
                 being added to
               </span>
+              <span className="masthead-sub masthead-sub-narrow">Evidence from May 2014 onward</span>
             </p>
             {/* The seven primary links moved to `components/PrimaryNav.tsx` so they can carry
                 `aria-current`, which needs the pathname and therefore a client component. The
                 All-pages disclosure stays here and stays script-free — see its own note. */}
             <PrimaryNav />
             <nav className="nav nav-primary nav-secondary" aria-label="All pages">
+              <CommandPalette />
               {/* THE SIXTEENTH DESTINATION, AND IT IS A DISCLOSURE RATHER THAN A LINK.
 
                   **Seventeen destinations sat in a footer, and a footer is read by almost nobody.**
@@ -321,7 +324,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   `app/directory/page.tsx` for why the panel could not simply be made a modal.
                   Both render `DIRECTORY`; neither holds its own copy of the list. */}
               <Link prefetch={false} className="allpages-link" href="/directory/">
-                All pages
+                More
               </Link>
               <AllPagesDisclosure>
                 <div className="allpages-panel">

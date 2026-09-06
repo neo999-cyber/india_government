@@ -1,11 +1,8 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import {
-  CompareWorkbench,
-  type CompactPair,
-  type CompactSeries,
-} from '@/components/CompareWorkbench';
+import { CompareWorkbench } from '@/components/CompareWorkbench';
+import { toCompactSeries, type CompactPair, type CompactSeries } from '@/lib/compare';
 
 type PublicSeries = {
   id: string;
@@ -16,9 +13,10 @@ type PublicSeries = {
   publisher?: string;
   tier?: string;
   source?: { name?: string };
+  calendar: 'FY' | 'CY';
   caveat?: string;
-  points?: { country: string; period: string; value: number | null }[];
-  breaks?: { period: string }[];
+  points: { country: 'IND' | 'BGD' | 'CHN' | 'IDN' | 'VNM'; period: string; value: number | null; status: 'verified' | 'approx' | 'pending'; note?: string }[];
+  breaks?: { period: string; note: string; provenanceRef: string }[];
 };
 
 type PublicPair = {
@@ -53,8 +51,6 @@ function loadCompareData() {
   return compareDataRequest;
 }
 
-const yearOf = (period: string) => Number(String(period).replace(/^FY/, '').slice(0, 4));
-
 export function AtlasCompareMode({ focused }: { focused: string[] }) {
   const [data, setData] = useState<CompareData | null>(null);
   const [failed, setFailed] = useState(false);
@@ -85,22 +81,9 @@ export function AtlasCompareMode({ focused }: { focused: string[] }) {
       ) {
         return [];
       }
-      const points = (series.points ?? [])
-        .filter((point) => point.country === 'IND' && point.value !== null && yearOf(point.period) >= 2010)
-        .map((point) => ({ year: yearOf(point.period), value: point.value as number }))
-        .sort((a, b) => a.year - b.year);
-      if (points.length < 2) return [];
-      return [{
-        id: series.id,
-        title: series.title,
-        domain: series.domain,
-        unit: series.unit,
-        publisher: series.source?.name ?? series.publisher,
-        tier: series.tier,
-        points,
-        caveat: series.caveat,
-        breaks: (series.breaks ?? []).map((item) => yearOf(item.period)),
-      }];
+      const compact = toCompactSeries(series, 2010);
+      if (compact.points.filter((point) => typeof point.value === 'number').length < 2) return [];
+      return [compact];
     });
   }, [data, focus]);
 

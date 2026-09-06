@@ -1,6 +1,6 @@
 'use client';
 import Link from '@/components/Link';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { formatValue, periodLabel } from '@/lib/format';
 import type { CarouselSubject } from '@/lib/carousel';
 
@@ -36,56 +36,24 @@ export function SubjectCarousel({ subjects }: { subjects: readonly CarouselSubje
   const x0 = useRef<number | null>(null);
   const go = (i: number) => setCur(((i % n) + n) % n);
 
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLElement && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
-      if (e.key === 'ArrowRight') go(cur + 1);
-      if (e.key === 'ArrowLeft') go(cur - 1);
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  });
-
-  /**
-   * WHEEL OVER THE STAGE MOVES THE FLOW, NOT THE PAGE — operator, 2026-09-02: "when the mouse is
-   * over the flow the scroll should move to the next; to scroll the page you come out of it."
-   *
-   * A NATIVE, NON-PASSIVE LISTENER, because React registers `onWheel` passively and a passive
-   * handler cannot `preventDefault`: the page would scroll AND the flow would move. Bound to the
-   * stage only — leave it and the page scrolls as ever. A trackpad fires dozens of small deltas per
-   * gesture, so deltas accumulate to a threshold and then LOCK until the 650ms flow has landed;
-   * otherwise one flick would run through six subjects.
-   */
-  const stage = useRef<HTMLDivElement>(null);
-  const wheel = useRef({ acc: 0, until: 0 });
-  useEffect(() => {
-    const el = stage.current;
-    if (!el) return;
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      const now = Date.now();
-      if (now < wheel.current.until) return;
-      wheel.current.acc += Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-      if (Math.abs(wheel.current.acc) < 60) return;
-      const dir = wheel.current.acc > 0 ? 1 : -1;
-      wheel.current = { acc: 0, until: now + 700 };
-      setCur((c) => (((c + dir) % n) + n) % n);
-    };
-    el.addEventListener('wheel', onWheel, { passive: false });
-    return () => el.removeEventListener('wheel', onWheel);
-  }, [n]);
-
   const active = subjects[cur];
   return (
     <section className="sc" aria-labelledby="sc-h" style={{ ['--hue' as string]: `var(--area-${active.area})` }}>
       <div className="sc-head">
         <h2 id="sc-h" className="sc-title">Choose a subject</h2>
         <p className="sc-sub">
-          Each card leads with one real series. Below, one year control moves every topic at once.
+          Each card leads with one real series. Use the buttons or swipe sideways; vertical scrolling always moves the page.
           <span className="mono"> {n} subjects &middot; the board&rsquo;s own order</span>
         </p>
       </div>
-      <div className="sc-stage" ref={stage}
+      <div className="sc-stage"
+           tabIndex={0}
+           role="group"
+           aria-label="Subject carousel. Use left and right arrow keys to change subject."
+           onKeyDown={(e) => {
+             if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
+             if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); }
+           }}
            onPointerDown={(e) => { x0.current = e.clientX; }}
            onPointerUp={(e) => {
              if (x0.current === null) return;

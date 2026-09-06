@@ -6,6 +6,7 @@ import { series, pairs } from '@/lib/data';
 import { routeLabel } from '@/lib/routes';
 import { CompareWorkbench } from '@/components/CompareWorkbench';
 import { SectionNav } from '@/components/SectionNav';
+import { toCompactSeries } from '@/lib/compare';
 
 export const metadata: Metadata = {
   title: routeLabel('/compare/'),
@@ -13,25 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function ComparePage() {
-  const compactSeries = series.map((s) => ({
-    id: s.id,
-    title: s.title,
-    domain: s.domain,
-    unit: s.unit,
-    publisher: s.source?.name,
-    tier: s.tier,
-    points: s.points
-      .filter((p) => p.country === 'IND' && p.value !== null && typeof p.value === 'number')
-      .map((p) => ({
-        year: Number(String(p.period).replace(/^FY/, '').slice(0, 4)),
-        value: p.value as number,
-      }))
-      .filter((p) => !isNaN(p.year)),
-    caveat: s.caveat,
-    breaks: s.breaks
-      ?.map((b) => Number(String(b.period).replace(/^FY/, '').slice(0, 4)))
-      .filter((y) => !isNaN(y)),
-  }));
+  const compactSeries = series.map((item) => toCompactSeries(item));
 
   const compactPairs = pairs.map((p) => ({
     id: p.id,
