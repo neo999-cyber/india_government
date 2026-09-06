@@ -73,26 +73,28 @@ test.describe('phone journeys', () => {
      * search box — and a reader who does not yet know what the archive holds cannot choose between
      * tools. The landscape names the fourteen subjects instead.
      *
-     * **BOTH BLOCKS ARE ASSERTED, AND THE ORDER BETWEEN THEM IS THE POINT.** The landscape must
-     * finish before the evidence base begins: if that ever inverts, the page has gone back to
-     * leading with something other than the fourteen named subjects.
+     * **THE TOPICS REMAIN THE FIRST COMPLETE INDEX.** Guided stories may follow them, but may not
+     * replace or precede the fourteen direct subject routes.
      *
      * **WITHDRAWN: `.rc-window`, the constellation.** It left the landing page on 2026-09-01 —
      * there is no geography in this corpus for an outline of India to encode — and is now one of
      * the Atlas's four views, where `constellation.spec.ts` tests it. What stands here instead is
-     * the evidence base: 1,205 citations, one mark each, banded by tier.
+     * a compact evidence note; the full citation field moved to `/publishers/`, where its meaning
+     * and source taxonomy have the context a first-time visitor does not yet have.
      */
     const topics = page.locator('.lsc-mobile-topics a');
-    const evidence = page.locator('.evb-tiers');
+    const stories = page.locator('.story-picks-grid > a');
     await expect(topics).toHaveCount(14);
     await expect(topics.first()).toBeVisible();
-    await expect(evidence).toBeVisible();
+    await expect(stories).toHaveCount(3);
+    await expect(page.locator('.home-source-note')).toBeVisible();
+    await expect(page.locator('.evb-tiers')).toHaveCount(0);
 
     const lb = await page.locator('.lsc-mobile-topics').boundingBox();
-    const cb = await evidence.boundingBox();
+    const sb = await page.locator('.story-picks').boundingBox();
     expect(lb, 'the phone topic grid is missing').not.toBeNull();
-    expect(cb, 'the evidence base is missing').not.toBeNull();
-    expect(lb!.y, 'the evidence base appears above the topic choices').toBeLessThan(cb!.y);
+    expect(sb, 'the guided stories are missing').not.toBeNull();
+    expect(lb!.y, 'the guided stories appear above the topic choices').toBeLessThan(sb!.y);
 
     /**
      * THE PINS ARE HTML OVER THE PICTURE, NOT TEXT INSIDE IT — rewritten 2026-08-28.
@@ -119,13 +121,7 @@ test.describe('phone journeys', () => {
     await expect(page.locator('.lsc-svg')).toBeVisible();
     await expect(page.locator('.lsc-pins')).toBeHidden();
 
-    /* **WITHDRAWN: tapping `.rc-node-btn[data-area="government"]` and asserting `aria-pressed`.**
-       The constellation left the landing page on 2026-09-01. Its touch contract did not go
-       untested — it moved with the component to `constellation.spec.ts`, which runs at 375px and
-       taps the same buttons. What stands here now has no controls to tap: the evidence base is a
-       field of 1,205 marks, so the property left to hold at this width is that it does not push
-       the document sideways. */
-    await expect(page.locator('.evb-marks i').first()).toBeVisible();
+    await expectTouchTarget(stories.first(), 'first guided story');
     await expectNoBodyOverflow(page);
   });
 

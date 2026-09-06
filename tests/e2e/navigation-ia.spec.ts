@@ -197,4 +197,30 @@ test.describe('progressive information architecture', () => {
     await page.goto('/stories/');
     await expect(page.locator('.grid > a')).toHaveCount(7);
   });
+
+  test('the homepage leads from topics to questions before source methodology', async ({ page }) => {
+    await page.goto('/');
+    const topics = page.locator('.lsc-mobile-topics a');
+    const stories = page.locator('.story-picks-grid > a');
+
+    await expect(topics).toHaveCount(14);
+    await expect(stories).toHaveCount(3);
+    await expect(stories.nth(0)).toHaveAttribute('href', '/stories/can-indian-children-read/');
+    await expect(stories.nth(1)).toHaveAttribute('href', '/stories/did-jobs-grow/');
+    await expect(stories.nth(2)).toHaveAttribute('href', '/stories/how-renewable/');
+    await expect(page.locator('.home-source-note a').first()).toHaveAttribute('href', '/publishers/');
+    await expect(page.locator('.evb')).toHaveCount(0);
+
+    if ((page.viewportSize()?.width ?? 0) < 900) {
+      const topicsBox = await page.locator('.lsc-mobile-topics').boundingBox();
+      const storiesBox = await page.locator('.story-picks').boundingBox();
+      expect(topicsBox).not.toBeNull();
+      expect(storiesBox).not.toBeNull();
+      expect(topicsBox!.y).toBeLessThan(storiesBox!.y);
+    }
+
+    await page.goto('/publishers/');
+    await expect(page.locator('.evb')).toBeVisible();
+    await expect(page.locator('.evb-marks i').first()).toBeVisible();
+  });
 });

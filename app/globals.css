@@ -4476,6 +4476,20 @@ details.more > summary {
 .home-start-actions a:hover,
 .home-start-actions a:focus-visible { border-color: var(--mark); box-shadow: 0 0 0 2px var(--mark-soft); }
 
+.home-source-note {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem;
+  align-items: end;
+  margin: 2.5rem 0;
+  padding: 1.25rem 0;
+  border-block: 1px solid var(--rule);
+}
+.home-source-note h2 { margin: 0 0 0.35rem; font-size: clamp(1.35rem, 2.5vw, 1.8rem); }
+.home-source-note p { max-width: 62ch; margin: 0; color: var(--ink-2); }
+.home-source-links { display: flex; flex-direction: column; gap: 0.5rem; }
+.home-source-links a { color: var(--ink-2); white-space: nowrap; }
+
 .story-picks { margin: 1.5rem 0 2.5rem; padding: 1.25rem; background: var(--surface); border: 1px solid var(--rule); }
 .story-picks-head { display: flex; justify-content: space-between; gap: 1rem; align-items: end; margin-bottom: 1rem; }
 .story-picks-head h2 { margin: 0; }
@@ -4583,6 +4597,7 @@ details.more > summary {
 
 @media (max-width: 767px) {
   .home-intro { margin-top: 2rem; }
+  .home-source-note { grid-template-columns: 1fr; gap: 1rem; align-items: start; }
   .home-next { grid-template-columns: 1fr; align-items: start; }
   .home-next > a, .home-next-go { justify-self: start; }
 }

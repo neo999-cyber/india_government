@@ -1,6 +1,6 @@
 import Link from '@/components/Link';
-import { ledger, series } from '@/lib/data';
-import { EvidenceBase } from '@/components/EvidenceBase';
+import { citations, ledger, series } from '@/lib/data';
+import { GuidedStoryPicks } from '@/components/GuidedStoryPicks';
 import { RecordLandscape } from '@/components/RecordLandscape';
 import { archiveSeriesMasks, archiveYears, landscapeSubjects } from '@/lib/landscape';
 import { YEARS } from '@/lib/years';
@@ -38,6 +38,8 @@ export default function HomePage() {
         </section>
       </RecordLandscape>
 
+      <GuidedStoryPicks title="Start with a familiar question" />
+
       {/* THE CONSTELLATION LEAVES THE FRONT DOOR, AND IS NOT DELETED.
           Operator, 2026-09-01: "i dont see the point of the constellation map — no purpose — feels
           like a gimmick." The reason it read that way is structural, not cosmetic: THERE IS NO
@@ -56,7 +58,20 @@ export default function HomePage() {
           It remains one of the Atlas's four views, labelled "What the archive covers", which is
           where a coverage picture belongs — so nothing is lost and the Survey of India outline and
           its attribution stay on the site. */}
-      <EvidenceBase />
+      <aside className="home-source-note" aria-labelledby="home-source-title">
+        <div>
+          <p className="home-kicker mono">Evidence, kept attached</p>
+          <h2 id="home-source-title">{citations().length.toLocaleString('en-IN')} citations behind the record</h2>
+          <p>
+            Sources, confidence, disagreements and missing measurements stay beside the claims they
+            qualify. The complete citation distribution now lives with the source directory.
+          </p>
+        </div>
+        <div className="home-source-links">
+          <Link href="/publishers/">See sources and publishers →</Link>
+          <Link href="/method/#source-tiers">How source tiers work →</Link>
+        </div>
+      </aside>
 
       {/* THE SECOND ROOM, NAMED AS ONE — operator reading, 2026-09-01: readers "are overwhelmed
           with records and text", so this page is the picture and the dense surfaces sit one step

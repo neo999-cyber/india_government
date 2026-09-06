@@ -13,7 +13,7 @@ import {
 } from '@/lib/questions';
 import { allUnmeasured, series } from '@/lib/data';
 import { spanFrontier, spanRows } from '@/lib/spans';
-import { STORY_INDEX } from '@/lib/story-index';
+import { GuidedStoryPicks } from '@/components/GuidedStoryPicks';
 
 export const metadata: Metadata = { title: 'Questions — eight ways in, and two that are not' };
 
@@ -131,24 +131,7 @@ export default function Questions() {
         </div>
       </div>
 
-      <section className="story-picks" aria-labelledby="story-picks-title">
-        <div className="story-picks-head">
-          <div>
-            <p className="home-kicker mono">Guided explanations</p>
-            <h2 id="story-picks-title">Three approachable places to begin</h2>
-          </div>
-          <Link href="/stories/">See all seven stories →</Link>
-        </div>
-        <div className="story-picks-grid">
-          {STORY_INDEX.slice(0, 4).filter((story) => story.slug !== 'who-counts-the-dead').slice(0, 3).map((story) => (
-            <Link key={story.slug} href={`/stories/${story.slug}/`}>
-              <span className="mono">{story.topic}</span>
-              <strong>{story.title}</strong>
-              <small>Read the evidence step by step →</small>
-            </Link>
-          ))}
-        </div>
-      </section>
+      <GuidedStoryPicks />
 
       {/* THE FIVE THAT BLUR, AND SEPARATING THEM IS THE POINT OF THE ITEM.
 
