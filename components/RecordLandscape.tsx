@@ -202,7 +202,14 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, archiveMa
         <div>{children}</div>
         <div className="lsc-read" aria-live="polite">
           <p className="lsc-read-eyebrow mono">{current ? 'Subject' : 'The archive'}</p>
-          <p className="lsc-read-name">{current ? current.label : `${subjects.length} subjects, one landscape`}</p>
+          <p className="lsc-read-name">
+            {current ? current.label : (
+              <>
+                <span className="lsc-desktop-copy">{subjects.length} subjects, one landscape</span>
+                <span className="lsc-mobile-copy">{subjects.length} subjects in the archive</span>
+              </>
+            )}
+          </p>
           <div className={`lsc-read-stats${current ? ' is-two' : ''}`}>
             {current ? (
               <>
@@ -224,7 +231,12 @@ export function RecordLandscape({ subjects, totals, years, yearTotals, archiveMa
               ? `Selected — press again to open ${current.label}`
               : current
                 ? `${current.filings} filings marked${current.from ? ` · record begins ${current.from}` : ''}`
-                : 'Point at a landmark to read its subject here'}
+                : (
+                  <>
+                    <span className="lsc-desktop-copy">Point at a landmark to read its subject here</span>
+                    <span className="lsc-mobile-copy">Choose a topic below to open its records</span>
+                  </>
+                )}
           </p>
         </div>
       </div>

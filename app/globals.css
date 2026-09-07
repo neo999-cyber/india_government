@@ -4519,8 +4519,8 @@ details.more > summary {
 .eex-flow span { height: 1px; flex: 1; background: var(--rule); transform-origin: left; animation: eex-line 0.55s ease both; }
 .eex-flow i { font: normal 0.58rem var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; }
 .eex-bars { display: grid; gap: 0.65rem; }
-.eex-bars article { padding: 0.8rem 0.9rem; border: 1px solid var(--rule); border-radius: var(--radius-sm); background: var(--bg); transition: opacity 0.22s ease, transform 0.22s ease; }
-.eex-bars article.is-muted { opacity: 0.42; transform: scale(0.985); }
+.eex-bars article { padding: 0.8rem 0.9rem; border: 1px solid var(--rule); border-radius: var(--radius-sm); background: var(--bg); transition: transform 0.22s ease; }
+.eex-bars article.is-muted { transform: scale(0.985); }
 .eex-bar-head { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
 .eex-bar-head strong { font-size: 0.86rem; }
 .eex-bar-head span { color: var(--ink-dim); font-size: 0.62rem; }
@@ -7667,6 +7667,7 @@ li {
   color: var(--ink-dim);
 }
 .lsc-read-foot { font-size: 0.66rem; color: var(--ink-dim); margin: 0.7rem 0 0; line-height: 1.5; }
+.lsc-mobile-copy { display: none; }
 
 .lsc { margin: 0 0 2.6rem; }
 .lsc-label { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; margin: 0 0 0.8rem; }
@@ -7854,6 +7855,8 @@ li {
    shrunk. The masthead and the footer directory still reach every subject. */
 @media (max-width: 760px) {
   .lsc-head { gap: 1.5rem; margin-top: 2rem; }
+  .lsc-desktop-copy { display: none; }
+  .lsc-mobile-copy { display: inline; }
   .lsc-label span { display: none; }
   .lsc-mobile-topics {
     display: grid;

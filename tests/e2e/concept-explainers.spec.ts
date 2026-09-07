@@ -10,6 +10,7 @@ test.describe('guided topic explanations', () => {
     await expect(explainer.getByRole('tab')).toHaveCount(3);
     await expect(explainer).toContainText('FY2023-24');
     await expect(explainer).toContainText('FY2020-21');
+    await expect(explainer.locator('.eex-bars article.is-muted').first()).toHaveCSS('opacity', '1');
 
     const first = explainer.getByRole('tab', { name: /Employed ≠ salaried/ });
     const unpaid = explainer.getByRole('tab', { name: /Notice unpaid work/ });
