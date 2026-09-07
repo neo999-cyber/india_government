@@ -38,7 +38,7 @@ export default function Directory() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">Home</Link> / {crumbLabel('/directory/')}
+        <Link href="/">instrument</Link> / {crumbLabel('/directory/')}
       </p>
 
       <h1 className="page-lead">All pages</h1>

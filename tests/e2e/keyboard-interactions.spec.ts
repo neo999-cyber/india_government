@@ -26,15 +26,6 @@ test.describe('chart and dialog keyboard interactions', () => {
     await expect(trigger).toBeFocused();
   });
 
-  test('plain-language questions surface a relevant topic before raw record search', async ({ page }) => {
-    await page.goto('/');
-    await page.getByRole('button', { name: /Quick Search/ }).click();
-    await page.getByRole('combobox').fill('Are more women working?');
-    const results = page.locator('#cmd-results');
-    await expect(results).toContainText('Employment & Labour');
-    await expect(results.locator('[role="option"]').first()).toContainText('Employment & Labour');
-  });
-
   test('provenance drawer traps focus, updates the URL and returns focus', async ({ page }) => {
     await page.goto('/series/res-capacity-share/');
     const trigger = page.locator('a[href^="/provenance/P-"]').first();

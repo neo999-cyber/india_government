@@ -169,7 +169,7 @@ export default function Story() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">Home</Link> / <Link href="/stories/">stories</Link> / a zero that is not
+        <Link href="/">instrument</Link> / <Link href="/stories/">stories</Link> / a zero that is not
         a zero
       </p>
 

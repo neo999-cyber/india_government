@@ -60,16 +60,7 @@ async function expectTouchTarget(locator: import('@playwright/test').Locator, la
 }
 
 test.describe('phone journeys', () => {
-  test('topic reading guide and evidence distinctions fit a phone', async ({ page }) => {
-    await page.goto('/domains/education/');
-    await expect(page.locator('.topic-primer article')).toHaveCount(3);
-    await expect(page.locator('.eex-unscaled')).toHaveCount(2);
-    await expect(page.locator('.eex')).toContainText('Household assessment');
-    await expect(page.locator('.eex')).toContainText('Primary source pending');
-    await expectNoBodyOverflow(page);
-  });
-
-  test('landing gives every subject a clear phone-sized route', async ({ page }) => {
+  test('landing is visual-first and the fourteen subjects are reachable', async ({ page }) => {
     await page.goto('/');
 
     await expect(page.getByRole('heading', { level: 1 })).toContainText('What we can actually know');
@@ -82,31 +73,25 @@ test.describe('phone journeys', () => {
      * search box — and a reader who does not yet know what the archive holds cannot choose between
      * tools. The landscape names the fourteen subjects instead.
      *
-     * **THE TOPICS REMAIN THE FIRST COMPLETE INDEX.** Guided stories may follow them, but may not
-     * replace or precede the fourteen direct subject routes.
+     * **BOTH BLOCKS ARE ASSERTED, AND THE ORDER BETWEEN THEM IS THE POINT.** The landscape must
+     * finish before the evidence base begins: if that ever inverts, the page has gone back to
+     * leading with something other than the fourteen named subjects.
      *
      * **WITHDRAWN: `.rc-window`, the constellation.** It left the landing page on 2026-09-01 —
      * there is no geography in this corpus for an outline of India to encode — and is now one of
      * the Atlas's four views, where `constellation.spec.ts` tests it. What stands here instead is
-     * a compact evidence note; the full citation field moved to `/publishers/`, where its meaning
-     * and source taxonomy have the context a first-time visitor does not yet have.
+     * the evidence base: 1,205 citations, one mark each, banded by tier.
      */
-    const topics = page.locator('.lsc-mobile-topics a');
-    const stories = page.locator('.story-picks-grid > a');
-    await expect(topics).toHaveCount(14);
-    await expect(topics.first()).toBeVisible();
-    await expect(page.locator('.lsc-read')).toContainText('14 subjects in the archive');
-    await expect(page.locator('.lsc-read')).toContainText('Choose a topic below to open its records');
-    await expect(page.locator('.lsc-read').getByText('Point at a landmark to read its subject here')).toBeHidden();
-    await expect(stories).toHaveCount(3);
-    await expect(page.locator('.home-source-note')).toBeVisible();
-    await expect(page.locator('.evb-tiers')).toHaveCount(0);
+    const landscape = page.locator('.lsc-svg');
+    const evidence = page.locator('.evb-tiers');
+    await expect(landscape).toBeVisible();
+    await expect(evidence).toBeVisible();
 
-    const lb = await page.locator('.lsc-mobile-topics').boundingBox();
-    const sb = await page.locator('.story-picks').boundingBox();
-    expect(lb, 'the phone topic grid is missing').not.toBeNull();
-    expect(sb, 'the guided stories are missing').not.toBeNull();
-    expect(lb!.y, 'the guided stories appear above the topic choices').toBeLessThan(sb!.y);
+    const lb = await landscape.boundingBox();
+    const cb = await evidence.boundingBox();
+    expect(lb, 'the landscape is missing').not.toBeNull();
+    expect(cb, 'the evidence base is missing').not.toBeNull();
+    expect(lb!.y, 'the evidence base appears above the landscape').toBeLessThan(cb!.y);
 
     /**
      * THE PINS ARE HTML OVER THE PICTURE, NOT TEXT INSIDE IT — rewritten 2026-08-28.
@@ -120,20 +105,42 @@ test.describe('phone journeys', () => {
      * to a dot and opens into its name when selected, so the assertion is on the TAP TARGET, which
      * is the thing that has to survive a small screen.
      */
-    const hrefs = await topics.evaluateAll((links) => links.map((link) => link.getAttribute('href')));
-    expect(new Set(hrefs).size).toBe(14);
-    expect(hrefs.every((href) => /^\/domains\/[a-z-]+\/$/.test(href ?? ''))).toBe(true);
-    await expectTouchTarget(topics.first(), 'first subject route');
+    const pins = page.locator('a.lsc-pin');
+    await expect(pins).toHaveCount(14);
+    await expect(pins.first()).toBeVisible();
+    /* 24px, NOT the 44px `expectTouchTarget` applies to a journey card. **WITHDRAWN: that helper,
+       used on a map pin.** Sizing fourteen pins to 44px produced 151px-wide pills that covered the
+       picture they label. 24x24 is WCAG 2.5.8 at AA and the minimum `target-size.spec.ts` holds
+       every other control on this site to; a single large call-to-action is a different object. */
+    const pinBox = await pins.first().boundingBox();
+    expect(pinBox, 'landscape pin is not rendered').not.toBeNull();
+    expect(pinBox!.height, 'landscape pin is under 24px').toBeGreaterThanOrEqual(24);
+    expect(pinBox!.width, 'landscape pin is under 24px').toBeGreaterThanOrEqual(24);
 
-    // The dense illustration is still available, but no longer competes with the topic routes.
-    await expect(page.locator('.lsc-svg')).toBeHidden();
-    const pictureToggle = page.getByRole('button', { name: 'View illustrated landscape' });
-    await expectTouchTarget(pictureToggle, 'illustrated landscape toggle');
-    await pictureToggle.tap();
-    await expect(page.locator('.lsc-svg')).toBeVisible();
-    await expect(page.locator('.lsc-pins')).toBeHidden();
+    // The readout carries the counts the single-word pills no longer do.
+    // The readout carries the counts the single-word pins do not.
+    await expect(page.locator('.lsc-read-name')).toContainText('subjects, one landscape');
 
-    await expectTouchTarget(stories.first(), 'first guided story');
+    /* THE TWO-STEP, WHICH IS THE OTHER HALF OF THE SAME REPORT. A tap used to go straight to the
+       subject page, so a touch reader never saw the readout at all. First tap selects. */
+    /* PIN-AGNOSTIC, because naming one is fragile here. **WITHDRAWN: tapping the Governance pin
+       by name**, which timed out at 412px — fourteen pins on a 380px-wide picture overlap, so
+       Playwright could not get a clean hit on that particular one. Whichever pin is on top will
+       do: the property under test is the two-step, not which subject it happens to select. */
+    const topPin = pins.last();
+    await topPin.scrollIntoViewIfNeeded();
+    const expected = (await topPin.innerText()).trim();
+    await topPin.tap();
+    await expect(page.locator('.lsc-read-name')).toHaveText(expected);
+    await expect(page).toHaveURL(/\/$/);
+
+    /* **WITHDRAWN: tapping `.rc-node-btn[data-area="government"]` and asserting `aria-pressed`.**
+       The constellation left the landing page on 2026-09-01. Its touch contract did not go
+       untested — it moved with the component to `constellation.spec.ts`, which runs at 375px and
+       taps the same buttons. What stands here now has no controls to tap: the evidence base is a
+       field of 1,205 marks, so the property left to hold at this width is that it does not push
+       the document sideways. */
+    await expect(page.locator('.evb-marks i').first()).toBeVisible();
     await expectNoBodyOverflow(page);
   });
 

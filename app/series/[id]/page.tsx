@@ -129,7 +129,7 @@ export default async function SeriesDetail({ params }: Props) {
     <>
       <SeriesLd series={s} />
       <p className="crumb">
-        <Link href="/">Home</Link> / <Link href="/search/?layer=series">series</Link> /{' '}
+        <Link href="/">instrument</Link> / <Link href="/search/?layer=series">series</Link> /{' '}
         <Link href={`/domains/${s.domain}/`}>{DOMAIN_LABELS[s.domain]}</Link>
       </p>
       <h1>{s.title}</h1>

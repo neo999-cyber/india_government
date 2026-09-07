@@ -30,7 +30,7 @@ export default function ComparePage() {
   return (
     <>
       <p className="crumb">
-        <Link prefetch={false} href="/">Home</Link> / compare series
+        <Link prefetch={false} href="/">instrument</Link> / compare series
       </p>
       <h1 className="page-lead">Side-by-side series comparator</h1>
       <p className="lede">

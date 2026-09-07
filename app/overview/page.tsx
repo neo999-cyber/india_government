@@ -249,7 +249,7 @@ export default function Overview() {
   return (
     <>
       <p className="crumb">
-        <Link prefetch={false} href="/">Home</Link> / atlas
+        <Link prefetch={false} href="/">instrument</Link> / atlas
       </p>
       {/* THE BANNER IS DECORATION AND IS MARKED AS SUCH.
           It is a supplied collage — parliament, a port, a school, a hospital, a farm, solar, a

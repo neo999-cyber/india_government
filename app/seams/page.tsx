@@ -66,7 +66,7 @@ export default function Seams() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">Home</Link> / where the instruments changed
+        <Link href="/">instrument</Link> / where the instruments changed
       </p>
       <h1 className="page-lead">Where the instruments changed</h1>
       <p className="lede">

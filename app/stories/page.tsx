@@ -25,7 +25,7 @@ export default function StoriesIndex() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">Home</Link> / stories
+        <Link href="/">instrument</Link> / stories
       </p>
       <h1 className="page-lead">Stories</h1>
       <p className="lede">

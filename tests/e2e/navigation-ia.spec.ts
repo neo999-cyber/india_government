@@ -10,13 +10,6 @@ import { test, expect, type Page } from '@playwright/test';
  */
 
 const MAIN = [
-  ['Start here', '/in-short/'],
-  ['Explore topics', '/overview/'],
-  ['Questions & stories', '/questions/'],
-  ['Compare', '/compare/'],
-] as const;
-
-const DIRECTORY_GROUPS = [
   ['Atlas', '/overview/'],
   ['Questions', '/questions/'],
   ['Stories', '/stories/'],
@@ -35,8 +28,8 @@ async function expectGateway(page: Page, route: string, hrefs: readonly string[]
   }
 }
 
-test.describe('progressive information architecture', () => {
-  test('the masthead exposes four novice-oriented destinations in one stable order', async ({ page }) => {
+test.describe('seven-section information architecture', () => {
+  test('the masthead exposes the seven public sections in one stable order', async ({ page }) => {
     await page.goto('/');
     // Each section link is wrapped in `.pnav-sec` so its menu can position against it, 2026-09-01.
     // The property this test asserts is unchanged — seven section links, in one order — and the
@@ -62,7 +55,7 @@ test.describe('progressive information architecture', () => {
     // not rendered — asserted by its own test below rather than skipped into silence.
     test.skip((page.viewportSize()?.width ?? 0) < 900, 'the menus exist only at 900px and wider');
     await page.goto('/');
-    const atlas = page.locator('nav[aria-label="Main"] > .pnav-sec').nth(1);
+    const atlas = page.locator('nav[aria-label="Main"] > .pnav-sec').first();
     const menu = atlas.locator('.pnav-menu');
 
     await expect(menu).toBeHidden();
@@ -94,7 +87,7 @@ test.describe('progressive information architecture', () => {
     const menus = page.locator('nav[aria-label="Main"] .pnav-menu');
     await expect(menus.first()).toHaveCSS('display', 'none');
     // The section links themselves are untouched, so nothing became unreachable.
-    await expect(page.locator('nav[aria-label="Main"] > .pnav-sec > a')).toHaveCount(4);
+    await expect(page.locator('nav[aria-label="Main"] > .pnav-sec > a')).toHaveCount(7);
     expect(
       await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
       'and the page does not scroll sideways',
@@ -107,39 +100,37 @@ test.describe('progressive information architecture', () => {
     test('the menus still open, because they were never script', async ({ page }) => {
       test.skip((page.viewportSize()?.width ?? 0) < 900, 'the menus exist only at 900px and wider');
       await page.goto('/');
-      const topics = page.locator('nav[aria-label="Main"] > .pnav-sec').nth(1);
-      await expect(topics.locator('> a')).toHaveText('Explore topics');
-      await expect(topics.locator('.pnav-menu')).toBeHidden();
-      await topics.hover();
-      await expect(topics.locator('.pnav-menu')).toBeVisible();
-      await expect(topics.locator('.pnav-menu a').first()).toHaveText('In short');
+      const gaps = page.locator('nav[aria-label="Main"] > .pnav-sec').nth(5);
+      await expect(gaps.locator('> a')).toHaveText('Gaps');
+      await expect(gaps.locator('.pnav-menu')).toBeHidden();
+      await gaps.hover();
+      await expect(gaps.locator('.pnav-menu')).toBeVisible();
+      await expect(gaps.locator('.pnav-menu a').last()).toHaveText('Verification queue');
     });
   });
 
   test('cross-filed routes identify their public parent, not their URL prefix', async ({ page }) => {
     for (const [route, parent] of [
       ['/compare/#peers', 'Compare'],
-      ['/stories/did-jobs-grow/', 'Questions & stories'],
+      ['/unmeasured/#unanswerable', 'Gaps'],
+      ['/questions/publication-stopped/', 'Gaps'],
+      ['/publishers/', 'About'],
     ] as const) {
       await page.goto(route);
       const current = page.locator('nav[aria-label="Main"] a[aria-current="page"]');
       await expect(current).toHaveCount(1);
       await expect(current).toHaveText(parent);
     }
-    for (const route of ['/unmeasured/#unanswerable', '/publishers/']) {
-      await page.goto(route);
-      await expect(page.locator('nav[aria-label="Main"] a[aria-current="page"]')).toHaveCount(0);
-    }
   });
 
   test('All pages mirrors the same seven groups', async ({ page }) => {
     await page.goto('/directory/');
     const groups = page.locator('.dir-group');
-    await expect(groups).toHaveCount(DIRECTORY_GROUPS.length);
-    for (let index = 0; index < DIRECTORY_GROUPS.length; index += 1) {
+    await expect(groups).toHaveCount(MAIN.length);
+    for (let index = 0; index < MAIN.length; index += 1) {
       const heading = groups.nth(index).locator('h2 a');
-      await expect(heading).toHaveText(DIRECTORY_GROUPS[index][0]);
-      await expect(heading).toHaveAttribute('href', DIRECTORY_GROUPS[index][1]);
+      await expect(heading).toHaveText(MAIN[index][0]);
+      await expect(heading).toHaveAttribute('href', MAIN[index][1]);
     }
 
     const questions = groups.nth(1).locator('ul a');
@@ -196,31 +187,5 @@ test.describe('progressive information architecture', () => {
 
     await page.goto('/stories/');
     await expect(page.locator('.grid > a')).toHaveCount(7);
-  });
-
-  test('the homepage leads from topics to questions before source methodology', async ({ page }) => {
-    await page.goto('/');
-    const topics = page.locator('.lsc-mobile-topics a');
-    const stories = page.locator('.story-picks-grid > a');
-
-    await expect(topics).toHaveCount(14);
-    await expect(stories).toHaveCount(3);
-    await expect(stories.nth(0)).toHaveAttribute('href', '/stories/can-indian-children-read/');
-    await expect(stories.nth(1)).toHaveAttribute('href', '/stories/did-jobs-grow/');
-    await expect(stories.nth(2)).toHaveAttribute('href', '/stories/how-renewable/');
-    await expect(page.locator('.home-source-note a').first()).toHaveAttribute('href', '/publishers/');
-    await expect(page.locator('.evb')).toHaveCount(0);
-
-    if ((page.viewportSize()?.width ?? 0) < 900) {
-      const topicsBox = await page.locator('.lsc-mobile-topics').boundingBox();
-      const storiesBox = await page.locator('.story-picks').boundingBox();
-      expect(topicsBox).not.toBeNull();
-      expect(storiesBox).not.toBeNull();
-      expect(topicsBox!.y).toBeLessThan(storiesBox!.y);
-    }
-
-    await page.goto('/publishers/');
-    await expect(page.locator('.evb')).toBeVisible();
-    await expect(page.locator('.evb-marks i').first()).toBeVisible();
   });
 });

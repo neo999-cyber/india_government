@@ -3,6 +3,7 @@
 import Link from '@/components/Link';
 import { usePathname } from 'next/navigation';
 import { PRIMARY_NAV, SITE_SECTIONS, navLabel, sectionForPath } from '@/lib/routes';
+import { CommandPalette } from '@/components/CommandPalette';
 
 /**
  * THE MASTHEAD, WITH EACH SECTION'S OWN PAGES UNDER IT.
@@ -33,14 +34,9 @@ export function PrimaryNav() {
   return (
     <nav className="nav nav-primary" aria-label="Main">
       {PRIMARY_NAV.map((href) => {
-        const current =
-          (href === '/in-short/' && (here === '/' || here === '/in-short/')) ||
-          (href === '/questions/' && (currentSection?.key === 'questions' || currentSection?.key === 'stories')) ||
-          currentSection?.href === href;
+        const current = currentSection?.href === href;
         const section = SITE_SECTIONS.find((s) => s.href === href);
         const label = navLabel(href);
-        const shortLabel =
-          href === '/overview/' ? 'Topics' : href === '/questions/' ? 'Q&A + stories' : label;
         return (
           <span key={href} className="pnav-sec">
             <Link
@@ -48,7 +44,6 @@ export function PrimaryNav() {
               prefetch={false}
               aria-current={current ? 'page' : undefined}
               className={current ? 'is-here' : undefined}
-              data-short={shortLabel}
             >
               {label}
             </Link>
@@ -68,6 +63,7 @@ export function PrimaryNav() {
           </span>
         );
       })}
+      <CommandPalette />
     </nav>
   );
 }

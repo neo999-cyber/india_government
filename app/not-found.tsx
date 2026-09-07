@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">Home</Link> / not found
+        <Link href="/">instrument</Link> / not found
       </p>
       <h1>No such record</h1>
       <p className="lede">

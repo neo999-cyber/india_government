@@ -11,9 +11,8 @@ interface SearchItem {
 }
 
 const ITEMS: SearchItem[] = [
-  { id: 'r-start', title: 'Start here — India in short', category: 'Route', href: '/in-short/', meta: 'A plain-language overview of what changed' },
-  { id: 'r-overview', title: 'Explore topics', category: 'Route', href: '/overview/', meta: 'Atlas, topics and years across the record' },
-  { id: 'r-questions', title: 'Questions & stories', category: 'Route', href: '/questions/', meta: 'Familiar questions and guided explanations' },
+  { id: 'r-overview', title: 'Atlas — what changed', category: 'Route', href: '/overview/', meta: 'Topics and years across the record' },
+  { id: 'r-questions', title: 'Questions', category: 'Route', href: '/questions/', meta: 'Core policy inquiries' },
   { id: 'r-stories', title: 'Stories', category: 'Route', href: '/stories/', meta: 'Sequential evidence & disputes' },
   { id: 'r-search', title: 'Records — find any record', category: 'Route', href: '/search/', meta: 'Comprehensive index' },
   { id: 'r-serieq', title: 'Indicator series', category: 'Route', href: '/search/?layer=series', meta: 'Time series data' },
@@ -28,13 +27,13 @@ const ITEMS: SearchItem[] = [
   { id: 'r-method', title: 'Method — evidence rules and source tiers', category: 'Route', href: '/method/', meta: 'Validation criteria and project limits' },
 
   // Domains
-  { id: 'd-employment', title: 'Employment & Labour', category: 'Domain', href: '/domains/employment/', meta: 'jobs, work, working, women working, female participation, PLFS, CMIE, LFPR, informal sector' },
+  { id: 'd-employment', title: 'Employment & Labour', category: 'Domain', href: '/domains/employment/', meta: 'PLFS, CMIE, female LFPR, informal sector' },
   { id: 'd-infrastructure', title: 'Infrastructure & Highways', category: 'Domain', href: '/domains/infrastructure/', meta: 'Highways, power, railways, ports' },
   { id: 'd-education', title: 'Education & Learning', category: 'Domain', href: '/domains/education/', meta: 'ASER, GER, higher education, school enrolment' },
   { id: 'd-human-dev', title: 'Human Development & Health', category: 'Domain', href: '/domains/human-development/', meta: 'NFHS, sanitation, stunting, anaemia' },
   { id: 'd-macro', title: 'Macroeconomy & GDP', category: 'Domain', href: '/domains/macro/', meta: 'GDP revisions, fiscal deficit, inflation' },
   { id: 'd-banking', title: 'Banking & Financial System', category: 'Domain', href: '/domains/banking/', meta: 'NPA ratios, write-offs, credit growth' },
-  { id: 'd-environment', title: 'Environment & Renewable Energy', category: 'Domain', href: '/domains/environment/', meta: 'electricity, power, solar, renewables, coal production, emissions' },
+  { id: 'd-environment', title: 'Environment & Renewable Energy', category: 'Domain', href: '/domains/environment/', meta: 'Renewables, coal production, emissions' },
   { id: 'd-poverty', title: 'Poverty', category: 'Domain', href: '/domains/poverty/', meta: 'Poverty lines, consumption and multidimensional measures' },
   { id: 'd-welfare', title: 'Welfare Delivery', category: 'Domain', href: '/domains/welfare/', meta: 'Benefits, schemes and delivery systems' },
   { id: 'd-governance', title: 'Governance & Institutions', category: 'Domain', href: '/domains/governance/', meta: 'Institutions, administration and accountability' },
@@ -99,14 +98,11 @@ export function CommandPalette() {
     const trimmed = query.trim();
     if (!trimmed) return ITEMS.slice(0, 8);
     const q = trimmed.toLowerCase();
-    const words = q
-      .split(/[^a-z0-9]+/)
-      .filter((word) => word.length > 1 && !['are', 'the', 'more', 'what', 'how', 'did', 'does', 'has', 'have', 'is'].includes(word));
     const matches = ITEMS.filter(
-      (item) => {
-        const haystack = `${item.title} ${item.category} ${item.meta ?? ''}`.toLowerCase();
-        return haystack.includes(q) || (words.length > 0 && words.every((word) => haystack.includes(word)));
-      },
+      (item) =>
+        item.title.toLowerCase().includes(q) ||
+        item.category.toLowerCase().includes(q) ||
+        (item.meta && item.meta.toLowerCase().includes(q)),
     ).slice(0, 9);
     return [
       ...matches,

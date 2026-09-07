@@ -5,7 +5,7 @@ import { TIER_LABELS } from '@/lib/format';
 import type { Tier } from '@/lib/types';
 
 /**
- * WHAT THIS ARCHIVE RESTS ON — the source directory's citation overview.
+ * WHAT THIS ARCHIVE RESTS ON — the landing page's second picture.
  *
  * ============================ WHAT IT REPLACED, AND WHY ======================================
  *
@@ -20,8 +20,7 @@ import type { Tier } from '@/lib/types';
  *
  * **It is not deleted.** It remains one of the Atlas's four views, labelled "What the archive
  * covers", which is where a coverage picture belongs and where the Survey of India outline and its
- * attribution stay on the site. This citation field moved from the homepage to `/publishers/` in
- * the novice-navigation pass: it is source methodology, useful after orientation rather than before.
+ * attribution stay on the site.
  *
  * ============================ EVERY FIGURE COMES FROM THE SANCTIONED ACCESSOR ================
  *
@@ -52,7 +51,8 @@ export function EvidenceBase() {
         <h2 id="evb-h">{total.toLocaleString('en-IN')} citations, and what kind each one is</h2>
         <p>
           Every figure and every record on this site carries its sources, and every source carries a
-          tier. This is all of them at once, one mark per citation, banded by evidence tier.
+          tier. This is all of them at once, one mark per citation — the same idiom as the landscape
+          above, counting a different thing.
         </p>
       </div>
 

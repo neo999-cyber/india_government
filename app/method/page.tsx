@@ -36,7 +36,7 @@ export default function MethodPage() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">Home</Link> / method
+        <Link href="/">instrument</Link> / method
       </p>
       <h1 className="page-lead">Method, tiers and what the marks mean</h1>
       {/* METHOD IS THE ABOUT SECTION'S LANDING PAGE FROM 2026-09-01. `/about/` was 310 words and

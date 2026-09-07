@@ -13,7 +13,6 @@ import {
 } from '@/lib/questions';
 import { allUnmeasured, series } from '@/lib/data';
 import { spanFrontier, spanRows } from '@/lib/spans';
-import { GuidedStoryPicks } from '@/components/GuidedStoryPicks';
 
 export const metadata: Metadata = { title: 'Questions — eight ways in, and two that are not' };
 
@@ -100,7 +99,7 @@ export default function Questions() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">Home</Link> / questions
+        <Link href="/">instrument</Link> / questions
       </p>
       {/* THE PLATE IS DECORATION AND IS MARKED AS SUCH — the same reading, and the same treatment,
           as the Atlas banner. A supplied illustration: a spray of filed papers feeding a row of
@@ -117,21 +116,24 @@ export default function Questions() {
       <div className="qhero">
         <div className="qhero-art" />
         <div className="qhero-lead">
-          <h1 className="page-lead">Questions &amp; stories</h1>
+          <h1 className="page-lead">Questions</h1>
           <p className="lede">
-            Begin with something you want to understand. Choose a question for a focused answer,
-            or follow a guided story to see how the evidence, disagreement and limitations fit together.
+            Eight questions a reader arrives with. Each is a filter over records the instrument
+            already holds — <strong>not a new score, and not a ranking of anything against
+            anything.</strong>{' '}
+            Under every question is the criterion it selects on, named field by field, so that a
+            reader can check it and disagree with it.
           </p>
         </div>
         <div className="qhero-note">
           <p className="prose-note">
-            New to the site? Start with a guided story. Each one explains a familiar issue before
-            introducing the underlying records and measurement choices.
+            The order is the one the design brief lists them in — an authored choice, stated so it
+            is not read as a ranking. Six lead to a page of their own; one is answered by a surface
+            that already exists and links to it; one is not offered, and the reason is under the
+            question.
           </p>
         </div>
       </div>
-
-      <GuidedStoryPicks />
 
       {/* THE FIVE THAT BLUR, AND SEPARATING THEM IS THE POINT OF THE ITEM.
 
@@ -147,7 +149,7 @@ export default function Questions() {
           is one where <em>nothing measures the thing at all</em>; neither is one where{' '}
           <em>two instruments measure it and disagree</em>; and none of them is a record that is
           simply <em>too early to judge</em>. The questions below separate those, because the
-          difference between them is central to what this record can establish.
+          difference between them is most of what this instrument knows.
         </p>
       </div>
 
@@ -201,7 +203,7 @@ export default function Questions() {
           four records whose declared absences ARE the answer, on the page that holds declared
           absences. It is still held outside the eight and still not one of them. The list above is the brief's own
           order and says so; slipping a ninth into it would falsify that sentence. This is a
-          different object anyway — not a filter over records, but four questions the site
+          different object anyway — not a filter over records, but four questions the instrument
           CANNOT answer, with the four different reasons. Built after the same test that refused the
           topic-year matrix: every reason on it is a record's declared absence, not this corpus
           reporting its own coverage. */}

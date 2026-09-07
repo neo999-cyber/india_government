@@ -182,7 +182,7 @@ export default function Story() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">Home</Link> / <Link href="/stories/">stories</Link> / did jobs grow
+        <Link href="/">instrument</Link> / <Link href="/stories/">stories</Link> / did jobs grow
         after 2014?
       </p>
 
