@@ -658,6 +658,16 @@ parsed on the main thread while the reader scrolled. `prefetch={false}` costs on
 FOLLOWED, at the size of the page it opens. *Gated by `link-prefetch`, which asserts the wrapper
 still imports `next/link` and nothing else does.* `[R-9e2f10]`
 
+**A MERGE INTO `main` REQUIRES THE `gate` CHECK, AND THE CHECK ALONE NEVER REQUIRED ANYTHING.**
+The `validate` workflow has run the full build, lint and the e2e suite on every pull request since
+2026-08-25. On 6 and 7 September 2026 two pull requests were merged with that check RED — it had
+caught the "More" panel running off the viewport at 1024 and 1280, exactly the bug the operator
+then reported as "the website is all messed up" — because a red check with no branch rule is a
+notice, not a gate. Branch protection on `main` now requires `gate`, strict, with administrators
+NOT enforced so the direct push of `npm run commit && git push` still lands. **What it cannot
+bind, and says so:** the repository owner still sees a bypass on a blocked merge, with a warning;
+choosing it is a decision, and this rule is what makes it one. `[R-7c31d9]`
+
 **Do not pipe gates** — an exit code does not survive a pipe. **And a structural check passes on a
 stub: structure passing is not content passing.** `[R-bf851c]`
 

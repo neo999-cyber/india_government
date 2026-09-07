@@ -1939,3 +1939,17 @@ intrinsic sizes read off the WebP headers at build time and `decoding="async"`. 
 four consecutive transitions with a `requestAnimationFrame` gap recorder on the build: 181 frames,
 median 16.7 ms, p95 17.3 ms, max 33.4 ms, one frame over 33 ms; computed `filter` on every card and
 image `none`.
+
+### [R-7c31d9]
+
+**THE CHECK EXISTED AND WAS RED ON BOTH MERGES; NOTHING REQUIRED IT.** Operator, 2026-09-07: the
+site "is all messed up … what happened with the arrangement, and menus, sub menus". Two pull
+requests from `codex/*` branches (five commits, 49 files) had been merged on 6 and 7 September.
+`gh run list` for the repository: the `validate` workflow ran on each pull request and on each
+merge to `main`, and all four runs FAILED — `allpages.spec.ts`, "panel runs off the right edge",
+at 1024 and 1280 — the same failure the audit reproduced on the merged build (2 failed, 167
+passed). `gh api …/branches/main/protection` returned 404 "Branch not protected" and the
+repository had no rulesets. Protection applied 2026-09-07: `required_status_checks` strict on
+`gate`, `enforce_admins: false`, read back as applied. The commit carrying this entry was pushed
+directly to `main` under the new rule, which is the measurement that the sanctioned commit path
+survives it.
