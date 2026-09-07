@@ -11,6 +11,7 @@ export type ExplainerMetric = {
   period: string;
   href: string;
   status: 'verified' | 'approx' | 'pending';
+  measurement: string;
   note?: string;
 };
 
@@ -28,6 +29,7 @@ export function EvidenceExplainer({
   metrics,
   steps,
   caveat,
+  comparable = true,
 }: {
   eyebrow: string;
   title: string;
@@ -35,6 +37,7 @@ export function EvidenceExplainer({
   metrics: ExplainerMetric[];
   steps: ExplainerStep[];
   caveat: string;
+  comparable?: boolean;
 }) {
   const [active, setActive] = useState(0);
   const step = steps[active];
@@ -97,12 +100,19 @@ export function EvidenceExplainer({
                 <strong>{metric.label}</strong>
                 <span className="mono">{metric.period}</span>
               </div>
-              <div className="eex-track" aria-hidden="true">
-                <span style={{ ['--value' as string]: Math.min(1, Math.max(0, metric.value / 100)) }} />
-              </div>
+              {comparable ? (
+                <div className="eex-track" aria-hidden="true">
+                  <span style={{ ['--value' as string]: Math.min(1, Math.max(0, metric.value / 100)) }} />
+                </div>
+              ) : (
+                <p className="eex-unscaled mono">Separate measure · do not subtract</p>
+              )}
               <p className="eex-value">
                 <b>{metric.value}</b> {metric.unit}
-                <span>{metric.status === 'approx' ? 'Survey estimate' : 'Verified observation'}</span>
+                <span className="eex-badges">
+                  <i>{metric.measurement}</i>
+                  <i>{metric.status === 'verified' ? 'Source checked' : metric.status === 'approx' ? 'Primary source pending' : 'Observation pending'}</i>
+                </span>
               </p>
               {metric.note ? <p className="eex-note">{metric.note}</p> : null}
               <Link href={metric.href}>See data and source →</Link>

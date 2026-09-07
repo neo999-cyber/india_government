@@ -100,7 +100,7 @@ export default function Questions() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / questions
+        <Link href="/">Home</Link> / questions
       </p>
       {/* THE PLATE IS DECORATION AND IS MARKED AS SUCH — the same reading, and the same treatment,
           as the Atlas banner. A supplied illustration: a spray of filed papers feeding a row of
@@ -147,7 +147,7 @@ export default function Questions() {
           is one where <em>nothing measures the thing at all</em>; neither is one where{' '}
           <em>two instruments measure it and disagree</em>; and none of them is a record that is
           simply <em>too early to judge</em>. The questions below separate those, because the
-          difference between them is most of what this instrument knows.
+          difference between them is central to what this record can establish.
         </p>
       </div>
 
@@ -201,7 +201,7 @@ export default function Questions() {
           four records whose declared absences ARE the answer, on the page that holds declared
           absences. It is still held outside the eight and still not one of them. The list above is the brief's own
           order and says so; slipping a ninth into it would falsify that sentence. This is a
-          different object anyway — not a filter over records, but four questions the instrument
+          different object anyway — not a filter over records, but four questions the site
           CANNOT answer, with the four different reasons. Built after the same test that refused the
           topic-year matrix: every reason on it is a record's declared absence, not this corpus
           reporting its own coverage. */}

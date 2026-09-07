@@ -38,7 +38,7 @@ export default function UnmeasuredIndex() {
   return (
     <>
       <p className="crumb">
-        <Link prefetch={false} href="/">instrument</Link> / what is not measured
+        <Link prefetch={false} href="/">Home</Link> / what is not measured
       </p>
       <h1 className="page-lead">What is not measured</h1>
       <p className="lede">

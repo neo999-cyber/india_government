@@ -164,7 +164,7 @@ export default function Story() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / <Link href="/stories/">stories</Link> / how much is
+        <Link href="/">Home</Link> / <Link href="/stories/">stories</Link> / how much is
         renewable?
       </p>
 

@@ -87,7 +87,7 @@ export default async function QuestionRoute({ params }: Props) {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / <Link href="/questions/">questions</Link>
+        <Link href="/">Home</Link> / <Link href="/questions/">questions</Link>
       </p>
       <h1>{route.question}</h1>
       <p className="lede">{route.lede}</p>

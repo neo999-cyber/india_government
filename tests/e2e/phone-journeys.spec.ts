@@ -60,6 +60,15 @@ async function expectTouchTarget(locator: import('@playwright/test').Locator, la
 }
 
 test.describe('phone journeys', () => {
+  test('topic reading guide and evidence distinctions fit a phone', async ({ page }) => {
+    await page.goto('/domains/education/');
+    await expect(page.locator('.topic-primer article')).toHaveCount(3);
+    await expect(page.locator('.eex-unscaled')).toHaveCount(2);
+    await expect(page.locator('.eex')).toContainText('Household assessment');
+    await expect(page.locator('.eex')).toContainText('Primary source pending');
+    await expectNoBodyOverflow(page);
+  });
+
   test('landing gives every subject a clear phone-sized route', async ({ page }) => {
     await page.goto('/');
 

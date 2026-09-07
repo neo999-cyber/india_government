@@ -31,7 +31,7 @@ export default async function TermPage({ params }: Props) {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / <Link href="/overview/#terms">terms</Link> / {t}
+        <Link href="/">Home</Link> / <Link href="/overview/#terms">terms</Link> / {t}
       </p>
       <h1>{TERM_LABELS[t]}</h1>
 

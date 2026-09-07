@@ -53,7 +53,7 @@ export default async function LedgerDetail({ params }: Props) {
     <>
       <LedgerLd record={l} modified={lastTouched(l.id)} />
       <p className="crumb">
-        <Link href="/">instrument</Link> / <Link href="/search/?layer=ledger">ledger</Link> /{' '}
+        <Link href="/">Home</Link> / <Link href="/search/?layer=ledger">ledger</Link> /{' '}
         <Link href={`/terms/${l.term}/`}>{TERM_SHORT[l.term]}</Link>
       </p>
       <h1>{l.title}</h1>

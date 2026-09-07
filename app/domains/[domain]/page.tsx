@@ -153,8 +153,9 @@ export async function DomainSurface({ d }: { d: Domain }) {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / <Link href="/overview/">what changed</Link> / {d}
+        <Link href="/">Home</Link> / <Link href="/overview/">what changed</Link> / {d}
       </p>
+
       <h1 className="page-lead">{DOMAIN_LABELS[d]}</h1>
       <p className="standfirst">
         {DOMAIN_CHARACTER[d]}
@@ -169,6 +170,33 @@ export async function DomainSurface({ d }: { d: Domain }) {
         ) : null}
       </p>
 
+      <section className="topic-primer" aria-labelledby="topic-primer-title">
+        <div className="topic-primer-head">
+          <p className="home-kicker mono">30-second reading</p>
+          <h2 id="topic-primer-title">What to notice before opening the evidence</h2>
+        </div>
+        <div className="topic-primer-grid">
+          <article>
+            <span className="mono">What is measured</span>
+            <p>{lead ? `${lead.title}, in ${lead.unit}.` : 'No indicator is filed directly under this topic.'}</p>
+          </article>
+          <article>
+            <span className="mono">What changed</span>
+            <p>{lead && SERIES_FINDINGS[lead.id]?.finding
+              ? SERIES_FINDINGS[lead.id].finding
+              : periods?.[0]?.heading ?? 'The records below provide the dated account.'}</p>
+          </article>
+          <article>
+            <span className="mono">What this cannot settle</span>
+            <p>
+              {absences.length
+                ? `${absences.length} declared ${absences.length === 1 ? 'absence is' : 'absences are'} recorded for this topic.`
+                : 'No declared absence is filed here; that does not mean every relevant question is measured.'}{' '}
+              <Link href="#missing">Read the limits →</Link>
+            </p>
+          </article>
+        </div>
+      </section>
       <DomainSections />
       {/* TWO DOORS OUT OF A TOPIC, added 2026-09-01. The site audit counted inbound links from page
           content, navigation excluded: /in-short/ had 2 and /seams/ had 2, against /search/'s 819.
@@ -664,7 +692,7 @@ export async function DomainSurface({ d }: { d: Domain }) {
   );
 }
 
-function metric(id: string, period: string, label: string): ExplainerMetric {
+function metric(id: string, period: string, label: string, measurement: string): ExplainerMetric {
   const record = series.find((candidate) => candidate.id === id);
   const point = record?.points.find(
     (candidate) => candidate.country === 'IND' && candidate.period === period && typeof candidate.value === 'number',
@@ -680,6 +708,7 @@ function metric(id: string, period: string, label: string): ExplainerMetric {
     period: point.period,
     href: `/series/${record.id}/`,
     status: point.status,
+    measurement,
     note: point.note,
   };
 }
@@ -692,9 +721,9 @@ function topicExplainer(domain: Domain) {
         title="Employment rose, but what kind of work was it?"
         intro="Read participation together with the composition of work. A lower unemployment rate does not by itself mean more salaried jobs."
         metrics={[
-          metric('regular-wage-share', 'FY2023-24', 'Regular wage or salaried'),
-          metric('self-employed-share', 'FY2023-24', 'Self-employed'),
-          metric('unpaid-helper-share', 'FY2020-21', 'Unpaid family helper'),
+          metric('regular-wage-share', 'FY2023-24', 'Regular wage or salaried', 'Survey estimate'),
+          metric('self-employed-share', 'FY2023-24', 'Self-employed', 'Survey estimate'),
+          metric('unpaid-helper-share', 'FY2020-21', 'Unpaid family helper', 'Survey estimate'),
         ]}
         steps={[
           {
@@ -727,8 +756,8 @@ function topicExplainer(domain: Domain) {
         title="Half the fleet is not half the electricity"
         intro="Capacity measures what can generate at one moment. Generation measures the electricity actually produced across the year."
         metrics={[
-          metric('non-fossil-capacity-share', 'FY2023-24', 'Installed non-fossil capacity'),
-          metric('non-fossil-generation-share', 'FY2023-24', 'Non-fossil electricity generated'),
+          metric('non-fossil-capacity-share', 'FY2023-24', 'Installed non-fossil capacity', 'Official stock measure'),
+          metric('non-fossil-generation-share', 'FY2023-24', 'Non-fossil electricity generated', 'Official flow measure'),
         ]}
         steps={[
           {
@@ -751,6 +780,85 @@ function topicExplainer(domain: Domain) {
           },
         ]}
         caveat="Both observations use the same CEA utilities universe and FY2023-24 reference. Capacity is a stock at year-end; generation is a flow across the year, so their difference is not an arithmetic shortfall."
+      />
+    );
+  }
+  if (domain === 'education') {
+    return (
+      <EvidenceExplainer
+        eyebrow="Two assessments, two questions"
+        title="Learning results cannot be placed on one seamless line"
+        intro="ASER tests children at home with a simple reading task. PARAKH reports school-based proficiency bands. Both concern learning, but their populations, instruments and thresholds differ."
+        metrics={[
+          metric('aser-std3-reading', '2024', 'ASER: Standard III reading', 'Household assessment'),
+          metric('parakh-grade3-proficient-language', '2024', 'PARAKH: Grade 3 language', 'School assessment'),
+        ]}
+        steps={[
+          { label: 'Who was tested', title: 'ASER is a rural household assessment.', body: 'It includes enrolled and unenrolled children found in sampled households and asks whether a Standard III child can read a Standard II text.', metrics: ['aser-std3-reading'] },
+          { label: 'What was tested', title: 'PARAKH reports a proficiency band.', body: 'Its published percentage is the share of Grade 3 students at or above a language threshold, not the ASER reading task.', metrics: ['parakh-grade3-proficient-language'] },
+          { label: 'Keep both', title: 'The values should remain side by side, not be morphed.', body: 'They illuminate different parts of learning and cannot form one continuous national trend.', metrics: ['aser-std3-reading', 'parakh-grade3-proficient-language'] },
+        ]}
+        caveat="The assessment populations and definitions differ. PARAKH's proficiency cut-scores are not published, and its observations retain the corpus's approximate source status."
+        comparable={false}
+      />
+    );
+  }
+  if (domain === 'welfare') {
+    return (
+      <EvidenceExplainer
+        eyebrow="Delivered is not the same as used"
+        title="An LPG connection and an LPG refill answer different questions"
+        intro="One measure counts cumulative connections released. The other reports average refills among beneficiaries in a particular period. A delivery count is not evidence of sustained use on its own."
+        metrics={[
+          metric('ujjwala-connections', 'FY2025-26', 'Connections released', 'Cumulative delivery'),
+          metric('ujjwala-refills', 'FY2018-19', 'Average refills', 'Annual use measure'),
+        ]}
+        steps={[
+          { label: 'Delivered', title: 'Connections count access created.', body: 'The cumulative total records how many connections had been released; it does not count how often each household used LPG.', metrics: ['ujjwala-connections'] },
+          { label: 'Used', title: 'Refills are a separate use measure.', body: 'The refill observation is an average for beneficiaries with sufficient tenure and comes from an earlier period.', metrics: ['ujjwala-refills'] },
+          { label: 'Do not funnel', title: 'These are stages, not a numeric funnel.', body: 'The units, dates and cohorts differ, so subtracting one value from the other would create a result the evidence does not contain.', metrics: ['ujjwala-connections', 'ujjwala-refills'] },
+        ]}
+        caveat="The connection figure is cumulative through FY2025-26; the refill figure shown is FY2018-19 and uses a different unit and cohort. Both retain approximate source status."
+        comparable={false}
+      />
+    );
+  }
+  if (domain === 'federalism') {
+    return (
+      <EvidenceExplainer
+        eyebrow="The percentage depends on its denominator"
+        title="Forty-one per cent of a pool is not forty-one per cent of all tax revenue"
+        intro="The Finance Commission share applies to the divisible pool. Cesses, surcharges and collection costs sit outside that pool, so the share of gross tax revenue reaching states is lower."
+        metrics={[
+          metric('divisible-pool-share-gtr', 'FY2023-24', 'Divisible pool share of gross tax', 'Certified revenue share'),
+          metric('fc-devolution-share-of-gtr', 'FY2023-24', 'Devolution share of gross tax', 'Certified transfer share'),
+        ]}
+        steps={[
+          { label: 'Start with gross tax', title: 'Gross tax revenue is the wider denominator.', body: 'Only the divisible-pool portion is subject to the Finance Commission vertical share.', metrics: ['divisible-pool-share-gtr'] },
+          { label: 'Follow the pool', title: 'Devolution is smaller as a share of gross tax.', body: 'The published transfer share of gross tax reflects both the size of the pool and the share applied to it.', metrics: ['fc-devolution-share-of-gtr'] },
+          { label: 'Name the denominator', title: 'The two percentages are compatible only when their bases are explicit.', body: 'Reading the Finance Commission percentage as a share of all gross tax revenue is the category error this view is designed to prevent.', metrics: ['divisible-pool-share-gtr', 'fc-devolution-share-of-gtr'] },
+        ]}
+        caveat="Both values are FY2023-24 actuals on a gross-tax-revenue denominator. This view explains the accounting relationship; it does not rank governments or states."
+      />
+    );
+  }
+  if (domain === 'banking') {
+    return (
+      <EvidenceExplainer
+        eyebrow="A stock ratio can fall for several reasons"
+        title="Lower bad-loan ratios do not measure recoveries alone"
+        intro="The gross NPA ratio is a stock relative to advances. Write-offs are an annual accounting flow. Recoveries, new bad loans and denominator growth can also change the ratio."
+        metrics={[
+          metric('scb-gross-npa', 'FY2024-25', 'Gross NPA ratio', 'Year-end stock ratio'),
+          metric('bank-writeoffs-annual', 'FY2024-25', 'Loans written off', 'Annual accounting flow'),
+        ]}
+        steps={[
+          { label: 'Read the stock', title: 'The NPA ratio has a numerator and a denominator.', body: 'It can fall when bad-loan stock declines, when total advances grow, or through a combination of mechanisms.', metrics: ['scb-gross-npa'] },
+          { label: 'Read the flow', title: 'A write-off removes a loan from the balance-sheet stock.', body: 'It is not the same event as a cash recovery, and the annual amount is not expressed as a share of advances.', metrics: ['bank-writeoffs-annual'] },
+          { label: 'Keep mechanisms separate', title: 'The two values cannot form a waterfall by themselves.', body: 'A complete accounting bridge would also need recoveries, upgrades, new slippages and denominator changes on a common basis.', metrics: ['scb-gross-npa', 'bank-writeoffs-annual'] },
+        ]}
+        caveat="The observations shown share FY2024-25 but not a unit or accounting identity. Both retain approximate source status, and no missing bridge is inferred."
+        comparable={false}
       />
     );
   }
