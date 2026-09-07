@@ -57,7 +57,7 @@ export default function Publishers() {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / who published it
+        <Link href="/">Home</Link> / who published it
       </p>
       <h1 className="page-lead">Who published it</h1>
       <p className="lede">

@@ -52,7 +52,7 @@ import { STORY_INDEX } from '@/lib/story-index';
  * the share card whichever phrase brought them.
  */
 export const ROUTES: Record<string, { label: string; nav?: string }> = {
-  '/': { label: 'instrument' },
+  '/': { label: 'Home' },
   '/in-short/': { label: 'In short', nav: 'Start here' },
   '/overview/': { label: 'What changed', nav: 'Explore topics' },
   '/questions/': { label: 'Questions', nav: 'Questions & stories' },

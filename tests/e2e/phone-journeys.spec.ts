@@ -60,6 +60,15 @@ async function expectTouchTarget(locator: import('@playwright/test').Locator, la
 }
 
 test.describe('phone journeys', () => {
+  test('topic reading guide and evidence distinctions fit a phone', async ({ page }) => {
+    await page.goto('/domains/education/');
+    await expect(page.locator('.topic-primer article')).toHaveCount(3);
+    await expect(page.locator('.eex-unscaled')).toHaveCount(2);
+    await expect(page.locator('.eex')).toContainText('Household assessment');
+    await expect(page.locator('.eex')).toContainText('Primary source pending');
+    await expectNoBodyOverflow(page);
+  });
+
   test('landing gives every subject a clear phone-sized route', async ({ page }) => {
     await page.goto('/');
 
@@ -86,6 +95,9 @@ test.describe('phone journeys', () => {
     const stories = page.locator('.story-picks-grid > a');
     await expect(topics).toHaveCount(14);
     await expect(topics.first()).toBeVisible();
+    await expect(page.locator('.lsc-read')).toContainText('14 subjects in the archive');
+    await expect(page.locator('.lsc-read')).toContainText('Choose a topic below to open its records');
+    await expect(page.locator('.lsc-read').getByText('Point at a landmark to read its subject here')).toBeHidden();
     await expect(stories).toHaveCount(3);
     await expect(page.locator('.home-source-note')).toBeVisible();
     await expect(page.locator('.evb-tiers')).toHaveCount(0);

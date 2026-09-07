@@ -144,7 +144,7 @@ export default async function YearPage({ params }: Props) {
   return (
     <>
       <p className="crumb">
-        <Link href="/">instrument</Link> / <Link href="/overview/#years">years</Link> / {y}
+        <Link href="/">Home</Link> / <Link href="/overview/#years">years</Link> / {y}
       </p>
       <h1 className="page-lead">{y}</h1>
       <p className="standfirst">{note.body}</p>

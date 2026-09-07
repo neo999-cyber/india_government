@@ -4503,6 +4503,18 @@ details.more > summary {
 .story-picks-grid small { margin-top: auto; color: var(--ink-dim); }
 
 .eex { margin: 2rem 0 3rem; padding: clamp(1rem, 2vw, 1.5rem); border: 1px solid var(--rule); border-radius: var(--radius-md); background: var(--surface); }
+.topic-primer { margin: 1.5rem 0 2rem; padding: clamp(1rem, 2vw, 1.4rem); border-block: 1px solid var(--rule); }
+.topic-primer-head { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(18rem, 1.3fr); gap: 1rem; align-items: end; margin-bottom: 1rem; }
+.topic-primer-head h2 { margin: 0; font-size: clamp(1.35rem, 2.5vw, 1.8rem); }
+.topic-primer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.topic-primer-grid article { padding: 0.9rem; background: var(--bg); }
+.topic-primer-grid span { color: var(--mark-ink); font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.topic-primer-grid p { margin: 0.45rem 0 0; color: var(--ink-2); font-size: 0.82rem; line-height: 1.5; }
+.topic-primer-grid a { color: var(--ink); }
+@media (max-width: 760px) {
+  .topic-primer-head, .topic-primer-grid { grid-template-columns: minmax(0, 1fr); }
+  .topic-primer-head { gap: 0.35rem; }
+}
 .eex-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.8fr); gap: 1.5rem; align-items: end; }
 .eex-head h2 { margin: 0; font-size: clamp(1.5rem, 3vw, 2.25rem); max-width: 22ch; }
 .eex-head > p { margin: 0; color: var(--ink-2); max-width: 48ch; }
@@ -4519,16 +4531,18 @@ details.more > summary {
 .eex-flow span { height: 1px; flex: 1; background: var(--rule); transform-origin: left; animation: eex-line 0.55s ease both; }
 .eex-flow i { font: normal 0.58rem var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; }
 .eex-bars { display: grid; gap: 0.65rem; }
-.eex-bars article { padding: 0.8rem 0.9rem; border: 1px solid var(--rule); border-radius: var(--radius-sm); background: var(--bg); transition: opacity 0.22s ease, transform 0.22s ease; }
-.eex-bars article.is-muted { opacity: 0.42; transform: scale(0.985); }
+.eex-bars article { padding: 0.8rem 0.9rem; border: 1px solid var(--rule); border-radius: var(--radius-sm); background: var(--bg); transition: transform 0.22s ease; }
+.eex-bars article.is-muted { transform: scale(0.985); }
 .eex-bar-head { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
 .eex-bar-head strong { font-size: 0.86rem; }
 .eex-bar-head span { color: var(--ink-dim); font-size: 0.62rem; }
 .eex-track { height: 0.65rem; margin: 0.55rem 0; overflow: hidden; border-radius: 999px; background: var(--rule-soft); }
 .eex-track span { display: block; width: 100%; height: 100%; border-radius: inherit; background: var(--fill); transform: scaleX(var(--value)); transform-origin: left; animation: eex-grow 0.58s cubic-bezier(0.22, 0.9, 0.24, 1) both; }
+.eex-unscaled { margin: 0.55rem 0; padding: 0.28rem 0; border-block: 1px dashed var(--rule); color: var(--ink-dim); font-size: 0.58rem; letter-spacing: 0.04em; text-transform: uppercase; }
 .eex-value { display: flex; gap: 0.35rem; align-items: baseline; margin: 0; }
 .eex-value b { font: 500 1.3rem var(--font-mono); }
-.eex-value > span { margin-left: auto; color: var(--ink-dim); font-size: 0.62rem; border-bottom: 1px dotted var(--ink-dim); }
+.eex-badges { margin-left: auto; display: inline-flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.25rem; }
+.eex-badges i { color: var(--ink-dim); font: normal 0.58rem var(--font-mono); border-bottom: 1px dotted var(--ink-dim); }
 .eex-note { margin: 0.4rem 0 0; color: var(--ink-dim); font-size: 0.7rem; }
 .eex-bars article > a { display: inline-block; margin-top: 0.45rem; color: var(--ink-2); font-size: 0.7rem; }
 .eex-caveat { margin: 1rem 0 0; padding-top: 0.8rem; border-top: 1px solid var(--rule); color: var(--ink-2); font-size: 0.78rem; }
@@ -7667,6 +7681,7 @@ li {
   color: var(--ink-dim);
 }
 .lsc-read-foot { font-size: 0.66rem; color: var(--ink-dim); margin: 0.7rem 0 0; line-height: 1.5; }
+.lsc-mobile-copy { display: none; }
 
 .lsc { margin: 0 0 2.6rem; }
 .lsc-label { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; margin: 0 0 0.8rem; }
@@ -7854,6 +7869,8 @@ li {
    shrunk. The masthead and the footer directory still reach every subject. */
 @media (max-width: 760px) {
   .lsc-head { gap: 1.5rem; margin-top: 2rem; }
+  .lsc-desktop-copy { display: none; }
+  .lsc-mobile-copy { display: inline; }
   .lsc-label span { display: none; }
   .lsc-mobile-topics {
     display: grid;

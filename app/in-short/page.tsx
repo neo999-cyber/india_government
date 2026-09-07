@@ -61,7 +61,7 @@ import { RecordMarks } from '@/components/marks';
 export const metadata: Metadata = {
   title: 'In short',
   description:
-    'The whole record in one read — what this instrument holds on each of fourteen subjects, how the commitments came out, and what it cannot tell you.',
+    'The whole record in one read — what this site holds on each of fourteen subjects, how the commitments came out, and what it cannot tell you.',
 };
 
 /** Ledger counts by assessment. A count, never a grade — rule 9 permits exactly this and no more. */
@@ -96,11 +96,11 @@ export default function InShort() {
   return (
     <>
       <p className="crumb">
-        <Link prefetch={false} href="/">instrument</Link> / in short
+        <Link prefetch={false} href="/">Home</Link> / in short
       </p>
       <h1 className="page-lead">In short</h1>
       <p className="lede">
-        The whole record in one read. Every sentence below is taken from a record this instrument
+        The whole record in one read. Every sentence below is taken from a record this site
         already holds — this page chooses the order, not the findings. Where a subject is not
         measured at all, that is what it says.
       </p>
@@ -285,7 +285,7 @@ export default function InShort() {
         Where nothing measures a subject at all, no figure is estimated into the gap. Those absences
         are declared on the records they belong to and are never added together into a number, because
         a total would turn fourteen separate facts about fourteen subjects into one claim this
-        instrument cannot support.
+        record cannot support.
       </p>
       <p className="prose-note">
         From here: the <Link prefetch={false} href="/overview/">Atlas</Link> lays the same fourteen
